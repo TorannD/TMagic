@@ -941,27 +941,32 @@ namespace TorannMagic
         [HarmonyPatch(typeof(AbilityDef), "GetJob", null)] //maybe change the order of cast occurrence here
         public static class AbilityDef_Patch
         {
-            private static bool Prefix(AbilityTargetCategory cat, LocalTargetInfo target, ref Job __result)
+            private static bool Prefix(AbilityDef __instance, AbilityTargetCategory cat, LocalTargetInfo target, ref Job __result)
             {
-                Job result;
-                switch (cat)
+                if (__instance.abilityClass.FullName == "TorannMagic.MagicAbility" || __instance.abilityClass.FullName == "TorannMagic.MightAbility")
                 {
-                    case AbilityTargetCategory.TargetSelf:
-                        result = new Job(TorannMagicDefOf.TMCastAbilitySelf, target);
-                        __result = result;
-                        return false;
-                    case AbilityTargetCategory.TargetThing:
-                        result = new Job(TorannMagicDefOf.TMCastAbilityVerb, target);
-                        __result = result;
-                        return false;
-                    case AbilityTargetCategory.TargetAoE:
-                        result = new Job(TorannMagicDefOf.TMCastAbilityVerb, target);
-                        __result = result;
-                        return false;
+                    Log.Message("doing my patch");
+                    Job result;
+                    switch (cat)
+                    {
+                        case AbilityTargetCategory.TargetSelf:
+                            result = new Job(TorannMagicDefOf.TMCastAbilitySelf, target);
+                            __result = result;
+                            return false;
+                        case AbilityTargetCategory.TargetThing:
+                            result = new Job(TorannMagicDefOf.TMCastAbilityVerb, target);
+                            __result = result;
+                            return false;
+                        case AbilityTargetCategory.TargetAoE:
+                            result = new Job(TorannMagicDefOf.TMCastAbilityVerb, target);
+                            __result = result;
+                            return false;
+                    }
+                    result = new Job(TorannMagicDefOf.TMCastAbilityVerb, target);
+                    __result = result;
+                    return false;
                 }
-                result = new Job(TorannMagicDefOf.TMCastAbilityVerb, target);
-                __result = result;
-                return false;
+                return true;
             }
         }
     }

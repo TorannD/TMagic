@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 using Verse;
+using AbilityUser;
 
 namespace TorannMagic
 {
@@ -372,7 +373,6 @@ namespace TorannMagic
             {
                 p.drafter.Drafted = true;
             }
-            
             this.Destroy(DestroyMode.Vanish);
         }
     }

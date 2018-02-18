@@ -50,6 +50,7 @@ namespace TorannMagic
                 Job job = new Job(TorannMagicDefOf.PlacePoisonTrap, currentTarget);
                 pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
             }
+            this.Ability.PostAbilityAttempt();
 
 
             this.burstShotsLeft = 0;

@@ -108,7 +108,7 @@ namespace TorannMagic
                                 SearchForTargets(arg_29_0, (2f + (float)(.5f * ver.level)), map, p);
                                 GenSpawn.Spawn(p, this.currentTarget.Cell, map);
                                 DrawBlade(p.Position.ToVector3Shifted(), 4f + (float)(ver.level));
-                                p.drafter.Drafted = true;
+                                p.drafter.Drafted = true;                                
                                 ThingSelectionUtility.SelectPreviousColonist();
                             }
                             catch
@@ -120,7 +120,8 @@ namespace TorannMagic
                                     Log.Message("Phase strike threw exception - despawned pawn has been recovered at casting location");
                                 }
                             }
-                            
+                            this.Ability.PostAbilityAttempt();
+
                         }
                         else
                         {

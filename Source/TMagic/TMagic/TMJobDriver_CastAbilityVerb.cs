@@ -74,6 +74,7 @@ namespace TorannMagic
                                     {
                                         JobDriver_CastAbilityVerb.CheckForAutoAttack(this.pawn);
                                     }
+
                                 },
                                 defaultCompleteMode = ToilCompleteMode.Instant
                             };

@@ -402,7 +402,15 @@ namespace TorannMagic
 		protected void FireExplosion(int pwr, IntVec3 pos, Map map, float radius)
 		{
 			ThingDef def = this.def;
-			Explosion(pwr, pos, map, radius, DamageDefOf.Flame, this.launcher, null, def, this.equipmentDef, ThingDefOf.FilthAsh, 0.4f, 1, false, null, 0f, 1);
+            try
+            {
+                Explosion(pwr, pos, map, radius, DamageDefOf.Flame, this.launcher, null, def, this.equipmentDef, ThingDefOf.FilthAsh, 0.4f, 1, false, null, 0f, 1);
+            }
+            catch
+            {
+                this.age = this.duration;
+            }
+			
 
 		}
 

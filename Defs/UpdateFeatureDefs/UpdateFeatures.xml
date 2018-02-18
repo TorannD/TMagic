@@ -99,7 +99,7 @@ Arrow Storm - launches a volley of arrows at a target, but cannot be used withou
 		<defName>ARimWorldOfMagic_1_8_3</defName>
 		<assemblyVersion>1.8.3</assemblyVersion>
 		<content>
-- Minions and Elementals should no longer generate errors from frostbite or hypothermia.
+		- Minions and Elementals should no longer generate errors from frostbite or hypothermia.
 
 - Elemental Rift event will now end correctly following a reload.
 
@@ -113,6 +113,15 @@ Feeling singled out, Necromancers have begun returning the social distaste expre
 - The Magic pane displays points required to learn class spells;  spells that haven't been learned yet will no longer give the option to upgrade a related skill. 
 
 - The mana cost for Summoner skills has increased slightly. Each minion now requires an upkeep cost that reduces the amount of mana a summoner gains each turn by 20%.  Unlike undead, minion upkeep costs are not shared, and each summoner may only have 4 minions at any given time.  Summoning additional minions over this amount will dismiss the oldest minion.  The duration of a summoned minion has doubled and its cooldown has been drastically reduced.
+		</content>
+	</HugsLib.UpdateFeatureDef>	
+	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_1_8_4</defName>
+		<assemblyVersion>1.8.4</assemblyVersion>
+		<content>
+- The spellcasting order of events has been changed.  When an ability is used, experience gain, effects on the pawn, and mana/stamina consumption all occur following the cast timer rather than before.  This also prevents spell stacking.
+
+- Abilities used when the target is out of range or if the target is not visible to the caster will generate an error message and abort using the ability; mana/Stamina will no longer be consumed in these cases.
 		</content>
 	</HugsLib.UpdateFeatureDef>	
 	
