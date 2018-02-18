@@ -215,7 +215,6 @@ namespace TorannMagic
                             if ( verVal >= 3) 
                             {
                                 this.FireExplosion(pwrVal, currentPos, map, 1.2f);
-                                Log.Message("extra exp radius called " + verVal);
                             }
                             else
                             {

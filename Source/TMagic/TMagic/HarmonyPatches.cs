@@ -784,13 +784,21 @@ namespace TorannMagic
                 bool flag = false;
                 for(int i = 0; i < pawnTraits.Count; i++)
                 {
-                    if(pawnTraits[i].def == TorannMagicDefOf.PhysicalProdigy || pawnTraits[i].def == TorannMagicDefOf.Gifted ||
-                        pawnTraits[i].def == TorannMagicDefOf.Arcanist || pawnTraits[i].def == TorannMagicDefOf.InnerFire || pawnTraits[i].def == TorannMagicDefOf.HeartOfFrost || pawnTraits[i].def == TorannMagicDefOf.StormBorn ||
-                        pawnTraits[i].def == TorannMagicDefOf.Summoner || pawnTraits[i].def == TorannMagicDefOf.Druid || pawnTraits[i].def == TorannMagicDefOf.Paladin || pawnTraits[i].def == TorannMagicDefOf.Necromancer || pawnTraits[i].def == TorannMagicDefOf.Priest ||
-                        pawnTraits[i].def == TorannMagicDefOf.Gladiator || pawnTraits[i].def == TorannMagicDefOf.Ranger || pawnTraits[i].def == TorannMagicDefOf.TM_Sniper || pawnTraits[i].def == TorannMagicDefOf.Bladedancer)
+                    try
                     {
-                        flag = true;
-                        //got lucky
+                        if (pawnTraits[i].def == TorannMagicDefOf.PhysicalProdigy || pawnTraits[i].def == TorannMagicDefOf.Gifted ||
+                            pawnTraits[i].def == TorannMagicDefOf.Arcanist || pawnTraits[i].def == TorannMagicDefOf.InnerFire || pawnTraits[i].def == TorannMagicDefOf.HeartOfFrost || pawnTraits[i].def == TorannMagicDefOf.StormBorn ||
+                            pawnTraits[i].def == TorannMagicDefOf.Summoner || pawnTraits[i].def == TorannMagicDefOf.Druid || pawnTraits[i].def == TorannMagicDefOf.Paladin || pawnTraits[i].def == TorannMagicDefOf.Necromancer || pawnTraits[i].def == TorannMagicDefOf.Priest ||
+                            pawnTraits[i].def == TorannMagicDefOf.Gladiator || pawnTraits[i].def == TorannMagicDefOf.Ranger || pawnTraits[i].def == TorannMagicDefOf.TM_Sniper || pawnTraits[i].def == TorannMagicDefOf.Bladedancer)
+                        {
+
+                            flag = true;
+                            //got lucky
+                        }
+                    }
+                    catch
+                    {
+                        
                     }
                 }
                 //Remove last trait
@@ -930,16 +938,31 @@ namespace TorannMagic
         //    }
         //}
 
-        [HarmonyPatch(typeof(JobDriver_CastAbilityVerb), "MakeNewToils", null)] //maybe change the order of cast occurrence here
-        public static class JobDriver_CastAbilityVerb_Patch
+        [HarmonyPatch(typeof(AbilityDef), "GetJob", null)] //maybe change the order of cast occurrence here
+        public static class AbilityDef_Patch
         {
-            private static bool Prefix()
+            private static bool Prefix(AbilityTargetCategory cat, LocalTargetInfo target, ref Job __result)
             {
-                Log.Message("prefix patching def database");
-                return true;
+                Job result;
+                switch (cat)
+                {
+                    case AbilityTargetCategory.TargetSelf:
+                        result = new Job(TorannMagicDefOf.TMCastAbilitySelf, target);
+                        __result = result;
+                        return false;
+                    case AbilityTargetCategory.TargetThing:
+                        result = new Job(TorannMagicDefOf.TMCastAbilityVerb, target);
+                        __result = result;
+                        return false;
+                    case AbilityTargetCategory.TargetAoE:
+                        result = new Job(TorannMagicDefOf.TMCastAbilityVerb, target);
+                        __result = result;
+                        return false;
+                }
+                result = new Job(TorannMagicDefOf.TMCastAbilityVerb, target);
+                __result = result;
+                return false;
             }
         }
-
-
     }
 }

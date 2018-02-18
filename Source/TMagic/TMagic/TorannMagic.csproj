@@ -67,25 +67,8 @@
     <Compile Include="Building_TMElementalRift.cs" />
     <Compile Include="Building_TMPortal.cs" />
     <Compile Include="Building_PoisonTrap.cs" />
-    <Compile Include="Enchantment\ChanceDef.cs" />
-    <Compile Include="Enchantment\ITab_Infusion.cs" />
-    <Compile Include="Enchantment\TechLevelRange.cs" />
-    <Compile Include="Enchantment\QualityChances.cs" />
-    <Compile Include="Enchantment\MapComponent_InfusionManager.cs" />
-    <Compile Include="Enchantment\MathUtility.cs" />
-    <Compile Include="Enchantment\GenInfusionText.cs" />
-    <Compile Include="Enchantment\GenInfusionColor.cs" />
-    <Compile Include="Enchantment\InfusionLabelManager.cs" />
-    <Compile Include="Enchantment\StatPart_InfusionModifier.cs" />
-    <Compile Include="Enchantment\InfusionAllowance.cs" />
-    <Compile Include="Enchantment\InfusionType.cs" />
-    <Compile Include="Enchantment\InfusionTier.cs" />
-    <Compile Include="Enchantment\ResourceBank.cs" />
-    <Compile Include="Enchantment\StatMod.cs" />
-    <Compile Include="Enchantment\GenInfusion.cs" />
-    <Compile Include="Enchantment\EnchantmentDef.cs" />
-    <Compile Include="Enchantment\InfusionSet.cs" />
-    <Compile Include="Enchantment\CompInfusion.cs" />
+    <Compile Include="TMJobDriver_CastAbilitySelf.cs" />
+    <Compile Include="TMJobDriver_CastAbilityVerb.cs" />
     <Compile Include="HediffComp_RangerBond.cs" />
     <Compile Include="JobDriver_PlacePoisonTrap.cs" />
     <Compile Include="Thoughts\ThoughtWorker_TM_HolierThanThou.cs" />
@@ -251,6 +234,8 @@
     <Compile Include="Weapon\SeerRing_Ice.cs" />
     <Compile Include="Weapon\SeerRing_Fire.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Enchantment\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

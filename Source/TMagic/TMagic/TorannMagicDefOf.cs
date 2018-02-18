@@ -373,6 +373,9 @@ namespace TorannMagic
         public static ThingDef Mote_Bombardment;
         public static ThingDef Fog_Poison;
 
+        //Jobs
+        public static JobDef TMCastAbilityVerb;
+        public static JobDef TMCastAbilitySelf;
         
     }
 }

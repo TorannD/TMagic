@@ -32,7 +32,7 @@
 <MustHaveMeleeWeapon>{0} does not have a valid melee weapon equipped.  {0} must equip a melee weapon to use this skill.</MustHaveMeleeWeapon>
 <TM_ShieldBlockingPowers>{0} must unequip {1} to use this ability.</TM_ShieldBlockingPowers>
 <TM_OutOfRange>Target location is out of range.</TM_OutOfRange>
-<TM_OutOfLOS>Ability failed, target must be visible to {0}.</TM_OutOfLOS>
+<TM_OutOfLOS>Ability failed, target was not visible to {0}.</TM_OutOfLOS>
 <TM_NothingToRegenerate>No valid target found for Regeneration.</TM_NothingToRegenerate> 
 <TM_CureDiseaseTypeFail>Unable to cure this type of disease.</TM_CureDiseaseTypeFail>
 <TM_CantSummonSelf>Cannot summon self.</TM_CantSummonSelf>
