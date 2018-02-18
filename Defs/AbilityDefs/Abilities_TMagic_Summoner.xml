@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+<!-- Summon Minion Start-->
+   <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_SummonMinion</thingClass>
+	    <defName>Projectile_SummonMinion</defName>
+        <label>summon minion</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>200</speed>
+        </projectile>
+    </ThingDef>
+	
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_SummonMinion</defName>
+    <label>Summon Minion</label>
+    <uiIconPath>PawnKind/minion_front</uiIconPath>
+    <description>Summons minions to assist in daily tasks.</description>
+    <manaCost>0.40</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_SummonMinion</defaultProjectile>
+		<abilityDef>TM_SummonMinion</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>10</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>25</range>
+		<isViolent>false</isViolent>
+        <soundCast>MessagePositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+<!-- Summon minion end-->
+
+<!-- Summon pylon Start-->
+   <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_SummonPylon</thingClass>
+	    <defName>Projectile_SummonPylon</defName>
+        <label>summon defense pylon</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>200</speed>
+        </projectile>
+    </ThingDef>
+	
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_SummonPylon</defName>
+    <label>Summon defense pylon</label>
+    <uiIconPath>UI/defense_pylon</uiIconPath>
+    <description>Summons and manifests magical energy to form an automated defense turret that is tethered to a physical location.  The turret channels arcane current into a focal point that emits bursts of raw energy.  When the tether holding the turret to the physical world dissapates, the turret will harmlessly dissolve back into magical energy.  If the turret is destroyed, this event can be more destructive.</description>
+    <manaCost>0.28</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_SummonPylon</defaultProjectile>
+		<abilityDef>TM_SummonPylon</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>20</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>70</range>
+		<isViolent>false</isViolent>
+        <soundCast>MessagePositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+<!-- Summon pylon end-->
+
+<!-- Summon explosive Start-->
+   <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_SummonExplosive</thingClass>
+	    <defName>Projectile_SummonExplosive</defName>
+        <label>summon explosive trap</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>200</speed>
+        </projectile>
+    </ThingDef>
+	
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_SummonExplosive</defName>
+    <label>Summon explosive</label>
+    <uiIconPath>UI/ManaMine</uiIconPath>
+    <description>Creates a mine out of compressed, raw mana and tethers it to a physical location.  The mine will harmlessly dissolve if the tether runs out of energy that is holding the mine.</description>
+    <manaCost>0.23</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_SummonExplosive</defaultProjectile>
+		<abilityDef>TM_SummonExplosive</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>30</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>70</range>
+		<isViolent>false</isViolent>
+        <soundCast>MessagePositiveEvent</soundCast>
+        <muzzleFlashScale>10</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+<!-- Summon explosive end-->
+
+<!-- Summon Elemental Start-->
+   <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_SummonElemental</thingClass>
+	    <defName>Projectile_SummonElemental</defName>
+        <label>summon elemental</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>200</speed>
+        </projectile>
+    </ThingDef>
+	
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_SummonElemental</defName>
+    <label>Summon Elemental</label>
+    <uiIconPath>UI/Elemental</uiIconPath>
+    <description>Calls forth a monstrous elemental from a plane of power to crush your foes.  These beings will defend a location and immediately engage an enemy if one is nearby.  However, if there are no enemies, they tend to get bored rather quickly and will wander from their summoned position.  They will not do such menial tasks as "hauling" or "cleaning," as these are the jobs of lesser beings.  Due to the power of the summoning, the elemental can only exist in this realm for a short time.  The type of elemental is random.</description>
+    <manaCost>0.50</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_SummonElemental</defaultProjectile>
+		<abilityDef>TM_SummonElemental</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>120</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>50</range>
+		<isViolent>false</isViolent>
+        <soundCast>MessagePositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+<!-- Summon elemental end-->
+
+</Defs>

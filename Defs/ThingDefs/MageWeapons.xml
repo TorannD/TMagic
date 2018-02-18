@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Abstract="True" Name="BaseMageWeapon">
+		<thingClass>ThingWithComps</thingClass>
+		<category>Item</category>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<altitudeLayer>Item</altitudeLayer>
+		<alwaysHaulable>true</alwaysHaulable>
+		<tickerType>Never</tickerType>
+		<equipmentType>Primary</equipmentType>		
+		<useHitPoints>true</useHitPoints>
+		<pathCost>10</pathCost>
+		<selectable>true</selectable>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>2</DeteriorationRate>
+			<Beauty>2</Beauty>
+			<SellPriceFactor>0.20</SellPriceFactor>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+			<li>
+				<compClass>CompEquippable</compClass>
+			</li>
+		</comps>
+		<graphicData>
+			<onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+		</graphicData>
+	</ThingDef>
+	
+  <ThingDef Name="BaseMageRing" Abstract="True" ParentName="BaseMageWeapon">
+	<techLevel>Ultra</techLevel>
+	<smeltable>true</smeltable>
+	<thingCategories>
+<!--       <li>WeaponsRanged</li> -->
+    </thingCategories>
+    <inspectorTabs>
+      <li>ITab_Art</li>
+    </inspectorTabs>
+    <comps>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Art">
+        <nameMaker>ArtName_WeaponGun</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef Name="BaseSeerProtectorRing" ParentName="BaseMageRing" Abstract="True">
+    <weaponTags>
+      <li>MageAttack</li>
+    </weaponTags>
+  </ThingDef>
+  
+  <!-- =======================Magic Weapons============================ -->
+
+  <!-- Seer ring - Fire -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Weapon.SeerRing_Fire</thingClass>
+	    <defName>Projectile_SeerRing_Fire</defName>
+        <label>elemental fire</label>
+        <graphicData>
+			<texPath>Spells/seer_ring_fire</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>18</damageAmountBase>
+            <speed>28</speed>
+			<explosionRadius>1.4</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+  
+  <ThingDef ParentName="BaseSeerProtectorRing">
+    <defName>Seer_FireRing</defName>
+    <label>Ring of Elemental Fire</label>
+    <description>An ancient artifact bound to the weilder allowing elemental currents to flow through the host. If the host is separated from the ring, the contract binding it to this realm is nullified, destroying the artifact.</description>
+    <graphicData>
+      <texPath>Items/weapons/seer_ring_fir</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>InteractRevolver</soundInteract>
+    <statBases>
+      <WorkToMake>15000</WorkToMake>
+      <Mass>1.0</Mass>
+      <AccuracyTouch>0.91</AccuracyTouch>
+      <AccuracyShort>0.71</AccuracyShort>
+      <AccuracyMedium>0.50</AccuracyMedium>
+      <AccuracyLong>0.32</AccuracyLong>
+      <RangedWeapon_Cooldown>1.38</RangedWeapon_Cooldown>
+      <Weapon_Bulk>0.1</Weapon_Bulk>
+    </statBases>
+	<destroyOnDrop>true</destroyOnDrop>
+	<tradeability>Never</tradeability>
+	<menuHidden>true</menuHidden>
+    <costList>
+      <Steel>30</Steel>
+      <Component>2</Component>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_SeerRing_Fire</defaultProjectile>
+        <warmupTime>1.5</warmupTime>
+        <range>40</range>
+        <soundCast>DropPodLeaving</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>elemental fist</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>18</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  
+  <!-- Seer ring - Ice -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Weapon.SeerRing_Ice</thingClass>
+	    <defName>Projectile_SeerRing_Ice</defName>
+        <label>elemental ice</label>
+        <graphicData>
+			<texPath>Spells/Icebolt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<soundExplode>DeadfallSpring</soundExplode>
+            <damageDef>Iceshard</damageDef>
+			<damageAmountBase>15</damageAmountBase>
+			<speed>50</speed>
+        </projectile>
+    </ThingDef>
+  
+  <ThingDef ParentName="BaseSeerProtectorRing">
+    <defName>Seer_IceRing</defName>
+    <label>Ring of Elemental Ice</label>
+    <description>An ancient artifact bound to the weilder allowing elemental currents to flow through the host. If the host is separated from the ring, the contract binding it to this realm is nullified, destroying the artifact.</description>
+    <graphicData>
+      <texPath>Items/weapons/seer_ring_ice</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>InteractRevolver</soundInteract>
+    <statBases>
+      <WorkToMake>15000</WorkToMake>
+      <Mass>1.0</Mass>
+      <AccuracyTouch>0.91</AccuracyTouch>
+      <AccuracyShort>0.85</AccuracyShort>
+      <AccuracyMedium>0.81</AccuracyMedium>
+      <AccuracyLong>0.76</AccuracyLong>
+      <RangedWeapon_Cooldown>0.68</RangedWeapon_Cooldown>
+      <Weapon_Bulk>0.1</Weapon_Bulk>
+    </statBases>
+	<destroyOnDrop>true</destroyOnDrop>
+	<tradeability>Never</tradeability>
+	<menuHidden>true</menuHidden>
+    <costList>
+      <Steel>30</Steel>
+      <Component>2</Component>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_SeerRing_Ice</defaultProjectile>
+        <warmupTime>1.2</warmupTime>
+        <range>36</range>
+        <soundCast>ShotChargeRifle</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>elemental fist</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>18</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  
+  <!-- Seer ring - Lightning -->	
+  <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_AbilityLaser">
+		<thingClass>TorannMagic.Weapon.SeerRing_Lightning</thingClass> 
+        <defName>Laser_SeerRing_Lightning</defName>
+        <label>elemental lightning</label>
+        <graphicData>
+			<texPath>Spells/LightningBolt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_Lightning</damageDef>
+            <damageAmountBase>16</damageAmountBase>
+            <speed>200</speed>
+        </projectile>
+		<preFiringInitialIntensity>20</preFiringInitialIntensity>
+        <preFiringFinalIntensity>80</preFiringFinalIntensity>
+        <postFiringInitialIntensity>20</postFiringInitialIntensity>
+        <postFiringFinalIntensity>0</postFiringFinalIntensity>
+        <preFiringDuration>20</preFiringDuration>
+        <postFiringDuration>40</postFiringDuration>
+        <StartFireChance>0</StartFireChance>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseSeerProtectorRing">
+    <defName>Seer_LightningRing</defName>
+    <label>Ring of Elemental Lightning</label>
+    <description>An ancient artifact bound to the weilder allowing elemental currents to flow through the host. If the host is separated from the ring, the contract binding it to this realm is nullified, destroying the artifact.</description>
+    <graphicData>
+      <texPath>Items/weapons/seer_ring_lit</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>InteractRevolver</soundInteract>
+    <statBases>
+      <WorkToMake>15000</WorkToMake>
+      <Mass>1.0</Mass>
+      <AccuracyTouch>0.64</AccuracyTouch>
+      <AccuracyShort>0.72</AccuracyShort>
+      <AccuracyMedium>0.89</AccuracyMedium>
+      <AccuracyLong>0.81</AccuracyLong>
+      <RangedWeapon_Cooldown>1.11</RangedWeapon_Cooldown>
+      <Weapon_Bulk>0.1</Weapon_Bulk>
+    </statBases>
+	<destroyOnDrop>true</destroyOnDrop>
+	<tradeability>Never</tradeability>
+	<menuHidden>true</menuHidden>
+    <costList>
+      <Steel>30</Steel>
+      <Component>2</Component>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Laser_SeerRing_Lightning</defaultProjectile>
+        <warmupTime>1</warmupTime>
+        <range>32</range>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>elemental fist</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>18</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+	
+</Defs>

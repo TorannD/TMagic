@@ -1,0 +1,1414 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Document made by ChJees
+-->
+<Defs>
+
+	<!-- Abilities -->
+	<!-- Ability Base -->
+	<AbilityUserAI.AbilityAIDef Name="BaseMagicAbilityAI" Abstract="True">
+		<maxRange>60.0</maxRange>
+		<tags>
+			<li>TMagic</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<!-- fire mage -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="FireMagicAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMagic</compAbilityUserClass>
+		<!-- Decision tree which helps pick ability to use. -->
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_HasEnemyTarget">
+							<subNodes>
+								<li Class="TorannMagic.AbilityDecisionConditionalNode_EnemyTargetIsBuilding">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>100.0</maxDistance>
+											<subNodes>
+												<!-- Use long range AoE offensive abilities. -->
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Building</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+									</subNodes>
+								</li>
+								<!-- Using ranged weapon -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingRangedWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>40.0</maxDistance>
+											<subNodes>
+												<!-- Use direct single abilities. -->
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Offensive</li>
+														<li>Single</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>100.0</maxDistance>
+											<minDistance>6.0</minDistance>
+											<subNodes>
+												<!-- Use long range AoE offensive abilities. -->
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Offensive</li>
+														<li>Mass</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+									</subNodes>
+								</li>
+								<!-- Using melee weapon, agressive ability use. -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingMeleeWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>38.0</maxDistance>
+											<minDistance>6.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Offensive</li>
+														<li>MeleeOnly</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>40.0</maxDistance>
+											<subNodes>
+												<!-- Use direct damage single target abilities. -->
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Offensive</li>
+														<li>Single</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>										
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>100.0</maxDistance>
+											<minDistance>6.0</minDistance>
+											<subNodes>
+												<!-- Use long range AoE offensive abilities. -->
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Offensive</li>
+														<li>Mass</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+									</subNodes>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<invert>true</invert>
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>1</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>Buff</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- Fire Mage -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="FireMagicAbilityUserAI">
+		<defName>TMagic_Fire</defName>
+		<matchingTraits>
+			<li>InnerFire</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_Firebolt</li>
+			<li>TMagic_Fireball</li>
+			<li>TMagic_Fireclaw</li>
+			<li>TMagic_RayOfHope</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Fire Mage Abilities -->
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Firebolt</defName>
+		<ability>TM_Firebolt</ability>		
+		<power>1.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Offensive</li>
+			<li>Single</li>
+			<li>Building</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Fireball</defName>
+		<ability>TM_Fireball</ability>
+		<abilityRadius>4</abilityRadius>
+		<power>25.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Offensive</li>
+			<li>Mass</li>
+			<li>Building</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Fireclaw</defName>
+		<ability>TM_Fireclaw</ability>
+		<abilityRadius>1</abilityRadius>
+		<minRange>6.0</minRange>
+		<power>1.5</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Offensive</li>
+			<li>MeleeOnly</li>
+			<li>Single</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_RayOfHope</defName>
+		<ability>TM_RayofHope</ability>
+		<power>1.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<tags>
+			<li>Buff</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<!-- ice mage -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="IceMagicAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMagic</compAbilityUserClass>
+		<!-- Decision tree which helps pick ability to use. -->
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_HasEnemyTarget">
+							<subNodes>
+								<li Class="TorannMagic.AbilityDecisionConditionalNode_EnemyTargetIsBuilding">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>46.0</maxDistance>
+											<subNodes>
+												<!-- Use long range AoE offensive abilities on buildings. -->
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Building</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+									</subNodes>
+								</li>
+								<!-- Using ranged weapon -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingRangedWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>35.0</maxDistance>
+											<subNodes>
+												<!-- Use direct single abilities. -->
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Offensive</li>
+														<li>Single</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>46.0</maxDistance>
+											<minDistance>5.0</minDistance>
+											<subNodes>
+												<!-- Use long range AoE offensive abilities. -->
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Offensive</li>
+														<li>Mass</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+									</subNodes>
+								</li>
+								<!-- Using melee weapon, agressive ability use. -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingMeleeWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>40.0</maxDistance>
+											<subNodes>
+												<!-- Use direct single abilities. -->
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Offensive</li>
+														<li>Single</li>
+													</tags>
+													<blacklistedTags>
+														<li>Mass</li>
+													</blacklistedTags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>48.0</maxDistance>
+											<minDistance>5.0</minDistance>
+											<subNodes>
+												<!-- Use long range AoE offensive abilities. -->
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Mass</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+									</subNodes>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<invert>true</invert>
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>1</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>Buff</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- Ice Mage -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="IceMagicAbilityUserAI">
+		<defName>TMagic_Ice</defName>
+		<matchingTraits>
+			<li>HeartOfFrost</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_Icebolt</li>
+			<li>TMagic_FrostRay</li>
+			<li>TMagic_Snowball</li>
+			<li>TMagic_Soothe</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Ice Mage Abilities -->
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Icebolt</defName>
+		<ability>TM_Icebolt</ability>		
+		<power>1.0</power>
+		<maxRange>36.0</maxRange>
+		<minRange>5.0</minRange>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Offensive</li>
+			<li>Single</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_FrostRay</defName>
+		<ability>TM_FrostRay</ability>
+		<power>1.0</power>
+		<maxRange>24.0</maxRange>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Offensive</li>
+			<li>Single</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Snowball</defName>
+		<ability>TM_Snowball</ability>
+		<abilityRadius>2</abilityRadius>
+		<minRange>4.0</minRange>
+		<power>2</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<workerClass>AbilityUserAI.AbilityWorker_AreaOfEffect</workerClass>
+		<tags>
+			<li>Offensive</li>
+			<li>Mass</li>
+			<li>Building</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Soothe</defName>
+		<ability>TM_Soothe</ability>
+		<power>1.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<tags>
+			<li>Buff</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<!-- lightning mage -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="LightningMagicAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMagic</compAbilityUserClass>
+		<!-- Decision tree which helps pick ability to use. -->
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_HasEnemyTarget">
+							<subNodes>
+								<li Class="TorannMagic.AbilityDecisionConditionalNode_EnemyTargetIsBuilding">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>150.0</maxDistance>
+											<subNodes>
+												<!-- Use long range AoE offensive abilities. -->
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Building</li>
+													</tags>
+													<blacklistedTags>
+														<li>Single</li>
+													</blacklistedTags>
+												</li>
+											</subNodes>
+										</li>
+									</subNodes>
+								</li>
+								<!-- Using ranged weapon -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingRangedWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>78.0</maxDistance>
+											<minDistance>10.0</minDistance>
+											<subNodes>
+												<!-- Use long range AoE offensive abilities. -->
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Offensive</li>
+														<li>Mass</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>36.0</maxDistance>
+											<subNodes>
+												<!-- Use direct single abilities. -->
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Offensive</li>
+														<li>Single</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>										
+									</subNodes>
+								</li>
+								<!-- Using melee weapon, agressive ability use. -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingMeleeWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>36.0</maxDistance>
+											<subNodes>
+												<!-- Use direct damage single target abilities. -->
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Offensive</li>
+														<li>Single</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>										
+									</subNodes>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<invert>true</invert>
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>1</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>Buff</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- Lightning Mage -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="LightningMagicAbilityUserAI">
+		<defName>TMagic_Lightning</defName>
+		<matchingTraits>
+			<li>StormBorn</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_LightningBolt</li>
+			<li>TMagic_LightningCloud</li>
+			<li>TMagic_LightningStorm</li>
+			<li>TMagic_AMP</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Lightning Mage Abilities -->
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_LightningBolt</defName>
+		<ability>TM_LightningBolt</ability>		
+		<power>1.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Offensive</li>
+			<li>Single</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_LightningCloud</defName>
+		<ability>TM_LightningCloud</ability>
+		<abilityRadius>4</abilityRadius>
+		<minRange>6.0</minRange>
+		<power>2.0</power>
+		<workerClass>AbilityUserAI.AbilityWorker_AreaOfEffect</workerClass>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Offensive</li>
+			<li>Single</li>
+			<li>Mass</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_LightningStorm</defName>
+		<ability>TM_LightningStorm</ability>
+		<abilityRadius>4</abilityRadius>
+		<minRange>8.0</minRange>
+		<power>6.0</power>
+		<workerClass>AbilityUserAI.AbilityWorker_AreaOfEffect</workerClass>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Offensive</li>
+			<li>Mass</li>
+			<li>Building</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_AMP</defName>
+		<ability>TM_AMP</ability>
+		<power>1.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<tags>
+			<li>Buff</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<!-- arcane mage -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="ArcaneMagicAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMagic</compAbilityUserClass>
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_HasEnemyTarget">
+							<subNodes>
+								<!-- Using ranged weapon -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingRangedWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>50.0</maxDistance>
+											<minDistance>10.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Utility</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>40.0</maxDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Offensive</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+									</subNodes>
+								</li>
+								<!-- Using melee weapon -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingMeleeWeapon">
+									<subNodes>
+										<li Class="TorannMagic.AbilityDecisionConditionalNode_EnemyTargetIsBuilding">
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+													<maxDistance>40.0</maxDistance>
+													<subNodes>
+														<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+															<tags>
+																<li>Movement</li>
+															</tags>
+														</li>
+													</subNodes>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>30.0</maxDistance>
+											<minDistance>2.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Movement</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>										
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>20.0</maxDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Offensive</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>50.0</maxDistance>
+											<minDistance>20.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Utility</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>										
+									</subNodes>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+				<!-- Out of combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<invert>true</invert>
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>1</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>Buff</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+							<maxDistance>50.0</maxDistance>
+							<minDistance>10.0</minDistance>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>Utility</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- Arcane Mage -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="ArcaneMagicAbilityUserAI">
+		<defName>TMagic_Arcane</defName>
+		<matchingTraits>
+			<li>Arcanist</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_Blink</li>
+			<li>TMagic_Summon</li>
+			<li>TMagic_MagicMissile</li>
+			<li>TMagic_Shadow</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Arcane Mage Abilities -->
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Blink</defName>
+		<ability>TM_Blink</ability>		
+		<power>5.0</power>
+		<minRange>2.0</minRange>
+		<needSeeingTarget>false</needSeeingTarget>
+		<tags>
+			<li>Movement</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Summon</defName>
+		<ability>TM_Summon</ability>
+		<power>1.0</power>
+		<maxRange>56.0</maxRange>
+		<minRange>20.0</minRange>
+		<needSeeingTarget>false</needSeeingTarget>
+		<tags>
+			<li>Utility</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_MagicMissile</defName>
+		<ability>TM_MagicMissile</ability>
+		<power>2.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Offensive</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Shadow</defName>
+		<ability>TM_Shadow</ability>
+		<power>1.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<tags>
+			<li>Buff</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<!-- paladin  -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="PaladinMagicAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMagic</compAbilityUserClass>
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>0.9</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>Shield</li>										
+									</tags>
+								</li>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>HealSelf</li>										
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+							<tags>
+								<li>Heal</li>
+							</tags>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_HasEnemyTarget">
+							<subNodes>
+								<!-- Using ranged weapon -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingRangedWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>28.0</maxDistance>
+											<minDistance>4.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Assault</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>2.0</maxDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>PBAoE</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+									</subNodes>
+								</li>
+								<!-- Using melee weapon -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingMeleeWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>28.0</maxDistance>
+											<minDistance>4.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Assault</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>2.0</maxDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>PBAoE</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>									
+									</subNodes>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+				<!-- Out of combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<invert>true</invert>
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>0.8</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>HealSelf</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+							<tags>
+								<li>Heal</li>
+							</tags>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- Paladin -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="PaladinMagicAbilityUserAI">
+		<defName>TMagic_Paladin</defName>
+		<matchingTraits>
+			<li>Paladin</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_Heal_Self</li>
+			<li>TMagic_Heal</li>
+			<li>TMagic_Shield</li>
+			<li>TMagic_ValiantCharge</li>
+			<li>TMagic_Overwhelm</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Paladin Abilities -->
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Heal_Self</defName>
+		<ability>TM_Heal</ability>		
+		<power>0.5</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<tags>
+			<li>HealSelf</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Heal</defName>
+		<ability>TM_Heal</ability>		
+		<power>0.5</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<workerClass>AbilityUserAI.AbilityWorker_HealAlly</workerClass>
+		<canTargetAlly>true</canTargetAlly>
+		<needEnemyTarget>false</needEnemyTarget>
+		<maxRange>11.0</maxRange>
+		<tags>
+			<li>Heal</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Shield</defName>
+		<ability>TM_Shield</ability>
+		<power>6.0</power>
+		<needSeeingTarget>false</needSeeingTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<tags>
+			<li>Shield</li>
+		</tags>
+<!-- 		<appliedHediffs>
+			<li>TM_HediffShield</li>
+		</appliedHediffs> -->
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_ValiantCharge</defName>
+		<ability>TM_ValiantCharge</ability>
+		<power>10</power>
+		<maxRange>28.0</maxRange>
+		<minRange>4.0</minRange>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Assault</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Overwhelm</defName>
+		<ability>TM_Overwhelm</ability>
+		<power>10</power>
+		<maxRange>2.0</maxRange>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>PBAoE</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<!-- summoner  -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="SummonerMagicAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMagic</compAbilityUserClass>
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>						
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_HasEnemyTarget">
+							<subNodes>
+							<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+								<maxDistance>48.0</maxDistance>
+								<subNodes>
+									<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+										<tags>
+											<li>CreaturePlus</li>
+										</tags>
+									</li>
+								</subNodes>
+							</li>
+							<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+								<maxDistance>70.0</maxDistance>
+								<minDistance>10</minDistance>
+								<subNodes>
+									<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+										<tags>
+											<li>Explosive</li>
+										</tags>
+									</li>
+								</subNodes>
+							</li>
+							<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+								<maxDistance>48.0</maxDistance>
+								<subNodes>
+									<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+										<tags>
+											<li>Creature</li>
+										</tags>
+									</li>
+								</subNodes>
+							</li>
+							</subNodes>	
+						</li>
+					</subNodes>
+				</li>				
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- Summoner -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="SummonerMagicAbilityUserAI">
+		<defName>TMagic_Summoner</defName>
+		<matchingTraits>
+			<li>Summoner</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_SummonedExplosive</li>
+			<li>TMagic_SummonMinion</li>
+			<li>TMagic_SummonElemental</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Summoner Abilities -->
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_SummonedExplosive</defName>
+		<ability>TM_SummonExplosive</ability>		
+		<power>2</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Explosive</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_SummonMinion</defName>
+		<ability>TM_SummonMinion</ability>
+		<power>1.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Creature</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_SummonElemental</defName>
+		<ability>TM_SummonElemental</ability>
+		<power>5</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>CreaturePlus</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<!-- druid  -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="DruidMagicAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMagic</compAbilityUserClass>
+		<decisionTree>
+			<subNodes>				
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>0.9</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>RegenSelf</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+							<tags>
+								<li>Regen</li>
+							</tags>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_HasEnemyTarget">
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+									<maxDistance>36.0</maxDistance>
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+											<tags>
+												<li>Poison</li>
+											</tags>
+										</li>
+									</subNodes>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+				<!-- Out of combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<invert>true</invert>
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>0.9</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>RegenSelf</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+							<tags>
+								<li>Regen</li>
+							</tags>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- Druid -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="DruidMagicAbilityUserAI">
+		<defName>TMagic_Druid</defName>
+		<matchingTraits>
+			<li>Druid</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_Regen_Self</li>
+			<li>TMagic_Regen</li>
+			<li>TMagic_Poison</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Druid Abilities -->
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Regen_Self</defName>
+		<ability>TM_Regenerate</ability>		
+		<power>1</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<tags>
+			<li>RegenSelf</li>
+		</tags>
+		<appliedHediffs>
+			<li>TM_Regeneration</li>
+		</appliedHediffs>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Regen</defName>
+		<ability>TM_Regenerate</ability>		
+		<power>1</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<workerClass>AbilityUserAI.AbilityWorker_HealAlly</workerClass>
+		<canTargetAlly>true</canTargetAlly>
+		<needEnemyTarget>false</needEnemyTarget>
+		<maxRange>26.0</maxRange>
+		<tags>
+			<li>Regen</li>
+		</tags>
+		<appliedHediffs>
+			<li>TM_Regeneration</li>
+		</appliedHediffs>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Poison</defName>
+		<ability>TM_Poison</ability>
+		<power>1.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Poison</li>
+		</tags>
+<!-- 		<appliedHediffs>
+			<li>TM_Poison_HD</li>
+			<li>TM_Poisoned_HD</li>
+		</appliedHediffs> -->
+	</AbilityUserAI.AbilityAIDef>
+	
+	<!-- necro  -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="NecromancerMagicAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMagic</compAbilityUserClass>
+		<decisionTree>
+			<subNodes>				
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>						
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_HasEnemyTarget">
+							<subNodes>
+								<!-- <li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+									<maxDistance>38.0</maxDistance>
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+											<tags>
+												<li>Utility</li>
+												<li>Offensive</li>
+											</tags>
+										</li>
+									</subNodes>
+								</li> -->
+								<!-- Using ranged weapon -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingRangedWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>40.0</maxDistance>
+											<minDistance>4.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Mark</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>45.0</maxDistance>
+											<minDistance>10.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Fog</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+									</subNodes>
+								</li>
+								<!-- Using melee weapon -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingMeleeWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>40.0</maxDistance>
+											<minDistance>4.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Mark</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+									</subNodes>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- Necromancer -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="NecromancerMagicAbilityUserAI">
+		<defName>TMagic_Necromancer</defName>
+		<matchingTraits>
+			<li>Necromancer</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_DeathMark</li>
+			<li>TMagic_FogOfTorment</li>
+<!-- 			<li>TMagic_CorpseExplosion</li>
+			<li>TMagic_RaiseUndead</li> -->
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Necromancer Abilities -->
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_DeathMark</defName>
+		<ability>TM_DeathMark</ability>		
+		<power>1</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<abilityRadius>2</abilityRadius>
+		<minRange>4.0</minRange>
+		<tags>
+			<li>Mark</li>
+		</tags>
+<!-- 		<appliedHediffs>
+			<li>TM_DeathMarkHD</li>
+			<li>TM_UndeadAnimalHD</li>
+			<li>TM_UndeadHD</li>
+		</appliedHediffs> -->
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_FogOfTorment</defName>
+		<ability>TM_FogOfTorment</ability>		
+		<power>1</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<abilityRadius>6</abilityRadius>
+		<workerClass>AbilityUserAI.AbilityWorker_AreaOfEffect</workerClass>
+		<minRange>8</minRange>
+		<tags>
+			<li>Fog</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+<!-- 	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_CorpseExplosion</defName>
+		<ability>TM_CorpseExplosion</ability>		
+		<power>1</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<canTargetAlly>true</canTargetAlly>
+		<needEnemyTarget>false</needEnemyTarget>
+		<workerClass>TorannMagic.AbilityWorker_TargetCorpse</workerClass>
+		<minRange>4.0</minRange>
+		<tags>
+			<li>Offensive</li>
+			<li>Utility</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_RaiseUndead</defName>
+		<ability>TM_RaiseUndead</ability>		
+		<power>1</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<canTargetAlly>true</canTargetAlly>
+		<needEnemyTarget>false</needEnemyTarget>
+		<workerClass>TorannMagic.AbilityWorker_TargetCorpse</workerClass>
+		<tags>
+			<li>Utility</li>
+			<li>Offensive</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef> -->
+	
+	
+	<!-- priest  -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="PriestMagicAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMagic</compAbilityUserClass>
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>0.9</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>HealSelf</li>										
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+							<tags>
+								<li>AoEHeal</li>
+							</tags>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+							<tags>
+								<li>Heal</li>
+							</tags>
+						</li>						
+					</subNodes>
+				</li>
+				<!-- Out of combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<invert>true</invert>
+					<subNodes>						
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>0.8</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>HealSelf</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+							<tags>
+								<li>AoEHeal</li>
+							</tags>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+							<tags>
+								<li>Heal</li>
+							</tags>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>1</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>Buff</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- Priest -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="PriestMagicAbilityUserAI">
+		<defName>TMagic_Priest</defName>
+		<matchingTraits>
+			<li>Priest</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_AdvHeal_Self</li>
+			<li>TMagic_AdvHeal</li>
+			<li>TMagic_AoEHeal</li>
+			<li>TMagic_BestowMight</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Priest Abilities -->
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_AdvHeal_Self</defName>
+		<ability>TM_AdvancedHeal</ability>		
+		<power>0.5</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<tags>
+			<li>HealSelf</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_AdvHeal</defName>
+		<ability>TM_Heal</ability>		
+		<power>0.5</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<workerClass>AbilityUserAI.AbilityWorker_HealAlly</workerClass>
+		<canTargetAlly>true</canTargetAlly>
+		<needEnemyTarget>false</needEnemyTarget>
+		<maxRange>25.0</maxRange>
+		<tags>
+			<li>Heal</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_AoEHeal</defName>
+		<ability>TM_HealingCircle</ability>
+		<power>6.0</power>
+		<workerClass>AbilityUserAI.AbilityWorker_HealAlly</workerClass>
+		<needSeeingTarget>true</needSeeingTarget>
+		<needEnemyTarget>false</needEnemyTarget>
+		<maxRange>38.0</maxRange>
+		<tags>
+			<li>AoEHeal</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_BestowMight</defName>
+		<ability>TM_BestowMight</ability>
+		<power>1.0</power>
+		<workerClass>AbilityUserAI.AbilityWorker_HealAlly</workerClass>
+		<needSeeingTarget>true</needSeeingTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<tags>
+			<li>Buff</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	
+</Defs>

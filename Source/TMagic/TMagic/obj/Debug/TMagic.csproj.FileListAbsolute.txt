@@ -1,0 +1,5 @@
+E:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\TMagic\Source\TMagic\TMagic\bin\Debug\TMagic.dll
+E:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\TMagic\Source\TMagic\TMagic\bin\Debug\TMagic.pdb
+E:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\TMagic\Source\TMagic\TMagic\obj\Debug\TMagic.csprojResolveAssemblyReference.cache
+E:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\TMagic\Source\TMagic\TMagic\obj\Debug\TMagic.dll
+E:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\TMagic\Assemblies\TMagic.dll

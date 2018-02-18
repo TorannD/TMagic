@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--============= Misc jobs ===============-->
+
+  <JobDef>
+    <defName>PlacePoisonTrap</defName>
+    <driverClass>TorannMagic.JobDriver_PlacePoisonTrap</driverClass>
+    <reportString>placing poison trap.</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  
+  
+</Defs>

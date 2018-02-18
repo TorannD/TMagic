@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+  <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+   <defName>Projectile_Ranger</defName>
+   <thingClass>AbilityUser.Projectile_Ability</thingClass>
+   <label>default ranger projectile</label>
+   <graphicData>
+		<texPath>Spells/invis</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+   </graphicData>
+   <projectile>
+		<flyOverhead>true</flyOverhead>
+		<damageDef>TM_Heal_I</damageDef>
+		<damageAmountBase>0</damageAmountBase>
+		<speed>100</speed>
+   </projectile>
+ </ThingDef>
+ 
+ <!-- Ranger training -->
+
+ 
+ <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_RangerTraining</defName>
+    <label>Ranger Training</label>
+    <uiIconPath>UI/rangertraining</uiIconPath>
+    <description>Use of this ability updates the ranger trait.  This ability only needs to be used after increasing ranger training.</description>
+    <staminaCost>0.01</staminaCost>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_RangerTraining</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_RangerTraining</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_Ranger</defaultProjectile>
+        <warmupTime>0.1</warmupTime>
+        <SecondsToRecharge>60.0</SecondsToRecharge>
+        <range>0</range>
+        <soundCast>MessagePositiveEvent</soundCast>
+        <muzzleFlashScale>10</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+   	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>true</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+   
+     <!-- Bow Training -->
+  
+ 
+ <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_BowTraining</defName>
+    <label>Bow Training</label>
+    <uiIconPath>UI/bowtraining</uiIconPath>
+    <description>Use of this ability updates the ranger passive buff.  This ability only needs to be used after increasing bow mastery.</description>
+    <staminaCost>0.01</staminaCost>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_BowTraining</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_BowTraining</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_Ranger</defaultProjectile>
+        <warmupTime>0.1</warmupTime>
+        <SecondsToRecharge>60</SecondsToRecharge>
+        <range>0</range>
+        <soundCast>MessagePositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+   	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>true</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+
+  
+  <!-- Poison Trap -->
+
+	<TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_PoisonTrap</defName>
+        <label>Poison Trap</label>
+        <uiIconPath>UI/trap</uiIconPath>
+        <description>The ranger uses a dose of druidic poison to arm a wooden trap.  Traps last indefinitely, but a ranger is only able to deploy a limited number at a time.</description>
+        <staminaCost>0.20</staminaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_PoisonTrap</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Ranger</defaultProjectile>
+            <abilityDef>TM_PoisonTrap</abilityDef>
+            <AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>false</canTargetItems>
+				<canTargetPawns>false</canTargetPawns>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>0.0</warmupTime>
+            <SecondsToRecharge>3.0</SecondsToRecharge>
+            <range>50</range>
+			<isViolent>true</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>MeleeHit_Metal_Sharp</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Animal Friend -->
+
+	<TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_AnimalFriend</defName>
+        <label>Animal Friend</label>
+        <uiIconPath>UI/animalfriend</uiIconPath>
+        <description>At home in the wild, the ranger is able to form a bond with creatures of the wild. Rangers are only able to form a single bond; making a new bond breaks an existing bond and will likely cause the animal with a broken bond to leave forever. The bond must be renewed for an improved bond to take affect.  The increase in physical capability applies to the animal kin only, in return, the bonded animal will assist the ranger in whatever capacity the animal is capable.</description>
+        <staminaCost>0.90</staminaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_AnimalFriend</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Ranger</defaultProjectile>
+            <abilityDef>TM_AnimalFriend</abilityDef>
+            <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>false</canTargetItems>
+				<canTargetPawns>true</canTargetPawns>
+				<canTargetLocations>false</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>4</warmupTime>
+            <SecondsToRecharge>60.0</SecondsToRecharge>
+            <range>10</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>MeleeHit_Metal_Sharp</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Arrow storm -->
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+        <thingClass>TorannMagic.Projectile_ArrowStorm</thingClass>
+		<defName>Projectile_ArrowStorm</defName>
+        <label>arrow storm</label>
+        <graphicData>
+			<texPath>Things/Projectile/Arrow_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>false</flyOverhead>
+            <damageDef>Arrow</damageDef>
+            <damageAmountBase>12</damageAmountBase>
+            <speed>40</speed>
+        </projectile>
+    </ThingDef>
+
+	<TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_ArrowStorm</defName>
+        <label>Arrow Storm</label>
+        <uiIconPath>UI/arrowstorm</uiIconPath>
+        <description>Fire a rapid volley of arrows at a target.</description>
+        <staminaCost>0.35</staminaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_RangerShot</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_ArrowStorm</defaultProjectile>
+            <abilityDef>TM_ArrowStorm</abilityDef>
+			<AbilityTargetCategory>TargetThing</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>false</canTargetItems>
+				<canTargetPawns>true</canTargetPawns>
+				<canTargetLocations>false</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>15.0</SecondsToRecharge>
+            <range>32</range>
+			<isViolent>true</isViolent>
+            <burstShotCount>5</burstShotCount>
+            <ticksBetweenBurstShots>15</ticksBetweenBurstShots>
+            <soundCast>BowLarge</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>true</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_ArrowStorm_I</defName>
+        <label>Arrow Storm (I)</label>
+        <uiIconPath>UI/arrowstorm</uiIconPath>
+        <description>Fire a rapid volley of arrows at a target.</description>
+        <staminaCost>0.35</staminaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_RangerShot</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_ArrowStorm</defaultProjectile>
+            <abilityDef>TM_ArrowStorm_I</abilityDef>
+			<AbilityTargetCategory>TargetThing</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>false</canTargetItems>
+				<canTargetPawns>true</canTargetPawns>
+				<canTargetLocations>false</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>15.0</SecondsToRecharge>
+            <range>34</range>
+			<isViolent>true</isViolent>
+            <burstShotCount>6</burstShotCount>
+            <ticksBetweenBurstShots>14</ticksBetweenBurstShots>
+            <soundCast>BowLarge</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>true</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_ArrowStorm_II</defName>
+        <label>Arrow Storm (II)</label>
+        <uiIconPath>UI/arrowstorm</uiIconPath>
+        <description>Fire a rapid volley of arrows at a target.</description>
+        <staminaCost>0.35</staminaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_RangerShot</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_ArrowStorm</defaultProjectile>
+            <abilityDef>TM_ArrowStorm_II</abilityDef>
+			<AbilityTargetCategory>TargetThing</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>false</canTargetItems>
+				<canTargetPawns>true</canTargetPawns>
+				<canTargetLocations>false</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>15.0</SecondsToRecharge>
+            <range>36</range>
+			<isViolent>true</isViolent>
+            <burstShotCount>7</burstShotCount>
+            <ticksBetweenBurstShots>13</ticksBetweenBurstShots>
+            <soundCast>BowLarge</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>true</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_ArrowStorm_III</defName>
+        <label>Arrow Storm (III)</label>
+        <uiIconPath>UI/arrowstorm</uiIconPath>
+        <description>Fire a rapid volley of arrows at a target.</description>
+        <staminaCost>0.35</staminaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_RangerShot</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_ArrowStorm</defaultProjectile>
+            <abilityDef>TM_ArrowStorm_III</abilityDef>
+			<AbilityTargetCategory>TargetThing</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>false</canTargetItems>
+				<canTargetPawns>true</canTargetPawns>
+				<canTargetLocations>false</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>15.0</SecondsToRecharge>
+            <range>38</range>
+			<isViolent>true</isViolent>
+            <burstShotCount>8</burstShotCount>
+            <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
+            <soundCast>BowLarge</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>true</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+
+</Defs>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_ManaPuff</defName>
+    <graphicData>
+      <texPath>Motes/ManaMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.35</fadeInTime>
+      <solidTime>0.03</solidTime>
+      <fadeOutTime>1</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_Siphon</defName>
+    <graphicData>
+      <texPath>Motes/SiphonMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.15</fadeInTime>
+      <solidTime>0.05</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_Poison</defName>
+    <graphicData>
+      <texPath>Motes/PoisonMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.25</fadeInTime>
+      <solidTime>0.05</solidTime>
+      <fadeOutTime>0.35</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+    <ThingDef ParentName="MoteBase">
+    <defName>Mote_Regen</defName>
+    <graphicData>
+      <texPath>Motes/RegenMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.25</fadeInTime>
+      <solidTime>0.15</solidTime>
+      <fadeOutTime>0.15</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_BloodSquirt</defName>
+    <graphicData>
+      <texPath>Motes/BloodSquirt</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.01</fadeInTime>
+      <solidTime>0.15</solidTime>
+      <fadeOutTime>0.55</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_CrossStrike</defName>
+    <graphicData>
+      <texPath>Motes/CrossStrike</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.45</solidTime>
+      <fadeOutTime>0.05</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_MultiStrike</defName>
+    <graphicData>
+      <texPath>Motes/MultiStrike</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.45</solidTime>
+      <fadeOutTime>0.05</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_ScreamMote</defName>
+    <graphicData>
+      <texPath>Motes/ScreamMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.4</fadeInTime>
+      <solidTime>0.1</solidTime>
+      <fadeOutTime>0.4</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="BaseGas">
+    <defName>Fog_Torment</defName>
+    <label>fog of torment</label>
+    <graphicData>
+      <texPath>Things/Gas/Puff</texPath>
+      <drawSize>2.6</drawSize>
+      <color>(0.4,0.5,0,0.25)</color>
+    </graphicData>
+    <gas>
+      <expireSeconds>
+        <min>29</min>
+        <max>31</max>
+      </expireSeconds>
+      <blockTurretTracking>true</blockTurretTracking>
+      <accuracyPenalty>0.8</accuracyPenalty>
+      <rotationSpeed>50</rotationSpeed>
+    </gas>
+  </ThingDef>
+  
+    <ThingDef ParentName="BaseGas">
+    <defName>Fog_Poison</defName>
+    <label>ranger poison trap</label>
+    <graphicData>
+      <texPath>Things/Gas/Puff</texPath>
+      <drawSize>2.6</drawSize>
+      <color>(0.5,0.8,0,0.20)</color>
+    </graphicData>
+    <gas>
+      <expireSeconds>
+        <min>5</min>
+        <max>5</max>
+      </expireSeconds>
+      <blockTurretTracking>false</blockTurretTracking>
+      <accuracyPenalty>0.8</accuracyPenalty>
+      <rotationSpeed>75</rotationSpeed>
+    </gas>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_Bombardment</defName>
+    <graphicData>
+      <texPath>Things/Mote/Bombardment</texPath>
+      <shaderType>MoteGlow</shaderType>	  
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.5</fadeInTime>
+      <solidTime>6.8</solidTime>
+      <fadeOutTime>1.0</fadeOutTime>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_PowerBeamBlue</defName>
+    <graphicData>
+      <texPath>Things/Mote/PowerBeam</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <color>(0.6,0.8,1.0,0.8)</color>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.5</fadeInTime>
+      <solidTime>9.3</solidTime>
+      <fadeOutTime>2.0</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+    <ThingDef ParentName="MoteBase">
+    <defName>Mote_PowerBeamGold</defName>
+    <graphicData>
+      <texPath>Things/Mote/PowerBeam</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <color>(1,1,0.55,1)</color>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.5</fadeInTime>
+      <solidTime>9.3</solidTime>
+      <fadeOutTime>2.0</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  
+</Defs>

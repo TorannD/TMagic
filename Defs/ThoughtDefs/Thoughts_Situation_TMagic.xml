@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- affecting opinion -->
+  
+  <ThoughtDef>
+    <defName>TM_Undead</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>TorannMagic.Thoughts.ThoughtWorker_TM_Undead</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>undead</label>
+        <baseOpinionOffset>-40</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+    <ThoughtDef>
+    <defName>TM_Necromancer</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>TorannMagic.Thoughts.ThoughtWorker_TM_Necromancer</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>necromancer</label>
+        <baseOpinionOffset>-15</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef>
+    <defName>TM_HolierThanThou</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>TorannMagic.Thoughts.ThoughtWorker_TM_HolierThanThou</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>Self-righteous mage</label>
+        <baseOpinionOffset>-15</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <!-- affecting mood -->
+  
+  <ThoughtDef>
+		<defName>Thought_ObservedUndead</defName>
+		<workerClass>TorannMagic.Thoughts.ThoughtWorker_TM_ObservedUndead</workerClass>
+		<nullifyingTraits>
+			<li>Psychopath</li>
+			<li>Bloodlust</li>
+			<li>Necromancer</li>
+			<li>Undead</li>
+		</nullifyingTraits>
+		<stages>
+			<li>
+				<label>observed undead</label>
+				<description>I hate being next to the undead. I can't help but think... will that happen to me when I die?</description>
+				<baseMoodEffect>-8</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+  
+</Defs>

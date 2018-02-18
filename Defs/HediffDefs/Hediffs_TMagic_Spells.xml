@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <HediffDef ParentName="InjuryBase">
+    <defName>TM_Holy</defName>
+    <label>Divine Wrath</label>
+    <displayWound>false</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_GetsOld">
+        <oldLabel>destroyed by divine power</oldLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.0125</painPerSeverity>
+		<averagePainPerSeverityOld>0.00625</averagePainPerSeverityOld>
+		<bleedRate>0.00625</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>burned off</destroyedLabel>
+			<destroyedOutLabel>burned out</destroyedOutLabel>
+	</injuryProps>
+  </HediffDef>
+
+  <HediffDef ParentName="InjuryBase">
+    <defName>TM_MagicMissile</defName>
+    <label>Magic Missile</label>
+    <displayWound>false</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_GetsOld">
+        <oldLabel>touched by the arcane</oldLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.0125</painPerSeverity>
+		<averagePainPerSeverityOld>0.00625</averagePainPerSeverityOld>
+		<bleedRate>0.00625</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>sliced off</destroyedLabel>
+			<destroyedOutLabel>cut out</destroyedOutLabel>
+	</injuryProps>
+  </HediffDef>
+  
+  <HediffDef ParentName="InjuryBase">
+    <defName>TM_ManaMine</defName>
+    <label>mana explosion</label>
+    <displayWound>false</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_GetsOld">
+        <oldLabel>destroyed by mana</oldLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.0125</painPerSeverity>
+		<averagePainPerSeverityOld>0.00625</averagePainPerSeverityOld>
+		<bleedRate>0.00625</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>blasted off</destroyedLabel>
+			<destroyedOutLabel>burned out</destroyedOutLabel>
+	</injuryProps>
+  </HediffDef>
+  
+  <HediffDef ParentName="InjuryBase">
+    <defName>TM_Firebolt</defName>
+    <label>Firebolt</label>
+    <displayWound>false</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_GetsOld">
+        <oldLabel>burn scar</oldLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.0325</painPerSeverity>
+		<averagePainPerSeverityOld>0.00625</averagePainPerSeverityOld>
+		<bleedRate>0</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>burned</destroyedLabel>
+			<destroyedOutLabel>burned out</destroyedOutLabel>
+	</injuryProps>
+  </HediffDef>
+  
+  <HediffDef ParentName="InjuryBase">
+    <defName>TM_LightningCloud</defName>
+    <label>Lightning</label>
+    <displayWound>false</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_GetsOld">
+        <oldLabel>electrocuted</oldLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.0125</painPerSeverity>
+		<averagePainPerSeverityOld>0.00625</averagePainPerSeverityOld>
+		<bleedRate>0.000</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>melted</destroyedLabel>
+			<destroyedOutLabel>burned out</destroyedOutLabel>
+	</injuryProps>
+  </HediffDef>
+  
+  <HediffDef ParentName="InjuryBase">
+    <defName>TM_Lightning</defName>
+    <label>Lightning</label>
+    <displayWound>false</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_GetsOld">
+        <oldLabel>struck by lightning</oldLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.0175</painPerSeverity>
+		<averagePainPerSeverityOld>0.01</averagePainPerSeverityOld>
+		<bleedRate>0.000</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>melted</destroyedLabel>
+			<destroyedOutLabel>burned out</destroyedOutLabel>
+	</injuryProps>
+  </HediffDef>
+
+  <HediffDef ParentName="InjuryBase">
+    <defName>FrostRay</defName>
+    <label>frostray</label>
+    <displayWound>false</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_GetsOld">
+        <oldLabel>frostbite scar</oldLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.0125</painPerSeverity>
+		<averagePainPerSeverityOld>0.00625</averagePainPerSeverityOld>
+		<bleedRate>0.005</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>frozen off</destroyedLabel>
+			<destroyedOutLabel>Shattered</destroyedOutLabel>
+	</injuryProps>
+	<stages>
+		<li>
+			<partEfficiencyOffset>-0.20</partEfficiencyOffset>
+		<capMods>
+			<li>
+				<capacity>Moving</capacity>
+				<offset>-0.15</offset>
+			</li>
+			<li>
+				<capacity>Manipulation</capacity>
+				<offset>-0.05</offset>
+			</li>
+		</capMods>
+		</li>
+	</stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="InjuryBase">
+    <defName>Snowball</defName>
+    <label>snowball</label>
+    <displayWound>false</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_GetsOld">
+        <oldLabel>frostbite scar</oldLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.00625</painPerSeverity>
+		<averagePainPerSeverityOld>0.00375</averagePainPerSeverityOld>
+		<bleedRate>0.005</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>frozen off</destroyedLabel>
+			<destroyedOutLabel>Shattered</destroyedOutLabel>
+	</injuryProps>
+	<stages>
+		<li>
+			<partEfficiencyOffset>-0.10</partEfficiencyOffset>
+		<capMods>
+			<li>
+				<capacity>Moving</capacity>
+				<offset>-0.25</offset>
+			</li>
+			<li>
+				<capacity>Manipulation</capacity>
+				<offset>-0.05</offset>
+			</li>
+		</capMods>
+		</li>
+	</stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="InjuryBase">
+    <defName>Blizzard</defName>
+    <label>blizzard</label>
+    <displayWound>false</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_GetsOld">
+        <oldLabel>destroyed in blizzard</oldLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.00625</painPerSeverity>
+		<averagePainPerSeverityOld>0.00375</averagePainPerSeverityOld>
+		<bleedRate>0.002</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>frozen</destroyedLabel>
+			<destroyedOutLabel>shattered</destroyedOutLabel>
+	</injuryProps>
+	<stages>
+		<li>
+			<partEfficiencyOffset>-0.10</partEfficiencyOffset>
+		<capMods>
+			<li>
+				<capacity>Moving</capacity>
+				<offset>-0.15</offset>
+			</li>
+			<li>
+				<capacity>Manipulation</capacity>
+				<offset>-0.05</offset>
+			</li>
+		</capMods>
+		</li>
+	</stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="InjuryBase">
+    <defName>Iceshard</defName>
+    <label>iceshard</label>
+    <displayWound>true</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_GetsOld">
+        <oldLabel>iceshard scar</oldLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.02</painPerSeverity>
+		<averagePainPerSeverityOld>0.01</averagePainPerSeverityOld>
+		<bleedRate>0.19</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>Shredded</destroyedLabel>
+			<destroyedOutLabel>Torn to shreds</destroyedOutLabel>
+	</injuryProps>
+	<stages>
+		<li>
+		<capMods>
+			<li>
+				<capacity>Moving</capacity>
+				<offset>-0.02</offset>
+			</li>
+			<li>
+				<capacity>Manipulation</capacity>
+				<offset>-0.05</offset>
+			</li>
+		</capMods>
+		</li>
+	</stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="InjuryBase">
+    <defName>TM_GrapplingHook</defName>
+    <label>Grappling Hook</label>
+    <displayWound>true</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>
+          <min>120</min>
+          <max>300</max>
+        </disappearsAfterTicks>
+      </li>
+      <li Class="HediffCompProperties_GetsOld">
+        <oldLabel>torn off</oldLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.0125</painPerSeverity>
+		<averagePainPerSeverityOld>0.00625</averagePainPerSeverityOld>
+		<bleedRate>0.00625</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>torn off</destroyedLabel>
+			<destroyedOutLabel>torn out</destroyedOutLabel>
+	</injuryProps>
+	<stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.0</postFactor>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <postFactor>0.0</postFactor>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="InjuryBase">
+    <defName>TM_Whirlwind_Knockdown</defName>
+    <label>Whirlwind Knockdown</label>
+    <displayWound>true</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>
+          <min>60</min>
+          <max>180</max>
+        </disappearsAfterTicks>
+      </li>
+      <li Class="HediffCompProperties_GetsOld">
+        <oldLabel>sliced off</oldLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.0125</painPerSeverity>
+		<averagePainPerSeverityOld>0.00625</averagePainPerSeverityOld>
+		<bleedRate>0.00625</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>sliced off</destroyedLabel>
+			<destroyedOutLabel>cut out</destroyedOutLabel>
+	</injuryProps>
+	<stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.0</postFactor>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <postFactor>0.0</postFactor>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>  
+
+  <HediffDef ParentName="InjuryBase">
+    <defName>TM_DisablingShot_HD</defName>
+    <label>disabling shot</label>
+    <displayWound>true</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>
+          <min>100</min>
+          <max>150</max>
+        </disappearsAfterTicks>
+      </li>
+      <li Class="HediffCompProperties_GetsOld">
+        <oldLabel>shot off</oldLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.0125</painPerSeverity>
+		<averagePainPerSeverityOld>0.00625</averagePainPerSeverityOld>
+		<bleedRate>0.00625</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>shot off</destroyedLabel>
+			<destroyedOutLabel>shot out</destroyedOutLabel>
+	</injuryProps>
+	<stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.0</postFactor>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <postFactor>0.0</postFactor>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>  
+
+
+    <HediffDef Name="InjuryBase" Abstract="True">
+    <hediffClass>Hediff_Injury</hediffClass>
+    <tendable>true</tendable>
+    <displayWound>true</displayWound>
+  </HediffDef>
+
+	<HediffDef ParentName="InjuryBase">
+		<defName>Misc</defName>
+		<label>misc</label>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+    </comps>
+    <injuryProps>
+      <painPerSeverity>0.0125</painPerSeverity>
+      <bleedRate>0.03</bleedRate>
+      <canMerge>false</canMerge>
+      <destroyedLabel>Destroyed</destroyedLabel>
+    </injuryProps>
+	</HediffDef>
+	
+	
+
+</Defs>

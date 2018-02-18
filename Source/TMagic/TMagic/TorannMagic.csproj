@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D63BC86F-FCFB-41D9-8F29-0AE403FEE104}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TorannMagic</RootNamespace>
+    <AssemblyName>TorannMagic</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Assemblies\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AbilityUser">
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\AbilityUser.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AbilityUserAI">
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\AbilityUserAI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\..\..\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="HugsLib">
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\818773962\Assemblies\HugsLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\..\..\RimWorldWin_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbilityDecisionConditionalNode_EnemyTargetIsBuilding.cs" />
+    <Compile Include="AbilityWorker_TargetCorpse.cs" />
+    <Compile Include="Building_TMElementalRift.cs" />
+    <Compile Include="Building_TMPortal.cs" />
+    <Compile Include="Building_PoisonTrap.cs" />
+    <Compile Include="Enchantment\ChanceDef.cs" />
+    <Compile Include="Enchantment\ITab_Infusion.cs" />
+    <Compile Include="Enchantment\TechLevelRange.cs" />
+    <Compile Include="Enchantment\QualityChances.cs" />
+    <Compile Include="Enchantment\MapComponent_InfusionManager.cs" />
+    <Compile Include="Enchantment\MathUtility.cs" />
+    <Compile Include="Enchantment\GenInfusionText.cs" />
+    <Compile Include="Enchantment\GenInfusionColor.cs" />
+    <Compile Include="Enchantment\InfusionLabelManager.cs" />
+    <Compile Include="Enchantment\StatPart_InfusionModifier.cs" />
+    <Compile Include="Enchantment\InfusionAllowance.cs" />
+    <Compile Include="Enchantment\InfusionType.cs" />
+    <Compile Include="Enchantment\InfusionTier.cs" />
+    <Compile Include="Enchantment\ResourceBank.cs" />
+    <Compile Include="Enchantment\StatMod.cs" />
+    <Compile Include="Enchantment\GenInfusion.cs" />
+    <Compile Include="Enchantment\EnchantmentDef.cs" />
+    <Compile Include="Enchantment\InfusionSet.cs" />
+    <Compile Include="Enchantment\CompInfusion.cs" />
+    <Compile Include="HediffComp_RangerBond.cs" />
+    <Compile Include="JobDriver_PlacePoisonTrap.cs" />
+    <Compile Include="Thoughts\ThoughtWorker_TM_HolierThanThou.cs" />
+    <Compile Include="TM_Skyfaller.cs" />
+    <Compile Include="Projectile_ArrowStorm.cs" />
+    <Compile Include="Verb_PoisonTrap.cs" />
+    <Compile Include="HediffComp_BowTraining.cs" />
+    <Compile Include="Projectile_HealingCircle.cs" />
+    <Compile Include="Projectile_Resurrection.cs" />
+    <Compile Include="Recipe_RegrowBodyPart.cs" />
+    <Compile Include="Conditions\IncidentWorker_ElementalAssault.cs" />
+    <Compile Include="Conditions\GameCondition_ElementalAssault.cs" />
+    <Compile Include="JobDriver_PortalStockpile.cs" />
+    <Compile Include="ModOptions\HugsMod.cs" />
+    <Compile Include="PlaceWorker_ShowPortalRadius.cs" />
+    <Compile Include="JobDriver_DeactivatePortal.cs" />
+    <Compile Include="JobDriver_ChargePortal.cs" />
+    <Compile Include="JobDriver_UsePortal.cs" />
+    <Compile Include="JobDriver_PortalDestination.cs" />
+    <Compile Include="ModOptions\SettingsRef.cs" />
+    <Compile Include="ModOptions\Settings.cs" />
+    <Compile Include="ModOptions\Controller.cs" />
+    <Compile Include="HediffComp_Torment.cs" />
+    <Compile Include="HediffComp_BladeArt.cs" />
+    <Compile Include="HediffComp_DeathMark.cs" />
+    <Compile Include="HediffComp_Undead.cs" />
+    <Compile Include="Projectile_FogOfTorment.cs" />
+    <Compile Include="Projectile_CorpseExplosion.cs" />
+    <Compile Include="Projectile_RaiseUndead.cs" />
+    <Compile Include="Thoughts\ThoughtWorker_TM_ObservedUndead.cs" />
+    <Compile Include="Thoughts\ThoughtWorker_TM_Necromancer.cs" />
+    <Compile Include="Thoughts\ThoughtWorker_TM_Undead.cs" />
+    <Compile Include="TM_MeshMaker.cs" />
+    <Compile Include="TM_MeshBolt.cs" />
+    <Compile Include="Effect_EyeOfTheStorm.cs" />
+    <Compile Include="FlyingObject_EyeOfTheStorm.cs" />
+    <Compile Include="TM_MedicalRecipesUtility.cs" />
+    <Compile Include="Verb_BowTraining.cs" />
+    <Compile Include="Verb_BladeArt.cs" />
+    <Compile Include="Verb_AdvancedHeal.cs" />
+    <Compile Include="Verb_RangerTraining.cs" />
+    <Compile Include="Verb_Purify.cs" />
+    <Compile Include="Verb_ManaShield.cs" />
+    <Compile Include="Verb_ConsumeCorpse.cs" />
+    <Compile Include="Verb_DeathMark.cs" />
+    <Compile Include="Verb_PhaseStrike.cs" />
+    <Compile Include="Verb_FoldReality.cs" />
+    <Compile Include="Verb_SeismicSlash.cs" />
+    <Compile Include="Verb_BladeSpin.cs" />
+    <Compile Include="Verb_RegrowLimb.cs" />
+    <Compile Include="Verb_Regenerate.cs" />
+    <Compile Include="Verb_CureDisease.cs" />
+    <Compile Include="Verb_BladeFocus.cs" />
+    <Compile Include="Verb_AnimalFriend.cs" />
+    <Compile Include="Verb_RangerShot.cs" />
+    <Compile Include="Verb_SootheAnimal.cs" />
+    <Compile Include="HediffComp_Regeneration.cs" />
+    <Compile Include="Projectile_Poison.cs" />
+    <Compile Include="Projectile_SiphonMana.cs" />
+    <Compile Include="TM_MoteMaker.cs" />
+    <Compile Include="Projectile_TransferMana.cs" />
+    <Compile Include="Conditions\IncidentWorker_ArcaneSickness.cs" />
+    <Compile Include="Conditions\IncidentWorker_Mana.cs" />
+    <Compile Include="Conditions\GameCondition_ManaSurge.cs" />
+    <Compile Include="Conditions\GameCondition_ManaDrain.cs" />
+    <Compile Include="Verb_SB.cs" />
+    <Compile Include="Verb_BLOS.cs" />
+    <Compile Include="Projectile_DisablingShot.cs" />
+    <Compile Include="Verb_SniperShot.cs" />
+    <Compile Include="Projectile_Headshot.cs" />
+    <Compile Include="Projectile_AntiArmor.cs" />
+    <Compile Include="Verb_SniperFocus.cs" />
+    <Compile Include="ThoughtWorker_MinionAlways.cs" />
+    <Compile Include="Projectile_SummonElemental.cs" />
+    <Compile Include="Projectile_SummonExplosive.cs" />
+    <Compile Include="Projectile_SummonPylon.cs" />
+    <Compile Include="Projectile_SummonMinion.cs" />
+    <Compile Include="Events\ArcaneItemCollectionGeneratorUtility.cs" />
+    <Compile Include="Events\GenStep_ArcaneBanditSquad.cs" />
+    <Compile Include="Events\IncidentWorker_QuestArcaneCamp.cs" />
+    <Compile Include="Events\ItemCollectionGenerator_Internal_Arcane.cs" />
+    <Compile Include="HarmonyPatches.cs" />
+    <Compile Include="Effect_ValiantCharge.cs" />
+    <Compile Include="FlyingObject_ValiantCharge.cs" />
+    <Compile Include="MovingObject.cs" />
+    <Compile Include="Effect_Whirlwind.cs" />
+    <Compile Include="FlyingObject_Whirlwind.cs" />
+    <Compile Include="Projectile_ChargeBattery.cs" />
+    <Compile Include="Projectile_EMP.cs" />
+    <Compile Include="Projectile_Extinguish.cs" />
+    <Compile Include="Projectile_Blizzard.cs" />
+    <Compile Include="Projectile_SmokeCloud.cs" />
+    <Compile Include="Projectile_WetGround.cs" />
+    <Compile Include="Projectile_DryGround.cs" />
+    <Compile Include="MagicData.cs" />
+    <Compile Include="MightData.cs" />
+    <Compile Include="CompAbilityUserMight.cs" />
+    <Compile Include="CompUseEffect_LearnMight.cs" />
+    <Compile Include="CompUseEffect_LearnSpell.cs" />
+    <Compile Include="Events\GenStep_MagicAdventureGenerator.cs" />
+    <Compile Include="HediffComp_Fortitude.cs" />
+    <Compile Include="ITab_Pawn_Might.cs" />
+    <Compile Include="MightAbility.cs" />
+    <Compile Include="MightCardUtility.cs" />
+    <Compile Include="MightPower.cs" />
+    <Compile Include="MightPowerSkill.cs" />
+    <Compile Include="MightUserUtility.cs" />
+    <Compile Include="Need_Stamina.cs" />
+    <Compile Include="Events\RoomStructure.cs" />
+    <Compile Include="StaminaPoolCategory.cs" />
+    <Compile Include="Events\SymbolResolver_RoomWithDoor.cs" />
+    <Compile Include="Events\SymbolResolver_WireOutline.cs" />
+    <Compile Include="Events\ItemCollectionGenerator_Arcane.cs" />
+    <Compile Include="Events\SymbolResolver_ArcaneTower.cs" />
+    <Compile Include="Events\IncidentWorker_ArcaneEnemyRaid.cs" />
+    <Compile Include="Events\SitePartWorker_EnemyRaidOnArrival.cs" />
+    <Compile Include="Events\GenStep_EnemyRaidOnArrival.cs" />
+    <Compile Include="Events\GenStep_ArcaneDefenders.cs" />
+    <Compile Include="Events\GenStep_ArcaneStashTreasure.cs" />
+    <Compile Include="Events\MapGenUtility.cs" />
+    <Compile Include="Events\MagicAdventureWorker.cs" />
+    <Compile Include="Events\GenStep_ArcaneStash.cs" />
+    <Compile Include="Events\IncidentWorker_QuestArcaneStash.cs" />
+    <Compile Include="Events\IncidentWorker_ArcaneScriptCaravan.cs" />
+    <Compile Include="Projectile_Overwhelm.cs" />
+    <Compile Include="HediffComp_Invulnerable.cs" />
+    <Compile Include="Projectile_ValiantCharge.cs" />
+    <Compile Include="HediffComp_Shield.cs" />
+    <Compile Include="MagicUserUtility.cs" />
+    <Compile Include="MagicAbility.cs" />
+    <Compile Include="Verb_Cleave.cs" />
+    <Compile Include="Verb_Grapple.cs" />
+    <Compile Include="Verb_Summon.cs" />
+    <Compile Include="Verb_Heal.cs" />
+    <Compile Include="Projectile_Firebolt.cs" />
+    <Compile Include="MagicPowerSkill.cs" />
+    <Compile Include="TexButton.cs" />
+    <Compile Include="MagicCardUtility.cs" />
+    <Compile Include="ITab_Pawn_Magic.cs" />
+    <Compile Include="Verb_Rainmaker.cs" />
+    <Compile Include="ManaPoolCategory.cs" />
+    <Compile Include="Need_Mana.cs" />
+    <Compile Include="MagicPower.cs" />
+    <Compile Include="Projectile_Teleport.cs" />
+    <Compile Include="Projectile_LightningCloud.cs" />
+    <Compile Include="Laser_LightningBolt.cs" />
+    <Compile Include="TMDamageDefOf.cs" />
+    <Compile Include="TMDefOf.cs" />
+    <Compile Include="Projectile_Fireclaw.cs" />
+    <Compile Include="Verb_Blink.cs" />
+    <Compile Include="Projectile_LightningStorm.cs" />
+    <Compile Include="Projectile_Snowball.cs" />
+    <Compile Include="Projectile_Icebolt.cs" />
+    <Compile Include="Projectile_Firestorm.cs" />
+    <Compile Include="Projectile_Fireball.cs" />
+    <Compile Include="CompAbilityUserMagic.cs" />
+    <Compile Include="CompUseEffect_LearnMagic.cs" />
+    <Compile Include="TorannMagicDefOf.cs" />
+    <Compile Include="CompMagictrainer.cs" />
+    <Compile Include="TMAbilityDef.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Weapon\SeerRing_Lightning.cs" />
+    <Compile Include="Weapon\SeerRing_Ice.cs" />
+    <Compile Include="Weapon\SeerRing_Fire.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

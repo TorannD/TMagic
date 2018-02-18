@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <IncidentDef>
+    <defName>MagicCaravanRequest</defName>
+    <label>caravan request</label>
+		<category>Misc</category>
+		<targetTypes>
+			<li>MapPlayerHome</li>
+		</targetTypes>
+    <workerClass>TorannMagic.IncidentWorker_ArcaneScriptCaravan</workerClass>
+    <baseChance>0.6</baseChance>
+		<minPopulation>4</minPopulation>
+		<earliestDay>15</earliestDay>
+		<chanceFactorByPopulationCurve>
+			<points>
+				<li>(2,0)</li>
+				<li>(7,1)</li>
+			</points>
+		</chanceFactorByPopulationCurve>
+  </IncidentDef>
+  
+</Defs>

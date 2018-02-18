@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Defs>
+
+   <HediffDef Name="DruidRegrowth" Abstract="True">
+      <hediffClass>Hediff_AddedPart</hediffClass>
+      <isBad>false</isBad>
+      <defaultLabelColor>(83,159,6)</defaultLabelColor>
+      <addedPartProps>
+         <isBionic>false</isBionic>
+         <isSolid>true</isSolid>
+      </addedPartProps>
+   </HediffDef>
+
+   <!--arms -->
+   
+   <HediffDef ParentName="DruidRegrowth">
+    <defName>TM_ArmRegrowth</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Regrown Arm</label>
+    <addedPartProps>
+	  <partEfficiency>1</partEfficiency>
+    </addedPartProps>
+	<maxSeverity>15</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>+2</severityPerDay>
+      </li>
+	  <li Class="HediffCompProperties_VerbGiver">
+		<tools>
+		   <li>
+			  <label>regrown arm</label>
+			  <capacities>
+				 <li>Blunt</li>
+			  </capacities>
+			  <power>5</power>
+			  <cooldownTime>2.2</cooldownTime>
+		   </li>
+		</tools>
+	 </li>
+    </comps>
+    <stages>
+      <li>
+		<label>stub</label>
+		<minSeverity>0.01</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Manipulation</capacity>
+			  <offset>-0.8</offset>
+		   </li>
+		</capMods>
+      </li>
+      <li>
+		<label>fledgling</label>
+		<minSeverity>3</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Manipulation</capacity>
+			  <offset>-0.6</offset>
+		   </li>
+		</capMods>
+      </li>
+	  <li>
+		<label>regrown</label>
+		<minSeverity>6</minSeverity>
+      </li>
+	  <li>
+		<label>wild</label>
+		<minSeverity>14.9</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Manipulation</capacity>
+			  <offset>0.15</offset>
+		   </li>
+		</capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="DruidRegrowth">
+    <defName>TM_HandRegrowth</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Regrown Hand</label>
+    <addedPartProps>
+	  <partEfficiency>1</partEfficiency>
+    </addedPartProps>
+	<maxSeverity>15</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>+3</severityPerDay>
+      </li>
+	  <li Class="HediffCompProperties_VerbGiver">
+		<tools>
+		   <li>
+			  <label>regrown hand</label>
+			  <capacities>
+				 <li>Blunt</li>
+			  </capacities>
+			  <power>5</power>
+			  <cooldownTime>2.2</cooldownTime>
+		   </li>
+		</tools>
+	 </li>
+    </comps>
+    <stages>
+      <li>
+		<label>stub</label>
+		<minSeverity>0.01</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Manipulation</capacity>
+			  <offset>-0.7</offset>
+		   </li>
+		</capMods>
+      </li>
+      <li>
+		<label>fledgling</label>
+		<minSeverity>3</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Manipulation</capacity>
+			  <offset>-0.5</offset>
+		   </li>
+		</capMods>
+      </li>
+	  <li>
+		<label>regrown</label>
+		<minSeverity>6</minSeverity>
+      </li>
+	  <li>
+		<label>wild</label>
+		<minSeverity>14.9</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Manipulation</capacity>
+			  <offset>0.10</offset>
+		   </li>
+		</capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  
+    <HediffDef ParentName="DruidRegrowth">
+    <defName>TM_LegRegrowth</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Regrown Leg</label>
+    <addedPartProps>
+	  <partEfficiency>1</partEfficiency>
+    </addedPartProps>
+	<maxSeverity>15</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>+2</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+		<label>stub</label>
+		<minSeverity>0.01</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Moving</capacity>
+			  <offset>-0.8</offset>
+		   </li>
+		</capMods>
+      </li>
+      <li>
+		<label>fledgling</label>
+		<minSeverity>3</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Moving</capacity>
+			  <offset>-0.6</offset>
+		   </li>
+		</capMods>
+      </li>
+	  <li>
+		<label>regrown</label>
+		<minSeverity>6</minSeverity>
+      </li>
+	  <li>
+		<label>wild</label>
+		<minSeverity>14.9</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Moving</capacity>
+			  <offset>0.15</offset>
+		   </li>
+		</capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="DruidRegrowth">
+    <defName>TM_FootRegrowth</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Regrown Foot</label>
+    <addedPartProps>
+	  <partEfficiency>1</partEfficiency>
+    </addedPartProps>
+	<maxSeverity>15</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>+3</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+		<label>stub</label>
+		<minSeverity>0.01</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Moving</capacity>
+			  <offset>-0.7</offset>
+		   </li>
+		</capMods>
+      </li>
+      <li>
+		<label>fledgling</label>
+		<minSeverity>3</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Moving</capacity>
+			  <offset>-0.5</offset>
+		   </li>
+		</capMods>
+      </li>
+	  <li>
+		<label>regrown</label>
+		<minSeverity>6</minSeverity>
+      </li>
+	  <li>
+		<label>wild</label>
+		<minSeverity>14.9</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Moving</capacity>
+			  <offset>0.08</offset>
+		   </li>
+		</capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

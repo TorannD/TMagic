@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+  <BodyPartDef>
+    <defName>Ele_Head</defName>
+    <label>head</label>
+    <hitPoints>50</hitPoints>
+    <oldInjuryBaseChance>0.08</oldInjuryBaseChance>
+    <skinCovered>true</skinCovered>
+    <dontSuggestAmputation>true</dontSuggestAmputation>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>Ele_Skull</defName>
+    <label>skull</label>
+    <hitPoints>40</hitPoints>
+    <oldInjuryBaseChance>0</oldInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <isSolid>true</isSolid>
+    <dontSuggestAmputation>true</dontSuggestAmputation>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>Ele_Brain</defName>
+    <label>brain</label>
+    <hitPoints>10</hitPoints>
+    <oldInjuryBaseChance>1</oldInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <tags>
+      <li>ConsciousnessSource</li>
+    </tags>
+    <dontSuggestAmputation>true</dontSuggestAmputation>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>Ele_Heart</defName>
+    <label>heart</label>
+    <hitPoints>40</hitPoints>
+    <oldInjuryBaseChance>0.08</oldInjuryBaseChance>
+    <bleedingRateMultiplier>5</bleedingRateMultiplier>
+    <skinCovered>false</skinCovered>
+    <tags>
+      <li>BloodPumpingSource</li>
+      <li>BloodFiltrationSource</li>
+      <li>MetabolismSource</li>
+      <li>BreathingSource</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>Ele_LeftArm</defName>
+    <label>left arm</label>
+    <hitPoints>80</hitPoints>
+    <oldInjuryBaseChance>0.08</oldInjuryBaseChance>
+    <skinCovered>true</skinCovered>
+    <tags>
+      <li>ManipulationLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartGroupDef>
+    <defName>Ele_LeftArm</defName>
+    <label>left arm</label>
+	<listOrder>101</listOrder>
+  </BodyPartGroupDef>
+
+  <BodyPartDef>
+    <defName>Ele_RightArm</defName>
+    <label>right arm</label>
+    <hitPoints>80</hitPoints>
+    <oldInjuryBaseChance>0.08</oldInjuryBaseChance>
+    <skinCovered>true</skinCovered>
+    <tags>
+      <li>ManipulationLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartGroupDef>
+    <defName>Ele_RightArm</defName>
+    <label>right arm</label>
+	<listOrder>102</listOrder>
+  </BodyPartGroupDef>
+  
+  <BodyPartDef>
+    <defName>Ele_Horn</defName>
+    <label>horn</label>
+    <hitPoints>50</hitPoints>
+    <oldInjuryBaseChance>0</oldInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <dontSuggestAmputation>true</dontSuggestAmputation>
+  </BodyPartDef>
+  
+  <BodyPartGroupDef>
+    <defName>Ele_Horn</defName>
+    <label>horn</label>
+	<listOrder>103</listOrder>
+  </BodyPartGroupDef>
+  
+  <BodyPartDef>
+    <defName>Ele_Eye</defName>
+    <label>eye</label>
+    <hitPoints>30</hitPoints>
+    <skinCovered>false</skinCovered>
+    <useDestroyedOutLabel>true</useDestroyedOutLabel>
+	<frostbiteVulnerability>1</frostbiteVulnerability>
+    <beautyRelated>true</beautyRelated>
+    <tags>
+      <li>SightSource</li>
+    </tags>
+    <hitChanceFactors>
+      <li>
+        <key>Blunt</key>
+        <value>0</value>
+      </li>
+    </hitChanceFactors>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>Ele_LeftEar</defName>
+    <label>left ear</label>
+    <hitPoints>20</hitPoints>
+    <oldInjuryBaseChance>0.08</oldInjuryBaseChance>
+    <skinCovered>true</skinCovered>
+    <beautyRelated>true</beautyRelated>
+    <tags>
+      <li>HearingSource</li>
+    </tags>
+  </BodyPartDef>
+
+  <BodyPartDef>
+    <defName>Ele_RightEar</defName>
+    <label>right ear</label>
+    <hitPoints>20</hitPoints>
+    <oldInjuryBaseChance>0.08</oldInjuryBaseChance>
+    <skinCovered>true</skinCovered>
+    <beautyRelated>true</beautyRelated>
+    <tags>
+      <li>HearingSource</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>Ele_Jaw</defName>
+    <label>jaw</label>
+    <hitPoints>30</hitPoints>
+    <oldInjuryBaseChance>0</oldInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <isSolid>true</isSolid>
+    <beautyRelated>true</beautyRelated>
+    <tags>
+      <li>EatingSource</li>
+      <li>TalkingSource</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>Ele_Neck</defName>
+    <label>neck</label>
+    <hitPoints>30</hitPoints>
+    <oldInjuryBaseChance>0.08</oldInjuryBaseChance>
+    <bleedingRateMultiplier>2</bleedingRateMultiplier>
+    <skinCovered>true</skinCovered>
+    <tags>
+      <li>BreathingPathway</li>
+      <li>EatingPathway</li>
+      <li>TalkingPathway</li>
+    </tags>
+    <dontSuggestAmputation>true</dontSuggestAmputation>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>Ele_Spine</defName>
+    <label>spine</label>
+    <hitPoints>80</hitPoints>
+    <oldInjuryBaseChance>0</oldInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <isSolid>true</isSolid>
+    <tags>
+      <li>Spine</li>
+    </tags>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>Ele_Abdomen</defName>
+    <label>abdomen</label>
+    <hitPoints>60</hitPoints>
+    <oldInjuryBaseChance>0</oldInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <isSolid>true</isSolid>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>Ele_Chest</defName>
+    <label>chest</label>
+    <hitPoints>120</hitPoints>
+    <oldInjuryBaseChance>0</oldInjuryBaseChance>
+    <skinCovered>false</skinCovered>
+    <isSolid>true</isSolid>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>Ele_Base</defName>
+    <label>elemental movement base</label>
+    <hitPoints>100</hitPoints>
+    <oldInjuryBaseChance>0.01</oldInjuryBaseChance>
+    <skinCovered>true</skinCovered>
+    <tags>
+      <li>MovingLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  
+</Defs>

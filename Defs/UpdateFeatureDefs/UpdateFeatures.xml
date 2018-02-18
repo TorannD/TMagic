@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<HugsLib.UpdateFeatureDef Abstract="true" Name="UpdateFeatureBase">
+		<modNameReadable>A RimWorld Of Magic</modNameReadable>
+		<modIdentifier>ARimWorldOfMagic</modIdentifier>
+		<linkUrl>https://ludeon.com/forums/index.php?topic=37161.0</linkUrl>
+	</HugsLib.UpdateFeatureDef>
+	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_1_7_6</defName>
+		<assemblyVersion>1.7.6</assemblyVersion>
+		<content>		
+- **New mages will no longer receive all class abilities by default.**  This is a change to the default behavior when assigning abilities. In previous versions, all class abilities would be assigned unless using a torn script to learn an advanced trait. Now, abilities are assigned in a random nature when a pawn is given a trait. This affects all preperatory character creation and mods such as EDB Prepare Carefully and Android printing. Advancing from precusor traits (magically gifted, physically adept) to advanced traits via use a a full arcane script will always assign all class abilities.
+
+- The Arcane mage master spell "Gateway" has been added. Through intensive research and study, mages have been able to fold reality between two places, allowing instant travel. This knowledge has manifested in two ways - the Arcane mage can now learn the Gateway master spell and perform a mass summon from any colonist occupied map to the caster position.
+
+- The second manifestation is through research and study.  Completing this allows colonies to construct the a Portal. These artifacts may then be activated by (and only by) Arcane mages that have learned the Gateway spell. As long as a portal is charged with energy, it is capable of instantly transporting items and pawns to a distant location.
+
+- Exception handling has been added for all abilities that attempt to create, destroy, or move pawns or items. This includes abilities such as teleport, phase strike, blink, summon elemental (and so on). In the event of a failure within the ability, the exception handler will attempt to restore any pawns or items involved and then immediately end the ability. 
+
+- Trait tweaking - base trait occurence likelihood has been increased; Sniper and Bladedancer traits will now only assign AI to the lowest level of the trait.
+
+- Druid spell "Cure Disease" will now attempt to cure the disease even if the disease has been tended.
+
+- Deconstruction of summoned buildings will no longer return mana potions (returns nothing)
+
+- Undead should no longer attempt to research or tend other pawns (or themself); when undead are created, they will automatically be assigned a 24hr work cycle.
+
+- Tweaked stamina user xp gain - increased to level at approximately the same speed as mages.
+		</content>
+	</HugsLib.UpdateFeatureDef>
+	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_1_7_8</defName>
+		<assemblyVersion>1.7.8</assemblyVersion>
+		<content>
+- Portals can now transfer pets - pets must be in the stockpile zone and can be transported using "transport items" option
+
+- Disabling Shot (sniper) and Grapple (gladiator) will now cause instant hostility between factions
+
+- Snipers must now have advanced weaponry equipped in order to use most of their skills
+
+- New Event: Elemental Assault; this challenging event triggers during the late game and involves hordes of elementals storming your base!
+
+- Added a series of thoughts and social behaviors involving Undead; living colonists will now be much less likely to "befriend" one of the undead
+
+- Added a series of thoughts and social behaviors between Necromancers, Druids, and Paladins
+
+- Valiant Charge should no longer destroy a pawn if the explosion triggers an exception
+		</content>
+	</HugsLib.UpdateFeatureDef>
+		<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_1_7_9</defName>
+		<assemblyVersion>1.7.9</assemblyVersion>
+		<content>
+- Updates will now be displayed as a news item in-game.
+
+- Rifts are no longer constructable
+
+- Druid "Soothe Animal" now recognizes effeciency skill improvements
+
+- Summoned structures (mana mine, pylon, teleporter) no longer expand the home area
+
+- A summoned teleporter no longer needs to be fueled with portfuel - this occurs automatically
+
+- Slightly reduced the damage bonus for various Bladedancer, Gladiator and Sniper abilities that use weapon dps as a basis for skill damage.
+		</content>
+	</HugsLib.UpdateFeatureDef>
+		<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_1_8_1</defName>
+		<assemblyVersion>1.8.1</assemblyVersion>
+		<content>
+- New class: Priest - support class that excels at improving the health of colonists.
+Abilities:
+Advanced Heal - similar to the Paladin's heal, except it can be leveled higher and is more potent.  Points invested in Advanced Heal also apply to Heal, if the Priest acquires the Heal spell through a scroll.
+Purify - Cleanses many deep seated injuries and natural human conditions.  It also has the power to help reduce or remove addiction withdrawals.
+Healing Circle - creates a temporary circle that generates waves of healing power.
+Bestow Might - Powerful, single target buff that enhances many combat related attributes.
+Resurrection (master) - revives a recently deceased pawn.  Effects are similar to resurrection serum but, through skill improvements, the likelihood of resurrection sickness effects can be reduced.
+
+- New class: Ranger - a versitile class; able to form a bond with an animal and readily faces the many hardships of RimWorld.
+Abilities:
+Ranger Training - surviving in the wilds can teach the ranger many useful skills
+Bow Mastery - training with the bow increases the overall lethality when using bows
+Poison Trap - using skills learned in fieldcraft, the ranger can emplace traps filled with druidic poison to impare and disuade enemies.  The ranger's skill at emplacing these traps puts mechanical sensors to shame.
+Animal Bond - forms a bond with an animal of the wild that benefits both ranger and beast
+Arrow Storm - launches a volley of arrows at a target, but cannot be used without a bow
+
+- Necromancer's will no longer complain about seeing, or making, corpses...
+
+- Fixed several undead animal need related bugs.  Continued refinement of Undead thought generation and interaction.
+
+- Druid "Regrow Limb" now uses it's own recipe class and should have less chance to conflict with other mods; failure no longer restores the limb and success no longer sends the failure letter.
+
+- Caravan fixes: mana is now gained while caravaning; undead no longer throw errors in a caravan; in addition, undead in a caravan require a necromancer in the caravan to survive - if no necromancer exist in the caravan with the undead, they lose the source of arcane power that sustains them and will return to the dead (all held items will transfer to another pawn).
+
+- AI will now buff themselves before entering combat.
+		</content>
+	</HugsLib.UpdateFeatureDef>
+		<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_1_8_3</defName>
+		<assemblyVersion>1.8.3</assemblyVersion>
+		<content>
+- Minions and Elementals should no longer generate errors from frostbite or hypothermia.
+
+- Elemental Rift event will now end correctly following a reload.
+
+- The Necromancer skill "Cheating Death" will also add a reduction in undead upkeep cost.  Undead should no longer attempt tasks they cannot perform.
+Feeling singled out, Necromancers have begun returning the social distaste expressed by paladins, priests, and druids.
+
+- A Mod Setting has been added to allow players to adjust the rarity of magic traits.
+
+- The Arcane Fold, in response to increased threats against their caravans and colonies, has increased the training and equipment of their guards.
+
+- The Magic pane displays points required to learn class spells;  spells that haven't been learned yet will no longer give the option to upgrade a related skill. 
+
+- The mana cost for Summoner skills has increased slightly. Each minion now requires an upkeep cost that reduces the amount of mana a summoner gains each turn by 20%.  Unlike undead, minion upkeep costs are not shared, and each summoner may only have 4 minions at any given time.  Summoning additional minions over this amount will dismiss the oldest minion.  The duration of a summoned minion has doubled and its cooldown has been drastically reduced.
+		</content>
+	</HugsLib.UpdateFeatureDef>	
+	
+</Defs>

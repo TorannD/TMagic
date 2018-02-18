@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ModMetaData>
+	<name>A RimWorld of Magic</name>
+	<author>Torann</author>
+	<targetVersion>0.18.0</targetVersion>
+	<description>Version 1.8.3
+    This mod adds magic and class abilities to RimWorld.
+	
+Specially gifted pawns can find and use assortment of arcane scripts that bestow them with special abilities.  Most abilities
+are combat related, though all classes possess limited skills to assist both on and off the battlefield.
+	
+Abilities are unique to each class, with each class specializing in specific roles:
+
+Fire mage: highly destructive but difficult to control, also has a tendancy to start fires.
+
+Ice mage: though not directly powerful, the ice mage is adept at decreasing the enemies ability to move and fight.
+
+Lightning mage: summons deadly weather conditions at target areas, but its random nature produces unpredictable results.
+
+Arcane mage: master of space and utility; has limited combat abilities but, with some improvisation, can control any fight.
+
+Summoner: brings forth powerful, tactical defenses to protect the colony. Can summon mighty elementals and helpful minions.
+
+Druid: a utility class that can improve the health of colonists or cause maladies on enemies; has some control over animal kind.
+
+Necromancer: evil sorcerers with the intent of enslaving all creatures to do their bidding; manipulates forces of life and death
+
+Paladin: excellent front line fighter that has the ability to close with, disrupt, and destroy enemy formations.
+
+Priest: support class dedicated to the health and well-being of the colony.
+
+Gladiator: versatile close combat specialist that thrives in the thick of battle.
+
+Sniper: long range, small arms expert - excels at precision strikes that exploit enemy weaknesses.
+
+Bladedancer: close range glass cannon, excels at hit and run tactics and rapid, unsustained assaults
+
+Ranger: survivalist and stalwart defender, the ranger enlists the aid of animal kin to defend the colony
+	</description>
+</ModMetaData>

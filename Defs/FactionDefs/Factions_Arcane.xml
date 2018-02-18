@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <FactionDef>
+		<defName>Seers</defName>
+		<label>arcane fold</label>
+    <description>Little is known about this secretive faction.  They possess some technology, but do not seem to dependant on it. They work simple tools and defend themselves with firearms.\n\nThey participate in the the practical matters of trade, trust, and survival, but their primary interest is unclear.\n\nAccording to traveler tales and information gathered from other factions, they have knowledge, and use, of mysterious powers and artifacts.</description>
+    <pawnsPlural>seers</pawnsPlural>
+    <baseSelectionWeight>0.2</baseSelectionWeight>
+    <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <canMakeRandomly>true</canMakeRandomly>
+    <canSiege>true</canSiege>
+    <canStageAttacks>true</canStageAttacks>
+    <leaderTitle>Mage King</leaderTitle>
+    <expandingIconTexture>World/ArcaneTown</expandingIconTexture>
+    <colorSpectrum>
+      <li>(0.64, 0.05, 0.8)</li>
+      <li>(0.8, 0.05, 0.64)</li>
+    </colorSpectrum>
+    <startingGoodwill>
+      <min>-20</min>
+      <max>20</max>
+    </startingGoodwill>
+		<factionNameMaker>NamerFactionOutlander</factionNameMaker>
+		<baseNameMaker>NamerFactionBaseOutlander</baseNameMaker>
+		<techLevel>Spacer</techLevel>
+		<backstoryCategory>Civil</backstoryCategory>
+		<geneticVariance>0.8</geneticVariance>
+		<hairTags>
+			<li>Rural</li>
+		</hairTags>
+    <naturalColonyGoodwill>
+      <min>-60</min>
+      <max>0</max>
+    </naturalColonyGoodwill>
+    <caravanTraderKinds>
+      <li>Caravan_Arcane_Basic</li>
+    </caravanTraderKinds>
+    <visitorTraderKinds>
+      <li>Visitor_Outlander_Standard</li>
+    </visitorTraderKinds>
+    <baseTraderKinds>
+      <li>Base_Arcane_Standard</li>
+    </baseTraderKinds>
+    <allowedArrivalTemperatureRange>
+      <min>-40</min>
+      <max>45</max>
+    </allowedArrivalTemperatureRange>
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Normal</kindDef>
+        <options>
+			<Villager>50</Villager>
+			<GrenadierDestructive>15</GrenadierDestructive>
+			<MercenarySlasher>70</MercenarySlasher>
+			<TownGuard>100</TownGuard>
+			<TownCouncilman>100</TownCouncilman>
+			<MercenaryGunner>100</MercenaryGunner>
+			<MercenaryElite>100</MercenaryElite>
+		</options>
+      </li>
+      <li>
+        <kindDef>Trader</kindDef>
+        <traders>
+          <TownTrader>1</TownTrader>
+        </traders>
+        <carriers>
+          <Muffalo>1</Muffalo>
+          <Dromedary>4</Dromedary>
+          <Alpaca>2</Alpaca>
+          <Elephant>6</Elephant>
+        </carriers>
+        <guards>
+			<GrenadierDestructive>70</GrenadierDestructive>
+			<MercenarySlasher>200</MercenarySlasher>
+			<TownGuard>150</TownGuard>
+			<MercenaryGunner>250</MercenaryGunner>
+			<MercenaryElite>200</MercenaryElite>
+			<SpaceSoldier>250</SpaceSoldier>
+			<MercenaryHeavy>200</MercenaryHeavy>
+			<SeerDefender>100</SeerDefender>
+		</guards>
+      </li>
+      <li>
+        <kindDef>FactionBase</kindDef>
+        <options>
+			<GrenadierDestructive>75</GrenadierDestructive>
+			<MercenarySlasher>250</MercenarySlasher>
+			<Villager>100</Villager>
+			<TownGuard>250</TownGuard>
+			<TownCouncilman>200</TownCouncilman>
+			<MercenaryGunner>350</MercenaryGunner>
+			<MercenaryElite>250</MercenaryElite>
+			<SpaceSoldier>100</SpaceSoldier>
+			<MercenaryHeavy>200</MercenaryHeavy>
+			<SeerDefender>300</SeerDefender>
+		</options>
+      </li>
+    </pawnGroupMakers>
+    <homeIconPath>World/WorldObjects/DefaultFactionBase</homeIconPath>
+  </FactionDef>
+
+
+</Defs>

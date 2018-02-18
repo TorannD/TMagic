@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!--========================= Research into magic ===================================-->
+
+	<ResearchProjectDef>
+		<defName>TM_Portals</defName>
+		<label>portals</label>
+		<tab>TMagic</tab>
+		<description>Allows the construction of a portal - a powerful artifact that enables instant travel between colonies.\n\nRequires an Arcane Mage trained in Gateways to activate.</description>
+		<baseCost>1000</baseCost>
+		<techLevel>Transcendent</techLevel>
+		<researchViewX>0.0</researchViewX>
+		<researchViewY>0.0</researchViewY>
+	</ResearchProjectDef>
+
+</Defs>

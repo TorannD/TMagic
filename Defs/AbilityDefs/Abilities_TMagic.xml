@@ -1,0 +1,2454 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	    <!-- AMP start -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_AbilityBase</thingClass>
+	    <defName>Buff_AMP</defName>
+        <label>AMP</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>AMP</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>1000</speed>
+			<explosionRadius>18</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+
+<!--     <ThingDef Class="TorannMagic.TMAbilityDef" ParentName="BaseAbility"> -->
+	 <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_AMP</defName>
+        <label>AMP</label>
+        <uiIconPath>UI/amp</uiIconPath>
+        <description>Blessing: Augmented by Magical Power - aka "AMP."  Short term augmentation that drastically increases physical capacity at the cost of increased stress on the body.
+Duration: 		30-40s
+Physical capacity: 	~+30%
+Physical demand: 	+40%
+Pain:		-20%</description>
+		<manaCost>0.30</manaCost>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Buff_AMP</defaultProjectile>
+            <abilityDef>TM_AMP</abilityDef>
+            <warmupTime>4</warmupTime>
+            <SecondsToRecharge>600.0</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>MessagePositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>3</maxTargets>
+                <range>10</range>
+            </TargetAoEProperties>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+			<hediffsToApply>
+				<li>
+					<hediffDef>AMP_I</hediffDef>
+					<applyChance>0.8</applyChance>
+				</li>
+			</hediffsToApply>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_AMP_I</defName>
+        <label>AMP</label>
+        <uiIconPath>UI/amp</uiIconPath>
+        <description>Blessing: Augmented by Magical Power - aka "AMP."  Drastically increases physical capacity at the cost of increased stress on the body.
+Duration: 		30-40s
+Physical capacity: 	~+30%
+Physical demand: 	+40%
+Pain:		-50%</description>
+		<manaCost>0.30</manaCost>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Buff_AMP</defaultProjectile>
+            <abilityDef>TM_AMP_I</abilityDef>
+            <warmupTime>4</warmupTime>
+            <SecondsToRecharge>600.0</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>MessagePositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>4</maxTargets>
+                <range>10</range>
+            </TargetAoEProperties>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+			<hediffsToApply>
+				<li>
+					<hediffDef>AMP_I</hediffDef>
+					<applyChance>1.0</applyChance>
+				</li>
+			</hediffsToApply>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_AMP_II</defName>
+        <label>AMP</label>
+        <uiIconPath>UI/amp</uiIconPath>
+        <description>Blessing: Augmented by Magical Power - aka "AMP."  Drastically increases physical capacity at the cost of increased stress on the body.
+Duration: 		50-60s
+Physical capacity: 	~+75%
+Physical demand: 	+60%
+Pain:		-80%</description>
+		<manaCost>0.30</manaCost>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Buff_AMP</defaultProjectile>
+            <abilityDef>TM_AMP_II</abilityDef>
+            <warmupTime>4</warmupTime>
+            <SecondsToRecharge>600.0</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>MessagePositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>5</maxTargets>
+                <range>12</range>
+            </TargetAoEProperties>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+			<hediffsToApply>
+				<li>
+					<hediffDef>AMP_II</hediffDef>
+					<applyChance>1.0</applyChance>
+				</li>
+			</hediffsToApply>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_AMP_III</defName>
+        <label>AMP</label>
+        <uiIconPath>UI/amp</uiIconPath>
+        <description>Blessing: Augmented by Magical Power - aka "AMP."  Drastically increases physical capacity at the cost of increased stress on the body.
+Duration: 		50-60s
+Physical capacity: 	~+150%
+Physical demand: 	+100%</description>
+		<manaCost>0.30</manaCost>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Buff_AMP</defaultProjectile>
+            <abilityDef>TM_AMP_III</abilityDef>
+            <warmupTime>4</warmupTime>
+            <SecondsToRecharge>600.0</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>MessagePositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>6</maxTargets>
+                <range>15</range>
+            </TargetAoEProperties>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+			<hediffsToApply>
+				<li>
+					<hediffDef>AMP_III</hediffDef>
+					<applyChance>1.0</applyChance>
+				</li>
+			</hediffsToApply>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+    <!-- AMP End -->
+	
+	    <!-- Shadow start -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_AbilityBase</thingClass>
+	    <defName>Buff_Shadow</defName>
+        <label>Shadow</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>Shadow</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>1000</speed>
+			<explosionRadius>4</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Shadow</defName>
+        <label>Shadow</label>
+        <uiIconPath>UI/shadow</uiIconPath>
+        <description>Blessing: Arcane augmentation that assists the worker.  Summons a shadow worker to improve worker efficiency. 80% success rate.
+Duration:		500-600s
+Physical capacity: 	+20%
+Physical demand: 	-10%
+Mood decrease:	-4</description>
+		<manaCost>0.45</manaCost>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Buff_Shadow</defaultProjectile>
+            <abilityDef>TM_Shadow</abilityDef>
+            <warmupTime>6</warmupTime>
+            <SecondsToRecharge>600.0</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>MessagePositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>3</maxTargets>
+                <range>6</range>
+            </TargetAoEProperties>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+			<hediffsToApply>
+				<li>
+					<hediffDef>Shadow_I</hediffDef>
+					<applyChance>0.8</applyChance>
+				</li>
+			</hediffsToApply>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	 <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Shadow_I</defName>
+        <label>Shadow</label>
+        <uiIconPath>UI/shadow</uiIconPath>
+        <description>Blessing: Arcane augmentation that assists the worker.  Summons a shadow worker to improve worker efficiency.
+Duration:		500-600s
+Physical capacity: 	+20%
+Physical demand: 	-10%
+Mood decrease:	-4</description>
+		<manaCost>0.45</manaCost>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Buff_Shadow</defaultProjectile>
+            <abilityDef>TM_Shadow_I</abilityDef>
+            <warmupTime>5</warmupTime>
+            <SecondsToRecharge>600.0</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>MessagePositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>3</maxTargets>
+                <range>8</range>
+            </TargetAoEProperties>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+			<hediffsToApply>
+				<li>
+					<hediffDef>Shadow_I</hediffDef>
+					<applyChance>1.0</applyChance>
+				</li>
+			</hediffsToApply>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	 <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Shadow_II</defName>
+        <label>Shadow</label>
+        <uiIconPath>UI/shadow</uiIconPath>
+        <description>Blessing: Arcane augmentation that assists the worker.  Summons a shadow worker to improve worker efficiency.
+Duration:		1100-1250s
+Physical capacity: 	+40%
+Physical demand: 	-15%
+Mood decrease:	-6</description>
+		<manaCost>0.45</manaCost>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Buff_Shadow</defaultProjectile>
+            <abilityDef>TM_Shadow_II</abilityDef>
+            <warmupTime>4</warmupTime>
+            <SecondsToRecharge>600.0</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>MessagePositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>4</maxTargets>
+                <range>10</range>
+            </TargetAoEProperties>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+			<hediffsToApply>
+				<li>
+					<hediffDef>Shadow_II</hediffDef>
+					<applyChance>1.0</applyChance>
+				</li>
+			</hediffsToApply>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	 <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Shadow_III</defName>
+        <label>Shadow</label>
+        <uiIconPath>UI/shadow</uiIconPath>
+        <description>Blessing: Arcane augmentation that assists the worker.  Summons a shadow worker to improve worker efficiency.
+Duration:		1100-1250s
+Physical capacity: 	+60%
+Physical demand: 	-30%
+Mood decrease:	-8</description>
+		<manaCost>0.45</manaCost>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Buff_Shadow</defaultProjectile>
+            <abilityDef>TM_Shadow_III</abilityDef>
+            <warmupTime>4</warmupTime>
+            <SecondsToRecharge>600.0</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>MessagePositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>5</maxTargets>
+                <range>12</range>
+            </TargetAoEProperties>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+			<hediffsToApply>
+				<li>
+					<hediffDef>Shadow_III</hediffDef>
+					<applyChance>1.0</applyChance>
+				</li>
+			</hediffsToApply>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- Shadow End -->
+	
+<!-- Soothe start -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_AbilityBase</thingClass>
+	    <defName>Buff_Soothe</defName>
+        <label>Soothing Breeze</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>SoothingBreeze</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>1000</speed>
+			<explosionRadius>18</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Soothe</defName>
+        <label>Soothing Breeze</label>
+        <uiIconPath>UI/soothe</uiIconPath>
+        <description>Blessing: a soothing breeze settles anxiety and lightens the mood. 80% success rate.
+Duration:		100-117s
+Physical capacity: 	+10%
+Physical demand: 	-12%
+Pain:		-20%
+Infighting:		-10%
+Mood increase:	+8</description>
+		<manaCost>0.40</manaCost>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Buff_Soothe</defaultProjectile>
+            <abilityDef>TM_Soothe</abilityDef>
+            <warmupTime>6</warmupTime>
+            <SecondsToRecharge>600.0</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>MessagePositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>3</maxTargets>
+                <range>10</range>
+            </TargetAoEProperties>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+			<hediffsToApply>
+				<li>
+					<hediffDef>SoothingBreeze_I</hediffDef>
+					<applyChance>.8</applyChance>
+				</li>
+			</hediffsToApply>
+			
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Soothe_I</defName>
+        <label>Soothing Breeze</label>
+        <uiIconPath>UI/soothe</uiIconPath>
+        <description>Blessing: a soothing breeze settles anxiety and lightens the mood.
+Duration:		100-117s
+Physical capacity: 	+10%
+Physical demand: 	-12%
+Pain:		-20%
+Infighting:		-10%
+Mood increase:	+8</description>
+		<manaCost>0.40</manaCost>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Buff_Soothe</defaultProjectile>
+            <abilityDef>TM_Soothe_I</abilityDef>
+            <warmupTime>4</warmupTime>
+            <SecondsToRecharge>600.0</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>MessagePositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>4</maxTargets>
+                <range>10</range>
+            </TargetAoEProperties>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+			<hediffsToApply>
+				<li>
+					<hediffDef>SoothingBreeze_I</hediffDef>
+					<applyChance>1</applyChance>
+				</li>
+			</hediffsToApply>
+			
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Soothe_II</defName>
+        <label>Soothing Breeze</label>
+        <uiIconPath>UI/soothe</uiIconPath>
+        <description>Blessing: a soothing effect that settles nerves and focuses the mind.
+Duration:		200-223s
+Physical capacity: 	+18%
+Physical demand: 	-25%
+Pain:		-40%
+Infighting:		-20%
+Mood increase:	+14</description>
+		<manaCost>0.40</manaCost>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Buff_Soothe</defaultProjectile>
+            <abilityDef>TM_Soothe_II</abilityDef>
+            <warmupTime>4</warmupTime>
+            <SecondsToRecharge>600.0</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>MessagePositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>7</maxTargets>
+                <range>12</range>
+            </TargetAoEProperties>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+			<hediffsToApply>
+				<li>
+					<hediffDef>SoothingBreeze_II</hediffDef>
+					<applyChance>1</applyChance>
+				</li>
+			</hediffsToApply>
+			
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Soothe_III</defName>
+        <label>Soothing Breeze</label>
+        <uiIconPath>UI/soothe</uiIconPath>
+        <description>Blessing: a soothing effect that settles nerves and focuses the mind.
+Duration:		500-600s
+Physical capacity: 	+25%
+Physical demand: 	-35%
+Pain:		-60%
+Infighting:		-30%
+Mood increase:	+20</description>
+		<manaCost>0.40</manaCost>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Buff_Soothe</defaultProjectile>
+            <abilityDef>TM_Soothe_III</abilityDef>
+            <warmupTime>2.5</warmupTime>
+            <SecondsToRecharge>600.0</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>MessagePositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>10</maxTargets>
+                <range>15</range>
+            </TargetAoEProperties>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+			<hediffsToApply>
+				<li>
+					<hediffDef>SoothingBreeze_III</hediffDef>
+					<applyChance>1</applyChance>
+				</li>
+			</hediffsToApply>
+			
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- Soothe End -->
+	
+	    <!-- Ray of Hope start -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_AbilityBase</thingClass>
+	    <defName>Buff_RayofHope</defName>
+        <label>Ray of Hope</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>RayofHope</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>1000</speed>
+			<explosionRadius>18</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_RayofHope</defName>
+        <label>Ray of Hope</label>
+        <uiIconPath>UI/rayofhope</uiIconPath>
+        <description>Blessing: Ray of Hope energizes and motivates the soul of any it touches. 80% success rate.
+Duration:		100-117s
+Physical capacity: 	+10%
+Physical demand: 	-10%
+Pain:		-10%
+Infighting:		+30%
+Mood increase:	+4</description>
+		<manaCost>0.45</manaCost>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Buff_RayofHope</defaultProjectile>
+            <abilityDef>TM_RayofHope</abilityDef>
+            <warmupTime>6</warmupTime>
+            <SecondsToRecharge>600.0</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>MessagePositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>3</maxTargets>
+                <range>10</range>
+            </TargetAoEProperties>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+			<hediffsToApply>
+				<li>
+					<hediffDef>RayofHope_I</hediffDef>
+					<applyChance>0.8</applyChance>
+				</li>
+			</hediffsToApply>
+			
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_RayofHope_I</defName>
+        <label>Ray of Hope</label>
+        <uiIconPath>UI/rayofhope</uiIconPath>
+        <description>Blessing: Ray of Hope energizes and motivates the soul of any it touches.
+Duration:		100-117s
+Physical capacity: 	+10%
+Physical demand: 	-10%
+Pain:		-10%
+Infighting:		+30%
+Mood increase:	+4</description>
+		<manaCost>0.45</manaCost>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Buff_RayofHope</defaultProjectile>
+            <abilityDef>TM_RayofHope_I</abilityDef>
+            <warmupTime>4</warmupTime>
+            <SecondsToRecharge>600.0</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>MessagePositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>4</maxTargets>
+                <range>10</range>
+            </TargetAoEProperties>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+			<hediffsToApply>
+				<li>
+					<hediffDef>RayofHope_I</hediffDef>
+					<applyChance>1</applyChance>
+				</li>
+			</hediffsToApply>
+			
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	 <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_RayofHope_II</defName>
+        <label>Ray of Hope</label>
+        <uiIconPath>UI/rayofhope</uiIconPath>
+        <description>Blessing: Ray of Hope energizes and motivates the soul of any it touches.
+Duration:		200-223s
+Physical capacity: 	+23%
+Physical demand: 	-23%
+Pain:		-20%
+Infighting:		+20%
+Mood increase:	+8</description>
+		<manaCost>0.45</manaCost>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Buff_RayofHope</defaultProjectile>
+            <abilityDef>TM_RayofHope_II</abilityDef>
+            <warmupTime>4</warmupTime>
+            <SecondsToRecharge>600.0</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>MessagePositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>7</maxTargets>
+                <range>12</range>
+            </TargetAoEProperties>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+			<hediffsToApply>
+				<li>
+					<hediffDef>RayofHope_II</hediffDef>
+					<applyChance>1</applyChance>
+				</li>
+			</hediffsToApply>
+			
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	 <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_RayofHope_III</defName>
+        <label>Ray of Hope</label>
+        <uiIconPath>UI/rayofhope</uiIconPath>
+        <description>Blessing: Ray of Hope energizes and motivates the soul of any it touches.
+Duration:		500-600s
+Physical capacity: 	+35%
+Physical demand: 	-25%
+Pain:		-30%
+Infighting:		+5%
+Mood increase:	+12</description>
+		<manaCost>0.45</manaCost>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Buff_RayofHope</defaultProjectile>
+            <abilityDef>TM_RayofHope_III</abilityDef>
+            <warmupTime>2.5</warmupTime>
+            <SecondsToRecharge>600.0</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>MessagePositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>10</maxTargets>
+                <range>15</range>
+            </TargetAoEProperties>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+			<hediffsToApply>
+				<li>
+					<hediffDef>RayofHope_III</hediffDef>
+					<applyChance>1</applyChance>
+				</li>
+			</hediffsToApply>
+			
+        </MainVerb>
+   </TorannMagic.TMAbilityDef>
+
+    <!-- Ray of Hope End -->
+
+	    <!-- Lightning Cloud -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_LightningCloud</thingClass>
+	    <defName>Projectile_LightningCloud</defName>
+        <label>Lightning Cloud</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>TM_LightningCloud</damageDef>
+            <damageAmountBase>2</damageAmountBase>
+            <speed>1000</speed>
+			<explosionRadius>8</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_LightningCloud</defName>
+        <label>Lightning Cloud</label>
+        <uiIconPath>UI/stormcloud</uiIconPath>
+        <description>Creates an area charged with lightning.  Damages and stuns anything in its mists.</description>
+		<manaCost>0.40</manaCost>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_LightningCloud</defaultProjectile>
+            <abilityDef>TM_LightningCloud</abilityDef>
+            <warmupTime>2.5</warmupTime>
+            <SecondsToRecharge>120.0</SecondsToRecharge>
+            <range>80</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Explosion_Smoke</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+   </TorannMagic.TMAbilityDef>
+
+    <!-- Lightning Cloud End -->
+
+	<!-- Lightning Bolt -->	
+	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_AbilityLaser">
+		<thingClass>TorannMagic.Laser_LightningBolt</thingClass> 
+        <defName>Laser_LightningBolt</defName>
+        <label>Lightning Bolt</label>
+        <graphicData>
+			<texPath>Spells/LightningBolt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_Lightning</damageDef>
+            <damageAmountBase>24</damageAmountBase>
+            <speed>200</speed>
+        </projectile>
+		<preFiringInitialIntensity>20</preFiringInitialIntensity>
+        <preFiringFinalIntensity>80</preFiringFinalIntensity>
+        <postFiringInitialIntensity>20</postFiringInitialIntensity>
+        <postFiringFinalIntensity>0</postFiringFinalIntensity>
+        <preFiringDuration>20</preFiringDuration>
+        <postFiringDuration>40</postFiringDuration>
+        <StartFireChance>0</StartFireChance>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_LightningBolt</defName>
+        <label>Lightning Bolt</label>
+        <uiIconPath>UI/lightningbolt2</uiIconPath>
+		<description>Launch a bolt of lightning to strike your target.</description>
+        <manaCost>0.15</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility_TrueBurst</verbClass>
+            <tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+            <tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+            <tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+            <tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Laser_LightningBolt</defaultProjectile>
+            <abilityDef>TM_LightningBolt</abilityDef>
+            <warmupTime>0.4</warmupTime>
+            <SecondsToRecharge>15.0</SecondsToRecharge>
+            <range>32</range>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+            <isPrimary>true</isPrimary>
+            <soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>8</muzzleFlashScale>
+            <AlwaysHits>true</AlwaysHits>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>					
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- Lightning Bolt end-->
+	
+	<!-- FrostRay -->	
+	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_AbilityLaser">
+		<thingClass>AbilityUser.Projectile_AbilityLaser</thingClass> 
+        <defName>Laser_FrostRay</defName>
+        <label>Frost Ray</label>
+        <graphicData>
+			<texPath>Spells/FrostRay</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>FrostRay</damageDef>
+            <damageAmountBase>17</damageAmountBase>
+            <speed>120</speed>
+        </projectile>
+		<preFiringInitialIntensity>0</preFiringInitialIntensity>
+        <preFiringFinalIntensity>20</preFiringFinalIntensity>		
+        <postFiringInitialIntensity>20</postFiringInitialIntensity>
+        <postFiringFinalIntensity>0</postFiringFinalIntensity>
+        <preFiringDuration>10</preFiringDuration>
+        <postFiringDuration>83</postFiringDuration>
+        <StartFireChance>0.000</StartFireChance>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_FrostRay</defName>
+        <label>Frost Ray</label>
+        <uiIconPath>Spells/FrostRay</uiIconPath>
+		<description>Rapidly extending ray of super cooled particles that damages and freezes targets.
+Recharge time: 15s
+Range: 24
+Shots: 1</description>
+        <manaCost>0.20</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility_TrueBurst</verbClass>
+            <tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+            <tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+            <tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+            <tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Laser_FrostRay</defaultProjectile>
+            <abilityDef>TM_FrostRay</abilityDef>
+            <warmupTime>1.5</warmupTime>
+            <SecondsToRecharge>15.0</SecondsToRecharge>
+            <range>24</range>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
+            <isPrimary>true</isPrimary>
+            <soundCast>DropPodOpen</soundCast>
+            <soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>2</muzzleFlashScale>
+            <AlwaysHits>true</AlwaysHits>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>				
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_FrostRay_I</defName>
+        <label>Frost Ray</label>
+        <uiIconPath>Spells/FrostRay</uiIconPath>
+		<description>Rapidly extending ray of super cooled particles that damages and freezes targets.
+Recharge time: 12s
+Range: 28
+Shots: 1</description>
+        <manaCost>0.20</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility_TrueBurst</verbClass>
+            <tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+            <tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+            <tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+            <tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Laser_FrostRay</defaultProjectile>
+            <abilityDef>TM_FrostRay_I</abilityDef>
+            <warmupTime>1.5</warmupTime>
+            <SecondsToRecharge>12.0</SecondsToRecharge>
+            <range>28</range>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
+            <isPrimary>true</isPrimary>
+            <soundCast>DropPodOpen</soundCast>
+            <soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>3</muzzleFlashScale>
+            <AlwaysHits>true</AlwaysHits>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>				
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_FrostRay_II</defName>
+        <label>Frost Ray</label>
+        <uiIconPath>Spells/FrostRay</uiIconPath>
+		<description>Rapidly extending ray of super cooled particles that damages and freezes targets.
+Recharge time: 10s
+Range: 32
+Shots: 2</description>
+        <manaCost>0.26</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility_TrueBurst</verbClass>
+            <tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+            <tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+            <tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+            <tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Laser_FrostRay</defaultProjectile>
+            <abilityDef>TM_FrostRay_II</abilityDef>
+            <warmupTime>1.8</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>32</range>
+            <burstShotCount>2</burstShotCount>
+            <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
+            <isPrimary>true</isPrimary>
+            <soundCast>DropPodOpen</soundCast>
+            <soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+            <AlwaysHits>true</AlwaysHits>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>				
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_FrostRay_III</defName>
+        <label>Frost Ray</label>
+        <uiIconPath>Spells/FrostRay</uiIconPath>
+		<description>Rapidly extending ray of super cooled particles that damages and freezes targets.
+Recharge time: 6s
+Range: 36
+Shots: 3</description>
+        <manaCost>0.32</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility_TrueBurst</verbClass>
+            <tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+            <tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+            <tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+            <tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Laser_FrostRay</defaultProjectile>
+            <abilityDef>TM_FrostRay_II</abilityDef>
+            <warmupTime>2.0</warmupTime>
+            <SecondsToRecharge>6.0</SecondsToRecharge>
+            <range>36</range>
+            <burstShotCount>3</burstShotCount>
+            <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
+            <isPrimary>true</isPrimary>
+            <soundCast>DropPodOpen</soundCast>
+            <soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>5</muzzleFlashScale>
+            <AlwaysHits>true</AlwaysHits>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>				
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- FrostRay end-->
+	
+	<!-- Blizzard -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+	    <thingClass>TorannMagic.Projectile_Blizzard</thingClass>
+        <defName>Projectile_Blizzard</defName>
+        <label>Blizzard</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<soundExplode>Explosion_Flame</soundExplode>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>16</damageAmountBase>
+			<explosionRadius>10</explosionRadius>
+            <speed>9999</speed>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Blizzard</defName>
+        <label>Blizzard</label>
+        <uiIconPath>UI/blizzard</uiIconPath>
+        <description>Calls forth a deadly blizzard to bury your enemies in ice.</description>
+        <manaCost>0.65</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+            <tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+            <tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+            <tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+            <tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Blizzard</defaultProjectile>
+            <abilityDef>TM_Blizzard</abilityDef>
+            <warmupTime>2.0</warmupTime>
+            <SecondsToRecharge>120.0</SecondsToRecharge>
+            <range>80</range>
+            <forcedMissRadius>50</forcedMissRadius>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>15</ticksBetweenBurstShots>
+            <isPrimary>true</isPrimary>
+            <soundCast>DropPodLeaving</soundCast>
+            <soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>100</muzzleFlashScale>
+            <AlwaysHits>false</AlwaysHits>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- blizzard end-->
+
+	<!-- Firestorm -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+	    <thingClass>TorannMagic.Projectile_Firestorm</thingClass>
+        <defName>Projectile_Firestorm</defName>
+        <label>Firestorm</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<soundExplode>Explosion_Flame</soundExplode>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>16</damageAmountBase>
+			<explosionRadius>5</explosionRadius>
+            <speed>9999</speed>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Firestorm</defName>
+        <label>Firestorm</label>
+        <uiIconPath>UI/firestorm</uiIconPath>
+        <description>Calls forth the full fury of elemental fire in a meteor storm of death and destruction.</description>
+        <manaCost>0.60</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+            <tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+            <tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+            <tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+            <tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Firestorm</defaultProjectile>
+            <abilityDef>TM_Firestorm</abilityDef>
+            <warmupTime>2.0</warmupTime>
+            <SecondsToRecharge>120.0</SecondsToRecharge>
+            <range>60</range>
+            <forcedMissRadius>50</forcedMissRadius>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>15</ticksBetweenBurstShots>
+            <isPrimary>true</isPrimary>
+            <soundCast>DropPodLeaving</soundCast>
+            <soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>100</muzzleFlashScale>
+            <AlwaysHits>false</AlwaysHits>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- firestorm end-->
+
+    <!-- Fireball-->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_Fireball</thingClass>
+	    <defName>Projectile_Fireball</defName>
+        <label>fireball</label>
+        <graphicData>
+			<texPath>Spells/fireball4</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>62</damageAmountBase>
+            <speed>20</speed>
+			<explosionRadius>5</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Fireball</defName>
+        <label>Fireball</label>
+        <uiIconPath>Spells/fireball4</uiIconPath>
+        <description>Throws a massive, slow moving fireball.  Wreaks havoc and creates fire in the target area.</description>
+        <manaCost>0.50</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Fireball</defaultProjectile>
+            <abilityDef>TM_Fireball</abilityDef>
+            <warmupTime>1.5</warmupTime>
+            <SecondsToRecharge>30.0</SecondsToRecharge>
+            <range>120</range>
+            <burstShotCount>1</burstShotCount>
+			<forcedMissRadius>8.4</forcedMissRadius>
+            <soundCast>DropPodLeaving</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>false</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- fireball end-->
+	
+		<!-- Fire Claw -->
+	
+  <ThingDef Class="AbilityUser.ProjectileDef_Ability" ParentName="BaseBullet">
+   <thingClass>TorannMagic.Projectile_Fireclaw</thingClass>
+   <defName>Projectile_Fireclaw</defName>
+   <label>Fireclaw</label>
+   <graphicData>
+		<texPath>Spells/invis</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shaderType>TransparentPostLight</shaderType>
+	</graphicData>
+   <projectile>
+		<flyOverhead>false</flyOverhead>
+		<damageDef>Burn</damageDef>
+		<damageAmountBase>46</damageAmountBase>
+		<speed>200</speed>
+   </projectile>
+ </ThingDef>
+
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_Fireclaw</defName>
+    <label>Fireclaw</label>
+    <uiIconPath>UI/tendril</uiIconPath>
+    <description>Create streaming tendrils of fire that rake across your enemies, leaving only destruction and fire in its wake.</description>
+    <manaCost>0.30</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Fireclaw</defaultProjectile>
+		<abilityDef>TM_Fireclaw</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>10</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>40</range>
+		<isViolent>true</isViolent>
+        <soundCast>ThrowGrenade</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+         <isPrimary>false</isPrimary>
+		 <targetParams>
+      	 <canTargetPawns>true</canTargetPawns>
+      	 <canTargetBuildings>true</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+ 	<!-- fire claw end -->
+	
+	<!-- Snowball-->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_Snowball</thingClass>
+	    <defName>Projectile_Snowball</defName>
+        <label>Snowball</label>
+        <graphicData>
+			<texPath>Spells/Snowball</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<soundExplode>Explosion_Smoke</soundExplode>
+            <damageDef>Snowball</damageDef>
+            <damageAmountBase>7</damageAmountBase>
+            <speed>30</speed>
+			<explosionRadius>4</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Snowball</defName>
+        <label>Snowball</label>
+        <uiIconPath>Spells/Snowball</uiIconPath>
+        <description>Launch a massive ball of ice and snow that damages and freezes a large area upon impact.</description>
+        <manaCost>0.35</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Snowball</defaultProjectile>
+            <abilityDef>TM_Snowball</abilityDef>
+            <warmupTime>1.5</warmupTime>
+            <SecondsToRecharge>20.0</SecondsToRecharge>
+            <range>50</range>
+            <burstShotCount>1</burstShotCount>
+			<forcedMissRadius>12.4</forcedMissRadius>
+            <soundCast>MessagePositiveEvent</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+		    <AlwaysHits>false</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- snowball end-->
+	
+	<!-- Magic Missile -->
+	
+	 <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+        <thingClass>AbilityUser.Projectile_AbilityBase</thingClass>
+        <defName>Projectile_MagicMissile</defName>
+        <label>Magic Missile</label>
+        <graphicData>
+            <texPath>Spells/MagicMissile</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <flyOverhead>false</flyOverhead>
+            <damageDef>TM_MagicMissile</damageDef>
+            <damageAmountBase>13</damageAmountBase>
+            <speed>55</speed>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_MagicMissile</defName>
+        <label>Magic Missile</label>
+        <uiIconPath>Spells/MagicMissile</uiIconPath>
+        <description>Fire a wave of magic missiles at enemies.
+Chance to confuse: 3%
+Casting time: 2.5s
+Range: 24
+Projectiles: 16 over 3.2s
+Damage: 4</description>
+        <manaCost>0.20</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility_TrueBurst</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_MagicMissile</defaultProjectile>
+            <abilityDef>TM_MagicMissile</abilityDef>
+            <warmupTime>2.5</warmupTime>
+            <SecondsToRecharge>45.0</SecondsToRecharge>
+            <range>24</range>
+            <forcedMissRadius>4.5</forcedMissRadius>
+            <burstShotCount>16</burstShotCount>
+            <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
+            <isPrimary>false</isPrimary>
+			<soundCast>InfernoCannon_Fire</soundCast>
+            <soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+            <AlwaysHits>false</AlwaysHits>
+			<extraDamages>
+			  <li>
+				<damage>4</damage>
+				<damageDef>TM_MagicMissile</damageDef>
+				<chance>1</chance>
+			  </li>
+			</extraDamages>	
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_MagicMissile_I</defName>
+        <label>Magic Missile</label>
+        <uiIconPath>Spells/MagicMissile</uiIconPath>
+        <description>Fire a wave of magic missiles at enemies.
+Chance to confuse: 5%
+Casting time: 2s
+Range: 28
+Projectiles: 24 over 4s
+Damage: 5</description>
+        <manaCost>0.24</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility_TrueBurst</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_MagicMissile</defaultProjectile>
+            <abilityDef>TM_MagicMissile_I</abilityDef>
+            <warmupTime>2.0</warmupTime>
+            <SecondsToRecharge>40.0</SecondsToRecharge>
+            <range>28</range>
+            <forcedMissRadius>4.0</forcedMissRadius>
+            <burstShotCount>24</burstShotCount>
+            <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+            <isPrimary>false</isPrimary>
+            <soundCast>InfernoCannon_Fire</soundCast>
+            <soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>6</muzzleFlashScale>
+            <AlwaysHits>false</AlwaysHits>
+			<extraDamages>
+			  <li>
+				<damage>5</damage>
+				<damageDef>TM_MagicMissile</damageDef>
+				<chance>1</chance>
+			  </li>
+			</extraDamages>	
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_MagicMissile_II</defName>
+        <label>Magic Missile</label>
+        <uiIconPath>Spells/MagicMissile</uiIconPath>
+        <description>Fire a wave of magic missiles at enemies.
+Chance to confuse: 7%
+Casting time: 1.5s
+Range: 32
+Projectiles: 30 over 4s
+Damage: 6</description>
+        <manaCost>0.28</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility_TrueBurst</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_MagicMissile</defaultProjectile>
+            <abilityDef>TM_MagicMissile_II</abilityDef>
+            <warmupTime>1.5</warmupTime>
+            <SecondsToRecharge>30.0</SecondsToRecharge>
+            <range>32</range>
+            <forcedMissRadius>3.5</forcedMissRadius>
+            <burstShotCount>30</burstShotCount>
+            <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+            <isPrimary>false</isPrimary>
+            <soundCast>InfernoCannon_Fire</soundCast>
+            <soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>9</muzzleFlashScale>
+            <AlwaysHits>false</AlwaysHits>
+			<extraDamages>
+			  <li>
+				<damage>6</damage>
+				<damageDef>TM_MagicMissile</damageDef>
+				<chance>1</chance>
+			  </li>
+			</extraDamages>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_MagicMissile_III</defName>
+        <label>Magic Missile</label>
+        <uiIconPath>Spells/MagicMissile</uiIconPath>
+        <description>Fire a wave of magic missiles at enemies.
+Chance to confuse: 9%
+Casting time: 1s
+Range: 36
+Projectiles: 38 over 3.6s
+Damage: 7</description>
+        <manaCost>0.32</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility_TrueBurst</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_MagicMissile</defaultProjectile>
+            <abilityDef>TM_MagicMissile_III</abilityDef>
+            <warmupTime>1.0</warmupTime>
+            <SecondsToRecharge>20.0</SecondsToRecharge>
+            <range>36</range>
+            <forcedMissRadius>3.0</forcedMissRadius>
+            <burstShotCount>38</burstShotCount>
+            <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+            <isPrimary>false</isPrimary>
+            <soundCast>InfernoCannon_Fire</soundCast>
+            <soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>12</muzzleFlashScale>
+            <AlwaysHits>false</AlwaysHits>
+			<extraDamages>
+			  <li>
+				<damage>7</damage>
+				<damageDef>TM_MagicMissile</damageDef>
+				<chance>1</chance>
+			  </li>
+			</extraDamages>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Magic Missile end-->
+	
+	<!-- Icebolt -->
+	
+  <ThingDef Class="AbilityUser.ProjectileDef_Ability" ParentName="BaseBullet">
+    <defName>Projectile_Icebolt</defName>
+	<thingClass>TorannMagic.Projectile_Icebolt</thingClass>
+    <label>Icebolt</label>
+	<graphicData>
+      <texPath>Spells/Icebolt</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+	  <soundExplode>DeadfallSpring</soundExplode>
+	  <flyOverhead>false</flyOverhead>
+      <damageDef>Iceshard</damageDef>
+      <damageAmountBase>18</damageAmountBase>
+      <speed>60</speed>
+    </projectile>
+  </ThingDef>
+  
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_Icebolt</defName>
+    <label>Icebolt</label>
+    <description>Bolt of ice specially created to shatter into glass like shards upon impact, causing severe bleeding and damage in a small area.</description>
+	<uiIconPath>Spells/Icebolt</uiIconPath>
+    <manaCost>0.15</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+			<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>true</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Icebolt</defaultProjectile>
+		<abilityDef>TM_Icebolt</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>10</SecondsToRecharge>
+        <range>38</range>
+        <soundCast>ShotChargeRifle</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+		<isViolent>true</isViolent>
+		<burstShotCount>1</burstShotCount>
+		<forcedMissRadius>1.5</forcedMissRadius>
+		<targetParams>
+			<canTargetPawns>true</canTargetPawns>
+			<canTargetBuildings>false</canTargetBuildings>
+			<canTargetSelf>false</canTargetSelf>
+			<canTargetLocations>false</canTargetLocations>
+		</targetParams>
+		<extraDamages>
+		  <li>
+		    <damage>3</damage>
+			<damageDef>Iceshard</damageDef>
+			<chance>0.6</chance>
+		  </li>
+		</extraDamages>
+    </MainVerb>
+
+  </TorannMagic.TMAbilityDef>
+	
+	<!-- Icebolt end -->
+	
+		<!-- Firebolt -->
+	
+  <ThingDef Class="AbilityUser.ProjectileDef_Ability" ParentName="BaseBullet">
+    <defName>Projectile_Firebolt</defName>
+	<thingClass>TorannMagic.Projectile_Firebolt</thingClass>
+    <label>Firebolt</label>
+	<graphicData>
+      <texPath>Spells/firebolt</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+	  <soundExplode>DeadfallSpring</soundExplode>
+	  <flyOverhead>false</flyOverhead>
+      <damageDef>Firebolt</damageDef>
+      <damageAmountBase>14</damageAmountBase>
+      <speed>65</speed>
+    </projectile>
+  </ThingDef>
+  
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_Firebolt</defName>
+    <label>Firebolt</label>
+    <description>Bolt of  magic fire. Sets fire to the target.</description>
+	<uiIconPath>Spells/firebolt</uiIconPath>
+    <manaCost>0.15</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+			<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>true</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Firebolt</defaultProjectile>
+		<abilityDef>TM_Firebolt</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>6</SecondsToRecharge>
+        <range>32</range>
+        <soundCast>ThrowMolotovCocktail</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+		<isViolent>true</isViolent>
+		<burstShotCount>1</burstShotCount>
+		<AlwaysHits>true</AlwaysHits>
+		<targetParams>
+			<canTargetPawns>true</canTargetPawns>
+			<canTargetBuildings>false</canTargetBuildings>
+			<canTargetSelf>false</canTargetSelf>
+			<canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+
+  </TorannMagic.TMAbilityDef>
+	
+	<!-- Firebolt end -->
+	
+	
+	<!-- Lightning Storm  -->
+	
+  <ThingDef Class="AbilityUser.ProjectileDef_Ability" ParentName="BaseBullet">
+   <thingClass>TorannMagic.Projectile_LightningStorm</thingClass>
+   <defName>Projectile_LightningStorm</defName>
+   <label>Lightning Storm</label>
+   <graphicData>
+		<texPath>Spells/invis</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shaderType>TransparentPostLight</shaderType>
+	</graphicData>
+   <projectile>
+		<flyOverhead>false</flyOverhead>
+		<explosionRadius>10</explosionRadius>
+		<damageDef>TM_Lightning</damageDef>
+		<damageAmountBase>56</damageAmountBase>
+		<speed>1000</speed>
+		<postExplosionSpawnChance>1</postExplosionSpawnChance>
+   </projectile>
+ </ThingDef>
+
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_LightningStorm</defName>
+    <label>Lightning Storm</label>
+    <uiIconPath>UI/lightningstorm</uiIconPath>
+    <description>Create a fierce but uncontrolled lightning storm near the target location.</description>
+	<manaCost>0.60</manaCost>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_LightningStorm</defaultProjectile>
+		<abilityDef>TM_LightningStorm</abilityDef>
+        <warmupTime>5</warmupTime>
+        <SecondsToRecharge>300</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>200</range>
+		<isViolent>true</isViolent>
+        <soundCast>ThrowGrenade</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>false</AlwaysHits>
+         <isPrimary>false</isPrimary>
+		 <targetParams>
+      	 <canTargetPawns>true</canTargetPawns>
+      	 <canTargetBuildings>true</canTargetBuildings>
+      	 <canTargetSelf>true</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+ 	<!-- LightningStorm end -->
+	
+		<!-- Teleport start  -->
+	
+  <ThingDef Class="AbilityUser.ProjectileDef_Ability" ParentName="BaseBullet">
+   <thingClass>TorannMagic.Projectile_Teleport</thingClass>
+   <defName>Projectile_Teleport</defName>
+   <label>Teleport</label>
+   <graphicData>
+		<texPath>Spells/invis</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shaderType>TransparentPostLight</shaderType>
+	</graphicData>
+   <projectile>
+		<flyOverhead>false</flyOverhead>
+		<explosionRadius>4</explosionRadius>
+		<damageDef>Burn</damageDef>
+		<damageAmountBase>0</damageAmountBase>
+		<speed>1000</speed>
+		<postExplosionSpawnChance>1</postExplosionSpawnChance>
+   </projectile>
+ </ThingDef>
+
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_Teleport</defName>
+    <label>Teleport</label>
+    <uiIconPath>UI/teleport</uiIconPath>
+    <description>Mass teleport spell. Creates a temporary method of long range transport; but beware, portal collapses after a short period causing a feedback explosion near the portal.</description>
+    <manaCost>0.40</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Teleport</defaultProjectile>
+		<abilityDef>TM_Teleport</abilityDef>
+        <warmupTime>3</warmupTime>
+        <SecondsToRecharge>30</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>100</range>
+		<isViolent>false</isViolent>
+        <soundCast>ThrowGrenade</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+         <isPrimary>false</isPrimary>
+		 <targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+ 	<!-- Teleport end -->
+	
+	    <!-- Blink Start -->
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+        <thingClass>AbilityUser.Projectile_Ability</thingClass>
+		<defName>Projectile_Blink</defName>
+        <label>Blink</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+			<alwaysFreeIntercept>false</alwaysFreeIntercept>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>9999</speed>
+        </projectile>
+    </ThingDef>
+
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Blink</defName>
+        <label>Blink</label>
+        <uiIconPath>UI/blink</uiIconPath>
+        <description>Instantly moves caster to the target location.
+Casting time: 1s
+Recharge time: 10s
+Range: 30</description>
+        <manaCost>0.15</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Blink</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Blink</defaultProjectile>
+            <abilityDef>TM_Blink</abilityDef>
+            <!-- <AbilityTargetCategory>TargetLocation</AbilityTargetCategory> -->
+            <targetParams>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+            <warmupTime>2.0</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>30</range>
+			<isViolent>false</isViolent>
+			<requiresLineOfSight>false</requiresLineOfSight>
+			<stopBurstWithoutLos>false</stopBurstWithoutLos>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>MessagePositiveEvent</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	 <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Blink_I</defName>
+        <label>Blink</label>
+        <uiIconPath>UI/blink</uiIconPath>
+        <description>Instantly moves caster to the target location.
+Casting time: .8s
+Recharge time: 8s
+Range: 50</description>
+        <manaCost>0.15</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Blink</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Blink</defaultProjectile>
+            <abilityDef>TM_Blink_I</abilityDef>
+            <AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+            <targetParams>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+            <warmupTime>0.8</warmupTime>
+            <SecondsToRecharge>8.0</SecondsToRecharge>
+            <range>50</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>MessagePositiveEvent</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Blink_II</defName>
+        <label>Blink</label>
+        <uiIconPath>UI/blink</uiIconPath>
+        <description>Instantly moves caster to the target location.
+Casting time: .6s
+Recharge time: 6s
+Range: 70</description>
+        <manaCost>0.15</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Blink</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Blink</defaultProjectile>
+            <abilityDef>TM_Blink_II</abilityDef>
+            <AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+            <targetParams>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+            <warmupTime>0.6</warmupTime>
+            <SecondsToRecharge>6.0</SecondsToRecharge>
+            <range>70</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>MessagePositiveEvent</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Blink_III</defName>
+        <label>Blink</label>
+        <uiIconPath>UI/blink</uiIconPath>
+        <description>Instantly moves caster to the target location.
+Casting time: .4s
+Recharge time: 5s
+Range: 90</description>
+        <manaCost>0.15</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Blink</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Blink</defaultProjectile>
+            <abilityDef>TM_Blink_III</abilityDef>
+            <AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+            <targetParams>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+            <warmupTime>0.4</warmupTime>
+            <SecondsToRecharge>5.0</SecondsToRecharge>
+            <range>90</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>MessagePositiveEvent</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+    <!-- Blink End-->
+	
+		    <!-- Summon Start -->
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_AbilityLaser">
+        <thingClass>AbilityUser.Projectile_AbilityLaser</thingClass>
+		<defName>Projectile_Summon</defName>
+        <label>Summon</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>400</speed>
+        </projectile>
+        <preFiringInitialIntensity>0</preFiringInitialIntensity>
+        <preFiringFinalIntensity>20</preFiringFinalIntensity>
+        <postFiringInitialIntensity>20</postFiringInitialIntensity>
+        <postFiringFinalIntensity>0</postFiringFinalIntensity>
+        <preFiringDuration>10</preFiringDuration>
+        <postFiringDuration>83</postFiringDuration>
+    </ThingDef>
+
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Summon</defName>
+        <label>Summon</label>
+        <uiIconPath>UI/summon</uiIconPath>
+        <description>Summon objects to the casters location.
+Casting time: 1s
+Recharge time: 15s
+Range: 60</description>
+        <manaCost>0.18</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Summon</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Summon</defaultProjectile>
+            <abilityDef>TM_Summon</abilityDef>
+            <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>true</canTargetItems>
+				<canTargetPawns>true</canTargetPawns>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>1.0</warmupTime>
+            <SecondsToRecharge>15.0</SecondsToRecharge>
+            <range>60</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>MessagePositiveEvent</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Summon_I</defName>
+        <label>Summon</label>
+        <uiIconPath>UI/summon</uiIconPath>
+        <description>Summon objects to the casters location.
+Casting time: .8s
+Recharge time: 12s
+Range: 90</description>
+        <manaCost>0.18</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Summon</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Summon</defaultProjectile>
+            <abilityDef>TM_Summon_I</abilityDef>
+            <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>true</canTargetItems>
+				<canTargetPawns>true</canTargetPawns>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>0.8</warmupTime>
+            <SecondsToRecharge>12.0</SecondsToRecharge>
+            <range>90</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>MessagePositiveEvent</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Summon_II</defName>
+        <label>Summon</label>
+        <uiIconPath>UI/summon</uiIconPath>
+        <description>Summon objects to the casters location.
+Casting time: .6s
+Recharge time: 10s
+Range: 120</description>
+        <manaCost>0.18</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Summon</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Summon</defaultProjectile>
+            <abilityDef>TM_Summon_II</abilityDef>
+            <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>true</canTargetItems>
+				<canTargetPawns>true</canTargetPawns>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>0.6</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>120</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>MessagePositiveEvent</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Summon_III</defName>
+        <label>Summon</label>
+        <uiIconPath>UI/summon</uiIconPath>
+        <description>Summon objects to the casters location.
+Casting time: .4s
+Recharge time: 8s
+Range: 150</description>
+        <manaCost>0.18</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Summon</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Summon</defaultProjectile>
+            <abilityDef>TM_Summon_III</abilityDef>
+            <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
+            <targetParams>
+                <canTargetItems>true</canTargetItems>
+				<canTargetPawns>true</canTargetPawns>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetSelf>false</canTargetSelf>
+            </targetParams>
+            <warmupTime>0.4</warmupTime>
+            <SecondsToRecharge>8.0</SecondsToRecharge>
+            <range>150</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>MessagePositiveEvent</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+  <ThingDef ParentName="BaseBullet" Name="TM_SummonedPawn">
+   <defName>TM_SummonedPawn</defName>
+   <thingClass>AbilityUser.FlyingObject</thingClass>
+   <label>flying object</label>
+   <graphicData>
+		<texPath>Spells/invis</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+	</graphicData>
+   <projectile>
+		<flyOverhead>true</flyOverhead>
+		<damageDef>Stun</damageDef>
+		<damageAmountBase>0</damageAmountBase>
+		<speed>250</speed>
+   </projectile>
+ </ThingDef>
+ 
+   <ThingDef ParentName="BaseBullet" Name="MovingObject">
+   <defName>MovingObject</defName>
+   <thingClass>TorannMagic.MovingObject</thingClass>
+   <label>moving object</label>
+   <graphicData>
+		<texPath>Spells/invis</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+	</graphicData>
+   <projectile> 
+		<flyOverhead>true</flyOverhead>
+		<damageDef>Stun</damageDef>
+		<damageAmountBase>0</damageAmountBase>
+		<speed>250</speed>
+   </projectile>
+ </ThingDef>
+ 
+
+    <!-- Summon End-->
+	
+			    <!-- Rainmaker Start -->
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_AbilityLaser">
+        <thingClass>AbilityUser.FlyingObject</thingClass>
+		<defName>Projectile_Rainmaker</defName>
+        <label>Rainmaker</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>120</speed>
+        </projectile>
+        <preFiringInitialIntensity>0</preFiringInitialIntensity>
+        <preFiringFinalIntensity>20</preFiringFinalIntensity>
+        <postFiringInitialIntensity>20</postFiringInitialIntensity>
+        <postFiringFinalIntensity>0</postFiringFinalIntensity>
+        <preFiringDuration>10</preFiringDuration>
+        <postFiringDuration>83</postFiringDuration>
+    </ThingDef>
+
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Rainmaker</defName>
+        <label>Rainmaker</label>
+        <uiIconPath>UI/rain</uiIconPath>
+        <description>Alters the conditions in the atmosphere, causing it to rain.</description>
+        <manaCost>0.20</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Rainmaker</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Rainmaker</defaultProjectile>
+            <abilityDef>TM_Rainmaker</abilityDef>
+            <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+            <targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+            <warmupTime>5</warmupTime>
+            <SecondsToRecharge>120</SecondsToRecharge>
+            <range>0</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>MessagePositiveEvent</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+    <!-- Rainmaker End-->
+
+		    <!-- Eye of the Storm -->
+		
+	<ThingDef ParentName="BaseBullet" Name="FlyingObject_EyeOfTheStorm">
+	   <defName>FlyingObject_EyeOfTheStorm</defName>
+	   <thingClass>TorannMagic.FlyingObject_EyeOfTheStorm</thingClass>
+	   <label>flying object</label>
+	   <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	   <projectile>
+			<flyOverhead>true</flyOverhead>
+			<damageDef>Stun</damageDef>
+			<damageAmountBase>0</damageAmountBase>
+			<speed>250</speed>
+	   </projectile>
+	</ThingDef>
+			
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+        <thingClass>AbilityUser.Projectile_Ability</thingClass>
+		<defName>Projectile_EyeOfTheStorm</defName>
+        <label>Eye of the Storm</label>
+        <graphicData>
+			<texPath>Spells/eyeofthestorm</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>TM_Holy</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>70</speed>
+        </projectile>
+    </ThingDef>
+
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_EyeOfTheStorm</defName>
+        <label>Eye of the Storm</label>
+        <uiIconPath>Spells/eyeofthestorm</uiIconPath>
+        <description>Release a ball of pure electrical energy that annihilates everything it its path.</description>
+        <manaCost>0.65</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Effect_EyeOfTheStorm</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_EyeOfTheStorm</defaultProjectile>
+            <abilityDef>TM_EyeOfTheStorm</abilityDef>
+            <AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+            <targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+            <warmupTime>0.5</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>80</range>
+			<isViolent>true</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>DropPodLeaving</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>true</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	 <!-- Fold Reality -->
+	 
+	 <ThingDef Class="AbilityUser.ProjectileDef_Ability" ParentName="BaseBullet">
+	   <thingClass>AbilityUser.Projectile_AbilityBase</thingClass>
+	   <defName>Projectile_FoldReality</defName>
+	   <label>fold reality</label>
+	   <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+	   <projectile>
+			<flyOverhead>false</flyOverhead>
+			<explosionRadius>5</explosionRadius>
+			<damageDef>Burn</damageDef>
+			<damageAmountBase>0</damageAmountBase>
+			<speed>1000</speed>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+	   </projectile>
+	 </ThingDef>
+ 
+	 <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_FoldReality</defName>
+        <label>Gateway</label>
+        <uiIconPath>UI/gateway2</uiIconPath>
+        <description>Folds reality to open a gateway to another player controlled location and instantly moves all pawns and items in a 7 cell radius around the target cell to the caster.</description>
+        <manaCost>0.75</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_FoldReality</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_FoldReality</defaultProjectile>
+            <abilityDef>TM_FoldReality</abilityDef>
+            <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+            <targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+            <warmupTime>3</warmupTime>
+            <SecondsToRecharge>600</SecondsToRecharge>
+            <range>0</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>MessagePositiveEvent</soundCast>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+
+</Defs>

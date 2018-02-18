@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+<!-- BASE -->
+
+  <DamageDef Name="LocalInjuryBase" Abstract="True">
+    <workerClass>DamageWorker_AddInjury</workerClass>
+  </DamageDef>
+  
+<!--   	<DamageDef Name="StunBase" Abstract="True">
+		<harmsHealth>false</harmsHealth>
+		<makesBlood>false</makesBlood>
+	</DamageDef> -->
+  
+  <!-- Torann Magic Damage Defs -->
+  
+  	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_Holy</defName>
+		<label>Holy</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was destroyed by divine power.</deathMessage>
+		<hediff>TM_Holy</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<explosionDamage>12</explosionDamage>
+		<armorCategory>Heat</armorCategory>
+		<explosionSnowMeltAmount>.5</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_BlastFlame</explosionCellMote>
+		<explosionColorCenter>(1, 1, 1)</explosionColorCenter>
+		<explosionColorEdge>(1, 0.85, 0.8)</explosionColorEdge>
+		<soundExplosion>Explosion_Flame</soundExplosion>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_Death</defName>
+		<label>Death</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was taken by death.</deathMessage>
+		<hediff>TM_DeathMarkHD</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<explosionDamage>0</explosionDamage>
+		<armorCategory>Heat</armorCategory>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_Torment</defName>
+		<label>Torment</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was consumed by pain.</deathMessage>
+		<hediff>TM_TormentHD</hediff>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+		<explosionDamage>1</explosionDamage>
+		<armorCategory>Heat</armorCategory>
+		<soundExplosion>Explosion_Smoke</soundExplosion>
+		<additionalHediffs>
+			<li>
+				<hediff>TM_Torment_HD</hediff>
+				<severityPerDamageDealt>.6</severityPerDamageDealt>
+			</li>
+		</additionalHediffs>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_CorpseExplosion</defName>
+		<label>corpse explosion</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was destroyed by an exploding corpse.</deathMessage>
+		<hediff>Shredded</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<explosionDamage>20</explosionDamage>
+		<spreadOut>true</spreadOut>
+		<armorCategory>Blunt</armorCategory>
+		<explosionSnowMeltAmount>.25</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_BlastFlame</explosionCellMote>
+		<explosionColorCenter>(0.27, 0.17, 0.28)</explosionColorCenter>
+		<explosionColorEdge>(0.44, 0.55, 0.16)</explosionColorEdge>
+		<soundExplosion>Explosion_Bomb</soundExplosion>
+		<additionalHediffs>
+			<li>
+				<hediff>TM_Terror</hediff>
+				<severityPerDamageDealt>.05</severityPerDamageDealt>
+			</li>
+		</additionalHediffs>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_Overwhelm</defName>
+		<label>Divine Power</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was destroyed by divine power.</deathMessage>
+		<hediff>TM_Holy</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<explosionDamage>12</explosionDamage>
+		<armorCategory>Heat</armorCategory>
+		<explosionSnowMeltAmount>.5</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_BlastFlame</explosionCellMote>
+		<explosionColorCenter>(1, 1, 1)</explosionColorCenter>
+		<explosionColorEdge>(1, 1, 1)</explosionColorEdge>
+		<soundExplosion>Explosion_Flame</soundExplosion>
+		<additionalHediffs>
+			<li>
+				<hediff>TM_Blind</hediff>
+				<severityPerDamageDealt>.05</severityPerDamageDealt>
+			</li>
+		</additionalHediffs>
+	</DamageDef>
+  
+  <DamageDef>
+    <defName>TM_Heal_I</defName>
+    <label>Heal (I)</label>
+    <workerClass>TorannMagic.Verb_Heal</workerClass>
+    <hasForcefulImpact>false</hasForcefulImpact>
+    <harmsHealth>false</harmsHealth>
+    <makesBlood>false</makesBlood>
+    <canInterruptJobs>false</canInterruptJobs>
+  </DamageDef>
+  
+  	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_MagicMissile</defName>
+		<label>Magic Missile</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was destroyed by arcane magic.</deathMessage>
+		<hediff>TM_MagicMissile</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Slice</impactSoundType>
+		<armorCategory>Sharp</armorCategory>
+		<additionalHediffs>
+			<li>
+				<hediff>TM_Confused</hediff>
+				<severityPerDamageDealt>0.01</severityPerDamageDealt>
+			</li>
+		</additionalHediffs>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_MagicMissile_Weak</defName>
+		<label>magical energy</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was destroyed by arcane magic.</deathMessage>
+		<hediff>TM_MagicMissile</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Slice</impactSoundType>
+		<armorCategory>Sharp</armorCategory>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_ManaMine</defName>
+		<label>Mana mine</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was destroyed by arcane magic.</deathMessage>
+		<hediff>TM_ManaMine</hediff>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Blunt</armorCategory>
+		<spreadOut>true</spreadOut>
+		<explosionDamage>50</explosionDamage>
+		<explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+		<explosionHeatEnergyPerCell>0</explosionHeatEnergyPerCell>
+		<explosionCellMote>Mote_BlastDry</explosionCellMote>
+		<explosionColorCenter>(.9, 0.8, 1)</explosionColorCenter>
+		<explosionColorEdge>(.6, .2, 1)</explosionColorEdge>
+		<soundExplosion>Explosion_Bomb</soundExplosion>
+		<combatLogRules>Damage_Bomb</combatLogRules>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_Fireball_I</defName>
+		<label>Fire Magic</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was destroyed by elemental fire.</deathMessage>
+		<hediff>Burn</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<explosionDamage>2</explosionDamage>
+		<armorCategory>Heat</armorCategory>
+		<explosionSnowMeltAmount>.5</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_BlastFlame</explosionCellMote>
+		<explosionColorCenter>(1, 0.7, 0.7)</explosionColorCenter>
+		<explosionColorEdge>(1, 1, 0.7)</explosionColorEdge>
+		<soundExplosion>Explosion_Flame</soundExplosion>
+		<additionalHediffs>
+			<li>
+				<hediff>TM_Terror</hediff>
+				<severityPerDamageDealt>1.5</severityPerDamageDealt>
+			</li>
+		</additionalHediffs>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_Fireball_II</defName>
+		<label>Fire Magic</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was destroyed by elemental fire.</deathMessage>
+		<hediff>Burn</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<explosionDamage>4</explosionDamage>
+		<armorCategory>Heat</armorCategory>
+		<explosionSnowMeltAmount>.5</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_BlastFlame</explosionCellMote>
+		<explosionColorCenter>(1, 0.7, 0.7)</explosionColorCenter> 
+		<explosionColorEdge>(1, 1, 0.7)</explosionColorEdge>
+		<soundExplosion>Explosion_Flame</soundExplosion>
+		<additionalHediffs>
+			<li>
+				<hediff>TM_Terror</hediff>
+				<severityPerDamageDealt>2.25</severityPerDamageDealt>
+			</li>
+		</additionalHediffs>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_Fireball_III</defName>
+		<label>Fire Magic</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was destroyed by elemental fire.</deathMessage>
+		<hediff>Burn</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<explosionDamage>6</explosionDamage>
+		<armorCategory>Heat</armorCategory>
+		<explosionSnowMeltAmount>1</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_BlastFlame</explosionCellMote>
+		<explosionColorCenter>(1, 0.7, 0.7)</explosionColorCenter>
+		<explosionColorEdge>(1, 1, 0.7)</explosionColorEdge>
+		<soundExplosion>Explosion_Flame</soundExplosion>
+		<additionalHediffs>
+			<li>
+				<hediff>TM_Terror</hediff>
+				<severityPerDamageDealt>3</severityPerDamageDealt>
+			</li>
+		</additionalHediffs>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_Firestorm_Tiny</defName>
+		<label>Fire Magic</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was destroyed by elemental fire.</deathMessage>
+		<hediff>Burn</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<explosionDamage>12</explosionDamage>
+		<armorCategory>Heat</armorCategory>
+		<explosionSnowMeltAmount>1</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_BlastFlame</explosionCellMote>
+		<explosionColorCenter>(1, 0.7, 0.7)</explosionColorCenter>
+		<explosionColorEdge>(1, 1, 0.7)</explosionColorEdge>
+		<soundExplosion>Explosion_Flame</soundExplosion>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_Firestorm_Small</defName>
+		<label>Fire Magic</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was destroyed by elemental fire.</deathMessage>
+		<hediff>Burn</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<explosionDamage>25</explosionDamage>
+		<armorCategory>Heat</armorCategory>
+		<explosionSnowMeltAmount>1</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_BlastFlame</explosionCellMote>
+		<explosionColorCenter>(1, 0.6, 0.5)</explosionColorCenter>
+		<explosionColorEdge>(1, .95, 0.7)</explosionColorEdge>
+		<soundExplosion>Explosion_Flame</soundExplosion>
+		<additionalHediffs>
+			<li>
+				<hediff>TM_Terror</hediff>
+				<severityPerDamageDealt>1</severityPerDamageDealt>
+			</li>
+		</additionalHediffs>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_Firestorm_Large</defName>
+		<label>Fire Magic</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was destroyed by elemental fire.</deathMessage>
+		<hediff>Burn</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<explosionDamage>50</explosionDamage>
+		<armorCategory>Heat</armorCategory>
+		<explosionSnowMeltAmount>1</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_BlastFlame</explosionCellMote>
+		<explosionColorCenter>(1, 0.5, 0.4)</explosionColorCenter>
+		<explosionColorEdge>(1, .9, 0.65)</explosionColorEdge>
+		<soundExplosion>Explosion_Flame</soundExplosion>
+		<additionalHediffs>
+			<li>
+				<hediff>TM_Terror</hediff>
+				<severityPerDamageDealt>3</severityPerDamageDealt>
+			</li>
+		</additionalHediffs>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_Blizzard_Small</defName>
+		<label>Ice Magic</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} froze to death in a blizzard.</deathMessage>
+		<hediff>Blizzard</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<explosionDamage>30</explosionDamage>
+		<armorCategory>Heat</armorCategory>
+		<explosionSnowMeltAmount>0</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_SparkFlash</explosionCellMote>
+		<explosionColorCenter>(0.0, 0.1, 1.0, 0.7)</explosionColorCenter>
+		<explosionColorEdge>(0.0, 0.3, 1.0, 0.8)</explosionColorEdge>
+		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
+		<soundExplosion>ArtilleryHitThickRoof</soundExplosion>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_Blizzard_Large</defName>
+		<label>Ice Magic</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} froze to death in a blizzard.</deathMessage>
+		<hediff>Blizzard</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Heat</armorCategory>
+		<explosionDamage>20</explosionDamage>
+		<explosionSnowMeltAmount>0</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_SparkFlash</explosionCellMote>
+		<explosionColorCenter>(1, 1, 1.0, 0.7)</explosionColorCenter>
+		<explosionColorEdge>(0.0, 0.3, 1.0, 0.8)</explosionColorEdge>
+		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
+		<soundExplosion>ArtilleryHitThickRoof</soundExplosion>
+	</DamageDef>
+  
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_Lightning</defName>
+		<label>Lightning Magic</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was destroyed by elemental lightning.</deathMessage>
+		<hediff>TM_Lightning</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<explosionDamage>6</explosionDamage>
+		<armorCategory>Electric</armorCategory>
+		<explosionSnowMeltAmount>0</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_BlastEMP</explosionCellMote>
+		<explosionColorCenter>(0.8, 0.7, 1.0, 0.8)</explosionColorCenter>
+		<explosionColorEdge>(1, 0.7, 1.0, 0.8)</explosionColorEdge>
+		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
+		<soundExplosion>Explosion_EMP</soundExplosion>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_LightningCloud</defName>
+		<label>Lightning Magic</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was destroyed by elemental lightning.</deathMessage>
+		<hediff>TM_LightningCloud</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<explosionDamage>6</explosionDamage>
+		<impactSoundType>Electric</impactSoundType>
+		<armorCategory>Electric</armorCategory>
+		<explosionSnowMeltAmount>0</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_SparkFlash</explosionCellMote>
+		<explosionColorEdge>(0.8, 0.7, 1.0, 0.8)</explosionColorEdge>
+		<explosionColorCenter>(1, 0.7, 1.0, 0.8)</explosionColorCenter>
+		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
+		<explosionBuildingDamageFactor>0.0</explosionBuildingDamageFactor>
+		<soundExplosion>Explosion_EMP</soundExplosion>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>FrostRay</defName>
+		<label>frostray</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} has frozen to death.</deathMessage>
+		<hediff>FrostRay</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Heat</armorCategory>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>Snowball</defName>
+		<label>snowball</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} has frozen to death.</deathMessage>
+		<hediff>Snowball</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Heat</armorCategory>
+		<explosionDamage>10</explosionDamage>
+		<explosionSnowMeltAmount>0</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_SparkFlash</explosionCellMote>
+		<explosionColorEdge>(0.0, 0.2, 1.0, 0.8)</explosionColorEdge>
+		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
+		<soundExplosion>ArtilleryHitThickRoof</soundExplosion>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>Iceshard</defName>
+		<label>Iceshard</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} has been shredded by shards of ice.</deathMessage>
+		<hediff>Iceshard</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Slice</impactSoundType>
+		<armorCategory>Sharp</armorCategory>
+		<explosionDamage>8</explosionDamage>
+		<explosionSnowMeltAmount>0</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_SparkFlash</explosionCellMote>
+		<explosionColorEdge>(0.0, 0.2, 1.0, 0.8)</explosionColorEdge>
+		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
+		<soundExplosion>PunchThroughRoofMetal</soundExplosion>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>Firebolt</defName>
+		<workerClass>DamageWorker_Flame</workerClass>
+		<hasForcefulImpact>true</hasForcefulImpact>
+		<makesBlood>false</makesBlood>
+		<label>Firebolt</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} has been consumned by fire.</deathMessage>
+		<hediff>TM_Firebolt</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<armorCategory>Heat</armorCategory>
+		<explosionDamage>4</explosionDamage>
+		<explosionHeatEnergyPerCell>25</explosionHeatEnergyPerCell>
+		<explosionSnowMeltAmount>1</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_BlastFlame</explosionCellMote>
+		<explosionColorEdge>(1, 0.7, 0.7)</explosionColorEdge>
+		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
+		<soundExplosion>Explosion_Flame</soundExplosion>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>RayofHope</defName>
+		<label>Magical Augmentation</label>
+		<externalViolence>false</externalViolence>
+		<canInterruptJobs>false</canInterruptJobs>
+		<makesBlood>false</makesBlood>
+		<hasForcefulImpact>false</hasForcefulImpact>
+		<deathMessage>{0} mysteriously departed.</deathMessage>
+<!-- 		<hediff>RayofHope</hediff> -->
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+		<explosionDamage>0</explosionDamage>
+		<isExplosive>false</isExplosive>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Heat</armorCategory>
+		<explosionSnowMeltAmount>0</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_ThoughtGood</explosionCellMote>
+		<explosionColorEdge>(0.8, 0.7, 1.0, 0.8)</explosionColorEdge>
+		<explosionColorCenter>(1, 0.7, 1.0, 0.8)</explosionColorCenter>
+		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
+		<explosionBuildingDamageFactor>0.0</explosionBuildingDamageFactor>
+		<soundExplosion>Explosion_EMP</soundExplosion>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>SoothingBreeze</defName>
+		<label>Magical Augmentation</label>
+		<externalViolence>false</externalViolence>
+		<canInterruptJobs>false</canInterruptJobs>
+		<makesBlood>false</makesBlood>
+		<hasForcefulImpact>false</hasForcefulImpact>
+		<deathMessage>{0} mysteriously departed.</deathMessage>
+		<hediff>SoothingBreeze_I</hediff>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+		<explosionDamage>0</explosionDamage>
+		<isExplosive>false</isExplosive>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Heat</armorCategory>
+		<explosionSnowMeltAmount>0</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_ThoughtGood</explosionCellMote>
+		<explosionColorEdge>(0.8, 0.7, 1.0, 0.8)</explosionColorEdge>
+		<explosionColorCenter>(1, 0.7, 1.0, 0.8)</explosionColorCenter>
+		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
+		<explosionBuildingDamageFactor>0.0</explosionBuildingDamageFactor>
+		<soundExplosion>Explosion_EMP</soundExplosion>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>AMP</defName>
+		<label>Magical Augmentation</label>
+		<externalViolence>false</externalViolence>
+		<canInterruptJobs>false</canInterruptJobs>
+		<makesBlood>false</makesBlood>
+		<hasForcefulImpact>false</hasForcefulImpact>
+		<deathMessage>{0} mysteriously departed.</deathMessage>
+		<hediff>AMP_I</hediff>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+		<explosionDamage>0</explosionDamage>
+		<isExplosive>false</isExplosive>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Electric</armorCategory>
+		<explosionSnowMeltAmount>0</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_ThoughtGood</explosionCellMote>
+		<explosionColorEdge>(0.8, 0.7, 1.0, 0.8)</explosionColorEdge>
+		<explosionColorCenter>(1, 0.7, 1.0, 0.8)</explosionColorCenter>
+		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
+		<explosionBuildingDamageFactor>0.0</explosionBuildingDamageFactor>
+		<soundExplosion>Explosion_EMP</soundExplosion>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>Shadow</defName>
+		<label>Magical Augmentation</label>
+		<externalViolence>false</externalViolence>
+		<canInterruptJobs>false</canInterruptJobs>
+		<makesBlood>false</makesBlood>
+		<hasForcefulImpact>false</hasForcefulImpact>
+		<deathMessage>{0} mysteriously departed.</deathMessage>
+		<hediff>Shadow_I</hediff>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+		<explosionDamage>0</explosionDamage>
+		<isExplosive>false</isExplosive>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Heat</armorCategory>
+		<explosionSnowMeltAmount>0</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_ThoughtGood</explosionCellMote>
+		<explosionColorEdge>(0.8, 0.7, 1.0, 0.8)</explosionColorEdge>
+		<explosionColorCenter>(1, 0.7, 1.0, 0.8)</explosionColorCenter>
+		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
+		<explosionBuildingDamageFactor>0.0</explosionBuildingDamageFactor>
+		<soundExplosion>Explosion_EMP</soundExplosion>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_GrapplingHook</defName>
+		<label>Grappling Hook</label>
+		<externalViolence>true</externalViolence>
+		<canInterruptJobs>true</canInterruptJobs>
+		<makesBlood>true</makesBlood>
+		<hasForcefulImpact>true</hasForcefulImpact>
+		<deathMessage>{0} was torn apart.</deathMessage>
+		<hediff>TM_GrapplingHook</hediff>
+		<hediffSkin>TM_GrapplingHook</hediffSkin>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+		<isExplosive>false</isExplosive>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Blunt</armorCategory>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_Whirlwind</defName>
+		<label>Whirlwind</label>
+		<externalViolence>true</externalViolence>
+		<canInterruptJobs>true</canInterruptJobs>
+		<makesBlood>true</makesBlood>
+		<hasForcefulImpact>true</hasForcefulImpact>
+		<deathMessage>{0} was cut down.</deathMessage>
+		<hediff>TM_Whirlwind_Knockdown</hediff>
+		<hediffSkin>TM_Whirlwind_Knockdown</hediffSkin>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+		<isExplosive>false</isExplosive>
+		<impactSoundType>Slice</impactSoundType>
+		<armorCategory>Sharp</armorCategory>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_Cleave</defName>
+		<label>Cleave</label>
+		<externalViolence>true</externalViolence>
+		<canInterruptJobs>true</canInterruptJobs>
+		<makesBlood>true</makesBlood>
+		<hasForcefulImpact>true</hasForcefulImpact>
+		<deathMessage>{0} was cut in two by a massive blow.</deathMessage>
+		<hediff>Cut</hediff>
+		<hediffSkin>Cut</hediffSkin>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<isExplosive>false</isExplosive>
+		<impactSoundType>Slice</impactSoundType>
+		<armorCategory>Sharp</armorCategory>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_Headshot</defName>
+		<label>Headshot</label>
+		<externalViolence>true</externalViolence>
+		<canInterruptJobs>true</canInterruptJobs>
+		<makesBlood>true</makesBlood>
+		<hasForcefulImpact>true</hasForcefulImpact>
+		<deathMessage>{0} was taken out with a headshot.</deathMessage>
+		<hediff>Gunshot</hediff>
+		<hediffSkin>Gunshot</hediffSkin>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<isExplosive>false</isExplosive>
+		<impactSoundType>Bullet</impactSoundType>
+		<armorCategory>Sharp</armorCategory>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_DisablingShot</defName>
+		<label>Disabling Shot</label>
+		<externalViolence>true</externalViolence>
+		<canInterruptJobs>true</canInterruptJobs>
+		<makesBlood>true</makesBlood>
+		<hasForcefulImpact>true</hasForcefulImpact>
+		<deathMessage>{0} died from a disabling shot...</deathMessage>
+		<hediff>TM_DisablingShot_HD</hediff>
+		<hediffSkin>TM_DisablingShot_HD</hediffSkin>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<isExplosive>false</isExplosive>
+		<impactSoundType>Bullet</impactSoundType>
+		<armorCategory>Sharp</armorCategory>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_Tranquilizer</defName>
+		<label>Disabling Shot</label>
+		<externalViolence>true</externalViolence>
+		<canInterruptJobs>true</canInterruptJobs>
+		<makesBlood>true</makesBlood>
+		<hasForcefulImpact>true</hasForcefulImpact>
+		<deathMessage>{0} died from a disabling shot...</deathMessage>
+		<hediff>TM_DisablingShot_HD</hediff>
+		<hediffSkin>TM_DisablingShot_HD</hediffSkin>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<isExplosive>false</isExplosive>
+		<impactSoundType>Bullet</impactSoundType>
+		<armorCategory>Sharp</armorCategory>
+		<additionalHediffs>
+			<li>
+				<hediff>TM_Tranquilizer_HD</hediff>
+				<severityPerDamageDealt>1</severityPerDamageDealt>
+			</li>
+		</additionalHediffs>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_Poison</defName>
+		<label>Poison</label>
+		<externalViolence>true</externalViolence>
+		<canInterruptJobs>false</canInterruptJobs>
+		<makesBlood>false</makesBlood>
+		<hasForcefulImpact>false</hasForcefulImpact>
+		<deathMessage>{0} succumbed to poison.</deathMessage>
+		<hediff>TM_Poison_HD</hediff>
+		<hediffSkin>TM_Poison_HD</hediffSkin>
+		<hediffSolid>TM_Poison_HD</hediffSolid>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<isExplosive>false</isExplosive>
+		<impactSoundType>Bullet</impactSoundType>
+		<armorCategory>Sharp</armorCategory>
+		<additionalHediffs>
+			<li>
+				<hediff>TM_Slow_HD</hediff>
+				<severityPerDamageDealt>.1</severityPerDamageDealt>
+			</li>
+		</additionalHediffs>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_PhaseStrike</defName>
+		<label>phase strike</label>
+		<externalViolence>true</externalViolence>
+		<canInterruptJobs>true</canInterruptJobs>
+		<makesBlood>true</makesBlood>
+		<hasForcefulImpact>true</hasForcefulImpact>
+		<deathMessage>{0} was cut to ribbons.</deathMessage>
+		<hediff>Cut</hediff>
+		<hediffSkin>Cut</hediffSkin>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<armorCategory>Sharp</armorCategory>
+		<isExplosive>false</isExplosive>		
+		<additionalHediffs>
+			<li>
+				<hediff>TM_HamstringHD</hediff>
+				<severityPerDamageDealt>.5</severityPerDamageDealt>
+			</li>
+		</additionalHediffs>
+	</DamageDef>
+	
+  <DamageDef ParentName="LocalInjuryBase">
+    <defName>TM_Arrow</defName>
+    <label>arrow storm</label>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has been shot to death.</deathMessage>
+    <hediff>Cut</hediff>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Bullet</impactSoundType>
+    <armorCategory>Sharp</armorCategory>
+	<isExplosive>false</isExplosive>
+  </DamageDef>
+  
+    <DamageDef ParentName="LocalInjuryBase">
+    <defName>TM_Shrapnel</defName>
+    <label>ranger extra damage</label>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has been shot to death.</deathMessage>
+    <hediff>Cut</hediff>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Bullet</impactSoundType>
+    <armorCategory>Sharp</armorCategory>
+	<isExplosive>false</isExplosive>
+  </DamageDef>
+
+</Defs>

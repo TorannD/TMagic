@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+<ThingDef Class="AbilityUser.ProjectileDef_Ability" ParentName="BaseBullet">
+   <thingClass>AbilityUser.Projectile_Ability</thingClass>
+   <defName>Projectile_TM_SpawnThing</defName>
+   <label>spawn magical item</label>
+   <graphicData>
+		<texPath>Spells/invis</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shaderType>TransparentPostLight</shaderType>
+	</graphicData>
+   <projectile>
+		<flyOverhead>false</flyOverhead>
+		<damageDef>Burn</damageDef>
+		<damageAmountBase>0</damageAmountBase>
+		<speed>1000</speed>
+   </projectile>   
+ </ThingDef>
+ 
+<!--  Heater -->
+
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_Heater</defName>
+    <label>Magical heater</label>
+    <uiIconPath>UI/heater</uiIconPath>
+    <description>Creates a dimensional pocket that taps into the Plane of Fire, generating constant heat in a confined area.  The energy holding this pocket open will disperse after several days.</description>
+    <manaCost>0.25</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_TM_SpawnThing</defaultProjectile>
+		<abilityDef>TM_Heater</abilityDef>
+        <warmupTime>5</warmupTime>
+        <SecondsToRecharge>60</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>20</range>
+		<isViolent>false</isViolent>
+        <soundCast>ThrowGrenade</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+         <isPrimary>false</isPrimary>
+		 <targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+		<thingsToSpawn>
+		  <li>
+		    <def>TM_Heater</def>
+			<spawnCount>1</spawnCount>
+			<kindDef>Colonist</kindDef>
+		  </li>
+		</thingsToSpawn>		
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+ <!--  Cooler -->
+ 
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_Cooler</defName>
+    <label>Magical cooler</label>
+    <uiIconPath>Other/cooler</uiIconPath>
+    <description>Creates a dimensional pocket that taps into the Plane of Ice, reducing heat in a confined area.  The energy holding this pocket open will disperse after several days.</description>
+    <manaCost>0.25</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_TM_SpawnThing</defaultProjectile>
+		<abilityDef>TM_Cooler</abilityDef>
+        <warmupTime>5</warmupTime>
+        <SecondsToRecharge>60</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>20</range>
+		<isViolent>false</isViolent>
+        <soundCast>ThrowGrenade</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+         <isPrimary>false</isPrimary>
+		 <targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+		<thingsToSpawn>
+		  <li>
+		    <def>TM_Cooler</def>
+			<spawnCount>1</spawnCount>
+			<kindDef>Colonist</kindDef>
+		  </li>
+		</thingsToSpawn>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+ <!--  Remove Moisture  -->
+ <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_DryGround</thingClass>
+	    <defName>Projectile_DryGround</defName>
+        <label>dry ground</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>200</speed>
+        </projectile>
+    </ThingDef>
+ 
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_DryGround</defName>
+    <label>Dry Ground</label>
+    <uiIconPath>UI/dryground</uiIconPath>
+    <description>Infuses the ground with heat, evaporating most of the moisture from a patch of ground.  Only works on muddy ground.</description>
+    <manaCost>0.20</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_BLOS</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_DryGround</defaultProjectile>
+		<abilityDef>TM_DryGround</abilityDef>
+        <warmupTime>1.5</warmupTime>
+        <SecondsToRecharge>1.5</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>12</range>
+		<isViolent>false</isViolent>
+        <soundCast>ThrowGrenade</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+         <isPrimary>false</isPrimary>
+		 <targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+  <!--  Add Moisture  -->
+ <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_WetGround</thingClass>
+	    <defName>Projectile_WetGround</defName>
+        <label>moisturize ground</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>200</speed>
+        </projectile>
+    </ThingDef>
+ 
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_WetGround</defName>
+    <label>Moisturize Ground</label>
+    <uiIconPath>UI/wetground</uiIconPath>
+    <description>Infuses sand with water, creating usable soil.</description>
+    <manaCost>0.20</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_BLOS</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_WetGround</defaultProjectile>
+		<abilityDef>TM_WetGround</abilityDef>
+        <warmupTime>1.5</warmupTime>
+        <SecondsToRecharge>1.5</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>12</range>
+		<isViolent>false</isViolent>
+        <soundCast>ThrowGrenade</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+         <isPrimary>false</isPrimary>
+		 <targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+  <!--  Charge Battery  -->
+ <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_ChargeBattery</thingClass>
+	    <defName>Projectile_ChargeBattery</defName>
+        <label>charge battery</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>200</speed>
+        </projectile>
+    </ThingDef>
+ 
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_ChargeBattery</defName>
+    <label>Charge Battery</label>
+    <uiIconPath>UI/chargebattery</uiIconPath>
+    <description>Converts raw magic power into electrical energy.  This spell can only be used on batteries.  Generates 400Wd.</description>
+    <manaCost>0.10</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_ChargeBattery</defaultProjectile>
+		<abilityDef>TM_ChargeBattery</abilityDef>
+        <warmupTime>3</warmupTime>
+        <SecondsToRecharge>5</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>12</range>
+		<isViolent>false</isViolent>
+        <soundCast>PowerOnSmall</soundCast>
+        <muzzleFlashScale>200</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+         <isPrimary>false</isPrimary>
+		 <targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+ <!-- Smoke Cloud -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_SmokeCloud</thingClass>
+	    <defName>Projectile_SmokeCloud</defName>
+        <label>smoke cloud</label>
+        <graphicData>
+			<texPath>Spells/smokecloud</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>Smoke</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>45</speed>
+			<explosionRadius>5</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_SmokeCloud</defName>
+        <label>Smoke Cloud</label>
+        <uiIconPath>UI/smokecloud</uiIconPath>
+        <description>Draws in and ignites water and dirt particles in the air to create a smoke screen that temporarily conceals the area.</description>
+        <manaCost>0.06</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_SmokeCloud</defaultProjectile>
+            <abilityDef>TM_SmokeCloud</abilityDef>
+            <warmupTime>.3</warmupTime>
+            <SecondsToRecharge>12</SecondsToRecharge>
+            <range>45</range>
+            <burstShotCount>1</burstShotCount>
+			<forcedMissRadius>2</forcedMissRadius>
+            <soundCast>DropPodLeaving</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>false</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- smoke cloud end-->
+	
+	<!-- Extinguish -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_Extinguish</thingClass>
+	    <defName>Projectile_Extinguish</defName>
+        <label>extinguish</label>
+        <graphicData>
+			<texPath>Spells/extinguish</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>Extinguish</damageDef>
+            <damageAmountBase>400</damageAmountBase>
+            <speed>45</speed>
+			<explosionRadius>3</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Extinguish</defName>
+        <label>Extinguish</label>
+        <uiIconPath>UI/Extinguish</uiIconPath>
+        <description>Removes the fire element from the target location, instantly extinguishing undesired fires.</description>
+        <manaCost>0.07</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Extinguish</defaultProjectile>
+            <abilityDef>TM_Extinguish</abilityDef>
+            <warmupTime>.6</warmupTime>
+            <SecondsToRecharge>25</SecondsToRecharge>
+            <range>35</range>
+            <burstShotCount>1</burstShotCount>
+			<forcedMissRadius>2</forcedMissRadius>
+            <soundCast>DropPodLeaving</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>false</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- extinguish end-->
+	
+		<!-- EMP -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_EMP</thingClass>
+	    <defName>Projectile_EMP</defName>
+        <label>EMP</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>EMP</damageDef>
+            <damageAmountBase>100</damageAmountBase>
+            <speed>40</speed>
+			<explosionRadius>7</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_EMP</defName>
+        <label>EMP</label>
+        <uiIconPath>UI/EMP</uiIconPath>
+        <description>Generate a burst of electromagnetic radiation at a target site, disabling mechanoids for a short period.</description>
+        <manaCost>0.15</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_EMP</defaultProjectile>
+            <abilityDef>TM_EMP</abilityDef>
+            <warmupTime>1.3</warmupTime>
+            <SecondsToRecharge>45</SecondsToRecharge>
+            <range>35</range>
+            <burstShotCount>1</burstShotCount>
+			<forcedMissRadius>2</forcedMissRadius>
+            <soundCast>DropPodLeaving</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>false</AlwaysHits>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- emp end-->
+	
+			<!-- Transfer mana -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_TransferMana</thingClass>
+	    <defName>Projectile_TransferMana</defName>
+        <label>transfer mana</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>EMP</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_TransferMana</defName>
+        <label>Transfer Mana</label>
+        <uiIconPath>UI/transfermana</uiIconPath>
+        <description>Transfers magical energy from one caster to another. Recipients that are not magic users will receive significant, if random, physical augmentation for a short period.  Can be harmful, even lethal, at extreme levels.</description>
+        <manaCost>0.30</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_TransferMana</defaultProjectile>
+            <abilityDef>TM_TransferMana</abilityDef>
+            <warmupTime>1.3</warmupTime>
+            <SecondsToRecharge>15</SecondsToRecharge>
+            <range>35</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowGrenade</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- transfer mana end-->
+	
+				<!-- siphon mana -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_SiphonMana</thingClass>
+	    <defName>Projectile_SiphonMana</defName>
+        <label>siphon mana</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>EMP</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_SiphonMana</defName>
+        <label>Siphon Mana</label>
+        <uiIconPath>UI/siphonmana</uiIconPath>
+        <description>Siphons magical energy from another caster. Recipients that are not magic users will have physical capacities drained instead.  Can be lethal if too much life force is drained.</description>
+        <manaCost>0.10</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_SiphonMana</defaultProjectile>
+            <abilityDef>TM_SiphonMana</abilityDef>
+            <warmupTime>1.3</warmupTime>
+            <SecondsToRecharge>25</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowGrenade</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- siphon mana end-->
+	
+	<!-- mana shield -->	
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_ManaShield</defName>
+        <label>Mana Shield</label>
+        <uiIconPath>UI/manashield</uiIconPath>
+        <description>Summons a protective barrier that draws power from the casters mana. Damage absorption rate is 1dmg to 1% mana.  The barrier breaks when the caster has insufficient mana to absorb an attack.  Casting the spell when a barrier is active will remove the barrier.  Can be used in conjuction with shield belts.  Does not impede spell casting.</description>
+        <manaCost>0.005</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ManaShield</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_TM_SpawnThing</defaultProjectile>
+            <abilityDef>TM_ManaShield</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>10</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowGrenade</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- mana shield end-->
+
+</Defs>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <GameConditionDef>
+    <defName>ManaDrain</defName>
+    <conditionClass>TorannMagic.GameCondition_ManaDrain</conditionClass>
+    <label>mana drain</label>
+    <description>The planet's celestial alignment is causing an ebb in mana.  All creatures attuned with magical powers will slowly lose power.</description>
+    <endMessage>Magic is returning to normal.</endMessage>
+    <exclusiveConditions>
+      <li>ManaSurge</li>
+    </exclusiveConditions>
+    <canBePermanent>true</canBePermanent>
+  </GameConditionDef>
+  
+  <IncidentDef>
+    <defName>ManaDrain</defName>
+    <label>mana drain</label>
+		<category>Misc</category>
+    <targetTypes>
+      <li>MapPlayerHome</li>
+    </targetTypes>
+    <workerClass>IncidentWorker_MakeGameCondition</workerClass>
+    <gameCondition>ManaDrain</gameCondition>
+    <letterLabel>Mana drain</letterLabel>
+    <letterText>The planet's celestial alignment is shifting, causing an ebb in mana.\n\n  All creatures attuned with magical powers will slowly lose mana.\n\nCreatures may become physical ill if they have no mana remaining.</letterText>
+    <letterDef>NegativeEvent</letterDef>
+    <baseChance>1.3</baseChance>
+    <minRefireDays>12</minRefireDays>
+    <durationDays>
+      <min>1.0</min>
+      <max>1.5</max>
+    </durationDays>
+  </IncidentDef>
+  
+   <GameConditionDef>
+    <defName>ManaSurge</defName>
+    <conditionClass>TorannMagic.GameCondition_ManaSurge</conditionClass>
+    <label>mana surge</label>
+    <description>The planet's celestial alignment is causing a surge in mana.  All creatures attuned with magical powers will gain mana at an increased rate.</description>
+    <endMessage>Magic is returning to normal.</endMessage>
+    <exclusiveConditions>
+      <li>ManaDrain</li>
+    </exclusiveConditions>
+    <canBePermanent>true</canBePermanent>
+  </GameConditionDef>
+  
+  	<IncidentDef>
+    <defName>ManaSurge</defName>
+    <label>mana surge</label>
+		<category>Misc</category>
+    <targetTypes>
+      <li>MapPlayerHome</li>
+    </targetTypes>
+    <workerClass>IncidentWorker_MakeGameCondition</workerClass>
+    <gameCondition>ManaSurge</gameCondition>
+    <letterLabel>Mana surge</letterLabel>
+    <letterText>The planet's celestial alignment has shifted, causing a surge in mana.  All creatures attuned with magical powers will gain mana at an increased rate.</letterText>
+    <letterDef>PositiveEvent</letterDef>
+    <baseChance>1.5</baseChance>
+    <minRefireDays>15</minRefireDays>
+    <durationDays>
+      <min>1.25</min>
+      <max>2</max>
+    </durationDays>
+  </IncidentDef>
+
+  
+  <IncidentDef>
+    <defName>Disease_ManaSickness</defName>
+    <label>mana sickness</label>
+	<workerClass>TorannMagic.IncidentWorker_ArcaneSickness</workerClass>
+	<letterLabel>Mana Sickness</letterLabel>
+    <letterText>{0} has gotten sick from {1}.\n\nEnsure you have a medical bed and a doctor. Make sure that {2} gets proper treatment and spends as much time in bed as possible.  During this period {0} will be unable to gain mana.</letterText>
+    <letterDef>NegativeEvent</letterDef>
+	<category>Disease</category>
+    <targetTypes>
+      <li>MapPlayerHome</li>
+      <li>MapTempIncident</li>
+      <li>MapMisc</li>
+      <li>Caravan</li>
+    </targetTypes>
+	  <diseaseIncident>TM_ArcaneSickness</diseaseIncident>
+    <diseaseVictimFractionRange>
+      <min>0.1</min>
+      <max>0.2</max>
+    </diseaseVictimFractionRange>
+  </IncidentDef>
+  
+  <GameConditionDef>
+    <defName>ElementalAssault</defName>
+    <conditionClass>TorannMagic.Conditions.GameCondition_ElementalAssault</conditionClass>
+    <label>elemental assault</label>
+    <description>Hostile elementals have created a breach into your world and are preparing to send assault teams through the rift.</description>
+    <endMessage>The rift has closed.</endMessage>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+  
+  	<IncidentDef>
+    <defName>ElementalAssault</defName>
+    <label>elemental assault</label>
+		<category>Misc</category>
+    <targetTypes>
+      <li>MapPlayerHome</li>
+    </targetTypes>
+    <workerClass>TorannMagic.Conditions.IncidentWorker_ElementalAssault</workerClass>
+    <gameCondition>ElementalAssault</gameCondition>
+    <letterLabel>elemental assault</letterLabel>
+    <letterText>Hostile elementals have breached their elemental plane and are preparing to assault through the rift.</letterText>
+    <letterDef>ThreatBig</letterDef>
+    <baseChance>0.6</baseChance>
+    <minRefireDays>10</minRefireDays>
+	<earliestDay>21</earliestDay>
+	<minPopulation>10</minPopulation>
+    <durationDays>
+      <min>.18</min>
+      <max>.25</max>
+    </durationDays>
+  </IncidentDef>
+
+</Defs>

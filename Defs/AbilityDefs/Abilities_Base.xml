@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+  <!-- ========================Vanilla Abstracts ======================= -->
+  <ThingDef Name="BaseBullet" Abstract="True">
+    <category>Projectile</category>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Projectile</altitudeLayer>
+    <thingClass>Bullet</thingClass>
+    <label>bullet</label>
+    <useHitPoints>False</useHitPoints>
+    <neverMultiSelect>True</neverMultiSelect>
+    <graphicData>
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+  </ThingDef>
+
+
+  <!-- ========================BaseDef================================== -->
+
+  <AbilityUser.AbilityDef Name="BaseAbility" Abstract="True">
+    <uiIconPath>UI/Glow_Corrupt</uiIconPath>
+  </AbilityUser.AbilityDef>
+
+
+  <AbilityUser.AbilityDef Name="BaseMagicAbility" Abstract="True">
+    <abilityClass>TorannMagic.MagicAbility</abilityClass>
+    <uiIconPath>UI/Glow_Corrupt</uiIconPath>
+  </AbilityUser.AbilityDef>
+  
+  <AbilityUser.AbilityDef Name="BaseMightAbility" Abstract="True">
+    <abilityClass>TorannMagic.MightAbility</abilityClass>
+    <uiIconPath>UI/Glow_Corrupt</uiIconPath>
+  </AbilityUser.AbilityDef>
+
+
+</Defs>

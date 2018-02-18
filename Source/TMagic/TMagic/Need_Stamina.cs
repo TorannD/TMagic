@@ -1,0 +1,213 @@
+﻿using RimWorld;
+using System.Linq;
+using System.Collections.Generic;
+using UnityEngine;
+using Verse;
+
+namespace TorannMagic
+{
+    public class Need_Stamina : Need  //Original code by Jecrell
+    {
+        public const float BaseGainPerTickRate = 150f;
+
+        public const float BaseFallPerTick = 1E-05f;
+
+        public const float ThreshVeryLow = 0.1f;
+
+        public const float ThreshLow = 0.3f;
+
+        public const float ThreshSatisfied = 0.5f;
+
+        public const float ThreshHigh = 0.7f;
+
+        public const float ThreshVeryHigh = 0.9f;
+
+        public int ticksUntilBaseSet = 500;
+
+        private int lastGainTick;
+
+        public StaminaPoolCategory CurCategory
+        {
+            get
+            {
+                bool flag = this.CurLevel < 0.1f;
+                StaminaPoolCategory result;
+                if (flag)
+                {
+                    result = StaminaPoolCategory.Fatigued;
+                }
+                else
+                {
+                    bool flag2 = this.CurLevel < 0.3f;
+                    if (flag2)
+                    {
+                        result = StaminaPoolCategory.Weakened;
+                    }
+                    else
+                    {
+                        bool flag3 = this.CurLevel < 0.5f;
+                        if (flag3)
+                        {
+                            result = StaminaPoolCategory.Steady;
+                        }
+                        else
+                        {
+                            bool flag4 = this.CurLevel < 0.7f;
+                            if (flag4)
+                            {
+                                result = StaminaPoolCategory.Energetic;
+                            }
+                            else
+                            {
+                                result = StaminaPoolCategory.Surging;
+                            }
+                        }
+                    }
+                }
+                return result;
+            }
+        }
+
+        public override int GUIChangeArrow
+        {
+            get
+            {
+                return this.GainingNeed ? 1 : -1;
+            }
+        }
+
+        public override float CurInstantLevel
+        {
+            get
+            {
+                return this.CurLevel;
+            }
+        }
+
+        private bool GainingNeed
+        {
+            get
+            {
+                return Find.TickManager.TicksGame < this.lastGainTick + 10;
+            }
+        }
+
+        static Need_Stamina()
+        {
+        }
+
+        public Need_Stamina(Pawn pawn) : base(pawn)
+		    {
+            this.lastGainTick = -999;
+            this.threshPercents = new List<float>();
+            this.threshPercents.Add(0.3f);
+            this.threshPercents.Add(0.7f);
+        }
+
+        public override void SetInitialLevel()
+        {
+            this.CurLevel = 0.8f;
+        }
+
+        public void GainNeed(float amount)
+        {
+            if (base.pawn.Map != null)
+            {
+                Pawn pawn = base.pawn;
+                CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
+                MightPowerSkill staminaRefresh = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_global_refresh.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_refresh_pwr");
+                amount *= ((0.015f) + (0.0015f * staminaRefresh.level));
+                amount = Mathf.Min(amount, 1f - this.CurLevel);
+                this.curLevelInt += amount;
+                this.lastGainTick = Find.TickManager.TicksGame;
+            }           
+        }
+
+        public void UseMightPower(float amount)
+        {
+            this.curLevelInt = Mathf.Clamp(this.curLevelInt - amount, 0f, 1f);
+        }
+
+        public override void NeedInterval()
+        {
+            this.GainNeed(1f);
+        }
+
+        public override string GetTipString()
+        {
+            return base.GetTipString();
+        }
+
+        public override void DrawOnGUI(Rect rect, int maxThresholdMarkers = 2147483647, float customMargin = -1f, bool drawArrows = true, bool doTooltip = true)
+        {
+            bool flag = rect.height > 70f;
+            if (flag)
+            {
+                float num = (rect.height - 70f) / 2f;
+                rect.height = 70f;
+                rect.y += num;
+            }
+            bool flag2 = Mouse.IsOver(rect);
+            if (flag2)
+            {
+                Widgets.DrawHighlight(rect);
+            }
+            TooltipHandler.TipRegion(rect, new TipSignal(() => this.GetTipString(), rect.GetHashCode()));
+            float num2 = 14f;
+            float num3 = num2 + 15f;
+            bool flag3 = rect.height < 50f;
+            if (flag3)
+            {
+                num2 *= Mathf.InverseLerp(0f, 50f, rect.height);
+            }
+            Text.Font = ((rect.height <= 55f) ? GameFont.Tiny : GameFont.Small);
+            Text.Anchor = TextAnchor.LowerLeft;
+            Rect rect2 = new Rect(rect.x + num3 + rect.width * 0.1f, rect.y, rect.width - num3 - rect.width * 0.1f, rect.height / 2f);
+            Widgets.Label(rect2, base.LabelCap);
+            Text.Anchor = TextAnchor.UpperLeft;
+            Rect rect3 = new Rect(rect.x, rect.y + rect.height / 2f, rect.width, rect.height / 2f);
+            rect3 = new Rect(rect3.x + num3, rect3.y, rect3.width - num3 * 2f, rect3.height - num2);
+            Widgets.FillableBar(rect3, base.CurLevelPercentage);
+            bool flag4 = this.threshPercents != null;
+            if (flag4)
+            {
+                for (int i = 0; i < this.threshPercents.Count; i++)
+                {
+                    this.DrawBarThreshold(rect3, this.threshPercents[i]);
+                }
+            }
+            float curInstantLevelPercentage = base.CurInstantLevelPercentage;
+            bool flag5 = curInstantLevelPercentage >= 0f;
+            if (flag5)
+            {
+                base.DrawBarInstantMarkerAt(rect3, curInstantLevelPercentage);
+            }
+            bool flag6 = !this.def.tutorHighlightTag.NullOrEmpty();
+            if (flag6)
+            {
+                UIHighlighter.HighlightOpportunity(rect, this.def.tutorHighlightTag);
+            }
+            Text.Font = GameFont.Small;
+        }
+
+        private void DrawBarThreshold(Rect barRect, float threshPct)
+        {
+            float num = (float)((barRect.width <= 60f) ? 1 : 2);
+            Rect position = new Rect(barRect.x + barRect.width * threshPct - (num - 1f), barRect.y + barRect.height / 2f, num, barRect.height / 2f);
+            bool flag = threshPct < base.CurLevelPercentage;
+            Texture2D image;
+            if (flag)
+            {
+                image = BaseContent.BlackTex;
+                GUI.color = new Color(1f, 1f, 1f, 0.9f);
+            }
+            else
+            {
+                image = BaseContent.GreyTex;
+                GUI.color = new Color(1f, 1f, 1f, 0.5f);
+            }
+            GUI.DrawTexture(position, image);
+            GUI.color = Color.white;
+        }
+    }
+}

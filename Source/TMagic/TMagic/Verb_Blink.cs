@@ -1,0 +1,112 @@
+﻿using RimWorld;
+using System;
+using Verse;
+using AbilityUser;
+using UnityEngine;
+
+namespace TorannMagic
+{
+    class Verb_Blink : Verb_UseAbility  
+    {
+        bool arg_41_0;
+        bool arg_42_0;
+        private bool validTarg = false;
+
+        public override bool CanHitTargetFrom(IntVec3 root, LocalTargetInfo targ)
+        {            
+            if ( targ.IsValid && targ.CenterVector3.InBounds(base.CasterPawn.Map) && !targ.Cell.Fogged(base.CasterPawn.Map) && targ.Cell.Walkable(base.CasterPawn.Map))
+            {
+                if ((root - targ.Cell).LengthHorizontal < this.verbProps.range)
+                {
+                    //out of range
+                    validTarg = true;
+                }
+                else
+                {
+                    validTarg = false;
+                }
+            }
+            else
+            {
+                validTarg = false;
+            }
+            return validTarg;
+        }
+
+        protected override bool TryCastShot()
+        {
+            bool result = false;
+            bool arg_40_0;
+            
+            if (this.currentTarget != null && base.CasterPawn != null)
+            {
+                IntVec3 arg_29_0 = this.currentTarget.Cell;
+                Vector3 vector = this.currentTarget.CenterVector3;
+                arg_40_0 = this.currentTarget.Cell.IsValid;
+                arg_41_0 = vector.InBounds(base.CasterPawn.Map);
+                arg_42_0 = true; // vector.ToIntVec3().Standable(base.CasterPawn.Map);
+            }
+            else
+            {
+                arg_40_0 = false;
+            }
+            bool flag = arg_40_0;
+            bool flag2 = arg_41_0;
+            bool flag3 = arg_42_0;
+            if (flag)
+            {
+                if (flag2 & flag3)
+                {
+                    Pawn p = this.CasterPawn;
+                    Map map = this.CasterPawn.Map;
+                    IntVec3 cell = this.CasterPawn.Position;
+                    try
+                    {
+                        if (this.CasterPawn.IsColonistPlayerControlled)
+                        {
+                            ThingSelectionUtility.SelectNextColonist();
+                            this.CasterPawn.DeSpawn();
+                            //p.SetPositionDirect(this.currentTarget.Cell);
+                            GenSpawn.Spawn(p, this.currentTarget.Cell, map);
+                            p.drafter.Drafted = true;
+                            ThingSelectionUtility.SelectPreviousColonist();
+                        }
+                        else
+                        {
+                            this.CasterPawn.DeSpawn();
+                            GenSpawn.Spawn(p, this.currentTarget.Cell, map);
+                        }
+                    }
+                    catch
+                    {
+                        if(!this.CasterPawn.Spawned)
+                        {
+                            GenSpawn.Spawn(p, cell, map);
+                            Log.Message("Exception occured when trying to blink - recovered pawn at position ability was used from.");
+                        }
+                    }
+
+
+                    
+                    
+                    //this.CasterPawn.SetPositionDirect(this.currentTarget.Cell);
+                    //base.CasterPawn.SetPositionDirect(this.currentTarget.Cell);
+                    //this.CasterPawn.pather.ResetToCurrentPosition();
+                    result = true;
+                }
+                else
+                {
+                    
+                    Messages.Message("InvalidTargetLocation".Translate(), MessageTypeDefOf.RejectInput);
+                }
+            }
+            else
+            {
+                Log.Warning("failed to TryCastShot");
+            }
+            this.burstShotsLeft = 0;
+            //this.ability.TicksUntilCasting = (int)base.UseAbilityProps.SecondsToRecharge * 60;
+            return result;
+        }
+    }
+}

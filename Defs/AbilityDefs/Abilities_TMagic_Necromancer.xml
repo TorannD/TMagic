@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	
+	<!-- Raise Undead  -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_RaiseUndead</thingClass>
+	    <defName>Projectile_RaiseUndead</defName>
+        <label>Raise undead</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_Holy</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>4</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_RaiseUndead</defName>
+        <label>Raise Undead</label>
+        <uiIconPath>UI/raiseundead</uiIconPath>
+        <description>Raise undead from corpses. Only works on creatures that were once living.  Undead will remain under the Necromancers control indefinitely.
+However, each undead human will incur a mana upkeep cost of 30% of base mana regeneration.  Undead animals incur a 15% upkeep cost.
+There is no limit to the number of undead a necromancer may control, however, when the necromancer no longer has mana to maintain undead, they will automatically be consumed until the number is reduced to a manageable amount.
+</description>
+        <manaCost>0.45</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_RaiseUndead</defaultProjectile>
+            <abilityDef>TM_RaiseUndead</abilityDef>
+            <warmupTime>6</warmupTime>
+            <SecondsToRecharge>30</SecondsToRecharge>
+            <range>25</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+				<canTargetItems>false</canTargetItems>
+                <canTargetPawns>false</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- raise undead end-->
+	
+		<!-- death mark  -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_AbilityBase</thingClass>
+	    <defName>Projectile_DeathMark</defName>
+        <label>Death mark</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_Poison</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_DeathMark</defName>
+        <label>Death Mark</label>
+        <uiIconPath>UI/deathmark</uiIconPath>
+        <description>Mark a target for death.  If successful, the target will die and be reanimated as an undead after the mark has expired.
+This spell has a high resist rate and can affect friendly and enemy pawns alike.  Does not work on mechanoids.
+Max Targets: 2
+Cast Time: 3s
+Cooldown: 120s
+Range: 20</description>
+        <manaCost>0.40</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_DeathMark</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_DeathMark</defaultProjectile>
+            <abilityDef>TM_DeathMark</abilityDef>
+            <warmupTime>3</warmupTime>
+            <SecondsToRecharge>120</SecondsToRecharge>
+            <range>20</range>
+            <burstShotCount>1</burstShotCount>			
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>2</maxTargets>
+                <range>2</range>
+            </TargetAoEProperties>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_DeathMark_I</defName>
+        <label>Death Mark (I)</label>
+        <uiIconPath>UI/deathmark</uiIconPath>
+        <description>Mark a target for death.  If successful, the target will die and reanimated as an undead after the mark has expired.
+This spell has a high resist rate and can affect friendly and enemy pawns alike.  Does not work on mechanoids.
+Max Targets: 3
+Cast Time: 2.5s
+Cooldown: 90s
+Range: 24</description>
+        <manaCost>0.40</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_DeathMark</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_DeathMark</defaultProjectile>
+            <abilityDef>TM_DeathMark_I</abilityDef>
+            <warmupTime>2.5</warmupTime>
+            <SecondsToRecharge>90</SecondsToRecharge>
+            <range>24</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>3</maxTargets>
+                <range>2</range>
+            </TargetAoEProperties>
+
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_DeathMark_II</defName>
+        <label>Death Mark (II)</label>
+        <uiIconPath>UI/deathmark</uiIconPath>
+        <description>Mark a target for death.  If successful, the target will die and reanimated as an undead after the mark has expired.
+This spell has a high resist rate and can affect friendly and enemy pawns alike.  Does not work on mechanoids.
+Max Targets: 4
+Cast Time: 2s
+Cooldown: 60s
+Range: 28</description>
+        <manaCost>0.40</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_DeathMark</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_DeathMark</defaultProjectile>
+            <abilityDef>TM_DeathMark_II</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>60</SecondsToRecharge>
+            <range>28</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>4</maxTargets>
+                <range>3</range>
+            </TargetAoEProperties>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_DeathMark_III</defName>
+        <label>Death Mark (III)</label>
+        <uiIconPath>UI/deathmark</uiIconPath>
+        <description>Mark a target for death.  If successful, the target will die and reanimated as an undead after the mark has expired.
+This spell has a high resist rate and can affect friendly and enemy pawns alike.  Does not work on mechanoids.
+Max Targets: 5
+Cast Time: 1.8s
+Cooldown: 45s
+Range: 30</description>
+        <manaCost>0.40</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_DeathMark</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_DeathMark</defaultProjectile>
+            <abilityDef>TM_DeathMark_III</abilityDef>
+            <warmupTime>1.8</warmupTime>
+            <SecondsToRecharge>45</SecondsToRecharge>
+            <range>30</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>5</maxTargets>
+                <range>3</range>
+            </TargetAoEProperties>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- death mark end-->
+	
+		<!-- fog of torment -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_FogOfTorment</thingClass>
+	    <defName>Projectile_FogOfTorment</defName>
+        <label>fog of torment</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_Torment</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>6</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_FogOfTorment</defName>
+        <label>Fog of Torment</label>
+        <uiIconPath>UI/fogoftorment</uiIconPath>
+        <description>Creates a fog that slowly destroys everything within.  Undead within the fog are slowly healed and suffer no penalties from the fog.</description>
+        <manaCost>0.25</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_FogOfTorment</defaultProjectile>
+            <abilityDef>TM_FogOfTorment</abilityDef>
+            <warmupTime>3</warmupTime>
+            <SecondsToRecharge>30</SecondsToRecharge>
+            <range>50</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- fog of torment end-->
+	
+		<!--consume corpse  -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_AbilityBase</thingClass>
+	    <defName>Projectile_ConsumeCorpse</defName>
+        <label>consume corpse</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_Holy</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_ConsumeCorpse</defName>
+        <label>Consume Corpse</label>
+        <uiIconPath>UI/consumecorpse</uiIconPath>
+        <description>Consume a corpse or undead to replenish mana. Apparel, items, and equipment remain behind but all material belonging to the corpse is consumed (meat/leather)
+Mana Cost: 3%
+Range: 50
+Cooldown: 30s
+Cast Time: 2s</description>
+        <manaCost>0.03</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ConsumeCorpse</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_ConsumeCorpse</defaultProjectile>
+            <abilityDef>TM_ConsumeCorpse</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>30</SecondsToRecharge>
+            <range>50</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_ConsumeCorpse_I</defName>
+        <label>Consume Corpse (I)</label>
+        <uiIconPath>UI/consumecorpse</uiIconPath>
+        <description>Consume a corpse or undead to replenish mana. Apparel, items, and equipment remain behind but all material belonging to the corpse is consumed (meat/leather)
+Mana Cost: 2.5%
+Range: 60
+Cooldown: 25s
+Cast Time: 1.8s</description>
+        <manaCost>0.025</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ConsumeCorpse</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_ConsumeCorpse</defaultProjectile>
+            <abilityDef>TM_ConsumeCorpse_I</abilityDef>
+            <warmupTime>1.8</warmupTime>
+            <SecondsToRecharge>25</SecondsToRecharge>
+            <range>60</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_ConsumeCorpse_II</defName>
+        <label>Consume Corpse (II)</label>
+        <uiIconPath>UI/consumecorpse</uiIconPath>
+        <description>Consume a corpse or undead to replenish mana. Apparel, items, and equipment remain behind but all material belonging to the corpse is consumed (meat/leather)
+Mana Cost: 2%
+Range: 70
+Cooldown: 20s
+Cast Time: 1.5s</description>
+        <manaCost>0.02</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ConsumeCorpse</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_ConsumeCorpse</defaultProjectile>
+            <abilityDef>TM_ConsumeCorpse_II</abilityDef>
+            <warmupTime>1.5</warmupTime>
+            <SecondsToRecharge>20</SecondsToRecharge>
+            <range>70</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_ConsumeCorpse_III</defName>
+        <label>Consume Corpse (III)</label>
+        <uiIconPath>UI/consumecorpse</uiIconPath>
+        <description>Consume a corpse or undead to replenish mana. Apparel, items, and equipment remain behind but all material belonging to the corpse is consumed (meat/leather)
+Mana Cost: 1.5%
+Range: 80
+Cooldown: 15s
+Cast Time: 1.2s</description>
+        <manaCost>0.015</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_ConsumeCorpse</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_ConsumeCorpse</defaultProjectile>
+            <abilityDef>TM_ConsumeCorpse_III</abilityDef>
+            <warmupTime>1.2</warmupTime>
+            <SecondsToRecharge>15</SecondsToRecharge>
+            <range>80</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- consume corpse end-->
+	
+		<!-- corpse explosion -->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_CorpseExplosion</thingClass>
+	    <defName>Projectile_CorpseExplosion</defName>
+        <label>corpse explosion</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_Holy</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_CorpseExplosion</defName>
+        <label>Corpse Explosion</label>
+        <uiIconPath>UI/corpseexplosion</uiIconPath>
+        <description>Mixes arcane energy with chemicals in a corpse to cause the corpse to explode after a short delay.  Equipment will not automatically be consumed by the explosion, but may be destroyed in the explosion.
+Mana Cost: 20%
+Range: 40
+Cooldown: 10s
+Cast time: 2s</description>
+        <manaCost>0.20</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_CorpseExplosion</defaultProjectile>
+            <abilityDef>TM_CorpseExplosion</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>10</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_CorpseExplosion_I</defName>
+        <label>Corpse Explosion (I)</label>
+        <uiIconPath>UI/corpseexplosion</uiIconPath>
+        <description>Mixes arcane energy with chemicals in a corpse to cause the corpse to explode after a short delay.  Equipment will not automatically be consumed by the explosion, but may be destroyed in the explosion.
+Mana Cost: 22%
+Range: 50
+Cooldown: 7s
+Cast time: 1.5s</description>
+        <manaCost>0.22</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_CorpseExplosion</defaultProjectile>
+            <abilityDef>TM_CorpseExplosion_I</abilityDef>
+            <warmupTime>1.5</warmupTime>
+            <SecondsToRecharge>7</SecondsToRecharge>
+            <range>50</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_CorpseExplosion_II</defName>
+        <label>Corpse Explosion (II)</label>
+        <uiIconPath>UI/corpseexplosion</uiIconPath>
+        <description>Mixes arcane energy with chemicals in a corpse to cause the corpse to explode after a short delay.  Equipment will not automatically be consumed by the explosion, but may be destroyed in the explosion.
+Mana Cost: 24%
+Range: 60
+Cooldown: 5s
+Cast time: 1s</description>
+        <manaCost>0.24</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_CorpseExplosion</defaultProjectile>
+            <abilityDef>TM_CorpseExplosion_II</abilityDef>
+            <warmupTime>1</warmupTime>
+            <SecondsToRecharge>5</SecondsToRecharge>
+            <range>60</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_CorpseExplosion_III</defName>
+        <label>Corpse Explosion (III)</label>
+        <uiIconPath>UI/corpseexplosion</uiIconPath>
+        <description>Mixes arcane energy with chemicals in a corpse to cause the corpse to explode after a short delay.  Equipment will not automatically be consumed by the explosion, but may be destroyed in the explosion.
+Mana Cost: 25%
+Range: 70
+Cooldown: 4s
+Cast time: .5s</description>
+        <manaCost>0.25</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_CorpseExplosion</defaultProjectile>
+            <abilityDef>TM_CorpseExplosion_III</abilityDef>
+            <warmupTime>.5</warmupTime>
+            <SecondsToRecharge>4</SecondsToRecharge>
+            <range>70</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- corpse explosion end-->
+
+</Defs>

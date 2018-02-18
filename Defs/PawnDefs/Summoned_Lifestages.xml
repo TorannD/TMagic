@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <LifeStageDef>
+    <defName>TM_LesserElemental_Lifestage</defName>
+    <label>lesser elemental</label>
+	<voxPitch>1.5</voxPitch>
+	<bodySizeFactor>0.65</bodySizeFactor>
+	<foodMaxFactor>1.5</foodMaxFactor>
+	<healthScaleFactor>0.5</healthScaleFactor>
+    <statFactors>
+      <MoveSpeed>0.8</MoveSpeed>
+    </statFactors>
+  </LifeStageDef>
+  
+  <LifeStageDef>
+    <defName>TM_Elemental_Lifestage</defName>
+    <label>elemental</label>
+	<voxPitch>1</voxPitch>
+	<bodySizeFactor>1</bodySizeFactor>
+	<foodMaxFactor>1</foodMaxFactor>
+	<healthScaleFactor>.8</healthScaleFactor>
+    <statFactors>
+      <MoveSpeed>1</MoveSpeed>
+    </statFactors>
+  </LifeStageDef>
+  
+    <LifeStageDef>
+    <defName>TM_GreaterElemental_Lifestage</defName>
+    <label>greater elemental</label>
+	<voxPitch>.8</voxPitch>
+	<bodySizeFactor>1.2</bodySizeFactor>
+	<foodMaxFactor>.8</foodMaxFactor>
+	<healthScaleFactor>1.1</healthScaleFactor>
+    <statFactors>
+      <MoveSpeed>1.2</MoveSpeed>
+    </statFactors>
+  </LifeStageDef>
+  
+  <LifeStageDef>
+    <defName>TM_Minion_Lifestage</defName>
+    <label>minion</label>
+	<voxPitch>.7</voxPitch>
+	<bodySizeFactor>.8</bodySizeFactor>
+	<foodMaxFactor>1</foodMaxFactor>
+	<healthScaleFactor>0.4</healthScaleFactor>
+    <statFactors>
+      <MoveSpeed>.8</MoveSpeed>
+    </statFactors>
+  </LifeStageDef>
+  
+  <LifeStageDef>
+    <defName>TM_GreaterMinion_Lifestage</defName>
+    <label>greater minion</label>
+	<voxPitch>.5</voxPitch>
+	<bodySizeFactor>1.1</bodySizeFactor>
+	<foodMaxFactor>1</foodMaxFactor>
+	<healthScaleFactor>0.6</healthScaleFactor>
+    <statFactors>
+      <MoveSpeed>1.2</MoveSpeed>
+    </statFactors>
+  </LifeStageDef>
+  
+</Defs>
