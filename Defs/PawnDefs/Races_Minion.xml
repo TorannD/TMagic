@@ -2,7 +2,8 @@
 <Defs>  
 
   <ThingDef Name="TM_Base_Minion" ParentName="BasePawn" Abstract="True">
-	<thingClass>AbilityUser.PawnSummoned</thingClass>
+<!-- 	<thingClass>AbilityUser.PawnSummoned</thingClass> -->
+	<thingClass>TorannMagic.TMPawnSummoned</thingClass>
     <category>Pawn</category>
     <selectable>true</selectable>
     <tickerType>Normal</tickerType>

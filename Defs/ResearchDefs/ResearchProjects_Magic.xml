@@ -13,5 +13,58 @@
 		<researchViewX>0.0</researchViewX>
 		<researchViewY>0.0</researchViewY>
 	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_Enchanting</defName>
+		<label>enchanting</label>
+		<tab>TMagic</tab>
+		<description>Enables the constructions of the research bench and the crafting of tier I enchanting gems.</description>
+		<baseCost>400</baseCost>
+		<techLevel>Transcendent</techLevel>
+		<researchViewX>1.0</researchViewX>
+		<researchViewY>0.0</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_AdvancedEnchanting</defName>
+		<label>advancded enchanting</label>
+		<tab>TMagic</tab>
+		<description>Enables crafting to tier II enchanting gems.</description>
+		<baseCost>500</baseCost>
+		<techLevel>Transcendent</techLevel>
+		<researchViewX>1.0</researchViewX>
+		<researchViewY>1.0</researchViewY>
+		<prerequisites>
+			<li>TM_Enchanting</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_ExpertEnchanting</defName>
+		<label>expert enchanting</label>
+		<tab>TMagic</tab>
+		<description>Enables crafting of tier III enchanting gems.</description>
+		<baseCost>650</baseCost>
+		<techLevel>Transcendent</techLevel>
+		<researchViewX>1.0</researchViewX>
+		<researchViewY>2.0</researchViewY>
+		<prerequisites>
+			<li>TM_AdvancedEnchanting</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_MagicyteRefining</defName>
+		<label>magicyte refining</label>
+		<tab>TMagic</tab>
+		<description>Allows gemcrafters to grind magicyte down into a powdered form that can be imbibed.</description>
+		<baseCost>200</baseCost>
+		<techLevel>Transcendent</techLevel>
+		<researchViewX>2.0</researchViewX>
+		<researchViewY>0.0</researchViewY>
+		<prerequisites>
+			<li>TM_Enchanting</li>
+		</prerequisites>
+	</ResearchProjectDef>
 
 </Defs>

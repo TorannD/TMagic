@@ -11,7 +11,7 @@
 <InvalidMine>Invalid summoned mine location - target position must be valid and free of debris.</InvalidMine>
 <InvalidSummon>Attempted a summoning at an invalid location - target position must be valid and free of debris.</InvalidSummon>
 <PylonDeSpawn>Mana cohesion holding a defensive pylon together has expired and the pylon has dissolved.</PylonDeSpawn>
-<MineDeSpawn>The mana cohesion holding a mana mine together has deteriorated and the mana mine has safely dissovled.</MineDeSpawn>
+<MineDeSpawn>The mana cohesion holding a mana mine together has deteriorated and the mana mine has safely dissolved.</MineDeSpawn>
 <MinionFled>One of your minions has fled this plane existence.</MinionFled>
 <NotArcaneBook>Book type not recognized as arcane script!</NotArcaneBook>
 <NotGiftedPawn>Pawn is not Gifted and cannot use this item.</NotGiftedPawn>
@@ -80,6 +80,9 @@
 <baseFighterChance>Fighter precursor commonality: </baseFighterChance>
 <advMageChance>Mage commonality: </advMageChance>
 <advFighterChance>Fighter commonality: </advFighterChance>
+<DeathExplosionMin>minimum damage</DeathExplosionMin>
+<DeathExplosionMax>maximum damage</DeathExplosionMax>
+<MagicyteChance>Magicyte Drop Chance</MagicyteChance>
 
 <!-- Magic Ability Point Descriptions -->
 <TM_global_regen_pwr>Clarity</TM_global_regen_pwr>
@@ -557,8 +560,9 @@ Level 3: Moving +50%, Manipulation +50%, Blood pumping +40%, Dodge chance +35%</
 <TM_AbilityDescAdjustedManaCost>Adjusted Mana Cost: {0} </TM_AbilityDescAdjustedManaCost>
 <TM_AbilityDescBaseStaminaCost>Base Stamina Cost: {0} </TM_AbilityDescBaseStaminaCost>
 <TM_AbilityDescAdjustedStaminaCost>Adjusted Stamina Cost: {0} </TM_AbilityDescAdjustedStaminaCost>
-<TM_AbilityDescPortalTime>Portal collapse in {0} seconds.</TM_AbilityDescPortalTime>
-<TM_AbilityDescSummonDuration>Summon duration: {0} seconds.</TM_AbilityDescSummonDuration>
+<TM_AbilityDescPortalTime>Portal collapse in {0} seconds</TM_AbilityDescPortalTime>
+<TM_AbilityDescSummonDuration>Summon duration: {0} seconds</TM_AbilityDescSummonDuration>
+<TM_AdjustedCooldown>Adjusted Cooldown: {0} seconds</TM_AdjustedCooldown>
 
 <!-- ========== Building Menu's ========== -->
 
@@ -572,5 +576,21 @@ Level 3: Moving +50%, Manipulation +50%, Blood pumping +40%, Dodge chance +35%</
 <TM_PortalFailed>{0} failed when attempting to use the portal - if this persists, try deactivating the portal and resetting the target location.</TM_PortalFailed>
 <TM_PortalDestinationInvalid>Invalid destination cell, destination must be a known, visible, and player occupied map.</TM_PortalDestinationInvalid>
 <TM_NoValidPortalDestination>No valid portal destination selected, exiting without assignment.</TM_NoValidPortalDestination>
+
+<!-- ============ Enchanting Menu's =============-->
+<TabEnchantment>Enchanted</TabEnchantment>
+<TM_DropGem>Drop {0}</TM_DropGem>
+<TM_PickupGem>Equip {0} for enchanting</TM_PickupGem>
+<TM_CannotReach>Cannot reach</TM_CannotReach>
+<TM_EnchantItem>Enchant {0}</TM_EnchantItem>
+<TM_CannotDrop>Cannot drop {0}</TM_CannotDrop>
+<TM_NeedManaForEnchant>Enchantment: {0} of .5 mana</TM_NeedManaForEnchant>
+
+<!-- ============ Enchantment Labels =============-->
+<TM_MaxMPLabel>Max MP Increase: {0}&#37;</TM_MaxMPLabel>
+<TM_MPRegenRateLabel>Mana Regen Increase: {0}&#37;</TM_MPRegenRateLabel>
+<TM_CoolDownLabel>Ability Cooldown Reduction: {0}&#37;</TM_CoolDownLabel>
+<TM_MPCostLabel>MP Cost Reduction: {0}&#37;</TM_MPCostLabel>
+<TM_XPGainLabel>XP Gain Increase: {0}&#37;</TM_XPGainLabel>
 
 </LanguageData>

@@ -28,10 +28,12 @@ namespace TorannMagic
             yield return toil1;
             Toil toil = new Toil()
             {
+
                 initAction = () => curJob.Ability.PostAbilityAttempt(),
                 defaultCompleteMode = ToilCompleteMode.Instant
             };
             yield return toil;
+            
         }
     }
 }

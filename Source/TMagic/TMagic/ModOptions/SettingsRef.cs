@@ -15,6 +15,9 @@ namespace TorannMagic.ModOptions
         public float baseFighterChance = Settings.Instance.baseFighterChance;
         public float advMageChance = Settings.Instance.advMageChance;
         public float advFighterChance = Settings.Instance.advFighterChance;
+        public int deathExplosionMin = Settings.Instance.deathExplosionMin;
+        public int deathExplosionMax = Settings.Instance.deathExplosionMax;
+        public float magicyteChance = Settings.Instance.magicyteChance;
 
     }
 }

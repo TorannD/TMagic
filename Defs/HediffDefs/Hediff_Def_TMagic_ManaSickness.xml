@@ -110,7 +110,7 @@
   
 
   
-  <HediffDef ParentName="InfectionBase">
+  <HediffDef ParentName="TM_InfectionBase">
     <defName>TM_ArcaneSickness</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>

@@ -68,6 +68,14 @@ namespace TorannMagic
             }
         }
 
+        public override float CurLevel
+        {
+            get => base.CurLevel;
+            set => base.CurLevel = Mathf.Clamp(value, 0f, this.pawn.GetComp<CompAbilityUserMight>().maxSP);
+        }
+
+        public override float MaxLevel => this.pawn.GetComp<CompAbilityUserMight>().maxSP;
+
         public override int GUIChangeArrow
         {
             get
@@ -117,7 +125,7 @@ namespace TorannMagic
                 CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
                 MightPowerSkill staminaRefresh = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_global_refresh.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_refresh_pwr");
                 amount *= ((0.015f) + (0.0015f * staminaRefresh.level));
-                amount = Mathf.Min(amount, 1f - this.CurLevel);
+                amount = Mathf.Min(amount, this.MaxLevel - this.CurLevel);
                 this.curLevelInt += amount;
                 this.lastGainTick = Find.TickManager.TicksGame;
             }           
@@ -125,7 +133,7 @@ namespace TorannMagic
 
         public void UseMightPower(float amount)
         {
-            this.curLevelInt = Mathf.Clamp(this.curLevelInt - amount, 0f, 1f);
+            this.curLevelInt = Mathf.Clamp(this.curLevelInt - amount, 0f, this.pawn.GetComp<CompAbilityUserMight>().maxSP); //change for max sp
         }
 
         public override void NeedInterval()
@@ -135,8 +143,16 @@ namespace TorannMagic
 
         public override string GetTipString()
         {
-            return base.GetTipString();
-        }
+            //return base.GetTipString();
+            return string.Concat(new string[]
+            {
+                this.LabelCap,
+                ": ",
+                (this.CurLevel / 1f).ToStringPercent(),
+                "\n",
+                this.def.description
+            });
+        }    
 
         public override void DrawOnGUI(Rect rect, int maxThresholdMarkers = 2147483647, float customMargin = -1f, bool drawArrows = true, bool doTooltip = true)
         {
@@ -164,6 +180,7 @@ namespace TorannMagic
             Text.Anchor = TextAnchor.LowerLeft;
             Rect rect2 = new Rect(rect.x + num3 + rect.width * 0.1f, rect.y, rect.width - num3 - rect.width * 0.1f, rect.height / 2f);
             Widgets.Label(rect2, base.LabelCap);
+            GUI.color = Color.yellow;
             Text.Anchor = TextAnchor.UpperLeft;
             Rect rect3 = new Rect(rect.x, rect.y + rect.height / 2f, rect.width, rect.height / 2f);
             rect3 = new Rect(rect3.x + num3, rect3.y, rect3.width - num3 * 2f, rect3.height - num2);
@@ -176,7 +193,7 @@ namespace TorannMagic
                     this.DrawBarThreshold(rect3, this.threshPercents[i]);
                 }
             }
-            float curInstantLevelPercentage = base.CurInstantLevelPercentage;
+            float curInstantLevelPercentage = Mathf.Clamp(this.CurLevel / this.MaxLevel, 0f, 1f);
             bool flag5 = curInstantLevelPercentage >= 0f;
             if (flag5)
             {

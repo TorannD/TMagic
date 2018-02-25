@@ -36,6 +36,8 @@ namespace TorannMagic
         private static readonly Color priestMarkColor = new Color(1f, 1f, .55f); 
         private static readonly Material priestMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, CompAbilityUserMagic.priestMarkColor);
 
+        private static readonly Material enchantMark = MaterialPool.MatFrom("Items/Gemstones/arcane_minor");
+
         public bool firstTick = false;
         public bool magicPowersInitialized = false;
         public int magicXPRate = 1000;
@@ -113,7 +115,108 @@ namespace TorannMagic
         public bool spell_FoldReality = false;
         public bool spell_Resurrection = false;
 
+        public float maxMP = 1;
+        public float mpRegenRate = 1;
+        public float coolDown = 1;
+        public float mpCost = 1;
+        public float xpGain = 1;
+
+        public void ResolveEnchantments()
+        {
+            float _maxMP = 0;
+            float _mpRegenRate = 0;
+            float _coolDown = 0;
+            float _xpGain = 0;
+            float _mpCost = 0;
+            List<Apparel> apparel = this.Pawn.apparel.WornApparel;
+            for (int i = 0; i < this.Pawn.apparel.WornApparelCount; i++)
+            {
+                Enchantment.CompEnchantedItem item = apparel[i].GetComp<Enchantment.CompEnchantedItem>();
+                if (item != null)
+                {
+                    if (item.Props.HasEnchantment)
+                    {
+                        _maxMP += item.Props.maxMP;
+                        _mpRegenRate += item.Props.mpRegenRate;
+                        _coolDown += item.Props.coolDown;
+                        _xpGain += item.Props.xpGain;
+                        _mpCost += item.Props.mpCost;
+                    }
+                }
+            }
+            if (this.Pawn.equipment.Primary != null)
+            {
+                Enchantment.CompEnchantedItem item = this.Pawn.equipment.Primary.GetComp<Enchantment.CompEnchantedItem>();
+                if (item != null)
+                {
+                    if (item.Props.HasEnchantment)
+                    {
+                        _maxMP += item.Props.maxMP;
+                        _mpRegenRate += item.Props.mpRegenRate;
+                        _coolDown += item.Props.coolDown;
+                        _xpGain += item.Props.xpGain;
+                        _mpCost += item.Props.mpCost;
+                    }
+                }
+            }
+            this.maxMP = 1f + _maxMP;
+            this.mpRegenRate = 1f + _mpRegenRate;
+            this.coolDown = 1f + _coolDown;
+            this.xpGain = 1f + _xpGain;
+            this.mpCost = 1f + _mpCost;
+            if (_maxMP != 0)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_maxMP"), .5f);
+            }
+            if (_mpRegenRate != 0)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_mpRegenRate"), .5f);
+            }
+            if (_coolDown != 0)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_coolDown"), .5f);
+            }
+            if (_xpGain != 0)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_xpGain"), .5f);
+            }
+            if (_mpCost != 0)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_mpCost"), .5f);
+            }
+
+            using (IEnumerator<Hediff> enumerator = this.Pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+            {
+                while (enumerator.MoveNext())
+                {
+                    Hediff rec = enumerator.Current;
+                    if (rec.def.defName == "TM_HediffEnchantment_maxMP" && this.maxMP == 1)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                    if (rec.def.defName == "TM_HediffEnchantment_coolDown" && this.coolDown == 1)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                    if (rec.def.defName == "TM_HediffEnchantment_mpCost" && this.mpCost == 1)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                    if (rec.def.defName == "TM_HediffEnchantment_mpRegenRate" && this.mpRegenRate == 1)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                    if (rec.def.defName == "TM_HediffEnchantment_xpGain" && this.xpGain == 1)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                }
+            }
+        }
+
         public List<Thing> summonedMinions = new List<Thing>();
+
+        //public List<TMPawnSummoned> summonedMinionsPS = new List<TMPawnSummoned>();
 
         private MagicData magicData = null;
         public MagicData MagicData
@@ -135,6 +238,11 @@ namespace TorannMagic
             if (settingsRef.AIMarking && !base.AbilityUser.IsColonistPlayerControlled && this.IsMagicUser)
             {
                 DrawMageMark();                
+            }
+            Enchantment.CompEnchant compEnchant = this.Pawn.GetComp<Enchantment.CompEnchant>();
+            if(compEnchant != null && compEnchant.enchantingContainer.Count > 0)
+            {
+                DrawEnchantMark();
             }
             base.PostDraw();
         }
@@ -677,7 +785,7 @@ namespace TorannMagic
                 if (spawned)
                 {
                     bool isMagicUser = this.IsMagicUser;
-                    if (isMagicUser)
+                    if (isMagicUser) 
                     {
                         bool flag3 = !this.firstTick;
                         if (flag3)
@@ -685,6 +793,14 @@ namespace TorannMagic
                             this.PostInitializeTick();
                         }
                         base.CompTick();
+                        for(int i =0; i < this.summonedMinions.Count; i++)
+                        {
+                            Pawn evaluateMinion = this.summonedMinions[i] as Pawn;
+                            if (evaluateMinion == null || evaluateMinion.Dead || !evaluateMinion.Spawned)
+                            {
+                                this.summonedMinions.Remove(this.summonedMinions[i]);
+                            }
+                        }
                         if (this.Mana.CurLevel >= .99f)
                         {
                             this.age++;
@@ -694,11 +810,6 @@ namespace TorannMagic
                                 lastXPGain = this.age;
                             }
                         }
-                        //ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                        //if(settingsRef.AIMarking && !base.AbilityUser.IsColonistPlayerControlled)
-                        //{
-                        //    DrawMageMark();
-                        //}
                         bool flag4 = Find.TickManager.TicksGame % 30 == 0;
                         if (flag4)
                         {
@@ -707,6 +818,10 @@ namespace TorannMagic
                             {
                                 this.LevelUp(false);
                             }
+                        }
+                        if (Find.TickManager.TicksGame % 60 == 0)
+                        {
+                            ResolveEnchantments();
                         }
                     }
                 }
@@ -809,11 +924,26 @@ namespace TorannMagic
             {
                 Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMagic.priestMarkMat, 0);
             }
-            else
+            else 
             {
                 Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMagic.mageMarkMat, 0);
             }
             
+        }
+
+        public void DrawEnchantMark()
+        {
+            float num = Mathf.Lerp(1.2f, 1.55f, 1f);
+            Vector3 vector = this.AbilityUser.Drawer.DrawPos;
+            vector.x = vector.x + .45f;
+            vector.z = vector.z + .45f;
+            vector.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
+            float angle = 0f;
+            Vector3 s = new Vector3(.5f, 1f, .5f);
+            Matrix4x4 matrix = default(Matrix4x4);
+            matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
+            Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMagic.enchantMark, 0);           
+
         }
 
         public int MagicUserLevel
@@ -2668,6 +2798,10 @@ namespace TorannMagic
             {
                 MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Resurrection.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Resurrection_eff");
                 adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.PR_Resurrection_eff * (float)magicPowerSkill.level);
+            }
+            if (this.mpCost != 1f)
+            {
+                adjustedManaCost = adjustedManaCost * this.mpCost;
             }
             MagicPowerSkill globalSkill = this.MagicData.MagicPowerSkill_global_eff.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_eff_pwr");
             if (globalSkill != null)

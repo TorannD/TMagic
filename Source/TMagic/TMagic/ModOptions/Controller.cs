@@ -10,6 +10,9 @@ namespace TorannMagic.ModOptions
 
         private bool reset = false;
 
+        private string deathExplosionDmgMin = "20";
+        private string deathExplosionDmgMax = "50";
+
         public override string SettingsCategory()
         {
             return "A RimWorld of Magic";
@@ -32,15 +35,20 @@ namespace TorannMagic.ModOptions
             Rect rowRect = UIHelper.GetRowRect(rect1, rowHeight, num);            
 
             Settings.Instance.xpMultiplier = Widgets.HorizontalSlider(rowRect, Settings.Instance.xpMultiplier, .1f, 2f, false, "XPMultiplier".Translate() + " " + Settings.Instance.xpMultiplier, ".1", "2", .1f);
-            //Rect rowRect1 = rowRect;
-            //rowRect1.x = rowRect.x + rect1.width;
-            //Widgets.TextFieldNumericLabeled<float>(rowRect1, "CaravanSpeedMultiplier".Translate(), ref Settings.Instance.caravanSpeedMultiplier, ref this.caravanSpeedMultiplierBuffer, .1f, 100f);
             num++;
             Rect rowRect2 = UIHelper.GetRowRect(rowRect, rowHeight, num);
             Settings.Instance.needMultiplier = Widgets.HorizontalSlider(rowRect2, Settings.Instance.needMultiplier, .1f, 4f, false, "NeedMultiplier".Translate() + " " + Settings.Instance.needMultiplier, ".1", "4", .1f);
             num++;
-            Rect rowRect3 = UIHelper.GetRowRect(rowRect2, rowHeight, num);
-            Settings.Instance.deathExplosionRadius = Widgets.HorizontalSlider(rowRect3, Settings.Instance.deathExplosionRadius, 2f, 6f, false, "DeathRadius".Translate() + " " + Settings.Instance.deathExplosionRadius, "2", "6", .1f);
+            Rect rowRect21 = UIHelper.GetRowRect(rowRect2, rowHeight, num);
+            Settings.Instance.magicyteChance = Widgets.HorizontalSlider(rowRect21, Settings.Instance.magicyteChance, 0, .01f, false, "MagicyteChance".Translate() + " " + Settings.Instance.magicyteChance, "0%", "1%", .0001f);
+            num++;
+            Rect rowRect3 = UIHelper.GetRowRect(rowRect21, rowHeight, num);
+            rowRect3.width = rowRect3.width * .7f;
+            Settings.Instance.deathExplosionRadius = Widgets.HorizontalSlider(rowRect3, Settings.Instance.deathExplosionRadius, .1f, 6f, false, "DeathRadius".Translate() + " " + Settings.Instance.deathExplosionRadius, ".1", "6", .1f);
+            Rect rowRect31 = new Rect(rowRect3.xMax + 4f, rowRect3.y, rowRect2.width/2, rowRect3.height);
+            Widgets.TextFieldNumericLabeled<int>(rowRect31, "DeathExplosionMin".Translate(), ref Settings.Instance.deathExplosionMin, ref this.deathExplosionDmgMin, 0, 100);
+            Rect rowRect32 = new Rect(rowRect31.xMax + 4f, rowRect3.y, rowRect2.width/2, rowRect3.height);
+            Widgets.TextFieldNumericLabeled<int>(rowRect32, "DeathExplosionMax".Translate(), ref Settings.Instance.deathExplosionMax, ref this.deathExplosionDmgMax, 0, 200);
             num++;
             Rect rowRect4 = UIHelper.GetRowRect(rowRect3, rowHeight, num);
             Settings.Instance.baseMageChance = Widgets.HorizontalSlider(rowRect4, Settings.Instance.baseMageChance, 0f, 5f, false, "baseMageChance".Translate() + " " + Rarity(Settings.Instance.baseMageChance), "0", "5", .01f);
@@ -71,6 +79,8 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.xpMultiplier = 1f;
                 Settings.Instance.needMultiplier = 1f;
                 Settings.Instance.deathExplosionRadius = 3f;
+                Settings.Instance.deathExplosionMin = 20;
+                Settings.Instance.deathExplosionMax = 50;
                 Settings.Instance.AICasting = true;
                 Settings.Instance.AIHardMode = false;
                 Settings.Instance.AIMarking = true;
@@ -78,6 +88,7 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.baseFighterChance = 1f;
                 Settings.Instance.advMageChance = 0.5f;
                 Settings.Instance.advFighterChance = 0.5f;
+                Settings.Instance.magicyteChance = .002f;
             }
         }
 

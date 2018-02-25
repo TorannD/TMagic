@@ -24,6 +24,11 @@
 			<li>
 				<compClass>CompEquippable</compClass>
 			</li>
+<!-- 			<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
+			  <hasEnchantment>true</hasEnchantment>
+			  <mpCost>-0.10</mpCost>
+			  <maxMP>0.10</maxMP>
+			</li> -->
 		</comps>
 		<graphicData>
 			<onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>

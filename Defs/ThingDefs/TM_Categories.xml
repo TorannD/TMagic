@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ThingCategoryDef>
+      <defName>TM_MagicItems</defName>
+      <label>Magic Items</label>
+      <parent>Root</parent>
+      <iconPath>Items/Gemstones/arcane_minor</iconPath>
+      <resourceReadoutRoot>true</resourceReadoutRoot>
+    </ThingCategoryDef>
+	
+	<ThingCategoryDef>
+      <defName>TM_SkillBooks</defName>
+      <label>skill books</label>
+      <parent>TM_MagicItems</parent>
+      <iconPath>Items/Gemstones/arcane_minor</iconPath>
+      <resourceReadoutRoot>true</resourceReadoutRoot>
+    </ThingCategoryDef>
+	
+	<ThingCategoryDef>
+      <defName>TM_Scrolls</defName>
+      <label>scrolls</label>
+      <parent>TM_MagicItems</parent>
+      <iconPath>Items/Gemstones/arcane_minor</iconPath>
+      <resourceReadoutRoot>true</resourceReadoutRoot>
+    </ThingCategoryDef>
+	
+	<ThingCategoryDef>
+      <defName>TM_Magicyte</defName>
+      <label>magicyte</label>
+      <parent>TM_MagicItems</parent>
+      <iconPath>Items/Gemstones/arcane_minor</iconPath>
+      <resourceReadoutRoot>true</resourceReadoutRoot>
+    </ThingCategoryDef>
+	
+</Defs>

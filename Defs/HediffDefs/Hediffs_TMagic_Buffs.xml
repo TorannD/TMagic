@@ -23,7 +23,7 @@
     </comps>
   </HediffDef>
 
-  <HediffDef Name="InfectionBase" Abstract="True">
+  <HediffDef Name="TM_InfectionBase" Abstract="True">
     <hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.8, 0.8, 0.8)</defaultLabelColor>
     <comps>
@@ -33,15 +33,15 @@
     </comps>
   </HediffDef>
 
-  <HediffDef Name="InfectionTreatableBase" ParentName="InfectionBase" Abstract="True">
+<!--   <HediffDef Name="InfectionTreatableBase" ParentName="TM_InfectionBase" Abstract="True">
     <comps>
       <li Class="HediffCompProperties_TendDuration">
         <tendDuration>30000</tendDuration>
       </li>
     </comps>
   </HediffDef>
-  
-    <HediffDef Abstract="True" ParentName="InfectionBase" Name="DebuffBase">
+   -->
+    <HediffDef Abstract="True" ParentName="TM_InfectionBase" Name="DebuffBase">
     <hediffClass>HediffWithComps</hediffClass>
     <makesSickThought>false</makesSickThought>
 		<tendable>false</tendable>
@@ -62,7 +62,7 @@
     </comps>
   </HediffDef>
     
-  <HediffDef Abstract="True" ParentName="InfectionBase" Name="MediumBuffBase">
+  <HediffDef Abstract="True" ParentName="TM_InfectionBase" Name="MediumBuffBase">
     <hediffClass>HediffWithComps</hediffClass>
     <makesSickThought>false</makesSickThought>
 		<tendable>false</tendable>
@@ -83,7 +83,7 @@
     </comps>
   </HediffDef>
   
-  <HediffDef Abstract="True" ParentName="InfectionBase" Name="LongBuffBase">
+  <HediffDef Abstract="True" ParentName="TM_InfectionBase" Name="LongBuffBase">
     <hediffClass>HediffWithComps</hediffClass>
     <makesSickThought>false</makesSickThought>
 		<tendable>false</tendable>
@@ -104,7 +104,7 @@
     </comps>
   </HediffDef>
   
-  <HediffDef Abstract="True" ParentName="InfectionBase" Name="ShortBuffBase">
+  <HediffDef Abstract="True" ParentName="TM_InfectionBase" Name="ShortBuffBase">
     <hediffClass>HediffWithComps</hediffClass>
     <makesSickThought>false</makesSickThought>
 		<tendable>false</tendable>
@@ -125,7 +125,7 @@
     </comps>
   </HediffDef>
   
-    <HediffDef Abstract="True" ParentName="InfectionBase" Name="CombatBuffBase">
+    <HediffDef Abstract="True" ParentName="TM_InfectionBase" Name="CombatBuffBase">
     <hediffClass>HediffWithComps</hediffClass>
     <makesSickThought>false</makesSickThought>
 		<tendable>false</tendable>
@@ -146,7 +146,7 @@
     </comps>
   </HediffDef>
   
-      <HediffDef Abstract="True" ParentName="InfectionBase" Name="CombatIIBuffBase">
+      <HediffDef Abstract="True" ParentName="TM_InfectionBase" Name="CombatIIBuffBase">
     <hediffClass>HediffWithComps</hediffClass>
     <makesSickThought>false</makesSickThought>
 		<tendable>false</tendable>
@@ -167,7 +167,7 @@
     </comps>
   </HediffDef>
   
-    <HediffDef Abstract="True" ParentName="InfectionBase" Name="MediumShortBuffBase">
+    <HediffDef Abstract="True" ParentName="TM_InfectionBase" Name="MediumShortBuffBase">
     <hediffClass>HediffWithComps</hediffClass>
     <makesSickThought>false</makesSickThought>
 		<tendable>false</tendable>
@@ -188,14 +188,14 @@
     </comps>
   </HediffDef>
   
-  <HediffDef Name="AddictionBase" Abstract="True">
+<!--   <HediffDef Name="AddictionBase" Abstract="True">
     <defaultLabelColor>(255,0,127)</defaultLabelColor>
     <initialSeverity>0.5</initialSeverity>
     <maxSeverity>1.0</maxSeverity>
     <scenarioCanAdd>true</scenarioCanAdd>
   </HediffDef>
-
-  <HediffDef Name="DrugToleranceBase" Abstract="True">
+ -->
+<!--   <HediffDef Name="DrugToleranceBase" Abstract="True">
     <hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(179,86,132)</defaultLabelColor>
     <maxSeverity>1.0</maxSeverity>
@@ -218,13 +218,13 @@
         <label>massive</label>
       </li>
     </stages>
-  </HediffDef> 
+  </HediffDef>  -->
   
-  <NeedDef Name="DrugAddictionNeedBase" Abstract="True">
+<!--   <NeedDef Name="DrugAddictionNeedBase" Abstract="True">
     <onlyIfCausedByHediff>true</onlyIfCausedByHediff>
     <tutorHighlightTag>NeedAddiction</tutorHighlightTag>
     <showForCaravanMembers>true</showForCaravanMembers>
-  </NeedDef>
+  </NeedDef> -->
   
 
   

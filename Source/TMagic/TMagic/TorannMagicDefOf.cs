@@ -376,6 +376,13 @@ namespace TorannMagic
         //Jobs
         public static JobDef TMCastAbilityVerb;
         public static JobDef TMCastAbilitySelf;
-        
+        public static JobDef JobDriver_RemoveEnchantingGem;
+        public static JobDef JobDriver_AddEnchantingGem;
+        public static JobDef JobDriver_EnchantItem;
+
+        //Magicyte
+        public static ThingDef RawMagicyte;
+
+
     }
 }

@@ -1598,7 +1598,7 @@ Damage: 4</description>
 Chance to confuse: 5%
 Casting time: 2s
 Range: 28
-Projectiles: 24 over 4s
+Projectiles: 20 over 3.33s
 Damage: 5</description>
         <manaCost>0.24</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -1614,7 +1614,7 @@ Damage: 5</description>
             <SecondsToRecharge>40.0</SecondsToRecharge>
             <range>28</range>
             <forcedMissRadius>4.0</forcedMissRadius>
-            <burstShotCount>24</burstShotCount>
+            <burstShotCount>20</burstShotCount>
             <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
             <isPrimary>false</isPrimary>
             <soundCast>InfernoCannon_Fire</soundCast>
@@ -1639,7 +1639,7 @@ Damage: 5</description>
 Chance to confuse: 7%
 Casting time: 1.5s
 Range: 32
-Projectiles: 30 over 4s
+Projectiles: 24 over 3.2s
 Damage: 6</description>
         <manaCost>0.28</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -1655,7 +1655,7 @@ Damage: 6</description>
             <SecondsToRecharge>30.0</SecondsToRecharge>
             <range>32</range>
             <forcedMissRadius>3.5</forcedMissRadius>
-            <burstShotCount>30</burstShotCount>
+            <burstShotCount>24</burstShotCount>
             <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
             <isPrimary>false</isPrimary>
             <soundCast>InfernoCannon_Fire</soundCast>
@@ -1680,7 +1680,7 @@ Damage: 6</description>
 Chance to confuse: 9%
 Casting time: 1s
 Range: 36
-Projectiles: 38 over 3.6s
+Projectiles: 30 over 3s
 Damage: 7</description>
         <manaCost>0.32</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -1696,7 +1696,7 @@ Damage: 7</description>
             <SecondsToRecharge>20.0</SecondsToRecharge>
             <range>36</range>
             <forcedMissRadius>3.0</forcedMissRadius>
-            <burstShotCount>38</burstShotCount>
+            <burstShotCount>30</burstShotCount>
             <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
             <isPrimary>false</isPrimary>
             <soundCast>InfernoCannon_Fire</soundCast>
@@ -1969,7 +1969,7 @@ Damage: 7</description>
         <label>Blink</label>
         <uiIconPath>UI/blink</uiIconPath>
         <description>Instantly moves caster to the target location.
-Casting time: 1s
+Casting time: 2s
 Recharge time: 10s
 Range: 30</description>
         <manaCost>0.15</manaCost>

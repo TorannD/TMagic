@@ -20,8 +20,6 @@ namespace TorannMagic
         private bool isNecromancer = false;
         private int dominationCount = 0;
 
-        public float maxMP = 1f;
-
         public List<MagicPower> magicPowerIF;
         public List<MagicPower> magicPowerHoF;
         public List<MagicPower> magicPowerSB;

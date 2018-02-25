@@ -99,7 +99,7 @@ Arrow Storm - launches a volley of arrows at a target, but cannot be used withou
 		<defName>ARimWorldOfMagic_1_8_3</defName>
 		<assemblyVersion>1.8.3</assemblyVersion>
 		<content>
-		- Minions and Elementals should no longer generate errors from frostbite or hypothermia.
+- Minions and Elementals should no longer generate errors from frostbite or hypothermia.
 
 - Elemental Rift event will now end correctly following a reload.
 
@@ -122,6 +122,20 @@ Feeling singled out, Necromancers have begun returning the social distaste expre
 - The spellcasting order of events has been changed.  When an ability is used, experience gain, effects on the pawn, and mana/stamina consumption all occur following the cast timer rather than before.  This also prevents spell stacking.
 
 - Abilities used when the target is out of range or if the target is not visible to the caster will generate an error message and abort using the ability; mana/Stamina will no longer be consumed in these cases.
+		</content>
+	</HugsLib.UpdateFeatureDef>	
+		<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_1_9_0</defName>
+		<assemblyVersion>1.9.0</assemblyVersion>
+		<content>
+- The Magical Enchanting feature has been introduced.  Enchanting offers mages the ability to further refine and empower any piece of equipment. To get started, you can find the research options under the "Magic" research tab.  
+There is also an in-depth tutorial in the in-game tutor menu that will guide you through the process.
+
+- Several new mod options have been added for further tailoring of AI abilities and game features.
+
+- Summoned creatures and structures have been reworked to increase the reliability of their intended behavior and improve functionality.  Existing summons will be unaffected.
+
+- Undead mental states and resistances to human weaknesses has been increased and these anomolies should no longer affect their apathetic behavior.
 		</content>
 	</HugsLib.UpdateFeatureDef>	
 	

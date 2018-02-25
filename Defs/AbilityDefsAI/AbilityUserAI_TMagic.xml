@@ -166,6 +166,7 @@ Document made by ChJees
 		<ability>TM_Fireball</ability>
 		<abilityRadius>4</abilityRadius>
 		<power>25.0</power>
+		<maxRange>80.0</maxRange>
 		<needSeeingTarget>true</needSeeingTarget>
 		<tags>
 			<li>Offensive</li>
@@ -192,8 +193,9 @@ Document made by ChJees
 		<defName>TMagic_RayOfHope</defName>
 		<ability>TM_RayofHope</ability>
 		<power>1.0</power>
+		<maxRange>35.0</maxRange>
 		<needSeeingTarget>true</needSeeingTarget>
-		<usedOnCaster>true</usedOnCaster>
+		<usedOnCaster>false</usedOnCaster>
 		<tags>
 			<li>Buff</li>
 		</tags>
@@ -369,8 +371,9 @@ Document made by ChJees
 		<defName>TMagic_Soothe</defName>
 		<ability>TM_Soothe</ability>
 		<power>1.0</power>
+		<maxRange>35.0</maxRange>
 		<needSeeingTarget>true</needSeeingTarget>
-		<usedOnCaster>true</usedOnCaster>
+		<usedOnCaster>false</usedOnCaster>
 		<tags>
 			<li>Buff</li>
 		</tags>
@@ -535,8 +538,9 @@ Document made by ChJees
 		<defName>TMagic_AMP</defName>
 		<ability>TM_AMP</ability>
 		<power>1.0</power>
+		<maxRange>35.0</maxRange>
 		<needSeeingTarget>true</needSeeingTarget>
-		<usedOnCaster>true</usedOnCaster>
+		<usedOnCaster>false</usedOnCaster>
 		<tags>
 			<li>Buff</li>
 		</tags>
@@ -716,8 +720,9 @@ Document made by ChJees
 		<defName>TMagic_Shadow</defName>
 		<ability>TM_Shadow</ability>
 		<power>1.0</power>
+		<maxRange>35.0</maxRange>
 		<needSeeingTarget>true</needSeeingTarget>
-		<usedOnCaster>true</usedOnCaster>
+		<usedOnCaster>false</usedOnCaster>
 		<tags>
 			<li>Buff</li>
 		</tags>

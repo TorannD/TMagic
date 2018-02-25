@@ -69,9 +69,9 @@ namespace TorannMagic
                         }
                     }                    
                 }
-                else
+                else //for caravans
                 {
-                    foreach(Pawn current in base.Pawn.holdingOwner)
+                    foreach (Pawn current in base.Pawn.holdingOwner)
                     {
                         if (current != null)
                         {
@@ -152,8 +152,73 @@ namespace TorannMagic
                             }
                         }
                     }
-                }
-                
+
+                    using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+                    {
+                        while (enumerator.MoveNext())
+                        {
+                            Hediff rec = enumerator.Current;
+                            
+                            if (!rec.IsOld())
+                            {
+                                if (rec.def.defName == "Cataract" || rec.def.defName == "HearingLoss" || rec.def.defName.Contains("ToxicBuildup"))
+                                {
+                                    pawn.health.RemoveHediff(rec);
+                                }
+                                if ((rec.def.defName == "Blindness" || rec.def.defName.Contains("Asthma") || rec.def.defName == "Cirrhosis" || rec.def.defName == "ChemicalDamageModerate"))
+                                {
+                                    pawn.health.RemoveHediff(rec);
+                                }
+                                if ((rec.def.defName == "Frail" || rec.def.defName == "BadBack" || rec.def.defName.Contains("Carcinoma") || rec.def.defName == "ChemicalDamageSevere"))
+                                {
+                                    pawn.health.RemoveHediff(rec);
+                                }
+                                if ((rec.def.defName.Contains("Alzheimers") || rec.def.defName == "Dementia" || rec.def.defName.Contains("HeartArteryBlockage") || rec.def.defName == "CatatonicBreakdown"))
+                                {
+                                    pawn.health.RemoveHediff(rec);
+                                }
+                            }
+                            Log.Message("hediffs are " + rec.Label);
+                        }
+                    }
+
+                    using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+                    {
+                        while (enumerator.MoveNext())
+                        {
+                            Hediff rec = enumerator.Current;
+                            Log.Message("hediffs are " + rec.Label);
+                            if (!rec.IsOld())
+                            {
+                                if (rec.def.defName == "Cataract" || rec.def.defName == "HearingLoss" || rec.def.defName.Contains("ToxicBuildup"))
+                                {
+                                    pawn.health.RemoveHediff(rec);
+                                }
+                                if ((rec.def.defName == "Blindness" || rec.def.defName.Contains("Asthma") || rec.def.defName == "Cirrhosis" || rec.def.defName == "ChemicalDamageModerate"))
+                                {
+                                    pawn.health.RemoveHediff(rec);
+                                }
+                                if ((rec.def.defName == "Frail" || rec.def.defName == "BadBack" || rec.def.defName.Contains("Carcinoma") || rec.def.defName == "ChemicalDamageSevere"))
+                                {
+                                    pawn.health.RemoveHediff(rec);
+                                }
+                                if ((rec.def.defName.Contains("Alzheimers") || rec.def.defName == "Dementia" || rec.def.defName.Contains("HeartArteryBlockage") || rec.def.defName == "CatatonicBreakdown"))
+                                {
+                                    pawn.health.RemoveHediff(rec);
+                                }
+                            }
+                            if(rec.def.makesSickThought)
+                            {
+                                pawn.health.RemoveHediff(rec);
+                            }                            
+                        }
+                    }
+
+                    if (pawn.InMentalState)
+                    {
+                        Log.Message("in mental state of " + this.Pawn.MentalState);
+                    }
+                }                
             }
         }
     }

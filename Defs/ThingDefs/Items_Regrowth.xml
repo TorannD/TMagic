@@ -48,7 +48,7 @@
 			<DeteriorationRate>200.0</DeteriorationRate>
 		</statBases>
 		<thingCategories>
-			<li>ResourcesRaw</li>
+			<li>TM_MagicItems</li>
 		</thingCategories>
 	</ThingDef>
 

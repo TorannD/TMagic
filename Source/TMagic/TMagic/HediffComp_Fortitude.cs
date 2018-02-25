@@ -25,6 +25,7 @@ namespace TorannMagic
             }
         }
 
+
         private void Initialize()
         {
             bool spawned = base.Pawn.Spawned;

@@ -128,7 +128,7 @@
     <label>Summon explosive</label>
     <uiIconPath>UI/ManaMine</uiIconPath>
     <description>Creates a mine out of compressed, raw mana and tethers it to a physical location.  The mine will harmlessly dissolve if the tether runs out of energy that is holding the mine.</description>
-    <manaCost>0.23</manaCost>
+    <manaCost>0.18</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

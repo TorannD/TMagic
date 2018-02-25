@@ -153,7 +153,7 @@
 		<impactSoundType>Blunt</impactSoundType>
 		<armorCategory>Blunt</armorCategory>
 		<spreadOut>true</spreadOut>
-		<explosionDamage>50</explosionDamage>
+		<explosionDamage>28</explosionDamage>
 		<explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
 		<explosionHeatEnergyPerCell>0</explosionHeatEnergyPerCell>
 		<explosionCellMote>Mote_BlastDry</explosionCellMote>

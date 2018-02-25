@@ -74,24 +74,32 @@ namespace TorannMagic
                 }
             }
 
-            if (hitPawn != null && !hitPawn.Dead)
+            if (age > (lastPoison + poisonRate))
             {
-                if (age > (lastPoison + poisonRate) )
+                try
                 {
-                    if (hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Poisoned_HD, false))
+                    if (hitPawn != null && !hitPawn.Dead && caster != null && !caster.Dead)
                     {
-                        int dmg = (int)(((hitPawn.Position - oldPosition).LengthHorizontal) * (1+ (.25f * pwrVal)));
-                        int rndPart = (int)Mathf.RoundToInt(Rand.Range(0f, 4f));
-                        damageEntities(hitPawn, vulnerableParts[rndPart], dmg, TMDamageDefOf.DamageDefOf.TM_Poison);
-                        TM_MoteMaker.ThrowPoisonMote(hitPawn.Position.ToVector3(), map, 1f);
-                        this.lastPoison = this.age;
-                        oldPosition = hitPawn.Position;
+
+                        if (hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Poisoned_HD, false))
+                        {
+                            int dmg = (int)(((hitPawn.Position - oldPosition).LengthHorizontal) * (1 + (.25f * pwrVal)));
+                            int rndPart = (int)Mathf.RoundToInt(Rand.Range(0f, 4f));
+                            damageEntities(hitPawn, vulnerableParts[rndPart], dmg, TMDamageDefOf.DamageDefOf.TM_Poison);
+                            TM_MoteMaker.ThrowPoisonMote(hitPawn.Position.ToVector3(), map, 1f);
+                            this.lastPoison = this.age;
+                            oldPosition = hitPawn.Position;
+                        }
+                        else
+                        {
+                            //no longer poisoned, end
+                            this.age = this.duration + 1;
+                        }
                     }
-                    else
-                    {
-                        //no longer poisoned, end
-                        this.age = this.duration + 1;
-                    }                    
+                }
+                catch
+                {
+                    this.Destroy(DestroyMode.Vanish);
                 }
             }
             else

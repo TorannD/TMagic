@@ -67,6 +67,22 @@
     <Compile Include="Building_TMElementalRift.cs" />
     <Compile Include="Building_TMPortal.cs" />
     <Compile Include="Building_PoisonTrap.cs" />
+    <Compile Include="TMPawnSummoned.cs" />
+    <Compile Include="CompProperties_Summoned.cs" />
+    <Compile Include="CompSummoned.cs" />
+    <Compile Include="Enchantment\HediffComp_Enchantment.cs" />
+    <Compile Include="Enchantment\GenEnchantmentColor.cs" />
+    <Compile Include="Enchantment\EnchantmentTier.cs" />
+    <Compile Include="Enchantment\Toils_Enchant.cs" />
+    <Compile Include="Enchantment\JobDriver_AddEnchantingGem.cs" />
+    <Compile Include="Enchantment\JobDriver_EnchantItem.cs" />
+    <Compile Include="Enchantment\JobDriver_RemoveEnchantingGem.cs" />
+    <Compile Include="Enchantment\CompProperties_Enchant.cs" />
+    <Compile Include="Enchantment\CompEnchant.cs" />
+    <Compile Include="Enchantment\ITab_Enchantment.cs" />
+    <Compile Include="Enchantment\CompEnchantmentMod.cs" />
+    <Compile Include="Enchantment\CompProperties_EnchantedItem.cs" />
+    <Compile Include="Enchantment\CompEnchantedItem.cs" />
     <Compile Include="TMJobDriver_CastAbilitySelf.cs" />
     <Compile Include="TMJobDriver_CastAbilityVerb.cs" />
     <Compile Include="HediffComp_RangerBond.cs" />
@@ -234,8 +250,6 @@
     <Compile Include="Weapon\SeerRing_Ice.cs" />
     <Compile Include="Weapon\SeerRing_Fire.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Enchantment\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

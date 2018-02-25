@@ -5,7 +5,7 @@
   <ThingDef ParentName="ResourceBase" Name="ArcaneScriptBase" Abstract="True">
     <thingClass>ThingWithComps</thingClass>
     <thingCategories>
-      <li>Artifacts</li>
+      <li>TM_SkillBooks</li>
     </thingCategories>
     <tradeTags>
 	  <li>Arcane</li>
@@ -34,7 +34,7 @@
   <ThingDef ParentName="ResourceBase" Name="Partial_ArcaneScriptBase" Abstract="True">
     <thingClass>ThingWithComps</thingClass>
     <thingCategories>
-      <li>Artifacts</li>
+      <li>TM_SkillBooks</li>
     </thingCategories>
     <tradeTags>
 	  <li>Artifacts</li>
@@ -64,7 +64,7 @@
     <ThingDef ParentName="ResourceBase" Name="CombatFormBase" Abstract="True">
     <thingClass>ThingWithComps</thingClass>
     <thingCategories>
-      <li>Artifacts</li>
+      <li>TM_SkillBooks</li>
     </thingCategories>
     <tradeTags>
       <li>Artifact</li>
@@ -94,7 +94,7 @@
   <ThingDef ParentName="ResourceBase" Name="ArcaneSpellBase" Abstract="True">
     <thingClass>ThingWithComps</thingClass>
     <thingCategories>
-      <li>Artifacts</li>
+      <li>TM_Scrolls</li>
     </thingCategories>
     <tradeTags>
       <li>Artifact</li>

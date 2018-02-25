@@ -6,7 +6,7 @@ using Verse;
 
 namespace TorannMagic
 {
-    public class Need_Mana : Need  //Original code by Jecrell
+    public class Need_Mana : Need  
     {
         public const float BaseGainPerTickRate = 150f;
 
@@ -28,15 +28,13 @@ namespace TorannMagic
 
         private int lastGainTick;
 
-        MagicData mdata;
-
         public override float CurLevel
         {            
             get => base.CurLevel;
-            set => base.CurLevel = Mathf.Clamp(value, 0f, this.pawn.GetComp<CompAbilityUserMagic>().MagicData.maxMP);            
+            set => base.CurLevel = Mathf.Clamp(value, 0f, this.pawn.GetComp<CompAbilityUserMagic>().maxMP);            
         }
 
-        public override float MaxLevel => this.pawn.GetComp<CompAbilityUserMagic>().MagicData.maxMP;
+        public override float MaxLevel => this.pawn.GetComp<CompAbilityUserMagic>().maxMP;
 
         public ManaPoolCategory CurCategory
         {
@@ -132,15 +130,16 @@ namespace TorannMagic
                     if (!pawn.Faction.IsPlayer)
                     {
                         amount *= (0.025f);
-                        amount = Mathf.Min(amount, 1f - this.CurLevel);
+                        amount = Mathf.Min(amount, this.MaxLevel - this.CurLevel);
                         this.curLevelInt += amount;
                     }
                     else
                     {
                         ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                        
                         MagicPowerSkill manaRegen = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
-                        amount *= ((0.0012f + 0.00006f * manaRegen.level) * settingsRef.needMultiplier);
-                        amount = Mathf.Min(amount, 1f - this.CurLevel);
+                        amount *= (((0.0012f * comp.mpRegenRate) + (0.00006f * manaRegen.level)) * settingsRef.needMultiplier);
+                        amount = Mathf.Min(amount, this.MaxLevel - this.CurLevel);
                         float necroReduction = 0;
                         int necroCount = 0;
                         int undeadCount = 0;
@@ -299,7 +298,7 @@ namespace TorannMagic
                         ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                         MagicPowerSkill manaRegen = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
                         amount *= ((0.0012f + 0.00006f * manaRegen.level) * settingsRef.needMultiplier);
-                        amount = Mathf.Min(amount, 1f - this.CurLevel);
+                        amount = Mathf.Min(amount, this.MaxLevel - this.CurLevel);
                         comp.Mana.curLevelInt += amount;
                     }
                 }
@@ -308,7 +307,7 @@ namespace TorannMagic
 
         public void UseMagicPower(float amount)
         {
-            this.curLevelInt = Mathf.Clamp(this.curLevelInt - amount, 0f, 1f);
+            this.curLevelInt = Mathf.Clamp(this.curLevelInt - amount, 0f, this.pawn.GetComp<CompAbilityUserMagic>().maxMP);
         }
 
         public override void NeedInterval()
@@ -318,7 +317,15 @@ namespace TorannMagic
 
         public override string GetTipString()
         {
-            return base.GetTipString();
+            //return base.GetTipString();
+            return string.Concat(new string[]
+            {
+                this.LabelCap,
+                ": ",
+                (this.CurLevel / 1f).ToStringPercent(),
+                "\n",
+                this.def.description
+            });
         }
 
         public override void DrawOnGUI(Rect rect, int maxThresholdMarkers = 2147483647, float customMargin = -1f, bool drawArrows = true, bool doTooltip = true)
@@ -342,11 +349,12 @@ namespace TorannMagic
             if (flag3)
             {
                 num2 *= Mathf.InverseLerp(0f, 50f, rect.height);
-            }
+            }            
             Text.Font = ((rect.height <= 55f) ? GameFont.Tiny : GameFont.Small);
             Text.Anchor = TextAnchor.LowerLeft;
             Rect rect2 = new Rect(rect.x + num3 + rect.width * 0.1f, rect.y, rect.width - num3 - rect.width * 0.1f, rect.height / 2f);
             Widgets.Label(rect2, base.LabelCap);
+            GUI.color = Color.magenta;
             Text.Anchor = TextAnchor.UpperLeft;
             Rect rect3 = new Rect(rect.x, rect.y + rect.height / 2f, rect.width, rect.height / 2f);
             rect3 = new Rect(rect3.x + num3, rect3.y, rect3.width - num3 * 2f, rect3.height - num2);
@@ -359,7 +367,7 @@ namespace TorannMagic
                     this.DrawBarThreshold(rect3, this.threshPercents[i]);
                 }
             }
-            float curInstantLevelPercentage = base.CurInstantLevelPercentage;
+            float curInstantLevelPercentage = Mathf.Clamp(this.CurLevel / this.MaxLevel, 0f, 1f); // base.CurInstantLevelPercentage;
             bool flag5 = curInstantLevelPercentage >= 0f;
             if (flag5)
             {

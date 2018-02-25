@@ -21,51 +21,20 @@ namespace TorannMagic
         private int verVal;
         private int pwrVal;
 
-        PawnSummoned[] newPawn = new PawnSummoned[3];
-        private int sumNum = 0;
+        TMPawnSummoned newPawn = new TMPawnSummoned();
         CompAbilityUserMagic comp;
 
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_Values.Look<bool>(ref this.initialized, "initialized", false, false);
-            Scribe_Values.Look<int>(ref this.age, "age", -1, false);
-            Scribe_Values.Look<int>(ref this.duration, "duration", 72000, false);
             Scribe_Values.Look<bool>(ref this.destroyed, "destroyed", false, false);
-            Scribe_Values.Look<int>(ref this.sumNum, "sumNum", 0, false);
-            for (int i = 0; i < sumNum; i++)
-            {
-                Scribe_References.Look<PawnSummoned>(ref this.newPawn[i], "newPawn" + i, false);
-            }
         }
 
         public override void Tick()
         {
             base.Tick();
             this.age++;
-
-            for (int i=0; i < sumNum; i++)
-            {
-                try
-                {
-                    if (newPawn[i].Downed && !newPawn[i].Destroyed && newPawn[i] != null)
-                    {
-                        Messages.Message("MinionFled".Translate(), MessageTypeDefOf.NeutralEvent);
-                        MoteMaker.ThrowSmoke(newPawn[i].Position.ToVector3(), base.Map, 1);
-                        MoteMaker.ThrowHeatGlow(newPawn[i].Position, base.Map, 1);
-                        comp.summonedMinions.Remove(newPawn[i]);
-                        newPawn[i].Destroy();
-                    }
-                }
-                catch
-                {
-                    Log.Message("TM_ExceptionTick".Translate(new object[]
-                    {
-                        this.def.defName
-                    }));
-                    this.age = this.duration;
-                }
-        }
         }
 
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
@@ -73,29 +42,6 @@ namespace TorannMagic
             bool flag = this.age < duration;
             if (!flag)
             {
-                try
-                { 
-                    for (int i = 0; i < sumNum; i++)
-                    {
-                        if (newPawn[i] != null && newPawn[i].Spawned && !newPawn[i].Dead)
-                        {                    
-                            if (!newPawn[i].Destroyed)
-                            {                            
-                                MoteMaker.ThrowSmoke(newPawn[i].Position.ToVector3(), base.Map, 3);
-                                comp.summonedMinions.Remove(newPawn[i]);
-                                newPawn[i].Destroy();
-                            }
-                        }
-                    }
-                }
-                catch
-                {
-                    Log.Message("TM_ExceptionClose".Translate(new object[]
-                    {
-                            this.def.defName
-                    }));
-                    base.Destroy(mode);
-                }
                 base.Destroy(mode);
             }
         }
@@ -187,8 +133,11 @@ namespace TorannMagic
                 }
 
                 SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);
-
                 this.initialized = true;
+            }
+            else
+            {
+                this.age = this.duration;
             }
         }
 
@@ -208,22 +157,24 @@ namespace TorannMagic
                     }
                     else
                     {
-                        newPawn[sumNum] = (PawnSummoned)PawnGenerator.GeneratePawn(spawnables.kindDef, faction);
-                        newPawn[sumNum].Spawner = this.Caster;
-                        newPawn[sumNum].Temporary = false;
-
-                        if (newPawn[sumNum].Faction != Faction.OfPlayerSilentFail)
+                        newPawn = (TMPawnSummoned)PawnGenerator.GeneratePawn(spawnables.kindDef, faction);
+                        newPawn.Spawner = this.Caster;
+                        newPawn.Temporary = true;
+                        newPawn.TicksToDestroy = this.duration;
+                        if (newPawn.Faction != Faction.OfPlayerSilentFail)
                         {
-                            newPawn[sumNum].SetFaction(this.Caster.Faction, null);
+                            newPawn.SetFaction(this.Caster.Faction, null);
                         }
-                        newPawn[sumNum].playerSettings.master = this.Caster;
-                        GenSpawn.Spawn(newPawn[sumNum], position, Find.VisibleMap);
+                        newPawn.playerSettings.master = this.Caster;                        
                         if(comp.summonedMinions.Count >= 4)
                         {
                             Thing dismissMinion = comp.summonedMinions[0];
-                            MoteMaker.ThrowSmoke(dismissMinion.Position.ToVector3(), base.Map, 1);
-                            MoteMaker.ThrowHeatGlow(dismissMinion.Position, base.Map, 1);
-                            comp.summonedMinions.Remove(dismissMinion);
+                            if (dismissMinion != null && dismissMinion.Position.IsValid)
+                            {
+                                MoteMaker.ThrowSmoke(dismissMinion.Position.ToVector3(), base.Map, 1);
+                                MoteMaker.ThrowHeatGlow(dismissMinion.Position, base.Map, 1);
+                            }
+                            comp.summonedMinions.Remove(comp.summonedMinions[0]);
                             if (!dismissMinion.Destroyed)
                             {
                                 dismissMinion.Destroy();
@@ -232,27 +183,39 @@ namespace TorannMagic
                                     this.launcher.LabelShort
                                 }), MessageTypeDefOf.NeutralEvent);
                             }
+                            if(comp.summonedMinions.Count > 4)
+                            {
+                                while(comp.summonedMinions.Count > 4)
+                                {
+                                    Pawn excessMinion = comp.summonedMinions[comp.summonedMinions.Count - 1] as Pawn; 
+                                    comp.summonedMinions.Remove(excessMinion);
+                                    if (excessMinion != null && !excessMinion.Dead && !excessMinion.Destroyed)
+                                    {
+                                        excessMinion.Destroy();
+                                    }
+                                }
+                            }
                             
                         }
-                        comp.summonedMinions.Add(newPawn[sumNum]);
-                        if (newPawn[sumNum].Faction != null && newPawn[sumNum].Faction != Faction.OfPlayer)
+                        GenSpawn.Spawn(newPawn, position, Find.VisibleMap);
+                        comp.summonedMinions.Add(newPawn);
+                        if (newPawn.Faction != null && newPawn.Faction != Faction.OfPlayer)
                         {
                             Lord lord = null;
-                            if (newPawn[sumNum].Map.mapPawns.SpawnedPawnsInFaction(faction).Any((Pawn p) => p != newPawn[sumNum]))
+                            if (newPawn.Map.mapPawns.SpawnedPawnsInFaction(faction).Any((Pawn p) => p != newPawn))
                             {
-                                Predicate<Thing> validator = (Thing p) => p != newPawn[sumNum] && ((Pawn)p).GetLord() != null;
-                                Pawn p2 = (Pawn)GenClosest.ClosestThing_Global(newPawn[sumNum].Position, newPawn[sumNum].Map.mapPawns.SpawnedPawnsInFaction(faction), 99999f, validator, null);
+                                Predicate<Thing> validator = (Thing p) => p != newPawn && ((Pawn)p).GetLord() != null;
+                                Pawn p2 = (Pawn)GenClosest.ClosestThing_Global(newPawn.Position, newPawn.Map.mapPawns.SpawnedPawnsInFaction(faction), 99999f, validator, null);
                                 lord = p2.GetLord();
                             }
                             bool flag4 = lord == null;
                             if (flag4)
                             {
-                                LordJob_DefendPoint lordJob = new LordJob_DefendPoint(newPawn[sumNum].Position);
+                                LordJob_DefendPoint lordJob = new LordJob_DefendPoint(newPawn.Position);
                                 lord = LordMaker.MakeNewLord(faction, lordJob, Find.VisibleMap, null);
                             }
-                            lord.AddPawn(newPawn[sumNum]);
+                            lord.AddPawn(newPawn);
                         }
-                        sumNum++;
                     }
                 }
                 else

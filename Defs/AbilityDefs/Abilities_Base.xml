@@ -3,7 +3,7 @@
 <Defs>
 
   <!-- ========================Vanilla Abstracts ======================= -->
-  <ThingDef Name="BaseBullet" Abstract="True">
+<!--   <ThingDef Name="BaseBullet" Abstract="True">
     <category>Projectile</category>
     <tickerType>Normal</tickerType>
     <altitudeLayer>Projectile</altitudeLayer>
@@ -14,14 +14,14 @@
     <graphicData>
       <shaderType>Transparent</shaderType>
     </graphicData>
-  </ThingDef>
+  </ThingDef> -->
 
 
   <!-- ========================BaseDef================================== -->
 
-  <AbilityUser.AbilityDef Name="BaseAbility" Abstract="True">
+<!--   <AbilityUser.AbilityDef Name="BaseAbility" Abstract="True">
     <uiIconPath>UI/Glow_Corrupt</uiIconPath>
-  </AbilityUser.AbilityDef>
+  </AbilityUser.AbilityDef> -->
 
 
   <AbilityUser.AbilityDef Name="BaseMagicAbility" Abstract="True">

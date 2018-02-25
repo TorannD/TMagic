@@ -35,25 +35,47 @@ namespace TorannMagic
             }
             if (targetPawn != null)
             {
-                yield return Toils_Combat.CastVerb(TargetIndex.A, false);
-                Toil toil2 = new Toil()
+                //yield return Toils_Combat.CastVerb(TargetIndex.A, false);
+                Toil combatToil = new Toil();
+                combatToil.FailOnDestroyedOrNull(TargetIndex.A);
+                combatToil.FailOnDespawnedOrNull(TargetIndex.A);
+                combatToil.FailOnDowned(TargetIndex.A);
+                //JobDriver curDriver = this.pawn.jobs.curDriver;
+                combatToil.initAction = delegate
                 {
-                    initAction = () =>
-                    {
-                        if (curJob.UseAbilityProps.isViolent)
-                        {
-                            JobDriver_CastAbilityVerb.CheckForAutoAttack(this.pawn);
-                        }
-                    },
-                    defaultCompleteMode = ToilCompleteMode.Instant
+                    Verb arg_45_0 = combatToil.actor.jobs.curJob.verbToUse;
+                    LocalTargetInfo target = combatToil.actor.jobs.curJob.GetTarget(TargetIndex.A);
+                    // bool canFreeIntercept2 = false;
+                    arg_45_0.TryStartCastOn(target, false, false);                    
                 };
-                yield return toil2;
-                Toil toil1 = new Toil()
+                combatToil.AddFinishAction(delegate
                 {
-                    initAction = () => curJob.Ability.PostAbilityAttempt(),
-                    defaultCompleteMode = ToilCompleteMode.Instant
-                };
-                yield return toil1;
+                     curJob.Ability.PostAbilityAttempt();                    
+                });
+                //if (combatToil.actor.CurJob != this.job)
+                //{
+                //    curDriver.ReadyForNextToil();
+                //}
+                combatToil.defaultCompleteMode = ToilCompleteMode.FinishedBusy;
+                yield return combatToil;
+                //Toil toil2 = new Toil()
+                //{
+                //    initAction = () =>
+                //    {
+                //        if (curJob.UseAbilityProps.isViolent)
+                //        {
+                //            JobDriver_CastAbilityVerb.CheckForAutoAttack(this.pawn);
+                //        }
+                //    },
+                //    defaultCompleteMode = ToilCompleteMode.Instant
+                //};
+                //yield return toil2;
+                //Toil toil1 = new Toil()
+                //{
+                //    initAction = () => curJob.Ability.PostAbilityAttempt(),
+                //    defaultCompleteMode = ToilCompleteMode.Instant
+                //};
+                //yield return toil1;
             }
             else
             {
@@ -66,19 +88,19 @@ namespace TorannMagic
                         if (validTarg)
                         {
                             yield return Toils_Combat.CastVerb(TargetIndex.A, false);
-                            Toil toil2 = new Toil()
-                            {
-                                initAction = () =>
-                                {
-                                    if (curJob.UseAbilityProps.isViolent)
-                                    {
-                                        JobDriver_CastAbilityVerb.CheckForAutoAttack(this.pawn);
-                                    }
+                            //Toil toil2 = new Toil()
+                            //{
+                            //    initAction = () =>
+                            //    {
+                            //        if (curJob.UseAbilityProps.isViolent)
+                            //        {
+                            //            JobDriver_CastAbilityVerb.CheckForAutoAttack(this.pawn);
+                            //        }
 
-                                },
-                                defaultCompleteMode = ToilCompleteMode.Instant
-                            };
-                            yield return toil2;
+                            //    },
+                            //    defaultCompleteMode = ToilCompleteMode.Instant
+                            //};
+                            //yield return toil2;
                             Toil toil1 = new Toil()
                             {
                                 initAction = () => curJob.Ability.PostAbilityAttempt(),

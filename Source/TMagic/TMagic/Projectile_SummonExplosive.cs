@@ -25,24 +25,6 @@ namespace TorannMagic
             bool flag = this.age < duration;
             if (!flag)
             {
-                try
-                {
-                    if (!placedThing.Destroyed)
-                    {
-                        MoteMaker.ThrowSmoke(placedThing.Position.ToVector3(), base.Map, 1);
-                        MoteMaker.ThrowHeatGlow(placedThing.Position, base.Map, 1);
-                        placedThing.Destroy();
-                        Messages.Message("MineDeSpawn".Translate(), MessageTypeDefOf.SilentInput);
-                    }
-                }
-                catch
-                {
-                    Log.Message("TM_ExceptionClose".Translate(new object[]
-                    {
-                        this.def.defName
-                    }));
-                    base.Destroy(mode);
-                }
                 base.Destroy(mode);
             }
         }
@@ -52,7 +34,6 @@ namespace TorannMagic
         {
             Map map = base.Map;
             base.Impact(hitThing);
-            string msg;
             ThingDef def = this.def;
             Pawn victim = hitThing as Pawn;
             Thing item = hitThing as Thing;
@@ -103,7 +84,7 @@ namespace TorannMagic
                     {
                         tempPod.def = ThingDef.Named("TM_ManaMine");
                     }
-                    tempPod.spawnCount = 1;                    
+                    tempPod.spawnCount = 1;
                     try
                     {
                         this.SingleSpawnLoop(tempPod, shiftPos, map);
@@ -128,6 +109,8 @@ namespace TorannMagic
                     this.duration = 0;
                 }
             }
+
+            this.age = this.duration;
 
         }
 
@@ -165,6 +148,9 @@ namespace TorannMagic
                         thing.SetFaction(faction, null);
                     }
                     placedThing = thing;
+                    CompSummoned bldgComp = thing.TryGetComp<CompSummoned>();
+                    bldgComp.Temporary = true;
+                    bldgComp.TicksToDestroy = this.duration;
                     GenSpawn.Spawn(thing, position, map, Rot4.North, false);
                 }
             }

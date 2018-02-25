@@ -10,6 +10,14 @@ namespace TorannMagic.Thoughts
         {
             if (pawn != null && other != null)
             {
+                if (!other.RaceProps.Humanlike || other.Dead)
+                {
+                    return false;
+                }
+                if (!RelationsUtility.PawnsKnowEachOther(pawn, other))
+                {
+                    return false;
+                }
                 if (pawn.RaceProps.Humanlike && other.RaceProps.Humanlike)
                 {
                     if ((other.story.traits.HasTrait(TorannMagicDefOf.Paladin) || other.story.traits.HasTrait(TorannMagicDefOf.Druid) || other.story.traits.HasTrait(TorannMagicDefOf.Priest)) && pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer))

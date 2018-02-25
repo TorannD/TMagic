@@ -37,6 +37,12 @@ namespace TorannMagic
 
         private float global_seff = 0.05f;
 
+        public float maxSP = 1;
+        public float spRegenRate = 1;
+        public float coolDown = 1;
+        public float spCost = 1;
+        public float xpGain = 1;
+
         public List<Thing> combatItems = new List<Thing>();
 
         public Pawn bondedPet = null;
@@ -1084,6 +1090,7 @@ namespace TorannMagic
             //base.PostExposeData();
             Scribe_Values.Look<bool>(ref this.mightPowersInitialized, "mightPowersInitialized", false, false);
             Scribe_Collections.Look<Thing>(ref this.combatItems, "combatItems", LookMode.Reference);
+            Scribe_References.Look<Pawn>(ref this.bondedPet, "bondedPet", false);
             Scribe_Deep.Look<MightData>(ref this.mightData, "mightData", new object[]
             {
                 this

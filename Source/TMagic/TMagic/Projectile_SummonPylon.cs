@@ -23,24 +23,24 @@ namespace TorannMagic
             bool flag = this.age < duration;
             if (!flag)
             {
-                try
-                {
-                    if (!placedThing.Destroyed && placedThing != null)
-                    {
-                        MoteMaker.ThrowSmoke(placedThing.Position.ToVector3(), base.Map, 1);
-                        MoteMaker.ThrowHeatGlow(placedThing.Position, base.Map, 1);
-                        placedThing.Destroy();
-                        Messages.Message("PylonDeSpawn".Translate(), MessageTypeDefOf.SilentInput);
-                    }
-                }
-                catch
-                {
-                    Log.Message("TM_ExceptionClose".Translate(new object[]
-                    {
-                        this.def.defName
-                    }));
-                    base.Destroy(mode);
-                }
+                //try
+                //{
+                //    if (!placedThing.Destroyed && placedThing != null)
+                //    {
+                //        MoteMaker.ThrowSmoke(placedThing.Position.ToVector3(), base.Map, 1);
+                //        MoteMaker.ThrowHeatGlow(placedThing.Position, base.Map, 1);
+                //        placedThing.Destroy();
+                //        Messages.Message("PylonDeSpawn".Translate(), MessageTypeDefOf.SilentInput);
+                //    }
+                //}
+                //catch
+                //{
+                //    Log.Message("TM_ExceptionClose".Translate(new object[]
+                //    {
+                //        this.def.defName
+                //    }));
+                //    base.Destroy(mode);
+                //}
                 base.Destroy(mode);
             }
         }
@@ -121,6 +121,8 @@ namespace TorannMagic
                 }
             }
 
+            this.age = this.duration;
+
         }
 
         public void SingleSpawnLoop(SpawnThings spawnables, IntVec3 position, Map map)
@@ -157,6 +159,9 @@ namespace TorannMagic
                         thing.SetFaction(faction, null);
                     }
                     placedThing = thing;
+                    CompSummoned bldgComp = thing.TryGetComp<CompSummoned>();
+                    bldgComp.TicksToDestroy = this.duration;
+                    bldgComp.Temporary = true;
                     GenSpawn.Spawn(thing, position, map, Rot4.North, false);
                 }
             }

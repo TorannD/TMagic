@@ -17,7 +17,6 @@ namespace TorannMagic
 			StringBuilder stringBuilder = new StringBuilder();
 			stringBuilder.AppendLine(this.GetDescription());
 			return stringBuilder.ToString();
-		}
-	}
-
+		}        
+    }
 }

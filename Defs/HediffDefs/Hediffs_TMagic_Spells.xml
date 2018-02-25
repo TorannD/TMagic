@@ -433,7 +433,7 @@
   </HediffDef>  
 
 
-    <HediffDef Name="InjuryBase" Abstract="True">
+<!--     <HediffDef Name="InjuryBase" Abstract="True">
     <hediffClass>Hediff_Injury</hediffClass>
     <tendable>true</tendable>
     <displayWound>true</displayWound>
@@ -455,7 +455,7 @@
       <canMerge>false</canMerge>
       <destroyedLabel>Destroyed</destroyedLabel>
     </injuryProps>
-	</HediffDef>
+	</HediffDef> -->
 	
 	
 

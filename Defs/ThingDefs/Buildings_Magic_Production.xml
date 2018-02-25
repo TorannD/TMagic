@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- ========================= Work tables ==========================-->
+
+  <ThingDef Name="MagicBenchBase" ParentName="TM_BuildingBase" Abstract="True">
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+    <canOverlapZones>false</canOverlapZones>
+		<building>
+			<workSpeedPenaltyOutdoors>true</workSpeedPenaltyOutdoors>
+			<workSpeedPenaltyTemperature>true</workSpeedPenaltyTemperature>
+		</building>
+		<comps>
+			<li>
+				<compClass>CompReportWorkSpeed</compClass>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ReportWorkSpeedPenalties</li>
+		</placeWorkers>
+  </ThingDef>
+
+  <ThingDef ParentName="MagicBenchBase">
+    <defName>TableGemcutting</defName>
+    <label>gemcrafting table</label>
+    <thingClass>Building_WorkTable</thingClass>
+    <description>A workbench used for refining enchanting stones</description>
+    <graphicData>
+      <texPath>Items/TableGemcutting</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(3.5,1.5)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <costList>
+      <Steel>100</Steel>
+    </costList>
+    <stuffCategories>
+      <li>Metallic</li>
+	  <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>150</costStuffCount>
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>7800</WorkToBuild>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Flammability>0.2</Flammability>
+      <Cleanliness>-5</Cleanliness>
+    </statBases>
+    <size>(3,1)</size>
+    <designationCategory>Production</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>70</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+	<recipes>
+      <li>CutMinorMPGem</li>
+	  <li>CutMinorCoolDownGem</li>
+	  <li>CutMinorMPRegenRateGem</li>
+	  <li>CutMinorXPGainGem</li>
+	  <li>CutMinorMPCostGem</li>
+    </recipes>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+    </building>
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+    <designationHotKey>Misc2</designationHotKey>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+	<researchPrerequisites>
+      <li>TM_Enchanting</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+</Defs>

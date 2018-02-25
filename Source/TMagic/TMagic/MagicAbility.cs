@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Verse;
+using UnityEngine;
 
 namespace TorannMagic
 {
-    class MagicAbility : PawnAbility
+    public class MagicAbility : PawnAbility
     {
        
         public CompAbilityUserMagic MagicUser
@@ -62,11 +63,11 @@ namespace TorannMagic
                 bool flag3 = this.MagicUser.Mana != null;
                 if (flag3)
                 {
-                    this.MagicUser.Mana.UseMagicPower(this.MagicUser.ActualManaCost(magicDef));
+                    this.MagicUser.Mana.UseMagicPower(this.MagicUser.ActualManaCost(magicDef));                    
                     if(this.magicDef != TorannMagicDefOf.TM_TransferMana)
                     {
                         ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                        this.MagicUser.MagicUserXP += (int)((magicDef.manaCost * 300) * settingsRef.xpMultiplier);
+                        this.MagicUser.MagicUserXP += (int)((magicDef.manaCost * 300) * this.MagicUser.xpGain * settingsRef.xpMultiplier);
                     }                    
                 }
             }
@@ -82,6 +83,7 @@ namespace TorannMagic
             {
                 string text = "";
                 string text2 = "";
+                string text3 = "";
                 float num = 0;
                 float num2 = 0;
                 
@@ -150,6 +152,14 @@ namespace TorannMagic
                     num.ToString("p1")
                 });
 
+                if(this.MagicUser.coolDown != 1f)
+                {
+                    text3 = "TM_AdjustedCooldown".Translate(new object[]
+                    {
+                        ((this.MaxCastingTicks * this.MagicUser.coolDown)/60).ToString("0.00")
+                    });
+                }
+
                 bool flag2 = text != "";
                 if (flag2)
                 {
@@ -159,6 +169,11 @@ namespace TorannMagic
                 if (flag3)
                 {
                     stringBuilder.AppendLine(text2);
+                }
+                bool flag4 = text3 != "";
+                if(flag4)
+                {
+                    stringBuilder.AppendLine(text3);
                 }
                 result = stringBuilder.ToString();
             }
