@@ -43,6 +43,7 @@ namespace TorannMagic
         public int magicXPRate = 1000;
         public int lastXPGain = 0;
         private int age = -1;
+        private bool doOnce = true;
 
         private float IF_RayofHope_eff = 0.10f;
         private float IF_Firebolt_eff = 0.10f;
@@ -216,8 +217,6 @@ namespace TorannMagic
 
         public List<Thing> summonedMinions = new List<Thing>();
 
-        //public List<TMPawnSummoned> summonedMinionsPS = new List<TMPawnSummoned>();
-
         private MagicData magicData = null;
         public MagicData MagicData
         {
@@ -240,9 +239,17 @@ namespace TorannMagic
                 DrawMageMark();                
             }
             Enchantment.CompEnchant compEnchant = this.Pawn.GetComp<Enchantment.CompEnchant>();
-            if(compEnchant != null && compEnchant.enchantingContainer.Count > 0)
+            try
             {
-                DrawEnchantMark();
+                if (this.IsMagicUser && compEnchant != null && compEnchant.enchantingContainer.Count > 0)
+                {
+                    DrawEnchantMark();
+                }
+            }
+            catch
+            {
+                Enchantment.CompProperties_Enchant newEnchantComp = new Enchantment.CompProperties_Enchant();
+                this.Pawn.def.comps.Add(newEnchantComp);
             }
             base.PostDraw();
         }
@@ -776,6 +783,18 @@ namespace TorannMagic
             return result;
         }
 
+        private void SingleEvent()
+        {
+            if (this.Pawn.def.HasComp(typeof(Enchantment.CompEnchant)))
+            {
+                Enchantment.CompEnchant compEnchant = this.Pawn.GetComp<Enchantment.CompEnchant>();
+                compEnchant.Initialize(compEnchant.props);
+                compEnchant.enchantingContainer.Clear();
+            }
+            Log.Message("Enchanting Comp loading for pre-existing mage " + this.Pawn.Label);
+            this.doOnce = false;            
+        }
+
         public override void CompTick()
         {
             bool flag = base.AbilityUser != null;
@@ -791,6 +810,10 @@ namespace TorannMagic
                         if (flag3)
                         {
                             this.PostInitializeTick();
+                        }
+                        if(this.doOnce)
+                        {
+                            SingleEvent();
                         }
                         base.CompTick();
                         for(int i =0; i < this.summonedMinions.Count; i++)
@@ -3070,6 +3093,7 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.spell_ManaShield, "spell_ManaShield", false, false);
             Scribe_Values.Look<bool>(ref this.spell_FoldReality, "spell_FoldReality", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Resurrection, "spell_Resurrection", false, false);
+            Scribe_Values.Look<bool>(ref this.doOnce, "doOnce", true, false);
             Scribe_Collections.Look<Thing>(ref this.summonedMinions, "summonedMinions", LookMode.Reference);
             Scribe_Deep.Look<MagicData>(ref this.magicData, "magicData", new object[]
             {

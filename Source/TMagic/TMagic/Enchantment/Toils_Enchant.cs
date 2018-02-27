@@ -72,7 +72,7 @@ namespace TorannMagic.Enchantment
                         {
                             comp.enchantingContainer.TryDropAll(actor.Position, actor.Map, ThingPlaceMode.Near);                            
                         }
-                        comp.enchantingContainer.TryAdd(thing.SplitOff(num), true);
+                        comp.enchantingContainer.TryAdd(thing.SplitOff(1), true);
                         thing.def.soundPickup.PlayOneShot(new TargetInfo(actor.Position, actor.Map, false));
                     }
                     else

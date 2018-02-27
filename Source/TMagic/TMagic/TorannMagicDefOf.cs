@@ -360,6 +360,7 @@ namespace TorannMagic
         //Graphics
 
         public static ThingDef Mote_ManaPuff;
+        public static ThingDef Mote_Enchanting;
         public static ThingDef Mote_Siphon;
         public static ThingDef Mote_Poison;
         public static ThingDef Mote_Regen;
@@ -383,6 +384,8 @@ namespace TorannMagic
         //Magicyte
         public static ThingDef RawMagicyte;
 
+        //Sounds
+        public static SoundDef ItemEnchanted;
 
     }
 }

@@ -3,6 +3,7 @@ using Verse.AI;
 using Verse;
 using RimWorld;
 using System.Collections.Generic;
+using Verse.Sound;
 
 namespace TorannMagic.Enchantment
 {
@@ -88,6 +89,10 @@ namespace TorannMagic.Enchantment
                     actor.jobs.EndCurrentJob(JobCondition.Incompletable, true);
                     Log.Message("Failed to complete enchanting - item being enchanted not at enchanting location or destroyed");
                 }
+                if (Find.TickManager.TicksGame % 5 == 0)
+                {
+                    TM_MoteMaker.ThrowEnchantingMote(TargetLocA.ToVector3Shifted(), actor.Map, .6f);
+                }
             };
             enchanting.WithProgressBar(TargetIndex.A, delegate
             {
@@ -102,7 +107,6 @@ namespace TorannMagic.Enchantment
             enchanting.defaultDuration = 600;
             enchanting.AddFinishAction(delegate
             {
-                Log.Message("Completing enchantment");
                 CompEnchantedItem enchantment = thing.TryGetComp<CompEnchantedItem>();
                 CompEnchant enchantingItem = actor.TryGetComp<CompEnchant>();
                 CompAbilityUserMagic pawnComp = actor.TryGetComp<CompAbilityUserMagic>();
@@ -111,7 +115,9 @@ namespace TorannMagic.Enchantment
                     EnchantItem(enchantingItem.enchantingContainer[0], enchantment);
                     enchantingItem.enchantingContainer[0].Destroy();
                     pawnComp.Mana.CurLevel -= .5f;
-                    
+                    MoteMaker.ThrowText(TargetLocA.ToVector3Shifted(), actor.Map, "TM_Enchanted".Translate(), -1);
+                    SoundStarter.PlayOneShotOnCamera(TorannMagicDefOf.ItemEnchanted, null);
+
                     //DestroyEnchantingStone(enchantingItem.innerContainer[0]);
                 }
                 else

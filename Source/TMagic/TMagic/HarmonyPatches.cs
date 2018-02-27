@@ -1084,7 +1084,15 @@ namespace TorannMagic
                 CompAbilityUserMagic pawnComp = pawn.TryGetComp<CompAbilityUserMagic>();
                 if (comp != null && pawnComp.IsMagicUser) 
                 {
-                    if (c.GetThingList(pawn.Map).Count < 1 && !pawn.Drafted) //c.GetThingList(pawn.Map).Count == 0 &&
+                    bool emptyGround = true;
+                    foreach( Thing current in c.GetThingList(pawn.Map))
+                    {
+                        if (current != null && current.def.EverHaulable)
+                        {
+                            emptyGround = false;
+                        }
+                    }
+                    if (emptyGround && !pawn.Drafted) //c.GetThingList(pawn.Map).Count == 0 &&
                     {
                         if (comp.enchantingContainer.Count > 0)
                         {

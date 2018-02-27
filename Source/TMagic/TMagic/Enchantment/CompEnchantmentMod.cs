@@ -36,7 +36,18 @@ namespace TorannMagic.Enchantment
                 current.inspectorTabs.Add(typeFromHandle);
                 current.inspectorTabsResolved.Add(sharedInstance);
             }
+            
+            IEnumerable<ThingDef> enumerable1 = from def in DefDatabase<ThingDef>.AllDefs
+                                               where (def.race != null && def.race.Humanlike && !def.HasComp(typeof(CompEnchant))) 
+                                                select def;
+            foreach (ThingDef current1 in enumerable1)
+            {
+                CompProperties_Enchant enchanting = new CompProperties_Enchant
+                {
+                    compClass = typeof(CompEnchant)
+                };
+                current1.comps.Add(enchanting);
+            }            
         }
-
     }
 }

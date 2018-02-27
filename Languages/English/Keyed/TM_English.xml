@@ -593,4 +593,7 @@ Level 3: Moving +50%, Manipulation +50%, Blood pumping +40%, Dodge chance +35%</
 <TM_MPCostLabel>MP Cost Reduction: {0}&#37;</TM_MPCostLabel>
 <TM_XPGainLabel>XP Gain Increase: {0}&#37;</TM_XPGainLabel>
 
+<!-- ============ Floating Text =============-->
+<TM_Enchanted>Enchanted!</TM_Enchanted>
+
 </LanguageData>

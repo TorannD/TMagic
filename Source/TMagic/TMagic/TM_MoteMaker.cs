@@ -22,6 +22,20 @@ namespace TorannMagic
             GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);
         }
 
+        public static void ThrowEnchantingMote(Vector3 loc, Map map, float scale)
+        {
+            if (!loc.ShouldSpawnMotesAt(map) || map.moteCounter.SaturatedLowPriority)
+            {
+                return;
+            }
+            MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(TorannMagicDefOf.Mote_Enchanting, null);
+            moteThrown.Scale = 1.9f * scale;
+            moteThrown.rotationRate = (float)Rand.Range(150, 200);
+            moteThrown.exactPosition = loc;
+            moteThrown.SetVelocity((float)Rand.Range(0, 360), Rand.Range(-0.35f, -0.75f));
+            GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);
+        }
+
         public static void ThrowSiphonMote(Vector3 loc, Map map, float scale)
         {
             if (!loc.ShouldSpawnMotesAt(map) || map.moteCounter.SaturatedLowPriority)
