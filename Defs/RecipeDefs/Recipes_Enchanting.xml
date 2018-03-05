@@ -25,7 +25,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>30</count>
       </li>
 	  <li>
         <filter>
@@ -43,7 +43,7 @@
       <Crafting>8</Crafting>
 	  <Intellectual>4</Intellectual>
     </skillRequirements>
-    <workSkill>Crafting</workSkill>
+    <workSkill>Intellectual</workSkill>
   </RecipeDef>
   
   <RecipeDef>
@@ -156,7 +156,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>30</count>
       </li>
 	  <li>
         <filter>
@@ -287,7 +287,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>30</count>
       </li>
 	  <li>
         <filter>
@@ -418,7 +418,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>30</count>
       </li>
 	  <li>
         <filter>
@@ -550,7 +550,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>30</count>
       </li>
 	  <li>
         <filter>
@@ -680,7 +680,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>1</count>
+        <count>10</count>
       </li>
 	  <li>
         <filter>

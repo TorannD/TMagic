@@ -19,6 +19,7 @@
 	  <Beauty>10</Beauty>
 	  <SellPriceFactor>.8</SellPriceFactor>
 	</statBases>
+	<stackLimit>1</stackLimit>
 	<techLevel>Neolithic</techLevel>
     <comps>
       <li Class="CompProperties_Usable">
@@ -50,6 +51,7 @@
 	  <SellPriceFactor>.8</SellPriceFactor>
 	</statBases>
 	<techLevel>Neolithic</techLevel>
+	<stackLimit>1</stackLimit>
     <comps>
       <li Class="CompProperties_Usable">
         <useJob>UseArtifact</useJob>
@@ -80,6 +82,7 @@
 	  <SellPriceFactor>.8</SellPriceFactor>
 	</statBases>
 	<techLevel>Neolithic</techLevel>
+	<stackLimit>1</stackLimit>
     <comps>
       <li Class="CompProperties_Usable">
         <useJob>UseArtifact</useJob>
@@ -111,6 +114,7 @@
 	  <SellPriceFactor>.8</SellPriceFactor>
 	</statBases>
 	<techLevel>Neolithic</techLevel>
+	<stackLimit>1</stackLimit>
     <comps>
       <li Class="CompProperties_Usable">
         <useJob>UseArtifact</useJob>
@@ -118,6 +122,38 @@
       </li>
       <li Class="CompProperties_UseEffect">
         <compClass>TorannMagic.CompUseEffect_LearnSpell</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+  
+    <ThingDef ParentName="ResourceBase" Name="FighterSkillBase" Abstract="True">
+    <thingClass>ThingWithComps</thingClass>
+    <thingCategories>
+      <li>TM_Scrolls</li>
+    </thingCategories>
+    <tradeTags>
+      <li>Artifact</li>
+	  <li>BodyPartOrImplant</li>
+	  <li>Arcane</li>
+    </tradeTags>
+    <statBases>
+      <MarketValue>777</MarketValue>
+      <MaxHitPoints>1000</MaxHitPoints>
+      <Mass>0.2</Mass>
+	  <Flammability>0.5</Flammability>
+	  <DeteriorationRate>0.0001</DeteriorationRate>
+	  <Beauty>0</Beauty>
+	  <SellPriceFactor>.8</SellPriceFactor>
+	</statBases>
+	<techLevel>Neolithic</techLevel>
+	<stackLimit>1</stackLimit>
+    <comps>
+      <li Class="CompProperties_Usable">
+        <useJob>UseArtifact</useJob>
+        <useLabel>Read</useLabel>
+      </li>
+      <li Class="CompProperties_UseEffect">
+        <compClass>TorannMagic.CompUseEffect_LearnSkill</compClass>
       </li>
     </comps>
   </ThingDef>
@@ -841,6 +877,33 @@ This arcane script is incomplete and the reader may not be able to learn some, o
     <drawGUIOverlay>false</drawGUIOverlay>
   </ThingDef>
   
+    <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_PowerNode</defName>
+    <label>Mage Spell: Power Node</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a magic user how to create a contained power node that converts arcane energy into electrical power. Place next to existing power grid. Supplies 600 power.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>800</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_lit</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
   <ThingDef ParentName="ArcaneSpellBase">
     <defName>SpellOf_Cooler</defName>
     <label>Mage Spell: Dispel Heat</label>
@@ -1296,6 +1359,197 @@ Produces 400Wd.</description>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_holy</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+      <!--=============== Fighter Skills - Single ====================-->
+
+  <ThingDef ParentName="FighterSkillBase">
+    <defName>SkillOf_Sprint</defName>
+    <label>Fighter Skill: Sprint</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a fighter class how to dedicate an allotment of stamina to sustain an increased movement rate.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>500</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+    <ThingDef ParentName="FighterSkillBase">
+    <defName>SkillOf_GearRepair</defName>
+    <label>Fighter Skill: Gear Repair</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a fighter class how to dedicate an allotment of stamina to maintaining and repairing worn equipment.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>700</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+    <ThingDef ParentName="FighterSkillBase">
+    <defName>SkillOf_InnerHealing</defName>
+    <label>Fighter Skill: Inner Healing</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a fighter class how to dedicate an allotment of stamina and physical energy to increase healing rate and improve disease immunity.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>500</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+      <ThingDef ParentName="FighterSkillBase">
+    <defName>SkillOf_HeavyBlow</defName>
+    <label>Fighter Skill: Heavy Blow</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a fighter class how to dedicate an allotment of stamina to increase the power of each attack.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>750</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+      <ThingDef ParentName="FighterSkillBase">
+    <defName>SkillOf_StrongBack</defName>
+    <label>Fighter Skill: Strong Back</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a fighter class how to dedicate an allotment of stamina to increase carrying and inventory capacities.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>600</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+	<ThingDef ParentName="FighterSkillBase">
+    <defName>SkillOf_ThickSkin</defName>
+    <label>Fighter Skill: Thick Skin</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a fighter class how to dedicate an allotment of stamina to increase armor values and temperature threshold.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>400</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+        <ThingDef ParentName="FighterSkillBase">
+    <defName>SkillOf_FightersFocus</defName>
+    <label>Fighter Skill: Fighters Focus</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a fighter class how to dedicate an allotment of stamina to withstand greater mental and physical stress.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>800</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <drawGUIOverlay>false</drawGUIOverlay>

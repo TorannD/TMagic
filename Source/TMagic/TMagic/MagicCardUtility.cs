@@ -230,9 +230,13 @@ namespace TorannMagic
             Rect rect31 = new Rect(rect2.x + 272f, rectG.y, MagicCardUtility.MagicButtonPointSize, MagicCardUtility.TextSize);
             Rect rect4 = new Rect(rect3.x + rect3.width + (MagicCardUtility.MagicButtonPointSize * 2), rectG.y, 136f, MagicCardUtility.TextSize);
             Rect rect41 = new Rect(rect3.x + rect3.width + MagicCardUtility.MagicButtonPointSize, rectG.y, MagicCardUtility.MagicButtonPointSize, MagicCardUtility.TextSize);
+            Rect rect5 = new Rect(rect2.x + 272f + MagicCardUtility.MagicButtonPointSize, rectG.yMin + 24f, 136f, MagicCardUtility.TextSize);
+            Rect rect51 = new Rect(rect2.x + 272f, rectG.yMin + 24f, MagicCardUtility.MagicButtonPointSize, MagicCardUtility.TextSize);
 
             List<MagicPowerSkill> skill1 = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_regen;
             List<MagicPowerSkill> skill2 = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_eff;
+            List<MagicPowerSkill> skill3 = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_spirit;
+
             using (List<MagicPowerSkill>.Enumerator enumerator1 = skill1.GetEnumerator())
             {
                 while (enumerator1.MoveNext())
@@ -280,6 +284,33 @@ namespace TorannMagic
                             if (skill.label == "TM_global_eff_pwr")
                             {
                                 compMagic.LevelUpSkill_global_eff(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                        }
+                    }
+                }
+            }
+            using (List<MagicPowerSkill>.Enumerator enumerator3 = skill3.GetEnumerator())
+            {
+                while (enumerator3.MoveNext())
+                {
+                    MagicPowerSkill skill = enumerator3.Current;
+                    TooltipHandler.TipRegion(rect5, new TipSignal(() => enumerator3.Current.desc.Translate(), rect5.GetHashCode()));
+                    bool flag11 = skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0;
+                    if (flag11)
+                    {
+                        Widgets.Label(rect5, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
+                    }
+                    else
+                    {
+                        bool flag12 = Widgets.ButtonText(rect51, "+", true, false, true) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
+                        Widgets.Label(rect5, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
+                        if (flag12)
+                        {
+                            if (skill.label == "TM_global_spirit_pwr")
+                            {
+                                compMagic.LevelUpSkill_global_spirit(skill.label);
                                 skill.level++;
                                 compMagic.MagicData.MagicAbilityPoints -= 1;
                             }

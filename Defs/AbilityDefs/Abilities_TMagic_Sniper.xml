@@ -23,7 +23,7 @@
     <defName>TM_SniperFocus</defName>
     <label>Sniper Training</label>
     <uiIconPath>UI/sniper_training</uiIconPath>
-    <description>Use of this ability applies updates to your sniper trait.  This ability only needs to be used after sniper training.</description>
+    <description>Training that improves technique and status as sniper.</description>
     <staminaCost>0.01</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SniperFocus</verbClass>

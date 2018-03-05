@@ -16,12 +16,12 @@
 	<tradeTags>
 	  <li>Arcane</li>
     </tradeTags>
-	<deepCommonality>0</deepCommonality>
+	<techLevel>Neolithic</techLevel>
 	<tradeNeverStack>false</tradeNeverStack>
 	<resourceReadoutAlwaysShow>false</resourceReadoutAlwaysShow>
 	<soundInteract>Metal_Drop</soundInteract>
     <soundDrop>Metal_Drop</soundDrop>
-	<stackLimit>50</stackLimit>
+	<stackLimit>1500</stackLimit>
 	<statBases>
 		<Beauty>10</Beauty>
 	</statBases>
@@ -331,10 +331,12 @@
       <texPath>Items/Gemstones/magicyte_raw</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-		<statBases>
+	<deepCommonality>0.2</deepCommonality>
+	<statBases>
 	  <Beauty>4</Beauty>
 	  <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>150</MarketValue>
+      <MarketValue>6</MarketValue>
+	  <SellPriceFactor>.25</SellPriceFactor>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>

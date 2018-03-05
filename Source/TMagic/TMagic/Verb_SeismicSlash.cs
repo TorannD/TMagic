@@ -172,7 +172,7 @@ namespace TorannMagic
         {
             DamageInfo dinfo;
             amt = (int)((float)amt * Rand.Range(.7f, 1.3f));
-            dinfo = new DamageInfo(type, amt, (float)-1, null, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);            
+            dinfo = new DamageInfo(type, amt, (float)-1, this.CasterPawn, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);            
             dinfo.SetAllowDamagePropagation(false);
             victim.TakeDamage(dinfo);
         }

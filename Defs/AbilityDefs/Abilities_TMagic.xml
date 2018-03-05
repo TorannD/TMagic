@@ -2307,7 +2307,7 @@ Range: 150</description>
         <defName>TM_Rainmaker</defName>
         <label>Rainmaker</label>
         <uiIconPath>UI/rain</uiIconPath>
-        <description>Alters the conditions in the atmosphere, causing it to rain.</description>
+        <description>Alters the conditions in the atmosphere, causing it to rain if it's clear or clears the skies if it's raining.</description>
         <manaCost>0.20</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Rainmaker</verbClass>

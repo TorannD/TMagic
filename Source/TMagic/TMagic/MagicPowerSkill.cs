@@ -35,6 +35,10 @@ namespace TorannMagic
             {
                 this.levelMax = 4;
             }
+            else if (newLabel == "TM_global_spirit_pwr" )
+            {
+                this.levelMax = 50;
+            }
             else
             {
                 this.levelMax = 3;

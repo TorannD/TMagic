@@ -18,6 +18,8 @@ namespace TorannMagic
                     FixTrait(user, user.story.traits.allTraits);
                     user.story.traits.GainTrait(new Trait(TraitDef.Named("Gladiator"), 4, false));
                     this.parent.Destroy(DestroyMode.Vanish);
+                    CompAbilityUserMight comp = user.GetComp<CompAbilityUserMight>();
+                    comp.skill_Sprint = true;
                 }
                 else if (parent.def.defName == "BookOfSniper")
                 {

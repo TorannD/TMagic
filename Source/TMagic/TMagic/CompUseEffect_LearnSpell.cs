@@ -62,7 +62,13 @@ namespace TorannMagic
                     comp.InitializeSpell();
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
-               else if (parent.def.defName == "SpellOf_DryGround" && comp.spell_DryGround == false && user.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
+                else if (parent.def.defName == "SpellOf_PowerNode" && comp.spell_PowerNode == false)
+                {
+                    comp.spell_PowerNode = true;
+                    comp.InitializeSpell();
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def.defName == "SpellOf_DryGround" && comp.spell_DryGround == false && user.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
                 {
                     comp.spell_DryGround = true;
                     comp.InitializeSpell();

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- ============= Gemcutting ============= -->
+
+  <WorkGiverDef>
+    <defName>DoBillsGemcutting</defName>
+    <label>do bills at gemcutting table</label>
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>Crafting</workType>
+    <priorityInType>110</priorityInType>
+    <fixedBillGiverDefs>
+      <li>TableGemcutting</li>
+    </fixedBillGiverDefs>
+    <verb>craft</verb>
+    <gerund>gemcutting</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+
+</Defs>

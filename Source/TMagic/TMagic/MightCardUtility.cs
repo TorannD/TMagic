@@ -167,10 +167,14 @@ namespace TorannMagic
             Rect rect41 = new Rect(rect3.x + rect3.width + MightCardUtility.MagicButtonPointSize, rectG.y, MightCardUtility.MagicButtonPointSize, MightCardUtility.TextSize);
             Rect rect5 = new Rect(rect2.x + 272f + MightCardUtility.MagicButtonPointSize, rectG.yMin + 24f, 136f, MightCardUtility.TextSize);
             Rect rect51 = new Rect(rect2.x + 272f, rectG.yMin + 24f, MightCardUtility.MagicButtonPointSize, MightCardUtility.TextSize);
+            Rect rect6 = new Rect(rect5.x + rect5.width + (MightCardUtility.MagicButtonPointSize * 2), rectG.y + 24f, 136f, MightCardUtility.TextSize); //rect2.yMin + 24f
+            Rect rect61 = new Rect(rect5.x + rect5.width + MightCardUtility.MagicButtonPointSize, rectG.y + 24f, MightCardUtility.MagicButtonPointSize, MightCardUtility.TextSize);
+
 
             List<MightPowerSkill> skill1 = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_global_refresh;
             List<MightPowerSkill> skill2 = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_global_seff;
             List<MightPowerSkill> skill3 = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_global_strength;
+            List<MightPowerSkill> skill4 = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_global_endurance;
 
             using (List<MightPowerSkill>.Enumerator enumerator1 = skill1.GetEnumerator())
             {
@@ -253,7 +257,35 @@ namespace TorannMagic
                     }
                 }
             }
+            using (List<MightPowerSkill>.Enumerator enumerator4 = skill4.GetEnumerator())
+            {
+                while (enumerator4.MoveNext())
+                {
+                    MightPowerSkill skill = enumerator4.Current;
+                    TooltipHandler.TipRegion(rect6, new TipSignal(() => enumerator4.Current.desc.Translate(), rect6.GetHashCode()));
+                    bool flag11 = skill.level >= skill.levelMax || compMight.MightData.MightAbilityPoints == 0;
+                    if (flag11)
+                    {
+                        Widgets.Label(rect6, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
+                    }
+                    else
+                    {
+                        bool flag12 = Widgets.ButtonText(rect61, "+", true, false, true) && compMight.AbilityUser.Faction == Faction.OfPlayer;
+                        Widgets.Label(rect6, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
+                        if (flag12)
+                        {
+                            if (skill.label == "TM_global_endurance_pwr")
+                            {
+                                compMight.LevelUpSkill_global_endurance(skill.label);
+                                skill.level++;
+                                compMight.MightData.MightAbilityPoints -= 1;
+                            }
+                        }
+                    }
+                }
+            }
         }
+
 
         public static string MightXPTipString(CompAbilityUserMight compMight)
         {
@@ -287,8 +319,8 @@ namespace TorannMagic
                     {
                         Widgets.DrawLineHorizontal(0f + 20f, rect.y - 2f, 700f - 40f);
                     }
-                    if (power.level < 3 && (power.abilityDef == TorannMagicDefOf.TM_Sprint || power.abilityDef == TorannMagicDefOf.TM_Sprint_I || power.abilityDef == TorannMagicDefOf.TM_Sprint_II || 
-                        power.abilityDef == TorannMagicDefOf.TM_Grapple || power.abilityDef == TorannMagicDefOf.TM_Grapple_I || power.abilityDef == TorannMagicDefOf.TM_Grapple_II || 
+                    //power.abilityDef == TorannMagicDefOf.TM_Sprint || power.abilityDef == TorannMagicDefOf.TM_Sprint_I || power.abilityDef == TorannMagicDefOf.TM_Sprint_II ||
+                    if (power.level < 3 && (power.abilityDef == TorannMagicDefOf.TM_Grapple || power.abilityDef == TorannMagicDefOf.TM_Grapple_I || power.abilityDef == TorannMagicDefOf.TM_Grapple_II || 
                         power.abilityDef == TorannMagicDefOf.TM_DisablingShot || power.abilityDef == TorannMagicDefOf.TM_DisablingShot_I || power.abilityDef == TorannMagicDefOf.TM_DisablingShot_II ||
                         power.abilityDef == TorannMagicDefOf.TM_PhaseStrike || power.abilityDef == TorannMagicDefOf.TM_PhaseStrike_I || power.abilityDef == TorannMagicDefOf.TM_PhaseStrike_II ||
                         power.abilityDef == TorannMagicDefOf.TM_ArrowStorm || power.abilityDef == TorannMagicDefOf.TM_ArrowStorm_I || power.abilityDef == TorannMagicDefOf.TM_ArrowStorm_II))
@@ -325,8 +357,8 @@ namespace TorannMagic
 
                     float x4 = Text.CalcSize(" # / # ").x;
                     //bool flag9 = power.abilityDef.label == "Sprint" || power.abilityDef.label == "Grapple"; //add all other buffs or xml based upgrades
-                    if (power.abilityDef.defName == "TM_Sprint" || power.abilityDef.defName ==  "TM_Sprint_I" || power.abilityDef.defName == "TM_Sprint_II" || power.abilityDef.defName == "TM_Sprint_III" ||
-                        power.abilityDef.defName == "TM_Grapple" || power.abilityDef.defName == "TM_Grapple_I" || power.abilityDef.defName == "TM_Grapple_II" || power.abilityDef.defName == "TM_Grapple_III" ||
+                    //power.abilityDef.defName == "TM_Sprint" || power.abilityDef.defName ==  "TM_Sprint_I" || power.abilityDef.defName == "TM_Sprint_II" || power.abilityDef.defName == "TM_Sprint_III" ||
+                    if (power.abilityDef.defName == "TM_Grapple" || power.abilityDef.defName == "TM_Grapple_I" || power.abilityDef.defName == "TM_Grapple_II" || power.abilityDef.defName == "TM_Grapple_III" ||
                         power.abilityDef.defName == "TM_DisablingShot" || power.abilityDef.defName == "TM_DisablingShot_I" || power.abilityDef.defName == "TM_DisablingShot_II" || power.abilityDef.defName == "TM_DisablingShot_III" ||
                         power.abilityDef.defName == "TM_PhaseStrike" || power.abilityDef.defName == "TM_PhaseStrike_I" || power.abilityDef.defName == "TM_PhaseStrike_II" || power.abilityDef.defName == "TM_PhaseStrike_III" ||
                         power.abilityDef.defName == "TM_ArrowStorm" || power.abilityDef.defName == "TM_ArrowStorm_I" || power.abilityDef.defName == "TM_ArrowStorm_II" || power.abilityDef.defName == "TM_ArrowStorm_III")
@@ -415,6 +447,7 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_Fortitude(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 1;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_Grapple" || enumerator.Current.abilityDef.defName == "TM_Grapple_I" || enumerator.Current.abilityDef.defName == "TM_Grapple_II" || enumerator.Current.abilityDef.defName == "TM_Grapple_III")
                                         {
@@ -439,6 +472,7 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_SniperFocus(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_Headshot")
                                         {
@@ -463,12 +497,14 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_BladeFocus(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_BladeArt" && compMight.MightData.MightAbilityPoints >= 2)
                                         {
                                             compMight.LevelUpSkill_BladeArt(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_SeismicSlash")
                                         {
@@ -493,12 +529,14 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_RangerTraining(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_BowTraining" && compMight.MightData.MightAbilityPoints >= 2)
                                         {
                                             compMight.LevelUpSkill_BowTraining(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_PoisonTrap")
                                         {
@@ -567,6 +605,7 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_Fortitude(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 1;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_Grapple" || enumerator.Current.abilityDef.defName == "TM_Grapple_I" || enumerator.Current.abilityDef.defName == "TM_Grapple_II" || enumerator.Current.abilityDef.defName == "TM_Grapple_III")
                                         {
@@ -591,6 +630,7 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_SniperFocus(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_Headshot")
                                         {
@@ -615,12 +655,14 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_BladeFocus(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_BladeArt" && compMight.MightData.MightAbilityPoints >= 2)
                                         {
                                             compMight.LevelUpSkill_BladeArt(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_SeismicSlash")
                                         {
@@ -645,12 +687,14 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_RangerTraining(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_BowTraining" && compMight.MightData.MightAbilityPoints >= 2)
                                         {
                                             compMight.LevelUpSkill_BowTraining(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_PoisonTrap")
                                         {
@@ -719,6 +763,7 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_Fortitude(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 1;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_Grapple" || enumerator.Current.abilityDef.defName == "TM_Grapple_I" || enumerator.Current.abilityDef.defName == "TM_Grapple_II" || enumerator.Current.abilityDef.defName == "TM_Grapple_III")
                                         {
@@ -743,6 +788,7 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_SniperFocus(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_Headshot")
                                         {
@@ -767,12 +813,14 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_BladeFocus(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_BladeArt" && compMight.MightData.MightAbilityPoints >= 2)
                                         {
                                             compMight.LevelUpSkill_BladeArt(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_SeismicSlash")
                                         {
@@ -797,12 +845,14 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_RangerTraining(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_BowTraining" && compMight.MightData.MightAbilityPoints >= 2)
                                         {
                                             compMight.LevelUpSkill_BowTraining(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_PoisonTrap")
                                         {
@@ -871,6 +921,7 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_Fortitude(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 1;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_Grapple" || enumerator.Current.abilityDef.defName == "TM_Grapple_I" || enumerator.Current.abilityDef.defName == "TM_Grapple_II" || enumerator.Current.abilityDef.defName == "TM_Grapple_III")
                                         {
@@ -895,6 +946,7 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_SniperFocus(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_Headshot")
                                         {
@@ -919,12 +971,14 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_BladeFocus(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_BladeArt" && compMight.MightData.MightAbilityPoints >= 2)
                                         {
                                             compMight.LevelUpSkill_BladeArt(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_SeismicSlash")
                                         {
@@ -949,12 +1003,14 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_RangerTraining(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_BowTraining" && compMight.MightData.MightAbilityPoints >= 2)
                                         {
                                             compMight.LevelUpSkill_BowTraining(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_PoisonTrap")
                                         {
@@ -1023,6 +1079,7 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_Fortitude(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 1;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_Grapple" || enumerator.Current.abilityDef.defName == "TM_Grapple_I" || enumerator.Current.abilityDef.defName == "TM_Grapple_II" || enumerator.Current.abilityDef.defName == "TM_Grapple_III")
                                         {
@@ -1047,6 +1104,7 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_SniperFocus(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_Headshot")
                                         {
@@ -1071,12 +1129,14 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_BladeFocus(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_BladeArt" && compMight.MightData.MightAbilityPoints >= 2)
                                         {
                                             compMight.LevelUpSkill_BladeArt(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_SeismicSlash")
                                         {
@@ -1101,12 +1161,14 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_RangerTraining(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_BowTraining" && compMight.MightData.MightAbilityPoints >= 2)
                                         {
                                             compMight.LevelUpSkill_BowTraining(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 2;
+                                            compMight.ResolveClassSkills();
                                         }
                                         if (enumerator.Current.abilityDef.defName == "TM_PoisonTrap")
                                         {

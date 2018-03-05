@@ -23,7 +23,7 @@
     <defName>TM_BladeFocus</defName>
     <label>Blade training</label>
     <uiIconPath>UI/bladeart</uiIconPath>
-    <description>Use of this ability updates the blademaster trait.  This ability only needs to be used after blade training.</description>
+    <description>Training that improves technique and skill with melee weapons, and raises the status of the bladedancer.</description>
     <staminaCost>0.01</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_BladeFocus</verbClass>
@@ -73,7 +73,7 @@
     <defName>TM_BladeArt</defName>
     <label>Body Training</label>
     <uiIconPath>UI/bodytraining</uiIconPath>
-    <description>Use of this ability updates the blademaster passive buff.  This ability only needs to be used after body training.</description>
+    <description>Training that enhances physical capabilities.</description>
     <staminaCost>0.01</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_BladeArt</verbClass>

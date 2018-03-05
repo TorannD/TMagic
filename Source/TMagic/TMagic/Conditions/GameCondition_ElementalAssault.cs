@@ -37,9 +37,7 @@ namespace TorannMagic.Conditions
             else
             {            
                 thing.SetFaction(faction, null);
-            }
-            
-                        
+            }           
         }
 
         public override void End()
@@ -62,9 +60,26 @@ namespace TorannMagic.Conditions
                             destroyable.Destroy(DestroyMode.Vanish);
                         }
                     }
-
                 }
-
+            }
+            Thing thing = null;
+            thing = ThingMaker.MakeThing(ThingDef.Named("Jade"));
+            thing.stackCount = Rand.Range(50, 75);
+            if (thing != null)
+            {
+                GenPlace.TryPlaceThing(thing, thingLoc, this.Map, ThingPlaceMode.Near, null);
+            }
+            ItemCollectionGeneratorParams parms = default(ItemCollectionGeneratorParams);
+            parms.techLevel = TechLevel.Neolithic;
+            parms.totalMarketValue = 2500f;
+            List<Thing> list = new List<Thing>();
+            ItemCollectionGenerator_Gemstones itc_g = new ItemCollectionGenerator_Gemstones();
+            list = itc_g.Generate(parms, list);
+            for (int i = 0; i < list.Count; i++)
+            {
+                thing = list[i];
+                thing.stackCount = list[i].stackCount;
+                GenPlace.TryPlaceThing(thing, thingLoc, this.Map, ThingPlaceMode.Near, null);
             }
             base.End();
         }

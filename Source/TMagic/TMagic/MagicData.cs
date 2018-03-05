@@ -32,6 +32,7 @@ namespace TorannMagic
 
         public List<MagicPowerSkill> magicPowerSkill_global_regen;
         public List<MagicPowerSkill> magicPowerSkill_global_eff;
+        public List<MagicPowerSkill> magicPowerSkill_global_spirit;
 
         public List<MagicPowerSkill> magicPowerSkill_RayofHope;
         public List<MagicPowerSkill> magicPowerSkill_Firebolt;
@@ -115,6 +116,21 @@ namespace TorannMagic
                     };
                 }
                 return this.magicPowerSkill_global_eff;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_global_spirit
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_global_spirit == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_global_spirit = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_global_spirit_pwr", "TM_global_spirit_pwr_desc")
+                    };
+                }
+                return this.magicPowerSkill_global_spirit;
             }
         }
 
@@ -1363,6 +1379,7 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.isNecromancer, "isNecromancer", false, false);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_global_eff, "magicPowerSkill_global_eff", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_global_regen, "magicPowerSkill_global_regen", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_global_spirit, "magicPowerSkill_global_spirit", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPower>(ref this.magicPowerIF, "magicPowerIF", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_RayofHope, "magicPowerSkill_RayofHope", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Fireball, "magicPowerSkill_Fireball", LookMode.Deep, new object[0]);

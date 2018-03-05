@@ -8,8 +8,8 @@
 		<label>portals</label>
 		<tab>TMagic</tab>
 		<description>Allows the construction of a portal - a powerful artifact that enables instant travel between colonies.\n\nRequires an Arcane Mage trained in Gateways to activate.</description>
-		<baseCost>1000</baseCost>
-		<techLevel>Transcendent</techLevel>
+		<baseCost>3000</baseCost>
+		<techLevel>Neolithic</techLevel>
 		<researchViewX>0.0</researchViewX>
 		<researchViewY>0.0</researchViewY>
 	</ResearchProjectDef>
@@ -19,19 +19,19 @@
 		<label>enchanting</label>
 		<tab>TMagic</tab>
 		<description>Enables the constructions of the research bench and the crafting of tier I enchanting gems.</description>
-		<baseCost>400</baseCost>
-		<techLevel>Transcendent</techLevel>
+		<baseCost>1500</baseCost>
+		<techLevel>Neolithic</techLevel>
 		<researchViewX>1.0</researchViewX>
 		<researchViewY>0.0</researchViewY>
 	</ResearchProjectDef>
 	
 	<ResearchProjectDef>
 		<defName>TM_AdvancedEnchanting</defName>
-		<label>advancded enchanting</label>
+		<label>advanced enchanting</label>
 		<tab>TMagic</tab>
 		<description>Enables crafting to tier II enchanting gems.</description>
-		<baseCost>500</baseCost>
-		<techLevel>Transcendent</techLevel>
+		<baseCost>2000</baseCost>
+		<techLevel>Neolithic</techLevel>
 		<researchViewX>1.0</researchViewX>
 		<researchViewY>1.0</researchViewY>
 		<prerequisites>
@@ -44,8 +44,8 @@
 		<label>expert enchanting</label>
 		<tab>TMagic</tab>
 		<description>Enables crafting of tier III enchanting gems.</description>
-		<baseCost>650</baseCost>
-		<techLevel>Transcendent</techLevel>
+		<baseCost>2500</baseCost>
+		<techLevel>Neolithic</techLevel>
 		<researchViewX>1.0</researchViewX>
 		<researchViewY>2.0</researchViewY>
 		<prerequisites>
@@ -58,8 +58,8 @@
 		<label>magicyte refining</label>
 		<tab>TMagic</tab>
 		<description>Allows gemcrafters to grind magicyte down into a powdered form that can be imbibed.</description>
-		<baseCost>200</baseCost>
-		<techLevel>Transcendent</techLevel>
+		<baseCost>1000</baseCost>
+		<techLevel>Neolithic</techLevel>
 		<researchViewX>2.0</researchViewX>
 		<researchViewY>0.0</researchViewY>
 		<prerequisites>

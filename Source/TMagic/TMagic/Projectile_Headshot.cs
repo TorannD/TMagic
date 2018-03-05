@@ -163,21 +163,21 @@ namespace TorannMagic
             if (hitPart.def.GetMaxHealth(victim) > amt)
             {
                 //Very large animals or creatures
-                dinfo = new DamageInfo(type, amt, (float)-1, pawn.equipment.Primary, hitPart, pawn.equipment.Primary.def, DamageInfo.SourceCategory.ThingOrUnknown);
+                dinfo = new DamageInfo(type, amt, (float)-1, pawn, hitPart, pawn.equipment.Primary.def, DamageInfo.SourceCategory.ThingOrUnknown);
             }
             else
             {
                 amt = (int)(amt / (1 + penetratedParts));
-                dinfo = new DamageInfo(type, amt, (float)-1, pawn.equipment.Primary, hitPart, pawn.equipment.Primary.def, DamageInfo.SourceCategory.ThingOrUnknown);
+                dinfo = new DamageInfo(type, amt, (float)-1, pawn, hitPart, pawn.equipment.Primary.def, DamageInfo.SourceCategory.ThingOrUnknown);
             }
             dinfo.SetAllowDamagePropagation(false);
-            DamageWorker_AddInjury inj = new DamageWorker_AddInjury();
-            inj.Apply(dinfo, victim);
-            //victim.TakeDamage(dinfo);
-            if (!victim.IsColonist && !victim.IsPrisoner && !victim.Faction.HostileTo(this.launcher.Faction) && victim.Faction != null)
+            //DamageWorker_AddInjury inj = new DamageWorker_AddInjury();
+            //inj.Apply(dinfo, victim);
+            victim.TakeDamage(dinfo);
+            if (!victim.IsColonist && !victim.IsPrisoner && victim.Faction != null && !victim.Faction.HostileTo(pawn.Faction))
             {
                 Faction faction = victim.Faction;
-                faction.SetHostileTo(this.launcher.Faction, true);
+                faction.SetHostileTo(pawn.Faction, true);
             }
         }
     }

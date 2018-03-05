@@ -90,11 +90,11 @@ namespace TorannMagic
             DamageInfo dinfo;
             if (victim != null && hitPart != null)
             {
-                dinfo = new DamageInfo(type, amt, (float)-1, null, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);             
+                dinfo = new DamageInfo(type, amt, (float)-1, this.launcher as Pawn, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);             
             }
             else
             {
-                dinfo = new DamageInfo(type, amt, (float)-1, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+                dinfo = new DamageInfo(type, amt, (float)-1, this.launcher as Pawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
             }
             victim.TakeDamage(dinfo);
             

@@ -60,7 +60,19 @@ Portals must be deactivated before they can be reactivated and assigned a new de
  not have enough mana, the menu to perform the enchantment will be unselectable
  d. When the criteria to perform the enchantment is met, the menu option becomes available and your mage will move to, and enchant, the selected
  item
+</helpText>
+		<highlightTags>
+		  
+		</highlightTags>
+	</ConceptDef>
 
+			<ConceptDef>
+		<defName>TM_EncantingII</defName>
+		<label>Enchanting</label>
+		<priority>52</priority>
+		<needsOpportunity>False</needsOpportunity>
+		<helpText>Enchanting: Part II
+		
 4. Enchantments are permanent and each item may hold one enchantment of each type.  New enchantments of the same type will replace the existing 
 enchantment.  Enchanting an item does not increase the value of the item.  Enchanting an item consumes the enchanting gemstone.  There is
 currently no way to extract an enchantment from an item.
@@ -72,10 +84,14 @@ the chance to acquire raw magicyte in this manner. Users of the "quarry" can add
 
 7. If you wish to drop an enchanting stone - with the mage holding the enchanting gem, right click on any open square and select the menu option
 to drop the gem.
+
+8. Item enchantments can be viewed on individual gear by selecting the item on the ground and using the "Enchanted" tab. The collective Enchantments 
+affecting a single pawn can be seen in the health tab.		
 </helpText>
 		<highlightTags>
 		  
 		</highlightTags>
 	</ConceptDef>
-
 </Defs>
+
+

@@ -36,28 +36,28 @@ namespace TorannMagic.Enchantment
                 this.parent.def.tickerType = TickerType.Rare;
             }
             base.PostSpawnSetup(respawningAfterLoad);
-            this.GetOverlayGraphic();
+            //this.GetOverlayGraphic();
             Find.TickManager.RegisterAllTickabilityFor(this.parent);
         }
 
-        public override void PostDrawExtraSelectionOverlays()
-        {
-            bool flag = this.Overlay == null;
-            if (flag)
-            {
-                Log.Message("NoOverlay");
-            }
-            bool flag2 = this.Overlay != null;
-            if (flag2)
-            {
-                Vector3 drawPos = this.parent.DrawPos;
-                drawPos.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
-                Vector3 s = new Vector3(2f, 2f, 2f);
-                Matrix4x4 matrix = default(Matrix4x4);
-                matrix.SetTRS(drawPos, Quaternion.AngleAxis(0f, Vector3.up), s);
-                Graphics.DrawMesh(MeshPool.plane10, matrix, this.Overlay.MatSingle, 0);
-            }
-        }
+        //public override void PostDrawExtraSelectionOverlays()
+        //{
+        //    bool flag = this.Overlay == null;
+        //    if (flag)
+        //    {
+        //        Log.Message("NoOverlay");
+        //    }
+        //    bool flag2 = this.Overlay != null;
+        //    if (flag2)
+        //    {
+        //        Vector3 drawPos = this.parent.DrawPos;
+        //        drawPos.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
+        //        Vector3 s = new Vector3(2f, 2f, 2f);
+        //        Matrix4x4 matrix = default(Matrix4x4);
+        //        matrix.SetTRS(drawPos, Quaternion.AngleAxis(0f, Vector3.up), s);
+        //        Graphics.DrawMesh(MeshPool.plane10, matrix, this.Overlay.MatSingle, 0);
+        //    }
+        //}
 
         public override void PostExposeData()
         {

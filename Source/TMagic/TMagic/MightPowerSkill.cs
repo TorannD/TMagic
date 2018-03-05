@@ -22,9 +22,9 @@ namespace TorannMagic
             this.desc = newDesc;
             this.level = 0;
 
-            if (false)
+            if (newLabel == "TM_global_endurance_pwr")
             {
-                this.levelMax = 6;
+                this.levelMax = 50;
             }
             else if (newLabel == "TM_global_refresh_pwr" || newLabel == "TM_global_seff_pwr" || newLabel == "TM_global_strength_pwr")
             {

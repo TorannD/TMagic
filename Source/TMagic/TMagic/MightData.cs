@@ -73,6 +73,7 @@ namespace TorannMagic
                 {
                     this.mightPowerSkill_Sprint = new List<MightPowerSkill>
                     {
+                        new MightPowerSkill("TM_Sprint_pwr", "TM_Sprint_pwr_desc"),
                         new MightPowerSkill("TM_Sprint_eff", "TM_Sprint_eff_desc")
                     };
                 }
@@ -503,6 +504,7 @@ namespace TorannMagic
         public List<MightPowerSkill> mightPowerSkill_global_refresh;
         public List<MightPowerSkill> mightPowerSkill_global_seff;
         public List<MightPowerSkill> mightPowerSkill_global_strength;
+        public List<MightPowerSkill> mightPowerSkill_global_endurance;
 
         public List<MightPowerSkill> MightPowerSkill_global_refresh
         {
@@ -547,6 +549,21 @@ namespace TorannMagic
                     };
                 }
                 return this.mightPowerSkill_global_strength;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_global_endurance
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_global_endurance == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_global_endurance = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_global_endurance_pwr", "TM_global_endurance_pwr_desc")
+                    };
+                }
+                return this.mightPowerSkill_global_endurance;
             }
         }
 
@@ -671,6 +688,7 @@ namespace TorannMagic
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_global_refresh, "mightPowerSkill_global_refresh", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_global_seff, "mightPowerSkill_global_seff", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_global_strength, "mightPowerSkill_global_strength", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_global_endurance, "mightPowerSkill_global_endurance", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPower>(ref this.mightPowerG, "mightPowerG", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_Sprint, "mightPowerSkill_Sprint", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_Fortitude, "mightPowerSkill_Fortitude", (LookMode)2, new object[0]);

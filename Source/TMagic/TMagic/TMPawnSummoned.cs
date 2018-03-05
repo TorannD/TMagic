@@ -64,11 +64,16 @@ namespace TorannMagic
             {
                 return this.ticksLeft;
             }
+            set
+            {
+                this.ticksLeft = value;
+            }
         }
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             this.ticksLeft = this.ticksToDestroy;
+            Log.Message("Ticks left is " + this.ticksLeft + " ticks to destroy is " + this.ticksToDestroy);
             base.SpawnSetup(map, respawningAfterLoad);
         }
 
@@ -108,6 +113,7 @@ namespace TorannMagic
 
         public override void Tick()
         {
+            Log.Message("entering summon minion tick");
             base.Tick();
             if (Find.TickManager.TicksGame % 10 == 0)
             {

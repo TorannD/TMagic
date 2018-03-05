@@ -115,6 +115,7 @@ namespace TorannMagic
         public bool spell_ManaShield = false;
         public bool spell_FoldReality = false;
         public bool spell_Resurrection = false;
+        public bool spell_PowerNode = false;
 
         public float maxMP = 1;
         public float mpRegenRate = 1;
@@ -122,100 +123,9 @@ namespace TorannMagic
         public float mpCost = 1;
         public float xpGain = 1;
 
-        public void ResolveEnchantments()
-        {
-            float _maxMP = 0;
-            float _mpRegenRate = 0;
-            float _coolDown = 0;
-            float _xpGain = 0;
-            float _mpCost = 0;
-            List<Apparel> apparel = this.Pawn.apparel.WornApparel;
-            for (int i = 0; i < this.Pawn.apparel.WornApparelCount; i++)
-            {
-                Enchantment.CompEnchantedItem item = apparel[i].GetComp<Enchantment.CompEnchantedItem>();
-                if (item != null)
-                {
-                    if (item.Props.HasEnchantment)
-                    {
-                        _maxMP += item.Props.maxMP;
-                        _mpRegenRate += item.Props.mpRegenRate;
-                        _coolDown += item.Props.coolDown;
-                        _xpGain += item.Props.xpGain;
-                        _mpCost += item.Props.mpCost;
-                    }
-                }
-            }
-            if (this.Pawn.equipment.Primary != null)
-            {
-                Enchantment.CompEnchantedItem item = this.Pawn.equipment.Primary.GetComp<Enchantment.CompEnchantedItem>();
-                if (item != null)
-                {
-                    if (item.Props.HasEnchantment)
-                    {
-                        _maxMP += item.Props.maxMP;
-                        _mpRegenRate += item.Props.mpRegenRate;
-                        _coolDown += item.Props.coolDown;
-                        _xpGain += item.Props.xpGain;
-                        _mpCost += item.Props.mpCost;
-                    }
-                }
-            }
-            this.maxMP = 1f + _maxMP;
-            this.mpRegenRate = 1f + _mpRegenRate;
-            this.coolDown = 1f + _coolDown;
-            this.xpGain = 1f + _xpGain;
-            this.mpCost = 1f + _mpCost;
-            if (_maxMP != 0)
-            {
-                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_maxMP"), .5f);
-            }
-            if (_mpRegenRate != 0)
-            {
-                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_mpRegenRate"), .5f);
-            }
-            if (_coolDown != 0)
-            {
-                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_coolDown"), .5f);
-            }
-            if (_xpGain != 0)
-            {
-                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_xpGain"), .5f);
-            }
-            if (_mpCost != 0)
-            {
-                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_mpCost"), .5f);
-            }
-
-            using (IEnumerator<Hediff> enumerator = this.Pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
-            {
-                while (enumerator.MoveNext())
-                {
-                    Hediff rec = enumerator.Current;
-                    if (rec.def.defName == "TM_HediffEnchantment_maxMP" && this.maxMP == 1)
-                    {
-                        Pawn.health.RemoveHediff(rec);
-                    }
-                    if (rec.def.defName == "TM_HediffEnchantment_coolDown" && this.coolDown == 1)
-                    {
-                        Pawn.health.RemoveHediff(rec);
-                    }
-                    if (rec.def.defName == "TM_HediffEnchantment_mpCost" && this.mpCost == 1)
-                    {
-                        Pawn.health.RemoveHediff(rec);
-                    }
-                    if (rec.def.defName == "TM_HediffEnchantment_mpRegenRate" && this.mpRegenRate == 1)
-                    {
-                        Pawn.health.RemoveHediff(rec);
-                    }
-                    if (rec.def.defName == "TM_HediffEnchantment_xpGain" && this.xpGain == 1)
-                    {
-                        Pawn.health.RemoveHediff(rec);
-                    }
-                }
-            }
-        }
-
         public List<Thing> summonedMinions = new List<Thing>();
+        private bool dismissMinionSpell = false;
+        private bool dismissUndeadSpell = false;
 
         private MagicData magicData = null;
         public MagicData MagicData
@@ -278,7 +188,18 @@ namespace TorannMagic
             }
             return result;
         }
-        
+        public int LevelUpSkill_global_spirit(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+
         public int LevelUpSkill_RayofHope(string skillName)
         {
             int result = 0;
@@ -791,7 +712,6 @@ namespace TorannMagic
                 compEnchant.Initialize(compEnchant.props);
                 compEnchant.enchantingContainer.Clear();
             }
-            Log.Message("Enchanting Comp loading for pre-existing mage " + this.Pawn.Label);
             this.doOnce = false;            
         }
 
@@ -816,15 +736,7 @@ namespace TorannMagic
                             SingleEvent();
                         }
                         base.CompTick();
-                        for(int i =0; i < this.summonedMinions.Count; i++)
-                        {
-                            Pawn evaluateMinion = this.summonedMinions[i] as Pawn;
-                            if (evaluateMinion == null || evaluateMinion.Dead || !evaluateMinion.Spawned)
-                            {
-                                this.summonedMinions.Remove(this.summonedMinions[i]);
-                            }
-                        }
-                        if (this.Mana.CurLevel >= .99f)
+                        if (this.Mana.CurLevel >= (.99f * this.Mana.MaxLevel))
                         {
                             this.age++;
                             if (this.age > (lastXPGain + magicXPRate))
@@ -845,6 +757,19 @@ namespace TorannMagic
                         if (Find.TickManager.TicksGame % 60 == 0)
                         {
                             ResolveEnchantments();
+                            for (int i = 0; i < this.summonedMinions.Count; i++)
+                            {
+                                Pawn evaluateMinion = this.summonedMinions[i] as Pawn;
+                                if (evaluateMinion == null || evaluateMinion.Dead || !evaluateMinion.Spawned)
+                                {
+                                    this.summonedMinions.Remove(this.summonedMinions[i]);
+                                }
+                            }
+                            ResolveMinions();
+                            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer))
+                            {
+                                ResolveUndead();
+                            }
                         }
                     }
                 }
@@ -1622,6 +1547,11 @@ namespace TorannMagic
                 {
                     this.RemovePawnAbility(TorannMagicDefOf.TM_Cooler);
                     this.AddPawnAbility(TorannMagicDefOf.TM_Cooler);
+                }
+                if (this.spell_PowerNode == true)
+                {
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_PowerNode);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_PowerNode);
                 }
                 if (this.spell_DryGround == true)
                 {
@@ -3013,6 +2943,44 @@ namespace TorannMagic
             }
         }
 
+        public void ResolveUndead()
+        {
+            int undeadCount = 0;
+            foreach (Pawn current in this.Pawn.Map.mapPawns.PawnsInFaction(this.Pawn.Faction))
+            {
+                if (current.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD) || current.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadAnimalHD))
+                {
+                    undeadCount++;
+                }
+            }
+            if(undeadCount > 0 && this.dismissUndeadSpell == false)
+            {
+                this.AddPawnAbility(TorannMagicDefOf.TM_DismissUndead);
+                this.dismissUndeadSpell = true;
+            }
+            if(undeadCount <= 0 && this.dismissUndeadSpell == true)
+            {
+                this.RemovePawnAbility(TorannMagicDefOf.TM_DismissUndead);
+                this.dismissUndeadSpell = false;
+            }
+            
+        }
+
+        public void ResolveMinions()
+        {
+            if(this.summonedMinions.Count > 0 && dismissMinionSpell == false)
+            {
+                this.AddPawnAbility(TorannMagicDefOf.TM_DismissMinion);
+                dismissMinionSpell = true;
+            }
+
+            if(this.summonedMinions.Count <= 0 && dismissMinionSpell == true)
+            {
+                this.RemovePawnAbility(TorannMagicDefOf.TM_DismissMinion);
+                dismissMinionSpell = false;                    
+            }
+        }
+
         public void ResolveMana()
         {
             bool flag = this.Mana == null;
@@ -3067,6 +3035,100 @@ namespace TorannMagic
             }
         }
 
+        public void ResolveEnchantments()
+        {
+            float _maxMP = 0;
+            float _mpRegenRate = 0;
+            float _coolDown = 0;
+            float _xpGain = 0;
+            float _mpCost = 0;
+            List<Apparel> apparel = this.Pawn.apparel.WornApparel;
+            for (int i = 0; i < this.Pawn.apparel.WornApparelCount; i++)
+            {
+                Enchantment.CompEnchantedItem item = apparel[i].GetComp<Enchantment.CompEnchantedItem>();
+                if (item != null)
+                {
+                    if (item.Props.HasEnchantment)
+                    {
+                        _maxMP += item.Props.maxMP;
+                        _mpRegenRate += item.Props.mpRegenRate;
+                        _coolDown += item.Props.coolDown;
+                        _xpGain += item.Props.xpGain;
+                        _mpCost += item.Props.mpCost;
+                    }
+                }
+            }
+            if (this.Pawn.equipment.Primary != null)
+            {
+                Enchantment.CompEnchantedItem item = this.Pawn.equipment.Primary.GetComp<Enchantment.CompEnchantedItem>();
+                if (item != null)
+                {
+                    if (item.Props.HasEnchantment)
+                    {
+                        _maxMP += item.Props.maxMP;
+                        _mpRegenRate += item.Props.mpRegenRate;
+                        _coolDown += item.Props.coolDown;
+                        _xpGain += item.Props.xpGain;
+                        _mpCost += item.Props.mpCost;
+                    }
+                }
+            }
+            MagicPowerSkill spirit= this.MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr");
+            this.maxMP = 1f + (spirit.level * .02f) + _maxMP;
+            this.mpRegenRate = 1f + _mpRegenRate;
+            this.coolDown = 1f + _coolDown;
+            this.xpGain = 1f + _xpGain;
+            this.mpCost = 1f + _mpCost;
+            if (_maxMP != 0)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_maxMP"), .5f);
+            }
+            if (_mpRegenRate != 0)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_mpRegenRate"), .5f);
+            }
+            if (_coolDown != 0)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_coolDown"), .5f);
+            }
+            if (_xpGain != 0)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_xpGain"), .5f);
+            }
+            if (_mpCost != 0)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_mpCost"), .5f);
+            }
+
+            using (IEnumerator<Hediff> enumerator = this.Pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+            {
+                while (enumerator.MoveNext())
+                {
+                    Hediff rec = enumerator.Current;
+                    if (rec.def.defName == "TM_HediffEnchantment_maxMP" && this.maxMP == 1)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                    if (rec.def.defName == "TM_HediffEnchantment_coolDown" && this.coolDown == 1)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                    if (rec.def.defName == "TM_HediffEnchantment_mpCost" && this.mpCost == 1)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                    if (rec.def.defName == "TM_HediffEnchantment_mpRegenRate" && this.mpRegenRate == 1)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                    if (rec.def.defName == "TM_HediffEnchantment_xpGain" && this.xpGain == 1)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                }
+            }
+        }
+
         public override void PostExposeData()
         {
             //base.PostExposeData();            
@@ -3077,6 +3139,7 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.spell_Heal, "spell_Heal", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Heater, "spell_Heater", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Cooler, "spell_Cooler", false, false);
+            Scribe_Values.Look<bool>(ref this.spell_PowerNode, "spell_PowerNode", false, false);
             Scribe_Values.Look<bool>(ref this.spell_DryGround, "spell_DryGround", false, false);
             Scribe_Values.Look<bool>(ref this.spell_WetGround, "spell_WetGround", false, false);
             Scribe_Values.Look<bool>(ref this.spell_ChargeBattery, "spell_ChargeBattery", false, false);

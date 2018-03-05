@@ -25,7 +25,7 @@
     <defName>TM_RangerTraining</defName>
     <label>Ranger Training</label>
     <uiIconPath>UI/rangertraining</uiIconPath>
-    <description>Use of this ability updates the ranger trait.  This ability only needs to be used after increasing ranger training.</description>
+    <description>Training that improves technique and status as ranger.</description>
     <staminaCost>0.01</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_RangerTraining</verbClass>
@@ -60,7 +60,7 @@
     <defName>TM_BowTraining</defName>
     <label>Bow Training</label>
     <uiIconPath>UI/bowtraining</uiIconPath>
-    <description>Use of this ability updates the ranger passive buff.  This ability only needs to be used after increasing bow mastery.</description>
+    <description>Training that improves technique when using a bow.</description>
     <staminaCost>0.01</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_BowTraining</verbClass>

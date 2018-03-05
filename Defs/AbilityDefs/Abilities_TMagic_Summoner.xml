@@ -52,6 +52,40 @@
     </MainVerb>
  </TorannMagic.TMAbilityDef>
  
+   <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_DismissMinion</defName>
+    <label>Dismiss Minion</label>
+    <uiIconPath>UI/dismissminion</uiIconPath>
+    <description>Dismisses a summoned minion.</description>
+    <manaCost>0.0</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_DismissMinion</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>TM_Paladin_Heal</defaultProjectile>
+		<abilityDef>TM_DismissMinion</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>4</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>0</range>
+		<isViolent>false</isViolent>
+        <soundCast>MessagePositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+      	 <canTargetPawns>true</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>true</canTargetSelf>
+		 <canTargetLocations>false</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
 <!-- Summon minion end-->
 
 <!-- Summon pylon Start-->

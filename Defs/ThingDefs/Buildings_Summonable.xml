@@ -535,11 +535,12 @@
   
   <ThingDef ParentName="TM_BuildingBase">
     <defName>TM_Cooler</defName>
+	<thingClass>TorannMagic.Building_TMCooler</thingClass>
     <label>magical cooler</label>
     <description>An active dimensional tap into the Plane of Ice that can be used to cool confined spaces.</description>
     <category>Building</category>
     <graphicData>
-      <texPath>Other/cooler</texPath>
+      <texPath>Spells/invis</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawRotated>false</drawRotated>
       <allowFlip>false</allowFlip>
@@ -579,6 +580,70 @@
 	  <li Class="CompProperties_Glower">
         <glowRadius>10</glowRadius>
         <glowColor>(0,0,153,0)</glowColor>
+      </li>
+      <li Class="CompProperties_Lifespan">
+        <lifespanTicks>180000</lifespanTicks>
+      </li>
+    </comps>
+<!--     <designationCategory>Temperature</designationCategory>
+    <designationHotKey>Misc2</designationHotKey> -->
+    <researchPrerequisites>
+      <li>ShipReactor</li>
+    </researchPrerequisites> 
+    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+  </ThingDef>
+  
+  
+  <ThingDef ParentName="TM_BuildingBase">
+    <defName>TM_PowerNode</defName>
+    <label>Arcane power node</label>
+	<thingClass>TorannMagic.Building_TMPowerNode</thingClass>
+    <description>An arcane energy node that provides power for a limited amount of time.</description>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Spells/invis</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawRotated>false</drawRotated>
+      <allowFlip>false</allowFlip>
+      <damageData>
+        <rect>(0.2,0,0.6,0.1)</rect>
+      </damageData>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+	<tradeability>Never</tradeability>
+    <pathCost>50</pathCost>
+    <constructEffect>ConstructDirt</constructEffect>
+    <tickerType>Normal</tickerType>
+    <drawerType>RealtimeOnly</drawerType>
+    <fillPercent>1.0</fillPercent>
+    <statBases>
+      <MaxHitPoints>80</MaxHitPoints>
+      <WorkToBuild>200</WorkToBuild>
+      <Flammability>0</Flammability>
+    </statBases>
+    <selectable>true</selectable>
+    <costList>
+
+    </costList>
+    <soundImpactDefault>BulletImpactGround</soundImpactDefault>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
+    <placeWorkers>
+      <li>PlaceWorker_CoolerSimple</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-600</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+		<shortCircuitInRain>false</shortCircuitInRain>
+		<startElectricalFires>false</startElectricalFires>
+      </li>
+	  <li Class="CompProperties_Glower">
+        <glowRadius>2</glowRadius>
+        <glowColor>(255,51,255,0)</glowColor>
       </li>
       <li Class="CompProperties_Lifespan">
         <lifespanTicks>180000</lifespanTicks>

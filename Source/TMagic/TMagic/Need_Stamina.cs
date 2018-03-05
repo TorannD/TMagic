@@ -108,8 +108,33 @@ namespace TorannMagic
 		    {
             this.lastGainTick = -999;
             this.threshPercents = new List<float>();
-            this.threshPercents.Add(0.3f);
-            this.threshPercents.Add(0.7f);
+            this.threshPercents.Add((0.25f / this.MaxLevel));
+            this.threshPercents.Add((0.5f / this.MaxLevel));
+            this.threshPercents.Add((0.75f / this.MaxLevel));
+        }
+
+        private void AdjustThresh()
+        {
+            this.threshPercents.Clear();
+            this.threshPercents.Add((0.25f / this.MaxLevel));
+            this.threshPercents.Add((0.5f / this.MaxLevel));
+            this.threshPercents.Add((0.75f / this.MaxLevel));
+            if (this.MaxLevel > 1)
+            {
+                this.threshPercents.Add((1f / this.MaxLevel));
+            }
+            if (this.MaxLevel > 1.25f)
+            {
+                this.threshPercents.Add((1.25f / this.MaxLevel));
+            }
+            if (this.MaxLevel > 1.5f)
+            {
+                this.threshPercents.Add((1.5f / this.MaxLevel));
+            }
+            if (this.MaxLevel > 1.75f)
+            {
+                this.threshPercents.Add((1.75f / this.MaxLevel));
+            }
         }
 
         public override void SetInitialLevel()
@@ -128,7 +153,8 @@ namespace TorannMagic
                 amount = Mathf.Min(amount, this.MaxLevel - this.CurLevel);
                 this.curLevelInt += amount;
                 this.lastGainTick = Find.TickManager.TicksGame;
-            }           
+            }
+            AdjustThresh();
         }
 
         public void UseMightPower(float amount)

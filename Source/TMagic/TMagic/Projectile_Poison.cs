@@ -96,17 +96,18 @@ namespace TorannMagic
                             this.age = this.duration + 1;
                         }
                     }
+                    else
+                    {
+                        //pawn is dead, end 
+                        this.age = this.duration + 1;
+                    }
                 }
                 catch
                 {
                     this.Destroy(DestroyMode.Vanish);
                 }
             }
-            else
-            {
-                //pawn is dead, end 
-                this.age = this.duration + 1;
-            }
+            
         }
 
         public void Initialize(Pawn victim)

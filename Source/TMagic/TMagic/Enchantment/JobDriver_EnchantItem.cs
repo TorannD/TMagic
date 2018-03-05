@@ -100,11 +100,11 @@ namespace TorannMagic.Enchantment
                 {
                     return 1f;
                 }
-                return 1f - (float)enchanting.actor.jobs.curDriver.ticksLeftThisToil / 600;
+                return 1f - (float)enchanting.actor.jobs.curDriver.ticksLeftThisToil / 240;
 
             }, false, 0f);
             enchanting.defaultCompleteMode = ToilCompleteMode.Delay;
-            enchanting.defaultDuration = 600;
+            enchanting.defaultDuration = 240;
             enchanting.AddFinishAction(delegate
             {
                 CompEnchantedItem enchantment = thing.TryGetComp<CompEnchantedItem>();

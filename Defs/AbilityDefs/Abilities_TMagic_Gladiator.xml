@@ -24,12 +24,10 @@
     <defName>TM_Sprint</defName>
     <label>Sprint</label>
     <uiIconPath>UI/sprint2</uiIconPath>
-    <description>The Gladiator can sprint short distances.
-Duration: 10s
-Speed: + 50%</description>
-    <staminaCost>0.15</staminaCost>
+    <description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30% Stamina to sustain.</description>
+    <staminaCost>0.0</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
-        <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+        <verbClass>TorannMagic.Verb_Sprint</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
@@ -51,13 +49,13 @@ Speed: + 50%</description>
 		  <canTargetSelf>true</canTargetSelf>
 		  <canTargetLocations>false</canTargetLocations>
 		</targetParams>
-		<hediffsToApply>
+<!-- 		<hediffsToApply>
 	      <li>
 	        <hediffDef>TM_HediffSprint</hediffDef>
 	        <applyChance>1.0</applyChance>
 			<severity>0.2</severity>
 	      </li>
-        </hediffsToApply>
+        </hediffsToApply> -->
     </MainVerb>
   </TorannMagic.TMAbilityDef>
   
@@ -65,12 +63,10 @@ Speed: + 50%</description>
     <defName>TM_Sprint_I</defName>
     <label>Sprint</label>
     <uiIconPath>UI/sprint2</uiIconPath>
-    <description>The Gladiator can sprint short distances.
-Duration: 12s
-Speed: + 75%</description>
-    <staminaCost>0.15</staminaCost>
+    <description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30% Stamina to sustain.</description>
+    <staminaCost>0.0</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
-        <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+        <verbClass>TorannMagic.Verb_Sprint</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
@@ -92,13 +88,13 @@ Speed: + 75%</description>
 		  <canTargetSelf>true</canTargetSelf>
 		  <canTargetLocations>false</canTargetLocations>
 		</targetParams>
-		<hediffsToApply>
+<!-- 		<hediffsToApply>
 	      <li>
 	        <hediffDef>TM_HediffSprint_I</hediffDef>
 	        <applyChance>1.0</applyChance>
 			<severity>0.2</severity>
 	      </li>
-        </hediffsToApply>
+        </hediffsToApply> -->
     </MainVerb>
   </TorannMagic.TMAbilityDef>
   
@@ -106,12 +102,10 @@ Speed: + 75%</description>
     <defName>TM_Sprint_II</defName>
     <label>Sprint</label>
     <uiIconPath>UI/sprint2</uiIconPath>
-    <description>The Gladiator can sprint short distances.
-Duration: 12s
-Speed: + 100%</description>
-    <staminaCost>0.15</staminaCost>
+    <description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30% Stamina to sustain.</description>
+    <staminaCost>0.0</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
-        <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+        <verbClass>TorannMagic.Verb_Sprint</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
@@ -133,13 +127,13 @@ Speed: + 100%</description>
 		  <canTargetSelf>true</canTargetSelf>
 		  <canTargetLocations>false</canTargetLocations>
 		</targetParams>
-		<hediffsToApply>
+<!-- 		<hediffsToApply>
 	      <li>
 	        <hediffDef>TM_HediffSprint_II</hediffDef>
 	        <applyChance>1.0</applyChance>
 			<severity>0.25</severity>
 	      </li>
-        </hediffsToApply>
+        </hediffsToApply> -->
     </MainVerb>
   </TorannMagic.TMAbilityDef>
   
@@ -147,12 +141,10 @@ Speed: + 100%</description>
     <defName>TM_Sprint_III</defName>
     <label>Sprint</label>
     <uiIconPath>UI/sprint2</uiIconPath>
-    <description>The Gladiator can sprint short distances.
-Duration: 15s
-Speed: + 150%</description>
-    <staminaCost>0.15</staminaCost>
+    <description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30% Stamina to sustain.</description>
+    <staminaCost>0.0</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
-        <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+        <verbClass>TorannMagic.Verb_Sprint</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
@@ -174,13 +166,13 @@ Speed: + 150%</description>
 		  <canTargetSelf>true</canTargetSelf>
 		  <canTargetLocations>false</canTargetLocations>
 		</targetParams>
-		<hediffsToApply>
+<!-- 		<hediffsToApply>
 	      <li>
 	        <hediffDef>TM_HediffSprint_III</hediffDef>
 	        <applyChance>1.0</applyChance>
 			<severity>0.3</severity>
 	      </li>
-        </hediffsToApply>
+        </hediffsToApply> -->
     </MainVerb>
   </TorannMagic.TMAbilityDef>
   

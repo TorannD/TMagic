@@ -42,6 +42,7 @@ namespace TorannMagic
         public static ThingDef SpellOf_Heal;
         public static ThingDef SpellOf_Heater;
         public static ThingDef SpellOf_Cooler;
+        public static ThingDef SpellOf_PowerNode;
         public static ThingDef SpellOf_DryGround;
         public static ThingDef SpellOf_WetGround;
         public static ThingDef SpellOf_ChargeBattery;
@@ -58,6 +59,14 @@ namespace TorannMagic
         public static ThingDef SpellOf_ManaShield;
         public static ThingDef SpellOf_FoldReality;
         public static ThingDef SpellOf_Resurrection;
+
+        public static ThingDef SkillOf_Sprint;
+        public static ThingDef SkillOf_GearRepair;
+        public static ThingDef SkillOf_InnerHealing;
+        public static ThingDef SkillOf_StrongBack;
+        public static ThingDef SkillOf_ThickSkin;
+        public static ThingDef SkillOf_FightersFocus;
+        public static ThingDef SkillOf_HeavyBlow;
 
         public static ThingDef ManaPotion;
 
@@ -190,6 +199,7 @@ namespace TorannMagic
         public static FactionDef TM_SummonedFaction;
 
         public static TMAbilityDef TM_SummonMinion;
+        public static TMAbilityDef TM_DismissMinion;
         public static TMAbilityDef TM_SummonPylon;
         public static TMAbilityDef TM_SummonExplosive;
         public static TMAbilityDef TM_SummonElemental;
@@ -239,6 +249,7 @@ namespace TorannMagic
         public static TMAbilityDef TM_CorpseExplosion_I;
         public static TMAbilityDef TM_CorpseExplosion_II;
         public static TMAbilityDef TM_CorpseExplosion_III;
+        public static TMAbilityDef TM_DismissUndead;
 
         public static WorkTypeDef Art;
         public static WorkTypeDef Research;
@@ -336,6 +347,7 @@ namespace TorannMagic
         //Standalone
         public static TMAbilityDef TM_Heater;
         public static TMAbilityDef TM_Cooler;
+        public static TMAbilityDef TM_PowerNode;
         public static TMAbilityDef TM_DryGround;
         public static TMAbilityDef TM_WetGround;
         public static TMAbilityDef TM_ChargeBattery;
@@ -356,6 +368,13 @@ namespace TorannMagic
         public static HediffDef TM_AntiBreathing;
         public static HediffDef TM_AntiManipulation;
         public static HediffDef TM_AntiMovement;
+
+        public static TMAbilityDef TM_GearRepair;
+        public static TMAbilityDef TM_InnerHealing;
+        public static TMAbilityDef TM_HeavyBlow;
+        public static TMAbilityDef TM_StrongBack;
+        public static TMAbilityDef TM_ThickSkin;
+        public static TMAbilityDef TM_FightersFocus;
 
         //Graphics
 

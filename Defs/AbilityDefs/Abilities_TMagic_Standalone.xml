@@ -103,6 +103,48 @@
     </MainVerb>
  </TorannMagic.TMAbilityDef>
  
+  <!--  Power Node -->
+ 
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_PowerNode</defName>
+    <label>Arcane Power Node</label>
+    <uiIconPath>Other/energynode_1</uiIconPath>
+    <description>Creates an energy node that slowly releases arcane energy in the form of electricity. Can be used as a power source.</description>
+    <manaCost>0.25</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_TM_SpawnThing</defaultProjectile>
+		<abilityDef>TM_PowerNode</abilityDef>
+        <warmupTime>5</warmupTime>
+        <SecondsToRecharge>60</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>20</range>
+		<isViolent>false</isViolent>
+        <soundCast>ThrowGrenade</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+         <isPrimary>false</isPrimary>
+		 <targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+		<thingsToSpawn>
+		  <li>
+		    <def>TM_PowerNode</def>
+			<spawnCount>1</spawnCount>
+			<kindDef>Colonist</kindDef>
+		  </li>
+		</thingsToSpawn>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
  <!--  Remove Moisture  -->
  <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
 		<thingClass>TorannMagic.Projectile_DryGround</thingClass>
@@ -117,6 +159,8 @@
             <damageDef>Bomb</damageDef>
             <damageAmountBase>0</damageAmountBase>
             <speed>200</speed>
+			<explosionRadius>1.5</explosionRadius>
+			<postExplosionSpawnChance>0</postExplosionSpawnChance>
         </projectile>
     </ThingDef>
  
@@ -125,7 +169,7 @@
     <label>Dry Ground</label>
     <uiIconPath>UI/dryground</uiIconPath>
     <description>Infuses the ground with heat, evaporating most of the moisture from a patch of ground.  Only works on muddy ground.</description>
-    <manaCost>0.20</manaCost>
+    <manaCost>0.60</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_BLOS</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -167,6 +211,8 @@
             <damageDef>Bomb</damageDef>
             <damageAmountBase>0</damageAmountBase>
             <speed>200</speed>
+			<explosionRadius>1.5</explosionRadius>
+			<postExplosionSpawnChance>0</postExplosionSpawnChance>
         </projectile>
     </ThingDef>
  
@@ -175,7 +221,7 @@
     <label>Moisturize Ground</label>
     <uiIconPath>UI/wetground</uiIconPath>
     <description>Infuses sand with water, creating usable soil.</description>
-    <manaCost>0.20</manaCost>
+    <manaCost>0.60</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_BLOS</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

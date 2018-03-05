@@ -1,6 +1,9 @@
 ﻿using AbilityUser;
 using RimWorld;
 using Verse;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace TorannMagic
 {
@@ -17,18 +20,28 @@ namespace TorannMagic
             cellRect.ClipInsideMap(map);
 
             IntVec3 c = cellRect.CenterCell;
-            TerrainDef terrain = c.GetTerrain(map);
+            TerrainDef terrain;
+            float radius = this.def.projectile.explosionRadius;
 
-            if (terrain.defName == "Sand" || terrain.defName == "Gravel")
+            IntVec3 curCell;
+            IEnumerable<IntVec3> cells = GenRadial.RadialCellsAround(c, radius, true);
+            for (int i = 0; i < cells.Count(); i++)
             {
-                map.terrainGrid.SetTerrain(c, TerrainDef.Named("Soil"));
+                curCell = cells.ToArray<IntVec3>()[i];                
+                if (curCell.InBounds(map) && curCell.IsValid)
+                {
+                    terrain = curCell.GetTerrain(map);
+                    if (terrain.defName == "Sand" || terrain.defName == "Gravel")
+                    {
+                        map.terrainGrid.SetTerrain(curCell, TerrainDef.Named("Soil"));
+                        MoteMaker.ThrowDustPuff(curCell, map, .75f);
+                    }
+                    else
+                    {
+                        //Messages.Message("TerraformNotSandOrGravel".Translate(), MessageTypeDefOf.RejectInput);
+                    }
+                }
             }
-            else
-            {
-                Messages.Message("TerraformNotSandOrGravel".Translate(), MessageTypeDefOf.RejectInput);
-            }
-
-
         }
     }
 }

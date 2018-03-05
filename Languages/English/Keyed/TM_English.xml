@@ -18,7 +18,9 @@
 <NotCombatBook>Book type not recognized as a combat form!</NotCombatBook>
 <NotPhyAdeptPawn>Pawn does not possess the physical traits to learn this combat form.</NotPhyAdeptPawn>
 <CannotLearnSpell>Spell cannot be applied to this pawn.</CannotLearnSpell>
+<CannotLearnSkill>Skill cannot be applied to this pawn.</CannotLearnSkill>
 <NotMageToLearnSpell>Pawn is not attuned to with arcane forces and cannot learn the contents of this scroll.</NotMageToLearnSpell>
+<NotFighterToLearnSkill>Pawn is not trained in a combat form and cannot apply the techniques from this scroll.</NotFighterToLearnSkill>
 <InvalidBattery>The spell failed, could not detect a common ground with the building (not a battery).</InvalidBattery>
 <NotABuilding>Spell failed: target was not a building.</NotABuilding>
 <NotRightTerrainType>Unable to transform this type of land.</NotRightTerrainType>
@@ -57,6 +59,8 @@
 <TM_RangerNotExperienced>{1} is unable to establish a bond with {0} at this empathy level.</TM_RangerNotExperienced>
 <TM_TooManyTraps>{0} is limited to {1} traps, removing oldest trap.</TM_TooManyTraps>
 <TM_SummonedCreatureLimitExceeded>{0} has exceeded the max number of summoned creatures, dismissing oldest summon.</TM_SummonedCreatureLimitExceeded>
+<TM_NoMinionToDismiss>{0} has no summoned minions.</TM_NoMinionToDismiss>
+<TM_NoValidUndeadToDismiss>Target is not a valid target for dismiss undead.</TM_NoValidUndeadToDismiss>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
@@ -89,6 +93,8 @@
 <TM_global_regen_pwr_desc>Increases the rate mana is recovered by 5% per level.</TM_global_regen_pwr_desc>
 <TM_global_eff_pwr>Focus</TM_global_eff_pwr>
 <TM_global_eff_pwr_desc>Decreases the mana cost of all abilities by an additional 3% per level.</TM_global_eff_pwr_desc>
+<TM_global_spirit_pwr>Spirit</TM_global_spirit_pwr>
+<TM_global_spirit_pwr_desc>Increase maximum mana by 2% per skill level.</TM_global_spirit_pwr_desc>
 
 <TM_global_refresh_pwr>Fitness</TM_global_refresh_pwr>
 <TM_global_refresh_pwr_desc>Increases the rate stamina is recovered by 5% per level.</TM_global_refresh_pwr_desc>
@@ -96,6 +102,8 @@
 <TM_global_seff_pwr_desc>Decreases the stamina cost of all abilities by an additional 5% per level.</TM_global_seff_pwr_desc>
 <TM_global_strength_pwr>Strength</TM_global_strength_pwr>
 <TM_global_strength_pwr_desc>Increases the damage of combat abilities by 5% per level.</TM_global_strength_pwr_desc>
+<TM_global_endurance_pwr>Endurance</TM_global_endurance_pwr>
+<TM_global_endurance_pwr_desc>Increases maximum stamina by 2% per level.</TM_global_endurance_pwr_desc>
 
 <TM_RayofHope_eff>Ray of Hope Efficiency</TM_RayofHope_eff>
 <TM_RayofHope_eff_desc>Decreases mana cost of Ray of Hope by 10% of base mana cost.</TM_RayofHope_eff_desc>
@@ -407,7 +415,12 @@ Level 3: 10 health</TM_HealingCircle_pwr_desc>
 
 <!-- Might Ability Point Descriptions -->
 
-<TM_Sprint_eff_desc>Decreases stamina cost of Sprint by 20% per level of base stamina cost.</TM_Sprint_eff_desc>
+<TM_Sprint_eff_desc>Reduces the stamina cost required to sustain Sprint by 10% (of Sprint's sustained cost) per skill level.</TM_Sprint_eff_desc>
+<TM_Sprint_pwr_desc>Increases the speed of sprint but also increases physical drain.
+Level 0: speed +30%, tiredness +40%
+Level 1: speed +40%, tiredness +45%
+Level 2: speed +50%, tiredness +50%
+Level 3: speed +60%, tiredness +55%</TM_Sprint_pwr_desc>
 <TM_Fortitude_pwr_desc>Increases the amount of damage mitigation by 2 per skill level.</TM_Fortitude_pwr_desc>
 <TM_Fortitude_ver_desc>Increases damage to stamina conversion by .2% per level.
 Conversion occurs pre mitigation.
@@ -423,6 +436,7 @@ Base chance is 0%.</TM_Cleave_ver_desc>
 Base chance is 0%.</TM_Whirlwind_ver_desc>
 
 <TM_Sprint_eff>Sprint Efficiency</TM_Sprint_eff>
+<TM_Sprint_pwr>Sprint Power</TM_Sprint_pwr>
 <TM_Fortitude_pwr>Fortitude Power</TM_Fortitude_pwr>
 <TM_Fortitude_ver>Fortitude Versatility</TM_Fortitude_ver>
 <TM_Grapple_eff>Grapple Efficiency</TM_Grapple_eff>

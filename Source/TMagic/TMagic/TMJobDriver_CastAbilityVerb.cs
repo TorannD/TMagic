@@ -9,6 +9,9 @@ namespace TorannMagic
 {
     public class TMJobDriver_CastAbilityVerb : JobDriver_CastAbilityVerb
     {
+
+        private int duration;
+
         protected override IEnumerable<Toil> MakeNewToils()
         {
             bool flag;
@@ -39,18 +42,28 @@ namespace TorannMagic
                 Toil combatToil = new Toil();
                 combatToil.FailOnDestroyedOrNull(TargetIndex.A);
                 combatToil.FailOnDespawnedOrNull(TargetIndex.A);
-                combatToil.FailOnDowned(TargetIndex.A);
+                //combatToil.FailOnDowned(TargetIndex.A);
+                //CompAbilityUserMagic comp = this.pawn.GetComp<CompAbilityUserMagic>();
+                this.duration = (int)((curJob.verbProps.warmupTime*60) * this.pawn.GetStatValue(StatDefOf.AimingDelayFactor, false));
                 //JobDriver curDriver = this.pawn.jobs.curDriver;
                 combatToil.initAction = delegate
                 {
                     Verb arg_45_0 = combatToil.actor.jobs.curJob.verbToUse;
                     LocalTargetInfo target = combatToil.actor.jobs.curJob.GetTarget(TargetIndex.A);
                     // bool canFreeIntercept2 = false;
-                    arg_45_0.TryStartCastOn(target, false, false);                    
+                    arg_45_0.TryStartCastOn(target, false, false);
+                };
+                combatToil.tickAction = delegate
+                {
+                    this.duration--;
                 };
                 combatToil.AddFinishAction(delegate
                 {
-                     curJob.Ability.PostAbilityAttempt();                    
+                    if (this.duration <= 5)
+                    {
+                        curJob.Ability.PostAbilityAttempt();
+                    }
+                    
                 });
                 //if (combatToil.actor.CurJob != this.job)
                 //{

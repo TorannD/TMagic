@@ -1230,46 +1230,7 @@
       </stages>	 -->
   </HediffDef>
   
-    <!-- Sprint	-->
-  
-   <HediffDef>
-    <defName>TM_HediffSprint</defName>
-	<hediffClass>HediffWithComps</hediffClass>
-	<label>Sprint</label>
-    <defaultLabelColor>(1,0.3,0.5)</defaultLabelColor>
-    <scenarioCanAdd>false</scenarioCanAdd>
-    <maxSeverity>3.0</maxSeverity>	
-	<comps>
-      <li Class="HediffCompProperties_Disappears">
-        <disappearsAfterTicks>
-          <min>600</min>
-          <max>600</max>
-        </disappearsAfterTicks>
-      </li>
-      <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>-5.0</severityPerDay>
-      </li>	  
-    </comps>
-      <stages>
-        <li>
-          <restFallFactor>1.5</restFallFactor>
-		  <capMods>
-			  <li>
-				<capacity>Moving</capacity>
-				<offset>0.5</offset>
-			  </li>
-			  <li>
-				<capacity>BloodPumping</capacity>
-				<offset>0.1</offset>
-			  </li>
-			  <li>
-				<capacity>Breathing</capacity>
-				<offset>0.2</offset>
-			  </li>
-        </capMods>
-        </li>
-      </stages>	
-  </HediffDef>
+<!-- Sprint -->
   
   <HediffDef>
     <defName>TM_HediffSprint_I</defName>

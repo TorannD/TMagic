@@ -109,11 +109,11 @@ namespace TorannMagic
             amt = (int)((float)amt * Rand.Range(.5f, 1.5f));
             if ( hitPart != null)
             {
-                dinfo = new DamageInfo(type, amt, (float)-1, null, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
+                dinfo = new DamageInfo(type, amt, (float)-1, this.launcher as Pawn, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
             }
             else
             {
-                dinfo = new DamageInfo(type, amt, this.ExactRotation.eulerAngles.y, this.launcher, null, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);                
+                dinfo = new DamageInfo(type, amt, this.ExactRotation.eulerAngles.y, this.launcher as Pawn, null, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);                
             }
             victim.TakeDamage(dinfo);
 

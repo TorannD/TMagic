@@ -1,5 +1,6 @@
 ﻿using Verse;
 using RimWorld;
+using System.Linq;
 
 namespace TorannMagic.Enchantment
 {
@@ -59,10 +60,10 @@ namespace TorannMagic.Enchantment
 
         private void CalculateMaxMP()
         {
-            Log.Message("parent of max mp hediffcomp is " + this.parent.def.defName);
-            if(this.parent.def.defName == "TM_HediffEnchantment_maxMP")
+            MagicPowerSkill spirit = this.Pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr");
+            if (this.parent.def.defName == "TM_HediffEnchantment_maxMP")
             {
-                this.enchantment = (comp.maxMP * 100).ToString() + "%";
+                this.enchantment = ((comp.maxMP - (spirit.level *.02f)) * 100).ToString() + "%";
             }
             else if (this.parent.def.defName == "TM_HediffEnchantment_coolDown")
             {

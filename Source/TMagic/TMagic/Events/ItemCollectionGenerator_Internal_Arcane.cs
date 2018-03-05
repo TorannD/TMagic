@@ -14,6 +14,7 @@ namespace TorannMagic
         private const float ArcaneScriptChance = 0.1f;
         private const float DrugChance = 0.15f;
         private const float SpellChance = 0.2f;
+        private const float SkillChance = 0.2f;
         private const float MasterSpellChance = 0.1f;
 
         private static readonly IntRange ArtifactsCountRange = new IntRange(1, 2);
@@ -21,6 +22,7 @@ namespace TorannMagic
         private static readonly IntRange ManaPotionRange = new IntRange(1, 4);
         private static readonly IntRange DrugCountRange = new IntRange(3, 10);
         private static readonly IntRange SpellCountRange = new IntRange(1, 2);
+        private static readonly IntRange SkillCountRange = new IntRange(1, 2);
 
         private float collectiveMarketValue = 0;
 
@@ -347,6 +349,63 @@ namespace TorannMagic
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
+                        if (Rand.Range(0, 10) > 9)
+                        {
+                            thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_PowerNode, null);
+                            outThings.Add(thing);
+                            collectiveMarketValue += thing.MarketValue;
+                        }
+                    }
+                }
+                //Skills
+                if (Rand.Chance(SpellChance) && (parms.totalMarketValue - collectiveMarketValue) > 600f)
+                {
+                    int randomInRange = SkillCountRange.RandomInRange;
+                    Thing thing = new Thing();
+                    for (int i = 0; i < randomInRange; i++)
+                    {
+                        if (Rand.Range(0, 10) > 9)
+                        {
+                            thing = ThingMaker.MakeThing(TorannMagicDefOf.SkillOf_Sprint, null);
+                            outThings.Add(thing);
+                            collectiveMarketValue += thing.MarketValue;
+                        }
+                        if (Rand.Range(0, 10) > 9)
+                        {
+                            thing = ThingMaker.MakeThing(TorannMagicDefOf.SkillOf_GearRepair, null);
+                            outThings.Add(thing);
+                            collectiveMarketValue += thing.MarketValue;
+                        }
+                        if (Rand.Range(0, 10) > 9)
+                        {
+                            thing = ThingMaker.MakeThing(TorannMagicDefOf.SkillOf_InnerHealing, null);
+                            outThings.Add(thing);
+                            collectiveMarketValue += thing.MarketValue;
+                        }
+                        if (Rand.Range(0, 10) > 9)
+                        {
+                            thing = ThingMaker.MakeThing(TorannMagicDefOf.SkillOf_HeavyBlow, null);
+                            outThings.Add(thing);
+                            collectiveMarketValue += thing.MarketValue;
+                        }
+                        if (Rand.Range(0, 10) > 9)
+                        {
+                            thing = ThingMaker.MakeThing(TorannMagicDefOf.SkillOf_StrongBack, null);
+                            outThings.Add(thing);
+                            collectiveMarketValue += thing.MarketValue;
+                        }
+                        if (Rand.Range(0, 10) > 9)
+                        {
+                            thing = ThingMaker.MakeThing(TorannMagicDefOf.SkillOf_ThickSkin, null);
+                            outThings.Add(thing);
+                            collectiveMarketValue += thing.MarketValue;
+                        }
+                        if (Rand.Range(0, 10) > 9)
+                        {
+                            thing = ThingMaker.MakeThing(TorannMagicDefOf.SkillOf_FightersFocus, null);
+                            outThings.Add(thing);
+                            collectiveMarketValue += thing.MarketValue;
+                        }                        
                     }
                 }
             }

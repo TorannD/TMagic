@@ -69,7 +69,7 @@ namespace TorannMagic
                     typeof(PawnDiedOrDownedThoughtsKind)
                 }, null), new HarmonyMethod(typeof(HarmonyPatches), "TryGiveThoughts_PrefixPatch", null), null, null);
             //harmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
-        }
+        }        
 
         [HarmonyPatch(typeof(Pawn_HealthTracker), "CheckForStateChange", null)]
         public static class CheckForStateChange_Patch
@@ -1066,6 +1066,7 @@ namespace TorannMagic
                 {
                     Thing thing = null;
                     thing = ThingMaker.MakeThing(TorannMagicDefOf.RawMagicyte);
+                    thing.stackCount = Rand.Range(6, 16);
                     if(thing != null)
                     {
                         GenPlace.TryPlaceThing(thing, __instance.pawn.Position, __instance.pawn.Map, ThingPlaceMode.Near, null);
@@ -1185,21 +1186,21 @@ namespace TorannMagic
             }
         }
 
-        [HarmonyPatch(typeof(MassUtility), "InventoryMass", null)]
-        public class MassUtility_Patch
-        {
-            public static void Postfix(Pawn p, ref float __result)
-            {
-                float num = 0f;
-                Enchantment.CompEnchant comp = p.GetComp<Enchantment.CompEnchant>();
-                for (int i = 0; i < comp.enchantingContainer.Count; i++)
-                {
-                    Thing thing = comp.enchantingContainer[i];
-                    num += (float)thing.stackCount * thing.GetStatValue(StatDefOf.Mass, true);
-                }
-                __result += num;
-            }
-        }
+        //[HarmonyPatch(typeof(MassUtility), "InventoryMass", null)]
+        //public class MassUtility_Patch
+        //{
+        //    public static void Postfix(Pawn p, ref float __result)
+        //    {
+        //        float num = 0f;
+        //        Enchantment.CompEnchant comp = p.GetComp<Enchantment.CompEnchant>();
+        //        for (int i = 0; i < comp.enchantingContainer.Count; i++)
+        //        {
+        //            Thing thing = comp.enchantingContainer[i];
+        //            num += (float)thing.stackCount * thing.GetStatValue(StatDefOf.Mass, true);
+        //        }
+        //        __result += num;
+        //    }
+        //}
 
         [HarmonyPatch(typeof(PawnAbility), "PostAbilityAttempt", null)]
         public class PawnAbility_Patch
