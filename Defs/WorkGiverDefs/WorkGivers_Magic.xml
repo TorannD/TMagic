@@ -19,5 +19,24 @@
     </requiredCapacities>
     <prioritizeSustains>true</prioritizeSustains>
   </WorkGiverDef>
+  
+    <!-- ============= Printing ============= -->
+	
+  <WorkGiverDef>
+    <defName>DoBillsPrintingPress</defName>
+    <label>do bills at printing table</label>
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>Crafting</workType>
+    <priorityInType>109</priorityInType>
+    <fixedBillGiverDefs>
+      <li>TableMagicPrinter</li>
+    </fixedBillGiverDefs>
+    <verb>craft</verb>
+    <gerund>printing</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
 
 </Defs>

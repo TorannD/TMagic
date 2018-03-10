@@ -73,6 +73,11 @@
     <Compile Include="Events\ItemCollectionGenerator_Gemstones.cs" />
     <Compile Include="HediffComp_InnerHealing.cs" />
     <Compile Include="HediffComp_GearRepair.cs" />
+    <Compile Include="SihvRMagicScrollScribe\CompUseEffect_WriteFullScript.cs" />
+    <Compile Include="SihvRMagicScrollScribe\CompUseEffect_WriteMartialScript.cs" />
+    <Compile Include="SihvRMagicScrollScribe\CompUseEffect_WriteSpell_Rain.cs" />
+    <Compile Include="SihvRMagicScrollScribe\CompUseEffect_WriteTornScript.cs" />
+    <Compile Include="SihvRMagicScrollScribe\SihvSpawnThings.cs" />
     <Compile Include="TMPawnSummoned.cs" />
     <Compile Include="CompProperties_Summoned.cs" />
     <Compile Include="CompSummoned.cs" />

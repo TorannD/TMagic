@@ -57,13 +57,41 @@
 		<defName>TM_MagicyteRefining</defName>
 		<label>magicyte refining</label>
 		<tab>TMagic</tab>
-		<description>Allows gemcrafters to grind magicyte down into a powdered form that can be imbibed.</description>
+		<description>Allows gemcrafters to grind magicyte down into a powdered form that can be imbibed or imbued into an object.</description>
 		<baseCost>1000</baseCost>
 		<techLevel>Neolithic</techLevel>
 		<researchViewX>2.0</researchViewX>
 		<researchViewY>0.0</researchViewY>
 		<prerequisites>
 			<li>TM_Enchanting</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_MagicScribing</defName>
+		<label>scribing</label>
+		<tab>TMagic</tab>
+		<description>Develop the knowledge to mix ink with powdered magicyte and apply it through specially design press capable of reproducing scrolls and books that can contain the power of magic comprehension.</description>
+		<baseCost>2000</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>2.0</researchViewX>
+		<researchViewY>1.0</researchViewY>
+		<prerequisites>
+			<li>TM_MagicyteRefining</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_AdvancedScribing</defName>
+		<label>advanced scribing</label>
+		<tab>TMagic</tab>
+		<description>Allows the use of higher quality material to develop more powerful books and scrolls.</description>
+		<baseCost>1500</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>2.0</researchViewX>
+		<researchViewY>2.0</researchViewY>
+		<prerequisites>
+			<li>TM_MagicScribing</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
