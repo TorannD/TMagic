@@ -5,25 +5,6 @@
 		<modIdentifier>ARimWorldOfMagic</modIdentifier>
 		<linkUrl>https://ludeon.com/forums/index.php?topic=37161.0</linkUrl>
 	</HugsLib.UpdateFeatureDef>
-	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_1_7_8</defName>
-		<assemblyVersion>1.7.8</assemblyVersion>
-		<content>
-- Portals can now transfer pets - pets must be in the stockpile zone and can be transported using "transport items" option
-
-- Disabling Shot (sniper) and Grapple (gladiator) will now cause instant hostility between factions
-
-- Snipers must now have advanced weaponry equipped in order to use most of their skills
-
-- New Event: Elemental Assault; this challenging event triggers during the late game and involves hordes of elementals storming your base!
-
-- Added a series of thoughts and social behaviors involving Undead; living colonists will now be much less likely to "befriend" one of the undead
-
-- Added a series of thoughts and social behaviors between Necromancers, Druids, and Paladins
-
-- Valiant Charge should no longer destroy a pawn if the explosion triggers an exception
-		</content>
-	</HugsLib.UpdateFeatureDef>
 		<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
 		<defName>ARimWorldOfMagic_1_7_9</defName>
 		<assemblyVersion>1.7.9</assemblyVersion>
@@ -151,6 +132,15 @@ The "Rainmaker" ability can now be used to stop rain or snow.
 - Fixes issues with elemental rift not spawning elementals and causing game crashes when the event ends.  Elemental rifts will now award gems at the end of the event.
 
 - Fixes Arcane power nodes where the duration is correctly applied.
+		</content>
+	</HugsLib.UpdateFeatureDef>	
+	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_1_9_4</defName>
+		<assemblyVersion>1.9.4</assemblyVersion>
+		<content>
+- Special thanks to mod contributor SihvMan for the following: new additions for scribing of arcane books and scrolls has been added, these items can be researched and constructed using the scribing table.
+
+- New research and crafting recipes have been added to allow the construction of powerful Gems of Insight that allow mundane pawns to learn the Gifted or Physical Prodigy traits.
 		</content>
 	</HugsLib.UpdateFeatureDef>	
 	

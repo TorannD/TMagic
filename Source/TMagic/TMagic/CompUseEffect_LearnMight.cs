@@ -60,8 +60,7 @@ namespace TorannMagic
                 {
                     traits.Remove(traits[i]);
                     i--;
-                }
-                
+                }                
             }
         }
 	}

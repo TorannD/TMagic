@@ -18,7 +18,7 @@
 		<defName>TM_Enchanting</defName>
 		<label>enchanting</label>
 		<tab>TMagic</tab>
-		<description>Enables the constructions of the research bench and the crafting of tier I enchanting gems.</description>
+		<description>Enables construction of the gemcutting bench and the crafting of tier I enchanting gems.</description>
 		<baseCost>1500</baseCost>
 		<techLevel>Neolithic</techLevel>
 		<researchViewX>1.0</researchViewX>
@@ -92,6 +92,34 @@
 		<researchViewY>2.0</researchViewY>
 		<prerequisites>
 			<li>TM_MagicScribing</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_MasterScribing</defName>
+		<label>master scribing</label>
+		<tab>TMagic</tab>
+		<description>Allows the scribing of master spells.</description>
+		<baseCost>2000</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>2.0</researchViewX>
+		<researchViewY>3.0</researchViewY>
+		<prerequisites>
+			<li>TM_AdvancedScribing</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_ArcaneCrafting</defName>
+		<label>arcane crafting</label>
+		<tab>TMagic</tab>
+		<description>The first step in understanding the link between the arcane and physical. Enables construction of powerful gems of insight.</description>
+		<baseCost>4000</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>3.0</researchViewX>
+		<researchViewY>0.0</researchViewY>
+		<prerequisites>
+			<li>TM_MagicyteRefining</li>
 		</prerequisites>
 	</ResearchProjectDef>
 

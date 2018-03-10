@@ -5,7 +5,7 @@
       <defName>TM_MagicItems</defName>
       <label>Magic Items</label>
       <parent>Root</parent>
-      <iconPath>Items/Gemstones/arcane_minor</iconPath>
+      <iconPath>Items/manapot/manapot_b</iconPath>
       <resourceReadoutRoot>true</resourceReadoutRoot>
     </ThingCategoryDef>
 	
@@ -13,7 +13,7 @@
       <defName>TM_SkillBooks</defName>
       <label>skill books</label>
       <parent>TM_MagicItems</parent>
-      <iconPath>Items/Gemstones/arcane_minor</iconPath>
+      <iconPath>Books/arcane</iconPath>
       <resourceReadoutRoot>true</resourceReadoutRoot>
     </ThingCategoryDef>
 	
@@ -21,7 +21,7 @@
       <defName>TM_Scrolls</defName>
       <label>scrolls</label>
       <parent>TM_MagicItems</parent>
-      <iconPath>Items/Gemstones/arcane_minor</iconPath>
+      <iconPath>Books/scroll</iconPath>
       <resourceReadoutRoot>true</resourceReadoutRoot>
     </ThingCategoryDef>
 	

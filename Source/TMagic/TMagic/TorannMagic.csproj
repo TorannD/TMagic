@@ -69,6 +69,7 @@
     <Compile Include="Building_TMElementalRift.cs" />
     <Compile Include="Building_TMPortal.cs" />
     <Compile Include="Building_PoisonTrap.cs" />
+    <Compile Include="CompUseEffect_GemOfInsight.cs" />
     <Compile Include="CompUseEffect_LearnSkill.cs" />
     <Compile Include="Events\ItemCollectionGenerator_Gemstones.cs" />
     <Compile Include="HediffComp_InnerHealing.cs" />

@@ -64,7 +64,10 @@ namespace TorannMagic.SihvRMagicScrollScribe
             {
                 Messages.Message("NotPhyAdeptPawn".Translate(), MessageTypeDefOf.RejectInput);
             }
-            SihvSpawnThings.SpawnThingDefOfCountAt(tempPod, 1, new TargetInfo(currentPos, map));
+            if (tempPod != null)
+            {
+                SihvSpawnThings.SpawnThingDefOfCountAt(tempPod, 1, new TargetInfo(currentPos, map));
+            }
         }
     }
 }

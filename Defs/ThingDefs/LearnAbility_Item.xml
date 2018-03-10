@@ -2,6 +2,36 @@
 
 <Defs>
 
+  <ThingDef ParentName="ResourceBase" Name="UsableGemstoneBase" Abstract="True">
+    <thingClass>ThingWithComps</thingClass>
+    <thingCategories>
+      <li>TM_SkillBooks</li>
+    </thingCategories>
+    <tradeTags>
+	  <li>Arcane</li>
+    </tradeTags>
+    <statBases>
+      <MarketValue>6000</MarketValue>
+      <MaxHitPoints>1000</MaxHitPoints>
+      <Mass>0.2</Mass>
+	  <Flammability>0.0</Flammability>
+	  <DeteriorationRate>0.0001</DeteriorationRate>
+	  <Beauty>10</Beauty>
+	  <SellPriceFactor>.6</SellPriceFactor>
+	</statBases>
+	<stackLimit>1</stackLimit>
+	<techLevel>Neolithic</techLevel>
+    <comps>
+      <li Class="CompProperties_Usable">
+        <useJob>UseArtifact</useJob>
+        <useLabel>Use</useLabel>
+      </li>
+      <li Class="CompProperties_UseEffect">
+        <compClass>TorannMagic.CompUseEffect_GemOfInsight</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+  
   <ThingDef ParentName="ResourceBase" Name="ArcaneScriptBase" Abstract="True">
     <thingClass>ThingWithComps</thingClass>
     <thingCategories>
@@ -761,6 +791,27 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>50</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_water</texPath>
@@ -788,6 +839,27 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>80</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll</texPath>
@@ -815,6 +887,27 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>250</RawMagicyte>
+		<DevilstrandCloth>40</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>10</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_power</texPath>
@@ -842,6 +935,27 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>80</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_holy</texPath>
@@ -869,6 +983,27 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>60</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_fire</texPath>
@@ -896,6 +1031,27 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>130</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_lit</texPath>
@@ -923,6 +1079,27 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>60</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_water</texPath>
@@ -950,6 +1127,27 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>100</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_fire</texPath>
@@ -977,6 +1175,27 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>100</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_water</texPath>
@@ -1005,6 +1224,27 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>85</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_lit</texPath>
@@ -1032,6 +1272,27 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>70</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll</texPath>
@@ -1059,6 +1320,27 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>70</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll</texPath>
@@ -1086,6 +1368,27 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>110</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_lit</texPath>
@@ -1113,6 +1416,27 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>315</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_fire</texPath>
@@ -1140,6 +1464,27 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>315</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_water</texPath>
@@ -1167,6 +1512,27 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>315</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_lit</texPath>
@@ -1194,6 +1560,27 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>200</RawMagicyte>
+		<DevilstrandCloth>40</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>10</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_power</texPath>
@@ -1221,6 +1608,27 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+		<costList>
+		<RawMagicyte>120</RawMagicyte>
+		<DevilstrandCloth>40</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>10</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_power</texPath>
@@ -1248,6 +1656,27 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>120</RawMagicyte>
+		<DevilstrandCloth>40</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>10</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_power</texPath>
@@ -1275,6 +1704,27 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>265</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll</texPath>
@@ -1302,6 +1752,27 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>165</RawMagicyte>
+		<DevilstrandCloth>40</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>10</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_power</texPath>
@@ -1329,6 +1800,27 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>500</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_power</texPath>
@@ -1356,6 +1848,27 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>600</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_holy</texPath>
@@ -1385,6 +1898,30 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+	<costList>
+		<RawMagicyte>80</RawMagicyte>
+	</costList>
+	<costStuffCount>80</costStuffCount>
+	<stuffCategories>
+		<li>Leathery</li>
+	</stuffCategories>
+	<recipeMaker>		    
+		<workAmount>3000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll</texPath>
@@ -1412,6 +1949,30 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+		<costList>
+		<RawMagicyte>120</RawMagicyte>
+	</costList>
+	<costStuffCount>80</costStuffCount>
+	<stuffCategories>
+		<li>Leathery</li>
+	</stuffCategories>
+	<recipeMaker>		    
+		<workAmount>3000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll</texPath>
@@ -1439,6 +2000,30 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+		<costList>
+		<RawMagicyte>90</RawMagicyte>
+	</costList>
+	<costStuffCount>80</costStuffCount>
+	<stuffCategories>
+		<li>Leathery</li>
+	</stuffCategories>
+	<recipeMaker>		    
+		<workAmount>3000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll</texPath>
@@ -1466,6 +2051,30 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+		<costList>
+		<RawMagicyte>125</RawMagicyte>
+	</costList>
+	<costStuffCount>80</costStuffCount>
+	<stuffCategories>
+		<li>Leathery</li>
+	</stuffCategories>
+	<recipeMaker>		    
+		<workAmount>3000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll</texPath>
@@ -1493,6 +2102,30 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+		<costList>
+		<RawMagicyte>100</RawMagicyte>
+	</costList>
+	<costStuffCount>80</costStuffCount>
+	<stuffCategories>
+		<li>Leathery</li>
+	</stuffCategories>
+	<recipeMaker>		    
+		<workAmount>3000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll</texPath>
@@ -1520,6 +2153,30 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+		<costList>
+		<RawMagicyte>70</RawMagicyte>
+	</costList>
+	<costStuffCount>80</costStuffCount>
+	<stuffCategories>
+		<li>Leathery</li>
+	</stuffCategories>
+	<recipeMaker>		    
+		<workAmount>3000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll</texPath>
@@ -1528,7 +2185,7 @@ Produces 400Wd.</description>
     <drawGUIOverlay>false</drawGUIOverlay>
   </ThingDef>
   
-        <ThingDef ParentName="FighterSkillBase">
+  <ThingDef ParentName="FighterSkillBase">
     <defName>SkillOf_FightersFocus</defName>
     <label>Fighter Skill: Fighters Focus</label>
     <thingClass>ThingWithComps</thingClass>
@@ -1547,6 +2204,30 @@ Produces 400Wd.</description>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
+		<costList>
+		<RawMagicyte>95</RawMagicyte>
+	</costList>
+	<costStuffCount>80</costStuffCount>
+	<stuffCategories>
+		<li>Leathery</li>
+	</stuffCategories>
+	<recipeMaker>		    
+		<workAmount>3000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll</texPath>
@@ -1555,5 +2236,105 @@ Produces 400Wd.</description>
     <drawGUIOverlay>false</drawGUIOverlay>
   </ThingDef>
 
+      <!--=============== Gems of Insight ====================-->
+	  
+  <ThingDef ParentName="UsableGemstoneBase">
+    <defName>GemstoneOfInsight_Might</defName>
+    <label>Gem of Physical Insight</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Imbues the user with the spirit of a warrior.	
+
+**Note: use of this item will replace a random trait if the user has more than 7 traits and cannot be used by a pawn with existing magic or fighter traits**</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>5000</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>500</RawMagicyte>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>6000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableGemcutting</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>6</Crafting>
+			<Intellectual>10</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_ArcaneCrafting</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Items/Gemstones/mightinsight</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+  <ThingDef ParentName="UsableGemstoneBase">
+    <defName>GemstoneOfInsight_Magic</defName>
+    <label>Gem of Arcane Insight</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Imbues the user with an arcane spirit. 
+	
+**Note: use of this item will replace a random trait if the user has more than 7 traits and cannot be used by a pawn with existing magic or fighter traits**</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>5000</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>500</RawMagicyte>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>6000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableGemcutting</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>6</Crafting>
+			<Intellectual>10</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_ArcaneCrafting</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Items/Gemstones/magicinsight</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+	  
 </Defs>
   
