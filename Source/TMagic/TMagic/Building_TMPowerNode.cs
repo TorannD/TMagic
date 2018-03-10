@@ -40,13 +40,12 @@ namespace TorannMagic
                     matRng = 0;
                 }
             }
+            base.Tick();
 
         }        
 
         public override void Draw()
         {
-            base.Draw();
-
             Vector3 vector = base.DrawPos;
             vector.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
             Vector3 s = new Vector3(matMagnitude, matMagnitude, matMagnitude);

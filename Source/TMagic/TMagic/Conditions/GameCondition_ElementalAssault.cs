@@ -61,6 +61,7 @@ namespace TorannMagic.Conditions
                         }
                     }
                 }
+                z++;
             }
             Thing thing = null;
             thing = ThingMaker.MakeThing(ThingDef.Named("Jade"));

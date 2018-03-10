@@ -144,5 +144,14 @@ The "Rainmaker" ability can now be used to stop rain or snow.
 - Bug fix - several fighter skills were not triggering a hostile reponse, they are now.
 		</content>
 	</HugsLib.UpdateFeatureDef>	
+	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_1_9_3</defName>
+		<assemblyVersion>1.9.3</assemblyVersion>
+		<content>
+- Fixes issues with elemental rift not spawning elementals and causing game crashes when the event ends.  Elemental rifts will now award gems at the end of the event.
+
+- Fixes Arcane power nodes where the duration is correctly applied.
+		</content>
+	</HugsLib.UpdateFeatureDef>	
 	
 </Defs>

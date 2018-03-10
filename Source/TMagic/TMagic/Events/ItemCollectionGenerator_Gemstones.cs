@@ -33,7 +33,7 @@ namespace TorannMagic
                     collectiveMarketValue += thing.MarketValue * thing.stackCount;                 
                 }
                 //Minor Magicyte
-                if (Rand.Chance(MinorMagicyteChance) && (parms.totalMarketValue - collectiveMarketValue) > ThingDef.Named("TorannMagic.TM_EStone_maxMP_minor").BaseMarketValue)
+                if (Rand.Chance(MinorMagicyteChance) && (parms.totalMarketValue - collectiveMarketValue) > ThingDef.Named("TM_EStone_maxMP_minor").BaseMarketValue)
                 {
                     Thing thing = null;
                     int rnd = Rand.RangeInclusive(1, this.MagicyteTypes);
@@ -59,7 +59,7 @@ namespace TorannMagic
                     collectiveMarketValue += thing.MarketValue;
                 }
                 //Magicyte
-                if (Rand.Chance(MagicyteChance) && (parms.totalMarketValue - collectiveMarketValue) > ThingDef.Named("TorannMagic.TM_EStone_maxMP").BaseMarketValue)
+                if (Rand.Chance(MagicyteChance) && (parms.totalMarketValue - collectiveMarketValue) > ThingDef.Named("TM_EStone_maxMP").BaseMarketValue)
                 {
                     Thing thing = null;
                     int rnd = Rand.RangeInclusive(1, this.MagicyteTypes);
@@ -85,7 +85,7 @@ namespace TorannMagic
                     collectiveMarketValue += thing.MarketValue;
                 }
                 //Major Magicyte
-                if (Rand.Chance(MajorMagicyteChance) && (parms.totalMarketValue - collectiveMarketValue) > ThingDef.Named("TorannMagic.TM_EStone_maxMP_major").BaseMarketValue)
+                if (Rand.Chance(MajorMagicyteChance) && (parms.totalMarketValue - collectiveMarketValue) > ThingDef.Named("TM_EStone_maxMP_major").BaseMarketValue)
                 {
                     Thing thing = null;
                     int rnd = Rand.RangeInclusive(1, this.MagicyteTypes);
@@ -111,6 +111,7 @@ namespace TorannMagic
                     collectiveMarketValue += thing.MarketValue;
                 }                
             }
+            
             return outThings;
         }
     }

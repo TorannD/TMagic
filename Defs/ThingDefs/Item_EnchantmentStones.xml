@@ -331,7 +331,7 @@
       <texPath>Items/Gemstones/magicyte_raw</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<deepCommonality>0.2</deepCommonality>
+	<deepCommonality>0.1</deepCommonality>
 	<statBases>
 	  <Beauty>4</Beauty>
 	  <MaxHitPoints>500</MaxHitPoints>
@@ -341,6 +341,9 @@
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
     </statBases>
+	<stuffProps>
+	  <commonality>0.05</commonality>
+	</stuffProps>
   </ThingDef>
 
 </Defs>

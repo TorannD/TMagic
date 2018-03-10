@@ -240,7 +240,7 @@ namespace TorannMagic
             if (flag)
             {
                 Faction faction = Find.FactionManager.FirstFactionOfDef(FactionDef.Named("TM_ElementalFaction"));
-                PawnSummoned newPawn = new PawnSummoned();
+                TMPawnSummoned newPawn = new TMPawnSummoned();
                 bool flag2 = spawnables.def.race != null;
                 if (flag2)
                 {
@@ -251,7 +251,7 @@ namespace TorannMagic
                     }
                     else
                     {
-                        newPawn = (PawnSummoned)PawnGenerator.GeneratePawn(spawnables.kindDef, faction);
+                        newPawn = (TMPawnSummoned)PawnGenerator.GeneratePawn(spawnables.kindDef, faction);
                         //newPawn.Spawner = this.Caster;
                         newPawn.Temporary = false;
                         if (newPawn.Faction == null || !newPawn.Faction.HostileTo(Faction.OfPlayer))
