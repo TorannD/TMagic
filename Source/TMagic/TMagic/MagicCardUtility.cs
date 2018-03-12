@@ -382,7 +382,7 @@ namespace TorannMagic
                     else
                     {
                         TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
-{
+							{
                             power.abilityDef.label,
                             "\n\n",
                             power.abilityDescDef.description,
@@ -491,304 +491,8 @@ namespace TorannMagic
                         {
                             while (enumerator1.MoveNext())
                             {
-                                Rect rect4 = new Rect(num2 + MagicCardUtility.MagicButtonPointSize, rect3.yMax, MagicCardUtility.magicCardSize.x / 3f, rect3.height);
-                                Rect rect41 = new Rect(num2, rect4.y, MagicCardUtility.MagicButtonPointSize, MagicCardUtility.MagicButtonPointSize);
-                                Rect rect42 = new Rect(rect41.x, rect4.y, rect4.width - MagicCardUtility.MagicButtonPointSize, rect4.height / 2);
-                                MagicPowerSkill skill = enumerator1.Current;
-                                TooltipHandler.TipRegion(rect42, new TipSignal(() => skill.desc.Translate(), rect4.GetHashCode()));
-                                bool flag11 = skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0 || !enumerator.Current.learned;
-                                if (flag11)
-                                {
-                                    Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
-                                }
-                                else
-                                {
-                                    bool flag12 = Widgets.ButtonText(rect41, "+", true, false, true) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
-                                    Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
-                                    if (flag12)
-                                    {
-                                        bool flag17 = compMagic.AbilityUser.story != null && compMagic.AbilityUser.story.WorkTagIsDisabled(WorkTags.Violent) && power.abilityDef.MainVerb.isViolent;
-                                        if (flag17)
-                                        {
-                                            Messages.Message("IsIncapableOfViolenceLower".Translate(new object[]
-                                            {
-                                        compMagic.parent.LabelShort
-                                            }), MessageTypeDefOf.RejectInput);
-                                            break;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_RayofHope" || enumerator.Current.abilityDef.defName == "TM_RayofHope_I" || enumerator.Current.abilityDef.defName == "TM_RayofHope_II" || enumerator.Current.abilityDef.defName == "TM_RayofHope_III")
-                                        {
-                                            compMagic.LevelUpSkill_RayofHope(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Firebolt")
-                                        {
-                                            compMagic.LevelUpSkill_Firebolt(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Fireclaw")
-                                        {
-                                            compMagic.LevelUpSkill_Fireclaw(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Fireball")
-                                        {
-                                            compMagic.LevelUpSkill_Fireball(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Soothe" || enumerator.Current.abilityDef.defName == "TM_Soothe_I" || enumerator.Current.abilityDef.defName == "TM_Soothe_II" || enumerator.Current.abilityDef.defName == "TM_Soothe_III")
-                                        {
-                                            compMagic.LevelUpSkill_Soothe(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Icebolt")
-                                        {
-                                            compMagic.LevelUpSkill_Icebolt(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_FrostRay" || enumerator.Current.abilityDef.defName == "TM_FrostRay_I" || enumerator.Current.abilityDef.defName == "TM_FrostRay_II" || enumerator.Current.abilityDef.defName == "TM_FrostRay_III")
-                                        {
-                                            compMagic.LevelUpSkill_FrostRay(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Snowball")
-                                        {
-                                            compMagic.LevelUpSkill_Snowball(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Rainmaker")
-                                        {
-                                            compMagic.LevelUpSkill_Rainmaker(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_AMP" || enumerator.Current.abilityDef.defName == "TM_AMP_I" || enumerator.Current.abilityDef.defName == "TM_AMP_II" || enumerator.Current.abilityDef.defName == "TM_AMP_III")
-                                        {
-                                            compMagic.LevelUpSkill_AMP(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_LightningBolt")
-                                        {
-                                            compMagic.LevelUpSkill_LightningBolt(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_LightningCloud")
-                                        {
-                                            compMagic.LevelUpSkill_LightningCloud(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_LightningStorm")
-                                        {
-                                            compMagic.LevelUpSkill_LightningStorm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Shadow" || enumerator.Current.abilityDef.defName == "TM_Shadow_I" || enumerator.Current.abilityDef.defName == "TM_Shadow_II" || enumerator.Current.abilityDef.defName == "TM_Shadow_III")
-                                        {
-                                            compMagic.LevelUpSkill_Shadow(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_MagicMissile" || enumerator.Current.abilityDef.defName == "TM_MagicMissile_I" || enumerator.Current.abilityDef.defName == "TM_MagicMissile_II" || enumerator.Current.abilityDef.defName == "TM_MagicMissile_III")
-                                        {
-                                            compMagic.LevelUpSkill_MagicMissile(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Blink" || enumerator.Current.abilityDef.defName == "TM_Blink_I" || enumerator.Current.abilityDef.defName == "TM_Blink_II" || enumerator.Current.abilityDef.defName == "TM_Blink_III")
-                                        {
-                                            compMagic.LevelUpSkill_Blink(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Summon" || enumerator.Current.abilityDef.defName == "TM_Summon_I" || enumerator.Current.abilityDef.defName == "TM_Summon_II" || enumerator.Current.abilityDef.defName == "TM_Summon_III")
-                                        {
-                                            compMagic.LevelUpSkill_Summon(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Teleport")
-                                        {
-                                            compMagic.LevelUpSkill_Teleport(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_FoldReality")
-                                        {
-                                            compMagic.LevelUpSkill_FoldReality(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Heal")
-                                        {
-                                            compMagic.LevelUpSkill_Heal(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Shield" || enumerator.Current.abilityDef.defName == "TM_Shield_I" || enumerator.Current.abilityDef.defName == "TM_Shield_II" || enumerator.Current.abilityDef.defName == "TM_Shield_III")
-                                        {
-                                            compMagic.LevelUpSkill_Shield(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_ValiantCharge")
-                                        {
-                                            compMagic.LevelUpSkill_ValiantCharge(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Overwhelm")
-                                        {
-                                            compMagic.LevelUpSkill_Overwhelm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Firestorm")
-                                        {
-                                            compMagic.LevelUpSkill_Firestorm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Blizzard")
-                                        {
-                                            compMagic.LevelUpSkill_Blizzard(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonMinion")
-                                        {
-                                            compMagic.LevelUpSkill_SummonMinion(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonPylon")
-                                        {
-                                            compMagic.LevelUpSkill_SummonPylon(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonExplosive")
-                                        {
-                                            compMagic.LevelUpSkill_SummonExplosive(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonElemental")
-                                        {
-                                            compMagic.LevelUpSkill_SummonElemental(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Poison")
-                                        {
-                                            compMagic.LevelUpSkill_Poison(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SootheAnimal" || enumerator.Current.abilityDef.defName == "TM_SootheAnimal_I" || enumerator.Current.abilityDef.defName == "TM_SootheAnimal_II" || enumerator.Current.abilityDef.defName == "TM_SootheAnimal_III")
-                                        {
-                                            compMagic.LevelUpSkill_SootheAnimal(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Regenerate")
-                                        {
-                                            compMagic.LevelUpSkill_Regenerate(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_CureDisease")
-                                        {
-                                            compMagic.LevelUpSkill_CureDisease(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_RegrowLimb")
-                                        {
-                                            compMagic.LevelUpSkill_RegrowLimb(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_EyeOfTheStorm")
-                                        {
-                                            compMagic.LevelUpSkill_EyeOfTheStorm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_RaiseUndead")
-                                        {
-                                            compMagic.LevelUpSkill_RaiseUndead(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_DeathMark" || enumerator.Current.abilityDef.defName == "TM_DeathMark_I" || enumerator.Current.abilityDef.defName == "TM_DeathMark_II" || enumerator.Current.abilityDef.defName == "TM_DeathMark_III")
-                                        {
-                                            compMagic.LevelUpSkill_DeathMark(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_FogOfTorment")
-                                        {
-                                            compMagic.LevelUpSkill_FogOfTorment(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse" || enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse_I" || enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse_II" || enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse_III")
-                                        {
-                                            compMagic.LevelUpSkill_ConsumeCorpse(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_CorpseExplosion" || enumerator.Current.abilityDef.defName == "TM_CorpseExplosion_I" || enumerator.Current.abilityDef.defName == "TM_CorpseExplosion_II" || enumerator.Current.abilityDef.defName == "TM_CorpseExplosion_III")
-                                        {
-                                            compMagic.LevelUpSkill_CorpseExplosion(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_AdvancedHeal")
-                                        {
-                                            compMagic.LevelUpSkill_AdvancedHeal(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Purify")
-                                        {
-                                            compMagic.LevelUpSkill_Purify(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_HealingCircle" || enumerator.Current.abilityDef.defName == "TM_HealingCircle_I" || enumerator.Current.abilityDef.defName == "TM_HealingCircle_II" || enumerator.Current.abilityDef.defName == "TM_HealingCircle_III")
-                                        {
-                                            compMagic.LevelUpSkill_HealingCircle(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }                                        
-                                        if (enumerator.Current.abilityDef.defName == "TM_BestowMight" || enumerator.Current.abilityDef.defName == "TM_BestowMight_I" || enumerator.Current.abilityDef.defName == "TM_BestowMight_II" || enumerator.Current.abilityDef.defName == "TM_BestowMight_III")
-                                        {
-                                            compMagic.LevelUpSkill_BestowMight(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Resurrection")
-                                        {
-                                            compMagic.LevelUpSkill_Resurrection(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                    }
-                                }
-                                num2 += (MagicCardUtility.magicCardSize.x / 3) - MagicCardUtility.SpacingOffset;
+                                var drawMagicCardResult = DrawMagicCardForPower(rect3, num2, compMagic, enumerator.Current, enumerator1.Current);
+								num2 = drawMagicCardResult.xPos;
                             }
                         }
                         itnum++;
@@ -799,304 +503,8 @@ namespace TorannMagic
                         {
                             while (enumerator2.MoveNext())
                             {
-                                Rect rect4 = new Rect(num2 + MagicCardUtility.MagicButtonPointSize, rect3.yMax, MagicCardUtility.magicCardSize.x / 3f, rect3.height);
-                                Rect rect41 = new Rect(num2, rect4.y, MagicCardUtility.MagicButtonPointSize, MagicCardUtility.MagicButtonPointSize);
-                                Rect rect42 = new Rect(rect41.x, rect4.y, rect4.width - MagicCardUtility.MagicButtonPointSize, rect4.height / 2);
-                                MagicPowerSkill skill = enumerator2.Current;
-                                TooltipHandler.TipRegion(rect42, new TipSignal(() => skill.desc.Translate(), rect4.GetHashCode()));
-                                bool flag11 = skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0 || !enumerator.Current.learned;
-                                if (flag11)
-                                {
-                                    Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
-                                }
-                                else
-                                {
-                                    bool flag12 = Widgets.ButtonText(rect41, "+", true, false, true) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
-                                    Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
-                                    if (flag12)
-                                    {
-                                        bool flag17 = compMagic.AbilityUser.story != null && compMagic.AbilityUser.story.WorkTagIsDisabled(WorkTags.Violent) && power.abilityDef.MainVerb.isViolent;
-                                        if (flag17)
-                                        {
-                                            Messages.Message("IsIncapableOfViolenceLower".Translate(new object[]
-                                            {
-                                        compMagic.parent.LabelShort
-                                            }), MessageTypeDefOf.RejectInput);
-                                            break;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_RayofHope" || enumerator.Current.abilityDef.defName == "TM_RayofHope_I" || enumerator.Current.abilityDef.defName == "TM_RayofHope_II" || enumerator.Current.abilityDef.defName == "TM_RayofHope_III")
-                                        {
-                                            compMagic.LevelUpSkill_RayofHope(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Firebolt")
-                                        {
-                                            compMagic.LevelUpSkill_Firebolt(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Fireclaw")
-                                        {
-                                            compMagic.LevelUpSkill_Fireclaw(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Fireball")
-                                        {
-                                            compMagic.LevelUpSkill_Fireball(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Soothe" || enumerator.Current.abilityDef.defName == "TM_Soothe_I" || enumerator.Current.abilityDef.defName == "TM_Soothe_II" || enumerator.Current.abilityDef.defName == "TM_Soothe_III")
-                                        {
-                                            compMagic.LevelUpSkill_Soothe(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Icebolt")
-                                        {
-                                            compMagic.LevelUpSkill_Icebolt(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_FrostRay" || enumerator.Current.abilityDef.defName == "TM_FrostRay_I" || enumerator.Current.abilityDef.defName == "TM_FrostRay_II" || enumerator.Current.abilityDef.defName == "TM_FrostRay_III")
-                                        {
-                                            compMagic.LevelUpSkill_FrostRay(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Snowball")
-                                        {
-                                            compMagic.LevelUpSkill_Snowball(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Rainmaker")
-                                        {
-                                            compMagic.LevelUpSkill_Rainmaker(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_AMP" || enumerator.Current.abilityDef.defName == "TM_AMP_I" || enumerator.Current.abilityDef.defName == "TM_AMP_II" || enumerator.Current.abilityDef.defName == "TM_AMP_III")
-                                        {
-                                            compMagic.LevelUpSkill_AMP(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_LightningBolt")
-                                        {
-                                            compMagic.LevelUpSkill_LightningBolt(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_LightningCloud")
-                                        {
-                                            compMagic.LevelUpSkill_LightningCloud(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_LightningStorm")
-                                        {
-                                            compMagic.LevelUpSkill_LightningStorm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Shadow" || enumerator.Current.abilityDef.defName == "TM_Shadow_I" || enumerator.Current.abilityDef.defName == "TM_Shadow_II" || enumerator.Current.abilityDef.defName == "TM_Shadow_III")
-                                        {
-                                            compMagic.LevelUpSkill_Shadow(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_MagicMissile" || enumerator.Current.abilityDef.defName == "TM_MagicMissile_I" || enumerator.Current.abilityDef.defName == "TM_MagicMissile_II" || enumerator.Current.abilityDef.defName == "TM_MagicMissile_III")
-                                        {
-                                            compMagic.LevelUpSkill_MagicMissile(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Blink" || enumerator.Current.abilityDef.defName == "TM_Blink_I" || enumerator.Current.abilityDef.defName == "TM_Blink_II" || enumerator.Current.abilityDef.defName == "TM_Blink_III")
-                                        {
-                                            compMagic.LevelUpSkill_Blink(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Summon" || enumerator.Current.abilityDef.defName == "TM_Summon_I" || enumerator.Current.abilityDef.defName == "TM_Summon_II" || enumerator.Current.abilityDef.defName == "TM_Summon_III")
-                                        {
-                                            compMagic.LevelUpSkill_Summon(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Teleport")
-                                        {
-                                            compMagic.LevelUpSkill_Teleport(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_FoldReality")
-                                        {
-                                            compMagic.LevelUpSkill_FoldReality(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Heal")
-                                        {
-                                            compMagic.LevelUpSkill_Heal(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Shield" || enumerator.Current.abilityDef.defName == "TM_Shield_I" || enumerator.Current.abilityDef.defName == "TM_Shield_II" || enumerator.Current.abilityDef.defName == "TM_Shield_III")
-                                        {
-                                            compMagic.LevelUpSkill_Shield(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_ValiantCharge")
-                                        {
-                                            compMagic.LevelUpSkill_ValiantCharge(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Overwhelm")
-                                        {
-                                            compMagic.LevelUpSkill_Overwhelm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Firestorm")
-                                        {
-                                            compMagic.LevelUpSkill_Firestorm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Blizzard")
-                                        {
-                                            compMagic.LevelUpSkill_Blizzard(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonMinion")
-                                        {
-                                            compMagic.LevelUpSkill_SummonMinion(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonPylon")
-                                        {
-                                            compMagic.LevelUpSkill_SummonPylon(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonExplosive")
-                                        {
-                                            compMagic.LevelUpSkill_SummonExplosive(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonElemental")
-                                        {
-                                            compMagic.LevelUpSkill_SummonElemental(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Poison")
-                                        {
-                                            compMagic.LevelUpSkill_Poison(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SootheAnimal" || enumerator.Current.abilityDef.defName == "TM_SootheAnimal_I" || enumerator.Current.abilityDef.defName == "TM_SootheAnimal_II" || enumerator.Current.abilityDef.defName == "TM_SootheAnimal_III")
-                                        {
-                                            compMagic.LevelUpSkill_SootheAnimal(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Regenerate")
-                                        {
-                                            compMagic.LevelUpSkill_Regenerate(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_CureDisease")
-                                        {
-                                            compMagic.LevelUpSkill_CureDisease(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_RegrowLimb")
-                                        {
-                                            compMagic.LevelUpSkill_RegrowLimb(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_EyeOfTheStorm")
-                                        {
-                                            compMagic.LevelUpSkill_EyeOfTheStorm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_RaiseUndead")
-                                        {
-                                            compMagic.LevelUpSkill_RaiseUndead(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_DeathMark" || enumerator.Current.abilityDef.defName == "TM_DeathMark_I" || enumerator.Current.abilityDef.defName == "TM_DeathMark_II" || enumerator.Current.abilityDef.defName == "TM_DeathMark_III")
-                                        {
-                                            compMagic.LevelUpSkill_DeathMark(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_FogOfTorment")
-                                        {
-                                            compMagic.LevelUpSkill_FogOfTorment(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse" || enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse_I" || enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse_II" || enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse_III")
-                                        {
-                                            compMagic.LevelUpSkill_ConsumeCorpse(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_CorpseExplosion" || enumerator.Current.abilityDef.defName == "TM_CorpseExplosion_I" || enumerator.Current.abilityDef.defName == "TM_CorpseExplosion_II" || enumerator.Current.abilityDef.defName == "TM_CorpseExplosion_III")
-                                        {
-                                            compMagic.LevelUpSkill_CorpseExplosion(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_AdvancedHeal")
-                                        {
-                                            compMagic.LevelUpSkill_AdvancedHeal(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Purify")
-                                        {
-                                            compMagic.LevelUpSkill_Purify(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_HealingCircle" || enumerator.Current.abilityDef.defName == "TM_HealingCircle_I" || enumerator.Current.abilityDef.defName == "TM_HealingCircle_II" || enumerator.Current.abilityDef.defName == "TM_HealingCircle_III")
-                                        {
-                                            compMagic.LevelUpSkill_HealingCircle(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_BestowMight" || enumerator.Current.abilityDef.defName == "TM_BestowMight_I" || enumerator.Current.abilityDef.defName == "TM_BestowMight_II" || enumerator.Current.abilityDef.defName == "TM_BestowMight_III")
-                                        {
-                                            compMagic.LevelUpSkill_BestowMight(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Resurrection")
-                                        {
-                                            compMagic.LevelUpSkill_Resurrection(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                    }
-                                }
-                                num2 += (MagicCardUtility.magicCardSize.x / 3) - MagicCardUtility.SpacingOffset;
+                                var drawMagicCardResult = DrawMagicCardForPower(rect3, num2, compMagic, enumerator.Current, enumerator2.Current);
+								num2 = drawMagicCardResult.xPos;
                             }
                         }
                         itnum++;
@@ -1107,304 +515,8 @@ namespace TorannMagic
                         {
                             while (enumerator3.MoveNext())
                             {
-                                Rect rect4 = new Rect(num2 + MagicCardUtility.MagicButtonPointSize, rect3.yMax, MagicCardUtility.magicCardSize.x / 3f, rect3.height);
-                                Rect rect41 = new Rect(num2, rect4.y, MagicCardUtility.MagicButtonPointSize, MagicCardUtility.MagicButtonPointSize);
-                                Rect rect42 = new Rect(rect41.x, rect4.y, rect4.width - MagicCardUtility.MagicButtonPointSize, rect4.height / 2);
-                                MagicPowerSkill skill = enumerator3.Current;
-                                TooltipHandler.TipRegion(rect42, new TipSignal(() => skill.desc.Translate(), rect4.GetHashCode()));
-                                bool flag11 = skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0 || !enumerator.Current.learned;
-                                if (flag11)
-                                {
-                                    Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
-                                }
-                                else
-                                {
-                                    bool flag12 = Widgets.ButtonText(rect41, "+", true, false, true) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
-                                    Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
-                                    if (flag12)
-                                    {
-                                        bool flag17 = compMagic.AbilityUser.story != null && compMagic.AbilityUser.story.WorkTagIsDisabled(WorkTags.Violent) && power.abilityDef.MainVerb.isViolent;
-                                        if (flag17)
-                                        {
-                                            Messages.Message("IsIncapableOfViolenceLower".Translate(new object[]
-                                            {
-                                        compMagic.parent.LabelShort
-                                            }), MessageTypeDefOf.RejectInput);
-                                            break;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_RayofHope" || enumerator.Current.abilityDef.defName == "TM_RayofHope_I" || enumerator.Current.abilityDef.defName == "TM_RayofHope_II" || enumerator.Current.abilityDef.defName == "TM_RayofHope_III")
-                                        {
-                                            compMagic.LevelUpSkill_RayofHope(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Firebolt")
-                                        {
-                                            compMagic.LevelUpSkill_Firebolt(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Fireclaw")
-                                        {
-                                            compMagic.LevelUpSkill_Fireclaw(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Fireball")
-                                        {
-                                            compMagic.LevelUpSkill_Fireball(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Soothe" || enumerator.Current.abilityDef.defName == "TM_Soothe_I" || enumerator.Current.abilityDef.defName == "TM_Soothe_II" || enumerator.Current.abilityDef.defName == "TM_Soothe_III")
-                                        {
-                                            compMagic.LevelUpSkill_Soothe(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Icebolt")
-                                        {
-                                            compMagic.LevelUpSkill_Icebolt(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_FrostRay" || enumerator.Current.abilityDef.defName == "TM_FrostRay_I" || enumerator.Current.abilityDef.defName == "TM_FrostRay_II" || enumerator.Current.abilityDef.defName == "TM_FrostRay_III")
-                                        {
-                                            compMagic.LevelUpSkill_FrostRay(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Snowball")
-                                        {
-                                            compMagic.LevelUpSkill_Snowball(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Rainmaker")
-                                        {
-                                            compMagic.LevelUpSkill_Rainmaker(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_AMP" || enumerator.Current.abilityDef.defName == "TM_AMP_I" || enumerator.Current.abilityDef.defName == "TM_AMP_II" || enumerator.Current.abilityDef.defName == "TM_AMP_III")
-                                        {
-                                            compMagic.LevelUpSkill_AMP(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_LightningBolt")
-                                        {
-                                            compMagic.LevelUpSkill_LightningBolt(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_LightningCloud")
-                                        {
-                                            compMagic.LevelUpSkill_LightningCloud(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_LightningStorm")
-                                        {
-                                            compMagic.LevelUpSkill_LightningStorm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Shadow" || enumerator.Current.abilityDef.defName == "TM_Shadow_I" || enumerator.Current.abilityDef.defName == "TM_Shadow_II" || enumerator.Current.abilityDef.defName == "TM_Shadow_III")
-                                        {
-                                            compMagic.LevelUpSkill_Shadow(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_MagicMissile" || enumerator.Current.abilityDef.defName == "TM_MagicMissile_I" || enumerator.Current.abilityDef.defName == "TM_MagicMissile_II" || enumerator.Current.abilityDef.defName == "TM_MagicMissile_III")
-                                        {
-                                            compMagic.LevelUpSkill_MagicMissile(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Blink" || enumerator.Current.abilityDef.defName == "TM_Blink_I" || enumerator.Current.abilityDef.defName == "TM_Blink_II" || enumerator.Current.abilityDef.defName == "TM_Blink_III")
-                                        {
-                                            compMagic.LevelUpSkill_Blink(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Summon" || enumerator.Current.abilityDef.defName == "TM_Summon_I" || enumerator.Current.abilityDef.defName == "TM_Summon_II" || enumerator.Current.abilityDef.defName == "TM_Summon_III")
-                                        {
-                                            compMagic.LevelUpSkill_Summon(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Teleport")
-                                        {
-                                            compMagic.LevelUpSkill_Teleport(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_FoldReality")
-                                        {
-                                            compMagic.LevelUpSkill_FoldReality(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Heal")
-                                        {
-                                            compMagic.LevelUpSkill_Heal(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Shield" || enumerator.Current.abilityDef.defName == "TM_Shield_I" || enumerator.Current.abilityDef.defName == "TM_Shield_II" || enumerator.Current.abilityDef.defName == "TM_Shield_III")
-                                        {
-                                            compMagic.LevelUpSkill_Shield(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_ValiantCharge")
-                                        {
-                                            compMagic.LevelUpSkill_ValiantCharge(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Overwhelm")
-                                        {
-                                            compMagic.LevelUpSkill_Overwhelm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Firestorm")
-                                        {
-                                            compMagic.LevelUpSkill_Firestorm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Blizzard")
-                                        {
-                                            compMagic.LevelUpSkill_Blizzard(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonMinion")
-                                        {
-                                            compMagic.LevelUpSkill_SummonMinion(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonPylon")
-                                        {
-                                            compMagic.LevelUpSkill_SummonPylon(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonExplosive")
-                                        {
-                                            compMagic.LevelUpSkill_SummonExplosive(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonElemental")
-                                        {
-                                            compMagic.LevelUpSkill_SummonElemental(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Poison")
-                                        {
-                                            compMagic.LevelUpSkill_Poison(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SootheAnimal" || enumerator.Current.abilityDef.defName == "TM_SootheAnimal_I" || enumerator.Current.abilityDef.defName == "TM_SootheAnimal_II" || enumerator.Current.abilityDef.defName == "TM_SootheAnimal_III")
-                                        {
-                                            compMagic.LevelUpSkill_SootheAnimal(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Regenerate")
-                                        {
-                                            compMagic.LevelUpSkill_Regenerate(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_CureDisease")
-                                        {
-                                            compMagic.LevelUpSkill_CureDisease(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_RegrowLimb")
-                                        {
-                                            compMagic.LevelUpSkill_RegrowLimb(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_EyeOfTheStorm")
-                                        {
-                                            compMagic.LevelUpSkill_EyeOfTheStorm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_RaiseUndead")
-                                        {
-                                            compMagic.LevelUpSkill_RaiseUndead(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_DeathMark" || enumerator.Current.abilityDef.defName == "TM_DeathMark_I" || enumerator.Current.abilityDef.defName == "TM_DeathMark_II" || enumerator.Current.abilityDef.defName == "TM_DeathMark_III")
-                                        {
-                                            compMagic.LevelUpSkill_DeathMark(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_FogOfTorment")
-                                        {
-                                            compMagic.LevelUpSkill_FogOfTorment(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse" || enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse_I" || enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse_II" || enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse_III")
-                                        {
-                                            compMagic.LevelUpSkill_ConsumeCorpse(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_CorpseExplosion" || enumerator.Current.abilityDef.defName == "TM_CorpseExplosion_I" || enumerator.Current.abilityDef.defName == "TM_CorpseExplosion_II" || enumerator.Current.abilityDef.defName == "TM_CorpseExplosion_III")
-                                        {
-                                            compMagic.LevelUpSkill_CorpseExplosion(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_AdvancedHeal")
-                                        {
-                                            compMagic.LevelUpSkill_AdvancedHeal(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Purify")
-                                        {
-                                            compMagic.LevelUpSkill_Purify(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_HealingCircle" || enumerator.Current.abilityDef.defName == "TM_HealingCircle_I" || enumerator.Current.abilityDef.defName == "TM_HealingCircle_II" || enumerator.Current.abilityDef.defName == "TM_HealingCircle_III")
-                                        {
-                                            compMagic.LevelUpSkill_HealingCircle(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_BestowMight" || enumerator.Current.abilityDef.defName == "TM_BestowMight_I" || enumerator.Current.abilityDef.defName == "TM_BestowMight_II" || enumerator.Current.abilityDef.defName == "TM_BestowMight_III")
-                                        {
-                                            compMagic.LevelUpSkill_BestowMight(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Resurrection")
-                                        {
-                                            compMagic.LevelUpSkill_Resurrection(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                    }
-                                }
-                                num2 += (MagicCardUtility.magicCardSize.x / 3) - MagicCardUtility.SpacingOffset;
+                                var drawMagicCardResult = DrawMagicCardForPower(rect3, num2, compMagic, enumerator.Current, enumerator3.Current);
+								num2 = drawMagicCardResult.xPos;
                             }
                         }
                         itnum++;
@@ -1415,304 +527,8 @@ namespace TorannMagic
                         {
                             while (enumerator4.MoveNext())
                             {
-                                Rect rect4 = new Rect(num2 + MagicCardUtility.MagicButtonPointSize, rect3.yMax, MagicCardUtility.magicCardSize.x / 3f, rect3.height);
-                                Rect rect41 = new Rect(num2, rect4.y, MagicCardUtility.MagicButtonPointSize, MagicCardUtility.MagicButtonPointSize);
-                                Rect rect42 = new Rect(rect41.x, rect4.y, rect4.width - MagicCardUtility.MagicButtonPointSize, rect4.height / 2);
-                                MagicPowerSkill skill = enumerator4.Current;
-                                TooltipHandler.TipRegion(rect42, new TipSignal(() => skill.desc.Translate(), rect4.GetHashCode()));
-                                bool flag11 = skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0 || !enumerator.Current.learned;
-                                if (flag11)
-                                {
-                                    Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
-                                }
-                                else
-                                {
-                                    bool flag12 = Widgets.ButtonText(rect41, "+", true, false, true) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
-                                    Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
-                                    if (flag12)
-                                    {
-                                        bool flag17 = compMagic.AbilityUser.story != null && compMagic.AbilityUser.story.WorkTagIsDisabled(WorkTags.Violent) && power.abilityDef.MainVerb.isViolent;
-                                        if (flag17)
-                                        {
-                                            Messages.Message("IsIncapableOfViolenceLower".Translate(new object[]
-                                            {
-                                        compMagic.parent.LabelShort
-                                            }), MessageTypeDefOf.RejectInput);
-                                            break;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_RayofHope" || enumerator.Current.abilityDef.defName == "TM_RayofHope_I" || enumerator.Current.abilityDef.defName == "TM_RayofHope_II" || enumerator.Current.abilityDef.defName == "TM_RayofHope_III")
-                                        {
-                                            compMagic.LevelUpSkill_RayofHope(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Firebolt")
-                                        {
-                                            compMagic.LevelUpSkill_Firebolt(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Fireclaw")
-                                        {
-                                            compMagic.LevelUpSkill_Fireclaw(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Fireball")
-                                        {
-                                            compMagic.LevelUpSkill_Fireball(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Soothe" || enumerator.Current.abilityDef.defName == "TM_Soothe_I" || enumerator.Current.abilityDef.defName == "TM_Soothe_II" || enumerator.Current.abilityDef.defName == "TM_Soothe_III")
-                                        {
-                                            compMagic.LevelUpSkill_Soothe(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Icebolt")
-                                        {
-                                            compMagic.LevelUpSkill_Icebolt(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_FrostRay" || enumerator.Current.abilityDef.defName == "TM_FrostRay_I" || enumerator.Current.abilityDef.defName == "TM_FrostRay_II" || enumerator.Current.abilityDef.defName == "TM_FrostRay_III")
-                                        {
-                                            compMagic.LevelUpSkill_FrostRay(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Snowball")
-                                        {
-                                            compMagic.LevelUpSkill_Snowball(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Rainmaker")
-                                        {
-                                            compMagic.LevelUpSkill_Rainmaker(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_AMP" || enumerator.Current.abilityDef.defName == "TM_AMP_I" || enumerator.Current.abilityDef.defName == "TM_AMP_II" || enumerator.Current.abilityDef.defName == "TM_AMP_III")
-                                        {
-                                            compMagic.LevelUpSkill_AMP(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_LightningBolt")
-                                        {
-                                            compMagic.LevelUpSkill_LightningBolt(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_LightningCloud")
-                                        {
-                                            compMagic.LevelUpSkill_LightningCloud(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_LightningStorm")
-                                        {
-                                            compMagic.LevelUpSkill_LightningStorm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Shadow" || enumerator.Current.abilityDef.defName == "TM_Shadow_I" || enumerator.Current.abilityDef.defName == "TM_Shadow_II" || enumerator.Current.abilityDef.defName == "TM_Shadow_III")
-                                        {
-                                            compMagic.LevelUpSkill_Shadow(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_MagicMissile" || enumerator.Current.abilityDef.defName == "TM_MagicMissile_I" || enumerator.Current.abilityDef.defName == "TM_MagicMissile_II" || enumerator.Current.abilityDef.defName == "TM_MagicMissile_III")
-                                        {
-                                            compMagic.LevelUpSkill_MagicMissile(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Blink" || enumerator.Current.abilityDef.defName == "TM_Blink_I" || enumerator.Current.abilityDef.defName == "TM_Blink_II" || enumerator.Current.abilityDef.defName == "TM_Blink_III")
-                                        {
-                                            compMagic.LevelUpSkill_Blink(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Summon" || enumerator.Current.abilityDef.defName == "TM_Summon_I" || enumerator.Current.abilityDef.defName == "TM_Summon_II" || enumerator.Current.abilityDef.defName == "TM_Summon_III")
-                                        {
-                                            compMagic.LevelUpSkill_Summon(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Teleport")
-                                        {
-                                            compMagic.LevelUpSkill_Teleport(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_FoldReality")
-                                        {
-                                            compMagic.LevelUpSkill_FoldReality(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Heal")
-                                        {
-                                            compMagic.LevelUpSkill_Heal(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Shield" || enumerator.Current.abilityDef.defName == "TM_Shield_I" || enumerator.Current.abilityDef.defName == "TM_Shield_II" || enumerator.Current.abilityDef.defName == "TM_Shield_III")
-                                        {
-                                            compMagic.LevelUpSkill_Shield(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_ValiantCharge")
-                                        {
-                                            compMagic.LevelUpSkill_ValiantCharge(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Overwhelm")
-                                        {
-                                            compMagic.LevelUpSkill_Overwhelm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Firestorm")
-                                        {
-                                            compMagic.LevelUpSkill_Firestorm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Blizzard")
-                                        {
-                                            compMagic.LevelUpSkill_Blizzard(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonMinion")
-                                        {
-                                            compMagic.LevelUpSkill_SummonMinion(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonPylon")
-                                        {
-                                            compMagic.LevelUpSkill_SummonPylon(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonExplosive")
-                                        {
-                                            compMagic.LevelUpSkill_SummonExplosive(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonElemental")
-                                        {
-                                            compMagic.LevelUpSkill_SummonElemental(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Poison")
-                                        {
-                                            compMagic.LevelUpSkill_Poison(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SootheAnimal" || enumerator.Current.abilityDef.defName == "TM_SootheAnimal_I" || enumerator.Current.abilityDef.defName == "TM_SootheAnimal_II" || enumerator.Current.abilityDef.defName == "TM_SootheAnimal_III")
-                                        {
-                                            compMagic.LevelUpSkill_SootheAnimal(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Regenerate")
-                                        {
-                                            compMagic.LevelUpSkill_Regenerate(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_CureDisease")
-                                        {
-                                            compMagic.LevelUpSkill_CureDisease(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_RegrowLimb")
-                                        {
-                                            compMagic.LevelUpSkill_RegrowLimb(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_EyeOfTheStorm")
-                                        {
-                                            compMagic.LevelUpSkill_EyeOfTheStorm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_RaiseUndead")
-                                        {
-                                            compMagic.LevelUpSkill_RaiseUndead(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_DeathMark" || enumerator.Current.abilityDef.defName == "TM_DeathMark_I" || enumerator.Current.abilityDef.defName == "TM_DeathMark_II" || enumerator.Current.abilityDef.defName == "TM_DeathMark_III")
-                                        {
-                                            compMagic.LevelUpSkill_DeathMark(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_FogOfTorment")
-                                        {
-                                            compMagic.LevelUpSkill_FogOfTorment(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse" || enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse_I" || enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse_II" || enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse_III")
-                                        {
-                                            compMagic.LevelUpSkill_ConsumeCorpse(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_CorpseExplosion" || enumerator.Current.abilityDef.defName == "TM_CorpseExplosion_I" || enumerator.Current.abilityDef.defName == "TM_CorpseExplosion_II" || enumerator.Current.abilityDef.defName == "TM_CorpseExplosion_III")
-                                        {
-                                            compMagic.LevelUpSkill_CorpseExplosion(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_AdvancedHeal")
-                                        {
-                                            compMagic.LevelUpSkill_AdvancedHeal(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Purify")
-                                        {
-                                            compMagic.LevelUpSkill_Purify(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_HealingCircle" || enumerator.Current.abilityDef.defName == "TM_HealingCircle_I" || enumerator.Current.abilityDef.defName == "TM_HealingCircle_II" || enumerator.Current.abilityDef.defName == "TM_HealingCircle_III")
-                                        {
-                                            compMagic.LevelUpSkill_HealingCircle(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_BestowMight" || enumerator.Current.abilityDef.defName == "TM_BestowMight_I" || enumerator.Current.abilityDef.defName == "TM_BestowMight_II" || enumerator.Current.abilityDef.defName == "TM_BestowMight_III")
-                                        {
-                                            compMagic.LevelUpSkill_BestowMight(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Resurrection")
-                                        {
-                                            compMagic.LevelUpSkill_Resurrection(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                    }
-                                }
-                                num2 += (MagicCardUtility.magicCardSize.x / 3) - MagicCardUtility.SpacingOffset;
+                                var drawMagicCardResult = DrawMagicCardForPower(rect3, num2, compMagic, enumerator.Current, enumerator4.Current);
+								num2 = drawMagicCardResult.xPos;
                             }
                         }
                         itnum++;
@@ -1723,304 +539,8 @@ namespace TorannMagic
                         {
                             while (enumerator5.MoveNext())
                             {
-                                Rect rect4 = new Rect(num2 + MagicCardUtility.MagicButtonPointSize, rect3.yMax, MagicCardUtility.magicCardSize.x / 3f, rect3.height); //was rect3.width / 5f
-                                Rect rect41 = new Rect(num2, rect4.y, MagicCardUtility.MagicButtonPointSize, MagicCardUtility.MagicButtonPointSize);
-                                Rect rect42 = new Rect(rect41.x, rect4.y, rect4.width - MagicCardUtility.MagicButtonPointSize, rect4.height / 2);
-                                MagicPowerSkill skill = enumerator5.Current;
-                                TooltipHandler.TipRegion(rect42, new TipSignal(() => skill.desc.Translate(), rect4.GetHashCode()));
-                                bool flag11 = skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0 || !enumerator.Current.learned;
-                                if (flag11)
-                                {
-                                    Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
-                                }
-                                else
-                                {
-                                    bool flag12 = Widgets.ButtonText(rect41, "+", true, false, true) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
-                                    Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
-                                    if (flag12)
-                                    {
-                                        bool flag17 = compMagic.AbilityUser.story != null && compMagic.AbilityUser.story.WorkTagIsDisabled(WorkTags.Violent) && power.abilityDef.MainVerb.isViolent;
-                                        if (flag17)
-                                        {
-                                            Messages.Message("IsIncapableOfViolenceLower".Translate(new object[]
-                                            {
-                                        compMagic.parent.LabelShort
-                                            }), MessageTypeDefOf.RejectInput);
-                                            break;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_RayofHope" || enumerator.Current.abilityDef.defName == "TM_RayofHope_I" || enumerator.Current.abilityDef.defName == "TM_RayofHope_II" || enumerator.Current.abilityDef.defName == "TM_RayofHope_III")
-                                        {
-                                            compMagic.LevelUpSkill_RayofHope(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Firebolt")
-                                        {
-                                            compMagic.LevelUpSkill_Firebolt(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Fireclaw")
-                                        {
-                                            compMagic.LevelUpSkill_Fireclaw(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Fireball")
-                                        {
-                                            compMagic.LevelUpSkill_Fireball(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Soothe" || enumerator.Current.abilityDef.defName == "TM_Soothe_I" || enumerator.Current.abilityDef.defName == "TM_Soothe_II" || enumerator.Current.abilityDef.defName == "TM_Soothe_III")
-                                        {
-                                            compMagic.LevelUpSkill_Soothe(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Icebolt")
-                                        {
-                                            compMagic.LevelUpSkill_Icebolt(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_FrostRay" || enumerator.Current.abilityDef.defName == "TM_FrostRay_I" || enumerator.Current.abilityDef.defName == "TM_FrostRay_II" || enumerator.Current.abilityDef.defName == "TM_FrostRay_III")
-                                        {
-                                            compMagic.LevelUpSkill_FrostRay(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Snowball")
-                                        {
-                                            compMagic.LevelUpSkill_Snowball(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Rainmaker")
-                                        {
-                                            compMagic.LevelUpSkill_Rainmaker(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_AMP" || enumerator.Current.abilityDef.defName == "TM_AMP_I" || enumerator.Current.abilityDef.defName == "TM_AMP_II" || enumerator.Current.abilityDef.defName == "TM_AMP_III")
-                                        {
-                                            compMagic.LevelUpSkill_AMP(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_LightningBolt")
-                                        {
-                                            compMagic.LevelUpSkill_LightningBolt(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_LightningCloud")
-                                        {
-                                            compMagic.LevelUpSkill_LightningCloud(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_LightningStorm")
-                                        {
-                                            compMagic.LevelUpSkill_LightningStorm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Shadow" || enumerator.Current.abilityDef.defName == "TM_Shadow_I" || enumerator.Current.abilityDef.defName == "TM_Shadow_II" || enumerator.Current.abilityDef.defName == "TM_Shadow_III")
-                                        {
-                                            compMagic.LevelUpSkill_Shadow(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_MagicMissile" || enumerator.Current.abilityDef.defName == "TM_MagicMissile_I" || enumerator.Current.abilityDef.defName == "TM_MagicMissile_II" || enumerator.Current.abilityDef.defName == "TM_MagicMissile_III")
-                                        {
-                                            compMagic.LevelUpSkill_MagicMissile(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Blink" || enumerator.Current.abilityDef.defName == "TM_Blink_I" || enumerator.Current.abilityDef.defName == "TM_Blink_II" || enumerator.Current.abilityDef.defName == "TM_Blink_III")
-                                        {
-                                            compMagic.LevelUpSkill_Blink(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Summon" || enumerator.Current.abilityDef.defName == "TM_Summon_I" || enumerator.Current.abilityDef.defName == "TM_Summon_II" || enumerator.Current.abilityDef.defName == "TM_Summon_III")
-                                        {
-                                            compMagic.LevelUpSkill_Summon(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Teleport")
-                                        {
-                                            compMagic.LevelUpSkill_Teleport(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_FoldReality")
-                                        {
-                                            compMagic.LevelUpSkill_FoldReality(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Heal")
-                                        {
-                                            compMagic.LevelUpSkill_Heal(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Shield" || enumerator.Current.abilityDef.defName == "TM_Shield_I" || enumerator.Current.abilityDef.defName == "TM_Shield_II" || enumerator.Current.abilityDef.defName == "TM_Shield_III")
-                                        {
-                                            compMagic.LevelUpSkill_Shield(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_ValiantCharge")
-                                        {
-                                            compMagic.LevelUpSkill_ValiantCharge(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Overwhelm")
-                                        {
-                                            compMagic.LevelUpSkill_Overwhelm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Firestorm")
-                                        {
-                                            compMagic.LevelUpSkill_Firestorm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Blizzard")
-                                        {
-                                            compMagic.LevelUpSkill_Blizzard(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonMinion")
-                                        {
-                                            compMagic.LevelUpSkill_SummonMinion(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonPylon")
-                                        {
-                                            compMagic.LevelUpSkill_SummonPylon(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonExplosive")
-                                        {
-                                            compMagic.LevelUpSkill_SummonExplosive(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonElemental")
-                                        {
-                                            compMagic.LevelUpSkill_SummonElemental(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Poison")
-                                        {
-                                            compMagic.LevelUpSkill_Poison(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SootheAnimal" || enumerator.Current.abilityDef.defName == "TM_SootheAnimal_I" || enumerator.Current.abilityDef.defName == "TM_SootheAnimal_II" || enumerator.Current.abilityDef.defName == "TM_SootheAnimal_III")
-                                        {
-                                            compMagic.LevelUpSkill_SootheAnimal(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Regenerate")
-                                        {
-                                            compMagic.LevelUpSkill_Regenerate(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_CureDisease")
-                                        {
-                                            compMagic.LevelUpSkill_CureDisease(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_RegrowLimb")
-                                        {
-                                            compMagic.LevelUpSkill_RegrowLimb(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_EyeOfTheStorm")
-                                        {
-                                            compMagic.LevelUpSkill_EyeOfTheStorm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_RaiseUndead")
-                                        {
-                                            compMagic.LevelUpSkill_RaiseUndead(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_DeathMark" || enumerator.Current.abilityDef.defName == "TM_DeathMark_I" || enumerator.Current.abilityDef.defName == "TM_DeathMark_II" || enumerator.Current.abilityDef.defName == "TM_DeathMark_III")
-                                        {
-                                            compMagic.LevelUpSkill_DeathMark(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_FogOfTorment")
-                                        {
-                                            compMagic.LevelUpSkill_FogOfTorment(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse" || enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse_I" || enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse_II" || enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse_III")
-                                        {
-                                            compMagic.LevelUpSkill_ConsumeCorpse(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_CorpseExplosion" || enumerator.Current.abilityDef.defName == "TM_CorpseExplosion_I" || enumerator.Current.abilityDef.defName == "TM_CorpseExplosion_II" || enumerator.Current.abilityDef.defName == "TM_CorpseExplosion_III")
-                                        {
-                                            compMagic.LevelUpSkill_CorpseExplosion(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_AdvancedHeal")
-                                        {
-                                            compMagic.LevelUpSkill_AdvancedHeal(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Purify")
-                                        {
-                                            compMagic.LevelUpSkill_Purify(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_HealingCircle" || enumerator.Current.abilityDef.defName == "TM_HealingCircle_I" || enumerator.Current.abilityDef.defName == "TM_HealingCircle_II" || enumerator.Current.abilityDef.defName == "TM_HealingCircle_III")
-                                        {
-                                            compMagic.LevelUpSkill_HealingCircle(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_BestowMight" || enumerator.Current.abilityDef.defName == "TM_BestowMight_I" || enumerator.Current.abilityDef.defName == "TM_BestowMight_II" || enumerator.Current.abilityDef.defName == "TM_BestowMight_III")
-                                        {
-                                            compMagic.LevelUpSkill_BestowMight(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Resurrection")
-                                        {
-                                            compMagic.LevelUpSkill_Resurrection(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                    }
-                                }
-                                num2 += (MagicCardUtility.magicCardSize.x / 3) - MagicCardUtility.SpacingOffset;
+                                var drawMagicCardResult = DrawMagicCardForPower(rect3, num2, compMagic, enumerator.Current, enumerator5.Current);
+								num2 = drawMagicCardResult.xPos;
                             }
                         }
                         itnum++;
@@ -2031,305 +551,9 @@ namespace TorannMagic
                         {
                             while (enumerator6.MoveNext())
                             {
-                                Rect rect4 = new Rect(num2 + MagicCardUtility.MagicButtonPointSize, rect3.yMax, MagicCardUtility.magicCardSize.x / 3f, rect3.height); //was rect3.width / 5f
-                                Rect rect41 = new Rect(num2, rect4.y, MagicCardUtility.MagicButtonPointSize, MagicCardUtility.MagicButtonPointSize);
-                                Rect rect42 = new Rect(rect41.x, rect4.y, rect4.width - MagicCardUtility.MagicButtonPointSize, rect4.height / 2);
-                                MagicPowerSkill skill = enumerator6.Current;
-                                TooltipHandler.TipRegion(rect42, new TipSignal(() => skill.desc.Translate(), rect4.GetHashCode()));
-                                bool flag11 = skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0 || !enumerator.Current.learned;
-                                if (flag11)
-                                {
-                                    Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
-                                }
-                                else
-                                {
-                                    bool flag12 = Widgets.ButtonText(rect41, "+", true, false, true) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
-                                    Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
-                                    if (flag12)
-                                    {
-                                        bool flag17 = compMagic.AbilityUser.story != null && compMagic.AbilityUser.story.WorkTagIsDisabled(WorkTags.Violent) && power.abilityDef.MainVerb.isViolent;
-                                        if (flag17)
-                                        {
-                                            Messages.Message("IsIncapableOfViolenceLower".Translate(new object[]
-                                            {
-                                        compMagic.parent.LabelShort
-                                            }), MessageTypeDefOf.RejectInput);
-                                            break;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_RayofHope" || enumerator.Current.abilityDef.defName == "TM_RayofHope_I" || enumerator.Current.abilityDef.defName == "TM_RayofHope_II" || enumerator.Current.abilityDef.defName == "TM_RayofHope_III")
-                                        {
-                                            compMagic.LevelUpSkill_RayofHope(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Firebolt")
-                                        {
-                                            compMagic.LevelUpSkill_Firebolt(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Fireclaw")
-                                        {
-                                            compMagic.LevelUpSkill_Fireclaw(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Fireball")
-                                        {
-                                            compMagic.LevelUpSkill_Fireball(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Soothe" || enumerator.Current.abilityDef.defName == "TM_Soothe_I" || enumerator.Current.abilityDef.defName == "TM_Soothe_II" || enumerator.Current.abilityDef.defName == "TM_Soothe_III")
-                                        {
-                                            compMagic.LevelUpSkill_Soothe(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Icebolt")
-                                        {
-                                            compMagic.LevelUpSkill_Icebolt(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_FrostRay" || enumerator.Current.abilityDef.defName == "TM_FrostRay_I" || enumerator.Current.abilityDef.defName == "TM_FrostRay_II" || enumerator.Current.abilityDef.defName == "TM_FrostRay_III")
-                                        {
-                                            compMagic.LevelUpSkill_FrostRay(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Snowball")
-                                        {
-                                            compMagic.LevelUpSkill_Snowball(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Rainmaker")
-                                        {
-                                            compMagic.LevelUpSkill_Rainmaker(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_AMP" || enumerator.Current.abilityDef.defName == "TM_AMP_I" || enumerator.Current.abilityDef.defName == "TM_AMP_II" || enumerator.Current.abilityDef.defName == "TM_AMP_III")
-                                        {
-                                            compMagic.LevelUpSkill_AMP(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_LightningBolt")
-                                        {
-                                            compMagic.LevelUpSkill_LightningBolt(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_LightningCloud")
-                                        {
-                                            compMagic.LevelUpSkill_LightningCloud(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_LightningStorm")
-                                        {
-                                            compMagic.LevelUpSkill_LightningStorm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Shadow" || enumerator.Current.abilityDef.defName == "TM_Shadow_I" || enumerator.Current.abilityDef.defName == "TM_Shadow_II" || enumerator.Current.abilityDef.defName == "TM_Shadow_III")
-                                        {
-                                            compMagic.LevelUpSkill_Shadow(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_MagicMissile" || enumerator.Current.abilityDef.defName == "TM_MagicMissile_I" || enumerator.Current.abilityDef.defName == "TM_MagicMissile_II" || enumerator.Current.abilityDef.defName == "TM_MagicMissile_III")
-                                        {
-                                            compMagic.LevelUpSkill_MagicMissile(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Blink" || enumerator.Current.abilityDef.defName == "TM_Blink_I" || enumerator.Current.abilityDef.defName == "TM_Blink_II" || enumerator.Current.abilityDef.defName == "TM_Blink_III")
-                                        {
-                                            compMagic.LevelUpSkill_Blink(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Summon" || enumerator.Current.abilityDef.defName == "TM_Summon_I" || enumerator.Current.abilityDef.defName == "TM_Summon_II" || enumerator.Current.abilityDef.defName == "TM_Summon_III")
-                                        {
-                                            compMagic.LevelUpSkill_Summon(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Teleport")
-                                        {
-                                            compMagic.LevelUpSkill_Teleport(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_FoldReality")
-                                        {
-                                            compMagic.LevelUpSkill_FoldReality(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Heal")
-                                        {
-                                            compMagic.LevelUpSkill_Heal(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Shield" || enumerator.Current.abilityDef.defName == "TM_Shield_I" || enumerator.Current.abilityDef.defName == "TM_Shield_II" || enumerator.Current.abilityDef.defName == "TM_Shield_III")
-                                        {
-                                            compMagic.LevelUpSkill_Shield(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_ValiantCharge")
-                                        {
-                                            compMagic.LevelUpSkill_ValiantCharge(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Overwhelm")
-                                        {
-                                            compMagic.LevelUpSkill_Overwhelm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Firestorm")
-                                        {
-                                            compMagic.LevelUpSkill_Firestorm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Blizzard")
-                                        {
-                                            compMagic.LevelUpSkill_Blizzard(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonMinion")
-                                        {
-                                            compMagic.LevelUpSkill_SummonMinion(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonPylon")
-                                        {
-                                            compMagic.LevelUpSkill_SummonPylon(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonExplosive")
-                                        {
-                                            compMagic.LevelUpSkill_SummonExplosive(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SummonElemental")
-                                        {
-                                            compMagic.LevelUpSkill_SummonElemental(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Poison")
-                                        {
-                                            compMagic.LevelUpSkill_Poison(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_SootheAnimal" || enumerator.Current.abilityDef.defName == "TM_SootheAnimal_I" || enumerator.Current.abilityDef.defName == "TM_SootheAnimal_II" || enumerator.Current.abilityDef.defName == "TM_SootheAnimal_III")
-                                        {
-                                            compMagic.LevelUpSkill_SootheAnimal(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Regenerate")
-                                        {
-                                            compMagic.LevelUpSkill_Regenerate(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_CureDisease")
-                                        {
-                                            compMagic.LevelUpSkill_CureDisease(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_RegrowLimb")
-                                        {
-                                            compMagic.LevelUpSkill_RegrowLimb(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_EyeOfTheStorm")
-                                        {
-                                            compMagic.LevelUpSkill_EyeOfTheStorm(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_RaiseUndead")
-                                        {
-                                            compMagic.LevelUpSkill_RaiseUndead(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_DeathMark" || enumerator.Current.abilityDef.defName == "TM_DeathMark_I" || enumerator.Current.abilityDef.defName == "TM_DeathMark_II" || enumerator.Current.abilityDef.defName == "TM_DeathMark_III")
-                                        {
-                                            compMagic.LevelUpSkill_DeathMark(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_FogOfTorment")
-                                        {
-                                            compMagic.LevelUpSkill_FogOfTorment(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse" || enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse_I" || enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse_II" || enumerator.Current.abilityDef.defName == "TM_ConsumeCorpse_III")
-                                        {
-                                            compMagic.LevelUpSkill_ConsumeCorpse(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_CorpseExplosion" || enumerator.Current.abilityDef.defName == "TM_CorpseExplosion_I" || enumerator.Current.abilityDef.defName == "TM_CorpseExplosion_II" || enumerator.Current.abilityDef.defName == "TM_CorpseExplosion_III")
-                                        {
-                                            compMagic.LevelUpSkill_CorpseExplosion(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_AdvancedHeal")
-                                        {
-                                            compMagic.LevelUpSkill_AdvancedHeal(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Purify")
-                                        {
-                                            compMagic.LevelUpSkill_Purify(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_HealingCircle" || enumerator.Current.abilityDef.defName == "TM_HealingCircle_I" || enumerator.Current.abilityDef.defName == "TM_HealingCircle_II" || enumerator.Current.abilityDef.defName == "TM_HealingCircle_III")
-                                        {
-                                            compMagic.LevelUpSkill_HealingCircle(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_BestowMight" || enumerator.Current.abilityDef.defName == "TM_BestowMight_I" || enumerator.Current.abilityDef.defName == "TM_BestowMight_II" || enumerator.Current.abilityDef.defName == "TM_BestowMight_III")
-                                        {
-                                            compMagic.LevelUpSkill_BestowMight(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Resurrection")
-                                        {
-                                            compMagic.LevelUpSkill_Resurrection(skill.label);
-                                            skill.level++;
-                                            compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        }
-                                    }
-                                }
-                                num2 += (MagicCardUtility.magicCardSize.x / 3) - MagicCardUtility.SpacingOffset;
-                            }
+								var drawMagicCardResult = DrawMagicCardForPower(rect3, num2, compMagic, enumerator.Current, enumerator6.Current);
+								num2 = drawMagicCardResult.xPos;
+							}
                         }
                         itnum++;
                     }
@@ -2341,5 +565,339 @@ namespace TorannMagic
                 }  
             }
         }
-    }
+
+		public class DrawMagicCardForPowerReturn
+		{
+			public float xPos;
+			public CompAbilityUserMagic caum;
+			public MagicPowerSkill power;
+		}
+
+		public static DrawMagicCardForPowerReturn DrawMagicCardForPower(Rect parentRect, float xPos, CompAbilityUserMagic compMagic, MagicPower classPower, MagicPowerSkill powerToPutOnCard)
+		{
+			// List<MagicPower>.Enumerator -> Enumerator for the magic power skill list provided by the wizard class.
+			//		MagicPower power = enumerator.Current;
+			// (List<MagicPowerSkill>.Enumerator enumerator1 = MagicPowerSkill1.GetEnumerator(); -> Enumerator for the current magic power skill being iterated (as it may consist of several levels). Comes from the individual magic power parameters.
+			var result = new DrawMagicCardForPowerReturn();
+			result.xPos = xPos;
+			result.caum = compMagic;
+			result.power = powerToPutOnCard;
+
+			Rect rect4 = new Rect(result.xPos + MagicCardUtility.MagicButtonPointSize, parentRect.yMax, MagicCardUtility.magicCardSize.x / 3f, parentRect.height);
+			Rect rect41 = new Rect(result.xPos, rect4.y, MagicCardUtility.MagicButtonPointSize, MagicCardUtility.MagicButtonPointSize);
+			Rect rect42 = new Rect(rect41.x, rect4.y, rect4.width - MagicCardUtility.MagicButtonPointSize, rect4.height / 2);
+
+			TooltipHandler.TipRegion(rect42, new TipSignal(() => result.power.desc.Translate(), rect4.GetHashCode()));
+			bool flag11 = result.power.level >= result.power.levelMax || result.caum.MagicData.MagicAbilityPoints == 0 || !classPower.learned;
+			if (flag11)
+			{
+				Widgets.Label(rect4, result.power.label.Translate() + ": " + result.power.level + " / " + result.power.levelMax);
+			}
+			else
+			{
+				bool flag12 = Widgets.ButtonText(rect41, "+", true, false, true) && result.caum.AbilityUser.Faction == Faction.OfPlayer;
+				Widgets.Label(rect4, result.power.label.Translate() + ": " + result.power.level + " / " + result.power.levelMax);
+				if (flag12)
+				{
+					bool flag17 = result.caum.AbilityUser.story != null && result.caum.AbilityUser.story.WorkTagIsDisabled(WorkTags.Violent) && classPower.abilityDef.MainVerb.isViolent;
+					if (flag17)
+					{
+						Messages.Message("IsIncapableOfViolenceLower".Translate(new object[]
+						{
+							result.caum.parent.LabelShort
+						}), MessageTypeDefOf.RejectInput);
+						return result;
+					}
+					var levelupResult = DoSkillLevelUp(powerToLevel: classPower, compMagic: result.caum, skill: result.power);
+					result.caum = levelupResult.caum;
+					result.power = levelupResult.mps;
+				}
+			}
+			result.xPos += (MagicCardUtility.magicCardSize.x / 3) - MagicCardUtility.SpacingOffset;
+			return result;
+		}
+
+		public class DoSKillLevelUpReturn
+		{
+			public CompAbilityUserMagic caum;
+			public MagicPowerSkill mps;
+		}
+		
+		public static DoSKillLevelUpReturn DoSkillLevelUp(MagicPower powerToLevel, CompAbilityUserMagic compMagic, MagicPowerSkill skill)
+		{
+			var powerToLevelName = powerToLevel.abilityDef.defName;
+			if (powerToLevelName == "TM_RayofHope" || powerToLevelName == "TM_RayofHope_I" || powerToLevelName == "TM_RayofHope_II" || powerToLevelName == "TM_RayofHope_III")
+			{
+				compMagic.LevelUpSkill_RayofHope(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_Firebolt")
+			{
+				compMagic.LevelUpSkill_Firebolt(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_Fireclaw")
+			{
+				compMagic.LevelUpSkill_Fireclaw(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_Fireball")
+			{
+				compMagic.LevelUpSkill_Fireball(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_Soothe" || powerToLevelName == "TM_Soothe_I" || powerToLevelName == "TM_Soothe_II" || powerToLevelName == "TM_Soothe_III")
+			{
+				compMagic.LevelUpSkill_Soothe(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_Icebolt")
+			{
+				compMagic.LevelUpSkill_Icebolt(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_FrostRay" || powerToLevelName == "TM_FrostRay_I" || powerToLevelName == "TM_FrostRay_II" || powerToLevelName == "TM_FrostRay_III")
+			{
+				compMagic.LevelUpSkill_FrostRay(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_Snowball")
+			{
+				compMagic.LevelUpSkill_Snowball(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_Rainmaker")
+			{
+				compMagic.LevelUpSkill_Rainmaker(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_AMP" || powerToLevelName == "TM_AMP_I" || powerToLevelName == "TM_AMP_II" || powerToLevelName == "TM_AMP_III")
+			{
+				compMagic.LevelUpSkill_AMP(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_LightningBolt")
+			{
+				compMagic.LevelUpSkill_LightningBolt(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_LightningCloud")
+			{
+				compMagic.LevelUpSkill_LightningCloud(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_LightningStorm")
+			{
+				compMagic.LevelUpSkill_LightningStorm(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_Shadow" || powerToLevelName == "TM_Shadow_I" || powerToLevelName == "TM_Shadow_II" || powerToLevelName == "TM_Shadow_III")
+			{
+				compMagic.LevelUpSkill_Shadow(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_MagicMissile" || powerToLevelName == "TM_MagicMissile_I" || powerToLevelName == "TM_MagicMissile_II" || powerToLevelName == "TM_MagicMissile_III")
+			{
+				compMagic.LevelUpSkill_MagicMissile(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_Blink" || powerToLevelName == "TM_Blink_I" || powerToLevelName == "TM_Blink_II" || powerToLevelName == "TM_Blink_III")
+			{
+				compMagic.LevelUpSkill_Blink(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_Summon" || powerToLevelName == "TM_Summon_I" || powerToLevelName == "TM_Summon_II" || powerToLevelName == "TM_Summon_III")
+			{
+				compMagic.LevelUpSkill_Summon(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_Teleport")
+			{
+				compMagic.LevelUpSkill_Teleport(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_FoldReality")
+			{
+				compMagic.LevelUpSkill_FoldReality(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_Heal")
+			{
+				compMagic.LevelUpSkill_Heal(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_Shield" || powerToLevelName == "TM_Shield_I" || powerToLevelName == "TM_Shield_II" || powerToLevelName == "TM_Shield_III")
+			{
+				compMagic.LevelUpSkill_Shield(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_ValiantCharge")
+			{
+				compMagic.LevelUpSkill_ValiantCharge(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_Overwhelm")
+			{
+				compMagic.LevelUpSkill_Overwhelm(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_Firestorm")
+			{
+				compMagic.LevelUpSkill_Firestorm(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_Blizzard")
+			{
+				compMagic.LevelUpSkill_Blizzard(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_SummonMinion")
+			{
+				compMagic.LevelUpSkill_SummonMinion(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_SummonPylon")
+			{
+				compMagic.LevelUpSkill_SummonPylon(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_SummonExplosive")
+			{
+				compMagic.LevelUpSkill_SummonExplosive(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_SummonElemental")
+			{
+				compMagic.LevelUpSkill_SummonElemental(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_Poison")
+			{
+				compMagic.LevelUpSkill_Poison(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_SootheAnimal" || powerToLevelName == "TM_SootheAnimal_I" || powerToLevelName == "TM_SootheAnimal_II" || powerToLevelName == "TM_SootheAnimal_III")
+			{
+				compMagic.LevelUpSkill_SootheAnimal(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_Regenerate")
+			{
+				compMagic.LevelUpSkill_Regenerate(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_CureDisease")
+			{
+				compMagic.LevelUpSkill_CureDisease(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_RegrowLimb")
+			{
+				compMagic.LevelUpSkill_RegrowLimb(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_EyeOfTheStorm")
+			{
+				compMagic.LevelUpSkill_EyeOfTheStorm(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_RaiseUndead")
+			{
+				compMagic.LevelUpSkill_RaiseUndead(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_DeathMark" || powerToLevelName == "TM_DeathMark_I" || powerToLevelName == "TM_DeathMark_II" || powerToLevelName == "TM_DeathMark_III")
+			{
+				compMagic.LevelUpSkill_DeathMark(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_FogOfTorment")
+			{
+				compMagic.LevelUpSkill_FogOfTorment(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_ConsumeCorpse" || powerToLevelName == "TM_ConsumeCorpse_I" || powerToLevelName == "TM_ConsumeCorpse_II" || powerToLevelName == "TM_ConsumeCorpse_III")
+			{
+				compMagic.LevelUpSkill_ConsumeCorpse(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_CorpseExplosion" || powerToLevelName == "TM_CorpseExplosion_I" || powerToLevelName == "TM_CorpseExplosion_II" || powerToLevelName == "TM_CorpseExplosion_III")
+			{
+				compMagic.LevelUpSkill_CorpseExplosion(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_AdvancedHeal")
+			{
+				compMagic.LevelUpSkill_AdvancedHeal(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_Purify")
+			{
+				compMagic.LevelUpSkill_Purify(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_HealingCircle" || powerToLevelName == "TM_HealingCircle_I" || powerToLevelName == "TM_HealingCircle_II" || powerToLevelName == "TM_HealingCircle_III")
+			{
+				compMagic.LevelUpSkill_HealingCircle(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_BestowMight" || powerToLevelName == "TM_BestowMight_I" || powerToLevelName == "TM_BestowMight_II" || powerToLevelName == "TM_BestowMight_III")
+			{
+				compMagic.LevelUpSkill_BestowMight(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+			if (powerToLevelName == "TM_Resurrection")
+			{
+				compMagic.LevelUpSkill_Resurrection(skill.label);
+				skill.level++;
+				compMagic.MagicData.MagicAbilityPoints -= 1;
+			}
+
+			return new DoSKillLevelUpReturn { caum = compMagic, mps = skill };
+		}
+	}
 }
