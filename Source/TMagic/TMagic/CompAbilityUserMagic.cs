@@ -40,6 +40,7 @@ namespace TorannMagic
 
         public bool firstTick = false;
         public bool magicPowersInitialized = false;
+        private int resMitigationDelay = 0;
         public int magicXPRate = 1000;
         public int lastXPGain = 0;
         private int age = -1;
@@ -122,6 +123,8 @@ namespace TorannMagic
         public float coolDown = 1;
         public float mpCost = 1;
         public float xpGain = 1;
+        public float arcaneDmg = 1;
+        public float arcaneRes = 1;
 
         public List<Thing> summonedMinions = new List<Thing>();
         private bool dismissMinionSpell = false;
@@ -736,9 +739,9 @@ namespace TorannMagic
                             SingleEvent();
                         }
                         base.CompTick();
+                        this.age++;
                         if (this.Mana.CurLevel >= (.99f * this.Mana.MaxLevel))
-                        {
-                            this.age++;
+                        {                            
                             if (this.age > (lastXPGain + magicXPRate))
                             {
                                 MagicData.MagicUserXP++;
@@ -1010,7 +1013,7 @@ namespace TorannMagic
                     flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.InnerFire);
                     if (flag2)
                     {
-                        Log.Message("Initializing Inner Fire Abilities");
+                        //Log.Message("Initializing Inner Fire Abilities");
                         if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
                         {
                             if(Rand.Chance(.3f))
@@ -1061,7 +1064,7 @@ namespace TorannMagic
                     flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost);
                     if (flag2)
                     {
-                        Log.Message("Initializing Heart of Frost Abilities");
+                        //Log.Message("Initializing Heart of Frost Abilities");
                         if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
                         {
                             if (Rand.Chance(.3f))
@@ -1124,7 +1127,7 @@ namespace TorannMagic
                     flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.StormBorn);
                     if (flag2)
                     {
-                        Log.Message("Initializing Storm Born Abilities");
+                        //Log.Message("Initializing Storm Born Abilities");
                         if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
                         {
                             if (Rand.Chance(.3f))
@@ -1175,7 +1178,7 @@ namespace TorannMagic
                     flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist);
                     if (flag2)
                     {
-                        Log.Message("Initializing Arcane Abilities");
+                        //Log.Message("Initializing Arcane Abilities");
                         if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
                         {
                             if (Rand.Chance(.3f))
@@ -1240,7 +1243,7 @@ namespace TorannMagic
                     flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Paladin);
                     if (flag2)
                     {
-                        Log.Message("Initializing Paladin Abilities");
+                        //Log.Message("Initializing Paladin Abilities");
                         if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
                         {
                             if (Rand.Chance(.5f))
@@ -1293,7 +1296,7 @@ namespace TorannMagic
                     flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner);
                     if (flag2)
                     {
-                        Log.Message("Initializing Summoner Abilities");
+                        //Log.Message("Initializing Summoner Abilities");
                         if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
                         {
                             if (Rand.Chance(.3f))
@@ -1346,7 +1349,7 @@ namespace TorannMagic
                     flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Druid);
                     if (flag2)
                     {
-                        Log.Message("Initializing Druid Abilities");
+                       // Log.Message("Initializing Druid Abilities");
                         if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
                         {
                             if (Rand.Chance(.5f))
@@ -1397,7 +1400,7 @@ namespace TorannMagic
                     flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Necromancer);
                     if (flag2)
                     {
-                        Log.Message("Initializing Necromancer Abilities");
+                        //Log.Message("Initializing Necromancer Abilities");
                         if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
                         {
                             if (Rand.Chance(.5f))
@@ -1458,7 +1461,7 @@ namespace TorannMagic
                     flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Priest);
                     if (flag2)
                     {
-                        Log.Message("Initializing Priest Abilities");
+                        //Log.Message("Initializing Priest Abilities");
                         if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
                         {
                             if (Rand.Chance(.5f))
@@ -2832,6 +2835,29 @@ namespace TorannMagic
                         dinfo.SetAmount(0);
                         return;
                     }
+                    if (current.def.defName == "TM_HediffEnchantment_phantomShift" && Rand.Chance(.2f))
+                    {
+                        absorbed = true;
+                        MoteMaker.MakeStaticMote(AbilityUser.Position, AbilityUser.Map, ThingDefOf.Mote_ExplosionFlash, 8);
+                        MoteMaker.ThrowSmoke(abilityUser.Position.ToVector3Shifted(), abilityUser.Map, 1.2f);
+                        dinfo.SetAmount(0);
+                        return;
+                    }
+                    if (arcaneRes !=0 && resMitigationDelay < this.age)
+                    {
+                        if (current.def.defName == "TM_HediffEnchantment_arcaneRes")
+                        {
+                            if (dinfo.Def.defName.Contains("TM_") || dinfo.Def.defName == "FrostRay" || dinfo.Def.defName == "Snowball" || dinfo.Def.defName == "Iceshard" || dinfo.Def.defName == "Firebolt")
+                            {
+                                absorbed = true;
+                                int actualDmg = Mathf.RoundToInt(dinfo.Amount - (dinfo.Amount * arcaneRes));
+                                resMitigationDelay = this.age + 10;
+                                dinfo.SetAmount(actualDmg);
+                                abilityUser.TakeDamage(dinfo);
+                                return;
+                            }
+                        }
+                    }
                     if (current.def.defName == "TM_HediffShield")
                     {
                         float sev = current.Severity;
@@ -3042,6 +3068,10 @@ namespace TorannMagic
             float _coolDown = 0;
             float _xpGain = 0;
             float _mpCost = 0;
+            float _arcaneRes = 0;
+            float _arcaneDmg = 0;
+            bool _arcaneSpectre = false;
+            bool _phantomShift = false;
             List<Apparel> apparel = this.Pawn.apparel.WornApparel;
             for (int i = 0; i < this.Pawn.apparel.WornApparelCount; i++)
             {
@@ -3055,6 +3085,16 @@ namespace TorannMagic
                         _coolDown += item.Props.coolDown;
                         _xpGain += item.Props.xpGain;
                         _mpCost += item.Props.mpCost;
+                        _arcaneRes += item.Props.arcaneRes;
+                        _arcaneDmg += item.Props.arcaneDmg;
+                        if(item.Props.arcaneSpectre == true)
+                        {
+                            _arcaneSpectre = true;
+                        }
+                        if(item.Props.phantomShift == true)
+                        {
+                            _phantomShift = true;
+                        }
                     }
                 }
             }
@@ -3070,15 +3110,19 @@ namespace TorannMagic
                         _coolDown += item.Props.coolDown;
                         _xpGain += item.Props.xpGain;
                         _mpCost += item.Props.mpCost;
+                        _arcaneRes += item.Props.arcaneRes;
+                        _arcaneDmg += item.Props.arcaneDmg;
                     }
                 }
             }
-            MagicPowerSkill spirit= this.MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr");
+            MagicPowerSkill spirit = this.MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr");
             this.maxMP = 1f + (spirit.level * .02f) + _maxMP;
             this.mpRegenRate = 1f + _mpRegenRate;
             this.coolDown = 1f + _coolDown;
             this.xpGain = 1f + _xpGain;
             this.mpCost = 1f + _mpCost;
+            this.arcaneRes = 1f + _arcaneRes;
+            this.arcaneDmg = 1f + _arcaneDmg;
             if (_maxMP != 0)
             {
                 HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_maxMP"), .5f);
@@ -3098,6 +3142,22 @@ namespace TorannMagic
             if (_mpCost != 0)
             {
                 HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_mpCost"), .5f);
+            }
+            if (_arcaneRes != 0)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_arcaneRes"), .5f);
+            }
+            if (_arcaneDmg != 0)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_arcaneDmg"), .5f);
+            }
+            if (_arcaneSpectre == true)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_arcaneSpectre"), .5f);
+            }
+            if (_phantomShift == true)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_phantomShift"), .5f);
             }
 
             using (IEnumerator<Hediff> enumerator = this.Pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
@@ -3122,6 +3182,22 @@ namespace TorannMagic
                         Pawn.health.RemoveHediff(rec);
                     }
                     if (rec.def.defName == "TM_HediffEnchantment_xpGain" && this.xpGain == 1)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                    if (rec.def.defName == "TM_HediffEnchantment_arcaneRes" && this.arcaneRes == 1)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                    if (rec.def.defName == "TM_HediffEnchantment_arcaneDmg" && this.arcaneDmg == 1)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                    if (rec.def.defName == "TM_HediffEnchantment_arcaneSpectre" && _arcaneSpectre == false)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                    if (rec.def.defName == "TM_HediffEnchantment_phantomShift" && _phantomShift == false)
                     {
                         Pawn.health.RemoveHediff(rec);
                     }
@@ -3614,7 +3690,7 @@ namespace TorannMagic
                 }
                 if (flag40)
                 {
-                    Log.Message("Loading Inner Fire Abilities");
+                    //Log.Message("Loading Inner Fire Abilities");
                     MagicPower mpIF = this.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Firebolt);
                     if(mpIF.learned == true)
                     {
@@ -3633,7 +3709,7 @@ namespace TorannMagic
                 }
                 if (flag41)
                 {
-                    Log.Message("Loading Heart of Frost Abilities");
+                    //Log.Message("Loading Heart of Frost Abilities");
                     MagicPower mpHoF = this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Icebolt);
                     if (mpHoF.learned == true)
                     {
@@ -3653,7 +3729,7 @@ namespace TorannMagic
                 }
                 if (flag42)
                 {
-                    Log.Message("Loading Storm Born Abilities");
+                    //Log.Message("Loading Storm Born Abilities");
                     MagicPower mpSB = this.MagicData.MagicPowersSB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_LightningBolt);
                     if (mpSB.learned == true)
                     {
@@ -3672,7 +3748,7 @@ namespace TorannMagic
                 }
                 if (flag43)
                 {
-                    Log.Message("Loading Arcane Abilities");
+                    //Log.Message("Loading Arcane Abilities");
                     MagicPower mpA = this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Teleport);
                     if (mpA.learned == true)
                     {
@@ -3681,7 +3757,7 @@ namespace TorannMagic
                 }
                 if (flag44)
                 {
-                    Log.Message("Loading Paladin Abilities");
+                    //Log.Message("Loading Paladin Abilities");
                     MagicPower mpP = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Heal);
                     if (mpP.learned == true)
                     {
@@ -3700,7 +3776,7 @@ namespace TorannMagic
                 }
                 if (flag45)
                 {
-                    Log.Message("Loading Summoner Abilities");
+                    //Log.Message("Loading Summoner Abilities");
                     MagicPower mpS = this.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonMinion);
                     if (mpS.learned == true)
                     {
@@ -3724,7 +3800,7 @@ namespace TorannMagic
                 }
                 if (flag46)
                 {
-                    Log.Message("Loading Druid Abilities");
+                    //Log.Message("Loading Druid Abilities");
                     MagicPower mpD = this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Poison);
                     if (mpD.learned == true)
                     {
@@ -3743,7 +3819,7 @@ namespace TorannMagic
                 }
                 if (flag47)
                 {
-                    Log.Message("Loading Necromancer Abilities");
+                    //Log.Message("Loading Necromancer Abilities");
                     MagicPower mpN = this.MagicData.MagicPowersN.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RaiseUndead);
                     if (mpN.learned == true)
                     {
@@ -3757,7 +3833,7 @@ namespace TorannMagic
                 }
                 if (flag48)
                 {
-                    Log.Message("Loading Priest Abilities");
+                    //Log.Message("Loading Priest Abilities");
                     MagicPower mpPR = this.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_AdvancedHeal);
                     if (mpPR.learned == true)
                     {

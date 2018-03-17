@@ -13,7 +13,29 @@
 		<makesBlood>false</makesBlood>
 	</DamageDef> -->
   
-  <!-- Torann Magic Damage Defs -->
+  <!-- Torann Magic Damage Defs -->  	
+  
+  	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_BlazingPower</defName>
+		<label>Blazing Power</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was destroyed by blazing power.</deathMessage>
+		<hediff>TM_BlazingPowerHD</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<explosionDamage>12</explosionDamage>
+		<armorCategory>Heat</armorCategory>
+		<explosionSnowMeltAmount>.5</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_BlastFlame</explosionCellMote>
+		<explosionColorCenter>(1, 1, 1)</explosionColorCenter>
+		<explosionColorEdge>(1, 1, 1)</explosionColorEdge>
+		<soundExplosion>Explosion_Flame</soundExplosion>
+		<additionalHediffs>
+			<li>
+				<hediff>TM_Blind</hediff>
+				<severityPerDamageDealt>.03</severityPerDamageDealt>
+			</li>
+		</additionalHediffs>
+	</DamageDef>
   
   	<DamageDef ParentName="LocalInjuryBase">
 		<defName>TM_Holy</defName>
@@ -690,6 +712,19 @@
     <deathMessage>{0} has been shot to death.</deathMessage>
     <hediff>Cut</hediff>
     <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Bullet</impactSoundType>
+    <armorCategory>Sharp</armorCategory>
+	<isExplosive>false</isExplosive>
+  </DamageDef>
+  
+  <DamageDef ParentName="LocalInjuryBase">
+    <defName>TM_ArcaneSpectre</defName>
+    <label>arcane spectre</label>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has been destroyed by a malicious spirit</deathMessage>
+    <hediff>TM_arcaneSpectre</hediff>
+    <hediffSolid>TM_arcaneSpectre</hediffSolid>
     <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
     <impactSoundType>Bullet</impactSoundType>
     <armorCategory>Sharp</armorCategory>

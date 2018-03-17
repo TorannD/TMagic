@@ -86,9 +86,7 @@
 					<subNodes>
 						<li Class="JobGiver_AIFightEnemies" />
 						<li Class="JobGiver_Haul" />
-						<li Class="JobGiver_AIDefendMaster">
-                          <attackMeleeThreatEvenIfNotHostile>true</attackMeleeThreatEvenIfNotHostile>
-                        </li>
+						<!-- <li Class="JobGiver_AIDefendSelf" /> -->
 					</subNodes>
 				</li>
 			</subNodes>

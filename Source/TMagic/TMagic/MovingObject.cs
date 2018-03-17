@@ -59,7 +59,7 @@ namespace TorannMagic
             GenSpawn.Spawn(pawn, origin_, map_);
 
 
-            Log.Message("Launching from " + origin + " to " + target);
+            //Log.Message("Launching from " + origin + " to " + target);
             ThingDef def = this.def;
 
             CellRect cellRect = CellRect.CenteredOn(origin, 1);

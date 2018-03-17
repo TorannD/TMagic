@@ -1413,14 +1413,34 @@
   <HediffDef ParentName="DebuffBase">
     <defName>TM_Blind</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-    <label>Blind</label>
+    <label>Blinded</label>
 	<defaultLabelColor>(1,1,1)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
-	<maxSeverity>1.0</maxSeverity>
+	<maxSeverity>1</maxSeverity>
     <stages>
       <li>
-	    <label>blinded</label>
+	    <label>I</label>
 		<minSeverity>.001</minSeverity>
+        <capMods>
+		  <li>
+            <capacity>Sight</capacity>
+            <offset>-.3</offset>
+          </li>
+        </capMods>
+      </li>
+		<li>
+	    <label>II</label>
+		<minSeverity>.5</minSeverity>
+        <capMods>
+		  <li>
+            <capacity>Sight</capacity>
+            <offset>-0.5</offset>
+          </li>
+        </capMods>
+      </li>
+		<li>
+	    <label>III</label>
+		<minSeverity>.8</minSeverity>
         <capMods>
 		  <li>
             <capacity>Sight</capacity>

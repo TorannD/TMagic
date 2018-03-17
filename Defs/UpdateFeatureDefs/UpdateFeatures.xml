@@ -6,23 +6,6 @@
 		<linkUrl>https://ludeon.com/forums/index.php?topic=37161.0</linkUrl>
 	</HugsLib.UpdateFeatureDef>
 		<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_1_7_9</defName>
-		<assemblyVersion>1.7.9</assemblyVersion>
-		<content>
-- Updates will now be displayed as a news item in-game.
-
-- Rifts are no longer constructable
-
-- Druid "Soothe Animal" now recognizes effeciency skill improvements
-
-- Summoned structures (mana mine, pylon, teleporter) no longer expand the home area
-
-- A summoned teleporter no longer needs to be fueled with portfuel - this occurs automatically
-
-- Slightly reduced the damage bonus for various Bladedancer, Gladiator and Sniper abilities that use weapon dps as a basis for skill damage.
-		</content>
-	</HugsLib.UpdateFeatureDef>
-		<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
 		<defName>ARimWorldOfMagic_1_8_1</defName>
 		<assemblyVersion>1.8.1</assemblyVersion>
 		<content>
@@ -138,9 +121,20 @@ The "Rainmaker" ability can now be used to stop rain or snow.
 		<defName>ARimWorldOfMagic_1_9_4</defName>
 		<assemblyVersion>1.9.4</assemblyVersion>
 		<content>
-- Special thanks to mod contributor SihvMan for the following: new additions for scribing of arcane books and scrolls has been added, these items can be researched and constructed using the scribing table.
+- Special thanks to mod contributor Sihv for the following: new additions for scribing of arcane books and scrolls has been added, these items can be researched and constructed using the scribing table.
 
 - New research and crafting recipes have been added to allow the construction of powerful Gems of Insight that allow mundane pawns to learn the Gifted or Physical Prodigy traits.
+		</content>
+	</HugsLib.UpdateFeatureDef>	
+		<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_1_9_5</defName>
+		<assemblyVersion>1.9.5</assemblyVersion>
+		<content>
+- New magical armor and weapons have been added. These items can be researched in the magic research tab and become available starting with completion of Arcane Apparel research.  These items provide augmented magical stats and unique enchantments and are designed for magic users.  Once researched, they can be crafted at standard crafting spots and tailoring and smithing benches.
+
+- Recipe costs and market value for enchanted gems and scrolls has been reduced.
+
+- Two new enchantments have been added: arcane damage and arcane resistance. 
 		</content>
 	</HugsLib.UpdateFeatureDef>	
 	

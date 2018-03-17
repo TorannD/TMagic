@@ -68,6 +68,9 @@ namespace TorannMagic
             public static DamageDef TM_PhaseStrike;
 
             public static DamageDef TM_Shrapnel;
+            public static DamageDef TM_ArcaneSpectre;
+
+            public static DamageDef TM_BlazingPower;
 
         }
     }

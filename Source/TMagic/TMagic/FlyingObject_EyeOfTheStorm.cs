@@ -24,6 +24,7 @@ namespace TorannMagic
         private int lastStrike = 0;
         private int lastStrikeBldg = 0;
         private int age = -1;
+        private float arcaneDmg = 1;
         public Matrix4x4 drawingMatrix = default(Matrix4x4);
         public Vector3 drawingScale;
         public Vector3 drawingPosition;
@@ -145,6 +146,8 @@ namespace TorannMagic
         {
             bool spawned = flyingThing.Spawned;
             pawn = launcher as Pawn;
+            CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
+            this.arcaneDmg = comp.arcaneDmg;
             MagicPowerSkill pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EyeOfTheStorm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EyeOfTheStorm_pwr");
             MagicPowerSkill ver = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EyeOfTheStorm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EyeOfTheStorm_ver");
             verVal = ver.level;
@@ -251,10 +254,9 @@ namespace TorannMagic
                             for (int k = 0; k < Rand.Range(1, 8); k++)
                             {
                                 IntVec3 randomCell = cellRect.RandomCell;
-                                GenExplosion.DoExplosion(randomCell, base.Map, Rand.Range(.4f, .8f), TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Rand.Range(3 + 3*pwrVal, 7 + 5*pwrVal), SoundDefOf.Thunder_OnMap, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
-
+                                GenExplosion.DoExplosion(randomCell, base.Map, Rand.Range(.4f, .8f), TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(3 + 3*pwrVal, 7 + 5*pwrVal) * this.arcaneDmg), SoundDefOf.Thunder_OnMap, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
                             }
-                            GenExplosion.DoExplosion(curPawnTarg.Position, base.Map, 1f, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Rand.Range(3 + 3 * pwrVal, 7 + 5 * pwrVal), SoundDefOf.Thunder_OffMap, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
+                            GenExplosion.DoExplosion(curPawnTarg.Position, base.Map, 1f, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(3 + 3 * pwrVal, 7 + 5 * pwrVal) * this.arcaneDmg), SoundDefOf.Thunder_OffMap, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
                             this.lastStrike = this.age;
                         }                        
                     }
@@ -276,10 +278,10 @@ namespace TorannMagic
                             for (int k = 0; k < Rand.Range(1, 8); k++)
                             {
                                 IntVec3 randomCell = cellRect.RandomCell;
-                                GenExplosion.DoExplosion(randomCell, base.Map, Rand.Range(.2f, .6f), TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Rand.Range(3 + 3 * pwrVal, 7 + 5 * pwrVal), SoundDefOf.Thunder_OffMap, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
+                                GenExplosion.DoExplosion(randomCell, base.Map, Rand.Range(.2f, .6f), TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(3 + 3 * pwrVal, 7 + 5 * pwrVal) * this.arcaneDmg), SoundDefOf.Thunder_OffMap, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
 
                             }
-                            GenExplosion.DoExplosion(curBldgTarg.Position, base.Map, 1f, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Rand.Range(5 + 5 * pwrVal, 10 + 10 * pwrVal), SoundDefOf.Thunder_OffMap, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
+                            GenExplosion.DoExplosion(curBldgTarg.Position, base.Map, 1f, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(5 + 5 * pwrVal, 10 + 10 * pwrVal) * this.arcaneDmg), SoundDefOf.Thunder_OffMap, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
                             this.lastStrikeBldg = this.age;
                         }
                     }

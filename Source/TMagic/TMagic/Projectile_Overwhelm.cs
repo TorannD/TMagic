@@ -2,6 +2,7 @@
 using Verse;
 using AbilityUser;
 using System.Linq;
+using UnityEngine;
 
 namespace TorannMagic
 {
@@ -13,6 +14,7 @@ namespace TorannMagic
         MagicPowerSkill ver;
         private int verVal;
         private int pwrVal;
+        private float arcaneDmg = 1;
 
         protected override void Impact(Thing hitThing)
         {
@@ -24,6 +26,7 @@ namespace TorannMagic
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             pwrVal = pwr.level;
             verVal = ver.level;
+            this.arcaneDmg = comp.arcaneDmg;
             if (settingsRef.AIHardMode&& !pawn.IsColonistPlayerControlled)
             {
                 pwrVal = 3;
@@ -257,10 +260,11 @@ namespace TorannMagic
 
         }
 
-        public static void Explosion(int pwr, IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
+        public void Explosion(int pwr, IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
         {
             System.Random rnd = new System.Random();
             int modDamAmountRand = (pwr * 3) + GenMath.RoundRandom(rnd.Next(1, projectile.projectile.damageAmountBase));
+            modDamAmountRand = Mathf.RoundToInt(this.arcaneDmg);
             if (map == null)
             {
                 Log.Warning("Tried to do explosion in a null map.");

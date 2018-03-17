@@ -12,6 +12,24 @@
     <backstoryCryptosleepCommonality>0.25</backstoryCryptosleepCommonality>
     <maxGenerationAge>65</maxGenerationAge>
   </PawnKindDef>
+  
+  	<PawnKindDef ParentName="BasePlayerPawnKind">
+		<defName>TM_Undead</defName>
+		<label>undead</label>
+		<race>Human</race>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>Equipment/ancientmail_Fat</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>1.5</drawSize>
+					<shadowData>
+						<volume>(0.4, 0.8, 0.4)</volume>
+					</shadowData>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+	</PawnKindDef>
 
 
   <PawnKindDef Abstract="True" Name="EliteSeerBase" ParentName="SeerBase">

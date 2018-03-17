@@ -61,6 +61,9 @@ namespace TorannMagic
         MagicPowerSkill ver;
         private int verVal;
         private int pwrVal;
+        private float arcaneDmg = 1;
+
+        TMPawnSummoned newPawn = new TMPawnSummoned();
 
         protected int StartingTicksToImpact
         {
@@ -169,9 +172,18 @@ namespace TorannMagic
                 verVal = 3;
             }
             if (spawned)
-            {
+            {               
                 flyingThing.DeSpawn();
             }
+            //
+            SpawnThings spawnThing = new SpawnThings();
+            spawnThing.factionDef = TorannMagicDefOf.TM_SummonedFaction;
+            spawnThing.spawnCount = 1;
+            spawnThing.temporary = false;
+            spawnThing.def = TorannMagicDefOf.TM_InvisMinionR;
+            spawnThing.kindDef = PawnKindDef.Named("TM_InvisMinion");
+            SingleSpawnLoop(spawnThing, origin.ToIntVec3(), launcher.Map);
+            //
             this.launcher = launcher;
             this.origin = origin;
             this.impactDamage = newDamageInfo;
@@ -184,6 +196,43 @@ namespace TorannMagic
             this.destination = targ.Cell.ToVector3Shifted() + new Vector3(Rand.Range(-0.3f, 0.3f), 0f, Rand.Range(-0.3f, 0.3f));
             this.ticksToImpact = this.StartingTicksToImpact;
             this.Initialize();
+        }
+
+        public void SingleSpawnLoop(SpawnThings spawnables, IntVec3 position, Map map)
+        {
+            bool flag = spawnables.def != null;
+            if (flag)
+            {
+                Faction faction = pawn.Faction;
+                bool flag2 = spawnables.def.race != null;
+                if (flag2)
+                {
+                    bool flag3 = spawnables.kindDef == null;
+                    if (flag3)
+                    {
+                        Log.Error("Missing kinddef");
+                    }
+                    else
+                    {
+                        newPawn = (TMPawnSummoned)PawnGenerator.GeneratePawn(spawnables.kindDef, faction);
+                        newPawn.Spawner = this.launcher as Pawn;
+                        newPawn.Temporary = true;
+                        newPawn.TicksToDestroy = 180;
+                        
+                        try
+                        {
+                            GenSpawn.Spawn(newPawn, position, this.Map);
+                        }
+                        catch
+                        {
+                        }                        
+                    }
+                }
+                else
+                {
+                    Log.Message("Missing race");
+                }
+            }
         }
 
         public override void Tick()
@@ -356,8 +405,6 @@ namespace TorannMagic
             }
             try
             {
-
-
                 SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);
                 this.FireExplosion(pwrVal, verVal, base.Position, base.Map, (1.2f + (float)(verVal * .8f)));
                 if (!pawn.IsColonistPlayerControlled)
@@ -420,14 +467,15 @@ namespace TorannMagic
                     Explosion(pwr, pos, map, radius, DamageDefOf.Stun, this.launcher, null, def, ThingDefOf.Explosion, ThingDefOf.Mote_ExplosionFlash, 0.3f, 1, false, null, 0f, 1);
                 }
             }
-
+            
         }
 
-        public static void Explosion(int pwr, IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
+        public void Explosion(int pwr, IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
         {
 
             System.Random rnd = new System.Random();
             int modDamAmountRand = (1 + pwr) * GenMath.RoundRandom(rnd.Next(1, 26 / 2));
+            modDamAmountRand *= Mathf.RoundToInt(this.arcaneDmg);
             if (map == null)
             {
                 Log.Warning("Tried to do explosion in a null map.");

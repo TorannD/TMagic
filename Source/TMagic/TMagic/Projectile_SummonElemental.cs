@@ -248,13 +248,13 @@ namespace TorannMagic
                         newPawn.Spawner = this.Caster;
                         newPawn.Temporary = true;
                         newPawn.TicksToDestroy = this.duration;
-                        if (newPawn.Faction != Faction.OfPlayerSilentFail)
-                        {
-                            newPawn.SetFaction(this.Caster.Faction, null);
-                        }
+                        //if (newPawn.Faction != Faction.OfPlayerSilentFail)
+                        //{
+                        //    newPawn.SetFaction(this.Caster.Faction, null);
+                        //}
                         try
                         {
-                            GenSpawn.Spawn(newPawn, position, Find.VisibleMap);
+                            GenSpawn.Spawn(newPawn, position, map);
                         }
                         catch
                         {
@@ -279,7 +279,7 @@ namespace TorannMagic
                             if (flag4)
                             {
                                 LordJob_DefendPoint lordJob = new LordJob_DefendPoint(newPawn.Position);
-                                lord = LordMaker.MakeNewLord(faction, lordJob, Find.VisibleMap, null);
+                                lord = LordMaker.MakeNewLord(faction, lordJob, map, null);
                             }
                             lord.AddPawn(newPawn);
                         }

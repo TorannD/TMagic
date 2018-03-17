@@ -792,7 +792,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>50</RawMagicyte>
+		<RawMagicyte>40</RawMagicyte>
 		<Cloth>40</Cloth>
 	</costList>
 	<recipeMaker>		    
@@ -840,7 +840,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>80</RawMagicyte>
+		<RawMagicyte>64</RawMagicyte>
 		<Cloth>40</Cloth>
 	</costList>
 	<recipeMaker>		    
@@ -888,7 +888,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>250</RawMagicyte>
+		<RawMagicyte>200</RawMagicyte>
 		<DevilstrandCloth>40</DevilstrandCloth>
 	</costList>
 	<recipeMaker>		    
@@ -936,7 +936,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>80</RawMagicyte>
+		<RawMagicyte>64</RawMagicyte>
 		<Cloth>40</Cloth>
 	</costList>
 	<recipeMaker>		    
@@ -984,7 +984,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>60</RawMagicyte>
+		<RawMagicyte>48</RawMagicyte>
 		<Cloth>40</Cloth>
 	</costList>
 	<recipeMaker>		    
@@ -1032,7 +1032,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>130</RawMagicyte>
+		<RawMagicyte>104</RawMagicyte>
 		<Cloth>40</Cloth>
 	</costList>
 	<recipeMaker>		    
@@ -1080,7 +1080,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>60</RawMagicyte>
+		<RawMagicyte>48</RawMagicyte>
 		<Cloth>40</Cloth>
 	</costList>
 	<recipeMaker>		    
@@ -1128,7 +1128,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>100</RawMagicyte>
+		<RawMagicyte>80</RawMagicyte>
 		<Cloth>40</Cloth>
 	</costList>
 	<recipeMaker>		    
@@ -1176,7 +1176,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>100</RawMagicyte>
+		<RawMagicyte>80</RawMagicyte>
 		<Cloth>40</Cloth>
 	</costList>
 	<recipeMaker>		    
@@ -1225,7 +1225,7 @@ Produces 400Wd.</description>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>85</RawMagicyte>
+		<RawMagicyte>67</RawMagicyte>
 		<Cloth>40</Cloth>
 	</costList>
 	<recipeMaker>		    
@@ -1273,7 +1273,7 @@ Produces 400Wd.</description>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>70</RawMagicyte>
+		<RawMagicyte>56</RawMagicyte>
 		<Cloth>40</Cloth>
 	</costList>
 	<recipeMaker>		    
@@ -1321,7 +1321,7 @@ Produces 400Wd.</description>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>70</RawMagicyte>
+		<RawMagicyte>56</RawMagicyte>
 		<Cloth>40</Cloth>
 	</costList>
 	<recipeMaker>		    
@@ -1369,7 +1369,7 @@ Produces 400Wd.</description>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>110</RawMagicyte>
+		<RawMagicyte>88</RawMagicyte>
 		<Cloth>40</Cloth>
 	</costList>
 	<recipeMaker>		    
@@ -1417,7 +1417,7 @@ Produces 400Wd.</description>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>315</RawMagicyte>
+		<RawMagicyte>252</RawMagicyte>
 		<DevilstrandCloth>100</DevilstrandCloth>
 	</costList>
 	<recipeMaker>		    
@@ -1465,7 +1465,7 @@ Produces 400Wd.</description>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>315</RawMagicyte>
+		<RawMagicyte>252</RawMagicyte>
 		<DevilstrandCloth>100</DevilstrandCloth>
 	</costList>
 	<recipeMaker>		    
@@ -1513,7 +1513,7 @@ Produces 400Wd.</description>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>315</RawMagicyte>
+		<RawMagicyte>252</RawMagicyte>
 		<DevilstrandCloth>100</DevilstrandCloth>
 	</costList>
 	<recipeMaker>		    
@@ -1561,7 +1561,7 @@ Produces 400Wd.</description>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>200</RawMagicyte>
+		<RawMagicyte>160</RawMagicyte>
 		<DevilstrandCloth>40</DevilstrandCloth>
 	</costList>
 	<recipeMaker>		    
@@ -1609,7 +1609,7 @@ Produces 400Wd.</description>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 		<costList>
-		<RawMagicyte>120</RawMagicyte>
+		<RawMagicyte>96</RawMagicyte>
 		<DevilstrandCloth>40</DevilstrandCloth>
 	</costList>
 	<recipeMaker>		    
@@ -1657,7 +1657,7 @@ Produces 400Wd.</description>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>120</RawMagicyte>
+		<RawMagicyte>96</RawMagicyte>
 		<DevilstrandCloth>40</DevilstrandCloth>
 	</costList>
 	<recipeMaker>		    
@@ -1705,7 +1705,7 @@ Produces 400Wd.</description>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>265</RawMagicyte>
+		<RawMagicyte>212</RawMagicyte>
 		<DevilstrandCloth>100</DevilstrandCloth>
 	</costList>
 	<recipeMaker>		    
@@ -1753,7 +1753,7 @@ Produces 400Wd.</description>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>165</RawMagicyte>
+		<RawMagicyte>132</RawMagicyte>
 		<DevilstrandCloth>40</DevilstrandCloth>
 	</costList>
 	<recipeMaker>		    
@@ -1801,7 +1801,7 @@ Produces 400Wd.</description>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>500</RawMagicyte>
+		<RawMagicyte>400</RawMagicyte>
 		<DevilstrandCloth>100</DevilstrandCloth>
 	</costList>
 	<recipeMaker>		    
@@ -1849,7 +1849,7 @@ Produces 400Wd.</description>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>600</RawMagicyte>
+		<RawMagicyte>480</RawMagicyte>
 		<DevilstrandCloth>100</DevilstrandCloth>
 	</costList>
 	<recipeMaker>		    

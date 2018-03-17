@@ -15,6 +15,8 @@ namespace TorannMagic.Enchantment
 
         public static readonly Color Artifact = new Color(0.92f, 0.84f, 0.56f);
 
+        public static readonly Color Negative = new Color(0.8f, 0.15f, 0.15f);
+
         public static Color EnchantmentColor(this EnchantmentTier et)
         {
             switch (et)
@@ -25,6 +27,12 @@ namespace TorannMagic.Enchantment
                     return GenEnchantmentColor.Uncommon;
                 case EnchantmentTier.Major:
                     return GenEnchantmentColor.Epic;
+                case EnchantmentTier.Crafted:
+                    return GenEnchantmentColor.Artifact;
+                case EnchantmentTier.Skill:
+                    return GenEnchantmentColor.Legendary;
+                case EnchantmentTier.Negative:
+                    return GenEnchantmentColor.Negative;
                 default:
                     return Color.white;
             }

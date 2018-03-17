@@ -92,7 +92,7 @@ namespace TorannMagic
                             Pawn pawn = thingList[j] as Pawn;
                             if (pawn != null && !this.touchingPawns.Contains(pawn))
                             {
-                                if (!pawn.RaceProps.Animal && pawn.Faction != this.Faction)
+                                if (!pawn.RaceProps.Animal && pawn.Faction != this.Faction && pawn.HostileTo(this.Faction))
                                 {
                                     this.touchingPawns.Add(pawn);
                                     this.CheckSpring(pawn);

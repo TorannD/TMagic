@@ -758,7 +758,7 @@ namespace TorannMagic
                     flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Gladiator);
                     if (flag2)
                     {
-                        Log.Message("Initializing Gladiator Abilities");
+                        //Log.Message("Initializing Gladiator Abilities");
                         this.AddPawnAbility(TorannMagicDefOf.TM_Sprint);
                         //this.AddPawnAbility(TorannMagicDefOf.TM_Fortitude);
                         this.AddPawnAbility(TorannMagicDefOf.TM_Grapple);
@@ -768,7 +768,7 @@ namespace TorannMagic
                     flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper);
                     if (flag2)
                     {
-                        Log.Message("Initializing Sniper Abilities");
+                        //Log.Message("Initializing Sniper Abilities");
                         //this.AddPawnAbility(TorannMagicDefOf.TM_SniperFocus);
                         this.AddPawnAbility(TorannMagicDefOf.TM_Headshot);
                         this.AddPawnAbility(TorannMagicDefOf.TM_DisablingShot);
@@ -777,7 +777,7 @@ namespace TorannMagic
                     flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Bladedancer);
                     if (flag2)
                     {
-                        Log.Message("Initializing Bladedancer Abilities");
+                       // Log.Message("Initializing Bladedancer Abilities");
                        // this.AddPawnAbility(TorannMagicDefOf.TM_BladeFocus);
                         //this.AddPawnAbility(TorannMagicDefOf.TM_BladeArt);
                         this.AddPawnAbility(TorannMagicDefOf.TM_SeismicSlash);
@@ -787,7 +787,7 @@ namespace TorannMagic
                     flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Ranger);
                     if (flag2)
                     {
-                        Log.Message("Initializing Ranger Abilities");
+                        //Log.Message("Initializing Ranger Abilities");
                         //this.AddPawnAbility(TorannMagicDefOf.TM_RangerTraining);
                        // this.AddPawnAbility(TorannMagicDefOf.TM_BowTraining);
                         this.AddPawnAbility(TorannMagicDefOf.TM_PoisonTrap);
@@ -1442,7 +1442,7 @@ namespace TorannMagic
                 }
                 if (flag40)
                 {
-                    Log.Message("Loading Gladiator Abilities");
+                   // Log.Message("Loading Gladiator Abilities");
                     //this.AddPawnAbility(TorannMagicDefOf.TM_Fortitude);
                     this.AddPawnAbility(TorannMagicDefOf.TM_Cleave);
                     this.AddPawnAbility(TorannMagicDefOf.TM_Whirlwind);
@@ -1483,7 +1483,7 @@ namespace TorannMagic
                 }
                 if (flag41)
                 {
-                    Log.Message("Loading Sniper Abilities");
+                    //Log.Message("Loading Sniper Abilities");
                     //this.AddPawnAbility(TorannMagicDefOf.TM_SniperFocus);
                     this.AddPawnAbility(TorannMagicDefOf.TM_Headshot);
                     this.AddPawnAbility(TorannMagicDefOf.TM_AntiArmor);
@@ -1524,7 +1524,7 @@ namespace TorannMagic
                 }
                 if (flag42)
                 {
-                    Log.Message("Loading Bladedancer Abilities");
+                    //Log.Message("Loading Bladedancer Abilities");
                     //this.AddPawnAbility(TorannMagicDefOf.TM_BladeFocus);
                     //this.AddPawnAbility(TorannMagicDefOf.TM_BladeArt);
                     this.AddPawnAbility(TorannMagicDefOf.TM_SeismicSlash);
@@ -1566,7 +1566,7 @@ namespace TorannMagic
                 }
                 if (flag43)
                 {
-                    Log.Message("Loading Ranger Abilities");
+                    //Log.Message("Loading Ranger Abilities");
                     //this.AddPawnAbility(TorannMagicDefOf.TM_RangerTraining);
                     //this.AddPawnAbility(TorannMagicDefOf.TM_BowTraining);
                     this.AddPawnAbility(TorannMagicDefOf.TM_PoisonTrap);

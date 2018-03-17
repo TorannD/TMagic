@@ -92,7 +92,7 @@ namespace TorannMagic
                                         }
                                         else
                                         {
-                                            current.Heal(5.0f + (float)pwr.level * 3f); // power affects how much to heal
+                                            current.Heal((5.0f + (float)pwr.level * 3f)*comp.arcaneDmg); // power affects how much to heal
                                         }
                                         TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .6f);
                                         TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .4f);

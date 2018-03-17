@@ -122,5 +122,33 @@
 			<li>TM_MagicyteRefining</li>
 		</prerequisites>
 	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_ArcaneApparel</defName>
+		<label>magical equipment</label>
+		<tab>TMagic</tab>
+		<description>Applies knowledge of arcane crafting and enchantments to learn how to recreate equipment with magical properties.</description>
+		<baseCost>2500</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>3.0</researchViewX>
+		<researchViewY>1.0</researchViewY>
+		<prerequisites>
+			<li>TM_ArcaneCrafting</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_ArcaneArtifacts</defName>
+		<label>arcane artifacts</label>
+		<tab>TMagic</tab>
+		<description>Enables the recreation of arcane artifacts through extensive research combining knowledge of enchantments, ancient designs, runes, and rumors.</description>
+		<baseCost>4000</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>3.0</researchViewX>
+		<researchViewY>2.0</researchViewY>
+		<prerequisites>
+			<li>TM_ArcaneApparel</li>
+		</prerequisites>
+	</ResearchProjectDef>
 
 </Defs>

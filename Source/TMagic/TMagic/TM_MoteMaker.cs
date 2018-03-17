@@ -134,8 +134,21 @@ namespace TorannMagic
             ColorInt colorInt = new ColorInt(r, g, b);
             Color arg_50_0 = colorInt.ToColor;
             moteThrown.SetColor(arg_50_0, false);
+            GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);            
+        }
+
+        public static void ThrowArcaneDaggers(Vector3 loc, Map map, float scale)
+        {
+            if (!loc.ShouldSpawnMotesAt(map) || map.moteCounter.SaturatedLowPriority)
+            {
+                return;
+            }
+            MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(TorannMagicDefOf.Mote_ArcaneDaggers, null);
+            moteThrown.Scale = 1.9f * scale;
+            moteThrown.rotationRate = (float)Rand.Range(500, 800);
+            moteThrown.exactPosition = loc;
+            moteThrown.SetVelocity((float)Rand.Range(0, 360), Rand.Range(0.2f, 0.3f));
             GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);
-            
         }
 
         public static void MakePowerBeamMote(IntVec3 cell, Map map, float scale, float rot, float duration)

@@ -25,7 +25,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>30</count>
+        <count>20</count>
       </li>
 	  <li>
         <filter>
@@ -156,7 +156,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>30</count>
+        <count>20</count>
       </li>
 	  <li>
         <filter>
@@ -287,7 +287,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>30</count>
+        <count>20</count>
       </li>
 	  <li>
         <filter>
@@ -418,7 +418,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>30</count>
+        <count>20</count>
       </li>
 	  <li>
         <filter>
@@ -550,7 +550,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>30</count>
+        <count>20</count>
       </li>
 	  <li>
         <filter>
@@ -649,6 +649,269 @@
     </ingredients>
     <products>
       <TM_EStone_xpGain_major>1</TM_EStone_xpGain_major>
+    </products>
+    <skillRequirements>
+      <Crafting>14</Crafting>
+	  <Intellectual>8</Intellectual>
+	  <Artistic>5</Artistic>
+    </skillRequirements>
+	<researchPrerequisite>TM_ExpertEnchanting</researchPrerequisite>
+    <workSkill>Crafting</workSkill>
+  </RecipeDef>
+  
+  <RecipeDef>
+    <defName>CutMinorArcaneResGem</defName>
+    <label>minor gem of resistance</label>
+    <description>Cut and refine raw magicyte into an enchanting gem able to resist the effects of magical attacks.</description>
+    <jobString>cut minor gem of resistance</jobString>
+<!-- 	<researchPrerequisite>TechPlasteelCrafting</researchPrerequisite> -->
+    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <effectWorking>Smelt</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <workAmount>3000</workAmount>
+	<workSkillLearnFactor>1.1</workSkillLearnFactor>
+    <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
+<!-- 	<recipeUsers>
+		<li>TableGemcutting</li>
+	</recipeUsers> -->
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawMagicyte</li>
+          </thingDefs>
+        </filter>
+        <count>20</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>Jade</li>
+          </thingDefs>
+        </filter>
+        <count>25</count>
+      </li>
+    </ingredients>
+    <products>
+      <TM_EStone_arcaneRes_minor>1</TM_EStone_arcaneRes_minor>
+    </products>
+    <skillRequirements>
+      <Crafting>8</Crafting>
+	  <Intellectual>4</Intellectual>
+    </skillRequirements>
+    <workSkill>Crafting</workSkill>
+  </RecipeDef>
+  
+  <RecipeDef>
+    <defName>CutArcaneResGem</defName>
+    <label>gem of resistance</label>
+    <description>Cut and refine magicyte into an enchanting gem able to resist the effects of magical attacks.</description>
+    <jobString>cut gem of resistance</jobString>
+    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <effectWorking>Smelt</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <workAmount>4000</workAmount>
+	<workSkillLearnFactor>1.2</workSkillLearnFactor>
+    <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
+	<recipeUsers>
+		<li>TableGemcutting</li>
+	</recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>TM_EStone_arcaneRes_minor</li>
+          </thingDefs>
+        </filter>
+        <count>3</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>Jade</li>
+          </thingDefs>
+        </filter>
+        <count>50</count>
+      </li>
+    </ingredients>
+    <products>
+      <TM_EStone_arcaneRes>1</TM_EStone_arcaneRes>
+    </products>
+    <skillRequirements>
+      <Crafting>10</Crafting>
+	  <Intellectual>6</Intellectual>
+	  <Artistic>2</Artistic>
+    </skillRequirements>
+	<researchPrerequisite>TM_AdvancedEnchanting</researchPrerequisite>
+    <workSkill>Crafting</workSkill>
+  </RecipeDef>
+  
+  <RecipeDef>
+    <defName>CutMajorArcaneResGem</defName>
+    <label>major gem of resistance</label>
+    <description>Cut and refine magicyte into an enchanting gem able to resist the effects of magical attacks.</description>
+    <jobString>cut major gem of resistance</jobString>
+    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <effectWorking>Smelt</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <workAmount>5000</workAmount>
+	<workSkillLearnFactor>1.3</workSkillLearnFactor>
+    <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
+	<recipeUsers>
+		<li>TableGemcutting</li>
+	</recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>TM_EStone_arcaneRes</li>
+          </thingDefs>
+        </filter>
+        <count>3</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>Jade</li>
+          </thingDefs>
+        </filter>
+        <count>75</count>
+      </li>
+    </ingredients>
+    <products>
+      <TM_EStone_arcaneRes_major>1</TM_EStone_arcaneRes_major>
+    </products>
+    <skillRequirements>
+      <Crafting>14</Crafting>
+	  <Intellectual>8</Intellectual>
+	  <Artistic>5</Artistic>
+    </skillRequirements>
+	<researchPrerequisite>TM_ExpertEnchanting</researchPrerequisite>
+    <workSkill>Crafting</workSkill>
+  </RecipeDef>
+  
+  
+  <RecipeDef>
+    <defName>CutMinorArcaneDmgGem</defName>
+    <label>minor gem of force</label>
+    <description>Cut and refine raw magicyte into an enchanting gem able to increase the force of magical attacks.</description>
+    <jobString>cut minor gem of force</jobString>
+<!-- 	<researchPrerequisite>TechPlasteelCrafting</researchPrerequisite> -->
+    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <effectWorking>Smelt</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <workAmount>3000</workAmount>
+	<workSkillLearnFactor>1.1</workSkillLearnFactor>
+    <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
+<!-- 	<recipeUsers>
+		<li>TableGemcutting</li>
+	</recipeUsers> -->
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawMagicyte</li>
+          </thingDefs>
+        </filter>
+        <count>20</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>Jade</li>
+          </thingDefs>
+        </filter>
+        <count>25</count>
+      </li>
+    </ingredients>
+    <products>
+      <TM_EStone_arcaneDmg_minor>1</TM_EStone_arcaneDmg_minor>
+    </products>
+    <skillRequirements>
+      <Crafting>8</Crafting>
+	  <Intellectual>4</Intellectual>
+    </skillRequirements>
+    <workSkill>Crafting</workSkill>
+  </RecipeDef>
+  
+  <RecipeDef>
+    <defName>CutArcaneDmgGem</defName>
+    <label>gem of force</label>
+    <description>Cut and refine magicyte into an enchanting gem able to increase the force of magical attacks.</description>
+    <jobString>cut gem of force</jobString>
+    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <effectWorking>Smelt</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <workAmount>4000</workAmount>
+	<workSkillLearnFactor>1.2</workSkillLearnFactor>
+    <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
+	<recipeUsers>
+		<li>TableGemcutting</li>
+	</recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>TM_EStone_arcaneDmg_minor</li>
+          </thingDefs>
+        </filter>
+        <count>3</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>Jade</li>
+          </thingDefs>
+        </filter>
+        <count>50</count>
+      </li>
+    </ingredients>
+    <products>
+      <TM_EStone_arcaneDmg>1</TM_EStone_arcaneDmg>
+    </products>
+    <skillRequirements>
+      <Crafting>10</Crafting>
+	  <Intellectual>6</Intellectual>
+	  <Artistic>2</Artistic>
+    </skillRequirements>
+	<researchPrerequisite>TM_AdvancedEnchanting</researchPrerequisite>
+    <workSkill>Crafting</workSkill>
+  </RecipeDef>
+  
+  <RecipeDef>
+    <defName>CutMajorArcaneDmgGem</defName>
+    <label>major gem of force</label>
+    <description>Cut and refine magicyte into an enchanting gem able to increase the force of magical attacks.</description>
+    <jobString>cut major gem of force</jobString>
+    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <effectWorking>Smelt</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <workAmount>5000</workAmount>
+	<workSkillLearnFactor>1.3</workSkillLearnFactor>
+    <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
+	<recipeUsers>
+		<li>TableGemcutting</li>
+	</recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>TM_EStone_arcaneDmg</li>
+          </thingDefs>
+        </filter>
+        <count>3</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>Jade</li>
+          </thingDefs>
+        </filter>
+        <count>75</count>
+      </li>
+    </ingredients>
+    <products>
+      <TM_EStone_arcaneDmg_major>1</TM_EStone_arcaneDmg_major>
     </products>
     <skillRequirements>
       <Crafting>14</Crafting>

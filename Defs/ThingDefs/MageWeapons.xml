@@ -24,11 +24,6 @@
 			<li>
 				<compClass>CompEquippable</compClass>
 			</li>
-<!-- 			<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
-			  <hasEnchantment>true</hasEnchantment>
-			  <mpCost>-0.10</mpCost>
-			  <maxMP>0.10</maxMP>
-			</li> -->
 		</comps>
 		<graphicData>
 			<onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
@@ -62,10 +57,461 @@
     </weaponTags>
   </ThingDef>
   
-  <!-- =======================Magic Weapons============================ -->
+  <ThingDef Name="TM_BaseRangedMageWeapon" Abstract="True" ParentName="BaseMageWeapon">
+	<techLevel>Neolithic</techLevel>
+	<smeltable>true</smeltable>
+	<thingCategories>
+      <li>WeaponsRanged</li>
+    </thingCategories>
+    <inspectorTabs>
+      <li>ITab_Art</li>
+	  <li>TorannMagic.Enchantment.ITab_Enchantment</li>
+    </inspectorTabs>
+    <comps>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Art">
+        <nameMaker>ArtName_WeaponGun</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+    </comps>
+	<equippedAngleOffset>40</equippedAngleOffset>
+  </ThingDef>  
+  
+  <ThingDef Name="TM_BaseWand" Abstract="True" ParentName="BaseMageWeapon">
+	<techLevel>Neolithic</techLevel>
+	<smeltable>true</smeltable>
+	<thingCategories>
+      <li>WeaponsRanged</li>
+    </thingCategories>
+    <inspectorTabs>
+      <li>ITab_Art</li>
+	  <li>TorannMagic.Enchantment.ITab_Enchantment</li>
+    </inspectorTabs>
+    <comps>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Art">
+        <nameMaker>ArtName_WeaponGun</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+    </comps>
+	<recipeMaker>
+      <workSpeedStat>SmithingSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+	  <effectWorking>Smelt</effectWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+	  <recipeUsers>
+        <li>ElectricSmithy</li>
+        <li>FueledSmithy</li>
+		<li>CraftingSpot</li>
+      </recipeUsers>
+      <workAmount>6000</workAmount>
+	  <skillRequirements>
+			<Intellectual>6</Intellectual>
+	  </skillRequirements>
+	  <researchPrerequisite>
+			<li>TM_ArcaneApparel</li>
+	  </researchPrerequisite>
+    </recipeMaker>	
+	<equippedAngleOffset>40</equippedAngleOffset>
+  </ThingDef>  
 
-  <!-- Seer ring - Fire -->	
+  
+  <!-- =======================Magic Weapons========================================================================================= -->
+
+<!-- =======================  Wands   ============================ -->
+
+  <!-- Fire Wand -->	
+  <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+	<thingClass>TorannMagic.Weapon.Projectile_FireWand</thingClass>
+	<defName>Projectile_FireWand</defName>
+	<label>fire wand</label>
+	<graphicData>
+		<texPath>Spells/seer_ring_fire</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shaderType>TransparentPostLight</shaderType>
+	</graphicData>
+	<projectile>
+		<damageDef>Bomb</damageDef>
+		<damageAmountBase>8</damageAmountBase>
+		<speed>28</speed>
+		<explosionRadius>.6</explosionRadius>
+		<postExplosionSpawnChance>1</postExplosionSpawnChance>
+	</projectile>
+  </ThingDef>
+
+
+  <ThingDef ParentName="TM_BaseWand">
+    <defName>TM_FireWand</defName>
+    <label>Wand of Fire</label>
+    <description>A wand able to slowly convert nearby arcane energy into elemental fire. Wands are used as focusing tools for mages to harness their innate power more than as a weapon itself.</description>
+    <graphicData>
+      <texPath>Items/weapons/wand_fir</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>InteractRevolver</soundInteract>	
+    <statBases>
+      <WorkToMake>15000</WorkToMake>
+	  <MarketValue>400</MarketValue>
+      <Mass>1.0</Mass>
+      <AccuracyTouch>0.91</AccuracyTouch>
+      <AccuracyShort>0.71</AccuracyShort>
+      <AccuracyMedium>0.50</AccuracyMedium>
+      <AccuracyLong>0.32</AccuracyLong>
+      <RangedWeapon_Cooldown>1.8</RangedWeapon_Cooldown>
+      <Weapon_Bulk>.6</Weapon_Bulk>
+    </statBases>
+    <costList>
+      <Steel>20</Steel>
+      <WoodLog>50</WoodLog>
+	  <RawMagicyte>30</RawMagicyte>
+	  <Jade>10</Jade>
+    </costList>
+	<comps>
+		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		  <hasEnchantment>true</hasEnchantment>
+		  <maxMP>0.05</maxMP>
+		  <maxMPTier>Minor</maxMPTier>
+		  <mpRegenRate>0.05</mpRegenRate>
+		  <mpRegenRateTier>Minor</mpRegenRateTier>
+		  <arcaneDmg>0.15</arcaneDmg>
+		  <arcaneDmgTier>Crafted</arcaneDmgTier>		  
+		</li>
+	</comps>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_FireWand</defaultProjectile>
+        <warmupTime>1.5</warmupTime>
+        <range>32</range>
+        <soundCast>TM_Woosh</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+		<burstShotCount>3</burstShotCount>
+		<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>wand</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>6</power>
+        <cooldownTime>1.2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  
+  <!-- Ice Wand -->	
     <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Weapon.Projectile_IceWand</thingClass>
+	    <defName>Projectile_IceWand</defName>
+        <label>ice wand</label>
+        <graphicData>
+			<texPath>Spells/Icebolt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+			<soundExplode>DeadfallSpring</soundExplode>
+            <damageDef>Iceshard</damageDef>
+			<damageAmountBase>15</damageAmountBase>
+			<speed>50</speed>
+        </projectile>
+    </ThingDef>
+  
+  <ThingDef ParentName="TM_BaseWand">
+    <defName>TM_IceWand</defName>
+    <label>Wand of Ice</label>
+    <description>A wand able to slowly convert nearby arcane energy into elemental ice. Wands are used as focusing tools for mages to harness their innate power more than as a weapon itself.</description>
+    <graphicData>
+      <texPath>Items/weapons/wand_ice</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>InteractRevolver</soundInteract>
+    <statBases>
+      <WorkToMake>15000</WorkToMake>
+	  <MarketValue>400</MarketValue>
+      <Mass>1.0</Mass>
+      <AccuracyTouch>0.91</AccuracyTouch>
+      <AccuracyShort>0.82</AccuracyShort>
+      <AccuracyMedium>0.76</AccuracyMedium>
+      <AccuracyLong>0.70</AccuracyLong>
+      <RangedWeapon_Cooldown>1.25</RangedWeapon_Cooldown>
+      <Weapon_Bulk>0.1</Weapon_Bulk>
+    </statBases>
+		<comps>
+		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		  <hasEnchantment>true</hasEnchantment>
+		  <maxMP>0.05</maxMP>
+		  <maxMPTier>Minor</maxMPTier>
+		  <mpRegenRate>0.05</mpRegenRate>
+		  <mpRegenRateTier>Minor</mpRegenRateTier>
+		  <arcaneDmg>0.15</arcaneDmg>
+		  <arcaneDmgTier>Crafted</arcaneDmgTier>		  
+		</li>
+	</comps>
+    <costList>
+      <Steel>20</Steel>
+      <WoodLog>50</WoodLog>
+	  <RawMagicyte>30</RawMagicyte>
+	  <Jade>10</Jade>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_IceWand</defaultProjectile>
+        <warmupTime>1.2</warmupTime>
+        <range>36</range>
+        <soundCast>TM_Woosh</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>5</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>wand</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>6</power>
+        <cooldownTime>1.2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  
+  <!-- Lightning Wand-->	
+  <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_AbilityLaser">
+		<thingClass>TorannMagic.Weapon.Projectile_LightningWand</thingClass> 
+        <defName>Projectile_LightningWand</defName>
+        <label>lightning wand</label>
+        <graphicData>
+			<texPath>Spells/LightningBolt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_Lightning</damageDef>
+            <damageAmountBase>9</damageAmountBase>
+            <speed>200</speed>
+        </projectile>
+		<preFiringInitialIntensity>20</preFiringInitialIntensity>
+        <preFiringFinalIntensity>80</preFiringFinalIntensity>
+        <postFiringInitialIntensity>20</postFiringInitialIntensity>
+        <postFiringFinalIntensity>0</postFiringFinalIntensity>
+        <preFiringDuration>20</preFiringDuration>
+        <postFiringDuration>40</postFiringDuration>
+        <StartFireChance>0</StartFireChance>
+    </ThingDef>
+	
+	<ThingDef ParentName="TM_BaseWand">
+    <defName>TM_LightningWand</defName>
+    <label>Wand of Lightning</label>
+    <description>A wand able to slowly convert nearby arcane energy into elemental lightning. Wands are used as focusing tools for mages to harness their innate power more than as a weapon itself.</description>
+    <graphicData>
+      <texPath>Items/weapons/wand_lit</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>InteractRevolver</soundInteract>
+    <statBases>
+      <WorkToMake>15000</WorkToMake>
+	  <MarketValue>400</MarketValue>
+      <Mass>1.0</Mass>
+      <AccuracyTouch>0.64</AccuracyTouch>
+      <AccuracyShort>0.72</AccuracyShort>
+      <AccuracyMedium>0.89</AccuracyMedium>
+      <AccuracyLong>0.81</AccuracyLong>
+      <RangedWeapon_Cooldown>1.6</RangedWeapon_Cooldown>
+      <Weapon_Bulk>0.1</Weapon_Bulk>
+    </statBases>
+		<comps>
+		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		  <hasEnchantment>true</hasEnchantment>
+		  <maxMP>0.05</maxMP>
+		  <maxMPTier>Minor</maxMPTier>
+		  <mpRegenRate>0.05</mpRegenRate>
+		  <mpRegenRateTier>Minor</mpRegenRateTier>
+		  <arcaneDmg>0.15</arcaneDmg>
+		  <arcaneDmgTier>Crafted</arcaneDmgTier>		  
+		</li>
+	</comps>
+    <costList>
+      <Steel>20</Steel>
+      <WoodLog>50</WoodLog>
+	  <RawMagicyte>30</RawMagicyte>
+	  <Jade>10</Jade>
+    </costList>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_LightningWand</defaultProjectile>
+        <warmupTime>1</warmupTime>
+        <range>32</range>
+		<soundCast>TM_Thunder_OnMap</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>wand</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>6</power>
+        <cooldownTime>1.2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  
+  <!-- Staff of Blazing Power -->	
+  <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+	<thingClass>TorannMagic.Weapon.Projectile_BlazingPower</thingClass>
+	<defName>Projectile_BlazingPower</defName>
+	<label>blazing power</label>
+	<graphicData>
+		<texPath>Spells/blazingpower</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shaderType>TransparentPostLight</shaderType>
+	</graphicData>
+	<projectile>
+		<damageDef>TM_BlazingPower</damageDef>
+		<damageAmountBase>6</damageAmountBase>
+		<speed>45</speed>
+		<explosionRadius>.8</explosionRadius>
+		<postExplosionSpawnChance>1</postExplosionSpawnChance>
+	</projectile>
+  </ThingDef>
+
+
+  <ThingDef ParentName="TM_BaseRangedMageWeapon">
+    <defName>TM_BlazingPowerStaff</defName>
+    <label>Staff of Blazing Power</label>
+    <description>A staff that creates a mental link with the weilder to harness focused energy that can be used to launch a stream of blazing projectiles or create a hardened barrier that can deflect projectiles. Mages gain tremendous boosts to magical spells while weilding this staff but to a mundane pawn it is nothing but a blunt weapon.</description>
+    <graphicData>
+      <texPath>Items/weapons/staff_blazingpower</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>InteractRevolver</soundInteract>	
+    <statBases>
+      <WorkToMake>150000</WorkToMake>
+	  <MarketValue>12000</MarketValue>
+      <Mass>3.0</Mass>
+      <AccuracyTouch>0.88</AccuracyTouch>
+      <AccuracyShort>0.64</AccuracyShort>
+      <AccuracyMedium>0.58</AccuracyMedium>
+      <AccuracyLong>0.51</AccuracyLong>
+      <RangedWeapon_Cooldown>3.5</RangedWeapon_Cooldown>
+      <Weapon_Bulk>2</Weapon_Bulk>
+    </statBases>
+    <costList>
+      <Steel>100</Steel>
+      <WoodLog>50</WoodLog>
+	  <Jade>50</Jade>
+	  <Silver>10</Silver>
+	  <Gold>10</Gold>
+	  <Uranium>5</Uranium>
+    </costList>
+	<recipeMaker>
+	  <workSpeedStat>SmithingSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+	  <effectWorking>Smelt</effectWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+	  <recipeUsers>
+        <li>ElectricSmithy</li>
+        <li>FueledSmithy</li>
+		<li>CraftingSpot</li>
+      </recipeUsers>
+      <workAmount>77700</workAmount>
+	  <skillRequirements>
+			<Intellectual>10</Intellectual>
+	  </skillRequirements>
+	  <researchPrerequisite>
+			<li>TM_ArcaneArtifacts</li>
+	  </researchPrerequisite>
+    </recipeMaker>	
+	<comps>
+		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		  <hasEnchantment>true</hasEnchantment>
+		  <maxMP>0.20</maxMP>
+		  <maxMPTier>Crafted</maxMPTier>
+		  <mpRegenRate>0.10</mpRegenRate>
+		  <mpRegenRateTier>Standard</mpRegenRateTier>
+		  <arcaneDmg>0.40</arcaneDmg>
+		  <arcaneDmgTier>Crafted</arcaneDmgTier>		  
+		</li>
+		<li>
+		  <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
+		</li>
+	    <li Class="CompDeflector.CompProperties_Deflector">
+		    <compClass>TorannMagic.Weapon.CompBPReflector</compClass>
+			<baseDeflectChance>0.25</baseDeflectChance>
+			<useManipulationInCalc>true</useManipulationInCalc>
+			<useSkillInCalc>true</useSkillInCalc>
+			<deflectSound>TM_Shuffle</deflectSound>
+			<deflectSkill>Melee</deflectSkill>
+			<deflectRatePerSkillPoint>0.015</deflectRatePerSkillPoint>
+            <canReflect>true</canReflect>
+            <reflectSkill>Melee</reflectSkill>
+            <reflectRatePerSkillPoint>3</reflectRatePerSkillPoint>
+			<DeflectVerb Class="VerbProperties">
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Projectile_BlazingPower</defaultProjectile>
+				<warmupTime>0</warmupTime>
+				<range>40</range>
+				<muzzleFlashScale>25</muzzleFlashScale>
+			</DeflectVerb>			
+		  </li>
+	</comps>
+	<equippedAngleOffset>15</equippedAngleOffset>
+    <verbs>
+      <li>
+        <verbClass>TorannMagic.Weapon.Verb_BlazingPower</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_BlazingPower</defaultProjectile>
+        <warmupTime>1</warmupTime>
+        <range>40</range>
+        <soundCast>TM_Woosh</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>25</muzzleFlashScale>
+		<burstShotCount>7</burstShotCount>
+		<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>rod</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>13</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+	  <li>
+        <label>staff head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>18</power>
+        <cooldownTime>1.9</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  
+    <!-- =======================  Rings   ============================ -->
+  
+  <!-- Seer ring - Fire -->	
+  <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
 		<thingClass>TorannMagic.Weapon.SeerRing_Fire</thingClass>
 	    <defName>Projectile_SeerRing_Fire</defName>
         <label>elemental fire</label>

@@ -13,6 +13,7 @@ namespace TorannMagic
         int duration = 1800;
         int verVal = 0;
         int pwrVal = 0;
+        float arcaneDmg = 1;
         int strikeDelay = 180;
         int lastStrike = 0;
         bool initialized = false;
@@ -47,6 +48,7 @@ namespace TorannMagic
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             pwrVal = pwr.level;
             verVal = ver.level;
+            this.arcaneDmg = comp.arcaneDmg;
             if (settingsRef.AIHardMode && !pawn.IsColonistPlayerControlled)
             {
                 pwrVal = 3;
@@ -119,7 +121,7 @@ namespace TorannMagic
                             else
                             {
                                 //kills living
-                                damageEntities(victim, Mathf.RoundToInt(Rand.Range(.5f + pwrVal, 3f + pwrVal)), TMDamageDefOf.DamageDefOf.TM_Torment);
+                                damageEntities(victim, Mathf.RoundToInt(Rand.Range(.5f + pwrVal, 3f + pwrVal) * this.arcaneDmg), TMDamageDefOf.DamageDefOf.TM_Torment);
                             }
                         }
                     }

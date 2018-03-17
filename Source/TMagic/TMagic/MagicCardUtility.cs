@@ -460,7 +460,6 @@ namespace TorannMagic
                             {
                                 Widgets.DrawTextureFitted(rect, power.Icon, 1f);
                             }
-
                         }
                         else
                         {
@@ -480,6 +479,19 @@ namespace TorannMagic
                             {
                                 Widgets.DrawTextureFitted(rect, power.Icon, 1f);
                             }
+                        }
+                        if ((power.abilityDef.defName == "TM_Firestorm" && MagicPowerSkill5 == null) || 
+                            (power.abilityDef.defName == "TM_Blizzard" && MagicPowerSkill6 == null) ||
+                            (power.abilityDef.defName == "TM_EyeOfTheStorm" && MagicPowerSkill5 == null) ||
+                            (power.abilityDef.defName == "TM_FoldReality" && MagicPowerSkill6 == null) ||
+                            (power.abilityDef.defName == "TM_RegrowLimb" && MagicPowerSkill5 == null) ||
+                            (power.abilityDef.defName == "TM_Resurrection" && MagicPowerSkill5 == null))
+                        {
+                            Rect rectMasterLock = new Rect(rect.xMax - 23f - "TM_MasterSpellLocked".Translate().Length/2, rect.yMin + MagicCardUtility.MagicButtonSize + 4f, "TM_MasterSpellLocked".Translate().Length * 8, MagicCardUtility.TextSize * 3);
+                            Widgets.Label(rectMasterLock, "TM_MasterSpellLocked".Translate(new object[]
+                                {
+                                            power.abilityDef.LabelCap
+                                }));
                         }
                     }
 

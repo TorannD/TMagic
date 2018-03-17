@@ -60,7 +60,7 @@ namespace TorannMagic
                 combatToil.AddFinishAction(delegate
                 {
                     if (this.duration <= 5)
-                    {
+                    {                        
                         curJob.Ability.PostAbilityAttempt();
                     }
                     

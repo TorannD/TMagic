@@ -178,7 +178,6 @@ namespace TorannMagic
                                     pawn.health.RemoveHediff(rec);
                                 }
                             }
-                            Log.Message("hediffs are " + rec.Label);
                         }
                     }
 
@@ -187,7 +186,6 @@ namespace TorannMagic
                         while (enumerator.MoveNext())
                         {
                             Hediff rec = enumerator.Current;
-                            Log.Message("hediffs are " + rec.Label);
                             if (!rec.IsOld())
                             {
                                 if (rec.def.defName == "Cataract" || rec.def.defName == "HearingLoss" || rec.def.defName.Contains("ToxicBuildup"))
@@ -212,11 +210,6 @@ namespace TorannMagic
                                 pawn.health.RemoveHediff(rec);
                             }                            
                         }
-                    }
-
-                    if (pawn.InMentalState)
-                    {
-                        Log.Message("in mental state of " + this.Pawn.MentalState);
                     }
                 }                
             }

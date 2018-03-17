@@ -23,6 +23,7 @@ namespace TorannMagic
 
         TMPawnSummoned newPawn = new TMPawnSummoned();
         CompAbilityUserMagic comp;
+        Pawn pawn;
 
         public override void ExposeData()
         {
@@ -55,7 +56,7 @@ namespace TorannMagic
             if (!initialized)
             {
                 SpawnThings spawnThing = new SpawnThings();
-                Pawn pawn = this.launcher as Pawn;
+                pawn = this.launcher as Pawn;
                 comp = pawn.GetComp<CompAbilityUserMagic>();
                 MagicPowerSkill pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonMinion.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonMinion_pwr");
                 MagicPowerSkill ver = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonMinion.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonMinion_ver");
@@ -86,21 +87,7 @@ namespace TorannMagic
                     {
                         spawnThing.def = TorannMagicDefOf.TM_GreaterMinionR;
                         spawnThing.kindDef = PawnKindDef.Named("TM_GreaterMinion");
-                        try
-                        {
-                            SingleSpawnLoop(spawnThing, centerCell, map);
-                        }
-                        catch
-                        {
-                            this.age = this.duration;
-                            comp.Mana.CurLevel += comp.ActualManaCost(TorannMagicDefOf.TM_SummonMinion);
-                            Log.Message("TM_Exception".Translate(new object[]
-                                {
-                                pawn.LabelShort,
-                                this.def.defName
-                                }));
-                        }
-                        
+                        SingleSpawnLoop(spawnThing, centerCell, map);                        
                     }
                     MoteMaker.ThrowSmoke(centerCell.ToVector3(), map, 2 + pwrVal);
                     MoteMaker.ThrowMicroSparks(centerCell.ToVector3(), map);
@@ -112,20 +99,9 @@ namespace TorannMagic
                     {
                         spawnThing.def = TorannMagicDefOf.TM_MinionR;
                         spawnThing.kindDef = PawnKindDef.Named("TM_Minion");
-                        try
-                        {
-                            SingleSpawnLoop(spawnThing, centerCell, map);                            
-                        }
-                        catch
-                        {
-                            this.age = this.duration;
-                            comp.Mana.CurLevel += comp.ActualManaCost(TorannMagicDefOf.TM_SummonMinion);
-                            Log.Message("TM_Exception".Translate(new object[]
-                                {
-                                pawn.LabelShort,
-                                this.def.defName
-                                }));
-                        }
+                       
+                        SingleSpawnLoop(spawnThing, centerCell, map);
+
                     }
                     MoteMaker.ThrowSmoke(centerCell.ToVector3(), map, 1 + pwrVal);
                     MoteMaker.ThrowMicroSparks(centerCell.ToVector3(), map);
@@ -146,7 +122,7 @@ namespace TorannMagic
             bool flag = spawnables.def != null;
             if (flag)
             {
-                Faction faction = Faction.OfPlayer;
+                Faction faction = pawn.Faction;
                 bool flag2 = spawnables.def.race != null;
                 if (flag2)
                 {
@@ -161,12 +137,12 @@ namespace TorannMagic
                         newPawn.Spawner = this.Caster;
                         newPawn.Temporary = true;
                         newPawn.TicksToDestroy = this.duration;
-                        if (newPawn.Faction != Faction.OfPlayerSilentFail)
-                        {
-                            newPawn.SetFaction(this.Caster.Faction, null);
-                        }
-                        newPawn.playerSettings.master = this.Caster;                        
-                        if(comp.summonedMinions.Count >= 4)
+                        //if (newPawn.Faction != Faction.OfPlayerSilentFail)
+                        //{
+                        //    newPawn.SetFaction(this.Caster.Faction, null);
+                        //}
+                        //newPawn.playerSettings.master = this.Caster;
+                        if (comp.summonedMinions.Count >= 4)
                         {
                             Thing dismissMinion = comp.summonedMinions[0];
                             if (dismissMinion != null && dismissMinion.Position.IsValid)
@@ -183,11 +159,11 @@ namespace TorannMagic
                                     this.launcher.LabelShort
                                 }), MessageTypeDefOf.NeutralEvent);
                             }
-                            if(comp.summonedMinions.Count > 4)
+                            if (comp.summonedMinions.Count > 4)
                             {
-                                while(comp.summonedMinions.Count > 4)
+                                while (comp.summonedMinions.Count > 4)
                                 {
-                                    Pawn excessMinion = comp.summonedMinions[comp.summonedMinions.Count - 1] as Pawn; 
+                                    Pawn excessMinion = comp.summonedMinions[comp.summonedMinions.Count - 1] as Pawn;
                                     comp.summonedMinions.Remove(excessMinion);
                                     if (excessMinion != null && !excessMinion.Dead && !excessMinion.Destroyed)
                                     {
@@ -195,9 +171,24 @@ namespace TorannMagic
                                     }
                                 }
                             }
-                            
+
                         }
-                        GenSpawn.Spawn(newPawn, position, Find.VisibleMap);
+                        try
+                        {
+                            GenSpawn.Spawn(newPawn, position, this.Map);
+                        }
+                        catch
+                        {
+                            this.age = this.duration;
+                            comp.Mana.CurLevel += comp.ActualManaCost(TorannMagicDefOf.TM_SummonMinion);
+                            Log.Message("TM_Exception".Translate(new object[]
+                                {
+                                pawn.LabelShort,
+                                this.def.defName
+                                }));
+                            this.Destroy(DestroyMode.Vanish);
+                        }
+                        
                         comp.summonedMinions.Add(newPawn);
                         if (newPawn.Faction != null && newPawn.Faction != Faction.OfPlayer)
                         {
@@ -212,7 +203,7 @@ namespace TorannMagic
                             if (flag4)
                             {
                                 LordJob_DefendPoint lordJob = new LordJob_DefendPoint(newPawn.Position);
-                                lord = LordMaker.MakeNewLord(faction, lordJob, Find.VisibleMap, null);
+                                lord = LordMaker.MakeNewLord(faction, lordJob, this.Map, null);
                             }
                             lord.AddPawn(newPawn);
                         }

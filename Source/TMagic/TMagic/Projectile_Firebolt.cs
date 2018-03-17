@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Verse;
 using AbilityUser;
+using UnityEngine;
 
 namespace TorannMagic
 {
@@ -16,17 +17,17 @@ namespace TorannMagic
             Pawn pawn = this.launcher as Pawn;
             Pawn victim = hitThing as Pawn;
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
-            MagicPowerSkill pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Firebolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Firebolt_pwr");
+            MagicPowerSkill pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Firebolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Firebolt_pwr");            
 
             //GenExplosion.DoExplosion(base.Position, map, 0.4f, TMDamageDefOf.DamageDefOf.Firebolt, this.launcher, this.def.projectile.soundExplode, def, this.equipmentDef, null, 0f, 1, false, null, 0f, 1);
-            GenExplosion.DoExplosion(base.Position, map, 0.4f, TMDamageDefOf.DamageDefOf.Firebolt, this.launcher, this.def.projectile.damageAmountBase, this.def.projectile.soundExplode, def, this.equipmentDef, null, 0f, 1, false, null, 0f, 1, 0.6f, false);
+            GenExplosion.DoExplosion(base.Position, map, 0.4f, TMDamageDefOf.DamageDefOf.Firebolt, this.launcher, Mathf.RoundToInt(this.def.projectile.damageAmountBase * comp.arcaneDmg), this.def.projectile.soundExplode, def, this.equipmentDef, null, 0f, 1, false, null, 0f, 1, 0.6f, false);
             CellRect cellRect = CellRect.CenteredOn(base.Position, 3);
             cellRect.ClipInsideMap(map);
 
             victim = base.Position.GetFirstPawn(map);
             if (victim != null)
             {                
-                int dmg = (this.def.projectile.damageAmountBase / 2) * pwr.level;  //projectile = 22
+                int dmg = Mathf.RoundToInt(((this.def.projectile.damageAmountBase / 2) * pwr.level)* comp.arcaneDmg);  //projectile = 22
                 if (settingsRef.AIHardMode && !pawn.IsColonistPlayerControlled)
                 {
                     dmg += 10;

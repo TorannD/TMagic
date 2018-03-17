@@ -162,13 +162,15 @@ namespace TorannMagic
         {
             try
             {
-                bool flag = this.effecter != null;
-                if (flag)
-                {
-                    this.effecter.Cleanup();
-                }                
+                //bool flag = this.effecter != null;
+                //if (flag)
+                //{
+                //    this.effecter.Cleanup();
+                //}     
+
                 MoteMaker.ThrowSmoke(this.parent.Position.ToVector3(), this.parent.Map, 1);
                 MoteMaker.ThrowHeatGlow(this.parent.Position, this.parent.Map, 1);
+                
                 if (parent.def.defName.Contains("TM_ManaMine"))
                 {
                     Messages.Message("MineDeSpawn".Translate(), MessageTypeDefOf.SilentInput);
@@ -186,5 +188,17 @@ namespace TorannMagic
                 }));
             }
         }
+
+        
+        public override void PostDeSpawn(Map map)
+        {
+            bool flag = this.effecter != null && this.effecter.children != null;
+            if (flag)
+            {
+                this.effecter.Cleanup();
+            }
+            base.PostDeSpawn(map);
+        }
+
     }
 }

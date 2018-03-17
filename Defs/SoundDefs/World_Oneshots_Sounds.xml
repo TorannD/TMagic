@@ -24,5 +24,155 @@
       </li>
     </subSounds>
   </SoundDef>
+  
+  <SoundDef>
+    <defName>TM_Woosh</defName>
+    <eventNames />
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/Woosh</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>15</min>
+          <max>15</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.7</min>
+          <max>1.1</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+    <SoundDef>
+    <defName>TM_Shuffle</defName>
+    <eventNames />
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/Shuffle</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>10</min>
+          <max>10</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.7</min>
+          <max>.7</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>TM_Thinpop</defName>
+    <eventNames />
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/Pop</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>12</min>
+          <max>15</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.7</min>
+          <max>.7</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+    <SoundDef>
+    <defName>TM_Lightning</defName>
+    <eventNames />
+    <maxSimultaneous>3</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/Lightning</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>100</min>
+          <max>100</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.5</min>
+          <max>.12</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>TM_Thunder_OffMap</defName>  
+    <eventNames />  
+    <subSounds>
+      <li>
+        <name></name>      
+        <onCamera>True</onCamera>      
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Ambience/Thunder/OffMap</clipFolderPath>
+          </li>
+        </grains>      
+        <volumeRange>
+          <min>6</min>        
+          <max>17</max>
+        </volumeRange>      
+        <pitchRange>
+          <min>0.8164706</min>        
+          <max>1.160588</max>
+        </pitchRange>
+        <paramMappings>
+          <li>
+            <inParam Class="SoundParamSource_AmbientVolume" />
+            <outParam Class="SoundParamTarget_Volume" />
+          </li>
+        </paramMappings>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>TM_Thunder_OnMap</defName>  
+    <eventNames />  
+    <subSounds>
+      <li>
+        <name></name>      
+        <onCamera>True</onCamera>      
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Ambience/Thunder/OnMap</clipFolderPath>
+          </li>
+        </grains>      
+        <volumeRange>
+          <min>12.25788</min>        
+          <max>20.18052</max>
+        </volumeRange>      
+        <pitchRange>
+          <min>0.7541547</min>        
+          <max>.95</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
 
 </Defs>

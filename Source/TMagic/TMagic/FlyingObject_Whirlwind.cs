@@ -41,6 +41,7 @@ namespace TorannMagic
         private bool initialize = true;
 
         Pawn pawn;
+        TMPawnSummoned newPawn = new TMPawnSummoned();
 
         protected int StartingTicksToImpact
         {
@@ -139,6 +140,15 @@ namespace TorannMagic
             {
                 flyingThing.DeSpawn();
             }
+            //
+            SpawnThings spawnThing = new SpawnThings();
+            spawnThing.factionDef = TorannMagicDefOf.TM_SummonedFaction;
+            spawnThing.spawnCount = 1;
+            spawnThing.temporary = false;
+            spawnThing.def = TorannMagicDefOf.TM_InvisMinionR;
+            spawnThing.kindDef = PawnKindDef.Named("TM_InvisMinion");
+            SingleSpawnLoop(spawnThing, origin.ToIntVec3(), launcher.Map);
+            //
             this.launcher = launcher;
             this.origin = origin;
             this.impactDamage = newDamageInfo;
@@ -151,6 +161,43 @@ namespace TorannMagic
             this.destination = targ.Cell.ToVector3Shifted() + new Vector3(Rand.Range(-0.3f, 0.3f), 0f, Rand.Range(-0.3f, 0.3f));
             this.ticksToImpact = this.StartingTicksToImpact;
             this.Initialize();
+        }
+
+        public void SingleSpawnLoop(SpawnThings spawnables, IntVec3 position, Map map)
+        {
+            bool flag = spawnables.def != null;
+            if (flag)
+            {
+                Faction faction = pawn.Faction;
+                bool flag2 = spawnables.def.race != null;
+                if (flag2)
+                {
+                    bool flag3 = spawnables.kindDef == null;
+                    if (flag3)
+                    {
+                        Log.Error("Missing kinddef");
+                    }
+                    else
+                    {
+                        newPawn = (TMPawnSummoned)PawnGenerator.GeneratePawn(spawnables.kindDef, faction);
+                        newPawn.Spawner = this.launcher as Pawn;
+                        newPawn.Temporary = true;
+                        newPawn.TicksToDestroy = 180;
+
+                        try
+                        {
+                            GenSpawn.Spawn(newPawn, position, this.Map);
+                        }
+                        catch
+                        {
+                        }
+                    }
+                }
+                else
+                {
+                    Log.Message("Missing race");
+                }
+            }
         }
 
         public override void Tick()

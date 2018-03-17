@@ -193,6 +193,30 @@ namespace TorannMagic.Enchantment
                     enchantment.Props.xpGain = .15f;
                     enchantment.Props.xpGainTier = EnchantmentTier.Major;
                     break;
+                case "TM_EStone_arcaneRes_minor":
+                    enchantment.Props.arcaneRes = .10f;
+                    enchantment.Props.arcaneResTier = EnchantmentTier.Minor;
+                    break;
+                case "TM_EStone_arcaneRes":
+                    enchantment.Props.arcaneRes = .20f;
+                    enchantment.Props.arcaneResTier = EnchantmentTier.Standard;
+                    break;
+                case "TM_EStone_arcaneRes_major":
+                    enchantment.Props.arcaneRes = .30f;
+                    enchantment.Props.arcaneResTier = EnchantmentTier.Major;
+                    break;
+                case "TM_EStone_arcaneDmg_minor":
+                    enchantment.Props.arcaneDmg = .04f;
+                    enchantment.Props.arcaneDmgTier = EnchantmentTier.Minor;
+                    break;
+                case "TM_EStone_arcaneDmg":
+                    enchantment.Props.arcaneDmg = .08f;
+                    enchantment.Props.arcaneDmgTier = EnchantmentTier.Standard;
+                    break;
+                case "TM_EStone_arcaneDmg_major":
+                    enchantment.Props.arcaneDmg = .12f;
+                    enchantment.Props.arcaneDmgTier = EnchantmentTier.Major;
+                    break;
                 case "null":
                     Log.Message("null");
                     break;

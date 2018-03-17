@@ -105,7 +105,7 @@ namespace TorannMagic
             }
             else
             {
-                Log.Message("arg_40_0:" + arg_40_0 + " arg_41_0:" + arg_41_0 + " arg_42_0:" + arg_42_0);
+               // Log.Message("arg_40_0:" + arg_40_0 + " arg_41_0:" + arg_41_0 + " arg_42_0:" + arg_42_0);
                 Messages.Message("InvalidTargetLocation".Translate(), MessageTypeDefOf.RejectInput);
                 destinationReached = true;                
             }

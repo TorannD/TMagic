@@ -54,11 +54,11 @@ namespace TorannMagic.Enchantment
             if(Find.TickManager.TicksGame % 120 == 0)
             {
                 comp = this.Pawn.GetComp<CompAbilityUserMagic>();
-                CalculateMaxMP();
+                DisplayEnchantments();
             }
         }
 
-        private void CalculateMaxMP()
+        private void DisplayEnchantments()
         {
             MagicPowerSkill spirit = this.Pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr");
             if (this.parent.def.defName == "TM_HediffEnchantment_maxMP")
@@ -80,6 +80,22 @@ namespace TorannMagic.Enchantment
             else if (this.parent.def.defName == "TM_HediffEnchantment_xpGain")
             {
                 this.enchantment = (comp.xpGain * 100).ToString() + "%";
+            }
+            else if (this.parent.def.defName == "TM_HediffEnchantment_arcaneRes")
+            {
+                this.enchantment = (comp.arcaneRes * 100).ToString() + "%";
+            }
+            else if (this.parent.def.defName == "TM_HediffEnchantment_arcaneDmg")
+            {
+                this.enchantment = (comp.arcaneDmg * 100).ToString() + "%";
+            }
+            else if (this.parent.def.defName == "TM_HediffEnchantment_arcaneSpectre")
+            {
+                this.enchantment = "TM_ArcaneSpectre".Translate();
+            }
+            else if (this.parent.def.defName == "TM_HediffEnchantment_phantomShift")
+            {
+                this.enchantment = "TM_PhantomShift".Translate();
             }
             else
             {

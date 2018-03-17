@@ -2,6 +2,7 @@
 using RimWorld;
 using System.Linq;
 using Verse;
+using UnityEngine;
 
 namespace TorannMagic
 {
@@ -24,6 +25,7 @@ namespace TorannMagic
 
         private int verVal;
         private int pwrVal;
+        private float arcaneDmg = 1;
 
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
 		{
@@ -46,6 +48,7 @@ namespace TorannMagic
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             pwrVal = pwr.level;
             verVal = ver.level;
+            this.arcaneDmg = comp.arcaneDmg;
             if (settingsRef.AIHardMode && !pawn.IsColonistPlayerControlled)
             {
                 pwrVal = 3;
@@ -86,10 +89,11 @@ namespace TorannMagic
 			Explosion(pwr, pos, map, radius, DamageDefOf.Bomb, this.launcher, null, def, this.equipmentDef, ThingDefOf.Mote_Smoke, 0.4f, 1, false, null, 0f, 1);
 		}
 
-		public static void Explosion(int pwr, IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
+		public void Explosion(int pwr, IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
 		{
 			System.Random rnd = new System.Random();
 			int modDamAmountRand = modDamAmountRand = GenMath.RoundRandom(rnd.Next(5 + (pwr*2), projectile.projectile.damageAmountBase + (pwr * 5)));
+            modDamAmountRand = Mathf.RoundToInt(this.arcaneDmg);
             if (pwr >= 1)
             {
                 radius = (float)(rnd.Next(pwr, pwr*2)/1.8);

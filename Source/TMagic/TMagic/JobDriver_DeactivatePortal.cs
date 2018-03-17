@@ -30,8 +30,8 @@ namespace TorannMagic
                 portalBldg = TargetA.Thing as Building_TMPortal;
                 if (portalBldg != null)
                 {
-                    Log.Message(" " + portalBldg.Label + " is valid at loc " + portalBldg.Position + " on map " + portalBldg.Map);
-                    Log.Message("Portal pairing is " + portalBldg.IsPaired);
+                    //Log.Message(" " + portalBldg.Label + " is valid at loc " + portalBldg.Position + " on map " + portalBldg.Map);
+                    //Log.Message("Portal pairing is " + portalBldg.IsPaired);
 
                 }
             };
@@ -40,7 +40,7 @@ namespace TorannMagic
                 if (portalBldg != null)
                 {
                     portalBldg.IsPaired = false;
-                    Log.Message("Portal pairing is now " + portalBldg.IsPaired);
+                    //Log.Message("Portal pairing is now " + portalBldg.IsPaired);
                 }
             });
 

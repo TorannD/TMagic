@@ -3,6 +3,7 @@ using Verse;
 using Verse.Sound;
 using AbilityUser;
 using System.Linq;
+using UnityEngine;
 
 namespace TorannMagic
 {
@@ -10,6 +11,7 @@ namespace TorannMagic
     {
         private int verVal;
         private int pwrVal;
+        private float arcaneDmg = 1;
 
         public override void Impact_Override(Thing hitThing)
         {
@@ -23,6 +25,7 @@ namespace TorannMagic
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             pwrVal = pwr.level;
             verVal = ver.level;
+            this.arcaneDmg = comp.arcaneDmg;
             if (settingsRef.AIHardMode && !pawn.IsColonistPlayerControlled)
             {
                 pwrVal = 3;
@@ -31,7 +34,7 @@ namespace TorannMagic
             bool flag = hitThing != null;
             if (flag)
             {
-                int damageAmountBase = this.def.projectile.damageAmountBase + (pwrVal * 9);
+                int damageAmountBase = Mathf.RoundToInt(this.def.projectile.damageAmountBase + (pwrVal * 9)* this.arcaneDmg);
                 DamageInfo dinfo = new DamageInfo(this.def.projectile.damageDef, damageAmountBase, this.ExactRotation.eulerAngles.y, this.launcher, null, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);
                 hitThing.TakeDamage(dinfo);
 
@@ -75,10 +78,11 @@ namespace TorannMagic
 
         }
 
-        public static void Explosion(IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = true, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
+        public void Explosion(IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = true, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
         {
             System.Random rnd = new System.Random();
             int modDamAmountRand = GenMath.RoundRandom(Rand.Range(2, TMDamageDefOf.DamageDefOf.TM_Lightning.explosionDamage));
+            modDamAmountRand *= Mathf.RoundToInt(this.arcaneDmg);
             if (map == null)
             {
                 Log.Warning("Tried to do explosion in a null map.");

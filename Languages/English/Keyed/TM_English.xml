@@ -14,9 +14,9 @@
 <MineDeSpawn>The mana cohesion holding a mana mine together has deteriorated and the mana mine has safely dissolved.</MineDeSpawn>
 <MinionFled>One of your minions has fled this plane existence.</MinionFled>
 <NotArcaneBook>Book type not recognized as arcane script!</NotArcaneBook>
-<NotGiftedPawn>Pawn is not Gifted and cannot use this item.</NotGiftedPawn>
+<NotGiftedPawn>{0} does not have the Magically Gifted trait and cannot use this item.</NotGiftedPawn>
 <NotCombatBook>Book type not recognized as a combat form!</NotCombatBook>
-<NotPhyAdeptPawn>Pawn does not possess the physical traits to learn this combat form.</NotPhyAdeptPawn>
+<NotPhyAdeptPawn>Pawn does not possess the Physically Adept trait and cannot to learn this combat form.</NotPhyAdeptPawn>
 <CannotLearnSpell>Spell cannot be applied to this pawn.</CannotLearnSpell>
 <CannotLearnSkill>Skill cannot be applied to this pawn.</CannotLearnSkill>
 <NotMageToLearnSpell>Pawn is not attuned to with arcane forces and cannot learn the contents of this scroll.</NotMageToLearnSpell>
@@ -481,7 +481,7 @@ Level 3: 30% stamina restored</TM_Headshot_ver_desc>
 <TM_AntiArmor_eff>Stamina Cost</TM_AntiArmor_eff>
 <TM_AntiArmor_ver>Explosive Rounds</TM_AntiArmor_ver>
 
-<TM_BladeFocus_pwr_desc>Advances training as a bladedancer. Each level requires 2 skill points to train.
+<TM_BladeFocus_pwr_desc>Advances training as a bladedancer. Each level requires 2 skill points to train and upgrades the class trait.
 Level 0: Melee Hit Chance +3, Movement +0.15, Mental Break Threshold -3%
 Level 1: Melee Hit Chance +6, Movement +0.20, Mental Break Threshold -5%
 Level 2: Melee Hit Chance +10, Movement +0.30, Mental Break Threshold -8%, Pain Threshold +5%
@@ -517,7 +517,7 @@ Increases the hit chance of Blade Spin by 4% per level.  Base is 50%.</TM_BladeS
 <TM_PhaseStrike_ver>Phased Reach</TM_PhaseStrike_ver>
 
 
-<TM_RangerTraining_pwr_desc>Advances training as a ranger. Each level requires 2 skill points to train.
+<TM_RangerTraining_pwr_desc>Advances training as a ranger. Each level requires 2 skill points to train and upgrades the class trait.
 Level 0: Move Speed +0.2c/s, Immunity +20%, Temperature comfort +-10, Aiming Delay -15%
 Level 1: Move Speed +0.3c/s, Immunity +30%, Temperature comfort +-15, Aiming Delay -20%
 Level 2: Move Speed +0.4c/s, Immunity +40%, Temperature comfort +-20, Aiming Delay -30%
@@ -530,7 +530,7 @@ Level 3: +80% damage w/ bows, +80% Sight, +80% Hearing, +25% Breathing, +10% Blo
 <TM_PoisonTrap_ver_desc>Increases the number of active traps the ranger can have by 1 per level. Base maximum is 2.</TM_PoisonTrap_ver_desc>
 <TM_AnimalFriend_pwr_desc>The ranger can bond with an animal if they have an empathy level that exceeds the wildness of the animal. Empathy also increases the chance of bonding with an animal.</TM_AnimalFriend_pwr_desc>
 <TM_AnimalFriend_eff_desc>Decreases the stamina cost of Animal Bond by 15% per skill point.</TM_AnimalFriend_eff_desc>
-<TM_AnimalFriend_ver_desc>Increases the power of the bond betwen the ranger and animal kin.
+<TM_AnimalFriend_ver_desc>Increases the power of the bond between the ranger and animal kin.
 Level 0: Moving +20%, Manipulation +20%, Dodge chance +15%
 Level 1: Moving +30%, Manipulation +30%, Blood pumping +20%, Dodge chance +20%
 Level 2: Moving +40%, Manipulation +40%, Blood pumping +30%, Dodge chance +27%
@@ -558,8 +558,8 @@ Level 3: Moving +50%, Manipulation +50%, Blood pumping +40%, Dodge chance +35%</
 <TM_Spells>magic spells</TM_Spells>
 <TM_Skills>might skills</TM_Skills>
 <TM_PointsAvail>Points Available</TM_PointsAvail>
-<TM_MagicXPDesc>Magic XP is gained as characters use spells.  XP gain is equivilent to the difficulty of the spell.  Characters will also gain XP slowly if they are at max mana.</TM_MagicXPDesc>
-<TM_MightXPDesc>Might XP is gained as characters use combat skills.  XP gain is equivilent to the difficulty of the skill.  Characters will also gain XP slowly if they are fully rested.</TM_MightXPDesc>
+<TM_MagicXPDesc>Magic XP is gained as characters use spells.  XP gain is equivalent to the difficulty of the spell.  Characters will also gain XP slowly if they are at max mana.</TM_MagicXPDesc>
+<TM_MightXPDesc>Might XP is gained as characters use combat skills.  XP gain is equivalent to the difficulty of the skill.  Characters will also gain XP slowly if they are fully rested.</TM_MightXPDesc>
 
 <TM_CheckPointsForMoreInfo>Hover your mouse over skill attributes for more information on improvements.</TM_CheckPointsForMoreInfo>
 <TM_MagicLevelUp>{0} has gained a deeper understanding of magic and can train a new magic skill.</TM_MagicLevelUp>
@@ -569,6 +569,8 @@ Level 3: Moving +50%, Manipulation +50%, Blood pumping +40%, Dodge chance +35%</
 <TM_Power>Lightning Storm power</TM_Power>
 <TM_Efficiency>Lightning Storm Efficiency</TM_Efficiency>
 <TM_Versatility>Lightning Storm versatility</TM_Versatility>
+
+<TM_MasterSpellLocked>Locked: learn {0} using a master scroll</TM_MasterSpellLocked>
 
 <!-- ========== Button Tooltips ========== -->
 
@@ -608,6 +610,10 @@ Level 3: Moving +50%, Manipulation +50%, Blood pumping +40%, Dodge chance +35%</
 <TM_CoolDownLabel>Ability Cooldown Reduction: {0}&#37;</TM_CoolDownLabel>
 <TM_MPCostLabel>MP Cost Reduction: {0}&#37;</TM_MPCostLabel>
 <TM_XPGainLabel>XP Gain Increase: {0}&#37;</TM_XPGainLabel>
+<TM_ArcaneResLabel>Arcane Resistance: {0}&#37;</TM_ArcaneResLabel>
+<TM_ArcaneDmgLabel>Arcane Damage: {0}&#37;</TM_ArcaneDmgLabel>
+<TM_ArcaneSpectre>Arcane Spectre</TM_ArcaneSpectre>
+<TM_PhantomShift>Phantom Shift</TM_PhantomShift>
 
 <!-- ============ Floating Text =============-->
 <TM_Enchanted>Enchanted!</TM_Enchanted>

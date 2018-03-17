@@ -2,6 +2,30 @@
 <Defs>
 
   <HediffDef ParentName="InjuryBase">
+    <defName>TM_BlazingPowerHD</defName>
+    <label>Blazing Power</label>
+    <displayWound>false</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_GetsOld">
+        <oldLabel>destroyed by blazing power</oldLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.05</painPerSeverity>
+		<averagePainPerSeverityOld>0.00025</averagePainPerSeverityOld>
+		<bleedRate>0.000</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>destroyed</destroyedLabel>
+			<destroyedOutLabel>destroyed</destroyedOutLabel>
+	</injuryProps>
+  </HediffDef>
+
+  <HediffDef ParentName="InjuryBase">
     <defName>TM_Holy</defName>
     <label>Divine Wrath</label>
     <displayWound>false</displayWound>
@@ -431,6 +455,33 @@
       </li>
     </stages>
   </HediffDef>  
+  
+  <HediffDef ParentName="InjuryBase">
+		<defName>TM_arcaneSpectre</defName>
+		<label>spirit cut</label>
+    <labelNoun>a cut</labelNoun>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_Infecter">
+        <infectionChance>0.50</infectionChance>
+      </li>
+      <li Class="HediffCompProperties_GetsOld">
+        <oldLabel>pale scar</oldLabel>
+      </li>
+    </comps>
+		<injuryProps>
+			<painPerSeverity>0.03</painPerSeverity>
+			<averagePainPerSeverityOld>0.01125</averagePainPerSeverityOld>
+			<bleedRate>0.03</bleedRate>
+			<canMerge>false</canMerge>
+			<destroyedLabel>Cut off</destroyedLabel>
+			<destroyedOutLabel>Cut out</destroyedOutLabel>
+		</injuryProps>
+	</HediffDef>
 
 
 <!--     <HediffDef Name="InjuryBase" Abstract="True">

@@ -39,6 +39,14 @@ namespace TorannMagic
                     {
                         CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
                         MightPowerSkill ver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PoisonTrap.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PoisonTrap_ver");
+                        for(int i = 0; i < comp.combatItems.Count; i++)
+                        {
+                            if(comp.combatItems[i].Destroyed)
+                            {
+                                comp.combatItems.Remove(comp.combatItems[i]);
+                                i--;
+                            }                            
+                        }
                         if (comp.combatItems.Count > ver.level+1)
                         {
                             Messages.Message("TM_TooManyTraps".Translate(new object[]
@@ -48,7 +56,10 @@ namespace TorannMagic
                             }), MessageTypeDefOf.NeutralEvent);
                             Thing tempThing = comp.combatItems[0];
                             comp.combatItems.Remove(comp.combatItems[0]);
-                            tempThing.Destroy();
+                            if (tempThing != null && !tempThing.Destroyed)
+                            {
+                                tempThing.Destroy();
+                            }
                         }
                         this.SingleSpawnLoop(tempPod, pawn, TargetLocA, pawn.Map);                                              
                     }

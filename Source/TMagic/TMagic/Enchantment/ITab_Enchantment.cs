@@ -6,6 +6,7 @@ using Verse;
 
 namespace TorannMagic.Enchantment
 {
+    [StaticConstructorOnStartup]
     internal class ITab_Enchantment : ITab
     {
         private static readonly Vector2 WinSize = new Vector2(400f, 550f);
@@ -27,7 +28,7 @@ namespace TorannMagic.Enchantment
         {
             get
             {
-                return ITab_Enchantment.SelectedCompEnchantment != null && ITab_Enchantment.SelectedCompEnchantment.Props.HasEnchantment;
+                return ITab_Enchantment.SelectedCompEnchantment != null && ITab_Enchantment.SelectedCompEnchantment.Props.HasEnchantment;  
             }
         }
 
@@ -85,6 +86,38 @@ namespace TorannMagic.Enchantment
                 GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.Props.xpGainTier);
                 rectLabel = enchantedItem.Props.XPGainLabel;
                 Widgets.Label(rect7, rectLabel);
+                num++;
+            }
+            Rect rect71 = GetRowRect(rect7, num);
+            if (enchantedItem.Props.arcaneRes != 0)
+            {
+                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.Props.arcaneResTier);
+                rectLabel = enchantedItem.Props.ArcaneResLabel;
+                Widgets.Label(rect71, rectLabel);
+                num++;
+            }
+            Rect rect72 = GetRowRect(rect71, num);
+            if (enchantedItem.Props.arcaneDmg != 0)
+            {
+                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.Props.arcaneDmgTier);
+                rectLabel = enchantedItem.Props.ArcaneDmgLabel;
+                Widgets.Label(rect72, rectLabel);
+                num++;
+            }
+            Rect rect8 = GetRowRect(rect72, num);
+            if (enchantedItem.Props.arcaneSpectre != false)
+            {
+                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.Props.skillTier);
+                rectLabel = enchantedItem.Props.ArcaneSpectreLabel;
+                Widgets.Label(rect8, rectLabel);
+                num++;
+            }
+            Rect rect9 = GetRowRect(rect8, num);
+            if (enchantedItem.Props.phantomShift != false)
+            {
+                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.Props.skillTier);
+                rectLabel = enchantedItem.Props.PhantomShiftLabel;
+                Widgets.Label(rect9, rectLabel);
                 num++;
             }
             //rect3.yMin += Text.CalcHeight(rectLabel, rect.width);

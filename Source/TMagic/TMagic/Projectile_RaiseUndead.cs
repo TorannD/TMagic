@@ -3,6 +3,7 @@ using RimWorld;
 using AbilityUser;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace TorannMagic
 {
@@ -50,24 +51,28 @@ namespace TorannMagic
                             {
                                 corpse = corpseThing as Corpse;
                                 Pawn undeadPawn = corpse.InnerPawn;
+                                
                                 if (undeadPawn.RaceProps.IsFlesh)
                                 {
-                                    undeadPawn.SetFaction(pawn.Faction);
-                                    ResurrectionUtility.Resurrect(undeadPawn);
+                                    undeadPawn.SetFaction(pawn.Faction);                                    
                                     raisedPawns++;
                                     if (!undeadPawn.kindDef.RaceProps.Animal && undeadPawn.kindDef.RaceProps.Humanlike)
                                     {
-                                        HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, -4f);
-                                        HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, .5f + ver.level);
-                                        RemoveTraits(undeadPawn, undeadPawn.story.traits.allTraits);
-                                        RedoSkills(undeadPawn);
+                                        RemoveTraits(undeadPawn, undeadPawn.story.traits.allTraits);                                        
                                         undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Undead"), 0, false));
-                                        undeadPawn.needs.AddOrRemoveNeedsAsAppropriate();
+                                        undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Psychopath"), 0, false));
+                                        undeadPawn.story.bodyType = BodyType.Thin;
+                                        Color undeadColor = new Color(.2f, .4f, 0);
+                                        undeadPawn.story.hairColor = undeadColor;
+                                        ResurrectionUtility.Resurrect(undeadPawn);
                                         CompAbilityUserMagic undeadComp = undeadPawn.GetComp<CompAbilityUserMagic>();
                                         if (undeadComp.IsMagicUser)
                                         {
                                             undeadComp.ClearPowers();
                                         }
+                                        RedoSkills(undeadPawn);
+                                        HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, -4f);
+                                        HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, .5f + ver.level);                                        
                                         List<SkillRecord> skills = undeadPawn.skills.skills;
                                         for (int j = 0; j < skills.Count; j++)
                                         {
@@ -78,11 +83,13 @@ namespace TorannMagic
                                         for(int h = 0; h < 24; h++ )
                                         {
                                             undeadPawn.timetable.SetAssignment(h, TimeAssignmentDefOf.Work);
-                                        }                                       
-                                        
+                                        }
+                                        undeadPawn.needs.AddOrRemoveNeedsAsAppropriate();
+
                                     }
                                     if (undeadPawn.kindDef.RaceProps.Animal)
                                     {
+                                        ResurrectionUtility.Resurrect(undeadPawn);
                                         HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadAnimalHD, -4f);
                                         HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadAnimalHD, .5f + ver.level);
 
@@ -117,6 +124,7 @@ namespace TorannMagic
                                             }
                                         }
                                         undeadPawn.playerSettings.medCare = MedicalCareCategory.NoMeds;
+                                        
                                     }
                                 }
                             }

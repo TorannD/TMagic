@@ -19,9 +19,9 @@
       <MarketValue>177</MarketValue>
       <Mass>0.1</Mass>
     </statBases>
-	<thingCategories>
+<!-- 	<thingCategories>
       <li>TM_MagicItems</li>
-    </thingCategories>
+    </thingCategories> -->
 	<stackLimit>25</stackLimit>
     <techLevel>Industrial</techLevel>
     <ingestible>
@@ -63,15 +63,15 @@
         <li>DrugLab</li>
       </recipeUsers>
 	  <skillRequirements>
-        <Intellectual>12</Intellectual>
-		<Crafting>5</Crafting>
+        <Intellectual>6</Intellectual>
+		<Crafting>4</Crafting>
       </skillRequirements>
     </recipeMaker>
     <costList>
-      <SmokeleafLeaves>2</SmokeleafLeaves>
+      <SmokeleafLeaves>1</SmokeleafLeaves>
       <Yayo>1</Yayo>
 	  <GoJuice>1</GoJuice>
-	  <Ambrosia>1</Ambrosia>
+<!-- 	  <Ambrosia>1</Ambrosia> -->
     </costList>
     <comps>
       <li Class="CompProperties_Drug">

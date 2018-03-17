@@ -125,5 +125,105 @@
       </li>
 	</stages>
    </HediffDef>
+   
+   <HediffDef>
+    <defName>TM_HediffEnchantment_arcaneRes</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Enchantment - Arcane Resistance:</label>
+    <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
+	<scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <maxSeverity>1</maxSeverity>	
+	<comps>
+      <li>
+        <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
+      </li> 
+	  <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-5</severityPerDay>
+      </li>
+    </comps>
+	<stages>
+      <li>
+        <label></label>
+        <minSeverity>0.001</minSeverity>
+      </li>
+	</stages>
+   </HediffDef>
+   
+   <HediffDef>
+    <defName>TM_HediffEnchantment_arcaneDmg</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Enchantment - Arcane Damage:</label>
+    <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
+	<scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <maxSeverity>1</maxSeverity>	
+	<comps>
+      <li>
+        <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
+      </li> 
+	  <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-5</severityPerDay>
+      </li>
+    </comps>
+	<stages>
+      <li>
+        <label></label>
+        <minSeverity>0.001</minSeverity>
+      </li>
+	</stages>
+   </HediffDef>
+   
+	<HediffDef>
+    <defName>TM_HediffEnchantment_arcaneSpectre</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Enchanted</label>
+    <defaultLabelColor>(.8,0,0.8)</defaultLabelColor>
+	<scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <maxSeverity>1</maxSeverity>	
+	<comps>
+      <li>
+        <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
+      </li> 
+	  <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-5</severityPerDay>
+      </li>
+    </comps>
+	<stages>
+      <li>
+        <label></label>
+        <minSeverity>0.001</minSeverity>
+      </li>
+	</stages>
+   </HediffDef>
+   
+	<HediffDef>
+    <defName>TM_HediffEnchantment_phantomShift</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Enchanted</label>
+    <defaultLabelColor>(.8,0,0.8)</defaultLabelColor>
+	<scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <maxSeverity>1</maxSeverity>	
+	<comps>
+      <li>
+        <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
+      </li> 
+	  <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-5</severityPerDay>
+      </li>
+    </comps>
+	<stages>
+      <li>
+        <label></label>
+        <minSeverity>0.001</minSeverity>
+      </li>
+	</stages>
+   </HediffDef>
   
 </Defs>

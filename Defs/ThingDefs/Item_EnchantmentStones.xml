@@ -61,7 +61,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>500</MarketValue>
+      <MarketValue>300</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -79,7 +79,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>1500</MarketValue>
+      <MarketValue>900</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -97,7 +97,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>4500</MarketValue>
+      <MarketValue>2700</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -115,7 +115,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>500</MarketValue>
+      <MarketValue>300</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -133,7 +133,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>1500</MarketValue>
+      <MarketValue>900</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -151,7 +151,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>4500</MarketValue>
+      <MarketValue>2700</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -169,7 +169,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>500</MarketValue>
+      <MarketValue>300</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -187,7 +187,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>1500</MarketValue>
+      <MarketValue>900</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -205,7 +205,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>4500</MarketValue>
+      <MarketValue>2700</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -223,7 +223,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>500</MarketValue>
+      <MarketValue>300</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -241,7 +241,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>1500</MarketValue>
+      <MarketValue>900</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -259,7 +259,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>4500</MarketValue>
+      <MarketValue>2700</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -277,7 +277,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>500</MarketValue>
+      <MarketValue>300</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -295,7 +295,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>1500</MarketValue>
+      <MarketValue>900</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -313,7 +313,116 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>4500</MarketValue>
+      <MarketValue>2700</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase">
+    <defName>TM_EStone_arcaneRes_minor</defName>
+    <label>Minor Arcane Gem of Resistance</label>
+    <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem creates a barrier that repels active arcane energy, reducing damage taken from arcane sources by 10%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/ice_magicyte_small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>1</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>300</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase">
+    <defName>TM_EStone_arcaneRes</defName>
+    <label>Arcane Gem of Resistance</label>
+    <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem creates a barrier that repels active arcane energy, reducing damage taken from arcane sources by 20%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/ice_magicyte</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>1</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>900</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase">
+    <defName>TM_EStone_arcaneRes_major</defName>
+    <label>Major Arcane Gem of Resistance</label>
+    <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem creates a barrier that repels active arcane energy, reducing damage taken from arcane sources by 30%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/ice_magicyte_large</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>1</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>2700</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+    
+  <ThingDef ParentName="MagicResourceBase">
+    <defName>TM_EStone_arcaneDmg_minor</defName>
+    <label>Minor Arcane Gem of Force</label>
+    <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this enchantment augments the force of magical attacks, increasing the damage output by 4%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/fire_magicyte_small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>1</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>300</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase">
+    <defName>TM_EStone_arcaneDmg</defName>
+    <label>Arcane Gem of Force</label>
+    <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this enchantment augments the force of magical attacks, increasing the damage output by 8%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/fire_magicyte</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>1</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>900</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase">
+    <defName>TM_EStone_arcaneDmg_major</defName>
+    <label>Major Arcane Gem of Force</label>
+    <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this enchantment augments the force of magical attacks, increasing the damage output by 12%.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/fire_magicyte_large</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>1</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>2700</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -326,12 +435,14 @@
   <ThingDef ParentName="MagicResourceBase">
     <defName>RawMagicyte</defName>
     <label>unrefined magicyte</label>
-    <description>A stone that seems to wrap itself in a dull, glassy surface, as if a mysterious power has cloaked itself in the center of the stone. Seemingly composed of the same stone it was cut from, this fairly unremarkable stone shimmers slightly, even in the dark, and it emits an energy signature that mages can detect when touching the stone.</description>
+    <description>A stone that seems to wrap itself in a dull, glassy surface, as if a mysterious power has cloaked itself in the center of the stone. Seemingly composed of the same stone it was cut from, this fairly unremarkable stone shimmers slightly, even in the dark, and it emits an energy signature that mages can detect when touching the stone.
+	
+Raw Magicyte can be refined to make a variety of enchanting gems at the gemcutting table.</description>
     <graphicData>
       <texPath>Items/Gemstones/magicyte_raw</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<deepCommonality>0.1</deepCommonality>
+<!-- 	<deepCommonality>0.1</deepCommonality> -->
 	<statBases>
 	  <Beauty>4</Beauty>
 	  <MaxHitPoints>500</MaxHitPoints>
@@ -341,9 +452,9 @@
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
     </statBases>
-	<stuffProps>
+<!-- 	<stuffProps>
 	  <commonality>0.05</commonality>
-	</stuffProps>
+	</stuffProps> -->
   </ThingDef>
 
 </Defs>

@@ -31,6 +31,7 @@ namespace TorannMagic
 
         private int verVal;
         private int pwrVal;
+        private float arcaneDmg = 1;
 
         //private List<IntVec3> currentPos = new List<IntVec3>();
         //private List<int> posAge =  new List<int>();
@@ -489,10 +490,11 @@ namespace TorannMagic
             return curPos;
         }
 
-        public static void Explosion(int pwr, IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
+        public void Explosion(int pwr, IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
 		{
 			System.Random rnd = new System.Random();
 			int modDamAmountRand = ((pwr * pwr) + (pwr * 5)) + GenMath.RoundRandom(rnd.Next(1, projectile.projectile.damageAmountBase));  //61
+            modDamAmountRand *= Mathf.RoundToInt(arcaneDmg);
 			if (map == null)
 			{
 				Log.Warning("Tried to do explosion in a null map.");

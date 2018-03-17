@@ -344,6 +344,23 @@ namespace TorannMagic
                                         }
                                     }
                                 }
+                            }                            
+                        }
+
+                        if (instigator != null && dinfo.Def != TMDamageDefOf.DamageDefOf.TM_ArcaneSpectre)
+                        {
+                            if (instigator.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffEnchantment_arcaneSpectre) && Rand.Chance(.5f))
+                            {
+                                DamageInfo dinfo2;
+                                float amt;
+                                amt = dinfo.Amount * .2f;
+                                dinfo2 = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_ArcaneSpectre, (int)amt, (float)-1, instigator, dinfo.HitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
+                                dinfo2.SetAllowDamagePropagation(false);
+                                pawn.TakeDamage(dinfo2);
+                                Vector3 displayVec = pawn.Position.ToVector3Shifted();
+                                displayVec.x += Rand.Range(-.2f, .2f);
+                                displayVec.z += Rand.Range(-.2f, .2f);
+                                TM_MoteMaker.ThrowArcaneDaggers(displayVec, pawn.Map, .7f);
                             }
                         }
                     }
@@ -359,83 +376,83 @@ namespace TorannMagic
         //        Log.Message("Surgeon is " + surgeon.LabelShort);
         //        Log.Message("patient is " + patient.LabelShort);
 
-        //        CompAbilityUserMagic comp = surgeon.GetComp<CompAbilityUserMagic>();
+                //        CompAbilityUserMagic comp = surgeon.GetComp<CompAbilityUserMagic>();
 
-        //        if (__instance.recipe.defName == "RegrowArm" || __instance.recipe.defName == "RegrowLeg" || __instance.recipe.defName == "RegrowFoot" || __instance.recipe.defName == "RegrowHand")
-        //        {
-        //            string reason;
-        //            if (comp.IsMagicUser)
-        //            {
-        //                Log.Message("comp " + comp.Mana.CurLevel + " comp percent " + comp.Mana.CurLevelPercentage);
-        //                if (comp.spell_RegrowLimb == true)
-        //                {
-        //                    MagicPowerSkill eff = surgeon.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RegrowLimb.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RegrowLimb_eff");
-        //                    if (comp.Mana.CurLevel < (.9f - ((eff.level * .08f) * .9f)))
-        //                    {
-        //                        Log.Message("current mana is " + comp.Mana.CurLevel);
-        //                        Log.Message("mana cost would have been " + (.9f - ((eff.level * .08f) * .9f)));
-        //                        comp.Mana.CurLevel = comp.Mana.CurLevel / 2;
+                //        if (__instance.recipe.defName == "RegrowArm" || __instance.recipe.defName == "RegrowLeg" || __instance.recipe.defName == "RegrowFoot" || __instance.recipe.defName == "RegrowHand")
+                //        {
+                //            string reason;
+                //            if (comp.IsMagicUser)
+                //            {
+                //                Log.Message("comp " + comp.Mana.CurLevel + " comp percent " + comp.Mana.CurLevelPercentage);
+                //                if (comp.spell_RegrowLimb == true)
+                //                {
+                //                    MagicPowerSkill eff = surgeon.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RegrowLimb.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RegrowLimb_eff");
+                //                    if (comp.Mana.CurLevel < (.9f - ((eff.level * .08f) * .9f)))
+                //                    {
+                //                        Log.Message("current mana is " + comp.Mana.CurLevel);
+                //                        Log.Message("mana cost would have been " + (.9f - ((eff.level * .08f) * .9f)));
+                //                        comp.Mana.CurLevel = comp.Mana.CurLevel / 2;
 
-        //                        //TM_MedicalRecipesUtility.RestorePartAndSpawnAllPreviousParts(patient, part, patient.Position, patient.Map);
-        //                        reason = "TM_InsufficientManaForSurgery".Translate();
-        //                        Find.LetterStack.ReceiveLetter("LetterLabelRegrowthSurgeryFail".Translate(), "LetterRegrowthSurgeryFail".Translate(new object[]
-        //                        {
-        //                        surgeon.LabelCap,
-        //                        __instance.recipe.defName,
-        //                        patient.Label,
-        //                        reason,
-        //                        surgeon.LabelShort
-        //                        }), LetterDefOf.NegativeEvent, null);
-        //                        __result = true;
-        //                        return false;
-        //                    }
-        //                    else
-        //                    {
-        //                        comp.Mana.CurLevel -= (.9f - ((eff.level * .08f) * .9f));
-        //                        TM_MoteMaker.ThrowRegenMote(patient.Position.ToVector3(), patient.Map, 1.2f);
-        //                        TM_MoteMaker.ThrowRegenMote(patient.Position.ToVector3(), patient.Map, .8f);
-        //                        TM_MoteMaker.ThrowRegenMote(patient.Position.ToVector3(), patient.Map, .8f);
-        //                        __result = false;
-        //                        return false;
-        //                    }
-        //                }
-        //                else
-        //                {
-        //                    comp.Mana.CurLevel = comp.Mana.CurLevel / 2;
-        //                    //TM_MedicalRecipesUtility.RestorePartAndSpawnAllPreviousParts(patient, part, patient.Position, patient.Map);
-        //                    reason = "TM_NoRegrowthSpell".Translate();
-        //                    Find.LetterStack.ReceiveLetter("LetterLabelRegrowthSurgeryFail".Translate(), "LetterRegrowthSurgeryFail".Translate(new object[]
-        //                    {
-        //                    surgeon.LabelCap,
-        //                    __instance.recipe.defName,
-        //                    patient.Label,
-        //                    reason,
-        //                    surgeon.LabelShort
-        //                    }), LetterDefOf.NegativeEvent, null);
-        //                    __result = true;
-        //                    return false;
-        //                }
-        //            }
-        //            reason = "TM_NotMagicUser".Translate();
-        //            Find.LetterStack.ReceiveLetter("LetterLabelRegrowthSurgeryFail".Translate(), "LetterRegrowthSurgeryFail".Translate(new object[]
-        //                {
-        //                    surgeon.LabelCap,
-        //                    __instance.recipe.defName,
-        //                    patient.Label,
-        //                    reason,
-        //                    surgeon.LabelShort
-        //                }), LetterDefOf.NegativeEvent, null);
-        //            __result = true;
-        //            return false;
-        //        }
-        //        else
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //}
+                //                        //TM_MedicalRecipesUtility.RestorePartAndSpawnAllPreviousParts(patient, part, patient.Position, patient.Map);
+                //                        reason = "TM_InsufficientManaForSurgery".Translate();
+                //                        Find.LetterStack.ReceiveLetter("LetterLabelRegrowthSurgeryFail".Translate(), "LetterRegrowthSurgeryFail".Translate(new object[]
+                //                        {
+                //                        surgeon.LabelCap,
+                //                        __instance.recipe.defName,
+                //                        patient.Label,
+                //                        reason,
+                //                        surgeon.LabelShort
+                //                        }), LetterDefOf.NegativeEvent, null);
+                //                        __result = true;
+                //                        return false;
+                //                    }
+                //                    else
+                //                    {
+                //                        comp.Mana.CurLevel -= (.9f - ((eff.level * .08f) * .9f));
+                //                        TM_MoteMaker.ThrowRegenMote(patient.Position.ToVector3(), patient.Map, 1.2f);
+                //                        TM_MoteMaker.ThrowRegenMote(patient.Position.ToVector3(), patient.Map, .8f);
+                //                        TM_MoteMaker.ThrowRegenMote(patient.Position.ToVector3(), patient.Map, .8f);
+                //                        __result = false;
+                //                        return false;
+                //                    }
+                //                }
+                //                else
+                //                {
+                //                    comp.Mana.CurLevel = comp.Mana.CurLevel / 2;
+                //                    //TM_MedicalRecipesUtility.RestorePartAndSpawnAllPreviousParts(patient, part, patient.Position, patient.Map);
+                //                    reason = "TM_NoRegrowthSpell".Translate();
+                //                    Find.LetterStack.ReceiveLetter("LetterLabelRegrowthSurgeryFail".Translate(), "LetterRegrowthSurgeryFail".Translate(new object[]
+                //                    {
+                //                    surgeon.LabelCap,
+                //                    __instance.recipe.defName,
+                //                    patient.Label,
+                //                    reason,
+                //                    surgeon.LabelShort
+                //                    }), LetterDefOf.NegativeEvent, null);
+                //                    __result = true;
+                //                    return false;
+                //                }
+                //            }
+                //            reason = "TM_NotMagicUser".Translate();
+                //            Find.LetterStack.ReceiveLetter("LetterLabelRegrowthSurgeryFail".Translate(), "LetterRegrowthSurgeryFail".Translate(new object[]
+                //                {
+                //                    surgeon.LabelCap,
+                //                    __instance.recipe.defName,
+                //                    patient.Label,
+                //                    reason,
+                //                    surgeon.LabelShort
+                //                }), LetterDefOf.NegativeEvent, null);
+                //            __result = true;
+                //            return false;
+                //        }
+                //        else
+                //        {
+                //            return true;
+                //        }
+                //    }
+                //}
 
-        [HarmonyPatch(typeof(Verb), "TryFindShootLineFromTo", null)]
+            [HarmonyPatch(typeof(Verb), "TryFindShootLineFromTo", null)]
         public static class TryFindShootLineFromTo_Base_Patch
         {
             public static bool Prefix(Verb __instance, IntVec3 root, LocalTargetInfo targ, out ShootLine resultingLine, ref bool __result)
@@ -799,7 +816,7 @@ namespace TorannMagic
                             if (target.IsValid && !target.Thing.Destroyed && target.Thing.Map == caster.Map && target.Thing.Spawned)
                             {
                                 Pawn targetPawn = target.Thing as Pawn;
-                                if (targetPawn.Dead)
+                                if (targetPawn != null && targetPawn.Dead)
                                 {
                                     __result = false;
                                     return false;
@@ -1214,6 +1231,19 @@ namespace TorannMagic
                     __instance.CooldownTicksLeft = (int)(__instance.CooldownTicksLeft / 2f);
                 }
                 return false;
+            }
+        }
+
+        [HarmonyPatch(typeof(GenDraw), "DrawRadiusRing", null)]
+        public class DrawRadiusRing_Patch
+        {
+            public static bool Prefix(IntVec3 center, float radius)
+            {
+                if (radius > GenRadial.MaxRadialPatternRadius)
+                {
+                    return false;
+                }
+                return true;
             }
         }
 

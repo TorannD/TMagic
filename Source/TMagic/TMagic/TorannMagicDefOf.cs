@@ -195,6 +195,7 @@ namespace TorannMagic
         public static ThingDef TM_GreaterWind_ElementalR;
         public static ThingDef TM_MinionR;
         public static ThingDef TM_GreaterMinionR;
+        public static ThingDef TM_InvisMinionR;
         public static FactionDef TM_ElementalFaction;
         public static FactionDef TM_SummonedFaction;
 
@@ -358,6 +359,7 @@ namespace TorannMagic
         public static TMAbilityDef TM_SiphonMana;
         public static TMAbilityDef TM_ManaShield;
         public static HediffDef TM_ManaShieldHD;
+        public static HediffDef TM_HediffEnchantment_arcaneSpectre;
 
         public static HediffDef TM_Sight;
         public static HediffDef TM_Breathing;
@@ -392,6 +394,7 @@ namespace TorannMagic
         public static ThingDef Mote_PowerBeamGold;
         public static ThingDef Mote_Bombardment;
         public static ThingDef Fog_Poison;
+        public static ThingDef Mote_ArcaneDaggers;
 
         //Jobs
         public static JobDef TMCastAbilityVerb;

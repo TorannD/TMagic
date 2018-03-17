@@ -5,8 +5,11 @@ namespace TorannMagic.Enchantment
     public enum EnchantmentTier
     {
         Undefined,
+        Negative,
         Minor,
         Standard,
-        Major
+        Major,
+        Crafted,
+        Skill
     }
 }

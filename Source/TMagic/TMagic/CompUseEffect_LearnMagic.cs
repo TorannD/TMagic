@@ -146,7 +146,10 @@ namespace TorannMagic
             }
             else
             {
-                Messages.Message("NotGiftedPawn".Translate(), MessageTypeDefOf.RejectInput);
+                Messages.Message("NotGiftedPawn".Translate(new object[]
+                    {
+                        user.LabelShort
+                    }), MessageTypeDefOf.RejectInput);
             }
 
 		}

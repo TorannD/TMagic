@@ -259,7 +259,7 @@ namespace TorannMagic
                             Log.Message("elemental faction was null or not hostile");
                             newPawn.SetFaction(Faction.OfMechanoids, null);
                         }
-                        GenSpawn.Spawn(newPawn, position, Find.VisibleMap);
+                        GenSpawn.Spawn(newPawn, position, this.Map);
                         if (newPawn.Faction != null && newPawn.Faction != Faction.OfPlayer)
                         {
                             Lord lord = null;

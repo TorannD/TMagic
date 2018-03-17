@@ -17,11 +17,13 @@ namespace TorannMagic
         private int duration = 2700;
         private IntVec3 oldPosition;
         Pawn hitPawn = null;
+        Pawn caster = null;
 
         MagicPowerSkill pwr;
         MagicPowerSkill ver;
         private int verVal;
         private int pwrVal;
+        private float arcaneDmg = 1;
 
         public override void ExposeData()
         {
@@ -41,36 +43,35 @@ namespace TorannMagic
             base.Impact(hitThing);
             ThingDef def = this.def;
                         
-            Pawn caster = this.launcher as Pawn;
+            caster = this.launcher as Pawn;
             pwr = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Poison.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Poison_pwr");
             ver = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Poison.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Poison_ver");
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             pwrVal = pwr.level;
             verVal = ver.level;
+            this.arcaneDmg = caster.GetComp<CompAbilityUserMagic>().arcaneDmg;
             if (settingsRef.AIHardMode && !caster.IsColonistPlayerControlled)
             {
                 pwrVal = 3;
                 verVal = 3;
             }
-            if (!initialized )
+            if (!initialized)
             {
-                if (hitThing != null)
+                hitPawn = hitThing as Pawn;
+                if (hitThing != null && hitPawn.needs.food != null)
                 {
-                    duration += (verVal * 180);
-                    hitPawn = hitThing as Pawn;
+                    duration += (verVal * 180);                    
                     Initialize(hitPawn);
                     oldPosition = hitPawn.Position;
                     damageEntities(hitPawn, null, 4 , TMDamageDefOf.DamageDefOf.TM_Poison);
-                    if (hitPawn.needs.food != null)
-                    {
-                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_Poisoned_HD, Rand.Range(1f + verVal, 4f + (2f * verVal)));
-                    }
+                    HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_Poisoned_HD, Rand.Range(1f + verVal, 4f + (2f * verVal)));                    
                     initialized = true;
                     TM_MoteMaker.ThrowPoisonMote(hitPawn.Position.ToVector3(), map, 2.2f);
                 }
                 else
                 {
-                    Log.Message("No target found for poison.");
+                    Log.Message("No target found for poison or target not susceptable to poison.");
+                    this.Destroy(DestroyMode.Vanish);
                 }
             }
 
@@ -80,11 +81,10 @@ namespace TorannMagic
                 {
                     if (hitPawn != null && !hitPawn.Dead && caster != null && !caster.Dead)
                     {
-
                         if (hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Poisoned_HD, false))
                         {
                             int dmg = (int)(((hitPawn.Position - oldPosition).LengthHorizontal) * (1 + (.25f * pwrVal)));
-                            int rndPart = (int)Mathf.RoundToInt(Rand.Range(0f, 4f));
+                            int rndPart = (int)Rand.RangeInclusive(0, 4);
                             damageEntities(hitPawn, vulnerableParts[rndPart], dmg, TMDamageDefOf.DamageDefOf.TM_Poison);
                             TM_MoteMaker.ThrowPoisonMote(hitPawn.Position.ToVector3(), map, 1f);
                             this.lastPoison = this.age;
@@ -94,16 +94,19 @@ namespace TorannMagic
                         {
                             //no longer poisoned, end
                             this.age = this.duration + 1;
+                            this.Destroy(DestroyMode.Vanish);
                         }
                     }
                     else
                     {
                         //pawn is dead, end 
                         this.age = this.duration + 1;
+                        this.Destroy(DestroyMode.Vanish);
                     }
                 }
                 catch
                 {
+                    this.age = this.duration + 1;
                     this.Destroy(DestroyMode.Vanish);
                 }
             }
@@ -153,9 +156,13 @@ namespace TorannMagic
         {
             DamageInfo dinfo;
             amt = (int)((float)amt * Rand.Range(.5f, 1.2f));
-            dinfo = new DamageInfo(type, amt, (float)-1, null, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);            
-            dinfo.SetAllowDamagePropagation(false);
-            victim.TakeDamage(dinfo);
+            amt *= Mathf.RoundToInt(this.arcaneDmg);
+            if (this.caster != null && victim != null && !victim.Dead && !victim.Downed && hitPart != null)
+            {
+                dinfo = new DamageInfo(type, amt, (float)-1, this.caster, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
+                dinfo.SetAllowDamagePropagation(false);
+                victim.TakeDamage(dinfo);
+            }
         }
 
         public override void Tick()

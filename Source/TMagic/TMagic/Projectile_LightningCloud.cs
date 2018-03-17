@@ -32,6 +32,7 @@ namespace TorannMagic
         MagicPowerSkill ver;
         private int verVal;
         private int pwrVal;
+        private float arcaneDmg = 1;
 
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {
@@ -57,6 +58,7 @@ namespace TorannMagic
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             pwrVal = pwr.level;
             verVal = ver.level;
+            this.arcaneDmg = comp.arcaneDmg;
             if (settingsRef.AIHardMode && !pawn.IsColonistPlayerControlled)
             {
                 pwrVal = 3;
@@ -82,7 +84,7 @@ namespace TorannMagic
                             victim = randomCell.GetFirstPawn(map);
                             if (victim != null)
                             {
-                                damageEntities(victim, this.def.projectile.damageAmountBase + pwrVal);
+                                damageEntities(victim, Mathf.RoundToInt((this.def.projectile.damageAmountBase + pwrVal) * this.arcaneDmg));
                             }
                         }
                     }
