@@ -39,6 +39,9 @@
             <offset>0.10</offset>
           </li>
         </capMods>
+		<statOffsets>
+			<WorkSpeedGlobal>0.10</WorkSpeedGlobal>
+	    </statOffsets>
       </li>
 	  <li>
         <label>III</label>
@@ -53,6 +56,9 @@
             <offset>0.15</offset>
           </li>
         </capMods>
+		<statOffsets>
+			<WorkSpeedGlobal>0.15</WorkSpeedGlobal>
+	    </statOffsets>
       </li>
 	  <li>
         <label>IV</label>
@@ -67,6 +73,9 @@
             <offset>0.20</offset>
           </li>
         </capMods>
+		<statOffsets>
+			<WorkSpeedGlobal>0.20</WorkSpeedGlobal>
+	    </statOffsets>
       </li>
 	  </stages>
   </HediffDef>

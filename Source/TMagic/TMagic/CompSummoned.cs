@@ -13,6 +13,7 @@ namespace TorannMagic
         private bool initialized = false;
 
         private bool temporary;
+        public bool sustained = false;
 
         private int ticksLeft;
 
@@ -96,6 +97,7 @@ namespace TorannMagic
         {
             Scribe_Values.Look<bool>(ref this.initialized, "initialized", false, false);
             Scribe_Values.Look<bool>(ref this.temporary, "temporary", false, false);
+            Scribe_Values.Look<bool>(ref this.sustained, "sustained", false, false);
             Scribe_Values.Look<int>(ref this.ticksLeft, "ticksLeft", 0, false);
             Scribe_Values.Look<int>(ref this.ticksToDestroy, "ticksToDestroy", 3600, false);
             Scribe_Values.Look<CompAbilityUserMagic>(ref this.compSummoner, "compSummoner", null, false);
@@ -152,6 +154,32 @@ namespace TorannMagic
                                 mote.progress = Mathf.Clamp01(value);
                                 mote.offsetZ = -0.5f;
                             }
+                        }
+                    }
+                }
+                if(this.sustained)
+                {
+                    if (this.spawner != null && !this.spawner.Destroyed)
+                    {
+                        if (this.spawner.Dead)
+                        {
+                            if (this.parent != null && !this.parent.Destroyed)
+                            {
+                                Messages.Message("TM_SunlightCollapse".Translate(new object[]
+                                {
+                                    this.spawner.LabelShort
+                                }), MessageTypeDefOf.NeutralEvent);
+                                this.parent.Destroy();                                
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //spawner shouldn't be null if it's sustained, destroy object if that's the case
+                        if (this.parent != null && !this.parent.Destroyed)
+                        {
+                            Log.Message("A sunlight has been destroyed, spawner found to be null.");
+                            this.parent.Destroy();                            
                         }
                     }
                 }

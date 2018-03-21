@@ -68,6 +68,12 @@ namespace TorannMagic
                     comp.InitializeSpell();
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
+                else if (parent.def.defName == "SpellOf_Sunlight" && comp.spell_Sunlight == false)
+                {
+                    comp.spell_Sunlight = true;
+                    comp.InitializeSpell();
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
                 else if (parent.def.defName == "SpellOf_DryGround" && comp.spell_DryGround == false && user.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
                 {
                     comp.spell_DryGround = true;
@@ -166,6 +172,12 @@ namespace TorannMagic
                 else if (parent.def.defName == "SpellOf_Resurrection" && comp.spell_Resurrection == false && user.story.traits.HasTrait(TorannMagicDefOf.Priest))
                 {
                     comp.spell_Resurrection = true;
+                    comp.InitializeSpell();
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def.defName == "SpellOf_HolyWrath" && comp.spell_HolyWrath == false && user.story.traits.HasTrait(TorannMagicDefOf.Paladin))
+                {
+                    comp.spell_HolyWrath = true;
                     comp.InitializeSpell();
                     this.parent.Destroy(DestroyMode.Vanish);
                 }

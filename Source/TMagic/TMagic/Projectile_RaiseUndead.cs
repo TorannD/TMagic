@@ -61,7 +61,6 @@ namespace TorannMagic
                                         RemoveTraits(undeadPawn, undeadPawn.story.traits.allTraits);                                        
                                         undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Undead"), 0, false));
                                         undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Psychopath"), 0, false));
-                                        undeadPawn.story.bodyType = BodyType.Thin;
                                         Color undeadColor = new Color(.2f, .4f, 0);
                                         undeadPawn.story.hairColor = undeadColor;
                                         ResurrectionUtility.Resurrect(undeadPawn);

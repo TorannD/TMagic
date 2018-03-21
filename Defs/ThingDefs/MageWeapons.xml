@@ -80,6 +80,29 @@
 	<equippedAngleOffset>40</equippedAngleOffset>
   </ThingDef>  
   
+  <ThingDef Name="TM_BaseMeleeMageWeapon" Abstract="True" ParentName="BaseMageWeapon">
+	<techLevel>Neolithic</techLevel>
+	<smeltable>true</smeltable>
+    <thingCategories>
+      <li>WeaponsMelee</li>
+    </thingCategories>
+    <inspectorTabs>
+      <li>ITab_Art</li>
+	  <li>TorannMagic.Enchantment.ITab_Enchantment</li>
+    </inspectorTabs>
+    <comps>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Art">
+        <nameMaker>ArtName_WeaponGun</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+    </comps>
+	<equippedAngleOffset>40</equippedAngleOffset>
+  </ThingDef>
+  
   <ThingDef Name="TM_BaseWand" Abstract="True" ParentName="BaseMageWeapon">
 	<techLevel>Neolithic</techLevel>
 	<smeltable>true</smeltable>
@@ -124,6 +147,97 @@
   
   <!-- =======================Magic Weapons========================================================================================= -->
 
+  <!-- =======================  Melee Weapons  ============================ -->
+
+  <ThingDef ParentName="TM_BaseMeleeMageWeapon">
+		<defName>TM_ThrumboAxe</defName>
+		<label>thrumbo axe</label>
+		<description>An axe crafted using thrumbo horns that are fused together with a clasp made from magicyte. This clasp is able to store arcane potential and transfer it as physical force when the axe is swung, allowing it to deliver mighty blows capable of cleaving through multiple opponents. The shaft is also etched with magical runes to augment the weilders arcane power.</description>
+		<graphicData>
+			<texPath>Items/weapons/thrumboaxe_etched_offset</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.4</drawSize>
+		</graphicData>
+    <weaponTags>
+	
+    </weaponTags>
+	<statBases>
+      <WorkToMake>120000</WorkToMake>
+	  <MarketValue>10000</MarketValue>
+      <Mass>5</Mass>
+	  <MaxHitPoints>450</MaxHitPoints>
+	  <Flammability>1.0</Flammability>
+	  <DeteriorationRate>1</DeteriorationRate>
+      <Weapon_Bulk>1</Weapon_Bulk>
+    </statBases>
+    <costList>
+      <Steel>100</Steel>
+      <WoodLog>50</WoodLog>
+	  <Jade>20</Jade>
+	  <Silver>200</Silver>
+	  <RawMagicyte>400</RawMagicyte>
+    </costList>
+	<recipeMaker>
+	  <workSpeedStat>SmithingSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+	  <effectWorking>Smelt</effectWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+	  <recipeUsers>
+        <li>ElectricSmithy</li>
+        <li>FueledSmithy</li>
+      </recipeUsers>
+      <workAmount>120000</workAmount>
+	  <skillRequirements>
+			<Intellectual>6</Intellectual>
+			<Crafting>6</Crafting>
+	  </skillRequirements>
+	  <researchPrerequisite>
+			<li>TM_ArcaneApparel</li>
+	  </researchPrerequisite>
+    </recipeMaker>	
+	<comps>
+		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		  <hasEnchantment>true</hasEnchantment>
+		  <maxMP>0.10</maxMP>
+		  <maxMPTier>Standard</maxMPTier>
+		  <arcaneDmg>0.20</arcaneDmg>
+		  <arcaneDmgTier>Crafted</arcaneDmgTier>	
+		  <arcaneRes>0.30</arcaneRes>
+		  <arcaneResTier>Major</arcaneResTier>	
+		</li>
+		<li>
+		  <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
+		</li>
+	</comps>
+	<equippedAngleOffset>-15</equippedAngleOffset>
+    <tools>
+      <li>
+        <label>handle</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>.9</cooldownTime>
+      </li>
+	  <li>
+	    <label>cleave</label>
+        <capacities>
+          <li>TM_ThrumboCleave</li>
+        </capacities>
+        <power>18</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+	  <li>
+        <label>horns</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>26</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>  
+  
 <!-- =======================  Wands   ============================ -->
 
   <!-- Fire Wand -->	
@@ -472,6 +586,120 @@
 				<muzzleFlashScale>25</muzzleFlashScale>
 			</DeflectVerb>			
 		  </li>
+	</comps>
+	<equippedAngleOffset>15</equippedAngleOffset>
+    <verbs>
+      <li>
+        <verbClass>TorannMagic.Weapon.Verb_BlazingPower</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_BlazingPower</defaultProjectile>
+        <warmupTime>1</warmupTime>
+        <range>40</range>
+        <soundCast>TM_Woosh</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>25</muzzleFlashScale>
+		<burstShotCount>7</burstShotCount>
+		<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>rod</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>13</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+	  <li>
+        <label>staff head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>18</power>
+        <cooldownTime>1.9</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  
+  <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+	<thingClass>TorannMagic.Weapon.Projectile_BlazingPower</thingClass>
+	<defName>Projectile_BlazingPower</defName>
+	<label>blazing power</label>
+	<graphicData>
+		<texPath>Spells/blazingpower</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shaderType>TransparentPostLight</shaderType>
+	</graphicData>
+	<projectile>
+		<damageDef>TM_BlazingPower</damageDef>
+		<damageAmountBase>6</damageAmountBase>
+		<speed>45</speed>
+		<explosionRadius>.8</explosionRadius>
+		<postExplosionSpawnChance>1</postExplosionSpawnChance>
+	</projectile>
+  </ThingDef>
+
+
+  <ThingDef ParentName="TM_BaseRangedMageWeapon">
+    <defName>TM_DefenderStaff</defName>
+    <label>Staff of the Defender</label>
+    <description>New text</description>
+    <graphicData>
+      <texPath>Items/weapons/staff_elements</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>InteractRevolver</soundInteract>	
+    <statBases>
+      <WorkToMake>150000</WorkToMake>
+	  <MarketValue>12000</MarketValue>
+      <Mass>3.0</Mass>
+      <AccuracyTouch>0.88</AccuracyTouch>
+      <AccuracyShort>0.64</AccuracyShort>
+      <AccuracyMedium>0.58</AccuracyMedium>
+      <AccuracyLong>0.51</AccuracyLong>
+      <RangedWeapon_Cooldown>3.5</RangedWeapon_Cooldown>
+      <Weapon_Bulk>2</Weapon_Bulk>
+    </statBases>
+    <costList>
+      <Steel>100</Steel>
+      <WoodLog>50</WoodLog>
+	  <Jade>50</Jade>
+	  <Silver>10</Silver>
+	  <Gold>10</Gold>
+	  <Uranium>5</Uranium>
+    </costList>
+	<recipeMaker>
+	  <workSpeedStat>SmithingSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+	  <effectWorking>Smelt</effectWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+	  <recipeUsers>
+        <li>ElectricSmithy</li>
+        <li>FueledSmithy</li>
+		<li>CraftingSpot</li>
+      </recipeUsers>
+      <workAmount>77700</workAmount>
+	  <skillRequirements>
+			<Intellectual>10</Intellectual>
+	  </skillRequirements>
+	  <researchPrerequisite>
+			<li>TM_ArcaneArtifacts</li>
+	  </researchPrerequisite>
+    </recipeMaker>	
+	<comps>
+		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		  <hasEnchantment>true</hasEnchantment>
+		  <maxMP>0.20</maxMP>
+		  <maxMPTier>Crafted</maxMPTier>
+		  <mpRegenRate>0.10</mpRegenRate>
+		  <mpRegenRateTier>Standard</mpRegenRateTier>
+		  <arcaneDmg>0.40</arcaneDmg>
+		  <arcaneDmgTier>Crafted</arcaneDmgTier>		  
+		</li>
+		<li>
+		  <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
+		</li>
 	</comps>
 	<equippedAngleOffset>15</equippedAngleOffset>
     <verbs>

@@ -26,12 +26,12 @@
 
   <AbilityUser.AbilityDef Name="BaseMagicAbility" Abstract="True">
     <abilityClass>TorannMagic.MagicAbility</abilityClass>
-    <uiIconPath>UI/Glow_Corrupt</uiIconPath>
+    <uiIconPath>Spells/invis</uiIconPath>
   </AbilityUser.AbilityDef>
   
   <AbilityUser.AbilityDef Name="BaseMightAbility" Abstract="True">
     <abilityClass>TorannMagic.MightAbility</abilityClass>
-    <uiIconPath>UI/Glow_Corrupt</uiIconPath>
+    <uiIconPath>Spells/invis</uiIconPath>
   </AbilityUser.AbilityDef>
 
 

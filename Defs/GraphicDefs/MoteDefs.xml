@@ -6,11 +6,24 @@
     <graphicData>
       <texPath>Motes/ManaMote</texPath>
     </graphicData>
-    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <altitudeLayer>MoteLow</altitudeLayer>
     <mote>
       <fadeInTime>0.35</fadeInTime>
       <solidTime>0.03</solidTime>
       <fadeOutTime>1</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_Barrier</defName>
+    <graphicData>
+      <texPath>Motes/BarrierMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.1</solidTime>
+      <fadeOutTime>.3</fadeOutTime>
     </mote>
   </ThingDef>
   

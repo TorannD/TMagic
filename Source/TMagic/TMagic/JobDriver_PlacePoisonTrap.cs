@@ -55,7 +55,7 @@ namespace TorannMagic
                                 ver.level + 2
                             }), MessageTypeDefOf.NeutralEvent);
                             Thing tempThing = comp.combatItems[0];
-                            comp.combatItems.Remove(comp.combatItems[0]);
+                            comp.combatItems.Remove(tempThing);
                             if (tempThing != null && !tempThing.Destroyed)
                             {
                                 tempThing.Destroy();

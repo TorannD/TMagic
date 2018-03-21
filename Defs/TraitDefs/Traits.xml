@@ -604,6 +604,7 @@
 				<ImmunityGainSpeed>49</ImmunityGainSpeed>
 				<PainShockThreshold>0.90</PainShockThreshold>
 				<DiplomacyPower>-0.5</DiplomacyPower>
+				<WorkSpeedGlobal>-0.40</WorkSpeedGlobal>
 			</statOffsets>
 		  </li>
 		</degreeDatas>	

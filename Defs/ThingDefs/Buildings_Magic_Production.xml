@@ -67,6 +67,8 @@
 	  <li>CutMinorMPRegenRateGem</li>
 	  <li>CutMinorXPGainGem</li>
 	  <li>CutMinorMPCostGem</li>
+	  <li>CutMinorArcaneDmgGem</li>
+	  <li>CutMinorArcaneResGem</li>
     </recipes>
     <inspectorTabs>
       <li>ITab_Bills</li>

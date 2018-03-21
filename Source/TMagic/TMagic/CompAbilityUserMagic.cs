@@ -72,6 +72,7 @@ namespace TorannMagic
         private float P_Shield_eff = 0.10f;
         private float P_ValiantCharge_eff = 0.10f;
         private float P_Overwhelm_eff = 0.10f;
+        private float P_HolyWrath_eff = 0.5f;
         private float S_SummonElemental_eff = 0.08f;
         private float S_SummonExplosive_eff = 0.15f;
         private float S_SummonMinion_eff = 0.10f;
@@ -117,6 +118,10 @@ namespace TorannMagic
         public bool spell_FoldReality = false;
         public bool spell_Resurrection = false;
         public bool spell_PowerNode = false;
+        public bool spell_Sunlight = false;
+        public bool spell_HolyWrath = false;
+
+        private bool item_StaffOfDefender = false;
 
         public float maxMP = 1;
         public float mpRegenRate = 1;
@@ -127,8 +132,10 @@ namespace TorannMagic
         public float arcaneRes = 1;
 
         public List<Thing> summonedMinions = new List<Thing>();
+        public List<Thing> summonedLights = new List<Thing>();
         private bool dismissMinionSpell = false;
         private bool dismissUndeadSpell = false;
+        private bool dismissSunlightSpell = false;
 
         private MagicData magicData = null;
         public MagicData MagicData
@@ -493,6 +500,17 @@ namespace TorannMagic
             }
             return result;
         }
+        public int LevelUpSkill_HolyWrath(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_HolyWrath.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
 
         public int LevelUpSkill_SummonMinion(string skillName)
         {
@@ -769,6 +787,7 @@ namespace TorannMagic
                                 }
                             }
                             ResolveMinions();
+                            ResolveSustainers();
                             if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer))
                             {
                                 ResolveUndead();
@@ -1556,6 +1575,11 @@ namespace TorannMagic
                     this.RemovePawnAbility(TorannMagicDefOf.TM_PowerNode);
                     this.AddPawnAbility(TorannMagicDefOf.TM_PowerNode);
                 }
+                if (this.spell_Sunlight == true)
+                {
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_Sunlight);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Sunlight);
+                }
                 if (this.spell_DryGround == true)
                 {
                     this.RemovePawnAbility(TorannMagicDefOf.TM_DryGround);
@@ -1635,6 +1659,11 @@ namespace TorannMagic
                 {
                     this.RemovePawnAbility(TorannMagicDefOf.TM_Resurrection);
                     this.AddPawnAbility(TorannMagicDefOf.TM_Resurrection);
+                }
+                if (this.spell_HolyWrath == true)
+                {
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_HolyWrath);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_HolyWrath);
                 }
                 //this.UpdateAbilities();
             }            
@@ -2345,6 +2374,15 @@ namespace TorannMagic
                     result = magicPowerSkill.level;
                 }
             }
+            if (attributeName == "TM_HolyWrath_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_HolyWrath.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
             if (attributeName == "TM_SummonMinion_eff")
             {
                 MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_SummonMinion.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
@@ -2659,6 +2697,11 @@ namespace TorannMagic
             {
                 MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Overwhelm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Overwhelm_eff");
                 adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.P_Overwhelm_eff * (float)magicPowerSkill.level);
+            }
+            if (magicDef == TorannMagicDefOf.TM_HolyWrath)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_HolyWrath.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_HolyWrath_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.P_HolyWrath_eff * (float)magicPowerSkill.level);
             }
             if (magicDef == TorannMagicDefOf.TM_SummonMinion)
             {
@@ -2988,8 +3031,22 @@ namespace TorannMagic
             {
                 this.RemovePawnAbility(TorannMagicDefOf.TM_DismissUndead);
                 this.dismissUndeadSpell = false;
+            }            
+        }
+
+        public void ResolveSustainers()
+        {
+            if (this.summonedLights.Count > 0 && dismissSunlightSpell == false)
+            {
+                this.AddPawnAbility(TorannMagicDefOf.TM_DismissSunlight);
+                dismissSunlightSpell = true;
             }
-            
+
+            if (this.summonedLights.Count <= 0 && dismissSunlightSpell == true)
+            {
+                this.RemovePawnAbility(TorannMagicDefOf.TM_DismissSunlight);
+                dismissSunlightSpell = false;
+            }
         }
 
         public void ResolveMinions()
@@ -3114,6 +3171,35 @@ namespace TorannMagic
                         _arcaneDmg += item.Props.arcaneDmg;
                     }
                 }
+                if(this.Pawn.equipment.Primary.def.defName == "TM_DefenderStaff")
+                {
+                    if(this.item_StaffOfDefender == false)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_ArcaneBarrier);
+                        this.item_StaffOfDefender = true;
+                    }
+                }
+                else
+                {
+                    if(this.item_StaffOfDefender == true)
+                    {
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_ArcaneBarrier);
+                        this.item_StaffOfDefender = false;
+                    }
+                }
+            }
+            if(this.summonedLights.Count > 0)
+            {
+                for (int i = 0; i < this.summonedLights.Count; i++)
+                {
+                    if (this.summonedLights[i].Destroyed)
+                    {
+                        this.summonedLights.Remove(this.summonedLights[i]);
+                        i--;
+                    }
+                }
+                _maxMP -= (this.summonedLights.Count * .4f);
+                _mpRegenRate -= (this.summonedLights.Count * .4f);
             }
             MagicPowerSkill spirit = this.MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr");
             this.maxMP = 1f + (spirit.level * .02f) + _maxMP;
@@ -3216,6 +3302,7 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.spell_Heater, "spell_Heater", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Cooler, "spell_Cooler", false, false);
             Scribe_Values.Look<bool>(ref this.spell_PowerNode, "spell_PowerNode", false, false);
+            Scribe_Values.Look<bool>(ref this.spell_Sunlight, "spell_Sunlight", false, false);
             Scribe_Values.Look<bool>(ref this.spell_DryGround, "spell_DryGround", false, false);
             Scribe_Values.Look<bool>(ref this.spell_WetGround, "spell_WetGround", false, false);
             Scribe_Values.Look<bool>(ref this.spell_ChargeBattery, "spell_ChargeBattery", false, false);
@@ -3232,8 +3319,10 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.spell_ManaShield, "spell_ManaShield", false, false);
             Scribe_Values.Look<bool>(ref this.spell_FoldReality, "spell_FoldReality", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Resurrection, "spell_Resurrection", false, false);
+            Scribe_Values.Look<bool>(ref this.spell_HolyWrath, "spell_HolyWrath", false, false);
             Scribe_Values.Look<bool>(ref this.doOnce, "doOnce", true, false);
             Scribe_Collections.Look<Thing>(ref this.summonedMinions, "summonedMinions", LookMode.Reference);
+            Scribe_Collections.Look<Thing>(ref this.summonedLights, "summonedLights", LookMode.Reference);
             Scribe_Deep.Look<MagicData>(ref this.magicData, "magicData", new object[]
             {
                 this

@@ -51,227 +51,8 @@ namespace TorannMagic
         public float spCost = 1;
         public float xpGain = 1;
 
-        public void ResolveClassSkills()
-        {
-            if (this.IsMightUser && !this.Pawn.Dead && !this.Pawn.Downed)
-            {
-                if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer))
-                {
-                    MightPowerSkill bladefocus_pwr = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_BladeFocus.FirstOrDefault((MightPowerSkill x) => x.label == "TM_BladeFocus_pwr");
-
-                    List<Trait> traits = this.Pawn.story.traits.allTraits;
-                    for (int i = 0; i < traits.Count; i++)
-                    {
-                        if (traits[i].def.defName == "Bladedancer")
-                        {
-                            if (traits[i].Degree < bladefocus_pwr.level)
-                            {
-                                traits.Remove(traits[i]);
-                                this.Pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Bladedancer"), bladefocus_pwr.level, false));
-                                MoteMaker.ThrowHeatGlow(this.Pawn.Position, this.Pawn.Map, 2);
-                            }
-                        }
-                    }
-                }
-
-                if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
-                {
-                    if (!this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffFortitude))
-                    {
-                        HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_HediffFortitude, -5f);
-                        HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_HediffFortitude, 1f);
-                    }
-                }
-
-                if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger))
-                {
-                    MightPowerSkill rangertraining_pwr = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_RangerTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_RangerTraining_pwr");
-
-                    List<Trait> traits = this.Pawn.story.traits.allTraits;
-                    for (int i = 0; i < traits.Count; i++)
-                    {
-                        if (traits[i].def.defName == "Ranger")
-                        {
-
-                            if (traits[i].Degree < rangertraining_pwr.level)
-                            {
-                                traits.Remove(traits[i]);
-                                this.Pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Ranger"), rangertraining_pwr.level, false));
-                                MoteMaker.ThrowHeatGlow(this.Pawn.Position, this.Pawn.Map, 2);
-                            }
-                        }
-                    }
-                }
-
-                if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper))
-                {
-                    MightPowerSkill sniperfocus_pwr = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_SniperFocus.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SniperFocus_pwr");
-
-                    List<Trait> traits = this.Pawn.story.traits.allTraits;
-                    for (int i = 0; i < traits.Count; i++)
-                    {
-                        if (traits[i].def.defName == "TM_Sniper")
-                        {
-                            if (traits[i].Degree < sniperfocus_pwr.level)
-                            {
-                                traits.Remove(traits[i]);
-                                this.Pawn.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Sniper"), sniperfocus_pwr.level, false));
-                                MoteMaker.ThrowHeatGlow(base.Pawn.Position, this.Pawn.Map, 2);
-                            }
-                        }
-                    }
-                }
-
-                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) && !this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BladeArtHD))
-                {
-                    MightPowerSkill bladeart_pwr = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_BladeArt.FirstOrDefault((MightPowerSkill x) => x.label == "TM_BladeArt_pwr");
-
-                    //HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BladeArtHD, -5f);
-                    HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BladeArtHD, (.5f) + bladeart_pwr.level);
-                    if (!this.Pawn.IsColonistPlayerControlled && settingsRef.AIHardMode)
-                    {
-                        HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BladeArtHD, 4);
-                    }
-                }
-                else if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) && !this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BowTrainingHD))
-                {
-                    MightPowerSkill bowtraining_pwr = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_BowTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_BowTraining_pwr");
-
-                    //HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BowTrainingHD, -5f);
-                    HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BowTrainingHD, (.5f) + bowtraining_pwr.level);
-                    if (!this.Pawn.IsColonistPlayerControlled && settingsRef.AIHardMode)
-                    {
-                        HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BowTrainingHD, 4);
-                    }
-
-                }
-                else
-                {
-                    using (IEnumerator<Hediff> enumerator = this.Pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
-                    {
-                        while (enumerator.MoveNext())
-                        {
-                            Hediff rec = enumerator.Current;
-
-                            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) && rec.def == TorannMagicDefOf.TM_BladeArtHD && this.Pawn.IsColonist)
-                            {
-                                MightPowerSkill bladeart_pwr = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_BladeArt.FirstOrDefault((MightPowerSkill x) => x.label == "TM_BladeArt_pwr");
-                                if (rec.Severity < (float)(.5f + bladeart_pwr.level) || rec.Severity > (float)(.6f + bladeart_pwr.level))
-                                {
-                                    HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BladeArtHD, -5f);
-                                    HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BladeArtHD, (.5f) + bladeart_pwr.level);
-                                    MoteMaker.ThrowDustPuff(this.Pawn.Position.ToVector3Shifted(), this.Pawn.Map, .6f);
-                                    MoteMaker.ThrowHeatGlow(this.Pawn.Position, this.Pawn.Map, 1.6f);
-                                }
-                            }
-
-                            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) && rec.def == TorannMagicDefOf.TM_BowTrainingHD && this.Pawn.IsColonist)
-                            {
-                                MightPowerSkill bowtraining_pwr = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_BowTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_BowTraining_pwr");
-                                if (rec.Severity < (float)(.5f + bowtraining_pwr.level) || rec.Severity > (float)(.6f + bowtraining_pwr.level))
-                                {
-                                    HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BowTrainingHD, -5f);
-                                    HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BowTrainingHD, (.5f) + bowtraining_pwr.level);
-                                    MoteMaker.ThrowDustPuff(this.Pawn.Position.ToVector3Shifted(), this.Pawn.Map, .6f);
-                                    MoteMaker.ThrowHeatGlow(this.Pawn.Position, this.Pawn.Map, 1.6f);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        private void ResolveSustainedSkills()
-        {
-            float _maxSP = 0;
-            float _spRegeRate = 0;
-            float coolDown = 0;
-            float _spCost = 0;
-            float _xpGain = 0;
-
-            using (IEnumerator<Hediff> enumerator = this.Pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
-            {
-                while (enumerator.MoveNext())
-                {
-                    Hediff rec = enumerator.Current;
-                    if (rec.def.defName == ("TM_HediffSprint"))
-                    {
-                        MightPowerSkill eff = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Sprint.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Sprint_eff");
-                        _maxSP -= .3f * (1 - (.1f * eff.level));
-                        //Catch negative values
-                        if (this.maxSP < 0)
-                        {
-                            this.Pawn.health.RemoveHediff(rec);
-                            Log.Message("Removed " + rec.def.LabelCap + ", insufficient stamina to maintain.");
-                        }
-                    }
-                    if (rec.def.defName == "TM_HediffGearRepair")
-                    {
-                        _maxSP -= .2f;
-                        //Catch negative values
-                        if (this.maxSP < 0)
-                        {
-                            this.Pawn.health.RemoveHediff(rec);
-                            Log.Message("Removed " + rec.def.LabelCap + ", insufficient stamina to maintain.");
-                        }
-                    }
-                    if (rec.def.defName == "TM_HediffInnerHealing")
-                    {
-                        _maxSP -= .1f;
-                        //Catch negative values
-                        if (this.maxSP < 0)
-                        {
-                            this.Pawn.health.RemoveHediff(rec);
-                            Log.Message("Removed " + rec.def.LabelCap + ", insufficient stamina to maintain.");
-                        }
-                    }
-                    if (rec.def.defName == "TM_HediffHeavyBlow")
-                    {
-                        _maxSP -= .3f;
-                        //Catch negative values
-                        if (this.maxSP < 0)
-                        {
-                            this.Pawn.health.RemoveHediff(rec);
-                            Log.Message("Removed " + rec.def.LabelCap + ", insufficient stamina to maintain.");
-                        }
-                    }
-                    if (rec.def.defName == "TM_HediffStrongBack")
-                    {
-                        _maxSP -= .1f;
-                        //Catch negative values
-                        if (this.maxSP < 0)
-                        {
-                            this.Pawn.health.RemoveHediff(rec);
-                            Log.Message("Removed " + rec.def.LabelCap + ", insufficient stamina to maintain.");
-                        }
-                    }
-                    if (rec.def.defName == "TM_HediffThickSkin")
-                    {
-                        _maxSP -= .3f;
-                        //Catch negative values
-                        if (this.maxSP < 0)
-                        {
-                            this.Pawn.health.RemoveHediff(rec);
-                            Log.Message("Removed " + rec.def.LabelCap + ", insufficient stamina to maintain.");
-                        }
-                    }
-                    if (rec.def.defName == "TM_HediffFightersFocus")
-                    {
-                        _maxSP -= .15f;
-                        //Catch negative values
-                        if (this.maxSP < 0)
-                        {
-                            this.Pawn.health.RemoveHediff(rec);
-                            Log.Message("Removed " + rec.def.LabelCap + ", insufficient stamina to maintain.");
-                        }
-                    }
-                }
-            }
-            MightPowerSkill endurance = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_global_endurance.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_endurance_pwr");
-            this.maxSP = 1 + (.02f * endurance.level) + _maxSP;
-        }
+        public bool animalBondingDisabled = false;
+        private int animalFriendDisabledPeriod;        
 
         public List<Thing> combatItems = new List<Thing>();
 
@@ -1310,7 +1091,260 @@ namespace TorannMagic
                 list = null;
             }
             base.PostPreApplyDamage(dinfo, out absorbed);
-        }        
+        }
+
+        public void ResolveClassSkills()
+        {
+            if (this.IsMightUser && !this.Pawn.Dead && !this.Pawn.Downed)
+            {
+                if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer))
+                {
+                    MightPowerSkill bladefocus_pwr = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_BladeFocus.FirstOrDefault((MightPowerSkill x) => x.label == "TM_BladeFocus_pwr");
+
+                    List<Trait> traits = this.Pawn.story.traits.allTraits;
+                    for (int i = 0; i < traits.Count; i++)
+                    {
+                        if (traits[i].def.defName == "Bladedancer")
+                        {
+                            if (traits[i].Degree < bladefocus_pwr.level)
+                            {
+                                traits.Remove(traits[i]);
+                                this.Pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Bladedancer"), bladefocus_pwr.level, false));
+                                MoteMaker.ThrowHeatGlow(this.Pawn.Position, this.Pawn.Map, 2);
+                            }
+                        }
+                    }
+                }
+
+                if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
+                {
+                    if (!this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffFortitude))
+                    {
+                        HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_HediffFortitude, -5f);
+                        HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_HediffFortitude, 1f);
+                    }
+                }
+
+                if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger))
+                {
+                    MightPowerSkill rangertraining_pwr = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_RangerTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_RangerTraining_pwr");
+
+                    List<Trait> traits = this.Pawn.story.traits.allTraits;
+                    for (int i = 0; i < traits.Count; i++)
+                    {
+                        if (traits[i].def.defName == "Ranger")
+                        {
+
+                            if (traits[i].Degree < rangertraining_pwr.level)
+                            {
+                                traits.Remove(traits[i]);
+                                this.Pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Ranger"), rangertraining_pwr.level, false));
+                                MoteMaker.ThrowHeatGlow(this.Pawn.Position, this.Pawn.Map, 2);
+                            }
+                        }
+                    }
+                }
+
+                if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper))
+                {
+                    MightPowerSkill sniperfocus_pwr = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_SniperFocus.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SniperFocus_pwr");
+
+                    List<Trait> traits = this.Pawn.story.traits.allTraits;
+                    for (int i = 0; i < traits.Count; i++)
+                    {
+                        if (traits[i].def.defName == "TM_Sniper")
+                        {
+                            if (traits[i].Degree < sniperfocus_pwr.level)
+                            {
+                                traits.Remove(traits[i]);
+                                this.Pawn.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Sniper"), sniperfocus_pwr.level, false));
+                                MoteMaker.ThrowHeatGlow(base.Pawn.Position, this.Pawn.Map, 2);
+                            }
+                        }
+                    }
+                }
+
+                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) && !this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BladeArtHD))
+                {
+                    MightPowerSkill bladeart_pwr = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_BladeArt.FirstOrDefault((MightPowerSkill x) => x.label == "TM_BladeArt_pwr");
+
+                    //HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BladeArtHD, -5f);
+                    HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BladeArtHD, (.5f) + bladeart_pwr.level);
+                    if (!this.Pawn.IsColonistPlayerControlled && settingsRef.AIHardMode)
+                    {
+                        HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BladeArtHD, 4);
+                    }
+                }
+                else if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) && !this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BowTrainingHD))
+                {
+                    MightPowerSkill bowtraining_pwr = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_BowTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_BowTraining_pwr");
+
+                    //HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BowTrainingHD, -5f);
+                    HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BowTrainingHD, (.5f) + bowtraining_pwr.level);
+                    if (!this.Pawn.IsColonistPlayerControlled && settingsRef.AIHardMode)
+                    {
+                        HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BowTrainingHD, 4);
+                    }
+
+                }
+                else
+                {
+                    using (IEnumerator<Hediff> enumerator = this.Pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+                    {
+                        while (enumerator.MoveNext())
+                        {
+                            Hediff rec = enumerator.Current;
+
+                            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) && rec.def == TorannMagicDefOf.TM_BladeArtHD && this.Pawn.IsColonist)
+                            {
+                                MightPowerSkill bladeart_pwr = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_BladeArt.FirstOrDefault((MightPowerSkill x) => x.label == "TM_BladeArt_pwr");
+                                if (rec.Severity < (float)(.5f + bladeart_pwr.level) || rec.Severity > (float)(.6f + bladeart_pwr.level))
+                                {
+                                    HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BladeArtHD, -5f);
+                                    HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BladeArtHD, (.5f) + bladeart_pwr.level);
+                                    MoteMaker.ThrowDustPuff(this.Pawn.Position.ToVector3Shifted(), this.Pawn.Map, .6f);
+                                    MoteMaker.ThrowHeatGlow(this.Pawn.Position, this.Pawn.Map, 1.6f);
+                                }
+                            }
+
+                            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) && rec.def == TorannMagicDefOf.TM_BowTrainingHD && this.Pawn.IsColonist)
+                            {
+                                MightPowerSkill bowtraining_pwr = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_BowTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_BowTraining_pwr");
+                                if (rec.Severity < (float)(.5f + bowtraining_pwr.level) || rec.Severity > (float)(.6f + bowtraining_pwr.level))
+                                {
+                                    HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BowTrainingHD, -5f);
+                                    HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BowTrainingHD, (.5f) + bowtraining_pwr.level);
+                                    MoteMaker.ThrowDustPuff(this.Pawn.Position.ToVector3Shifted(), this.Pawn.Map, .6f);
+                                    MoteMaker.ThrowHeatGlow(this.Pawn.Position, this.Pawn.Map, 1.6f);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void ResolveSustainedSkills()
+        {
+            float _maxSP = 0;
+            float _spRegeRate = 0;
+            float coolDown = 0;
+            float _spCost = 0;
+            float _xpGain = 0;
+
+            using (IEnumerator<Hediff> enumerator = this.Pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+            {
+                while (enumerator.MoveNext())
+                {
+                    Hediff rec = enumerator.Current;
+                    if (rec.def.defName == ("TM_HediffSprint"))
+                    {
+                        MightPowerSkill eff = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Sprint.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Sprint_eff");
+                        _maxSP -= .3f * (1 - (.1f * eff.level));
+                        //Catch negative values
+                        if (this.maxSP < 0)
+                        {
+                            this.Pawn.health.RemoveHediff(rec);
+                            Log.Message("Removed " + rec.def.LabelCap + ", insufficient stamina to maintain.");
+                        }
+                    }
+                    if (rec.def.defName == "TM_HediffGearRepair")
+                    {
+                        _maxSP -= .2f;
+                        //Catch negative values
+                        if (this.maxSP < 0)
+                        {
+                            this.Pawn.health.RemoveHediff(rec);
+                            Log.Message("Removed " + rec.def.LabelCap + ", insufficient stamina to maintain.");
+                        }
+                    }
+                    if (rec.def.defName == "TM_HediffInnerHealing")
+                    {
+                        _maxSP -= .1f;
+                        //Catch negative values
+                        if (this.maxSP < 0)
+                        {
+                            this.Pawn.health.RemoveHediff(rec);
+                            Log.Message("Removed " + rec.def.LabelCap + ", insufficient stamina to maintain.");
+                        }
+                    }
+                    if (rec.def.defName == "TM_HediffHeavyBlow")
+                    {
+                        _maxSP -= .3f;
+                        //Catch negative values
+                        if (this.maxSP < 0)
+                        {
+                            this.Pawn.health.RemoveHediff(rec);
+                            Log.Message("Removed " + rec.def.LabelCap + ", insufficient stamina to maintain.");
+                        }
+                    }
+                    if (rec.def.defName == "TM_HediffStrongBack")
+                    {
+                        _maxSP -= .1f;
+                        //Catch negative values
+                        if (this.maxSP < 0)
+                        {
+                            this.Pawn.health.RemoveHediff(rec);
+                            Log.Message("Removed " + rec.def.LabelCap + ", insufficient stamina to maintain.");
+                        }
+                    }
+                    if (rec.def.defName == "TM_HediffThickSkin")
+                    {
+                        _maxSP -= .3f;
+                        //Catch negative values
+                        if (this.maxSP < 0)
+                        {
+                            this.Pawn.health.RemoveHediff(rec);
+                            Log.Message("Removed " + rec.def.LabelCap + ", insufficient stamina to maintain.");
+                        }
+                    }
+                    if (rec.def.defName == "TM_HediffFightersFocus")
+                    {
+                        _maxSP -= .15f;
+                        //Catch negative values
+                        if (this.maxSP < 0)
+                        {
+                            this.Pawn.health.RemoveHediff(rec);
+                            Log.Message("Removed " + rec.def.LabelCap + ", insufficient stamina to maintain.");
+                        }
+                    }
+                }
+            }
+            if (this.bondedPet != null)
+            {
+                _maxSP -= .30f;
+                if (this.bondedPet.Dead || this.bondedPet.Destroyed)
+                {
+                    this.Pawn.needs.mood.thoughts.memories.TryGainMemory(TorannMagicDefOf.RangerPetDied, null);
+                    this.bondedPet = null;
+                }
+                else if (this.bondedPet.Faction != null && this.bondedPet.Faction != this.Pawn.Faction)
+                {
+                    //sold? punish evil
+                    this.Pawn.needs.mood.thoughts.memories.TryGainMemory(TorannMagicDefOf.RangerSoldBondedPet, null);
+                    this.bondedPet = null;
+                }
+            }
+            if(this.Pawn.needs.mood.thoughts.memories.NumMemoriesOfDef(ThoughtDef.Named("RangerSoldBondedPet")) > 0)
+            {
+                if(this.animalBondingDisabled == false)
+                {
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_AnimalFriend);
+                    this.animalBondingDisabled = true;
+                }
+            }
+            else
+            {
+                if(this.animalBondingDisabled == true)
+                {
+                    this.AddPawnAbility(TorannMagicDefOf.TM_AnimalFriend);
+                    this.animalBondingDisabled = false;
+                }
+            }
+            MightPowerSkill endurance = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_global_endurance.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_endurance_pwr");
+            this.maxSP = 1 + (.02f * endurance.level) + _maxSP;
+        }
 
         public void ResolveStamina()
         {

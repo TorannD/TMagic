@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+<!--   <HediffDef ParentName="InjuryBase" Name="CleaveInjuryBase" Abstract="True">
+    <hediffClass>TorannMagic.Hediff_CleaveInjury</hediffClass>
+    <tendable>true</tendable>
+    <displayWound>true</displayWound>
+  </HediffDef>
+	
+  <ToolCapacityDef>
+    <defName>TM_ThrumboCleave</defName>
+    <label>cleaving</label>
+  </ToolCapacityDef> -->
+  
+  <HediffDef ParentName="InjuryBase">
+	<defName>TM_ThrumboCleave</defName>
+	<label>cleave</label>
+    <labelNoun>a massive wound</labelNoun>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_Infecter">
+        <infectionChance>0.05</infectionChance>
+      </li>
+      <li Class="HediffCompProperties_GetsOld">
+			  <oldLabel>scar</oldLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.0425</painPerSeverity>
+		<averagePainPerSeverityOld>0.01225</averagePainPerSeverityOld>
+		<bleedRate>0.10</bleedRate>
+		<canMerge>true</canMerge>
+		<destroyedLabel>Sliced off</destroyedLabel>
+		<destroyedOutLabel>Sliced out</destroyedOutLabel>
+	</injuryProps>
+  </HediffDef>
+
   <HediffDef ParentName="InjuryBase">
     <defName>TM_BlazingPowerHD</defName>
     <label>Blazing Power</label>

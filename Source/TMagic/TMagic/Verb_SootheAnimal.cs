@@ -52,33 +52,14 @@ namespace TorannMagic
                 if (this.TargetsAoE[i].Thing.Faction != this.CasterPawn.Faction)
                 {
                     Pawn newPawn = this.TargetsAoE[i].Thing as Pawn;
-                    
-                    bool flag1 = newPawn.mindState.mentalStateHandler.CurStateDef != MentalStateDefOf.ManhunterPermanent;
+
+                    bool flag1 = (newPawn.mindState.mentalStateHandler.CurStateDef == MentalStateDefOf.ManhunterPermanent) || (newPawn.mindState.mentalStateHandler.CurStateDef == MentalStateDefOf.Manhunter);
                     if (flag1)
                     {
                         if(newPawn.kindDef.RaceProps.Animal)
                         {
-                            newPawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.ManhunterPermanent, null, true, false, null);
-                            float sev = Rand.Range(pwr.level, 2 * pwr.level);
-                            HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_Manipulation, sev);
-                            sev = Rand.Range(pwr.level, 2 * pwr.level);
-                            HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_Movement, sev);
-                            sev = Rand.Range(pwr.level, 2 * pwr.level);
-                            HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_Breathing, sev);
-                            sev = Rand.Range(pwr.level, 2 * pwr.level);
-                            HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_Sight, sev);
-                            MoteMaker.ThrowMicroSparks(newPawn.Position.ToVector3().normalized, newPawn.Map);
-                            if (pwr.level > 0)
-                            {                                
-                                TM_MoteMaker.ThrowManaPuff(newPawn.Position.ToVector3(), newPawn.Map, 1f);                                
-                            }
-                        }
-                    }
-                    if(!flag1)
-                    {
-                        if (newPawn.kindDef.RaceProps.Animal)
-                        {
                             newPawn.mindState.mentalStateHandler.Reset();
+                            newPawn.jobs.StopAll();
                             MoteMaker.ThrowMicroSparks(newPawn.Position.ToVector3().normalized, newPawn.Map);
                             float sev = Rand.Range(pwr.level, 2 * pwr.level);
                             HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_AntiManipulation, sev);
@@ -91,7 +72,27 @@ namespace TorannMagic
                             if (pwr.level > 0)
                             {
                                 TM_MoteMaker.ThrowSiphonMote(newPawn.Position.ToVector3(), newPawn.Map, 1f);
-                            }                    
+                            }
+                        }
+                    }
+                    if(!flag1)
+                    {
+                        if (newPawn.kindDef.RaceProps.Animal)
+                        {
+                            newPawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.ManhunterPermanent, null, true, false, null);
+                            float sev = Rand.Range(pwr.level, 2 * pwr.level);
+                            HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_Manipulation, sev);
+                            sev = Rand.Range(pwr.level, 2 * pwr.level);
+                            HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_Movement, sev);
+                            sev = Rand.Range(pwr.level, 2 * pwr.level);
+                            HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_Breathing, sev);
+                            sev = Rand.Range(pwr.level, 2 * pwr.level);
+                            HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_Sight, sev);
+                            MoteMaker.ThrowMicroSparks(newPawn.Position.ToVector3().normalized, newPawn.Map);
+                            if (pwr.level > 0)
+                            {
+                                TM_MoteMaker.ThrowManaPuff(newPawn.Position.ToVector3(), newPawn.Map, 1f);
+                            }
                         }
                     }
                 }

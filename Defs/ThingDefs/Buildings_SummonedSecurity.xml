@@ -648,6 +648,81 @@
     </verbs>
   </ThingDef>
   
+<!--========================= Magic Walls =============================-->
 
+
+  <ThingDef ParentName="TM_BuildingBase" Name="TM_ArcaneBarrier">
+    <defName>TM_ArcaneBarrier</defName>
+    <label>arcane barrier</label>
+    <thingClass>TorannMagic.Building_TMBarrier</thingClass>
+    <category>Building</category>
+    <description>An impassable wall made from solidified arcane power. Provides protection or creates an impassable barrier.</description>
+    <graphicData>
+<!--       <texPath>Other/manawall</texPath> -->
+	  <texPath>Spells/invis</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <damageData>
+        <rect>(0.1,0,0.8,0.3)</rect>
+      </damageData>
+    </graphicData>
+    <blueprintGraphicData>
+      <texPath>Other/manawall</texPath>
+    </blueprintGraphicData>
+    <uiIconPath>Other/manawall</uiIconPath>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <WorkToBuild>150</WorkToBuild>
+      <Flammability>0</Flammability>
+    </statBases>
+    <costStuffCount>5</costStuffCount>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Impassable</passability>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>1</fillPercent>
+    <coversFloor>true</coversFloor>
+    <placingDraggableDimensions>1</placingDraggableDimensions>
+    <tickerType>Normal</tickerType>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <holdsRoof>false</holdsRoof>
+    <designationCategory>
+	
+	</designationCategory>
+    <staticSunShadowHeight>0</staticSunShadowHeight>
+    <blockLight>false</blockLight>
+    <canOverlapZones>false</canOverlapZones>
+    <stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <building>
+      <isInert>true</isInert>
+	  <expandHomeArea>false</expandHomeArea>
+      <isTrap>true</isTrap>
+	  <deconstructible>false</deconstructible>
+	  <claimable>false</claimable>
+	  <repairable>false</repairable>
+	  <isPlayerEjectable>false</isPlayerEjectable>
+    </building>
+    <damageMultipliers>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>2</multiplier>
+      </li>
+    </damageMultipliers>
+    <designationHotKey>Misc3</designationHotKey>
+	<comps>
+	  <li Class="CompProperties_Glower">
+        <glowRadius>1</glowRadius>
+        <glowColor>(60,0,120,0)</glowColor>
+      </li>
+      <li Class="CompProperties_Lifespan">
+        <lifespanTicks>3600</lifespanTicks>
+      </li>
+    </comps>
+  </ThingDef>
   
   </Defs>

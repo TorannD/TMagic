@@ -56,13 +56,14 @@
 <TM_BondedAnimalRelease>The bond between {0} and {1} has ended and {0} has disappeared into the wild.</TM_BondedAnimalRelease>
 <TM_AnimalIncapableOfBond>{0} does not have the intelligence to form a bond with {1}.</TM_AnimalIncapableOfBond>
 <TM_FailedRangerBond>{1} has failed to bond with {0} - {2}&#37; chance</TM_FailedRangerBond>
-<TM_RangerNotExperienced>{1} is unable to establish a bond with {0} at this empathy level.</TM_RangerNotExperienced>
+<TM_RangerNotExperienced>{1} is unable to establish a bond with {0} at this empathy level. Raise empathy by investing points "Animal Empathy".</TM_RangerNotExperienced>
 <TM_TooManyTraps>{0} is limited to {1} traps, removing oldest trap.</TM_TooManyTraps>
 <TM_SummonedCreatureLimitExceeded>{0} has exceeded the max number of summoned creatures, dismissing oldest summon.</TM_SummonedCreatureLimitExceeded>
 <TM_NoMinionToDismiss>{0} has no summoned minions.</TM_NoMinionToDismiss>
 <TM_NoValidUndeadToDismiss>Target is not a valid target for dismiss undead.</TM_NoValidUndeadToDismiss>
 <TM_CannotUseGemOfInsight>{0} already possesses an arcane or combat trait and cannot make use of this gemstone.</TM_CannotUseGemOfInsight>
 <TM_ItemUseFailed>Attempted to use an item and failed, reason: {0}</TM_ItemUseFailed>
+<TM_SunlightCollapse>A sun light has collapsed, {0} was unable to sustain it.</TM_SunlightCollapse>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
@@ -206,6 +207,7 @@ Increases the radius of blizzard by .5 per skill level.</TM_Blizzard_ver_desc>
 Allows the portal to be held open 20s longer per level.</TM_Teleport_pwr_desc>
 <TM_Teleport_ver_desc>Refines the transport process, allowing more transportation of 400 more capacity per level, 600 at level 3.  
 Allows the portal to be held open 20s longer per level.</TM_Teleport_ver_desc>
+<TM_FoldReality_eff_desc>Decreases mana cost to Fold Reality by 8% per skill level.</TM_FoldReality_eff_desc>
 
 <TM_Shadow_eff>Shadow Efficiency</TM_Shadow_eff>
 <TM_MagicMissile_eff>Magic Missile Efficiency</TM_MagicMissile_eff>
@@ -228,7 +230,13 @@ Can stun at level 2.</TM_ValiantCharge_ver_desc>
 <TM_Overwhelm_pwr_desc>Increases damage potential of overwhelm.</TM_Overwhelm_pwr_desc>
 <TM_Overwhelm_ver_desc>Summons more powerful symbols at level 1 and 3.
 Overwhelm can stun at level 2 and improved stun at level 3.</TM_Overwhelm_ver_desc>
-<TM_FoldReality_eff_desc>Decreases mana cost to Fold Reality by 8% per skill level.</TM_FoldReality_eff_desc>
+<TM_HolyWrath_eff_desc>Decreases mana cost of Holy Wrath by 5% of base mana cost.</TM_HolyWrath_eff_desc>
+<TM_HolyWrath_pwr_desc>Increases damage of Holy Wrath by 10% per skill level.</TM_HolyWrath_pwr_desc>
+<TM_HolyWrath_ver_desc>Requires 2 ability points per skill level.
+Level 1: allies within the field of Holy Wrath become temporarily invulnerable
+Level 2: allies are healed for a small amount
+Level 3: Holy Wrath bestows might to all allies within the effect</TM_HolyWrath_ver_desc>
+
 
 <TM_Heal_eff>Heal Efficiency</TM_Heal_eff>
 <TM_Heal_pwr>Heal Power</TM_Heal_pwr>
@@ -240,6 +248,9 @@ Overwhelm can stun at level 2 and improved stun at level 3.</TM_Overwhelm_ver_de
 <TM_Overwhelm_eff>Overwhelm Efficiency</TM_Overwhelm_eff>
 <TM_Overwhelm_pwr>Overwhelm Power</TM_Overwhelm_pwr>
 <TM_Overwhelm_ver>Overwhelm Versatility</TM_Overwhelm_ver>
+<TM_HolyWrath_eff>Purity of Heart</TM_HolyWrath_eff>
+<TM_HolyWrath_pwr>Holy Venegeance</TM_HolyWrath_pwr>
+<TM_HolyWrath_ver>Redemption</TM_HolyWrath_ver>
 
 <TM_SummonMinion_eff_desc>Decreases mana cost to summon minions by 10% of base mana cost. Also reduces upkeep cost by 10%.</TM_SummonMinion_eff_desc>
 <TM_SummonMinion_pwr_desc>Increases the number or power of minions summoned.

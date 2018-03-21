@@ -41,7 +41,6 @@ namespace TorannMagic
                 }
             }
             base.Tick();
-
         }        
 
         public override void Draw()

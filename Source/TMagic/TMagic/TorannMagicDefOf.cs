@@ -43,6 +43,7 @@ namespace TorannMagic
         public static ThingDef SpellOf_Heater;
         public static ThingDef SpellOf_Cooler;
         public static ThingDef SpellOf_PowerNode;
+        public static ThingDef SpellOf_Sunlight;
         public static ThingDef SpellOf_DryGround;
         public static ThingDef SpellOf_WetGround;
         public static ThingDef SpellOf_ChargeBattery;
@@ -59,6 +60,7 @@ namespace TorannMagic
         public static ThingDef SpellOf_ManaShield;
         public static ThingDef SpellOf_FoldReality;
         public static ThingDef SpellOf_Resurrection;
+        public static ThingDef SpellOf_HolyWrath;
 
         public static ThingDef SkillOf_Sprint;
         public static ThingDef SkillOf_GearRepair;
@@ -178,6 +180,7 @@ namespace TorannMagic
         public static HediffDef TM_HediffInvulnerable;
         public static TMAbilityDef TM_Overwhelm;
         public static HediffDef TM_Blind;
+        public static TMAbilityDef TM_HolyWrath;
 
         //Summoner
         public static TraitDef Summoner;
@@ -344,11 +347,15 @@ namespace TorannMagic
 
         public static JobDef PlacePoisonTrap;
         public static TrainableDef Rescue;
+        public static ThoughtDef RangerSoldBondedPet;
+        public static ThoughtDef RangerPetDied;
 
         //Standalone
         public static TMAbilityDef TM_Heater;
         public static TMAbilityDef TM_Cooler;
         public static TMAbilityDef TM_PowerNode;
+        public static TMAbilityDef TM_Sunlight;
+        public static TMAbilityDef TM_DismissSunlight;
         public static TMAbilityDef TM_DryGround;
         public static TMAbilityDef TM_WetGround;
         public static TMAbilityDef TM_ChargeBattery;
@@ -358,6 +365,7 @@ namespace TorannMagic
         public static TMAbilityDef TM_TransferMana;
         public static TMAbilityDef TM_SiphonMana;
         public static TMAbilityDef TM_ManaShield;
+        public static TMAbilityDef TM_ArcaneBarrier;
         public static HediffDef TM_ManaShieldHD;
         public static HediffDef TM_HediffEnchantment_arcaneSpectre;
 
@@ -408,6 +416,8 @@ namespace TorannMagic
 
         //Sounds
         public static SoundDef ItemEnchanted;
+        public static SoundDef TM_Lightning;
+        public static SoundDef TM_Gong;
 
     }
 }

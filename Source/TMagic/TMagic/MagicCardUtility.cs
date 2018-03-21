@@ -487,7 +487,7 @@ namespace TorannMagic
                             (power.abilityDef.defName == "TM_RegrowLimb" && MagicPowerSkill5 == null) ||
                             (power.abilityDef.defName == "TM_Resurrection" && MagicPowerSkill5 == null))
                         {
-                            Rect rectMasterLock = new Rect(rect.xMax - 23f - "TM_MasterSpellLocked".Translate().Length/2, rect.yMin + MagicCardUtility.MagicButtonSize + 4f, "TM_MasterSpellLocked".Translate().Length * 8, MagicCardUtility.TextSize * 3);
+                            Rect rectMasterLock = new Rect(rect.xMax - 23f - "TM_MasterSpellLocked".Translate().Length * 4, rect.yMin + MagicCardUtility.MagicButtonSize + 4f, "TM_MasterSpellLocked".Translate().Length * 8, MagicCardUtility.TextSize * 3);
                             Widgets.Label(rectMasterLock, "TM_MasterSpellLocked".Translate(new object[]
                                 {
                                             power.abilityDef.LabelCap

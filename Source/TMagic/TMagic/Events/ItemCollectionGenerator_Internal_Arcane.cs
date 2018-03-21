@@ -222,8 +222,12 @@ namespace TorannMagic
                 if (Rand.Chance(MasterSpellChance) && (parms.totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.SpellOf_Blizzard.BaseMarketValue)
                 {
                     Thing thing;
-                    float rnd = Rand.Range(0f, 10f);
-                    if (rnd > 8)
+                    float rnd = Rand.Range(0f, 12f);
+                    if (rnd > 10)
+                    {
+                        thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_HolyWrath, null);
+                    }
+                    else if (rnd > 8 && rnd <= 10)
                     {
                         thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Blizzard, null);
                     }
@@ -352,6 +356,12 @@ namespace TorannMagic
                         if (Rand.Range(0, 10) > 9)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_PowerNode, null);
+                            outThings.Add(thing);
+                            collectiveMarketValue += thing.MarketValue;
+                        }
+                        if (Rand.Range(0, 10) > 9)
+                        {
+                            thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Sunlight, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }

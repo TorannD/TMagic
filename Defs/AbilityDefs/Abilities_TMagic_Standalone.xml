@@ -103,7 +103,7 @@
     </MainVerb>
  </TorannMagic.TMAbilityDef>
  
-  <!--  Power Node -->
+  <!--  Power Node --> 
  
   <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
     <defName>TM_PowerNode</defName>
@@ -142,6 +142,95 @@
 			<kindDef>Colonist</kindDef>
 		  </li>
 		</thingsToSpawn>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+ 
+<!--  Light Node -->
+
+<ThingDef Class="AbilityUser.ProjectileDef_Ability" ParentName="BaseBullet">
+   <thingClass>TorannMagic.Projectile_Sunlight</thingClass>
+   <defName>Projectile_Sunlight</defName>
+   <label>spawn magic light</label>
+   <graphicData>
+		<texPath>Spells/invis</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shaderType>TransparentPostLight</shaderType>
+	</graphicData>
+   <projectile>
+		<flyOverhead>false</flyOverhead>
+		<damageDef>Burn</damageDef>
+		<damageAmountBase>0</damageAmountBase>
+		<speed>1000</speed>
+		<explosionRadius>14</explosionRadius>
+		<postExplosionSpawnChance>1</postExplosionSpawnChance>
+   </projectile>   
+ </ThingDef>
+ 
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_Sunlight</defName>
+    <label>Sun Light</label>
+    <uiIconPath>UI/sunlight</uiIconPath>
+    <description>Creates a beacon of sunlight strong enough to grow plants. The beacon must be sustained by the mage - reduces max mana and mana regeneration by 40% while active.</description>
+    <manaCost>0.40</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Sunlight</defaultProjectile>
+		<abilityDef>TM_Sunlight</abilityDef>
+        <warmupTime>5</warmupTime>
+        <SecondsToRecharge>60</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>20</range>
+		<isViolent>false</isViolent>
+        <soundCast>ThrowGrenade</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+         <isPrimary>false</isPrimary>
+		 <targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>		
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_DismissSunlight</defName>
+    <label>Dismiss Sun Light</label>
+    <uiIconPath>UI/dismisssunlight</uiIconPath>
+    <description>Dismisses a Sun Light</description>
+    <manaCost>0.0</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_DismissSunlight</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>TM_Paladin_Heal</defaultProjectile>
+		<abilityDef>TM_DismissSunlight</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>4</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>0</range>
+		<isViolent>false</isViolent>
+        <soundCast>MessagePositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+      	 <canTargetPawns>true</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>true</canTargetSelf>
+		 <canTargetLocations>false</canTargetLocations>
+        </targetParams>
     </MainVerb>
  </TorannMagic.TMAbilityDef>
  
@@ -611,5 +700,40 @@
     </TorannMagic.TMAbilityDef>
 
     <!-- mana shield end-->
+	
+	<!-- summoned wall -->
+	
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_ArcaneBarrier</defName>
+    <label>Arcane Barrier</label>
+    <uiIconPath>Other/manawall</uiIconPath>
+    <description>Creates an arcane barrier at the target location that is horizontal to the caster. The barrier lasts 60 seconds.</description>
+    <manaCost>0.0</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Weapon.Verb_ArcaneBarrier</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_TM_SpawnThing</defaultProjectile>
+		<abilityDef>TM_ArcaneBarrier</abilityDef>
+        <warmupTime>3</warmupTime>
+        <SecondsToRecharge>80</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>50</range>
+		<isViolent>false</isViolent>
+        <soundCast>ThrowGrenade</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+         <isPrimary>false</isPrimary>
+		 <targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>		
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
 
 </Defs>

@@ -175,7 +175,8 @@
         <defName>TM_ArrowStorm</defName>
         <label>Arrow Storm</label>
         <uiIconPath>UI/arrowstorm</uiIconPath>
-        <description>Fire a rapid volley of arrows at a target.</description>
+        <description>Fire a volley of 5 arrows at a target.
+Range: 32</description>
         <staminaCost>0.35</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_RangerShot</verbClass>
@@ -205,7 +206,8 @@
         <defName>TM_ArrowStorm_I</defName>
         <label>Arrow Storm (I)</label>
         <uiIconPath>UI/arrowstorm</uiIconPath>
-        <description>Fire a rapid volley of arrows at a target.</description>
+        <description>Fire a volley of 6 arrows at a target.
+Range: 34</description>
         <staminaCost>0.35</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_RangerShot</verbClass>
@@ -235,7 +237,8 @@
         <defName>TM_ArrowStorm_II</defName>
         <label>Arrow Storm (II)</label>
         <uiIconPath>UI/arrowstorm</uiIconPath>
-        <description>Fire a rapid volley of arrows at a target.</description>
+        <description>Fire a rapid volley of 7 arrows at a target.
+Range: 36</description>
         <staminaCost>0.35</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_RangerShot</verbClass>
@@ -265,7 +268,8 @@
         <defName>TM_ArrowStorm_III</defName>
         <label>Arrow Storm (III)</label>
         <uiIconPath>UI/arrowstorm</uiIconPath>
-        <description>Fire a rapid volley of arrows at a target.</description>
+        <description>Fire a rapid volley of 8 arrows at a target.
+Range: 38</description>
         <staminaCost>0.35</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_RangerShot</verbClass>

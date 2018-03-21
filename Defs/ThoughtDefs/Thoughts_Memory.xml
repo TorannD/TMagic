@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThoughtDef Name="TM_Memory" Abstract="True">
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stackedEffectMultiplier>.75</stackedEffectMultiplier>
+    <stackLimit>3</stackLimit>
+  </ThoughtDef>
+  
+  <!--=================== executions and prisoner deaths ===================-->
+
+  <ThoughtDef ParentName="TM_Memory">
+    <defName>RangerSoldBondedPet</defName>
+    <durationDays>10</durationDays>
+    <stages>
+      <li>
+        <label>sold bonded animal</label>
+        <!-- generic penalty -->
+        <description>I allowed my animal companion to be sold into slavery, I won't soon be forgiven by the animal kingdom. (animal bonding disabled while this mood effect is active)</description>
+        <baseMoodEffect>-24</baseMoodEffect>
+      </li>
+	  </stages>
+  </ThoughtDef>
+  
+    <ThoughtDef ParentName="TM_Memory">
+    <defName>RangerPetDied</defName>
+    <durationDays>3</durationDays>
+	<nullifyingTraits>
+	  <li>Psychopath</li>
+	</nullifyingTraits>
+    <stages>
+      <li>
+        <label>bonded animal died</label>
+        <!-- generic penalty -->
+        <description>My faithful animal companion died. It feels like I've lost a piece of myself.</description>
+        <baseMoodEffect>-16</baseMoodEffect>
+      </li>
+	  </stages>
+  </ThoughtDef>
+
+  
+</Defs>

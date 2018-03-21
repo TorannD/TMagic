@@ -64,6 +64,7 @@ namespace TorannMagic
         public List<MagicPowerSkill> magicPowerSkill_Shield;
         public List<MagicPowerSkill> magicPowerSkill_ValiantCharge;
         public List<MagicPowerSkill> magicPowerSkill_Overwhelm;
+        public List<MagicPowerSkill> magicPowerSkill_HolyWrath;
         
         public List<MagicPowerSkill> magicPowerSkill_SummonMinion;        
         public List<MagicPowerSkill> magicPowerSkill_SummonPylon;
@@ -688,6 +689,10 @@ namespace TorannMagic
                         {
                             TorannMagicDefOf.TM_Overwhelm
                         }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_HolyWrath
+                        }),
 
                     };
                 }
@@ -758,6 +763,23 @@ namespace TorannMagic
                     };
                 }
                 return this.magicPowerSkill_Overwhelm;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_HolyWrath
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_HolyWrath == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_HolyWrath = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_HolyWrath_pwr", "TM_HolyWrath_pwr_desc" ),
+                        new MagicPowerSkill("TM_HolyWrath_eff", "TM_HolyWrath_eff_desc" ),
+                        new MagicPowerSkill("TM_HolyWrath_ver", "TM_HolyWrath_ver_desc" )
+                    };
+                }
+                return this.magicPowerSkill_HolyWrath;
             }
         }
 
@@ -1411,6 +1433,7 @@ namespace TorannMagic
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Shield, "magicPowerSkill_Shield", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_ValiantCharge, "magicPowerSkill_ValiantCharge", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Overwhelm, "magicPowerSkill_Overwhelm", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_HolyWrath, "magicPowerSkill_HolyWrath", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPower>(ref this.magicPowerS, "magicPowerS", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_SummonMinion, "magicPowerSkill_SummonMinion", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_SummonPylon, "magicPowerSkill_SummonPylon", LookMode.Deep, new object[0]);

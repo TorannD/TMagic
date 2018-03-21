@@ -26,6 +26,30 @@
   </SoundDef>
   
   <SoundDef>
+    <defName>TM_Gong</defName>
+    <eventNames />
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/Gong</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>10</min>
+          <max>10</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.9</min>
+          <max>1.1</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
     <defName>TM_Woosh</defName>
     <eventNames />
     <maxSimultaneous>1</maxSimultaneous>

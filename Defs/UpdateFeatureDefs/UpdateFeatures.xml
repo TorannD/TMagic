@@ -137,5 +137,16 @@ The "Rainmaker" ability can now be used to stop rain or snow.
 - Two new enchantments have been added: arcane damage and arcane resistance. 
 		</content>
 	</HugsLib.UpdateFeatureDef>	
+	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_1_9_6</defName>
+		<assemblyVersion>1.9.6</assemblyVersion>
+		<content>
+- New stand-alone spell "Sun Light" - creates a node of light powerful enough to grow plants but places a continous demand on the mage sustaining the light.
+
+- Ranger pets now require a cost to maintain; rangers will be more sensitive to the loss of their bonded companions.
+
+- Undead workspeeds have been reduced but will gain the benefits of the "Hastened Undead" skill.
+		</content>
+	</HugsLib.UpdateFeatureDef>	
 	
 </Defs>

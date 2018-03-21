@@ -53,22 +53,25 @@ namespace TorannMagic
                             if (comp.bondedPet != null && comp.bondedPet != animal)
                             {
                                 Pawn oldbond = comp.bondedPet;
-                                if (!oldbond.Dead || !oldbond.Destroyed)
+                                if (!oldbond.Destroyed)
                                 {
-                                    Messages.Message("TM_BondedAnimalRelease".Translate(new object[]
+                                    if (!comp.bondedPet.Dead)
                                     {
-                                    oldbond.LabelShort,
-                                    pawn.LabelShort
-                                    }), MessageTypeDefOf.NeutralEvent);
-                                    MoteMaker.ThrowSmoke(oldbond.DrawPos, oldbond.Map, 3f);
-                                    oldbond.Destroy();
+                                        //bonding with another pet without first pet being dead or destroyed
+                                        Messages.Message("TM_BondedAnimalRelease".Translate(new object[]
+                                        {
+                                            oldbond.LabelShort,
+                                            pawn.LabelShort
+                                        }), MessageTypeDefOf.NeutralEvent);
+                                        MoteMaker.ThrowSmoke(oldbond.DrawPos, oldbond.Map, 3f);
+                                        oldbond.Destroy();
+                                    }                                    
                                 }
                             }
                             animal.SetFaction(pawn.Faction);
                             HealthUtility.AdjustSeverity(animal, TorannMagicDefOf.TM_RangerBondHD, -4f);
                             HealthUtility.AdjustSeverity(animal, TorannMagicDefOf.TM_RangerBondHD, .5f + ver.level);
                             comp.bondedPet = animal;
-
                             if (animal.RaceProps.TrainableIntelligence == TrainableIntelligenceDefOf.Intermediate)
                             {
                                 while (!animal.training.IsCompleted(TrainableDefOf.Obedience))
