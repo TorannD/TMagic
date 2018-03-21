@@ -390,7 +390,7 @@ Reduces recharge to 18s.</description>
             <defaultProjectile>Projectile_ValiantCharge</defaultProjectile>
             <abilityDef>TM_HolyWrath</abilityDef>
             <AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
-            <targetParams>
+            <targetParams>			
                 <canTargetPawns>true</canTargetPawns>
                 <canTargetBuildings>false</canTargetBuildings>
                 <canTargetSelf>false</canTargetSelf>

@@ -170,7 +170,7 @@
  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
     <defName>TM_Sunlight</defName>
     <label>Sun Light</label>
-    <uiIconPath>UI/sunlight</uiIconPath>
+    <uiIconPath>UI/sunlight</uiIconPath>	
     <description>Creates a beacon of sunlight strong enough to grow plants. The beacon must be sustained by the mage - reduces max mana and mana regeneration by 40% while active.</description>
     <manaCost>0.40</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
