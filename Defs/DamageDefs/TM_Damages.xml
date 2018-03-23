@@ -83,6 +83,29 @@
 	</DamageDef>
 	
 	<DamageDef ParentName="LocalInjuryBase">
+		<defName>TM_DeathBolt</defName>
+		<label>death bolt</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was consumed by agony.</deathMessage>
+		<hediff>TM_DeathBoltHD</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<explosionDamage>30</explosionDamage>
+		<armorCategory>Heat</armorCategory>
+		<explosionSnowMeltAmount>.25</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_Disease</explosionCellMote>
+		<explosionColorCenter>(0.27, 0.17, 0.28)</explosionColorCenter>
+		<explosionColorEdge>(0.44, 0.55, 0.16)</explosionColorEdge>
+		<hasForcefulImpact>false</hasForcefulImpact>
+		<soundExplosion>TM_SoftExplosion</soundExplosion>
+		<additionalHediffs>
+			<li>
+				<hediff>TM_Torment_HD</hediff>
+				<severityPerDamageDealt>.08</severityPerDamageDealt>
+			</li>
+		</additionalHediffs>
+	</DamageDef>
+	
+	<DamageDef ParentName="LocalInjuryBase">
 		<defName>TM_CorpseExplosion</defName>
 		<label>corpse explosion</label>
 		<externalViolence>true</externalViolence>

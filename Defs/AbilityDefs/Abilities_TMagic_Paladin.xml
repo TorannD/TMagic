@@ -382,18 +382,18 @@ Reduces recharge to 18s.</description>
         <defName>TM_HolyWrath</defName>
         <label>Holy Wrath</label>
         <uiIconPath>UI/rayoflight</uiIconPath>
-        <description>Beseech a higher power to smite foes.</description>
-        <manaCost>0.60</manaCost>
+        <description>Calls forth holy wrath upon the land.</description>
+        <manaCost>0.50</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
-            <defaultProjectile>Projectile_ValiantCharge</defaultProjectile>
+            <defaultProjectile>Projectile_HolyWrath</defaultProjectile>
             <abilityDef>TM_HolyWrath</abilityDef>
             <AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
             <targetParams>			
                 <canTargetPawns>true</canTargetPawns>
-                <canTargetBuildings>false</canTargetBuildings>
-                <canTargetSelf>false</canTargetSelf>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
                 <canTargetLocations>true</canTargetLocations>
             </targetParams>
             <warmupTime>2.5</warmupTime>

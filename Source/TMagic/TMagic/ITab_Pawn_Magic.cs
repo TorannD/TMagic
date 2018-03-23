@@ -79,7 +79,7 @@ namespace TorannMagic
                 {
                     return flag && true;
                 }
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer))
+                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
                 {
                     return flag && true;
                 }

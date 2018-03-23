@@ -15,7 +15,6 @@ namespace TorannMagic
         public int level;
 
         public bool learned = true;
-
         public int learnCost = 2;
 
         public AbilityDef abilityDescDef
@@ -194,7 +193,7 @@ namespace TorannMagic
         {
             Scribe_Values.Look<bool>(ref this.learned, "learned", true, false);
             Scribe_Values.Look<int>(ref this.learnCost, "learnCost", 2, false);
-            Scribe_Values.Look<int>(ref this.level, "level", 0, false);
+            Scribe_Values.Look<int>(ref this.level, "level", 0, false);            
             Scribe_Values.Look<int>(ref this.ticksUntilNextCast, "ticksUntilNextCast", -1, false);
             Scribe_Collections.Look<AbilityDef>(ref this.TMabilityDefs, "TMabilityDefs", LookMode.Def, null);
         }

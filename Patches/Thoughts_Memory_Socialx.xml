@@ -9,6 +9,7 @@
     <xpath>*/ThoughtDef[defName = "Chitchat" or defName = "DeepTalk" or defName = "CreepyBreathing" or defName = "Disfigured" or defName = "AteRawHumanlikeMeat" or defName = "Naked" or defName = "Pain" or defName = "Pretty" or defName = "Ugly" or defName = "ApparelDamaged"]/nullifyingTraits</xpath>
 	<value>
 		<li>Undead</li>
+		<li>Lich</li>
 	</value>
   </Operation>
   
@@ -17,6 +18,7 @@
 	<value>
 		<li>Undead</li>
 		<li>Necromancer</li>
+		<li>Lich</li>
 	</value>
   </Operation> 
 
@@ -24,6 +26,7 @@
     <xpath>*/ThoughtDef[defName = "HumanLeatherApparelHappy"]/requiredTraits</xpath>
 	<value>
 		<li>Necromancer</li>
+		<li>Lich</li>
 	</value>
   </Operation>   
   

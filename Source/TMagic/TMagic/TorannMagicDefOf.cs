@@ -61,6 +61,7 @@ namespace TorannMagic
         public static ThingDef SpellOf_FoldReality;
         public static ThingDef SpellOf_Resurrection;
         public static ThingDef SpellOf_HolyWrath;
+        public static ThingDef SpellOf_LichForm;
 
         public static ThingDef SkillOf_Sprint;
         public static ThingDef SkillOf_GearRepair;
@@ -233,6 +234,7 @@ namespace TorannMagic
         //Necromancer
         public static TraitDef Necromancer;
         public static TraitDef Undead;
+        public static TraitDef Lich;
 
         public static TMAbilityDef TM_RaiseUndead;
         public static HediffDef TM_UndeadHD;
@@ -254,9 +256,23 @@ namespace TorannMagic
         public static TMAbilityDef TM_CorpseExplosion_II;
         public static TMAbilityDef TM_CorpseExplosion_III;
         public static TMAbilityDef TM_DismissUndead;
+        public static TMAbilityDef TM_DeathBolt;
+        public static TMAbilityDef TM_DeathBolt_I;
+        public static TMAbilityDef TM_DeathBolt_II;
+        public static TMAbilityDef TM_DeathBolt_III;
+        public static TMAbilityDef TM_LichForm;
+        public static ThingDef FlyingObject_DeathBolt;
+        public static TMAbilityDef TM_Flight;
+        public static ThingDef FlyingObject_Flight;
 
         public static WorkTypeDef Art;
         public static WorkTypeDef Research;
+        public static WorkTypeDef Cleaning;
+        public static WorkTypeDef Hauling;
+        public static WorkTypeDef Tailoring;
+        public static WorkTypeDef Smithing;
+        public static WorkTypeDef PlantCutting;
+        public static WorkTypeDef Cooking;
 
         //Priest
         public static TraitDef Priest;
@@ -386,12 +402,17 @@ namespace TorannMagic
         public static TMAbilityDef TM_ThickSkin;
         public static TMAbilityDef TM_FightersFocus;
 
+        //Elemental Magic
+        public static TMAbilityDef TM_Elemental_Firebolt;
+        public static TMAbilityDef TM_Elemental_Icebolt;
+
         //Graphics
 
         public static ThingDef Mote_ManaPuff;
         public static ThingDef Mote_Enchanting;
         public static ThingDef Mote_Siphon;
         public static ThingDef Mote_Poison;
+        public static ThingDef Mote_Disease;
         public static ThingDef Mote_Regen;
         public static ThingDef Mote_CrossStrike;
         public static ThingDef Mote_BloodSquirt;
@@ -403,6 +424,8 @@ namespace TorannMagic
         public static ThingDef Mote_Bombardment;
         public static ThingDef Fog_Poison;
         public static ThingDef Mote_ArcaneDaggers;
+        public static ThingDef Mote_Bolt;
+        public static ThingDef Mote_Arcane;
 
         //Jobs
         public static JobDef TMCastAbilityVerb;
@@ -418,6 +441,11 @@ namespace TorannMagic
         public static SoundDef ItemEnchanted;
         public static SoundDef TM_Lightning;
         public static SoundDef TM_Gong;
+        public static SoundDef TM_AirWoosh;
+        public static SoundDef TM_Vibration;
+        public static SoundDef TM_VibrationLow;
+        public static SoundDef TM_Launch;
+        public static SoundDef TM_SoftExplosion;
 
     }
 }

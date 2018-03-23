@@ -735,5 +735,70 @@
         </targetParams>		
     </MainVerb>
  </TorannMagic.TMAbilityDef>
+ 
+   	    <!-- Flight -->
+		
+	<ThingDef ParentName="BaseBullet" Name="FlyingObject_Flight">
+	   <defName>FlyingObject_Flight</defName>
+	   <thingClass>TorannMagic.FlyingObject_Flight</thingClass>
+	   <label>flying object</label>
+	   <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	   <projectile>
+			<flyOverhead>true</flyOverhead>
+			<damageDef>Stun</damageDef>
+			<damageAmountBase>0</damageAmountBase>
+			<speed>250</speed>
+	   </projectile>
+	</ThingDef>
+			
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+        <thingClass>AbilityUser.Projectile_Ability</thingClass>
+		<defName>Projectile_Flight</defName>
+        <label>flight</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>TM_Holy</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>70</speed>
+        </projectile>
+    </ThingDef>
+
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Flight</defName>
+        <label>Flight</label>
+        <uiIconPath>UI/wraithflight</uiIconPath>
+        <description>Quickly fly to a target location.</description>
+        <manaCost>0.10</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Effect_Flight</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Flight</defaultProjectile>
+            <abilityDef>TM_Flight</abilityDef>
+            <AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+            <targetParams>
+                <canTargetPawns>false</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+            <warmupTime>0.5</warmupTime>
+            <SecondsToRecharge>180.0</SecondsToRecharge>
+            <range>120</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>TM_AirWoosh</soundCast>
+            <muzzleFlashScale>0</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
 
 </Defs>

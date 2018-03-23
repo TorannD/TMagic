@@ -64,6 +64,8 @@
 <TM_CannotUseGemOfInsight>{0} already possesses an arcane or combat trait and cannot make use of this gemstone.</TM_CannotUseGemOfInsight>
 <TM_ItemUseFailed>Attempted to use an item and failed, reason: {0}</TM_ItemUseFailed>
 <TM_SunlightCollapse>A sun light has collapsed, {0} was unable to sustain it.</TM_SunlightCollapse>
+<TM_DamageAbsorbedAll>Absorbed</TM_DamageAbsorbedAll>
+<TM_DamageAbsorbed>Absorbed ({0} - {1})</TM_DamageAbsorbed>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
@@ -231,7 +233,7 @@ Can stun at level 2.</TM_ValiantCharge_ver_desc>
 <TM_Overwhelm_ver_desc>Summons more powerful symbols at level 1 and 3.
 Overwhelm can stun at level 2 and improved stun at level 3.</TM_Overwhelm_ver_desc>
 <TM_HolyWrath_eff_desc>Decreases mana cost of Holy Wrath by 5% of base mana cost.</TM_HolyWrath_eff_desc>
-<TM_HolyWrath_pwr_desc>Increases damage of Holy Wrath by 10% per skill level.</TM_HolyWrath_pwr_desc>
+<TM_HolyWrath_pwr_desc>Requires 2 ability points per skill level. Increases number of strikes by 1 per skill level. Base number of strikes is 3.</TM_HolyWrath_pwr_desc>
 <TM_HolyWrath_ver_desc>Requires 2 ability points per skill level.
 Level 1: allies within the field of Holy Wrath become temporarily invulnerable
 Level 2: allies are healed for a small amount
@@ -333,17 +335,9 @@ Level 1: 3
 Level 2: 4
 Level 3: 5</TM_RaiseUndead_pwr_desc>
 <TM_RaiseUndead_ver_desc>Undead movement and action speed increases by 5% per skill level.</TM_RaiseUndead_ver_desc>
-<TM_DeathMark_ver_desc>Reduces amount of time for mark to become active by 2s per level.
-Level 0: 15s
-Level 1: 13s
-Level 2: 11s
-Level 3: 9s</TM_DeathMark_ver_desc>
+<TM_DeathMark_ver_desc>Death Mark can cause terror and berserk afflictions. Each skill point increases the chance to apply an additiona affliction by 10%.</TM_DeathMark_ver_desc>
 <TM_DeathMark_eff_desc>Reduces mana cost of Death Mark by 8% per skill level.</TM_DeathMark_eff_desc>
-<TM_DeathMark_pwr_desc>Increases the chance of applying Death Mark by 10% per skill level.
-Level 0: 20%
-Level 1: 30%
-Level 2: 40%
-Level 3: 50%</TM_DeathMark_pwr_desc>
+<TM_DeathMark_pwr_desc>Increases the severity of Death Mark by 50% per skill level.</TM_DeathMark_pwr_desc>
 <TM_FogOfTorment_eff_desc>Reduces mana cost of Fog of Torment by 10% per skill level.</TM_FogOfTorment_eff_desc>
 <TM_FogOfTorment_pwr_desc>Increases damage and penalties caused by fog of torment by 33% per skill level.  Also increases the amount undead are healed by 50% per skill level.</TM_FogOfTorment_pwr_desc>
 <TM_FogOfTorment_ver_desc>Increases the duration, reduces time between effects, and expands the radius of Fog of Torment.
@@ -361,11 +355,18 @@ Level 2: 28-40
 Level 3: 32-45</TM_CorpseExplosion_pwr_desc>
 <TM_CorpseExplosion_eff_desc>Reduces mana cost of Corpse Explosion by 8% per skill level.</TM_CorpseExplosion_eff_desc>
 <TM_CorpseExplosion_ver_desc>Reduces explosion delay by 1s per skill point.  Also increases the explosion radius by 10%.</TM_CorpseExplosion_ver_desc>
+<TM_DeathBolt_pwr_desc>Increases the damage of Death Bolt by 5 per skill level and Spreading Darkness by 3 per skill level.
+Level 0: 18-35; Spreading Darkness: 12-24
+Level 1: 23-40; Spreading Darkness: 15-27
+Level 2: 28-45; Spreading Darkness: 18-30
+Level 3: 33-50; Spreading Darkness: 21-33</TM_DeathBolt_pwr_desc>
+<TM_DeathBolt_eff_desc>Reduces mana cost of Death Bolt by 4% per skill level.</TM_DeathBolt_eff_desc>
+<TM_DeathBolt_ver_desc>Darkness spreads further from the point of impact.</TM_DeathBolt_ver_desc>
 
 <TM_RaiseUndead_eff>Cheating Death</TM_RaiseUndead_eff>
 <TM_RaiseUndead_pwr>Powered Creation</TM_RaiseUndead_pwr>
 <TM_RaiseUndead_ver>Hastened Undead</TM_RaiseUndead_ver>
-<TM_DeathMark_ver>Burning Mark</TM_DeathMark_ver>
+<TM_DeathMark_ver>Withering Curse</TM_DeathMark_ver>
 <TM_DeathMark_eff>Efficient Mark</TM_DeathMark_eff>
 <TM_DeathMark_pwr>Overwhelming Mark</TM_DeathMark_pwr>
 <TM_FogOfTorment_eff>Unnatural Wind</TM_FogOfTorment_eff>
@@ -376,6 +377,9 @@ Level 3: 32-45</TM_CorpseExplosion_pwr_desc>
 <TM_CorpseExplosion_pwr>Violent Explosion</TM_CorpseExplosion_pwr>
 <TM_CorpseExplosion_eff>Corpse Mastery</TM_CorpseExplosion_eff>
 <TM_CorpseExplosion_ver>Volatile Toxins</TM_CorpseExplosion_ver>
+<TM_DeathBolt_pwr>Unholy Might</TM_DeathBolt_pwr>
+<TM_DeathBolt_eff>Eternal Learning</TM_DeathBolt_eff>
+<TM_DeathBolt_ver>Spreading Darkness</TM_DeathBolt_ver>
 
 <TM_AdvancedHeal_eff_desc>Reduces mana cost of Advanced Heal by 12% per level.</TM_AdvancedHeal_eff_desc>
 <TM_AdvancedHeal_ver_desc>Increases the maximum number of wounds healed by 1 per level.</TM_AdvancedHeal_ver_desc>

@@ -30,6 +30,19 @@
   </ThoughtDef>
   
   <ThoughtDef>
+    <defName>TM_Lich</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>TorannMagic.Thoughts.ThoughtWorker_Lich</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>lich</label>
+        <baseOpinionOffset>-40</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef>
     <defName>TM_HolierThanThou</defName>
     <thoughtClass>Thought_SituationalSocial</thoughtClass>
     <workerClass>TorannMagic.Thoughts.ThoughtWorker_TM_HolierThanThou</workerClass>

@@ -123,7 +123,14 @@ namespace TorannMagic
                     if (pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin))
                     {
                         Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Heal, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Shield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ValiantCharge, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overwhelm, null, null, TexButton.TMTex_SkillPointUsed);
+                        if (pawn.GetComp<CompAbilityUserMagic>().spell_HolyWrath == true)
+                        {
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Heal, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Shield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ValiantCharge, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overwhelm, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_HolyWrath, null, TexButton.TMTex_SkillPointUsed);
+                        }
+                        else
+                        {
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Heal, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Shield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ValiantCharge, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overwhelm, null, null, TexButton.TMTex_SkillPointUsed);
+                        }
                     }
                     if (pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
                     {
@@ -145,7 +152,19 @@ namespace TorannMagic
                     if (pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer))
                     {
                         Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersN, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RaiseUndead, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_DeathMark, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_FogOfTorment, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ConsumeCorpse, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_CorpseExplosion, null, TexButton.TMTex_SkillPointUsed);
+                        if (pawn.GetComp<CompAbilityUserMagic>().spell_LichForm == true)
+                        {
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersN, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RaiseUndead, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_DeathMark, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_FogOfTorment, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ConsumeCorpse, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_CorpseExplosion, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_LichForm, TexButton.TMTex_SkillPointUsed);
+                        }
+                        else
+                        {
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersN, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RaiseUndead, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_DeathMark, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_FogOfTorment, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ConsumeCorpse, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_CorpseExplosion, null, TexButton.TMTex_SkillPointUsed);
+                        }
+                    }
+                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
+                    {
+                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                        MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersN, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RaiseUndead, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_DeathMark, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_FogOfTorment, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ConsumeCorpse, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_CorpseExplosion, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_DeathBolt, TexButton.TMTex_SkillPointUsed);
                     }
                     if (pawn.story.traits.HasTrait(TorannMagicDefOf.Priest))
                     {
@@ -346,6 +365,11 @@ namespace TorannMagic
                 while (enumerator.MoveNext())
                 {
                     MagicPower power = enumerator.Current;
+                    if(power.abilityDef == TorannMagicDefOf.TM_LichForm && compMagic.Pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
+                    {
+                        enumerator.MoveNext();
+                        power = enumerator.Current;
+                    }
                     Text.Font = GameFont.Small;
                     Rect rect = new Rect(MagicCardUtility.magicCardSize.x / 2f - MagicCardUtility.MagicButtonSize, num, MagicCardUtility.MagicButtonSize, MagicCardUtility.MagicButtonSize);
                     if (itnum > 1)
@@ -365,19 +389,34 @@ namespace TorannMagic
                         power.abilityDef == TorannMagicDefOf.TM_DeathMark || power.abilityDef == TorannMagicDefOf.TM_DeathMark_I || power.abilityDef == TorannMagicDefOf.TM_DeathMark_II ||
                         power.abilityDef == TorannMagicDefOf.TM_ConsumeCorpse || power.abilityDef == TorannMagicDefOf.TM_ConsumeCorpse_I || power.abilityDef == TorannMagicDefOf.TM_ConsumeCorpse_II ||
                         power.abilityDef == TorannMagicDefOf.TM_CorpseExplosion || power.abilityDef == TorannMagicDefOf.TM_CorpseExplosion_I || power.abilityDef == TorannMagicDefOf.TM_CorpseExplosion_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_DeathBolt || power.abilityDef == TorannMagicDefOf.TM_DeathBolt_I || power.abilityDef == TorannMagicDefOf.TM_DeathBolt_II ||
                         power.abilityDef == TorannMagicDefOf.TM_HealingCircle || power.abilityDef == TorannMagicDefOf.TM_HealingCircle_I || power.abilityDef == TorannMagicDefOf.TM_HealingCircle_II ||
                         power.abilityDef == TorannMagicDefOf.TM_BestowMight || power.abilityDef == TorannMagicDefOf.TM_BestowMight_I || power.abilityDef == TorannMagicDefOf.TM_BestowMight_II))
                     {
-                        TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
+                        try
                         {
+                            TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
+                            {
                             power.abilityDef.label,
                             "\n\nCurrent Level:\n",
-                            power.abilityDescDef.description, 
+                            power.abilityDescDef.description,
                             "\n\nNext Level:\n",
-                            power.nextLevelAbilityDescDef.description,  
+                            power.nextLevelAbilityDescDef.description,
                             "\n\n",
                             "TM_CheckPointsForMoreInfo".Translate()
-                       }), 398462);
+                           }), 398462);
+                        }
+                        catch
+                        {
+                            TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
+                            {
+                            power.abilityDef.label,
+                            "\n\n",
+                            power.abilityDescDef.description,
+                            "\n\n",
+                            "TM_CheckPointsForMoreInfo".Translate()
+                            }), 398462);
+                        }
                     }
                     else
                     {
@@ -414,6 +453,7 @@ namespace TorannMagic
                         power.abilityDef.defName == "TM_DeathMark" || power.abilityDef.defName == "TM_DeathMark_I" || power.abilityDef.defName == "TM_DeathMark_II" || power.abilityDef.defName == "TM_DeathMark_III" ||
                         power.abilityDef.defName == "TM_ConsumeCorpse" || power.abilityDef.defName == "TM_ConsumeCorpse_I" || power.abilityDef.defName == "TM_ConsumeCorpse_II" || power.abilityDef.defName == "TM_ConsumeCorpse_III" ||
                         power.abilityDef.defName == "TM_CorpseExplosion" || power.abilityDef.defName == "TM_CorpseExplosion_I" || power.abilityDef.defName == "TM_CorpseExplosion_II" || power.abilityDef.defName == "TM_CorpseExplosion_III" ||
+                        power.abilityDef.defName == "TM_DeathBolt" || power.abilityDef.defName == "TM_DeathBolt_I" || power.abilityDef.defName == "TM_DeathBolt_II" || power.abilityDef.defName == "TM_DeathBolt_III" ||
                         power.abilityDef.defName == "TM_HealingCircle" || power.abilityDef.defName == "TM_HealingCircle_I" || power.abilityDef.defName == "TM_HealingCircle_II" || power.abilityDef.defName == "TM_HealingCircle_III" ||
                         power.abilityDef.defName == "TM_BestowMight" || power.abilityDef.defName == "TM_BestowMight_I" || power.abilityDef.defName == "TM_BestowMight_II" || power.abilityDef.defName == "TM_BestowMight_III")
                     {
@@ -485,12 +525,13 @@ namespace TorannMagic
                             (power.abilityDef.defName == "TM_EyeOfTheStorm" && MagicPowerSkill5 == null) ||
                             (power.abilityDef.defName == "TM_FoldReality" && MagicPowerSkill6 == null) ||
                             (power.abilityDef.defName == "TM_RegrowLimb" && MagicPowerSkill5 == null) ||
+                            (power.abilityDef.defName == "TM_LichForm" && MagicPowerSkill6 == null) ||
                             (power.abilityDef.defName == "TM_Resurrection" && MagicPowerSkill5 == null))
                         {
                             Rect rectMasterLock = new Rect(rect.xMax - 23f - "TM_MasterSpellLocked".Translate().Length * 4, rect.yMin + MagicCardUtility.MagicButtonSize + 4f, "TM_MasterSpellLocked".Translate().Length * 8, MagicCardUtility.TextSize * 3);
                             Widgets.Label(rectMasterLock, "TM_MasterSpellLocked".Translate(new object[]
                                 {
-                                            power.abilityDef.LabelCap
+                                        power.abilityDef.LabelCap
                                 }));
                         }
                     }
@@ -499,38 +540,32 @@ namespace TorannMagic
                     float num2 = rect3.x;
                     if (itnum == 1 && MagicPowerSkill1 != null)
                     {
-                        DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill1, rect3);
-                        num2 += (MagicCardUtility.magicCardSize.x / 3) - MagicCardUtility.SpacingOffset;
+                        DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill1, rect3);                        
                         itnum++;
                     }
                     else if (itnum == 2 && MagicPowerSkill2 != null)
                     {
                         DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill2, rect3);
-                        num2 += (MagicCardUtility.magicCardSize.x / 3) - MagicCardUtility.SpacingOffset;
                         itnum++;
                     }
                     else if (itnum == 3 && MagicPowerSkill3 != null)
                     {
                         DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill3, rect3);
-                        num2 += (MagicCardUtility.magicCardSize.x / 3) - MagicCardUtility.SpacingOffset;
                         itnum++;
                     }
                     else if (itnum == 4 && MagicPowerSkill4 != null)
                     {
                         DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill4, rect3);
-                        num2 += (MagicCardUtility.magicCardSize.x / 3) - MagicCardUtility.SpacingOffset;
                         itnum++;
                     }
                     else if (itnum == 5 && MagicPowerSkill5 != null)
                     {
                         DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill5, rect3);
-                        num2 += (MagicCardUtility.magicCardSize.x / 3) - MagicCardUtility.SpacingOffset;
                         itnum++;
                     }
                     else if (itnum == 6 && MagicPowerSkill6 != null)
                     {
                         DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill6, rect3);
-                        num2 += (MagicCardUtility.magicCardSize.x / 3) - MagicCardUtility.SpacingOffset;
                         itnum++;
                     }
                     else
@@ -553,7 +588,7 @@ namespace TorannMagic
                     Rect rect42 = new Rect(rect41.x, rect4.y, rect4.width - MagicCardUtility.MagicButtonPointSize, rect4.height / 2);
                     MagicPowerSkill skill = enumeratorN.Current;
                     TooltipHandler.TipRegion(rect42, new TipSignal(() => skill.desc.Translate(), rect4.GetHashCode()));
-                    bool flag11 = skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0 || !enumerator.Current.learned;
+                    bool flag11 = (skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0 || !enumerator.Current.learned) || ((skill.label == "TM_HolyWrath_ver" || skill.label == "TM_HolyWrath_pwr") && compMagic.MagicData.MagicAbilityPoints < 2);
                     if (flag11)
                     {
                         Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
@@ -711,6 +746,22 @@ namespace TorannMagic
                                 skill.level++;
                                 compMagic.MagicData.MagicAbilityPoints -= 1;
                             }
+                            if (enumerator.Current.abilityDef.defName == "TM_HolyWrath")
+                            {
+                                if(skill.label == "TM_HolyWrath_ver" || skill.label == "TM_HolyWrath_pwr")
+                                {
+                                    compMagic.LevelUpSkill_Overwhelm(skill.label);
+                                    skill.level++;
+                                    compMagic.MagicData.MagicAbilityPoints -= 2;
+                                }
+                                else
+                                {
+                                    compMagic.LevelUpSkill_Overwhelm(skill.label);
+                                    skill.level++;
+                                    compMagic.MagicData.MagicAbilityPoints -= 1;
+                                }
+
+                            }
                             if (enumerator.Current.abilityDef.defName == "TM_Firestorm")
                             {
                                 compMagic.LevelUpSkill_Firestorm(skill.label);
@@ -813,6 +864,12 @@ namespace TorannMagic
                                 skill.level++;
                                 compMagic.MagicData.MagicAbilityPoints -= 1;
                             }
+                            if (enumerator.Current.abilityDef.defName == "TM_DeathBolt" || enumerator.Current.abilityDef.defName == "TM_DeathBolt_I" || enumerator.Current.abilityDef.defName == "TM_DeathBolt_II" || enumerator.Current.abilityDef.defName == "TM_DeathBolt_III")
+                            {
+                                compMagic.LevelUpSkill_DeathBolt(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
                             if (enumerator.Current.abilityDef.defName == "TM_AdvancedHeal")
                             {
                                 compMagic.LevelUpSkill_AdvancedHeal(skill.label);
@@ -845,7 +902,8 @@ namespace TorannMagic
                             }
                         }
                     }
-                }
+                    num2 += (MagicCardUtility.magicCardSize.x / 3) - MagicCardUtility.SpacingOffset;
+                }                
             }
         }
     }

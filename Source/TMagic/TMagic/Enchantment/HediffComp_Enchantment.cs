@@ -60,10 +60,12 @@ namespace TorannMagic.Enchantment
 
         private void DisplayEnchantments()
         {
-            MagicPowerSkill spirit = this.Pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr");
+            //MagicPowerSkill spirit = this.Pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr");
+            //MagicPowerSkill clarity = this.Pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
+            //MagicPowerSkill focus = this.Pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_eff.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_eff_pwr");
             if (this.parent.def.defName == "TM_HediffEnchantment_maxMP")
             {
-                this.enchantment = ((comp.maxMP - (spirit.level *.02f)) * 100).ToString() + "%";
+                this.enchantment = (comp.maxMP * 100).ToString() + "%";
             }
             else if (this.parent.def.defName == "TM_HediffEnchantment_coolDown")
             {

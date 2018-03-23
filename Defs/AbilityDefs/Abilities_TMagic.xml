@@ -2393,8 +2393,8 @@ Range: 150</description>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-            <soundCast>DropPodLeaving</soundCast>
-            <muzzleFlashScale>20</muzzleFlashScale>
+            <soundCast>TM_Launch</soundCast>
+            <muzzleFlashScale>4</muzzleFlashScale>
             <isPrimary>true</isPrimary>
         </MainVerb>
     </TorannMagic.TMAbilityDef>

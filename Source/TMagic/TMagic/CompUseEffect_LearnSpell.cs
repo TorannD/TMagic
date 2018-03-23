@@ -12,7 +12,7 @@ namespace TorannMagic
             CompAbilityUserMagic comp = user.GetComp<CompAbilityUserMagic>();
             MagicPower magicPower;
 
-            if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Priest) || user.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || user.story.traits.HasTrait(TorannMagicDefOf.Druid) || parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Summoner) || user.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || user.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || user.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || user.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || user.story.traits.HasTrait(TorannMagicDefOf.Paladin))))
+            if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Priest) || (user.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || user.story.traits.HasTrait(TorannMagicDefOf.Lich)) || user.story.traits.HasTrait(TorannMagicDefOf.Druid) || parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Summoner) || user.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || user.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || user.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || user.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || user.story.traits.HasTrait(TorannMagicDefOf.Paladin))))
             {
                 if (parent.def.defName == "SpellOf_Rain" && comp.spell_Rain == false)
                 {
@@ -176,8 +176,24 @@ namespace TorannMagic
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
                 else if (parent.def.defName == "SpellOf_HolyWrath" && comp.spell_HolyWrath == false && user.story.traits.HasTrait(TorannMagicDefOf.Paladin))
-                {
+                {                    
+                    if(comp.MagicData.magicPowerP.Count < 5)
+                    {
+                        comp.ClearPowers();
+                        Messages.Message("The paladin class for " + user.LabelShort + " has been reset to allow the use of Holy Wrath - please re-assign ability points.", MessageTypeDefOf.NeutralEvent);
+                    }                    
                     comp.spell_HolyWrath = true;
+                    comp.InitializeSpell();
+                    this.parent.Destroy(DestroyMode.Vanish);    
+                }
+                else if (parent.def.defName == "SpellOf_LichForm" && comp.spell_LichForm == false && user.story.traits.HasTrait(TorannMagicDefOf.Necromancer))
+                {
+                    if (comp.MagicData.magicPowerN.Count < 6)
+                    {
+                        comp.ClearPowers();
+                        Messages.Message("The necromancer class for " + user.LabelShort + " has been reset to allow the use of Lich Form - please re-assign ability points.", MessageTypeDefOf.NeutralEvent);
+                    }
+                    comp.spell_LichForm = true;
                     comp.InitializeSpell();
                     this.parent.Destroy(DestroyMode.Vanish);
                 }

@@ -163,7 +163,7 @@ namespace TorannMagic
                         ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                         
                         MagicPowerSkill manaRegen = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
-                        amount *= (((0.0012f * comp.mpRegenRate) + (0.00006f * manaRegen.level)) * settingsRef.needMultiplier);
+                        amount *= (((0.0012f * comp.mpRegenRate)) * settingsRef.needMultiplier);
                         amount = Mathf.Min(amount, this.MaxLevel - this.CurLevel);
                         float necroReduction = 0;
                         int necroCount = 0;
@@ -176,13 +176,13 @@ namespace TorannMagic
                             amount -= (0.0012f * (comp.summonedMinions.Count * (.2f - (.01f * summonerEff.level))));
                         }
 
-                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer))
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
                         {
                             foreach (Pawn current in this.pawn.Map.mapPawns.PawnsInFaction(this.pawn.Faction))
                             {
                                 if (current.RaceProps.Humanlike)
                                 {
-                                    if (current.story.traits.HasTrait(TorannMagicDefOf.Necromancer))
+                                    if (current.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || current.story.traits.HasTrait(TorannMagicDefOf.Lich))
                                     {
                                         
                                         CompAbilityUserMagic tempComp = current.GetComp<CompAbilityUserMagic>();

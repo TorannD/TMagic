@@ -36,6 +36,7 @@
 		  <li>Necromancer</li>
 		  <li>Priest</li>
 		  <li>Ranger</li>
+		  <li>Lich</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -71,6 +72,7 @@
 		  <li>Necromancer</li>
 		  <li>Priest</li>
 		  <li>Ranger</li>
+		  <li>Lich</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -110,6 +112,7 @@
 		  <li>Necromancer</li>
 		  <li>Priest</li>
 		  <li>Ranger</li>
+		  <li>Lich</li>
 		</conflictingTraits>	
 	</TraitDef>	 	
 	
@@ -144,6 +147,7 @@
 		  <li>Necromancer</li>
 		  <li>Priest</li>
 		  <li>Ranger</li>
+		  <li>Lich</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -177,6 +181,7 @@
 		  <li>Necromancer</li>
 		  <li>Priest</li>
 		  <li>Ranger</li>
+		  <li>Lich</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -212,6 +217,7 @@
 		  <li>Necromancer</li>
 		  <li>Priest</li>
 		  <li>Ranger</li>
+		  <li>Lich</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -247,7 +253,8 @@
 			<li>Bladedancer</li>
 		<li>Necromancer</li>	
 		<li>Priest</li>	
-		<li>Ranger</li>		
+		<li>Ranger</li>	
+		<li>Lich</li>		
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -282,6 +289,7 @@
 		  <li>Necromancer</li>
 		  <li>Priest</li>
 		  <li>Ranger</li>
+		  <li>Lich</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -316,6 +324,7 @@
 		  <li>Necromancer</li>
 		  <li>Priest</li>
 		  <li>Ranger</li>
+		  <li>Lich</li>
 		</conflictingTraits>	
 	</TraitDef>
 
@@ -352,6 +361,7 @@
 		  <li>Necromancer</li>
 		  <li>Priest</li>
 		  <li>Ranger</li>
+		  <li>Lich</li>
 		</conflictingTraits>	
 	</TraitDef> 	
 	
@@ -423,6 +433,7 @@
 		  <li>Necromancer</li>
 		  <li>Priest</li>
 		  <li>Ranger</li>
+		  <li>Lich</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -495,6 +506,7 @@
 		  <li>Necromancer</li>
 		  <li>Priest</li>
 		  <li>Ranger</li>
+		  <li>Lich</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -532,6 +544,72 @@
 		  <li>Druid</li>
 		  <li>Priest</li>
 		  <li>Ranger</li>
+		  <li>Lich</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>
+		<defName>Lich</defName>
+		<commonality>0</commonality>
+		<disabledWorkTags> 
+			<li>Caring</li>
+			<li>Social</li>
+			<li>Animals</li>
+			<li>Artistic</li>
+		    <li>ManualDumb</li>
+			<li>ManualSkilled</li>
+			<li>Firefighting</li>
+		</disabledWorkTags>
+		<degreeDatas>	
+		  <li>
+			<label>Lich</label>
+			<description>NAME has transformed into a lich, forsaking life in exchange for an power and an immortal existence.</description>
+			<degree>4</degree>
+			<statOffsets>
+				<MoveSpeed>-2</MoveSpeed>
+				<ComfyTemperatureMin>-40</ComfyTemperatureMin>
+				<ImmunityGainSpeed>1</ImmunityGainSpeed>
+				<ToxicSensitivity>-1</ToxicSensitivity>
+				<MentalBreakThreshold>-0.2</MentalBreakThreshold>
+				<GlobalLearningFactor>0.6</GlobalLearningFactor>
+				<TradePriceImprovement>-0.5</TradePriceImprovement>
+			</statOffsets>
+			<skillGains>
+			  <li>
+				<key>Intellectual</key>
+				<value>2</value>
+			  </li>
+			</skillGains>
+			<theOnlyAllowedMentalBreaks>
+				<li>SadisticRage</li>
+				<li>CorpseObsession</li>
+				<li>MurderousRage</li>
+				<li>Slaughterer</li>
+			</theOnlyAllowedMentalBreaks>
+			<disallowedMentalStates>
+				<li>WanderConfused</li>
+				<li>PanicFlee</li>
+				<li>Manhunter</li>
+				<li>ManhunterPermanent</li>
+			</disallowedMentalStates>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>StormBorn</li>
+		  <li>Arcanist</li>
+		  <li>Summoner</li>
+			<li>Gifted</li>
+			<li>Paladin</li>
+			<li>PhysicalProdigy</li>
+		  <li>Gladiator</li>
+		  <li>TM_Sniper</li>
+		  <li>Bladedancer</li>
+		  <li>Druid</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Necromancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -579,6 +657,7 @@
 		  <li>Psychopath</li>
 		  <li>Bloodlust</li>
 		  <li>Ranger</li>
+		  <li>Lich</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -682,6 +761,7 @@
 		  <li>Necromancer</li>
 		  <li>Priest</li>
 		  <li>Bladedancer</li>
+		  <li>Lich</li>
 		</conflictingTraits>	
 	</TraitDef>
 

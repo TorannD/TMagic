@@ -213,7 +213,8 @@ namespace TorannMagic
                         (this.magicDef.defName == "TM_LightningCloud" || this.magicDef.defName == "Laser_LightningBolt" || this.magicDef.defName == "TM_LightningStorm" || this.magicDef.defName == "TM_EyeOfTheStorm" ||
                         this.magicDef.defName.Contains("Laser_FrostRay") || this.magicDef.defName == "TM_Blizzard" || this.magicDef.defName == "TM_Snowball" || this.magicDef.defName == "TM_Icebolt" ||
                         this.magicDef.defName == "TM_Firestorm" || this.magicDef.defName == "TM_Fireball" || this.magicDef.defName == "TM_Fireclaw" || this.magicDef.defName == "TM_Firebolt" ||
-                        this.magicDef.defName.Contains("TM_MagicMissile") || 
+                        this.magicDef.defName.Contains("TM_MagicMissile") ||
+                        this.magicDef.defName.Contains("TM_DeathBolt") || 
                         this.magicDef.defName == "TM_Poison" ) )
                     {
                         reason = "TM_ShieldBlockingPowers".Translate(new object[]

@@ -64,6 +64,7 @@ namespace TorannMagic
             public static DamageDef TM_Death;
             public static DamageDef TM_Torment;
             public static DamageDef TM_CorpseExplosion;
+            public static DamageDef TM_DeathBolt;
 
             public static DamageDef TM_PhaseStrike;
 

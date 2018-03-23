@@ -68,7 +68,7 @@ Portals must be deactivated before they can be reactivated and assigned a new de
 
 			<ConceptDef>
 		<defName>TM_EncantingII</defName>
-		<label>Enchanting</label>
+		<label>Enchanting II</label>
 		<priority>52</priority>
 		<needsOpportunity>False</needsOpportunity>
 		<helpText>Enchanting: Part II

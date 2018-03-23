@@ -82,6 +82,8 @@ namespace TorannMagic
         public List<MagicPowerSkill> magicPowerSkill_FogOfTorment;
         public List<MagicPowerSkill> magicPowerSkill_ConsumeCorpse;
         public List<MagicPowerSkill> magicPowerSkill_CorpseExplosion;
+        public List<MagicPowerSkill> magicPowerSkill_LichForm;
+        public List<MagicPowerSkill> magicPowerSkill_DeathBolt;
 
         public List<MagicPowerSkill> magicPowerSkill_AdvancedHeal;
         public List<MagicPowerSkill> magicPowerSkill_Purify;
@@ -1042,6 +1044,17 @@ namespace TorannMagic
                             TorannMagicDefOf.TM_CorpseExplosion_II,
                             TorannMagicDefOf.TM_CorpseExplosion_III
                         }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_LichForm
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_DeathBolt,
+                            TorannMagicDefOf.TM_DeathBolt_I,
+                            TorannMagicDefOf.TM_DeathBolt_II,
+                            TorannMagicDefOf.TM_DeathBolt_III
+                        }),
                     };
                 }
                 return this.magicPowerN;
@@ -1129,6 +1142,38 @@ namespace TorannMagic
                     };
                 }
                 return this.magicPowerSkill_CorpseExplosion;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_LichForm
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_LichForm == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_LichForm = new List<MagicPowerSkill>
+                    {
+
+                    };
+                }
+                return this.magicPowerSkill_LichForm;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_DeathBolt
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_DeathBolt == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_DeathBolt = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_DeathBolt_pwr", "TM_DeathBolt_pwr_desc"),
+                        new MagicPowerSkill("TM_DeathBolt_eff", "TM_DeathBolt_eff_desc"),
+                        new MagicPowerSkill("TM_DeathBolt_ver", "TM_DeathBolt_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_DeathBolt;
             }
         }
 
@@ -1451,6 +1496,8 @@ namespace TorannMagic
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_FogOfTorment, "magicPowerSkill_FogOfTorment", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_ConsumeCorpse, "magicPowerSkill_ConsumeCorpse", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_CorpseExplosion, "magicPowerSkill_CorpseExplosion", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_LichForm, "magicPowerSkill_LichForm", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_DeathBolt, "magicPowerSkill_DeathBolt", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPower>(ref this.magicPowerPR, "magicPowerPR", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_AdvancedHeal, "magicPowerSkill_AdvancedHeal", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Purify, "magicPowerSkill_Purify", LookMode.Deep, new object[0]);

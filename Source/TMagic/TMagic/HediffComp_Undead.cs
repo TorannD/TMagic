@@ -12,6 +12,7 @@ namespace TorannMagic
     class HediffComp_Undead : HediffComp
     {
         private bool necroValid = true;
+        private bool lichStrike = false;
         private bool initializing = true;
 
         public string labelCap
@@ -61,13 +62,21 @@ namespace TorannMagic
                     {
                         if (current.RaceProps.Humanlike)
                         {
-                            if (current.story.traits.HasTrait(TorannMagicDefOf.Necromancer))
+                            if (current.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || current.story.traits.HasTrait(TorannMagicDefOf.Lich))
                             {
-                                //necromancer alive to sustain undead
+                                //necromancer alive to sustain undead                                
                                 necroValid = true;
                             }
                         }
-                    }                    
+                    }
+                    if(necroValid == false)  //give a buffer that allows flight or other temporary despawning of the necromancers or lichs before destroying undead
+                    {
+                        if (lichStrike == false)
+                        {
+                            lichStrike = true;
+                            necroValid = true;
+                        }
+                    }
                 }
                 else //for caravans
                 {
@@ -75,7 +84,7 @@ namespace TorannMagic
                     {
                         if (current != null)
                         {
-                            if (current.story.traits.HasTrait(TorannMagicDefOf.Necromancer))
+                            if (current.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || current.story.traits.HasTrait(TorannMagicDefOf.Lich))
                             {
                                 necroValid = true;
                             }
@@ -153,29 +162,19 @@ namespace TorannMagic
                         }
                     }
 
-                    using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+                    using (IEnumerator<BodyPartRecord> enumerator = pawn.health.hediffSet.GetInjuredParts().GetEnumerator())
                     {
                         while (enumerator.MoveNext())
                         {
-                            Hediff rec = enumerator.Current;
-                            
-                            if (!rec.IsOld())
+                            BodyPartRecord rec = enumerator.Current;
+                            IEnumerable<Hediff_Injury> arg_BB_0 = pawn.health.hediffSet.GetHediffs<Hediff_Injury>();
+                            Func<Hediff_Injury, bool> arg_BB_1;
+                            arg_BB_1 = ((Hediff_Injury injury) => injury.Part == rec);
+                            foreach (Hediff_Injury currentTendable in arg_BB_0.Where(arg_BB_1))
                             {
-                                if (rec.def.defName == "Cataract" || rec.def.defName == "HearingLoss" || rec.def.defName.Contains("ToxicBuildup"))
+                                if (currentTendable.TendableNow && !currentTendable.IsOld())
                                 {
-                                    pawn.health.RemoveHediff(rec);
-                                }
-                                if ((rec.def.defName == "Blindness" || rec.def.defName.Contains("Asthma") || rec.def.defName == "Cirrhosis" || rec.def.defName == "ChemicalDamageModerate"))
-                                {
-                                    pawn.health.RemoveHediff(rec);
-                                }
-                                if ((rec.def.defName == "Frail" || rec.def.defName == "BadBack" || rec.def.defName.Contains("Carcinoma") || rec.def.defName == "ChemicalDamageSevere"))
-                                {
-                                    pawn.health.RemoveHediff(rec);
-                                }
-                                if ((rec.def.defName.Contains("Alzheimers") || rec.def.defName == "Dementia" || rec.def.defName.Contains("HeartArteryBlockage") || rec.def.defName == "CatatonicBreakdown"))
-                                {
-                                    pawn.health.RemoveHediff(rec);
+                                    currentTendable.Tended(1, 1);
                                 }
                             }
                         }

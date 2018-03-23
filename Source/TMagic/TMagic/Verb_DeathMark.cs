@@ -57,30 +57,30 @@ namespace TorannMagic
                     if (this.TargetsAoE[i].Thing is Pawn)
                     {
                         Pawn victim = this.TargetsAoE[i].Thing as Pawn;
-                        if (!p.IsColonistPlayerControlled && settingsRef.AIHardMode)
+                        if(!victim.RaceProps.IsMechanoid)
                         {
-                            if (Rand.Chance(.4f + .1f * (pwr.level)))
+                            HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_DeathMarkCurse"), Rand.Range(1f + pwr.level, 4 + 2 * pwr.level));
+                            TM_MoteMaker.ThrowSiphonMote(victim.DrawPos, victim.Map, 1f);
+                            comp.PowerModifier += 1;
+
+                            if (Rand.Chance(ver.level * .2f))
                             {
-                                HealthUtility.AdjustSeverity(victim, TorannMagicDefOf.TM_DeathMarkHD, 6 - (ver.level * 2));
-                                TM_MoteMaker.ThrowPoisonMote(victim.Position.ToVector3(), victim.Map, 1.5f);
-                                TM_MoteMaker.ThrowPoisonMote(victim.Position.ToVector3(), victim.Map, 1.5f);
-                            }
-                            else
-                            {
-                                MoteMaker.ThrowText(victim.Position.ToVector3Shifted(), victim.Map, "TM_ResistedSpell".Translate(), -1);
-                            }
-                        }
-                        else
-                        {
-                            if (Rand.Chance(.2f + .1f * (pwr.level)))
-                            {
-                                HealthUtility.AdjustSeverity(victim, TorannMagicDefOf.TM_DeathMarkHD, 15 - (ver.level * 2));
-                                TM_MoteMaker.ThrowPoisonMote(victim.Position.ToVector3(), victim.Map, 1.5f);
-                                TM_MoteMaker.ThrowPoisonMote(victim.Position.ToVector3(), victim.Map, 1.5f);
-                            }
-                            else
-                            {
-                                MoteMaker.ThrowText(victim.Position.ToVector3Shifted(), victim.Map, "TM_ResistedSpell".Translate(), -1);
+                                if (Rand.Chance(ver.level * .1f)) //terror
+                                {
+                                    HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_Terror"), Rand.Range(3f * ver.level, 5f * ver.level));
+                                    TM_MoteMaker.ThrowDiseaseMote(victim.DrawPos, victim.Map, 1f, .5f, .2f, .4f);
+                                    MoteMaker.ThrowText(victim.DrawPos, victim.Map, "Terror", -1);
+                                }
+                                if (Rand.Chance(ver.level * .1f)) //berserk
+                                {
+                                    if (victim.mindState != null && victim.RaceProps != null && victim.RaceProps.Humanlike)
+                                    {
+                                        victim.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk, "cursed", true, false, null);
+                                        MoteMaker.ThrowMicroSparks(victim.DrawPos, victim.Map);
+                                        MoteMaker.ThrowText(victim.DrawPos, victim.Map, "Berserk", -1);
+                                    }
+
+                                }
                             }
                         }
                     }
@@ -89,16 +89,9 @@ namespace TorannMagic
                 result = true;
             }
 
-
             this.burstShotsLeft = 0;
             //this.ability.TicksUntilCasting = (int)base.UseAbilityProps.SecondsToRecharge * 60;
             return result;
         }        
-
-        public void DrawStrike(IntVec3 center, Vector3 strikePos, Map map)
-        {
-            TM_MoteMaker.ThrowCrossStrike(strikePos, map, 1f);
-            TM_MoteMaker.ThrowBloodSquirt(strikePos, map, 1.5f);
-        }
     }
 }

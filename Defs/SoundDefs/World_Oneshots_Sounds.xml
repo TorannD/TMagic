@@ -38,12 +38,132 @@
           </li>
         </grains>
         <volumeRange>
+          <min>12</min>
+          <max>15</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.9</min>
+          <max>1.1</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+    <SoundDef>
+    <defName>TM_SoftExplosion</defName>
+    <eventNames />
+    <maxSimultaneous>5</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/SoftExplosion</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>12</min>
+          <max>15</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.9</min>
+          <max>1.1</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>TM_Launch</defName>
+    <eventNames />
+    <maxSimultaneous>3</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/Launch</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
           <min>10</min>
           <max>10</max>
         </volumeRange>
         <pitchRange>
           <min>.9</min>
           <max>1.1</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+    <SoundDef>
+    <defName>TM_AirWoosh</defName>
+    <eventNames />
+    <maxSimultaneous>3</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/AirWoosh</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>12</min>
+          <max>15</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.9</min>
+          <max>1.1</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+    <SoundDef>
+    <defName>TM_Vibration</defName>
+    <eventNames />
+    <maxSimultaneous>2</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/Vibration</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>12</min>
+          <max>18</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.9</min>
+          <max>1.1</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>TM_VibrationLow</defName>
+    <eventNames />
+    <maxSimultaneous>2</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/Vibration</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>15</min>
+          <max>21</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.6</min>
+          <max>.75</max>
         </pitchRange>
       </li>
     </subSounds>

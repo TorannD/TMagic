@@ -33,7 +33,7 @@
 		<mentalStateGivers>
 			<li>
 			 <mentalState>PanicFlee</mentalState>
-			 <mtbDays>0.001</mtbDays>
+			 <mtbDays>0.03</mtbDays>
 			</li>
 		</mentalStateGivers>
         <capMods>
@@ -61,7 +61,7 @@
 	    <mentalStateGivers>
 			<li>
 			 <mentalState>PanicFlee</mentalState>
-			 <mtbDays>0.003</mtbDays>
+			 <mtbDays>0.01</mtbDays>
 			</li>
 	    </mentalStateGivers>
         <capMods>

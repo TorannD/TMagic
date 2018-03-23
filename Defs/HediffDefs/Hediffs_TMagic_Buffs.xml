@@ -1350,7 +1350,7 @@
   </HediffDef>
   
   
-     <HediffDef>
+   <HediffDef>
     <defName>TM_HediffInvulnerable</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Invulnerable</label>
@@ -1360,6 +1360,26 @@
 	<comps>
       <li>
         <compClass>TorannMagic.HediffComp_Invulnerable</compClass>
+      </li>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-10</severityPerDay>
+      </li>	  
+    </comps>
+  </HediffDef>
+  
+  <HediffDef>
+    <defName>TM_HediffTimedInvulnerable</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Invulnerable</label>
+    <defaultLabelColor>(1,1,0.2)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>3.0</maxSeverity>	
+	<comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>
+          <min>360</min>
+          <max>370</max>
+        </disappearsAfterTicks>
       </li>
       <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-10</severityPerDay>

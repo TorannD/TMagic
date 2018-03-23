@@ -222,10 +222,14 @@ namespace TorannMagic
                 if (Rand.Chance(MasterSpellChance) && (parms.totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.SpellOf_Blizzard.BaseMarketValue)
                 {
                     Thing thing;
-                    float rnd = Rand.Range(0f, 12f);
-                    if (rnd > 10)
+                    float rnd = Rand.Range(0f, 14f);
+                    if (rnd > 12)
                     {
                         thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_HolyWrath, null);
+                    }
+                    else if (rnd > 10 && rnd <= 12)
+                    {
+                        thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_LichForm, null);
                     }
                     else if (rnd > 8 && rnd <= 10)
                     {

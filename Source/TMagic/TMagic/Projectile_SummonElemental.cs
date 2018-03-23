@@ -283,7 +283,6 @@ namespace TorannMagic
                             }
                             lord.AddPawn(newPawn);
                         }
-
                     }
                 }
                 else

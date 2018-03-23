@@ -115,13 +115,12 @@ There is no limit to the number of undead a necromancer may control, however, wh
         <defName>TM_DeathMark</defName>
         <label>Death Mark</label>
         <uiIconPath>UI/deathmark</uiIconPath>
-        <description>Mark a target for death.  If successful, the target will die and be reanimated as an undead after the mark has expired.
-This spell has a high resist rate and can affect friendly and enemy pawns alike.  Does not work on mechanoids.
-Max Targets: 2
+        <description>Mark a victim with a curse that causes their life to flash before their eyes. Cursed victims will lose focus and the will to fight, reducing the attack rate. Marking targets for death empowers Death Bolt. Does not work on mechanoids.
+Max Targets: 3
 Cast Time: 3s
 Cooldown: 120s
-Range: 20</description>
-        <manaCost>0.40</manaCost>
+Range: 34</description>
+        <manaCost>0.25</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_DeathMark</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -133,9 +132,9 @@ Range: 20</description>
             <abilityDef>TM_DeathMark</abilityDef>
             <warmupTime>3</warmupTime>
             <SecondsToRecharge>120</SecondsToRecharge>
-            <range>20</range>
+            <range>34</range>
             <burstShotCount>1</burstShotCount>			
-            <soundCast>ThrowMolotovCocktail</soundCast>
+            <soundCast>TM_Vibration</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>4</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
@@ -145,16 +144,16 @@ Range: 20</description>
                 <canTargetPawns>true</canTargetPawns>
                 <canTargetBuildings>false</canTargetBuildings>
                 <canTargetSelf>false</canTargetSelf>
-                <canTargetLocations>false</canTargetLocations>
+                <canTargetLocations>true</canTargetLocations>
             </targetParams>
 			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
             <TargetAoEProperties>
                 <targetClass>Pawn</targetClass>
                 <showRangeOnSelect>true</showRangeOnSelect>
-                <friendlyFire>true</friendlyFire>
+                <friendlyFire>false</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>2</maxTargets>
-                <range>2</range>
+                <maxTargets>3</maxTargets>
+                <range>3</range>
             </TargetAoEProperties>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
@@ -163,13 +162,12 @@ Range: 20</description>
         <defName>TM_DeathMark_I</defName>
         <label>Death Mark (I)</label>
         <uiIconPath>UI/deathmark</uiIconPath>
-        <description>Mark a target for death.  If successful, the target will die and reanimated as an undead after the mark has expired.
-This spell has a high resist rate and can affect friendly and enemy pawns alike.  Does not work on mechanoids.
-Max Targets: 3
+        <description>Mark a victim with a curse that causes their life to flash before their eyes. Cursed victims will lose focus and the will to fight, reducing the attack rate. Marking targets for death empowers Death Bolt. Does not work on mechanoids.
+Max Targets: 4
 Cast Time: 2.5s
 Cooldown: 90s
-Range: 24</description>
-        <manaCost>0.40</manaCost>
+Range: 38</description>
+        <manaCost>0.25</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_DeathMark</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -181,9 +179,9 @@ Range: 24</description>
             <abilityDef>TM_DeathMark_I</abilityDef>
             <warmupTime>2.5</warmupTime>
             <SecondsToRecharge>90</SecondsToRecharge>
-            <range>24</range>
+            <range>38</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>ThrowMolotovCocktail</soundCast>
+            <soundCast>TM_Vibration</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>4</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
@@ -193,16 +191,16 @@ Range: 24</description>
                 <canTargetPawns>true</canTargetPawns>
                 <canTargetBuildings>false</canTargetBuildings>
                 <canTargetSelf>false</canTargetSelf>
-                <canTargetLocations>false</canTargetLocations>
+                <canTargetLocations>true</canTargetLocations>
             </targetParams>
 			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
             <TargetAoEProperties>
                 <targetClass>Pawn</targetClass>
                 <showRangeOnSelect>true</showRangeOnSelect>
-                <friendlyFire>true</friendlyFire>
+                <friendlyFire>false</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>3</maxTargets>
-                <range>2</range>
+                <maxTargets>4</maxTargets>
+                <range>3</range>
             </TargetAoEProperties>
 
         </MainVerb>
@@ -212,13 +210,12 @@ Range: 24</description>
         <defName>TM_DeathMark_II</defName>
         <label>Death Mark (II)</label>
         <uiIconPath>UI/deathmark</uiIconPath>
-        <description>Mark a target for death.  If successful, the target will die and reanimated as an undead after the mark has expired.
-This spell has a high resist rate and can affect friendly and enemy pawns alike.  Does not work on mechanoids.
+        <description>Mark a victim with a curse that causes their life to flash before their eyes. Cursed victims will lose focus and the will to fight, reducing the attack rate. Marking targets for death empowers Death Bolt. Does not work on mechanoids.
 Max Targets: 4
 Cast Time: 2s
 Cooldown: 60s
-Range: 28</description>
-        <manaCost>0.40</manaCost>
+Range: 42</description>
+        <manaCost>0.25</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_DeathMark</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -230,9 +227,9 @@ Range: 28</description>
             <abilityDef>TM_DeathMark_II</abilityDef>
             <warmupTime>2</warmupTime>
             <SecondsToRecharge>60</SecondsToRecharge>
-            <range>28</range>
+            <range>42</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>ThrowMolotovCocktail</soundCast>
+            <soundCast>TM_Vibration</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>4</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
@@ -242,16 +239,16 @@ Range: 28</description>
                 <canTargetPawns>true</canTargetPawns>
                 <canTargetBuildings>false</canTargetBuildings>
                 <canTargetSelf>false</canTargetSelf>
-                <canTargetLocations>false</canTargetLocations>
+                <canTargetLocations>true</canTargetLocations>
             </targetParams>
 			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
             <TargetAoEProperties>
                 <targetClass>Pawn</targetClass>
                 <showRangeOnSelect>true</showRangeOnSelect>
-                <friendlyFire>true</friendlyFire>
+                <friendlyFire>false</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
                 <maxTargets>4</maxTargets>
-                <range>3</range>
+                <range>4</range>
             </TargetAoEProperties>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
@@ -260,13 +257,12 @@ Range: 28</description>
         <defName>TM_DeathMark_III</defName>
         <label>Death Mark (III)</label>
         <uiIconPath>UI/deathmark</uiIconPath>
-        <description>Mark a target for death.  If successful, the target will die and reanimated as an undead after the mark has expired.
-This spell has a high resist rate and can affect friendly and enemy pawns alike.  Does not work on mechanoids.
+        <description>Mark a victim with a curse that causes their life to flash before their eyes. Cursed victims will lose focus and the will to fight, reducing the attack rate. Marking targets for death empowers Death Bolt. Does not work on mechanoids.
 Max Targets: 5
 Cast Time: 1.8s
 Cooldown: 45s
-Range: 30</description>
-        <manaCost>0.40</manaCost>
+Range: 46</description>
+        <manaCost>0.25</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_DeathMark</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -278,9 +274,9 @@ Range: 30</description>
             <abilityDef>TM_DeathMark_III</abilityDef>
             <warmupTime>1.8</warmupTime>
             <SecondsToRecharge>45</SecondsToRecharge>
-            <range>30</range>
+            <range>46</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>ThrowMolotovCocktail</soundCast>
+            <soundCast>TM_Vibration</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>4</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
@@ -290,16 +286,16 @@ Range: 30</description>
                 <canTargetPawns>true</canTargetPawns>
                 <canTargetBuildings>false</canTargetBuildings>
                 <canTargetSelf>false</canTargetSelf>
-                <canTargetLocations>false</canTargetLocations>
+                <canTargetLocations>true</canTargetLocations>
             </targetParams>
 			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
             <TargetAoEProperties>
                 <targetClass>Pawn</targetClass>
                 <showRangeOnSelect>true</showRangeOnSelect>
-                <friendlyFire>true</friendlyFire>
+                <friendlyFire>false</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
                 <maxTargets>5</maxTargets>
-                <range>3</range>
+                <range>4</range>
             </TargetAoEProperties>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
@@ -702,5 +698,309 @@ Cast time: .5s</description>
     </TorannMagic.TMAbilityDef>
 
     <!-- corpse explosion end-->
+	
+	<!-- Lich Form -->
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_LichForm</defName>
+        <label>Lich Form</label>
+        <uiIconPath>UI/lich</uiIconPath>
+        <description>Transforms the necromancer into an undead lich gaining an immortal existence and arcane power. Once used, there is no return.
+Benefits: 
+Maximum Mana: +50%
+Mana Regeneration: +50%
+Gains unnatural immunities to diseases, resistances to damage, health regeneration, and no longer needs food or rest.
+Gains ability: Flight
+Gains ability: Death Bolt
+
+Penalties:
+Can no longer perform work involving Caring, Social, Animals, Firefighting, Artistic, Dumb Labor, or Skilled Labor.
+Movement speed: -2.0 c/s</description>
+        <manaCost>0.0</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_LichForm</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_ConsumeCorpse</defaultProjectile>
+            <abilityDef>TM_LichForm</abilityDef>
+            <warmupTime>10</warmupTime>
+            <SecondsToRecharge>2</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Gong</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	
+    <!-- Death Bolt-->	
+    <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_Ability</thingClass>
+	    <defName>Projectile_DeathBolt</defName>
+        <label>deathbolt</label>
+        <graphicData>
+			<texPath>Spells/deathbolt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_DeathBolt</damageDef>
+            <damageAmountBase>30</damageAmountBase>
+            <speed>30</speed>
+			<explosionRadius>1.4</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_Ability</thingClass>
+	    <defName>Projectile_DeathBolt_I</defName>
+        <label>deathbolt</label>
+        <graphicData>
+			<texPath>Spells/deathbolt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_DeathBolt</damageDef>
+            <damageAmountBase>30</damageAmountBase>
+            <speed>30</speed>
+			<explosionRadius>2</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_Ability</thingClass>
+	    <defName>Projectile_DeathBolt_II</defName>
+        <label>deathbolt</label>
+        <graphicData>
+			<texPath>Spells/deathbolt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_DeathBolt</damageDef>
+            <damageAmountBase>30</damageAmountBase>
+            <speed>30</speed>
+			<explosionRadius>2</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_Ability</thingClass>
+	    <defName>Projectile_DeathBolt_III</defName>
+        <label>deathbolt</label>
+        <graphicData>
+			<texPath>Spells/deathbolt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>TM_DeathBolt</damageDef>
+            <damageAmountBase>30</damageAmountBase>
+            <speed>36</speed>
+			<explosionRadius>2.4</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>	
+	
+	<ThingDef ParentName="BaseBullet" Name="FlyingObject_DeathBolt">
+	   <defName>FlyingObject_DeathBolt</defName>
+	   <thingClass>TorannMagic.FlyingObject_DeathBolt</thingClass>
+	   <label>explosion</label>
+	   <graphicData>
+			<texPath>Spells/deathbolt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	   <projectile>
+			<flyOverhead>true</flyOverhead>
+			<damageDef>TM_DeathBolt</damageDef>
+			<damageAmountBase>30</damageAmountBase>
+			<speed>30</speed>
+			<explosionRadius>1.4</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+	   </projectile>
+	</ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_DeathBolt</defName>
+        <label>Death Bolt</label>
+        <uiIconPath>Spells/deathbolt</uiIconPath>
+        <description>Launches a bolt of power carrying the anguish of the dead; causes intense pain to any living creatures caught in the blast.
+
+Explosion Radius: 1.6m
+Cooldown: 15s
+Bolts: 2
+Range: 40</description>
+        <manaCost>0.30</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Effect_DeathBolt</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_DeathBolt</defaultProjectile>
+            <abilityDef>TM_DeathBolt</abilityDef>
+			<isViolent>true</isViolent>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>15.0</SecondsToRecharge>
+			<forcedMissRadius>6</forcedMissRadius>
+            <range>40</range>
+			<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+            <burstShotCount>2</burstShotCount>
+            <soundCast>TM_Launch</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>2</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_DeathBolt_I</defName>
+        <label>Death Bolt (I)</label>
+        <uiIconPath>Spells/deathbolt</uiIconPath>
+        <description>Launches a bolt of power carrying the anguish of the dead; causes intense pain to any living creatures caught in the blast.
+
+Explosion Radius: 2m
+Cooldown: 14s
+Bolts: 2
+Range 40</description>
+        <manaCost>0.30</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Effect_DeathBolt</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_DeathBolt_I</defaultProjectile>
+            <abilityDef>TM_DeathBolt_I</abilityDef>
+			<isViolent>true</isViolent>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>14.0</SecondsToRecharge>
+			<forcedMissRadius>6</forcedMissRadius>
+            <range>40</range>
+            <burstShotCount>2</burstShotCount>
+			<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+            <soundCast>TM_Launch</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>2</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_DeathBolt_II</defName>
+        <label>Death Bolt (II)</label>
+        <uiIconPath>Spells/deathbolt</uiIconPath>
+        <description>Launches a bolt of power carrying the anguish of the dead; causes intense pain to any living creatures caught in the blast.
+
+Explosion Radius: 2m
+Cooldown: 13s
+Bolts: 3
+Range 40</description>
+        <manaCost>0.30</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Effect_DeathBolt</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_DeathBolt_II</defaultProjectile>
+            <abilityDef>TM_DeathBolt_II</abilityDef>
+			<isViolent>true</isViolent>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>13.0</SecondsToRecharge>
+			<forcedMissRadius>6</forcedMissRadius>
+            <range>40</range>
+            <burstShotCount>3</burstShotCount>
+			<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+            <soundCast>TM_Launch</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_DeathBolt_III</defName>
+        <label>Death Bolt (III)</label>
+        <uiIconPath>Spells/deathbolt</uiIconPath>
+        <description>Launches a bolt of power carrying the anguish of the dead; causes intense pain to any living creatures caught in the blast.
+
+Explosion Radius: 2.4m
+Cooldown: 12s
+Bolts: 3
+Range: 50</description>
+        <manaCost>0.30</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Effect_DeathBolt</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_DeathBolt_III</defaultProjectile>
+            <abilityDef>TM_DeathBolt_III</abilityDef>
+			<isViolent>true</isViolent>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>12.0</SecondsToRecharge>
+			<forcedMissRadius>6</forcedMissRadius>
+            <range>50</range>
+            <burstShotCount>3</burstShotCount>
+			<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+            <soundCast>TM_Launch</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!-- deathbolt end-->
 
 </Defs>

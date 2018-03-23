@@ -74,7 +74,13 @@
     <Compile Include="Building_TMElementalRift.cs" />
     <Compile Include="Building_TMPortal.cs" />
     <Compile Include="Building_PoisonTrap.cs" />
+    <Compile Include="Effect_DeathBolt.cs" />
+    <Compile Include="Effect_Flight.cs" />
+    <Compile Include="FlyingObject_DeathBolt.cs" />
+    <Compile Include="FlyingObject_Flight.cs" />
+    <Compile Include="HediffComp_Lich.cs" />
     <Compile Include="Projectile_HolyWrath.cs" />
+    <Compile Include="Thoughts\ThoughtWorker_Lich.cs" />
     <Compile Include="Verb_MeleeCleave.cs" />
     <Compile Include="CompUseEffect_GemOfInsight.cs" />
     <Compile Include="CompUseEffect_LearnSkill.cs" />
@@ -114,6 +120,7 @@
     <Compile Include="Verb_DismissUndead.cs" />
     <Compile Include="Verb_FightersFocus.cs" />
     <Compile Include="Verb_DismissMinion.cs" />
+    <Compile Include="Verb_LichForm.cs" />
     <Compile Include="Verb_StrongBack.cs" />
     <Compile Include="Verb_ThickSkin.cs" />
     <Compile Include="Verb_HeavyBlow.cs" />
