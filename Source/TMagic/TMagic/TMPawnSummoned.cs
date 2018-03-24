@@ -164,20 +164,23 @@ namespace TorannMagic
 
         public void PreDestroy()
         {
-            try
+            if (this.def.defName == "TM_MinionR" || this.def.defName == "TM_GreaterMinionR")
             {
-                MoteMaker.ThrowSmoke(this.Position.ToVector3(), base.Map, 3);
-                if (CompSummoner != null)
+                try
                 {
-                    CompSummoner.summonedMinions.Remove(this);
+                    MoteMaker.ThrowSmoke(this.Position.ToVector3(), base.Map, 3);
+                    if (CompSummoner != null)
+                    {
+                        CompSummoner.summonedMinions.Remove(this);
+                    }
                 }
-            }
-            catch
-            {
-                Log.Message("TM_ExceptionClose".Translate(new object[]
+                catch
                 {
+                    Log.Message("TM_ExceptionClose".Translate(new object[]
+                    {
                             this.def.defName
-                }));
+                    }));
+                }
             }
         }
 

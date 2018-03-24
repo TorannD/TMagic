@@ -244,4 +244,57 @@
  
 <!-- Summon elemental end-->
 
+<!-- Summon Poppi Start-->
+   <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_SummonPoppi</thingClass>
+	    <defName>Projectile_SummonPoppi</defName>
+        <label>summon poppi</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>200</speed>
+			<explosionRadius>4</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+	
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_SummonPoppi</defName>
+    <label>Summon Poppi</label>
+    <uiIconPath>UI/poppihorde</uiIconPath>
+    <description>Summon a pack of vicious poppi straight from the gates of insanity.</description>
+    <manaCost>0.060</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_SB</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_SummonPoppi</defaultProjectile>
+		<abilityDef>TM_SummonPoppi</abilityDef>
+        <warmupTime>3</warmupTime>
+        <SecondsToRecharge>1.20</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>45</range>
+		<isViolent>false</isViolent>
+        <soundCast>MessagePositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<targetParams>
+      	 <canTargetPawns>false</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>false</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+
 </Defs>

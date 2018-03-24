@@ -62,6 +62,7 @@ namespace TorannMagic
         public static ThingDef SpellOf_Resurrection;
         public static ThingDef SpellOf_HolyWrath;
         public static ThingDef SpellOf_LichForm;
+        public static ThingDef SpellOf_SummonPoppi;
 
         public static ThingDef SkillOf_Sprint;
         public static ThingDef SkillOf_GearRepair;
@@ -200,6 +201,7 @@ namespace TorannMagic
         public static ThingDef TM_MinionR;
         public static ThingDef TM_GreaterMinionR;
         public static ThingDef TM_InvisMinionR;
+        public static ThingDef TM_Poppi;
         public static FactionDef TM_ElementalFaction;
         public static FactionDef TM_SummonedFaction;
 
@@ -208,6 +210,7 @@ namespace TorannMagic
         public static TMAbilityDef TM_SummonPylon;
         public static TMAbilityDef TM_SummonExplosive;
         public static TMAbilityDef TM_SummonElemental;
+        public static TMAbilityDef TM_SummonPoppi;
 
         //Druid
         public static TraitDef Druid;

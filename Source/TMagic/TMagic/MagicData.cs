@@ -70,6 +70,7 @@ namespace TorannMagic
         public List<MagicPowerSkill> magicPowerSkill_SummonPylon;
         public List<MagicPowerSkill> magicPowerSkill_SummonExplosive;
         public List<MagicPowerSkill> magicPowerSkill_SummonElemental;
+        public List<MagicPowerSkill> magicPowerSkill_SummonPoppi;
 
         public List<MagicPowerSkill> magicPowerSkill_Poison;
         public List<MagicPowerSkill> magicPowerSkill_SootheAnimal;
@@ -810,7 +811,10 @@ namespace TorannMagic
                         {
                             TorannMagicDefOf.TM_SummonElemental
                         }),
-
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_SummonPoppi
+                        }),
 
                     };
                 }
@@ -883,6 +887,23 @@ namespace TorannMagic
                     };
                 }
                 return this.magicPowerSkill_SummonElemental;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_SummonPoppi
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_SummonPoppi == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_SummonPoppi = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_SummonPoppi_pwr", "TM_SummonPoppi_pwr_desc" ),
+                        new MagicPowerSkill("TM_SummonPoppi_eff", "TM_SummonPoppi_eff_desc" ),
+                        new MagicPowerSkill("TM_SummonPoppi_ver", "TM_SummonPoppi_ver_desc" )
+                    };
+                }
+                return this.magicPowerSkill_SummonPoppi;
             }
         }
 
@@ -1484,6 +1505,7 @@ namespace TorannMagic
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_SummonPylon, "magicPowerSkill_SummonPylon", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_SummonExplosive, "magicPowerSkill_SummonExplosive", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_SummonElemental, "magicPowerSkill_SummonElemental", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_SummonPoppi, "magicPowerSkill_SummonPoppi", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPower>(ref this.magicPowerD, "magicPowerD", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Poison, "magicPowerSkill_Poison", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_SootheAnimal, "magicPowerSkill_SootheAnimal", LookMode.Deep, new object[0]);

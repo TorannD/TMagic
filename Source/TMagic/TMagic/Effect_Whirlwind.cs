@@ -41,6 +41,7 @@ namespace TorannMagic
             {
                 Pawn casterPawn = base.CasterPawn;
                 this.Ability.PostAbilityAttempt();
+                
                 LongEventHandler.QueueLongEvent(delegate
                 {
                     FlyingObject_Whirlwind flyingObject = (FlyingObject_Whirlwind)GenSpawn.Spawn(ThingDef.Named("FlyingObject_Whirlwind"), this.CasterPawn.Position, this.CasterPawn.Map);

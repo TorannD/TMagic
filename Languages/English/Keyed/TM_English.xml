@@ -272,6 +272,9 @@ Increases explosion radius by 25% per skill level.</TM_SummonExplosive_pwr_desc>
 <TM_SummonElemental_pwr_desc>Increases the power of the elemental summoned.
 At rank 3: summons two lesser elementals to accompany your primary summon.</TM_SummonElemental_pwr_desc>
 <TM_SummonElemental_ver_desc>Increases the duration of the summoning by 15s per skill point.  Base duration is 30s.</TM_SummonElemental_ver_desc>
+<TM_SummonPoppi_eff_desc>Decreases mana cost to summon a band of poppi by 5% each skill point, but really who can put a price on happiness?</TM_SummonPoppi_eff_desc>
+<TM_SummonPoppi_pwr_desc>Even more poppi, snuggles for everyone.</TM_SummonPoppi_pwr_desc>
+<TM_SummonPoppi_ver_desc>Hanging out with those poppi is even more of a blast.</TM_SummonPoppi_ver_desc>
 
 <TM_SummonMinion_eff>Minion Efficiency</TM_SummonMinion_eff>
 <TM_SummonMinion_pwr>Minion Power</TM_SummonMinion_pwr>
@@ -285,6 +288,9 @@ At rank 3: summons two lesser elementals to accompany your primary summon.</TM_S
 <TM_SummonElemental_eff>Elemental Efficiency</TM_SummonElemental_eff>
 <TM_SummonElemental_pwr>Elemental Power</TM_SummonElemental_pwr>
 <TM_SummonElemental_ver>Elemental Duration</TM_SummonElemental_ver>
+<TM_SummonPoppi_eff>Poppi Enthusiast</TM_SummonPoppi_eff>
+<TM_SummonPoppi_pwr>Catch Them All</TM_SummonPoppi_pwr>
+<TM_SummonPoppi_ver>Snuggle Catalyst</TM_SummonPoppi_ver>
 
 <TM_Poison_eff_desc>Reduces the cost of Poison by 10% per skill level.</TM_Poison_eff_desc>
 <TM_Poison_pwr_desc>Increases the lethal potency of poison by 25% per skill level.</TM_Poison_pwr_desc>

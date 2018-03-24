@@ -1497,7 +1497,7 @@ Produces 400Wd.</description>
     <defName>SpellOf_Blizzard</defName>
     <label>Ice Spell: Blizzard</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches an ice mage user how to call forth a blizzard to bury your foes in a hail of ice and snow.</description>
+    <description>Teaches an ice mage how to call forth a blizzard to bury your foes in a hail of ice and snow.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
@@ -2016,6 +2016,54 @@ Produces 400Wd.</description>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_power</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_SummonPoppi</defName>
+    <label>Summoner Spell: Summon Poppi</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a summoner how to summon a band of cute and cuddly poppi.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>2500</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>252</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <drawGUIOverlay>false</drawGUIOverlay>

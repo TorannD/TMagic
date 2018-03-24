@@ -59,26 +59,29 @@ namespace TorannMagic
             CellRect cellRect = CellRect.CenteredOn(base.Position, 8 + (verVal * 2));
 			cellRect.ClipInsideMap(map);
 
-				if (this.primed == true)
+			if (this.primed == true)
+			{
+				if (((this.boltDelay + this.lastStrike) < this.age))
 				{
-					if (((this.boltDelay + this.lastStrike) < this.age))
-					{
-						IntVec3 randomCell = cellRect.RandomCell;
-						Map.weatherManager.eventHandler.AddEvent(new WeatherEvent_LightningStrike(map, randomCell));
-						this.LightningBlast(pwrVal, randomCell, map, 2.2f);
-						strikeInt++;
-						this.lastStrike = this.age;
-						this.boltDelay = Rand.Range(10 - (pwrVal * 2), 50 - (pwrVal * 7));
+					IntVec3 randomCell = cellRect.RandomCell;
+                    if (randomCell.IsValid && randomCell.InBounds(base.Map))
+                    {
+                        Map.weatherManager.eventHandler.AddEvent(new WeatherEvent_LightningStrike(map, randomCell));
+                        this.LightningBlast(pwrVal, randomCell, map, 2.2f);
+                        strikeInt++;
+                        this.lastStrike = this.age;
+                        this.boltDelay = Rand.Range(10 - (pwrVal * 2), 50 - (pwrVal * 7));
 
-						bool flag1 = this.age <= duration;
-						if (!flag1)
-						{
-							this.primed = false;
-							map.weatherDecider.DisableRainFor(0);
-							map.weatherDecider.StartNextWeather();
-						}
-					}
+                        bool flag1 = this.age <= duration;
+                        if (!flag1)
+                        {
+                            this.primed = false;
+                            map.weatherDecider.DisableRainFor(0);
+                            map.weatherDecider.StartNextWeather();
+                        }
+                    }
 				}
+			}
 		}
 
 		protected void LightningBlast(int pwr, IntVec3 pos, Map map, float radius)

@@ -78,6 +78,7 @@ namespace TorannMagic
         private float S_SummonExplosive_eff = 0.15f;
         private float S_SummonMinion_eff = 0.10f;
         private float S_SummonPylon_eff = 0.10f;
+        private float S_SummonPoppi_eff = .05f;
         private float D_Poison_eff = 0.10f;
         private float D_SootheAnimal_eff = 0.10f;
         private float D_Regenerate_eff = 0.10f;
@@ -124,6 +125,7 @@ namespace TorannMagic
         public bool spell_HolyWrath = false;
         public bool spell_LichForm = false;
         public bool spell_Flight = false;
+        public bool spell_SummonPoppi = false;
 
         private bool item_StaffOfDefender = false;
 
@@ -580,6 +582,17 @@ namespace TorannMagic
         {
             int result = 0;
             MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_SummonElemental.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_SummonPoppi(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_SummonPoppi.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
             bool flag = magicPowerSkill != null;
             if (flag)
             {
@@ -1719,6 +1732,11 @@ namespace TorannMagic
                     this.RemovePawnAbility(TorannMagicDefOf.TM_Flight);
                     this.AddPawnAbility(TorannMagicDefOf.TM_Flight);
                 }
+                if (this.spell_SummonPoppi == true)
+                {
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_SummonPoppi);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_SummonPoppi);
+                }
                 //this.UpdateAbilities();
             }            
         }
@@ -2503,6 +2521,15 @@ namespace TorannMagic
                     result = magicPowerSkill.level;
                 }
             }
+            if (attributeName == "TM_SummonPoppi_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_SummonPoppi.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
             if (attributeName == "TM_Poison_eff")
             {
                 MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Poison.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
@@ -2815,6 +2842,11 @@ namespace TorannMagic
             {
                 MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_SummonElemental.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonElemental_eff");
                 adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.S_SummonElemental_eff * (float)magicPowerSkill.level);
+            }
+            if (magicDef == TorannMagicDefOf.TM_SummonPoppi)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_SummonPoppi.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonPoppi_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.S_SummonPoppi_eff * (float)magicPowerSkill.level);
             }
             if (magicDef == TorannMagicDefOf.TM_Poison)
             {
@@ -3488,6 +3520,7 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.spell_HolyWrath, "spell_HolyWrath", false, false);
             Scribe_Values.Look<bool>(ref this.spell_LichForm, "spell_LichForm", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Flight, "spell_Flight", false, false);
+            Scribe_Values.Look<bool>(ref this.spell_SummonPoppi, "spell_SummonPoppi", false, false);
             Scribe_Values.Look<bool>(ref this.doOnce, "doOnce", true, false);
             Scribe_Values.Look<int>(ref this.powerModifier, "powerModifier", 0, false);
             Scribe_Collections.Look<Thing>(ref this.summonedMinions, "summonedMinions", LookMode.Reference);

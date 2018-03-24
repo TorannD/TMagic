@@ -65,7 +65,7 @@ namespace TorannMagic
                 }
             }
             Thing weapon = this.Pawn.equipment.Primary;
-            if ((weapon.def.IsRangedWeapon || weapon.def.IsMeleeWeapon))
+            if (weapon != null && (weapon.def.IsRangedWeapon || weapon.def.IsMeleeWeapon))
             {
                 if(Rand.Chance(.2f) && weapon.HitPoints < weapon.MaxHitPoints)
                 {

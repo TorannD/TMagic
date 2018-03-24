@@ -161,6 +161,7 @@ namespace TorannMagic
             MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(TorannMagicDefOf.Mote_CrossStrike, null);
             moteThrown.Scale = 1.9f * scale;
             moteThrown.rotationRate = 0f;
+            moteThrown.exactRotation = Rand.Range(0, 3);
             moteThrown.exactPosition = loc;
             moteThrown.SetVelocity((float)Rand.Range(0, 360), Rand.Range(0.05f, 0.1f));
             GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);

@@ -197,6 +197,17 @@ namespace TorannMagic
                     comp.InitializeSpell();
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
+                else if (parent.def.defName == "SpellOf_SummonPoppi" && comp.spell_SummonPoppi == false && user.story.traits.HasTrait(TorannMagicDefOf.Summoner))
+                {
+                    if (comp.MagicData.magicPowerS.Count < 5)
+                    {
+                        comp.ClearPowers();
+                        Messages.Message("The summoner class for " + user.LabelShort + " has been reset to allow the use of Summon Poppi - please re-assign ability points.", MessageTypeDefOf.NeutralEvent);
+                    }
+                    comp.spell_SummonPoppi= true;
+                    comp.InitializeSpell();
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
                 else
                 {
                     Messages.Message("CannotLearnSpell".Translate(), MessageTypeDefOf.RejectInput);

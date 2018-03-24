@@ -42,33 +42,38 @@ namespace TorannMagic
             MagicPowerSkill ver = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ConsumeCorpse.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ConsumeCorpse_ver");
             MagicPowerSkill manaRegen = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
 
-            Pawn undead = (Pawn)this.currentTarget;
-            bool flag = undead != null && !undead.Dead;
-            if (flag)
+            Thing undeadThing = this.currentTarget.Thing;
+            if (undeadThing is Pawn)
             {
-                if(undead.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD))
+                Pawn undead = (Pawn)undeadThing;
+
+                bool flag = undead != null && !undead.Dead;
+                if (flag)
                 {
-                    comp.Mana.CurLevel += (Rand.Range(.19f, .23f) + (manaRegen.level * .003f) + (ver.level * .005f));
-                    ConsumeHumanoid(undead);
-                    if (ver.level > 0)
+                    if (undead.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD))
                     {
-                        HealCaster(caster, 1 + ver.level, 1, 4f + ver.level);
+                        comp.Mana.CurLevel += (Rand.Range(.19f, .23f) + (manaRegen.level * .003f) + (ver.level * .005f));
+                        ConsumeHumanoid(undead);
+                        if (ver.level > 0)
+                        {
+                            HealCaster(caster, 1 + ver.level, 1, 4f + ver.level);
+                        }
+                        undead.Destroy();
                     }
-                    undead.Destroy();
-                }
-                else if ( undead.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadAnimalHD))
-                {
-                    comp.Mana.CurLevel += (Rand.Range(.14f, .17f) + (manaRegen.level * .003f) + (ver.level * .005f));
-                    ConsumeAnimalKind(undead);
-                    if(ver.level > 0)
+                    else if (undead.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadAnimalHD))
                     {
-                        HealCaster(caster, 1, 2, 1 + ver.level);
+                        comp.Mana.CurLevel += (Rand.Range(.14f, .17f) + (manaRegen.level * .003f) + (ver.level * .005f));
+                        ConsumeAnimalKind(undead);
+                        if (ver.level > 0)
+                        {
+                            HealCaster(caster, 1, 2, 1 + ver.level);
+                        }
+                        undead.Destroy();
                     }
-                    undead.Destroy();
-                }
-                else
-                {
-                    Messages.Message("TM_CannotUseOnLiving".Translate(), MessageTypeDefOf.RejectInput);
+                    else
+                    {
+                        Messages.Message("TM_CannotUseOnLiving".Translate(), MessageTypeDefOf.RejectInput);
+                    }
                 }
             }
 

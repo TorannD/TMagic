@@ -135,7 +135,14 @@ namespace TorannMagic
                     if (pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
                     {
                         Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersS, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonMinion, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonPylon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonExplosive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonElemental, null, null, TexButton.TMTex_SkillPointUsed);
+                        if (pawn.GetComp<CompAbilityUserMagic>().spell_SummonPoppi == true)
+                        {
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersS, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonMinion, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonPylon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonExplosive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonElemental, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonPoppi, null, TexButton.TMTex_SkillPointUsed);
+                        }
+                        else
+                        {
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersS, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonMinion, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonPylon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonExplosive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonElemental, null, null, TexButton.TMTex_SkillPointUsed);
+                        }
                     }
                     if (pawn.story.traits.HasTrait(TorannMagicDefOf.Druid))
                     {
@@ -526,6 +533,7 @@ namespace TorannMagic
                             (power.abilityDef.defName == "TM_FoldReality" && MagicPowerSkill6 == null) ||
                             (power.abilityDef.defName == "TM_RegrowLimb" && MagicPowerSkill5 == null) ||
                             (power.abilityDef.defName == "TM_LichForm" && MagicPowerSkill6 == null) ||
+                            (power.abilityDef.defName == "TM_SummonPoppi" && MagicPowerSkill5 == null) ||
                             (power.abilityDef.defName == "TM_Resurrection" && MagicPowerSkill5 == null))
                         {
                             Rect rectMasterLock = new Rect(rect.xMax - 23f - "TM_MasterSpellLocked".Translate().Length * 4, rect.yMin + MagicCardUtility.MagicButtonSize + 4f, "TM_MasterSpellLocked".Translate().Length * 8, MagicCardUtility.TextSize * 3);
@@ -795,6 +803,12 @@ namespace TorannMagic
                             if (enumerator.Current.abilityDef.defName == "TM_SummonElemental")
                             {
                                 compMagic.LevelUpSkill_SummonElemental(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_SummonPoppi")
+                            {
+                                compMagic.LevelUpSkill_SummonPoppi(skill.label);
                                 skill.level++;
                                 compMagic.MagicData.MagicAbilityPoints -= 1;
                             }
