@@ -49,7 +49,7 @@ namespace TorannMagic
                 System.Random random = new System.Random();
                 random = new System.Random();
 
-                for (int i = 0; i < 5 + pwrVal; i++)
+                for (int i = 0; i < 4 + pwrVal; i++)
                 {
                     centerCell = cellRect.RandomCell;
                     if (centerCell.IsValid && centerCell.InBounds(pawn.Map) && centerCell.Standable(pawn.Map) && !centerCell.Fogged(pawn.Map))
@@ -61,7 +61,7 @@ namespace TorannMagic
                         spawnThing.def = TorannMagicDefOf.TM_Poppi;
                         spawnThing.kindDef = PawnKindDef.Named("TM_Poppi");
 
-                        MoteMaker.ThrowSmoke(centerCell.ToVector3(), map, pwrVal);
+                        MoteMaker.ThrowSmoke(centerCell.ToVector3(), map, 1+pwrVal);
                         SingleSpawnLoop(spawnThing, centerCell, map);
                     }
                     else
@@ -100,7 +100,6 @@ namespace TorannMagic
                             GenSpawn.Spawn(newPawn, position, map);
                             CompLeaper comp = newPawn.GetComp<CompLeaper>();
                             comp.explosionRadius += (verVal * .2f);
-                            Log.Message("props exploding radius was set to " + comp.explosionRadius);
                         }
                         catch
                         {

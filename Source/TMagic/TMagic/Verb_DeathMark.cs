@@ -61,7 +61,10 @@ namespace TorannMagic
                         {
                             HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_DeathMarkCurse"), Rand.Range(1f + pwr.level, 4 + 2 * pwr.level));
                             TM_MoteMaker.ThrowSiphonMote(victim.DrawPos, victim.Map, 1f);
-                            comp.PowerModifier += 1;
+                            if (comp.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD"), false))
+                            {
+                                comp.PowerModifier += 1;
+                            }                            
 
                             if (Rand.Chance(ver.level * .2f))
                             {

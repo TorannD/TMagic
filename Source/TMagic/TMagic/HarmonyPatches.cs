@@ -1266,6 +1266,34 @@ namespace TorannMagic
             }
         }
 
+        [HarmonyPatch(typeof(GenGrid), "Standable", null)]
+        public class Standable_Patch
+        {
+            public static bool Prefix(ref IntVec3 c, ref Map map, ref bool __result)
+            {
+                if(map != null && c != default(IntVec3))
+                {
+                    return true;
+                }
+                __result = false;
+                return false;
+            }
+        }
+
+        [HarmonyPatch(typeof(MapParent), "CheckRemoveMapNow", null)]
+        public class CheckRemoveMapNow_Patch
+        {
+            public static bool Prefix()
+            {
+                bool inFlight = ModOptions.Constants.GetPawnInFlight();
+                if (inFlight)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }               
+
         [HarmonyPatch(typeof(MentalStateHandler), "TryStartMentalState", null)]
         public class MentalStateHandler_Patch
         {

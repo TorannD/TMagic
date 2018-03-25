@@ -75,6 +75,7 @@
     <Compile Include="Building_TMPortal.cs" />
     <Compile Include="Building_PoisonTrap.cs" />
     <Compile Include="FlyingObject_Leap.cs" />
+    <Compile Include="ModOptions\Constants.cs" />
     <Compile Include="Poppi_DeathWorker.cs" />
     <Compile Include="CompLeaper.cs" />
     <Compile Include="CompProperties_Leaper.cs" />

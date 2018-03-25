@@ -68,7 +68,6 @@
       <foodType>OmnivoreRoughAnimal</foodType>
       <leatherColor>(255,215,0)</leatherColor>
       <leatherInsulation>1.5</leatherInsulation>
-	  <intelligence>ToolUser</intelligence>
 	  <thinkTreeConstant>TM_Elemental_AI_Constant</thinkTreeConstant>
       <thinkTreeMain>TM_Elemental_AI</thinkTreeMain>
       <lifeExpectancy>8</lifeExpectancy>
@@ -171,7 +170,7 @@
   
   <!--======================================= Base Poppi Def =============================================-->
   
-  <ThingDef ParentName="AnimalThingBase">
+  <!-- <ThingDef ParentName="AnimalThingBase">
     <defName>Poppi</defName>
     <label>poppi</label>
     <description>Deceptively harmless and impossibly cute, these little critters want nothing more than to bound into your arms and light up your life.</description>
@@ -205,7 +204,6 @@
       <nuzzleMtbHours>40</nuzzleMtbHours>
       <canBePredatorPrey>false</canBePredatorPrey>
       <gestationPeriodDays>2</gestationPeriodDays>
-	  <intelligence>ToolUser</intelligence>
       <litterSizeCurve>
         <points>
           <li>(0.5, 1)</li>
@@ -269,7 +267,7 @@
     <label>poppi</label>
     <race>Poppi</race>
     <combatPower>60</combatPower>
-    <wildSpawn_EcoSystemWeight>0.1</wildSpawn_EcoSystemWeight>
+    <wildSpawn_EcoSystemWeight>1.2</wildSpawn_EcoSystemWeight>
     <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
     <lifeStages>
       <li>
@@ -313,7 +311,7 @@
         </dessicatedBodyGraphicData>
       </li>
     </lifeStages>
-  </PawnKindDef>
+  </PawnKindDef> -->
   
    
 </Defs>

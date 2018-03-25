@@ -97,6 +97,7 @@ namespace TorannMagic
                 else if (parent.def.defName == "BookOfPriest" || parent.def.defName == "Torn_BookOfPriest")
                 {
                     FixTrait(user, user.story.traits.allTraits);
+                    FixPriestSkills(user);
                     user.story.traits.GainTrait(new Trait(TraitDef.Named("Priest"), 4, false));
                     if (parent.def.defName == "BookOfPriest")
                     {
@@ -164,6 +165,21 @@ namespace TorannMagic
                     i--;
                 }
                 
+            }
+        }
+
+        private void FixPriestSkills(Pawn pawn)
+        {
+            SkillRecord skill;
+            skill = pawn.skills.GetSkill(SkillDefOf.Shooting);
+            skill.passion = Passion.None;
+            skill = pawn.skills.GetSkill(SkillDefOf.Melee);
+            skill.passion = Passion.None;
+            pawn.workSettings.SetPriority(WorkTypeDefOf.Hunting, 0);
+            skill = pawn.skills.GetSkill(SkillDefOf.Medicine);
+            if(skill.passion == Passion.None)
+            {
+                skill.passion = Passion.Minor;
             }
         }
 	}

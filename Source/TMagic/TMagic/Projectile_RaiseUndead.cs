@@ -51,27 +51,30 @@ namespace TorannMagic
                             {
                                 corpse = corpseThing as Corpse;
                                 Pawn undeadPawn = corpse.InnerPawn;
+                                Pawn newUndeadPawn = new Pawn();
                                 
                                 if (undeadPawn.RaceProps.IsFlesh)
                                 {
-                                    undeadPawn.SetFaction(pawn.Faction);                                    
+                                    undeadPawn.SetFaction(pawn.Faction);
+                                    ResurrectionUtility.Resurrect(undeadPawn);
                                     raisedPawns++;
                                     if (!undeadPawn.kindDef.RaceProps.Animal && undeadPawn.kindDef.RaceProps.Humanlike)
                                     {
+                                        HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, -4f);
+                                        HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, .5f + ver.level);
+                                        RedoSkills(undeadPawn);
                                         RemoveTraits(undeadPawn, undeadPawn.story.traits.allTraits);                                        
                                         undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Undead"), 0, false));
                                         undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Psychopath"), 0, false));
+                                        undeadPawn.needs.AddOrRemoveNeedsAsAppropriate();
                                         Color undeadColor = new Color(.2f, .4f, 0);
-                                        undeadPawn.story.hairColor = undeadColor;
-                                        ResurrectionUtility.Resurrect(undeadPawn);
+                                        undeadPawn.story.hairColor = undeadColor;                                        
                                         CompAbilityUserMagic undeadComp = undeadPawn.GetComp<CompAbilityUserMagic>();
                                         if (undeadComp.IsMagicUser)
                                         {
                                             undeadComp.ClearPowers();
-                                        }
-                                        RedoSkills(undeadPawn);
-                                        HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, -4f);
-                                        HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, .5f + ver.level);                                        
+                                        }                                       
+                                                                              
                                         List<SkillRecord> skills = undeadPawn.skills.skills;
                                         for (int j = 0; j < skills.Count; j++)
                                         {
@@ -82,8 +85,7 @@ namespace TorannMagic
                                         for(int h = 0; h < 24; h++ )
                                         {
                                             undeadPawn.timetable.SetAssignment(h, TimeAssignmentDefOf.Work);
-                                        }
-                                        undeadPawn.needs.AddOrRemoveNeedsAsAppropriate();
+                                        }                                        
 
                                     }
                                     if (undeadPawn.kindDef.RaceProps.Animal)
@@ -146,7 +148,8 @@ namespace TorannMagic
             //undeadPawn.story.WorkTypeIsDisabled(WorkTypeDefOf.Warden);
             //undeadPawn.story.WorkTypeIsDisabled(WorkTypeDefOf.Hunting);
             //undeadPawn.story.WorkTypeIsDisabled(WorkTypeDefOf.Handling);
-            //undeadPawn.story.WorkTypeIsDisabled(WorkTypeDefOf.Doctor);
+            //undeadPawn.story.WorkTypeIsDisabled(WorkTypeDefOf.Doctor);            
+
             undeadPawn.skills.Learn(SkillDefOf.Shooting, -10000000, true);
             undeadPawn.skills.Learn(SkillDefOf.Animals, -10000000, true);
             undeadPawn.skills.Learn(SkillDefOf.Artistic, -10000000, true);
@@ -170,6 +173,32 @@ namespace TorannMagic
             undeadPawn.workSettings.SetPriority(WorkTypeDefOf.Handling, 0);
             undeadPawn.workSettings.SetPriority(TorannMagicDefOf.Research, 0);
             undeadPawn.workSettings.SetPriority(TorannMagicDefOf.Art, 0);
+
+            //SkillRecord skill;
+            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Animals);
+            //skill.passion = Passion.None;
+            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Artistic);
+            //skill.passion = Passion.None;
+            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Construction);
+            //skill.passion = Passion.None;
+            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Cooking);
+            //skill.passion = Passion.None;
+            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Crafting);
+            //skill.passion = Passion.None;
+            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Growing);
+            //skill.passion = Passion.None;
+            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Medicine);
+            //skill.passion = Passion.None;
+            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Mining);
+            //skill.passion = Passion.None;
+            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Social);
+            //skill.passion = Passion.None;
+            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Intellectual);
+            //skill.passion = Passion.None;
+            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Shooting);
+            //skill.passion = Passion.None;
+            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Melee);
+            //skill.passion = Passion.None;
         }
 
         private void RemoveTraits(Pawn pawn, List<Trait> traits)

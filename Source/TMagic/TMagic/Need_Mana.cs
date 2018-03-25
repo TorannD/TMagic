@@ -279,11 +279,11 @@ namespace TorannMagic
                             this.curLevelInt += amount - necroReduction;
                         }
 
-                        if ((lastNeed - this.curLevelInt) > .25f)
+                        if ((lastNeed - this.curLevelInt) > .25f && (lastNeed - this.curLevelInt) < .45f)
                         {
-                            if ((lastNeed - this.curLevelInt) > .45f)
+                            if ((lastNeed - this.curLevelInt) >= .45f && (lastNeed - this.curLevelInt) < .79f)
                             {
-                                if ((lastNeed - this.curLevelInt) > .79f)
+                                if ((lastNeed - this.curLevelInt) >= .79f && (lastNeed - this.curLevelInt) < 2)
                                 {
                                     //0.0 to 0.21 max
                                     float sev = 8.5f + ((lastNeed - this.curLevelInt) - .79f) * 40;
@@ -303,6 +303,7 @@ namespace TorannMagic
                                 HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
                             }
                         }
+                        comp.Mana.curLevelInt = Mathf.Clamp(comp.Mana.curLevelInt, 0f, comp.Mana.curLevelInt);
                         lastNeed = this.curLevelInt;
                         this.lastGainTick = Find.TickManager.TicksGame;
                     }
@@ -324,7 +325,7 @@ namespace TorannMagic
                         MagicPowerSkill manaRegen = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
                         amount *= ((0.0012f + 0.00006f * manaRegen.level) * settingsRef.needMultiplier);
                         amount = Mathf.Min(amount, this.MaxLevel - this.CurLevel);
-                        comp.Mana.curLevelInt += amount;
+                        comp.Mana.curLevelInt = Mathf.Clamp(comp.Mana.curLevelInt += amount, 0f, comp.Mana.curLevelInt += amount);
                     }
                 }
             }

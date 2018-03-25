@@ -141,12 +141,24 @@ The "Rainmaker" ability can now be used to stop rain or snow.
 		<defName>ARimWorldOfMagic_1_9_6</defName>
 		<assemblyVersion>1.9.6</assemblyVersion>
 		<content>
+- The Paladin, Necromancer, and Summoner master spells have been added:
+
+Paladin - Holy Wrath: calls or a hammers of light to smash upon the land
+
+Necromancer - Lich Form: the necromancer steps further along the path of the dark mage by becoming an undead; by doing so, they lose interest in almost all mundane tasks but gain the Death Bolt and Flight powers
+The necromancer "Death Mark" power has been reworked. It now functions as a curse that will slow the attack speed of any enemy affected. The fear that Death Mark induces also becomes a source of power that the lich will use to empower Death Bolt
+Undead workspeeds have been reduced but will gain the benefits of the "Hastened Undead" skill towards global work speed
+
+Summoner - Summon Poppi: a curious creature that fights more ferociously than any other creature on the rim, a true demon in disguise
+
 - New stand-alone spell "Sun Light" - creates a node of light powerful enough to grow plants but places a continous demand on the mage sustaining the light.
 
 - Ranger pets now require a cost to maintain; rangers will be more sensitive to the loss of their bonded companions.
 
-- Undead workspeeds have been reduced but will gain the benefits of the "Hastened Undead" skill.
-		</content>
+- Several new weapons to include the Thrumbo Axe, which is powerful enough to perform cleaving blows, and the Staff of the Defender that enables any mage to form temporary arcane barriers
+	
+- Special thanks to contributor Angry Wizard for improving many of the UI icons and Dianne for the Poppi graphics!
+	</content>
 	</HugsLib.UpdateFeatureDef>	
 	
 </Defs>

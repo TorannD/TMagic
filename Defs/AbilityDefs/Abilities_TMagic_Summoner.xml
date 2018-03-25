@@ -268,7 +268,7 @@
     <label>Summon Poppi</label>
     <uiIconPath>UI/poppihorde</uiIconPath>
     <description>Summon a pack of vicious poppi straight from the gates of insanity.</description>
-    <manaCost>0.060</manaCost>
+    <manaCost>0.60</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -279,7 +279,7 @@
         <defaultProjectile>Projectile_SummonPoppi</defaultProjectile>
 		<abilityDef>TM_SummonPoppi</abilityDef>
         <warmupTime>3</warmupTime>
-        <SecondsToRecharge>1.20</SecondsToRecharge>
+        <SecondsToRecharge>120</SecondsToRecharge>
 		<burstShotCount>1</burstShotCount>
         <range>45</range>
 		<isViolent>false</isViolent>

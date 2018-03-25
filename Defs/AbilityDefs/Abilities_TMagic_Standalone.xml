@@ -706,7 +706,7 @@
  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
     <defName>TM_ArcaneBarrier</defName>
     <label>Arcane Barrier</label>
-    <uiIconPath>Other/manawall</uiIconPath>
+    <uiIconPath>UI/arcanebarrier</uiIconPath>
     <description>Creates an arcane barrier at the target location that is horizontal to the caster. The barrier lasts 60 seconds.</description>
     <manaCost>0.0</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">

@@ -96,7 +96,22 @@ namespace TorannMagic
             lich.workSettings.SetPriority(TorannMagicDefOf.Cooking, 0);
             lich.workSettings.SetPriority(TorannMagicDefOf.Art, 0);
 
-            
+            skill = lich.skills.GetSkill(SkillDefOf.Intellectual);
+            if(skill.passion == Passion.None)
+            {
+                skill.passion = Passion.Minor;
+            }
+            else if( skill.passion == Passion.Minor)
+            {
+                skill.passion = Passion.Major;
+            }
+
+            skill = lich.skills.GetSkill(SkillDefOf.Shooting);
+            if(skill.passion == Passion.None)
+            {
+                skill.passion = Passion.Minor;
+            }
+
         }
     }
 }

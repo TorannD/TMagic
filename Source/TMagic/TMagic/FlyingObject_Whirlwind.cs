@@ -141,13 +141,7 @@ namespace TorannMagic
                 flyingThing.DeSpawn();
             }
             //
-            SpawnThings spawnThing = new SpawnThings();
-            spawnThing.factionDef = TorannMagicDefOf.TM_SummonedFaction;
-            spawnThing.spawnCount = 1;
-            spawnThing.temporary = false;
-            spawnThing.def = TorannMagicDefOf.TM_InvisMinionR;
-            spawnThing.kindDef = PawnKindDef.Named("TM_InvisMinion");
-            SingleSpawnLoop(spawnThing, origin.ToIntVec3(), launcher.Map);
+            ModOptions.Constants.SetPawnInFlight(true);
             //
             this.launcher = launcher;
             this.origin = origin;
@@ -415,6 +409,7 @@ namespace TorannMagic
                 }
             }
             GenSpawn.Spawn(this.flyingThing, base.Position, base.Map);
+            ModOptions.Constants.SetPawnInFlight(false);
             Pawn p = this.flyingThing as Pawn;
             if(p.IsColonistPlayerControlled)
             {
