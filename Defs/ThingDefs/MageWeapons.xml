@@ -152,7 +152,7 @@
   <ThingDef ParentName="TM_BaseMeleeMageWeapon">
 		<defName>TM_ThrumboAxe</defName>
 		<label>thrumbo axe</label>
-		<description>An axe crafted using thrumbo horns that are fused together with a clasp made from magicyte. This clasp is able to store arcane potential and transfer it as physical force when the axe is swung, allowing it to deliver mighty blows capable of cleaving through multiple opponents. The shaft is also etched with magical runes to augment the weilders arcane power.</description>
+		<description>An axe crafted using thrumbo horns that are fused together with a clasp made from magicyte. This clasp stores arcane potential and transfers it as physical force when the axe is swung, allowing it to deliver mighty blows capable of cleaving through multiple opponents. The shaft is also etched with magical runes to augment the weilders arcane power.</description>
 		<graphicData>
 			<texPath>Items/weapons/thrumboaxe_etched_offset</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -534,6 +534,8 @@
 	  <Silver>10</Silver>
 	  <Gold>10</Gold>
 	  <Uranium>5</Uranium>
+	  <TM_EStone_arcaneDmg_major>1</TM_EStone_arcaneDmg_major>
+	  <TM_EStone_maxMP>1</TM_EStone_maxMP>
     </costList>
 	<recipeMaker>
 	  <workSpeedStat>SmithingSpeed</workSpeedStat>
@@ -633,8 +635,8 @@
 	</graphicData>
 	<projectile>
 		<damageDef>TM_BlazingPower</damageDef>
-		<damageAmountBase>6</damageAmountBase>
-		<speed>45</speed>
+		<damageAmountBase>5</damageAmountBase>
+		<speed>66</speed>
 		<explosionRadius>.8</explosionRadius>
 		<postExplosionSpawnChance>1</postExplosionSpawnChance>
 	</projectile>
@@ -655,10 +657,10 @@
 	  <MarketValue>12000</MarketValue>
       <Mass>3.0</Mass>
       <AccuracyTouch>0.88</AccuracyTouch>
-      <AccuracyShort>0.64</AccuracyShort>
-      <AccuracyMedium>0.58</AccuracyMedium>
-      <AccuracyLong>0.51</AccuracyLong>
-      <RangedWeapon_Cooldown>3.5</RangedWeapon_Cooldown>
+      <AccuracyShort>0.71</AccuracyShort>
+      <AccuracyMedium>0.66</AccuracyMedium>
+      <AccuracyLong>0.56</AccuracyLong>
+      <RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
       <Weapon_Bulk>2</Weapon_Bulk>
     </statBases>
     <costList>
@@ -668,6 +670,9 @@
 	  <Silver>10</Silver>
 	  <Gold>10</Gold>
 	  <Uranium>5</Uranium>
+	  <TM_EStone_arcaneRes_minor>1</TM_EStone_arcaneRes_minor>
+	  <TM_EStone_maxMP_major>1</TM_EStone_maxMP_major>
+	  <TM_EStone_mpRegenRate>1</TM_EStone_mpRegenRate>
     </costList>
 	<recipeMaker>
 	  <workSpeedStat>SmithingSpeed</workSpeedStat>
@@ -690,12 +695,12 @@
 	<comps>
 		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
 		  <hasEnchantment>true</hasEnchantment>
-		  <maxMP>0.20</maxMP>
+		  <maxMP>0.30</maxMP>
 		  <maxMPTier>Crafted</maxMPTier>
-		  <mpRegenRate>0.10</mpRegenRate>
-		  <mpRegenRateTier>Standard</mpRegenRateTier>
-		  <arcaneDmg>0.40</arcaneDmg>
-		  <arcaneDmgTier>Crafted</arcaneDmgTier>		  
+		  <mpRegenRate>0.20</mpRegenRate>
+		  <mpRegenRateTier>Crafted</mpRegenRateTier>
+		  <arcaneRes>0.20</arcaneRes>
+		  <arcaneResTier>Standard</arcaneResTier>		  
 		</li>
 		<li>
 		  <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
@@ -712,8 +717,8 @@
         <soundCast>TM_Woosh</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
         <muzzleFlashScale>25</muzzleFlashScale>
-		<burstShotCount>7</burstShotCount>
-		<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+		<burstShotCount>5</burstShotCount>
+		<ticksBetweenBurstShots>15</ticksBetweenBurstShots>
       </li>
     </verbs>
     <tools>
@@ -722,7 +727,7 @@
         <capacities>
           <li>Blunt</li>
         </capacities>
-        <power>13</power>
+        <power>15</power>
         <cooldownTime>1.6</cooldownTime>
       </li>
 	  <li>
@@ -730,7 +735,7 @@
         <capacities>
           <li>Blunt</li>
         </capacities>
-        <power>18</power>
+        <power>22</power>
         <cooldownTime>1.9</cooldownTime>
       </li>
     </tools>

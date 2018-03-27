@@ -37,6 +37,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
+		  <li>Bard</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -73,6 +74,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
+		  <li>Bard</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -113,6 +115,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
+		  <li>Bard</li>
 		</conflictingTraits>	
 	</TraitDef>	 	
 	
@@ -148,6 +151,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
+		  <li>Bard</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -182,6 +186,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
+		  <li>Bard</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -218,6 +223,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
+		  <li>Bard</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -254,7 +260,8 @@
 		<li>Necromancer</li>	
 		<li>Priest</li>	
 		<li>Ranger</li>	
-		<li>Lich</li>		
+		<li>Lich</li>	
+		<li>Bard</li>		
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -290,6 +297,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
+		  <li>Bard</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -325,6 +333,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
+		  <li>Bard</li>
 		</conflictingTraits>	
 	</TraitDef>
 
@@ -362,6 +371,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
+		  <li>Bard</li>
 		</conflictingTraits>	
 	</TraitDef> 	
 	
@@ -434,6 +444,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
+		  <li>Bard</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -507,6 +518,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
+		  <li>Bard</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -545,6 +557,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
+		  <li>Bard</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -610,6 +623,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Necromancer</li>
+		  <li>Bard</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -658,6 +672,7 @@
 		  <li>Bloodlust</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
+		  <li>Bard</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -735,7 +750,7 @@
 		  <li>
 			<label>Ranger</label>
 			<commonality>0</commonality>
-			<description>NAME is a ranger; master of the wilds and defender of HIS land.  HE is a master of HIS craft and defender of HIS land.</description>
+			<description>NAME is a ranger; master of the wilds.  HE is a master of HIS craft and defender of HIS land.</description>
 			<degree>3</degree>
 				<statOffsets>
 					<MoveSpeed>.5</MoveSpeed>
@@ -762,6 +777,92 @@
 		  <li>Priest</li>
 		  <li>Bladedancer</li>
 		  <li>Lich</li>
+		  <li>Bard</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>
+		<defName>Bard</defName>
+		<commonality>0.001</commonality>		
+		<degreeDatas>	
+		  <li>
+			<label>Entertainer</label>
+			<commonality>0.1</commonality>
+			<description>NAME is a natural entertainer, able to lighten the mood and lift the spirits of everyone around HIM.</description>
+			<degree>0</degree>
+				<statOffsets>
+					<RecruitPrisonerChance>0.10</RecruitPrisonerChance>
+					<SocialImpact>0.10</SocialImpact>
+					<DiplomacyPower>0.20</DiplomacyPower>
+					<TradePriceImprovement>0.10</TradePriceImprovement>
+                    <PainShockThreshold>-0.10</PainShockThreshold>
+					<CarryingCapacity>-0.10</CarryingCapacity>
+					<WorkSpeedGlobal>-0.10</WorkSpeedGlobal>					
+                </statOffsets>
+		  </li>
+		  <li>
+			<label>Performer</label>
+			<commonality>0</commonality>
+			<description>NAME is a performer; expanding on natural talent, HE has begun to take an concious role to improve the mood of other colonists.</description>
+			<degree>1</degree>
+				<statOffsets>
+					<RecruitPrisonerChance>0.15</RecruitPrisonerChance>
+					<SocialImpact>0.20</SocialImpact>
+					<DiplomacyPower>0.30</DiplomacyPower>
+					<TradePriceImprovement>0.15</TradePriceImprovement>
+                    <PainShockThreshold>-0.12</PainShockThreshold>
+					<CarryingCapacity>-0.15</CarryingCapacity>
+					<WorkSpeedGlobal>-0.12</WorkSpeedGlobal>
+                </statOffsets>
+		  </li>
+		  <li>
+			<label>Minstrel</label>
+			<commonality>0</commonality>
+			<description>Everyone loves being around NAME. HE has talent, wit and skill in many forms of entertainment and is able to make a personal connection with almost everyone.</description>
+			<degree>2</degree>
+				<statOffsets>
+					<RecruitPrisonerChance>0.20</RecruitPrisonerChance>
+					<SocialImpact>0.30</SocialImpact>
+					<DiplomacyPower>0.35</DiplomacyPower>
+					<TradePriceImprovement>0.20</TradePriceImprovement>
+                    <PainShockThreshold>-0.14</PainShockThreshold>
+					<CarryingCapacity>-0.18</CarryingCapacity>
+					<WorkSpeedGlobal>-0.14</WorkSpeedGlobal>
+                </statOffsets>
+		  </li>
+		  <li>
+			<label>Bard</label>
+			<commonality>0</commonality>
+			<description>NAME is a master entertainer. Sharp wit, deft hands, and dry humor are HIS weapons and HE is a master of all HIS weapons.</description>
+			<degree>3</degree>
+				<statOffsets>
+					<RecruitPrisonerChance>0.25</RecruitPrisonerChance>
+					<SocialImpact>0.35</SocialImpact>
+					<DiplomacyPower>0.40</DiplomacyPower>
+					<TradePriceImprovement>0.25</TradePriceImprovement>
+                    <PainShockThreshold>-0.15</PainShockThreshold>
+					<CarryingCapacity>-0.20</CarryingCapacity>
+					<WorkSpeedGlobal>-0.15</WorkSpeedGlobal>
+                </statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>PhysicalProdigy</li>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>Arcanist</li>
+		  <li>StormBorn</li>
+		  <li>Summoner</li>
+		  <li>Gifted</li>
+	      <li>Paladin</li>
+		  <li>Gladiator</li>
+		  <li>Druid</li>
+		  <li>TM_Sniper</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Bladedancer</li>
+		  <li>Lich</li>
+		  <li>Ranger</li>
 		</conflictingTraits>	
 	</TraitDef>
 

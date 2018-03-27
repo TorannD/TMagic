@@ -11,6 +11,7 @@ using UnityEngine;
 using Verse;
 using Verse.AI;
 using AbilityUserAI;
+using PrisonLabor;
 
 namespace TorannMagic
 {
@@ -69,7 +70,38 @@ namespace TorannMagic
                     typeof(PawnDiedOrDownedThoughtsKind)
                 }, null), new HarmonyMethod(typeof(HarmonyPatches), "TryGiveThoughts_PrefixPatch", null), null, null);
             //harmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
-        }        
+
+            #region PrisonLabor
+            {
+                try
+                {
+                    ((Action)(() =>
+                    {
+                        if (AccessTools.Method(typeof(PrisonLabor.JobDriver_Mine_Tweak), nameof(PrisonLabor.JobDriver_Mine_Tweak.ExposeData)) != null)
+                        {
+                            harmonyInstance.Patch(AccessTools.Method(typeof(PrisonLabor.JobDriver_Mine_Tweak), "ResetTicksToPickHit"), null, new HarmonyMethod(typeof(HarmonyPatches), "TM_PrisonLabor_JobDriver_Mine_Tweak"));
+                        }
+                    }))();
+                }
+                catch (TypeLoadException) { }
+            }
+            #endregion
+        }
+
+        public static void TM_PrisonLabor_JobDriver_Mine_Tweak(JobDriver_Mine_Tweak __instance)
+        {
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            if (Rand.Chance(settingsRef.magicyteChance))
+            {
+                Thing thing = null;
+                thing = ThingMaker.MakeThing(TorannMagicDefOf.RawMagicyte);
+                thing.stackCount = Rand.Range(6, 16);
+                if (thing != null)
+                {
+                    GenPlace.TryPlaceThing(thing, __instance.pawn.Position, __instance.pawn.Map, ThingPlaceMode.Near, null);
+                }
+            }
+        }
 
         [HarmonyPatch(typeof(Pawn_HealthTracker), "CheckForStateChange", null)]
         public static class CheckForStateChange_Patch
@@ -1110,6 +1142,7 @@ namespace TorannMagic
                 }
             }
         }
+
 
         [HarmonyPatch(typeof(FloatMenuMakerMap), "AddHumanlikeOrders", null)]
         public static class FloatMenuMakerMap_Patch

@@ -53,6 +53,10 @@
       <HintPath>..\..\..\..\..\..\..\workshop\content\294100\818773962\Assemblies\HugsLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="PrisonLabor">
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\972057888\Assemblies\PrisonLabor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
