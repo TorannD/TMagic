@@ -87,6 +87,10 @@ namespace TorannMagic
                 {
                     return flag && true;
                 }
+                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
+                {
+                    return flag && true;
+                }
                 return false;
                 //return flag && (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Paladin));
             }

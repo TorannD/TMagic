@@ -32,7 +32,10 @@ namespace TorannMagic
         public static ThingDef Torn_BookOfUndead;
         public static ThingDef BookOfPriest;
         public static ThingDef Torn_BookOfPriest;
+        public static ThingDef BookOfBard;
+        public static ThingDef Torn_BookOfBard;
         public static ThingDef BookOfQuestion;
+
 
         public static HediffDef TM_Uncertainty;        
 
@@ -63,6 +66,7 @@ namespace TorannMagic
         public static ThingDef SpellOf_HolyWrath;
         public static ThingDef SpellOf_LichForm;
         public static ThingDef SpellOf_SummonPoppi;
+        public static ThingDef SpellOf_BattleHymn;
 
         public static ThingDef SkillOf_Sprint;
         public static ThingDef SkillOf_GearRepair;
@@ -296,6 +300,20 @@ namespace TorannMagic
         public static TMAbilityDef TM_BestowMight_III;
         public static TMAbilityDef TM_Resurrection;
 
+        //Bard
+        public static TraitDef TM_Bard;
+
+        public static TMAbilityDef TM_BardTraining;
+        public static TMAbilityDef TM_Entertain;
+        public static InteractionDef TM_EntertainID;
+        public static TMAbilityDef TM_Inspire;
+        public static TMAbilityDef TM_Lullaby;
+        public static TMAbilityDef TM_Lullaby_I;
+        public static TMAbilityDef TM_Lullaby_II;
+        public static TMAbilityDef TM_Lullaby_III;
+        public static HediffDef TM_LullabyHD;
+        public static TMAbilityDef TM_BattleHymn;        
+
         //Might 
         public static NeedDef TM_Stamina;
         public static HediffDef TM_MightUserHD;
@@ -429,6 +447,8 @@ namespace TorannMagic
         public static ThingDef Mote_ArcaneDaggers;
         public static ThingDef Mote_Bolt;
         public static ThingDef Mote_Arcane;
+        public static ThingDef Mote_Note;
+        public static ThingDef Mote_Exclamation;
 
         //Jobs
         public static JobDef TMCastAbilityVerb;
@@ -436,6 +456,8 @@ namespace TorannMagic
         public static JobDef JobDriver_RemoveEnchantingGem;
         public static JobDef JobDriver_AddEnchantingGem;
         public static JobDef JobDriver_EnchantItem;
+        public static JobDef JobDriver_SleepNow;
+        public static JobDef JobDriver_Entertain;
 
         //Magicyte
         public static ThingDef RawMagicyte;
@@ -449,6 +471,16 @@ namespace TorannMagic
         public static SoundDef TM_VibrationLow;
         public static SoundDef TM_Launch;
         public static SoundDef TM_SoftExplosion;
+        public static SoundDef TM_BattleHymnSD;
+
+        //Inspirations
+        public static InspirationDef ID_Champion;
+        public static InspirationDef ID_FarmingFrenzy;
+        public static InspirationDef ID_MiningFrenzy;
+        public static InspirationDef ID_Outgoing;
+        public static InspirationDef ID_Introspection;
+        public static InspirationDef ID_ManaRegen;
+
 
     }
 }

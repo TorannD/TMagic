@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Learning interactions -->
+
+  <InteractionDef>
+    <defName>TM_MagicLore</defName>
+    <label>discussed magic theories and practices</label>
+    <workerClass>TorannMagic.Thoughts.InteractionWorker_MagicLore</workerClass>
+    <symbol>Books/blankscript_magic</symbol>
+    <recipientThought>TM_MagicLoreTD</recipientThought>
+    <initiatorXpGainSkill>Social</initiatorXpGainSkill>
+    <initiatorXpGainAmount>45</initiatorXpGainAmount>
+    <logRulesInitiator>
+      <rulesStrings>
+        <li>logentry->Mentored [other_nameShortIndef] in magic.</li>
+      </rulesStrings>
+    </logRulesInitiator>
+    <logRulesRecipient>
+      <rulesStrings>
+        <li>logentry->Learned magic theories from [other_nameShortIndef].</li>
+      </rulesStrings>
+    </logRulesRecipient>
+  </InteractionDef>
+  
+  <ThoughtDef>
+    <defName>TM_MagicLoreTD</defName>
+    <thoughtClass>Thought_MemorySocial</thoughtClass>
+    <durationDays>2</durationDays>
+    <stackLimit>3</stackLimit>
+    <stackLimitPerPawn>1</stackLimitPerPawn>
+    <stackedEffectMultiplier>0.75</stackedEffectMultiplier>
+    <stages>
+      <li>
+        <label>gained knowledge of the arcane</label>
+		<description>I've been enlightening by words from a powerful mage that I respect, now I just have to apply this knowledge...</description>
+		<baseMoodEffect>2</baseMoodEffect>
+        <baseOpinionOffset>6</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>  
+  
+    <!-- Social interactions -->
+
+  <InteractionDef>
+    <defName>TM_EntertainID</defName>
+    <label>entertained</label>
+    <workerClass>TorannMagic.Thoughts.InteractionWorker_Entertain</workerClass>
+    <symbol>UI/entertain_job</symbol>
+    <recipientThought>TM_EntertainedTD</recipientThought>
+    <initiatorXpGainSkill>Social</initiatorXpGainSkill>
+    <initiatorXpGainAmount>60</initiatorXpGainAmount>
+    <logRulesInitiator>
+      <rulesStrings>
+        <li>logentry->Entertained [other_nameShortIndef].</li>
+      </rulesStrings>
+    </logRulesInitiator>
+    <logRulesRecipient>
+      <rulesStrings>
+        <li>logentry->Was entertained by [other_nameShortIndef].</li>
+      </rulesStrings>
+    </logRulesRecipient>
+  </InteractionDef>
+  
+  <ThoughtDef>
+    <defName>TM_EntertainedTD</defName>
+    <thoughtClass>Thought_MemorySocial</thoughtClass>
+    <durationDays>3</durationDays>
+    <stackLimit>2</stackLimit>
+    <stackLimitPerPawn>2</stackLimitPerPawn>
+    <stackedEffectMultiplier>0.8</stackedEffectMultiplier>
+    <stages>
+      <li>
+        <label>entertained</label>
+		<description>This place isn't so bad, there are people here that make me forget about my worries and laugh a little.</description>
+		<baseMoodEffect>10</baseMoodEffect>
+        <baseOpinionOffset>4</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>  
+  
+  <InteractionDef>
+    <defName>TM_EntertainAuraID</defName>
+    <label>entertained</label>
+    <workerClass>TorannMagic.Thoughts.InteractionWorker_Bard</workerClass>
+    <symbol>UI/entertain</symbol>
+	<initiatorThought>TM_EntertainerAuraTD</initiatorThought>
+    <recipientThought>TM_EntertainedAuraTD</recipientThought>
+    <initiatorXpGainSkill>Social</initiatorXpGainSkill>
+    <initiatorXpGainAmount>60</initiatorXpGainAmount>
+    <logRulesInitiator>
+      <rulesStrings>
+        <li>logentry->Had an entertaining chat with [other_nameShortIndef].</li>
+      </rulesStrings>
+    </logRulesInitiator>
+    <logRulesRecipient>
+      <rulesStrings>
+        <li>logentry->Had an entertaining chat with [other_nameShortIndef].</li>
+      </rulesStrings>
+    </logRulesRecipient>
+  </InteractionDef>
+  
+  <ThoughtDef>
+    <defName>TM_EntertainedAuraTD</defName>
+    <thoughtClass>Thought_MemorySocial</thoughtClass>
+    <durationDays>1</durationDays>
+    <stackLimit>3</stackLimit>
+    <stackLimitPerPawn>2</stackLimitPerPawn>
+    <stackedEffectMultiplier>0.67</stackedEffectMultiplier>
+    <stages>
+      <li>
+        <label>social entertainment</label>
+		<description>I had a really fun time talking with others.</description>
+		<baseMoodEffect>3</baseMoodEffect>
+        <baseOpinionOffset>2</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef> 
+  
+    <ThoughtDef>
+    <defName>TM_EntertainerAuraTD</defName>
+    <thoughtClass>Thought_MemorySocial</thoughtClass>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stackLimitPerPawn>3</stackLimitPerPawn>
+    <stackedEffectMultiplier>0.8</stackedEffectMultiplier>
+    <stages>
+      <li>
+        <label>social interaction</label>
+		<description>I really like interacting with the people around here, it makes me happy to bring a little joy to others.</description>
+		<baseMoodEffect>5</baseMoodEffect>
+        <baseOpinionOffset>2</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef> 
+  
+</Defs>

@@ -396,7 +396,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
     <defName>Torn_BookOfUndead</defName>
     <label>Torn Script: Necromancy</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a gifted pawn how to manipulate forces of life and death.  
+    <description>Teaches a gifted pawn how to manipulate forces of life and death. *Note: The necromancer may become a lich at a later stage, lichs are incapable of all activity except fighting and research. Many other magic classes dislike necromancers. Choose carefully.
 This arcane script is incomplete and the reader may not be able to learn some, or any, necromancer spells.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
@@ -421,7 +421,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
     <defName>Torn_BookOfPriest</defName>
     <label>Torn Script: Priest</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a gifted pawn how to confer powers of life and healing.
+    <description>Teaches a gifted pawn how to confer powers of life and healing. Priests are incapable of violence and these skills will be disabled.
 This arcane script is incomplete and the reader may not be able to learn some, or any, priest spells.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
@@ -437,6 +437,31 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/torn_healing</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+    <ThingDef ParentName="Partial_ArcaneScriptBase">
+    <defName>Torn_BookOfBard</defName>
+    <label>Torn Script: Bard</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a gifted pawn how to become a professional bard. Bards are incapable of dumb labor and this work type will be disabled.
+This arcane script is incomplete and the reader may not be able to learn some, or any, bard abilities.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/torn_bard</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <drawGUIOverlay>false</drawGUIOverlay>
@@ -616,7 +641,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
     <defName>BookOfNecromancer</defName>
     <label>Arcane Script: Necromancer</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a gifted pawn how to become a Necromancer</description>
+    <description>Teaches a gifted pawn how to become a Necromancer. *Note: The necromancer may become a lich at a later stage, lichs are incapable of all activity except fighting and research. Many other magic classes dislike necromancers. Choose carefully.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
@@ -640,7 +665,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
     <defName>BookOfPriest</defName>
     <label>Arcane Script: Priest</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a gifted pawn how to become a Priest</description>
+    <description>Teaches a gifted pawn how to become a Priest. Priests are incapable of violence and these skills will be disabled.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
@@ -655,6 +680,30 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/priest</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+    <ThingDef ParentName="ArcaneScriptBase">
+    <defName>BookOfBard</defName>
+    <label>Arcane Script: Bard</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a gifted pawn how to become a Bard. Bards are incapable of dumb labor and this work type will be disabled.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/bard</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <drawGUIOverlay>false</drawGUIOverlay>
@@ -2042,6 +2091,54 @@ Produces 400Wd.</description>
     </comps>
 	<costList>
 		<RawMagicyte>252</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_BattleHymn</defName>
+    <label>Bard Spell: Battle Hymn</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a bard how to perform Battle Hymn.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>1500</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>150</RawMagicyte>
 		<DevilstrandCloth>100</DevilstrandCloth>
 	</costList>
 	<recipeMaker>		    

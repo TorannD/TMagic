@@ -1325,7 +1325,68 @@ namespace TorannMagic
                 }
                 return true;
             }
-        }               
+        }
+
+        [HarmonyPatch(typeof(NegativeInteractionUtility), "NegativeInteractionChanceFactor", null)]
+        public class NegativeInteractionChanceFactor_Patch
+        {
+            public static void Postfix(Pawn initiator, Pawn recipient, ref float __result)
+            {
+                if (initiator.story.traits.HasTrait(TorannMagicDefOf.TM_Bard)) 
+                {
+                    MagicPowerSkill ver = initiator.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Entertain.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Entertain_ver");
+                    __result = __result / (1 + ver.level);
+
+                }
+                if(recipient.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
+                {
+                    MagicPowerSkill ver = recipient.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Entertain.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Entertain_ver");
+                    __result = __result / (1 + ver.level);
+                }
+                if (initiator.Inspired && initiator.InspirationDef.defName == "Outgoing")
+                {
+                    __result = __result * .5f;
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(Pawn_InteractionsTracker), "InteractionsTrackerTick", null)]
+        public class InteractionsTrackerTick_Patch
+        {
+            public static FieldInfo pawn = typeof(Pawn_InteractionsTracker).GetField("pawn", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.GetField);
+            public static FieldInfo wantsRandomInteract = typeof(Pawn_InteractionsTracker).GetField("wantsRandomInteract", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.GetField);
+            public static FieldInfo lastInteractionTime = typeof(Pawn_InteractionsTracker).GetField("lastInteractionTime", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.GetField);            
+
+            public static void Postfix(Pawn_InteractionsTracker __instance)
+            {
+                if (Find.TickManager.TicksGame % 1200 == 0)
+                {
+                    Traverse traverse = Traverse.Create(__instance);
+                    Pawn pawn = (Pawn)InteractionsTrackerTick_Patch.pawn.GetValue(__instance);
+                    if (pawn.IsColonist && !pawn.Downed && !pawn.Dead && pawn.RaceProps.Humanlike)
+                    {                        
+                        CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
+                        int lastInteractionTime = (int)InteractionsTrackerTick_Patch.lastInteractionTime.GetValue(__instance);
+                        if (comp != null && comp.IsMagicUser && comp.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
+                        {
+                            MagicPowerSkill pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Entertain.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Entertain_pwr");
+                            if ((Find.TickManager.TicksGame - lastInteractionTime) > (3000 - (360 * pwr.level)))
+                            {
+                                InteractionsTrackerTick_Patch.wantsRandomInteract.SetValue(__instance, true);
+                            }
+                        }
+                        if(pawn.Inspired && pawn.InspirationDef.defName == "ID_Outgoing")
+                        {
+                            if ((Find.TickManager.TicksGame - lastInteractionTime) > (1800))
+                            {
+                                Log.Message("faster interactions occuring");
+                                InteractionsTrackerTick_Patch.wantsRandomInteract.SetValue(__instance, true);
+                            }
+                        }
+                    }
+                }
+            }            
+        }
 
         [HarmonyPatch(typeof(MentalStateHandler), "TryStartMentalState", null)]
         public class MentalStateHandler_Patch

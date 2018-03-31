@@ -78,7 +78,18 @@
     <Compile Include="Building_TMElementalRift.cs" />
     <Compile Include="Building_TMPortal.cs" />
     <Compile Include="Building_PoisonTrap.cs" />
+    <Compile Include="HediffComp_BattleHymn.cs" />
+    <Compile Include="Thoughts\Inspiration_MightUser.cs" />
+    <Compile Include="WorkGiver_DoEntertain.cs" />
     <Compile Include="FlyingObject_Leap.cs" />
+    <Compile Include="HediffComp_Inspirational.cs" />
+    <Compile Include="HediffComp_Lullaby.cs" />
+    <Compile Include="JobDriver_Entertain.cs" />
+    <Compile Include="Thoughts\InteractionWorker_Bard.cs" />
+    <Compile Include="Thoughts\InteractionWorker_Entertain.cs" />
+    <Compile Include="Thoughts\InteractionWorker_MagicLore.cs" />
+    <Compile Include="Thoughts\Inspiration_MagicUser.cs" />
+    <Compile Include="JobDriver_SleepNow.cs" />
     <Compile Include="ModOptions\Constants.cs" />
     <Compile Include="Poppi_DeathWorker.cs" />
     <Compile Include="CompLeaper.cs" />
@@ -91,6 +102,8 @@
     <Compile Include="Projectile_HolyWrath.cs" />
     <Compile Include="Projectile_SummonPoppi.cs" />
     <Compile Include="Thoughts\ThoughtWorker_Lich.cs" />
+    <Compile Include="Verb_Entertain.cs" />
+    <Compile Include="Verb_BattleHymn.cs" />
     <Compile Include="Verb_Snuggle.cs" />
     <Compile Include="Verb_MeleeCleave.cs" />
     <Compile Include="CompUseEffect_GemOfInsight.cs" />
@@ -132,6 +145,7 @@
     <Compile Include="Verb_FightersFocus.cs" />
     <Compile Include="Verb_DismissMinion.cs" />
     <Compile Include="Verb_LichForm.cs" />
+    <Compile Include="Verb_Lullaby.cs" />
     <Compile Include="Verb_StrongBack.cs" />
     <Compile Include="Verb_ThickSkin.cs" />
     <Compile Include="Verb_HeavyBlow.cs" />

@@ -88,6 +88,12 @@ namespace TorannMagic
                         outThings.Add(thing);
                         collectiveMarketValue += thing.MarketValue;
                     }
+                    if (Rand.Chance(ArcaneScriptChance))
+                    {
+                        Thing thing = ThingMaker.MakeThing(TorannMagicDefOf.Torn_BookOfBard, null);
+                        outThings.Add(thing);
+                        collectiveMarketValue += thing.MarketValue;
+                    }
 
                 }
                 //Arcane Scripts
@@ -145,6 +151,12 @@ namespace TorannMagic
                     else if (Rand.Chance(ArcaneScriptChance))
                     {
                         Thing thing = ThingMaker.MakeThing(TorannMagicDefOf.BookOfPriest, null);
+                        outThings.Add(thing);
+                        collectiveMarketValue += thing.MarketValue;
+                    }
+                    else if (Rand.Chance(ArcaneScriptChance))
+                    {
+                        Thing thing = ThingMaker.MakeThing(TorannMagicDefOf.BookOfBard, null);
                         outThings.Add(thing);
                         collectiveMarketValue += thing.MarketValue;
                     }
@@ -222,10 +234,14 @@ namespace TorannMagic
                 if (Rand.Chance(MasterSpellChance) && (parms.totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.SpellOf_Blizzard.BaseMarketValue)
                 {
                     Thing thing;
-                    float rnd = Rand.Range(0f, 16f);
-                    if (rnd > 14)
+                    float rnd = Rand.Range(0f, 18f);
+                    if (rnd > 16)
                     {
                         thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_SummonPoppi, null);
+                    }
+                    else if (rnd > 14 && rnd <= 16)
+                    {
+                        thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_BattleHymn, null);
                     }
                     else if (rnd > 12 && rnd <= 14)
                     {

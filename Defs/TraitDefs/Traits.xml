@@ -37,7 +37,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
-		  <li>Bard</li>
+		  <li>TM_Bard</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -74,7 +74,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
-		  <li>Bard</li>
+		  <li>TM_Bard</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -115,7 +115,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
-		  <li>Bard</li>
+		  <li>TM_Bard</li>
 		</conflictingTraits>	
 	</TraitDef>	 	
 	
@@ -151,7 +151,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
-		  <li>Bard</li>
+		  <li>TM_Bard</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -186,7 +186,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
-		  <li>Bard</li>
+		  <li>TM_Bard</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -223,7 +223,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
-		  <li>Bard</li>
+		  <li>TM_Bard</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -261,7 +261,7 @@
 		<li>Priest</li>	
 		<li>Ranger</li>	
 		<li>Lich</li>	
-		<li>Bard</li>		
+		<li>TM_Bard</li>		
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -297,7 +297,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
-		  <li>Bard</li>
+		  <li>TM_Bard</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -333,7 +333,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
-		  <li>Bard</li>
+		  <li>TM_Bard</li>
 		</conflictingTraits>	
 	</TraitDef>
 
@@ -371,7 +371,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
-		  <li>Bard</li>
+		  <li>TM_Bard</li>
 		</conflictingTraits>	
 	</TraitDef> 	
 	
@@ -444,7 +444,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
-		  <li>Bard</li>
+		  <li>TM_Bard</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -518,7 +518,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
-		  <li>Bard</li>
+		  <li>TM_Bard</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -557,7 +557,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
-		  <li>Bard</li>
+		  <li>TM_Bard</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -623,7 +623,7 @@
 		  <li>Priest</li>
 		  <li>Ranger</li>
 		  <li>Necromancer</li>
-		  <li>Bard</li>
+		  <li>TM_Bard</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -672,7 +672,7 @@
 		  <li>Bloodlust</li>
 		  <li>Ranger</li>
 		  <li>Lich</li>
-		  <li>Bard</li>
+		  <li>TM_Bard</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -777,13 +777,16 @@
 		  <li>Priest</li>
 		  <li>Bladedancer</li>
 		  <li>Lich</li>
-		  <li>Bard</li>
+		  <li>TM_Bard</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
 	<TraitDef>
-		<defName>Bard</defName>
-		<commonality>0.001</commonality>		
+		<defName>TM_Bard</defName>
+		<commonality>0.001</commonality>	
+		<disabledWorkTags>
+		  <li>ManualDumb</li>
+		</disabledWorkTags>		
 		<degreeDatas>	
 		  <li>
 			<label>Entertainer</label>
@@ -803,7 +806,7 @@
 		  <li>
 			<label>Performer</label>
 			<commonality>0</commonality>
-			<description>NAME is a performer; expanding on natural talent, HE has begun to take an concious role to improve the mood of other colonists.</description>
+			<description>NAME is a performer; expanding on natural talent, HE has begun to take an conscious role to improve the mood of other colonists.</description>
 			<degree>1</degree>
 				<statOffsets>
 					<RecruitPrisonerChance>0.15</RecruitPrisonerChance>

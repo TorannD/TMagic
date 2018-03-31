@@ -1414,5 +1414,49 @@ Document made by ChJees
 			<li>Buff</li>
 		</tags>
 	</AbilityUserAI.AbilityAIDef>	
+	
+	
+	<!-- bard  -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="BardMagicAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMagic</compAbilityUserClass>
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+							<tags>
+								<li>Lullaby</li>
+							</tags>
+						</li>					
+					</subNodes>
+				</li>				
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- Bard -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="BardMagicAbilityUserAI">
+		<defName>TMagic_Bard</defName>
+		<matchingTraits>
+			<li>TM_Bard</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_Lullaby</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Bard Abilities -->
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Lullaby</defName>
+		<ability>TM_Lullaby</ability>		
+		<power>1</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<usedOnCaster>false</usedOnCaster>
+		<tags>
+			<li>Lullaby</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
 
 </Defs>

@@ -10,5 +10,19 @@
     <casualInterruptible>false</casualInterruptible>
   </JobDef>
   
+  <JobDef>
+    <defName>JobDriver_SleepNow</defName>
+    <driverClass>TorannMagic.JobDriver_SleepNow</driverClass>
+    <reportString>sleeping (lullaby).</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  
+  <JobDef>
+    <defName>JobDriver_Entertain</defName>
+    <driverClass>TorannMagic.JobDriver_Entertain</driverClass>
+    <reportString>entertaining.</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  
   
 </Defs>

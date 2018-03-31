@@ -66,6 +66,7 @@
 <TM_SunlightCollapse>A sun light has collapsed, {0} was unable to sustain it.</TM_SunlightCollapse>
 <TM_DamageAbsorbedAll>Absorbed</TM_DamageAbsorbedAll>
 <TM_DamageAbsorbed>Absorbed ({0} - {1})</TM_DamageAbsorbed>
+<TM_NotSocialCapable>{0} is incapable of social activity and is unable to become a bard.</TM_NotSocialCapable>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
@@ -435,6 +436,43 @@ Level 3: 10 health</TM_HealingCircle_pwr_desc>
 <TM_BestowMight_eff>Practiced Blessing</TM_BestowMight_eff>
 <TM_Resurrection_ver>Graceful Resurrection</TM_Resurrection_ver>
 <TM_Resurrection_eff>Guiding Light</TM_Resurrection_eff>
+
+
+<TM_BardTraining_pwr_desc>Advances the Bard trait to the next level. Entertainer -> Performer -> Minstrel -> Bard. Requires 2 points to train.</TM_BardTraining_pwr_desc>
+<TM_Entertain_ver_desc>Increases the chance to have favorable conversations with other colonists.</TM_Entertain_ver_desc>
+<TM_Entertain_pwr_desc>Increases how often the bard is willing to have social interaction.</TM_Entertain_pwr_desc>
+<TM_Inspire_ver_desc>The bard learns new ways to inspire colonists.
+Level 0: may cause common inspirations
+Level 1: may cause resource frenzy inspirations
+Level 2: may cause learning and social inspirations
+Level 3: may cause heroic inspirations for magic or might classes.</TM_Inspire_ver_desc>
+<TM_Inspire_pwr_desc>Increases how likely often the bard will attempt to inspire fellow colonists.</TM_Inspire_pwr_desc>
+<TM_Lullaby_eff_desc>Reduces mana cost of Lullaby by 8% per skill point.</TM_Lullaby_eff_desc>
+<TM_Lullaby_pwr_desc>Increases chance lullaby is effective by 10% per skill point.
+Level 0: 40%
+Level 1: 50%
+Level 2: 60%
+Level 3: 70%</TM_Lullaby_pwr_desc>
+<TM_Lullaby_ver_desc>Lullaby reduces the consciousness of effected pawns - works even if lullaby was resisted.
+Level 0: N/A
+Level 1: -10% consciousness
+Level 2: -15% consciousness
+Level 3: -20% consciousness</TM_Lullaby_ver_desc>
+<TM_BattleHymn_eff_desc>Reduces mana cost to use and maintain Battle Hymn by 10% per skill level.</TM_BattleHymn_eff_desc>
+<TM_BattleHymn_ver_desc>Increases range of battle hymn by 2m per skill point (base 11m). Also increases the tempo of battle hymn by .5s (5s base).</TM_BattleHymn_ver_desc>
+<TM_BattleHymn_pwr_desc>Increases the effects of battle hymn 12% per skill point for each verse (iteration) it remains active.</TM_BattleHymn_pwr_desc>
+
+<TM_BardTraining_pwr>Bard Training</TM_BardTraining_pwr>
+<TM_Entertain_ver>Abundant Laughter</TM_Entertain_ver>
+<TM_Entertain_pwr>Improvisation</TM_Entertain_pwr>
+<TM_Inspire_ver>Playwright</TM_Inspire_ver>
+<TM_Inspire_pwr>Charisma</TM_Inspire_pwr>
+<TM_Lullaby_eff>Deft Hands</TM_Lullaby_eff>
+<TM_Lullaby_pwr>Ear-worm</TM_Lullaby_pwr>
+<TM_Lullaby_ver>Resonance</TM_Lullaby_ver>
+<TM_BattleHymn_ver>Lingering Note</TM_BattleHymn_ver>
+<TM_BattleHymn_eff>Vocalist</TM_BattleHymn_eff>
+<TM_BattleHymn_pwr>Heroic Chorus</TM_BattleHymn_pwr>
 
 <!-- Might Ability Point Descriptions -->
 

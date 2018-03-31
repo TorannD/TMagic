@@ -185,6 +185,18 @@ namespace TorannMagic
                             MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersPR, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AdvancedHeal, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Purify, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_HealingCircle, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BestowMight, null, null, TexButton.TMTex_SkillPointUsed);
                         }
                     }
+                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
+                    {
+                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                        if (pawn.GetComp<CompAbilityUserMagic>().spell_BattleHymn == true)
+                        {
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersB, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BardTraining, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Entertain, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Inspire, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Lullaby, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BattleHymn, null, TexButton.TMTex_SkillPointUsed);
+                        }
+                        else
+                        {
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersB, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BardTraining, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Entertain, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Inspire, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Lullaby, null, null, TexButton.TMTex_SkillPointUsed);
+                        }
+                    }
 
                 }
             }
@@ -398,32 +410,21 @@ namespace TorannMagic
                         power.abilityDef == TorannMagicDefOf.TM_CorpseExplosion || power.abilityDef == TorannMagicDefOf.TM_CorpseExplosion_I || power.abilityDef == TorannMagicDefOf.TM_CorpseExplosion_II ||
                         power.abilityDef == TorannMagicDefOf.TM_DeathBolt || power.abilityDef == TorannMagicDefOf.TM_DeathBolt_I || power.abilityDef == TorannMagicDefOf.TM_DeathBolt_II ||
                         power.abilityDef == TorannMagicDefOf.TM_HealingCircle || power.abilityDef == TorannMagicDefOf.TM_HealingCircle_I || power.abilityDef == TorannMagicDefOf.TM_HealingCircle_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_Lullaby || power.abilityDef == TorannMagicDefOf.TM_Lullaby_I || power.abilityDef == TorannMagicDefOf.TM_Lullaby_II ||
                         power.abilityDef == TorannMagicDefOf.TM_BestowMight || power.abilityDef == TorannMagicDefOf.TM_BestowMight_I || power.abilityDef == TorannMagicDefOf.TM_BestowMight_II))
                     {
-                        try
+
+                        TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
                         {
-                            TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
-                            {
-                            power.abilityDef.label,
-                            "\n\nCurrent Level:\n",
-                            power.abilityDescDef.description,
-                            "\n\nNext Level:\n",
-                            power.nextLevelAbilityDescDef.description,
-                            "\n\n",
-                            "TM_CheckPointsForMoreInfo".Translate()
-                           }), 398462);
-                        }
-                        catch
-                        {
-                            TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
-                            {
-                            power.abilityDef.label,
-                            "\n\n",
-                            power.abilityDescDef.description,
-                            "\n\n",
-                            "TM_CheckPointsForMoreInfo".Translate()
-                            }), 398462);
-                        }
+                        power.abilityDef.label,
+                        "\n\nCurrent Level:\n",
+                        power.abilityDescDef.description,
+                        "\n\nNext Level:\n",
+                        power.nextLevelAbilityDescDef.description,
+                        "\n\n",
+                        "TM_CheckPointsForMoreInfo".Translate()
+                        }), 398462);
+                        
                     }
                     else
                     {
@@ -462,6 +463,7 @@ namespace TorannMagic
                         power.abilityDef.defName == "TM_CorpseExplosion" || power.abilityDef.defName == "TM_CorpseExplosion_I" || power.abilityDef.defName == "TM_CorpseExplosion_II" || power.abilityDef.defName == "TM_CorpseExplosion_III" ||
                         power.abilityDef.defName == "TM_DeathBolt" || power.abilityDef.defName == "TM_DeathBolt_I" || power.abilityDef.defName == "TM_DeathBolt_II" || power.abilityDef.defName == "TM_DeathBolt_III" ||
                         power.abilityDef.defName == "TM_HealingCircle" || power.abilityDef.defName == "TM_HealingCircle_I" || power.abilityDef.defName == "TM_HealingCircle_II" || power.abilityDef.defName == "TM_HealingCircle_III" ||
+                        power.abilityDef.defName == "TM_Lullaby" || power.abilityDef.defName == "TM_Lullaby_I" || power.abilityDef.defName == "TM_Lullaby_II" || power.abilityDef.defName == "TM_Lullaby_III" ||
                         power.abilityDef.defName == "TM_BestowMight" || power.abilityDef.defName == "TM_BestowMight_I" || power.abilityDef.defName == "TM_BestowMight_II" || power.abilityDef.defName == "TM_BestowMight_III")
                     {
                         flag999 = true;
@@ -534,6 +536,7 @@ namespace TorannMagic
                             (power.abilityDef.defName == "TM_RegrowLimb" && MagicPowerSkill5 == null) ||
                             (power.abilityDef.defName == "TM_LichForm" && MagicPowerSkill6 == null) ||
                             (power.abilityDef.defName == "TM_SummonPoppi" && MagicPowerSkill5 == null) ||
+                            (power.abilityDef.defName == "TM_BattleHymn" && MagicPowerSkill5 == null) ||
                             (power.abilityDef.defName == "TM_Resurrection" && MagicPowerSkill5 == null))
                         {
                             Rect rectMasterLock = new Rect(rect.xMax - 23f - "TM_MasterSpellLocked".Translate().Length * 4, rect.yMin + MagicCardUtility.MagicButtonSize + 4f, "TM_MasterSpellLocked".Translate().Length * 8, MagicCardUtility.TextSize * 3);
@@ -596,7 +599,7 @@ namespace TorannMagic
                     Rect rect42 = new Rect(rect41.x, rect4.y, rect4.width - MagicCardUtility.MagicButtonPointSize, rect4.height / 2);
                     MagicPowerSkill skill = enumeratorN.Current;
                     TooltipHandler.TipRegion(rect42, new TipSignal(() => skill.desc.Translate(), rect4.GetHashCode()));
-                    bool flag11 = (skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0 || !enumerator.Current.learned) || ((skill.label == "TM_HolyWrath_ver" || skill.label == "TM_HolyWrath_pwr") && compMagic.MagicData.MagicAbilityPoints < 2);
+                    bool flag11 = (skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0 || !enumerator.Current.learned) || ((enumerator.Current.abilityDef.defName == "TM_BardTraining") && compMagic.MagicData.MagicAbilityPoints < 2 ) || ((skill.label == "TM_HolyWrath_ver" || skill.label == "TM_HolyWrath_pwr") && compMagic.MagicData.MagicAbilityPoints < 2);
                     if (flag11)
                     {
                         Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
@@ -911,6 +914,36 @@ namespace TorannMagic
                             if (enumerator.Current.abilityDef.defName == "TM_Resurrection")
                             {
                                 compMagic.LevelUpSkill_Resurrection(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_BardTraining")
+                            {
+                                compMagic.LevelUpSkill_BardTraining(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 2;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Entertain")
+                            {
+                                compMagic.LevelUpSkill_Entertain(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Inspire")
+                            {
+                                compMagic.LevelUpSkill_Inspire(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Lullaby" || enumerator.Current.abilityDef.defName == "TM_Lullaby_I" || enumerator.Current.abilityDef.defName == "TM_Lullaby_II" || enumerator.Current.abilityDef.defName == "TM_Lullaby_III")
+                            {
+                                compMagic.LevelUpSkill_Lullaby(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_BattleHymn")
+                            {
+                                compMagic.LevelUpSkill_BattleHymn(skill.label);
                                 skill.level++;
                                 compMagic.MagicData.MagicAbilityPoints -= 1;
                             }

@@ -29,6 +29,7 @@ namespace TorannMagic
         public List<MagicPower> magicPowerD;
         public List<MagicPower> magicPowerN;
         public List<MagicPower> magicPowerPR;
+        public List<MagicPower> magicPowerB;
 
         public List<MagicPowerSkill> magicPowerSkill_global_regen;
         public List<MagicPowerSkill> magicPowerSkill_global_eff;
@@ -91,6 +92,12 @@ namespace TorannMagic
         public List<MagicPowerSkill> magicPowerSkill_HealingCircle;
         public List<MagicPowerSkill> magicPowerSkill_BestowMight;
         public List<MagicPowerSkill> magicPowerSkill_Resurrection;
+
+        public List<MagicPowerSkill> magicPowerSkill_BardTraining;
+        public List<MagicPowerSkill> magicPowerSkill_Entertain;
+        public List<MagicPowerSkill> magicPowerSkill_Inspire;
+        public List<MagicPowerSkill> magicPowerSkill_Lullaby;
+        public List<MagicPowerSkill> magicPowerSkill_BattleHymn;
 
         public List<MagicPowerSkill> MagicPowerSkill_global_regen
         {
@@ -1321,6 +1328,125 @@ namespace TorannMagic
             }
         }
 
+        public List<MagicPower> MagicPowersB
+        {
+            get
+            {
+                bool flag = this.magicPowerB == null;
+                if (flag)
+                {
+                    this.magicPowerB = new List<MagicPower>
+                    {
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_BardTraining
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Entertain
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Inspire
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Lullaby,
+                            TorannMagicDefOf.TM_Lullaby_I,
+                            TorannMagicDefOf.TM_Lullaby_II,
+                            TorannMagicDefOf.TM_Lullaby_III
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_BattleHymn
+                        }),
+                    };
+                }
+                return this.magicPowerB;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_BardTraining
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_BardTraining == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_BardTraining = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_BardTraining_pwr", "TM_BardTraining_pwr_desc")
+                    };
+                }
+                return this.magicPowerSkill_BardTraining;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Entertain
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Entertain == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Entertain = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Entertain_pwr", "TM_Entertain_pwr_desc"),
+                        new MagicPowerSkill("TM_Entertain_ver", "TM_Entertain_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_Entertain;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Inspire
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Inspire == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Inspire = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Inspire_pwr", "TM_Inspire_pwr_desc"),
+                        new MagicPowerSkill("TM_Inspire_ver", "TM_Inspire_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_Inspire;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Lullaby
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Lullaby == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Lullaby = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Lullaby_pwr", "TM_Lullaby_pwr_desc"),
+                        new MagicPowerSkill("TM_Lullaby_eff", "TM_Lullaby_eff_desc"),
+                        new MagicPowerSkill("TM_Lullaby_ver", "TM_Lullaby_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_Lullaby;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_BattleHymn
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_BattleHymn == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_BattleHymn = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_BattleHymn_pwr", "TM_BattleHymn_pwr_desc"),
+                        new MagicPowerSkill("TM_BattleHymn_eff", "TM_BattleHymn_eff_desc"),
+                        new MagicPowerSkill("TM_BattleHymn_ver", "TM_BattleHymn_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_BattleHymn;
+            }
+        }
+
         public bool IsNecromancer
         {
             get
@@ -1441,7 +1567,7 @@ namespace TorannMagic
         {
             get
             {
-                return this.MagicPowersIF.Concat(this.MagicPowersHoF.Concat(this.MagicPowersSB.Concat(this.MagicPowersA.Concat(this.MagicPowersP.Concat(this.MagicPowersS.Concat(this.MagicPowersD.Concat(this.MagicPowersN.Concat(this.MagicPowersPR))))))));
+                return this.MagicPowersIF.Concat(this.MagicPowersHoF.Concat(this.MagicPowersSB.Concat(this.MagicPowersA.Concat(this.MagicPowersP.Concat(this.MagicPowersS.Concat(this.MagicPowersD.Concat(this.MagicPowersN.Concat(this.MagicPowersPR.Concat(this.magicPowerB)))))))));
             }
         }
 
@@ -1526,6 +1652,12 @@ namespace TorannMagic
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_HealingCircle, "magicPowerSkill_HealingCircle", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_BestowMight, "magicPowerSkill_BestowMight", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Resurrection, "magicPowerSkill_Resurrection", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPower>(ref this.magicPowerB, "magicPowerB", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_BardTraining, "magicPowerSkill_BardTraining", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Entertain, "magicPowerSkill_Entertain", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Inspire, "magicPowerSkill_Inspire", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Lullaby, "magicPowerSkill_Lullaby", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_BattleHymn, "magicPowerSkill_BattleHymn", LookMode.Deep, new object[0]);
         }
     }
 }

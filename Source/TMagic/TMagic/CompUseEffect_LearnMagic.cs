@@ -105,10 +105,32 @@ namespace TorannMagic
                     }
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
+                else if (parent.def.defName == "BookOfBard" || parent.def.defName == "Torn_BookOfBard")
+                {
+                    if (!user.story.WorkTagIsDisabled(WorkTags.Social))
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        FixBardSkills(user);
+                        user.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Bard"), 0, false));
+                        if (parent.def.defName == "BookOfBard")
+                        {
+                            HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                        }
+                        this.parent.Destroy(DestroyMode.Vanish);
+                    }
+                    else
+                    {
+                        Messages.Message("TM_NotSocialCapable".Translate(new object[]
+                        {
+                            user.LabelShort
+                        }), MessageTypeDefOf.RejectInput);
+                    }
+
+                }
                 else if (parent.def.defName == "BookOfQuestion")
                 {
                     FixTrait(user, user.story.traits.allTraits);
-                    int rnd = Mathf.RoundToInt(Rand.Range(0, 8));
+                    int rnd = Mathf.RoundToInt(Rand.Range(0, 10));
                     switch (rnd)
                     {
                         case 1:
@@ -134,6 +156,12 @@ namespace TorannMagic
                             break;
                         case 8:
                             user.story.traits.GainTrait(new Trait(TraitDef.Named("Priest"), 4, false));
+                            break;
+                        case 9:
+                            user.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Bard"), 0, false));
+                            break;
+                        case 10:
+                            user.story.traits.GainTrait(new Trait(TraitDef.Named("Paladin"), 4, false));
                             break;
                     }
                     //HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
@@ -182,5 +210,22 @@ namespace TorannMagic
                 skill.passion = Passion.Minor;
             }
         }
-	}
+
+        private void FixBardSkills(Pawn pawn)
+        {
+            SkillRecord skill;
+            pawn.workSettings.SetPriority(TorannMagicDefOf.Cleaning, 0);
+            pawn.workSettings.SetPriority(TorannMagicDefOf.Hauling, 0);
+            pawn.workSettings.SetPriority(TorannMagicDefOf.PlantCutting, 0);
+            skill = pawn.skills.GetSkill(SkillDefOf.Social);
+            if(skill.passion == Passion.Minor)
+            {
+                skill.passion = Passion.Major;
+            }
+            if (skill.passion == Passion.None)
+            {
+                skill.passion = Passion.Minor;
+            }
+        }
+    }
 }

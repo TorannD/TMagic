@@ -15,6 +15,32 @@
   </ThingDef>
   
   <ThingDef ParentName="MoteBase">
+    <defName>Mote_Note</defName>
+    <graphicData>
+      <texPath>Motes/NoteMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.85</solidTime>
+      <fadeOutTime>0.15</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_Exclamation</defName>
+    <graphicData>
+      <texPath>Motes/ExclamationMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.85</solidTime>
+      <fadeOutTime>0.15</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
     <defName>Mote_Barrier</defName>
     <graphicData>
       <texPath>Motes/BarrierMote</texPath>

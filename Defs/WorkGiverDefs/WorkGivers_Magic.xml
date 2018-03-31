@@ -38,5 +38,20 @@
     </requiredCapacities>
     <prioritizeSustains>true</prioritizeSustains>
   </WorkGiverDef>
+  
+      <!-- ============= Bard Entertain ============= -->
+	
+  <WorkGiverDef>
+    <defName>DoEntertain</defName>
+    <label>entertain colonist</label>
+    <giverClass>TorannMagic.WorkGiver_DoEntertain</giverClass>
+    <workType>Warden</workType>
+    <verb>entertain</verb>
+    <gerund>entertaining</gerund>
+    <requiredCapacities>
+      <li>Talking</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
 
 </Defs>
