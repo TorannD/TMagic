@@ -20,7 +20,6 @@ namespace TorannMagic
                         ModOptions.Constants.RemoveGrowthCell(comp.fertileLands[i]);
                     }
                     comp.fertileLands.Clear();
-                    comp.fertileLandsCopied = false;
                     comp.RemovePawnAbility(TorannMagicDefOf.TM_DismissFertileLands);
                     comp.AddPawnAbility(TorannMagicDefOf.TM_FertileLands);
                 }

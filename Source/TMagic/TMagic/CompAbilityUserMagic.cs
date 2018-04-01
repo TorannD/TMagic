@@ -151,7 +151,6 @@ namespace TorannMagic
         private bool dismissUndeadSpell = false;
         private bool dismissSunlightSpell = false;
         public List<IntVec3> fertileLands = new List<IntVec3>();
-        public bool fertileLandsCopied = false;
 
         private Effecter powerEffecter = null;
         private int powerModifier = 0;
@@ -849,14 +848,20 @@ namespace TorannMagic
 
         private void SingleEvent()
         {
-            if(fertileLands.Count > 0 && !this.fertileLandsCopied)
+            this.doOnce = false;
+        }
+
+        private void DoOncePerLoad()
+        {
+            if(this.spell_FertileLands == true)
             {
-                ModOptions.Constants.SetGrowthCells(fertileLands);
-                this.fertileLandsCopied = true;
-                this.RemovePawnAbility(TorannMagicDefOf.TM_FertileLands);
-                this.AddPawnAbility(TorannMagicDefOf.TM_DismissFertileLands);
+                if(this.fertileLands.Count > 0)
+                {
+                    ModOptions.Constants.SetGrowthCells(fertileLands);
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_FertileLands);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_DismissFertileLands);
+                }
             }
-            this.doOnce = false;            
         }
 
         public override void CompTick()
@@ -944,6 +949,7 @@ namespace TorannMagic
                         this.ResolveMagicTab();
                         this.ResolveMagicPowers();
                         this.ResolveMana();
+                        this.DoOncePerLoad();
                     }
                 }
             }
@@ -2241,6 +2247,41 @@ namespace TorannMagic
         public void ClearPowers()
         {
             List<bool> powerLearned = new List<bool>();
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
+            {
+                for (int i = 0; i < this.MagicData.MagicPowersIF.Count; i++)
+                {
+                    powerLearned.Add(this.MagicData.MagicPowersIF[i].learned);
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost))
+            {
+                for (int i = 0; i < this.MagicData.MagicPowersHoF.Count; i++)
+                {
+                    powerLearned.Add(this.MagicData.MagicPowersHoF[i].learned);
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn))
+            {
+                for (int i = 0; i < this.MagicData.MagicPowersSB.Count; i++)
+                {
+                    powerLearned.Add(this.MagicData.MagicPowersSB[i].learned);
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
+            {
+                for (int i = 0; i < this.MagicData.MagicPowersA.Count; i++)
+                {
+                    powerLearned.Add(this.MagicData.MagicPowersA[i].learned);
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Druid))
+            {
+                for (int i = 0; i < this.MagicData.MagicPowersD.Count; i++)
+                {
+                    powerLearned.Add(this.MagicData.MagicPowersD[i].learned);
+                }
+            }
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin))
             {
                 for(int i = 0; i < this.MagicData.MagicPowersP.Count; i++)
@@ -2255,6 +2296,27 @@ namespace TorannMagic
                     powerLearned.Add(this.MagicData.MagicPowersN[i].learned);
                 }
             }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
+            {
+                for (int i = 0; i < this.MagicData.MagicPowersS.Count; i++)
+                {
+                    powerLearned.Add(this.MagicData.MagicPowersS[i].learned);
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Priest))
+            {
+                for (int i = 0; i < this.MagicData.MagicPowersPR.Count; i++)
+                {
+                    powerLearned.Add(this.MagicData.MagicPowersPR[i].learned);
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
+            {
+                for (int i = 0; i < this.MagicData.MagicPowersB.Count; i++)
+                {
+                    powerLearned.Add(this.MagicData.MagicPowersB[i].learned);
+                }
+            }
             int tmpLvl = this.MagicUserLevel;
             int tmpExp = this.MagicUserXP;
             base.IsInitialized = false;
@@ -2264,6 +2326,48 @@ namespace TorannMagic
             this.MagicUserXP = tmpExp;
             this.magicData.MagicAbilityPoints = tmpLvl;
 
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MagicData.MagicPowersIF[i].learned = powerLearned[i];
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MagicData.MagicPowersHoF[i].learned = powerLearned[i];
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MagicData.MagicPowersSB[i].learned = powerLearned[i];
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MagicData.MagicPowersA[i].learned = powerLearned[i];
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MagicData.MagicPowersS[i].learned = powerLearned[i];
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Druid))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MagicData.MagicPowersD[i].learned = powerLearned[i];
+                }
+            }
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin))
             {
                 for (int i = 0; i < powerLearned.Count; i++)
@@ -2276,6 +2380,20 @@ namespace TorannMagic
                 for (int i = 0; i < powerLearned.Count; i++)
                 {
                     this.MagicData.MagicPowersN[i].learned = powerLearned[i];
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Priest))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MagicData.MagicPowersPR[i].learned = powerLearned[i];
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MagicData.MagicPowersB[i].learned = powerLearned[i];
                 }
             }
         }
@@ -3586,9 +3704,16 @@ namespace TorannMagic
                 _maxMP -= (this.summonedLights.Count * .4f);
                 _mpRegenRate -= (this.summonedLights.Count * .4f);
             }
-            if(this.fertileLands.Count > 0)
+            try
             {
-                _mpRegenRate += -.4f;
+                if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) && this.fertileLands.Count > 0)
+                {
+                    _mpRegenRate += -.4f;
+                }
+            }
+            catch
+            {
+                
             }
             if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
             {
@@ -3744,6 +3869,7 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.spell_CauterizeWound, "spell_CauterizeWound", false, false);
             Scribe_Values.Look<bool>(ref this.spell_SpellMending, "spell_SpellMending", false, false);
             Scribe_Values.Look<int>(ref this.powerModifier, "powerModifier", 0, false);
+            Scribe_Values.Look<bool>(ref this.doOnce, "doOnce", true, false);
             Scribe_Collections.Look<Thing>(ref this.summonedMinions, "summonedMinions", LookMode.Reference);
             Scribe_Collections.Look<Thing>(ref this.summonedLights, "summonedLights", LookMode.Reference);
             Scribe_Collections.Look<IntVec3>(ref this.fertileLands, "fertileLands", LookMode.Value);

@@ -25,7 +25,9 @@ namespace TorannMagic
                 this.initialized = true;
             }
 
-            CompAbilityUserMagic comp = this.caster.GetComp<CompAbilityUserMagic>();            
+            CompAbilityUserMagic comp = this.caster.GetComp<CompAbilityUserMagic>();
+            comp.fertileLands = new List<IntVec3>();
+            comp.fertileLands.Clear();
             IEnumerable<IntVec3> targetCells = GenRadial.RadialCellsAround(base.Position, 6, true);            
             for (int i = 0; i < targetCells.Count(); i++)
             {
@@ -33,10 +35,8 @@ namespace TorannMagic
             }
             TM_MoteMaker.ThrowTwinkle(base.Position.ToVector3Shifted(), map, 1f);
             ModOptions.Constants.SetGrowthCells(comp.fertileLands);
-            comp.fertileLandsCopied = true;
             comp.RemovePawnAbility(TorannMagicDefOf.TM_FertileLands);
             comp.AddPawnAbility(TorannMagicDefOf.TM_DismissFertileLands);
-
         }       
     }
 }
