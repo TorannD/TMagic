@@ -67,6 +67,9 @@ namespace TorannMagic
         public static ThingDef SpellOf_LichForm;
         public static ThingDef SpellOf_SummonPoppi;
         public static ThingDef SpellOf_BattleHymn;
+        public static ThingDef SpellOf_CauterizeWound;
+        public static ThingDef SpellOf_FertileLands;
+        public static ThingDef SpellOf_SpellMending;
 
         public static ThingDef SkillOf_Sprint;
         public static ThingDef SkillOf_GearRepair;
@@ -402,9 +405,14 @@ namespace TorannMagic
         public static TMAbilityDef TM_TransferMana;
         public static TMAbilityDef TM_SiphonMana;
         public static TMAbilityDef TM_ManaShield;
-        public static TMAbilityDef TM_ArcaneBarrier;
         public static HediffDef TM_ManaShieldHD;
-        public static HediffDef TM_HediffEnchantment_arcaneSpectre;
+        public static TMAbilityDef TM_ArcaneBarrier;
+        public static TMAbilityDef TM_CauterizeWound;
+        public static TMAbilityDef TM_FertileLands;
+        public static TMAbilityDef TM_DismissFertileLands;
+        public static TMAbilityDef TM_SpellMending;
+        
+        public static HediffDef TM_HediffEnchantment_arcaneSpectre;        
 
         public static HediffDef TM_Sight;
         public static HediffDef TM_Breathing;
@@ -449,6 +457,8 @@ namespace TorannMagic
         public static ThingDef Mote_Arcane;
         public static ThingDef Mote_Note;
         public static ThingDef Mote_Exclamation;
+        public static ThingDef Mote_Twinkle;
+        public static ThingDef Mote_Flame;
 
         //Jobs
         public static JobDef TMCastAbilityVerb;

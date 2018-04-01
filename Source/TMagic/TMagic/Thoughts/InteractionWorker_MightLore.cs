@@ -5,24 +5,24 @@ using Verse;
 
 namespace TorannMagic.Thoughts
 {
-    public class InteractionWorker_MagicLore : InteractionWorker
+    public class InteractionWorker_MightLore : InteractionWorker
     {
 
         public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks)
         {
-            CompAbilityUserMagic compInit = initiator.GetComp<CompAbilityUserMagic>();
-            CompAbilityUserMagic compRec = recipient.GetComp<CompAbilityUserMagic>();
+            CompAbilityUserMight compInit = initiator.GetComp<CompAbilityUserMight>();
+            CompAbilityUserMight compRec = recipient.GetComp<CompAbilityUserMight>();
             base.Interacted(initiator, recipient, extraSentencePacks);
-            int num = compInit.MagicUserLevel - compRec.MagicUserLevel;
+            int num = compInit.MightUserLevel - compRec.MightUserLevel;
             int num2 = (int)(20f + Rand.Range(3f, 10f)*(float)num);
-            compRec.MagicUserXP += num2;
+            compRec.MightUserXP += num2;
             MoteMaker.ThrowText(recipient.DrawPos, recipient.MapHeld, "XP +" + num2, -1f);
         }
 
         public override float RandomSelectionWeight(Pawn initiator, Pawn recipient)
         {
-            CompAbilityUserMagic compInit = initiator.GetComp<CompAbilityUserMagic>();
-            CompAbilityUserMagic compRec = recipient.GetComp<CompAbilityUserMagic>();
+            CompAbilityUserMight compInit = initiator.GetComp<CompAbilityUserMight>();
+            CompAbilityUserMight compRec = recipient.GetComp<CompAbilityUserMight>();
             bool flag = !initiator.IsColonist || !recipient.IsColonist;
             float result;
             if (flag)
@@ -31,14 +31,14 @@ namespace TorannMagic.Thoughts
             }
             else
             {
-                bool flag2 = !compInit.IsMagicUser;
+                bool flag2 = !compInit.IsMightUser;
                 if (flag2)
                 {
                     result = 0f;
                 }
                 else
                 {
-                    bool flag3 = !compRec.IsMagicUser;
+                    bool flag3 = !compRec.IsMightUser;
                     if (flag3)
                     {
                         result = 0f;
@@ -57,8 +57,8 @@ namespace TorannMagic.Thoughts
                             }
                             else
                             {
-                                int levelInit = compInit.MagicUserLevel;
-                                int levelRec = compRec.MagicUserLevel;
+                                int levelInit = compInit.MightUserLevel;
+                                int levelRec = compRec.MightUserLevel;
                                 if (levelInit <= levelRec)
                                 {
                                     result = 0f;

@@ -520,6 +520,9 @@ namespace TorannMagic
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Effect_EyeOfTheStorm" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_PhaseStrike" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Effect_Flight" ||
+                    __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_Regenerate" ||
+                    __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_SpellMending" ||
+                    __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_CauterizeWound" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_AdvancedHeal")
                 {
                     //Ignores line of sight
@@ -594,6 +597,35 @@ namespace TorannMagic
                     }
                 }
                 return true;
+            }
+        }
+
+        [HarmonyPatch(typeof(FertilityGrid), "CalculateFertilityAt", null)]
+        public static class FertilityGrid_Patch
+        {
+            public static FieldInfo map = typeof(FertilityGrid).GetField("map", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.GetField);
+
+            private static void Postfix(FertilityGrid __instance, IntVec3 loc, ref float __result)
+            {
+                if(ModOptions.Constants.GetGrowthCells().Count > 0)
+                {
+                    List<IntVec3> growthCells = ModOptions.Constants.GetGrowthCells();
+                    for (int i = 0; i < growthCells.Count; i++)
+                    {
+                        if(loc == growthCells[i])
+                        {
+                            Traverse traverse = Traverse.Create(__instance);
+                            Map map = (Map)FertilityGrid_Patch.map.GetValue(__instance);
+                            __result *= 2f;
+                            if(Rand.Chance(.6f) && (ModOptions.Constants.GetLastGrowthMoteTick() + 5) < Find.TickManager.TicksGame )
+                            {
+                                TM_MoteMaker.ThrowTwinkle(growthCells[i].ToVector3Shifted(), map, Rand.Range(.3f, .7f), Rand.Range(100, 300), Rand.Range(.5f, 1.5f), Rand.Range(.1f, .5f), .05f, Rand.Range(.8f, 1.8f));
+                                ModOptions.Constants.SetLastGrowthMoteTick(Find.TickManager.TicksGame);
+                            }
+                            
+                        }
+                    }
+                }
             }
         }
 

@@ -32,8 +32,45 @@
     <stackedEffectMultiplier>0.75</stackedEffectMultiplier>
     <stages>
       <li>
-        <label>gained knowledge of the arcane</label>
+        <label>gained arcane knowledge</label>
 		<description>I've been enlightening by words from a powerful mage that I respect, now I just have to apply this knowledge...</description>
+		<baseMoodEffect>2</baseMoodEffect>
+        <baseOpinionOffset>6</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>  
+  
+  <InteractionDef>
+    <defName>TM_MightLore</defName>
+    <label>discussed combat techniques</label>
+    <workerClass>TorannMagic.Thoughts.InteractionWorker_MightLore</workerClass>
+    <symbol>UI/bladeart</symbol>
+    <recipientThought>TM_MightLoreTD</recipientThought>
+    <initiatorXpGainSkill>Social</initiatorXpGainSkill>
+    <initiatorXpGainAmount>45</initiatorXpGainAmount>
+    <logRulesInitiator>
+      <rulesStrings>
+        <li>logentry->Taught combat techniques to [other_nameShortIndef].</li>
+      </rulesStrings>
+    </logRulesInitiator>
+    <logRulesRecipient>
+      <rulesStrings>
+        <li>logentry->Trained in combat by [other_nameShortIndef].</li>
+      </rulesStrings>
+    </logRulesRecipient>
+  </InteractionDef>
+  
+  <ThoughtDef>
+    <defName>TM_MightLoreTD</defName>
+    <thoughtClass>Thought_MemorySocial</thoughtClass>
+    <durationDays>2</durationDays>
+    <stackLimit>3</stackLimit>
+    <stackLimitPerPawn>1</stackLimitPerPawn>
+    <stackedEffectMultiplier>0.75</stackedEffectMultiplier>
+    <stages>
+      <li>
+        <label>gained combat experience</label>
+		<description>A more experienced fighter has taught me how to improve my combat techniques.</description>
 		<baseMoodEffect>2</baseMoodEffect>
         <baseOpinionOffset>6</baseOpinionOffset>
       </li>

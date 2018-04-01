@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Verse;
+using Harmony;
 
 namespace TorannMagic.ModOptions
 {
@@ -18,6 +18,36 @@ namespace TorannMagic.ModOptions
         {
             pawnInFlight = inFlight;
             return true;
+        }
+
+        static List<IntVec3> growthCells = new List<IntVec3>();
+
+        public static List<IntVec3> GetGrowthCells()
+        {
+            return growthCells;
+        }
+
+        public static List<IntVec3> SetGrowthCells(List<IntVec3> cells)
+        {
+            growthCells.AddRange(cells);
+            return growthCells;
+        }
+
+        public static void RemoveGrowthCell(IntVec3 cell)
+        {
+            growthCells.Remove(cell);
+        }
+
+        private static int lastGrowthMoteTick;
+
+        public static void SetLastGrowthMoteTick(int value)
+        {
+            lastGrowthMoteTick = value;
+        }
+
+        public static int GetLastGrowthMoteTick()
+        {
+            return lastGrowthMoteTick;
         }
     }
 }

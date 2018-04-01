@@ -1741,4 +1741,39 @@
 	  </stages>
   </HediffDef>
   
+  <HediffDef ParentName="MediumShortBuffBase">
+    <defName>SpellMendingHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Spell Mending</label>
+	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+	<maxSeverity>1.0</maxSeverity>
+	<comps>
+	  <li>
+        <compClass>TorannMagic.HediffComp_SpellMending</compClass>
+      </li>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>0.0</severityPerDay>
+      </li>	  
+    </comps>
+    <stages>
+      <li>
+	    <label>active</label>
+		<minSeverity>.001</minSeverity>
+        <restFallFactor>1.2</restFallFactor>
+		<hungerRateFactor>1.2</hungerRateFactor>
+        <capMods>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.3</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.3</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  
 </Defs>

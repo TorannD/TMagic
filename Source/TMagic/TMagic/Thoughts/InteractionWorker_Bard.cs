@@ -39,8 +39,15 @@ namespace TorannMagic.Thoughts
                             }
                             else
                             {
-
-                                result = 1f;
+                                bool learned = compInit.MagicData.MagicPowersB[1].learned;
+                                if (learned)
+                                {
+                                    result = 1f;
+                                }
+                                else
+                                {
+                                    result = 0f;
+                                }
                             }
                         }
                     }

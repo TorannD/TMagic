@@ -28,6 +28,32 @@
   </ThingDef>
   
   <ThingDef ParentName="MoteBase">
+    <defName>Mote_Twinkle</defName>
+    <graphicData>
+      <texPath>Motes/TwinkleMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.25</solidTime>
+      <fadeOutTime>1.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_Flame</defName>
+    <graphicData>
+      <texPath>Motes/FlameMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.1</solidTime>
+      <fadeOutTime>0.1</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
     <defName>Mote_Exclamation</defName>
     <graphicData>
       <texPath>Motes/ExclamationMote</texPath>

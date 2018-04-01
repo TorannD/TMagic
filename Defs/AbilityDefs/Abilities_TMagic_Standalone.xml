@@ -668,7 +668,7 @@
         <defName>TM_ManaShield</defName>
         <label>Mana Shield</label>
         <uiIconPath>UI/manashield</uiIconPath>
-        <description>Summons a protective barrier that draws power from the casters mana. Damage absorption rate is 1dmg to 1% mana.  The barrier breaks when the caster has insufficient mana to absorb an attack.  Casting the spell when a barrier is active will remove the barrier.  Can be used in conjuction with shield belts.  Does not impede spell casting.</description>
+        <description>Summons a protective barrier that draws power from the casters mana. Damage absorption rate is 1dmg to 1% mana.  The barrier breaks when the caster has insufficient mana to absorb an attack.  Casting the spell when a barrier is active will remove the barrier.  Can be used in conjunction with shield belts.  Does not impede spell casting.</description>
         <manaCost>0.005</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ManaShield</verbClass>
@@ -798,6 +798,171 @@
             <soundCast>TM_AirWoosh</soundCast>
             <muzzleFlashScale>0</muzzleFlashScale>
             <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Fertile land -->	
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+        <thingClass>TorannMagic.Projectile_FertileLands</thingClass>
+		<defName>Projectile_FertileLands</defName>
+        <label>fertile lands</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>TM_Holy</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+			<explosionRadius>6</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+        </projectile>
+    </ThingDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_FertileLands</defName>
+        <label>Fertile Lands</label>
+        <uiIconPath>UI/blessland</uiIconPath>
+        <description>Infuses an area of land with power from the druid that increases its fertility. This ability must be maintained and reduces mana regeneration by 40%. The druid is limited to one area.</description>
+        <manaCost>0.10</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_FertileLands</defaultProjectile>
+            <abilityDef>TM_FertileLands</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>10</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_VibrationLow</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+			<AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>false</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_DismissFertileLands</defName>
+        <label>End Fertile Lands</label>
+        <uiIconPath>UI/blesslandx</uiIconPath>
+        <description>Releases the druid's power infusing the land with fertility.</description>
+        <manaCost>0.0</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_DismissFertileLands</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_TM_SpawnThing</defaultProjectile>
+            <abilityDef>TM_DismissFertileLands</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>10</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_VibrationLow</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Spell Mending -->	
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_SpellMending</defName>
+        <label>Spell Mending</label>
+        <uiIconPath>UI/spellmending</uiIconPath>
+        <description>Cast an enchantment upon a person that slowly reconstructs their equipment at a molecular level. Spell mending requires a the equipment to be worn in order to extract 'memories' from the wearer to perform the reconstruction. This places a physical strain on the affected pawn and will slow their physical activities. Spell mending dissipates after several hours.</description>
+        <manaCost>0.50</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SpellMending</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_TM_SpawnThing</defaultProjectile>
+            <abilityDef>TM_SpellMending</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>300</SecondsToRecharge>
+            <range>40</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+			<AbilityTargetCategory>TargetThing</AbilityTargetCategory>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+		<!-- Cauterize Wound -->	
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_CauterizeWound</defName>
+        <label>Cauterize Wounds</label>
+        <uiIconPath>UI/cauterizewound</uiIconPath>
+        <description>The fire mage invokes elemental fire to instantly cauterize wounds on a patient. However, this process is likely to leave burn scars.</description>
+        <manaCost>0.15</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_CauterizeWound</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_TM_SpawnThing</defaultProjectile>
+            <abilityDef>TM_CauterizeWound</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>60</SecondsToRecharge>
+            <range>20</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+			<AbilityTargetCategory>TargetThing</AbilityTargetCategory>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
 

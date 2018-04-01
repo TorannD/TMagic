@@ -1106,7 +1106,7 @@ namespace TorannMagic
                     {
                         if (traits[i].def.defName == "Bladedancer")
                         {
-                            if (traits[i].Degree < bladefocus_pwr.level)
+                            if (traits[i].Degree != bladefocus_pwr.level)
                             {
                                 traits.Remove(traits[i]);
                                 this.Pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Bladedancer"), bladefocus_pwr.level, false));
@@ -1135,7 +1135,7 @@ namespace TorannMagic
                         if (traits[i].def.defName == "Ranger")
                         {
 
-                            if (traits[i].Degree < rangertraining_pwr.level)
+                            if (traits[i].Degree != rangertraining_pwr.level)
                             {
                                 traits.Remove(traits[i]);
                                 this.Pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Ranger"), rangertraining_pwr.level, false));
@@ -1154,7 +1154,7 @@ namespace TorannMagic
                     {
                         if (traits[i].def.defName == "TM_Sniper")
                         {
-                            if (traits[i].Degree < sniperfocus_pwr.level)
+                            if (traits[i].Degree != sniperfocus_pwr.level)
                             {
                                 traits.Remove(traits[i]);
                                 this.Pawn.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Sniper"), sniperfocus_pwr.level, false));

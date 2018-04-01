@@ -325,7 +325,7 @@ Range: 46</description>
         <defName>TM_FogOfTorment</defName>
         <label>Fog of Torment</label>
         <uiIconPath>UI/fogoftorment</uiIconPath>
-        <description>Creates a fog that slowly destroys everything within.  Undead within the fog are slowly healed and suffer no penalties from the fog.</description>
+        <description>Creates a fog that slowly destroys everything within. Undead within the fog are slowly healed and suffer no penalties from the fog.</description>
         <manaCost>0.25</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
@@ -587,7 +587,7 @@ Cast time: 2s</description>
         <defName>TM_CorpseExplosion_I</defName>
         <label>Corpse Explosion (I)</label>
         <uiIconPath>UI/corpseexplosion</uiIconPath>
-        <description>Mixes arcane energy with chemicals in a corpse to cause the corpse to explode after a short delay.  Equipment will not automatically be consumed by the explosion, but may be destroyed in the explosion.
+        <description>Mixes arcane energy with chemicals in a corpse to cause the corpse to explode after a short delay. Equipment will not automatically be consumed by the explosion, but may be destroyed in the explosion.
 Mana Cost: 22%
 Range: 50
 Cooldown: 7s
@@ -625,7 +625,7 @@ Cast time: 1.5s</description>
         <defName>TM_CorpseExplosion_II</defName>
         <label>Corpse Explosion (II)</label>
         <uiIconPath>UI/corpseexplosion</uiIconPath>
-        <description>Mixes arcane energy with chemicals in a corpse to cause the corpse to explode after a short delay.  Equipment will not automatically be consumed by the explosion, but may be destroyed in the explosion.
+        <description>Mixes arcane energy with chemicals in a corpse to cause the corpse to explode after a short delay. Equipment will not automatically be consumed by the explosion, but may be destroyed in the explosion.
 Mana Cost: 24%
 Range: 60
 Cooldown: 5s
@@ -663,7 +663,7 @@ Cast time: 1s</description>
         <defName>TM_CorpseExplosion_III</defName>
         <label>Corpse Explosion (III)</label>
         <uiIconPath>UI/corpseexplosion</uiIconPath>
-        <description>Mixes arcane energy with chemicals in a corpse to cause the corpse to explode after a short delay.  Equipment will not automatically be consumed by the explosion, but may be destroyed in the explosion.
+        <description>Mixes arcane energy with chemicals in a corpse to cause the corpse to explode after a short delay. Equipment will not automatically be consumed by the explosion, but may be destroyed in the explosion.
 Mana Cost: 25%
 Range: 70
 Cooldown: 4s

@@ -4,7 +4,7 @@
 	<name>A RimWorld of Magic</name>
 	<author>Torann</author>
 	<targetVersion>0.18.0</targetVersion>
-	<description>Version 1.9.6
+	<description>Version 1.9.7
     This mod adds magic and class abilities to RimWorld.
 	
 Specially gifted pawns can find and use assortment of arcane scripts that bestow them with special abilities.  Most abilities
@@ -12,7 +12,7 @@ are combat related, though all classes possess limited skills to assist both on 
 	
 Abilities are unique to each class, with each class specializing in specific roles:
 
-Fire mage: highly destructive but difficult to control, also has a tendancy to start fires.
+Fire mage: highly destructive but difficult to control and has a tendency to start fires.
 
 Ice mage: though not directly powerful, the ice mage is adept at decreasing the enemies ability to move and fight.
 
@@ -30,11 +30,13 @@ Paladin: excellent front line fighter that has the ability to close with, disrup
 
 Priest: support class dedicated to the health and well-being of the colony.
 
+Bard: expert in social interaction and inspiring other colonists.
+
 Gladiator: versatile close combat specialist that thrives in the thick of battle.
 
 Sniper: long range, small arms expert - excels at precision strikes that exploit enemy weaknesses.
 
-Bladedancer: close range glass cannon, excels at hit and run tactics and rapid, unsustained assaults
+Bladedancer: close range glass cannon, excels at hit and run tactics and rapid assaults
 
 Ranger: survivalist and stalwart defender, the ranger enlists the aid of animal kin to defend the colony
 	</description>

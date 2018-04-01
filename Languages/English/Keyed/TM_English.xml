@@ -7,6 +7,7 @@
 <TM_NotEnoughStamina>{0} does not have enough stamina to execute this ability.</TM_NotEnoughStamina>
 <MentalStateByPsyker>{0} overcome by a psychic assault.</MentalStateByPsyker>
 
+<TM_InvalidTarget>{0} found no valid target for ability {1}.</TM_InvalidTarget>
 <InvalidPortal>Invalid portal location - target position, and all adjacent positions, must be valid and free of debris.</InvalidPortal>
 <InvalidMine>Invalid summoned mine location - target position must be valid and free of debris.</InvalidMine>
 <InvalidSummon>Attempted a summoning at an invalid location - target position must be valid and free of debris.</InvalidSummon>

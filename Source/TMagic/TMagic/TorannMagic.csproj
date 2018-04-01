@@ -79,7 +79,13 @@
     <Compile Include="Building_TMPortal.cs" />
     <Compile Include="Building_PoisonTrap.cs" />
     <Compile Include="HediffComp_BattleHymn.cs" />
+    <Compile Include="HediffComp_SpellMending.cs" />
+    <Compile Include="Projectile_FertileLands.cs" />
     <Compile Include="Thoughts\Inspiration_MightUser.cs" />
+    <Compile Include="Thoughts\InteractionWorker_MightLore.cs" />
+    <Compile Include="Verb_CauterizeWound.cs" />
+    <Compile Include="Verb_DismissFertileLands.cs" />
+    <Compile Include="Verb_SpellMending.cs" />
     <Compile Include="WorkGiver_DoEntertain.cs" />
     <Compile Include="FlyingObject_Leap.cs" />
     <Compile Include="HediffComp_Inspirational.cs" />

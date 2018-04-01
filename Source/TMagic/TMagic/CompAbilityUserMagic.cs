@@ -131,6 +131,9 @@ namespace TorannMagic
         public bool spell_Flight = false;
         public bool spell_SummonPoppi = false;
         public bool spell_BattleHymn = false;
+        public bool spell_CauterizeWound = false;
+        public bool spell_FertileLands = false;
+        public bool spell_SpellMending = false;
 
         private bool item_StaffOfDefender = false;
 
@@ -147,6 +150,8 @@ namespace TorannMagic
         private bool dismissMinionSpell = false;
         private bool dismissUndeadSpell = false;
         private bool dismissSunlightSpell = false;
+        public List<IntVec3> fertileLands = new List<IntVec3>();
+        public bool fertileLandsCopied = false;
 
         private Effecter powerEffecter = null;
         private int powerModifier = 0;
@@ -844,11 +849,12 @@ namespace TorannMagic
 
         private void SingleEvent()
         {
-            if (this.Pawn.def.HasComp(typeof(Enchantment.CompEnchant)))
+            if(fertileLands.Count > 0 && !this.fertileLandsCopied)
             {
-                Enchantment.CompEnchant compEnchant = this.Pawn.GetComp<Enchantment.CompEnchant>();
-                compEnchant.Initialize(compEnchant.props);
-                compEnchant.enchantingContainer.Clear();
+                ModOptions.Constants.SetGrowthCells(fertileLands);
+                this.fertileLandsCopied = true;
+                this.RemovePawnAbility(TorannMagicDefOf.TM_FertileLands);
+                this.AddPawnAbility(TorannMagicDefOf.TM_DismissFertileLands);
             }
             this.doOnce = false;            
         }
@@ -1859,6 +1865,21 @@ namespace TorannMagic
                 {
                     this.RemovePawnAbility(TorannMagicDefOf.TM_BattleHymn);
                     this.AddPawnAbility(TorannMagicDefOf.TM_BattleHymn);
+                }
+                if (this.spell_CauterizeWound == true)
+                {
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_CauterizeWound);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_CauterizeWound);
+                }
+                if (this.spell_SpellMending == true)
+                {
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_SpellMending);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_SpellMending);
+                }
+                if (this.spell_FertileLands == true)
+                {
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_FertileLands);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_FertileLands);
                 }
                 //this.UpdateAbilities();
             }            
@@ -3462,7 +3483,7 @@ namespace TorannMagic
                     {
                         if (traits[i].def.defName == "TM_Bard")
                         {
-                            if (traits[i].Degree < bardtraining_pwr.level)
+                            if (traits[i].Degree != bardtraining_pwr.level)
                             {
                                 traits.Remove(traits[i]);
                                 this.Pawn.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Bard"), bardtraining_pwr.level, false));
@@ -3475,7 +3496,7 @@ namespace TorannMagic
 
             if(this.IsMagicUser && !this.Pawn.Dead & !this.Pawn.Downed && this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
             {
-                if(!this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_InspirationalHD")))
+                if(!this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_InspirationalHD")) && this.Pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersB[2].learned)
                 {
                     HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_InspirationalHD"), 0.95f);
                 }
@@ -3564,6 +3585,10 @@ namespace TorannMagic
                 }
                 _maxMP -= (this.summonedLights.Count * .4f);
                 _mpRegenRate -= (this.summonedLights.Count * .4f);
+            }
+            if(this.fertileLands.Count > 0)
+            {
+                _mpRegenRate += -.4f;
             }
             if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
             {
@@ -3715,10 +3740,13 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.spell_Flight, "spell_Flight", false, false);
             Scribe_Values.Look<bool>(ref this.spell_SummonPoppi, "spell_SummonPoppi", false, false);
             Scribe_Values.Look<bool>(ref this.spell_BattleHymn, "spell_BattleHymn", false, false);
-            Scribe_Values.Look<bool>(ref this.doOnce, "doOnce", true, false);
+            Scribe_Values.Look<bool>(ref this.spell_FertileLands, "spell_FertileLands", false, false);
+            Scribe_Values.Look<bool>(ref this.spell_CauterizeWound, "spell_CauterizeWound", false, false);
+            Scribe_Values.Look<bool>(ref this.spell_SpellMending, "spell_SpellMending", false, false);
             Scribe_Values.Look<int>(ref this.powerModifier, "powerModifier", 0, false);
             Scribe_Collections.Look<Thing>(ref this.summonedMinions, "summonedMinions", LookMode.Reference);
             Scribe_Collections.Look<Thing>(ref this.summonedLights, "summonedLights", LookMode.Reference);
+            Scribe_Collections.Look<IntVec3>(ref this.fertileLands, "fertileLands", LookMode.Value);
             Scribe_Deep.Look<MagicData>(ref this.magicData, "magicData", new object[]
             {
                 this

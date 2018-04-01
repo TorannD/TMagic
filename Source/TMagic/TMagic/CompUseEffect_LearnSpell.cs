@@ -214,6 +214,24 @@ namespace TorannMagic
                     comp.InitializeSpell();
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
+                else if (parent.def.defName == "SpellOf_CauterizeWound" && comp.spell_CauterizeWound == false && user.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
+                {
+                    comp.spell_CauterizeWound = true;
+                    comp.InitializeSpell();
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def.defName == "SpellOf_FertileLands" && comp.spell_FertileLands == false && user.story.traits.HasTrait(TorannMagicDefOf.Druid))
+                {
+                    comp.spell_FertileLands = true;
+                    comp.InitializeSpell();
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def.defName == "SpellOf_SpellMending" && comp.spell_SpellMending == false)
+                {
+                    comp.spell_SpellMending = true;
+                    comp.InitializeSpell();
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
                 else
                 {
                     Messages.Message("CannotLearnSpell".Translate(), MessageTypeDefOf.RejectInput);

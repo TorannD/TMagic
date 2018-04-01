@@ -53,7 +53,11 @@ namespace TorannMagic
                 {
                     if (Rand.Chance(.4f + .1f * pwr.level))
                     {
-                        //newPawn.mindState.mentalStateHandler.Reset();
+                        if(newPawn.InMentalState)
+                        {
+                            newPawn.mindState.mentalStateHandler.Reset();
+                        }
+                        //
                         //newPawn.jobs.EndCurrentJob(JobCondition.InterruptForced);
                         Job job = new Job(TorannMagicDefOf.JobDriver_SleepNow);
                         newPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);

@@ -12,7 +12,7 @@ namespace TorannMagic
     class HediffComp_Undead : HediffComp
     {
         private bool necroValid = true;
-        private bool lichStrike = false;
+        private int lichStrike = 0;
         private bool initializing = true;
 
         public string labelCap
@@ -66,14 +66,15 @@ namespace TorannMagic
                             {
                                 //necromancer alive to sustain undead                                
                                 necroValid = true;
+                                lichStrike = 0;
                             }
                         }
                     }
                     if(necroValid == false)  //give a buffer that allows flight or other temporary despawning of the necromancers or lichs before destroying undead
                     {
-                        if (lichStrike == false)
+                        if (lichStrike < 3)
                         {
-                            lichStrike = true;
+                            lichStrike++;
                             necroValid = true;
                         }
                     }

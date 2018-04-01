@@ -389,6 +389,24 @@ namespace TorannMagic
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
+                        if (Rand.Range(0, 10) > 9)
+                        {
+                            thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_SpellMending, null);
+                            outThings.Add(thing);
+                            collectiveMarketValue += thing.MarketValue;
+                        }
+                        if (Rand.Range(0, 10) > 9)
+                        {
+                            thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_CauterizeWound, null);
+                            outThings.Add(thing);
+                            collectiveMarketValue += thing.MarketValue;
+                        }
+                        if (Rand.Range(0, 10) > 9)
+                        {
+                            thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_FertileLands, null);
+                            outThings.Add(thing);
+                            collectiveMarketValue += thing.MarketValue;
+                        }
                     }
                 }
                 //Skills

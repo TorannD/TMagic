@@ -60,7 +60,7 @@ namespace TorannMagic
             moteThrown.Scale = 1.9f * scale;
             moteThrown.rotationRate = (float)Rand.Range(0, 30);
             moteThrown.exactPosition = loc;
-            moteThrown.SetVelocity((float)Rand.Range(-60, 60), Rand.Range(.1f, .15f));
+            moteThrown.SetVelocity((float)Rand.Range(-60, 60), Rand.Range(.5f, .75f));
             GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);
         }
 
@@ -206,6 +206,51 @@ namespace TorannMagic
             moteThrown.rotationRate = (float)Rand.Range(-60, 60);
             moteThrown.exactPosition = loc;
             moteThrown.SetVelocity((float)Rand.Range(0, 360), Rand.Range(1f, 2f));
+            GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);
+        }
+
+        public static void ThrowFlames(Vector3 loc, Map map, float scale)
+        {
+            if (!loc.ShouldSpawnMotesAt(map) || map.moteCounter.SaturatedLowPriority)
+            {
+                return;
+            }
+            MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(TorannMagicDefOf.Mote_Flame, null);
+            moteThrown.Scale = 1.9f * scale;
+            moteThrown.rotationRate = (float)Rand.Range(-100, 100);
+            moteThrown.exactPosition = loc;
+            moteThrown.SetVelocity((float)Rand.Range(-60, 60), Rand.Range(1f, 2f));
+            GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);
+        }
+
+        public static void ThrowTwinkle(Vector3 loc, Map map, float scale)
+        {
+            if (!loc.ShouldSpawnMotesAt(map) || map.moteCounter.SaturatedLowPriority)
+            {
+                return;
+            }
+            MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(TorannMagicDefOf.Mote_Twinkle, null);
+            moteThrown.Scale = 1.9f * scale;
+            moteThrown.rotationRate = (float)Rand.Range(-10, 10);
+            moteThrown.exactPosition = loc;
+            moteThrown.SetVelocity((float)Rand.Range(-30, 30), Rand.Range(1f, 2f));
+            GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);
+        }
+
+        public static void ThrowTwinkle(Vector3 loc, Map map, float scale, float rotationRate, float velocity, float solidTime, float fadeIn, float fadeOut)
+        {
+            if (!loc.ShouldSpawnMotesAt(map) || map.moteCounter.SaturatedLowPriority)
+            {
+                return;
+            }
+            MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(TorannMagicDefOf.Mote_Twinkle, null);
+            moteThrown.Scale = 1.9f * scale;
+            moteThrown.rotationRate = rotationRate;
+            moteThrown.exactPosition = loc;
+            moteThrown.SetVelocity((float)Rand.Range(-30, 30), velocity);
+            moteThrown.def.mote.solidTime = solidTime;
+            moteThrown.def.mote.fadeInTime = fadeIn;
+            moteThrown.def.mote.fadeOutTime = fadeOut;
             GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);
         }
 

@@ -65,6 +65,7 @@
       <baseBodySize>0.2</baseBodySize>
       <baseHealthScale>0.4</baseHealthScale>
 	  <predator>true</predator>
+	  <wildness>.75</wildness>
       <foodType>OmnivoreRoughAnimal</foodType>
       <leatherColor>(255,215,0)</leatherColor>
       <leatherInsulation>1.5</leatherInsulation>
