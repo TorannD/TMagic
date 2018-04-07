@@ -62,7 +62,7 @@ namespace TorannMagic
                     IntVec3 cell = this.CasterPawn.Position;
                     try
                     {
-                        if (this.CasterPawn.IsColonistPlayerControlled)
+                        if (this.CasterPawn.IsColonist)
                         {
                             ThingSelectionUtility.SelectNextColonist();
                             this.CasterPawn.DeSpawn();

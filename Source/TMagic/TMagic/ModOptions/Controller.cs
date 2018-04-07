@@ -72,8 +72,11 @@ namespace TorannMagic.ModOptions
             Widgets.CheckboxLabeled(rowRect9, "AIMarking".Translate(), ref Settings.Instance.AIMarking, false);
             num++;
             Rect rowRect10 = UIHelper.GetRowRect(rowRect9, rowHeight, num);
+            Widgets.CheckboxLabeled(rowRect10, "showAbilitiesOnMultiSelect".Translate(), ref Settings.Instance.showIconsMultiSelect, false);
+            num++;
+            Rect rowRect20 = UIHelper.GetRowRect(rowRect10, rowHeight, num);
             GUI.color = Color.yellow;
-            reset = Widgets.ButtonText(rowRect10, "Reset", false, false, true);
+            reset = Widgets.ButtonText(rowRect20, "Reset", false, false, true);
             if (reset)
             {
                 Settings.Instance.xpMultiplier = 1f;
@@ -89,6 +92,7 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.advMageChance = 0.5f;
                 Settings.Instance.advFighterChance = 0.5f;
                 Settings.Instance.magicyteChance = .002f;
+                Settings.Instance.showIconsMultiSelect = true;
             }
         }
 

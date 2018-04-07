@@ -11,17 +11,10 @@ namespace TorannMagic
 
         private bool initialized = false;
         Pawn pawn;
-        MightPowerSkill pwr;
-        MightPowerSkill ver;
-        MightPowerSkill str;
 
         public void Initialize(Map map)
         {
             pawn = this.launcher as Pawn;
-            CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
-            pwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_ArrowStorm.FirstOrDefault((MightPowerSkill x) => x.label == "TM_ArrowStorm_pwr");
-            ver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_ArrowStorm.FirstOrDefault((MightPowerSkill x) => x.label == "TM_ArrowStorm_ver");
-            str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
             initialized = true;
         }
 
@@ -37,6 +30,32 @@ namespace TorannMagic
                 Initialize(map);
             }
 
+            int dmg = GetWeaponDmg(this.launcher as Pawn, this.def);
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            if (!pawn.IsColonist && settingsRef.AIHardMode)
+            {
+                dmg += 12;
+            }
+
+            if (victim != null && Rand.Chance(GetWeaponAccuracy(pawn)))
+            {
+                damageEntities(victim, null, dmg, DamageDefOf.Arrow);
+                TM_MoteMaker.ThrowBloodSquirt(victim.DrawPos, victim.Map, 1f);
+            }
+        }
+
+        public static float GetWeaponAccuracy(Pawn pawn)
+        {
+            float weaponAccuracy = pawn.equipment.Primary.GetStatValue(StatDefOf.AccuracyMedium, true);
+            MightPowerSkill ver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_ArrowStorm.FirstOrDefault((MightPowerSkill x) => x.label == "TM_ArrowStorm_ver");
+            weaponAccuracy = Mathf.Min(1f, weaponAccuracy + (.05f * ver.level));
+            return weaponAccuracy;
+        }
+
+        public static int GetWeaponDmg(Pawn pawn, ThingDef projectileDef)
+        {
+            MightPowerSkill pwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_ArrowStorm.FirstOrDefault((MightPowerSkill x) => x.label == "TM_ArrowStorm_pwr");
+            MightPowerSkill str = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
             ThingWithComps arg_3C_0;
             int value = 0;
             if (pawn == null)
@@ -59,23 +78,13 @@ namespace TorannMagic
             if (value > 1000)
             {
                 value -= 1000;
-                dmg = (this.def.projectile.damageAmountBase) + (int)((20 + (value / 120)) * (1 + (.1f * pwr.level) + (.05f * str.level)));
+                dmg = (projectileDef.projectile.damageAmountBase) + (int)((20 + (value / 120)) * (1 + (.1f * pwr.level) + (.05f * str.level)));
             }
             else
             {
-                dmg = (this.def.projectile.damageAmountBase) + (int)((value / 50) * (1 + (.1f * pwr.level) + (.05f * str.level)));
+                dmg = Mathf.RoundToInt((projectileDef.projectile.damageAmountBase + (value / 50)) * (1 + (.1f * pwr.level) + (.05f * str.level)));
             }
-            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            if (!pawn.IsColonistPlayerControlled && settingsRef.AIHardMode)
-            {
-                dmg += 12;
-            }
-
-            if (victim != null && Rand.Chance(pawn.equipment.Primary.GetStatValue(StatDefOf.AccuracyMedium, true)))
-            {
-                damageEntities(victim, null, dmg, DamageDefOf.Arrow);
-                TM_MoteMaker.ThrowBloodSquirt(victim.DrawPos, victim.Map, 1f);
-            }
+            return dmg;
         }
 
         public void damageEntities(Pawn victim, BodyPartRecord hitPart, int amt, DamageDef type)

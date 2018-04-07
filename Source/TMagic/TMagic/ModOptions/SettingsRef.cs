@@ -18,6 +18,7 @@ namespace TorannMagic.ModOptions
         public int deathExplosionMin = Settings.Instance.deathExplosionMin;
         public int deathExplosionMax = Settings.Instance.deathExplosionMax;
         public float magicyteChance = Settings.Instance.magicyteChance;
+        public bool showIconsMultiSelect = Settings.Instance.showIconsMultiSelect;
 
     }
 }

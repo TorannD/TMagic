@@ -25,7 +25,7 @@ namespace TorannMagic
                 }
                 else
                 {                   
-                    if (this.CasterPawn.IsColonistPlayerControlled)
+                    if (this.CasterPawn.IsColonist)
                     {
                         Messages.Message("MustHaveBow".Translate(new object[]
                         {

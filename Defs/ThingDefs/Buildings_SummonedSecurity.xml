@@ -97,7 +97,7 @@
       <li Class="CompProperties_Explosive">
         <explosiveRadius>2.4</explosiveRadius>
         <explosiveDamageType>TM_ManaMine</explosiveDamageType>
-		<damageAmountBase>36</damageAmountBase>
+		<damageAmountBase>24</damageAmountBase>
         <startWickHitPointsPercent>0.2</startWickHitPointsPercent>
 		<dealMoreDamageAtCenter>true</dealMoreDamageAtCenter>
 		<chanceToStartFire>0.0</chanceToStartFire>
@@ -125,7 +125,7 @@
       <li Class="CompProperties_Explosive">
         <explosiveRadius>2.7</explosiveRadius>
         <explosiveDamageType>TM_ManaMine</explosiveDamageType>
-		<damageAmountBase>42</damageAmountBase>
+		<damageAmountBase>29</damageAmountBase>
         <startWickHitPointsPercent>0.2</startWickHitPointsPercent>
 		<dealMoreDamageAtCenter>true</dealMoreDamageAtCenter>
 		<chanceToStartFire>0.0</chanceToStartFire>
@@ -151,9 +151,9 @@
 <!--     <designationHotKey>Misc7</designationHotKey> -->
     <comps>
       <li Class="CompProperties_Explosive">
-        <explosiveRadius>3.2</explosiveRadius>
+        <explosiveRadius>3.1</explosiveRadius>
         <explosiveDamageType>TM_ManaMine</explosiveDamageType>
-		<damageAmountBase>50</damageAmountBase>
+		<damageAmountBase>35</damageAmountBase>
         <startWickHitPointsPercent>0.2</startWickHitPointsPercent>
 		<dealMoreDamageAtCenter>true</dealMoreDamageAtCenter>
 		<chanceToStartFire>0.0</chanceToStartFire>
@@ -179,9 +179,9 @@
 <!--     <designationHotKey>Misc7</designationHotKey> -->
     <comps>
       <li Class="CompProperties_Explosive">
-        <explosiveRadius>4.2</explosiveRadius>
+        <explosiveRadius>3.6</explosiveRadius>
         <explosiveDamageType>TM_ManaMine</explosiveDamageType>
-		<damageAmountBase>62</damageAmountBase>
+		<damageAmountBase>40</damageAmountBase>
         <startWickHitPointsPercent>0.2</startWickHitPointsPercent>
 		<dealMoreDamageAtCenter>true</dealMoreDamageAtCenter>
 		<explosionEffect>GiantExplosion</explosionEffect>

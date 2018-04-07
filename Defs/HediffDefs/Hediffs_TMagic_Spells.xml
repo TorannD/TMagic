@@ -374,8 +374,8 @@
       </li>
       <li Class="HediffCompProperties_Disappears">
         <disappearsAfterTicks>
-          <min>120</min>
-          <max>300</max>
+          <min>30</min>
+          <max>90</max>
         </disappearsAfterTicks>
       </li>
       <li Class="HediffCompProperties_GetsOld">

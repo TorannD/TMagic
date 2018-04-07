@@ -267,8 +267,9 @@ Base mitigation: 2</description>
         <label>Grapple</label>
         <uiIconPath>UI/grapplinghook</uiIconPath>
         <description>Forcefully hooks and yanks an opponent to the Gladiator, followed by a violent leg sweep, knocking the opponent down.
+		
 Casting time: 1s
-Range: 16</description>
+Range: 12</description>
         <staminaCost>0.08</staminaCost>		
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Grapple</verbClass>
@@ -300,7 +301,7 @@ Range: 16</description>
         <uiIconPath>UI/grapplinghook</uiIconPath>
         <description>Forcefully hooks and yanks an opponent to the Gladiator, followed by a violent leg sweep, knocking the opponent down.
 Casting time: .6s
-Range: 19</description>
+Range: 14</description>
         <staminaCost>0.08</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Grapple</verbClass>
@@ -330,6 +331,7 @@ Range: 19</description>
         <label>Grapple</label>
         <uiIconPath>UI/grapplinghook</uiIconPath>
         <description>Forcefully hooks and yanks an opponent to the Gladiator, followed by a violent leg sweep, knocking the opponent down.
+		
 Casting time: .4s
 Range: 22</description>
         <staminaCost>0.08</staminaCost>
@@ -361,8 +363,9 @@ Range: 22</description>
         <label>Grapple</label>
         <uiIconPath>UI/grapplinghook</uiIconPath>
         <description>Forcefully hooks and yanks an opponent to the Gladiator, followed by a violent leg sweep, knocking the opponent down.
+		
 Casting time: .2s
-Range: 25</description>
+Range: 20</description>
         <staminaCost>0.08</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Grapple</verbClass>
@@ -417,8 +420,8 @@ Range: 25</description>
         <defName>TM_Cleave</defName>
         <label>Cleave</label>
         <uiIconPath>UI/cleave</uiIconPath>
-        <description>Executes a powerful, sweeping blow that can strike multiple targets adjacent to the target.</description>
-        <staminaCost>0.08</staminaCost>
+        <description>Executes a powerful, sweeping blow that can strike multiple enemies adjacent to the target. As long as the gladiator has enough stamina, this ability works automatically whenever the gladiator performs a melee attack. Cleave chance is calculated from weapon mass - heavier weapons are more likely to cleave.</description>
+        <staminaCost>0.12</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Cleave</verbClass>
             <hasStandardCommand>true</hasStandardCommand>

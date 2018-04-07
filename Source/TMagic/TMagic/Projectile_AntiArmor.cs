@@ -22,22 +22,6 @@ namespace TorannMagic
         {
             newPos = target;
             XProb(target, pawn);
-            ThingWithComps arg_3C_0;
-            if (pawn == null)
-            {
-                arg_3C_0 = null;
-            }
-            else
-            {
-                Pawn_EquipmentTracker expr_eq = pawn.equipment;
-                arg_3C_0 = ((expr_eq != null) ? expr_eq.Primary : null);
-            }
-            ThingWithComps thing;
-            bool flag31 = (thing = arg_3C_0) != null;
-            if (flag31)
-            {
-                value = Mathf.RoundToInt(thing.GetStatValue(StatDefOf.MarketValue));
-            }
         }
 
         protected override void Impact(Thing hitThing)
@@ -56,7 +40,7 @@ namespace TorannMagic
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             pwrVal = pwr.level;
             verVal = ver.level;
-            if (settingsRef.AIHardMode && !pawn.IsColonistPlayerControlled)
+            if (settingsRef.AIHardMode && !pawn.IsColonist)
             {
                 pwrVal = 3;
                 verVal = 3;
@@ -65,23 +49,13 @@ namespace TorannMagic
 
             if (victim != null && !victim.Dead && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracy, true)))
             {
-                int dmg;
-                if (value > 1000)
-                {
-                    value -= 1000;
-                    dmg = (this.def.projectile.damageAmountBase) + (int)((16.5f + (value / 150)) * (1 + .05f * str.level));
-                }
-                else
-                {
-                    dmg = (this.def.projectile.damageAmountBase) + (int)((value / 60) * (1 + .05f * str.level));
-                }
-
+                int dmg = GetWeaponDmg(pawn, this.def);
                 if (!victim.RaceProps.IsFlesh)
                 {
                     MoteMaker.ThrowMicroSparks(victim.Position.ToVector3(), map);
                     damageEntities(victim, null, dmg, DamageDefOf.Bullet);
                     MoteMaker.MakeStaticMote(victim.Position, pawn.Map, ThingDefOf.Mote_ExplosionFlash, 4f);
-                    damageEntities(victim, null, dmg * (1+ pwrVal), DamageDefOf.Bullet);
+                    damageEntities(victim, null, GetWeaponDmgMech(pawn, dmg), DamageDefOf.Bullet);
                     MoteMaker.ThrowMicroSparks(victim.Position.ToVector3(), map);
                     for (int i = 0; i < 1 + verVal; i++)
                     {
@@ -103,6 +77,47 @@ namespace TorannMagic
             }
         }
 
+        public static int GetWeaponDmg(Pawn pawn, ThingDef projectileDef)
+        {
+            MightPowerSkill str = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
+            int value = 0;
+            ThingWithComps arg_3C_0;
+            if (pawn == null)
+            {
+                arg_3C_0 = null;
+            }
+            else
+            {
+                Pawn_EquipmentTracker expr_eq = pawn.equipment;
+                arg_3C_0 = ((expr_eq != null) ? expr_eq.Primary : null);
+            }
+            ThingWithComps thing;
+            bool flag31 = (thing = arg_3C_0) != null;
+            if (flag31)
+            {
+                value = Mathf.RoundToInt(thing.GetStatValue(StatDefOf.MarketValue));
+            }
+            int dmg;
+            if (value > 1000)
+            {
+                value -= 1000;
+                dmg = (projectileDef.projectile.damageAmountBase) + (int)((16.5f + (value / 150)) * (1 + .05f * str.level));
+            }
+            else
+            {
+                dmg = (projectileDef.projectile.damageAmountBase) + (int)((value / 60) * (1 + .05f * str.level));
+            }
+            return dmg;
+        }
+
+        public static int GetWeaponDmgMech(Pawn pawn, int dmg)
+        {
+            
+            MightPowerSkill pwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_AntiArmor.FirstOrDefault((MightPowerSkill x) => x.label == "TM_AntiArmor_pwr");
+            int mechDmg = dmg + Mathf.RoundToInt(dmg * (1 + .5f * pwr.level));
+            return mechDmg;
+        }
+
         public void damageEntities(Pawn victim, BodyPartRecord hitPart, int amt, DamageDef type)
         {
             DamageInfo dinfo;
@@ -116,7 +131,6 @@ namespace TorannMagic
                 dinfo = new DamageInfo(type, amt, this.ExactRotation.eulerAngles.y, this.launcher as Pawn, null, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);                
             }
             victim.TakeDamage(dinfo);
-
         }
 
         private void XProb(IntVec3 target, Pawn pawn)

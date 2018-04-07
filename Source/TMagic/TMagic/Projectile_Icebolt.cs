@@ -25,7 +25,7 @@ namespace TorannMagic
             pwrVal = pwr.level;
             verVal = ver.level;
             this.arcaneDmg = comp.arcaneDmg;
-            if(settingsRef.AIHardMode && !pawn.IsColonistPlayerControlled)
+            if(settingsRef.AIHardMode && !pawn.IsColonist)
             {
                 pwrVal = 3;
                 verVal = 3;
@@ -33,7 +33,7 @@ namespace TorannMagic
             GenExplosion.DoExplosion(base.Position, map, 0.4f, TMDamageDefOf.DamageDefOf.Iceshard, this.launcher, Mathf.RoundToInt(this.def.projectile.damageAmountBase * this.arcaneDmg), this.def.projectile.soundExplode, def, this.equipmentDef, null, 0f, 1, false, null, 0f, 1, 0f, false);
             CellRect cellRect = CellRect.CenteredOn(base.Position, 3);
             cellRect.ClipInsideMap(map);
-            for (int i = 0; i < Rand.Range((1*verVal), (6*verVal)); i++)
+            for (int i = 0; i < Rand.Range((1 + verVal), (2 + 6*verVal)); i++)
             {
                 IntVec3 randomCell = cellRect.RandomCell;
                 if (pwrVal > 0)

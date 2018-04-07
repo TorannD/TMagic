@@ -26,7 +26,7 @@ namespace TorannMagic
             pwrVal = pwr.level;
             verVal = ver.level;
             this.arcaneDmg = comp.arcaneDmg;
-            if (settingsRef.AIHardMode && !pawn.IsColonistPlayerControlled)
+            if (settingsRef.AIHardMode && !pawn.IsColonist)
             {
                 pwrVal = 3;
                 verVal = 3;
@@ -34,9 +34,14 @@ namespace TorannMagic
             bool flag = hitThing != null;
             if (flag)
             {
-                int damageAmountBase = Mathf.RoundToInt(this.def.projectile.damageAmountBase + (pwrVal * 9)* this.arcaneDmg);
+                int damageAmountBase = Mathf.RoundToInt(this.def.projectile.damageAmountBase + (pwrVal * 6)* this.arcaneDmg);
                 DamageInfo dinfo = new DamageInfo(this.def.projectile.damageDef, damageAmountBase, this.ExactRotation.eulerAngles.y, this.launcher, null, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);
                 hitThing.TakeDamage(dinfo);
+                if(Rand.Chance(.6f))
+                {
+                    DamageInfo dinfo2 = new DamageInfo(DamageDefOf.Stun, damageAmountBase/4, this.ExactRotation.eulerAngles.y, this.launcher, null, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);
+                    hitThing.TakeDamage(dinfo2);
+                }
 
                 bool flag2 = this.canStartFire && Rand.Range(0f, 1f) > this.startFireChance;
                 if (flag2)
@@ -75,6 +80,7 @@ namespace TorannMagic
         {
             ThingDef def = this.def;
             Explosion(pos, map, radius, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, null, def, this.equipmentDef, ThingDefOf.Mote_MicroSparks, 0.4f, 1, false, null, 0f, 1);
+            Explosion(pos, map, radius, DamageDefOf.Stun, this.launcher, null, def, this.equipmentDef, ThingDefOf.Mote_MicroSparks, 0.4f, 1, false, null, 0f, 1);
 
         }
 

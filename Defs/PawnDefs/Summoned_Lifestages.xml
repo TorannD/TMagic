@@ -7,7 +7,7 @@
 	<voxPitch>1.5</voxPitch>
 	<bodySizeFactor>0.65</bodySizeFactor>
 	<foodMaxFactor>1.5</foodMaxFactor>
-	<healthScaleFactor>0.5</healthScaleFactor>
+	<healthScaleFactor>0.8</healthScaleFactor>
     <statFactors>
       <MoveSpeed>0.8</MoveSpeed>
     </statFactors>
@@ -19,7 +19,7 @@
 	<voxPitch>1</voxPitch>
 	<bodySizeFactor>1</bodySizeFactor>
 	<foodMaxFactor>1</foodMaxFactor>
-	<healthScaleFactor>.8</healthScaleFactor>
+	<healthScaleFactor>.95</healthScaleFactor>
     <statFactors>
       <MoveSpeed>1</MoveSpeed>
     </statFactors>
@@ -31,7 +31,7 @@
 	<voxPitch>.8</voxPitch>
 	<bodySizeFactor>1.2</bodySizeFactor>
 	<foodMaxFactor>.8</foodMaxFactor>
-	<healthScaleFactor>1.1</healthScaleFactor>
+	<healthScaleFactor>1.2</healthScaleFactor>
     <statFactors>
       <MoveSpeed>1.2</MoveSpeed>
     </statFactors>

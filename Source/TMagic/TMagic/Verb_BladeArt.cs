@@ -21,7 +21,7 @@ namespace TorannMagic
                     HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_BladeArtHD, -5f);
                     HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_BladeArtHD, (.5f)+ pwr.level);
                     ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                    if (!pawn.IsColonistPlayerControlled && settingsRef.AIHardMode)
+                    if (!pawn.IsColonist && settingsRef.AIHardMode)
                     {
                         HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_BladeArtHD, 4);
                     }

@@ -316,7 +316,7 @@ namespace TorannMagic
                 GenSpawn.Spawn(this.flyingThing, base.Position, base.Map);
                 ModOptions.Constants.SetPawnInFlight(false);
                 Pawn p = this.flyingThing as Pawn;
-                if (p.IsColonistPlayerControlled)
+                if (p.IsColonist)
                 {
                     p.drafter.Drafted = this.drafted;
                 }
@@ -327,7 +327,7 @@ namespace TorannMagic
                 GenSpawn.Spawn(this.flyingThing, base.Position, base.Map);
                 ModOptions.Constants.SetPawnInFlight(false);
                 Pawn p = this.flyingThing as Pawn;
-                if (p.IsColonistPlayerControlled)
+                if (p.IsColonist)
                 {
                     p.drafter.Drafted =this.drafted;
                 }

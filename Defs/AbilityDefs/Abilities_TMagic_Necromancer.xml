@@ -25,8 +25,10 @@
         <defName>TM_RaiseUndead</defName>
         <label>Raise Undead</label>
         <uiIconPath>UI/raiseundead</uiIconPath>
-        <description>Raise undead from corpses. Only works on creatures that were once living.  Undead will remain under the Necromancers control indefinitely.
-However, each undead human will incur a mana upkeep cost of 30% of base mana regeneration.  Undead animals incur a 15% upkeep cost.
+        <description>Raise undead from corpses. Only works on creatures that were once living. 
+
+Undead will remain under the Necromancers control indefinitely. Each undead human will incur a mana upkeep cost of 30% of base mana regeneration. Undead animals incur a 15% upkeep cost.
+
 There is no limit to the number of undead a necromancer may control, however, when the necromancer no longer has mana to maintain undead, they will automatically be consumed until the number is reduced to a manageable amount.
 </description>
         <manaCost>0.45</manaCost>
@@ -116,6 +118,7 @@ There is no limit to the number of undead a necromancer may control, however, wh
         <label>Death Mark</label>
         <uiIconPath>UI/deathmark</uiIconPath>
         <description>Mark a victim with a curse that causes their life to flash before their eyes. Cursed victims will lose focus and the will to fight, reducing the attack rate. Marking targets for death empowers Death Bolt. Does not work on mechanoids.
+		
 Max Targets: 3
 Cast Time: 3s
 Cooldown: 120s
@@ -163,6 +166,7 @@ Range: 34</description>
         <label>Death Mark (I)</label>
         <uiIconPath>UI/deathmark</uiIconPath>
         <description>Mark a victim with a curse that causes their life to flash before their eyes. Cursed victims will lose focus and the will to fight, reducing the attack rate. Marking targets for death empowers Death Bolt. Does not work on mechanoids.
+		
 Max Targets: 4
 Cast Time: 2.5s
 Cooldown: 90s
@@ -211,6 +215,7 @@ Range: 38</description>
         <label>Death Mark (II)</label>
         <uiIconPath>UI/deathmark</uiIconPath>
         <description>Mark a victim with a curse that causes their life to flash before their eyes. Cursed victims will lose focus and the will to fight, reducing the attack rate. Marking targets for death empowers Death Bolt. Does not work on mechanoids.
+		
 Max Targets: 4
 Cast Time: 2s
 Cooldown: 60s
@@ -258,6 +263,7 @@ Range: 42</description>
         <label>Death Mark (III)</label>
         <uiIconPath>UI/deathmark</uiIconPath>
         <description>Mark a victim with a curse that causes their life to flash before their eyes. Cursed victims will lose focus and the will to fight, reducing the attack rate. Marking targets for death empowers Death Bolt. Does not work on mechanoids.
+		
 Max Targets: 5
 Cast Time: 1.8s
 Cooldown: 45s
@@ -325,7 +331,7 @@ Range: 46</description>
         <defName>TM_FogOfTorment</defName>
         <label>Fog of Torment</label>
         <uiIconPath>UI/fogoftorment</uiIconPath>
-        <description>Creates a fog that slowly destroys everything within. Undead within the fog are slowly healed and suffer no penalties from the fog.</description>
+        <description>Creates a fog that causes pain and suffering every living thing within. Undead within the fog are slowly healed and suffer no penalties from the fog.</description>
         <manaCost>0.25</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
@@ -379,9 +385,10 @@ Range: 46</description>
         <label>Consume Corpse</label>
         <uiIconPath>UI/consumecorpse</uiIconPath>
         <description>Consume a corpse or undead to replenish mana. Apparel, items, and equipment remain behind but all material belonging to the corpse is consumed (meat/leather)
+		
 Mana Cost: 3%
 Range: 50
-Cooldown: 30s
+Cooldown: 20s
 Cast Time: 2s</description>
         <manaCost>0.03</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -394,7 +401,7 @@ Cast Time: 2s</description>
             <defaultProjectile>Projectile_ConsumeCorpse</defaultProjectile>
             <abilityDef>TM_ConsumeCorpse</abilityDef>
             <warmupTime>2</warmupTime>
-            <SecondsToRecharge>30</SecondsToRecharge>
+            <SecondsToRecharge>20</SecondsToRecharge>
             <range>50</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>ThrowMolotovCocktail</soundCast>
@@ -417,9 +424,10 @@ Cast Time: 2s</description>
         <label>Consume Corpse (I)</label>
         <uiIconPath>UI/consumecorpse</uiIconPath>
         <description>Consume a corpse or undead to replenish mana. Apparel, items, and equipment remain behind but all material belonging to the corpse is consumed (meat/leather)
+		
 Mana Cost: 2.5%
 Range: 60
-Cooldown: 25s
+Cooldown: 18s
 Cast Time: 1.8s</description>
         <manaCost>0.025</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -432,7 +440,7 @@ Cast Time: 1.8s</description>
             <defaultProjectile>Projectile_ConsumeCorpse</defaultProjectile>
             <abilityDef>TM_ConsumeCorpse_I</abilityDef>
             <warmupTime>1.8</warmupTime>
-            <SecondsToRecharge>25</SecondsToRecharge>
+            <SecondsToRecharge>18</SecondsToRecharge>
             <range>60</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>ThrowMolotovCocktail</soundCast>
@@ -455,9 +463,10 @@ Cast Time: 1.8s</description>
         <label>Consume Corpse (II)</label>
         <uiIconPath>UI/consumecorpse</uiIconPath>
         <description>Consume a corpse or undead to replenish mana. Apparel, items, and equipment remain behind but all material belonging to the corpse is consumed (meat/leather)
+		
 Mana Cost: 2%
 Range: 70
-Cooldown: 20s
+Cooldown: 16s
 Cast Time: 1.5s</description>
         <manaCost>0.02</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -470,7 +479,7 @@ Cast Time: 1.5s</description>
             <defaultProjectile>Projectile_ConsumeCorpse</defaultProjectile>
             <abilityDef>TM_ConsumeCorpse_II</abilityDef>
             <warmupTime>1.5</warmupTime>
-            <SecondsToRecharge>20</SecondsToRecharge>
+            <SecondsToRecharge>16</SecondsToRecharge>
             <range>70</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>ThrowMolotovCocktail</soundCast>
@@ -493,6 +502,7 @@ Cast Time: 1.5s</description>
         <label>Consume Corpse (III)</label>
         <uiIconPath>UI/consumecorpse</uiIconPath>
         <description>Consume a corpse or undead to replenish mana. Apparel, items, and equipment remain behind but all material belonging to the corpse is consumed (meat/leather)
+		
 Mana Cost: 1.5%
 Range: 80
 Cooldown: 15s
@@ -549,7 +559,8 @@ Cast Time: 1.2s</description>
         <defName>TM_CorpseExplosion</defName>
         <label>Corpse Explosion</label>
         <uiIconPath>UI/corpseexplosion</uiIconPath>
-        <description>Mixes arcane energy with chemicals in a corpse to cause the corpse to explode after a short delay.  Equipment will not automatically be consumed by the explosion, but may be destroyed in the explosion.
+        <description>Mixes arcane energy with chemicals inside a corpse or undead to cause the body to explode after a short delay. Equipment will not automatically be consumed by the explosion, but may be destroyed in the explosion.
+		
 Mana Cost: 20%
 Range: 40
 Cooldown: 10s
@@ -587,7 +598,8 @@ Cast time: 2s</description>
         <defName>TM_CorpseExplosion_I</defName>
         <label>Corpse Explosion (I)</label>
         <uiIconPath>UI/corpseexplosion</uiIconPath>
-        <description>Mixes arcane energy with chemicals in a corpse to cause the corpse to explode after a short delay. Equipment will not automatically be consumed by the explosion, but may be destroyed in the explosion.
+        <description>Mixes arcane energy with chemicals inside a corpse or undead to cause the body to explode after a short delay. Equipment will not automatically be consumed by the explosion, but may be destroyed in the explosion.
+		
 Mana Cost: 22%
 Range: 50
 Cooldown: 7s
@@ -625,7 +637,8 @@ Cast time: 1.5s</description>
         <defName>TM_CorpseExplosion_II</defName>
         <label>Corpse Explosion (II)</label>
         <uiIconPath>UI/corpseexplosion</uiIconPath>
-        <description>Mixes arcane energy with chemicals in a corpse to cause the corpse to explode after a short delay. Equipment will not automatically be consumed by the explosion, but may be destroyed in the explosion.
+        <description>Mixes arcane energy with chemicals inside a corpse or undead to cause the body to explode after a short delay. Equipment will not automatically be consumed by the explosion, but may be destroyed in the explosion.
+		
 Mana Cost: 24%
 Range: 60
 Cooldown: 5s
@@ -663,7 +676,8 @@ Cast time: 1s</description>
         <defName>TM_CorpseExplosion_III</defName>
         <label>Corpse Explosion (III)</label>
         <uiIconPath>UI/corpseexplosion</uiIconPath>
-        <description>Mixes arcane energy with chemicals in a corpse to cause the corpse to explode after a short delay. Equipment will not automatically be consumed by the explosion, but may be destroyed in the explosion.
+        <description>Mixes arcane energy with chemicals inside a corpse or undead to cause the body to explode after a short delay. Equipment will not automatically be consumed by the explosion, but may be destroyed in the explosion.
+		
 Mana Cost: 25%
 Range: 70
 Cooldown: 4s
@@ -705,6 +719,7 @@ Cast time: .5s</description>
         <label>Lich Form</label>
         <uiIconPath>UI/lich</uiIconPath>
         <description>Transforms the necromancer into an undead lich gaining an immortal existence and arcane power. Once used, there is no return.
+		
 Benefits: 
 Maximum Mana: +50%
 Mana Regeneration: +50%
@@ -841,7 +856,7 @@ Movement speed: -2.0 c/s</description>
         <defName>TM_DeathBolt</defName>
         <label>Death Bolt</label>
         <uiIconPath>Spells/deathbolt</uiIconPath>
-        <description>Launches a bolt of power carrying the anguish of the dead; causes intense pain to any living creatures caught in the blast.
+        <description>Launches bolts of power carrying the anguish of the dead; causes intense pain to any living creatures caught in the blast.
 
 Explosion Radius: 1.6m
 Cooldown: 15s
@@ -882,7 +897,7 @@ Range: 40</description>
         <defName>TM_DeathBolt_I</defName>
         <label>Death Bolt (I)</label>
         <uiIconPath>Spells/deathbolt</uiIconPath>
-        <description>Launches a bolt of power carrying the anguish of the dead; causes intense pain to any living creatures caught in the blast.
+        <description>Launches bolts of power carrying the anguish of the dead; causes intense pain to any living creatures caught in the blast.
 
 Explosion Radius: 2m
 Cooldown: 14s
@@ -923,7 +938,7 @@ Range 40</description>
         <defName>TM_DeathBolt_II</defName>
         <label>Death Bolt (II)</label>
         <uiIconPath>Spells/deathbolt</uiIconPath>
-        <description>Launches a bolt of power carrying the anguish of the dead; causes intense pain to any living creatures caught in the blast.
+        <description>Launches bolts of power carrying the anguish of the dead; causes intense pain to any living creatures caught in the blast.
 
 Explosion Radius: 2m
 Cooldown: 13s
@@ -964,7 +979,7 @@ Range 40</description>
         <defName>TM_DeathBolt_III</defName>
         <label>Death Bolt (III)</label>
         <uiIconPath>Spells/deathbolt</uiIconPath>
-        <description>Launches a bolt of power carrying the anguish of the dead; causes intense pain to any living creatures caught in the blast.
+        <description>Launches bolts of power carrying the anguish of the dead; causes intense pain to any living creatures caught in the blast.
 
 Explosion Radius: 2.4m
 Cooldown: 12s

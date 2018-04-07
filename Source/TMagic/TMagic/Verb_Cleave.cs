@@ -76,7 +76,7 @@ namespace TorannMagic
                 skillMultiplier = (1.2f + (.025f * str.level));
                 dmgNum = Mathf.RoundToInt(skillMultiplier * dmgMultiplier * (pawnDPS + weaponDPS));
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                if(!this.CasterPawn.IsColonistPlayerControlled && settingsRef.AIHardMode)
+                if(!this.CasterPawn.IsColonist && settingsRef.AIHardMode)
                 {
                     dmgNum += 10;
                 }
@@ -105,7 +105,7 @@ namespace TorannMagic
             return flag10;
         }
 
-        public void ApplyCleaveDamage(DamageInfo dinfo, Pawn caster, Pawn target, Map map, int ver)
+        public static void ApplyCleaveDamage(DamageInfo dinfo, Pawn caster, Pawn target, Map map, int ver)
         {
 
             bool flag = !dinfo.InstantOldInjury;
@@ -141,6 +141,7 @@ namespace TorannMagic
                                     cleaveVictim.TakeDamage(dinfo);
                                     MoteMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), map);
                                 }
+                                DrawCleaving(cleaveVictim, caster, 10);
                             }
                         }
                     }
@@ -148,7 +149,7 @@ namespace TorannMagic
             }
         }
 
-        private void DrawCleaving(Pawn cleavedPawn, Pawn caster, int magnitude)
+        public static void DrawCleaving(Pawn cleavedPawn, Pawn caster, int magnitude)
         {
             bool flag = !caster.Dead && !caster.Downed;
             if (flag)

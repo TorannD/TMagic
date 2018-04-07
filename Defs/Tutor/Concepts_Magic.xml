@@ -39,7 +39,7 @@ Portals must be deactivated before they can be reactivated and assigned a new de
 		<ConceptDef>
 		<defName>TM_Encanting</defName>
 		<label>Enchanting</label>
-		<priority>51</priority>
+		<priority>52</priority>
 		<needsOpportunity>False</needsOpportunity>
 		<helpText>Enchanting offers mages the ability to further refine and empower their abilities.  There are a few things you should know about enchanting:
 
@@ -54,10 +54,10 @@ Portals must be deactivated before they can be reactivated and assigned a new de
  
 3. Once you've crafted an enchanting gem of your choice, you will need a mage to perform the enchantment.
  a. With a mage selected, right click on the enchanting gem and select the option to equip the gem for enchanting
- b. Select any apparel or weapon to receive the enchantment, and place the item on the ground. It's recommended to make sure the itemizedlist
+ b. Select any apparel or weapon to receive the enchantment, and place the item on the ground. It's recommended to make sure the itemized list
  is not stacked with any other item so that the enchantment affects the desired item
  c. To perform the enchantment, with the mage holding the enchantment gem selected, right click on the item to be enchanted. If the mage does
- not have enough mana, the menu to perform the enchantment will be unselectable
+ not have enough mana, the menu to perform the enchantment will be un-selectable
  d. When the criteria to perform the enchantment is met, the menu option becomes available and your mage will move to, and enchant, the selected
  item
 </helpText>
@@ -69,7 +69,7 @@ Portals must be deactivated before they can be reactivated and assigned a new de
 			<ConceptDef>
 		<defName>TM_EncantingII</defName>
 		<label>Enchanting II</label>
-		<priority>52</priority>
+		<priority>51</priority>
 		<needsOpportunity>False</needsOpportunity>
 		<helpText>Enchanting: Part II
 		

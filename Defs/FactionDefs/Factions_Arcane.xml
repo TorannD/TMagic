@@ -4,7 +4,7 @@
   <FactionDef>
 		<defName>Seers</defName>
 		<label>arcane fold</label>
-    <description>Little is known about this secretive faction.  They possess some technology, but do not seem to dependant on it. They work simple tools and defend themselves with firearms.\n\nThey participate in the the practical matters of trade, trust, and survival, but their primary interest is unclear.\n\nAccording to traveler tales and information gathered from other factions, they have knowledge, and use, of mysterious powers and artifacts.</description>
+    <description>Little is known about this secretive faction.  They possess some technology, but do not seem to dependent on it. They work simple tools and defend themselves with firearms.\n\nThey participate in the the practical matters of trade, trust, and survival, but their primary interest is unclear.\n\nAccording to traveler tales and information gathered from other factions, they have knowledge, and use, of mysterious powers and artifacts.</description>
     <pawnsPlural>seers</pawnsPlural>
     <baseSelectionWeight>0.2</baseSelectionWeight>
     <requiredCountAtGameStart>1</requiredCountAtGameStart>

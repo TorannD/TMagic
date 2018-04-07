@@ -10,16 +10,7 @@ namespace TorannMagic
     [StaticConstructorOnStartup]
     public class Verb_SeismicSlash : Verb_UseAbility
     {
-        MightPowerSkill pwr;
-        MightPowerSkill ver;
-        MightPowerSkill str;
 
-        float weaponDPS = 0;
-        float dmgMultiplier = 1;
-        float pawnDPS = 0;
-        float skillMultiplier = 1;
-        ThingWithComps weaponComp;
-        int dmgNum = 0;
         bool flag10;
 
         protected Vector3 origin;
@@ -86,33 +77,39 @@ namespace TorannMagic
             }
         }
 
+        public static int GetWeaponDmg(Pawn pawn)
+        {
+            CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
+            MightPowerSkill pwr = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_pwr");
+            MightPowerSkill ver = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_ver");
+            MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
+            int dmgNum = 0;
+            ThingWithComps weaponComp = pawn.equipment.Primary;
+            float weaponDPS = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_AverageDPS, false) * .7f;
+            float dmgMultiplier = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_DamageMultiplier, false);
+            float pawnDPS = pawn.GetStatValue(StatDefOf.MeleeDPS, false);
+            float skillMultiplier = (.7f + (.07f * pwr.level) + (.025f * str.level));
+            return dmgNum = Mathf.RoundToInt(skillMultiplier * dmgMultiplier * (pawnDPS + weaponDPS));
+        }
+
         protected override bool TryCastShot()
         {
-
+            CompAbilityUserMight comp = this.CasterPawn.GetComp<CompAbilityUserMight>();
+            MightPowerSkill ver = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_ver");
             CellRect cellRect = CellRect.CenteredOn(base.CasterPawn.Position, 1);
             Map map = base.CasterPawn.Map;
             cellRect.ClipInsideMap(map);
 
             IntVec3 centerCell = cellRect.CenterCell;
-            CompAbilityUserMight comp = this.CasterPawn.GetComp<CompAbilityUserMight>();
-            pwr = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_pwr");
-            ver = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_ver");
-            str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
             this.origin = base.CasterPawn.Position.ToVector3();
             this.destination = this.currentTarget.Cell.ToVector3Shifted();
             this.ticksToImpact = Mathf.RoundToInt((this.origin - this.destination).magnitude);
 
             if (this.CasterPawn.equipment.Primary != null && !this.CasterPawn.equipment.Primary.def.IsRangedWeapon)
             {
-
-                weaponComp = base.CasterPawn.equipment.Primary;
-                weaponDPS = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_AverageDPS, false) * .7f;
-                dmgMultiplier = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_DamageMultiplier, false);
-                pawnDPS = base.CasterPawn.GetStatValue(StatDefOf.MeleeDPS, false);
-                skillMultiplier = (.7f + (.07f * pwr.level) + (.025f * str.level));
-                dmgNum = Mathf.RoundToInt(skillMultiplier * dmgMultiplier * (pawnDPS + weaponDPS));
+                int dmgNum = GetWeaponDmg(this.CasterPawn);
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                if (!this.CasterPawn.IsColonistPlayerControlled && settingsRef.AIHardMode)
+                if (!this.CasterPawn.IsColonist && settingsRef.AIHardMode)
                 {
                     dmgNum += 10;
                 }

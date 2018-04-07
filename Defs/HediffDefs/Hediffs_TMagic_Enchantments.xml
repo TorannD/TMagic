@@ -179,7 +179,7 @@
 	<HediffDef>
     <defName>TM_HediffEnchantment_arcaneSpectre</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-	<label>Enchantment</label>
+	<label>Arcane Spectre</label>
     <defaultLabelColor>(.8,0,0.8)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -204,7 +204,7 @@
 	<HediffDef>
     <defName>TM_HediffEnchantment_phantomShift</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-	<label>Enchantment</label>
+	<label>Phantom Shift</label>
     <defaultLabelColor>(.8,0,0.8)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>

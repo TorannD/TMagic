@@ -50,7 +50,7 @@ namespace TorannMagic
             pwrVal = pwr.level;
             verVal = ver.level;
             this.arcaneDmg = caster.GetComp<CompAbilityUserMagic>().arcaneDmg;
-            if (settingsRef.AIHardMode && !caster.IsColonistPlayerControlled)
+            if (settingsRef.AIHardMode && !caster.IsColonist)
             {
                 pwrVal = 3;
                 verVal = 3;

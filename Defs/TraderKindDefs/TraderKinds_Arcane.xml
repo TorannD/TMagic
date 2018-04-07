@@ -27,6 +27,13 @@
 					<max>250</max>
 				</countRange>
 			</li>
+			<li Class="StockGenerator_Tag">
+				<tradeTag>RawArcane</tradeTag>
+				<countRange>
+					<min>80</min>
+					<max>180</max>
+				</countRange>
+			</li>
 			<li Class="StockGenerator_SingleDef">
 				<thingDef>Gold</thingDef>
 				<countRange>

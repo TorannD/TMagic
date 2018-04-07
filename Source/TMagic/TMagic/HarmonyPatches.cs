@@ -228,7 +228,7 @@ namespace TorannMagic
                 bool flag = pawn != null && dinfo.HasValue && hediff != null;
                 if (flag)
                 {
-                    if (pawn != null && !pawn.IsColonistPlayerControlled && pawn.RaceProps.Humanlike)
+                    if (pawn != null && !pawn.IsColonist && pawn.RaceProps.Humanlike)
                     {
 
                         if (pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) || pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin) || pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner) || pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich) || pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost))
@@ -412,6 +412,28 @@ namespace TorannMagic
                                 displayVec.z += Rand.Range(-.2f, .2f);
                                 TM_MoteMaker.ThrowArcaneDaggers(displayVec, pawn.Map, .7f);
                             }
+                        }
+
+                        if(instigator != null && dinfo.Def != TMDamageDefOf.DamageDefOf.TM_Cleave)
+                        {
+                            if (instigator.RaceProps.Humanlike && instigator.story != null && instigator.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
+                            {
+                                if (instigator.equipment.Primary != null && !instigator.equipment.Primary.def.IsRangedWeapon)
+                                {
+                                    float cleaveChance = Mathf.Min(instigator.equipment.Primary.def.BaseMass * .3f, .65f);
+                                    CompAbilityUserMight comp = instigator.GetComp<CompAbilityUserMight>();
+                                    if (Rand.Chance(cleaveChance) && comp.Stamina.CurLevel >= comp.ActualStaminaCost(TorannMagicDefOf.TM_Cleave))
+                                    {
+                                        MightPowerSkill pwr = comp.MightData.MightPowerSkill_Cleave.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Cleave_pwr");
+                                        MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
+                                        MightPowerSkill ver = comp.MightData.MightPowerSkill_Cleave.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Cleave_ver");
+                                        int dmgNum = Mathf.RoundToInt(dinfo.Amount * (.35f + (.05f * pwr.level)));
+                                        DamageInfo dinfo2 = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Cleave, dmgNum, (float)-1, instigator, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+                                        Verb_Cleave.ApplyCleaveDamage(dinfo2, instigator, pawn, pawn.Map, ver.level);
+                                        comp.Stamina.CurLevel -= comp.ActualStaminaCost(TorannMagicDefOf.TM_Cleave);
+                                    }
+                                }
+                            }                                    
                         }
                     }
                 }
@@ -1175,6 +1197,92 @@ namespace TorannMagic
             }
         }
 
+        //[HarmonyPatch(typeof(Command_PawnAbility), "GizmoOnGUI", null)]
+        //public static class GizmoOnGUI_Patch
+        //{
+        //    private static bool Prefix(Command_PawnAbility __instance, ref GizmoResult __result)
+        //    {
+        //        ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+        //        if (!settingsRef.showIconsMultiSelect && Find.Selector.SelectedObjects.Count >= 2)
+        //        {
+        //            __result = new GizmoResult(GizmoState.Clear, null);
+        //            return false;
+        //        }
+        //        return true;
+        //    }
+        //}
+
+        [HarmonyPatch(typeof(Pawn), "GetGizmos", null)]
+        public class Pawn_DraftController_GetGizmos_Patch
+        {
+            public static void Postfix(ref IEnumerable<Gizmo> __result, ref Pawn __instance)
+            {
+                Pawn pawn = __instance;
+                bool flag = __instance != null || __instance.Faction.Equals(Faction.OfPlayer);
+                if (flag)
+                {
+                    bool flag2 = __result == null || !__result.Any<Gizmo>();
+                    if (!flag2)
+                    {
+                        List<Gizmo> list = __result.ToList<Gizmo>();
+                        ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                        if (Find.Selector.SelectedObjects.Count >= 2 && !settingsRef.showIconsMultiSelect)
+                        {
+                            for (int i = 0; i < list.Count; i++)
+                            {                             
+                                if(list[i].ToString().Contains("label=Attack") || list[i].ToString().Contains("Desc=Toggle") || list[i].ToString().Contains("label=Draft"))
+                                {
+                                    //filtering once                                    
+                                }
+                                else
+                                {
+                                    list.Remove(list[i]);
+                                }
+                            }
+                            for(int j = 0; j < list.Count; j++)
+                            {
+                                if (list[j].ToString().Contains("label=Attack") || list[j].ToString().Contains("Desc=Toggle") || list[j].ToString().Contains("label=Draft"))
+                                {
+                                    //filtering again because filtering once doesn't completely work
+                                }
+                                else
+                                {
+                                    list.Remove(list[j]);
+                                }
+
+                            }
+                            for (int k = 0; k < list.Count; k++)
+                            {
+                                if (list[k].ToString().Contains("label=Attack") || list[k].ToString().Contains("Desc=Toggle") || list[k].ToString().Contains("label=Draft"))
+                                {
+                                    //and one more time because computers aren't perfect 
+                                    
+                                }
+                                else
+                                {
+                                    list.Remove(list[k]);
+                                }
+                            }
+                            __result = list;
+                        }                        
+                    }
+                }
+            }
+        }
+
+        //[HarmonyPatch(typeof(Command), "GizmoOnGUI", null)]
+        //public static class Command_Patch
+        //{
+        //    private static bool Prefix()
+        //    {
+        //        ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+        //        if (!settingsRef.showIconsMultiSelect && Find.Selector.SelectedObjects.Count >= 2)
+        //        {
+        //            ;
+        //        }
+        //        return true;
+        //    }
+        //}
 
         [HarmonyPatch(typeof(FloatMenuMakerMap), "AddHumanlikeOrders", null)]
         public static class FloatMenuMakerMap_Patch
@@ -1184,10 +1292,10 @@ namespace TorannMagic
                 IntVec3 c = IntVec3.FromVector3(clickPos);
                 Enchantment.CompEnchant comp = pawn.TryGetComp<Enchantment.CompEnchant>();
                 CompAbilityUserMagic pawnComp = pawn.TryGetComp<CompAbilityUserMagic>();
-                if (comp != null && pawnComp.IsMagicUser) 
+                if (comp != null && pawnComp.IsMagicUser)
                 {
                     bool emptyGround = true;
-                    foreach( Thing current in c.GetThingList(pawn.Map))
+                    foreach (Thing current in c.GetThingList(pawn.Map))
                     {
                         if (current != null && current.def.EverHaulable)
                         {
@@ -1217,10 +1325,10 @@ namespace TorannMagic
                                 }, MenuOptionPriority.High, null, null, 0f, null, null), pawn, c, "ReservedBy"));
                             }
                         }
-                        
+
                     }
                     foreach (Thing current in c.GetThingList(pawn.Map))
-                    { 
+                    {
                         Thing t = current;
                         if (t != null && t.def.EverHaulable && t.def.defName.ToString().Contains("TM_EStone_"))
                         {
@@ -1250,7 +1358,7 @@ namespace TorannMagic
                                     job.count = 1;
                                     pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
                                 }, MenuOptionPriority.High, null, null, 0f, null, null), pawn, t, "ReservedBy"));
-                            }                          
+                            }
                         }
                         else if ((current.def.IsApparel || current.def.IsWeapon || current.def.IsRangedWeapon) && comp.enchantingContainer.Count > 0)
                         {
@@ -1282,7 +1390,7 @@ namespace TorannMagic
                                 }, MenuOptionPriority.High, null, null, 0f, null, null), pawn, t, "ReservedBy"));
                             }
                         }
-                    }                    
+                    }
                 }
             }
         }
@@ -1310,7 +1418,7 @@ namespace TorannMagic
             {
                 CompAbilityUserMagic comp = __instance.Pawn.GetComp<CompAbilityUserMagic>();
                 __instance.CooldownTicksLeft = Mathf.RoundToInt((float)__instance.MaxCastingTicks * comp.coolDown);
-                if(!__instance.Pawn.IsColonistPlayerControlled)
+                if(!__instance.Pawn.IsColonist)
                 {
                     __instance.CooldownTicksLeft = (int)(__instance.CooldownTicksLeft / 2f);
                 }
@@ -1369,6 +1477,10 @@ namespace TorannMagic
                     MagicPowerSkill ver = initiator.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Entertain.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Entertain_ver");
                     __result = __result / (1 + ver.level);
 
+                }
+                if(initiator.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || recipient.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper))
+                {
+                    __result *= 1.2f;
                 }
                 if(recipient.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
                 {
@@ -1479,3 +1591,15 @@ namespace TorannMagic
         }
     }
 }
+
+
+//if(list[i].ToString().Contains("Raise Undead") || list[i].ToString().Contains("Dismiss Undead") || list[i].ToString().Contains("Death Mark") || list[i].ToString().Contains("Fog of Torment") || list[i].ToString().Contains("Consume Corpse") || list[i].ToString().Contains("Corpse") || list[i].ToString().Contains("Lich Form") || list[i].ToString().Contains("Death Bolt") ||
+//    list[i].ToString().Contains("AMP") || list[i].ToString().Contains("Shadow") || list[i].ToString().Contains("Soothing Breeze") || list[i].ToString().Contains("Ray of Hope") || 
+//    list[i].ToString().Contains("Lightning") || list[i].ToString().Contains("Frost Ray") || list[i].ToString().Contains("Firestorm") || list[i].ToString().Contains("Blizzard") ||
+//    list[i].ToString().Contains("Fireball") || list[i].ToString().Contains("Fireclaw") || list[i].ToString().Contains("Snowball") || list[i].ToString().Contains("Magic") ||
+//    list[i].ToString().Contains("Dismiss ") || list[i].ToString().Contains("Summon ") || list[i].ToString().Contains("Icebolt") || list[i].ToString().Contains("Firebolt") ||
+//    list[i].ToString().Contains("Teleport") || list[i].ToString().Contains("Blink") || list[i].ToString().Contains("Rainmaker") || list[i].ToString().Contains("Eye of the Storm") ||
+//    list[i].ToString().Contains("Blade Spin") || list[i].ToString().Contains("Seismic Slash") || list[i].ToString().Contains("Phase Strike") || list[i].ToString().Contains("Poison Trap") ||
+//    list[i].ToString().Contains("Animal Friend") || list[i].ToString().Contains("Arrow Storm") || list[i].ToString().Contains("Headshot") || list[i].ToString().Contains("Disabling Shot") ||
+//    list[i].ToString().Contains("Anti-Armor") || list[i].ToString().Contains("Heal") || list[i].ToString().Contains("Shield") || list[i].ToString().Contains("Valiant") || list[i].ToString().Contains("Overwhelm") ||
+//    list[i].ToString().Contains("Purify") || list[i].ToString().Contains("Healing") || list[i].ToString().Contains("Bestow") || list[i].ToString().Contains("Resurrection"))

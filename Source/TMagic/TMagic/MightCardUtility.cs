@@ -329,10 +329,12 @@ namespace TorannMagic
                         {
                             power.abilityDef.label,
                             "\n\nCurrent Level:\n",
-                            power.abilityDescDef.description, 
+                            power.abilityDescDef.description,
                             "\n\nNext Level:\n",
-                            power.nextLevelAbilityDescDef.description,  
+                            power.nextLevelAbilityDescDef.description,
                             "\n\n",
+                            MightAbility.PostAbilityDesc((TMAbilityDef)power.abilityDef, compMight),
+                            "\n",
                             "TM_CheckPointsForMoreInfo".Translate()
                        }), 398462);
                     }
@@ -344,6 +346,8 @@ namespace TorannMagic
                             "\n\n",
                             power.abilityDescDef.description,
                             "\n\n",
+                            MightAbility.PostAbilityDesc((TMAbilityDef)power.abilityDef, compMight),
+                            "\n",
                             "TM_CheckPointsForMoreInfo".Translate()
                             }), 398462);
                     }

@@ -19,7 +19,7 @@ namespace TorannMagic
                 Thing wpn = this.CasterPawn.equipment.Primary;
                 if (wpn.def.weaponTags.Contains("Neolithic"))
                 {
-                    if (this.CasterPawn.IsColonistPlayerControlled)
+                    if (this.CasterPawn.IsColonist)
                     {
                         Messages.Message("MustHaveGunpowderWeapon".Translate(new object[]
                     {

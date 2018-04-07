@@ -152,7 +152,7 @@
   <ThingDef ParentName="TM_BaseMeleeMageWeapon">
 		<defName>TM_ThrumboAxe</defName>
 		<label>thrumbo axe</label>
-		<description>An axe crafted using thrumbo horns that are fused together with a clasp made from magicyte. This clasp stores arcane potential and transfers it as physical force when the axe is swung, allowing it to deliver mighty blows capable of cleaving through multiple opponents. The shaft is also etched with magical runes to augment the weilders arcane power.</description>
+		<description>An axe crafted using thrumbo horns that are fused together with a clasp made from magicyte. This clasp stores arcane potential and transfers it as physical force when the axe is swung, allowing it to deliver mighty blows capable of cleaving through multiple opponents. The shaft is also etched with magical runes to augment the wielder's arcane power.</description>
 		<graphicData>
 			<texPath>Items/weapons/thrumboaxe_etched_offset</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -162,9 +162,9 @@
 	
     </weaponTags>
 	<statBases>
-      <WorkToMake>120000</WorkToMake>
-	  <MarketValue>10000</MarketValue>
-      <Mass>5</Mass>
+      <WorkToMake>60000</WorkToMake>
+	  <MarketValue>5000</MarketValue>
+      <Mass>4</Mass>
 	  <MaxHitPoints>450</MaxHitPoints>
 	  <Flammability>1.0</Flammability>
 	  <DeteriorationRate>1</DeteriorationRate>
@@ -186,7 +186,7 @@
         <li>ElectricSmithy</li>
         <li>FueledSmithy</li>
       </recipeUsers>
-      <workAmount>120000</workAmount>
+      <workAmount>60000</workAmount>
 	  <skillRequirements>
 			<Intellectual>6</Intellectual>
 			<Crafting>6</Crafting>
@@ -270,7 +270,7 @@
     </graphicData>
     <soundInteract>InteractRevolver</soundInteract>	
     <statBases>
-      <WorkToMake>15000</WorkToMake>
+      <WorkToMake>10000</WorkToMake>
 	  <MarketValue>400</MarketValue>
       <Mass>1.0</Mass>
       <AccuracyTouch>0.91</AccuracyTouch>
@@ -334,7 +334,6 @@
 			<shaderType>TransparentPostLight</shaderType>
         </graphicData>
         <projectile>
-			<soundExplode>DeadfallSpring</soundExplode>
             <damageDef>Iceshard</damageDef>
 			<damageAmountBase>15</damageAmountBase>
 			<speed>50</speed>
@@ -351,7 +350,7 @@
     </graphicData>
     <soundInteract>InteractRevolver</soundInteract>
     <statBases>
-      <WorkToMake>15000</WorkToMake>
+      <WorkToMake>10000</WorkToMake>
 	  <MarketValue>400</MarketValue>
       <Mass>1.0</Mass>
       <AccuracyTouch>0.91</AccuracyTouch>
@@ -436,7 +435,7 @@
     </graphicData>
     <soundInteract>InteractRevolver</soundInteract>
     <statBases>
-      <WorkToMake>15000</WorkToMake>
+      <WorkToMake>10000</WorkToMake>
 	  <MarketValue>400</MarketValue>
       <Mass>1.0</Mass>
       <AccuracyTouch>0.64</AccuracyTouch>
@@ -510,15 +509,15 @@
   <ThingDef ParentName="TM_BaseRangedMageWeapon">
     <defName>TM_BlazingPowerStaff</defName>
     <label>Staff of Blazing Power</label>
-    <description>A staff that creates a mental link with the weilder to harness focused energy that can be used to launch a stream of blazing projectiles or create a hardened barrier that can deflect projectiles. Mages gain tremendous boosts to magical spells while weilding this staff but to a mundane pawn it is nothing but a blunt weapon.</description>
+    <description>A staff that creates a mental link with the wielder to harness focused energy that can be used to launch a stream of blazing projectiles or create a hardened barrier that can deflect projectiles. Mages gain tremendous boosts to magical spells while wielding this staff but to a mundane pawn it is nothing but a blunt weapon.</description>
     <graphicData>
       <texPath>Items/weapons/staff_blazingpower</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <soundInteract>InteractRevolver</soundInteract>	
     <statBases>
-      <WorkToMake>150000</WorkToMake>
-	  <MarketValue>12000</MarketValue>
+      <WorkToMake>77700</WorkToMake>
+	  <MarketValue>6000</MarketValue>
       <Mass>3.0</Mass>
       <AccuracyTouch>0.88</AccuracyTouch>
       <AccuracyShort>0.64</AccuracyShort>
@@ -646,15 +645,15 @@
   <ThingDef ParentName="TM_BaseRangedMageWeapon">
     <defName>TM_DefenderStaff</defName>
     <label>Staff of the Defender</label>
-    <description>New text</description>
+    <description>A staff crafted from an ancient design bearing a palpable aura of wisdom. This staff is able to tap into the spirit realm and allow the wielder to communicate with their ancestral spirits who can manifest their power in the form of a physical barrier. The energy to perform this action comes from the spirits themselves and does not draw mana from the user, though the spirits require time to rest between requests.</description>
     <graphicData>
       <texPath>Items/weapons/staff_elements</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <soundInteract>InteractRevolver</soundInteract>	
     <statBases>
-      <WorkToMake>150000</WorkToMake>
-	  <MarketValue>12000</MarketValue>
+      <WorkToMake>77700</WorkToMake>
+	  <MarketValue>5000</MarketValue>
       <Mass>3.0</Mass>
       <AccuracyTouch>0.88</AccuracyTouch>
       <AccuracyShort>0.71</AccuracyShort>
@@ -765,7 +764,7 @@
   <ThingDef ParentName="BaseSeerProtectorRing">
     <defName>Seer_FireRing</defName>
     <label>Ring of Elemental Fire</label>
-    <description>An ancient artifact bound to the weilder allowing elemental currents to flow through the host. If the host is separated from the ring, the contract binding it to this realm is nullified, destroying the artifact.</description>
+    <description>An ancient artifact bound to the wielder allowing elemental currents to flow through the host. If the host is separated from the ring, the contract binding it to this realm is nullified, destroying the artifact.</description>
     <graphicData>
       <texPath>Items/weapons/seer_ring_fir</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -833,7 +832,7 @@
   <ThingDef ParentName="BaseSeerProtectorRing">
     <defName>Seer_IceRing</defName>
     <label>Ring of Elemental Ice</label>
-    <description>An ancient artifact bound to the weilder allowing elemental currents to flow through the host. If the host is separated from the ring, the contract binding it to this realm is nullified, destroying the artifact.</description>
+    <description>An ancient artifact bound to the wielder allowing elemental currents to flow through the host. If the host is separated from the ring, the contract binding it to this realm is nullified, destroying the artifact.</description>
     <graphicData>
       <texPath>Items/weapons/seer_ring_ice</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -907,7 +906,7 @@
 	<ThingDef ParentName="BaseSeerProtectorRing">
     <defName>Seer_LightningRing</defName>
     <label>Ring of Elemental Lightning</label>
-    <description>An ancient artifact bound to the weilder allowing elemental currents to flow through the host. If the host is separated from the ring, the contract binding it to this realm is nullified, destroying the artifact.</description>
+    <description>An ancient artifact bound to the wielder allowing elemental currents to flow through the host. If the host is separated from the ring, the contract binding it to this realm is nullified, destroying the artifact.</description>
     <graphicData>
       <texPath>Items/weapons/seer_ring_lit</texPath>
       <graphicClass>Graphic_Single</graphicClass>

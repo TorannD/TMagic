@@ -19,8 +19,8 @@ namespace TorannMagic
 			base.Impact(hitThing);
 			ThingDef def = this.def;
             //GenExplosion.DoExplosion(base.Position, map, this.def.projectile.explosionRadius, DamageDefOf.Bomb, this.launcher, SoundDefOf.PlanetkillerImpact, def, this.equipmentDef, null, 0f, 1, false, null, 0f, 1);
-            GenExplosion.DoExplosion(base.Position, map, this.def.projectile.explosionRadius, DamageDefOf.Bomb, this.launcher, Mathf.RoundToInt(this.def.projectile.damageAmountBase * this.arcaneDmg), SoundDefOf.PlanetkillerImpact, def, this.equipmentDef, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
-            CellRect cellRect = CellRect.CenteredOn(base.Position, 6);
+            GenExplosion.DoExplosion(base.Position, map, this.def.projectile.explosionRadius, DamageDefOf.Bomb, this.launcher, Mathf.RoundToInt(Rand.Range(this.def.projectile.damageAmountBase/2, this.def.projectile.damageAmountBase) * this.arcaneDmg), SoundDefOf.PlanetkillerImpact, def, this.equipmentDef, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
+            CellRect cellRect = CellRect.CenteredOn(base.Position, 5);
 			cellRect.ClipInsideMap(map);
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             Pawn pawn = this.launcher as Pawn;
@@ -30,17 +30,21 @@ namespace TorannMagic
             pwrVal = pwr.level;
             verVal = ver.level;
             this.arcaneDmg = comp.arcaneDmg;
-            if(settingsRef.AIHardMode && !pawn.IsColonistPlayerControlled)
+            if(settingsRef.AIHardMode && !pawn.IsColonist)
             {
                 pwrVal = 3;
                 verVal = 3;
             }
-            for (int i = 0; i < (pwrVal * 4); i++)
+            for (int i = 0; i < (pwrVal * 3); i++)
 			{
 				IntVec3 randomCell = cellRect.RandomCell;
-                if(randomCell.IsValid && randomCell.InBounds(map))
+                if(randomCell.IsValid && randomCell.InBounds(map) && !randomCell.Fogged(map))
                 {
                     this.FireExplosion(randomCell, map, 2.2f, ver);
+                }
+                else
+                {
+                    i--;
                 }
 				
 			}

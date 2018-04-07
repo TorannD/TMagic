@@ -83,7 +83,7 @@ namespace TorannMagic
                 {
                     ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                     int num = 1; // + ver.level;
-                    if(settingsRef.AIHardMode && !pawn.IsColonistPlayerControlled)
+                    if(settingsRef.AIHardMode && !pawn.IsColonist)
                     {
                         num = 2;
                     }
@@ -99,7 +99,7 @@ namespace TorannMagic
                             {
                                 
                                 int num2 = 1; // + ver.level;
-                                if(settingsRef.AIHardMode && !pawn.IsColonistPlayerControlled)
+                                if(settingsRef.AIHardMode && !pawn.IsColonist)
                                 {
                                     num2 = 2;
                                 }
@@ -117,13 +117,13 @@ namespace TorannMagic
                                         if (flag5)
                                         {
                                             
-                                            if(!pawn.IsColonistPlayerControlled)
+                                            if(!pawn.IsColonist)
                                             {
                                                 current.Heal(10f + (1.5f * hediffPwr));
                                             }
                                             else
                                             {
-                                                current.Heal(2f + (1.5f * hediffPwr));
+                                                current.Heal(2f + (1f * hediffPwr));
                                             }
                                             num--;
                                             num2--;

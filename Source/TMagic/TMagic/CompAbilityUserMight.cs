@@ -6,6 +6,8 @@ using RimWorld;
 using Verse;
 using AbilityUser;
 using Verse.AI;
+using UnityEngine;
+using System.Text;
 
 namespace TorannMagic
 {
@@ -23,11 +25,11 @@ namespace TorannMagic
         private int lastMightXPGain = 0;
 
         private float G_Sprint_eff = 0.20f;
-        private float G_Grapple_eff = 0.20f;
-        private float G_Cleave_eff = 0.15f;
-        private float G_Whirlwind_eff = 0.15f;
+        private float G_Grapple_eff = 0.10f;
+        private float G_Cleave_eff = 0.10f;
+        private float G_Whirlwind_eff = 0.10f;
         private float S_Headshot_eff = 0.10f;
-        private float S_DisablingShot_eff = 0.12f;
+        private float S_DisablingShot_eff = 0.10f;
         private float S_AntiArmor_eff = .10f;
         private float B_SeismicSlash_eff = 0.10f;
         private float B_BladeSpin_eff = 0.10f;
@@ -35,7 +37,7 @@ namespace TorannMagic
         private float R_AnimalFriend_eff = 0.15f;
         private float R_ArrowStorm_eff = 0.08f;
 
-        private float global_seff = 0.05f;
+        private float global_seff = 0.03f;
 
         public bool skill_Sprint = false;
         public bool skill_GearRepair = false;
@@ -1062,7 +1064,7 @@ namespace TorannMagic
                                 absorbed = true;
                                 int mitigationAmt = 2 + (2 * pwr.level);
                                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                                if (settingsRef.AIHardMode && !abilityUser.IsColonistPlayerControlled)
+                                if (settingsRef.AIHardMode && !abilityUser.IsColonist)
                                 {
                                     mitigationAmt = 8;
                                 }
@@ -1171,7 +1173,7 @@ namespace TorannMagic
 
                     //HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BladeArtHD, -5f);
                     HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BladeArtHD, (.5f) + bladeart_pwr.level);
-                    if (!this.Pawn.IsColonistPlayerControlled && settingsRef.AIHardMode)
+                    if (!this.Pawn.IsColonist && settingsRef.AIHardMode)
                     {
                         HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BladeArtHD, 4);
                     }
@@ -1182,7 +1184,7 @@ namespace TorannMagic
 
                     //HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BowTrainingHD, -5f);
                     HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BowTrainingHD, (.5f) + bowtraining_pwr.level);
-                    if (!this.Pawn.IsColonistPlayerControlled && settingsRef.AIHardMode)
+                    if (!this.Pawn.IsColonist && settingsRef.AIHardMode)
                     {
                         HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_BowTrainingHD, 4);
                     }

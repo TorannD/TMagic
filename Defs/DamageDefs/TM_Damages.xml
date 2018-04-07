@@ -77,7 +77,7 @@
 		<additionalHediffs>
 			<li>
 				<hediff>TM_Torment_HD</hediff>
-				<severityPerDamageDealt>.6</severityPerDamageDealt>
+				<severityPerDamageDealt>.3</severityPerDamageDealt>
 			</li>
 		</additionalHediffs>
 	</DamageDef>
@@ -100,7 +100,7 @@
 		<additionalHediffs>
 			<li>
 				<hediff>TM_Torment_HD</hediff>
-				<severityPerDamageDealt>.08</severityPerDamageDealt>
+				<severityPerDamageDealt>.12</severityPerDamageDealt>
 			</li>
 		</additionalHediffs>
 	</DamageDef>
@@ -225,7 +225,7 @@
 		<additionalHediffs>
 			<li>
 				<hediff>TM_Terror</hediff>
-				<severityPerDamageDealt>1.5</severityPerDamageDealt>
+				<severityPerDamageDealt>.9</severityPerDamageDealt>
 			</li>
 		</additionalHediffs>
 	</DamageDef>
@@ -247,7 +247,7 @@
 		<additionalHediffs>
 			<li>
 				<hediff>TM_Terror</hediff>
-				<severityPerDamageDealt>2.25</severityPerDamageDealt>
+				<severityPerDamageDealt>1.1</severityPerDamageDealt>
 			</li>
 		</additionalHediffs>
 	</DamageDef>
@@ -269,7 +269,7 @@
 		<additionalHediffs>
 			<li>
 				<hediff>TM_Terror</hediff>
-				<severityPerDamageDealt>3</severityPerDamageDealt>
+				<severityPerDamageDealt>1.5</severityPerDamageDealt>
 			</li>
 		</additionalHediffs>
 	</DamageDef>
@@ -280,7 +280,7 @@
 		<externalViolence>true</externalViolence>
 		<deathMessage>{0} was destroyed by elemental fire.</deathMessage>
 		<hediff>Burn</hediff>
-		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
 		<explosionDamage>12</explosionDamage>
 		<armorCategory>Heat</armorCategory>
 		<explosionSnowMeltAmount>1</explosionSnowMeltAmount>
@@ -296,8 +296,8 @@
 		<externalViolence>true</externalViolence>
 		<deathMessage>{0} was destroyed by elemental fire.</deathMessage>
 		<hediff>Burn</hediff>
-		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
-		<explosionDamage>25</explosionDamage>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+		<explosionDamage>14</explosionDamage>
 		<armorCategory>Heat</armorCategory>
 		<explosionSnowMeltAmount>1</explosionSnowMeltAmount>
 		<explosionCellMote>Mote_BlastFlame</explosionCellMote>
@@ -318,8 +318,8 @@
 		<externalViolence>true</externalViolence>
 		<deathMessage>{0} was destroyed by elemental fire.</deathMessage>
 		<hediff>Burn</hediff>
-		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
-		<explosionDamage>50</explosionDamage>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+		<explosionDamage>12</explosionDamage>
 		<armorCategory>Heat</armorCategory>
 		<explosionSnowMeltAmount>1</explosionSnowMeltAmount>
 		<explosionCellMote>Mote_BlastFlame</explosionCellMote>
@@ -329,7 +329,7 @@
 		<additionalHediffs>
 			<li>
 				<hediff>TM_Terror</hediff>
-				<severityPerDamageDealt>3</severityPerDamageDealt>
+				<severityPerDamageDealt>2</severityPerDamageDealt>
 			</li>
 		</additionalHediffs>
 	</DamageDef>
@@ -341,7 +341,7 @@
 		<deathMessage>{0} froze to death in a blizzard.</deathMessage>
 		<hediff>Blizzard</hediff>
 		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
-		<explosionDamage>30</explosionDamage>
+		<explosionDamage>14</explosionDamage>
 		<armorCategory>Heat</armorCategory>
 		<explosionSnowMeltAmount>0</explosionSnowMeltAmount>
 		<explosionCellMote>Mote_SparkFlash</explosionCellMote>
@@ -360,7 +360,7 @@
 		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
 		<impactSoundType>Blunt</impactSoundType>
 		<armorCategory>Heat</armorCategory>
-		<explosionDamage>20</explosionDamage>
+		<explosionDamage>12</explosionDamage>
 		<explosionSnowMeltAmount>0</explosionSnowMeltAmount>
 		<explosionCellMote>Mote_SparkFlash</explosionCellMote>
 		<explosionColorCenter>(1, 1, 1.0, 0.7)</explosionColorCenter>
@@ -442,7 +442,7 @@
 		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
 		<impactSoundType>Slice</impactSoundType>
 		<armorCategory>Sharp</armorCategory>
-		<explosionDamage>8</explosionDamage>
+		<explosionDamage>6</explosionDamage>
 		<explosionSnowMeltAmount>0</explosionSnowMeltAmount>
 		<explosionCellMote>Mote_SparkFlash</explosionCellMote>
 		<explosionColorEdge>(0.0, 0.2, 1.0, 0.8)</explosionColorEdge>

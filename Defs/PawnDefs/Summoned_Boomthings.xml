@@ -65,13 +65,14 @@
       <baseBodySize>0.2</baseBodySize>
       <baseHealthScale>0.4</baseHealthScale>
 	  <predator>true</predator>
-	  <wildness>.75</wildness>
       <foodType>OmnivoreRoughAnimal</foodType>
       <leatherColor>(255,215,0)</leatherColor>
       <leatherInsulation>1.5</leatherInsulation>
 	  <thinkTreeConstant>TM_Elemental_AI_Constant</thinkTreeConstant>
       <thinkTreeMain>TM_Elemental_AI</thinkTreeMain>
       <lifeExpectancy>8</lifeExpectancy>
+	  <packAnimal>false</packAnimal>
+	  <herdAnimal>false</herdAnimal>
       <lifeStageAges>
         <li>
           <def>AnimalBaby</def>
@@ -125,6 +126,8 @@
     <race>TM_Poppi</race>
     <combatPower>120</combatPower>
     <wildSpawn_spawnWild>false</wildSpawn_spawnWild>
+	<wildSpawn_EcoSystemWeight>0</wildSpawn_EcoSystemWeight>
+	<canArriveManhunter>false</canArriveManhunter>
     <lifeStages>
       <li>
         <bodyGraphicData>

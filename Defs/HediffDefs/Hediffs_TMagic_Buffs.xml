@@ -233,13 +233,13 @@
   <HediffDef ParentName="ShortBuffBase">
     <defName>SoothingBreeze_I</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-    <label>Soothing Breeze (I)</label>
+    <label>Soothing Breeze</label>
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
     <stages>
       <li>
-	    <label>blessed</label>
+	    <label>I</label>
 		<minSeverity>.001</minSeverity>
         <restFallFactor>0.85</restFallFactor>
 		<hungerRateFactor>0.9</hungerRateFactor>
@@ -266,18 +266,18 @@
   <HediffDef ParentName="MediumShortBuffBase">
     <defName>SoothingBreeze_II</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-    <label>Soothing Breeze (II)</label>
+    <label>Soothing Breeze</label>
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
     <stages>
       <li>
-	    <label>blessed</label>
+	    <label>II</label>
 		<minSeverity>.001</minSeverity>
         <restFallFactor>0.7</restFallFactor>
 		<hungerRateFactor>0.8</hungerRateFactor>
 		<socialFightChanceFactor>0.8</socialFightChanceFactor>
-		<painOffset>-0.4</painOffset>
+		<painOffset>-0.3</painOffset>
         <capMods>
           <li>
             <capacity>Manipulation</capacity>
@@ -289,7 +289,7 @@
           </li>
 		  <li>
             <capacity>Consciousness</capacity>
-            <offset>0.2</offset>
+            <offset>0.1</offset>
           </li>
         </capMods>
       </li>
@@ -299,18 +299,18 @@
    <HediffDef ParentName="MediumBuffBase">
     <defName>SoothingBreeze_III</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-    <label>Soothing Breeze (III)</label>
+    <label>Soothing Breeze</label>
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
     <stages>
       <li>
-	    <label>blessed</label>
+	    <label>III</label>
 		<minSeverity>.001</minSeverity>
         <restFallFactor>0.6</restFallFactor>
 		<hungerRateFactor>0.7</hungerRateFactor>
 		<socialFightChanceFactor>0.7</socialFightChanceFactor>
-		<painOffset>-0.6</painOffset>
+		<painOffset>-0.4</painOffset>
         <capMods>
           <li>
             <capacity>Manipulation</capacity>
@@ -322,7 +322,7 @@
           </li>
 		  <li>
             <capacity>Consciousness</capacity>
-            <offset>0.3</offset>
+            <offset>0.1</offset>
           </li>
 		  <li>
             <capacity>Sight</capacity>
@@ -340,9 +340,9 @@
     <validWhileDespawned>true</validWhileDespawned>
     <stages>
       <li>
-        <label>blessed</label>
+        <label>soothing breeze</label>
         <description>Something is having a calming affect on me, I'm thinking clearly and I'm wasting less energy fretting about senseless concerns.</description>
-        <baseMoodEffect>8</baseMoodEffect>
+        <baseMoodEffect>2</baseMoodEffect>
       </li>
     </stages>
   </ThoughtDef>
@@ -354,9 +354,9 @@
     <validWhileDespawned>true</validWhileDespawned>
     <stages>
       <li>
-        <label>blessed</label>
+        <label>soothing breeze</label>
         <description>With the wind at my back, I feel calm, relaxed, and focused and have the energy to keep going.</description>
-        <baseMoodEffect>14</baseMoodEffect>
+        <baseMoodEffect>4</baseMoodEffect>
       </li>
     </stages>
   </ThoughtDef>
@@ -368,9 +368,9 @@
     <validWhileDespawned>true</validWhileDespawned>
     <stages>
       <li>
-        <label>blessed</label>
+        <label>soothing breeze</label>
         <description>All distractions have been washed away, I am utterly focused and have the confidence to execute all tasks to perfection.</description>
-        <baseMoodEffect>20</baseMoodEffect>
+        <baseMoodEffect>6</baseMoodEffect>
       </li>
     </stages>
   </ThoughtDef>
@@ -380,18 +380,15 @@
   <HediffDef ParentName="ShortBuffBase">
     <defName>RayofHope_I</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-    <label>Ray of Hope (I)</label>
+    <label>Ray of Hope</label>
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
     <stages>
       <li>
-	    <label>blessed</label>
+	    <label>I</label>
 		<minSeverity>.001</minSeverity>
-        <restFallFactor>0.9</restFallFactor>
-		<hungerRateFactor>0.9</hungerRateFactor>
 		<socialFightChanceFactor>1.3</socialFightChanceFactor>
-		<painOffset>-0.9</painOffset>
         <capMods>
           <li>
             <capacity>Manipulation</capacity>
@@ -399,7 +396,7 @@
           </li>
           <li>
             <capacity>Moving</capacity>
-            <offset>0.1</offset>
+            <offset>0.2</offset>
           </li>
           <li>
             <capacity>BloodPumping</capacity>
@@ -417,34 +414,31 @@
    <HediffDef ParentName="MediumShortBuffBase">
     <defName>RayofHope_II</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-    <label>Ray of Hope (II)</label>
+    <label>Ray of Hope</label>
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
     <stages>
       <li>
-	    <label>blessed</label>
+	    <label>II</label>
 		<minSeverity>.001</minSeverity>
-        <restFallFactor>0.8</restFallFactor>
-		<hungerRateFactor>0.85</hungerRateFactor>
 		<socialFightChanceFactor>1.2</socialFightChanceFactor>
-		<painOffset>-0.8</painOffset>
         <capMods>
           <li>
             <capacity>Manipulation</capacity>
-            <offset>0.3</offset>
+            <offset>0.25</offset>
           </li>
           <li>
             <capacity>Moving</capacity>
-            <offset>0.2</offset>
+            <offset>0.25</offset>
           </li>
           <li>
             <capacity>BloodPumping</capacity>
-            <offset>0.2</offset>
+            <offset>0.1</offset>
           </li>
 		  <li>
             <capacity>Consciousness</capacity>
-            <offset>0.2</offset>
+            <offset>0.1</offset>
           </li>
         </capMods>
       </li>
@@ -454,22 +448,19 @@
    <HediffDef ParentName="MediumBuffBase">
     <defName>RayofHope_III</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-    <label>Ray of Hope (III)</label>
+    <label>Ray of Hope</label>
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
     <stages>
       <li>
-	    <label>blessed</label>
+	    <label>III</label>
 		<minSeverity>.001</minSeverity>
-        <restFallFactor>0.7</restFallFactor>
-		<hungerRateFactor>0.75</hungerRateFactor>
 		<socialFightChanceFactor>1.05</socialFightChanceFactor>
-		<painOffset>-0.7</painOffset>
         <capMods>
           <li>
             <capacity>Manipulation</capacity>
-            <offset>0.5</offset>
+            <offset>0.3</offset>
           </li>
           <li>
             <capacity>Moving</capacity>
@@ -477,11 +468,11 @@
           </li>
           <li>
             <capacity>BloodPumping</capacity>
-            <offset>0.25</offset>
+            <offset>0.15</offset>
           </li>
 		  <li>
             <capacity>Consciousness</capacity>
-            <offset>0.25</offset>
+            <offset>0.1</offset>
           </li>
         </capMods>
       </li>
@@ -495,7 +486,7 @@
     <validWhileDespawned>true</validWhileDespawned>
     <stages>
       <li>
-        <label>blessed</label>
+        <label>Glimmer of hope</label>
         <description>I have this glimmer of hope that wasn't there before!</description>
         <baseMoodEffect>4</baseMoodEffect>
       </li>
@@ -509,9 +500,9 @@
     <validWhileDespawned>true</validWhileDespawned>
     <stages>
       <li>
-        <label>blessed</label>
+        <label>Ray of hope</label>
         <description>Theres a ray of light breaking through this dark mood, I finally feel like we have a chance.</description>
-        <baseMoodEffect>8</baseMoodEffect>
+        <baseMoodEffect>7</baseMoodEffect>
       </li>
     </stages>
   </ThoughtDef>
@@ -523,9 +514,9 @@
     <validWhileDespawned>true</validWhileDespawned>
     <stages>
       <li>
-        <label>blessed</label>
-        <description>All the misfortune that's befallen us is being burned away by a brilliant light, I have a brust of energy and feel amazing!</description>
-        <baseMoodEffect>12</baseMoodEffect>
+        <label>Beacon of hope</label>
+        <description>All the misfortune that's befallen us is being burned away by a brilliant light, I have a burst of energy and feel amazing!</description>
+        <baseMoodEffect>10</baseMoodEffect>
       </li>
     </stages>
   </ThoughtDef>
@@ -533,16 +524,17 @@
   <HediffDef ParentName="CombatBuffBase">
 		<defName>AMP_I</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-    <label>AMP (I)</label>
+    <label>AMP</label>
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
     <stages>
       <li>
-	    <label>blessed</label>
+	    <label>I</label>
 		<minSeverity>.001</minSeverity>
         <restFallFactor>1.4</restFallFactor>
 		<hungerRateFactor>1.4</hungerRateFactor>
+		<painOffset>-0.2</painOffset>
         <capMods>
           <li>
             <capacity>Manipulation</capacity>
@@ -584,25 +576,25 @@
   <HediffDef ParentName="CombatIIBuffBase">
 		<defName>AMP_II</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-    <label>AMP (II)</label>
+    <label>AMP</label>
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
     <stages>
       <li>
-	    <label>blessed</label>
+	    <label>II</label>
 		<minSeverity>.001</minSeverity>
         <restFallFactor>1.6</restFallFactor>
 		<hungerRateFactor>1.6</hungerRateFactor>
-		<painOffset>-0.5</painOffset>
+		<painOffset>-0.3</painOffset>
         <capMods>
           <li>
             <capacity>Manipulation</capacity>
-            <offset>1.2</offset>
+            <offset>.5</offset>
           </li>
           <li>
             <capacity>Moving</capacity>
-            <offset>1.2</offset>
+            <offset>.5</offset>
           </li>
           <li>
             <capacity>BloodPumping</capacity>
@@ -636,25 +628,25 @@
   <HediffDef ParentName="CombatIIBuffBase">
 		<defName>AMP_III</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-    <label>AMP (III)</label>
+    <label>AMP</label>
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
     <stages>
       <li>
-	    <label>blessed</label>
+	    <label>III</label>
 		<minSeverity>.001</minSeverity>
         <restFallFactor>2</restFallFactor>
 		<hungerRateFactor>2</hungerRateFactor>
-		<painOffset>-0.8</painOffset>
+		<painOffset>-0.4</painOffset>
         <capMods>
           <li>
             <capacity>Manipulation</capacity>
-            <offset>2</offset>
+            <offset>.75</offset>
           </li>
           <li>
             <capacity>Moving</capacity>
-            <offset>2</offset>
+            <offset>.75</offset>
           </li>
           <li>
             <capacity>BloodPumping</capacity>
@@ -662,7 +654,7 @@
           </li>
 		  <li>
             <capacity>Consciousness</capacity>
-            <offset>0.4</offset>
+            <offset>0.35</offset>
           </li>
 		  <li>
             <capacity>Sight</capacity>
@@ -693,8 +685,8 @@
     <validWhileDespawned>true</validWhileDespawned>
     <stages>
       <li>
-        <label>blessed</label>
-        <description>I feel great.  This is better than Go-Juice.</description>
+        <label>pumped</label>
+        <description>I feel great. This is better than Go-Juice.</description>
         <baseMoodEffect>4</baseMoodEffect>
       </li>
     </stages>
@@ -707,8 +699,8 @@
     <validWhileDespawned>true</validWhileDespawned>
     <stages>
       <li>
-        <label>blessed</label>
-        <description>This is amazing!  I could run like the wind and fight like a lion, nothing can stop me!</description>
+        <label>amped</label>
+        <description>This is amazing! I could run like the wind and fight like a lion - nothing can stop me!</description>
         <baseMoodEffect>6</baseMoodEffect>
       </li>
     </stages>
@@ -721,7 +713,7 @@
     <validWhileDespawned>true</validWhileDespawned>
     <stages>
       <li>
-        <label>blessed</label>
+        <label>surging energy</label>
         <description>I'm surging with power, I feel unstoppable.</description>
         <baseMoodEffect>8</baseMoodEffect>
       </li>
@@ -731,13 +723,13 @@
 <HediffDef ParentName="MediumBuffBase">
     <defName>Shadow_I</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-    <label>Arcane Shadow (I)</label>
+    <label>Arcane Shadow</label>
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
     <stages>
       <li>
-	    <label>blessed</label>
+	    <label>I</label>
 		<minSeverity>.001</minSeverity>
         <restFallFactor>0.9</restFallFactor>
 		<hungerRateFactor>0.9</hungerRateFactor>
@@ -782,13 +774,13 @@
   <HediffDef ParentName="LongBuffBase">
     <defName>Shadow_II</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-    <label>Arcane Shadow (II)</label>
+    <label>Arcane Shadow</label>
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
     <stages>
       <li>
-	    <label>blessed</label>
+	    <label>II</label>
 		<minSeverity>.001</minSeverity>
         <restFallFactor>0.8</restFallFactor>
 		<hungerRateFactor>0.9</hungerRateFactor>
@@ -833,13 +825,13 @@
   <HediffDef ParentName="LongBuffBase">
     <defName>Shadow_III</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-    <label>Arcane Shadow (III)</label>
+    <label>Arcane Shadow</label>
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
     <stages>
       <li>
-	    <label>blessed</label>
+	    <label>III</label>
 		<minSeverity>.001</minSeverity>
         <restFallFactor>0.6</restFallFactor>
 		<hungerRateFactor>0.8</hungerRateFactor>
@@ -888,8 +880,8 @@
     <validWhileDespawned>true</validWhileDespawned>
     <stages>
       <li>
-        <label>blessed</label>
-        <description>There's a tingling at the back of my neck, like I'm always being watched... it's creepy.</description>
+        <label>anxious</label>
+        <description>There's a tingling sensation at the back of my neck, like I'm always being watched... it's creepy.</description>
         <baseMoodEffect>-4</baseMoodEffect>
       </li>
     </stages>
@@ -902,7 +894,7 @@
     <validWhileDespawned>true</validWhileDespawned>
     <stages>
       <li>
-        <label>blessed</label>
+        <label>nervous</label>
         <description>I keep seeing something out of the corner of my eye, it feels like someone is right behind me and it has me on edge.</description>
         <baseMoodEffect>-6</baseMoodEffect>
       </li>
@@ -916,8 +908,8 @@
     <validWhileDespawned>true</validWhileDespawned>
     <stages>
       <li>
-        <label>blessed</label>
-        <description>There's another presence next to me, assisting in everything I do.  It knows what to do before I do.  Am I possessed?!</description>
+        <label>distraught</label>
+        <description>There's another presence next to me, assisting in everything I do. It knows what to do before I do. Am I possessed?!</description>
         <baseMoodEffect>-8</baseMoodEffect>
       </li>
     </stages>
@@ -1479,7 +1471,7 @@
     <stages>
       <li>
         <label>blinded</label>
-        <description>There was a flash of light and what it revealed... I can't... I don't want to see anymore!</description>
+        <description>There was a flash of light and what it revealed to me... I can't... I don't want to see anymore!</description>
         <baseMoodEffect>-6</baseMoodEffect>
       </li>
     </stages>
@@ -1772,6 +1764,93 @@
             <offset>-0.3</offset>
           </li>
         </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <!-- Resurrection Debuff -->
+  
+  <HediffDef>
+    <defName>TM_ResurrectionHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Resurrection weakness</label>
+	<defaultLabelColor>(.8,0,0)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+	<maxSeverity>1.0</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.3</severityPerDay>
+      </li>	  
+    </comps>
+    <stages>
+      <li>
+	    <label>I</label>
+		<minSeverity>.001</minSeverity>
+        <restFallFactor>1.50</restFallFactor>
+		<hungerRateFactor>1.50</hungerRateFactor>
+        <capMods>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.2</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.2</offset>
+          </li>
+		  <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.1</offset>
+          </li>
+        </capMods>
+		<statOffsets>
+		  <MentalBreakThreshold>0.05</MentalBreakThreshold>
+	    </statOffsets>
+      </li>
+	  <li>
+	    <label>II</label>
+		<minSeverity>.04</minSeverity>
+        <restFallFactor>1.70</restFallFactor>
+		<hungerRateFactor>1.7</hungerRateFactor>
+        <capMods>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.3</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.3</offset>
+          </li>
+		  <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.15</offset>
+          </li>
+        </capMods>
+		<statOffsets>
+		  <MentalBreakThreshold>0.07</MentalBreakThreshold>
+	    </statOffsets>
+      </li>
+	  <li>
+	    <label>III</label>
+		<minSeverity>.7</minSeverity>
+        <restFallFactor>2</restFallFactor>
+		<hungerRateFactor>2</hungerRateFactor>
+        <capMods>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.4</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.4</offset>
+          </li>
+		  <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.2</offset>
+          </li>
+        </capMods>
+		<statOffsets>
+		  <MentalBreakThreshold>0.10</MentalBreakThreshold>
+	    </statOffsets>
       </li>
     </stages>
   </HediffDef>

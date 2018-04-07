@@ -49,7 +49,7 @@ namespace TorannMagic
             pwrVal = pwr.level;
             verVal = ver.level;
             this.arcaneDmg = comp.arcaneDmg;
-            if (settingsRef.AIHardMode && !pawn.IsColonistPlayerControlled)
+            if (settingsRef.AIHardMode && !pawn.IsColonist)
             {
                 pwrVal = 3;
                 verVal = 3;
@@ -58,7 +58,7 @@ namespace TorannMagic
             if (!this.initialized)
             {
                 fog = TorannMagicDefOf.Fog_Torment;
-                this.duration = this.duration + (360 * verVal);
+                this.duration = this.duration + (180 * verVal);
                 this.strikeDelay = this.strikeDelay - (18 * verVal);
 
                 fog.gas.expireSeconds.min = this.duration/60;
@@ -121,7 +121,7 @@ namespace TorannMagic
                             else
                             {
                                 //kills living
-                                damageEntities(victim, Mathf.RoundToInt(Rand.Range(.5f + pwrVal, 3f + pwrVal) * this.arcaneDmg), TMDamageDefOf.DamageDefOf.TM_Torment);
+                                damageEntities(victim, Mathf.RoundToInt(Rand.Range(.5f + (.5f * pwrVal), 3f + (.75f * pwrVal)) * this.arcaneDmg), TMDamageDefOf.DamageDefOf.TM_Torment);
                             }
                         }
                     }

@@ -49,5 +49,6 @@ namespace TorannMagic.Enchantment
             //    current1.comps.Add(enchanting);
             //}            
         }
+
     }
 }

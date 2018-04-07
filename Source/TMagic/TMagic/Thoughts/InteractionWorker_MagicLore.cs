@@ -65,10 +65,10 @@ namespace TorannMagic.Thoughts
                                 }
                                 else
                                 {
-                                    bool flag5 = initiator.relations.OpinionOf(recipient) > 0;
+                                    bool flag5 = initiator.relations.OpinionOf(recipient) > 0 || recipient.relations.OpinionOf(initiator) > 0;
                                     if (flag5)
                                     {
-                                        result = Rand.Range(0.6f, 0.8f);
+                                        result = Rand.Range(0.8f, 1f);
                                     }
                                     else
                                     {

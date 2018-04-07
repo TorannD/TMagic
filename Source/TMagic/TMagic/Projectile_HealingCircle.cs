@@ -74,7 +74,7 @@ namespace TorannMagic
                 verVal = ver.level;
                 this.arcaneDmg = comp.arcaneDmg;
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                if (!caster.IsColonistPlayerControlled && settingsRef.AIHardMode)
+                if (!caster.IsColonist && settingsRef.AIHardMode)
                 {
                     pwrVal = 3;
                     verVal = 3;
@@ -184,7 +184,7 @@ namespace TorannMagic
                                     if (flag5)
                                     {
                                         //current.Heal((float)((int)current.Severity + 1));
-                                        if (Rand.Chance(.65f))
+                                        if (Rand.Chance(.75f))
                                         {
                                             current.Heal((4.0f + (float)pwrVal * 2f) * this.arcaneDmg); // power affects how much to heal
                                             TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, 1.2f);

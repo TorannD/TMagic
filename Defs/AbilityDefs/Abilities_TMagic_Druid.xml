@@ -23,7 +23,7 @@
         <defName>TM_Poison</defName>
         <label>Poison</label>
         <uiIconPath>UI/poison</uiIconPath>
-        <description>Fast acting toxin that works its way into the targets bloodstream.  The more a target moves, the more lethal the poison becomes.  Inneffective against mechanoids.</description>
+        <description>Fast acting toxin that works its way into the targets bloodstream. The more a target moves, the more lethal the poison becomes. Poison is ineffective against mechanoids.</description>
         <manaCost>0.15</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
@@ -77,12 +77,13 @@
         <defName>TM_SootheAnimal</defName>
         <label>Beguile Animal</label>
         <uiIconPath>UI/beguile_animal</uiIconPath>
-        <description>Using mastery over nature, the druid can overwhelm the emotional state of animals.  This ability is dual purposed - if the animal is in a calm state, it will incite the beast into a manhunter rage; if the animal is already enraged, it will pacify the beast.
-Range: 40
+        <description>Using mastery over nature, the druid can overwhelm the emotional state of animals. This ability is dual purposed - if the animal is in a calm state, it will incite the beast into a manhunter rage; if the animal is already enraged, it will pacify the beast.
+		
+Range: 65
 Recharge: 80s
-Max Targets: 2
+Max Targets: 3
 AoE Size: 5</description>
-        <manaCost>0.35</manaCost>
+        <manaCost>0.40</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SootheAnimal</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -94,7 +95,7 @@ AoE Size: 5</description>
             <abilityDef>TM_SootheAnimal</abilityDef>
             <warmupTime>3</warmupTime>
             <SecondsToRecharge>80</SecondsToRecharge>
-            <range>40</range>
+            <range>65</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>ThrowMolotovCocktail</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
@@ -108,7 +109,7 @@ AoE Size: 5</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>false</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>2</maxTargets>
+                <maxTargets>3</maxTargets>
                 <range>5</range>
             </TargetAoEProperties>
 			<targetParams>
@@ -124,12 +125,13 @@ AoE Size: 5</description>
         <defName>TM_SootheAnimal_I</defName>
         <label>Beguile Animal (I)</label>
         <uiIconPath>UI/beguile_animal</uiIconPath>
-        <description>Using mastery over nature, the druid can overwhelm the emotional state of animals.  This ability is dual purposed - if the animal is in a calm state, it will incite the beast into a manhunter rage; if the animal is already enraged, it will pacify the beast.
-Range: 50
+        <description>Using mastery over nature, the druid can overwhelm the emotional state of animals. This ability is dual purposed - if the animal is in a calm state, it will incite the beast into a manhunter rage; if the animal is already enraged, it will pacify the beast.
+		
+Range: 70
 Recharge: 75s
-Max Targets: 3
+Max Targets: 4
 AoE Size: 6</description>
-		<manaCost>0.35</manaCost>
+		<manaCost>0.40</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SootheAnimal</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -141,53 +143,7 @@ AoE Size: 6</description>
             <abilityDef>TM_SootheAnimal_I</abilityDef>
             <warmupTime>3</warmupTime>
             <SecondsToRecharge>75</SecondsToRecharge>
-            <range>50</range>
-            <burstShotCount>1</burstShotCount>
-            <soundCast>ThrowMolotovCocktail</soundCast>
-			<soundCastTail>GunTail_Medium</soundCastTail>
-            <muzzleFlashScale>4</muzzleFlashScale>
-		    <AlwaysHits>true</AlwaysHits>
-            <isPrimary>true</isPrimary>
-			<isViolent>false</isViolent>
-			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
-            <TargetAoEProperties>
-                <targetClass>Pawn</targetClass>
-                <showRangeOnSelect>true</showRangeOnSelect>
-                <friendlyFire>false</friendlyFire>
-                <startsFromCaster>false</startsFromCaster>
-                <maxTargets>3</maxTargets>
-                <range>6</range>
-            </TargetAoEProperties>
-			<targetParams>
-                <canTargetPawns>true</canTargetPawns>
-                <canTargetBuildings>false</canTargetBuildings>
-                <canTargetSelf>false</canTargetSelf>
-                <canTargetLocations>true</canTargetLocations>
-            </targetParams>
-        </MainVerb>
-    </TorannMagic.TMAbilityDef>
-	
-	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
-        <defName>TM_SootheAnimal_II</defName>
-        <label>Beguile Animal (II)</label>
-        <description>Using mastery over nature, the druid can overwhelm the emotional state of animals.  This ability is dual purposed - if the animal is in a calm state, it will incite the beast into a manhunter rage; if the animal is already enraged, it will pacify the beast.
-Range: 60
-Recharge: 68s
-Max Targets: 4
-AoE Size: 7</description>
-		<manaCost>0.35</manaCost>
-		<MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Verb_SootheAnimal</verbClass>
-				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
-				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
-				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
-				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
-            <hasStandardCommand>true</hasStandardCommand>
-            <defaultProjectile>Projectile_SootheAnimal</defaultProjectile>
-            <abilityDef>TM_SootheAnimal_II</abilityDef>
-            <warmupTime>2.5</warmupTime>
-            <SecondsToRecharge>68</SecondsToRecharge>
-            <range>60</range>
+            <range>70</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>ThrowMolotovCocktail</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
@@ -202,6 +158,53 @@ AoE Size: 7</description>
                 <friendlyFire>false</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
                 <maxTargets>4</maxTargets>
+                <range>6</range>
+            </TargetAoEProperties>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_SootheAnimal_II</defName>
+        <label>Beguile Animal (II)</label>
+        <description>Using mastery over nature, the druid can overwhelm the emotional state of animals. This ability is dual purposed - if the animal is in a calm state, it will incite the beast into a manhunter rage; if the animal is already enraged, it will pacify the beast.
+		
+Range: 75
+Recharge: 68s
+Max Targets: 5
+AoE Size: 7</description>
+		<manaCost>0.40</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SootheAnimal</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_SootheAnimal</defaultProjectile>
+            <abilityDef>TM_SootheAnimal_II</abilityDef>
+            <warmupTime>2.5</warmupTime>
+            <SecondsToRecharge>68</SecondsToRecharge>
+            <range>75</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowMolotovCocktail</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>false</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>5</maxTargets>
                 <range>7</range>
             </TargetAoEProperties>
 			<targetParams>
@@ -217,12 +220,13 @@ AoE Size: 7</description>
         <defName>TM_SootheAnimal_III</defName>
         <label>Beguile Animal (III)</label>
         <uiIconPath>UI/beguile_animal</uiIconPath>
-        <description>Using mastery over nature, the druid can overwhelm the emotional state of animals.  This ability is dual purposed - if the animal is in a calm state, it will incite the beast into a manhunter rage; if the animal is already enraged, it will pacify the beast.
-Range: 70
+        <description>Using mastery over nature, the druid can overwhelm the emotional state of animals. This ability is dual purposed - if the animal is in a calm state, it will incite the beast into a manhunter rage; if the animal is already enraged, it will pacify the beast.
+		
+Range: 80
 Recharge: 60s
-Max Targets: 5
+Max Targets: 6
 AoE Size: 8</description>
-		<manaCost>0.35</manaCost>
+		<manaCost>0.40</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SootheAnimal</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -234,7 +238,7 @@ AoE Size: 8</description>
             <abilityDef>TM_SootheAnimal_III</abilityDef>
             <warmupTime>2</warmupTime>
             <SecondsToRecharge>60</SecondsToRecharge>
-            <range>70</range>
+            <range>80</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>ThrowMolotovCocktail</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
@@ -248,7 +252,7 @@ AoE Size: 8</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>false</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>5</maxTargets>
+                <maxTargets>6</maxTargets>
                 <range>8</range>
             </TargetAoEProperties>
 			<targetParams>
@@ -283,7 +287,7 @@ AoE Size: 8</description>
         <defName>TM_Regenerate</defName>
         <label>Regenerate</label>
         <uiIconPath>UI/Regen</uiIconPath>
-        <description>Regeneration acts natural curative that continues to work over time and will restore even grevious wounds if given enough time.  Only cures physical injuries and will not restore destroyed bodyparts.</description>
+        <description>Regeneration acts natural curative that continues to work over time and will restore even grievous wounds if given enough time. Only cures physical injuries and will not restore destroyed body parts.</description>
         <manaCost>0.40</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Regenerate</verbClass>
@@ -389,7 +393,7 @@ AoE Size: 8</description>
         <defName>TM_RegrowLimb</defName>
         <label>Regrow Limb</label>
         <uiIconPath>UI/regrowlimb</uiIconPath>
-        <description>Creates the Seed of Life required to regrow limbs.  To begin the regrowth process, summon a Seed of Life and collect 2 mana potions, then select the limb to regrow in the patient's surgery tab.  Ensure this druid (or another with this spell) performs the surgery.</description>
+        <description>Creates the Seed of Life required to regrow limbs. To begin the regrowth process, summon a Seed of Life and collect 2 mana potions, then select the limb to regrow in the patient's surgery tab.  Ensure this druid (or another with this spell) performs the surgery.</description>
         <manaCost>0.10</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_RegrowLimb</verbClass>

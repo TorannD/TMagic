@@ -136,20 +136,6 @@
 								</li>
 							</subNodes>
 						</li>
-						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingMeleeWeapon">
-							<subNodes>
-								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
-									<maxDistance>2</maxDistance>
-									<subNodes>
-										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
-											<tags>
-												<li>Melee</li>
-											</tags>
-										</li>
-									</subNodes>
-								</li>
-							</subNodes>
-						</li>
 					</subNodes>
 				</li>
 				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
@@ -179,7 +165,6 @@
 		</matchingTraits>
 		<abilities>
 			<li>TMagic_Sprint</li>
-			<li>TMagic_Cleave</li>
 			<li>TMagic_Whirlwind</li>
 			<li>TMagic_Fortitude</li>
 		</abilities>
@@ -196,6 +181,9 @@
 		<tags>
 			<li>Movement</li>
 		</tags>
+		<appliedHediffs>
+			<li>TM_HediffSprint</li>
+		</appliedHediffs>
 	</AbilityUserAI.AbilityAIDef>
 	
 	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
@@ -210,17 +198,6 @@
 		<appliedHediffs>
 			<li>TM_HediffFortitude</li>
 		</appliedHediffs>
-	</AbilityUserAI.AbilityAIDef>
-	
-	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
-		<defName>TMagic_Cleave</defName>
-		<ability>TM_Cleave</ability>
-		<power>1.0</power>
-		<needSeeingTarget>true</needSeeingTarget>
-		<maxRange>2.0</maxRange>
-		<tags>
-			<li>Melee</li>
-		</tags>
 	</AbilityUserAI.AbilityAIDef>
 	
 	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">

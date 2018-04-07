@@ -93,7 +93,7 @@ namespace TorannMagic
                     TM_MoteMaker.MakePowerBeamMoteColor(smitePos[j], base.Map, this.radius * 3f, 2f, .5f, .1f, .5f, colorInt.ToColor);
                     this.caster = this.launcher as Pawn;
                     CompAbilityUserMagic comp = caster.GetComp<CompAbilityUserMagic>();
-                    GenExplosion.DoExplosion(smitePos[j], map, 2.4f, TMDamageDefOf.DamageDefOf.TM_BlazingPower, this.launcher as Pawn, Mathf.RoundToInt(TMDamageDefOf.DamageDefOf.TM_BlazingPower.explosionDamage * comp.arcaneDmg), TorannMagicDefOf.TM_Lightning, def, this.equipmentDef, null, 0f, 1, false, null, 0f, 1, 0f, false);
+                    GenExplosion.DoExplosion(smitePos[j], map, 2.4f, TMDamageDefOf.DamageDefOf.TM_BlazingPower, this.launcher as Pawn, Mathf.RoundToInt((TMDamageDefOf.DamageDefOf.TM_BlazingPower.explosionDamage + 2*pwrVal) * comp.arcaneDmg), TorannMagicDefOf.TM_Lightning, def, this.equipmentDef, null, 0f, 1, false, null, 0f, 1, 0f, false);
                 }
             }
         }
@@ -159,7 +159,7 @@ namespace TorannMagic
                                                 if (flag5)
                                                 {
                                                     //current.Heal((float)((int)current.Severity + 1));
-                                                    if (!this.caster.IsColonistPlayerControlled)
+                                                    if (!this.caster.IsColonist)
                                                     {
                                                         current.Heal(20.0f); // power affects how much to heal
                                                     }

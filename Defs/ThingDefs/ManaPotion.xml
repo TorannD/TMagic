@@ -5,7 +5,7 @@
   <ThingDef ParentName="MakeableDrugBase">
     <defName>ManaPotion</defName>
     <label>Mana Potion</label>
-    <description>A magical supplement that allows arcane users to rapidly recover mana. Mana potions work by acting as a natural suppressant to the bodies mana absorbtion resistances \n\nUsers are warned, bypassing natural resistances can cause mental and sensory damage.</description>
+    <description>A magical supplement that allows arcane users to rapidly recover mana. Mana potions work by acting as a natural suppressant to the bodies mana absorption resistances \n\nUsers are warned, bypassing natural resistances can cause mental and sensory damage.</description>
     <graphicData>
       <texPath>Items/manapot</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
@@ -23,7 +23,7 @@
       <li>TM_MagicItems</li>
     </thingCategories> -->
 	<stackLimit>25</stackLimit>
-    <techLevel>Industrial</techLevel>
+    <techLevel>Neolithic</techLevel>
     <ingestible>
       <joy>0.50</joy>
       <drugCategory>Hard</drugCategory>
@@ -68,8 +68,8 @@
       </skillRequirements>
     </recipeMaker>
     <costList>
-      <SmokeleafLeaves>1</SmokeleafLeaves>
-      <Yayo>1</Yayo>
+      <SmokeleafLeaves>2</SmokeleafLeaves>
+      <PsychoidLeaves>2</PsychoidLeaves>
 	  <GoJuice>1</GoJuice>
 <!-- 	  <Ambrosia>1</Ambrosia> -->
     </costList>

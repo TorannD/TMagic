@@ -25,7 +25,7 @@
     <defName>TM_Heater</defName>
     <label>Magical heater</label>
     <uiIconPath>UI/heater</uiIconPath>
-    <description>Creates a dimensional pocket that taps into the Plane of Fire, generating constant heat in a confined area.  The energy holding this pocket open will disperse after several days.</description>
+    <description>Creates a dimensional pocket that taps into the Plane of Fire, generating constant heat in a confined area. The energy holding this pocket open will disperse after several days.</description>
     <manaCost>0.25</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
@@ -67,7 +67,7 @@
     <defName>TM_Cooler</defName>
     <label>Magical cooler</label>
     <uiIconPath>Other/cooler</uiIconPath>
-    <description>Creates a dimensional pocket that taps into the Plane of Ice, reducing heat in a confined area.  The energy holding this pocket open will disperse after several days.</description>
+    <description>Creates a dimensional pocket that taps into the Plane of Ice, reducing heat in a confined area. The energy holding this pocket open will disperse after several days.</description>
     <manaCost>0.25</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
@@ -257,7 +257,7 @@
     <defName>TM_DryGround</defName>
     <label>Dry Ground</label>
     <uiIconPath>UI/dryground</uiIconPath>
-    <description>Infuses the ground with heat, evaporating most of the moisture from a patch of ground.  Only works on muddy ground.</description>
+    <description>Infuses the ground with heat, evaporating most of the moisture from a patch of ground. Only works on muddy ground.</description>
     <manaCost>0.60</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_BLOS</verbClass>
@@ -359,7 +359,7 @@
     <defName>TM_ChargeBattery</defName>
     <label>Charge Battery</label>
     <uiIconPath>UI/chargebattery</uiIconPath>
-    <description>Converts raw magic power into electrical energy.  This spell can only be used on batteries.  Generates 400Wd.</description>
+    <description>Converts raw magic power into electrical energy. This spell can only be used on batteries. Generates 400Wd.</description>
     <manaCost>0.10</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
@@ -524,7 +524,7 @@
         <label>EMP</label>
         <uiIconPath>UI/EMP</uiIconPath>
         <description>Generate a burst of electromagnetic radiation at a target site, disabling mechanoids for a short period.</description>
-        <manaCost>0.15</manaCost>
+        <manaCost>0.20</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -577,7 +577,7 @@
         <defName>TM_TransferMana</defName>
         <label>Transfer Mana</label>
         <uiIconPath>UI/transfermana</uiIconPath>
-        <description>Transfers magical energy from one caster to another. Recipients that are not magic users will receive significant, if random, physical augmentation for a short period.  Can be harmful, even lethal, at extreme levels.</description>
+        <description>Transfers magical energy from one caster to another. Recipients that are not magic users will receive significant, if random, physical augmentation for a short period. Can be harmful, even lethal, at extreme levels.</description>
         <manaCost>0.30</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
@@ -630,7 +630,7 @@
         <defName>TM_SiphonMana</defName>
         <label>Siphon Mana</label>
         <uiIconPath>UI/siphonmana</uiIconPath>
-        <description>Siphons magical energy from another caster. Recipients that are not magic users will have physical capacities drained instead.  Can be lethal if too much life force is drained.</description>
+        <description>Siphons magical energy from another caster. Recipients that are not magic users will have physical capacities drained instead. Can be lethal if too much life force is drained.</description>
         <manaCost>0.10</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
@@ -668,7 +668,9 @@
         <defName>TM_ManaShield</defName>
         <label>Mana Shield</label>
         <uiIconPath>UI/manashield</uiIconPath>
-        <description>Summons a protective barrier that draws power from the casters mana. Damage absorption rate is 1dmg to 1% mana.  The barrier breaks when the caster has insufficient mana to absorb an attack.  Casting the spell when a barrier is active will remove the barrier.  Can be used in conjunction with shield belts.  Does not impede spell casting.</description>
+        <description>Summons a protective barrier that draws power from the casters mana. Damage absorption rate is 1dmg to 1% mana. The barrier breaks when the caster has insufficient mana to absorb an attack.  
+
+Casting the spell when a barrier is active will remove the barrier. Can be used in conjunction with shield belts. Does not impede spell casting of any type.</description>
         <manaCost>0.005</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ManaShield</verbClass>

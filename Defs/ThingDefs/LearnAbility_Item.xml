@@ -41,7 +41,7 @@
 	  <li>Arcane</li>
     </tradeTags>
     <statBases>
-      <MarketValue>6000</MarketValue>
+      <MarketValue>4000</MarketValue>
       <MaxHitPoints>1000</MaxHitPoints>
       <Mass>0.2</Mass>
 	  <Flammability>0.5</Flammability>

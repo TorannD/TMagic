@@ -36,7 +36,7 @@
     </graphicData>
     <skyfaller>
       <shadowSize>(2, 2)</shadowSize>
-      <explosionRadius>4.3</explosionRadius>
+      <explosionRadius>3.3</explosionRadius>
       <explosionDamage>TM_Firestorm_Large</explosionDamage>
 	  <explosionDamageFactor>1</explosionDamageFactor>
       <rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>
@@ -158,7 +158,7 @@
     </graphicData>
     <skyfaller>
       <shadowSize>(2, 2)</shadowSize>
-      <explosionRadius>4.4</explosionRadius>
+      <explosionRadius>4</explosionRadius>
       <explosionDamage>TM_Blizzard_Large</explosionDamage>
 	  <explosionDamageFactor>1</explosionDamageFactor>
       <rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>

@@ -141,11 +141,13 @@ namespace TorannMagic
                                     }
                                 }
                             }
-                        }                                             
+                        }
+                        HealthUtility.AdjustSeverity(deadPawn, HediffDef.Named("TM_ResurrectionHD"), 1f);
                     }
                     if (deadPawn.kindDef.RaceProps.Animal)
                     {
                         ResurrectionUtility.Resurrect(deadPawn);
+                        HealthUtility.AdjustSeverity(deadPawn, HediffDef.Named("TM_ResurrectionHD"), 1f);
                     }
                     
                 }

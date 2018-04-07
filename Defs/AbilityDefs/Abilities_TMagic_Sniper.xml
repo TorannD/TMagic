@@ -73,8 +73,8 @@
     <defName>TM_Headshot</defName>
     <label>Headshot</label>
     <uiIconPath>UI/headshot</uiIconPath>
-    <description>A lethal shot that targets a vital bodypart like the head or heart.  Effective on non-humanoids and humanoids alike.  Headshot success chance is reduced against targets with thick armor protecting their vital organs.</description>
-    <staminaCost>0.35</staminaCost>
+    <description>A lethal shot that targets a vital bodypart like the head or heart. Effective on non-humanoids and humanoids alike. Headshot success chance is reduced against targets with thick armor protecting their vital organs.</description>
+    <staminaCost>0.40</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SniperShot</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -86,7 +86,7 @@
 		<isViolent>true</isViolent>
         <defaultProjectile>Projectile_Headshot</defaultProjectile>
         <warmupTime>.1</warmupTime>
-        <SecondsToRecharge>20</SecondsToRecharge>
+        <SecondsToRecharge>45</SecondsToRecharge>
         <range>40</range>
         <soundCast>ShotSniperRifle</soundCast>
 		<soundCastTail>GunTail_Heavy</soundCastTail>
@@ -124,10 +124,11 @@
     <defName>TM_DisablingShot</defName>
     <label>Disabling Shot</label>
     <uiIconPath>UI/disablingshot</uiIconPath>
-    <description>A shot that aims to disable the opponent rather than kill. The sniper fires non-lethal rounds that release a jolt of electricity, briefly paralyzing the target for several seconds.  Armored targets are unaffected.
-	Range: 20
-	Firing Delay: 2.5s
-	Recharge 45s</description>
+    <description>A shot that aims to disable the opponent rather than kill. The sniper fires non-lethal rounds that release a jolt of electricity, briefly paralyzing the target for several seconds. Armored targets are unaffected.
+	
+Range: 20
+Firing Delay: 2.5s
+Recharge 45s</description>
     <staminaCost>0.30</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SniperShot</verbClass>
@@ -160,10 +161,11 @@
     <defName>TM_DisablingShot_I</defName>
     <label>Disabling Shot (I)</label>
     <uiIconPath>UI/disablingshot</uiIconPath>
-    <description>A shot that aims to disable the opponent rather than kill. The sniper fires non-lethal rounds that release a jolt of electricity, briefly paralyzing the target for several seconds.  Armored targets are unaffected.
-	Range: 22
-	Firing Delay: 2.3s
-	Recharge 43s</description>
+    <description>A shot that aims to disable the opponent rather than kill. The sniper fires non-lethal rounds that release a jolt of electricity, briefly paralyzing the target for several seconds. Armored targets are unaffected.
+	
+Range: 22
+Firing Delay: 2.3s
+Recharge 43s</description>
     <staminaCost>0.30</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>AbilityUser.Verb_UseAbility</verbClass>
@@ -196,10 +198,11 @@
     <defName>TM_DisablingShot_II</defName>
     <label>Disabling Shot (II)</label>
     <uiIconPath>UI/disablingshot</uiIconPath>
-    <description>A shot that aims to disable the opponent rather than kill. The sniper fires non-lethal rounds that release a jolt of electricity, briefly paralyzing the target for several seconds.  Armored targets are unaffected.
-	Range: 25
-	Firing Delay: 2.1s
-	Recharge 41s</description>
+    <description>A shot that aims to disable the opponent rather than kill. The sniper fires non-lethal rounds that release a jolt of electricity, briefly paralyzing the target for several seconds. Armored targets are unaffected.
+	
+Range: 25
+Firing Delay: 2.1s
+Recharge 41s</description>
     <staminaCost>0.30</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>AbilityUser.Verb_UseAbility</verbClass>
@@ -232,10 +235,11 @@
     <defName>TM_DisablingShot_III</defName>
     <label>Disabling Shot (III)</label>
     <uiIconPath>UI/disablingshot</uiIconPath>
-    <description>A shot that aims to disable the opponent rather than kill. The sniper fires non-lethal rounds that release a jolt of electricity, briefly paralyzing the target for several seconds.  Armored targets are unaffected.
-	Range: 27
-	Firing Delay: 2s
-	Recharge 40s</description>
+    <description>A shot that aims to disable the opponent rather than kill. The sniper fires non-lethal rounds that release a jolt of electricity, briefly paralyzing the target for several seconds. Armored targets are unaffected.
+	
+Range: 27
+Firing Delay: 2s
+Recharge 40s</description>
     <staminaCost>0.30</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>AbilityUser.Verb_UseAbility</verbClass>
@@ -284,7 +288,7 @@
  <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
     <defName>TM_AntiArmor</defName>
     <label>Anti-Armor</label>
-    <description>The sniper carries anti armor rounds for those special occasions.  When this ammunition shatters, it releases nanites that will shred through any armor they make contact with.  Relatively inneffective against soft targets.</description>
+    <description>The sniper carries anti armor rounds for those special occasions. When this ammunition shatters, it releases nanites that will shred through any armor they make contact with. Relatively ineffective against soft targets but does double damage to to everything else.</description>
 	<uiIconPath>Spells/InfernoCannonShot</uiIconPath>
     <staminaCost>0.30</staminaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -297,8 +301,8 @@
         <defaultProjectile>Projectile_AntiArmor</defaultProjectile>
 		<abilityDef>TM_AntiArmor</abilityDef>
         <warmupTime>1</warmupTime>
-        <SecondsToRecharge>15</SecondsToRecharge>
-        <range>38</range>
+        <SecondsToRecharge>10</SecondsToRecharge>
+        <range>45</range>
         <soundCast>ShotRevolver</soundCast>
 		<soundCastTail>GunTail_Heavy</soundCastTail>
         <muzzleFlashScale>25</muzzleFlashScale>

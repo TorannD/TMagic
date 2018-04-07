@@ -26,14 +26,14 @@
   <ThoughtDef>
     <defName>TM_MagicLoreTD</defName>
     <thoughtClass>Thought_MemorySocial</thoughtClass>
-    <durationDays>2</durationDays>
+    <durationDays>1</durationDays>
     <stackLimit>3</stackLimit>
-    <stackLimitPerPawn>1</stackLimitPerPawn>
+    <stackLimitPerPawn>2</stackLimitPerPawn>
     <stackedEffectMultiplier>0.75</stackedEffectMultiplier>
     <stages>
       <li>
         <label>gained arcane knowledge</label>
-		<description>I've been enlightening by words from a powerful mage that I respect, now I just have to apply this knowledge...</description>
+		<description>I've been enlightening by words from a powerful mage, now I just have to apply this knowledge...</description>
 		<baseMoodEffect>2</baseMoodEffect>
         <baseOpinionOffset>6</baseOpinionOffset>
       </li>
@@ -109,7 +109,7 @@
     <stages>
       <li>
         <label>entertained</label>
-		<description>This place isn't so bad, there are people here that make me forget about my worries and laugh a little.</description>
+		<description>This place isn't so bad; there are people here that make me forget about my worries and laugh a little.</description>
 		<baseMoodEffect>10</baseMoodEffect>
         <baseOpinionOffset>4</baseOpinionOffset>
       </li>

@@ -27,15 +27,15 @@ namespace TorannMagic
             pwrVal = pwr.level;
             verVal = ver.level;
             this.arcaneDmg = comp.arcaneDmg;
-            if(settingsRef.AIHardMode && !pawn.IsColonistPlayerControlled)
+            if(settingsRef.AIHardMode && !pawn.IsColonist)
             {
                 pwrVal = 3;
                 verVal = 3;
             }
-            GenExplosion.DoExplosion(base.Position, map, Mathf.RoundToInt(this.def.projectile.explosionRadius + (0.7f * (float)pwrVal)*this.arcaneDmg), TMDamageDefOf.DamageDefOf.Snowball, this.launcher, this.def.projectile.damageAmountBase, SoundDefOf.Crunch, def, this.equipmentDef, null, 0f, 1, false, null, 0f, 1, 0f, true);
+            GenExplosion.DoExplosion(base.Position, map, Mathf.RoundToInt(this.def.projectile.explosionRadius + (0.7f * (float)pwrVal)), TMDamageDefOf.DamageDefOf.Snowball, this.launcher, (int)((this.def.projectile.damageAmountBase + 3*pwrVal) * this.arcaneDmg), SoundDefOf.Crunch, def, this.equipmentDef, null, 0f, 1, false, null, 0f, 1, 0f, false);
             CellRect cellRect = CellRect.CenteredOn(base.Position, 3 + (verVal * 1));
 			cellRect.ClipInsideMap(map);
-			for (int i = 0; i < verVal * 5; i++)
+			for (int i = 0; i < verVal * 4; i++)
 			{
 				IntVec3 randomCell = cellRect.RandomCell;
 				this.IceExplosion(pwrVal, randomCell, map, (float)verVal * 0.4f);
@@ -46,7 +46,7 @@ namespace TorannMagic
 				MoteMaker.ThrowDustPuff(loc, map, 1.0f * (float)pwrVal);
 				AddSnowRadial(randomCell, map, this.def.projectile.explosionRadius, (this.def.projectile.explosionRadius / 2 )+ (0.7f * (float)verVal));
 			}
-			AddSnowRadial(base.Position, map, this.def.projectile.explosionRadius, this.def.projectile.explosionRadius + (0.7f * (float)verVal));
+			AddSnowRadial(base.Position, map, this.def.projectile.explosionRadius + (0.7f * (float)pwrVal), this.def.projectile.explosionRadius + (0.7f * (float)verVal));
 		}
 
 		protected void IceExplosion(int pwr, IntVec3 pos, Map map, float radius)
@@ -59,7 +59,7 @@ namespace TorannMagic
 		public void Explosion(int pwr, IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
 		{
 			System.Random rnd = new System.Random();
-			int modDamAmountRand = pwr * GenMath.RoundRandom(rnd.Next(1, projectile.projectile.damageAmountBase * pwr)); //7
+			int modDamAmountRand = GenMath.RoundRandom(rnd.Next(3, 5+(projectile.projectile.damageAmountBase * pwr)/2)); //7
             modDamAmountRand *= Mathf.RoundToInt(this.arcaneDmg);
 			if (map == null)
 			{

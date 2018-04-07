@@ -282,8 +282,8 @@ Reduces recharge to 18s.</description>
         <defName>TM_ValiantCharge</defName>
         <label>Valiant Charge</label>
         <uiIconPath>UI/valiantcharge</uiIconPath>
-        <description>The Paladin draws upon the power of an angel to fly to a target location, releasing holy power upon landing.</description>
-        <manaCost>0.25</manaCost>
+        <description>The Paladin is flies with the wings of an angel to fly to a distant location, shattering the ground with holy power upon landing.</description>
+        <manaCost>0.30</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Effect_ValiantCharge</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -296,9 +296,9 @@ Reduces recharge to 18s.</description>
                 <canTargetSelf>false</canTargetSelf>
                 <canTargetLocations>true</canTargetLocations>
             </targetParams>
-            <warmupTime>0.5</warmupTime>
-            <SecondsToRecharge>10.0</SecondsToRecharge>
-            <range>30</range>
+            <warmupTime>0.4</warmupTime>
+            <SecondsToRecharge>6.0</SecondsToRecharge>
+            <range>36</range>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
@@ -343,7 +343,7 @@ Reduces recharge to 18s.</description>
 		<isViolent>true</isViolent>
         <defaultProjectile>TM_Paladin_Overwhelm</defaultProjectile>
         <warmupTime>.2</warmupTime>
-        <SecondsToRecharge>40.0</SecondsToRecharge>
+        <SecondsToRecharge>15.0</SecondsToRecharge>
         <range>0</range>
         <soundCast>InfernoCannon_Fire</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>

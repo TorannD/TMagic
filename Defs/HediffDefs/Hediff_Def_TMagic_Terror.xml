@@ -29,7 +29,7 @@
       </li>
       <li>
         <label>Panicked</label>
-        <minSeverity>10</minSeverity>
+        <minSeverity>15</minSeverity>
 		<mentalStateGivers>
 			<li>
 			 <mentalState>PanicFlee</mentalState>
@@ -47,7 +47,7 @@
           </li>
           <li>
             <capacity>Consciousness</capacity>
-            <offset>-0.2</offset>
+            <offset>-0.1</offset>
           </li>
 		  <li>
             <capacity>Sight</capacity>
@@ -57,7 +57,7 @@
       </li>
 	  <li>
         <label>Terrified</label>
-        <minSeverity>20</minSeverity>
+        <minSeverity>30</minSeverity>
 	    <mentalStateGivers>
 			<li>
 			 <mentalState>PanicFlee</mentalState>
@@ -67,15 +67,15 @@
         <capMods>
           <li>
             <capacity>Moving</capacity>
-            <offset>-0.4</offset>
+            <offset>-0.3</offset>
           </li>
           <li>
             <capacity>Manipulation</capacity>
-            <offset>-0.5</offset>
+            <offset>-0.3</offset>
           </li>
           <li>
             <capacity>Consciousness</capacity>
-            <offset>-0.3</offset>
+            <offset>-0.1</offset>
           </li>
 		  <li>
             <capacity>Sight</capacity>

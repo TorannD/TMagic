@@ -9,7 +9,7 @@ namespace TorannMagic
 	public class Projectile_Firestorm : Projectile_AbilityBase
 	{
         private int age = 0;
-        private int duration = 720;
+        private int duration = 420;
         private int lastStrikeTiny = 0;
         private int lastStrikeSmall = 0;
         private int lastStrikeLarge = 0;
@@ -27,7 +27,7 @@ namespace TorannMagic
             base.ExposeData();
             //Scribe_Values.Look<bool>(ref this.initialized, "initialized", false, false);
             Scribe_Values.Look<int>(ref this.age, "age", 0, false);
-            Scribe_Values.Look<int>(ref this.duration, "duration", 720, false);
+            Scribe_Values.Look<int>(ref this.duration, "duration", 420, false);
             Scribe_Values.Look<int>(ref this.lastStrikeTiny, "lastStrikeTiny", 0, false);
             Scribe_Values.Look<int>(ref this.lastStrikeSmall, "lastStrikeSmall", 0, false);
             Scribe_Values.Look<int>(ref this.lastStrikeLarge, "lastStrikeLarge", 0, false);
@@ -42,7 +42,7 @@ namespace TorannMagic
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
             pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Firestorm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Firestorm_pwr");
             ver = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Firestorm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Firestorm_ver");
-            duration = duration + (144 * ver.level);
+            duration = duration + (60 * ver.level);
             cellRect = CellRect.CenteredOn(base.Position, (int)(base.def.projectile.explosionRadius + .5*(pwr.level + ver.level)));
             cellRect.ClipInsideMap(map);
             initialized = true;
@@ -60,7 +60,7 @@ namespace TorannMagic
             }
 
             impactPos = cellRect.RandomCell;
-            if (this.age > lastStrikeLarge + Rand.Range((300/(1+pwr.level))+30, (duration/(1+pwr.level))+60) && impactPos.Standable(map) && impactPos.InBounds(map))
+            if (this.age > lastStrikeLarge + Rand.Range((200/(1+pwr.level))+20, (duration/(1+pwr.level))+40) && impactPos.Standable(map) && impactPos.InBounds(map))
             {
                 this.lastStrikeLarge = this.age;
                 SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Firestorm_Large, impactPos, map);
@@ -73,13 +73,13 @@ namespace TorannMagic
                 }                
             }
             impactPos = cellRect.RandomCell;
-            if (this.age > lastStrikeTiny + Rand.Range(8-pwr.level, 24-pwr.level) && impactPos.Standable(map) && impactPos.InBounds(map))
+            if (this.age > lastStrikeTiny + Rand.Range(7-pwr.level, 20-pwr.level) && impactPos.Standable(map) && impactPos.InBounds(map))
             {
                 this.lastStrikeTiny = this.age;
                 SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Firestorm_Tiny, impactPos, map);
             }
             impactPos = cellRect.RandomCell;
-            if ( this.age > lastStrikeSmall + Rand.Range(20-(2*pwr.level), 50-(2*pwr.level)) && impactPos.Standable(map) && impactPos.InBounds(map))
+            if ( this.age > lastStrikeSmall + Rand.Range(18-(2*pwr.level), 42-(2*pwr.level)) && impactPos.Standable(map) && impactPos.InBounds(map))
             {
                 this.lastStrikeSmall = this.age;
                 SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Firestorm_Small, impactPos, map);

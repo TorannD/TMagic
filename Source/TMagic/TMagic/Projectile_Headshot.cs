@@ -24,12 +24,29 @@ namespace TorannMagic
             pawn = this.launcher as Pawn;
             Pawn victim = hitThing as Pawn;
             CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
-            MightPowerSkill pwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Headshot.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Headshot_pwr");
             MightPowerSkill ver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Headshot.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Headshot_ver");
-            MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
 
             CellRect cellRect = CellRect.CenteredOn(base.Position, 1);
             cellRect.ClipInsideMap(map);
+
+            int dmg = GetWeaponDmg(pawn, this.def);
+
+            if (victim != null && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracy, true)))
+            {                
+                this.PenetratingShot(victim, dmg, DamageDefOf.Bullet);
+
+                if (victim.Dead)
+                {
+                    comp.Stamina.CurLevel += (.1f * ver.level);
+                }
+            }
+        }
+
+        public static int GetWeaponDmg(Pawn pawn, ThingDef projectileDef)
+        {
+            CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
+            MightPowerSkill pwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Headshot.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Headshot_pwr");            
+            MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
             ThingWithComps arg_3C_0;
             int value = 0;
             if (pawn == null)
@@ -49,30 +66,22 @@ namespace TorannMagic
             }
 
             int dmg;
-            if ( value > 1000 )
+            if (value > 1000)
             {
                 value -= 1000;
-                 dmg = (this.def.projectile.damageAmountBase) + (int)((20 + (value / 120)) * (1 + (.1f * pwr.level) + (.05f * str.level)));
+                dmg = (projectileDef.projectile.damageAmountBase) + (int)((20 + (value / 120)) * (1 + (.1f * pwr.level) + (.05f * str.level)));
             }
             else
             {
-                dmg = (this.def.projectile.damageAmountBase) + (int)((value / 50) * (1 + (.1f * pwr.level) + (.05f * str.level)));
+                dmg = (projectileDef.projectile.damageAmountBase) + (int)((value / 50) * (1 + (.1f * pwr.level) + (.05f * str.level)));
             }
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            if (!pawn.IsColonistPlayerControlled && settingsRef.AIHardMode)
+            if (!pawn.IsColonist && settingsRef.AIHardMode)
             {
                 dmg += 8;
             }
 
-            if (victim != null && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracy, true)))
-            {                
-                this.PenetratingShot(victim, dmg, DamageDefOf.Bullet);
-
-                if (victim.Dead)
-                {
-                    comp.Stamina.CurLevel += (.1f * ver.level);
-                }
-            }
+            return dmg;
         }
 
         public void PenetratingShot(Pawn victim, int dmg, DamageDef dmgType)

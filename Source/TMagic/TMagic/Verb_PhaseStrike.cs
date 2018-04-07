@@ -52,6 +52,21 @@ namespace TorannMagic
             return validTarg;
         }
 
+        public static int GetWeaponDmg(Pawn pawn)
+        {
+            CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
+            MightPowerSkill pwr = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_pwr");
+            MightPowerSkill ver = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_ver");
+            MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
+            int dmgNum = 0;
+            ThingWithComps weaponComp = pawn.equipment.Primary;
+            float weaponDPS = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_AverageDPS, false) * .7f;
+            float dmgMultiplier = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_DamageMultiplier, false);
+            float pawnDPS = pawn.GetStatValue(StatDefOf.MeleeDPS, false);
+            float skillMultiplier = (.8f + (.025f * str.level));
+            return dmgNum = Mathf.RoundToInt(skillMultiplier * dmgMultiplier * (pawnDPS + weaponDPS));
+        }
+
         protected override bool TryCastShot()
         {
             bool result = false;
@@ -64,14 +79,9 @@ namespace TorannMagic
 
             if (this.CasterPawn.equipment.Primary != null && !this.CasterPawn.equipment.Primary.def.IsRangedWeapon)
             {
-                weaponComp = base.CasterPawn.equipment.Primary;
-                weaponDPS = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_AverageDPS, false) * .7f;
-                dmgMultiplier = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_DamageMultiplier, false);
-                pawnDPS = base.CasterPawn.GetStatValue(StatDefOf.MeleeDPS, false);
-                skillMultiplier = (.8f + (.025f * str.level));
-                dmgNum = Mathf.RoundToInt(skillMultiplier * dmgMultiplier * (pawnDPS + weaponDPS));
+                dmgNum = GetWeaponDmg(this.CasterPawn);
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                if (!this.CasterPawn.IsColonistPlayerControlled && settingsRef.AIHardMode)
+                if (!this.CasterPawn.IsColonist && settingsRef.AIHardMode)
                 {
                     dmgNum += 10;
                 }
@@ -98,7 +108,7 @@ namespace TorannMagic
                         Pawn p = this.CasterPawn;
                         Map map = this.CasterPawn.Map;
                         IntVec3 pLoc = this.CasterPawn.Position;
-                        if (p.IsColonistPlayerControlled)
+                        if (p.IsColonist)
                         {
                             try
                             {

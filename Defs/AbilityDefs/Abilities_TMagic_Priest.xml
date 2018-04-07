@@ -166,6 +166,7 @@
         <label>Healing Circle</label>
         <uiIconPath>UI/healingcircle</uiIconPath>
         <description>Creates a field that heals friendly pawns within.
+		
 Circle radius: 3
 Range: 30</description>
         <manaCost>0.60</manaCost>
@@ -201,6 +202,7 @@ Range: 30</description>
         <label>Healing Circle (I)</label>
         <uiIconPath>UI/healingcircle</uiIconPath>
         <description>Creates a field that heals friendly pawns within.
+		
 Circle radius: 4
 Range: 35</description>
         <manaCost>0.60</manaCost>
@@ -236,6 +238,7 @@ Range: 35</description>
         <label>Healing Circle (II)</label>
         <uiIconPath>UI/healingcircle</uiIconPath>
         <description>Creates a field that heals friendly pawns within.
+		
 Circle radius: 5.5
 Range: 40</description>
         <manaCost>0.60</manaCost>
@@ -271,6 +274,7 @@ Range: 40</description>
         <label>Healing Circle (III)</label>
         <uiIconPath>UI/healingcircle</uiIconPath>
         <description>Creates a field that heals friendly pawns within.
+		
 Circle radius: 7
 Range: 45</description>
         <manaCost>0.60</manaCost>
@@ -307,7 +311,8 @@ Range: 45</description>
         <defName>TM_BestowMight</defName>
         <label>Bestow Might</label>
         <uiIconPath>UI/bestowmight</uiIconPath>
-        <description>Blessing: single target buff that greatly increases physical power.
+        <description>Blesses a single target with greatly increased physical power.
+		
 Duration: 		30-40s
 Physical capacity: 	+40%
 Physical demand: 	+50%
@@ -350,7 +355,8 @@ Pain:		-40%</description>
         <defName>TM_BestowMight_I</defName>
         <label>Bestow Might (I)</label>
         <uiIconPath>UI/bestowmight</uiIconPath>
-        <description>Blessing: single target buff that greatly increases physical power.
+        <description>Blesses a single target with greatly increased physical power.
+		
 Duration: 		50-60s
 Physical capacity: 	+60%
 Physical demand: 	+60%
@@ -393,7 +399,8 @@ Pain:		-50%</description>
         <defName>TM_BestowMight_II</defName>
         <label>Bestow Might (II)</label>
         <uiIconPath>UI/bestowmight</uiIconPath>
-        <description>Blessing: single target buff that greatly increases physical power.
+        <description>Blesses a single target with greatly increased physical power.
+		
 Duration: 		50-60s
 Physical capacity: 	+80%
 Physical demand: 	+70%
@@ -436,7 +443,8 @@ Pain:		-60%</description>
         <defName>TM_BestowMight_III</defName>
         <label>Bestow Might (III)</label>
         <uiIconPath>UI/bestowmight</uiIconPath>
-        <description>Blessing: single target buff that greatly increases physical power.
+        <description>Blesses a single target with greatly increased physical power.
+		
 Duration: 		100-115s
 Physical capacity: 	~+100%
 Physical demand: 	+100%
@@ -497,7 +505,7 @@ Pain:		-70%</description>
     <defName>TM_Resurrection</defName>
     <label>Resurrection</label>
     <uiIconPath>UI/resurrection</uiIconPath>
-    <description>Resurrection restores the life of a recently deceased pawn.</description>
+    <description>Resurrection restores the life of a recently deceased pawn. This places an immense demand on the Priest and resurrected pawn and both will be weak for several days while their strength recovers.</description>
     <manaCost>0.95</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>

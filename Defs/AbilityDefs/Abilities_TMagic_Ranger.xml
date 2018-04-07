@@ -25,7 +25,7 @@
     <defName>TM_RangerTraining</defName>
     <label>Ranger Training</label>
     <uiIconPath>UI/rangertraining</uiIconPath>
-    <description>Training that improves technique and status as ranger.</description>
+    <description>Training that advances the ranger trait.</description>
     <staminaCost>0.01</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_RangerTraining</verbClass>
@@ -60,7 +60,7 @@
     <defName>TM_BowTraining</defName>
     <label>Bow Training</label>
     <uiIconPath>UI/bowtraining</uiIconPath>
-    <description>Training that improves technique when using a bow.</description>
+    <description>Training that increases damage and accuracy when using a bow.</description>
     <staminaCost>0.01</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_BowTraining</verbClass>
@@ -95,7 +95,7 @@
         <defName>TM_PoisonTrap</defName>
         <label>Poison Trap</label>
         <uiIconPath>UI/trap</uiIconPath>
-        <description>The ranger uses a dose of druidic poison to arm a wooden trap.  Traps last indefinitely, but a ranger is only able to deploy a limited number at a time.</description>
+        <description>The ranger uses a dose of druidic poison to arm a wooden trap. Traps last indefinitely, but a ranger is only able to deploy a limited number at a time.</description>
         <staminaCost>0.20</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PoisonTrap</verbClass>
@@ -127,7 +127,11 @@
         <defName>TM_AnimalFriend</defName>
         <label>Animal Friend</label>
         <uiIconPath>UI/animalfriend</uiIconPath>
-        <description>At home in the wild, the ranger is able to form a bond with creatures of the wild. Rangers are only able to form a single bond; making a new bond breaks an existing bond and will likely cause the animal with a broken bond to leave forever. The bond must be renewed for an improved bond to take affect.  The increase in physical capability applies to the animal kin only, in return, the bonded animal will assist the ranger in whatever capacity the animal is capable.</description>
+        <description>At home in the wild, the ranger is able to form a bond with creatures of the wild. 
+		
+Rangers are only able to form a single bond; making a new bond breaks an existing bond and will likely cause the animal with a broken bond to leave forever. The bond must be renewed for an improved bond to take affect. 
+
+The increase in physical capability applies to the animal kin only, in return, the bonded animal will assist the ranger in whatever capacity the animal is capable.</description>
         <staminaCost>0.90</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_AnimalFriend</verbClass>
@@ -177,7 +181,7 @@
         <uiIconPath>UI/arrowstorm</uiIconPath>
         <description>Fire a volley of 5 arrows at a target.
 Range: 32</description>
-        <staminaCost>0.35</staminaCost>
+        <staminaCost>0.40</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_RangerShot</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -191,7 +195,7 @@ Range: 32</description>
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
             <warmupTime>2</warmupTime>
-            <SecondsToRecharge>15.0</SecondsToRecharge>
+            <SecondsToRecharge>20.0</SecondsToRecharge>
             <range>32</range>
 			<isViolent>true</isViolent>
             <burstShotCount>5</burstShotCount>
@@ -208,7 +212,7 @@ Range: 32</description>
         <uiIconPath>UI/arrowstorm</uiIconPath>
         <description>Fire a volley of 6 arrows at a target.
 Range: 34</description>
-        <staminaCost>0.35</staminaCost>
+        <staminaCost>0.42</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_RangerShot</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -222,7 +226,7 @@ Range: 34</description>
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
             <warmupTime>2</warmupTime>
-            <SecondsToRecharge>15.0</SecondsToRecharge>
+            <SecondsToRecharge>20.0</SecondsToRecharge>
             <range>34</range>
 			<isViolent>true</isViolent>
             <burstShotCount>6</burstShotCount>
@@ -239,7 +243,7 @@ Range: 34</description>
         <uiIconPath>UI/arrowstorm</uiIconPath>
         <description>Fire a rapid volley of 7 arrows at a target.
 Range: 36</description>
-        <staminaCost>0.35</staminaCost>
+        <staminaCost>0.44</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_RangerShot</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -253,7 +257,7 @@ Range: 36</description>
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
             <warmupTime>2</warmupTime>
-            <SecondsToRecharge>15.0</SecondsToRecharge>
+            <SecondsToRecharge>20.0</SecondsToRecharge>
             <range>36</range>
 			<isViolent>true</isViolent>
             <burstShotCount>7</burstShotCount>
@@ -270,7 +274,7 @@ Range: 36</description>
         <uiIconPath>UI/arrowstorm</uiIconPath>
         <description>Fire a rapid volley of 8 arrows at a target.
 Range: 38</description>
-        <staminaCost>0.35</staminaCost>
+        <staminaCost>0.45</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_RangerShot</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -284,7 +288,7 @@ Range: 38</description>
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
             <warmupTime>2</warmupTime>
-            <SecondsToRecharge>15.0</SecondsToRecharge>
+            <SecondsToRecharge>20.0</SecondsToRecharge>
             <range>38</range>
 			<isViolent>true</isViolent>
             <burstShotCount>8</burstShotCount>

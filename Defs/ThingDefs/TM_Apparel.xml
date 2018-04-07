@@ -57,10 +57,10 @@
 		<graphicClass>Graphic_Single</graphicClass> 
 	</graphicData>
 	<statBases>
-		<WorkToMake>10000</WorkToMake>
+		<WorkToMake>7500</WorkToMake>
 		<Mass>0.7</Mass>
 		<MaxHitPoints>200</MaxHitPoints>
-		<MarketValue>1250</MarketValue>
+		<MarketValue>2000</MarketValue>
 		<ArmorRating_Blunt>0.10</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.15</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.50</ArmorRating_Heat>
@@ -76,7 +76,7 @@
 		<RecruitPrisonerChance>0.05</RecruitPrisonerChance>
 	</equippedStatOffsets>
 	<recipeMaker>
-      <workAmount>10000</workAmount>
+      <workAmount>7500</workAmount>
 	  <skillRequirements>
 			<Intellectual>6</Intellectual>
 	  </skillRequirements>
@@ -111,7 +111,7 @@
 		</layers>
 		<bodyPartGroups>
 			<li>Neck</li>
-			<li>Shoulders</li>
+			<li>Waist</li>
 		</bodyPartGroups>
 	</apparel>
 	<colorGenerator Class="ColorGenerator_Options">
@@ -157,13 +157,13 @@
   <ThingDef ParentName="TMSmithedApparelBase">
     <defName>AncientMail</defName>
     <label>Ancient Mail</label>    
-    <description>Chainmail forged with an ancient design that provides above average physical defense. The design of the armor includes a symmetrical etching of arcane runes that bestow the wearer with enhanced arcane power. Once crafted, these runes attract the power of an ancient spirit and grants the wearer a chance to cause additional arcane damage following any attack; howevevr, this comes at a price - all spells will require more mana to cast (this cannot be overwritten), and the bearer is beset with nightmares that slowly break down mental resistances.</description>
+    <description>Chain mail forged with an ancient design that provides above average physical defense. The design of the armor includes a symmetrical etching of arcane runes that bestow the wearer with enhanced arcane power. Once crafted, these runes attract the power of an ancient spirit and grants the wearer a chance to cause additional arcane damage following any attack; however, this comes at a price - all spells will require more mana to cast (this cannot be overwritten), and the bearer is beset with nightmares that slowly break down mental resistances.</description>
     <graphicData> 
 		<texPath>Equipment/ancientmail</texPath>
 		<graphicClass>Graphic_Single</graphicClass> 
 	</graphicData>
 	<statBases>
-		<WorkToMake>24000</WorkToMake>
+		<WorkToMake>20000</WorkToMake>
 		<Mass>4.5</Mass>
 		<MaxHitPoints>320</MaxHitPoints>
 		<MarketValue>2000</MarketValue>
@@ -181,7 +181,7 @@
 		<MentalBreakThreshold>0.05</MentalBreakThreshold>
 	</equippedStatOffsets>
 		<recipeMaker>
-      <workAmount>24000</workAmount>
+      <workAmount>20000</workAmount>
 	  <skillRequirements>
 			<Intellectual>6</Intellectual>
 	  </skillRequirements>
@@ -280,7 +280,7 @@
 		<WorkToMake>16000</WorkToMake>
 		<Mass>2.5</Mass>
 		<MaxHitPoints>120</MaxHitPoints>
-		<MarketValue>1800</MarketValue>
+		<MarketValue>2500</MarketValue>
 		<ArmorRating_Blunt>0.14</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.20</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.50</ArmorRating_Heat>
@@ -302,7 +302,7 @@
 		</researchPrerequisite>
     </recipeMaker>
 	<costList>
-		<RawMagicyte>250</RawMagicyte>
+		<RawMagicyte>350</RawMagicyte>
 		<DevilstrandCloth>120</DevilstrandCloth>
 	</costList>
 	<costStuffCount>60</costStuffCount>
@@ -443,6 +443,7 @@
 	 </defaultOutfitTags>
 	 <wornGraphicPath>Equipment/archmage</wornGraphicPath>
 		<layers>
+			<li>Middle</li>
 			<li>Shell</li>
 		</layers>
 		<bodyPartGroups>
@@ -502,7 +503,7 @@
   <ThingDef ParentName="TMTailoredApparelBase">
     <defName>DemonLordCloak</defName>
     <label>Robes of Supremacy</label>    
-    <description>A cloak heavily augmented by arcane power believed to have been first made for a black knight acting as the ambassador for an astral demon. The fabric is difficult to focus on in a way that can only be described as "visual noise" and the folds of cloth moving in an unnatural way as if unrestrained by natural law. Those few who have worn this cloak in battle swear that it possesses a conciousness of its own and tell stories of the cloth shielding them from certain destruction while others claim those observations were nothing but hallucinations by deranged fools. Because of these claims, it is rumored that the cloak possesses the ability to completely mitigate attacks against the wearer, but no one has been able to reproduce these results with any reliability.</description>
+    <description>A cloak heavily augmented by arcane power believed to have been first made for a black knight acting as the ambassador for an astral demon. The fabric is difficult to focus on in a way that can only be described as "visual noise" and the folds of cloth moving in an unnatural way as if unrestrained by natural law. Those few who have worn this cloak in battle swear that it possesses a consciousness of its own and tell stories of the cloth shielding them from certain destruction while others claim those observations were nothing but hallucinations by deranged fools. Because of these claims, it is rumored that the cloak possesses the ability to completely mitigate attacks against the wearer, but no one has been able to reproduce these results with any reliability.</description>
     <graphicData> 
 		<texPath>Equipment/demonlordcloak</texPath>
 		<graphicClass>Graphic_Single</graphicClass> 
@@ -511,7 +512,7 @@
 		<WorkToMake>66600</WorkToMake>
 		<Mass>6</Mass>
 		<MaxHitPoints>500</MaxHitPoints>
-		<MarketValue>20000</MarketValue>
+		<MarketValue>16000</MarketValue>
 		<ArmorRating_Blunt>0.4</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.35</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.80</ArmorRating_Heat>
@@ -556,9 +557,7 @@
 		</layers>
 		<bodyPartGroups>
 			<li>Neck</li>
-			<li>Shoulders</li>
 			<li>Waist</li>
-			<li>Arms</li>
 		</bodyPartGroups>
 	</apparel>
 	<colorGenerator Class="ColorGenerator_Options">
@@ -604,16 +603,16 @@
   <ThingDef ParentName="TMSmithedApparelBase">
     <defName>RoyalArmor</defName>
     <label>Armor of the Valiant</label>    
-    <description>A breastplate etched in holy symbols that is designed to protect vital areas without restricting movement. Said to have been worn by holy warriors of a bygone age that maintained peace with justice and compassion in equal measure, though it is unknown what became of this order.</description>
+    <description>A breastplate etched in holy symbols that is designed to protect vital areas without restricting movement. Said to have been worn by holy warriors of a bygone age who maintained peace with justice and compassion in equal measure. It is unknown what became of this order, though it is hard to believe it had anything to do with their skill in armor craft.</description>
     <graphicData> 
 		<texPath>Equipment/royalarmor</texPath>
 		<graphicClass>Graphic_Single</graphicClass> 
 	</graphicData>
 	<statBases>
-		<WorkToMake>80000</WorkToMake>
+		<WorkToMake>50000</WorkToMake>
 		<Mass>10</Mass>
 		<MaxHitPoints>500</MaxHitPoints>
-		<MarketValue>12000</MarketValue>
+		<MarketValue>5000</MarketValue>
 		<ArmorRating_Blunt>0.6</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.20</ArmorRating_Heat>
@@ -627,7 +626,7 @@
 		<AimingDelayFactor>-0.1</AimingDelayFactor>
 	</equippedStatOffsets>
 	<recipeMaker>
-      <workAmount>80000</workAmount>
+      <workAmount>50000</workAmount>
 	  <skillRequirements>
 			<Intellectual>8</Intellectual>
 	  </skillRequirements>
@@ -669,12 +668,12 @@
 	 <wornGraphicPath>Equipment/royalarmor</wornGraphicPath>
 		<layers>
 			<li>Middle</li>
+			<li>Shell</li>
 		</layers>
 		<bodyPartGroups>
 			<li>Torso</li>
 			<li>Arms</li>
 			<li>Legs</li>
-			<li>Waist</li>
 		</bodyPartGroups>
 	</apparel>
   </ThingDef>
@@ -682,16 +681,16 @@
   <ThingDef ParentName="TMTailoredHatBase">
     <defName>HoodOfMadness</defName>
     <label>Hood of Madness</label>    
-    <description>A dark cowel that has a reputation of being cursed, though its magical properties are undeniable. Those who don this hood gain the ability to see manifestations of arcane energy and learn things they otherwise wouldn't. The hood's appearance and fear of revealed secrets lead most to distrust those who wear this hood. Likewise, those who see through the eyes of this hood begin to distrust those around them.</description>
+    <description>A dark cowl that has a reputation of being cursed, though its magical properties are undeniable. Those who don this hood gain the ability to see manifestations of arcane energy and learn things they otherwise wouldn't. The hood's appearance and fear of revealed secrets lead most to distrust those who wear this hood. Likewise, those who see through the eyes of this hood begin to distrust those around them.</description>
     <graphicData> 
 		<texPath>Equipment/hoodofmadness_eyes</texPath>
 		<graphicClass>Graphic_Single</graphicClass> 
 	</graphicData>
 	<statBases>
-		<WorkToMake>45000</WorkToMake>
+		<WorkToMake>35000</WorkToMake>
 		<Mass>.7</Mass>
 		<MaxHitPoints>180</MaxHitPoints>
-		<MarketValue>6500</MarketValue>
+		<MarketValue>3500</MarketValue>
 		<ArmorRating_Blunt>0.15</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.15</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.40</ArmorRating_Heat>
@@ -713,7 +712,7 @@
 		<ResearchSpeed>0.15</ResearchSpeed>
 	</equippedStatOffsets>
 	<recipeMaker>
-      <workAmount>45000</workAmount>
+      <workAmount>35000</workAmount>
 	  <skillRequirements>
 			<Intellectual>10</Intellectual>
 	  </skillRequirements>
@@ -774,7 +773,7 @@
 		<WorkToMake>8000</WorkToMake>
 		<Mass>.4</Mass>
 		<MaxHitPoints>120</MaxHitPoints>
-		<MarketValue>6500</MarketValue>
+		<MarketValue>900</MarketValue>
 		<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.20</ArmorRating_Heat>

@@ -27,7 +27,7 @@ namespace TorannMagic
             pwrVal = pwr.level;
             verVal = ver.level;
             this.arcaneDmg = comp.arcaneDmg;
-            if (settingsRef.AIHardMode&& !pawn.IsColonistPlayerControlled)
+            if (settingsRef.AIHardMode&& !pawn.IsColonist)
             {
                 pwrVal = 3;
                 verVal = 3;
@@ -263,7 +263,7 @@ namespace TorannMagic
         public void Explosion(int pwr, IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
         {
             System.Random rnd = new System.Random();
-            int modDamAmountRand = (pwr * 3) + GenMath.RoundRandom(rnd.Next(1, projectile.projectile.damageAmountBase));
+            int modDamAmountRand = (pwr * 3) + GenMath.RoundRandom(rnd.Next(3, projectile.projectile.damageAmountBase));
             modDamAmountRand = Mathf.RoundToInt(this.arcaneDmg);
             if (map == null)
             {

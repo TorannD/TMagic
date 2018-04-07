@@ -166,7 +166,7 @@ namespace TorannMagic
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             pwrVal = pwr.level;
             verVal = ver.level;
-            if (settingsRef.AIHardMode && !pawn.IsColonistPlayerControlled)
+            if (settingsRef.AIHardMode && !pawn.IsColonist)
             {
                 pwrVal = 3;
                 verVal = 3;
@@ -401,7 +401,7 @@ namespace TorannMagic
             {
                 SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);
                 this.FireExplosion(pwrVal, verVal, base.Position, base.Map, (1.2f + (float)(verVal * .8f)));
-                if (!pawn.IsColonistPlayerControlled)
+                if (!pawn.IsColonist)
                 {
                     this.FireExplosion(3, 3, base.Position, base.Map, (1.2f + (float)(3 * .8f)));
                 }
@@ -429,7 +429,7 @@ namespace TorannMagic
                 ModOptions.Constants.SetPawnInFlight(false);
                 Pawn p = this.flyingThing as Pawn;
                 RemoveInvul(p);
-                if (p.IsColonistPlayerControlled)
+                if (p.IsColonist)
                 {
                     p.drafter.Drafted = true;
                 }
@@ -441,7 +441,7 @@ namespace TorannMagic
                 ModOptions.Constants.SetPawnInFlight(false);
                 Pawn p = this.flyingThing as Pawn;
                 RemoveInvul(p);
-                if (p.IsColonistPlayerControlled)
+                if (p.IsColonist)
                 {
                     p.drafter.Drafted = true;
                 }
@@ -470,7 +470,7 @@ namespace TorannMagic
         {
 
             System.Random rnd = new System.Random();
-            int modDamAmountRand = (1 + pwr) * GenMath.RoundRandom(rnd.Next(1, 26 / 2));
+            int modDamAmountRand = GenMath.RoundRandom(rnd.Next(6 + pwr, 13 + (4*pwr)));
             modDamAmountRand *= Mathf.RoundToInt(this.arcaneDmg);
             if (map == null)
             {

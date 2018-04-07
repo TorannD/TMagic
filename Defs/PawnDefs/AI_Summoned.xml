@@ -58,6 +58,15 @@
 		<li Class="JobGiver_RescueNearby">
 		  <radius>30</radius>
 		</li>
+		
+
+		<li Class="ThinkNode_Tagger">
+			<tagToGive>Misc</tagToGive>
+			<subNodes>
+				<li Class="TorannMagic.JobGiver_AIClean" />
+			</subNodes>
+		</li>
+
 
         <li Class="ThinkNode_Tagger">
           <tagToGive>Idle</tagToGive>
@@ -66,13 +75,12 @@
               <maxDanger>Deadly</maxDanger>
             </li>
           </subNodes>
-        </li>
+        </li>		
 		
 		<li Class="ThinkNode_Subtree">
           <treeDef>SatisfyBasicNeeds</treeDef>
-        </li>
-		
-          
+        </li>	
+
         <li Class="JobGiver_IdleError"/>
       </subNodes>
     </thinkRoot>
@@ -85,13 +93,14 @@
 				<li Class="ThinkNode_ConditionalCanDoConstantThinkTreeJobNow">
 					<subNodes>
 						<li Class="JobGiver_AIFightEnemies" />
-						<li Class="JobGiver_Haul" />
+						<li Class="JobGiver_Haul" />						
 						<!-- <li Class="JobGiver_AIDefendSelf" /> -->
 					</subNodes>
+				
 				</li>
+
 			</subNodes>
 		</thinkRoot>
 	</ThinkTreeDef>
-
   
 </Defs>

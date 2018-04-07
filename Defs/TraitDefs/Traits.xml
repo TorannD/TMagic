@@ -9,15 +9,14 @@
         <degreeDatas>
             <li>
                 <label>magically gifted</label>
-                <description>NAME has a magical gift.</description>
+                <description>NAME has a magical gift. HE can harness this gift to become a mage by studying the mysterious secrets within an arcane script.</description>
 						<degree>2</degree>
                 <statOffsets>
                     <MoveSpeed>.10</MoveSpeed>
-					<WorkSpeedGlobal>0.10</WorkSpeedGlobal>
                     <MedicalTendSpeed>.1</MedicalTendSpeed>
                     <ImmunityGainSpeed>.1</ImmunityGainSpeed>
-					<PsychicSensitivity>0.6</PsychicSensitivity>
-					<GlobalLearningFactor>.20</GlobalLearningFactor>
+					<PsychicSensitivity>0.20</PsychicSensitivity>
+					<GlobalLearningFactor>.10</GlobalLearningFactor>
                 </statOffsets>
             </li>
         </degreeDatas>
@@ -42,84 +41,6 @@
     </TraitDef>
 	
 	<TraitDef>
-        <defName>PhysicalProdigy</defName>
-        <commonality>0.001</commonality>
-        <degreeDatas>
-            <li>
-                <label>physically adept</label>
-                <description>NAME is physically adept and has potential to learn special combat forms.</description>
-						<degree>2</degree>
-                <statOffsets>
-                    <MoveSpeed>.20</MoveSpeed>
-					<WorkSpeedGlobal>0.20</WorkSpeedGlobal>
-                    <ImmunityGainSpeed>.2</ImmunityGainSpeed>
-					<PsychicSensitivity>-0.6</PsychicSensitivity>
-					<GlobalLearningFactor>-.20</GlobalLearningFactor>
-                </statOffsets>
-            </li>
-        </degreeDatas>
-		<conflictingTraits>
-		  <li>Gladiator</li>
-		  <li>InnerFire</li>
-		  <li>HeartOfFrost</li>
-		  <li>Summoner</li>
-		  <li>Arcanist</li>
-		  <li>StormBorn</li>
-		  <li>Gifted</li>
-	      <li>Paladin</li>
-		  <li>TM_Sniper</li>
-		  <li>Druid</li>
-		  <li>Bladedancer</li>
-		  <li>Necromancer</li>
-		  <li>Priest</li>
-		  <li>Ranger</li>
-		  <li>Lich</li>
-		  <li>TM_Bard</li>
-		</conflictingTraits>
-    </TraitDef>
-	
-	<TraitDef>
-		<defName>Gladiator</defName>
-		<commonality>0.001</commonality>
-		<degreeDatas>	
-		  <li>
-			<label>Gladiator</label>
-			<description>NAME has learned how to train the Gladiator combat style.</description>
-			<degree>4</degree>
-				<statOffsets>
-                    <MoveSpeed>.20</MoveSpeed>
-					<WorkSpeedGlobal>0.20</WorkSpeedGlobal>
-                    <ImmunityGainSpeed>.4</ImmunityGainSpeed>
-					<PsychicSensitivity>-0.6</PsychicSensitivity>
-					<MentalBreakThreshold>0.1</MentalBreakThreshold>
-					<GlobalLearningFactor>-.10</GlobalLearningFactor>
-					<MeleeDodgeChance>0.2</MeleeDodgeChance>
-					<MiningSpeed>0.2</MiningSpeed>
-					<MiningYield>0.2</MiningYield>
-                </statOffsets>
-		  </li>
-		</degreeDatas>
-		<conflictingTraits>
-		  <li>PhysicalProdigy</li>
-		  <li>InnerFire</li>
-		  <li>HeartOfFrost</li>
-		  <li>Arcanist</li>
-		  <li>StormBorn</li>
-		  <li>Summoner</li>
-		  <li>Gifted</li>
-	      <li>Paladin</li>
-		  <li>TM_Sniper</li>
-		  <li>Druid</li>
-		  <li>Bladedancer</li>
-		  <li>Necromancer</li>
-		  <li>Priest</li>
-		  <li>Ranger</li>
-		  <li>Lich</li>
-		  <li>TM_Bard</li>
-		</conflictingTraits>	
-	</TraitDef>	 	
-	
-	<TraitDef>
 		<defName>InnerFire</defName>
 		<commonality>0.001</commonality>
 		<degreeDatas>	
@@ -129,9 +50,13 @@
 			<degree>4</degree>
 				<statOffsets>
                     <MoveSpeed>.20</MoveSpeed>
-					<WorkSpeedGlobal>0.15</WorkSpeedGlobal>
+					<WorkSpeedGlobal>0.10</WorkSpeedGlobal>
                     <ImmunityGainSpeed>.4</ImmunityGainSpeed>
+					<PsychicSensitivity>0.20</PsychicSensitivity>
 					<MentalBreakThreshold>0.06</MentalBreakThreshold>
+					<ShootingAccuracy>-5</ShootingAccuracy>
+					<ComfyTemperatureMax>+15</ComfyTemperatureMax>
+					<ComfyTemperatureMin>+7</ComfyTemperatureMin>
                 </statOffsets>
 		  </li>
 		</degreeDatas>
@@ -162,11 +87,15 @@
 		  <li>
 			<label>Ice mage</label>
 			<description>NAME is attuned with the elements of water.</description>
-					<degree>4</degree>
+			<degree>4</degree>
 				<statOffsets>
-					<MentalBreakThreshold>-0.15</MentalBreakThreshold>
-					<ResearchSpeed>0.3</ResearchSpeed>
+					<MentalBreakThreshold>-0.10</MentalBreakThreshold>
+					<ResearchSpeed>0.20</ResearchSpeed>
+					<GlobalLearningFactor>0.10</GlobalLearningFactor>
+					<WorkSpeedGlobal>-0.10</WorkSpeedGlobal>					
 					<SocialImpact>-0.20</SocialImpact>
+					<ComfyTemperatureMax>-7</ComfyTemperatureMax>
+					<ComfyTemperatureMin>-15</ComfyTemperatureMin>
                 </statOffsets>
 		  </li>
 		</degreeDatas>
@@ -197,11 +126,11 @@
 		  <li>
 			<label>Lightning mage</label>
 			<description>NAME is attuned with the elements of lightning.</description>
-					<degree>4</degree>
+				<degree>4</degree>
 				<statOffsets>
 					<MoveSpeed>.20</MoveSpeed>
 					<WorkSpeedGlobal>0.10</WorkSpeedGlobal>
-					<MeleeDodgeChance>0.2</MeleeDodgeChance>
+					<MeleeDodgeChance>2</MeleeDodgeChance>
 					<MiningSpeed>-.4</MiningSpeed>
 					<MiningYield>-.2</MiningYield>
                 </statOffsets>
@@ -233,15 +162,18 @@
 		<degreeDatas>	
 		  <li>
 			<label>Arcane mage</label>
-			<description>NAME is attuned with arcane forces.</description>
+			<description>NAME is attuned with arcane forces, interacting directly with raw arcane power to move matter and energy at will.</description>
 			<degree>4</degree>
 			<statOffsets>
-				<MoveSpeed>.10</MoveSpeed>
-				<WorkSpeedGlobal>0.10</WorkSpeedGlobal>
-				<MedicalTendSpeed>.1</MedicalTendSpeed>
-				<ImmunityGainSpeed>.1</ImmunityGainSpeed>
+				<ResearchSpeed>0.10</ResearchSpeed>
 				<GlobalLearningFactor>.20</GlobalLearningFactor>
+				<MentalBreakThreshold>0.03</MentalBreakThreshold>
+				<SocialImpact>.10</SocialImpact>
+				<DiplomacyPower>.10</DiplomacyPower>
+				<TradePriceImprovement>.10</TradePriceImprovement>
 				<PsychicSensitivity>1.0</PsychicSensitivity>
+				<TameAnimalChance>-0.20</TameAnimalChance>
+				<TrainAnimalChance>-0.20</TrainAnimalChance>
 			</statOffsets>
 		  </li>
 		</degreeDatas>
@@ -274,10 +206,14 @@
 			<description>NAME is attuned with the forces of nature.</description>
 			<degree>4</degree>
 			<statOffsets>
-				<MedicalTendSpeed>.2</MedicalTendSpeed>
-				<ImmunityGainSpeed>.3</ImmunityGainSpeed>
+				<ImmunityGainSpeed>0.3</ImmunityGainSpeed>
 				<ToxicSensitivity>-0.20</ToxicSensitivity>
 				<TameAnimalChance>0.40</TameAnimalChance>
+				<TrainAnimalChance>0.20</TrainAnimalChance>
+				<SocialImpact>-.10</SocialImpact>
+				<DiplomacyPower>-.10</DiplomacyPower>
+				<TradePriceImprovement>-.10</TradePriceImprovement>
+				<AnimalGatherYield>.20</AnimalGatherYield>
 			</statOffsets>
 		  </li>
 		</degreeDatas>
@@ -307,13 +243,15 @@
 		<degreeDatas>	
 		  <li>
 			<label>Paladin</label>
-			<description>NAME has been bestowed with divine might.</description>
+			<description>NAME has been bestowed with divine might and has sworn to uphold justice wherever HE stands.</description>
 			<degree>4</degree>
 			<statOffsets>
 				<MoveSpeed>.10</MoveSpeed>
-				<WorkSpeedGlobal>0.10</WorkSpeedGlobal>
-				<MedicalTendSpeed>.2</MedicalTendSpeed>
 				<ImmunityGainSpeed>.2</ImmunityGainSpeed>
+				<MentalBreakThreshold>-0.02</MentalBreakThreshold>
+				<PainShockThreshold>0.10</PainShockThreshold>
+				<PsychicSensitivity>-.2</PsychicSensitivity>
+				<GlobalLearningFactor>-.15</GlobalLearningFactor>
 			</statOffsets>
 		  </li>
 		</degreeDatas>
@@ -348,10 +286,10 @@
 			<statOffsets>
 				<MoveSpeed>.10</MoveSpeed>
 				<ToxicSensitivity>0.10</ToxicSensitivity>
-				<ImmunityGainSpeed>.4</ImmunityGainSpeed>
-				<GlobalLearningFactor>0.10</GlobalLearningFactor>
-				<ComfyTemperatureMin>-20</ComfyTemperatureMin>
-				<ComfyTemperatureMax>+20</ComfyTemperatureMax>
+				<ComfyTemperatureMin>-8</ComfyTemperatureMin>
+				<ComfyTemperatureMax>+8</ComfyTemperatureMax>
+				<RecruitPrisonerChance>.10</RecruitPrisonerChance>
+				<SocialImpact>.10</SocialImpact>
 			</statOffsets>
 		  </li>
 		</degreeDatas>
@@ -376,153 +314,6 @@
 	</TraitDef> 	
 	
 	<TraitDef>
-		<defName>TM_Sniper</defName>
-		<commonality>0.001</commonality>
-		<disabledWorkTags> 
-			<li>Caring</li>
-			<li>Social</li>
-		</disabledWorkTags>
-		<degreeDatas>	
-		  <li>
-			<label>Sharpshooter</label>
-			<commonality>0.1</commonality>
-			<description>NAME has trained to become a sniper, skilled in the economy and accuracy of long range, small arms combat.  Training to become a sniper has caused HIM to become distanced from other colonists, not that HE cares.</description>
-			<degree>0</degree>
-				<statOffsets>
-					<MoveSpeed>.10</MoveSpeed>
-                    <AimingDelayFactor>-0.10</AimingDelayFactor>
-					<ShootingAccuracy>3</ShootingAccuracy>
-                </statOffsets>
-		  </li>
-		  <li>
-			<label>Sniper</label>
-			<commonality>0.0</commonality>
-			<description>NAME has trained to become a sniper, skilled in the economy and accuracy of long range, small arms combat.  Becoming a sniper has caused HIM to become distanced from other colonists, not that HE cares.</description>
-			<degree>1</degree>
-				<statOffsets>
-					<MoveSpeed>.15</MoveSpeed>
-                    <AimingDelayFactor>-0.15</AimingDelayFactor>
-					<ShootingAccuracy>7</ShootingAccuracy>
-                </statOffsets>
-		  </li>
-		  <li>
-			<label>Master Sniper</label>
-			<commonality>0.0</commonality>
-			<description>NAME is a master sniper, skilled in the economy and accuracy of long range, small arms combat.  Being a sniper has made HIM avoid other colonists, not that they care.</description>
-			<degree>2</degree>
-				<statOffsets>
-					<MoveSpeed>.20</MoveSpeed>
-                    <AimingDelayFactor>-0.22</AimingDelayFactor>
-					<ShootingAccuracy>11</ShootingAccuracy>
-                </statOffsets>
-		  </li>
-		  <li>
-			<label>Legendary Sniper</label>
-			<commonality>0.0</commonality>
-			<description>NAME is a legendary sniper, skilled in the economy and accuracy of long range, small arms combat.  Other colonists avoid eye contact and whisper in corners about how dangerous HE is.  HE quite likes it when they do.</description>
-			<degree>3</degree>
-				<statOffsets>
-					<MoveSpeed>.25</MoveSpeed>
-                    <AimingDelayFactor>-0.30</AimingDelayFactor>
-					<ShootingAccuracy>15</ShootingAccuracy>
-                </statOffsets>
-		  </li>
-		</degreeDatas>
-		<conflictingTraits>
-		  <li>PhysicalProdigy</li>
-		  <li>InnerFire</li>
-		  <li>HeartOfFrost</li>
-		  <li>Arcanist</li>
-		  <li>StormBorn</li>
-		  <li>Summoner</li>
-		  <li>Gifted</li>
-	      <li>Paladin</li>
-		  <li>Gladiator</li>
-		  <li>Druid</li>
-		  <li>Bladedancer</li>
-		  <li>Necromancer</li>
-		  <li>Priest</li>
-		  <li>Ranger</li>
-		  <li>Lich</li>
-		  <li>TM_Bard</li>
-		</conflictingTraits>	
-	</TraitDef>
-	
-	<TraitDef>
-		<defName>Bladedancer</defName>
-		<commonality>0.001</commonality>		
-		<degreeDatas>	
-		  <li>
-			<label>Bladesman</label>
-			<commonality>0.1</commonality>
-			<description>NAME is training to become a master of the blade and excels at fighting in melee combat.</description>
-			<degree>0</degree>
-				<statOffsets>
-					<MoveSpeed>.15</MoveSpeed>
-                    <MentalBreakThreshold>-0.03</MentalBreakThreshold>
-					<MeleeHitChance>3</MeleeHitChance>
-                </statOffsets>
-		  </li>
-		  <li>
-			<label>Blademaster</label>
-			<commonality>0</commonality>
-			<description>NAME has trained to become a sword master, dangerously skilled in melee combat.</description>
-			<degree>1</degree>
-				<statOffsets>
-					<MoveSpeed>.20</MoveSpeed>
-                    <MentalBreakThreshold>-0.05</MentalBreakThreshold>
-					<MeleeHitChance>6</MeleeHitChance>
-					<MeleeDodgeChance>5</MeleeDodgeChance>
-                </statOffsets>
-		  </li>
-		  <li>
-			<label>Bladedancer</label>
-			<commonality>0</commonality>
-			<description>NAME is a blade dancer, highly skilled in melee combat.  Watching HECAP fight is like watching a dance, every action precise and flawless as it flows from one form into another.</description>
-			<degree>2</degree>
-				<statOffsets>
-					<MoveSpeed>.30</MoveSpeed>
-                    <MentalBreakThreshold>-0.08</MentalBreakThreshold>
-					<MeleeHitChance>10</MeleeHitChance>
-					<MeleeDodgeChance>10</MeleeDodgeChance>
-					<PainShockThreshold>0.05</PainShockThreshold>
-                </statOffsets>
-		  </li>
-		  <li>
-			<label>Legendary bladedancer</label>
-			<commonality>0</commonality>
-			<description>NAME has become a legend, HIS skill in melee combat is is known across the world.  HECAP's skill in combat makes it look as if each movement, each strike, is merely a stitch in a tapestry that depicts HIS victory.</description>
-			<degree>3</degree>
-				<statOffsets>
-					<MoveSpeed>.40</MoveSpeed>
-                    <MentalBreakThreshold>-0.10</MentalBreakThreshold>
-					<MeleeHitChance>15</MeleeHitChance>
-					<MeleeDodgeChance>15</MeleeDodgeChance>
-					<PainShockThreshold>0.10</PainShockThreshold>
-                </statOffsets>
-		  </li>
-		</degreeDatas>
-		<conflictingTraits>
-		  <li>PhysicalProdigy</li>
-		  <li>InnerFire</li>
-		  <li>HeartOfFrost</li>
-		  <li>Arcanist</li>
-		  <li>StormBorn</li>
-		  <li>Summoner</li>
-		  <li>Gifted</li>
-	      <li>Paladin</li>
-		  <li>Gladiator</li>
-		  <li>Druid</li>
-		  <li>TM_Sniper</li>
-		  <li>Necromancer</li>
-		  <li>Priest</li>
-		  <li>Ranger</li>
-		  <li>Lich</li>
-		  <li>TM_Bard</li>
-		</conflictingTraits>	
-	</TraitDef>
-	
-	<TraitDef>
 		<defName>Necromancer</defName>
 		<commonality>0.001</commonality>
 		<degreeDatas>	
@@ -531,13 +322,14 @@
 			<description>NAME is attuned with the forces of death.</description>
 			<degree>4</degree>
 			<statOffsets>
-				<MoveSpeed>-0.4</MoveSpeed>
+				<MoveSpeed>-0.3</MoveSpeed>
 				<ComfyTemperatureMin>-20</ComfyTemperatureMin>
 				<ImmunityGainSpeed>.4</ImmunityGainSpeed>
 				<ToxicSensitivity>-0.40</ToxicSensitivity>
 				<MentalBreakThreshold>-0.1</MentalBreakThreshold>
 				<GlobalLearningFactor>0.40</GlobalLearningFactor>
 				<TradePriceImprovement>-0.5</TradePriceImprovement>
+				<RecruitPrisonerChance>-.25</RecruitPrisonerChance>
 			</statOffsets>
 		  </li>
 		</degreeDatas>
@@ -576,7 +368,7 @@
 		<degreeDatas>	
 		  <li>
 			<label>Lich</label>
-			<description>NAME has transformed into a lich, forsaking life in exchange for an power and an immortal existence.</description>
+			<description>NAME has transformed into a lich, forsaking life in exchange for an power and an immortal existence, choosing to employ undead for menial tasks.</description>
 			<degree>4</degree>
 			<statOffsets>
 				<MoveSpeed>-2</MoveSpeed>
@@ -586,6 +378,7 @@
 				<MentalBreakThreshold>-0.2</MentalBreakThreshold>
 				<GlobalLearningFactor>0.6</GlobalLearningFactor>
 				<TradePriceImprovement>-0.5</TradePriceImprovement>
+				<RecruitPrisonerChance>-.5</RecruitPrisonerChance>
 			</statOffsets>
 			<skillGains>
 			  <li>
@@ -636,15 +429,16 @@
 		<degreeDatas>	
 		  <li>
 			<label>Priest</label>
-			<description>NAME is attuned with the forces of life and healing.</description>
+			<description>NAME is attuned with the forces of life and healing and has taken a vow against harming others.</description>
 			<degree>4</degree>
 			<statOffsets>
 				<MoveSpeed>0.15</MoveSpeed>
 				<ImmunityGainSpeed>0.3</ImmunityGainSpeed>
-				<MedicalSurgerySuccessChance>0.40</MedicalSurgerySuccessChance>
+				<MedicalSurgerySuccessChance>0.25</MedicalSurgerySuccessChance>
 				<MedicalTendQuality>0.25</MedicalTendQuality>
 				<MedicalOperationSpeed>0.25</MedicalOperationSpeed>
 				<MedicalTendSpeed>0.25</MedicalTendSpeed>
+				<PainShockThreshold>-.10</PainShockThreshold>
 			</statOffsets>
 			<skillGains>
 				<li>
@@ -703,84 +497,7 @@
 		  </li>
 		</degreeDatas>	
 	</TraitDef>
-	
-	<TraitDef>
-		<defName>Ranger</defName>
-		<commonality>0.001</commonality>		
-		<degreeDatas>	
-		  <li>
-			<label>Woodsman</label>
-			<commonality>0.1</commonality>
-			<description>NAME is a trained woodsman; preferring the silence and lethality of a bow and armed with fieldcraft and cunning, HE is prepared to defend HIS land from invaders.</description>
-			<degree>0</degree>
-				<statOffsets>
-					<MoveSpeed>.20</MoveSpeed>
-					<ImmunityGainSpeed>0.20</ImmunityGainSpeed>
-					<ComfyTemperatureMax>+10</ComfyTemperatureMax>
-					<ComfyTemperatureMin>-10</ComfyTemperatureMin>
-                    <AimingDelayFactor>-0.15</AimingDelayFactor>
-                </statOffsets>
-		  </li>
-		  <li>
-			<label>Hunter</label>
-			<commonality>0</commonality>
-			<description>NAME is a hunter; HE employs fieldcraft, cunning, and skill with a bow to defend HIS land from invaders.</description>
-			<degree>1</degree>
-				<statOffsets>
-					<MoveSpeed>.3</MoveSpeed>
-					<ImmunityGainSpeed>0.3</ImmunityGainSpeed>
-					<ComfyTemperatureMax>+15</ComfyTemperatureMax>
-					<ComfyTemperatureMin>-15</ComfyTemperatureMin>
-                    <AimingDelayFactor>-0.20</AimingDelayFactor>
-                </statOffsets>
-		  </li>
-		  <li>
-			<label>Scout</label>
-			<commonality>0</commonality>
-			<description>NAME is a scout; comfortable in the wilds, and relied upon to be the eyes and ears of a colony.  HE employs expertise in fieldcraft, cunning, and the bow to defend HIS land from invaders.</description>
-			<degree>2</degree>
-				<statOffsets>
-					<MoveSpeed>.4</MoveSpeed>
-					<ImmunityGainSpeed>0.4</ImmunityGainSpeed>
-					<ComfyTemperatureMax>+20</ComfyTemperatureMax>
-					<ComfyTemperatureMin>-20</ComfyTemperatureMin>
-                    <AimingDelayFactor>-0.30</AimingDelayFactor>
-                </statOffsets>
-		  </li>
-		  <li>
-			<label>Ranger</label>
-			<commonality>0</commonality>
-			<description>NAME is a ranger; master of the wilds.  HE is a master of HIS craft and defender of HIS land.</description>
-			<degree>3</degree>
-				<statOffsets>
-					<MoveSpeed>.5</MoveSpeed>
-					<ImmunityGainSpeed>0.5</ImmunityGainSpeed>
-					<ComfyTemperatureMax>+25</ComfyTemperatureMax>
-					<ComfyTemperatureMin>-25</ComfyTemperatureMin>
-                    <AimingDelayFactor>-0.40</AimingDelayFactor>
-                </statOffsets>
-		  </li>
-		</degreeDatas>
-		<conflictingTraits>
-		  <li>PhysicalProdigy</li>
-		  <li>InnerFire</li>
-		  <li>HeartOfFrost</li>
-		  <li>Arcanist</li>
-		  <li>StormBorn</li>
-		  <li>Summoner</li>
-		  <li>Gifted</li>
-	      <li>Paladin</li>
-		  <li>Gladiator</li>
-		  <li>Druid</li>
-		  <li>TM_Sniper</li>
-		  <li>Necromancer</li>
-		  <li>Priest</li>
-		  <li>Bladedancer</li>
-		  <li>Lich</li>
-		  <li>TM_Bard</li>
-		</conflictingTraits>	
-	</TraitDef>
-	
+
 	<TraitDef>
 		<defName>TM_Bard</defName>
 		<commonality>0.001</commonality>	
@@ -866,6 +583,356 @@
 		  <li>Bladedancer</li>
 		  <li>Lich</li>
 		  <li>Ranger</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>
+        <defName>PhysicalProdigy</defName>
+        <commonality>0.001</commonality>
+        <degreeDatas>
+            <li>
+                <label>physically adept</label>
+                <description>NAME is physically adept and has potential to learn special combat forms.</description>
+						<degree>2</degree>
+                <statOffsets>
+                    <MoveSpeed>.20</MoveSpeed>
+					<WorkSpeedGlobal>0.20</WorkSpeedGlobal>
+                    <ImmunityGainSpeed>.2</ImmunityGainSpeed>
+					<PsychicSensitivity>-0.4</PsychicSensitivity>
+					<GlobalLearningFactor>-.20</GlobalLearningFactor>
+                </statOffsets>
+            </li>
+        </degreeDatas>
+		<conflictingTraits>
+		  <li>Gladiator</li>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>Summoner</li>
+		  <li>Arcanist</li>
+		  <li>StormBorn</li>
+		  <li>Gifted</li>
+	      <li>Paladin</li>
+		  <li>TM_Sniper</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		</conflictingTraits>
+    </TraitDef>
+	
+	<TraitDef>
+		<defName>Gladiator</defName>
+		<commonality>0.001</commonality>
+		<degreeDatas>	
+		  <li>
+			<label>Gladiator</label>
+			<description>NAME has learned how to train the Gladiator combat style.</description>
+			<degree>4</degree>
+				<statOffsets>
+                    <MoveSpeed>.20</MoveSpeed>
+					<WorkSpeedGlobal>0.20</WorkSpeedGlobal>
+                    <ImmunityGainSpeed>.4</ImmunityGainSpeed>
+					<PsychicSensitivity>-0.6</PsychicSensitivity>
+					<MentalBreakThreshold>0.05</MentalBreakThreshold>
+					<GlobalLearningFactor>-.20</GlobalLearningFactor>
+					<MeleeDodgeChance>4</MeleeDodgeChance>
+					<MiningSpeed>0.2</MiningSpeed>
+					<MiningYield>0.2</MiningYield>
+					<PlantWorkSpeed>-.2</PlantWorkSpeed>
+					<PlantHarvestYield>-.2</PlantHarvestYield>
+					<ResearchSpeed>-.2</ResearchSpeed>
+                </statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>PhysicalProdigy</li>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>Arcanist</li>
+		  <li>StormBorn</li>
+		  <li>Summoner</li>
+		  <li>Gifted</li>
+	      <li>Paladin</li>
+		  <li>TM_Sniper</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>
+		<defName>Ranger</defName>
+		<commonality>0.001</commonality>		
+		<degreeDatas>	
+		  <li>
+			<label>Woodsman</label>
+			<commonality>0.1</commonality>
+			<description>NAME is a trained woodsman; preferring the silence and lethality of a bow and armed with field-craft and cunning, HE is prepared to defend HIS land from invaders.</description>
+			<degree>0</degree>
+				<statOffsets>
+					<MoveSpeed>.15</MoveSpeed>
+					<ImmunityGainSpeed>0.20</ImmunityGainSpeed>
+					<ComfyTemperatureMax>+10</ComfyTemperatureMax>
+					<ComfyTemperatureMin>-10</ComfyTemperatureMin>
+                    <AimingDelayFactor>-0.15</AimingDelayFactor>
+					<ToxicSensitivity>-.10</ToxicSensitivity>
+					<ButcheryFleshSpeed>0.05</ButcheryFleshSpeed>
+					<SmeltingSpeed>-0.10</SmeltingSpeed>
+					<ConstructionSpeed>-.05</ConstructionSpeed>
+					<TameAnimalChance>.05</TameAnimalChance>
+					<TrainAnimalChance>.05</TrainAnimalChance>
+                </statOffsets>
+		  </li>
+		  <li>
+			<label>Hunter</label>
+			<commonality>0</commonality>
+			<description>NAME is a hunter; HE employs field-craft, cunning, and skill with a bow to defend HIS land from invaders.</description>
+			<degree>1</degree>
+				<statOffsets>
+					<MoveSpeed>.2</MoveSpeed>
+					<ImmunityGainSpeed>0.3</ImmunityGainSpeed>
+					<ComfyTemperatureMax>+15</ComfyTemperatureMax>
+					<ComfyTemperatureMin>-15</ComfyTemperatureMin>
+                    <AimingDelayFactor>-0.20</AimingDelayFactor>
+					<ToxicSensitivity>-.15</ToxicSensitivity>
+					<ButcheryFleshSpeed>0.10</ButcheryFleshSpeed>
+					<SmeltingSpeed>-0.15</SmeltingSpeed>
+					<ConstructionSpeed>-.10</ConstructionSpeed>
+					<TameAnimalChance>.08</TameAnimalChance>
+					<TrainAnimalChance>.08</TrainAnimalChance>
+                </statOffsets>
+		  </li>
+		  <li>
+			<label>Scout</label>
+			<commonality>0</commonality>
+			<description>NAME is a scout; comfortable in the wilds, and relied upon to be the eyes and ears of a colony.  HE employs expertise in field-craft, cunning, and the bow to defend HIS land from invaders.</description>
+			<degree>2</degree>
+				<statOffsets>
+					<MoveSpeed>.25</MoveSpeed>
+					<ImmunityGainSpeed>0.4</ImmunityGainSpeed>
+					<ComfyTemperatureMax>+20</ComfyTemperatureMax>
+					<ComfyTemperatureMin>-20</ComfyTemperatureMin>
+                    <AimingDelayFactor>-0.30</AimingDelayFactor>
+					<ToxicSensitivity>-.20</ToxicSensitivity>
+					<ButcheryFleshSpeed>0.15</ButcheryFleshSpeed>
+					<SmeltingSpeed>-0.18</SmeltingSpeed>
+					<ConstructionSpeed>-.13</ConstructionSpeed>
+					<TameAnimalChance>.10</TameAnimalChance>
+					<TrainAnimalChance>.10</TrainAnimalChance>
+                </statOffsets>
+		  </li>
+		  <li>
+			<label>Ranger</label>
+			<commonality>0</commonality>
+			<description>NAME is a ranger; master of the wilds.  HE is a master of HIS craft and defender of HIS land.</description>
+			<degree>3</degree>
+				<statOffsets>
+					<MoveSpeed>.3</MoveSpeed>
+					<ImmunityGainSpeed>0.5</ImmunityGainSpeed>
+					<ComfyTemperatureMax>+25</ComfyTemperatureMax>
+					<ComfyTemperatureMin>-25</ComfyTemperatureMin>
+                    <AimingDelayFactor>-0.40</AimingDelayFactor>
+					<ToxicSensitivity>-.25</ToxicSensitivity>
+					<ButcheryFleshSpeed>0.20</ButcheryFleshSpeed>
+					<SmeltingSpeed>-0.20</SmeltingSpeed>
+					<ConstructionSpeed>-.15</ConstructionSpeed>
+					<TameAnimalChance>.12</TameAnimalChance>
+					<TrainAnimalChance>.12</TrainAnimalChance>
+					
+                </statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>PhysicalProdigy</li>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>Arcanist</li>
+		  <li>StormBorn</li>
+		  <li>Summoner</li>
+		  <li>Gifted</li>
+	      <li>Paladin</li>
+		  <li>Gladiator</li>
+		  <li>Druid</li>
+		  <li>TM_Sniper</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Bladedancer</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>
+		<defName>TM_Sniper</defName>
+		<commonality>0.001</commonality>
+		<degreeDatas>	
+		  <li>
+			<label>Sharpshooter</label>
+			<commonality>0.1</commonality>
+			<description>NAME has trained to become a sniper, skilled in the economy and accuracy of long range, small arms combat. Training to become a sniper has caused some colonists to be uncomfortable around HIM, not that HE cares.</description>
+			<degree>0</degree>
+				<statOffsets>
+					<MoveSpeed>.10</MoveSpeed>
+                    <AimingDelayFactor>-0.10</AimingDelayFactor>
+					<ShootingAccuracy>3</ShootingAccuracy>
+					<ResearchSpeed>-0.10</ResearchSpeed>
+					<WorkSpeedGlobal>-.10</WorkSpeedGlobal>
+					<TameAnimalChance>-.10</TameAnimalChance>
+					<TrainAnimalChance>-.10</TrainAnimalChance>
+                </statOffsets>
+		  </li>
+		  <li>
+			<label>Sniper</label>
+			<commonality>0.0</commonality>
+			<description>NAME has trained to become a sniper, skilled in the economy and accuracy of long range, small arms combat. Becoming a sniper has caused HIM to become distanced from other colonists and somewhat unapproachable, not that HE cares.</description>
+			<degree>1</degree>
+				<statOffsets>
+					<MoveSpeed>.15</MoveSpeed>
+                    <AimingDelayFactor>-0.15</AimingDelayFactor>
+					<ShootingAccuracy>7</ShootingAccuracy>
+					<ResearchSpeed>-0.13</ResearchSpeed>
+					<WorkSpeedGlobal>-.13</WorkSpeedGlobal>
+					<TameAnimalChance>-.13</TameAnimalChance>
+					<TrainAnimalChance>-.13</TrainAnimalChance>
+                </statOffsets>
+		  </li>
+		  <li>
+			<label>Master Sniper</label>
+			<commonality>0.0</commonality>
+			<description>NAME is a master sniper, skilled in the economy and accuracy of long range, small arms combat. Being a sniper has made HIM avoid other colonists, not that they care.</description>
+			<degree>2</degree>
+				<statOffsets>
+					<MoveSpeed>.20</MoveSpeed>
+                    <AimingDelayFactor>-0.22</AimingDelayFactor>
+					<ShootingAccuracy>11</ShootingAccuracy>
+					<ResearchSpeed>-0.15</ResearchSpeed>
+					<WorkSpeedGlobal>-.15</WorkSpeedGlobal>
+					<TameAnimalChance>-.15</TameAnimalChance>
+					<TrainAnimalChance>-.15</TrainAnimalChance>
+                </statOffsets>
+		  </li>
+		  <li>
+			<label>Legendary Sniper</label>
+			<commonality>0.0</commonality>
+			<description>NAME is a legendary sniper, skilled in the economy and accuracy of long range, small arms combat.  Other colonists avoid eye contact and whisper in corners about how dangerous HE is.  HE quite likes it when they do.</description>
+			<degree>3</degree>
+				<statOffsets>
+					<MoveSpeed>.25</MoveSpeed>
+                    <AimingDelayFactor>-0.30</AimingDelayFactor>
+					<ShootingAccuracy>15</ShootingAccuracy>
+					<ResearchSpeed>-0.16</ResearchSpeed>
+					<WorkSpeedGlobal>-.16</WorkSpeedGlobal>
+					<TameAnimalChance>-.16</TameAnimalChance>
+					<TrainAnimalChance>-.16</TrainAnimalChance>
+                </statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>PhysicalProdigy</li>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>Arcanist</li>
+		  <li>StormBorn</li>
+		  <li>Summoner</li>
+		  <li>Gifted</li>
+	      <li>Paladin</li>
+		  <li>Gladiator</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>
+		<defName>Bladedancer</defName>
+		<commonality>0.001</commonality>		
+		<degreeDatas>	
+		  <li>
+			<label>Bladesman</label>
+			<commonality>0.1</commonality>
+			<description>NAME is training to become a master of the blade and excels at fighting in melee combat.</description>
+			<degree>0</degree>
+				<statOffsets>
+					<MoveSpeed>.15</MoveSpeed>
+                    <MentalBreakThreshold>-0.03</MentalBreakThreshold>
+					<MeleeHitChance>3</MeleeHitChance>
+					<ShootingAccuracy>-20</ShootingAccuracy>
+					<WorkSpeedGlobal>-.10</WorkSpeedGlobal>
+                </statOffsets>
+		  </li>
+		  <li>
+			<label>Blademaster</label>
+			<commonality>0</commonality>
+			<description>NAME has trained to become a sword master, dangerously skilled in melee combat.</description>
+			<degree>1</degree>
+				<statOffsets>
+					<MoveSpeed>.20</MoveSpeed>
+                    <MentalBreakThreshold>-0.05</MentalBreakThreshold>
+					<MeleeHitChance>6</MeleeHitChance>
+					<MeleeDodgeChance>5</MeleeDodgeChance>
+					<ShootingAccuracy>-25</ShootingAccuracy>
+					<WorkSpeedGlobal>-.12</WorkSpeedGlobal>
+                </statOffsets>
+		  </li>
+		  <li>
+			<label>Bladedancer</label>
+			<commonality>0</commonality>
+			<description>NAME is a blade dancer, highly skilled in melee combat.  Watching HECAP fight is like watching a dance, every action precise and flawless as it flows from one form into another.</description>
+			<degree>2</degree>
+				<statOffsets>
+					<MoveSpeed>.30</MoveSpeed>
+                    <MentalBreakThreshold>-0.08</MentalBreakThreshold>
+					<MeleeHitChance>10</MeleeHitChance>
+					<MeleeDodgeChance>10</MeleeDodgeChance>
+					<PainShockThreshold>0.05</PainShockThreshold>
+					<ShootingAccuracy>-28</ShootingAccuracy>
+					<WorkSpeedGlobal>-.14</WorkSpeedGlobal>
+                </statOffsets>
+		  </li>
+		  <li>
+			<label>Legendary bladedancer</label>
+			<commonality>0</commonality>
+			<description>NAME has become a legend, HIS skill in melee combat is is known across the world.  HECAP's skill in combat makes it look as if each movement, each strike, is merely a stitch in a tapestry that depicts HIS victory.</description>
+			<degree>3</degree>
+				<statOffsets>
+					<MoveSpeed>.40</MoveSpeed>
+                    <MentalBreakThreshold>-0.10</MentalBreakThreshold>
+					<MeleeHitChance>15</MeleeHitChance>
+					<MeleeDodgeChance>15</MeleeDodgeChance>
+					<PainShockThreshold>0.10</PainShockThreshold>
+					<ShootingAccuracy>-30</ShootingAccuracy>
+					<WorkSpeedGlobal>-.15</WorkSpeedGlobal>
+                </statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>PhysicalProdigy</li>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>Arcanist</li>
+		  <li>StormBorn</li>
+		  <li>Summoner</li>
+		  <li>Gifted</li>
+	      <li>Paladin</li>
+		  <li>Gladiator</li>
+		  <li>Druid</li>
+		  <li>TM_Sniper</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
 		</conflictingTraits>	
 	</TraitDef>
 

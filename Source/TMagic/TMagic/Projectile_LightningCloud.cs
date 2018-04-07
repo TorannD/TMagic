@@ -59,24 +59,24 @@ namespace TorannMagic
             pwrVal = pwr.level;
             verVal = ver.level;
             this.arcaneDmg = comp.arcaneDmg;
-            if (settingsRef.AIHardMode && !pawn.IsColonistPlayerControlled)
+            if (settingsRef.AIHardMode && !pawn.IsColonist)
             {
                 pwrVal = 3;
                 verVal = 3;
             }
-            radius = (int)this.def.projectile.explosionRadius + (2 * verVal);
+            radius = (int)this.def.projectile.explosionRadius + (1 * verVal);
 
             CellRect cellRect = CellRect.CenteredOn(base.Position, radius - 3);
             cellRect.ClipInsideMap(map);
             IntVec3 randomCell = cellRect.RandomCell;
 
-            duration = 900 + (verVal * 360);
+            duration = 900 + (verVal * 120);
 
             if (this.primed == true)
             {
                 if (((this.shockDelay + this.lastStrike) < this.age))
                 {
-                    for (int i = 0; i < 5; i++)
+                    for (int i = 0; i < 4; i++)
                     {
                         randomCell = cellRect.RandomCell;
                         if (randomCell.InBounds(map))
@@ -122,8 +122,13 @@ namespace TorannMagic
 
         public void damageEntities(Pawn e, int amt)
         {
-            DamageInfo dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_LightningCloud, amt, (float)-1, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+            
             DamageInfo dinfo2 = new DamageInfo(DamageDefOf.Stun, amt, (float)-1, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+            if(Rand.Chance(.35f))
+            {
+                amt = 0;
+            }
+            DamageInfo dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_LightningCloud, amt, (float)-1, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
 
             bool flag = e != null;
             if (flag)
@@ -146,7 +151,7 @@ namespace TorannMagic
         public static void Explosion(IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
         {
             System.Random rnd = new System.Random();
-            int modDamAmountRand = modDamAmountRand = GenMath.RoundRandom(rnd.Next(1, projectile.projectile.damageAmountBase));
+            int modDamAmountRand = GenMath.RoundRandom(rnd.Next(1, projectile.projectile.damageAmountBase));
 
             if (map == null)
             {

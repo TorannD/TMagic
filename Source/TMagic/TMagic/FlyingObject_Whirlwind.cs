@@ -114,7 +114,7 @@ namespace TorannMagic
                 MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
                 weaponDmg = GetWeaponDmg(pawn);
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                if (!pawn.IsColonistPlayerControlled && settingsRef.AIHardMode)
+                if (!pawn.IsColonist && settingsRef.AIHardMode)
                 {
                     weaponDmg += 10;
                 }
@@ -210,7 +210,10 @@ namespace TorannMagic
             {
                 base.Position = this.ExactPosition.ToIntVec3();
                 MoteMaker.ThrowDustPuff(base.Position, base.Map, Rand.Range(0.8f, 1.2f));
-                DoWhirlwindDamage();
+                if (Find.TickManager.TicksGame % 3 == 0)
+                {
+                    DoWhirlwindDamage();
+                }
                 bool flag2 = this.ticksToImpact <= 0;
                 if (flag2)
                 {
@@ -278,9 +281,9 @@ namespace TorannMagic
             }
         }
 
-        private int GetWeaponDmg(Pawn caster)
+        public static int GetWeaponDmg(Pawn caster)
         {
-            int dmgNum = 1;
+            int dmgNum = 2;
             CompAbilityUserMight comp = caster.GetComp<CompAbilityUserMight>();
             MightPowerSkill pwr = comp.MightData.MightPowerSkill_Whirlwind.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Whirlwind_pwr");
             MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
@@ -302,9 +305,9 @@ namespace TorannMagic
             }
             else
             {
-                dmgNum = 4;
+                dmgNum = 2;
             }
-            return dmgNum;
+            return Mathf.Max(2, dmgNum);
         }
 
         public override void Draw()
@@ -411,7 +414,7 @@ namespace TorannMagic
             GenSpawn.Spawn(this.flyingThing, base.Position, base.Map);
             ModOptions.Constants.SetPawnInFlight(false);
             Pawn p = this.flyingThing as Pawn;
-            if(p.IsColonistPlayerControlled)
+            if(p.IsColonist)
             {
                 p.drafter.Drafted = true;
             }

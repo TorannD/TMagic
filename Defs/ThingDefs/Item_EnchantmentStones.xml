@@ -435,6 +435,9 @@
   <ThingDef ParentName="MagicResourceBase">
     <defName>RawMagicyte</defName>
     <label>unrefined magicyte</label>
+	<tradeTags>
+	  <li>RawArcane</li>
+    </tradeTags>
     <description>A stone that seems to wrap itself in a dull, glassy surface, as if a mysterious power has cloaked itself in the center of the stone. Seemingly composed of the same stone it was cut from, this fairly unremarkable stone shimmers slightly, even in the dark, and it emits an energy signature that mages can detect when touching the stone.
 	
 Raw Magicyte can be refined to make a variety of enchanting gems at the gemcutting table.</description>

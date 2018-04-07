@@ -28,6 +28,7 @@
         <label>AMP</label>
         <uiIconPath>UI/amp</uiIconPath>
         <description>Blessing: Augmented by Magical Power - aka "AMP."  Short term augmentation that drastically increases physical capacity at the cost of increased stress on the body.
+
 Duration: 		30-40s
 Physical capacity: 	~+30%
 Physical demand: 	+40%
@@ -42,7 +43,7 @@ Pain:		-20%</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Buff_AMP</defaultProjectile>
             <abilityDef>TM_AMP</abilityDef>
-            <warmupTime>4</warmupTime>
+            <warmupTime>2</warmupTime>
             <SecondsToRecharge>600.0</SecondsToRecharge>
             <range>40</range>
             <burstShotCount>1</burstShotCount>
@@ -56,8 +57,8 @@ Pain:		-20%</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>true</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>3</maxTargets>
-                <range>10</range>
+                <maxTargets>5</maxTargets>
+                <range>5</range>
             </TargetAoEProperties>
             <isPrimary>false</isPrimary>
 			<isViolent>false</isViolent>
@@ -70,7 +71,7 @@ Pain:		-20%</description>
 			<hediffsToApply>
 				<li>
 					<hediffDef>AMP_I</hediffDef>
-					<applyChance>0.8</applyChance>
+					<applyChance>1</applyChance>
 				</li>
 			</hediffsToApply>
         </MainVerb>
@@ -81,10 +82,11 @@ Pain:		-20%</description>
         <label>AMP</label>
         <uiIconPath>UI/amp</uiIconPath>
         <description>Blessing: Augmented by Magical Power - aka "AMP."  Drastically increases physical capacity at the cost of increased stress on the body.
+		
 Duration: 		30-40s
-Physical capacity: 	~+30%
-Physical demand: 	+40%
-Pain:		-50%</description>
+Physical capacity: 	~+50%
+Physical demand: 	+60%
+Pain:		-20%</description>
 		<manaCost>0.30</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
@@ -109,8 +111,8 @@ Pain:		-50%</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>true</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>4</maxTargets>
-                <range>10</range>
+                <maxTargets>6</maxTargets>
+                <range>6</range>
             </TargetAoEProperties>
             <isPrimary>false</isPrimary>
 			<isViolent>false</isViolent>
@@ -134,10 +136,11 @@ Pain:		-50%</description>
         <label>AMP</label>
         <uiIconPath>UI/amp</uiIconPath>
         <description>Blessing: Augmented by Magical Power - aka "AMP."  Drastically increases physical capacity at the cost of increased stress on the body.
+		
 Duration: 		50-60s
-Physical capacity: 	~+75%
+Physical capacity: 	~+65%
 Physical demand: 	+60%
-Pain:		-80%</description>
+Pain:		-30%</description>
 		<manaCost>0.30</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
@@ -162,8 +165,8 @@ Pain:		-80%</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>true</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>5</maxTargets>
-                <range>12</range>
+                <maxTargets>8</maxTargets>
+                <range>8</range>
             </TargetAoEProperties>
             <isPrimary>false</isPrimary>
 			<isViolent>false</isViolent>
@@ -187,9 +190,11 @@ Pain:		-80%</description>
         <label>AMP</label>
         <uiIconPath>UI/amp</uiIconPath>
         <description>Blessing: Augmented by Magical Power - aka "AMP."  Drastically increases physical capacity at the cost of increased stress on the body.
+		
 Duration: 		50-60s
-Physical capacity: 	~+150%
-Physical demand: 	+100%</description>
+Physical capacity: 	~+80%
+Physical demand: 	+100%
+Pain:		-40%</description>
 		<manaCost>0.30</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
@@ -259,7 +264,8 @@ Physical demand: 	+100%</description>
         <defName>TM_Shadow</defName>
         <label>Shadow</label>
         <uiIconPath>UI/shadow</uiIconPath>
-        <description>Blessing: Arcane augmentation that assists the worker.  Summons a shadow worker to improve worker efficiency. 80% success rate.
+        <description>Blessing: Arcane augmentation that assists the worker. Summons a shadow worker to improve worker efficiency. 70% success rate.
+		
 Duration:		500-600s
 Physical capacity: 	+20%
 Physical demand: 	-10%
@@ -302,7 +308,7 @@ Mood decrease:	-4</description>
 			<hediffsToApply>
 				<li>
 					<hediffDef>Shadow_I</hediffDef>
-					<applyChance>0.8</applyChance>
+					<applyChance>0.7</applyChance>
 				</li>
 			</hediffsToApply>
         </MainVerb>
@@ -312,7 +318,8 @@ Mood decrease:	-4</description>
         <defName>TM_Shadow_I</defName>
         <label>Shadow</label>
         <uiIconPath>UI/shadow</uiIconPath>
-        <description>Blessing: Arcane augmentation that assists the worker.  Summons a shadow worker to improve worker efficiency.
+        <description>Blessing: Arcane augmentation that assists the worker. Summons a shadow worker to improve worker efficiency. 80% success rate.
+		
 Duration:		500-600s
 Physical capacity: 	+20%
 Physical demand: 	-10%
@@ -341,7 +348,7 @@ Mood decrease:	-4</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>true</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>3</maxTargets>
+                <maxTargets>4</maxTargets>
                 <range>8</range>
             </TargetAoEProperties>
             <isPrimary>false</isPrimary>
@@ -355,7 +362,7 @@ Mood decrease:	-4</description>
 			<hediffsToApply>
 				<li>
 					<hediffDef>Shadow_I</hediffDef>
-					<applyChance>1.0</applyChance>
+					<applyChance>.80</applyChance>
 				</li>
 			</hediffsToApply>
         </MainVerb>
@@ -365,7 +372,8 @@ Mood decrease:	-4</description>
         <defName>TM_Shadow_II</defName>
         <label>Shadow</label>
         <uiIconPath>UI/shadow</uiIconPath>
-        <description>Blessing: Arcane augmentation that assists the worker.  Summons a shadow worker to improve worker efficiency.
+        <description>Blessing: Arcane augmentation that assists the worker. Summons a shadow worker to improve worker efficiency. 85% success rate.
+		
 Duration:		1100-1250s
 Physical capacity: 	+40%
 Physical demand: 	-15%
@@ -394,7 +402,7 @@ Mood decrease:	-6</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>true</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>4</maxTargets>
+                <maxTargets>5</maxTargets>
                 <range>10</range>
             </TargetAoEProperties>
             <isPrimary>false</isPrimary>
@@ -408,7 +416,7 @@ Mood decrease:	-6</description>
 			<hediffsToApply>
 				<li>
 					<hediffDef>Shadow_II</hediffDef>
-					<applyChance>1.0</applyChance>
+					<applyChance>.85</applyChance>
 				</li>
 			</hediffsToApply>
         </MainVerb>
@@ -418,7 +426,8 @@ Mood decrease:	-6</description>
         <defName>TM_Shadow_III</defName>
         <label>Shadow</label>
         <uiIconPath>UI/shadow</uiIconPath>
-        <description>Blessing: Arcane augmentation that assists the worker.  Summons a shadow worker to improve worker efficiency.
+        <description>Blessing: Arcane augmentation that assists the worker. Summons a shadow worker to improve worker efficiency. 90% success rate.
+		
 Duration:		1100-1250s
 Physical capacity: 	+60%
 Physical demand: 	-30%
@@ -447,7 +456,7 @@ Mood decrease:	-8</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>true</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>5</maxTargets>
+                <maxTargets>6</maxTargets>
                 <range>12</range>
             </TargetAoEProperties>
             <isPrimary>false</isPrimary>
@@ -493,14 +502,15 @@ Mood decrease:	-8</description>
         <defName>TM_Soothe</defName>
         <label>Soothing Breeze</label>
         <uiIconPath>UI/soothe</uiIconPath>
-        <description>Blessing: a soothing breeze settles anxiety and lightens the mood. 80% success rate.
+        <description>Blessing: a soothing breeze settles anxiety and lightens the mood. 70% success rate.
+		
 Duration:		100-117s
 Physical capacity: 	+10%
 Physical demand: 	-12%
 Pain:		-20%
 Infighting:		-10%
-Mood increase:	+8</description>
-		<manaCost>0.40</manaCost>
+Mood increase:	+2</description>
+		<manaCost>0.45</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -524,7 +534,7 @@ Mood increase:	+8</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>true</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>3</maxTargets>
+                <maxTargets>5</maxTargets>
                 <range>10</range>
             </TargetAoEProperties>
             <isPrimary>false</isPrimary>
@@ -538,7 +548,7 @@ Mood increase:	+8</description>
 			<hediffsToApply>
 				<li>
 					<hediffDef>SoothingBreeze_I</hediffDef>
-					<applyChance>.8</applyChance>
+					<applyChance>.7</applyChance>
 				</li>
 			</hediffsToApply>
 			
@@ -549,14 +559,15 @@ Mood increase:	+8</description>
         <defName>TM_Soothe_I</defName>
         <label>Soothing Breeze</label>
         <uiIconPath>UI/soothe</uiIconPath>
-        <description>Blessing: a soothing breeze settles anxiety and lightens the mood.
+        <description>Blessing: a soothing breeze settles anxiety and lightens the mood. 80% success rate.
+		
 Duration:		100-117s
 Physical capacity: 	+10%
 Physical demand: 	-12%
 Pain:		-20%
 Infighting:		-10%
-Mood increase:	+8</description>
-		<manaCost>0.40</manaCost>
+Mood increase:	+2</description>
+		<manaCost>0.45</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -580,7 +591,7 @@ Mood increase:	+8</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>true</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>4</maxTargets>
+                <maxTargets>6</maxTargets>
                 <range>10</range>
             </TargetAoEProperties>
             <isPrimary>false</isPrimary>
@@ -594,7 +605,7 @@ Mood increase:	+8</description>
 			<hediffsToApply>
 				<li>
 					<hediffDef>SoothingBreeze_I</hediffDef>
-					<applyChance>1</applyChance>
+					<applyChance>.8</applyChance>
 				</li>
 			</hediffsToApply>
 			
@@ -605,14 +616,15 @@ Mood increase:	+8</description>
         <defName>TM_Soothe_II</defName>
         <label>Soothing Breeze</label>
         <uiIconPath>UI/soothe</uiIconPath>
-        <description>Blessing: a soothing effect that settles nerves and focuses the mind.
+        <description>Blessing: a soothing effect that settles nerves and focuses the mind. 85% success rate.
+		
 Duration:		200-223s
 Physical capacity: 	+18%
 Physical demand: 	-25%
 Pain:		-40%
 Infighting:		-20%
-Mood increase:	+14</description>
-		<manaCost>0.40</manaCost>
+Mood increase:	+4</description>
+		<manaCost>0.45</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -650,7 +662,7 @@ Mood increase:	+14</description>
 			<hediffsToApply>
 				<li>
 					<hediffDef>SoothingBreeze_II</hediffDef>
-					<applyChance>1</applyChance>
+					<applyChance>.85</applyChance>
 				</li>
 			</hediffsToApply>
 			
@@ -661,14 +673,15 @@ Mood increase:	+14</description>
         <defName>TM_Soothe_III</defName>
         <label>Soothing Breeze</label>
         <uiIconPath>UI/soothe</uiIconPath>
-        <description>Blessing: a soothing effect that settles nerves and focuses the mind.
+        <description>Blessing: a soothing effect that settles nerves and focuses the mind. 90% success rate.
+		
 Duration:		500-600s
 Physical capacity: 	+25%
 Physical demand: 	-35%
-Pain:		-60%
+Pain:		-40%
 Infighting:		-30%
-Mood increase:	+20</description>
-		<manaCost>0.40</manaCost>
+Mood increase:	+6</description>
+		<manaCost>0.45</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -692,7 +705,7 @@ Mood increase:	+20</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>true</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>10</maxTargets>
+                <maxTargets>8</maxTargets>
                 <range>15</range>
             </TargetAoEProperties>
             <isPrimary>false</isPrimary>
@@ -706,7 +719,7 @@ Mood increase:	+20</description>
 			<hediffsToApply>
 				<li>
 					<hediffDef>SoothingBreeze_III</hediffDef>
-					<applyChance>1</applyChance>
+					<applyChance>.9</applyChance>
 				</li>
 			</hediffsToApply>
 			
@@ -739,11 +752,10 @@ Mood increase:	+20</description>
         <defName>TM_RayofHope</defName>
         <label>Ray of Hope</label>
         <uiIconPath>UI/rayofhope</uiIconPath>
-        <description>Blessing: Ray of Hope energizes and motivates the soul of any it touches. 80% success rate.
+        <description>Blessing: Ray of Hope energizes and motivates the soul of any it touches. 70% success rate.
+		
 Duration:		100-117s
-Physical capacity: 	+10%
-Physical demand: 	-10%
-Pain:		-10%
+Physical capacity: 	+23%
 Infighting:		+30%
 Mood increase:	+4</description>
 		<manaCost>0.45</manaCost>
@@ -770,7 +782,7 @@ Mood increase:	+4</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>true</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>3</maxTargets>
+                <maxTargets>5</maxTargets>
                 <range>10</range>
             </TargetAoEProperties>
             <isPrimary>false</isPrimary>
@@ -784,7 +796,7 @@ Mood increase:	+4</description>
 			<hediffsToApply>
 				<li>
 					<hediffDef>RayofHope_I</hediffDef>
-					<applyChance>0.8</applyChance>
+					<applyChance>0.7</applyChance>
 				</li>
 			</hediffsToApply>
 			
@@ -795,11 +807,10 @@ Mood increase:	+4</description>
         <defName>TM_RayofHope_I</defName>
         <label>Ray of Hope</label>
         <uiIconPath>UI/rayofhope</uiIconPath>
-        <description>Blessing: Ray of Hope energizes and motivates the soul of any it touches.
+        <description>Blessing: Ray of Hope energizes and motivates the soul of any it touches. 80% success rate.
+		
 Duration:		100-117s
-Physical capacity: 	+10%
-Physical demand: 	-10%
-Pain:		-10%
+Physical capacity: 	+23%
 Infighting:		+30%
 Mood increase:	+4</description>
 		<manaCost>0.45</manaCost>
@@ -826,7 +837,7 @@ Mood increase:	+4</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>true</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>4</maxTargets>
+                <maxTargets>6</maxTargets>
                 <range>10</range>
             </TargetAoEProperties>
             <isPrimary>false</isPrimary>
@@ -840,7 +851,7 @@ Mood increase:	+4</description>
 			<hediffsToApply>
 				<li>
 					<hediffDef>RayofHope_I</hediffDef>
-					<applyChance>1</applyChance>
+					<applyChance>.8</applyChance>
 				</li>
 			</hediffsToApply>
 			
@@ -851,13 +862,12 @@ Mood increase:	+4</description>
         <defName>TM_RayofHope_II</defName>
         <label>Ray of Hope</label>
         <uiIconPath>UI/rayofhope</uiIconPath>
-        <description>Blessing: Ray of Hope energizes and motivates the soul of any it touches.
+        <description>Blessing: Ray of Hope energizes and motivates the soul of any it touches. 85% success rate.
+		
 Duration:		200-223s
-Physical capacity: 	+23%
-Physical demand: 	-23%
-Pain:		-20%
+Physical capacity: 	+28%
 Infighting:		+20%
-Mood increase:	+8</description>
+Mood increase:	+7</description>
 		<manaCost>0.45</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
@@ -896,7 +906,7 @@ Mood increase:	+8</description>
 			<hediffsToApply>
 				<li>
 					<hediffDef>RayofHope_II</hediffDef>
-					<applyChance>1</applyChance>
+					<applyChance>.85</applyChance>
 				</li>
 			</hediffsToApply>
 			
@@ -907,13 +917,12 @@ Mood increase:	+8</description>
         <defName>TM_RayofHope_III</defName>
         <label>Ray of Hope</label>
         <uiIconPath>UI/rayofhope</uiIconPath>
-        <description>Blessing: Ray of Hope energizes and motivates the soul of any it touches.
+        <description>Blessing: Ray of Hope energizes and motivates the soul of any it touches. 90% success rate.
+		
 Duration:		500-600s
-Physical capacity: 	+35%
-Physical demand: 	-25%
-Pain:		-30%
+Physical capacity: 	+33%
 Infighting:		+5%
-Mood increase:	+12</description>
+Mood increase:	+10</description>
 		<manaCost>0.45</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
@@ -938,7 +947,7 @@ Mood increase:	+12</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>true</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>10</maxTargets>
+                <maxTargets>8</maxTargets>
                 <range>15</range>
             </TargetAoEProperties>
             <isPrimary>false</isPrimary>
@@ -952,7 +961,7 @@ Mood increase:	+12</description>
 			<hediffsToApply>
 				<li>
 					<hediffDef>RayofHope_III</hediffDef>
-					<applyChance>1</applyChance>
+					<applyChance>.9</applyChance>
 				</li>
 			</hediffsToApply>
 			
@@ -985,7 +994,7 @@ Mood increase:	+12</description>
         <defName>TM_LightningCloud</defName>
         <label>Lightning Cloud</label>
         <uiIconPath>UI/stormcloud</uiIconPath>
-        <description>Creates an area charged with lightning.  Damages and stuns anything in its mists.</description>
+        <description>Creates an area charged with lightning. Damages and stuns anything in its mists.</description>
 		<manaCost>0.40</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>AbilityUser.Verb_UseAbility</verbClass>
@@ -1030,7 +1039,7 @@ Mood increase:	+12</description>
         </graphicData>
         <projectile>
             <damageDef>TM_Lightning</damageDef>
-            <damageAmountBase>24</damageAmountBase>
+            <damageAmountBase>18</damageAmountBase>
             <speed>200</speed>
         </projectile>
 		<preFiringInitialIntensity>20</preFiringInitialIntensity>
@@ -1047,7 +1056,7 @@ Mood increase:	+12</description>
         <label>Lightning Bolt</label>
         <uiIconPath>UI/lightningbolt2</uiIconPath>
 		<description>Launch a bolt of lightning to strike your target.</description>
-        <manaCost>0.15</manaCost>
+        <manaCost>0.20</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>AbilityUser.Verb_UseAbility_TrueBurst</verbClass>
             <tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -1057,9 +1066,9 @@ Mood increase:	+12</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Laser_LightningBolt</defaultProjectile>
             <abilityDef>TM_LightningBolt</abilityDef>
-            <warmupTime>0.4</warmupTime>
-            <SecondsToRecharge>15.0</SecondsToRecharge>
-            <range>32</range>
+            <warmupTime>.6</warmupTime>
+            <SecondsToRecharge>20.0</SecondsToRecharge>
+            <range>38</range>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>0</ticksBetweenBurstShots>
             <isPrimary>true</isPrimary>
@@ -1107,8 +1116,9 @@ Mood increase:	+12</description>
         <label>Frost Ray</label>
         <uiIconPath>Spells/FrostRay</uiIconPath>
 		<description>Rapidly extending ray of super cooled particles that damages and freezes targets.
+		
 Recharge time: 15s
-Range: 24
+Range: 28
 Shots: 1</description>
         <manaCost>0.20</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -1144,8 +1154,9 @@ Shots: 1</description>
         <label>Frost Ray</label>
         <uiIconPath>Spells/FrostRay</uiIconPath>
 		<description>Rapidly extending ray of super cooled particles that damages and freezes targets.
+		
 Recharge time: 12s
-Range: 28
+Range: 30
 Shots: 1</description>
         <manaCost>0.20</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -1181,6 +1192,7 @@ Shots: 1</description>
         <label>Frost Ray</label>
         <uiIconPath>Spells/FrostRay</uiIconPath>
 		<description>Rapidly extending ray of super cooled particles that damages and freezes targets.
+		
 Recharge time: 10s
 Range: 32
 Shots: 2</description>
@@ -1218,8 +1230,9 @@ Shots: 2</description>
         <label>Frost Ray</label>
         <uiIconPath>Spells/FrostRay</uiIconPath>
 		<description>Rapidly extending ray of super cooled particles that damages and freezes targets.
-Recharge time: 6s
-Range: 36
+		
+Recharge time: 10s
+Range: 34
 Shots: 3</description>
         <manaCost>0.32</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -1232,7 +1245,7 @@ Shots: 3</description>
             <defaultProjectile>Laser_FrostRay</defaultProjectile>
             <abilityDef>TM_FrostRay_II</abilityDef>
             <warmupTime>2.0</warmupTime>
-            <SecondsToRecharge>6.0</SecondsToRecharge>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
             <range>36</range>
             <burstShotCount>3</burstShotCount>
             <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
@@ -1277,7 +1290,7 @@ Shots: 3</description>
         <label>Blizzard</label>
         <uiIconPath>UI/blizzard</uiIconPath>
         <description>Calls forth a deadly blizzard to bury your enemies in ice.</description>
-        <manaCost>0.65</manaCost>
+        <manaCost>0.70</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>AbilityUser.Verb_UseAbility</verbClass>
             <tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -1334,7 +1347,7 @@ Shots: 3</description>
         <label>Firestorm</label>
         <uiIconPath>UI/firestorm</uiIconPath>
         <description>Calls forth the full fury of elemental fire in a meteor storm of death and destruction.</description>
-        <manaCost>0.60</manaCost>
+        <manaCost>0.70</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>AbilityUser.Verb_UseAbility</verbClass>
             <tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -1378,9 +1391,9 @@ Shots: 3</description>
         </graphicData>
         <projectile>
             <damageDef>Bomb</damageDef>
-            <damageAmountBase>62</damageAmountBase>
+            <damageAmountBase>40</damageAmountBase>
             <speed>20</speed>
-			<explosionRadius>5</explosionRadius>
+			<explosionRadius>3.6</explosionRadius>
 			<postExplosionSpawnChance>1</postExplosionSpawnChance>
         </projectile>
     </ThingDef>
@@ -1389,7 +1402,7 @@ Shots: 3</description>
         <defName>TM_Fireball</defName>
         <label>Fireball</label>
         <uiIconPath>Spells/fireball4</uiIconPath>
-        <description>Throws a massive, slow moving fireball.  Wreaks havoc and creates fire in the target area.</description>
+        <description>Throws a massive, slow moving fireball. Wreaks havoc and creates a fiery explosion at the target area.</description>
         <manaCost>0.50</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>AbilityUser.Verb_UseAbility</verbClass>
@@ -1401,7 +1414,7 @@ Shots: 3</description>
             <defaultProjectile>Projectile_Fireball</defaultProjectile>
             <abilityDef>TM_Fireball</abilityDef>
             <warmupTime>1.5</warmupTime>
-            <SecondsToRecharge>30.0</SecondsToRecharge>
+            <SecondsToRecharge>20.0</SecondsToRecharge>
             <range>120</range>
             <burstShotCount>1</burstShotCount>
 			<forcedMissRadius>8.4</forcedMissRadius>
@@ -1435,7 +1448,7 @@ Shots: 3</description>
    <projectile>
 		<flyOverhead>false</flyOverhead>
 		<damageDef>Burn</damageDef>
-		<damageAmountBase>46</damageAmountBase>
+		<damageAmountBase>28</damageAmountBase>
 		<speed>200</speed>
    </projectile>
  </ThingDef>
@@ -1444,8 +1457,8 @@ Shots: 3</description>
     <defName>TM_Fireclaw</defName>
     <label>Fireclaw</label>
     <uiIconPath>UI/tendril</uiIconPath>
-    <description>Create streaming tendrils of fire that rake across your enemies, leaving only destruction and fire in its wake.</description>
-    <manaCost>0.30</manaCost>
+    <description>Create streaming tendrils of fire that rake across your enemies, leaving destruction and fire in its wake.</description>
+    <manaCost>0.28</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>AbilityUser.Verb_UseAbility</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -1489,7 +1502,7 @@ Shots: 3</description>
 			<soundExplode>Explosion_Smoke</soundExplode>
             <damageDef>Snowball</damageDef>
             <damageAmountBase>7</damageAmountBase>
-            <speed>30</speed>
+            <speed>35</speed>
 			<explosionRadius>4</explosionRadius>
 			<postExplosionSpawnChance>1</postExplosionSpawnChance>
         </projectile>
@@ -1512,10 +1525,10 @@ Shots: 3</description>
             <abilityDef>TM_Snowball</abilityDef>
             <warmupTime>1.5</warmupTime>
             <SecondsToRecharge>20.0</SecondsToRecharge>
-            <range>50</range>
+            <range>55</range>
             <burstShotCount>1</burstShotCount>
 			<forcedMissRadius>12.4</forcedMissRadius>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>TM_Launch</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>false</AlwaysHits>
@@ -1554,10 +1567,11 @@ Shots: 3</description>
         <label>Magic Missile</label>
         <uiIconPath>Spells/MagicMissile</uiIconPath>
         <description>Fire a wave of magic missiles at enemies.
+		
 Chance to confuse: 3%
 Casting time: 2.5s
 Range: 24
-Projectiles: 16 over 3.2s
+Projectiles: 14 over 2.8s
 Damage: 4</description>
         <manaCost>0.20</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -1573,7 +1587,7 @@ Damage: 4</description>
             <SecondsToRecharge>45.0</SecondsToRecharge>
             <range>24</range>
             <forcedMissRadius>4.5</forcedMissRadius>
-            <burstShotCount>16</burstShotCount>
+            <burstShotCount>14</burstShotCount>
             <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
             <isPrimary>false</isPrimary>
 			<soundCast>InfernoCannon_Fire</soundCast>
@@ -1595,10 +1609,11 @@ Damage: 4</description>
         <label>Magic Missile</label>
         <uiIconPath>Spells/MagicMissile</uiIconPath>
         <description>Fire a wave of magic missiles at enemies.
+		
 Chance to confuse: 5%
 Casting time: 2s
 Range: 28
-Projectiles: 20 over 3.33s
+Projectiles: 17 over 2.83s
 Damage: 5</description>
         <manaCost>0.24</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -1614,7 +1629,7 @@ Damage: 5</description>
             <SecondsToRecharge>40.0</SecondsToRecharge>
             <range>28</range>
             <forcedMissRadius>4.0</forcedMissRadius>
-            <burstShotCount>20</burstShotCount>
+            <burstShotCount>17</burstShotCount>
             <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
             <isPrimary>false</isPrimary>
             <soundCast>InfernoCannon_Fire</soundCast>
@@ -1636,10 +1651,11 @@ Damage: 5</description>
         <label>Magic Missile</label>
         <uiIconPath>Spells/MagicMissile</uiIconPath>
         <description>Fire a wave of magic missiles at enemies.
+		
 Chance to confuse: 7%
 Casting time: 1.5s
 Range: 32
-Projectiles: 24 over 3.2s
+Projectiles: 20 over 2.67s
 Damage: 6</description>
         <manaCost>0.28</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -1655,7 +1671,7 @@ Damage: 6</description>
             <SecondsToRecharge>30.0</SecondsToRecharge>
             <range>32</range>
             <forcedMissRadius>3.5</forcedMissRadius>
-            <burstShotCount>24</burstShotCount>
+            <burstShotCount>20</burstShotCount>
             <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
             <isPrimary>false</isPrimary>
             <soundCast>InfernoCannon_Fire</soundCast>
@@ -1677,10 +1693,11 @@ Damage: 6</description>
         <label>Magic Missile</label>
         <uiIconPath>Spells/MagicMissile</uiIconPath>
         <description>Fire a wave of magic missiles at enemies.
+		
 Chance to confuse: 9%
 Casting time: 1s
 Range: 36
-Projectiles: 30 over 3s
+Projectiles: 24 over 2.4s
 Damage: 7</description>
         <manaCost>0.32</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -1696,7 +1713,7 @@ Damage: 7</description>
             <SecondsToRecharge>20.0</SecondsToRecharge>
             <range>36</range>
             <forcedMissRadius>3.0</forcedMissRadius>
-            <burstShotCount>30</burstShotCount>
+            <burstShotCount>24</burstShotCount>
             <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
             <isPrimary>false</isPrimary>
             <soundCast>InfernoCannon_Fire</soundCast>
@@ -1737,9 +1754,9 @@ Damage: 7</description>
  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
     <defName>TM_Icebolt</defName>
     <label>Icebolt</label>
-    <description>Bolt of ice specially created to shatter into glass like shards upon impact, causing severe bleeding and damage in a small area.</description>
+    <description>Launches a bolt of ice specially created to shatter into glass-like shards upon impact, causing damage and severe bleeding.</description>
 	<uiIconPath>Spells/Icebolt</uiIconPath>
-    <manaCost>0.15</manaCost>
+    <manaCost>0.20</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>AbilityUser.Verb_UseAbility</verbClass>
 			<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -1750,8 +1767,8 @@ Damage: 7</description>
         <defaultProjectile>Projectile_Icebolt</defaultProjectile>
 		<abilityDef>TM_Icebolt</abilityDef>
         <warmupTime>1</warmupTime>
-        <SecondsToRecharge>10</SecondsToRecharge>
-        <range>38</range>
+        <SecondsToRecharge>12</SecondsToRecharge>
+        <range>42</range>
         <soundCast>ShotChargeRifle</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
         <isPrimary>false</isPrimary>
@@ -1791,7 +1808,7 @@ Damage: 7</description>
 	  <soundExplode>DeadfallSpring</soundExplode>
 	  <flyOverhead>false</flyOverhead>
       <damageDef>Firebolt</damageDef>
-      <damageAmountBase>14</damageAmountBase>
+      <damageAmountBase>16</damageAmountBase>
       <speed>65</speed>
     </projectile>
   </ThingDef>
@@ -1799,7 +1816,7 @@ Damage: 7</description>
  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
     <defName>TM_Firebolt</defName>
     <label>Firebolt</label>
-    <description>Bolt of  magic fire. Sets fire to the target.</description>
+    <description>Launches a bolt of super-heated magma that damages and can set fire to the target.</description>
 	<uiIconPath>Spells/firebolt</uiIconPath>
     <manaCost>0.15</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -1812,9 +1829,9 @@ Damage: 7</description>
         <defaultProjectile>Projectile_Firebolt</defaultProjectile>
 		<abilityDef>TM_Firebolt</abilityDef>
         <warmupTime>1</warmupTime>
-        <SecondsToRecharge>6</SecondsToRecharge>
-        <range>32</range>
-        <soundCast>ThrowMolotovCocktail</soundCast>
+        <SecondsToRecharge>4</SecondsToRecharge>
+        <range>40</range>
+        <soundCast>TM_AirWoosh</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
         <isPrimary>false</isPrimary>
 		<isViolent>true</isViolent>
@@ -1822,7 +1839,7 @@ Damage: 7</description>
 		<AlwaysHits>true</AlwaysHits>
 		<targetParams>
 			<canTargetPawns>true</canTargetPawns>
-			<canTargetBuildings>false</canTargetBuildings>
+			<canTargetBuildings>true</canTargetBuildings>
 			<canTargetSelf>false</canTargetSelf>
 			<canTargetLocations>false</canTargetLocations>
 		</targetParams>
@@ -1848,7 +1865,7 @@ Damage: 7</description>
 		<flyOverhead>false</flyOverhead>
 		<explosionRadius>10</explosionRadius>
 		<damageDef>TM_Lightning</damageDef>
-		<damageAmountBase>56</damageAmountBase>
+		<damageAmountBase>18</damageAmountBase>
 		<speed>1000</speed>
 		<postExplosionSpawnChance>1</postExplosionSpawnChance>
    </projectile>
@@ -1858,7 +1875,7 @@ Damage: 7</description>
     <defName>TM_LightningStorm</defName>
     <label>Lightning Storm</label>
     <uiIconPath>UI/lightningstorm</uiIconPath>
-    <description>Create a fierce but uncontrolled lightning storm near the target location.</description>
+    <description>Create a fierce, but uncontrolled, lightning storm over the target location.</description>
 	<manaCost>0.60</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>AbilityUser.Verb_UseAbility</verbClass>
@@ -1914,7 +1931,7 @@ Damage: 7</description>
     <defName>TM_Teleport</defName>
     <label>Teleport</label>
     <uiIconPath>UI/teleport</uiIconPath>
-    <description>Mass teleport spell. Creates a temporary method of long range transport; but beware, portal collapses after a short period causing a feedback explosion near the portal.</description>
+    <description>Mass teleport spell. Creates a temporary method of long range transport; be warned, the portal collapses after a brief period causing a feedback explosion at the point the portal was created.</description>
     <manaCost>0.40</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
@@ -1968,7 +1985,8 @@ Damage: 7</description>
         <defName>TM_Blink</defName>
         <label>Blink</label>
         <uiIconPath>UI/blink</uiIconPath>
-        <description>Instantly moves caster to the target location.
+        <description>Instantly moves the caster to the target location.
+		
 Casting time: 2s
 Recharge time: 10s
 Range: 30</description>
@@ -2000,7 +2018,8 @@ Range: 30</description>
         <defName>TM_Blink_I</defName>
         <label>Blink</label>
         <uiIconPath>UI/blink</uiIconPath>
-        <description>Instantly moves caster to the target location.
+        <description>Instantly moves the caster to the target location.
+		
 Casting time: .8s
 Recharge time: 8s
 Range: 50</description>
@@ -2030,7 +2049,8 @@ Range: 50</description>
         <defName>TM_Blink_II</defName>
         <label>Blink</label>
         <uiIconPath>UI/blink</uiIconPath>
-        <description>Instantly moves caster to the target location.
+        <description>Instantly moves the caster to the target location.
+		
 Casting time: .6s
 Recharge time: 6s
 Range: 70</description>
@@ -2060,7 +2080,8 @@ Range: 70</description>
         <defName>TM_Blink_III</defName>
         <label>Blink</label>
         <uiIconPath>UI/blink</uiIconPath>
-        <description>Instantly moves caster to the target location.
+        <description>Instantly moves the caster to the target location.
+		
 Casting time: .4s
 Recharge time: 5s
 Range: 90</description>
@@ -2117,10 +2138,11 @@ Range: 90</description>
         <label>Summon</label>
         <uiIconPath>UI/summon</uiIconPath>
         <description>Summon objects to the casters location.
-Casting time: 1s
-Recharge time: 15s
-Range: 60</description>
-        <manaCost>0.18</manaCost>
+		
+Casting time: 3s
+Recharge time: 20s
+Range: 70</description>
+        <manaCost>0.24</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Summon</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -2133,13 +2155,13 @@ Range: 60</description>
 				<canTargetLocations>true</canTargetLocations>
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
-            <warmupTime>1.0</warmupTime>
-            <SecondsToRecharge>15.0</SecondsToRecharge>
-            <range>60</range>
+            <warmupTime>3.0</warmupTime>
+            <SecondsToRecharge>20.0</SecondsToRecharge>
+            <range>70</range>
 			<isViolent>false</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>TM_Gong</soundCast>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
         </MainVerb>
@@ -2150,10 +2172,11 @@ Range: 60</description>
         <label>Summon</label>
         <uiIconPath>UI/summon</uiIconPath>
         <description>Summon objects to the casters location.
-Casting time: .8s
-Recharge time: 12s
-Range: 90</description>
-        <manaCost>0.18</manaCost>
+		
+Casting time: 2.7s
+Recharge time: 18s
+Range: 80</description>
+        <manaCost>0.25</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Summon</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -2166,13 +2189,13 @@ Range: 90</description>
 				<canTargetLocations>true</canTargetLocations>
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
-            <warmupTime>0.8</warmupTime>
-            <SecondsToRecharge>12.0</SecondsToRecharge>
-            <range>90</range>
+            <warmupTime>2.7</warmupTime>
+            <SecondsToRecharge>18.0</SecondsToRecharge>
+            <range>80</range>
 			<isViolent>false</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>TM_Gong</soundCast>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
         </MainVerb>
@@ -2183,10 +2206,11 @@ Range: 90</description>
         <label>Summon</label>
         <uiIconPath>UI/summon</uiIconPath>
         <description>Summon objects to the casters location.
-Casting time: .6s
-Recharge time: 10s
-Range: 120</description>
-        <manaCost>0.18</manaCost>
+		
+Casting time: 2.5s
+Recharge time: 16s
+Range: 90</description>
+        <manaCost>0.26</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Summon</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -2199,13 +2223,13 @@ Range: 120</description>
 				<canTargetLocations>true</canTargetLocations>
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
-            <warmupTime>0.6</warmupTime>
-            <SecondsToRecharge>10.0</SecondsToRecharge>
-            <range>120</range>
+            <warmupTime>2.5</warmupTime>
+            <SecondsToRecharge>16.0</SecondsToRecharge>
+            <range>90</range>
 			<isViolent>false</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>TM_Gong</soundCast>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
         </MainVerb>
@@ -2216,10 +2240,11 @@ Range: 120</description>
         <label>Summon</label>
         <uiIconPath>UI/summon</uiIconPath>
         <description>Summon objects to the casters location.
-Casting time: .4s
-Recharge time: 8s
-Range: 150</description>
-        <manaCost>0.18</manaCost>
+		
+Casting time: 2.4s
+Recharge time: 15s
+Range: 100</description>
+        <manaCost>0.28</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Summon</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -2232,9 +2257,9 @@ Range: 150</description>
 				<canTargetLocations>true</canTargetLocations>
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
-            <warmupTime>0.4</warmupTime>
-            <SecondsToRecharge>8.0</SecondsToRecharge>
-            <range>150</range>
+            <warmupTime>2.4</warmupTime>
+            <SecondsToRecharge>15.0</SecondsToRecharge>
+            <range>100</range>
 			<isViolent>false</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
@@ -2307,7 +2332,7 @@ Range: 150</description>
         <defName>TM_Rainmaker</defName>
         <label>Rainmaker</label>
         <uiIconPath>UI/rain</uiIconPath>
-        <description>Alters the conditions in the atmosphere, causing it to rain if it's clear or clears the skies if it's raining.</description>
+        <description>Alters the conditions in the atmosphere causing it to rain if it's clear or clears the skies if it's raining.</description>
         <manaCost>0.20</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Rainmaker</verbClass>

@@ -15,7 +15,7 @@ namespace TorannMagic
 
 		private bool primed = true;
 
-		private int duration = 600;
+		private int duration = 480;
 
 		private int boltDelay = 0;
 
@@ -49,14 +49,14 @@ namespace TorannMagic
             pwrVal = pwr.level;
             verVal = ver.level;
             this.arcaneDmg = comp.arcaneDmg;
-            if (settingsRef.AIHardMode && !pawn.IsColonistPlayerControlled)
+            if (settingsRef.AIHardMode && !pawn.IsColonist)
             {
                 pwrVal = 3;
                 verVal = 3;
             }
 
-            duration = 600 + (verVal * 200);
-            CellRect cellRect = CellRect.CenteredOn(base.Position, 8 + (verVal * 2));
+            duration = 480 + (verVal * 60);
+            CellRect cellRect = CellRect.CenteredOn(base.Position, 8);
 			cellRect.ClipInsideMap(map);
 
 			if (this.primed == true)
@@ -70,8 +70,8 @@ namespace TorannMagic
                         this.LightningBlast(pwrVal, randomCell, map, 2.2f);
                         strikeInt++;
                         this.lastStrike = this.age;
-                        this.boltDelay = Rand.Range(10 - (pwrVal * 2), 50 - (pwrVal * 7));
-
+                        this.boltDelay = Rand.Range(8 - (pwrVal), 40 - (pwrVal * 4));
+                         
                         bool flag1 = this.age <= duration;
                         if (!flag1)
                         {
@@ -95,8 +95,8 @@ namespace TorannMagic
 		public void Explosion(int pwr, IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
 		{
 			System.Random rnd = new System.Random();
-			int modDamAmountRand = modDamAmountRand = GenMath.RoundRandom(rnd.Next(5 + (pwr*2), projectile.projectile.damageAmountBase + (pwr * 5)));
-            modDamAmountRand = Mathf.RoundToInt(this.arcaneDmg);
+			int modDamAmountRand = GenMath.RoundRandom(rnd.Next(4 + (pwr*1), projectile.projectile.damageAmountBase + (pwr * 2)));
+            modDamAmountRand *= Mathf.RoundToInt(this.arcaneDmg);
             if (pwr >= 1)
             {
                 radius = (float)(rnd.Next(pwr, pwr*2)/1.8);

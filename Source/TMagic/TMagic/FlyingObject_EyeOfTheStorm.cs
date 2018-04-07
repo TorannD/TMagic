@@ -254,9 +254,9 @@ namespace TorannMagic
                             for (int k = 0; k < Rand.Range(1, 8); k++)
                             {
                                 IntVec3 randomCell = cellRect.RandomCell;
-                                GenExplosion.DoExplosion(randomCell, base.Map, Rand.Range(.4f, .8f), TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(3 + 3*pwrVal, 7 + 5*pwrVal) * this.arcaneDmg), SoundDefOf.Thunder_OnMap, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
+                                GenExplosion.DoExplosion(randomCell, base.Map, Rand.Range(.4f, .8f), TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(5 + pwrVal, 9 + 3*pwrVal) * this.arcaneDmg), SoundDefOf.Thunder_OnMap, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
                             }
-                            GenExplosion.DoExplosion(curPawnTarg.Position, base.Map, 1f, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(3 + 3 * pwrVal, 7 + 5 * pwrVal) * this.arcaneDmg), SoundDefOf.Thunder_OffMap, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
+                            GenExplosion.DoExplosion(curPawnTarg.Position, base.Map, 1f, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(5+  pwrVal, 9 + 3 * pwrVal) * this.arcaneDmg), SoundDefOf.Thunder_OffMap, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
                             this.lastStrike = this.age;
                         }                        
                     }

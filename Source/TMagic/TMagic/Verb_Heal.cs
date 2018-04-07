@@ -68,7 +68,7 @@ namespace TorannMagic
                         {
                             int num2 = 1 + ver.level;
                             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                            if (!this.CasterPawn.IsColonistPlayerControlled && settingsRef.AIHardMode)
+                            if (!this.CasterPawn.IsColonist && settingsRef.AIHardMode)
                             {
                                 num2 = 5;
                             }
@@ -86,7 +86,7 @@ namespace TorannMagic
                                     if (flag5)
                                     {
                                         //current.Heal((float)((int)current.Severity + 1));
-                                        if (!this.CasterPawn.IsColonistPlayerControlled)
+                                        if (!this.CasterPawn.IsColonist)
                                         {
                                             current.Heal(20.0f + (float)pwr.level * 3f); // power affects how much to heal
                                         }

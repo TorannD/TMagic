@@ -94,7 +94,7 @@
 		<resourceReadoutPriority>Middle</resourceReadoutPriority>
 		<tradeNeverStack>true</tradeNeverStack>
 		<statBases>
-			<MarketValue>2200</MarketValue>
+			<MarketValue>3000</MarketValue>
 		</statBases>
 		<useHitPoints>true</useHitPoints>
 		<comps>
@@ -109,7 +109,7 @@
 			<li>Leathery</li>
 		</stuffCategories>
 		<costList>
-			<RawMagicyte>300</RawMagicyte>
+			<RawMagicyte>400</RawMagicyte>
 			<DevilstrandCloth>80</DevilstrandCloth>
 		</costList>
 		<recipeMaker>
@@ -149,7 +149,7 @@
 		<resourceReadoutPriority>Middle</resourceReadoutPriority>
 		<tradeNeverStack>true</tradeNeverStack>
 		<statBases>
-			<MarketValue>2000</MarketValue>
+			<MarketValue>2500</MarketValue>
 		</statBases>
 		<useHitPoints>true</useHitPoints>
 		<comps>
@@ -164,7 +164,7 @@
 			<li>Leathery</li>
 		</stuffCategories>
 		<costList>
-			<RawMagicyte>300</RawMagicyte>
+			<RawMagicyte>350</RawMagicyte>
 			<DevilstrandCloth>50</DevilstrandCloth>
 		</costList>
 		<recipeMaker>

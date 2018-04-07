@@ -27,7 +27,7 @@ namespace TorannMagic
             MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             verVal = ver.level;
-            if (settingsRef.AICasting && !pawn.IsColonistPlayerControlled)
+            if (settingsRef.AICasting && !pawn.IsColonist)
             {
                 verVal = 3;
             }

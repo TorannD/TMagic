@@ -19,6 +19,7 @@ namespace TorannMagic.ModOptions
         public float advMageChance = 0.5f;
         public float advFighterChance = 0.5f;
         public float magicyteChance = .004f;
+        public bool showIconsMultiSelect = true;
 
         public static Settings Instance;
 
@@ -42,6 +43,7 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<float>(ref this.advMageChance, "advMageChance", 0.5f, false);
             Scribe_Values.Look<float>(ref this.advFighterChance, "advFighterChance", 0.5f, false);
             Scribe_Values.Look<float>(ref this.magicyteChance, "magicyteChance", 0.004f, false);
+            Scribe_Values.Look<bool>(ref this.showIconsMultiSelect, "showIconsMultiSelect", true, false);
         }
     }
 }

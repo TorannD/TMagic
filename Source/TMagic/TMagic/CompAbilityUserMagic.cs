@@ -49,56 +49,56 @@ namespace TorannMagic
         private int age = -1;
         private bool doOnce = true;
 
-        private float IF_RayofHope_eff = 0.10f;
+        private float IF_RayofHope_eff = 0.08f;
         private float IF_Firebolt_eff = 0.10f;
-        private float IF_Fireclaw_eff = 0.12f;
-        private float IF_Fireball_eff = 0.10f;
-        private float IF_Firestorm_eff = 0.10f;
-        private float HoF_Soothe_eff = 0.10f;
-        private float HoF_Icebolt_eff = 0.10f;
-        private float HoF_FrostRay_eff = 0.10f;
+        private float IF_Fireclaw_eff = 0.10f;
+        private float IF_Fireball_eff = 0.08f;
+        private float IF_Firestorm_eff = 0.05f;
+        private float HoF_Soothe_eff = 0.08f;
+        private float HoF_Icebolt_eff = 0.08f;
+        private float HoF_FrostRay_eff = 0.08f;
         private float HoF_Snowball_eff = 0.08f;
-        private float HoF_Blizzard_eff = 0.10f;
+        private float HoF_Blizzard_eff = 0.05f;
         private float HoF_Rainmaker_eff = 0.15f;
-        private float SB_AMP_eff = 0.10f;
+        private float SB_AMP_eff = 0.08f;
         private float SB_LightningBolt_eff = 0.08f;
-        private float SB_LightningCloud_eff = 0.08f;
-        private float SB_LightningStorm_eff = 0.05f;
+        private float SB_LightningCloud_eff = 0.06f;
+        private float SB_LightningStorm_eff = 0.06f;
         private float SB_EyeOfTheStorm_eff = 0.05f;
-        private float A_Shadow_eff = 0.10f;
-        private float A_MagicMissile_eff = 0.10f;
-        private float A_Blink_eff = 0.15f;
-        private float A_Summon_eff = 0.15f;
+        private float A_Shadow_eff = 0.08f;
+        private float A_MagicMissile_eff = 0.08f;
+        private float A_Blink_eff = 0.10f;
+        private float A_Summon_eff = 0.10f;
         private float A_Teleport_eff = 0.10f;
-        private float A_FoldReality_eff = 0.08f;
-        private float P_Heal_eff = 0.10f;
-        private float P_Shield_eff = 0.10f;
-        private float P_ValiantCharge_eff = 0.10f;
+        private float A_FoldReality_eff = 0.06f;
+        private float P_Heal_eff = 0.07f;
+        private float P_Shield_eff = 0.08f;
+        private float P_ValiantCharge_eff = 0.08f;
         private float P_Overwhelm_eff = 0.10f;
-        private float P_HolyWrath_eff = 0.5f;
-        private float S_SummonElemental_eff = 0.08f;
-        private float S_SummonExplosive_eff = 0.15f;
+        private float P_HolyWrath_eff = 0.05f;
+        private float S_SummonElemental_eff = 0.06f;
+        private float S_SummonExplosive_eff = 0.08f;
         private float S_SummonMinion_eff = 0.10f;
-        private float S_SummonPylon_eff = 0.10f;
-        private float S_SummonPoppi_eff = .05f;
+        private float S_SummonPylon_eff = 0.08f;
+        private float S_SummonPoppi_eff = 0.05f;
         private float D_Poison_eff = 0.10f;
-        private float D_SootheAnimal_eff = 0.10f;
-        private float D_Regenerate_eff = 0.10f;
-        private float D_CureDisease_eff = 0.12f;
-        private float D_RegrowLimb_eff = 0.08f;
+        private float D_SootheAnimal_eff = 0.08f;
+        private float D_Regenerate_eff = 0.07f;
+        private float D_CureDisease_eff = 0.10f;
+        private float D_RegrowLimb_eff = 0.06f;
         private float N_RaiseUndead_eff = 0.05f;
         private float N_DeathMark_eff = 0.08f;
-        private float N_FogOfTorment_eff = 0.10f;
+        private float N_FogOfTorment_eff = 0.08f;
         private float N_ConsumeCorpse_eff = 0.0f;
         private float N_CorpseExplosion_eff = 0.08f;
-        private float N_DeathBolt_eff = 0.08f;
-        private float PR_AdvancedHeal_eff = 0.12f;
-        private float PR_Purify_eff = 0.08f;
-        private float PR_HealingCircle_eff = 0.08f;
+        private float N_DeathBolt_eff = 0.06f;
+        private float PR_AdvancedHeal_eff = 0.08f;
+        private float PR_Purify_eff = 0.07f;
+        private float PR_HealingCircle_eff = 0.07f;
         private float PR_BestowMight_eff = 0.08f;
         private float PR_Resurrection_eff = 0.05f;
         private float B_Lullaby_eff = 0.08f;
-        private float B_BattleHymn_eff = 0.10f;
+        private float B_BattleHymn_eff = 0.06f;
 
         private float global_eff = 0.03f;
 
@@ -197,7 +197,7 @@ namespace TorannMagic
         public override void PostDraw()
         {
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            if (settingsRef.AIMarking && !base.AbilityUser.IsColonistPlayerControlled && this.IsMagicUser)
+            if (settingsRef.AIMarking && !base.AbilityUser.IsColonist && this.IsMagicUser)
             {
                 DrawMageMark();                
             }
@@ -3348,7 +3348,7 @@ namespace TorannMagic
                         float dmgAmt = (float)dinfo.Amount;
                         float dmgToSev = 0.0075f;
                         ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                        if (!abilityUser.IsColonistPlayerControlled)
+                        if (!abilityUser.IsColonist)
                         {
                             if (settingsRef.AIHardMode)
                             {
