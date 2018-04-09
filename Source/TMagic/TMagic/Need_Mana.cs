@@ -240,17 +240,17 @@ namespace TorannMagic
 
                         if (pawn.Map.GameConditionManager.ConditionIsActive(TorannMagicDefOf.ManaDrain))
                         {
-                            this.curLevelInt = this.curLevelInt - amount - necroReduction;
-                            if (this.CurLevel < 0)
-                            {
-                                this.CurLevel = 0;
-                            }
+                            this.curLevelInt = this.curLevelInt - amount - necroReduction;                            
                             if (this.CurLevel < .01)
                             {
                                 float pain = pawn.health.hediffSet.PainTotal;
                                 float con = pawn.health.capacities.GetLevel(PawnCapacityDefOf.Consciousness);
                                 float sev = (.015f * (1 + (3 * pain) + (1 - con)));
                                 HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ManaSickness, sev);
+                            }
+                            if (this.CurLevel < 0)
+                            {
+                                this.CurLevel = 0;
                             }
                         }
                         else if (pawn.Map.GameConditionManager.ConditionIsActive(TorannMagicDefOf.ManaSurge) && !pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ArcaneSickness))

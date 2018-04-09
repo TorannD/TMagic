@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <HediffDef ParentName="InjuryBase">  
+  <HediffDef ParentName="TM_InjuryBase">  
     <defName>TM_Poison_HD</defName>
     <label>Poison</label>
     <displayWound>true</displayWound>

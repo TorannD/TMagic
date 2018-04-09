@@ -440,91 +440,24 @@ namespace TorannMagic
             }
         }
 
-        //[HarmonyPatch(typeof(Recipe_Surgery), "CheckSurgeryFail", null)]
-        //public static class CheckSurgeryFail_Base_Patch
-        //{
-        //    public static bool Prefix(Recipe_Surgery __instance, Pawn surgeon, Pawn patient, List<Thing> ingredients, BodyPartRecord part, ref bool __result)
-        //    {
-        //        Log.Message("Surgeon is " + surgeon.LabelShort);
-        //        Log.Message("patient is " + patient.LabelShort);
+        [HarmonyPatch(typeof(Recipe_Surgery), "CheckSurgeryFail", null)]
+        public static class CheckSurgeryFail_Base_Patch
+        {
+            public static bool Prefix(Recipe_Surgery __instance, Pawn surgeon, Pawn patient, List<Thing> ingredients, BodyPartRecord part, ref bool __result)
+            {
+                if (patient.story.traits.HasTrait(TorannMagicDefOf.Undead))
+                {
+                    Messages.Message("Something went horribly wrong while trying to perform a surgery on " + patient.LabelShort + ", perhaps it's best to leave the bodies of the living dead alone.", MessageTypeDefOf.NegativeHealthEvent);
+                    GenExplosion.DoExplosion(surgeon.Position, surgeon.Map, 2f, TMDamageDefOf.DamageDefOf.TM_CorpseExplosion, patient, Rand.Range(6, 12), TMDamageDefOf.DamageDefOf.TM_CorpseExplosion.soundExplosion, null, null, null, 0, 0, false, null, 0, 0, 0, false);
+                    __result = true;
+                    return false;
+                }
+                return true;
+                
+            }
+        }
 
-                //        CompAbilityUserMagic comp = surgeon.GetComp<CompAbilityUserMagic>();
-
-                //        if (__instance.recipe.defName == "RegrowArm" || __instance.recipe.defName == "RegrowLeg" || __instance.recipe.defName == "RegrowFoot" || __instance.recipe.defName == "RegrowHand")
-                //        {
-                //            string reason;
-                //            if (comp.IsMagicUser)
-                //            {
-                //                Log.Message("comp " + comp.Mana.CurLevel + " comp percent " + comp.Mana.CurLevelPercentage);
-                //                if (comp.spell_RegrowLimb == true)
-                //                {
-                //                    MagicPowerSkill eff = surgeon.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RegrowLimb.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RegrowLimb_eff");
-                //                    if (comp.Mana.CurLevel < (.9f - ((eff.level * .08f) * .9f)))
-                //                    {
-                //                        Log.Message("current mana is " + comp.Mana.CurLevel);
-                //                        Log.Message("mana cost would have been " + (.9f - ((eff.level * .08f) * .9f)));
-                //                        comp.Mana.CurLevel = comp.Mana.CurLevel / 2;
-
-                //                        //TM_MedicalRecipesUtility.RestorePartAndSpawnAllPreviousParts(patient, part, patient.Position, patient.Map);
-                //                        reason = "TM_InsufficientManaForSurgery".Translate();
-                //                        Find.LetterStack.ReceiveLetter("LetterLabelRegrowthSurgeryFail".Translate(), "LetterRegrowthSurgeryFail".Translate(new object[]
-                //                        {
-                //                        surgeon.LabelCap,
-                //                        __instance.recipe.defName,
-                //                        patient.Label,
-                //                        reason,
-                //                        surgeon.LabelShort
-                //                        }), LetterDefOf.NegativeEvent, null);
-                //                        __result = true;
-                //                        return false;
-                //                    }
-                //                    else
-                //                    {
-                //                        comp.Mana.CurLevel -= (.9f - ((eff.level * .08f) * .9f));
-                //                        TM_MoteMaker.ThrowRegenMote(patient.Position.ToVector3(), patient.Map, 1.2f);
-                //                        TM_MoteMaker.ThrowRegenMote(patient.Position.ToVector3(), patient.Map, .8f);
-                //                        TM_MoteMaker.ThrowRegenMote(patient.Position.ToVector3(), patient.Map, .8f);
-                //                        __result = false;
-                //                        return false;
-                //                    }
-                //                }
-                //                else
-                //                {
-                //                    comp.Mana.CurLevel = comp.Mana.CurLevel / 2;
-                //                    //TM_MedicalRecipesUtility.RestorePartAndSpawnAllPreviousParts(patient, part, patient.Position, patient.Map);
-                //                    reason = "TM_NoRegrowthSpell".Translate();
-                //                    Find.LetterStack.ReceiveLetter("LetterLabelRegrowthSurgeryFail".Translate(), "LetterRegrowthSurgeryFail".Translate(new object[]
-                //                    {
-                //                    surgeon.LabelCap,
-                //                    __instance.recipe.defName,
-                //                    patient.Label,
-                //                    reason,
-                //                    surgeon.LabelShort
-                //                    }), LetterDefOf.NegativeEvent, null);
-                //                    __result = true;
-                //                    return false;
-                //                }
-                //            }
-                //            reason = "TM_NotMagicUser".Translate();
-                //            Find.LetterStack.ReceiveLetter("LetterLabelRegrowthSurgeryFail".Translate(), "LetterRegrowthSurgeryFail".Translate(new object[]
-                //                {
-                //                    surgeon.LabelCap,
-                //                    __instance.recipe.defName,
-                //                    patient.Label,
-                //                    reason,
-                //                    surgeon.LabelShort
-                //                }), LetterDefOf.NegativeEvent, null);
-                //            __result = true;
-                //            return false;
-                //        }
-                //        else
-                //        {
-                //            return true;
-                //        }
-                //    }
-                //}
-
-            [HarmonyPatch(typeof(Verb), "TryFindShootLineFromTo", null)]
+        [HarmonyPatch(typeof(Verb), "TryFindShootLineFromTo", null)]
         public static class TryFindShootLineFromTo_Base_Patch
         {
             public static bool Prefix(Verb __instance, IntVec3 root, LocalTargetInfo targ, out ShootLine resultingLine, ref bool __result)
@@ -1228,41 +1161,20 @@ namespace TorannMagic
                         ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                         if (Find.Selector.SelectedObjects.Count >= 2 && !settingsRef.showIconsMultiSelect)
                         {
-                            for (int i = 0; i < list.Count; i++)
-                            {                             
-                                if(list[i].ToString().Contains("label=Attack") || list[i].ToString().Contains("Desc=Toggle") || list[i].ToString().Contains("label=Draft"))
-                                {
-                                    //filtering once                                    
-                                }
-                                else
-                                {
-                                    list.Remove(list[i]);
-                                }
-                            }
-                            for(int j = 0; j < list.Count; j++)
+                            for (int z = 0; z < 5; z++)
                             {
-                                if (list[j].ToString().Contains("label=Attack") || list[j].ToString().Contains("Desc=Toggle") || list[j].ToString().Contains("label=Draft"))
+                                for (int i = 0; i < list.Count; i++)
                                 {
-                                    //filtering again because filtering once doesn't completely work
+                                    if (list[i].ToString().Contains("label=Attack") || list[i].ToString().Contains("Desc=Toggle") || list[i].ToString().Contains("label=Draft"))
+                                    {
+                                        //yes, filter 5 time                                   
+                                    }
+                                    else
+                                    {
+                                        list.Remove(list[i]);
+                                    }
                                 }
-                                else
-                                {
-                                    list.Remove(list[j]);
-                                }
-
-                            }
-                            for (int k = 0; k < list.Count; k++)
-                            {
-                                if (list[k].ToString().Contains("label=Attack") || list[k].ToString().Contains("Desc=Toggle") || list[k].ToString().Contains("label=Draft"))
-                                {
-                                    //and one more time because computers aren't perfect 
-                                    
-                                }
-                                else
-                                {
-                                    list.Remove(list[k]);
-                                }
-                            }
+                            }                            
                             __result = list;
                         }                        
                     }

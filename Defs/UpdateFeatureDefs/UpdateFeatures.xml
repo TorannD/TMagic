@@ -113,7 +113,13 @@ Abilities:
 		<content>
 - A RimWorld of Magic has undergone a balance update in order to adjust for mod updates and features that have been added over time. Descriptions have also been updated to adjust for the changes and for clarity.
 
+- The ability Cleave (Gladiator) has been reworked and will trigger automatically when using a melee weapon, the chance depends on the weight of the weapon.
+
+- The ability Regrow Limb (Druid) has been renamed to Regrowth and can regrow the majority of body parts. This ability no longer requires 2 mana potions.
+
 - A mod setting has been added that will allow you to hide abilities when multiple pawns are selected. This hides all abilities not part of the vanilla command buttons, even those buttons are not part of this mod.
+
+- Added compatibility updates for Combat Extended, No Water No Life, and Call of Cthulhu mods.
 	</content>
 	</HugsLib.UpdateFeatureDef>	
 	

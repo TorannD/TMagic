@@ -4,7 +4,7 @@
 
 <!-- BASE -->
 
-  <DamageDef Name="LocalInjuryBase" Abstract="True">
+  <DamageDef Name="TM_LocalInjuryBase" Abstract="True">
     <workerClass>DamageWorker_AddInjury</workerClass>
   </DamageDef>
   
@@ -15,7 +15,7 @@
   
   <!-- Torann Magic Damage Defs -->  	
   
-  	<DamageDef ParentName="LocalInjuryBase">
+  	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_BlazingPower</defName>
 		<label>Blazing Power</label>
 		<externalViolence>true</externalViolence>
@@ -37,7 +37,7 @@
 		</additionalHediffs>
 	</DamageDef>
   
-  	<DamageDef ParentName="LocalInjuryBase">
+  	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Holy</defName>
 		<label>Holy</label>
 		<externalViolence>true</externalViolence>
@@ -53,7 +53,7 @@
 		<soundExplosion>Explosion_Flame</soundExplosion>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Death</defName>
 		<label>Death</label>
 		<externalViolence>true</externalViolence>
@@ -64,7 +64,7 @@
 		<armorCategory>Heat</armorCategory>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Torment</defName>
 		<label>Torment</label>
 		<externalViolence>true</externalViolence>
@@ -82,7 +82,7 @@
 		</additionalHediffs>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_DeathBolt</defName>
 		<label>death bolt</label>
 		<externalViolence>true</externalViolence>
@@ -105,7 +105,7 @@
 		</additionalHediffs>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_CorpseExplosion</defName>
 		<label>corpse explosion</label>
 		<externalViolence>true</externalViolence>
@@ -128,7 +128,7 @@
 		</additionalHediffs>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Overwhelm</defName>
 		<label>Divine Power</label>
 		<externalViolence>true</externalViolence>
@@ -160,7 +160,7 @@
     <canInterruptJobs>false</canInterruptJobs>
   </DamageDef>
   
-  	<DamageDef ParentName="LocalInjuryBase">
+  	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_MagicMissile</defName>
 		<label>Magic Missile</label>
 		<externalViolence>true</externalViolence>
@@ -177,7 +177,7 @@
 		</additionalHediffs>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_MagicMissile_Weak</defName>
 		<label>magical energy</label>
 		<externalViolence>true</externalViolence>
@@ -188,7 +188,7 @@
 		<armorCategory>Sharp</armorCategory>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_ManaMine</defName>
 		<label>Mana mine</label>
 		<externalViolence>true</externalViolence>
@@ -208,7 +208,7 @@
 		<combatLogRules>Damage_Bomb</combatLogRules>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Fireball_I</defName>
 		<label>Fire Magic</label>
 		<externalViolence>true</externalViolence>
@@ -230,7 +230,7 @@
 		</additionalHediffs>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Fireball_II</defName>
 		<label>Fire Magic</label>
 		<externalViolence>true</externalViolence>
@@ -252,7 +252,7 @@
 		</additionalHediffs>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Fireball_III</defName>
 		<label>Fire Magic</label>
 		<externalViolence>true</externalViolence>
@@ -274,7 +274,7 @@
 		</additionalHediffs>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Firestorm_Tiny</defName>
 		<label>Fire Magic</label>
 		<externalViolence>true</externalViolence>
@@ -290,7 +290,7 @@
 		<soundExplosion>Explosion_Flame</soundExplosion>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Firestorm_Small</defName>
 		<label>Fire Magic</label>
 		<externalViolence>true</externalViolence>
@@ -312,7 +312,7 @@
 		</additionalHediffs>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Firestorm_Large</defName>
 		<label>Fire Magic</label>
 		<externalViolence>true</externalViolence>
@@ -334,7 +334,7 @@
 		</additionalHediffs>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Blizzard_Small</defName>
 		<label>Ice Magic</label>
 		<externalViolence>true</externalViolence>
@@ -351,7 +351,7 @@
 		<soundExplosion>ArtilleryHitThickRoof</soundExplosion>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Blizzard_Large</defName>
 		<label>Ice Magic</label>
 		<externalViolence>true</externalViolence>
@@ -369,7 +369,7 @@
 		<soundExplosion>ArtilleryHitThickRoof</soundExplosion>
 	</DamageDef>
   
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Lightning</defName>
 		<label>Lightning Magic</label>
 		<externalViolence>true</externalViolence>
@@ -386,7 +386,7 @@
 		<soundExplosion>Explosion_EMP</soundExplosion>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_LightningCloud</defName>
 		<label>Lightning Magic</label>
 		<externalViolence>true</externalViolence>
@@ -405,7 +405,7 @@
 		<soundExplosion>Explosion_EMP</soundExplosion>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>FrostRay</defName>
 		<label>frostray</label>
 		<externalViolence>true</externalViolence>
@@ -416,7 +416,7 @@
 		<armorCategory>Heat</armorCategory>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>Snowball</defName>
 		<label>snowball</label>
 		<externalViolence>true</externalViolence>
@@ -433,7 +433,7 @@
 		<soundExplosion>ArtilleryHitThickRoof</soundExplosion>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>Iceshard</defName>
 		<label>Iceshard</label>
 		<externalViolence>true</externalViolence>
@@ -450,7 +450,7 @@
 		<soundExplosion>PunchThroughRoofMetal</soundExplosion>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>Firebolt</defName>
 		<workerClass>DamageWorker_Flame</workerClass>
 		<hasForcefulImpact>true</hasForcefulImpact>
@@ -470,7 +470,7 @@
 		<soundExplosion>Explosion_Flame</soundExplosion>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>RayofHope</defName>
 		<label>Magical Augmentation</label>
 		<externalViolence>false</externalViolence>
@@ -493,7 +493,7 @@
 		<soundExplosion>Explosion_EMP</soundExplosion>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>SoothingBreeze</defName>
 		<label>Magical Augmentation</label>
 		<externalViolence>false</externalViolence>
@@ -516,7 +516,7 @@
 		<soundExplosion>Explosion_EMP</soundExplosion>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>AMP</defName>
 		<label>Magical Augmentation</label>
 		<externalViolence>false</externalViolence>
@@ -539,7 +539,7 @@
 		<soundExplosion>Explosion_EMP</soundExplosion>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>Shadow</defName>
 		<label>Magical Augmentation</label>
 		<externalViolence>false</externalViolence>
@@ -562,7 +562,7 @@
 		<soundExplosion>Explosion_EMP</soundExplosion>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_GrapplingHook</defName>
 		<label>Grappling Hook</label>
 		<externalViolence>true</externalViolence>
@@ -579,7 +579,7 @@
 		<armorCategory>Blunt</armorCategory>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Whirlwind</defName>
 		<label>Whirlwind</label>
 		<externalViolence>true</externalViolence>
@@ -596,7 +596,7 @@
 		<armorCategory>Sharp</armorCategory>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Cleave</defName>
 		<label>Cleave</label>
 		<externalViolence>true</externalViolence>
@@ -613,7 +613,7 @@
 		<armorCategory>Sharp</armorCategory>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Headshot</defName>
 		<label>Headshot</label>
 		<externalViolence>true</externalViolence>
@@ -630,7 +630,7 @@
 		<armorCategory>Sharp</armorCategory>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_DisablingShot</defName>
 		<label>Disabling Shot</label>
 		<externalViolence>true</externalViolence>
@@ -647,7 +647,7 @@
 		<armorCategory>Sharp</armorCategory>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Tranquilizer</defName>
 		<label>Disabling Shot</label>
 		<externalViolence>true</externalViolence>
@@ -670,7 +670,7 @@
 		</additionalHediffs>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Poison</defName>
 		<label>Poison</label>
 		<externalViolence>true</externalViolence>
@@ -693,7 +693,7 @@
 		</additionalHediffs>
 	</DamageDef>
 	
-	<DamageDef ParentName="LocalInjuryBase">
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_PhaseStrike</defName>
 		<label>phase strike</label>
 		<externalViolence>true</externalViolence>
@@ -715,7 +715,7 @@
 		</additionalHediffs>
 	</DamageDef>
 	
-  <DamageDef ParentName="LocalInjuryBase">
+  <DamageDef ParentName="TM_LocalInjuryBase">
     <defName>TM_Arrow</defName>
     <label>arrow storm</label>
     <externalViolence>true</externalViolence>
@@ -728,7 +728,7 @@
 	<isExplosive>false</isExplosive>
   </DamageDef>
   
-    <DamageDef ParentName="LocalInjuryBase">
+    <DamageDef ParentName="TM_LocalInjuryBase">
     <defName>TM_Shrapnel</defName>
     <label>ranger extra damage</label>
     <externalViolence>true</externalViolence>
@@ -741,7 +741,7 @@
 	<isExplosive>false</isExplosive>
   </DamageDef>
   
-  <DamageDef ParentName="LocalInjuryBase">
+  <DamageDef ParentName="TM_LocalInjuryBase">
     <defName>TM_ArcaneSpectre</defName>
     <label>arcane spectre</label>
     <externalViolence>true</externalViolence>

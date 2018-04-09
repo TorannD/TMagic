@@ -265,7 +265,7 @@
     </researchPrerequisites>
   </ThingDef>
 
-  <ThingDef ParentName="BaseHumanGun">
+  <ThingDef ParentName="TM_BaseHumanGun">
     <defName>Launcher_DefensePylon</defName>
     <label>energy focus point</label>
     <graphicData>
@@ -306,7 +306,7 @@
     </verbs>
   </ThingDef>
   
-  <ThingDef ParentName="BaseBullet">
+  <ThingDef ParentName="TM_BaseBullet">
     <defName>Bullet_DefensePylon</defName>
     <label>focused magical energy</label>
     <graphicData>
@@ -388,7 +388,7 @@
     </researchPrerequisites>
   </ThingDef>
 
-  <ThingDef ParentName="BaseHumanGun">
+  <ThingDef ParentName="TM_BaseHumanGun">
     <defName>Launcher_DefensePylon_I</defName>
     <label>energy focus point</label>
     <graphicData>
@@ -497,7 +497,7 @@
     </researchPrerequisites>
   </ThingDef>
 
-  <ThingDef ParentName="BaseHumanGun">
+  <ThingDef ParentName="TM_BaseHumanGun">
     <defName>Launcher_DefensePylon_II</defName>
     <label>energy focus point</label>
     <graphicData>
@@ -607,7 +607,7 @@
     </researchPrerequisites>
   </ThingDef>
 
-  <ThingDef ParentName="BaseHumanGun">
+  <ThingDef ParentName="TM_BaseHumanGun">
     <defName>Launcher_DefensePylon_III</defName>
     <label>energy focus point</label>
     <graphicData>

@@ -53,7 +53,7 @@ namespace TorannMagic
                                 Pawn undeadPawn = corpse.InnerPawn;
                                 Pawn newUndeadPawn = new Pawn();
                                 
-                                if (undeadPawn.RaceProps.IsFlesh)
+                                if (undeadPawn.RaceProps.IsFlesh && undeadPawn.Dead)
                                 {
                                     undeadPawn.SetFaction(pawn.Faction);
                                     ResurrectionUtility.Resurrect(undeadPawn);

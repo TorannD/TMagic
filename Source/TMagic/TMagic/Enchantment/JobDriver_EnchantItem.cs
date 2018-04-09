@@ -107,17 +107,16 @@ namespace TorannMagic.Enchantment
             enchanting.defaultDuration = 240;
             enchanting.AddFinishAction(delegate
             {
-                CompEnchantedItem enchantment = thing.TryGetComp<CompEnchantedItem>();
+                CompEnchantedItem enchantment = thing.TryGetComp<CompEnchantedItem>();            
                 CompEnchant enchantingItem = actor.TryGetComp<CompEnchant>();
                 CompAbilityUserMagic pawnComp = actor.TryGetComp<CompAbilityUserMagic>();
-                if (enchantment != null && enchantingItem != null && enchanting.actor.jobs.curDriver.ticksLeftThisToil < 1)                    
-                {                    
+                if (enchantment != null && enchantingItem != null && enchanting.actor.jobs.curDriver.ticksLeftThisToil < 1)
+                {
                     EnchantItem(enchantingItem.enchantingContainer[0], enchantment);
                     enchantingItem.enchantingContainer[0].Destroy();
                     pawnComp.Mana.CurLevel -= .5f;
                     MoteMaker.ThrowText(TargetLocA.ToVector3Shifted(), actor.Map, "TM_Enchanted".Translate(), -1);
                     SoundStarter.PlayOneShotOnCamera(TorannMagicDefOf.ItemEnchanted, null);
-
                     //DestroyEnchantingStone(enchantingItem.innerContainer[0]);
                 }
                 else
@@ -130,92 +129,92 @@ namespace TorannMagic.Enchantment
 
         private void EnchantItem(Thing gemstone, CompEnchantedItem enchantment)
         {
-            enchantment.Props.HasEnchantment = true;
+            enchantment.HasEnchantment = true;
             switch (gemstone.def.defName)
             {
                 case "TM_EStone_maxMP_minor":                    
-                    enchantment.Props.maxMP = .05f;
-                    enchantment.Props.maxMPTier = EnchantmentTier.Minor;
+                    enchantment.maxMP = .05f;
+                    enchantment.maxMPTier = EnchantmentTier.Minor;
                     break;
                 case "TM_EStone_maxMP":
-                    enchantment.Props.maxMP = .1f;
-                    enchantment.Props.maxMPTier = EnchantmentTier.Standard;
+                    enchantment.maxMP = .1f;
+                    enchantment.maxMPTier = EnchantmentTier.Standard;
                     break;
                 case "TM_EStone_maxMP_major":
-                    enchantment.Props.maxMP = .15f;
-                    enchantment.Props.maxMPTier = EnchantmentTier.Major;
+                    enchantment.maxMP = .15f;
+                    enchantment.maxMPTier = EnchantmentTier.Major;
                     break;
                 case "TM_EStone_mpRegenRate_minor":
-                    enchantment.Props.mpRegenRate = .05f;
-                    enchantment.Props.mpRegenRateTier = EnchantmentTier.Minor;
+                    enchantment.mpRegenRate = .05f;
+                    enchantment.mpRegenRateTier = EnchantmentTier.Minor;
                     break;
                 case "TM_EStone_mpRegenRate":
-                    enchantment.Props.mpRegenRate = .1f;
-                    enchantment.Props.mpRegenRateTier = EnchantmentTier.Standard;
+                    enchantment.mpRegenRate = .1f;
+                    enchantment.mpRegenRateTier = EnchantmentTier.Standard;
                     break;
                 case "TM_EStone_mpRegenRate_major":
-                    enchantment.Props.mpRegenRate = .15f;
-                    enchantment.Props.mpRegenRateTier = EnchantmentTier.Major;
+                    enchantment.mpRegenRate = .15f;
+                    enchantment.mpRegenRateTier = EnchantmentTier.Major;
                     break;
                 case "TM_EStone_mpCost_minor":
-                    enchantment.Props.mpCost = -.03f;
-                    enchantment.Props.mpCostTier = EnchantmentTier.Minor;
+                    enchantment.mpCost = -.03f;
+                    enchantment.mpCostTier = EnchantmentTier.Minor;
                     break;
                 case "TM_EStone_mpCost":
-                    enchantment.Props.mpCost = -.05f;
-                    enchantment.Props.mpCostTier = EnchantmentTier.Standard;
+                    enchantment.mpCost = -.05f;
+                    enchantment.mpCostTier = EnchantmentTier.Standard;
                     break;
                 case "TM_EStone_mpCost_major":
-                    enchantment.Props.mpCost = -.07f;
-                    enchantment.Props.mpCostTier = EnchantmentTier.Major;
+                    enchantment.mpCost = -.07f;
+                    enchantment.mpCostTier = EnchantmentTier.Major;
                     break;
                 case "TM_EStone_coolDown_minor":
-                    enchantment.Props.coolDown = -.03f;
-                    enchantment.Props.coolDownTier = EnchantmentTier.Minor;
+                    enchantment.coolDown = -.03f;
+                    enchantment.coolDownTier = EnchantmentTier.Minor;
                     break;
                 case "TM_EStone_coolDown":
-                    enchantment.Props.coolDown = -.05f;
-                    enchantment.Props.coolDownTier = EnchantmentTier.Standard;
+                    enchantment.coolDown = -.05f;
+                    enchantment.coolDownTier = EnchantmentTier.Standard;
                     break;
                 case "TM_EStone_coolDown_major":
-                    enchantment.Props.coolDown = -.07f;
-                    enchantment.Props.coolDownTier = EnchantmentTier.Major;
+                    enchantment.coolDown = -.07f;
+                    enchantment.coolDownTier = EnchantmentTier.Major;
                     break;
                 case "TM_EStone_xpGain_minor":
-                    enchantment.Props.xpGain = .05f;
-                    enchantment.Props.xpGainTier = EnchantmentTier.Minor;
+                    enchantment.xpGain = .05f;
+                    enchantment.xpGainTier = EnchantmentTier.Minor;
                     break;
                 case "TM_EStone_xpGain":
-                    enchantment.Props.xpGain = .10f;
-                    enchantment.Props.xpGainTier = EnchantmentTier.Standard;
+                    enchantment.xpGain = .10f;
+                    enchantment.xpGainTier = EnchantmentTier.Standard;
                     break;
                 case "TM_EStone_xpGain_major":
-                    enchantment.Props.xpGain = .15f;
-                    enchantment.Props.xpGainTier = EnchantmentTier.Major;
+                    enchantment.xpGain = .15f;
+                    enchantment.xpGainTier = EnchantmentTier.Major;
                     break;
                 case "TM_EStone_arcaneRes_minor":
-                    enchantment.Props.arcaneRes = .10f;
-                    enchantment.Props.arcaneResTier = EnchantmentTier.Minor;
+                    enchantment.arcaneRes = .10f;
+                    enchantment.arcaneResTier = EnchantmentTier.Minor;
                     break;
                 case "TM_EStone_arcaneRes":
-                    enchantment.Props.arcaneRes = .20f;
-                    enchantment.Props.arcaneResTier = EnchantmentTier.Standard;
+                    enchantment.arcaneRes = .20f;
+                    enchantment.arcaneResTier = EnchantmentTier.Standard;
                     break;
                 case "TM_EStone_arcaneRes_major":
-                    enchantment.Props.arcaneRes = .30f;
-                    enchantment.Props.arcaneResTier = EnchantmentTier.Major;
+                    enchantment.arcaneRes = .30f;
+                    enchantment.arcaneResTier = EnchantmentTier.Major;
                     break;
                 case "TM_EStone_arcaneDmg_minor":
-                    enchantment.Props.arcaneDmg = .04f;
-                    enchantment.Props.arcaneDmgTier = EnchantmentTier.Minor;
+                    enchantment.arcaneDmg = .04f;
+                    enchantment.arcaneDmgTier = EnchantmentTier.Minor;
                     break;
                 case "TM_EStone_arcaneDmg":
-                    enchantment.Props.arcaneDmg = .08f;
-                    enchantment.Props.arcaneDmgTier = EnchantmentTier.Standard;
+                    enchantment.arcaneDmg = .08f;
+                    enchantment.arcaneDmgTier = EnchantmentTier.Standard;
                     break;
                 case "TM_EStone_arcaneDmg_major":
-                    enchantment.Props.arcaneDmg = .12f;
-                    enchantment.Props.arcaneDmgTier = EnchantmentTier.Major;
+                    enchantment.arcaneDmg = .12f;
+                    enchantment.arcaneDmgTier = EnchantmentTier.Major;
                     break;
                 case "null":
                     Log.Message("null");

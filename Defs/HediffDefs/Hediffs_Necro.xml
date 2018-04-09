@@ -301,7 +301,7 @@
     </stages>
   </HediffDef>
   
-    <HediffDef ParentName="InjuryBase">
+    <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_TormentHD</defName>
 	<label>Torment</label>
     <defaultLabelColor>(0.1,0.1,0.1)</defaultLabelColor>
@@ -331,7 +331,7 @@
 	</injuryProps>
   </HediffDef>
   
-  <HediffDef ParentName="InjuryBase">
+  <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_DeathBoltHD</defName>
 	<label>death bolt</label>
     <defaultLabelColor>(0.1,0.1,0.1)</defaultLabelColor>

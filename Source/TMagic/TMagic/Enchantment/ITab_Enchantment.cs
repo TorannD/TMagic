@@ -28,7 +28,7 @@ namespace TorannMagic.Enchantment
         {
             get
             {
-                return ITab_Enchantment.SelectedCompEnchantment != null && ITab_Enchantment.SelectedCompEnchantment.Props.HasEnchantment;  
+                return ITab_Enchantment.SelectedCompEnchantment != null && ITab_Enchantment.SelectedCompEnchantment.HasEnchantment;  
             }
         }
 
@@ -49,74 +49,74 @@ namespace TorannMagic.Enchantment
             int num = 2;
             Text.Font = GameFont.Tiny;
             Rect rect3 = GetRowRect(rect2, num);            
-            if(enchantedItem.Props.maxMP !=0)
+            if(enchantedItem.maxMP !=0)
             {
-                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.Props.maxMPTier);
-                rectLabel = enchantedItem.Props.MaxMPLabel;
+                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.maxMPTier);
+                rectLabel = enchantedItem.MaxMPLabel;
                 Widgets.Label(rect3, rectLabel);
                 num++;
             }
             Rect rect4 = GetRowRect(rect3, num);
-            if (enchantedItem.Props.mpCost != 0)
+            if (enchantedItem.mpCost != 0)
             {
-                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.Props.mpCostTier);
-                rectLabel = enchantedItem.Props.MPCostLabel;
+                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.mpCostTier);
+                rectLabel = enchantedItem.MPCostLabel;
                 Widgets.Label(rect4, rectLabel);
                 num++;
             }
             Rect rect5 = GetRowRect(rect4, num);
-            if (enchantedItem.Props.mpRegenRate != 0)
+            if (enchantedItem.mpRegenRate != 0)
             {
-                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.Props.mpRegenRateTier);
-                rectLabel = enchantedItem.Props.MPRegenRateLabel;
+                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.mpRegenRateTier);
+                rectLabel = enchantedItem.MPRegenRateLabel;
                 Widgets.Label(rect5, rectLabel);
                 num++;
             }
             Rect rect6 = GetRowRect(rect5,  num);
-            if (enchantedItem.Props.coolDown != 0)
+            if (enchantedItem.coolDown != 0)
             {
-                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.Props.coolDownTier);
-                rectLabel = enchantedItem.Props.CoolDownLabel;
+                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.coolDownTier);
+                rectLabel = enchantedItem.CoolDownLabel;
                 Widgets.Label(rect6, rectLabel);
                 num++;
             }
             Rect rect7 = GetRowRect(rect6,  num);
-            if (enchantedItem.Props.xpGain != 0)
+            if (enchantedItem.xpGain != 0)
             {
-                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.Props.xpGainTier);
-                rectLabel = enchantedItem.Props.XPGainLabel;
+                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.xpGainTier);
+                rectLabel = enchantedItem.XPGainLabel;
                 Widgets.Label(rect7, rectLabel);
                 num++;
             }
             Rect rect71 = GetRowRect(rect7, num);
-            if (enchantedItem.Props.arcaneRes != 0)
+            if (enchantedItem.arcaneRes != 0)
             {
-                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.Props.arcaneResTier);
-                rectLabel = enchantedItem.Props.ArcaneResLabel;
+                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.arcaneResTier);
+                rectLabel = enchantedItem.ArcaneResLabel;
                 Widgets.Label(rect71, rectLabel);
                 num++;
             }
             Rect rect72 = GetRowRect(rect71, num);
-            if (enchantedItem.Props.arcaneDmg != 0)
+            if (enchantedItem.arcaneDmg != 0)
             {
-                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.Props.arcaneDmgTier);
-                rectLabel = enchantedItem.Props.ArcaneDmgLabel;
+                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.arcaneDmgTier);
+                rectLabel = enchantedItem.ArcaneDmgLabel;
                 Widgets.Label(rect72, rectLabel);
                 num++;
             }
             Rect rect8 = GetRowRect(rect72, num);
-            if (enchantedItem.Props.arcaneSpectre != false)
+            if (enchantedItem.arcaneSpectre != false)
             {
-                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.Props.skillTier);
-                rectLabel = enchantedItem.Props.ArcaneSpectreLabel;
+                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.skillTier);
+                rectLabel = enchantedItem.ArcaneSpectreLabel;
                 Widgets.Label(rect8, rectLabel);
                 num++;
             }
             Rect rect9 = GetRowRect(rect8, num);
-            if (enchantedItem.Props.phantomShift != false)
+            if (enchantedItem.phantomShift != false)
             {
-                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.Props.skillTier);
-                rectLabel = enchantedItem.Props.PhantomShiftLabel;
+                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.skillTier);
+                rectLabel = enchantedItem.PhantomShiftLabel;
                 Widgets.Label(rect9, rectLabel);
                 num++;
             }

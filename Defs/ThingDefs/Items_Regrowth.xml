@@ -31,7 +31,7 @@
 	<ThingDef ParentName="RegrowthBase">
 		<defName>SeedofRegrowth</defName>
 		<label>Seed of Regrowth</label>
-		<description>A seed required by a druid to begin the limb regrowth process.  A druid must be trained in the art of regrowth to use this magical item successfully.</description>
+		<description>A seed required by a druid to begin the limb regrowth process. A druid must be trained in the art of regrowth to use this magical item successfully.</description>
 		<graphicData>
 			<texPath>Items/SeedofRegrowth</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

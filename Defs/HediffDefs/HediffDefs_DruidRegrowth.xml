@@ -43,10 +43,12 @@
       <li>
 		<label>stub</label>
 		<minSeverity>0.01</minSeverity>
+		<restFallFactor>1.5</restFallFactor>
+		<hungerRateFactor>1.5</hungerRateFactor>
 		<capMods>
 		   <li>
 			  <capacity>Manipulation</capacity>
-			  <offset>-0.8</offset>
+			  <offset>-0.5</offset>
 		   </li>
 		</capMods>
       </li>
@@ -56,7 +58,7 @@
 		<capMods>
 		   <li>
 			  <capacity>Manipulation</capacity>
-			  <offset>-0.6</offset>
+			  <offset>-0.3</offset>
 		   </li>
 		</capMods>
       </li>
@@ -70,7 +72,7 @@
 		<capMods>
 		   <li>
 			  <capacity>Manipulation</capacity>
-			  <offset>0.15</offset>
+			  <offset>0.20</offset>
 		   </li>
 		</capMods>
       </li>
@@ -106,10 +108,12 @@
       <li>
 		<label>stub</label>
 		<minSeverity>0.01</minSeverity>
+		<restFallFactor>1.5</restFallFactor>
+		<hungerRateFactor>1.5</hungerRateFactor>
 		<capMods>
 		   <li>
 			  <capacity>Manipulation</capacity>
-			  <offset>-0.7</offset>
+			  <offset>-0.3</offset>
 		   </li>
 		</capMods>
       </li>
@@ -119,7 +123,7 @@
 		<capMods>
 		   <li>
 			  <capacity>Manipulation</capacity>
-			  <offset>-0.5</offset>
+			  <offset>-0.2</offset>
 		   </li>
 		</capMods>
       </li>
@@ -133,7 +137,181 @@
 		<capMods>
 		   <li>
 			  <capacity>Manipulation</capacity>
-			  <offset>0.10</offset>
+			  <offset>0.12</offset>
+		   </li>
+		</capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="DruidRegrowth">
+    <defName>TM_FingerRegrowth</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Regrown Finger</label>
+    <addedPartProps>
+	  <partEfficiency>1</partEfficiency>
+    </addedPartProps>
+	<maxSeverity>4</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>+3</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+		<label>finger stub</label>
+		<minSeverity>0.01</minSeverity>
+		<restFallFactor>1.3</restFallFactor>
+		<hungerRateFactor>1.3</hungerRateFactor>
+		<capMods>
+		   <li>
+			  <capacity>Manipulation</capacity>
+			  <offset>-0.05</offset>
+		   </li>
+		</capMods>
+      </li>
+      <li>
+		<label>regrown</label>
+		<becomeVisible>false</becomeVisible>
+		<minSeverity>3</minSeverity>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="DruidRegrowth">
+    <defName>TM_ToeRegrowth</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Regrown Toe</label>
+    <addedPartProps>
+	  <partEfficiency>1</partEfficiency>
+    </addedPartProps>
+	<maxSeverity>4</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>+3</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+		<label>toe stub</label>
+		<minSeverity>0.01</minSeverity>
+		<restFallFactor>1.3</restFallFactor>
+		<hungerRateFactor>1.3</hungerRateFactor>
+		<capMods>
+		   <li>
+			  <capacity>Moving</capacity>
+			  <offset>-0.05</offset>
+		   </li>
+		</capMods>
+      </li>
+      <li>
+		<label>regrown</label>
+		<becomeVisible>false</becomeVisible>
+		<minSeverity>3</minSeverity>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="DruidRegrowth">
+    <defName>TM_EyeRegrowth</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Regrown Eye</label>
+    <addedPartProps>
+	  <partEfficiency>1</partEfficiency>
+    </addedPartProps>
+	<maxSeverity>15</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>+2</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+		<label>milky</label>
+		<minSeverity>0.01</minSeverity>
+		<restFallFactor>1.5</restFallFactor>
+		<hungerRateFactor>1.5</hungerRateFactor>
+		<capMods>
+		   <li>
+			  <capacity>Sight</capacity>
+			  <offset>-0.5</offset>
+		   </li>
+		</capMods>
+      </li>
+      <li>
+		<label>hazy</label>
+		<minSeverity>3</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Sight</capacity>
+			  <offset>-0.2</offset>
+		   </li>
+		</capMods>
+      </li>
+	  <li>
+		<label>regrown</label>
+		<minSeverity>6</minSeverity>
+      </li>
+	  <li>
+		<label>enhanced</label>
+		<minSeverity>14.9</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Sight</capacity>
+			  <offset>0.20</offset>
+		   </li>
+		</capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="DruidRegrowth">
+    <defName>TM_EarRegrowth</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Regrown Ear</label>
+    <addedPartProps>
+	  <partEfficiency>1</partEfficiency>
+    </addedPartProps>
+	<maxSeverity>15</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>+2</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+		<label>forming</label>
+		<minSeverity>0.01</minSeverity>
+		<restFallFactor>1.3</restFallFactor>
+		<hungerRateFactor>1.3</hungerRateFactor>
+		<capMods>
+		   <li>
+			  <capacity>Hearing</capacity>
+			  <offset>-0.5</offset>
+		   </li>
+		</capMods>
+      </li>
+      <li>
+		<label>developing</label>
+		<minSeverity>3</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Hearing</capacity>
+			  <offset>-0.2</offset>
+		   </li>
+		</capMods>
+      </li>
+	  <li>
+		<label>regrown</label>
+		<minSeverity>6</minSeverity>
+      </li>
+	  <li>
+		<label>enhanced</label>
+		<minSeverity>14.9</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Hearing</capacity>
+			  <offset>0.20</offset>
 		   </li>
 		</capMods>
       </li>
@@ -157,10 +335,12 @@
       <li>
 		<label>stub</label>
 		<minSeverity>0.01</minSeverity>
+		<restFallFactor>1.5</restFallFactor>
+		<hungerRateFactor>1.5</hungerRateFactor>
 		<capMods>
 		   <li>
 			  <capacity>Moving</capacity>
-			  <offset>-0.8</offset>
+			  <offset>-0.6</offset>
 		   </li>
 		</capMods>
       </li>
@@ -170,7 +350,7 @@
 		<capMods>
 		   <li>
 			  <capacity>Moving</capacity>
-			  <offset>-0.6</offset>
+			  <offset>-0.4</offset>
 		   </li>
 		</capMods>
       </li>
@@ -184,7 +364,7 @@
 		<capMods>
 		   <li>
 			  <capacity>Moving</capacity>
-			  <offset>0.15</offset>
+			  <offset>0.20</offset>
 		   </li>
 		</capMods>
       </li>
@@ -208,10 +388,12 @@
       <li>
 		<label>stub</label>
 		<minSeverity>0.01</minSeverity>
+		<restFallFactor>1.5</restFallFactor>
+		<hungerRateFactor>1.5</hungerRateFactor>
 		<capMods>
 		   <li>
 			  <capacity>Moving</capacity>
-			  <offset>-0.7</offset>
+			  <offset>-0.3</offset>
 		   </li>
 		</capMods>
       </li>
@@ -221,7 +403,7 @@
 		<capMods>
 		   <li>
 			  <capacity>Moving</capacity>
-			  <offset>-0.5</offset>
+			  <offset>-0.2</offset>
 		   </li>
 		</capMods>
       </li>
@@ -235,9 +417,389 @@
 		<capMods>
 		   <li>
 			  <capacity>Moving</capacity>
-			  <offset>0.08</offset>
+			  <offset>0.12</offset>
 		   </li>
 		</capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="DruidRegrowth">
+    <defName>TM_StandardRegrowth</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Regrown Part</label>
+    <addedPartProps>
+	  <partEfficiency>1</partEfficiency>
+    </addedPartProps>
+	<maxSeverity>4</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>+2</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+		<label>forming</label>
+		<minSeverity>0.01</minSeverity>
+		<restFallFactor>1.3</restFallFactor>
+		<hungerRateFactor>1.3</hungerRateFactor>
+		<capMods>
+		   <li>
+			  <capacity>Moving</capacity>
+			  <offset>-0.10</offset>
+		   </li>
+		    <li>
+			  <capacity>Manipulation</capacity>
+			  <offset>-0.10</offset>
+		   </li>
+		</capMods>
+      </li>
+      <li>
+		<label>regrown</label>
+		<minSeverity>3</minSeverity>
+		<becomeVisible>false</becomeVisible>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="DruidRegrowth">
+    <defName>TM_JawRegrowth</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Regrown Jaw</label>
+    <addedPartProps>
+	  <partEfficiency>1</partEfficiency>
+    </addedPartProps>
+	<maxSeverity>15</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>+3</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+		<label>forming</label>
+		<minSeverity>0.01</minSeverity>
+		<hungerRateFactor>1.5</hungerRateFactor>
+		<capMods>
+		   <li>
+			  <capacity>Eating</capacity>
+			  <offset>-0.5</offset>
+		   </li>
+		   <li>
+			  <capacity>Talking</capacity>
+			  <offset>-0.8</offset>
+		   </li>
+		</capMods>
+      </li>
+      <li>
+		<label>developing</label>
+		<minSeverity>3</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Eating</capacity>
+			  <offset>-0.4</offset>
+		   </li>
+		   <li>
+			  <capacity>Talking</capacity>
+			  <offset>-0.7</offset>
+		   </li>
+		</capMods>
+      </li>
+	  <li>
+		<label>regrown</label>
+		<minSeverity>6</minSeverity>
+      </li>
+	  <li>
+		<label>enhanced</label>
+		<minSeverity>14.9</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Eating</capacity>
+			  <offset>0.2</offset>
+		   </li>
+		   <li>
+			  <capacity>Talking</capacity>
+			  <offset>0.2</offset>
+		   </li>
+		</capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="DruidRegrowth">
+    <defName>TM_HeartRegrowth</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Heart of the Wild</label>
+    <addedPartProps>
+	  <partEfficiency>1.1</partEfficiency>
+    </addedPartProps>
+	<maxSeverity>15</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>+2</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+		<label>re-forming</label>
+		<minSeverity>0.01</minSeverity>
+		<restFallFactor>1.5</restFallFactor>
+		<hungerRateFactor>1.5</hungerRateFactor>
+		<capMods>
+		   <li>
+			  <capacity>Moving</capacity>
+			  <offset>-0.5</offset>
+		   </li>
+		   <li>
+			  <capacity>Manipulation</capacity>
+			  <offset>-0.5</offset>
+		   </li>
+		   <li>
+			  <capacity>BloodPumping</capacity>
+			  <offset>-0.2</offset>
+		   </li>
+		</capMods>
+      </li>
+      <li>
+		<label>new development</label>
+		<minSeverity>3</minSeverity>
+		<restFallFactor>1.5</restFallFactor>
+		<hungerRateFactor>1.5</hungerRateFactor>
+		<capMods>
+		   <li>
+			  <capacity>Moving</capacity>
+			  <offset>-0.4</offset>
+		   </li>
+		   <li>
+			  <capacity>Manipulation</capacity>
+			  <offset>-0.4</offset>
+		   </li>
+		   <li>
+			  <capacity>BloodPumping</capacity>
+			  <offset>-0.1</offset>
+		   </li>
+		</capMods>
+      </li>
+	  <li>
+		<label>melding</label>
+		<minSeverity>6</minSeverity>
+      </li>
+	  <li>
+		<label>entwined</label>
+		<minSeverity>14.9</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Moving</capacity>
+			  <offset>0.1</offset>
+		   </li>
+		   <li>
+			  <capacity>Manipulation</capacity>
+			  <offset>0.1</offset>
+		   </li>
+		   <li>
+			  <capacity>BloodPumping</capacity>
+			  <offset>0.1</offset>
+		   </li>
+		</capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="DruidRegrowth">
+    <defName>TM_LungRegrowth</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Regrown Lung</label>
+    <addedPartProps>
+	  <partEfficiency>1.1</partEfficiency>
+    </addedPartProps>
+	<maxSeverity>15</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>+2</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+		<label>forming</label>
+		<minSeverity>0.01</minSeverity>
+		<restFallFactor>1.5</restFallFactor>
+		<hungerRateFactor>1.5</hungerRateFactor>
+		<capMods>
+		   <li>
+			  <capacity>Breathing</capacity>
+			  <offset>-0.2</offset>
+		   </li>
+		</capMods>
+      </li>
+      <li>
+		<label>developing</label>
+		<minSeverity>3</minSeverity>
+		<restFallFactor>1.5</restFallFactor>
+		<hungerRateFactor>1.5</hungerRateFactor>
+		<capMods>
+		   <li>
+			  <capacity>Breathing</capacity>
+			  <offset>-0.1</offset>
+		   </li>
+		</capMods>
+      </li>
+	  <li>
+		<label>regrown</label>
+		<minSeverity>6</minSeverity>
+      </li>
+	  <li>
+		<label>enhanced</label>
+		<minSeverity>14.9</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Breathing</capacity>
+			  <offset>0.2</offset>
+		   </li>
+		</capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="DruidRegrowth">
+    <defName>TM_KidneyRegrowth</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Regrown Kidney</label>
+    <addedPartProps>
+	  <partEfficiency>1.1</partEfficiency>
+    </addedPartProps>
+	<maxSeverity>15</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>+2</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+		<label>forming</label>
+		<minSeverity>0.01</minSeverity>
+		<restFallFactor>1.5</restFallFactor>
+		<hungerRateFactor>1.5</hungerRateFactor>
+		<capMods>
+		   <li>
+			  <capacity>BloodFiltration</capacity>
+			  <offset>-0.2</offset>
+		   </li>
+		</capMods>
+      </li>
+      <li>
+		<label>developing</label>
+		<minSeverity>3</minSeverity>
+		<restFallFactor>1.5</restFallFactor>
+		<hungerRateFactor>1.5</hungerRateFactor>
+		<capMods>
+		   <li>
+			  <capacity>BloodFiltration</capacity>
+			  <offset>-0.1</offset>
+		   </li>
+		</capMods>
+      </li>
+	  <li>
+		<label>regrown</label>
+		<minSeverity>6</minSeverity>
+      </li>
+	  <li>
+		<label>enhanced</label>
+		<minSeverity>14.9</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>BloodFiltration</capacity>
+			  <offset>0.1</offset>
+		   </li>
+		</capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="DruidRegrowth">
+    <defName>TM_LiverRegrowth</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Regrown Liver</label>
+    <addedPartProps>
+	  <partEfficiency>1.1</partEfficiency>
+    </addedPartProps>
+	<maxSeverity>15</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>+2</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+		<label>forming</label>
+		<minSeverity>0.01</minSeverity>
+		<restFallFactor>1.5</restFallFactor>
+		<hungerRateFactor>1.5</hungerRateFactor>
+		<capMods>
+		   <li>
+			  <capacity>BloodFiltration</capacity>
+			  <offset>-0.2</offset>
+		   </li>
+		</capMods>
+      </li>
+      <li>
+		<label>developing</label>
+		<minSeverity>3</minSeverity>
+		<restFallFactor>1.5</restFallFactor>
+		<hungerRateFactor>1.5</hungerRateFactor>
+		<capMods>
+		   <li>
+			  <capacity>BloodFiltration</capacity>
+			  <offset>-0.1</offset>
+		   </li>
+		</capMods>
+      </li>
+	  <li>
+		<label>regrown</label>
+		<minSeverity>6</minSeverity>
+      </li>
+	  <li>
+		<label>enhanced</label>
+		<minSeverity>14.9</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>BloodFiltration</capacity>
+			  <offset>0.2</offset>
+		   </li>
+		</capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="DruidRegrowth">
+    <defName>TM_StomachRegrowth</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Regrown Liver</label>
+    <addedPartProps>
+	  <partEfficiency>1.1</partEfficiency>
+    </addedPartProps>
+	<maxSeverity>7</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>+2</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+		<label>forming</label>
+		<minSeverity>0.01</minSeverity>
+		<restFallFactor>1.5</restFallFactor>
+		<hungerRateFactor>2</hungerRateFactor>
+      </li>
+      <li>
+		<label>developing</label>
+		<minSeverity>3</minSeverity>
+		<restFallFactor>1.5</restFallFactor>
+		<hungerRateFactor>1.5</hungerRateFactor>
+      </li>
+	  <li>
+		<label>regrown</label>
+		<minSeverity>6</minSeverity>
+		<becomeVisible>false</becomeVisible>
       </li>
     </stages>
   </HediffDef>

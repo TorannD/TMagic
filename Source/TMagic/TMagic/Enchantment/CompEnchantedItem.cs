@@ -14,8 +14,6 @@ namespace TorannMagic.Enchantment
 
         public CompAbilityUserMagic CompAbilityUserMagicTarget = null;
 
-        private Graphic Overlay;
-
         public CompProperties_EnchantedItem Props
         {
             get
@@ -28,6 +26,41 @@ namespace TorannMagic.Enchantment
         {
         }
 
+        public override void Initialize(CompProperties props)
+        {
+            base.Initialize(props);
+            Pawn pawn = this.parent as Pawn;
+            if (!initialized)
+            {
+                this.hasEnchantment = this.Props.hasEnchantment;
+
+                this.arcaneDmg = this.Props.arcaneDmg;
+                this.arcaneDmgTier = this.Props.arcaneDmgTier;
+                this.arcaneRes = this.Props.arcaneRes;
+                this.arcaneResTier = this.Props.arcaneResTier;
+
+                this.maxMP = this.Props.maxMP;
+                this.maxMPTier = this.Props.maxMPTier;
+                this.mpRegenRate = this.Props.mpRegenRate;
+                this.mpRegenRateTier = this.Props.mpRegenRateTier;
+                this.coolDown = this.Props.coolDown;
+                this.coolDownTier = this.Props.coolDownTier;
+                this.mpCost = this.Props.mpCost;
+                this.mpCostTier = this.Props.mpCostTier;
+                this.xpGain = this.Props.xpGain;
+                this.xpGainTier = this.Props.xpGainTier;
+
+                this.healthRegenRate = this.Props.healthRegenRate;
+
+                this.arcaneSpectre = this.Props.arcaneSpectre;
+                this.phantomShift = this.Props.phantomShift;
+
+                this.skillTier = this.Props.skillTier;
+                this.initialized = true;
+            }
+
+        }
+
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             bool flag = this.parent.def.tickerType == TickerType.Never;
@@ -36,32 +69,30 @@ namespace TorannMagic.Enchantment
                 this.parent.def.tickerType = TickerType.Rare;
             }
             base.PostSpawnSetup(respawningAfterLoad);
-            //this.GetOverlayGraphic();
             Find.TickManager.RegisterAllTickabilityFor(this.parent);
         }
-
-        //public override void PostDrawExtraSelectionOverlays()
-        //{
-        //    bool flag = this.Overlay == null;
-        //    if (flag)
-        //    {
-        //        Log.Message("NoOverlay");
-        //    }
-        //    bool flag2 = this.Overlay != null;
-        //    if (flag2)
-        //    {
-        //        Vector3 drawPos = this.parent.DrawPos;
-        //        drawPos.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
-        //        Vector3 s = new Vector3(2f, 2f, 2f);
-        //        Matrix4x4 matrix = default(Matrix4x4);
-        //        matrix.SetTRS(drawPos, Quaternion.AngleAxis(0f, Vector3.up), s);
-        //        Graphics.DrawMesh(MeshPool.plane10, matrix, this.Overlay.MatSingle, 0);
-        //    }
-        //}
-
+        
         public override void PostExposeData()
         {
             base.PostExposeData();
+            Scribe_Values.Look<float>(ref this.maxMP, "maxMP", 0, false);
+            Scribe_Values.Look<float>(ref this.mpRegenRate, "mpRegenRateP", 0, false);
+            Scribe_Values.Look<float>(ref this.coolDown, "coolDown", 0, false);
+            Scribe_Values.Look<float>(ref this.mpCost, "mpCost", 0, false);
+            Scribe_Values.Look<float>(ref this.xpGain, "xpGain", 0, false);
+            Scribe_Values.Look<float>(ref this.arcaneRes, "arcaneRes", 0, false);
+            Scribe_Values.Look<float>(ref this.arcaneDmg, "arcaneDmg", 0, false);
+            Scribe_Values.Look<bool>(ref this.arcaneSpectre, "arcaneSpectre", false, false);
+            Scribe_Values.Look<bool>(ref this.phantomShift, "phantomShift", false, false);
+            Scribe_Values.Look<EnchantmentTier>(ref this.maxMPTier, "maxMPTier", (EnchantmentTier)0, false);
+            Scribe_Values.Look<EnchantmentTier>(ref this.mpRegenRateTier, "mpRegenRateTier", (EnchantmentTier)0, false);
+            Scribe_Values.Look<EnchantmentTier>(ref this.coolDownTier, "coolDownTier", (EnchantmentTier)0, false);
+            Scribe_Values.Look<EnchantmentTier>(ref this.mpCostTier, "mpCostTier", (EnchantmentTier)0, false);
+            Scribe_Values.Look<EnchantmentTier>(ref this.xpGainTier, "xpGainTier", (EnchantmentTier)0, false);
+            Scribe_Values.Look<EnchantmentTier>(ref this.arcaneResTier, "arcaneResTier", (EnchantmentTier)0, false);
+            Scribe_Values.Look<EnchantmentTier>(ref this.arcaneDmgTier, "arcaneDmgTier", (EnchantmentTier)0, false);
+            Scribe_Values.Look<bool>(ref this.hasEnchantment, "hasEnchantment", false, false);
+            Scribe_Values.Look<bool>(ref this.initialized, "initialized", false, false);
             this.Props.ExposeData();
         }
 
@@ -88,6 +119,179 @@ namespace TorannMagic.Enchantment
                 text += current.GetDescription();
             }
             return text;
+        }
+
+        private bool initialized = false;
+        private bool hasEnchantment = false;
+
+        public EnchantmentTier maxMPTier;
+        public EnchantmentTier mpRegenRateTier;
+        public EnchantmentTier coolDownTier;
+        public EnchantmentTier mpCostTier;
+        public EnchantmentTier xpGainTier;
+        public EnchantmentTier arcaneResTier;
+        public EnchantmentTier arcaneDmgTier;
+
+        //Magic Stats (%)
+        public float maxMP = 0;
+        public float mpRegenRate = 0;
+        public float coolDown = 0;
+        public float mpCost = 0;
+        public float xpGain = 0;
+
+        public float arcaneRes = 0;
+        public float arcaneDmg = 0;
+
+        //Might Stats (%)
+
+        //Common Stats (%)        
+
+        public float healthRegenRate = 0;
+
+        //Special Abilities
+        public EnchantmentTier skillTier = EnchantmentTier.Skill;
+        public bool arcaneSpectre = false;
+        public bool phantomShift = false;
+
+        public string MaxMPLabel
+        {
+            get
+            {
+                return "TM_MaxMPLabel".Translate(new object[]
+                {
+                    this.maxMP * 100
+                });
+            }
+        }
+
+        public string MPRegenRateLabel
+        {
+            get
+            {
+                return "TM_MPRegenRateLabel".Translate(new object[]
+                {
+                    this.mpRegenRate * 100
+                });
+            }
+        }
+
+        public string CoolDownLabel
+        {
+            get
+            {
+                return "TM_CoolDownLabel".Translate(new object[]
+                {
+                    this.coolDown * 100
+                });
+            }
+        }
+
+        public string MPCostLabel
+        {
+            get
+            {
+                return "TM_MPCostLabel".Translate(new object[]
+                {
+                    this.mpCost * 100
+                });
+            }
+        }
+
+        public string XPGainLabel
+        {
+            get
+            {
+                return "TM_XPGainLabel".Translate(new object[]
+                {
+                    this.xpGain * 100
+                });
+            }
+        }
+
+        public string ArcaneResLabel
+        {
+            get
+            {
+                return "TM_ArcaneResLabel".Translate(new object[]
+                {
+                    this.arcaneRes * 100
+                });
+            }
+        }
+
+        public string ArcaneDmgLabel
+        {
+            get
+            {
+                return "TM_ArcaneDmgLabel".Translate(new object[]
+                {
+                    this.arcaneDmg * 100
+                });
+            }
+        }
+
+        public string ArcaneSpectreLabel
+        {
+            get
+            {
+                return "TM_ArcaneSpectre".Translate();
+            }
+        }
+
+        public string PhantomShiftLabel
+        {
+            get
+            {
+                return "TM_PhantomShift".Translate();
+            }
+        }
+
+        public bool HasMagic
+        {
+            get
+            {
+                return MagicAbilities.Count > 0;
+            }
+        }
+
+        public EnchantmentTier SetTier(float mod)
+        {
+            if (mod < 0)
+            {
+                return EnchantmentTier.Negative;
+            }
+            if (mod <= .05f)
+            {
+                return EnchantmentTier.Minor;
+            }
+            else if (mod <= .1f)
+            {
+                return EnchantmentTier.Standard;
+            }
+            else if (mod <= .15f)
+            {
+                return EnchantmentTier.Major;
+            }
+            else if (mod > .15f)
+            {
+                return EnchantmentTier.Crafted;
+            }
+            else
+            {
+                return EnchantmentTier.Undefined;
+            }
+        }
+
+        public bool HasEnchantment
+        {
+            get
+            {
+                return hasEnchantment;
+            }
+            set
+            {
+                hasEnchantment = value;
+            }
         }
     }
 }

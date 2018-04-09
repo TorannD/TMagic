@@ -391,9 +391,9 @@ AoE Size: 8</description>
 
     <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
         <defName>TM_RegrowLimb</defName>
-        <label>Regrow Limb</label>
+        <label>Regrowth</label>
         <uiIconPath>UI/regrowlimb</uiIconPath>
-        <description>Creates the Seed of Life required to regrow limbs. To begin the regrowth process, summon a Seed of Life and collect 2 mana potions, then select the limb to regrow in the patient's surgery tab.  Ensure this druid (or another with this spell) performs the surgery.</description>
+        <description>Creates the Seed of Life required to regrow body parts. To begin the regrowth process, summon a Seed of Life, then select the body part to regrow in the patient's surgery tab.  Ensure this druid (or another with this spell) performs the surgery.</description>
         <manaCost>0.10</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_RegrowLimb</verbClass>

@@ -18,14 +18,15 @@
 			<li>Human</li>
 		</recipeUsers>
 	</RecipeDef>
-
+	
 	<RecipeDef ParentName="SurgeryRegrowth">
-		<defName>RegrowArm</defName>
-		<label>regrow arm (Druid only, 90% mana required)</label>
-		<description>Use druidic powers to regrow an arm.</description>
+		<defName>Regrowth</defName>
+		<label>regrow body part (Druid only, 90% mana required)</label>
+		<description>Use druidic powers to regrow body parts.</description>
 		<workerClass>TorannMagic.Recipe_RegrowBodyPart</workerClass>
-		<jobString>Regrowing arm.</jobString>
+		<jobString>Regrowing body part.</jobString>
 		<workAmount>500</workAmount>
+		<dontShowIfAnyIngredientMissing>true</dontShowIfAnyIngredientMissing>
 		<ingredients>
 			<li>
 				<filter>
@@ -43,13 +44,88 @@
 				</filter>
 				<count>1</count>
 			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<categories>
+				<li>Medicine</li>
+			</categories>
+			<thingDefs>
+				<li>SeedofRegrowth</li>
+				<li>ManaPotion</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>LeftShoulder</li> 
+			<li>RightShoulder</li> 
+			<li>LeftArm</li> 
+			<li>RightArm</li> 
+			<li>LeftHand</li> 
+			<li>RightHand</li> 
+			<li>LeftLeg</li> 
+			<li>RightLeg</li> 
+			<li>LeftFoot</li> 
+			<li>RightFoot</li> 
+			<li>LeftHandPinky</li>
+			<li>LeftHandRingFinger</li>
+			<li>LeftHandMiddleFinger</li>
+			<li>LeftHandIndexFinger</li>
+			<li>LeftHandThumb</li>
+			<li>LeftFootLittleToe</li>
+			<li>LeftFootFourthToe</li>
+			<li>LeftFootMiddleToe</li>
+			<li>LeftFootSecondToe</li>
+			<li>LeftFootBigToe</li>
+			<li>LeftEye</li>
+			<li>LeftEar</li>
+			<li>RightHandPinky</li>
+			<li>RightHandRingFinger</li>
+			<li>RightHandMiddleFinger</li>
+			<li>RightHandIndexFinger</li>
+			<li>RightHandThumb</li>
+			<li>RightFootLittleToe</li>
+			<li>RightFootFourthToe</li>
+			<li>RightFootMiddleToe</li>
+			<li>RightFootSecondToe</li>
+			<li>RightFootBigToe</li>
+			<li>RightEye</li>
+			<li>RightEar</li>
+			<li>Nose</li>
+			<li>Jaw</li>
+			<li>Rib</li>
+			<li>Heart</li>
+			<li>LeftLung</li>
+			<li>RightLung</li>
+			<li>LeftKidney</li>
+			<li>RightKidney</li>
+			<li>Liver</li>
+			<li>Stomach</li>
+		</appliedOnFixedBodyParts>
+	</RecipeDef>
+<!-- 
+	<RecipeDef ParentName="SurgeryRegrowth">
+		<defName>RegrowArm</defName>
+		<label>regrow arm (Druid only, 90% mana required)</label>
+		<description>Use druidic powers to regrow an arm.</description>
+		<workerClass>TorannMagic.Recipe_RegrowBodyPart</workerClass>
+		<jobString>Regrowing arm.</jobString>
+		<workAmount>500</workAmount>
+		<dontShowIfAnyIngredientMissing>true</dontShowIfAnyIngredientMissing>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Medicine</li>
+					</categories>
+				</filter>
+				<count>1</count>
+			</li>
 			<li>
 				<filter>
 					<thingDefs>
-						<li>ManaPotion</li>
+						<li>SeedofRegrowth</li>
 					</thingDefs>
 				</filter>
-				<count>2</count>
+				<count>1</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
@@ -88,14 +164,6 @@
 				<filter>
 					<thingDefs>
 						<li>SeedofRegrowth</li>
-					</thingDefs>
-				</filter>
-				<count>1</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>ManaPotion</li>
 					</thingDefs>
 				</filter>
 				<count>1</count>
@@ -141,14 +209,6 @@
 				</filter>
 				<count>1</count>
 			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>ManaPotion</li>
-					</thingDefs>
-				</filter>
-				<count>2</count>
-			</li>
 		</ingredients>
 		<fixedIngredientFilter>
 			<categories>
@@ -190,14 +250,6 @@
 				</filter>
 				<count>1</count>
 			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>ManaPotion</li>
-					</thingDefs>
-				</filter>
-				<count>1</count>
-			</li>
 		</ingredients>
 		<fixedIngredientFilter>
 			<categories>
@@ -213,6 +265,6 @@
 			<li>RightFoot</li> 
 		</appliedOnFixedBodyParts>
 		<addsHediff>TM_FootRegrowth</addsHediff>
-	</RecipeDef>
+	</RecipeDef> -->
 
 </Defs>

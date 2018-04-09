@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-<!--   <HediffDef ParentName="InjuryBase" Name="CleaveInjuryBase" Abstract="True">
+<!--   <HediffDef ParentName="TM_InjuryBase" Name="CleaveInjuryBase" Abstract="True">
     <hediffClass>TorannMagic.Hediff_CleaveInjury</hediffClass>
     <tendable>true</tendable>
     <displayWound>true</displayWound>
@@ -12,7 +12,13 @@
     <label>cleaving</label>
   </ToolCapacityDef> -->
   
-  <HediffDef ParentName="InjuryBase">
+  <HediffDef Name="TM_InjuryBase" Abstract="True">
+    <hediffClass>Hediff_Injury</hediffClass>
+    <tendable>true</tendable>
+    <displayWound>true</displayWound>
+  </HediffDef>
+  
+  <HediffDef ParentName="TM_InjuryBase">
 	<defName>TM_ThrumboCleave</defName>
 	<label>cleave</label>
     <labelNoun>a massive wound</labelNoun>
@@ -39,7 +45,7 @@
 	</injuryProps>
   </HediffDef>
 
-  <HediffDef ParentName="InjuryBase">
+  <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_BlazingPowerHD</defName>
     <label>Blazing Power</label>
     <displayWound>false</displayWound>
@@ -63,7 +69,7 @@
 	</injuryProps>
   </HediffDef>
 
-  <HediffDef ParentName="InjuryBase">
+  <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_Holy</defName>
     <label>Divine Wrath</label>
     <displayWound>false</displayWound>
@@ -87,7 +93,7 @@
 	</injuryProps>
   </HediffDef>
 
-  <HediffDef ParentName="InjuryBase">
+  <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_MagicMissile</defName>
     <label>Magic Missile</label>
     <displayWound>false</displayWound>
@@ -111,7 +117,7 @@
 	</injuryProps>
   </HediffDef>
   
-  <HediffDef ParentName="InjuryBase">
+  <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_ManaMine</defName>
     <label>mana explosion</label>
     <displayWound>false</displayWound>
@@ -135,7 +141,7 @@
 	</injuryProps>
   </HediffDef>
   
-  <HediffDef ParentName="InjuryBase">
+  <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_Firebolt</defName>
     <label>Firebolt</label>
     <displayWound>false</displayWound>
@@ -159,7 +165,7 @@
 	</injuryProps>
   </HediffDef>
   
-  <HediffDef ParentName="InjuryBase">
+  <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_LightningCloud</defName>
     <label>Lightning</label>
     <displayWound>false</displayWound>
@@ -183,7 +189,7 @@
 	</injuryProps>
   </HediffDef>
   
-  <HediffDef ParentName="InjuryBase">
+  <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_Lightning</defName>
     <label>Lightning</label>
     <displayWound>false</displayWound>
@@ -207,7 +213,7 @@
 	</injuryProps>
   </HediffDef>
 
-  <HediffDef ParentName="InjuryBase">
+  <HediffDef ParentName="TM_InjuryBase">
     <defName>FrostRay</defName>
     <label>frostray</label>
     <displayWound>false</displayWound>
@@ -246,7 +252,7 @@
 	</stages>
   </HediffDef>
   
-  <HediffDef ParentName="InjuryBase">
+  <HediffDef ParentName="TM_InjuryBase">
     <defName>Snowball</defName>
     <label>snowball</label>
     <displayWound>false</displayWound>
@@ -285,7 +291,7 @@
 	</stages>
   </HediffDef>
   
-  <HediffDef ParentName="InjuryBase">
+  <HediffDef ParentName="TM_InjuryBase">
     <defName>Blizzard</defName>
     <label>blizzard</label>
     <displayWound>false</displayWound>
@@ -324,7 +330,7 @@
 	</stages>
   </HediffDef>
   
-  <HediffDef ParentName="InjuryBase">
+  <HediffDef ParentName="TM_InjuryBase">
     <defName>Iceshard</defName>
     <label>iceshard</label>
     <displayWound>true</displayWound>
@@ -362,7 +368,7 @@
 	</stages>
   </HediffDef>
   
-  <HediffDef ParentName="InjuryBase">
+  <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_GrapplingHook</defName>
     <label>Grappling Hook</label>
     <displayWound>true</displayWound>
@@ -406,7 +412,7 @@
     </stages>
   </HediffDef>
   
-  <HediffDef ParentName="InjuryBase">
+  <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_Whirlwind_Knockdown</defName>
     <label>Whirlwind Knockdown</label>
     <displayWound>true</displayWound>
@@ -450,7 +456,7 @@
     </stages>
   </HediffDef>  
 
-  <HediffDef ParentName="InjuryBase">
+  <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_DisablingShot_HD</defName>
     <label>disabling shot</label>
     <displayWound>true</displayWound>
@@ -494,7 +500,7 @@
     </stages>
   </HediffDef>  
   
-  <HediffDef ParentName="InjuryBase">
+  <HediffDef ParentName="TM_InjuryBase">
 		<defName>TM_arcaneSpectre</defName>
 		<label>spirit cut</label>
     <labelNoun>a cut</labelNoun>

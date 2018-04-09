@@ -922,7 +922,14 @@ namespace TorannMagic
                             }
                             ResolveEffecter();
                             ResolveClassSkills();
-                            this.Mana.CurLevel = this.Mana.CurInstantLevel;
+                            if (this.Mana.CurLevel < 0)
+                            {
+                                this.Mana.CurLevel = 0;
+                            }
+                            else if(this.Mana.CurLevel > this.Mana.MaxLevel)
+                            {
+                                this.Mana.CurLevel = this.Mana.MaxLevel;
+                            }
                         }
                     }
                 }
@@ -3638,20 +3645,20 @@ namespace TorannMagic
                 Enchantment.CompEnchantedItem item = apparel[i].GetComp<Enchantment.CompEnchantedItem>();
                 if (item != null)
                 {
-                    if (item.Props.HasEnchantment)
+                    if (item.HasEnchantment)
                     {
-                        _maxMP += item.Props.maxMP;
-                        _mpRegenRate += item.Props.mpRegenRate;
-                        _coolDown += item.Props.coolDown;
-                        _xpGain += item.Props.xpGain;
-                        _mpCost += item.Props.mpCost;
-                        _arcaneRes += item.Props.arcaneRes;
-                        _arcaneDmg += item.Props.arcaneDmg;
-                        if(item.Props.arcaneSpectre == true)
+                        _maxMP += item.maxMP;
+                        _mpRegenRate += item.mpRegenRate;
+                        _coolDown += item.coolDown;
+                        _xpGain += item.xpGain;
+                        _mpCost += item.mpCost;
+                        _arcaneRes += item.arcaneRes;
+                        _arcaneDmg += item.arcaneDmg;
+                        if(item.arcaneSpectre == true)
                         {
                             _arcaneSpectre = true;
                         }
-                        if(item.Props.phantomShift == true)
+                        if(item.phantomShift == true)
                         {
                             _phantomShift = true;
                         }
@@ -3663,15 +3670,15 @@ namespace TorannMagic
                 Enchantment.CompEnchantedItem item = this.Pawn.equipment.Primary.GetComp<Enchantment.CompEnchantedItem>();
                 if (item != null)
                 {
-                    if (item.Props.HasEnchantment)
+                    if (item.HasEnchantment)
                     {
-                        _maxMP += item.Props.maxMP;
-                        _mpRegenRate += item.Props.mpRegenRate;
-                        _coolDown += item.Props.coolDown;
-                        _xpGain += item.Props.xpGain;
-                        _mpCost += item.Props.mpCost;
-                        _arcaneRes += item.Props.arcaneRes;
-                        _arcaneDmg += item.Props.arcaneDmg;
+                        _maxMP += item.maxMP;
+                        _mpRegenRate += item.mpRegenRate;
+                        _coolDown += item.coolDown;
+                        _xpGain += item.xpGain;
+                        _mpCost += item.mpCost;
+                        _arcaneRes += item.arcaneRes;
+                        _arcaneDmg += item.arcaneDmg;
                     }
                 }
                 if(this.Pawn.equipment.Primary.def.defName == "TM_DefenderStaff")

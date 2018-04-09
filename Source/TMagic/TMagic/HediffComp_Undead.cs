@@ -81,15 +81,23 @@ namespace TorannMagic
                 }
                 else //for caravans
                 {
-                    foreach (Pawn current in base.Pawn.holdingOwner)
+                    if (this.Pawn.ParentHolder.ToString().Contains("Caravan"))
                     {
-                        if (current != null)
+                        foreach (Pawn current in base.Pawn.holdingOwner)
                         {
-                            if (current.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || current.story.traits.HasTrait(TorannMagicDefOf.Lich))
+                            if (current != null)
                             {
-                                necroValid = true;
+                                if (current.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || current.story.traits.HasTrait(TorannMagicDefOf.Lich))
+                                {
+                                    necroValid = true;
+                                }
                             }
                         }
+                    }
+                    else
+                    {
+                        //being carried
+                        necroValid = true;
                     }
                 }
 
@@ -104,23 +112,28 @@ namespace TorannMagic
                 }
                 else
                 {
-                    if (base.Pawn.needs.food != null)
+                    List<Need> needs = base.Pawn.needs.AllNeeds;
+                    for(int i =0; i < needs.Count; i++)
                     {
-                        base.Pawn.needs.food.CurLevel = base.Pawn.needs.food.MaxLevel;
+                        needs[i].CurLevel = needs[i].MaxLevel;
                     }
-                    if (base.Pawn.needs.rest != null)
-                    {
-                        base.Pawn.needs.rest.CurLevel = 1.01f;
-                    }
+                    //if (base.Pawn.needs.food != null)
+                    //{
+                    //    base.Pawn.needs.food.CurLevel = base.Pawn.needs.food.MaxLevel;
+                    //}
+                    //if (base.Pawn.needs.rest != null)
+                    //{
+                    //    base.Pawn.needs.rest.CurLevel = base.Pawn.needs.rest.MaxLevel;
+                    //}
 
-                    if (base.Pawn.IsColonist)
-                    {
-                        base.Pawn.needs.beauty.CurLevel = .5f;
-                        base.Pawn.needs.comfort.CurLevel = .5f;
-                        base.Pawn.needs.joy.CurLevel = .5f;
-                        base.Pawn.needs.mood.CurLevel = .5f;
-                        base.Pawn.needs.space.CurLevel = .5f;
-                    }
+                    //if (base.Pawn.IsColonist)
+                    //{
+                    //    base.Pawn.needs.beauty.CurLevel = .5f;
+                    //    base.Pawn.needs.comfort.CurLevel = .5f;
+                    //    base.Pawn.needs.joy.CurLevel = .5f;
+                    //    base.Pawn.needs.mood.CurLevel = .5f;
+                    //    base.Pawn.needs.space.CurLevel = .5f;
+                    //}
                     Pawn pawn = base.Pawn;
                     int num = 1;
                     int num2 = 1;

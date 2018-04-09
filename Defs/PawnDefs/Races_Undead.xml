@@ -151,5 +151,22 @@
       <li>Anesthetize</li>
     </recipes>
   </ThingDef>
+  
+
+  <PawnKindDef ParentName="BasePlayerPawnKind">
+    <defName>TM_Undead</defName>
+    <label>undead</label>
+    <defaultFactionType>PlayerColony</defaultFactionType>
+    <backstoryCategory>Civil</backstoryCategory>
+    <chemicalAddictionChance>0.00</chemicalAddictionChance>
+    <apparelTags>
+      <li>Spacer</li>
+    </apparelTags>
+    <apparelMoney>
+      <min>1000</min>
+      <max>2400</max>
+    </apparelMoney>
+    <backstoryCryptosleepCommonality>1</backstoryCryptosleepCommonality>
+  </PawnKindDef>
 
 </Defs>
