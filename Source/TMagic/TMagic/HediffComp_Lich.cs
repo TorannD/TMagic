@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
+using RimWorld;
 
 namespace TorannMagic
 {
@@ -49,15 +50,15 @@ namespace TorannMagic
             bool flag4 = Find.TickManager.TicksGame % 600 == 0;
             if (flag4)
             {
-                if (base.Pawn.needs.food != null)
+                List<Need> needs = base.Pawn.needs.AllNeeds;
+                for (int i = 0; i < needs.Count; i++)
                 {
-                    base.Pawn.needs.food.CurLevel = base.Pawn.needs.food.MaxLevel;
+                    if(needs[i].def.defName != "Joy" && needs[i].def.defName != "Mood" && needs[i].def.defName != "TM_Mana" && needs[i].def.defName != "TM_Stamina")
+                    {
+                        needs[i].CurLevel = needs[i].MaxLevel;
+                    }
+                    
                 }
-                if (base.Pawn.needs.rest != null)
-                {
-                    base.Pawn.needs.rest.CurLevel = 1.01f;
-                }
-
                 Pawn pawn = base.Pawn;
                 int num = 1;
                 int num2 = 1;

@@ -62,7 +62,10 @@ namespace TorannMagic.ModOptions
             Rect rowRect66 = UIHelper.GetRowRect(rowRect6, rowHeight, num);
             Settings.Instance.advFighterChance = Widgets.HorizontalSlider(rowRect66, Settings.Instance.advFighterChance, 0f, 2f, false, "advFighterChance".Translate() + " " + Rarity(Settings.Instance.advFighterChance), "0", "2", .01f);
             num++;
-            Rect rowRect7 = UIHelper.GetRowRect(rowRect66, rowHeight, num);
+            Rect rowRect67 = UIHelper.GetRowRect(rowRect66, rowHeight, num);
+            Settings.Instance.riftChallenge = Widgets.HorizontalSlider(rowRect67, Settings.Instance.riftChallenge, 0, 3, false, "riftChallenge".Translate() + " " + Challenge(Settings.Instance.riftChallenge), "0", "3", 1);
+            num++;
+            Rect rowRect7 = UIHelper.GetRowRect(rowRect67, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect7, "AICanCast".Translate(), ref Settings.Instance.AICasting, false);
             num++;
             Rect rowRect8 = UIHelper.GetRowRect(rowRect7, rowHeight, num);
@@ -133,6 +136,29 @@ namespace TorannMagic.ModOptions
             {
                 rarity = "Frequent";
             }
+            return rarity;
+        }
+
+        private string Challenge(float val)
+        {
+            string rarity = "";
+            if (val == 0)
+            {
+                rarity = "None (never happens)";
+            }
+            else if (val == 1)
+            {
+                rarity = "Easy";
+            }
+            else if (val == 2)
+            {
+                rarity = "Normal";
+            }
+            else
+            {
+                rarity = "Hard";
+            }
+
             return rarity;
         }
     }

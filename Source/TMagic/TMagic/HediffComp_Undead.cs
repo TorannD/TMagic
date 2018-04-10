@@ -115,7 +115,10 @@ namespace TorannMagic
                     List<Need> needs = base.Pawn.needs.AllNeeds;
                     for(int i =0; i < needs.Count; i++)
                     {
-                        needs[i].CurLevel = needs[i].MaxLevel;
+                        if(needs[i].def.defName != "TM_Mana" && needs[i].def.defName != "TM_Stamina")
+                        {                            
+                            needs[i].CurLevel = needs[i].MaxLevel;
+                        }                        
                     }
                     //if (base.Pawn.needs.food != null)
                     //{

@@ -73,6 +73,7 @@
 <TM_WeaponDamage>{0} damage: {1}</TM_WeaponDamage>
 <TM_AntiArmorDamage>{0} damage: {1}; additional damage to mechanoids: {2}</TM_AntiArmorDamage>
 <TM_ArrowStormDamage>{0} damage: {1}; accuracy: {2}&#37;</TM_ArrowStormDamage>
+<riftChallenge>Elemental Rift Difficulty:</riftChallenge>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>

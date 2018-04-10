@@ -47,6 +47,7 @@ namespace TorannMagic
             //        typeof(CastPositionRequest),
             //        typeof(IntVec3)
             //    }, null), null, new HarmonyMethod(typeof(HarmonyPatches).GetMethod("TryFindCastPosition_Base_Patch")), null);
+            harmonyInstance.Patch(AccessTools.Method(typeof(Caravan), "get_Resting", null, null), null, new HarmonyMethod(typeof(HarmonyPatches), "get_Resting_Undead", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(PawnDiedOrDownedThoughtsUtility), "AppendThoughts_Relations", new Type[]
                 {
                     typeof(Pawn),
@@ -101,6 +102,20 @@ namespace TorannMagic
                     GenPlace.TryPlaceThing(thing, __instance.pawn.Position, __instance.pawn.Map, ThingPlaceMode.Near, null);
                 }
             }
+        }
+
+        public static void get_Resting_Undead(Caravan __instance, ref bool __result)
+        {
+            List<Pawn> undeadCaravan = __instance.PawnsListForReading;
+            bool allUndead = true;
+            for(int i =0; i < undeadCaravan.Count; i++)
+            {
+                if(undeadCaravan[i].IsColonist && !(undeadCaravan[i].health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")) || undeadCaravan[i].health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadAnimalHD")) || undeadCaravan[i].health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD"))))
+                {
+                    allUndead = false;
+                }
+            }
+            __result = !allUndead;
         }
 
         [HarmonyPatch(typeof(Pawn_HealthTracker), "CheckForStateChange", null)]

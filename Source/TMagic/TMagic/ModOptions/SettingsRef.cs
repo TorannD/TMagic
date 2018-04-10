@@ -19,6 +19,7 @@ namespace TorannMagic.ModOptions
         public int deathExplosionMax = Settings.Instance.deathExplosionMax;
         public float magicyteChance = Settings.Instance.magicyteChance;
         public bool showIconsMultiSelect = Settings.Instance.showIconsMultiSelect;
+        public float riftChallenge = Settings.Instance.riftChallenge;
 
     }
 }

@@ -12,6 +12,7 @@ namespace TorannMagic.Conditions
         public IntVec2 centerLocation;
         private int areaRadius = 2;
         bool initialized = false;
+        bool disabled = false;
 
         public override void ExposeData()
         {
@@ -19,25 +20,34 @@ namespace TorannMagic.Conditions
             //Scribe_Deep.Look<Thing>(ref this.thing, "thing", new object[0]);
             Scribe_Values.Look<bool>(ref this.initialized, "initialized", true, false);
             Scribe_Values.Look<IntVec2>(ref this.centerLocation, "centerLocation", default(IntVec2), false);
-
+            Scribe_Values.Look<bool>(ref this.disabled, "disabled", false, false);
         }
 
         public override void Init()
-        {
-           
+        {           
             base.Init();
+            this.disabled = false;
             this.FindGoodCenterLocation();
-            Thing thing = ThingMaker.MakeThing(ThingDef.Named("TM_ElementalRift"), ThingDefOf.BlocksGranite);
-            GenSpawn.Spawn(thing, centerLocation.ToIntVec3, this.Map, Rot4.North, false);
-            Faction faction = Find.FactionManager.FirstFactionOfDef(FactionDef.Named("TM_ElementalFaction"));
-            if (!faction.HostileTo(Faction.OfPlayer))
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            if (settingsRef.riftChallenge > 0)
             {
-                thing.SetFaction(Faction.OfMechanoids, null);
+                Thing thing = ThingMaker.MakeThing(ThingDef.Named("TM_ElementalRift"), ThingDefOf.BlocksGranite);
+                GenSpawn.Spawn(thing, centerLocation.ToIntVec3, this.Map, Rot4.North, false);
+                Faction faction = Find.FactionManager.FirstFactionOfDef(FactionDef.Named("TM_ElementalFaction"));
+                if (!faction.HostileTo(Faction.OfPlayer))
+                {
+                    thing.SetFaction(Faction.OfMechanoids, null);
+                }
+                else
+                {
+                    thing.SetFaction(faction, null);
+                }
             }
             else
-            {            
-                thing.SetFaction(faction, null);
-            }           
+            {
+                this.disabled = true;
+                Log.Message("Rift spawning disabled.");
+            }
         }
 
         public override void End()
@@ -63,24 +73,28 @@ namespace TorannMagic.Conditions
                 }
                 z++;
             }
-            Thing thing = null;
-            thing = ThingMaker.MakeThing(ThingDef.Named("Jade"));
-            thing.stackCount = Rand.Range(50, 75);
-            if (thing != null)
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            if (!this.disabled)
             {
-                GenPlace.TryPlaceThing(thing, thingLoc, this.Map, ThingPlaceMode.Near, null);
-            }
-            ItemCollectionGeneratorParams parms = default(ItemCollectionGeneratorParams);
-            parms.techLevel = TechLevel.Neolithic;
-            parms.totalMarketValue = 2500f;
-            List<Thing> list = new List<Thing>();
-            ItemCollectionGenerator_Gemstones itc_g = new ItemCollectionGenerator_Gemstones();
-            list = itc_g.Generate(parms, list);
-            for (int i = 0; i < list.Count; i++)
-            {
-                thing = list[i];
-                thing.stackCount = list[i].stackCount;
-                GenPlace.TryPlaceThing(thing, thingLoc, this.Map, ThingPlaceMode.Near, null);
+                Thing thing = null;
+                thing = ThingMaker.MakeThing(ThingDef.Named("Jade"));
+                thing.stackCount = Rand.Range(35 * (int)settingsRef.riftChallenge, 60 * (int)settingsRef.riftChallenge);
+                if (thing != null)
+                {
+                    GenPlace.TryPlaceThing(thing, thingLoc, this.Map, ThingPlaceMode.Near, null);
+                }
+                ItemCollectionGeneratorParams parms = default(ItemCollectionGeneratorParams);
+                parms.techLevel = TechLevel.Neolithic;
+                parms.totalMarketValue = 1000f * (settingsRef.riftChallenge * settingsRef.riftChallenge);
+                List<Thing> list = new List<Thing>();
+                ItemCollectionGenerator_Gemstones itc_g = new ItemCollectionGenerator_Gemstones();
+                list = itc_g.Generate(parms, list);
+                for (int i = 0; i < list.Count; i++)
+                {
+                    thing = list[i];
+                    thing.stackCount = list[i].stackCount;
+                    GenPlace.TryPlaceThing(thing, thingLoc, this.Map, ThingPlaceMode.Near, null);
+                }
             }
             base.End();
         }
