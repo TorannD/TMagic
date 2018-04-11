@@ -90,7 +90,6 @@ namespace TorannMagic
                                     }
                                     if (undeadPawn.kindDef.RaceProps.Animal)
                                     {
-                                        ResurrectionUtility.Resurrect(undeadPawn);
                                         HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadAnimalHD, -4f);
                                         HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadAnimalHD, .5f + ver.level);
 

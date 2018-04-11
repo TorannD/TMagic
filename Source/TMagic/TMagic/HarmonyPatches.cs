@@ -115,7 +115,11 @@ namespace TorannMagic
                     allUndead = false;
                 }
             }
-            __result = !allUndead;
+            if(allUndead)
+            {
+                __result = !allUndead;
+            }
+            
         }
 
         [HarmonyPatch(typeof(Pawn_HealthTracker), "CheckForStateChange", null)]
@@ -460,13 +464,15 @@ namespace TorannMagic
         {
             public static bool Prefix(Recipe_Surgery __instance, Pawn surgeon, Pawn patient, List<Thing> ingredients, BodyPartRecord part, ref bool __result)
             {
-                if (patient.story.traits.HasTrait(TorannMagicDefOf.Undead))
+
+                if (patient.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")) || patient.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadAnimalHD")) || patient.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD")) )
                 {
                     Messages.Message("Something went horribly wrong while trying to perform a surgery on " + patient.LabelShort + ", perhaps it's best to leave the bodies of the living dead alone.", MessageTypeDefOf.NegativeHealthEvent);
                     GenExplosion.DoExplosion(surgeon.Position, surgeon.Map, 2f, TMDamageDefOf.DamageDefOf.TM_CorpseExplosion, patient, Rand.Range(6, 12), TMDamageDefOf.DamageDefOf.TM_CorpseExplosion.soundExplosion, null, null, null, 0, 0, false, null, 0, 0, 0, false);
                     __result = true;
                     return false;
                 }
+                
                 return true;
                 
             }

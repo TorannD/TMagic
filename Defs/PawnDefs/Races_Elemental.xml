@@ -52,7 +52,7 @@
   <ThingDef ParentName="TM_Base_Elemental" Name="Lesser_Earth_Elemental">
     <defName>TM_LesserEarth_ElementalR</defName>
     <label>Lesser Earth Elemental</label>
-    <description>The earth elemental is a lumbering, stubborn creature made of living stone.  Its hide appears to be made out of rock and crystal with patches of mud and soil where the joints should be.  This creature is the most steadfast of all elementals, able to weather a storm of blows.  While this is a lesser elemental, it still dwarfs most humanoids and posseses a remarkable ability to defend its master.</description>
+    <description>The earth elemental is a lumbering, stubborn creature made of living stone.  Its hide appears to be made out of rock and crystal with patches of mud and soil where the joints should be.  This creature is the most steadfast of all elementals, able to weather a storm of blows.  While this is a lesser elemental, it still dwarfs most humanoids and possesses a remarkable ability to defend its master.</description>
     <statBases>
 	  <Mass>180</Mass>
       <MoveSpeed>3.4</MoveSpeed>
@@ -755,7 +755,7 @@
   <ThingDef ParentName="TM_Base_Elemental" Name="Greater_Water_Elemental">
     <defName>TM_GreaterWater_ElementalR</defName>
     <label>Greater Water Elemental</label>
-    <description>Water elementals are creatures of living water.  They embody the spirit of unbound patience and solitude.  They appear as a swirling mass of water, sometimes seeming to take the shape of a creature or object with bits of flotsam occasionally surfacing.  They are always in motion and seem to glide or sway when moving.  This enourmous elemental before you has whirlpools for eyes and moves like a crashing wave.</description>
+    <description>Water elementals are creatures of living water.  They embody the spirit of unbound patience and solitude.  They appear as a swirling mass of water, sometimes seeming to take the shape of a creature or object with bits of flotsam occasionally surfacing.  They are always in motion and seem to glide or sway when moving.  This enormous elemental before you has whirlpools for eyes and moves like a crashing wave.</description>
     <statBases>
 	  <Mass>240</Mass>
       <MoveSpeed>5.6</MoveSpeed>
@@ -845,7 +845,7 @@
   <ThingDef ParentName="TM_Base_Elemental" Name="Lesser_Wind_Elemental">
     <defName>TM_LesserWind_ElementalR</defName>
     <label>Lesser Wind Elemental</label>
-    <description>Air elementals are beings of living wind and possess unnateral speed and agility.  The physical manifestation of the air elemental appears to rapidly shift; sometimes a hazy smoke, other times a biting whirlwind.  The air currents seem to form an barely perceptible outline of a humanoid form.  While lesser in nature, this elemental will rain vicious, stinging attacks upon its enemies.</description>
+    <description>Air elementals are beings of living wind and possess unnatural speed and agility.  The physical manifestation of the air elemental appears to rapidly shift; sometimes a hazy smoke, other times a biting whirlwind.  The air currents seem to form an barely perceptible outline of a humanoid form.  While lesser in nature, this elemental will rain vicious, stinging attacks upon its enemies.</description>
     <statBases>
 	  <Mass>50</Mass>
       <MoveSpeed>8</MoveSpeed>
@@ -935,7 +935,7 @@
   <ThingDef ParentName="TM_Base_Elemental" Name="Wind_Elemental">
     <defName>TM_Wind_ElementalR</defName>
     <label>Wind Elemental</label>
-    <description>Air elementals are beings of living wind and possess unnateral speed and agility.  The physical manifestation of the air elemental appears to rapidly shift; sometimes a hazy smoke, other times a biting whirlwind.  The air currents seem to form an barely perceptible outline of a humanoid form.  This creature possesses the power of a storm and will not hesitate to bring it to bear on its enemies.</description>
+    <description>Air elementals are beings of living wind and possess unnatural speed and agility.  The physical manifestation of the air elemental appears to rapidly shift; sometimes a hazy smoke, other times a biting whirlwind.  The air currents seem to form an barely perceptible outline of a humanoid form.  This creature possesses the power of a storm and will not hesitate to bring it to bear on its enemies.</description>
     <statBases>
 	  <Mass>60</Mass>
       <MoveSpeed>8</MoveSpeed>
@@ -1024,7 +1024,7 @@
   <ThingDef ParentName="TM_Base_Elemental" Name="Greater_Wind_Elemental">
     <defName>TM_GreaterWind_ElementalR</defName>
     <label>Greater Wind Elemental</label>
-    <description>Air elementals are beings of living wind and possess unnateral speed and agility.  The physical manifestation of the air elemental appears to rapidly shift; sometimes a hazy smoke, other times a biting whirlwind.  The air currents seem to form an barely perceptible outline of a humanoid form.  There is no doubt that this elemental is a supreme being capable of unleashing the fury of a storm.</description>
+    <description>Air elementals are beings of living wind and possess unnatural speed and agility.  The physical manifestation of the air elemental appears to rapidly shift; sometimes a hazy smoke, other times a biting whirlwind.  The air currents seem to form an barely perceptible outline of a humanoid form.  There is no doubt that this elemental is a supreme being capable of unleashing the fury of a storm.</description>
     <statBases>
 	  <Mass>70</Mass>
       <MoveSpeed>8</MoveSpeed>

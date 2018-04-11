@@ -38,7 +38,7 @@
 
   <!-- Torann Magic poppi thingdef-->
   
-  <ThingDef ParentName="AnimalThingBase">
+  <ThingDef ParentName="BasePawn">
 	<thingClass>TorannMagic.TMPawnSummoned</thingClass>
     <defName>TM_Poppi</defName>
     <label>poppi</label>
@@ -65,6 +65,7 @@
       <baseBodySize>0.2</baseBodySize>
       <baseHealthScale>0.4</baseHealthScale>
 	  <predator>true</predator>
+	  <wildness>0.4</wildness>
       <foodType>OmnivoreRoughAnimal</foodType>
       <leatherColor>(255,215,0)</leatherColor>
       <leatherInsulation>1.5</leatherInsulation>
@@ -73,6 +74,10 @@
       <lifeExpectancy>8</lifeExpectancy>
 	  <packAnimal>false</packAnimal>
 	  <herdAnimal>false</herdAnimal>
+	  <hasGenders>true</hasGenders>
+	  <manhunterOnDamageChance>0</manhunterOnDamageChance>
+      <manhunterOnTameFailChance>0</manhunterOnTameFailChance>
+	  <intelligence>ToolUser</intelligence>	
       <lifeStageAges>
         <li>
           <def>AnimalBaby</def>

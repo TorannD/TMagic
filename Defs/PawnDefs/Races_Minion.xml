@@ -46,7 +46,7 @@
   <ThingDef ParentName="TM_Base_Minion" Name="TM_Minion">
     <defName>TM_MinionR</defName>
     <label>minion</label>
-    <description>Minions are mischevious, lazy, cruel cowards that come from a miserable plane of existence.  They appear as a floating meatball with a gaint eye.  They have stubby, little arms a mouth that seems transfixed in a nasty smile, and two or three horns.
+    <description>Minions are mischievous, lazy, cruel cowards that come from a miserable plane of existence.  They appear as a floating meatball with a giant eye.  They have stubby, little arms a mouth that seems transfixed in a nasty smile, and two or three horns.
 It's not clear how they float, though one can only assume it has something to do with the hot, putrid stench that follows them everywhere.
 Their usefulness is open for debate; they possess little in terms of combat ability and would sooner flee than fight.  They -can- do simple tasks such as hauling and cleaning (though they seem to have a different definition of "clean").  However, it seems more likely to find them lounging near the television or smoking a joint (or both) than doing anything productive.
 They can be summoned by gullible... er, trained mages, and, in return for giving them a break from their "pit fiend of a boss," they are willing to "help out" around the place.
@@ -126,7 +126,7 @@ If things get too tough for them or they get bored, they'll flee back to whereve
   <ThingDef ParentName="TM_Base_Minion" Name="TM_GreaterMinion">
     <defName>TM_GreaterMinionR</defName>
     <label>greater minion</label>
-    <description>Minions are mischevious, lazy, cruel cowards that come from a miserable plane of existence.  They appear as a floating meatball with a gaint eye.  They have stubby, little arms a mouth that seems transfixed in a nasty smile, and two or three horns.
+    <description>Minions are mischievous, lazy, cruel cowards that come from a miserable plane of existence.  They appear as a floating meatball with a giant eye.  They have stubby, little arms a mouth that seems transfixed in a nasty smile, and two or three horns.
 It's not clear how they float, though one can only assume it has something to do with the hot, putrid stench that follows them everywhere.
 Their usefulness is open for debate; they possess little in terms of combat ability and would sooner flee than fight.  They -can- do simple tasks such as hauling and cleaning (though they seem to have a different definition of "clean").  However, it seems more likely to find them lounging near the television or smoking a joint (or both) than doing anything productive.
 They can be summoned by gullible... er, trained mages, and, in return for giving them a break from their "pit fiend of a boss," they are willing to "help out" around the place.
@@ -206,7 +206,7 @@ If things get too tough for them or they get bored, they'll flee back to whereve
   <ThingDef ParentName="TM_Base_Minion" Name="TM_InvisMinion">
     <defName>TM_InvisMinionR</defName>
     <label>greater minion</label>
-    <description>Minions are mischevious, lazy, cruel cowards that come from a miserable plane of existence.  They appear as a floating meatball with a gaint eye.  They have stubby, little arms a mouth that seems transfixed in a nasty smile, and two or three horns.
+    <description>Minions are mischievous, lazy, cruel cowards that come from a miserable plane of existence.  They appear as a floating meatball with a giant eye.  They have stubby, little arms a mouth that seems transfixed in a nasty smile, and two or three horns.
 It's not clear how they float, though one can only assume it has something to do with the hot, putrid stench that follows them everywhere.
 Their usefulness is open for debate; they possess little in terms of combat ability and would sooner flee than fight.  They -can- do simple tasks such as hauling and cleaning (though they seem to have a different definition of "clean").  However, it seems more likely to find them lounging near the television or smoking a joint (or both) than doing anything productive.
 They can be summoned by gullible... er, trained mages, and, in return for giving them a break from their "pit fiend of a boss," they are willing to "help out" around the place.

@@ -87,9 +87,12 @@ namespace TorannMagic
                         {
                             if (current != null)
                             {
-                                if (current.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || current.story.traits.HasTrait(TorannMagicDefOf.Lich))
+                                if (current.RaceProps.Humanlike)
                                 {
-                                    necroValid = true;
+                                    if (current.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || current.story.traits.HasTrait(TorannMagicDefOf.Lich))
+                                    {
+                                        necroValid = true;
+                                    }
                                 }
                             }
                         }
