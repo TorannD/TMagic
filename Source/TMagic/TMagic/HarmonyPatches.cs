@@ -11,7 +11,8 @@ using UnityEngine;
 using Verse;
 using Verse.AI;
 using AbilityUserAI;
-using PrisonLabor;
+using System.Reflection.Emit;
+//using PrisonLabor;
 
 namespace TorannMagic
 {
@@ -71,25 +72,37 @@ namespace TorannMagic
                     typeof(PawnDiedOrDownedThoughtsKind)
                 }, null), new HarmonyMethod(typeof(HarmonyPatches), "TryGiveThoughts_PrefixPatch", null), null, null);
             //harmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
-
+            
             #region PrisonLabor
             {
                 try
                 {
                     ((Action)(() =>
                     {
-                        if (AccessTools.Method(typeof(PrisonLabor.JobDriver_Mine_Tweak), nameof(PrisonLabor.JobDriver_Mine_Tweak.ExposeData)) != null)
+                        if (ModOptions.ModCompatibilityCheck.PrisonLaborIsActive)
                         {
                             harmonyInstance.Patch(AccessTools.Method(typeof(PrisonLabor.JobDriver_Mine_Tweak), "ResetTicksToPickHit"), null, new HarmonyMethod(typeof(HarmonyPatches), "TM_PrisonLabor_JobDriver_Mine_Tweak"));
                         }
                     }))();
                 }
                 catch (TypeLoadException) { }
+
+                //try
+                //{
+                //    ((Action)(() =>
+                //    {
+                //        if (AccessTools.Method(typeof(PrisonLabor.JobDriver_Mine_Tweak), nameof(PrisonLabor.JobDriver_Mine_Tweak.ExposeData)) != null)
+                //        {
+                //            harmonyInstance.Patch(AccessTools.Method(typeof(PrisonLabor.JobDriver_Mine_Tweak), "ResetTicksToPickHit"), null, new HarmonyMethod(typeof(HarmonyPatches), "TM_PrisonLabor_JobDriver_Mine_Tweak"));
+                //        }
+                //    }))();
+                //}
+                //catch (TypeLoadException) { }
             }
             #endregion
         }
 
-        public static void TM_PrisonLabor_JobDriver_Mine_Tweak(JobDriver_Mine_Tweak __instance)
+        public static void TM_PrisonLabor_JobDriver_Mine_Tweak(JobDriver __instance)
         {
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             if (Rand.Chance(settingsRef.magicyteChance))
@@ -1400,6 +1413,18 @@ namespace TorannMagic
             }
         }
 
+        [HarmonyPatch(typeof(CompMilkable), "CompInspectStringExtra", null)]
+        public class CompMilkable_Patch
+        {
+            public static void Postfix(CompMilkable __instance, ref string __result)
+            {
+                if(__instance.parent.def.defName == "Poppi")
+                {
+                    __result = "Poppi_fuelGrowth".Translate() + ": " + __instance.Fullness.ToStringPercent();
+                }
+            }
+        }
+
         [HarmonyPatch(typeof(NegativeInteractionUtility), "NegativeInteractionChanceFactor", null)]
         public class NegativeInteractionChanceFactor_Patch
         {
@@ -1424,6 +1449,20 @@ namespace TorannMagic
                 {
                     __result = __result * .5f;
                 }
+            }
+        }
+
+        [HarmonyPatch(typeof(InspirationHandler), "TryStartInspiration", null)]
+        public class InspirationHandler_Patch
+        {
+            public static bool Prefix(InspirationHandler __instance, ref bool __result)
+            {
+                if(__instance.pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")) || __instance.pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD")))
+                {
+                    __result = false;
+                    return false;
+                }
+                return true;
             }
         }
 

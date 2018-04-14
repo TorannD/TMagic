@@ -647,6 +647,9 @@ Level 3: Moving +50%, Manipulation +50%, Blood pumping +40%, Dodge chance +35%</
 <TM_MasterSpellLocked>Locked: learn {0} using a master scroll</TM_MasterSpellLocked>
 
 <!-- ========== Button Tooltips ========== -->
+<Poppi_fuelGrowth>Chemical extraction</Poppi_fuelGrowth>
+
+<!-- ========== Button Tooltips ========== -->
 
 <TM_AbilityDescBaseManaCost>Base Mana Cost: {0} </TM_AbilityDescBaseManaCost>
 <TM_AbilityDescAdjustedManaCost>Adjusted Mana Cost: {0} </TM_AbilityDescAdjustedManaCost>

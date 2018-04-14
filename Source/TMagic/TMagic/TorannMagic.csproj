@@ -78,6 +78,7 @@
     <Compile Include="Building_TMElementalRift.cs" />
     <Compile Include="Building_TMPortal.cs" />
     <Compile Include="Building_PoisonTrap.cs" />
+    <Compile Include="ModOptions\ModCompatibilityCheck.cs" />
     <Compile Include="JobGiver_AIClean.cs" />
     <Compile Include="HediffComp_BattleHymn.cs" />
     <Compile Include="HediffComp_SpellMending.cs" />

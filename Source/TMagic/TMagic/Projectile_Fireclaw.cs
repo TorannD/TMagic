@@ -63,6 +63,18 @@ namespace TorannMagic
         bool pos4Flag = false;
         bool pos5Flag = false;
 
+        bool posFlagw = true;
+        bool pos1Flagw = true;
+        bool pos11Flagw = true;
+        bool pos12Flagw = true;
+        bool pos2Flagw = true;
+        bool pos21Flagw = true;
+        bool pos22Flagw = true;
+        bool pos3Flagw = true;
+        bool pos31Flagw = true;
+        bool pos4Flagw = true;
+        bool pos5Flagw = true;
+
         private int posAge;
         private int pos1Age;
         private int pos11Age;
@@ -208,164 +220,318 @@ namespace TorannMagic
                     }
 
                     //strike
-                    if ( posFlag )
+                    if ( posFlag && posFlagw)
                     {
                         currentPos = GetNewPos(currentPos, origin.x <= target.x, origin.z <= target.z, this.age >= (((duration + posAge) / 2)), 0, 0, xProb, 1 - xProb);
-                        if (currentPos.x != origin.x & currentPos.z != origin.z)
+                        try
                         {
-                            if ( verVal >= 3) 
+                            if ((currentPos.GetTerrain(base.Map).passability == Traversability.Impassable) || !currentPos.Walkable(base.Map))
                             {
-                                this.FireExplosion(pwrVal, currentPos, map, 1.2f);
+                                this.posFlagw = false;
                             }
                             else
                             {
-                                this.FireExplosion(pwrVal, currentPos, map, 0.4f);
-                            }                            
-                            this.lastStrike = this.age;
+                                if (currentPos.x != origin.x & currentPos.z != origin.z)
+                                {
+                                    if (verVal >= 3)
+                                    {
+                                        this.FireExplosion(pwrVal, currentPos, map, 1.2f);
+                                    }
+                                    else
+                                    {
+                                        this.FireExplosion(pwrVal, currentPos, map, 0.4f);
+                                    }
+                                    this.lastStrike = this.age;
+                                }
+                            }
+                        }
+                        catch
+                        {
+                            this.posFlagw = false;
                         }
 
                     }
                     //1
-                    if (pos1Flag)
+                    if (pos1Flag && pos1Flagw)
                     {
                         currentPos1 = GetNewPos(currentPos1, origin.x <= target.x, origin.z <= target.z, this.age >= (((duration + pos1Age) / 2)), posx1weight, posz1weight, xProb, 1 - xProb);
-                        if (currentPos1.x != origin.x & currentPos1.z != origin.z)
+                        try
                         {
-                            if (verVal >= 3)
+                            if ((currentPos1.GetTerrain(base.Map).passability == Traversability.Impassable) || !currentPos1.Walkable(base.Map))
                             {
-                                this.FireExplosion(pwrVal, currentPos1, map, 1.0f);
+                                this.pos1Flagw = false;
                             }
                             else
                             {
-                                this.FireExplosion(pwrVal, currentPos1, map, 0.4f);
+                                if (currentPos1.x != origin.x & currentPos1.z != origin.z)
+                                {
+                                    if (verVal >= 3)
+                                    {
+                                        this.FireExplosion(pwrVal, currentPos1, map, 1.0f);
+                                    }
+                                    else
+                                    {
+                                        this.FireExplosion(pwrVal, currentPos1, map, 0.4f);
+                                    }
+                                }
                             }
                         }
+                        catch
+                        {
+                            this.pos1Flagw = false;
+                        }
                     }
-                    if (pos11Flag)
+                    if (pos11Flag && pos11Flagw)
                     {
                         currentPos11 = GetNewPos(currentPos11, origin.x <= target.x, origin.z <= target.z, this.age >= (((duration + pos11Age) / 2)), posx1weight * 1.5f, posz1weight * 1.5f, xProb, 1 - xProb);
-                        if (currentPos11.x != origin.x & currentPos11.z != origin.z)
+                        try
                         {
-                            if (verVal >= 3)
+                            if ((currentPos11.GetTerrain(base.Map).passability == Traversability.Impassable) || !currentPos11.Walkable(base.Map))
                             {
-                                this.FireExplosion(pwrVal, currentPos11, map, 0.8f);
+                                this.pos11Flagw = false;
                             }
                             else
                             {
-                                this.FireExplosion(pwrVal, currentPos11, map, 0.4f);
+                                if (currentPos11.x != origin.x & currentPos11.z != origin.z)
+                                {
+                                    if (verVal >= 3)
+                                    {
+                                        this.FireExplosion(pwrVal, currentPos11, map, 0.8f);
+                                    }
+                                    else
+                                    {
+                                        this.FireExplosion(pwrVal, currentPos11, map, 0.4f);
+                                    }
+                                }
                             }
                         }
+                        catch
+                        {
+                            this.pos11Flagw = false;
+                        }
                     }
-                    if (pos12Flag)
+                    if (pos12Flag && pos12Flagw)
                     {
                         currentPos12 = GetNewPos(currentPos12, origin.x <= target.x, origin.z <= target.z, this.age >= (((duration + pos12Age) / 2)), posx1weight * 2f, posz1weight * 2f, xProb, 1 - xProb);
-                        if (currentPos12.x != origin.x & currentPos12.z != origin.z)
+                        try
                         {
-                            if (verVal >= 3)
+                            if ((currentPos12.GetTerrain(base.Map).passability == Traversability.Impassable) || !currentPos12.Walkable(base.Map))
                             {
-                                this.FireExplosion(pwrVal, currentPos12, map, 0.8f);
+                                this.pos12Flagw = false;
                             }
                             else
                             {
-                                this.FireExplosion(pwrVal, currentPos12, map, 0.4f);
+                                if (currentPos12.x != origin.x & currentPos12.z != origin.z)
+                                {
+                                    if (verVal >= 3)
+                                    {
+                                        this.FireExplosion(pwrVal, currentPos12, map, 0.8f);
+                                    }
+                                    else
+                                    {
+                                        this.FireExplosion(pwrVal, currentPos12, map, 0.4f);
+                                    }
+                                }
                             }
+                        }
+                        catch
+                        {
+                            this.pos12Flagw = false;
                         }
                     }
                     //2
-                    if (pos2Flag)
+                    if (pos2Flag && pos2Flagw)
                     {
                         currentPos2 = GetNewPos(currentPos2, origin.x <= target.x, origin.z <= target.z, this.age >= (((duration + pos2Age) / 2)), posx2weight, posz2weight, xProb, 1 - xProb);
-                        if (currentPos2.x != origin.x & currentPos2.z != origin.z)
+                        try
                         {
-                            if (verVal >= 3)
+                            if ((currentPos2.GetTerrain(base.Map).passability == Traversability.Impassable) || !currentPos2.Walkable(base.Map))
                             {
-                                this.FireExplosion(pwrVal, currentPos2, map, 1.0f);
+                                this.pos2Flagw = false;
                             }
                             else
                             {
-                                this.FireExplosion(pwrVal, currentPos2, map, 0.4f);
+                                if (currentPos2.x != origin.x & currentPos2.z != origin.z)
+                                {
+                                    if (verVal >= 3)
+                                    {
+                                        this.FireExplosion(pwrVal, currentPos2, map, 1.0f);
+                                    }
+                                    else
+                                    {
+                                        this.FireExplosion(pwrVal, currentPos2, map, 0.4f);
+                                    }
+                                }
                             }
                         }
+                        catch
+                        {
+                            this.pos2Flagw = false;
+                        }
                     }
-                    if (pos21Flag)
+                    if (pos21Flag && pos21Flagw)
                     {
                         currentPos21 = GetNewPos(currentPos21, origin.x <= target.x, origin.z <= target.z, this.age >= (((duration + pos21Age) / 2)), posx2weight * 1.5f, posz2weight * 1.5f, xProb, 1 - xProb);
-                        if (currentPos21.x != origin.x & currentPos21.z != origin.z)
+                        try
                         {
-                            if (verVal >= 3)
+                            if ((currentPos21.GetTerrain(base.Map).passability == Traversability.Impassable) || !currentPos21.Walkable(base.Map))
                             {
-                                this.FireExplosion(pwrVal, currentPos21, map, 0.8f);
+                                this.pos21Flagw = false;
                             }
                             else
                             {
-                                this.FireExplosion(pwrVal, currentPos21, map, 0.4f);
+                                if (currentPos21.x != origin.x & currentPos21.z != origin.z)
+                                {
+                                    if (verVal >= 3)
+                                    {
+                                        this.FireExplosion(pwrVal, currentPos21, map, 0.8f);
+                                    }
+                                    else
+                                    {
+                                        this.FireExplosion(pwrVal, currentPos21, map, 0.4f);
+                                    }
+                                }
                             }
                         }
+                        catch
+                        {
+                            this.pos21Flagw = false;
+                        }
                     }
-                    if (pos22Flag)
+                    if (pos22Flag && pos22Flagw)
                     {
                         currentPos22 = GetNewPos(currentPos22, origin.x <= target.x, origin.z <= target.z, this.age >= (((duration + pos22Age) / 2)), posx2weight * 2f, posz2weight * 2f, xProb, 1 - xProb);
-                        if (currentPos22.x != origin.x & currentPos22.z != origin.z)
+                        try
                         {
-                            if (verVal >= 3)
+                            if ((currentPos22.GetTerrain(base.Map).passability == Traversability.Impassable) || !currentPos22.Walkable(base.Map))
                             {
-                                this.FireExplosion(pwrVal, currentPos22, map, 0.8f);
+                                this.pos22Flagw = false;
                             }
                             else
                             {
-                                this.FireExplosion(pwrVal, currentPos22, map, 0.4f);
+                                if (currentPos22.x != origin.x & currentPos22.z != origin.z)
+                                {
+                                    if (verVal >= 3)
+                                    {
+                                        this.FireExplosion(pwrVal, currentPos22, map, 0.8f);
+                                    }
+                                    else
+                                    {
+                                        this.FireExplosion(pwrVal, currentPos22, map, 0.4f);
+                                    }
+                                }
                             }
+                        }
+                        catch
+                        {
+                            this.pos22Flagw = false;
                         }
                     }
                     //3
-                    if (pos3Flag)
+                    if (pos3Flag && pos3Flagw)
                     {
                         currentPos3 = GetNewPos(currentPos3, origin.x <= target.x, origin.z <= target.z, this.age >= (((duration + pos3Age) / 2)), posx3weight, posz3weight, xProb, 1 - xProb);
-                        if (verVal >= 3)
+                        try
                         {
-                            this.FireExplosion(pwrVal, currentPos3, map, 1.0f);
+                            if ((currentPos3.GetTerrain(base.Map).passability == Traversability.Impassable) || !currentPos3.Walkable(base.Map))
+                            {
+                                this.pos3Flagw = false;
+                            }
+                            else
+                            {
+                                if (verVal >= 3)
+                                {
+                                    this.FireExplosion(pwrVal, currentPos3, map, 1.0f);
+                                }
+                                else
+                                {
+                                    this.FireExplosion(pwrVal, currentPos3, map, 0.4f);
+                                }
+                            }
                         }
-                        else
+                        catch
                         {
-                            this.FireExplosion(pwrVal, currentPos3, map, 0.4f);
+                            this.pos3Flagw = false;
                         }
                     }
-                    if (pos31Flag)
+                    if (pos31Flag && pos31Flagw)
                     {
                         currentPos31 = GetNewPos(currentPos31, origin.x <= target.x, origin.z <= target.z, this.age >= (((duration + pos31Age) / 2)), posx3weight * 1.5f, posz3weight * 1.5f, xProb, 1 - xProb);
-                        if (verVal >= 3)
+                        try
                         {
-                            this.FireExplosion(pwrVal, currentPos31, map, 0.8f);
+                            if ((currentPos31.GetTerrain(base.Map).passability == Traversability.Impassable) || !currentPos31.Walkable(base.Map))
+                            {
+                                this.pos31Flagw = false;
+                            }
+                            else
+                            {
+                                if (verVal >= 3)
+                                {
+                                    this.FireExplosion(pwrVal, currentPos31, map, 0.8f);
+                                }
+                                else
+                                {
+                                    this.FireExplosion(pwrVal, currentPos31, map, 0.4f);
+                                }
+                            }
                         }
-                        else
+                        catch
                         {
-                            this.FireExplosion(pwrVal, currentPos31, map, 0.4f);
+                            this.pos31Flagw = false;
                         }
                     }
                     //4
-                    if (pos4Flag)
+                    if (pos4Flag && pos4Flagw)
                     {
                         currentPos4 = GetNewPos(currentPos4, origin.x <= target.x, origin.z <= target.z, this.age >= (((duration + pos4Age) / 2)), posx4weight, posz4weight, xProb, 1 - xProb);
-                        if (verVal >= 3)
+                        try
                         {
-                            this.FireExplosion(pwrVal, currentPos4, map, 0.8f);
+                            if ((currentPos4.GetTerrain(base.Map).passability == Traversability.Impassable) || !currentPos4.Walkable(base.Map))
+                            {
+                                this.pos4Flagw = false;
+                            }
+                            else
+                            {
+                                if (verVal >= 3)
+                                {
+                                    this.FireExplosion(pwrVal, currentPos4, map, 0.8f);
+                                }
+                                else
+                                {
+                                    this.FireExplosion(pwrVal, currentPos4, map, 0.4f);
+                                }
+                            }
                         }
-                        else
+                        catch
                         {
-                            this.FireExplosion(pwrVal, currentPos4, map, 0.4f);
+                            this.pos4Flagw = false;
                         }
                     }
                     //5
-                    if (pos5Flag)
+                    if (pos5Flag && pos5Flagw)
                     {
                         currentPos5 = GetNewPos(currentPos5, origin.x <= target.x, origin.z <= target.z, this.age >= (((duration + pos5Age) / 2)), posx5weight, posz5weight, xProb, 1 - xProb);
-                        if (verVal >= 3)
+                        try
                         {
-                            this.FireExplosion(pwrVal, currentPos5, map, 0.8f);
+                            if ((currentPos5.GetTerrain(base.Map).passability == Traversability.Impassable) || !currentPos5.Walkable(base.Map))
+                            {
+                                this.pos5Flagw = false;
+                            }
+                            else
+                            {
+                                if (verVal >= 3)
+                                {
+                                    this.FireExplosion(pwrVal, currentPos5, map, 0.8f);
+                                }
+                                else
+                                {
+                                    this.FireExplosion(pwrVal, currentPos5, map, 0.4f);
+                                }
+                            }
                         }
-                        else
+                        catch
                         {
-                            this.FireExplosion(pwrVal, currentPos5, map, 0.4f);
+                            this.pos5Flagw = false;
                         }
                     }
                     //for (int i=0; i < j; i++)
@@ -405,7 +571,7 @@ namespace TorannMagic
 			ThingDef def = this.def;
             try
             {
-                Explosion(pwr, pos, map, radius, DamageDefOf.Flame, this.launcher, null, def, this.equipmentDef, ThingDefOf.FilthAsh, 0.4f, 1, false, null, 0f, 1);
+                Explosion(pwr, pos, map, radius, DamageDefOf.Burn, this.launcher, null, def, this.equipmentDef, ThingDefOf.FilthAsh, 0.4f, 1, false, null, 0f, 1);
             }
             catch
             {
@@ -501,8 +667,8 @@ namespace TorannMagic
 				return;
 			}
             Explosion explosion = (Explosion)GenSpawn.Spawn(ThingDefOf.Explosion, center, map);
-            explosion.dealMoreDamageAtCenter = false;
-            explosion.chanceToStartFire = 0.02f;
+            explosion.dealMoreDamageAtCenter = true;
+            explosion.chanceToStartFire = 0.1f;
             explosion.Position = center;
 			explosion.radius = radius;
 			explosion.damType = damType;
