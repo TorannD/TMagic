@@ -34,6 +34,13 @@
 					<max>180</max>
 				</countRange>
 			</li>
+		  <li Class="StockGenerator_SingleDef">
+			<thingDef>Jade</thingDef>
+			<countRange>
+			  <min>120</min>
+			  <max>240</max>
+			</countRange>
+		  </li>
 			<li Class="StockGenerator_SingleDef">
 				<thingDef>Gold</thingDef>
 				<countRange>
@@ -147,24 +154,38 @@
       <li Class="StockGenerator_SingleDef">
         <thingDef>Plasteel</thingDef>
         <countRange>
-          <min>-50</min>
+          <min>50</min>
           <max>200</max>
         </countRange>
       </li>
 	  <li Class="StockGenerator_SingleDef">
-				<thingDef>Uranium</thingDef>
-				<countRange>
-					<min>200</min>
-					<max>500</max>
-				</countRange>
-			</li>
-			<li Class="StockGenerator_SingleDef">
-				<thingDef>GlitterworldMedicine</thingDef>
-				<countRange>
-					<min>6</min>
-					<max>20</max>
-				</countRange>
-			</li>
+        <thingDef>Jade</thingDef>
+        <countRange>
+          <min>120</min>
+          <max>240</max>
+        </countRange>
+      </li>
+	  <li Class="StockGenerator_SingleDef">
+		<thingDef>Uranium</thingDef>
+		<countRange>
+			<min>200</min>
+			<max>500</max>
+		</countRange>
+	  </li>
+		<li Class="StockGenerator_Tag">
+			<tradeTag>RawArcane</tradeTag>
+			<countRange>
+				<min>120</min>
+				<max>250</max>
+			</countRange>
+		</li>
+		<li Class="StockGenerator_SingleDef">
+			<thingDef>GlitterworldMedicine</thingDef>
+			<countRange>
+				<min>6</min>
+				<max>20</max>
+			</countRange>
+		</li>
       <li Class="StockGenerator_SingleDef">
         <thingDef>Cloth</thingDef>
         <countRange>

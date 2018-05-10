@@ -960,7 +960,7 @@ namespace TorannMagic
                 MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_BladeSpin.FirstOrDefault((MightPowerSkill x) => x.label == "TM_BladeSpin_eff");
                 adjustedStaminaCost = mightDef.staminaCost - mightDef.staminaCost * (this.B_BladeSpin_eff * (float)mightPowerSkill.level);
             }
-            if (mightDef == TorannMagicDefOf.TM_PhaseStrike)
+            if (mightDef == TorannMagicDefOf.TM_PhaseStrike || mightDef == TorannMagicDefOf.TM_PhaseStrike_I || mightDef == TorannMagicDefOf.TM_PhaseStrike_II || mightDef == TorannMagicDefOf.TM_PhaseStrike_III)
             {
                 MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_PhaseStrike.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PhaseStrike_eff");
                 adjustedStaminaCost = mightDef.staminaCost - mightDef.staminaCost * (this.B_PhaseStrike_eff * (float)mightPowerSkill.level);
@@ -1480,7 +1480,7 @@ namespace TorannMagic
                 {
                    // Log.Message("Loading Gladiator Abilities");
                     //this.AddPawnAbility(TorannMagicDefOf.TM_Fortitude);
-                    this.AddPawnAbility(TorannMagicDefOf.TM_Cleave);
+                    //this.AddPawnAbility(TorannMagicDefOf.TM_Cleave);
                     this.AddPawnAbility(TorannMagicDefOf.TM_Whirlwind);
                 }
                 bool flag41 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper);

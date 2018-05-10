@@ -91,7 +91,7 @@
     <defName>ElementalAssault</defName>
     <conditionClass>TorannMagic.Conditions.GameCondition_ElementalAssault</conditionClass>
     <label>elemental assault</label>
-    <description>Hostile elementals have created a breach into your world and are preparing to send assault teams through the rift.</description>
+    <description>Hostile elementals have created a breach into your world and are preparing to send assault teams through the rift!\n\nRifts cause mayhem in the atmosphere as energy leaks through the rift into your world. The following effects occur for each rift element:\n\nFire Rift: meteor showers and heat waves.\nEarth Rift: toxic fumes and causes animals to go berserk\nIce Rift: hailstorms and rapid decline in temperature\nAir Rift: lightning storms</description>
     <endMessage>The rift has closed.</endMessage>
     <canBePermanent>false</canBePermanent>
   </GameConditionDef>
@@ -106,7 +106,7 @@
     <workerClass>TorannMagic.Conditions.IncidentWorker_ElementalAssault</workerClass>
     <gameCondition>ElementalAssault</gameCondition>
     <letterLabel>elemental assault</letterLabel>
-    <letterText>Hostile elementals have breached their elemental plane and are preparing to assault through the rift.</letterText>
+    <letterText>Hostile elementals have created a breach into your world and are preparing to send assault teams through the rift!\n\nRifts cause mayhem in the atmosphere as energy leaks through the rift into your world. The following effects occur for each rift element:\n\nFire Rift: meteor showers and heat waves.\nEarth Rift: toxic fumes and causes animals to go berserk\nIce Rift: hailstorms and rapid decline in temperature\nAir Rift: lightning storms\n\nDestroy the rift to end this nightmare!</letterText>
     <letterDef>ThreatBig</letterDef>
     <baseChance>0.6</baseChance>
     <minRefireDays>10</minRefireDays>

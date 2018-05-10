@@ -219,7 +219,7 @@ namespace TorannMagic
                     compMagic.LevelUp(true);
                 }
                 Rect rect22 = new Rect(rect.xMax + 60f, inRect.y, 50f, MagicCardUtility.TextSize * 2);
-                bool flag22 = Widgets.ButtonText(rect22, "Clear Powers", true, false, true);
+                bool flag22 = Widgets.ButtonText(rect22, "Reset Powers", true, false, true);
                 if (flag22)
                 {
                     compMagic.ClearPowers();
@@ -234,7 +234,45 @@ namespace TorannMagic
             Rect rect4 = new Rect(inRect.x, rect.yMax, inRect.width, MagicCardUtility.TextSize);
             Text.Font = GameFont.Tiny;
             Widgets.Label(rect4, "TM_PointsAvail".Translate() + ": " + compMagic.MagicData.MagicAbilityPoints);
-            Text.Font = GameFont.Tiny;
+            Text.Font = GameFont.Tiny;            
+            if(!godMode)
+            {
+                Rect rect6 = new Rect(rect4.xMax + 10f, rect.yMax, inRect.width + 100f, MagicCardUtility.TextSize);
+                Widgets.Label(rect6, "TM_LastManaGainPct".Translate(new object[]
+                    {
+                    (compMagic.Mana.lastGainPct * 200).ToString("0.000")
+                    }));
+                string str1 = "Base gain: " + (200 * compMagic.Mana.baseManaGain).ToString("0.000") + "\nMana surge: " + (200 * compMagic.Mana.drainManaSurge).ToString("0.000");
+                TooltipHandler.TipRegion(rect6, () => string.Concat(new string[]
+                        {
+                        str1,
+                        "\n\nMana weakness: -",
+                        (200*compMagic.Mana.drainManaWeakness).ToString("0.000"),
+                        "\nMinion cost: -",
+                        (200*compMagic.Mana.drainMinion).ToString("0.000"),
+                        "\nUndead cost: -",
+                        (200*compMagic.Mana.drainUndead).ToString("0.000"),
+                        "\nMana drain: -",
+                        (200*compMagic.Mana.drainManaDrain).ToString("0.000"),
+                        "\nMana sickness: -",
+                        (200*compMagic.Mana.drainManaSickness).ToString("0.000"),
+                        }), 398552);
+                GUI.color = Color.white;
+            }
+            //"Base gain: ",
+            //            (100 * compMagic.Mana.baseManaGain).ToString("0.000"),
+            //            "\nMana surge: ",
+            //            compMagic.Mana.drainManaSurge.ToString("0.000"),
+            //            "\n\nMana weakness: ",
+            //            compMagic.Mana.drainManaWeakness.ToString("0.000"),
+            //            "\nMinion cost: ",
+            //            compMagic.Mana.drainMinion.ToString("0.000"),
+            //            "\nUndead cost: ",
+            //            compMagic.Mana.drainUndead.ToString("0.000"),
+            //            "\nMana drain: ",
+            //            compMagic.Mana.drainManaDrain.ToString("0.000"),
+            //            "\nMana sickness: ",
+            //            compMagic.Mana.drainManaSickness.ToString("0.000"),
             Rect rect5 = new Rect(rect4.x, rect4.yMax + 3f, inRect.width + 100f, MagicCardUtility.HeaderSize * 0.6f);
             MagicCardUtility.DrawLevelBar(rect5, compMagic, pawn, inRect);
         }
@@ -429,7 +467,7 @@ namespace TorannMagic
                     else
                     {
                         TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
-{
+                            {
                             power.abilityDef.label,
                             "\n\n",
                             power.abilityDescDef.description,

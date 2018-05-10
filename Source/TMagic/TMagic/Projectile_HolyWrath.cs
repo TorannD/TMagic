@@ -93,7 +93,7 @@ namespace TorannMagic
                     TM_MoteMaker.MakePowerBeamMoteColor(smitePos[j], base.Map, this.radius * 3f, 2f, .5f, .1f, .5f, colorInt.ToColor);
                     this.caster = this.launcher as Pawn;
                     CompAbilityUserMagic comp = caster.GetComp<CompAbilityUserMagic>();
-                    GenExplosion.DoExplosion(smitePos[j], map, 2.4f, TMDamageDefOf.DamageDefOf.TM_BlazingPower, this.launcher as Pawn, Mathf.RoundToInt((TMDamageDefOf.DamageDefOf.TM_BlazingPower.explosionDamage + 2*pwrVal) * comp.arcaneDmg), TorannMagicDefOf.TM_Lightning, def, this.equipmentDef, null, 0f, 1, false, null, 0f, 1, 0f, false);
+                    GenExplosion.DoExplosion(smitePos[j], map, 2.4f, TMDamageDefOf.DamageDefOf.TM_BlazingPower, this.launcher as Pawn, Mathf.RoundToInt((10 + TMDamageDefOf.DamageDefOf.TM_BlazingPower.explosionDamage + 3*pwrVal) * comp.arcaneDmg), TorannMagicDefOf.TM_Lightning, def, this.equipmentDef, null, 0f, 1, false, null, 0f, 1, 0f, false);
                 }
             }
         }

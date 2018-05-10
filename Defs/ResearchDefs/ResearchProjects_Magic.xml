@@ -8,8 +8,8 @@
 		<label>portals</label>
 		<tab>TMagic</tab>
 		<description>Allows the construction of a portal - a powerful artifact that enables instant travel between colonies.\n\nRequires an Arcane Mage trained in Gateways to activate.</description>
-		<baseCost>3000</baseCost>
-		<techLevel>Neolithic</techLevel>
+		<baseCost>2000</baseCost>
+		<techLevel>Medieval</techLevel>
 		<researchViewX>0.0</researchViewX>
 		<researchViewY>0.0</researchViewY>
 	</ResearchProjectDef>
@@ -30,8 +30,8 @@
 		<label>advanced enchanting</label>
 		<tab>TMagic</tab>
 		<description>Enables crafting to tier II enchanting gems.</description>
-		<baseCost>2000</baseCost>
-		<techLevel>Neolithic</techLevel>
+		<baseCost>1500</baseCost>
+		<techLevel>Medieval</techLevel>
 		<researchViewX>1.0</researchViewX>
 		<researchViewY>1.0</researchViewY>
 		<prerequisites>
@@ -44,8 +44,8 @@
 		<label>expert enchanting</label>
 		<tab>TMagic</tab>
 		<description>Enables crafting of tier III enchanting gems.</description>
-		<baseCost>2500</baseCost>
-		<techLevel>Neolithic</techLevel>
+		<baseCost>1800</baseCost>
+		<techLevel>Medieval</techLevel>
 		<researchViewX>1.0</researchViewX>
 		<researchViewY>2.0</researchViewY>
 		<prerequisites>
@@ -72,7 +72,7 @@
 		<label>scribing</label>
 		<tab>TMagic</tab>
 		<description>Develop the knowledge to mix ink with powdered magicyte and apply it through specially design press capable of reproducing scrolls and books that can contain the power of magic comprehension.</description>
-		<baseCost>2000</baseCost>
+		<baseCost>1500</baseCost>
 		<techLevel>Neolithic</techLevel>
 		<researchViewX>2.0</researchViewX>
 		<researchViewY>1.0</researchViewY>
@@ -86,8 +86,8 @@
 		<label>advanced scribing</label>
 		<tab>TMagic</tab>
 		<description>Allows the use of higher quality material to develop more powerful books and scrolls.</description>
-		<baseCost>1500</baseCost>
-		<techLevel>Neolithic</techLevel>
+		<baseCost>1000</baseCost>
+		<techLevel>Medieval</techLevel>
 		<researchViewX>2.0</researchViewX>
 		<researchViewY>2.0</researchViewY>
 		<prerequisites>
@@ -100,8 +100,8 @@
 		<label>master scribing</label>
 		<tab>TMagic</tab>
 		<description>Allows the scribing of master spells.</description>
-		<baseCost>2000</baseCost>
-		<techLevel>Neolithic</techLevel>
+		<baseCost>1200</baseCost>
+		<techLevel>Medieval</techLevel>
 		<researchViewX>2.0</researchViewX>
 		<researchViewY>3.0</researchViewY>
 		<prerequisites>
@@ -114,7 +114,7 @@
 		<label>arcane crafting</label>
 		<tab>TMagic</tab>
 		<description>The first step in understanding the link between the arcane and physical. Enables construction of powerful gems of insight.</description>
-		<baseCost>4000</baseCost>
+		<baseCost>3500</baseCost>
 		<techLevel>Neolithic</techLevel>
 		<researchViewX>3.0</researchViewX>
 		<researchViewY>0.0</researchViewY>
@@ -142,8 +142,8 @@
 		<label>arcane artifacts</label>
 		<tab>TMagic</tab>
 		<description>Enables the recreation of arcane artifacts through extensive research combining knowledge of enchantments, ancient designs, runes, and rumors.</description>
-		<baseCost>3000</baseCost>
-		<techLevel>Neolithic</techLevel>
+		<baseCost>2000</baseCost>
+		<techLevel>Medieval</techLevel>
 		<researchViewX>3.0</researchViewX>
 		<researchViewY>2.0</researchViewY>
 		<prerequisites>

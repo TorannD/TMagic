@@ -14,6 +14,10 @@ namespace TorannMagic.Thoughts
             {
                 return false;
             }
+            if (pawn.story.traits.HasTrait(TorannMagicDefOf.Undead) || pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich) || pawn.story.traits.HasTrait(TraitDefOf.Psychopath) || pawn.story.traits.HasTrait(TraitDefOf.Bloodlust) || pawn.story.traits.HasTrait(TraitDef.Named("Masochist")))
+            {
+                return false;
+            }
             List<Pawn> mapPawns = pawn.Map.mapPawns.AllPawnsSpawned;
             for (int i = 0; i < mapPawns.Count; i++)
             {
@@ -21,13 +25,13 @@ namespace TorannMagic.Thoughts
                 {
                     if (mapPawns[i].story.traits.HasTrait(TorannMagicDefOf.Undead))
                     {
-                        if(pawn.Position.InHorDistOf(mapPawns[i].Position, radius))
+                        if (pawn.Position.InHorDistOf(mapPawns[i].Position, radius))
                         {
                             return true;
                         }
                     }
                 }
-            }
+            }            
             return false;
         }
     }

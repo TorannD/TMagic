@@ -24,6 +24,16 @@ namespace TorannMagic
 
         public float lastNeed;
 
+        public float drainMinion;
+        public float drainUndead;
+        public float drainManaWeakness;
+        public float drainManaSickness;
+        public float drainManaDrain;
+        public float drainManaSurge;
+        public float baseManaGain;
+
+        public float lastGainPct;
+
         public int ticksUntilBaseSet = 500;
 
         private int lastGainTick;
@@ -164,7 +174,8 @@ namespace TorannMagic
                         
                         MagicPowerSkill manaRegen = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
                         amount *= (((0.0012f * comp.mpRegenRate)) * settingsRef.needMultiplier);
-                        amount = Mathf.Min(amount, this.MaxLevel - this.CurLevel);
+                        //amount = Mathf.Min(amount, this.MaxLevel - this.CurLevel);
+                        this.baseManaGain = amount;
                         float necroReduction = 0;
                         int necroCount = 0;
                         int undeadCount = 0;
@@ -173,7 +184,8 @@ namespace TorannMagic
                         if(comp.summonedMinions.Count >0)
                         {
                             MagicPowerSkill summonerEff = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonMinion.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonMinion_eff");
-                            amount -= (0.0012f * (comp.summonedMinions.Count * (.2f - (.01f * summonerEff.level))));
+                            this.drainMinion = (0.0012f * (comp.summonedMinions.Count * (.2f - (.01f * summonerEff.level))));
+                            amount -= this.drainMinion;
                         }
 
                         if (pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
@@ -234,13 +246,16 @@ namespace TorannMagic
                             }
                             MagicPowerSkill eff = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RaiseUndead.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RaiseUndead_eff");
                             necroReduction = ((0.0012f * (.15f - (.15f * (.1f * eff.level))) / necroCount) * undeadCount);
+                            this.drainUndead = necroReduction;
                             //Log.Message("" + pawn.LabelShort + " is 1 of " + necroCount + " contributing necros and had necro reduction of " + necroReduction);
 
                         }
 
                         if (pawn.Map.GameConditionManager.ConditionIsActive(TorannMagicDefOf.ManaDrain))
                         {
-                            this.curLevelInt = this.curLevelInt - amount - necroReduction;                            
+                            this.curLevelInt = this.curLevelInt - amount - necroReduction;
+                            this.lastGainPct = -amount - necroReduction;
+                            this.drainManaDrain = 2 * amount;
                             if (this.CurLevel < .01)
                             {
                                 float pain = pawn.health.hediffSet.PainTotal;
@@ -258,51 +273,61 @@ namespace TorannMagic
                             if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ArcaneWeakness))
                             {
                                 this.curLevelInt += amount - necroReduction;
+                                this.lastGainPct = amount - necroReduction;
+                                this.drainManaSickness = 0;
+                                this.drainManaSurge = 0;
+
                             }
                             else
                             {
                                 this.curLevelInt += (amount * 2.25f) - necroReduction;
+                                this.lastGainPct = (amount * 2.25f) - necroReduction;
+                                this.drainManaSurge = amount * 1.25f;
                             }
                         }
                         else if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ArcaneSickness))
                         {
                             //no mana gain
+                            this.lastGainPct = necroReduction;
                             this.curLevelInt -= necroReduction;
+                            this.drainManaSickness = amount;
+                            
                         }
                         else if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ArcaneWeakness))
                         {
                             //reduced mana gain if weakened
+                            this.lastGainPct = (amount * 0.25f) - necroReduction;
                             this.curLevelInt += (amount * 0.25f) - necroReduction;
+                            this.drainManaWeakness = amount * .75f;
                         }
                         else
                         {
+                            this.drainManaDrain = 0;
+                            this.drainManaWeakness = 0;
+                            this.drainManaSurge = 0;
+                            this.drainManaSickness = 0;
+                            this.lastGainPct = amount - necroReduction;
                             this.curLevelInt += amount - necroReduction;
+                           
                         }
-
                         if ((lastNeed - this.curLevelInt) > .25f && (lastNeed - this.curLevelInt) < .45f)
                         {
-                            if ((lastNeed - this.curLevelInt) >= .45f && (lastNeed - this.curLevelInt) < .79f)
-                            {
-                                if ((lastNeed - this.curLevelInt) >= .79f && (lastNeed - this.curLevelInt) < 2)
-                                {
-                                    //0.0 to 0.21 max
-                                    float sev = 8.5f + ((lastNeed - this.curLevelInt) - .79f) * 40;
-                                    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
-                                }
-                                else
-                                {
-                                    //0.0 to 0.34 max
-                                    float sev = 1.4f + ((lastNeed - this.curLevelInt) - .45f) * 25;
-                                    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
-                                }
-                            }
-                            else
-                            {
-                                //0.0 to 0.2 max
-                                float sev = ((lastNeed - this.curLevelInt) - .25f) * 10;
-                                HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
-                            }
+                            //0.0 to 0.2 max
+                            float sev = ((lastNeed - this.curLevelInt) - .25f) * 10;
+                            HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
                         }
+                        else if ((lastNeed - this.curLevelInt) >= .45f && (lastNeed - this.curLevelInt) < .79f)
+                        {
+                            //0.0 to 0.34 max
+                            float sev = 1.4f + ((lastNeed - this.curLevelInt) - .45f) * 25;
+                            HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
+                        }
+                        else if ((lastNeed - this.curLevelInt) >= .79f && (lastNeed - this.curLevelInt) < 5)
+                        {
+                            //0.0 to 0.21 max
+                            float sev = 8.5f + ((lastNeed - this.curLevelInt) - .79f) * 40;
+                            HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
+                        }                        
                         comp.Mana.curLevelInt = Mathf.Clamp(comp.Mana.curLevelInt, 0f, this.MaxLevel);
                         lastNeed = this.curLevelInt;
                         this.lastGainTick = Find.TickManager.TicksGame;

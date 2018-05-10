@@ -6,35 +6,6 @@
 		<linkUrl>https://ludeon.com/forums/index.php?topic=37161.0</linkUrl>
 	</HugsLib.UpdateFeatureDef>	
 	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_1_9_2</defName>
-		<assemblyVersion>1.9.2</assemblyVersion>
-		<content>
-- Seven new fighter class specific abilities have been added. These abilities are 'sustained' meaning they require a set amount of stamina to maintain the ability.
-The sustainment cost is subtracted from the users maximum stamina. These skills can be toggled on and off as desired, some of these skills have additional costs or side effects to maintain.
-Skills:
-Sprint - increase movement rate but quickly exhausts the user (Gladiator class can improve this skill through training)
-Gear Repair - fighter classes rely on their equipment and take the initiative to maintain and repair equipped apparel and weapons
-Inner Healing - focuses physical energy to slowly heal injuries, some physical capacities are reduced while this skill is active
-Heavy Blow - increase melee damage multiplier by 20%
-Strong Back - dedicates stamina to increase carrying and inventory capacity, slightly increases exhaustion
-Thick Skin - gains bonuses to armor class and temperature thresholds
-Fighters Focus - dedicates physical energy to focus on, and overcome, mental and physical thresholds
-
-- Fighter skills that applied passive boosts or trait increases now take effect automatically, and apply upgrades automatically.  The ability buttons for these skills will not be visible.
-
-- Fighters and Mages have each gained a new global skill that increases their respective stamina and mana capacities.
-
-- Inherited abilities for Summon Minion and Raise Undead have been added to improve Undead and Minion management. These skills become available automatically when a mage is supporting one or more of these creatures.
-No additional scrolls or training is required to learn these skills.
-
-- A new standalone mage spell has been added: Arcane Power Node - generates a small amount of power for several days. 
-Existing abilities "Moisturize Ground" and "Dry Ground" now effect a 3x3 square; mana costs were appropriately increased.
-The "Rainmaker" ability can now be used to stop rain or snow.
-
-- Bug fix - several fighter skills were not triggering a hostile response, they are now.
-		</content>
-	</HugsLib.UpdateFeatureDef>	
-	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
 		<defName>ARimWorldOfMagic_1_9_3</defName>
 		<assemblyVersion>1.9.3</assemblyVersion>
 		<content>
@@ -120,6 +91,27 @@ Abilities:
 - A mod setting has been added that will allow you to hide abilities when multiple pawns are selected. This hides all abilities not part of the vanilla command buttons, even those buttons are not part of this mod.
 
 - Added compatibility updates for Combat Extended, No Water No Life, and Call of Cthulhu mods.
+	</content>
+	</HugsLib.UpdateFeatureDef>	
+	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_1_9_9</defName>
+		<assemblyVersion>1.9.9</assemblyVersion>
+		<content>
+- A Chinese translation has been added to the mod - big thanks to KuanKuan!
+
+- The Elemental Rift event has undergone some changes.  When a rift occurs, the element type is determined and will remain that type for the remainder of the event.  Each element type is accompanied by a unique set of atmospheric conditions that will present additional challenges to the colony.
+
+- Magicyte can now be extracted from dead elementals at the butchery table.
+
+- The exact mana gain can now be seen under the Magic tab; hovering over the value will provide a tooltip showing contributors to the amount.
+
+- Enchantments are now shown under an item in the gear/inventory tab; this should make it much easier to find equipped items that have enchantments. The characters shown in parenthesis are a quick code for the types of enchantments affecting the item; mousing over the text will also bring up a tooltip that shows the exact enchantments.
+
+- Research tiers have been adjusted slightly to split projects into either neolithic or medieval; net research costs are approximately the same.
+
+- Casting graphics have been added to help identify friendly and enemy pawns that are casting a spell.
+
+- Other miscellaneous updates include improvements for Spell Mending, thrumbo horns have been added as a resource requirement for the thrumbo axe, jade has been added to arcane traders, undead can no longer be captured and more!
 	</content>
 	</HugsLib.UpdateFeatureDef>	
 	

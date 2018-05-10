@@ -82,6 +82,7 @@
     <Compile Include="JobGiver_AIClean.cs" />
     <Compile Include="HediffComp_BattleHymn.cs" />
     <Compile Include="HediffComp_SpellMending.cs" />
+    <Compile Include="Elemental_DeathWorker.cs" />
     <Compile Include="Projectile_FertileLands.cs" />
     <Compile Include="Thoughts\Inspiration_MightUser.cs" />
     <Compile Include="Thoughts\InteractionWorker_MightLore.cs" />

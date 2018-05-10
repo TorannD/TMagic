@@ -28,6 +28,7 @@
     </inspectorTabs>
     <race>
       <body>Elemental</body>
+	  <deathActionWorkerClass>TorannMagic.Elemental_DeathWorker</deathActionWorkerClass>
       <needsRest>false</needsRest>
       <hasGenders>false</hasGenders>
       <predator>true</predator>
@@ -106,7 +107,8 @@
       <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
-    <butcherProducts>
+	<butcherProducts>
+      <RawMagicyte>6</RawMagicyte>
     </butcherProducts>
   </ThingDef>
   
@@ -194,7 +196,8 @@
       <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
-    <butcherProducts>
+	<butcherProducts>
+      <RawMagicyte>10</RawMagicyte>
     </butcherProducts>
   </ThingDef>
 
@@ -281,7 +284,8 @@
       <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
-    <butcherProducts>
+	<butcherProducts>
+      <RawMagicyte>16</RawMagicyte>
     </butcherProducts>
   </ThingDef>
  
@@ -370,7 +374,8 @@
       <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
-    <butcherProducts>
+	<butcherProducts>
+      <RawMagicyte>6</RawMagicyte>
     </butcherProducts>
   </ThingDef>
   
@@ -458,7 +463,8 @@
       <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
-    <butcherProducts>
+	<butcherProducts>
+      <RawMagicyte>10</RawMagicyte>
     </butcherProducts>
   </ThingDef>
 
@@ -543,9 +549,10 @@
       </lifeStageAges>
       <soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
       <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
-      <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
-    </race>
-    <butcherProducts>
+      <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>  
+	</race>
+	<butcherProducts>
+      <RawMagicyte>16</RawMagicyte>
     </butcherProducts>
   </ThingDef>
  
@@ -634,7 +641,8 @@
       <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
-    <butcherProducts>
+	<butcherProducts>
+      <RawMagicyte>6</RawMagicyte>
     </butcherProducts>
   </ThingDef>
   
@@ -722,7 +730,8 @@
       <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
-    <butcherProducts>
+	<butcherProducts>
+      <RawMagicyte>10</RawMagicyte>
     </butcherProducts>
   </ThingDef>
 
@@ -810,7 +819,8 @@
       <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
-    <butcherProducts>
+	<butcherProducts>
+      <RawMagicyte>16</RawMagicyte>
     </butcherProducts>
   </ThingDef>
  
@@ -901,7 +911,8 @@
       <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
-    <butcherProducts>
+	<butcherProducts>
+      <RawMagicyte>6</RawMagicyte>
     </butcherProducts>
   </ThingDef>
   
@@ -991,7 +1002,8 @@
       <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
-    <butcherProducts>
+	<butcherProducts>
+      <RawMagicyte>10</RawMagicyte>
     </butcherProducts>
   </ThingDef>
 
@@ -1080,7 +1092,8 @@
       <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
-    <butcherProducts>
+	<butcherProducts>
+      <RawMagicyte>16</RawMagicyte>
     </butcherProducts>
   </ThingDef>
  

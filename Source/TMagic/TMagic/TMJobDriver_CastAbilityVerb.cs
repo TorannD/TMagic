@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Verse;
 using Verse.AI;
 using AbilityUser;
+using UnityEngine;
 
 namespace TorannMagic
 {
@@ -55,6 +56,11 @@ namespace TorannMagic
                 };
                 combatToil.tickAction = delegate
                 {
+                    if (Find.TickManager.TicksGame % 12 == 0)
+                    {
+                        TM_MoteMaker.ThrowCastingMote(pawn.DrawPos, pawn.Map, Rand.Range(1.2f, 2f));
+                    }
+                    
                     this.duration--;
                 };
                 combatToil.AddFinishAction(delegate
@@ -100,7 +106,7 @@ namespace TorannMagic
                         bool validTarg = curJob.TryFindShootLineFromTo(pawn.Position, TargetLocA, out shootLine);
                         if (validTarg)
                         {
-                            yield return Toils_Combat.CastVerb(TargetIndex.A, false);
+                            //yield return Toils_Combat.CastVerb(TargetIndex.A, false);
                             //Toil toil2 = new Toil()
                             //{
                             //    initAction = () =>
@@ -114,12 +120,40 @@ namespace TorannMagic
                             //    defaultCompleteMode = ToilCompleteMode.Instant
                             //};
                             //yield return toil2;
-                            Toil toil1 = new Toil()
+                            this.duration = (int)((curJob.verbProps.warmupTime * 60) * this.pawn.GetStatValue(StatDefOf.AimingDelayFactor, false));
+                            Toil toil = new Toil();
+                            toil.initAction = delegate
                             {
-                                initAction = () => curJob.Ability.PostAbilityAttempt(),
-                                defaultCompleteMode = ToilCompleteMode.Instant
+                                Verb arg_45_0 = toil.actor.jobs.curJob.verbToUse;
+                                LocalTargetInfo target = toil.actor.jobs.curJob.GetTarget(TargetIndex.A);
+                                bool canFreeIntercept2 = false;
+                                arg_45_0.TryStartCastOn(target, false, canFreeIntercept2);
                             };
-                            yield return toil1;
+                            toil.tickAction = delegate
+                            {
+                                if (Find.TickManager.TicksGame % 12 == 0)
+                                {
+                                    TM_MoteMaker.ThrowCastingMote(pawn.DrawPos, pawn.Map, Rand.Range(1.2f, 2f));
+                                }
+                                this.duration--;
+                            };
+                            toil.AddFinishAction(delegate
+                            {
+                                if (this.duration <= 5)
+                                {
+                                    curJob.Ability.PostAbilityAttempt();
+                                }
+
+                            });
+                            toil.defaultCompleteMode = ToilCompleteMode.FinishedBusy;
+                            yield return toil;
+
+                            //Toil toil1 = new Toil()
+                            //{
+                            //    initAction = () => curJob.Ability.PostAbilityAttempt(),
+                            //    defaultCompleteMode = ToilCompleteMode.Instant
+                            //};
+                            //yield return toil1;
                         }
                         else
                         {

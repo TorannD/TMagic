@@ -659,7 +659,7 @@ namespace TorannMagic
         public void Explosion(int pwr, IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
 		{
 			System.Random rnd = new System.Random();
-			int modDamAmountRand = ((pwr * 4)) + GenMath.RoundRandom(rnd.Next(8, projectile.projectile.damageAmountBase));  //28
+			int modDamAmountRand = ((pwr * 5)) + GenMath.RoundRandom(rnd.Next(8, projectile.projectile.damageAmountBase));  //36
             modDamAmountRand *= Mathf.RoundToInt(arcaneDmg);
 			if (map == null)
 			{

@@ -9,6 +9,8 @@ namespace TorannMagic
     {
 
         private bool initializing = true;
+        private int ticksTillNextMend = 0;
+        private int mendTick = 0;
 
         public string labelCap
         {
@@ -48,38 +50,45 @@ namespace TorannMagic
                     this.Initialize();
                 }
             }
-            if(Find.TickManager.TicksGame % 300 == 0)
+            if(mendTick > ticksTillNextMend)
             {
                 TickAction();
             }
+            mendTick++;
         }
 
         public void TickAction()
         {
             List<Apparel> gear = this.Pawn.apparel.WornApparel;
-            for(int i = 0; i < gear.Count; i++)
+            int tmpDmgItems = 0;
+
+            for (int i = 0; i < gear.Count; i++)
             {
-                if(Rand.Chance(.2f) && gear[i].HitPoints < gear[i].MaxHitPoints)
+                if (gear[i].HitPoints < gear[i].MaxHitPoints)
                 {
                     gear[i].HitPoints++;
                     for (int j = 0; j < Rand.Range(1, 3); j++)
                     {
                         TM_MoteMaker.ThrowTwinkle(this.Pawn.DrawPos, this.Pawn.Map, Rand.Range(.4f, .7f), Rand.Range(100, 500), Rand.Range(.4f, 1f), Rand.Range(.05f, .2f), .05f, Rand.Range(.4f, .85f));
                     }
+                    tmpDmgItems++;
                 }
             }
             Thing weapon = this.Pawn.equipment.Primary;
             if (weapon != null && (weapon.def.IsRangedWeapon || weapon.def.IsMeleeWeapon))
             {
-                if(Rand.Chance(.2f) && weapon.HitPoints < weapon.MaxHitPoints)
+                if (weapon.HitPoints < weapon.MaxHitPoints)
                 {
                     weapon.HitPoints++;
                     for (int j = 0; j < Rand.Range(1, 3); j++)
                     {
                         TM_MoteMaker.ThrowTwinkle(this.Pawn.DrawPos, this.Pawn.Map, Rand.Range(.4f, .7f), Rand.Range(100, 500), Rand.Range(.4f, 1f), Rand.Range(.05f, .2f), .05f, Rand.Range(.4f, .85f));
-                    }
+                    }                    
+                    tmpDmgItems++;
                 }
             }
+            mendTick = 0;
+            ticksTillNextMend = 80 * tmpDmgItems;
         }
 
     }

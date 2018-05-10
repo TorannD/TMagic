@@ -93,6 +93,19 @@
   </ThingDef>
   
   <ThingDef ParentName="MoteBase">
+    <defName>Mote_Casting</defName>
+    <graphicData>
+      <texPath>Motes/CastingMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.0</fadeInTime>
+      <solidTime>0.15</solidTime>
+      <fadeOutTime>.45</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
     <defName>Mote_Siphon</defName>
     <graphicData>
       <texPath>Motes/SiphonMote</texPath>

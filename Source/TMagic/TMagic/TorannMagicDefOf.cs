@@ -459,6 +459,7 @@ namespace TorannMagic
         public static ThingDef Mote_Exclamation;
         public static ThingDef Mote_Twinkle;
         public static ThingDef Mote_Flame;
+        public static ThingDef Mote_Casting;
 
         //Jobs
         public static JobDef TMCastAbilityVerb;

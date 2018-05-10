@@ -13,6 +13,19 @@ namespace TorannMagic.Conditions
         private int areaRadius = 2;
         bool initialized = false;
         bool disabled = false;
+        Thing thing;
+
+        public override void GameConditionTick()
+        {
+            base.GameConditionTick();
+            if(Find.TickManager.TicksGame % 60 == 0)
+            {
+                if(this.thing.DestroyedOrNull())
+                {
+                    this.End();
+                }
+            }
+        }
 
         public override void ExposeData()
         {
@@ -31,7 +44,7 @@ namespace TorannMagic.Conditions
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             if (settingsRef.riftChallenge > 0)
             {
-                Thing thing = ThingMaker.MakeThing(ThingDef.Named("TM_ElementalRift"), ThingDefOf.BlocksGranite);
+                this.thing = ThingMaker.MakeThing(ThingDef.Named("TM_ElementalRift"), ThingDefOf.BlocksGranite);
                 GenSpawn.Spawn(thing, centerLocation.ToIntVec3, this.Map, Rot4.North, false);
                 Faction faction = Find.FactionManager.FirstFactionOfDef(FactionDef.Named("TM_ElementalFaction"));
                 if (!faction.HostileTo(Faction.OfPlayer))

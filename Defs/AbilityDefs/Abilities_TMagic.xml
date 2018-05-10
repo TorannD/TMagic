@@ -1448,7 +1448,7 @@ Shots: 3</description>
    <projectile>
 		<flyOverhead>false</flyOverhead>
 		<damageDef>Burn</damageDef>
-		<damageAmountBase>28</damageAmountBase>
+		<damageAmountBase>36</damageAmountBase>
 		<speed>200</speed>
    </projectile>
  </ThingDef>

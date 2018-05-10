@@ -103,7 +103,6 @@ namespace TorannMagic
         {
 
             CompAbilityUserMagic comp = billdoer.GetComp<CompAbilityUserMagic>();
-            Log.Message("Body part is " + part.def.defName);
             switch (part.def.defName)
             {
                 case "LeftFoot":
@@ -267,6 +266,9 @@ namespace TorannMagic
                 case "Stomach":
                     patient.health.AddHediff(HediffDef.Named("TM_StomachRegrowth"), part, null);
                     comp.Mana.CurLevel += (.3f);
+                    break;
+                case "Spine":
+                    patient.health.AddHediff(HediffDef.Named("TM_SpineRegrowth"), part, null);
                     break;
 
 

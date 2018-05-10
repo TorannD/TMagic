@@ -478,7 +478,7 @@ namespace TorannMagic
             public static bool Prefix(Recipe_Surgery __instance, Pawn surgeon, Pawn patient, List<Thing> ingredients, BodyPartRecord part, ref bool __result)
             {
 
-                if (patient.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")) || patient.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadAnimalHD")) || patient.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD")) )
+                if (patient.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")) || patient.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadAnimalHD")) )
                 {
                     Messages.Message("Something went horribly wrong while trying to perform a surgery on " + patient.LabelShort + ", perhaps it's best to leave the bodies of the living dead alone.", MessageTypeDefOf.NegativeHealthEvent);
                     GenExplosion.DoExplosion(surgeon.Position, surgeon.Map, 2f, TMDamageDefOf.DamageDefOf.TM_CorpseExplosion, patient, Rand.Range(6, 12), TMDamageDefOf.DamageDefOf.TM_CorpseExplosion.soundExplosion, null, null, null, 0, 0, false, null, 0, 0, 0, false);
@@ -496,6 +496,14 @@ namespace TorannMagic
         {
             public static bool Prefix(Verb __instance, IntVec3 root, LocalTargetInfo targ, out ShootLine resultingLine, ref bool __result)
             {
+                //if(Find.TickManager.TicksGame % 20 == 0 && __instance.verbProps.verbClass.ToString().Contains("TorannMagic."))
+                //{
+                //    Log.Message("verb def is " + __instance + " and pawn job def is " + __instance.CasterPawn.CurJob.def + " " + __instance.CasterPawn.CurJob.def.defName + " -- " + __instance.CasterPawn.CurJob.verbToUse + " job of " + __instance.CasterPawn.CurJob);
+                //    if (__instance.CasterPawn.CurJob.verbToUse == __instance)
+                //    {
+                //        TM_MoteMaker.ThrowEnchantingMote(__instance.CasterPawn.DrawPos, __instance.CasterPawn.Map, 1.6f);
+                //    }
+                //}
                 if (__instance.verbProps.MeleeRange)
                 {
                     resultingLine = new ShootLine(root, targ.Cell);
@@ -1421,6 +1429,113 @@ namespace TorannMagic
                 if(__instance.parent.def.defName == "Poppi")
                 {
                     __result = "Poppi_fuelGrowth".Translate() + ": " + __instance.Fullness.ToStringPercent();
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(JobGiver_Kidnap), "TryGiveJob", null)]
+        public class JobGiver_Kidnap_Patch
+        {
+            public static void Postfix(Pawn pawn, ref Job __result)
+            { 
+                if (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_Undead")))
+                {
+                    __result = null;
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(ITab_Pawn_Gear), "DrawThingRow", null)]
+        public class ITab_Pawn_Gearn_Patch
+        {
+
+            public static Rect GetRowRect(Rect inRect, int row)
+            {
+                float y = 20f * (float)row;
+                Rect result = new Rect(inRect.x, y, inRect.width, 18f);
+                return result;
+            }
+
+            public static void Postfix(ref float y, float width, Thing thing)
+            {
+                bool valid = thing.TryGetQuality(out QualityCategory qc);
+                if (valid)
+                {
+                    if (thing.TryGetComp<Enchantment.CompEnchantedItem>().HasEnchantment)
+                    {
+                        Text.Font = GameFont.Tiny;
+                        string str1 = "-- Enchanted (";
+                        string str2 = "Enchanted \n\n";
+
+                        Enchantment.CompEnchantedItem enchantedItem = thing.TryGetComp<Enchantment.CompEnchantedItem>();
+                        if (enchantedItem.maxMP != 0)
+                        {
+                            GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.maxMPTier);
+                            str1 += "M";
+                            str2 += enchantedItem.MaxMPLabel + "\n";
+                        }
+                        if (enchantedItem.mpCost != 0)
+                        {
+                            GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.mpCostTier);
+                            str1 += "C";
+                            str2 += enchantedItem.MPCostLabel + "\n";
+                        }
+                        if (enchantedItem.mpRegenRate != 0)
+                        {
+                            GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.mpRegenRateTier);
+                            str1 += "R";
+                            str2 += enchantedItem.MPRegenRateLabel + "\n";
+                        }
+                        if (enchantedItem.coolDown != 0)
+                        {
+                            GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.coolDownTier);
+                            str1 += "D";
+                            str2 += enchantedItem.CoolDownLabel + "\n";
+                        }
+                        if (enchantedItem.xpGain != 0)
+                        {
+                            GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.xpGainTier);
+                            str1 += "G";
+                            str2 += enchantedItem.XPGainLabel + "\n";
+                        }
+                        if (enchantedItem.arcaneRes != 0)
+                        {
+                            GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.arcaneResTier);
+                            str1 += "X";
+                            str2 += enchantedItem.ArcaneResLabel + "\n";
+                        }
+                        if (enchantedItem.arcaneDmg != 0)
+                        {
+                            GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.arcaneDmgTier);
+                            str1 += "Z";
+                            str2 += enchantedItem.ArcaneDmgLabel + "\n";
+                        }
+                        if (enchantedItem.arcaneSpectre != false)
+                        {
+                            GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.skillTier);
+                            str1 += "*S";
+                            str2 += enchantedItem.ArcaneSpectreLabel + "\n";
+                        }
+                        if (enchantedItem.phantomShift != false)
+                        {
+                            GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.skillTier);
+                            str1 += "*P";
+                            str2 += enchantedItem.PhantomShiftLabel + "\n";
+                        }
+                        str1 += ")";
+                        y -= 6f;
+                        Rect rect = new Rect(48f, y, width - 36f, 28f);
+                        Widgets.Label(rect, str1);
+
+                        TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
+                        {
+                        str2,
+                        }), 398512);
+
+                        y += 28f;
+                        GUI.color = Color.white;
+                        Text.Font = GameFont.Small;
+                    }
                 }
             }
         }

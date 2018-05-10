@@ -803,5 +803,72 @@
       </li>
     </stages>
   </HediffDef>
+  
+  <HediffDef ParentName="DruidRegrowth">
+    <defName>TM_SpineRegrowth</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Spine Meld</label>
+    <addedPartProps>
+	  <partEfficiency>1.1</partEfficiency>
+    </addedPartProps>
+	<maxSeverity>15</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>+2</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+		<label>re-forming</label>
+		<minSeverity>0.01</minSeverity>
+		<restFallFactor>1.5</restFallFactor>
+		<hungerRateFactor>1.5</hungerRateFactor>
+		<capMods>
+		   <li>
+			  <capacity>Moving</capacity>
+			  <offset>-0.5</offset>
+		   </li>
+		   <li>
+			  <capacity>Manipulation</capacity>
+			  <offset>-0.5</offset>
+		   </li>
+		</capMods>
+      </li>
+      <li>
+		<label>new development</label>
+		<minSeverity>3</minSeverity>
+		<restFallFactor>1.5</restFallFactor>
+		<hungerRateFactor>1.5</hungerRateFactor>
+		<capMods>
+		   <li>
+			  <capacity>Moving</capacity>
+			  <offset>-0.4</offset>
+		   </li>
+		   <li>
+			  <capacity>Manipulation</capacity>
+			  <offset>-0.4</offset>
+		   </li>
+		</capMods>
+      </li>
+	  <li>
+		<label>melding</label>
+		<minSeverity>6</minSeverity>
+      </li>
+	  <li>
+		<label>entwined</label>
+		<minSeverity>14.9</minSeverity>
+		<capMods>
+		   <li>
+			  <capacity>Moving</capacity>
+			  <offset>0.15</offset>
+		   </li>
+		   <li>
+			  <capacity>Manipulation</capacity>
+			  <offset>0.1</offset>
+		   </li>
+		</capMods>
+      </li>
+    </stages>
+  </HediffDef>
 
 </Defs>

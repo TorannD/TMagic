@@ -74,6 +74,8 @@
 <TM_AntiArmorDamage>{0} damage: {1}; additional damage to mechanoids: {2}</TM_AntiArmorDamage>
 <TM_ArrowStormDamage>{0} damage: {1}; accuracy: {2}&#37;</TM_ArrowStormDamage>
 <riftChallenge>Elemental Rift Difficulty:</riftChallenge>
+<TM_LastManaGainPct>Mana Gain: {0}&#37; /5s</TM_LastManaGainPct>
+<TM_AssaultPending>Elementals are coming through the rift!</TM_AssaultPending>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>

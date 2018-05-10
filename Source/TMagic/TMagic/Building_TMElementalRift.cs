@@ -24,8 +24,17 @@ namespace TorannMagic
         private static readonly Material portalMat_2 = MaterialPool.MatFrom("Motes/rift_swirl2", false);
         private static readonly Material portalMat_3 = MaterialPool.MatFrom("Motes/rift_swirl3", false);
 
+        private int ticksTillNextAssault = 0;
+        private float eventFrequencyMultiplier = 1;
+        private int ticksTillNextEvent = 0;
+        private int eventTimer = 0;
+        private int assaultTimer = 0;
         private int matRng = 0;
         private float matMagnitude = 0;
+        private int rnd = 0;
+        private int areaRadius = 1;
+        private bool notifier = false;
+        IntVec2 centerLocation;
 
         private bool initialized = false;
 
@@ -34,6 +43,14 @@ namespace TorannMagic
             base.ExposeData();
             Scribe_Values.Look<float>(ref this.arcaneEnergyCur, "arcaneEnergyCur", 0f, false);
             Scribe_Values.Look<float>(ref this.arcaneEnergyMax, "arcaneEnergyMax", 0f, false);
+            Scribe_Values.Look<int>(ref this.rnd, "rnd", 0, false);
+            Scribe_Values.Look<int>(ref this.ticksTillNextAssault, "ticksTillNextAssault", 0, false);
+            Scribe_Values.Look<int>(ref this.ticksTillNextEvent, "ticksTillNextEvent", 0, false);
+            Scribe_Values.Look<int>(ref this.assaultTimer, "assaultTimer", 0, false);
+            Scribe_Values.Look<int>(ref this.eventTimer, "eventTimer", 0, false);
+            Scribe_Values.Look<int>(ref this.areaRadius, "areaRadius", 1, false);
+            Scribe_Values.Look<float>(ref this.eventFrequencyMultiplier, "eventFrequencyMultiplier", 1f, false);
+            Scribe_Values.Look<bool>(ref this.notifier, "notifier", false, false);
         }
         
         public float ArcaneEnergyCur
@@ -58,25 +75,254 @@ namespace TorannMagic
         {
             if(!initialized)
             {
+                
+                DetermineElementalType();
+                BeginAssaultCondition();
                 SpawnCycle();
+                this.ticksTillNextAssault = Rand.Range(1600, 3000);
+                this.ticksTillNextEvent = (int)(Rand.Range(160, 300) * this.eventFrequencyMultiplier);
                 initialized = true;
             }
             if(Find.TickManager.TicksGame % 8 == 0)
             {
+                this.assaultTimer += 8;
+                this.eventTimer += 8;
                 this.matRng = Rand.RangeInclusive(0, 2);
                 this.matMagnitude = 4 * this.arcaneEnergyMax;
+                Vector3 rndVec = this.DrawPos;
+                if (this.rnd < 2) //earth
+                {
+                    rndVec.x += Rand.Range(-5, 5);
+                    rndVec.z += Rand.Range(-5, 5);
+                    MoteMaker.ThrowSmoke(rndVec, this.Map, Rand.Range(.6f, 1.2f));
+                }
+                else if (this.rnd < 4) //fire
+                {
+                    rndVec.x += Rand.Range(-1.2f, 1.2f);
+                    rndVec.z += Rand.Range(-1.2f, 1.2f);
+                    TM_MoteMaker.ThrowFlames(rndVec, this.Map, Rand.Range(.6f, 1f));
+                }
+                else if (this.rnd < 6) //water
+                {
+                    rndVec.x += Rand.Range(-2f, 2f);
+                    rndVec.z += Rand.Range(-2f, 2f);
+                    TM_MoteMaker.ThrowManaPuff(rndVec, this.Map, Rand.Range(.6f, 1f));
+                }
+                else //air
+                {
+                    rndVec.x += Rand.Range(-2f, 2f);
+                    rndVec.z += Rand.Range(-2f, 2f);
+                    MoteMaker.ThrowLightningGlow(rndVec, this.Map, Rand.Range(.6f, .8f));
+                }
+
             }
-            if (Find.TickManager.TicksGame % 2000 == 0)
+            if(this.eventTimer > this.ticksTillNextEvent)
             {
-                SpawnCycle();                
+                DoMapEvent();
+                this.eventTimer = 0;
+                this.ticksTillNextEvent = (int)(Rand.Range(160, 300) * this.eventFrequencyMultiplier);
             }
+            if(this.notifier == false && this.assaultTimer > (.9f * this.ticksTillNextAssault))
+            {
+                Messages.Message("TM_AssaultPending".Translate(), MessageTypeDefOf.ThreatSmall);
+                this.notifier = true;
+            }
+            if (this.assaultTimer > this.ticksTillNextAssault)
+            {
+                SpawnCycle();
+                this.assaultTimer = 0;
+                this.ticksTillNextAssault = Rand.Range(1600, 3000);
+                this.notifier = false;
+            }
+        }
+
+        public void DoMapEvent()
+        {
+            if(this.rnd < 2) //earth
+            {
+                //berserk random animal
+                List<Pawn> animalList = this.Map.mapPawns.AllPawnsSpawned;
+                for(int i =0; i < animalList.Count; i++)
+                {
+                    int j = Rand.Range(0, animalList.Count);
+                    if(animalList[j].RaceProps.Animal && !animalList[j].IsColonist)
+                    {
+                       animalList[j].mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.ManhunterPermanent, null, true, false, null);
+                        i = animalList.Count;
+                    }
+                }
+            }
+            else if(this.rnd < 4) //fire
+            {
+                FindGoodCenterLocation();
+                if (Rand.Chance(.6f))
+                {
+                    SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Firestorm_Small, this.centerLocation.ToIntVec3, this.Map);
+                }
+                else
+                {
+                    SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Firestorm_Tiny, this.centerLocation.ToIntVec3, this.Map);
+                }
+            }
+            else if(this.rnd < 6) //water
+            {
+                FindGoodCenterLocation();
+                if (Rand.Chance(.6f))
+                {
+                    SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Blizzard_Small, this.centerLocation.ToIntVec3, this.Map);
+                }
+                else
+                {
+                    SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Blizzard_Large, this.centerLocation.ToIntVec3, this.Map);
+                }
+            }
+            else //air
+            {                
+                FindGoodCenterLocation();
+                Map.weatherManager.eventHandler.AddEvent(new WeatherEvent_LightningStrike(this.Map, this.centerLocation.ToIntVec3));
+                GenExplosion.DoExplosion(this.centerLocation.ToIntVec3, this.Map, this.areaRadius, DamageDefOf.Bomb, null, Rand.Range(6, 16), SoundDefOf.Thunder_OffMap, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
+
+            }
+        }
+
+        private void FindGoodCenterLocation()
+        {
+            if (base.Map.Size.x <= 16 || base.Map.Size.z <= 16)
+            {
+                throw new Exception("Map too small for elemental assault");
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                this.centerLocation = new IntVec2(Rand.Range(8, base.Map.Size.x - 8), Rand.Range(8, base.Map.Size.z - 8));
+                if (this.IsGoodCenterLocation(this.centerLocation))
+                {
+                    break;
+                }
+            }
+        }
+
+        private bool IsGoodLocationForStrike(IntVec3 loc)
+        {
+            return loc.InBounds(base.Map) && loc.IsValid && !loc.Fogged(base.Map);
+        }
+
+        private bool IsGoodCenterLocation(IntVec2 loc)
+        {
+            int num = 0;
+            int num2 = (int)(3.14159274f * (float)this.areaRadius * (float)this.areaRadius / 2f);
+            foreach (IntVec3 current in this.GetPotentiallyAffectedCells(loc))
+            {
+                if (this.IsGoodLocationForStrike(current))
+                {
+                    num++;
+                }
+                if (num >= num2)
+                {
+                    break;
+                }
+            }
+
+            return num >= num2 && (IsGoodLocationForStrike(loc.ToIntVec3));
+        }
+
+        [DebuggerHidden]
+        private IEnumerable<IntVec3> GetPotentiallyAffectedCells(IntVec2 center)
+        {
+            for (int x = center.x - this.areaRadius; x <= center.x + this.areaRadius; x++)
+            {
+                for (int z = center.z - this.areaRadius; z <= center.z + this.areaRadius; z++)
+                {
+                    if ((center.x - x) * (center.x - x) + (center.z - z) * (center.z - z) <= this.areaRadius * this.areaRadius)
+                    {
+                        yield return new IntVec3(x, 0, z);
+                    }
+                }
+            }
+        }
+
+        public void BeginAssaultCondition()
+        {
+            List<GameCondition> currentGameConditions = this.Map.gameConditionManager.ActiveConditions;
+            WeatherDef weatherDef = new WeatherDef();
+            if (this.rnd < 2) //earth
+            {
+                if(!this.Map.GameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout))
+                {
+                    this.Map.GameConditionManager.RegisterCondition(GameConditionMaker.MakeCondition(GameConditionDefOf.ToxicFallout, 500000, 60));
+                }
+                this.eventFrequencyMultiplier = 4;
+            }
+            else if(this.rnd < 4) //fire
+            {
+                for(int i = 0; i < currentGameConditions.Count; i++)
+                {
+                    if (currentGameConditions[i].def == GameConditionDefOf.ColdSnap)
+                    {
+                        currentGameConditions[i].Duration = 0;
+                        currentGameConditions[i].End();
+                    }
+                }
+                if (!this.Map.GameConditionManager.ConditionIsActive(GameConditionDefOf.HeatWave))
+                {
+                    this.Map.GameConditionManager.RegisterCondition(GameConditionMaker.MakeCondition(GameConditionDefOf.HeatWave, 500000, 60));
+                }
+                this.eventFrequencyMultiplier = .5f;
+                this.areaRadius = 2;
+                
+            }
+            else if(this.rnd < 6) //water
+            {
+                for (int i = 0; i < currentGameConditions.Count; i++)
+                {
+                    if (currentGameConditions[i].def == GameConditionDefOf.HeatWave)
+                    {
+                        currentGameConditions[i].Duration = 0;
+                        currentGameConditions[i].End();
+                    }
+                }
+                if (!this.Map.GameConditionManager.ConditionIsActive(GameConditionDefOf.ColdSnap))
+                {
+                    this.Map.GameConditionManager.RegisterCondition(GameConditionMaker.MakeCondition(GameConditionDefOf.ColdSnap, 500000, 60));
+                }
+                weatherDef = WeatherDef.Named("SnowHard");
+                this.Map.weatherManager.TransitionTo(weatherDef);
+                this.eventFrequencyMultiplier = .5f;
+                this.areaRadius = 3;
+            }
+            else //air
+            {
+                weatherDef = WeatherDef.Named("RainyThunderstorm");
+                this.Map.weatherManager.TransitionTo(weatherDef);
+                this.eventFrequencyMultiplier = .4f;
+                this.areaRadius = 2;
+            }
+
+        }
+
+        public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
+        {
+            //end conditions
+            List<GameCondition> currentGameConditions = this.Map.gameConditionManager.ActiveConditions;
+            for(int i =0; i < currentGameConditions.Count; i++)
+            {
+                if (currentGameConditions[i].def == GameConditionDefOf.ColdSnap || currentGameConditions[i].def == GameConditionDefOf.HeatWave || currentGameConditions[i].def == GameConditionDefOf.ToxicFallout)
+                {
+                    currentGameConditions[i].End();
+                }
+            }
+            base.Destroy(mode);
+        }
+
+        public void DetermineElementalType()
+        {
+            System.Random random = new System.Random();
+            random = new System.Random();
+            this.rnd = GenMath.RoundRandom(random.Next(0, 8));
         }
 
         public void SpawnCycle()
         {
-            System.Random random = new System.Random();
-            random = new System.Random();
-            int rnd = GenMath.RoundRandom(random.Next(0, 8));
+            
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             float geChance = 0.007f;
             if (settingsRef.riftChallenge > 1 )
