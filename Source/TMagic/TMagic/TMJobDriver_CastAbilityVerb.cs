@@ -12,6 +12,7 @@ namespace TorannMagic
     {
 
         private int duration;
+        Verb arg_45_0;
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
@@ -37,6 +38,7 @@ namespace TorannMagic
             {
                 targetPawn = TargetThingA as Pawn;
             }
+            
             if (targetPawn != null)
             {
                 //yield return Toils_Combat.CastVerb(TargetIndex.A, false);
@@ -49,10 +51,38 @@ namespace TorannMagic
                 //JobDriver curDriver = this.pawn.jobs.curDriver;
                 combatToil.initAction = delegate
                 {
-                    Verb arg_45_0 = combatToil.actor.jobs.curJob.verbToUse;
+                    arg_45_0 = combatToil.actor.jobs.curJob.verbToUse;
+                    if (this.pawn.RaceProps.Humanlike)
+                    {
+                        if (this.pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                        {
+                            CompAbilityUserMight mightComp = this.pawn.GetComp<CompAbilityUserMight>();
+                            CompAbilityUserMagic magicComp = this.pawn.GetComp<CompAbilityUserMagic>();
+                            if (mightComp.mimicAbility != null && mightComp.mimicAbility.MainVerb.verbClass == arg_45_0.verbProps.verbClass)
+                            {
+                                mightComp.RemovePawnAbility(mightComp.mimicAbility);
+                            }
+                            if (magicComp.mimicAbility != null && magicComp.mimicAbility.MainVerb.verbClass == arg_45_0.verbProps.verbClass)
+                            {
+                                magicComp.RemovePawnAbility(magicComp.mimicAbility);
+                            }
+                        }
+                    }
+                    
                     LocalTargetInfo target = combatToil.actor.jobs.curJob.GetTarget(TargetIndex.A);
                     // bool canFreeIntercept2 = false;
                     arg_45_0.TryStartCastOn(target, false, false);
+                    using (IEnumerator<Hediff> enumerator = this.pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+                    {
+                        while (enumerator.MoveNext())
+                        {
+                            Hediff rec = enumerator.Current;
+                            if (rec.def == TorannMagicDefOf.TM_PossessionHD || rec.def == TorannMagicDefOf.TM_DisguiseHD || rec.def == TorannMagicDefOf.TM_DisguiseHD_I || rec.def == TorannMagicDefOf.TM_DisguiseHD_II || rec.def == TorannMagicDefOf.TM_DisguiseHD_III)
+                            {
+                                this.pawn.health.RemoveHediff(rec);
+                            }
+                        }
+                    }
                 };
                 combatToil.tickAction = delegate
                 {
@@ -124,10 +154,39 @@ namespace TorannMagic
                             Toil toil = new Toil();
                             toil.initAction = delegate
                             {
-                                Verb arg_45_0 = toil.actor.jobs.curJob.verbToUse;
+                                arg_45_0 = toil.actor.jobs.curJob.verbToUse;
+                                if (this.pawn.RaceProps.Humanlike)
+                                {
+                                    if (this.pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                                    {
+                                        CompAbilityUserMight mightComp = this.pawn.GetComp<CompAbilityUserMight>();
+                                        CompAbilityUserMagic magicComp = this.pawn.GetComp<CompAbilityUserMagic>();
+                                        if (mightComp.mimicAbility != null && mightComp.mimicAbility.MainVerb.verbClass == arg_45_0.verbProps.verbClass)
+                                        {
+                                            mightComp.RemovePawnAbility(mightComp.mimicAbility);
+                                        }
+                                        if (magicComp.mimicAbility != null && magicComp.mimicAbility.MainVerb.verbClass == arg_45_0.verbProps.verbClass)
+                                        {
+                                            magicComp.RemovePawnAbility(magicComp.mimicAbility);
+                                        }
+                                    }
+                                }
+                                
                                 LocalTargetInfo target = toil.actor.jobs.curJob.GetTarget(TargetIndex.A);
                                 bool canFreeIntercept2 = false;
                                 arg_45_0.TryStartCastOn(target, false, canFreeIntercept2);
+
+                                using (IEnumerator<Hediff> enumerator = this.pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+                                {
+                                    while (enumerator.MoveNext())
+                                    {
+                                        Hediff rec = enumerator.Current;
+                                        if (rec.def == TorannMagicDefOf.TM_PossessionHD || rec.def == TorannMagicDefOf.TM_DisguiseHD || rec.def == TorannMagicDefOf.TM_DisguiseHD_I || rec.def == TorannMagicDefOf.TM_DisguiseHD_II || rec.def == TorannMagicDefOf.TM_DisguiseHD_III)
+                                        {
+                                            this.pawn.health.RemoveHediff(rec);
+                                        }
+                                    }
+                                }
                             };
                             toil.tickAction = delegate
                             {
@@ -142,8 +201,7 @@ namespace TorannMagic
                                 if (this.duration <= 5)
                                 {
                                     curJob.Ability.PostAbilityAttempt();
-                                }
-
+                                }                               
                             });
                             toil.defaultCompleteMode = ToilCompleteMode.FinishedBusy;
                             yield return toil;

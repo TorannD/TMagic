@@ -151,12 +151,16 @@ namespace TorannMagic
 
         public override void SetInitialLevel()
         {
+            if(this.pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            {
+                this.def.showOnNeedList = false;
+            }
             this.CurLevel = 0.7f;
         }
 
         public void GainNeed(float amount)
         {
-            if (base.pawn.Map != null && !base.pawn.Dead)
+            if (base.pawn.Map != null && !base.pawn.Dead && !base.pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
                 Pawn pawn = base.pawn;
                 CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
@@ -401,7 +405,7 @@ namespace TorannMagic
             if (flag3)
             {
                 num2 *= Mathf.InverseLerp(0f, 50f, rect.height);
-            }            
+            }
             Text.Font = ((rect.height <= 55f) ? GameFont.Tiny : GameFont.Small);
             Text.Anchor = TextAnchor.LowerLeft;
             Rect rect2 = new Rect(rect.x + num3 + rect.width * 0.1f, rect.y, rect.width - num3 - rect.width * 0.1f, rect.height / 2f);
@@ -430,7 +434,7 @@ namespace TorannMagic
             {
                 UIHighlighter.HighlightOpportunity(rect, this.def.tutorHighlightTag);
             }
-            Text.Font = GameFont.Small;
+            Text.Font = GameFont.Small;            
         }
 
         private void DrawBarThreshold(Rect barRect, float threshPct)
@@ -450,7 +454,7 @@ namespace TorannMagic
                 GUI.color = new Color(1f, 1f, 1f, 0.5f);
             }
             GUI.DrawTexture(position, image);
-            GUI.color = Color.white;
+            GUI.color = Color.white;            
         }
     }
 }

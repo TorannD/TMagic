@@ -27,6 +27,11 @@ namespace TorannMagic
             MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             verVal = ver.level;
+            if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            {
+                MightPowerSkill mver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                verVal = mver.level;
+            }
             if (settingsRef.AICasting && !pawn.IsColonist)
             {
                 verVal = 3;

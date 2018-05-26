@@ -14,6 +14,8 @@ namespace TorannMagic.ModOptions
         public bool AICasting = true;
         public bool AIHardMode = false;
         public bool AIMarking = true;
+        public bool AIFighterMarking = false;
+        public bool AIFriendlyMarking = false;
         public float baseMageChance = 1f;
         public float baseFighterChance = 1f;
         public float advMageChance = 0.5f;
@@ -39,6 +41,8 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<bool>(ref this.AICasting, "AICasting", true, false);
             Scribe_Values.Look<bool>(ref this.AIHardMode, "AIHardMode", false, false);
             Scribe_Values.Look<bool>(ref this.AIMarking, "AIMarking", false, false);
+            Scribe_Values.Look<bool>(ref this.AIFighterMarking, "AIFighterMarking", false, false);
+            Scribe_Values.Look<bool>(ref this.AIFriendlyMarking, "AIFriendlyMarking", false, false);
             Scribe_Values.Look<float>(ref this.baseMageChance, "baseMageChance", 1f, false);
             Scribe_Values.Look<float>(ref this.baseFighterChance, "baseFighterChance", 1f, false);
             Scribe_Values.Look<float>(ref this.advMageChance, "advMageChance", 0.5f, false);

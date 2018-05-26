@@ -11,6 +11,8 @@ namespace TorannMagic
         private int duration = 7200;
         private bool primed = false;
         Thing placedThing;
+        private int verVal;
+        private int pwrVal;
 
         public override void Tick()
         {
@@ -62,14 +64,22 @@ namespace TorannMagic
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
             MagicPowerSkill pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonPylon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonPylon_pwr");
             MagicPowerSkill ver = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonPylon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonPylon_ver");
-
+            verVal = ver.level;
+            pwrVal = pwr.level;
+            if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            {
+                MightPowerSkill mpwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+                MightPowerSkill mver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                pwrVal = mpwr.level;
+                verVal = mver.level;
+            }
             CellRect cellRect = CellRect.CenteredOn(base.Position, 1);
             cellRect.ClipInsideMap(map);
             IntVec3 centerCell = cellRect.CenterCell;
 
             if (!this.primed)
             {
-                duration += (ver.level * 3600);
+                duration += (verVal * 3600);
                 arg_pos_1 = centerCell;
 
                 if ((arg_pos_1.IsValid && arg_pos_1.Standable(map)))
@@ -78,15 +88,15 @@ namespace TorannMagic
                     IntVec3 shiftPos = centerCell;
                     centerCell.x++;
 
-                    if (pwr.level == 1)
+                    if (pwrVal == 1)
                     {
                         tempPod.def = ThingDef.Named("DefensePylon_I");
                     }
-                    else if (pwr.level == 2)
+                    else if (pwrVal == 2)
                     {
                         tempPod.def = ThingDef.Named("DefensePylon_II");
                     }
-                    else if (pwr.level == 3)
+                    else if (pwrVal == 3)
                     {
                         tempPod.def = ThingDef.Named("DefensePylon_III");
                     }
@@ -120,9 +130,7 @@ namespace TorannMagic
                     this.duration = 0;
                 }
             }
-
             this.age = this.duration;
-
         }
 
         public void SingleSpawnLoop(SpawnThings spawnables, IntVec3 position, Map map)
@@ -175,6 +183,5 @@ namespace TorannMagic
             Scribe_Values.Look<int>(ref this.age, "age", -1, false);
             Scribe_Values.Look<int>(ref this.duration, "duration", 7200, false);
         }
-
     }
 }

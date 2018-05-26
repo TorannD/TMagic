@@ -8,14 +8,30 @@ using AbilityUser;
 using Verse.AI;
 using UnityEngine;
 using System.Text;
+using CompDeflector;
 
 namespace TorannMagic
 {
     [CompilerGenerated]
     [Serializable]
+    [StaticConstructorOnStartup]
     public class CompAbilityUserMight : CompAbilityUser
     {
         public string LabelKey = "TM_Might";
+
+        private static readonly Material deceptionEye = MaterialPool.MatFrom("Motes/DeceptionMote");
+        private static readonly Material possessionMask = MaterialPool.MatFrom("Motes/PossessMote");
+
+        private static readonly Material fighterMarkMat = MaterialPool.MatFrom("Other/FighterMark", ShaderDatabase.Transparent, Color.black);
+        private static readonly Color facelessMarkColor = new Color(1f, .5f, .25f);
+        private static readonly Material facelessMarkMat = MaterialPool.MatFrom("Other/FighterMark", ShaderDatabase.Transparent, CompAbilityUserMight.facelessMarkColor);
+        private static readonly Color rangerMarkColor = new Color(.3f, .6f, .0f);
+        private static readonly Material rangerMarkMat = MaterialPool.MatFrom("Other/FighterMark", ShaderDatabase.Transparent, CompAbilityUserMight.rangerMarkColor);
+        private static readonly Color gladiatorMarkColor = new Color(0f, .35f, .75f);
+        private static readonly Material gladiatorMarkMat = MaterialPool.MatFrom("Other/FighterMark", ShaderDatabase.Transparent, CompAbilityUserMight.gladiatorMarkColor);
+        private static readonly Material bladedancerMarkMat = MaterialPool.MatFrom("Other/FighterMark", ShaderDatabase.Transparent, Color.gray);
+        private static readonly Color sniperMarkColor = new Color(.7f, 0f, 0f);
+        private static readonly Material sniperMarkMat = MaterialPool.MatFrom("Other/FighterMark", ShaderDatabase.Transparent, CompAbilityUserMight.sniperMarkColor);
 
         public bool mightPowersInitialized = false;
         public bool firstMightTick = false;
@@ -36,6 +52,11 @@ namespace TorannMagic
         private float B_PhaseStrike_eff = 0.08f;
         private float R_AnimalFriend_eff = 0.15f;
         private float R_ArrowStorm_eff = 0.08f;
+        private float F_Disguise_eff = 0.10f;
+        private float F_Mimic_eff = 0.08f;
+        private float F_Reversal_eff = 0.10f;
+        private float F_Transpose_eff = 0.08f;
+        private float F_Possess_eff = 0.06f;
 
         private float global_seff = 0.03f;
 
@@ -58,7 +79,12 @@ namespace TorannMagic
 
         public List<Thing> combatItems = new List<Thing>();
 
+        public Verb_Deflected deflectVerb;
+        DamageInfo reversal_dinfo;
+        Thing reversalTarget = null;
         public Pawn bondedPet = null;
+
+        public TMAbilityDef mimicAbility = null;
 
         private MightData mightData = null;
         public MightData MightData
@@ -71,6 +97,103 @@ namespace TorannMagic
                     this.mightData = new MightData(this);
                 }
                 return this.mightData;
+            }
+        }
+
+        public override void PostDraw()
+        {
+            base.PostDraw();
+            if(this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_I, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_II, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_III, false) ||
+                this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD_I, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD_II, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD_III, false))
+            {
+                DrawDeceptionTicker(true);
+            }
+            else if(this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_I, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_II, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_III, false))
+            {
+                DrawDeceptionTicker(false);
+            }
+
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            if (settingsRef.AIFriendlyMarking && this.AbilityUser.IsColonist && this.IsMightUser)
+            {
+                DrawFighterMark();                
+            }
+            if (settingsRef.AIMarking && !base.AbilityUser.IsColonist && this.IsMightUser)
+            {
+                DrawFighterMark();                
+            }
+        }
+
+        public void DrawFighterMark()
+        {
+            float num = Mathf.Lerp(1.2f, 1.55f, 1f);
+            Vector3 vector = this.AbilityUser.Drawer.DrawPos;
+            vector.x = vector.x + .45f;
+            vector.z = vector.z + .45f;
+            vector.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
+            float angle = 0f;
+            Vector3 s = new Vector3(.28f, 1f, .28f);
+            Matrix4x4 matrix = default(Matrix4x4);
+            matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
+            if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
+            {
+                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMight.gladiatorMarkMat, 0);
+            }
+            else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper))
+            {
+                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMight.sniperMarkMat, 0);
+            }
+            else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Bladedancer))
+            {
+                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMight.bladedancerMarkMat, 0);
+            }
+            else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Ranger))
+            {
+                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMight.rangerMarkMat, 0);
+            }
+            else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            {
+                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMight.facelessMarkMat, 0);
+            }            
+            else
+            {
+                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMight.fighterMarkMat, 0);
+            }
+        }
+
+        public void DrawDeceptionTicker(bool possessed)
+        {
+            if (possessed)
+            {
+                float num = Mathf.Lerp(1.2f, 1.55f, 1f);
+                Vector3 vector = this.AbilityUser.Drawer.DrawPos;
+                vector.x = vector.x - .25f;
+                vector.z = vector.z + .8f;
+                vector.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
+                float angle = 0f;
+                Vector3 s = new Vector3(.45f, 1f, .4f);
+                Matrix4x4 matrix = default(Matrix4x4);
+                matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMight.possessionMask, 0);
+                if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_I, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_II, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_III, false))
+                {
+                    vector.z = vector.z + .35f;
+                    matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
+                    Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMight.deceptionEye, 0);
+                }
+            }
+            else
+            {
+                float num = Mathf.Lerp(1.2f, 1.55f, 1f);
+                Vector3 vector = this.AbilityUser.Drawer.DrawPos;
+                vector.x = vector.x - .25f;
+                vector.z = vector.z + .8f;
+                vector.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
+                float angle = 0f;
+                Vector3 s = new Vector3(.45f, 1f, .4f);
+                Matrix4x4 matrix = default(Matrix4x4);
+                matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMight.deceptionEye, 0);
             }
         }
 
@@ -334,6 +457,62 @@ namespace TorannMagic
             return result;
         }
 
+        public int LevelUpSkill_Disguise(string skillName)
+        {
+            int result = 0;
+            MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_Disguise.FirstOrDefault((MightPowerSkill x) => x.label == skillName);
+            bool flag = mightPowerSkill != null;
+            if (flag)
+            {
+                result = mightPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_Mimic(string skillName)
+        {
+            int result = 0;
+            MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == skillName);
+            bool flag = mightPowerSkill != null;
+            if (flag)
+            {
+                result = mightPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_Reversal(string skillName)
+        {
+            int result = 0;
+            MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_Reversal.FirstOrDefault((MightPowerSkill x) => x.label == skillName);
+            bool flag = mightPowerSkill != null;
+            if (flag)
+            {
+                result = mightPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_Transpose(string skillName)
+        {
+            int result = 0;
+            MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_Transpose.FirstOrDefault((MightPowerSkill x) => x.label == skillName);
+            bool flag = mightPowerSkill != null;
+            if (flag)
+            {
+                result = mightPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_Possess(string skillName)
+        {
+            int result = 0;
+            MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_Possess.FirstOrDefault((MightPowerSkill x) => x.label == skillName);
+            bool flag = mightPowerSkill != null;
+            if (flag)
+            {
+                result = mightPowerSkill.level;
+            }
+            return result;
+        }
+
         public override void CompTick()
         {
             bool flag = base.AbilityUser != null;
@@ -356,6 +535,10 @@ namespace TorannMagic
                         {
                             ResolveSustainedSkills();
                             ResolveClassSkills();
+                            if (reversalTarget != null)
+                            {
+                                ResolveReversalDamage();
+                            }
                         }
                         if (Find.TickManager.TicksGame % 3600 == 0)
                         {
@@ -376,6 +559,36 @@ namespace TorannMagic
                             if (flag5)
                             {
                                 this.LevelUp(false);
+                            }
+                        }
+                    }
+                    if(Find.TickManager.TicksGame % 30 == 0)
+                    {
+                        bool flag6 = this.Pawn.TargetCurrentlyAimingAt != null;
+                        if (flag6)
+                        {
+                            if (this.Pawn.TargetCurrentlyAimingAt.Thing is Pawn)
+                            {
+                                Pawn targetPawn = this.Pawn.TargetCurrentlyAimingAt.Thing as Pawn;
+                                if (targetPawn.RaceProps.Humanlike)
+                                {
+                                    bool flag7 = (this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_DisguiseHD")) || this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_DisguiseHD_I")) || this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_DisguiseHD_II")) || this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_DisguiseHD_III")));
+                                    if (targetPawn.Faction != this.Pawn.Faction && flag7)
+                                    {
+                                        Log.Message("removing disguise via compabilityusermagic tick");
+                                        using (IEnumerator<Hediff> enumerator = this.Pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+                                        {
+                                            while (enumerator.MoveNext())
+                                            {
+                                                Hediff rec = enumerator.Current;
+                                                if (rec.def == TorannMagicDefOf.TM_DisguiseHD || rec.def == TorannMagicDefOf.TM_DisguiseHD_I || rec.def == TorannMagicDefOf.TM_DisguiseHD_II || rec.def == TorannMagicDefOf.TM_DisguiseHD_III)
+                                                {
+                                                    this.Pawn.health.RemoveHediff(rec);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -418,7 +631,7 @@ namespace TorannMagic
                     bool flag3 = base.AbilityUser.story != null;
                     if (flag3)
                     {
-                        bool flag4 = base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Ranger);
+                        bool flag4 = base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Ranger) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless);
                         if (flag4)
                         {                            
                             return true;
@@ -576,6 +789,16 @@ namespace TorannMagic
                         this.AddPawnAbility(TorannMagicDefOf.TM_PoisonTrap);
                         this.AddPawnAbility(TorannMagicDefOf.TM_AnimalFriend);
                         this.AddPawnAbility(TorannMagicDefOf.TM_ArrowStorm);
+                    }
+                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless);
+                    if (flag2)
+                    {
+                        //Log.Message("Initializing Faceless Abilities");
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Disguise);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Mimic);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Reversal);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Transpose);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Possess);
                     }
                     this.mightPowersInitialized = true;
                     //base.UpdateAbilities();
@@ -909,6 +1132,51 @@ namespace TorannMagic
                     result = magicPowerSkill.level;
                 }
             }
+            if (attributeName == "TM_Disguise_eff")
+            {
+                MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_Disguise.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                bool flag = mightPowerSkill != null;
+                if (flag)
+                {
+                    result = mightPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_Mimic_eff")
+            {
+                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_Reversal_eff")
+            {
+                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Reversal.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_Transpose_eff")
+            {
+                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Transpose.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_Possess_eff")
+            {
+                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Possess.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
 
             return result;
         }
@@ -975,6 +1243,30 @@ namespace TorannMagic
                 MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_ArrowStorm.FirstOrDefault((MightPowerSkill x) => x.label == "TM_ArrowStorm_eff");
                 adjustedStaminaCost = mightDef.staminaCost - mightDef.staminaCost * (this.R_ArrowStorm_eff * (float)mightPowerSkill.level);
             }
+            if (mightDef == TorannMagicDefOf.TM_Disguise)
+            {
+                adjustedStaminaCost = mightDef.staminaCost - mightDef.staminaCost * (this.F_Disguise_eff * (float)this.MightAttributeEffeciencyLevel("TM_Disguise_eff"));
+            }
+            if (mightDef == TorannMagicDefOf.TM_Transpose || mightDef == TorannMagicDefOf.TM_Transpose_I || mightDef == TorannMagicDefOf.TM_Transpose_II || mightDef == TorannMagicDefOf.TM_Transpose_III)
+            {
+                MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_Transpose.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Transpose_eff");
+                adjustedStaminaCost = mightDef.staminaCost - mightDef.staminaCost * (this.F_Transpose_eff * (float)mightPowerSkill.level);
+            }
+            if (mightDef == TorannMagicDefOf.TM_Mimic)
+            {
+                MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_eff");
+                adjustedStaminaCost = mightDef.staminaCost - mightDef.staminaCost * (this.F_Mimic_eff * (float)mightPowerSkill.level);
+            }
+            if (mightDef == TorannMagicDefOf.TM_Reversal)
+            {
+                MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_Reversal.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Reversal_eff");
+                adjustedStaminaCost = mightDef.staminaCost - mightDef.staminaCost * (this.F_Reversal_eff * (float)mightPowerSkill.level);
+            }
+            if (mightDef == TorannMagicDefOf.TM_Possess)
+            {
+                MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_Possess.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Possess_eff");
+                adjustedStaminaCost = mightDef.staminaCost - mightDef.staminaCost * (this.F_Possess_eff * (float)mightPowerSkill.level);
+            }
 
             MightPowerSkill globalSkill = this.MightData.MightPowerSkill_global_seff.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_seff_pwr");
             if (globalSkill != null)
@@ -1000,9 +1292,9 @@ namespace TorannMagic
         {
             Pawn abilityUser = base.AbilityUser;
             absorbed = false;
-            bool isGladiator = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Gladiator);
-            if (isGladiator)
-            {
+            //bool flag = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || abilityUser.story.traits.HasTrait;
+            //if (isGladiator)
+            //{
                 List<Hediff> list = new List<Hediff>();
                 List<Hediff> arg_32_0 = list;
                 IEnumerable<Hediff> arg_32_1;
@@ -1055,7 +1347,33 @@ namespace TorannMagic
                             dinfo.SetAmount(0);
                             return;
                         }
-                        if (fortitudeMitigationDelay < this.age )
+                    if (current.def.defName == "TM_ReversalHD")
+                    {
+                        Pawn instigator = dinfo.Instigator as Pawn;
+                        if (instigator != null)
+                        {
+                            if (instigator.equipment.PrimaryEq != null)
+                            {
+                                if (instigator.equipment.PrimaryEq.PrimaryVerb != null)
+                                {
+                                    absorbed = true;
+                                    Vector3 drawPos = AbilityUser.DrawPos;
+                                    drawPos.x += ((instigator.DrawPos.x - drawPos.x) / 20f) + Rand.Range(-.2f, .2f);
+                                    drawPos.z += ((instigator.DrawPos.z - drawPos.z) / 20f) + Rand.Range(-.2f, .2f);
+                                    TM_MoteMaker.ThrowSparkFlashMote(drawPos, this.Pawn.Map, 2f);                                    
+                                    DoReversal(dinfo);
+                                    dinfo.SetAmount(0);
+                                    MightPowerSkill ver = this.MightData.MightPowerSkill_Reversal.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Reversal_ver");
+                                    if(ver.level > 0)
+                                    {
+                                        SiphonReversal(ver.level);
+                                    }
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                    if (fortitudeMitigationDelay < this.age )
                         {
                             if (current.def.defName == "TM_HediffFortitude")
                             {
@@ -1091,8 +1409,170 @@ namespace TorannMagic
                 }
                 list.Clear();
                 list = null;
-            }
+            //}
             base.PostPreApplyDamage(dinfo, out absorbed);
+        }
+
+        public void DoReversal(DamageInfo dinfo)
+        {
+            GiveReversalJob(dinfo);            
+        }
+
+        public void SiphonReversal(int verVal)
+        {
+            Pawn pawn = this.Pawn;
+            CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
+            comp.Stamina.CurLevel += (.015f * verVal);         
+            int num = 1 + verVal;
+            using (IEnumerator<BodyPartRecord> enumerator = pawn.health.hediffSet.GetInjuredParts().GetEnumerator())
+            {
+                while (enumerator.MoveNext())
+                {
+                    BodyPartRecord rec = enumerator.Current;
+                    bool flag2 = num > 0;
+                    if (flag2)
+                    {
+                        int num2 = 1 + verVal;
+                        ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                        if (!pawn.IsColonist && settingsRef.AIHardMode)
+                        {
+                            num2 = 5;
+                        }
+                        IEnumerable<Hediff_Injury> arg_BB_0 = pawn.health.hediffSet.GetHediffs<Hediff_Injury>();
+                        Func<Hediff_Injury, bool> arg_BB_1;
+                        arg_BB_1 = ((Hediff_Injury injury) => injury.Part == rec);
+
+                        foreach (Hediff_Injury current in arg_BB_0.Where(arg_BB_1))
+                        {
+                            bool flag4 = num2 > 0;
+                            if (flag4)
+                            {
+                                bool flag5 = current.CanHealNaturally() && !current.IsOld();
+                                if (flag5)
+                                {
+                                    if (!pawn.IsColonist)
+                                    {
+                                        current.Heal(20.0f + (float)verVal * 3f); // power affects how much to heal
+                                    }
+                                    else
+                                    {
+                                        current.Heal((2.0f + (float)verVal * 1f)); // power affects how much to heal
+                                    }
+                                    TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .6f);
+                                    TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .4f);
+                                    num--;
+                                    num2--;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+
+        public void GiveReversalJob(DamageInfo dinfo)
+        {
+            try
+            {
+                Pawn pawn;
+                bool flag = (pawn = (dinfo.Instigator as Pawn)) != null && dinfo.Weapon != null;
+                if (flag)
+                {
+                    if (dinfo.Weapon.IsMeleeWeapon || dinfo.WeaponBodyPartGroup != null)
+                    {                        
+                        reversal_dinfo = new DamageInfo(dinfo.Def, dinfo.Amount, dinfo.Angle - 180, this.Pawn, dinfo.HitPart, dinfo.Weapon, DamageInfo.SourceCategory.ThingOrUnknown);
+                        reversalTarget = dinfo.Instigator;
+                    }
+                    else
+                    {
+                        Job job = new Job(CompDeflectorDefOf.CastDeflectVerb)
+                        {
+                            playerForced = true,
+                            locomotionUrgency = LocomotionUrgency.Sprint
+                        };
+                        bool flag2 = pawn.equipment != null;
+                        if (flag2)
+                        {
+                            CompEquippable primaryEq = pawn.equipment.PrimaryEq;
+                            bool flag3 = primaryEq != null;
+                            if (flag3)
+                            {
+                                bool flag4 = primaryEq.PrimaryVerb != null;
+                                if (flag4)
+                                {
+                                    Verb_Deflected verb_Deflected = (Verb_Deflected)this.CopyAndReturnNewVerb(primaryEq.PrimaryVerb);
+                                    verb_Deflected = (Verb_Deflected)this.ReflectionHandler(this.deflectVerb);
+                                    pawn = dinfo.Instigator as Pawn;
+                                    job.targetA = pawn;
+                                    job.verbToUse = verb_Deflected;
+                                    job.killIncappedTarget = pawn.Downed;
+                                    this.Pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (NullReferenceException)
+            {
+            }
+        }
+
+        public Verb CopyAndReturnNewVerb(Verb newVerb = null)
+        {
+            if (newVerb != null)
+            {
+                deflectVerb = null;
+                deflectVerb = (Verb_Deflected)Activator.CreateInstance(typeof(Verb_Deflected));
+                deflectVerb.caster = this.Pawn;
+
+                //Initialize VerbProperties
+                var newVerbProps = new VerbProperties
+                {
+                    //Copy values over to a new verb props
+                    hasStandardCommand = newVerb.verbProps.hasStandardCommand,
+                    defaultProjectile = newVerb.verbProps.defaultProjectile,
+                    range = newVerb.verbProps.range,
+                    muzzleFlashScale = newVerb.verbProps.muzzleFlashScale,
+                    warmupTime = 0,
+                    defaultCooldownTime = 0,
+                    soundCast = SoundDefOf.BulletImpactMetal
+                };
+
+                //Apply values
+                deflectVerb.verbProps = newVerbProps;
+            }
+            return deflectVerb;
+        }
+
+        public Verb ReflectionHandler(Verb newVerb)
+        {
+            VerbProperties verbProperties = new VerbProperties
+            {
+                hasStandardCommand = newVerb.verbProps.hasStandardCommand,
+                defaultProjectile = newVerb.verbProps.defaultProjectile,
+                range = newVerb.verbProps.range,
+                muzzleFlashScale = newVerb.verbProps.muzzleFlashScale,
+                warmupTime = 0f,
+                defaultCooldownTime = 0f,
+                soundCast = SoundDefOf.BulletImpactMetal
+            };
+
+            verbProperties.accuracyLong = 70f * Rand.Range(1f, 2f);
+            verbProperties.accuracyMedium = 80f * Rand.Range(1f, 2f);
+            verbProperties.accuracyShort = 90f * Rand.Range(1f, 2f);
+
+            newVerb.verbProps = verbProperties;
+
+            return newVerb;
+        }
+
+        public void ResolveReversalDamage()
+        {
+            Log.Message("reversing melee");
+            reversalTarget.TakeDamage(reversal_dinfo);
+            reversalTarget = null;
         }
 
         public void ResolveClassSkills()
@@ -1231,7 +1711,7 @@ namespace TorannMagic
         {
             float _maxSP = 0;
             float _spRegeRate = 0;
-            float coolDown = 0;
+            float _coolDown = 0;
             float _spCost = 0;
             float _xpGain = 0;
 
@@ -1345,7 +1825,7 @@ namespace TorannMagic
                 }
             }
             MightPowerSkill endurance = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_global_endurance.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_endurance_pwr");
-            this.maxSP = 1 + (.02f * endurance.level) + _maxSP;
+            this.maxSP = 1 + (.04f * endurance.level) + _maxSP;
         }
 
         public void ResolveStamina()
@@ -1607,6 +2087,49 @@ namespace TorannMagic
                     //this.AddPawnAbility(TorannMagicDefOf.TM_BowTraining);
                     this.AddPawnAbility(TorannMagicDefOf.TM_PoisonTrap);
                     this.AddPawnAbility(TorannMagicDefOf.TM_AnimalFriend);
+                }
+
+                bool flag44 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless);
+                if (flag44)
+                {
+                    bool flag21 = !this.MightData.MightPowersF.NullOrEmpty<MightPower>();
+                    if (flag21)
+                    {
+                        foreach (MightPower current7 in this.MightData.MightPowersF)
+                        {
+                            bool flag22 = current7.abilityDef != null;
+                            if (flag22)
+                            {
+                                if ((current7.abilityDef == TorannMagicDefOf.TM_Transpose || current7.abilityDef == TorannMagicDefOf.TM_Transpose_I || current7.abilityDef == TorannMagicDefOf.TM_Transpose_II || current7.abilityDef == TorannMagicDefOf.TM_Transpose_III))
+                                {
+                                    if (current7.level == 0)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_Transpose);
+                                    }
+                                    else if (current7.level == 1)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_Transpose_I);
+                                    }
+                                    else if (current7.level == 2)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_Transpose_II);
+                                    }
+                                    else
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_Transpose_III);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if (flag44)
+                {
+                    //Log.Message("Loading Faceless Abilities");
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Disguise);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Mimic);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Reversal);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Possess);                   
                 }
 
                 this.InitializeSkill();

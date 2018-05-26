@@ -16,27 +16,27 @@ namespace TorannMagic
             Pawn caster = base.CasterPawn;
             Pawn pawn = this.currentTarget.Thing as Pawn;
 
-            bool flag = pawn != null && !pawn.Dead;
+            bool flag = caster != null && !caster.Dead;
             if (flag)
             {
-                if(pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HediffGearRepair")))
+                if(caster.health.hediffSet.HasHediff(HediffDef.Named("TM_HediffGearRepair")))
                 {
-                    using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+                    using (IEnumerator<Hediff> enumerator = caster.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
                     {
                         while (enumerator.MoveNext())
                         {
                             Hediff rec = enumerator.Current;
                             if (rec.def.defName.Contains("TM_HediffGearRepair"))
                             {
-                                pawn.health.RemoveHediff(rec);
+                                caster.health.RemoveHediff(rec);
                             }
                         }
                     }
                 }
                 else
                 {
-                    HealthUtility.AdjustSeverity(pawn, HediffDef.Named("TM_HediffGearRepair"), .5f);
-                    MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, 1f);
+                    HealthUtility.AdjustSeverity(caster, HediffDef.Named("TM_HediffGearRepair"), .5f);
+                    MoteMaker.ThrowDustPuff(caster.Position, caster.Map, 1f);
                 }
             }
             return true;

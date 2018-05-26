@@ -37,6 +37,7 @@
 		  <li>Ranger</li>
 		  <li>Lich</li>
 		  <li>TM_Bard</li>
+		  <li>Faceless</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -77,6 +78,7 @@
 		  <li>Ranger</li>
 		  <li>Lich</li>
 		  <li>TM_Bard</li>
+		  <li>Faceless</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -116,6 +118,7 @@
 		  <li>Ranger</li>
 		  <li>Lich</li>
 		  <li>TM_Bard</li>
+		  <li>Faceless</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -153,6 +156,7 @@
 		  <li>Ranger</li>
 		  <li>Lich</li>
 		  <li>TM_Bard</li>
+		  <li>Faceless</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -193,7 +197,8 @@
 		<li>Priest</li>	
 		<li>Ranger</li>	
 		<li>Lich</li>	
-		<li>TM_Bard</li>		
+		<li>TM_Bard</li>
+		<li>Faceless</li>		
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -234,6 +239,7 @@
 		  <li>Ranger</li>
 		  <li>Lich</li>
 		  <li>TM_Bard</li>
+		  <li>Faceless</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -272,6 +278,7 @@
 		  <li>Ranger</li>
 		  <li>Lich</li>
 		  <li>TM_Bard</li>
+		  <li>Faceless</li>
 		</conflictingTraits>	
 	</TraitDef>
 
@@ -310,6 +317,7 @@
 		  <li>Ranger</li>
 		  <li>Lich</li>
 		  <li>TM_Bard</li>
+		  <li>Faceless</li>
 		</conflictingTraits>	
 	</TraitDef> 	
 	
@@ -350,6 +358,7 @@
 		  <li>Ranger</li>
 		  <li>Lich</li>
 		  <li>TM_Bard</li>
+		  <li>Faceless</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -417,6 +426,7 @@
 		  <li>Ranger</li>
 		  <li>Necromancer</li>
 		  <li>TM_Bard</li>
+		  <li>Faceless</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -467,6 +477,7 @@
 		  <li>Ranger</li>
 		  <li>Lich</li>
 		  <li>TM_Bard</li>
+		  <li>Faceless</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -583,6 +594,7 @@
 		  <li>Bladedancer</li>
 		  <li>Lich</li>
 		  <li>Ranger</li>
+		  <li>Faceless</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -620,6 +632,7 @@
 		  <li>Ranger</li>
 		  <li>Lich</li>
 		  <li>TM_Bard</li>
+		  <li>Faceless</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -664,6 +677,7 @@
 		  <li>Ranger</li>
 		  <li>Lich</li>
 		  <li>TM_Bard</li>
+		  <li>Faceless</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -766,6 +780,7 @@
 		  <li>Bladedancer</li>
 		  <li>Lich</li>
 		  <li>TM_Bard</li>
+		  <li>Faceless</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -851,6 +866,7 @@
 		  <li>Ranger</li>
 		  <li>Lich</li>
 		  <li>TM_Bard</li>
+		  <li>Faceless</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -928,6 +944,50 @@
 		  <li>Gladiator</li>
 		  <li>Druid</li>
 		  <li>TM_Sniper</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		  <li>Faceless</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>
+		<defName>Faceless</defName>
+		<commonality>0.001</commonality>
+		<degreeDatas>	
+		  <li>
+			<label>Faceless</label>
+			<description>NAME is a master of disguise and imitation; able to manipulate and capture the muscle and mental actions of another and release it as their own.</description>
+			<degree>4</degree>
+				<statOffsets>
+                    <MoveSpeed>.15</MoveSpeed>
+					<WorkSpeedGlobal>0.1</WorkSpeedGlobal>
+                    <ImmunityGainSpeed>.1</ImmunityGainSpeed>
+					<PsychicSensitivity>0.5</PsychicSensitivity>
+					<MentalBreakThreshold>0.1</MentalBreakThreshold>
+					<GlobalLearningFactor>0.20</GlobalLearningFactor>
+					<MeleeDodgeChance>4</MeleeDodgeChance>
+					<MiningSpeed>-0.1</MiningSpeed>
+					<PlantWorkSpeed>-.1</PlantWorkSpeed>
+					<ResearchSpeed>-.4</ResearchSpeed>
+                </statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>PhysicalProdigy</li>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>Arcanist</li>
+		  <li>StormBorn</li>
+		  <li>Summoner</li>
+		  <li>Gifted</li>
+	      <li>Paladin</li>
+		  <li>TM_Sniper</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Gladiator</li>
 		  <li>Necromancer</li>
 		  <li>Priest</li>
 		  <li>Ranger</li>

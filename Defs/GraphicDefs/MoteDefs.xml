@@ -346,5 +346,45 @@
     </mote>
   </ThingDef>
   
+  	<ThingDef ParentName="MoteBase">
+		<defName>Mote_1sText</defName>
+		<graphicData>
+			<texPath>Things/Mote/Transparent</texPath>
+		</graphicData>
+		<thingClass>MoteText</thingClass>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<altitudeLayer>MetaOverlays</altitudeLayer>
+		<mote>
+		  <fadeInTime>0</fadeInTime>
+		  <solidTime>1</solidTime>
+		  <fadeOutTime>0</fadeOutTime>
+		</mote>
+	</ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_DeceptionMask</defName>
+    <graphicData>
+      <texPath>Motes/DeceptionMote</texPath>
+    </graphicData>
+    <altitudeLayer>MetaOverlays</altitudeLayer>
+    <mote>
+      <fadeInTime>0</fadeInTime>
+      <solidTime>1</solidTime>
+      <fadeOutTime>0</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+    <ThingDef ParentName="MoteBase">
+    <defName>Mote_Possess</defName>
+    <graphicData>
+      <texPath>Motes/PossessMote</texPath>
+    </graphicData>
+    <altitudeLayer>MetaOverlays</altitudeLayer>
+    <mote>
+      <fadeInTime>0</fadeInTime>
+      <solidTime>1</solidTime>
+      <fadeOutTime>0</fadeOutTime>
+    </mote>
+  </ThingDef>
   
 </Defs>

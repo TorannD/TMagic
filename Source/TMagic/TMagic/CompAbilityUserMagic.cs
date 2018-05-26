@@ -145,6 +145,7 @@ namespace TorannMagic
         public float arcaneDmg = 1;
         public float arcaneRes = 1;
 
+        public TMAbilityDef mimicAbility = null;
         public List<Thing> summonedMinions = new List<Thing>();
         public List<Thing> summonedLights = new List<Thing>();
         private bool dismissMinionSpell = false;
@@ -197,10 +198,21 @@ namespace TorannMagic
         public override void PostDraw()
         {
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            if (settingsRef.AIFriendlyMarking && base.AbilityUser.IsColonist && this.IsMagicUser)
+            {
+                if (!this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                {
+                    DrawMageMark();
+                }
+            }
             if (settingsRef.AIMarking && !base.AbilityUser.IsColonist && this.IsMagicUser)
             {
-                DrawMageMark();                
+                if (!this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                {
+                    DrawMageMark();
+                }
             }
+            
             Enchantment.CompEnchant compEnchant = this.Pawn.GetComp<Enchantment.CompEnchant>();
             try
             {
@@ -857,6 +869,14 @@ namespace TorannMagic
             {
                 if(this.fertileLands.Count > 0)
                 {
+                    List<IntVec3> cellList = ModOptions.Constants.GetGrowthCells();
+                    if(cellList.Count != 0)
+                    {
+                        for (int i = 0; i < fertileLands.Count; i++)
+                        {
+                            ModOptions.Constants.RemoveGrowthCell(fertileLands[i]);
+                        }                       
+                    }
                     ModOptions.Constants.SetGrowthCells(fertileLands);
                     this.RemovePawnAbility(TorannMagicDefOf.TM_FertileLands);
                     this.AddPawnAbility(TorannMagicDefOf.TM_DismissFertileLands);
@@ -872,7 +892,7 @@ namespace TorannMagic
                 bool spawned = base.AbilityUser.Spawned;
                 if (spawned)
                 {
-                    bool isMagicUser = this.IsMagicUser;
+                    bool isMagicUser = this.IsMagicUser && !this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless);
                     if (isMagicUser) 
                     {
                         bool flag3 = !this.firstTick;
@@ -973,7 +993,7 @@ namespace TorannMagic
                     bool flag3 = base.AbilityUser.story != null;
                     if (flag3)
                     {
-                        bool flag4 = base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Paladin) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Druid) || (base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Lich)) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Priest) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Bard);
+                        bool flag4 = base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Paladin) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Druid) || (base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Lich)) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Priest) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Bard);
                         if (flag4)
                         {
                             result = true;
@@ -1125,16 +1145,19 @@ namespace TorannMagic
 
         public void LevelUp(bool hideNotification = false)
         {
-            this.MagicUserLevel++;
-            bool flag = !hideNotification;
-            if (flag)
+            if (!this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
-                if (Pawn.IsColonist)
+                this.MagicUserLevel++;
+                bool flag = !hideNotification;
+                if (flag)
                 {
-                    Messages.Message(Translator.Translate("TM_MagicLevelUp", new object[]
+                    if (Pawn.IsColonist)
                     {
+                        Messages.Message(Translator.Translate("TM_MagicLevelUp", new object[]
+                        {
                     this.parent.Label
-                    }), MessageTypeDefOf.PositiveEvent);
+                        }), MessageTypeDefOf.PositiveEvent);
+                    }
                 }
             }
         }
@@ -3230,6 +3253,10 @@ namespace TorannMagic
             {
                 adjustedManaCost = adjustedManaCost * this.mpCost;
             }
+            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            {
+                adjustedManaCost = 0;
+            }
             return adjustedManaCost;           
 
         }
@@ -3570,26 +3597,29 @@ namespace TorannMagic
         }
         public void ResolveMagicTab()
         {
-            InspectTabBase inspectTabsx = base.AbilityUser.GetInspectTabs().FirstOrDefault((InspectTabBase x) => x.labelKey == "TM_TabMagic");
-            IEnumerable<InspectTabBase> inspectTabs = base.AbilityUser.GetInspectTabs();
-            bool flag = inspectTabs != null && inspectTabs.Count<InspectTabBase>() > 0;
-            if (flag)
+            if (!this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
-                if (inspectTabsx == null)
+                InspectTabBase inspectTabsx = base.AbilityUser.GetInspectTabs().FirstOrDefault((InspectTabBase x) => x.labelKey == "TM_TabMagic");
+                IEnumerable<InspectTabBase> inspectTabs = base.AbilityUser.GetInspectTabs();
+                bool flag = inspectTabs != null && inspectTabs.Count<InspectTabBase>() > 0;
+                if (flag)
                 {
-                    try
+                    if (inspectTabsx == null)
                     {
-                        base.AbilityUser.def.inspectorTabsResolved.Add(InspectTabManager.GetSharedInstance(typeof(ITab_Pawn_Magic)));
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.Error(string.Concat(new object[]
+                        try
                         {
+                            base.AbilityUser.def.inspectorTabsResolved.Add(InspectTabManager.GetSharedInstance(typeof(ITab_Pawn_Magic)));
+                        }
+                        catch (Exception ex)
+                        {
+                            Log.Error(string.Concat(new object[]
+                            {
                             "Could not instantiate inspector tab of type ",
                             typeof(ITab_Pawn_Magic),
                             ": ",
                             ex
-                        }));
+                            }));
+                        }
                     }
                 }
             }
@@ -3743,9 +3773,9 @@ namespace TorannMagic
             MagicPowerSkill spirit = this.MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr");
             MagicPowerSkill clarity = this.MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
             MagicPowerSkill focus = this.MagicData.MagicPowerSkill_global_eff.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_eff_pwr");
-            _maxMP += (spirit.level * .02f);
+            _maxMP += (spirit.level * .04f);
             _mpRegenRate += (clarity.level * .05f);
-            _mpCost += (focus.level * -.03f);
+            _mpCost += (focus.level * -.025f);
             this.maxMP = 1f + _maxMP;
             this.mpRegenRate = 1f +  _mpRegenRate;
             this.coolDown = 1f + _coolDown;

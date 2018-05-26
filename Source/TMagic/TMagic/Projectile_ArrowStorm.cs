@@ -10,6 +10,8 @@ namespace TorannMagic
 	{
 
         private bool initialized = false;
+        private static int pwrVal;
+        private static int verVal;
         Pawn pawn;
 
         public void Initialize(Map map)
@@ -48,7 +50,13 @@ namespace TorannMagic
         {
             float weaponAccuracy = pawn.equipment.Primary.GetStatValue(StatDefOf.AccuracyMedium, true);
             MightPowerSkill ver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_ArrowStorm.FirstOrDefault((MightPowerSkill x) => x.label == "TM_ArrowStorm_ver");
-            weaponAccuracy = Mathf.Min(1f, weaponAccuracy + (.05f * ver.level));
+            verVal = ver.level;
+            if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            {
+                MightPowerSkill mver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                verVal = mver.level;
+            }
+            weaponAccuracy = Mathf.Min(1f, weaponAccuracy + (.05f * verVal));
             return weaponAccuracy;
         }
 
@@ -56,6 +64,12 @@ namespace TorannMagic
         {
             MightPowerSkill pwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_ArrowStorm.FirstOrDefault((MightPowerSkill x) => x.label == "TM_ArrowStorm_pwr");
             MightPowerSkill str = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
+            pwrVal = pwr.level;
+            if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            {
+                MightPowerSkill mpwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+                pwrVal = mpwr.level;
+            }
             ThingWithComps arg_3C_0;
             int value = 0;
             if (pawn == null)
@@ -78,11 +92,11 @@ namespace TorannMagic
             if (value > 1000)
             {
                 value -= 1000;
-                dmg = (projectileDef.projectile.damageAmountBase) + (int)((20 + (value / 120)) * (1 + (.1f * pwr.level) + (.05f * str.level)));
+                dmg = (projectileDef.projectile.damageAmountBase) + (int)((20 + (value / 120)) * (1 + (.1f * pwrVal) + (.05f * str.level)));
             }
             else
             {
-                dmg = Mathf.RoundToInt((projectileDef.projectile.damageAmountBase + (value / 50)) * (1 + (.1f * pwr.level) + (.05f * str.level)));
+                dmg = Mathf.RoundToInt((projectileDef.projectile.damageAmountBase + (value / 50)) * (1 + (.1f * pwrVal) + (.05f * str.level)));
             }
             return dmg;
         }

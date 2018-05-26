@@ -49,6 +49,13 @@ namespace TorannMagic
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             pwrVal = pwr.level;
             verVal = ver.level;
+            if (caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            {
+                MightPowerSkill mpwr = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+                MightPowerSkill mver = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                pwrVal = mpwr.level;
+                verVal = mver.level;
+            }
             this.arcaneDmg = caster.GetComp<CompAbilityUserMagic>().arcaneDmg;
             if (settingsRef.AIHardMode && !caster.IsColonist)
             {
@@ -71,6 +78,7 @@ namespace TorannMagic
                 else
                 {
                     Log.Message("No target found for poison or target not susceptable to poison.");
+                    this.age = this.duration + 1;
                     this.Destroy(DestroyMode.Vanish);
                 }
             }

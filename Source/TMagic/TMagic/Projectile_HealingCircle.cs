@@ -72,6 +72,13 @@ namespace TorannMagic
                 MagicPowerSkill ver = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_HealingCircle.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_HealingCircle_ver");
                 pwrVal = pwr.level;
                 verVal = ver.level;
+                if (caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                {
+                    MightPowerSkill mpwr = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+                    MightPowerSkill mver = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                    pwrVal = mpwr.level;
+                    verVal = mver.level;
+                }
                 this.arcaneDmg = comp.arcaneDmg;
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 if (!caster.IsColonist && settingsRef.AIHardMode)

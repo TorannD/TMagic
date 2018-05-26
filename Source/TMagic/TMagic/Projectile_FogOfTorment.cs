@@ -48,6 +48,13 @@ namespace TorannMagic
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             pwrVal = pwr.level;
             verVal = ver.level;
+            if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            {
+                MightPowerSkill mpwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+                MightPowerSkill mver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                pwrVal = mpwr.level;
+                verVal = mver.level;
+            }
             this.arcaneDmg = comp.arcaneDmg;
             if (settingsRef.AIHardMode && !pawn.IsColonist)
             {

@@ -17,6 +17,135 @@ namespace TorannMagic
         private Faction affiliation = null;
         private int ticksAffiliation = 0;
 
+        public List<MightPower> mightPowerF;
+        public List<MightPowerSkill> mightPowerSkill_Disguise;
+        public List<MightPowerSkill> mightPowerSkill_Mimic;
+        public List<MightPowerSkill> mightPowerSkill_Reversal;
+        public List<MightPowerSkill> mightPowerSkill_Transpose;
+        public List<MightPowerSkill> mightPowerSkill_Possess;
+
+        public List<MightPower> MightPowersF
+        {
+            get
+            {
+                bool flag = this.mightPowerF == null;
+                if (flag)
+                {
+                    this.mightPowerF = new List<MightPower>
+                    {
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Disguise
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Mimic
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Reversal
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Transpose,
+                            TorannMagicDefOf.TM_Transpose_I,
+                            TorannMagicDefOf.TM_Transpose_II,
+                            TorannMagicDefOf.TM_Transpose_III
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Possess
+                        }),
+                    };
+                }
+                return this.mightPowerF;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_Disguise
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_Disguise == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_Disguise = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_Disguise_pwr", "TM_Disguise_pwr_desc"), //duration of skill
+                        new MightPowerSkill("TM_Disguise_eff", "TM_Disguise_eff_desc"), 
+                        new MightPowerSkill("TM_Disguise_ver", "TM_Disguise_ver_desc") //chance to avoid detection at different ranges
+                    };
+                }
+                return this.mightPowerSkill_Disguise;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_Mimic
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_Mimic == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_Mimic = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_Mimic_pwr", "TM_Mimic_pwr_desc"), //applies skill powers to ability
+                        new MightPowerSkill("TM_Mimic_eff", "TM_Mimic_eff_desc"), //increases how long ability is available and reduces stamina cost to acquire
+                        new MightPowerSkill("TM_Mimic_ver", "TM_Mimic_ver_desc")
+                    };
+                }
+                return this.mightPowerSkill_Mimic;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_Reversal
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_Reversal == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_Reversal = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_Reversal_pwr", "TM_Reversal_pwr_desc"), //increases duration of skill
+                        new MightPowerSkill("TM_Reversal_eff", "TM_Reversal_eff_desc"),
+                        new MightPowerSkill("TM_Reversal_ver", "TM_Reversal_ver_desc") //regenerative reversal
+                    };
+                }
+                return this.mightPowerSkill_Reversal;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_Transpose
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_Transpose == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_Transpose = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_Transpose_eff", "TM_Transpose_eff_desc"),
+                        new MightPowerSkill("TM_Transpose_ver", "TM_Transpose_ver_desc") //usable on enemies, usable on friendly beyond los, usable on enemy blos
+                    };
+                }
+                return this.mightPowerSkill_Transpose;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_Possess
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_Possess == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_Possess = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_Possess_pwr", "TM_Possess_pwr_desc"), //duration of possession, 
+                        new MightPowerSkill("TM_Possess_eff", "TM_Possess_eff_desc"),
+                        new MightPowerSkill("TM_Possess_ver", "TM_Possess_ver_desc") //applies mental states or effects , fewer debuffs during possession
+                    };
+                }
+                return this.mightPowerSkill_Possess;
+            }
+        }
+
         public List<MightPower> mightPowerG;
         public List<MightPowerSkill> mightPowerSkill_Sprint;
         public List<MightPowerSkill> mightPowerSkill_Fortitude;
@@ -663,7 +792,7 @@ namespace TorannMagic
         {
             get
             {
-                return this.MightPowersG.Concat(this.MightPowersS.Concat(this.MightPowersB.Concat(this.mightPowerR)));
+                return this.MightPowersG.Concat(this.MightPowersS.Concat(this.MightPowersB.Concat(this.mightPowerR.Concat(this.MightPowersF))));
             }
         }
 
@@ -712,6 +841,12 @@ namespace TorannMagic
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_PoisonTrap, "mightPowerSkill_PoisonTrap", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_AnimalFriend, "mightPowerSkill_AnimalFriend", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_ArrowStorm, "mightPowerSkill_ArrowStorm", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPower>(ref this.mightPowerF, "mightPowerF", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_Disguise, "mightPowerSkill_Disguise", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_Mimic, "mightPowerSkill_Mimic", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_Reversal, "mightPowerSkill_Reversal", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_Transpose, "mightPowerSkill_Transpose", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_Possess, "mightPowerSkill_Possess", (LookMode)2, new object[0]);
         }
 
     }

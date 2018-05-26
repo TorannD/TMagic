@@ -74,7 +74,13 @@ namespace TorannMagic.ModOptions
             Rect rowRect9 = UIHelper.GetRowRect(rowRect8, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect9, "AIMarking".Translate(), ref Settings.Instance.AIMarking, false);
             num++;
-            Rect rowRect10 = UIHelper.GetRowRect(rowRect9, rowHeight, num);
+            Rect rowRect91 = UIHelper.GetRowRect(rowRect9, rowHeight, num);
+            Widgets.CheckboxLabeled(rowRect91, "AIFighterMarking".Translate(), ref Settings.Instance.AIFighterMarking, false);
+            num++;
+            Rect rowRect92 = UIHelper.GetRowRect(rowRect91, rowHeight, num);
+            Widgets.CheckboxLabeled(rowRect92, "AIFriendlyMarking".Translate(), ref Settings.Instance.AIFriendlyMarking, false);
+            num++;
+            Rect rowRect10 = UIHelper.GetRowRect(rowRect92, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect10, "showAbilitiesOnMultiSelect".Translate(), ref Settings.Instance.showIconsMultiSelect, false);
             num++;
             Rect rowRect20 = UIHelper.GetRowRect(rowRect10, rowHeight, num);
@@ -90,6 +96,8 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.AICasting = true;
                 Settings.Instance.AIHardMode = false;
                 Settings.Instance.AIMarking = true;
+                Settings.Instance.AIFighterMarking = false;
+                Settings.Instance.AIFriendlyMarking = false;
                 Settings.Instance.baseMageChance = 1f;
                 Settings.Instance.baseFighterChance = 1f;
                 Settings.Instance.advMageChance = 0.5f;

@@ -11,6 +11,9 @@ namespace TorannMagic
 {
     public class Verb_Purify : Verb_UseAbility
     {
+        private int verVal;
+        private int pwrVal;
+
         protected override bool TryCastShot()
         {
             Pawn caster = base.CasterPawn;
@@ -18,11 +21,19 @@ namespace TorannMagic
 
             MagicPowerSkill pwr = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Purify.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Purify_pwr");
             MagicPowerSkill ver = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Purify.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Purify_ver");
-
+            pwrVal = pwr.level;
+            verVal = ver.level;
+            if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            {
+                MightPowerSkill mpwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+                MightPowerSkill mver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                pwrVal = mpwr.level;
+                verVal = mver.level;
+            }
             bool flag = pawn != null && !pawn.Dead;
             if (flag)
             {
-                int num = Mathf.RoundToInt(1f + (.4f * ver.level));
+                int num = Mathf.RoundToInt(1f + (.4f * verVal));
                 using (IEnumerator<BodyPartRecord> enumerator = pawn.health.hediffSet.GetInjuredParts().GetEnumerator())
                 {
                     while (enumerator.MoveNext())
@@ -31,7 +42,7 @@ namespace TorannMagic
                         bool flag2 = num > 0;
                         if (flag2)
                         {
-                            int num2 = 1 + ver.level;
+                            int num2 = 1 + verVal;
                             IEnumerable<Hediff_Injury> arg_BB_0 = pawn.health.hediffSet.GetHediffs<Hediff_Injury>();
                             Func<Hediff_Injury, bool> arg_BB_1;
 
@@ -47,17 +58,17 @@ namespace TorannMagic
                                     {
                                         if (rec.def.tags.Contains("ConsciousnessSource"))
                                         {
-                                            if (pwr.level >= 1)
+                                            if (pwrVal >= 1)
                                             {
-                                                current.Heal(pwr.level);
+                                                current.Heal(pwrVal);
                                                 num--;
                                                 num2--;
                                             }
                                         }
                                         else
                                         {
-                                            current.Heal(2f + pwr.level * 2);
-                                            //current.Heal(5.0f + (float)pwr.level * 3f); // power affects how much to heal
+                                            current.Heal(2f + pwrVal * 2);
+                                            //current.Heal(5.0f + (float)pwrVal * 3f); // power affects how much to heal
                                             num--;
                                             num2--;
                                         }
@@ -80,26 +91,26 @@ namespace TorannMagic
                         {
                             if (rec.def.defName == "Cataract" || rec.def.defName == "HearingLoss" || rec.def.defName.Contains("ToxicBuildup"))
                             {
-                                rec.Heal(.4f + .3f * pwr.level);
+                                rec.Heal(.4f + .3f * pwrVal);
                                 num--;
                             }
-                            if ((rec.def.defName == "Blindness" || rec.def.defName.Contains("Asthma") || rec.def.defName == "Cirrhosis" || rec.def.defName == "ChemicalDamageModerate") && ver.level >= 1)
+                            if ((rec.def.defName == "Blindness" || rec.def.defName.Contains("Asthma") || rec.def.defName == "Cirrhosis" || rec.def.defName == "ChemicalDamageModerate") && verVal >= 1)
                             {
-                                rec.Heal(.3f + .2f * pwr.level);
+                                rec.Heal(.3f + .2f * pwrVal);
                                 if(rec.def.defName.Contains("Asthma"))
                                 {
                                     pawn.health.RemoveHediff(rec);
                                 }
                                 num--;
                             }
-                            if ((rec.def.defName == "Frail" || rec.def.defName == "BadBack" || rec.def.defName.Contains("Carcinoma") || rec.def.defName == "ChemicalDamageSevere") && ver.level >= 2)
+                            if ((rec.def.defName == "Frail" || rec.def.defName == "BadBack" || rec.def.defName.Contains("Carcinoma") || rec.def.defName == "ChemicalDamageSevere") && verVal >= 2)
                             {
-                                rec.Heal(.2f + .15f * pwr.level);
+                                rec.Heal(.2f + .15f * pwrVal);
                                 num--;
                             }
-                            if ((rec.def.defName.Contains("Alzheimers") || rec.def.defName == "Dementia" || rec.def.defName.Contains("HeartArteryBlockage") || rec.def.defName == "PsychicShock" || rec.def.defName == "CatatonicBreakdown") && ver.level >= 3)
+                            if ((rec.def.defName.Contains("Alzheimers") || rec.def.defName == "Dementia" || rec.def.defName.Contains("HeartArteryBlockage") || rec.def.defName == "PsychicShock" || rec.def.defName == "CatatonicBreakdown") && verVal >= 3)
                             {
-                                rec.Heal(.1f + .1f * pwr.level);
+                                rec.Heal(.1f + .1f * pwrVal);
                                 num--;
                             }
                             TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .6f);
@@ -117,22 +128,22 @@ namespace TorannMagic
                         {
                             if (rec.Chemical.defName == "Alcohol" || rec.Chemical.defName == "Smokeleaf")
                             {
-                                rec.Severity -= (.2f + .2f * pwr.level);
+                                rec.Severity -= (.3f + .3f * pwrVal);
                                 num--;
                             }
-                            if ((rec.Chemical.defName == "GoJuice" || rec.Chemical.defName == "WakeUp") && ver.level >= 1)
+                            if ((rec.Chemical.defName == "GoJuice" || rec.Chemical.defName == "WakeUp") && verVal >= 1)
                             {
-                                rec.Severity -= (.15f + .15f * pwr.level);
+                                rec.Severity -= (.25f + .25f * pwrVal);
                                 num--;
                             }
-                            if (rec.Chemical.defName == "Psychite" && ver.level >= 2)
+                            if (rec.Chemical.defName == "Psychite" && verVal >= 2)
                             {
-                                rec.Severity -= (.1f + .1f * pwr.level);
+                                rec.Severity -= (.25f + .25f * pwrVal);
                                 num--;
                             }
-                            if (ver.level >= 3)
+                            if (verVal >= 3)
                             {
-                                rec.Severity -= (.05f + .05f * pwr.level);
+                                rec.Severity -= (.15f + .15f * pwrVal);
                                 num--;
                             }
                             TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .6f);

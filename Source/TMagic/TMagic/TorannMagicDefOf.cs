@@ -325,6 +325,7 @@ namespace TorannMagic
         public static ThingDef BookOfSniper;
         public static ThingDef BookOfBladedancer;
         public static ThingDef BookOfRanger;
+        public static ThingDef BookOfFaceless;
         public static TraitDef PhysicalProdigy;
 
         //Might (Gladiator)
@@ -389,6 +390,30 @@ namespace TorannMagic
         public static TrainableDef Rescue;
         public static ThoughtDef RangerSoldBondedPet;
         public static ThoughtDef RangerPetDied;
+
+        //Faceless
+        public static TraitDef Faceless;
+
+        public static TMAbilityDef TM_Disguise;
+        public static HediffDef TM_DisguiseHD;
+        public static HediffDef TM_DisguiseHD_I;
+        public static HediffDef TM_DisguiseHD_II;
+        public static HediffDef TM_DisguiseHD_III;
+        public static TMAbilityDef TM_Mimic;
+        public static TMAbilityDef TM_Reversal;
+        public static TMAbilityDef TM_Transpose;
+        public static TMAbilityDef TM_Transpose_I;
+        public static TMAbilityDef TM_Transpose_II;
+        public static TMAbilityDef TM_Transpose_III;
+        public static TMAbilityDef TM_Possess;
+        public static HediffDef TM_PossessionHD;
+        public static HediffDef TM_PossessionHD_I;
+        public static HediffDef TM_PossessionHD_II;
+        public static HediffDef TM_PossessionHD_III;
+        public static HediffDef TM_CoOpPossessionHD;
+        public static HediffDef TM_CoOpPossessionHD_I;
+        public static HediffDef TM_CoOpPossessionHD_II;
+        public static HediffDef TM_CoOpPossessionHD_III;
 
         //Standalone
         public static TMAbilityDef TM_Heater;
@@ -460,6 +485,10 @@ namespace TorannMagic
         public static ThingDef Mote_Twinkle;
         public static ThingDef Mote_Flame;
         public static ThingDef Mote_Casting;
+        public static ThingDef Mote_1sText;
+        public static ThingDef Mote_DeceptionMask;
+        public static ThingDef Mote_Possess;
+        public static ThingDef Mote_SparkFlash;
 
         //Jobs
         public static JobDef TMCastAbilityVerb;

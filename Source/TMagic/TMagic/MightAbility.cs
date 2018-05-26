@@ -253,7 +253,7 @@ namespace TorannMagic
                 {
                     if (!wornApparel[i].AllowVerbCast(base.Pawn.Position, base.Pawn.Map, base.abilityUser.Pawn.TargetCurrentlyAimingAt) && 
                         (this.mightDef.defName == "TM_Headshot" || this.mightDef.defName == "TM_DisablingShot" || this.mightDef.defName == "TM_DisablingShot_I" || this.mightDef.defName == "TM_DisablingShot_II" || this.mightDef.defName == "TM_DisablingShot_III" || this.mightDef.defName == "TM_AntiArmor" || 
-                        this.mightDef.defName == "TM_ArrowStorm" || this.mightDef.defName == "TM_ArrowStorm_I" || this.mightDef.defName == "TM_ArrowStorm_II"|| this.mightDef.defName == "TM_ArrowStorm_III"))
+                        this.mightDef.defName == "TM_ArrowStorm" || this.mightDef.defName == "TM_ArrowStorm_I" || this.mightDef.defName == "TM_ArrowStorm_II" || this.mightDef.defName == "TM_ArrowStorm_III" || this.mightDef.defName == "TM_Mimic"))
                     {
                         reason = "TM_ShieldBlockingPowers".Translate(new object[]
                         {

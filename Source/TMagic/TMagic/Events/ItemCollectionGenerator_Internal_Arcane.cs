@@ -185,6 +185,12 @@ namespace TorannMagic
                         outThings.Add(thing);
                         collectiveMarketValue += thing.MarketValue;
                     }
+                    else if (Rand.Chance(ArcaneScriptChance))
+                    {
+                        Thing thing = ThingMaker.MakeThing(TorannMagicDefOf.BookOfFaceless, null);
+                        outThings.Add(thing);
+                        collectiveMarketValue += thing.MarketValue;
+                    }
 
                 }
                 //Mana Potions

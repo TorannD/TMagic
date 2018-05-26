@@ -24,6 +24,8 @@ namespace TorannMagic
 
         public int ticksUntilBaseSet = 500;
 
+        public float lastGainPct = 0f;
+
         private int lastGainTick;
 
         public StaminaPoolCategory CurCategory
@@ -152,6 +154,7 @@ namespace TorannMagic
                 amount *= ((0.015f) + (0.0015f * staminaRefresh.level));
                 amount = Mathf.Min(amount, this.MaxLevel - this.CurLevel);
                 this.curLevelInt += amount;
+                this.lastGainPct = amount;
                 this.lastGainTick = Find.TickManager.TicksGame;
             }
             AdjustThresh();

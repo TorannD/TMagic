@@ -51,6 +51,7 @@ namespace TorannMagic
             Scribe_Values.Look<int>(ref this.areaRadius, "areaRadius", 1, false);
             Scribe_Values.Look<float>(ref this.eventFrequencyMultiplier, "eventFrequencyMultiplier", 1f, false);
             Scribe_Values.Look<bool>(ref this.notifier, "notifier", false, false);
+            Scribe_Values.Look<bool>(ref this.initialized, "initialized", false, false);
         }
         
         public float ArcaneEnergyCur
@@ -75,7 +76,6 @@ namespace TorannMagic
         {
             if(!initialized)
             {
-                
                 DetermineElementalType();
                 BeginAssaultCondition();
                 SpawnCycle();

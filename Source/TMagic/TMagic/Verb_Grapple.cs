@@ -97,7 +97,7 @@ namespace TorannMagic
                 Pawn victim = summonableThing as Pawn;
                 if (victim != null)
                 {
-                    if (!victim.IsColonist && !victim.IsPrisoner && !victim.Faction.HostileTo(this.CasterPawn.Faction) && victim.Faction != null)
+                    if (!victim.IsColonist && !victim.IsPrisoner && !victim.Faction.HostileTo(this.CasterPawn.Faction) && victim.Faction != null && victim.RaceProps.Humanlike)
                     {
                         Faction faction = victim.Faction;
                         faction.SetHostileTo(this.CasterPawn.Faction, true);

@@ -11,6 +11,8 @@ namespace TorannMagic.ModOptions
         public bool AICasting = Settings.Instance.AICasting;
         public bool AIHardMode = Settings.Instance.AIHardMode;
         public bool AIMarking = Settings.Instance.AIMarking;
+        public bool AIFighterMarking = Settings.Instance.AIFighterMarking;
+        public bool AIFriendlyMarking = Settings.Instance.AIFriendlyMarking;
         public float baseMageChance = Settings.Instance.baseMageChance;
         public float baseFighterChance = Settings.Instance.baseFighterChance;
         public float advMageChance = Settings.Instance.advMageChance;

@@ -425,5 +425,108 @@
 		</appliedHediffs>
 	</AbilityUserAI.AbilityAIDef>
 	
+	<!-- faceless -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="FacelessMightAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMight</compAbilityUserClass>
+		<!-- Decision tree which helps pick ability to use. -->
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>0.9</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>Reversal</li>										
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingRangedWeapon">
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+									<maxDistance>50.0</maxDistance>
+									<subNodes>
+										<!-- Use most dangerous ability first -->
+										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+											<tags>
+												<li>Possess</li>
+											</tags>
+										</li>
+									</subNodes>
+								</li>
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+									<maxDistance>36.0</maxDistance>
+									<minDistance>10.0</minDistance>
+									<subNodes>
+										<!-- Use most dangerous ability first -->
+										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+											<tags>
+												<li>Transpose</li>
+											</tags>
+										</li>
+									</subNodes>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- Faceless -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="FacelessMightAbilityUserAI">
+		<defName>TMagic_Faceless</defName>
+		<matchingTraits>
+			<li>Faceless</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_Transpose</li>
+			<li>TMagic_Reversal</li>
+			<li>TMagic_Possess</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Faceless Abilities -->
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
+		<defName>TMagic_Transpose</defName>
+		<ability>TM_Transpose</ability>		
+		<power>2.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<minRange>10.0</minRange>
+		<maxRange>36.0</maxRange>
+		<tags>
+			<li>Transpose</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
+		<defName>TMagic_Reversal</defName>
+		<ability>TM_Reversal</ability>
+		<power>5.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<tags>
+			<li>Reversal</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
+		<defName>TMagic_Possess</defName>
+		<ability>TM_Possess</ability>
+		<power>4</power>
+		<maxRange>50.0</maxRange>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Possess</li>
+		</tags>
+		<appliedHediffs>
+			<li>TM_PossessionHD</li>
+		</appliedHediffs>
+	</AbilityUserAI.AbilityAIDef>
+	
 	
 </Defs>

@@ -13,6 +13,9 @@ namespace TorannMagic
 
         bool flag10;
 
+        private static int verVal;
+        private static int pwrVal;
+
         protected Vector3 origin;
         protected Vector3 destination;
         protected int ticksToImpact;
@@ -83,12 +86,21 @@ namespace TorannMagic
             MightPowerSkill pwr = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_pwr");
             MightPowerSkill ver = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_ver");
             MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
+            verVal = ver.level;
+            pwrVal = pwr.level;
+            if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            {
+                MightPowerSkill mver = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                MightPowerSkill mpwr = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+                verVal = mver.level;
+                pwrVal = mpwr.level;
+            }
             int dmgNum = 0;
             ThingWithComps weaponComp = pawn.equipment.Primary;
             float weaponDPS = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_AverageDPS, false) * .7f;
             float dmgMultiplier = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_DamageMultiplier, false);
             float pawnDPS = pawn.GetStatValue(StatDefOf.MeleeDPS, false);
-            float skillMultiplier = (.7f + (.07f * pwr.level) + (.025f * str.level));
+            float skillMultiplier = (.7f + (.07f * pwrVal) + (.025f * str.level));
             return dmgNum = Mathf.RoundToInt(skillMultiplier * dmgMultiplier * (pawnDPS + weaponDPS));
         }
 
@@ -126,7 +138,7 @@ namespace TorannMagic
                         damageEntities(victim, null, dmgNum, DamageDefOf.Cut);
                     }
                     MoteMaker.ThrowTornadoDustPuff(strikeVec, map, .6f, Color.white);
-                    for (int j = 0; j < 2+(2*ver.level); j++)
+                    for (int j = 0; j < 2+(2*verVal); j++)
                     {
                         IntVec3 searchCell = strikeVec.ToIntVec3() + GenAdj.AdjacentCells8WayRandomized()[j];
                         MoteMaker.ThrowTornadoDustPuff(searchCell.ToVector3(), map, .1f, Color.gray);

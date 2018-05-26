@@ -30,7 +30,7 @@ namespace TorannMagic.Conditions
         public override void ExposeData()
         {
             base.ExposeData();
-            //Scribe_Deep.Look<Thing>(ref this.thing, "thing", new object[0]);
+            Scribe_References.Look<Thing>(ref this.thing, "thing", false);
             Scribe_Values.Look<bool>(ref this.initialized, "initialized", true, false);
             Scribe_Values.Look<IntVec2>(ref this.centerLocation, "centerLocation", default(IntVec2), false);
             Scribe_Values.Look<bool>(ref this.disabled, "disabled", false, false);

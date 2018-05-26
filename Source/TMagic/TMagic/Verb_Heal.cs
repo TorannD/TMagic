@@ -10,7 +10,8 @@ namespace TorannMagic
 {
     class Verb_Heal : Verb_UseAbility
     {
-
+        private int verVal;
+        private int pwrVal;
         bool validTarg;
         //Used for non-unique abilities that can be used with shieldbelt
         public override bool CanHitTargetFrom(IntVec3 root, LocalTargetInfo targ)
@@ -51,12 +52,21 @@ namespace TorannMagic
                 pwr = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AdvancedHeal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AdvancedHeal_pwr");
                 ver = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AdvancedHeal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AdvancedHeal_ver");
             }
-            
+            pwrVal = pwr.level;
+            verVal = ver.level;
+            if (caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            {
+                MightPowerSkill mpwr = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+                MightPowerSkill mver = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                pwrVal = mpwr.level;
+                verVal = mver.level;
+            }
+
             Pawn pawn = (Pawn)this.currentTarget;
             bool flag = pawn != null && !pawn.Dead;
             if (flag)
             {
-                int num = 3 + ver.level;
+                int num = 3 + verVal;
                 using (IEnumerator<BodyPartRecord> enumerator = pawn.health.hediffSet.GetInjuredParts().GetEnumerator())
                 {
                     while (enumerator.MoveNext())
@@ -66,7 +76,7 @@ namespace TorannMagic
                         
                         if (flag2)
                         {
-                            int num2 = 1 + ver.level;
+                            int num2 = 1 + verVal;
                             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                             if (!this.CasterPawn.IsColonist && settingsRef.AIHardMode)
                             {
@@ -88,11 +98,11 @@ namespace TorannMagic
                                         //current.Heal((float)((int)current.Severity + 1));
                                         if (!this.CasterPawn.IsColonist)
                                         {
-                                            current.Heal(20.0f + (float)pwr.level * 3f); // power affects how much to heal
+                                            current.Heal(20.0f + (float)pwrVal * 3f); // power affects how much to heal
                                         }
                                         else
                                         {
-                                            current.Heal((5.0f + (float)pwr.level * 3f)*comp.arcaneDmg); // power affects how much to heal
+                                            current.Heal((5.0f + (float)pwrVal * 3f)*comp.arcaneDmg); // power affects how much to heal
                                         }
                                         TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .6f);
                                         TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .4f);

@@ -39,6 +39,12 @@ namespace TorannMagic
                     user.story.traits.GainTrait(new Trait(TraitDef.Named("Ranger"), 0, false));
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
+                else if (parent.def.defName == "BookOfFaceless")
+                {
+                    FixTrait(user, user.story.traits.allTraits);
+                    user.story.traits.GainTrait(new Trait(TraitDef.Named("Faceless"), 0, false));
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
                 else
                 {
                     Messages.Message("NotCombatBook".Translate(), MessageTypeDefOf.RejectInput);

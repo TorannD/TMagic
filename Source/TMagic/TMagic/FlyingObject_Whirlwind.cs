@@ -14,6 +14,9 @@ namespace TorannMagic
         private static readonly Color cleaveColor = new Color(160f, 160f, 160f);
         private static readonly Material cleavingMat = MaterialPool.MatFrom("Spells/cleave", ShaderDatabase.Transparent, FlyingObject_Whirlwind.cleaveColor);
 
+        private static int verVal;
+        private static int pwrVal;
+
         protected Vector3 origin;
 
         protected Vector3 destination;
@@ -266,10 +269,16 @@ namespace TorannMagic
                                 MoteMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), base.Map);
                                 CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
                                 MightPowerSkill ver = comp.MightData.MightPowerSkill_Whirlwind.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Whirlwind_ver");
+                                verVal = ver.level;
+                                if(pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                                {
+                                    MightPowerSkill mver = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                                    verVal = mver.level;
+                                }
                                 DamageInfo dinfo2 = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Whirlwind, weaponDmg, (float)-1, pawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
                                 System.Random random = new System.Random();
                                 int rnd = GenMath.RoundRandom(random.Next(0, 100));
-                                if (rnd < (ver.level * 5))
+                                if (rnd < (verVal * 5))
                                 {
                                     cleaveVictim.TakeDamage(dinfo2);
                                     MoteMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), base.Map);
@@ -292,6 +301,12 @@ namespace TorannMagic
             float pawnDPS = 0;
             float skillMultiplier = 1;
             ThingWithComps weaponComp;
+            pwrVal = pwr.level;
+            if (caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            {
+                MightPowerSkill mpwr = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+                verVal = mpwr.level;
+            }
 
             if (caster.equipment.Primary != null && !caster.equipment.Primary.def.IsRangedWeapon)
             {
@@ -299,7 +314,7 @@ namespace TorannMagic
                 weaponDPS = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_AverageDPS, false) * .7f;
                 dmgMultiplier = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_DamageMultiplier, false);
                 pawnDPS = caster.GetStatValue(StatDefOf.MeleeDPS, false);
-                skillMultiplier = (.75f + (.025f * str.level));
+                skillMultiplier = (.75f + (.025f * str.level) + (.075f * pwrVal));
                 dmgNum = Mathf.RoundToInt(skillMultiplier * dmgMultiplier * (pawnDPS + weaponDPS));
 
             }
@@ -417,6 +432,7 @@ namespace TorannMagic
             if(p.IsColonist)
             {
                 p.drafter.Drafted = true;
+                CameraJumper.TryJumpAndSelect(p);
             }
             this.Destroy(DestroyMode.Vanish);
         }

@@ -15,6 +15,9 @@ namespace TorannMagic
         public float destroyParentPartPctTo = 0.50f;
         Pawn pawn;
 
+        private static int pwrVal;
+        private int verVal;
+
         protected override void Impact(Thing hitThing)
         {
             Map map = base.Map;
@@ -25,7 +28,12 @@ namespace TorannMagic
             Pawn victim = hitThing as Pawn;
             CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
             MightPowerSkill ver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Headshot.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Headshot_ver");
-
+            verVal = ver.level;
+            if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            {
+                MightPowerSkill mver = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                verVal = mver.level;
+            }
             CellRect cellRect = CellRect.CenteredOn(base.Position, 1);
             cellRect.ClipInsideMap(map);
 
@@ -37,7 +45,7 @@ namespace TorannMagic
 
                 if (victim.Dead)
                 {
-                    comp.Stamina.CurLevel += (.1f * ver.level);
+                    comp.Stamina.CurLevel += (.1f * verVal);
                 }
             }
         }
@@ -47,6 +55,12 @@ namespace TorannMagic
             CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
             MightPowerSkill pwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Headshot.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Headshot_pwr");            
             MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
+            pwrVal = pwr.level;
+            if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            {
+                MightPowerSkill mpwr = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+                pwrVal = mpwr.level;
+            }
             ThingWithComps arg_3C_0;
             int value = 0;
             if (pawn == null)
@@ -69,11 +83,11 @@ namespace TorannMagic
             if (value > 1000)
             {
                 value -= 1000;
-                dmg = (projectileDef.projectile.damageAmountBase) + (int)((20 + (value / 120)) * (1 + (.1f * pwr.level) + (.05f * str.level)));
+                dmg = (projectileDef.projectile.damageAmountBase) + (int)((20 + (value / 120)) * (1 + (.1f * pwrVal) + (.05f * str.level)));
             }
             else
             {
-                dmg = (projectileDef.projectile.damageAmountBase) + (int)((value / 50) * (1 + (.1f * pwr.level) + (.05f * str.level)));
+                dmg = (projectileDef.projectile.damageAmountBase) + (int)((value / 50) * (1 + (.1f * pwrVal) + (.05f * str.level)));
             }
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             if (!pawn.IsColonist && settingsRef.AIHardMode)

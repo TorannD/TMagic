@@ -520,9 +520,27 @@ namespace TorannMagic
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_Regenerate" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_SpellMending" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_CauterizeWound" ||
+                    __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_Transpose" ||
+                    __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_Disguise" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_AdvancedHeal")
                 {
                     //Ignores line of sight
+                    if(__instance.CasterPawn.RaceProps.Humanlike)
+                    {
+                        Pawn pawn = __instance.CasterPawn;
+                        if(pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                        {
+                            CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
+                            MightPowerSkill ver = comp.MightData.MightPowerSkill_Transpose.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Transpose_ver");
+                            if(ver.level < 3)
+                            {
+                                __result = true;
+                                resultingLine = default(ShootLine);
+                                return true;
+                            }
+                        }
+                    }                   
+                    
                     resultingLine = new ShootLine(root, targ.Cell);
                     __result = true;
                     return false;
@@ -628,7 +646,7 @@ namespace TorannMagic
 
         public static bool TryGiveThoughts_PrefixPatch(ref Pawn victim)
         {
-            if (victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD, false))
+            if (victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD, false) || victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD) || victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_I) || victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_II) || victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_III))
             {
                 return false;
             }
@@ -637,7 +655,7 @@ namespace TorannMagic
 
         public static bool AppendThoughts_ForHumanlike_PrefixPatch(ref Pawn victim)
         {
-            if (victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD, false))
+            if (victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD, false) || victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD) || victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_I) || victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_II) || victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_III))
             {
                 return false;
             }
@@ -646,7 +664,7 @@ namespace TorannMagic
 
         public static bool AppendThoughts_Relations_PrefixPatch(ref Pawn victim)
         {
-            if (victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD, false))
+            if (victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD, false) || victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD) || victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_I) || victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_II) || victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_III))
             {
                 return false;
             }
@@ -658,7 +676,7 @@ namespace TorannMagic
         {
             public static bool Prefix(AbilityAIDef abilityDef, Pawn pawn, ref LocalTargetInfo __result)
             {
-                if (pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) || pawn.story.traits.HasTrait(TorannMagicDefOf.Priest) || pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich) || pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost))
+                if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) || pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) || pawn.story.traits.HasTrait(TorannMagicDefOf.Priest) || pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich) || pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost))
                 {
                     bool usedOnCaster = abilityDef.usedOnCaster;
                     if (usedOnCaster)
@@ -735,7 +753,7 @@ namespace TorannMagic
         {
             public static bool Prefix(AbilityAIDef abilityDef, Pawn pawn, LocalTargetInfo target, ref bool __result)
             {
-                if (pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) || pawn.story.traits.HasTrait(TorannMagicDefOf.Priest) || pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) || pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin) || pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner) || pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich) || pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost))
+                if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) || pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) || pawn.story.traits.HasTrait(TorannMagicDefOf.Priest) || pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) || pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin) || pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner) || pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich) || pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost))
                 {
                     ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                     if (!settingsRef.AICasting)
@@ -759,7 +777,7 @@ namespace TorannMagic
                         Building bldg2 = target.Thing as Building;
                         if (bldg2 != null)
                         {
-                            if (pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) || pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
+                            if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) || pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) || pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
                             {
                                 __result = false;
                                 return false;
@@ -933,7 +951,7 @@ namespace TorannMagic
                         if (pawnTraits[i].def == TorannMagicDefOf.PhysicalProdigy || pawnTraits[i].def == TorannMagicDefOf.Gifted ||
                             pawnTraits[i].def == TorannMagicDefOf.Arcanist || pawnTraits[i].def == TorannMagicDefOf.InnerFire || pawnTraits[i].def == TorannMagicDefOf.HeartOfFrost || pawnTraits[i].def == TorannMagicDefOf.StormBorn ||
                             pawnTraits[i].def == TorannMagicDefOf.Summoner || pawnTraits[i].def == TorannMagicDefOf.Druid || pawnTraits[i].def == TorannMagicDefOf.Paladin || pawnTraits[i].def == TorannMagicDefOf.Necromancer || pawnTraits[i].def == TorannMagicDefOf.Priest ||
-                            pawnTraits[i].def == TorannMagicDefOf.Gladiator || pawnTraits[i].def == TorannMagicDefOf.Ranger || pawnTraits[i].def == TorannMagicDefOf.TM_Sniper || pawnTraits[i].def == TorannMagicDefOf.Bladedancer)
+                            pawnTraits[i].def == TorannMagicDefOf.Gladiator || pawnTraits[i].def == TorannMagicDefOf.Ranger || pawnTraits[i].def == TorannMagicDefOf.TM_Sniper || pawnTraits[i].def == TorannMagicDefOf.Bladedancer || pawnTraits[i].def == TorannMagicDefOf.Faceless)
                         {
 
                             flag = true;
@@ -949,10 +967,10 @@ namespace TorannMagic
 
                 if (!flag)
                 {
-                    if (Rand.Chance(((settingsRef.baseFighterChance * 2) + (settingsRef.baseMageChance * 2) + (4 * settingsRef.advFighterChance) + (9 * settingsRef.advMageChance)) / (allTraits.Count - 15)))
+                    if (Rand.Chance(((settingsRef.baseFighterChance * 2) + (settingsRef.baseMageChance * 2) + (5 * settingsRef.advFighterChance) + (9 * settingsRef.advMageChance)) / (allTraits.Count - 15)))
                     {
                         pawnTraits.Remove(pawnTraits[pawnTraits.Count - 1]);
-                        float rnd = Rand.Range(0, 2 * (settingsRef.baseFighterChance + settingsRef.baseMageChance) + (4 * settingsRef.advFighterChance) + (9 * settingsRef.advMageChance));
+                        float rnd = Rand.Range(0, 2 * (settingsRef.baseFighterChance + settingsRef.baseMageChance) + (5 * settingsRef.advFighterChance) + (9 * settingsRef.advMageChance));
                         if (rnd < (2 * settingsRef.baseMageChance))
                         {
                             pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Gifted"), 2, false));
@@ -963,7 +981,7 @@ namespace TorannMagic
                         }
                         else if (rnd >= (2 * (settingsRef.baseFighterChance + settingsRef.baseMageChance)) && rnd < (2 * (settingsRef.baseFighterChance + settingsRef.baseMageChance) + (4 * settingsRef.advFighterChance)))
                         {
-                            int rndF = Rand.RangeInclusive(1, 4);
+                            int rndF = Rand.RangeInclusive(1, 5);
                             switch (rndF)
                             {
                                 case 1:
@@ -977,6 +995,9 @@ namespace TorannMagic
                                     break;
                                 case 4:
                                     pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Ranger"), 0, false));
+                                    break;
+                                case 5:
+                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Faceless"), 4, false));
                                     break;
                             }
                         }
@@ -1404,6 +1425,42 @@ namespace TorannMagic
                 }
                 __result = false;
                 return false;
+            }
+        }
+
+        [HarmonyPatch(typeof(AttackTargetFinder), "CanSee", null)]
+        public class AttackTargetFinder_CanSee_Patch
+        {
+            public static bool Prefix(Thing target, ref bool __result)
+            {
+                if (target is Pawn)
+                {
+                    Pawn targetPawn = target as Pawn;
+                    if (targetPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD, false) || targetPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_I, false) || targetPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_II, false) || targetPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_III, false))
+                    {
+                        __result = false;
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+
+        [HarmonyPatch(typeof(AttackTargetFinder), "CanReach", null)]
+        public class AttackTargetFinder_CanReach_Patch
+        {
+            public static bool Prefix(Thing target, ref bool __result)
+            {
+                if (target is Pawn)
+                {
+                    Pawn targetPawn = target as Pawn;
+                    if ( targetPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD, false) || targetPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_I, false) || targetPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_II, false) || targetPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_III, false))
+                    {
+                        __result = false;
+                        return false;
+                    }
+                }
+                return true;
             }
         }
 

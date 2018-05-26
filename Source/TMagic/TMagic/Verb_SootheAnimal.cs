@@ -11,6 +11,9 @@ namespace TorannMagic
     public class Verb_SootheAnimal : Verb_UseAbility
     {
 
+        private int verVal;
+        private int pwrVal;
+
         bool validTarg;
         public override bool CanHitTargetFrom(IntVec3 root, LocalTargetInfo targ)
         {
@@ -42,6 +45,15 @@ namespace TorannMagic
             int shotsPerBurst = this.ShotsPerBurst;
             MagicPowerSkill pwr = base.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SootheAnimal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SootheAnimal_pwr");
             MagicPowerSkill ver = base.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SootheAnimal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SootheAnimal_ver");
+            verVal = ver.level;
+            pwrVal = pwr.level;
+            if (base.CasterPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            {
+                MightPowerSkill mpwr = base.CasterPawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+                MightPowerSkill mver = base.CasterPawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                pwrVal = mpwr.level;
+                verVal = mver.level;
+            }
             bool flag2 = this.UseAbilityProps.AbilityTargetCategory != AbilityTargetCategory.TargetAoE && this.TargetsAoE.Count > 1;
             if (flag2)
             {
@@ -61,15 +73,15 @@ namespace TorannMagic
                             newPawn.mindState.mentalStateHandler.Reset();
                             newPawn.jobs.StopAll();
                             MoteMaker.ThrowMicroSparks(newPawn.Position.ToVector3().normalized, newPawn.Map);
-                            float sev = Rand.Range(pwr.level, 2 * pwr.level);
+                            float sev = Rand.Range(pwrVal, 2 * pwrVal);
                             HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_AntiManipulation, sev);
-                            sev = Rand.Range(pwr.level, 2 * pwr.level);
+                            sev = Rand.Range(pwrVal, 2 * pwrVal);
                             HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_AntiMovement, sev);
-                            sev = Rand.Range(pwr.level, 2 * pwr.level);
+                            sev = Rand.Range(pwrVal, 2 * pwrVal);
                             HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_AntiBreathing, sev);
-                            sev = Rand.Range(pwr.level, 2 * pwr.level);
+                            sev = Rand.Range(pwrVal, 2 * pwrVal);
                             HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_AntiSight, sev);
-                            if (pwr.level > 0)
+                            if (pwrVal > 0)
                             {
                                 TM_MoteMaker.ThrowSiphonMote(newPawn.Position.ToVector3(), newPawn.Map, 1f);
                             }
@@ -80,16 +92,16 @@ namespace TorannMagic
                         if (newPawn.kindDef.RaceProps.Animal)
                         {
                             newPawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.ManhunterPermanent, null, true, false, null);
-                            float sev = Rand.Range(pwr.level, 2 * pwr.level);
+                            float sev = Rand.Range(pwrVal, 2 * pwrVal);
                             HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_Manipulation, sev);
-                            sev = Rand.Range(pwr.level, 2 * pwr.level);
+                            sev = Rand.Range(pwrVal, 2 * pwrVal);
                             HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_Movement, sev);
-                            sev = Rand.Range(pwr.level, 2 * pwr.level);
+                            sev = Rand.Range(pwrVal, 2 * pwrVal);
                             HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_Breathing, sev);
-                            sev = Rand.Range(pwr.level, 2 * pwr.level);
+                            sev = Rand.Range(pwrVal, 2 * pwrVal);
                             HealthUtility.AdjustSeverity(newPawn, TorannMagicDefOf.TM_Sight, sev);
                             MoteMaker.ThrowMicroSparks(newPawn.Position.ToVector3().normalized, newPawn.Map);
-                            if (pwr.level > 0)
+                            if (pwrVal > 0)
                             {
                                 TM_MoteMaker.ThrowManaPuff(newPawn.Position.ToVector3(), newPawn.Map, 1f);
                             }

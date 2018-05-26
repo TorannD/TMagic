@@ -739,6 +739,33 @@ This arcane script is incomplete and the reader may not be able to learn some, o
   </ThingDef>
   
   <ThingDef ParentName="CombatFormBase">
+    <defName>BookOfFaceless</defName>
+    <label>Combat Form: Faceless</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a physically adept pawn how to adapt their form and fighting style to any situation.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>4000</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/faceless</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+  <ThingDef ParentName="CombatFormBase">
     <defName>BookOfSniper</defName>
     <label>Combat Style: Sniper</label>
     <thingClass>ThingWithComps</thingClass>

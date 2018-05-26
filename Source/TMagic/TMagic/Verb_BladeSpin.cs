@@ -69,6 +69,13 @@ namespace TorannMagic
                 MightPowerSkill pwr = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_pwr");
                 verVal = ver.level;
                 pwrVal = pwr.level;
+                if (base.CasterPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                {
+                    MightPowerSkill mver = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                    MightPowerSkill mpwr = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+                    verVal = mver.level;
+                    pwrVal = mpwr.level;
+                }
                 CellRect cellRect = CellRect.CenteredOn(base.CasterPawn.Position, 1);
                 Map map = base.CasterPawn.Map;
                 cellRect.ClipInsideMap(map);
