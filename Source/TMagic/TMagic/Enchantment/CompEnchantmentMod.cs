@@ -15,8 +15,9 @@ namespace TorannMagic.Enchantment
 
         private static void AddComp()
         {
+            //&& def.HasComp(typeof(CompQuality))
             IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
-                                               where (def.IsMeleeWeapon || def.IsRangedWeapon || def.IsApparel) && def.HasComp(typeof(CompQuality)) && !def.HasComp(typeof(CompEnchantedItem))
+                                               where (def.IsMeleeWeapon || def.IsRangedWeapon || def.IsApparel) && !def.HasComp(typeof(CompEnchantedItem))
                                                select def;
             Type typeFromHandle = typeof(ITab_Enchantment);
             InspectTabBase sharedInstance = InspectTabManager.GetSharedInstance(typeFromHandle);            

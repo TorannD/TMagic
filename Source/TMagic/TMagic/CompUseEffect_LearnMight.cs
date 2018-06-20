@@ -42,7 +42,7 @@ namespace TorannMagic
                 else if (parent.def.defName == "BookOfFaceless")
                 {
                     FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TraitDef.Named("Faceless"), 0, false));
+                    user.story.traits.GainTrait(new Trait(TraitDef.Named("Faceless"), 4, false));
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
                 else

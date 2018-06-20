@@ -53,7 +53,7 @@ namespace TorannMagic
                                 Pawn undeadPawn = corpse.InnerPawn;
                                 Pawn newUndeadPawn = new Pawn();
                                 
-                                if (undeadPawn.RaceProps.IsFlesh && undeadPawn.Dead)
+                                if (undeadPawn.RaceProps.IsFlesh && undeadPawn.Dead && undeadPawn.def.thingClass.FullName != "TorannMagic.TMPawnSummoned")
                                 {
                                     undeadPawn.SetFaction(pawn.Faction);
                                     ResurrectionUtility.Resurrect(undeadPawn);
@@ -124,6 +124,8 @@ namespace TorannMagic
                                             }
                                         }
                                         undeadPawn.playerSettings.medCare = MedicalCareCategory.NoMeds;
+                                        undeadPawn.def.tradeability = Tradeability.Never;
+                                        
                                         
                                     }
                                 }

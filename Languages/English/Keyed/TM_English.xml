@@ -82,6 +82,12 @@
 <TM_CannotPossessNow>It is not possible for {0} to possess {1} in its current state.</TM_CannotPossessNow>
 <TM_PossessedCaughtStealing>{0} is blaming you for trying to steal from {1}! \n\nThey have condemned your vile manipulation and thievery and are now hostile to your faction.</TM_PossessedCaughtStealing>
 <TM_LetterLabelPossessedCaughtStealing>Caught Stealing!</TM_LetterLabelPossessedCaughtStealing>
+<TM_CannotSoulBondUndead>{0} cannot create a soul bond with the undead.</TM_CannotSoulBondUndead>
+<TM_CannotSoulBondThing>Unable to create a soul bond with the target. {0} is only able to benefit from a soul bond with a living pawn possessing a familiar soul.</TM_CannotSoulBondThing>
+<TM_NothingToDominate>No valid target found for Dominate.</TM_NothingToDominate>
+<TM_CannotSoulBondUnwilling>Unable to create a soul bond with {1}. {0} can only form a soul bond with a willing pawn (same faction).</TM_CannotSoulBondUnwilling>
+<TM_CannotSoulBondAnother>{0} cannot form a soul bond with {1}. {1} already sustains this type of bond with another.</TM_CannotSoulBondAnother>
+<TM_PsychicSensitivity>Psychic sensitivity: {0}</TM_PsychicSensitivity>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
@@ -467,7 +473,7 @@ Level 0: may cause common inspirations
 Level 1: may cause resource frenzy inspirations
 Level 2: may cause learning and social inspirations
 Level 3: may cause heroic inspirations for magic or might classes.</TM_Inspire_ver_desc>
-<TM_Inspire_pwr_desc>Increases how likely often the bard will attempt to inspire fellow colonists.</TM_Inspire_pwr_desc>
+<TM_Inspire_pwr_desc>Increases how often the bard will attempt to inspire fellow colonists.</TM_Inspire_pwr_desc>
 <TM_Lullaby_eff_desc>Reduces mana cost of Lullaby by 8% per skill point.</TM_Lullaby_eff_desc>
 <TM_Lullaby_pwr_desc>Increases chance lullaby is effective by 10% per skill point.
 Level 0: 40%
@@ -494,6 +500,58 @@ Level 3: -20% consciousness</TM_Lullaby_ver_desc>
 <TM_BattleHymn_ver>Lingering Note</TM_BattleHymn_ver>
 <TM_BattleHymn_eff>Vocalist</TM_BattleHymn_eff>
 <TM_BattleHymn_pwr>Heroic Chorus</TM_BattleHymn_pwr>
+
+<TM_SoulBond_pwr_desc>Increases the benefit of Soul Bond to the demonkin.</TM_SoulBond_pwr_desc>
+<TM_SoulBond_eff_desc>Decreases the mana cost to use Shadow Step and Shadow Call by 10% per skill point.</TM_SoulBond_eff_desc>
+<TM_SoulBond_ver_desc>Decreases the burden of Soul Bond on the host.</TM_SoulBond_ver_desc>
+<TM_ShadowBolt_ver_desc>Increases the proximity damage and radius of Shadow Bolt.</TM_ShadowBolt_ver_desc>
+<TM_ShadowBolt_pwr_desc>Increases the direct damage of Shadow Bolt by 10% and size and damage of the shadow aftershock by 25% per skill level.</TM_ShadowBolt_pwr_desc>
+<TM_ShadowBolt_eff_desc>Decreases mana cost of Shadow Bolt by 8% per skill level.</TM_ShadowBolt_eff_desc>
+<TM_Dominate_ver_desc>Deepens Domination's shadow, increasing the duration of Dominate and the infection radius.
+Level 0: 15-30s, 3cell radius
+Level 1: 25-40s, 4cell radius
+Level 2: 35-50s, 5cell radius
+Level 3: 45-60s, 6cell radius</TM_Dominate_ver_desc>
+<TM_Dominate_pwr_desc>Increases the power of dominate and increases the frequency that it spreads. Succubi decrease physical and combat capabilities; Warlock increase the type and frequency of mental breaks as well as reducing consciousness levels.</TM_Dominate_pwr_desc>
+<TM_Dominate_eff_desc>Decreases the mana cost of Dominate by 6% and reduces the severity cost to propagate dominate to another host by 20%.</TM_Dominate_eff_desc>
+<TM_Attraction_eff_desc>Reduces mana cost of Attraction by 8% per skill point.</TM_Attraction_eff_desc>
+<TM_Attraction_pwr_desc>Increases the radius of Attraction by 1.5cells per skill level.</TM_Attraction_pwr_desc>
+<TM_Attraction_ver_desc>Increases the duration of the Attraction well by 3s and its slow duration by 25% per skill level.</TM_Attraction_ver_desc>
+<TM_Repulsion_eff_desc>Reduces mana cost of Repulsion by 8% per skill point.</TM_Repulsion_eff_desc>
+<TM_Repulsion_pwr_desc>Increases the force of Repulsion by 20% per skill level. The amount of force applied to a pawn is proportional to their distance to the center.</TM_Repulsion_pwr_desc>
+<TM_Repulsion_ver_desc>Applies damage based on the amount of force acting on the pawn. This damage is applied only to enemies.
+Level 0: 0%
+Level 1: 20%
+Level 2: 40%
+Level 3: 60%</TM_Repulsion_ver_desc>
+<TM_Scorn_eff_desc>Reduces mana cost of Scorn by 6% per skill point.</TM_Scorn_eff_desc>
+<TM_Scorn_ver_desc>Increases impact radius of Scorn by 1cell per skill point. Base 7 cell radius.</TM_Scorn_ver_desc>
+<TM_Scorn_pwr_desc>Increases the damage of Scorn by 15% per skill level.</TM_Scorn_pwr_desc>
+<TM_PsychicShock_eff_desc>Reduces mana cost of Psychic Shock by 6% per skill point.</TM_PsychicShock_eff_desc>
+<TM_PsychicShock_ver_desc>Increases the radius of Psychic Shock and any secondary pulses by 1cell. Base radius is 6.</TM_PsychicShock_ver_desc>
+<TM_PsychicShock_pwr_desc>Increases the damage of psychic assault by 1 point per skill level.</TM_PsychicShock_pwr_desc>
+
+<TM_SoulBond_pwr>Amplified Bond</TM_SoulBond_pwr>
+<TM_SoulBond_eff>Soul Link</TM_SoulBond_eff>
+<TM_SoulBond_ver>Soul Buffer</TM_SoulBond_ver>
+<TM_ShadowBolt_ver>Expanding Darkness</TM_ShadowBolt_ver>
+<TM_ShadowBolt_pwr>Ravenous Shadow</TM_ShadowBolt_pwr>
+<TM_ShadowBolt_eff>Heart of Darkness</TM_ShadowBolt_eff>
+<TM_Dominate_ver>Impending Doom</TM_Dominate_ver>
+<TM_Dominate_pwr>Pitch Black</TM_Dominate_pwr>
+<TM_Dominate_eff>Shadow Command</TM_Dominate_eff>
+<TM_Attraction_eff>Beckoning Shadow</TM_Attraction_eff>
+<TM_Attraction_pwr>Open the Abyss</TM_Attraction_pwr>
+<TM_Attraction_ver>Shadow Claws</TM_Attraction_ver>
+<TM_Repulsion_eff>Deft Mind</TM_Repulsion_eff>
+<TM_Repulsion_pwr>Willpower</TM_Repulsion_pwr>
+<TM_Repulsion_ver>Violent Dispersion</TM_Repulsion_ver>
+<TM_Scorn_ver>Spite</TM_Scorn_ver>
+<TM_Scorn_eff>Demon Blood</TM_Scorn_eff>
+<TM_Scorn_pwr>Fury</TM_Scorn_pwr>
+<TM_PsychicShock_ver>Insanity</TM_PsychicShock_ver>
+<TM_PsychicShock_eff>Mentalist</TM_PsychicShock_eff>
+<TM_PsychicShock_pwr>Dominant Will</TM_PsychicShock_pwr>
 
 <!-- Might Ability Point Descriptions -->
 

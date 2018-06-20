@@ -39,35 +39,27 @@ namespace TorannMagic.SihvRMagicScrollScribe
             }
             else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy))
             {
-                int rnd = Mathf.RoundToInt(Rand.Range(0, 5));
-                switch (rnd)
+                float rnd = Rand.Range(0, 5);
+                if(rnd < 1)
                 {
-                    case 1:
-                        {
-                            tempPod = ThingDef.Named("BookOfGladiator");
-                            break;
-                        }
-                    case 2:
-                        {
-                            tempPod = ThingDef.Named("BookOfSniper");
-                            break;
-                        }
-                    case 3:
-                        {
-                            tempPod = ThingDef.Named("BookOfBladedancer");
-                            break;
-                        }
-                    case 4:
-                        {
-                            tempPod = ThingDef.Named("BookOfRanger");
-                            break;
-                        }
-                    case 5:
-                        {
-                            tempPod = ThingDef.Named("BookOfFaceless");
-                            break;
-                        }
+                    tempPod = ThingDef.Named("BookOfGladiator");
                 }
+                else if (rnd < 2)
+                {
+                    tempPod = ThingDef.Named("BookOfSniper");
+                }
+                else if (rnd < 3)
+                {
+                    tempPod = ThingDef.Named("BookOfBladedancer");
+                }
+                else if (rnd < 4)
+                {
+                    tempPod = ThingDef.Named("BookOfRanger");
+                }
+                else
+                {
+                    tempPod = ThingDef.Named("BookOfFaceless");
+                }               
                 this.parent.Destroy(DestroyMode.Vanish);
                 }
             else

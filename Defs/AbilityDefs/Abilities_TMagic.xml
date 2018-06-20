@@ -1809,7 +1809,7 @@ Damage: 7</description>
 	  <flyOverhead>false</flyOverhead>
       <damageDef>Firebolt</damageDef>
       <damageAmountBase>16</damageAmountBase>
-      <speed>65</speed>
+      <speed>80</speed>
     </projectile>
   </ThingDef>
   

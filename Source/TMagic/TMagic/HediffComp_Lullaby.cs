@@ -48,7 +48,7 @@ namespace TorannMagic
                 }
             }
 
-            if (Find.TickManager.TicksGame % 20 == 0)
+            if (Find.TickManager.TicksGame % 20 == 0 && this.Pawn.Map != null)
             {
                 CellRect cellRect = CellRect.CenteredOn(this.Pawn.Position, 2);
                 cellRect.ClipInsideMap(this.Pawn.Map);
@@ -70,13 +70,17 @@ namespace TorannMagic
                         }
                     }
                 }
-                Hediff hediff = this.Pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_LullabyHD, false);
-                if (hediff.Severity <= 0.1)
-                {
-                    this.Pawn.health.RemoveHediff(hediff);                    
-                }
             }
         }
+
+        public override bool CompShouldRemove
+        {
+            get
+            {
+                return base.CompShouldRemove || this.parent.Severity < .1f;
+            }
+        }
+
 
     }
 }

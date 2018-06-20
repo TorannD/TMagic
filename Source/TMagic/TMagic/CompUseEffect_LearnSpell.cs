@@ -12,7 +12,7 @@ namespace TorannMagic
             CompAbilityUserMagic comp = user.GetComp<CompAbilityUserMagic>();
             MagicPower magicPower;
 
-            if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.TM_Bard) || user.story.traits.HasTrait(TorannMagicDefOf.Priest) || (user.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || user.story.traits.HasTrait(TorannMagicDefOf.Lich)) || user.story.traits.HasTrait(TorannMagicDefOf.Druid) || parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Summoner) || user.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || user.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || user.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || user.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || user.story.traits.HasTrait(TorannMagicDefOf.Paladin))))
+            if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Warlock) || user.story.traits.HasTrait(TorannMagicDefOf.Succubus) || user.story.traits.HasTrait(TorannMagicDefOf.TM_Bard) || user.story.traits.HasTrait(TorannMagicDefOf.Priest) || (user.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || user.story.traits.HasTrait(TorannMagicDefOf.Lich)) || user.story.traits.HasTrait(TorannMagicDefOf.Druid) || parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Summoner) || user.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || user.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || user.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || user.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || user.story.traits.HasTrait(TorannMagicDefOf.Paladin))))
             {
                 if (parent.def.defName == "SpellOf_Rain" && comp.spell_Rain == false)
                 {
@@ -211,6 +211,18 @@ namespace TorannMagic
                         Messages.Message("The summoner class for " + user.LabelShort + " has been reset to allow the use of Summon Poppi - please re-assign ability points.", MessageTypeDefOf.NeutralEvent);
                     }
                     comp.spell_SummonPoppi = true;
+                    comp.InitializeSpell();
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def.defName == "SpellOf_Scorn" && comp.spell_Scorn == false && user.story.traits.HasTrait(TorannMagicDefOf.Succubus))
+                {
+                    comp.spell_Scorn = true;
+                    comp.InitializeSpell();
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def.defName == "SpellOf_PsychicShock" && comp.spell_PsychicShock == false && user.story.traits.HasTrait(TorannMagicDefOf.Warlock))
+                {
+                    comp.spell_PsychicShock = true;
                     comp.InitializeSpell();
                     this.parent.Destroy(DestroyMode.Vanish);
                 }

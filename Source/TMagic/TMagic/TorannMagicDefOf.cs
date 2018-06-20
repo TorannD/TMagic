@@ -34,6 +34,8 @@ namespace TorannMagic
         public static ThingDef Torn_BookOfPriest;
         public static ThingDef BookOfBard;
         public static ThingDef Torn_BookOfBard;
+        public static ThingDef BookOfDemons;
+        public static ThingDef Torn_BookOfDemons;
         public static ThingDef BookOfQuestion;
 
 
@@ -70,6 +72,8 @@ namespace TorannMagic
         public static ThingDef SpellOf_CauterizeWound;
         public static ThingDef SpellOf_FertileLands;
         public static ThingDef SpellOf_SpellMending;
+        public static ThingDef SpellOf_PsychicShock;
+        public static ThingDef SpellOf_Scorn;
 
         public static ThingDef SkillOf_Sprint;
         public static ThingDef SkillOf_GearRepair;
@@ -207,7 +211,7 @@ namespace TorannMagic
         public static ThingDef TM_GreaterWind_ElementalR;
         public static ThingDef TM_MinionR;
         public static ThingDef TM_GreaterMinionR;
-        public static ThingDef TM_InvisMinionR;
+        //public static ThingDef TM_InvisMinionR;
         public static ThingDef TM_Poppi;
         public static FactionDef TM_ElementalFaction;
         public static FactionDef TM_SummonedFaction;
@@ -315,7 +319,41 @@ namespace TorannMagic
         public static TMAbilityDef TM_Lullaby_II;
         public static TMAbilityDef TM_Lullaby_III;
         public static HediffDef TM_LullabyHD;
-        public static TMAbilityDef TM_BattleHymn;        
+        public static TMAbilityDef TM_BattleHymn;
+
+        //Succubus/Warlock
+        public static TraitDef Succubus;
+        public static TraitDef Warlock;
+
+        public static TMAbilityDef TM_SoulBond;
+        public static TMAbilityDef TM_ShadowCall;
+        public static TMAbilityDef TM_ShadowStep;
+        public static TMAbilityDef TM_ShadowBolt;
+        public static TMAbilityDef TM_ShadowBolt_I;
+        public static TMAbilityDef TM_ShadowBolt_II;
+        public static TMAbilityDef TM_ShadowBolt_III;
+        public static ThingDef FlyingObject_ShadowBolt;
+        public static TMAbilityDef TM_Dominate;
+        public static HediffDef TM_SDDominateHD;
+        public static HediffDef TM_SDDominateHD_I;
+        public static HediffDef TM_SDDominateHD_II;
+        public static HediffDef TM_SDDominateHD_III;
+        public static HediffDef TM_WDDominateHD;
+        public static HediffDef TM_WDDominateHD_I;
+        public static HediffDef TM_WDDominateHD_II;
+        public static HediffDef TM_WDDominateHD_III;
+        public static TMAbilityDef TM_Attraction;
+        public static TMAbilityDef TM_Attraction_I;
+        public static TMAbilityDef TM_Attraction_II;
+        public static TMAbilityDef TM_Attraction_III;
+        public static HediffDef TM_GravitySlowHD;
+        public static TMAbilityDef TM_Repulsion;
+        public static TMAbilityDef TM_Repulsion_I;
+        public static TMAbilityDef TM_Repulsion_II;
+        public static TMAbilityDef TM_Repulsion_III;
+        public static TMAbilityDef TM_Scorn;
+        public static TMAbilityDef TM_PsychicShock;
+        public static TMAbilityDef TM_SummonDemon;
 
         //Might 
         public static NeedDef TM_Stamina;
@@ -489,6 +527,9 @@ namespace TorannMagic
         public static ThingDef Mote_DeceptionMask;
         public static ThingDef Mote_Possess;
         public static ThingDef Mote_SparkFlash;
+        public static ThingDef Mote_Shadow;
+        public static ThingDef Mote_ShadowCleave;
+        public static ThingDef Mote_ArcaneWaves;
 
         //Jobs
         public static JobDef TMCastAbilityVerb;
@@ -512,6 +553,7 @@ namespace TorannMagic
         public static SoundDef TM_Launch;
         public static SoundDef TM_SoftExplosion;
         public static SoundDef TM_BattleHymnSD;
+        
 
         //Inspirations
         public static InspirationDef ID_Champion;

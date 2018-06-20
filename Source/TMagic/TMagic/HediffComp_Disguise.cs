@@ -86,7 +86,6 @@ namespace TorannMagic
                 if (this.age <=0)
                 {
                     severityAdjustment--;
-                    Log.Message("" + this.parent.def.defName + " severity is " + this.parent.Severity);
                     this.age = 60;                    
                 }
                 this.age--;                

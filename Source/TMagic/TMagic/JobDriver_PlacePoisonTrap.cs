@@ -33,6 +33,7 @@ namespace TorannMagic
             {
                 initAction = () =>
                 {
+                    Log.Message("attempting to spawn poison trap");
                     SpawnThings tempPod = new SpawnThings();
                     tempPod.def = ThingDef.Named("TM_PoisonTrap");
                     int verVal = 0;
@@ -50,6 +51,7 @@ namespace TorannMagic
                         {
                             if(comp.combatItems[i].Destroyed)
                             {
+                                Log.Message("detected an empty trap in slot " + i + " out of " + comp.combatItems.Count + " with a versatility level of " + verVal);
                                 comp.combatItems.Remove(comp.combatItems[i]);
                                 i--;
                             }                            
@@ -65,6 +67,7 @@ namespace TorannMagic
                             comp.combatItems.Remove(tempThing);
                             if (tempThing != null && !tempThing.Destroyed)
                             {
+                                Log.Message("destroying last poison trap");
                                 tempThing.Destroy();
                             }
                         }
@@ -106,7 +109,12 @@ namespace TorannMagic
                     CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
                     GenSpawn.Spawn(thing, position, map, Rot4.North, false);
                     comp.combatItems.Add(thing);
+                    Log.Message("ending poison trap creation job");
                 }
+            }
+            else
+            {
+                Log.Message("Failed to spawn poison trap - spawnable not defined.");
             }
         }
     }

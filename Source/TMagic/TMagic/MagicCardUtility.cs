@@ -197,7 +197,30 @@ namespace TorannMagic
                             MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersB, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BardTraining, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Entertain, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Inspire, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Lullaby, null, null, TexButton.TMTex_SkillPointUsed);
                         }
                     }
-
+                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus))
+                    {
+                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                        if (pawn.GetComp<CompAbilityUserMagic>().spell_Scorn == true)
+                        {
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersSD, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SoulBond, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ShadowBolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Dominate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Attraction, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Scorn, null, TexButton.TMTex_SkillPointUsed);
+                        }
+                        else
+                        {
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersSD, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SoulBond, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ShadowBolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Dominate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Attraction, null, null, TexButton.TMTex_SkillPointUsed);
+                        }
+                    }
+                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Warlock))
+                    {
+                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                        if (pawn.GetComp<CompAbilityUserMagic>().spell_PsychicShock == true)
+                        {
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersWD, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SoulBond, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ShadowBolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Dominate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Repulsion, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_PsychicShock, null, TexButton.TMTex_SkillPointUsed);
+                        }
+                        else
+                        {
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersWD, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SoulBond, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ShadowBolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Dominate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Repulsion, null, null, TexButton.TMTex_SkillPointUsed);
+                        }
+                    }
                 }
             }
             GUI.EndGroup();
@@ -449,6 +472,9 @@ namespace TorannMagic
                         power.abilityDef == TorannMagicDefOf.TM_DeathBolt || power.abilityDef == TorannMagicDefOf.TM_DeathBolt_I || power.abilityDef == TorannMagicDefOf.TM_DeathBolt_II ||
                         power.abilityDef == TorannMagicDefOf.TM_HealingCircle || power.abilityDef == TorannMagicDefOf.TM_HealingCircle_I || power.abilityDef == TorannMagicDefOf.TM_HealingCircle_II ||
                         power.abilityDef == TorannMagicDefOf.TM_Lullaby || power.abilityDef == TorannMagicDefOf.TM_Lullaby_I || power.abilityDef == TorannMagicDefOf.TM_Lullaby_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_ShadowBolt || power.abilityDef == TorannMagicDefOf.TM_ShadowBolt_I || power.abilityDef == TorannMagicDefOf.TM_ShadowBolt_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_Attraction || power.abilityDef == TorannMagicDefOf.TM_Attraction_I || power.abilityDef == TorannMagicDefOf.TM_Attraction_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_Repulsion || power.abilityDef == TorannMagicDefOf.TM_Repulsion_I || power.abilityDef == TorannMagicDefOf.TM_Repulsion_II ||
                         power.abilityDef == TorannMagicDefOf.TM_BestowMight || power.abilityDef == TorannMagicDefOf.TM_BestowMight_I || power.abilityDef == TorannMagicDefOf.TM_BestowMight_II))
                     {
 
@@ -502,6 +528,9 @@ namespace TorannMagic
                         power.abilityDef.defName == "TM_DeathBolt" || power.abilityDef.defName == "TM_DeathBolt_I" || power.abilityDef.defName == "TM_DeathBolt_II" || power.abilityDef.defName == "TM_DeathBolt_III" ||
                         power.abilityDef.defName == "TM_HealingCircle" || power.abilityDef.defName == "TM_HealingCircle_I" || power.abilityDef.defName == "TM_HealingCircle_II" || power.abilityDef.defName == "TM_HealingCircle_III" ||
                         power.abilityDef.defName == "TM_Lullaby" || power.abilityDef.defName == "TM_Lullaby_I" || power.abilityDef.defName == "TM_Lullaby_II" || power.abilityDef.defName == "TM_Lullaby_III" ||
+                        power.abilityDef.defName == "TM_Attraction" || power.abilityDef.defName == "TM_Attraction_I" || power.abilityDef.defName == "TM_Attraction_II" || power.abilityDef.defName == "TM_Attraction_III" ||
+                        power.abilityDef.defName == "TM_Repulsion" || power.abilityDef.defName == "TM_Repulsion_I" || power.abilityDef.defName == "TM_Repulsion_II" || power.abilityDef.defName == "TM_Repulsion_III" ||
+                        power.abilityDef.defName == "TM_ShadowBolt" || power.abilityDef.defName == "TM_ShadowBolt_I" || power.abilityDef.defName == "TM_ShadowBolt_II" || power.abilityDef.defName == "TM_ShadowBolt_III" ||
                         power.abilityDef.defName == "TM_BestowMight" || power.abilityDef.defName == "TM_BestowMight_I" || power.abilityDef.defName == "TM_BestowMight_II" || power.abilityDef.defName == "TM_BestowMight_III")
                     {
                         flag999 = true;
@@ -575,6 +604,8 @@ namespace TorannMagic
                             (power.abilityDef.defName == "TM_LichForm" && MagicPowerSkill6 == null) ||
                             (power.abilityDef.defName == "TM_SummonPoppi" && MagicPowerSkill5 == null) ||
                             (power.abilityDef.defName == "TM_BattleHymn" && MagicPowerSkill5 == null) ||
+                            (power.abilityDef.defName == "TM_Scorn" && MagicPowerSkill5 == null) ||
+                            (power.abilityDef.defName == "TM_PsychicShock" && MagicPowerSkill5 == null) ||
                             (power.abilityDef.defName == "TM_Resurrection" && MagicPowerSkill5 == null))
                         {
                             Rect rectMasterLock = new Rect(rect.xMax - 23f - "TM_MasterSpellLocked".Translate().Length * 4, rect.yMin + MagicCardUtility.MagicButtonSize + 4f, "TM_MasterSpellLocked".Translate().Length * 8, MagicCardUtility.TextSize * 3);
@@ -982,6 +1013,48 @@ namespace TorannMagic
                             if (enumerator.Current.abilityDef.defName == "TM_BattleHymn")
                             {
                                 compMagic.LevelUpSkill_BattleHymn(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_SoulBond")
+                            {
+                                compMagic.LevelUpSkill_SoulBond(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_ShadowBolt" || enumerator.Current.abilityDef.defName == "TM_ShadowBolt_I" || enumerator.Current.abilityDef.defName == "TM_ShadowBolt_II" || enumerator.Current.abilityDef.defName == "TM_ShadowBolt_III")
+                            {
+                                compMagic.LevelUpSkill_ShadowBolt(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Dominate")
+                            {
+                                compMagic.LevelUpSkill_Dominate(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Attraction" || enumerator.Current.abilityDef.defName == "TM_Attraction_I" || enumerator.Current.abilityDef.defName == "TM_Attraction_II" || enumerator.Current.abilityDef.defName == "TM_Attraction_III")
+                            {
+                                compMagic.LevelUpSkill_Attraction(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Repulsion" || enumerator.Current.abilityDef.defName == "TM_Repulsion_I" || enumerator.Current.abilityDef.defName == "TM_Repulsion_II" || enumerator.Current.abilityDef.defName == "TM_Repulsion_III")
+                            {
+                                compMagic.LevelUpSkill_Repulsion(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Scorn")
+                            {
+                                compMagic.LevelUpSkill_Scorn(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_PsychicShock")
+                            {
+                                compMagic.LevelUpSkill_PsychicShock(skill.label);
                                 skill.level++;
                                 compMagic.MagicData.MagicAbilityPoints -= 1;
                             }

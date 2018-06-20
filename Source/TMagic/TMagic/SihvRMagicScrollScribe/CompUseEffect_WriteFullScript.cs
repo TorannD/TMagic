@@ -48,7 +48,7 @@ namespace TorannMagic.SihvRMagicScrollScribe
             }
             else if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || user.story.traits.HasTrait(TorannMagicDefOf.Lich)))
             {
-                tempPod = ThingDef.Named("BookOfUndead");
+                tempPod = ThingDef.Named("BookOfNecromancer");
                 this.parent.Destroy(DestroyMode.Vanish);
             }
             else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.Priest))
@@ -59,6 +59,11 @@ namespace TorannMagic.SihvRMagicScrollScribe
             else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
             {
                 tempPod = ThingDef.Named("BookOfBard");
+                this.parent.Destroy(DestroyMode.Vanish);
+            }
+            else if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Succubus) || user.story.traits.HasTrait(TorannMagicDefOf.Warlock)))
+            {
+                tempPod = ThingDef.Named("BookOfDemons");
                 this.parent.Destroy(DestroyMode.Vanish);
             }
             else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.Gifted))

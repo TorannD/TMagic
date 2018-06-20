@@ -534,15 +534,15 @@ namespace TorannMagic
                         if(Find.TickManager.TicksGame % 20 == 0)
                         {
                             ResolveSustainedSkills();
-                            ResolveClassSkills();
                             if (reversalTarget != null)
                             {
                                 ResolveReversalDamage();
                             }
                         }
-                        if (Find.TickManager.TicksGame % 3600 == 0)
+                        if (Find.TickManager.TicksGame % 60 == 0)
                         {
                             ResolveClassSkills();
+                            ResolveClassPassions();
                         }
                         if (this.Stamina.CurLevel >  (.99f * this.Stamina.MaxLevel))
                         {                            
@@ -1570,7 +1570,6 @@ namespace TorannMagic
 
         public void ResolveReversalDamage()
         {
-            Log.Message("reversing melee");
             reversalTarget.TakeDamage(reversal_dinfo);
             reversalTarget = null;
         }
@@ -1707,6 +1706,64 @@ namespace TorannMagic
             }
         }
 
+        public void ResolveClassPassions()
+        {
+            SkillRecord skill;
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer))
+            {                
+                skill = this.Pawn.skills.GetSkill(SkillDefOf.Melee);
+                if (skill.passion != Passion.Major)
+                {
+                    skill.passion = Passion.Major;
+                }
+                skill = this.Pawn.skills.GetSkill(SkillDefOf.Shooting);
+                if (skill.passion != Passion.None)
+                {
+                    skill.passion = Passion.None;
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper))
+            {
+                skill = this.Pawn.skills.GetSkill(SkillDefOf.Melee);
+                if (skill.passion != Passion.None)
+                {
+                    skill.passion = Passion.None;
+                }
+                skill = this.Pawn.skills.GetSkill(SkillDefOf.Shooting);
+                if (skill.passion != Passion.Major)
+                {
+                    skill.passion = Passion.Major;
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
+            {
+                skill = this.Pawn.skills.GetSkill(SkillDefOf.Melee);
+                if (skill.passion == Passion.None)
+                {
+                    skill.passion = Passion.Minor;
+                }
+                skill = this.Pawn.skills.GetSkill(SkillDefOf.Shooting);
+                if (skill.passion == Passion.None)
+                {
+                    skill.passion = Passion.Minor;
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger))
+            {
+                skill = this.Pawn.skills.GetSkill(SkillDefOf.Melee);
+                if (skill.passion == Passion.None)
+                {
+                    skill.passion = Passion.Minor;
+                }
+                skill = this.Pawn.skills.GetSkill(SkillDefOf.Shooting);
+                if (skill.passion == Passion.None)
+                {
+                    skill.passion = Passion.Minor;
+                }
+            }
+        }
+
+
         private void ResolveSustainedSkills()
         {
             float _maxSP = 0;
@@ -1823,6 +1880,10 @@ namespace TorannMagic
                     this.AddPawnAbility(TorannMagicDefOf.TM_AnimalFriend);
                     this.animalBondingDisabled = false;
                 }
+            }
+            if(MightData.MightAbilityPoints < 0)
+            {
+                MightData.MightAbilityPoints = 0;
             }
             MightPowerSkill endurance = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_global_endurance.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_endurance_pwr");
             this.maxSP = 1 + (.04f * endurance.level) + _maxSP;

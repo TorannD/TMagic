@@ -782,38 +782,7 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_ArrowStorm(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Sprint" || enumerator.Current.abilityDef.defName == "TM_Sprint_I" || enumerator.Current.abilityDef.defName == "TM_Sprint_II" || enumerator.Current.abilityDef.defName == "TM_Sprint_III")
-                                        {
-                                            compMight.LevelUpSkill_Sprint(skill.label);
-                                            skill.level++;
-                                            compMight.MightData.MightAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Fortitude")
-                                        {
-                                            compMight.LevelUpSkill_Fortitude(skill.label);
-                                            skill.level++;
-                                            compMight.MightData.MightAbilityPoints -= 1;
-                                            compMight.ResolveClassSkills();
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Grapple" || enumerator.Current.abilityDef.defName == "TM_Grapple_I" || enumerator.Current.abilityDef.defName == "TM_Grapple_II" || enumerator.Current.abilityDef.defName == "TM_Grapple_III")
-                                        {
-                                            compMight.LevelUpSkill_Grapple(skill.label);
-                                            skill.level++;
-                                            compMight.MightData.MightAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Cleave")
-                                        {
-                                            compMight.LevelUpSkill_Cleave(skill.label);
-                                            skill.level++;
-                                            compMight.MightData.MightAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Whirlwind")
-                                        {
-                                            compMight.LevelUpSkill_Whirlwind(skill.label);
-                                            skill.level++;
-                                            compMight.MightData.MightAbilityPoints -= 1;
-                                        }
+                                        }                                        
                                         if (enumerator.Current.abilityDef.defName == "TM_Transpose" || enumerator.Current.abilityDef.defName == "TM_Transpose_I" || enumerator.Current.abilityDef.defName == "TM_Transpose_II" || enumerator.Current.abilityDef.defName == "TM_Transpose_III")
                                         {
                                             compMight.LevelUpSkill_Transpose(skill.label);
@@ -1002,38 +971,7 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_ArrowStorm(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Sprint" || enumerator.Current.abilityDef.defName == "TM_Sprint_I" || enumerator.Current.abilityDef.defName == "TM_Sprint_II" || enumerator.Current.abilityDef.defName == "TM_Sprint_III")
-                                        {
-                                            compMight.LevelUpSkill_Sprint(skill.label);
-                                            skill.level++;
-                                            compMight.MightData.MightAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Fortitude")
-                                        {
-                                            compMight.LevelUpSkill_Fortitude(skill.label);
-                                            skill.level++;
-                                            compMight.MightData.MightAbilityPoints -= 1;
-                                            compMight.ResolveClassSkills();
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Grapple" || enumerator.Current.abilityDef.defName == "TM_Grapple_I" || enumerator.Current.abilityDef.defName == "TM_Grapple_II" || enumerator.Current.abilityDef.defName == "TM_Grapple_III")
-                                        {
-                                            compMight.LevelUpSkill_Grapple(skill.label);
-                                            skill.level++;
-                                            compMight.MightData.MightAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Cleave")
-                                        {
-                                            compMight.LevelUpSkill_Cleave(skill.label);
-                                            skill.level++;
-                                            compMight.MightData.MightAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Whirlwind")
-                                        {
-                                            compMight.LevelUpSkill_Whirlwind(skill.label);
-                                            skill.level++;
-                                            compMight.MightData.MightAbilityPoints -= 1;
-                                        }
+                                        }                                        
                                         if (enumerator.Current.abilityDef.defName == "TM_Transpose" || enumerator.Current.abilityDef.defName == "TM_Transpose_I" || enumerator.Current.abilityDef.defName == "TM_Transpose_II" || enumerator.Current.abilityDef.defName == "TM_Transpose_III")
                                         {
                                             compMight.LevelUpSkill_Transpose(skill.label);
@@ -1222,38 +1160,7 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_ArrowStorm(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Sprint" || enumerator.Current.abilityDef.defName == "TM_Sprint_I" || enumerator.Current.abilityDef.defName == "TM_Sprint_II" || enumerator.Current.abilityDef.defName == "TM_Sprint_III")
-                                        {
-                                            compMight.LevelUpSkill_Sprint(skill.label);
-                                            skill.level++;
-                                            compMight.MightData.MightAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Fortitude")
-                                        {
-                                            compMight.LevelUpSkill_Fortitude(skill.label);
-                                            skill.level++;
-                                            compMight.MightData.MightAbilityPoints -= 1;
-                                            compMight.ResolveClassSkills();
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Grapple" || enumerator.Current.abilityDef.defName == "TM_Grapple_I" || enumerator.Current.abilityDef.defName == "TM_Grapple_II" || enumerator.Current.abilityDef.defName == "TM_Grapple_III")
-                                        {
-                                            compMight.LevelUpSkill_Grapple(skill.label);
-                                            skill.level++;
-                                            compMight.MightData.MightAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Cleave")
-                                        {
-                                            compMight.LevelUpSkill_Cleave(skill.label);
-                                            skill.level++;
-                                            compMight.MightData.MightAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Whirlwind")
-                                        {
-                                            compMight.LevelUpSkill_Whirlwind(skill.label);
-                                            skill.level++;
-                                            compMight.MightData.MightAbilityPoints -= 1;
-                                        }
+                                        }                                        
                                         if (enumerator.Current.abilityDef.defName == "TM_Transpose" || enumerator.Current.abilityDef.defName == "TM_Transpose_I" || enumerator.Current.abilityDef.defName == "TM_Transpose_II" || enumerator.Current.abilityDef.defName == "TM_Transpose_III")
                                         {
                                             compMight.LevelUpSkill_Transpose(skill.label);
@@ -1442,38 +1349,7 @@ namespace TorannMagic
                                             compMight.LevelUpSkill_ArrowStorm(skill.label);
                                             skill.level++;
                                             compMight.MightData.MightAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Sprint" || enumerator.Current.abilityDef.defName == "TM_Sprint_I" || enumerator.Current.abilityDef.defName == "TM_Sprint_II" || enumerator.Current.abilityDef.defName == "TM_Sprint_III")
-                                        {
-                                            compMight.LevelUpSkill_Sprint(skill.label);
-                                            skill.level++;
-                                            compMight.MightData.MightAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Fortitude")
-                                        {
-                                            compMight.LevelUpSkill_Fortitude(skill.label);
-                                            skill.level++;
-                                            compMight.MightData.MightAbilityPoints -= 1;
-                                            compMight.ResolveClassSkills();
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Grapple" || enumerator.Current.abilityDef.defName == "TM_Grapple_I" || enumerator.Current.abilityDef.defName == "TM_Grapple_II" || enumerator.Current.abilityDef.defName == "TM_Grapple_III")
-                                        {
-                                            compMight.LevelUpSkill_Grapple(skill.label);
-                                            skill.level++;
-                                            compMight.MightData.MightAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Cleave")
-                                        {
-                                            compMight.LevelUpSkill_Cleave(skill.label);
-                                            skill.level++;
-                                            compMight.MightData.MightAbilityPoints -= 1;
-                                        }
-                                        if (enumerator.Current.abilityDef.defName == "TM_Whirlwind")
-                                        {
-                                            compMight.LevelUpSkill_Whirlwind(skill.label);
-                                            skill.level++;
-                                            compMight.MightData.MightAbilityPoints -= 1;
-                                        }
+                                        }                                        
                                         if (enumerator.Current.abilityDef.defName == "TM_Transpose" || enumerator.Current.abilityDef.defName == "TM_Transpose_I" || enumerator.Current.abilityDef.defName == "TM_Transpose_II" || enumerator.Current.abilityDef.defName == "TM_Transpose_III")
                                         {
                                             compMight.LevelUpSkill_Transpose(skill.label);

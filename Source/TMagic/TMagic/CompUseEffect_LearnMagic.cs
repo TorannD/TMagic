@@ -127,12 +127,69 @@ namespace TorannMagic
                     }
 
                 }
+                else if (parent.def.defName == "BookOfDemons" || parent.def.defName == "Torn_BookOfDemons")
+                {
+                    FixTrait(user, user.story.traits.allTraits);
+                    if (user.gender == Gender.Male)
+                    {
+                        user.story.traits.GainTrait(new Trait(TraitDef.Named("Warlock"), 4, false));
+                    }
+                    else if (user.gender == Gender.Female)
+                    {
+                        user.story.traits.GainTrait(new Trait(TraitDef.Named("Succubus"), 4, false));
+                    }
+                    else
+                    {
+                        Log.Message("No gender found - assigning random trait.");
+                        if(Rand.Chance(.5f))
+                        {
+                            user.story.traits.GainTrait(new Trait(TraitDef.Named("Succubus"), 4, false));
+                        }
+                        else
+                        {
+                            user.story.traits.GainTrait(new Trait(TraitDef.Named("Warlock"), 4, false));
+                        }
+                    }
+                    if (parent.def.defName == "BookOfDemons")
+                    {
+                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                    }
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
                 else if (parent.def.defName == "BookOfQuestion")
                 {
                     FixTrait(user, user.story.traits.allTraits);
-                    int rnd = Mathf.RoundToInt(Rand.Range(0, 10));
+                    int rnd = Mathf.RoundToInt(Rand.RangeInclusive(0, 11));
                     switch (rnd)
                     {
+                        case 0:
+                            if(user.gender == Gender.Male)
+                            {
+                                user.story.traits.GainTrait(new Trait(TraitDef.Named("Warlock"), 4, false));
+                            }
+                            else if(user.gender == Gender.Female)
+                            {
+                                user.story.traits.GainTrait(new Trait(TraitDef.Named("Succubus"), 4, false));
+                            }
+                            else
+                            {
+                                Log.Message("No gender found.");
+                            }
+                            break;
+                        case 11:
+                            if (user.gender == Gender.Male)
+                            {
+                                user.story.traits.GainTrait(new Trait(TraitDef.Named("Warlock"), 4, false));
+                            }
+                            else if (user.gender == Gender.Female)
+                            {
+                                user.story.traits.GainTrait(new Trait(TraitDef.Named("Succubus"), 4, false));
+                            }
+                            else
+                            {
+                                Log.Message("No gender found.");
+                            }
+                            break;
                         case 1:
                             user.story.traits.GainTrait(new Trait(TraitDef.Named("Necromancer"), 4, false));
                             break;
@@ -162,7 +219,7 @@ namespace TorannMagic
                             break;
                         case 10:
                             user.story.traits.GainTrait(new Trait(TraitDef.Named("Paladin"), 4, false));
-                            break;
+                            break;                        
                     }
                     //HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
                     this.parent.Destroy(DestroyMode.Vanish);

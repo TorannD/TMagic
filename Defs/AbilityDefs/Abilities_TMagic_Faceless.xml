@@ -16,7 +16,7 @@
 		<flyOverhead>true</flyOverhead>
 		<damageDef>TM_Heal_I</damageDef>
 		<damageAmountBase>0</damageAmountBase>
-		<speed>9990</speed>
+		<speed>999</speed>
    </projectile>
  </ThingDef>
  

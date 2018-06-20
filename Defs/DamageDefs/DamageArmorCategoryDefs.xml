@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+  <!-- Armor Categories -->
+  
+  <DamageArmorCategoryDef>
+    <defName>Dark</defName>
+    <deflectionStat>ArmorRating_Alignment</deflectionStat>
+  </DamageArmorCategoryDef>
+
+  <DamageArmorCategoryDef>
+    <defName>Light</defName>
+    <deflectionStat>ArmorRating_Alignment</deflectionStat>
+  </DamageArmorCategoryDef>
+  
+  <!-- Armor Ratings -->
+  
+  <StatDef ParentName="ArmorRatingBase">
+    <defName>ArmorRating_Alignment</defName>
+    <label>Armor - Virtue</label>
+    <description>Protection from alignment based attacks such as holy, shadow, or death magic.</description>
+  </StatDef>
+</Defs>

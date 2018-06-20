@@ -139,6 +139,15 @@ namespace TorannMagic
                         num2.ToString()
                     });
                 }
+                else if (magicAbilityDef == TorannMagicDefOf.TM_PsychicShock)
+                {
+                    num = this.MagicUser.ActualManaCost(magicDef);
+                    num2 = this.MagicUser.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false);
+                    text3 = "TM_PsychicSensitivity".Translate(new object[]
+                    {
+                        num2.ToString()
+                    });
+                }
                 else
                 {
                     num = this.MagicUser.ActualManaCost(magicDef);
@@ -214,7 +223,8 @@ namespace TorannMagic
                         this.magicDef.defName.Contains("Laser_FrostRay") || this.magicDef.defName == "TM_Blizzard" || this.magicDef.defName == "TM_Snowball" || this.magicDef.defName == "TM_Icebolt" ||
                         this.magicDef.defName == "TM_Firestorm" || this.magicDef.defName == "TM_Fireball" || this.magicDef.defName == "TM_Fireclaw" || this.magicDef.defName == "TM_Firebolt" ||
                         this.magicDef.defName.Contains("TM_MagicMissile") ||
-                        this.magicDef.defName.Contains("TM_DeathBolt") || 
+                        this.magicDef.defName.Contains("TM_DeathBolt") ||
+                        this.magicDef.defName.Contains("TM_ShadowBolt") ||
                         this.magicDef.defName == "TM_Poison" ) )
                     {
                         reason = "TM_ShieldBlockingPowers".Translate(new object[]

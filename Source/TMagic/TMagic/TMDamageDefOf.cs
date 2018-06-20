@@ -73,6 +73,11 @@ namespace TorannMagic
 
             public static DamageDef TM_BlazingPower;
 
+            public static DamageDef TM_Shadow;
+            public static DamageArmorCategoryDef Dark;
+            public static DamageArmorCategoryDef Light;
+            public static StatDef ArmorRating_Alignment;
+
         }
     }
 }

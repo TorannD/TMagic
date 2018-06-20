@@ -203,7 +203,7 @@ namespace TorannMagic
 
         private bool IsGoodLocationForStrike(IntVec3 loc)
         {
-            return loc.InBounds(base.Map) && loc.IsValid && !loc.Fogged(base.Map);
+            return loc.InBounds(base.Map) && loc.IsValid && !loc.Fogged(base.Map) && !loc.GetRoof(base.Map).isThickRoof;
         }
 
         private bool IsGoodCenterLocation(IntVec2 loc)

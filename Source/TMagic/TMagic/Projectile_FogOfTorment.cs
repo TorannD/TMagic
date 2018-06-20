@@ -88,7 +88,7 @@ namespace TorannMagic
                         victim = curCell.GetFirstPawn(map);
                         if(victim != null && !victim.Dead && victim.RaceProps.IsFlesh)
                         {
-                            if(victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD) || victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadAnimalHD) || victim.needs.food == null)
+                            if(victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD) || victim.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadAnimalHD) || victim.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD")) || victim.needs.food == null)
                             {
                                 //heals undead
                                 int num = 1;

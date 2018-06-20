@@ -535,6 +535,110 @@ namespace TorannMagic
                                     break;
                             }
                         }
+                        else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Warlock))
+                        {
+                            for (int i = 0; i < 5; i++)
+                            {
+                                int rnd = Rand.RangeInclusive(1, 3);
+                                if (rnd == 1 && magicPawn.MagicData.MagicPowersWD[rnd].learned)
+                                {
+                                    int level = magicPawn.MagicData.MagicPowersWD[rnd].level;
+                                    switch (level)
+                                    {
+                                        case 0:
+                                            tempAbility = TorannMagicDefOf.TM_ShadowBolt;
+                                            break;
+                                        case 1:
+                                            tempAbility = TorannMagicDefOf.TM_ShadowBolt_I;
+                                            break;
+                                        case 2:
+                                            tempAbility = TorannMagicDefOf.TM_ShadowBolt_II;
+                                            break;
+                                        case 3:
+                                            tempAbility = TorannMagicDefOf.TM_ShadowBolt_III;
+                                            break;
+                                    }
+                                    i = 5;
+                                }
+                                else if (rnd == 2 && magicPawn.MagicData.MagicPowersWD[rnd].learned)
+                                {
+                                    tempAbility = TorannMagicDefOf.TM_Dominate;
+                                    i = 5;
+                                }
+                                else if (rnd == 3 && magicPawn.MagicData.MagicPowersWD[rnd].learned)
+                                {
+                                    int level = magicPawn.MagicData.MagicPowersWD[rnd].level;
+                                    switch (level)
+                                    {
+                                        case 0:
+                                            tempAbility = TorannMagicDefOf.TM_Repulsion;
+                                            break;
+                                        case 1:
+                                            tempAbility = TorannMagicDefOf.TM_Repulsion_I;
+                                            break;
+                                        case 2:
+                                            tempAbility = TorannMagicDefOf.TM_Repulsion_II;
+                                            break;
+                                        case 3:
+                                            tempAbility = TorannMagicDefOf.TM_Repulsion_III;
+                                            break;
+                                    }
+                                    i = 5;
+                                }
+                            }
+                        }
+                        else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Succubus))
+                        {
+                            for (int i = 0; i < 5; i++)
+                            {
+                                int rnd = Rand.RangeInclusive(1, 3);
+                                if (rnd == 1 && magicPawn.MagicData.MagicPowersSD[rnd].learned)
+                                {
+                                    int level = magicPawn.MagicData.MagicPowersSD[rnd].level;
+                                    switch (level)
+                                    {
+                                        case 0:
+                                            tempAbility = TorannMagicDefOf.TM_ShadowBolt;
+                                            break;
+                                        case 1:
+                                            tempAbility = TorannMagicDefOf.TM_ShadowBolt_I;
+                                            break;
+                                        case 2:
+                                            tempAbility = TorannMagicDefOf.TM_ShadowBolt_II;
+                                            break;
+                                        case 3:
+                                            tempAbility = TorannMagicDefOf.TM_ShadowBolt_III;
+                                            break;
+                                    }
+                                    i = 5;
+                                }
+                                else if (rnd == 2 && magicPawn.MagicData.MagicPowersSD[rnd].learned)
+                                {
+                                    tempAbility = TorannMagicDefOf.TM_Dominate;
+                                    i = 5;
+                                }
+                                else if (rnd == 3 && magicPawn.MagicData.MagicPowersSD[rnd].learned)
+                                {
+                                    int level = magicPawn.MagicData.MagicPowersSD[rnd].level;
+                                    switch (level)
+                                    {
+                                        case 0:
+                                            tempAbility = TorannMagicDefOf.TM_Attraction;
+                                            break;
+                                        case 1:
+                                            tempAbility = TorannMagicDefOf.TM_Attraction_I;
+                                            break;
+                                        case 2:
+                                            tempAbility = TorannMagicDefOf.TM_Attraction_II;
+                                            break;
+                                        case 3:
+                                            tempAbility = TorannMagicDefOf.TM_Attraction_III;
+                                            break;
+                                    }
+                                    i = 5;
+                                }
+                            }
+                        }
 
                         if (tempAbility != null)
                         {

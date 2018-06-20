@@ -30,6 +30,8 @@ namespace TorannMagic
         public List<MagicPower> magicPowerN;
         public List<MagicPower> magicPowerPR;
         public List<MagicPower> magicPowerB;
+        public List<MagicPower> magicPowerWD;
+        public List<MagicPower> magicPowerSD;
 
         public List<MagicPowerSkill> magicPowerSkill_global_regen;
         public List<MagicPowerSkill> magicPowerSkill_global_eff;
@@ -98,6 +100,15 @@ namespace TorannMagic
         public List<MagicPowerSkill> magicPowerSkill_Inspire;
         public List<MagicPowerSkill> magicPowerSkill_Lullaby;
         public List<MagicPowerSkill> magicPowerSkill_BattleHymn;
+
+        public List<MagicPowerSkill> magicPowerSkill_SoulBond;
+        public List<MagicPowerSkill> magicPowerSkill_ShadowBolt;
+        public List<MagicPowerSkill> magicPowerSkill_Dominate;
+        public List<MagicPowerSkill> magicPowerSkill_Repulsion;
+        public List<MagicPowerSkill> magicPowerSkill_Attraction;
+        public List<MagicPowerSkill> magicPowerSkill_Scorn;             
+        public List<MagicPowerSkill> magicPowerSkill_PsychicShock;      
+        //public List<MagicPowerSkill> magicPowerSkill_SummonDemon;
 
         public List<MagicPowerSkill> MagicPowerSkill_global_regen
         {
@@ -1447,6 +1458,233 @@ namespace TorannMagic
             }
         }
 
+        public List<MagicPower> MagicPowersWD
+        {
+            get
+            {
+                bool flag = this.magicPowerWD == null;
+                if (flag)
+                {
+                    this.magicPowerWD = new List<MagicPower>
+                    {
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_SoulBond
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_ShadowBolt,
+                            TorannMagicDefOf.TM_ShadowBolt_I,
+                            TorannMagicDefOf.TM_ShadowBolt_II,
+                            TorannMagicDefOf.TM_ShadowBolt_III
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Dominate
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Repulsion,
+                            TorannMagicDefOf.TM_Repulsion_I,
+                            TorannMagicDefOf.TM_Repulsion_II,
+                            TorannMagicDefOf.TM_Repulsion_III
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_PsychicShock
+                        }),
+                        //new MagicPower(new List<AbilityDef>
+                        //{
+                        //    TorannMagicDefOf.TM_SummonDemon
+                        //}),
+                    };
+                }
+                return this.magicPowerWD;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_SoulBond
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_SoulBond == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_SoulBond = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_SoulBond_pwr", "TM_SoulBond_pwr_desc"),
+                        new MagicPowerSkill("TM_SoulBond_eff", "TM_SoulBond_eff_desc"),
+                        new MagicPowerSkill("TM_SoulBond_ver", "TM_SoulBond_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_SoulBond;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_ShadowBolt
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_ShadowBolt == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_ShadowBolt = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_ShadowBolt_pwr", "TM_ShadowBolt_pwr_desc"),
+                        new MagicPowerSkill("TM_ShadowBolt_eff", "TM_ShadowBolt_eff_desc"),
+                        new MagicPowerSkill("TM_ShadowBolt_ver", "TM_ShadowBolt_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_ShadowBolt;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Dominate
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Dominate == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Dominate = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Dominate_pwr", "TM_Dominate_pwr_desc"),
+                        new MagicPowerSkill("TM_Dominate_eff", "TM_Dominate_eff_desc"),
+                        new MagicPowerSkill("TM_Dominate_ver", "TM_Dominate_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_Dominate;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Repulsion
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Repulsion == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Repulsion = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Repulsion_pwr", "TM_Repulsion_pwr_desc"),
+                        new MagicPowerSkill("TM_Repulsion_eff", "TM_Repulsion_eff_desc"),
+                        new MagicPowerSkill("TM_Repulsion_ver", "TM_Repulsion_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_Repulsion;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_PsychicShock
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_PsychicShock == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_PsychicShock = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_PsychicShock_pwr", "TM_PsychicShock_pwr_desc"),
+                        new MagicPowerSkill("TM_PsychicShock_eff", "TM_PsychicShock_eff_desc"),
+                        new MagicPowerSkill("TM_PsychicShock_ver", "TM_PsychicShock_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_PsychicShock;
+            }
+        }
+        //public List<MagicPowerSkill> MagicPowerSkill_SummonDemon
+        //{
+        //    get
+        //    {
+        //        bool flag = this.magicPowerSkill_SummonDemon == null;
+        //        if (flag)
+        //        {
+        //            this.magicPowerSkill_SummonDemon = new List<MagicPowerSkill>
+        //            {
+        //                new MagicPowerSkill("TM_SummonDemon_pwr", "TM_SummonDemon_pwr_desc"),
+        //                new MagicPowerSkill("TM_SummonDemon_eff", "TM_SummonDemon_eff_desc"),
+        //                new MagicPowerSkill("TM_SummonDemon_ver", "TM_SummonDemon_ver_desc")
+        //            };
+        //        }
+        //        return this.magicPowerSkill_SummonDemon;
+        //    }
+        //}
+
+        public List<MagicPower> MagicPowersSD
+        {
+            get
+            {
+                bool flag = this.magicPowerSD == null;
+                if (flag)
+                {
+                    this.magicPowerSD = new List<MagicPower>
+                    {
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_SoulBond
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_ShadowBolt,
+                            TorannMagicDefOf.TM_ShadowBolt_I,
+                            TorannMagicDefOf.TM_ShadowBolt_II,
+                            TorannMagicDefOf.TM_ShadowBolt_III
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Dominate
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Attraction,
+                            TorannMagicDefOf.TM_Attraction_I,
+                            TorannMagicDefOf.TM_Attraction_II,
+                            TorannMagicDefOf.TM_Attraction_III
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Scorn
+                        }),
+                        //new MagicPower(new List<AbilityDef>
+                        //{
+                        //    TorannMagicDefOf.TM_SummonDemon
+                        //}),
+                    };
+                }
+                return this.magicPowerSD;
+            }
+        }
+        
+        public List<MagicPowerSkill> MagicPowerSkill_Attraction
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Attraction == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Attraction = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Attraction_pwr", "TM_Attraction_pwr_desc"),
+                        new MagicPowerSkill("TM_Attraction_eff", "TM_Attraction_eff_desc"),
+                        new MagicPowerSkill("TM_Attraction_ver", "TM_Attraction_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_Attraction;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Scorn
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Scorn == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Scorn = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Scorn_pwr", "TM_Scorn_pwr_desc"),
+                        new MagicPowerSkill("TM_Scorn_eff", "TM_Scorn_eff_desc"),
+                        new MagicPowerSkill("TM_Scorn_ver", "TM_Scorn_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_Scorn;
+            }
+        }
+
         public bool IsNecromancer
         {
             get
@@ -1567,7 +1805,7 @@ namespace TorannMagic
         {
             get
             {
-                return this.MagicPowersIF.Concat(this.MagicPowersHoF.Concat(this.MagicPowersSB.Concat(this.MagicPowersA.Concat(this.MagicPowersP.Concat(this.MagicPowersS.Concat(this.MagicPowersD.Concat(this.MagicPowersN.Concat(this.MagicPowersPR.Concat(this.magicPowerB)))))))));
+                return this.MagicPowersIF.Concat(this.MagicPowersHoF.Concat(this.MagicPowersSB.Concat(this.MagicPowersA.Concat(this.MagicPowersP.Concat(this.MagicPowersS.Concat(this.MagicPowersD.Concat(this.MagicPowersN.Concat(this.MagicPowersPR.Concat(this.MagicPowersB.Concat(this.MagicPowersWD.Concat(this.MagicPowersSD)))))))))));
             }
         }
 
@@ -1658,6 +1896,16 @@ namespace TorannMagic
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Inspire, "magicPowerSkill_Inspire", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Lullaby, "magicPowerSkill_Lullaby", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_BattleHymn, "magicPowerSkill_BattleHymn", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPower>(ref this.magicPowerWD, "magicPowerWD", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPower>(ref this.magicPowerSD, "magicPowerSD", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_SoulBond, "magicPowerSkill_SoulBond", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_ShadowBolt, "magicPowerSkill_ShadowBolt", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Dominate, "magicPowerSkill_Dominate", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Repulsion, "magicPowerSkill_Repulsion", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Attraction, "magicPowerSkill_Attraction", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Scorn, "magicPowerSkill_Scorn", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_PsychicShock, "magicPowerSkill_PsychicShock", LookMode.Deep, new object[0]);
+            //Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_SummonDemon, "magicPowerSkill_SummonDemon", LookMode.Deep, new object[0]);
         }
     }
 }

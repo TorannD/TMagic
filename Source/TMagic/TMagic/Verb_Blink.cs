@@ -85,8 +85,7 @@ namespace TorannMagic
                             Log.Message("Exception occured when trying to blink - recovered pawn at position ability was used from.");
                         }
                     }
-                    this.Ability.PostAbilityAttempt();
-
+                    //this.Ability.PostAbilityAttempt();
                     //this.CasterPawn.SetPositionDirect(this.currentTarget.Cell);
                     //base.CasterPawn.SetPositionDirect(this.currentTarget.Cell);
                     //this.CasterPawn.pather.ResetToCurrentPosition();

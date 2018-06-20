@@ -22,6 +22,24 @@
 <!--   <AbilityUser.AbilityDef Name="BaseAbility" Abstract="True">
     <uiIconPath>UI/Glow_Corrupt</uiIconPath>
   </AbilityUser.AbilityDef> -->
+  
+    <!-- leap as a flying object -->
+  
+  	<ThingDef ParentName="BaseBullet" Name="FlyingObject_Spinning">
+	   <defName>FlyingObject_Spinning</defName>
+	   <thingClass>TorannMagic.FlyingObject_Spinning</thingClass>
+	   <label>flying object that spins</label>
+	   <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	   <projectile>
+			<flyOverhead>true</flyOverhead>
+			<damageDef>Stun</damageDef>
+			<damageAmountBase>6</damageAmountBase>
+			<speed>250</speed>
+	   </projectile>
+	</ThingDef>
 
 
   <AbilityUser.AbilityDef Name="BaseMagicAbility" Abstract="True">

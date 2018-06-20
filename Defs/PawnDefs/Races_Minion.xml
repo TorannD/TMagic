@@ -203,7 +203,7 @@ If things get too tough for them or they get bored, they'll flee back to whereve
     </lifeStages>
   </PawnKindDef> 
   
-  <ThingDef ParentName="TM_Base_Minion" Name="TM_InvisMinion">
+  <!-- <ThingDef ParentName="TM_Base_Minion" Name="TM_InvisMinion">
     <defName>TM_InvisMinionR</defName>
     <label>greater minion</label>
     <description>Minions are mischievous, lazy, cruel cowards that come from a miserable plane of existence.  They appear as a floating meatball with a giant eye.  They have stubby, little arms a mouth that seems transfixed in a nasty smile, and two or three horns.
@@ -281,6 +281,6 @@ If things get too tough for them or they get bored, they'll flee back to whereve
         </bodyGraphicData>
       </li>
     </lifeStages>
-  </PawnKindDef> 
+  </PawnKindDef>  -->
 
 </Defs>

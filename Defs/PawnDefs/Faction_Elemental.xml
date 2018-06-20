@@ -9,7 +9,7 @@
 		<requiredCountAtGameStart>1</requiredCountAtGameStart>
 		<fixedName>Elementals</fixedName>
 		<humanlikeFaction>false</humanlikeFaction>
-		<techLevel>Ultra</techLevel>
+		<techLevel>Neolithic</techLevel>
 		<backstoryCategory>Civil</backstoryCategory>
 		<hidden>true</hidden>
 		<rescueesCanJoin>false</rescueesCanJoin>
@@ -31,7 +31,7 @@
 		<requiredCountAtGameStart>1</requiredCountAtGameStart>
 		<fixedName>Summoned</fixedName>
 		<humanlikeFaction>false</humanlikeFaction>
-		<techLevel>Ultra</techLevel>
+		<techLevel>Neolithic</techLevel>
 		<backstoryCategory>Civil</backstoryCategory>
 		<hidden>true</hidden>
 		<rescueesCanJoin>false</rescueesCanJoin>

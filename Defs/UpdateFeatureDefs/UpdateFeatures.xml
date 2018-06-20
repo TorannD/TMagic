@@ -6,35 +6,6 @@
 		<linkUrl>https://ludeon.com/forums/index.php?topic=37161.0</linkUrl>
 	</HugsLib.UpdateFeatureDef>	
 	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_1_9_3</defName>
-		<assemblyVersion>1.9.3</assemblyVersion>
-		<content>
-- Fixes issues with elemental rift not spawning elementals and causing game crashes when the event ends.  Elemental rifts will now award gems at the end of the event.
-
-- Fixes Arcane power nodes where the duration is correctly applied.
-		</content>
-	</HugsLib.UpdateFeatureDef>	
-	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_1_9_4</defName>
-		<assemblyVersion>1.9.4</assemblyVersion>
-		<content>
-- Special thanks to mod contributor Sihv for the following: new additions for scribing of arcane books and scrolls has been added, these items can be researched and constructed using the scribing table.
-
-- New research and crafting recipes have been added to allow the construction of powerful Gems of Insight that allow mundane pawns to learn the Gifted or Physical Prodigy traits.
-		</content>
-	</HugsLib.UpdateFeatureDef>	
-		<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_1_9_5</defName>
-		<assemblyVersion>1.9.5</assemblyVersion>
-		<content>
-- New magical armor and weapons have been added. These items can be researched in the magic research tab and become available starting with completion of Arcane Apparel research.  These items provide augmented magical stats and unique enchantments and are designed for magic users.  Once researched, they can be crafted at standard crafting spots and tailoring and smithing benches.
-
-- Recipe costs and market value for enchanted gems and scrolls has been reduced.
-
-- Two new enchantments have been added: arcane damage and arcane resistance. 
-		</content>
-	</HugsLib.UpdateFeatureDef>	
-	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
 		<defName>ARimWorldOfMagic_1_9_6</defName>
 		<assemblyVersion>1.9.6</assemblyVersion>
 		<content>
@@ -112,6 +83,41 @@ Abilities:
 - Casting graphics have been added to help identify friendly and enemy pawns that are casting a spell.
 
 - Other miscellaneous updates include improvements for Spell Mending, thrumbo horns have been added as a resource requirement for the thrumbo axe, jade has been added to arcane traders, undead can no longer be captured and more!
+	</content>
+	</HugsLib.UpdateFeatureDef>
+	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_2_0_0</defName>
+		<assemblyVersion>2.0.0</assemblyVersion>
+		<content>
+- New Class: Faceless (might) - faceless excel at manipulation, perception, and deception; through their cunning tactics, they can take the strength of another and make it their own. 
+*Deception - exploiting knowledge of how other pawns perceive things, the faceless are able to blend into the canopy, becoming just another harmless object to an observer, making themselves all but invisible. Performing hostile actions will break the deception.
+*Mimic - creates an imitation of a fighter or mage skill; can be used on enemy or friendly pawns alike to acquire a one-time-use ability.
+*Reversal - reverses the kinetic energy of projectile and melee attacks back towards the attacker for a short time
+*Transpose - the faceless takes the place of another pawn and forces the other pawn to take its place
+*Possess - confuses the mind of a target pawn to gain (limited) control over their body; if used on a willing host, the faceless enhances physical capability of the host
+ 
+- New mod options have been added to allow you to mark enemy fighter classes; another new option allows friendly pawns (mages and fighters) to also be marked.
+
+- Global skills Spirit (mage) and Endurance (fighter) now give 4% boost to their respective resource pool maximum levels (was 2%).
+	</content>
+	</HugsLib.UpdateFeatureDef>
+	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_2_1_0</defName>
+		<assemblyVersion>2.1.0</assemblyVersion>
+		<content>
+- New Class: Warlock/Succubus - gaining their power through a demonic contract, this class is gender specific where each gender shares common powers but are also uniquely diverse in both roles and application of their powers.
+*Soul Bond - form a contract with another colonist that allows the class to gain additional power; this weakens the capacity of the bonded pawn but eases the burden of their reality...
+>>Forming a soul bond grants a unique link between the bonded pawn and the warlock or succubus that allows them to travel to, or summon, the bonded pawn across vast distances
+*Shadow Bolt - launch a bolt of blackest shadow to consume the energy of everything along its path
+*Dominate - an infectious calamity of nightmares and fears that erodes the sanity of its victims
+*(Warlock) Repulsion - detonate a burst of raw energy that repels any nearby pawns
+*(Succubus) Attraction - create an inescapable pit of darkness that draws victims into the center and surrounds them in clinging shadows
+*(Warlock - Master) Psychic Shock - release all mental barriers and emit a powerful psychic shockwave to dominate the minds of nearby pawns
+*(Succubus - Master) Scorn - reveal your true nature and crush your opponents in cascading wrath
+
+- Several compatibility patches have been added for the Lord of the Rims mods that was preventing summoned creatures from spawning.
+
+- (Bug fixes) Blink no longer charges double the stated casting cost; you can no longer raise summoned/elemental creatures as undead; undead should no longer be sellable; Undead animals will no longer procreate; Necromancer/Lich will now correctly write their Unfinished Arcane Tomes.
 	</content>
 	</HugsLib.UpdateFeatureDef>	
 	
