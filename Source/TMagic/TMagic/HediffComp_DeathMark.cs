@@ -96,8 +96,8 @@ namespace TorannMagic
                 {
                     HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, -4f);
                     HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, .5f + ver.level);
-                    RemoveTraits(undeadPawn, undeadPawn.story.traits.allTraits);
-                    RedoSkills(undeadPawn);
+                    //RemoveTraits(undeadPawn, undeadPawn.story.traits.allTraits);
+                    //RedoSkills(undeadPawn);
                     undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Undead"), 0, false));
                     CompAbilityUserMagic undeadComp = undeadPawn.GetComp<CompAbilityUserMagic>();
                     if (undeadComp.IsMagicUser)
@@ -123,36 +123,36 @@ namespace TorannMagic
                     HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadAnimalHD, -4f);
                     HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadAnimalHD, .5f + ver.level);
                     
-                    if (undeadPawn.RaceProps.TrainableIntelligence == TrainableIntelligenceDefOf.Intermediate)
-                    {
-                        while (!undeadPawn.training.IsCompleted(TrainableDefOf.Obedience))
-                        {
-                            undeadPawn.training.Train(TrainableDefOf.Obedience, instigator);
-                        }
-                        while (!undeadPawn.training.IsCompleted(TrainableDefOf.Release))
-                        {
-                            undeadPawn.training.Train(TrainableDefOf.Release, instigator);
-                        }
-                    }
+                    //if (undeadPawn.RaceProps.TrainableIntelligence == TrainableIntelligenceDefOf.Intermediate)
+                    //{
+                    //    while (!undeadPawn.training.IsCompleted(TrainableDefOf.Obedience))
+                    //    {
+                    //        undeadPawn.training.Train(TrainableDefOf.Obedience, instigator);
+                    //    }
+                    //    while (!undeadPawn.training.IsCompleted(TrainableDefOf.Release))
+                    //    {
+                    //        undeadPawn.training.Train(TrainableDefOf.Release, instigator);
+                    //    }
+                    //}
 
-                    if (undeadPawn.RaceProps.TrainableIntelligence == TrainableIntelligenceDefOf.Advanced)
-                    {
-                        while (!undeadPawn.training.IsCompleted(TrainableDefOf.Obedience))
-                        {
-                            undeadPawn.training.Train(TrainableDefOf.Obedience, instigator);
-                        }
-                        while (!undeadPawn.training.IsCompleted(TrainableDefOf.Release))
-                        {
-                            undeadPawn.training.Train(TrainableDefOf.Release, instigator);
-                        }
-                        if (undeadPawn.BodySize > .4)
-                        {
-                            while (!undeadPawn.training.IsCompleted(TorannMagicDefOf.Haul))
-                            {
-                                undeadPawn.training.Train(TorannMagicDefOf.Haul, instigator);
-                            }
-                        }
-                    }
+                    //if (undeadPawn.RaceProps.TrainableIntelligence == TrainableIntelligenceDefOf.Advanced)
+                    //{
+                    //    while (!undeadPawn.training.IsCompleted(TrainableDefOf.Obedience))
+                    //    {
+                    //        undeadPawn.training.Train(TrainableDefOf.Obedience, instigator);
+                    //    }
+                    //    while (!undeadPawn.training.IsCompleted(TrainableDefOf.Release))
+                    //    {
+                    //        undeadPawn.training.Train(TrainableDefOf.Release, instigator);
+                    //    }
+                    //    if (undeadPawn.BodySize > .4)
+                    //    {
+                    //        while (!undeadPawn.training.IsCompleted(TorannMagicDefOf.Haul))
+                    //        {
+                    //            undeadPawn.training.Train(TorannMagicDefOf.Haul, instigator);
+                    //        }
+                    //    }
+                    //}
                 }
             }
         }
@@ -173,8 +173,8 @@ namespace TorannMagic
             undeadPawn.skills.Learn(SkillDefOf.Cooking, Rand.Range(10000, 20000), true);
             undeadPawn.skills.Learn(SkillDefOf.Crafting, -10000000, true);
             undeadPawn.skills.Learn(SkillDefOf.Crafting, Rand.Range(10000, 50000), true);
-            undeadPawn.skills.Learn(SkillDefOf.Growing, -10000000, true);
-            undeadPawn.skills.Learn(SkillDefOf.Growing, Rand.Range(40000, 60000), true);
+            undeadPawn.skills.Learn(SkillDefOf.Plants, -10000000, true);
+            undeadPawn.skills.Learn(SkillDefOf.Plants, Rand.Range(40000, 60000), true);
             undeadPawn.skills.Learn(SkillDefOf.Intellectual, -10000000, true);
             undeadPawn.skills.Learn(SkillDefOf.Medicine, -10000000, true);
             undeadPawn.skills.Learn(SkillDefOf.Melee, -10000000, true);

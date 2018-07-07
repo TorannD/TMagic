@@ -39,7 +39,7 @@
         <warmupTime>1</warmupTime>
         <SecondsToRecharge>6</SecondsToRecharge>
         <range>38</range>
-        <soundCast>ShotChargeRifle</soundCast>
+        <soundCast>Shot_ChargeRifle</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
         <isPrimary>false</isPrimary>
 		<isViolent>true</isViolent>

@@ -49,7 +49,7 @@
       <min>2500</min>
       <max>4200</max>
     </apparelMoney>
-    <apparelAllowHeadwearChance>0.9</apparelAllowHeadwearChance>
+    <apparelAllowHeadgearChance>0.9</apparelAllowHeadgearChance>
     <weaponMoney>
       <min>1600</min>
       <max>2000</max>

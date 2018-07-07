@@ -65,10 +65,10 @@
       <intelligence>Humanlike</intelligence>
       <makesFootprints>true</makesFootprints>
       <lifeExpectancy>80</lifeExpectancy>
-      <leatherColor>(211,194,143)</leatherColor>
+<!--       <leatherColor>(211,194,143)</leatherColor>
       <leatherCommonalityFactor>0.01</leatherCommonalityFactor>
       <leatherInsulation>0.70</leatherInsulation>
-      <leatherMarketValueFactor>2</leatherMarketValueFactor>
+      <leatherMarketValueFactor>2</leatherMarketValueFactor> -->
       <nameCategory>HumanStandard</nameCategory>
       <body>Human</body>
       <baseBodySize>1</baseBodySize>

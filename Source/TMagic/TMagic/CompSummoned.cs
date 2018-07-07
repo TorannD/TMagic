@@ -73,7 +73,7 @@ namespace TorannMagic
             }
         }
 
-        private Thing thing
+        private Thing Thing
         {
             get
             {

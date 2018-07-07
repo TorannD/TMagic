@@ -37,29 +37,22 @@ Portals must be deactivated before they can be reactivated and assigned a new de
 	</ConceptDef>
 	
 		<ConceptDef>
-		<defName>TM_Encanting</defName>
+		<defName>TM_Enchanting</defName>
 		<label>Enchanting</label>
 		<priority>52</priority>
 		<needsOpportunity>False</needsOpportunity>
-		<helpText>Enchanting offers mages the ability to further refine and empower their abilities.  There are a few things you should know about enchanting:
+		<helpText>Enchanting offers mages the ability to imbue weapons and armor with enhancements.  There are a few things you should know about enchanting:
 
-1. Only mages can enchant!  The process of enchanting requires mana, so mundane pawns will be unable to equip an enchanting stone.
+1. Only mages can enchant!  The process of enchanting requires mana, so mundane pawns will be unable to equip enchanting stones.
  
 2. To enchant an item, your colony must complete the following prerequisites:
- a. Research the gemcutting workbench in the research menu, under the Magic tab
- b. Construct the workbench
- c. Acquire sufficient raw magicyte to form an enchanting stone.
- d. Raw magicitye can be found in any mineable stone, each mining strike has a chance to uncover raw magicyte. Any type of pawn can find raw magicyte.
- e. Using the gemcutting bench, form an enchanting stone. Any pawn can work the gemcutting workbench.
+ a. Your colony must have a gemcutting workbench, research Enchanting in the research menu under the Magic tab.
+ b. Gather raw magicitye; it can be found in any mineable stone, each mining strike has a chance to uncover raw magicyte.
+ c. Craft enchanting stones from the gemcutting workbench.
  
 3. Once you've crafted an enchanting gem of your choice, you will need a mage to perform the enchantment.
  a. With a mage selected, right click on the enchanting gem and select the option to equip the gem for enchanting
- b. Select any apparel or weapon to receive the enchantment, and place the item on the ground. It's recommended to make sure the itemized list
- is not stacked with any other item so that the enchantment affects the desired item
- c. To perform the enchantment, with the mage holding the enchantment gem selected, right click on the item to be enchanted. If the mage does
- not have enough mana, the menu to perform the enchantment will be un-selectable
- d. When the criteria to perform the enchantment is met, the menu option becomes available and your mage will move to, and enchant, the selected
- item
+ b. Once the mage is holding the gem, right click on any weapon or apparel that is on the ground and choose to enchant. The mage performing the enchantment cannot be drafted.
 </helpText>
 		<highlightTags>
 		  
@@ -67,7 +60,7 @@ Portals must be deactivated before they can be reactivated and assigned a new de
 	</ConceptDef>
 
 			<ConceptDef>
-		<defName>TM_EncantingII</defName>
+		<defName>TM_EnchantingII</defName>
 		<label>Enchanting II</label>
 		<priority>51</priority>
 		<needsOpportunity>False</needsOpportunity>
@@ -80,13 +73,11 @@ currently no way to extract an enchantment from an item.
 5. Raw magicyte (and refined gemstones) may also be purchased from select vendors. The process of deep ore mining, unfortunately, filters out
 the chance to acquire raw magicyte in this manner. Users of the "quarry" can add magicyte to the extracted minerals, the recommended value is 0.4%
  
-6. Mundane pawns will not gain any benefit from equipping an enchanted item.
-
-7. If you wish to drop an enchanting stone - with the mage holding the enchanting gem, right click on any open square and select the menu option
+6. If you wish to drop an enchanting stone, select the mage holding the enchanting gem, right click on any open square and select the menu option
 to drop the gem.
 
-8. Item enchantments can be viewed on individual gear by selecting the item on the ground and using the "Enchanted" tab. The collective Enchantments 
-affecting a single pawn can be seen in the health tab.		
+7. Item enchantments can be viewed on individual gear by selecting the item on the ground and using the "Enchanted" tab. The collective Enchantments 
+affecting a single pawn can be seen in the health tab and a summary of the enchantments will be displayed under a pawn's gear tab.		
 </helpText>
 		<highlightTags>
 		  

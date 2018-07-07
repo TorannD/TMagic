@@ -27,14 +27,14 @@ namespace TorannMagic
                 pwrVal = mpwr.level;
             }
             
-            GenExplosion.DoExplosion(base.Position, map, 0.4f, TMDamageDefOf.DamageDefOf.Firebolt, this.launcher, Mathf.RoundToInt(this.def.projectile.damageAmountBase * comp.arcaneDmg), this.def.projectile.soundExplode, def, this.equipmentDef, null, 0f, 1, false, null, 0f, 1, 0.6f, false);
+            GenExplosion.DoExplosion(base.Position, map, 0.4f, TMDamageDefOf.DamageDefOf.Firebolt, this.launcher, Mathf.RoundToInt(this.def.projectile.GetDamageAmount(1,null) * comp.arcaneDmg), 0, this.def.projectile.soundExplode, def, this.equipmentDef, this.intendedTarget.Thing, null, 0f, 1, false, null, 0f, 1, 0.6f, false);
             CellRect cellRect = CellRect.CenteredOn(base.Position, 3);
             cellRect.ClipInsideMap(map);
 
             victim = base.Position.GetFirstPawn(map);
             if (victim != null)
             {                
-                int dmg = Mathf.RoundToInt(((this.def.projectile.damageAmountBase / 3) * pwr.level)* comp.arcaneDmg);  //projectile = 16
+                int dmg = Mathf.RoundToInt(((this.def.projectile.GetDamageAmount(1,null) / 3) * pwr.level)* comp.arcaneDmg);  //projectile = 16
                 if (settingsRef.AIHardMode && !pawn.IsColonist)
                 {
                     dmg += 10;
@@ -45,7 +45,7 @@ namespace TorannMagic
 
         public void damageEntities(Pawn e, int amt, DamageDef type)
         {
-            DamageInfo dinfo = new DamageInfo(type, Mathf.RoundToInt(Rand.Range((float)(.5f * amt), (float)(1.25*amt))), (float)-1, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+            DamageInfo dinfo = new DamageInfo(type, Mathf.RoundToInt(Rand.Range((float)(.5f * amt), (float)(1.25*amt))), 0, (float)-1, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
             bool flag = e != null;
             if (flag)
             {

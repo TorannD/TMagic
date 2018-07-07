@@ -11,7 +11,12 @@ namespace TorannMagic
     {
         public FloatRange pointsRange = new FloatRange(350f, 1200f);
 
-        public override void Generate(Map map)
+        public override int SeedPart
+        {
+            get;
+        }
+
+        public override void Generate(Map map, GenStepParams parms)
         {
             IntVec3 intVec;
             if (RCellFinder.TryFindRandomCellNearTheCenterOfTheMapWith((IntVec3 x) => GenGrid.Standable(x, map) && !GridsUtility.Fogged(x, map) && GridsUtility.GetRoom(x, map, (RegionType)6).CellCount >= 4, map, out intVec))
@@ -35,7 +40,7 @@ namespace TorannMagic
                 {
                     IntVec3 intVec3 = CellFinder.RandomSpawnCellForPawnNear(intVec, map, 10);
                     intVec2 = intVec3;
-                    GenSpawn.Spawn(list[j], intVec3, map, Rot4.Random, false);
+                    GenSpawn.Spawn(list[j], intVec3, map, Rot4.Random, WipeMode.Vanish, false);
                 }
                 LordMaker.MakeNewLord(Faction.OfMechanoids, new LordJob_DefendPoint(intVec2), map, list);
             }

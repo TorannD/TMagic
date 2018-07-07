@@ -193,13 +193,33 @@ namespace TorannMagic
             else
             {
 
-                if (!isPaired && comp.spell_FoldReality && comp.Mana.CurLevel >= .7f)
+                if (!isPaired)
                 {
-                    list.Add(new FloatMenuOption("TM_SelectPortalDestination".Translate(), delegate
+                    if (comp.spell_FoldReality)
                     {
-                        Job job = new Job(TorannMagicDefOf.PortalDestination, this);
-                        myPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
-                    }, MenuOptionPriority.Default, null, null, 0f, null, null));
+                        if (comp.Mana.CurLevel >= .7f)
+                        {
+                            list.Add(new FloatMenuOption("TM_SelectPortalDestination".Translate(), delegate
+                            {
+                                Job job = new Job(TorannMagicDefOf.PortalDestination, this);
+                                myPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                            }, MenuOptionPriority.Default, null, null, 0f, null, null));
+                        }
+                        else
+                        {
+                            list.Add(new FloatMenuOption("TM_NeedManaToActivatePortal".Translate(new object[]
+                            {
+                                comp.Mana.CurInstantLevel.ToString("0.000")
+                            }), null, MenuOptionPriority.Default, null, null, 0f, null, null));
+                        }
+                    }
+                    else
+                    {
+                        list.Add(new FloatMenuOption("TM_PortalNoGatewayLearned".Translate(new object[]
+                        {
+                            myPawn.LabelShort
+                        }), null, MenuOptionPriority.Default, null, null, 0f, null, null));
+                    }
                 }
                 if (isPaired && this.arcaneEnergyCur >= .05f)
                 {
@@ -350,8 +370,12 @@ namespace TorannMagic
 
         private void PortalPawn(Pawn pawn)
         {
+            MoteMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1f);
+            TM_MoteMaker.ThrowCastingMote(pawn.DrawPos, pawn.Map, Rand.Range(1.2f, 2f));
             pawn.DeSpawn();
             GenSpawn.Spawn(pawn, this.PortalDestinationPosition, this.PortalDestinationMap);
+            TM_MoteMaker.ThrowCastingMote(pawn.DrawPos, pawn.Map, Rand.Range(1.2f, 2f));
+            MoteMaker.ThrowHeatGlow(pawn.Position, pawn.Map, 1.6f);
         }
     }
 }

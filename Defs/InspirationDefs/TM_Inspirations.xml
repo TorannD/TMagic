@@ -95,7 +95,7 @@
 			<li>PlantCutting</li>
 		</requiredNonDisabledWorkTypes>
 		<requiredSkills>
-			<Growing>5</Growing>
+			<Plants>5</Plants>
 		</requiredSkills>
     </InspirationDef>
 	

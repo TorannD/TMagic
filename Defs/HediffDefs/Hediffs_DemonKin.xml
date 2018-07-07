@@ -11,13 +11,13 @@
         <labelTendedWellInner>sutured</labelTendedWellInner>
         <labelSolidTendedWell>set</labelSolidTendedWell>
       </li>
-      <li Class="HediffCompProperties_GetsOld">
-        <oldLabel>touched by shadow</oldLabel>
+      <li Class="HediffCompProperties_GetsPermanent">
+        <permanentLabel>touched by shadow</permanentLabel>
       </li>
     </comps>
 	<injuryProps>
 		<painPerSeverity>0.0225</painPerSeverity>
-		<averagePainPerSeverityOld>0.02</averagePainPerSeverityOld>
+		<averagePainPerSeverityPermanent>0.02</averagePainPerSeverityPermanent>
 		<bleedRate>0.000</bleedRate>
 		<canMerge>true</canMerge>
 			<destroyedLabel>withered</destroyedLabel>

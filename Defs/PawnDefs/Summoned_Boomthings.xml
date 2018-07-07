@@ -15,7 +15,11 @@
       <verbClass>TorannMagic.Verb_Snuggle</verbClass>
       <meleeDamageDef>Cut</meleeDamageDef>
     </verb>
-    <combatLogRules>Damage_Bomb</combatLogRules>
+    <logEntryDef>MeleeAttack</logEntryDef>
+    <combatLogRulesHit>Maneuver_Scratch_MeleeHit</combatLogRulesHit>
+    <combatLogRulesDeflect>Maneuver_Scratch_MeleeDeflect</combatLogRulesDeflect>
+    <combatLogRulesMiss>Maneuver_Scratch_MeleeMiss</combatLogRulesMiss>
+    <combatLogRulesDodge>Maneuver_Scratch_MeleeDodge</combatLogRulesDodge>
   </ManeuverDef>
   
   <!-- leap as a flying object -->
@@ -67,8 +71,8 @@
 	  <predator>true</predator>
 	  <wildness>0.4</wildness>
       <foodType>OmnivoreRoughAnimal</foodType>
-      <leatherColor>(255,215,0)</leatherColor>
-      <leatherInsulation>1.5</leatherInsulation>
+<!--       <leatherColor>(255,215,0)</leatherColor>
+      <leatherInsulation>1.5</leatherInsulation> -->
 	  <thinkTreeConstant>TM_Elemental_AI_Constant</thinkTreeConstant>
       <thinkTreeMain>TM_Elemental_AI</thinkTreeMain>
       <lifeExpectancy>8</lifeExpectancy>
@@ -130,8 +134,8 @@
     <label>poppi</label>
     <race>TM_Poppi</race>
     <combatPower>120</combatPower>
-    <wildSpawn_spawnWild>false</wildSpawn_spawnWild>
-	<wildSpawn_EcoSystemWeight>0</wildSpawn_EcoSystemWeight>
+<!--     <wildSpawn_spawnWild>false</wildSpawn_spawnWild>
+	<wildSpawn_EcoSystemWeight>0</wildSpawn_EcoSystemWeight> -->
 	<canArriveManhunter>false</canArriveManhunter>
     <lifeStages>
       <li>

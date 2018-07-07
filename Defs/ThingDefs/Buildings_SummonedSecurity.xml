@@ -12,7 +12,7 @@
     <altitudeLayer>Building</altitudeLayer>
     <drawerType>RealtimeOnly</drawerType>
     <rotatable>false</rotatable>
-	<tradeability>Never</tradeability>
+	<tradeability>None</tradeability>
     <tickerType>Normal</tickerType>
     <stealable>false</stealable>
     <statBases>
@@ -49,7 +49,7 @@
     <altitudeLayer>LowPlant</altitudeLayer>
     <drawerType>RealtimeOnly</drawerType>
     <rotatable>false</rotatable>
-	<tradeability>Never</tradeability>
+	<tradeability>None</tradeability>
     <tickerType>Normal</tickerType>
     <stealable>false</stealable>
     <statBases>
@@ -99,7 +99,7 @@
         <explosiveDamageType>TM_ManaMine</explosiveDamageType>
 		<damageAmountBase>24</damageAmountBase>
         <startWickHitPointsPercent>0.2</startWickHitPointsPercent>
-		<dealMoreDamageAtCenter>true</dealMoreDamageAtCenter>
+		<damageFalloff>true</damageFalloff>
 		<chanceToStartFire>0.0</chanceToStartFire>
         <wickTicks>
           <min>5</min>
@@ -127,7 +127,7 @@
         <explosiveDamageType>TM_ManaMine</explosiveDamageType>
 		<damageAmountBase>29</damageAmountBase>
         <startWickHitPointsPercent>0.2</startWickHitPointsPercent>
-		<dealMoreDamageAtCenter>true</dealMoreDamageAtCenter>
+		<damageFalloff>true</damageFalloff>
 		<chanceToStartFire>0.0</chanceToStartFire>
         <wickTicks>
           <min>10</min>
@@ -155,7 +155,7 @@
         <explosiveDamageType>TM_ManaMine</explosiveDamageType>
 		<damageAmountBase>35</damageAmountBase>
         <startWickHitPointsPercent>0.2</startWickHitPointsPercent>
-		<dealMoreDamageAtCenter>true</dealMoreDamageAtCenter>
+		<damageFalloff>true</damageFalloff>
 		<chanceToStartFire>0.0</chanceToStartFire>
         <wickTicks>
           <min>15</min>
@@ -183,7 +183,7 @@
         <explosiveDamageType>TM_ManaMine</explosiveDamageType>
 		<damageAmountBase>40</damageAmountBase>
         <startWickHitPointsPercent>0.2</startWickHitPointsPercent>
-		<dealMoreDamageAtCenter>true</dealMoreDamageAtCenter>
+		<damageFalloff>true</damageFalloff>
 		<explosionEffect>GiantExplosion</explosionEffect>
 		<explosionSound>Explosion_GiantBomb</explosionSound>
 		<chanceToStartFire>0.0</chanceToStartFire>
@@ -208,11 +208,10 @@
         <rect>(0.2,0.2,0.6,0.6)</rect>
       </damageData>
     </graphicData>
-    <minifiedDef>MinifiedFurniture</minifiedDef>
     <altitudeLayer>Building</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>false</rotatable>
-	<tradeability>Never</tradeability>
+	<tradeability>None</tradeability>
     <statBases>
       <MaxHitPoints>65</MaxHitPoints>
       <Flammability>1.0</Flammability>
@@ -274,9 +273,8 @@
     </graphicData>
     <menuHidden>true</menuHidden>
     <description>Focal point of an arcane defense pylon, capable of collecting and emitting bursts of raw magical energy.</description>
-    <soundInteract>InteractRifle</soundInteract>
-    <canBeSpawningInventory>false</canBeSpawningInventory>
-    <tradeability>Never</tradeability>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <tradeability>None</tradeability>
     <destroyOnDrop>true</destroyOnDrop>
     <useHitPoints>false</useHitPoints>
     <statBases>
@@ -285,7 +283,9 @@
       <AccuracyMedium>0.32</AccuracyMedium>
       <AccuracyLong>0.24</AccuracyLong>
       <RangedWeapon_Cooldown>0.6</RangedWeapon_Cooldown>
+	  <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
+	  <Mass>10</Mass>
     </statBases>
     <weaponTags>
       <li>DefensePylon</li>
@@ -332,11 +332,10 @@
         <rect>(0.2,0.2,0.6,0.6)</rect>
       </damageData>
     </graphicData>
-    <minifiedDef>MinifiedFurniture</minifiedDef>
     <altitudeLayer>Building</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>false</rotatable>
-	<tradeability>Never</tradeability>
+	<tradeability>None</tradeability>
     <statBases>
       <MaxHitPoints>80</MaxHitPoints>
       <Flammability>1.0</Flammability>
@@ -397,9 +396,8 @@
     </graphicData>
     <menuHidden>true</menuHidden>
     <description>Focal point of an arcane defense pylon, capable of collecting and emitting bursts of raw magical energy.</description>
-    <soundInteract>InteractRifle</soundInteract>
-    <canBeSpawningInventory>false</canBeSpawningInventory>
-    <tradeability>Never</tradeability>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <tradeability>None</tradeability>
     <destroyOnDrop>true</destroyOnDrop>
     <useHitPoints>false</useHitPoints>
     <statBases>
@@ -409,6 +407,8 @@
       <AccuracyLong>0.24</AccuracyLong>
       <RangedWeapon_Cooldown>0.6</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
+	  <Flammability>0</Flammability>
+	  <Mass>10</Mass>
     </statBases>
     <weaponTags>
       <li>DefensePylon_I</li>
@@ -441,11 +441,10 @@
         <rect>(0.2,0.2,0.6,0.6)</rect>
       </damageData>
     </graphicData>
-    <minifiedDef>MinifiedFurniture</minifiedDef>
     <altitudeLayer>Building</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>false</rotatable>
-	<tradeability>Never</tradeability>
+	<tradeability>None</tradeability>
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>
       <Flammability>1.0</Flammability>
@@ -506,9 +505,8 @@
     </graphicData>
     <menuHidden>true</menuHidden>
     <description>Focal point of an arcane defense pylon, capable of collecting and emitting bursts of raw magical energy.</description>
-    <soundInteract>InteractRifle</soundInteract>
-    <canBeSpawningInventory>false</canBeSpawningInventory>
-    <tradeability>Never</tradeability>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <tradeability>None</tradeability>
     <destroyOnDrop>true</destroyOnDrop>
     <useHitPoints>false</useHitPoints>
     <statBases>
@@ -518,6 +516,8 @@
       <AccuracyLong>0.24</AccuracyLong>
       <RangedWeapon_Cooldown>0.6</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
+	  <Flammability>0</Flammability>
+	  <Mass>10</Mass>
     </statBases>
     <weaponTags>
       <li>DefensePylon_II</li>
@@ -550,11 +550,10 @@
         <rect>(0.2,0.2,0.6,0.6)</rect>
       </damageData>
     </graphicData>
-    <minifiedDef>MinifiedFurniture</minifiedDef>
     <altitudeLayer>Building</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>false</rotatable>
-	<tradeability>Never</tradeability>
+	<tradeability>None</tradeability>
     <statBases>
       <MaxHitPoints>120</MaxHitPoints>
       <Flammability>1.0</Flammability>
@@ -616,9 +615,8 @@
     </graphicData>
     <menuHidden>true</menuHidden>
     <description>Focal point of an arcane defense pylon, capable of collecting and emitting bursts of raw magical energy.</description>
-    <soundInteract>InteractRifle</soundInteract>
-    <canBeSpawningInventory>false</canBeSpawningInventory>
-    <tradeability>Never</tradeability>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <tradeability>None</tradeability>
     <destroyOnDrop>true</destroyOnDrop>
     <useHitPoints>false</useHitPoints>
     <statBases>
@@ -628,6 +626,8 @@
       <AccuracyLong>0.24</AccuracyLong>
       <RangedWeapon_Cooldown>0.6</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
+	  <Flammability>0</Flammability>
+	  <Mass>10</Mass>
     </statBases>
     <weaponTags>
       <li>DefensePylon_III</li>
@@ -665,10 +665,10 @@
         <rect>(0.1,0,0.8,0.3)</rect>
       </damageData>
     </graphicData>
-    <blueprintGraphicData>
+<!--     <blueprintGraphicData>
       <texPath>Other/manawall</texPath>
     </blueprintGraphicData>
-    <uiIconPath>Other/manawall</uiIconPath>
+    <uiIconPath>Other/manawall</uiIconPath> -->
     <statBases>
       <MaxHitPoints>250</MaxHitPoints>
       <WorkToBuild>150</WorkToBuild>

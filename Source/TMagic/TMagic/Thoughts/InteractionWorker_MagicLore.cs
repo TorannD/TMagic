@@ -8,11 +8,14 @@ namespace TorannMagic.Thoughts
     public class InteractionWorker_MagicLore : InteractionWorker
     {
 
-        public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks)
+        public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks, out string letterText, out string letterLabel, out LetterDef letterDef)
         {
+            letterText = null;
+            letterLabel = null;
+            letterDef = null;
             CompAbilityUserMagic compInit = initiator.GetComp<CompAbilityUserMagic>();
             CompAbilityUserMagic compRec = recipient.GetComp<CompAbilityUserMagic>();
-            base.Interacted(initiator, recipient, extraSentencePacks);
+            //base.Interacted(initiator, recipient, extraSentencePacks);
             int num = compInit.MagicUserLevel - compRec.MagicUserLevel;
             int num2 = (int)(20f + Rand.Range(3f, 10f)*(float)num);
             compRec.MagicUserXP += num2;

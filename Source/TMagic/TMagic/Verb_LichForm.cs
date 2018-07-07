@@ -71,7 +71,7 @@ namespace TorannMagic
             skill.passion = Passion.None;
             skill = lich.skills.GetSkill(SkillDefOf.Crafting);
             skill.passion = Passion.None;
-            skill = lich.skills.GetSkill(SkillDefOf.Growing);
+            skill = lich.skills.GetSkill(SkillDefOf.Plants);
             skill.passion = Passion.None;
             skill = lich.skills.GetSkill(SkillDefOf.Medicine);
             skill.passion = Passion.None;

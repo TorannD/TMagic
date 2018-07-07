@@ -237,7 +237,7 @@ namespace TorannMagic
                 return;
             }
             Explosion explosion = (Explosion)GenSpawn.Spawn(ThingDefOf.Explosion, center, map);
-            explosion.dealMoreDamageAtCenter = true;
+            explosion.damageFalloff = true;
             explosion.chanceToStartFire = 0.0f;
             explosion.Position = center;
             explosion.radius = radius;
@@ -289,7 +289,7 @@ namespace TorannMagic
                     { 
                         thing.SetFaction(faction, null);
                     }
-                    GenSpawn.Spawn(thing, position, map, Rot4.North, false);
+                    GenSpawn.Spawn(thing, position, map, Rot4.North, WipeMode.Vanish, false);
                 }
             }
         }        
@@ -556,7 +556,7 @@ namespace TorannMagic
         //public static void TeleportAdd(IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
         //{
         //    //System.Random rnd = new System.Random();
-        //    //int modDamAmountRand = GenMath.RoundRandom(rnd.Next(1, projectile.projectile.damageAmountBase / 2));
+        //    //int modDamAmountRand = GenMath.RoundRandom(rnd.Next(1, projectile.projectile.GetDamageAmount(1,null) / 2));
         //    if (map == null)
         //    {
         //        Log.Warning("Tried to do explosion in a null map.");
@@ -567,7 +567,7 @@ namespace TorannMagic
         //    teleportAdd.radius = radius;
         //    teleportAdd.damType = damType;
         //    teleportAdd.instigator = instigator;
-        //    teleportAdd.damAmount = 0; // ((projectile == null) ? GenMath.RoundRandom((float)damType.explosionDamage) : modDamAmountRand);
+        //    teleportAdd.damAmount = 0; // ((projectile == null) ? GenMath.RoundRandom((float)damType.defaultDamage) : modDamAmountRand);
         //    teleportAdd.weaponGear = source;
 
         //    bool flagPawn;

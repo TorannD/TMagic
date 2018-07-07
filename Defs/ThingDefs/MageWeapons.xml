@@ -31,8 +31,9 @@
 	</ThingDef>
 	
   <ThingDef Name="BaseMageRing" Abstract="True" ParentName="BaseMageWeapon">
-	<techLevel>Ultra</techLevel>
+	<techLevel>Neolithic</techLevel>
 	<smeltable>true</smeltable>
+	<tradeability>None</tradeability>
 	<thingCategories>
 <!--       <li>WeaponsRanged</li> -->
     </thingCategories>
@@ -44,7 +45,7 @@
         <compClass>CompQuality</compClass>
       </li>
       <li Class="CompProperties_Art">
-        <nameMaker>ArtName_WeaponGun</nameMaker>
+        <nameMaker>NamerArtWeaponGun</nameMaker>
         <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
         <minQualityForArtistic>Excellent</minQualityForArtistic>
       </li>
@@ -72,7 +73,7 @@
         <compClass>CompQuality</compClass>
       </li>
       <li Class="CompProperties_Art">
-        <nameMaker>ArtName_WeaponGun</nameMaker>
+        <nameMaker>NamerArtWeaponGun</nameMaker>
         <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
         <minQualityForArtistic>Excellent</minQualityForArtistic>
       </li>
@@ -95,7 +96,7 @@
         <compClass>CompQuality</compClass>
       </li>
       <li Class="CompProperties_Art">
-        <nameMaker>ArtName_WeaponGun</nameMaker>
+        <nameMaker>NamerArtWeaponGun</nameMaker>
         <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
         <minQualityForArtistic>Excellent</minQualityForArtistic>
       </li>
@@ -118,7 +119,7 @@
         <compClass>CompQuality</compClass>
       </li>
       <li Class="CompProperties_Art">
-        <nameMaker>ArtName_WeaponGun</nameMaker>
+        <nameMaker>NamerArtWeaponGun</nameMaker>
         <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
         <minQualityForArtistic>Excellent</minQualityForArtistic>
       </li>
@@ -269,7 +270,7 @@
       <texPath>Items/weapons/wand_fir</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <soundInteract>InteractRevolver</soundInteract>	
+    <soundInteract>Interact_Revolver</soundInteract>	
     <statBases>
       <WorkToMake>10000</WorkToMake>
 	  <MarketValue>400</MarketValue>
@@ -349,7 +350,7 @@
       <texPath>Items/weapons/wand_ice</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <soundInteract>InteractRevolver</soundInteract>
+    <soundInteract>Interact_Revolver</soundInteract>
     <statBases>
       <WorkToMake>10000</WorkToMake>
 	  <MarketValue>400</MarketValue>
@@ -434,7 +435,7 @@
       <texPath>Items/weapons/wand_lit</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <soundInteract>InteractRevolver</soundInteract>
+    <soundInteract>Interact_Revolver</soundInteract>
     <statBases>
       <WorkToMake>10000</WorkToMake>
 	  <MarketValue>400</MarketValue>
@@ -515,7 +516,7 @@
       <texPath>Items/weapons/staff_blazingpower</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <soundInteract>InteractRevolver</soundInteract>	
+    <soundInteract>Interact_Revolver</soundInteract>	
     <statBases>
       <WorkToMake>77700</WorkToMake>
 	  <MarketValue>6000</MarketValue>
@@ -651,7 +652,7 @@
       <texPath>Items/weapons/staff_elements</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <soundInteract>InteractRevolver</soundInteract>	
+    <soundInteract>Interact_Revolver</soundInteract>	
     <statBases>
       <WorkToMake>77700</WorkToMake>
 	  <MarketValue>5000</MarketValue>
@@ -770,7 +771,7 @@
       <texPath>Items/weapons/seer_ring_fir</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <soundInteract>InteractRevolver</soundInteract>
+    <soundInteract>Interact_Revolver</soundInteract>
     <statBases>
       <WorkToMake>15000</WorkToMake>
       <Mass>1.0</Mass>
@@ -782,11 +783,10 @@
       <Weapon_Bulk>0.1</Weapon_Bulk>
     </statBases>
 	<destroyOnDrop>true</destroyOnDrop>
-	<tradeability>Never</tradeability>
+	<tradeability>None</tradeability>
 	<menuHidden>true</menuHidden>
     <costList>
       <Steel>30</Steel>
-      <Component>2</Component>
     </costList>
     <verbs>
       <li>
@@ -795,7 +795,7 @@
         <defaultProjectile>Projectile_SeerRing_Fire</defaultProjectile>
         <warmupTime>1.5</warmupTime>
         <range>40</range>
-        <soundCast>DropPodLeaving</soundCast>
+        <soundCast>DropPod_Leaving</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
@@ -838,7 +838,7 @@
       <texPath>Items/weapons/seer_ring_ice</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <soundInteract>InteractRevolver</soundInteract>
+    <soundInteract>Interact_Revolver</soundInteract>
     <statBases>
       <WorkToMake>15000</WorkToMake>
       <Mass>1.0</Mass>
@@ -850,11 +850,10 @@
       <Weapon_Bulk>0.1</Weapon_Bulk>
     </statBases>
 	<destroyOnDrop>true</destroyOnDrop>
-	<tradeability>Never</tradeability>
+	<tradeability>None</tradeability>
 	<menuHidden>true</menuHidden>
     <costList>
       <Steel>30</Steel>
-      <Component>2</Component>
     </costList>
     <verbs>
       <li>
@@ -863,7 +862,7 @@
         <defaultProjectile>Projectile_SeerRing_Ice</defaultProjectile>
         <warmupTime>1.2</warmupTime>
         <range>36</range>
-        <soundCast>ShotChargeRifle</soundCast>
+        <soundCast>Shot_ChargeRifle</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
@@ -912,7 +911,7 @@
       <texPath>Items/weapons/seer_ring_lit</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <soundInteract>InteractRevolver</soundInteract>
+    <soundInteract>Interact_Revolver</soundInteract>
     <statBases>
       <WorkToMake>15000</WorkToMake>
       <Mass>1.0</Mass>
@@ -924,11 +923,10 @@
       <Weapon_Bulk>0.1</Weapon_Bulk>
     </statBases>
 	<destroyOnDrop>true</destroyOnDrop>
-	<tradeability>Never</tradeability>
+	<tradeability>None</tradeability>
 	<menuHidden>true</menuHidden>
     <costList>
       <Steel>30</Steel>
-      <Component>2</Component>
     </costList>
     <verbs>
       <li>

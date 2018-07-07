@@ -16,9 +16,10 @@
       <MaxHitPoints>100</MaxHitPoints>
       <Flammability>1.0</Flammability>
       <DeteriorationRate>2</DeteriorationRate>
-			<Beauty>-4</Beauty>
-			<SellPriceFactor>0.70</SellPriceFactor>
-		</statBases>
+		<Beauty>-2</Beauty>
+		<SellPriceFactor>0.70</SellPriceFactor>
+		<EquipDelay>1</EquipDelay>
+	</statBases>
     <altitudeLayer>Item</altitudeLayer>
     <alwaysHaulable>True</alwaysHaulable>
     <tickerType>Never</tickerType>
@@ -71,6 +72,16 @@
       <effectWorking>Smith</effectWorking>
       <soundWorking>Recipe_Smith</soundWorking>
       <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+	  <defaultIngredientFilter>
+        <categories>
+          <li>Root</li>
+        </categories>
+        <disallowedThingDefs>
+          <li>Gold</li>
+          <li>Silver</li>
+          <li>Uranium</li>
+        </disallowedThingDefs>
+      </defaultIngredientFilter>
     </recipeMaker>
 	<tradeTags>
 	  <li>Arcane</li>
@@ -78,6 +89,9 @@
 	<inspectorTabs>
       <li>TorannMagic.Enchantment.ITab_Enchantment</li>
     </inspectorTabs>
+	<apparel>
+	  <useDeflectMetalEffect>true</useDeflectMetalEffect>
+	</apparel>
   </ThingDef>
 
   <ThingDef ParentName="TMTailoredApparelBase">
@@ -96,7 +110,7 @@
 		<ArmorRating_Blunt>0.10</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.15</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.50</ArmorRating_Heat>
-		<ArmorRating_Electric>0.40</ArmorRating_Electric>
+		<ArmorRating_Alignment>0.30</ArmorRating_Alignment>
 		<Insulation_Cold>-22</Insulation_Cold>
 		<Insulation_Heat>15</Insulation_Heat>
 	</statBases>
@@ -192,7 +206,8 @@
     <description>Chain mail forged with an ancient design that provides above average physical defense. The design of the armor includes a symmetrical etching of arcane runes that bestow the wearer with enhanced arcane power. Once crafted, these runes attract the power of an ancient spirit and grants the wearer a chance to cause additional arcane damage following any attack; however, this comes at a price - all spells will require more mana to cast (this cannot be overwritten), and the bearer is beset with nightmares that slowly break down mental resistances.</description>
     <graphicData> 
 		<texPath>Equipment/ancientmail</texPath>
-		<graphicClass>Graphic_Single</graphicClass> 
+		<graphicClass>Graphic_Single</graphicClass>
+		<drawSize>1.10</drawSize>
 	</graphicData>
 	<statBases>
 		<WorkToMake>20000</WorkToMake>
@@ -202,7 +217,7 @@
 		<ArmorRating_Blunt>0.32</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.46</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.10</ArmorRating_Heat>
-		<ArmorRating_Electric>-0.20</ArmorRating_Electric>
+		<ArmorRating_Alignment>0.40</ArmorRating_Alignment>
 		<Insulation_Cold>-10</Insulation_Cold>
 		<Insulation_Heat>10</Insulation_Heat>
 	</statBases>
@@ -306,7 +321,8 @@
     <description>Robes worn by the heralds of dark magic. Wearers of this robe are willing to sacrifice their sanity in return for arcane power.</description>
     <graphicData> 
 		<texPath>Equipment/darkrobe</texPath>
-		<graphicClass>Graphic_Single</graphicClass> 
+		<graphicClass>Graphic_Single</graphicClass>
+		<drawSize>1.20</drawSize>
 	</graphicData>
 	<statBases>
 		<WorkToMake>16000</WorkToMake>
@@ -316,7 +332,7 @@
 		<ArmorRating_Blunt>0.14</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.20</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.50</ArmorRating_Heat>
-		<ArmorRating_Electric>0.40</ArmorRating_Electric>
+		<ArmorRating_Alignment>0.35</ArmorRating_Alignment>
 		<Insulation_Cold>-15</Insulation_Cold>
 		<Insulation_Heat>15</Insulation_Heat>
 	</statBases>
@@ -428,7 +444,7 @@
 		<ArmorRating_Blunt>0.27</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.20</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.80</ArmorRating_Heat>
-		<ArmorRating_Electric>0.80</ArmorRating_Electric>
+		<ArmorRating_Alignment>0.65</ArmorRating_Alignment>
 		<Insulation_Cold>-25</Insulation_Cold>
 		<Insulation_Heat>25</Insulation_Heat>
 	</statBases>
@@ -548,7 +564,7 @@
 		<ArmorRating_Blunt>0.4</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.35</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.80</ArmorRating_Heat>
-		<ArmorRating_Electric>0.40</ArmorRating_Electric>
+		<ArmorRating_Alignment>0.80</ArmorRating_Alignment>
 		<Insulation_Cold>-15</Insulation_Cold>
 		<Insulation_Heat>15</Insulation_Heat>
 	</statBases>
@@ -638,7 +654,8 @@
     <description>A breastplate etched in holy symbols that is designed to protect vital areas without restricting movement. Said to have been worn by holy warriors of a bygone age who maintained peace with justice and compassion in equal measure. It is unknown what became of this order, though it is hard to believe it had anything to do with their skill in armor craft.</description>
     <graphicData> 
 		<texPath>Equipment/royalarmor</texPath>
-		<graphicClass>Graphic_Single</graphicClass> 
+		<graphicClass>Graphic_Single</graphicClass>
+		<drawSize>1.40</drawSize>
 	</graphicData>
 	<statBases>
 		<WorkToMake>50000</WorkToMake>
@@ -648,7 +665,7 @@
 		<ArmorRating_Blunt>0.6</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.20</ArmorRating_Heat>
-		<ArmorRating_Electric>-0.20</ArmorRating_Electric>
+		<ArmorRating_Alignment>0.40</ArmorRating_Alignment>
 		<Insulation_Cold>-5</Insulation_Cold>
 		<Insulation_Heat>5</Insulation_Heat>
 	</statBases>
@@ -725,7 +742,7 @@
 		<ArmorRating_Blunt>0.15</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.15</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.40</ArmorRating_Heat>
-		<ArmorRating_Electric>0.40</ArmorRating_Electric>
+		<ArmorRating_Alignment>0.50</ArmorRating_Alignment>
 		<Insulation_Cold>-8</Insulation_Cold>
 		<Insulation_Heat>8</Insulation_Heat>		
 	</statBases>
@@ -808,7 +825,7 @@
 		<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.20</ArmorRating_Heat>
-		<ArmorRating_Electric>0.20</ArmorRating_Electric>
+		<ArmorRating_Alignment>0.30</ArmorRating_Alignment>
 		<Insulation_Cold>-10</Insulation_Cold>
 		<Insulation_Heat>10</Insulation_Heat>		
 	</statBases>

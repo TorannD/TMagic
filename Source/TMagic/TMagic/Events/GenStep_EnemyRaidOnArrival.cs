@@ -5,7 +5,12 @@ namespace TorannMagic
 {
     class GenStep_EnemyRaidOnArrival : GenStep
     {
-        public override void Generate(Map map)
+        public override int SeedPart
+        {
+            get;
+        }
+
+        public override void Generate(Map map, GenStepParams parms)
         {
         }
     }

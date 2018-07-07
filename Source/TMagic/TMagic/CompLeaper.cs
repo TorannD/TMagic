@@ -13,7 +13,7 @@ namespace TorannMagic
         public float explosionRadius = 2f;
         private int nextLeap = 0;
 
-        private Pawn pawn
+        private Pawn Pawn
         {
             get
             {
@@ -30,34 +30,34 @@ namespace TorannMagic
         public override void CompTick()
         {
             base.CompTick();
-            if (this.pawn.Spawned)
+            if (this.Pawn.Spawned)
             {
                 if (Find.TickManager.TicksGame % 10 == 0)
                 {
-                    if (this.pawn.Downed && !this.pawn.Dead)
+                    if (this.Pawn.Downed && !this.Pawn.Dead)
                     {
-                        GenExplosion.DoExplosion(this.pawn.Position, this.pawn.Map, Rand.Range(this.explosionRadius * .5f, this.explosionRadius * 1.5f), DamageDefOf.Burn, this.pawn, Rand.Range(6, 10), null, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
-                        this.pawn.Kill(null, null);
+                        GenExplosion.DoExplosion(this.Pawn.Position, this.Pawn.Map, Rand.Range(this.explosionRadius * .5f, this.explosionRadius * 1.5f), DamageDefOf.Burn, this.Pawn, Rand.Range(6, 10), 0, null, null, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
+                        this.Pawn.Kill(null, null);
                     }
                 }
-                if (Find.TickManager.TicksGame % nextLeap == 0 && !pawn.Downed && !pawn.Dead)
+                if (Find.TickManager.TicksGame % nextLeap == 0 && !Pawn.Downed && !Pawn.Dead)
                 {
                     LocalTargetInfo lti = null;
-                    if (this.pawn.CurJob != null && this.pawn.CurJob.targetA != null)
+                    if (this.Pawn.CurJob != null && this.Pawn.CurJob.targetA != null)
                     {
-                        lti = this.pawn.jobs.curJob.targetA.Thing;
+                        lti = this.Pawn.jobs.curJob.targetA.Thing;
                     }
                     if (lti != null && lti.Thing != null)
                     {
                         Thing target = lti.Thing;
                         if (target is Pawn && target.Spawned)
                         {
-                            float targetRange = (target.Position - this.pawn.Position).LengthHorizontal;
+                            float targetRange = (target.Position - this.Pawn.Position).LengthHorizontal;
                             if (targetRange <= this.Props.leapRangeMax && targetRange > this.Props.leapRangeMin)
                             {
                                 if (Rand.Chance(this.Props.GetLeapChance))
                                 {
-                                    if (CanHitTargetFrom(this.pawn.Position, target))
+                                    if (CanHitTargetFrom(this.Pawn.Position, target))
                                     {
                                         LeapAttack(target);
                                     }
@@ -68,11 +68,11 @@ namespace TorannMagic
                                     {
                                         if (Rand.Chance(.5f))
                                         {
-                                            MoteMaker.ThrowText(this.pawn.DrawPos, this.pawn.Map, "grrr", -1);
+                                            MoteMaker.ThrowText(this.Pawn.DrawPos, this.Pawn.Map, "grrr", -1);
                                         }
                                         else
                                         {
-                                            MoteMaker.ThrowText(this.pawn.DrawPos, this.pawn.Map, "hsss", -1);
+                                            MoteMaker.ThrowText(this.Pawn.DrawPos, this.Pawn.Map, "hsss", -1);
                                         }
                                     }
                                 }
@@ -86,15 +86,15 @@ namespace TorannMagic
                                 }
                                 IntVec3 curCell;
 
-                                IEnumerable<IntVec3> targets = GenRadial.RadialCellsAround(this.pawn.Position, this.Props.leapRangeMax, false);
+                                IEnumerable<IntVec3> targets = GenRadial.RadialCellsAround(this.Pawn.Position, this.Props.leapRangeMax, false);
                                 for (int i = 0; i < targets.Count(); i++)
                                 {
                                     Pawn bounceTarget = null;
 
                                     curCell = targets.ToArray<IntVec3>()[i];
-                                    if (curCell.InBounds(this.pawn.Map) && curCell.IsValid)
+                                    if (curCell.InBounds(this.Pawn.Map) && curCell.IsValid)
                                     {
-                                        bounceTarget = curCell.GetFirstPawn(this.pawn.Map);
+                                        bounceTarget = curCell.GetFirstPawn(this.Pawn.Map);
                                         if (bounceTarget != null && bounceTarget != target && !bounceTarget.Downed && !bounceTarget.Dead && bounceTarget.RaceProps != null)
                                         {
                                             if (bounceTarget.Faction != null && bounceTarget.Faction == targetFaction)
@@ -122,7 +122,7 @@ namespace TorannMagic
                                     if (bounceTarget != null)
                                     {
 
-                                        if (CanHitTargetFrom(this.pawn.Position, target))
+                                        if (CanHitTargetFrom(this.Pawn.Position, target))
                                         {
                                             if (!bounceTarget.Downed && !bounceTarget.Dead)
                                             {
@@ -146,11 +146,11 @@ namespace TorannMagic
             bool flag = target != null && target.Cell != default(IntVec3);
             if (flag)
             {
-                if (this.pawn != null && this.pawn.Position.IsValid && this.pawn.Spawned && this.pawn.Map != null && !this.pawn.Downed && !this.pawn.Dead && !target.Thing.DestroyedOrNull())
+                if (this.Pawn != null && this.Pawn.Position.IsValid && this.Pawn.Spawned && this.Pawn.Map != null && !this.Pawn.Downed && !this.Pawn.Dead && !target.Thing.DestroyedOrNull())
                 {
-                    this.pawn.jobs.StopAll();
-                    FlyingObject_Leap flyingObject = (FlyingObject_Leap)GenSpawn.Spawn(ThingDef.Named("FlyingObject_Leap"), this.pawn.Position, this.pawn.Map);
-                    flyingObject.Launch(this.pawn, target.Cell, this.pawn);
+                    this.Pawn.jobs.StopAll();
+                    FlyingObject_Leap flyingObject = (FlyingObject_Leap)GenSpawn.Spawn(ThingDef.Named("FlyingObject_Leap"), this.Pawn.Position, this.Pawn.Map);
+                    flyingObject.Launch(this.Pawn, target.Cell, this.Pawn);
                 }
             }            
         }
@@ -181,7 +181,7 @@ namespace TorannMagic
         private bool CanHitTargetFrom(IntVec3 pawn, LocalTargetInfo target)
         {
             bool result = false;
-            if (target.IsValid && target.CenterVector3.InBounds(this.pawn.Map) && !target.Cell.Fogged(this.pawn.Map) && target.Cell.Walkable(this.pawn.Map))
+            if (target.IsValid && target.CenterVector3.InBounds(this.Pawn.Map) && !target.Cell.Fogged(this.Pawn.Map) && target.Cell.Walkable(this.Pawn.Map))
             {
                 ShootLine shootLine;
                 result = this.TryFindShootLineFromTo(pawn, target, out shootLine);                
@@ -196,13 +196,13 @@ namespace TorannMagic
 
         public bool TryFindShootLineFromTo(IntVec3 root, LocalTargetInfo targ, out ShootLine resultingLine)
         {
-            if (targ.HasThing && targ.Thing.Map != this.pawn.Map)
+            if (targ.HasThing && targ.Thing.Map != this.Pawn.Map)
             {
                 resultingLine = default(ShootLine);
                 return false;
             }
             resultingLine = new ShootLine(root, targ.Cell);
-            if (!GenSight.LineOfSightToEdges(root, targ.Cell, this.pawn.Map, true, null))
+            if (!GenSight.LineOfSightToEdges(root, targ.Cell, this.Pawn.Map, true, null))
             {
                 return false;
             }

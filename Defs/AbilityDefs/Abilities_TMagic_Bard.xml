@@ -41,7 +41,7 @@
         <warmupTime>2.5</warmupTime>
         <SecondsToRecharge>8.0</SecondsToRecharge>
         <range>25</range>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>30</muzzleFlashScale>
         <isPrimary>false</isPrimary>
    	    <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
@@ -78,7 +78,7 @@ Activating the ability casts a net over the colony and allows the bard to detect
         <warmupTime>2</warmupTime>
         <SecondsToRecharge>10</SecondsToRecharge>
         <range>0</range>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>30</muzzleFlashScale>
         <isPrimary>false</isPrimary>
    	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
@@ -112,7 +112,7 @@ Activating the ability casts a net over the colony and allows the bard to detect
             <SecondsToRecharge>60</SecondsToRecharge>
             <range>0</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>4</muzzleFlashScale>
             <isPrimary>false</isPrimary>

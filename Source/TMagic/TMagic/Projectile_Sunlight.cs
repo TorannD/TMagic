@@ -96,7 +96,7 @@ namespace TorannMagic
                     bldgComp.Temporary = false;
                     bldgComp.Spawner = this.launcher as Pawn;
                     bldgComp.sustained = true;
-                    GenSpawn.Spawn(thing, position, map, Rot4.North, false);
+                    GenSpawn.Spawn(thing, position, map, Rot4.North, WipeMode.Vanish, false);
                     comp.summonedLights.Add(thing);
                 }
             }

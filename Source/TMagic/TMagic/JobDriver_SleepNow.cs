@@ -26,7 +26,7 @@ namespace TorannMagic
                 Pawn actor = layDown.actor;
                 actor.pather.StopDead();
                 JobDriver curDriver = actor.jobs.curDriver;
-                curDriver.layingDown = LayingDownState.LayingSurface;                
+                actor.jobs.posture = PawnPosture.LayingOnGroundNormal;              
                 curDriver.asleep = false;
                 if (actor.mindState.applyBedThoughtsTick == 0)
                 {
@@ -97,7 +97,7 @@ namespace TorannMagic
                 {
                     ApplyBedThoughts(actor);
                 }
-                curDriver.layingDown = LayingDownState.NotLaying;
+                actor.jobs.posture = PawnPosture.Standing;
                 curDriver.asleep = false;
             });
             yield return layDown;

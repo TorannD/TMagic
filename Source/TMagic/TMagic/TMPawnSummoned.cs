@@ -184,14 +184,14 @@ namespace TorannMagic
             }
         }
 
-        public override void DeSpawn()
+        public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
         {
             bool flag = this.effecter != null;
             if (flag)
             {
                 this.effecter.Cleanup();
             }
-            base.DeSpawn();
+            base.DeSpawn(mode);
         }
 
         public override void ExposeData()

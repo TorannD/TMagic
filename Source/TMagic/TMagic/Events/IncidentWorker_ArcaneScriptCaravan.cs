@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Verse;
 using RimWorld;
+using System.Collections.Generic;
 
 namespace TorannMagic
 {
@@ -14,6 +15,8 @@ namespace TorannMagic
         private const float TravelBufferAbsolute = 1f;
 
         private const int MaxTileDistance = 24;
+
+        private static List<Map> tmpAvailableMaps = new List<Map>();
 
         private static readonly IntRange OfferDurationRange = new IntRange(15, 45);
 
@@ -35,34 +38,88 @@ namespace TorannMagic
             }
         };
 
-        protected override bool CanFireNowSub(IIncidentTarget target)
+        protected override bool CanFireNowSub(IncidentParms parms)
         {
-            return IncidentWorker_ArcaneScriptCaravan.RandomNearbyTradeableSettlement(((Map)target).Tile) != null && base.CanFireNowSub(target);
+            Map map;
+            return base.CanFireNowSub(parms) && this.TryGetRandomAvailableTargetMap(out map) && IncidentWorker_ArcaneScriptCaravan.RandomNearbyTradeableSettlement(map.Tile) != null;
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
-            Settlement settlement = IncidentWorker_ArcaneScriptCaravan.RandomNearbyTradeableSettlement(parms.target.Tile);
-            if (settlement == null)
+            Map map;
+            bool result;
+            if (!this.TryGetRandomAvailableTargetMap(out map))
             {
-                return false;
+                result = false;
             }
-            CaravanRequestComp component = settlement.GetComponent<CaravanRequestComp>();
-            if (!this.GenerateCaravanRequest(component, (Map)parms.target))
+            else
             {
-                return false;
-            }
-            Find.LetterStack.ReceiveLetter("LetterLabelArcaneScriptCaravan".Translate(), "LetterArcaneScriptCaravan".Translate(new object[]
-            {
+                Settlement settlement = IncidentWorker_ArcaneScriptCaravan.RandomNearbyTradeableSettlement(parms.target.Tile);
+                if (settlement == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    TradeRequestComp component = settlement.GetComponent<TradeRequestComp>();
+                    if (!this.GenerateCaravanRequest(component, (Map)parms.target))
+                    {
+                        return false;
+                    }
+                    Find.LetterStack.ReceiveLetter("LetterLabelArcaneScriptCaravan".Translate(), "LetterArcaneScriptCaravan".Translate(new object[]
+                    {
                 settlement.Label,
                 GenLabel.ThingLabel(component.requestThingDef, null, component.requestCount).CapitalizeFirst(),
                 component.rewards[0].LabelCap,
                 (component.expiration - Find.TickManager.TicksGame).ToStringTicksToDays("F0")
-            }), LetterDefOf.PositiveEvent, settlement, null);
-            return true;
+                    }), LetterDefOf.PositiveEvent, settlement, null);
+                    return true;
+                }
+            }
+            return result;
         }
 
-        public bool GenerateCaravanRequest(CaravanRequestComp target, Map map)
+        private bool TryGetRandomAvailableTargetMap(out Map map)
+        {
+            IncidentWorker_ArcaneScriptCaravan.tmpAvailableMaps.Clear();
+            List<Map> maps = Find.Maps;
+            for (int i = 0; i < maps.Count; i++)
+            {
+                if (maps[i].IsPlayerHome && this.AtLeast2HealthyColonists(maps[i]) && IncidentWorker_ArcaneScriptCaravan.RandomNearbyTradeableSettlement(maps[i].Tile) != null)
+                {
+                    IncidentWorker_ArcaneScriptCaravan.tmpAvailableMaps.Add(maps[i]);
+                }
+            }
+            bool result = IncidentWorker_ArcaneScriptCaravan.tmpAvailableMaps.TryRandomElement(out map);
+            IncidentWorker_ArcaneScriptCaravan.tmpAvailableMaps.Clear();
+            return result;
+        }
+
+        private bool AtLeast2HealthyColonists(Map map)
+        {
+            List<Pawn> list = map.mapPawns.SpawnedPawnsInFaction(Faction.OfPlayer);
+            int num = 0;
+            bool result;
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].IsFreeColonist)
+                {
+                    if (!HealthAIUtility.ShouldSeekMedicalRest(list[i]))
+                    {
+                        num++;
+                        if (num >= 2)
+                        {
+                            result = true;
+                            return result;
+                        }
+                    }
+                }
+            }
+            result = false;
+            return result;
+        }
+
+        public bool GenerateCaravanRequest(TradeRequestComp target, Map map)
         {
             int num = this.RandomOfferDuration(map.Tile, target.parent.Tile);
             if (num < 1)
@@ -82,7 +139,7 @@ namespace TorannMagic
             target.requestCount = IncidentWorker_ArcaneScriptCaravan.RandomRequestCount(target.requestThingDef, map);
             target.rewards.ClearAndDestroyContents(DestroyMode.Vanish);
             System.Random random = new System.Random();
-            int rnd = GenMath.RoundRandom(random.Next(0, 18));
+            int rnd = GenMath.RoundRandom(random.Next(0, 25));
             if (rnd < 1)
             {
                 item = ThingMaker.MakeThing(TorannMagicDefOf.BookOfInnerFire, null);
@@ -153,83 +210,154 @@ namespace TorannMagic
                 item = ThingMaker.MakeThing(TorannMagicDefOf.BookOfQuestion, null);
                 target.rewards.TryAdd(item, true);
             }
+            else if (rnd >= 14 && rnd < 15)
+            {
+                item = ThingMaker.MakeThing(TorannMagicDefOf.BookOfFaceless, null);
+                target.rewards.TryAdd(item, true);
+            }
+            else if (rnd >= 15 && rnd < 16)
+            {
+                item = ThingMaker.MakeThing(TorannMagicDefOf.BookOfDemons, null);
+                target.rewards.TryAdd(item, true);
+            }
+            else if (rnd >= 16 && rnd < 17)
+            {
+                item = ThingMaker.MakeThing(TorannMagicDefOf.BookOfBard, null);
+                target.rewards.TryAdd(item, true);
+            }
             else
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    if(Rand.Range(0,10) > 8.5f)
+                    if(Rand.Range(0,10) > 9.3f)
                     {
                         item = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Blink, null);
                         target.rewards.TryAdd(item, true);
                     }
-                    else if (Rand.Range(0, 10) > 8.5f)
+                    else if (Rand.Range(0, 10) > 9.3f)
                     {
                         item = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Teleport, null);
                         target.rewards.TryAdd(item, true);
                     }
-                    else if (Rand.Range(0, 10) > 8.5f)
+                    else if (Rand.Range(0, 10) > 9.3f)
                     {
                         item = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Heal, null);
                         target.rewards.TryAdd(item, true);
                     }
-                    else if (Rand.Range(0, 10) > 8.5f)
+                    else if (Rand.Range(0, 10) > 9.3f)
                     {
                         item = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Rain, null);
                         target.rewards.TryAdd(item, true);
                     }
-                    else if (Rand.Range(0, 10) > 8.5f)
+                    else if (Rand.Range(0, 10) > 9.3f)
                     {
                         item = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Heater, null);
                         target.rewards.TryAdd(item, true);
                     }
-                    else if (Rand.Range(0, 10) > 8.5f)
+                    else if (Rand.Range(0, 10) > 9.3f)
                     {
                         item = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Cooler, null);
                         target.rewards.TryAdd(item, true);
                     }
-                    else if (Rand.Range(0, 10) > 8.5f)
+                    else if (Rand.Range(0, 10) > 9.3f)
+                    {
+                        item = ThingMaker.MakeThing(TorannMagicDefOf.SkillOf_InnerHealing, null);
+                        target.rewards.TryAdd(item, true);
+                    }
+
+                    else if (Rand.Range(0, 10) > 9.3f)
+                    {
+                        item = ThingMaker.MakeThing(TorannMagicDefOf.SkillOf_HeavyBlow, null);
+                        target.rewards.TryAdd(item, true);
+                    }
+                    else if (Rand.Range(0, 10) > 9.3f)
                     {
                         item = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_DryGround, null);
                         target.rewards.TryAdd(item, true);
                     }
-                    else if (Rand.Range(0, 10) > 8.5f)
+                    else if (Rand.Range(0, 10) > 9.3f)
                     {
                         item = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_WetGround, null);
                         target.rewards.TryAdd(item, true);
                     }
-                    else if (Rand.Range(0, 10) > 8.5f)
+                    else if (Rand.Range(0, 10) > 9.3f)
+                    {
+                        item = ThingMaker.MakeThing(TorannMagicDefOf.SkillOf_GearRepair, null);
+                        target.rewards.TryAdd(item, true);
+                    }
+                    else if (Rand.Range(0, 10) > 9.3f)
                     {
                         item = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_ChargeBattery, null);
                         target.rewards.TryAdd(item, true);
                     }
-                    else if (Rand.Range(0, 10) > 8.5f)
+                    else if (Rand.Range(0, 10) > 9.3f)
+                    {
+                        item = ThingMaker.MakeThing(TorannMagicDefOf.SkillOf_Sprint, null);
+                        target.rewards.TryAdd(item, true);
+                    }
+                    else if (Rand.Range(0, 10) > 9.3f)
                     {
                         item = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_SmokeCloud, null);
                         target.rewards.TryAdd(item, true);
                     }
-                    else if (Rand.Range(0, 10) > 8.5f)
+                    else if (Rand.Range(0, 10) > 9.3f)
+                    {
+                        item = ThingMaker.MakeThing(TorannMagicDefOf.SkillOf_FightersFocus, null);
+                        target.rewards.TryAdd(item, true);
+                    }
+                    else if (Rand.Range(0, 10) > 9.3f)
                     {
                         item = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_EMP, null);
                         target.rewards.TryAdd(item, true);
                     }
-                    else if (Rand.Range(0, 10) > 8.5f)
+                    else if (Rand.Range(0, 10) > 9.3f)
                     {
                         item = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Extinguish, null);
                         target.rewards.TryAdd(item, true);
                     }
-                    else if (Rand.Range(0, 10) > 8.5f)
+                    else if (Rand.Range(0, 10) > 9.3f)
+                    {
+                        item = ThingMaker.MakeThing(TorannMagicDefOf.SkillOf_StrongBack, null);
+                        target.rewards.TryAdd(item, true);
+                    }
+                    else if (Rand.Range(0, 10) > 9.3f)
                     {
                         item = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_SiphonMana, null);
                         target.rewards.TryAdd(item, true);
                     }
-                    else if (Rand.Range(0, 10) > 8.5f)
+                    else if (Rand.Range(0, 10) > 9.3f)
                     {
                         item = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_TransferMana, null);
                         target.rewards.TryAdd(item, true);
                     }
-                    else if (Rand.Range(0, 10) > 8.5f)
+                    else if (Rand.Range(0, 10) > 9.3f)
                     {
                         item = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_ManaShield, null);
+                        target.rewards.TryAdd(item, true);
+                    }
+                    else if (Rand.Range(0, 10) > 9.3f)
+                    {
+                        item = ThingMaker.MakeThing(TorannMagicDefOf.SkillOf_ThickSkin, null);
+                        target.rewards.TryAdd(item, true);
+                    }
+                    else if (Rand.Range(0, 10) > 9.3f)
+                    {
+                        item = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_FertileLands, null);
+                        target.rewards.TryAdd(item, true);
+                    }
+                    else if (Rand.Range(0, 10) > 9.3f)
+                    {
+                        item = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_SummonMinion, null);
+                        target.rewards.TryAdd(item, true);
+                    }
+                    else if (Rand.Range(0, 10) > 9.3f)
+                    {
+                        item = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_CauterizeWound, null);
+                        target.rewards.TryAdd(item, true);
+                    }
+                    else if (Rand.Range(0, 10) > 9.3f)
+                    {
+                        item = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_SpellMending, null);
                         target.rewards.TryAdd(item, true);
                     }
                     else
@@ -246,10 +374,7 @@ namespace TorannMagic
             {
                 item = ThingMaker.MakeThing(TorannMagicDefOf.BookOfValiant, null);
                 target.rewards.TryAdd(item, true);
-            }
-            
-
-
+            }           
             target.expiration = Find.TickManager.TicksGame + num;
             return true;
         }
@@ -257,7 +382,7 @@ namespace TorannMagic
         public static Settlement RandomNearbyTradeableSettlement(int originTile)
         {
             return (from settlement in Find.WorldObjects.Settlements
-                    where settlement.Visitable && settlement.GetComponent<CaravanRequestComp>() != null && !settlement.GetComponent<CaravanRequestComp>().ActiveRequest && Find.WorldGrid.ApproxDistanceInTiles(originTile, settlement.Tile) < 36f && Find.WorldReachability.CanReach(originTile, settlement.Tile)
+                    where settlement.Visitable && settlement.GetComponent<TradeRequestComp>() != null && !settlement.GetComponent<TradeRequestComp>().ActiveRequest && Find.WorldGrid.ApproxDistanceInTiles(originTile, settlement.Tile) < 36f && Find.WorldReachability.CanReach(originTile, settlement.Tile)
                     select settlement).RandomElementWithFallback(null);
         }
 

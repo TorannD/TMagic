@@ -106,7 +106,7 @@ namespace TorannMagic
             if (pawn != null)
             {
                 MoteMaker.MakeStaticMote(pawn.TrueCenter(), pawn.Map, ThingDefOf.Mote_ExplosionFlash, 12f);
-                SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);
+                SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                 MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
             }
             this.initialize = false;
@@ -260,7 +260,7 @@ namespace TorannMagic
             }
             try
             {
-                SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);                
+                SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);                
 
                 GenSpawn.Spawn(this.flyingThing, base.Position, base.Map);
                 Pawn p = this.flyingThing as Pawn;

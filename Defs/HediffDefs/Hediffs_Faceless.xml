@@ -516,6 +516,8 @@
     <defaultLabelColor>(0.55, 0.05, 1)</defaultLabelColor>
     <label>disoriented</label>
     <lethalSeverity>10</lethalSeverity>
+	<makesSickThought>true</makesSickThought>
+	<isBad>true</isBad>
 	<comps>
 	  <li Class="HediffCompProperties_Disappears">
         <disappearsAfterTicks>

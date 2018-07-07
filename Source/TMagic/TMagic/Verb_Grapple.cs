@@ -100,7 +100,7 @@ namespace TorannMagic
                     if (!victim.IsColonist && !victim.IsPrisoner && !victim.Faction.HostileTo(this.CasterPawn.Faction) && victim.Faction != null && victim.RaceProps.Humanlike)
                     {
                         Faction faction = victim.Faction;
-                        faction.SetHostileTo(this.CasterPawn.Faction, true);
+                        faction.TrySetRelationKind(this.CasterPawn.Faction, FactionRelationKind.Ally, false, null);
                     }
                 }
                 summonablePawn = (FlyingObject)GenSpawn.Spawn(ThingDef.Named("TM_SummonedPawn"), summonableThing.Position, summonableThing.Map);

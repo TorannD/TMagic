@@ -263,7 +263,7 @@ namespace TorannMagic
             }
             try
             {
-                SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);                
+                SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);                
 
                 GenSpawn.Spawn(this.flyingThing, base.Position, base.Map);
                 Pawn p = this.flyingThing as Pawn;
@@ -286,7 +286,7 @@ namespace TorannMagic
         public void damageEntities(Pawn e, float d, DamageDef type)
         {
             int amt = Mathf.RoundToInt(Rand.Range(.75f, 1.25f) * d);
-            DamageInfo dinfo = new DamageInfo(type, amt, (float)-1, this.pawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+            DamageInfo dinfo = new DamageInfo(type, amt, 0, (float)-1, this.pawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
             bool flag = e != null;
             if (flag)
             {

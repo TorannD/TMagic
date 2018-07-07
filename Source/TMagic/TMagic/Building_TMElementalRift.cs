@@ -180,7 +180,7 @@ namespace TorannMagic
             {                
                 FindGoodCenterLocation();
                 Map.weatherManager.eventHandler.AddEvent(new WeatherEvent_LightningStrike(this.Map, this.centerLocation.ToIntVec3));
-                GenExplosion.DoExplosion(this.centerLocation.ToIntVec3, this.Map, this.areaRadius, DamageDefOf.Bomb, null, Rand.Range(6, 16), SoundDefOf.Thunder_OffMap, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
+                GenExplosion.DoExplosion(this.centerLocation.ToIntVec3, this.Map, this.areaRadius, DamageDefOf.Bomb, null, Rand.Range(6, 16), 0, SoundDefOf.Thunder_OffMap, null, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
 
             }
         }
@@ -350,7 +350,7 @@ namespace TorannMagic
                         {
                             MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1f);
                             MoteMaker.ThrowMicroSparks(curCell.ToVector3(), this.Map);
-                            SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);
+                            SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                             rogueElemental.def = TorannMagicDefOf.TM_GreaterEarth_ElementalR;
                             rogueElemental.kindDef = PawnKindDef.Named("TM_GreaterEarth_Elemental");
                         }
@@ -358,7 +358,7 @@ namespace TorannMagic
                         {
                             MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1f);
                             MoteMaker.ThrowMicroSparks(curCell.ToVector3(), this.Map);
-                            SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);
+                            SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                             rogueElemental.def = TorannMagicDefOf.TM_Earth_ElementalR;
                             rogueElemental.kindDef = PawnKindDef.Named("TM_Earth_Elemental");
                         }
@@ -366,7 +366,7 @@ namespace TorannMagic
                         {
                             MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1f);
                             MoteMaker.ThrowMicroSparks(curCell.ToVector3(), this.Map);
-                            SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);
+                            SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                             rogueElemental.def = TorannMagicDefOf.TM_LesserEarth_ElementalR;
                             rogueElemental.kindDef = PawnKindDef.Named("TM_LesserEarth_Elemental");
                         }
@@ -417,7 +417,7 @@ namespace TorannMagic
                         if (Rand.Chance(geChance))
                         {
                             MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1);
-                            SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);
+                            SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                             MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
                             MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
                             MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
@@ -427,7 +427,7 @@ namespace TorannMagic
                         else if (Rand.Chance(eChance))
                         {
                             MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1);
-                            SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);
+                            SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                             MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
                             MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
                             MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
@@ -437,7 +437,7 @@ namespace TorannMagic
                         else if (Rand.Chance(leChance))
                         {
                             MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1);
-                            SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);
+                            SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                             MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
                             MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
                             MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.blue);
@@ -458,7 +458,7 @@ namespace TorannMagic
                             rogueElemental.def = TorannMagicDefOf.TM_GreaterWind_ElementalR;
                             rogueElemental.kindDef = PawnKindDef.Named("TM_GreaterWind_Elemental");
                             MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1 + 1 * 2);
-                            SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);
+                            SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                             MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.white);
                         }
                         else if (Rand.Chance(eChance))
@@ -466,7 +466,7 @@ namespace TorannMagic
                             rogueElemental.def = TorannMagicDefOf.TM_Wind_ElementalR;
                             rogueElemental.kindDef = PawnKindDef.Named("TM_Wind_Elemental");
                             MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1 + 1 * 2);
-                            SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);
+                            SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                             MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.white);
                         }
                         else if (Rand.Chance(leChance))
@@ -474,7 +474,7 @@ namespace TorannMagic
                             rogueElemental.def = TorannMagicDefOf.TM_LesserWind_ElementalR;
                             rogueElemental.kindDef = PawnKindDef.Named("TM_LesserWind_Elemental");
                             MoteMaker.ThrowSmoke(curCell.ToVector3(), this.Map, 1 + 1 * 2);
-                            SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);
+                            SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                             MoteMaker.ThrowTornadoDustPuff(curCell.ToVector3(), this.Map, 1, Color.white);
                         }
                         else
@@ -531,7 +531,7 @@ namespace TorannMagic
                             if (flag4)
                             {
                                 LordJob_AssaultColony lordJob = new LordJob_AssaultColony(newPawn.Faction, false, false, false, true, false);
-                                lord = LordMaker.MakeNewLord(faction, lordJob, Find.VisibleMap, null);
+                                lord = LordMaker.MakeNewLord(faction, lordJob, Find.CurrentMap, null);
                             }
                             lord.AddPawn(newPawn);                           
                         }                      

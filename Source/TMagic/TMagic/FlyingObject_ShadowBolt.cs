@@ -301,7 +301,7 @@ namespace TorannMagic
             }        
             if(hitThing != null)
             {
-                damageEntities(hitThing, Mathf.RoundToInt(Rand.Range(this.def.projectile.damageAmountBase * .75f, this.def.projectile.damageAmountBase * 1.25f)));
+                damageEntities(hitThing, Mathf.RoundToInt(Rand.Range(this.def.projectile.GetDamageAmount(1,null) * .75f, this.def.projectile.GetDamageAmount(1,null) * 1.25f)));
             }
             TM_MoteMaker.ThrowShadowCleaveMote(this.ExactPosition, this.Map, 2f + (.4f * pwrVal), .05f, .1f, .3f, 0, (5f+ pwrVal), this.directionAngle);
             TorannMagicDefOf.TM_SoftExplosion.PlayOneShot(new TargetInfo(this.ExactPosition.ToIntVec3(), pawn.Map, false));
@@ -313,7 +313,7 @@ namespace TorannMagic
             {
                 cleaveVector = this.ExactPosition + (Quaternion.AngleAxis(-45, Vector3.up) * ((1.5f + (.5f*pwrVal)) * this.direction));
                 intVec = cleaveVector.ToIntVec3() + GenRadial.RadialPattern[i];
-                //GenExplosion.DoExplosion(intVec, base.Map, .4f, TMDamageDefOf.DamageDefOf.TM_Shadow, this.launcher as Pawn, Mathf.RoundToInt((Rand.Range(.6f * this.def.projectile.damageAmountBase, 1.1f * this.def.projectile.damageAmountBase) + (5f * pwrVal)) * this.arcaneDmg), this.def.projectile.soundExplode, def, null, null, 0f, 1, false, null, 0f, 0, 0.0f, true);
+                //GenExplosion.DoExplosion(intVec, base.Map, .4f, TMDamageDefOf.DamageDefOf.TM_Shadow, this.launcher as Pawn, Mathf.RoundToInt((Rand.Range(.6f * this.def.projectile.GetDamageAmount(1,null), 1.1f * this.def.projectile.GetDamageAmount(1,null)) + (5f * pwrVal)) * this.arcaneDmg), this.def.projectile.soundExplode, def, null, null, 0f, 1, false, null, 0f, 0, 0.0f, true);
 
                 if (intVec.IsValid && intVec.InBounds(this.Map))
                 {
@@ -323,13 +323,13 @@ namespace TorannMagic
                     {
                         if (hitList[j] is Pawn && hitList[j] != this.pawn)
                         {
-                            damageEntities(hitList[j], Mathf.RoundToInt((Rand.Range(this.def.projectile.damageAmountBase * .6f, this.def.projectile.damageAmountBase * .8f) * (float)(1f + .1 * pwrVal) * this.arcaneDmg)));
+                            damageEntities(hitList[j], Mathf.RoundToInt((Rand.Range(this.def.projectile.GetDamageAmount(1,null) * .6f, this.def.projectile.GetDamageAmount(1,null) * .8f) * (float)(1f + .1 * pwrVal) * this.arcaneDmg)));
                         }
                     }
                 }
                 cleaveVector = this.ExactPosition + (Quaternion.AngleAxis(45, Vector3.up) * ((1.5f + (.5f * pwrVal)) * this.direction));
                 intVec = cleaveVector.ToIntVec3() + GenRadial.RadialPattern[i];
-                //GenExplosion.DoExplosion(intVec, base.Map, .4f, TMDamageDefOf.DamageDefOf.TM_Shadow, this.launcher as Pawn, Mathf.RoundToInt((Rand.Range(.6f * this.def.projectile.damageAmountBase, 1.1f * this.def.projectile.damageAmountBase) + (5f * pwrVal)) * this.arcaneDmg), this.def.projectile.soundExplode, def, null, null, 0f, 1, false, null, 0f, 0, 0.0f, true);
+                //GenExplosion.DoExplosion(intVec, base.Map, .4f, TMDamageDefOf.DamageDefOf.TM_Shadow, this.launcher as Pawn, Mathf.RoundToInt((Rand.Range(.6f * this.def.projectile.GetDamageAmount(1,null), 1.1f * this.def.projectile.GetDamageAmount(1,null)) + (5f * pwrVal)) * this.arcaneDmg), this.def.projectile.soundExplode, def, null, null, 0f, 1, false, null, 0f, 0, 0.0f, true);
 
                 if (intVec.IsValid && intVec.InBounds(this.Map))
                 {
@@ -339,13 +339,13 @@ namespace TorannMagic
                     {
                         if (hitList[j] is Pawn && hitList[j] != this.pawn)
                         {
-                            damageEntities(hitList[j], Mathf.RoundToInt((Rand.Range(this.def.projectile.damageAmountBase * .5f, this.def.projectile.damageAmountBase * .7f) * (float)(1f + .1 * pwrVal) * this.arcaneDmg)));
+                            damageEntities(hitList[j], Mathf.RoundToInt((Rand.Range(this.def.projectile.GetDamageAmount(1,null) * .5f, this.def.projectile.GetDamageAmount(1,null) * .7f) * (float)(1f + .1 * pwrVal) * this.arcaneDmg)));
                         }
                     }
                 }
                 cleaveVector = this.ExactPosition + ((2 + (.3f * (float)pwrVal)) * this.direction);
                 intVec = cleaveVector.ToIntVec3() + GenRadial.RadialPattern[i];
-                //GenExplosion.DoExplosion(intVec, base.Map, .4f, TMDamageDefOf.DamageDefOf.TM_Shadow, this.launcher as Pawn, Mathf.RoundToInt((Rand.Range(.6f*this.def.projectile.damageAmountBase, 1.1f*this.def.projectile.damageAmountBase) + (5f * pwrVal)) * this.arcaneDmg), this.def.projectile.soundExplode, def, null, null, 0f, 1, false, null, 0f, 0, 0.0f, true);
+                //GenExplosion.DoExplosion(intVec, base.Map, .4f, TMDamageDefOf.DamageDefOf.TM_Shadow, this.launcher as Pawn, Mathf.RoundToInt((Rand.Range(.6f*this.def.projectile.GetDamageAmount(1,null), 1.1f*this.def.projectile.GetDamageAmount(1,null)) + (5f * pwrVal)) * this.arcaneDmg), this.def.projectile.soundExplode, def, null, null, 0f, 1, false, null, 0f, 0, 0.0f, true);
 
                 if (intVec.IsValid && intVec.InBounds(this.Map))
                 {
@@ -355,13 +355,13 @@ namespace TorannMagic
                     {
                         if (hitList[j] is Pawn && hitList[j] != this.pawn)
                         {
-                            damageEntities(hitList[j], Mathf.RoundToInt((Rand.Range(this.def.projectile.damageAmountBase * .5f, this.def.projectile.damageAmountBase * .7f) * (float)(1f + .1 * pwrVal) * this.arcaneDmg)));
+                            damageEntities(hitList[j], Mathf.RoundToInt((Rand.Range(this.def.projectile.GetDamageAmount(1,null) * .5f, this.def.projectile.GetDamageAmount(1,null) * .7f) * (float)(1f + .1 * pwrVal) * this.arcaneDmg)));
                         }
                     }
                 }
             }
             this.Destroy(DestroyMode.Vanish);
-            //GenExplosion.DoExplosion(base.Position, base.Map, this.radius, TMDamageDefOf.DamageDefOf.TM_DeathBolt, this.launcher as Pawn, Mathf.RoundToInt((Rand.Range(.6f*this.def.projectile.damageAmountBase, 1.1f*this.def.projectile.damageAmountBase) + (5f * pwrVal)) * this.arcaneDmg), this.def.projectile.soundExplode, def, null, null, 0f, 1, false, null, 0f, 0, 0.0f, true);
+            //GenExplosion.DoExplosion(base.Position, base.Map, this.radius, TMDamageDefOf.DamageDefOf.TM_DeathBolt, this.launcher as Pawn, Mathf.RoundToInt((Rand.Range(.6f*this.def.projectile.GetDamageAmount(1,null), 1.1f*this.def.projectile.GetDamageAmount(1,null)) + (5f * pwrVal)) * this.arcaneDmg), this.def.projectile.soundExplode, def, null, null, 0f, 1, false, null, 0f, 0, 0.0f, true);
         }
 
         public void DamageThingsAtPosition()
@@ -377,7 +377,7 @@ namespace TorannMagic
                 {
                     if (hitList[j] is Pawn && hitList[j] != this.pawn)
                     {
-                        damageEntities(hitList[j], Mathf.RoundToInt((Rand.Range(this.def.projectile.damageAmountBase * .2f, this.def.projectile.damageAmountBase * .3f)) * this.arcaneDmg));
+                        damageEntities(hitList[j], Mathf.RoundToInt((Rand.Range(this.def.projectile.GetDamageAmount(1,null) * .2f, this.def.projectile.GetDamageAmount(1,null) * .3f)) * this.arcaneDmg));
                         TM_MoteMaker.ThrowShadowCleaveMote(this.ExactPosition, this.Map, Rand.Range(.2f, .4f), .01f, .2f, .4f, 500, 0, 0);
                         TorannMagicDefOf.TM_Vibration.PlayOneShot(new TargetInfo(this.ExactPosition.ToIntVec3(), pawn.Map, false));
                     }
@@ -387,7 +387,7 @@ namespace TorannMagic
 
         public void damageEntities(Thing e, int amt)
         {
-            DamageInfo dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Shadow, amt, (float)(1f - this.directionAngle/360f), null, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+            DamageInfo dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Shadow, amt, 2, (float)(1f - this.directionAngle/360f), null, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
             bool flag = e != null;
             if (flag)
             {

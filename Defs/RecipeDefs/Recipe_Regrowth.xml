@@ -55,217 +55,25 @@
 			</thingDefs>
 		</fixedIngredientFilter>
 		<appliedOnFixedBodyParts>
-			<li>LeftShoulder</li> 
-			<li>RightShoulder</li> 
-			<li>LeftArm</li> 
-			<li>RightArm</li> 
-			<li>LeftHand</li> 
-			<li>RightHand</li> 
-			<li>LeftLeg</li> 
-			<li>RightLeg</li> 
-			<li>LeftFoot</li> 
-			<li>RightFoot</li> 
-			<li>LeftHandPinky</li>
-			<li>LeftHandRingFinger</li>
-			<li>LeftHandMiddleFinger</li>
-			<li>LeftHandIndexFinger</li>
-			<li>LeftHandThumb</li>
-			<li>LeftFootLittleToe</li>
-			<li>LeftFootFourthToe</li>
-			<li>LeftFootMiddleToe</li>
-			<li>LeftFootSecondToe</li>
-			<li>LeftFootBigToe</li>
-			<li>LeftEye</li>
-			<li>LeftEar</li>
-			<li>RightHandPinky</li>
-			<li>RightHandRingFinger</li>
-			<li>RightHandMiddleFinger</li>
-			<li>RightHandIndexFinger</li>
-			<li>RightHandThumb</li>
-			<li>RightFootLittleToe</li>
-			<li>RightFootFourthToe</li>
-			<li>RightFootMiddleToe</li>
-			<li>RightFootSecondToe</li>
-			<li>RightFootBigToe</li>
-			<li>RightEye</li>
-			<li>RightEar</li>
+			<li>Shoulder</li> 
+			<li>Arm</li> 
+			<li>Hand</li> 
+			<li>Leg</li> 
+			<li>Foot</li> 
+			<li>Finger</li>
+			<li>Toe</li>
+			<li>Eye</li>
+			<li>Ear</li>
 			<li>Nose</li>
 			<li>Jaw</li>
-			<li>Rib</li>
+			<li>Ribcage</li>
 			<li>Heart</li>
-			<li>LeftLung</li>
-			<li>RightLung</li>
-			<li>LeftKidney</li>
-			<li>RightKidney</li>
+			<li>Lung</li>
+			<li>Kidney</li>
 			<li>Liver</li>
 			<li>Stomach</li>
 			<li>Spine</li>
 		</appliedOnFixedBodyParts>
 	</RecipeDef>
-<!-- 
-	<RecipeDef ParentName="SurgeryRegrowth">
-		<defName>RegrowArm</defName>
-		<label>regrow arm (Druid only, 90% mana required)</label>
-		<description>Use druidic powers to regrow an arm.</description>
-		<workerClass>TorannMagic.Recipe_RegrowBodyPart</workerClass>
-		<jobString>Regrowing arm.</jobString>
-		<workAmount>500</workAmount>
-		<dontShowIfAnyIngredientMissing>true</dontShowIfAnyIngredientMissing>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>Medicine</li>
-					</categories>
-				</filter>
-				<count>1</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>SeedofRegrowth</li>
-					</thingDefs>
-				</filter>
-				<count>1</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<categories>
-				<li>Medicine</li>
-			</categories>
-			<thingDefs>
-				<li>SeedofRegrowth</li>
-				<li>ManaPotion</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<appliedOnFixedBodyParts>
-			<li>LeftShoulder</li> 
-			<li>RightShoulder</li> 
-		</appliedOnFixedBodyParts>
-		<addsHediff>TM_ArmRegrowth</addsHediff>
-	</RecipeDef>
-	
-	<RecipeDef ParentName="SurgeryRegrowth">
-		<defName>RegrowHand</defName>
-		<label>regrow hand (Druid only, 90% mana required)</label>
-		<description>Use druidic powers to regrow a hand.</description>
-		<workerClass>TorannMagic.Recipe_RegrowBodyPart</workerClass>
-		<jobString>Regrowing hand.</jobString>
-		<workAmount>500</workAmount>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>Medicine</li>
-					</categories>
-				</filter>
-				<count>1</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>SeedofRegrowth</li>
-					</thingDefs>
-				</filter>
-				<count>1</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<categories>
-				<li>Medicine</li>
-			</categories>
-			<thingDefs>
-				<li>SeedofRegrowth</li>
-				<li>ManaPotion</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<appliedOnFixedBodyParts>
-			<li>LeftHand</li> 
-			<li>RightHand</li> 
-		</appliedOnFixedBodyParts>
-		<addsHediff>TM_HandRegrowth</addsHediff>
-	</RecipeDef>
-	
-	<RecipeDef ParentName="SurgeryRegrowth">
-		<defName>RegrowLeg</defName>
-		<label>regrow leg (Druid only, 90% mana required)</label>
-		<description>Use druidic powers to regrow a leg.</description>
-		<workerClass>TorannMagic.Recipe_RegrowBodyPart</workerClass>
-		<jobString>Regrowing leg.</jobString>
-		<workAmount>500</workAmount>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>Medicine</li>
-					</categories>
-				</filter>
-				<count>1</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>SeedofRegrowth</li>
-					</thingDefs>
-				</filter>
-				<count>1</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<categories>
-				<li>Medicine</li>
-			</categories>
-			<thingDefs>
-				<li>SeedofRegrowth</li>
-				<li>ManaPotion</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<appliedOnFixedBodyParts>
-			<li>LeftLeg</li> 
-			<li>RightLeg</li> 
-		</appliedOnFixedBodyParts>
-		<addsHediff>TM_LegRegrowth</addsHediff>
-	</RecipeDef>
-	
-	<RecipeDef ParentName="SurgeryRegrowth">
-		<defName>RegrowFoot</defName>
-		<label>regrow foot (Druid only, 90% mana required)</label>
-		<description>Use druidic powers to regrow a foot.</description>
-		<workerClass>TorannMagic.Recipe_RegrowBodyPart</workerClass>
-		<jobString>Regrowing foot.</jobString>
-		<workAmount>500</workAmount>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>Medicine</li>
-					</categories>
-				</filter>
-				<count>1</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>SeedofRegrowth</li>
-					</thingDefs>
-				</filter>
-				<count>1</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<categories>
-				<li>Medicine</li>
-			</categories>
-			<thingDefs>
-				<li>SeedofRegrowth</li>
-				<li>ManaPotion</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<appliedOnFixedBodyParts>
-			<li>LeftFoot</li> 
-			<li>RightFoot</li> 
-		</appliedOnFixedBodyParts>
-		<addsHediff>TM_FootRegrowth</addsHediff>
-	</RecipeDef> -->
 
 </Defs>

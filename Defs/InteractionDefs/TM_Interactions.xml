@@ -28,7 +28,7 @@
     <thoughtClass>Thought_MemorySocial</thoughtClass>
     <durationDays>1</durationDays>
     <stackLimit>3</stackLimit>
-    <stackLimitPerPawn>2</stackLimitPerPawn>
+    <stackLimitForSameOtherPawn>2</stackLimitForSameOtherPawn>
     <stackedEffectMultiplier>0.75</stackedEffectMultiplier>
     <stages>
       <li>
@@ -65,7 +65,7 @@
     <thoughtClass>Thought_MemorySocial</thoughtClass>
     <durationDays>2</durationDays>
     <stackLimit>3</stackLimit>
-    <stackLimitPerPawn>1</stackLimitPerPawn>
+    <stackLimitForSameOtherPawn>1</stackLimitForSameOtherPawn>
     <stackedEffectMultiplier>0.75</stackedEffectMultiplier>
     <stages>
       <li>
@@ -104,7 +104,7 @@
     <thoughtClass>Thought_MemorySocial</thoughtClass>
     <durationDays>3</durationDays>
     <stackLimit>2</stackLimit>
-    <stackLimitPerPawn>2</stackLimitPerPawn>
+    <stackLimitForSameOtherPawn>2</stackLimitForSameOtherPawn>
     <stackedEffectMultiplier>0.8</stackedEffectMultiplier>
     <stages>
       <li>
@@ -142,7 +142,7 @@
     <thoughtClass>Thought_MemorySocial</thoughtClass>
     <durationDays>1</durationDays>
     <stackLimit>3</stackLimit>
-    <stackLimitPerPawn>2</stackLimitPerPawn>
+    <stackLimitForSameOtherPawn>2</stackLimitForSameOtherPawn>
     <stackedEffectMultiplier>0.67</stackedEffectMultiplier>
     <stages>
       <li>
@@ -159,7 +159,7 @@
     <thoughtClass>Thought_MemorySocial</thoughtClass>
     <durationDays>1</durationDays>
     <stackLimit>1</stackLimit>
-    <stackLimitPerPawn>3</stackLimitPerPawn>
+    <stackLimitForSameOtherPawn>3</stackLimitForSameOtherPawn>
     <stackedEffectMultiplier>0.8</stackedEffectMultiplier>
     <stages>
       <li>

@@ -40,7 +40,7 @@
         <warmupTime>0.1</warmupTime>
         <SecondsToRecharge>60.0</SecondsToRecharge>
         <range>0</range>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>10</muzzleFlashScale>
         <isPrimary>false</isPrimary>
    	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
@@ -75,7 +75,7 @@
         <warmupTime>0.1</warmupTime>
         <SecondsToRecharge>60</SecondsToRecharge>
         <range>0</range>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
         <isPrimary>false</isPrimary>
    	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
@@ -200,7 +200,7 @@ Range: 32</description>
 			<isViolent>true</isViolent>
             <burstShotCount>5</burstShotCount>
             <ticksBetweenBurstShots>15</ticksBetweenBurstShots>
-            <soundCast>BowLarge</soundCast>
+            <soundCast>Bow_Large</soundCast>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>true</isPrimary>
         </MainVerb>
@@ -231,7 +231,7 @@ Range: 34</description>
 			<isViolent>true</isViolent>
             <burstShotCount>6</burstShotCount>
             <ticksBetweenBurstShots>14</ticksBetweenBurstShots>
-            <soundCast>BowLarge</soundCast>
+            <soundCast>Bow_Large</soundCast>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>true</isPrimary>
         </MainVerb>
@@ -262,7 +262,7 @@ Range: 36</description>
 			<isViolent>true</isViolent>
             <burstShotCount>7</burstShotCount>
             <ticksBetweenBurstShots>13</ticksBetweenBurstShots>
-            <soundCast>BowLarge</soundCast>
+            <soundCast>Bow_Large</soundCast>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>true</isPrimary>
         </MainVerb>
@@ -293,7 +293,7 @@ Range: 38</description>
 			<isViolent>true</isViolent>
             <burstShotCount>8</burstShotCount>
             <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
-            <soundCast>BowLarge</soundCast>
+            <soundCast>Bow_Large</soundCast>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>true</isPrimary>
         </MainVerb>

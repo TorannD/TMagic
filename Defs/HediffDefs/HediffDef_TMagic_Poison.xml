@@ -11,13 +11,13 @@
         <labelTendedWellInner>sutured</labelTendedWellInner>
         <labelSolidTendedWell>set</labelSolidTendedWell>
       </li>
-      <li Class="HediffCompProperties_GetsOld">
-        <oldLabel>withered away</oldLabel>
+      <li Class="HediffCompProperties_GetsPermanent">
+        <permanentLabel>withered away</permanentLabel>
       </li>
     </comps>
 	<injuryProps>
 		<painPerSeverity>0.025</painPerSeverity>
-		<averagePainPerSeverityOld>0.00625</averagePainPerSeverityOld>
+		<averagePainPerSeverityPermanent>0.00625</averagePainPerSeverityPermanent>
 		<bleedRate>0.0</bleedRate>
 		<canMerge>true</canMerge>
 			<destroyedLabel>withered</destroyedLabel>
@@ -33,6 +33,7 @@
 	<makesSickThought>true</makesSickThought>
 	<displayWound>false</displayWound>
     <lethalSeverity>10</lethalSeverity>
+	<isBad>true</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-50</severityPerDay>

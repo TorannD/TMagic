@@ -60,7 +60,7 @@ namespace TorannMagic
             CameraJumper.TryJump(CameraJumper.GetWorldTarget(TargetA.ToGlobalTargetInfo(this.Map)));
             Find.WorldSelector.ClearSelection();
             int tile = this.pawn.Map.Tile;
-            Find.WorldTargeter.BeginTargeting(new Func<GlobalTargetInfo, bool>(this.ChoseWorldTarget), true, JobDriver_PortalDestination.TargeterMouseAttachment, true, delegate
+            Find.WorldTargeter.BeginTargeting(new Func<GlobalTargetInfo, bool>(this.ChooseWorldTarget), true, JobDriver_PortalDestination.TargeterMouseAttachment, true, delegate
             {
                 GenDraw.DrawWorldRadiusRing(tile, (int)(this.portalBldg.MaxLaunchDistance));  //center, max launch distance
             }, delegate (GlobalTargetInfo target)
@@ -82,7 +82,7 @@ namespace TorannMagic
             });
         }
 
-        private bool ChoseWorldTarget(GlobalTargetInfo target)
+        private bool ChooseWorldTarget(GlobalTargetInfo target)
         {
             if (!target.IsValid)
             {
@@ -100,7 +100,7 @@ namespace TorannMagic
             {
                 Map myMap = portalBldg.Map;
                 Map map = mapParent.Map;
-                Current.Game.VisibleMap = map;
+                Current.Game.CurrentMap = map;
                 comp = pawn.GetComp<CompAbilityUserMagic>();
                 TargetingParameters portalTarget = new TargetingParameters();
                 portalTarget.canTargetLocations = true;
@@ -121,7 +121,7 @@ namespace TorannMagic
                 {
                     if (Find.Maps.Contains(myMap))
                     {
-                        Current.Game.VisibleMap = myMap;
+                        Current.Game.CurrentMap = myMap;
                     }
                 }, JobDriver_PortalDestination.TargeterMouseAttachment);
                 return true;
@@ -135,11 +135,11 @@ namespace TorannMagic
                 {
                     Messages.Message("TM_PortalDestinationInvalid".Translate(), MessageTypeDefOf.RejectInput);
                 }
-                if (mapParent.TransportPodsCanLandAndGenerateMap)
-                {
-                    Messages.Message("TM_PortalDestinationInvalid".Translate(), MessageTypeDefOf.RejectInput);
-                    return false;
-                }
+                //if (mapParent.HasMap)
+                //{
+                //    Messages.Message("TM_PortalDestinationInvalid".Translate(), MessageTypeDefOf.RejectInput);
+                //    return false;
+                //}
                 flag = true;
             }
             else

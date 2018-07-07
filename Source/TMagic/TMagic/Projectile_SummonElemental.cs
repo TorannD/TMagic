@@ -114,7 +114,7 @@ namespace TorannMagic
                     }
                     MoteMaker.ThrowSmoke(centerCell.ToVector3(), map, pwrVal);
                     MoteMaker.ThrowMicroSparks(centerCell.ToVector3(), map);
-                    SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);
+                    SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                 }
                 else if (rnd >= 2 && rnd < 4)
                 {
@@ -186,7 +186,7 @@ namespace TorannMagic
                         spawnThing.kindDef = PawnKindDef.Named("TM_LesserWater_Elemental");
                     }
                     MoteMaker.ThrowSmoke(centerCell.ToVector3(), map, pwrVal);
-                    SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);
+                    SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                     MoteMaker.ThrowTornadoDustPuff(centerCell.ToVector3(), map, pwrVal, Color.blue);
                     MoteMaker.ThrowTornadoDustPuff(centerCell.ToVector3(), map, pwrVal, Color.blue);
                     MoteMaker.ThrowTornadoDustPuff(centerCell.ToVector3(), map, pwrVal, Color.blue);
@@ -224,7 +224,7 @@ namespace TorannMagic
                         spawnThing.kindDef = PawnKindDef.Named("TM_LesserWind_Elemental");
                     }
                     MoteMaker.ThrowSmoke(centerCell.ToVector3(), map, 1 + pwrVal * 2);
-                    SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);
+                    SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                     MoteMaker.ThrowTornadoDustPuff(centerCell.ToVector3(), map, pwrVal, Color.white);
                 }
 

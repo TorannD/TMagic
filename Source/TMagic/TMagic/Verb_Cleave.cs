@@ -93,7 +93,7 @@ namespace TorannMagic
                 if (victim != null && base.CasterPawn != null & dmgNum != 0 && victim.Faction != base.CasterPawn.Faction)
                 {
                     
-                    dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Cleave, dmgNum, (float)-1, this.CasterPawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+                    dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Cleave, dmgNum, 0, (float)-1, this.CasterPawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
                     ApplyCleaveDamage(dinfo, this.CasterPawn, victim, map, ver.level);
                     DrawCleaving(victim, base.CasterPawn, 10);
                     i = 8;
@@ -108,7 +108,7 @@ namespace TorannMagic
         public static void ApplyCleaveDamage(DamageInfo dinfo, Pawn caster, Pawn target, Map map, int ver)
         {
 
-            bool flag = !dinfo.InstantOldInjury;
+            bool flag = !dinfo.InstantPermanentInjury;
             if (flag)
             {
                 bool flag2 = dinfo.Instigator != null;

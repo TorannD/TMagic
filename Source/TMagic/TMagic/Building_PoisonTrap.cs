@@ -64,7 +64,7 @@ namespace TorannMagic
                             Pawn victim = curCell.GetFirstPawn(base.Map);
                             if (victim != null && !victim.Dead && victim.RaceProps.IsFlesh && !victim.Downed)
                             {
-                                damageEntities(victim, Mathf.RoundToInt(Rand.Range(2, 4)), TMDamageDefOf.DamageDefOf.TM_Poison);
+                                DamageEntities(victim, Mathf.RoundToInt(Rand.Range(2, 4)), TMDamageDefOf.DamageDefOf.TM_Poison);
                                 
                             }
                         }
@@ -122,10 +122,10 @@ namespace TorannMagic
                 {
                     Find.LetterStack.ReceiveLetter("LetterFriendlyTrapSprungLabel".Translate(new object[]
                     {
-                        p.NameStringShort
+                        p.LabelShort
                     }), "LetterFriendlyTrapSprung".Translate(new object[]
                     {
-                        p.NameStringShort
+                        p.LabelShort
                     }), LetterDefOf.NegativeEvent, new TargetInfo(base.Position, base.Map, false), null);
                 }
             }
@@ -134,14 +134,10 @@ namespace TorannMagic
         public void Spring(Pawn p)
         {
             SoundDef.Named("DeadfallSpring").PlayOneShot(new TargetInfo(base.Position, base.Map, false));
-            if (p != null && p.Faction != null)
-            {
-                p.Faction.TacticalMemory.TrapRevealed(base.Position, base.Map);
-            }
             fog = TorannMagicDefOf.Fog_Poison;
             fog.gas.expireSeconds.min = this.duration / 60;
             fog.gas.expireSeconds.max = this.duration / 60;
-            GenExplosion.DoExplosion(base.Position, base.Map, this.radius, TMDamageDefOf.DamageDefOf.TM_Poison, this, 0, SoundDef.Named("TinyBell"), def, null, fog, 1f, 1, false, null, 0f, 0, 0.0f, false);
+            GenExplosion.DoExplosion(base.Position, base.Map, this.radius, TMDamageDefOf.DamageDefOf.TM_Poison, this, 0, 0, SoundDef.Named("TinyBell"), def, null, null, fog, 1f, 1, false, null, 0f, 0, 0.0f, false);
             this.triggered = true;
         }
 
@@ -238,14 +234,14 @@ namespace TorannMagic
             InstallBlueprintUtility.CancelBlueprintsFor(this);
             if (mode == DestroyMode.Deconstruct)
             {
-                SoundDef.Named("BuildingDeconstructed").PlayOneShot(new TargetInfo(base.Position, map, false));
+                SoundDef.Named("Building_Deconstructed").PlayOneShot(new TargetInfo(base.Position, map, false));
             }
         }
 
-        public void damageEntities(Pawn e, float d, DamageDef type)
+        public void DamageEntities(Pawn e, float d, DamageDef type)
         {
             int amt = Mathf.RoundToInt(Rand.Range(.5f, 1.5f) * d);
-            DamageInfo dinfo = new DamageInfo(type, amt, (float)-1, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+            DamageInfo dinfo = new DamageInfo(type, amt, 0, (float)-1, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
             bool flag = e != null;
             if (flag)
             {

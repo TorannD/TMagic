@@ -107,7 +107,7 @@ namespace TorannMagic
                     Thing thing = ThingMaker.MakeThing(def, stuff);
                     thing.SetFaction(faction, null);
                     CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
-                    GenSpawn.Spawn(thing, position, map, Rot4.North, false);
+                    GenSpawn.Spawn(thing, position, map, Rot4.North, WipeMode.Vanish, false);
                     comp.combatItems.Add(thing);
                     Log.Message("ending poison trap creation job");
                 }

@@ -37,7 +37,7 @@
     <defName>TM_PanicFlee</defName>
     <label>panic fleeing</label>
     <stateClass>MentalState_PanicFlee</stateClass>
-    <category>Panic</category>
+    <category>Misc</category>
     <nameColor>(0.65, 0.9, 0.93)</nameColor>
 	<minTicksBeforeRecovery>600</minTicksBeforeRecovery>
 	<recoveryMtbDays>0.1</recoveryMtbDays>
@@ -58,7 +58,7 @@
     <defName>TM_WanderPsychotic</defName>
     <stateClass>MentalState_WanderPsychotic</stateClass>
     <label>wandering in psychosis</label>
-    <category>Sad</category>
+    <category>Misc</category>
     <moodRecoveryThought>Catharsis</moodRecoveryThought>
     <blockNormalThoughts>true</blockNormalThoughts>
     <nameColor>(0.65, 0.9, 0.93)</nameColor>
@@ -81,7 +81,7 @@
     <defName>TM_WanderSad</defName>
     <stateClass>MentalState_WanderSad</stateClass>
     <label>sad wandering</label>
-    <category>Sad</category>
+    <category>Misc</category>
     <colonistsOnly>false</colonistsOnly>
     <minTicksBeforeRecovery>1000</minTicksBeforeRecovery>
     <recoveryMtbDays>0.15</recoveryMtbDays>
@@ -100,7 +100,7 @@
     <defName>TM_WanderConfused</defName>
     <label>confused wandering</label>
     <stateClass>MentalState_WanderConfused</stateClass>
-    <category>Sad</category>
+    <category>Misc</category>
     <minTicksBeforeRecovery>1000</minTicksBeforeRecovery>
 	<maxTicksBeforeRecovery>2000</maxTicksBeforeRecovery>
     <recoveryMtbDays>0.15</recoveryMtbDays>

@@ -86,7 +86,7 @@ namespace TorannMagic
             bool spawned = base.Pawn.Spawned;
             if (spawned)
             {
-                SoundDefOf.EnergyShieldReset.PlayOneShot(new TargetInfo(base.Pawn.Position, base.Pawn.Map, false));
+                SoundDefOf.EnergyShield_Reset.PlayOneShot(new TargetInfo(base.Pawn.Position, base.Pawn.Map, false));
                 MoteMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 3f);
             }
             this.energy = 0.5f; //lasts for x * 600 ticks; 3000ticks = 50s
@@ -215,7 +215,7 @@ namespace TorannMagic
         {
             if (!broken)
             {
-                SoundDefOf.EnergyShieldBroken.PlayOneShot(new TargetInfo(base.Pawn.Position, base.Pawn.Map, false));
+                SoundDefOf.EnergyShield_Broken.PlayOneShot(new TargetInfo(base.Pawn.Position, base.Pawn.Map, false));
                 MoteMaker.MakeStaticMote(base.Pawn.TrueCenter(), base.Pawn.Map, ThingDefOf.Mote_ExplosionFlash, 12f);
                 for (int i = 0; i < 6; i++)
                 {

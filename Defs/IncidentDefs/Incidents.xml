@@ -5,7 +5,7 @@
     <defName>ArcaneEnemyRaid</defName>
     <label>enemy arcane raiding party</label>
     <targetTypes>
-      <li>MapPlayerHome</li>
+      <li>Map_PlayerHome</li>
     </targetTypes>
     <workerClass>TorannMagic.IncidentWorker_ArcaneEnemyRaid</workerClass>
     <baseChance>0.0</baseChance>
@@ -18,7 +18,7 @@
 		<label>arcane bandit camp opportunity</label>
 		<category>Misc</category>
     <targetTypes>
-      <li>MapPlayerHome</li>
+      <li>Map_PlayerHome</li>
     </targetTypes>
 		<workerClass>TorannMagic.IncidentWorker_QuestArcaneCamp</workerClass>
 		<letterLabel>Arcane bandits</letterLabel>
@@ -33,6 +33,25 @@
 			</points>
 		</chanceFactorByPopulationCurve>
 	</IncidentDef>
+	
+  <IncidentDef>
+    <defName>MagicCaravanRequest</defName>
+    <label>caravan request</label>
+		<category>Misc</category>
+		<targetTypes>
+			<li>Map_PlayerHome</li>
+		</targetTypes>
+    <workerClass>TorannMagic.IncidentWorker_ArcaneScriptCaravan</workerClass>
+    <baseChance>0.6</baseChance>
+		<minPopulation>4</minPopulation>
+		<earliestDay>15</earliestDay>
+		<chanceFactorByPopulationCurve>
+			<points>
+				<li>(2,0)</li>
+				<li>(7,1)</li>
+			</points>
+		</chanceFactorByPopulationCurve>
+  </IncidentDef>
   
   
 

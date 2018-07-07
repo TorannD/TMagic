@@ -10,7 +10,7 @@
     <altitudeLayer>Pawn</altitudeLayer>
     <useHitPoints>false</useHitPoints>
     <hasTooltip>true</hasTooltip>
-    <soundImpactDefault>BulletImpactGround</soundImpactDefault>
+    <soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
     <statBases>
       <Mass>40</Mass>
       <PsychicSensitivity>50</PsychicSensitivity>
@@ -102,7 +102,7 @@ If things get too tough for them or they get bored, they'll flee back to whereve
     <label>minion</label>
     <race>TM_MinionR</race>
     <combatPower>50</combatPower>
-	<wildSpawn_spawnWild>false</wildSpawn_spawnWild>
+<!-- 	<wildSpawn_spawnWild>false</wildSpawn_spawnWild> -->
     <defaultFactionType>TM_SummonedFaction</defaultFactionType>
     <lifeStages>
 	  <li>
@@ -182,7 +182,7 @@ If things get too tough for them or they get bored, they'll flee back to whereve
     <label>greater minion</label>
     <race>TM_GreaterMinionR</race>
     <combatPower>75</combatPower>
-	<wildSpawn_spawnWild>false</wildSpawn_spawnWild>
+<!-- 	<wildSpawn_spawnWild>false</wildSpawn_spawnWild> -->
     <defaultFactionType>TM_SummonedFaction</defaultFactionType>
     <lifeStages>
 	  <li>

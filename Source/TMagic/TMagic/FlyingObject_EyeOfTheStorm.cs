@@ -126,7 +126,7 @@ namespace TorannMagic
             if (pawn != null)
             {
                 MoteMaker.MakeStaticMote(pawn.TrueCenter(), pawn.Map, ThingDefOf.Mote_ExplosionFlash, 12f);
-                SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);
+                SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                 MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
             }
             this.initialized = false;
@@ -254,9 +254,9 @@ namespace TorannMagic
                             for (int k = 0; k < Rand.Range(1, 8); k++)
                             {
                                 IntVec3 randomCell = cellRect.RandomCell;
-                                GenExplosion.DoExplosion(randomCell, base.Map, Rand.Range(.4f, .8f), TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(5 + pwrVal, 9 + 3*pwrVal) * this.arcaneDmg), SoundDefOf.Thunder_OnMap, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
+                                GenExplosion.DoExplosion(randomCell, base.Map, Rand.Range(.4f, .8f), TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(5 + pwrVal, 9 + 3*pwrVal) * this.arcaneDmg), 0, SoundDefOf.Thunder_OnMap, null, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
                             }
-                            GenExplosion.DoExplosion(curPawnTarg.Position, base.Map, 1f, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(5+  pwrVal, 9 + 3 * pwrVal) * this.arcaneDmg), SoundDefOf.Thunder_OffMap, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
+                            GenExplosion.DoExplosion(curPawnTarg.Position, base.Map, 1f, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(5+  pwrVal, 9 + 3 * pwrVal) * this.arcaneDmg), 0, SoundDefOf.Thunder_OffMap, null, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
                             this.lastStrike = this.age;
                         }                        
                     }
@@ -278,10 +278,10 @@ namespace TorannMagic
                             for (int k = 0; k < Rand.Range(1, 8); k++)
                             {
                                 IntVec3 randomCell = cellRect.RandomCell;
-                                GenExplosion.DoExplosion(randomCell, base.Map, Rand.Range(.2f, .6f), TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(3 + 3 * pwrVal, 7 + 5 * pwrVal) * this.arcaneDmg), SoundDefOf.Thunder_OffMap, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
+                                GenExplosion.DoExplosion(randomCell, base.Map, Rand.Range(.2f, .6f), TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(3 + 3 * pwrVal, 7 + 5 * pwrVal) * this.arcaneDmg), 0, SoundDefOf.Thunder_OffMap, null, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
 
                             }
-                            GenExplosion.DoExplosion(curBldgTarg.Position, base.Map, 1f, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(5 + 5 * pwrVal, 10 + 10 * pwrVal) * this.arcaneDmg), SoundDefOf.Thunder_OffMap, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
+                            GenExplosion.DoExplosion(curBldgTarg.Position, base.Map, 1f, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(5 + 5 * pwrVal, 10 + 10 * pwrVal) * this.arcaneDmg), 0, SoundDefOf.Thunder_OffMap, null, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
                             this.lastStrikeBldg = this.age;
                         }
                     }
@@ -378,7 +378,7 @@ namespace TorannMagic
                 bool flag4 = this.explosion;
                 if (flag4)
                 {
-                    GenExplosion.DoExplosion(base.Position, base.Map, 0.9f, DamageDefOf.Stun, this, -1, null, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
+                    GenExplosion.DoExplosion(base.Position, base.Map, 0.9f, DamageDefOf.Stun, this, -1, 0, null, null, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
                 }
             }
 

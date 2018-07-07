@@ -134,7 +134,7 @@ namespace TorannMagic
             {
                 zflag = false;
                 xflag = false;
-                SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);
+                SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                 MoteMaker.ThrowSmoke(pawn.Position.ToVector3(), map, 1.2f);
                 DoWhirlwindDamage(pawn);
                 DrawCleaving(pawn, 10);
@@ -159,7 +159,7 @@ namespace TorannMagic
             {
                 IntVec3 arg_29_0 = caster.Position;
                 arg_40_0 = caster.Position.IsValid;
-                DamageInfo dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Cleave, weaponDmg, (float)-1, caster, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+                DamageInfo dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Cleave, weaponDmg, 0, (float)-1, caster, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
                 ApplyWhirlwindDamage(dinfo, caster, caster.Map);
 
             }
@@ -172,14 +172,14 @@ namespace TorannMagic
         public void ApplyWhirlwindDamage(DamageInfo dinfo, Pawn caster, Map map)
         {
 
-            bool flag = !dinfo.InstantOldInjury;
+            bool flag = !dinfo.InstantPermanentInjury;
             if (flag)
             {
                 bool flag2 = dinfo.Instigator != null;
                 if (flag2)
                 {
                     float num = 4f;
-                    int num2 = dinfo.Amount;
+                    float num2 = dinfo.Amount;
                     bool flag3 = caster != null && caster.PositionHeld != default(IntVec3) && !caster.Downed;
                     if (flag3)
                     {
@@ -194,7 +194,7 @@ namespace TorannMagic
                                 MoteMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), map);
                                 CompAbilityUserMight comp = caster.GetComp<CompAbilityUserMight>();
                                 MightPowerSkill ver = comp.MightData.MightPowerSkill_Whirlwind.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Whirlwind_ver");
-                                DamageInfo dinfo2 = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Whirlwind, weaponDmg, (float)-1, caster, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+                                DamageInfo dinfo2 = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Whirlwind, weaponDmg, 0, (float)-1, caster, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
                                 System.Random random = new System.Random();
                                 int rnd = GenMath.RoundRandom(random.Next(0, 100));
                                 if (rnd < (ver.level * 5))
@@ -267,7 +267,7 @@ namespace TorannMagic
                     newPos = pawn.Position;
                     originPos = pawn.Position;
                     MoteMaker.MakeStaticMote(pawn.TrueCenter(), pawn.Map, ThingDefOf.Mote_ExplosionFlash, 12f);
-                    SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);
+                    SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                     MoteMaker.ThrowDustPuff(originPos, pawn.Map, Rand.Range(1.2f, 1.8f));
                     XProb(target, pawn);
                     xProbOrigin = xProb;

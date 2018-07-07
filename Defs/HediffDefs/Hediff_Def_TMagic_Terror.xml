@@ -7,6 +7,7 @@
     <defaultLabelColor>(0.8, 0.8, 1)</defaultLabelColor>
     <label>Terror</label>
     <lethalSeverity>50</lethalSeverity>
+	<isBad>true</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-50</severityPerDay>

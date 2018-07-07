@@ -4,6 +4,7 @@ using System.Diagnostics;
 using UnityEngine;
 using Verse;
 using RimWorld;
+using UnityEngine;
 
 namespace TorannMagic.Conditions
 {
@@ -45,7 +46,7 @@ namespace TorannMagic.Conditions
             if (settingsRef.riftChallenge > 0)
             {
                 this.thing = ThingMaker.MakeThing(ThingDef.Named("TM_ElementalRift"), ThingDefOf.BlocksGranite);
-                GenSpawn.Spawn(thing, centerLocation.ToIntVec3, this.Map, Rot4.North, false);
+                GenSpawn.Spawn(thing, centerLocation.ToIntVec3, this.SingleMap, Rot4.North, WipeMode.Vanish, false);
                 Faction faction = Find.FactionManager.FirstFactionOfDef(FactionDef.Named("TM_ElementalFaction"));
                 if (!faction.HostileTo(Faction.OfPlayer))
                 {
@@ -68,7 +69,7 @@ namespace TorannMagic.Conditions
             IntVec3 thingLoc = centerLocation.ToIntVec3;
             List<Thing> thingList;
             Thing destroyable = null;
-            thingList = thingLoc.GetThingList(base.Map);
+            thingList = thingLoc.GetThingList(this.SingleMap);
             int z = 0;
             while (z < thingList.Count)
             {
@@ -94,19 +95,18 @@ namespace TorannMagic.Conditions
                 thing.stackCount = Rand.Range(35 * (int)settingsRef.riftChallenge, 60 * (int)settingsRef.riftChallenge);
                 if (thing != null)
                 {
-                    GenPlace.TryPlaceThing(thing, thingLoc, this.Map, ThingPlaceMode.Near, null);
+                    GenPlace.TryPlaceThing(thing, thingLoc, this.SingleMap, ThingPlaceMode.Near, null);
                 }
-                ItemCollectionGeneratorParams parms = default(ItemCollectionGeneratorParams);
-                parms.techLevel = TechLevel.Neolithic;
-                parms.totalMarketValue = 1000f * (settingsRef.riftChallenge * settingsRef.riftChallenge);
+
+                int totalMarketValue = Mathf.RoundToInt(1000f * (settingsRef.riftChallenge * settingsRef.riftChallenge));
                 List<Thing> list = new List<Thing>();
                 ItemCollectionGenerator_Gemstones itc_g = new ItemCollectionGenerator_Gemstones();
-                list = itc_g.Generate(parms, list);
+                list = itc_g.Generate(totalMarketValue, list);
                 for (int i = 0; i < list.Count; i++)
                 {
                     thing = list[i];
                     thing.stackCount = list[i].stackCount;
-                    GenPlace.TryPlaceThing(thing, thingLoc, this.Map, ThingPlaceMode.Near, null);
+                    GenPlace.TryPlaceThing(thing, thingLoc, this.SingleMap, ThingPlaceMode.Near, null);
                 }
             }
             base.End();
@@ -114,13 +114,13 @@ namespace TorannMagic.Conditions
 
         private void FindGoodCenterLocation()
         {
-            if (base.Map.Size.x <= 16 || base.Map.Size.z <= 16)
+            if (this.SingleMap.Size.x <= 16 || this.SingleMap.Size.z <= 16)
             {
                 throw new Exception("Map too small for elemental assault");
             }
             for (int i = 0; i < 10; i++)
             {
-                this.centerLocation = new IntVec2(Rand.Range(8, base.Map.Size.x - 8), Rand.Range(8, base.Map.Size.z - 8));
+                this.centerLocation = new IntVec2(Rand.Range(8, base.SingleMap.Size.x - 8), Rand.Range(8, base.SingleMap.Size.z - 8));
                 if (this.IsGoodCenterLocation(this.centerLocation))
                 {
                     break;
@@ -130,7 +130,7 @@ namespace TorannMagic.Conditions
 
         private bool IsGoodLocationForSpawn(IntVec3 loc)
         {
-            return loc.InBounds(base.Map) && !loc.Roofed(base.Map) && loc.Standable(base.Map) && loc.IsValid && !loc.Fogged(base.Map) && loc.Walkable(base.Map);
+            return loc.InBounds(base.SingleMap) && !loc.Roofed(base.SingleMap) && loc.Standable(base.SingleMap) && loc.IsValid && !loc.Fogged(base.SingleMap) && loc.Walkable(base.SingleMap);
         }
 
         private bool IsGoodCenterLocation(IntVec2 loc)

@@ -226,9 +226,9 @@ namespace TorannMagic
 
         //protected override void Impact()
         //{
-        //    if (this.def.skyfaller.explosionDamage != null)
+        //    if (this.def.skyfaller.defaultDamage != null)
         //    {
-        //        GenExplosion.DoExplosion(base.Position, base.Map, this.def.skyfaller.explosionRadius, this.def.skyfaller.explosionDamage, null, GenMath.RoundRandom((float)this.def.skyfaller.explosionDamage.explosionDamage * this.def.skyfaller.explosionDamageFactor), null, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
+        //        GenExplosion.DoExplosion(base.Position, base.Map, this.def.skyfaller.explosionRadius, this.def.skyfaller.defaultDamage, null, GenMath.RoundRandom((float)this.def.skyfaller.defaultDamage.defaultDamage * this.def.skyfaller.defaultDamageFactor), null, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
         //    }
         //    for (int i = this.innerContainer.Count - 1; i >= 0; i--)
         //    {

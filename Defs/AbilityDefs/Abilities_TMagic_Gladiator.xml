@@ -39,7 +39,7 @@
         <warmupTime>.1</warmupTime>
         <SecondsToRecharge>15</SecondsToRecharge>
         <range>0</range>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
         <isPrimary>false</isPrimary>
    	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
@@ -78,7 +78,7 @@
         <warmupTime>.1</warmupTime>
         <SecondsToRecharge>15</SecondsToRecharge>
         <range>0</range>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
         <isPrimary>false</isPrimary>
    	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
@@ -117,7 +117,7 @@
         <warmupTime>.1</warmupTime>
         <SecondsToRecharge>15</SecondsToRecharge>
         <range>0</range>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
         <isPrimary>false</isPrimary>
    	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
@@ -156,7 +156,7 @@
         <warmupTime>.1</warmupTime>
         <SecondsToRecharge>15</SecondsToRecharge>
         <range>0</range>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
         <isPrimary>false</isPrimary>
    	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
@@ -218,7 +218,7 @@ Base mitigation: 2</description>
         <warmupTime>1.0</warmupTime>
         <SecondsToRecharge>60.0</SecondsToRecharge>
         <range>0</range>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
         <isPrimary>false</isPrimary>
    	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
@@ -289,7 +289,7 @@ Range: 12</description>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
         </MainVerb>
@@ -320,7 +320,7 @@ Range: 14</description>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
         </MainVerb>
@@ -352,7 +352,7 @@ Range: 22</description>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
         </MainVerb>
@@ -384,7 +384,7 @@ Range: 20</description>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
         </MainVerb>
@@ -504,7 +504,7 @@ Range: 20</description>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-            <soundCast>DropPodLeaving</soundCast>
+            <soundCast>DropPod_Leaving</soundCast>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
         </MainVerb>

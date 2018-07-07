@@ -38,7 +38,7 @@ namespace TorannMagic
         protected override bool TryCastShot()
         {
             // power affects enumerator
-            DamageWorker.DamageResult result = DamageWorker.DamageResult.MakeNew();
+            // DamageWorker.DamageResult result = DamageWorker.DamageResult.MakeNew();
             Pawn caster = this.CasterPawn;
             CompAbilityUserMagic comp = caster.GetComp<CompAbilityUserMagic>();
             MagicPowerSkill pwr = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AdvancedHeal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AdvancedHeal_pwr");
@@ -83,7 +83,7 @@ namespace TorannMagic
                                 bool flag4 = num2 > 0;
                                 if (flag4)
                                 {
-                                    bool flag5 = current.CanHealNaturally() && !current.IsOld();
+                                    bool flag5 = current.CanHealNaturally() && !current.IsPermanent();
                                     if (flag5)
                                     {
                                         //current.Heal((float)((int)current.Severity + 1));

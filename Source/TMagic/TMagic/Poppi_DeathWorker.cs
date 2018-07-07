@@ -31,7 +31,7 @@ namespace TorannMagic
                     radius = radius * Rand.Range(1.3f, 1.7f);
                 }
             }
-            GenExplosion.DoExplosion(corpse.Position, corpse.Map, radius, DamageDefOf.Burn, corpse.InnerPawn, Rand.Range(6, 10), null, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
+            GenExplosion.DoExplosion(corpse.Position, corpse.Map, radius, DamageDefOf.Burn, corpse.InnerPawn, Rand.Range(6, 10), 0,  null, null, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
         }
     }
 }

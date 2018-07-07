@@ -13,10 +13,14 @@
 	<minSeverity>0.001</minSeverity>
 	<maxSeverity>4.0</maxSeverity>
 	<initialSeverity>0.95</initialSeverity>
+	<isBad>false</isBad>
 	<comps>
 	  <li>
         <compClass>TorannMagic.HediffComp_Lullaby</compClass>
       </li>
+<!-- 	  <li Class="TorannMagic.HediffComp_Lullaby">
+        
+      </li>	 -->
       <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-20</severityPerDay>
       </li>	  
@@ -75,6 +79,7 @@
 	<minSeverity>0.001</minSeverity>
 	<maxSeverity>1</maxSeverity>
 	<initialSeverity>0.95</initialSeverity>
+	<isBad>false</isBad>
 	<comps>
 	  <li>
         <compClass>TorannMagic.HediffComp_Inspirational</compClass>
@@ -104,6 +109,7 @@
 	<minSeverity>0.001</minSeverity>
 	<maxSeverity>1</maxSeverity>
 	<initialSeverity>0.95</initialSeverity>
+	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>0.0</severityPerDay>
@@ -129,6 +135,7 @@
 	<minSeverity>0.001</minSeverity>
 	<maxSeverity>1</maxSeverity>
 	<initialSeverity>0.95</initialSeverity>
+	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>0.0</severityPerDay>
@@ -159,6 +166,7 @@
     <label>Battle Hymn</label>
 	<defaultLabelColor>(.96,.9,0.45)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
+	<isBad>false</isBad>
 	<maxSeverity>10.0</maxSeverity>
     <stages>
       <li>

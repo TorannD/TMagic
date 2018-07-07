@@ -5,7 +5,7 @@ using Verse;
 
 namespace TorannMagic
 {
-    public class ITab_Pawn_Magic: ITab  //code by Jecrell
+    public class ITab_Pawn_Magic : ITab  //code by Jecrell
     {
         private Pawn PawnToShowInfoAbout
         {

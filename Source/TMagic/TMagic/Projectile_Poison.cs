@@ -1,4 +1,5 @@
-﻿using Verse;
+﻿using RimWorld;
+using Verse;
 using AbilityUser;
 using System.Linq;
 using System.Collections.Generic;
@@ -128,31 +129,31 @@ namespace TorannMagic
             {
                 
                 IEnumerable<BodyPartRecord> partSearch = victim.def.race.body.AllParts;
-                vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains("BloodPumpingSource"));
+                vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.BloodPumpingSource));
                 if (vitalPart != null)
                 {
                     this.vulnerableParts[0] = vitalPart;
                 }
                 vitalPart = null;
-                vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains("BloodFiltrationKidney"));
+                vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.BloodFiltrationKidney));
                 if (vitalPart != null)
                 {
                     this.vulnerableParts[1] = vitalPart;
                 }
                 vitalPart = null;
-                vitalPart = partSearch.LastOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains("BloodFiltrationKidney"));
+                vitalPart = partSearch.LastOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.BloodFiltrationKidney));
                 if (vitalPart != null)
                 {
                     this.vulnerableParts[2] = vitalPart;
                 }
                 vitalPart = null;
-                vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains("BloodFiltrationLiver"));
+                vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.BloodFiltrationLiver));
                 if (vitalPart != null)
                 {
                     this.vulnerableParts[3] = vitalPart;
                 }
                 vitalPart = null;
-                vitalPart = partSearch.LastOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains("BloodFiltrationLiver"));
+                vitalPart = partSearch.LastOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.BloodFiltrationLiver));
                 if (vitalPart != null)
                 {
                     this.vulnerableParts[4] = vitalPart;
@@ -167,7 +168,7 @@ namespace TorannMagic
             amt *= Mathf.RoundToInt(this.arcaneDmg);
             if (this.caster != null && victim != null && !victim.Dead && !victim.Downed && hitPart != null)
             {
-                dinfo = new DamageInfo(type, amt, (float)-1, this.caster, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
+                dinfo = new DamageInfo(type, amt, 0, (float)-1, this.caster, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
                 dinfo.SetAllowDamagePropagation(false);
                 victim.TakeDamage(dinfo);
             }

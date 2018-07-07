@@ -105,67 +105,35 @@ namespace TorannMagic
             CompAbilityUserMagic comp = billdoer.GetComp<CompAbilityUserMagic>();
             switch (part.def.defName)
             {
-                case "LeftFoot":
+                case "Foot":
                     patient.health.AddHediff(HediffDef.Named("TM_FootRegrowth"), part, null);
                     break;
-                case "LeftLeg":
+                case "Leg":
                     patient.health.AddHediff(HediffDef.Named("TM_LegRegrowth"), part, null);
                     break;
-                case "LeftShoulder":
+                case "Shoulder":
                     patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
                     break;
-                case "LeftArm":
+                case "Arm":
                     patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
                     break;
-                case "LeftHand":
+                case "Hand":
                     patient.health.AddHediff(HediffDef.Named("TM_HandRegrowth"), part, null);
                     comp.Mana.CurLevel += (.4f);
                     break;
-                case "LeftHandPinky":
+                case "Finger":
                     patient.health.AddHediff(HediffDef.Named("TM_FingerRegrowth"), part, null);
                     comp.Mana.CurLevel += (.7f);
                     break;
-                case "LeftHandRingFinger":
-                    patient.health.AddHediff(HediffDef.Named("TM_FingerRegrowth"), part, null);
+                case "Toe":
+                    patient.health.AddHediff(HediffDef.Named("TM_ToeRegrowth"), part, null);
                     comp.Mana.CurLevel += (.7f);
                     break;
-                case "LeftHandMiddleFinger":
-                    patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.7f);
-                    break;
-                case "LeftHandIndexFinger":
-                    patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.7f);
-                    break;
-                case "LeftHandThumb":
-                    patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.7f);
-                    break;
-                case "LeftFootLittleToe":
-                    patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.7f);
-                    break;
-                case "LeftFootFourthToe":
-                    patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.7f);
-                    break;
-                case "LeftFootMiddleToe":
-                    patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.7f);
-                    break;
-                case "LeftFootSecondToe":
-                    patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.7f);
-                    break;
-                case "LeftFootBigToe":
-                    patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.7f);
-                    break;
-                case "LeftEye":
+                case "Eye":
                     patient.health.AddHediff(HediffDef.Named("TM_EyeRegrowth"), part, null);
                     comp.Mana.CurLevel += (.3f);
                     break;
-                case "LeftEar":
+                case "Ear":
                     patient.health.AddHediff(HediffDef.Named("TM_EarRegrowth"), part, null);
                     comp.Mana.CurLevel += (.5f);
                     break;
@@ -177,87 +145,17 @@ namespace TorannMagic
                     patient.health.AddHediff(HediffDef.Named("TM_JawRegrowth"), part, null);
                     comp.Mana.CurLevel += (.5f);
                     break;
-                case "Rib":
+                case "Ribcage":
                     patient.health.AddHediff(HediffDef.Named("TM_StandardRegrowth"), part, null);
                     comp.Mana.CurLevel += (.6f);
-                    break;
-                case "RightFoot":
-                    patient.health.AddHediff(HediffDef.Named("TM_FootRegrowth"), part, null);
-                    break;
-                case "RightLeg":
-                    patient.health.AddHediff(HediffDef.Named("TM_LegRegrowth"), part, null);
-                    break;
-                case "RightShoulder":
-                    patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
-                    break;
-                case "RightArm":
-                    patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
-                    break;
-                case "RightHand":
-                    patient.health.AddHediff(HediffDef.Named("TM_HandRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.4f);
-                    break;
-                case "RightHandPinky":
-                    patient.health.AddHediff(HediffDef.Named("TM_FingerRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.7f);
-                    break;
-                case "RightHandRingFinger":
-                    patient.health.AddHediff(HediffDef.Named("TM_FingerRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.7f);
-                    break;
-                case "RightHandMiddleFinger":
-                    patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.7f);
-                    break;
-                case "RightHandIndexFinger":
-                    patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.7f);
-                    break;
-                case "RightHandThumb":
-                    patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.7f);
-                    break;
-                case "RightFootLittleToe":
-                    patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.7f);
-                    break;
-                case "RightFootFourthToe":
-                    patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.7f);
-                    break;
-                case "RightFootMiddleToe":
-                    patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.7f);
-                    break;
-                case "RightFootSecondToe":
-                    patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.7f);
-                    break;
-                case "RightFootBigToe":
-                    patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.7f);
-                    break;
-                case "RightEye":
-                    patient.health.AddHediff(HediffDef.Named("TM_EyeRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.3f);
-                    break;
-                case "RightEar":
-                    patient.health.AddHediff(HediffDef.Named("TM_EarRegrowth"), part, null);
-                    comp.Mana.CurLevel += (.5f);
                     break;
                 case "Heart":
                     patient.health.AddHediff(HediffDef.Named("TM_HeartRegrowth"), part, null);
                     break;
-                case "LeftLung":
+                case "Lung":
                     patient.health.AddHediff(HediffDef.Named("TM_LungRegrowth"), part, null);
                     break;
-                case "LeftKidney":
-                    patient.health.AddHediff(HediffDef.Named("TM_KidneyRegrowth"), part, null);
-                    break;
-                case "RightLung":
-                    patient.health.AddHediff(HediffDef.Named("TM_LungRegrowth"), part, null);
-                    break;
-                case "RightKidney":
+                case "Kidney":
                     patient.health.AddHediff(HediffDef.Named("TM_KidneyRegrowth"), part, null);
                     break;
                 case "Liver":
@@ -276,3 +174,102 @@ namespace TorannMagic
         }
     }
 }
+
+//case "LeftHandRingFinger":
+//    patient.health.AddHediff(HediffDef.Named("TM_FingerRegrowth"), part, null);
+//    comp.Mana.CurLevel += (.7f);
+//    break;
+//case "LeftHandMiddleFinger":
+//    patient.health.AddHediff(HediffDef.Named("TM_FingerRegrowth"), part, null);
+//    comp.Mana.CurLevel += (.7f);
+//    break;
+//case "LeftHandIndexFinger":
+//    patient.health.AddHediff(HediffDef.Named("TM_FingerRegrowth"), part, null);
+//    comp.Mana.CurLevel += (.7f);
+//    break;
+//case "LeftHandThumb":
+//    patient.health.AddHediff(HediffDef.Named("TM_FingerRegrowth"), part, null);
+//    comp.Mana.CurLevel += (.7f);
+//    break;
+
+//case "LeftFootFourthToe":
+//    patient.health.AddHediff(HediffDef.Named("TM_ToeRegrowth"), part, null);
+//    comp.Mana.CurLevel += (.7f);
+//    break;
+//case "LeftFootMiddleToe":
+//    patient.health.AddHediff(HediffDef.Named("TM_ToeRegrowth"), part, null);
+//    comp.Mana.CurLevel += (.7f);
+//    break;
+//case "LeftFootSecondToe":
+//    patient.health.AddHediff(HediffDef.Named("TM_ToeRegrowth"), part, null);
+//    comp.Mana.CurLevel += (.7f);
+//    break;
+//case "LeftFootBigToe":
+//    patient.health.AddHediff(HediffDef.Named("TM_ToeRegrowth"), part, null);
+//    comp.Mana.CurLevel += (.7f);
+//    break;
+
+//case "RightFoot":
+//                    patient.health.AddHediff(HediffDef.Named("TM_FootRegrowth"), part, null);
+//                    break;
+//                case "RightLeg":
+//                    patient.health.AddHediff(HediffDef.Named("TM_LegRegrowth"), part, null);
+//                    break;
+//                case "RightShoulder":
+//                    patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
+//                    break;
+//                case "RightArm":
+//                    patient.health.AddHediff(HediffDef.Named("TM_ArmRegrowth"), part, null);
+//                    break;
+//                case "RightHand":
+//                    patient.health.AddHediff(HediffDef.Named("TM_HandRegrowth"), part, null);
+//                    comp.Mana.CurLevel += (.4f);
+//                    break;
+//                case "RightHandPinky":
+//                    patient.health.AddHediff(HediffDef.Named("TM_FingerRegrowth"), part, null);
+//                    comp.Mana.CurLevel += (.7f);
+//                    break;
+//                case "RightHandRingFinger":
+//                    patient.health.AddHediff(HediffDef.Named("TM_FingerRegrowth"), part, null);
+//                    comp.Mana.CurLevel += (.7f);
+//                    break;
+//                case "RightHandMiddleFinger":
+//                    patient.health.AddHediff(HediffDef.Named("TM_FingerRegrowth"), part, null);
+//                    comp.Mana.CurLevel += (.7f);
+//                    break;
+//                case "RightHandIndexFinger":
+//                    patient.health.AddHediff(HediffDef.Named("TM_FingerRegrowth"), part, null);
+//                    comp.Mana.CurLevel += (.7f);
+//                    break;
+//                case "RightHandThumb":
+//                    patient.health.AddHediff(HediffDef.Named("TM_FingerRegrowth"), part, null);
+//                    comp.Mana.CurLevel += (.7f);
+//                    break;
+//                case "RightFootLittleToe":
+//                    patient.health.AddHediff(HediffDef.Named("TM_ToeRegrowth"), part, null);
+//                    comp.Mana.CurLevel += (.7f);
+//                    break;
+//                case "RightFootFourthToe":
+//                    patient.health.AddHediff(HediffDef.Named("TM_ToeRegrowth"), part, null);
+//                    comp.Mana.CurLevel += (.7f);
+//                    break;
+//                case "RightFootMiddleToe":
+//                    patient.health.AddHediff(HediffDef.Named("TM_ToeRegrowth"), part, null);
+//                    comp.Mana.CurLevel += (.7f);
+//                    break;
+//                case "RightFootSecondToe":
+//                    patient.health.AddHediff(HediffDef.Named("TM_ToeRegrowth"), part, null);
+//                    comp.Mana.CurLevel += (.7f);
+//                    break;
+//                case "RightFootBigToe":
+//                    patient.health.AddHediff(HediffDef.Named("TM_ToeRegrowth"), part, null);
+//                    comp.Mana.CurLevel += (.7f);
+//                    break;
+//                case "RightEye":
+//                    patient.health.AddHediff(HediffDef.Named("TM_EyeRegrowth"), part, null);
+//                    comp.Mana.CurLevel += (.3f);
+//                    break;
+//                case "RightEar":
+//                    patient.health.AddHediff(HediffDef.Named("TM_EarRegrowth"), part, null);
+//                    comp.Mana.CurLevel += (.5f);
+//                    break;

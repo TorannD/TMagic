@@ -41,7 +41,7 @@
         <warmupTime>2.5</warmupTime>
         <SecondsToRecharge>8.0</SecondsToRecharge>
         <range>25</range>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>30</muzzleFlashScale>
         <isPrimary>false</isPrimary>
    	    <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
@@ -74,7 +74,7 @@
         <warmupTime>8</warmupTime>
         <SecondsToRecharge>600</SecondsToRecharge>
         <range>2</range>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>30</muzzleFlashScale>
         <isPrimary>false</isPrimary>
    	    <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
@@ -183,7 +183,7 @@ Range: 30</description>
             <SecondsToRecharge>60</SecondsToRecharge>
             <range>30</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>4</muzzleFlashScale>
             <isPrimary>false</isPrimary>
@@ -219,7 +219,7 @@ Range: 35</description>
             <SecondsToRecharge>60</SecondsToRecharge>
             <range>35</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>4</muzzleFlashScale>
             <isPrimary>false</isPrimary>
@@ -255,7 +255,7 @@ Range: 40</description>
             <SecondsToRecharge>60</SecondsToRecharge>
             <range>40</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>4</muzzleFlashScale>
             <isPrimary>false</isPrimary>
@@ -291,7 +291,7 @@ Range: 45</description>
             <SecondsToRecharge>60</SecondsToRecharge>
             <range>45</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>4</muzzleFlashScale>
             <isPrimary>false</isPrimary>
@@ -331,7 +331,7 @@ Pain:		-40%</description>
             <SecondsToRecharge>60.0</SecondsToRecharge>
             <range>30</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
@@ -375,7 +375,7 @@ Pain:		-50%</description>
             <SecondsToRecharge>60.0</SecondsToRecharge>
             <range>30</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
@@ -419,7 +419,7 @@ Pain:		-60%</description>
             <SecondsToRecharge>60.0</SecondsToRecharge>
             <range>30</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
@@ -463,7 +463,7 @@ Pain:		-70%</description>
             <SecondsToRecharge>60.0</SecondsToRecharge>
             <range>30</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
@@ -520,7 +520,7 @@ Pain:		-70%</description>
         <warmupTime>5</warmupTime>
         <SecondsToRecharge>600</SecondsToRecharge>
         <range>8</range>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>30</muzzleFlashScale>
         <isPrimary>false</isPrimary>
 		<AlwaysHits>true</AlwaysHits>

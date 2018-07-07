@@ -22,7 +22,7 @@
   <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
     <defName>TM_SummonMinion</defName>
     <label>Summon Minion</label>
-    <uiIconPath>PawnKind/minion_front</uiIconPath>
+    <uiIconPath>PawnKind/minion_south</uiIconPath>
     <description>Summons minions to assist in daily tasks.</description>
     <manaCost>0.40</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -39,7 +39,7 @@
 		<burstShotCount>1</burstShotCount>
         <range>25</range>
 		<isViolent>false</isViolent>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
 		<AlwaysHits>true</AlwaysHits>
         <isPrimary>false</isPrimary>
@@ -72,7 +72,7 @@
 		<burstShotCount>1</burstShotCount>
         <range>0</range>
 		<isViolent>false</isViolent>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
 		<AlwaysHits>true</AlwaysHits>
         <isPrimary>false</isPrimary>
@@ -125,7 +125,7 @@
 		<burstShotCount>1</burstShotCount>
         <range>70</range>
 		<isViolent>false</isViolent>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
 		<AlwaysHits>true</AlwaysHits>
         <isPrimary>false</isPrimary>
@@ -177,7 +177,7 @@
 		<burstShotCount>1</burstShotCount>
         <range>70</range>
 		<isViolent>false</isViolent>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>10</muzzleFlashScale>
 		<AlwaysHits>true</AlwaysHits>
         <isPrimary>false</isPrimary>
@@ -229,7 +229,7 @@
 		<burstShotCount>1</burstShotCount>
         <range>50</range>
 		<isViolent>false</isViolent>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
 		<AlwaysHits>true</AlwaysHits>
         <isPrimary>false</isPrimary>
@@ -283,7 +283,7 @@
 		<burstShotCount>1</burstShotCount>
         <range>45</range>
 		<isViolent>false</isViolent>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
 		<AlwaysHits>true</AlwaysHits>
         <isPrimary>false</isPrimary>

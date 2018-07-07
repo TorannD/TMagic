@@ -83,11 +83,11 @@ namespace TorannMagic
             if (value > 1000)
             {
                 value -= 1000;
-                dmg = (projectileDef.projectile.damageAmountBase) + (int)((20 + (value / 120)) * (1 + (.1f * pwrVal) + (.05f * str.level)));
+                dmg = (projectileDef.projectile.GetDamageAmount(1,null)) + (int)((20 + (value / 120)) * (1 + (.1f * pwrVal) + (.05f * str.level)));
             }
             else
             {
-                dmg = (projectileDef.projectile.damageAmountBase) + (int)((value / 50) * (1 + (.1f * pwrVal) + (.05f * str.level)));
+                dmg = (projectileDef.projectile.GetDamageAmount(1,null)) + (int)((value / 50) * (1 + (.1f * pwrVal) + (.05f * str.level)));
             }
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             if (!pawn.IsColonist && settingsRef.AIHardMode)
@@ -104,21 +104,21 @@ namespace TorannMagic
             if (victim != null && !victim.Dead)
             {
                 IEnumerable<BodyPartRecord> partSearch = victim.def.race.body.AllParts;
-                vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains("ConsciousnessSource"));
+                vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.ConsciousnessSource));
                 if (vitalPart != null)
                 {
                     this.HitBodyPartOrParent(victim, dmg, dmgType, vitalPart, 0);
                 }
                 else
                 {
-                    vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains("BloodPumpingSource"));
+                    vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.BloodPumpingSource));
                     if (vitalPart != null)
                     {
                         this.HitBodyPartOrParent(victim, dmg, dmgType, vitalPart, 0);
                     }
                     else
                     {
-                        vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains("Spine"));
+                        vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.Spine));
                         if (vitalPart != null)
                         {
                             this.HitBodyPartOrParent(victim, dmg, dmgType, vitalPart, 0);
@@ -186,12 +186,12 @@ namespace TorannMagic
             if (hitPart.def.GetMaxHealth(victim) > amt)
             {
                 //Very large animals or creatures
-                dinfo = new DamageInfo(type, amt, (float)-1, pawn, hitPart, pawn.equipment.Primary.def, DamageInfo.SourceCategory.ThingOrUnknown);
+                dinfo = new DamageInfo(type, amt, 0, (float)-1, pawn, hitPart, pawn.equipment.Primary.def, DamageInfo.SourceCategory.ThingOrUnknown);
             }
             else
             {
                 amt = (int)(amt / (1 + penetratedParts));
-                dinfo = new DamageInfo(type, amt, (float)-1, pawn, hitPart, pawn.equipment.Primary.def, DamageInfo.SourceCategory.ThingOrUnknown);
+                dinfo = new DamageInfo(type, amt, 0, (float)-1, pawn, hitPart, pawn.equipment.Primary.def, DamageInfo.SourceCategory.ThingOrUnknown);
             }
             dinfo.SetAllowDamagePropagation(false);
             //DamageWorker_AddInjury inj = new DamageWorker_AddInjury();
@@ -200,7 +200,7 @@ namespace TorannMagic
             if (!victim.IsColonist && !victim.IsPrisoner && victim.Faction != null && !victim.Faction.HostileTo(pawn.Faction))
             {
                 Faction faction = victim.Faction;
-                faction.SetHostileTo(pawn.Faction, true);
+                faction.TrySetRelationKind(pawn.Faction, FactionRelationKind.Hostile, false, null);
             }
         }
     }

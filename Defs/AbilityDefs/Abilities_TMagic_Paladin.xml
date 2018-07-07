@@ -42,7 +42,7 @@
         <warmupTime>.6</warmupTime>
         <SecondsToRecharge>15.0</SecondsToRecharge>
         <range>12</range>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>30</muzzleFlashScale>
         <isPrimary>false</isPrimary>
    	    <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
@@ -96,7 +96,7 @@ Absorbs up to 40 damage.</description>
         <warmupTime>.2</warmupTime>
         <SecondsToRecharge>25.0</SecondsToRecharge>
         <range>0</range>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
         <isPrimary>false</isPrimary>
    	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
@@ -138,7 +138,7 @@ Reduces recharge to 20s.</description>
         <warmupTime>.2</warmupTime>
         <SecondsToRecharge>20.0</SecondsToRecharge>
         <range>0</range>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
         <isPrimary>false</isPrimary>
    	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
@@ -179,7 +179,7 @@ Absorbs up to 100 damage.</description>
         <warmupTime>.2</warmupTime>
         <SecondsToRecharge>20.0</SecondsToRecharge>
         <range>0</range>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
         <isPrimary>false</isPrimary>
    	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
@@ -221,7 +221,7 @@ Reduces recharge to 18s.</description>
         <warmupTime>.2</warmupTime>
         <SecondsToRecharge>18.0</SecondsToRecharge>
         <range>0</range>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
         <isPrimary>false</isPrimary>
    	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
@@ -302,7 +302,7 @@ Reduces recharge to 18s.</description>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-            <soundCast>DropPodLeaving</soundCast>
+            <soundCast>DropPod_Leaving</soundCast>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
         </MainVerb>

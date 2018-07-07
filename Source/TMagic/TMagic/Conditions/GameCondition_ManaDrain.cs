@@ -14,7 +14,7 @@ namespace TorannMagic
 
         public override void Init()
         {
-            Map map = base.Map;
+            Map map = base.SingleMap;
             
             if (map != null)
             {

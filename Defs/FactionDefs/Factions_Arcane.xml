@@ -6,12 +6,14 @@
 		<label>arcane fold</label>
     <description>Little is known about this secretive faction.  They possess some technology, but do not seem to dependent on it. They work simple tools and defend themselves with firearms.\n\nThey participate in the the practical matters of trade, trust, and survival, but their primary interest is unclear.\n\nAccording to traveler tales and information gathered from other factions, they have knowledge, and use, of mysterious powers and artifacts.</description>
     <pawnsPlural>seers</pawnsPlural>
-    <baseSelectionWeight>0.2</baseSelectionWeight>
+    <settlementGenerationWeight>0.3</settlementGenerationWeight>
     <requiredCountAtGameStart>1</requiredCountAtGameStart>
     <canMakeRandomly>true</canMakeRandomly>
     <canSiege>true</canSiege>
     <canStageAttacks>true</canStageAttacks>
     <leaderTitle>Mage King</leaderTitle>
+	<autoFlee>false</autoFlee>
+	<earliestRaidDays>7</earliestRaidDays>
     <expandingIconTexture>World/ArcaneTown</expandingIconTexture>
     <colorSpectrum>
       <li>(0.64, 0.05, 0.8)</li>
@@ -22,13 +24,21 @@
       <max>20</max>
     </startingGoodwill>
 		<factionNameMaker>NamerFactionOutlander</factionNameMaker>
-		<baseNameMaker>NamerFactionBaseOutlander</baseNameMaker>
-		<techLevel>Spacer</techLevel>
+		<settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>
+		<techLevel>Neolithic</techLevel>
 		<backstoryCategory>Civil</backstoryCategory>
 		<geneticVariance>0.8</geneticVariance>
 		<hairTags>
+			<li>Urban</li>
+			<li>Punk</li>
 			<li>Rural</li>
+			<li>Tribal</li>
 		</hairTags>
+	<raidCommonalityFromPointsCurve>
+      <points>
+        <li>(0, .5)</li> 
+      </points>
+    </raidCommonalityFromPointsCurve>
     <naturalColonyGoodwill>
       <min>-60</min>
       <max>0</max>
@@ -46,23 +56,33 @@
       <min>-40</min>
       <max>45</max>
     </allowedArrivalTemperatureRange>
+	<maxPawnCostPerTotalPointsCurve>
+      <points>
+        <li>(0,35)</li>
+        <li>(70, 50)</li>
+        <li>(700, 100)</li>
+        <li>(1300, 150)</li>
+        <li>(100000, 10000)</li>
+      </points>
+    </maxPawnCostPerTotalPointsCurve>
     <pawnGroupMakers>
       <li>
-        <kindDef>Normal</kindDef>
+        <kindDef>Combat</kindDef>
         <options>
 			<Villager>50</Villager>
-			<GrenadierDestructive>15</GrenadierDestructive>
-			<MercenarySlasher>70</MercenarySlasher>
-			<TownGuard>100</TownGuard>
-			<TownCouncilman>100</TownCouncilman>
-			<MercenaryGunner>100</MercenaryGunner>
-			<MercenaryElite>100</MercenaryElite>
+			<Grenadier_Destructive>15</Grenadier_Destructive>
+			<Mercenary_Slasher>70</Mercenary_Slasher>
+			<Town_Guard>100</Town_Guard>
+			<Town_Councilman>100</Town_Councilman>
+			<Mercenary_Gunner>100</Mercenary_Gunner>
+			<Mercenary_Elite>100</Mercenary_Elite>
+			<SeerDefender>100</SeerDefender>
 		</options>
       </li>
       <li>
         <kindDef>Trader</kindDef>
         <traders>
-          <TownTrader>1</TownTrader>
+          <Town_Trader>1</Town_Trader>
         </traders>
         <carriers>
           <Muffalo>1</Muffalo>
@@ -71,33 +91,33 @@
           <Elephant>6</Elephant>
         </carriers>
         <guards>
-			<GrenadierDestructive>70</GrenadierDestructive>
-			<MercenarySlasher>200</MercenarySlasher>
-			<TownGuard>150</TownGuard>
-			<MercenaryGunner>250</MercenaryGunner>
-			<MercenaryElite>200</MercenaryElite>
-			<SpaceSoldier>250</SpaceSoldier>
-			<MercenaryHeavy>200</MercenaryHeavy>
+			<Grenadier_Destructive>70</Grenadier_Destructive>
+			<Mercenary_Slasher>200</Mercenary_Slasher>
+			<Town_Guard>150</Town_Guard>
+			<Mercenary_Gunner>250</Mercenary_Gunner>
+			<Mercenary_Elite>200</Mercenary_Elite>
+			<AncientSoldier>250</AncientSoldier>
+			<Mercenary_Heavy>200</Mercenary_Heavy>
 			<SeerDefender>100</SeerDefender>
 		</guards>
       </li>
       <li>
-        <kindDef>FactionBase</kindDef>
+        <kindDef>Settlement</kindDef>
         <options>
-			<GrenadierDestructive>75</GrenadierDestructive>
-			<MercenarySlasher>250</MercenarySlasher>
+			<Grenadier_Destructive>75</Grenadier_Destructive>
+			<Mercenary_Slasher>250</Mercenary_Slasher>
 			<Villager>100</Villager>
-			<TownGuard>250</TownGuard>
-			<TownCouncilman>200</TownCouncilman>
-			<MercenaryGunner>350</MercenaryGunner>
-			<MercenaryElite>250</MercenaryElite>
-			<SpaceSoldier>100</SpaceSoldier>
-			<MercenaryHeavy>200</MercenaryHeavy>
+			<Town_Guard>250</Town_Guard>
+			<Town_Councilman>200</Town_Councilman>
+			<Mercenary_Gunner>350</Mercenary_Gunner>
+			<Mercenary_Elite>250</Mercenary_Elite>
+			<AncientSoldier>100</AncientSoldier>
+			<Mercenary_Heavy>200</Mercenary_Heavy>
 			<SeerDefender>300</SeerDefender>
 		</options>
       </li>
     </pawnGroupMakers>
-    <homeIconPath>World/WorldObjects/DefaultFactionBase</homeIconPath>
+    <homeIconPath>World/WorldObjects/DefaultSettlement</homeIconPath>
   </FactionDef>
 
 

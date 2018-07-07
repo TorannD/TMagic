@@ -93,10 +93,10 @@ namespace TorannMagic
 
         //Site Defs
         public static WorldObjectDef ArcaneAdventure;
-        public static SiteCoreDef ArcaneStash;
-        public static SitePartDef ArcaneStashTreasure;
-        public static SitePartDef ArcaneDefenders;
-        public static SitePartDef EnemyRaidOnArrival;
+        //public static SiteCoreDef ArcaneStash;
+        //public static SitePartDef ArcaneStashTreasure;
+        //public static SitePartDef ArcaneDefenders;
+        //public static SitePartDef EnemyRaidOnArrival;
         public static SitePartDef ArcaneBanditSquad;
         public static IncidentDef ArcaneEnemyRaid;
         
@@ -530,6 +530,8 @@ namespace TorannMagic
         public static ThingDef Mote_Shadow;
         public static ThingDef Mote_ShadowCleave;
         public static ThingDef Mote_ArcaneWaves;
+
+        public static EffecterDef GiantExplosion;
 
         //Jobs
         public static JobDef TMCastAbilityVerb;

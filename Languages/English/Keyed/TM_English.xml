@@ -57,7 +57,7 @@
 <TM_BondedAnimalRelease>The bond between {0} and {1} has ended and {0} has disappeared into the wild.</TM_BondedAnimalRelease>
 <TM_AnimalIncapableOfBond>{0} does not have the intelligence to form a bond with {1}.</TM_AnimalIncapableOfBond>
 <TM_FailedRangerBond>{1} has failed to bond with {0} - {2}&#37; chance</TM_FailedRangerBond>
-<TM_RangerNotExperienced>{1} is unable to establish a bond with {0} at this empathy level. Raise empathy by investing points in "Animal Empathy".</TM_RangerNotExperienced>
+<TM_RangerNotExperienced>{1} is unable to establish a bond with {0}. {0} has a wildness of {2}&#37 and {1} can only bond with a creature with {3}&#37 or lower. This can be increased by investing points in "Animal Empathy".</TM_RangerNotExperienced>
 <TM_TooManyTraps>{0} is limited to {1} traps, removing oldest trap.</TM_TooManyTraps>
 <TM_SummonedCreatureLimitExceeded>{0} has exceeded the max number of summoned creatures, dismissing oldest summon.</TM_SummonedCreatureLimitExceeded>
 <TM_NoMinionToDismiss>{0} has no summoned minions.</TM_NoMinionToDismiss>
@@ -658,7 +658,6 @@ Increases the hit chance of Blade Spin by 4% per level.  Base is 50%.</TM_BladeS
 <TM_PhaseStrike_eff>Dimension Blade</TM_PhaseStrike_eff>
 <TM_PhaseStrike_ver>Phased Reach</TM_PhaseStrike_ver>
 
-
 <TM_RangerTraining_pwr_desc>Advances training as a ranger. Each level requires 2 skill points to train and upgrades the class trait.
 Level 0: Move Speed +0.2c/s, Immunity +20%, Temperature comfort +-10, Aiming Delay -15%
 Level 1: Move Speed +0.3c/s, Immunity +30%, Temperature comfort +-15, Aiming Delay -20%
@@ -670,7 +669,11 @@ Level 1: +40% damage w/ bows, +40% Sight, +40% Hearing
 Level 2: +60% damage w/ bows, +60% Sight, +60% Hearing, +15% Breathing
 Level 3: +80% damage w/ bows, +80% Sight, +80% Hearing, +25% Breathing, +10% Blood filtration</TM_BowTraining_pwr_desc>
 <TM_PoisonTrap_ver_desc>Increases the number of active traps the ranger can have by 1 per level. Base maximum is 2.</TM_PoisonTrap_ver_desc>
-<TM_AnimalFriend_pwr_desc>The ranger can bond with an animal if they have an empathy level that exceeds the wildness of the animal. Empathy also increases the chance of bonding with an animal.</TM_AnimalFriend_pwr_desc>
+<TM_AnimalFriend_pwr_desc>The ranger can bond with an animal if they have an empathy level that exceeds the wildness of the animal. Empathy also increases the chance of bonding with an animal.
+Level 0: up to 70% wildness
+Level 1: up to 80% wildness
+Level 2: up to 90% wildness
+Level 3: up to 100% wildness</TM_AnimalFriend_pwr_desc>
 <TM_AnimalFriend_eff_desc>Decreases the stamina cost of Animal Bond by 15% per skill point.</TM_AnimalFriend_eff_desc>
 <TM_AnimalFriend_ver_desc>Increases the power of the bond between the ranger and animal kin.
 Level 0: Moving +20%, Manipulation +20%, Dodge chance +15%
@@ -752,6 +755,7 @@ Level 3: transpose no longer requires the target to be visible to the faceless.<
 
 <!-- ========== Button Tooltips ========== -->
 <Poppi_fuelGrowth>Chemical extraction</Poppi_fuelGrowth>
+<TM_ArmorHarmony>Virtue</TM_ArmorHarmony>
 
 <!-- ========== Button Tooltips ========== -->
 
@@ -775,6 +779,8 @@ Level 3: transpose no longer requires the target to be visible to the faceless.<
 <TM_PortalFailed>{0} failed when attempting to use the portal - if this persists, try deactivating the portal and resetting the target location.</TM_PortalFailed>
 <TM_PortalDestinationInvalid>Invalid destination cell - destination must be a known, visible, and player occupied map.</TM_PortalDestinationInvalid>
 <TM_NoValidPortalDestination>No valid portal destination selected, exiting without assignment.</TM_NoValidPortalDestination>
+<TM_PortalNoGatewayLearned>{0} has not mastered the Gateway spell</TM_PortalNoGatewayLearned>
+<TM_NeedManaToActivatePortal>Activate: {0} of .70 mana</TM_NeedManaToActivatePortal>
 
 <!-- ============ Enchanting Menu's =============-->
 <TabEnchantment>Enchanted</TabEnchantment>

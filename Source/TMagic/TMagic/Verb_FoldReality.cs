@@ -71,7 +71,7 @@ namespace TorannMagic
             {
                 Map myMap = base.CasterPawn.Map;
                 Map map = mapParent.Map;
-                Current.Game.VisibleMap = map;
+                Current.Game.CurrentMap = map;
                 TargetingParameters portalTarget = new TargetingParameters();
                 portalTarget.canTargetLocations = true;
                 portalTarget.canTargetSelf = false;
@@ -88,7 +88,7 @@ namespace TorannMagic
                 {
                     if (Find.Maps.Contains(myMap))
                     {
-                        Current.Game.VisibleMap = myMap;
+                        Current.Game.CurrentMap = myMap;
                     }
                 }, Verb_FoldReality.TargeterMouseAttachment);
                 return true;
@@ -103,11 +103,11 @@ namespace TorannMagic
                     Messages.Message("TM_InvalidGatewayNotOccupied".Translate(), MessageTypeDefOf.RejectInput);
                     return false;
                 }
-                if (mapParent.TransportPodsCanLandAndGenerateMap)
-                {
-                    Messages.Message("TM_InvalidGatewayNotOccupied".Translate(), MessageTypeDefOf.RejectInput);
-                    return false;
-                }
+                //if (mapParent.TransportPodsCanLandAndGenerateMap)
+                //{
+                //    Messages.Message("TM_InvalidGatewayNotOccupied".Translate(), MessageTypeDefOf.RejectInput);
+                //    return false;
+                //}
                 if (list.Any<FloatMenuOption>())
                 {
                     Find.WorldTargeter.closeWorldTabWhenFinished = false;

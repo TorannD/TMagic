@@ -16,6 +16,7 @@
 	<tradeTags>
 	  <li>Arcane</li>
     </tradeTags>
+	<tradeability>All</tradeability>
 	<techLevel>Neolithic</techLevel>
 	<tradeNeverStack>false</tradeNeverStack>
 	<resourceReadoutAlwaysShow>false</resourceReadoutAlwaysShow>

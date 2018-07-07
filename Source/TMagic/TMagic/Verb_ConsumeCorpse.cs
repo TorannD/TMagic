@@ -212,7 +212,7 @@ namespace TorannMagic
                                 bool flag3 = num2 > 0;
                                 if (flag3)
                                 {
-                                    bool flag5 = current.CanHealNaturally() && !current.IsOld();
+                                    bool flag5 = current.CanHealNaturally() && !current.IsPermanent();
                                     if (flag5)
                                     {
                                         current.Heal(healAmt);

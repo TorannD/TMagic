@@ -8,6 +8,7 @@
     <label>Slowed</label>
 	<makesSickThought>false</makesSickThought>
     <lethalSeverity>100</lethalSeverity>
+	<isBad>true</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-50</severityPerDay>

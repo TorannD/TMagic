@@ -170,7 +170,7 @@ namespace TorannMagic
                     CompSummoned bldgComp = thing.TryGetComp<CompSummoned>();
                     bldgComp.TicksToDestroy = this.duration;
                     bldgComp.Temporary = true;
-                    GenSpawn.Spawn(thing, position, map, Rot4.North, false);
+                    GenSpawn.Spawn(thing, position, map, Rot4.North, WipeMode.Vanish, false);
                 }
             }
         }

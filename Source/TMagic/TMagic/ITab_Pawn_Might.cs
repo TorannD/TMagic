@@ -20,24 +20,17 @@ namespace TorannMagic
                 else
                 {
                     Corpse corpse = base.SelThing as Corpse;
-                    bool flag2 = corpse != null;
-                    if (flag2)
+                    if (corpse != null)
                     {
                         pawn = corpse.InnerPawn;
                     }
                 }
-                bool flag3 = pawn == null;
-                Pawn result;
-                if (flag3)
+                if (pawn == null)
                 {
                     Log.Error("Character tab found no selected pawn to display.");
-                    result = null;
+                    return null;
                 }
-                else
-                {
-                    result = pawn;
-                }
-                return result;
+                return pawn;
             }
         }
 

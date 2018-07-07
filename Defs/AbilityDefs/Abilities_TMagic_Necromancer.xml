@@ -29,8 +29,7 @@
 
 Undead will remain under the Necromancers control indefinitely. Each undead human will incur a mana upkeep cost of 30% of base mana regeneration. Undead animals incur a 15% upkeep cost.
 
-There is no limit to the number of undead a necromancer may control, however, when the necromancer no longer has mana to maintain undead, they will automatically be consumed until the number is reduced to a manageable amount.
-</description>
+There is no limit to the number of undead a necromancer may control, however, when the necromancer no longer has mana to maintain undead, they will automatically be consumed until the number is reduced to a manageable amount.</description>
         <manaCost>0.45</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
@@ -81,7 +80,7 @@ There is no limit to the number of undead a necromancer may control, however, wh
 		<burstShotCount>1</burstShotCount>
         <range>25</range>
 		<isViolent>false</isViolent>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
 		<AlwaysHits>true</AlwaysHits>
         <isPrimary>false</isPrimary>

@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using Verse.AI;
+using System;
+using Verse;
 
 
 namespace TorannMagic
@@ -13,6 +15,8 @@ namespace TorannMagic
         int age = -1;
         int chargeAge = 0;
         int ticksTillCharge = 30;
+        int effectsAge = 0;
+        int ticksTillEffects = 12;
         int duration = 1000;
 
         public override bool TryMakePreToilReservations()
@@ -53,6 +57,11 @@ namespace TorannMagic
                 },
                 tickAction = () =>
                 {
+                    if (age > (effectsAge + ticksTillEffects))
+                    {
+                        TM_MoteMaker.ThrowCastingMote(pawn.DrawPos, pawn.Map, Rand.Range(1.2f, 2f));
+                        TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Shadow, pawn.DrawPos, pawn.Map, Rand.Range(.4f, .6f), Rand.Range(.1f, .2f), .04f, Rand.Range(.1f, .2f), 300, 5f, Rand.Range(-10, 10), 0);
+                    }
                     if (age > (chargeAge + ticksTillCharge))
                     {
                         comp.Mana.CurLevel -= .01f;

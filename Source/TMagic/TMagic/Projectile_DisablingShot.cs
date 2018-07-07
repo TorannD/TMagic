@@ -38,7 +38,7 @@ namespace TorannMagic
             }
             if (victim != null && !victim.Dead && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracy, true)))
             {
-                int dmg = (this.def.projectile.damageAmountBase);
+                int dmg = (this.def.projectile.GetDamageAmount(1,null));
                 if (victim.RaceProps.IsFlesh)
                 {
                     System.Random rnd = new System.Random();
@@ -68,8 +68,8 @@ namespace TorannMagic
             if (!victim.Dead )
             {
                 IEnumerable<BodyPartRecord> partSearch = victim.def.race.body.AllParts;
-                if( Rand.Chance(.5f)) { vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains("MovingLimbCore")); }
-                else { vitalPart = partSearch.LastOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains("MovingLimbCore")); }                
+                if( Rand.Chance(.5f)) { vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.MovingLimbCore)); }
+                else { vitalPart = partSearch.LastOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.MovingLimbCore)); }                
                 
                 if (vitalPart != null)
                 {
@@ -77,7 +77,7 @@ namespace TorannMagic
                 }
                 else
                 {
-                    vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains("MovingLimbSegment"));
+                    vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.MovingLimbSegment));
                     if (vitalPart != null)
                     {
                         this.damageEntities(victim, vitalPart, dmg, dmgType);
@@ -95,18 +95,18 @@ namespace TorannMagic
             DamageInfo dinfo;
             if (victim != null && hitPart != null)
             {
-                dinfo = new DamageInfo(type, amt, (float)-1, this.launcher as Pawn, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);             
+                dinfo = new DamageInfo(type, amt, 0, (float)-1, this.launcher as Pawn, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);             
             }
             else
             {
-                dinfo = new DamageInfo(type, amt, (float)-1, this.launcher as Pawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+                dinfo = new DamageInfo(type, amt, 0, (float)-1, this.launcher as Pawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
             }
             victim.TakeDamage(dinfo);
             
             if(!victim.IsColonist && !victim.IsPrisoner && !victim.Faction.HostileTo(this.launcher.Faction) && victim.Faction != null)
             {
                 Faction faction = victim.Faction;
-                faction.SetHostileTo(this.launcher.Faction, true);
+                faction.TrySetRelationKind(this.launcher.Faction, FactionRelationKind.Hostile, true, null);
             }           
 
         }

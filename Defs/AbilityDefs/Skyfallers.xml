@@ -2,7 +2,7 @@
 <Defs>
   
   <ThingDef Name="TM_SkyfallerBase" Abstract="True">
-    <category>Skyfaller</category>
+    <category>Ethereal</category>
     <thingClass>Skyfaller</thingClass>
     <useHitPoints>false</useHitPoints>
     <drawOffscreen>true</drawOffscreen>
@@ -183,7 +183,7 @@
   
   <ThingDef ParentName="TM_SkyfallerBase">
     <defName>TM_ScornLeaving</defName>
-    <label>drop pod (leaving)</label>
+    <label>scorn leaving</label>
 	<size>(5, 5)</size>
     <graphicData>
       <texPath>Other/succubus_scorn</texPath>
@@ -196,7 +196,7 @@
       <reversed>true</reversed>
       <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
       <shadowSize>(1.5, 1.5)</shadowSize>
-      <anticipationSound>DropPodLeaving</anticipationSound>
+      <anticipationSound>DropPod_Leaving</anticipationSound>
       <anticipationSoundTicks>-10</anticipationSoundTicks>
       <ticksToImpactRange><min>-10</min><max>-5</max></ticksToImpactRange>
 	  <rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>

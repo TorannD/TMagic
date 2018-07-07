@@ -75,7 +75,7 @@ namespace TorannMagic
                     stuff = ThingDefOf.WoodLog;
                 }
                 Thing thing = ThingMaker.MakeThing(def, stuff);
-                GenSpawn.Spawn(thing, position, map, Rot4.North, false);                
+                GenSpawn.Spawn(thing, position, map, Rot4.North, WipeMode.Vanish, false);                
             }
         }
     }

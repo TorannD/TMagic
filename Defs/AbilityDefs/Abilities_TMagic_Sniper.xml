@@ -38,7 +38,7 @@
         <warmupTime>0.1</warmupTime>
         <SecondsToRecharge>10.0</SecondsToRecharge>
         <range>0</range>
-        <soundCast>MessagePositiveEvent</soundCast>
+        <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>10</muzzleFlashScale>
         <isPrimary>false</isPrimary>
    	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
@@ -88,7 +88,7 @@
         <warmupTime>.1</warmupTime>
         <SecondsToRecharge>45</SecondsToRecharge>
         <range>40</range>
-        <soundCast>ShotSniperRifle</soundCast>
+        <soundCast>Shot_SniperRifle</soundCast>
 		<soundCastTail>GunTail_Heavy</soundCastTail>
         <muzzleFlashScale>20</muzzleFlashScale>
         <isPrimary>true</isPrimary>
@@ -303,7 +303,7 @@ Recharge 40s</description>
         <warmupTime>1</warmupTime>
         <SecondsToRecharge>10</SecondsToRecharge>
         <range>45</range>
-        <soundCast>ShotRevolver</soundCast>
+        <soundCast>Shot_Revolver</soundCast>
 		<soundCastTail>GunTail_Heavy</soundCastTail>
         <muzzleFlashScale>25</muzzleFlashScale>
         <isPrimary>true</isPrimary>

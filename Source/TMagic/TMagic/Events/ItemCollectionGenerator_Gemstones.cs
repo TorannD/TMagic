@@ -20,12 +20,12 @@ namespace TorannMagic
 
         private float collectiveMarketValue = 0;
 
-        public List<Thing> Generate(ItemCollectionGeneratorParams parms, List<Thing> outThings)
+        public List<Thing> Generate(int totalMarketValue, List<Thing> outThings)
         {            
             for (int j = 0; j < 10; j++)
             {
                 //Raw Magicyte
-                if (Rand.Chance(RawMagicyteChance) && (parms.totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.RawMagicyte.BaseMarketValue * 10)
+                if (Rand.Chance(RawMagicyteChance) && (totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.RawMagicyte.BaseMarketValue * 10)
                 {
                     Thing thing = ThingMaker.MakeThing(TorannMagicDefOf.RawMagicyte, null);
                     thing.stackCount = RawMagicyteRange.RandomInRange;
@@ -33,7 +33,7 @@ namespace TorannMagic
                     collectiveMarketValue += thing.MarketValue * thing.stackCount;                 
                 }
                 //Minor Magicyte
-                if (Rand.Chance(MinorMagicyteChance) && (parms.totalMarketValue - collectiveMarketValue) > ThingDef.Named("TM_EStone_maxMP_minor").BaseMarketValue)
+                if (Rand.Chance(MinorMagicyteChance) && (totalMarketValue - collectiveMarketValue) > ThingDef.Named("TM_EStone_maxMP_minor").BaseMarketValue)
                 {
                     Thing thing = null;
                     int rnd = Rand.RangeInclusive(1, this.MagicyteTypes);
@@ -59,7 +59,7 @@ namespace TorannMagic
                     collectiveMarketValue += thing.MarketValue;
                 }
                 //Magicyte
-                if (Rand.Chance(MagicyteChance) && (parms.totalMarketValue - collectiveMarketValue) > ThingDef.Named("TM_EStone_maxMP").BaseMarketValue)
+                if (Rand.Chance(MagicyteChance) && (totalMarketValue - collectiveMarketValue) > ThingDef.Named("TM_EStone_maxMP").BaseMarketValue)
                 {
                     Thing thing = null;
                     int rnd = Rand.RangeInclusive(1, this.MagicyteTypes);
@@ -85,7 +85,7 @@ namespace TorannMagic
                     collectiveMarketValue += thing.MarketValue;
                 }
                 //Major Magicyte
-                if (Rand.Chance(MajorMagicyteChance) && (parms.totalMarketValue - collectiveMarketValue) > ThingDef.Named("TM_EStone_maxMP_major").BaseMarketValue)
+                if (Rand.Chance(MajorMagicyteChance) && (totalMarketValue - collectiveMarketValue) > ThingDef.Named("TM_EStone_maxMP_major").BaseMarketValue)
                 {
                     Thing thing = null;
                     int rnd = Rand.RangeInclusive(1, this.MagicyteTypes);

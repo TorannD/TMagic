@@ -10,7 +10,7 @@
 		<resourceReadoutPriority>Middle</resourceReadoutPriority>
 		<useHitPoints>true</useHitPoints>
 		<selectable>true</selectable>
-		<tradeability>Never</tradeability>
+		<tradeability>None</tradeability>
 		<altitudeLayer>Item</altitudeLayer>
 		<stackLimit>1</stackLimit>
 		<generateCommonality>0</generateCommonality>

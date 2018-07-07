@@ -168,47 +168,56 @@ namespace TorannMagic
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {
             bool flag = this.age < duration;
+
             if (!flag)
             {
-                if (hitPawn.RaceProps.Humanlike && !this.possessedFlag)
+                try
                 {
-                    if ((hitPawn.Downed || hitPawn.Dead) && !pFaction.HostileTo(caster.Faction) && pFaction != this.caster.Faction)
+                    if (hitPawn.RaceProps.Humanlike && !this.possessedFlag)
                     {
-                        this.pFaction.SetHostileTo(this.caster.Faction, true);
-                    }
-                    bool flag2 = caster.Spawned;
-                    if (!flag2)
-                    {
-                        GenSpawn.Spawn(caster, this.oldPosition, this.Map, Rot4.North, true);
-                    }
-                    bool flag3 = hitPawn.Faction != pFaction;
-                    if (flag3)
-                    {
-                        hitPawn.SetFaction(pFaction, null);
-                    }
-                    int weaponCount = 0;
-                    if (hitPawn.equipment.PrimaryEq != null)
-                    {
-                        weaponCount = 1;
-                    }
-                    int tempInvCount = hitPawn.inventory.innerContainer.Count + hitPawn.apparel.WornApparelCount + weaponCount;
-                    if (tempInvCount < this.inventoryCount && !pFaction.HostileTo(caster.Faction) && pFaction != this.caster.Faction)
-                    {
-                        pFaction.SetHostileTo(this.caster.Faction, true);
-                        Find.LetterStack.ReceiveLetter("LetterLabelPossessedCaughtStealing".Translate(), "TM_PossessedCaughtStealing".Translate(new object[]
-                            {
+                        if ((hitPawn.Downed || hitPawn.Dead) && !pFaction.HostileTo(caster.Faction) && pFaction != this.caster.Faction)
+                        {
+                            pFaction.TrySetRelationKind(this.caster.Faction, FactionRelationKind.Hostile, true, null);
+                        }
+                        bool flag2 = caster.Spawned;
+                        if (!flag2)
+                        {
+                            GenPlace.TryPlaceThing(caster, this.oldPosition, this.Map, ThingPlaceMode.Near, null, null);
+                        }
+                        bool flag3 = hitPawn.Faction != pFaction;
+                        if (flag3)
+                        {
+                            hitPawn.SetFaction(pFaction, null);
+                        }
+                        int weaponCount = 0;
+                        if (hitPawn.equipment.PrimaryEq != null)
+                        {
+                            weaponCount = 1;
+                        }
+                        int tempInvCount = hitPawn.inventory.innerContainer.Count + hitPawn.apparel.WornApparelCount + weaponCount;
+                        if (tempInvCount < this.inventoryCount && !pFaction.HostileTo(caster.Faction) && pFaction != this.caster.Faction)
+                        {
+                            pFaction.TrySetRelationKind(this.caster.Faction, FactionRelationKind.Hostile, true, null);
+                            Find.LetterStack.ReceiveLetter("LetterLabelPossessedCaughtStealing".Translate(), "TM_PossessedCaughtStealing".Translate(new object[]
+                                {
                                 hitPawn.Faction,
                                 hitPawn.LabelShort
-                            }), LetterDefOf.NegativeEvent, null);
+                                }), LetterDefOf.NegativeEvent, null);
+                        }
+                        if (hitPawn.IsColonist)
+                        {
+                            hitPawn.jobs.EndCurrentJob(JobCondition.InterruptForced, false);
+                        }
+                        RemoveHediffs();
                     }
-                    if(hitPawn.IsColonist)
-                    {
-                        hitPawn.jobs.EndCurrentJob(JobCondition.InterruptForced, false);                        
-                    }
-                    RemoveHediffs();                    
+                    base.Destroy(mode);
                 }
-                base.Destroy(mode);
+                catch
+                {
+                    base.Destroy(mode);
+                }
             }
+            
         }
 
         public void RemoveHediffs()

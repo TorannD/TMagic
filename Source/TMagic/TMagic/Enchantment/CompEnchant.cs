@@ -10,7 +10,7 @@ namespace TorannMagic.Enchantment
 
         private bool initialize = true;
 
-        private Pawn pawn
+        private Pawn Pawn
         {
             get
             {

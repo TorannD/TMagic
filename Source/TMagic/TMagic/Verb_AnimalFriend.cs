@@ -58,7 +58,7 @@ namespace TorannMagic
                 }
                 else
                 {
-                    if (animal.RaceProps.TrainableIntelligence == TrainableIntelligenceDefOf.Intermediate || animal.RaceProps.TrainableIntelligence == TrainableIntelligenceDefOf.Advanced)
+                    if (animal.RaceProps.intelligence == Intelligence.Animal) // == TrainableIntelligenceDefOf.Intermediate || animal.RaceProps.TrainableIntelligence == TrainableIntelligenceDefOf.Advanced)
                     {
                         if ((animal.RaceProps.wildness <= .7f) || (animal.RaceProps.wildness <= .8f && pwr.level == 1) || (animal.RaceProps.wildness <= .9f && pwr.level == 2) || pwr.level == 3)
                         {
@@ -86,40 +86,46 @@ namespace TorannMagic
                                 HealthUtility.AdjustSeverity(animal, TorannMagicDefOf.TM_RangerBondHD, -4f);
                                 HealthUtility.AdjustSeverity(animal, TorannMagicDefOf.TM_RangerBondHD, .5f + ver.level);
                                 comp.bondedPet = animal;
-                                if (animal.RaceProps.TrainableIntelligence == TrainableIntelligenceDefOf.Intermediate)
+
+                                if (animal.training.CanBeTrained(TrainableDefOf.Tameness))
                                 {
-                                    while (!animal.training.IsCompleted(TrainableDefOf.Obedience))
+                                    while (!animal.training.HasLearned(TrainableDefOf.Tameness))
+                                    {
+                                        animal.training.Train(TrainableDefOf.Tameness, pawn);
+                                    }
+                                }
+
+                                if (animal.training.CanBeTrained(TrainableDefOf.Obedience)) 
+                                {
+                                    while (!animal.training.HasLearned(TrainableDefOf.Obedience)) 
                                     {
                                         animal.training.Train(TrainableDefOf.Obedience, pawn);
                                     }
-                                    while (!animal.training.IsCompleted(TrainableDefOf.Release))
+                                }
+
+                                if (animal.training.CanBeTrained(TrainableDefOf.Release))
+                                {
+                                    while (!animal.training.HasLearned(TrainableDefOf.Release))
                                     {
                                         animal.training.Train(TrainableDefOf.Release, pawn);
                                     }
                                 }
 
-                                if (animal.RaceProps.TrainableIntelligence == TrainableIntelligenceDefOf.Advanced)
+                                if (animal.training.CanBeTrained(TorannMagicDefOf.Haul))
                                 {
-                                    while (!animal.training.IsCompleted(TrainableDefOf.Obedience))
+                                    while (!animal.training.HasLearned(TorannMagicDefOf.Haul))
                                     {
-                                        animal.training.Train(TrainableDefOf.Obedience, pawn);
+                                        animal.training.Train(TorannMagicDefOf.Haul, pawn);
                                     }
-                                    while (!animal.training.IsCompleted(TrainableDefOf.Release))
-                                    {
-                                        animal.training.Train(TrainableDefOf.Release, pawn);
-                                    }
-                                    while (!animal.training.IsCompleted(TorannMagicDefOf.Rescue))
+                                }
+
+                                if (animal.training.CanBeTrained(TorannMagicDefOf.Rescue))
+                                {
+                                    while (!animal.training.HasLearned(TorannMagicDefOf.Rescue))
                                     {
                                         animal.training.Train(TorannMagicDefOf.Rescue, pawn);
                                     }
-                                    if (animal.BodySize > .4)
-                                    {
-                                        while (!animal.training.IsCompleted(TorannMagicDefOf.Haul))
-                                        {
-                                            animal.training.Train(TorannMagicDefOf.Haul, pawn);
-                                        }
-                                    }
-                                }
+                                }                               
                             }
                             else
                             {
@@ -136,7 +142,9 @@ namespace TorannMagic
                             Messages.Message("TM_RangerNotExperienced".Translate(new object[]
                             {
                                 animal.LabelShort,
-                                pawn.LabelShort
+                                pawn.LabelShort,
+                                (animal.RaceProps.wildness * 10),
+                                (.7f + .1f*ver.level) * 10
                             }), MessageTypeDefOf.NeutralEvent);
                         }
                     }

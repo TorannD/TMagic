@@ -15,7 +15,12 @@ namespace TorannMagic
 
         protected ResolveParams baseResolveParams;
 
-        public override void Generate(Map map)
+        public override int SeedPart
+        {
+            get;
+        }
+
+        public override void Generate(Map map, GenStepParams parms)
         {
             int num = map.Size.x / 5;
             int num2 = 3 * map.Size.x / 5;

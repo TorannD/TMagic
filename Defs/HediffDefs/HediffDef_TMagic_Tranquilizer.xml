@@ -8,6 +8,7 @@
     <label>Sedated</label>
 	<makesSickThought>true</makesSickThought>
     <lethalSeverity>50</lethalSeverity>
+	<isBad>true</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-50</severityPerDay>
@@ -79,8 +80,9 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.8, 0.8, 1)</defaultLabelColor>
     <label>Slowed</label>
-	<makesSickThought>true</makesSickThought>
+	<makesSickThought>false</makesSickThought>
     <lethalSeverity>100</lethalSeverity>
+	<isBad>true</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-80</severityPerDay>

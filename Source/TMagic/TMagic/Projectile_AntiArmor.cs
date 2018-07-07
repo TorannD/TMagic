@@ -66,8 +66,8 @@ namespace TorannMagic
                     MoteMaker.ThrowMicroSparks(victim.Position.ToVector3(), map);
                     for (int i = 0; i < 1 + verVal; i++)
                     {
-                        GenExplosion.DoExplosion(newPos, map, Rand.Range((.1f) * (1 + verVal), (.3f) * (1 + verVal)), DamageDefOf.Bomb, this.launcher, (this.def.projectile.damageAmountBase / 4) * (1 + verVal), SoundDefOf.BulletImpactMetal, def, this.equipmentDef, null, 0f, 1, false, null, 0f, 1, 0f, true);
-                        GenExplosion.DoExplosion(newPos, map, Rand.Range((.2f)*(1+verVal), (.4f)*(1+verVal)), DamageDefOf.Stun, this.launcher, (this.def.projectile.damageAmountBase / 2) * (1+ verVal), SoundDefOf.BulletImpactMetal, def, this.equipmentDef, null, 0f, 1, false, null, 0f, 1, 0f, true);
+                        GenExplosion.DoExplosion(newPos, map, Rand.Range((.1f) * (1 + verVal), (.3f) * (1 + verVal)), DamageDefOf.Bomb, this.launcher, (this.def.projectile.GetDamageAmount(1,null) / 4) * (1 + verVal), 0, SoundDefOf.MetalHitImportant, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, true);
+                        GenExplosion.DoExplosion(newPos, map, Rand.Range((.2f)*(1+verVal), (.4f)*(1+verVal)), DamageDefOf.Stun, this.launcher, (this.def.projectile.GetDamageAmount(1,null) / 2) * (1+ verVal), 0, SoundDefOf.MetalHitImportant, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, true);
                         newPos = GetNewPos(newPos, pawn.Position.x <= victim.Position.x, pawn.Position.z <= victim.Position.z, false, 0, 0, xProb, 1 - xProb);                        
                         MoteMaker.ThrowMicroSparks(victim.Position.ToVector3(), base.Map);
                         MoteMaker.ThrowDustPuff(newPos, map, Rand.Range(1.2f, 2.4f));
@@ -108,11 +108,11 @@ namespace TorannMagic
             if (value > 1000)
             {
                 value -= 1000;
-                dmg = (projectileDef.projectile.damageAmountBase) + (int)((16.5f + (value / 150)) * (1 + .05f * str.level));
+                dmg = (projectileDef.projectile.GetDamageAmount(1,null)) + (int)((16.5f + (value / 150)) * (1 + .05f * str.level));
             }
             else
             {
-                dmg = (projectileDef.projectile.damageAmountBase) + (int)((value / 60) * (1 + .05f * str.level));
+                dmg = (projectileDef.projectile.GetDamageAmount(1,null)) + (int)((value / 60) * (1 + .05f * str.level));
             }
             return dmg;
         }
@@ -131,11 +131,11 @@ namespace TorannMagic
             amt = (int)((float)amt * Rand.Range(.5f, 1.5f));
             if ( hitPart != null)
             {
-                dinfo = new DamageInfo(type, amt, (float)-1, this.launcher as Pawn, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
+                dinfo = new DamageInfo(type, amt, 0, (float)-1, this.launcher as Pawn, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
             }
             else
             {
-                dinfo = new DamageInfo(type, amt, this.ExactRotation.eulerAngles.y, this.launcher as Pawn, null, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);                
+                dinfo = new DamageInfo(type, amt, 0, this.ExactRotation.eulerAngles.y, this.launcher as Pawn, null, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);                
             }
             victim.TakeDamage(dinfo);
         }

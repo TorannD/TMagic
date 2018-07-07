@@ -108,7 +108,7 @@ namespace TorannMagic
                     MoteMaker.ThrowHeatGlow(centerCell, map, 1 + pwrVal);
                 }
 
-                SoundDefOf.AmbientAltitudeWind.sustainFadeoutTime.Equals(30.0f);
+                SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                 this.initialized = true;
             }
             else

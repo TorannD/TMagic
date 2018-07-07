@@ -17,30 +17,7 @@ namespace TorannMagic
     {
         public string LabelKey = "TM_Magic";
 
-        private static readonly Color shieldColor = new Color(90f, 0f, 0f);
-        private static readonly Material shieldMat = MaterialPool.MatFrom("Other/Shield", ShaderDatabase.Transparent, CompAbilityUserMagic.shieldColor);
-        private static readonly Color manaShieldColor = new Color(127f, 0f, 255f);
-        private static readonly Material manaShieldMat = MaterialPool.MatFrom("Other/Shield", ShaderDatabase.Transparent, CompAbilityUserMagic.manaShieldColor);
-
-        private static readonly Material mageMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, Color.black);
-        private static readonly Color necroMarkColor = new Color(.4f, .5f, .25f);
-        private static readonly Material necroMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, CompAbilityUserMagic.necroMarkColor);
-        private static readonly Color summonerMarkColor = new Color(.8f, .4f, .0f);
-        private static readonly Material summonerMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, CompAbilityUserMagic.summonerMarkColor);
-        private static readonly Material druidMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, Color.green);
-        private static readonly Material paladinMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, Color.white);
-        private static readonly Material warlockMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, Color.magenta);
-        private static readonly Material lightningMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, Color.yellow);
-        private static readonly Material iceMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, Color.blue);
-        private static readonly Material fireMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, Color.red);
-        private static readonly Color priestMarkColor = new Color(1f, 1f, .55f); 
-        private static readonly Material priestMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, CompAbilityUserMagic.priestMarkColor);
-        private static readonly Color bardMarkColor = new Color(.8f, .8f, 0f);
-        private static readonly Material bardMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, CompAbilityUserMagic.bardMarkColor);
-        private static readonly Color demonkinMarkColor = new Color(.6f, 0, .25f);
-        private static readonly Material demonkinMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, CompAbilityUserMagic.demonkinMarkColor);
-
-        private static readonly Material enchantMark = MaterialPool.MatFrom("Items/Gemstones/arcane_minor");
+                
 
         public bool firstTick = false;
         public bool magicPowersInitialized = false;
@@ -1121,51 +1098,51 @@ namespace TorannMagic
             matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
             if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
             {
-                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMagic.fireMarkMat, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.fireMarkMat, 0);
             }
             else if(this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost))
             {
-                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMagic.iceMarkMat, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.iceMarkMat, 0);
             }
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.StormBorn))
             {
-                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMagic.lightningMarkMat, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.lightningMarkMat, 0);
             }
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
             {
-                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMagic.warlockMarkMat, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.warlockMarkMat, 0);
             }
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Paladin))
             {
-                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMagic.paladinMarkMat, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.paladinMarkMat, 0);
             }
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner))
             {
-                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMagic.summonerMarkMat, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.summonerMarkMat, 0);
             }
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Druid))
             {
-                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMagic.druidMarkMat, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.druidMarkMat, 0);
             }
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Lich))
             {
-                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMagic.necroMarkMat, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.necroMarkMat, 0);
             }
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Priest))
             {
-                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMagic.priestMarkMat, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.priestMarkMat, 0);
             }
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
             {
-                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMagic.bardMarkMat, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.bardMarkMat, 0);
             }
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Succubus) || this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Warlock))
             {
-                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMagic.demonkinMarkMat, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.demonkinMarkMat, 0);
             }
             else 
             {
-                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMagic.mageMarkMat, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.mageMarkMat, 0);
             }
             
         }
@@ -1181,7 +1158,7 @@ namespace TorannMagic
             Vector3 s = new Vector3(.5f, 1f, .5f);
             Matrix4x4 matrix = default(Matrix4x4);
             matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
-            Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMagic.enchantMark, 0);           
+            Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.enchantMark, 0);           
 
         }
 
@@ -3655,7 +3632,7 @@ namespace TorannMagic
                         absorbed = true;
                         int mitigationAmt = 4;
                         int actualDmg;
-                        int dmgAmt = dinfo.Amount;
+                        int dmgAmt = Mathf.RoundToInt(dinfo.Amount);
                         if (dmgAmt < mitigationAmt)
                         {
                             MoteMaker.ThrowText(this.Pawn.DrawPos, this.Pawn.Map, "TM_DamageAbsorbedAll".Translate(), -1);
@@ -3761,7 +3738,7 @@ namespace TorannMagic
 
         private void BreakShield(Pawn pawn)
         {
-            SoundDefOf.EnergyShieldBroken.PlayOneShot(new TargetInfo(pawn.Position, pawn.Map, false));
+            SoundDefOf.EnergyShield_Broken.PlayOneShot(new TargetInfo(pawn.Position, pawn.Map, false));
             MoteMaker.MakeStaticMote(pawn.TrueCenter(), pawn.Map, ThingDefOf.Mote_ExplosionFlash, 12f);
             for (int i = 0; i < 6; i++)
             {
@@ -3773,7 +3750,7 @@ namespace TorannMagic
         private void DisplayShield(Pawn shieldedPawn, DamageInfo dinfo, float sev)
         {
             Vector3 impactAngleVect;
-            SoundDefOf.EnergyShieldAbsorbDamage.PlayOneShot(new TargetInfo(shieldedPawn.Position, shieldedPawn.Map, false));
+            SoundDefOf.EnergyShield_AbsorbDamage.PlayOneShot(new TargetInfo(shieldedPawn.Position, shieldedPawn.Map, false));
             impactAngleVect = Vector3Utility.HorizontalVectorFromAngle(dinfo.Angle);
             Vector3 loc = shieldedPawn.TrueCenter() + impactAngleVect.RotatedBy(180f) * 0.5f;
             float num = Mathf.Min(10f, 2f + (float)dinfo.Amount / 10f);
@@ -3786,7 +3763,7 @@ namespace TorannMagic
             }
         }
 
-        private void DrawShieldHit(Pawn shieldedPawn, int magnitude, Vector3 impactAngleVect)
+        private void DrawShieldHit(Pawn shieldedPawn, float magnitude, Vector3 impactAngleVect)
         {
             bool flag = !shieldedPawn.Dead && !shieldedPawn.Downed;
             if (flag)
@@ -3801,11 +3778,11 @@ namespace TorannMagic
                 matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
                 if(shieldedPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffShield))
                 {
-                    Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMagic.shieldMat, 0);
+                    Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.shieldMat, 0);
                 }
                 else
                 {
-                    Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMagic.manaShieldMat, 0);
+                    Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.manaShieldMat, 0);
                 }              
             }
         }

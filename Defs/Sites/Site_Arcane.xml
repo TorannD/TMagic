@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <Defs>  
-  <IncidentDef>
+<!--   <IncidentDef>
 		<defName>ArcaneStash</defName>
 		<label>Arcane stash</label>
 		<category>Misc</category>
@@ -81,7 +81,7 @@ Below this is an eerily accurate map, sketched as if seen from a birds eye view.
     <linkWithSite>ArcaneDefenders</linkWithSite>
     <order>2500</order>
     <genStep Class="TorannMagic.GenStep_ArcaneDefenders"/>
-  </GenStepDef>
+  </GenStepDef> -->
   
   <SitePartDef>
     <defName>ArcaneBanditSquad</defName>
@@ -91,7 +91,6 @@ Below this is an eerily accurate map, sketched as if seen from a birds eye view.
     <expandingIconTexture>World/Arcane</expandingIconTexture>
     <applyFactionColorToSiteTexture>false</applyFactionColorToSiteTexture>
     <showFactionInInspectString>false</showFactionInInspectString>
-    <knownDanger>false</knownDanger>
     <requiresFaction>false</requiresFaction>
   </SitePartDef>
 
@@ -103,7 +102,7 @@ Below this is an eerily accurate map, sketched as if seen from a birds eye view.
   </GenStepDef>
   
   
-    <SitePartDef>
+<!--     <SitePartDef>
     <defName>EnemyRaidOnArrival</defName>
     <label>raid</label>
     <description>An enemy faction has also heard of arcane power at this location and has come to challenge you for it!</description>
@@ -122,6 +121,6 @@ Below this is an eerily accurate map, sketched as if seen from a birds eye view.
     <linkWithSite>EnemyRaidOnArrival</linkWithSite>
     <order>2500</order>
     <genStep Class="TorannMagic.GenStep_EnemyRaidOnArrival"/>
-  </GenStepDef>
+  </GenStepDef> -->
 
 </Defs>

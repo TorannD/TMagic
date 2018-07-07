@@ -26,13 +26,13 @@ namespace TorannMagic
 
         private float collectiveMarketValue = 0;
 
-        public List<Thing> Generate(ItemCollectionGeneratorParams parms, List<Thing> outThings)
+        public List<Thing> Generate(int totalMarketValue, List<Thing> outThings)
         {
             
             for (int j = 0; j < 10; j++)
             {
                 //Torn Scripts
-                if (Rand.Chance(0.3f) && (parms.totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.Torn_BookOfArcanist.BaseMarketValue / 2)
+                if (Rand.Chance(0.3f) && (totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.Torn_BookOfArcanist.BaseMarketValue / 2)
                 {
                     if (Rand.Chance(ArcaneScriptChance))
                     {
@@ -103,7 +103,7 @@ namespace TorannMagic
 
                 }
                 //Arcane Scripts
-                if (Rand.Chance(0.1f) && (parms.totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.BookOfArcanist.BaseMarketValue / 2)
+                if (Rand.Chance(0.1f) && (totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.BookOfArcanist.BaseMarketValue / 2)
                 {
                     if (Rand.Chance(ArcaneScriptChance))
                     {
@@ -206,7 +206,7 @@ namespace TorannMagic
 
                 }
                 //Mana Potions
-                if (Rand.Chance(0.2f) && (parms.totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.ManaPotion.BaseMarketValue * ManaPotionRange.RandomInRange)
+                if (Rand.Chance(0.2f) && (totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.ManaPotion.BaseMarketValue * ManaPotionRange.RandomInRange)
                 {
                     int randomInRange = ManaPotionRange.RandomInRange;
                     for (int i = 0; i < randomInRange; i++)
@@ -218,19 +218,22 @@ namespace TorannMagic
                     }
                 }
                 //Artifacts
-                if (Rand.Chance(ArtifactsChance) && (parms.totalMarketValue - collectiveMarketValue) > 1000f)
+                if (Rand.Chance(ArtifactsChance) && (totalMarketValue - collectiveMarketValue) > 1000f)
                 {
                     int randomInRange = ArtifactsCountRange.RandomInRange;
                     for (int i = 0; i < randomInRange; i++)
-                    {
-                        ThingDef def = ItemCollectionGenerator_Artifacts.artifacts.RandomElement<ThingDef>();
+                    {                       
+                        IEnumerable<ThingDef> source = from x in DefDatabase<ThingDef>.AllDefs
+                                                       where x.thingCategories.Contains(ThingCategoryDef.Named("Artifacts"))
+                                                       select x;
+                        ThingDef def = source.RandomElement<ThingDef>();
                         Thing item = ThingMaker.MakeThing(def, null);
                         outThings.Add(item);
                         collectiveMarketValue += item.MarketValue;
                     }
                 }
                 //Luciferium
-                if (Rand.Chance(LuciferiumChance) && (parms.totalMarketValue - collectiveMarketValue) > ThingDefOf.Luciferium.BaseMarketValue * LuciferiumCountRange.RandomInRange)
+                if (Rand.Chance(LuciferiumChance) && (totalMarketValue - collectiveMarketValue) > ThingDefOf.Luciferium.BaseMarketValue * LuciferiumCountRange.RandomInRange)
                 {
                     Thing thing = ThingMaker.MakeThing(ThingDefOf.Luciferium, null);
                     thing.stackCount = LuciferiumCountRange.RandomInRange;
@@ -249,7 +252,7 @@ namespace TorannMagic
                     }
                 }
                 //Master Spells
-                if (Rand.Chance(MasterSpellChance) && (parms.totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.SpellOf_Blizzard.BaseMarketValue)
+                if (Rand.Chance(MasterSpellChance) && (totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.SpellOf_Blizzard.BaseMarketValue)
                 {
                     Thing thing;
                     float rnd = Rand.Range(0f, 22f);
@@ -301,7 +304,7 @@ namespace TorannMagic
                     collectiveMarketValue += thing.MarketValue;
                 }
                 //Spells
-                if (Rand.Chance(SpellChance) && (parms.totalMarketValue - collectiveMarketValue) > 1000f)
+                if (Rand.Chance(SpellChance) && (totalMarketValue - collectiveMarketValue) > 1000f)
                 {
                     int randomInRange = SpellCountRange.RandomInRange;
                     Thing thing = new Thing();
@@ -436,7 +439,7 @@ namespace TorannMagic
                     }
                 }
                 //Skills
-                if (Rand.Chance(SpellChance) && (parms.totalMarketValue - collectiveMarketValue) > 600f)
+                if (Rand.Chance(SpellChance) && (totalMarketValue - collectiveMarketValue) > 600f)
                 {
                     int randomInRange = SkillCountRange.RandomInRange;
                     Thing thing = new Thing();

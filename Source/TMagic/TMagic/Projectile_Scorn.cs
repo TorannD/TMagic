@@ -135,7 +135,7 @@ namespace TorannMagic
                         IntVec3 curCell = targets.ToArray<IntVec3>()[j];
                         if (curCell.IsValid && curCell.InBounds(this.map))
                         {
-                            GenExplosion.DoExplosion(curCell, this.Map, .4f, TMDamageDefOf.DamageDefOf.TM_Shadow, this.pawn, (int)((this.def.projectile.damageAmountBase * (1 + .15*pwrVal)) * this.arcaneDmg * Rand.Range(.75f, 1.25f)), TorannMagicDefOf.TM_SoftExplosion, def, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
+                            GenExplosion.DoExplosion(curCell, this.Map, .4f, TMDamageDefOf.DamageDefOf.TM_Shadow, this.pawn, (int)((this.def.projectile.GetDamageAmount(1,null) * (1 + .15*pwrVal)) * this.arcaneDmg * Rand.Range(.75f, 1.25f)), 0, TorannMagicDefOf.TM_SoftExplosion, def, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
                         }
                     }
                     this.strikeNum++;
@@ -173,7 +173,7 @@ namespace TorannMagic
         public void damageEntities(Pawn e, float d, DamageDef type)
         {
             int amt = Mathf.RoundToInt(Rand.Range(.5f, 1.5f) * d);
-            DamageInfo dinfo = new DamageInfo(type, amt, (float)-1, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+            DamageInfo dinfo = new DamageInfo(type, amt, 0, (float)-1, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
             bool flag = e != null;
             if (flag)
             {

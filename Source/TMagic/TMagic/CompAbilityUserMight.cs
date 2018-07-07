@@ -17,21 +17,7 @@ namespace TorannMagic
     [StaticConstructorOnStartup]
     public class CompAbilityUserMight : CompAbilityUser
     {
-        public string LabelKey = "TM_Might";
-
-        private static readonly Material deceptionEye = MaterialPool.MatFrom("Motes/DeceptionMote");
-        private static readonly Material possessionMask = MaterialPool.MatFrom("Motes/PossessMote");
-
-        private static readonly Material fighterMarkMat = MaterialPool.MatFrom("Other/FighterMark", ShaderDatabase.Transparent, Color.black);
-        private static readonly Color facelessMarkColor = new Color(1f, .5f, .25f);
-        private static readonly Material facelessMarkMat = MaterialPool.MatFrom("Other/FighterMark", ShaderDatabase.Transparent, CompAbilityUserMight.facelessMarkColor);
-        private static readonly Color rangerMarkColor = new Color(.3f, .6f, .0f);
-        private static readonly Material rangerMarkMat = MaterialPool.MatFrom("Other/FighterMark", ShaderDatabase.Transparent, CompAbilityUserMight.rangerMarkColor);
-        private static readonly Color gladiatorMarkColor = new Color(0f, .35f, .75f);
-        private static readonly Material gladiatorMarkMat = MaterialPool.MatFrom("Other/FighterMark", ShaderDatabase.Transparent, CompAbilityUserMight.gladiatorMarkColor);
-        private static readonly Material bladedancerMarkMat = MaterialPool.MatFrom("Other/FighterMark", ShaderDatabase.Transparent, Color.gray);
-        private static readonly Color sniperMarkColor = new Color(.7f, 0f, 0f);
-        private static readonly Material sniperMarkMat = MaterialPool.MatFrom("Other/FighterMark", ShaderDatabase.Transparent, CompAbilityUserMight.sniperMarkColor);
+        public string LabelKey = "TM_Might";        
 
         public bool mightPowersInitialized = false;
         public bool firstMightTick = false;
@@ -137,27 +123,27 @@ namespace TorannMagic
             matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
             if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
             {
-                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMight.gladiatorMarkMat, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.gladiatorMarkMat, 0);
             }
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper))
             {
-                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMight.sniperMarkMat, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.sniperMarkMat, 0);
             }
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Bladedancer))
             {
-                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMight.bladedancerMarkMat, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.bladedancerMarkMat, 0);
             }
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Ranger))
             {
-                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMight.rangerMarkMat, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.rangerMarkMat, 0);
             }
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
-                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMight.facelessMarkMat, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.facelessMarkMat, 0);
             }            
             else
             {
-                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMight.fighterMarkMat, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.fighterMarkMat, 0);
             }
         }
 
@@ -174,12 +160,12 @@ namespace TorannMagic
                 Vector3 s = new Vector3(.45f, 1f, .4f);
                 Matrix4x4 matrix = default(Matrix4x4);
                 matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
-                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMight.possessionMask, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.possessionMask, 0);
                 if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_I, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_II, false) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DisguiseHD_III, false))
                 {
                     vector.z = vector.z + .35f;
                     matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
-                    Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMight.deceptionEye, 0);
+                    Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.deceptionEye, 0);
                 }
             }
             else
@@ -193,7 +179,7 @@ namespace TorannMagic
                 Vector3 s = new Vector3(.45f, 1f, .4f);
                 Matrix4x4 matrix = default(Matrix4x4);
                 matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
-                Graphics.DrawMesh(MeshPool.plane10, matrix, CompAbilityUserMight.deceptionEye, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.deceptionEye, 0);
             }
         }
 
@@ -1386,9 +1372,9 @@ namespace TorannMagic
                                 {
                                     mitigationAmt = 8;
                                 }
-                                int actualDmg;
-                                int dmgAmt = dinfo.Amount;
-                                this.Stamina.GainNeed((.005f * (float)dmgAmt) + (.002f * (float)ver.level));
+                                float actualDmg;
+                                float dmgAmt = dinfo.Amount;
+                                this.Stamina.GainNeed((.005f * dmgAmt) + (.002f * (float)ver.level));
                                 if (dmgAmt < mitigationAmt)
                                 {
                                     actualDmg = 0;
@@ -1447,7 +1433,7 @@ namespace TorannMagic
                             bool flag4 = num2 > 0;
                             if (flag4)
                             {
-                                bool flag5 = current.CanHealNaturally() && !current.IsOld();
+                                bool flag5 = current.CanHealNaturally() && !current.IsPermanent();
                                 if (flag5)
                                 {
                                     if (!pawn.IsColonist)
@@ -1481,7 +1467,7 @@ namespace TorannMagic
                 {
                     if (dinfo.Weapon.IsMeleeWeapon || dinfo.WeaponBodyPartGroup != null)
                     {                        
-                        reversal_dinfo = new DamageInfo(dinfo.Def, dinfo.Amount, dinfo.Angle - 180, this.Pawn, dinfo.HitPart, dinfo.Weapon, DamageInfo.SourceCategory.ThingOrUnknown);
+                        reversal_dinfo = new DamageInfo(dinfo.Def, dinfo.Amount, dinfo.ArmorPenetrationInt, dinfo.Angle - 180, this.Pawn, dinfo.HitPart, dinfo.Weapon, DamageInfo.SourceCategory.ThingOrUnknown);
                         reversalTarget = dinfo.Instigator;
                     }
                     else
@@ -1537,7 +1523,7 @@ namespace TorannMagic
                     muzzleFlashScale = newVerb.verbProps.muzzleFlashScale,
                     warmupTime = 0,
                     defaultCooldownTime = 0,
-                    soundCast = SoundDefOf.BulletImpactMetal
+                    soundCast = SoundDefOf.MetalHitImportant
                 };
 
                 //Apply values
@@ -1556,7 +1542,7 @@ namespace TorannMagic
                 muzzleFlashScale = newVerb.verbProps.muzzleFlashScale,
                 warmupTime = 0f,
                 defaultCooldownTime = 0f,
-                soundCast = SoundDefOf.BulletImpactMetal
+                soundCast = SoundDefOf.MetalHitImportant
             };
 
             verbProperties.accuracyLong = 70f * Rand.Range(1f, 2f);

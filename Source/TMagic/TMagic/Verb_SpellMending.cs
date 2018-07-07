@@ -42,7 +42,7 @@ namespace TorannMagic
             Pawn hitPawn = (Pawn)this.currentTarget;
             Pawn caster = base.CasterPawn;
 
-            if (hitPawn != null & !hitPawn.Dead)
+            if (hitPawn != null & !hitPawn.Dead && !hitPawn.RaceProps.Animal)
             {
                 HealthUtility.AdjustSeverity(hitPawn, HediffDef.Named("SpellMendingHD"), .95f);
                 TM_MoteMaker.ThrowTwinkle(hitPawn.DrawPos, map, 1f);

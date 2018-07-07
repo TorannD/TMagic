@@ -249,7 +249,6 @@
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>false</castEdgeShadows>
     <fillPercent>0.5</fillPercent>
-    <iconDrawScale>1</iconDrawScale>
 	<building>
 		<expandHomeArea>false</expandHomeArea>
 	</building>
@@ -293,7 +292,6 @@
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>false</castEdgeShadows>
     <fillPercent>0.5</fillPercent>
-    <iconDrawScale>1</iconDrawScale>
 	<building>
 		<expandHomeArea>false</expandHomeArea>
 	</building>
@@ -337,7 +335,6 @@
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>false</castEdgeShadows>
     <fillPercent>0.5</fillPercent>
-    <iconDrawScale>1</iconDrawScale>
 	<building>
 		<expandHomeArea>false</expandHomeArea>
 	</building>
@@ -381,7 +378,6 @@
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>false</castEdgeShadows>
     <fillPercent>0.5</fillPercent>
-    <iconDrawScale>1</iconDrawScale>
 	<building>
 		<expandHomeArea>false</expandHomeArea>
 	</building>
@@ -420,7 +416,7 @@
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
 	<destroyOnDrop>true</destroyOnDrop>
-
+	<tradeability>None</tradeability>
 	<menuHidden>true</menuHidden>
 <!-- 	</entityDefToBuild> -->
     <stackLimit>400</stackLimit>
@@ -470,7 +466,7 @@
     </graphicData>
     <altitudeLayer>Building</altitudeLayer>
     <passability>PassThroughOnly</passability>
-	<tradeability>Never</tradeability>
+	<tradeability>None</tradeability>
     <pathCost>50</pathCost>
     <!-- <constructEffect>ConstructDirt</constructEffect> -->
     <tickerType>Normal</tickerType>
@@ -485,7 +481,7 @@
     <costList>
       <ManaPotion>4</ManaPotion> 
     </costList>
-    <soundImpactDefault>BulletImpactGround</soundImpactDefault>
+    <soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
     <placeWorkers>
@@ -516,9 +512,9 @@
     <hasInteractionCell>false</hasInteractionCell>
     <interactionCellOffset>(0,0,-1)</interactionCellOffset>
     <recipes>
-      <li>CookMealSimpleCampfire</li>
-      <li>MakePemmicanCampfire</li>
-      <li>BurnApparelCampfire</li>
+      <li>CookMealSimple</li>
+      <li>Make_Pemmican</li>
+      <li>BurnApparel</li>
       <li>BurnDrugs</li>
 	  <li>CremateCorpse</li>
     </recipes>
@@ -550,7 +546,7 @@
     </graphicData>
     <altitudeLayer>Building</altitudeLayer>
     <passability>PassThroughOnly</passability>
-	<tradeability>Never</tradeability>
+	<tradeability>None</tradeability>
     <pathCost>50</pathCost>
     <constructEffect>ConstructDirt</constructEffect>
     <tickerType>Normal</tickerType>
@@ -565,7 +561,7 @@
     <costList>
 
     </costList>
-    <soundImpactDefault>BulletImpactGround</soundImpactDefault>
+    <soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
     <placeWorkers>
@@ -611,7 +607,7 @@
     </graphicData>
     <altitudeLayer>Building</altitudeLayer>
     <passability>PassThroughOnly</passability>
-	<tradeability>Never</tradeability>
+	<tradeability>None</tradeability>
     <pathCost>50</pathCost>
     <constructEffect>ConstructDirt</constructEffect>
     <tickerType>Normal</tickerType>
@@ -626,7 +622,7 @@
     <costList>
 
     </costList>
-    <soundImpactDefault>BulletImpactGround</soundImpactDefault>
+    <soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
     <placeWorkers>
@@ -639,7 +635,6 @@
         <basePowerConsumption>-600</basePowerConsumption>
         <transmitsPower>true</transmitsPower>
 		<shortCircuitInRain>false</shortCircuitInRain>
-		<startElectricalFires>false</startElectricalFires>
       </li>
 	  <li Class="CompProperties_Glower">
         <glowRadius>2</glowRadius>
@@ -675,7 +670,7 @@
     </graphicData>
     <altitudeLayer>Building</altitudeLayer>
     <passability>PassThroughOnly</passability>
-	<tradeability>Never</tradeability>
+	<tradeability>None</tradeability>
     <pathCost>50</pathCost>
     <constructEffect>ConstructDirt</constructEffect>
     <tickerType>Normal</tickerType>
@@ -690,7 +685,7 @@
     <costList>
 
     </costList>
-    <soundImpactDefault>BulletImpactGround</soundImpactDefault>
+    <soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
     <placeWorkers>

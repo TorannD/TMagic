@@ -93,38 +93,47 @@ namespace TorannMagic
                                         HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadAnimalHD, -4f);
                                         HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadAnimalHD, .5f + ver.level);
 
-                                        if (undeadPawn.RaceProps.TrainableIntelligence == TrainableIntelligenceDefOf.Intermediate)
+                                        if (undeadPawn.training.CanAssignToTrain(TrainableDefOf.Tameness).Accepted)
                                         {
-                                            while (!undeadPawn.training.IsCompleted(TrainableDefOf.Obedience))
+                                            while (!undeadPawn.training.HasLearned(TrainableDefOf.Tameness))
+                                            {
+                                                undeadPawn.training.Train(TrainableDefOf.Tameness, pawn);
+                                            }
+                                        }
+                                        
+                                        if (undeadPawn.training.CanAssignToTrain(TrainableDefOf.Obedience).Accepted) 
+                                        {
+                                            while (!undeadPawn.training.HasLearned(TrainableDefOf.Obedience)) 
                                             {
                                                 undeadPawn.training.Train(TrainableDefOf.Obedience, pawn);
-                                            }
-                                            while (!undeadPawn.training.IsCompleted(TrainableDefOf.Release))
+                                            }                                            
+                                        }
+
+                                        if(undeadPawn.training.CanAssignToTrain(TrainableDefOf.Release).Accepted)
+                                        {
+                                            while (!undeadPawn.training.HasLearned(TrainableDefOf.Release))
                                             {
                                                 undeadPawn.training.Train(TrainableDefOf.Release, pawn);
                                             }
                                         }
 
-                                        if (undeadPawn.RaceProps.TrainableIntelligence == TrainableIntelligenceDefOf.Advanced)
+                                        if (undeadPawn.training.CanAssignToTrain(TorannMagicDefOf.Haul).Accepted)
                                         {
-                                            while (!undeadPawn.training.IsCompleted(TrainableDefOf.Obedience))
+                                            while (!undeadPawn.training.HasLearned(TorannMagicDefOf.Haul))
                                             {
-                                                undeadPawn.training.Train(TrainableDefOf.Obedience, pawn);
+                                                undeadPawn.training.Train(TorannMagicDefOf.Haul, pawn);
                                             }
-                                            while (!undeadPawn.training.IsCompleted(TrainableDefOf.Release))
+                                        }
+
+                                        if (undeadPawn.training.CanAssignToTrain(TorannMagicDefOf.Rescue).Accepted)
+                                        {
+                                            while (!undeadPawn.training.HasLearned(TorannMagicDefOf.Rescue))
                                             {
-                                                undeadPawn.training.Train(TrainableDefOf.Release, pawn);
-                                            }
-                                            if (undeadPawn.BodySize > .4)
-                                            {
-                                                while (!undeadPawn.training.IsCompleted(TorannMagicDefOf.Haul))
-                                                {
-                                                    undeadPawn.training.Train(TorannMagicDefOf.Haul, pawn);
-                                                }
+                                                undeadPawn.training.Train(TorannMagicDefOf.Rescue, pawn);
                                             }
                                         }
                                         undeadPawn.playerSettings.medCare = MedicalCareCategory.NoMeds;
-                                        undeadPawn.def.tradeability = Tradeability.Never;
+                                        undeadPawn.def.tradeability = Tradeability.None;
                                         
                                         
                                     }
@@ -158,8 +167,8 @@ namespace TorannMagic
             undeadPawn.skills.Learn(SkillDefOf.Cooking, Rand.Range(10000, 20000), true);
             undeadPawn.skills.Learn(SkillDefOf.Crafting, -10000000, true);
             undeadPawn.skills.Learn(SkillDefOf.Crafting, Rand.Range(10000, 50000), true);
-            undeadPawn.skills.Learn(SkillDefOf.Growing, -10000000, true);
-            undeadPawn.skills.Learn(SkillDefOf.Growing, Rand.Range(40000, 60000), true);
+            undeadPawn.skills.Learn(SkillDefOf.Plants, -10000000, true);
+            undeadPawn.skills.Learn(SkillDefOf.Plants, Rand.Range(40000, 60000), true);
             undeadPawn.skills.Learn(SkillDefOf.Intellectual, -10000000, true);
             undeadPawn.skills.Learn(SkillDefOf.Medicine, -10000000, true);
             undeadPawn.skills.Learn(SkillDefOf.Melee, -10000000, true);

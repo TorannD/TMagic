@@ -66,13 +66,13 @@ namespace TorannMagic
                 if(this.parent.def == TorannMagicDefOf.TM_GravitySlowHD)
                 {
                     this.effectFrequency = 120;
-                    this.severityReduction = .1f;
+                    this.severityReduction = .2f;
                     this.moteDef = TorannMagicDefOf.Mote_ArcaneWaves;
                     this.scaleAvg = .25f;
                     this.solidTime = 1f;
                     this.fadeIn = .1f;
                     this.fadeOut = .75f;
-                    this.rotationRate = 300;
+                    this.rotationRate = 500;
                     this.velocity = 0;
                     this.velocityAngle = 0;
                     this.lookAngle = Rand.Range(0, 360);

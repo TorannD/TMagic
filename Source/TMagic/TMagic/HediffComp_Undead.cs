@@ -163,7 +163,7 @@ namespace TorannMagic
                                     bool flag3 = num2 > 0;
                                     if (flag3)
                                     {
-                                        bool flag5 = current.CanHealNaturally() && !current.IsOld();
+                                        bool flag5 = current.CanHealNaturally() && !current.IsPermanent();
                                         if (flag5)
                                         {
                                             current.Heal(2.0f);
@@ -192,7 +192,7 @@ namespace TorannMagic
                             arg_BB_1 = ((Hediff_Injury injury) => injury.Part == rec);
                             foreach (Hediff_Injury currentTendable in arg_BB_0.Where(arg_BB_1))
                             {
-                                if (currentTendable.TendableNow && !currentTendable.IsOld())
+                                if (currentTendable.TendableNow() && !currentTendable.IsPermanent())
                                 {
                                     currentTendable.Tended(1, 1);
                                 }
@@ -205,7 +205,7 @@ namespace TorannMagic
                         while (enumerator.MoveNext())
                         {
                             Hediff rec = enumerator.Current;
-                            if (!rec.IsOld())
+                            if (!rec.IsPermanent())
                             {
                                 if (rec.def.defName == "Cataract" || rec.def.defName == "HearingLoss" || rec.def.defName.Contains("ToxicBuildup"))
                                 {

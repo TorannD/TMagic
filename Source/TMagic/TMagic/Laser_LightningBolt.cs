@@ -41,12 +41,12 @@ namespace TorannMagic
             bool flag = hitThing != null;
             if (flag)
             {
-                int damageAmountBase = Mathf.RoundToInt(this.def.projectile.damageAmountBase + (pwrVal * 6)* this.arcaneDmg);
-                DamageInfo dinfo = new DamageInfo(this.def.projectile.damageDef, damageAmountBase, this.ExactRotation.eulerAngles.y, this.launcher, null, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);
+                int DamageAmount = Mathf.RoundToInt(this.def.projectile.GetDamageAmount(1,null) + (pwrVal * 6)* this.arcaneDmg);
+                DamageInfo dinfo = new DamageInfo(this.def.projectile.damageDef, DamageAmount, 0, this.ExactRotation.eulerAngles.y, this.launcher, null, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);
                 hitThing.TakeDamage(dinfo);
                 if(Rand.Chance(.6f))
                 {
-                    DamageInfo dinfo2 = new DamageInfo(DamageDefOf.Stun, damageAmountBase/4, this.ExactRotation.eulerAngles.y, this.launcher, null, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);
+                    DamageInfo dinfo2 = new DamageInfo(DamageDefOf.Stun, DamageAmount/4, 0, this.ExactRotation.eulerAngles.y, this.launcher, null, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);
                     hitThing.TakeDamage(dinfo2);
                 }
 
@@ -94,7 +94,7 @@ namespace TorannMagic
         public void Explosion(IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = true, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
         {
             System.Random rnd = new System.Random();
-            int modDamAmountRand = GenMath.RoundRandom(Rand.Range(2, TMDamageDefOf.DamageDefOf.TM_Lightning.explosionDamage));
+            int modDamAmountRand = GenMath.RoundRandom(Rand.Range(2, TMDamageDefOf.DamageDefOf.TM_Lightning.defaultDamage));
             modDamAmountRand *= Mathf.RoundToInt(this.arcaneDmg);
             if (map == null)
             {
@@ -102,13 +102,13 @@ namespace TorannMagic
                 return;
             }
             Explosion explosion = (Explosion)GenSpawn.Spawn(ThingDefOf.Explosion, center, map);
-            explosion.dealMoreDamageAtCenter = false;
+            explosion.damageFalloff = false;
             explosion.chanceToStartFire = 0.0f;
             explosion.Position = center;
             explosion.radius = radius;
             explosion.damType = damType;
             explosion.instigator = instigator;
-            explosion.damAmount = ((projectile == null) ? GenMath.RoundRandom((float)damType.explosionDamage) : modDamAmountRand);
+            explosion.damAmount = ((projectile == null) ? GenMath.RoundRandom((float)damType.defaultDamage) : modDamAmountRand);
             explosion.weapon = source;
             explosion.preExplosionSpawnThingDef = preExplosionSpawnThingDef;
             explosion.preExplosionSpawnChance = preExplosionSpawnChance;

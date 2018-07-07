@@ -9,7 +9,8 @@
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
-    <maxSeverity>1</maxSeverity>	
+    <maxSeverity>1</maxSeverity>
+	<isBad>false</isBad>	
 	<comps>
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
@@ -35,6 +36,7 @@
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
     <maxSeverity>1</maxSeverity>	
+	<isBad>false</isBad>
 	<comps>
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
@@ -59,7 +61,8 @@
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
-    <maxSeverity>1</maxSeverity>	
+    <maxSeverity>1</maxSeverity>
+	<isBad>false</isBad>	
 	<comps>
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
@@ -84,7 +87,8 @@
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
-    <maxSeverity>1</maxSeverity>	
+    <maxSeverity>1</maxSeverity>
+	<isBad>false</isBad>	
 	<comps>
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
@@ -110,6 +114,7 @@
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
     <maxSeverity>1</maxSeverity>	
+	<isBad>false</isBad>
 	<comps>
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
@@ -135,6 +140,7 @@
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
     <maxSeverity>1</maxSeverity>	
+	<isBad>false</isBad>
 	<comps>
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
@@ -160,6 +166,7 @@
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
     <maxSeverity>1</maxSeverity>	
+	<isBad>false</isBad>
 	<comps>
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
@@ -185,6 +192,7 @@
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
     <maxSeverity>1</maxSeverity>	
+	<isBad>false</isBad>
 	<comps>
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
@@ -210,6 +218,7 @@
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
     <maxSeverity>1</maxSeverity>	
+	<isBad>false</isBad>
 	<comps>
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>

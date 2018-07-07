@@ -10,6 +10,7 @@
     <tradeTags>
 	  <li>Arcane</li>
     </tradeTags>
+	<tradeability>All</tradeability>
     <statBases>
       <MarketValue>6000</MarketValue>
       <MaxHitPoints>1000</MaxHitPoints>
@@ -40,6 +41,7 @@
     <tradeTags>
 	  <li>Arcane</li>
     </tradeTags>
+	<tradeability>All</tradeability>
     <statBases>
       <MarketValue>4000</MarketValue>
       <MaxHitPoints>1000</MaxHitPoints>
@@ -71,6 +73,7 @@
 	  <li>Artifacts</li>
 	  <li>Arcane</li>
     </tradeTags>
+	<tradeability>All</tradeability>
     <statBases>
       <MarketValue>2000</MarketValue>
       <MaxHitPoints>1000</MaxHitPoints>
@@ -102,6 +105,7 @@
       <li>Artifact</li>
 	  <li>Arcane</li>
     </tradeTags>
+	<tradeability>All</tradeability>
     <statBases>
       <MarketValue>4000</MarketValue>
       <MaxHitPoints>1000</MaxHitPoints>
@@ -134,6 +138,7 @@
 	  <li>BodyPartOrImplant</li>
 	  <li>Arcane</li>
     </tradeTags>
+	<tradeability>All</tradeability>
     <statBases>
       <MarketValue>777</MarketValue>
       <MaxHitPoints>1000</MaxHitPoints>
@@ -166,6 +171,7 @@
 	  <li>BodyPartOrImplant</li>
 	  <li>Arcane</li>
     </tradeTags>
+	<tradeability>All</tradeability>
     <statBases>
       <MarketValue>777</MarketValue>
       <MaxHitPoints>1000</MaxHitPoints>

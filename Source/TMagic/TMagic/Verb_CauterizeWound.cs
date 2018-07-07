@@ -56,15 +56,15 @@ namespace TorannMagic
 
                         foreach (Hediff_Injury current in arg_BB_0.Where(arg_BB_1))
                         {
-                            bool flag5 = current.CanHealNaturally() && !current.IsOld() && current.TendableNow;
+                            bool flag5 = current.CanHealNaturally() && !current.IsPermanent() && current.TendableNow();
                             if (flag5)
                             {
                                 if (Rand.Chance(.25f))
                                 {
                                     DamageInfo dinfo;
-                                    dinfo = new DamageInfo(DamageDefOf.Burn, Mathf.RoundToInt(current.Severity/2), (float)-1, this.CasterPawn, rec, null, DamageInfo.SourceCategory.ThingOrUnknown);
+                                    dinfo = new DamageInfo(DamageDefOf.Burn, Mathf.RoundToInt(current.Severity/2), 0, (float)-1, this.CasterPawn, rec, null, DamageInfo.SourceCategory.ThingOrUnknown);
                                     dinfo.SetAllowDamagePropagation(false);
-                                    dinfo.SetInstantOldInjury(true);                                  
+                                    dinfo.SetInstantPermanentInjury(true);                                  
                                     current.Heal(100);                                    
                                     pawn.TakeDamage(dinfo);
                                     TM_MoteMaker.ThrowFlames(pawn.DrawPos, pawn.Map, Rand.Range(.2f, .5f));

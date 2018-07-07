@@ -13,6 +13,7 @@
 	<minSeverity>0.001</minSeverity>
 	<maxSeverity>1.0</maxSeverity>
 	<initialSeverity>0.5</initialSeverity>
+	<isBad>false</isBad>
 	 <comps>
       <li Class="HediffCompProperties_Disappears">
         <disappearsAfterTicks>
@@ -237,6 +238,7 @@
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
     <stages>
       <li>
 	    <label>I</label>
@@ -270,6 +272,7 @@
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
     <stages>
       <li>
 	    <label>II</label>
@@ -303,6 +306,7 @@
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
     <stages>
       <li>
 	    <label>III</label>
@@ -384,6 +388,7 @@
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
     <stages>
       <li>
 	    <label>I</label>
@@ -418,6 +423,7 @@
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
     <stages>
       <li>
 	    <label>II</label>
@@ -452,6 +458,7 @@
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
     <stages>
       <li>
 	    <label>III</label>
@@ -528,6 +535,7 @@
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
     <stages>
       <li>
 	    <label>I</label>
@@ -580,6 +588,7 @@
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
     <stages>
       <li>
 	    <label>II</label>
@@ -632,6 +641,7 @@
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
     <stages>
       <li>
 	    <label>III</label>
@@ -727,6 +737,7 @@
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
     <stages>
       <li>
 	    <label>I</label>
@@ -778,6 +789,7 @@
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
     <stages>
       <li>
 	    <label>II</label>
@@ -829,6 +841,7 @@
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
     <stages>
       <li>
 	    <label>III</label>
@@ -924,6 +937,7 @@
 	<defaultLabelColor>(.96,.9,0.45)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
     <stages>
       <li>
 	    <label>I</label>
@@ -966,6 +980,7 @@
 	<defaultLabelColor>(.96,.9,0.45)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
     <stages>
       <li>
 	    <label>II</label>
@@ -1008,6 +1023,7 @@
 	<defaultLabelColor>(.96,.9,0.45)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
     <stages>
       <li>
 	    <label>III</label>
@@ -1050,6 +1066,7 @@
 	<defaultLabelColor>(.96,.9,0.45)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
     <stages>
       <li>
 	    <label>IV</label>
@@ -1098,6 +1115,7 @@
 	<minSeverity>0.001</minSeverity>
 	<maxSeverity>4.0</maxSeverity>
 	<initialSeverity>0.95</initialSeverity>
+	<isBad>false</isBad>
 	<comps>
 	  <li>
         <compClass>TorannMagic.HediffComp_RangerBond</compClass>
@@ -1207,6 +1225,7 @@
     <defaultLabelColor>(1,0.3,0.5)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>3.0</maxSeverity>	
+	<isBad>false</isBad>
 	<comps>
       <li>
         <compClass>TorannMagic.HediffComp_Shield</compClass>
@@ -1231,6 +1250,7 @@
     <defaultLabelColor>(1,0.3,0.5)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>3.0</maxSeverity>	
+	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_Disappears">
         <disappearsAfterTicks>
@@ -1270,6 +1290,7 @@
     <defaultLabelColor>(1,0.3,0.5)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>3.0</maxSeverity>	
+	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_Disappears">
         <disappearsAfterTicks>
@@ -1309,6 +1330,7 @@
     <defaultLabelColor>(1,0.3,0.5)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>3.0</maxSeverity>	
+	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_Disappears">
         <disappearsAfterTicks>
@@ -1349,6 +1371,7 @@
     <defaultLabelColor>(1,1,0.2)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>3.0</maxSeverity>	
+	<isBad>false</isBad>
 	<comps>
       <li>
         <compClass>TorannMagic.HediffComp_Invulnerable</compClass>
@@ -1366,6 +1389,7 @@
     <defaultLabelColor>(1,1,0.2)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>3.0</maxSeverity>	
+	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_Disappears">
         <disappearsAfterTicks>
@@ -1391,6 +1415,7 @@
 	<minSeverity>0.001</minSeverity>
 	<maxSeverity>1.0</maxSeverity>
 	<initialSeverity>1.0</initialSeverity>
+	<isBad>false</isBad>
 	<comps>
 	  <li>
         <compClass>TorannMagic.HediffComp_Fortitude</compClass>
@@ -1413,6 +1438,7 @@
 	<minSeverity>0.001</minSeverity>
 	<maxSeverity>1.0</maxSeverity>
 	<initialSeverity>1.0</initialSeverity>
+	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>0.0</severityPerDay>
@@ -1429,6 +1455,7 @@
 	<defaultLabelColor>(1,1,1)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1</maxSeverity>
+	<isBad>true</isBad>
     <stages>
       <li>
 	    <label>I</label>
@@ -1484,6 +1511,7 @@
     <defaultLabelColor>(0,0.5,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>10</maxSeverity>	
+	<isBad>false</isBad>
 	<comps>
       <li>
         <compClass>TorannMagic.HediffComp_Regeneration</compClass>
@@ -1501,6 +1529,7 @@
     <defaultLabelColor>(0,0.5,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>10</maxSeverity>	
+	<isBad>false</isBad>
 	<comps>
       <li>
         <compClass>TorannMagic.HediffComp_Regeneration</compClass>
@@ -1518,12 +1547,13 @@
     <defaultLabelColor>(0,0.5,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>10</maxSeverity>	
+	<isBad>false</isBad>
 	<comps>
       <li>
         <compClass>TorannMagic.HediffComp_Regeneration</compClass>
       </li>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>-10</severityPerDay>
+        <severityPerDay>-10</severityPerDay>		
       </li>	  
     </comps>
   </HediffDef>
@@ -1534,7 +1564,8 @@
 	<label>Regeneration (III)</label>
     <defaultLabelColor>(0,0.5,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
-    <maxSeverity>10</maxSeverity>	
+    <maxSeverity>10</maxSeverity>
+	<isBad>false</isBad>	
 	<comps>
       <li>
         <compClass>TorannMagic.HediffComp_Regeneration</compClass>
@@ -1557,6 +1588,7 @@
 	<minSeverity>0.001</minSeverity>
 	<maxSeverity>4.0</maxSeverity>
 	<initialSeverity>0.95</initialSeverity>
+	<isBad>false</isBad>
 	<comps>
 	  <li>
         <compClass>TorannMagic.HediffComp_BladeArt</compClass>
@@ -1653,6 +1685,7 @@
 	<minSeverity>0.001</minSeverity>
 	<maxSeverity>4.0</maxSeverity>
 	<initialSeverity>0.95</initialSeverity>
+	<isBad>false</isBad>
 	<comps>
 	  <li>
         <compClass>TorannMagic.HediffComp_BowTraining</compClass>
@@ -1740,6 +1773,7 @@
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
 	<comps>
 	  <li>
         <compClass>TorannMagic.HediffComp_SpellMending</compClass>
@@ -1777,6 +1811,8 @@
 	<defaultLabelColor>(.8,0,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
+	<isBad>true</isBad>
+	<makesSickThought>true</makesSickThought>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-0.3</severityPerDay>

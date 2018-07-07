@@ -93,7 +93,7 @@ namespace TorannMagic
                     TM_MoteMaker.MakePowerBeamMoteColor(smitePos[j], base.Map, this.radius * 3f, 2f, .5f, .1f, .5f, colorInt.ToColor);
                     this.caster = this.launcher as Pawn;
                     CompAbilityUserMagic comp = caster.GetComp<CompAbilityUserMagic>();
-                    GenExplosion.DoExplosion(smitePos[j], map, 2.4f, TMDamageDefOf.DamageDefOf.TM_BlazingPower, this.launcher as Pawn, Mathf.RoundToInt((10 + TMDamageDefOf.DamageDefOf.TM_BlazingPower.explosionDamage + 3*pwrVal) * comp.arcaneDmg), TorannMagicDefOf.TM_Lightning, def, this.equipmentDef, null, 0f, 1, false, null, 0f, 1, 0f, false);
+                    GenExplosion.DoExplosion(smitePos[j], map, 2.4f, TMDamageDefOf.DamageDefOf.TM_BlazingPower, this.launcher as Pawn, Mathf.RoundToInt((10 + TMDamageDefOf.DamageDefOf.TM_BlazingPower.defaultDamage + 3*pwrVal) * comp.arcaneDmg), 0, TorannMagicDefOf.TM_Lightning, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
                 }
             }
         }
@@ -155,7 +155,7 @@ namespace TorannMagic
                                             bool flag4 = num2 > 0;
                                             if (flag4)
                                             {
-                                                bool flag5 = current.CanHealNaturally() && !current.IsOld();
+                                                bool flag5 = current.CanHealNaturally() && !current.IsPermanent();
                                                 if (flag5)
                                                 {
                                                     //current.Heal((float)((int)current.Severity + 1));
@@ -262,7 +262,7 @@ namespace TorannMagic
             {
                 LongEventHandler.ExecuteWhenFinished(delegate
                 {
-                    this.sustainer = SoundDef.Named("OrbitalBeam").TrySpawnSustainer(SoundInfo.InMap(base.assignedTarget, MaintenanceType.PerTick));
+                    this.sustainer = SoundDef.Named("OrbitalBeam").TrySpawnSustainer(SoundInfo.InMap(this.selectedTarget, MaintenanceType.PerTick));
                 });
             }
         }

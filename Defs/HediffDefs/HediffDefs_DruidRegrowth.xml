@@ -7,8 +7,7 @@
       <isBad>false</isBad>
       <defaultLabelColor>(83,159,6)</defaultLabelColor>
       <addedPartProps>
-         <isBionic>false</isBionic>
-         <isSolid>true</isSolid>
+         <solid>true</solid>
       </addedPartProps>
    </HediffDef>
 
@@ -20,6 +19,7 @@
     <label>Regrown Arm</label>
     <addedPartProps>
 	  <partEfficiency>1</partEfficiency>
+	  <isGoodWeapon>true</isGoodWeapon>
     </addedPartProps>
 	<maxSeverity>15</maxSeverity>
 	<comps>
@@ -85,6 +85,7 @@
     <label>Regrown Hand</label>
     <addedPartProps>
 	  <partEfficiency>1</partEfficiency>
+	  <isGoodWeapon>true</isGoodWeapon>
     </addedPartProps>
 	<maxSeverity>15</maxSeverity>
 	<comps>

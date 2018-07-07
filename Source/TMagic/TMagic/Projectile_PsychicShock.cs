@@ -104,7 +104,7 @@ namespace TorannMagic
 
                             if(victim != null && !victim.Dead)
                             {
-                                GenExplosion.DoExplosion(curCell, pawn.Map, .4f, DamageDefOf.Stun, this.launcher, Mathf.RoundToInt((3*(this.def.projectile.damageAmountBase + pwrVal) * this.arcaneDmg)), SoundDefOf.Crunch, def, this.equipmentDef, null, 0f, 1, false, null, 0f, 1, 0f, false);
+                                GenExplosion.DoExplosion(curCell, pawn.Map, .4f, DamageDefOf.Stun, this.launcher, Mathf.RoundToInt((3*(this.def.projectile.GetDamageAmount(1,null) + pwrVal) * this.arcaneDmg)), 0, SoundDefOf.Crunch, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
                             }
 
                         }
@@ -152,7 +152,7 @@ namespace TorannMagic
             if (victim != null && !victim.Dead)
             {
                 IEnumerable<BodyPartRecord> partSearch = victim.def.race.body.AllParts;
-                vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains("ConsciousnessSource"));
+                vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.ConsciousnessSource));
                 if (vitalPart != null)
                 {
                     float rnd = Rand.Range(0f, 1f);
@@ -172,7 +172,7 @@ namespace TorannMagic
                     {
                         rnd = 0;
                     }
-                    damageEntities(victim, vitalPart, Mathf.RoundToInt(((this.def.projectile.damageAmountBase + pwrVal) * this.arcaneDmg) * rnd), TMDamageDefOf.DamageDefOf.TM_Shadow);
+                    damageEntities(victim, vitalPart, Mathf.RoundToInt(((this.def.projectile.GetDamageAmount(1,null) + pwrVal) * this.arcaneDmg) * rnd), TMDamageDefOf.DamageDefOf.TM_Shadow);
                 }
             }
         }
@@ -181,13 +181,13 @@ namespace TorannMagic
         {
             DamageInfo dinfo;
             amt = (int)((float)amt * Rand.Range(.75f, 1.25f));
-            dinfo = new DamageInfo(type, amt, (float)-1, pawn, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
+            dinfo = new DamageInfo(type, amt, 0, (float)-1, pawn, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
             dinfo.SetAllowDamagePropagation(false);
             victim.TakeDamage(dinfo);
             if (!victim.IsColonist && !victim.IsPrisoner && victim.Faction != null && !victim.Faction.HostileTo(pawn.Faction))
             {
                 Faction faction = victim.Faction;
-                faction.SetHostileTo(pawn.Faction, true);
+                faction.TrySetRelationKind(pawn.Faction, FactionRelationKind.Hostile, false, null);
             }
         }
     }

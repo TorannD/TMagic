@@ -92,11 +92,11 @@ namespace TorannMagic
             if (value > 1000)
             {
                 value -= 1000;
-                dmg = (projectileDef.projectile.damageAmountBase) + (int)((20 + (value / 120)) * (1 + (.1f * pwrVal) + (.05f * str.level)));
+                dmg = (projectileDef.projectile.GetDamageAmount(1,null)) + (int)((20 + (value / 120)) * (1 + (.1f * pwrVal) + (.05f * str.level)));
             }
             else
             {
-                dmg = Mathf.RoundToInt((projectileDef.projectile.damageAmountBase + (value / 50)) * (1 + (.1f * pwrVal) + (.05f * str.level)));
+                dmg = Mathf.RoundToInt((projectileDef.projectile.GetDamageAmount(1,null) + (value / 50)) * (1 + (.1f * pwrVal) + (.05f * str.level)));
             }
             return dmg;
         }
@@ -105,7 +105,7 @@ namespace TorannMagic
         {
             DamageInfo dinfo;
             amt = (int)((float)amt * Rand.Range(.7f, 1.3f));
-            dinfo = new DamageInfo(type, amt, (float)-1, pawn, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
+            dinfo = new DamageInfo(type, amt, 0, (float)-1, pawn, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
             dinfo.SetAllowDamagePropagation(false);
             victim.TakeDamage(dinfo);
         }

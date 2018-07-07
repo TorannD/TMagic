@@ -47,7 +47,7 @@ Pain:		-20%</description>
             <SecondsToRecharge>600.0</SecondsToRecharge>
             <range>40</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
@@ -101,7 +101,7 @@ Pain:		-20%</description>
             <SecondsToRecharge>600.0</SecondsToRecharge>
             <range>40</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
@@ -155,7 +155,7 @@ Pain:		-30%</description>
             <SecondsToRecharge>600.0</SecondsToRecharge>
             <range>40</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
@@ -209,7 +209,7 @@ Pain:		-40%</description>
             <SecondsToRecharge>600.0</SecondsToRecharge>
             <range>40</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
@@ -284,7 +284,7 @@ Mood decrease:	-4</description>
             <SecondsToRecharge>600.0</SecondsToRecharge>
             <range>40</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
@@ -338,7 +338,7 @@ Mood decrease:	-4</description>
             <SecondsToRecharge>600.0</SecondsToRecharge>
             <range>40</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
@@ -392,7 +392,7 @@ Mood decrease:	-6</description>
             <SecondsToRecharge>600.0</SecondsToRecharge>
             <range>40</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
@@ -446,7 +446,7 @@ Mood decrease:	-8</description>
             <SecondsToRecharge>600.0</SecondsToRecharge>
             <range>40</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
@@ -524,7 +524,7 @@ Mood increase:	+2</description>
             <SecondsToRecharge>600.0</SecondsToRecharge>
             <range>40</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
@@ -581,7 +581,7 @@ Mood increase:	+2</description>
             <SecondsToRecharge>600.0</SecondsToRecharge>
             <range>40</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
@@ -638,7 +638,7 @@ Mood increase:	+4</description>
             <SecondsToRecharge>600.0</SecondsToRecharge>
             <range>40</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
@@ -695,7 +695,7 @@ Mood increase:	+6</description>
             <SecondsToRecharge>600.0</SecondsToRecharge>
             <range>40</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
@@ -772,7 +772,7 @@ Mood increase:	+4</description>
             <SecondsToRecharge>600.0</SecondsToRecharge>
             <range>40</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
@@ -827,7 +827,7 @@ Mood increase:	+4</description>
             <SecondsToRecharge>600.0</SecondsToRecharge>
             <range>40</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
@@ -882,7 +882,7 @@ Mood increase:	+7</description>
             <SecondsToRecharge>600.0</SecondsToRecharge>
             <range>40</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
@@ -937,7 +937,7 @@ Mood increase:	+10</description>
             <SecondsToRecharge>600.0</SecondsToRecharge>
             <range>40</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
@@ -1136,7 +1136,7 @@ Shots: 1</description>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
             <isPrimary>true</isPrimary>
-            <soundCast>DropPodOpen</soundCast>
+            <soundCast>DropPod_Open</soundCast>
             <soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>2</muzzleFlashScale>
             <AlwaysHits>true</AlwaysHits>
@@ -1174,7 +1174,7 @@ Shots: 1</description>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
             <isPrimary>true</isPrimary>
-            <soundCast>DropPodOpen</soundCast>
+            <soundCast>DropPod_Open</soundCast>
             <soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>3</muzzleFlashScale>
             <AlwaysHits>true</AlwaysHits>
@@ -1212,7 +1212,7 @@ Shots: 2</description>
             <burstShotCount>2</burstShotCount>
             <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
             <isPrimary>true</isPrimary>
-            <soundCast>DropPodOpen</soundCast>
+            <soundCast>DropPod_Open</soundCast>
             <soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>4</muzzleFlashScale>
             <AlwaysHits>true</AlwaysHits>
@@ -1250,7 +1250,7 @@ Shots: 3</description>
             <burstShotCount>3</burstShotCount>
             <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
             <isPrimary>true</isPrimary>
-            <soundCast>DropPodOpen</soundCast>
+            <soundCast>DropPod_Open</soundCast>
             <soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>5</muzzleFlashScale>
             <AlwaysHits>true</AlwaysHits>
@@ -1307,7 +1307,7 @@ Shots: 3</description>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>15</ticksBetweenBurstShots>
             <isPrimary>true</isPrimary>
-            <soundCast>DropPodLeaving</soundCast>
+            <soundCast>DropPod_Leaving</soundCast>
             <soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>100</muzzleFlashScale>
             <AlwaysHits>false</AlwaysHits>
@@ -1364,7 +1364,7 @@ Shots: 3</description>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>15</ticksBetweenBurstShots>
             <isPrimary>true</isPrimary>
-            <soundCast>DropPodLeaving</soundCast>
+            <soundCast>DropPod_Leaving</soundCast>
             <soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>100</muzzleFlashScale>
             <AlwaysHits>false</AlwaysHits>
@@ -1418,7 +1418,7 @@ Shots: 3</description>
             <range>120</range>
             <burstShotCount>1</burstShotCount>
 			<forcedMissRadius>8.4</forcedMissRadius>
-            <soundCast>DropPodLeaving</soundCast>
+            <soundCast>DropPod_Leaving</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>false</AlwaysHits>
@@ -1769,7 +1769,7 @@ Damage: 7</description>
         <warmupTime>1</warmupTime>
         <SecondsToRecharge>12</SecondsToRecharge>
         <range>42</range>
-        <soundCast>ShotChargeRifle</soundCast>
+        <soundCast>Shot_ChargeRifle</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
         <isPrimary>false</isPrimary>
 		<isViolent>true</isViolent>
@@ -2008,7 +2008,7 @@ Range: 30</description>
 			<stopBurstWithoutLos>false</stopBurstWithoutLos>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
         </MainVerb>
@@ -2039,7 +2039,7 @@ Range: 50</description>
 			<isViolent>false</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
         </MainVerb>
@@ -2070,7 +2070,7 @@ Range: 70</description>
 			<isViolent>false</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
         </MainVerb>
@@ -2101,7 +2101,7 @@ Range: 90</description>
 			<isViolent>false</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
         </MainVerb>
@@ -2263,7 +2263,7 @@ Range: 100</description>
 			<isViolent>false</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
         </MainVerb>
@@ -2352,7 +2352,7 @@ Range: 100</description>
 			<isViolent>false</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
         </MainVerb>
@@ -2469,7 +2469,7 @@ Range: 100</description>
 			<isViolent>false</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-            <soundCast>MessagePositiveEvent</soundCast>
+            <soundCast>Message_PositiveEvent</soundCast>
             <muzzleFlashScale>20</muzzleFlashScale>
             <isPrimary>false</isPrimary>
         </MainVerb>

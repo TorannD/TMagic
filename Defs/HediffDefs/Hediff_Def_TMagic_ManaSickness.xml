@@ -7,6 +7,7 @@
     <defaultLabelColor>(0.55, 0.05, 1)</defaultLabelColor>
     <label>mana sickness</label>
     <lethalSeverity>10</lethalSeverity>
+	<isBad>true</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-1</severityPerDay>
@@ -120,10 +121,11 @@
 	<initialSeverity>0.001</initialSeverity>
     <makesSickThought>true</makesSickThought>
     <tendable>true</tendable>
+	<isBad>true</isBad>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
-        <tendDuration>100000</tendDuration>
-        <severityPerDayTended>-0.4</severityPerDayTended>
+        <baseTendDurationHours>27</baseTendDurationHours>
+        <severityPerDayTended>-0.2</severityPerDayTended>
       </li>
       <li Class="HediffCompProperties_Immunizable">
         <immunityPerDayNotSick>-0.01</immunityPerDayNotSick>

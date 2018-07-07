@@ -7,10 +7,10 @@
     <workerClass>ItemCollectionGenerator_Rewards</workerClass>
   </ItemCollectionGeneratorDef>
   
-  <ItemCollectionGeneratorDef>
+<!--   <ItemCollectionGeneratorDef>
     <defName>ArcaneStashRewards</defName>
     <label>arcane stash rewards</label>
     <workerClass>TorannMagic.ItemCollectionGenerator_Arcane</workerClass>
-  </ItemCollectionGeneratorDef>
+  </ItemCollectionGeneratorDef> -->
   
 </Defs>

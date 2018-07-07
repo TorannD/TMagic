@@ -19,8 +19,7 @@ namespace TorannMagic
             num2 = Mathf.Clamp(num2, 1, this.def.diseaseMaxVictims);
             for (int i = 0; i < num2; i++)
             {
-                Pawn pawn;
-                if (!this.PotentialVictims(parms.target).TryRandomElementByWeight((Pawn x) => x.health.immunity.DiseaseContractChanceFactor(this.def.diseaseIncident, null), out pawn))
+                if (!this.PotentialVictims(parms.target).TryRandomElementByWeight((Pawn x) => x.health.immunity.DiseaseContractChanceFactor(this.def.diseaseIncident, null), out Pawn pawn))
                 {
                     break;
                 }
@@ -35,8 +34,7 @@ namespace TorannMagic
 
         private IEnumerable<Pawn> PotentialVictimCandidates(IIncidentTarget target)
         {
-            Map map = target as Map;
-            if (map != null)
+            if (target is Map map)
             {
                 return map.mapPawns.FreeColonistsAndPrisoners;
             }
@@ -78,9 +76,10 @@ namespace TorannMagic
                 return p.health.immunity.DiseaseContractChanceFactor(this.def.diseaseIncident, null) > 0f;
             });
         }
-        protected override bool CanFireNowSub(IIncidentTarget target)
+
+        protected override bool CanFireNowSub(IncidentParms parms)
         {
-            return this.PotentialVictims(target).Any<Pawn>();
+            return this.PotentialVictims(parms.target).Any<Pawn>();
         }
 
 

@@ -9,7 +9,7 @@ namespace TorannMagic
 {
     public class IncidentWorker_QuestArcaneCamp : IncidentWorker
     {
-        protected override bool CanFireNowSub(IIncidentTarget target)
+        protected override bool CanFireNowSub(IncidentParms target)
         {
             Faction faction;
             Faction faction2;
@@ -30,14 +30,18 @@ namespace TorannMagic
             {
                 return false;
             }
-            Site site = SiteMaker.MakeSite(SiteCoreDefOf.Nothing, SitePartDefOf.Outpost, faction2);
-            site.parts.Add(SitePartDefOf.Turrets);
-            site.parts.Add(TorannMagicDefOf.ArcaneBanditSquad);
+            Site site = SiteMaker.MakeSite(SiteCoreDefOf.Nothing, SitePartDefOf.Outpost, tile, faction2, true);
+            SitePart turrets = new SitePart();
+            turrets.def = SitePartDefOf.Turrets;
+            site.parts.Add(turrets);
+            SitePart arcaneBanditSquad = new SitePart();
+            arcaneBanditSquad.def = TorannMagicDefOf.ArcaneBanditSquad;
+            site.parts.Add(arcaneBanditSquad);
             site.Tile = tile;
             List<Thing> list = this.GenerateRewards(faction);
-            site.GetComponent<DefeatAllEnemiesQuestComp>().StartQuest(faction, 12f, list);
+            site.GetComponent<DefeatAllEnemiesQuestComp>().StartQuest(faction, 12, list);
             Find.WorldObjects.Add(site);
-            base.SendStandardLetter(site, new string[]
+            base.SendStandardLetter(site, faction, new string[]
             {
                 faction.leader.LabelShort,
                 faction.def.leaderTitle,
@@ -51,12 +55,10 @@ namespace TorannMagic
 
         private List<Thing> GenerateRewards(Faction alliedFaction)
         {
-            ItemCollectionGeneratorParams parms = default(ItemCollectionGeneratorParams);
-            parms.techLevel = new TechLevel?(alliedFaction.def.techLevel);
-            parms.totalMarketValue = 8000f;
+            int totalMarketValue = 8000;
             List<Thing> list = new List<Thing>();
             ItemCollectionGenerator_Internal_Arcane itc_ia = new ItemCollectionGenerator_Internal_Arcane();            
-            return itc_ia.Generate(parms, list);
+            return itc_ia.Generate(totalMarketValue, list);
             //return ItemCollectionGeneratorDefOf.BanditCampQuestRewards.Worker.Generate(parms);
         }
 

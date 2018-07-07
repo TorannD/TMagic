@@ -2,7 +2,7 @@
 <Defs>
 
  
-  <RuleDef>
+<!--   <RuleDef>
     <defName>ArcaneTower</defName>
     <symbol>arcaneTower</symbol>
     <resolvers>
@@ -23,6 +23,6 @@
     </resolvers>
   </RuleDef>
   
-
+ -->
   
 </Defs>

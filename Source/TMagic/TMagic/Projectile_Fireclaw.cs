@@ -578,7 +578,7 @@ namespace TorannMagic
 			ThingDef def = this.def;
             try
             {
-                Explosion(pwr, pos, map, radius, DamageDefOf.Burn, this.launcher, null, def, this.equipmentDef, ThingDefOf.FilthAsh, 0.4f, 1, false, null, 0f, 1);
+                Explosion(pwr, pos, map, radius, DamageDefOf.Burn, this.launcher, null, def, this.equipmentDef, ThingDefOf.Filth_Ash, 0.4f, 1, false, null, 0f, 1);
             }
             catch
             {
@@ -666,7 +666,7 @@ namespace TorannMagic
         public void Explosion(int pwr, IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
 		{
 			System.Random rnd = new System.Random();
-			int modDamAmountRand = ((pwr * 5)) + GenMath.RoundRandom(rnd.Next(8, projectile.projectile.damageAmountBase));  //36
+			int modDamAmountRand = ((pwr * 5)) + GenMath.RoundRandom(rnd.Next(8, projectile.projectile.GetDamageAmount(1,null)));  //36
             modDamAmountRand *= Mathf.RoundToInt(arcaneDmg);
 			if (map == null)
 			{
@@ -674,13 +674,13 @@ namespace TorannMagic
 				return;
 			}
             Explosion explosion = (Explosion)GenSpawn.Spawn(ThingDefOf.Explosion, center, map);
-            explosion.dealMoreDamageAtCenter = true;
+            explosion.damageFalloff = true;
             explosion.chanceToStartFire = 0.1f;
             explosion.Position = center;
 			explosion.radius = radius;
 			explosion.damType = damType;
 			explosion.instigator = instigator;
-			explosion.damAmount = ((projectile == null) ? GenMath.RoundRandom((float)damType.explosionDamage) : modDamAmountRand);
+			explosion.damAmount = ((projectile == null) ? GenMath.RoundRandom((float)damType.defaultDamage) : modDamAmountRand);
 			explosion.weapon = source;
 			explosion.preExplosionSpawnThingDef = preExplosionSpawnThingDef;
 			explosion.preExplosionSpawnChance = preExplosionSpawnChance;

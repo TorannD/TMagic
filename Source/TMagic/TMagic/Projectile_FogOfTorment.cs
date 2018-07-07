@@ -14,7 +14,7 @@ namespace TorannMagic
         int verVal = 0;
         int pwrVal = 0;
         float arcaneDmg = 1;
-        int strikeDelay = 180;
+        int strikeDelay = 120;
         int lastStrike = 0;
         bool initialized = false;
         ThingDef fog;
@@ -70,7 +70,7 @@ namespace TorannMagic
 
                 fog.gas.expireSeconds.min = this.duration/60;
                 fog.gas.expireSeconds.max = this.duration/60;
-                GenExplosion.DoExplosion(base.Position, map, this.def.projectile.explosionRadius + verVal, TMDamageDefOf.DamageDefOf.TM_Torment, this.launcher, 0, this.def.projectile.soundExplode, def, this.equipmentDef, fog, 1f, 1, false, null, 0f, 0, 0.0f, false);
+                GenExplosion.DoExplosion(base.Position, map, this.def.projectile.explosionRadius + verVal, TMDamageDefOf.DamageDefOf.TM_Torment, this.launcher, 0, 0, this.def.projectile.soundExplode, def, this.equipmentDef, null, fog, 1f, 1, false, null, 0f, 0, 0.0f, false);
                 
                 this.initialized = true;
             }
@@ -112,7 +112,7 @@ namespace TorannMagic
                                                 bool flag3 = num2 > 0;
                                                 if (flag3)
                                                 {
-                                                    bool flag5 = current.CanHealNaturally() && !current.IsOld();
+                                                    bool flag5 = current.CanHealNaturally() && !current.IsPermanent();
                                                     if (flag5)
                                                     {
                                                         current.Heal(2.0f + pwrVal);
@@ -153,7 +153,7 @@ namespace TorannMagic
         public void damageEntities(Pawn e, float d, DamageDef type)
         {
             int amt = Mathf.RoundToInt(Rand.Range(.5f, 1.5f) * d);
-            DamageInfo dinfo = new DamageInfo(type, amt, (float)-1, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+            DamageInfo dinfo = new DamageInfo(type, amt, 0, (float)-1, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
             bool flag = e != null;
             if (flag)
             {
