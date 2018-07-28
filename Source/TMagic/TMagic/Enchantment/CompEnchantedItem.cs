@@ -93,7 +93,7 @@ namespace TorannMagic.Enchantment
             Scribe_Values.Look<EnchantmentTier>(ref this.arcaneDmgTier, "arcaneDmgTier", (EnchantmentTier)0, false);
             Scribe_Values.Look<bool>(ref this.hasEnchantment, "hasEnchantment", false, false);
             Scribe_Values.Look<bool>(ref this.initialized, "initialized", false, false);
-            this.Props.ExposeData();
+            //this.Props.ExposeData();
         }
 
         public override string GetDescriptionPart()

@@ -261,7 +261,8 @@ namespace TorannMagic
                         //}
                         try
                         {
-                            GenSpawn.Spawn(newPawn, position, map);
+                            GenSpawn.Spawn(newPawn, position, map, Rot4.North, WipeMode.Vanish, false);
+                            //GenPlace.TryPlaceThing(newPawn, position, map, ThingPlaceMode.Near, null, null);
                         }
                         catch
                         {

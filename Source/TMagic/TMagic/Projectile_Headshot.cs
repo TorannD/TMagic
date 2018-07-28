@@ -39,7 +39,7 @@ namespace TorannMagic
 
             int dmg = GetWeaponDmg(pawn, this.def);
 
-            if (victim != null && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracy, true)))
+            if (victim != null && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracyPawn, true)))
             {                
                 this.PenetratingShot(victim, dmg, DamageDefOf.Bullet);
 

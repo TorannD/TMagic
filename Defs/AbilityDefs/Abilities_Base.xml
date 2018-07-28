@@ -40,6 +40,22 @@
 			<speed>250</speed>
 	   </projectile>
 	</ThingDef>
+	
+	<ThingDef ParentName="BaseBullet" Name="FlyingObject_Advanced">
+	   <defName>FlyingObject_Advanced</defName>
+	   <thingClass>TorannMagic.FlyingObject_Advanced</thingClass>
+	   <label>flying object that does lots of stuff</label>
+	   <graphicData>
+			<texPath>Spells/shadowbolt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	   <projectile>
+			<flyOverhead>true</flyOverhead>
+			<damageDef>Stun</damageDef>
+			<damageAmountBase>0</damageAmountBase>
+			<speed>30</speed>
+	   </projectile>
+	</ThingDef>
 
 
   <AbilityUser.AbilityDef Name="BaseMagicAbility" Abstract="True">

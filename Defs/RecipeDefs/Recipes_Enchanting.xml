@@ -12,7 +12,7 @@
     <workSpeedStat>SmithingSpeed</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
-    <workAmount>3000</workAmount>
+    <workAmount>2000</workAmount>
 	<workSkillLearnFactor>1.1</workSkillLearnFactor>
     <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
 <!-- 	<recipeUsers>
@@ -33,7 +33,7 @@
             <li>Jade</li>
           </thingDefs>
         </filter>
-        <count>25</count>
+        <count>15</count>
       </li>
     </ingredients>
     <products>
@@ -64,10 +64,10 @@
       <li>
         <filter>
           <thingDefs>
-            <li>TM_EStone_maxMP_minor</li>
+            <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>50</count>
       </li>
 	  <li>
         <filter>
@@ -75,7 +75,7 @@
             <li>Jade</li>
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>30</count>
       </li>
     </ingredients>
     <products>
@@ -98,7 +98,7 @@
     <workSpeedStat>SmithingSpeed</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
-    <workAmount>5000</workAmount>
+    <workAmount>8000</workAmount>
 	<workSkillLearnFactor>1.3</workSkillLearnFactor>
     <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
 	<recipeUsers>
@@ -108,10 +108,10 @@
       <li>
         <filter>
           <thingDefs>
-            <li>TM_EStone_maxMP</li>
+            <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>125</count>
       </li>
 	  <li>
         <filter>
@@ -143,7 +143,7 @@
     <workSpeedStat>SmithingSpeed</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
-    <workAmount>3000</workAmount>
+    <workAmount>2000</workAmount>
 	<workSkillLearnFactor>1.1</workSkillLearnFactor>
     <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
 <!-- 	<recipeUsers>
@@ -164,7 +164,7 @@
             <li>Jade</li>
           </thingDefs>
         </filter>
-        <count>25</count>
+        <count>15</count>
       </li>
     </ingredients>
     <products>
@@ -195,10 +195,10 @@
       <li>
         <filter>
           <thingDefs>
-            <li>TM_EStone_coolDown_minor</li>
+            <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>50</count>
       </li>
 	  <li>
         <filter>
@@ -206,7 +206,7 @@
             <li>Jade</li>
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>30</count>
       </li>
     </ingredients>
     <products>
@@ -229,7 +229,7 @@
     <workSpeedStat>SmithingSpeed</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
-    <workAmount>5000</workAmount>
+    <workAmount>8000</workAmount>
 	<workSkillLearnFactor>1.3</workSkillLearnFactor>
     <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
 	<recipeUsers>
@@ -239,10 +239,10 @@
       <li>
         <filter>
           <thingDefs>
-            <li>TM_EStone_coolDown</li>
+            <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>125</count>
       </li>
 	  <li>
         <filter>
@@ -274,7 +274,7 @@
     <workSpeedStat>SmithingSpeed</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
-    <workAmount>3000</workAmount>
+    <workAmount>2000</workAmount>
 	<workSkillLearnFactor>1.1</workSkillLearnFactor>
     <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
 <!-- 	<recipeUsers>
@@ -295,7 +295,7 @@
             <li>Jade</li>
           </thingDefs>
         </filter>
-        <count>25</count>
+        <count>15</count>
       </li>
     </ingredients>
     <products>
@@ -326,10 +326,10 @@
       <li>
         <filter>
           <thingDefs>
-            <li>TM_EStone_mpCost_minor</li>
+            <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>50</count>
       </li>
 	  <li>
         <filter>
@@ -337,7 +337,7 @@
             <li>Jade</li>
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>30</count>
       </li>
     </ingredients>
     <products>
@@ -360,7 +360,7 @@
     <workSpeedStat>SmithingSpeed</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
-    <workAmount>5000</workAmount>
+    <workAmount>8000</workAmount>
 	<workSkillLearnFactor>1.3</workSkillLearnFactor>
     <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
 	<recipeUsers>
@@ -370,10 +370,10 @@
       <li>
         <filter>
           <thingDefs>
-            <li>TM_EStone_mpCost</li>
+            <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>125</count>
       </li>
 	  <li>
         <filter>
@@ -405,7 +405,7 @@
     <workSpeedStat>SmithingSpeed</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
-    <workAmount>3000</workAmount>
+    <workAmount>2000</workAmount>
 	<workSkillLearnFactor>1.1</workSkillLearnFactor>
     <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
 <!-- 	<recipeUsers>
@@ -426,7 +426,7 @@
             <li>Jade</li>
           </thingDefs>
         </filter>
-        <count>25</count>
+        <count>15</count>
       </li>
     </ingredients>
     <products>
@@ -457,10 +457,10 @@
       <li>
         <filter>
           <thingDefs>
-            <li>TM_EStone_mpRegenRate_minor</li>
+            <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>50</count>
       </li>
 	  <li>
         <filter>
@@ -468,7 +468,7 @@
             <li>Jade</li>
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>30</count>
       </li>
     </ingredients>
     <products>
@@ -491,7 +491,7 @@
     <workSpeedStat>SmithingSpeed</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
-    <workAmount>5000</workAmount>
+    <workAmount>8000</workAmount>
 	<workSkillLearnFactor>1.3</workSkillLearnFactor>
     <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
 	<recipeUsers>
@@ -501,10 +501,10 @@
       <li>
         <filter>
           <thingDefs>
-            <li>TM_EStone_mpRegenRate</li>
+            <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>125</count>
       </li>
 	  <li>
         <filter>
@@ -537,7 +537,7 @@
     <workSpeedStat>SmithingSpeed</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
-    <workAmount>3000</workAmount>
+    <workAmount>2000</workAmount>
 	<workSkillLearnFactor>1.1</workSkillLearnFactor>
     <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
 <!-- 	<recipeUsers>
@@ -558,7 +558,7 @@
             <li>Jade</li>
           </thingDefs>
         </filter>
-        <count>25</count>
+        <count>15</count>
       </li>
     </ingredients>
     <products>
@@ -589,10 +589,10 @@
       <li>
         <filter>
           <thingDefs>
-            <li>TM_EStone_xpGain_minor</li>
+            <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>50</count>
       </li>
 	  <li>
         <filter>
@@ -600,7 +600,7 @@
             <li>Jade</li>
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>30</count>
       </li>
     </ingredients>
     <products>
@@ -623,7 +623,7 @@
     <workSpeedStat>SmithingSpeed</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
-    <workAmount>5000</workAmount>
+    <workAmount>8000</workAmount>
 	<workSkillLearnFactor>1.3</workSkillLearnFactor>
     <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
 	<recipeUsers>
@@ -633,10 +633,10 @@
       <li>
         <filter>
           <thingDefs>
-            <li>TM_EStone_xpGain</li>
+            <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>125</count>
       </li>
 	  <li>
         <filter>
@@ -668,7 +668,7 @@
     <workSpeedStat>SmithingSpeed</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
-    <workAmount>3000</workAmount>
+    <workAmount>2000</workAmount>
 	<workSkillLearnFactor>1.1</workSkillLearnFactor>
     <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
 <!-- 	<recipeUsers>
@@ -689,7 +689,7 @@
             <li>Jade</li>
           </thingDefs>
         </filter>
-        <count>25</count>
+        <count>15</count>
       </li>
     </ingredients>
     <products>
@@ -720,10 +720,10 @@
       <li>
         <filter>
           <thingDefs>
-            <li>TM_EStone_arcaneRes_minor</li>
+            <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>50</count>
       </li>
 	  <li>
         <filter>
@@ -731,7 +731,7 @@
             <li>Jade</li>
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>30</count>
       </li>
     </ingredients>
     <products>
@@ -754,7 +754,7 @@
     <workSpeedStat>SmithingSpeed</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
-    <workAmount>5000</workAmount>
+    <workAmount>8000</workAmount>
 	<workSkillLearnFactor>1.3</workSkillLearnFactor>
     <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
 	<recipeUsers>
@@ -764,10 +764,10 @@
       <li>
         <filter>
           <thingDefs>
-            <li>TM_EStone_arcaneRes</li>
+            <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>125</count>
       </li>
 	  <li>
         <filter>
@@ -800,7 +800,7 @@
     <workSpeedStat>SmithingSpeed</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
-    <workAmount>3000</workAmount>
+    <workAmount>2000</workAmount>
 	<workSkillLearnFactor>1.1</workSkillLearnFactor>
     <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
 <!-- 	<recipeUsers>
@@ -821,7 +821,7 @@
             <li>Jade</li>
           </thingDefs>
         </filter>
-        <count>25</count>
+        <count>15</count>
       </li>
     </ingredients>
     <products>
@@ -852,10 +852,10 @@
       <li>
         <filter>
           <thingDefs>
-            <li>TM_EStone_arcaneDmg_minor</li>
+            <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>50</count>
       </li>
 	  <li>
         <filter>
@@ -863,7 +863,7 @@
             <li>Jade</li>
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>30</count>
       </li>
     </ingredients>
     <products>
@@ -886,7 +886,7 @@
     <workSpeedStat>SmithingSpeed</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
-    <workAmount>5000</workAmount>
+    <workAmount>8000</workAmount>
 	<workSkillLearnFactor>1.3</workSkillLearnFactor>
     <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
 	<recipeUsers>
@@ -896,10 +896,10 @@
       <li>
         <filter>
           <thingDefs>
-            <li>TM_EStone_arcaneDmg</li>
+            <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>3</count>
+        <count>125</count>
       </li>
 	  <li>
         <filter>
@@ -943,7 +943,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>10</count>
+        <count>8</count>
       </li>
 	  <li>
         <filter>

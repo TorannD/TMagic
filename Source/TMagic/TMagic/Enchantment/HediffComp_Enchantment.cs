@@ -65,31 +65,31 @@ namespace TorannMagic.Enchantment
             //MagicPowerSkill focus = this.Pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_eff.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_eff_pwr");
             if (this.parent.def.defName == "TM_HediffEnchantment_maxMP")
             {
-                this.enchantment = (comp.maxMP * 100).ToString() + "%";
+                this.enchantment = (comp.maxMP * 100).ToString("0.##") + "%";
             }
             else if (this.parent.def.defName == "TM_HediffEnchantment_coolDown")
             {
-                this.enchantment = (comp.coolDown * 100).ToString() + "%";
+                this.enchantment = (comp.coolDown * 100).ToString("0.##") + "%";
             }
             else if (this.parent.def.defName == "TM_HediffEnchantment_mpCost")
             {
-                this.enchantment = (comp.mpCost * 100).ToString() + "%";
+                this.enchantment = (comp.mpCost * 100).ToString("0.##") + "%";
             }
             else if (this.parent.def.defName == "TM_HediffEnchantment_mpRegenRate")
             {
-                this.enchantment = (comp.mpRegenRate * 100).ToString() + "%";
+                this.enchantment = (comp.mpRegenRate * 100).ToString("0.##") + "%";
             }
             else if (this.parent.def.defName == "TM_HediffEnchantment_xpGain")
             {
-                this.enchantment = (comp.xpGain * 100).ToString() + "%";
+                this.enchantment = (comp.xpGain * 100).ToString("0.##") + "%";
             }
             else if (this.parent.def.defName == "TM_HediffEnchantment_arcaneRes")
             {
-                this.enchantment = (comp.arcaneRes * 100).ToString() + "%";
+                this.enchantment = (comp.arcaneRes * 100).ToString("0.##") + "%";
             }
             else if (this.parent.def.defName == "TM_HediffEnchantment_arcaneDmg")
             {
-                this.enchantment = (comp.arcaneDmg * 100).ToString() + "%";
+                this.enchantment = (comp.arcaneDmg * 100).ToString("0.##") + "%";
             }
             else if (this.parent.def.defName == "TM_HediffEnchantment_arcaneSpectre")
             {

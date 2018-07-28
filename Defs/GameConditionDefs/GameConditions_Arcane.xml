@@ -17,9 +17,9 @@
     <defName>ManaDrain</defName>
     <label>mana drain</label>
 		<category>Misc</category>
-    <targetTypes>
+    <targetTags>
       <li>Map_PlayerHome</li>
-    </targetTypes>
+    </targetTags>
     <workerClass>IncidentWorker_MakeGameCondition</workerClass>
     <gameCondition>ManaDrain</gameCondition>
     <letterLabel>Mana drain</letterLabel>
@@ -49,9 +49,9 @@
     <defName>ManaSurge</defName>
     <label>mana surge</label>
 		<category>Misc</category>
-    <targetTypes>
+    <targetTags>
       <li>Map_PlayerHome</li>
-    </targetTypes>
+    </targetTags>
     <workerClass>IncidentWorker_MakeGameCondition</workerClass>
     <gameCondition>ManaSurge</gameCondition>
     <letterLabel>Mana surge</letterLabel>
@@ -74,11 +74,11 @@
     <letterText>{0} has gotten sick from {1}.\n\nEnsure you have a medical bed and a doctor. Make sure that {2} gets proper treatment and spends as much time in bed as possible.  During this period {0} will be unable to gain mana.</letterText>
     <letterDef>NegativeEvent</letterDef>
 	<category>DiseaseHuman</category>
-    <targetTypes>
+    <targetTags>
       <li>Map_PlayerHome</li>
       <li>Map_TempIncident</li>
       <li>Caravan</li>
-    </targetTypes>
+    </targetTags>
 	  <diseaseIncident>TM_ArcaneSickness</diseaseIncident>
     <diseaseVictimFractionRange>
       <min>0.1</min>
@@ -99,9 +99,9 @@
     <defName>ElementalAssault</defName>
     <label>elemental assault</label>
 		<category>Misc</category>
-    <targetTypes>
+    <targetTags>
       <li>Map_PlayerHome</li>
-    </targetTypes>
+    </targetTags>
     <workerClass>TorannMagic.Conditions.IncidentWorker_ElementalAssault</workerClass>
     <gameCondition>ElementalAssault</gameCondition>
     <letterLabel>elemental assault</letterLabel>

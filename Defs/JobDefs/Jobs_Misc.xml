@@ -24,5 +24,18 @@
     <casualInterruptible>false</casualInterruptible>
   </JobDef>
   
+  <JobDef>
+    <defName>JobDriver_DoFor</defName>
+    <driverClass>TorannMagic.JobDriver_DoFor</driverClass>
+    <reportString>preparing attack</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  
+  <JobDef>
+    <defName>JobDriver_SummonDemon</defName>
+    <driverClass>TorannMagic.JobDriver_SummonDemon</driverClass>
+    <reportString>marking sacrifice</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
   
 </Defs>

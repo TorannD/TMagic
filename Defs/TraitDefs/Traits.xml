@@ -9,7 +9,7 @@
         <degreeDatas>
             <li>
                 <label>magically gifted</label>
-                <description>NAME has a magical gift. HE can harness this gift to become a mage by studying the mysterious secrets within an arcane script.</description>
+                <description>[PAWN_nameDef] has a magical gift. [PAWN_pronoun] can harness this gift to become a mage by studying the mysterious secrets within an arcane script.</description>
 						<degree>2</degree>
                 <statOffsets>
                     <MoveSpeed>.10</MoveSpeed>
@@ -49,7 +49,7 @@
 		<degreeDatas>	
 		  <li>
 			<label>Fire mage</label>
-			<description>NAME is attuned with the elements of fire.</description>
+			<description>[PAWN_nameDef] is attuned with the elements of fire.</description>
 			<degree>4</degree>
 				<statOffsets>
                     <MoveSpeed>.20</MoveSpeed>
@@ -57,7 +57,7 @@
                     <ImmunityGainSpeed>.4</ImmunityGainSpeed>
 					<PsychicSensitivity>0.20</PsychicSensitivity>
 					<MentalBreakThreshold>0.06</MentalBreakThreshold>
-					<ShootingAccuracy>-5</ShootingAccuracy>
+					<ShootingAccuracyPawn>-5</ShootingAccuracyPawn>
 					<ComfyTemperatureMax>+15</ComfyTemperatureMax>
 					<ComfyTemperatureMin>+7</ComfyTemperatureMin>
                 </statOffsets>
@@ -92,7 +92,7 @@
 		<degreeDatas>	
 		  <li>
 			<label>Ice mage</label>
-			<description>NAME is attuned with the elements of water.</description>
+			<description>[PAWN_nameDef] is attuned with the elements of water.</description>
 			<degree>4</degree>
 				<statOffsets>
 					<MentalBreakThreshold>-0.10</MentalBreakThreshold>
@@ -134,7 +134,7 @@
 		<degreeDatas>	
 		  <li>
 			<label>Lightning mage</label>
-			<description>NAME is attuned with the elements of lightning.</description>
+			<description>[PAWN_nameDef] is attuned with the elements of lightning.</description>
 				<degree>4</degree>
 				<statOffsets>
 					<MoveSpeed>.20</MoveSpeed>
@@ -174,14 +174,14 @@
 		<degreeDatas>	
 		  <li>
 			<label>Arcane mage</label>
-			<description>NAME is attuned with arcane forces, interacting directly with raw arcane power to move matter and energy at will.</description>
+			<description>[PAWN_nameDef] is attuned with arcane forces, interacting directly with raw arcane power to move matter and energy at will.</description>
 			<degree>4</degree>
 			<statOffsets>
 				<ResearchSpeed>0.10</ResearchSpeed>
 				<GlobalLearningFactor>.20</GlobalLearningFactor>
 				<MentalBreakThreshold>0.03</MentalBreakThreshold>
 				<SocialImpact>.10</SocialImpact>
-				<DiplomacyPower>.10</DiplomacyPower>
+				<NegotiationAbility>.10</NegotiationAbility>
 				<TradePriceImprovement>.10</TradePriceImprovement>
 				<PsychicSensitivity>1.0</PsychicSensitivity>
 				<TameAnimalChance>-0.20</TameAnimalChance>
@@ -218,7 +218,7 @@
 		<degreeDatas>	
 		  <li>
 			<label>Druid</label>
-			<description>NAME is attuned with the forces of nature.</description>
+			<description>[PAWN_nameDef] is attuned with the forces of nature.</description>
 			<degree>4</degree>
 			<statOffsets>
 				<ImmunityGainSpeed>0.3</ImmunityGainSpeed>
@@ -226,7 +226,7 @@
 				<TameAnimalChance>0.40</TameAnimalChance>
 				<TrainAnimalChance>0.20</TrainAnimalChance>
 				<SocialImpact>-.10</SocialImpact>
-				<DiplomacyPower>-.10</DiplomacyPower>
+				<NegotiationAbility>-.10</NegotiationAbility>
 				<TradePriceImprovement>-.10</TradePriceImprovement>
 				<AnimalGatherYield>.20</AnimalGatherYield>
 			</statOffsets>
@@ -261,7 +261,7 @@
 		<degreeDatas>	
 		  <li>
 			<label>Paladin</label>
-			<description>NAME has been bestowed with divine might and has sworn to uphold justice wherever HE stands.</description>
+			<description>[PAWN_nameDef] has been bestowed with divine might and has sworn to uphold justice wherever [PAWN_pronoun] stands.</description>
 			<degree>4</degree>
 			<statOffsets>
 				<MoveSpeed>.10</MoveSpeed>
@@ -302,14 +302,13 @@
 		<degreeDatas>	
 		  <li>
 			<label>Summoner</label>
-			<description>NAME is able to summon beings and materialize objects from other planes of existence.</description>
+			<description>[PAWN_nameDef] is able to summon beings and materialize objects from other planes of existence.</description>
 			<degree>4</degree>
 			<statOffsets>
 				<MoveSpeed>.10</MoveSpeed>
 				<ToxicSensitivity>0.10</ToxicSensitivity>
 				<ComfyTemperatureMin>-8</ComfyTemperatureMin>
 				<ComfyTemperatureMax>+8</ComfyTemperatureMax>
-				<RecruitPrisonerChance>.10</RecruitPrisonerChance>
 				<SocialImpact>.10</SocialImpact>
 			</statOffsets>
 		  </li>
@@ -343,7 +342,7 @@
 		<degreeDatas>	
 		  <li>
 			<label>Necromancer</label>
-			<description>NAME is attuned with the forces of death.</description>
+			<description>[PAWN_nameDef] is attuned with the forces of death.</description>
 			<degree>4</degree>
 			<statOffsets>
 				<MoveSpeed>-0.3</MoveSpeed>
@@ -353,7 +352,7 @@
 				<MentalBreakThreshold>-0.1</MentalBreakThreshold>
 				<GlobalLearningFactor>0.40</GlobalLearningFactor>
 				<TradePriceImprovement>-0.5</TradePriceImprovement>
-				<RecruitPrisonerChance>-.25</RecruitPrisonerChance>
+				<NegotiationAbility>-.25</NegotiationAbility>
 			</statOffsets>
 		  </li>
 		</degreeDatas>
@@ -395,7 +394,7 @@
 		<degreeDatas>	
 		  <li>
 			<label>Lich</label>
-			<description>NAME has transformed into a lich, forsaking life in exchange for an power and an immortal existence, choosing to employ undead for menial tasks.</description>
+			<description>[PAWN_nameDef] has transformed into a lich, forsaking life in exchange for an power and an immortal existence, choosing to employ undead for menial tasks.</description>
 			<degree>4</degree>
 			<statOffsets>
 				<MoveSpeed>-2</MoveSpeed>
@@ -405,7 +404,7 @@
 				<MentalBreakThreshold>-0.2</MentalBreakThreshold>
 				<GlobalLearningFactor>0.6</GlobalLearningFactor>
 				<TradePriceImprovement>-0.5</TradePriceImprovement>
-				<RecruitPrisonerChance>-.5</RecruitPrisonerChance>
+				<NegotiationAbility>-.5</NegotiationAbility>
 			</statOffsets>
 			<skillGains>
 			  <li>
@@ -459,7 +458,7 @@
 		<degreeDatas>	
 		  <li>
 			<label>Priest</label>
-			<description>NAME is attuned with the forces of life and healing and has taken a vow against harming others.</description>
+			<description>[PAWN_nameDef] is attuned with the forces of life and healing and has taken a vow against harming others.</description>
 			<degree>4</degree>
 			<statOffsets>
 				<MoveSpeed>0.15</MoveSpeed>
@@ -515,7 +514,7 @@
 		<degreeDatas>	
 		  <li>
 			<label>Undead</label>
-			<description>NAME has been reanimated as an undead.</description>
+			<description>[PAWN_nameDef] has been reanimated as an undead.</description>
 			<degree>0</degree>
 			<statOffsets>
 				<MoveSpeed>-2</MoveSpeed>
@@ -524,7 +523,7 @@
 				<ToxicSensitivity>-1</ToxicSensitivity>
 				<ImmunityGainSpeed>49</ImmunityGainSpeed>
 				<PainShockThreshold>0.90</PainShockThreshold>
-				<DiplomacyPower>-0.5</DiplomacyPower>
+				<NegotiationAbility>-0.5</NegotiationAbility>
 				<WorkSpeedGlobal>-0.40</WorkSpeedGlobal>
 			</statOffsets>
 		  </li>
@@ -541,12 +540,11 @@
 		  <li>
 			<label>Entertainer</label>
 			<commonality>0.1</commonality>
-			<description>NAME is a natural entertainer, able to lighten the mood and lift the spirits of everyone around HIM.</description>
+			<description>[PAWN_nameDef] is a natural entertainer, able to lighten the mood and lift the spirits of everyone around [PAWN_objective].</description>
 			<degree>0</degree>
 				<statOffsets>
-					<RecruitPrisonerChance>0.10</RecruitPrisonerChance>
 					<SocialImpact>0.10</SocialImpact>
-					<DiplomacyPower>0.20</DiplomacyPower>
+					<NegotiationAbility>0.20</NegotiationAbility>
 					<TradePriceImprovement>0.10</TradePriceImprovement>
                     <PainShockThreshold>-0.10</PainShockThreshold>
 					<CarryingCapacity>-0.10</CarryingCapacity>
@@ -556,12 +554,11 @@
 		  <li>
 			<label>Performer</label>
 			<commonality>0</commonality>
-			<description>NAME is a performer; expanding on natural talent, HE has begun to take an conscious role to improve the mood of other colonists.</description>
+			<description>[PAWN_nameDef] is a performer; expanding on natural talent, [PAWN_pronoun] has begun to take an conscious role to improve the mood of other colonists.</description>
 			<degree>1</degree>
 				<statOffsets>
-					<RecruitPrisonerChance>0.15</RecruitPrisonerChance>
 					<SocialImpact>0.20</SocialImpact>
-					<DiplomacyPower>0.30</DiplomacyPower>
+					<NegotiationAbility>0.30</NegotiationAbility>
 					<TradePriceImprovement>0.15</TradePriceImprovement>
                     <PainShockThreshold>-0.12</PainShockThreshold>
 					<CarryingCapacity>-0.15</CarryingCapacity>
@@ -571,12 +568,11 @@
 		  <li>
 			<label>Minstrel</label>
 			<commonality>0</commonality>
-			<description>Everyone loves being around NAME. HE has talent, wit and skill in many forms of entertainment and is able to make a personal connection with almost everyone.</description>
+			<description>Everyone loves being around [PAWN_nameDef]. [PAWN_pronoun] has talent, wit and skill in many forms of entertainment and is able to make a personal connection with almost everyone.</description>
 			<degree>2</degree>
 				<statOffsets>
-					<RecruitPrisonerChance>0.20</RecruitPrisonerChance>
 					<SocialImpact>0.30</SocialImpact>
-					<DiplomacyPower>0.35</DiplomacyPower>
+					<NegotiationAbility>0.35</NegotiationAbility>
 					<TradePriceImprovement>0.20</TradePriceImprovement>
                     <PainShockThreshold>-0.14</PainShockThreshold>
 					<CarryingCapacity>-0.18</CarryingCapacity>
@@ -586,12 +582,11 @@
 		  <li>
 			<label>Bard</label>
 			<commonality>0</commonality>
-			<description>NAME is a master entertainer. Sharp wit, deft hands, and dry humor are HIS weapons and HE is a master of all HIS weapons.</description>
+			<description>[PAWN_nameDef] is a master entertainer. Sharp wit, deft hands, and dry humor are [PAWN_possessive] weapons and [PAWN_pronoun] is a master of all [PAWN_possessive] weapons.</description>
 			<degree>3</degree>
 				<statOffsets>
-					<RecruitPrisonerChance>0.25</RecruitPrisonerChance>
 					<SocialImpact>0.35</SocialImpact>
-					<DiplomacyPower>0.40</DiplomacyPower>
+					<NegotiationAbility>0.40</NegotiationAbility>
 					<TradePriceImprovement>0.25</TradePriceImprovement>
                     <PainShockThreshold>-0.15</PainShockThreshold>
 					<CarryingCapacity>-0.20</CarryingCapacity>
@@ -628,7 +623,7 @@
         <degreeDatas>
             <li>
                 <label>physically adept</label>
-                <description>NAME is physically adept and has potential to learn special combat forms.</description>
+                <description>[PAWN_nameDef] is physically adept and has potential to learn special combat forms.</description>
 						<degree>2</degree>
                 <statOffsets>
                     <MoveSpeed>.20</MoveSpeed>
@@ -668,7 +663,7 @@
 		<degreeDatas>	
 		  <li>
 			<label>Gladiator</label>
-			<description>NAME has learned how to train the Gladiator combat style.</description>
+			<description>[PAWN_nameDef] has learned how to train the Gladiator combat style.</description>
 			<degree>4</degree>
 				<statOffsets>
                     <MoveSpeed>.20</MoveSpeed>
@@ -716,7 +711,7 @@
 		  <li>
 			<label>Woodsman</label>
 			<commonality>0.1</commonality>
-			<description>NAME is a trained woodsman; preferring the silence and lethality of a bow and armed with field-craft and cunning, HE is prepared to defend HIS land from invaders.</description>
+			<description>[PAWN_nameDef] is a trained woodsman; preferring the silence and lethality of a bow and armed with field-craft and cunning, [PAWN_pronoun] is prepared to defend [PAWN_possessive] land from invaders.</description>
 			<degree>0</degree>
 				<statOffsets>
 					<MoveSpeed>.15</MoveSpeed>
@@ -735,7 +730,7 @@
 		  <li>
 			<label>Hunter</label>
 			<commonality>0</commonality>
-			<description>NAME is a hunter; HE employs field-craft, cunning, and skill with a bow to defend HIS land from invaders.</description>
+			<description>[PAWN_nameDef] is a hunter; [PAWN_pronoun] employs field-craft, cunning, and skill with a bow to defend [PAWN_possessive] land from invaders.</description>
 			<degree>1</degree>
 				<statOffsets>
 					<MoveSpeed>.2</MoveSpeed>
@@ -754,7 +749,7 @@
 		  <li>
 			<label>Scout</label>
 			<commonality>0</commonality>
-			<description>NAME is a scout; comfortable in the wilds, and relied upon to be the eyes and ears of a colony.  HE employs expertise in field-craft, cunning, and the bow to defend HIS land from invaders.</description>
+			<description>[PAWN_nameDef] is a scout; comfortable in the wilds, and relied upon to be the eyes and ears of a colony. [PAWN_pronoun] employs expertise in field-craft, cunning, and the bow to defend [PAWN_possessive] land from invaders.</description>
 			<degree>2</degree>
 				<statOffsets>
 					<MoveSpeed>.25</MoveSpeed>
@@ -773,7 +768,7 @@
 		  <li>
 			<label>Ranger</label>
 			<commonality>0</commonality>
-			<description>NAME is a ranger; master of the wilds.  HE is a master of HIS craft and defender of HIS land.</description>
+			<description>[PAWN_nameDef] is a ranger; master of the wilds.  [PAWN_pronoun] is a master of [PAWN_possessive] craft and defender of [PAWN_possessive] land.</description>
 			<degree>3</degree>
 				<statOffsets>
 					<MoveSpeed>.3</MoveSpeed>
@@ -821,12 +816,12 @@
 		  <li>
 			<label>Sharpshooter</label>
 			<commonality>0.1</commonality>
-			<description>NAME has trained to become a sniper, skilled in the economy and accuracy of long range, small arms combat. Training to become a sniper has caused some colonists to be uncomfortable around HIM, not that HE cares.</description>
+			<description>[PAWN_nameDef] has trained to become a sniper, skilled in the economy and accuracy of long range, small arms combat. Training to become a sniper has caused some colonists to be uncomfortable around [PAWN_objective], not that [PAWN_pronoun] cares.</description>
 			<degree>0</degree>
 				<statOffsets>
 					<MoveSpeed>.10</MoveSpeed>
                     <AimingDelayFactor>-0.10</AimingDelayFactor>
-					<ShootingAccuracy>3</ShootingAccuracy>
+					<ShootingAccuracyPawn>3</ShootingAccuracyPawn>
 					<ResearchSpeed>-0.10</ResearchSpeed>
 					<WorkSpeedGlobal>-.10</WorkSpeedGlobal>
 					<TameAnimalChance>-.10</TameAnimalChance>
@@ -836,12 +831,12 @@
 		  <li>
 			<label>Sniper</label>
 			<commonality>0.0</commonality>
-			<description>NAME has trained to become a sniper, skilled in the economy and accuracy of long range, small arms combat. Becoming a sniper has caused HIM to become distanced from other colonists and somewhat unapproachable, not that HE cares.</description>
+			<description>[PAWN_nameDef] has trained to become a sniper, skilled in the economy and accuracy of long range, small arms combat. Becoming a sniper has caused [PAWN_objective] to become distanced from other colonists and somewhat unapproachable, not that [PAWN_pronoun] cares.</description>
 			<degree>1</degree>
 				<statOffsets>
 					<MoveSpeed>.15</MoveSpeed>
                     <AimingDelayFactor>-0.15</AimingDelayFactor>
-					<ShootingAccuracy>7</ShootingAccuracy>
+					<ShootingAccuracyPawn>7</ShootingAccuracyPawn>
 					<ResearchSpeed>-0.13</ResearchSpeed>
 					<WorkSpeedGlobal>-.13</WorkSpeedGlobal>
 					<TameAnimalChance>-.13</TameAnimalChance>
@@ -851,12 +846,12 @@
 		  <li>
 			<label>Master Sniper</label>
 			<commonality>0.0</commonality>
-			<description>NAME is a master sniper, skilled in the economy and accuracy of long range, small arms combat. Being a sniper has made HIM avoid other colonists, not that they care.</description>
+			<description>[PAWN_nameDef] is a master sniper, skilled in the economy and accuracy of long range, small arms combat. Being a sniper has made [PAWN_objective] avoid other colonists, not that they care.</description>
 			<degree>2</degree>
 				<statOffsets>
 					<MoveSpeed>.20</MoveSpeed>
                     <AimingDelayFactor>-0.22</AimingDelayFactor>
-					<ShootingAccuracy>11</ShootingAccuracy>
+					<ShootingAccuracyPawn>11</ShootingAccuracyPawn>
 					<ResearchSpeed>-0.15</ResearchSpeed>
 					<WorkSpeedGlobal>-.15</WorkSpeedGlobal>
 					<TameAnimalChance>-.15</TameAnimalChance>
@@ -866,12 +861,12 @@
 		  <li>
 			<label>Legendary Sniper</label>
 			<commonality>0.0</commonality>
-			<description>NAME is a legendary sniper, skilled in the economy and accuracy of long range, small arms combat.  Other colonists avoid eye contact and whisper in corners about how dangerous HE is.  HE quite likes it when they do.</description>
+			<description>[PAWN_nameDef] is a legendary sniper, skilled in the economy and accuracy of long range, small arms combat.  Other colonists avoid eye contact and whisper in corners about how dangerous [PAWN_pronoun] is and that suits [PAWN_objective] just fine.</description>
 			<degree>3</degree>
 				<statOffsets>
 					<MoveSpeed>.25</MoveSpeed>
                     <AimingDelayFactor>-0.30</AimingDelayFactor>
-					<ShootingAccuracy>15</ShootingAccuracy>
+					<ShootingAccuracyPawn>15</ShootingAccuracyPawn>
 					<ResearchSpeed>-0.16</ResearchSpeed>
 					<WorkSpeedGlobal>-.16</WorkSpeedGlobal>
 					<TameAnimalChance>-.16</TameAnimalChance>
@@ -909,34 +904,34 @@
 		  <li>
 			<label>Bladesman</label>
 			<commonality>0.1</commonality>
-			<description>NAME is training to become a master of the blade and excels at fighting in melee combat.</description>
+			<description>[PAWN_nameDef] is training to become a master of the blade and excels at fighting in melee combat.</description>
 			<degree>0</degree>
 				<statOffsets>
 					<MoveSpeed>.15</MoveSpeed>
                     <MentalBreakThreshold>-0.03</MentalBreakThreshold>
 					<MeleeHitChance>3</MeleeHitChance>
-					<ShootingAccuracy>-20</ShootingAccuracy>
+					<ShootingAccuracyPawn>-20</ShootingAccuracyPawn>
 					<WorkSpeedGlobal>-.10</WorkSpeedGlobal>
                 </statOffsets>
 		  </li>
 		  <li>
 			<label>Blademaster</label>
 			<commonality>0</commonality>
-			<description>NAME has trained to become a sword master, dangerously skilled in melee combat.</description>
+			<description>[PAWN_nameDef] has trained to become a sword master, dangerously skilled in melee combat.</description>
 			<degree>1</degree>
 				<statOffsets>
 					<MoveSpeed>.20</MoveSpeed>
                     <MentalBreakThreshold>-0.05</MentalBreakThreshold>
 					<MeleeHitChance>6</MeleeHitChance>
 					<MeleeDodgeChance>5</MeleeDodgeChance>
-					<ShootingAccuracy>-25</ShootingAccuracy>
+					<ShootingAccuracyPawn>-25</ShootingAccuracyPawn>
 					<WorkSpeedGlobal>-.12</WorkSpeedGlobal>
                 </statOffsets>
 		  </li>
 		  <li>
 			<label>Bladedancer</label>
 			<commonality>0</commonality>
-			<description>NAME is a blade dancer, highly skilled in melee combat.  Watching HECAP fight is like watching a dance, every action precise and flawless as it flows from one form into another.</description>
+			<description>[PAWN_nameDef] is a blade dancer, highly skilled in melee combat.  Watching [PAWN_objective] fight is like watching a dance, every action precise and flawless as it flows from one form into another.</description>
 			<degree>2</degree>
 				<statOffsets>
 					<MoveSpeed>.30</MoveSpeed>
@@ -944,14 +939,14 @@
 					<MeleeHitChance>10</MeleeHitChance>
 					<MeleeDodgeChance>10</MeleeDodgeChance>
 					<PainShockThreshold>0.05</PainShockThreshold>
-					<ShootingAccuracy>-28</ShootingAccuracy>
+					<ShootingAccuracyPawn>-28</ShootingAccuracyPawn>
 					<WorkSpeedGlobal>-.14</WorkSpeedGlobal>
                 </statOffsets>
 		  </li>
 		  <li>
 			<label>Legendary bladedancer</label>
 			<commonality>0</commonality>
-			<description>NAME has become a legend, HIS skill in melee combat is is known across the world.  HECAP's skill in combat makes it look as if each movement, each strike, is merely a stitch in a tapestry that depicts HIS victory.</description>
+			<description>[PAWN_nameDef] has become a legend, [PAWN_possessive] skill in melee combat is is known across the world.  [PAWN_possessive] skill in combat makes it look as if each movement, each strike, is merely a stitch in a tapestry that depicts [PAWN_possessive] victory.</description>
 			<degree>3</degree>
 				<statOffsets>
 					<MoveSpeed>.40</MoveSpeed>
@@ -959,7 +954,7 @@
 					<MeleeHitChance>15</MeleeHitChance>
 					<MeleeDodgeChance>15</MeleeDodgeChance>
 					<PainShockThreshold>0.10</PainShockThreshold>
-					<ShootingAccuracy>-30</ShootingAccuracy>
+					<ShootingAccuracyPawn>-30</ShootingAccuracyPawn>
 					<WorkSpeedGlobal>-.15</WorkSpeedGlobal>
                 </statOffsets>
 		  </li>
@@ -993,7 +988,7 @@
 		<degreeDatas>	
 		  <li>
 			<label>Faceless</label>
-			<description>NAME is a master of disguise and imitation; able to manipulate and capture the muscle and mental actions of another and release it as their own.</description>
+			<description>[PAWN_nameDef] is a master of disguise and imitation; able to manipulate and capture the muscle and mental actions of another and release it as their own.</description>
 			<degree>4</degree>
 				<statOffsets>
                     <MoveSpeed>.15</MoveSpeed>
@@ -1038,7 +1033,7 @@
 		<degreeDatas>	
 		  <li>
 			<label>Succubus</label>
-			<description>NAME has a strange genetic strain that grants her enhanced physical attributes. She is also extremely attractive with an exotic facial structure that captures the eye. A succubus is more likely to exploit her physical advantages and have others do her work for her. HIS succubus charm has its disadvantages and can cause some to become jealous and even despise HIM.</description>
+			<description>[PAWN_nameDef] has a strange genetic strain that grants her enhanced physical attributes. She is also extremely attractive with an exotic facial structure that captures the eye. A succubus is more likely to exploit her physical advantages and have others do her work for her. [PAWN_possessive] succubus charm has its disadvantages and can cause some to become jealous and even despise [PAWN_objective].</description>
 			<degree>4</degree>
 				<statOffsets>
                     <MoveSpeed>.20</MoveSpeed>
@@ -1085,7 +1080,7 @@
 		<degreeDatas>	
 		  <li>
 			<label>Warlock</label>
-			<description>NAME is a Warlock - able to manifest physical and demonic forces using his unique access to arcane power. The warlock shares the same genetic mixture as a succubus, but as a male, HE is affected with mental enhancements that include clairvoyance and telekineses. The warlock can occasionally affect the outcome of a social interaction using their mental capabilities, regardless of how the interaction actually occurred.</description>
+			<description>[PAWN_nameDef] is a Warlock - able to manifest physical and demonic forces using his unique access to arcane power. The warlock shares the same genetic mixture as a succubus, but as a male, [PAWN_pronoun] is affected with mental enhancements that include clairvoyance and telekineses. The warlock can occasionally affect the outcome of a social interaction using their mental capabilities, regardless of how the interaction actually occurred.</description>
 			<degree>4</degree>
 				<statOffsets>
                     <MoveSpeed>-.10</MoveSpeed>

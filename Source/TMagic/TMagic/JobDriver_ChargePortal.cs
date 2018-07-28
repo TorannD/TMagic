@@ -19,7 +19,7 @@ namespace TorannMagic
         int ticksTillEffects = 12;
         int duration = 1000;
 
-        public override bool TryMakePreToilReservations()
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
             return true;
         }

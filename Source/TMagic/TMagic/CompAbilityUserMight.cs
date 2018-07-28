@@ -744,7 +744,7 @@ namespace TorannMagic
                         this.AddPawnAbility(TorannMagicDefOf.TM_Sprint);
                         //this.AddPawnAbility(TorannMagicDefOf.TM_Fortitude);
                         this.AddPawnAbility(TorannMagicDefOf.TM_Grapple);
-                        this.AddPawnAbility(TorannMagicDefOf.TM_Cleave);
+                        //this.AddPawnAbility(TorannMagicDefOf.TM_Cleave);
                         this.AddPawnAbility(TorannMagicDefOf.TM_Whirlwind);
                     }
                     flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper);

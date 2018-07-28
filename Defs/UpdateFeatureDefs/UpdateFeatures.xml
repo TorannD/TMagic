@@ -5,50 +5,6 @@
 		<modIdentifier>ARimWorldOfMagic</modIdentifier>
 		<linkUrl>https://ludeon.com/forums/index.php?topic=37161.0</linkUrl>
 	</HugsLib.UpdateFeatureDef>	
-	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_1_9_6</defName>
-		<assemblyVersion>1.9.6</assemblyVersion>
-		<content>
-- The Paladin, Necromancer, and Summoner master spells have been added:
-
-Paladin - Holy Wrath: calls or a hammers of light to smash upon the land
-
-Necromancer - Lich Form: the necromancer steps further along the path of the dark mage by becoming an undead; by doing so, they lose interest in almost all mundane tasks but gain the Death Bolt and Flight powers
-The necromancer "Death Mark" power has been reworked. It now functions as a curse that will slow the attack speed of any enemy affected. The fear that Death Mark induces also becomes a source of power that the lich will use to empower Death Bolt
-Undead workspeeds have been reduced but will gain the benefits of the "Hastened Undead" skill towards global work speed
-
-Summoner - Summon Poppi: a curious creature that fights more ferociously than any other creature on the rim, a true demon in disguise
-
-- New stand-alone spell "Sun Light" - creates a node of light powerful enough to grow plants but places a continuous demand on the mage sustaining the light.
-
-- Ranger pets now require a cost to maintain; rangers will be more sensitive to the loss of their bonded companions.
-
-- Several new weapons to include the Thrumbo Axe, which is powerful enough to perform cleaving blows, and the Staff of the Defender that enables any mage to form temporary arcane barriers
-	
-- Special thanks to contributor Angry Wizard for improving many of the UI icons and Dianne for the Poppi graphics!
-	</content>
-	</HugsLib.UpdateFeatureDef>	
-	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_1_9_7</defName>
-		<assemblyVersion>1.9.7</assemblyVersion>
-		<content>
-- New Class: Bard (magic) - the bard utilizes a variety of social interaction and abilities to improve the morale and efficiency of other colonists. The bard is naturally skilled at social activities to include diplomacy, trade, and negotiations.
-Abilities:
-*Entertain - uses charm, wit, and humor to improve the mood of other colonists. This is a new social interaction (like chit chat or deep talk) that is always active (once learned) and is unique to the bard class. In addition, the bard may activate the 'entertain' ability to identify other colonists that are reaching their breaking points and attempt to improve their mood.
-*Inspire - another ability of the bard that works in the background (once learned) and will attempt to inspire nearby colonists.
-*Lullaby - the bard plays an enchanting lullaby that washes away consciousness of any pawns in the affected area.
-*Battle Hymn (master) - plays an exhilarating battle song that increases the fighting spirit of any nearby pawns. The effects of Battle Hymn build over time.
-
-- Three new stand-alone spells:
-*Cauterize Wounds (fire mage) - instantly cleans and tends any wounds on the target, but has a chance to cause burn scars.
-*Spell Mending (any mage) - Combines arcane power of the mage and physical energy of the target to repair the equipment worn by the target.
-*Fertile Lands (druid) - blesses a large area of land with the power of the druids that increases the growth rate of any plants within the area by 200%. This spell is maintained by the druid, and reduces mana regeneration by 40%.
-
-- As part of the Bard update, 6 new inspirations have been added: Learning (introspection), Social (outgoing), Farming, Mining, and two special inspirations unique to mage and fighter classes.
-
-- Mages that share a positive social standing can now exchange arcane knowledge as part of a Mentor/Student interaction. This allows less experienced mages to learn from those more experienced int he magical arts. 
-	</content>
-	</HugsLib.UpdateFeatureDef>	
 		<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
 		<defName>ARimWorldOfMagic_1_9_8</defName>
 		<assemblyVersion>1.9.8</assemblyVersion>
@@ -119,6 +75,21 @@ Abilities:
 
 - (Bug fixes) Blink no longer charges double the stated casting cost; you can no longer raise summoned/elemental creatures as undead; undead should no longer be sellable; Undead animals will no longer procreate; Necromancer/Lich will now correctly write their Unfinished Arcane Tomes.
 	</content>
+	</HugsLib.UpdateFeatureDef>	
+	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_2_2_1</defName>
+		<assemblyVersion>2.2.1</assemblyVersion>
+		<content>
+- Psychic Sensitivity now affects how powerful, and susceptible, a pawn is to magic.
+- The Warlock and Succubus classes have exhibit unique social behaviors.  The Succubus is a bit more friendly and the Warlock may cause emotions to 'bleed' from, or to, other pawns via psychic empathy.
+- A hidden combination ability has been added for Warlock and Succubus; not for the faint of heart.
+- The arcane mine now has a small proximity detection and should be much more responsive to enemies passing nearby.
+- The Bard class has been added to the random class pool.
+- Psychic Shock will only damage the mind of an enemy once, but applies a stronger stun to enemies and a weaker stun to friendlies.
+- Mod default settings for Magicyte rarity have been increased, in addition, most trader types will carry small amounts of magicyte for purchase (at higher costs than arcane vendors).
+- Enchanting gem recipe's have been changed to only require a flat raw magicyte amount. This will reduce the overall time and cost to craft higher tier gems.
+- Eye of the Storm master spell will discharge when it reaches its destination instead of just disappearing.
+		</content>
 	</HugsLib.UpdateFeatureDef>	
 	
 </Defs>

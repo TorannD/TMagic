@@ -195,7 +195,7 @@
 		  <PainShockThreshold>-.1</PainShockThreshold>
 		  <MeleeDodgeChance>-10</MeleeDodgeChance>
 		  <AimingDelayFactor>+0.20</AimingDelayFactor>
-		  <ShootingAccuracy>-20</ShootingAccuracy>
+		  <ShootingAccuracyPawn>-20</ShootingAccuracyPawn>
 	    </statOffsets>
       </li>      
 	</stages>
@@ -242,7 +242,7 @@
 		  <PainShockThreshold>-.05</PainShockThreshold>
 		  <MeleeDodgeChance>-5</MeleeDodgeChance>
 		  <AimingDelayFactor>+0.10</AimingDelayFactor>
-		  <ShootingAccuracy>-10</ShootingAccuracy>
+		  <ShootingAccuracyPawn>-10</ShootingAccuracyPawn>
 	    </statOffsets>
       </li>
 	</stages>
@@ -316,7 +316,7 @@
 		  <PainShockThreshold>0.05</PainShockThreshold>
 		  <MeleeDodgeChance>5</MeleeDodgeChance>
 		  <AimingDelayFactor>-0.10</AimingDelayFactor>
-		  <ShootingAccuracy>10</ShootingAccuracy>
+		  <ShootingAccuracyPawn>10</ShootingAccuracyPawn>
 	    </statOffsets>
       </li>
 	</stages>
@@ -363,7 +363,7 @@
 		  <PainShockThreshold>.1</PainShockThreshold>
 		  <MeleeDodgeChance>10</MeleeDodgeChance>
 		  <AimingDelayFactor>-0.20</AimingDelayFactor>
-		  <ShootingAccuracy>20</ShootingAccuracy>
+		  <ShootingAccuracyPawn>20</ShootingAccuracyPawn>
 	    </statOffsets>
       </li>      
 	</stages>
@@ -410,7 +410,7 @@
 		  <PainShockThreshold>.07</PainShockThreshold>
 		  <MeleeDodgeChance>7</MeleeDodgeChance>
 		  <AimingDelayFactor>-.25</AimingDelayFactor>
-		  <ShootingAccuracy>25</ShootingAccuracy>
+		  <ShootingAccuracyPawn>25</ShootingAccuracyPawn>
 	    </statOffsets>
       </li>
 	</stages>
@@ -457,7 +457,7 @@
 		  <PainShockThreshold>.09</PainShockThreshold>
 		  <MeleeDodgeChance>9</MeleeDodgeChance>
 		  <AimingDelayFactor>-.30</AimingDelayFactor>
-		  <ShootingAccuracy>30</ShootingAccuracy>
+		  <ShootingAccuracyPawn>30</ShootingAccuracyPawn>
 	    </statOffsets>
       </li>
 	</stages>
@@ -504,7 +504,7 @@
 		  <PainShockThreshold>.10</PainShockThreshold>
 		  <MeleeDodgeChance>10</MeleeDodgeChance>
 		  <AimingDelayFactor>-.35</AimingDelayFactor>
-		  <ShootingAccuracy>35</ShootingAccuracy>
+		  <ShootingAccuracyPawn>35</ShootingAccuracyPawn>
 	    </statOffsets>
       </li>
 	</stages>

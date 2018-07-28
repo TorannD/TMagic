@@ -1253,7 +1253,7 @@
           </li>
 		</capMods>
 		<statOffsets>
-		  <ShootingAccuracy>-.05</ShootingAccuracy>
+		  <ShootingAccuracyPawn>-.05</ShootingAccuracyPawn>
 		  <MeleeHitChance>-5</MeleeHitChance>
 		  <MeleeDodgeChance>-5</MeleeDodgeChance>
 		  <PainShockThreshold>-0.10</PainShockThreshold>
@@ -1282,7 +1282,7 @@
           </li>
 		</capMods>
 		<statOffsets>
-		  <ShootingAccuracy>-.07</ShootingAccuracy>
+		  <ShootingAccuracyPawn>-.07</ShootingAccuracyPawn>
 		  <MeleeHitChance>-7</MeleeHitChance>
 		  <MeleeDodgeChance>-7</MeleeDodgeChance>
 		  <PainShockThreshold>-0.12</PainShockThreshold>
@@ -1311,7 +1311,7 @@
           </li>
 		</capMods>
 		<statOffsets>
-		  <ShootingAccuracy>-.09</ShootingAccuracy>
+		  <ShootingAccuracyPawn>-.09</ShootingAccuracyPawn>
 		  <MeleeHitChance>-9</MeleeHitChance>
 		  <MeleeDodgeChance>-9</MeleeDodgeChance>
 		  <PainShockThreshold>-0.14</PainShockThreshold>
@@ -1340,7 +1340,7 @@
           </li>
 		</capMods>
 		<statOffsets>
-		  <ShootingAccuracy>-.10</ShootingAccuracy>
+		  <ShootingAccuracyPawn>-.10</ShootingAccuracyPawn>
 		  <MeleeHitChance>-10</MeleeHitChance>
 		  <MeleeDodgeChance>-10</MeleeDodgeChance>
 		  <PainShockThreshold>-0.15</PainShockThreshold>
@@ -1391,7 +1391,7 @@
           </li>
 		</capMods>
 		<statOffsets>
-		  <ShootingAccuracy>-.06</ShootingAccuracy>
+		  <ShootingAccuracyPawn>-.06</ShootingAccuracyPawn>
 		  <MeleeHitChance>-6</MeleeHitChance>
 		  <MeleeDodgeChance>-6</MeleeDodgeChance>
 		  <PainShockThreshold>-0.12</PainShockThreshold>
@@ -1420,7 +1420,7 @@
           </li>
 		</capMods>
 		<statOffsets>
-		  <ShootingAccuracy>-.08</ShootingAccuracy>
+		  <ShootingAccuracyPawn>-.08</ShootingAccuracyPawn>
 		  <MeleeHitChance>-8</MeleeHitChance>
 		  <MeleeDodgeChance>-8</MeleeDodgeChance>
 		  <PainShockThreshold>-0.14</PainShockThreshold>
@@ -1449,7 +1449,7 @@
           </li>
 		</capMods>
 		<statOffsets>
-		  <ShootingAccuracy>-.10</ShootingAccuracy>
+		  <ShootingAccuracyPawn>-.10</ShootingAccuracyPawn>
 		  <MeleeHitChance>-10</MeleeHitChance>
 		  <MeleeDodgeChance>-10</MeleeDodgeChance>
 		  <PainShockThreshold>-0.16</PainShockThreshold>
@@ -1478,7 +1478,7 @@
           </li>
 		</capMods>
 		<statOffsets>
-		  <ShootingAccuracy>-.12</ShootingAccuracy>
+		  <ShootingAccuracyPawn>-.12</ShootingAccuracyPawn>
 		  <MeleeHitChance>-12</MeleeHitChance>
 		  <MeleeDodgeChance>-12</MeleeDodgeChance>
 		  <PainShockThreshold>-0.18</PainShockThreshold>
@@ -1529,7 +1529,7 @@
           </li>
 		</capMods>
 		<statOffsets>
-		  <ShootingAccuracy>-.07</ShootingAccuracy>
+		  <ShootingAccuracyPawn>-.07</ShootingAccuracyPawn>
 		  <MeleeHitChance>-7</MeleeHitChance>
 		  <MeleeDodgeChance>-7</MeleeDodgeChance>
 		  <PainShockThreshold>-0.14</PainShockThreshold>
@@ -1558,7 +1558,7 @@
           </li>
 		</capMods>
 		<statOffsets>
-		  <ShootingAccuracy>-.09</ShootingAccuracy>
+		  <ShootingAccuracyPawn>-.09</ShootingAccuracyPawn>
 		  <MeleeHitChance>-9</MeleeHitChance>
 		  <MeleeDodgeChance>-9</MeleeDodgeChance>
 		  <PainShockThreshold>-0.18</PainShockThreshold>
@@ -1587,7 +1587,7 @@
           </li>
 		</capMods>
 		<statOffsets>
-		  <ShootingAccuracy>-.11</ShootingAccuracy>
+		  <ShootingAccuracyPawn>-.11</ShootingAccuracyPawn>
 		  <MeleeHitChance>-11</MeleeHitChance>
 		  <MeleeDodgeChance>-11</MeleeDodgeChance>
 		  <PainShockThreshold>-0.22</PainShockThreshold>
@@ -1616,7 +1616,7 @@
           </li>
 		</capMods>
 		<statOffsets>
-		  <ShootingAccuracy>-.13</ShootingAccuracy>
+		  <ShootingAccuracyPawn>-.13</ShootingAccuracyPawn>
 		  <MeleeHitChance>-13</MeleeHitChance>
 		  <MeleeDodgeChance>-13</MeleeDodgeChance>
 		  <PainShockThreshold>-0.26</PainShockThreshold>
@@ -1667,7 +1667,7 @@
           </li>
 		</capMods>
 		<statOffsets>
-		  <ShootingAccuracy>-.08</ShootingAccuracy>
+		  <ShootingAccuracyPawn>-.08</ShootingAccuracyPawn>
 		  <MeleeHitChance>-8</MeleeHitChance>
 		  <MeleeDodgeChance>-8</MeleeDodgeChance>
 		  <PainShockThreshold>-0.15</PainShockThreshold>
@@ -1696,7 +1696,7 @@
           </li>
 		</capMods>
 		<statOffsets>
-		  <ShootingAccuracy>-.10</ShootingAccuracy>
+		  <ShootingAccuracyPawn>-.10</ShootingAccuracyPawn>
 		  <MeleeHitChance>-10</MeleeHitChance>
 		  <MeleeDodgeChance>-10</MeleeDodgeChance>
 		  <PainShockThreshold>-0.20</PainShockThreshold>
@@ -1725,7 +1725,7 @@
           </li>
 		</capMods>
 		<statOffsets>
-		  <ShootingAccuracy>-.12</ShootingAccuracy>
+		  <ShootingAccuracyPawn>-.12</ShootingAccuracyPawn>
 		  <MeleeHitChance>-12</MeleeHitChance>
 		  <MeleeDodgeChance>-12</MeleeDodgeChance>
 		  <PainShockThreshold>-0.24</PainShockThreshold>
@@ -1754,13 +1754,196 @@
           </li>
 		</capMods>
 		<statOffsets>
-		  <ShootingAccuracy>-.14</ShootingAccuracy>
+		  <ShootingAccuracyPawn>-.14</ShootingAccuracyPawn>
 		  <MeleeHitChance>-14</MeleeHitChance>
 		  <MeleeDodgeChance>-14</MeleeDodgeChance>
 		  <PainShockThreshold>-0.28</PainShockThreshold>
 	    </statOffsets>
       </li>
 	</stages>
+  </HediffDef>
+  
+  <HediffDef>
+    <defName>TM_VitalityDrainHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Vitality Drain</label>
+    <defaultLabelColor>(0.6,0,0.3)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<minSeverity>0.001</minSeverity>
+	<maxSeverity>10.0</maxSeverity>
+	<isBad>false</isBad>
+	<initialSeverity>.5</initialSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-5</severityPerDay>
+      </li>
+    </comps>
+	<stages>
+      <li>
+        <label>Succubus</label>
+        <minSeverity>0.001</minSeverity>
+		<becomeVisible>true</becomeVisible>
+		<painFactor>0.5</painFactor>
+		<capMods>
+		  <li>
+			  <capacity>Moving</capacity>
+			  <offset>-0.2</offset>
+		  </li>
+		  <li>
+			  <capacity>Manipulation</capacity>
+			  <offset>-0.2</offset>
+		  </li>
+		</capMods>
+      </li>
+	</stages> 
+  </HediffDef>
+  
+  <ThoughtDef>
+    <defName>VitalityDrainTD</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>TM_VitalityDrainHD</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>Vitality Drain</label>
+        <description>That succubus was amazing - my worries are a dull memory and I feel relaxed, even a little lethargic.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <HediffDef>
+    <defName>TM_VitalityBoostHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Vitality Boost</label>
+    <defaultLabelColor>(0.6,0,0.3)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<minSeverity>0.001</minSeverity>
+	<maxSeverity>10.0</maxSeverity>
+	<isBad>false</isBad>
+	<initialSeverity>.5</initialSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-4</severityPerDay>
+      </li>
+    </comps>
+	<stages>
+      <li>
+        <label></label>
+        <minSeverity>0.001</minSeverity>
+		<becomeVisible>true</becomeVisible>
+		<capMods>
+		  <li>
+			  <capacity>Moving</capacity>
+			  <offset>0.15</offset>
+		  </li>
+		  <li>
+			  <capacity>Manipulation</capacity>
+			  <offset>0.2</offset>
+		  </li>
+		</capMods>
+      </li>
+	</stages> 
+  </HediffDef>
+  
+  <HediffDef>
+    <defName>TM_DemonHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Demonic Flames</label>
+    <defaultLabelColor>(1,0.65,0.2)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<minSeverity>0.001</minSeverity>
+	<maxSeverity>10</maxSeverity>
+	<isBad>false</isBad>
+	<initialSeverity>.5</initialSeverity>
+	<comps>
+	  <li>
+        <compClass>TorannMagic.HediffComp_Demon</compClass>
+      </li>	  
+    </comps>
+	<stages>
+      <li>
+        <label></label>
+        <minSeverity>0.001</minSeverity>
+		<becomeVisible>false</becomeVisible>
+		<capMods>
+		  <li>
+			  <capacity>Moving</capacity>
+			  <offset>0.10</offset>
+		  </li>
+		  <li>
+			  <capacity>Manipulation</capacity>
+			  <offset>0.10</offset>
+		  </li>
+		</capMods>		
+      </li>
+	  <li>
+        <label></label>
+        <minSeverity>1</minSeverity>
+		<becomeVisible>false</becomeVisible>
+		<capMods>
+		  <li>
+			  <capacity>Moving</capacity>
+			  <offset>0.30</offset>
+		  </li>
+		  <li>
+			  <capacity>Manipulation</capacity>
+			  <offset>0.30</offset>
+		  </li>
+		</capMods>		
+      </li>
+	  <li>
+        <label></label>
+        <minSeverity>2</minSeverity>
+		<becomeVisible>false</becomeVisible>
+		<capMods>
+		  <li>
+			  <capacity>Moving</capacity>
+			  <offset>0.666</offset>
+		  </li>
+		  <li>
+			  <capacity>Manipulation</capacity>
+			  <offset>0.666</offset>
+		  </li>
+		</capMods>		
+      </li>
+	</stages> 
+  </HediffDef>
+  
+  <HediffDef>
+    <defName>TM_DemonicPriceHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Soul Consumption</label>
+    <defaultLabelColor>(1,0.65,0.2)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<minSeverity>0.001</minSeverity>
+	<maxSeverity>10</maxSeverity>
+	<isBad>true</isBad>
+	<initialSeverity>.5</initialSeverity>
+	<comps>
+	  <li>
+        <compClass>TorannMagic.HediffComp_DemonicPrice</compClass>
+      </li>	  
+    </comps>
+	<stages>
+      <li>
+        <label></label>
+        <minSeverity>0.001</minSeverity>
+		<becomeVisible>true</becomeVisible>	
+      </li>
+	</stages> 
   </HediffDef>
   
 </Defs>

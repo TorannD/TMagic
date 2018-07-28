@@ -6,6 +6,7 @@ using RimWorld;
 using UnityEngine;
 using AbilityUser;
 using Verse;
+using Verse.AI;
 using Verse.Sound;
 
 namespace TorannMagic
@@ -16,8 +17,6 @@ namespace TorannMagic
     public class CompAbilityUserMagic : CompAbilityUser
     {
         public string LabelKey = "TM_Magic";
-
-                
 
         public bool firstTick = false;
         public bool magicPowersInitialized = false;
@@ -86,7 +85,7 @@ namespace TorannMagic
         private float SD_Attraction_eff = .08f;
         private float SD_Scorn_eff = .06f;
 
-        private float global_eff = 0.03f;
+        private float global_eff = 0.025f;
 
         public bool spell_Rain = false;
         public bool spell_Blink = false;
@@ -124,6 +123,7 @@ namespace TorannMagic
         public bool spell_ShadowCall = false;
         public bool spell_Scorn = false;
         public bool spell_PsychicShock = false;
+        public bool spell_SummonDemon = false;
 
         private bool item_StaffOfDefender = false;
 
@@ -148,6 +148,7 @@ namespace TorannMagic
         private int powerModifier = 0;
         private int maxPower = 10;
         public int nextEntertainTick = -1;
+        public int nextSuccubusLovinTick = -1;
 
         public int PowerModifier
         {
@@ -1028,6 +1029,20 @@ namespace TorannMagic
                             else if(this.Mana.CurLevel > this.Mana.MaxLevel)
                             {
                                 this.Mana.CurLevel = this.Mana.MaxLevel;
+                            }
+                        }
+                        if(Find.TickManager.TicksGame % 600 == 0)
+                        {
+                            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Warlock))
+                            {
+                                ResolveWarlockEmpathy();
+                            }
+                        }
+                        if(Find.TickManager.TicksGame % 2000 == 0)
+                        {
+                            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus))
+                            {
+                                ResolveSuccubusLovin();
                             }
                         }
                     }
@@ -3840,6 +3855,140 @@ namespace TorannMagic
             }            
         }
 
+        public void ResolveSuccubusLovin()
+        {
+            if(this.Pawn.CurrentBed() != null && !this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_VitalityBoostHD"), false))
+            {
+                Pawn pawnInMyBed = FindNearbyPawn(this.Pawn, 1);
+                if(pawnInMyBed != null)
+                {
+                    Job job = new Job(JobDefOf.Lovin, pawnInMyBed, this.Pawn.CurrentBed());
+                    this.Pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                    HealthUtility.AdjustSeverity(pawnInMyBed, HediffDef.Named("TM_VitalityDrainHD"), 8);
+                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_VitalityBoostHD"), 6);
+                }
+            }
+        }
+
+        public void ResolveWarlockEmpathy()
+        {
+            //strange bug observed where other pawns will get the old offset of the previous pawn's offset unless other pawn has no empathy existing
+            //in other words, empathy base mood effect seems to carry over from last otherpawn instead of using current otherpawn values
+            if (Rand.Chance(this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false) - 1))
+            {
+                Pawn otherPawn = this.FindNearbyPawn(this.Pawn, 5);
+                if (otherPawn != null)
+                {
+                    if (Rand.Chance(otherPawn.GetStatValue(StatDefOf.PsychicSensitivity, false) - .3f))
+                    {
+                        ThoughtHandler pawnThoughtHandler = new ThoughtHandler(this.Pawn);
+                        List<Thought> pawnThoughts = new List<Thought>();
+                        pawnThoughtHandler.GetAllMoodThoughts(pawnThoughts);
+                        List<Thought> otherThoughts = new List<Thought>();
+                        otherPawn.needs.mood.thoughts.GetAllMoodThoughts(otherThoughts);                        
+                        List<Thought_Memory> memoryThoughts = new List<Thought_Memory>();
+                        memoryThoughts.Clear();
+                        float oldMemoryOffset = 0;
+                        if (Rand.Chance(.3f)) //empathy absorbed by warlock
+                        {
+                            ThoughtDef empathyThought = ThoughtDef.Named("WarlockEmpathy");
+                            memoryThoughts = this.Pawn.needs.mood.thoughts.memories.Memories;
+                            for (int i = 0; i < memoryThoughts.Count; i++)
+                            {
+                                if (memoryThoughts[i].def.defName == "WarlockEmpathy")
+                                {
+                                    oldMemoryOffset = memoryThoughts[i].MoodOffset();
+                                    if (oldMemoryOffset > 30)
+                                    {
+                                        oldMemoryOffset = 30;
+                                    }
+                                    else if(oldMemoryOffset < -30)
+                                    {
+                                        oldMemoryOffset = -30;
+                                    }
+                                    this.Pawn.needs.mood.thoughts.memories.RemoveMemoriesOfDef(memoryThoughts[i].def);
+                                }
+                            }
+                            Thought transferThought = otherThoughts.RandomElement();
+                            float newOffset = Mathf.RoundToInt(transferThought.CurStage.baseMoodEffect / 2);
+                            empathyThought.stages.FirstOrDefault().baseMoodEffect = newOffset + oldMemoryOffset;
+                            
+                            this.Pawn.needs.mood.thoughts.memories.TryGainMemory(empathyThought, null);
+                            Vector3 drawPosOffset = this.Pawn.DrawPos;
+                            drawPosOffset.z += .3f;
+                            TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_ArcaneCircle"), drawPosOffset, this.Pawn.Map, newOffset / 20, .2f, .1f, .1f, Rand.Range(100, 200), 0, 0, Rand.Range(0, 360));
+                        }
+                        else //empathy bleeding to other pawn
+                        {
+                            ThoughtDef empathyThought = ThoughtDef.Named("PsychicEmpathy");
+                            memoryThoughts = otherPawn.needs.mood.thoughts.memories.Memories;
+                            for (int i = 0; i < memoryThoughts.Count; i++)
+                            {
+                                if (memoryThoughts[i].def.defName == "PsychicEmpathy")
+                                {
+                                    oldMemoryOffset = memoryThoughts[i].CurStage.baseMoodEffect;
+                                    if(oldMemoryOffset > 30)
+                                    {
+                                        oldMemoryOffset = 30;
+                                    }
+                                    else if (oldMemoryOffset < -30)
+                                    {
+                                        oldMemoryOffset = -30;
+                                    }
+                                    otherPawn.needs.mood.thoughts.memories.RemoveMemoriesOfDef(memoryThoughts[i].def);
+                                }
+                            }
+                            Thought transferThought = pawnThoughts.RandomElement();
+                            float newOffset = Mathf.RoundToInt(transferThought.CurStage.baseMoodEffect / 2);
+                            empathyThought.stages.FirstOrDefault().baseMoodEffect = newOffset + oldMemoryOffset;
+
+                            otherPawn.needs.mood.thoughts.memories.TryGainMemory(empathyThought, null);
+                            Vector3 drawPosOffset = otherPawn.DrawPos;
+                            drawPosOffset.z += .3f;
+                            TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_ArcaneCircle"), drawPosOffset, otherPawn.Map, newOffset / 20, .2f, .1f, .1f, Rand.Range(100, 200), 0, 0, Rand.Range(0, 360));
+                        }
+                    }
+                }
+            }
+        }
+
+        public Pawn FindNearbyPawn(Pawn pawn, int radius)
+        {
+            List<Pawn> pawnList = new List<Pawn>();
+            Pawn targetPawn = null;
+            pawnList.Clear();
+            int num = GenRadial.NumCellsInRadius(radius);
+            for (int i = 0; i < num; i++)
+            {
+                IntVec3 intVec = pawn.Position + GenRadial.RadialPattern[i];
+                if (intVec.InBounds(pawn.Map))
+                {
+                    targetPawn = intVec.GetFirstPawn(pawn.Map);
+                    if (targetPawn != null)
+                    {
+                        if (targetPawn != pawn && targetPawn.RaceProps.Humanlike && !targetPawn.HostileTo(pawn.Faction))
+                        {
+                            pawnList.Add(targetPawn);
+                            targetPawn = null;
+                        }
+                        else
+                        {
+                            targetPawn = null;
+                        }
+                    }
+
+                }
+            }
+            if(pawnList.Count > 0)
+            {
+                return pawnList.RandomElement();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public void ResolveSustainers()
         {
             if (this.summonedLights.Count > 0 && dismissSunlightSpell == false)
@@ -3971,6 +4120,47 @@ namespace TorannMagic
                         }
                     }
                 }
+
+                if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus) || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Warlock))
+                {
+                    if(this.soulBondPawn != null)
+                    {
+                        if(!this.soulBondPawn.Spawned)
+                        {
+                            this.RemovePawnAbility(TorannMagicDefOf.TM_SummonDemon);
+                            this.spell_SummonDemon = false;
+                        }
+                        else if(this.soulBondPawn.health.hediffSet.HasHediff(HediffDef.Named("TM_DemonicPriceHD"), false))
+                        {
+                            if(this.spell_SummonDemon == true)
+                            {
+                                this.RemovePawnAbility(TorannMagicDefOf.TM_SummonDemon);
+                                this.spell_SummonDemon = false;
+                            }
+                        }
+                        else if (this.soulBondPawn.health.hediffSet.HasHediff(HediffDef.Named("TM_SoulBondMentalHD")) && this.soulBondPawn.health.hediffSet.HasHediff(HediffDef.Named("TM_SoulBondPhysicalHD")))
+                        {
+                            if(this.spell_SummonDemon == false)
+                            {
+                                this.AddPawnAbility(TorannMagicDefOf.TM_SummonDemon);
+                                this.spell_SummonDemon = true;
+                            }
+                        }
+                        else
+                        {
+                            if (this.spell_SummonDemon == true)
+                            {
+                                this.RemovePawnAbility(TorannMagicDefOf.TM_SummonDemon);
+                                this.spell_SummonDemon = false;
+                            }
+                        }
+                    }
+                    else if(this.spell_SummonDemon == true)
+                    {
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_SummonDemon);
+                        this.spell_SummonDemon = false;
+                    }
+                }
             }
 
             if(this.IsMagicUser && !this.Pawn.Dead & !this.Pawn.Downed && this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
@@ -4100,13 +4290,15 @@ namespace TorannMagic
             _maxMP += (spirit.level * .04f);
             _mpRegenRate += (clarity.level * .05f);
             _mpCost += (focus.level * -.025f);
+            _arcaneRes += ((1 - this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false)) / 2);
+            _arcaneDmg += ((this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false) - 1) / 4);
             this.maxMP = 1f + _maxMP;
             this.mpRegenRate = 1f +  _mpRegenRate;
             this.coolDown = 1f + _coolDown;
             this.xpGain = 1f + _xpGain;
             this.mpCost = 1f + _mpCost;
-            this.arcaneRes = 1f + _arcaneRes;
-            this.arcaneDmg = 1f + _arcaneDmg;
+            this.arcaneRes = 1 + _arcaneRes;
+            this.arcaneDmg = 1 + _arcaneDmg;
             if (_maxMP != 0)
             {
                 HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_maxMP"), .5f);

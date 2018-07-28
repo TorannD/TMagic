@@ -18,7 +18,7 @@ namespace TorannMagic
         Building_TMPortal portalBldg; // = new Building_TMPortal();
         CompAbilityUserMagic comp;
 
-        public override bool TryMakePreToilReservations()
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
             return true;
         }

@@ -34,7 +34,7 @@ namespace TorannMagic
             vector.z = (float)this.hitThing.z;
             this.direction = Quaternion.LookRotation((vector - this.origin).normalized);
             float distance = Vector3.Distance(this.origin, vector);
-            this.boltMesh = TM_MeshMaker.NewBoltMesh(distance);
+            this.boltMesh = TM_MeshMaker.NewBoltMesh(distance, 6f);
             Graphics.DrawMesh(this.boltMesh, this.origin, this.direction, this.mat, 0);
         }
 
@@ -46,7 +46,7 @@ namespace TorannMagic
             vector.z = (float)this.hitThing.z;
             this.direction = Quaternion.LookRotation((vector - this.origin).normalized);
             float distance = Vector3.Distance(this.origin, vector);
-            this.boltMesh = TM_MeshMaker.NewBoltMesh(distance);
+            this.boltMesh = TM_MeshMaker.NewBoltMesh(distance, 6f);
             //Graphics.DrawMesh(this.boltMesh, this.origin, this.direction, this.mat, 0);
             Graphics.DrawMesh(this.boltMesh, this.origin, this.direction, FadedMaterialPool.FadedVersionOf(this.mat, (float)magnitude), 0);
         }

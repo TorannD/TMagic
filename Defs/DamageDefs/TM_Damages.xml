@@ -56,10 +56,10 @@
 	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Shadow</defName>
 		<label>Shadow</label>
-		<externalViolence>true</externalViolence>
+		<externalViolence>false</externalViolence>
 		<deathMessage>{0} was consumed by shadow.</deathMessage>
 		<hediff>TM_ShadowHD</hediff>
-		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
 		<defaultDamage>10</defaultDamage>
 		<armorCategory>Dark</armorCategory>
 		<explosionSnowMeltAmount>.5</explosionSnowMeltAmount>
@@ -456,7 +456,7 @@
 		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
 		<impactSoundType>Slice</impactSoundType>
 		<armorCategory>Sharp</armorCategory>
-		<defaultDamage>6</defaultDamage>
+		<defaultDamage>4</defaultDamage>
 		<explosionSnowMeltAmount>0</explosionSnowMeltAmount>
 		<explosionCellMote>Mote_SparkFlash</explosionCellMote>
 		<explosionColorEdge>(0.0, 0.2, 1.0, 0.8)</explosionColorEdge>

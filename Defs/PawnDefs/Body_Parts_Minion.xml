@@ -5,7 +5,7 @@
     <defName>Minion_Head</defName>
     <label>head</label>
     <hitPoints>40</hitPoints>
-    <permanentInjuryBaseChance>0.08</permanentInjuryBaseChance>
+    <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
     <canSuggestAmputation>false</canSuggestAmputation>
   </BodyPartDef>
@@ -14,7 +14,7 @@
     <defName>Minion_Brain</defName>
     <label>brain</label>
     <hitPoints>10</hitPoints>
-    <permanentInjuryBaseChance>1</permanentInjuryBaseChance>
+    <permanentInjuryChanceFactor>1</permanentInjuryChanceFactor>
 	<bleedRate>4</bleedRate>
     <skinCovered>false</skinCovered>
     <tags>
@@ -28,7 +28,7 @@
     <label>eye</label>
     <hitPoints>10</hitPoints>
     <skinCovered>false</skinCovered>
-	<permanentInjuryBaseChance>1</permanentInjuryBaseChance>
+	<permanentInjuryChanceFactor>1</permanentInjuryChanceFactor>
 	<frostbiteVulnerability>1</frostbiteVulnerability>
     <beautyRelated>true</beautyRelated>
 	<socketed>true</socketed>
@@ -41,7 +41,7 @@
     <defName>Minion_RightHorn</defName>
     <label>right horn</label>
     <hitPoints>20</hitPoints>
-    <permanentInjuryBaseChance>0.00</permanentInjuryBaseChance>
+    <permanentInjuryChanceFactor>0.00</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
     <beautyRelated>true</beautyRelated>
     <tags>
@@ -53,7 +53,7 @@
     <defName>Minion_LeftHorn</defName>
     <label>left horn</label>
     <hitPoints>20</hitPoints>
-    <permanentInjuryBaseChance>0.00</permanentInjuryBaseChance>
+    <permanentInjuryChanceFactor>0.00</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
     <beautyRelated>true</beautyRelated>
     <tags>
@@ -71,7 +71,7 @@
     <defName>Minion_LeftArm</defName>
     <label>left arm</label>
     <hitPoints>10</hitPoints>
-    <permanentInjuryBaseChance>0.08</permanentInjuryBaseChance>
+    <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
     <tags>
       <li>ManipulationLimbCore</li>
@@ -82,7 +82,7 @@
     <defName>Minion_RightArm</defName>
     <label>right arm</label>
     <hitPoints>10</hitPoints>
-    <permanentInjuryBaseChance>0.08</permanentInjuryBaseChance>
+    <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
     <tags>
       <li>ManipulationLimbCore</li>
@@ -93,7 +93,7 @@
     <defName>Minion_Mouth</defName>
     <label>mouth</label>
     <hitPoints>20</hitPoints>
-    <permanentInjuryBaseChance>0.08</permanentInjuryBaseChance>
+    <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
     <tags>
       <li>BreathingPathway</li>
@@ -107,7 +107,7 @@
     <defName>Minion_Jaw</defName>
     <label>jaw</label>
     <hitPoints>20</hitPoints>
-    <permanentInjuryBaseChance>0</permanentInjuryBaseChance>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
     <skinCovered>false</skinCovered>
     <solid>true</solid>
 	<bleedRate>0</bleedRate>
@@ -128,7 +128,7 @@
     <defName>Minion_Core</defName>
     <label>core</label>
     <hitPoints>20</hitPoints>
-    <permanentInjuryBaseChance>0.08</permanentInjuryBaseChance>
+    <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <bleedRate>5</bleedRate>
     <skinCovered>false</skinCovered>
     <tags>

@@ -88,6 +88,19 @@ namespace TorannMagic
                             Vector3 angle = GetVector(explosionCenters[i], curCell);
                             TM_MoteMaker.ThrowArcaneWaveMote(curCell.ToVector3(), pawn.Map, .2f * (curCell - explosionCenters[i]).LengthHorizontal, .1f, .05f, .3f, 0, 3, (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat(), (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat());
                             Pawn victim = curCell.GetFirstPawn(pawn.Map);
+
+                            if (victim != null && !victim.Dead)
+                            {
+                                if (victim.Faction != this.pawn.Faction)
+                                {
+                                    GenExplosion.DoExplosion(curCell, pawn.Map, .4f, DamageDefOf.Stun, this.launcher, Mathf.RoundToInt((4 * (this.def.projectile.GetDamageAmount(1, null) + pwrVal) * this.arcaneDmg)), 0, SoundDefOf.Crunch, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
+                                }
+                                else
+                                {
+                                    GenExplosion.DoExplosion(curCell, pawn.Map, .4f, DamageDefOf.Stun, this.launcher, Mathf.RoundToInt(((this.def.projectile.GetDamageAmount(1, null) + pwrVal) * this.arcaneDmg)), 0, SoundDefOf.Crunch, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
+                                }
+                            }
+
                             if (victim != null && !victim.Dead && victim.RaceProps.IsFlesh && Rand.Chance(victim.GetStatValue(StatDefOf.PsychicSensitivity, false)))
                             {
                                 if (!shockedPawns.Contains(victim))
@@ -95,18 +108,12 @@ namespace TorannMagic
                                     explosionCenters.Add(victim.Position);
                                     shockedPawns.Add(victim);
                                     explosionRadii.Add(1);
-                                }
-                                if(victim != pawn && victim.Faction != pawn.Faction && Rand.Chance(victim.GetStatValue(StatDefOf.PsychicSensitivity, false)))
-                                {
-                                    DoMentalDamage(victim);
+                                    if (victim != pawn && victim.Faction != pawn.Faction && Rand.Chance(victim.GetStatValue(StatDefOf.PsychicSensitivity, false)))
+                                    {
+                                        DoMentalDamage(victim);
+                                    }
                                 }
                             }
-
-                            if(victim != null && !victim.Dead)
-                            {
-                                GenExplosion.DoExplosion(curCell, pawn.Map, .4f, DamageDefOf.Stun, this.launcher, Mathf.RoundToInt((3*(this.def.projectile.GetDamageAmount(1,null) + pwrVal) * this.arcaneDmg)), 0, SoundDefOf.Crunch, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
-                            }
-
                         }
                     }
                     explosionRadii[i]++;
@@ -179,9 +186,9 @@ namespace TorannMagic
 
         public void damageEntities(Pawn victim, BodyPartRecord hitPart, int amt, DamageDef type)
         {
-            DamageInfo dinfo;
+            
             amt = (int)((float)amt * Rand.Range(.75f, 1.25f));
-            dinfo = new DamageInfo(type, amt, 0, (float)-1, pawn, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
+            DamageInfo dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Shadow, amt, 0, (float)-1, this.pawn, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
             dinfo.SetAllowDamagePropagation(false);
             victim.TakeDamage(dinfo);
             if (!victim.IsColonist && !victim.IsPrisoner && victim.Faction != null && !victim.Faction.HostileTo(pawn.Faction))

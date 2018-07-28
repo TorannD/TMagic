@@ -4,9 +4,9 @@
   <IncidentDef>
     <defName>ArcaneEnemyRaid</defName>
     <label>enemy arcane raiding party</label>
-    <targetTypes>
+    <targetTags>
       <li>Map_PlayerHome</li>
-    </targetTypes>
+    </targetTags>
     <workerClass>TorannMagic.IncidentWorker_ArcaneEnemyRaid</workerClass>
     <baseChance>0.0</baseChance>
     <category>ThreatBig</category>
@@ -17,9 +17,9 @@
 		<defName>QuestArcaneCamp</defName>
 		<label>arcane bandit camp opportunity</label>
 		<category>Misc</category>
-    <targetTypes>
+    <targetTags>
       <li>Map_PlayerHome</li>
-    </targetTypes>
+    </targetTags>
 		<workerClass>TorannMagic.IncidentWorker_QuestArcaneCamp</workerClass>
 		<letterLabel>Arcane bandits</letterLabel>
 		<letterText>{0}, {1} of {2}, has sent us a message.\n\nBandits based in a nearby camp have been raiding our caravans and have threatened to attack our village unless we turn over a magical heirloom. {1} humbly requests that you destroy the bandits and their camp, which means eliminating all enemies and turrets.\n\nIf you succeed, we will be in your debt, and we will also give you the heirloom... it has become more trouble than it is worth:\n\n{3}\n{4}\n{5}</letterText>
@@ -38,9 +38,9 @@
     <defName>MagicCaravanRequest</defName>
     <label>caravan request</label>
 		<category>Misc</category>
-		<targetTypes>
+		<targetTags>
 			<li>Map_PlayerHome</li>
-		</targetTypes>
+		</targetTags>
     <workerClass>TorannMagic.IncidentWorker_ArcaneScriptCaravan</workerClass>
     <baseChance>0.6</baseChance>
 		<minPopulation>4</minPopulation>

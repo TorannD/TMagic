@@ -138,7 +138,7 @@ namespace TorannMagic
 
         public void DoMapEvent()
         {
-            if(this.rnd < 2) //earth
+            if (this.rnd < 2) //earth
             {
                 //berserk random animal
                 List<Pawn> animalList = this.Map.mapPawns.AllPawnsSpawned;
@@ -203,7 +203,21 @@ namespace TorannMagic
 
         private bool IsGoodLocationForStrike(IntVec3 loc)
         {
-            return loc.InBounds(base.Map) && loc.IsValid && !loc.Fogged(base.Map) && !loc.GetRoof(base.Map).isThickRoof;
+            bool flag1 = loc.InBounds(base.Map);
+            bool flag2 = loc.IsValid;
+            bool flag3 = !loc.Fogged(base.Map);
+            if(flag1 && flag2 && flag3)
+            {
+                if(loc.Roofed(base.Map))
+                {
+                    if(loc.GetRoof(base.Map).isThickRoof)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            return false;
         }
 
         private bool IsGoodCenterLocation(IntVec2 loc)
@@ -219,7 +233,7 @@ namespace TorannMagic
                 if (num >= num2)
                 {
                     break;
-                }
+                }                
             }
 
             return num >= num2 && (IsGoodLocationForStrike(loc.ToIntVec3));

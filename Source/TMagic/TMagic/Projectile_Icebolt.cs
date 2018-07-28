@@ -40,7 +40,7 @@ namespace TorannMagic
             GenExplosion.DoExplosion(base.Position, map, 0.4f, TMDamageDefOf.DamageDefOf.Iceshard, this.launcher, Mathf.RoundToInt(this.def.projectile.GetDamageAmount(1,null) * this.arcaneDmg), 0, this.def.projectile.soundExplode, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
             CellRect cellRect = CellRect.CenteredOn(base.Position, 3);
             cellRect.ClipInsideMap(map);
-            for (int i = 0; i < Rand.Range((1 + verVal), (2 + 6*verVal)); i++)
+            for (int i = 0; i < Rand.Range((2 + verVal), (3 + 4*verVal)); i++)
             {
                 IntVec3 randomCell = cellRect.RandomCell;
                 if (pwrVal > 0)
@@ -65,7 +65,7 @@ namespace TorannMagic
         public void Explosion(int pwr, IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
         {
             System.Random rnd = new System.Random();
-            int modDamAmountRand = GenMath.RoundRandom(Rand.Range(pwr * 2, TMDamageDefOf.DamageDefOf.Iceshard.defaultDamage * pwr));  //6
+            int modDamAmountRand = GenMath.RoundRandom(Rand.Range(2 + pwr * 2, 5 + TMDamageDefOf.DamageDefOf.Iceshard.defaultDamage * pwr));  //4
             modDamAmountRand *= Mathf.RoundToInt(this.arcaneDmg);
             if (map == null)
             {

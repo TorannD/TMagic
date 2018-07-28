@@ -153,7 +153,12 @@
   <ThingDef ParentName="TM_BaseMeleeMageWeapon">
 		<defName>TM_ThrumboAxe</defName>
 		<label>thrumbo axe</label>
-		<description>An axe crafted using thrumbo horns that are fused together with a clasp made from magicyte. This clasp stores arcane potential and transfers it as physical force when the axe is swung, allowing it to deliver mighty blows capable of cleaving through multiple opponents. The shaft is also etched with magical runes to augment the wielder's arcane power.</description>
+		<description>An axe crafted using thrumbo horns that are fused together with a clasp made from magicyte. This clasp stores arcane potential and transfers it as physical force when the axe is swung, allowing it to deliver mighty blows capable of cleaving through multiple opponents. The shaft is also etched with magical runes to augment the wielder's arcane power.
+		
+This weapon is enchanted and provides additional benefits to trained mages:
+Max MP: +10%
+Arcane Dmg: +20%
+Arcane Res: +30%</description>
 		<graphicData>
 			<texPath>Items/weapons/thrumboaxe_etched_offset</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -169,7 +174,6 @@
 	  <MaxHitPoints>450</MaxHitPoints>
 	  <Flammability>1.0</Flammability>
 	  <DeteriorationRate>1</DeteriorationRate>
-      <Weapon_Bulk>1</Weapon_Bulk>
     </statBases>
     <costList>
       <Steel>100</Steel>
@@ -265,7 +269,12 @@
   <ThingDef ParentName="TM_BaseWand">
     <defName>TM_FireWand</defName>
     <label>Wand of Fire</label>
-    <description>A wand able to slowly convert nearby arcane energy into elemental fire. Wands are used as focusing tools for mages to harness their innate power more than as a weapon itself.</description>
+    <description>A wand able to slowly convert nearby arcane energy into elemental fire. Wands are used as focusing tools for mages to harness their innate power more than as a weapon itself.
+	
+This weapon is enchanted and provides additional benefits to trained mages:
+Max MP: +5%
+Mana Regen: +5%
+Arcane Dmg: +15%</description>
     <graphicData>
       <texPath>Items/weapons/wand_fir</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -280,7 +289,6 @@
       <AccuracyMedium>0.50</AccuracyMedium>
       <AccuracyLong>0.32</AccuracyLong>
       <RangedWeapon_Cooldown>1.8</RangedWeapon_Cooldown>
-      <Weapon_Bulk>.6</Weapon_Bulk>
     </statBases>
     <costList>
       <Steel>20</Steel>
@@ -345,7 +353,12 @@
   <ThingDef ParentName="TM_BaseWand">
     <defName>TM_IceWand</defName>
     <label>Wand of Ice</label>
-    <description>A wand able to slowly convert nearby arcane energy into elemental ice. Wands are used as focusing tools for mages to harness their innate power more than as a weapon itself.</description>
+    <description>A wand able to slowly convert nearby arcane energy into elemental ice. Wands are used as focusing tools for mages to harness their innate power more than as a weapon itself.
+	
+This weapon is enchanted and provides additional benefits to trained mages:
+Max MP: +5%
+Mana Regen: +5%
+Arcane Dmg: +15%</description>
     <graphicData>
       <texPath>Items/weapons/wand_ice</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -360,7 +373,6 @@
       <AccuracyMedium>0.76</AccuracyMedium>
       <AccuracyLong>0.70</AccuracyLong>
       <RangedWeapon_Cooldown>1.25</RangedWeapon_Cooldown>
-      <Weapon_Bulk>0.1</Weapon_Bulk>
     </statBases>
 		<comps>
 		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
@@ -430,7 +442,12 @@
 	<ThingDef ParentName="TM_BaseWand">
     <defName>TM_LightningWand</defName>
     <label>Wand of Lightning</label>
-    <description>A wand able to slowly convert nearby arcane energy into elemental lightning. Wands are used as focusing tools for mages to harness their innate power more than as a weapon itself.</description>
+    <description>A wand able to slowly convert nearby arcane energy into elemental lightning. Wands are used as focusing tools for mages to harness their innate power more than as a weapon itself.
+
+This weapon is enchanted and provides additional benefits to trained mages:
+Max MP: +5%
+Mana Regen: +5%
+Arcane Dmg: +15%</description>
     <graphicData>
       <texPath>Items/weapons/wand_lit</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -511,7 +528,12 @@
   <ThingDef ParentName="TM_BaseRangedMageWeapon">
     <defName>TM_BlazingPowerStaff</defName>
     <label>Staff of Blazing Power</label>
-    <description>A staff that creates a mental link with the wielder to harness focused energy that can be used to launch a stream of blazing projectiles or create a hardened barrier that can deflect projectiles. Mages gain tremendous boosts to magical spells while wielding this staff but to a mundane pawn it is nothing but a blunt weapon.</description>
+    <description>A staff that creates a mental link with the wielder to harness focused energy that can be used to launch a stream of blazing projectiles or create a hardened barrier around the wielder that can deflect projectiles. Mages gain tremendous boosts to magical spells while wielding this staff but to a mundane pawn it is nothing but a blunt weapon.
+
+This weapon is enchanted and provides additional benefits to trained mages:
+Max MP: +20%
+Mana Regen: +10%
+Arcane Dmg: +40%</description>
     <graphicData>
       <texPath>Items/weapons/staff_blazingpower</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -526,7 +548,6 @@
       <AccuracyMedium>0.58</AccuracyMedium>
       <AccuracyLong>0.51</AccuracyLong>
       <RangedWeapon_Cooldown>3.5</RangedWeapon_Cooldown>
-      <Weapon_Bulk>2</Weapon_Bulk>
     </statBases>
     <costList>
       <Steel>100</Steel>
@@ -586,7 +607,7 @@
 				<defaultProjectile>Projectile_BlazingPower</defaultProjectile>
 				<warmupTime>0</warmupTime>
 				<range>40</range>
-				<muzzleFlashScale>25</muzzleFlashScale>
+				<muzzleFlashScale>9</muzzleFlashScale>
 			</DeflectVerb>			
 		  </li>
 	</comps>
@@ -600,7 +621,7 @@
         <range>40</range>
         <soundCast>TM_Woosh</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
-        <muzzleFlashScale>25</muzzleFlashScale>
+        <muzzleFlashScale>9</muzzleFlashScale>
 		<burstShotCount>7</burstShotCount>
 		<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
       </li>
@@ -647,7 +668,14 @@
   <ThingDef ParentName="TM_BaseRangedMageWeapon">
     <defName>TM_DefenderStaff</defName>
     <label>Staff of the Defender</label>
-    <description>A staff crafted from an ancient design bearing a palpable aura of wisdom. This staff is able to tap into the spirit realm and allow the wielder to communicate with their ancestral spirits who can manifest their power in the form of a physical barrier. The energy to perform this action comes from the spirits themselves and does not draw mana from the user, though the spirits require time to rest between requests.</description>
+    <description>A staff crafted from an ancient design bearing a palpable aura of wisdom. This staff is able to tap into the spirit realm and allow the wielder to communicate with their ancestral spirits who can manifest their power in the form of a physical barrier. The energy to perform this action comes from the spirits themselves and does not draw mana from the user, though the spirits require time to rest between requests.
+
+This weapon is enchanted and provides additional benefits to trained mages:
+Max MP: +30%
+Mana Regen: +20%
+Arcane Res: +20%
+
+Augmentation adds ability: Arcane Barrier</description>
     <graphicData>
       <texPath>Items/weapons/staff_elements</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -662,7 +690,6 @@
       <AccuracyMedium>0.66</AccuracyMedium>
       <AccuracyLong>0.56</AccuracyLong>
       <RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
-      <Weapon_Bulk>2</Weapon_Bulk>
     </statBases>
     <costList>
       <Steel>100</Steel>
@@ -717,7 +744,7 @@
         <range>40</range>
         <soundCast>TM_Woosh</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
-        <muzzleFlashScale>25</muzzleFlashScale>
+        <muzzleFlashScale>7</muzzleFlashScale>
 		<burstShotCount>5</burstShotCount>
 		<ticksBetweenBurstShots>15</ticksBetweenBurstShots>
       </li>
@@ -780,7 +807,6 @@
       <AccuracyMedium>0.50</AccuracyMedium>
       <AccuracyLong>0.32</AccuracyLong>
       <RangedWeapon_Cooldown>1.38</RangedWeapon_Cooldown>
-      <Weapon_Bulk>0.1</Weapon_Bulk>
     </statBases>
 	<destroyOnDrop>true</destroyOnDrop>
 	<tradeability>None</tradeability>
@@ -847,7 +873,6 @@
       <AccuracyMedium>0.81</AccuracyMedium>
       <AccuracyLong>0.76</AccuracyLong>
       <RangedWeapon_Cooldown>0.68</RangedWeapon_Cooldown>
-      <Weapon_Bulk>0.1</Weapon_Bulk>
     </statBases>
 	<destroyOnDrop>true</destroyOnDrop>
 	<tradeability>None</tradeability>
@@ -920,7 +945,6 @@
       <AccuracyMedium>0.89</AccuracyMedium>
       <AccuracyLong>0.81</AccuracyLong>
       <RangedWeapon_Cooldown>1.11</RangedWeapon_Cooldown>
-      <Weapon_Bulk>0.1</Weapon_Bulk>
     </statBases>
 	<destroyOnDrop>true</destroyOnDrop>
 	<tradeability>None</tradeability>

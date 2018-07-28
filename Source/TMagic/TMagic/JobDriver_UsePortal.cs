@@ -11,7 +11,7 @@ namespace TorannMagic
         private const TargetIndex building = TargetIndex.A;
         Building_TMPortal portalBldg = new Building_TMPortal();
 
-        public override bool TryMakePreToilReservations()
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
             return true;
         }

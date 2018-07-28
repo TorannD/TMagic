@@ -10,7 +10,6 @@ namespace TorannMagic
         public override void DoEffect(Pawn user)
         {
             CompAbilityUserMight comp = user.GetComp<CompAbilityUserMight>();
-            MightPower mightPower;
 
             if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Faceless) || user.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || user.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || user.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Ranger))))
             {

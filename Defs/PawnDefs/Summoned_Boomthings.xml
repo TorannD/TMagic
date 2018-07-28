@@ -81,7 +81,8 @@
 	  <hasGenders>true</hasGenders>
 	  <manhunterOnDamageChance>0</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0</manhunterOnTameFailChance>
-	  <intelligence>ToolUser</intelligence>	
+	  <trainability>None</trainability>
+	  <!-- <intelligence>ToolUser</intelligence>	 -->
       <lifeStageAges>
         <li>
           <def>AnimalBaby</def>

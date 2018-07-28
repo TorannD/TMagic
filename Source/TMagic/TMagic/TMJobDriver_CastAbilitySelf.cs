@@ -18,10 +18,10 @@ namespace TorannMagic
             Toil toil1 = new Toil()
             {
                 initAction = () => {
-                    if (curJob.UseAbilityProps.isViolent)
-                    {
-                        JobDriver_CastAbilityVerb.CheckForAutoAttack(this.pawn);
-                    }
+                    //if (curJob.UseAbilityProps.isViolent)
+                    //{
+                    //    JobDriver_CastAbilityVerb.CheckForAutoAttack(this.pawn);
+                    //}
                 },
                 defaultCompleteMode = ToilCompleteMode.Instant
             };

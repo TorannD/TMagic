@@ -354,6 +354,8 @@ namespace TorannMagic
         public static TMAbilityDef TM_Scorn;
         public static TMAbilityDef TM_PsychicShock;
         public static TMAbilityDef TM_SummonDemon;
+        public static ThingDef FlyingObject_DemonFlight;
+        public static ThingDef TM_DemonR;
 
         //Might 
         public static NeedDef TM_Stamina;
@@ -541,6 +543,8 @@ namespace TorannMagic
         public static JobDef JobDriver_EnchantItem;
         public static JobDef JobDriver_SleepNow;
         public static JobDef JobDriver_Entertain;
+        public static JobDef JobDriver_DoFor;
+        public static JobDef JobDriver_SummonDemon;
 
         //Magicyte
         public static ThingDef RawMagicyte;
@@ -555,7 +559,7 @@ namespace TorannMagic
         public static SoundDef TM_Launch;
         public static SoundDef TM_SoftExplosion;
         public static SoundDef TM_BattleHymnSD;
-        
+        public static SoundDef TM_DemonDeath;
 
         //Inspirations
         public static InspirationDef ID_Champion;

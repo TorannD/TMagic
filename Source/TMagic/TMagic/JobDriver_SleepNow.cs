@@ -11,7 +11,7 @@ namespace TorannMagic
     internal class JobDriver_SleepNow : JobDriver
     {
 
-        public override bool TryMakePreToilReservations()
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
             return true;
         }

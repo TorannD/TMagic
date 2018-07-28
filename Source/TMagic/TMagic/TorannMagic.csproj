@@ -51,9 +51,6 @@
       <HintPath>..\..\..\..\JecsTools-master\Assemblies\CompDeflector.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="CompLumbering">
-      <HintPath>..\..\..\..\JecsTools-master\Assemblies\CompLumbering.dll</HintPath>
-    </Reference>
     <Reference Include="HugsLib">
       <HintPath>..\..\..\..\..\..\..\workshop\content\294100\1417078111\Assemblies\HugsLib.dll</HintPath>
       <Private>False</Private>
@@ -76,6 +73,7 @@
   <ItemGroup>
     <Compile Include="AbilityDecisionConditionalNode_EnemyTargetIsBuilding.cs" />
     <Compile Include="AbilityWorker_TargetCorpse.cs" />
+    <Compile Include="Building_ProximityTrap.cs" />
     <Compile Include="Building_TMBarrier.cs" />
     <Compile Include="Building_TMSunlight.cs" />
     <Compile Include="Building_TMCooler.cs" />
@@ -83,6 +81,20 @@
     <Compile Include="Building_TMElementalRift.cs" />
     <Compile Include="Building_TMPortal.cs" />
     <Compile Include="Building_PoisonTrap.cs" />
+    <Compile Include="TM_MatPool.cs" />
+    <Compile Include="HediffComp_DemonicPrice.cs" />
+    <Compile Include="TM_WeatherEvent_MeshFlash.cs" />
+    <Compile Include="CompAIController.cs" />
+    <Compile Include="CompProperties_AIController.cs" />
+    <Compile Include="Demon_DeathWorker.cs" />
+    <Compile Include="FlyingObject_Advanced.cs" />
+    <Compile Include="FlyingObject_DemonFlight.cs" />
+    <Compile Include="HediffComp_Demon.cs" />
+    <Compile Include="JobDriver_SummonDemon.cs" />
+    <Compile Include="JobDriver_DoFor.cs" />
+    <Compile Include="Projectile_SummonDemon.cs" />
+    <Compile Include="Thoughts\ThoughtWorker_TM_MaleOpinionOfSuccubus.cs" />
+    <Compile Include="Thoughts\ThoughtWorker_TM_FemaleOpinionOfSuccubus.cs" />
     <Compile Include="TM_RenderQueue.cs" />
     <Compile Include="Effect_ShadowBolt.cs" />
     <Compile Include="FlyingObject_Spinning.cs" />
@@ -108,11 +120,13 @@
     <Compile Include="Thoughts\InteractionWorker_MightLore.cs" />
     <Compile Include="Verb_Dominate.cs" />
     <Compile Include="Verb_ShadowStep.cs" />
+    <Compile Include="Verb_ClawSweep.cs" />
     <Compile Include="Verb_SoulBond.cs" />
     <Compile Include="Verb_Reversal.cs" />
     <Compile Include="Verb_Mimic.cs" />
     <Compile Include="Verb_Disguise.cs" />
     <Compile Include="Verb_ShadowCall.cs" />
+    <Compile Include="Verb_SummonDemon.cs" />
     <Compile Include="Verb_Transpose.cs" />
     <Compile Include="Verb_CauterizeWound.cs" />
     <Compile Include="Verb_DismissFertileLands.cs" />

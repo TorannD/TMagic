@@ -149,35 +149,15 @@ namespace TorannMagic
             bool spawned = flyingThing.Spawned;
             pawn = launcher as Pawn;
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
-            foreach (MagicPower current in comp.MagicData.MagicPowersN)
-            {
-                if ((current.abilityDef == TorannMagicDefOf.TM_DeathBolt || current.abilityDef == TorannMagicDefOf.TM_DeathBolt_I || current.abilityDef == TorannMagicDefOf.TM_DeathBolt_II || current.abilityDef == TorannMagicDefOf.TM_DeathBolt_III))
-                {
-                    if (current.level == 0)
-                    {
-                        this.radius = 1.4f;
-                    }
-                    else if (current.level == 1)
-                    {
-                        this.radius = 2f;
-                    }
-                    else if (current.level == 2)
-                    {
-                        this.radius = 2f;
-                    }
-                    else
-                    {
-                        this.radius = 2.4f;
-                    }
-                }
-            }
+
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
 
             this.arcaneDmg = comp.arcaneDmg;
-            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             MagicPowerSkill pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ShadowBolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ShadowBolt_pwr");
             MagicPowerSkill ver = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ShadowBolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ShadowBolt_ver");
             verVal = ver.level;
             pwrVal = pwr.level;
+            
             if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
                 MightPowerSkill mpwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");

@@ -19,12 +19,13 @@
       <ComfyTemperatureMin>-200</ComfyTemperatureMin>
       <ComfyTemperatureMax>200</ComfyTemperatureMax>
 	  <MeatAmount>0</MeatAmount>
+	  <MarketValue>0</MarketValue>
     </statBases>
 	<inspectorTabs>
       <li>ITab_Pawn_Health</li>
 	  <li>ITab_Pawn_Needs</li>
       <li>ITab_Pawn_Character</li>
-	  <li>ITab_Pawn_Combat</li>
+	  <li>ITab_Pawn_Log</li>
     </inspectorTabs>
     <race>
       <body>Elemental</body>
@@ -34,7 +35,8 @@
       <predator>true</predator>
       <foodType>OmnivoreAnimal</foodType>
       <baseHungerRate>0.00</baseHungerRate>	  
-	  <intelligence>ToolUser</intelligence>
+<!-- 	  <intelligence>ToolUser</intelligence> -->
+	  <trainability>None</trainability>
       <thinkTreeConstant>TM_Elemental_AI_Constant</thinkTreeConstant>
       <thinkTreeMain>TM_Elemental_AI</thinkTreeMain>
       <meatLabel>elemental dust</meatLabel>

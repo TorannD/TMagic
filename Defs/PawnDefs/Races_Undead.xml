@@ -56,7 +56,6 @@
         <power>5</power>
         <cooldownTime>1.8</cooldownTime>
         <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
-        <commonality>0.2</commonality>
       </li>
     </tools>
     <race>

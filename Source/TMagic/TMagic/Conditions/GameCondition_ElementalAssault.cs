@@ -4,7 +4,6 @@ using System.Diagnostics;
 using UnityEngine;
 using Verse;
 using RimWorld;
-using UnityEngine;
 
 namespace TorannMagic.Conditions
 {
@@ -39,12 +38,12 @@ namespace TorannMagic.Conditions
 
         public override void Init()
         {           
-            base.Init();
-            this.disabled = false;
-            this.FindGoodCenterLocation();
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             if (settingsRef.riftChallenge > 0)
             {
+                base.Init();
+                this.disabled = false;
+                this.FindGoodCenterLocation();
                 this.thing = ThingMaker.MakeThing(ThingDef.Named("TM_ElementalRift"), ThingDefOf.BlocksGranite);
                 GenSpawn.Spawn(thing, centerLocation.ToIntVec3, this.SingleMap, Rot4.North, WipeMode.Vanish, false);
                 Faction faction = Find.FactionManager.FirstFactionOfDef(FactionDef.Named("TM_ElementalFaction"));

@@ -23,19 +23,24 @@ namespace TorannMagic.Enchantment
             InspectTabBase sharedInstance = InspectTabManager.GetSharedInstance(typeFromHandle);            
             foreach (ThingDef current in enumerable)
             {
-                CompProperties_EnchantedItem item = new CompProperties_EnchantedItem
+                //if (current.defName != "TM_ThrumboAxe" && current.defName != "TM_FireWand" && current.defName != "TM_IceWand" && current.defName != "TM_LightningWand" &&
+                //    current.defName != "TM_BlazingPowerStaff" && current.defName != "TM_DefenderStaff")
+                if(!current.defName.Contains("TM_"))
                 {
-                    compClass = typeof(CompEnchantedItem)
-                };
-                current.comps.Add(item);
+                    CompProperties_EnchantedItem item = new CompProperties_EnchantedItem
+                    {
+                        compClass = typeof(CompEnchantedItem)
+                    };
+                    current.comps.Add(item);
 
-                if (current.inspectorTabs == null || current.inspectorTabs.Count == 0)
-                {
-                    current.inspectorTabs = new List<Type>();
-                    current.inspectorTabsResolved = new List<InspectTabBase>();
+                    if (current.inspectorTabs == null || current.inspectorTabs.Count == 0)
+                    {
+                        current.inspectorTabs = new List<Type>();
+                        current.inspectorTabsResolved = new List<InspectTabBase>();
+                    }
+                    current.inspectorTabs.Add(typeFromHandle);
+                    current.inspectorTabsResolved.Add(sharedInstance);
                 }
-                current.inspectorTabs.Add(typeFromHandle);
-                current.inspectorTabsResolved.Add(sharedInstance);
             }
             
             //IEnumerable<ThingDef> enumerable1 = from def in DefDatabase<ThingDef>.AllDefs

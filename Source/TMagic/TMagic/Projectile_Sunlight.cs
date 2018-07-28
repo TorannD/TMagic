@@ -19,8 +19,6 @@ namespace TorannMagic
             Pawn victim = hitThing as Pawn;
             Thing item = hitThing as Thing;
             IntVec3 arg_pos_1;
-            IntVec3 arg_pos_2;
-            IntVec3 arg_pos_3;
 
             Pawn pawn = this.launcher as Pawn;
             comp = pawn.GetComp<CompAbilityUserMagic>();

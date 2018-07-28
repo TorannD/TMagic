@@ -13,12 +13,12 @@
     <initiatorXpGainAmount>45</initiatorXpGainAmount>
     <logRulesInitiator>
       <rulesStrings>
-        <li>logentry->Mentored [other_nameShortIndef] in magic.</li>
+        <li>r_logentry->Mentored [RECIPIENT_nameDef] in magic.</li>
       </rulesStrings>
     </logRulesInitiator>
     <logRulesRecipient>
       <rulesStrings>
-        <li>logentry->Learned magic theories from [other_nameShortIndef].</li>
+        <li>r_logentry->Learned magic theories from [INITIATOR_nameDef].</li>
       </rulesStrings>
     </logRulesRecipient>
   </InteractionDef>
@@ -50,12 +50,12 @@
     <initiatorXpGainAmount>45</initiatorXpGainAmount>
     <logRulesInitiator>
       <rulesStrings>
-        <li>logentry->Taught combat techniques to [other_nameShortIndef].</li>
+        <li>r_logentry->Taught combat techniques to [RECIPIENT_nameDef].</li>
       </rulesStrings>
     </logRulesInitiator>
     <logRulesRecipient>
       <rulesStrings>
-        <li>logentry->Trained in combat by [other_nameShortIndef].</li>
+        <li>r_logentry->Trained in combat by [INITIATOR_nameDef].</li>
       </rulesStrings>
     </logRulesRecipient>
   </InteractionDef>
@@ -89,12 +89,12 @@
     <initiatorXpGainAmount>60</initiatorXpGainAmount>
     <logRulesInitiator>
       <rulesStrings>
-        <li>logentry->Entertained [other_nameShortIndef].</li>
+        <li>r_logentry->Entertained [RECIPIENT_nameDef].</li>
       </rulesStrings>
     </logRulesInitiator>
     <logRulesRecipient>
       <rulesStrings>
-        <li>logentry->Was entertained by [other_nameShortIndef].</li>
+        <li>r_logentry->Was entertained by [INITIATOR_nameDef].</li>
       </rulesStrings>
     </logRulesRecipient>
   </InteractionDef>
@@ -127,12 +127,12 @@
     <initiatorXpGainAmount>60</initiatorXpGainAmount>
     <logRulesInitiator>
       <rulesStrings>
-        <li>logentry->Had an entertaining chat with [other_nameShortIndef].</li>
+        <li>r_logentry->Had an entertaining chat with [RECIPIENT_nameDef].</li>
       </rulesStrings>
     </logRulesInitiator>
     <logRulesRecipient>
       <rulesStrings>
-        <li>logentry->Had an entertaining chat with [other_nameShortIndef].</li>
+        <li>r_logentry->Had an entertaining chat with [INITIATOR_nameDef].</li>
       </rulesStrings>
     </logRulesRecipient>
   </InteractionDef>

@@ -61,4 +61,16 @@
     </statFactors>
   </LifeStageDef>
   
+  <LifeStageDef>
+    <defName>TM_Demon_Lifestage</defName>
+    <label>demon</label>
+	<voxPitch>.2</voxPitch>
+	<bodySizeFactor>1.0</bodySizeFactor>
+	<foodMaxFactor>1</foodMaxFactor>
+	<healthScaleFactor>1</healthScaleFactor>
+    <statFactors>
+      <MoveSpeed>1.0</MoveSpeed>
+    </statFactors>
+  </LifeStageDef>
+  
 </Defs>

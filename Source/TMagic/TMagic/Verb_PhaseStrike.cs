@@ -19,14 +19,7 @@ namespace TorannMagic
 
         private int verVal;
         private int pwrVal;
-
-        float weaponDPS = 0;
-        float dmgMultiplier = 1;
-        float pawnDPS = 0;
-        float skillMultiplier = 1;
-        ThingWithComps weaponComp;
-        int dmgNum = 0;
-        bool flag10;
+        private int dmgNum = 0;
 
         bool validTarg;
         IntVec3 arg_29_0;
@@ -61,13 +54,12 @@ namespace TorannMagic
             MightPowerSkill pwr = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_pwr");
             MightPowerSkill ver = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_ver");
             MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
-            int dmgNum = 0;
             ThingWithComps weaponComp = pawn.equipment.Primary;
             float weaponDPS = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_AverageDPS, false) * .7f;
             float dmgMultiplier = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_DamageMultiplier, false);
             float pawnDPS = pawn.GetStatValue(StatDefOf.MeleeDPS, false);
             float skillMultiplier = (.8f + (.025f * str.level));
-            return dmgNum = Mathf.RoundToInt(skillMultiplier * dmgMultiplier * (pawnDPS + weaponDPS));
+            return Mathf.RoundToInt(skillMultiplier * dmgMultiplier * (pawnDPS + weaponDPS));
         }
 
         protected override bool TryCastShot()
@@ -90,11 +82,11 @@ namespace TorannMagic
             }
             if (this.CasterPawn.equipment.Primary != null && !this.CasterPawn.equipment.Primary.def.IsRangedWeapon)
             {
-                dmgNum = GetWeaponDmg(this.CasterPawn);
+                this.dmgNum = GetWeaponDmg(this.CasterPawn);
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 if (!this.CasterPawn.IsColonist && settingsRef.AIHardMode)
                 {
-                    dmgNum += 10;
+                    this.dmgNum += 10;
                 }
 
                 if (this.currentTarget != null && base.CasterPawn != null)
@@ -196,11 +188,11 @@ namespace TorannMagic
                 {
                     if(Rand.Chance(.1f + .15f*pwrVal))
                     {
-                        dmgNum *= 3;
+                        this.dmgNum *= 3;
                         MoteMaker.ThrowText(victim.DrawPos, victim.Map, "Critical Hit", -1f);
                     }
                     DrawStrike(center, victim.Position.ToVector3(), map);
-                    damageEntities(victim, null, dmgNum, TMDamageDefOf.DamageDefOf.TM_PhaseStrike);
+                    damageEntities(victim, null, this.dmgNum, TMDamageDefOf.DamageDefOf.TM_PhaseStrike);
                 }
                 targets.GetEnumerator().MoveNext();
             }

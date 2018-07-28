@@ -77,7 +77,7 @@ namespace TorannMagic
                 this.lastRegen = this.age;
                 Pawn pawn = base.Pawn as Pawn;
                 
-                TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3(), pawn.Map, 1f);
+                TM_MoteMaker.ThrowRegenMote(pawn.DrawPos, pawn.Map, 1f);
                 bool flag = pawn != null;
                 if (flag)
                 {

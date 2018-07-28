@@ -15,6 +15,32 @@
   </ThingDef>
   
   <ThingDef ParentName="MoteBase">
+    <defName>Mote_Demon_Flame</defName>
+    <graphicData>
+      <texPath>Motes/Demon/flame</texPath>
+    </graphicData>
+    <altitudeLayer>MetaOverlays</altitudeLayer>
+    <mote>
+      <fadeInTime>0.01</fadeInTime>
+      <solidTime>0.05</solidTime>
+      <fadeOutTime>0.1</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+    <ThingDef ParentName="MoteBase">
+    <defName>Mote_SummoningCircle</defName>
+    <graphicData>
+      <texPath>Motes/Demon/summoning_circle</texPath>
+    </graphicData>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <mote>
+      <fadeInTime>1</fadeInTime>
+      <solidTime>2</solidTime>
+      <fadeOutTime>2</fadeOutTime>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
     <defName>Mote_ArcaneWaves</defName>
     <graphicData>
       <texPath>Motes/ArcaneWavesMote</texPath>
@@ -57,6 +83,19 @@
     <defName>Mote_Flame</defName>
     <graphicData>
       <texPath>Motes/FlameMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.1</solidTime>
+      <fadeOutTime>0.1</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_ArcaneFlame</defName>
+    <graphicData>
+      <texPath>Motes/ArcaneFlameMote</texPath>
     </graphicData>
     <altitudeLayer>MoteOverhead</altitudeLayer>
     <mote>
@@ -119,9 +158,35 @@
   </ThingDef>
   
   <ThingDef ParentName="MoteBase">
+    <defName>Mote_PowerWave</defName>
+    <graphicData>
+      <texPath>Motes/PowerWaveMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.0</fadeInTime>
+      <solidTime>0.15</solidTime>
+      <fadeOutTime>.05</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
     <defName>Mote_Siphon</defName>
     <graphicData>
       <texPath>Motes/SiphonMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.15</fadeInTime>
+      <solidTime>0.05</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_ArcaneCircle</defName>
+    <graphicData>
+      <texPath>Motes/ArcaneCircleMote</texPath>
     </graphicData>
     <altitudeLayer>MoteOverhead</altitudeLayer>
     <mote>
@@ -239,6 +304,19 @@
     <defName>Mote_CrossStrike</defName>
     <graphicData>
       <texPath>Motes/CrossStrike</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.45</solidTime>
+      <fadeOutTime>0.05</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_ClawSweep</defName>
+    <graphicData>
+      <texPath>Motes/ClawMote</texPath>
     </graphicData>
     <altitudeLayer>MoteOverhead</altitudeLayer>
     <mote>

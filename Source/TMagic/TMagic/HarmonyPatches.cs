@@ -49,6 +49,7 @@ namespace TorannMagic
             //        typeof(IntVec3)
             //    }, null), null, new HarmonyMethod(typeof(HarmonyPatches).GetMethod("TryFindCastPosition_Base_Patch")), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(Caravan), "get_NightResting", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_NightResting_Undead", null), null);
+            harmonyInstance.Patch(AccessTools.Method(typeof(Pawn_StanceTracker), "get_Staggered", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_Staggered", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(PawnDiedOrDownedThoughtsUtility), "AppendThoughts_Relations", new Type[]
                 {
                     typeof(Pawn),
@@ -147,6 +148,16 @@ namespace TorannMagic
                     GenPlace.TryPlaceThing(thing, __instance.pawn.Position, __instance.pawn.Map, ThingPlaceMode.Near, null);
                 }
             }
+        }
+        
+        public static bool Get_Staggered(Pawn_StanceTracker __instance, ref bool __result)
+        {
+            if(__instance.pawn.def.defName == "TM_DemonR")
+            {
+                __result = false;
+                return false;
+            }
+            return true;
         }
 
         public static bool Get_NightResting_Undead(Caravan __instance, ref bool __result)
@@ -394,10 +405,22 @@ namespace TorannMagic
             {
                 Traverse traverse = Traverse.Create(__instance);
                 Pawn pawn = (Pawn)PreApplyDamage_Patch.pawn.GetValue(__instance);
-                if (dinfo.Def != null && pawn != null && pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HediffTimedInvulnerable")))
+                if (dinfo.Def != null && pawn != null)
                 {
-                    absorbed = true;
-                    return false;
+                    if (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HediffTimedInvulnerable")))
+                    {
+                        absorbed = true;
+                        return false;
+                    }
+                    //concept damage mitigation from psychic sensitivity - completely mitigates some damage types
+                    //if (pawn.RaceProps.Humanlike && pawn.GetStatValue(StatDefOf.PsychicSensitivity, true) < 1)
+                    //{
+                    //    if ((dinfo.Def.defName.Contains("TM_") || dinfo.Def.defName == "FrostRay" || dinfo.Def.defName == "Snowball" || dinfo.Def.defName == "Iceshard" || dinfo.Def.defName == "Firebolt") && Rand.Chance(1 - pawn.GetStatValue(StatDefOf.PsychicSensitivity, true)))
+                    //    {
+                    //        absorbed = true;
+                    //        return false;
+                    //    }
+                    //}
                 }
                 absorbed = false;
                 return true;
@@ -543,10 +566,12 @@ namespace TorannMagic
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_Transpose" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_Disguise" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_SoulBond" ||
+                    __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_SummonDemon" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_AdvancedHeal")
                 {
                     //Ignores line of sight
-                    if(__instance.CasterPawn.RaceProps.Humanlike)
+                    //                    
+                    if (__instance.CasterPawn.RaceProps.Humanlike)
                     {
                         Pawn pawn = __instance.CasterPawn;
                         if(pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
@@ -962,19 +987,20 @@ namespace TorannMagic
 
                 if (!flag)
                 {
-                    if (Rand.Chance(((settingsRef.baseFighterChance * 2) + (settingsRef.baseMageChance * 2) + (5 * settingsRef.advFighterChance) + (11 * settingsRef.advMageChance)) / (allTraits.Count - 17)))
+                    
+                    if (Rand.Chance(((settingsRef.baseFighterChance * 4) + (settingsRef.baseMageChance * 4) + (5 * settingsRef.advFighterChance) + (12 * settingsRef.advMageChance)) / (allTraits.Count - 17)))
                     {
                         pawnTraits.Remove(pawnTraits[pawnTraits.Count - 1]);
-                        float rnd = Rand.Range(0, 2 * (settingsRef.baseFighterChance + settingsRef.baseMageChance) + (5 * settingsRef.advFighterChance) + (11 * settingsRef.advMageChance));
-                        if (rnd < (2 * settingsRef.baseMageChance))
+                        float rnd = Rand.Range(0, 4 * (settingsRef.baseFighterChance + settingsRef.baseMageChance) + (5 * settingsRef.advFighterChance) + (12 * settingsRef.advMageChance));
+                        if (rnd < (4 * settingsRef.baseMageChance))
                         {
                             pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Gifted"), 2, false));
                         }
-                        else if (rnd >= 2 * settingsRef.baseMageChance && rnd < (2 * (settingsRef.baseFighterChance + settingsRef.baseMageChance)))
+                        else if (rnd >= 4 * settingsRef.baseMageChance && rnd < (4 * (settingsRef.baseFighterChance + settingsRef.baseMageChance)))
                         {
                             pawn.story.traits.GainTrait(new Trait(TraitDef.Named("PhysicalProdigy"), 2, false));
                         }
-                        else if (rnd >= (2 * (settingsRef.baseFighterChance + settingsRef.baseMageChance)) && rnd < (2 * (settingsRef.baseFighterChance + settingsRef.baseMageChance) + (4 * settingsRef.advFighterChance)))
+                        else if (rnd >= (4 * (settingsRef.baseFighterChance + settingsRef.baseMageChance)) && rnd < (4 * (settingsRef.baseFighterChance + settingsRef.baseMageChance) + (5 * settingsRef.advFighterChance)))
                         {
                             int rndF = Rand.RangeInclusive(1, 5);
                             switch (rndF)
@@ -998,7 +1024,7 @@ namespace TorannMagic
                         }
                         else
                         {
-                            int rndM = Rand.RangeInclusive(1, 11);
+                            int rndM = Rand.RangeInclusive(1, 12);
                             switch (rndM)
                             {
                                 case 1:
@@ -1033,6 +1059,9 @@ namespace TorannMagic
                                     break;
                                 case 11:
                                     pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Succubus"), 4, false));
+                                    break;
+                                case 12:
+                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Bard"), 0, false));
                                     break;
                             }
                         }
@@ -1414,7 +1443,6 @@ namespace TorannMagic
         [HarmonyPatch(typeof(ITab_Pawn_Gear), "DrawThingRow", null)]
         public class ITab_Pawn_Gear_Patch
         {
-
             public static Rect GetRowRect(Rect inRect, int row)
             {
                 float y = 20f * (float)row;
@@ -1424,7 +1452,7 @@ namespace TorannMagic
 
             public static void Postfix(ref float y, float width, Thing thing)
             {
-                bool valid = thing.TryGetQuality(out QualityCategory qc);
+                bool valid = !thing.DestroyedOrNull() && thing.TryGetQuality(out QualityCategory qc);
                 if (valid)
                 {
                     if (thing.TryGetComp<Enchantment.CompEnchantedItem>().HasEnchantment)
@@ -1517,34 +1545,37 @@ namespace TorannMagic
                 {
                     //Traverse traverse = Traverse.Create(__instance);
                     Pawn pawn = Find.Selector.SingleSelectedThing as Pawn;
-                    stat = StatDef.Named("ArmorRating_Alignment");
-                    label = "TM_ArmorHarmony".Translate();
-                    float num = 0f;
-                    float num2 = Mathf.Clamp01(pawn.GetStatValue(stat, true) / 2f);
-                    List<BodyPartRecord> allParts = pawn.RaceProps.body.AllParts;
-                    List<Apparel> list = (pawn.apparel == null) ? null : pawn.apparel.WornApparel;
-                    for (int i = 0; i < allParts.Count; i++)
+                    if (!pawn.DestroyedOrNull() && !pawn.Dead)
                     {
-                        float num3 = 1f - num2;
-                        if (list != null)
+                        stat = StatDef.Named("ArmorRating_Alignment");
+                        label = "TM_ArmorHarmony".Translate();
+                        float num = 0f;
+                        float num2 = Mathf.Clamp01(pawn.GetStatValue(stat, true) / 2f);
+                        List<BodyPartRecord> allParts = pawn.RaceProps.body.AllParts;
+                        List<Apparel> list = (pawn.apparel == null) ? null : pawn.apparel.WornApparel;
+                        for (int i = 0; i < allParts.Count; i++)
                         {
-                            for (int j = 0; j < list.Count; j++)
+                            float num3 = 1f - num2;
+                            if (list != null)
                             {
-                                if (list[j].def.apparel.CoversBodyPart(allParts[i]))
+                                for (int j = 0; j < list.Count; j++)
                                 {
-                                    float num4 = Mathf.Clamp01(list[j].GetStatValue(stat, true) / 2f);
-                                    num3 *= 1f - num4;
+                                    if (list[j].def.apparel.CoversBodyPart(allParts[i]))
+                                    {
+                                        float num4 = Mathf.Clamp01(list[j].GetStatValue(stat, true) / 2f);
+                                        num3 *= 1f - num4;
+                                    }
                                 }
                             }
+                            num += allParts[i].coverageAbs * (1f - num3);
                         }
-                        num += allParts[i].coverageAbs * (1f - num3);
+                        num = Mathf.Clamp(num * 2f, 0f, 2f);
+                        Rect rect = new Rect(0f, curY, width, 100f);
+                        Widgets.Label(rect, label.Truncate(120f, null));
+                        rect.xMin += 120f;
+                        Widgets.Label(rect, num.ToStringPercent());
+                        curY += 22f;
                     }
-                    num = Mathf.Clamp(num * 2f, 0f, 2f);
-                    Rect rect = new Rect(0f, curY, width, 100f);
-                    Widgets.Label(rect, label.Truncate(120f, null));
-                    rect.xMin += 120f;
-                    Widgets.Label(rect, num.ToStringPercent());
-                    curY += 22f;
                 }
             }
         }

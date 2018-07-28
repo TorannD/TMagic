@@ -13,9 +13,10 @@ namespace TorannMagic.Enchantment
         IntVec3 thingLoc;
         Pawn actor;
 
-        public override bool TryMakePreToilReservations()
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
             return this.pawn.Reserve(this.job.targetA, this.job, 1, -1, null);
+            throw new NotImplementedException();
         }
 
         public static void ErrorCheck(Pawn pawn, Thing haulThing)

@@ -38,5 +38,40 @@
 	  </stages>
   </ThoughtDef>
 
+  <ThoughtDef ParentName="TM_Memory">
+    <defName>WarlockEmpathy</defName>
+    <durationDays>1</durationDays>
+	<stackLimit>1</stackLimit>
+	<stackedEffectMultiplier>1</stackedEffectMultiplier>
+	<nullifyingTraits>
+	  <li>Lich</li>
+	  <li>Undead</li>
+	</nullifyingTraits>
+    <stages>
+      <li>
+        <label>Empathy</label>
+        <!-- generic penalty -->
+        <description>I can feel the emotions of those around me.</description>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="TM_Memory">
+    <defName>PsychicEmpathy</defName>
+    <durationDays>1</durationDays>
+	<stackLimit>1</stackLimit>
+	<stackedEffectMultiplier>1</stackedEffectMultiplier>
+	<nullifyingTraits>
+	  <li>Lich</li>
+	  <li>Undead</li>
+	</nullifyingTraits>
+    <stages>
+      <li>
+        <label>Empathy</label>
+        <!-- generic penalty -->
+        <description>I can't explain why I'm feeling these strong emotions.</description>
+      </li>
+    </stages>
+  </ThoughtDef>
   
 </Defs>

@@ -273,7 +273,7 @@ namespace TorannMagic
             {
                 return Building_TMPortal.portableCells;
             }
-            RegionTraverser.BreadthFirstTraverse(region, (Region from, Region r) => r.portal == null, delegate (Region r)
+            RegionTraverser.BreadthFirstTraverse(region, (Region from, Region r) => r.door == null, delegate (Region r)
             {
                 foreach (IntVec3 current in r.Cells)
                 {

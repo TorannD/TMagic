@@ -8,7 +8,7 @@ namespace TorannMagic
     public class Projectile_SummonExplosive : Projectile_AbilityBase
     {
         private int age = -1;
-        private int duration = 7200;
+        private int duration = 14400;
         private bool primed = false;
         Thing placedThing;
         private int verVal;
@@ -38,8 +38,6 @@ namespace TorannMagic
             Pawn victim = hitThing as Pawn;
             Thing item = hitThing as Thing;
             IntVec3 arg_pos_1;
-            IntVec3 arg_pos_2;
-            IntVec3 arg_pos_3;
 
             Pawn pawn = this.launcher as Pawn;
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
@@ -66,7 +64,7 @@ namespace TorannMagic
 
             if (!this.primed)
             {
-                duration += (verVal * 3600);
+                duration += (verVal * 7200);
                 arg_pos_1 = centerCell;
 
                 if ((arg_pos_1.IsValid && arg_pos_1.Standable(map)))

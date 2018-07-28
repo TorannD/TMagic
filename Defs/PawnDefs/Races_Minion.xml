@@ -26,8 +26,8 @@
       <predator>true</predator>
       <foodType>CarnivoreAnimal, OvivoreAnimal</foodType>
       <baseHungerRate>0.00</baseHungerRate>
-	  <intelligence>ToolUser</intelligence>	  
-<!--       <trainableIntelligence>Advanced</trainableIntelligence> -->
+<!-- 	  <intelligence>ToolUser</intelligence>	   -->
+      <trainability>None</trainability>
       <thinkTreeConstant>TM_Minion_AI_Constant</thinkTreeConstant>
       <thinkTreeMain>TM_Minion_AI</thinkTreeMain>
       <meatLabel>mystery meat</meatLabel>

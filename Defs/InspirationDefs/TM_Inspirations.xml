@@ -116,7 +116,7 @@
             <MeleeDPS>1.25</MeleeDPS>
 			<MeleeHitChance>1.25</MeleeHitChance>
 			<MeleeDodgeChance>1.25</MeleeDodgeChance>
-			<ShootingAccuracy>1.25</ShootingAccuracy>
+			<ShootingAccuracyPawn>1.25</ShootingAccuracyPawn>
 			<AimingDelayFactor>0.5</AimingDelayFactor>
 			<MoveSpeed>1.15</MoveSpeed>
 			<PainShockThreshold>1.25</PainShockThreshold>

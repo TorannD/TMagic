@@ -2,7 +2,7 @@
 <Defs>
 
   <ThingDef Name="TrapSummonedExplosiveBase" ParentName="TM_BuildingBase" Abstract="True">
-    <thingClass>Building_TrapExplosive</thingClass>
+    <thingClass>TorannMagic.Building_ExplosiveProximityTrap</thingClass>
     <graphicData>
       <graphicClass>Graphic_Single</graphicClass>
       <damageData>
@@ -301,7 +301,7 @@
         <burstShotCount>1</burstShotCount>
         <soundCast>GunShotA</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
-        <muzzleFlashScale>35</muzzleFlashScale>
+        <muzzleFlashScale>3</muzzleFlashScale>
       </li>
     </verbs>
   </ThingDef>
@@ -424,7 +424,7 @@
         <burstShotCount>3</burstShotCount>
         <soundCast>GunShotA</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
-        <muzzleFlashScale>45</muzzleFlashScale>
+        <muzzleFlashScale>4</muzzleFlashScale>
       </li>
     </verbs>
   </ThingDef>
@@ -533,7 +533,7 @@
         <burstShotCount>4</burstShotCount>
         <soundCast>GunShotA</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
-        <muzzleFlashScale>50</muzzleFlashScale>
+        <muzzleFlashScale>5</muzzleFlashScale>
       </li>
     </verbs>
   </ThingDef>
@@ -643,7 +643,7 @@
         <burstShotCount>5</burstShotCount>
         <soundCast>GunShotA</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
-        <muzzleFlashScale>60</muzzleFlashScale>
+        <muzzleFlashScale>6</muzzleFlashScale>
       </li>
     </verbs>
   </ThingDef>

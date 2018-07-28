@@ -110,7 +110,7 @@
     <label>Summon defense pylon</label>
     <uiIconPath>UI/defense_pylon</uiIconPath>
     <description>Summons and manifests magical energy to form an automated defense turret that is tethered to a physical location.  The turret channels arcane current into a focal point that emits bursts of raw energy.  When the tether holding the turret to the physical world dissapates, the turret will harmlessly dissolve back into magical energy.  If the turret is destroyed, this event can be more destructive.</description>
-    <manaCost>0.28</manaCost>
+    <manaCost>0.34</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -120,8 +120,8 @@
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Projectile_SummonPylon</defaultProjectile>
 		<abilityDef>TM_SummonPylon</abilityDef>
-        <warmupTime>1</warmupTime>
-        <SecondsToRecharge>20</SecondsToRecharge>
+        <warmupTime>2</warmupTime>
+        <SecondsToRecharge>40</SecondsToRecharge>
 		<burstShotCount>1</burstShotCount>
         <range>70</range>
 		<isViolent>false</isViolent>
@@ -162,7 +162,7 @@
     <label>Summon explosive</label>
     <uiIconPath>UI/ManaMine</uiIconPath>
     <description>Creates a mine out of compressed, raw mana and tethers it to a physical location.  The mine will harmlessly dissolve if the tether runs out of energy that is holding the mine.</description>
-    <manaCost>0.18</manaCost>
+    <manaCost>0.24</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -172,10 +172,10 @@
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Projectile_SummonExplosive</defaultProjectile>
 		<abilityDef>TM_SummonExplosive</abilityDef>
-        <warmupTime>1</warmupTime>
+        <warmupTime>2</warmupTime>
         <SecondsToRecharge>30</SecondsToRecharge>
 		<burstShotCount>1</burstShotCount>
-        <range>70</range>
+        <range>60</range>
 		<isViolent>false</isViolent>
         <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>10</muzzleFlashScale>
@@ -214,7 +214,7 @@
     <label>Summon Elemental</label>
     <uiIconPath>UI/Elemental</uiIconPath>
     <description>Calls forth a monstrous elemental from a plane of power to crush your foes.  These beings will defend a location and immediately engage an enemy if one is nearby.  However, if there are no enemies, they tend to get bored rather quickly and will wander from their summoned position.  They will not do such menial tasks as "hauling" or "cleaning," as these are the jobs of lesser beings.  Due to the power of the summoning, the elemental can only exist in this realm for a short time.  The type of elemental is random.</description>
-    <manaCost>0.50</manaCost>
+    <manaCost>0.55</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -225,7 +225,7 @@
         <defaultProjectile>Projectile_SummonElemental</defaultProjectile>
 		<abilityDef>TM_SummonElemental</abilityDef>
         <warmupTime>1</warmupTime>
-        <SecondsToRecharge>120</SecondsToRecharge>
+        <SecondsToRecharge>150</SecondsToRecharge>
 		<burstShotCount>1</burstShotCount>
         <range>50</range>
 		<isViolent>false</isViolent>

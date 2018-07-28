@@ -54,7 +54,7 @@ namespace TorannMagic
             }
             this.Initialize(base.Position, pawn);
 
-            if (victim != null && !victim.Dead && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracy, true)))
+            if (victim != null && !victim.Dead && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracyPawn, true)))
             {
                 int dmg = GetWeaponDmg(pawn, this.def);
                 if (!victim.RaceProps.IsFlesh)

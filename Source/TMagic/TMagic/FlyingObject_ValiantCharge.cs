@@ -199,43 +199,6 @@ namespace TorannMagic
             this.Initialize();
         }
 
-        public void SingleSpawnLoop(SpawnThings spawnables, IntVec3 position, Map map)
-        {
-            bool flag = spawnables.def != null;
-            if (flag)
-            {
-                Faction faction = pawn.Faction;
-                bool flag2 = spawnables.def.race != null;
-                if (flag2)
-                {
-                    bool flag3 = spawnables.kindDef == null;
-                    if (flag3)
-                    {
-                        Log.Error("Missing kinddef");
-                    }
-                    else
-                    {
-                        newPawn = (TMPawnSummoned)PawnGenerator.GeneratePawn(spawnables.kindDef, faction);
-                        newPawn.Spawner = this.launcher as Pawn;
-                        newPawn.Temporary = true;
-                        newPawn.TicksToDestroy = 180;
-                        
-                        try
-                        {
-                            GenSpawn.Spawn(newPawn, position, this.Map);
-                        }
-                        catch
-                        {
-                        }                        
-                    }
-                }
-                else
-                {
-                    Log.Message("Missing race");
-                }
-            }
-        }
-
         public override void Tick()
         {
             base.Tick();

@@ -143,7 +143,7 @@ Succubi and Warlocks form distinct types of soul bonds - warlocks bonds are ment
         </graphicData>
         <projectile>
             <damageDef>TM_Shadow</damageDef>
-            <damageAmountBase>12</damageAmountBase>
+            <damageAmountBase>15</damageAmountBase>
             <speed>35</speed>
 			<explosionRadius>2</explosionRadius>
 			<postExplosionSpawnChance>1</postExplosionSpawnChance>
@@ -161,7 +161,7 @@ Succubi and Warlocks form distinct types of soul bonds - warlocks bonds are ment
 	   <projectile>
 			<flyOverhead>true</flyOverhead>
 			<damageDef>TM_Shadow</damageDef>
-			<damageAmountBase>12</damageAmountBase>
+			<damageAmountBase>15</damageAmountBase>
 			<speed>35</speed>
 			<explosionRadius>2</explosionRadius>
 			<postExplosionSpawnChance>1</postExplosionSpawnChance>
@@ -883,39 +883,82 @@ The Warlock who will use the minds of others to propagate the psychic wave. The 
     </TorannMagic.TMAbilityDef>
 	
 	<!-- SummonDemon  -->	
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>TorannMagic.Projectile_SummonDemon</thingClass>
+	    <defName>Projectile_SummonDemon</defName>
+        <label>summon demon</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>Stun</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+	
     <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
         <defName>TM_SummonDemon</defName>
-        <label>SummonDemon</label>
+        <label>Summon Demon</label>
         <uiIconPath>UI/summon_demon</uiIconPath>
-        <description>default</description>
-        <manaCost>0.1</manaCost>
+        <description>Manifest true demonic power through the manipulation of both physical and mental soul bonds. This dark power exacts a heavy toll and its use should only be considered under dire circumstances.
+ 
+The summoning is initiated when a Succubus anchors the physical offering and is completed when a Warlock finalizes the terms of the demonic contract.</description>
+        <manaCost>0.20</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Verb_SB</verbClass>
-				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+            <verbClass>TorannMagic.Verb_SummonDemon</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Projectile_Warlock</defaultProjectile>
             <abilityDef>TM_SummonDemon</abilityDef>
-            <warmupTime>1</warmupTime>
-            <SecondsToRecharge>5</SecondsToRecharge>
-            <range>40</range>
-            <burstShotCount>1</burstShotCount>
-            <soundCast>ThrowMolotovCocktail</soundCast>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>1200</SecondsToRecharge>
+            <range>0</range>
+            <soundCast>TM_VibrationLow</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>4</muzzleFlashScale>
-		    <AlwaysHits>true</AlwaysHits>
-            <isPrimary>true</isPrimary>
-			<isViolent>true</isViolent>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
 			<targetParams>
 				<canTargetItems>false</canTargetItems>
                 <canTargetPawns>true</canTargetPawns>
                 <canTargetBuildings>false</canTargetBuildings>
-                <canTargetSelf>false</canTargetSelf>
-                <canTargetLocations>true</canTargetLocations>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
             </targetParams>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
+	
+	<ThingDef ParentName="BaseBullet" Name="FlyingObject_DemonFlight">
+	   <defName>FlyingObject_DemonFlight</defName>
+	   <thingClass>TorannMagic.FlyingObject_DemonFlight</thingClass>
+	   <label>flying object</label>
+	   <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	   <projectile>
+			<flyOverhead>true</flyOverhead>
+			<damageDef>Stun</damageDef>
+			<damageAmountBase>0</damageAmountBase>
+			<speed>40</speed>
+	   </projectile>
+	</ThingDef>
+	
+	<ThingDef ParentName="FlyingObject_Advanced">
+	   <defName>FlyingObject_DemonBolt</defName>
+	   <label>demon flames</label>
+	   <graphicData>
+			<texPath>Spells/meteor1</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	</ThingDef>
 
 </Defs>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 
-
 <!-- Notification messages  -->
 <TM_NotEnoughMana>{0} needs more mana to cast this spell.</TM_NotEnoughMana>
 <TM_NotEnoughStamina>{0} does not have enough stamina to execute this ability.</TM_NotEnoughStamina>
@@ -57,7 +56,7 @@
 <TM_BondedAnimalRelease>The bond between {0} and {1} has ended and {0} has disappeared into the wild.</TM_BondedAnimalRelease>
 <TM_AnimalIncapableOfBond>{0} does not have the intelligence to form a bond with {1}.</TM_AnimalIncapableOfBond>
 <TM_FailedRangerBond>{1} has failed to bond with {0} - {2}&#37; chance</TM_FailedRangerBond>
-<TM_RangerNotExperienced>{1} is unable to establish a bond with {0}. {0} has a wildness of {2}&#37 and {1} can only bond with a creature with {3}&#37 or lower. This can be increased by investing points in "Animal Empathy".</TM_RangerNotExperienced>
+<TM_RangerNotExperienced>{1} is unable to establish a bond with {0}. {0} has a wildness of {2}&#37; and {1} can only bond with a creature with {3}&#37; or lower. This can be increased by investing points in "Animal Empathy".</TM_RangerNotExperienced>
 <TM_TooManyTraps>{0} is limited to {1} traps, removing oldest trap.</TM_TooManyTraps>
 <TM_SummonedCreatureLimitExceeded>{0} has exceeded the max number of summoned creatures, dismissing oldest summon.</TM_SummonedCreatureLimitExceeded>
 <TM_NoMinionToDismiss>{0} has no summoned minions.</TM_NoMinionToDismiss>
@@ -88,6 +87,8 @@
 <TM_CannotSoulBondUnwilling>Unable to create a soul bond with {1}. {0} can only form a soul bond with a willing pawn (same faction).</TM_CannotSoulBondUnwilling>
 <TM_CannotSoulBondAnother>{0} cannot form a soul bond with {1}. {1} already sustains this type of bond with another.</TM_CannotSoulBondAnother>
 <TM_PsychicSensitivity>Psychic sensitivity: {0}</TM_PsychicSensitivity>
+<TM_WarlockEmpathyDesc>I can feel the emotions of those around me.</TM_WarlockEmpathyDesc>
+<TM_WarlockEmpathyOverwhelmed>The emotions of those around me are overwhelming, I need to get away from all these people or find a way to mute these emotions.</TM_WarlockEmpathyOverwhelmed>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
@@ -169,9 +170,17 @@ Increases amount of shrapnel create by meteor impacts.</TM_Firestorm_ver_desc>
 
 <TM_Soothe_eff_desc>Decreases mana cost of Soothe by 8% per level of base mana cost.</TM_Soothe_eff_desc>
 <TM_Rainmaker_eff_desc>Decreases mana cost of Rainmaker by 15% per level of base mana cost.</TM_Rainmaker_eff_desc>
-<TM_Icebolt_pwr_desc>Increases lethality of Icebolt by pre-fragmenting the bolt into razor sharp shards. Shards deal 6 damage per skill level.</TM_Icebolt_pwr_desc>
+<TM_Icebolt_pwr_desc>Increases lethality of Icebolt by pre-fragmenting the bolt into razor sharp shards.
+Level 0: 2 to 5 damage per shard
+Level 1: 4 to 9 damage per shard
+Level 2: 6 to 13 damage per shard
+Level 3: 8 to 17 damage per shard</TM_Icebolt_pwr_desc>
 <TM_Icebolt_eff_desc>Decreases mana cost of Icebolt by 8% per level of base mana cost.</TM_Icebolt_eff_desc>
-<TM_Icebolt_ver_desc>Increases the compression and size of Icebolt, causing more fragments upon impact (level*(1-6)).</TM_Icebolt_ver_desc>
+<TM_Icebolt_ver_desc>Increases the compression and size of Icebolt, each skill level increases the number of ice shards upon impact.
+Level 0: 2 to 3 shards
+Level 1: 3 to 8 shards
+Level 2: 4 to 14 shards
+Level 3: 5 to 20 shards</TM_Icebolt_ver_desc>
 <TM_FrostRay_eff_desc>Decreases mana cost of Frost Ray by 8% of base mana cost.</TM_FrostRay_eff_desc>
 <TM_Snowball_pwr_desc>Increases the size of the Snowball, causing an increase in impact area by .7 cells per level and increases damage up to 3 per level.</TM_Snowball_pwr_desc>
 <TM_Snowball_eff_desc>Decreases mana cost of Snowball by 8% per level of base mana cost.</TM_Snowball_eff_desc>
@@ -291,11 +300,11 @@ Level 3: summons two greater minions.</TM_SummonMinion_pwr_desc>
 <TM_SummonMinion_ver_desc>Increases the duration of the summoning by 10m per skill point.  Base duration is 20m.</TM_SummonMinion_ver_desc>
 <TM_SummonPylon_eff_desc>Decreases mana cost to summon a defensive pylon by 8% of base mana cost.</TM_SummonPylon_eff_desc>
 <TM_SummonPylon_pwr_desc>Increases the range and power of the defensive pylon created.</TM_SummonPylon_pwr_desc>
-<TM_SummonPylon_ver_desc>Increases the duration of the summoning by 1m per skill point.  Base duration is 2m.</TM_SummonPylon_ver_desc>
+<TM_SummonPylon_ver_desc>Increases the duration of the summoning by 2m per skill point.  Base duration is 4m.</TM_SummonPylon_ver_desc>
 <TM_SummonExplosive_eff_desc>Decreases mana cost to create a mana mine by 8% of per skill level.</TM_SummonExplosive_eff_desc>
 <TM_SummonExplosive_pwr_desc>Increases the power of the mine by 20% per skill level.
 Increases explosion radius by 20% per skill level.</TM_SummonExplosive_pwr_desc>
-<TM_SummonExplosive_ver_desc>Increases the duration the mana mine remains stable by 1m per skill point.  Base duration is 2m. Mana mine will harmlessly dissolve if the timer expires.</TM_SummonExplosive_ver_desc>
+<TM_SummonExplosive_ver_desc>Increases the duration the mana mine remains stable by 2m per skill point.  Base duration is 4m. Mana mine will harmlessly dissolve if the timer expires.</TM_SummonExplosive_ver_desc>
 <TM_SummonElemental_eff_desc>Decreases mana cost to summon an elemental by 6% of base mana cost.</TM_SummonElemental_eff_desc>
 <TM_SummonElemental_pwr_desc>Increases the power of the elemental summoned.
 At rank 3: summons two lesser elementals to accompany your primary summon.</TM_SummonElemental_pwr_desc>

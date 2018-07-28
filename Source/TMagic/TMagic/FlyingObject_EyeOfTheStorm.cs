@@ -382,7 +382,25 @@ namespace TorannMagic
                 }
             }
 
-            
+            List<IntVec3> dissipationList = GenRadial.RadialCellsAround(this.ExactPosition.ToIntVec3(), 9, false).ToList();
+            for (int i = 0; i < (10 + 3*pwrVal); i++)
+            {
+                IntVec3 strikeCell = dissipationList.RandomElement();
+                if (strikeCell.InBounds(base.Map) && strikeCell.IsValid && !strikeCell.Fogged(this.Map))
+                {
+                    DrawStrike(this.ExactPosition.ToIntVec3(), strikeCell.ToVector3Shifted());
+                    for (int k = 0; k < Rand.Range(1, 8); k++)
+                    {
+                        CellRect cellRect = CellRect.CenteredOn(strikeCell, 1);
+                        cellRect.ClipInsideMap(base.Map);
+                        IntVec3 randomCell = cellRect.RandomCell;
+                        GenExplosion.DoExplosion(randomCell, base.Map, Rand.Range(.2f, .6f), TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(3 + 3 * pwrVal, 7 + 5 * pwrVal) * this.arcaneDmg), 0, SoundDefOf.Thunder_OffMap, null, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
+                    }
+                }
+            }
+            GenExplosion.DoExplosion(this.ExactPosition.ToIntVec3(), base.Map, 1f + verVal, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(5 + 5 * pwrVal, 10 + 10 * pwrVal) * this.arcaneDmg), 0, SoundDefOf.Thunder_OffMap, null, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
+
+
             this.Destroy(DestroyMode.Vanish);
         }        
     }

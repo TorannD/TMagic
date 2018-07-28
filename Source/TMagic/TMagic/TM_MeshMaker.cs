@@ -9,26 +9,26 @@ namespace TorannMagic
     [StaticConstructorOnStartup]
     public static class TM_MeshMaker
     {
-        private const float LightningRootXVar = 0.2f;
-
-        private const float VertexInterval = 0f;
-
-        private const float MeshWidth = 0.1f;
-
-        private const float UVIntervalY = 0.04f;
-
-        private const float PerturbAmp = 0f;
-
-        private const float PerturbFreq = 0.7f;
+        //private const float LightningHeight = 200f;
+        //private const float LightningRootXVar = 50f;
+        //private const float VertexInterval = 0.25f;
+        //private const float MeshWidth = 2.25f;
+        //private const float UVIntervalY = 0.04f;
+        //private const float PerturbAmp = 12f;
+        //private const float PerturbFreq = 0.007f;
 
         private static List<Vector2> verts2D;
 
         private static Vector2 lightningTop;
 
-        public static Mesh NewBoltMesh(float distance)
+        public static Mesh NewBoltMesh(float distance, float amplitude)
         {
-            TM_MeshMaker.lightningTop = new Vector2(Rand.Range(-0.2f, 0.2f), distance);
+            TM_MeshMaker.lightningTop = new Vector2(Rand.Range(-0.2f, .2f), distance);
             TM_MeshMaker.MakeVerticesBase();
+            if (amplitude > 0)
+            {
+                TM_MeshMaker.PeturbVerticesRandomly(amplitude);
+            }
             TM_MeshMaker.DoubleVertices();
             return TM_MeshMaker.MeshFromVerts();
         }
@@ -46,14 +46,15 @@ namespace TorannMagic
             }
         }
 
-        private static void PeturbVerticesRandomly()
+        private static void PeturbVerticesRandomly(float amplitude)
         {
-            Perlin perlin = new Perlin(0.0070000002160668373, 2.0, 0.5, 6, Rand.Range(0, 2147483647), QualityMode.Medium);
-            List<Vector2> list = GenList.ListFullCopy<Vector2>(TM_MeshMaker.verts2D);
+            Perlin perlin = new Perlin(0.0070000002160668373, 2.0, 0.5, 6, Rand.Range(0, 2147483647), QualityMode.High);
+            //List<Vector2> list = GenList.ListFullCopy<Vector2>(TM_MeshMaker.verts2D);
+            List<Vector2> list = TM_MeshMaker.verts2D.ListFullCopy<Vector2>();
             TM_MeshMaker.verts2D.Clear();
             for (int i = 0; i < list.Count; i++)
             {
-                float d = 12f * (float)perlin.GetValue((double)i, 0.0, 0.0);
+                float d = amplitude * (float)perlin.GetValue((double)i, 0.0, 0.0);
                 Vector2 item = list[i] + d * Vector2.right;
                 TM_MeshMaker.verts2D.Add(item);
             }
@@ -61,7 +62,8 @@ namespace TorannMagic
 
         private static void DoubleVertices()
         {
-            List<Vector2> list = GenList.ListFullCopy<Vector2>(TM_MeshMaker.verts2D);
+            //List<Vector2> list = GenList.ListFullCopy<Vector2>(TM_MeshMaker.verts2D);
+            List<Vector2> list = TM_MeshMaker.verts2D.ListFullCopy<Vector2>();
             Vector3 vector = default(Vector3);
             Vector2 a = default(Vector2);
             TM_MeshMaker.verts2D.Clear();

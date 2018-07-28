@@ -36,7 +36,7 @@ namespace TorannMagic
             {
                 verVal = 3;
             }
-            if (victim != null && !victim.Dead && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracy, true)))
+            if (victim != null && !victim.Dead && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracyPawn, true)))
             {
                 int dmg = (this.def.projectile.GetDamageAmount(1,null));
                 if (victim.RaceProps.IsFlesh)
@@ -102,8 +102,8 @@ namespace TorannMagic
                 dinfo = new DamageInfo(type, amt, 0, (float)-1, this.launcher as Pawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
             }
             victim.TakeDamage(dinfo);
-            
-            if(!victim.IsColonist && !victim.IsPrisoner && !victim.Faction.HostileTo(this.launcher.Faction) && victim.Faction != null)
+
+            if (!victim.IsColonist && !victim.IsPrisoner && !victim.Faction.HostileTo(this.launcher.Faction) && victim.Faction != null && victim.Faction != this.launcher.Faction)
             {
                 Faction faction = victim.Faction;
                 faction.TrySetRelationKind(this.launcher.Faction, FactionRelationKind.Hostile, true, null);

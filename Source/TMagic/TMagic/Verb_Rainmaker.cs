@@ -65,11 +65,7 @@ namespace TorannMagic
                     map.weatherManager.TransitionTo(rainMakerDef);
                     return true;
                 }
-            }
-
-
-            
+            } 
         }
-
     }
 }

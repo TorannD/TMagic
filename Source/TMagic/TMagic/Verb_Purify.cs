@@ -81,73 +81,76 @@ namespace TorannMagic
                         }
                     }
                 }
-                using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+                if (pawn.RaceProps.Humanlike)
                 {
-                    while (enumerator.MoveNext())
+                    using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
                     {
-                        Hediff rec = enumerator.Current;
-                        bool flag2 = num > 0;
-                        if (flag2)
+                        while (enumerator.MoveNext())
                         {
-                            if (rec.def.defName == "Cataract" || rec.def.defName == "HearingLoss" || rec.def.defName.Contains("ToxicBuildup"))
+                            Hediff rec = enumerator.Current;
+                            bool flag2 = num > 0;
+                            if (flag2)
                             {
-                                rec.Heal(.4f + .3f * pwrVal);
-                                num--;
-                            }
-                            if ((rec.def.defName == "Blindness" || rec.def.defName.Contains("Asthma") || rec.def.defName == "Cirrhosis" || rec.def.defName == "ChemicalDamageModerate") && verVal >= 1)
-                            {
-                                rec.Heal(.3f + .2f * pwrVal);
-                                if(rec.def.defName.Contains("Asthma"))
+                                if (rec.def.defName == "Cataract" || rec.def.defName == "HearingLoss" || rec.def.defName.Contains("ToxicBuildup"))
                                 {
-                                    pawn.health.RemoveHediff(rec);
+                                    rec.Heal(.4f + .3f * pwrVal);
+                                    num--;
                                 }
-                                num--;
+                                if ((rec.def.defName == "Blindness" || rec.def.defName.Contains("Asthma") || rec.def.defName == "Cirrhosis" || rec.def.defName == "ChemicalDamageModerate") && verVal >= 1)
+                                {
+                                    rec.Heal(.3f + .2f * pwrVal);
+                                    if (rec.def.defName.Contains("Asthma"))
+                                    {
+                                        pawn.health.RemoveHediff(rec);
+                                    }
+                                    num--;
+                                }
+                                if ((rec.def.defName == "Frail" || rec.def.defName == "BadBack" || rec.def.defName.Contains("Carcinoma") || rec.def.defName == "ChemicalDamageSevere") && verVal >= 2)
+                                {
+                                    rec.Heal(.2f + .15f * pwrVal);
+                                    num--;
+                                }
+                                if ((rec.def.defName.Contains("Alzheimers") || rec.def.defName == "Dementia" || rec.def.defName.Contains("HeartArteryBlockage") || rec.def.defName == "PsychicShock" || rec.def.defName == "CatatonicBreakdown") && verVal >= 3)
+                                {
+                                    rec.Heal(.1f + .1f * pwrVal);
+                                    num--;
+                                }
+                                TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .6f);
+                                TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .4f);
                             }
-                            if ((rec.def.defName == "Frail" || rec.def.defName == "BadBack" || rec.def.defName.Contains("Carcinoma") || rec.def.defName == "ChemicalDamageSevere") && verVal >= 2)
-                            {
-                                rec.Heal(.2f + .15f * pwrVal);
-                                num--;
-                            }
-                            if ((rec.def.defName.Contains("Alzheimers") || rec.def.defName == "Dementia" || rec.def.defName.Contains("HeartArteryBlockage") || rec.def.defName == "PsychicShock" || rec.def.defName == "CatatonicBreakdown") && verVal >= 3)
-                            {
-                                rec.Heal(.1f + .1f * pwrVal);
-                                num--;
-                            }
-                            TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .6f);
-                            TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .4f);
                         }
                     }
-                }
-                using (IEnumerator<Hediff_Addiction> enumerator = pawn.health.hediffSet.GetHediffs<Hediff_Addiction>().GetEnumerator())
-                {
-                    while (enumerator.MoveNext())
+                    using (IEnumerator<Hediff_Addiction> enumerator = pawn.health.hediffSet.GetHediffs<Hediff_Addiction>().GetEnumerator())
                     {
-                        Hediff_Addiction rec = enumerator.Current;
-                        bool flag2 = num > 0;
-                        if (flag2)
+                        while (enumerator.MoveNext())
                         {
-                            if (rec.Chemical.defName == "Alcohol" || rec.Chemical.defName == "Smokeleaf")
+                            Hediff_Addiction rec = enumerator.Current;
+                            bool flag2 = num > 0;
+                            if (flag2)
                             {
-                                rec.Severity -= (.3f + .3f * pwrVal);
-                                num--;
+                                if (rec.Chemical.defName == "Alcohol" || rec.Chemical.defName == "Smokeleaf")
+                                {
+                                    rec.Severity -= (.3f + .3f * pwrVal);
+                                    num--;
+                                }
+                                if ((rec.Chemical.defName == "GoJuice" || rec.Chemical.defName == "WakeUp") && verVal >= 1)
+                                {
+                                    rec.Severity -= (.25f + .25f * pwrVal);
+                                    num--;
+                                }
+                                if (rec.Chemical.defName == "Psychite" && verVal >= 2)
+                                {
+                                    rec.Severity -= (.25f + .25f * pwrVal);
+                                    num--;
+                                }
+                                if (verVal >= 3)
+                                {
+                                    rec.Severity -= (.15f + .15f * pwrVal);
+                                    num--;
+                                }
+                                TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .6f);
+                                TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .4f);
                             }
-                            if ((rec.Chemical.defName == "GoJuice" || rec.Chemical.defName == "WakeUp") && verVal >= 1)
-                            {
-                                rec.Severity -= (.25f + .25f * pwrVal);
-                                num--;
-                            }
-                            if (rec.Chemical.defName == "Psychite" && verVal >= 2)
-                            {
-                                rec.Severity -= (.25f + .25f * pwrVal);
-                                num--;
-                            }
-                            if (verVal >= 3)
-                            {
-                                rec.Severity -= (.15f + .15f * pwrVal);
-                                num--;
-                            }
-                            TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .6f);
-                            TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .4f);
                         }
                     }
                 }

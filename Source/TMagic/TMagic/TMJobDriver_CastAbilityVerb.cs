@@ -9,7 +9,7 @@ using UnityEngine;
 namespace TorannMagic
 {
     public class TMJobDriver_CastAbilityVerb : JobDriver_CastAbilityVerb
-    {
+    { 
 
         private int duration;
         Verb arg_45_0;
@@ -171,11 +171,12 @@ namespace TorannMagic
                                         }
                                     }
                                 }
-                                
-                                LocalTargetInfo target = toil.actor.jobs.curJob.GetTarget(TargetIndex.A);
+                                Log.Message("selecting target of verb");
+                                LocalTargetInfo target = toil.actor.jobs.curJob.GetTarget(TargetIndex.A); //TargetLocA;  //
                                 bool canFreeIntercept2 = false;
+                                Log.Message("casting verb");
                                 arg_45_0.TryStartCastOn(target, false, canFreeIntercept2);
-
+                                Log.Message("finishing verb action");
                                 using (IEnumerator<Hediff> enumerator = this.pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
                                 {
                                     while (enumerator.MoveNext())
@@ -200,6 +201,7 @@ namespace TorannMagic
                             {
                                 if (this.duration <= 5)
                                 {
+                                    Log.Message("finishing job successfully");
                                     curJob.Ability.PostAbilityAttempt();
                                 }                               
                             });
