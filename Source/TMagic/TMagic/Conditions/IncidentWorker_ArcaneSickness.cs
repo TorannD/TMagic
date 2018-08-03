@@ -26,7 +26,7 @@ namespace TorannMagic
                 CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
                 if (comp.IsMagicUser)
                 {
-                    HediffGiveUtility.TryApply(pawn, this.def.diseaseIncident, this.def.diseasePartsToAffect, false, 1, null);
+                    HediffGiverUtility.TryApply(pawn, this.def.diseaseIncident, this.def.diseasePartsToAffect, false, 1, null);
                 }                
             }
             return true;

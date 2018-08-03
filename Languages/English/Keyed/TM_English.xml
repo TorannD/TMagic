@@ -89,6 +89,7 @@
 <TM_PsychicSensitivity>Psychic sensitivity: {0}</TM_PsychicSensitivity>
 <TM_WarlockEmpathyDesc>I can feel the emotions of those around me.</TM_WarlockEmpathyDesc>
 <TM_WarlockEmpathyOverwhelmed>The emotions of those around me are overwhelming, I need to get away from all these people or find a way to mute these emotions.</TM_WarlockEmpathyOverwhelmed>
+<TM_Icon_Undead>Animated Undead</TM_Icon_Undead>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>

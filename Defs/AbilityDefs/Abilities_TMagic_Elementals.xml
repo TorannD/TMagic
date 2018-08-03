@@ -13,7 +13,7 @@
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
-	  <soundExplode>DeadfallSpring</soundExplode>
+	  <soundExplode>TrapSpring</soundExplode>
 	  <flyOverhead>false</flyOverhead>
       <damageDef>Iceshard</damageDef>
       <damageAmountBase>18</damageAmountBase>

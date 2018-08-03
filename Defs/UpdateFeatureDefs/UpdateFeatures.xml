@@ -81,7 +81,7 @@
 		<assemblyVersion>2.2.1</assemblyVersion>
 		<content>
 - Psychic Sensitivity now affects how powerful, and susceptible, a pawn is to magic.
-- The Warlock and Succubus classes have exhibit unique social behaviors.  The Succubus is a bit more friendly and the Warlock may cause emotions to 'bleed' from, or to, other pawns via psychic empathy.
+- The Warlock and Succubus classes will exhibit unique social behaviors.  The Succubus is a bit more friendly and the Warlock may cause emotions to 'bleed' from, or to, other pawns via psychic empathy.
 - A hidden combination ability has been added for Warlock and Succubus; not for the faint of heart.
 - The arcane mine now has a small proximity detection and should be much more responsive to enemies passing nearby.
 - The Bard class has been added to the random class pool.

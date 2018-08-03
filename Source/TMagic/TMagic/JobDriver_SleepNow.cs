@@ -59,8 +59,7 @@ namespace TorannMagic
 
                 if (curDriver.asleep && actor.needs.rest != null)
                 {                    
-                    float num2 = RestUtility.PawnHealthRestEffectivenessFactor(actor);
-                    num = 0.7f * num + 0.3f * num * num2;  //talk about convoluted calculations...
+                    num = 0.7f * num + 0.3f * num;  //talk about convoluted calculations...
                     actor.needs.rest.TickResting(num);
                     if(actor.needs.rest.CurLevel >= .99f * RestUtility.WakeThreshold(actor))
                     {

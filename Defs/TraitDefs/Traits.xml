@@ -504,6 +504,7 @@
 	
 	<TraitDef>
 		<defName>Undead</defName>
+		<commonality>0</commonality>	
 		<disabledWorkTags> 
 			<li>Caring</li>
 			<li>Social</li>

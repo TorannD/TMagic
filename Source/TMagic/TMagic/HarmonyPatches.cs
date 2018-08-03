@@ -213,7 +213,7 @@ namespace TorannMagic
                                 if (flag6)
                                 {
                                     float num = (!pawn.RaceProps.Animal) ? 0f : 0f;
-                                    bool flag7 = !__instance.forceIncap && dinfo.HasValue && dinfo.Value.Def.externalViolence && (pawn.Faction == null || !pawn.Faction.IsPlayer) && !pawn.IsPrisonerOfColony && pawn.RaceProps.IsFlesh && Rand.Value < num;
+                                    bool flag7 = !__instance.forceIncap && dinfo.HasValue && dinfo.Value.Def.ExternalViolenceFor(pawn) && (pawn.Faction == null || !pawn.Faction.IsPlayer) && !pawn.IsPrisonerOfColony && pawn.RaceProps.IsFlesh && Rand.Value < num;
                                     if (flag7)
                                     {
                                         pawn.Kill(dinfo, null);
@@ -1055,10 +1055,24 @@ namespace TorannMagic
                                     pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Priest"), 4, false));
                                     break;
                                 case 10:
-                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Warlock"), 4, false));
+                                    if (pawn.gender != Gender.Female)
+                                    {
+                                        pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Warlock"), 4, false));
+                                    }
+                                    else
+                                    {
+                                        pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Succubus"), 4, false));
+                                    }
                                     break;
                                 case 11:
-                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Succubus"), 4, false));
+                                    if (pawn.gender != Gender.Male)
+                                    {
+                                        pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Succubus"), 4, false));
+                                    }
+                                    else
+                                    {
+                                        pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Warlock"), 4, false));
+                                    }
                                     break;
                                 case 12:
                                     pawn.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Bard"), 0, false));
@@ -1620,6 +1634,29 @@ namespace TorannMagic
                 return true;
             }
         }
+
+        [HarmonyPatch(typeof(ColonistBarColonistDrawer), "DrawIcons", null)]
+        public class ColonistBarColonistDrawer_Patch
+        {
+            public static bool Prefix(ColonistBarColonistDrawer __instance, ref Rect rect, Pawn colonist)
+            {
+                if (!colonist.Dead)
+                {
+                    float num = 20f * Find.ColonistBar.Scale;
+                    Vector2 vector = new Vector2(rect.x + 1f, rect.yMax - num - 1f);
+                    if (colonist.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")))
+                    {
+                        rect = new Rect(vector.x, vector.y, num, num);
+                        GUI.DrawTexture(rect, TM_MatPool.Icon_Undead);
+                        TooltipHandler.TipRegion(rect, "TM_Icon_Undead".Translate());
+                        vector.x += num;
+                    }
+                }
+                return true;
+            }            
+        }
+
+        
 
         [HarmonyPatch(typeof(Pawn_InteractionsTracker), "InteractionsTrackerTick", null)]
         public class InteractionsTrackerTick_Patch

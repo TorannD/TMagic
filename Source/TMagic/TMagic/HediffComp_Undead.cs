@@ -182,20 +182,14 @@ namespace TorannMagic
                         }
                     }
 
-                    using (IEnumerator<BodyPartRecord> enumerator = pawn.health.hediffSet.GetInjuredParts().GetEnumerator())
+                    using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffsTendable().GetEnumerator())
                     {
                         while (enumerator.MoveNext())
                         {
-                            BodyPartRecord rec = enumerator.Current;
-                            IEnumerable<Hediff_Injury> arg_BB_0 = pawn.health.hediffSet.GetHediffs<Hediff_Injury>();
-                            Func<Hediff_Injury, bool> arg_BB_1;
-                            arg_BB_1 = ((Hediff_Injury injury) => injury.Part == rec);
-                            foreach (Hediff_Injury currentTendable in arg_BB_0.Where(arg_BB_1))
+                            Hediff rec = enumerator.Current;
+                            if (rec.TendableNow()) // && !currentTendable.IsPermanent()
                             {
-                                if (currentTendable.TendableNow() && !currentTendable.IsPermanent())
-                                {
-                                    currentTendable.Tended(1, 1);
-                                }
+                                rec.Tended(1, 1);
                             }
                         }
                     }
