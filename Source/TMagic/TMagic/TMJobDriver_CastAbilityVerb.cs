@@ -1,6 +1,7 @@
 ﻿using RimWorld;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Verse;
 using Verse.AI;
 using AbilityUser;
@@ -56,16 +57,12 @@ namespace TorannMagic
                     {
                         if (this.pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                         {
-                            CompAbilityUserMight mightComp = this.pawn.GetComp<CompAbilityUserMight>();
-                            CompAbilityUserMagic magicComp = this.pawn.GetComp<CompAbilityUserMagic>();
-                            if (mightComp.mimicAbility != null && mightComp.mimicAbility.MainVerb.verbClass == arg_45_0.verbProps.verbClass)
-                            {
-                                mightComp.RemovePawnAbility(mightComp.mimicAbility);
-                            }
-                            if (magicComp.mimicAbility != null && magicComp.mimicAbility.MainVerb.verbClass == arg_45_0.verbProps.verbClass)
-                            {
-                                magicComp.RemovePawnAbility(magicComp.mimicAbility);
-                            }
+                            RemoveMimicAbility(arg_45_0);
+                        }
+
+                        if (this.pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
+                        {
+                            PsionicEnergyCost(arg_45_0);                            
                         }
                     }
                     
@@ -159,24 +156,17 @@ namespace TorannMagic
                                 {
                                     if (this.pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                                     {
-                                        CompAbilityUserMight mightComp = this.pawn.GetComp<CompAbilityUserMight>();
-                                        CompAbilityUserMagic magicComp = this.pawn.GetComp<CompAbilityUserMagic>();
-                                        if (mightComp.mimicAbility != null && mightComp.mimicAbility.MainVerb.verbClass == arg_45_0.verbProps.verbClass)
-                                        {
-                                            mightComp.RemovePawnAbility(mightComp.mimicAbility);
-                                        }
-                                        if (magicComp.mimicAbility != null && magicComp.mimicAbility.MainVerb.verbClass == arg_45_0.verbProps.verbClass)
-                                        {
-                                            magicComp.RemovePawnAbility(magicComp.mimicAbility);
-                                        }
+                                        RemoveMimicAbility(arg_45_0);                                        
+                                    }
+
+                                    if(this.pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
+                                    {
+                                        PsionicEnergyCost(arg_45_0);
                                     }
                                 }
-                                Log.Message("selecting target of verb");
                                 LocalTargetInfo target = toil.actor.jobs.curJob.GetTarget(TargetIndex.A); //TargetLocA;  //
                                 bool canFreeIntercept2 = false;
-                                Log.Message("casting verb");
                                 arg_45_0.TryStartCastOn(target, false, canFreeIntercept2);
-                                Log.Message("finishing verb action");
                                 using (IEnumerator<Hediff> enumerator = this.pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
                                 {
                                     while (enumerator.MoveNext())
@@ -201,7 +191,6 @@ namespace TorannMagic
                             {
                                 if (this.duration <= 5)
                                 {
-                                    Log.Message("finishing job successfully");
                                     curJob.Ability.PostAbilityAttempt();
                                 }                               
                             });
@@ -236,6 +225,38 @@ namespace TorannMagic
                         Messages.Message("TM_OutOfRange".Translate(), MessageTypeDefOf.RejectInput);
                     }
                 }
+            }
+        }
+
+        private void PsionicEnergyCost(Verb verbCast)
+        {
+            if (verbCast.ToString().StartsWith("TorannMagic.Verb_PsionicBlast"))
+            {
+                HealthUtility.AdjustSeverity(this.pawn, HediffDef.Named("TM_PsionicHD"), -20f);
+            }
+            else if (verbCast.ToString().StartsWith("TorannMagic.Effect_PsionicDash"))
+            {
+                float sevReduct = 8f - this.pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PsionicDash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicDash_eff").level;
+                HealthUtility.AdjustSeverity(this.pawn, HediffDef.Named("TM_PsionicHD"), -sevReduct);
+            }
+            else if(verbCast.ToString().StartsWith("TorannMagic.Effect_PsionicStorm"))
+            {
+                //float sevReduct = 65 - (5 * this.pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PsionicStorm.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicStorm_eff").level);
+                HealthUtility.AdjustSeverity(this.pawn, HediffDef.Named("TM_PsionicHD"), -100);
+            }
+        }
+
+        private void RemoveMimicAbility(Verb verbCast)
+        {
+            CompAbilityUserMight mightComp = this.pawn.GetComp<CompAbilityUserMight>();
+            CompAbilityUserMagic magicComp = this.pawn.GetComp<CompAbilityUserMagic>();
+            if (mightComp.mimicAbility != null && mightComp.mimicAbility.MainVerb.verbClass == verbCast.verbProps.verbClass)
+            {
+                mightComp.RemovePawnAbility(mightComp.mimicAbility);
+            }
+            if (magicComp.mimicAbility != null && magicComp.mimicAbility.MainVerb.verbClass == verbCast.verbProps.verbClass)
+            {
+                magicComp.RemovePawnAbility(magicComp.mimicAbility);
             }
         }
     }

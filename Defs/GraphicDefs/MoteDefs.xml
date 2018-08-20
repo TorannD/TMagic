@@ -15,6 +15,58 @@
   </ThingDef>
   
   <ThingDef ParentName="MoteBase">
+    <defName>Mote_PsiCurrent</defName>
+    <graphicData>
+      <texPath>Motes/PsiCurrentMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.1</fadeInTime>
+      <solidTime>0.05</solidTime>
+      <fadeOutTime>0.1</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_Psi</defName>
+    <graphicData>
+      <texPath>Motes/PsiMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <mote>
+      <fadeInTime>0.02</fadeInTime>
+      <solidTime>0.12</solidTime>
+      <fadeOutTime>0.10</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_PsiBlastStart</defName>
+    <graphicData>
+      <texPath>Motes/PsiBlastStartMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.35</fadeInTime>
+      <solidTime>0.03</solidTime>
+      <fadeOutTime>1</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_PsiBlastEnd</defName>
+    <graphicData>
+      <texPath>Motes/PsiBlastEndMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.35</fadeInTime>
+      <solidTime>0.03</solidTime>
+      <fadeOutTime>1</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
     <defName>Mote_Demon_Flame</defName>
     <graphicData>
       <texPath>Motes/Demon/flame</texPath>
@@ -437,6 +489,22 @@
       <texPath>Things/Mote/PowerBeam</texPath>
       <shaderType>MoteGlow</shaderType>
 	  <color>(0.6,0.8,1.0,0.8)</color>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.5</fadeInTime>
+      <solidTime>9.3</solidTime>
+      <fadeOutTime>2.0</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_PowerBeamPsionic</defName>
+    <graphicData>
+      <texPath>Things/Mote/PowerBeam</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <color>(0.0,0.5,1.0,1)</color>
     </graphicData>
     <altitudeLayer>MoteOverhead</altitudeLayer>
     <drawOffscreen>true</drawOffscreen>

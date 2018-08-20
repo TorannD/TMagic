@@ -88,8 +88,8 @@
         <warmupTime>.1</warmupTime>
         <SecondsToRecharge>45</SecondsToRecharge>
         <range>40</range>
-        <soundCast>Shot_SniperRifle</soundCast>
-		<soundCastTail>GunTail_Heavy</soundCastTail>
+<!--         <soundCast>Shot_SniperRifle</soundCast>
+		<soundCastTail>GunTail_Heavy</soundCastTail> -->
         <muzzleFlashScale>20</muzzleFlashScale>
         <isPrimary>true</isPrimary>
    	    <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
@@ -143,8 +143,8 @@ Recharge 45s</description>
         <warmupTime>2.5</warmupTime>
         <SecondsToRecharge>45</SecondsToRecharge>
         <range>20</range>
-        <soundCast>InfernoCannon_Fire</soundCast>
-		<soundCastTail>GunTail_Heavy</soundCastTail>
+<!--         <soundCast>InfernoCannon_Fire</soundCast>
+		<soundCastTail>GunTail_Heavy</soundCastTail> -->
         <muzzleFlashScale>5</muzzleFlashScale>
         <isPrimary>true</isPrimary>
    	    <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
@@ -180,8 +180,8 @@ Recharge 43s</description>
         <warmupTime>2.3</warmupTime>
         <SecondsToRecharge>43</SecondsToRecharge>
         <range>22</range>
-        <soundCast>InfernoCannon_Fire</soundCast>
-		<soundCastTail>GunTail_Heavy</soundCastTail>
+<!--         <soundCast>InfernoCannon_Fire</soundCast>
+		<soundCastTail>GunTail_Heavy</soundCastTail> -->
         <muzzleFlashScale>5</muzzleFlashScale>
         <isPrimary>true</isPrimary>
    	    <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
@@ -217,8 +217,8 @@ Recharge 41s</description>
         <warmupTime>2.1</warmupTime>
         <SecondsToRecharge>41</SecondsToRecharge>
         <range>25</range>
-        <soundCast>InfernoCannon_Fire</soundCast>
-		<soundCastTail>GunTail_Heavy</soundCastTail>
+<!--         <soundCast>InfernoCannon_Fire</soundCast>
+		<soundCastTail>GunTail_Heavy</soundCastTail> -->
         <muzzleFlashScale>5</muzzleFlashScale>
         <isPrimary>true</isPrimary>
    	    <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
@@ -254,8 +254,8 @@ Recharge 40s</description>
         <warmupTime>1.0</warmupTime>
         <SecondsToRecharge>40</SecondsToRecharge>
         <range>27</range>
-        <soundCast>InfernoCannon_Fire</soundCast>
-		<soundCastTail>GunTail_Heavy</soundCastTail>
+<!--         <soundCast>InfernoCannon_Fire</soundCast>
+		<soundCastTail>GunTail_Heavy</soundCastTail> -->
         <muzzleFlashScale>5</muzzleFlashScale>
         <isPrimary>true</isPrimary>
    	    <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
@@ -303,8 +303,8 @@ Recharge 40s</description>
         <warmupTime>1</warmupTime>
         <SecondsToRecharge>10</SecondsToRecharge>
         <range>45</range>
-        <soundCast>Shot_Revolver</soundCast>
-		<soundCastTail>GunTail_Heavy</soundCastTail>
+<!--         <soundCast>Shot_Revolver</soundCast>
+		<soundCastTail>GunTail_Heavy</soundCastTail> -->
         <muzzleFlashScale>25</muzzleFlashScale>
         <isPrimary>true</isPrimary>
 		<isViolent>true</isViolent>

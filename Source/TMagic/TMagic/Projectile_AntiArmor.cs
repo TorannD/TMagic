@@ -1,5 +1,6 @@
 ﻿using RimWorld;
 using Verse;
+using System;
 using AbilityUser;
 using System.Linq;
 using UnityEngine;
@@ -32,55 +33,61 @@ namespace TorannMagic
 
             Pawn pawn = this.launcher as Pawn;
             Pawn victim = hitThing as Pawn;
-
-            CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
-            MightPowerSkill pwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_AntiArmor.FirstOrDefault((MightPowerSkill x) => x.label == "TM_AntiArmor_pwr");
-            MightPowerSkill ver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_AntiArmor.FirstOrDefault((MightPowerSkill x) => x.label == "TM_AntiArmor_ver");
-            MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
-            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            pwrVal = pwr.level;
-            verVal = ver.level;
-            if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            try
             {
-                MightPowerSkill mpwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
-                MightPowerSkill mver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
-                pwrVal = mpwr.level;
-                verVal = mver.level;
-            }
-            if (settingsRef.AIHardMode && !pawn.IsColonist)
-            {
-                pwrVal = 3;
-                verVal = 3;
-            }
-            this.Initialize(base.Position, pawn);
-
-            if (victim != null && !victim.Dead && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracyPawn, true)))
-            {
-                int dmg = GetWeaponDmg(pawn, this.def);
-                if (!victim.RaceProps.IsFlesh)
+                CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
+                MightPowerSkill pwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_AntiArmor.FirstOrDefault((MightPowerSkill x) => x.label == "TM_AntiArmor_pwr");
+                MightPowerSkill ver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_AntiArmor.FirstOrDefault((MightPowerSkill x) => x.label == "TM_AntiArmor_ver");
+                MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
+                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                pwrVal = pwr.level;
+                verVal = ver.level;
+                if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                 {
-                    MoteMaker.ThrowMicroSparks(victim.Position.ToVector3(), map);
-                    damageEntities(victim, null, dmg, DamageDefOf.Bullet);
-                    MoteMaker.MakeStaticMote(victim.Position, pawn.Map, ThingDefOf.Mote_ExplosionFlash, 4f);
-                    damageEntities(victim, null, GetWeaponDmgMech(pawn, dmg), DamageDefOf.Bullet);
-                    MoteMaker.ThrowMicroSparks(victim.Position.ToVector3(), map);
-                    for (int i = 0; i < 1 + verVal; i++)
+                    MightPowerSkill mpwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+                    MightPowerSkill mver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                    pwrVal = mpwr.level;
+                    verVal = mver.level;
+                }
+                if (settingsRef.AIHardMode && !pawn.IsColonist)
+                {
+                    pwrVal = 3;
+                    verVal = 3;
+                }
+                this.Initialize(base.Position, pawn);
+
+                if (victim != null && !victim.Dead && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracyPawn, true)))
+                {
+                    int dmg = GetWeaponDmg(pawn, this.def);
+                    if (!victim.RaceProps.IsFlesh)
                     {
-                        GenExplosion.DoExplosion(newPos, map, Rand.Range((.1f) * (1 + verVal), (.3f) * (1 + verVal)), DamageDefOf.Bomb, this.launcher, (this.def.projectile.GetDamageAmount(1,null) / 4) * (1 + verVal), 0, SoundDefOf.MetalHitImportant, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, true);
-                        GenExplosion.DoExplosion(newPos, map, Rand.Range((.2f)*(1+verVal), (.4f)*(1+verVal)), DamageDefOf.Stun, this.launcher, (this.def.projectile.GetDamageAmount(1,null) / 2) * (1+ verVal), 0, SoundDefOf.MetalHitImportant, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, true);
-                        newPos = GetNewPos(newPos, pawn.Position.x <= victim.Position.x, pawn.Position.z <= victim.Position.z, false, 0, 0, xProb, 1 - xProb);                        
-                        MoteMaker.ThrowMicroSparks(victim.Position.ToVector3(), base.Map);
-                        MoteMaker.ThrowDustPuff(newPos, map, Rand.Range(1.2f, 2.4f));
+                        MoteMaker.ThrowMicroSparks(victim.Position.ToVector3(), map);
+                        damageEntities(victim, null, dmg, this.def.projectile.damageDef);
+                        MoteMaker.MakeStaticMote(victim.Position, pawn.Map, ThingDefOf.Mote_ExplosionFlash, 4f);
+                        damageEntities(victim, null, GetWeaponDmgMech(pawn, dmg), this.def.projectile.damageDef);
+                        MoteMaker.ThrowMicroSparks(victim.Position.ToVector3(), map);
+                        for (int i = 0; i < 1 + verVal; i++)
+                        {
+                            GenExplosion.DoExplosion(newPos, map, Rand.Range((.1f) * (1 + verVal), (.3f) * (1 + verVal)), DamageDefOf.Bomb, this.launcher, (this.def.projectile.GetDamageAmount(1, null) / 4) * (1 + verVal), 0, SoundDefOf.MetalHitImportant, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, true);
+                            GenExplosion.DoExplosion(newPos, map, Rand.Range((.2f) * (1 + verVal), (.4f) * (1 + verVal)), DamageDefOf.Stun, this.launcher, (this.def.projectile.GetDamageAmount(1, null) / 2) * (1 + verVal), 0, SoundDefOf.MetalHitImportant, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, true);
+                            newPos = GetNewPos(newPos, pawn.Position.x <= victim.Position.x, pawn.Position.z <= victim.Position.z, false, 0, 0, xProb, 1 - xProb);
+                            MoteMaker.ThrowMicroSparks(victim.Position.ToVector3(), base.Map);
+                            MoteMaker.ThrowDustPuff(newPos, map, Rand.Range(1.2f, 2.4f));
+                        }
+                    }
+                    else
+                    {
+                        damageEntities(victim, null, dmg, this.def.projectile.damageDef);
                     }
                 }
                 else
                 {
-                    damageEntities(victim, null, dmg, DamageDefOf.Bullet);
+                    Log.Message("No valid target for anti armor shot or missed");
                 }
             }
-            else
+            catch(NullReferenceException ex)
             {
-                Log.Message("No valid target for anti armor shot or missed");
+                //
             }
         }
 

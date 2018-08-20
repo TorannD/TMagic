@@ -97,7 +97,7 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.explosion, "explosion", false, false);
             Scribe_References.Look<Thing>(ref this.assignedTarget, "assignedTarget", false);
             Scribe_References.Look<Thing>(ref this.launcher, "launcher", false);
-            Scribe_References.Look<Thing>(ref this.flyingThing, "flyingThing", false);
+            Scribe_Deep.Look<Thing>(ref this.flyingThing, "flyingThing", new object[0]);
         }
 
         private void Initialize()
@@ -106,7 +106,8 @@ namespace TorannMagic
             {
                 MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
             }
-            this.speed = this.speed * this.force;
+            
+            //flyingThing.ThingID += Rand.Range(0, 2147).ToString();
             this.initialize = false;
         }
 
@@ -122,14 +123,14 @@ namespace TorannMagic
 
         public void Launch(Thing launcher, Vector3 origin, LocalTargetInfo targ, Thing flyingThing, DamageInfo? newDamageInfo = null)
         {
-            this.Initialize();
+            
             bool spawned = flyingThing.Spawned;            
             pawn = launcher as Pawn;
             if (spawned)
             {               
                 flyingThing.DeSpawn();
             }
-
+            this.speed = this.speed * this.force;
             this.launcher = launcher;
             this.origin = origin;
             this.impactDamage = newDamageInfo;
@@ -142,6 +143,7 @@ namespace TorannMagic
             }
             this.destination = targ.Cell.ToVector3Shifted();
             this.ticksToImpact = this.StartingTicksToImpact;
+            this.Initialize();
         }        
 
         public override void Tick()
@@ -286,7 +288,7 @@ namespace TorannMagic
         public void damageEntities(Pawn e, float d, DamageDef type)
         {
             int amt = Mathf.RoundToInt(Rand.Range(.75f, 1.25f) * d);
-            DamageInfo dinfo = new DamageInfo(type, amt, 0, (float)-1, this.pawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+            DamageInfo dinfo = new DamageInfo(type, amt, 0, (float)-1, this.launcher, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
             bool flag = e != null;
             if (flag)
             {

@@ -38,4 +38,11 @@
     <casualInterruptible>false</casualInterruptible>
   </JobDef>
   
+  <JobDef>
+    <defName>JobDriver_PsionicBarrier</defName>
+    <driverClass>TorannMagic.JobDriver_PsionicBarrier</driverClass>
+    <reportString>projecting psionic barrier</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  
 </Defs>

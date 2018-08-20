@@ -5,7 +5,10 @@
     <race>Human</race>
     <defaultFactionType>Seers</defaultFactionType>
     <baseRecruitDifficulty>0.80</baseRecruitDifficulty>
-    <backstoryCategory>Raider</backstoryCategory>
+    <backstoryCategories>
+      <li>Civil</li>
+	  <li>Raider</li>
+    </backstoryCategories>
     <chemicalAddictionChance>0.15</chemicalAddictionChance>
     <invNutrition>2.55</invNutrition>
     <itemQuality>Excellent</itemQuality>

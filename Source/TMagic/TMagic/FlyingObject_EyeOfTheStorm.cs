@@ -41,6 +41,7 @@ namespace TorannMagic
         protected Thing launcher;
         protected Thing assignedTarget;
         protected Thing flyingThing;
+        Pawn pawn;
 
         public DamageInfo? impactDamage;
 
@@ -99,9 +100,7 @@ namespace TorannMagic
             {
                 return this.ExactPosition;
             }
-        }
-
-        Pawn pawn;
+        }       
 
         public override void ExposeData()
         {
@@ -118,7 +117,8 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.initialized, "initialized", false, false);
             Scribe_References.Look<Thing>(ref this.assignedTarget, "assignedTarget", false);
             Scribe_References.Look<Thing>(ref this.launcher, "launcher", false);
-            Scribe_References.Look<Thing>(ref this.flyingThing, "flyingThing", false);
+            Scribe_References.Look<Pawn>(ref this.pawn, "pawn", false);
+            Scribe_Deep.Look<Thing>(ref this.flyingThing, "flyingThing", new object[0]);
         }
 
         private void Initialize()
@@ -129,6 +129,7 @@ namespace TorannMagic
                 SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                 MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
             }
+            flyingThing.ThingID += Rand.Range(0, 214).ToString();
             this.initialized = false;
         }
 
@@ -353,11 +354,11 @@ namespace TorannMagic
             bool flag = hitThing == null;
             if (flag)
             {
-                Pawn pawn;
-                bool flag2 = (pawn = (base.Position.GetThingList(base.Map).FirstOrDefault((Thing x) => x == this.assignedTarget) as Pawn)) != null;
+                Pawn hitPawn;
+                bool flag2 = (hitPawn = (base.Position.GetThingList(base.Map).FirstOrDefault((Thing x) => x == this.assignedTarget) as Pawn)) != null;
                 if (flag2)
                 {
-                    hitThing = pawn;
+                    hitThing = hitPawn;
                 }
             }
             bool hasValue = this.impactDamage.HasValue;

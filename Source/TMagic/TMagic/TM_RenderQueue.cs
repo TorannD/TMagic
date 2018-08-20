@@ -52,6 +52,8 @@ namespace TorannMagic
         public static readonly Material bladedancerMarkMat = MaterialPool.MatFrom("Other/FighterMark", ShaderDatabase.Transparent, Color.gray);
         public static readonly Color sniperMarkColor = new Color(.7f, 0f, 0f);
         public static readonly Material sniperMarkMat = MaterialPool.MatFrom("Other/FighterMark", ShaderDatabase.Transparent, TM_RenderQueue.sniperMarkColor);
+        public static readonly Color psionicMarkColor = new Color(0f, .5f, 1f);
+        public static readonly Material psionicMarkMat = MaterialPool.MatFrom("Other/PsiMark", ShaderDatabase.Transparent, TM_RenderQueue.psionicMarkColor);
 
     }
 }

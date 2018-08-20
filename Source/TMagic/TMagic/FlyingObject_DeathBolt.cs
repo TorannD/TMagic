@@ -33,7 +33,6 @@ namespace TorannMagic
         private bool impacted = false;
         protected int ticksFollowingImpact =0;
 
-        protected Thing launcher;
         protected Thing assignedTarget;
         protected Thing flyingThing;
         Pawn pawn;
@@ -108,8 +107,9 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.impacted, "impacted", false, false);
             Scribe_Values.Look<bool>(ref this.powered, "powered", false, false);
             Scribe_References.Look<Thing>(ref this.assignedTarget, "assignedTarget", false);
-            Scribe_References.Look<Thing>(ref this.launcher, "launcher", false);
-            Scribe_References.Look<Thing>(ref this.flyingThing, "flyingThing", false);
+            Scribe_References.Look<Pawn>(ref this.pawn, "pawn", false);
+            //Scribe_References.Look<Thing>(ref this.flyingThing, "flyingThing", false);
+            Scribe_Deep.Look<Thing>(ref this.flyingThing, "flyingThing", new object[0]);
         }
 
         private void Initialize()
@@ -126,7 +126,8 @@ namespace TorannMagic
                     comp.PowerModifier--;
                     this.powered = true;
                 }
-            }
+            }            
+            flyingThing.ThingID += Rand.Range(0, 214).ToString();
             this.initialized = false;
         }
 
@@ -143,7 +144,7 @@ namespace TorannMagic
         public void Launch(Thing launcher, Vector3 origin, LocalTargetInfo targ, Thing flyingThing, DamageInfo? newDamageInfo = null)
         {
             bool spawned = flyingThing.Spawned;
-            pawn = launcher as Pawn;
+            this.pawn = launcher as Pawn;
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
             foreach (MagicPower current in comp.MagicData.MagicPowersN)
             {
@@ -177,7 +178,6 @@ namespace TorannMagic
             {
                 flyingThing.DeSpawn();
             }
-            this.launcher = launcher;
             this.origin = origin;
             this.impactDamage = newDamageInfo;
             this.speed = this.def.projectile.speed;
@@ -187,7 +187,7 @@ namespace TorannMagic
             {
                 this.assignedTarget = targ.Thing;
             }
-            float distanceAccuracyModifier = (targ.Cell.ToVector3Shifted() - this.launcher.Position.ToVector3Shifted()).MagnitudeHorizontal() *.1f;
+            float distanceAccuracyModifier = (targ.Cell.ToVector3Shifted() - this.pawn.Position.ToVector3Shifted()).MagnitudeHorizontal() *.1f;
             this.destination = targ.Cell.ToVector3Shifted() + new Vector3(Rand.Range(-distanceAccuracyModifier, distanceAccuracyModifier), 0f, Rand.Range(-distanceAccuracyModifier, distanceAccuracyModifier));
             this.ticksToImpact = this.StartingTicksToImpact;
             this.Initialize();
@@ -240,7 +240,7 @@ namespace TorannMagic
                         spreadingDarknessCell = cellRect.RandomCell;
                         if (spreadingDarknessCell.IsValid && spreadingDarknessCell.InBounds(base.Map))
                         {
-                            GenExplosion.DoExplosion(spreadingDarknessCell, base.Map, .4f, TMDamageDefOf.DamageDefOf.TM_DeathBolt, this.launcher as Pawn, Mathf.RoundToInt((Rand.Range(.4f * this.def.projectile.GetDamageAmount(1, null), .8f * this.def.projectile.GetDamageAmount(1, null)) + (3f * pwrVal)) * this.arcaneDmg), 2, this.def.projectile.soundExplode, def, null, null, null, 0f, 1, false, null, 0f, 0, 0.0f, true);
+                            GenExplosion.DoExplosion(spreadingDarknessCell, base.Map, .4f, TMDamageDefOf.DamageDefOf.TM_DeathBolt, this.pawn, Mathf.RoundToInt((Rand.Range(.4f * this.def.projectile.GetDamageAmount(1, null), .8f * this.def.projectile.GetDamageAmount(1, null)) + (3f * pwrVal)) * this.arcaneDmg), 2, this.def.projectile.soundExplode, def, null, null, null, 0f, 1, false, null, 0f, 0, 0.0f, true);
                             TM_MoteMaker.ThrowDiseaseMote(base.Position.ToVector3Shifted(), base.Map, .6f);
                             if (powered)
                             {
@@ -309,7 +309,7 @@ namespace TorannMagic
                 }
             }        
 
-            GenExplosion.DoExplosion(base.Position, base.Map, this.radius, TMDamageDefOf.DamageDefOf.TM_DeathBolt, this.launcher as Pawn, Mathf.RoundToInt((Rand.Range(.6f*this.def.projectile.GetDamageAmount(1,null), 1.1f*this.def.projectile.GetDamageAmount(1,null)) + (5f * pwrVal)) * this.arcaneDmg), 4, this.def.projectile.soundExplode, def, null, null, null, 0f, 1, false, null, 0f, 0, 0.0f, true);
+            GenExplosion.DoExplosion(base.Position, base.Map, this.radius, TMDamageDefOf.DamageDefOf.TM_DeathBolt, this.pawn, Mathf.RoundToInt((Rand.Range(.6f*this.def.projectile.GetDamageAmount(1,null), 1.1f*this.def.projectile.GetDamageAmount(1,null)) + (5f * pwrVal)) * this.arcaneDmg), 4, this.def.projectile.soundExplode, def, null, null, null, 0f, 1, false, null, 0f, 0, 0.0f, true);
 
             this.ticksFollowingImpact = this.verVal * 15;
             this.impacted = true;

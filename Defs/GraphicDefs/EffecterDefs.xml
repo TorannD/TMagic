@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <EffecterDef>
+    <defName>TM_GiantExplosion</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_GiantExplosion</moteDef>
+        <scale>
+          <min>15</min>
+          <max>15</max>
+        </scale>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_GiantExplosionInner</moteDef>
+        <scale>
+          <min>5</min>
+          <max>5</max>
+        </scale>
+      </li>
+    </children>
+  </EffecterDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>TM_Mote_GiantExplosion</defName>
+    <graphicData>
+      <texPath>Things/Mote/PowerBeam</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <color>(0.0,0.5,1.0,1)</color>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.01</fadeInTime>
+      <solidTime>0</solidTime>
+      <fadeOutTime>0.4</fadeOutTime>
+      <growthRate>-35</growthRate>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>TM_Mote_GiantExplosionInner</defName>
+    <graphicData>
+      <texPath>Things/Mote/PowerBeam</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <color>(0.0,0.35,0.7,1)</color>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.01</fadeInTime>
+      <solidTime>0</solidTime>
+      <fadeOutTime>0.4</fadeOutTime>
+      <growthRate>-20</growthRate>
+    </mote>
+  </ThingDef>
+  
+</Defs>

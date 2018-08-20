@@ -5,7 +5,7 @@
   <BodyPartDef>
     <defName>Ele_Head</defName>
     <label>head</label>
-    <hitPoints>50</hitPoints>
+    <hitPoints>35</hitPoints>
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
     <canSuggestAmputation>false</canSuggestAmputation>
@@ -14,7 +14,7 @@
   <BodyPartDef>
     <defName>Ele_Skull</defName>
     <label>skull</label>
-    <hitPoints>40</hitPoints>
+    <hitPoints>30</hitPoints>
     <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
     <skinCovered>false</skinCovered>
     <solid>true</solid>
@@ -25,7 +25,7 @@
   <BodyPartDef>
     <defName>Ele_Brain</defName>
     <label>brain</label>
-    <hitPoints>10</hitPoints>
+    <hitPoints>8</hitPoints>
     <permanentInjuryChanceFactor>1</permanentInjuryChanceFactor>
 	<bleedRate>2</bleedRate>
     <skinCovered>false</skinCovered>
@@ -38,7 +38,7 @@
   <BodyPartDef>
     <defName>Ele_Heart</defName>
     <label>heart</label>
-    <hitPoints>40</hitPoints>
+    <hitPoints>30</hitPoints>
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <bleedRate>5</bleedRate>
     <skinCovered>false</skinCovered>
@@ -53,7 +53,7 @@
   <BodyPartDef>
     <defName>Ele_LeftArm</defName>
     <label>left arm</label>
-    <hitPoints>80</hitPoints>
+    <hitPoints>60</hitPoints>
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
     <tags>
@@ -70,7 +70,7 @@
   <BodyPartDef>
     <defName>Ele_RightArm</defName>
     <label>right arm</label>
-    <hitPoints>80</hitPoints>
+    <hitPoints>60</hitPoints>
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
     <tags>
@@ -87,7 +87,7 @@
   <BodyPartDef>
     <defName>Ele_Horn</defName>
     <label>horn</label>
-    <hitPoints>50</hitPoints>
+    <hitPoints>36</hitPoints>
     <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
     <skinCovered>false</skinCovered>
     <canSuggestAmputation>false</canSuggestAmputation>
@@ -104,7 +104,7 @@
   <BodyPartDef>
     <defName>Ele_Eye</defName>
     <label>eye</label>
-    <hitPoints>30</hitPoints>
+    <hitPoints>24</hitPoints>
     <skinCovered>false</skinCovered>
 	<frostbiteVulnerability>1</frostbiteVulnerability>
     <beautyRelated>true</beautyRelated>
@@ -123,7 +123,7 @@
   <BodyPartDef>
     <defName>Ele_LeftEar</defName>
     <label>left ear</label>
-    <hitPoints>20</hitPoints>
+    <hitPoints>16</hitPoints>
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
     <beautyRelated>true</beautyRelated>
@@ -135,7 +135,7 @@
   <BodyPartDef>
     <defName>Ele_RightEar</defName>
     <label>right ear</label>
-    <hitPoints>20</hitPoints>
+    <hitPoints>16</hitPoints>
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
     <beautyRelated>true</beautyRelated>
@@ -147,7 +147,7 @@
   <BodyPartDef>
     <defName>Ele_Jaw</defName>
     <label>jaw</label>
-    <hitPoints>30</hitPoints>
+    <hitPoints>24</hitPoints>
     <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
     <skinCovered>false</skinCovered>
     <solid>true</solid>
@@ -162,7 +162,7 @@
   <BodyPartDef>
     <defName>Ele_Neck</defName>
     <label>neck</label>
-    <hitPoints>30</hitPoints>
+    <hitPoints>24</hitPoints>
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <bleedRate>2</bleedRate>
     <skinCovered>true</skinCovered>
@@ -177,7 +177,7 @@
   <BodyPartDef>
     <defName>Ele_Spine</defName>
     <label>spine</label>
-    <hitPoints>80</hitPoints>
+    <hitPoints>60</hitPoints>
     <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
     <skinCovered>false</skinCovered>
     <solid>true</solid>
@@ -190,7 +190,7 @@
   <BodyPartDef>
     <defName>Ele_Abdomen</defName>
     <label>abdomen</label>
-    <hitPoints>60</hitPoints>
+    <hitPoints>45</hitPoints>
     <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
     <skinCovered>false</skinCovered>
     <solid>false</solid>
@@ -200,7 +200,7 @@
   <BodyPartDef>
     <defName>Ele_Chest</defName>
     <label>chest</label>
-    <hitPoints>120</hitPoints>
+    <hitPoints>90</hitPoints>
     <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
     <skinCovered>false</skinCovered>
     <solid>false</solid>
@@ -209,7 +209,7 @@
   <BodyPartDef>
     <defName>Ele_Base</defName>
     <label>elemental movement base</label>
-    <hitPoints>100</hitPoints>
+    <hitPoints>75</hitPoints>
     <permanentInjuryChanceFactor>0.01</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
     <tags>

@@ -3,8 +3,8 @@
 <ModMetaData>
 	<name>A RimWorld of Magic</name>
 	<author>Torann</author>
-	<targetVersion>1.0.1978</targetVersion>
-	<description>Version 2.2.1.1
+	<targetVersion>0.19.0</targetVersion>
+	<description>Version 2.2.2.1
     This mod adds magic and class abilities to RimWorld.
 	
 Specially gifted pawns can find and use assortment of arcane scripts that bestow them with special abilities.  Most abilities
@@ -36,12 +36,14 @@ Gladiator: versatile close combat specialist that thrives in the thick of battle
 
 Sniper: long range, small arms expert - excels at precision strikes that exploit enemy weaknesses.
 
-Bladedancer: close range glass cannon, excels at hit and run tactics and rapid assaults
+Bladedancer: close range glass cannon, excels at hit and run tactics and rapid assaults.
 
-Ranger: survivalist and stalwart defender, the ranger enlists the aid of animal kin to defend the colony
+Ranger: survivalist and stalwart defender, the ranger enlists the aid of animal kin to defend the colony.
 
-Faceless: masters of manipulation and deception; they can take the strength or exploit the weakness of another
+Faceless: masters of manipulation and deception; they can take the strength or exploit the weakness of another.
 
-Warlock/Succubus: forming a contract with a demon grants these classes unique powers of the mind, body, fear, and shadow
+Warlock/Succubus: forming a contract with a demon grants these classes unique powers of the mind, body, fear, and shadow.
+
+Psionic: combines physical and mental energy to perform tasks or deliver powerful attacks.
 	</description>
 </ModMetaData>

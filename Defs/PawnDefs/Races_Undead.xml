@@ -156,7 +156,9 @@
     <defName>TM_Undead</defName>
     <label>undead</label>
     <defaultFactionType>PlayerColony</defaultFactionType>
-    <backstoryCategory>Civil</backstoryCategory>
+    <backstoryCategories>
+      <li>Civil</li>
+    </backstoryCategories>
     <chemicalAddictionChance>0.00</chemicalAddictionChance>
     <apparelTags>
       <li>Spacer</li>

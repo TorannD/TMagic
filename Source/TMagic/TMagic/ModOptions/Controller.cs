@@ -104,6 +104,7 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.advFighterChance = 0.5f;
                 Settings.Instance.magicyteChance = .005f;
                 Settings.Instance.showIconsMultiSelect = true;
+                Settings.Instance.riftChallenge = 1f;
             }
         }
 

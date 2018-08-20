@@ -60,6 +60,10 @@ namespace TorannMagic
                 {
                     return flag && true;
                 }
+                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
+                {
+                    return flag && true;
+                }
 
                 return false;
                 

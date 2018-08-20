@@ -115,7 +115,14 @@ namespace TorannMagic
                 }
                 strikeNum++;
                 IEnumerable<IntVec3> newTargets = GenRadial.RadialCellsAround(base.Position, strikeNum, false);
-                cellList = newTargets.Except(targets).ToList<IntVec3>();
+                try
+                {
+                    cellList = newTargets.Except(targets).ToList<IntVec3>();
+                }
+                catch
+                {
+                    cellList = newTargets.ToList<IntVec3>();
+                }
                 targets = newTargets;
             }
         }

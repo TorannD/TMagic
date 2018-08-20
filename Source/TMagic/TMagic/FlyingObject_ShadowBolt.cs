@@ -36,7 +36,6 @@ namespace TorannMagic
         protected float speed = 30f;
         protected int ticksToImpact;
 
-        protected Thing launcher;
         protected Thing assignedTarget;
         protected Thing flyingThing;
         Pawn pawn;
@@ -101,6 +100,8 @@ namespace TorannMagic
             base.ExposeData();
             Scribe_Values.Look<Vector3>(ref this.origin, "origin", default(Vector3), false);
             Scribe_Values.Look<Vector3>(ref this.destination, "destination", default(Vector3), false);
+            Scribe_Values.Look<Vector3>(ref this.direction, "direction", default(Vector3), false);
+            Scribe_Values.Look<float>(ref this.directionAngle, "directionAngle", 0, false);
             Scribe_Values.Look<int>(ref this.ticksToImpact, "ticksToImpact", 0, false);
             Scribe_Values.Look<int>(ref this.pwrVal, "pwrVal", 0, false);
             Scribe_Values.Look<int>(ref this.verVal, "verVal", 0, false);
@@ -111,8 +112,8 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.explosion, "explosion", false, false);
             Scribe_Values.Look<bool>(ref this.initialized, "initialized", false, false);
             Scribe_References.Look<Thing>(ref this.assignedTarget, "assignedTarget", false);
-            Scribe_References.Look<Thing>(ref this.launcher, "launcher", false);
-            Scribe_References.Look<Thing>(ref this.flyingThing, "flyingThing", false);
+            Scribe_References.Look<Pawn>(ref this.pawn, "pawn", false);
+            Scribe_Deep.Look<Thing>(ref this.flyingThing, "flyingThing", new object[0]);
         }
 
         private void Initialize()
@@ -123,6 +124,7 @@ namespace TorannMagic
                 MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
             }
             GetVector();
+            flyingThing.ThingID += Rand.Range(0, 214).ToString();
             this.initialized = false;
         }
 
@@ -174,7 +176,6 @@ namespace TorannMagic
             {
                 flyingThing.DeSpawn();
             }
-            this.launcher = launcher;
             this.origin = origin;
             this.impactDamage = newDamageInfo;
             this.speed = this.def.projectile.speed;
@@ -186,7 +187,7 @@ namespace TorannMagic
             {
                 this.assignedTarget = targ.Thing;
             }
-            float distanceAccuracyModifier = (targ.Cell.ToVector3Shifted() - this.launcher.Position.ToVector3Shifted()).MagnitudeHorizontal() *.1f;
+            float distanceAccuracyModifier = (targ.Cell.ToVector3Shifted() - this.pawn.Position.ToVector3Shifted()).MagnitudeHorizontal() *.1f;
             this.destination = targ.Cell.ToVector3Shifted();
             this.ticksToImpact = this.StartingTicksToImpact;
             this.Initialize();
@@ -284,7 +285,7 @@ namespace TorannMagic
                 damageEntities(hitThing, Mathf.RoundToInt(Rand.Range(this.def.projectile.GetDamageAmount(1,null) * .75f, this.def.projectile.GetDamageAmount(1,null) * 1.25f)));
             }
             TM_MoteMaker.ThrowShadowCleaveMote(this.ExactPosition, this.Map, 2f + (.4f * pwrVal), .05f, .1f, .3f, 0, (5f+ pwrVal), this.directionAngle);
-            TorannMagicDefOf.TM_SoftExplosion.PlayOneShot(new TargetInfo(this.ExactPosition.ToIntVec3(), pawn.Map, false));
+            TorannMagicDefOf.TM_SoftExplosion.PlayOneShot(new TargetInfo(this.ExactPosition.ToIntVec3(), this.pawn.Map, false));
             int num = GenRadial.NumCellsInRadius(1+(.4f* pwrVal));
 
             Vector3 cleaveVector;

@@ -81,6 +81,14 @@
     <Compile Include="Building_TMElementalRift.cs" />
     <Compile Include="Building_TMPortal.cs" />
     <Compile Include="Building_PoisonTrap.cs" />
+    <Compile Include="Effect_PsionicStorm.cs" />
+    <Compile Include="Effect_PsionicDash.cs" />
+    <Compile Include="FlyingObject_PsionicLeap.cs" />
+    <Compile Include="FlyingObject_PsionicStorm.cs" />
+    <Compile Include="FlyingObject_PsionicDash.cs" />
+    <Compile Include="HediffComp_Psionic.cs" />
+    <Compile Include="JobDriver_PsionicBarrier.cs" />
+    <Compile Include="Projectile_PsionicBlast.cs" />
     <Compile Include="TM_MatPool.cs" />
     <Compile Include="HediffComp_DemonicPrice.cs" />
     <Compile Include="TM_WeatherEvent_MeshFlash.cs" />
@@ -119,6 +127,8 @@
     <Compile Include="Thoughts\Inspiration_MightUser.cs" />
     <Compile Include="Thoughts\InteractionWorker_MightLore.cs" />
     <Compile Include="Verb_Dominate.cs" />
+    <Compile Include="Verb_PsionicBlast.cs" />
+    <Compile Include="Verb_PsionicBarrier.cs" />
     <Compile Include="Verb_ShadowStep.cs" />
     <Compile Include="Verb_ClawSweep.cs" />
     <Compile Include="Verb_SoulBond.cs" />

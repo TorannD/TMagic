@@ -5,7 +5,8 @@
 		<defName>Seers</defName>
 		<label>arcane fold</label>
     <description>Little is known about this secretive faction.  They possess some technology, but do not seem to dependent on it. They work simple tools and defend themselves with firearms.\n\nThey participate in the the practical matters of trade, trust, and survival, but their primary interest is unclear.\n\nAccording to traveler tales and information gathered from other factions, they have knowledge, and use, of mysterious powers and artifacts.</description>
-    <pawnsPlural>seers</pawnsPlural>
+    <pawnSingular>seer</pawnSingular>
+	<pawnsPlural>seers</pawnsPlural>
     <settlementGenerationWeight>0.3</settlementGenerationWeight>
     <requiredCountAtGameStart>1</requiredCountAtGameStart>
     <canMakeRandomly>true</canMakeRandomly>
@@ -26,7 +27,10 @@
 		<factionNameMaker>NamerFactionOutlander</factionNameMaker>
 		<settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>
 		<techLevel>Neolithic</techLevel>
-		<backstoryCategory>Civil</backstoryCategory>
+		<backstoryCategories>
+			<li>Civil</li>
+			<li>Tribal</li>
+		</backstoryCategories>
 		<geneticVariance>0.8</geneticVariance>
 		<hairTags>
 			<li>Urban</li>

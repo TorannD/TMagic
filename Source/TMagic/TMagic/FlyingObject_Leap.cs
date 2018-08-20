@@ -20,8 +20,6 @@ namespace TorannMagic
 
         protected int ticksToImpact;
 
-        protected Thing launcher;
-
         protected Thing assignedTarget;
 
         protected Thing flyingThing;
@@ -97,18 +95,19 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.damageLaunched, "damageLaunched", true, false);
             Scribe_Values.Look<bool>(ref this.explosion, "explosion", false, false);
             Scribe_References.Look<Thing>(ref this.assignedTarget, "assignedTarget", false);
-            Scribe_References.Look<Thing>(ref this.launcher, "launcher", false);
-            Scribe_References.Look<Thing>(ref this.flyingThing, "flyingThing", false);
+            Scribe_References.Look<Pawn>(ref this.pawn, "pawn", false);
+            Scribe_Deep.Look<Thing>(ref this.flyingThing, "flyingThing", new object[0]);
         }
 
         private void Initialize()
         {
             if (pawn != null)
             {
-                MoteMaker.MakeStaticMote(pawn.TrueCenter(), pawn.Map, ThingDefOf.Mote_ExplosionFlash, 12f);
-                SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
+                //MoteMaker.MakeStaticMote(pawn.TrueCenter(), pawn.Map, ThingDefOf.Mote_ExplosionFlash, 12f);
+                //SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                 MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
             }
+            //flyingThing.ThingID += Rand.Range(0, 2147).ToString();
             this.initialize = false;
         }
 
@@ -124,15 +123,12 @@ namespace TorannMagic
 
         public void Launch(Thing launcher, Vector3 origin, LocalTargetInfo targ, Thing flyingThing, DamageInfo? newDamageInfo = null)
         {
-
             bool spawned = flyingThing.Spawned;            
             pawn = launcher as Pawn;
             if (spawned)
             {               
                 flyingThing.DeSpawn();
             }
-
-            this.launcher = launcher;
             this.origin = origin;
             this.impactDamage = newDamageInfo;
             this.flyingThing = flyingThing;
@@ -144,7 +140,7 @@ namespace TorannMagic
             }
             this.destination = targ.Cell.ToVector3Shifted();
             this.ticksToImpact = this.StartingTicksToImpact;
-            //this.Initialize();
+            this.Initialize();
         }        
 
         public override void Tick()

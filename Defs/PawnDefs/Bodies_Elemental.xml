@@ -12,7 +12,7 @@
 			<parts>
 				<li>
 					<def>Ele_Spine</def>
-					<coverage>0.08</coverage>
+					<coverage>0.05</coverage>
 					<depth>Inside</depth>
 				</li>
 				<li>
@@ -32,19 +32,16 @@
 				</li>
 				<li>
 					<def>Ele_Neck</def>
-					<coverage>0.16</coverage>
+					<coverage>0.13</coverage>
 					<height>Top</height>
 					<parts>
 						<li>
 							<def>Ele_Head</def>
-							<coverage>0.75</coverage>
-							<groups>
-								<li>Ele_Horn</li>
-							</groups>
+							<coverage>0.75</coverage>							
 							<parts>
 								<li>
 									<def>Ele_Skull</def>
-									<coverage>0.25</coverage>
+									<coverage>0.50</coverage>
 									<depth>Inside</depth>
 									<parts>
 										<li>
@@ -56,7 +53,10 @@
 								</li>
 								<li>
 									<def>Ele_Horn</def>
-									<coverage>0.35</coverage>
+									<coverage>0.20</coverage>
+									<groups>
+										<li>Ele_Horn</li>
+									</groups>
 								</li>
 								<li>
 									<def>Ele_Eye</def>
@@ -64,15 +64,15 @@
 								</li>
 								<li>
 									<def>Ele_LeftEar</def>
-									<coverage>0.08</coverage>
+									<coverage>0.04</coverage>
 								</li>
 								<li>
 									<def>Ele_RightEar</def>
-									<coverage>0.08</coverage>
+									<coverage>0.04</coverage>
 								</li>
 								<li>
 									<def>Ele_Jaw</def>
-									<coverage>0.10</coverage>
+									<coverage>0.08</coverage>
 									<groups>
 										<li>Teeth</li>
 									</groups>
@@ -83,21 +83,21 @@
 				</li>
 				<li>
 					<def>Ele_LeftArm</def>
-					<coverage>0.15</coverage>
+					<coverage>0.12</coverage>
 					<groups>
 						<li>Ele_LeftArm</li>
 					</groups>
 				</li>
 				<li>
 					<def>Ele_RightArm</def>
-					<coverage>0.15</coverage>
+					<coverage>0.12</coverage>
 					<groups>
 						<li>Ele_RightArm</li>
 					</groups>
 				</li>
 				<li>
 					<def>Ele_Base</def>
-					<coverage>0.17</coverage>
+					<coverage>0.15</coverage>
 					<height>Bottom</height>
 				</li>
 			</parts>

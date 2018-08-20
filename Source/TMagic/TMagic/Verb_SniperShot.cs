@@ -17,24 +17,34 @@ namespace TorannMagic
             if ( this.CasterPawn.equipment.Primary !=null && this.CasterPawn.equipment.Primary.def.IsRangedWeapon)
             {
                 Thing wpn = this.CasterPawn.equipment.Primary;
-                if (wpn.def.weaponTags.Contains("Neolithic"))
+                ThingDef newProjectile = wpn.def.Verbs.FirstOrDefault().defaultProjectile;
+                newProjectile.thingClass = this.Projectile.thingClass;
+                bool flag = false;
+                SoundInfo info = SoundInfo.InMap(new TargetInfo(this.CasterPawn.Position, this.CasterPawn.Map, false), MaintenanceType.None);
+                SoundDef.Named(wpn.def.Verbs.FirstOrDefault().soundCast.ToString()).PlayOneShot(info);
+                bool? flag4 = this.TryLaunchProjectile(newProjectile, this.currentTarget);
+                bool hasValue = flag4.HasValue;
+                if (hasValue)
                 {
-                    if (this.CasterPawn.IsColonist)
+                    bool flag5 = flag4 == true;
+                    if (flag5)
                     {
-                        Messages.Message("MustHaveGunpowderWeapon".Translate(new object[]
-                    {
-                    this.CasterPawn.LabelCap
-                    }), MessageTypeDefOf.RejectInput);
+                        flag = true;
                     }
-                    return false;
+                    bool flag6 = flag4 == false;
+                    if (flag6)
+                    {
+                        flag = false;
+                    }
                 }
-                else
+                this.PostCastShot(flag, out flag);
+                bool flag7 = !flag;
+                if (flag7)
                 {
-                    base.TryCastShot();
-                    return true;
+                    this.Ability.Notify_AbilityFailed(this.UseAbilityProps.refundsPointsAfterFailing);
                 }
-
-                
+                this.burstShotsLeft = 0;
+                return flag;  
             }
             else
             {

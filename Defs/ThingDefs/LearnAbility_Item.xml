@@ -799,6 +799,35 @@ This arcane script is incomplete and does not explain the full contract process;
   </ThingDef>
   
   <ThingDef ParentName="CombatFormBase">
+    <defName>BookOfPsionic</defName>
+    <label>Combat Power: Psionic</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a physically adept pawn how to harness psionic power.
+
+*there is a footnote at the bottom of the page etched in charcoal: "seems only those with high psychic sensitivity can learn to manipulate psionic energy... either that or find a way to jump start psychic activity"</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>7000</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/psionic</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+  <ThingDef ParentName="CombatFormBase">
     <defName>BookOfFaceless</defName>
     <label>Combat Form: Faceless</label>
     <thingClass>ThingWithComps</thingClass>

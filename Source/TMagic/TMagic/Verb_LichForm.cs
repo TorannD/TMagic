@@ -38,7 +38,7 @@ namespace TorannMagic
                 }
                 else
                 {
-                    Log.Message("Necromancer trait not found.");
+                    //Log.Message("Necromancer trait not found.");
                 }
             }
             

@@ -4,6 +4,7 @@
 <!-- Notification messages  -->
 <TM_NotEnoughMana>{0} needs more mana to cast this spell.</TM_NotEnoughMana>
 <TM_NotEnoughStamina>{0} does not have enough stamina to execute this ability.</TM_NotEnoughStamina>
+<TM_NotEnoughPsionicEnergy>{0} does not have enough psionic energy for {1}.</TM_NotEnoughPsionicEnergy>
 <MentalStateByPsyker>{0} overcome by a psychic assault.</MentalStateByPsyker>
 
 <TM_InvalidTarget>{0} found no valid target for ability {1}.</TM_InvalidTarget>
@@ -90,6 +91,7 @@
 <TM_WarlockEmpathyDesc>I can feel the emotions of those around me.</TM_WarlockEmpathyDesc>
 <TM_WarlockEmpathyOverwhelmed>The emotions of those around me are overwhelming, I need to get away from all these people or find a way to mute these emotions.</TM_WarlockEmpathyOverwhelmed>
 <TM_Icon_Undead>Animated Undead</TM_Icon_Undead>
+<TM_NotPsychicSensitive>{0} attempted to become a psionic but does not seem to have the psychic sensitivity required to manifest psionic power.</TM_NotPsychicSensitive>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
@@ -740,6 +742,69 @@ Level 3: transpose no longer requires the target to be visible to the faceless.<
 <TM_Possess_eff>Dominant Will</TM_Possess_eff>
 <TM_Possess_ver>Synchronization</TM_Possess_ver>
 
+
+<TM_PsionicAugmentation_eff_desc>By injecting psionic power into their legs and core, a psionic is able to rapidly accelerate their movement for a short time. 
+
+In combat, this augmentation allows the psionic to rapidly propel themselves short distances and transfer that energy as a form of attack at the impact location. Psionics are shielded in a barrier while performing this psionic leap.
+This attack occurs only if the psionic is drafted and unnarmed.
+Training in this skill improves the leap distance and impact force.
+
+Out of combat, the psionic will infuse their stride with mental energy, drastically increasing movement speed for a short time. This ability only occurs when the psionic is near maximum psionic energy and has a work target at a sufficient distance. This will not interrupt ongoing tasks.
+Training in this skill improves duration and movement speed.
+
+Both augmentations occur automatically.</TM_PsionicAugmentation_eff_desc>
+<TM_PsionicAugmentation_pwr_desc>By reinforcing physical strength with psionic power, a psionic is able to increase the speed and strength of their actions.
+
+In combat, the this ability reinforces melee attacks with psionic energy, giving the psionic the ability to deliver a massive blow that can knockback or stun an opponent. 
+This attack only occurs during melee when the psionic is unarmed.
+Training in this skill increases the damage output and frequency of blows that apply knockback or stun.
+
+Out of combat, the psionic greatly accelerates the movement of their hands, drastically increasing manipulation. This ability only occurs with the psionic is near maximum psionic energy and is performing work that benefits from manipulation. This will not interrupt ongoing tasks.
+Training in this skill improves duration and the amount manipulation is boosted.
+
+Both augmentations occur automatically.</TM_PsionicAugmentation_pwr_desc>
+<TM_PsionicAugmentation_ver_desc>The psionic focuses their psionic energy to crush an opponent with raw power. This only occurs in combat, but can be used in cohesion with other combat capabilities.
+This ability has a minimum target range of 5 cells.
+Training in this skill improves the maximum range, damage, and reduces the psionic energy required to perform the attack.
+
+This augmentation occurs automatically but must be trained in at least once to become active.</TM_PsionicAugmentation_ver_desc>
+<TM_PsionicBarrier_pwr_desc>Projectiles deflected by barrier have a chance to drain stamina instead of psionic energy. Each level improves this chance by 7%.
+Level 0: 0%
+Level 1: 7%
+Level 2: 14%
+Level 3: 21%</TM_PsionicBarrier_pwr_desc>
+<TM_PsionicBarrier_eff_desc>Reduces the amount of psionic energy drained when deflecting a projectile by 10% per skill point.</TM_PsionicBarrier_eff_desc>
+<TM_PsionicBarrier_ver_desc>Increases the radius of barrier by half a cell per skill point. Default radius is 2 cells.</TM_PsionicBarrier_ver_desc>
+<TM_PsionicBlast_pwr_desc>Power up psi blast, each level increases damage by 15%.</TM_PsionicBlast_pwr_desc>
+<TM_PsionicBlast_eff_desc>Decreases stamina cost of PsionicBlast by 8% per level of base stamina cost.</TM_PsionicBlast_eff_desc>
+<TM_PsionicBlast_ver_desc>Increases the chance to project multiple blasts by 4% per level and reduces the psionic energy drained for each additional blast by 1.</TM_PsionicBlast_ver_desc>
+<TM_PsionicDash_eff_desc>Decreases stamina cost of Psionic Dash by 10% and reduces psionic energy cost by 1 per skill level.</TM_PsionicDash_eff_desc>
+<TM_PsionicDash_pwr_desc>Increases all damage output by psionic dash by 10% per skill level.</TM_PsionicDash_pwr_desc>
+<TM_PsionicDash_ver_desc>Increase the number of steps taken during while dashing by 1 per skill level.</TM_PsionicDash_ver_desc>
+<TM_PsionicStorm_pwr_desc>Increases the damage of each psionic blast by 10% per skill point.</TM_PsionicStorm_pwr_desc>
+<TM_PsionicStorm_eff_desc>Reduces the minimum required psionic energy to use psionic storm by 5 per skill level.
+Level 0: 65
+Level 1: 60
+Level 2: 55
+Level 3: 50</TM_PsionicStorm_eff_desc>
+<TM_PsionicStorm_ver_desc>Increases the rate of fire by 10% per skill point.</TM_PsionicStorm_ver_desc>
+
+<TM_PsionicAugmentation_eff>Augment Movement</TM_PsionicAugmentation_eff>
+<TM_PsionicAugmentation_ver>Augment Mind</TM_PsionicAugmentation_ver>
+<TM_PsionicAugmentation_pwr>Augment Manipulation</TM_PsionicAugmentation_pwr>
+<TM_PsionicBarrier_pwr>Energy Symbiosis</TM_PsionicBarrier_pwr>
+<TM_PsionicBarrier_eff>Energy Conservation</TM_PsionicBarrier_eff>
+<TM_PsionicBarrier_ver>Barrier Size</TM_PsionicBarrier_ver>
+<TM_PsionicBlast_pwr>Psi-a Wreck-en</TM_PsionicBlast_pwr>
+<TM_PsionicBlast_eff>Mind and Body</TM_PsionicBlast_eff>
+<TM_PsionicBlast_ver>Energy Flood</TM_PsionicBlast_ver>
+<TM_PsionicDash_pwr>Super Psionic</TM_PsionicDash_pwr>
+<TM_PsionicDash_eff>Sprinter</TM_PsionicDash_eff>
+<TM_PsionicDash_ver>Long Dash</TM_PsionicDash_ver>
+<TM_PsionicStorm_pwr>Destructive Will</TM_PsionicStorm_pwr>
+<TM_PsionicStorm_eff>Mental Reserves</TM_PsionicStorm_eff>
+<TM_PsionicStorm_ver>Unrelenting Storm</TM_PsionicStorm_ver>
+
 <!-- UI -->
 <TM_TabMagic>Magic</TM_TabMagic>
 <TM_TabMight>Might</TM_TabMight>
@@ -776,6 +841,10 @@ Level 3: transpose no longer requires the target to be visible to the faceless.<
 <TM_AbilityDescPortalTime>Portal collapse in {0} seconds</TM_AbilityDescPortalTime>
 <TM_AbilityDescSummonDuration>Summon duration: {0} seconds</TM_AbilityDescSummonDuration>
 <TM_AdjustedCooldown>Adjusted Cooldown: {0} seconds</TM_AdjustedCooldown>
+<TM_PsionicInitialCost>Initial Psionic Energy Cost: {0}</TM_PsionicInitialCost>
+<TM_PsionicBlastAddCost>Subsequent Blast Energy Cost: {0}</TM_PsionicBlastAddCost>
+<TM_PsionicBarrierMaintenanceCost></TM_PsionicBarrierMaintenanceCost>
+<TM_PsionicBarrierConversionRate></TM_PsionicBarrierConversionRate>
 
 <!-- ========== Building Menu's ========== -->
 

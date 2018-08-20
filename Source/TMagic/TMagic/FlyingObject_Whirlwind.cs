@@ -25,10 +25,8 @@ namespace TorannMagic
 
         protected int ticksToImpact;
 
-        protected Thing launcher;
-
+        //protected Thing launcher;
         protected Thing assignedTarget;
-
         protected Thing flyingThing;
 
         public DamageInfo? impactDamage;
@@ -41,10 +39,7 @@ namespace TorannMagic
 
         public int weaponDmg = 0;
 
-        private bool initialize = true;
-
         Pawn pawn;
-        TMPawnSummoned newPawn = new TMPawnSummoned();
 
         protected int StartingTicksToImpact
         {
@@ -104,8 +99,11 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.damageLaunched, "damageLaunched", true, false);
             Scribe_Values.Look<bool>(ref this.explosion, "explosion", false, false);
             Scribe_References.Look<Thing>(ref this.assignedTarget, "assignedTarget", false);
-            Scribe_References.Look<Thing>(ref this.launcher, "launcher", false);
-            Scribe_References.Look<Thing>(ref this.flyingThing, "flyingThing", false);
+            Scribe_Deep.Look<Thing>(ref this.flyingThing, "flyingThing", new object[0]);
+            Scribe_References.Look<Pawn>(ref this.pawn, "pawn", false);
+            //Scribe_Deep.Look<Thing>(ref this.launcher, "launcher", new object[0]);             
+            //Scribe_References.Look<Thing>(ref this.launcher, "launcher", false);
+            //Scribe_References.Look<Thing>(ref this.flyingThing, "flyingThing", false);
         }
 
         private void Initialize()
@@ -122,7 +120,7 @@ namespace TorannMagic
                     weaponDmg += 10;
                 }
             }
-            this.initialize = false;
+            //flyingThing.ThingID += Rand.Range(0, 214).ToString();
         }
 
         public void Launch(Thing launcher, LocalTargetInfo targ, Thing flyingThing, DamageInfo? impactDamage)
@@ -146,7 +144,6 @@ namespace TorannMagic
             //
             ModOptions.Constants.SetPawnInFlight(true);
             //
-            this.launcher = launcher;
             this.origin = origin;
             this.impactDamage = newDamageInfo;
             this.flyingThing = flyingThing;
@@ -158,43 +155,6 @@ namespace TorannMagic
             this.destination = targ.Cell.ToVector3Shifted() + new Vector3(Rand.Range(-0.3f, 0.3f), 0f, Rand.Range(-0.3f, 0.3f));
             this.ticksToImpact = this.StartingTicksToImpact;
             this.Initialize();
-        }
-
-        public void SingleSpawnLoop(SpawnThings spawnables, IntVec3 position, Map map)
-        {
-            bool flag = spawnables.def != null;
-            if (flag)
-            {
-                Faction faction = pawn.Faction;
-                bool flag2 = spawnables.def.race != null;
-                if (flag2)
-                {
-                    bool flag3 = spawnables.kindDef == null;
-                    if (flag3)
-                    {
-                        Log.Error("Missing kinddef");
-                    }
-                    else
-                    {
-                        newPawn = (TMPawnSummoned)PawnGenerator.GeneratePawn(spawnables.kindDef, faction);
-                        newPawn.Spawner = this.launcher as Pawn;
-                        newPawn.Temporary = true;
-                        newPawn.TicksToDestroy = 180;
-
-                        try
-                        {
-                            GenSpawn.Spawn(newPawn, position, this.Map);
-                        }
-                        catch
-                        {
-                        }
-                    }
-                }
-                else
-                {
-                    Log.Message("Missing race");
-                }
-            }
         }
 
         public override void Tick()

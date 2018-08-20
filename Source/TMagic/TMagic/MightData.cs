@@ -17,6 +17,137 @@ namespace TorannMagic
         private Faction affiliation = null;
         private int ticksAffiliation = 0;
 
+        public List<MightPower> mightPowerP;
+        public List<MightPowerSkill> mightPowerSkill_PsionicAugmentation;
+        public List<MightPowerSkill> mightPowerSkill_PsionicBlast;
+        public List<MightPowerSkill> mightPowerSkill_PsionicDash;
+        public List<MightPowerSkill> mightPowerSkill_PsionicBarrier;
+        public List<MightPowerSkill> mightPowerSkill_PsionicStorm;
+
+        public List<MightPower> MightPowersP
+        {
+            get
+            {
+                bool flag = this.mightPowerP == null;
+                if (flag)
+                {
+                    this.mightPowerP = new List<MightPower>
+                    {
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_PsionicAugmentation
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_PsionicBarrier,
+                            TorannMagicDefOf.TM_PsionicBarrier_Projected
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_PsionicBlast,
+                            TorannMagicDefOf.TM_PsionicBlast_I,
+                            TorannMagicDefOf.TM_PsionicBlast_II,
+                            TorannMagicDefOf.TM_PsionicBlast_III
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_PsionicDash
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_PsionicStorm,
+                        }),
+                    };
+                }
+                return this.mightPowerP;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_PsionicAugmentation
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_PsionicAugmentation == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_PsionicAugmentation = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_PsionicAugmentation_pwr", "TM_PsionicAugmentation_pwr_desc"), //psionic punch / manipulation
+                        new MightPowerSkill("TM_PsionicAugmentation_eff", "TM_PsionicAugmentation_eff_desc"), //psionic dash / movement
+                        new MightPowerSkill("TM_PsionicAugmentation_ver", "TM_PsionicAugmentation_ver_desc")  //psionic preassure
+                    };
+                }
+                return this.mightPowerSkill_PsionicAugmentation;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_PsionicBarrier
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_PsionicBarrier == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_PsionicBarrier = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_PsionicBarrier_pwr", "TM_PsionicBarrier_pwr_desc"), //applies skill powers to ability
+                        new MightPowerSkill("TM_PsionicBarrier_eff", "TM_PsionicBarrier_eff_desc"), //increases how long ability is available and reduces stamina cost to acquire
+                        new MightPowerSkill("TM_PsionicBarrier_ver", "TM_PsionicBarrier_ver_desc")
+                    };
+                }
+                return this.mightPowerSkill_PsionicBarrier;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_PsionicBlast
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_PsionicBlast == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_PsionicBlast = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_PsionicBlast_pwr", "TM_PsionicBlast_pwr_desc"), 
+                        new MightPowerSkill("TM_PsionicBlast_eff", "TM_PsionicBlast_eff_desc"),
+                        new MightPowerSkill("TM_PsionicBlast_ver", "TM_PsionicBlast_ver_desc") 
+                    };
+                }
+                return this.mightPowerSkill_PsionicBlast;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_PsionicDash
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_PsionicDash == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_PsionicDash = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_PsionicDash_pwr", "TM_PsionicDash_pwr_desc"),
+                        new MightPowerSkill("TM_PsionicDash_eff", "TM_PsionicDash_eff_desc"),
+                        new MightPowerSkill("TM_PsionicDash_ver", "TM_PsionicDash_ver_desc") 
+                    };
+                }
+                return this.mightPowerSkill_PsionicDash;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_PsionicStorm
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_PsionicStorm == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_PsionicStorm = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_PsionicStorm_pwr", "TM_PsionicStorm_pwr_desc"), //duration of possession, 
+                        new MightPowerSkill("TM_PsionicStorm_eff", "TM_PsionicStorm_eff_desc"),
+                        new MightPowerSkill("TM_PsionicStorm_ver", "TM_PsionicStorm_ver_desc") //applies mental states or effects , fewer debuffs during possession
+                    };
+                }
+                return this.mightPowerSkill_PsionicStorm;
+            }
+        }
+
         public List<MightPower> mightPowerF;
         public List<MightPowerSkill> mightPowerSkill_Disguise;
         public List<MightPowerSkill> mightPowerSkill_Mimic;
@@ -792,7 +923,7 @@ namespace TorannMagic
         {
             get
             {
-                return this.MightPowersG.Concat(this.MightPowersS.Concat(this.MightPowersB.Concat(this.mightPowerR.Concat(this.MightPowersF))));
+                return this.MightPowersG.Concat(this.MightPowersS.Concat(this.MightPowersB.Concat(this.mightPowerR.Concat(this.MightPowersF.Concat(this.mightPowerP)))));
             }
         }
 
@@ -847,6 +978,12 @@ namespace TorannMagic
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_Reversal, "mightPowerSkill_Reversal", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_Transpose, "mightPowerSkill_Transpose", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_Possess, "mightPowerSkill_Possess", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPower>(ref this.mightPowerP, "mightPowerP", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_PsionicAugmentation, "mightPowerSkill_PsionicAugmentation", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_PsionicBarrier, "mightPowerSkill_PsionicBarrier", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_PsionicBlast, "mightPowerSkill_PsionicBlast", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_PsionicDash, "mightPowerSkill_PsionicDash", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_PsionicStorm, "mightPowerSkill_PsionicStorm", (LookMode)2, new object[0]);
         }
 
     }

@@ -37,9 +37,14 @@ namespace TorannMagic.SihvRMagicScrollScribe
                 tempPod = ThingDef.Named("BookOfFaceless");
                 this.parent.Destroy(DestroyMode.Vanish);
             }
+            else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
+            {
+                tempPod = ThingDef.Named("BookOfPsionic");
+                this.parent.Destroy(DestroyMode.Vanish);
+            }
             else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy))
             {
-                float rnd = Rand.Range(0, 5);
+                float rnd = Rand.Range(0, 6);
                 if(rnd < 1)
                 {
                     tempPod = ThingDef.Named("BookOfGladiator");
@@ -55,6 +60,10 @@ namespace TorannMagic.SihvRMagicScrollScribe
                 else if (rnd < 4)
                 {
                     tempPod = ThingDef.Named("BookOfRanger");
+                }
+                else if (rnd < 5)
+                {
+                    tempPod = ThingDef.Named("BookOfPsionic");
                 }
                 else
                 {

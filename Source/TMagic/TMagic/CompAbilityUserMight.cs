@@ -43,6 +43,10 @@ namespace TorannMagic
         private float F_Reversal_eff = 0.10f;
         private float F_Transpose_eff = 0.08f;
         private float F_Possess_eff = 0.06f;
+        private float P_PsionicBarrier_eff = 0.10f;
+        private float P_PsionicBlast_eff = 0.08f;
+        private float P_PsionicDash_eff = 0.10f;
+        private float P_PsionicStorm_eff = 0.10f;
 
         private float global_seff = 0.03f;
 
@@ -140,7 +144,11 @@ namespace TorannMagic
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
                 Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.facelessMarkMat, 0);
-            }            
+            }
+            else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
+            {
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.psionicMarkMat, 0);
+            }
             else
             {
                 Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.fighterMarkMat, 0);
@@ -499,6 +507,62 @@ namespace TorannMagic
             return result;
         }
 
+        public int LevelUpSkill_PsionicAugmentation(string skillName)
+        {
+            int result = 0;
+            MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_PsionicAugmentation.FirstOrDefault((MightPowerSkill x) => x.label == skillName);
+            bool flag = mightPowerSkill != null;
+            if (flag)
+            {
+                result = mightPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_PsionicBarrier(string skillName)
+        {
+            int result = 0;
+            MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_PsionicBarrier.FirstOrDefault((MightPowerSkill x) => x.label == skillName);
+            bool flag = mightPowerSkill != null;
+            if (flag)
+            {
+                result = mightPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_PsionicBlast(string skillName)
+        {
+            int result = 0;
+            MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_PsionicBlast.FirstOrDefault((MightPowerSkill x) => x.label == skillName);
+            bool flag = mightPowerSkill != null;
+            if (flag)
+            {
+                result = mightPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_PsionicDash(string skillName)
+        {
+            int result = 0;
+            MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_PsionicDash.FirstOrDefault((MightPowerSkill x) => x.label == skillName);
+            bool flag = mightPowerSkill != null;
+            if (flag)
+            {
+                result = mightPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_PsionicStorm(string skillName)
+        {
+            int result = 0;
+            MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_PsionicStorm.FirstOrDefault((MightPowerSkill x) => x.label == skillName);
+            bool flag = mightPowerSkill != null;
+            if (flag)
+            {
+                result = mightPowerSkill.level;
+            }
+            return result;
+        }
+
         public override void CompTick()
         {
             bool flag = base.AbilityUser != null;
@@ -561,7 +625,6 @@ namespace TorannMagic
                                     bool flag7 = (this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_DisguiseHD")) || this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_DisguiseHD_I")) || this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_DisguiseHD_II")) || this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_DisguiseHD_III")));
                                     if (targetPawn.Faction != this.Pawn.Faction && flag7)
                                     {
-                                        Log.Message("removing disguise via compabilityusermagic tick");
                                         using (IEnumerator<Hediff> enumerator = this.Pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
                                         {
                                             while (enumerator.MoveNext())
@@ -617,7 +680,7 @@ namespace TorannMagic
                     bool flag3 = base.AbilityUser.story != null;
                     if (flag3)
                     {
-                        bool flag4 = base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Ranger) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless);
+                        bool flag4 = base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Ranger) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless);
                         if (flag4)
                         {                            
                             return true;
@@ -785,6 +848,16 @@ namespace TorannMagic
                         this.AddPawnAbility(TorannMagicDefOf.TM_Reversal);
                         this.AddPawnAbility(TorannMagicDefOf.TM_Transpose);
                         this.AddPawnAbility(TorannMagicDefOf.TM_Possess);
+                    }
+                    this.mightPowersInitialized = true;
+                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic);
+                    if (flag2)
+                    {
+                        //Log.Message("Initializing Psionic Abilities");
+                        this.AddPawnAbility(TorannMagicDefOf.TM_PsionicBarrier);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_PsionicBlast);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_PsionicDash);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_PsionicStorm);
                     }
                     this.mightPowersInitialized = true;
                     //base.UpdateAbilities();
@@ -980,6 +1053,12 @@ namespace TorannMagic
                     traits.Remove(traits[i]);
                     i--;
                 }
+                if (traits[i].def.defName == "TM_Psionic")
+                {
+                    Log.Message("Removing trait " + traits[i].def.defName);
+                    traits.Remove(traits[i]);
+                    i--;
+                }
             }
         }
 
@@ -1163,6 +1242,42 @@ namespace TorannMagic
                     result = magicPowerSkill.level;
                 }
             }
+            if (attributeName == "TM_PsionicBarrier_eff")
+            {
+                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_PsionicBarrier.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_PsionicBlast_eff")
+            {
+                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_PsionicBlast.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_PsionicDash_eff")
+            {
+                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_PsionicDash.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_PsionicStorm_eff")
+            {
+                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_PsionicStorm.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
 
             return result;
         }
@@ -1253,6 +1368,26 @@ namespace TorannMagic
                 MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_Possess.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Possess_eff");
                 adjustedStaminaCost = mightDef.staminaCost - mightDef.staminaCost * (this.F_Possess_eff * (float)mightPowerSkill.level);
             }
+            if (mightDef == TorannMagicDefOf.TM_PsionicBarrier || mightDef == TorannMagicDefOf.TM_PsionicBarrier_Projected)
+            {
+                MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_PsionicBarrier.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicBarrier_eff");
+                adjustedStaminaCost = mightDef.staminaCost - mightDef.staminaCost * (this.P_PsionicBarrier_eff * (float)mightPowerSkill.level);
+            }
+            if (mightDef == TorannMagicDefOf.TM_PsionicBlast || mightDef == TorannMagicDefOf.TM_PsionicBlast_I || mightDef == TorannMagicDefOf.TM_PsionicBlast_II || mightDef == TorannMagicDefOf.TM_PsionicBlast_III)
+            {
+                MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_PsionicBlast.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicBlast_eff");
+                adjustedStaminaCost = mightDef.staminaCost - mightDef.staminaCost * (this.P_PsionicBlast_eff * (float)mightPowerSkill.level);
+            }
+            if (mightDef == TorannMagicDefOf.TM_PsionicDash)
+            {
+                MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_PsionicDash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicDash_eff");
+                adjustedStaminaCost = mightDef.staminaCost - mightDef.staminaCost * (this.P_PsionicDash_eff * (float)mightPowerSkill.level);
+            }
+            if (mightDef == TorannMagicDefOf.TM_PsionicStorm)
+            {
+                MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_PsionicStorm.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicStorm_eff");
+                adjustedStaminaCost = mightDef.staminaCost - mightDef.staminaCost * (this.P_PsionicStorm_eff * (float)mightPowerSkill.level);
+            }
 
             MightPowerSkill globalSkill = this.MightData.MightPowerSkill_global_seff.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_seff_pwr");
             if (globalSkill != null)
@@ -1281,58 +1416,67 @@ namespace TorannMagic
             //bool flag = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || abilityUser.story.traits.HasTrait;
             //if (isGladiator)
             //{
-                List<Hediff> list = new List<Hediff>();
-                List<Hediff> arg_32_0 = list;
-                IEnumerable<Hediff> arg_32_1;
-                if (abilityUser == null)
+            List<Hediff> list = new List<Hediff>();
+            List<Hediff> arg_32_0 = list;
+            IEnumerable<Hediff> arg_32_1;
+            if (abilityUser == null)
+            {
+                arg_32_1 = null;
+            }
+            else
+            {
+                Pawn_HealthTracker expr_1A = abilityUser.health;
+                if (expr_1A == null)
                 {
                     arg_32_1 = null;
                 }
                 else
                 {
-                    Pawn_HealthTracker expr_1A = abilityUser.health;
-                    if (expr_1A == null)
-                    {
-                        arg_32_1 = null;
-                    }
-                    else
-                    {
-                        HediffSet expr_26 = expr_1A.hediffSet;
-                        arg_32_1 = ((expr_26 != null) ? expr_26.hediffs : null);
-                    }
+                    HediffSet expr_26 = expr_1A.hediffSet;
+                    arg_32_1 = ((expr_26 != null) ? expr_26.hediffs : null);
                 }
-                arg_32_0.AddRange(arg_32_1);
-                Pawn expr_3E = abilityUser;
-                int? arg_84_0;
-                if (expr_3E == null)
+            }
+            arg_32_0.AddRange(arg_32_1);
+            Pawn expr_3E = abilityUser;
+            int? arg_84_0;
+            if (expr_3E == null)
+            {
+                arg_84_0 = null;
+            }
+            else
+            {
+                Pawn_HealthTracker expr_52 = expr_3E.health;
+                if (expr_52 == null)
                 {
                     arg_84_0 = null;
                 }
                 else
                 {
-                    Pawn_HealthTracker expr_52 = expr_3E.health;
-                    if (expr_52 == null)
-                    {
-                        arg_84_0 = null;
-                    }
-                    else
-                    {
-                        HediffSet expr_66 = expr_52.hediffSet;
-                        arg_84_0 = ((expr_66 != null) ? new int?(expr_66.hediffs.Count<Hediff>()) : null);
-                    }
+                    HediffSet expr_66 = expr_52.hediffSet;
+                    arg_84_0 = ((expr_66 != null) ? new int?(expr_66.hediffs.Count<Hediff>()) : null);
                 }
-                bool flag = (arg_84_0 ?? 0) > 0;
-                if (flag)
+            }
+            bool flag = (arg_84_0 ?? 0) > 0;
+            if (flag)
+            {
+                foreach (Hediff current in list)
                 {
-                    foreach (Hediff current in list)
+                    if (current.def.defName == "TM_HediffInvulnerable")
                     {
-                        if (current.def.defName == "TM_HediffInvulnerable")
+                        absorbed = true;
+                        MoteMaker.MakeStaticMote(AbilityUser.Position, AbilityUser.Map, ThingDefOf.Mote_ExplosionFlash, 10);
+                        dinfo.SetAmount(0);
+                        return;
+                    }
+                    if(current.def.defName == "TM_PsionicHD")
+                    {
+                        if(dinfo.Def == TMDamageDefOf.DamageDefOf.TM_PsionicInjury)
                         {
                             absorbed = true;
-                            MoteMaker.MakeStaticMote(AbilityUser.Position, AbilityUser.Map, ThingDefOf.Mote_ExplosionFlash, 10);
                             dinfo.SetAmount(0);
                             return;
                         }
+                    }
                     if (current.def.defName == "TM_ReversalHD")
                     {
                         Pawn instigator = dinfo.Instigator as Pawn;
@@ -1360,41 +1504,41 @@ namespace TorannMagic
                         }
                     }
                     if (fortitudeMitigationDelay < this.age )
+                    {
+                        if (current.def.defName == "TM_HediffFortitude")
                         {
-                            if (current.def.defName == "TM_HediffFortitude")
+                            MightPowerSkill pwr = this.MightData.MightPowerSkill_Fortitude.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Fortitude_pwr");
+                            MightPowerSkill ver = this.MightData.MightPowerSkill_Fortitude.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Fortitude_ver");
+                            absorbed = true;
+                            int mitigationAmt = 2 + (2 * pwr.level);
+                            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                            if (settingsRef.AIHardMode && !abilityUser.IsColonist)
                             {
-                                MightPowerSkill pwr = this.MightData.MightPowerSkill_Fortitude.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Fortitude_pwr");
-                                MightPowerSkill ver = this.MightData.MightPowerSkill_Fortitude.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Fortitude_ver");
-                                absorbed = true;
-                                int mitigationAmt = 2 + (2 * pwr.level);
-                                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                                if (settingsRef.AIHardMode && !abilityUser.IsColonist)
-                                {
-                                    mitigationAmt = 8;
-                                }
-                                float actualDmg;
-                                float dmgAmt = dinfo.Amount;
-                                this.Stamina.GainNeed((.005f * dmgAmt) + (.002f * (float)ver.level));
-                                if (dmgAmt < mitigationAmt)
-                                {
-                                    actualDmg = 0;
-                                    return;
-                                }
-                                else
-                                {
-                                    actualDmg = dmgAmt - mitigationAmt;
-                                }
-                                fortitudeMitigationDelay = this.age + 10;
-                                dinfo.SetAmount(actualDmg);
-                                abilityUser.TakeDamage(dinfo);
+                                mitigationAmt = 8;
+                            }
+                            float actualDmg;
+                            float dmgAmt = dinfo.Amount;
+                            this.Stamina.GainNeed((.005f * dmgAmt) + (.002f * (float)ver.level));
+                            if (dmgAmt < mitigationAmt)
+                            {
+                                actualDmg = 0;
                                 return;
                             }
-                            base.PostPreApplyDamage(dinfo, out absorbed);
+                            else
+                            {
+                                actualDmg = dmgAmt - mitigationAmt;
+                            }
+                            fortitudeMitigationDelay = this.age + 10;
+                            dinfo.SetAmount(actualDmg);
+                            abilityUser.TakeDamage(dinfo);
+                            return;
                         }
+                        base.PostPreApplyDamage(dinfo, out absorbed);
                     }
                 }
-                list.Clear();
-                list = null;
+            }
+            list.Clear();
+            list = null;
             //}
             base.PostPreApplyDamage(dinfo, out absorbed);
         }
@@ -1628,6 +1772,14 @@ namespace TorannMagic
                                 MoteMaker.ThrowHeatGlow(base.Pawn.Position, this.Pawn.Map, 2);
                             }
                         }
+                    }
+                }
+
+                if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
+                {
+                    if (!this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_PsionicHD"), false))
+                    {
+                        HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_PsionicHD"), 1f);
                     }
                 }
 
@@ -2177,6 +2329,59 @@ namespace TorannMagic
                     this.AddPawnAbility(TorannMagicDefOf.TM_Mimic);
                     this.AddPawnAbility(TorannMagicDefOf.TM_Reversal);
                     this.AddPawnAbility(TorannMagicDefOf.TM_Possess);                   
+                }
+
+                bool flag45 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic);
+                if (flag45)
+                {
+                    bool flag21 = !this.MightData.MightPowersP.NullOrEmpty<MightPower>();
+                    if (flag21)
+                    {
+                        foreach (MightPower current8 in this.MightData.MightPowersP)
+                        {
+                            bool flag22 = current8.abilityDef != null;
+                            if (flag22)
+                            {
+                                if ((current8.abilityDef == TorannMagicDefOf.TM_PsionicBlast || current8.abilityDef == TorannMagicDefOf.TM_PsionicBlast_I || current8.abilityDef == TorannMagicDefOf.TM_PsionicBlast_II || current8.abilityDef == TorannMagicDefOf.TM_PsionicBlast_III))
+                                {
+                                    if (current8.level == 0)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_PsionicBlast);
+                                    }
+                                    else if (current8.level == 1)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_PsionicBlast_I);
+                                    }
+                                    else if (current8.level == 2)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_PsionicBlast_II);
+                                    }
+                                    else
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_PsionicBlast_III);
+                                    }
+                                }
+                                if ((current8.abilityDef == TorannMagicDefOf.TM_PsionicBarrier || current8.abilityDef == TorannMagicDefOf.TM_PsionicBarrier_Projected))
+                                {
+                                    if (current8.level == 0)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_PsionicBarrier);
+                                    }                                    
+                                    else
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_PsionicBarrier_Projected);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if (flag45)
+                {
+                    //Log.Message("Loading Psionic Abilities");
+                    //this.AddPawnAbility(TorannMagicDefOf.TM_PsionicBarrier);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_PsionicDash);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_PsionicStorm);
                 }
 
                 this.InitializeSkill();

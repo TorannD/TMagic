@@ -782,6 +782,46 @@ namespace TorannMagic
                                 tempAbility = TorannMagicDefOf.TM_PoisonTrap;
                             }
                         }
+                        else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
+                        {
+                            int rnd = Rand.RangeInclusive(0, 3);
+                            if (rnd == 0 || rnd == 3)
+                            {
+                                int level = mightPawn.MightData.MightPowersP[1].level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_PsionicBlast;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_PsionicBlast_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_PsionicBlast_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_PsionicBlast_III;
+                                        break;
+                                }
+                            }
+                            else if (rnd == 1)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_PsionicDash;
+                            }
+                            else
+                            {
+                                int level = mightPawn.MightData.MightPowersP[3].level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_PsionicBarrier;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_PsionicBarrier_Projected;
+                                        break;                                    
+                                }
+                            }
+                        }
                         else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                         {
 

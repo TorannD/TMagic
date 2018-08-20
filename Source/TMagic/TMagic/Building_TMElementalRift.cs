@@ -26,6 +26,7 @@ namespace TorannMagic
 
         private int ticksTillNextAssault = 0;
         private float eventFrequencyMultiplier = 1;
+        private float difficultyMultiplier = 1;
         private int ticksTillNextEvent = 0;
         private int eventTimer = 0;
         private int assaultTimer = 0;
@@ -79,7 +80,20 @@ namespace TorannMagic
                 DetermineElementalType();
                 BeginAssaultCondition();
                 SpawnCycle();
-                this.ticksTillNextAssault = Rand.Range(1600, 3000);
+                ModOptions.SettingsRef settings = new ModOptions.SettingsRef();
+                if(settings.riftChallenge < 2f)
+                {
+                    this.difficultyMultiplier = 1f;
+                }
+                else if(settings.riftChallenge < 3f)
+                {
+                    this.difficultyMultiplier = .85f;
+                }
+                else
+                {
+                    this.difficultyMultiplier = .75f;
+                }
+                this.ticksTillNextAssault = (int)(Rand.Range(2400, 3600) * this.difficultyMultiplier);
                 this.ticksTillNextEvent = (int)(Rand.Range(160, 300) * this.eventFrequencyMultiplier);
                 initialized = true;
             }
@@ -142,15 +156,15 @@ namespace TorannMagic
             {
                 //berserk random animal
                 List<Pawn> animalList = this.Map.mapPawns.AllPawnsSpawned;
-                for(int i =0; i < animalList.Count; i++)
+                for (int i = 0; i < animalList.Count; i++)
                 {
                     int j = Rand.Range(0, animalList.Count);
-                    if(animalList[j].RaceProps.Animal && !animalList[j].IsColonist)
+                    if (animalList[j].RaceProps.Animal && !animalList[j].IsColonist && !animalList[j].def.defName.Contains("Elemental"))
                     {
-                       animalList[j].mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.ManhunterPermanent, null, true, false, null);
+                        animalList[j].mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.ManhunterPermanent, null, true, false, null);
                         i = animalList.Count;
                     }
-                }
+                }                
             }
             else if(this.rnd < 4) //fire
             {

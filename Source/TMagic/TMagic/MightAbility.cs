@@ -194,6 +194,48 @@ namespace TorannMagic
                         });
                     }
                 }
+                else if (mightUser.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_PsionicHD"), false)) 
+                {
+                    num = mightUser.ActualStaminaCost(mightAbilityDef);
+                    if (mightAbilityDef == TorannMagicDefOf.TM_PsionicBlast || mightAbilityDef == TorannMagicDefOf.TM_PsionicBlast_I || mightAbilityDef == TorannMagicDefOf.TM_PsionicBlast_II || mightAbilityDef == TorannMagicDefOf.TM_PsionicBlast_III)
+                    {
+                        num2 = 4 - (mightUser.MightData.MightPowerSkill_PsionicBlast.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicBlast_ver").level);                     
+                        text2 = "TM_PsionicInitialCost".Translate(new object[]
+                        {
+                            20
+                        }) + "\n" + "TM_PsionicBlastAddCost".Translate(new object[]
+                        {
+                            num2
+                        });
+                    }
+                    if (mightAbilityDef == TorannMagicDefOf.TM_PsionicDash)
+                    {
+                        num2 = 8 - (mightUser.MightData.MightPowerSkill_PsionicDash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicDash_eff").level);
+                        text2 = "TM_PsionicInitialCost".Translate(new object[]
+                        {
+                            num2
+                        });
+                    }
+                    if (mightAbilityDef == TorannMagicDefOf.TM_PsionicBarrier)
+                    {
+                        num2 = 8 - (mightUser.MightData.MightPowerSkill_PsionicDash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicDash_eff").level);
+                        text2 = "TM_PsionicBarrierMaintenanceCost".Translate(new object[]
+                        {
+                            20
+                        }) + "\n" + "TM_PsionicBarrierConversionRate".Translate(new object[]
+                        {
+                            num2
+                        });
+                    }
+                    if (mightAbilityDef == TorannMagicDefOf.TM_PsionicStorm)
+                    {
+                        num2 = 65 - (mightUser.MightData.MightPowerSkill_PsionicStorm.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicStorm_eff").level);
+                        text2 = "TM_PsionicInitialCost".Translate(new object[]
+                        {
+                            num2
+                        });
+                    }
+                }
                 else
                 {
                     num = mightUser.ActualStaminaCost(mightAbilityDef);
@@ -248,12 +290,56 @@ namespace TorannMagic
                         }
                     }
                 }
+                if(this.MightUser.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
+                {
+                    if (this.MightUser.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_PsionicHD"), false))
+                    {
+                        float psiEnergy = this.MightUser.Pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_PsionicHD"), false).Severity;
+                        if ((this.mightDef.defName == "TM_PsionicBlast" || this.mightDef.defName == "TM_PsionicBlast_I" || this.mightDef.defName == "TM_PsionicBlast_II" || this.mightDef.defName == "TM_PsionicBlast_III") && psiEnergy < 20f)
+                        {
+                            reason = "TM_NotEnoughPsionicEnergy".Translate(new object[]
+                            {
+                            base.Pawn.Label,
+                            "Psionic Blast"
+                            });
+                            return false;
+                        }
+                        if ((this.mightDef.defName == "TM_PsionicDash" && psiEnergy < 8f))
+                        {
+                            reason = "TM_NotEnoughPsionicEnergy".Translate(new object[]
+                            {
+                            base.Pawn.Label,
+                            "Psionic Dash"
+                            });
+                            return false;
+                        }
+                        int stormCost = 65 - (this.MightUser.MightData.MightPowerSkill_PsionicStorm.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicStorm_eff").level);
+                        if ((this.mightDef.defName == "TM_PsionicStorm" && psiEnergy < stormCost))
+                        {
+                            reason = "TM_NotEnoughPsionicEnergy".Translate(new object[]
+                            {
+                            base.Pawn.Label,
+                            "Psionic Storm"
+                            });
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
                 List<Apparel> wornApparel = base.Pawn.apparel.WornApparel;
                 for (int i = 0; i < wornApparel.Count; i++)
                 {
                     if (!wornApparel[i].AllowVerbCast(base.Pawn.Position, base.Pawn.Map, base.abilityUser.Pawn.TargetCurrentlyAimingAt, this.Verb) && 
-                        (this.mightDef.defName == "TM_Headshot" || this.mightDef.defName == "TM_DisablingShot" || this.mightDef.defName == "TM_DisablingShot_I" || this.mightDef.defName == "TM_DisablingShot_II" || this.mightDef.defName == "TM_DisablingShot_III" || this.mightDef.defName == "TM_AntiArmor" || 
-                        this.mightDef.defName == "TM_ArrowStorm" || this.mightDef.defName == "TM_ArrowStorm_I" || this.mightDef.defName == "TM_ArrowStorm_II" || this.mightDef.defName == "TM_ArrowStorm_III" || this.mightDef.defName == "TM_Mimic"))
+                        (this.mightDef.defName == "TM_Headshot" || 
+                        this.mightDef.defName == "TM_DisablingShot" || this.mightDef.defName == "TM_DisablingShot_I" || this.mightDef.defName == "TM_DisablingShot_II" || this.mightDef.defName == "TM_DisablingShot_III" || 
+                        this.mightDef.defName == "TM_AntiArmor" || 
+                        this.mightDef.defName == "TM_ArrowStorm" || this.mightDef.defName == "TM_ArrowStorm_I" || this.mightDef.defName == "TM_ArrowStorm_II" || this.mightDef.defName == "TM_ArrowStorm_III" ||
+                        this.mightDef.defName == "TM_PsionicStorm" ||
+                        this.mightDef.defName == "TM_PsionicBlast" || this.mightDef.defName == "TM_PsionicBlast_I" || this.mightDef.defName == "TM_PsionicBlast_II" || this.mightDef.defName == "TM_PsionicBlast_III" || 
+                        this.mightDef.defName == "TM_Mimic"))
                     {
                         reason = "TM_ShieldBlockingPowers".Translate(new object[]
                         {

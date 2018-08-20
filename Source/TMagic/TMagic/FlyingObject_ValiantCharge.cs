@@ -25,8 +25,6 @@ namespace TorannMagic
 
         protected int ticksToImpact;
 
-        protected Thing launcher;
-
         protected Thing assignedTarget;
 
         protected Thing flyingThing;
@@ -124,8 +122,9 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.damageLaunched, "damageLaunched", true, false);
             Scribe_Values.Look<bool>(ref this.explosion, "explosion", false, false);
             Scribe_References.Look<Thing>(ref this.assignedTarget, "assignedTarget", false);
-            Scribe_References.Look<Thing>(ref this.launcher, "launcher", false);
-            Scribe_References.Look<Thing>(ref this.flyingThing, "flyingThing", false);
+            //Scribe_References.Look<Thing>(ref this.launcher, "launcher", false);
+            Scribe_Deep.Look<Thing>(ref this.flyingThing, "flyingThing", new object[0]);
+            Scribe_References.Look<Pawn>(ref this.pawn, "pawn", false);
         }
 
         private void Initialize()
@@ -139,6 +138,7 @@ namespace TorannMagic
                 expCell2 = this.DestinationCell;
                 XProb(this.DestinationCell, this.origin);
             }
+            //flyingThing.ThingID += Rand.Range(0, 2147).ToString();
             this.initialize = false;
         }
 
@@ -158,7 +158,7 @@ namespace TorannMagic
             invul.def = TorannMagicDefOf.TM_HediffInvulnerable;
             invul.Severity = 5;
             bool spawned = flyingThing.Spawned;
-            pawn = launcher as Pawn;
+            this.pawn = launcher as Pawn;
             pawn.health.AddHediff(invul, null, null);
             comp = pawn.GetComp<CompAbilityUserMagic>();
             pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ValiantCharge.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ValiantCharge_pwr");
@@ -185,7 +185,6 @@ namespace TorannMagic
             //
             ModOptions.Constants.SetPawnInFlight(true);
             //
-            this.launcher = launcher;
             this.origin = origin;
             this.impactDamage = newDamageInfo;
             this.flyingThing = flyingThing;
@@ -252,7 +251,7 @@ namespace TorannMagic
                     pawn.Drawer.DrawAt(this.DrawPos);
                     if (wingDisplay)
                     {
-                        if (wingDelay < 3)
+                        if (wingDelay < 5)
                         {
                             DrawWings(this.DrawPos, pawn, 10);
                             wingDelay++;
@@ -266,7 +265,7 @@ namespace TorannMagic
                     }
                     else
                     {
-                        if (wingDelay < 1)
+                        if (wingDelay < 3)
                         {
                             wingDelay++;
                         }
@@ -424,14 +423,14 @@ namespace TorannMagic
         {
             ThingDef def = this.def;
 
-            Explosion(pwr, pos, map, radius, TMDamageDefOf.DamageDefOf.TM_Holy, this.launcher, null, def, ThingDefOf.Explosion, ThingDefOf.Mote_ExplosionFlash, 0.3f, 1, false, null, 0f, 1);
+            Explosion(pwr, pos, map, radius, TMDamageDefOf.DamageDefOf.TM_Holy, this.pawn, null, def, ThingDefOf.Explosion, ThingDefOf.Mote_ExplosionFlash, 0.3f, 1, false, null, 0f, 1);
 
             if (ver >= 2)
             {
                 int stunProb = Rand.Range(1, 10);
                 if (stunProb > (4 + ver))
                 {
-                    Explosion(pwr, pos, map, radius, DamageDefOf.Stun, this.launcher, null, def, ThingDefOf.Explosion, ThingDefOf.Mote_ExplosionFlash, 0.3f, 1, false, null, 0f, 1);
+                    Explosion(pwr, pos, map, radius, DamageDefOf.Stun, this.pawn, null, def, ThingDefOf.Explosion, ThingDefOf.Mote_ExplosionFlash, 0.3f, 1, false, null, 0f, 1);
                 }
             }
             

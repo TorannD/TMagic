@@ -1,5 +1,6 @@
 ﻿using RimWorld;
 using Verse;
+using System;
 using AbilityUser;
 using System.Linq;
 using System.Collections.Generic;
@@ -22,44 +23,51 @@ namespace TorannMagic
 
             Pawn pawn = this.launcher as Pawn;
             Pawn victim = hitThing as Pawn;
-            CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
-            MightPowerSkill ver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_DisablingShot.FirstOrDefault((MightPowerSkill x) => x.label == "TM_DisablingShot_ver");
-            MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
-            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            verVal = ver.level;
-            if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            try
             {
-                MightPowerSkill mver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
-                verVal = mver.level;
-            }
-            if (settingsRef.AICasting && !pawn.IsColonist)
-            {
-                verVal = 3;
-            }
-            if (victim != null && !victim.Dead && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracyPawn, true)))
-            {
-                int dmg = (this.def.projectile.GetDamageAmount(1,null));
-                if (victim.RaceProps.IsFlesh)
+                CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
+                MightPowerSkill ver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_DisablingShot.FirstOrDefault((MightPowerSkill x) => x.label == "TM_DisablingShot_ver");
+                MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
+                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                verVal = ver.level;
+                if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                 {
-                    System.Random rnd = new System.Random();
-                    if (verVal > 0 && victim.needs.food != null)
-                    {                        
-                        int randomTranqSev = GenMath.RoundRandom(rnd.Next((int)(verVal * .5f*str.level), (int)((verVal + .5f*str.level) * 3)));
-                        LegShot(victim, randomTranqSev, TMDamageDefOf.DamageDefOf.TM_Tranquilizer);
+                    MightPowerSkill mver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                    verVal = mver.level;
+                }
+                if (settingsRef.AICasting && !pawn.IsColonist)
+                {
+                    verVal = 3;
+                }
+                if (victim != null && !victim.Dead && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracyPawn, true)))
+                {
+                    int dmg = (this.def.projectile.GetDamageAmount(1, null));
+                    if (victim.RaceProps.IsFlesh)
+                    {
+                        System.Random rnd = new System.Random();
+                        if (verVal > 0 && victim.needs.food != null)
+                        {
+                            int randomTranqSev = GenMath.RoundRandom(rnd.Next((int)(verVal * .5f * str.level), (int)((verVal + .5f * str.level) * 3)));
+                            LegShot(victim, randomTranqSev, TMDamageDefOf.DamageDefOf.TM_Tranquilizer);
+                        }
+                        else
+                        {
+                            LegShot(victim, dmg, TMDamageDefOf.DamageDefOf.TM_DisablingShot);
+                        }
                     }
                     else
                     {
-                        LegShot(victim, dmg, TMDamageDefOf.DamageDefOf.TM_DisablingShot);
+                        damageEntities(victim, null, dmg, this.def.projectile.damageDef);
                     }
                 }
                 else
                 {
-                    damageEntities(victim, null, dmg, DamageDefOf.Bullet);
+                    Log.Message("No valid target for Disabling Shot");
                 }
             }
-            else
+            catch(NullReferenceException ex)
             {
-                Log.Message("No valid target for Disabling Shot");
+
             }
         }
 

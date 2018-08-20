@@ -1,14 +1,18 @@
 ﻿using RimWorld;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Verse;
 using Verse.AI;
 using AbilityUser;
+using UnityEngine;
 
 namespace TorannMagic
 {
     public class TMJobDriver_CastAbilitySelf : JobDriver_CastAbilityVerb
     {
+        Verb arg_45_0;
+
         protected override IEnumerable<Toil> MakeNewToils()
         {
             yield return Toils_Misc.ThrowColonistAttackingMote(TargetIndex.A);
@@ -17,12 +21,12 @@ namespace TorannMagic
             yield return Toils_Combat.CastVerb(TargetIndex.A, false);
             Toil toil1 = new Toil()
             {
-                initAction = () => {
-                    //if (curJob.UseAbilityProps.isViolent)
-                    //{
-                    //    JobDriver_CastAbilityVerb.CheckForAutoAttack(this.pawn);
-                    //}
-                },
+                initAction = () => {                    
+                        //if (curJob.UseAbilityProps.isViolent)
+                        //{
+                        //    JobDriver_CastAbilityVerb.CheckForAutoAttack(this.pawn);
+                        //}
+                    },
                 defaultCompleteMode = ToilCompleteMode.Instant
             };
             yield return toil1;
@@ -35,5 +39,6 @@ namespace TorannMagic
             yield return toil;
             
         }
+        
     }
 }

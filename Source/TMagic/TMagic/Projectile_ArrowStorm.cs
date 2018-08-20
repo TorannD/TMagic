@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System;
 using RimWorld;
 using Verse;
 using AbilityUser;
@@ -25,24 +26,30 @@ namespace TorannMagic
             Map map = base.Map;
             base.Impact(hitThing);
             ThingDef def = this.def;
-
-            Pawn victim = hitThing as Pawn;
-            if (!initialized)
+            try
             {
-                Initialize(map);
+                Pawn victim = hitThing as Pawn;
+                if (!initialized)
+                {
+                    Initialize(map);
+                }
+
+                int dmg = GetWeaponDmg(this.launcher as Pawn, this.def);
+                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                if (!pawn.IsColonist && settingsRef.AIHardMode)
+                {
+                    dmg += 12;
+                }
+
+                if (victim != null && Rand.Chance(GetWeaponAccuracy(pawn)))
+                {
+                    damageEntities(victim, null, dmg, DamageDefOf.Arrow);
+                    TM_MoteMaker.ThrowBloodSquirt(victim.DrawPos, victim.Map, 1f);
+                }
             }
-
-            int dmg = GetWeaponDmg(this.launcher as Pawn, this.def);
-            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            if (!pawn.IsColonist && settingsRef.AIHardMode)
+            catch(NullReferenceException ex)
             {
-                dmg += 12;
-            }
-
-            if (victim != null && Rand.Chance(GetWeaponAccuracy(pawn)))
-            {
-                damageEntities(victim, null, dmg, DamageDefOf.Arrow);
-                TM_MoteMaker.ThrowBloodSquirt(victim.DrawPos, victim.Map, 1f);
+                //
             }
         }
 

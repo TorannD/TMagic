@@ -70,6 +70,22 @@
 	</DamageDef>
 	
 	<DamageDef ParentName="TM_LocalInjuryBase">
+		<defName>TM_PsionicInjury</defName>
+		<label>Psionic</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was destroyed by psionic power.</deathMessage>
+		<hediff>TM_PsionicInjuryHD</hediff>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+		<defaultDamage>10</defaultDamage>
+		<armorCategory>Blunt</armorCategory>
+		<explosionSnowMeltAmount>.2</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_BlastDry</explosionCellMote>
+		<explosionColorCenter>(0, .2, .4)</explosionColorCenter>
+		<explosionColorEdge>(.6, 0.8, 1)</explosionColorEdge>
+		<soundExplosion>TM_SoftExplosion</soundExplosion>
+	</DamageDef>
+	
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Death</defName>
 		<label>Death</label>
 		<externalViolence>true</externalViolence>

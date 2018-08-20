@@ -528,5 +528,130 @@
 		</appliedHediffs>
 	</AbilityUserAI.AbilityAIDef>
 	
+	<!-- psionic -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="PsionicMightAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMight</compAbilityUserClass>
+		<!-- Decision tree which helps pick ability to use. -->
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>0.6</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>PsionicBarrier</li>										
+									</tags>
+								</li>								
+							</subNodes>
+						</li>
+						<li Class="TorannMagic.AbilityDecisionConditionalNode_EnemyTargetIsBuilding">
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+									<maxDistance>34.0</maxDistance>
+									<minDistance>10.0</minDistance>
+									<subNodes>
+										<!-- Use long range AoE offensive abilities. -->
+										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+											<tags>
+												<li>PsionicOffense</li>
+											</tags>
+										</li>
+									</subNodes>
+								</li>
+							</subNodes>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+							<maxDistance>10.0</maxDistance>
+							<subNodes>
+								<!-- Use close range dash to blast past the enemy. -->
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>PsionicDash</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>						
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+							<maxDistance>26.0</maxDistance>
+							<minDistance>10.0</minDistance>
+							<subNodes>
+								<!-- Use mid range projectile splash -->
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>PsionicBlast</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- Psionic -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="PsionicMightAbilityUserAI">
+		<defName>TMagic_Psionic</defName>
+		<matchingTraits>
+			<li>TM_Psionic</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_PsionicStorm</li>
+			<li>TMagic_PsionicBlast</li>
+			<li>TMagic_PsionicDash</li>
+			<li>TMagic_PsionicBarrier</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Psionic Abilities -->
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
+		<defName>TMagic_PsionicStorm</defName>
+		<ability>TM_PsionicStorm</ability>		
+		<power>10.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<minRange>16.0</minRange>
+		<maxRange>34.0</maxRange>
+		<tags>
+			<li>PsionicOffense</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
+		<defName>TMagic_PsionicBlast</defName>
+		<ability>TM_PsionicBlast</ability>
+		<power>2.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<minRange>10.0</minRange>
+		<maxRange>26.0</maxRange>
+		<tags>
+			<li>PsionicOffense</li>
+			<li>PsionicBlast</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
+		<defName>TMagic_PsionicDash</defName>
+		<ability>TM_PsionicDash</ability>
+		<maxRange>10.0</maxRange>
+		<power>4</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>PsionicDash</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
+		<defName>TMagic_PsionicBarrier</defName>
+		<ability>TM_PsionicBarrier</ability>
+		<power>6.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<tags>
+			<li>PsionicBarrier</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
 	
 </Defs>

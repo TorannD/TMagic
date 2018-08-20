@@ -465,6 +465,18 @@ namespace TorannMagic
             GenSpawn.Spawn(mote, cell, map);
         }
 
+        public static void MakePowerBeamMotePsionic(IntVec3 cell, Map map, float scale, float rot, float duration, float fadeIn, float fadeOut)
+        {
+            Mote mote = (Mote)ThingMaker.MakeThing(TorannMagicDefOf.Mote_PowerBeamPsionic, null);
+            mote.exactPosition = cell.ToVector3Shifted();
+            mote.Scale = scale;
+            mote.rotationRate = rot;
+            mote.def.mote.solidTime = (duration - fadeIn - fadeOut);
+            mote.def.mote.fadeInTime = fadeIn;
+            mote.def.mote.fadeOutTime = fadeOut;
+            GenSpawn.Spawn(mote, cell, map);
+        }
+
         public static void MakePowerBeamMoteColor(IntVec3 cell, Map map, float scale, float rot, float duration, float fadeIn, float fadeOut, Color color)
         {
             

@@ -90,6 +90,23 @@
 - Enchanting gem recipe's have been changed to only require a flat raw magicyte amount. This will reduce the overall time and cost to craft higher tier gems.
 - Eye of the Storm master spell will discharge when it reaches its destination instead of just disappearing.
 		</content>
+	</HugsLib.UpdateFeatureDef>
+	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_2_2_2</defName>
+		<assemblyVersion>2.2.2</assemblyVersion>
+		<content>
+- New Class: Psionic - pawns influenced by increased sensitivity or events of psychic power and being physically adept allows access to a combat class that blends mental and physical strength to overcome challenges.
+
+Psionics gain access to a unique mechanic called psionic energy; the balanced use of physical and psionic energy produces the most effective results for a psionic.
+
+*Psionic Augmentation - a psionic is most efficient when combining physical and mental strength; psionic augmentation is the application of psionic energy into living tissue and practices in three major ways:
+>Movement - infusing psionic energy into the core and legs the psionic is able to move at incredible speeds
+>Manipulation - applying psionic energy into hands and arms increases manipulation speed and power
+>Mind - exerts raw psionic power to strike at foes from a distance
+*Psionic blast - launch a bolt of explosive energy; higher levels of psionic energy can produce multiple bolts
+*Psionic dash - a physical burst of energy propelled by psionic energy causes the psionic to move at devastating speeds over a short distance
+*Psionic storm - harnesses all reserves of psionic energy in a spectacular display of power
+		</content>
 	</HugsLib.UpdateFeatureDef>	
 	
 </Defs>

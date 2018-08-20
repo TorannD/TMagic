@@ -107,7 +107,8 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.explosion, "explosion", false, false);
             Scribe_References.Look<Thing>(ref this.assignedTarget, "assignedTarget", false);
             Scribe_References.Look<Thing>(ref this.launcher, "launcher", false);
-            Scribe_References.Look<Thing>(ref this.flyingThing, "flyingThing", false);
+            Scribe_Deep.Look<Thing>(ref this.flyingThing, "flyingThing", new object[0]);
+            Scribe_References.Look<Pawn>(ref this.pawn, "pawn", false);
         }
 
         private void Initialize()
@@ -116,7 +117,11 @@ namespace TorannMagic
             {
                 MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
             }
-            this.speed = this.speed * this.force;
+            else
+            {
+                flyingThing.ThingID += Rand.Range(0, 214).ToString();
+            }
+            
         }
 
         public void Launch(Thing launcher, LocalTargetInfo targ, Thing flyingThing, DamageInfo? impactDamage)
@@ -146,8 +151,7 @@ namespace TorannMagic
         }
 
         public void Launch(Thing launcher, Vector3 origin, LocalTargetInfo targ, Thing flyingThing, DamageInfo? newDamageInfo = null)
-        {
-            this.Initialize();
+        {            
             bool spawned = flyingThing.Spawned;            
             this.pawn = launcher as Pawn;
             if (spawned)
@@ -164,7 +168,7 @@ namespace TorannMagic
             {
                 this.assignedTarget = targ.Thing;
             }
-            
+            this.speed = this.speed * this.force;
             this.origin = origin;
             if(this.curveVariance > 0)
             {
@@ -177,6 +181,7 @@ namespace TorannMagic
                 this.destination = this.trueDestination;
             }            
             this.ticksToImpact = this.StartingTicksToImpact;
+            this.Initialize();
         }        
 
         public void CalculateCurvePoints(Vector3 start, Vector3 end, float variance)

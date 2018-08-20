@@ -366,6 +366,7 @@ namespace TorannMagic
         public static ThingDef BookOfBladedancer;
         public static ThingDef BookOfRanger;
         public static ThingDef BookOfFaceless;
+        public static ThingDef BookOfPsionic;
         public static TraitDef PhysicalProdigy;
 
         //Might (Gladiator)
@@ -455,6 +456,25 @@ namespace TorannMagic
         public static HediffDef TM_CoOpPossessionHD_II;
         public static HediffDef TM_CoOpPossessionHD_III;
 
+        //Psionic
+        public static TraitDef TM_Psionic;
+
+        public static HediffDef TM_PsionicHD;
+        public static HediffDef TM_PsionicSpeedHD;
+        public static HediffDef TM_PsionicManipulationHD;
+        public static TMAbilityDef TM_PsionicAugmentation;
+        public static TMAbilityDef TM_PsionicDash;
+        public static TMAbilityDef TM_PsionicBlast;
+        public static TMAbilityDef TM_PsionicBlast_I;
+        public static TMAbilityDef TM_PsionicBlast_II;
+        public static TMAbilityDef TM_PsionicBlast_III;
+        public static TMAbilityDef TM_PsionicBarrier;
+        public static TMAbilityDef TM_PsionicBarrier_Projected;
+        public static TMAbilityDef TM_PsionicStorm;
+        public static ThingDef FlyingObject_PsionicDash;
+        public static ThingDef FlyingObject_PsionicStorm;
+        public static ThingDef FlyingObject_PsionicLeap;
+
         //Standalone
         public static TMAbilityDef TM_Heater;
         public static TMAbilityDef TM_Cooler;
@@ -515,6 +535,7 @@ namespace TorannMagic
         public static ThingDef Fog_Torment;
         public static ThingDef Mote_PowerBeamBlue;
         public static ThingDef Mote_PowerBeamGold;
+        public static ThingDef Mote_PowerBeamPsionic;
         public static ThingDef Mote_Bombardment;
         public static ThingDef Fog_Poison;
         public static ThingDef Mote_ArcaneDaggers;
@@ -534,6 +555,7 @@ namespace TorannMagic
         public static ThingDef Mote_ArcaneWaves;
 
         public static EffecterDef GiantExplosion;
+        public static EffecterDef TM_GiantExplosion;
 
         //Jobs
         public static JobDef TMCastAbilityVerb;
@@ -545,6 +567,7 @@ namespace TorannMagic
         public static JobDef JobDriver_Entertain;
         public static JobDef JobDriver_DoFor;
         public static JobDef JobDriver_SummonDemon;
+        public static JobDef JobDriver_PsionicBarrier;
 
         //Magicyte
         public static ThingDef RawMagicyte;
@@ -560,6 +583,7 @@ namespace TorannMagic
         public static SoundDef TM_SoftExplosion;
         public static SoundDef TM_BattleHymnSD;
         public static SoundDef TM_DemonDeath;
+        public static SoundDef TM_Implosion;
 
         //Inspirations
         public static InspirationDef ID_Champion;

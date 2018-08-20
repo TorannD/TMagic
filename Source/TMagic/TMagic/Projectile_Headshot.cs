@@ -1,6 +1,7 @@
 ﻿using RimWorld;
 using Verse;
 using AbilityUser;
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,30 +24,35 @@ namespace TorannMagic
             Map map = base.Map;
             base.Impact(hitThing);
             ThingDef def = this.def;
-
             pawn = this.launcher as Pawn;
             Pawn victim = hitThing as Pawn;
-            CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
-            MightPowerSkill ver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Headshot.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Headshot_ver");
-            verVal = ver.level;
-            if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            
+            try
             {
-                MightPowerSkill mver = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
-                verVal = mver.level;
-            }
-            CellRect cellRect = CellRect.CenteredOn(base.Position, 1);
-            cellRect.ClipInsideMap(map);
-
-            int dmg = GetWeaponDmg(pawn, this.def);
-
-            if (victim != null && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracyPawn, true)))
-            {                
-                this.PenetratingShot(victim, dmg, DamageDefOf.Bullet);
-
-                if (victim.Dead)
+                CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
+                MightPowerSkill ver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Headshot.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Headshot_ver");
+                verVal = ver.level;
+                if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                 {
-                    comp.Stamina.CurLevel += (.1f * verVal);
+                    MightPowerSkill mver = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                    verVal = mver.level;
                 }
+                CellRect cellRect = CellRect.CenteredOn(base.Position, 1);
+                cellRect.ClipInsideMap(map);
+                int dmg = GetWeaponDmg(pawn, this.def);
+
+                if (victim != null && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracyPawn, true)))
+                {
+                    this.PenetratingShot(victim, dmg, this.def.projectile.damageDef);
+                    if (victim.Dead)
+                    {
+                        comp.Stamina.CurLevel += (.1f * verVal);
+                    }
+                }
+            }
+            catch(NullReferenceException ex)
+            {
+                //Log.Message("null error " + ex);
             }
         }
 
@@ -197,7 +203,7 @@ namespace TorannMagic
             //DamageWorker_AddInjury inj = new DamageWorker_AddInjury();
             //inj.Apply(dinfo, victim);
             victim.TakeDamage(dinfo);
-            if (!victim.IsColonist && !victim.IsPrisoner && victim.Faction != null && !victim.Faction.HostileTo(pawn.Faction))
+            if (!victim.IsColonist && !victim.IsPrisoner && victim.Faction != null && !victim.Faction.HostileTo(pawn.Faction) && victim.Faction != this.launcher.Faction)
             {
                 Faction faction = victim.Faction;
                 faction.TrySetRelationKind(pawn.Faction, FactionRelationKind.Hostile, false, null);

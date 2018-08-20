@@ -45,6 +45,28 @@ namespace TorannMagic
                     user.story.traits.GainTrait(new Trait(TraitDef.Named("Faceless"), 4, false));
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
+                else if (parent.def.defName == "BookOfPsionic")
+                {
+                    if (user.GetStatValue(StatDefOf.PsychicSensitivity, false) > 1)
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Psionic"), 4, false));
+                        this.parent.Destroy(DestroyMode.Vanish);
+                    }
+                    else if(user.Map.GameConditionManager.ConditionIsActive(GameConditionDefOf.PsychicDrone) || user.Map.GameConditionManager.ConditionIsActive(GameConditionDefOf.PsychicSoothe))
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Psionic"), 4, false));
+                        this.parent.Destroy(DestroyMode.Vanish);
+                    }
+                    else
+                    {
+                        Messages.Message("TM_NotPsychicSensitive".Translate(new object[]
+                        {
+                            user.LabelShort
+                        }), MessageTypeDefOf.RejectInput);
+                    }
+                }
                 else
                 {
                     Messages.Message("NotCombatBook".Translate(), MessageTypeDefOf.RejectInput);

@@ -14,5 +14,6 @@ namespace TorannMagic
         public static readonly Material blackLightning = MaterialPool.MatFrom("Other/ArcaneBolt", true);
         public static readonly Material redLightning = MaterialPool.MatFrom("Other/DemonBolt", true);
         public static readonly Texture2D Icon_Undead = ContentFinder<Texture2D>.Get("UI/undead_icon", true);
+        public static readonly Material PsionicBarrier = MaterialPool.MatFrom("Other/PsionicBarrier", ShaderDatabase.Transparent);
     }
 }

@@ -38,6 +38,7 @@
 		  <li>Lich</li>
 		  <li>TM_Bard</li>
 		  <li>Faceless</li>
+		  <li>TM_Psionic</li>
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		</conflictingTraits>
@@ -83,6 +84,7 @@
 		  <li>Faceless</li>
 		  <li>Succubus</li>
 		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -125,6 +127,7 @@
 		  <li>Faceless</li>
 		  <li>Succubus</li>
 		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -165,6 +168,7 @@
 		  <li>Faceless</li>
 		  <li>Succubus</li>
 		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -208,7 +212,8 @@
 		<li>TM_Bard</li>
 		<li>Faceless</li>
 		<li>Succubus</li>
-		  <li>Warlock</li>		
+		  <li>Warlock</li>
+		<li>TM_Psionic</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -252,6 +257,7 @@
 		  <li>Faceless</li>
 		  <li>Succubus</li>
 		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -293,6 +299,7 @@
 		  <li>Faceless</li>
 		  <li>Succubus</li>
 		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
 		</conflictingTraits>	
 	</TraitDef>
 
@@ -333,6 +340,7 @@
 		  <li>Faceless</li>
 		  <li>Succubus</li>
 		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
 		</conflictingTraits>	
 	</TraitDef> 	
 	
@@ -376,6 +384,7 @@
 		  <li>Faceless</li>
 		  <li>Succubus</li>
 		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -446,6 +455,7 @@
 		  <li>Faceless</li>
 		  <li>Succubus</li>
 		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -499,6 +509,7 @@
 		  <li>Faceless</li>
 		  <li>Succubus</li>
 		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -615,6 +626,7 @@
 		  <li>Faceless</li>
 		  <li>Succubus</li>
 		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -630,7 +642,7 @@
                     <MoveSpeed>.20</MoveSpeed>
 					<WorkSpeedGlobal>0.20</WorkSpeedGlobal>
                     <ImmunityGainSpeed>.2</ImmunityGainSpeed>
-					<PsychicSensitivity>-0.4</PsychicSensitivity>
+					<PsychicSensitivity>-0.2</PsychicSensitivity>
 					<GlobalLearningFactor>-.20</GlobalLearningFactor>
                 </statOffsets>
             </li>
@@ -655,6 +667,7 @@
 		  <li>Faceless</li>
 		  <li>Succubus</li>
 		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -702,6 +715,7 @@
 		  <li>Faceless</li>
 		  <li>Succubus</li>
 		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -807,6 +821,7 @@
 		  <li>Faceless</li>
 		  <li>Succubus</li>
 		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -895,6 +910,7 @@
 		  <li>Faceless</li>
 		  <li>Succubus</li>
 		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -980,6 +996,7 @@
 		  <li>Faceless</li>
 		  <li>Succubus</li>
 		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1025,6 +1042,7 @@
 		  <li>TM_Bard</li>
 		  <li>Succubus</li>
 		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1072,6 +1090,7 @@
 		  <li>TM_Bard</li>
 		  <li>Faceless</li>
 		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1120,6 +1139,53 @@
 		  <li>TM_Bard</li>
 		  <li>Faceless</li>
 		  <li>Succubus</li>
+		  <li>TM_Psionic</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>
+		<defName>TM_Psionic</defName>
+		<commonality>0.001</commonality>
+		<degreeDatas>	
+		  <li>
+			<label>Psionic</label>
+			<description>[PAWN_nameDef] is a Psionic - able to manifest thought into raw energy. [PAWN_pronoun] is able to project psionic energy but finds it easier and more efficient to apply it as an extension and augmentation of [PAWN_possessive] body. For this reason, [PAWN_pronoun] prefers to be free of encumbering weapons.
+
+[PAWN_nameDef] has become less social since developing psionic powers since [PAWN_objective] can perform any task on [PAWN_possessive] own and can do without the jealousy of others.</description>
+			<degree>4</degree>
+				<statOffsets>
+					<SocialImpact>-0.25</SocialImpact>
+					<NegotiationAbility>-0.20</NegotiationAbility>
+					<TradePriceImprovement>-0.10</TradePriceImprovement>
+					<CarryingCapacity>0.20</CarryingCapacity>
+					<MeleeDodgeChance>10</MeleeDodgeChance>
+					<MeleeHitChance>10</MeleeHitChance>
+					<PainShockThreshold>-0.20</PainShockThreshold>
+					<PsychicSensitivity>0.20</PsychicSensitivity>
+                </statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>PhysicalProdigy</li>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>Arcanist</li>
+		  <li>StormBorn</li>
+		  <li>Summoner</li>
+		  <li>Gifted</li>
+	      <li>Paladin</li>
+		  <li>TM_Sniper</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Gladiator</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		  <li>Faceless</li>
+		  <li>Succubus</li>
+		  <li>Warlock</li>
 		</conflictingTraits>	
 	</TraitDef>
 

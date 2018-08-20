@@ -26,6 +26,30 @@
   </SoundDef>
   
   <SoundDef>
+    <defName>TM_Implosion</defName>
+    <eventNames />
+    <maxSimultaneous>2</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/Implosion</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>55</min>
+          <max>65</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.5</min>
+          <max>.6</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
     <defName>TM_Gong</defName>
     <eventNames />
     <maxSimultaneous>1</maxSimultaneous>

@@ -24,8 +24,6 @@ namespace TorannMagic
 
         protected int ticksToImpact;
 
-        protected Thing launcher;
-
         protected Thing assignedTarget;
 
         protected Thing flyingThing;
@@ -40,7 +38,6 @@ namespace TorannMagic
 
         public int weaponDmg = 0;
 
-        private bool initialize = true;
         private int wingDelay = 0;
         private bool wingDisplay = true;
 
@@ -55,9 +52,6 @@ namespace TorannMagic
         bool zflag = false;
 
         Pawn pawn;
-        CompAbilityUserMagic comp;
-        MagicPowerSkill pwr;
-        MagicPowerSkill ver;
         private int verVal;
         private int pwrVal;
         private float arcaneDmg = 1;
@@ -123,8 +117,8 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.damageLaunched, "damageLaunched", true, false);
             Scribe_Values.Look<bool>(ref this.explosion, "explosion", false, false);
             Scribe_References.Look<Thing>(ref this.assignedTarget, "assignedTarget", false);
-            Scribe_References.Look<Thing>(ref this.launcher, "launcher", false);
-            Scribe_References.Look<Thing>(ref this.flyingThing, "flyingThing", false);
+            Scribe_References.Look<Pawn>(ref this.pawn, "pawn", false);
+            Scribe_Deep.Look<Thing>(ref this.flyingThing, "flyingThing", new object[0]);
         }
 
         private void Initialize()
@@ -138,7 +132,7 @@ namespace TorannMagic
                 expCell2 = this.DestinationCell;
                 XProb(this.DestinationCell, this.origin);
             }
-            this.initialize = false;
+            //flyingThing.ThingID += Rand.Range(0, 2147).ToString();
         }
 
         public void Launch(Thing launcher, LocalTargetInfo targ, Thing flyingThing, DamageInfo? impactDamage)
@@ -168,7 +162,6 @@ namespace TorannMagic
             //
             ModOptions.Constants.SetPawnInFlight(true);
             //
-            this.launcher = launcher;
             this.origin = origin;
             this.impactDamage = newDamageInfo;
             this.flyingThing = flyingThing;
@@ -393,7 +386,7 @@ namespace TorannMagic
         protected void FireExplosion(int pwr, int ver, IntVec3 pos, Map map, float radius)
         {
             ThingDef def = this.def;
-            Explosion(pwr, pos, map, radius, DamageDefOf.Burn, this.launcher, null, def, ThingDefOf.Explosion, ThingDefOf.Mote_ExplosionFlash, 0.3f, 1, false, null, 0f, 1);
+            Explosion(pwr, pos, map, radius, DamageDefOf.Burn, this.pawn, null, def, ThingDefOf.Explosion, ThingDefOf.Mote_ExplosionFlash, 0.3f, 1, false, null, 0f, 1);
         }
 
         public void Explosion(int pwr, IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
