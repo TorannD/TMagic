@@ -5,21 +5,6 @@
 		<modIdentifier>ARimWorldOfMagic</modIdentifier>
 		<linkUrl>https://ludeon.com/forums/index.php?topic=37161.0</linkUrl>
 	</HugsLib.UpdateFeatureDef>	
-		<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_1_9_8</defName>
-		<assemblyVersion>1.9.8</assemblyVersion>
-		<content>
-- A RimWorld of Magic has undergone a balance update in order to adjust for mod updates and features that have been added over time. Descriptions have also been updated to adjust for the changes and for clarity.
-
-- The ability Cleave (Gladiator) has been reworked and will trigger automatically when using a melee weapon, the chance depends on the weight of the weapon.
-
-- The ability Regrow Limb (Druid) has been renamed to Regrowth and can regrow the majority of body parts. This ability no longer requires 2 mana potions.
-
-- A mod setting has been added that will allow you to hide abilities when multiple pawns are selected. This hides all abilities not part of the vanilla command buttons, even those buttons are not part of this mod.
-
-- Added compatibility updates for Combat Extended, No Water No Life, and Call of Cthulhu mods.
-	</content>
-	</HugsLib.UpdateFeatureDef>	
 	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
 		<defName>ARimWorldOfMagic_1_9_9</defName>
 		<assemblyVersion>1.9.9</assemblyVersion>
@@ -106,6 +91,26 @@ Psionics gain access to a unique mechanic called psionic energy; the balanced us
 *Psionic blast - launch a bolt of explosive energy; higher levels of psionic energy can produce multiple bolts
 *Psionic dash - a physical burst of energy propelled by psionic energy causes the psionic to move at devastating speeds over a short distance
 *Psionic storm - harnesses all reserves of psionic energy in a spectacular display of power
+		</content>
+	</HugsLib.UpdateFeatureDef>	
+		<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_2_2_3</defName>
+		<assemblyVersion>2.2.3</assemblyVersion>
+		<content>
+- New Class: Geomancer - the geomancer is a versatile support and defense magic class that is able to shape the elements of earth and manipulate the laws of physics.
+
+*Stoneskin - well defined skill from DnD that absorbs a specific amount of attacks, regardless of the strength or weakness of the attack
+*Encase	- an upheaval of stone and rock surrounds an area; can also be used effectively to isolate or restrict key terrain
+*Earth Sprites - summon an earth sprite to do your dirty work for you - in exchange for excessive amounts of mana, earth sprites will mine rock or transform terrain
+*Earthern Hammer - manipulates gravity to catapul nearby boulders at oncoming foes
+*Sentinel - spruce up your fortress with mean looking gargoyles that do more than stare at trespassers
+
+*Meteorite (master) - I'm supposed to write something about how this spell calls down a molten ball of death and destruction from the sky to decimate a large area and leave enemies asking "dude, where's my base?"
+I'll think of something before I make this update...
+
+Fighters rejoice! Enchantments now benefit fighter classes in a similar manner as magic classes; no additional recipes, workbenches, or materials needed.
+
+The Faceless skill "mimic," when used by a non-violent pawn, will no longer assign a violent skill to that pawn.
 		</content>
 	</HugsLib.UpdateFeatureDef>	
 	

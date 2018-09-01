@@ -84,6 +84,10 @@ namespace TorannMagic
         private float WD_PsychicShock_eff = .06f;
         private float SD_Attraction_eff = .08f;
         private float SD_Scorn_eff = .06f;
+        private float G_Encase_eff = .08f;
+        private float G_EarthSprites_eff = 0.06f;
+        private float G_EarthernHammer_eff = 0.06f;
+        private float G_Meteor_eff = 0.05f;
 
         private float global_eff = 0.025f;
 
@@ -124,6 +128,7 @@ namespace TorannMagic
         public bool spell_Scorn = false;
         public bool spell_PsychicShock = false;
         public bool spell_SummonDemon = false;
+        public bool spell_Meteor = false;
 
         private bool item_StaffOfDefender = false;
 
@@ -137,6 +142,13 @@ namespace TorannMagic
 
         public TMAbilityDef mimicAbility = null;
         public List<Thing> summonedMinions = new List<Thing>();
+        public List<Thing> summonedSentinels = new List<Thing>();
+        public List<Pawn> stoneskinPawns = new List<Pawn>();
+        public IntVec3 earthSprites = default(IntVec3);
+        public int nextEarthSpriteAction = 0;
+        public int nextEarthSpriteMote = 0;
+        public int earthSpriteType = 0;
+        private bool dismissEarthSpriteSpell = false;
         public List<Thing> summonedLights = new List<Thing>();
         public Pawn soulBondPawn = null;
         private bool dismissMinionSpell = false;
@@ -849,6 +861,7 @@ namespace TorannMagic
             }
             return result;
         }
+
         public int LevelUpSkill_SoulBond(string skillName)
         {
             int result = 0;
@@ -926,17 +939,73 @@ namespace TorannMagic
             }
             return result;
         }
-        //public int LevelUpSkill_SummonDemon(string skillName)
-        //{
-        //    int result = 0;
-        //    MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_SummonDemon.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
-        //    bool flag = magicPowerSkill != null;
-        //    if (flag)
-        //    {
-        //        result = magicPowerSkill.level;
-        //    }
-        //    return result;
-        //}
+
+        public int LevelUpSkill_Stoneskin(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Stoneskin.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_Encase(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Encase.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_EarthSprites(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_EarthSprites.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_EarthernHammer(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_EarthernHammer.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_Meteor(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Meteor.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_Sentinel(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Sentinel.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
 
         private void SingleEvent()
         {
@@ -1087,7 +1156,7 @@ namespace TorannMagic
                     bool flag3 = base.AbilityUser.story != null;
                     if (flag3)
                     {
-                        bool flag4 = base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Warlock) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Succubus) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Paladin) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Druid) || (base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Lich)) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Priest) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Bard);
+                        bool flag4 = base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Geomancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Warlock) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Succubus) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Paladin) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Druid) || (base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Lich)) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Priest) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Bard);
                         if (flag4)
                         {
                             result = true;
@@ -1154,6 +1223,10 @@ namespace TorannMagic
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Succubus) || this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Warlock))
             {
                 Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.demonkinMarkMat, 0);
+            }
+            else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
+            {
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.earthMarkMat, 0);
             }
             else 
             {
@@ -1945,6 +2018,67 @@ namespace TorannMagic
                             this.AddPawnAbility(TorannMagicDefOf.TM_Repulsion);
                         }
                     }
+                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Geomancer);
+                    if (flag2)
+                    {
+                        //Log.Message("Initializing Heart of Frost Abilities");
+                        if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                        {
+                            if (Rand.Chance(.4f))
+                            {
+                                this.AddPawnAbility(TorannMagicDefOf.TM_Stoneskin);
+                            }
+                            else
+                            {
+                                MagicPower mpG = this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Stoneskin);
+                                mpG.learned = false;
+                            }
+                            if (Rand.Chance(.6f))
+                            {
+                                this.AddPawnAbility(TorannMagicDefOf.TM_Encase);
+                            }
+                            else
+                            {
+                                MagicPower mpG = this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Encase);
+                                mpG.learned = false;
+                            }
+                            if (Rand.Chance(.3f))
+                            {
+                                this.AddPawnAbility(TorannMagicDefOf.TM_EarthSprites);
+                            }
+                            else
+                            {
+                                MagicPower mpG = this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EarthSprites);
+                                mpG.learned = false;
+                            }
+                            if (Rand.Chance(.5f))
+                            {
+                                this.AddPawnAbility(TorannMagicDefOf.TM_EarthernHammer);
+                            }
+                            else
+                            {
+                                MagicPower mpG = this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EarthernHammer);
+                                mpG.learned = false;
+                            }
+                            if (Rand.Chance(.3f))
+                            {
+                                this.AddPawnAbility(TorannMagicDefOf.TM_Sentinel);
+                            }
+                            else
+                            {
+                                MagicPower mpG = this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Sentinel);
+                                mpG.learned = false;
+                            }
+                        }
+                        else
+                        {
+                            this.AddPawnAbility(TorannMagicDefOf.TM_Stoneskin);
+                            this.AddPawnAbility(TorannMagicDefOf.TM_Encase);
+                            this.AddPawnAbility(TorannMagicDefOf.TM_EarthSprites);
+                            this.AddPawnAbility(TorannMagicDefOf.TM_EarthernHammer);
+                            this.AddPawnAbility(TorannMagicDefOf.TM_Sentinel);
+                        }
+                    }
                 }
 
                 this.magicPowersInitialized = true;
@@ -2137,6 +2271,42 @@ namespace TorannMagic
                 {
                     this.RemovePawnAbility(TorannMagicDefOf.TM_ShadowCall);
                     this.AddPawnAbility(TorannMagicDefOf.TM_ShadowCall);
+                }
+                if (this.spell_Meteor == true)
+                {
+                    MagicPower meteorPower = this.MagicData.magicPowerG.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Meteor);
+                    if(meteorPower == null)
+                    {
+                        meteorPower = this.MagicData.magicPowerG.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Meteor_I);
+                        if(meteorPower == null)
+                        {
+                            meteorPower = this.MagicData.magicPowerG.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Meteor_II);
+                            if (meteorPower == null)
+                            {
+                                meteorPower = this.MagicData.magicPowerG.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Meteor_III);
+                            }
+                        }
+                    }
+                    if (meteorPower.level == 3)
+                    {
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_Meteor_III);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Meteor_III);
+                    }
+                    else if (meteorPower.level == 2)
+                    {
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_Meteor_II);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Meteor_II);
+                    }
+                    else if (meteorPower.level == 1)
+                    {
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_Meteor_I);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Meteor_I);
+                    }
+                    else
+                    {
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_Meteor);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Meteor);
+                    }
                 }
                 //this.UpdateAbilities();
             }            
@@ -2582,6 +2752,13 @@ namespace TorannMagic
                     powerLearned.Add(this.MagicData.MagicPowersWD[i].learned);
                 }
             }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
+            {
+                for (int i = 0; i < this.MagicData.MagicPowersG.Count; i++)
+                {
+                    powerLearned.Add(this.MagicData.MagicPowersG[i].learned);
+                }
+            }
             int tmpLvl = this.MagicUserLevel;
             int tmpExp = this.MagicUserXP;
             base.IsInitialized = false;
@@ -2675,6 +2852,13 @@ namespace TorannMagic
                     this.MagicData.MagicPowersWD[i].learned = powerLearned[i];
                 }
             }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MagicData.MagicPowersG[i].learned = powerLearned[i];
+                }
+            }
         }
 
         private void LoadPowers()
@@ -2736,7 +2920,7 @@ namespace TorannMagic
             {
                 if (traits[i].def == TorannMagicDefOf.InnerFire || traits[i].def == TorannMagicDefOf.HeartOfFrost || traits[i].def == TorannMagicDefOf.StormBorn  || traits[i].def == TorannMagicDefOf.Arcanist || traits[i].def == TorannMagicDefOf.Paladin ||
                     traits[i].def == TorannMagicDefOf.Druid || traits[i].def == TorannMagicDefOf.Priest || traits[i].def == TorannMagicDefOf.Necromancer || traits[i].def == TorannMagicDefOf.Warlock || traits[i].def == TorannMagicDefOf.Succubus ||
-                    traits[i].def == TorannMagicDefOf.TM_Bard)
+                    traits[i].def == TorannMagicDefOf.TM_Bard || traits[i].def == TorannMagicDefOf.Geomancer)
                 {
                     Log.Message("Removing trait " + traits[i].Label);
                     traits.Remove(traits[i]);
@@ -3265,6 +3449,60 @@ namespace TorannMagic
                     result = magicPowerSkill.level;
                 }
             }
+            if (attributeName == "TM_Stoneskin_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Stoneskin.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_Encase_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Encase.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_EarthSprites_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_EarthSprites.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_EarthernHammer_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_EarthernHammer.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_Sentinel_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Sentinel.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_Meteor_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Meteor.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
 
             return result;
         }
@@ -3566,6 +3804,26 @@ namespace TorannMagic
                 MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_PsychicShock.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_PsychicShock_eff");
                 adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.WD_PsychicShock_eff * (float)magicPowerSkill.level);
             }
+            if (magicDef == TorannMagicDefOf.TM_Encase || magicDef == TorannMagicDefOf.TM_Encase_I || magicDef == TorannMagicDefOf.TM_Encase_II || magicDef == TorannMagicDefOf.TM_Encase_III)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Encase.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Encase_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.G_Encase_eff * (float)magicPowerSkill.level);
+            }
+            if (magicDef == TorannMagicDefOf.TM_EarthSprites)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_EarthSprites.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EarthSprites_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.G_EarthSprites_eff * (float)magicPowerSkill.level);
+            }
+            if (magicDef == TorannMagicDefOf.TM_EarthernHammer)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_EarthernHammer.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EarthernHammer_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.G_EarthernHammer_eff * (float)magicPowerSkill.level);
+            }
+            if (magicDef == TorannMagicDefOf.TM_Meteor || magicDef == TorannMagicDefOf.TM_Meteor_I || magicDef == TorannMagicDefOf.TM_Meteor_II || magicDef == TorannMagicDefOf.TM_Meteor_III)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Meteor.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Meteor_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.G_Meteor_eff * (float)magicPowerSkill.level);
+            }
             if (this.mpCost != 1f)
             {
                 adjustedManaCost = adjustedManaCost * this.mpCost;
@@ -3802,6 +4060,128 @@ namespace TorannMagic
             }
         }
 
+        private void ResolveEarthSpriteAction()
+        {
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_EarthSprites.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EarthSprites_pwr");
+            if (this.earthSpriteType == 1) //mining stone
+            {
+                Building mineTarget = this.earthSprites.GetFirstBuilding(this.Pawn.Map);                
+                this.nextEarthSpriteAction = Find.TickManager.TicksGame + Mathf.RoundToInt((300 * (1 - (.1f * magicPowerSkill.level))) / this.arcaneDmg);
+                TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_SparkFlash"), this.earthSprites.ToVector3Shifted(), this.Pawn.Map, Rand.Range(1.5f, 3f), .05f, 0f, .1f, 0, 0f, 0f, 0f);
+                var mineable = mineTarget as Mineable;
+                int num = 80;
+                if(mineable != null && mineTarget.HitPoints > num)
+                {
+                    var dinfo = new DamageInfo(DamageDefOf.Mining, num, 0, -1f, this.Pawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+                    mineTarget.TakeDamage(dinfo);
+                }
+                else
+                {
+                    mineable.DestroyMined(this.Pawn);
+                }
+
+                if (mineable.Destroyed)
+                {
+                    IntVec3 oldEarthSpriteLoc = this.earthSprites;
+                    Building newMineSpot = null;
+                    for (int i = 0; i < 20; i++)
+                    {
+                        IntVec3 intVec = earthSprites + GenAdj.AdjacentCells.RandomElement();
+                        newMineSpot = intVec.GetFirstBuilding(this.Pawn.Map);
+                        if(newMineSpot != null)
+                        {
+                            mineable = newMineSpot as Mineable;
+                            if(mineable != null)
+                            {
+                                this.earthSprites = intVec;
+                                i = 20;
+                            }
+                            newMineSpot = null;    
+                        }
+                    }
+
+                    if(oldEarthSpriteLoc == this.earthSprites)
+                    {
+                        this.earthSpriteType = 0;
+                        this.earthSprites = IntVec3.Invalid;
+                    }
+                }
+            }
+            else if(this.earthSpriteType == 2) //transforming soil
+            {
+                this.nextEarthSpriteAction = Find.TickManager.TicksGame + Mathf.RoundToInt((24000 * (1 - (.1f * magicPowerSkill.level)))/this.arcaneDmg); 
+                for (int m = 0; m < 4; m++)
+                {
+                    TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_ThickDust"), this.earthSprites.ToVector3Shifted(), this.Pawn.Map, Rand.Range(.3f, .5f), Rand.Range(.2f, .3f), .05f, Rand.Range(.4f, .6f), Rand.Range(-20, 20), Rand.Range(.5f, 1f), Rand.Range(0, 360), Rand.Range(0, 360));
+                }
+                Map map = this.Pawn.Map;
+                IntVec3 curCell = this.earthSprites;
+                TerrainDef terrain = curCell.GetTerrain(map);
+                if (curCell.InBounds(map) && curCell.IsValid && terrain != null)
+                {
+                    if (terrain.defName == "MarshyTerrain" || terrain.defName == "Mud" || terrain.defName == "Marsh")
+                    {
+                        map.terrainGrid.SetTerrain(curCell, terrain.driesTo);
+                    }
+                    else if (terrain.defName == "WaterShallow")
+                    {
+                        map.terrainGrid.SetTerrain(curCell, TerrainDef.Named("Marsh"));
+                    }
+                    else if (terrain.defName == "Ice")
+                    {
+                        map.terrainGrid.SetTerrain(curCell, TerrainDef.Named("Mud"));
+                    }
+                    else if(terrain.defName == "Soil")
+                    {
+                        map.terrainGrid.SetTerrain(curCell, TerrainDef.Named("SoilRich"));
+                    }
+                    else if (terrain.defName == "Sand" || terrain.defName == "Gravel" || terrain.defName == "MossyTerrain")
+                    {
+                        map.terrainGrid.SetTerrain(curCell, TerrainDef.Named("Soil"));
+                    }
+                    else if (terrain.defName == "SoftSand")
+                    {
+                        map.terrainGrid.SetTerrain(curCell, TerrainDef.Named("Sand"));
+                    }
+                    else
+                    {
+                        Log.Message("unable to resolve terraindef - resetting earth sprite parameters");
+                        this.earthSprites = IntVec3.Invalid;
+                        this.earthSpriteType = 0;
+                    }
+
+                    terrain = curCell.GetTerrain(map);
+                    if (terrain.defName == "SoilRich")
+                    {
+                        //look for new spot to transform
+                        IntVec3 oldEarthSpriteLoc = this.earthSprites;
+                        for (int i = 0; i < 20; i++)
+                        {
+                            IntVec3 intVec = earthSprites + GenAdj.AdjacentCells.RandomElement();
+                            terrain = intVec.GetTerrain(map);
+                            if (terrain.defName == "MarshyTerrain" || terrain.defName == "Mud" || terrain.defName == "Marsh" || terrain.defName == "WaterShallow" || terrain.defName == "Ice" ||
+                        terrain.defName == "Sand" || terrain.defName == "Gravel" || terrain.defName == "Soil" || terrain.defName == "MossyTerrain" || terrain.defName == "SoftSand")
+                            {
+                                Building terrainHasBuilding = null;
+                                terrainHasBuilding = intVec.GetFirstBuilding(this.Pawn.Map);
+                                if (terrainHasBuilding == null) //dont transform terrain underneath buildings
+                                {
+                                    this.earthSprites = intVec;
+                                    i = 20;
+                                }
+                            }
+                        }
+
+                        if(oldEarthSpriteLoc == earthSprites)
+                        {
+                            this.earthSpriteType = 0;
+                            this.earthSprites = IntVec3.Invalid;
+                        }
+                    }
+                }
+            }
+        }
+
         public void ResolveEffecter()
         {
             bool spawned = this.Pawn.Spawned;
@@ -3991,6 +4371,24 @@ namespace TorannMagic
 
         public void ResolveSustainers()
         {
+            if(this.stoneskinPawns.Count() > 0)
+            {
+                for(int i = 0; i < this.stoneskinPawns.Count(); i++)
+                {
+                    if(this.stoneskinPawns[i].DestroyedOrNull() || this.stoneskinPawns[i].Dead)
+                    {
+                        this.stoneskinPawns.Remove(this.stoneskinPawns[i]);
+                    }
+                    else
+                    {
+                        if (!this.stoneskinPawns[i].health.hediffSet.HasHediff(HediffDef.Named("TM_StoneskinHD"), false))
+                        {
+                            this.stoneskinPawns.Remove(this.stoneskinPawns[i]);
+                        }
+                    }
+                }
+            }
+
             if (this.summonedLights.Count > 0 && dismissSunlightSpell == false)
             {
                 this.AddPawnAbility(TorannMagicDefOf.TM_DismissSunlight);
@@ -4038,6 +4436,18 @@ namespace TorannMagic
             {
                 this.RemovePawnAbility(TorannMagicDefOf.TM_DismissMinion);
                 dismissMinionSpell = false;                    
+            }
+
+            if (this.earthSpriteType != 0 && dismissEarthSpriteSpell == false)
+            {
+                this.AddPawnAbility(TorannMagicDefOf.TM_DismissEarthSprites);
+                dismissEarthSpriteSpell = true;
+            }
+
+            if (this.earthSpriteType == 0 && dismissEarthSpriteSpell == true)
+            {
+                this.RemovePawnAbility(TorannMagicDefOf.TM_DismissEarthSprites);
+                dismissEarthSpriteSpell = false;
             }
         }
 
@@ -4096,10 +4506,43 @@ namespace TorannMagic
                     }
                 }
             }
-        }
+        }        
 
         public void ResolveClassSkills()
         {
+            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer) && this.earthSpriteType != 0 && this.earthSprites.IsValid)
+            {
+                if (this.nextEarthSpriteAction < Find.TickManager.TicksGame)
+                {
+                    ResolveEarthSpriteAction();
+                }
+
+                if (this.nextEarthSpriteMote < Find.TickManager.TicksGame)
+                {
+                    this.nextEarthSpriteMote += Rand.Range(10, 16);
+                    Vector3 shiftLoc = this.earthSprites.ToVector3Shifted();
+                    shiftLoc.x += Rand.Range(-.3f, .3f);
+                    shiftLoc.z += Rand.Range(-.3f, .3f);
+                    TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Twinkle, shiftLoc, this.Pawn.Map, Rand.Range(.4f, 1f), .05f, Rand.Range(.2f, .5f), Rand.Range(.2f, .5f), Rand.Range(-100, 100), Rand.Range(0f, .3f), Rand.Range(0, 360), 0);
+                }
+            }
+
+            if(this.summonedSentinels.Count > 0)
+            {
+                for(int i = 0; i < this.summonedSentinels.Count(); i++)
+                {
+                    if(summonedSentinels[i].DestroyedOrNull())
+                    {
+                        this.summonedSentinels.Remove(this.summonedSentinels[i]);
+                    }
+                }
+            }
+           
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Lich) && !this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD")))
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_LichHD"), .5f);
+            }
+
             if (this.IsMagicUser && !this.Pawn.Dead && !this.Pawn.Downed)
             {
                 if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
@@ -4265,7 +4708,7 @@ namespace TorannMagic
             catch
             {
                 
-            }
+            }            
             if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
             {
                 if(this.spell_LichForm == true)
@@ -4283,6 +4726,27 @@ namespace TorannMagic
             if(this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_EntertainingHD"), false))
             {
                 _maxMP += -.3f;
+            }
+            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
+            {
+                MagicPowerSkill familiarSkin = this.MagicData.MagicPowerSkill_Stoneskin.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Stoneskin_eff");
+                MagicPowerSkill sharedSkin = this.MagicData.MagicPowerSkill_Stoneskin.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Stoneskin_ver");
+                _maxMP += -((.15f - (.02f * familiarSkin.level)) * this.stoneskinPawns.Count());
+                //if(this.earthSpriteType != 0) //this is handled within mana gain function
+                //{
+                //    _mpRegenRate += -(.6f - (.07f * sharedSkin.level));
+                //}
+
+                MagicPowerSkill heartofstone = this.MagicData.MagicPowerSkill_Sentinel.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Sentinel_eff");
+
+                if(heartofstone.level == 3)
+                {
+                    _maxMP += -(.15f * this.summonedSentinels.Count);
+                }
+                else
+                {
+                    _maxMP += -((.2f - (.02f * heartofstone.level)) * this.summonedSentinels.Count);
+                }
             }
             MagicPowerSkill spirit = this.MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr");
             MagicPowerSkill clarity = this.MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
@@ -4334,11 +4798,7 @@ namespace TorannMagic
             if (_phantomShift == true)
             {
                 HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_phantomShift"), .5f);
-            }
-            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Lich) && !this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD")))
-            {
-                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_LichHD"), .5f);
-            }
+            }            
 
             using (IEnumerator<Hediff> enumerator = this.Pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
             {
@@ -4423,11 +4883,17 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.spell_SpellMending, "spell_SpellMending", false, false);
             Scribe_Values.Look<bool>(ref this.spell_PsychicShock, "spell_PsychicShock", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Scorn, "spell_Scorn", false, false);
+            Scribe_Values.Look<bool>(ref this.spell_Meteor, "spell_Meteor", false, false);
             Scribe_Values.Look<int>(ref this.powerModifier, "powerModifier", 0, false);
             Scribe_Values.Look<bool>(ref this.doOnce, "doOnce", true, false);
             Scribe_References.Look<Pawn>(ref this.soulBondPawn, "soulBondPawn", false);
             Scribe_Collections.Look<Thing>(ref this.summonedMinions, "summonedMinions", LookMode.Reference);
             Scribe_Collections.Look<Thing>(ref this.summonedLights, "summonedLights", LookMode.Reference);
+            Scribe_Collections.Look<Thing>(ref this.summonedSentinels, "summonedSentinels", LookMode.Reference);
+            Scribe_Collections.Look<Pawn>(ref this.stoneskinPawns, "stoneskinPawns", LookMode.Reference);
+            Scribe_Values.Look<IntVec3>(ref this.earthSprites, "earthSprites", default(IntVec3), false);
+            Scribe_Values.Look<int>(ref this.earthSpriteType, "earthSpriteType", 0, false);
+            Scribe_Values.Look<int>(ref this.nextEarthSpriteAction, "nextEarthSpriteAction", 0, false);
             Scribe_Collections.Look<IntVec3>(ref this.fertileLands, "fertileLands", LookMode.Value);
             Scribe_Deep.Look<MagicData>(ref this.magicData, "magicData", new object[]
             {
@@ -5045,6 +5511,41 @@ namespace TorannMagic
                         }
                     }
                 }
+                bool flag52 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Geomancer);
+                if (flag52)
+                {
+                    bool flagG = !this.MagicData.MagicPowersG.NullOrEmpty<MagicPower>();
+                    if (flagG)
+                    {
+                        //this.LoadPowers();
+                        foreach (MagicPower current15 in this.MagicData.MagicPowersG)
+                        {
+                            bool flagWD2 = current15.abilityDef != null;
+                            if (flagWD2)
+                            {
+                                if (current15.learned == true && (current15.abilityDef == TorannMagicDefOf.TM_Encase || current15.abilityDef == TorannMagicDefOf.TM_Encase_I || current15.abilityDef == TorannMagicDefOf.TM_Encase_II || current15.abilityDef == TorannMagicDefOf.TM_Encase_III))
+                                {
+                                    if (current15.level == 0)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_Encase);
+                                    }
+                                    else if (current15.level == 1)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_Encase_I);
+                                    }
+                                    else if (current15.level == 2)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_Encase_II);
+                                    }
+                                    else
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_Encase_III);
+                                    }
+                                }                                
+                            }
+                        }
+                    }
+                }
                 if (flag40)
                 {
                     //Log.Message("Loading Inner Fire Abilities");
@@ -5247,6 +5748,30 @@ namespace TorannMagic
                     if(mpWD.learned == true)
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_SoulBond);
+                    }
+                }
+                if (flag52)
+                {
+                    //Log.Message("Loading Geomancer Abilities");
+                    MagicPower mpG = this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Stoneskin);
+                    if (mpG.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Stoneskin);
+                    }
+                    mpG = this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EarthSprites);
+                    if (mpG.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_EarthSprites);
+                    }
+                    mpG = this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EarthernHammer);
+                    if (mpG.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_EarthernHammer);
+                    }
+                    mpG = this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Sentinel);
+                    if (mpG.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Sentinel);
                     }
                 }
 

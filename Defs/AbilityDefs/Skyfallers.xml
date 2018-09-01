@@ -221,6 +221,82 @@
 	  <cameraShake>1</cameraShake>
     </skyfaller>
   </ThingDef>
+  
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>TM_Meteorite</defName>
+    <label>meteorite</label>
+    <size>(2, 2)</size>
+    <graphicData>
+      <texPath>Things/Skyfaller/Meteorite</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(10, 10)</drawSize>
+    </graphicData>
+    <skyfaller>
+      <shadowSize>(3, 3)</shadowSize>
+      <explosionRadius>3</explosionRadius>
+      <explosionDamage>Bomb</explosionDamage>
+      <rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>
+      <speed>.6</speed>
+    </skyfaller>
+  </ThingDef>
+  
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>TM_Meteorite_I</defName>
+    <label>meteorite</label>
+    <size>(2, 2)</size>
+    <graphicData>
+      <texPath>Things/Skyfaller/Meteorite</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(12, 12)</drawSize>
+    </graphicData>
+    <skyfaller>
+      <shadowSize>(4, 4)</shadowSize>
+      <explosionRadius>4</explosionRadius>
+      <explosionDamage>Bomb</explosionDamage>
+      <rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>
+      <speed>.7</speed>
+    </skyfaller>
+  </ThingDef>
+  
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>TM_Meteorite_II</defName>
+    <label>meteorite</label>
+    <size>(2, 2)</size>
+    <graphicData>
+      <texPath>Things/Skyfaller/Meteorite</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(14, 14)</drawSize>
+    </graphicData>
+    <skyfaller>
+      <shadowSize>(5, 5)</shadowSize>
+      <explosionRadius>5</explosionRadius>
+      <explosionDamage>Bomb</explosionDamage>
+      <rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>
+      <speed>.8</speed>
+    </skyfaller>
+  </ThingDef>
+  
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>TM_Meteorite_III</defName>
+    <label>meteorite</label>
+    <size>(2, 2)</size>
+    <graphicData>
+      <texPath>Things/Skyfaller/Meteorite</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <drawSize>(16, 16)</drawSize>
+    </graphicData>
+    <skyfaller>
+      <shadowSize>(6, 6)</shadowSize>
+      <explosionRadius>6</explosionRadius>
+      <explosionDamage>Bomb</explosionDamage>
+      <rotateGraphicTowardsDirection>true</rotateGraphicTowardsDirection>
+      <speed>.9</speed>
+    </skyfaller>
+  </ThingDef>
 
 
 </Defs>

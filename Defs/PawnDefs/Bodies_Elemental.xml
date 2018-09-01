@@ -6,7 +6,7 @@
 		<defName>Elemental</defName>
 		<label>elemental</label>
 		<corePart>
-			<def>Body</def>
+			<def>Ele_Body</def>
 			<height>Middle</height>
 			<depth>Outside</depth>
 			<parts>

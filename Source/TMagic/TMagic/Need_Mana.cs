@@ -30,6 +30,7 @@ namespace TorannMagic
         public float drainManaSickness;
         public float drainManaDrain;
         public float drainManaSurge;
+        public float drainSprites;
         public float baseManaGain;
 
         public float lastGainPct;
@@ -190,6 +191,13 @@ namespace TorannMagic
                             MagicPowerSkill summonerEff = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonMinion.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonMinion_eff");
                             this.drainMinion = (0.0012f * (comp.summonedMinions.Count * (.2f - (.01f * summonerEff.level))));
                             amount -= this.drainMinion;
+                        }
+
+                        if(comp.earthSpriteType != 0)
+                        {
+                            MagicPowerSkill manaDeviant = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EarthSprites.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EarthSprites_ver");
+                            this.drainSprites = (0.0012f * (.6f - (.07f * manaDeviant.level)));
+                            amount -= this.drainSprites;
                         }
 
                         if (pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))

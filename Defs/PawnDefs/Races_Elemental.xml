@@ -28,13 +28,17 @@
 	  <li>ITab_Pawn_Log</li>
     </inspectorTabs>
     <race>
+	  <fleshType>Mechanoid</fleshType>
       <body>Elemental</body>
 	  <deathActionWorkerClass>TorannMagic.Elemental_DeathWorker</deathActionWorkerClass>
       <needsRest>false</needsRest>
       <hasGenders>false</hasGenders>
       <predator>true</predator>
       <foodType>OmnivoreAnimal</foodType>
-      <baseHungerRate>0.00</baseHungerRate>	  
+      <baseHungerRate>0.00</baseHungerRate>
+	  <wildness>0.8</wildness>	  
+	  <packAnimal>false</packAnimal>
+	  <herdAnimal>false</herdAnimal>
 <!-- 	  <intelligence>ToolUser</intelligence> -->
 	  <trainability>None</trainability>
       <thinkTreeConstant>TM_Elemental_AI_Constant</thinkTreeConstant>
@@ -118,6 +122,7 @@
     <defName>TM_LesserEarth_Elemental</defName>
     <label>lesser earth elemental</label>
     <race>TM_LesserEarth_ElementalR</race>
+	<ecoSystemWeight>0</ecoSystemWeight>
     <combatPower>800</combatPower>
 <!-- 	<wildSpawn_spawnWild>false</wildSpawn_spawnWild> -->
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
@@ -209,6 +214,7 @@
     <race>TM_Earth_ElementalR</race>
     <combatPower>1200</combatPower>	
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
+	<ecoSystemWeight>0</ecoSystemWeight>
     <lifeStages>
 	  <li>
 	    <label>earth elemental</label>
@@ -295,7 +301,7 @@
     <label>greater earth elemental</label>
     <race>TM_GreaterEarth_ElementalR</race>
     <combatPower>1500</combatPower>
-	
+	<ecoSystemWeight>0</ecoSystemWeight>
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
     <lifeStages>
 	  <li>
@@ -385,7 +391,7 @@
     <label>lesser fire elemental</label>
     <race>TM_LesserFire_ElementalR</race>
     <combatPower>800</combatPower>
-	
+	<ecoSystemWeight>0</ecoSystemWeight>
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
     <lifeStages>
 	  <li>
@@ -474,7 +480,7 @@
     <label>fire elemental</label>
     <race>TM_Fire_ElementalR</race>
     <combatPower>1200</combatPower>
-	
+	<ecoSystemWeight>0</ecoSystemWeight>
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
     <lifeStages>
 	  <li>
@@ -562,7 +568,7 @@
     <label>greater fire elemental</label>
     <race>TM_GreaterFire_ElementalR</race>
     <combatPower>1500</combatPower>
-	
+	<ecoSystemWeight>0</ecoSystemWeight>
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
     <lifeStages>
 	  <li>
@@ -652,7 +658,7 @@
     <label>lesser water elemental</label>
     <race>TM_LesserWater_ElementalR</race>
     <combatPower>800</combatPower>
-	
+	<ecoSystemWeight>0</ecoSystemWeight>
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
     <lifeStages>
 	  <li>
@@ -741,7 +747,7 @@
     <label>water elemental</label>
     <race>TM_Water_ElementalR</race>
     <combatPower>1200</combatPower>
-	
+	<ecoSystemWeight>0</ecoSystemWeight>
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
     <lifeStages>
 	  <li>
@@ -830,7 +836,7 @@
     <label>greater water elemental</label>
     <race>TM_GreaterWater_ElementalR</race>
     <combatPower>1500</combatPower>
-	
+	<ecoSystemWeight>0</ecoSystemWeight>
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
     <lifeStages>
 	  <li>
@@ -922,7 +928,7 @@
     <label>lesser wind elemental</label>
     <race>TM_LesserWind_ElementalR</race>
     <combatPower>800</combatPower>
-	
+	<ecoSystemWeight>0</ecoSystemWeight>
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
     <lifeStages>
 	  <li>
@@ -1013,7 +1019,7 @@
     <label>wind elemental</label>
     <race>TM_Wind_ElementalR</race>
     <combatPower>1200</combatPower>
-	
+	<ecoSystemWeight>0</ecoSystemWeight>
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
     <lifeStages>
 	  <li>
@@ -1103,7 +1109,7 @@
     <label>greater wind elemental</label>
     <race>TM_GreaterWind_ElementalR</race>
     <combatPower>1500</combatPower>
-	
+	<ecoSystemWeight>0</ecoSystemWeight>
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
     <lifeStages>
 	  <li>

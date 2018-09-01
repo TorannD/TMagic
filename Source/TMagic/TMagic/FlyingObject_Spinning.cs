@@ -13,8 +13,11 @@ namespace TorannMagic
     {
         protected Vector3 origin;
         protected Vector3 destination;
+        private Vector3 direction;
 
         public float speed = 25f;
+        public int spinRate = 0;        //spin rate > 0 makes the object rotate every spinRate Ticks
+        private int rotation = 0;
         protected int ticksToImpact;
         protected Thing launcher;
         protected Thing assignedTarget;
@@ -32,8 +35,6 @@ namespace TorannMagic
         public bool explosion = false;
 
         public int weaponDmg = 0;
-
-        private bool initialize = true;
 
         Pawn pawn;
         CompAbilityUserMagic comp;
@@ -106,9 +107,9 @@ namespace TorannMagic
             {
                 MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
             }
-            
+
+            this.direction = TM_Calc.GetVector(this.origin.ToIntVec3(), this.destination.ToIntVec3());
             //flyingThing.ThingID += Rand.Range(0, 2147).ToString();
-            this.initialize = false;
         }
 
         public void Launch(Thing launcher, LocalTargetInfo targ, Thing flyingThing, DamageInfo? impactDamage)
@@ -118,6 +119,12 @@ namespace TorannMagic
 
         public void Launch(Thing launcher, LocalTargetInfo targ, Thing flyingThing)
         {
+            this.Launch(launcher, base.Position.ToVector3Shifted(), targ, flyingThing, null);
+        }
+
+        public void Launch(Thing launcher, LocalTargetInfo targ, Thing flyingThing, int _spinRate)
+        {
+            this.spinRate = _spinRate;
             this.Launch(launcher, base.Position.ToVector3Shifted(), targ, flyingThing, null);
         }
 
@@ -190,6 +197,34 @@ namespace TorannMagic
             bool flag = this.flyingThing != null;
             if (flag)
             {
+                if (this.spinRate > 0)
+                {
+                    if(Find.TickManager.TicksGame % this.spinRate ==0)
+                    {
+                        this.rotation++;
+                        if(this.rotation >= 4)
+                        {
+                            this.rotation = 0;
+                        }
+                    }
+                    if (rotation == 0)
+                    {
+                        this.flyingThing.Rotation = Rot4.West;
+                    }
+                    else if (rotation == 1)
+                    {
+                        this.flyingThing.Rotation = Rot4.North;
+                    }
+                    else if (rotation == 2)
+                    {
+                        this.flyingThing.Rotation = Rot4.East;
+                    }
+                    else
+                    {
+                        this.flyingThing.Rotation = Rot4.South;
+                    }
+                }
+
                 bool flag2 = this.flyingThing is Pawn;
                 if (flag2)
                 {
@@ -268,11 +303,59 @@ namespace TorannMagic
                 SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);                
 
                 GenSpawn.Spawn(this.flyingThing, base.Position, base.Map);
-                Pawn p = this.flyingThing as Pawn;
-                if (this.earlyImpact)
+                Thing p = this.flyingThing;
+                if (this.flyingThing is Pawn)
                 {
-                    damageEntities(p, this.impactForce, DamageDefOf.Blunt);
-                    damageEntities(p, 2 * this.impactForce, DamageDefOf.Stun);
+                    if (this.earlyImpact)
+                    {
+                        damageEntities(p, this.impactForce, DamageDefOf.Blunt);
+                        damageEntities(p, 2 * this.impactForce, DamageDefOf.Stun);
+                    }
+                }
+                else if (flyingThing.def.thingCategories != null && (flyingThing.def.thingCategories.Contains(ThingCategoryDefOf.Chunks) || flyingThing.def.thingCategories.Contains(ThingCategoryDef.Named("StoneChunks"))))
+                {
+                    float radius = 3f;
+                    Vector3 center = this.ExactPosition;
+                    if (this.earlyImpact)
+                    {
+                        bool wallFlag90neg = false;
+                        IntVec3 wallCheck = (center + (Quaternion.AngleAxis(-90, Vector3.up) * this.direction)).ToIntVec3();
+                        MoteMaker.ThrowMicroSparks(wallCheck.ToVector3Shifted(), base.Map);
+                        wallFlag90neg = wallCheck.Walkable(base.Map);
+
+                        wallCheck = (center + (Quaternion.AngleAxis(90, Vector3.up) * this.direction)).ToIntVec3();
+                        MoteMaker.ThrowMicroSparks(wallCheck.ToVector3Shifted(), base.Map);
+                        bool wallFlag90 = wallCheck.Walkable(base.Map);
+
+                        if ((!wallFlag90 && !wallFlag90neg) || (wallFlag90 && wallFlag90neg))
+                        {
+                            //fragment energy bounces in reverse direction of travel
+                            center = center + ((Quaternion.AngleAxis(180, Vector3.up) * this.direction) * 3);
+                        }
+                        else if (wallFlag90)
+                        {
+                            center = center + ((Quaternion.AngleAxis(90, Vector3.up) * this.direction) * 3);
+                        }
+                        else if (wallFlag90neg)
+                        {
+                            center = center + ((Quaternion.AngleAxis(-90, Vector3.up) * this.direction) * 3);
+                        }
+
+                    }
+
+                    int num = GenRadial.NumCellsInRadius(radius);
+                    for (int i = 0; i < num / 2; i++)
+                    {
+                        IntVec3 intVec = center.ToIntVec3() + GenRadial.RadialPattern[Rand.Range(1, num)];
+                        if (intVec.IsValid && intVec.InBounds(base.Map))
+                        {
+                            Vector3 moteDirection = TM_Calc.GetVector(this.ExactPosition.ToIntVec3(), intVec);
+                            TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Rubble"), this.ExactPosition, base.Map, Rand.Range(.3f, .5f), .2f, .02f, .05f, Rand.Range(-100, 100), 12f, (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
+                            GenExplosion.DoExplosion(intVec, base.Map, .4f, DamageDefOf.Blunt, pawn, Rand.Range(14, 22), 0, SoundDefOf.Pawn_Melee_Punch_HitBuilding, null, null, null, ThingDef.Named("Filth_RubbleRock"), .6f, 1, false, null, 0f, 1, 0, false);
+                            MoteMaker.ThrowSmoke(intVec.ToVector3Shifted(), base.Map, Rand.Range(.6f, 1f));
+                        }
+                    }
+                    damageEntities(p, 305, DamageDefOf.Blunt);
                 }
                 this.Destroy(DestroyMode.Vanish);
             }
@@ -285,7 +368,7 @@ namespace TorannMagic
             }
         }
 
-        public void damageEntities(Pawn e, float d, DamageDef type)
+        public void damageEntities(Thing e, float d, DamageDef type)
         {
             int amt = Mathf.RoundToInt(Rand.Range(.75f, 1.25f) * d);
             DamageInfo dinfo = new DamageInfo(type, amt, 0, (float)-1, this.launcher, null, null, DamageInfo.SourceCategory.ThingOrUnknown);

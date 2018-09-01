@@ -66,6 +66,11 @@ namespace TorannMagic.SihvRMagicScrollScribe
                 tempPod = ThingDef.Named("Torn_BookOfDemons");
                 this.parent.Destroy(DestroyMode.Vanish);
             }
+            else if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Geomancer)))
+            {
+                tempPod = ThingDef.Named("Torn_BookOfEarth");
+                this.parent.Destroy(DestroyMode.Vanish);
+            }
             else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.Gifted))
             {
                 tempPod = ThingDef.Named("BookOfQuestion");

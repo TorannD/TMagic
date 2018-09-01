@@ -707,5 +707,61 @@
     <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
 	<specialDisplayRadius>5.8</specialDisplayRadius>
   </ThingDef>
+  
+  <ThingDef ParentName="TM_BuildingBase">
+    <defName>TM_Sentinel</defName>
+    <label>Sentinel</label>
+    <thingClass>TorannMagic.Building_TMSentinel</thingClass>
+    <graphicData>
+      <texPath>PawnKind/gargoyle</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1,1)</drawSize>
+	  <shadowData>
+          <volume>(0.3, 0.3, 0.3)</volume>
+          <offset>(0,0,-0.32)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0,0,3,1.8)</rect>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+	<tickerType>Normal</tickerType>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>1</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <WorkToBuild>8000</WorkToBuild>
+      <Flammability>0</Flammability>
+    </statBases>
+    <description>This statue is made of stone and shaped to look like a terrifying creature. The statue is smaller than an average person and has the look of a rough cut and quality, though, you notice the eyes, ears, and claws seems to have finer detail.
+	
+As you drawn near the statue, an eerie glint from the eyes of the stone sentinel seems to follow you, and you get the feeling that you are being watched.</description>
+	<drawerType>MapMeshAndRealTime</drawerType>
+	<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+	<resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
+	<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <size>(1,1)</size>
+    <costList>
+      <Steel>5</Steel>  
+    </costList>
+	<stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <hasInteractionCell>false</hasInteractionCell>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+<!--     <designationCategory>Misc</designationCategory> -->
+	<building>
+		<ai_chillDestination>false</ai_chillDestination>
+		<claimable>false</claimable>
+		<deconstructible>false</deconstructible>
+	</building>
+    <staticSunShadowHeight>0.0</staticSunShadowHeight>
+    <designationHotKey>Misc3</designationHotKey>
+  </ThingDef>
 
 </Defs>

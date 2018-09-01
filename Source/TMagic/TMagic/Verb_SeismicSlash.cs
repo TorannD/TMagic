@@ -100,8 +100,8 @@ namespace TorannMagic
             float weaponDPS = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_AverageDPS, false) * .7f;
             float dmgMultiplier = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_DamageMultiplier, false);
             float pawnDPS = pawn.GetStatValue(StatDefOf.MeleeDPS, false);
-            float skillMultiplier = (.7f + (.07f * pwrVal) + (.025f * str.level));
-            return dmgNum = Mathf.RoundToInt(skillMultiplier * dmgMultiplier * (pawnDPS + weaponDPS));
+            float skillMultiplier = (.7f + (.07f * pwrVal));
+            return dmgNum = Mathf.RoundToInt(skillMultiplier * dmgMultiplier * (pawnDPS + weaponDPS) * comp.mightPwr);
         }
 
         protected override bool TryCastShot()

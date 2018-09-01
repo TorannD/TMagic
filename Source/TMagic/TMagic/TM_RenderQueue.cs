@@ -37,6 +37,8 @@ namespace TorannMagic
         public static readonly Material bardMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, TM_RenderQueue.bardMarkColor);
         public static readonly Color demonkinMarkColor = new Color(.6f, 0, .25f);
         public static readonly Material demonkinMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, TM_RenderQueue.demonkinMarkColor);
+        public static readonly Color earthMarkColor = new Color(.4f, .2f, 0f);
+        public static readonly Material earthMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, TM_RenderQueue.earthMarkColor);
 
         //Might
         public static readonly Material deceptionEye = MaterialPool.MatFrom("Motes/DeceptionMote");

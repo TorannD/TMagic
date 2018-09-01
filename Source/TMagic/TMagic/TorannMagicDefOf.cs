@@ -36,6 +36,8 @@ namespace TorannMagic
         public static ThingDef Torn_BookOfBard;
         public static ThingDef BookOfDemons;
         public static ThingDef Torn_BookOfDemons;
+        public static ThingDef BookOfEarth;
+        public static ThingDef Torn_BookOfEarth;
         public static ThingDef BookOfQuestion;
 
 
@@ -74,6 +76,7 @@ namespace TorannMagic
         public static ThingDef SpellOf_SpellMending;
         public static ThingDef SpellOf_PsychicShock;
         public static ThingDef SpellOf_Scorn;
+        public static ThingDef SpellOf_Meteor;
 
         public static ThingDef SkillOf_Sprint;
         public static ThingDef SkillOf_GearRepair;
@@ -321,7 +324,7 @@ namespace TorannMagic
         public static HediffDef TM_LullabyHD;
         public static TMAbilityDef TM_BattleHymn;
 
-        //Succubus/Warlock
+        //Succubus & Warlock
         public static TraitDef Succubus;
         public static TraitDef Warlock;
 
@@ -356,6 +359,24 @@ namespace TorannMagic
         public static TMAbilityDef TM_SummonDemon;
         public static ThingDef FlyingObject_DemonFlight;
         public static ThingDef TM_DemonR;
+
+        //Geomancer
+        public static TraitDef Geomancer;
+
+        public static TMAbilityDef TM_Stoneskin;
+        public static HediffDef TM_StoneskinHD;
+        public static TMAbilityDef TM_Encase;
+        public static TMAbilityDef TM_Encase_I;
+        public static TMAbilityDef TM_Encase_II;
+        public static TMAbilityDef TM_Encase_III;
+        public static TMAbilityDef TM_EarthSprites;
+        public static TMAbilityDef TM_DismissEarthSprites;
+        public static TMAbilityDef TM_EarthernHammer;
+        public static TMAbilityDef TM_Sentinel;
+        public static TMAbilityDef TM_Meteor;
+        public static TMAbilityDef TM_Meteor_I;
+        public static TMAbilityDef TM_Meteor_II;
+        public static TMAbilityDef TM_Meteor_III;
 
         //Might 
         public static NeedDef TM_Stamina;
@@ -556,6 +577,7 @@ namespace TorannMagic
 
         public static EffecterDef GiantExplosion;
         public static EffecterDef TM_GiantExplosion;
+        public static EffecterDef TM_Stoneskin_Effecter;
 
         //Jobs
         public static JobDef TMCastAbilityVerb;

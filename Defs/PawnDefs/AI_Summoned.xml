@@ -14,6 +14,11 @@
         <li Class="ThinkNode_Subtree">
           <treeDef>LordDuty</treeDef>
         </li>
+		
+		<!-- Do a queued job if possible -->
+		<li Class="ThinkNode_QueuedJob">
+		  <inBedOnly>false</inBedOnly>
+		</li>
 
         <li Class="ThinkNode_Tagger">
           <tagToGive>Idle</tagToGive>
@@ -66,7 +71,6 @@
 				<li Class="TorannMagic.JobGiver_AIClean" />
 			</subNodes>
 		</li>
-
 
         <li Class="ThinkNode_Tagger">
           <tagToGive>Idle</tagToGive>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+	<!-- Psionic mental attack -->
+
   <EffecterDef>
     <defName>TM_GiantExplosion</defName>
     <children>
@@ -54,6 +56,56 @@
       <solidTime>0</solidTime>
       <fadeOutTime>0.4</fadeOutTime>
       <growthRate>-20</growthRate>
+    </mote>
+  </ThingDef>
+  
+  <!-- Geomancer Stoneskin -->
+  
+  <EffecterDef>
+    <defName>TM_Stoneskin_Effecter</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_Stoneskin</moteDef>
+		<rotation>
+			<min>0</min>
+			<max>0</max>
+		</rotation>
+		<rotationRate>
+			<min>0</min>
+			<max>0</max>
+		</rotationRate>
+        <scale>
+          <min>4</min>
+          <max>4</max>
+        </scale>
+      </li>
+	  <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_Stoneskin</moteDef>
+        <scale>
+          <min>1</min>
+          <max>1</max>
+        </scale>
+      </li>
+    </children>
+  </EffecterDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>TM_Mote_Stoneskin</defName>
+    <graphicData>
+      <texPath>Motes/ShieldMote</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <color>(0.7,0.55,0.05)</color>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.01</fadeInTime>
+      <solidTime>0</solidTime>
+      <fadeOutTime>0.4</fadeOutTime>
+      <growthRate>-8</growthRate>
+	  <rotateTowardsTarget>false</rotateTowardsTarget>
     </mote>
   </ThingDef>
   

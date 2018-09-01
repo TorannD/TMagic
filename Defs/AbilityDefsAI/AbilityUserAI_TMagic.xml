@@ -1658,5 +1658,205 @@ Document made by ChJees
 			<li>Attraction</li>
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
+	
+	<!-- geomancer  -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="GeomancerMagicAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMagic</compAbilityUserClass>
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>0.9</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>Stoneskin_Self</li>										
+									</tags>
+								</li>						
+							</subNodes>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+							<tags>
+								<li>Stoneskin</li>										
+							</tags>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_HasEnemyTarget">
+							<subNodes>
+								<!-- Using ranged weapon -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingRangedWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>55.0</maxDistance>
+											<minDistance>20.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>EarthernHammer</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>26.0</maxDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Sentinel</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>40.0</maxDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Encase</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+									</subNodes>
+								</li>
+								<!-- Using melee weapon -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingMeleeWeapon">
+									<subNodes>
+<!-- 										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>45.0</maxDistance>
+											<minDistance>20.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Encase</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li> -->
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>20.0</maxDistance>
+											<minDistance>4.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Sentinel</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>55.0</maxDistance>
+											<minDistance>10.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>EarthernHammer</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>									
+									</subNodes>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+				<!-- Out of combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<invert>true</invert>
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+							<tags>
+								<li>Stoneskin</li>
+							</tags>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- Geomancer -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="GeomancerMagicAbilityUserAI">
+		<defName>TMagic_Geomancer</defName>
+		<matchingTraits>
+			<li>Geomancer</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_Stoneskin_Self</li>
+			<li>TMagic_Stoneskin</li>
+			<li>TMagic_EarthernHammer</li>
+			<li>TMagic_Encase</li>
+			<li>TMagic_Sentinel</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Geomancer Abilities -->
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Stoneskin_Self</defName>
+		<ability>TM_Stoneskin</ability>		
+		<power>2</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<tags>
+			<li>Stoneskin_Self</li>
+		</tags>
+		<appliedHediffs>
+			<li>TM_StoneskinHD</li>
+		</appliedHediffs>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Stoneskin</defName>
+		<ability>TM_Stoneskin</ability>		
+		<power>1</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<workerClass>AbilityUserAI.AbilityWorker_HealAlly</workerClass>
+		<canTargetAlly>true</canTargetAlly>
+		<needEnemyTarget>false</needEnemyTarget>
+		<maxRange>12.0</maxRange>
+		<tags>
+			<li>Stoneskin</li>
+		</tags>
+		<appliedHediffs>
+			<li>TM_StoneskinHD</li>
+		</appliedHediffs>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Encase</defName>
+		<ability>TM_Encase</ability>
+		<power>4</power>
+		<maxRange>45.0</maxRange>
+		<minRange>10.0</minRange>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Encase</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_EarthernHammer</defName>
+		<ability>TM_EarthernHammer</ability>
+		<power>10</power>
+		<maxRange>60.0</maxRange>
+		<minRange>10.0</minRange>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>EarthernHammer</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Sentinel</defName>
+		<ability>TM_Sentinel</ability>
+		<power>20</power>
+		<maxRange>26.0</maxRange>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Sentinel</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
 
 </Defs>

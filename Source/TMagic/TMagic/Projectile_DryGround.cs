@@ -45,6 +45,10 @@ namespace TorannMagic
                         {
                             //Messages.Message("TerraformFailed".Translate(), MessageTypeDefOf.RejectInput);
                         }
+                        for (int m = 0; m < 4; m++)
+                        {
+                            TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_ThickDust"), curCell.ToVector3Shifted(), map, Rand.Range(.3f, .5f), Rand.Range(.2f, .3f), .05f, Rand.Range(.4f, .6f), Rand.Range(-20, 20), Rand.Range(.5f, 1f), Rand.Range(0, 360), Rand.Range(0, 360));
+                        }
                     }
                 }
             }

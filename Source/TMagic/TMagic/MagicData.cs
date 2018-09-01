@@ -32,6 +32,7 @@ namespace TorannMagic
         public List<MagicPower> magicPowerB;
         public List<MagicPower> magicPowerWD;
         public List<MagicPower> magicPowerSD;
+        public List<MagicPower> magicPowerG;
 
         public List<MagicPowerSkill> magicPowerSkill_global_regen;
         public List<MagicPowerSkill> magicPowerSkill_global_eff;
@@ -107,8 +108,15 @@ namespace TorannMagic
         public List<MagicPowerSkill> magicPowerSkill_Repulsion;
         public List<MagicPowerSkill> magicPowerSkill_Attraction;
         public List<MagicPowerSkill> magicPowerSkill_Scorn;             
-        public List<MagicPowerSkill> magicPowerSkill_PsychicShock;      
+        public List<MagicPowerSkill> magicPowerSkill_PsychicShock;
         //public List<MagicPowerSkill> magicPowerSkill_SummonDemon;
+
+        public List<MagicPowerSkill> magicPowerSkill_Stoneskin;
+        public List<MagicPowerSkill> magicPowerSkill_Encase;
+        public List<MagicPowerSkill> magicPowerSkill_EarthSprites;
+        public List<MagicPowerSkill> magicPowerSkill_EarthernHammer;
+        public List<MagicPowerSkill> magicPowerSkill_Sentinel;
+        public List<MagicPowerSkill> magicPowerSkill_Meteor;
 
         public List<MagicPowerSkill> MagicPowerSkill_global_regen
         {
@@ -1649,7 +1657,6 @@ namespace TorannMagic
                 return this.magicPowerSD;
             }
         }
-        
         public List<MagicPowerSkill> MagicPowerSkill_Attraction
         {
             get
@@ -1682,6 +1689,153 @@ namespace TorannMagic
                     };
                 }
                 return this.magicPowerSkill_Scorn;
+            }
+        }
+
+        public List<MagicPower> MagicPowersG
+        {
+            get
+            {
+                bool flag = this.magicPowerG == null;
+                if (flag)
+                {
+                    this.magicPowerG = new List<MagicPower>
+                    {
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Stoneskin
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Encase,
+                            TorannMagicDefOf.TM_Encase_I,
+                            TorannMagicDefOf.TM_Encase_II,
+                            TorannMagicDefOf.TM_Encase_III
+                        }),                        
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_EarthSprites
+                        }),                        
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_EarthernHammer
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Sentinel
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Meteor,
+                            TorannMagicDefOf.TM_Meteor_I,
+                            TorannMagicDefOf.TM_Meteor_II,
+                            TorannMagicDefOf.TM_Meteor_III
+                        }),
+                    };
+                }
+                return this.magicPowerG;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Stoneskin
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Stoneskin == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Stoneskin = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Stoneskin_pwr", "TM_Stoneskin_pwr_desc"),
+                        new MagicPowerSkill("TM_Stoneskin_eff", "TM_Stoneskin_eff_desc"),
+                        new MagicPowerSkill("TM_Stoneskin_ver", "TM_Stoneskin_ver_desc")
+                        
+                    };
+                }
+                return this.magicPowerSkill_Stoneskin;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Encase
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Encase == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Encase = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Encase_pwr", "TM_Encase_pwr_desc"),                        
+                        new MagicPowerSkill("TM_Encase_eff", "TM_Encase_eff_desc"),
+                        new MagicPowerSkill("TM_Encase_ver", "TM_Encase_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_Encase;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_EarthSprites
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_EarthSprites == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_EarthSprites = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_EarthSprites_pwr", "TM_EarthSprites_pwr_desc"),
+                        new MagicPowerSkill("TM_EarthSprites_eff", "TM_EarthSprites_eff_desc"),
+                        new MagicPowerSkill("TM_EarthSprites_ver", "TM_EarthSprites_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_EarthSprites;
+            }
+        }        
+        public List<MagicPowerSkill> MagicPowerSkill_EarthernHammer
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_EarthernHammer == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_EarthernHammer = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_EarthernHammer_pwr", "TM_EarthernHammer_pwr_desc" ),
+                        new MagicPowerSkill("TM_EarthernHammer_eff", "TM_EarthernHammer_eff_desc" ),
+                        new MagicPowerSkill("TM_EarthernHammer_ver", "TM_EarthernHammer_ver_desc" )
+                    };
+                }
+                return this.magicPowerSkill_EarthernHammer;
+            }
+        }        
+        public List<MagicPowerSkill> MagicPowerSkill_Sentinel
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Sentinel == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Sentinel = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Sentinel_pwr", "TM_Sentinel_pwr_desc"),
+                        new MagicPowerSkill("TM_Sentinel_eff", "TM_Sentinel_eff_desc"),
+                        new MagicPowerSkill("TM_Sentinel_ver", "TM_Sentinel_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_Sentinel;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Meteor
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Meteor == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Meteor = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Meteor_ver", "TM_Meteor_ver_desc"),
+                        new MagicPowerSkill("TM_Meteor_eff", "TM_Meteor_eff_desc")
+                    };
+                }
+                return this.magicPowerSkill_Meteor;
             }
         }
 
@@ -1805,7 +1959,7 @@ namespace TorannMagic
         {
             get
             {
-                return this.MagicPowersIF.Concat(this.MagicPowersHoF.Concat(this.MagicPowersSB.Concat(this.MagicPowersA.Concat(this.MagicPowersP.Concat(this.MagicPowersS.Concat(this.MagicPowersD.Concat(this.MagicPowersN.Concat(this.MagicPowersPR.Concat(this.MagicPowersB.Concat(this.MagicPowersWD.Concat(this.MagicPowersSD)))))))))));
+                return this.MagicPowersIF.Concat(this.MagicPowersHoF.Concat(this.MagicPowersSB.Concat(this.MagicPowersA.Concat(this.MagicPowersP.Concat(this.MagicPowersS.Concat(this.MagicPowersD.Concat(this.MagicPowersN.Concat(this.MagicPowersPR.Concat(this.MagicPowersB.Concat(this.MagicPowersWD.Concat(this.MagicPowersSD.Concat(this.MagicPowersG))))))))))));
             }
         }
 
@@ -1905,7 +2059,13 @@ namespace TorannMagic
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Attraction, "magicPowerSkill_Attraction", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Scorn, "magicPowerSkill_Scorn", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_PsychicShock, "magicPowerSkill_PsychicShock", LookMode.Deep, new object[0]);
-            //Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_SummonDemon, "magicPowerSkill_SummonDemon", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPower>(ref this.magicPowerG, "magicPowerG", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Stoneskin, "magicPowerSkill_Stoneskin", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Encase, "magicPowerSkill_Encase", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_EarthSprites, "magicPowerSkill_EarthSprites", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_EarthernHammer, "magicPowerSkill_EarthernHammer", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Sentinel, "magicPowerSkill_Sentinel", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Meteor, "magicPowerSkill_Meteor", LookMode.Deep, new object[0]);
         }
     }
 }

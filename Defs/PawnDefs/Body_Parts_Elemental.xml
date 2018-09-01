@@ -3,12 +3,23 @@
 <Defs>
 
   <BodyPartDef>
+    <defName>Ele_Body</defName>
+    <label>body</label>
+    <hitPoints>100</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+	<bleedRate>0</bleedRate>
+  </BodyPartDef>
+
+  <BodyPartDef>
     <defName>Ele_Head</defName>
     <label>head</label>
     <hitPoints>35</hitPoints>
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
     <canSuggestAmputation>false</canSuggestAmputation>
+	<bleedRate>0</bleedRate>
   </BodyPartDef>
 
   <BodyPartDef>
@@ -27,7 +38,7 @@
     <label>brain</label>
     <hitPoints>8</hitPoints>
     <permanentInjuryChanceFactor>1</permanentInjuryChanceFactor>
-	<bleedRate>2</bleedRate>
+	<bleedRate>0</bleedRate>
     <skinCovered>false</skinCovered>
     <tags>
       <li>ConsciousnessSource</li>
@@ -40,7 +51,7 @@
     <label>heart</label>
     <hitPoints>30</hitPoints>
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
-    <bleedRate>5</bleedRate>
+    <bleedRate>0</bleedRate>
     <skinCovered>false</skinCovered>
     <tags>
       <li>BloodPumpingSource</li>
@@ -55,6 +66,7 @@
     <label>left arm</label>
     <hitPoints>60</hitPoints>
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
+	<bleedRate>0</bleedRate>
     <skinCovered>true</skinCovered>
     <tags>
       <li>ManipulationLimbCore</li>
@@ -72,6 +84,7 @@
     <label>right arm</label>
     <hitPoints>60</hitPoints>
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
+	<bleedRate>0</bleedRate>
     <skinCovered>true</skinCovered>
     <tags>
       <li>ManipulationLimbCore</li>
@@ -109,6 +122,7 @@
 	<frostbiteVulnerability>1</frostbiteVulnerability>
     <beautyRelated>true</beautyRelated>
 	<socketed>true</socketed>
+	<bleedRate>0</bleedRate>
     <tags>
       <li>SightSource</li>
     </tags>
@@ -127,6 +141,7 @@
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
     <beautyRelated>true</beautyRelated>
+	<bleedRate>0</bleedRate>
     <tags>
       <li>HearingSource</li>
     </tags>
@@ -139,6 +154,7 @@
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
     <beautyRelated>true</beautyRelated>
+	<bleedRate>0</bleedRate>
     <tags>
       <li>HearingSource</li>
     </tags>
@@ -164,7 +180,7 @@
     <label>neck</label>
     <hitPoints>24</hitPoints>
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
-    <bleedRate>2</bleedRate>
+    <bleedRate>0</bleedRate>
     <skinCovered>true</skinCovered>
     <tags>
       <li>BreathingPathway</li>
@@ -194,7 +210,7 @@
     <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
     <skinCovered>false</skinCovered>
     <solid>false</solid>
-	<bleedRate>2</bleedRate>
+	<bleedRate>0</bleedRate>
   </BodyPartDef>
   
   <BodyPartDef>
@@ -204,6 +220,7 @@
     <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
     <skinCovered>false</skinCovered>
     <solid>false</solid>
+	<bleedRate>0</bleedRate>
   </BodyPartDef>
   
   <BodyPartDef>
@@ -212,6 +229,7 @@
     <hitPoints>75</hitPoints>
     <permanentInjuryChanceFactor>0.01</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
+	<bleedRate>0</bleedRate>
     <tags>
       <li>MovingLimbCore</li>
     </tags>

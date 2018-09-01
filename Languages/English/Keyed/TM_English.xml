@@ -3,6 +3,7 @@
 
 <!-- Notification messages  -->
 <TM_NotEnoughMana>{0} needs more mana to cast this spell.</TM_NotEnoughMana>
+<TM_NotEnoughMaxMana>{0} does not have the mana reserves to sustain {1}</TM_NotEnoughMaxMana>
 <TM_NotEnoughStamina>{0} does not have enough stamina to execute this ability.</TM_NotEnoughStamina>
 <TM_NotEnoughPsionicEnergy>{0} does not have enough psionic energy for {1}.</TM_NotEnoughPsionicEnergy>
 <MentalStateByPsyker>{0} overcome by a psychic assault.</MentalStateByPsyker>
@@ -92,6 +93,12 @@
 <TM_WarlockEmpathyOverwhelmed>The emotions of those around me are overwhelming, I need to get away from all these people or find a way to mute these emotions.</TM_WarlockEmpathyOverwhelmed>
 <TM_Icon_Undead>Animated Undead</TM_Icon_Undead>
 <TM_NotPsychicSensitive>{0} attempted to become a psionic but does not seem to have the psychic sensitivity required to manifest psionic power.</TM_NotPsychicSensitive>
+<TM_TooManyStoneskins>{0} can only sustain stoneskin defenses on {1} pawns. {0} is currently defending {2} with stoneskin.</TM_TooManyStoneskins>
+<TM_NoSpritesToDismiss>{0} has no detected earth sprites - resetting ability parameters.</TM_NoSpritesToDismiss>
+<TM_SentinelDeSpawn>{0} has crumbled to dust without mana to sustain it.</TM_SentinelDeSpawn>
+<TM_TooManySentinels>{0} is limited to {1} sentinels, removing oldest sentinel.</TM_TooManySentinels>
+<TM_NoSpawnSentinelOnBuilding>{0} cannot create a sentinel on top of an existing building.</TM_NoSpawnSentinelOnBuilding>
+<TM_SentinelCannotReturn>The sentinel belonging to {0} could not return to its designated position, it is no longer reachable. The sentinel has dissolved into dust.</TM_SentinelCannotReturn>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
@@ -565,6 +572,78 @@ Level 3: 60%</TM_Repulsion_ver_desc>
 <TM_PsychicShock_eff>Mentalist</TM_PsychicShock_eff>
 <TM_PsychicShock_pwr>Dominant Will</TM_PsychicShock_pwr>
 
+<TM_Stoneskin_pwr_desc>Increases the number of attacks Stoneskin mitigates before wearing off.
+Level 0: 6 attacks
+Level 1: 8 attacks
+Level 2: 9 attacks
+Level 3: 10 attacks</TM_Stoneskin_pwr_desc>
+<TM_Stoneskin_eff_desc>Reduces the mana upkeep cost for each instance of Stoneskin by 2%.
+Level 0: -15% max mana
+Level 1: -13% max mana
+Level 2: -11% max mana
+Level 3: -9% max mana</TM_Stoneskin_eff_desc>
+<TM_Stoneskin_ver_desc>Increases the max number of Stoneskin instances the Geomancer can maintain. The Geomancer must also have sufficient mana reserves to maintain each spell.
+Level 0: 2
+Level 1: 3
+Level 2: 4
+Level 3: 5</TM_Stoneskin_ver_desc>
+<TM_Encase_pwr_desc>Uses sturdier types of stone making it more difficult to break through.</TM_Encase_pwr_desc>
+<TM_Encase_eff_desc>Reduces the stamina cost required to use Encase by 8% per skill level.</TM_Encase_eff_desc>
+<TM_Encase_ver_desc>Increases the duration of Encase by 4s per skill level.
+Level 0: 30s
+Level 1: 34s
+Level 2: 38s
+Level 3: 42s</TM_Encase_ver_desc>
+<TM_EarthSprites_pwr_desc>Increases the speed at which Earth Sprites work by 20% per skill level. This skill can be raised to level 5.</TM_EarthSprites_pwr_desc>
+<TM_EarthSprites_eff_desc>Reduces the initial mana required to cast Earth Sprites by 6% per skill level.</TM_EarthSprites_eff_desc>
+<TM_EarthSprites_ver_desc>Reduces the amount of mana required to sustain earth sprites by 7% per skill level.
+Level 0: 60%
+Level 1: 53%
+Level 2: 46%
+Level 3: 39%</TM_EarthSprites_ver_desc>
+<TM_EarthernHammer_pwr_desc>Increases the amount of weight the Geomancer is able to manipulate. Pulling subterranean stones requires 3 weight; throwing nearby surface stones requires 1 weight.
+Level 0: 5 weight
+Level 1: 7 weight
+Level 2: 9 weight
+Level 3: 11 weight</TM_EarthernHammer_pwr_desc>
+<TM_EarthernHammer_eff_desc>Decreases mana cost of EarthernHammer by 6% per skill level.</TM_EarthernHammer_eff_desc>
+<TM_EarthernHammer_ver_desc>Reduces the time between each throw and reduces the duration of stun applied to the caster.</TM_EarthernHammer_ver_desc>
+<TM_Sentinel_pwr_desc>Increases the combat power of a sentinel.</TM_Sentinel_pwr_desc>
+<TM_Sentinel_eff_desc>Decreases the upkeep cost for each sentinel.
+Level 0: -20% max mana
+Level 1: -18% max mana
+Level 2: -16% max mana
+Level 3: -15% max mana</TM_Sentinel_eff_desc>
+<TM_Sentinel_ver_desc>Increases the maximum number of sentinels a Geomancer can maintain at a given time. The Geomancer must also have sufficient mana reserves to maintain each sentinel.
+Level 0: 2
+Level 1: 3
+Level 2: 4
+Level 3: 5</TM_Sentinel_ver_desc>
+<TM_Meteor_eff_desc>Decreases mana cost of Meteor by 5% of base cost per skill level.</TM_Meteor_eff_desc>
+<TM_Meteor_ver_desc>Increases the chance that cells adjacent to the meteorites core also contain precious minerals.
+Level 0: 0%
+Level 1: 15%
+Level 2: 30%
+Level 3: 45%</TM_Meteor_ver_desc>
+
+<TM_Stoneskin_pwr>Layered Defense</TM_Stoneskin_pwr>
+<TM_Stoneskin_eff>Familiar Skin</TM_Stoneskin_eff>
+<TM_Stoneskin_ver>Shared Skin</TM_Stoneskin_ver>
+<TM_Encase_pwr>Unyielding Stone</TM_Encase_pwr>
+<TM_Encase_eff>Mold Maker</TM_Encase_eff>
+<TM_Encase_ver>Enduring Stone</TM_Encase_ver>
+<TM_EarthSprites_pwr>Spriggan Might</TM_EarthSprites_pwr>
+<TM_EarthSprites_eff>Fickle Fey</TM_EarthSprites_eff>
+<TM_EarthSprites_ver>Mana Deviant</TM_EarthSprites_ver>
+<TM_EarthernHammer_pwr>Heavy Metal</TM_EarthernHammer_pwr>
+<TM_EarthernHammer_eff>Loose Soil</TM_EarthernHammer_eff>
+<TM_EarthernHammer_ver>Altered Gravity</TM_EarthernHammer_ver>
+<TM_Sentinel_pwr>Master Craftsman</TM_Sentinel_pwr>
+<TM_Sentinel_eff>Heart of Stone</TM_Sentinel_eff>
+<TM_Sentinel_ver>Rule of Law</TM_Sentinel_ver>
+<TM_Meteor_eff>Earth Shaker</TM_Meteor_eff>
+<TM_Meteor_ver>Heart of Gold</TM_Meteor_ver>
+
 <!-- Might Ability Point Descriptions -->
 
 <TM_Sprint_eff_desc>Reduces the stamina cost required to sustain Sprint by 10% (of Sprint's sustained cost) per skill level.</TM_Sprint_eff_desc>
@@ -871,13 +950,13 @@ Level 3: 50</TM_PsionicStorm_eff_desc>
 <TM_NeedManaForEnchant>Enchantment: {0} of .5 mana</TM_NeedManaForEnchant>
 
 <!-- ============ Enchantment Labels =============-->
-<TM_MaxMPLabel>Max MP Increase: {0}&#37;</TM_MaxMPLabel>
-<TM_MPRegenRateLabel>Mana Regen Increase: {0}&#37;</TM_MPRegenRateLabel>
+<TM_MaxMPLabel>Max Energy Increase: {0}&#37;</TM_MaxMPLabel>
+<TM_MPRegenRateLabel>Energy Regen Increase: {0}&#37;</TM_MPRegenRateLabel>
 <TM_CoolDownLabel>Ability Cooldown Reduction: {0}&#37;</TM_CoolDownLabel>
-<TM_MPCostLabel>MP Cost Reduction: {0}&#37;</TM_MPCostLabel>
+<TM_MPCostLabel>Ability Cost Reduction: {0}&#37;</TM_MPCostLabel>
 <TM_XPGainLabel>XP Gain Increase: {0}&#37;</TM_XPGainLabel>
-<TM_ArcaneResLabel>Arcane Resistance: {0}&#37;</TM_ArcaneResLabel>
-<TM_ArcaneDmgLabel>Arcane Damage: {0}&#37;</TM_ArcaneDmgLabel>
+<TM_ArcaneResLabel>Damage Resistance: {0}&#37;</TM_ArcaneResLabel>
+<TM_ArcaneDmgLabel>Damage Bonus: {0}&#37;</TM_ArcaneDmgLabel>
 <TM_ArcaneSpectre>Arcane Spectre</TM_ArcaneSpectre>
 <TM_PhantomShift>Phantom Shift</TM_PhantomShift>
 

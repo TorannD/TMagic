@@ -221,6 +221,18 @@ namespace TorannMagic
                             MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersWD, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SoulBond, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ShadowBolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Dominate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Repulsion, null, null, TexButton.TMTex_SkillPointUsed);
                         }
                     }
+                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
+                    {
+                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                        if (pawn.GetComp<CompAbilityUserMagic>().spell_Meteor == true)
+                        {
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersG, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Stoneskin, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Encase, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EarthSprites, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EarthernHammer, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sentinel, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Meteor, TexButton.TMTex_SkillPointUsed);
+                        }
+                        else
+                        {
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersG, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Stoneskin, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Encase, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EarthSprites, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EarthernHammer, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sentinel, null, TexButton.TMTex_SkillPointUsed);
+                        }
+                    }
                 }
             }
             GUI.EndGroup();
@@ -265,7 +277,7 @@ namespace TorannMagic
                     {
                     (compMagic.Mana.lastGainPct * 200).ToString("0.000")
                     }));
-                string str1 = "Base gain: " + (200 * compMagic.Mana.baseManaGain).ToString("0.000") + "\nMana surge: " + (200 * compMagic.Mana.drainManaSurge).ToString("0.000");
+                string str1 = "Base mana gain: " + (200 * compMagic.Mana.baseManaGain).ToString("0.000") + "\nMana surge: " + (200 * compMagic.Mana.drainManaSurge).ToString("0.000");
                 TooltipHandler.TipRegion(rect6, () => string.Concat(new string[]
                         {
                         str1,
@@ -273,12 +285,14 @@ namespace TorannMagic
                         (200*compMagic.Mana.drainManaWeakness).ToString("0.000"),
                         "\nMinion cost: -",
                         (200*compMagic.Mana.drainMinion).ToString("0.000"),
+                        "\nSprite cost: -",
+                        (200*compMagic.Mana.drainSprites).ToString("0.000"),
                         "\nUndead cost: -",
                         (200*compMagic.Mana.drainUndead).ToString("0.000"),
                         "\nMana drain: -",
                         (200*compMagic.Mana.drainManaDrain).ToString("0.000"),
                         "\nMana sickness: -",
-                        (200*compMagic.Mana.drainManaSickness).ToString("0.000"),
+                        (200*compMagic.Mana.drainManaSickness).ToString("0.000"),                        
                         }), 398552);
                 GUI.color = Color.white;
             }
@@ -475,6 +489,8 @@ namespace TorannMagic
                         power.abilityDef == TorannMagicDefOf.TM_ShadowBolt || power.abilityDef == TorannMagicDefOf.TM_ShadowBolt_I || power.abilityDef == TorannMagicDefOf.TM_ShadowBolt_II ||
                         power.abilityDef == TorannMagicDefOf.TM_Attraction || power.abilityDef == TorannMagicDefOf.TM_Attraction_I || power.abilityDef == TorannMagicDefOf.TM_Attraction_II ||
                         power.abilityDef == TorannMagicDefOf.TM_Repulsion || power.abilityDef == TorannMagicDefOf.TM_Repulsion_I || power.abilityDef == TorannMagicDefOf.TM_Repulsion_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_Encase || power.abilityDef == TorannMagicDefOf.TM_Encase_I || power.abilityDef == TorannMagicDefOf.TM_Encase_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_Meteor || power.abilityDef == TorannMagicDefOf.TM_Meteor_I || power.abilityDef == TorannMagicDefOf.TM_Meteor_II ||
                         power.abilityDef == TorannMagicDefOf.TM_BestowMight || power.abilityDef == TorannMagicDefOf.TM_BestowMight_I || power.abilityDef == TorannMagicDefOf.TM_BestowMight_II))
                     {
 
@@ -531,6 +547,8 @@ namespace TorannMagic
                         power.abilityDef.defName == "TM_Attraction" || power.abilityDef.defName == "TM_Attraction_I" || power.abilityDef.defName == "TM_Attraction_II" || power.abilityDef.defName == "TM_Attraction_III" ||
                         power.abilityDef.defName == "TM_Repulsion" || power.abilityDef.defName == "TM_Repulsion_I" || power.abilityDef.defName == "TM_Repulsion_II" || power.abilityDef.defName == "TM_Repulsion_III" ||
                         power.abilityDef.defName == "TM_ShadowBolt" || power.abilityDef.defName == "TM_ShadowBolt_I" || power.abilityDef.defName == "TM_ShadowBolt_II" || power.abilityDef.defName == "TM_ShadowBolt_III" ||
+                        power.abilityDef.defName == "TM_Meteor" || power.abilityDef.defName == "TM_Meteor_I" || power.abilityDef.defName == "TM_Meteor_II" || power.abilityDef.defName == "TM_Meteor_III" ||
+                        power.abilityDef.defName == "TM_Encase" || power.abilityDef.defName == "TM_Encase_I" || power.abilityDef.defName == "TM_Encase_II" || power.abilityDef.defName == "TM_Encase_III" ||
                         power.abilityDef.defName == "TM_BestowMight" || power.abilityDef.defName == "TM_BestowMight_I" || power.abilityDef.defName == "TM_BestowMight_II" || power.abilityDef.defName == "TM_BestowMight_III")
                     {
                         flag999 = true;
@@ -568,9 +586,16 @@ namespace TorannMagic
                         {
                             if (flag999)
                             {
-                                Widgets.DrawTextureFitted(rect, power.Icon, 1f);
-                                Rect rect19 = new Rect(rect.xMax, rect.yMin, x4, MagicCardUtility.TextSize);
-                                Widgets.Label(rect19, " " + enumerator.Current.level + " / 3");
+                                if (power.abilityDef.defName == "TM_Meteor" && compMagic.spell_Meteor != true)
+                                {
+                                    Widgets.DrawTextureFitted(rect, power.Icon, 1f);
+                                }
+                                else
+                                {
+                                    Widgets.DrawTextureFitted(rect, power.Icon, 1f);
+                                    Rect rect19 = new Rect(rect.xMax, rect.yMin, x4, MagicCardUtility.TextSize);
+                                    Widgets.Label(rect19, " " + enumerator.Current.level + " / 3");
+                                }
                             }
                             else
                             {
@@ -581,14 +606,21 @@ namespace TorannMagic
                         {
                             if (flag999)
                             {
-                                Rect rect10 = new Rect(rect.xMax, rect.yMin, x4, MagicCardUtility.TextSize);
-                                bool flag1 = Widgets.ButtonImage(rect, power.Icon) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
-                                Widgets.Label(rect10, " " + power.level + " / 3");
-                                if (flag1)
+                                if (power.abilityDef.defName == "TM_Meteor" && compMagic.spell_Meteor != true)
                                 {
-                                    compMagic.LevelUpPower(power);
-                                    compMagic.MagicData.MagicAbilityPoints -= 1;
-                                    compMagic.FixPowers();
+                                    Widgets.DrawTextureFitted(rect, power.Icon, 1f);
+                                }
+                                else
+                                {
+                                    Rect rect10 = new Rect(rect.xMax, rect.yMin, x4, MagicCardUtility.TextSize);
+                                    bool flag1 = Widgets.ButtonImage(rect, power.Icon) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
+                                    Widgets.Label(rect10, " " + power.level + " / 3");
+                                    if (flag1)
+                                    {
+                                        compMagic.LevelUpPower(power);
+                                        compMagic.MagicData.MagicAbilityPoints -= 1;
+                                        compMagic.FixPowers();
+                                    }
                                 }
                             }
                             else
@@ -606,6 +638,7 @@ namespace TorannMagic
                             (power.abilityDef.defName == "TM_BattleHymn" && MagicPowerSkill5 == null) ||
                             (power.abilityDef.defName == "TM_Scorn" && MagicPowerSkill5 == null) ||
                             (power.abilityDef.defName == "TM_PsychicShock" && MagicPowerSkill5 == null) ||
+                            (power.abilityDef.defName == "TM_Meteor" && MagicPowerSkill6 == null) ||
                             (power.abilityDef.defName == "TM_Resurrection" && MagicPowerSkill5 == null))
                         {
                             Rect rectMasterLock = new Rect(rect.xMax - 23f - "TM_MasterSpellLocked".Translate().Length * 4, rect.yMin + MagicCardUtility.MagicButtonSize + 4f, "TM_MasterSpellLocked".Translate().Length * 8, MagicCardUtility.TextSize * 3);
@@ -668,7 +701,7 @@ namespace TorannMagic
                     Rect rect42 = new Rect(rect41.x, rect4.y, rect4.width - MagicCardUtility.MagicButtonPointSize, rect4.height / 2);
                     MagicPowerSkill skill = enumeratorN.Current;
                     TooltipHandler.TipRegion(rect42, new TipSignal(() => skill.desc.Translate(), rect4.GetHashCode()));
-                    bool flag11 = (skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0 || !enumerator.Current.learned) || ((enumerator.Current.abilityDef.defName == "TM_BardTraining") && compMagic.MagicData.MagicAbilityPoints < 2 ) || ((skill.label == "TM_HolyWrath_ver" || skill.label == "TM_HolyWrath_pwr") && compMagic.MagicData.MagicAbilityPoints < 2);
+                    bool flag11 = (skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0 || !enumerator.Current.learned) || ((enumerator.Current.abilityDef.defName == "TM_BardTraining") && compMagic.MagicData.MagicAbilityPoints < 2 ) || ((skill.label == "TM_HolyWrath_ver" || skill.label == "TM_HolyWrath_pwr") && compMagic.MagicData.MagicAbilityPoints < 2) || ((skill.label == "TM_Sentinel_pwr") && compMagic.MagicData.MagicAbilityPoints < 2);
                     if (flag11)
                     {
                         Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
@@ -1055,6 +1088,42 @@ namespace TorannMagic
                             if (enumerator.Current.abilityDef.defName == "TM_PsychicShock")
                             {
                                 compMagic.LevelUpSkill_PsychicShock(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Stoneskin")
+                            {
+                                compMagic.LevelUpSkill_Stoneskin(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Encase" || enumerator.Current.abilityDef.defName == "TM_Encase_I" || enumerator.Current.abilityDef.defName == "TM_Encase_II" || enumerator.Current.abilityDef.defName == "TM_Encase_III")
+                            {
+                                compMagic.LevelUpSkill_Encase(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_EarthSprites")
+                            {
+                                compMagic.LevelUpSkill_EarthSprites(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }                            
+                            if (enumerator.Current.abilityDef.defName == "TM_EarthernHammer")
+                            {
+                                compMagic.LevelUpSkill_EarthernHammer(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Sentinel")
+                            {
+                                compMagic.LevelUpSkill_Sentinel(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 2;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Meteor" || enumerator.Current.abilityDef.defName == "TM_Meteor_I" || enumerator.Current.abilityDef.defName == "TM_Meteor_II" || enumerator.Current.abilityDef.defName == "TM_Meteor_III")
+                            {
+                                compMagic.LevelUpSkill_Meteor(skill.label);
                                 skill.level++;
                                 compMagic.MagicData.MagicAbilityPoints -= 1;
                             }

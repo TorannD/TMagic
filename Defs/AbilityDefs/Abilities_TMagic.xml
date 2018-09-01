@@ -1805,7 +1805,7 @@ Damage: 7</description>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <projectile>
-	  <soundExplode>DeadfallSpring</soundExplode>
+	  <soundExplode>TrapSpring</soundExplode>
 	  <flyOverhead>false</flyOverhead>
       <damageDef>Firebolt</damageDef>
       <damageAmountBase>16</damageAmountBase>

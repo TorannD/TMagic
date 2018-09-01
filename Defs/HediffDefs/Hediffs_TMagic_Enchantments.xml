@@ -4,7 +4,7 @@
   <HediffDef>
     <defName>TM_HediffEnchantment_maxMP</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-	<label>Max MP:</label>
+	<label>Max Energy:</label>
     <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -56,7 +56,7 @@
      <HediffDef>
     <defName>TM_HediffEnchantment_mpCost</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-	<label>MP Cost:</label>
+	<label>Energy Cost:</label>
     <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -82,7 +82,7 @@
      <HediffDef>
     <defName>TM_HediffEnchantment_mpRegenRate</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-	<label>MP Regen:</label>
+	<label>Energy Regen:</label>
     <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -160,7 +160,7 @@
    <HediffDef>
     <defName>TM_HediffEnchantment_arcaneDmg</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-	<label>Arcane Damage:</label>
+	<label>Damage Bonus:</label>
     <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>

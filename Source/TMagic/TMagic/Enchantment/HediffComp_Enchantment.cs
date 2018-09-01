@@ -11,6 +11,7 @@ namespace TorannMagic.Enchantment
         private string enchantment ="";
 
         CompAbilityUserMagic comp;
+        CompAbilityUserMight compMight;
 
         public string labelCap
         {
@@ -54,6 +55,7 @@ namespace TorannMagic.Enchantment
             if(Find.TickManager.TicksGame % 120 == 0)
             {
                 comp = this.Pawn.GetComp<CompAbilityUserMagic>();
+                compMight = this.Pawn.GetComp<CompAbilityUserMight>();
                 DisplayEnchantments();
             }
         }
@@ -63,33 +65,83 @@ namespace TorannMagic.Enchantment
             //MagicPowerSkill spirit = this.Pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr");
             //MagicPowerSkill clarity = this.Pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
             //MagicPowerSkill focus = this.Pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_eff.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_eff_pwr");
+            bool flag = comp.IsMagicUser && !this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless);
             if (this.parent.def.defName == "TM_HediffEnchantment_maxMP")
             {
-                this.enchantment = (comp.maxMP * 100).ToString("0.##") + "%";
+                if (flag)
+                {
+                    this.enchantment = (comp.maxMP * 100).ToString("0.##") + "%";
+                }
+                else
+                {
+                    this.enchantment = (compMight.maxSP * 100).ToString("0.##") + "%";
+                }
             }
             else if (this.parent.def.defName == "TM_HediffEnchantment_coolDown")
             {
-                this.enchantment = (comp.coolDown * 100).ToString("0.##") + "%";
+                if(flag)
+                { 
+                    this.enchantment = (comp.coolDown * 100).ToString("0.##") + "%";
+                }
+                else
+                {
+                    this.enchantment = (compMight.coolDown * 100).ToString("0.##") + "%";
+                }
             }
             else if (this.parent.def.defName == "TM_HediffEnchantment_mpCost")
             {
-                this.enchantment = (comp.mpCost * 100).ToString("0.##") + "%";
+                if (flag)
+                {
+                    this.enchantment = (comp.mpCost * 100).ToString("0.##") + "%";
+                }
+                else
+                {
+                    this.enchantment = (compMight.spCost * 100).ToString("0.##") + "%";
+                }
             }
             else if (this.parent.def.defName == "TM_HediffEnchantment_mpRegenRate")
             {
-                this.enchantment = (comp.mpRegenRate * 100).ToString("0.##") + "%";
+                if (flag)
+                {
+                    this.enchantment = (comp.mpRegenRate * 100).ToString("0.##") + "%";
+                }            
+                else
+                {
+                    this.enchantment = (compMight.spRegenRate * 100).ToString("0.##") + "%";
+                }
             }
             else if (this.parent.def.defName == "TM_HediffEnchantment_xpGain")
             {
-                this.enchantment = (comp.xpGain * 100).ToString("0.##") + "%";
+                if (flag)
+                {
+                    this.enchantment = (comp.xpGain * 100).ToString("0.##") + "%";
+                }
+                else
+                {
+                    this.enchantment = (compMight.xpGain * 100).ToString("0.##") + "%";
+                }
             }
             else if (this.parent.def.defName == "TM_HediffEnchantment_arcaneRes")
             {
-                this.enchantment = (comp.arcaneRes * 100).ToString("0.##") + "%";
+                if (flag)
+                {
+                    this.enchantment = (comp.arcaneRes * 100).ToString("0.##") + "%";
+                }
+                else
+                {
+                    this.enchantment = (compMight.arcaneRes * 100).ToString("0.##") + "%";
+                }
             }
             else if (this.parent.def.defName == "TM_HediffEnchantment_arcaneDmg")
             {
-                this.enchantment = (comp.arcaneDmg * 100).ToString("0.##") + "%";
+                if (flag)
+                {
+                    this.enchantment = (comp.arcaneDmg * 100).ToString("0.##") + "%";
+                }
+                else
+                {
+                    this.enchantment = (compMight.mightPwr * 100).ToString("0.##") + "%";
+                }
             }
             else if (this.parent.def.defName == "TM_HediffEnchantment_arcaneSpectre")
             {

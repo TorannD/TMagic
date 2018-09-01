@@ -43,7 +43,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\..\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="CompDeflector, Version=1.18.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -66,7 +66,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\RimWorldWin_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
@@ -75,12 +75,19 @@
     <Compile Include="AbilityWorker_TargetCorpse.cs" />
     <Compile Include="Building_ProximityTrap.cs" />
     <Compile Include="Building_TMBarrier.cs" />
+    <Compile Include="Building_TMSentinel.cs" />
     <Compile Include="Building_TMSunlight.cs" />
     <Compile Include="Building_TMCooler.cs" />
     <Compile Include="Building_TMPowerNode.cs" />
     <Compile Include="Building_TMElementalRift.cs" />
     <Compile Include="Building_TMPortal.cs" />
     <Compile Include="Building_PoisonTrap.cs" />
+    <Compile Include="CompSentinel.cs" />
+    <Compile Include="Projectile_Sentinel.cs" />
+    <Compile Include="Sentinel_DeathWorker.cs" />
+    <Compile Include="TM_Calc.cs" />
+    <Compile Include="HediffComp_Stoneskin.cs" />
+    <Compile Include="Projectile_Encase.cs" />
     <Compile Include="Effect_PsionicStorm.cs" />
     <Compile Include="Effect_PsionicDash.cs" />
     <Compile Include="FlyingObject_PsionicLeap.cs" />
@@ -88,6 +95,7 @@
     <Compile Include="FlyingObject_PsionicDash.cs" />
     <Compile Include="HediffComp_Psionic.cs" />
     <Compile Include="JobDriver_PsionicBarrier.cs" />
+    <Compile Include="Projectile_EarthernHammer.cs" />
     <Compile Include="Projectile_PsionicBlast.cs" />
     <Compile Include="TM_MatPool.cs" />
     <Compile Include="HediffComp_DemonicPrice.cs" />
@@ -127,15 +135,19 @@
     <Compile Include="Thoughts\Inspiration_MightUser.cs" />
     <Compile Include="Thoughts\InteractionWorker_MightLore.cs" />
     <Compile Include="Verb_Dominate.cs" />
+    <Compile Include="Verb_DismissEarthSprites.cs" />
     <Compile Include="Verb_PsionicBlast.cs" />
     <Compile Include="Verb_PsionicBarrier.cs" />
     <Compile Include="Verb_ShadowStep.cs" />
     <Compile Include="Verb_ClawSweep.cs" />
+    <Compile Include="Verb_EarthSprites.cs" />
+    <Compile Include="Verb_Stoneskin.cs" />
     <Compile Include="Verb_SoulBond.cs" />
     <Compile Include="Verb_Reversal.cs" />
     <Compile Include="Verb_Mimic.cs" />
     <Compile Include="Verb_Disguise.cs" />
     <Compile Include="Verb_ShadowCall.cs" />
+    <Compile Include="Verb_Meteor.cs" />
     <Compile Include="Verb_SummonDemon.cs" />
     <Compile Include="Verb_Transpose.cs" />
     <Compile Include="Verb_CauterizeWound.cs" />

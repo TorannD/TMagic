@@ -156,10 +156,20 @@ namespace TorannMagic
                     }
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
+                else if (parent.def.defName == "BookOfEarth" || parent.def.defName == "Torn_BookOfEarth")
+                {
+                    FixTrait(user, user.story.traits.allTraits);
+                    user.story.traits.GainTrait(new Trait(TraitDef.Named("Geomancer"), 4, false));
+                    if (parent.def.defName == "BookOfEarth")
+                    {
+                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                    }
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
                 else if (parent.def.defName == "BookOfQuestion")
                 {
                     FixTrait(user, user.story.traits.allTraits);
-                    int rnd = Mathf.RoundToInt(Rand.RangeInclusive(0, 11));
+                    int rnd = Mathf.RoundToInt(Rand.RangeInclusive(0, 12));
                     switch (rnd)
                     {
                         case 0:
@@ -176,7 +186,7 @@ namespace TorannMagic
                                 Log.Message("No gender found.");
                             }
                             break;
-                        case 11:
+                        case 12:
                             if (user.gender == Gender.Male)
                             {
                                 user.story.traits.GainTrait(new Trait(TraitDef.Named("Warlock"), 4, false));
@@ -219,7 +229,10 @@ namespace TorannMagic
                             break;
                         case 10:
                             user.story.traits.GainTrait(new Trait(TraitDef.Named("Paladin"), 4, false));
-                            break;                        
+                            break;
+                        case 11:
+                            user.story.traits.GainTrait(new Trait(TraitDef.Named("Geomancer"), 4, false));
+                            break;
                     }
                     //HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
                     this.parent.Destroy(DestroyMode.Vanish);

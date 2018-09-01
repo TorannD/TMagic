@@ -63,6 +63,9 @@ namespace TorannMagic
         public float coolDown = 1;
         public float spCost = 1;
         public float xpGain = 1;
+        public float arcaneRes = 1;
+        public float mightPwr = 1;
+        private int resMitigationDelay = 0;
 
         public bool animalBondingDisabled = false;
         private int animalFriendDisabledPeriod;        
@@ -1503,6 +1506,29 @@ namespace TorannMagic
                             }
                         }
                     }
+                    if (current.def.defName == "TM_HediffEnchantment_phantomShift" && Rand.Chance(.2f))
+                    {
+                        absorbed = true;
+                        MoteMaker.MakeStaticMote(AbilityUser.Position, AbilityUser.Map, ThingDefOf.Mote_ExplosionFlash, 8);
+                        MoteMaker.ThrowSmoke(abilityUser.Position.ToVector3Shifted(), abilityUser.Map, 1.2f);
+                        dinfo.SetAmount(0);
+                        return;
+                    }
+                    if (arcaneRes != 0 && resMitigationDelay < this.age)
+                    {
+                        if (current.def.defName == "TM_HediffEnchantment_arcaneRes")
+                        {
+                            if (dinfo.Def.defName.Contains("TM_") || dinfo.Def.defName == "FrostRay" || dinfo.Def.defName == "Snowball" || dinfo.Def.defName == "Iceshard" || dinfo.Def.defName == "Firebolt")
+                            {
+                                absorbed = true;
+                                int actualDmg = Mathf.RoundToInt(dinfo.Amount - (dinfo.Amount * arcaneRes));
+                                resMitigationDelay = this.age + 10;
+                                dinfo.SetAmount(actualDmg);
+                                abilityUser.TakeDamage(dinfo);
+                                return;
+                            }
+                        }
+                    }
                     if (fortitudeMitigationDelay < this.age )
                     {
                         if (current.def.defName == "TM_HediffFortitude")
@@ -1905,10 +1931,58 @@ namespace TorannMagic
         private void ResolveSustainedSkills()
         {
             float _maxSP = 0;
-            float _spRegeRate = 0;
+            float _spRegenRate = 0;
             float _coolDown = 0;
             float _spCost = 0;
             float _xpGain = 0;
+            float _arcaneRes = 0;
+            float _arcaneDmg = 0;
+            bool _arcaneSpectre = false;
+            bool _phantomShift = false;
+
+            List<Apparel> apparel = this.Pawn.apparel.WornApparel;
+            for (int i = 0; i < this.Pawn.apparel.WornApparelCount; i++)
+            {
+                Enchantment.CompEnchantedItem item = apparel[i].GetComp<Enchantment.CompEnchantedItem>();
+                if (item != null)
+                {
+                    if (item.HasEnchantment)
+                    {
+                        _maxSP += item.maxMP;
+                        _spRegenRate += item.mpRegenRate;
+                        _coolDown += item.coolDown;
+                        _xpGain += item.xpGain;
+                        _spCost += item.mpCost;
+                        _arcaneRes += item.arcaneRes;
+                        _arcaneDmg += item.arcaneDmg;
+                        if (item.arcaneSpectre == true)
+                        {
+                            _arcaneSpectre = true;
+                        }
+                        if (item.phantomShift == true)
+                        {
+                            _phantomShift = true;
+                        }
+                    }
+                }
+            }
+            if (this.Pawn.equipment.Primary != null)
+            {
+                Enchantment.CompEnchantedItem item = this.Pawn.equipment.Primary.GetComp<Enchantment.CompEnchantedItem>();
+                if (item != null)
+                {
+                    if (item.HasEnchantment)
+                    {
+                        _maxSP += item.maxMP;
+                        _spRegenRate += item.mpRegenRate;
+                        _coolDown += item.coolDown;
+                        _xpGain += item.xpGain;
+                        _spCost += item.mpCost;
+                        _arcaneRes += item.arcaneRes;
+                        _arcaneDmg += item.arcaneDmg;
+                    }
+                }
+            }
 
             using (IEnumerator<Hediff> enumerator = this.Pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
             {
@@ -2023,8 +2097,106 @@ namespace TorannMagic
             {
                 MightData.MightAbilityPoints = 0;
             }
-            MightPowerSkill endurance = this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_global_endurance.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_endurance_pwr");
+
+            MightPowerSkill endurance = this.MightData.MightPowerSkill_global_endurance.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_endurance_pwr");
+            MightPowerSkill fitness = this.MightData.MightPowerSkill_global_refresh.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_refresh_pwr");
+            MightPowerSkill coordination = this.MightData.MightPowerSkill_global_seff.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_seff_pwr");
+            MightPowerSkill strength = this.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
+            _spRegenRate += (fitness.level * .05f);
+            _spCost += (coordination.level * -.025f);
+            _arcaneRes += ((1 - this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false)) / 2);
+            _arcaneDmg += ((this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false) - 1) / 4);
             this.maxSP = 1 + (.04f * endurance.level) + _maxSP;
+            this.spRegenRate = 1f + _spRegenRate;
+            this.coolDown = 1f + _coolDown;
+            this.xpGain = 1f + _xpGain;
+            this.spCost = 1f + _spCost;
+            this.arcaneRes = 1 + _arcaneRes;
+            this.mightPwr = 1 + _arcaneDmg + (.05f * strength.level);
+            if (_maxSP != 0)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_maxMP"), .5f);
+            }
+            if (_spRegenRate != 0)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_mpRegenRate"), .5f);
+            }
+            if (_coolDown != 0)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_coolDown"), .5f);
+            }
+            if (_xpGain != 0)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_xpGain"), .5f);
+            }
+            if (_spCost != 0)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_mpCost"), .5f);
+            }
+            if (_arcaneRes != 0)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_arcaneRes"), .5f);
+            }
+            if (this.mightPwr != 1)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_arcaneDmg"), .5f);
+            }
+            if (_arcaneSpectre == true)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_arcaneSpectre"), .5f);
+            }
+            if (_phantomShift == true)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_phantomShift"), .5f);
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Lich) && !this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD")))
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_LichHD"), .5f);
+            }
+
+            using (IEnumerator<Hediff> enumerator = this.Pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+            {
+                while (enumerator.MoveNext())
+                {
+                    Hediff rec = enumerator.Current;
+                    if (rec.def.defName == "TM_HediffEnchantment_maxMP" && this.maxSP == 1)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                    if (rec.def.defName == "TM_HediffEnchantment_coolDown" && this.coolDown == 1)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                    if (rec.def.defName == "TM_HediffEnchantment_mpCost" && this.spCost == 1)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                    if (rec.def.defName == "TM_HediffEnchantment_mpRegenRate" && this.spRegenRate == 1)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                    if (rec.def.defName == "TM_HediffEnchantment_xpGain" && this.xpGain == 1)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                    if (_arcaneRes != 0)
+                    {
+                        HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_arcaneRes"), .5f);
+                    }
+                    if (_arcaneDmg != 0)
+                    {
+                        HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_arcaneDmg"), .5f);
+                    }
+                    if (rec.def.defName == "TM_HediffEnchantment_arcaneSpectre" && _arcaneSpectre == false)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                    if (rec.def.defName == "TM_HediffEnchantment_phantomShift" && _phantomShift == false)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
+                }
+            }
         }
 
         public void ResolveStamina()

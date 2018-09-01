@@ -5,7 +5,8 @@
 
     <TraitDef>
         <defName>Gifted</defName>
-        <commonality>0.001</commonality>
+        <ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
         <degreeDatas>
             <li>
                 <label>magically gifted</label>
@@ -41,12 +42,14 @@
 		  <li>TM_Psionic</li>
 		  <li>Succubus</li>
 		  <li>Warlock</li>
+		  <li>Geomancer</li>
 		</conflictingTraits>
     </TraitDef>
 	
 	<TraitDef>
 		<defName>InnerFire</defName>
-		<commonality>0.001</commonality>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
 		<degreeDatas>	
 		  <li>
 			<label>Fire mage</label>
@@ -85,12 +88,14 @@
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
 	<TraitDef>
 		<defName>HeartOfFrost</defName>
-		<commonality>0.001</commonality>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
 		<degreeDatas>	
 		  <li>
 			<label>Ice mage</label>
@@ -128,12 +133,14 @@
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
 	<TraitDef>
 		<defName>StormBorn</defName>
-		<commonality>0.001</commonality>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
 		<degreeDatas>	
 		  <li>
 			<label>Lightning mage</label>
@@ -169,12 +176,14 @@
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
 	<TraitDef>
 		<defName>Arcanist</defName>
-		<commonality>0.001</commonality>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
 		<degreeDatas>	
 		  <li>
 			<label>Arcane mage</label>
@@ -214,12 +223,14 @@
 		<li>Succubus</li>
 		  <li>Warlock</li>
 		<li>TM_Psionic</li>
+		<li>Geomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
 	<TraitDef>
 		<defName>Druid</defName>
-		<commonality>0.001</commonality>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
 		<degreeDatas>	
 		  <li>
 			<label>Druid</label>
@@ -258,12 +269,14 @@
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
 	<TraitDef>
 		<defName>Paladin</defName>
-		<commonality>0.001</commonality>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
 		<degreeDatas>	
 		  <li>
 			<label>Paladin</label>
@@ -300,12 +313,14 @@
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 
 	<TraitDef>
 		<defName>Summoner</defName>
-		<commonality>0.001</commonality>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
 		<degreeDatas>	
 		  <li>
 			<label>Summoner</label>
@@ -341,12 +356,14 @@
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
 		</conflictingTraits>	
 	</TraitDef> 	
 	
 	<TraitDef>
 		<defName>Necromancer</defName>
-		<commonality>0.001</commonality>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
 		<degreeDatas>	
 		  <li>
 			<label>Necromancer</label>
@@ -385,11 +402,13 @@
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
 	<TraitDef>
 		<defName>Lich</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
 		<commonality>0</commonality>
 		<disabledWorkTags> 
 			<li>Caring</li>
@@ -456,12 +475,14 @@
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
 	<TraitDef>
 		<defName>Priest</defName>
-		<commonality>0.001</commonality>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
 		<disabledWorkTags>
 		  <li>Violent</li>
 		</disabledWorkTags>
@@ -510,11 +531,13 @@
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
 	<TraitDef>
 		<defName>Undead</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
 		<commonality>0</commonality>	
 		<disabledWorkTags> 
 			<li>Caring</li>
@@ -544,7 +567,8 @@
 
 	<TraitDef>
 		<defName>TM_Bard</defName>
-		<commonality>0.001</commonality>	
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>	
 		<disabledWorkTags>
 		  <li>ManualDumb</li>
 		</disabledWorkTags>		
@@ -594,7 +618,7 @@
 		  <li>
 			<label>Bard</label>
 			<commonality>0</commonality>
-			<description>[PAWN_nameDef] is a master entertainer. Sharp wit, deft hands, and dry humor are [PAWN_possessive] weapons and [PAWN_pronoun] is a master of all [PAWN_possessive] weapons.</description>
+			<description>[PAWN_nameDef] is a master entertainer. Sharp wit, deft hands, and dry humor are [PAWN_possessive] weapons, and [PAWN_pronoun] is a master of all [PAWN_possessive] weapons.</description>
 			<degree>3</degree>
 				<statOffsets>
 					<SocialImpact>0.35</SocialImpact>
@@ -627,12 +651,61 @@
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>
+		<defName>Geomancer</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
+		<degreeDatas>	
+		  <li>
+			<label>Geomancer</label>
+			<description>[PAWN_nameDef] is attuned with the earth and natural order, drawing power from the physical realm and intertwining it with arcane energy. [PAWN_pronoun] is capable of reinforcing physical elements, and bending them, as [PAWN_pronoun] needs.</description>
+			<degree>4</degree>
+			<statOffsets>
+				<MoveSpeed>-.10</MoveSpeed>
+				<ToxicSensitivity>-0.30</ToxicSensitivity>
+				<ComfyTemperatureMin>-12</ComfyTemperatureMin>
+				<ComfyTemperatureMax>+12</ComfyTemperatureMax>
+				<PainShockThreshold>-0.15</PainShockThreshold>
+				<CarryingCapacity>+0.30</CarryingCapacity>
+				<WorkSpeedGlobal>-0.20</WorkSpeedGlobal>
+				<MentalBreakThreshold>-0.15</MentalBreakThreshold>
+				<GlobalLearningFactor>0.8</GlobalLearningFactor>
+			</statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>StormBorn</li>
+		  <li>Arcanist</li>
+		  <li>Gifted</li>
+		  <li>PhysicalProdigy</li>
+		  <li>Paladin</li>
+		  <li>Gladiator</li>
+		  <li>TM_Sniper</li>
+		  <li>Summoner</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		  <li>Faceless</li>
+		  <li>Succubus</li>
+		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
 	<TraitDef>
         <defName>PhysicalProdigy</defName>
-        <commonality>0.001</commonality>
+        <ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
         <degreeDatas>
             <li>
                 <label>physically adept</label>
@@ -668,12 +741,14 @@
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
 		</conflictingTraits>
     </TraitDef>
 	
 	<TraitDef>
 		<defName>Gladiator</defName>
-		<commonality>0.001</commonality>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
 		<degreeDatas>	
 		  <li>
 			<label>Gladiator</label>
@@ -716,12 +791,14 @@
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
 	<TraitDef>
 		<defName>Ranger</defName>
-		<commonality>0.001</commonality>		
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>		
 		<degreeDatas>	
 		  <li>
 			<label>Woodsman</label>
@@ -822,12 +899,14 @@
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
 	<TraitDef>
 		<defName>TM_Sniper</defName>
-		<commonality>0.001</commonality>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
 		<degreeDatas>	
 		  <li>
 			<label>Sharpshooter</label>
@@ -911,12 +990,14 @@
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
 	<TraitDef>
 		<defName>Bladedancer</defName>
-		<commonality>0.001</commonality>		
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>		
 		<degreeDatas>	
 		  <li>
 			<label>Bladesman</label>
@@ -997,12 +1078,14 @@
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
 	<TraitDef>
 		<defName>Faceless</defName>
-		<commonality>0.001</commonality>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
 		<degreeDatas>	
 		  <li>
 			<label>Faceless</label>
@@ -1043,12 +1126,14 @@
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
 	<TraitDef>
 		<defName>Succubus</defName>
-		<commonality>0.001</commonality>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
 		<degreeDatas>	
 		  <li>
 			<label>Succubus</label>
@@ -1091,12 +1176,14 @@
 		  <li>Faceless</li>
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
 	<TraitDef>
 		<defName>Warlock</defName>
-		<commonality>0.001</commonality>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
 		<degreeDatas>	
 		  <li>
 			<label>Warlock</label>
@@ -1140,12 +1227,14 @@
 		  <li>Faceless</li>
 		  <li>Succubus</li>
 		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
 	<TraitDef>
 		<defName>TM_Psionic</defName>
-		<commonality>0.001</commonality>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
 		<degreeDatas>	
 		  <li>
 			<label>Psionic</label>
@@ -1186,6 +1275,7 @@
 		  <li>Faceless</li>
 		  <li>Succubus</li>
 		  <li>Warlock</li>
+		  <li>Geomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 

@@ -97,4 +97,100 @@
     </subSounds>
   </SoundDef>
   
+  <SoundDef>
+    <defName>TM_DemonAngryHigh</defName>
+    <eventNames />
+    <maxSimultaneous>3</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/Demon/Demon_Angry</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>8</min>
+          <max>12</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.6</min>
+          <max>.8</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>TM_DemonCallHigh</defName>
+    <eventNames />
+    <maxSimultaneous>2</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/Demon/Demon_Call</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>6</min>
+          <max>12</max>
+        </volumeRange>
+        <pitchRange>
+          <min>1.5</min>
+          <max>2</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>TM_DemonPainHigh</defName>
+    <eventNames />
+    <maxSimultaneous>3</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/Demon/Demon_Pain</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>8</min>
+          <max>12</max>
+        </volumeRange>
+        <pitchRange>
+          <min>1.4</min>
+          <max>1.8</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>TM_DemonDeathHigh</defName>
+    <eventNames />
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/Demon/Demon_Death</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>9</min>
+          <max>11</max>
+        </volumeRange>
+        <pitchRange>
+          <min>1.5</min>
+          <max>2</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
 </Defs>

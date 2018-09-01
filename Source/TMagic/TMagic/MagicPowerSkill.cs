@@ -27,7 +27,7 @@ namespace TorannMagic
             {
                 this.levelMax = 6;
             }
-            else if (newLabel == "TM_global_regen_pwr" || newLabel == "TM_global_eff_pwr")
+            else if (newLabel == "TM_global_regen_pwr" || newLabel == "TM_global_eff_pwr" || newLabel == "TM_EarthSprites_pwr")
             {
                 this.levelMax = 5;
             }
@@ -35,9 +35,13 @@ namespace TorannMagic
             {
                 this.levelMax = 4;
             }
-            else if (newLabel == "TM_global_spirit_pwr" )
+            else if (newLabel == "TM_global_spirit_pwr")
             {
                 this.levelMax = 50;
+            }
+            else if (newLabel == "TM_Sentinel_pwr")
+            {
+                this.levelMax = 2;
             }
             else
             {

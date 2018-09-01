@@ -2,6 +2,32 @@
 <Defs>
 
   <ThingDef ParentName="MoteBase">
+    <defName>Mote_Rubble</defName>
+    <graphicData>
+      <texPath>Motes/Rubble</texPath>
+    </graphicData>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <mote>
+      <fadeInTime>0.02</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>0.05</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_ThickDust</defName>
+    <graphicData>
+      <texPath>Motes/ThickDust</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
     <defName>Mote_ManaPuff</defName>
     <graphicData>
       <texPath>Motes/ManaMote</texPath>

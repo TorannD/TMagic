@@ -89,11 +89,11 @@ namespace TorannMagic
             if (value > 1000)
             {
                 value -= 1000;
-                dmg = (projectileDef.projectile.GetDamageAmount(1,null)) + (int)((20 + (value / 120)) * (1 + (.1f * pwrVal) + (.05f * str.level)));
+                dmg = (projectileDef.projectile.GetDamageAmount(1,null)) + (int)((20 + (value / 120)) * (1 + (.1f * pwrVal)));
             }
             else
             {
-                dmg = (projectileDef.projectile.GetDamageAmount(1,null)) + (int)((value / 50) * (1 + (.1f * pwrVal) + (.05f * str.level)));
+                dmg = (projectileDef.projectile.GetDamageAmount(1,null)) + (int)((value / 50) * (1 + (.1f * pwrVal)));
             }
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             if (!pawn.IsColonist && settingsRef.AIHardMode)
@@ -101,7 +101,7 @@ namespace TorannMagic
                 dmg += 8;
             }
 
-            return dmg;
+            return Mathf.RoundToInt(dmg * comp.mightPwr);
         }
 
         public void PenetratingShot(Pawn victim, int dmg, DamageDef dmgType)

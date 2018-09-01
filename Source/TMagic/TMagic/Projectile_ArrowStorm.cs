@@ -55,7 +55,7 @@ namespace TorannMagic
 
         public static float GetWeaponAccuracy(Pawn pawn)
         {
-            float weaponAccuracy = pawn.equipment.Primary.GetStatValue(StatDefOf.AccuracyMedium, true);
+            float weaponAccuracy = pawn.equipment.Primary.GetStatValue(StatDefOf.AccuracyMedium, true);            
             MightPowerSkill ver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_ArrowStorm.FirstOrDefault((MightPowerSkill x) => x.label == "TM_ArrowStorm_ver");
             verVal = ver.level;
             if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
@@ -69,6 +69,7 @@ namespace TorannMagic
 
         public static int GetWeaponDmg(Pawn pawn, ThingDef projectileDef)
         {
+            CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
             MightPowerSkill pwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_ArrowStorm.FirstOrDefault((MightPowerSkill x) => x.label == "TM_ArrowStorm_pwr");
             MightPowerSkill str = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
             pwrVal = pwr.level;
@@ -99,13 +100,13 @@ namespace TorannMagic
             if (value > 1000)
             {
                 value -= 1000;
-                dmg = (projectileDef.projectile.GetDamageAmount(1,null)) + (int)((20 + (value / 120)) * (1 + (.1f * pwrVal) + (.05f * str.level)));
+                dmg = (projectileDef.projectile.GetDamageAmount(1,null)) + (int)((20 + (value / 120)) * (1 + (.1f * pwrVal)));
             }
             else
             {
-                dmg = Mathf.RoundToInt((projectileDef.projectile.GetDamageAmount(1,null) + (value / 50)) * (1 + (.1f * pwrVal) + (.05f * str.level)));
+                dmg = Mathf.RoundToInt((projectileDef.projectile.GetDamageAmount(1,null) + (value / 50)) * (1 + (.1f * pwrVal)));
             }
-            return dmg;
+            return Mathf.RoundToInt(dmg * comp.mightPwr);
         }
 
         public void damageEntities(Pawn victim, BodyPartRecord hitPart, int amt, DamageDef type)

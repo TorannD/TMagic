@@ -11,13 +11,13 @@ namespace TorannMagic
 {
     public class TMJobDriver_CastAbilitySelf : JobDriver_CastAbilityVerb
     {
-        Verb arg_45_0;
+        public Verb_UseAbility verb = new Verb_UseAbility();
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
             yield return Toils_Misc.ThrowColonistAttackingMote(TargetIndex.A);
-            Verb_UseAbility curJob = this.pawn.CurJob.verbToUse as Verb_UseAbility;
-            Find.Targeter.targetingVerb = curJob;            
+            verb = this.pawn.CurJob.verbToUse as Verb_UseAbility;
+            Find.Targeter.targetingVerb = verb;            
             yield return Toils_Combat.CastVerb(TargetIndex.A, false);
             Toil toil1 = new Toil()
             {
@@ -33,7 +33,7 @@ namespace TorannMagic
             Toil toil = new Toil()
             {
 
-                initAction = () => curJob.Ability.PostAbilityAttempt(),
+                initAction = () => verb.Ability.PostAbilityAttempt(),
                 defaultCompleteMode = ToilCompleteMode.Instant
             };
             yield return toil;

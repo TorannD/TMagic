@@ -272,9 +272,9 @@ namespace TorannMagic
             {
                 weaponComp = caster.equipment.Primary;
                 weaponDPS = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_AverageDPS, false) * .7f;
-                dmgMultiplier = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_DamageMultiplier, false);
+                dmgMultiplier = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_DamageMultiplier, false) * comp.mightPwr;
                 pawnDPS = caster.GetStatValue(StatDefOf.MeleeDPS, false);
-                skillMultiplier = (.75f + (.025f * str.level) + (.075f * pwrVal));
+                skillMultiplier = (.75f + (.075f * pwrVal));
                 dmgNum = Mathf.RoundToInt(skillMultiplier * dmgMultiplier * (pawnDPS + weaponDPS));
 
             }

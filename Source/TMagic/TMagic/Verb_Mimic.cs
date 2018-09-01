@@ -93,7 +93,7 @@ namespace TorannMagic
                                     }
                                     i = 5;
                                 }
-                                else if (rnd == 1 && magicPawn.MagicData.MagicPowersA[rnd].learned)
+                                else if (rnd == 1 && magicPawn.MagicData.MagicPowersA[rnd].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
                                     int level = magicPawn.MagicData.MagicPowersA[rnd].level;
                                     switch (level)
@@ -180,17 +180,17 @@ namespace TorannMagic
                                     }
                                     i = 5;
                                 }
-                                else if (rnd == 1 && magicPawn.MagicData.MagicPowersSB[rnd].learned)
+                                else if (rnd == 1 && magicPawn.MagicData.MagicPowersSB[rnd].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
                                     tempAbility = TorannMagicDefOf.TM_LightningBolt;
                                     i = 5;
                                 }
-                                else if (rnd == 2 && magicPawn.MagicData.MagicPowersSB[rnd].learned)
+                                else if (rnd == 2 && magicPawn.MagicData.MagicPowersSB[rnd].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
                                     tempAbility = TorannMagicDefOf.TM_LightningCloud;
                                     i = 5;
                                 }
-                                else if (rnd == 3 && magicPawn.MagicData.MagicPowersSB[rnd].learned)
+                                else if (rnd == 3 && magicPawn.MagicData.MagicPowersSB[rnd].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
                                     tempAbility = TorannMagicDefOf.TM_LightningStorm;
                                     i = 5;
@@ -222,17 +222,17 @@ namespace TorannMagic
                                     }
                                     i = 5;
                                 }
-                                else if (rnd == 1 && magicPawn.MagicData.MagicPowersIF[rnd].learned)
+                                else if (rnd == 1 && magicPawn.MagicData.MagicPowersIF[rnd].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
                                     tempAbility = TorannMagicDefOf.TM_Firebolt;
                                     i = 5;
                                 }
-                                else if (rnd == 2 && magicPawn.MagicData.MagicPowersIF[rnd].learned)
+                                else if (rnd == 2 && magicPawn.MagicData.MagicPowersIF[rnd].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
                                     tempAbility = TorannMagicDefOf.TM_Fireclaw;
                                     i = 5;
                                 }
-                                else if (rnd == 3 && magicPawn.MagicData.MagicPowersIF[rnd].learned)
+                                else if (rnd == 3 && magicPawn.MagicData.MagicPowersIF[rnd].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
                                     tempAbility = TorannMagicDefOf.TM_Fireball;
                                     i = 5;
@@ -269,12 +269,12 @@ namespace TorannMagic
                                     tempAbility = TorannMagicDefOf.TM_Rainmaker;
                                     i = 5;
                                 }
-                                else if (rnd == 2 && magicPawn.MagicData.MagicPowersHoF[rnd].learned)
+                                else if (rnd == 2 && magicPawn.MagicData.MagicPowersHoF[rnd].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
                                     tempAbility = TorannMagicDefOf.TM_Icebolt;
                                     i = 5;
                                 }
-                                else if (rnd == 3 && magicPawn.MagicData.MagicPowersHoF[rnd].learned)
+                                else if (rnd == 3 && magicPawn.MagicData.MagicPowersHoF[rnd].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
                                     int level = magicPawn.MagicData.MagicPowersHoF[rnd].level;
                                     switch (level)
@@ -294,7 +294,7 @@ namespace TorannMagic
                                     }
                                     i = 5;
                                 }
-                                else if (rnd == 4 && magicPawn.MagicData.MagicPowersHoF[rnd].learned)
+                                else if (rnd == 4 && magicPawn.MagicData.MagicPowersHoF[rnd].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
                                     tempAbility = TorannMagicDefOf.TM_Snowball;
                                     i = 5;
@@ -306,7 +306,7 @@ namespace TorannMagic
                             for (int i = 0; i < 5; i++)
                             {
                                 int rnd = Rand.RangeInclusive(0, 3);
-                                if (rnd == 0 && magicPawn.MagicData.MagicPowersD[rnd].learned)
+                                if (rnd == 0 && magicPawn.MagicData.MagicPowersD[rnd].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
                                     tempAbility = TorannMagicDefOf.TM_Poison;
                                     i = 5;
@@ -348,7 +348,7 @@ namespace TorannMagic
                             for (int i = 0; i < 5; i++)
                             {
                                 int rnd = Rand.RangeInclusive(1, 3);
-                                if (rnd == 1 && magicPawn.MagicData.MagicPowersN[rnd].learned)
+                                if (rnd == 1 && magicPawn.MagicData.MagicPowersN[rnd].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
                                     int level = magicPawn.MagicData.MagicPowersN[rnd].level;
                                     switch (level)
@@ -368,12 +368,12 @@ namespace TorannMagic
                                     }
                                     i = 5;
                                 }
-                                else if (rnd == 2 && magicPawn.MagicData.MagicPowersN[rnd].learned)
+                                else if (rnd == 2 && magicPawn.MagicData.MagicPowersN[rnd].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
                                     tempAbility = TorannMagicDefOf.TM_FogOfTorment;
                                     i = 5;
                                 }
-                                else if (rnd == 3 && magicPawn.MagicData.MagicPowersN[rnd+1].learned)
+                                else if (rnd == 3 && magicPawn.MagicData.MagicPowersN[rnd+1].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
                                     int level = magicPawn.MagicData.MagicPowersN[rnd+1].level;
                                     switch (level)
@@ -425,12 +425,12 @@ namespace TorannMagic
                                     tempAbility = TorannMagicDefOf.TM_Heal;
                                     i = 5;
                                 }
-                                else if (rnd == 2 && magicPawn.MagicData.MagicPowersP[rnd].learned)
+                                else if (rnd == 2 && magicPawn.MagicData.MagicPowersP[rnd].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
                                     tempAbility = TorannMagicDefOf.TM_ValiantCharge;
                                     i = 5;
                                 }
-                                else if (rnd == 3 && magicPawn.MagicData.MagicPowersP[rnd].learned)
+                                else if (rnd == 3 && magicPawn.MagicData.MagicPowersP[rnd].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
                                     tempAbility = TorannMagicDefOf.TM_Overwhelm;
                                     i = 5;
@@ -540,7 +540,7 @@ namespace TorannMagic
                             for (int i = 0; i < 5; i++)
                             {
                                 int rnd = Rand.RangeInclusive(1, 3);
-                                if (rnd == 1 && magicPawn.MagicData.MagicPowersWD[rnd].learned)
+                                if (rnd == 1 && magicPawn.MagicData.MagicPowersWD[rnd].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
                                     int level = magicPawn.MagicData.MagicPowersWD[rnd].level;
                                     switch (level)
@@ -560,7 +560,7 @@ namespace TorannMagic
                                     }
                                     i = 5;
                                 }
-                                else if (rnd == 2 && magicPawn.MagicData.MagicPowersWD[rnd].learned)
+                                else if (rnd == 2 && magicPawn.MagicData.MagicPowersWD[rnd].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
                                     tempAbility = TorannMagicDefOf.TM_Dominate;
                                     i = 5;
@@ -592,7 +592,7 @@ namespace TorannMagic
                             for (int i = 0; i < 5; i++)
                             {
                                 int rnd = Rand.RangeInclusive(1, 3);
-                                if (rnd == 1 && magicPawn.MagicData.MagicPowersSD[rnd].learned)
+                                if (rnd == 1 && magicPawn.MagicData.MagicPowersSD[rnd].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
                                     int level = magicPawn.MagicData.MagicPowersSD[rnd].level;
                                     switch (level)
@@ -612,7 +612,7 @@ namespace TorannMagic
                                     }
                                     i = 5;
                                 }
-                                else if (rnd == 2 && magicPawn.MagicData.MagicPowersSD[rnd].learned)
+                                else if (rnd == 2 && magicPawn.MagicData.MagicPowersSD[rnd].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
                                     tempAbility = TorannMagicDefOf.TM_Dominate;
                                     i = 5;
@@ -637,6 +637,47 @@ namespace TorannMagic
                                     }
                                     i = 5;
                                 }
+                            }
+                        }
+                        else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
+                        {
+                            for (int i = 0; i < 5; i++)
+                            {
+                                int rnd = Rand.RangeInclusive(0, 2);
+                                if(rnd == 2)
+                                {
+                                    rnd = 3;
+                                }
+                                if (rnd == 0 && magicPawn.MagicData.MagicPowersG[rnd].learned)
+                                {
+                                    tempAbility = TorannMagicDefOf.TM_Stoneskin;                                     
+                                    i = 5;
+                                }
+                                else if (rnd == 1 && magicPawn.MagicData.MagicPowersG[rnd].learned )
+                                {
+                                    int level = magicPawn.MagicData.MagicPowersPR[rnd].level;
+                                    switch (level)
+                                    {
+                                        case 0:
+                                            tempAbility = TorannMagicDefOf.TM_Encase;
+                                            break;
+                                        case 1:
+                                            tempAbility = TorannMagicDefOf.TM_Encase_I;
+                                            break;
+                                        case 2:
+                                            tempAbility = TorannMagicDefOf.TM_Encase_II;
+                                            break;
+                                        case 3:
+                                            tempAbility = TorannMagicDefOf.TM_Encase_III;
+                                            break;
+                                    }
+                                    i = 5;
+                                }
+                                else if (rnd == 3 && magicPawn.MagicData.MagicPowersG[rnd].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                                {
+                                    tempAbility = TorannMagicDefOf.TM_EarthernHammer;
+                                    i = 5;
+                                }                                
                             }
                         }
 
@@ -665,7 +706,7 @@ namespace TorannMagic
                     }
                     else if (mightPawn.IsMightUser)
                     {
-                        if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
+                        if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                         {
                             int rnd = Rand.RangeInclusive(0, 1);
                             if (rnd == 0)
@@ -692,7 +733,7 @@ namespace TorannMagic
                                 tempAbility = TorannMagicDefOf.TM_Whirlwind;
                             }
                         }
-                        else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper))
+                        else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                         {
                             int rnd = Rand.RangeInclusive(0, 2);
                             if(rnd==0)
@@ -724,7 +765,7 @@ namespace TorannMagic
                             }
                             
                         }
-                        else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer))
+                        else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                         {
                             int rnd = Rand.RangeInclusive(0, 2);
                             if (rnd == 0)
@@ -755,7 +796,7 @@ namespace TorannMagic
                                 tempAbility = TorannMagicDefOf.TM_BladeSpin;
                             }
                         }
-                        else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Ranger))
+                        else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                         {
                             int rnd = Rand.RangeInclusive(0, 1);
                             if (rnd == 0)
@@ -785,7 +826,7 @@ namespace TorannMagic
                         else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
                         {
                             int rnd = Rand.RangeInclusive(0, 3);
-                            if (rnd == 0 || rnd == 3)
+                            if ((rnd == 0 || rnd == 3) && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                             {
                                 int level = mightPawn.MightData.MightPowersP[1].level;
                                 switch (level)
@@ -804,11 +845,11 @@ namespace TorannMagic
                                         break;
                                 }
                             }
-                            else if (rnd == 1)
+                            else if (rnd == 1 && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                             {
                                 tempAbility = TorannMagicDefOf.TM_PsionicDash;
                             }
-                            else
+                            else 
                             {
                                 int level = mightPawn.MightData.MightPowersP[3].level;
                                 switch (level)

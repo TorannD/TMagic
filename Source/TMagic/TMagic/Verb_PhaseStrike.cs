@@ -58,7 +58,7 @@ namespace TorannMagic
             float weaponDPS = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_AverageDPS, false) * .7f;
             float dmgMultiplier = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_DamageMultiplier, false);
             float pawnDPS = pawn.GetStatValue(StatDefOf.MeleeDPS, false);
-            float skillMultiplier = (.8f + (.025f * str.level));
+            float skillMultiplier = (.8f) * comp.mightPwr;
             return Mathf.RoundToInt(skillMultiplier * dmgMultiplier * (pawnDPS + weaponDPS));
         }
 
@@ -70,7 +70,6 @@ namespace TorannMagic
             CompAbilityUserMight comp = this.CasterPawn.GetComp<CompAbilityUserMight>();
             pwr = comp.MightData.MightPowerSkill_PhaseStrike.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PhaseStrike_pwr");
             ver = comp.MightData.MightPowerSkill_PhaseStrike.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PhaseStrike_ver");
-            str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
             verVal = ver.level;
             pwrVal = pwr.level;
             if (base.CasterPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
