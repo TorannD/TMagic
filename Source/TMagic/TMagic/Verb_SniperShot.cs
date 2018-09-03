@@ -18,6 +18,7 @@ namespace TorannMagic
             {
                 Thing wpn = this.CasterPawn.equipment.Primary;
                 ThingDef newProjectile = wpn.def.Verbs.FirstOrDefault().defaultProjectile;
+                Type oldThingclass = newProjectile.thingClass;
                 newProjectile.thingClass = this.Projectile.thingClass;
                 bool flag = false;
                 SoundInfo info = SoundInfo.InMap(new TargetInfo(this.CasterPawn.Position, this.CasterPawn.Map, false), MaintenanceType.None);
@@ -43,6 +44,7 @@ namespace TorannMagic
                 {
                     this.Ability.Notify_AbilityFailed(this.UseAbilityProps.refundsPointsAfterFailing);
                 }
+                newProjectile.thingClass = oldThingclass;
                 this.burstShotsLeft = 0;
                 return flag;  
             }

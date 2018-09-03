@@ -2559,7 +2559,7 @@ namespace TorannMagic
                 this.InitializeSkill();
                 //base.UpdateAbilities();
             }
-
+            
         }
 
     }

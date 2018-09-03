@@ -36,7 +36,7 @@ namespace TorannMagic.Enchantment
             bool spawned = base.Pawn.Spawned;
             if (spawned)
             {
-                MoteMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 3f);
+                //MoteMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 3f);
             }
         }
 
@@ -65,7 +65,7 @@ namespace TorannMagic.Enchantment
             //MagicPowerSkill spirit = this.Pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr");
             //MagicPowerSkill clarity = this.Pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
             //MagicPowerSkill focus = this.Pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_eff.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_eff_pwr");
-            bool flag = comp.IsMagicUser && !this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless);
+            bool flag = comp.IsMagicUser && !compMight.IsMightUser; // !this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless);
             if (this.parent.def.defName == "TM_HediffEnchantment_maxMP")
             {
                 if (flag)
