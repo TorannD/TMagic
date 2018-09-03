@@ -224,7 +224,7 @@ namespace TorannMagic
             //base.Tick();
             this.ticksToImpact--;
             bool flag = !this.ExactPosition.InBounds(base.Map);
-            if (this.stage != 0 && this.nextAttackTick < Find.TickManager.TicksGame)
+            if (this.stage > 0 && this.stage < 4 && this.nextAttackTick < Find.TickManager.TicksGame)
             {
                 IntVec3 targetVariation = this.targetCells.RandomElement();
                 float angle = (Quaternion.AngleAxis(90, Vector3.up) * GetVector(this.ExactPosition, targetVariation.ToVector3Shifted())).ToAngleFlat();
@@ -288,8 +288,20 @@ namespace TorannMagic
                         }
                         else
                         {
+                            this.origin = this.destination;
+                            this.destination = this.nearApex;
+                            this.ticksToImpact = this.StartingTicksToImpact;
+                            this.speed = 15;
                             this.stage = 3;
                         }
+                    }
+                    else if (this.stage == 3)
+                    {
+                        this.speed = 25f;
+                        this.origin = this.nearApex;
+                        this.destination = this.trueOrigin;
+                        this.ticksToImpact = this.StartingTicksToImpact;
+                        this.stage = 4;                        
                     }
                     else
                     {
