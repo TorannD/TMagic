@@ -1117,9 +1117,19 @@ namespace TorannMagic
                             }
                             if (enumerator.Current.abilityDef.defName == "TM_Sentinel")
                             {
-                                compMagic.LevelUpSkill_Sentinel(skill.label);
-                                skill.level++;
-                                compMagic.MagicData.MagicAbilityPoints -= 2;
+                                if (skill.label == "TM_Sentinel_pwr")
+                                {
+                                    compMagic.LevelUpSkill_Sentinel(skill.label);
+                                    skill.level++;
+                                    compMagic.MagicData.MagicAbilityPoints -= 2;
+                                }
+                                else
+                                {
+                                    compMagic.LevelUpSkill_Sentinel(skill.label);
+                                    skill.level++;
+                                    compMagic.MagicData.MagicAbilityPoints -= 1;
+                                }
+                                
                             }
                             if (enumerator.Current.abilityDef.defName == "TM_Meteor" || enumerator.Current.abilityDef.defName == "TM_Meteor_I" || enumerator.Current.abilityDef.defName == "TM_Meteor_II" || enumerator.Current.abilityDef.defName == "TM_Meteor_III")
                             {

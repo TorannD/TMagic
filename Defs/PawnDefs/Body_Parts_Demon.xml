@@ -3,6 +3,16 @@
 <Defs>
 
   <BodyPartDef>
+    <defName>Demon_Body</defName>
+    <label>plated chest</label>
+    <hitPoints>15</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+	<bleedRate>0</bleedRate>
+    <solid>true</solid>
+  </BodyPartDef>
+
+  <BodyPartDef>
     <defName>Demon_Spine</defName>
     <label>armored spine</label>
     <hitPoints>8</hitPoints>
@@ -37,7 +47,7 @@
   
   <BodyPartDef>
     <defName>Demon_Heart</defName>
-    <label>heart</label>
+    <label>demonic heart</label>
     <hitPoints>2</hitPoints>
     <permanentInjuryChanceFactor>0.40</permanentInjuryChanceFactor>
     <bleedRate>5</bleedRate>

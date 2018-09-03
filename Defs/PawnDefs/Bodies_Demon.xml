@@ -6,7 +6,7 @@
 		<defName>TM_Demon</defName>
 		<label>Demon</label>
 		<corePart>
-			<def>Body</def>
+			<def>Demon_Body</def>
 			<height>Middle</height>
 			<depth>Outside</depth>
 			<parts>

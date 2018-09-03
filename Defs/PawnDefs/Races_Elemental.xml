@@ -28,7 +28,7 @@
 	  <li>ITab_Pawn_Log</li>
     </inspectorTabs>
     <race>
-	  <fleshType>Mechanoid</fleshType>
+	  <fleshType>TM_StoneFlesh</fleshType>
       <body>Elemental</body>
 	  <deathActionWorkerClass>TorannMagic.Elemental_DeathWorker</deathActionWorkerClass>
       <needsRest>false</needsRest>

@@ -916,7 +916,7 @@
 				<statOffsets>
 					<MoveSpeed>.10</MoveSpeed>
                     <AimingDelayFactor>-0.10</AimingDelayFactor>
-					<ShootingAccuracyPawn>3</ShootingAccuracyPawn>
+					<ShootingAccuracyPawn>2</ShootingAccuracyPawn>
 					<ResearchSpeed>-0.10</ResearchSpeed>
 					<WorkSpeedGlobal>-.10</WorkSpeedGlobal>
 					<TameAnimalChance>-.10</TameAnimalChance>
@@ -931,7 +931,7 @@
 				<statOffsets>
 					<MoveSpeed>.15</MoveSpeed>
                     <AimingDelayFactor>-0.15</AimingDelayFactor>
-					<ShootingAccuracyPawn>7</ShootingAccuracyPawn>
+					<ShootingAccuracyPawn>4</ShootingAccuracyPawn>
 					<ResearchSpeed>-0.13</ResearchSpeed>
 					<WorkSpeedGlobal>-.13</WorkSpeedGlobal>
 					<TameAnimalChance>-.13</TameAnimalChance>
@@ -946,7 +946,7 @@
 				<statOffsets>
 					<MoveSpeed>.20</MoveSpeed>
                     <AimingDelayFactor>-0.22</AimingDelayFactor>
-					<ShootingAccuracyPawn>11</ShootingAccuracyPawn>
+					<ShootingAccuracyPawn>6</ShootingAccuracyPawn>
 					<ResearchSpeed>-0.15</ResearchSpeed>
 					<WorkSpeedGlobal>-.15</WorkSpeedGlobal>
 					<TameAnimalChance>-.15</TameAnimalChance>
@@ -961,7 +961,7 @@
 				<statOffsets>
 					<MoveSpeed>.25</MoveSpeed>
                     <AimingDelayFactor>-0.30</AimingDelayFactor>
-					<ShootingAccuracyPawn>15</ShootingAccuracyPawn>
+					<ShootingAccuracyPawn>8</ShootingAccuracyPawn>
 					<ResearchSpeed>-0.16</ResearchSpeed>
 					<WorkSpeedGlobal>-.16</WorkSpeedGlobal>
 					<TameAnimalChance>-.16</TameAnimalChance>

@@ -30,7 +30,7 @@
 	  <deathActionWorkerClass>TorannMagic.Sentinel_DeathWorker</deathActionWorkerClass>
       <needsRest>false</needsRest>
       <hasGenders>false</hasGenders>
-	  <fleshType>Mechanoid</fleshType>
+	  <fleshType>TM_StoneFlesh</fleshType>
       <predator>true</predator>
       <foodType>OmnivoreAnimal</foodType>
       <baseHungerRate>0.00</baseHungerRate>

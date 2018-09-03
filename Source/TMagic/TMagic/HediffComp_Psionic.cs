@@ -222,7 +222,6 @@ namespace TorannMagic
                     {
                         if (this.Pawn.CurJob.def != TorannMagicDefOf.JobDriver_PsionicBarrier && VerVal > 0)
                         {
-                            Log.Message("" + this.Pawn.Label + " attempting to get threat");
                             this.threat = GetNearbyTarget(20 + (4 * VerVal));
                             if (threat != null)
                             {
@@ -291,7 +290,6 @@ namespace TorannMagic
                                 //Log.Message(this.Pawn.Faction.RelationWith(allPawns[i].Faction, false).ToString());
                                 if (FactionUtility.HostileTo(this.Pawn.Faction, allPawns[i].Faction))
                                 {
-                                    Log.Message("assessing " + allPawns[i].LabelShort + " as hostile to " + this.Pawn.LabelShort);
                                     return allPawns[i];
                                 }
                             }
