@@ -83,6 +83,16 @@
 			<SeerDefender>100</SeerDefender>
 		</options>
       </li>
+	  <li>
+        <kindDef>Peaceful</kindDef>
+        <options>
+			<Villager>50</Villager>
+			<Town_Guard>100</Town_Guard>
+			<Town_Councilman>100</Town_Councilman>
+			<Mercenary_Gunner>100</Mercenary_Gunner>
+			<SeerDefender>100</SeerDefender>
+        </options>
+      </li>
       <li>
         <kindDef>Trader</kindDef>
         <traders>
