@@ -49,6 +49,5 @@ namespace TorannMagic
             }
             base.Pawn.SetPositionDirect(base.Pawn.Position);
         }
-
     }
 }

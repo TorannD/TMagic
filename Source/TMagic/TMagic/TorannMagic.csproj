@@ -82,6 +82,10 @@
     <Compile Include="Building_TMElementalRift.cs" />
     <Compile Include="Building_TMPortal.cs" />
     <Compile Include="Building_PoisonTrap.cs" />
+    <Compile Include="Effect_PsiStorm.cs" />
+    <Compile Include="TM_MapMesh.cs" />
+    <Compile Include="FlyingObject_PsiStorm.cs" />
+    <Compile Include="Gizmo_EnergyStatus.cs" />
     <Compile Include="CompSentinel.cs" />
     <Compile Include="Projectile_Sentinel.cs" />
     <Compile Include="Sentinel_DeathWorker.cs" />

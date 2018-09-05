@@ -207,18 +207,16 @@ namespace TorannMagic
                         }
                         else
                         {
-                            list.Add(new FloatMenuOption("TM_NeedManaToActivatePortal".Translate(new object[]
-                            {
+                            list.Add(new FloatMenuOption("TM_NeedManaToActivatePortal".Translate(
                                 comp.Mana.CurInstantLevel.ToString("0.000")
-                            }), null, MenuOptionPriority.Default, null, null, 0f, null, null));
+                            ), null, MenuOptionPriority.Default, null, null, 0f, null, null));
                         }
                     }
                     else
                     {
-                        list.Add(new FloatMenuOption("TM_PortalNoGatewayLearned".Translate(new object[]
-                        {
+                        list.Add(new FloatMenuOption("TM_PortalNoGatewayLearned".Translate(
                             myPawn.LabelShort
-                        }), null, MenuOptionPriority.Default, null, null, 0f, null, null));
+                        ), null, MenuOptionPriority.Default, null, null, 0f, null, null));
                     }
                 }
                 if (isPaired && this.arcaneEnergyCur >= .05f)
@@ -231,10 +229,9 @@ namespace TorannMagic
                 }
                 if (isPaired && comp.IsMagicUser)
                 {
-                    list.Add(new FloatMenuOption("TM_ChargePortal".Translate(new object[]
-                        {
+                    list.Add(new FloatMenuOption("TM_ChargePortal".Translate(
                             Mathf.RoundToInt(this.arcaneEnergyCur * 100)
-                        }), delegate
+                        ), delegate
                     {
                         Job job = new Job(TorannMagicDefOf.ChargePortal, this);
                         myPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
@@ -318,10 +315,9 @@ namespace TorannMagic
                                     if (!interactingPawn.Spawned)
                                     {
                                         GenSpawn.Spawn(interactingPawn, this.InteractionCell, this.Map);
-                                        Messages.Message("TM_PortalFailed".Translate(new object[]
-                                            {
+                                        Messages.Message("TM_PortalFailed".Translate(
                                                 interactingPawn.LabelShort
-                                            }), MessageTypeDefOf.RejectInput);
+                                            ), MessageTypeDefOf.RejectInput);
 
                                     }
                                     this.IsPaired = false;                                    

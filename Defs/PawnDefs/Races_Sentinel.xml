@@ -12,6 +12,7 @@
     <hasTooltip>true</hasTooltip>
     <soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
 	<filthLeaving>Filth_RubbleRock</filthLeaving>
+	<tradeability>None</tradeability>
     <statBases>
       <Mass>40</Mass>
       <PsychicSensitivity>0</PsychicSensitivity>
@@ -33,7 +34,7 @@
 	  <fleshType>TM_StoneFlesh</fleshType>
       <predator>true</predator>
       <foodType>OmnivoreAnimal</foodType>
-      <baseHungerRate>0.00</baseHungerRate>
+      <baseHungerRate>0.01</baseHungerRate>
 	  <wildness>1</wildness>	  
 	  <packAnimal>false</packAnimal>
 	  <herdAnimal>false</herdAnimal>

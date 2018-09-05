@@ -1078,7 +1078,7 @@ namespace TorannMagic
                             for (int i = 0; i < this.summonedMinions.Count; i++)
                             {
                                 Pawn evaluateMinion = this.summonedMinions[i] as Pawn;
-                                if (evaluateMinion == null || evaluateMinion.Dead || !evaluateMinion.Spawned)
+                                if (evaluateMinion == null || evaluateMinion.Dead || evaluateMinion.Destroyed)
                                 {
                                     this.summonedMinions.Remove(this.summonedMinions[i]);
                                 }

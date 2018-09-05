@@ -186,7 +186,7 @@ This barrier can be projected to a designation location.</description>
 Cast time: 	2s
 Cooldown:	12s
 Range:		28</description>
-        <staminaCost>0.35</staminaCost>		
+        <staminaCost>0.15</staminaCost>		
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PsionicBlast</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -219,7 +219,7 @@ Range:		28</description>
 Cast time: 	1.6s
 Cooldown:	10s
 Range:		34</description>
-        <staminaCost>0.35</staminaCost>		
+        <staminaCost>0.15</staminaCost>		
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PsionicBlast</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -252,7 +252,7 @@ Range:		34</description>
 Cast time: 	1.2s
 Cooldown:	8s
 Range:		40</description>
-        <staminaCost>0.35</staminaCost>		
+        <staminaCost>0.15</staminaCost>		
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PsionicBlast</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -285,7 +285,7 @@ Range:		40</description>
 Cast time: 	.8s
 Cooldown:	6s
 Range:		46</description>
-        <staminaCost>0.35</staminaCost>		
+        <staminaCost>0.15</staminaCost>		
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PsionicBlast</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -351,7 +351,7 @@ Range:		46</description>
     <uiIconPath>UI/psionicdash</uiIconPath>
     <description>The Psionic infuses their body with an overwhelming amount of energy and uses it to propel themselves in a rapid burst of movement. Each step emits shockwaves of energy.</description>
 <!--    <thingClass>ThingWithComps</thingClass> -->
-    <staminaCost>0.05</staminaCost>
+    <staminaCost>0.25</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Effect_PsionicDash</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -365,7 +365,7 @@ Range:		46</description>
         <warmupTime>.5</warmupTime>
         <SecondsToRecharge>5</SecondsToRecharge>
         <range>50</range>
-        <soundCast>TM_Gong</soundCast>
+        <soundCast>TM_AirWoosh</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
         <isPrimary>false</isPrimary>
 		<targetParams>
@@ -443,5 +443,23 @@ Range:		46</description>
             <isPrimary>false</isPrimary>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
+	
+	<ThingDef ParentName="BaseBullet" Name="FlyingObject_PsiStorm">
+	   <defName>FlyingObject_PsiStorm</defName>
+	   <thingClass>TorannMagic.FlyingObject_PsiStorm</thingClass>
+	   <label>psi storm</label>
+	   <graphicData>
+			<texPath>Spells/psistorm</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	   <projectile>
+			<flyOverhead>true</flyOverhead>
+			<damageDef>TM_PsionicInjury</damageDef>
+			<damageAmountBase>0</damageAmountBase>
+			<speed>250</speed>
+			<explosionRadius>7</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+	   </projectile>
+	</ThingDef>
 
 </Defs>

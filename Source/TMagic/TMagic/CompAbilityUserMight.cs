@@ -68,8 +68,9 @@ namespace TorannMagic
         private int resMitigationDelay = 0;
 
         public bool animalBondingDisabled = false;
-        private int animalFriendDisabledPeriod;        
+        private int animalFriendDisabledPeriod;
 
+        public bool usePsionicAugmentationToggle = true;
         public List<Thing> combatItems = new List<Thing>();
 
         public Verb_Deflected deflectVerb;
@@ -91,7 +92,7 @@ namespace TorannMagic
                 }
                 return this.mightData;
             }
-        }
+        }        
 
         public override void PostDraw()
         {
@@ -764,7 +765,7 @@ namespace TorannMagic
             bool flag = !hideNotification;
             if (flag)
             {
-                Messages.Message(Translator.Translate("TM_MightLevelUp", new object[]
+                Messages.Message("TM_MightLevelUp".Translate(new object[]
                 {
                     this.parent.Label
                 }), MessageTypeDefOf.PositiveEvent);
@@ -1925,6 +1926,11 @@ namespace TorannMagic
                     skill.passion = Passion.Minor;
                 }
             }
+        }
+
+        public override IEnumerable<Gizmo> CompGetGizmosExtra()
+        {
+            return base.CompGetGizmosExtra();
         }
 
 

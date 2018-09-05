@@ -22,6 +22,7 @@ namespace TorannMagic.ModOptions
         public float magicyteChance = Settings.Instance.magicyteChance;
         public bool showIconsMultiSelect = Settings.Instance.showIconsMultiSelect;
         public float riftChallenge = Settings.Instance.riftChallenge;
+        public bool showGizmo = Settings.Instance.showGizmo;
 
     }
 }

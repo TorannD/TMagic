@@ -184,6 +184,7 @@ namespace TorannMagic
             list = null;
         }
 
+
         private void DrawShieldFade(Pawn shieldedPawn, int magnitude)
         {
             bool flag = !shieldedPawn.Dead && !shieldedPawn.Downed;

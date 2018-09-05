@@ -168,11 +168,18 @@ namespace TorannMagic
             {
                 try
                 {
-                    MoteMaker.ThrowSmoke(this.Position.ToVector3(), base.Map, 3);
+                    if (base.Map != null)
+                    {
+                        MoteMaker.ThrowSmoke(this.Position.ToVector3(), base.Map, 3); 
+                    }
+                    else
+                    {
+                        this.holdingOwner.Remove(this);
+                    }
                     if (CompSummoner != null)
                     {
                         CompSummoner.summonedMinions.Remove(this);
-                    }
+                    }                    
                 }
                 catch
                 {

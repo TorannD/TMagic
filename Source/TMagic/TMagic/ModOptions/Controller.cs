@@ -10,8 +10,8 @@ namespace TorannMagic.ModOptions
 
         private bool reset = false;
 
-        private string deathExplosionDmgMin = "20";
-        private string deathExplosionDmgMax = "50";
+        private string deathExplosionDmgMin = "20.0";
+        private string deathExplosionDmgMax = "50.0";
 
         public override string SettingsCategory()
         {
@@ -28,6 +28,7 @@ namespace TorannMagic.ModOptions
         {
             int num = 0;
             float rowHeight = 40f;
+            
             Rect rect1 = new Rect(canvas);
             rect1.width /= 2f;
             num++;
@@ -67,20 +68,23 @@ namespace TorannMagic.ModOptions
             num++;
             Rect rowRect7 = UIHelper.GetRowRect(rowRect67, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect7, "AICanCast".Translate(), ref Settings.Instance.AICasting, false);
+            Rect rowRect7ShiftRight = UIHelper.GetRowRect(rowRect7, rowHeight, num);
+            rowRect7ShiftRight.x += rowRect7.width + 8f;
+            Widgets.CheckboxLabeled(rowRect7ShiftRight, "AIHardMode".Translate(), ref Settings.Instance.AIHardMode, !settingsRef.AICasting);            
             num++;
-            Rect rowRect8 = UIHelper.GetRowRect(rowRect7, rowHeight, num);
-            Widgets.CheckboxLabeled(rowRect8, "AIHardMode".Translate(), ref Settings.Instance.AIHardMode, !settingsRef.AICasting);
-            num++;
-            Rect rowRect9 = UIHelper.GetRowRect(rowRect8, rowHeight, num);
+            Rect rowRect9 = UIHelper.GetRowRect(rowRect7, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect9, "AIMarking".Translate(), ref Settings.Instance.AIMarking, false);
-            num++;
             Rect rowRect91 = UIHelper.GetRowRect(rowRect9, rowHeight, num);
+            rowRect91.x += rowRect9.width + 8f;
             Widgets.CheckboxLabeled(rowRect91, "AIFighterMarking".Translate(), ref Settings.Instance.AIFighterMarking, false);
             num++;
-            Rect rowRect92 = UIHelper.GetRowRect(rowRect91, rowHeight, num);
+            Rect rowRect92 = UIHelper.GetRowRect(rowRect9, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect92, "AIFriendlyMarking".Translate(), ref Settings.Instance.AIFriendlyMarking, false);
             num++;
-            Rect rowRect10 = UIHelper.GetRowRect(rowRect92, rowHeight, num);
+            Rect rowRect93 = UIHelper.GetRowRect(rowRect92, rowHeight, num);
+            Widgets.CheckboxLabeled(rowRect93, "showMagicGizmo".Translate(), ref Settings.Instance.showGizmo, false);
+            num++;
+            Rect rowRect10 = UIHelper.GetRowRect(rowRect93, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect10, "showAbilitiesOnMultiSelect".Translate(), ref Settings.Instance.showIconsMultiSelect, false);
             num++;
             Rect rowRect20 = UIHelper.GetRowRect(rowRect10, rowHeight, num);
@@ -104,7 +108,10 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.advFighterChance = 0.5f;
                 Settings.Instance.magicyteChance = .005f;
                 Settings.Instance.showIconsMultiSelect = true;
+                Settings.Instance.showGizmo = true;
                 Settings.Instance.riftChallenge = 1f;
+                this.deathExplosionDmgMax = "50.0";
+                this.deathExplosionDmgMin = "20.0";
             }
         }
 

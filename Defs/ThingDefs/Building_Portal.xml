@@ -13,6 +13,7 @@
     <filthLeaving>Filth_RubbleBuilding</filthLeaving>
 		<statBases>
 			<SellPriceFactor>0.70</SellPriceFactor>
+			<MarketValue>0</MarketValue>
 		</statBases>
   </ThingDef>
 

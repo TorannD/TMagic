@@ -733,6 +733,7 @@
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>1</fillPercent>
     <canOverlapZones>false</canOverlapZones>
+	<tradeability>None</tradeability>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <WorkToBuild>8000</WorkToBuild>

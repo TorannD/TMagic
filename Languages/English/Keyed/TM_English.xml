@@ -99,6 +99,9 @@
 <TM_TooManySentinels>{0} is limited to {1} sentinels, removing oldest sentinel.</TM_TooManySentinels>
 <TM_NoSpawnSentinelOnBuilding>{0} cannot create a sentinel on top of an existing building.</TM_NoSpawnSentinelOnBuilding>
 <TM_SentinelCannotReturn>The sentinel belonging to {0} could not return to its designated position, it is no longer reachable. The sentinel has dissolved into dust.</TM_SentinelCannotReturn>
+<TM_AugmentationsToggleDesc>Enables or disables the automatic use of augmentations.  If disabled, the psionic will never use augmentation skills.</TM_AugmentationsToggleDesc>
+<TM_AugmentationsEnabled>Augments Enabled</TM_AugmentationsEnabled>
+<TM_AugmentationsDisabled>Augments Disabled</TM_AugmentationsDisabled>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
@@ -128,6 +131,7 @@
 <DeathExplosionMax>maximum damage</DeathExplosionMax>
 <MagicyteChance>Magicyte Drop Chance</MagicyteChance>
 <showAbilitiesOnMultiSelect>Show abilities when selecting multiple pawns</showAbilitiesOnMultiSelect>
+<showMagicGizmo>Show mana/stamina/psi energy as gizmo</showMagicGizmo>
 
 <!-- Magic Ability Point Descriptions -->
 <TM_global_regen_pwr>Clarity</TM_global_regen_pwr>
@@ -573,10 +577,10 @@ Level 3: 60%</TM_Repulsion_ver_desc>
 <TM_PsychicShock_pwr>Dominant Will</TM_PsychicShock_pwr>
 
 <TM_Stoneskin_pwr_desc>Increases the number of attacks Stoneskin mitigates before wearing off.
-Level 0: 6 attacks
-Level 1: 8 attacks
-Level 2: 9 attacks
-Level 3: 10 attacks</TM_Stoneskin_pwr_desc>
+Level 0: 4 attacks
+Level 1: 5 attacks
+Level 2: 6 attacks
+Level 3: 7 attacks</TM_Stoneskin_pwr_desc>
 <TM_Stoneskin_eff_desc>Reduces the mana upkeep cost for each instance of Stoneskin by 2%.
 Level 0: -15% max mana
 Level 1: -13% max mana

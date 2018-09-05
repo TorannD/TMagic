@@ -174,55 +174,81 @@ namespace TorannMagic
             return !allUndead;
         }
 
-        //[HarmonyPatch(typeof(Pawn), "GetGizmos")]
-        //public class Pawn_GetGizmos_Patch
-        //{
-        //    public static void Postfix(ref IEnumerable<Gizmo> __result, ref Pawn __instance)
-        //    {
+        [HarmonyPatch(typeof(Pawn), "GetGizmos")]
+        public class Pawn_GetGizmos_Patch
+        {
+            public static void Postfix(ref IEnumerable<Gizmo> __result, ref Pawn __instance)
+            {
                 
-        //        if (__instance == null || !__instance.Faction.Equals(Faction.OfPlayer) || !WorkGiver_HunterHunt.HasHuntingWeapon(__instance))
-        //        {
-        //            return;
-        //        }
-        //        if (__result == null || !__result.Any())
-        //        {
-        //            return;
-        //        }
-        //        CompAbilityUserMagic compMagic = __instance.GetComp<CompAbilityUserMagic>();
-        //        CompRunAndGun data = __instance.TryGetComp<CompRunAndGun>();
-        //        if (data == null)
-        //        {
-        //            return;
-        //        }
-        //        if (__instance.equipment != null && __instance.equipment.Primary != null)
-        //        {
-        //            bool found = Base.weaponForbidder.Value.InnerList.TryGetValue(__instance.equipment.Primary.def.defName, out WeaponRecord value);
-        //            if (found && value.isSelected)
-        //            {
-        //                return;
-        //            }
-        //        }
+                if (__instance == null ||  !__instance.RaceProps.Humanlike)
+                {
+                    return;
+                }
+                if (__result == null || !__result.Any())
+                {
+                    return;
+                }
+                if(!__instance.Faction.Equals(Faction.OfPlayer) || __instance.story == null || __instance.story.traits.allTraits.Count < 1)
+                {
+                    return;
+                }
+                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                
+                if (Find.Selector.NumSelected == 1)
+                {                    
+                    CompAbilityUserMagic compMagic = __instance.GetComp<CompAbilityUserMagic>();
+                    CompAbilityUserMight compMight = __instance.GetComp<CompAbilityUserMight>();
+                    var gizmoList = __result.ToList();
+                    if (settingsRef.showGizmo)
+                    {
+                        if (compMagic == null && compMight == null)
+                        {
+                            return;
+                        }
+                        if (!compMagic.IsMagicUser && !compMight.IsMightUser)
+                        {
+                            return;
+                        }
 
-        //        String uiElement = "enable_RG";
-        //        String label = "RG_Action_Enable_Label".Translate();
-        //        String description = data.isEnabled ? "RG_Action_Disable_Description".Translate() : "RG_Action_Enable_Description".Translate();
+                        var energyGizmo = new Gizmo_EnergyStatus
+                        {
+                            //All gizmo properties done in Gizmo_EnergyStatus
+                            //Make it the first thing you see
+                            pawn = __instance,
+                            order = -101f
+                        };
 
-
-        //        var gizmoList = __result.ToList();
-        //        var ourGizmo = new Command_Toggle
-        //        {
-        //            defaultLabel = label,
-        //            defaultDesc = description,
-        //            icon = ContentFinder<Texture2D>.Get(("UI/Buttons/" + uiElement), true),
-        //            isActive = () => data.isEnabled,
-        //            toggleAction = () => { data.isEnabled = !data.isEnabled; }
-        //        };
-
-
-        //        gizmoList.Add(ourGizmo);
-        //        __result = gizmoList;
-        //    }
-        //}
+                        gizmoList.Add(energyGizmo);
+                        
+                    }
+                    if (__instance.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
+                    {
+                        string toggle = "psionicaugmentation";
+                        string label = "TM_AugmentationsEnabled".Translate();
+                        string desc = "TM_AugmentationsToggleDesc".Translate();
+                        if(!compMight.usePsionicAugmentationToggle)
+                        {
+                            toggle = "psionicaugmentation_off";
+                            label = "TM_AugmentationsDisabled".Translate();
+                        }
+                        Command_Toggle item = new Command_Toggle
+                        {
+                            defaultLabel = label,
+                            defaultDesc = desc,
+                            order = -90,
+                            icon = ContentFinder<Texture2D>.Get("UI/" + toggle, true),
+                            isActive = (() => compMight.usePsionicAugmentationToggle),
+                            toggleAction = delegate
+                            {
+                                compMight.usePsionicAugmentationToggle = !compMight.usePsionicAugmentationToggle;
+                            }
+                        };
+                        gizmoList.Add(item);
+                    }
+                    __result = gizmoList;
+                }
+            }
+        }
 
         [HarmonyPatch(typeof(Pawn_HealthTracker), "CheckForStateChange", null)]
         public static class CheckForStateChange_Patch
@@ -762,6 +788,20 @@ namespace TorannMagic
                     {
                         return false;
                     }
+                }
+                return true;
+            }
+        }
+
+        [HarmonyPatch(typeof(StockGenerator_Animals), "HandlesThingDef", null)]
+        public static class StockGenerator_Animals_Patch
+        {
+            private static bool Prefix(ThingDef thingDef, ref bool __result)
+            {
+                if(thingDef.thingClass.ToString() == "TorannMagic.TMPawnSummoned")
+                {
+                    __result = false;
+                    return false;
                 }
                 return true;
             }

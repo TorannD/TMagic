@@ -82,10 +82,9 @@ namespace TorannMagic
                     {
                         if (this.sustainerPawn == null || this.sustainerPawn.Destroyed || this.sustainerPawn.Dead)
                         {
-                            Messages.Message("TM_SentinelDeSpawn".Translate(new object[]
-                            {
+                            Messages.Message("TM_SentinelDeSpawn".Translate(
                                 this.def.label
-                            }), MessageTypeDefOf.NegativeEvent, false);
+                            ), MessageTypeDefOf.NegativeEvent, false);
                             this.sustainerPawn = null;
                             this.Destroy(DestroyMode.Vanish);
                         }
@@ -212,11 +211,10 @@ namespace TorannMagic
                         }
                         catch
                         {
-                            Log.Message("TM_Exception".Translate(new object[]
-                                {
+                            Log.Message("TM_Exception".Translate(
                                 "sentinel building",
                                 this.def.defName
-                                }));
+                                ));
                             this.Destroy(DestroyMode.Vanish);
                         }
 

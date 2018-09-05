@@ -94,23 +94,29 @@ Psionics gain access to a unique mechanic called psionic energy; the balanced us
 		</content>
 	</HugsLib.UpdateFeatureDef>	
 		<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_2_2_3</defName>
-		<assemblyVersion>2.2.3</assemblyVersion>
+		<defName>ARimWorldOfMagic_2_2_4</defName>
+		<assemblyVersion>2.2.4</assemblyVersion>
 		<content>
-- New Class: Geomancer - the geomancer is a versatile support and defense magic class that is able to shape the elements of earth and manipulate the laws of physics.
+** New gizmo (icon) added for all classes to show their energy (mana, stamina, psionic energy) status.  Shows only when a single pawn is selected.  This gizmo is enabled by default but can be disabled in the mod options.
 
-*Stoneskin - well defined skill from DnD that absorbs a specific amount of attacks, regardless of the strength or weakness of the attack
-*Encase	- an upheaval of stone and rock surrounds an area; can also be used effectively to isolate or restrict key terrain
-*Earth Sprites - summon an earth sprite to do your dirty work for you - in exchange for excessive amounts of mana, earth sprites will mine rock or transform terrain
-*Earthern Hammer - manipulates gravity to catapul nearby boulders at oncoming foes
-*Sentinel - spruce up your fortress with mean looking gargoyles that do more than stare at trespassers
+Psionic changes: 
+	Added a toggle button to enable or disable the use of "augmentation" abilities for a psionic
+	Psionics will no longer use augmented dash in combat if using a ranged weapon
+	Psionics will return to their starting position after using psionic storm
+	Psionic blast has a reduced stamina cost / Psionic dash has an increased stamina cost
 
-*Meteorite (master) - I'm supposed to write something about how this spell calls down a molten ball of death and destruction from the sky to decimate a large area and leave enemies asking "dude, where's my base?"
-I'll think of something before I make this update...
+Geomancer changes:
+	Stoneskin charges reduced from 6,8,9,10 -> 4,5,6,7
+	Stoneskin will be reapplied on a pawn if they already have stoneskin but the number of charges is less than the number the casting geomancer can apply and will be dispelled if the charges are equal or greater
+	
+Mana drain: maximum duration has been reduced by 5 game hrs
+Mana sickness: mages will recover from mana sickness 40% faster
 
-Fighters rejoice! Enchantments now benefit fighter classes in a similar manner as magic classes; no additional recipes, workbenches, or materials needed.
-
-The Faceless skill "mimic," when used by a non-violent pawn, will no longer assign a violent skill to that pawn.
+Bug fixes: 
+	Attempting to see what a trader wants to buy no longer generates an error
+	Minions will no longer "divide by zero" for caravan food supplies
+	Dismissing a minion that's part of a caravan will remove the minion from the caravan (instantly)
+	Sending a minion on a caravan will no longer remove it from the casters list of minions
 		</content>
 	</HugsLib.UpdateFeatureDef>	
 	

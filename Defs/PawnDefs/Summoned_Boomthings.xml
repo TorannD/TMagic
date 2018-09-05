@@ -147,8 +147,8 @@
           <shaderType>CutoutComplex</shaderType>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSmall</texPath>
-          <drawSize>1</drawSize>
+          <texPath>Things/Pawn/Animal/Chinchilla/Dessicated_Chinchilla</texPath>
+          <drawSize>0.85</drawSize>
         </dessicatedBodyGraphicData>
       </li>
       <li>
@@ -159,8 +159,8 @@
           <shaderType>CutoutComplex</shaderType>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSmall</texPath>
-          <drawSize>1.25</drawSize>
+          <texPath>Things/Pawn/Animal/Chinchilla/Dessicated_Chinchilla</texPath>
+          <drawSize>0.85</drawSize>
         </dessicatedBodyGraphicData>
       </li>
       <li>
@@ -175,8 +175,8 @@
           </shadowData>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSmall</texPath>
-          <drawSize>1.5</drawSize>
+          <texPath>Things/Pawn/Animal/Chinchilla/Dessicated_Chinchilla</texPath>
+          <drawSize>0.85</drawSize>
         </dessicatedBodyGraphicData>
       </li>
     </lifeStages>

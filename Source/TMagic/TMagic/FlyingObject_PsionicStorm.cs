@@ -288,10 +288,10 @@ namespace TorannMagic
                         }
                         else
                         {
-                            this.origin = this.destination;
+                            this.origin = this.curvePoints[this.destinationCurvePoint];
                             this.destination = this.nearApex;
                             this.ticksToImpact = this.StartingTicksToImpact;
-                            this.speed = 15;
+                            //this.speed = 15;
                             this.stage = 3;
                         }
                     }

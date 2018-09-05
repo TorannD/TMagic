@@ -33,6 +33,7 @@
     <useHitPoints>false</useHitPoints>
     <hasTooltip>true</hasTooltip>
     <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+	<tradeability>None</tradeability>
     <statBases>
       <Mass>200</Mass>
       <PsychicSensitivity>1</PsychicSensitivity>
@@ -55,7 +56,7 @@
       <hasGenders>false</hasGenders>
       <predator>true</predator>
       <foodType>OmnivoreAnimal</foodType>
-      <baseHungerRate>0.00</baseHungerRate>	  
+      <baseHungerRate>0.01</baseHungerRate>	  
 	  <manhunterOnDamageChance>1</manhunterOnDamageChance>
 <!-- 	  <intelligence>ToolUser</intelligence> -->
 	  <trainability>None</trainability>

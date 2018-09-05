@@ -494,6 +494,7 @@ namespace TorannMagic
         public static TMAbilityDef TM_PsionicStorm;
         public static ThingDef FlyingObject_PsionicDash;
         public static ThingDef FlyingObject_PsionicStorm;
+        public static ThingDef FlyingObject_PsiStorm;
         public static ThingDef FlyingObject_PsionicLeap;
 
         //Standalone

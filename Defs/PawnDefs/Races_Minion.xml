@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>  
 
-  <ThingDef Name="TM_Base_Minion" ParentName="BasePawn" Abstract="True">
-<!-- 	<thingClass>AbilityUser.PawnSummoned</thingClass> -->
+  <ThingDef Name="TM_Base_Minion" ParentName="BasePawn" Abstract="True"> 
+<!-- 	<thingClass>AbilityUser.PawnSummoned</thingClass>   // -->
 	<thingClass>TorannMagic.TMPawnSummoned</thingClass>
     <category>Pawn</category>
     <selectable>true</selectable>
@@ -11,6 +11,7 @@
     <useHitPoints>false</useHitPoints>
     <hasTooltip>true</hasTooltip>
     <soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
+	<tradeability>None</tradeability>
     <statBases>
       <Mass>40</Mass>
       <PsychicSensitivity>50</PsychicSensitivity>
@@ -18,6 +19,7 @@
       <ComfyTemperatureMin>-200</ComfyTemperatureMin>
       <ComfyTemperatureMax>200</ComfyTemperatureMax>
 	  <MeatAmount>20</MeatAmount>
+	  <MarketValue>0</MarketValue>
     </statBases>
     <race>
       <body>Minion</body>
@@ -25,12 +27,13 @@
       <hasGenders>false</hasGenders>
       <predator>true</predator>
       <foodType>CarnivoreAnimal, OvivoreAnimal</foodType>
-      <baseHungerRate>0.00</baseHungerRate>
+      <baseHungerRate>0.01</baseHungerRate>
 <!-- 	  <intelligence>ToolUser</intelligence>	   -->
       <trainability>None</trainability>
       <thinkTreeConstant>TM_Minion_AI_Constant</thinkTreeConstant>
       <thinkTreeMain>TM_Minion_AI</thinkTreeMain>
       <meatLabel>mystery meat</meatLabel>
+	  <wildness>1</wildness>
       <baseBodySize>2</baseBodySize>
     </race>
     <comps>
