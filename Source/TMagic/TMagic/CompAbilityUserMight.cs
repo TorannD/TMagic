@@ -1660,6 +1660,7 @@ namespace TorannMagic
                                 {
                                     Verb_Deflected verb_Deflected = (Verb_Deflected)this.CopyAndReturnNewVerb(primaryEq.PrimaryVerb);
                                     verb_Deflected = (Verb_Deflected)this.ReflectionHandler(this.deflectVerb);
+                                    Log.Message("verb deflected is " + verb_Deflected); //throwing an error, so nothing is happening in jobdriver_castdeflectverb
                                     pawn = dinfo.Instigator as Pawn;
                                     job.targetA = pawn;
                                     job.verbToUse = verb_Deflected;

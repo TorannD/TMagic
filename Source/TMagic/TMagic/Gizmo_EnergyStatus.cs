@@ -32,7 +32,7 @@ namespace TorannMagic
             CompAbilityUserMagic compMagic = pawn.GetComp<CompAbilityUserMagic>();
             CompAbilityUserMight compMight = pawn.GetComp<CompAbilityUserMight>();
 
-            bool isMage = compMagic.IsMagicUser;
+            bool isMage = compMagic.IsMagicUser && !pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless);
             bool isFighter = compMight.IsMightUser;
             bool isPsionic = pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_PsionicHD"), false);
             //bool isLich = pawn.story.traits.HasTrait(TorannMagicDefOf.Lich);
@@ -41,7 +41,7 @@ namespace TorannMagic
             {
                 barCount++;
             }
-            if(isMage && !pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            if(isMage)
             {
                 barCount++;
             }
