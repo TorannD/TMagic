@@ -33,6 +33,7 @@
       <thinkTreeConstant>TM_Minion_AI_Constant</thinkTreeConstant>
       <thinkTreeMain>TM_Minion_AI</thinkTreeMain>
       <meatLabel>mystery meat</meatLabel>
+	  <herdMigrationAllowed>false</herdMigrationAllowed>
 	  <wildness>1</wildness>
       <baseBodySize>2</baseBodySize>
     </race>
@@ -107,6 +108,8 @@ If things get too tough for them or they get bored, they'll flee back to whereve
     <combatPower>50</combatPower>
 <!-- 	<wildSpawn_spawnWild>false</wildSpawn_spawnWild> -->
     <defaultFactionType>TM_SummonedFaction</defaultFactionType>
+	<ecoSystemWeight>0</ecoSystemWeight>
+	<canArriveManhunter>false</canArriveManhunter>
     <lifeStages>
 	  <li>
 	    <label>minion</label>
@@ -187,6 +190,8 @@ If things get too tough for them or they get bored, they'll flee back to whereve
     <combatPower>75</combatPower>
 <!-- 	<wildSpawn_spawnWild>false</wildSpawn_spawnWild> -->
     <defaultFactionType>TM_SummonedFaction</defaultFactionType>
+	<ecoSystemWeight>0</ecoSystemWeight>
+	<canArriveManhunter>false</canArriveManhunter>
     <lifeStages>
 	  <li>
 	    <label>greater minion</label>

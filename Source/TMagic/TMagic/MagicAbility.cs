@@ -245,6 +245,5 @@ namespace TorannMagic
             return result;
 
         }
-
     }
 }

@@ -646,6 +646,39 @@ namespace TorannMagic
                         }
                     }
                 }
+                else
+                {
+                    if (Find.TickManager.TicksGame % 600 == 0)
+                    {
+                        if (this.Pawn.Map == null)
+                        {
+                            if (this.IsMightUser)
+                            {
+                                int num;
+                                if (AbilityData?.AllPowers != null)
+                                {
+                                    AbilityData obj = AbilityData;
+                                    num = ((obj != null && obj.AllPowers.Count > 0) ? 1 : 0);
+                                }
+                                else
+                                {
+                                    num = 0;
+                                }
+                                if (num != 0)
+                                {
+                                    foreach (PawnAbility allPower in AbilityData.AllPowers)
+                                    {
+                                        allPower.CooldownTicksLeft -= 600;
+                                        if (allPower.CooldownTicksLeft <= 0)
+                                        {
+                                            allPower.CooldownTicksLeft = 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
             if (IsInitialized)
             {

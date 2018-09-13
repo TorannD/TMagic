@@ -76,7 +76,7 @@ namespace TorannMagic
                     {
                         comp.earthSprites = this.currentTarget.Cell;
                         comp.earthSpriteType = 2;
-                        comp.nextEarthSpriteAction = Find.TickManager.TicksGame + 200; // 00;
+                        comp.nextEarthSpriteAction = Find.TickManager.TicksGame + 20000;
                     }
                     else
                     {

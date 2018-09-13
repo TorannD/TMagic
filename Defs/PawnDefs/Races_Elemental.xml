@@ -34,6 +34,7 @@
 	  <deathActionWorkerClass>TorannMagic.Elemental_DeathWorker</deathActionWorkerClass>
       <needsRest>false</needsRest>
       <hasGenders>false</hasGenders>
+	  <herdMigrationAllowed>false</herdMigrationAllowed>
       <predator>true</predator>
       <foodType>OmnivoreAnimal</foodType>
       <baseHungerRate>0.01</baseHungerRate>
@@ -125,6 +126,7 @@
     <label>lesser earth elemental</label>
     <race>TM_LesserEarth_ElementalR</race>
 	<ecoSystemWeight>0</ecoSystemWeight>
+	<canArriveManhunter>false</canArriveManhunter>
     <combatPower>800</combatPower>
 <!-- 	<wildSpawn_spawnWild>false</wildSpawn_spawnWild> -->
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
@@ -218,6 +220,7 @@
     <combatPower>1200</combatPower>	
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
 	<ecoSystemWeight>0</ecoSystemWeight>
+	<canArriveManhunter>false</canArriveManhunter>
     <lifeStages>
 	  <li>
 	    <label>earth elemental</label>
@@ -306,6 +309,7 @@
     <race>TM_GreaterEarth_ElementalR</race>
     <combatPower>1500</combatPower>
 	<ecoSystemWeight>0</ecoSystemWeight>
+	<canArriveManhunter>false</canArriveManhunter>
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
     <lifeStages>
 	  <li>
@@ -397,6 +401,7 @@
     <race>TM_LesserFire_ElementalR</race>
     <combatPower>800</combatPower>
 	<ecoSystemWeight>0</ecoSystemWeight>
+	<canArriveManhunter>false</canArriveManhunter>
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
     <lifeStages>
 	  <li>
@@ -487,6 +492,7 @@
     <race>TM_Fire_ElementalR</race>
     <combatPower>1200</combatPower>
 	<ecoSystemWeight>0</ecoSystemWeight>
+	<canArriveManhunter>false</canArriveManhunter>
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
     <lifeStages>
 	  <li>
@@ -576,6 +582,7 @@
     <race>TM_GreaterFire_ElementalR</race>
     <combatPower>1500</combatPower>
 	<ecoSystemWeight>0</ecoSystemWeight>
+	<canArriveManhunter>false</canArriveManhunter>
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
     <lifeStages>
 	  <li>
@@ -667,6 +674,7 @@
     <race>TM_LesserWater_ElementalR</race>
     <combatPower>800</combatPower>
 	<ecoSystemWeight>0</ecoSystemWeight>
+	<canArriveManhunter>false</canArriveManhunter>
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
     <lifeStages>
 	  <li>
@@ -757,6 +765,7 @@
     <race>TM_Water_ElementalR</race>
     <combatPower>1200</combatPower>
 	<ecoSystemWeight>0</ecoSystemWeight>
+	<canArriveManhunter>false</canArriveManhunter>
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
     <lifeStages>
 	  <li>
@@ -847,6 +856,7 @@
     <race>TM_GreaterWater_ElementalR</race>
     <combatPower>1500</combatPower>
 	<ecoSystemWeight>0</ecoSystemWeight>
+	<canArriveManhunter>false</canArriveManhunter>
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
     <lifeStages>
 	  <li>
@@ -940,6 +950,7 @@
     <race>TM_LesserWind_ElementalR</race>
     <combatPower>800</combatPower>
 	<ecoSystemWeight>0</ecoSystemWeight>
+	<canArriveManhunter>false</canArriveManhunter>
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
     <lifeStages>
 	  <li>
@@ -1032,6 +1043,7 @@
     <race>TM_Wind_ElementalR</race>
     <combatPower>1200</combatPower>
 	<ecoSystemWeight>0</ecoSystemWeight>
+	<canArriveManhunter>false</canArriveManhunter>
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
     <lifeStages>
 	  <li>
@@ -1123,6 +1135,7 @@
     <race>TM_GreaterWind_ElementalR</race>
     <combatPower>1500</combatPower>
 	<ecoSystemWeight>0</ecoSystemWeight>
+	<canArriveManhunter>false</canArriveManhunter>
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
     <lifeStages>
 	  <li>

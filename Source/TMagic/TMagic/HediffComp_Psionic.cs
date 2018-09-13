@@ -299,7 +299,6 @@ namespace TorannMagic
                     }
                 }
             }
-            allPawns.Clear();
             return null;
         }
     }

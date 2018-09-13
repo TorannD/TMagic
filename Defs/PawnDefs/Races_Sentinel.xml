@@ -44,6 +44,7 @@
       <thinkTreeMain>TM_Elemental_AI</thinkTreeMain>
       <meatLabel>stone</meatLabel>
       <baseBodySize>1</baseBodySize>
+	  <herdMigrationAllowed>false</herdMigrationAllowed>
     </race>
 	<comps>
       <li>
@@ -116,6 +117,7 @@
 	<ecoSystemWeight>0</ecoSystemWeight>
 <!-- 	<wildSpawn_spawnWild>false</wildSpawn_spawnWild> -->
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
+	<canArriveManhunter>false</canArriveManhunter>
     <lifeStages>
 	  <li>
 	    <label>lesser sentinel</label>
@@ -193,6 +195,7 @@
 	<ecoSystemWeight>0</ecoSystemWeight>
 <!-- 	<wildSpawn_spawnWild>false</wildSpawn_spawnWild> -->
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
+	<canArriveManhunter>false</canArriveManhunter>
     <lifeStages>
 	  <li>
 	    <label>sentinel</label>
@@ -270,6 +273,7 @@
 	<ecoSystemWeight>0</ecoSystemWeight>
 <!-- 	<wildSpawn_spawnWild>false</wildSpawn_spawnWild> -->
     <defaultFactionType>TM_ElementalFaction</defaultFactionType>
+	<canArriveManhunter>false</canArriveManhunter>
     <lifeStages>
 	  <li>
 	    <label>greater sentinel</label>

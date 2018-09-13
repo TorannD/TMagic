@@ -1037,7 +1037,7 @@ namespace TorannMagic
         {
             bool flag = base.AbilityUser != null;
             if (flag)
-            {
+            {                
                 bool spawned = base.AbilityUser.Spawned;
                 if (spawned)
                 {
@@ -1098,7 +1098,8 @@ namespace TorannMagic
                             else if(this.Mana.CurLevel > this.Mana.MaxLevel)
                             {
                                 this.Mana.CurLevel = this.Mana.MaxLevel;
-                            }
+                            }                           
+                            
                         }
                         if(Find.TickManager.TicksGame % 600 == 0)
                         {
@@ -1112,6 +1113,39 @@ namespace TorannMagic
                             if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus))
                             {
                                 ResolveSuccubusLovin();
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (Find.TickManager.TicksGame % 600 == 0)
+                    {
+                        if (this.Pawn.Map == null)
+                        {
+                            if (this.IsMagicUser)
+                            {
+                                int num;
+                                if (AbilityData?.AllPowers != null)
+                                {
+                                    AbilityData obj = AbilityData;
+                                    num = ((obj != null && obj.AllPowers.Count > 0) ? 1 : 0);
+                                }
+                                else
+                                {
+                                    num = 0;
+                                }
+                                if (num != 0)
+                                {
+                                    foreach (PawnAbility allPower in AbilityData.AllPowers)
+                                    {
+                                        allPower.CooldownTicksLeft -= 600;
+                                        if(allPower.CooldownTicksLeft <= 0)
+                                        {
+                                            allPower.CooldownTicksLeft = 0;
+                                        }
+                                    }
+                                }
                             }
                         }
                     }

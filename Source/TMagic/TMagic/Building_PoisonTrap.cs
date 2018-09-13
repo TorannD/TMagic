@@ -53,21 +53,28 @@ namespace TorannMagic
             {
                 if(this.age >= this.lastStrike + this.strikeDelay)
                 {
-                    IntVec3 curCell;
-                    IEnumerable<IntVec3> targets = GenRadial.RadialCellsAround(base.Position, this.radius, true);
-                    for (int i = 0; i < targets.Count(); i++)
+                    try
                     {
-                        curCell = targets.ToArray<IntVec3>()[i];
-
-                        if (curCell.InBounds(base.Map) && curCell.IsValid)
+                        IntVec3 curCell;
+                        IEnumerable<IntVec3> targets = GenRadial.RadialCellsAround(base.Position, this.radius, true);
+                        for (int i = 0; i < targets.Count(); i++)
                         {
-                            Pawn victim = curCell.GetFirstPawn(base.Map);
-                            if (victim != null && !victim.Dead && victim.RaceProps.IsFlesh && !victim.Downed)
+                            curCell = targets.ToArray<IntVec3>()[i];
+
+                            if (curCell.InBounds(base.Map) && curCell.IsValid)
                             {
-                                DamageEntities(victim, Mathf.RoundToInt(Rand.Range(2, 4)), TMDamageDefOf.DamageDefOf.TM_Poison);
-                                
+                                Pawn victim = curCell.GetFirstPawn(base.Map);
+                                if (victim != null && !victim.Dead && victim.RaceProps.IsFlesh && !victim.Downed)
+                                {
+                                    DamageEntities(victim, Mathf.RoundToInt(Rand.Range(2, 4)), TMDamageDefOf.DamageDefOf.TM_Poison);
+                                }
                             }
                         }
+                    }
+                    catch
+                    {
+                        Log.Message("Debug: poison trap failed to process triggered event - terminating poison trap");
+                        this.Destroy(DestroyMode.Vanish);
                     }
                     this.lastStrike = this.age;
                 }
@@ -79,35 +86,43 @@ namespace TorannMagic
             }
             else
             {
-                if (this.Armed)
-                {
-                    IntVec3 curCell;
-                    IEnumerable<IntVec3> targets = GenRadial.RadialCellsAround(base.Position, 2, true);
-                    for (int i = 0; i < targets.Count(); i++)
+                try
+                { 
+                    if (this.Armed)
                     {
-                        curCell = targets.ToArray<IntVec3>()[i];
-                        List<Thing> thingList = curCell.GetThingList(base.Map);
-                        for (int j = 0; j < thingList.Count; j++)
+                        IntVec3 curCell;
+                        IEnumerable<IntVec3> targets = GenRadial.RadialCellsAround(base.Position, 2, true);
+                        for (int i = 0; i < targets.Count(); i++)
                         {
-                            Pawn pawn = thingList[j] as Pawn;
-                            if (pawn != null && !this.touchingPawns.Contains(pawn))
+                            curCell = targets.ToArray<IntVec3>()[i];
+                            List<Thing> thingList = curCell.GetThingList(base.Map);
+                            for (int j = 0; j < thingList.Count; j++)
                             {
-                                if (!pawn.RaceProps.Animal && pawn.Faction != this.Faction && pawn.HostileTo(this.Faction))
+                                Pawn pawn = thingList[j] as Pawn;
+                                if (pawn != null && !this.touchingPawns.Contains(pawn))
                                 {
-                                    this.touchingPawns.Add(pawn);
-                                    this.CheckSpring(pawn);
+                                    if (!pawn.RaceProps.Animal && pawn.Faction != null && pawn.Faction != this.Faction && pawn.HostileTo(this.Faction))
+                                    {
+                                        this.touchingPawns.Add(pawn);
+                                        this.CheckSpring(pawn);
+                                    }
                                 }
                             }
                         }
                     }
-                }
-                for (int j = 0; j < this.touchingPawns.Count; j++)
-                {
-                    Pawn pawn2 = this.touchingPawns[j];
-                    if (!pawn2.Spawned || pawn2.Position != base.Position)
+                    for (int j = 0; j < this.touchingPawns.Count; j++)
                     {
-                        this.touchingPawns.Remove(pawn2);
+                        Pawn pawn2 = this.touchingPawns[j];
+                        if (!pawn2.Spawned || pawn2.Position != base.Position)
+                        {
+                            this.touchingPawns.Remove(pawn2);
+                        }
                     }
+                }
+                catch
+                {
+                    Log.Message("Debug: poison trap failed to process armed event - terminating poison trap");
+                    this.Destroy(DestroyMode.Vanish);
                 }
             }
             base.Tick();
@@ -218,11 +233,11 @@ namespace TorannMagic
             }
             if (this.Armed)
             {
-                text += "TrapArmed".Translate();
+                text += "Trap Armed";
             }
             else
             {
-                text += "TrapNotArmed".Translate();
+                text += "Trap Not Armed";
             }
             return text;
         }        

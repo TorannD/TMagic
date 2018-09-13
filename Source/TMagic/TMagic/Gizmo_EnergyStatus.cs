@@ -59,46 +59,50 @@ namespace TorannMagic
             {
                 initialShift = 6f;
             }
-            Rect overRect = new Rect(topLeft.x, topLeft.y, this.GetWidth(100), 75); //overall rect size (shell)
-            Find.WindowStack.ImmediateWindow(984688, overRect, WindowLayer.GameUI, delegate
+            if (barCount > 1)
             {
-                barHeight = ((75 - 5) / barCount);
-                Rect rect = overRect.AtZero().ContractedBy(6f); //inner, smaller rect
-                rect.height = barHeight;
-                Rect rect2 = rect; //label rect, starts at top             
-                Text.Font = GameFont.Tiny;
-                float fillPercent = 0;
-                float yShift = initialShift;
-                Text.Anchor = TextAnchor.MiddleCenter;
-                if (isPsionic)
+                Rect overRect = new Rect(topLeft.x, topLeft.y, this.GetWidth(100), 75); //overall rect size (shell)
+                Find.WindowStack.ImmediateWindow(984688, overRect, WindowLayer.GameUI, delegate
                 {
-                    rect2.y += yShift;
-                    fillPercent = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_PsionicHD"), false).Severity / 100f;
-                    Widgets.FillableBar(rect2, fillPercent, Gizmo_EnergyStatus.FullPsionicTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);                    
-                    Widgets.Label(rect2, "" + (fillPercent * 100).ToString("F0") + " / 100");
-                    yShift += (barHeight) + 5f;                 
-                }
-                Rect rect3 = rect; // bar rect, starts at bottom of label rect
-                if(isFighter)
-                {
-                    rect3.y += yShift; //shift downward without changing height
-                    fillPercent = compMight.Stamina.CurInstantLevel / compMight.maxSP;
-                    Widgets.FillableBar(rect3, fillPercent, Gizmo_EnergyStatus.FullStaminaTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
-                    Widgets.Label(rect3, "" + (fillPercent * 100).ToString("F0") + " / " + (compMight.maxSP * 100).ToString("F0"));
-                    yShift += (barHeight) + 5f;
-                }
-                Rect rect4 = rect; // bar rect, starts at bottom of label rect
-                if (isMage)
-                {
-                    rect4.y += yShift; //shift downward without changing height
-                    fillPercent = compMagic.Mana.CurInstantLevel / compMagic.maxMP;
-                    Widgets.FillableBar(rect4, fillPercent, Gizmo_EnergyStatus.FullManaTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
-                    Widgets.Label(rect4, "" + (fillPercent * 100).ToString("F0") + " / " + (compMagic.maxMP * 100).ToString("F0"));
-                }
-                Text.Font = GameFont.Small;
-                Text.Anchor = TextAnchor.UpperLeft;
-            }, true, false, 1f);
+                    barHeight = ((75 - 5) / barCount);
+                    Rect rect = overRect.AtZero().ContractedBy(6f); //inner, smaller rect
+                    rect.height = barHeight;
+                    Rect rect2 = rect; //label rect, starts at top             
+                    Text.Font = GameFont.Tiny;
+                    float fillPercent = 0;
+                    float yShift = initialShift;
+                    Text.Anchor = TextAnchor.MiddleCenter;
+                    if (isPsionic)
+                    {
+                        rect2.y += yShift;
+                        fillPercent = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_PsionicHD"), false).Severity / 100f;
+                        Widgets.FillableBar(rect2, fillPercent, Gizmo_EnergyStatus.FullPsionicTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
+                        Widgets.Label(rect2, "" + (fillPercent * 100).ToString("F0") + " / 100");
+                        yShift += (barHeight) + 5f;
+                    }
+                    Rect rect3 = rect; // bar rect, starts at bottom of label rect
+                    if (isFighter)
+                    {
+                        rect3.y += yShift; //shift downward without changing height
+                        fillPercent = compMight.Stamina.CurInstantLevel / compMight.maxSP;
+                        Widgets.FillableBar(rect3, fillPercent, Gizmo_EnergyStatus.FullStaminaTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
+                        Widgets.Label(rect3, "" + (fillPercent * 100).ToString("F0") + " / " + (compMight.maxSP * 100).ToString("F0"));
+                        yShift += (barHeight) + 5f;
+                    }
+                    Rect rect4 = rect; // bar rect, starts at bottom of label rect
+                    if (isMage)
+                    {
+                        rect4.y += yShift; //shift downward without changing height
+                        fillPercent = compMagic.Mana.CurInstantLevel / compMagic.maxMP;
+                        Widgets.FillableBar(rect4, fillPercent, Gizmo_EnergyStatus.FullManaTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
+                        Widgets.Label(rect4, "" + (fillPercent * 100).ToString("F0") + " / " + (compMagic.maxMP * 100).ToString("F0"));
+                    }
+                    Text.Font = GameFont.Small;
+                    Text.Anchor = TextAnchor.UpperLeft;
+                }, true, false, 1f);
+            }
             return new GizmoResult(GizmoState.Clear);
+            
         }
     }
 }

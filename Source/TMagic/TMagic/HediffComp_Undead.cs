@@ -55,6 +55,51 @@ namespace TorannMagic
             bool flag4 = Find.TickManager.TicksGame % 600 == 0;
             if (flag4)
             {
+                if(Find.TickManager.TicksGame % 6000 == 0)
+                {
+                    if(base.Pawn.RaceProps.Animal)
+                    {
+                        if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Tameness).Accepted)
+                        {
+                            while (!base.Pawn.training.HasLearned(TrainableDefOf.Tameness))
+                            {
+                                base.Pawn.training.Train(TrainableDefOf.Tameness, null);
+                            }
+                        }
+
+                        if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Obedience).Accepted)
+                        {
+                            while (!base.Pawn.training.HasLearned(TrainableDefOf.Obedience))
+                            {
+                                base.Pawn.training.Train(TrainableDefOf.Obedience, null);
+                            }
+                        }
+
+                        if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Release).Accepted)
+                        {
+                            while (!base.Pawn.training.HasLearned(TrainableDefOf.Release))
+                            {
+                                base.Pawn.training.Train(TrainableDefOf.Release, null);
+                            }
+                        }
+
+                        if (base.Pawn.training.CanAssignToTrain(TorannMagicDefOf.Haul).Accepted)
+                        {
+                            while (!base.Pawn.training.HasLearned(TorannMagicDefOf.Haul))
+                            {
+                                base.Pawn.training.Train(TorannMagicDefOf.Haul, null);
+                            }
+                        }
+
+                        if (base.Pawn.training.CanAssignToTrain(TorannMagicDefOf.Rescue).Accepted)
+                        {
+                            while (!base.Pawn.training.HasLearned(TorannMagicDefOf.Rescue))
+                            {
+                                base.Pawn.training.Train(TorannMagicDefOf.Rescue, null);
+                            }
+                        }
+                    }
+                }
                 necroValid = false;
                 if (base.Pawn.Map != null)
                 {

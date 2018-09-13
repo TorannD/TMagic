@@ -223,7 +223,7 @@ namespace TorannMagic
         {
             //base.Tick();
             this.ticksToImpact--;
-            bool flag = !this.ExactPosition.InBounds(base.Map);
+            bool flag = !this.ExactPosition.InBounds(base.Map) || base.Position.DistanceToEdge(base.Map) <= 1;
             if (this.stage > 0 && this.stage < 4 && this.nextAttackTick < Find.TickManager.TicksGame)
             {
                 IntVec3 targetVariation = this.targetCells.RandomElement();
@@ -238,6 +238,14 @@ namespace TorannMagic
             {
                 this.ticksToImpact++;
                 base.Position = this.ExactPosition.ToIntVec3();
+                GenSpawn.Spawn(this.flyingThing, base.Position, base.Map);
+                ModOptions.Constants.SetPawnInFlight(false);
+                Pawn p = this.flyingThing as Pawn;
+                if (p.IsColonist)
+                {
+                    p.drafter.Drafted = true;
+                    CameraJumper.TryJumpAndSelect(p);
+                }
                 this.Destroy(DestroyMode.Vanish);
             }
             else

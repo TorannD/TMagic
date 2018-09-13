@@ -95,6 +95,16 @@ namespace TorannMagic
                                     }
 
                                 }
+
+                                if(this.target.Thing is Pawn)
+                                {
+                                    Pawn prisonerPawn = this.target.Thing as Pawn;
+                                    if(prisonerPawn.IsPrisoner)
+                                    {
+                                        Job job = new Job(JobDefOf.AttackMelee, prisonerPawn);
+                                        this.Pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                                    }
+                                }
                             }
                             else
                             {
@@ -164,7 +174,7 @@ namespace TorannMagic
                 {
                     if (!allPawns[i].DestroyedOrNull() && allPawns[i] != this.Pawn)
                     {
-                        if (!allPawns[i].Dead && !allPawns[i].Downed)
+                        if (!allPawns[i].Dead && !allPawns[i].Downed && !allPawns[i].IsPrisonerInPrisonCell())
                         {
                             if ((allPawns[i].Position - this.Pawn.Position).LengthHorizontal <= this.threatRange)
                             {

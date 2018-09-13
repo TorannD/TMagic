@@ -52,7 +52,7 @@ namespace TorannMagic
                 {
                     if (undead.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD))
                     {
-                        comp.Mana.CurLevel += (Rand.Range(.20f, .25f) + (manaRegen.level * .006f) + (ver.level * .01f));
+                        comp.Mana.CurLevel += (.225f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)));
                         ConsumeHumanoid(undead);
                         if (ver.level > 0)
                         {
@@ -62,7 +62,7 @@ namespace TorannMagic
                     }
                     else if (undead.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadAnimalHD))
                     {
-                        comp.Mana.CurLevel += (Rand.Range(.16f, .20f) + (manaRegen.level * .006f) + (ver.level * .01f));
+                        comp.Mana.CurLevel += (.18f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)));
                         ConsumeAnimalKind(undead);
                         if (ver.level > 0)
                         {
@@ -100,7 +100,7 @@ namespace TorannMagic
                             {
                                 if (!corpse.IsNotFresh())
                                 {
-                                    comp.Mana.CurLevel += (Rand.Range(.11f, .15f) + (manaRegen.level * .003f) + (ver.level * .006f));
+                                    comp.Mana.CurLevel += (.13f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)));
                                     caster.needs.rest.CurLevel += .3f;
                                     caster.needs.mood.CurLevel += .3f;
                                     ConsumeHumanoid(corpse);
@@ -111,7 +111,7 @@ namespace TorannMagic
                                 }
                                 else
                                 {
-                                    comp.Mana.CurLevel += (Rand.Range(.07f, .11f) + (manaRegen.level * .003f) + (ver.level * .006f));
+                                    comp.Mana.CurLevel += (.09f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)));
                                     ConsumeHumanoid(corpse);
                                 }
                                 corpse.Destroy();
@@ -120,7 +120,7 @@ namespace TorannMagic
                             {
                                 if (!corpse.IsNotFresh())
                                 {
-                                    comp.Mana.CurLevel += (Rand.Range(.07f, .11f) + (manaRegen.level * .002f) + (ver.level * .005f));
+                                    comp.Mana.CurLevel += (.09f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)));
                                     caster.needs.food.CurLevel += .4f;
                                     ConsumeAnimalKind(corpse);
                                     if (ver.level > 0)
@@ -130,7 +130,7 @@ namespace TorannMagic
                                 }
                                 else
                                 {
-                                    comp.Mana.CurLevel += (Rand.Range(.05f, .09f) + (manaRegen.level * .002f) + (ver.level * .005f));
+                                    comp.Mana.CurLevel += (.07f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)));
                                     ConsumeAnimalKind(corpse);
                                 }
                                 corpse.Destroy();

@@ -41,7 +41,7 @@
       <ComfyTemperatureMin>-200</ComfyTemperatureMin>
       <ComfyTemperatureMax>200</ComfyTemperatureMax>
 	  <MeatAmount>0</MeatAmount>
-	  <MarketValue>0</MarketValue>
+	  <MarketValue>0</MarketValue>	  
     </statBases>
 	<inspectorTabs>
       <li>ITab_Pawn_Health</li>
@@ -64,6 +64,7 @@
       <thinkTreeMain>TM_Elemental_AI</thinkTreeMain>
       <meatLabel>demon flesh</meatLabel>
       <baseBodySize>2</baseBodySize>
+	  <herdMigrationAllowed>false</herdMigrationAllowed>
     </race>
     <comps>
       <li>
@@ -152,6 +153,8 @@
     <race>TM_DemonR</race>
     <combatPower>3000</combatPower>
     <defaultFactionType>TM_SummonedFaction</defaultFactionType>
+	<ecoSystemWeight>0</ecoSystemWeight>
+	<canArriveManhunter>false</canArriveManhunter>
     <lifeStages>
 	  <li>
 	    <label>demon</label>

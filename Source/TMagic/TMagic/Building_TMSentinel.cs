@@ -128,7 +128,7 @@ namespace TorannMagic
             {
                 if (!allPawns[i].DestroyedOrNull())
                 {
-                    if (!allPawns[i].Dead && !allPawns[i].Downed)
+                    if (!allPawns[i].Dead && !allPawns[i].Downed && !allPawns[i].IsPrisonerInPrisonCell())
                     {
                         if ((allPawns[i].Position - this.Position).LengthHorizontal <= this.threatRange)
                         {

@@ -1,3 +1,6 @@
 E:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\TMagic\Assemblies\TorannMagic.dll
 E:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\TMagic\Source\TMagic\TMagic\obj\Debug\TorannMagic.dll
 E:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\TMagic\Source\TMagic\TMagic\obj\Debug\TorannMagic.csprojResolveAssemblyReference.cache
+E:\Programs\Steam\steamapps\common\RimWorld\Mods\TMagic\Assemblies\TorannMagic.dll
+E:\Programs\Steam\steamapps\common\RimWorld\Mods\TMagic\Source\TMagic\TMagic\obj\Debug\TorannMagic.csprojResolveAssemblyReference.cache
+E:\Programs\Steam\steamapps\common\RimWorld\Mods\TMagic\Source\TMagic\TMagic\obj\Debug\TorannMagic.dll

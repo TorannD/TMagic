@@ -35,10 +35,10 @@ namespace TorannMagic
                 {
                     SpawnThings tempPod = new SpawnThings();
                     tempPod.def = ThingDef.Named("TM_PoisonTrap");
+                    CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
                     int verVal = 0;
                     try
                     {
-                        CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
                         MightPowerSkill ver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PoisonTrap.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PoisonTrap_ver");
                         verVal = ver.level;
                         if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
@@ -73,6 +73,8 @@ namespace TorannMagic
                     catch
                     {
                         Log.Message("Attempted to place a poison trap but threw an unknown exception - recovering and ending attempt");
+                        comp.combatItems.Clear();
+                        Log.Message("Resetting Ranger poison trap count - this may result in unassigned poison traps.");
                         return;
                     }
                 },

@@ -118,7 +118,7 @@ namespace TorannMagic
         }
 
         public void SingleSpawnLoop(SpawnThings spawnables, IntVec3 position, Map map)
-        {
+        {          
             bool flag = spawnables.def != null;
             if (flag)
             {

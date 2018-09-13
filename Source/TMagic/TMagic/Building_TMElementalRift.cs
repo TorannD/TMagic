@@ -220,14 +220,12 @@ namespace TorannMagic
             bool flag1 = loc.InBounds(base.Map);
             bool flag2 = loc.IsValid;
             bool flag3 = !loc.Fogged(base.Map);
-            if(flag1 && flag2 && flag3)
+            bool flag4 = loc.DistanceToEdge(base.Map) > 2;
+            if(flag1 && flag2 && flag3 && flag4)
             {
                 if(loc.Roofed(base.Map))
                 {
-                    if(loc.GetRoof(base.Map).isThickRoof)
-                    {
-                        return false;
-                    }
+                    return false;                    
                 }
                 return true;
             }
@@ -542,8 +540,9 @@ namespace TorannMagic
                         newPawn.Temporary = false;
                         if (newPawn.Faction == null || !newPawn.Faction.HostileTo(Faction.OfPlayer))
                         {
-                            Log.Message("elemental faction was null or not hostile");
-                            newPawn.SetFaction(Faction.OfMechanoids, null);
+                            Log.Message("elemental faction was null or not hostile - fixing");
+                            newPawn.SetFaction(faction, null);
+                            faction.TrySetRelationKind(Faction.OfPlayer, FactionRelationKind.Hostile, false, null);
                         }
                         GenSpawn.Spawn(newPawn, position, this.Map);
                         if (newPawn.Faction != null && newPawn.Faction != Faction.OfPlayer)

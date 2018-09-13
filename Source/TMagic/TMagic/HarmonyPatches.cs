@@ -1133,7 +1133,7 @@ namespace TorannMagic
 
                 if (!flag)
                 {
-                    
+
                     if (Rand.Chance(((settingsRef.baseFighterChance * 4) + (settingsRef.baseMageChance * 4) + (5 * settingsRef.advFighterChance) + (12 * settingsRef.advMageChance)) / (allTraits.Count - 17)))
                     {
                         pawnTraits.Remove(pawnTraits[pawnTraits.Count - 1]);

@@ -56,7 +56,7 @@ namespace TorannMagic
                 Initialize(map);
             }
             impactPos = cellRect.RandomCell;
-            if (this.age > lastStrikeLarge + Rand.Range(200 - (pwr.level * 30), duration/(4 + pwr.level)) && impactPos.Standable(map) && impactPos.InBounds(map))
+            if (this.age > lastStrikeLarge + Rand.Range(200 - (pwr.level * 30), duration/(4 + pwr.level)) && impactPos.Standable(map) && impactPos.InBounds(map) && impactPos.DistanceToEdge(map) >= 2)
             {
                 this.lastStrikeLarge = this.age;
                 SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Blizzard_Large, impactPos, map);
