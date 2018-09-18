@@ -141,8 +141,7 @@ Arcane Resistance: +5%</description>
 		<li>Leathery</li>
 	</stuffCategories>
 	<costList>
-      <TM_EStone_coolDown>1</TM_EStone_coolDown>
-	  <TM_EStone_mpRegenRate>1</TM_EStone_mpRegenRate>
+      <RawMagicyte>100</RawMagicyte>
     </costList>
 	<thingCategories>
 	  <li>Apparel</li>
@@ -254,10 +253,9 @@ Augmented by Arcane Spectre</description>
 		<li>Metallic</li>
 	</stuffCategories>
 	<costList>
-	  <TM_EStone_mpRegenRate_minor>1</TM_EStone_mpRegenRate_minor>
-	  <TM_EStone_maxMP_minor>1</TM_EStone_maxMP_minor>
+	  <RawMagicyte>200</RawMagicyte>
       <Jade>50</Jade>
-	  <Silver>50</Silver>
+	  <Silver>100</Silver>
 	  <Cloth>50</Cloth>
     </costList>
 	<thingCategories>
@@ -495,11 +493,7 @@ Arcane Res: +10%</description>
 		</researchPrerequisite>
     </recipeMaker>
 	<costList>
-	  <TM_EStone_mpRegenRate_major>1</TM_EStone_mpRegenRate_major>
-	  <TM_EStone_maxMP_major>1</TM_EStone_maxMP_major>
-	  <TM_EStone_mpCost_major>1</TM_EStone_mpCost_major>
-	  <TM_EStone_coolDown_major>1</TM_EStone_coolDown_major>
-	  <TM_EStone_xpGain_major>1</TM_EStone_xpGain_major>
+	  <RawMagicyte>500</RawMagicyte>
 	</costList>
 	<costStuffCount>300</costStuffCount>
 	<stuffCategories>
@@ -619,9 +613,7 @@ Augmented by Phantom Shift</description>
     </recipeMaker>
 	<costList>
 	  <Hyperweave>150</Hyperweave>
-	  <TM_EStone_mpRegenRate_major>2</TM_EStone_mpRegenRate_major>
-	  <TM_EStone_maxMP_major>2</TM_EStone_maxMP_major>
-	  <TM_EStone_coolDown_major>1</TM_EStone_coolDown_major>
+	  <RawMagicyte>400</RawMagicyte>
 	</costList>
 	<thingCategories>
 	  <li>Apparel</li>
@@ -728,10 +720,9 @@ Class XP Gain: +10%</description>
 		<li>Metallic</li>
 	</stuffCategories>
 	<costList>
-	  <TM_EStone_mpCost_major>1</TM_EStone_mpCost_major>
-	  <TM_EStone_xpGain>1</TM_EStone_xpGain>
+	  <RawMagicyte>100</RawMagicyte>
 	  <Silver>20</Silver>
-	  <Gold>30</Gold>
+	  <Gold>50</Gold>
     </costList>
 	<thingCategories>
 	  <li>Apparel</li>
@@ -818,7 +809,7 @@ Arcane Resistance: 30%</description>
 	</stuffCategories>
 	<costList>
 	  <DevilstrandCloth>70</DevilstrandCloth>
-	  <TM_EStone_xpGain_major>1</TM_EStone_xpGain_major>
+	  <RawMagicyte>75</RawMagicyte>
     </costList>
 	<thingCategories>
 	  <li>Apparel</li>
@@ -896,8 +887,7 @@ Arcane Resistance: +10%</description>
 		<li>Leathery</li>
 	</stuffCategories>
 	<costList>
-		<TM_EStone_mpRegenRate_minor>1</TM_EStone_mpRegenRate_minor>
-	    <TM_EStone_maxMP_minor>1</TM_EStone_maxMP_minor>
+		<RawMagicyte>60</RawMagicyte>
     </costList>
 	<thingCategories>
 	  <li>Apparel</li>

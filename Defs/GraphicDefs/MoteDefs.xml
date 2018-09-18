@@ -67,6 +67,19 @@
   </ThingDef>
   
   <ThingDef ParentName="MoteBase">
+    <defName>Mote_Psi_Grayscale</defName>
+    <graphicData>
+      <texPath>Motes/PsiMote_grayscale</texPath>
+    </graphicData>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <mote>
+      <fadeInTime>0.02</fadeInTime>
+      <solidTime>0.12</solidTime>
+      <fadeOutTime>0.10</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
     <defName>Mote_PsiBlastStart</defName>
     <graphicData>
       <texPath>Motes/PsiBlastStartMote</texPath>

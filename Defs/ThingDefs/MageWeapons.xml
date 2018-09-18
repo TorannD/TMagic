@@ -176,11 +176,11 @@ Arcane Resistance: +30%</description>
 	  <DeteriorationRate>1</DeteriorationRate>
     </statBases>
     <costList>
-      <Steel>100</Steel>
+      <Steel>200</Steel>
       <WoodLog>50</WoodLog>
-	  <Jade>20</Jade>
+	  <Jade>50</Jade>
 	  <Silver>200</Silver>
-	  <RawMagicyte>400</RawMagicyte>
+	  <RawMagicyte>200</RawMagicyte>
 	  <ThrumboHorn>2</ThrumboHorn>
     </costList>
 	<recipeMaker>
@@ -259,7 +259,7 @@ Arcane Resistance: +30%</description>
 	<projectile>
 		<damageDef>Bomb</damageDef>
 		<damageAmountBase>8</damageAmountBase>
-		<speed>28</speed>
+		<speed>35</speed>
 		<explosionRadius>.6</explosionRadius>
 		<postExplosionSpawnChance>1</postExplosionSpawnChance>
 	</projectile>
@@ -318,7 +318,7 @@ Damage Boost: +15%</description>
         <soundCastTail>GunTail_Light</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
 		<burstShotCount>3</burstShotCount>
-		<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+		<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
       </li>
     </verbs>
     <tools>
@@ -346,7 +346,7 @@ Damage Boost: +15%</description>
         <projectile>
             <damageDef>Iceshard</damageDef>
 			<damageAmountBase>15</damageAmountBase>
-			<speed>50</speed>
+			<speed>60</speed>
         </projectile>
     </ThingDef>
   
@@ -372,7 +372,7 @@ Damage Boost: +15%</description>
       <AccuracyShort>0.82</AccuracyShort>
       <AccuracyMedium>0.76</AccuracyMedium>
       <AccuracyLong>0.70</AccuracyLong>
-      <RangedWeapon_Cooldown>1.25</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
     </statBases>
 		<comps>
 		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
@@ -396,7 +396,7 @@ Damage Boost: +15%</description>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Projectile_IceWand</defaultProjectile>
-        <warmupTime>1.2</warmupTime>
+        <warmupTime>.75</warmupTime>
         <range>36</range>
         <soundCast>TM_Woosh</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
@@ -427,7 +427,7 @@ Damage Boost: +15%</description>
         </graphicData>
         <projectile>
             <damageDef>TM_Lightning</damageDef>
-            <damageAmountBase>9</damageAmountBase>
+            <damageAmountBase>6</damageAmountBase>
             <speed>200</speed>
         </projectile>
 		<preFiringInitialIntensity>20</preFiringInitialIntensity>
@@ -457,10 +457,10 @@ Damage Boost: +15%</description>
       <WorkToMake>10000</WorkToMake>
 	  <MarketValue>400</MarketValue>
       <Mass>1.0</Mass>
-      <AccuracyTouch>0.64</AccuracyTouch>
-      <AccuracyShort>0.72</AccuracyShort>
-      <AccuracyMedium>0.89</AccuracyMedium>
-      <AccuracyLong>0.81</AccuracyLong>
+      <AccuracyTouch>.67</AccuracyTouch>
+      <AccuracyShort>1</AccuracyShort>
+      <AccuracyMedium>1</AccuracyMedium>
+      <AccuracyLong>1</AccuracyLong>
       <RangedWeapon_Cooldown>1.6</RangedWeapon_Cooldown>
     </statBases>
 		<comps>
@@ -485,7 +485,7 @@ Damage Boost: +15%</description>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Projectile_LightningWand</defaultProjectile>
-        <warmupTime>1</warmupTime>
+        <warmupTime>2.8</warmupTime>
         <range>32</range>
 		<soundCast>TM_Thunder_OnMap</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
@@ -542,21 +542,19 @@ Damage Boost: +40%</description>
       <WorkToMake>77700</WorkToMake>
 	  <MarketValue>6000</MarketValue>
       <Mass>3.0</Mass>
-      <AccuracyTouch>0.88</AccuracyTouch>
-      <AccuracyShort>0.64</AccuracyShort>
-      <AccuracyMedium>0.58</AccuracyMedium>
-      <AccuracyLong>0.51</AccuracyLong>
+      <AccuracyTouch>0.90</AccuracyTouch>
+      <AccuracyShort>0.68</AccuracyShort>
+      <AccuracyMedium>0.60</AccuracyMedium>
+      <AccuracyLong>0.55</AccuracyLong>
       <RangedWeapon_Cooldown>3.5</RangedWeapon_Cooldown>
     </statBases>
     <costList>
-      <Steel>100</Steel>
-      <WoodLog>50</WoodLog>
+      <Steel>120</Steel>
+      <WoodLog>100</WoodLog>
 	  <Jade>50</Jade>
-	  <Silver>10</Silver>
-	  <Gold>10</Gold>
-	  <Uranium>5</Uranium>
-	  <TM_EStone_arcaneDmg_major>1</TM_EStone_arcaneDmg_major>
-	  <TM_EStone_maxMP>1</TM_EStone_maxMP>
+	  <Gold>30</Gold>
+	  <Uranium>10</Uranium>
+	  <RawMagicyte>200</RawMagicyte>
     </costList>
 	<recipeMaker>
 	  <workSpeedStat>SmithingSpeed</workSpeedStat>
@@ -591,7 +589,7 @@ Damage Boost: +40%</description>
 		</li>
 	    <li Class="CompDeflector.CompProperties_Deflector">
 		    <compClass>TorannMagic.Weapon.CompBPReflector</compClass>
-			<baseDeflectChance>0.25</baseDeflectChance>
+			<baseDeflectChance>0.40</baseDeflectChance>
 			<useManipulationInCalc>true</useManipulationInCalc>
 			<useSkillInCalc>true</useSkillInCalc>
 			<deflectSound>TM_Shuffle</deflectSound>
@@ -645,7 +643,7 @@ Damage Boost: +40%</description>
     </tools>
   </ThingDef>
   
-  <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+<!--   <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
 	<thingClass>TorannMagic.Weapon.Projectile_BlazingPower</thingClass>
 	<defName>Projectile_BlazingPower</defName>
 	<label>blazing power</label>
@@ -656,12 +654,12 @@ Damage Boost: +40%</description>
 	</graphicData>
 	<projectile>
 		<damageDef>TM_BlazingPower</damageDef>
-		<damageAmountBase>5</damageAmountBase>
+		<damageAmountBase>6</damageAmountBase>
 		<speed>66</speed>
 		<explosionRadius>.8</explosionRadius>
 		<postExplosionSpawnChance>1</postExplosionSpawnChance>
 	</projectile>
-  </ThingDef>
+  </ThingDef> -->
 
 
   <ThingDef ParentName="TM_BaseRangedMageWeapon">
@@ -688,18 +686,15 @@ Augmentation adds ability: Arcane Barrier</description>
       <AccuracyShort>0.71</AccuracyShort>
       <AccuracyMedium>0.66</AccuracyMedium>
       <AccuracyLong>0.56</AccuracyLong>
-      <RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>2.6</RangedWeapon_Cooldown>
     </statBases>
     <costList>
-      <Steel>100</Steel>
-      <WoodLog>50</WoodLog>
-	  <Jade>50</Jade>
-	  <Silver>10</Silver>
+      <Steel>50</Steel>
+      <WoodLog>200</WoodLog>
+	  <Jade>75</Jade>
 	  <Gold>10</Gold>
 	  <Uranium>5</Uranium>
-	  <TM_EStone_arcaneRes_minor>1</TM_EStone_arcaneRes_minor>
-	  <TM_EStone_maxMP_major>1</TM_EStone_maxMP_major>
-	  <TM_EStone_mpRegenRate>1</TM_EStone_mpRegenRate>
+	  <RawMagicyte>200</RawMagicyte>
     </costList>
 	<recipeMaker>
 	  <workSpeedStat>SmithingSpeed</workSpeedStat>
@@ -732,6 +727,26 @@ Augmentation adds ability: Arcane Barrier</description>
 		<li>
 		  <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
 		</li>
+		<li Class="CompDeflector.CompProperties_Deflector">
+		    <compClass>TorannMagic.Weapon.CompBPReflector</compClass>
+			<baseDeflectChance>0.25</baseDeflectChance>
+			<useManipulationInCalc>true</useManipulationInCalc>
+			<useSkillInCalc>true</useSkillInCalc>
+			<deflectSound>TM_Shuffle</deflectSound>
+			<deflectSkill>Melee</deflectSkill>
+			<deflectRatePerSkillPoint>0.015</deflectRatePerSkillPoint>
+            <canReflect>true</canReflect>
+            <reflectSkill>Melee</reflectSkill>
+            <reflectRatePerSkillPoint>3</reflectRatePerSkillPoint>
+			<DeflectVerb Class="VerbProperties">
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Projectile_BlazingPower</defaultProjectile>
+				<warmupTime>0</warmupTime>
+				<range>40</range>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</DeflectVerb>			
+		  </li>
 	</comps>
 	<equippedAngleOffset>15</equippedAngleOffset>
     <verbs>
@@ -970,6 +985,126 @@ Augmentation adds ability: Arcane Barrier</description>
         </capacities>
         <power>18</power>
         <cooldownTime>1.6</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  
+  <!-- Thrum Bow -->	
+  <ThingDef ParentName="BaseProjectileNeolithic"> <!-- Class="AbilityUser.ProjectileDef_Ability">
+	<thingClass>AbilityUser.ProjectileDef_Ability</thingClass> -->
+	<defName>Projectile_ThrumArrow</defName>
+	<label>Thrum bow bolt</label>
+	<graphicData>
+		<texPath>Spells/thrum_bolt</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shaderType>TransparentPostLight</shaderType>
+	</graphicData>
+	<projectile>
+		<flyOverhead>false</flyOverhead>
+		<damageDef>ArrowHighVelocity</damageDef>
+		<damageAmountBase>23</damageAmountBase>
+		<speed>58</speed>
+		<stoppingPower>2</stoppingPower>
+		<armorPenetrationBase>0.25</armorPenetrationBase>
+	</projectile>
+  </ThingDef>
+
+
+  <ThingDef ParentName="TM_BaseRangedMageWeapon">
+    <defName>TM_ThrumBow</defName>
+    <label>Thrum Bow</label>
+    <description>A bow shaped from the horn of a Thrumbo. The horn is hallowed out to decrease the weight and softened by soaking it in a magicyte compound that adds a surprising suppleness to the horn. The bow is further enhanced with embedded enchantments and arcane engravings that travel the length of the bow. The bow is said to be almost sentient, able to determine the intended target through a mental link with the wielder. Arrows fired from this bow almost always hit their intended target. This effect does have a tendency to delude the users own capability, however.
+
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Max Energy: +20%
+Energy Regen: +10%
+Damage Boost: +20%
+Ability Cooldown: -10%
+Class XP Gain: -20%</description>
+    <graphicData>
+      <texPath>Items/weapons/thrumbow</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <drawSize>1.65</drawSize>
+    </graphicData>
+    <soundInteract>Bow_Large</soundInteract>	
+    <statBases>
+      <WorkToMake>77700</WorkToMake>
+	  <MarketValue>6000</MarketValue>
+      <Mass>1.0</Mass>
+      <AccuracyTouch>0.50</AccuracyTouch>
+      <AccuracyShort>0.90</AccuracyShort>
+      <AccuracyMedium>0.85</AccuracyMedium>
+      <AccuracyLong>0.80</AccuracyLong>
+      <RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>50</Steel>
+      <WoodLog>250</WoodLog>
+	  <Jade>50</Jade>
+	  <Gold>20</Gold>
+	  <Silver>200</Silver>
+	  <RawMagicyte>250</RawMagicyte>
+	  <ThrumboHorn>1</ThrumboHorn>
+    </costList>
+	<recipeMaker>
+	  <workSpeedStat>SmithingSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+	  <effectWorking>Smelt</effectWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+	  <recipeUsers>
+        <li>ElectricSmithy</li>
+        <li>FueledSmithy</li>
+		<li>CraftingSpot</li>
+      </recipeUsers>
+      <workAmount>77700</workAmount>
+	  <skillRequirements>
+			<Intellectual>4</Intellectual>
+			<Crafting>7</Crafting>
+	  </skillRequirements>
+	  <researchPrerequisite>
+			<li>TM_ArcaneArtifacts</li>
+	  </researchPrerequisite>
+    </recipeMaker>	
+	<comps>
+		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		  <hasEnchantment>true</hasEnchantment>
+		  <maxMP>0.20</maxMP>
+		  <maxMPTier>Crafted</maxMPTier>
+		  <mpRegenRate>0.10</mpRegenRate>
+		  <mpRegenRateTier>Standard</mpRegenRateTier>
+		  <arcaneDmg>0.20</arcaneDmg>
+		  <arcaneDmgTier>Crafted</arcaneDmgTier>
+		  <coolDown>-0.10</coolDown>
+		  <coolDownTier>Crafted</coolDownTier>
+		  <xpGain>-0.20</xpGain>
+		  <xpGainTier>Negative</xpGainTier>
+		</li>
+		<li>
+		  <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
+		</li>
+	</comps>
+	<equippedAngleOffset>-20</equippedAngleOffset>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_ThrumArrow</defaultProjectile>
+        <warmupTime>1.7</warmupTime>
+        <range>45</range>
+        <soundCast>TM_ThrumBow</soundCast>
+        <soundCastTail>TM_Woosh</soundCastTail>
+        <muzzleFlashScale>1</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>limb</label>
+        <capacities>
+          <li>Blunt</li>
+		  <li>Poke</li>
+        </capacities>
+        <power>14</power>
+        <cooldownTime>2.2</cooldownTime>
       </li>
     </tools>
   </ThingDef>

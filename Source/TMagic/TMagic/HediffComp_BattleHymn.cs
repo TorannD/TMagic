@@ -61,7 +61,6 @@ namespace TorannMagic
                 }
             }
             Map map = base.Pawn.Map;
-            
 
             bool flag4 = Find.TickManager.TicksGame % chantFrequency == 0;
             if (flag4 && map != null)
@@ -79,6 +78,12 @@ namespace TorannMagic
                                 HealthUtility.AdjustSeverity(pawns[i], HediffDef.Named("TM_BattleHymnHD"), Rand.Range(.4f, .7f) + (.15f * pwrVal));
                                 TM_MoteMaker.ThrowNoteMote(pawns[i].DrawPos, pawns[i].Map, .3f);
                                 TM_MoteMaker.ThrowNoteMote(pawns[i].DrawPos, pawns[i].Map, .2f);
+                                if(Rand.Chance(.04f + (.01f * pwrVal)))
+                                {
+                                    List<InspirationDef> id = new List<InspirationDef>();
+                                    id.Add(TorannMagicDefOf.ID_Champion); id.Add(TorannMagicDefOf.ID_ManaRegen); id.Add(TorannMagicDefOf.Frenzy_Go); id.Add(TorannMagicDefOf.Frenzy_Shoot);
+                                    pawns[i].mindState.inspirationHandler.TryStartInspiration(id.RandomElement());
+                                }
                             }
                         }
                     }

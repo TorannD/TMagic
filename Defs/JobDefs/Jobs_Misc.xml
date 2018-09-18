@@ -45,4 +45,11 @@
     <casualInterruptible>false</casualInterruptible>
   </JobDef>
   
+  <JobDef>
+    <defName>JobDriver_TM_Teach</defName>
+    <driverClass>TorannMagic.JobDriver_Teach</driverClass>
+    <reportString>training and mentoring</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  
 </Defs>

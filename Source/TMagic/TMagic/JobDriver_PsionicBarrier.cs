@@ -59,7 +59,7 @@ namespace TorannMagic
                 {
                     if (psiFlag)
                     {
-                        if(Rand.Chance(.07f * comp.MightData.MightPowerSkill_PsionicBarrier.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicBarrier_pwr").level))
+                        if(Rand.Chance(.15f * comp.MightData.MightPowerSkill_PsionicBarrier.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicBarrier_pwr").level))
                         {
                             RepelProjectiles(false);
                         }

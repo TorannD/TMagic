@@ -13,7 +13,10 @@ namespace TorannMagic.Thoughts
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
             if(comp.IsMagicUser)
             {
-                magicInspiration = true;
+                if (!pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                {
+                    magicInspiration = true;
+                }
             }
             return baseInspiration && magicInspiration;
         }

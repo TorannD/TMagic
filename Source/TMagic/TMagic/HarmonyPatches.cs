@@ -12,43 +12,29 @@ using Verse;
 using Verse.AI;
 using AbilityUserAI;
 using System.Reflection.Emit;
-//using PrisonLabor;
+using RimQuest;
 
 namespace TorannMagic
 {
     [StaticConstructorOnStartup]
     internal class HarmonyPatches
     {
+        private static readonly Type patchType = typeof(HarmonyPatches);
 
         static HarmonyPatches()
         {
-            HarmonyInstance harmonyInstance = HarmonyInstance.Create("rimworld.torann.tmagic");
-            //harmonyInstance.Patch(AccessTools.Method(typeof(Pawn_HealthTracker), "CheckForStateChange", new Type[]
-            //{
-            //    typeof(DamageInfo?),
-            //    typeof(Hediff)
-            //}, null), new HarmonyMethod(typeof(HarmonyPatches), "CheckForStateChange_Patch", null), null, null);
-            //harmonyInstance.Patch(AccessTools.Method(typeof(Verb_UseAbility), "TryLaunchProjectile", new Type[]
-            //{
-            //    typeof(ThingDef),
-            //    typeof(LocalTargetInfo)
-            //}, null), new HarmonyMethod(typeof(HarmonyPatches), "TryLaunchProjectile_Patch", null), null, null);
-            //harmonyInstance.Patch(AccessTools.Method(typeof(PawnSummoned), "Tick", null, null), new HarmonyMethod(typeof(HarmonyPatches), "ElementalSummon_Patch", null), null, null);
-            //harmonyInstance.Patch(AccessTools.Method(typeof(Verb_LaunchProjectile), "TryCastShot", null, null), new HarmonyMethod(typeof(HarmonyPatches), "TryCastShot_Base_Patch", null), null, null);
-            //shootline base
-            //harmonyInstance.Patch(AccessTools.Method(typeof(Verb), "TryFindShootLineFromTo", new Type[]
-            //    {
-            //        typeof(IntVec3),
-            //        typeof(LocalTargetInfo),
-            //        typeof(ShootLine)
-            //    }, null), new HarmonyMethod(typeof(HarmonyPatches), "TryFindShootLineFromTo_Base_Patch", null), null, null);
-            //Type typeFromTM2 = typeof(CastPositionFinder);
-            //harmonyInstance.Patch(typeFromTM2.GetMethod("TryFindCastPosition", BindingFlags.Instance | BindingFlags.NonPublic, Type.DefaultBinder, CallingConventions.Any, new Type[]
-            //    {
-            //        typeof(CastPositionRequest),
-            //        typeof(IntVec3)
-            //    }, null), null, new HarmonyMethod(typeof(HarmonyPatches).GetMethod("TryFindCastPosition_Base_Patch")), null);
-            harmonyInstance.Patch(AccessTools.Method(typeof(Caravan), "get_NightResting", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_NightResting_Undead", null), null);
+            HarmonyInstance harmonyInstance = HarmonyInstance.Create(id: "rimworld.torann.tmagic");
+            harmonyInstance.Patch(original: AccessTools.Method(type: typeof(GenDraw), name: "DrawRadiusRing"),
+                prefix: new HarmonyMethod(type: patchType, name: nameof(DrawRadiusRing_Patch)));
+            harmonyInstance.Patch(original: AccessTools.Method(type: typeof(IncidentWorker_SelfTame), name: "Candidates"), prefix: null,
+                postfix: new HarmonyMethod(type: patchType, name: nameof(SelfTame_Candidates_Patch)), transpiler: null);
+            harmonyInstance.Patch(original: AccessTools.Method(type: typeof(IncidentWorker_DiseaseHuman), name: "PotentialVictimCandidates"), prefix: null,
+                postfix: new HarmonyMethod(type: patchType, name: nameof(DiseaseHuman_Candidates_Patch)), transpiler: null);
+            harmonyInstance.Patch(original: AccessTools.Method(type: typeof(IncidentWorker_DiseaseAnimal), name: "PotentialVictimCandidates"), prefix: null,  //calls the same patch as human, which includes hediff for undead animals
+                postfix: new HarmonyMethod(type: patchType, name: nameof(DiseaseHuman_Candidates_Patch)), transpiler: null);
+            //harmonyInstance.Patch(AccessTools.Method(typeof(Verb), "get_TerrainDefSource", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_TerrainDefSource", null), null);
+            //harmonyInstance.Patch(AccessTools.Method(typeof(Verb), "get_EquipmentSource", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_EquipmentSource", null), null);
+            harmonyInstance.Patch(AccessTools.Method(typeof(Caravan),"get_NightResting", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_NightResting_Undead", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(Pawn_StanceTracker), "get_Staggered", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_Staggered", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(PawnDiedOrDownedThoughtsUtility), "AppendThoughts_Relations", new Type[]
                 {
@@ -77,7 +63,7 @@ namespace TorannMagic
             //        typeof(Pawn),
             //        typeof(Caravan)
             //    }, null), new HarmonyMethod(typeof(HarmonyPatches), "TrySatisfyPawnNeeds_PrefixPatch", null), null, null);
-            //harmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
+            harmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
 
             #region PrisonLabor
             {
@@ -105,7 +91,80 @@ namespace TorannMagic
                 //}
                 //catch (TypeLoadException) { }
             }
-            #endregion
+            #endregion PrisonLabor
+
+            //#region RimQuest
+            //{
+            //    try
+            //    {
+            //        ((Action)(() =>
+            //        {
+            //            if (ModOptions.ModCompatibilityCheck.RimQuestIsActive)
+            //            {
+            //                harmonyInstance.Patch(AccessTools.Method(typeof(RimQuest.QuestPawn), "GenerateQuests"), new HarmonyMethod(typeof(HarmonyPatches), "TM_RimQuest_GenerateQuestsPrefix", null), null, null);
+            //                //harmonyInstance.Patch(AccessTools.Method(typeof(RimQuest.QuestPawn), "GenerateQuests"), null, new HarmonyMethod(typeof(HarmonyPatches), "TM_RimQuest_GenerateQuestsPostfix"));
+            //            }
+            //        }))();
+            //    }
+            //    catch (TypeLoadException) { }
+            //}
+            //#endregion RimQuest
+
+            #region Children
+            {
+                try
+                {
+                    ((Action)(() =>
+                    {
+                        if (ModOptions.ModCompatibilityCheck.ChildrenIsActive)
+                        {
+                            harmonyInstance.Patch(AccessTools.Method(typeof(PawnUtility), "TrySpawnHatchedOrBornPawn"), null, new HarmonyMethod(typeof(HarmonyPatches), "TM_Children_TrySpawnHatchedOrBornPawn_Tweak"));
+                        }
+                    }))();
+                }
+                catch (TypeLoadException) { }
+            }
+            #endregion Children           
+
+        }
+
+        public static void DiseaseHuman_Candidates_Patch(ref IEnumerable<Pawn> __result)
+        {
+            List<Pawn> tempList = __result.ToList();
+            List<Pawn> removalList = new List<Pawn>();
+            removalList.Clear();
+            for (int i = 0; i < tempList.Count(); i++)
+            {
+                if (tempList[i].health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")) || tempList[i].health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD")) || tempList[i].health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadAnimalHD")))
+                {
+                    removalList.Add(tempList[i]);
+                }
+            }
+            __result = tempList.Except(removalList);
+        }
+
+        public static void SelfTame_Candidates_Patch(Map map, ref IEnumerable<Pawn> __result)
+        {
+            List<Pawn> tempList = __result.ToList();
+            List<Pawn> removalList = new List<Pawn>();
+            removalList.Clear();
+            for(int i =0; i < tempList.Count(); i++)
+            {
+                if(tempList[i].def.thingClass.ToString() == "TorannMagic.TMPawnSummoned")
+                {
+                    removalList.Add(tempList[i]);
+                }
+            }
+            __result = tempList.Except(removalList);
+        }
+
+        public static bool DrawRadiusRing_Patch(IntVec3 center, float radius)
+        {
+            if (radius > GenRadial.MaxRadialPatternRadius)
+            {
+                return false;
+            }
+            return true;
         }
 
         public static bool TryGiveThoughts_PrefixPatch(ref Pawn victim)
@@ -142,14 +201,120 @@ namespace TorannMagic
             {
                 Thing thing = null;
                 thing = ThingMaker.MakeThing(TorannMagicDefOf.RawMagicyte);
-                thing.stackCount = Rand.Range(6, 16);
+                thing.stackCount = Rand.Range(5, 12);
                 if (thing != null)
                 {
                     GenPlace.TryPlaceThing(thing, __instance.pawn.Position, __instance.pawn.Map, ThingPlaceMode.Near, null);
                 }
             }
+        }        
+
+        [HarmonyPriority(100)]
+        public static void TM_Children_TrySpawnHatchedOrBornPawn_Tweak(ref Pawn pawn, Thing motherOrEgg, ref bool __result)
+        {
+            if (pawn.RaceProps.Humanlike && pawn.story != null)
+            {
+                bool hasMagicTrait = false;
+                bool hasFighterTrait = false;
+                List<Trait> pawnTraits = pawn.story.traits.allTraits;
+                for (int i = 0; i < pawnTraits.Count(); i++)
+                {
+                    if (pawnTraits[i].def == TorannMagicDefOf.Arcanist || pawnTraits[i].def == TorannMagicDefOf.Geomancer || pawnTraits[i].def == TorannMagicDefOf.Warlock || pawnTraits[i].def == TorannMagicDefOf.Succubus ||
+                        pawnTraits[i].def == TorannMagicDefOf.InnerFire || pawnTraits[i].def == TorannMagicDefOf.HeartOfFrost || pawnTraits[i].def == TorannMagicDefOf.StormBorn ||
+                        pawnTraits[i].def == TorannMagicDefOf.Paladin || pawnTraits[i].def == TorannMagicDefOf.Summoner || pawnTraits[i].def == TorannMagicDefOf.Druid || pawnTraits[i].def == TorannMagicDefOf.Necromancer ||
+                        pawnTraits[i].def == TorannMagicDefOf.Lich || pawnTraits[i].def == TorannMagicDefOf.Priest || pawnTraits[i].def == TorannMagicDefOf.TM_Bard || pawnTraits[i].def == TorannMagicDefOf.Gifted)
+                    {
+                        pawnTraits.Remove(pawnTraits[i]);
+                        i--;
+                        hasMagicTrait = true;
+                    }
+                    if (pawnTraits[i].def == TorannMagicDefOf.Gladiator || pawnTraits[i].def == TorannMagicDefOf.Bladedancer || pawnTraits[i].def == TorannMagicDefOf.TM_Sniper || pawnTraits[i].def == TorannMagicDefOf.Ranger ||
+                        pawnTraits[i].def == TorannMagicDefOf.TM_Psionic || pawnTraits[i].def == TorannMagicDefOf.Faceless || pawnTraits[i].def == TorannMagicDefOf.PhysicalProdigy)
+                    {
+                        pawnTraits.Remove(pawnTraits[i]);
+                        i--;
+                        hasFighterTrait = true;
+                    }
+                }
+                if (hasFighterTrait && hasMagicTrait)
+                {
+                    if (Rand.Chance(.5f))
+                    {
+                        pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Gifted"), 2, false));
+                    }
+                    else
+                    {
+                        pawn.story.traits.GainTrait(new Trait(TraitDef.Named("PhysicalProdigy"), 2, false));
+                    }
+                }
+                else if (hasFighterTrait)
+                {
+                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("PhysicalProdigy"), 2, false));
+                }
+                else if (hasMagicTrait)
+                {
+                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Gifted"), 2, false));
+                }
+            }
         }
-        
+
+
+        //public static bool TM_RimQuest_GenerateQuestsPrefix(QuestPawn __instance)
+        //{
+        //    bool hasArcaneQuests = false;
+        //    if (__instance.questGiverDef != null && __instance.questGiverDef.quests != null)
+        //    {
+        //        try
+        //        {
+        //            for (int q = 0; q < __instance.questGiverDef.quests.Count; q++)
+        //            {
+        //                if (__instance.questGiverDef.quests[q].def == IncidentDef.Named("QuestArcaneCamp") || __instance.questGiverDef.quests[q].def == IncidentDef.Named("MagicCaravanRequest"))
+        //                {
+        //                    hasArcaneQuests = true;
+        //                }
+        //            }
+        //            if (!hasArcaneQuests)
+        //            {
+        //                RimQuest.QuestGenOption arcaneCaravanOption = new RimQuest.QuestGenOption();
+        //                RimQuest.QuestGenOption arcaneStashOption = new RimQuest.QuestGenOption();
+        //                if (__instance.pawn.Faction.def == FactionDef.Named("Seers"))
+        //                {
+        //                    arcaneStashOption.def = IncidentDef.Named("QuestArcaneCamp");
+        //                    arcaneStashOption.selectionWeight = 10;
+        //                    arcaneCaravanOption.def = IncidentDef.Named("MagicCaravanRequest");
+        //                    arcaneCaravanOption.selectionWeight = 6;
+        //                    __instance.questGiverDef.quests.Add(arcaneCaravanOption);
+        //                    __instance.questGiverDef.quests.Add(arcaneStashOption);
+        //                }
+        //                else if (__instance.pawn.Faction.def.techLevel == TechLevel.Medieval) //cares about magic a little
+        //                {
+        //                    arcaneStashOption.def = IncidentDef.Named("QuestArcaneCamp");
+        //                    arcaneStashOption.selectionWeight = 3;
+        //                    arcaneCaravanOption.def = IncidentDef.Named("MagicCaravanRequest");
+        //                    arcaneCaravanOption.selectionWeight = 2;
+        //                    __instance.questGiverDef.quests.Add(arcaneCaravanOption);
+        //                    __instance.questGiverDef.quests.Add(arcaneStashOption);
+        //                }
+        //                else if (__instance.pawn.Faction.def.techLevel == TechLevel.Neolithic) //cares about magic
+        //                {
+        //                    arcaneStashOption.def = IncidentDef.Named("QuestArcaneCamp");
+        //                    arcaneStashOption.selectionWeight = 6;
+        //                    arcaneCaravanOption.def = IncidentDef.Named("MagicCaravanRequest");
+        //                    arcaneCaravanOption.selectionWeight = 2;
+        //                    __instance.questGiverDef.quests.Add(arcaneCaravanOption);
+        //                    __instance.questGiverDef.quests.Add(arcaneStashOption);
+        //                }
+        //            }
+        //        }
+        //        catch
+        //        {
+        //            Log.Message("An exception occurred while adding A RimWorld of Magic quests to a RimQuest questgiver - ending attempt to allow default behavior.");
+        //            return true;
+        //        }
+        //    }
+        //    return true;
+        //}
+
         public static bool Get_Staggered(Pawn_StanceTracker __instance, ref bool __result)
         {
             if(__instance.pawn.def.defName == "TM_DemonR")
@@ -623,7 +788,9 @@ namespace TorannMagic
                                     DamageInfo dinfo2 = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_PsionicInjury, (dmgNum + pawnDPS) + 2*pwr.level, dinfo.ArmorPenetrationInt, dinfo.Angle, instigator, dinfo.HitPart, dinfo.Weapon, dinfo.Category, dinfo.intendedTargetInt);
                                     TM_MoteMaker.MakePowerBeamMotePsionic(pawn.DrawPos.ToIntVec3(), pawn.Map, 2f, 2f, .7f, .1f, .6f);
                                     pawn.TakeDamage(dinfo2);
-                                    HealthUtility.AdjustSeverity(instigator, HediffDef.Named("TM_PsionicHD"), -3f);
+                                    HealthUtility.AdjustSeverity(instigator, HediffDef.Named("TM_PsionicHD"), -2f);
+                                    comp.Stamina.CurLevel -= .02f;
+                                    comp.MightUserXP += Rand.Range(2, 4);
                                     if (psiEnergy > 60f && Rand.Chance(.2f + (.03f * pwr.level)))
                                     {
                                         for (int i = 0; i < 6; i++)
@@ -638,13 +805,17 @@ namespace TorannMagic
                                         FlyingObject_Spinning flyingObject = (FlyingObject_Spinning)GenSpawn.Spawn(ThingDef.Named("FlyingObject_Spinning"), pawn.Position, pawn.Map);
                                         flyingObject.speed = 35;
                                         flyingObject.Launch(instigator, destinationCell, pawn);
-                                        HealthUtility.AdjustSeverity(instigator, HediffDef.Named("TM_PsionicHD"), -4f);
+                                        HealthUtility.AdjustSeverity(instigator, HediffDef.Named("TM_PsionicHD"), -2f);
+                                        comp.Stamina.CurLevel -= .02f;
+                                        comp.MightUserXP += Rand.Range(3, 5);
                                     }
                                     else if (psiEnergy > 40f && Rand.Chance(.4f + (.05f * pwr.level)))
                                     {
                                         DamageInfo dinfo3 = new DamageInfo(DamageDefOf.Stun, dmgNum / 2, dinfo.ArmorPenetrationInt, dinfo.Angle, instigator, dinfo.HitPart, dinfo.Weapon, dinfo.Category, dinfo.intendedTargetInt);
                                         pawn.TakeDamage(dinfo3);
                                         HealthUtility.AdjustSeverity(instigator, HediffDef.Named("TM_PsionicHD"), -2f);
+                                        comp.Stamina.CurLevel -= .01f;
+                                        comp.MightUserXP += Rand.Range(2, 3);
                                     }
                                 }                                
                             }
@@ -1020,6 +1191,33 @@ namespace TorannMagic
             }
         }
 
+        [HarmonyPatch(typeof(LordToil_Siege), "CanBeBuilder", null)]
+        public static class CanBeBuilder_Patch
+        {
+            private static bool Prefix(Pawn p, ref bool __result)
+            {
+                if (p.def.thingClass.ToString() == "TorannMagic.TMPawnSummoned")
+                {
+                    __result = false;
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        [HarmonyPatch(typeof(LordToil_Siege), "Notify_PawnLost", null)]
+        public static class Notify_PawnLost_Patch
+        {
+            private static bool Prefix(Pawn victim)
+            {
+                if (victim.def.thingClass.ToString() == "TorannMagic.TMPawnSummoned")
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
+
         [HarmonyPatch(typeof(AbilityAIDef), "CanPawnUseThisAbility", null)]
         public static class CanPawnUseThisAbility_Patch
         {
@@ -1109,27 +1307,6 @@ namespace TorannMagic
                 List<Trait> pawnTraits = pawn.story.traits.allTraits;
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 bool flag = false;
-                //for (int i = 0; i < pawnTraits.Count; i++)
-                //{
-                //    try
-                //    {
-                //        if (pawnTraits[i].def == TorannMagicDefOf.PhysicalProdigy || pawnTraits[i].def == TorannMagicDefOf.Gifted ||
-                //            pawnTraits[i].def == TorannMagicDefOf.Arcanist || pawnTraits[i].def == TorannMagicDefOf.InnerFire || pawnTraits[i].def == TorannMagicDefOf.HeartOfFrost || pawnTraits[i].def == TorannMagicDefOf.StormBorn ||
-                //            pawnTraits[i].def == TorannMagicDefOf.Summoner || pawnTraits[i].def == TorannMagicDefOf.Druid || pawnTraits[i].def == TorannMagicDefOf.Paladin || pawnTraits[i].def == TorannMagicDefOf.Necromancer || pawnTraits[i].def == TorannMagicDefOf.Priest ||
-                //            pawnTraits[i].def == TorannMagicDefOf.Gladiator || pawnTraits[i].def == TorannMagicDefOf.Ranger || pawnTraits[i].def == TorannMagicDefOf.TM_Sniper || pawnTraits[i].def == TorannMagicDefOf.Bladedancer || pawnTraits[i].def == TorannMagicDefOf.Faceless ||
-                //            pawnTraits[i].def == TorannMagicDefOf.Warlock || pawnTraits[i].def == TorannMagicDefOf.Succubus || pawnTraits[i].def == TorannMagicDefOf.TM_Psionic)
-                //        {
-
-                //            flag = true;
-                //            //got lucky
-                //        }
-                //    }
-                //    catch
-                //    {
-
-                //    }
-                //}
-                //Remove last trait
 
                 if (!flag)
                 {
@@ -1318,7 +1495,7 @@ namespace TorannMagic
                 {
                     Thing thing = null;
                     thing = ThingMaker.MakeThing(TorannMagicDefOf.RawMagicyte);
-                    thing.stackCount = Rand.Range(6, 16);
+                    thing.stackCount = Rand.Range(5, 12);
                     if(thing != null)
                     {
                         GenPlace.TryPlaceThing(thing, __instance.pawn.Position, __instance.pawn.Map, ThingPlaceMode.Near, null);
@@ -1491,20 +1668,7 @@ namespace TorannMagic
                 }
                 return false;
             }
-        }
-
-        [HarmonyPatch(typeof(GenDraw), "DrawRadiusRing", null)]
-        public class DrawRadiusRing_Patch
-        {
-            public static bool Prefix(IntVec3 center, float radius)
-            {
-                if (radius > GenRadial.MaxRadialPatternRadius)
-                {
-                    return false;
-                }
-                return true;
-            }
-        }
+        }        
 
         [HarmonyPatch(typeof(GenGrid), "Standable", null)]
         public class Standable_Patch
@@ -1907,15 +2071,3 @@ namespace TorannMagic
         }
     }
 }
-
-
-//if(list[i].ToString().Contains("Raise Undead") || list[i].ToString().Contains("Dismiss Undead") || list[i].ToString().Contains("Death Mark") || list[i].ToString().Contains("Fog of Torment") || list[i].ToString().Contains("Consume Corpse") || list[i].ToString().Contains("Corpse") || list[i].ToString().Contains("Lich Form") || list[i].ToString().Contains("Death Bolt") ||
-//    list[i].ToString().Contains("AMP") || list[i].ToString().Contains("Shadow") || list[i].ToString().Contains("Soothing Breeze") || list[i].ToString().Contains("Ray of Hope") || 
-//    list[i].ToString().Contains("Lightning") || list[i].ToString().Contains("Frost Ray") || list[i].ToString().Contains("Firestorm") || list[i].ToString().Contains("Blizzard") ||
-//    list[i].ToString().Contains("Fireball") || list[i].ToString().Contains("Fireclaw") || list[i].ToString().Contains("Snowball") || list[i].ToString().Contains("Magic") ||
-//    list[i].ToString().Contains("Dismiss ") || list[i].ToString().Contains("Summon ") || list[i].ToString().Contains("Icebolt") || list[i].ToString().Contains("Firebolt") ||
-//    list[i].ToString().Contains("Teleport") || list[i].ToString().Contains("Blink") || list[i].ToString().Contains("Rainmaker") || list[i].ToString().Contains("Eye of the Storm") ||
-//    list[i].ToString().Contains("Blade Spin") || list[i].ToString().Contains("Seismic Slash") || list[i].ToString().Contains("Phase Strike") || list[i].ToString().Contains("Poison Trap") ||
-//    list[i].ToString().Contains("Animal Friend") || list[i].ToString().Contains("Arrow Storm") || list[i].ToString().Contains("Headshot") || list[i].ToString().Contains("Disabling Shot") ||
-//    list[i].ToString().Contains("Anti-Armor") || list[i].ToString().Contains("Heal") || list[i].ToString().Contains("Shield") || list[i].ToString().Contains("Valiant") || list[i].ToString().Contains("Overwhelm") ||
-//    list[i].ToString().Contains("Purify") || list[i].ToString().Contains("Healing") || list[i].ToString().Contains("Bestow") || list[i].ToString().Contains("Resurrection"))

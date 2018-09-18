@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
+using UnityEngine;
 
 namespace TorannMagic
 {
@@ -38,24 +39,27 @@ namespace TorannMagic
             arcaneBanditSquad.def = TorannMagicDefOf.ArcaneBanditSquad;
             site.parts.Add(arcaneBanditSquad);
             site.Tile = tile;
-            List<Thing> list = this.GenerateRewards(faction);
+            List<Thing> list = this.GenerateRewards(faction, parms);
             site.GetComponent<DefeatAllEnemiesQuestComp>().StartQuest(faction, 12, list);
             Find.WorldObjects.Add(site);
+            string itemList = "";
+            for(int i = 0; i< list.Count(); i++)
+            {
+                itemList += list[i].LabelShort + "\n";
+            }
             base.SendStandardLetter(site, faction, new string[]
             {
                 faction.leader.LabelShort,
                 faction.def.leaderTitle,
                 faction.Name,
-                list[0].LabelCap,
-                list[1].LabelCap,
-                list[2].LabelCap
+                itemList
             });
             return true;
         }
 
-        private List<Thing> GenerateRewards(Faction alliedFaction)
+        private List<Thing> GenerateRewards(Faction alliedFaction, IncidentParms parms)
         {
-            int totalMarketValue = 8000;
+            int totalMarketValue = (int)Mathf.Clamp(StorytellerUtility.DefaultThreatPointsNow(parms.target) * 10, 1000, 10000);
             List<Thing> list = new List<Thing>();
             ItemCollectionGenerator_Internal_Arcane itc_ia = new ItemCollectionGenerator_Internal_Arcane();            
             return itc_ia.Generate(totalMarketValue, list);

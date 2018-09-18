@@ -967,5 +967,76 @@ Casting the spell when a barrier is active will remove the barrier. Can be used 
             </targetParams>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
+	
+	<!-- Teach Magic & Might -->	
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_TeachMagic</defName>
+        <label>Mentor Magic</label>
+        <uiIconPath>UI/teachbook</uiIconPath>
+        <description>Mentor a mage of lesser level to increase their magic skill. 
+		
+Mentored mages will gain class XP.  The amount of XP gained depends on the social status and difference in levels between the two mages.</description>
+        <manaCost>0.25</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Teach</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_TM_SpawnThing</defaultProjectile>
+            <abilityDef>TM_TeachMagic</abilityDef>
+            <warmupTime>0</warmupTime>
+            <SecondsToRecharge>1200</SecondsToRecharge>
+            <range>50</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Message_PositiveEvent</soundCast>
+            <muzzleFlashScale>1</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+  <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_TeachMight</defName>
+    <label>Combat Training</label>
+    <uiIconPath>UI/teachbook</uiIconPath>
+    <description>Train a fighter of lesser level to increase their combat skill. 
+		
+Trained fighters will gain class XP.  The amount of XP gained depends on the social status and difference in levels between the two fighters.</description>
+    <staminaCost>0.25</staminaCost>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_Teach</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_TeachMight</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_Sustained</defaultProjectile>
+        <warmupTime>0</warmupTime>
+        <SecondsToRecharge>1200</SecondsToRecharge>
+        <range>50</range>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>1</muzzleFlashScale>
+        <isPrimary>true</isPrimary>
+		<AlwaysHits>true</AlwaysHits>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>false</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
 
 </Defs>

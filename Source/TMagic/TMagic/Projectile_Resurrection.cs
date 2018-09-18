@@ -15,7 +15,7 @@ namespace TorannMagic
         private bool validTarget = false;
         private int verVal = 0;
         private int pwrVal = 0;
-        private int timeToRaise = 1800;
+        private int timeToRaise = 2400;
         private int age = -1;
         Pawn deadPawn;
         Pawn caster;

@@ -21,6 +21,7 @@ namespace TorannMagic
         Faction pFaction = null;
         Pawn hitPawn = null;
         Pawn caster = null;
+        List<int> hitPawnWorkSetting = new List<int>();
 
         private int verVal;
         private int pwrVal;
@@ -35,6 +36,7 @@ namespace TorannMagic
             Scribe_Values.Look<Faction>(ref this.pFaction, "pFaction", null, false);
             Scribe_Values.Look<IntVec3>(ref this.oldPosition, "oldPosition", default(IntVec3), false);
             Scribe_References.Look<Pawn>(ref this.hitPawn, "hitPawn", false);
+            Scribe_Collections.Look<int>(ref this.hitPawnWorkSetting, "hitPawnWorkSettings", LookMode.Value);
         }
 
         protected override void Impact(Thing hitThing)
@@ -66,6 +68,16 @@ namespace TorannMagic
                     if (!hitPawn.Downed && !hitPawn.Dead && !possessedFlag)
                     {
                         this.pFaction = hitPawn.Faction;
+                        if(!caster.IsColonist && hitPawn.IsColonist)
+                        {
+                            List<WorkTypeDef> allWorkTypes = WorkTypeDefsUtility.WorkTypeDefsInPriorityOrder.ToList();
+                            this.hitPawnWorkSetting = new List<int>();
+                            this.hitPawnWorkSetting.Clear();
+                            for(int i = 0; i < allWorkTypes.Count(); i++)
+                            {
+                                hitPawnWorkSetting.Add(hitPawn.workSettings.GetPriority(allWorkTypes[i]));
+                            }
+                        }
                         if (this.pFaction != caster.Faction)
                         {
                             //possess enemy or neutral
@@ -207,6 +219,14 @@ namespace TorannMagic
                         if (hitPawn.IsColonist)
                         {
                             hitPawn.jobs.EndCurrentJob(JobCondition.InterruptForced, false);
+                        }
+                        if(!caster.IsColonist && hitPawn.IsColonist)
+                        {
+                            List<WorkTypeDef> allWorkTypes = WorkTypeDefsUtility.WorkTypeDefsInPriorityOrder.ToList();
+                            for (int i = 0; i < hitPawnWorkSetting.Count(); i++)
+                            {
+                                hitPawn.workSettings.SetPriority(allWorkTypes[i], hitPawnWorkSetting[i]);
+                            }
                         }
                         RemoveHediffs();
                     }

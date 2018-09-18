@@ -46,7 +46,7 @@ namespace TorannMagic
             get
             {
                 
-                bool flag = base.SelPawn.story != null;
+                bool flag = base.SelPawn.story != null && base.SelPawn.IsColonist;
                 if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
                 {
                     return flag && true;

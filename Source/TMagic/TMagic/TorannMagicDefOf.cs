@@ -518,6 +518,8 @@ namespace TorannMagic
         public static TMAbilityDef TM_FertileLands;
         public static TMAbilityDef TM_DismissFertileLands;
         public static TMAbilityDef TM_SpellMending;
+        public static TMAbilityDef TM_TeachMagic;
+        public static TMAbilityDef TM_TeachMight;
         
         public static HediffDef TM_HediffEnchantment_arcaneSpectre;        
 
@@ -591,6 +593,7 @@ namespace TorannMagic
         public static JobDef JobDriver_DoFor;
         public static JobDef JobDriver_SummonDemon;
         public static JobDef JobDriver_PsionicBarrier;
+        public static JobDef JobDriver_TM_Teach;
 
         //Magicyte
         public static ThingDef RawMagicyte;
@@ -607,6 +610,7 @@ namespace TorannMagic
         public static SoundDef TM_BattleHymnSD;
         public static SoundDef TM_DemonDeath;
         public static SoundDef TM_Implosion;
+        public static SoundDef TM_ThrumBow;
 
         //Inspirations
         public static InspirationDef ID_Champion;
@@ -615,7 +619,7 @@ namespace TorannMagic
         public static InspirationDef ID_Outgoing;
         public static InspirationDef ID_Introspection;
         public static InspirationDef ID_ManaRegen;
-
-
+        public static InspirationDef Frenzy_Go;
+        public static InspirationDef Frenzy_Shoot;
     }
 }

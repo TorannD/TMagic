@@ -172,6 +172,7 @@ AoE Size: 6</description>
 	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
         <defName>TM_SootheAnimal_II</defName>
         <label>Beguile Animal (II)</label>
+		<uiIconPath>UI/beguile_animal</uiIconPath>
         <description>Using mastery over nature, the druid can overwhelm the emotional state of animals. This ability is dual purposed - if the animal is in a calm state, it will incite the beast into a manhunter rage; if the animal is already enraged, it will pacify the beast.
 		
 Range: 75

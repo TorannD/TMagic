@@ -25,7 +25,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>20</count>
+        <count>15</count>
       </li>
 	  <li>
         <filter>
@@ -67,7 +67,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>40</count>
       </li>
 	  <li>
         <filter>
@@ -111,7 +111,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>125</count>
+        <count>100</count>
       </li>
 	  <li>
         <filter>
@@ -156,7 +156,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>20</count>
+        <count>15</count>
       </li>
 	  <li>
         <filter>
@@ -198,7 +198,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>40</count>
       </li>
 	  <li>
         <filter>
@@ -242,7 +242,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>125</count>
+        <count>100</count>
       </li>
 	  <li>
         <filter>
@@ -287,7 +287,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>20</count>
+        <count>15</count>
       </li>
 	  <li>
         <filter>
@@ -329,7 +329,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>40</count>
       </li>
 	  <li>
         <filter>
@@ -373,7 +373,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>125</count>
+        <count>100</count>
       </li>
 	  <li>
         <filter>
@@ -418,7 +418,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>20</count>
+        <count>15</count>
       </li>
 	  <li>
         <filter>
@@ -460,7 +460,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>40</count>
       </li>
 	  <li>
         <filter>
@@ -504,7 +504,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>125</count>
+        <count>100</count>
       </li>
 	  <li>
         <filter>
@@ -550,7 +550,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>20</count>
+        <count>15</count>
       </li>
 	  <li>
         <filter>
@@ -592,7 +592,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>40</count>
       </li>
 	  <li>
         <filter>
@@ -636,7 +636,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>125</count>
+        <count>100</count>
       </li>
 	  <li>
         <filter>
@@ -681,7 +681,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>20</count>
+        <count>15</count>
       </li>
 	  <li>
         <filter>
@@ -723,7 +723,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>40</count>
       </li>
 	  <li>
         <filter>
@@ -767,7 +767,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>125</count>
+        <count>100</count>
       </li>
 	  <li>
         <filter>
@@ -813,7 +813,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>20</count>
+        <count>15</count>
       </li>
 	  <li>
         <filter>
@@ -855,7 +855,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>40</count>
       </li>
 	  <li>
         <filter>
@@ -899,7 +899,7 @@
             <li>RawMagicyte</li>
           </thingDefs>
         </filter>
-        <count>125</count>
+        <count>100</count>
       </li>
 	  <li>
         <filter>
