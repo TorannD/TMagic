@@ -846,7 +846,7 @@ Radius: 8</description>
 	
     <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
         <defName>TM_PsychicShock</defName>
-        <label>PsychicShock</label>
+        <label>Psychic Shock</label>
         <uiIconPath>UI/psychicshock</uiIconPath>
         <description>The Warlock removes all mental barriers and projects a powerful wave of psychic energy. Any pawns caught in the wave will be bombarded by psychic power and will briefly be subjected to the will of the Warlock. 
 		

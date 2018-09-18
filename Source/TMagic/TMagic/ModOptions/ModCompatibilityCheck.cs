@@ -17,5 +17,21 @@ namespace TorannMagic.ModOptions
                 return ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name == "Prison Labor");
             }
         }
+
+        public static bool ChildrenIsActive
+        {
+            get
+            {
+                return ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name == "Children, school and learning");
+            }
+        }
+
+        //public static bool RimQuestIsActive
+        //{
+        //    get
+        //    {
+        //        return ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name == "RimQuest");
+        //    }
+        //}
     }
 }

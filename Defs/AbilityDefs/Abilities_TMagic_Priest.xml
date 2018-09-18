@@ -517,9 +517,9 @@ Pain:		-70%</description>
 		<abilityDef>TM_Resurrection</abilityDef>
 		<isViolent>false</isViolent>
         <defaultProjectile>Projectile_Resurrection</defaultProjectile>
-        <warmupTime>5</warmupTime>
+        <warmupTime>10</warmupTime>
         <SecondsToRecharge>600</SecondsToRecharge>
-        <range>8</range>
+        <range>6</range>
         <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>30</muzzleFlashScale>
         <isPrimary>false</isPrimary>

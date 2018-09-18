@@ -2,6 +2,30 @@
 <Defs>
 
   <SoundDef>
+    <defName>TM_ThrumBow</defName>
+    <eventNames />
+    <maxSimultaneous>5</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/ThrumBow</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>30</min>
+          <max>26</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.7</min>
+          <max>.9</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
     <defName>ItemEnchanted</defName>
     <eventNames />
     <maxSimultaneous>1</maxSimultaneous>

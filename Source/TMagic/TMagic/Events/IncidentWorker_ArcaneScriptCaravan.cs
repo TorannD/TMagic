@@ -139,7 +139,7 @@ namespace TorannMagic
             target.requestCount = IncidentWorker_ArcaneScriptCaravan.RandomRequestCount(target.requestThingDef, map);
             target.rewards.ClearAndDestroyContents(DestroyMode.Vanish);
             System.Random random = new System.Random();
-            int rnd = GenMath.RoundRandom(random.Next(0, 25));
+            int rnd = GenMath.RoundRandom(random.Next(0, 26));
             if (rnd < 1)
             {
                 item = ThingMaker.MakeThing(TorannMagicDefOf.BookOfInnerFire, null);
@@ -223,6 +223,11 @@ namespace TorannMagic
             else if (rnd >= 16 && rnd < 17)
             {
                 item = ThingMaker.MakeThing(TorannMagicDefOf.BookOfBard, null);
+                target.rewards.TryAdd(item, true);
+            }
+            else if (rnd >= 17 && rnd < 18)
+            {
+                item = ThingMaker.MakeThing(TorannMagicDefOf.BookOfPsionic, null);
                 target.rewards.TryAdd(item, true);
             }
             else

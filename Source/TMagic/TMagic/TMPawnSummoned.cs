@@ -87,7 +87,7 @@ namespace TorannMagic
             {
                 try
                 {
-                    if (this.Downed && !this.Destroyed && this != null)
+                    if (this.Downed && !this.Destroyed && this != null && this.Faction == Faction.OfPlayer)
                     {
                         Messages.Message("MinionFled".Translate(), MessageTypeDefOf.NeutralEvent);
                         MoteMaker.ThrowSmoke(this.Position.ToVector3(), base.Map, 1);

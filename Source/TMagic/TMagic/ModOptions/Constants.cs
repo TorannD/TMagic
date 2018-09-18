@@ -1,10 +1,10 @@
 ﻿using System;
+using Harmony;
 using System.Collections.Generic;
 using Verse;
-using Harmony;
 
 namespace TorannMagic.ModOptions
-{
+{ 
     public abstract class Constants
     {
         private static bool pawnInFlight = false;

@@ -136,8 +136,19 @@ namespace TorannMagic
                             {
                                 if (FactionUtility.HostileTo(this.sustainerPawn.Faction, allPawns[i].Faction))
                                 {
-                                    threat = allPawns[i];
-                                    break;
+                                    if (ModOptions.ModCompatibilityCheck.PrisonLaborIsActive)
+                                    {
+                                        if (!allPawns[i].IsPrisoner)
+                                        {
+                                            threat = allPawns[i];
+                                            break;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        threat = allPawns[i];
+                                        break;
+                                    }
                                 }
                             }
                         }

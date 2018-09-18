@@ -52,54 +52,54 @@ namespace TorannMagic
                     this.Initialize();
                 }
             }
-            bool flag4 = Find.TickManager.TicksGame % 600 == 0;
-            if (flag4)
+            if (Find.TickManager.TicksGame % 6000 == 0)
             {
-                if(Find.TickManager.TicksGame % 6000 == 0)
+                if (base.Pawn.RaceProps.Animal)
                 {
-                    if(base.Pawn.RaceProps.Animal)
+                    if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Tameness).Accepted)
                     {
-                        if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Tameness).Accepted)
+                        while (!base.Pawn.training.HasLearned(TrainableDefOf.Tameness))
                         {
-                            while (!base.Pawn.training.HasLearned(TrainableDefOf.Tameness))
-                            {
-                                base.Pawn.training.Train(TrainableDefOf.Tameness, null);
-                            }
+                            base.Pawn.training.Train(TrainableDefOf.Tameness, null);
                         }
+                    }
 
-                        if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Obedience).Accepted)
+                    if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Obedience).Accepted)
+                    {
+                        while (!base.Pawn.training.HasLearned(TrainableDefOf.Obedience))
                         {
-                            while (!base.Pawn.training.HasLearned(TrainableDefOf.Obedience))
-                            {
-                                base.Pawn.training.Train(TrainableDefOf.Obedience, null);
-                            }
+                            base.Pawn.training.Train(TrainableDefOf.Obedience, null);
                         }
+                    }
 
-                        if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Release).Accepted)
+                    if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Release).Accepted)
+                    {
+                        while (!base.Pawn.training.HasLearned(TrainableDefOf.Release))
                         {
-                            while (!base.Pawn.training.HasLearned(TrainableDefOf.Release))
-                            {
-                                base.Pawn.training.Train(TrainableDefOf.Release, null);
-                            }
+                            base.Pawn.training.Train(TrainableDefOf.Release, null);
                         }
+                    }
 
-                        if (base.Pawn.training.CanAssignToTrain(TorannMagicDefOf.Haul).Accepted)
+                    if (base.Pawn.training.CanAssignToTrain(TorannMagicDefOf.Haul).Accepted)
+                    {
+                        while (!base.Pawn.training.HasLearned(TorannMagicDefOf.Haul))
                         {
-                            while (!base.Pawn.training.HasLearned(TorannMagicDefOf.Haul))
-                            {
-                                base.Pawn.training.Train(TorannMagicDefOf.Haul, null);
-                            }
+                            base.Pawn.training.Train(TorannMagicDefOf.Haul, null);
                         }
+                    }
 
-                        if (base.Pawn.training.CanAssignToTrain(TorannMagicDefOf.Rescue).Accepted)
+                    if (base.Pawn.training.CanAssignToTrain(TorannMagicDefOf.Rescue).Accepted)
+                    {
+                        while (!base.Pawn.training.HasLearned(TorannMagicDefOf.Rescue))
                         {
-                            while (!base.Pawn.training.HasLearned(TorannMagicDefOf.Rescue))
-                            {
-                                base.Pawn.training.Train(TorannMagicDefOf.Rescue, null);
-                            }
+                            base.Pawn.training.Train(TorannMagicDefOf.Rescue, null);
                         }
                     }
                 }
+            }
+            bool flag4 = Find.TickManager.TicksGame % 600 == 0;
+            if (flag4)
+            {                
                 necroValid = false;
                 if (base.Pawn.Map != null)
                 {

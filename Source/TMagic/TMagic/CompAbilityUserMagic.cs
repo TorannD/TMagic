@@ -129,6 +129,7 @@ namespace TorannMagic
         public bool spell_PsychicShock = false;
         public bool spell_SummonDemon = false;
         public bool spell_Meteor = false;
+        public bool spell_Teach = false;
 
         private bool item_StaffOfDefender = false;
 
@@ -2305,6 +2306,11 @@ namespace TorannMagic
                 {
                     this.RemovePawnAbility(TorannMagicDefOf.TM_ShadowCall);
                     this.AddPawnAbility(TorannMagicDefOf.TM_ShadowCall);
+                }
+                if (this.spell_Teach == true)
+                {
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_TeachMagic);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_TeachMagic);
                 }
                 if (this.spell_Meteor == true)
                 {
@@ -4544,6 +4550,12 @@ namespace TorannMagic
 
         public void ResolveClassSkills()
         {
+            if(this.MagicUserLevel >= 20 && this.spell_Teach == false)
+            {
+                this.AddPawnAbility(TorannMagicDefOf.TM_TeachMagic);
+                this.spell_Teach = true;
+            }
+
             if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer) && this.earthSpriteType != 0 && this.earthSprites.IsValid)
             {
                 if (this.nextEarthSpriteAction < Find.TickManager.TicksGame)
@@ -4922,6 +4934,7 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.spell_PsychicShock, "spell_PsychicShock", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Scorn, "spell_Scorn", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Meteor, "spell_Meteor", false, false);
+            Scribe_Values.Look<bool>(ref this.spell_Teach, "spell_Teach", false, false);
             Scribe_Values.Look<int>(ref this.powerModifier, "powerModifier", 0, false);
             Scribe_Values.Look<bool>(ref this.doOnce, "doOnce", true, false);
             Scribe_References.Look<Pawn>(ref this.soulBondPawn, "soulBondPawn", false);

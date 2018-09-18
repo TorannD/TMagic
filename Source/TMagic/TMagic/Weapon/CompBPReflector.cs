@@ -1,5 +1,6 @@
 ﻿using Harmony;
 using Verse;
+using UnityEngine;
 
 namespace TorannMagic.Weapon
 {
@@ -99,9 +100,27 @@ namespace TorannMagic.Weapon
                         this.lastShotReflected = false;
                         return;
                     }
-                    this.ResolveDeflectVerb();
-                    this.GiveDeflectJob(dinfo);
-                    absorbed = false; // true; 
+                    //splicing in TM handling of reflection
+                    Thing instigator = dinfo.Instigator;
+                    Vector3 drawPos = this.GetPawn.DrawPos;
+                    drawPos.x += ((instigator.DrawPos.x - drawPos.x) / 20f) + Rand.Range(-.2f, .2f);
+                    drawPos.z += ((instigator.DrawPos.z - drawPos.z) / 20f) + Rand.Range(-.2f, .2f);
+                    TM_MoteMaker.ThrowSparkFlashMote(drawPos, this.GetPawn.Map, 2f);
+                    Thing thing = new Thing();
+                    thing.def = dinfo.Weapon;
+                    if(instigator is Pawn)
+                    {
+                        Pawn shooterPawn = instigator as Pawn;
+                        if(!dinfo.Weapon.IsMeleeWeapon && dinfo.WeaponBodyPartGroup == null)
+                        {
+                            TM_CopyAndLaunchProjectile.CopyAndLaunchThing(shooterPawn.equipment.PrimaryEq.PrimaryVerb.verbProps.defaultProjectile, this.GetPawn, instigator, shooterPawn, ProjectileHitFlags.IntendedTarget, null);
+                        }
+                    }
+                    //no longer using comp deflector handling
+                    //this.ResolveDeflectVerb();
+                    //this.GiveDeflectJob(dinfo);
+                    dinfo.SetAmount(0);
+                    absorbed = true; // true; 
                     return;
                 }
             }

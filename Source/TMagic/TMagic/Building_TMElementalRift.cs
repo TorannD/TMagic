@@ -159,7 +159,7 @@ namespace TorannMagic
                 for (int i = 0; i < animalList.Count; i++)
                 {
                     int j = Rand.Range(0, animalList.Count);
-                    if (animalList[j].RaceProps.Animal && !animalList[j].IsColonist && !animalList[j].def.defName.Contains("Elemental"))
+                    if (animalList[j].RaceProps.Animal && !animalList[j].IsColonist && !animalList[j].def.defName.Contains("Elemental") && animalList[j].Faction == null)
                     {
                         animalList[j].mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.ManhunterPermanent, null, true, false, null);
                         i = animalList.Count;

@@ -45,22 +45,14 @@
 		<minSeverity>0.01</minSeverity>
 		<restFallFactor>1.5</restFallFactor>
 		<hungerRateFactor>1.5</hungerRateFactor>
-		<capMods>
-		   <li>
-			  <capacity>Manipulation</capacity>
-			  <offset>-0.5</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.5</partEfficiencyOffset>
       </li>
       <li>
 		<label>fledgling</label>
 		<minSeverity>3</minSeverity>
-		<capMods>
-		   <li>
-			  <capacity>Manipulation</capacity>
-			  <offset>-0.3</offset>
-		   </li>
-		</capMods>
+		<restFallFactor>1.2</restFallFactor>
+		<hungerRateFactor>1.2</hungerRateFactor>
+		<partEfficiencyOffset>-.25</partEfficiencyOffset>
       </li>
 	  <li>
 		<label>regrown</label>
@@ -69,12 +61,7 @@
 	  <li>
 		<label>wild</label>
 		<minSeverity>14.9</minSeverity>
-		<capMods>
-		   <li>
-			  <capacity>Manipulation</capacity>
-			  <offset>0.20</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>.25</partEfficiencyOffset>
       </li>
     </stages>
   </HediffDef>
@@ -111,22 +98,12 @@
 		<minSeverity>0.01</minSeverity>
 		<restFallFactor>1.5</restFallFactor>
 		<hungerRateFactor>1.5</hungerRateFactor>
-		<capMods>
-		   <li>
-			  <capacity>Manipulation</capacity>
-			  <offset>-0.3</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.4</partEfficiencyOffset>
       </li>
       <li>
 		<label>fledgling</label>
 		<minSeverity>3</minSeverity>
-		<capMods>
-		   <li>
-			  <capacity>Manipulation</capacity>
-			  <offset>-0.2</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.2</partEfficiencyOffset>
       </li>
 	  <li>
 		<label>regrown</label>
@@ -135,12 +112,7 @@
 	  <li>
 		<label>wild</label>
 		<minSeverity>14.9</minSeverity>
-		<capMods>
-		   <li>
-			  <capacity>Manipulation</capacity>
-			  <offset>0.12</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>.15</partEfficiencyOffset>
       </li>
     </stages>
   </HediffDef>
@@ -164,12 +136,7 @@
 		<minSeverity>0.01</minSeverity>
 		<restFallFactor>1.3</restFallFactor>
 		<hungerRateFactor>1.3</hungerRateFactor>
-		<capMods>
-		   <li>
-			  <capacity>Manipulation</capacity>
-			  <offset>-0.05</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.3</partEfficiencyOffset>
       </li>
       <li>
 		<label>regrown</label>
@@ -198,12 +165,7 @@
 		<minSeverity>0.01</minSeverity>
 		<restFallFactor>1.3</restFallFactor>
 		<hungerRateFactor>1.3</hungerRateFactor>
-		<capMods>
-		   <li>
-			  <capacity>Moving</capacity>
-			  <offset>-0.05</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.3</partEfficiencyOffset>
       </li>
       <li>
 		<label>regrown</label>
@@ -232,22 +194,12 @@
 		<minSeverity>0.01</minSeverity>
 		<restFallFactor>1.5</restFallFactor>
 		<hungerRateFactor>1.5</hungerRateFactor>
-		<capMods>
-		   <li>
-			  <capacity>Sight</capacity>
-			  <offset>-0.5</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.6</partEfficiencyOffset>
       </li>
       <li>
 		<label>hazy</label>
 		<minSeverity>3</minSeverity>
-		<capMods>
-		   <li>
-			  <capacity>Sight</capacity>
-			  <offset>-0.2</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.3</partEfficiencyOffset>
       </li>
 	  <li>
 		<label>regrown</label>
@@ -256,12 +208,7 @@
 	  <li>
 		<label>enhanced</label>
 		<minSeverity>14.9</minSeverity>
-		<capMods>
-		   <li>
-			  <capacity>Sight</capacity>
-			  <offset>0.20</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>.25</partEfficiencyOffset>
       </li>
     </stages>
   </HediffDef>
@@ -285,22 +232,12 @@
 		<minSeverity>0.01</minSeverity>
 		<restFallFactor>1.3</restFallFactor>
 		<hungerRateFactor>1.3</hungerRateFactor>
-		<capMods>
-		   <li>
-			  <capacity>Hearing</capacity>
-			  <offset>-0.5</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.5</partEfficiencyOffset>
       </li>
       <li>
 		<label>developing</label>
 		<minSeverity>3</minSeverity>
-		<capMods>
-		   <li>
-			  <capacity>Hearing</capacity>
-			  <offset>-0.2</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.25</partEfficiencyOffset>
       </li>
 	  <li>
 		<label>regrown</label>
@@ -309,12 +246,7 @@
 	  <li>
 		<label>enhanced</label>
 		<minSeverity>14.9</minSeverity>
-		<capMods>
-		   <li>
-			  <capacity>Hearing</capacity>
-			  <offset>0.20</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>.25</partEfficiencyOffset>
       </li>
     </stages>
   </HediffDef>
@@ -338,22 +270,12 @@
 		<minSeverity>0.01</minSeverity>
 		<restFallFactor>1.5</restFallFactor>
 		<hungerRateFactor>1.5</hungerRateFactor>
-		<capMods>
-		   <li>
-			  <capacity>Moving</capacity>
-			  <offset>-0.6</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.8</partEfficiencyOffset>
       </li>
       <li>
 		<label>fledgling</label>
 		<minSeverity>3</minSeverity>
-		<capMods>
-		   <li>
-			  <capacity>Moving</capacity>
-			  <offset>-0.4</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.5</partEfficiencyOffset>
       </li>
 	  <li>
 		<label>regrown</label>
@@ -362,12 +284,7 @@
 	  <li>
 		<label>wild</label>
 		<minSeverity>14.9</minSeverity>
-		<capMods>
-		   <li>
-			  <capacity>Moving</capacity>
-			  <offset>0.20</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>.25</partEfficiencyOffset>
       </li>
     </stages>
   </HediffDef>
@@ -391,22 +308,12 @@
 		<minSeverity>0.01</minSeverity>
 		<restFallFactor>1.5</restFallFactor>
 		<hungerRateFactor>1.5</hungerRateFactor>
-		<capMods>
-		   <li>
-			  <capacity>Moving</capacity>
-			  <offset>-0.3</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.5</partEfficiencyOffset>
       </li>
       <li>
 		<label>fledgling</label>
 		<minSeverity>3</minSeverity>
-		<capMods>
-		   <li>
-			  <capacity>Moving</capacity>
-			  <offset>-0.2</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.25</partEfficiencyOffset>
       </li>
 	  <li>
 		<label>regrown</label>
@@ -415,12 +322,7 @@
 	  <li>
 		<label>wild</label>
 		<minSeverity>14.9</minSeverity>
-		<capMods>
-		   <li>
-			  <capacity>Moving</capacity>
-			  <offset>0.12</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>.2</partEfficiencyOffset>
       </li>
     </stages>
   </HediffDef>
@@ -444,16 +346,7 @@
 		<minSeverity>0.01</minSeverity>
 		<restFallFactor>1.3</restFallFactor>
 		<hungerRateFactor>1.3</hungerRateFactor>
-		<capMods>
-		   <li>
-			  <capacity>Moving</capacity>
-			  <offset>-0.10</offset>
-		   </li>
-		    <li>
-			  <capacity>Manipulation</capacity>
-			  <offset>-0.10</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.25</partEfficiencyOffset>
       </li>
       <li>
 		<label>regrown</label>
@@ -481,30 +374,12 @@
 		<label>forming</label>
 		<minSeverity>0.01</minSeverity>
 		<hungerRateFactor>1.5</hungerRateFactor>
-		<capMods>
-		   <li>
-			  <capacity>Eating</capacity>
-			  <offset>-0.5</offset>
-		   </li>
-		   <li>
-			  <capacity>Talking</capacity>
-			  <offset>-0.8</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.6</partEfficiencyOffset>
       </li>
       <li>
 		<label>developing</label>
 		<minSeverity>3</minSeverity>
-		<capMods>
-		   <li>
-			  <capacity>Eating</capacity>
-			  <offset>-0.4</offset>
-		   </li>
-		   <li>
-			  <capacity>Talking</capacity>
-			  <offset>-0.7</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.4</partEfficiencyOffset>
       </li>
 	  <li>
 		<label>regrown</label>
@@ -513,16 +388,7 @@
 	  <li>
 		<label>enhanced</label>
 		<minSeverity>14.9</minSeverity>
-		<capMods>
-		   <li>
-			  <capacity>Eating</capacity>
-			  <offset>0.2</offset>
-		   </li>
-		   <li>
-			  <capacity>Talking</capacity>
-			  <offset>0.2</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>.3</partEfficiencyOffset>
       </li>
     </stages>
   </HediffDef>
@@ -546,40 +412,14 @@
 		<minSeverity>0.01</minSeverity>
 		<restFallFactor>1.5</restFallFactor>
 		<hungerRateFactor>1.5</hungerRateFactor>
-		<capMods>
-		   <li>
-			  <capacity>Moving</capacity>
-			  <offset>-0.5</offset>
-		   </li>
-		   <li>
-			  <capacity>Manipulation</capacity>
-			  <offset>-0.5</offset>
-		   </li>
-		   <li>
-			  <capacity>BloodPumping</capacity>
-			  <offset>-0.2</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.3</partEfficiencyOffset>
       </li>
       <li>
 		<label>new development</label>
 		<minSeverity>3</minSeverity>
 		<restFallFactor>1.5</restFallFactor>
 		<hungerRateFactor>1.5</hungerRateFactor>
-		<capMods>
-		   <li>
-			  <capacity>Moving</capacity>
-			  <offset>-0.4</offset>
-		   </li>
-		   <li>
-			  <capacity>Manipulation</capacity>
-			  <offset>-0.4</offset>
-		   </li>
-		   <li>
-			  <capacity>BloodPumping</capacity>
-			  <offset>-0.1</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.2</partEfficiencyOffset>
       </li>
 	  <li>
 		<label>melding</label>
@@ -588,20 +428,7 @@
 	  <li>
 		<label>entwined</label>
 		<minSeverity>14.9</minSeverity>
-		<capMods>
-		   <li>
-			  <capacity>Moving</capacity>
-			  <offset>0.1</offset>
-		   </li>
-		   <li>
-			  <capacity>Manipulation</capacity>
-			  <offset>0.1</offset>
-		   </li>
-		   <li>
-			  <capacity>BloodPumping</capacity>
-			  <offset>0.1</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>.2</partEfficiencyOffset>
       </li>
     </stages>
   </HediffDef>
@@ -625,24 +452,14 @@
 		<minSeverity>0.01</minSeverity>
 		<restFallFactor>1.5</restFallFactor>
 		<hungerRateFactor>1.5</hungerRateFactor>
-		<capMods>
-		   <li>
-			  <capacity>Breathing</capacity>
-			  <offset>-0.2</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.25</partEfficiencyOffset>
       </li>
       <li>
 		<label>developing</label>
 		<minSeverity>3</minSeverity>
 		<restFallFactor>1.5</restFallFactor>
 		<hungerRateFactor>1.5</hungerRateFactor>
-		<capMods>
-		   <li>
-			  <capacity>Breathing</capacity>
-			  <offset>-0.1</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.1</partEfficiencyOffset>
       </li>
 	  <li>
 		<label>regrown</label>
@@ -651,12 +468,7 @@
 	  <li>
 		<label>enhanced</label>
 		<minSeverity>14.9</minSeverity>
-		<capMods>
-		   <li>
-			  <capacity>Breathing</capacity>
-			  <offset>0.2</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>.2</partEfficiencyOffset>
       </li>
     </stages>
   </HediffDef>
@@ -680,24 +492,14 @@
 		<minSeverity>0.01</minSeverity>
 		<restFallFactor>1.5</restFallFactor>
 		<hungerRateFactor>1.5</hungerRateFactor>
-		<capMods>
-		   <li>
-			  <capacity>BloodFiltration</capacity>
-			  <offset>-0.2</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.25</partEfficiencyOffset>
       </li>
       <li>
 		<label>developing</label>
 		<minSeverity>3</minSeverity>
 		<restFallFactor>1.5</restFallFactor>
 		<hungerRateFactor>1.5</hungerRateFactor>
-		<capMods>
-		   <li>
-			  <capacity>BloodFiltration</capacity>
-			  <offset>-0.1</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.1</partEfficiencyOffset>
       </li>
 	  <li>
 		<label>regrown</label>
@@ -706,12 +508,7 @@
 	  <li>
 		<label>enhanced</label>
 		<minSeverity>14.9</minSeverity>
-		<capMods>
-		   <li>
-			  <capacity>BloodFiltration</capacity>
-			  <offset>0.1</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>.1</partEfficiencyOffset>
       </li>
     </stages>
   </HediffDef>
@@ -735,24 +532,14 @@
 		<minSeverity>0.01</minSeverity>
 		<restFallFactor>1.5</restFallFactor>
 		<hungerRateFactor>1.5</hungerRateFactor>
-		<capMods>
-		   <li>
-			  <capacity>BloodFiltration</capacity>
-			  <offset>-0.2</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.25</partEfficiencyOffset>
       </li>
       <li>
 		<label>developing</label>
 		<minSeverity>3</minSeverity>
 		<restFallFactor>1.5</restFallFactor>
 		<hungerRateFactor>1.5</hungerRateFactor>
-		<capMods>
-		   <li>
-			  <capacity>BloodFiltration</capacity>
-			  <offset>-0.1</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.1</partEfficiencyOffset>
       </li>
 	  <li>
 		<label>regrown</label>
@@ -761,12 +548,7 @@
 	  <li>
 		<label>enhanced</label>
 		<minSeverity>14.9</minSeverity>
-		<capMods>
-		   <li>
-			  <capacity>BloodFiltration</capacity>
-			  <offset>0.2</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>.1</partEfficiencyOffset>
       </li>
     </stages>
   </HediffDef>
@@ -774,7 +556,7 @@
   <HediffDef ParentName="DruidRegrowth">
     <defName>TM_StomachRegrowth</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-    <label>Regrown Liver</label>
+    <label>Regrown Stomach</label>
     <addedPartProps>
 	  <partEfficiency>1.1</partEfficiency>
     </addedPartProps>
@@ -790,12 +572,14 @@
 		<minSeverity>0.01</minSeverity>
 		<restFallFactor>1.5</restFallFactor>
 		<hungerRateFactor>2</hungerRateFactor>
+		<partEfficiencyOffset>-.25</partEfficiencyOffset>
       </li>
       <li>
 		<label>developing</label>
 		<minSeverity>3</minSeverity>
 		<restFallFactor>1.5</restFallFactor>
 		<hungerRateFactor>1.5</hungerRateFactor>
+		<partEfficiencyOffset>-.1</partEfficiencyOffset>
       </li>
 	  <li>
 		<label>regrown</label>
@@ -820,36 +604,18 @@
     </comps>
     <stages>
       <li>
-		<label>re-forming</label>
+		<label>forming</label>
 		<minSeverity>0.01</minSeverity>
 		<restFallFactor>1.5</restFallFactor>
 		<hungerRateFactor>1.5</hungerRateFactor>
-		<capMods>
-		   <li>
-			  <capacity>Moving</capacity>
-			  <offset>-0.5</offset>
-		   </li>
-		   <li>
-			  <capacity>Manipulation</capacity>
-			  <offset>-0.5</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.5</partEfficiencyOffset>
       </li>
       <li>
-		<label>new development</label>
+		<label>new growth</label>
 		<minSeverity>3</minSeverity>
 		<restFallFactor>1.5</restFallFactor>
 		<hungerRateFactor>1.5</hungerRateFactor>
-		<capMods>
-		   <li>
-			  <capacity>Moving</capacity>
-			  <offset>-0.4</offset>
-		   </li>
-		   <li>
-			  <capacity>Manipulation</capacity>
-			  <offset>-0.4</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>-.4</partEfficiencyOffset>
       </li>
 	  <li>
 		<label>melding</label>
@@ -858,16 +624,7 @@
 	  <li>
 		<label>entwined</label>
 		<minSeverity>14.9</minSeverity>
-		<capMods>
-		   <li>
-			  <capacity>Moving</capacity>
-			  <offset>0.15</offset>
-		   </li>
-		   <li>
-			  <capacity>Manipulation</capacity>
-			  <offset>0.1</offset>
-		   </li>
-		</capMods>
+		<partEfficiencyOffset>.2</partEfficiencyOffset>
       </li>
     </stages>
   </HediffDef>

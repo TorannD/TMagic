@@ -30,7 +30,7 @@
 		<label>advanced enchanting</label>
 		<tab>TMagic</tab>
 		<description>Enables crafting to tier II enchanting gems.</description>
-		<baseCost>1500</baseCost>
+		<baseCost>1000</baseCost>
 		<techLevel>Medieval</techLevel>
 		<researchViewX>1.0</researchViewX>
 		<researchViewY>1.0</researchViewY>
@@ -44,7 +44,7 @@
 		<label>expert enchanting</label>
 		<tab>TMagic</tab>
 		<description>Enables crafting of tier III enchanting gems.</description>
-		<baseCost>1800</baseCost>
+		<baseCost>1000</baseCost>
 		<techLevel>Medieval</techLevel>
 		<researchViewX>1.0</researchViewX>
 		<researchViewY>2.0</researchViewY>
@@ -58,7 +58,7 @@
 		<label>magicyte refining</label>
 		<tab>TMagic</tab>
 		<description>Allows gemcrafters to grind magicyte down into a powdered form that can be imbibed or imbued into an object.</description>
-		<baseCost>1000</baseCost>
+		<baseCost>800</baseCost>
 		<techLevel>Neolithic</techLevel>
 		<researchViewX>2.0</researchViewX>
 		<researchViewY>0.0</researchViewY>
@@ -100,7 +100,7 @@
 		<label>master scribing</label>
 		<tab>TMagic</tab>
 		<description>Allows the scribing of master spells.</description>
-		<baseCost>1200</baseCost>
+		<baseCost>1000</baseCost>
 		<techLevel>Medieval</techLevel>
 		<researchViewX>2.0</researchViewX>
 		<researchViewY>3.0</researchViewY>
@@ -114,7 +114,7 @@
 		<label>arcane crafting</label>
 		<tab>TMagic</tab>
 		<description>The first step in understanding the link between the arcane and physical. Enables construction of powerful gems of insight.</description>
-		<baseCost>3500</baseCost>
+		<baseCost>1000</baseCost>
 		<techLevel>Neolithic</techLevel>
 		<researchViewX>3.0</researchViewX>
 		<researchViewY>0.0</researchViewY>
@@ -128,7 +128,7 @@
 		<label>magical equipment</label>
 		<tab>TMagic</tab>
 		<description>Applies knowledge of arcane crafting and enchantments to learn how to recreate equipment with magical properties.</description>
-		<baseCost>2000</baseCost>
+		<baseCost>1500</baseCost>
 		<techLevel>Neolithic</techLevel>
 		<researchViewX>3.0</researchViewX>
 		<researchViewY>1.0</researchViewY>
@@ -142,7 +142,7 @@
 		<label>arcane artifacts</label>
 		<tab>TMagic</tab>
 		<description>Enables the recreation of arcane artifacts through extensive research combining knowledge of enchantments, ancient designs, runes, and rumors.</description>
-		<baseCost>2000</baseCost>
+		<baseCost>1000</baseCost>
 		<techLevel>Medieval</techLevel>
 		<researchViewX>3.0</researchViewX>
 		<researchViewY>2.0</researchViewY>

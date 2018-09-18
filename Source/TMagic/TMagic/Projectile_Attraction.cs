@@ -10,7 +10,7 @@ namespace TorannMagic
     class Projectile_Attraction : Projectile_AbilityBase
     {
         int age = -1;
-        int duration = 1800;
+        int duration = 1200;
         int verVal = 0;
         int pwrVal = 0;
         float arcaneDmg = 1;
@@ -79,7 +79,7 @@ namespace TorannMagic
                     pwrVal = 3;
                     verVal = 3;
                 }
-                this.duration = this.duration + (180 * verVal);
+                this.duration = this.duration + (120 * verVal);
                 this.strikeDelay = this.strikeDelay - verVal;
                 this.radius = this.def.projectile.explosionRadius + (1.5f * pwrVal);
                 this.initialized = true;

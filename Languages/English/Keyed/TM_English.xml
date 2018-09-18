@@ -102,6 +102,10 @@
 <TM_AugmentationsToggleDesc>Enables or disables the automatic use of augmentations.  If disabled, the psionic will never use augmentation skills.</TM_AugmentationsToggleDesc>
 <TM_AugmentationsEnabled>Augments Enabled</TM_AugmentationsEnabled>
 <TM_AugmentationsDisabled>Augments Disabled</TM_AugmentationsDisabled>
+<TM_CanNotTeachMagic>{0} is unable to mentor {1} in magic since {1} is not a mage.</TM_CanNotTeachMagic>
+<TM_CanNotTeachCombat>{0} is unable to train {1} in combat since {1} is not a fighter.</TM_CanNotTeachCombat>
+<TM_CanNotTeachMagicDislike>{0} refuses to mentor {1} in magic due to the opinion {0} has of {1}.</TM_CanNotTeachMagicDislike>
+<TM_CanNotTeachCombatDislike>{0} refuses to train {1} in combat due to the opinion {0} has of {1}.</TM_CanNotTeachCombatDislike>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
@@ -510,7 +514,7 @@ Level 2: -15% consciousness
 Level 3: -20% consciousness</TM_Lullaby_ver_desc>
 <TM_BattleHymn_eff_desc>Reduces mana cost to use and maintain Battle Hymn by 6% per skill level.</TM_BattleHymn_eff_desc>
 <TM_BattleHymn_ver_desc>Increases range of battle hymn by 2m per skill point (base 11m). Also increases the tempo of battle hymn by .5s (5s base).</TM_BattleHymn_ver_desc>
-<TM_BattleHymn_pwr_desc>Increases the effects of battle hymn 12% per skill point for each verse (iteration) it remains active.</TM_BattleHymn_pwr_desc>
+<TM_BattleHymn_pwr_desc>Increases the effects of battle hymn 12% per skill point for each verse (iteration) it remains active and increases the chance of invoking an inspiration by 1%.</TM_BattleHymn_pwr_desc>
 
 <TM_BardTraining_pwr>Bard Training</TM_BardTraining_pwr>
 <TM_Entertain_ver>Abundant Laughter</TM_Entertain_ver>
@@ -539,7 +543,7 @@ Level 3: 45-60s, 6cell radius</TM_Dominate_ver_desc>
 <TM_Dominate_eff_desc>Decreases the mana cost of Dominate by 6% and reduces the severity cost to propagate dominate to another host by 20%.</TM_Dominate_eff_desc>
 <TM_Attraction_eff_desc>Reduces mana cost of Attraction by 8% per skill point.</TM_Attraction_eff_desc>
 <TM_Attraction_pwr_desc>Increases the radius of Attraction by 1.5cells per skill level.</TM_Attraction_pwr_desc>
-<TM_Attraction_ver_desc>Increases the duration of the Attraction well by 3s and its slow duration by 25% per skill level.</TM_Attraction_ver_desc>
+<TM_Attraction_ver_desc>Increases the duration of the Attraction well by 2s and its slow duration by 25% per skill level.</TM_Attraction_ver_desc>
 <TM_Repulsion_eff_desc>Reduces mana cost of Repulsion by 8% per skill point.</TM_Repulsion_eff_desc>
 <TM_Repulsion_pwr_desc>Increases the force of Repulsion by 20% per skill level. The amount of force applied to a pawn is proportional to their distance to the center.</TM_Repulsion_pwr_desc>
 <TM_Repulsion_ver_desc>Applies damage based on the amount of force acting on the pawn. This damage is applied only to enemies.
@@ -851,11 +855,11 @@ This ability has a minimum target range of 5 cells.
 Training in this skill improves the maximum range, damage, and reduces the psionic energy required to perform the attack.
 
 This augmentation occurs automatically but must be trained in at least once to become active.</TM_PsionicAugmentation_ver_desc>
-<TM_PsionicBarrier_pwr_desc>Projectiles deflected by barrier have a chance to drain stamina instead of psionic energy. Each level improves this chance by 7%.
+<TM_PsionicBarrier_pwr_desc>Projectiles deflected by barrier have a chance to drain stamina instead of psionic energy. Each level improves this chance by 15%.
 Level 0: 0%
-Level 1: 7%
-Level 2: 14%
-Level 3: 21%</TM_PsionicBarrier_pwr_desc>
+Level 1: 15%
+Level 2: 30%
+Level 3: 45%</TM_PsionicBarrier_pwr_desc>
 <TM_PsionicBarrier_eff_desc>Reduces the amount of psionic energy drained when deflecting a projectile by 10% per skill point.</TM_PsionicBarrier_eff_desc>
 <TM_PsionicBarrier_ver_desc>Increases the radius of barrier by half a cell per skill point. Default radius is 2 cells.</TM_PsionicBarrier_ver_desc>
 <TM_PsionicBlast_pwr_desc>Power up psi blast, each level increases damage by 15%.</TM_PsionicBlast_pwr_desc>

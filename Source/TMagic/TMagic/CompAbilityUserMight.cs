@@ -57,6 +57,8 @@ namespace TorannMagic
         public bool skill_StrongBack = false;
         public bool skill_ThickSkin = false;
         public bool skill_FightersFocus = false;
+        public bool skill_Teach = false;
+
 
         public float maxSP = 1;
         public float spRegenRate = 1;
@@ -944,6 +946,11 @@ namespace TorannMagic
                 this.RemovePawnAbility(TorannMagicDefOf.TM_FightersFocus);
                 this.AddPawnAbility(TorannMagicDefOf.TM_FightersFocus);
             }
+            if (this.skill_Teach == true)
+            {
+                this.RemovePawnAbility(TorannMagicDefOf.TM_TeachMight);
+                this.AddPawnAbility(TorannMagicDefOf.TM_TeachMight);
+            }
 
         }
 
@@ -1605,7 +1612,18 @@ namespace TorannMagic
 
         public void DoReversal(DamageInfo dinfo)
         {
-            GiveReversalJob(dinfo);            
+            Thing instigator = dinfo.Instigator;
+            
+            if(instigator is Pawn)
+            {
+                Pawn shooterPawn = instigator as Pawn;
+                if (!dinfo.Weapon.IsMeleeWeapon && dinfo.WeaponBodyPartGroup == null)
+                {
+                    TM_CopyAndLaunchProjectile.CopyAndLaunchThing(shooterPawn.equipment.PrimaryEq.PrimaryVerb.verbProps.defaultProjectile, this.Pawn, instigator, shooterPawn, ProjectileHitFlags.IntendedTarget, null);
+                }
+            }
+            
+            //GiveReversalJob(dinfo);            
         }
 
         public void SiphonReversal(int verVal)
@@ -1661,7 +1679,7 @@ namespace TorannMagic
             
         }
 
-        public void GiveReversalJob(DamageInfo dinfo)
+        public void GiveReversalJob(DamageInfo dinfo)  // buggy AF due to complications with CompDeflector
         {
             try
             {
@@ -1688,12 +1706,17 @@ namespace TorannMagic
                             bool flag3 = primaryEq != null;
                             if (flag3)
                             {
+                                Log.Message("attempting deflect of pawn " + pawn.LabelShort);
+                                Log.Message("equipped with " + pawn.equipment.PrimaryEq.PrimaryVerb);
                                 bool flag4 = primaryEq.PrimaryVerb != null;
                                 if (flag4)
                                 {
+                                    Log.Message("primary verb is not null");
                                     Verb_Deflected verb_Deflected = (Verb_Deflected)this.CopyAndReturnNewVerb(primaryEq.PrimaryVerb);
-                                    verb_Deflected = (Verb_Deflected)this.ReflectionHandler(this.deflectVerb);
-                                    Log.Message("verb deflected is " + verb_Deflected); //throwing an error, so nothing is happening in jobdriver_castdeflectverb
+                                    Log.Message("verb deflected assigned ");
+                                    Log.Message("verb deflected is " + verb_Deflected.ToString()); //throwing an error, so nothing is happening in jobdriver_castdeflectverb
+                                    //verb_Deflected = this.ReflectionHandler(verb_Deflected);
+                                    //Log.Message("verb deflected with properties is " + verb_Deflected.ToString()); //throwing an error, so nothing is happening in jobdriver_castdeflectverb
                                     pawn = dinfo.Instigator as Pawn;
                                     job.targetA = pawn;
                                     job.verbToUse = verb_Deflected;
@@ -1714,30 +1737,46 @@ namespace TorannMagic
         {
             if (newVerb != null)
             {
-                deflectVerb = null;
+                deflectVerb = newVerb as Verb_Deflected;
                 deflectVerb = (Verb_Deflected)Activator.CreateInstance(typeof(Verb_Deflected));
                 deflectVerb.caster = this.Pawn;
+                
 
                 //Initialize VerbProperties
                 var newVerbProps = new VerbProperties
                 {
                     //Copy values over to a new verb props
+                    
                     hasStandardCommand = newVerb.verbProps.hasStandardCommand,
                     defaultProjectile = newVerb.verbProps.defaultProjectile,
                     range = newVerb.verbProps.range,
-                    muzzleFlashScale = newVerb.verbProps.muzzleFlashScale,
+                    muzzleFlashScale = newVerb.verbProps.muzzleFlashScale,                    
                     warmupTime = 0,
                     defaultCooldownTime = 0,
-                    soundCast = SoundDefOf.MetalHitImportant
+                    soundCast = SoundDefOf.MetalHitImportant,
+                    impactMote = newVerb.verbProps.impactMote,
+                    label = newVerb.verbProps.label,
+                    ticksBetweenBurstShots = 0,
+                    rangedFireRulepack = RulePackDef.Named("TM_Combat_Reflection"),
+                    accuracyLong = 70f * Rand.Range(1f, 2f),
+                    accuracyMedium = 80f * Rand.Range(1f, 2f),
+                    accuracyShort = 90f * Rand.Range(1f, 2f)
                 };
 
                 //Apply values
                 deflectVerb.verbProps = newVerbProps;
             }
+            else
+            {
+                if (deflectVerb != null) return deflectVerb;
+                deflectVerb = (Verb_Deflected)Activator.CreateInstance(typeof(Verb_Deflected));
+                deflectVerb.caster = this.Pawn;
+                deflectVerb.verbProps = newVerb.verbProps;
+            }
             return deflectVerb;
         }
 
-        public Verb ReflectionHandler(Verb newVerb)
+        public Verb_Deflected ReflectionHandler(Verb_Deflected newVerb)
         {
             VerbProperties verbProperties = new VerbProperties
             {
@@ -1747,14 +1786,15 @@ namespace TorannMagic
                 muzzleFlashScale = newVerb.verbProps.muzzleFlashScale,
                 warmupTime = 0f,
                 defaultCooldownTime = 0f,
-                soundCast = SoundDefOf.MetalHitImportant
+                soundCast = SoundDefOf.MetalHitImportant,
+                accuracyLong = 70f * Rand.Range(1f, 2f),
+                accuracyMedium = 80f * Rand.Range(1f, 2f),
+                accuracyShort = 90f * Rand.Range(1f, 2f)
             };
 
-            verbProperties.accuracyLong = 70f * Rand.Range(1f, 2f);
-            verbProperties.accuracyMedium = 80f * Rand.Range(1f, 2f);
-            verbProperties.accuracyShort = 90f * Rand.Range(1f, 2f);
-
             newVerb.verbProps = verbProperties;
+            Log.Message("assigning verb properties");
+            Log.Message("newverb is " + newVerb);
 
             return newVerb;
         }
@@ -1767,6 +1807,12 @@ namespace TorannMagic
 
         public void ResolveClassSkills()
         {
+            if (this.MightUserLevel >= 20 && this.skill_Teach == false)
+            {
+                this.AddPawnAbility(TorannMagicDefOf.TM_TeachMight);
+                this.skill_Teach = true;
+            }
+
             if (this.IsMightUser && !this.Pawn.Dead && !this.Pawn.Downed)
             {
                 if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer))
@@ -2306,6 +2352,7 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.skill_StrongBack, "skill_StrongBack", false, false);
             Scribe_Values.Look<bool>(ref this.skill_ThickSkin, "skill_ThickSkin", false, false);
             Scribe_Values.Look<bool>(ref this.skill_FightersFocus, "skill_FightersFocus", false, false);
+            Scribe_Values.Look<bool>(ref this.skill_Teach, "skill_Teach", false, false);
             Scribe_Deep.Look<MightData>(ref this.mightData, "mightData", new object[]
             {
                 this

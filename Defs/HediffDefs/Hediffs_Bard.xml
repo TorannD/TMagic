@@ -160,7 +160,7 @@
   
   <!-- Battle hymn -->
   
-  <HediffDef ParentName="CombatIIBuffBase">
+  <HediffDef>  <!-- ParentName="CombatIIBuffBase"> -->
     <defName>TM_BattleHymnHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Battle Hymn</label>
@@ -168,6 +168,11 @@
     <scenarioCanAdd>false</scenarioCanAdd>
 	<isBad>false</isBad>
 	<maxSeverity>10.0</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-35</severityPerDay>
+      </li>	  
+    </comps>
     <stages>
       <li>
 	    <label>I</label>

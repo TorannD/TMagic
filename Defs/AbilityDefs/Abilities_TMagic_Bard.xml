@@ -302,7 +302,11 @@ Activating the ability casts a net over the colony and allows the bard to detect
     <defName>TM_BattleHymn</defName>
     <label>Battle Hymn</label>
     <uiIconPath>UI/anthem</uiIconPath>
-    <description>Play a rousing battle hymn to motivate and empower nearby allies. Each verse of the hymn will further bolster the combat power of allies. Each verse consumes 9% additional mana (reduced through training). Use the skill to activate or deactivate the ability.</description>
+    <description>Play a rousing battle hymn to motivate and empower nearby allies. Each verse of the hymn adds to the effect and will further bolster the combat power of allies. Every verse consumes 9% additional mana (reduced through training). 
+	
+Battle Hymn has a small chance to cause inspirations that will further boost combat abilities. 
+	
+Use the skill to activate or deactivate the ability.</description>
     <manaCost>0.20</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_BattleHymn</verbClass>
