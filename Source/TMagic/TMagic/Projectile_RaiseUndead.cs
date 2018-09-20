@@ -4,6 +4,7 @@ using AbilityUser;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using Vampire;
 
 namespace TorannMagic
 {
@@ -51,43 +52,59 @@ namespace TorannMagic
                             {
                                 corpse = corpseThing as Corpse;
                                 Pawn undeadPawn = corpse.InnerPawn;
-                                Pawn newUndeadPawn = new Pawn();
-                                
+                                Pawn newUndeadPawn = new Pawn();                                
                                 if (undeadPawn.RaceProps.IsFlesh && undeadPawn.Dead && undeadPawn.def.thingClass.FullName != "TorannMagic.TMPawnSummoned")
                                 {
-                                    undeadPawn.SetFaction(pawn.Faction);
-                                    ResurrectionUtility.Resurrect(undeadPawn);
-                                    raisedPawns++;
-                                    if (!undeadPawn.kindDef.RaceProps.Animal && undeadPawn.kindDef.RaceProps.Humanlike)
+                                    bool wasVampire = false;
+                                    CompVampire isVamp = undeadPawn.GetComp<CompVampire>();
+                                    if (isVamp != null)
                                     {
-                                        HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, -4f);
-                                        HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, .5f + ver.level);
-                                        RedoSkills(undeadPawn);
-                                        RemoveTraits(undeadPawn, undeadPawn.story.traits.allTraits);                                        
-                                        undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Undead"), 0, false));
-                                        undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Psychopath"), 0, false));
-                                        undeadPawn.needs.AddOrRemoveNeedsAsAppropriate();
-                                        Color undeadColor = new Color(.2f, .4f, 0);
-                                        undeadPawn.story.hairColor = undeadColor;                                        
-                                        CompAbilityUserMagic undeadComp = undeadPawn.GetComp<CompAbilityUserMagic>();
-                                        if (undeadComp.IsMagicUser)
+                                        if (isVamp.IsVampire || isVamp.IsRevenant || isVamp.IsGhoul)
                                         {
-                                            undeadComp.ClearPowers();
-                                        }                                       
-                                                                              
-                                        List<SkillRecord> skills = undeadPawn.skills.skills;
-                                        for (int j = 0; j < skills.Count; j++)
-                                        {
-                                            skills[j].passion = Passion.None;
+                                            wasVampire = true;
                                         }
-                                        undeadPawn.playerSettings.hostilityResponse = HostilityResponseMode.Attack;
-                                        undeadPawn.playerSettings.medCare = MedicalCareCategory.NoMeds;
-                                        for(int h = 0; h < 24; h++ )
-                                        {
-                                            undeadPawn.timetable.SetAssignment(h, TimeAssignmentDefOf.Work);
-                                        }                                        
-
                                     }
+                                    if (!wasVampire)
+                                    {
+                                        undeadPawn.SetFaction(pawn.Faction);
+                                        ResurrectionUtility.Resurrect(undeadPawn);
+                                        raisedPawns++;
+                                        if (!undeadPawn.kindDef.RaceProps.Animal && undeadPawn.kindDef.RaceProps.Humanlike)
+                                        {
+                                            HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, -4f);
+                                            HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, .5f + ver.level);
+                                            RedoSkills(undeadPawn);
+                                            RemoveTraits(undeadPawn, undeadPawn.story.traits.allTraits);
+                                            undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Undead"), 0, false));
+                                            undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Psychopath"), 0, false));
+                                            undeadPawn.needs.AddOrRemoveNeedsAsAppropriate();
+                                            Color undeadColor = new Color(.2f, .4f, 0);
+                                            undeadPawn.story.hairColor = undeadColor;
+                                            CompAbilityUserMagic undeadComp = undeadPawn.GetComp<CompAbilityUserMagic>();
+                                            if (undeadComp.IsMagicUser)
+                                            {
+                                                undeadComp.ClearPowers();
+                                            }
+
+                                            List<SkillRecord> skills = undeadPawn.skills.skills;
+                                            for (int j = 0; j < skills.Count; j++)
+                                            {
+                                                skills[j].passion = Passion.None;
+                                            }
+                                            undeadPawn.playerSettings.hostilityResponse = HostilityResponseMode.Attack;
+                                            undeadPawn.playerSettings.medCare = MedicalCareCategory.NoMeds;
+                                            for (int h = 0; h < 24; h++)
+                                            {
+                                                undeadPawn.timetable.SetAssignment(h, TimeAssignmentDefOf.Work);
+                                            }
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Messages.Message("Vampiric powers have prevented undead reanimation of " + undeadPawn.LabelShort, MessageTypeDefOf.RejectInput);
+                                    }
+
                                     if (undeadPawn.kindDef.RaceProps.Animal)
                                     {
                                         HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadAnimalHD, -4f);

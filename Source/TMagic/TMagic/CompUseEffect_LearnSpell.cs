@@ -183,33 +183,18 @@ namespace TorannMagic
                 }
                 else if (parent.def.defName == "SpellOf_HolyWrath" && comp.spell_HolyWrath == false && user.story.traits.HasTrait(TorannMagicDefOf.Paladin))
                 {
-                    if (comp.MagicData.magicPowerP.Count < 5)
-                    {
-                        comp.ClearPowers();
-                        Messages.Message("The paladin class for " + user.LabelShort + " has been reset to allow the use of Holy Wrath - please re-assign ability points.", MessageTypeDefOf.NeutralEvent);
-                    }
                     comp.spell_HolyWrath = true;
                     comp.InitializeSpell();
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
                 else if (parent.def.defName == "SpellOf_LichForm" && comp.spell_LichForm == false && user.story.traits.HasTrait(TorannMagicDefOf.Necromancer))
                 {
-                    if (comp.MagicData.magicPowerN.Count < 6)
-                    {
-                        comp.ClearPowers();
-                        Messages.Message("The necromancer class for " + user.LabelShort + " has been reset to allow the use of Lich Form - please re-assign ability points.", MessageTypeDefOf.NeutralEvent);
-                    }
                     comp.spell_LichForm = true;
                     comp.InitializeSpell();
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
                 else if (parent.def.defName == "SpellOf_SummonPoppi" && comp.spell_SummonPoppi == false && user.story.traits.HasTrait(TorannMagicDefOf.Summoner))
                 {
-                    if (comp.MagicData.magicPowerS.Count < 5)
-                    {
-                        comp.ClearPowers();
-                        Messages.Message("The summoner class for " + user.LabelShort + " has been reset to allow the use of Summon Poppi - please re-assign ability points.", MessageTypeDefOf.NeutralEvent);
-                    }
                     comp.spell_SummonPoppi = true;
                     comp.InitializeSpell();
                     this.parent.Destroy(DestroyMode.Vanish);
@@ -234,46 +219,21 @@ namespace TorannMagic
                 }
                 else if (parent.def.defName == "SpellOf_CauterizeWound" && comp.spell_CauterizeWound == false && user.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
                 {
-                    try
-                    {
                         comp.spell_CauterizeWound = true;
                         comp.InitializeSpell();
                         this.parent.Destroy(DestroyMode.Vanish);
-                    }
-                    catch
-                    {
-                        comp.ClearPowers();
-                        Messages.Message("The magic class for " + user.LabelShort + " has been reset for updates, please reassign skills.", MessageTypeDefOf.NeutralEvent);
-                        comp.spell_CauterizeWound = true;
-                        comp.InitializeSpell();
-                        this.parent.Destroy(DestroyMode.Vanish);
-                    }
-
                 }
                 else if (parent.def.defName == "SpellOf_FertileLands" && comp.spell_FertileLands == false && user.story.traits.HasTrait(TorannMagicDefOf.Druid))
                 {
-                    comp.ClearPowers();
-                    Messages.Message("The magic class for " + user.LabelShort + " has been reset for updates, please reassign skills.", MessageTypeDefOf.NeutralEvent);
                     comp.spell_FertileLands = true;
                     comp.InitializeSpell();
                     this.parent.Destroy(DestroyMode.Vanish);                    
                 }
                 else if (parent.def.defName == "SpellOf_SpellMending" && comp.spell_SpellMending == false)
                 {
-                    try
-                    {
                         comp.spell_SpellMending = true;
                         comp.InitializeSpell();
                         this.parent.Destroy(DestroyMode.Vanish);
-                    }
-                    catch
-                    {
-                        comp.ClearPowers();
-                        Messages.Message("The magic class for " + user.LabelShort + " has been reset for updates, please reassign skills.", MessageTypeDefOf.NeutralEvent);
-                        comp.spell_SpellMending = true;
-                        comp.InitializeSpell();
-                        this.parent.Destroy(DestroyMode.Vanish);
-                    }
                 }
                 else
                 {

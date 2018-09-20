@@ -108,13 +108,22 @@ namespace TorannMagic
                             MoteMaker.ThrowSmoke(caster.DrawPos, caster.Map, 1f);
                             MoteMaker.ThrowSmoke(caster.DrawPos, caster.Map, 1.2f);
                             MoteMaker.ThrowHeatGlow(caster.Position, caster.Map, .8f);
-                            caster.DeSpawn();
-                            if(!caster.IsColonist)
+                            if (!caster.IsColonist)
                             {
                                 Lord lord = caster.GetLord();
-                                lord.AddPawn(hitPawn);
-                                LordJob_AssaultColony lordJob = new LordJob_AssaultColony(caster.Faction, false, false, false, true, false);
+                                LordJob lordJob = caster.GetLord().LordJob;
+                                try
+                                {
+                                    PawnDuty duty = caster.mindState.duty;
+                                    hitPawn.mindState.duty = duty;
+                                    lord.AddPawn(hitPawn);
+                                }
+                                catch
+                                {
+                                    Log.Message("error attempting to assign a duty to pawn during possession");
+                                }                                
                             }
+                            caster.DeSpawn();
                         }
                         else
                         {

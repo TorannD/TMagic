@@ -1381,7 +1381,14 @@ namespace TorannMagic
             if (mightDef == TorannMagicDefOf.TM_AnimalFriend)
             {
                 MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_AnimalFriend.FirstOrDefault((MightPowerSkill x) => x.label == "TM_AnimalFriend_eff");
-                adjustedStaminaCost = mightDef.staminaCost - mightDef.staminaCost * (this.R_AnimalFriend_eff * (float)mightPowerSkill.level);
+                if (this.bondedPet != null)
+                {
+                    adjustedStaminaCost = (mightDef.staminaCost - (mightDef.staminaCost * (this.R_AnimalFriend_eff * (float)mightPowerSkill.level))/ 2);
+                }
+                else
+                {
+                    adjustedStaminaCost = mightDef.staminaCost - mightDef.staminaCost * (this.R_AnimalFriend_eff * (float)mightPowerSkill.level);
+                }
             }
             if (mightDef == TorannMagicDefOf.TM_ArrowStorm || mightDef == TorannMagicDefOf.TM_ArrowStorm_I || mightDef == TorannMagicDefOf.TM_ArrowStorm_II || mightDef == TorannMagicDefOf.TM_ArrowStorm_III)
             {

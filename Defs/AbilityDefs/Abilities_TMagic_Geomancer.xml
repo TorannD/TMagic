@@ -442,7 +442,9 @@ The first, and every third stone after, will always be subterranean unless there
         <defName>TM_Sentinel</defName>
         <label>Sentinel</label>
         <uiIconPath>PawnKind/gargoyle_south</uiIconPath>
-        <description>Creates a stone sentinel to defend an area.
+        <description>Creates a stone sentinel to defend an area. Sentinels will remain dormant until an enemy is within range, then they will break free of their stone chains to defend their terrain.
+		
+Using this ability on a dormant sentinel will dismiss the sentinel.
 
 *Aesthetic note: sentinels will always face away from the caster.</description>
 		<manaCost>0.20</manaCost>

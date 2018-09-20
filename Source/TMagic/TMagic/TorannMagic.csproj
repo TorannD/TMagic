@@ -74,6 +74,10 @@
       <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Vampire">
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\1187010034\Assemblies\Vampire.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbilityDecisionConditionalNode_EnemyTargetIsBuilding.cs" />

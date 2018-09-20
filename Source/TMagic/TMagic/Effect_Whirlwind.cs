@@ -40,7 +40,7 @@ namespace TorannMagic
             if (flag)
             {
                 Pawn casterPawn = base.CasterPawn;
-                this.Ability.PostAbilityAttempt();
+                //this.Ability.PostAbilityAttempt();
                 
                 LongEventHandler.QueueLongEvent(delegate
                 {

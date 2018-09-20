@@ -29,10 +29,10 @@ namespace TorannMagic
         private int nextStrike = 0;
         private int radius = 4;
         private float arcaneDmg = 1;
-        private int duration = 900;         //absolute longest this ability will last - backstop
+        private int duration = 1000;         //absolute longest this ability will last - backstop
         private int spinRate = 20;
-        private int ticksTillNextStrike = 60;
-        private int baseGravityPoints = 5;
+        private int ticksTillNextStrike = 50;
+        private int baseGravityPoints = 8;
  
         public override void ExposeData()
         {

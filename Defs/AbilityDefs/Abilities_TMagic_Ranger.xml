@@ -125,14 +125,15 @@
 
 	<TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
         <defName>TM_AnimalFriend</defName>
-        <label>Animal Friend</label>
+        <label>Animal Bond</label>
         <uiIconPath>UI/animalfriend</uiIconPath>
         <description>At home in the wild, the ranger is able to form a bond with creatures of the wild. 
 		
 Rangers are only able to form a single bond and maintaining the bond uses 30% of the Ranger's stamina reserves; making a new bond breaks an existing bond and will likely cause the animal with a broken bond to leave forever. The bond must be renewed for an improved bond to take affect. 
 
-The increase in physical capability applies to the animal kin only, in return, the bonded animal will assist the ranger in whatever capacity the animal is capable.</description>
-        <staminaCost>0.90</staminaCost>
+The increase in physical capability applies to the animal kin only, in return, the bonded animal will assist the ranger in whatever capacity the animal is capable.
+A bond can be removed by using this ability on a bonded creature.</description>
+        <staminaCost>0.60</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_AnimalFriend</verbClass>
             <hasStandardCommand>true</hasStandardCommand>

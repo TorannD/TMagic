@@ -54,7 +54,7 @@ namespace TorannMagic
                 for (int i = 0; i < needs.Count; i++)
                 {
                     if(needs[i].def.defName != "Joy" && needs[i].def.defName != "Mood" && needs[i].def.defName != "TM_Mana" && needs[i].def.defName != "TM_Stamina")
-                    {
+                    { 
                         needs[i].CurLevel = needs[i].MaxLevel;
                     }
                     

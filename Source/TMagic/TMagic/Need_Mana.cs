@@ -192,12 +192,20 @@ namespace TorannMagic
                             this.drainMinion = (0.0012f * (comp.summonedMinions.Count * (.2f - (.01f * summonerEff.level))));
                             amount -= this.drainMinion;
                         }
+                        else
+                        {
+                            this.drainMinion = 0;
+                        }
 
                         if(comp.earthSpriteType != 0)
                         {
                             MagicPowerSkill manaDeviant = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EarthSprites.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EarthSprites_ver");
                             this.drainSprites = (0.0012f * (.6f - (.07f * manaDeviant.level)));
                             amount -= this.drainSprites;
+                        }
+                        else
+                        {
+                            this.drainSprites = 0;
                         }
 
                         if (pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))

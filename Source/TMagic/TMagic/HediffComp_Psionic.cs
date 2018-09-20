@@ -170,7 +170,7 @@ namespace TorannMagic
                                 }
                             }
 
-                            if (this.Pawn.CurJob.targetA.Thing != null && (this.Pawn.Position - this.Pawn.CurJob.targetA.Thing.Position).LengthHorizontal < 2 && this.Pawn.CurJob.bill != null)
+                            if (this.Pawn.CurJob.targetA.Thing != null && (this.Pawn.Position - this.Pawn.CurJob.targetA.Thing.Position).LengthHorizontal < 2 && (this.Pawn.CurJob.bill != null || this.Pawn.CurJob.def.defName == "FinishFrame"))
                             {
                                 this.parent.Severity -= 6f;
                                 if (this.PwrVal == 0)

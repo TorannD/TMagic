@@ -37,7 +37,7 @@ namespace TorannMagic
             bool flag = t.Cell != default(IntVec3);
             if (flag)
             {
-                this.Ability.PostAbilityAttempt();
+                //this.Ability.PostAbilityAttempt();
                 base.CasterPawn.rotationTracker.Face(t.CenterVector3);
                 LongEventHandler.QueueLongEvent(delegate
                 {

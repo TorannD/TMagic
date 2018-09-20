@@ -4478,6 +4478,27 @@ namespace TorannMagic
                 dismissMinionSpell = false;                    
             }
 
+            if (this.summonedMinions.Count > 0)
+            {
+                for (int i = 0; i < this.summonedMinions.Count(); i++)
+                {
+                    Pawn minion = this.summonedMinions[i] as Pawn;
+                    if (minion != null)
+                    {
+                        if (minion.DestroyedOrNull() || minion.Dead)
+                        {
+                            this.summonedMinions.Remove(this.summonedMinions[i]);
+                            i--;
+                        }
+                    }
+                    else
+                    {
+                        this.summonedMinions.Remove(this.summonedMinions[i]);
+                        i--;
+                    }
+                }
+            }
+
             if (this.earthSpriteType != 0 && dismissEarthSpriteSpell == false)
             {
                 this.AddPawnAbility(TorannMagicDefOf.TM_DismissEarthSprites);

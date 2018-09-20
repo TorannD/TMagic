@@ -31,7 +31,7 @@ namespace TorannMagic
             harmonyInstance.Patch(original: AccessTools.Method(type: typeof(IncidentWorker_DiseaseHuman), name: "PotentialVictimCandidates"), prefix: null,
                 postfix: new HarmonyMethod(type: patchType, name: nameof(DiseaseHuman_Candidates_Patch)), transpiler: null);
             harmonyInstance.Patch(original: AccessTools.Method(type: typeof(IncidentWorker_DiseaseAnimal), name: "PotentialVictimCandidates"), prefix: null,  //calls the same patch as human, which includes hediff for undead animals
-                postfix: new HarmonyMethod(type: patchType, name: nameof(DiseaseHuman_Candidates_Patch)), transpiler: null);
+                postfix: new HarmonyMethod(type: patchType, name: nameof(DiseaseHuman_Candidates_Patch)), transpiler: null);            
             //harmonyInstance.Patch(AccessTools.Method(typeof(Verb), "get_TerrainDefSource", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_TerrainDefSource", null), null);
             //harmonyInstance.Patch(AccessTools.Method(typeof(Verb), "get_EquipmentSource", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_EquipmentSource", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(Caravan),"get_NightResting", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_NightResting_Undead", null), null);
@@ -207,7 +207,7 @@ namespace TorannMagic
                     GenPlace.TryPlaceThing(thing, __instance.pawn.Position, __instance.pawn.Map, ThingPlaceMode.Near, null);
                 }
             }
-        }        
+        } 
 
         [HarmonyPriority(100)]
         public static void TM_Children_TrySpawnHatchedOrBornPawn_Tweak(ref Pawn pawn, Thing motherOrEgg, ref bool __result)
@@ -2068,6 +2068,57 @@ namespace TorannMagic
             //        }
             //    }
             //}
+        }
+
+        [HarmonyPriority(900)]
+        [HarmonyPatch(typeof(Pawn_NeedsTracker), "ShouldHaveNeed", null)]
+        public static class Pawn_NeedsTracker_Patch
+        {
+            public static FieldInfo pawn = typeof(Pawn_NeedsTracker).GetField("pawn", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.GetField);
+            public static bool Prefix(Pawn_NeedsTracker __instance, NeedDef nd, ref bool __result)
+            {
+                Traverse traverse = Traverse.Create(__instance);
+                Pawn pawn = (Pawn)Pawn_NeedsTracker_Patch.pawn.GetValue(__instance);
+                if (pawn != null)
+                {
+                    if (nd.defName == "ROMV_Blood" && (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadAnimalHD")) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD"))))
+                    {
+                        __result = false;
+                        return false;
+                    }
+                    if ((nd.defName == "TM_Mana" || nd.defName == "TM_Stamina") && pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")))
+                    {
+                        __result = false;
+                        return false;
+                    }
+                }
+                return true;
+
+            }
+        }
+
+        [HarmonyPatch(typeof(FloatMenuMakerMap), "ChoicesAtFor", null), HarmonyPriority(100)]
+        public static class FloatMenuMakerMap_ROMV_Undead_Patch
+        {
+            public static void Postfix(Vector3 clickPos, Pawn pawn, ref List<FloatMenuOption> __result)
+            {
+                IntVec3 c = IntVec3.FromVector3(clickPos);
+                Pawn target = c.GetFirstPawn(pawn.Map);
+                if (target != null)
+                {
+                    if ((target.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")) || target.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadAnimalHD")) || target.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD"))))
+                    {
+                        for (int i = 0; i < __result.Count(); i++)
+                        {
+                            string name = target.LabelShort;
+                            if (__result[i].Label.Contains("Feed on") || __result[i].Label.Contains("Sip") || __result[i].Label.Contains("Embrace") || __result[i].Label.Contains("Give vampirism") || __result[i].Label.Contains("Create Ghoul") || __result[i].Label.Contains("Give vitae") || __result[i].Label == "Embrace " + name + " (Give vampirism)")
+                            {
+                                __result.Remove(__result[i]);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

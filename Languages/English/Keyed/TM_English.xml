@@ -610,10 +610,10 @@ Level 1: 53%
 Level 2: 46%
 Level 3: 39%</TM_EarthSprites_ver_desc>
 <TM_EarthernHammer_pwr_desc>Increases the amount of weight the Geomancer is able to manipulate. Pulling subterranean stones requires 3 weight; throwing nearby surface stones requires 1 weight.
-Level 0: 5 weight
-Level 1: 7 weight
-Level 2: 9 weight
-Level 3: 11 weight</TM_EarthernHammer_pwr_desc>
+Level 0: 8 weight
+Level 1: 10 weight
+Level 2: 12 weight
+Level 3: 14 weight</TM_EarthernHammer_pwr_desc>
 <TM_EarthernHammer_eff_desc>Decreases mana cost of EarthernHammer by 6% per skill level.</TM_EarthernHammer_eff_desc>
 <TM_EarthernHammer_ver_desc>Reduces the time between each throw and reduces the duration of stun applied to the caster.</TM_EarthernHammer_ver_desc>
 <TM_Sentinel_pwr_desc>Increases the combat power of a sentinel.</TM_Sentinel_pwr_desc>
