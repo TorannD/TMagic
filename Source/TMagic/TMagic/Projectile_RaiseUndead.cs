@@ -4,7 +4,6 @@ using AbilityUser;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-using Vampire;
 
 namespace TorannMagic
 {
@@ -56,14 +55,11 @@ namespace TorannMagic
                                 if (undeadPawn.RaceProps.IsFlesh && undeadPawn.Dead && undeadPawn.def.thingClass.FullName != "TorannMagic.TMPawnSummoned")
                                 {
                                     bool wasVampire = false;
-                                    CompVampire isVamp = undeadPawn.GetComp<CompVampire>();
-                                    if (isVamp != null)
+                                    bool hasVampHediff = undeadPawn.health.hediffSet.HasHediff(HediffDef.Named("ROM_Vampirism")) || undeadPawn.health.hediffSet.HasHediff(HediffDef.Named("ROM_GhoulHediff"));
+                                    if (hasVampHediff)
                                     {
-                                        if (isVamp.IsVampire || isVamp.IsRevenant || isVamp.IsGhoul)
-                                        {
-                                            wasVampire = true;
-                                        }
-                                    }
+                                        wasVampire = true;
+                                    }                                    
                                     if (!wasVampire)
                                     {
                                         undeadPawn.SetFaction(pawn.Faction);

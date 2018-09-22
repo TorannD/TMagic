@@ -21,13 +21,13 @@ namespace TorannMagic
             if(soulPawn != null && !soulPawn.Dead && !soulPawn.Destroyed)
             {
                 bool drafted = soulPawn.Drafted;
-                Map map = this.CasterPawn.Map;
+                Map map = soulPawn.Map;
                 IntVec3 casterCell = this.CasterPawn.Position;
                 IntVec3 targetCell = soulPawn.Position;
                 try
-                {
+                {                    
                     soulPawn.DeSpawn();
-                    GenSpawn.Spawn(soulPawn, casterCell, map);
+                    GenSpawn.Spawn(soulPawn, casterCell, this.CasterPawn.Map);
                     if (drafted)
                     {
                         soulPawn.drafter.Drafted = true;

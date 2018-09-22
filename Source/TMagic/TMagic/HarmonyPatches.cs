@@ -12,7 +12,6 @@ using Verse;
 using Verse.AI;
 using AbilityUserAI;
 using System.Reflection.Emit;
-using RimQuest;
 
 namespace TorannMagic
 {
@@ -375,7 +374,7 @@ namespace TorannMagic
                             return;
                         }
 
-                        var energyGizmo = new Gizmo_EnergyStatus
+                        Gizmo_EnergyStatus energyGizmo = new Gizmo_EnergyStatus
                         {
                             //All gizmo properties done in Gizmo_EnergyStatus
                             //Make it the first thing you see
@@ -786,17 +785,17 @@ namespace TorannMagic
                                 if (psiEnergy > 20f && Rand.Chance(.3f + (.05f * pwr.level)) && !pawn.Downed)
                                 {
                                     DamageInfo dinfo2 = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_PsionicInjury, (dmgNum + pawnDPS) + 2*pwr.level, dinfo.ArmorPenetrationInt, dinfo.Angle, instigator, dinfo.HitPart, dinfo.Weapon, dinfo.Category, dinfo.intendedTargetInt);
-                                    TM_MoteMaker.MakePowerBeamMotePsionic(pawn.DrawPos.ToIntVec3(), pawn.Map, 2f, 2f, .7f, .1f, .6f);
+                                    TM_MoteMaker.MakePowerBeamMotePsionic(pawn.DrawPos.ToIntVec3(), pawn.Map, 2.5f, 2f, .7f, .1f, .6f);
                                     pawn.TakeDamage(dinfo2);
                                     HealthUtility.AdjustSeverity(instigator, HediffDef.Named("TM_PsionicHD"), -2f);
                                     comp.Stamina.CurLevel -= .02f;
                                     comp.MightUserXP += Rand.Range(2, 4);
-                                    if (psiEnergy > 60f && Rand.Chance(.2f + (.03f * pwr.level)))
+                                    if (psiEnergy > 60f && !pawn.Dead && Rand.Chance(.2f + (.03f * pwr.level)))
                                     {
                                         for (int i = 0; i < 6; i++)
                                         {
                                             float moteDirection = Rand.Range(0, 360);
-                                            TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Psi"), instigator.DrawPos, instigator.Map, Rand.Range(.1f, .3f), 0.2f, .02f, .1f, 0, Rand.Range(6, 8), moteDirection, moteDirection);
+                                            TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Psi"), instigator.DrawPos, instigator.Map, Rand.Range(.3f, .5f), 0.25f, .05f, .1f, 0, Rand.Range(6, 8), moteDirection, moteDirection);
                                         }
                                         Vector3 heading = (pawn.Position - instigator.Position).ToVector3();
                                         float distance = heading.magnitude;
@@ -809,7 +808,7 @@ namespace TorannMagic
                                         comp.Stamina.CurLevel -= .02f;
                                         comp.MightUserXP += Rand.Range(3, 5);
                                     }
-                                    else if (psiEnergy > 40f && Rand.Chance(.4f + (.05f * pwr.level)))
+                                    else if (psiEnergy > 40f && !pawn.Dead && Rand.Chance(.4f + (.05f * pwr.level)))
                                     {
                                         DamageInfo dinfo3 = new DamageInfo(DamageDefOf.Stun, dmgNum / 2, dinfo.ArmorPenetrationInt, dinfo.Angle, instigator, dinfo.HitPart, dinfo.Weapon, dinfo.Category, dinfo.intendedTargetInt);
                                         pawn.TakeDamage(dinfo3);
@@ -1785,80 +1784,83 @@ namespace TorannMagic
                 bool valid = !thing.DestroyedOrNull() && thing.TryGetQuality(out QualityCategory qc);
                 if (valid)
                 {
-                    if (thing.TryGetComp<Enchantment.CompEnchantedItem>().HasEnchantment)
+                    if (thing.TryGetComp<CompEquippable>() != null && thing.TryGetComp<Enchantment.CompEnchantedItem>() != null)
                     {
-                        Text.Font = GameFont.Tiny;
-                        string str1 = "-- Enchanted (";
-                        string str2 = "Enchanted \n\n";
+                        if (thing.TryGetComp<Enchantment.CompEnchantedItem>().HasEnchantment)
+                        {
+                            Text.Font = GameFont.Tiny;
+                            string str1 = "-- Enchanted (";
+                            string str2 = "Enchanted \n\n";
 
-                        Enchantment.CompEnchantedItem enchantedItem = thing.TryGetComp<Enchantment.CompEnchantedItem>();
-                        if (enchantedItem.maxMP != 0)
-                        {
-                            GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.maxMPTier);
-                            str1 += "M";
-                            str2 += enchantedItem.MaxMPLabel + "\n";
-                        }
-                        if (enchantedItem.mpCost != 0)
-                        {
-                            GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.mpCostTier);
-                            str1 += "C";
-                            str2 += enchantedItem.MPCostLabel + "\n";
-                        }
-                        if (enchantedItem.mpRegenRate != 0)
-                        {
-                            GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.mpRegenRateTier);
-                            str1 += "R";
-                            str2 += enchantedItem.MPRegenRateLabel + "\n";
-                        }
-                        if (enchantedItem.coolDown != 0)
-                        {
-                            GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.coolDownTier);
-                            str1 += "D";
-                            str2 += enchantedItem.CoolDownLabel + "\n";
-                        }
-                        if (enchantedItem.xpGain != 0)
-                        {
-                            GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.xpGainTier);
-                            str1 += "G";
-                            str2 += enchantedItem.XPGainLabel + "\n";
-                        }
-                        if (enchantedItem.arcaneRes != 0)
-                        {
-                            GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.arcaneResTier);
-                            str1 += "X";
-                            str2 += enchantedItem.ArcaneResLabel + "\n";
-                        }
-                        if (enchantedItem.arcaneDmg != 0)
-                        {
-                            GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.arcaneDmgTier);
-                            str1 += "Z";
-                            str2 += enchantedItem.ArcaneDmgLabel + "\n";
-                        }
-                        if (enchantedItem.arcaneSpectre != false)
-                        {
-                            GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.skillTier);
-                            str1 += "*S";
-                            str2 += enchantedItem.ArcaneSpectreLabel + "\n";
-                        }
-                        if (enchantedItem.phantomShift != false)
-                        {
-                            GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.skillTier);
-                            str1 += "*P";
-                            str2 += enchantedItem.PhantomShiftLabel + "\n";
-                        }
-                        str1 += ")";
-                        y -= 6f;
-                        Rect rect = new Rect(48f, y, width - 36f, 28f);
-                        Widgets.Label(rect, str1);
+                            Enchantment.CompEnchantedItem enchantedItem = thing.TryGetComp<Enchantment.CompEnchantedItem>();
+                            if (enchantedItem.maxMP != 0)
+                            {
+                                GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.maxMPTier);
+                                str1 += "M";
+                                str2 += enchantedItem.MaxMPLabel + "\n";
+                            }
+                            if (enchantedItem.mpCost != 0)
+                            {
+                                GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.mpCostTier);
+                                str1 += "C";
+                                str2 += enchantedItem.MPCostLabel + "\n";
+                            }
+                            if (enchantedItem.mpRegenRate != 0)
+                            {
+                                GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.mpRegenRateTier);
+                                str1 += "R";
+                                str2 += enchantedItem.MPRegenRateLabel + "\n";
+                            }
+                            if (enchantedItem.coolDown != 0)
+                            {
+                                GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.coolDownTier);
+                                str1 += "D";
+                                str2 += enchantedItem.CoolDownLabel + "\n";
+                            }
+                            if (enchantedItem.xpGain != 0)
+                            {
+                                GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.xpGainTier);
+                                str1 += "G";
+                                str2 += enchantedItem.XPGainLabel + "\n";
+                            }
+                            if (enchantedItem.arcaneRes != 0)
+                            {
+                                GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.arcaneResTier);
+                                str1 += "X";
+                                str2 += enchantedItem.ArcaneResLabel + "\n";
+                            }
+                            if (enchantedItem.arcaneDmg != 0)
+                            {
+                                GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.arcaneDmgTier);
+                                str1 += "Z";
+                                str2 += enchantedItem.ArcaneDmgLabel + "\n";
+                            }
+                            if (enchantedItem.arcaneSpectre != false)
+                            {
+                                GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.skillTier);
+                                str1 += "*S";
+                                str2 += enchantedItem.ArcaneSpectreLabel + "\n";
+                            }
+                            if (enchantedItem.phantomShift != false)
+                            {
+                                GUI.color = Enchantment.GenEnchantmentColor.EnchantmentColor(enchantedItem.skillTier);
+                                str1 += "*P";
+                                str2 += enchantedItem.PhantomShiftLabel + "\n";
+                            }
+                            str1 += ")";
+                            y -= 6f;
+                            Rect rect = new Rect(48f, y, width - 36f, 28f);
+                            Widgets.Label(rect, str1);
 
-                        TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
-                        {
-                        str2,
-                        }), 398512);
+                            TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
+                            {
+                            str2,
+                            }), 398512);
 
-                        y += 28f;
-                        GUI.color = Color.white;
-                        Text.Font = GameFont.Small;
+                            y += 28f;
+                            GUI.color = Color.white;
+                            Text.Font = GameFont.Small;
+                        }
                     }
                 }
             }
@@ -2070,7 +2072,7 @@ namespace TorannMagic
             //}
         }
 
-        [HarmonyPriority(900)]
+        [HarmonyPriority(100)]
         [HarmonyPatch(typeof(Pawn_NeedsTracker), "ShouldHaveNeed", null)]
         public static class Pawn_NeedsTracker_Patch
         {
@@ -2083,6 +2085,11 @@ namespace TorannMagic
                 {
                     if (nd.defName == "ROMV_Blood" && (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadAnimalHD")) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD"))))
                     {
+                        bool hasVampHediff = pawn.health.hediffSet.HasHediff(HediffDef.Named("ROM_Vampirism"));
+                        if (hasVampHediff)
+                        {
+                                return true;                                
+                        }
                         __result = false;
                         return false;
                     }
@@ -2091,9 +2098,8 @@ namespace TorannMagic
                         __result = false;
                         return false;
                     }
-                }
+                }                
                 return true;
-
             }
         }
 
@@ -2117,7 +2123,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                }
+                }                
             }
         }
     }

@@ -16,10 +16,13 @@ namespace TorannMagic.Weapon
             base.Impact(hitThing);
             ThingDef def = this.def;
             Pawn pawn = this.launcher as Pawn;
-            CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
-            if (comp.IsMagicUser)
+            if (pawn != null)
             {
-                this.arcaneDmg = comp.arcaneDmg;
+                CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
+                if (comp.IsMagicUser)
+                {
+                    this.arcaneDmg = comp.arcaneDmg;
+                }
             }
             try
             {

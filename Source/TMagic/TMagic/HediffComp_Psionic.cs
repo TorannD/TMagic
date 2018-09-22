@@ -169,30 +169,32 @@ namespace TorannMagic
                                     TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Psi"), this.Pawn.DrawPos, this.Pawn.Map, Rand.Range(.1f, .4f), 0.2f, .02f, .1f, 0, Rand.Range(8, 10), direction, direction);
                                 }
                             }
-
-                            if (this.Pawn.CurJob.targetA.Thing != null && (this.Pawn.Position - this.Pawn.CurJob.targetA.Thing.Position).LengthHorizontal < 2 && (this.Pawn.CurJob.bill != null || this.Pawn.CurJob.def.defName == "FinishFrame"))
+                            if (this.Pawn.CurJob.targetA.Thing != null)
                             {
-                                this.parent.Severity -= 6f;
-                                if (this.PwrVal == 0)
+                                if((this.Pawn.Position - this.Pawn.CurJob.targetA.Thing.Position).LengthHorizontal < 2 && (this.Pawn.CurJob.bill != null || this.Pawn.CurJob.def.defName == "Sow" || this.Pawn.CurJob.def.defName == "FinishFrame" || this.Pawn.CurJob.def.defName == "Deconstruct" || this.Pawn.CurJob.def.defName == "Repair" || this.Pawn.CurJob.def.defName == "Clean" || this.Pawn.CurJob.def.defName == "Mine" || this.Pawn.CurJob.def.defName == "SmoothFloor" || this.Pawn.CurJob.def.defName == "SmoothWall" || this.Pawn.CurJob.def.defName == "Harvest" || this.Pawn.CurJob.def.defName == "HarvestDesignated" || this.Pawn.CurJob.def.defName == "CutPlant" || this.Pawn.CurJob.def.defName == "CutPlantDesignated"))
                                 {
-                                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_PsionicManipulationHD"), 1f + .02f * this.PwrVal);
-                                }
-                                else if (this.PwrVal == 1)
-                                {
-                                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_PsionicManipulationHD_I"), 1f + .02f * this.PwrVal);
-                                }
-                                else if (this.PwrVal == 2)
-                                {
-                                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_PsionicManipulationHD_II"), 1f + .02f * this.PwrVal);
-                                }
-                                else
-                                {
-                                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_PsionicManipulationHD_III"), 1f + .02f * this.PwrVal);
-                                }
-                                for (int i = 0; i < 12; i++)
-                                {
-                                    float direction = Rand.Range(0, 360);
-                                    TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Psi"), this.Pawn.DrawPos, this.Pawn.Map, Rand.Range(.1f, .4f), 0.2f, .02f, .1f, 0, Rand.Range(8, 10), direction, direction);
+                                    this.parent.Severity -= 12f;
+                                    if (this.PwrVal == 0)
+                                    {
+                                        HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_PsionicManipulationHD"), 1f + .02f * this.PwrVal);
+                                    }
+                                    else if (this.PwrVal == 1)
+                                    {
+                                        HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_PsionicManipulationHD_I"), 1f + .02f * this.PwrVal);
+                                    }
+                                    else if (this.PwrVal == 2)
+                                    {
+                                        HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_PsionicManipulationHD_II"), 1f + .02f * this.PwrVal);
+                                    }
+                                    else
+                                    {
+                                        HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_PsionicManipulationHD_III"), 1f + .02f * this.PwrVal);
+                                    }
+                                    for (int i = 0; i < 12; i++)
+                                    {
+                                        float direction = Rand.Range(0, 360);
+                                        TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Psi"), this.Pawn.DrawPos, this.Pawn.Map, Rand.Range(.1f, .4f), 0.2f, .02f, .1f, 0, Rand.Range(8, 10), direction, direction);
+                                    }
                                 }
                             }
                         }
@@ -201,12 +203,17 @@ namespace TorannMagic
                     if (this.parent.Severity >= 20)
                     {
                         DeterminePsionicHD();
-                        if (Find.TickManager.TicksGame % 180 == 0 && (this.Pawn.Drafted || !this.Pawn.IsColonist) && this.Pawn.equipment.Primary != null && !this.Pawn.equipment.Primary.def.IsRangedWeapon)
+                        if (Find.TickManager.TicksGame % 180 == 0 && (this.Pawn.Drafted || !this.Pawn.IsColonist) && ((this.Pawn.equipment.Primary != null && !this.Pawn.equipment.Primary.def.IsRangedWeapon) || this.Pawn.equipment.Primary == null))
                         {
                             if (this.Pawn.CurJob.targetA.Thing != null && this.Pawn.CurJob.targetA.Thing is Pawn)
                             {
-                                float targetDistance = (this.Pawn.Position - this.Pawn.CurJob.targetA.Thing.Position).LengthHorizontal;
-                                if (targetDistance > 3 && targetDistance < (12 + EffVal))
+                                //Log.Message("performing psionic dash - curjob " + this.Pawn.CurJob);
+                                //Log.Message("curjob def " + this.Pawn.CurJob.def.defName);
+                                //Log.Message("target " + this.Pawn.CurJob.targetA.Thing);
+                                //Log.Message("target range " + (this.Pawn.CurJob.targetA.Thing.Position - this.Pawn.Position).LengthHorizontal);
+                                Pawn targetPawn = this.Pawn.CurJob.targetA.Thing as Pawn;
+                                float targetDistance = (this.Pawn.Position - targetPawn.Position).LengthHorizontal;
+                                if (targetDistance > 3 && targetDistance < (12 + EffVal) && targetPawn.Map != null && !targetPawn.Downed)
                                 {
                                     for (int i = 0; i < 12; i++)
                                     {

@@ -1143,7 +1143,8 @@
                     <MoveSpeed>.20</MoveSpeed>
 					<WorkSpeedGlobal>-0.2</WorkSpeedGlobal>
                     <ImmunityGainSpeed>.15</ImmunityGainSpeed>
-					<SocialImpact>0.20</SocialImpact>
+					<TradePriceImprovement>0.10</TradePriceImprovement>
+					<NegotiationAbility>0.20</NegotiationAbility>
 					<CarryingCapacity>-0.20</CarryingCapacity>
 					<GlobalLearningFactor>-0.20</GlobalLearningFactor>
 					<MeleeDodgeChance>5</MeleeDodgeChance>

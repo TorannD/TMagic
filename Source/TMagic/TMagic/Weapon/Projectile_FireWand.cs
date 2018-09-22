@@ -14,14 +14,17 @@ namespace TorannMagic.Weapon
         protected override void Impact(Thing hitThing)
         {
             Pawn pawn = this.launcher as Pawn;
-            CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
+            if (pawn != null)
+            {
+                CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
+                if (comp.IsMagicUser)
+                {
+                    this.arcaneDmg = comp.arcaneDmg;
+                }
+            }
             Map map = base.Map;
             base.Impact(hitThing);
-            ThingDef def = this.def;
-            if(comp.IsMagicUser)
-            {
-                this.arcaneDmg = comp.arcaneDmg;
-            }
+            ThingDef def = this.def;            
             try
             {
                 GenExplosion.DoExplosion(base.Position, map, this.def.projectile.explosionRadius, DamageDefOf.Bomb, this.launcher, Mathf.RoundToInt(this.def.projectile.GetDamageAmount(1,null) * this.arcaneDmg), 0, SoundDefOf.Crunch, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);

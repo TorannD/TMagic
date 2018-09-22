@@ -20,14 +20,38 @@
 	</value>
   </Operation> 
   
-  <Operation Class="PatchOperationAdd">
-    <xpath>*/ThoughtDef[defName = "RebuffedMyRomanceAttempt" or defName = "FailedRomanceAttemptOnMe" or defName = "CheatedOnMe" or defName = "BrokeUpWithMe" or defName = "DivorcedMe" or defName = "RejectedMyProposal" or defName = "IRejectedTheirProposal"]</xpath>
-	<value>
-		<nullifyingTraits>
-			<li>Succubus</li>
-		</nullifyingTraits>
-	</value>
+  <Operation Class="PatchOperationSequence">
+	<success>Always</success>
+	<operations>
+		<li Class="PatchOperationTest">
+			<xpath>*/ThoughtDef[defName = "RebuffedMyRomanceAttempt" or defName = "FailedRomanceAttemptOnMe" or defName = "CheatedOnMe" or defName = "BrokeUpWithMe" or defName = "DivorcedMe" or defName = "RejectedMyProposal" or defName = "IRejectedTheirProposal"]/nullifyingTraits</xpath>
+			<success>Invert</success>
+		</li>
+	   <li Class="PatchOperationAdd">
+			<xpath>*/ThoughtDef[defName = "RebuffedMyRomanceAttempt" or defName = "FailedRomanceAttemptOnMe" or defName = "CheatedOnMe" or defName = "BrokeUpWithMe" or defName = "DivorcedMe" or defName = "RejectedMyProposal" or defName = "IRejectedTheirProposal"]</xpath>
+			<value>
+				<nullifyingTraits>
+					<li>Succubus</li>
+				</nullifyingTraits>
+			</value>
+	  </li>
+	 </operations>
   </Operation>
+
+  <Operation Class="PatchOperationSequence">
+	<success>Always</success>
+	<operations>
+		<li Class="PatchOperationTest">
+			<xpath>*/ThoughtDef[defName = "RebuffedMyRomanceAttempt" or defName = "FailedRomanceAttemptOnMe" or defName = "CheatedOnMe" or defName = "BrokeUpWithMe" or defName = "DivorcedMe" or defName = "RejectedMyProposal" or defName = "IRejectedTheirProposal"]/nullifyingTraits</xpath>
+		</li>
+	   <li Class="PatchOperationAdd">
+			<xpath>*/ThoughtDef[defName = "RebuffedMyRomanceAttempt" or defName = "FailedRomanceAttemptOnMe" or defName = "CheatedOnMe" or defName = "BrokeUpWithMe" or defName = "DivorcedMe" or defName = "RejectedMyProposal" or defName = "IRejectedTheirProposal"]/nullifyingTraits</xpath>
+			<value>
+				<li>Succubus</li>
+			</value>
+	  </li>
+	 </operations>
+  </Operation>	  
 
   <Operation Class="PatchOperationAdd">
     <xpath>*/ThoughtDef[defName = "HumanLeatherApparelHappy"]/requiredTraits</xpath>

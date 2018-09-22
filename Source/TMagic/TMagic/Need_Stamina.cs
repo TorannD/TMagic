@@ -157,6 +157,22 @@ namespace TorannMagic
                 this.lastGainPct = amount;
                 this.lastGainTick = Find.TickManager.TicksGame;
             }
+            else
+            {
+                Pawn pawn = base.pawn;
+                CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
+                if (comp != null)
+                {
+                    if (comp.IsMightUser)
+                    {
+                        ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                        MightPowerSkill staminaRefresh = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_global_refresh.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_refresh_pwr");
+                        amount *= ((0.015f) + (0.0015f * staminaRefresh.level));
+                        amount = Mathf.Min(amount, this.MaxLevel - this.CurLevel);
+                        comp.Stamina.curLevelInt = Mathf.Clamp(comp.Stamina.curLevelInt += amount, 0f, this.MaxLevel);
+                    }
+                }
+            }
             AdjustThresh();
         }
 

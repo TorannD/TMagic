@@ -60,17 +60,22 @@ namespace TorannMagic
                     return false;
                 }
                 else
-                {
+                {                    
                     TradeRequestComp component = settlement.GetComponent<TradeRequestComp>();
                     if (!this.GenerateCaravanRequest(component, (Map)parms.target))
                     {
                         return false;
                     }
+                    string rewards = "";
+                    for (int i = 0; i < component.rewards.Count(); i++)
+                    {
+                        rewards += component.rewards[i].LabelCap + "\n";
+                    }
                     Find.LetterStack.ReceiveLetter("LetterLabelArcaneScriptCaravan".Translate(), "LetterArcaneScriptCaravan".Translate(new object[]
                     {
                 settlement.Label,
                 GenLabel.ThingLabel(component.requestThingDef, null, component.requestCount).CapitalizeFirst(),
-                component.rewards[0].LabelCap,
+                rewards,
                 (component.expiration - Find.TickManager.TicksGame).ToStringTicksToDays("F0")
                     }), LetterDefOf.PositiveEvent, settlement, null);
                     return true;

@@ -26,6 +26,13 @@ namespace TorannMagic.ModOptions
             }
         }
 
+        public static bool ROMVIsActive
+        {
+            get
+            {
+                return ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name == "Vampire");
+            }
+        }
         //public static bool RimQuestIsActive
         //{
         //    get

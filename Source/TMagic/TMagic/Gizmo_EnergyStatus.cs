@@ -61,8 +61,8 @@ namespace TorannMagic
             }
             if (barCount > 1 && (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_PsionicHD"), false) || compMight.Stamina != null || compMagic.Mana != null))
             {
-                Rect overRect = new Rect(topLeft.x, topLeft.y, this.GetWidth(100), 75); //overall rect size (shell)
-                Find.WindowStack.ImmediateWindow(984688, overRect, WindowLayer.GameUI, delegate
+                Rect overRect = new Rect(topLeft.x+2, topLeft.y, this.GetWidth(100), 75); //overall rect size (shell)
+                Find.WindowStack.ImmediateWindow(984698, overRect, WindowLayer.GameUI, delegate
                 {
                     barHeight = ((75 - 5) / barCount);
                     Rect rect = overRect.AtZero().ContractedBy(6f); //inner, smaller rect

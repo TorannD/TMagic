@@ -7,7 +7,6 @@ namespace TorannMagic.Weapon
     {
         protected override bool TryCastShot()
         {
-
             if(this.CasterPawn.GetComp<CompAbilityUserMagic>().IsMagicUser)
             {
                 return base.TryCastShot();

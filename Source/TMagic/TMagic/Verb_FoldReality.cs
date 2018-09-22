@@ -138,47 +138,39 @@ namespace TorannMagic
         {
             IntVec3 curCell;
             IEnumerable<IntVec3> targets = GenRadial.RadialCellsAround(target.Cell, 7, true);
+            int transportedItemCount = 0;
             for (int i = 0; i < targets.Count(); i++)
             {
-                curCell = targets.ToArray<IntVec3>()[i];
-                MoteMaker.ThrowSmoke(curCell.ToVector3Shifted(), map, .6f);
+                curCell = targets.ToArray<IntVec3>()[i];                
                 if (curCell.InBounds(map) && curCell.IsValid)
                 {
                     List<Thing> thingList = curCell.GetThingList(map);
-                    int z = 0;
-                    while (z < thingList.Count)
+                    for(int j = 0; j < thingList.Count(); j++)
                     {
-                        if (thingList[z] != null)
+                        if(thingList[j] != null && thingList[j].def.mote == null)
                         {
-                            bool validator = thingList[z] is Pawn;
-                            if (validator)
+                            Thing targetThing = thingList[j];
+                            if (targetThing is Pawn && targetThing != this.CasterPawn)
                             {
-                                Pawn targetPawn = thingList[z] as Pawn;
-                                if (targetPawn != null && targetPawn != this.CasterPawn)
-                                {
-                                    MoteMaker.ThrowLightningGlow(targetPawn.DrawPos, targetPawn.Map, 1f);
-                                    MoteMaker.ThrowHeatGlow(targetPawn.Position, targetPawn.Map, 1f);
-                                    targetPawn.DeSpawn();
-                                    GenSpawn.Spawn(targetPawn, this.CasterPawn.Position, this.CasterPawn.Map);
-                                    MoteMaker.ThrowLightningGlow(targetPawn.DrawPos, targetPawn.Map, 1f);
-                                }
-                            }
-                            validator = thingList[z] is Thing;
-                            if (validator)
+                                MoteMaker.ThrowLightningGlow(targetThing.DrawPos, targetThing.Map, 1f);
+                                MoteMaker.ThrowHeatGlow(targetThing.Position, targetThing.Map, 1f);
+                                targetThing.DeSpawn();
+                                GenSpawn.Spawn(targetThing, this.CasterPawn.Position, this.CasterPawn.Map);
+                                transportedItemCount++;
+                                j--;
+                            }                            
+                            else if(targetThing != null && targetThing.def.EverHaulable)
                             {
-                                Thing targetThing = curCell.GetFirstItem(map);
-                                if(targetThing != null)
-                                {
-                                    MoteMaker.ThrowLightningGlow(targetThing.DrawPos, targetThing.Map, .6f);
-                                    MoteMaker.ThrowHeatGlow(targetThing.Position, targetThing.Map, 1f);
-                                    targetThing.DeSpawn();
-                                    GenPlace.TryPlaceThing(targetThing, this.CasterPawn.Position, this.CasterPawn.Map, ThingPlaceMode.Near, null);
-                                    MoteMaker.ThrowLightningGlow(targetThing.DrawPos, targetThing.Map, .6f);
-                                }
+                                MoteMaker.ThrowLightningGlow(targetThing.DrawPos, targetThing.Map, .6f);
+                                MoteMaker.ThrowHeatGlow(targetThing.Position, targetThing.Map, 1f);
+                                targetThing.DeSpawn();
+                                GenPlace.TryPlaceThing(targetThing, this.CasterPawn.Position, this.CasterPawn.Map, ThingPlaceMode.Near, null);
+                                transportedItemCount++;
+                                j--;
                             }
-                        }
-                        z++;
+                        }                        
                     }
+                    MoteMaker.ThrowSmoke(curCell.ToVector3Shifted(), map, .6f);                   
                 }
             }
         }

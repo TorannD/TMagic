@@ -32,7 +32,6 @@ namespace TorannMagic
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Collections.Look<Pawn>(ref this.touchingPawns, "testees", LookMode.Reference, new object[0]);
             Scribe_References.Look<Pawn>(ref this.trapPawn, "trapPawn", false);
         }
 
@@ -169,11 +168,11 @@ namespace TorannMagic
             }
             if (this.Armed)
             {
-                text += "TrapArmed".Translate();
+                text += "Proximity Trap Armed";
             }
             else
             {
-                text += "TrapNotArmed".Translate();
+                text += "Trap Not Armed";
             }
             return text;
         }        

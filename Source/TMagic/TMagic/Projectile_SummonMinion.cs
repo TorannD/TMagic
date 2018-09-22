@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using Verse;
+using Verse.AI;
 using AbilityUser;
 using Verse.AI.Group;
 
@@ -204,6 +205,19 @@ namespace TorannMagic
                             {
                                 LordJob_DefendPoint lordJob = new LordJob_DefendPoint(newPawn.Position);
                                 lord = LordMaker.MakeNewLord(faction, lordJob, this.Map, null);
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    //PawnDuty duty = this.pawn.mindState.duty;
+                                    //newPawn.mindState.duty = duty;
+                                    newPawn.mindState.duty = new PawnDuty(DutyDefOf.Defend);
+                                }
+                                catch
+                                {
+                                    Log.Message("error attempting to assign a duty to minion");
+                                }                                
                             }
                             lord.AddPawn(newPawn);
                         }

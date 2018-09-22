@@ -18,10 +18,13 @@ namespace TorannMagic.Weapon
             Map map = base.Map;
             base.Impact_Override(hitThing);
             Pawn pawn = this.launcher as Pawn;
-            CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
-            if (comp.IsMagicUser)
+            if (pawn != null)
             {
-                this.arcaneDmg = comp.arcaneDmg;
+                CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
+                if (comp.IsMagicUser)
+                {
+                    this.arcaneDmg = comp.arcaneDmg;
+                }
             }
 
             bool flag = hitThing != null;

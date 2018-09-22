@@ -26,7 +26,7 @@ namespace TorannMagic
                 try
                 {
                     p.DeSpawn();
-                    GenSpawn.Spawn(p, targetCell, map);
+                    GenSpawn.Spawn(p, targetCell, soulPawn.Map);
                     if (drafted)
                     {
                         p.drafter.Drafted = true;

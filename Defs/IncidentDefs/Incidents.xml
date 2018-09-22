@@ -39,7 +39,7 @@
     <label>caravan request (arcane)</label>
 	<category>Misc</category>
 	<targetTags>
-		 <li>World</li>
+		 <li>Map_PlayerHome</li>
 	</targetTags>
     <workerClass>TorannMagic.IncidentWorker_ArcaneScriptCaravan</workerClass>
     <baseChance>0.6</baseChance>

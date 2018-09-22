@@ -63,7 +63,7 @@
 <TM_SummonedCreatureLimitExceeded>{0} has exceeded the max number of summoned creatures, dismissing oldest summon.</TM_SummonedCreatureLimitExceeded>
 <TM_NoMinionToDismiss>{0} has no summoned minions.</TM_NoMinionToDismiss>
 <TM_NoValidUndeadToDismiss>Target is not a valid target for dismiss undead.</TM_NoValidUndeadToDismiss>
-<TM_CannotUseGemOfInsight>{0} already possesses an arcane or combat trait and cannot make use of this gemstone.</TM_CannotUseGemOfInsight>
+<TM_CannotUseGemOfInsight>{0} already possesses an arcane or combat trait, or is an undead, and cannot make use of this gemstone.</TM_CannotUseGemOfInsight>
 <TM_ItemUseFailed>Attempted to use an item and failed, reason: {0}</TM_ItemUseFailed>
 <TM_SunlightCollapse>A sun light has collapsed, {0} was unable to sustain it.</TM_SunlightCollapse>
 <TM_DamageAbsorbedAll>Absorbed</TM_DamageAbsorbedAll>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using Verse;
+using Verse.AI;
 using AbilityUser;
 
 namespace TorannMagic
@@ -37,6 +38,7 @@ namespace TorannMagic
         public int weaponDmg = 0;
 
         Pawn pawn;
+        Thing oldjobTarget = null;
 
         protected int StartingTicksToImpact
         {
@@ -124,8 +126,7 @@ namespace TorannMagic
         }
 
         public void Launch(Thing launcher, Vector3 origin, LocalTargetInfo targ, Thing flyingThing, DamageInfo? newDamageInfo = null)
-        {
-            
+        {            
             if (Find.Selector.FirstSelectedObject == launcher)
             {
                 this.isSelected = true;
@@ -133,6 +134,8 @@ namespace TorannMagic
                 
             bool spawned = flyingThing.Spawned;
             pawn = launcher as Pawn;
+            this.oldjobTarget = pawn.CurJob.targetA.Thing;
+            Log.Message("pre leap target is " + this.oldjobTarget.LabelShort);
             CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
             this.effVal = comp.MightData.MightPowerSkill_PsionicAugmentation.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicAugmentation_eff").level;
             if (spawned)
@@ -254,6 +257,11 @@ namespace TorannMagic
                 if (this.isSelected)
                 {
                     CameraJumper.TryJumpAndSelect(p);
+                }
+                if (this.oldjobTarget != null && !this.oldjobTarget.Destroyed)
+                {
+                    Job job = new Job(JobDefOf.AttackMelee, this.oldjobTarget);
+                    p.jobs.TryTakeOrderedJob(job, JobTag.DraftedOrder);
                 }
             }
             this.Destroy(DestroyMode.Vanish);
