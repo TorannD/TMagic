@@ -1276,6 +1276,7 @@ Shots: 3</description>
 			<shaderType>TransparentPostLight</shaderType>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
 			<soundExplode>Explosion_Flame</soundExplode>
             <damageDef>Bullet</damageDef>
             <damageAmountBase>16</damageAmountBase>
@@ -1310,7 +1311,7 @@ Shots: 3</description>
             <soundCast>DropPod_Leaving</soundCast>
             <soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>100</muzzleFlashScale>
-            <AlwaysHits>false</AlwaysHits>
+            <AlwaysHits>true</AlwaysHits>
 			<targetParams>
                 <canTargetPawns>true</canTargetPawns>
                 <canTargetBuildings>true</canTargetBuildings>
@@ -1333,6 +1334,7 @@ Shots: 3</description>
 			<shaderType>TransparentPostLight</shaderType>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
 			<soundExplode>Explosion_Flame</soundExplode>
             <damageDef>Bullet</damageDef>
             <damageAmountBase>16</damageAmountBase>
@@ -1367,7 +1369,7 @@ Shots: 3</description>
             <soundCast>DropPod_Leaving</soundCast>
             <soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>100</muzzleFlashScale>
-            <AlwaysHits>false</AlwaysHits>
+            <AlwaysHits>true</AlwaysHits>
 			<targetParams>
                 <canTargetPawns>true</canTargetPawns>
                 <canTargetBuildings>true</canTargetBuildings>
@@ -1446,7 +1448,7 @@ Shots: 3</description>
 		<shaderType>TransparentPostLight</shaderType>
 	</graphicData>
    <projectile>
-		<flyOverhead>false</flyOverhead>
+		<flyOverhead>true</flyOverhead>
 		<damageDef>Burn</damageDef>
 		<damageAmountBase>36</damageAmountBase>
 		<speed>200</speed>
@@ -1862,7 +1864,7 @@ Damage: 7</description>
 		<shaderType>TransparentPostLight</shaderType>
 	</graphicData>
    <projectile>
-		<flyOverhead>false</flyOverhead>
+		<flyOverhead>true</flyOverhead>
 		<explosionRadius>10</explosionRadius>
 		<damageDef>TM_Lightning</damageDef>
 		<damageAmountBase>18</damageAmountBase>
@@ -1893,7 +1895,7 @@ Damage: 7</description>
 		<isViolent>true</isViolent>
         <soundCast>ThrowGrenade</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
-		<AlwaysHits>false</AlwaysHits>
+		<AlwaysHits>true</AlwaysHits>
          <isPrimary>false</isPrimary>
 		 <targetParams>
       	 <canTargetPawns>true</canTargetPawns>
@@ -1918,7 +1920,7 @@ Damage: 7</description>
 		<shaderType>TransparentPostLight</shaderType>
 	</graphicData>
    <projectile>
-		<flyOverhead>false</flyOverhead>
+		<flyOverhead>true</flyOverhead>
 		<explosionRadius>4</explosionRadius>
 		<damageDef>Burn</damageDef>
 		<damageAmountBase>0</damageAmountBase>
@@ -2436,7 +2438,7 @@ Range: 100</description>
 			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
 	   <projectile>
-			<flyOverhead>false</flyOverhead>
+			<flyOverhead>true</flyOverhead>
 			<explosionRadius>5</explosionRadius>
 			<damageDef>Burn</damageDef>
 			<damageAmountBase>0</damageAmountBase>

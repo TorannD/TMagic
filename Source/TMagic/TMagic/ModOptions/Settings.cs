@@ -25,6 +25,33 @@ namespace TorannMagic.ModOptions
         public float riftChallenge = 1f;
         public bool showGizmo = true;
 
+        //autocast options
+        public bool autocastEnabled = true;
+        public float autocastMinThreshold = 0.7f;
+        public float autocastCombatMinThreshold = 0.2f;
+        public int autocastEvaluationFrequency = 180;
+
+        //class options
+        public bool Arcanist = true;
+        public bool FireMage = true;
+        public bool IceMage = true;
+        public bool LitMage = true;
+        public bool Druid = true;
+        public bool Paladin = true;
+        public bool Necromancer = true;
+        public bool Bard = true;
+        public bool Priest = true;
+        public bool Demonkin = true;
+        public bool Geomancer = true;
+        public bool Summoner = true;
+
+        public bool Gladiator = true;
+        public bool Bladedancer = true;
+        public bool Sniper = true;
+        public bool Ranger = true;
+        public bool Faceless = true;
+        public bool Psionic = true;
+
         public static Settings Instance;
 
         public Settings()
@@ -52,6 +79,30 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<bool>(ref this.showIconsMultiSelect, "showIconsMultiSelect", true, false);
             Scribe_Values.Look<float>(ref this.riftChallenge, "riftChallenge", 1f, false);
             Scribe_Values.Look<bool>(ref this.showGizmo, "showGizmo", true, false);
+
+            Scribe_Values.Look<bool>(ref this.autocastEnabled, "autocastEnabled", true, false);
+            Scribe_Values.Look<float>(ref this.autocastMinThreshold, "autocastMinThreshold", 0.7f, false);
+            Scribe_Values.Look<float>(ref this.autocastCombatMinThreshold, "autocastCombatMinThreshold", 0.2f, false);
+            Scribe_Values.Look<int>(ref this.autocastEvaluationFrequency, "autocastEvaluationFrequency", 180, false);
+
+            Scribe_Values.Look<bool>(ref this.Arcanist, "Arcanist", true, false);
+            Scribe_Values.Look<bool>(ref this.FireMage, "FireMage", true, false);
+            Scribe_Values.Look<bool>(ref this.IceMage, "IceMage", true, false);
+            Scribe_Values.Look<bool>(ref this.LitMage, "LitMage", true, false);
+            Scribe_Values.Look<bool>(ref this.Geomancer, "Geomancer", true, false);
+            Scribe_Values.Look<bool>(ref this.Druid, "Druid", true, false);
+            Scribe_Values.Look<bool>(ref this.Paladin, "Paladin", true, false);
+            Scribe_Values.Look<bool>(ref this.Priest, "Priest", true, false);
+            Scribe_Values.Look<bool>(ref this.Bard, "Bard", true, false);
+            Scribe_Values.Look<bool>(ref this.Summoner, "Summoner", true, false);
+            Scribe_Values.Look<bool>(ref this.Necromancer, "Necromancer", true, false);
+            Scribe_Values.Look<bool>(ref this.Demonkin, "Demonkin", true, false);
+            Scribe_Values.Look<bool>(ref this.Gladiator, "Gladiator", true, false);
+            Scribe_Values.Look<bool>(ref this.Bladedancer, "Bladedancer", true, false);
+            Scribe_Values.Look<bool>(ref this.Sniper, "Sniper", true, false);
+            Scribe_Values.Look<bool>(ref this.Ranger, "Ranger", true, false);
+            Scribe_Values.Look<bool>(ref this.Faceless, "Faceless", true, false);
+            Scribe_Values.Look<bool>(ref this.Psionic, "Psionic", true, false);
         }
     }
 }

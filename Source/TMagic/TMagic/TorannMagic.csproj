@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="AbilityDecisionConditionalNode_EnemyTargetIsBuilding.cs" />
     <Compile Include="AbilityWorker_TargetCorpse.cs" />
+    <Compile Include="AutoCast\Scripts.cs" />
     <Compile Include="Building_ProximityTrap.cs" />
     <Compile Include="Building_TMBarrier.cs" />
     <Compile Include="Building_TMSentinel.cs" />
@@ -84,6 +85,8 @@
     <Compile Include="Building_TMPortal.cs" />
     <Compile Include="Building_PoisonTrap.cs" />
     <Compile Include="JobDriver_Teach.cs" />
+    <Compile Include="ModOptions\ClassOptionsWindow.cs" />
+    <Compile Include="ModOptions\ModClassOptions.cs" />
     <Compile Include="TM_CopyAndLaunchProjectile.cs" />
     <Compile Include="Effect_PsiStorm.cs" />
     <Compile Include="TM_MapMesh.cs" />

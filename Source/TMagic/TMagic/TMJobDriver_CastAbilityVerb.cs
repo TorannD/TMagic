@@ -19,7 +19,8 @@ namespace TorannMagic
         protected override IEnumerable<Toil> MakeNewToils()
         {
             yield return Toils_Misc.ThrowColonistAttackingMote(TargetIndex.A);
-            this.verb = this.pawn.CurJob.verbToUse as Verb_UseAbility;                       
+            this.verb = this.pawn.CurJob.verbToUse as Verb_UseAbility;
+
             if (base.TargetA.HasThing)
             {
                 if (!base.GetActor().IsFighting() ? true : !verb.UseAbilityProps.canCastInMelee)
@@ -64,7 +65,12 @@ namespace TorannMagic
                         {
                             PsionicEnergyCost(verb);                            
                         }
-                    }
+
+                        if(verb.Ability.CooldownTicksLeft != -1)
+                        {
+                            this.EndJobWith(JobCondition.Incompletable);
+                        }
+                    }                    
                     
                     LocalTargetInfo target = combatToil.actor.jobs.curJob.GetTarget(TargetIndex.A);
                     verb.TryStartCastOn(target, false, false);
@@ -93,7 +99,7 @@ namespace TorannMagic
                 {
                     if (this.duration <= 5)
                     {                        
-                        verb.Ability.PostAbilityAttempt();
+                        verb.Ability.PostAbilityAttempt();                        
                     }
                     
                 });
@@ -162,6 +168,12 @@ namespace TorannMagic
                                     {
                                         PsionicEnergyCost(verb);
                                     }
+
+                                    if (verb.Ability.CooldownTicksLeft != -1)
+                                    {
+                                        this.EndJobWith(JobCondition.Incompletable);
+                                    }
+
                                 }
                                 LocalTargetInfo target = toil.actor.jobs.curJob.GetTarget(TargetIndex.A); //TargetLocA;  //
                                 bool canFreeIntercept2 = false;

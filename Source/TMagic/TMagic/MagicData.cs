@@ -1,5 +1,6 @@
 ﻿using AbilityUser;
 using RimWorld;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
@@ -8,7 +9,6 @@ namespace TorannMagic
 {
     public class MagicData : IExposable
     {
-
         private Pawn magicPawn;
         private int magicUserLevel = 0;
         private int magicAbilityPoints = 0;
@@ -33,6 +33,8 @@ namespace TorannMagic
         public List<MagicPower> magicPowerWD;
         public List<MagicPower> magicPowerSD;
         public List<MagicPower> magicPowerG;
+
+        public List<MagicPower> magicPowerStandalone;
 
         public List<MagicPowerSkill> magicPowerSkill_global_regen;
         public List<MagicPowerSkill> magicPowerSkill_global_eff;
@@ -161,6 +163,41 @@ namespace TorannMagic
                     };
                 }
                 return this.magicPowerSkill_global_spirit;
+            }
+        }
+
+        public List<MagicPower> MagicPowersStandalone  //spells needed for magicpower reference during autocast
+        {
+            get
+            {
+                bool flag = this.magicPowerStandalone == null;
+                if (flag)
+                {
+                    this.magicPowerStandalone = new List<MagicPower>
+                    {
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_TransferMana
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_SiphonMana
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_SpellMending
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_CauterizeWound
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_TeachMagic
+                        }),
+                    };
+                }
+                return this.magicPowerStandalone;
             }
         }
 
@@ -1959,7 +1996,7 @@ namespace TorannMagic
         {
             get
             {
-                return this.MagicPowersIF.Concat(this.MagicPowersHoF.Concat(this.MagicPowersSB.Concat(this.MagicPowersA.Concat(this.MagicPowersP.Concat(this.MagicPowersS.Concat(this.MagicPowersD.Concat(this.MagicPowersN.Concat(this.MagicPowersPR.Concat(this.MagicPowersB.Concat(this.MagicPowersWD.Concat(this.MagicPowersSD.Concat(this.MagicPowersG))))))))))));
+                return this.MagicPowersIF.Concat(this.MagicPowersHoF.Concat(this.MagicPowersSB.Concat(this.MagicPowersA.Concat(this.MagicPowersP.Concat(this.MagicPowersS.Concat(this.MagicPowersD.Concat(this.MagicPowersN.Concat(this.MagicPowersPR.Concat(this.MagicPowersB.Concat(this.MagicPowersWD.Concat(this.MagicPowersSD.Concat(this.MagicPowersG.Concat(this.MagicPowersStandalone)))))))))))));
             }
         }
 
@@ -1986,6 +2023,7 @@ namespace TorannMagic
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_global_eff, "magicPowerSkill_global_eff", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_global_regen, "magicPowerSkill_global_regen", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_global_spirit, "magicPowerSkill_global_spirit", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPower>(ref this.magicPowerStandalone, "magicPowerStandalone", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPower>(ref this.magicPowerIF, "magicPowerIF", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_RayofHope, "magicPowerSkill_RayofHope", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Fireball, "magicPowerSkill_Fireball", LookMode.Deep, new object[0]);

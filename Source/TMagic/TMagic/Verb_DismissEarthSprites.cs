@@ -21,6 +21,7 @@ namespace TorannMagic
                 if (comp.earthSpriteType != 0)
                 {
                     comp.earthSpriteType = 0;
+                    comp.earthSpriteMap = null;
                     comp.earthSprites = IntVec3.Invalid;
                 }
                 else

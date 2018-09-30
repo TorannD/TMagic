@@ -55,11 +55,19 @@ namespace TorannMagic
                                 if (undeadPawn.RaceProps.IsFlesh && undeadPawn.Dead && undeadPawn.def.thingClass.FullName != "TorannMagic.TMPawnSummoned")
                                 {
                                     bool wasVampire = false;
-                                    bool hasVampHediff = undeadPawn.health.hediffSet.HasHediff(HediffDef.Named("ROM_Vampirism")) || undeadPawn.health.hediffSet.HasHediff(HediffDef.Named("ROM_GhoulHediff"));
-                                    if (hasVampHediff)
+
+                                    IEnumerable<ThingDef> enumerable = from hd in DefDatabase<HediffDef>.AllDefs
+                                                                       where (def.defName == "ROM_Vampirism")
+                                                                       select def;
+                                    if (enumerable.Count() > 0)
                                     {
-                                        wasVampire = true;
-                                    }                                    
+                                        bool hasVampHediff = undeadPawn.health.hediffSet.HasHediff(HediffDef.Named("ROM_Vampirism")) || undeadPawn.health.hediffSet.HasHediff(HediffDef.Named("ROM_GhoulHediff"));
+                                        if (hasVampHediff)
+                                        {
+                                            wasVampire = true;
+                                        }
+                                    }
+
                                     if (!wasVampire)
                                     {
                                         undeadPawn.SetFaction(pawn.Faction);

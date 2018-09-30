@@ -670,10 +670,10 @@
 				<ComfyTemperatureMin>-12</ComfyTemperatureMin>
 				<ComfyTemperatureMax>+12</ComfyTemperatureMax>
 				<PainShockThreshold>-0.15</PainShockThreshold>
-				<CarryingCapacity>+0.30</CarryingCapacity>
+				<CarryingCapacity>+20</CarryingCapacity>
 				<WorkSpeedGlobal>-0.20</WorkSpeedGlobal>
 				<MentalBreakThreshold>-0.15</MentalBreakThreshold>
-				<GlobalLearningFactor>0.8</GlobalLearningFactor>
+				<GlobalLearningFactor>-0.2</GlobalLearningFactor>
 			</statOffsets>
 		  </li>
 		</degreeDatas>
@@ -1008,6 +1008,7 @@
 					<MoveSpeed>.15</MoveSpeed>
                     <MentalBreakThreshold>-0.03</MentalBreakThreshold>
 					<MeleeHitChance>3</MeleeHitChance>
+					<MeleeDodgeChance>5</MeleeDodgeChance>
 					<ShootingAccuracyPawn>-20</ShootingAccuracyPawn>
 					<WorkSpeedGlobal>-.10</WorkSpeedGlobal>
                 </statOffsets>
@@ -1021,7 +1022,7 @@
 					<MoveSpeed>.20</MoveSpeed>
                     <MentalBreakThreshold>-0.05</MentalBreakThreshold>
 					<MeleeHitChance>6</MeleeHitChance>
-					<MeleeDodgeChance>5</MeleeDodgeChance>
+					<MeleeDodgeChance>10</MeleeDodgeChance>
 					<ShootingAccuracyPawn>-25</ShootingAccuracyPawn>
 					<WorkSpeedGlobal>-.12</WorkSpeedGlobal>
                 </statOffsets>
@@ -1035,7 +1036,7 @@
 					<MoveSpeed>.30</MoveSpeed>
                     <MentalBreakThreshold>-0.08</MentalBreakThreshold>
 					<MeleeHitChance>10</MeleeHitChance>
-					<MeleeDodgeChance>10</MeleeDodgeChance>
+					<MeleeDodgeChance>15</MeleeDodgeChance>
 					<PainShockThreshold>0.05</PainShockThreshold>
 					<ShootingAccuracyPawn>-28</ShootingAccuracyPawn>
 					<WorkSpeedGlobal>-.14</WorkSpeedGlobal>
@@ -1050,7 +1051,7 @@
 					<MoveSpeed>.40</MoveSpeed>
                     <MentalBreakThreshold>-0.10</MentalBreakThreshold>
 					<MeleeHitChance>15</MeleeHitChance>
-					<MeleeDodgeChance>15</MeleeDodgeChance>
+					<MeleeDodgeChance>20</MeleeDodgeChance>
 					<PainShockThreshold>0.10</PainShockThreshold>
 					<ShootingAccuracyPawn>-30</ShootingAccuracyPawn>
 					<WorkSpeedGlobal>-.15</WorkSpeedGlobal>

@@ -98,7 +98,7 @@ namespace TorannMagic
                                         //current.Heal((float)((int)current.Severity + 1));
                                         if (!this.CasterPawn.IsColonist)
                                         {
-                                            current.Heal(20.0f + (float)pwrVal * 3f); // power affects how much to heal
+                                            current.Heal(20.0f + (float)pwrVal * 3f); // power affects how much to heal                                            
                                         }
                                         else
                                         {

@@ -6,27 +6,6 @@
 		<linkUrl>https://ludeon.com/forums/index.php?topic=37161.0</linkUrl>
 	</HugsLib.UpdateFeatureDef>	
 	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_1_9_9</defName>
-		<assemblyVersion>1.9.9</assemblyVersion>
-		<content>
-- A Chinese translation has been added to the mod - big thanks to KuanKuan!
-
-- The Elemental Rift event has undergone some changes.  When a rift occurs, the element type is determined and will remain that type for the remainder of the event.  Each element type is accompanied by a unique set of atmospheric conditions that will present additional challenges to the colony.
-
-- Magicyte can now be extracted from dead elementals at the butchery table.
-
-- The exact mana gain can now be seen under the Magic tab; hovering over the value will provide a tooltip showing contributors to the amount.
-
-- Enchantments are now shown under an item in the gear/inventory tab; this should make it much easier to find equipped items that have enchantments. The characters shown in parenthesis are a quick code for the types of enchantments affecting the item; mousing over the text will also bring up a tooltip that shows the exact enchantments.
-
-- Research tiers have been adjusted slightly to split projects into either neolithic or medieval; net research costs are approximately the same.
-
-- Casting graphics have been added to help identify friendly and enemy pawns that are casting a spell.
-
-- Other miscellaneous updates include improvements for Spell Mending, thrumbo horns have been added as a resource requirement for the thrumbo axe, jade has been added to arcane traders, undead can no longer be captured and more!
-	</content>
-	</HugsLib.UpdateFeatureDef>
-	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
 		<defName>ARimWorldOfMagic_2_0_0</defName>
 		<assemblyVersion>2.0.0</assemblyVersion>
 		<content>
@@ -117,6 +96,34 @@ Bug fixes:
 	Minions will no longer "divide by zero" for caravan food supplies
 	Dismissing a minion that's part of a caravan will remove the minion from the caravan (instantly)
 	Sending a minion on a caravan will no longer remove it from the casters list of minions
+		</content>
+	</HugsLib.UpdateFeatureDef>	
+			<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_2_2_5</defName>
+		<assemblyVersion>2.2.5</assemblyVersion>
+		<content>
+** New feature: Auto-casting - many basic spells or skills can now be enabled for automatic use.  There are a few things you should know:
+	- Abilities with autocast will have a checkbox at the top right of the ability icon; right click the ability icon to toggle the feature.
+	- There are two separate routines for drafted and undrafted.  Some spells, like magic combat spells, will only autocast while drafted.
+	- The only offensive abilities that will be used while undrafted are Ranger "Arrow Storm" and Sniper "Headshot" - and only when hunting.
+	- Autocast settings can be found in the mod options, and can be turned off globally if desired or for performance reasons.
+	- Outside of combat and hunting, autocast abilities will only target human colonists.
+	- Enabling autocast does not prevent normal use of abilities.
+	
+** New feature: Class options - within the mod settings there is a button for "Class Options" that will allow you to disable certain classes from being generated during gameplay.
+	- This does not remove traits from the database.  Disabled class traits will never be assigned during normal gameplay but use of mods like EdB Prepare Carefully or any mod that ignores trait commonality settings, will still show the trait.
+	- This feature should not be used in the middle of a game, only apply changes before starting a new game.
+	
+* New weapons - Elephant bow and Elephant spear - these weapons are intended to provide extra benefit to fighter classes at mid-tier (industrial equivalent) and have minor enchantments, similar to wands for mages.
+
+Bug fixes: 
+Geomancer "Encase" has been recoded to prevent "terrain swapping" and accidental destruction of a building if the swapped terrain type didn't support the building
+Fixed an issue where several spells that should ignore terrain were 'hitting' objects or terrain prior to reaching their designated targets
+Equipment (apparel) should now show their enchantments in the gear tab, along with weapons
+Fixed an issue where Bards performing the "entertain" job wouldn't properly reserve their targets
+Fixed a bug with Warlock "Empathy Bleed" that would attempt to feel empathy for colony pets
+Warlock/Succubus can no longer soulbond themselves
+
 		</content>
 	</HugsLib.UpdateFeatureDef>	
 	

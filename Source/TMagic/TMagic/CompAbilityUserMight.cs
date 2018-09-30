@@ -25,6 +25,7 @@ namespace TorannMagic
         private int fortitudeMitigationDelay = 0;
         private int mightXPRate = 1200;
         private int lastMightXPGain = 0;
+        private int autocastTick = 0;
 
         private float G_Sprint_eff = 0.20f;
         private float G_Grapple_eff = 0.10f;
@@ -79,6 +80,9 @@ namespace TorannMagic
         DamageInfo reversal_dinfo;
         Thing reversalTarget = null;
         public Pawn bondedPet = null;
+
+        public Verb_UseAbility lastVerbUsed = null;
+        public int lastTickVerbUsed = 0;
 
         public TMAbilityDef mimicAbility = null;
 
@@ -599,6 +603,15 @@ namespace TorannMagic
                         {
                             ResolveClassSkills();
                             ResolveClassPassions();
+                        }
+                        if (this.autocastTick < Find.TickManager.TicksGame)  //180 default
+                        {
+                            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                            if (this.Pawn.IsColonist && !this.Pawn.Dead && !this.Pawn.Downed && this.Pawn.Map != null)
+                            {
+                                ResolveAutoCast();
+                            }
+                            this.autocastTick = Find.TickManager.TicksGame + (int)Rand.Range(.8f * settingsRef.autocastEvaluationFrequency, 1.2f * settingsRef.autocastEvaluationFrequency);
                         }
                         if (this.Stamina.CurLevel >  (.99f * this.Stamina.MaxLevel))
                         {                            
@@ -1713,15 +1726,10 @@ namespace TorannMagic
                             bool flag3 = primaryEq != null;
                             if (flag3)
                             {
-                                Log.Message("attempting deflect of pawn " + pawn.LabelShort);
-                                Log.Message("equipped with " + pawn.equipment.PrimaryEq.PrimaryVerb);
                                 bool flag4 = primaryEq.PrimaryVerb != null;
                                 if (flag4)
                                 {
-                                    Log.Message("primary verb is not null");
                                     Verb_Deflected verb_Deflected = (Verb_Deflected)this.CopyAndReturnNewVerb(primaryEq.PrimaryVerb);
-                                    Log.Message("verb deflected assigned ");
-                                    Log.Message("verb deflected is " + verb_Deflected.ToString()); //throwing an error, so nothing is happening in jobdriver_castdeflectverb
                                     //verb_Deflected = this.ReflectionHandler(verb_Deflected);
                                     //Log.Message("verb deflected with properties is " + verb_Deflected.ToString()); //throwing an error, so nothing is happening in jobdriver_castdeflectverb
                                     pawn = dinfo.Instigator as Pawn;
@@ -1800,9 +1808,6 @@ namespace TorannMagic
             };
 
             newVerb.verbProps = verbProperties;
-            Log.Message("assigning verb properties");
-            Log.Message("newverb is " + newVerb);
-
             return newVerb;
         }
 
@@ -1812,7 +1817,340 @@ namespace TorannMagic
             reversalTarget = null;
         }
 
-        public void ResolveClassSkills()
+        public void ResolveAutoCast()
+        {
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            if (settingsRef.autocastEnabled && !this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) && this.Pawn.CurJob != null && this.Pawn.CurJob.def.defName != "TMCastAbilityVerb" && this.Pawn.CurJob.def.defName != "Ingest" && this.Pawn.GetPosture() == PawnPosture.Standing)
+            {
+                //Log.Message("pawn " + this.Pawn.LabelShort + " current job is " + this.Pawn.CurJob.def.defName);
+                //non-combat (undrafted) spells    
+                bool castSuccess = false;
+                if (!this.Pawn.Drafted && this.Stamina.CurLevelPercentage >= settingsRef.autocastMinThreshold)
+                {
+                    //Hunting only
+                    if (this.Pawn.CurJob.def.defName == "Hunt" && this.Pawn.CurJob.targetA != null)
+                    {
+                        if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            PawnAbility ability = null;
+                            foreach (MightPower current in this.MightData.MightPowersR)
+                            {
+                                if (current.abilityDef != null)
+                                {
+                                    if ((current.abilityDef == TorannMagicDefOf.TM_ArrowStorm || current.abilityDef == TorannMagicDefOf.TM_ArrowStorm_I || current.abilityDef == TorannMagicDefOf.TM_ArrowStorm_II || current.abilityDef == TorannMagicDefOf.TM_ArrowStorm_III))
+                                    {
+                                        if (this.Pawn.equipment.Primary != null && this.Pawn.equipment.Primary.def.IsRangedWeapon)
+                                        {
+                                            Thing wpn = this.Pawn.equipment.Primary;
+
+                                            if (wpn.def.Verbs.FirstOrDefault<VerbProperties>().defaultProjectile.projectile.damageDef.defName == "Arrow" || wpn.def.defName.Contains("Bow") || wpn.def.defName.Contains("bow") || wpn.def.Verbs.FirstOrDefault<VerbProperties>().defaultProjectile.projectile.damageDef.defName.Contains("Arrow") || wpn.def.Verbs.FirstOrDefault<VerbProperties>().defaultProjectile.projectile.damageDef.defName.Contains("arrow"))
+                                            {
+                                                if (current.level == 0)
+                                                {
+                                                    MightPower mightPower = this.MightData.MightPowersR.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ArrowStorm);
+                                                    if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                                    {
+                                                        ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ArrowStorm);
+                                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_ArrowStorm, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
+                                                        if (castSuccess) goto AutoCastExit;
+                                                    }
+                                                }
+                                                else if (current.level == 1)
+                                                {
+                                                    MightPower mightPower = this.MightData.MightPowersR.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ArrowStorm);
+                                                    if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                                    {
+                                                        ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ArrowStorm_I);
+                                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_ArrowStorm_I, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
+                                                        if (castSuccess) goto AutoCastExit;
+                                                    }
+
+                                                }
+                                                else if (current.level == 2)
+                                                {
+                                                    MightPower mightPower = this.MightData.MightPowersR.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ArrowStorm_I);
+                                                    if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                                    {
+                                                        ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ArrowStorm_II);
+                                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_ArrowStorm_II, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
+                                                        if (castSuccess) goto AutoCastExit;
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    MightPower mightPower = this.MightData.MightPowersR.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ArrowStorm_II);
+                                                    if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                                    {
+                                                        ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ArrowStorm_III);
+                                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_ArrowStorm_III, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
+                                                        if (castSuccess) goto AutoCastExit;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            PawnAbility ability = null;
+                            foreach (MightPower current in this.MightData.MightPowersS)
+                            {
+                                if (current.abilityDef != null)
+                                {
+                                    if (this.Pawn.equipment.Primary != null && this.Pawn.equipment.Primary.def.IsRangedWeapon)
+                                    {
+                                        if (current.abilityDef == TorannMagicDefOf.TM_Headshot)
+                                        {
+                                            MightPower mightPower = this.MightData.MightPowersS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Headshot);
+                                            if (mightPower != null && mightPower.autocast)
+                                            {
+                                                ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Headshot);
+                                                AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_Headshot, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
+                                                if (castSuccess) goto AutoCastExit;
+                                            }
+                                        }                                        
+                                    }
+                                }
+                            }
+                        }
+                        if (this.skill_Teach)
+                        {
+                            MightPower mightPower = this.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_TeachMight);
+                            if (mightPower.autocast)
+                            {
+                                PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_TeachMight);
+                                AutoCast.TeachMight.Evaluate(this, TorannMagicDefOf.TM_TeachMight, ability, mightPower, out castSuccess);
+                                if (castSuccess) goto AutoCastExit;
+                            }
+                        }
+                    }
+                }
+
+                //combat (drafted) spells
+                if (this.Pawn.Drafted && this.Stamina.CurLevelPercentage >= settingsRef.autocastCombatMinThreshold && this.Pawn.CurJob.def != JobDefOf.Goto)
+                {
+                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    {
+                        PawnAbility ability = null;
+                        foreach (MightPower current in this.MightData.MightPowersB)
+                        {
+                            if (current.abilityDef != null)
+                            {
+                                if (current.abilityDef == TorannMagicDefOf.TM_BladeSpin)
+                                {
+                                    MightPower mightPower = this.MightData.MightPowersB.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_BladeSpin);
+                                    if (mightPower != null && mightPower.autocast && this.Pawn.equipment.Primary != null && !this.Pawn.equipment.Primary.def.IsRangedWeapon)
+                                    {
+                                        ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_BladeSpin);
+                                        MightPowerSkill ver = this.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_ver");
+                                        AutoCast.AoECombat.Evaluate(this, TorannMagicDefOf.TM_BladeSpin, ability, mightPower, 2, Mathf.RoundToInt(2+(.5f*ver.level)), this.Pawn.Position, true, out castSuccess);
+                                        if (castSuccess) goto AutoCastExit;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    {
+                        PawnAbility ability = null;
+                        foreach (MightPower current in this.MightData.MightPowersG)
+                        {
+                            if (current.abilityDef != null)
+                            {
+                                if ((current.abilityDef == TorannMagicDefOf.TM_Grapple || current.abilityDef == TorannMagicDefOf.TM_Grapple_I || current.abilityDef == TorannMagicDefOf.TM_Grapple_II || current.abilityDef == TorannMagicDefOf.TM_Grapple_III))
+                                {
+                                    if (current.level == 0)
+                                    {
+                                        MightPower mightPower = this.MightData.MightPowersG.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Grapple);
+                                        if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                        {
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Grapple);
+                                            AutoCast.CombatAbility.Evaluate(this, TorannMagicDefOf.TM_Grapple, ability, mightPower, out castSuccess);
+                                            if (castSuccess) goto AutoCastExit;
+                                        }
+                                    }
+                                    else if (current.level == 1)
+                                    {
+                                        MightPower mightPower = this.MightData.MightPowersG.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Grapple);
+                                        if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                        {
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Grapple_I);
+                                            AutoCast.CombatAbility.Evaluate(this, TorannMagicDefOf.TM_Grapple_I, ability, mightPower, out castSuccess);
+                                            if (castSuccess) goto AutoCastExit;
+                                        }
+
+                                    }
+                                    else if (current.level == 2)
+                                    {
+                                        MightPower mightPower = this.MightData.MightPowersG.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Grapple_I);
+                                        if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                        {
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Grapple_II);
+                                            AutoCast.CombatAbility.Evaluate(this, TorannMagicDefOf.TM_Grapple_II, ability, mightPower, out castSuccess);
+                                            if (castSuccess) goto AutoCastExit;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MightPower mightPower = this.MightData.MightPowersG.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Grapple_II);
+                                        if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                        {
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Grapple_III);
+                                            AutoCast.CombatAbility.Evaluate(this, TorannMagicDefOf.TM_Grapple_III, ability, mightPower, out castSuccess);
+                                            if (castSuccess) goto AutoCastExit;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    {
+                        PawnAbility ability = null;
+                        foreach (MightPower current in this.MightData.MightPowersR)
+                        {
+                            if (current.abilityDef != null)
+                            {
+                                if ((current.abilityDef == TorannMagicDefOf.TM_ArrowStorm || current.abilityDef == TorannMagicDefOf.TM_ArrowStorm_I || current.abilityDef == TorannMagicDefOf.TM_ArrowStorm_II || current.abilityDef == TorannMagicDefOf.TM_ArrowStorm_III))
+                                {
+                                    if (this.Pawn.equipment.Primary != null && this.Pawn.equipment.Primary.def.IsRangedWeapon)
+                                    {
+                                        Thing wpn = this.Pawn.equipment.Primary;
+
+                                        if (wpn.def.Verbs.FirstOrDefault<VerbProperties>().defaultProjectile.projectile.damageDef.defName == "Arrow" || wpn.def.defName.Contains("Bow") || wpn.def.defName.Contains("bow") || wpn.def.Verbs.FirstOrDefault<VerbProperties>().defaultProjectile.projectile.damageDef.defName.Contains("Arrow") || wpn.def.Verbs.FirstOrDefault<VerbProperties>().defaultProjectile.projectile.damageDef.defName.Contains("arrow"))
+                                        {
+                                            if (current.level == 0)
+                                            {
+                                                MightPower mightPower = this.MightData.MightPowersR.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ArrowStorm);
+                                                if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                                {
+                                                    ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ArrowStorm);
+                                                    AutoCast.CombatAbility.Evaluate(this, TorannMagicDefOf.TM_ArrowStorm, ability, mightPower, out castSuccess);
+                                                    if (castSuccess) goto AutoCastExit;
+                                                }
+                                            }
+                                            else if (current.level == 1)
+                                            {
+                                                MightPower mightPower = this.MightData.MightPowersR.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ArrowStorm);
+                                                if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                                {
+                                                    ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ArrowStorm_I);
+                                                    AutoCast.CombatAbility.Evaluate(this, TorannMagicDefOf.TM_ArrowStorm_I, ability, mightPower, out castSuccess);
+                                                    if (castSuccess) goto AutoCastExit;
+                                                }
+
+                                            }
+                                            else if (current.level == 2)
+                                            {
+                                                MightPower mightPower = this.MightData.MightPowersR.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ArrowStorm_I);
+                                                if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                                {
+                                                    ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ArrowStorm_II);
+                                                    AutoCast.CombatAbility.Evaluate(this, TorannMagicDefOf.TM_ArrowStorm_II, ability, mightPower, out castSuccess);
+                                                    if (castSuccess) goto AutoCastExit;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                MightPower mightPower = this.MightData.MightPowersR.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ArrowStorm_II);
+                                                if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                                {
+                                                    ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ArrowStorm_III);
+                                                    AutoCast.CombatAbility.Evaluate(this, TorannMagicDefOf.TM_ArrowStorm_III, ability, mightPower, out castSuccess);
+                                                    if (castSuccess) goto AutoCastExit;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    {
+                        PawnAbility ability = null;
+                        foreach (MightPower current in this.MightData.MightPowersS)
+                        {
+                            if (current.abilityDef != null)
+                            {
+                                if(this.Pawn.equipment.Primary != null && this.Pawn.equipment.Primary.def.IsRangedWeapon)
+                                {
+                                    if (current.abilityDef == TorannMagicDefOf.TM_AntiArmor)
+                                    {
+                                        MightPower mightPower = this.MightData.MightPowersS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_AntiArmor);
+                                        if (mightPower != null && mightPower.autocast)
+                                        {
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_AntiArmor);
+                                            AutoCast.CombatAbility.Evaluate(this, TorannMagicDefOf.TM_AntiArmor, ability, mightPower, out castSuccess);
+                                            if (castSuccess) goto AutoCastExit;
+                                        }
+                                    }
+                                    if (current.abilityDef == TorannMagicDefOf.TM_Headshot)
+                                    {
+                                        MightPower mightPower = this.MightData.MightPowersS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Headshot);
+                                        if (mightPower != null && mightPower.autocast)
+                                        {
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Headshot);
+                                            AutoCast.CombatAbility.Evaluate(this, TorannMagicDefOf.TM_Headshot, ability, mightPower, out castSuccess);
+                                            if (castSuccess) goto AutoCastExit;
+                                        }
+                                    }
+                                    if ((current.abilityDef == TorannMagicDefOf.TM_DisablingShot || current.abilityDef == TorannMagicDefOf.TM_DisablingShot_I || current.abilityDef == TorannMagicDefOf.TM_DisablingShot_II || current.abilityDef == TorannMagicDefOf.TM_DisablingShot_III))
+                                    {
+                                        if (current.level == 0)
+                                        {
+                                            MightPower mightPower = this.MightData.MightPowersS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_DisablingShot);
+                                            if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                            {
+                                                ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_DisablingShot);
+                                                AutoCast.CombatAbility.Evaluate(this, TorannMagicDefOf.TM_DisablingShot, ability, mightPower, out castSuccess);
+                                                if (castSuccess) goto AutoCastExit;
+                                            }
+                                        }
+                                        else if (current.level == 1)
+                                        {
+                                            MightPower mightPower = this.MightData.MightPowersS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_DisablingShot);
+                                            if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                            {
+                                                ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_DisablingShot_I);
+                                                AutoCast.CombatAbility.Evaluate(this, TorannMagicDefOf.TM_DisablingShot_I, ability, mightPower, out castSuccess);
+                                                if (castSuccess) goto AutoCastExit;
+                                            }
+
+                                        }
+                                        else if (current.level == 2)
+                                        {
+                                            MightPower mightPower = this.MightData.MightPowersS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_DisablingShot_I);
+                                            if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                            {
+                                                ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_DisablingShot_II);
+                                                AutoCast.CombatAbility.Evaluate(this, TorannMagicDefOf.TM_DisablingShot_II, ability, mightPower, out castSuccess);
+                                                if (castSuccess) goto AutoCastExit;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MightPower mightPower = this.MightData.MightPowersS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_DisablingShot_II);
+                                            if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                            {
+                                                ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_DisablingShot_III);
+                                                AutoCast.CombatAbility.Evaluate(this, TorannMagicDefOf.TM_DisablingShot_III, ability, mightPower, out castSuccess);
+                                                if (castSuccess) goto AutoCastExit;
+                                            }
+                                        }
+                                    }                                    
+                                }
+                            }
+                        }
+                    }
+                }
+                AutoCastExit:;
+            }
+        }
+
+        public void ResolveClassSkills()               
         {
             if (this.MightUserLevel >= 20 && this.skill_Teach == false)
             {

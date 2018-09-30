@@ -54,7 +54,7 @@ namespace TorannMagic
             verVal = ver.level;
             pwrVal = pwr.level;
 
-            bool flag = pawn != null && !pawn.Dead && pawn.RaceProps.Humanlike;
+            bool flag = pawn != null && !pawn.Dead && pawn.RaceProps.Humanlike && pawn != caster;
             if (flag)
             {
                 if (!pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD))

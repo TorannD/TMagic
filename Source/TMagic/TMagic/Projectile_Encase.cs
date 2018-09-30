@@ -11,6 +11,18 @@ using Harmony;
 
 namespace TorannMagic
 {
+    public struct Encase
+    {
+        public IntVec3 position;
+        public TerrainDef terrain;
+
+        public Encase(IntVec3 pos, TerrainDef ter)
+        {
+            position = pos;
+            terrain = ter;
+        }
+    }
+
     [StaticConstructorOnStartup]
     public class Projectile_Encase : Projectile_AbilityBase
     {
@@ -23,7 +35,11 @@ namespace TorannMagic
         List<IntVec3> wallPositions = new List<IntVec3>();
         List<Thing> despawnedThingList = new List<Thing>();
         List<TerrainDef> terrainList = new List<TerrainDef>();
+
+        List<Encase> wall = new List<Encase>();
         Pawn caster;
+
+
 
         //unsaved variables
         ThingDef spawnDef = ThingDef.Named("Sandstone");
@@ -90,15 +106,20 @@ namespace TorannMagic
                 this.wallPositions = outerCells.Except(innerCells).ToList();
                 for (int t = 0; t < wallPositions.Count(); t++)
                 {
+                    Encase temp = new Encase(wallPositions[t], wallPositions[t].GetTerrain(caster.Map));
+                    wall.Add(temp);
                     this.terrainList.Add(wallPositions[t].GetTerrain(caster.Map));
                 }
                 float magnitude = (base.Position.ToVector3Shifted() - Find.Camera.transform.position).magnitude;
                 Find.CameraDriver.shaker.DoShake(10 / magnitude);
-                for (int k = 0; k < wallPositions.Count(); k++)
-                {
-                    if (wallPositions[k].IsValid && wallPositions[k].InBounds(caster.Map) && !wallPositions[k].Fogged(caster.Map) && !wallPositions[k].InNoZoneEdgeArea(caster.Map))
+                //for (int k = 0; k < wallPositions.Count(); k++)
+                //{
+                for(int k =0; k < wall.Count(); k++)
+                { 
+                    if(wall[k].position.IsValid && wall[k].position.InBounds(caster.Map) && !wall[k].position.Fogged(caster.Map) && !wall[k].position.InNoZoneEdgeArea(caster.Map))
+                    //if (wallPositions[k].IsValid && wallPositions[k].InBounds(caster.Map) && !wallPositions[k].Fogged(caster.Map) && !wallPositions[k].InNoZoneEdgeArea(caster.Map))
                     {
-                        if (this.terrainList[k].defName == "Marsh" || this.terrainList[k].defName == "WaterShallow" || this.terrainList[k].defName == "WaterMovingShallow" || this.terrainList[k].defName == "WaterOceanShallow" || this.terrainList[k].defName == "WaterMovingChestDeep")
+                        if (wall[k].terrain.defName == "Marsh" || wall[k].terrain.defName == "WaterShallow" || wall[k].terrain.defName == "WaterMovingShallow" || wall[k].terrain.defName == "WaterOceanShallow" || wall[k].terrain.defName == "WaterMovingChestDeep")
                         {
                             MoteSplash moteSplash = (MoteSplash)ThingMaker.MakeThing(ThingDefOf.Mote_WaterSplash, null);
                             moteSplash.Initialize(wallPositions[k].ToVector3Shifted(), 8f, 1f);
@@ -109,7 +130,7 @@ namespace TorannMagic
                         try
                         {
 
-                            cellList = this.wallPositions[k].GetThingList(caster.Map);
+                            cellList = wall[k].position.GetThingList(caster.Map);
                             for (int i = 0; i < cellList.Count(); i++)
                             {
                                 if (cellList[i].def.designationCategory == DesignationCategoryDefOf.Structure || cellList[i].def.altitudeLayer == AltitudeLayer.Building || cellList[i].def.altitudeLayer == AltitudeLayer.Item || cellList[i].def.altitudeLayer == AltitudeLayer.ItemImportant)
@@ -117,8 +138,9 @@ namespace TorannMagic
                                     if (!cellList[i].def.EverHaulable)
                                     {
                                         hasWall = true;
-                                        this.terrainList.Remove(this.terrainList[k]);
-                                        this.wallPositions.Remove(this.wallPositions[k]); //don't do anything if a building/wall already exists
+                                        //this.terrainList.Remove(this.terrainList[k]);
+                                        //this.wallPositions.Remove(this.wallPositions[k]); //don't do anything if a building/wall already exists
+                                        wall.Remove(wall[k]);
                                         break;
                                     }
                                 }
@@ -127,8 +149,9 @@ namespace TorannMagic
                         catch //remove square if it threw an error trying to get item list at this location
                         {
                             hasWall = true;
-                            this.terrainList.Remove(this.terrainList[k]);
-                            this.wallPositions.Remove(this.wallPositions[k]);
+                            //this.terrainList.Remove(this.terrainList[k]);
+                            //this.wallPositions.Remove(this.wallPositions[k]);
+                            wall.Remove(wall[k]);
                             continue;
                         }
 
@@ -162,11 +185,11 @@ namespace TorannMagic
                                     spawnCount = 1
                                 };
                                 try
-                                {
-                                    SingleSpawnLoop(tempSpawn, wallPositions[k], caster.Map);
+                                {                                 
+                                    SingleSpawnLoop(tempSpawn, wall[k].position, caster.Map);
                                     for (int m = 0; m < 4; m++)
                                     {
-                                        TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_ThickDust"), this.wallPositions[k].ToVector3Shifted(), caster.Map, Rand.Range(.6f, .8f), Rand.Range(.2f, .3f), .05f, Rand.Range(.4f, .6f), Rand.Range(-20, 20), Rand.Range(1f, 2f), Rand.Range(0, 360), Rand.Range(0, 360));
+                                        TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_ThickDust"), wall[k].position.ToVector3Shifted(), caster.Map, Rand.Range(.6f, .8f), Rand.Range(.2f, .3f), .05f, Rand.Range(.4f, .6f), Rand.Range(-20, 20), Rand.Range(1f, 2f), Rand.Range(0, 360), Rand.Range(0, 360));
                                     }
                                 }
                                 catch
@@ -184,20 +207,20 @@ namespace TorannMagic
             }
             else if(this.initialized && this.wallActive && !(this.age < this.duration))
             {                
-                for (int j = 0; j < this.wallPositions.Count(); j++)
+                for (int j = 0; j < wall.Count(); j++)
                 {
                     Building structure = null;
-                    structure = this.wallPositions[j].GetFirstBuilding(this.Map);
+                    structure = this.wall[j].position.GetFirstBuilding(this.Map);
                     if (structure != null)
                     {
                         structure.Destroy();
                         for (int m = 0; m < 4; m++)
                         {
-                            TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_ThickDust"), this.wallPositions[j].ToVector3Shifted(), this.Map, Rand.Range(.4f, .8f), Rand.Range(.2f, .3f), .05f, Rand.Range(.4f, .6f), Rand.Range(-20, 20), Rand.Range(1f, 2f), Rand.Range(0, 360), Rand.Range(0, 360));
+                            TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_ThickDust"), wall[j].position.ToVector3Shifted(), this.Map, Rand.Range(.4f, .8f), Rand.Range(.2f, .3f), .05f, Rand.Range(.4f, .6f), Rand.Range(-20, 20), Rand.Range(1f, 2f), Rand.Range(0, 360), Rand.Range(0, 360));
                         }
                     }
                     structure = null;
-                    this.Map.terrainGrid.SetTerrain(wallPositions[j], terrainList[j]);
+                    this.Map.terrainGrid.SetTerrain(wall[j].position, wall[j].terrain);
                 }
 
                 for (int i = 0; i < this.despawnedThingList.Count(); i++)

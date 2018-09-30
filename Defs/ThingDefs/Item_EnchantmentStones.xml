@@ -42,11 +42,12 @@
   <ThingDef ParentName="UnfinishedBase">
     <defName>UnfinishedGem</defName>
     <label>unfinished gem</label>
+	<isUnfinishedThing>true</isUnfinishedThing>
     <graphicData>
       <texPath>Items/Gemstones/unfinishedgem</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <stuffCategories />
+	<stuffCategories Inherit="false" />
   </ThingDef>
 
   <!--=============== Enchanting Gems ====================-->

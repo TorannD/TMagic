@@ -12,6 +12,7 @@
 			<shaderType>TransparentPostLight</shaderType>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
             <damageDef>TM_Holy</damageDef>
             <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>
@@ -70,6 +71,7 @@ Applying stoneskin to a target that already has stoneskin will remove all charge
 			<shaderType>TransparentPostLight</shaderType>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
             <damageDef>TM_Holy</damageDef>
             <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>
@@ -88,6 +90,7 @@ Applying stoneskin to a target that already has stoneskin will remove all charge
 			<shaderType>TransparentPostLight</shaderType>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
             <damageDef>TM_Holy</damageDef>
             <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>
@@ -106,6 +109,7 @@ Applying stoneskin to a target that already has stoneskin will remove all charge
 			<shaderType>TransparentPostLight</shaderType>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
             <damageDef>TM_Holy</damageDef>
             <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>
@@ -124,6 +128,7 @@ Applying stoneskin to a target that already has stoneskin will remove all charge
 			<shaderType>TransparentPostLight</shaderType>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
             <damageDef>TM_Holy</damageDef>
             <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>
@@ -432,6 +437,7 @@ The first, and every third stone after, will always be subterranean unless there
 			<shaderType>TransparentPostLight</shaderType>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
             <damageDef>TM_Holy</damageDef>
             <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>
@@ -449,7 +455,7 @@ Using this ability on a dormant sentinel will dismiss the sentinel.
 *Aesthetic note: sentinels will always face away from the caster.</description>
 		<manaCost>0.20</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+            <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>

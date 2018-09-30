@@ -37,6 +37,7 @@
         <hasStandardCommand>true</hasStandardCommand>
 		<abilityDef>TM_Disguise</abilityDef>
 		<isViolent>false</isViolent>
+		<AlwaysHits>true</AlwaysHits>
         <defaultProjectile>TM_Faceless_Projectile</defaultProjectile>
         <warmupTime>1</warmupTime>
         <SecondsToRecharge>240</SecondsToRecharge>
@@ -74,6 +75,7 @@
         <hasStandardCommand>true</hasStandardCommand>
 		<abilityDef>TM_Mimic</abilityDef>
 		<isViolent>false</isViolent>
+		<AlwaysHits>true</AlwaysHits>
         <defaultProjectile>TM_Faceless_Projectile</defaultProjectile>
         <warmupTime>1</warmupTime>
         <SecondsToRecharge>120</SecondsToRecharge>
@@ -153,6 +155,7 @@ Cooldown: 60</description>
             <SecondsToRecharge>60</SecondsToRecharge>
             <range>40</range>
 			<isViolent>false</isViolent>
+			<AlwaysHits>true</AlwaysHits>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
             <soundCast>TM_AirWoosh</soundCast>
@@ -185,6 +188,7 @@ Cooldown: 55</description>
             <SecondsToRecharge>55</SecondsToRecharge>
             <range>44</range>
 			<isViolent>false</isViolent>
+			<AlwaysHits>true</AlwaysHits>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
             <soundCast>TM_AirWoosh</soundCast>
@@ -217,6 +221,7 @@ Cooldown: 50</description>
             <SecondsToRecharge>50</SecondsToRecharge>
             <range>47</range>
 			<isViolent>false</isViolent>
+			<AlwaysHits>true</AlwaysHits>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
             <soundCast>TM_AirWoosh</soundCast>
@@ -249,6 +254,7 @@ Cooldown: 45</description>
             <SecondsToRecharge>45</SecondsToRecharge>
             <range>50</range>
 			<isViolent>false</isViolent>
+			<AlwaysHits>true</AlwaysHits>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
             <soundCast>TM_AirWoosh</soundCast>
@@ -302,6 +308,7 @@ Only creatures with a human-like mind capable of self-doubt can be possessed.</d
             <SecondsToRecharge>360</SecondsToRecharge>
             <range>16</range>
 			<isViolent>false</isViolent>
+			<AlwaysHits>true</AlwaysHits>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
             <soundCast>TM_Vibration</soundCast>

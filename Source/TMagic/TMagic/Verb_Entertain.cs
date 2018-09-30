@@ -15,6 +15,7 @@ namespace TorannMagic
         {
             Pawn caster = base.CasterPawn;
             Pawn pawn = this.currentTarget.Thing as Pawn;
+            MagicPower magicPower = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Entertain);
             bool flag = pawn != null && !pawn.Dead;
             if (flag)
             {
@@ -31,11 +32,14 @@ namespace TorannMagic
                             }
                         }
                     }
+                    
+                    magicPower.AutoCast = false;
                 }
                 else
                 {
                     HealthUtility.AdjustSeverity(pawn, HediffDef.Named("TM_EntertainingHD"), .95f);
                     TM_MoteMaker.ThrowNoteMote(pawn.DrawPos, pawn.Map, .8f);
+                    magicPower.AutoCast = true;
                 }
             }
             return true;

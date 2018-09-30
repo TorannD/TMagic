@@ -34,7 +34,7 @@
 	<resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
 	<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 	<researchPrerequisites>
-      <li>ShipReactor</li>
+
     </researchPrerequisites>
   </ThingDef>
   
@@ -260,7 +260,6 @@
 	<resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
 	<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 	<researchPrerequisites>
-      <li>ShipReactor</li>
     </researchPrerequisites>
   </ThingDef>
 
@@ -383,7 +382,7 @@
 	<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 <!--     <designationHotKey>Misc2</designationHotKey> -->
 	<researchPrerequisites>
-      <li>ShipReactor</li>
+
     </researchPrerequisites>
   </ThingDef>
 
@@ -492,7 +491,6 @@
 	<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 <!--     <designationHotKey>Misc2</designationHotKey> -->
 	<researchPrerequisites>
-      <li>ShipReactor</li>
     </researchPrerequisites>
   </ThingDef>
 
@@ -602,7 +600,7 @@
 <!-- 	    <designationCategory>Security</designationCategory> -->
 <!--     <designationHotKey>Misc2</designationHotKey> -->
 	<researchPrerequisites>
-      <li>ShipReactor</li>
+
     </researchPrerequisites>
   </ThingDef>
 

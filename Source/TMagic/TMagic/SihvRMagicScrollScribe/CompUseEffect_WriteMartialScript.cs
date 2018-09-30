@@ -44,33 +44,92 @@ namespace TorannMagic.SihvRMagicScrollScribe
             }
             else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy))
             {
-                float rnd = Rand.Range(0, 6);
-                if(rnd < 1)
+                int attempt = 0;
+                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                RetryWrite:;
+                if (attempt < 20)
                 {
-                    tempPod = ThingDef.Named("BookOfGladiator");
-                }
-                else if (rnd < 2)
-                {
-                    tempPod = ThingDef.Named("BookOfSniper");
-                }
-                else if (rnd < 3)
-                {
-                    tempPod = ThingDef.Named("BookOfBladedancer");
-                }
-                else if (rnd < 4)
-                {
-                    tempPod = ThingDef.Named("BookOfRanger");
-                }
-                else if (rnd < 5)
-                {
-                    tempPod = ThingDef.Named("BookOfPsionic");
+                    float rnd = Rand.Range(0, 6);
+                    if (rnd < 1)
+                    {
+                        if (settingsRef.Gladiator)
+                        {
+                            tempPod = ThingDef.Named("BookOfGladiator");
+                        }
+                        else
+                        {
+                            attempt++;
+                            goto RetryWrite;
+                        }
+                    }
+                    else if (rnd < 2)
+                    {
+                        
+                        if (settingsRef.Sniper)
+                        {
+                            tempPod = ThingDef.Named("BookOfSniper");
+                        }
+                        else
+                        {
+                            attempt++;
+                            goto RetryWrite;
+                        }
+                    }
+                    else if (rnd < 3)
+                    {                       
+                        if (settingsRef.Bladedancer)
+                        {
+                            tempPod = ThingDef.Named("BookOfBladedancer");
+                        }
+                        else
+                        {
+                            attempt++;
+                            goto RetryWrite;
+                        }
+                    }
+                    else if (rnd < 4)
+                    {                        
+                        if (settingsRef.Ranger)
+                        {
+                            tempPod = ThingDef.Named("BookOfRanger");
+                        }
+                        else
+                        {
+                            attempt++;
+                            goto RetryWrite;
+                        }
+                    }
+                    else if (rnd < 5)
+                    {                        
+                        if (settingsRef.Psionic)
+                        {
+                            tempPod = ThingDef.Named("BookOfPsionic");
+                        }
+                        else
+                        {
+                            attempt++;
+                            goto RetryWrite;
+                        }
+                    }
+                    else
+                    {                        
+                        if (settingsRef.Faceless)
+                        {
+                            tempPod = ThingDef.Named("BookOfFaceless");
+                        }
+                        else
+                        {
+                            attempt++;
+                            goto RetryWrite;
+                        }
+                    }
+                    this.parent.Destroy(DestroyMode.Vanish);
                 }
                 else
                 {
-                    tempPod = ThingDef.Named("BookOfFaceless");
-                }               
-                this.parent.Destroy(DestroyMode.Vanish);
+                    Messages.Message("Unable to find a valid combat book type to write - ending attempt.", MessageTypeDefOf.RejectInput);
                 }
+            }
             else
             {
                 Messages.Message("NotPhyAdeptPawn".Translate(), MessageTypeDefOf.RejectInput);

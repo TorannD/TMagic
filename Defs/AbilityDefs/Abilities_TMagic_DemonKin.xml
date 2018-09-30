@@ -12,6 +12,7 @@
 			<shaderType>TransparentPostLight</shaderType>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
             <damageDef>TM_Holy</damageDef>
             <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>
@@ -376,6 +377,7 @@ Warlocks and Succubi dominate their foes in different ways. Warlocks will attemp
 			<graphicClass>Graphic_Single</graphicClass>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
             <damageDef>TM_Shadow</damageDef>
             <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>
@@ -550,6 +552,7 @@ Cooldown: 45</description>
 			<graphicClass>Graphic_Single</graphicClass>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
             <damageDef>TM_Shadow</damageDef>
             <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>
@@ -567,6 +570,7 @@ Cooldown: 45</description>
 			<graphicClass>Graphic_Single</graphicClass>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
             <damageDef>TM_Shadow</damageDef>
             <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>
@@ -584,6 +588,7 @@ Cooldown: 45</description>
 			<graphicClass>Graphic_Single</graphicClass>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
             <damageDef>TM_Shadow</damageDef>
             <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>
@@ -601,6 +606,7 @@ Cooldown: 45</description>
 			<graphicClass>Graphic_Single</graphicClass>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
             <damageDef>TM_Shadow</damageDef>
             <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>
@@ -783,6 +789,7 @@ Radius: 8</description>
 			<graphicClass>Graphic_Single</graphicClass>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
             <damageDef>TM_Shadow</damageDef>
             <damageAmountBase>24</damageAmountBase>
             <speed>999</speed>
@@ -836,6 +843,7 @@ Radius: 8</description>
 			<graphicClass>Graphic_Single</graphicClass>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
             <damageDef>TM_Shadow</damageDef>
             <damageAmountBase>3</damageAmountBase>
             <speed>999</speed>
@@ -923,6 +931,7 @@ The summoning is initiated when a Succubus anchors the physical offering and is 
             <soundCast>TM_VibrationLow</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>4</muzzleFlashScale>
+			<AlwaysHits>true</AlwaysHits>
             <isPrimary>false</isPrimary>
 			<isViolent>false</isViolent>
 			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>

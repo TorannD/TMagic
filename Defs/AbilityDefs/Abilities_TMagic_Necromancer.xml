@@ -13,6 +13,7 @@
 			<shaderType>TransparentPostLight</shaderType>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
             <damageDef>TM_Holy</damageDef>
             <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>
@@ -106,6 +107,7 @@ There is no limit to the number of undead a necromancer may control, however, wh
 			<shaderType>TransparentPostLight</shaderType>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
             <damageDef>TM_Poison</damageDef>
             <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>
@@ -318,6 +320,7 @@ Range: 46</description>
 			<shaderType>TransparentPostLight</shaderType>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
             <damageDef>TM_Torment</damageDef>
             <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>
@@ -373,6 +376,7 @@ Range: 46</description>
 			<shaderType>TransparentPostLight</shaderType>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
             <damageDef>TM_Holy</damageDef>
             <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>
@@ -548,6 +552,7 @@ Cast Time: 1.2s</description>
 			<shaderType>TransparentPostLight</shaderType>
         </graphicData>
         <projectile>
+			<flyOverhead>true</flyOverhead>
             <damageDef>TM_Holy</damageDef>
             <damageAmountBase>0</damageAmountBase>
             <speed>999</speed>

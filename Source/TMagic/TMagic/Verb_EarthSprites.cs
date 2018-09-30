@@ -60,6 +60,7 @@ namespace TorannMagic
                         {
                             comp.earthSprites = this.currentTarget.Cell;
                             comp.earthSpriteType = 1;
+                            comp.earthSpriteMap = this.CasterPawn.Map;
                             comp.nextEarthSpriteAction = Find.TickManager.TicksGame + 300;
                         }
                         else
@@ -76,6 +77,7 @@ namespace TorannMagic
                     {
                         comp.earthSprites = this.currentTarget.Cell;
                         comp.earthSpriteType = 2;
+                        comp.earthSpriteMap = this.CasterPawn.Map;
                         comp.nextEarthSpriteAction = Find.TickManager.TicksGame + 20000;
                     }
                     else

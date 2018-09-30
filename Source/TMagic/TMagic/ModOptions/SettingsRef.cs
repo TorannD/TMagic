@@ -24,5 +24,32 @@ namespace TorannMagic.ModOptions
         public float riftChallenge = Settings.Instance.riftChallenge;
         public bool showGizmo = Settings.Instance.showGizmo;
 
+        //autocast
+        public bool autocastEnabled = Settings.Instance.autocastEnabled;
+        public float autocastMinThreshold = Settings.Instance.autocastMinThreshold;
+        public float autocastCombatMinThreshold = Settings.Instance.autocastCombatMinThreshold;
+        public float autocastEvaluationFrequency = Settings.Instance.autocastEvaluationFrequency;
+
+        //Class options
+        public bool Arcanist = Settings.Instance.Arcanist;
+        public bool FireMage = Settings.Instance.FireMage;
+        public bool IceMage = Settings.Instance.IceMage;
+        public bool LitMage = Settings.Instance.LitMage;
+        public bool Druid = Settings.Instance.Druid;
+        public bool Paladin = Settings.Instance.Paladin;
+        public bool Necromancer = Settings.Instance.Necromancer;
+        public bool Bard = Settings.Instance.Bard;
+        public bool Priest = Settings.Instance.Priest;
+        public bool Demonkin = Settings.Instance.Demonkin;
+        public bool Geomancer = Settings.Instance.Geomancer;
+        public bool Summoner = Settings.Instance.Summoner;
+
+        public bool Gladiator = Settings.Instance.Gladiator;
+        public bool Bladedancer = Settings.Instance.Bladedancer;
+        public bool Sniper = Settings.Instance.Sniper;
+        public bool Ranger = Settings.Instance.Ranger;
+        public bool Faceless = Settings.Instance.Faceless;
+        public bool Psionic = Settings.Instance.Psionic;
+
     }
 }

@@ -289,8 +289,28 @@ namespace TorannMagic
                             return result;
                         }
                     }
+                }                
+                List<Apparel> wornApparel = base.Pawn.apparel.WornApparel;
+                for (int i = 0; i < wornApparel.Count; i++)
+                {
+                    if (!wornApparel[i].AllowVerbCast(base.Pawn.Position, base.Pawn.Map, base.abilityUser.Pawn.TargetCurrentlyAimingAt, this.Verb) && 
+                        (this.mightDef.defName == "TM_Headshot" || 
+                        this.mightDef.defName == "TM_DisablingShot" || this.mightDef.defName == "TM_DisablingShot_I" || this.mightDef.defName == "TM_DisablingShot_II" || this.mightDef.defName == "TM_DisablingShot_III" || 
+                        this.mightDef.defName == "TM_AntiArmor" || 
+                        this.mightDef.defName == "TM_ArrowStorm" || this.mightDef.defName == "TM_ArrowStorm_I" || this.mightDef.defName == "TM_ArrowStorm_II" || this.mightDef.defName == "TM_ArrowStorm_III" ||
+                        this.mightDef.defName == "TM_PsionicStorm" ||
+                        this.mightDef.defName == "TM_PsionicBlast" || this.mightDef.defName == "TM_PsionicBlast_I" || this.mightDef.defName == "TM_PsionicBlast_II" || this.mightDef.defName == "TM_PsionicBlast_III" || 
+                        this.mightDef.defName == "TM_Mimic"))
+                    {
+                        reason = "TM_ShieldBlockingPowers".Translate(new object[]
+                        {
+                            base.Pawn.Label,
+                            wornApparel[i].Label
+                        });
+                        return false;
+                    }
                 }
-                if(this.MightUser.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
+                if (this.MightUser.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
                 {
                     if (this.MightUser.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_PsionicHD"), false))
                     {
@@ -326,26 +346,6 @@ namespace TorannMagic
                     }
                     else
                     {
-                        return false;
-                    }
-                }
-                List<Apparel> wornApparel = base.Pawn.apparel.WornApparel;
-                for (int i = 0; i < wornApparel.Count; i++)
-                {
-                    if (!wornApparel[i].AllowVerbCast(base.Pawn.Position, base.Pawn.Map, base.abilityUser.Pawn.TargetCurrentlyAimingAt, this.Verb) && 
-                        (this.mightDef.defName == "TM_Headshot" || 
-                        this.mightDef.defName == "TM_DisablingShot" || this.mightDef.defName == "TM_DisablingShot_I" || this.mightDef.defName == "TM_DisablingShot_II" || this.mightDef.defName == "TM_DisablingShot_III" || 
-                        this.mightDef.defName == "TM_AntiArmor" || 
-                        this.mightDef.defName == "TM_ArrowStorm" || this.mightDef.defName == "TM_ArrowStorm_I" || this.mightDef.defName == "TM_ArrowStorm_II" || this.mightDef.defName == "TM_ArrowStorm_III" ||
-                        this.mightDef.defName == "TM_PsionicStorm" ||
-                        this.mightDef.defName == "TM_PsionicBlast" || this.mightDef.defName == "TM_PsionicBlast_I" || this.mightDef.defName == "TM_PsionicBlast_II" || this.mightDef.defName == "TM_PsionicBlast_III" || 
-                        this.mightDef.defName == "TM_Mimic"))
-                    {
-                        reason = "TM_ShieldBlockingPowers".Translate(new object[]
-                        {
-                            base.Pawn.Label,
-                            wornApparel[i].Label
-                        });
                         return false;
                     }
                 }

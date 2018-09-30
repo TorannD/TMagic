@@ -168,74 +168,188 @@ namespace TorannMagic
                 }
                 else if (parent.def.defName == "BookOfQuestion")
                 {
+                    int attempts = 0;
+                    ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                     FixTrait(user, user.story.traits.allTraits);
-                    int rnd = Mathf.RoundToInt(Rand.RangeInclusive(0, 12));
-                    switch (rnd)
+                    RetryBookOfQuestion:;
+                    if (attempts < 50)
                     {
-                        case 0:
-                            if(user.gender == Gender.Male)
-                            {
-                                user.story.traits.GainTrait(new Trait(TraitDef.Named("Warlock"), 4, false));
-                            }
-                            else if(user.gender == Gender.Female)
-                            {
-                                user.story.traits.GainTrait(new Trait(TraitDef.Named("Succubus"), 4, false));
-                            }
-                            else
-                            {
-                                Log.Message("No gender found.");
-                            }
-                            break;
-                        case 12:
-                            if (user.gender == Gender.Male)
-                            {
-                                user.story.traits.GainTrait(new Trait(TraitDef.Named("Warlock"), 4, false));
-                            }
-                            else if (user.gender == Gender.Female)
-                            {
-                                user.story.traits.GainTrait(new Trait(TraitDef.Named("Succubus"), 4, false));
-                            }
-                            else
-                            {
-                                Log.Message("No gender found.");
-                            }
-                            break;
-                        case 1:
-                            user.story.traits.GainTrait(new Trait(TraitDef.Named("Necromancer"), 4, false));
-                            break;
-                        case 2:
-                            user.story.traits.GainTrait(new Trait(TraitDef.Named("Druid"), 4, false));
-                            break;
-                        case 3:
-                            user.story.traits.GainTrait(new Trait(TraitDef.Named("Summoner"), 4, false));
-                            break;
-                        case 4:
-                            user.story.traits.GainTrait(new Trait(TraitDef.Named("InnerFire"), 4, false));
-                            break;
-                        case 5:
-                            user.story.traits.GainTrait(new Trait(TraitDef.Named("HeartOfFrost"), 4, false));
-                            break;
-                        case 6:
-                            user.story.traits.GainTrait(new Trait(TraitDef.Named("StormBorn"), 4, false));
-                            break;
-                        case 7:
-                            user.story.traits.GainTrait(new Trait(TraitDef.Named("Arcanist"), 4, false));
-                            break;
-                        case 8:
-                            user.story.traits.GainTrait(new Trait(TraitDef.Named("Priest"), 4, false));
-                            break;
-                        case 9:
-                            user.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Bard"), 0, false));
-                            break;
-                        case 10:
-                            user.story.traits.GainTrait(new Trait(TraitDef.Named("Paladin"), 4, false));
-                            break;
-                        case 11:
-                            user.story.traits.GainTrait(new Trait(TraitDef.Named("Geomancer"), 4, false));
-                            break;
+                        int rnd = Mathf.RoundToInt(Rand.RangeInclusive(0, 12));
+                        switch (rnd)
+                        {
+                            case 0:
+                                if (settingsRef.Demonkin)
+                                {
+                                    if (user.gender == Gender.Male)
+                                    {
+                                        user.story.traits.GainTrait(new Trait(TraitDef.Named("Warlock"), 4, false));
+                                    }
+                                    else if (user.gender == Gender.Female)
+                                    {
+                                        user.story.traits.GainTrait(new Trait(TraitDef.Named("Succubus"), 4, false));
+                                    }
+                                    else
+                                    {
+                                        Log.Message("No gender found.");
+                                    }
+                                }
+                                else
+                                {
+                                    attempts++;
+                                    goto RetryBookOfQuestion;
+                                }
+                                break;
+                            case 12:
+                                if (settingsRef.Demonkin)
+                                {
+                                    if (user.gender == Gender.Male)
+                                    {
+                                        user.story.traits.GainTrait(new Trait(TraitDef.Named("Warlock"), 4, false));
+                                    }
+                                    else if (user.gender == Gender.Female)
+                                    {
+                                        user.story.traits.GainTrait(new Trait(TraitDef.Named("Succubus"), 4, false));
+                                    }
+                                    else
+                                    {
+                                        Log.Message("No gender found.");
+                                    }
+                                }
+                                else
+                                {
+                                    attempts++;
+                                    goto RetryBookOfQuestion;
+                                }
+                                break;                                
+                            case 1:
+                                if (settingsRef.Necromancer)
+                                {
+                                    user.story.traits.GainTrait(new Trait(TraitDef.Named("Necromancer"), 4, false));
+                                }
+                                else
+                                {
+                                    attempts++;
+                                    goto RetryBookOfQuestion;
+                                }
+                                break;
+                            case 2:
+                                if(settingsRef.Druid)
+                                { 
+                                    user.story.traits.GainTrait(new Trait(TraitDef.Named("Druid"), 4, false));
+                                }
+                                else
+                                {
+                                    attempts++;
+                                    goto RetryBookOfQuestion;
+                                }
+                                break;
+                            case 3:
+                                if(settingsRef.Summoner)
+                                { 
+                                    user.story.traits.GainTrait(new Trait(TraitDef.Named("Summoner"), 4, false));
+                                }
+                                else
+                                {
+                                    attempts++;
+                                    goto RetryBookOfQuestion;
+                                }
+                                break;
+                            case 4:
+                                if(settingsRef.FireMage)
+                                { 
+                                    user.story.traits.GainTrait(new Trait(TraitDef.Named("InnerFire"), 4, false));
+                                }
+                                else
+                                {
+                                    attempts++;
+                                    goto RetryBookOfQuestion;
+                                }
+                                break;
+                            case 5:
+                                if (settingsRef.IceMage)
+                                {
+                                    user.story.traits.GainTrait(new Trait(TraitDef.Named("HeartOfFrost"), 4, false));
+                                }
+                                else
+                                {
+                                    attempts++;
+                                    goto RetryBookOfQuestion;
+                                }
+                                break;
+                            case 6:
+                                if (settingsRef.LitMage)
+                                {
+                                    user.story.traits.GainTrait(new Trait(TraitDef.Named("StormBorn"), 4, false));
+                                }
+                                else
+                                {
+                                    attempts++;
+                                    goto RetryBookOfQuestion;
+                                }
+                                break;
+                            case 7:
+                                if (settingsRef.Arcanist)
+                                {
+                                    user.story.traits.GainTrait(new Trait(TraitDef.Named("Arcanist"), 4, false));
+                                }
+                                else
+                                {
+                                    attempts++;
+                                    goto RetryBookOfQuestion;
+                                }
+                                break;
+                            case 8:
+                                if (settingsRef.Priest)
+                                {
+                                    user.story.traits.GainTrait(new Trait(TraitDef.Named("Priest"), 4, false));
+                                }
+                                else
+                                {
+                                    attempts++;
+                                    goto RetryBookOfQuestion;
+                                }
+                                break;
+                            case 9:
+                                if (settingsRef.Bard)
+                                {
+                                    user.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Bard"), 0, false));
+                                }
+                                else
+                                {
+                                    attempts++;
+                                    goto RetryBookOfQuestion;
+                                }
+                                break;
+                            case 10:
+                                if (settingsRef.Paladin)
+                                {
+                                    user.story.traits.GainTrait(new Trait(TraitDef.Named("Paladin"), 4, false));
+                                }
+                                else
+                                {
+                                    attempts++;
+                                    goto RetryBookOfQuestion;
+                                }
+                                break;
+                            case 11:
+                                if (settingsRef.Geomancer)
+                                {
+                                    user.story.traits.GainTrait(new Trait(TraitDef.Named("Geomancer"), 4, false));
+                                }
+                                else
+                                {
+                                    attempts++;
+                                    goto RetryBookOfQuestion;
+                                }
+                                break;
+                        }
+                        this.parent.Destroy(DestroyMode.Vanish);
                     }
-                    //HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
-                    this.parent.Destroy(DestroyMode.Vanish);
+                    else
+                    {
+                        user.story.traits.GainTrait(new Trait(TraitDef.Named("Gifted"), 2, false));
+                        Messages.Message("Unable to find a valid class to assign after 50 attempts - ending attempt", MessageTypeDefOf.RejectInput);
+                    }                 
                 }
                 else
                 {

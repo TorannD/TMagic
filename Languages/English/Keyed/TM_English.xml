@@ -136,6 +136,36 @@
 <MagicyteChance>Magicyte Drop Chance</MagicyteChance>
 <showAbilitiesOnMultiSelect>Show abilities when selecting multiple pawns</showAbilitiesOnMultiSelect>
 <showMagicGizmo>Show mana/stamina/psi energy as gizmo</showMagicGizmo>
+<TM_enableAutocast>Enable auto-cast</TM_enableAutocast>
+<TM_autocastUndraftedThreshold>Minimum energy % for auto-cast (undrafted)</TM_autocastUndraftedThreshold>
+<TM_autocastDraftedThreshold>Minimum energy % for auto-cast (drafted)</TM_autocastDraftedThreshold>
+<TM_autocastEvaluationFrequency>Autocast evaluation frequency</TM_autocastEvaluationFrequency>
+
+<!-- Mod Settings Class options -->
+
+<TM_ClassWarning>**Change class settings only when starting a new game**</TM_ClassWarning>
+<TM_RequiresRestart>**Any change requires a game restart**</TM_RequiresRestart>
+<TM_ClassOptions>Enabled Classes</TM_ClassOptions>
+<TM_EnabledMages>Mages</TM_EnabledMages>
+<TM_EnabledFighters>Fighters</TM_EnabledFighters>
+<TM_Arcanist>Arcanist</TM_Arcanist>
+<TM_FireMage>Fire Mage</TM_FireMage>
+<TM_IceMage>Ice Mage</TM_IceMage>
+<TM_LitMage>Lightning Mage</TM_LitMage>
+<TM_Geomancer>Geomancer</TM_Geomancer>
+<TM_Druid>Druid</TM_Druid>
+<TM_Paladin>Paladin</TM_Paladin>
+<TM_Priest>Priest</TM_Priest>
+<TM_Bard>Bard</TM_Bard>
+<TM_Summoner>Summoner</TM_Summoner>
+<TM_Necromancer>Necromancer</TM_Necromancer>
+<TM_Demonkin>Demonkin</TM_Demonkin>
+<TM_Gladiator>Gladiator</TM_Gladiator>
+<TM_Bladedancer>Bladedancer</TM_Bladedancer>
+<TM_Sniper>Sniper</TM_Sniper>
+<TM_Ranger>Ranger</TM_Ranger>
+<TM_Faceless>Faceless</TM_Faceless>
+<TM_Psionic>Psionic</TM_Psionic>
 
 <!-- Magic Ability Point Descriptions -->
 <TM_global_regen_pwr>Clarity</TM_global_regen_pwr>

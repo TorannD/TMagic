@@ -927,12 +927,13 @@
   <RecipeDef>
     <defName>ManaPotion_Refined</defName>
     <label>mana potion</label>
-    <description>Go-Juice is processed with refined magicyte to produce 2 mana potions.</description>
+    <description>Go-Juice is mixed with magicyte powder to produce 2 mana potions.</description>
     <jobString>processing mana potion</jobString>
 	<researchPrerequisite>TM_MagicyteRefining</researchPrerequisite>
     <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <workAmount>1000</workAmount>
     <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
+	<productHasIngredientStuff>false</productHasIngredientStuff>
 	<recipeUsers>
 		<li>TableGemcutting</li>
 	</recipeUsers>

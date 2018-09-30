@@ -17,6 +17,27 @@ namespace TorannMagic
         private Faction affiliation = null;
         private int ticksAffiliation = 0;
 
+        public List<MightPower> mightPowerStandalone;
+
+        public List<MightPower> MightPowersStandalone  //skills needed for mightcpower reference during autocast
+        {
+            get
+            {
+                bool flag = this.mightPowerStandalone == null;
+                if (flag)
+                {
+                    this.mightPowerStandalone = new List<MightPower>
+                    {
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_TeachMight
+                        }),
+                    };
+                }
+                return this.mightPowerStandalone;
+            }
+        }
+
         public List<MightPower> mightPowerP;
         public List<MightPowerSkill> mightPowerSkill_PsionicAugmentation;
         public List<MightPowerSkill> mightPowerSkill_PsionicBlast;
@@ -923,7 +944,7 @@ namespace TorannMagic
         {
             get
             {
-                return this.MightPowersG.Concat(this.MightPowersS.Concat(this.MightPowersB.Concat(this.mightPowerR.Concat(this.MightPowersF.Concat(this.mightPowerP)))));
+                return this.MightPowersG.Concat(this.MightPowersS.Concat(this.MightPowersB.Concat(this.mightPowerR.Concat(this.MightPowersF.Concat(this.mightPowerP.Concat(this.mightPowerStandalone))))));
             }
         }
 
@@ -945,6 +966,7 @@ namespace TorannMagic
             Scribe_Values.Look<int>(ref this.mightAbilityPoints, "mightAbilityPoints", 0, false);
             Scribe_Values.Look<int>(ref this.ticksToLearnMightXP, "ticksToLearnMightXP", -1, false);
             Scribe_Values.Look<int>(ref this.ticksAffiliation, "ticksAffiliation", -1, false);
+            Scribe_Collections.Look<MightPower>(ref this.mightPowerStandalone, "mightPowerStandalone", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_global_refresh, "mightPowerSkill_global_refresh", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_global_seff, "mightPowerSkill_global_seff", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_global_strength, "mightPowerSkill_global_strength", (LookMode)2, new object[0]);

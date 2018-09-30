@@ -600,7 +600,7 @@ Augmented by Phantom Shift</description>
 	</statBases>
 	<equippedStatOffsets>
 		<MoveSpeed>0.20</MoveSpeed>
-		<MeleeDodgeChance>0.25</MeleeDodgeChance>
+		<MeleeDodgeChance>10</MeleeDodgeChance>
 	</equippedStatOffsets>
 	<recipeMaker>
       <workAmount>66600</workAmount>

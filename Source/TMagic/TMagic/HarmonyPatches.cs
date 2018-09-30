@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 using Verse.AI;
 using AbilityUserAI;
 using System.Reflection.Emit;
@@ -1306,10 +1307,18 @@ namespace TorannMagic
                 List<Trait> pawnTraits = pawn.story.traits.allTraits;
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 bool flag = false;
-
+                bool anyFightersEnabled = false;
+                bool anyMagesEnabled = false;
+                if(settingsRef.Gladiator || settingsRef.Bladedancer || settingsRef.Ranger || settingsRef.Sniper || settingsRef.Faceless || settingsRef.Psionic)
+                {
+                    anyFightersEnabled = true;
+                }
+                if(settingsRef.Arcanist || settingsRef.FireMage || settingsRef.IceMage || settingsRef.LitMage || settingsRef.Druid || settingsRef.Paladin || settingsRef.Summoner || settingsRef.Priest || settingsRef.Necromancer || settingsRef.Bard || settingsRef.Demonkin || settingsRef.Geomancer)
+                {
+                    anyMagesEnabled = true;
+                }
                 if (!flag)
                 {
-
                     if (Rand.Chance(((settingsRef.baseFighterChance * 4) + (settingsRef.baseMageChance * 4) + (5 * settingsRef.advFighterChance) + (12 * settingsRef.advMageChance)) / (allTraits.Count - 17)))
                     {
                         pawnTraits.Remove(pawnTraits[pawnTraits.Count - 1]);
@@ -1324,91 +1333,257 @@ namespace TorannMagic
                         }
                         else if (rnd >= (4 * (settingsRef.baseFighterChance + settingsRef.baseMageChance)) && rnd < (4 * (settingsRef.baseFighterChance + settingsRef.baseMageChance) + (5 * settingsRef.advFighterChance)))
                         {
-                            int rndF = Rand.RangeInclusive(1, 6);
-                            switch (rndF)
+                            if (anyFightersEnabled)
                             {
-                                case 1:
-                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Gladiator"), 4, false));
-                                    break;
-                                case 2:
-                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Sniper"), 0, false));
-                                    break;
-                                case 3:
-                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Bladedancer"), 0, false));
-                                    break;
-                                case 4:
-                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Ranger"), 0, false));
-                                    break;
-                                case 5:
-                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Faceless"), 4, false));
-                                    break;
-                                case 6:
-                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Psionic"), 4, false));
-                                    break;
+                                int rndF = Rand.RangeInclusive(1, 6);
+                                switch (rndF)
+                                {
+                                    case 1:
+                                        Gladiator:;
+                                        if (settingsRef.Gladiator)
+                                        {
+                                            pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Gladiator"), 4, false));
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            goto Sniper;
+                                        }
+                                    case 2:
+                                        Sniper:;
+                                        if (settingsRef.Sniper)
+                                        {
+                                            pawn.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Sniper"), 0, false));
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            goto Bladedancer;
+                                        }
+                                    case 3:
+                                        Bladedancer:;
+                                        if (settingsRef.Bladedancer)
+                                        {
+                                            pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Bladedancer"), 0, false));
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            goto Ranger;
+                                        }
+                                    case 4:
+                                        Ranger:;
+                                        if (settingsRef.Ranger)
+                                        {
+                                            pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Ranger"), 0, false));
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            goto Faceless;
+                                        }
+                                    case 5:
+                                        Faceless:;
+                                        if (settingsRef.Faceless)
+                                        {                                            
+                                            pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Faceless"), 4, false));
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            goto Psionic;
+                                        }
+                                    case 6:
+                                        Psionic:;
+                                        if (settingsRef.Psionic)
+                                        {
+                                            pawn.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Psionic"), 4, false));
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            goto Gladiator;
+                                        }
+                                }
+                            }
+                            else
+                            {
+                                goto TraitEnd;
                             }
                         }
                         else
                         {
-                            int rndM = Rand.RangeInclusive(1, 13);
-                            switch (rndM)
+                            if (anyMagesEnabled)
                             {
-                                case 1:
-                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("InnerFire"), 4, false));
-                                    break;
-                                case 2:
-                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("HeartOfFrost"), 4, false));
-                                    break;
-                                case 3:
-                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("StormBorn"), 4, false));
-                                    break;
-                                case 4:
-                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Arcanist"), 4, false));
-                                    break;
-                                case 5:
-                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Druid"), 4, false));
-                                    break;
-                                case 6:
-                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Paladin"), 4, false));
-                                    break;
-                                case 7:
-                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Summoner"), 4, false));
-                                    break;
-                                case 8:
-                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Necromancer"), 4, false));
-                                    break;
-                                case 9:
-                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Priest"), 4, false));
-                                    break;
-                                case 10:
-                                    if (pawn.gender != Gender.Female)
-                                    {
-                                        pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Warlock"), 4, false));
-                                    }
-                                    else
-                                    {
-                                        pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Succubus"), 4, false));
-                                    }
-                                    break;
-                                case 11:
-                                    if (pawn.gender != Gender.Male)
-                                    {
-                                        pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Succubus"), 4, false));
-                                    }
-                                    else
-                                    {
-                                        pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Warlock"), 4, false));
-                                    }
-                                    break;
-                                case 12:
-                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Bard"), 0, false));
-                                    break;
-                                case 13:
-                                    pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Geomancer"), 4, false));
-                                    break;
+                                int rndM = Rand.RangeInclusive(1, 13);
+                                switch (rndM)
+                                {
+                                    case 1:
+                                        FireMage:;
+                                        if (settingsRef.FireMage)
+                                        {
+                                            pawn.story.traits.GainTrait(new Trait(TraitDef.Named("InnerFire"), 4, false));
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            goto IceMage;
+                                        }
+                                    case 2:
+                                        IceMage:;
+                                        if (settingsRef.IceMage)
+                                        {
+                                            pawn.story.traits.GainTrait(new Trait(TraitDef.Named("HeartOfFrost"), 4, false));
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            goto LitMage;
+                                        }
+                                    case 3:
+                                        LitMage:;
+                                        if (settingsRef.LitMage)
+                                        {
+                                            pawn.story.traits.GainTrait(new Trait(TraitDef.Named("StormBorn"), 4, false));
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            goto Arcanist;
+                                        }
+                                    case 4:
+                                        Arcanist:;
+                                        if (settingsRef.Arcanist)
+                                        {
+                                            pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Arcanist"), 4, false));
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            goto Druid;
+                                        }
+                                    case 5:
+                                        Druid:;
+                                        if (settingsRef.Druid)
+                                        {
+                                            pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Druid"), 4, false));
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            goto Paladin;
+                                        }
+                                    case 6:
+                                        Paladin:;
+                                        if (settingsRef.Paladin)
+                                        {
+                                            pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Paladin"), 4, false));
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            goto Summoner;
+                                        }
+                                    case 7:
+                                        Summoner:;
+                                        if (settingsRef.Summoner)
+                                        {
+                                            pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Summoner"), 4, false));
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            goto Necromancer;
+                                        }
+                                    case 8:
+                                        Necromancer:;
+                                        if (settingsRef.Necromancer)
+                                        {
+                                            pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Necromancer"), 4, false));
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            goto Priest;
+                                        }
+                                    case 9:
+                                        Priest:;
+                                        if (settingsRef.Priest)
+                                        {
+                                            pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Priest"), 4, false));
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            goto Demonkin;
+                                        }
+                                    case 10:
+                                        Demonkin:;
+                                        if (settingsRef.Demonkin)
+                                        {
+                                            if (pawn.gender != Gender.Female)
+                                            {
+                                                pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Warlock"), 4, false));
+                                            }
+                                            else
+                                            {
+                                                pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Succubus"), 4, false));
+                                            }
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            goto Bard;
+                                        }
+                                    case 11:
+                                        if (settingsRef.Demonkin)
+                                        {
+                                            if (pawn.gender != Gender.Male)
+                                            {
+                                                pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Succubus"), 4, false));
+                                            }
+                                            else
+                                            {
+                                                pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Warlock"), 4, false));
+                                            }
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            goto Bard;
+                                        }
+                                    case 12:
+                                        Bard:;
+                                        if (settingsRef.Bard)
+                                        {
+                                            pawn.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Bard"), 0, false));
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            goto Geomancer;
+                                        }
+                                    case 13:
+                                        Geomancer:;
+                                        if (settingsRef.Geomancer)
+                                        {
+                                            pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Geomancer"), 4, false));
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            goto FireMage;
+                                        }
+                                }
+                            }
+                            else
+                            {
+                                goto TraitEnd;
                             }
                         }
                     }
                 }
+                TraitEnd:;
             }
         }
 
@@ -1784,7 +1959,7 @@ namespace TorannMagic
                 bool valid = !thing.DestroyedOrNull() && thing.TryGetQuality(out QualityCategory qc);
                 if (valid)
                 {
-                    if (thing.TryGetComp<CompEquippable>() != null && thing.TryGetComp<Enchantment.CompEnchantedItem>() != null)
+                    if (((thing.def.thingClass != null && thing.def.thingClass.ToString() == "RimWorld.Apparel") || thing.TryGetComp<CompEquippable>() != null) && thing.TryGetComp<Enchantment.CompEnchantedItem>() != null) 
                     {
                         if (thing.TryGetComp<Enchantment.CompEnchantedItem>().HasEnchantment)
                         {
@@ -2124,6 +2299,753 @@ namespace TorannMagic
                         }
                     }
                 }                
+            }
+        }
+
+        [HarmonyPatch(typeof(Command_PawnAbility), "GizmoOnGUI", null)]
+        public static class GizmoOnGUI_Prefix_Patch
+        {
+            public static bool Prefix(Command_PawnAbility __instance, Vector2 topLeft, float maxWidth, ref GizmoResult __result)
+            {
+                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                if (settingsRef.autocastEnabled && __instance.pawnAbility.Def.defName.Contains("TM_"))
+                {
+                    CompAbilityUserMagic comp = __instance.pawnAbility.Pawn.GetComp<CompAbilityUserMagic>();
+                    CompAbilityUserMight mightComp = __instance.pawnAbility.Pawn.GetComp<CompAbilityUserMight>();
+                    MagicPower magicPower = null;
+                    MightPower mightPower = null;
+
+                    Rect rect = new Rect(topLeft.x, topLeft.y, __instance.GetWidth(maxWidth), 75f);
+                    bool flag = false;
+                    if (Mouse.IsOver(rect))
+                    {
+                        flag = true;
+                        GUI.color = GenUI.MouseoverColor;
+                    }
+                    Texture2D texture2D = __instance.icon;
+                    if (texture2D == null)
+                    {
+                        texture2D = BaseContent.BadTex;
+                    }
+                    GUI.DrawTexture(rect, Command.BGTex);
+                    MouseoverSounds.DoRegion(rect, SoundDefOf.Mouseover_Command);
+                    GUI.color = __instance.IconDrawColor;
+                    Widgets.DrawTextureFitted(new Rect(rect), texture2D, __instance.iconDrawScale * 0.85f, __instance.iconProportions, __instance.iconTexCoords);
+                    GUI.color = Color.white;
+                    bool flag2 = false;
+                    KeyCode keyCode = (__instance.hotKey != null) ? __instance.hotKey.MainKey : KeyCode.None;
+                    if (keyCode != 0 && !GizmoGridDrawer.drawnHotKeys.Contains(keyCode))
+                    {
+                        Rect rect2 = new Rect(rect.x + 5f, rect.y + 5f, rect.width - 10f, 18f);
+                        Widgets.Label(rect2, keyCode.ToStringReadable());
+                        GizmoGridDrawer.drawnHotKeys.Add(keyCode);
+                        if (__instance.hotKey.KeyDownEvent)
+                        {
+                            flag2 = true;
+                            Event.current.Use();
+                        }
+                    }
+                    if (Widgets.ButtonInvisible(rect))
+                    {
+                        flag2 = true;
+                    }
+                    string labelCap = __instance.LabelCap;
+                    if (!labelCap.NullOrEmpty())
+                    {
+                        float num = Text.CalcHeight(labelCap, rect.width);
+                        num -= 2f;
+                        Rect rect3 = new Rect(rect.x, rect.yMax - num + 12f, rect.width, num);
+                        GUI.DrawTexture(rect3, TexUI.GrayTextBG);
+                        GUI.color = Color.white;
+                        Text.Anchor = TextAnchor.UpperCenter;
+                        Widgets.Label(rect3, labelCap);
+                        Text.Anchor = TextAnchor.UpperLeft;
+                        GUI.color = Color.white;
+                    }
+                    GUI.color = Color.white;
+                    if (true)
+                    {
+                        TipSignal tipSignal = __instance.Desc;
+                        if (__instance.disabled && !__instance.disabledReason.NullOrEmpty())
+                        {
+                            tipSignal.text = tipSignal.text + "\n" + StringsToTranslate.AU_DISABLED + ": " + __instance.disabledReason;
+                        }
+                        TooltipHandler.TipRegion(rect, tipSignal);
+                    }
+                    if (__instance.pawnAbility.CooldownTicksLeft != -1 && __instance.pawnAbility.CooldownTicksLeft < __instance.pawnAbility.MaxCastingTicks)
+                    {
+                        float fillPercent = (float)__instance.curTicks / (float)__instance.pawnAbility.MaxCastingTicks;
+                        Widgets.FillableBar(rect, fillPercent, AbilityButtons.FullTex, AbilityButtons.EmptyTex, doBorder: false);
+                    }
+                    if (!__instance.HighlightTag.NullOrEmpty() && (Find.WindowStack.FloatMenu == null || !Find.WindowStack.FloatMenu.windowRect.Overlaps(rect)))
+                    {
+                        UIHighlighter.HighlightOpportunity(rect, __instance.HighlightTag);
+                    }
+                    if (comp != null && __instance.pawnAbility.Def != null)
+                    {
+                        if (__instance.pawnAbility.Def.defName == "TM_Blink")
+                        {
+                            magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Blink);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect)) //__result.State == GizmoState.Mouseover)
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Blink_I")
+                        {
+                            magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Blink);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Blink_II")
+                        {
+                            magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Blink_I);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Blink_III")
+                        {
+                            magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Blink_II);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Summon")
+                        {
+                            magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Summon);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Summon_I")
+                        {
+                            magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Summon);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Summon_II")
+                        {
+                            magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Summon_I);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Summon_III")
+                        {
+                            magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Summon_II);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Firebolt")
+                        {
+                            magicPower = comp.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Firebolt);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Icebolt")
+                        {
+                            magicPower = comp.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Icebolt);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_LightningBolt")
+                        {
+                            magicPower = comp.MagicData.MagicPowersSB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_LightningBolt);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_FrostRay")
+                        {
+                            magicPower = comp.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_FrostRay);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_FrostRay_I")
+                        {
+                            magicPower = comp.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_FrostRay);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_FrostRay_II")
+                        {
+                            magicPower = comp.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_FrostRay_I);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_FrostRay_III")
+                        {
+                            magicPower = comp.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_FrostRay_II);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_MagicMissile")
+                        {
+                            magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_MagicMissile);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_MagicMissile_I")
+                        {
+                            magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_MagicMissile);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_MagicMissile_II")
+                        {
+                            magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_MagicMissile_I);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_MagicMissile_III")
+                        {
+                            magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_MagicMissile_II);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Entertain")
+                        {
+                            magicPower = comp.MagicData.MagicPowersB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Entertain);
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Poison")
+                        {
+                            magicPower = comp.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Poison);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Regenerate")
+                        {
+                            magicPower = comp.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Regenerate);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_CureDisease")
+                        {
+                            magicPower = comp.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_CureDisease);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Heal")
+                        {
+                            magicPower = comp.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Heal);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Shield")
+                        {
+                            magicPower = comp.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shield);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Shield_I")
+                        {
+                            magicPower = comp.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shield);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Shield_II")
+                        {
+                            magicPower = comp.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shield_I);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Shield_III")
+                        {
+                            magicPower = comp.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shield_II);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_AdvancedHeal")
+                        {
+                            magicPower = comp.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_AdvancedHeal);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_TransferMana")
+                        {
+                            magicPower = comp.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TransferMana);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_SiphonMana")
+                        {
+                            magicPower = comp.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SiphonMana);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_CauterizeWound")
+                        {
+                            magicPower = comp.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_CauterizeWound);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_SpellMending")
+                        {
+                            magicPower = comp.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SpellMending);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_TeachMagic")
+                        {
+                            magicPower = comp.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TeachMagic);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_ShadowBolt")
+                        {
+                            if (comp.Pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus))
+                            {
+                                magicPower = comp.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt);
+                            }
+                            else
+                            {
+                                magicPower = comp.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt);
+                            }
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_ShadowBolt_I")
+                        {
+                            if (comp.Pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus))
+                            {
+                                magicPower = comp.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt);
+                            }
+                            else
+                            {
+                                magicPower = comp.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt);
+                            }
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_ShadowBolt_II")
+                        {
+                            if (comp.Pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus))
+                            {
+                                magicPower = comp.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt_I);
+                            }
+                            else
+                            {
+                                magicPower = comp.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt_I);
+                            }
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_ShadowBolt_III")
+                        {
+                            if (comp.Pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus))
+                            {
+                                magicPower = comp.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt_II);
+                            }
+                            else
+                            {
+                                magicPower = comp.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt_II);
+                            }
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                    }
+                    if (mightComp != null && __instance.pawnAbility.Def != null)
+                    {
+                        //might abilities
+                        if (__instance.pawnAbility.Def.defName == "TM_Grapple")
+                        {
+                            mightPower = mightComp.MightData.MightPowersG.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Grapple);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                mightPower.AutoCast = !mightPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Grapple_I")
+                        {
+                            mightPower = mightComp.MightData.MightPowersG.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Grapple);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                mightPower.AutoCast = !mightPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Grapple_II")
+                        {
+                            mightPower = mightComp.MightData.MightPowersG.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Grapple_I);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                mightPower.AutoCast = !mightPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Grapple_III")
+                        {
+                            mightPower = mightComp.MightData.MightPowersG.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Grapple_II);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                mightPower.AutoCast = !mightPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_BladeSpin")
+                        {
+                            mightPower = mightComp.MightData.MightPowersB.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_BladeSpin);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                mightPower.AutoCast = !mightPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_ArrowStorm")
+                        {
+                            mightPower = mightComp.MightData.MightPowersR.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ArrowStorm);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                mightPower.AutoCast = !mightPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_ArrowStorm_I")
+                        {
+                            mightPower = mightComp.MightData.MightPowersR.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ArrowStorm);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                mightPower.AutoCast = !mightPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_ArrowStorm_II")
+                        {
+                            mightPower = mightComp.MightData.MightPowersR.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ArrowStorm_I);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                mightPower.AutoCast = !mightPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_ArrowStorm_III")
+                        {
+                            mightPower = mightComp.MightData.MightPowersR.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ArrowStorm_II);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                mightPower.AutoCast = !mightPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_DisablingShot")
+                        {
+                            mightPower = mightComp.MightData.MightPowersS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_DisablingShot);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                mightPower.AutoCast = !mightPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_DisablingShot_I")
+                        {
+                            mightPower = mightComp.MightData.MightPowersS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_DisablingShot);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                mightPower.AutoCast = !mightPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_DisablingShot_II")
+                        {
+                            mightPower = mightComp.MightData.MightPowersS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_DisablingShot_I);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                mightPower.AutoCast = !mightPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_DisablingShot_III")
+                        {
+                            mightPower = mightComp.MightData.MightPowersS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_DisablingShot_II);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                mightPower.AutoCast = !mightPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Headshot")
+                        {
+                            mightPower = mightComp.MightData.MightPowersS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Headshot);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                mightPower.AutoCast = !mightPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_AntiArmor")
+                        {
+                            mightPower = mightComp.MightData.MightPowersS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_AntiArmor);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                mightPower.AutoCast = !mightPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_TeachMight")
+                        {
+                            mightPower = mightComp.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_TeachMight);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                mightPower.AutoCast = !mightPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                    }
+                    if (magicPower != null)
+                    {
+                        //Rect rect = new Rect(topLeft.x, topLeft.y, __instance.GetWidth(maxWidth), 75f);
+                        Rect position = new Rect(rect.x + rect.width - 24f, rect.y, 24f, 24f);
+                        Texture2D image = (!magicPower.AutoCast) ? Widgets.CheckboxOffTex : Widgets.CheckboxOnTex;
+                        GUI.DrawTexture(position, image);
+                    }
+                    if (mightPower != null)
+                    {
+                        //Rect rect = new Rect(topLeft.x, topLeft.y, __instance.GetWidth(maxWidth), 75f);
+                        Rect position = new Rect(rect.x + rect.width - 24f, rect.y, 24f, 24f);
+                        Texture2D image = (!mightPower.AutoCast) ? Widgets.CheckboxOffTex : Widgets.CheckboxOnTex;
+                        GUI.DrawTexture(position, image);
+                    }
+                    if (flag2 && !Input.GetMouseButtonDown(1) && !Input.GetMouseButtonUp(1))
+                    {
+                        if (__instance.disabled)
+                        {
+                            if (!__instance.disabledReason.NullOrEmpty())
+                            {
+                                Messages.Message(__instance.disabledReason, MessageTypeDefOf.RejectInput);
+                            }
+                            __result = new GizmoResult(GizmoState.Mouseover, null);
+                            return false;
+                        }
+                        if (!TutorSystem.AllowAction(__instance.TutorTagSelect))
+                        {
+                            __result = new GizmoResult(GizmoState.Mouseover, null);
+                            return false;
+                        }
+                        __result = new GizmoResult(GizmoState.Interacted, Event.current);
+                        return false;
+                    }
+
+                    if (flag)
+                    {
+                        __result = new GizmoResult(GizmoState.Mouseover, null);
+                        return false;
+                    }
+                    __result = new GizmoResult(GizmoState.Clear, null);
+                    return false;
+                }
+                return true;
             }
         }
     }

@@ -356,9 +356,9 @@ namespace TorannMagic
                 hitList = curCell.GetThingList(base.Map);
                 for (int j = 0; j < hitList.Count; j++)
                 {
-                    if (hitList[j] is Pawn && hitList[j] != this.pawn)
+                    if (hitList[j] is Pawn && hitList[j] != this.pawn && hitList[j].Faction != this.pawn.Faction)
                     {
-                        damageEntities(hitList[j], Mathf.RoundToInt((Rand.Range(this.def.projectile.GetDamageAmount(1,null) * .2f, this.def.projectile.GetDamageAmount(1,null) * .3f)) * this.arcaneDmg));
+                        damageEntities(hitList[j], Mathf.RoundToInt((Rand.Range(this.def.projectile.GetDamageAmount(1,null) * .4f, this.def.projectile.GetDamageAmount(1,null) * .3f)) * this.arcaneDmg));
                         TM_MoteMaker.ThrowShadowCleaveMote(this.ExactPosition, this.Map, Rand.Range(.2f, .4f), .01f, .2f, .4f, 500, 0, 0);
                         TorannMagicDefOf.TM_Vibration.PlayOneShot(new TargetInfo(this.ExactPosition.ToIntVec3(), pawn.Map, false));
                     }
