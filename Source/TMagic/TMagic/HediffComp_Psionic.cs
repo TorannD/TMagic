@@ -233,7 +233,7 @@ namespace TorannMagic
                         {
                             if (this.Pawn.CurJob.def != TorannMagicDefOf.JobDriver_PsionicBarrier && VerVal > 0)
                             {
-                                this.threat = GetNearbyTarget(20 + (2 * VerVal));
+                                this.threat = TM_Calc.FindNearbyEnemy(this.Pawn, 20 + (2 * verVal)); // GetNearbyTarget(20 + (2 * VerVal));
                                 if (threat != null)
                                 {
                                     //start psionic attack; ends after delay
@@ -306,31 +306,31 @@ namespace TorannMagic
             Scribe_Values.Look<int>(ref this.verVal, "verVal", 0, false);
         }
 
-        public Pawn GetNearbyTarget(float radius)
-        {
-            List<Pawn> allPawns = this.Pawn.Map.mapPawns.AllPawnsSpawned;
-            for (int i = 0; i < allPawns.Count(); i++)
-            {
-                if (!allPawns[i].DestroyedOrNull() && allPawns[i] != this.Pawn)
-                {
-                    if (!allPawns[i].Dead && !allPawns[i].Downed && !allPawns[i].IsPrisonerInPrisonCell())
-                    {
-                        if ((allPawns[i].Position - this.Pawn.Position).LengthHorizontal <= radius)
-                        {
-                            if (allPawns[i].Faction != null && allPawns[i].Faction != this.Pawn.Faction)
-                            {
-                               // Log.Message("checking " + allPawns[i].LabelShort + " for hostility: " + FactionUtility.HostileTo(this.Pawn.Faction, allPawns[i].Faction));
-                                //Log.Message(this.Pawn.Faction.RelationWith(allPawns[i].Faction, false).ToString());
-                                if (FactionUtility.HostileTo(this.Pawn.Faction, allPawns[i].Faction))
-                                {
-                                    return allPawns[i];
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            return null;
-        }
+        //public Pawn GetNearbyTarget(float radius)
+        //{
+        //    List<Pawn> allPawns = this.Pawn.Map.mapPawns.AllPawnsSpawned;
+        //    for (int i = 0; i < allPawns.Count(); i++)
+        //    {
+        //        if (!allPawns[i].DestroyedOrNull() && allPawns[i] != this.Pawn)
+        //        {
+        //            if (!allPawns[i].Dead && !allPawns[i].Downed && !allPawns[i].IsPrisonerInPrisonCell())
+        //            {
+        //                if ((allPawns[i].Position - this.Pawn.Position).LengthHorizontal <= radius)
+        //                {
+        //                    if (allPawns[i].Faction != null && allPawns[i].Faction != this.Pawn.Faction)
+        //                    {
+        //                       // Log.Message("checking " + allPawns[i].LabelShort + " for hostility: " + FactionUtility.HostileTo(this.Pawn.Faction, allPawns[i].Faction));
+        //                        //Log.Message(this.Pawn.Faction.RelationWith(allPawns[i].Faction, false).ToString());
+        //                        if (FactionUtility.HostileTo(this.Pawn.Faction, allPawns[i].Faction))
+        //                        {
+        //                            return allPawns[i];
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    return null;
+        //}
     }
 }

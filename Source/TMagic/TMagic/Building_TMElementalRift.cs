@@ -536,6 +536,7 @@ namespace TorannMagic
                     else
                     {
                         newPawn = (TMPawnSummoned)PawnGenerator.GeneratePawn(spawnables.kindDef, faction);
+                        newPawn.validSummoning = true;
                         //newPawn.Spawner = this.Caster;
                         newPawn.Temporary = false;
                         if (newPawn.Faction == null || !newPawn.Faction.HostileTo(Faction.OfPlayer))

@@ -23,7 +23,7 @@ namespace TorannMagic
         public bool firstMightTick = false;
         private int age = -1;
         private int fortitudeMitigationDelay = 0;
-        private int mightXPRate = 1200;
+        private int mightXPRate = 900;
         private int lastMightXPGain = 0;
         private int autocastTick = 0;
 
@@ -1914,16 +1914,75 @@ namespace TorannMagic
                                     }
                                 }
                             }
-                        }
-                        if (this.skill_Teach)
+                        }                        
+                    }                    
+
+                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    {
+                        PawnAbility ability = null;
+                        foreach (MightPower current in this.MightData.MightPowersB)
                         {
-                            MightPower mightPower = this.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_TeachMight);
-                            if (mightPower.autocast)
+                            if (current.abilityDef != null)
                             {
-                                PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_TeachMight);
-                                AutoCast.TeachMight.Evaluate(this, TorannMagicDefOf.TM_TeachMight, ability, mightPower, out castSuccess);
-                                if (castSuccess) goto AutoCastExit;
+                                if (current.abilityDef == TorannMagicDefOf.TM_PhaseStrike || current.abilityDef == TorannMagicDefOf.TM_PhaseStrike_I || current.abilityDef == TorannMagicDefOf.TM_PhaseStrike_II || current.abilityDef == TorannMagicDefOf.TM_PhaseStrike_III)
+                                {                                 
+                                    if (current.level == 0)
+                                    {
+                                        MightPower mightPower = this.MightData.MightPowersB.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PhaseStrike);
+                                        if (mightPower != null && mightPower.autocast && this.Pawn.equipment.Primary != null && !this.Pawn.equipment.Primary.def.IsRangedWeapon)
+                                        {
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_PhaseStrike);
+                                            float minDistance = ActualStaminaCost(TorannMagicDefOf.TM_PhaseStrike) * 100;
+                                            AutoCast.Phase.Evaluate(this, TorannMagicDefOf.TM_PhaseStrike, ability, mightPower, minDistance, out castSuccess);
+                                            if (castSuccess) goto AutoCastExit;
+                                        }
+                                    }
+                                    else if (current.level == 1)
+                                    {
+                                        MightPower mightPower = this.MightData.MightPowersB.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PhaseStrike);
+                                        if (mightPower != null && mightPower.autocast && this.Pawn.equipment.Primary != null && !this.Pawn.equipment.Primary.def.IsRangedWeapon)
+                                        {
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_PhaseStrike_I);
+                                            float minDistance = ActualStaminaCost(TorannMagicDefOf.TM_PhaseStrike_I) * 100;
+                                            AutoCast.Phase.Evaluate(this, TorannMagicDefOf.TM_PhaseStrike_I, ability, mightPower, minDistance, out castSuccess);
+                                            if (castSuccess) goto AutoCastExit;
+                                        }
+                                    }
+                                    else if (current.level == 2)
+                                    {
+                                        MightPower mightPower = this.MightData.MightPowersB.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PhaseStrike_I);
+                                        if (mightPower != null && mightPower.autocast && this.Pawn.equipment.Primary != null && !this.Pawn.equipment.Primary.def.IsRangedWeapon)
+                                        {
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_PhaseStrike_II);
+                                            float minDistance = ActualStaminaCost(TorannMagicDefOf.TM_PhaseStrike_II) * 100;
+                                            AutoCast.Phase.Evaluate(this, TorannMagicDefOf.TM_PhaseStrike_II, ability, mightPower, minDistance, out castSuccess);
+                                            if (castSuccess) goto AutoCastExit;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MightPower mightPower = this.MightData.MightPowersB.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PhaseStrike_II);
+                                        if (mightPower != null && mightPower.autocast && this.Pawn.equipment.Primary != null && !this.Pawn.equipment.Primary.def.IsRangedWeapon)
+                                        {
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_PhaseStrike_III);
+                                            float minDistance = ActualStaminaCost(TorannMagicDefOf.TM_PhaseStrike_III) * 100;
+                                            AutoCast.Phase.Evaluate(this, TorannMagicDefOf.TM_PhaseStrike_III, ability, mightPower, minDistance, out castSuccess);
+                                            if (castSuccess) goto AutoCastExit;
+                                        }
+                                    }
+                                }
                             }
+                        }
+                    }
+
+                    if (this.skill_Teach)
+                    {
+                        MightPower mightPower = this.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_TeachMight);
+                        if (mightPower.autocast)
+                        {
+                            PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_TeachMight);
+                            AutoCast.TeachMight.Evaluate(this, TorannMagicDefOf.TM_TeachMight, ability, mightPower, out castSuccess);
+                            if (castSuccess) goto AutoCastExit;
                         }
                     }
                 }
@@ -1944,7 +2003,7 @@ namespace TorannMagic
                                     if (mightPower != null && mightPower.autocast && this.Pawn.equipment.Primary != null && !this.Pawn.equipment.Primary.def.IsRangedWeapon)
                                     {
                                         ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_BladeSpin);
-                                        MightPowerSkill ver = this.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_ver");
+                                        MightPowerSkill ver = this.MightData.MightPowerSkill_BladeSpin.FirstOrDefault((MightPowerSkill x) => x.label == "TM_BladeSpin_ver");
                                         AutoCast.AoECombat.Evaluate(this, TorannMagicDefOf.TM_BladeSpin, ability, mightPower, 2, Mathf.RoundToInt(2+(.5f*ver.level)), this.Pawn.Position, true, out castSuccess);
                                         if (castSuccess) goto AutoCastExit;
                                     }

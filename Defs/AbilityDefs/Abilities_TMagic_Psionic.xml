@@ -93,7 +93,9 @@ A well trained psionic is able to achieve incredible physical feats using a blen
     <defName>TM_PsionicBarrier</defName>
     <label>Psionic Barrier</label>
     <uiIconPath>UI/psionicbarrier</uiIconPath>
-    <description>The Psionic forms a psychic barrier that repels kinetic energy in a small area around the user. Using this ability requires constant concentration in order to maintain the barrier and the Psionic will be unable to perform any other action while this is active.</description>
+    <description>The Psionic forms a psychic barrier that repels kinetic energy in a small area around the user. Using this ability requires constant concentration in order to maintain the barrier and the Psionic will be unable to perform any other action while this is active.
+
+This ability requires 2 points to level.</description>
     <staminaCost>0.10</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_PsionicBarrier</verbClass>

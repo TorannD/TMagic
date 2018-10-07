@@ -69,7 +69,7 @@ namespace TorannMagic
                 {
                     ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                     this.MightUser.Stamina.UseMightPower(this.MightUser.ActualStaminaCost(mightDef));
-                    this.MightUser.MightUserXP += (int)((mightDef.staminaCost * 120) * settingsRef.xpMultiplier);
+                    this.MightUser.MightUserXP += (int)((mightDef.staminaCost * 180) * settingsRef.xpMultiplier);
                     
                 }
             }

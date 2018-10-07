@@ -11,6 +11,114 @@ using AbilityUser;
 
 namespace TorannMagic.AutoCast
 {
+
+    public static class Phase
+    {
+        public static void Evaluate(CompAbilityUserMight casterComp, TMAbilityDef abilitydef, PawnAbility ability, MightPower power, float minDistance, out bool success)
+        {
+            success = false;
+            Pawn caster = casterComp.Pawn;
+            LocalTargetInfo jobTarget = caster.CurJob.targetA;
+            Thing carriedThing = null;
+            if (caster.CurJob.targetA.Thing != null) //&& caster.CurJob.def.defName != "Sow")
+            {
+                if (caster.CurJob.targetA.Thing.Map != caster.Map) //carrying thing
+                {
+                    jobTarget = caster.CurJob.targetB;
+                    carriedThing = caster.CurJob.targetA.Thing;
+                }
+                else if (caster.CurJob.targetB != null && caster.CurJob.targetB.Thing != null && caster.CurJob.def.defName != "Rescue") //targetA using targetB for job
+                {
+                    if (caster.CurJob.targetB.Thing.Map != caster.Map) //carrying targetB to targetA
+                    {
+                        jobTarget = caster.CurJob.targetA;
+                        carriedThing = caster.CurJob.targetB.Thing;
+                    }
+                    else //Getting targetB
+                    {
+                        jobTarget = caster.CurJob.targetB;
+                    }
+                }
+                else
+                {
+                    jobTarget = caster.CurJob.targetA;
+                }
+            }
+            float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
+            Vector3 directionToTarget = TM_Calc.GetVector(caster.Position, jobTarget.Cell);
+            //Log.Message("" + caster.LabelShort + " job def is " + caster.CurJob.def.defName + " targetA " + caster.CurJob.targetA + " targetB " + caster.CurJob.targetB + " jobTarget " + jobTarget + " at distance " + distanceToTarget + " min distance " + minDistance + " at vector " + directionToTarget);
+            if (casterComp.Stamina.CurLevel >= casterComp.ActualStaminaCost(abilitydef) && ability.CooldownTicksLeft <= 0 && distanceToTarget < 200)
+            {
+                if (distanceToTarget > minDistance && caster.CurJob.locomotionUrgency >= LocomotionUrgency.Jog && caster.CurJob.bill == null)
+                {
+                    if (distanceToTarget <= abilitydef.MainVerb.range && jobTarget.Cell != default(IntVec3))
+                    {
+                        //Log.Message("doing blink to thing");
+                        DoPhase(caster, jobTarget.Cell, ability, carriedThing);
+                        success = true;
+                    }
+                    else
+                    {
+                        IntVec3 phaseToCell = caster.Position + (directionToTarget * abilitydef.MainVerb.range).ToIntVec3();
+                        //Log.Message("doing partial blink to cell " + blinkToCell);
+                        //MoteMaker.ThrowHeatGlow(blinkToCell, caster.Map, 1f);
+                        if (phaseToCell.IsValid && phaseToCell.InBounds(caster.Map) && phaseToCell.Walkable(caster.Map) && !phaseToCell.Fogged(caster.Map) && ((phaseToCell - caster.Position).LengthHorizontal < distanceToTarget))
+                        {
+                            DoPhase(caster, phaseToCell, ability, carriedThing);
+                            success = true;
+                        }
+                    }
+                }
+            }
+        }
+
+        private static void DoPhase(Pawn caster, IntVec3 targetCell, PawnAbility ability, Thing carriedThing)
+        {
+            Pawn p = caster;
+            Thing cT = carriedThing;
+            Map map = caster.Map;
+            IntVec3 casterCell = caster.Position;
+            bool selectCaster = false;
+            if (Find.Selector.FirstSelectedObject == caster)
+            {
+                selectCaster = true;
+            }
+            try
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, caster.DrawPos, caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
+                    TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Enchanting, caster.DrawPos, caster.Map, Rand.Range(1.4f, 2f), .2f, .05f, Rand.Range(.4f, .6f), Rand.Range(-200, 200), 0, 0, 0);
+                }
+
+                caster.DeSpawn();
+                GenSpawn.Spawn(p, targetCell, map);
+                if (carriedThing != null)
+                {
+                    carriedThing.DeSpawn();
+                    GenSpawn.Spawn(cT, targetCell, map);
+                }
+
+                ability.PostAbilityAttempt();
+                if (selectCaster)
+                {
+                    Find.Selector.Select(caster, false, true);
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, caster.DrawPos, caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
+                    TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Enchanting, caster.DrawPos, caster.Map, Rand.Range(1.4f, 2f), .2f, .05f, Rand.Range(.4f, .6f), Rand.Range(-200, 200), 0, 0, 0);
+                }
+            }
+            catch
+            {
+                if (!caster.Spawned)
+                {
+                    GenSpawn.Spawn(p, casterCell, map);
+                }
+            }
+        }
+    }
     public static class CombatAbility_OnTarget
     {
         public static void TryExecute(CompAbilityUserMight casterComp, TMAbilityDef abilitydef, PawnAbility ability, MightPower power, LocalTargetInfo target, int minRange, out bool success)
@@ -40,17 +148,23 @@ namespace TorannMagic.AutoCast
             {
                 Pawn caster = mightComp.Pawn;
                 List<Pawn> targetList = TM_Calc.FindPawnsNearTarget(caster, radiusAround, evaluatedCenter, hostile);
-                LocalTargetInfo jobTarget = null;
-                if (targetList.Count >= minTargetCount)
+                if (targetList != null)
                 {
-                    jobTarget = caster;
-                }
-                float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
-                if (jobTarget != null && jobTarget.Thing != null)
-                {
-                    Job job = ability.GetJob(AbilityContext.AI, jobTarget);
-                    caster.jobs.TryTakeOrderedJob(job);
-                    success = true;
+                    LocalTargetInfo jobTarget = null;
+                    if (targetList.Count >= minTargetCount && (abilitydef == TorannMagicDefOf.TM_BladeSpin))
+                    {
+                        jobTarget = caster;
+                    }
+                    if (jobTarget != null && jobTarget.Thing != caster)
+                    {
+                        float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
+                    }
+                    if (jobTarget != null && jobTarget.Thing != null)
+                    {
+                        Job job = ability.GetJob(AbilityContext.AI, jobTarget);
+                        caster.jobs.TryTakeOrderedJob(job);
+                        success = true;
+                    }
                 }
             }
         }
@@ -71,7 +185,7 @@ namespace TorannMagic.AutoCast
             {
                 Pawn caster = casterComp.Pawn;
                 LocalTargetInfo jobTarget = TM_Calc.FindNearbyEnemy(caster, (int)(abilitydef.MainVerb.range * .9f));
-                if(abilitydef == TorannMagicDefOf.TM_AntiArmor)
+                if(jobTarget != null && abilitydef == TorannMagicDefOf.TM_AntiArmor)
                 {
                     Pawn targetPawn = jobTarget.Thing as Pawn;
                     if(targetPawn.RaceProps.IsFlesh)
@@ -322,7 +436,7 @@ namespace TorannMagic.AutoCast
                             bool flag5 = current.CanHealNaturally() && !current.IsPermanent();
                             if (flag5)
                             {
-                                injurySeverity += current.Severity;
+                                injurySeverity += current.Severity;                                
                             }
                         }
                     }
@@ -355,10 +469,28 @@ namespace TorannMagic.AutoCast
                         bool tatteredApparel = false;
                         //List<Thought_Memory> targetPawnThoughts = null;
                         //targetPawn.needs.mood.thoughts.GetDistinctMoodThoughtGroups(targetPawnThoughts);
-                        List<Thought_Memory> targetPawnThoughts = targetPawn.needs.mood.thoughts.memories.Memories;
-                        for (int i = 0; i < targetPawnThoughts.Count; i++)
+                        Log.Message("target pawn is " + targetPawn.LabelShort);
+                        //List<Thought_Memory> targetPawnThoughts = targetPawn.needs.mood.thoughts.memories.Memories;
+                        //for (int i = 0; i < targetPawnThoughts.Count; i++)
+                        //{
+                        
+                        //    if (targetPawnThoughts[i].def == ThoughtDefOf.ApparelDamaged)
+                        //    {
+                        //        tatteredApparel = true;
+                        //    }
+                        //}
+                        List<Apparel> apparel = targetPawn.apparel.WornApparel;
+                        for (int i = 0; i < apparel.Count; i++)
                         {
-                            if (targetPawnThoughts[i].def == ThoughtDefOf.ApparelDamaged)
+                            Log.Message("evaluating equipment " + apparel[i].def.defName + " with hitpoints " + apparel[i].HitPoints + " / " + apparel[i].MaxHitPoints);
+                            if (apparel[i].HitPoints/apparel[i].MaxHitPoints < .5f)
+                            {
+                                tatteredApparel = true;
+                            }
+                        }
+                        if (targetPawn.equipment.Primary != null)
+                        {
+                           if(targetPawn.equipment.Primary.HitPoints/targetPawn.equipment.Primary.MaxHitPoints < .5f)
                             {
                                 tatteredApparel = true;
                             }

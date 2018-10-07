@@ -869,7 +869,7 @@ Training in this skill improves the leap distance and impact force.
 Out of combat, the psionic will infuse their stride with mental energy, drastically increasing movement speed for a short time. This ability only occurs when the psionic is near maximum psionic energy and has a work target at a sufficient distance. This will not interrupt ongoing tasks.
 Training in this skill improves duration and movement speed.
 
-Both augmentations occur automatically.</TM_PsionicAugmentation_eff_desc>
+Both augmentations occur automatically. This skill requires 2 ability points to level.</TM_PsionicAugmentation_eff_desc>
 <TM_PsionicAugmentation_pwr_desc>By reinforcing physical strength with psionic power, a psionic is able to increase the speed and strength of their actions.
 
 In combat, the this ability reinforces melee attacks with psionic energy, giving the psionic the ability to deliver a massive blow that can knockback or stun an opponent. 
@@ -879,12 +879,12 @@ Training in this skill increases the damage output and frequency of blows that a
 Out of combat, the psionic greatly accelerates the movement of their hands, drastically increasing manipulation. This ability only occurs with the psionic is near maximum psionic energy and is performing work that benefits from manipulation. This will not interrupt ongoing tasks.
 Training in this skill improves duration and the amount manipulation is boosted.
 
-Both augmentations occur automatically.</TM_PsionicAugmentation_pwr_desc>
+Both augmentations occur automatically. This skill requires 2 ability points to level.</TM_PsionicAugmentation_pwr_desc>
 <TM_PsionicAugmentation_ver_desc>The psionic focuses their psionic energy to crush an opponent with raw power. This only occurs in combat, but can be used in cohesion with other combat capabilities.
 This ability has a minimum target range of 5 cells.
 Training in this skill improves the maximum range, damage, and reduces the psionic energy required to perform the attack.
 
-This augmentation occurs automatically but must be trained in at least once to become active.</TM_PsionicAugmentation_ver_desc>
+This augmentation occurs automatically but must be trained in at least once to become active. This skill requires 2 ability points to level.</TM_PsionicAugmentation_ver_desc>
 <TM_PsionicBarrier_pwr_desc>Projectiles deflected by barrier have a chance to drain stamina instead of psionic energy. Each level improves this chance by 15%.
 Level 0: 0%
 Level 1: 15%

@@ -582,6 +582,9 @@ namespace TorannMagic
         public static EffecterDef TM_GiantExplosion;
         public static EffecterDef TM_Stoneskin_Effecter;
 
+        //Apparel layers
+        public static ApparelLayerDef TM_Cloak;
+
         //Jobs
         public static JobDef TMCastAbilityVerb;
         public static JobDef TMCastAbilitySelf;

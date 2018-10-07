@@ -119,38 +119,39 @@ namespace TorannMagic
                                 TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .4f);
                             }
                         }
-                    }
-                    using (IEnumerator<Hediff_Addiction> enumerator = pawn.health.hediffSet.GetHediffs<Hediff_Addiction>().GetEnumerator())
+                    }                    
+                }
+
+                using (IEnumerator<Hediff_Addiction> enumerator = pawn.health.hediffSet.GetHediffs<Hediff_Addiction>().GetEnumerator())
+                {
+                    while (enumerator.MoveNext())
                     {
-                        while (enumerator.MoveNext())
+                        Hediff_Addiction rec = enumerator.Current;
+                        bool flag2 = num > 0;
+                        if (flag2)
                         {
-                            Hediff_Addiction rec = enumerator.Current;
-                            bool flag2 = num > 0;
-                            if (flag2)
+                            if (rec.Chemical.defName == "Alcohol" || rec.Chemical.defName == "Smokeleaf")
                             {
-                                if (rec.Chemical.defName == "Alcohol" || rec.Chemical.defName == "Smokeleaf")
-                                {
-                                    rec.Severity -= (.3f + .3f * pwrVal);
-                                    num--;
-                                }
-                                if ((rec.Chemical.defName == "GoJuice" || rec.Chemical.defName == "WakeUp") && verVal >= 1)
-                                {
-                                    rec.Severity -= (.25f + .25f * pwrVal);
-                                    num--;
-                                }
-                                if (rec.Chemical.defName == "Psychite" && verVal >= 2)
-                                {
-                                    rec.Severity -= (.25f + .25f * pwrVal);
-                                    num--;
-                                }
-                                if (verVal >= 3)
-                                {
-                                    rec.Severity -= (.15f + .15f * pwrVal);
-                                    num--;
-                                }
-                                TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .6f);
-                                TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .4f);
+                                rec.Severity -= (.3f + .3f * pwrVal);
+                                num--;
                             }
+                            if ((rec.Chemical.defName == "GoJuice" || rec.Chemical.defName == "WakeUp") && verVal >= 1)
+                            {
+                                rec.Severity -= (.25f + .25f * pwrVal);
+                                num--;
+                            }
+                            if (rec.Chemical.defName == "Psychite" && verVal >= 2)
+                            {
+                                rec.Severity -= (.25f + .25f * pwrVal);
+                                num--;
+                            }
+                            if (verVal >= 3)
+                            {
+                                rec.Severity -= (.15f + .15f * pwrVal);
+                                num--;
+                            }
+                            TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .6f);
+                            TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .4f);
                         }
                     }
                 }

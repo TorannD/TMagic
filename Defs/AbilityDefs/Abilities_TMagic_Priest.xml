@@ -73,7 +73,7 @@
         <defaultProjectile>TM_Projectile_Priest</defaultProjectile>
         <warmupTime>8</warmupTime>
         <SecondsToRecharge>600</SecondsToRecharge>
-        <range>2</range>
+        <range>16</range>
         <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>30</muzzleFlashScale>
         <isPrimary>false</isPrimary>

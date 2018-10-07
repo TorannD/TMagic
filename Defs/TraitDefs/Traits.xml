@@ -669,7 +669,9 @@
 				<ToxicSensitivity>-0.30</ToxicSensitivity>
 				<ComfyTemperatureMin>-12</ComfyTemperatureMin>
 				<ComfyTemperatureMax>+12</ComfyTemperatureMax>
-				<PainShockThreshold>-0.15</PainShockThreshold>
+				<MeleeDodgeChance>-5</MeleeDodgeChance>
+				<MiningSpeed>.25</MiningSpeed>
+				<MiningYield>.25</MiningYield>
 				<CarryingCapacity>+20</CarryingCapacity>
 				<WorkSpeedGlobal>-0.20</WorkSpeedGlobal>
 				<MentalBreakThreshold>-0.15</MentalBreakThreshold>

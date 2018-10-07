@@ -93,6 +93,12 @@
 	  <useDeflectMetalEffect>true</useDeflectMetalEffect>
 	</apparel>
   </ThingDef>
+  
+  <ApparelLayerDef>
+    <defName>TM_Cloak</defName>
+    <label>cloak</label>
+    <drawOrder>265</drawOrder>
+  </ApparelLayerDef>
 
   <ThingDef ParentName="TMTailoredApparelBase">
     <defName>TM_MaestersCloak</defName>
@@ -157,9 +163,10 @@ Arcane Resistance: +5%</description>
 	 </defaultOutfitTags>
 	 <wornGraphicPath>Equipment/opencloak</wornGraphicPath>
 		<layers>
-			<li>Shell</li>
+			<li>TM_Cloak</li>
 		</layers>
 		<bodyPartGroups>
+			<li>Shoulders</li>
 			<li>Neck</li>
 			<li>Waist</li>
 		</bodyPartGroups>
@@ -629,9 +636,10 @@ Augmented by Phantom Shift</description>
 	 </defaultOutfitTags>
 	 <wornGraphicPath>Equipment/demonlordcloakc</wornGraphicPath>
 		<layers>
-			<li>Shell</li>
+			<li>TM_Cloak</li>
 		</layers>
 		<bodyPartGroups>
+			<li>Shoulders</li>
 			<li>Neck</li>
 			<li>Waist</li>
 		</bodyPartGroups>
@@ -750,6 +758,7 @@ Class XP Gain: +10%</description>
 			<li>Shell</li>
 		</layers>
 		<bodyPartGroups>
+			<li>Shoulders</li>
 			<li>Torso</li>
 			<li>Arms</li>
 			<li>Legs</li>

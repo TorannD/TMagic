@@ -75,7 +75,7 @@ namespace TorannMagic
             bool flag4 = Find.TickManager.TicksGame % 600 == 0;
             if (flag4)
             {
-                if(bonderPawn != null && !bonderPawn.Dead && !bonderPawn.Destroyed)
+                if(bonderPawn != null && !bonderPawn.Dead && !bonderPawn.Destroyed && (bonderPawn.health.hediffSet.HasHediff(HediffDef.Named("TM_SDSoulBondPhysicalHD"),false) || bonderPawn.health.hediffSet.HasHediff(HediffDef.Named("TM_WDSoulBondMentalHD"),false)))
                 {
                     //do nothing
                 }

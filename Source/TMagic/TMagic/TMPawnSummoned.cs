@@ -17,6 +17,8 @@ namespace TorannMagic
 
         private int ticksToDestroy = 1800;
 
+        public bool validSummoning = false;
+
         CompAbilityUserMagic compSummoner;
         Pawn spawner;
 
@@ -78,7 +80,10 @@ namespace TorannMagic
 
         public virtual void PostSummonSetup()
         {
-
+            if(!this.validSummoning)
+            {
+                this.Destroy(DestroyMode.Vanish);
+            }
         }
 
         public void CheckPawnState()

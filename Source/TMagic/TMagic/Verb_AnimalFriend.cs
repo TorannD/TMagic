@@ -133,7 +133,7 @@ namespace TorannMagic
                                 {
                                 animal.LabelShort,
                                 pawn.LabelShort,
-                                ((1 - animal.RaceProps.wildness) * 10f)
+                                ((1 - animal.RaceProps.wildness) * 100f)
                                 }), MessageTypeDefOf.NeutralEvent);
                             }
                         }
@@ -143,8 +143,8 @@ namespace TorannMagic
                             {
                                 animal.LabelShort,
                                 pawn.LabelShort,
-                                (animal.RaceProps.wildness * 10),
-                                (.7f + .1f*ver.level) * 10
+                                (animal.RaceProps.wildness * 100).ToString("F"),
+                                (.7f + .1f*pwr.level) * 100
                             }), MessageTypeDefOf.NeutralEvent);
                         }
                     }

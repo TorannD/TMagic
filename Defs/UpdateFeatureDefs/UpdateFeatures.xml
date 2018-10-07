@@ -103,16 +103,16 @@ Bug fixes:
 		<assemblyVersion>2.2.5</assemblyVersion>
 		<content>
 ** New feature: Auto-casting - many basic spells or skills can now be enabled for automatic use.  There are a few things you should know:
-	- Abilities with autocast will have a checkbox at the top right of the ability icon; right click the ability icon to toggle the feature.
-	- There are two separate routines for drafted and undrafted.  Some spells, like magic combat spells, will only autocast while drafted.
-	- The only offensive abilities that will be used while undrafted are Ranger "Arrow Storm" and Sniper "Headshot" - and only when hunting.
-	- Autocast settings can be found in the mod options, and can be turned off globally if desired or for performance reasons.
-	- Outside of combat and hunting, autocast abilities will only target human colonists.
-	- Enabling autocast does not prevent normal use of abilities.
+- Abilities with autocast will have a checkbox at the top right of the ability icon; right click the ability icon to toggle the feature.
+- There are two separate routines for drafted and undrafted.  Some spells, like magic combat spells, will only autocast while drafted.
+- The only offensive abilities that will be used while undrafted are Ranger "Arrow Storm" and Sniper "Headshot" - and only when hunting.
+- Autocast settings can be found in the mod options, and can be turned off globally if desired or for performance reasons.
+- Outside of combat and hunting, autocast abilities will only target human colonists.
+- Enabling autocast does not prevent normal use of abilities.
 	
 ** New feature: Class options - within the mod settings there is a button for "Class Options" that will allow you to disable certain classes from being generated during gameplay.
-	- This does not remove traits from the database.  Disabled class traits will never be assigned during normal gameplay but use of mods like EdB Prepare Carefully or any mod that ignores trait commonality settings, will still show the trait.
-	- This feature should not be used in the middle of a game, only apply changes before starting a new game.
+- This does not remove traits from the database.  Disabled class traits will never be assigned during normal gameplay but use of mods like EdB Prepare Carefully or any mod that ignores trait commonality settings, will still show the trait.
+- This feature should not be used in the middle of a game, only apply changes before starting a new game.
 	
 * New weapons - Elephant bow and Elephant spear - these weapons are intended to provide extra benefit to fighter classes at mid-tier (industrial equivalent) and have minor enchantments, similar to wands for mages.
 
