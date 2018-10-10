@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Verse;
 using RimWorld;
 using AbilityUser;
@@ -26,6 +27,13 @@ namespace TorannMagic.Weapon
                 }
                 try
                 {
+                    //TM_MoteMaker.MakePowerBeamMotePsionic(base.Position, map, 12f, 2f, .7f, .1f, .6f);
+                    //List<Thing> thingList = base.Position.GetThingList(map);
+                    //for(int i = 0; i < thingList.Count; i++)
+                    //{
+                    //    DamageEntities(thingList[i], null, this.def.projectile.GetDamageAmount(1, null), TMDamageDefOf.DamageDefOf.TM_BlazingPower, pawn);
+                    //}
+                    
                     GenExplosion.DoExplosion(base.Position, map, this.def.projectile.explosionRadius, TMDamageDefOf.DamageDefOf.TM_BlazingPower, this.launcher, Mathf.RoundToInt(this.def.projectile.GetDamageAmount(1, null) * this.arcaneDmg), 2, SoundDefOf.Crunch, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0.0f, true);
                 }
                 catch
@@ -68,6 +76,14 @@ namespace TorannMagic.Weapon
             explosion.chanceToStartFire = 0.05f;
             explosion.StartExplosion(explosionSound);
 
+        }
+
+        public void DamageEntities(Thing victim, BodyPartRecord hitPart, int amt, DamageDef type, Pawn instigator)
+        {
+            amt = (int)((float)amt * Rand.Range(.75f, 1.25f));
+            DamageInfo dinfo = new DamageInfo(type, amt, 0, (float)-1, instigator, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
+            dinfo.SetAllowDamagePropagation(false);
+            victim.TakeDamage(dinfo);
         }
     }
 }

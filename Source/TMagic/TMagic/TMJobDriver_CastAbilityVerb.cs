@@ -23,7 +23,7 @@ namespace TorannMagic
 
             if (base.TargetA.HasThing)
             {
-                if (!base.GetActor().IsFighting() ? true : !verb.UseAbilityProps.canCastInMelee)
+                if (!base.GetActor().IsFighting() ? true : !verb.UseAbilityProps.canCastInMelee && !this.job.endIfCantShootTargetFromCurPos)
                 {
                     Toil toil = Toils_Combat.GotoCastPosition(TargetIndex.A, false);
                     yield return toil;

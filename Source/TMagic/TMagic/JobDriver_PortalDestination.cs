@@ -115,6 +115,9 @@ namespace TorannMagic
                     portalBldg.PortalDestinationPosition = x.Cell;
                     portalBldg.PortalDestinationMap = map;
                     comp.Mana.CurLevel = comp.Mana.CurLevel - .7f;
+                    int xpnum = Rand.Range(200, 230);
+                    comp.MagicUserXP += xpnum;
+                    MoteMaker.ThrowText(pawn.DrawPos, pawn.MapHeld, "XP +" + xpnum, -1f);
                     portalBldg.IsPaired = true;
 
                 }, null, delegate

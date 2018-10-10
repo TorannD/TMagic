@@ -186,7 +186,6 @@ namespace TorannMagic
 
         public void damageEntities(Pawn victim, BodyPartRecord hitPart, int amt, DamageDef type)
         {
-            
             amt = (int)((float)amt * Rand.Range(.75f, 1.25f));
             DamageInfo dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Shadow, amt, 0, (float)-1, this.pawn, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
             dinfo.SetAllowDamagePropagation(false);

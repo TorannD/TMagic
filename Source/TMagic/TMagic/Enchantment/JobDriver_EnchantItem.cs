@@ -116,6 +116,9 @@ namespace TorannMagic.Enchantment
                     EnchantItem(enchantingItem.enchantingContainer[0], enchantment);
                     enchantingItem.enchantingContainer[0].Destroy();
                     pawnComp.Mana.CurLevel -= .5f;
+                    int num = Rand.Range(130, 180);
+                    pawnComp.MagicUserXP += num;
+                    MoteMaker.ThrowText(actor.DrawPos, actor.Map, "XP +" + num, -1f);
                     MoteMaker.ThrowText(TargetLocA.ToVector3Shifted(), actor.Map, "TM_Enchanted".Translate(), -1);
                     SoundStarter.PlayOneShotOnCamera(TorannMagicDefOf.ItemEnchanted, null);
                     //DestroyEnchantingStone(enchantingItem.innerContainer[0]);

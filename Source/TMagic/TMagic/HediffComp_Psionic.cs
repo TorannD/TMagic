@@ -168,6 +168,7 @@ namespace TorannMagic
                                     float direction = Rand.Range(0, 360);
                                     TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Psi"), this.Pawn.DrawPos, this.Pawn.Map, Rand.Range(.1f, .4f), 0.2f, .02f, .1f, 0, Rand.Range(8, 10), direction, direction);
                                 }
+                                comp.MightUserXP += Rand.Range(10, 15);
                             }
                             if (this.Pawn.CurJob.targetA.Thing != null)
                             {
@@ -195,6 +196,7 @@ namespace TorannMagic
                                         float direction = Rand.Range(0, 360);
                                         TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Psi"), this.Pawn.DrawPos, this.Pawn.Map, Rand.Range(.1f, .4f), 0.2f, .02f, .1f, 0, Rand.Range(8, 10), direction, direction);
                                     }
+                                    comp.MightUserXP += Rand.Range(10, 15);
                                 }
                             }
                         }
@@ -224,7 +226,7 @@ namespace TorannMagic
                                     flyingObject.Launch(this.Pawn, this.Pawn.CurJob.targetA.Thing, this.Pawn);
                                     HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_PsionicHD"), -3f);
                                     comp.Stamina.CurLevel -= .03f;
-                                    comp.MightUserXP += Rand.Range(3, 5);
+                                    comp.MightUserXP += Rand.Range(20, 30);
                                 }
                             }
                         }
@@ -268,7 +270,7 @@ namespace TorannMagic
                                     this.nextPsionicAttack = Find.TickManager.TicksGame + (int)(Mathf.Clamp((600 - (60 * verVal)) * weaponModifier, 120, 900));
                                     float energyCost = Mathf.Clamp((10f - VerVal) * weaponModifier, 2f, 12f);
                                     HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_PsionicHD"), -energyCost);
-                                    comp.MightUserXP += Rand.Range(6, 10);
+                                    comp.MightUserXP += Rand.Range(8, 12);
                                     this.doPsionicAttack = true;
                                     this.ticksTillPsionicStrike = 24;
                                 }

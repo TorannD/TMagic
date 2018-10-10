@@ -2372,6 +2372,108 @@ namespace TorannMagic
             }
         }
 
+        [HarmonyPatch(typeof(DamageWorker), "ExplosionStart", null)]
+        public static class ExplosionNoShaker_Patch
+        {
+            public static bool Prefix(DamageWorker __instance, Explosion explosion)
+            {
+                if(explosion.damType == TMDamageDefOf.DamageDefOf.TM_BlazingPower)
+                {
+                    MoteMaker.MakeStaticMote(explosion.Position, explosion.Map, ThingDefOf.Mote_ExplosionFlash, explosion.radius * 6f);
+                    for (int i = 0; i < 4; i++)
+                    {
+                        MoteMaker.ThrowSmoke(explosion.Position.ToVector3Shifted() + Gen.RandomHorizontalVector(explosion.radius * 0.7f), explosion.Map, explosion.radius * 0.6f);
+                    }
+                    if (__instance.def.explosionInteriorMote != null)
+                    {
+                        int num = Mathf.RoundToInt(3.14159274f * explosion.radius * explosion.radius / 6f);
+                        for (int j = 0; j < num; j++)
+                        {
+                            MoteMaker.ThrowExplosionInteriorMote(explosion.Position.ToVector3Shifted() + Gen.RandomHorizontalVector(explosion.radius * 0.7f), explosion.Map, __instance.def.explosionInteriorMote);
+                        }
+                    }
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        [HarmonyPatch(typeof(WorkGiver_DoBill), "JobOnThing", null)]
+        public static class RegrowthSurgery_WorkGiver_Patch
+        {
+            public static void Postfix(ref Job __result, Pawn pawn, Thing thing, bool forced = false)
+            {
+                if (!((__result == null || pawn == null || thing == null) | forced))
+                {
+                    IBillGiver billGiver = thing as IBillGiver;
+                    if (billGiver != null)
+                    {
+                        Bill bill = __result.bill;
+                        if (bill != null)
+                        {
+                            RecipeDef recipe = bill.recipe;
+                            if (recipe != null && ConfirmRegrowthSurgery(pawn, billGiver, recipe))
+                            {
+                                __result = null;
+                            }
+                        }
+                    }
+                }
+            }
+
+            private static Pawn GiverPawn(IBillGiver billGiver)
+            {
+                Pawn pawn = billGiver.BillStack.billGiver as Pawn;
+                Corpse corpse = billGiver.BillStack.billGiver as Corpse;
+                if (corpse != null)
+                {
+                    pawn = corpse.InnerPawn;
+                }
+                if (pawn == null)
+                {
+                    throw new InvalidOperationException("Medical bill on non-pawn.");
+                }
+                return pawn;
+            }
+
+            private static bool ConfirmRegrowthSurgery(Pawn pawn, IBillGiver billGiver, RecipeDef recipe)
+            {
+                if (recipe == null || !recipe.IsSurgery)
+                {
+                    return false;
+                }
+                Pawn giverPawn = GiverPawn(billGiver);
+                if (giverPawn.RaceProps.IsMechanoid)
+                {
+                    return false;
+                }
+                if(recipe.defName != "Regrowth")
+                {
+                    return false;
+                }
+                return !IsCapableDruid(pawn, recipe);
+            }            
+
+            private static bool IsCapableDruid(Pawn p, RecipeDef recipe)
+            {
+                if (p.RaceProps.Humanlike && p.skills != null)
+                {
+                    if(p.workSettings.WorkIsActive(WorkTypeDefOf.Doctor) && p.story.traits.HasTrait(TorannMagicDefOf.Druid))
+                    {
+                        if (recipe.PawnSatisfiesSkillRequirements(p) && p.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation) && p.health.capacities.CapableOf(PawnCapacityDefOf.Moving))
+                        {
+                            CompAbilityUserMagic comp = p.GetComp<CompAbilityUserMagic>();
+                            if(comp.Mana.CurLevel > .9f)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+                return false;
+            }
+        }
+
         [HarmonyPatch(typeof(Command_PawnAbility), "GizmoOnGUI", null)]
         public static class GizmoOnGUI_Prefix_Patch
         {
@@ -3163,23 +3265,23 @@ namespace TorannMagic
             }
         }
 
-        [HarmonyPatch(typeof(Pawn_ApparelTracker), "Wear", null)]
-        public class Pawn_ApparelTracker_Wear_Patch
-        {
-            //public static FieldInfo pawn = typeof(Pawn_ApparelTracker).GetField("pawn", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.GetField);
+        //[HarmonyPatch(typeof(Pawn_ApparelTracker), "Wear", null)]
+        //public class Pawn_ApparelTracker_Wear_Patch
+        //{
+        //    //public static FieldInfo pawn = typeof(Pawn_ApparelTracker).GetField("pawn", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.GetField);
 
-            public static bool Prefix(Apparel newApparel)
-            {
+        //    public static bool Prefix(Apparel newApparel)
+        //    {
 
-                if(newApparel != null)
-                {
-                    Log.Message("wearing apparel " + newApparel.def.defName);
-                    Log.Message("apparel properties last layer " + newApparel.def.apparel.LastLayer);
-                    Log.Message("apparel draw order " + newApparel.def.apparel.LastLayer.drawOrder);
+        //        if(newApparel != null)
+        //        {
+        //            Log.Message("wearing apparel " + newApparel.def.defName);
+        //            Log.Message("apparel properties last layer " + newApparel.def.apparel.LastLayer);
+        //            Log.Message("apparel draw order " + newApparel.def.apparel.LastLayer.drawOrder);
 
-                }
-                return true;
-            }
-        }        
+        //        }
+        //        return true;
+        //    }
+        //}        
     }
 }

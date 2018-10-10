@@ -60,7 +60,8 @@ If things get too tough for them or they get bored, they'll flee back to whereve
       <MoveSpeed>4</MoveSpeed>
       <ArmorRating_Blunt>0.4</ArmorRating_Blunt>
       <ArmorRating_Sharp>0.4</ArmorRating_Sharp>
-      <ArmorRating_Heat>0.6</ArmorRating_Heat>      
+      <ArmorRating_Heat>0.6</ArmorRating_Heat>
+	  <CarryingCapacity>60</CarryingCapacity>
     </statBases>
 	<tools>
       <li>
@@ -139,10 +140,11 @@ They can be summoned by gullible... er, trained mages, and, in return for giving
 Occasionally, they express the desire to hit things and can (usually) be convinced to hit some nearby rocks.
 If things get too tough for them or they get bored, they'll flee back to wherever they came.</description>
     <statBases>
-      <MoveSpeed>4</MoveSpeed>
+      <MoveSpeed>4.5</MoveSpeed>
       <ArmorRating_Blunt>0.5</ArmorRating_Blunt>
       <ArmorRating_Sharp>0.5</ArmorRating_Sharp>
-      <ArmorRating_Heat>0.6</ArmorRating_Heat>      
+      <ArmorRating_Heat>0.6</ArmorRating_Heat>
+	  <CarryingCapacity>90</CarryingCapacity>
     </statBases>
 	<tools>
       <li>

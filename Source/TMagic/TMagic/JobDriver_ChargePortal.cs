@@ -2,6 +2,7 @@
 using Verse.AI;
 using System;
 using Verse;
+using RimWorld;
 
 
 namespace TorannMagic
@@ -18,6 +19,7 @@ namespace TorannMagic
         int effectsAge = 0;
         int ticksTillEffects = 12;
         int duration = 1000;
+        int xpNum = 0;
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
@@ -50,7 +52,7 @@ namespace TorannMagic
                     {
                         this.EndJobWith(JobCondition.Succeeded);
                     }
-                    if(comp.Mana.CurLevel < .01f)
+                    if (comp.Mana.CurLevel < .01f)
                     {
                         this.EndJobWith(JobCondition.Succeeded);
                     }
@@ -65,27 +67,36 @@ namespace TorannMagic
                     if (age > (chargeAge + ticksTillCharge))
                     {
                         comp.Mana.CurLevel -= .01f;
+                        xpNum += 3;
                         portalBldg.ArcaneEnergyCur += .01f;
                         chargeAge = age;
                     }
                     age++;
                     if (age > duration)
                     {
+                        AttributeXP(comp);
                         this.EndJobWith(JobCondition.Succeeded);
                     }
                     if (comp.Mana.CurLevel < .01f)
                     {
+                        AttributeXP(comp);
                         this.EndJobWith(JobCondition.Succeeded);
                     }
                     if (portalBldg.ArcaneEnergyCur >= 1f)
                     {
+                        AttributeXP(comp);
                         this.EndJobWith(JobCondition.Succeeded);
                     }
-                },
-                defaultCompleteMode = ToilCompleteMode.Never
+                },               
 
             };
             yield return chargePortal;
+        }
+
+        private void AttributeXP(CompAbilityUserMagic comp)
+        {
+            comp.MagicUserXP += xpNum;
+            MoteMaker.ThrowText(this.pawn.DrawPos, this.pawn.MapHeld, "XP +" + xpNum, -1f);
         }
     }
 }
