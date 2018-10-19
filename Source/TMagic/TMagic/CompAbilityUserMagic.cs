@@ -160,6 +160,7 @@ namespace TorannMagic
         private bool dismissMinionSpell = false;
         private bool dismissUndeadSpell = false;
         private bool dismissSunlightSpell = false;
+        private bool dispelStoneskin = false;
         public List<IntVec3> fertileLands = new List<IntVec3>();
 
         private Effecter powerEffecter = null;
@@ -1373,10 +1374,9 @@ namespace TorannMagic
                 {
                     if (Pawn.IsColonist)
                     {
-                        Messages.Message(Translator.Translate("TM_MagicLevelUp", new object[]
-                        {
+                        Messages.Message(TranslatorFormattedStringExtensions.Translate("TM_MagicLevelUp", 
                     this.parent.Label
-                        }), MessageTypeDefOf.PositiveEvent);
+                        ), MessageTypeDefOf.PositiveEvent);
                     }
                 }
             }
@@ -3963,11 +3963,10 @@ namespace TorannMagic
                         }
                         else
                         {
-                            MoteMaker.ThrowText(this.Pawn.DrawPos, this.Pawn.Map, "TM_DamageAbsorbed".Translate(new object[]
-                            {
+                            MoteMaker.ThrowText(this.Pawn.DrawPos, this.Pawn.Map, "TM_DamageAbsorbed".Translate(
                                 dmgAmt,
                                 mitigationAmt
-                            }), -1);
+                            ), -1);
                             actualDmg = dmgAmt - mitigationAmt;
                         }
                         this.damageMitigationDelay = this.age + 6;
@@ -5198,6 +5197,11 @@ namespace TorannMagic
         {
             if(this.stoneskinPawns.Count() > 0)
             {
+                if(!this.dispelStoneskin)
+                {
+                    this.dispelStoneskin = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_DispelStoneskin);
+                }
                 for(int i = 0; i < this.stoneskinPawns.Count(); i++)
                 {
                     if(this.stoneskinPawns[i].DestroyedOrNull() || this.stoneskinPawns[i].Dead)
@@ -5212,6 +5216,11 @@ namespace TorannMagic
                         }
                     }
                 }
+            }
+            else if(this.dispelStoneskin)
+            {
+                this.dispelStoneskin = false;
+                this.RemovePawnAbility(TorannMagicDefOf.TM_DispelStoneskin);
             }
 
             if (this.summonedLights.Count > 0 && dismissSunlightSpell == false)

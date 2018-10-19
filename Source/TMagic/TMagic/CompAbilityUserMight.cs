@@ -813,10 +813,9 @@ namespace TorannMagic
             bool flag = !hideNotification;
             if (flag)
             {
-                Messages.Message("TM_MightLevelUp".Translate(new object[]
-                {
+                Messages.Message("TM_MightLevelUp".Translate(
                     this.parent.Label
-                }), MessageTypeDefOf.PositiveEvent);
+                ), MessageTypeDefOf.PositiveEvent);
             }
         }
 
@@ -1451,6 +1450,10 @@ namespace TorannMagic
             {
                 MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_PsionicStorm.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicStorm_eff");
                 adjustedStaminaCost = mightDef.staminaCost - mightDef.staminaCost * (this.P_PsionicStorm_eff * (float)mightPowerSkill.level);
+            }
+            if (this.spCost != 1f)
+            {
+                adjustedStaminaCost = adjustedStaminaCost * this.spCost;
             }
 
             MightPowerSkill globalSkill = this.MightData.MightPowerSkill_global_seff.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_seff_pwr");

@@ -1810,17 +1810,15 @@ namespace TorannMagic
                         {
                             if (!pawn.CanReach(c, PathEndMode.ClosestTouch, Danger.Deadly, false, TraverseMode.ByPawn))
                             {
-                                opts.Add(new FloatMenuOption("TM_CannotDrop".Translate(new object[]
-                                {
+                                opts.Add(new FloatMenuOption("TM_CannotDrop".Translate(
                                     comp.enchantingContainer[0].Label
-                                }) + " (" + "NoPath".Translate() + ")", null, MenuOptionPriority.Default, null, null, 0f, null, null));
+                                ) + " (" + "NoPath".Translate() + ")", null, MenuOptionPriority.Default, null, null, 0f, null, null));
                             }
                             else
                             {
-                                opts.Add(FloatMenuUtility.DecoratePrioritizedTask(new FloatMenuOption("TM_DropGem".Translate(new object[]
-                                {
+                                opts.Add(FloatMenuUtility.DecoratePrioritizedTask(new FloatMenuOption("TM_DropGem".Translate(
                                 comp.enchantingContainer.ContentsString
-                                }), delegate
+                                ), delegate
                                 {
                                     Job job = new Job(TorannMagicDefOf.JobDriver_RemoveEnchantingGem, c);
                                     pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
@@ -1836,24 +1834,21 @@ namespace TorannMagic
                         {
                             if (!pawn.CanReach(t, PathEndMode.ClosestTouch, Danger.Deadly, false, TraverseMode.ByPawn))
                             {
-                                opts.Add(new FloatMenuOption("CannotPickUp".Translate(new object[]
-                                {
+                                opts.Add(new FloatMenuOption("CannotPickUp".Translate(
                                 t.Label
-                                }) + " (" + "NoPath".Translate() + ")", null, MenuOptionPriority.Default, null, null, 0f, null, null));
+                                ) + " (" + "NoPath".Translate() + ")", null, MenuOptionPriority.Default, null, null, 0f, null, null));
                             }
                             else if (MassUtility.WillBeOverEncumberedAfterPickingUp(pawn, t, 1))
                             {
-                                opts.Add(new FloatMenuOption("CannotPickUp".Translate(new object[]
-                                {
+                                opts.Add(new FloatMenuOption("CannotPickUp".Translate(
                                 t.Label
-                                }) + " (" + "TooHeavy".Translate() + ")", null, MenuOptionPriority.Default, null, null, 0f, null, null));
+                                ) + " (" + "TooHeavy".Translate() + ")", null, MenuOptionPriority.Default, null, null, 0f, null, null));
                             }
                             else// if (item.stackCount == 1)
                             {
-                                opts.Add(FloatMenuUtility.DecoratePrioritizedTask(new FloatMenuOption("TM_PickupGem".Translate(new object[]
-                                {
+                                opts.Add(FloatMenuUtility.DecoratePrioritizedTask(new FloatMenuOption("TM_PickupGem".Translate(
                                 t.Label
-                                }), delegate
+                                ), delegate
                                 {
                                     t.SetForbidden(false, false);
                                     Job job = new Job(TorannMagicDefOf.JobDriver_AddEnchantingGem, t);
@@ -1866,26 +1861,23 @@ namespace TorannMagic
                         {
                             if (!pawn.CanReach(t, PathEndMode.ClosestTouch, Danger.Deadly, false, TraverseMode.ByPawn))
                             {
-                                opts.Add(new FloatMenuOption("TM_CannotReach".Translate(new object[]
-                                {
+                                opts.Add(new FloatMenuOption("TM_CannotReach".Translate(
                                 t.Label
-                                }) + " (" + "NoPath".Translate() + ")", null, MenuOptionPriority.Default, null, null, 0f, null, null));
+                                ) + " (" + "NoPath".Translate() + ")", null, MenuOptionPriority.Default, null, null, 0f, null, null));
                             }
                             else if (pawnComp.Mana.CurLevel < .5f)
                             {
-                                opts.Add(new FloatMenuOption("TM_NeedManaForEnchant".Translate(new object[]
-                                {
+                                opts.Add(new FloatMenuOption("TM_NeedManaForEnchant".Translate(
                                 pawnComp.Mana.CurLevel.ToString("0.000")
-                                }), null, MenuOptionPriority.Default, null, null, 0f, null, null));
+                                ), null, MenuOptionPriority.Default, null, null, 0f, null, null));
                             }
                             else// if (item.stackCount == 1)
                             {
                                 if (current.stackCount == 1)
                                 {
-                                    opts.Add(FloatMenuUtility.DecoratePrioritizedTask(new FloatMenuOption("TM_EnchantItem".Translate(new object[]
-                                    {
+                                    opts.Add(FloatMenuUtility.DecoratePrioritizedTask(new FloatMenuOption("TM_EnchantItem".Translate(
                                         t.Label
-                                    }), delegate
+                                    ), delegate
                                     {
                                         t.SetForbidden(true, false);
                                         Job job = new Job(TorannMagicDefOf.JobDriver_EnchantItem, t);
@@ -1900,16 +1892,38 @@ namespace TorannMagic
             }
         }
 
+        [HarmonyPatch(typeof(PawnUtility), "IsTravelingInTransportPodWorldObject", null), HarmonyPriority(1000)]
+        public class IsTravelingInTransportPodWorldObject_ThirdAgeOverwrite_Patch
+        {
+            public static bool Prefix(Pawn pawn, ref bool __result)
+            {
+                if(pawn.IsColonist)
+                {
+                    __result = pawn.IsWorldPawn() && ThingOwnerUtility.AnyParentIs<ActiveDropPodInfo>(pawn);
+                    return false;
+                }
+                return true;
+            }
+        }
+
         [HarmonyPatch(typeof(PawnAbility), "PostAbilityAttempt", null)]
         public class PawnAbility_Patch
         {
             public static bool Prefix(PawnAbility __instance)
             {
                 CompAbilityUserMagic comp = __instance.Pawn.GetComp<CompAbilityUserMagic>();
-                __instance.CooldownTicksLeft = Mathf.RoundToInt((float)__instance.MaxCastingTicks * comp.coolDown);
-                if (!__instance.Pawn.IsColonist)
+                CompAbilityUserMight mightComp = __instance.Pawn.GetComp<CompAbilityUserMight>();
+                if (comp.IsMagicUser && !__instance.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                 {
-                    __instance.CooldownTicksLeft = (int)(__instance.CooldownTicksLeft / 2f);
+                    __instance.CooldownTicksLeft = Mathf.RoundToInt((float)__instance.MaxCastingTicks * comp.coolDown);
+                    if (!__instance.Pawn.IsColonist)
+                    {
+                        __instance.CooldownTicksLeft = (int)(__instance.CooldownTicksLeft / 2f);
+                    }
+                }
+                else if(mightComp.IsMightUser)
+                {
+                    __instance.CooldownTicksLeft = Mathf.RoundToInt((float)__instance.MaxCastingTicks * mightComp.coolDown);
                 }
                 return false;
             }
@@ -2423,15 +2437,15 @@ namespace TorannMagic
 
             private static Pawn GiverPawn(IBillGiver billGiver)
             {
-                Pawn pawn = billGiver.BillStack.billGiver as Pawn;
-                Corpse corpse = billGiver.BillStack.billGiver as Corpse;
-                if (corpse != null)
+                Pawn pawn = null;
+                if (billGiver is Corpse)
                 {
+                    Corpse corpse = billGiver as Corpse;
                     pawn = corpse.InnerPawn;
                 }
-                if (pawn == null)
+                if (billGiver is Pawn)
                 {
-                    throw new InvalidOperationException("Medical bill on non-pawn.");
+                    pawn = billGiver as Pawn;
                 }
                 return pawn;
             }
@@ -2441,16 +2455,16 @@ namespace TorannMagic
                 if (recipe == null || !recipe.IsSurgery)
                 {
                     return false;
-                }
-                Pawn giverPawn = GiverPawn(billGiver);
-                if (giverPawn.RaceProps.IsMechanoid)
-                {
-                    return false;
-                }
+                }                
                 if(recipe.defName != "Regrowth")
                 {
                     return false;
                 }
+                //Pawn giverPawn = GiverPawn(billGiver);
+                //if (giverPawn.RaceProps.IsMechanoid)
+                //{
+                //    return false;
+                //}
                 return !IsCapableDruid(pawn, recipe);
             }            
 

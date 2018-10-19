@@ -173,11 +173,10 @@ namespace TorannMagic
                         catch
                         {
                             this.age = this.duration;
-                            Log.Message("TM_Exception".Translate(new object[]
-                                {
+                            Log.Message("TM_Exception".Translate(
                                 this.casterPawn.LabelShort,
                                 this.def.defName
-                                }));
+                                ));
                             this.Destroy(DestroyMode.Vanish);
                         }
                         if (newPawn.Faction != null && newPawn.Faction != Faction.OfPlayer)

@@ -35,10 +35,9 @@ namespace TorannMagic
                 }
                 else
                 {
-                    Messages.Message("TM_NoSpawnSentinelOnBuilding".Translate(new object[]
-                        {
+                    Messages.Message("TM_NoSpawnSentinelOnBuilding".Translate(
                             caster.LabelShort
-                        }), MessageTypeDefOf.RejectInput, false);
+                        ), MessageTypeDefOf.RejectInput, false);
                 }
             }
             else
@@ -48,11 +47,10 @@ namespace TorannMagic
 
                 if (comp.summonedSentinels.Count > verVal + 1)
                 {
-                    Messages.Message("TM_TooManySentinels".Translate(new object[]
-                    {
+                    Messages.Message("TM_TooManySentinels".Translate(
                                 caster.LabelShort,
                                 verVal + 2
-                    }), MessageTypeDefOf.NeutralEvent);
+                    ), MessageTypeDefOf.NeutralEvent);
                     Thing tempThing = comp.summonedSentinels[0];
                     comp.summonedSentinels.Remove(tempThing);
                     if (tempThing != null && !tempThing.Destroyed)

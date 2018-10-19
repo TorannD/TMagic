@@ -300,7 +300,7 @@
         </capMods>
 		<statOffsets>
 		  <MeleeDodgeChance>-20</MeleeDodgeChance>
-		  <AimingDelayFactor>0.120</AimingDelayFactor>
+		  <AimingDelayFactor>1.20</AimingDelayFactor>
 	    </statOffsets>
       </li>  	  
     </stages>

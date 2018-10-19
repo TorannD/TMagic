@@ -10,7 +10,7 @@ namespace TorannMagic
     {
         bool flagSD = false;
         bool flagWD = false;
-        Pawn caster;
+        new Pawn caster;
         Pawn pawn;
         Pawn oldBondPawn;
         int verVal;
@@ -61,11 +61,10 @@ namespace TorannMagic
                 {
                     if (pawn.Faction != this.CasterPawn.Faction)
                     {
-                        Messages.Message("TM_CannotSoulBondUnwilling".Translate(new object[]
-                       {
+                        Messages.Message("TM_CannotSoulBondUnwilling".Translate(
                             caster.LabelShort,
                             pawn.LabelShort
-                       }), MessageTypeDefOf.RejectInput);
+                       ), MessageTypeDefOf.RejectInput);
                     }
                     else
                     {
@@ -87,19 +86,17 @@ namespace TorannMagic
                             {
                                 if (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_SoulBondPhysicalHD")) && flagSD)
                                 {
-                                    Messages.Message("TM_CannotSoulBondAnother".Translate(new object[]
-                                    {
+                                    Messages.Message("TM_CannotSoulBondAnother".Translate(
                                         caster.LabelShort,
                                         pawn.LabelShort
-                                    }), MessageTypeDefOf.RejectInput);
+                                    ), MessageTypeDefOf.RejectInput);
                                 }
                                 else if(pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_SoulBondMentalHD")) && flagWD)
                                 {
-                                    Messages.Message("TM_CannotSoulBondAnother".Translate(new object[]
-                                    {
+                                    Messages.Message("TM_CannotSoulBondAnother".Translate(
                                         caster.LabelShort,
                                         pawn.LabelShort
-                                    }), MessageTypeDefOf.RejectInput);
+                                    ), MessageTypeDefOf.RejectInput);
                                 }
                                 else
                                 {
@@ -123,18 +120,16 @@ namespace TorannMagic
                 else
                 {
                     
-                    Messages.Message("TM_CannotSoulBondUndead".Translate(new object[]
-                    {
+                    Messages.Message("TM_CannotSoulBondUndead".Translate(
                         caster.LabelShort
-                    }), MessageTypeDefOf.RejectInput);
+                    ), MessageTypeDefOf.RejectInput);
                 }
             }
             else
             {
-                Messages.Message("TM_CannotSoulBondThing".Translate(new object[]
-                    {
+                Messages.Message("TM_CannotSoulBondThing".Translate(
                         caster.LabelShort
-                    }), MessageTypeDefOf.RejectInput);
+                    ), MessageTypeDefOf.RejectInput);
             }
             return true;
         }

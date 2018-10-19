@@ -87,10 +87,9 @@ namespace TorannMagic
                                     }
                                     else
                                     {
-                                        Messages.Message("TM_SentinelCannotReturn".Translate(new object[]
-                                        {
+                                        Messages.Message("TM_SentinelCannotReturn".Translate(
                                         this.sustainerPawn.LabelShort
-                                        }), MessageTypeDefOf.RejectInput, false);
+                                        ), MessageTypeDefOf.RejectInput, false);
                                         this.Pawn.Destroy(DestroyMode.Vanish);
                                     }
 

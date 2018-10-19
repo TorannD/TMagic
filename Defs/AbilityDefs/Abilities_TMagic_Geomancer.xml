@@ -59,6 +59,40 @@ Applying stoneskin to a target that already has stoneskin will remove all charge
         </MainVerb>
     </TorannMagic.TMAbilityDef>
 	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_DispelStoneskin</defName>
+    <label>Dispel Stoneskin</label>
+    <uiIconPath>UI/dispelstoneskin</uiIconPath>
+    <description>Dispels all instances of stoneskin maintained by this pawn.</description>
+    <manaCost>0.0</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_DispelStoneskin</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>TM_Paladin_Heal</defaultProjectile>
+		<abilityDef>TM_DispelStoneskin</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>10</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>0</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+      	 <canTargetPawns>true</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>true</canTargetSelf>
+		 <canTargetLocations>false</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+	
 	<!-- Encase -->
 	
 	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">

@@ -71,13 +71,12 @@ namespace TorannMagic
                     {
                         rewards += component.rewards[i].LabelCap + "\n";
                     }
-                    Find.LetterStack.ReceiveLetter("LetterLabelArcaneScriptCaravan".Translate(), "LetterArcaneScriptCaravan".Translate(new object[]
-                    {
+                    Find.LetterStack.ReceiveLetter("LetterLabelArcaneScriptCaravan".Translate(), "LetterArcaneScriptCaravan".Translate(
                 settlement.Label,
                 GenLabel.ThingLabel(component.requestThingDef, null, component.requestCount).CapitalizeFirst(),
                 rewards,
                 (component.expiration - Find.TickManager.TicksGame).ToStringTicksToDays("F0")
-                    }), LetterDefOf.PositiveEvent, settlement, null);
+                    ), LetterDefOf.PositiveEvent, settlement, null);
                     return true;
                 }
             }

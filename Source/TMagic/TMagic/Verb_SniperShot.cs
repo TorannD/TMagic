@@ -50,10 +50,9 @@ namespace TorannMagic
             }
             else
             {
-                Messages.Message("MustHaveRangedWeapon".Translate(new object[]
-                {
+                Messages.Message("MustHaveRangedWeapon".Translate(
                     this.CasterPawn.LabelCap
-                }), MessageTypeDefOf.RejectInput);
+                ), MessageTypeDefOf.RejectInput);
                 return false;
             }
         }

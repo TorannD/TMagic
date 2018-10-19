@@ -104,11 +104,10 @@ namespace TorannMagic
                         }
                         catch
                         {
-                            Log.Message("TM_Exception".Translate(new object[]
-                                {
+                            Log.Message("TM_Exception".Translate(
                                 pawn.LabelShort,
                                 this.def.defName
-                                }));
+                                ));
                             this.Destroy(DestroyMode.Vanish);
                         }
                         if (newPawn.Faction != null && newPawn.Faction != Faction.OfPlayer)

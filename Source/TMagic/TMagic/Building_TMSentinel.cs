@@ -22,7 +22,7 @@ namespace TorannMagic
         TMPawnSummoned newPawn = new TMPawnSummoned();
         private int age = -1;
         private int pwrVal = 0;
-        private int threatRange = 40;
+        private int threatRange = 35;
 
         public override void ExposeData()
         {

@@ -105,8 +105,7 @@ namespace TorannMagic
                 }
                 summonablePawn = (FlyingObject)GenSpawn.Spawn(ThingDef.Named("TM_SummonedPawn"), summonableThing.Position, summonableThing.Map);
             }
-
-            bool result = false;
+            bool result;
             bool arg_40_0;
             if (this.currentTarget != null && base.caster != null)
             {

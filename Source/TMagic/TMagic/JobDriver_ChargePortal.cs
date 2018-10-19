@@ -31,7 +31,7 @@ namespace TorannMagic
             this.FailOnDestroyedOrNull(building);
             Toil reserveTargetA = Toils_Reserve.Reserve(building);
             yield return reserveTargetA;
-            comp = pawn.GetComp<CompAbilityUserMagic>();
+            comp = this.pawn.GetComp<CompAbilityUserMagic>();
             portalBldg = TargetA.Thing as Building_TMPortal;
 
             Toil gotoPortal = new Toil()
@@ -61,6 +61,7 @@ namespace TorannMagic
                 {
                     if (age > (effectsAge + ticksTillEffects))
                     {
+                        this.effectsAge = this.age;
                         TM_MoteMaker.ThrowCastingMote(pawn.DrawPos, pawn.Map, Rand.Range(1.2f, 2f));
                         TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Shadow, pawn.DrawPos, pawn.Map, Rand.Range(.4f, .6f), Rand.Range(.1f, .2f), .04f, Rand.Range(.1f, .2f), 300, 5f, Rand.Range(-10, 10), 0);
                     }
@@ -87,8 +88,8 @@ namespace TorannMagic
                         AttributeXP(comp);
                         this.EndJobWith(JobCondition.Succeeded);
                     }
-                },               
-
+                },
+                defaultCompleteMode = ToilCompleteMode.Never
             };
             yield return chargePortal;
         }

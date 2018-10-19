@@ -96,6 +96,10 @@ namespace TorannMagic
                         student.jobs.TryTakeOrderedJob(job, JobTag.Misc);
                     }
                 }
+                if(student.Drafted && student.CurJobDef != JobDefOf.Wait_Combat)
+                {
+                    this.EndJobWith(JobCondition.InterruptForced);
+                }
                 age++;
                 ticksLeftThisToil = duration - age;
                 if (age > duration)

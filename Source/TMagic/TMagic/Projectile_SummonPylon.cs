@@ -111,11 +111,10 @@ namespace TorannMagic
                     {
                         comp.Mana.CurLevel += comp.ActualManaCost(TorannMagicDefOf.TM_SummonPylon);
                         this.age = this.duration;
-                        Log.Message("TM_Exception".Translate(new object[]
-                            {
+                        Log.Message("TM_Exception".Translate(
                                 pawn.LabelShort,
                                 this.def.defName
-                            }));
+                            ));
                     }                 
 
                     this.primed = true;

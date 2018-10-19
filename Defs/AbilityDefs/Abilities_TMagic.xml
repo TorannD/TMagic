@@ -219,7 +219,7 @@ Pain:		-40%</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>true</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>6</maxTargets>
+                <maxTargets>10</maxTargets>
                 <range>15</range>
             </TargetAoEProperties>
             <isPrimary>false</isPrimary>

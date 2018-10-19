@@ -165,9 +165,8 @@ namespace TorannMagic
                     //    }
                     //}
 
-                    msg = "PortalCollapseIn".Translate(new object[]
-                        { ((destructTimer - this.age) / 60).ToString()
-                        });
+                    msg = "PortalCollapseIn".Translate( ((destructTimer - this.age) / 60).ToString()
+                        );
                     Messages.Message(msg, MessageTypeDefOf.NeutralEvent);
                     this.primed = false;
                 }
@@ -190,25 +189,25 @@ namespace TorannMagic
             {
                 if (this.age == (destructTimer * 0.5))
                 {
-                    msg = "PortalCollapseIn".Translate(new object[]
-                        { ((destructTimer - this.age) / 60).ToString()
-                        });
+                    msg = "PortalCollapseIn".Translate( 
+                        ((destructTimer - this.age) / 60).ToString()
+                        );
                     Messages.Message(msg, MessageTypeDefOf.NeutralEvent);
                 }
                 if (this.age == (destructTimer * 0.75))
                 {
-                    msg = "PortalCollapseIn".Translate(new object[]
-                        { ((destructTimer - this.age) / 60).ToString()
-                        });
+                    msg = "PortalCollapseIn".Translate(
+                        ((destructTimer - this.age) / 60).ToString()
+                        );
                     Messages.Message(msg, MessageTypeDefOf.NeutralEvent);
                 }
                 if (this.age == (destructTimer * 0.95))
                 {
                     //msg = "Portal collapses in " + ((destructTimer - this.age) / 60) + " seconds!!";
                     //Messages.Message(msg, MessageTypeDefOf.ThreatBig);
-                    msg = "PortalCollapseIn".Translate(new object[]
-                        { ((destructTimer - this.age) / 60).ToString()
-                        });
+                    msg = "PortalCollapseIn".Translate(
+                        ((destructTimer - this.age) / 60).ToString()
+                        );
                     Messages.Message(msg, MessageTypeDefOf.NeutralEvent);
                 }
             }

@@ -106,10 +106,9 @@ namespace TorannMagic
                 }
                 catch
                 {
-                    Log.Message("TM_ExceptionTick".Translate(new object[]
-                    {
+                    Log.Message("TM_ExceptionTick".Translate(
                         this.def.defName
-                    }));
+                    ));
                     this.Destroy(DestroyMode.Vanish);
                 }
             }
@@ -188,10 +187,9 @@ namespace TorannMagic
                 }
                 catch
                 {
-                    Log.Message("TM_ExceptionClose".Translate(new object[]
-                    {
+                    Log.Message("TM_ExceptionClose".Translate(
                             this.def.defName
-                    }));
+                    ));
                 }
             }
         }

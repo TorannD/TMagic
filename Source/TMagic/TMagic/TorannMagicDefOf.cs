@@ -365,6 +365,7 @@ namespace TorannMagic
 
         public static TMAbilityDef TM_Stoneskin;
         public static HediffDef TM_StoneskinHD;
+        public static TMAbilityDef TM_DispelStoneskin;
         public static TMAbilityDef TM_Encase;
         public static TMAbilityDef TM_Encase_I;
         public static TMAbilityDef TM_Encase_II;

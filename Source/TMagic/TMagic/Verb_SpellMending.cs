@@ -49,11 +49,10 @@ namespace TorannMagic
             }
             else
             {
-                Messages.Message("TM_InvalidTarget".Translate(new object[]
-                {
+                Messages.Message("TM_InvalidTarget".Translate(
                     this.CasterPawn.LabelShort,
                     this.Ability.Def.label
-                }), MessageTypeDefOf.RejectInput);
+                ), MessageTypeDefOf.RejectInput);
             }
             this.PostCastShot(flag, out flag);
             return flag;

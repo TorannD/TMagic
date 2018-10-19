@@ -156,10 +156,9 @@ namespace TorannMagic
                             if (!dismissMinion.Destroyed)
                             {
                                 dismissMinion.Destroy();
-                                Messages.Message("TM_SummonedCreatureLimitExceeded".Translate(new object[]
-                                {
+                                Messages.Message("TM_SummonedCreatureLimitExceeded".Translate(
                                     this.launcher.LabelShort
-                                }), MessageTypeDefOf.NeutralEvent);
+                                ), MessageTypeDefOf.NeutralEvent);
                             }
                             if (comp.summonedMinions.Count > 4)
                             {
@@ -183,11 +182,10 @@ namespace TorannMagic
                         {
                             this.age = this.duration;
                             comp.Mana.CurLevel += comp.ActualManaCost(TorannMagicDefOf.TM_SummonMinion);
-                            Log.Message("TM_Exception".Translate(new object[]
-                                {
+                            Log.Message("TM_Exception".Translate(
                                 pawn.LabelShort,
                                 this.def.defName
-                                }));
+                                ));
                             this.Destroy(DestroyMode.Vanish);
                         }
                         

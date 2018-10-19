@@ -213,7 +213,6 @@ namespace TorannMagic
                 bool flag2 = dinfo.Instigator != null;
                 if (flag2)
                 {
-                    float num = 4f;
                     int num2 = Mathf.RoundToInt(dinfo.Amount);
                     bool flag3 = pawn != null && base.Position != default(IntVec3);
                     if (flag3)

@@ -144,6 +144,7 @@
     <Compile Include="Projectile_PsychicShock.cs" />
     <Compile Include="Thoughts\Inspiration_MightUser.cs" />
     <Compile Include="Thoughts\InteractionWorker_MightLore.cs" />
+    <Compile Include="Verb_DispelStoneskin.cs" />
     <Compile Include="Verb_Dominate.cs" />
     <Compile Include="Verb_DismissEarthSprites.cs" />
     <Compile Include="Verb_Teach.cs" />

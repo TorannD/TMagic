@@ -165,10 +165,9 @@ namespace TorannMagic
                         {
                             if (this.parent != null && !this.parent.Destroyed)
                             {
-                                Messages.Message("TM_SunlightCollapse".Translate(new object[]
-                                {
+                                Messages.Message("TM_SunlightCollapse".Translate(
                                     this.spawner.LabelShort
-                                }), MessageTypeDefOf.NeutralEvent);
+                                ), MessageTypeDefOf.NeutralEvent);
                                 this.parent.Destroy();                                
                             }
                         }
@@ -210,10 +209,9 @@ namespace TorannMagic
             }
             catch
             {
-                Log.Message("TM_ExceptionClose".Translate(new object[]
-                {
+                Log.Message("TM_ExceptionClose".Translate(
                             this.parent.def.defName
-                }));
+                ));
             }
         }
 

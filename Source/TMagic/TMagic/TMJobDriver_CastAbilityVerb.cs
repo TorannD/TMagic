@@ -220,10 +220,9 @@ namespace TorannMagic
                             //No LoS
                             if (pawn.IsColonist)
                             {
-                                Messages.Message("TM_OutOfLOS".Translate(new object[]
-                                {
+                                Messages.Message("TM_OutOfLOS".Translate(
                                     pawn.LabelShort
-                                }), MessageTypeDefOf.RejectInput);
+                                ), MessageTypeDefOf.RejectInput);
                             }
                             pawn.ClearAllReservations(false);
                         }

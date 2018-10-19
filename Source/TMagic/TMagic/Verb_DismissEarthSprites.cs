@@ -26,10 +26,9 @@ namespace TorannMagic
                 }
                 else
                 {
-                    Messages.Message("TM_NoSpritesToDismiss".Translate(new object[]
-                        {
+                    Messages.Message("TM_NoSpritesToDismiss".Translate(
                             this.CasterPawn.LabelShort
-                        }), MessageTypeDefOf.RejectInput);
+                        ), MessageTypeDefOf.RejectInput);
                 }
             }
 

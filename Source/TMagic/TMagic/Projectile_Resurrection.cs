@@ -154,10 +154,9 @@ namespace TorannMagic
             }
             else
             {
-                Messages.Message("TM_InvalidResurrection".Translate(new object[]
-                {
+                Messages.Message("TM_InvalidResurrection".Translate(
                     caster.LabelShort
-                }), MessageTypeDefOf.RejectInput);
+                ), MessageTypeDefOf.RejectInput);
                 this.age = this.timeToRaise;
             }
             this.age++;

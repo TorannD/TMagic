@@ -93,80 +93,71 @@ namespace TorannMagic
                     num = this.MagicUser.ActualManaCost(magicDef);
                     MagicPowerSkill mps2 = this.MagicUser.MagicData.MagicPowerSkill_Teleport.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Teleport_ver");
                     MagicPowerSkill mps1 = this.MagicUser.MagicData.MagicPowerSkill_Teleport.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Teleport_pwr");
-                    num2 = 60 + (mps1.level * 15) + (mps2.level * 15);
-                    text2 = "TM_AbilityDescPortalTime".Translate(new object[]
-                    {
+                    num2 = 80 + (mps1.level * 20) + (mps2.level * 20);
+                    text2 = "TM_AbilityDescPortalTime".Translate(
                         num2.ToString()
-                    });
+                    );
                 }
                 else if (magicAbilityDef == TorannMagicDefOf.TM_SummonMinion)
                 {
                     num = this.MagicUser.ActualManaCost(magicDef);
                     MagicPowerSkill mps1 = this.MagicUser.MagicData.MagicPowerSkill_SummonMinion.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonMinion_ver");
-                    num2 = 600 + (300 * mps1.level);
-                    text2 = "TM_AbilityDescSummonDuration".Translate(new object[]
-                    {
+                    num2 = 1200 + (600 * mps1.level);
+                    text2 = "TM_AbilityDescSummonDuration".Translate(
                         num2.ToString()
-                    });
+                    );
                 }
                 else if (magicAbilityDef == TorannMagicDefOf.TM_SummonPylon)
                 {
                     num = this.MagicUser.ActualManaCost(magicDef);
                     MagicPowerSkill mps1 = this.MagicUser.MagicData.MagicPowerSkill_SummonPylon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonPylon_ver");
-                    num2 = 120 + (60 * mps1.level);
-                    text2 = "TM_AbilityDescSummonDuration".Translate(new object[]
-                    {
+                    num2 = 240 + (120 * mps1.level);
+                    text2 = "TM_AbilityDescSummonDuration".Translate(
                         num2.ToString()
-                    });
+                    );
                 }
                 else if (magicAbilityDef == TorannMagicDefOf.TM_SummonExplosive)
                 {
                     num = this.MagicUser.ActualManaCost(magicDef);
                     MagicPowerSkill mps1 = this.MagicUser.MagicData.MagicPowerSkill_SummonExplosive.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonExplosive_ver");
-                    num2 = 120 + (60 * mps1.level);
-                    text2 = "TM_AbilityDescSummonDuration".Translate(new object[]
-                    {
+                    num2 = 240 + (120 * mps1.level);
+                    text2 = "TM_AbilityDescSummonDuration".Translate(
                         num2.ToString()
-                    });
+                    );
                 }
                 else if (magicAbilityDef == TorannMagicDefOf.TM_SummonElemental)
                 {
                     num = this.MagicUser.ActualManaCost(magicDef);
                     MagicPowerSkill mps1 = this.MagicUser.MagicData.MagicPowerSkill_SummonElemental.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonElemental_ver");
                     num2 = 30 + (15 * mps1.level);
-                    text2 = "TM_AbilityDescSummonDuration".Translate(new object[]
-                    {
+                    text2 = "TM_AbilityDescSummonDuration".Translate(
                         num2.ToString()
-                    });
+                    );
                 }
                 else if (magicAbilityDef == TorannMagicDefOf.TM_PsychicShock)
                 {
                     num = this.MagicUser.ActualManaCost(magicDef);
                     num2 = this.MagicUser.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false);
-                    text3 = "TM_PsychicSensitivity".Translate(new object[]
-                    {
+                    text3 = "TM_PsychicSensitivity".Translate(
                         num2.ToString()
-                    });
+                    );
                 }
                 else
                 {
                     num = this.MagicUser.ActualManaCost(magicDef);
                 }
 
-                text = "TM_AbilityDescBaseManaCost".Translate(new object[]
-                {
+                text = "TM_AbilityDescBaseManaCost".Translate(
                     magicAbilityDef.manaCost.ToString("p1")
-                }) + "\n" + "TM_AbilityDescAdjustedManaCost".Translate(new object[]
-                {
+                ) + "\n" + "TM_AbilityDescAdjustedManaCost".Translate(
                     num.ToString("p1")
-                });
+                );
 
                 if(this.MagicUser.coolDown != 1f)
                 {
-                    text3 = "TM_AdjustedCooldown".Translate(new object[]
-                    {
+                    text3 = "TM_AdjustedCooldown".Translate(
                         ((this.MaxCastingTicks * this.MagicUser.coolDown)/60).ToString("0.00")
-                    });
+                    );
                 }
 
                 bool flag2 = text != "";
@@ -206,10 +197,9 @@ namespace TorannMagic
                         bool flag5 = magicDef.manaCost > 0f && this.ActualManaCost > this.MagicUser.Mana.CurLevel;
                         if (flag5)
                         {
-                            reason = "TM_NotEnoughMana".Translate(new object[]
-                            {
+                            reason = "TM_NotEnoughMana".Translate(
                                 base.Pawn.LabelShort
-                            });
+                            );
                             result = false;
                             return result;
                         }
@@ -227,11 +217,10 @@ namespace TorannMagic
                         this.magicDef.defName.Contains("TM_ShadowBolt") ||
                         this.magicDef.defName == "TM_Poison" ) )
                     {
-                        reason = "TM_ShieldBlockingPowers".Translate(new object[]
-                        {
+                        reason = "TM_ShieldBlockingPowers".Translate(
                             base.Pawn.Label,
                             wornApparel[i].Label
-                        });
+                        );
                         return false;
                     }
                 }

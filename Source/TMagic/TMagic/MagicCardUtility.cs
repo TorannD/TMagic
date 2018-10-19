@@ -273,10 +273,9 @@ namespace TorannMagic
             if(!godMode)
             {
                 Rect rect6 = new Rect(rect4.xMax + 10f, rect.yMax, inRect.width + 100f, MagicCardUtility.TextSize);
-                Widgets.Label(rect6, "TM_LastManaGainPct".Translate(new object[]
-                    {
+                Widgets.Label(rect6, "TM_LastManaGainPct".Translate(
                     (compMagic.Mana.lastGainPct * 200).ToString("0.000")
-                    }));
+                    ));
                 string str1 = "Base mana gain: " + (200 * compMagic.Mana.baseManaGain).ToString("0.000") + "\nMana surge: " + (200 * compMagic.Mana.drainManaSurge).ToString("0.000");
                 TooltipHandler.TipRegion(rect6, () => string.Concat(new string[]
                         {
@@ -642,10 +641,9 @@ namespace TorannMagic
                             (power.abilityDef.defName == "TM_Resurrection" && MagicPowerSkill5 == null))
                         {
                             Rect rectMasterLock = new Rect(rect.xMax - 23f - "TM_MasterSpellLocked".Translate().Length * 4, rect.yMin + MagicCardUtility.MagicButtonSize + 4f, "TM_MasterSpellLocked".Translate().Length * 8, MagicCardUtility.TextSize * 3);
-                            Widgets.Label(rectMasterLock, "TM_MasterSpellLocked".Translate(new object[]
-                                {
+                            Widgets.Label(rectMasterLock, "TM_MasterSpellLocked".Translate(
                                         power.abilityDef.LabelCap
-                                }));
+                                ));
                         }
                     }
 
@@ -715,10 +713,9 @@ namespace TorannMagic
                             bool flag17 = compMagic.AbilityUser.story != null && compMagic.AbilityUser.story.WorkTagIsDisabled(WorkTags.Violent) && power.abilityDef.MainVerb.isViolent;
                             if (flag17)
                             {
-                                Messages.Message("IsIncapableOfViolenceLower".Translate(new object[]
-                                {
+                                Messages.Message("IsIncapableOfViolenceLower".Translate(
                             compMagic.parent.LabelShort
-                                }), MessageTypeDefOf.RejectInput);
+                                ), MessageTypeDefOf.RejectInput);
                                 break;
                             }
                             if (enumerator.Current.abilityDef.defName == "TM_RayofHope" || enumerator.Current.abilityDef.defName == "TM_RayofHope_I" || enumerator.Current.abilityDef.defName == "TM_RayofHope_II" || enumerator.Current.abilityDef.defName == "TM_RayofHope_III")

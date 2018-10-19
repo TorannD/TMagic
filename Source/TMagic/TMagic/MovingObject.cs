@@ -178,7 +178,6 @@ namespace TorannMagic
                 bool flag2 = dinfo.Instigator != null;
                 if (flag2)
                 {
-                    float num = 4f;
                     float num2 = dinfo.Amount;
                     bool flag3 = caster != null && caster.PositionHeld != default(IntVec3) && !caster.Downed;
                     if (flag3)

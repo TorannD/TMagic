@@ -37,18 +37,16 @@ namespace TorannMagic
                 }
                 else
                 {
-                    Log.Message("TM_ItemUseFailed".Translate(new object[]
-                    {
+                    Log.Message("TM_ItemUseFailed".Translate(
                         "Unrecognized Gemstone of Insight"
-                    }));
+                    ));
                 }                
             }
             else
             {
-                Messages.Message("TM_CannotUseGemOfInsight".Translate(new object[]
-                    {
+                Messages.Message("TM_CannotUseGemOfInsight".Translate(
                     user.LabelShort
-                    }), MessageTypeDefOf.RejectInput);
+                    ), MessageTypeDefOf.RejectInput);
             }
         }
 

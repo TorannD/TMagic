@@ -145,10 +145,9 @@ namespace TorannMagic
             if (!godMode)
             {
                 Rect rect6 = new Rect(rect4.xMax + 10f, rect.yMax, inRect.width + 100f, MagicCardUtility.TextSize);
-                Widgets.Label(rect6, "TM_LastStaminaGainPct".Translate(new object[]
-                    {
+                Widgets.Label(rect6, "TM_LastStaminaGainPct".Translate(
                     (compMight.Stamina.lastGainPct * 200).ToString("0.000")
-                    }));
+                    ));
                 //string str1 = "Base gain: " + (200 * compMagic.Mana.baseManaGain).ToString("0.000") + "\nMana surge: " + (200 * compMagic.Mana.drainManaSurge).ToString("0.000");
                 //TooltipHandler.TipRegion(rect6, () => string.Concat(new string[]
                 //        {
@@ -373,8 +372,8 @@ namespace TorannMagic
                             power.abilityDescDef.description,
                             "\n\nNext Level:\n",
                             power.nextLevelAbilityDescDef.description,
-                            "\n\n",
-                            MightAbility.PostAbilityDesc((TMAbilityDef)power.abilityDef, compMight),
+                            "\n\n",                            
+                            MightAbility.PostAbilityDesc((TMAbilityDef)power.abilityDef, compMight, 0),
                             "\n",
                             "TM_CheckPointsForMoreInfo".Translate()
                        }), 398462);
@@ -389,7 +388,7 @@ namespace TorannMagic
                             "\n\nNext Level:\n",
                             power.nextLevelAbilityDescDef.description,
                             "\n\n",
-                            MightAbility.PostAbilityDesc((TMAbilityDef)power.abilityDef, compMight),
+                            MightAbility.PostAbilityDesc((TMAbilityDef)power.abilityDef, compMight, 0),
                             "\n",
                             "TM_CheckPointsForMoreInfo".Translate()
                        }), 398462);
@@ -402,7 +401,7 @@ namespace TorannMagic
                             "\n\n",
                             power.abilityDescDef.description,
                             "\n\n",
-                            MightAbility.PostAbilityDesc((TMAbilityDef)power.abilityDef, compMight),
+                            MightAbility.PostAbilityDesc((TMAbilityDef)power.abilityDef, compMight, 0),
                             "\n",
                             "TM_CheckPointsForMoreInfo".Translate()
                             }), 398462);
@@ -556,10 +555,9 @@ namespace TorannMagic
                             bool flag17 = compMight.AbilityUser.story != null && compMight.AbilityUser.story.WorkTagIsDisabled(WorkTags.Violent) && power.abilityDef.MainVerb.isViolent;
                             if (flag17)
                             {
-                                Messages.Message("IsIncapableOfViolenceLower".Translate(new object[]
-                                {
+                                Messages.Message("IsIncapableOfViolenceLower".Translate(
                                             compMight.parent.LabelShort
-                                }), MessageTypeDefOf.RejectInput);
+                                ), MessageTypeDefOf.RejectInput);
                                 break;
                             }
                             if (enumerator.Current.abilityDef.defName == "TM_Sprint" || enumerator.Current.abilityDef.defName == "TM_Sprint_I" || enumerator.Current.abilityDef.defName == "TM_Sprint_II" || enumerator.Current.abilityDef.defName == "TM_Sprint_III")

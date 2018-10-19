@@ -153,22 +153,20 @@ namespace TorannMagic
                     }
                     else
                     {
-                        Messages.Message("TM_CannotPossessNow".Translate(new object[]
-                            {
+                        Messages.Message("TM_CannotPossessNow".Translate(
                                 caster.LabelShort,
                                 hitPawn.LabelShort
-                            }), MessageTypeDefOf.RejectInput);
+                            ), MessageTypeDefOf.RejectInput);
                         this.age = this.duration;
                         this.Destroy(DestroyMode.Vanish);
                     }
                 }
                 else
                 {
-                    Messages.Message("TM_CannotPossess".Translate(new object[]
-                            {
+                    Messages.Message("TM_CannotPossess".Translate(
                                 caster.LabelShort,
                                 hitThing.LabelShort
-                            }), MessageTypeDefOf.RejectInput);
+                            ), MessageTypeDefOf.RejectInput);
                     this.age = this.duration;                    
                     this.Destroy(DestroyMode.Vanish);
                 }
@@ -219,11 +217,10 @@ namespace TorannMagic
                         if (tempInvCount < this.inventoryCount && !pFaction.HostileTo(caster.Faction) && pFaction != this.caster.Faction)
                         {
                             pFaction.TrySetRelationKind(this.caster.Faction, FactionRelationKind.Hostile, true, null);
-                            Find.LetterStack.ReceiveLetter("LetterLabelPossessedCaughtStealing".Translate(), "TM_PossessedCaughtStealing".Translate(new object[]
-                                {
+                            Find.LetterStack.ReceiveLetter("LetterLabelPossessedCaughtStealing".Translate(), "TM_PossessedCaughtStealing".Translate(
                                 hitPawn.Faction,
                                 hitPawn.LabelShort
-                                }), LetterDefOf.NegativeEvent, null);
+                                ), LetterDefOf.NegativeEvent, null);
                         }
                         if (hitPawn.IsColonist)
                         {

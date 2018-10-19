@@ -157,10 +157,9 @@ namespace TorannMagic.Enchantment
         {
             get
             {
-                return "TM_MaxMPLabel".Translate(new object[]
-                {
+                return "TM_MaxMPLabel".Translate(
                     this.maxMP * 100
-                });
+                );
             }
         }
 
@@ -168,10 +167,9 @@ namespace TorannMagic.Enchantment
         {
             get
             {
-                return "TM_MPRegenRateLabel".Translate(new object[]
-                {
+                return "TM_MPRegenRateLabel".Translate(
                     this.mpRegenRate * 100
-                });
+                );
             }
         }
 
@@ -179,10 +177,9 @@ namespace TorannMagic.Enchantment
         {
             get
             {
-                return "TM_CoolDownLabel".Translate(new object[]
-                {
+                return "TM_CoolDownLabel".Translate(
                     this.coolDown * 100
-                });
+                );
             }
         }
 
@@ -190,10 +187,9 @@ namespace TorannMagic.Enchantment
         {
             get
             {
-                return "TM_MPCostLabel".Translate(new object[]
-                {
+                return "TM_MPCostLabel".Translate(
                     this.mpCost * 100
-                });
+                );
             }
         }
 
@@ -201,10 +197,9 @@ namespace TorannMagic.Enchantment
         {
             get
             {
-                return "TM_XPGainLabel".Translate(new object[]
-                {
+                return "TM_XPGainLabel".Translate(
                     this.xpGain * 100
-                });
+                );
             }
         }
 
@@ -212,10 +207,9 @@ namespace TorannMagic.Enchantment
         {
             get
             {
-                return "TM_ArcaneResLabel".Translate(new object[]
-                {
+                return "TM_ArcaneResLabel".Translate(
                     this.arcaneRes * 100
-                });
+                );
             }
         }
 
@@ -223,10 +217,9 @@ namespace TorannMagic.Enchantment
         {
             get
             {
-                return "TM_ArcaneDmgLabel".Translate(new object[]
-                {
+                return "TM_ArcaneDmgLabel".Translate(
                     this.arcaneDmg * 100
-                });
+                );
             }
         }
 

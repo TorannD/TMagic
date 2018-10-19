@@ -120,10 +120,9 @@ namespace TorannMagic
                     }
                     else
                     {
-                        Messages.Message("TM_NotSocialCapable".Translate(new object[]
-                        {
+                        Messages.Message("TM_NotSocialCapable".Translate(
                             user.LabelShort
-                        }), MessageTypeDefOf.RejectInput);
+                        ), MessageTypeDefOf.RejectInput);
                     }
 
                 }
@@ -359,10 +358,9 @@ namespace TorannMagic
             }
             else
             {
-                Messages.Message("NotGiftedPawn".Translate(new object[]
-                    {
+                Messages.Message("NotGiftedPawn".Translate(
                         user.LabelShort
-                    }), MessageTypeDefOf.RejectInput);
+                    ), MessageTypeDefOf.RejectInput);
             }
 
 		}

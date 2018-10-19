@@ -56,11 +56,10 @@ namespace TorannMagic
                         }
                         if (comp.combatItems.Count > verVal+1)
                         {
-                            Messages.Message("TM_TooManyTraps".Translate(new object[]
-                            {
+                            Messages.Message("TM_TooManyTraps".Translate(
                                 pawn.LabelShort,
                                 ver.level + 2
-                            }), MessageTypeDefOf.NeutralEvent);
+                            ), MessageTypeDefOf.NeutralEvent);
                             Thing tempThing = comp.combatItems[0];
                             comp.combatItems.Remove(tempThing);
                             if (tempThing != null && !tempThing.Destroyed)

@@ -697,10 +697,9 @@ namespace TorannMagic
                         else
                         {
                             //invalid target
-                            Messages.Message("TM_MimicFailed".Translate(new object[]
-                                {
+                            Messages.Message("TM_MimicFailed".Translate(
                                     this.CasterPawn.LabelShort
-                                }), MessageTypeDefOf.RejectInput);
+                                ), MessageTypeDefOf.RejectInput);
 
                         }
                     }
@@ -884,10 +883,9 @@ namespace TorannMagic
                         else
                         {
                             //invalid target
-                            Messages.Message("TM_MimicFailed".Translate(new object[]
-                                {
+                            Messages.Message("TM_MimicFailed".Translate(
                                     this.CasterPawn.LabelShort
-                                }), MessageTypeDefOf.RejectInput);
+                                ), MessageTypeDefOf.RejectInput);
                         }
                     }
                 }

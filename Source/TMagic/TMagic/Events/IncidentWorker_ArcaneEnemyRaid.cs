@@ -29,7 +29,7 @@ namespace TorannMagic
                 {
                     result = base.TryExecuteWorker(parms);
                 }
-                catch (NullReferenceException var_2_65)
+                catch (NullReferenceException ex)
                 {
                     result = false;
                 }

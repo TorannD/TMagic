@@ -27,21 +27,19 @@ namespace TorannMagic
                 {                   
                     if (this.CasterPawn.IsColonist)
                     {
-                        Messages.Message("MustHaveBow".Translate(new object[]
-                        {
+                        Messages.Message("MustHaveBow".Translate(
                         this.CasterPawn.LabelShort,
                         wpn.LabelShort
-                        }), MessageTypeDefOf.NegativeEvent);
+                        ), MessageTypeDefOf.NegativeEvent);
                     }
                     return false;
                 }                
             }
             else
             {
-                Messages.Message("MustHaveRangedWeapon".Translate(new object[]
-                {
+                Messages.Message("MustHaveRangedWeapon".Translate(
                     this.CasterPawn.LabelCap
-                }), MessageTypeDefOf.RejectInput);
+                ), MessageTypeDefOf.RejectInput);
                 return false;
             }
         }

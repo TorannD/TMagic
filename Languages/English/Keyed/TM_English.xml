@@ -348,11 +348,11 @@ Level 3: summons two greater minions.</TM_SummonMinion_pwr_desc>
 <TM_SummonMinion_ver_desc>Increases the duration of the summoning by 10m per skill point.  Base duration is 20m.</TM_SummonMinion_ver_desc>
 <TM_SummonPylon_eff_desc>Decreases mana cost to summon a defensive pylon by 8% of base mana cost.</TM_SummonPylon_eff_desc>
 <TM_SummonPylon_pwr_desc>Increases the range and power of the defensive pylon created.</TM_SummonPylon_pwr_desc>
-<TM_SummonPylon_ver_desc>Increases the duration of the summoning by 2m per skill point.  Base duration is 4m.</TM_SummonPylon_ver_desc>
+<TM_SummonPylon_ver_desc>Increases the duration of the summoning by 2m per skill point. Base duration is 4m.</TM_SummonPylon_ver_desc>
 <TM_SummonExplosive_eff_desc>Decreases mana cost to create a mana mine by 8% of per skill level.</TM_SummonExplosive_eff_desc>
 <TM_SummonExplosive_pwr_desc>Increases the power of the mine by 20% per skill level.
 Increases explosion radius by 20% per skill level.</TM_SummonExplosive_pwr_desc>
-<TM_SummonExplosive_ver_desc>Increases the duration the mana mine remains stable by 2m per skill point.  Base duration is 4m. Mana mine will harmlessly dissolve if the timer expires.</TM_SummonExplosive_ver_desc>
+<TM_SummonExplosive_ver_desc>Increases the duration the mana mine remains stable by 2m per skill point. Base duration is 4m. Mana mine will harmlessly dissolve if the timer expires.</TM_SummonExplosive_ver_desc>
 <TM_SummonElemental_eff_desc>Decreases mana cost to summon an elemental by 6% of base mana cost.</TM_SummonElemental_eff_desc>
 <TM_SummonElemental_pwr_desc>Increases the power of the elemental summoned.
 At rank 3: summons two lesser elementals to accompany your primary summon.</TM_SummonElemental_pwr_desc>

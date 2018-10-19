@@ -48,11 +48,10 @@ namespace TorannMagic
                 if (animal == comp.bondedPet)
                 {
                     comp.bondedPet = null;
-                    Messages.Message("TM_BondedAnimalRelease".Translate(new object[]
-                                        {
+                    Messages.Message("TM_BondedAnimalRelease".Translate(
                                             oldbond.LabelShort,
                                             pawn.LabelShort
-                                        }), MessageTypeDefOf.NeutralEvent);
+                                        ), MessageTypeDefOf.NeutralEvent);
                     MoteMaker.ThrowSmoke(oldbond.DrawPos, oldbond.Map, 3f);
                     oldbond.Destroy();
                 }
@@ -72,11 +71,10 @@ namespace TorannMagic
                                         {
                                             //bonding with another pet without first pet being dead or destroyed
                                             comp.bondedPet = null;
-                                            Messages.Message("TM_BondedAnimalRelease".Translate(new object[]
-                                            {
+                                            Messages.Message("TM_BondedAnimalRelease".Translate(
                                             oldbond.LabelShort,
                                             pawn.LabelShort
-                                            }), MessageTypeDefOf.NeutralEvent);
+                                            ), MessageTypeDefOf.NeutralEvent);
                                             MoteMaker.ThrowSmoke(oldbond.DrawPos, oldbond.Map, 3f);
                                             oldbond.Destroy();
                                         }
@@ -129,32 +127,29 @@ namespace TorannMagic
                             }
                             else
                             {
-                                Messages.Message("TM_FailedRangerBond".Translate(new object[]
-                                {
+                                Messages.Message("TM_FailedRangerBond".Translate(
                                 animal.LabelShort,
                                 pawn.LabelShort,
                                 ((1 - animal.RaceProps.wildness) * 100f)
-                                }), MessageTypeDefOf.NeutralEvent);
+                                ), MessageTypeDefOf.NeutralEvent);
                             }
                         }
                         else
                         {
-                            Messages.Message("TM_RangerNotExperienced".Translate(new object[]
-                            {
+                            Messages.Message("TM_RangerNotExperienced".Translate(
                                 animal.LabelShort,
                                 pawn.LabelShort,
                                 (animal.RaceProps.wildness * 100).ToString("F"),
                                 (.7f + .1f*pwr.level) * 100
-                            }), MessageTypeDefOf.NeutralEvent);
+                            ), MessageTypeDefOf.NeutralEvent);
                         }
                     }
                     else
                     {
-                        Messages.Message("TM_AnimalIncapableOfBond".Translate(new object[]
-                            {
+                        Messages.Message("TM_AnimalIncapableOfBond".Translate(
                             animal.LabelShort,
                             pawn.LabelShort
-                            }), MessageTypeDefOf.NeutralEvent);
+                            ), MessageTypeDefOf.NeutralEvent);
                     }
                 }
 

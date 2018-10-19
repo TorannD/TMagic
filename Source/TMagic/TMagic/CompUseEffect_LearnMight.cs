@@ -61,10 +61,9 @@ namespace TorannMagic
                     }
                     else
                     {
-                        Messages.Message("TM_NotPsychicSensitive".Translate(new object[]
-                        {
+                        Messages.Message("TM_NotPsychicSensitive".Translate(
                             user.LabelShort
-                        }), MessageTypeDefOf.RejectInput);
+                        ), MessageTypeDefOf.RejectInput);
                     }
                 }
                 else

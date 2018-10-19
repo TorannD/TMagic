@@ -78,10 +78,9 @@ namespace TorannMagic.SihvRMagicScrollScribe
             }
             else
             {
-                Messages.Message("NotGiftedPawn".Translate(new object[]
-                    {
+                Messages.Message("NotGiftedPawn".Translate(
                         user.LabelShort
-                    }), MessageTypeDefOf.RejectInput);
+                    ), MessageTypeDefOf.RejectInput);
             }
             if (tempPod != null)
             {

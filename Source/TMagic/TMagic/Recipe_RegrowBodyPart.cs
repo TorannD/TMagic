@@ -51,14 +51,13 @@ namespace TorannMagic
 
                         //TM_MedicalRecipesUtility.RestorePartAndSpawnAllPreviousParts(patient, part, patient.Position, patient.Map);
                         reason = "TM_InsufficientManaForSurgery".Translate();
-                        Find.LetterStack.ReceiveLetter("LetterLabelRegrowthSurgeryFail".Translate(), "LetterRegrowthSurgeryFail".Translate(new object[]
-                        {
+                        Find.LetterStack.ReceiveLetter("LetterLabelRegrowthSurgeryFail".Translate(), "LetterRegrowthSurgeryFail".Translate(
                             surgeon.LabelCap,
                             this.recipe.defName,
                             patient.Label,
                             reason,
                             surgeon.LabelShort
-                        }), LetterDefOf.NegativeEvent, null);
+                        ), LetterDefOf.NegativeEvent, null);
                         return true;
                     }
                     else // regrowth surgery success
@@ -78,26 +77,24 @@ namespace TorannMagic
                     comp.Mana.CurLevel = comp.Mana.CurLevel / 2;
                     //TM_MedicalRecipesUtility.RestorePartAndSpawnAllPreviousParts(patient, part, patient.Position, patient.Map);
                     reason = "TM_NoRegrowthSpell".Translate();
-                    Find.LetterStack.ReceiveLetter("LetterLabelRegrowthSurgeryFail".Translate(), "LetterRegrowthSurgeryFail".Translate(new object[]
-                    {
+                    Find.LetterStack.ReceiveLetter("LetterLabelRegrowthSurgeryFail".Translate(), "LetterRegrowthSurgeryFail".Translate(
                         surgeon.LabelCap,
                         this.recipe.defName,
                         patient.Label,
                         reason,
                         surgeon.LabelShort
-                    }), LetterDefOf.NegativeEvent, null);
+                    ), LetterDefOf.NegativeEvent, null);
                     return true;
                 }
             }
             reason = "TM_NotMagicUser".Translate();
-            Find.LetterStack.ReceiveLetter("LetterLabelRegrowthSurgeryFail".Translate(), "LetterRegrowthSurgeryFail".Translate(new object[]
-                {
+            Find.LetterStack.ReceiveLetter("LetterLabelRegrowthSurgeryFail".Translate(), "LetterRegrowthSurgeryFail".Translate(
                         surgeon.LabelCap,
                         this.recipe.defName,
                         patient.Label,
                         reason,
                         surgeon.LabelShort
-                }), LetterDefOf.NegativeEvent, null);
+                ), LetterDefOf.NegativeEvent, null);
             return true;
 
         }

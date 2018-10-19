@@ -38,7 +38,6 @@ namespace TorannMagic
 
         protected override bool TryCastShot()
         {
-            bool flag = false;
             CompAbilityUserMagic comp = this.CasterPawn.GetComp<CompAbilityUserMagic>();
             MagicPowerSkill eff = base.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EarthSprites.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EarthSprites_eff");
             MagicPowerSkill ver = base.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EarthSprites.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EarthSprites_ver");
@@ -65,11 +64,10 @@ namespace TorannMagic
                         }
                         else
                         {
-                            Messages.Message("TM_InvalidTarget".Translate(new object[]
-                            {
+                            Messages.Message("TM_InvalidTarget".Translate(
                                 this.CasterPawn.LabelShort,
                                 "Earth Sprites"
-                            }), MessageTypeDefOf.RejectInput);
+                            ), MessageTypeDefOf.RejectInput);
                         }
                     }
                     else if (terrain != null && (terrain.defName == "MarshyTerrain" || terrain.defName == "Mud" || terrain.defName == "Marsh" || terrain.defName == "WaterShallow" || terrain.defName == "Ice" ||
@@ -82,29 +80,26 @@ namespace TorannMagic
                     }
                     else
                     {
-                        Messages.Message("TM_InvalidTarget".Translate(new object[]
-                        {
+                        Messages.Message("TM_InvalidTarget".Translate(
                             this.CasterPawn.LabelShort,
                             "Earth Sprites"
-                        }), MessageTypeDefOf.RejectInput);
+                        ), MessageTypeDefOf.RejectInput);
                     }
                 }
                 else
                 {
-                    Messages.Message("TM_InvalidTarget".Translate(new object[]
-                    {
+                    Messages.Message("TM_InvalidTarget".Translate(
                         this.CasterPawn.LabelShort,
                         "Earth Sprites"
-                    }), MessageTypeDefOf.RejectInput);
+                    ), MessageTypeDefOf.RejectInput);
                 }
             }
             else
             {
-                Messages.Message("TM_NotEnoughMaxMana".Translate(new object[]
-                {
+                Messages.Message("TM_NotEnoughMaxMana".Translate(
                     this.CasterPawn.LabelShort,
                     "Earth Sprites"
-                }), MessageTypeDefOf.RejectInput);
+                ), MessageTypeDefOf.RejectInput);
             }
 
             this.burstShotsLeft = 0;

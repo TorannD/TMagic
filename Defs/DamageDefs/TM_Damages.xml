@@ -431,7 +431,7 @@
 		<explosionColorEdge>(0.8, 0.7, 1.0, 0.8)</explosionColorEdge>
 		<explosionColorCenter>(1, 0.7, 1.0, 0.8)</explosionColorCenter>
 		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
-		<explosionBuildingDamageFactor>0.0</explosionBuildingDamageFactor>
+		<buildingDamageFactor>0.0</buildingDamageFactor>
 		<soundExplosion>Explosion_EMP</soundExplosion>
 	</DamageDef>
 	
@@ -519,7 +519,7 @@
 		<explosionColorEdge>(0.8, 0.7, 1.0, 0.8)</explosionColorEdge>
 		<explosionColorCenter>(1, 0.7, 1.0, 0.8)</explosionColorCenter>
 		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
-		<explosionBuildingDamageFactor>0.0</explosionBuildingDamageFactor>
+		<buildingDamageFactor>0.0</buildingDamageFactor>
 		<soundExplosion>Explosion_EMP</soundExplosion>
 	</DamageDef>
 	
@@ -542,7 +542,7 @@
 		<explosionColorEdge>(0.8, 0.7, 1.0, 0.8)</explosionColorEdge>
 		<explosionColorCenter>(1, 0.7, 1.0, 0.8)</explosionColorCenter>
 		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
-		<explosionBuildingDamageFactor>0.0</explosionBuildingDamageFactor>
+		<buildingDamageFactor>0.0</buildingDamageFactor>
 		<soundExplosion>Explosion_EMP</soundExplosion>
 	</DamageDef>
 	
@@ -565,7 +565,7 @@
 		<explosionColorEdge>(0.8, 0.7, 1.0, 0.8)</explosionColorEdge>
 		<explosionColorCenter>(1, 0.7, 1.0, 0.8)</explosionColorCenter>
 		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
-		<explosionBuildingDamageFactor>0.0</explosionBuildingDamageFactor>
+		<buildingDamageFactor>0.0</buildingDamageFactor>
 		<soundExplosion>Explosion_EMP</soundExplosion>
 	</DamageDef>
 	
@@ -588,7 +588,7 @@
 		<explosionColorEdge>(0.8, 0.7, 1.0, 0.8)</explosionColorEdge>
 		<explosionColorCenter>(1, 0.7, 1.0, 0.8)</explosionColorCenter>
 		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
-		<explosionBuildingDamageFactor>0.0</explosionBuildingDamageFactor>
+		<buildingDamageFactor>0.0</buildingDamageFactor>
 		<soundExplosion>Explosion_EMP</soundExplosion>
 	</DamageDef>
 	

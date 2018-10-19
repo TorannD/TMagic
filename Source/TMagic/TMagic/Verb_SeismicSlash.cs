@@ -154,10 +154,9 @@ namespace TorannMagic
             }
             else
             {
-                Messages.Message("MustHaveMeleeWeapon".Translate(new object[]
-                {
+                Messages.Message("MustHaveMeleeWeapon".Translate(
                     this.CasterPawn.LabelCap
-                }), MessageTypeDefOf.RejectInput);
+                ), MessageTypeDefOf.RejectInput);
                 return false;
             }
 

@@ -246,11 +246,10 @@ namespace TorannMagic
                                     if (this.CurLevel < 0.01f && undeadCount > 0 && (current.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD) || current.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadAnimalHD)))
                                     {
                                         //consume corpse
-                                        Messages.Message("TM_UndeadCollapsed".Translate(new object[]
-                                        {
+                                        Messages.Message("TM_UndeadCollapsed".Translate(
                                             pawn.LabelShort,
                                             current.LabelShort
-                                        }), MessageTypeDefOf.NegativeEvent);
+                                        ), MessageTypeDefOf.NegativeEvent);
                                         if (!current.RaceProps.Animal)
                                         {
                                             current.inventory.DropAllNearPawn(current.Position, false, true);

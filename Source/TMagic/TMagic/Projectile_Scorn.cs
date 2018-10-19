@@ -64,8 +64,7 @@ namespace TorannMagic
         {            
             base.Impact(hitThing);
            
-            ThingDef def = this.def;
-            Pawn victim = null;            
+            ThingDef def = this.def;          
 
             if (!this.initialized)
             {

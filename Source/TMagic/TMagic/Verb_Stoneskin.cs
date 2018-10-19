@@ -140,12 +140,11 @@ namespace TorannMagic
                         stoneskinPawns += comp.stoneskinPawns[i].LabelShort + " & ";
                     }
                 }
-                Messages.Message("TM_TooManyStoneskins".Translate(new object[]
-                    {
+                Messages.Message("TM_TooManyStoneskins".Translate(
                                 caster.LabelShort,
                                 verVal + 2,
                                 stoneskinPawns
-                    }), MessageTypeDefOf.RejectInput);
+                    ), MessageTypeDefOf.RejectInput);
             }
         }
 

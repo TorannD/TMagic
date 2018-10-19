@@ -77,7 +77,7 @@ namespace TorannMagic.AutoCast
             JobDef retainJobDef = caster.CurJobDef;
             LocalTargetInfo retainTargetA = caster.CurJob.targetA;
             int retainCount = 1;
-            if (retainTargetA.Thing.stackCount != 1)
+            if (retainTargetA.Thing != null && retainTargetA.Thing.stackCount != 1)
             {
                  retainCount = retainTargetA.Thing.stackCount;
             }
@@ -125,9 +125,12 @@ namespace TorannMagic.AutoCast
 
                 Job job = new Job(retainJobDef, retainTargetA, retainTargetB, retainTargetC)
                 {
-                    count = retainCount
+                    count = retainCount,
+                    playerForced = false                    
                 };
-                caster.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                //caster.jobs.TryTakeOrderedJob();
+                
+                caster.jobs.StartJob(job);
             }
             catch
             {
@@ -695,7 +698,8 @@ namespace TorannMagic.AutoCast
                 {
                     count = retainCount
                 };
-                caster.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                //caster.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                caster.jobs.StartJob(job);
             }
             catch
             {
