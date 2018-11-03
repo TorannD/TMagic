@@ -503,7 +503,7 @@
 			<degree>4</degree>
 			<statOffsets>
 				<MoveSpeed>0.15</MoveSpeed>
-				<ImmunityGainSpeed>0.3</ImmunityGainSpeed>
+				<ImmunityGainSpeed>0.2</ImmunityGainSpeed>
 				<MedicalSurgerySuccessChance>0.25</MedicalSurgerySuccessChance>
 				<MedicalTendQuality>0.25</MedicalTendQuality>
 				<MedicalOperationSpeed>0.25</MedicalOperationSpeed>
@@ -736,7 +736,7 @@
 				<PlantHarvestYield>-.2</PlantHarvestYield>
 				<WorkSpeedGlobal>0.20</WorkSpeedGlobal>
 				<GlobalLearningFactor>0.20</GlobalLearningFactor>
-				<ImmunityGainSpeed>-.10</ImmunityGainSpeed>
+				<ImmunityGainSpeed>-.06</ImmunityGainSpeed>
 				<ResearchSpeed>0.25</ResearchSpeed>
 				<PsychicSensitivity>0.20</PsychicSensitivity>
 				<ShootingAccuracyPawn>5</ShootingAccuracyPawn>
@@ -1268,7 +1268,7 @@
 				<statOffsets>
                     <MoveSpeed>-.10</MoveSpeed>
 					<WorkSpeedGlobal>-0.2</WorkSpeedGlobal>
-                    <ImmunityGainSpeed>-0.15</ImmunityGainSpeed>
+                    <ImmunityGainSpeed>-0.08</ImmunityGainSpeed>
 					<SocialImpact>0.20</SocialImpact>
 					<CarryingCapacity>-20</CarryingCapacity>
 					<GlobalLearningFactor>+0.25</GlobalLearningFactor>

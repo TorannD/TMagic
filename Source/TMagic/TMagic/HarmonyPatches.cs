@@ -1451,7 +1451,7 @@ namespace TorannMagic
                 List<TraitDef> allTraits = DefDatabase<TraitDef>.AllDefsListForReading;
                 List<Trait> pawnTraits = pawn.story.traits.allTraits;
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                bool flag = false;
+                bool flag = pawnTraits != null;
                 bool anyFightersEnabled = false;
                 bool anyMagesEnabled = false;
                 if (settingsRef.Gladiator || settingsRef.Bladedancer || settingsRef.Ranger || settingsRef.Sniper || settingsRef.Faceless || settingsRef.Psionic)
@@ -1462,12 +1462,15 @@ namespace TorannMagic
                 {
                     anyMagesEnabled = true;
                 }
-                if (!flag)
+                if (flag)
                 {
-                    if (Rand.Chance(((settingsRef.baseFighterChance * 4) + (settingsRef.baseMageChance * 4) + (5 * settingsRef.advFighterChance) + (12 * settingsRef.advMageChance)) / (allTraits.Count - 17)))
+                    if (Rand.Chance(((settingsRef.baseFighterChance * 4) + (settingsRef.baseMageChance * 4) + (5 * settingsRef.advFighterChance) + (13 * settingsRef.advMageChance)) / (allTraits.Count - 18)))
                     {
-                        pawnTraits.Remove(pawnTraits[pawnTraits.Count - 1]);
-                        float rnd = Rand.Range(0, 4 * (settingsRef.baseFighterChance + settingsRef.baseMageChance) + (5 * settingsRef.advFighterChance) + (12 * settingsRef.advMageChance));
+                        if (pawnTraits.Count > 0)
+                        {
+                            pawnTraits.Remove(pawnTraits[pawnTraits.Count - 1]);
+                        }
+                        float rnd = Rand.Range(0, 4 * (settingsRef.baseFighterChance + settingsRef.baseMageChance) + (5 * settingsRef.advFighterChance) + (13 * settingsRef.advMageChance));
                         if (rnd < (4 * settingsRef.baseMageChance))
                         {
                             pawn.story.traits.GainTrait(new Trait(TraitDef.Named("Gifted"), 2, false));
@@ -1879,7 +1882,7 @@ namespace TorannMagic
                 IntVec3 c = IntVec3.FromVector3(clickPos);
                 Enchantment.CompEnchant comp = pawn.TryGetComp<Enchantment.CompEnchant>();
                 CompAbilityUserMagic pawnComp = pawn.TryGetComp<CompAbilityUserMagic>();
-                if (comp != null && pawnComp.IsMagicUser)
+                if (comp != null && pawnComp != null && pawnComp.IsMagicUser)
                 {
                     bool emptyGround = true;
                     foreach (Thing current in c.GetThingList(pawn.Map))
@@ -3089,6 +3092,17 @@ namespace TorannMagic
                             {
                                 magicPower = comp.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt_II);
                             }
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_Purify")
+                        {
+                            magicPower = comp.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Purify);
 
                             if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
                             {

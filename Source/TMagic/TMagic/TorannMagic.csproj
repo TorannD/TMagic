@@ -91,9 +91,12 @@
     <Compile Include="JobDriver_Teach.cs" />
     <Compile Include="ModOptions\ClassOptionsWindow.cs" />
     <Compile Include="ModOptions\ModClassOptions.cs" />
+    <Compile Include="Projectile_PowerNode.cs" />
     <Compile Include="Projectile_ES_Fire.cs" />
+    <Compile Include="Projectile_Cooler.cs" />
     <Compile Include="Projectile_Sabotage.cs" />
     <Compile Include="Projectile_OrbitalStrike.cs" />
+    <Compile Include="Projectile_Heater.cs" />
     <Compile Include="Projectile_TechnoTurret.cs" />
     <Compile Include="TM_Action.cs" />
     <Compile Include="TM_CopyAndLaunchProjectile.cs" />
@@ -153,6 +156,9 @@
     <Compile Include="Projectile_PsychicShock.cs" />
     <Compile Include="Thoughts\Inspiration_MightUser.cs" />
     <Compile Include="Thoughts\InteractionWorker_MightLore.cs" />
+    <Compile Include="Verb_DismissPowerNode.cs" />
+    <Compile Include="Verb_DismissHeater.cs" />
+    <Compile Include="Verb_DismissCooler.cs" />
     <Compile Include="Verb_DispelStoneskin.cs" />
     <Compile Include="Verb_Dominate.cs" />
     <Compile Include="Verb_DismissEarthSprites.cs" />

@@ -249,6 +249,26 @@ namespace TorannMagic.AutoCast
         }
     }
 
+    public static class CureAddictionSpell
+    {
+        public static void Evaluate(CompAbilityUserMagic casterComp, TMAbilityDef abilitydef, PawnAbility ability, MagicPower power, List<string> validAddictionNames, out bool success)
+        {
+            success = false;
+            if (casterComp.Mana.CurLevel >= casterComp.ActualManaCost(abilitydef) && ability.CooldownTicksLeft <= 0)
+            {
+                Pawn caster = casterComp.Pawn;
+                LocalTargetInfo jobTarget = TM_Calc.FindNearbyAddictedPawn(caster, (int)(abilitydef.MainVerb.range * .9f), validAddictionNames);
+                float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
+                if (distanceToTarget < (abilitydef.MainVerb.range * .9f) && jobTarget != null && jobTarget.Thing != null)
+                {
+                    Job job = ability.GetJob(AbilityContext.AI, jobTarget);
+                    caster.jobs.TryTakeOrderedJob(job);
+                    success = true;
+                }
+            }
+        }
+    }
+
     public static class HealSpell
     {
         public static void Evaluate(CompAbilityUserMagic casterComp, TMAbilityDef abilitydef, PawnAbility ability, MagicPower power, out bool success)
@@ -314,6 +334,32 @@ namespace TorannMagic.AutoCast
                         caster.jobs.TryTakeOrderedJob(job);
                         success = true;
                     }
+                }
+            }
+        }
+    }
+
+    public static class HealPermanentSpell
+    {
+        public static void Evaluate(CompAbilityUserMagic casterComp, TMAbilityDef abilitydef, PawnAbility ability, MagicPower power, out bool success)
+        {
+            success = false;
+            EvaluateMinSeverity(casterComp, abilitydef, ability, power, 0, out success);
+        }
+
+        public static void EvaluateMinSeverity(CompAbilityUserMagic casterComp, TMAbilityDef abilitydef, PawnAbility ability, MagicPower power, float minSeverity, out bool success)
+        {
+            success = false;
+            if (casterComp.Mana.CurLevel >= casterComp.ActualManaCost(abilitydef) && ability.CooldownTicksLeft <= 0)
+            {
+                Pawn caster = casterComp.Pawn;
+                LocalTargetInfo jobTarget = TM_Calc.FindNearbyPermanentlyInjuredPawn(caster, (int)(abilitydef.MainVerb.range * .9f), minSeverity);
+                float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
+                if (distanceToTarget < (abilitydef.MainVerb.range * .9f) && jobTarget != null && jobTarget.Thing != null)
+                {
+                    Job job = ability.GetJob(AbilityContext.AI, jobTarget);
+                    caster.jobs.TryTakeOrderedJob(job);
+                    success = true;                    
                 }
             }
         }

@@ -147,8 +147,13 @@ namespace TorannMagic
                             }
                             if (verVal >= 3)
                             {
+                                if (rec.Chemical.defName == "Luciferium" && (rec.Severity - (.15f + .15f * pwrVal) < 0))
+                                {
+                                    Hediff luciHigh = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("LuciferiumHigh"), false);
+                                    pawn.health.RemoveHediff(luciHigh);
+                                }
                                 rec.Severity -= (.15f + .15f * pwrVal);
-                                num--;
+                                num--;                                
                             }
                             TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .6f);
                             TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .4f);

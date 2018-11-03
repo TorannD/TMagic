@@ -248,6 +248,71 @@ namespace TorannMagic
             }
         }
 
+        public static Pawn FindNearbyPermanentlyInjuredPawn(Pawn pawn, int radius, float minSeverity)
+        {
+            List<Pawn> mapPawns = pawn.Map.mapPawns.AllPawnsSpawned;
+            List<Pawn> pawnList = new List<Pawn>();
+            Pawn targetPawn = null;
+            pawnList.Clear();
+            for (int i = 0; i < mapPawns.Count; i++)
+            {
+                targetPawn = mapPawns[i];
+                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed)
+                {
+                    if (targetPawn.IsColonist && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
+                    {
+                        float injurySeverity = 0;
+                        using (IEnumerator<BodyPartRecord> enumerator = targetPawn.health.hediffSet.GetInjuredParts().GetEnumerator())
+                        {
+                            while (enumerator.MoveNext())
+                            {
+                                BodyPartRecord rec = enumerator.Current;
+                                IEnumerable<Hediff_Injury> arg_BB_0 = targetPawn.health.hediffSet.GetHediffs<Hediff_Injury>();
+                                Func<Hediff_Injury, bool> arg_BB_1;
+                                arg_BB_1 = ((Hediff_Injury injury) => injury.Part == rec);
+
+                                foreach (Hediff_Injury current in arg_BB_0.Where(arg_BB_1))
+                                {
+                                    bool flag5 = !current.CanHealNaturally() && current.IsPermanent();
+                                    if (flag5)
+                                    {
+                                        injurySeverity += current.Severity;
+                                    }
+                                }
+                            }
+                        }
+                        if (minSeverity != 0)
+                        {
+                            if (injurySeverity >= minSeverity)
+                            {
+                                pawnList.Add(targetPawn);
+                            }
+                        }
+                        else
+                        {
+                            if (injurySeverity != 0)
+                            {
+                                pawnList.Add(targetPawn);
+                            }
+                        }
+                        targetPawn = null;
+                    }
+                    else
+                    {
+                        targetPawn = null;
+                    }
+                }
+            }
+            if (pawnList.Count > 0)
+            {
+                return pawnList.RandomElement();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public static Pawn FindNearbyAfflictedPawn(Pawn pawn, int radius, List<string> validAfflictionDefnames)
         {
             List<Pawn> mapPawns = pawn.Map.mapPawns.AllPawnsSpawned;
@@ -266,16 +331,60 @@ namespace TorannMagic
                             while (enumerator.MoveNext())
                             {
                                 Hediff rec = enumerator.Current;
-                                if (rec.def.makesSickThought)
+                                for(int j =0; j < validAfflictionDefnames.Count; j++)
                                 {
-                                    for(int j =0; j < validAfflictionDefnames.Count; j++)
+                                    if (rec.def.defName.Contains(validAfflictionDefnames[j]))
                                     {
-                                        if (rec.def.defName == validAfflictionDefnames[j])
-                                        {
-                                            pawnList.Add(targetPawn);
-                                        }
-                                    }                                    
+                                        pawnList.Add(targetPawn);
+                                    }
+                                }                                    
+                                
+                            }
+                        }
+                        targetPawn = null;
+                    }
+                    else
+                    {
+                        targetPawn = null;
+                    }
+                }
+            }
+            if (pawnList.Count > 0)
+            {
+                return pawnList.RandomElement();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static Pawn FindNearbyAddictedPawn(Pawn pawn, int radius, List<string> validAddictionDefnames)
+        {
+            List<Pawn> mapPawns = pawn.Map.mapPawns.AllPawnsSpawned;
+            List<Pawn> pawnList = new List<Pawn>();
+            Pawn targetPawn = null;
+            pawnList.Clear();
+            for (int i = 0; i < mapPawns.Count; i++)
+            {
+                targetPawn = mapPawns[i];
+                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed)
+                {
+                    if (targetPawn.IsColonist && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
+                    {
+                        using (IEnumerator<Hediff_Addiction> enumerator = targetPawn.health.hediffSet.GetHediffs<Hediff_Addiction>().GetEnumerator())
+                        {
+                            while (enumerator.MoveNext())
+                            {
+                                Hediff_Addiction rec = enumerator.Current;
+                                for (int j = 0; j < validAddictionDefnames.Count; j++)
+                                {
+                                    if (rec.Chemical.defName.Contains(validAddictionDefnames[j]))
+                                    {
+                                        pawnList.Add(targetPawn);
+                                    }
                                 }
+
                             }
                         }
                         targetPawn = null;

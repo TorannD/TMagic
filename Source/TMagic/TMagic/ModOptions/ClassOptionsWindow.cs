@@ -28,6 +28,7 @@ namespace TorannMagic.ModOptions
             float rowHeight = 28f;
 
             GUI.BeginGroup(inRect);
+            
             Text.Font = GameFont.Medium;
             float x = Text.CalcSize("TM_ClassOptions".Translate()).x;
             Rect headerRect = new Rect(inRect.width / 2f - (x / 2), inRect.y, inRect.width, ClassOptionsWindow.HeaderSize);

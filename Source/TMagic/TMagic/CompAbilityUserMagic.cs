@@ -162,11 +162,17 @@ namespace TorannMagic
         public int earthSpriteType = 0;
         private bool dismissEarthSpriteSpell = false;
         public List<Thing> summonedLights = new List<Thing>();
+        public List<Thing> summonedHeaters = new List<Thing>();
+        public List<Thing> summonedCoolers = new List<Thing>();
+        public List<Thing> summonedPowerNodes = new List<Thing>();
         public Pawn soulBondPawn = null;
         private bool dismissMinionSpell = false;
         private bool dismissUndeadSpell = false;
         private bool dismissSunlightSpell = false;
         private bool dispelStoneskin = false;
+        private bool dismissCoolerSpell = false;
+        private bool dismissHeaterSpell = false;
+        private bool dismissPowerNodeSpell = false;
         public List<IntVec3> fertileLands = new List<IntVec3>();
         public bool useTechnoBitToggle = true;
         public Vector3 bitPosition = Vector3.zero;
@@ -4694,7 +4700,72 @@ namespace TorannMagic
                                         AutoCast.HealSpell.EvaluateMinSeverity(this, TorannMagicDefOf.TM_AdvancedHeal, ability, magicPower, 12f, out castSuccess);
                                         if (castSuccess) goto AutoCastExit;
                                     }
-                                }                                
+                                }
+                                if (current.abilityDef == TorannMagicDefOf.TM_Purify)
+                                {
+                                    MagicPower magicPower = this.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Purify);
+                                    if (magicPower != null && magicPower.learned && magicPower.autocast)
+                                    {
+                                        ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Purify);
+                                        MagicPowerSkill pwr = this.MagicData.MagicPowerSkill_Purify.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Purify_pwr");
+                                        AutoCast.HealPermanentSpell.Evaluate(this, TorannMagicDefOf.TM_Purify, ability, magicPower, out castSuccess);
+                                        if (castSuccess) goto AutoCastExit;
+                                        List<string> afflictionList = new List<string>();
+                                        afflictionList.Clear();
+                                        afflictionList.Add("Cataract");
+                                        afflictionList.Add("HearingLoss");
+                                        afflictionList.Add("ToxicBuildup");
+                                        if (pwr.level >= 1)
+                                        {
+                                            afflictionList.Add("Blindness");
+                                            afflictionList.Add("Asthma");
+                                            afflictionList.Add("Cirrhosis");
+                                            afflictionList.Add("ChemicalDamageModerate");
+                                        }
+                                        if (pwr.level >= 2)
+                                        {
+                                            afflictionList.Add("Frail");
+                                            afflictionList.Add("BadBack");
+                                            afflictionList.Add("Carcinoma");
+                                            afflictionList.Add("ChemicalDamageSevere");
+                                        }
+                                        if (pwr.level >= 3)
+                                        {
+                                            afflictionList.Add("Alzheimers");
+                                            afflictionList.Add("Dementia");
+                                            afflictionList.Add("HeartArteryBlockage");
+                                            afflictionList.Add("PsychicShock");
+                                            afflictionList.Add("CatatonicBreakdown");
+                                        }
+                                        AutoCast.CureSpell.Evaluate(this, TorannMagicDefOf.TM_Purify, ability, magicPower, afflictionList, out castSuccess);
+                                        if (castSuccess) goto AutoCastExit;
+                                        List<string> addictionList = new List<string>();
+                                        addictionList.Clear();
+                                        addictionList.Add("Alcohol");
+                                        addictionList.Add("Smokeleaf");
+                                        if (pwr.level >= 1)
+                                        {
+                                            addictionList.Add("GoJuice");
+                                            addictionList.Add("WakeUp");
+                                        }
+                                        if (pwr.level >= 2)
+                                        {
+                                            addictionList.Add("Psychite");
+                                        }
+                                        if (pwr.level >= 3)
+                                        {
+                                            IEnumerable<ChemicalDef> enumerable = from def in DefDatabase<ChemicalDef>.AllDefs
+                                                                                where (true)
+                                                                                select def;
+                                            foreach (ChemicalDef addiction in enumerable)
+                                            {
+                                                addictionList.AddDistinct(addiction.defName);
+                                            }                                            
+                                        }
+                                        AutoCast.CureAddictionSpell.Evaluate(this, TorannMagicDefOf.TM_Purify, ability, magicPower, addictionList, out castSuccess);
+                                        if (castSuccess) goto AutoCastExit;
+                                    }
+                                }
                             }
                         }
                     }
@@ -5588,7 +5659,43 @@ namespace TorannMagic
                 dismissSunlightSpell = false;
             }
 
-            if(this.soulBondPawn.DestroyedOrNull() && (this.spell_ShadowStep == true || this.spell_ShadowCall == true))
+            if (this.summonedPowerNodes.Count > 0 && this.dismissPowerNodeSpell == false)
+            {
+                this.AddPawnAbility(TorannMagicDefOf.TM_DismissPowerNode);
+                dismissPowerNodeSpell = true;
+            }
+
+            if (this.summonedPowerNodes.Count <= 0 && dismissPowerNodeSpell == true)
+            {
+                this.RemovePawnAbility(TorannMagicDefOf.TM_DismissPowerNode);
+                dismissPowerNodeSpell = false;
+            }
+
+            if (this.summonedCoolers.Count > 0 && dismissCoolerSpell == false)
+            {
+                this.AddPawnAbility(TorannMagicDefOf.TM_DismissCooler);
+                dismissCoolerSpell = true;
+            }
+
+            if (this.summonedCoolers.Count <= 0 && dismissCoolerSpell == true)
+            {
+                this.RemovePawnAbility(TorannMagicDefOf.TM_DismissCooler);
+                dismissCoolerSpell = false;
+            }
+
+            if (this.summonedHeaters.Count > 0 && dismissHeaterSpell == false)
+            {
+                this.AddPawnAbility(TorannMagicDefOf.TM_DismissHeater);
+                dismissHeaterSpell = true;
+            }
+
+            if (this.summonedHeaters.Count <= 0 && dismissHeaterSpell == true)
+            {
+                this.RemovePawnAbility(TorannMagicDefOf.TM_DismissHeater);
+                dismissHeaterSpell = false;
+            }
+
+            if (this.soulBondPawn.DestroyedOrNull() && (this.spell_ShadowStep == true || this.spell_ShadowCall == true))
             {
                 this.soulBondPawn = null;
                 this.spell_ShadowCall = false;
@@ -5951,6 +6058,43 @@ namespace TorannMagic
                 _maxMP -= (this.summonedLights.Count * .4f);
                 _mpRegenRate -= (this.summonedLights.Count * .4f);
             }
+            if (this.summonedHeaters.Count > 0)
+            {
+                for (int i = 0; i < this.summonedHeaters.Count; i++)
+                {
+                    if (this.summonedHeaters[i].Destroyed)
+                    {
+                        this.summonedHeaters.Remove(this.summonedHeaters[i]);
+                        i--;
+                    }
+                }
+                _maxMP -= (this.summonedHeaters.Count * .25f);
+            }
+            if (this.summonedCoolers.Count > 0)
+            {
+                for (int i = 0; i < this.summonedCoolers.Count; i++)
+                {
+                    if (this.summonedCoolers[i].Destroyed)
+                    {
+                        this.summonedCoolers.Remove(this.summonedCoolers[i]);
+                        i--;
+                    }
+                }
+                _maxMP -= (this.summonedCoolers.Count * .25f);
+            }
+            if (this.summonedPowerNodes.Count > 0)
+            {
+                for (int i = 0; i < this.summonedPowerNodes.Count; i++)
+                {
+                    if (this.summonedPowerNodes[i].Destroyed)
+                    {
+                        this.summonedPowerNodes.Remove(this.summonedPowerNodes[i]);
+                        i--;
+                    }
+                }
+                _maxMP -= (this.summonedPowerNodes.Count * .25f);
+                _mpRegenRate -= (this.summonedPowerNodes.Count * .25f);
+            }
             try
             {
                 if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) && this.fertileLands.Count > 0)
@@ -6152,6 +6296,9 @@ namespace TorannMagic
             Scribe_References.Look<Thing>(ref this.technoWeaponThing, "technoWeaponThing", false);
             Scribe_Collections.Look<Thing>(ref this.summonedMinions, "summonedMinions", LookMode.Reference);
             Scribe_Collections.Look<Thing>(ref this.summonedLights, "summonedLights", LookMode.Reference);
+            Scribe_Collections.Look<Thing>(ref this.summonedPowerNodes, "summonedPowerNodes", LookMode.Reference);
+            Scribe_Collections.Look<Thing>(ref this.summonedCoolers, "summonedCoolers", LookMode.Reference);
+            Scribe_Collections.Look<Thing>(ref this.summonedHeaters, "summonedHeaters", LookMode.Reference);
             Scribe_Collections.Look<Thing>(ref this.summonedSentinels, "summonedSentinels", LookMode.Reference);
             Scribe_Collections.Look<Pawn>(ref this.stoneskinPawns, "stoneskinPawns", LookMode.Reference);
             Scribe_Values.Look<IntVec3>(ref this.earthSprites, "earthSprites", default(IntVec3), false);

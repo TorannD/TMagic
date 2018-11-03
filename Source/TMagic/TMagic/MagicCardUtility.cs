@@ -46,7 +46,7 @@ namespace TorannMagic
 
         public static void DrawMagicCard(Rect rect, Pawn pawn)
         {
-            GUI.BeginGroup(rect);
+            GUI.BeginGroup(rect);            
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
             bool flag = comp != null;
             if (flag)

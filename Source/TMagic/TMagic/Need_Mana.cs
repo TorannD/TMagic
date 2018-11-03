@@ -31,6 +31,7 @@ namespace TorannMagic
         public float drainManaDrain;
         public float drainManaSurge;
         public float drainSprites;
+        public float drainSustainers; //not used
         public float baseManaGain;
 
         public float lastGainPct;

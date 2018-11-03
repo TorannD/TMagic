@@ -531,8 +531,11 @@ namespace TorannMagic
 
         //Standalone
         public static TMAbilityDef TM_Heater;
+        public static TMAbilityDef TM_DismissHeater;
         public static TMAbilityDef TM_Cooler;
+        public static TMAbilityDef TM_DismissCooler;
         public static TMAbilityDef TM_PowerNode;
+        public static TMAbilityDef TM_DismissPowerNode;
         public static TMAbilityDef TM_Sunlight;
         public static TMAbilityDef TM_DismissSunlight;
         public static TMAbilityDef TM_DryGround;

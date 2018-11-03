@@ -488,9 +488,7 @@
     </placeWorkers>
     <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
     <comps>
-      <li Class="CompProperties_Lifespan">
-        <lifespanTicks>180000</lifespanTicks>
-      </li>
+      <li Class="TorannMagic.CompProperties_Summoned"></li>
       <li Class="CompProperties_Glower">
         <glowRadius>18</glowRadius>
         <glowColor>(252,64,34,0)</glowColor>
@@ -576,9 +574,7 @@
         <glowRadius>10</glowRadius>
         <glowColor>(0,0,153,0)</glowColor>
       </li>
-      <li Class="CompProperties_Lifespan">
-        <lifespanTicks>180000</lifespanTicks>
-      </li>
+      <li Class="TorannMagic.CompProperties_Summoned"></li>
     </comps>
 <!--     <designationCategory>Temperature</designationCategory>
     <designationHotKey>Misc2</designationHotKey> -->
@@ -639,9 +635,7 @@
         <glowRadius>2</glowRadius>
         <glowColor>(255,51,255,0)</glowColor>
       </li>
-      <li Class="CompProperties_Lifespan">
-        <lifespanTicks>180000</lifespanTicks>
-      </li>
+      <li Class="TorannMagic.CompProperties_Summoned"></li>
     </comps>
 <!--     <designationCategory>Temperature</designationCategory>
     <designationHotKey>Misc2</designationHotKey> -->

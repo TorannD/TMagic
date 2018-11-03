@@ -21,11 +21,28 @@
  
 <!--  Heater -->
 
+<ThingDef Class="AbilityUser.ProjectileDef_Ability" ParentName="BaseBullet">
+   <thingClass>TorannMagic.Projectile_Heater</thingClass>
+   <defName>Projectile_Heater</defName>
+   <label>spawn magic heater</label>
+   <graphicData>
+		<texPath>Spells/invis</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shaderType>TransparentPostLight</shaderType>
+	</graphicData>
+   <projectile>
+		<flyOverhead>true</flyOverhead>
+		<damageDef>Burn</damageDef>
+		<damageAmountBase>0</damageAmountBase>
+		<speed>999</speed>
+   </projectile>   
+ </ThingDef>
+
  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
     <defName>TM_Heater</defName>
     <label>Magical heater</label>
     <uiIconPath>UI/heater</uiIconPath>
-    <description>Creates a dimensional pocket that taps into the Plane of Fire, generating constant heat in a confined area. The energy holding this pocket open will disperse after several days.</description>
+    <description>Creates a dimensional pocket that taps into the Plane of Fire, generating constant heat in a confined area. The heater must be sustained by the mage - reduces max mana by 25% while active.</description>
     <manaCost>0.25</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
@@ -34,7 +51,7 @@
 			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
         <hasStandardCommand>true</hasStandardCommand>
-        <defaultProjectile>Projectile_TM_SpawnThing</defaultProjectile>
+        <defaultProjectile>Projectile_Heater</defaultProjectile>
 		<abilityDef>TM_Heater</abilityDef>
         <warmupTime>5</warmupTime>
         <SecondsToRecharge>60</SecondsToRecharge>
@@ -50,24 +67,68 @@
       	 <canTargetBuildings>false</canTargetBuildings>
       	 <canTargetSelf>false</canTargetSelf>
 		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>		
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_DismissHeater</defName>
+    <label>Dismiss Heater</label>
+    <uiIconPath>UI/dismissheater</uiIconPath>
+    <description>Dismisses a magical heater</description>
+    <manaCost>0.0</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_DismissHeater</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>TM_Paladin_Heal</defaultProjectile>
+		<abilityDef>TM_DismissHeater</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>4</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>0</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+      	 <canTargetPawns>true</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>true</canTargetSelf>
+		 <canTargetLocations>false</canTargetLocations>
         </targetParams>
-		<thingsToSpawn>
-		  <li>
-		    <def>TM_Heater</def>
-			<spawnCount>1</spawnCount>
-			<kindDef>Colonist</kindDef>
-		  </li>
-		</thingsToSpawn>		
     </MainVerb>
  </TorannMagic.TMAbilityDef>
  
  <!--  Cooler -->
  
+ <ThingDef Class="AbilityUser.ProjectileDef_Ability" ParentName="BaseBullet">
+   <thingClass>TorannMagic.Projectile_Cooler</thingClass>
+   <defName>Projectile_Cooler</defName>
+   <label>spawn magic cooler</label>
+   <graphicData>
+		<texPath>Spells/invis</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shaderType>TransparentPostLight</shaderType>
+	</graphicData>
+   <projectile>
+		<flyOverhead>true</flyOverhead>
+		<damageDef>Burn</damageDef>
+		<damageAmountBase>0</damageAmountBase>
+		<speed>999</speed>
+   </projectile>   
+ </ThingDef>
+ 
   <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
     <defName>TM_Cooler</defName>
     <label>Magical cooler</label>
     <uiIconPath>Other/cooler</uiIconPath>
-    <description>Creates a dimensional pocket that taps into the Plane of Ice, reducing heat in a confined area. The energy holding this pocket open will disperse after several days.</description>
+    <description>Creates a dimensional pocket that taps into the Plane of Ice, reducing heat in a confined area. The cooler must be sustained by the mage - reduces max mana by 25% while active.</description>
     <manaCost>0.25</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
@@ -76,7 +137,7 @@
 			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
         <hasStandardCommand>true</hasStandardCommand>
-        <defaultProjectile>Projectile_TM_SpawnThing</defaultProjectile>
+        <defaultProjectile>Projectile_Cooler</defaultProjectile>
 		<abilityDef>TM_Cooler</abilityDef>
         <warmupTime>5</warmupTime>
         <SecondsToRecharge>60</SecondsToRecharge>
@@ -93,23 +154,67 @@
       	 <canTargetSelf>false</canTargetSelf>
 		 <canTargetLocations>true</canTargetLocations>
         </targetParams>
-		<thingsToSpawn>
-		  <li>
-		    <def>TM_Cooler</def>
-			<spawnCount>1</spawnCount>
-			<kindDef>Colonist</kindDef>
-		  </li>
-		</thingsToSpawn>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_DismissCooler</defName>
+    <label>Dismiss Cooler</label>
+    <uiIconPath>UI/dismisscooler</uiIconPath>
+    <description>Dismisses a magical cooler</description>
+    <manaCost>0.0</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_DismissCooler</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>TM_Paladin_Heal</defaultProjectile>
+		<abilityDef>TM_DismissCooler</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>4</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>0</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+      	 <canTargetPawns>true</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>true</canTargetSelf>
+		 <canTargetLocations>false</canTargetLocations>
+        </targetParams>
     </MainVerb>
  </TorannMagic.TMAbilityDef>
  
   <!--  Power Node --> 
+  
+  <ThingDef Class="AbilityUser.ProjectileDef_Ability" ParentName="BaseBullet">
+   <thingClass>TorannMagic.Projectile_PowerNode</thingClass>
+   <defName>Projectile_PowerNode</defName>
+   <label>spawn arcane power node</label>
+   <graphicData>
+		<texPath>Spells/invis</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shaderType>TransparentPostLight</shaderType>
+	</graphicData>
+   <projectile>
+		<flyOverhead>true</flyOverhead>
+		<damageDef>Burn</damageDef>
+		<damageAmountBase>0</damageAmountBase>
+		<speed>999</speed>
+   </projectile>   
+ </ThingDef>
  
   <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
     <defName>TM_PowerNode</defName>
     <label>Arcane Power Node</label>
     <uiIconPath>Other/energynode_1</uiIconPath>
-    <description>Creates an energy node that slowly releases arcane energy in the form of electricity. Can be used as a power source.</description>
+    <description>Creates an energy node that slowly releases arcane energy in the form of electricity. Can be used as a power source. The power node must be sustained by the mage - reduces max mana and mana regen by 25% while active.</description>
     <manaCost>0.25</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
@@ -118,7 +223,7 @@
 			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
         <hasStandardCommand>true</hasStandardCommand>
-        <defaultProjectile>Projectile_TM_SpawnThing</defaultProjectile>
+        <defaultProjectile>Projectile_PowerNode</defaultProjectile>
 		<abilityDef>TM_PowerNode</abilityDef>
         <warmupTime>5</warmupTime>
         <SecondsToRecharge>60</SecondsToRecharge>
@@ -135,16 +240,42 @@
       	 <canTargetSelf>false</canTargetSelf>
 		 <canTargetLocations>true</canTargetLocations>
         </targetParams>
-		<thingsToSpawn>
-		  <li>
-		    <def>TM_PowerNode</def>
-			<spawnCount>1</spawnCount>
-			<kindDef>Colonist</kindDef>
-		  </li>
-		</thingsToSpawn>
     </MainVerb>
  </TorannMagic.TMAbilityDef>
  
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_DismissPowerNode</defName>
+    <label>Dismiss Power Node</label>
+    <uiIconPath>UI/dismissenergynode</uiIconPath>
+    <description>Dismisses an arcane power node</description>
+    <manaCost>0.0</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_DismissPowerNode</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>TM_Paladin_Heal</defaultProjectile>
+		<abilityDef>TM_DismissPowerNode</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>4</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>0</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+      	 <canTargetPawns>true</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>true</canTargetSelf>
+		 <canTargetLocations>false</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
  
 <!--  Light Node -->
 
