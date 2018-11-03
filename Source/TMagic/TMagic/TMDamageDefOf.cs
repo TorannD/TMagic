@@ -80,6 +80,8 @@ namespace TorannMagic
             public static DamageArmorCategoryDef Light;
             public static StatDef ArmorRating_Alignment;
 
+            public static DamageDef TM_ElectricalBurn;
+
         }
     }
 }

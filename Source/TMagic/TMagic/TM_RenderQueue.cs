@@ -11,6 +11,8 @@ namespace TorannMagic
     [StaticConstructorOnStartup]
     public static class TM_RenderQueue
     {
+        public static readonly Material bitMat = MaterialPool.MatFrom("Other/bit");
+
         //Magic
         public static readonly Material enchantMark = MaterialPool.MatFrom("Items/Gemstones/arcane_minor");
 
@@ -39,6 +41,8 @@ namespace TorannMagic
         public static readonly Material demonkinMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, TM_RenderQueue.demonkinMarkColor);
         public static readonly Color earthMarkColor = new Color(.4f, .2f, 0f);
         public static readonly Material earthMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, TM_RenderQueue.earthMarkColor);
+        public static readonly Color technoMarkColor = new Color(0, .8f, 0f);
+        public static readonly Material technoMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, TM_RenderQueue.technoMarkColor);
 
         //Might
         public static readonly Material deceptionEye = MaterialPool.MatFrom("Motes/DeceptionMote");

@@ -159,6 +159,13 @@ namespace TorannMagic.ModOptions
                         removedThings.Add(current);
                     }
                 }
+                if (!settingsRef.Demonkin)
+                {
+                    if (current.defName == "Torn_BookOfMagitech" || current.defName == "BookOfMagitech" || current.defName == "SpellOf_TechnoShield" || current.defName == "SpellOf_Sabotage" || current.defName == "SpellOf_Overdrive" || current.defName == "SpellOf_OrbitalStrike")
+                    {
+                        removedThings.Add(current);
+                    }
+                }
 
             }
 
@@ -258,6 +265,13 @@ namespace TorannMagic.ModOptions
                         removedRecipes.Add(current);
                     }
                 }
+                if (!settingsRef.Technomancer)
+                {
+                    if (current.defName == "Make_SpellOf_TechnoShield" || current.defName == "Make_SpellOf_Sabotage" || current.defName == "Make_SpellOf_Overdrive" || current.defName == "Make_SpellOf_OrbitalStrike")
+                    {
+                        removedRecipes.Add(current);
+                    }
+                }
             }
 
             for (int i = 0; i < removedRecipes.Count(); i++)
@@ -276,7 +290,7 @@ namespace TorannMagic.ModOptions
                 Traverse traverse = Traverse.Create(databaseType).Method("Remove", enumerable.First());
                 foreach (Def item in enumerable)
                 {
-                    Log.Message("- " + item.label);
+                    //Log.Message("- " + item.label);
                     traverse.GetValue(item);
                 }
             }

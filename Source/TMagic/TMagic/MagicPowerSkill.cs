@@ -39,6 +39,10 @@ namespace TorannMagic
             {
                 this.levelMax = 50;
             }
+            else if (newLabel == "TM_TechnoBit_pwr" || newLabel == "TM_TechnoBit_ver" || newLabel == "TM_TechnoBit_eff" || newLabel == "TM_TechnoTurret_pwr" || newLabel == "TM_TechnoTurret_ver" || newLabel == "TM_TechnoTurret_eff" || newLabel == "TM_TechnoWeapon_pwr" || newLabel == "TM_TechnoWeapon_ver" || newLabel == "TM_TechnoWeapon_eff")
+            {
+                this.levelMax = 15;
+            }
             else if (newLabel == "TM_Sentinel_pwr")
             {
                 this.levelMax = 2;

@@ -68,7 +68,7 @@ namespace TorannMagic
                     {
                         ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                         this.MagicUser.MagicUserXP += (int)((magicDef.manaCost * 300) * this.MagicUser.xpGain * settingsRef.xpMultiplier);
-                    }                    
+                    }
                 }
             }
         }

@@ -329,24 +329,24 @@ namespace TorannMagic
                             this.curLevelInt += amount - necroReduction;
                            
                         }
-                        if ((lastNeed - this.curLevelInt) > .25f && (lastNeed - this.curLevelInt) < .45f)
-                        {
-                            //0.0 to 0.2 max
-                            float sev = ((lastNeed - this.curLevelInt) - .25f) * 10;
-                            HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
-                        }
-                        else if ((lastNeed - this.curLevelInt) >= .45f && (lastNeed - this.curLevelInt) < .79f)
-                        {
-                            //0.0 to 0.34 max
-                            float sev = 1.4f + ((lastNeed - this.curLevelInt) - .45f) * 25;
-                            HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
-                        }
-                        else if ((lastNeed - this.curLevelInt) >= .79f && (lastNeed - this.curLevelInt) < 5)
-                        {
-                            //0.0 to 0.21 max
-                            float sev = 8.5f + ((lastNeed - this.curLevelInt) - .79f) * 40;
-                            HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
-                        }                        
+                        //if ((lastNeed - this.curLevelInt) > .25f && (lastNeed - this.curLevelInt) < .45f)
+                        //{
+                        //    //0.0 to 0.2 max
+                        //    float sev = ((lastNeed - this.curLevelInt) - .25f) * 10;
+                        //    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
+                        //}
+                        //else if ((lastNeed - this.curLevelInt) >= .45f && (lastNeed - this.curLevelInt) < .79f)
+                        //{
+                        //    //0.0 to 0.34 max
+                        //    float sev = 1.4f + ((lastNeed - this.curLevelInt) - .45f) * 25;
+                        //    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
+                        //}
+                        //else if ((lastNeed - this.curLevelInt) >= .79f && (lastNeed - this.curLevelInt) < 5)
+                        //{
+                        //    //0.0 to 0.21 max
+                        //    float sev = 8.5f + ((lastNeed - this.curLevelInt) - .79f) * 40;
+                        //    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
+                        //}                        
                         comp.Mana.curLevelInt = Mathf.Clamp(comp.Mana.curLevelInt, 0f, this.MaxLevel);
                         lastNeed = this.curLevelInt;
                         this.lastGainTick = Find.TickManager.TicksGame;
@@ -379,6 +379,24 @@ namespace TorannMagic
         public void UseMagicPower(float amount)
         {
             this.curLevelInt = Mathf.Clamp(this.curLevelInt - amount, 0f, this.pawn.GetComp<CompAbilityUserMagic>().maxMP);
+            if ((amount) > .25f && (amount) < .45f)
+            {
+                //0.0 to 0.2 max
+                float sev = ((amount) - .25f) * 10;
+                HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
+            }
+            else if ((amount) >= .45f && (amount) < .79f)
+            {
+                //0.0 to 0.34 max
+                float sev = 1.4f + ((amount) - .45f) * 25;
+                HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
+            }
+            else if ((amount) >= .79f && (amount) < 5)
+            {
+                //0.0 to 0.21 max
+                float sev = 8.5f + ((amount) - .79f) * 40;
+                HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
+            }
         }
 
         public override void NeedInterval()

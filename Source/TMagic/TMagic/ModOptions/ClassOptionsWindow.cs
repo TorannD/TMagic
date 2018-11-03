@@ -106,6 +106,9 @@ namespace TorannMagic.ModOptions
             num++;
             Rect rowRect11 = Controller.UIHelper.GetRowRect(rowRect10, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect11, "TM_Demonkin".Translate(), ref Settings.Instance.Demonkin, false);
+            num++;
+            Rect rowRect12 = Controller.UIHelper.GetRowRect(rowRect11, rowHeight, num);
+            Widgets.CheckboxLabeled(rowRect12, "TM_Technomancer".Translate(), ref Settings.Instance.Technomancer, false);
 
             GUI.EndGroup();
         }        

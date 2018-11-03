@@ -132,9 +132,9 @@ namespace TorannMagic
                     {
                         if ((allPawns[i].Position - this.Position).LengthHorizontal <= this.threatRange)
                         {
-                            if (allPawns[i].Faction != null && allPawns[i].Faction != this.sustainerPawn.Faction)
+                            if ((allPawns[i].Faction != null || (allPawns[i].RaceProps.Animal && allPawns[i].InAggroMentalState)) && allPawns[i].Faction != this.sustainerPawn.Faction)
                             {
-                                if (FactionUtility.HostileTo(this.sustainerPawn.Faction, allPawns[i].Faction))
+                                if (FactionUtility.HostileTo(this.sustainerPawn.Faction, allPawns[i].Faction) || (allPawns[i].RaceProps.Animal && allPawns[i].InAggroMentalState))
                                 {
                                     if (ModOptions.ModCompatibilityCheck.PrisonLaborIsActive)
                                     {

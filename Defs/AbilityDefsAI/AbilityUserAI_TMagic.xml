@@ -1858,5 +1858,188 @@ Document made by ChJees
 			<li>Sentinel</li>
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
+	
+	<!-- technomancer  -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="TechnomancerMagicAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMagic</compAbilityUserClass>
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>0.9</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>TechnoShield_Self</li>										
+									</tags>
+								</li>						
+							</subNodes>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+							<tags>
+								<li>TechnoShield</li>										
+							</tags>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_HasEnemyTarget">
+							<subNodes>
+								<li Class="TorannMagic.AbilityDecisionConditionalNode_EnemyTargetIsBuilding">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>70.0</maxDistance>
+											<minDistance>10.0</minDistance>
+											<subNodes>
+												<!-- Use long range AoE offensive abilities. -->
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>OrbitalStrike</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>40.0</maxDistance>
+											<minDistance>5.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Sabotage</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+									</subNodes>
+								</li>
+								<!-- Using ranged weapon -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingRangedWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>70.0</maxDistance>
+											<minDistance>10.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>OrbitalStrike</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>40.0</maxDistance>
+											<minDistance>5.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Sabotage</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+									</subNodes>
+								</li>
+								<!-- Using melee weapon -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingMeleeWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>70.0</maxDistance>
+											<minDistance>25.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>OrbitalStrike</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>40.0</maxDistance>
+											<minDistance>5.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Sabotage</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>									
+									</subNodes>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- Technomancer -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="TechnomancerMagicAbilityUserAI">
+		<defName>TMagic_Technomancer</defName>
+		<matchingTraits>
+			<li>Technomancer</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_TechnoShield_Self</li>
+			<li>TMagic_TechnoShield</li>
+			<li>TMagic_OrbitalStrike</li>
+			<li>TMagic_Sabotage</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Technomancer Abilities -->
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_TechnoShield_Self</defName>
+		<ability>TM_TechnoShield</ability>		
+		<power>2</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<tags>
+			<li>TechnoShield_Self</li>
+		</tags>
+		<appliedHediffs>
+			<li>TM_TechnoShieldHD</li>
+			<li>TM_TechnoShieldHD_III</li>
+		</appliedHediffs>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_TechnoShield</defName>
+		<ability>TM_TechnoShield</ability>		
+		<power>1</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<workerClass>AbilityUserAI.AbilityWorker_HealAlly</workerClass>
+		<canTargetAlly>true</canTargetAlly>
+		<needEnemyTarget>false</needEnemyTarget>
+		<maxRange>25.0</maxRange>
+		<tags>
+			<li>TechnoShield</li>
+		</tags>
+		<appliedHediffs>
+			<li>TM_TechnoShieldHD_III</li>
+		</appliedHediffs>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_OrbitalStrike</defName>
+		<ability>TM_OrbitalStrike</ability>
+		<power>10</power>
+		<maxRange>70.0</maxRange>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>OrbitalStrike</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Sabotage</defName>
+		<ability>TM_Sabotage</ability>
+		<power>5</power>
+		<maxRange>45.0</maxRange>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Sabotage</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
 
 </Defs>

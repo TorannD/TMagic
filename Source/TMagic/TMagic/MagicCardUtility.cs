@@ -2,6 +2,7 @@
 using RimWorld;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Verse;
 
@@ -233,6 +234,54 @@ namespace TorannMagic
                             MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersG, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Stoneskin, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Encase, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EarthSprites, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EarthernHammer, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sentinel, null, TexButton.TMTex_SkillPointUsed);
                         }
                     }
+                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+                    {
+                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                        if(comp.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower mp) => mp.abilityDef == TorannMagicDefOf.TM_TechnoBit).learned == true)
+                        {
+                            if (pawn.GetComp<CompAbilityUserMagic>().spell_OrbitalStrike == true)
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoBit, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overdrive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sabotage, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_OrbitalStrike, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                            else
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoBit, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overdrive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sabotage, null, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                        }
+                        else if(comp.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower mp) => mp.abilityDef == TorannMagicDefOf.TM_TechnoTurret).learned == true)
+                        {
+                            if (pawn.GetComp<CompAbilityUserMagic>().spell_OrbitalStrike == true)
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoTurret, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overdrive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sabotage, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_OrbitalStrike, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                            else
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoTurret, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overdrive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sabotage, null, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                        }
+                        else if(comp.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower mp) => mp.abilityDef == TorannMagicDefOf.TM_TechnoWeapon).learned == true)
+                        {
+                            if (pawn.GetComp<CompAbilityUserMagic>().spell_OrbitalStrike == true)
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoWeapon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overdrive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sabotage, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_OrbitalStrike, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                            else
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoWeapon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overdrive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sabotage, null, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                        }
+                        else
+                        {
+                            if (pawn.GetComp<CompAbilityUserMagic>().spell_OrbitalStrike == true)
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoBit, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoTurret, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoWeapon, null, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_OrbitalStrike, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                            else
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoBit, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoTurret, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoWeapon, null, null, null, TexButton.TMTex_SkillPointUsed);
+                            }                            
+                        }                        
+                    }
                 }
             }
             GUI.EndGroup();
@@ -455,13 +504,28 @@ namespace TorannMagic
             bool flag999;
             using (List<MagicPower>.Enumerator enumerator = MagicPowers.GetEnumerator())
             {
+                EnumerationStart:;
                 while (enumerator.MoveNext())
-                {
+                {                    
                     MagicPower power = enumerator.Current;
                     if(power.abilityDef == TorannMagicDefOf.TM_LichForm && compMagic.Pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
                     {
                         enumerator.MoveNext();
                         power = enumerator.Current;
+                    }
+                    if(MagicPowerSkill4 == null)
+                    {
+                        if(power.abilityDef == TorannMagicDefOf.TM_TechnoShield || power.abilityDef == TorannMagicDefOf.TM_Sabotage || power.abilityDef == TorannMagicDefOf.TM_Overdrive)
+                        {
+                            goto EnumerationStart;
+                        }
+                    }
+                    else
+                    {
+                        if((power.abilityDef == TorannMagicDefOf.TM_TechnoBit || power.abilityDef == TorannMagicDefOf.TM_TechnoTurret || power.abilityDef == TorannMagicDefOf.TM_TechnoWeapon) && !power.learned)
+                        {
+                            goto EnumerationStart;
+                        }
                     }
                     Text.Font = GameFont.Small;
                     Rect rect = new Rect(MagicCardUtility.magicCardSize.x / 2f - MagicCardUtility.MagicButtonSize, num, MagicCardUtility.MagicButtonSize, MagicCardUtility.MagicButtonSize);
@@ -490,6 +554,7 @@ namespace TorannMagic
                         power.abilityDef == TorannMagicDefOf.TM_Repulsion || power.abilityDef == TorannMagicDefOf.TM_Repulsion_I || power.abilityDef == TorannMagicDefOf.TM_Repulsion_II ||
                         power.abilityDef == TorannMagicDefOf.TM_Encase || power.abilityDef == TorannMagicDefOf.TM_Encase_I || power.abilityDef == TorannMagicDefOf.TM_Encase_II ||
                         power.abilityDef == TorannMagicDefOf.TM_Meteor || power.abilityDef == TorannMagicDefOf.TM_Meteor_I || power.abilityDef == TorannMagicDefOf.TM_Meteor_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_OrbitalStrike || power.abilityDef == TorannMagicDefOf.TM_OrbitalStrike_I || power.abilityDef == TorannMagicDefOf.TM_OrbitalStrike_II ||
                         power.abilityDef == TorannMagicDefOf.TM_BestowMight || power.abilityDef == TorannMagicDefOf.TM_BestowMight_I || power.abilityDef == TorannMagicDefOf.TM_BestowMight_II))
                     {
 
@@ -548,6 +613,7 @@ namespace TorannMagic
                         power.abilityDef.defName == "TM_ShadowBolt" || power.abilityDef.defName == "TM_ShadowBolt_I" || power.abilityDef.defName == "TM_ShadowBolt_II" || power.abilityDef.defName == "TM_ShadowBolt_III" ||
                         power.abilityDef.defName == "TM_Meteor" || power.abilityDef.defName == "TM_Meteor_I" || power.abilityDef.defName == "TM_Meteor_II" || power.abilityDef.defName == "TM_Meteor_III" ||
                         power.abilityDef.defName == "TM_Encase" || power.abilityDef.defName == "TM_Encase_I" || power.abilityDef.defName == "TM_Encase_II" || power.abilityDef.defName == "TM_Encase_III" ||
+                        power.abilityDef.defName == "TM_OrbitalStrike" || power.abilityDef.defName == "TM_OrbitalStrike_I" || power.abilityDef.defName == "TM_OrbitalStrike_II" || power.abilityDef.defName == "TM_OrbitalStrike_III" ||
                         power.abilityDef.defName == "TM_BestowMight" || power.abilityDef.defName == "TM_BestowMight_I" || power.abilityDef.defName == "TM_BestowMight_II" || power.abilityDef.defName == "TM_BestowMight_III")
                     {
                         flag999 = true;
@@ -567,15 +633,27 @@ namespace TorannMagic
                             if (flagLearn)
                             {
                                 enumerator.Current.learned = true;
-                                compMagic.AddPawnAbility(enumerator.Current.abilityDef);
+                                if (!(enumerator.Current.abilityDef.defName == "TM_TechnoBit"))
+                                {
+                                    compMagic.AddPawnAbility(enumerator.Current.abilityDef);
+                                }
                                 compMagic.MagicData.MagicAbilityPoints -= enumerator.Current.learnCost;
                             }
                         }
                         else
                         {
-                            Rect rectToLearn = new Rect(rect.xMin - 98f, rect.yMin, 100f, MagicButtonPointSize);
-                            Text.Font = GameFont.Tiny;
-                            bool flagLearn = Widgets.ButtonText(rectToLearn, "" + enumerator.Current.learnCost + " points to " + "TM_Learn".Translate(), false, false, false) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
+                            if ((power.abilityDef.defName == "TM_TechnoShield" || power.abilityDef.defName == "TM_Sabotage" || power.abilityDef.defName == "TM_Overdrive"))
+                            {
+                                Rect rectToLearn = new Rect(rect.xMin - 268f, rect.yMin, 250f, MagicButtonPointSize);
+                                Text.Font = GameFont.Tiny;
+                                bool flagLearn = Widgets.ButtonText(rectToLearn, "TM_SpellLocked".Translate(power.abilityDef.LabelCap), false, false, false) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
+                            }
+                            else
+                            {
+                                Rect rectToLearn = new Rect(rect.xMin - 98f, rect.yMin, 100f, MagicButtonPointSize);
+                                Text.Font = GameFont.Tiny;
+                                bool flagLearn = Widgets.ButtonText(rectToLearn, "" + enumerator.Current.learnCost + " points to " + "TM_Learn".Translate(), false, false, false) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
+                            }
                         }
                     }
                     else
@@ -585,7 +663,7 @@ namespace TorannMagic
                         {
                             if (flag999)
                             {
-                                if (power.abilityDef.defName == "TM_Meteor" && compMagic.spell_Meteor != true)
+                                if ((power.abilityDef.defName == "TM_Meteor" && compMagic.spell_Meteor != true) || (power.abilityDef.defName == "TM_OrbitalStrike" && compMagic.spell_OrbitalStrike != true))
                                 {
                                     Widgets.DrawTextureFitted(rect, power.Icon, 1f);
                                 }
@@ -605,7 +683,7 @@ namespace TorannMagic
                         {
                             if (flag999)
                             {
-                                if (power.abilityDef.defName == "TM_Meteor" && compMagic.spell_Meteor != true)
+                                if ((power.abilityDef.defName == "TM_Meteor" && compMagic.spell_Meteor != true) || (power.abilityDef.defName == "TM_OrbitalStrike" && compMagic.spell_OrbitalStrike != true))
                                 {
                                     Widgets.DrawTextureFitted(rect, power.Icon, 1f);
                                 }
@@ -638,6 +716,7 @@ namespace TorannMagic
                             (power.abilityDef.defName == "TM_Scorn" && MagicPowerSkill5 == null) ||
                             (power.abilityDef.defName == "TM_PsychicShock" && MagicPowerSkill5 == null) ||
                             (power.abilityDef.defName == "TM_Meteor" && MagicPowerSkill6 == null) ||
+                            (power.abilityDef.defName == "TM_OrbitalStrike" && MagicPowerSkill5 == null) ||
                             (power.abilityDef.defName == "TM_Resurrection" && MagicPowerSkill5 == null))
                         {
                             Rect rectMasterLock = new Rect(rect.xMax - 23f - "TM_MasterSpellLocked".Translate().Length * 4, rect.yMin + MagicCardUtility.MagicButtonSize + 4f, "TM_MasterSpellLocked".Translate().Length * 8, MagicCardUtility.TextSize * 3);
@@ -645,6 +724,11 @@ namespace TorannMagic
                                         power.abilityDef.LabelCap
                                 ));
                         }
+                        if (MagicPowerSkill4 == null)
+                        {
+                            Rect rectTechnoPath = new Rect(rect.xMax - "TM_TechnomancerPathWarning".Translate().Length * 3, rect.yMin + (2*(MagicCardUtility.MagicButtonSize + 4f)), "TM_TechnomancerPathWarning".Translate().Length * 6, MagicCardUtility.TextSize * 3);
+                            Widgets.Label(rectTechnoPath, "TM_TechnomancerPathWarning".Translate());
+                        }                       
                     }
 
                     Text.Font = GameFont.Tiny;
@@ -1131,6 +1215,48 @@ namespace TorannMagic
                             if (enumerator.Current.abilityDef.defName == "TM_Meteor" || enumerator.Current.abilityDef.defName == "TM_Meteor_I" || enumerator.Current.abilityDef.defName == "TM_Meteor_II" || enumerator.Current.abilityDef.defName == "TM_Meteor_III")
                             {
                                 compMagic.LevelUpSkill_Meteor(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_TechnoBit")
+                            {
+                                compMagic.LevelUpSkill_TechnoBit(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_TechnoTurret")
+                            {
+                                compMagic.LevelUpSkill_TechnoTurret(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_TechnoWeapon")
+                            {
+                                compMagic.LevelUpSkill_TechnoWeapon(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_TechnoShield")
+                            {
+                                compMagic.LevelUpSkill_TechnoShield(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Sabotage")
+                            {
+                                compMagic.LevelUpSkill_Sabotage(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Overdrive")
+                            {
+                                compMagic.LevelUpSkill_Overdrive(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_OrbitalStrike" || enumerator.Current.abilityDef.defName == "TM_OrbitalStrike_I" || enumerator.Current.abilityDef.defName == "TM_OrbitalStrike_II" || enumerator.Current.abilityDef.defName == "TM_OrbitalStrike_III")
+                            {
+                                compMagic.LevelUpSkill_OrbitalStrike(skill.label);
                                 skill.level++;
                                 compMagic.MagicData.MagicAbilityPoints -= 1;
                             }

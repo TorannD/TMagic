@@ -84,9 +84,18 @@
     <Compile Include="Building_TMElementalRift.cs" />
     <Compile Include="Building_TMPortal.cs" />
     <Compile Include="Building_PoisonTrap.cs" />
+    <Compile Include="Buiding_TechnoTurret.cs" />
+    <Compile Include="HediffComp_NanoStimulant.cs" />
+    <Compile Include="HediffComp_Overdrive.cs" />
+    <Compile Include="HediffComp_TechnoBit.cs" />
     <Compile Include="JobDriver_Teach.cs" />
     <Compile Include="ModOptions\ClassOptionsWindow.cs" />
     <Compile Include="ModOptions\ModClassOptions.cs" />
+    <Compile Include="Projectile_ES_Fire.cs" />
+    <Compile Include="Projectile_Sabotage.cs" />
+    <Compile Include="Projectile_OrbitalStrike.cs" />
+    <Compile Include="Projectile_TechnoTurret.cs" />
+    <Compile Include="TM_Action.cs" />
     <Compile Include="TM_CopyAndLaunchProjectile.cs" />
     <Compile Include="Effect_PsiStorm.cs" />
     <Compile Include="TM_MapMesh.cs" />
@@ -147,6 +156,9 @@
     <Compile Include="Verb_DispelStoneskin.cs" />
     <Compile Include="Verb_Dominate.cs" />
     <Compile Include="Verb_DismissEarthSprites.cs" />
+    <Compile Include="Verb_NanoStimulant.cs" />
+    <Compile Include="Verb_Overdrive.cs" />
+    <Compile Include="Verb_TechnoShield.cs" />
     <Compile Include="Verb_Teach.cs" />
     <Compile Include="Verb_PsionicBlast.cs" />
     <Compile Include="Verb_PsionicBarrier.cs" />
@@ -161,6 +173,7 @@
     <Compile Include="Verb_ShadowCall.cs" />
     <Compile Include="Verb_Meteor.cs" />
     <Compile Include="Verb_SummonDemon.cs" />
+    <Compile Include="Verb_TechnoWeapon.cs" />
     <Compile Include="Verb_Transpose.cs" />
     <Compile Include="Verb_CauterizeWound.cs" />
     <Compile Include="Verb_DismissFertileLands.cs" />

@@ -33,6 +33,7 @@ namespace TorannMagic
         public List<MagicPower> magicPowerWD;
         public List<MagicPower> magicPowerSD;
         public List<MagicPower> magicPowerG;
+        public List<MagicPower> magicPowerT;
 
         public List<MagicPower> magicPowerStandalone;
 
@@ -119,6 +120,14 @@ namespace TorannMagic
         public List<MagicPowerSkill> magicPowerSkill_EarthernHammer;
         public List<MagicPowerSkill> magicPowerSkill_Sentinel;
         public List<MagicPowerSkill> magicPowerSkill_Meteor;
+
+        public List<MagicPowerSkill> magicPowerSkill_TechnoBit;
+        public List<MagicPowerSkill> magicPowerSkill_TechnoTurret;
+        public List<MagicPowerSkill> magicPowerSkill_TechnoWeapon;
+        public List<MagicPowerSkill> magicPowerSkill_TechnoShield;
+        public List<MagicPowerSkill> magicPowerSkill_Sabotage;
+        public List<MagicPowerSkill> magicPowerSkill_Overdrive;
+        public List<MagicPowerSkill> magicPowerSkill_OrbitalStrike;
 
         public List<MagicPowerSkill> MagicPowerSkill_global_regen
         {
@@ -1876,6 +1885,171 @@ namespace TorannMagic
             }
         }
 
+        public List<MagicPower> MagicPowersT
+        {
+            get
+            {
+                bool flag = this.magicPowerT == null;
+                if (flag)
+                {
+                    this.magicPowerT = new List<MagicPower>
+                    {
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_TechnoBit
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_TechnoTurret
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_TechnoWeapon
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_TechnoShield  
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Overdrive
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {                            
+                            TorannMagicDefOf.TM_Sabotage
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_OrbitalStrike,
+                            TorannMagicDefOf.TM_OrbitalStrike_I,
+                            TorannMagicDefOf.TM_OrbitalStrike_II,
+                            TorannMagicDefOf.TM_OrbitalStrike_III
+                        }),
+                    };
+                }
+                return this.magicPowerT;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_TechnoBit
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_TechnoBit == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_TechnoBit = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_TechnoBit_pwr", "TM_TechnoBit_pwr_desc"),
+                        new MagicPowerSkill("TM_TechnoBit_eff", "TM_TechnoBit_eff_desc"),
+                        new MagicPowerSkill("TM_TechnoBit_ver", "TM_TechnoBit_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_TechnoBit;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_TechnoTurret
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_TechnoTurret == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_TechnoTurret = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_TechnoTurret_pwr", "TM_TechnoTurret_pwr_desc"),
+                        new MagicPowerSkill("TM_TechnoTurret_eff", "TM_TechnoTurret_eff_desc"),
+                        new MagicPowerSkill("TM_TechnoTurret_ver", "TM_TechnoTurret_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_TechnoTurret;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_TechnoWeapon
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_TechnoWeapon == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_TechnoWeapon = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_TechnoWeapon_pwr", "TM_TechnoWeapon_pwr_desc"),
+                        new MagicPowerSkill("TM_TechnoWeapon_eff", "TM_TechnoWeapon_eff_desc"),
+                        new MagicPowerSkill("TM_TechnoWeapon_ver", "TM_TechnoWeapon_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_TechnoWeapon;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_TechnoShield
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_TechnoShield == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_TechnoShield = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_TechnoShield_pwr", "TM_TechnoShield_pwr_desc"),
+                        new MagicPowerSkill("TM_TechnoShield_eff", "TM_TechnoShield_eff_desc"),
+                        new MagicPowerSkill("TM_TechnoShield_ver", "TM_TechnoShield_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_TechnoShield;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Sabotage
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Sabotage == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Sabotage = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Sabotage_pwr", "TM_Sabotage_pwr_desc"),
+                        new MagicPowerSkill("TM_Sabotage_eff", "TM_Sabotage_eff_desc"),
+                        new MagicPowerSkill("TM_Sabotage_ver", "TM_Sabotage_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_Sabotage;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Overdrive
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Overdrive == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Overdrive = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Overdrive_pwr", "TM_Overdrive_pwr_desc"),
+                        new MagicPowerSkill("TM_Overdrive_eff", "TM_Overdrive_eff_desc"),
+                        new MagicPowerSkill("TM_Overdrive_ver", "TM_Overdrive_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_Overdrive;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_OrbitalStrike
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_OrbitalStrike == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_OrbitalStrike = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_OrbitalStrike_pwr", "TM_OrbitalStrike_pwr_desc"),
+                        new MagicPowerSkill("TM_OrbitalStrike_eff", "TM_OrbitalStrike_eff_desc"),
+                        new MagicPowerSkill("TM_OrbitalStrike_ver", "TM_OrbitalStrike_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_OrbitalStrike;
+            }
+        }
+
         public bool IsNecromancer
         {
             get
@@ -1996,7 +2170,7 @@ namespace TorannMagic
         {
             get
             {
-                return this.MagicPowersIF.Concat(this.MagicPowersHoF.Concat(this.MagicPowersSB.Concat(this.MagicPowersA.Concat(this.MagicPowersP.Concat(this.MagicPowersS.Concat(this.MagicPowersD.Concat(this.MagicPowersN.Concat(this.MagicPowersPR.Concat(this.MagicPowersB.Concat(this.MagicPowersWD.Concat(this.MagicPowersSD.Concat(this.MagicPowersG.Concat(this.MagicPowersStandalone)))))))))))));
+                return this.MagicPowersIF.Concat(this.MagicPowersHoF.Concat(this.MagicPowersSB.Concat(this.MagicPowersA.Concat(this.MagicPowersP.Concat(this.MagicPowersS.Concat(this.MagicPowersD.Concat(this.MagicPowersN.Concat(this.MagicPowersPR.Concat(this.MagicPowersB.Concat(this.MagicPowersWD.Concat(this.MagicPowersSD.Concat(this.MagicPowersG.Concat(this.MagicPowersT.Concat(this.MagicPowersStandalone))))))))))))));
             }
         }
 
@@ -2104,6 +2278,14 @@ namespace TorannMagic
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_EarthernHammer, "magicPowerSkill_EarthernHammer", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Sentinel, "magicPowerSkill_Sentinel", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Meteor, "magicPowerSkill_Meteor", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPower>(ref this.magicPowerT, "magicPowerT", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_TechnoBit, "magicPowerSkill_TechnoBit", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_TechnoTurret, "magicPowerSkill_TechnoTurret", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_TechnoWeapon, "magicPowerSkill_TechnoWeapon", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_TechnoShield, "magicPowerSkill_TechnoShield", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Sabotage, "magicPowerSkill_Sabotage", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Overdrive, "magicPowerSkill_Overdrive", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_OrbitalStrike, "magicPowerSkill_OrbitalStrike", LookMode.Deep, new object[0]);
         }
     }
 }

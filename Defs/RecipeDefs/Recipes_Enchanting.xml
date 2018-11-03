@@ -949,10 +949,18 @@
 	  <li>
         <filter>
           <thingDefs>
-            <li>GoJuice</li>
+            <li>SmokeleafLeaves</li>
           </thingDefs>
         </filter>
-        <count>1</count>
+        <count>8</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>PsychoidLeaves</li>
+          </thingDefs>
+        </filter>
+        <count>4</count>
       </li>
     </ingredients>
     <products>

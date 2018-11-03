@@ -165,6 +165,16 @@ namespace TorannMagic
                     }
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
+                else if (parent.def.defName == "BookOfMagitech" || parent.def.defName == "Torn_BookOfMagitech")
+                {
+                    FixTrait(user, user.story.traits.allTraits);
+                    user.story.traits.GainTrait(new Trait(TraitDef.Named("Technomancer"), 4, false));
+                    if (parent.def.defName == "BookOfMagitech")
+                    {
+                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                    }
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
                 else if (parent.def.defName == "BookOfQuestion")
                 {
                     int attempts = 0;
@@ -173,7 +183,7 @@ namespace TorannMagic
                     RetryBookOfQuestion:;
                     if (attempts < 50)
                     {
-                        int rnd = Mathf.RoundToInt(Rand.RangeInclusive(0, 12));
+                        int rnd = Mathf.RoundToInt(Rand.RangeInclusive(0, 13));
                         switch (rnd)
                         {
                             case 0:
@@ -198,7 +208,7 @@ namespace TorannMagic
                                     goto RetryBookOfQuestion;
                                 }
                                 break;
-                            case 12:
+                            case 13:
                                 if (settingsRef.Demonkin)
                                 {
                                     if (user.gender == Gender.Male)
@@ -334,6 +344,17 @@ namespace TorannMagic
                                 if (settingsRef.Geomancer)
                                 {
                                     user.story.traits.GainTrait(new Trait(TraitDef.Named("Geomancer"), 4, false));
+                                }
+                                else
+                                {
+                                    attempts++;
+                                    goto RetryBookOfQuestion;
+                                }
+                                break;
+                            case 12:
+                                if (settingsRef.Technomancer)
+                                {
+                                    user.story.traits.GainTrait(new Trait(TraitDef.Named("Technomancer"), 4, false));
                                 }
                                 else
                                 {

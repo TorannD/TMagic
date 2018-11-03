@@ -43,6 +43,7 @@
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		  <li>Geomancer</li>
+		  <li>Technomancer</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -89,6 +90,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -134,6 +136,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -177,6 +180,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -224,6 +228,7 @@
 		  <li>Warlock</li>
 		<li>TM_Psionic</li>
 		<li>Geomancer</li>
+		<li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -270,6 +275,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -314,6 +320,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 
@@ -357,6 +364,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef> 	
 	
@@ -403,6 +411,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -476,6 +485,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -532,6 +542,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -583,7 +594,7 @@
 					<NegotiationAbility>0.20</NegotiationAbility>
 					<TradePriceImprovement>0.10</TradePriceImprovement>
                     <PainShockThreshold>-0.10</PainShockThreshold>
-					<CarryingCapacity>-0.10</CarryingCapacity>
+					<CarryingCapacity>-10</CarryingCapacity>
 					<WorkSpeedGlobal>-0.10</WorkSpeedGlobal>					
                 </statOffsets>
 		  </li>
@@ -597,7 +608,7 @@
 					<NegotiationAbility>0.30</NegotiationAbility>
 					<TradePriceImprovement>0.15</TradePriceImprovement>
                     <PainShockThreshold>-0.12</PainShockThreshold>
-					<CarryingCapacity>-0.15</CarryingCapacity>
+					<CarryingCapacity>-15</CarryingCapacity>
 					<WorkSpeedGlobal>-0.12</WorkSpeedGlobal>
                 </statOffsets>
 		  </li>
@@ -611,7 +622,7 @@
 					<NegotiationAbility>0.35</NegotiationAbility>
 					<TradePriceImprovement>0.20</TradePriceImprovement>
                     <PainShockThreshold>-0.14</PainShockThreshold>
-					<CarryingCapacity>-0.18</CarryingCapacity>
+					<CarryingCapacity>-18</CarryingCapacity>
 					<WorkSpeedGlobal>-0.14</WorkSpeedGlobal>
                 </statOffsets>
 		  </li>
@@ -625,7 +636,7 @@
 					<NegotiationAbility>0.40</NegotiationAbility>
 					<TradePriceImprovement>0.25</TradePriceImprovement>
                     <PainShockThreshold>-0.15</PainShockThreshold>
-					<CarryingCapacity>-0.20</CarryingCapacity>
+					<CarryingCapacity>-20</CarryingCapacity>
 					<WorkSpeedGlobal>-0.15</WorkSpeedGlobal>
                 </statOffsets>
 		  </li>
@@ -652,6 +663,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -701,6 +713,59 @@
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
+		  <li>Technomancer</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>
+		<defName>Technomancer</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
+		<degreeDatas>	
+		  <li>
+			<label>Technomancer</label>
+			<description>[PAWN_nameDef] has learned to see magic and science as two parts of the same force and is able to use arcane power to interface directly with components of technology. [PAWN_pronoun] is capable of manipulating objects with advanced mechanics, electronics, or computing it to achieve [PAWN_possessive] goals, but has difficulty interacting with biological systems.</description>
+			<degree>4</degree>
+			<statOffsets>
+				<SocialImpact>-0.30</SocialImpact>
+				<NegotiationAbility>-0.20</NegotiationAbility>
+				<TradePriceImprovement>-0.20</TradePriceImprovement>
+				<TameAnimalChance>-0.20</TameAnimalChance>
+				<TrainAnimalChance>-0.20</TrainAnimalChance>
+				<PlantWorkSpeed>-.2</PlantWorkSpeed>
+				<PlantHarvestYield>-.2</PlantHarvestYield>
+				<WorkSpeedGlobal>0.20</WorkSpeedGlobal>
+				<GlobalLearningFactor>0.20</GlobalLearningFactor>
+				<ImmunityGainSpeed>-.10</ImmunityGainSpeed>
+				<ResearchSpeed>0.25</ResearchSpeed>
+				<PsychicSensitivity>0.20</PsychicSensitivity>
+				<ShootingAccuracyPawn>5</ShootingAccuracyPawn>
+			</statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>StormBorn</li>
+		  <li>Arcanist</li>
+		  <li>Gifted</li>
+		  <li>PhysicalProdigy</li>
+		  <li>Paladin</li>
+		  <li>Gladiator</li>
+		  <li>TM_Sniper</li>
+		  <li>Summoner</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		  <li>Faceless</li>
+		  <li>Succubus</li>
+		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -744,6 +809,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>Technomancer</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -794,6 +860,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -902,6 +969,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -993,6 +1061,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1082,6 +1151,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1130,6 +1200,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1148,7 +1219,7 @@
                     <ImmunityGainSpeed>.15</ImmunityGainSpeed>
 					<TradePriceImprovement>0.10</TradePriceImprovement>
 					<NegotiationAbility>0.20</NegotiationAbility>
-					<CarryingCapacity>-0.20</CarryingCapacity>
+					<CarryingCapacity>-20</CarryingCapacity>
 					<GlobalLearningFactor>-0.20</GlobalLearningFactor>
 					<MeleeDodgeChance>5</MeleeDodgeChance>
 					<ResearchSpeed>-.20</ResearchSpeed>
@@ -1181,6 +1252,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1198,7 +1270,7 @@
 					<WorkSpeedGlobal>-0.2</WorkSpeedGlobal>
                     <ImmunityGainSpeed>-0.15</ImmunityGainSpeed>
 					<SocialImpact>0.20</SocialImpact>
-					<CarryingCapacity>-0.20</CarryingCapacity>
+					<CarryingCapacity>-20</CarryingCapacity>
 					<GlobalLearningFactor>+0.25</GlobalLearningFactor>
 					<MeleeDodgeChance>-5</MeleeDodgeChance>
 					<ResearchSpeed>+.25</ResearchSpeed>
@@ -1232,6 +1304,7 @@
 		  <li>Succubus</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1250,7 +1323,7 @@
 					<SocialImpact>-0.25</SocialImpact>
 					<NegotiationAbility>-0.20</NegotiationAbility>
 					<TradePriceImprovement>-0.10</TradePriceImprovement>
-					<CarryingCapacity>0.20</CarryingCapacity>
+					<CarryingCapacity>20</CarryingCapacity>
 					<MeleeDodgeChance>10</MeleeDodgeChance>
 					<MeleeHitChance>10</MeleeHitChance>
 					<PainShockThreshold>-0.20</PainShockThreshold>
@@ -1280,6 +1353,7 @@
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		  <li>Geomancer</li>
+		  <li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 

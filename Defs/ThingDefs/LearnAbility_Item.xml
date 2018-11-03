@@ -525,6 +525,31 @@ This arcane script is incomplete and the reader may not be able to learn some, o
     </graphicData>
     <drawGUIOverlay>false</drawGUIOverlay>
   </ThingDef>
+  
+  <ThingDef ParentName="Partial_ArcaneScriptBase">
+    <defName>Torn_BookOfMagitech</defName>
+    <label>Torn Script: Technomancy</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a gifted pawn in the ways of the Technomancer, able to see the connection between science and magic.
+This arcane script is incomplete and the reader will not learn any supporting technomancer abilities, but may still select their primary technomancy path.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/torn_earth</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
 
   <!--=============== Arcane Scripts ====================-->
 
@@ -813,6 +838,30 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/earth</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneScriptBase">
+    <defName>BookOfMagitech</defName>
+    <label>Arcane Script: Technomancy</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a gifted pawn in the ways of the Technomancer, able to see the connection between science and magic.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/technomancer</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <drawGUIOverlay>false</drawGUIOverlay>
@@ -2592,6 +2641,198 @@ Produces 400Wd.</description>
     </comps>
 	<costList>
 		<RawMagicyte>150</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_Sabotage</defName>
+    <label>Technomancer Spell: Sabotage</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a technomancer user how to create a feedback loop in almost any mechanic system, causing it to catastrophically malfunction.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>500</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>50</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_TechnoShield</defName>
+    <label>Technomancer Spell: Kinetic Shield</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a technomancer user how to create a uni-directional force field around a target, capable of repelling inbound projectiles or increasing the velocity of outbound projectiles.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>750</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>65</RawMagicyte>
+		<Cloth>45</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_Overdrive</defName>
+    <label>Technomancer Spell: Overdrive</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a technomancer user how to over-clock or bypass security features of mechanical, electrical, and robotic devices causing it to perform at a drastically increased rate for a short period.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>650</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>58</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_OrbitalStrike</defName>
+    <label>Technomancer Spell: Orbital Strike</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a technomancer how to access ancient satellites and orbital systems and use them to launch an orbital strike.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>1800</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>160</RawMagicyte>
 		<DevilstrandCloth>100</DevilstrandCloth>
 	</costList>
 	<recipeMaker>		    

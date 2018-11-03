@@ -2,6 +2,19 @@
 <Defs>
 
   <ThingDef ParentName="MoteBase">
+    <defName>Mote_TechnoShield</defName>
+    <graphicData>
+      <texPath>UI/technoshield</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.01</fadeInTime>
+      <solidTime>0.35</solidTime>
+      <fadeOutTime>0.2</fadeOutTime>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
     <defName>Mote_Rubble</defName>
     <graphicData>
       <texPath>Motes/Rubble</texPath>

@@ -43,6 +43,7 @@ namespace TorannMagic.ModOptions
         public bool Demonkin = Settings.Instance.Demonkin;
         public bool Geomancer = Settings.Instance.Geomancer;
         public bool Summoner = Settings.Instance.Summoner;
+        public bool Technomancer = Settings.Instance.Technomancer;
 
         public bool Gladiator = Settings.Instance.Gladiator;
         public bool Bladedancer = Settings.Instance.Bladedancer;

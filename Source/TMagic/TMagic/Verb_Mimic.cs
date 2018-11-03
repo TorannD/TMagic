@@ -655,7 +655,7 @@ namespace TorannMagic
                                 }
                                 else if (rnd == 1 && magicPawn.MagicData.MagicPowersG[rnd].learned )
                                 {
-                                    int level = magicPawn.MagicData.MagicPowersPR[rnd].level;
+                                    int level = magicPawn.MagicData.MagicPowersG[rnd].level;
                                     switch (level)
                                     {
                                         case 0:
@@ -680,6 +680,29 @@ namespace TorannMagic
                                 }                                
                             }
                         }
+                        else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+                        {
+                            for (int i = 0; i < 5; i++)
+                            {
+                                int rnd = Rand.RangeInclusive(3, 5);
+                                if (rnd == 3 && magicPawn.MagicData.MagicPowersT[rnd].learned)
+                                {
+                                    tempAbility = TorannMagicDefOf.TM_TechnoShield;
+                                    i = 5;
+                                }
+                                else if (rnd == 4 && magicPawn.MagicData.MagicPowersT[rnd].learned)
+                                {
+                                    tempAbility = TorannMagicDefOf.TM_Sabotage;
+                                    i = 5;
+                                }
+                                else if (rnd == 5 && magicPawn.MagicData.MagicPowersT[rnd].learned)
+                                {
+                                    tempAbility = TorannMagicDefOf.TM_Overdrive;
+                                    i = 5;
+                                }
+                            }
+                        }
+
 
                         if (tempAbility != null)
                         {

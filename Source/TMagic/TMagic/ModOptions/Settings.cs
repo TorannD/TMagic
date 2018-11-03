@@ -44,6 +44,7 @@ namespace TorannMagic.ModOptions
         public bool Demonkin = true;
         public bool Geomancer = true;
         public bool Summoner = true;
+        public bool Technomancer = true;
 
         public bool Gladiator = true;
         public bool Bladedancer = true;
@@ -96,6 +97,7 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<bool>(ref this.Bard, "Bard", true, false);
             Scribe_Values.Look<bool>(ref this.Summoner, "Summoner", true, false);
             Scribe_Values.Look<bool>(ref this.Necromancer, "Necromancer", true, false);
+            Scribe_Values.Look<bool>(ref this.Technomancer, "Technomancer", true, false);
             Scribe_Values.Look<bool>(ref this.Demonkin, "Demonkin", true, false);
             Scribe_Values.Look<bool>(ref this.Gladiator, "Gladiator", true, false);
             Scribe_Values.Look<bool>(ref this.Bladedancer, "Bladedancer", true, false);

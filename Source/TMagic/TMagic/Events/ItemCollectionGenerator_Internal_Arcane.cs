@@ -11,7 +11,7 @@ namespace TorannMagic
     {
         private const float ArtifactsChance = 0.03f;
         private const float LuciferiumChance = 0.2f;
-        private const float ArcaneScriptChance = 0.1f;
+        private const float ArcaneScriptChance = 0.06f;
         private const float DrugChance = 0.15f;
         private const float SpellChance = 0.2f;
         private const float SkillChance = 0.2f;
@@ -32,7 +32,7 @@ namespace TorannMagic
             for (int j = 0; j < 10; j++)
             {
                 //Torn Scripts
-                if (Rand.Chance(0.3f) && (totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.Torn_BookOfArcanist.BaseMarketValue / 2)
+                if (Rand.Chance(0.3f) && (totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.Torn_BookOfArcanist.BaseMarketValue / 1.5)
                 {
                     if (Rand.Chance(ArcaneScriptChance))
                     {
@@ -106,13 +106,19 @@ namespace TorannMagic
                         outThings.Add(thing);
                         collectiveMarketValue += thing.MarketValue;
                     }
+                    if (Rand.Chance(ArcaneScriptChance))
+                    {
+                        Thing thing = ThingMaker.MakeThing(TorannMagicDefOf.Torn_BookOfMagitech, null);
+                        outThings.Add(thing);
+                        collectiveMarketValue += thing.MarketValue;
+                    }
 
                 }
                 //Arcane Scripts
                 if (Rand.Chance(ArcaneScriptChance) && (totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.BookOfArcanist.BaseMarketValue / 2)
                 {
                     float rnd = Rand.Range(0f, 1f);
-                    float scriptCount = 18f;
+                    float scriptCount = 19f;
                     if (rnd < 1f/scriptCount)
                     {
                         Thing thing = ThingMaker.MakeThing(TorannMagicDefOf.BookOfInnerFire, null);
@@ -215,6 +221,12 @@ namespace TorannMagic
                         outThings.Add(thing);
                         collectiveMarketValue += thing.MarketValue;
                     }
+                    else if (rnd < 18f / scriptCount)
+                    {
+                        Thing thing = ThingMaker.MakeThing(TorannMagicDefOf.BookOfMagitech, null);
+                        outThings.Add(thing);
+                        collectiveMarketValue += thing.MarketValue;
+                    }
                     else 
                     {
                         Thing thing = ThingMaker.MakeThing(TorannMagicDefOf.BookOfPsionic, null);
@@ -273,10 +285,14 @@ namespace TorannMagic
                 if (Rand.Chance(MasterSpellChance) && (totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.SpellOf_Blizzard.BaseMarketValue)
                 {
                     Thing thing;
-                    float rnd = Rand.Range(0f, 24f);
-                    if (rnd > 22)
+                    float rnd = Rand.Range(0f, 26f);
+                    if (rnd > 24)
                     {
                         thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_PsychicShock, null);
+                    }
+                    else if (rnd > 22 && rnd <= 24)
+                    {
+                        thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_OrbitalStrike, null);
                     }
                     else if (rnd > 20 && rnd <= 22)
                     {
@@ -332,129 +348,147 @@ namespace TorannMagic
                     Thing thing = new Thing();
                     for (int i = 0; i < randomInRange; i++)
                     {
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Blink, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Teleport, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Heal, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Rain, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Heater, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Cooler, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_DryGround, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_WetGround, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_ChargeBattery, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_SmokeCloud, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_EMP, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Extinguish, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_SummonMinion, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_TransferMana, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_SiphonMana, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_ManaShield, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_PowerNode, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Sunlight, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_SpellMending, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_CauterizeWound, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
-                        if (Rand.Range(0, 10) > 9)
+                        if (Rand.Range(0, 10f) > 9f)
                         {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_FertileLands, null);
+                            outThings.Add(thing);
+                            collectiveMarketValue += thing.MarketValue;
+                        }
+                        if (Rand.Range(0, 10f) > 9f)
+                        {
+                            thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_TechnoShield, null);
+                            outThings.Add(thing);
+                            collectiveMarketValue += thing.MarketValue;
+                        }
+                        if (Rand.Range(0, 10f) > 9f)
+                        {
+                            thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Sabotage, null);
+                            outThings.Add(thing);
+                            collectiveMarketValue += thing.MarketValue;
+                        }
+                        if (Rand.Range(0, 10f) > 9f)
+                        {
+                            thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Overdrive, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }

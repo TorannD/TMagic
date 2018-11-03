@@ -783,5 +783,26 @@
     <armorCategory>Dark</armorCategory>
 	<isExplosive>false</isExplosive>
   </DamageDef>
+  
+  <DamageDef Name="ElectricalBase" Abstract="True">
+		<harmsHealth>true</harmsHealth>
+		<makesBlood>false</makesBlood>
+	</DamageDef>
 
+	<DamageDef ParentName="ElectricalBase">
+		<defName>TM_ElectricalBurn</defName>
+		<label>electrical burn</label>
+		<externalViolenceForMechanoids>true</externalViolenceForMechanoids>
+		<deathMessage>{0} has been electrocuted to death.</deathMessage>
+		<impactSoundType>Electric</impactSoundType>
+		<defaultDamage>20</defaultDamage>
+		<explosionSnowMeltAmount>0</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_BlastEMP</explosionCellMote>
+		<explosionColorEdge>(1, 1, 0.4, 0.8)</explosionColorEdge>
+		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
+		<soundExplosion>Explosion_EMP</soundExplosion>
+		<combatLogRules>Damage_EMP</combatLogRules>
+		<armorCategory>Heat</armorCategory>
+	</DamageDef>
+	
 </Defs>

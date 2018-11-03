@@ -38,6 +38,8 @@ namespace TorannMagic
         public static ThingDef Torn_BookOfDemons;
         public static ThingDef BookOfEarth;
         public static ThingDef Torn_BookOfEarth;
+        public static ThingDef BookOfMagitech;
+        public static ThingDef Torn_BookOfMagitech;
         public static ThingDef BookOfQuestion;
 
 
@@ -77,6 +79,10 @@ namespace TorannMagic
         public static ThingDef SpellOf_PsychicShock;
         public static ThingDef SpellOf_Scorn;
         public static ThingDef SpellOf_Meteor;
+        public static ThingDef SpellOf_Sabotage;
+        public static ThingDef SpellOf_Overdrive;
+        public static ThingDef SpellOf_TechnoShield;
+        public static ThingDef SpellOf_OrbitalStrike;
 
         public static ThingDef SkillOf_Sprint;
         public static ThingDef SkillOf_GearRepair;
@@ -379,6 +385,31 @@ namespace TorannMagic
         public static TMAbilityDef TM_Meteor_II;
         public static TMAbilityDef TM_Meteor_III;
 
+        //Technomancer
+        public static TraitDef Technomancer;
+
+        public static TMAbilityDef TM_TechnoBit;
+        public static TMAbilityDef TM_TechnoTurret;
+        public static TMAbilityDef TM_TechnoWeapon;
+        public static TMAbilityDef TM_NanoStimulant;
+        public static HediffDef TM_NanoStimulantHD;
+        public static TMAbilityDef TM_TechnoShield;
+        public static HediffDef TM_TechnoShieldHD;
+        public static HediffDef TM_TechnoShieldHD_I;
+        public static HediffDef TM_TechnoShieldHD_II;
+        public static HediffDef TM_TechnoShieldHD_III;
+        public static TMAbilityDef TM_Sabotage;
+        //public static HediffDef TM_SabotageHD;
+        public static TMAbilityDef TM_Overdrive;
+        public static HediffDef TM_OverdriveHD;
+        public static HediffDef TM_OverdriveHD_I;
+        public static HediffDef TM_OverdriveHD_II;
+        public static HediffDef TM_OverdriveHD_III;
+        public static TMAbilityDef TM_OrbitalStrike;
+        public static TMAbilityDef TM_OrbitalStrike_I;
+        public static TMAbilityDef TM_OrbitalStrike_II;
+        public static TMAbilityDef TM_OrbitalStrike_III;
+
         //Might 
         public static NeedDef TM_Stamina;
         public static HediffDef TM_MightUserHD;
@@ -582,6 +613,9 @@ namespace TorannMagic
         public static EffecterDef GiantExplosion;
         public static EffecterDef TM_GiantExplosion;
         public static EffecterDef TM_Stoneskin_Effecter;
+        public static EffecterDef TM_DeathExplosion;
+        public static EffecterDef TM_OSExplosion;
+        public static EffecterDef TM_SabotageExplosion;
 
         //Apparel layers
         public static ApparelLayerDef TM_Cloak;
@@ -615,6 +649,7 @@ namespace TorannMagic
         public static SoundDef TM_DemonDeath;
         public static SoundDef TM_Implosion;
         public static SoundDef TM_ThrumBow;
+        public static SoundDef TM_FastReleaseSD;
 
         //Inspirations
         public static InspirationDef ID_Champion;

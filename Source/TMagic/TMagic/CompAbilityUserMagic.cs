@@ -89,6 +89,11 @@ namespace TorannMagic
         private float G_EarthSprites_eff = 0.06f;
         private float G_EarthernHammer_eff = 0.06f;
         private float G_Meteor_eff = 0.05f;
+        private float T_TechnoTurret_eff = 0.02f;
+        private float T_TechnoShield_eff = 0.06f;
+        private float T_Overdrive_eff = 0.08f;
+        private float T_Sabotage_eff = 0.06f;
+        private float T_OrbitalStrike_eff = 0.05f;
 
         private float global_eff = 0.025f;
 
@@ -131,6 +136,7 @@ namespace TorannMagic
         public bool spell_SummonDemon = false;
         public bool spell_Meteor = false;
         public bool spell_Teach = false;
+        public bool spell_OrbitalStrike = false;
 
         private bool item_StaffOfDefender = false;
 
@@ -162,12 +168,46 @@ namespace TorannMagic
         private bool dismissSunlightSpell = false;
         private bool dispelStoneskin = false;
         public List<IntVec3> fertileLands = new List<IntVec3>();
+        public bool useTechnoBitToggle = true;
+        public Vector3 bitPosition = Vector3.zero;
+        private bool bitFloatingDown = true;
+        private float bitOffset = .45f;
+        public int technoWeaponDefNum = -1;
+        public Thing technoWeaponThing = null;
+        public bool useElementalShotToggle = true;
+        public Building overdriveBuilding = null;
+        public int overdriveDuration = 0;
+        public float overdrivePowerOutput = 0;
+        public int overdriveFrequency = 100;
+        public Building sabotageBuilding = null;
 
         private Effecter powerEffecter = null;
         private int powerModifier = 0;
         private int maxPower = 10;
         public int nextEntertainTick = -1;
         public int nextSuccubusLovinTick = -1;
+
+        public bool HasTechnoBit
+        {
+            get
+            {
+                return this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoBit).learned;
+            }
+        }
+        public bool HasTechnoTurret
+        {
+            get
+            {
+                return this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoTurret).learned;
+            }
+        }
+        public bool HasTechnoWeapon
+        {
+            get
+            {
+                return this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoWeapon).learned;
+            }
+        }
 
         public int PowerModifier
         {
@@ -222,6 +262,11 @@ namespace TorannMagic
                 {
                     DrawMageMark();
                 }
+            }
+
+            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) && this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower mp) => mp.abilityDef == TorannMagicDefOf.TM_TechnoBit).learned == true)
+            {
+                DrawTechnoBit();
             }
             
             Enchantment.CompEnchant compEnchant = this.Pawn.GetComp<Enchantment.CompEnchant>();
@@ -1013,6 +1058,83 @@ namespace TorannMagic
             }
             return result;
         }
+        public int LevelUpSkill_TechnoBit(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_TechnoBit.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_TechnoTurret(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_TechnoTurret.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_TechnoWeapon(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_TechnoWeapon.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_TechnoShield(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_TechnoShield.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_Sabotage(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Sabotage.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_Overdrive(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Overdrive.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_OrbitalStrike(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_OrbitalStrike.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
 
         private void SingleEvent()
         {
@@ -1117,6 +1239,13 @@ namespace TorannMagic
                             }
                             this.autocastTick = Find.TickManager.TicksGame + (int)Rand.Range(.8f * settingsRef.autocastEvaluationFrequency, 1.2f * settingsRef.autocastEvaluationFrequency);
                         }
+                        if(Find.TickManager.TicksGame % this.overdriveFrequency  == 0)
+                        {
+                            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+                            {
+                                ResolveTechnomancerOverdrive();
+                            }
+                        }
                         if(Find.TickManager.TicksGame % 600 == 0)
                         {
                             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Warlock))
@@ -1206,7 +1335,7 @@ namespace TorannMagic
                     bool flag3 = base.AbilityUser.story != null;
                     if (flag3)
                     {
-                        bool flag4 = base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Geomancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Warlock) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Succubus) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Paladin) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Druid) || (base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Lich)) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Priest) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Bard);
+                        bool flag4 = base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Geomancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Warlock) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Succubus) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Paladin) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Druid) || (base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Lich)) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Priest) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Bard);
                         if (flag4)
                         {
                             result = true;
@@ -1217,7 +1346,38 @@ namespace TorannMagic
                 result = false;
                 return result;
             }
-        }        
+        }   
+        
+        private void DrawTechnoBit()
+        {
+            float num = Mathf.Lerp(1.2f, 1.55f, 1f);
+            if(this.bitFloatingDown)
+            {
+                if(this.bitOffset < .38f)
+                {
+                    this.bitFloatingDown = false;
+                }
+                this.bitOffset -= .001f;                    
+            }
+            else
+            {
+                if (this.bitOffset > .57f)
+                {
+                    this.bitFloatingDown = true;
+                }
+                this.bitOffset += .001f;
+            }
+
+            this.bitPosition = this.AbilityUser.Drawer.DrawPos;
+            this.bitPosition.x -= .5f + Rand.Range(-.01f, .01f);
+            this.bitPosition.z += this.bitOffset;
+            this.bitPosition.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
+            float angle = 0f;
+            Vector3 s = new Vector3(.35f, 1f, .35f);
+            Matrix4x4 matrix = default(Matrix4x4);
+            matrix.SetTRS(this.bitPosition, Quaternion.AngleAxis(angle, Vector3.up), s);
+            Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.bitMat, 0);
+        }
 
         public void DrawMageMark()
         {
@@ -1277,6 +1437,10 @@ namespace TorannMagic
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
             {
                 Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.earthMarkMat, 0);
+            }
+            else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+            {
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.technoMarkMat, 0);
             }
             else 
             {
@@ -2123,6 +2287,53 @@ namespace TorannMagic
                             this.AddPawnAbility(TorannMagicDefOf.TM_Sentinel);
                         }
                     }
+                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Technomancer);
+                    if (flag2)
+                    {
+                        //Log.Message("Initializing Technomancer Abilities");
+                        
+                        this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoBit).learned = false;
+                        this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoTurret).learned = false;
+                        this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoWeapon).learned = false;
+                        if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                        {
+                            if (Rand.Chance(.4f))
+                            {
+                                this.AddPawnAbility(TorannMagicDefOf.TM_TechnoShield);
+                            }
+                            else
+                            {
+                                this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoShield).learned = false;
+                            }
+                            if (Rand.Chance(.3f))
+                            {
+                                this.AddPawnAbility(TorannMagicDefOf.TM_Sabotage);
+                            }
+                            else
+                            {
+                                this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Sabotage).learned = false;
+                            }
+                            if (Rand.Chance(.3f))
+                            {
+                                this.AddPawnAbility(TorannMagicDefOf.TM_Overdrive);
+                            }
+                            else
+                            {
+                                this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Overdrive).learned = false;
+                            }
+                            if(Rand.Chance(.3f))
+                            {
+                                this.spell_OrbitalStrike = true;
+                                this.InitializeSpell();
+                            }
+                        }
+                        else
+                        {
+                            this.AddPawnAbility(TorannMagicDefOf.TM_TechnoShield);
+                            this.AddPawnAbility(TorannMagicDefOf.TM_Sabotage);
+                            this.AddPawnAbility(TorannMagicDefOf.TM_Overdrive);
+                        }
+                    }
                 }
 
                 this.magicPowersInitialized = true;
@@ -2355,6 +2566,42 @@ namespace TorannMagic
                     {
                         this.RemovePawnAbility(TorannMagicDefOf.TM_Meteor);
                         this.AddPawnAbility(TorannMagicDefOf.TM_Meteor);
+                    }
+                }
+                if (this.spell_OrbitalStrike == true)
+                {
+                    MagicPower OrbitalStrikePower = this.MagicData.magicPowerT.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_OrbitalStrike);
+                    if (OrbitalStrikePower == null)
+                    {
+                        OrbitalStrikePower = this.MagicData.magicPowerT.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_OrbitalStrike_I);
+                        if (OrbitalStrikePower == null)
+                        {
+                            OrbitalStrikePower = this.MagicData.magicPowerT.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_OrbitalStrike_II);
+                            if (OrbitalStrikePower == null)
+                            {
+                                OrbitalStrikePower = this.MagicData.magicPowerT.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_OrbitalStrike_III);
+                            }
+                        }
+                    }
+                    if (OrbitalStrikePower.level == 3)
+                    {
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_OrbitalStrike_III);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_OrbitalStrike_III);
+                    }
+                    else if (OrbitalStrikePower.level == 2)
+                    {
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_OrbitalStrike_II);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_OrbitalStrike_II);
+                    }
+                    else if (OrbitalStrikePower.level == 1)
+                    {
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_OrbitalStrike_I);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_OrbitalStrike_I);
+                    }
+                    else
+                    {
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_OrbitalStrike);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_OrbitalStrike);
                     }
                 }
                 //this.UpdateAbilities();
@@ -2969,7 +3216,7 @@ namespace TorannMagic
             {
                 if (traits[i].def == TorannMagicDefOf.InnerFire || traits[i].def == TorannMagicDefOf.HeartOfFrost || traits[i].def == TorannMagicDefOf.StormBorn  || traits[i].def == TorannMagicDefOf.Arcanist || traits[i].def == TorannMagicDefOf.Paladin ||
                     traits[i].def == TorannMagicDefOf.Druid || traits[i].def == TorannMagicDefOf.Priest || traits[i].def == TorannMagicDefOf.Necromancer || traits[i].def == TorannMagicDefOf.Warlock || traits[i].def == TorannMagicDefOf.Succubus ||
-                    traits[i].def == TorannMagicDefOf.TM_Bard || traits[i].def == TorannMagicDefOf.Geomancer)
+                    traits[i].def == TorannMagicDefOf.TM_Bard || traits[i].def == TorannMagicDefOf.Geomancer || traits[i].def == TorannMagicDefOf.Technomancer)
                 {
                     Log.Message("Removing trait " + traits[i].Label);
                     traits.Remove(traits[i]);
@@ -3552,6 +3799,51 @@ namespace TorannMagic
                     result = magicPowerSkill.level;
                 }
             }
+            if (attributeName == "TM_TechnoTurret_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_TechnoTurret.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_TechnoShield_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_TechnoShield.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_Sabotage_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Sabotage.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_Overdrive_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Overdrive.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_OrbitalStrike_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_OrbitalStrike.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
 
             return result;
         }
@@ -3872,6 +4164,31 @@ namespace TorannMagic
             {
                 MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Meteor.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Meteor_eff");
                 adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.G_Meteor_eff * (float)magicPowerSkill.level);
+            }
+            if (magicDef == TorannMagicDefOf.TM_TechnoTurret)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_TechnoTurret.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoTurret_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.T_TechnoTurret_eff * (float)magicPowerSkill.level);
+            }
+            if (magicDef == TorannMagicDefOf.TM_TechnoShield)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_TechnoShield.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoShield_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.T_TechnoShield_eff * (float)magicPowerSkill.level);
+            }
+            if (magicDef == TorannMagicDefOf.TM_Sabotage)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Sabotage.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Sabotage_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.T_Sabotage_eff * (float)magicPowerSkill.level);
+            }
+            if (magicDef == TorannMagicDefOf.TM_Overdrive)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Overdrive.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Overdrive_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.T_Overdrive_eff * (float)magicPowerSkill.level);
+            }
+            if (magicDef == TorannMagicDefOf.TM_OrbitalStrike || magicDef == TorannMagicDefOf.TM_OrbitalStrike_I || magicDef == TorannMagicDefOf.TM_OrbitalStrike_II || magicDef == TorannMagicDefOf.TM_OrbitalStrike_III)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_OrbitalStrike.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_OrbitalStrike_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.T_OrbitalStrike_eff * (float)magicPowerSkill.level);
             }
             if (this.mpCost != 1f)
             {
@@ -5193,6 +5510,42 @@ namespace TorannMagic
             }
         }
 
+        public void ResolveTechnomancerOverdrive()
+        {
+            if (this.overdriveBuilding != null)
+            {
+                Vector3 rndPos = this.overdriveBuilding.DrawPos;
+                rndPos.x += Rand.Range(-.4f, .4f);
+                rndPos.z += Rand.Range(-.4f, .4f);
+                TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_SparkFlash"), rndPos, this.overdriveBuilding.Map, Rand.Range(.6f, .8f), .1f, .05f, .05f, 0, 0, 0, Rand.Range(0, 360));
+                MoteMaker.ThrowSmoke(rndPos, this.overdriveBuilding.Map, Rand.Range(.8f, 1.2f));
+                rndPos = this.overdriveBuilding.DrawPos;
+                rndPos.x += Rand.Range(-.4f, .4f);
+                rndPos.z += Rand.Range(-.4f, .4f);
+                TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_ElectricalSpark"), rndPos, this.overdriveBuilding.Map, Rand.Range(.4f, .7f), .2f, .05f, .1f, 0, 0, 0, Rand.Range(0, 360));
+                SoundInfo info = SoundInfo.InMap(new TargetInfo(this.overdriveBuilding.Position, this.overdriveBuilding.Map, false), MaintenanceType.None);
+                info.pitchFactor = .4f;
+                info.volumeFactor = .3f;
+                SoundDefOf.TurretAcquireTarget.PlayOneShot(info);
+                MagicPowerSkill damageControl = this.MagicData.MagicPowerSkill_Overdrive.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Overdrive_ver");
+                if (Rand.Chance(.6f - (.06f * damageControl.level)))
+                {                    
+                    TM_Action.DamageEntities(this.overdriveBuilding, null, Rand.Range(3f, (7f - (1f * damageControl.level))), DamageDefOf.Burn, this.overdriveBuilding);
+                }
+                this.overdriveFrequency = 100 + (10 * damageControl.level);
+                if(Rand.Chance(.4f))
+                {
+                    this.overdriveFrequency /= 2;
+                }
+                this.overdriveDuration--;
+                if(this.overdriveDuration <= 0)
+                {
+                    this.overdrivePowerOutput = 0;
+                    this.overdriveBuilding = null;
+                }
+            }
+        }
+
         public void ResolveSustainers()
         {
             if(this.stoneskinPawns.Count() > 0)
@@ -5365,6 +5718,35 @@ namespace TorannMagic
 
         public void ResolveClassSkills()
         {
+            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+            {
+                if (this.HasTechnoBit)
+                {
+                    if (!this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_TechnoBitHD")))
+                    {
+                        HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_TechnoBitHD"), .5f);
+                        Vector3 bitDrawPos = this.Pawn.DrawPos;
+                        bitDrawPos.x -= .5f;
+                        bitDrawPos.z += .45f;
+                        for (int i = 0; i < 4; i++)
+                        {
+                            MoteMaker.ThrowSmoke(bitDrawPos, this.Pawn.Map, Rand.Range(.6f, .8f));
+                        }
+                    }
+                }
+                if(this.HasTechnoWeapon && this.Pawn.equipment.Primary != null)
+                {
+                    if(this.Pawn.equipment.Primary.def.defName.Contains("TM_TechnoWeapon_Base") && !this.technoWeaponThing.DestroyedOrNull() && this.Pawn.equipment.Primary.def.Verbs.FirstOrDefault().range < 2)
+                    {
+                        TM_Action.DoAction_TechnoWeaponCopy(this.Pawn, this.technoWeaponThing);
+                    }
+                    if(!this.Pawn.equipment.Primary.def.defName.Contains("TM_TechnoWeapon_Base") && this.technoWeaponThing != null)
+                    {
+                        this.technoWeaponThing = null;
+                    }
+                }
+            }
+
             if(this.MagicUserLevel >= 20 && this.spell_Teach == false)
             {
                 this.AddPawnAbility(TorannMagicDefOf.TM_TeachMagic);
@@ -5760,9 +6142,14 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.spell_Scorn, "spell_Scorn", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Meteor, "spell_Meteor", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Teach, "spell_Teach", false, false);
+            Scribe_Values.Look<bool>(ref this.spell_OrbitalStrike, "spell_OrbitalStrike", false, false);
+            Scribe_Values.Look<bool>(ref this.useTechnoBitToggle, "useTechnoBitToggle", true, false);
+            Scribe_Values.Look<bool>(ref this.useElementalShotToggle, "useElementalShotToggle", true, false);
             Scribe_Values.Look<int>(ref this.powerModifier, "powerModifier", 0, false);
+            Scribe_Values.Look<int>(ref this.technoWeaponDefNum, "technoWeaponDefNum");
             Scribe_Values.Look<bool>(ref this.doOnce, "doOnce", true, false);
             Scribe_References.Look<Pawn>(ref this.soulBondPawn, "soulBondPawn", false);
+            Scribe_References.Look<Thing>(ref this.technoWeaponThing, "technoWeaponThing", false);
             Scribe_Collections.Look<Thing>(ref this.summonedMinions, "summonedMinions", LookMode.Reference);
             Scribe_Collections.Look<Thing>(ref this.summonedLights, "summonedLights", LookMode.Reference);
             Scribe_Collections.Look<Thing>(ref this.summonedSentinels, "summonedSentinels", LookMode.Reference);
@@ -6423,6 +6810,23 @@ namespace TorannMagic
                         }
                     }
                 }
+                bool flag53 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Technomancer);
+                if (flag53)
+                {
+                    bool flagT = !this.MagicData.MagicPowersT.NullOrEmpty<MagicPower>();
+                    if (flagT)
+                    {
+                        //this.LoadPowers();
+                        foreach (MagicPower current16 in this.MagicData.MagicPowersT)
+                        {
+                            bool flagT2 = current16.abilityDef != null;
+                            if (flagT2)
+                            {
+
+                            }
+                        }
+                    }
+                }
                 if (flag40)
                 {
                     //Log.Message("Loading Inner Fire Abilities");
@@ -6649,6 +7053,37 @@ namespace TorannMagic
                     if (mpG.learned == true)
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Sentinel);
+                    }
+                }
+                if (flag53)
+                {
+                    //Log.Message("Loading Geomancer Abilities");
+                    MagicPower mpT = this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoTurret);
+                    if (mpT.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_TechnoTurret);
+                    }
+                    mpT = this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoWeapon);
+                    if (mpT.learned == true)
+                    {
+                        //nano weapon applies only when equipping a new weapon
+                        this.AddPawnAbility(TorannMagicDefOf.TM_TechnoWeapon);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_NanoStimulant);
+                    }
+                    mpT = this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoShield);
+                    if (mpT.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_TechnoShield);
+                    }
+                    mpT = this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Sabotage);
+                    if (mpT.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Sabotage);
+                    }
+                    mpT = this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Overdrive);
+                    if (mpT.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Overdrive);
                     }
                 }
 

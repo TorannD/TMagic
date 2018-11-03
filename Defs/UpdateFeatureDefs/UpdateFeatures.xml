@@ -6,22 +6,6 @@
 		<linkUrl>https://ludeon.com/forums/index.php?topic=37161.0</linkUrl>
 	</HugsLib.UpdateFeatureDef>	
 	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_2_0_0</defName>
-		<assemblyVersion>2.0.0</assemblyVersion>
-		<content>
-- New Class: Faceless (might) - faceless excel at manipulation, perception, and deception; through their cunning tactics, they can take the strength of another and make it their own. 
-*Deception - exploiting knowledge of how other pawns perceive things, the faceless are able to blend into the canopy, becoming just another harmless object to an observer, making themselves all but invisible. Performing hostile actions will break the deception.
-*Mimic - creates an imitation of a fighter or mage skill; can be used on enemy or friendly pawns alike to acquire a one-time-use ability.
-*Reversal - reverses the kinetic energy of projectile and melee attacks back towards the attacker for a short time
-*Transpose - the faceless takes the place of another pawn and forces the other pawn to take its place
-*Possess - confuses the mind of a target pawn to gain (limited) control over their body; if used on a willing host, the faceless enhances physical capability of the host
- 
-- New mod options have been added to allow you to mark enemy fighter classes; another new option allows friendly pawns (mages and fighters) to also be marked.
-
-- Global skills Spirit (mage) and Endurance (fighter) now give 4% boost to their respective resource pool maximum levels (was 2%).
-	</content>
-	</HugsLib.UpdateFeatureDef>
-	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
 		<defName>ARimWorldOfMagic_2_1_0</defName>
 		<assemblyVersion>2.1.0</assemblyVersion>
 		<content>
@@ -124,6 +108,31 @@ Fixed an issue where Bards performing the "entertain" job wouldn't properly rese
 Fixed a bug with Warlock "Empathy Bleed" that would attempt to feel empathy for colony pets
 Warlock/Succubus can no longer soulbond themselves
 
+		</content>
+	</HugsLib.UpdateFeatureDef>	
+	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_2_2_6</defName>
+		<assemblyVersion>2.2.6</assemblyVersion>
+		<content>
+** New class: Technomancer - the technomancer combines technology and the arcane power as the basis for their abilities. They are unique in that they can select one (and only one) of three primary paths: offense, defense, and support
+- Offensive Path: by using an existing, mechanical weapon as a blueprint, the technomancer can design a modified version of that weapon and mold it out of mana; the combination of this improved weapon system, nanites that increase their combat abilites, and projectiles infused with elemental properties makes the offensive technomancer a formidable option
+- Defensive Path: the Mark-IV weapon system was a prototype that failed due to a lack of sustainable energy; technomancers use their own mana as a means to fuel this weapon system, and are able to effectively deploy and operate it as a powerful, manned turret
+- Support Path: support technomancers prefer to craft an independent and autonomous AI to assist them in many tasks; this "techno-bit" is able to accelerate the work speed of many projects, can repair almost any mechanical system, and even has some combat abilities
+In addition to the primary paths, all technomancers have access to several core, class abilities:
+- Overdrive: bypasses safety features or increases power of generators, turrets, and robotic AI to drastically improve their output capacity for a short period but can cause stress and damage the targeted system
+- Sabotage: like overdrive, it can target many different powered, computer, or mechanical systems to cause everything from minor to catastrophic failure of all vulnerable systems in a small area
+- Kinetic Shield: surrounds the target with a shield able to deflect projectiles; the shields power determines the limit of kinetic energy that can be deflected - high powered rounds can penetrate low powered kinetic shields
+- Orbital Strike; hacks into orbital bombardment satellites to input target coordinates, can take some time to align and launch the attack but packs a punch when it hits
+	
+** Tweaks:
+Autocast blink and phase strike XP gain has been reduced
+Mana potion recipe for the gemcrafting replaces Go-Juice with other, less technological, ingredients
+Autocast will not select targets out of line of sight - this was causing some abilities to move the casting pawn into a position it could see the target; this does not affect abilities that do not require line of sight
+Sentinels will now activate on manhunter animals
+
+Bug fixes:
+Pawns of non-standard sizes will only be drawn as their intended sizes
+Carrying capacity has been fixed for several traits that increased or decreased this state
 		</content>
 	</HugsLib.UpdateFeatureDef>	
 	

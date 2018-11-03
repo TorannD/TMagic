@@ -12,7 +12,7 @@ namespace TorannMagic
             CompAbilityUserMagic comp = user.GetComp<CompAbilityUserMagic>();
             MagicPower magicPower;
 
-            if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Geomancer) || user.story.traits.HasTrait(TorannMagicDefOf.Warlock) || user.story.traits.HasTrait(TorannMagicDefOf.Succubus) || user.story.traits.HasTrait(TorannMagicDefOf.TM_Bard) || user.story.traits.HasTrait(TorannMagicDefOf.Priest) || (user.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || user.story.traits.HasTrait(TorannMagicDefOf.Lich)) || user.story.traits.HasTrait(TorannMagicDefOf.Druid) || parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Summoner) || user.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || user.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || user.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || user.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || user.story.traits.HasTrait(TorannMagicDefOf.Paladin))))
+            if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || user.story.traits.HasTrait(TorannMagicDefOf.Geomancer) || user.story.traits.HasTrait(TorannMagicDefOf.Warlock) || user.story.traits.HasTrait(TorannMagicDefOf.Succubus) || user.story.traits.HasTrait(TorannMagicDefOf.TM_Bard) || user.story.traits.HasTrait(TorannMagicDefOf.Priest) || (user.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || user.story.traits.HasTrait(TorannMagicDefOf.Lich)) || user.story.traits.HasTrait(TorannMagicDefOf.Druid) || parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Summoner) || user.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || user.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || user.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || user.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || user.story.traits.HasTrait(TorannMagicDefOf.Paladin))))
             {
                 if (parent.def.defName == "SpellOf_Rain" && comp.spell_Rain == false)
                 {
@@ -217,6 +217,12 @@ namespace TorannMagic
                     comp.InitializeSpell();
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
+                else if (parent.def.defName == "SpellOf_OrbitalStrike" && comp.spell_OrbitalStrike == false && user.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+                {
+                    comp.spell_OrbitalStrike = true;
+                    comp.InitializeSpell();
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
                 else if (parent.def.defName == "SpellOf_CauterizeWound" && comp.spell_CauterizeWound == false && user.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
                 {
                         comp.spell_CauterizeWound = true;
@@ -234,6 +240,30 @@ namespace TorannMagic
                         comp.spell_SpellMending = true;
                         comp.InitializeSpell();
                         this.parent.Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def.defName == "SpellOf_TechnoShield" && comp.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoShield).learned == false && user.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+                {
+                    comp.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoShield).learned = true;
+                    comp.AddPawnAbility(TorannMagicDefOf.TM_TechnoShield);
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def.defName == "SpellOf_Sabotage" && comp.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Sabotage).learned == false && user.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+                {
+                    comp.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Sabotage).learned = true;
+                    comp.AddPawnAbility(TorannMagicDefOf.TM_Sabotage);
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def.defName == "SpellOf_Overdrive" && comp.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Overdrive).learned == false && user.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+                {
+                    comp.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Overdrive).learned = true;
+                    comp.AddPawnAbility(TorannMagicDefOf.TM_Overdrive);
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def.defName == "SpellOf_OrbitalStrike" && comp.spell_OrbitalStrike == false && user.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+                {
+                    comp.spell_OrbitalStrike = true;
+                    comp.InitializeSpell();
+                    this.parent.Destroy(DestroyMode.Vanish);
                 }
                 else
                 {

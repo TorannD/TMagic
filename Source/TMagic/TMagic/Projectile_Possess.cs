@@ -23,6 +23,8 @@ namespace TorannMagic
         Pawn caster = null;
         List<int> hitPawnWorkSetting = new List<int>();
 
+        Pawn loadPawn = new Pawn();
+
         private int verVal;
         private int pwrVal;
 
@@ -33,9 +35,10 @@ namespace TorannMagic
             Scribe_Values.Look<int>(ref this.age, "age", 0, false);
             Scribe_Values.Look<int>(ref this.duration, "duration", 1200, false);
             Scribe_Values.Look<int>(ref this.inventoryCount, "inventoryCount", 0, false);
-            Scribe_Values.Look<Faction>(ref this.pFaction, "pFaction", null, false);
+            Scribe_References.Look<Faction>(ref this.pFaction, "pFaction", false);
             Scribe_Values.Look<IntVec3>(ref this.oldPosition, "oldPosition", default(IntVec3), false);
             Scribe_References.Look<Pawn>(ref this.hitPawn, "hitPawn", false);
+            Scribe_Deep.Look<Pawn>(ref this.caster, "caster", new object[0]);
             Scribe_Collections.Look<int>(ref this.hitPawnWorkSetting, "hitPawnWorkSettings", LookMode.Value);
         }
 
@@ -123,6 +126,8 @@ namespace TorannMagic
                                     Log.Message("error attempting to assign a duty to pawn during possession");
                                 }                                
                             }
+                            //loadPawn = caster;
+                            //loadPawn.ThingID += Rand.Range(0, 214).ToString();
                             caster.DeSpawn();
                         }
                         else
@@ -202,6 +207,10 @@ namespace TorannMagic
                         if (!flag2)
                         {
                             GenPlace.TryPlaceThing(caster, this.oldPosition, this.Map, ThingPlaceMode.Near, null, null);
+                        }
+                        if(!caster.Spawned)
+                        {
+                            GenSpawn.Spawn(this.launcher, this.oldPosition, this.Map, WipeMode.Vanish);
                         }
                         bool flag3 = hitPawn.Faction != pFaction;
                         if (flag3)

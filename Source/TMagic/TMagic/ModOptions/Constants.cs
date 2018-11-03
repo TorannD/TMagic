@@ -49,5 +49,17 @@ namespace TorannMagic.ModOptions
         {
             return lastGrowthMoteTick;
         }
+
+        private static int technoWeaponCount;
+
+        public static void SetTechnoWeaponCount(int value)
+        {
+            technoWeaponCount = value;
+        }
+
+        public static int GetTechnoWeaponCount()
+        {
+            return technoWeaponCount;
+        }
     }
 }
