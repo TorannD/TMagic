@@ -637,6 +637,10 @@ namespace TorannMagic
                                 {
                                     compMagic.AddPawnAbility(enumerator.Current.abilityDef);
                                 }
+                                if ((enumerator.Current.abilityDef.defName == "TM_TechnoWeapon"))
+                                {
+                                    compMagic.AddPawnAbility(TorannMagicDefOf.TM_NanoStimulant);
+                                }
                                 compMagic.MagicData.MagicAbilityPoints -= enumerator.Current.learnCost;
                             }
                         }
@@ -696,7 +700,6 @@ namespace TorannMagic
                                     {
                                         compMagic.LevelUpPower(power);
                                         compMagic.MagicData.MagicAbilityPoints -= 1;
-                                        compMagic.FixPowers();
                                     }
                                 }
                             }

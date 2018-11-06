@@ -123,12 +123,17 @@ In addition to the primary paths, all technomancers have access to several core,
 - Sabotage: like overdrive, it can target many different powered, computer, or mechanical systems to cause everything from minor to catastrophic failure of all vulnerable systems in a small area
 - Kinetic Shield: surrounds the target with a shield able to deflect projectiles; the shields power determines the limit of kinetic energy that can be deflected - high powered rounds can penetrate low powered kinetic shields
 - Orbital Strike; hacks into orbital bombardment satellites to input target coordinates, can take some time to align and launch the attack but packs a punch when it hits
+
+** New Features:
+Purify can be selected for Autocast
 	
 ** Tweaks:
 Autocast blink and phase strike XP gain has been reduced
 Mana potion recipe for the gemcrafting replaces Go-Juice with other, less technological, ingredients
 Autocast will not select targets out of line of sight - this was causing some abilities to move the casting pawn into a position it could see the target; this does not affect abilities that do not require line of sight
 Sentinels will now activate on manhunter animals
+Faceless ability "possess" can be resisted with above average values of consciousness and/or psychic sensitivity
+Arcane cooler, heater, and power node have been changed to sustained abilities
 
 Bug fixes:
 Pawns of non-standard sizes will only be drawn as their intended sizes

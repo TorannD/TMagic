@@ -81,54 +81,65 @@ namespace TorannMagic
                                 hitPawnWorkSetting.Add(hitPawn.workSettings.GetPriority(allWorkTypes[i]));
                             }
                         }
+                        
                         if (this.pFaction != caster.Faction)
                         {
-                            //possess enemy or neutral
-                            int weaponCount = 0;
-                            if (hitPawn.equipment.PrimaryEq != null)
+                            float resistance = (hitPawn.GetStatValue(StatDefOf.PsychicSensitivity) - 1f) + (hitPawn.health.capacities.GetLevel(PawnCapacityDefOf.Consciousness) - 1f);
+                            if (Rand.Chance(1 - resistance))
                             {
-                                weaponCount = 1;
-                            }
-                            this.inventoryCount = hitPawn.inventory.innerContainer.Count + hitPawn.apparel.WornApparelCount + weaponCount;
-                            hitPawn.SetFaction(caster.Faction, null);
-                            HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_DisguiseHD_II, 20f + 5f * verVal);
-                            switch (pwrVal)
-                            {
-                                case 0:
-                                    HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_PossessionHD, 20f + 5f * verVal);
-                                    break;
-                                case 1:
-                                    HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_PossessionHD_I, 20f + 5f * verVal);
-                                    break;
-                                case 2:
-                                    HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_PossessionHD_II, 20f + 5f * verVal);
-                                    break;
-                                case 3:
-                                    HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_PossessionHD_III, 20f + 5f * verVal);
-                                    break;
-                            }
-                            initialized = true;
-                            MoteMaker.ThrowSmoke(caster.DrawPos, caster.Map, 1f);
-                            MoteMaker.ThrowSmoke(caster.DrawPos, caster.Map, 1.2f);
-                            MoteMaker.ThrowHeatGlow(caster.Position, caster.Map, .8f);
-                            if (!caster.IsColonist)
-                            {
-                                Lord lord = caster.GetLord();
-                                LordJob lordJob = caster.GetLord().LordJob;
-                                try
+                                //possess enemy or neutral
+                                int weaponCount = 0;
+                                if (hitPawn.equipment.PrimaryEq != null)
                                 {
-                                    PawnDuty duty = caster.mindState.duty;
-                                    hitPawn.mindState.duty = duty;
-                                    lord.AddPawn(hitPawn);
+                                    weaponCount = 1;
                                 }
-                                catch
+                                this.inventoryCount = hitPawn.inventory.innerContainer.Count + hitPawn.apparel.WornApparelCount + weaponCount;
+                                hitPawn.SetFaction(caster.Faction, null);
+                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_DisguiseHD_II, 20f + 5f * verVal);
+                                switch (pwrVal)
                                 {
-                                    Log.Message("error attempting to assign a duty to pawn during possession");
-                                }                                
+                                    case 0:
+                                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_PossessionHD, 20f + 5f * verVal);
+                                        break;
+                                    case 1:
+                                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_PossessionHD_I, 20f + 5f * verVal);
+                                        break;
+                                    case 2:
+                                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_PossessionHD_II, 20f + 5f * verVal);
+                                        break;
+                                    case 3:
+                                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_PossessionHD_III, 20f + 5f * verVal);
+                                        break;
+                                }
+                                initialized = true;
+                                MoteMaker.ThrowSmoke(caster.DrawPos, caster.Map, 1f);
+                                MoteMaker.ThrowSmoke(caster.DrawPos, caster.Map, 1.2f);
+                                MoteMaker.ThrowHeatGlow(caster.Position, caster.Map, .8f);
+                                if (!caster.IsColonist)
+                                {
+                                    Lord lord = caster.GetLord();
+                                    LordJob lordJob = caster.GetLord().LordJob;
+                                    try
+                                    {
+                                        PawnDuty duty = caster.mindState.duty;
+                                        hitPawn.mindState.duty = duty;
+                                        lord.AddPawn(hitPawn);
+                                    }
+                                    catch
+                                    {
+                                        Log.Message("error attempting to assign a duty to pawn during possession");
+                                    }
+                                }
+                                //loadPawn = caster;
+                                //loadPawn.ThingID += Rand.Range(0, 214).ToString();
+                                caster.DeSpawn();
                             }
-                            //loadPawn = caster;
-                            //loadPawn.ThingID += Rand.Range(0, 214).ToString();
-                            caster.DeSpawn();
+                            else
+                            {
+                                MoteMaker.ThrowText(hitThing.DrawPos, hitThing.Map, "TM_ResistedSpell", -1);
+                                this.age = this.duration;
+                                this.Destroy(DestroyMode.Vanish);
+                            }
                         }
                         else
                         {

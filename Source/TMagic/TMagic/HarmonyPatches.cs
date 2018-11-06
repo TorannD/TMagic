@@ -40,6 +40,9 @@ namespace TorannMagic
             harmonyInstance.Patch(original: AccessTools.Method(type: typeof(Building_TurretGun), name: "Tick"), prefix: null,
                 postfix: new HarmonyMethod(type: patchType, name: nameof(TurretGunTick_Overdrive_Postfix)), transpiler: null);
 
+            harmonyInstance.Patch(original: AccessTools.Method(type: typeof(PawnRenderer), name: "RenderPawnAt"), prefix: null,
+                postfix: new HarmonyMethod(type: patchType, name: nameof(PawnRenderer_Undead_Prefix)), transpiler: null);
+
             harmonyInstance.Patch(AccessTools.Method(typeof(Caravan), "get_NightResting", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_NightResting_Undead", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(Pawn_StanceTracker), "get_Staggered", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_Staggered", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(Verb_LaunchProjectile), "get_Projectile", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_Projectile_ES", null), null);
@@ -152,6 +155,39 @@ namespace TorannMagic
                 }
                 return true;
             }
+        }
+
+        //[HarmonyPatch(typeof(LordToil_KidnapCover), "TryFindGoodOpportunisticTaskTarget", null)]
+        //public class LordToil_KidnapCover_Undead_Patch
+        //{
+        //    public static bool Prefix(Pawn pawn, out Thing target, List<Thing> alreadyTakenTargets, ref bool __result)
+        //    {
+        //        if (pawn.mindState.duty != null && pawn.mindState.duty.def == DutyDefOf.Kidnap && pawn.carryTracker.CarriedThing is Pawn)
+        //        {
+        //            target = pawn.carryTracker.CarriedThing;
+        //            __result = true;
+        //        }
+        //        Pawn victim;
+        //        bool result = KidnapAIUtility.TryFindGoodKidnapVictim(pawn, 8f, out victim, alreadyTakenTargets);
+        //        target = victim;
+        //        __result = result;
+        //        if(victim.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD"), false))
+        //        {
+        //            target = null;
+        //            __result = false;
+        //        }
+        //        return false;
+        //    }
+        //}
+
+        public static bool PawnRenderer_Undead_Prefix(PawnRenderer __instance, Vector3 drawLoc, ref RotDrawMode bodyDrawType, bool headStump)
+        {
+            Pawn pawn = Traverse.Create(root: __instance).Field(name: "pawn").GetValue<Pawn>();
+            if(pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")))
+            {
+                bodyDrawType = RotDrawMode.Rotting;
+            }
+            return true;
         }
 
         public static void TurretGunTick_Overdrive_Postfix(Building_TurretGun __instance)

@@ -1059,7 +1059,70 @@ namespace TorannMagic
             base.AddPawnAbility(ability, true, -1f);
             result = true;
             return result;
-        }        
+        }
+
+        public void RemovePowers()
+        {
+            Pawn abilityUser = base.AbilityUser;
+            if (this.mightPowersInitialized == true)
+            {
+                bool flag2;
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Gladiator);
+                if (flag2)
+                {
+                    foreach (MightPower current in this.MightData.MightPowersG)
+                    {
+                        current.learned = false;
+                        this.RemovePawnAbility(current.abilityDef);
+                    }
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper);
+                if (flag2)
+                {
+                    foreach (MightPower current in this.MightData.MightPowersS)
+                    {
+                        current.learned = false;
+                        this.RemovePawnAbility(current.abilityDef);
+                    }
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Bladedancer);
+                if (flag2)
+                {
+                    foreach (MightPower current in this.MightData.MightPowersB)
+                    {
+                        current.learned = false;
+                        this.RemovePawnAbility(current.abilityDef);
+                    }
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Ranger);
+                if (flag2)
+                {
+                    foreach (MightPower current in this.MightData.MightPowersR)
+                    {
+                        current.learned = false;
+                        this.RemovePawnAbility(current.abilityDef);
+                    }
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless);
+                if (flag2)
+                {
+                    foreach (MightPower current in this.MightData.MightPowersF)
+                    {
+                        current.learned = false;
+                        this.RemovePawnAbility(current.abilityDef);
+                    }
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic);
+                if (flag2)
+                {
+                    foreach (MightPower current in this.MightData.MightPowersP)
+                    {
+                        current.learned = false;
+                        this.RemovePawnAbility(current.abilityDef);
+                    }
+                }
+            }
+        }
 
         public void ClearPowers()
         {

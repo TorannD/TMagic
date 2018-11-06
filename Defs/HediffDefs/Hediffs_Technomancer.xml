@@ -302,18 +302,17 @@
     <defName>TM_NanoStimulantWithdrawalHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>stim withdrawal</label>
-    <defaultLabelColor>(0,.8,0)</defaultLabelColor>
+    <defaultLabelColor>(0.8,0,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>true</makesSickThought>
 	<tendable>false</tendable>
     <makesAlert>false</makesAlert>
-	<minSeverity>0.001</minSeverity>
 	<maxSeverity>1</maxSeverity>
 	<initialSeverity>0.95</initialSeverity>
 	<isBad>true</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>-10</severityPerDay>
+        <severityPerDay>-15</severityPerDay>
       </li>	  
     </comps>
 	<stages>

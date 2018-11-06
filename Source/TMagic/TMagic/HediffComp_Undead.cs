@@ -102,7 +102,7 @@ namespace TorannMagic
             {                
                 necroValid = false;
                 if (base.Pawn.Map != null)
-                {
+                {                    
                     foreach (Pawn current in base.Pawn.Map.mapPawns.PawnsInFaction(base.Pawn.Faction))
                     {
                         if (current.RaceProps.Humanlike)

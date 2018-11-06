@@ -75,6 +75,16 @@ namespace TorannMagic
                                         raisedPawns++;
                                         if (!undeadPawn.kindDef.RaceProps.Animal && undeadPawn.kindDef.RaceProps.Humanlike)
                                         {
+                                            CompAbilityUserMagic compMagic = undeadPawn.GetComp<CompAbilityUserMagic>();
+                                            if(compMagic.IsMagicUser && !undeadPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                                            {
+                                                compMagic.RemovePowers();
+                                            }
+                                            CompAbilityUserMight compMight = undeadPawn.GetComp<CompAbilityUserMight>();
+                                            if (compMight.IsMightUser)
+                                            {
+                                                compMight.RemovePowers();
+                                            }
                                             HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, -4f);
                                             HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, .5f + ver.level);
                                             RedoSkills(undeadPawn);

@@ -525,7 +525,7 @@ namespace TorannMagic
             for (int i = 0; i < mapBuildings.Count; i++)
             {
                 building = mapBuildings[i] as Building;
-                if (building != null && (building.Position - pawn.Position).LengthHorizontal <= radius && building.HitPoints != building.MaxHitPoints)
+                if (building != null && (building.Position - pawn.Position).LengthHorizontal <= radius && building.def.useHitPoints && building.HitPoints != building.MaxHitPoints)
                 {
                     if (pawn.Drafted && building.def.designationCategory == DesignationCategoryDefOf.Security || building.def.building.ai_combatDangerous)
                     {

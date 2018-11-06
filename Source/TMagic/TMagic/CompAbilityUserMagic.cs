@@ -2614,7 +2614,7 @@ namespace TorannMagic
             }            
         }
 
-        public void FixPowers()
+        public void RemovePowers()
         {
             Pawn abilityUser = base.AbilityUser;
             if (this.magicPowersInitialized == true)
@@ -2626,37 +2626,8 @@ namespace TorannMagic
                     //Log.Message("Fixing Inner Fire Abilities");
                     foreach (MagicPower currentIF in this.MagicData.MagicPowersIF)
                     {
-                        if (currentIF.abilityDef.defName == "TM_RayofHope" || currentIF.abilityDef.defName == "TM_RayofHope_I" || currentIF.abilityDef.defName == "TM_RayofHope_II" || currentIF.abilityDef.defName == "TM_RayofHope_III")
-                        {
-                            if (currentIF.level == 0)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_RayofHope_I);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_RayofHope_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_RayofHope_III);
-                            }
-                            else if (currentIF.level == 1)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_RayofHope);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_RayofHope_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_RayofHope_III);
-                            }
-                            else if (currentIF.level == 2)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_RayofHope);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_RayofHope_I);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_RayofHope_III);
-                            }
-                            else if (currentIF.level == 3)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_RayofHope);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_RayofHope_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_RayofHope_I);
-                            }
-                            else
-                            {
-                                Log.Message("Ability level not found to fix");
-                            }
-                        }
+                        currentIF.learned = false;
+                        this.RemovePawnAbility(currentIF.abilityDef);
                     }
 
                 }
@@ -2666,107 +2637,18 @@ namespace TorannMagic
                     //Log.Message("Fixing Heart of Frost Abilities");
                     foreach (MagicPower currentHoF in this.MagicData.MagicPowersHoF)
                     {
-                        if (currentHoF.abilityDef.defName == "TM_Soothe" || currentHoF.abilityDef.defName == "TM_Soothe_I" || currentHoF.abilityDef.defName == "TM_Soothe_II" || currentHoF.abilityDef.defName == "TM_Soothe_III")
-                        {
-                            if (currentHoF.level == 0)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Soothe_I);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Soothe_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Soothe_III);
-                            }
-                            else if( currentHoF.level == 1)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Soothe);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Soothe_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Soothe_III);
-                            }
-                            else if (currentHoF.level == 2)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Soothe);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Soothe_I);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Soothe_III);
-                            }
-                            else if (currentHoF.level == 3)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Soothe);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Soothe_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Soothe_I);
-                            }
-                            else
-                            {
-                                Log.Message("Ability level not found to fix");
-                            }
-                        }
-                        if (currentHoF.abilityDef.defName == "TM_FrostRay" || currentHoF.abilityDef.defName == "TM_FrostRay_I" || currentHoF.abilityDef.defName == "TM_FrostRay_II" || currentHoF.abilityDef.defName == "TM_FrostRay_III")
-                        {
-                            if (currentHoF.level == 0)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_FrostRay_I);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_FrostRay_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_FrostRay_III);
-                            }
-                            else if (currentHoF.level == 1)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_FrostRay);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_FrostRay_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_FrostRay_III);
-                            }
-                            else if (currentHoF.level == 2)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_FrostRay);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_FrostRay_I);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_FrostRay_III);
-                            }
-                            else if (currentHoF.level == 3)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_FrostRay);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_FrostRay_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_FrostRay_I);
-                            }
-                            else
-                            {
-                                Log.Message("Ability level not found to fix");
-                            }
-                        }
+                        currentHoF.learned = false;
+                        this.RemovePawnAbility(currentHoF.abilityDef);                        
                     }
                 }
                 flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.StormBorn);
                 if (flag2)
                 {
-                    //Log.Message("Fixing Storm Born Abilities");
+                    //Log.Message("Fixing Storm Born Abilities");                   
                     foreach (MagicPower currentSB in this.MagicData.MagicPowersSB)
                     {
-                        if (currentSB.abilityDef.defName == "TM_AMP" || currentSB.abilityDef.defName == "TM_AMP_I" || currentSB.abilityDef.defName == "TM_AMP_II" || currentSB.abilityDef.defName == "TM_AMP_III")
-                        {
-                            if (currentSB.level == 0)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_AMP_I);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_AMP_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_AMP_III);
-                            }
-                            else if (currentSB.level == 1)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_AMP);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_AMP_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_AMP_III);
-                            }
-                            else if (currentSB.level == 2)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_AMP);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_AMP_I);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_AMP_III);
-                            }
-                            else if (currentSB.level == 3)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_AMP);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_AMP_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_AMP_I);
-                            }
-                            else
-                            {
-                                //Log.Message("Ability level not found to fix");
-                            }
-                        }
+                        currentSB.learned = false;
+                        this.RemovePawnAbility(currentSB.abilityDef);                        
                     }
                 }
                 flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist);
@@ -2775,130 +2657,8 @@ namespace TorannMagic
                     //Log.Message("Fixing Arcane Abilities");
                     foreach (MagicPower currentA in this.MagicData.MagicPowersA)
                     {
-                        if (currentA.abilityDef.defName == "TM_Shadow" || currentA.abilityDef.defName == "TM_Shadow_I" || currentA.abilityDef.defName == "TM_Shadow_II" || currentA.abilityDef.defName == "TM_Shadow_III")
-                        {
-                            if (currentA.level == 0)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shadow_I);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shadow_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shadow_III);
-                            }
-                            else if (currentA.level == 1)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shadow);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shadow_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shadow_III);
-                            }
-                            else if (currentA.level == 2)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shadow);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shadow_I);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shadow_III);
-                            }
-                            else if (currentA.level == 3)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shadow);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shadow_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shadow_I);
-                            }
-                            else
-                            {
-                                Log.Message("Ability level not found to fix");
-                            }
-                        }
-                        if (currentA.abilityDef.defName == "TM_MagicMissile" || currentA.abilityDef.defName == "TM_MagicMissile_I" || currentA.abilityDef.defName == "TM_MagicMissile_II" || currentA.abilityDef.defName == "TM_MagicMissile_III")
-                        {
-                            if (currentA.level == 0)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_MagicMissile_I);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_MagicMissile_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_MagicMissile_III);
-                            }
-                            else if (currentA.level == 1)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_MagicMissile);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_MagicMissile_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_MagicMissile_III);
-                            }
-                            else if (currentA.level == 2)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_MagicMissile);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_MagicMissile_I);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_MagicMissile_III);
-                            }
-                            else if (currentA.level == 3)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_MagicMissile);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_MagicMissile_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_MagicMissile_I);
-                            }
-                            else
-                            {
-                                Log.Message("Ability level not found to fix");
-                            }
-                        }
-                        if (currentA.abilityDef.defName == "TM_Blink" || currentA.abilityDef.defName == "TM_Blink_I" || currentA.abilityDef.defName == "TM_Blink_II" || currentA.abilityDef.defName == "TM_Blink_III")
-                        {
-                            if (currentA.level == 0)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Blink_I);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Blink_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Blink_III);
-                            }
-                            else if (currentA.level == 1)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Blink);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Blink_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Blink_III);
-                            }
-                            else if (currentA.level == 2)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Blink);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Blink_I);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Blink_III);
-                            }
-                            else if (currentA.level == 3)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Blink);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Blink_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Blink_I);
-                            }
-                            else
-                            {
-                                Log.Message("Ability level not found to fix");
-                            }
-                        }
-                        if (currentA.abilityDef.defName == "TM_Summon" || currentA.abilityDef.defName == "TM_Summon_I" || currentA.abilityDef.defName == "TM_Summon_II" || currentA.abilityDef.defName == "TM_Summon_III")
-                        {
-                            if (currentA.level == 0)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Summon_I);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Summon_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Summon_III);
-                            }
-                            else if (currentA.level == 1)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Summon);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Summon_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Summon_III);
-                            }
-                            else if (currentA.level == 2)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Summon);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Summon_I);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Summon_III);
-                            }
-                            else if (currentA.level == 3)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Summon);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Summon_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Summon_I);
-                            }
-                            else
-                            {
-                                Log.Message("Ability level not found to fix");
-                            }
-                        }
+                        currentA.learned = false;
+                        this.RemovePawnAbility(currentA.abilityDef);                        
                     }
 
                 }
@@ -2906,44 +2666,94 @@ namespace TorannMagic
                 if (flag2)
                 {
                     //Log.Message("Fixing Paladin Abilities");
-                    foreach (MagicPower currentA in this.MagicData.MagicPowersA)
+                    foreach (MagicPower currentP in this.MagicData.MagicPowersP)
                     {
-                        if (currentA.abilityDef.defName == "TM_Shield" || currentA.abilityDef.defName == "TM_Shield_I" || currentA.abilityDef.defName == "TM_Shield_II" || currentA.abilityDef.defName == "TM_Shield_III")
-                        {
-                            if (currentA.level == 0)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shield_I);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shield_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shield_III);
-                            }
-                            else if (currentA.level == 1)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shield);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shield_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shield_III);
-                            }
-                            else if (currentA.level == 2)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shield);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shield_I);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shield_III);
-                            }
-                            else if (currentA.level == 3)
-                            {
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shield);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shield_II);
-                                this.RemovePawnAbility(TorannMagicDefOf.TM_Shield_I);
-                            }
-                            else
-                            {
-                                Log.Message("Ability level not found to fix");
-                            }
-                        }
+                        currentP.learned = false;
+                        this.RemovePawnAbility(currentP.abilityDef);                        
+                    }
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner);
+                if (flag2)
+                {
+                    foreach (MagicPower currentS in this.MagicData.MagicPowersS)
+                    {
+                        currentS.learned = false;
+                        this.RemovePawnAbility(currentS.abilityDef);
+                    }
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Druid);
+                if (flag2)
+                {
+                    foreach (MagicPower currentD in this.MagicData.MagicPowersD)
+                    {
+                        currentD.learned = false;
+                        this.RemovePawnAbility(currentD.abilityDef);
+                    }
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || abilityUser.story.traits.HasTrait(TorannMagicDefOf.Lich);
+                if (flag2)
+                {
+                    foreach (MagicPower currentN in this.MagicData.MagicPowersN)
+                    {
+                        currentN.learned = false;
+                        this.RemovePawnAbility(currentN.abilityDef);
+                    }
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Priest);
+                if (flag2)
+                {
+                    foreach (MagicPower currentPR in this.MagicData.MagicPowersPR)
+                    {
+                        currentPR.learned = false;
+                        this.RemovePawnAbility(currentPR.abilityDef);
+                    }
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Bard);
+                if (flag2)
+                {
+                    foreach (MagicPower currentB in this.MagicData.MagicPowersB)
+                    {
+                        currentB.learned = false;
+                        this.RemovePawnAbility(currentB.abilityDef);
+                    }
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Succubus);
+                if (flag2)
+                {
+                    foreach (MagicPower currentSD in this.MagicData.MagicPowersSD)
+                    {
+                        currentSD.learned = false;
+                        this.RemovePawnAbility(currentSD.abilityDef);
+                    }
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Warlock);
+                if (flag2)
+                {
+                    foreach (MagicPower currentWD in this.MagicData.MagicPowersWD)
+                    {
+                        currentWD.learned = false;
+                        this.RemovePawnAbility(currentWD.abilityDef);
+                    }
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Geomancer);
+                if (flag2)
+                {
+                    foreach (MagicPower currentG in this.MagicData.MagicPowersG)
+                    {
+                        currentG.learned = false;
+                        this.RemovePawnAbility(currentG.abilityDef);
+                    }
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Technomancer);
+                if (flag2)
+                {
+                    foreach (MagicPower currentT in this.MagicData.MagicPowersT)
+                    {
+                        currentT.learned = false;
+                        this.RemovePawnAbility(currentT.abilityDef);
                     }
                 }
             }
-            //this.UpdateAbilities();
-            //base.UpdateAbilities();
         }
 
         public override bool TryTransformPawn()
