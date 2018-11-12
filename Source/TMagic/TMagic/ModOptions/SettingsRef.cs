@@ -23,6 +23,9 @@ namespace TorannMagic.ModOptions
         public bool showIconsMultiSelect = Settings.Instance.showIconsMultiSelect;
         public float riftChallenge = Settings.Instance.riftChallenge;
         public bool showGizmo = Settings.Instance.showGizmo;
+        public bool showLevelUpMessage = Settings.Instance.showLevelUpMessage;
+        public bool changeUndeadPawnAppearance = Settings.Instance.changeUndeadPawnAppearance;
+        public bool changeUndeadAnimalAppearance = Settings.Instance.changeUndeadAnimalAppearance;
 
         //autocast
         public bool autocastEnabled = Settings.Instance.autocastEnabled;

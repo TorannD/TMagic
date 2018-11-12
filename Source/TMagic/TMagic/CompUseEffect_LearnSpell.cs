@@ -259,12 +259,6 @@ namespace TorannMagic
                     comp.AddPawnAbility(TorannMagicDefOf.TM_Overdrive);
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
-                else if (parent.def.defName == "SpellOf_OrbitalStrike" && comp.spell_OrbitalStrike == false && user.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
-                {
-                    comp.spell_OrbitalStrike = true;
-                    comp.InitializeSpell();
-                    this.parent.Destroy(DestroyMode.Vanish);
-                }
                 else
                 {
                     Messages.Message("CannotLearnSpell".Translate(), MessageTypeDefOf.RejectInput);

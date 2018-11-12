@@ -78,7 +78,8 @@ namespace TorannMagic
                 Pawn pawn = base.Pawn as Pawn;
                 
                 TM_MoteMaker.ThrowRegenMote(pawn.DrawPos, pawn.Map, 1f);
-                bool flag = pawn != null;
+                bool flag = pawn != null && !TM_Calc.IsUndead(pawn);
+                bool undeadFlag = pawn != null && TM_Calc.IsUndead(pawn);
                 if (flag)
                 {
                     ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
@@ -133,6 +134,10 @@ namespace TorannMagic
                             }
                         }
                     }
+                }
+                if(undeadFlag)
+                {
+                    TM_Action.DamageUndead(pawn, (2f + 1f * hediffPwr), null);
                 }
             }
         }

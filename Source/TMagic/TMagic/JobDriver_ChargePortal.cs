@@ -3,6 +3,7 @@ using Verse.AI;
 using System;
 using Verse;
 using RimWorld;
+using UnityEngine;
 
 
 namespace TorannMagic
@@ -11,6 +12,9 @@ namespace TorannMagic
     {
         private const TargetIndex building = TargetIndex.A;
         Building_TMPortal portalBldg;
+        Building_TMArcaneCapacitor arcaneCapacitor;
+        Building_TM_DMP dmp;
+        Building bldg;
         CompAbilityUserMagic comp;
 
         int age = -1;
@@ -33,12 +37,16 @@ namespace TorannMagic
             yield return reserveTargetA;
             comp = this.pawn.GetComp<CompAbilityUserMagic>();
             portalBldg = TargetA.Thing as Building_TMPortal;
+            arcaneCapacitor = TargetA.Thing as Building_TMArcaneCapacitor;
+            dmp = TargetA.Thing as Building_TM_DMP;
+            bldg = TargetA.Thing as Building;
 
             Toil gotoPortal = new Toil()
             {
                 initAction = () =>
                 {
-                    pawn.pather.StartPath(portalBldg.InteractionCell, PathEndMode.OnCell);
+                    //pawn.pather.StartPath(portalBldg.InteractionCell, PathEndMode.OnCell);
+                    pawn.pather.StartPath(bldg.InteractionCell, PathEndMode.OnCell);
                 },
                 defaultCompleteMode = ToilCompleteMode.PatherArrival
             };
@@ -56,6 +64,10 @@ namespace TorannMagic
                     {
                         this.EndJobWith(JobCondition.Succeeded);
                     }
+                    else if (bldg.def.defName == "TM_DimensionalManaPocket")
+                    {
+                        this.duration = 220;
+                    }
                 },
                 tickAction = () =>
                 {
@@ -63,13 +75,32 @@ namespace TorannMagic
                     {
                         this.effectsAge = this.age;
                         TM_MoteMaker.ThrowCastingMote(pawn.DrawPos, pawn.Map, Rand.Range(1.2f, 2f));
-                        TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Shadow, pawn.DrawPos, pawn.Map, Rand.Range(.4f, .6f), Rand.Range(.1f, .2f), .04f, Rand.Range(.1f, .2f), 300, 5f, Rand.Range(-10, 10), 0);
+                        Vector3 moteDirection = TM_Calc.GetVector(this.pawn.Position, bldg.Position);
+                        TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Shadow, pawn.DrawPos, pawn.Map, Rand.Range(.4f, .6f), Rand.Range(.1f, .2f), .04f, Rand.Range(.1f, .2f), 300, 5f, (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
                     }
                     if (age > (chargeAge + ticksTillCharge))
-                    {
-                        comp.Mana.CurLevel -= .01f;
-                        xpNum += 3;
-                        portalBldg.ArcaneEnergyCur += .01f;
+                    {                                               
+                        if(bldg.def.defName == "TM_Portal")
+                        {
+                            comp.Mana.CurLevel -= .01f;
+                            portalBldg.ArcaneEnergyCur += .01f;
+                            xpNum += 3;
+                        }
+                        else if(bldg.def.defName == "TM_ArcaneCapacitor")
+                        {
+                            comp.Mana.CurLevel -= .01f;
+                            arcaneCapacitor.ArcaneEnergyCur += 1f;
+                        }
+                        else if (bldg.def.defName == "TM_DimensionalManaPocket")
+                        {
+                            comp.Mana.CurLevel -= .05f;
+                            dmp.ArcaneEnergyCur += 4f;
+                            age += 4;
+                        }
+                        else
+                        {
+                            age = duration;
+                        }                        
                         chargeAge = age;
                     }
                     age++;
@@ -83,9 +114,24 @@ namespace TorannMagic
                         AttributeXP(comp);
                         this.EndJobWith(JobCondition.Succeeded);
                     }
-                    if (portalBldg.ArcaneEnergyCur >= 1f)
+                    if (comp.Mana.CurLevel < .05f && bldg.def.defName == "TM_DimensionalManaPocket")
+                    {
+                        //AttributeXP(comp);
+                        this.EndJobWith(JobCondition.Succeeded);
+                    }
+                    if (portalBldg != null && portalBldg.ArcaneEnergyCur >= 1f)
                     {
                         AttributeXP(comp);
+                        this.EndJobWith(JobCondition.Succeeded);
+                    }
+                    if (arcaneCapacitor != null && arcaneCapacitor.ArcaneEnergyCur >= arcaneCapacitor.TargetArcaneEnergyPct)
+                    {
+                        //AttributeXP(comp);
+                        this.EndJobWith(JobCondition.Succeeded);
+                    }
+                    if (dmp != null && dmp.ArcaneEnergyCur >= dmp.TargetArcaneEnergyPct)
+                    {
+                        //AttributeXP(comp);
                         this.EndJobWith(JobCondition.Succeeded);
                     }
                 },

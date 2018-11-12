@@ -76,7 +76,9 @@
     <Compile Include="AbilityWorker_TargetCorpse.cs" />
     <Compile Include="AutoCast\Scripts.cs" />
     <Compile Include="Building_ProximityTrap.cs" />
+    <Compile Include="Building_TM_DMP.cs" />
     <Compile Include="Building_TMBarrier.cs" />
+    <Compile Include="Building_TMArcaneCapacitor.cs" />
     <Compile Include="Building_TMSentinel.cs" />
     <Compile Include="Building_TMSunlight.cs" />
     <Compile Include="Building_TMCooler.cs" />
@@ -85,12 +87,16 @@
     <Compile Include="Building_TMPortal.cs" />
     <Compile Include="Building_PoisonTrap.cs" />
     <Compile Include="Buiding_TechnoTurret.cs" />
+    <Compile Include="IngestionOutcomeDoer_RemoveHediff.cs" />
+    <Compile Include="PawnCapacityWorker_MagicManipulation.cs" />
     <Compile Include="HediffComp_NanoStimulant.cs" />
     <Compile Include="HediffComp_Overdrive.cs" />
     <Compile Include="HediffComp_TechnoBit.cs" />
     <Compile Include="JobDriver_Teach.cs" />
     <Compile Include="ModOptions\ClassOptionsWindow.cs" />
     <Compile Include="ModOptions\ModClassOptions.cs" />
+    <Compile Include="PlaceWorker_ShowArcaneCapacitorRadius.cs" />
+    <Compile Include="PlaceWorker_ShowDMPRadius.cs" />
     <Compile Include="Projectile_PowerNode.cs" />
     <Compile Include="Projectile_ES_Fire.cs" />
     <Compile Include="Projectile_Cooler.cs" />
@@ -184,6 +190,7 @@
     <Compile Include="Verb_CauterizeWound.cs" />
     <Compile Include="Verb_DismissFertileLands.cs" />
     <Compile Include="Verb_SpellMending.cs" />
+    <Compile Include="WorkGiver_ChargeArcaneObject.cs" />
     <Compile Include="WorkGiver_DoEntertain.cs" />
     <Compile Include="FlyingObject_Leap.cs" />
     <Compile Include="HediffComp_Inspirational.cs" />

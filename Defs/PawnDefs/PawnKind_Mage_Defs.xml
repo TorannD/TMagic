@@ -16,7 +16,7 @@
     <maxGenerationAge>65</maxGenerationAge>
   </PawnKindDef>
   
-  	<PawnKindDef ParentName="BasePlayerPawnKind">
+<!--   	<PawnKindDef ParentName="BasePlayerPawnKind">
 		<defName>TM_Undead</defName>
 		<label>undead</label>
 		<race>Human</race>
@@ -32,7 +32,7 @@
 				</bodyGraphicData>
 			</li>
 		</lifeStages>
-	</PawnKindDef>
+	</PawnKindDef> -->
 
 
   <PawnKindDef Abstract="True" Name="EliteSeerBase" ParentName="SeerBase">

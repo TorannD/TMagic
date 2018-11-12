@@ -15,6 +15,28 @@
 	</ResearchProjectDef>
 	
 	<ResearchProjectDef>
+		<defName>TM_ManaStorage</defName>
+		<label>mana storage</label>
+		<tab>TMagic</tab>
+		<description>Develops ways to store mana.</description>
+		<baseCost>1000</baseCost>
+		<techLevel>Medieval</techLevel>
+		<researchViewX>0.0</researchViewX>
+		<researchViewY>1.0</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_PlantCultivation</defName>
+		<label>cultivation</label>
+		<tab>TMagic</tab>
+		<description>Invest research into botany to gain an understanding of how to cultivate plants with properties relevant to magic and use their resources to supplement or fuel the arcane arts.</description>
+		<baseCost>1000</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>0.0</researchViewX>
+		<researchViewY>2.0</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
 		<defName>TM_Enchanting</defName>
 		<label>enchanting</label>
 		<tab>TMagic</tab>

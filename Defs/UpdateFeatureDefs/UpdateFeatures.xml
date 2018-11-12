@@ -6,40 +6,6 @@
 		<linkUrl>https://ludeon.com/forums/index.php?topic=37161.0</linkUrl>
 	</HugsLib.UpdateFeatureDef>	
 	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_2_1_0</defName>
-		<assemblyVersion>2.1.0</assemblyVersion>
-		<content>
-- New Class: Warlock/Succubus - gaining their power through a demonic contract, this class is gender specific where each gender shares common powers but are also uniquely diverse in both roles and application of their powers.
-*Soul Bond - form a contract with another colonist that allows the class to gain additional power; this weakens the capacity of the bonded pawn but eases the burden of their reality...
->>Forming a soul bond grants a unique link between the bonded pawn and the warlock or succubus that allows them to travel to, or summon, the bonded pawn across vast distances
-*Shadow Bolt - launch a bolt of blackest shadow to consume the energy of everything along its path
-*Dominate - an infectious calamity of nightmares and fears that erodes the sanity of its victims
-*(Warlock) Repulsion - detonate a burst of raw energy that repels any nearby pawns
-*(Succubus) Attraction - create an inescapable pit of darkness that draws victims into the center and surrounds them in clinging shadows
-*(Warlock - Master) Psychic Shock - release all mental barriers and emit a powerful psychic shockwave to dominate the minds of nearby pawns
-*(Succubus - Master) Scorn - reveal your true nature and crush your opponents in cascading wrath
-
-- Several compatibility patches have been added for the Lord of the Rims mods that was preventing summoned creatures from spawning.
-
-- (Bug fixes) Blink no longer charges double the stated casting cost; you can no longer raise summoned/elemental creatures as undead; undead should no longer be sellable; Undead animals will no longer procreate; Necromancer/Lich will now correctly write their Unfinished Arcane Tomes.
-	</content>
-	</HugsLib.UpdateFeatureDef>	
-	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_2_2_1</defName>
-		<assemblyVersion>2.2.1</assemblyVersion>
-		<content>
-- Psychic Sensitivity now affects how powerful, and susceptible, a pawn is to magic.
-- The Warlock and Succubus classes will exhibit unique social behaviors.  The Succubus is a bit more friendly and the Warlock may cause emotions to 'bleed' from, or to, other pawns via psychic empathy.
-- A hidden combination ability has been added for Warlock and Succubus; not for the faint of heart.
-- The arcane mine now has a small proximity detection and should be much more responsive to enemies passing nearby.
-- The Bard class has been added to the random class pool.
-- Psychic Shock will only damage the mind of an enemy once, but applies a stronger stun to enemies and a weaker stun to friendlies.
-- Mod default settings for Magicyte rarity have been increased, in addition, most trader types will carry small amounts of magicyte for purchase (at higher costs than arcane vendors).
-- Enchanting gem recipe's have been changed to only require a flat raw magicyte amount. This will reduce the overall time and cost to craft higher tier gems.
-- Eye of the Storm master spell will discharge when it reaches its destination instead of just disappearing.
-		</content>
-	</HugsLib.UpdateFeatureDef>
-	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
 		<defName>ARimWorldOfMagic_2_2_2</defName>
 		<assemblyVersion>2.2.2</assemblyVersion>
 		<content>
@@ -138,6 +104,63 @@ Arcane cooler, heater, and power node have been changed to sustained abilities
 Bug fixes:
 Pawns of non-standard sizes will only be drawn as their intended sizes
 Carrying capacity has been fixed for several traits that increased or decreased this state
+		</content>
+	</HugsLib.UpdateFeatureDef>	
+	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_2_2_7</defName>
+		<assemblyVersion>2.2.7</assemblyVersion>
+		<content>
+**Undead and Skeletal Legion update**
+
+Undead will now appear more -undead-
+- pawns raised as undead will assume either their rotting or desiccated bodies
+- rotting will not stop for raised undead and they will eventually deteriorate until they appear desiccated
+- corpses raised that are already rotten or desiccated will retain their level of rot
+
+Compatibility has been added for the Skeletal Legion mod by Jernfalk: https://ludeon.com/forums/index.php?topic=46598.0
+- Skeleton Legion creatures are considered "undead" for purposes of RimWorld of Magic spells and abilities
+- these creatures can be raised as undead by a necromancer
+
+Tweaks:
+- healing spells will now harm the unliving instead of heal them, this includes Jecrells "Vampires" as well as Jernfalk's "Skeletal Legion"
+- 'light' based attacks (which includes healing spells) will have a chance to deal bonus damage to the unliving
+- undead will always 'die' when downed - lichs and vampires are excluded from this behavior
+- Autocast Magic and Fighter mentoring (Teach) will no longer select pawns of higher XP levels than the casters
+		</content>
+	</HugsLib.UpdateFeatureDef>
+	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_2_2_8</defName>
+		<assemblyVersion>2.2.8</assemblyVersion>
+		<content>
+**Magic Development: Update #1**
+
+Magic development updates will focus on adding new methods to develop and improve the colony through magical means.
+
+New work type: Magic - mages selected for this work type will automatically perform various magic related tasks such as charging a portal or crafting at an arcane workbench; work type can be toggled under work settings
+
+New research: Arcane Storage - allows construction of the Arcane Capacitor and Dimensional Mana Pocket
+
+New research: Arcane cultivation - allows growing and creation of Pomanasyrrium, a fruit that enhances arcane senses
+
+New structure: Arcane Capacitor - allows mages to transfer mana into the arcane capacitor and absorb it at a later time
+
+New structure: Dimensional Mana Pocket - similar to the arcane capacitor but has significantly more storage capacity and discharge range but redistributes mana at a slower rate
+
+New plant: Pomanasyrrium bush - produces fruit typically consumed as a delicacy, pomanasyrrium has unique properties that enhance a mages access to mana.  This chemical is called Syrrium and can be extracted from raw pomanasyrrium to concentrate the effects.
+
+Tweaks:
+Undead will not auto-undraft
+Arcane apparel (all pieces) will inherit defense and insulation properties of the material used in creation; any magic apparel with specific material requirements were replaced with stuff categories
+Added options to the mod settings to disable appearance changes for undead animals and pawns
+Added an option to toggle mage and fighter level up messages
+Added a gizmo for the technomancer to toggle the repair function
+
+Bug fixes: 
+Maps will no longer close when using the succubus ability 'Scorn' and the succubus is the only player owned pawn on the map
+Fixed a bug with autocast phase strike and blink that was selecting the incorrect target during haul/load jobs
+Wildman pawns will not generate errors if they are a mage or fighter
+Rangers cannot bond animals that belong to another faction and will dismiss a bonded animal that is a member of a caravan if they choose to form another bond
+Necromancer ability 'Consume Corpse' will not generate errors if a vampire (or pawn type lacking certain needs) uses the ability
 		</content>
 	</HugsLib.UpdateFeatureDef>	
 	

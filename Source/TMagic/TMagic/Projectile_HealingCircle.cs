@@ -153,9 +153,13 @@ namespace TorannMagic
                 {
                     pawn = curCell.GetFirstPawn(map);
                 }
-                if (pawn != null && pawn.Faction == caster.Faction)
+                if (pawn != null && pawn.Faction == caster.Faction && !TM_Calc.IsUndead(pawn))
                 {
                     Heal(pawn);
+                }
+                if(pawn != null && TM_Calc.IsUndead(pawn))
+                {
+                    TM_Action.DamageUndead(pawn, (6.0f + (float)pwrVal * 3f) * this.arcaneDmg, this.launcher);
                 }
             }
         }

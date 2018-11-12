@@ -581,7 +581,7 @@ namespace TorannMagic
                 bool spawned = base.AbilityUser.Spawned;
                 if (spawned)
                 {
-                    bool isMightUser = this.IsMightUser;
+                    bool isMightUser = this.IsMightUser && !this.Pawn.NonHumanlikeOrWildMan();
                     if (isMightUser)
                     {
                         bool flag3 = !this.MightData.Initialized;
@@ -602,7 +602,7 @@ namespace TorannMagic
                         if (Find.TickManager.TicksGame % 60 == 0)
                         {
                             ResolveClassSkills();
-                            ResolveClassPassions();
+                            //ResolveClassPassions(); currently disabled
                         }
                         if (this.autocastTick < Find.TickManager.TicksGame)  //180 default
                         {
@@ -813,9 +813,13 @@ namespace TorannMagic
             bool flag = !hideNotification;
             if (flag)
             {
-                Messages.Message("TM_MightLevelUp".Translate(
-                    this.parent.Label
-                ), MessageTypeDefOf.PositiveEvent);
+                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                if (Pawn.IsColonist && settingsRef.showLevelUpMessage)
+                {
+                    Messages.Message("TM_MightLevelUp".Translate(
+                        this.parent.Label
+                    ), Pawn, MessageTypeDefOf.PositiveEvent);
+                }
             }
         }
 

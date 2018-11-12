@@ -232,7 +232,11 @@
         <defName>TM_PhaseStrike</defName>
         <label>Phase Strike</label>
         <uiIconPath>UI/phased</uiIconPath>
-        <description>Melds the bladedancer's razor focus with the edge of a blade to slip between reality, appearing at a chosen location to execute a viscous strike on unsuspecting enemies.</description>
+        <description>Melds the bladedancer's razor focus with the edge of a blade to slip between reality, appearing at a chosen location to execute a viscous strike on unsuspecting enemies.
+
+Warmup: .3s
+Cooldown: 15s
+Range: 30</description>
         <staminaCost>0.30</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PhaseStrike</verbClass>
@@ -247,7 +251,7 @@
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
             <warmupTime>0.3</warmupTime>
-            <SecondsToRecharge>6.0</SecondsToRecharge>
+            <SecondsToRecharge>15.0</SecondsToRecharge>
             <range>30</range>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
@@ -262,7 +266,11 @@
         <defName>TM_PhaseStrike_I</defName>
         <label>Phase Strike (I)</label>
         <uiIconPath>UI/phased</uiIconPath>
-        <description>Melds the bladedancer's razor focus with the edge of a blade to slip between reality, appearing at a chosen location to execute a viscous strike on unsuspecting enemies.</description>
+        <description>Melds the bladedancer's razor focus with the edge of a blade to slip between reality, appearing at a chosen location to execute a viscous strike on unsuspecting enemies.
+	
+Warmup: .2s
+Cooldown: 12s
+Range: 35</description>
         <staminaCost>0.30</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PhaseStrike</verbClass>
@@ -292,7 +300,11 @@
         <defName>TM_PhaseStrike_II</defName>
         <label>Phase Strike (II)</label>
         <uiIconPath>UI/phased</uiIconPath>
-        <description>Melds the bladedancer's razor focus with the edge of a blade to slip between reality, appearing at a chosen location to execute a viscous strike on unsuspecting enemies.</description>
+        <description>Melds the bladedancer's razor focus with the edge of a blade to slip between reality, appearing at a chosen location to execute a viscous strike on unsuspecting enemies.
+		
+Warmup: .1s
+Cooldown: 9s
+Range: 40</description>
         <staminaCost>0.30</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PhaseStrike</verbClass>
@@ -322,7 +334,11 @@
         <defName>TM_PhaseStrike_III</defName>
         <label>Phase Strike (III)</label>
         <uiIconPath>UI/phased</uiIconPath>
-        <description>Melds the bladedancer's razor focus with the edge of a blade to slip between reality, appearing at a chosen location to execute a viscous strike on unsuspecting enemies.</description>
+        <description>Melds the bladedancer's razor focus with the edge of a blade to slip between reality, appearing at a chosen location to execute a viscous strike on unsuspecting enemies.
+
+Warmup: 0s
+Cooldown: 6s
+Range: 45</description>
         <staminaCost>0.30</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PhaseStrike</verbClass>

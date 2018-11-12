@@ -94,15 +94,15 @@ namespace TorannMagic
                     {
                         corpse = corpseThing as Corpse;
                         Pawn undeadPawn = corpse.InnerPawn;
-                        if (undeadPawn.RaceProps.IsFlesh)
+                        if ((undeadPawn.RaceProps.IsFlesh || TM_Calc.IsUndead(undeadPawn)) && (!TM_Calc.IsRobotPawn(undeadPawn)))
                         {
                             if (undeadPawn.RaceProps.Humanlike && !undeadPawn.RaceProps.Animal)
                             {
                                 if (!corpse.IsNotFresh())
                                 {
                                     comp.Mana.CurLevel += (.13f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)));
-                                    caster.needs.rest.CurLevel += .3f;
-                                    caster.needs.mood.CurLevel += .3f;
+                                    if (caster.needs != null && caster.needs.rest != null) { caster.needs.rest.CurLevel += .3f; }
+                                    if (caster.needs != null && caster.needs.mood != null) { caster.needs.mood.CurLevel += .3f; }
                                     ConsumeHumanoid(corpse);
                                     if (ver.level > 0)
                                     {
@@ -116,12 +116,12 @@ namespace TorannMagic
                                 }
                                 corpse.Destroy();
                             }
-                            else if (undeadPawn.RaceProps.Animal)
+                            else if (undeadPawn.RaceProps.Animal || TM_Calc.IsUndead(undeadPawn))
                             {
                                 if (!corpse.IsNotFresh())
                                 {
                                     comp.Mana.CurLevel += (.09f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)));
-                                    caster.needs.food.CurLevel += .4f;
+                                    if (caster.needs != null && caster.needs.food != null) { caster.needs.food.CurLevel += .4f; }
                                     ConsumeAnimalKind(corpse);
                                     if (ver.level > 0)
                                     {
@@ -158,9 +158,18 @@ namespace TorannMagic
             TM_MoteMaker.ThrowBloodSquirt(undead.Position.ToVector3Shifted(), undead.Map, 1f);
             TM_MoteMaker.ThrowBloodSquirt(undead.Position.ToVector3Shifted(), undead.Map, 1.2f);
             TM_MoteMaker.ThrowManaPuff(caster.Position.ToVector3Shifted(), caster.Map, 1f);
-            undead.inventory.DropAllNearPawn(undead.Position, false, true);
-            undead.equipment.DropAllEquipment(undead.Position, false);
-            undead.apparel.DropAll(undead.Position, false);           
+            if (undead.inventory != null)
+            {
+                undead.inventory.DropAllNearPawn(undead.Position, false, true);
+            }
+            if (undead.equipment != null)
+            {
+                undead.equipment.DropAllEquipment(undead.Position, false);
+            }
+            if (undead.apparel != null)
+            {
+                undead.apparel.DropAll(undead.Position, false);
+            }
         }
 
         public void ConsumeAnimalKind(Pawn undead)
@@ -177,9 +186,18 @@ namespace TorannMagic
             TM_MoteMaker.ThrowBloodSquirt(corpse.Position.ToVector3Shifted(), corpse.Map, 1.2f);
             TM_MoteMaker.ThrowManaPuff(caster.Position.ToVector3Shifted(), caster.Map, 1f);
             Pawn corpsePawn = corpse.InnerPawn;
-            corpsePawn.inventory.DropAllNearPawn(corpse.Position, false, true);
-            corpsePawn.equipment.DropAllEquipment(corpse.Position, false);
-            corpsePawn.apparel.DropAll(corpse.Position, false);
+            if (corpsePawn.inventory != null)
+            {
+                corpsePawn.inventory.DropAllNearPawn(corpse.Position, false, true);
+            }
+            if (corpsePawn.equipment != null)
+            {
+                corpsePawn.equipment.DropAllEquipment(corpse.Position, false);
+            }
+            if (corpsePawn.apparel != null)
+            {
+                corpsePawn.apparel.DropAll(corpse.Position, false);
+            }
         }
 
         public void ConsumeAnimalKind(Corpse corpse)

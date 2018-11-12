@@ -22,7 +22,7 @@ namespace TorannMagic.AutoCast
             Thing carriedThing = null;
             if (caster.CurJob.targetA.Thing != null) //&& caster.CurJob.def.defName != "Sow")
             {
-                if (caster.CurJob.targetA.Thing.Map != caster.Map) //carrying thing
+                if (caster.CurJob.targetA.Thing.Map != caster.Map) //carrying TargetA to TargetB
                 {
                     jobTarget = caster.CurJob.targetB;
                     carriedThing = caster.CurJob.targetA.Thing;
@@ -34,9 +34,9 @@ namespace TorannMagic.AutoCast
                         jobTarget = caster.CurJob.targetA;
                         carriedThing = caster.CurJob.targetB.Thing;
                     }
-                    else //Getting targetB
+                    else //Getting targetA to carry to TargetB
                     {
-                        jobTarget = caster.CurJob.targetB;
+                        jobTarget = caster.CurJob.targetA;
                     }
                 }
                 else
@@ -112,7 +112,7 @@ namespace TorannMagic.AutoCast
                     GenSpawn.Spawn(cT, targetCell, map);
                 }
 
-                caster.GetComp<CompAbilityUserMight>().MightUserXP -= 27;
+                caster.GetComp<CompAbilityUserMight>().MightUserXP -= 36;
                 ability.PostAbilityAttempt();
                 if (selectCaster)
                 {
@@ -593,8 +593,9 @@ namespace TorannMagic.AutoCast
                 if (distanceToTarget < (abilitydef.MainVerb.range * .9f) && jobTarget != null && jobTarget.Thing != null && jobTarget.Thing is Pawn)
                 {
                     Pawn targetPawn = jobTarget.Thing as Pawn;
+                    CompAbilityUserMagic targetPawnComp = targetPawn.GetComp<CompAbilityUserMagic>();
 
-                    if (targetPawn.IsColonist)
+                    if (targetPawn.IsColonist && targetPawnComp.MagicUserXP <= casterComp.MagicUserXP)
                     {
                         Job job = ability.GetJob(AbilityContext.AI, jobTarget);
                         caster.jobs.TryTakeOrderedJob(job);
@@ -618,8 +619,9 @@ namespace TorannMagic.AutoCast
                 if (distanceToTarget < (abilitydef.MainVerb.range * .9f) && jobTarget != null && jobTarget.Thing != null && jobTarget.Thing is Pawn)
                 {
                     Pawn targetPawn = jobTarget.Thing as Pawn;
+                    CompAbilityUserMight targetPawnComp = targetPawn.GetComp<CompAbilityUserMight>();
 
-                    if (targetPawn.IsColonist)
+                    if (targetPawn.IsColonist && targetPawnComp.MightUserXP < casterComp.MightUserXP)
                     {
                         Job job = ability.GetJob(AbilityContext.AI, jobTarget);
                         caster.jobs.TryTakeOrderedJob(job);
@@ -652,9 +654,9 @@ namespace TorannMagic.AutoCast
                         jobTarget = caster.CurJob.targetA;
                         carriedThing = caster.CurJob.targetB.Thing;
                     }
-                    else //Getting targetB
+                    else //Getting targetA to carry to TargetB
                     {
-                        jobTarget = caster.CurJob.targetB;
+                        jobTarget = caster.CurJob.targetA;
                     }
                 }
                 else
@@ -730,7 +732,7 @@ namespace TorannMagic.AutoCast
                     GenSpawn.Spawn(cT, targetCell, map);
                 }
 
-                caster.GetComp<CompAbilityUserMagic>().MagicUserXP -= 22;
+                caster.GetComp<CompAbilityUserMagic>().MagicUserXP -= 30;
                 ability.PostAbilityAttempt();
                 if(selectCaster)
                 {

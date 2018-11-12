@@ -175,6 +175,7 @@ namespace TorannMagic
         private bool dismissPowerNodeSpell = false;
         public List<IntVec3> fertileLands = new List<IntVec3>();
         public bool useTechnoBitToggle = true;
+        public bool useTechnoBitRepairToggle = true;
         public Vector3 bitPosition = Vector3.zero;
         private bool bitFloatingDown = true;
         private float bitOffset = .45f;
@@ -1176,7 +1177,7 @@ namespace TorannMagic
                 bool spawned = base.AbilityUser.Spawned;
                 if (spawned)
                 {
-                    bool isMagicUser = this.IsMagicUser && !this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless);
+                    bool isMagicUser = this.IsMagicUser && !this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) && !this.Pawn.NonHumanlikeOrWildMan();
                     if (isMagicUser) 
                     {
                         bool flag3 = !this.firstTick;
@@ -1542,11 +1543,12 @@ namespace TorannMagic
                 bool flag = !hideNotification;
                 if (flag)
                 {
-                    if (Pawn.IsColonist)
+                    ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                    if (Pawn.IsColonist && settingsRef.showLevelUpMessage)
                     {
                         Messages.Message(TranslatorFormattedStringExtensions.Translate("TM_MagicLevelUp", 
                     this.parent.Label
-                        ), MessageTypeDefOf.PositiveEvent);
+                        ), this.Pawn, MessageTypeDefOf.PositiveEvent);
                     }
                 }
             }
@@ -4006,6 +4008,10 @@ namespace TorannMagic
                 MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_OrbitalStrike.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_OrbitalStrike_eff");
                 adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.T_OrbitalStrike_eff * (float)magicPowerSkill.level);
             }
+            if(this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_SyrriumSenseHD"), false))
+            {
+                adjustedManaCost = adjustedManaCost * .9f;
+            }
             if (this.mpCost != 1f)
             {
                 adjustedManaCost = adjustedManaCost * this.mpCost;
@@ -4015,7 +4021,6 @@ namespace TorannMagic
                 adjustedManaCost = 0;
             }
             return adjustedManaCost;           
-
         }
 
         public override List<HediffDef> IgnoredHediffs()
@@ -6098,6 +6103,7 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.spell_Teach, "spell_Teach", false, false);
             Scribe_Values.Look<bool>(ref this.spell_OrbitalStrike, "spell_OrbitalStrike", false, false);
             Scribe_Values.Look<bool>(ref this.useTechnoBitToggle, "useTechnoBitToggle", true, false);
+            Scribe_Values.Look<bool>(ref this.useTechnoBitRepairToggle, "useTechnoBitRepairToggle", true, false);
             Scribe_Values.Look<bool>(ref this.useElementalShotToggle, "useElementalShotToggle", true, false);
             Scribe_Values.Look<int>(ref this.powerModifier, "powerModifier", 0, false);
             Scribe_Values.Look<int>(ref this.technoWeaponDefNum, "technoWeaponDefNum");

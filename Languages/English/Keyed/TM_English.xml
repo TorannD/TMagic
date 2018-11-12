@@ -110,7 +110,9 @@
 <TM_TechnoBitEnabled>Techno-Bit Enabled</TM_TechnoBitEnabled>
 <TM_TechnoBitDisabled>Techno-Bit Disabled</TM_TechnoBitDisabled>
 <TM_ElementalShotToggleDesc>Enables or disables the elemental shot. When enabled, weapon projectiles will occasionally have elemental properties attached to the projectile. Elemental rounds consume small amounts of mana.</TM_ElementalShotToggleDesc>
-
+<TM_AnimalHasAllegience>This animal is already committed to another cause.</TM_AnimalHasAllegience>
+<TM_TechnoBitRepair>Repair</TM_TechnoBitRepair>
+<TM_TechnoBitRepairDesc>Toggles the repair function of the techno-bit.</TM_TechnoBitRepairDesc>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
@@ -145,6 +147,9 @@
 <TM_autocastUndraftedThreshold>Minimum energy % for auto-cast (undrafted)</TM_autocastUndraftedThreshold>
 <TM_autocastDraftedThreshold>Minimum energy % for auto-cast (drafted)</TM_autocastDraftedThreshold>
 <TM_autocastEvaluationFrequency>Autocast evaluation frequency</TM_autocastEvaluationFrequency>
+<showLevelUpMessage>Show level up messages</showLevelUpMessage>
+<showUndeadPawnChange>Change undead pawn appearance</showUndeadPawnChange>
+<showUndeadAnimalChange>Change undead animal appearance</showUndeadAnimalChange>
 
 <!-- Mod Settings Class options -->
 
@@ -1050,6 +1055,7 @@ Level 3: 50</TM_PsionicStorm_eff_desc>
 <TM_NoValidPortalDestination>No valid portal destination selected, exiting without assignment.</TM_NoValidPortalDestination>
 <TM_PortalNoGatewayLearned>{0} has not mastered the Gateway spell</TM_PortalNoGatewayLearned>
 <TM_NeedManaToActivatePortal>Activate: {0} of .70 mana</TM_NeedManaToActivatePortal>
+<TM_ChargeManaStorage>Charge: {0}&#37;</TM_ChargeManaStorage>
 
 <!-- ============ Enchanting Menu's =============-->
 <TabEnchantment>Enchanted</TabEnchantment>

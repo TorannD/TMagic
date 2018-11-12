@@ -162,7 +162,7 @@ namespace TorannMagic
 
         public void GainNeed(float amount)
         {
-            if (base.pawn.Map != null && !base.pawn.Dead && !base.pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            if (base.pawn.Map != null && !base.pawn.Dead && !base.pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) && !base.pawn.NonHumanlikeOrWildMan())
             {
                 Pawn pawn = base.pawn;
                 CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
@@ -180,6 +180,14 @@ namespace TorannMagic
                         
                         MagicPowerSkill manaRegen = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
                         amount *= (((0.0012f * comp.mpRegenRate)) * settingsRef.needMultiplier);
+                        if(this.pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_SyrriumSenseHD"), false))
+                        {
+                            amount = (amount * 1.5f);
+                        }
+                        else if(this.pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_PomanaSenseHD"), false))
+                        {
+                            amount = (amount * 1.2f);
+                        }
                         //amount = Mathf.Min(amount, this.MaxLevel - this.CurLevel);
                         this.baseManaGain = amount;
                         float necroReduction = 0;

@@ -53,5 +53,21 @@
     </requiredCapacities>
     <prioritizeSustains>true</prioritizeSustains>
   </WorkGiverDef>
+  
+     <!-- ============= Magic Work Related ============= -->
+
+  <WorkGiverDef>
+    <defName>ChargeStructure</defName>
+    <label>charge arcane object</label>
+    <giverClass>TorannMagic.WorkGiver_ChargeArcaneObject</giverClass>
+    <workType>TM_Magic</workType>
+	<priorityInType>105</priorityInType>
+    <verb>charge arcane object</verb>
+    <gerund>charging arcane object</gerund>
+    <requiredCapacities>
+      <li>MagicManipulation</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
 
 </Defs>

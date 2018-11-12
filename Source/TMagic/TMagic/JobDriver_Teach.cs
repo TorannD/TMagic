@@ -239,7 +239,7 @@ namespace TorannMagic
             int studentOpinion = student.relations.OpinionOf(this.pawn);
             int mentorOpinion = this.pawn.relations.OpinionOf(student);
             int xpBase = Rand.Range(150,220) + studentOpinion + mentorOpinion;
-            int xpGain = (int)(xpBase * ((mentorComp.MagicUserLevel - studentComp.MagicUserLevel) / 10));
+            int xpGain = (int)Math.Abs((xpBase * ((mentorComp.MagicUserLevel - studentComp.MagicUserLevel) / 10)));
             MoteMaker.ThrowText(student.DrawPos, student.MapHeld, "XP +" + xpGain, -1f);
             studentComp.MagicUserXP += xpGain;
         }
@@ -252,7 +252,7 @@ namespace TorannMagic
             int studentOpinion = student.relations.OpinionOf(this.pawn);
             int mentorOpinion = this.pawn.relations.OpinionOf(student);
             int xpBase = Rand.Range(150, 220) + studentOpinion + mentorOpinion;
-            int xpGain = (int)(xpBase * ((mentorComp.MightUserLevel - studentComp.MightUserLevel) / 10));
+            int xpGain = (int)Math.Abs((xpBase * ((mentorComp.MightUserLevel - studentComp.MightUserLevel) / 10)));
             MoteMaker.ThrowText(student.DrawPos, student.MapHeld, "XP +" + xpGain, -1f);
             studentComp.MightUserXP += xpGain;
 

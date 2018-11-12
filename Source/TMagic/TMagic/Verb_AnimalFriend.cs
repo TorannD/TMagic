@@ -55,6 +55,11 @@ namespace TorannMagic
                     MoteMaker.ThrowSmoke(oldbond.DrawPos, oldbond.Map, 3f);
                     oldbond.Destroy();
                 }
+                else if(animal.Faction != null)
+                {
+                    Messages.Message("TM_AnimalHasAllegience".Translate(
+                                        ), MessageTypeDefOf.RejectInput);
+                }
                 else
                 {
                     if (animal.RaceProps.intelligence == Intelligence.Animal) // == TrainableIntelligenceDefOf.Intermediate || animal.RaceProps.TrainableIntelligence == TrainableIntelligenceDefOf.Advanced)
@@ -75,7 +80,14 @@ namespace TorannMagic
                                             oldbond.LabelShort,
                                             pawn.LabelShort
                                             ), MessageTypeDefOf.NeutralEvent);
-                                            MoteMaker.ThrowSmoke(oldbond.DrawPos, oldbond.Map, 3f);
+                                            if (oldbond.Map != null)
+                                            {
+                                                MoteMaker.ThrowSmoke(oldbond.DrawPos, oldbond.Map, 3f);
+                                            }
+                                            else
+                                            {
+                                                oldbond.ParentHolder.GetDirectlyHeldThings().Remove(oldbond);
+                                            }
                                             oldbond.Destroy();
                                         }
                                     }

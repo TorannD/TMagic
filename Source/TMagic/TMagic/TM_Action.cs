@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Verse.AI;
 using Verse.AI.Group;
+using Verse.Sound;
 using RimWorld;
 using System;
 using AbilityUser;
@@ -279,6 +280,29 @@ namespace TorannMagic
             dinfo = new DamageInfo(type, amt, -1, (float)-1, instigator, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
             dinfo.SetAllowDamagePropagation(false);
             victim.TakeDamage(dinfo);
+        }
+
+        public static void DamageUndead(Pawn undead, float amt, Thing instigator)
+        {
+            DamageInfo dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Holy, Rand.Range(amt*.8f, amt*1.2f), 1, -1, instigator);
+            for (int i =0; i <4; i++)
+            {
+                if (undead != null && !undead.Destroyed && !undead.Dead)
+                {
+                    TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Holy"), undead.DrawPos, undead.Map, Rand.Range(.5f, .8f), .1f, (.1f * i), .5f - (.1f * i), Rand.Range(-400, 400), Rand.Range(.5f, 1f), Rand.Range(0, 360), Rand.Range(0, 360)); 
+                }
+            }
+            SoundInfo info = SoundInfo.InMap(new TargetInfo(undead.Position, undead.Map, false), MaintenanceType.None);
+            TorannMagicDefOf.TM_FireWooshSD.PlayOneShot(info);
+            TM_Action.DoEffecter(TorannMagicDefOf.TM_HolyImplosion, undead.Position, undead.Map);
+            undead.TakeDamage(dinfo);
+        }
+
+        public static void DoEffecter(EffecterDef effecterDef, IntVec3 position, Map map)
+        {
+            Effecter effecter = effecterDef.Spawn();
+            effecter.Trigger(new TargetInfo(position, map, false), new TargetInfo(position, map, false));
+            effecter.Cleanup();
         }
     }
 }

@@ -51,8 +51,29 @@ namespace TorannMagic
                             {
                                 corpse = corpseThing as Corpse;
                                 Pawn undeadPawn = corpse.InnerPawn;
-                                Pawn newUndeadPawn = new Pawn();                                
-                                if (undeadPawn.RaceProps.IsFlesh && undeadPawn.Dead && undeadPawn.def.thingClass.FullName != "TorannMagic.TMPawnSummoned")
+                                CompRottable compRottable = corpse.GetComp<CompRottable>();
+                                float rotStage = 0;
+                                if (compRottable != null && compRottable.Stage == RotStage.Dessicated)
+                                {
+                                    rotStage = 1f;
+                                }
+                                if (compRottable != null)
+                                {
+                                    rotStage += compRottable.RotProgressPct;
+                                }
+                                bool flag_SL = false;
+                                if (undeadPawn.def.defName == "SL_Runner" || undeadPawn.def.defName == "SL_Peon" || undeadPawn.def.defName == "SL_Archer" || undeadPawn.def.defName == "SL_Hero")
+                                {                                    
+                                    PawnGenerationRequest pgr = new PawnGenerationRequest(PawnKindDef.Named("Tribesperson"), pawn.Faction, PawnGenerationContext.NonPlayer, -1, true, false, false, false, false, true, 0, false, false, false, false, false, false, false, null, null, null, null, null, null, null, "Undead");
+                                    Pawn newUndeadPawn = PawnGenerator.GeneratePawn(pgr);
+                                    GenSpawn.Spawn(newUndeadPawn, corpse.Position, corpse.Map, WipeMode.Vanish);
+                                    corpse.Strip();
+                                    corpse.Destroy(DestroyMode.Vanish);
+                                    rotStage = 1f;
+                                    flag_SL = true;
+                                    undeadPawn = newUndeadPawn;
+                                }                                                              
+                                if (undeadPawn.RaceProps.IsFlesh && (undeadPawn.Dead || flag_SL) && undeadPawn.def.thingClass.FullName != "TorannMagic.TMPawnSummoned")
                                 {
                                     bool wasVampire = false;
 
@@ -69,36 +90,43 @@ namespace TorannMagic
                                     }
 
                                     if (!wasVampire)
-                                    {
+                                    {                                        
                                         undeadPawn.SetFaction(pawn.Faction);
-                                        ResurrectionUtility.Resurrect(undeadPawn);
+                                        if (undeadPawn.Dead)
+                                        {
+                                            ResurrectionUtility.Resurrect(undeadPawn);
+                                        }
                                         raisedPawns++;
                                         if (!undeadPawn.kindDef.RaceProps.Animal && undeadPawn.kindDef.RaceProps.Humanlike)
                                         {
                                             CompAbilityUserMagic compMagic = undeadPawn.GetComp<CompAbilityUserMagic>();
-                                            if(compMagic.IsMagicUser && !undeadPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                                            if(TM_Calc.IsMagicUser(undeadPawn)) //(compMagic.IsMagicUser && !undeadPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless)) || 
                                             {
+                                                compMagic.Initialize();
                                                 compMagic.RemovePowers();
                                             }
                                             CompAbilityUserMight compMight = undeadPawn.GetComp<CompAbilityUserMight>();
-                                            if (compMight.IsMightUser)
+                                            if (TM_Calc.IsMightUser(undeadPawn)) //compMight.IsMightUser || 
                                             {
+                                                compMight.Initialize();
                                                 compMight.RemovePowers();
                                             }
                                             HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, -4f);
-                                            HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, .5f + ver.level);
+                                            HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, .5f + ver.level);                                            
+                                            HealthUtility.AdjustSeverity(undeadPawn, HediffDef.Named("TM_UndeadStageHD"), -2f);
+                                            HealthUtility.AdjustSeverity(undeadPawn, HediffDef.Named("TM_UndeadStageHD"), rotStage);
                                             RedoSkills(undeadPawn);
                                             RemoveTraits(undeadPawn, undeadPawn.story.traits.allTraits);
                                             undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Undead"), 0, false));
-                                            undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Psychopath"), 0, false));
+                                            undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Psychopath"), 0, false));                                            
                                             undeadPawn.needs.AddOrRemoveNeedsAsAppropriate();
-                                            Color undeadColor = new Color(.2f, .4f, 0);
-                                            undeadPawn.story.hairColor = undeadColor;
-                                            CompAbilityUserMagic undeadComp = undeadPawn.GetComp<CompAbilityUserMagic>();
-                                            if (undeadComp.IsMagicUser)
-                                            {
-                                                undeadComp.ClearPowers();
-                                            }
+                                            //Color undeadColor = new Color(.2f, .4f, 0);
+                                            //undeadPawn.story.hairColor = undeadColor;
+                                            //CompAbilityUserMagic undeadComp = undeadPawn.GetComp<CompAbilityUserMagic>();
+                                            //if (undeadComp.IsMagicUser)
+                                            //{
+                                            //    undeadComp.ClearPowers();
+                                            //}
 
                                             List<SkillRecord> skills = undeadPawn.skills.skills;
                                             for (int j = 0; j < skills.Count; j++)
@@ -123,6 +151,8 @@ namespace TorannMagic
                                     {
                                         HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadAnimalHD, -4f);
                                         HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadAnimalHD, .5f + ver.level);
+                                        HealthUtility.AdjustSeverity(undeadPawn, HediffDef.Named("TM_UndeadStageHD"), -2f);
+                                        HealthUtility.AdjustSeverity(undeadPawn, HediffDef.Named("TM_UndeadStageHD"), rotStage);
 
                                         if (undeadPawn.training.CanAssignToTrain(TrainableDefOf.Tameness).Accepted)
                                         {

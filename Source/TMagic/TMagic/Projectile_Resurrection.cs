@@ -87,7 +87,7 @@ namespace TorannMagic
                             {
                                 corpse = corpseThing as Corpse;
                                 deadPawn = corpse.InnerPawn;
-                                if (deadPawn.RaceProps.IsFlesh)
+                                if (deadPawn.RaceProps.IsFlesh && !TM_Calc.IsUndead(deadPawn))
                                 {
                                     if (!corpse.IsNotFresh())
                                     {

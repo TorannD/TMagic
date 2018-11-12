@@ -26,11 +26,11 @@
         <defName>TM_RaiseUndead</defName>
         <label>Raise Undead</label>
         <uiIconPath>UI/raiseundead</uiIconPath>
-        <description>Raise undead from corpses. Only works on creatures that were once living. 
+        <description>Raise undead from corpses. Only works on biological creatures that were once living. 
 
 Undead will remain under the Necromancers control indefinitely. Each undead human will incur a mana upkeep cost of 30% of base mana regeneration. Undead animals incur a 15% upkeep cost.
 
-There is no limit to the number of undead a necromancer may control, however, when the necromancer no longer has mana to maintain undead, they will automatically be consumed until the number is reduced to a manageable amount.</description>
+There is no limit to the number of undead a necromancer may control, however, when the necromancer no longer has mana to maintain undead, they will automatically be consumed until the number of active undead is reduced to a manageable amount.</description>
         <manaCost>0.45</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>

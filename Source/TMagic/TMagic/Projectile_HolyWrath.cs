@@ -122,7 +122,7 @@ namespace TorannMagic
                     victim = curCell.GetFirstPawn(map);
                 }
 
-                if (victim != null && victim.Faction == this.caster.Faction && !victim.Dead)
+                if (victim != null &&  victim.Faction == this.caster.Faction && !victim.Dead)
                 {
                     if(verVal >= 1)
                     {
@@ -131,7 +131,8 @@ namespace TorannMagic
                     if (verVal >= 2)
                     {
                         Pawn pawn = victim;
-                        bool flag = pawn != null && !pawn.Dead;
+                        bool flag = pawn != null && !pawn.Dead && !TM_Calc.IsUndead(pawn);
+                        bool undeadFlag = pawn != null && !pawn.Dead && TM_Calc.IsUndead(pawn);
                         if (flag)
                         {
                             int num = 3;
@@ -177,13 +178,17 @@ namespace TorannMagic
                                     }
                                 }
                             }
-                        }
+                        }                        
                     }
                     if (verVal >= 3)
                     {
                         HealthUtility.AdjustSeverity(victim, HediffDef.Named("BestowMightHD"), 1f);
                     }
 
+                }
+                if(victim != null && !victim.Dead && TM_Calc.IsUndead(victim))
+                {
+                    TM_Action.DamageUndead(victim, Rand.Range(5f, 12f), this.launcher);
                 }
                 targets.GetEnumerator().MoveNext();
             }

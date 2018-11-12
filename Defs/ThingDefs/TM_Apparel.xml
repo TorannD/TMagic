@@ -118,12 +118,12 @@ Arcane Resistance: +5%</description>
 		<Mass>0.7</Mass>
 		<MaxHitPoints>200</MaxHitPoints>
 		<MarketValue>2000</MarketValue>
-		<ArmorRating_Blunt>0.10</ArmorRating_Blunt>
-		<ArmorRating_Sharp>0.15</ArmorRating_Sharp>
-		<ArmorRating_Heat>0.50</ArmorRating_Heat>
 		<ArmorRating_Alignment>0.30</ArmorRating_Alignment>
-		<Insulation_Cold>22</Insulation_Cold>
-		<Insulation_Heat>15</Insulation_Heat>
+		<Insulation_Cold>11</Insulation_Cold>
+		<Insulation_Heat>4</Insulation_Heat>
+		<StuffEffectMultiplierArmor>0.15</StuffEffectMultiplierArmor>
+        <StuffEffectMultiplierInsulation_Cold>0.6</StuffEffectMultiplierInsulation_Cold>
+        <StuffEffectMultiplierInsulation_Heat>0.2</StuffEffectMultiplierInsulation_Heat>
 	</statBases>
 	<equippedStatOffsets>
 		<SocialImpact>0.1</SocialImpact>
@@ -222,23 +222,25 @@ Energy Regen: +10%
 Energy Costs: -15%
 Arcane Resistance: +20%
 
-Augmented by Arcane Spectre</description>
+Augmented by Arcane Spectre: 50% chance to deal 20% bonus damage</description>
     <graphicData> 
 		<texPath>Equipment/ancientmail</texPath>
 		<graphicClass>Graphic_Single</graphicClass>
-		<drawSize>1.10</drawSize>
+		<drawSize>1.5</drawSize>
 	</graphicData>
 	<statBases>
 		<WorkToMake>20000</WorkToMake>
 		<Mass>4.5</Mass>
 		<MaxHitPoints>320</MaxHitPoints>
 		<MarketValue>2000</MarketValue>
-		<ArmorRating_Blunt>0.32</ArmorRating_Blunt>
-		<ArmorRating_Sharp>0.46</ArmorRating_Sharp>
-		<ArmorRating_Heat>0.10</ArmorRating_Heat>
-		<ArmorRating_Alignment>0.40</ArmorRating_Alignment>
+		<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+		<ArmorRating_Sharp>0.15</ArmorRating_Sharp>
+		<ArmorRating_Alignment>0.20</ArmorRating_Alignment>
 		<Insulation_Cold>10</Insulation_Cold>
 		<Insulation_Heat>10</Insulation_Heat>
+		<StuffEffectMultiplierArmor>0.45</StuffEffectMultiplierArmor>
+        <StuffEffectMultiplierInsulation_Cold>0.25</StuffEffectMultiplierInsulation_Cold>
+        <StuffEffectMultiplierInsulation_Heat>0.25</StuffEffectMultiplierInsulation_Heat>
 	</statBases>
 	<equippedStatOffsets>
 		<SocialImpact>-0.2</SocialImpact>
@@ -348,19 +350,20 @@ Arcane Res: +10%</description>
     <graphicData> 
 		<texPath>Equipment/darkrobe</texPath>
 		<graphicClass>Graphic_Single</graphicClass>
-		<drawSize>1.20</drawSize>
+		<drawSize>1.50</drawSize>
 	</graphicData>
 	<statBases>
 		<WorkToMake>16000</WorkToMake>
 		<Mass>2.5</Mass>
 		<MaxHitPoints>120</MaxHitPoints>
 		<MarketValue>2500</MarketValue>
-		<ArmorRating_Blunt>0.14</ArmorRating_Blunt>
-		<ArmorRating_Sharp>0.20</ArmorRating_Sharp>
-		<ArmorRating_Heat>0.50</ArmorRating_Heat>
-		<ArmorRating_Alignment>0.35</ArmorRating_Alignment>
-		<Insulation_Cold>15</Insulation_Cold>
-		<Insulation_Heat>15</Insulation_Heat>
+		<ArmorRating_Blunt>0.07</ArmorRating_Blunt>
+		<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
+		<ArmorRating_Heat>0.25</ArmorRating_Heat>
+		<ArmorRating_Alignment>0.1</ArmorRating_Alignment>
+		<StuffEffectMultiplierArmor>0.3</StuffEffectMultiplierArmor>
+        <StuffEffectMultiplierInsulation_Cold>1</StuffEffectMultiplierInsulation_Cold>
+        <StuffEffectMultiplierInsulation_Heat>1</StuffEffectMultiplierInsulation_Heat>
 	</statBases>
 	<equippedStatOffsets>
 		<PsychicSensitivity>0.40</PsychicSensitivity>
@@ -377,7 +380,6 @@ Arcane Res: +10%</description>
     </recipeMaker>
 	<costList>
 		<RawMagicyte>350</RawMagicyte>
-		<DevilstrandCloth>120</DevilstrandCloth>
 	</costList>
 	<costStuffCount>60</costStuffCount>
 	<stuffCategories>
@@ -468,19 +470,23 @@ Class XP Gain: +25%
 Arcane Res: +10%</description>
     <graphicData> 
 		<texPath>Equipment/archmage</texPath>
-		<graphicClass>Graphic_Single</graphicClass> 
+		<graphicClass>Graphic_Single</graphicClass>
+		<drawSize>1.5</drawSize>
 	</graphicData>
 	<statBases>
 		<WorkToMake>60000</WorkToMake>
 		<Mass>0.5</Mass>
 		<MaxHitPoints>200</MaxHitPoints>
 		<MarketValue>20000</MarketValue>
-		<ArmorRating_Blunt>0.27</ArmorRating_Blunt>
-		<ArmorRating_Sharp>0.20</ArmorRating_Sharp>
-		<ArmorRating_Heat>0.80</ArmorRating_Heat>
-		<ArmorRating_Alignment>0.65</ArmorRating_Alignment>
-		<Insulation_Cold>25</Insulation_Cold>
-		<Insulation_Heat>25</Insulation_Heat>
+		<ArmorRating_Blunt>0.25</ArmorRating_Blunt>
+		<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
+		<ArmorRating_Heat>0.5</ArmorRating_Heat>
+		<ArmorRating_Alignment>0.3</ArmorRating_Alignment>
+		<Insulation_Cold>10</Insulation_Cold>
+		<Insulation_Heat>10</Insulation_Heat>
+		<StuffEffectMultiplierArmor>0.5</StuffEffectMultiplierArmor>
+        <StuffEffectMultiplierInsulation_Cold>0.5</StuffEffectMultiplierInsulation_Cold>
+        <StuffEffectMultiplierInsulation_Heat>0.5</StuffEffectMultiplierInsulation_Heat>
 	</statBases>
 	<equippedStatOffsets>
 		<SocialImpact>0.25</SocialImpact>
@@ -588,26 +594,30 @@ Max Energy: +40%
 Energy Regen: +40%
 Ability Cooldown: -20%
 
-Augmented by Phantom Shift</description>
+Augmented by Phantom Shift: 20% chance to avoid an attack</description>
     <graphicData> 
-		<texPath>Equipment/demonlordcloak</texPath>
-		<graphicClass>Graphic_Single</graphicClass> 
+		<texPath>Equipment/demonlordcloakc_Male_north</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
 	</graphicData>
 	<statBases>
 		<WorkToMake>66600</WorkToMake>
 		<Mass>6</Mass>
 		<MaxHitPoints>500</MaxHitPoints>
 		<MarketValue>16000</MarketValue>
-		<ArmorRating_Blunt>0.4</ArmorRating_Blunt>
-		<ArmorRating_Sharp>0.35</ArmorRating_Sharp>
-		<ArmorRating_Heat>0.80</ArmorRating_Heat>
-		<ArmorRating_Alignment>0.80</ArmorRating_Alignment>
-		<Insulation_Cold>15</Insulation_Cold>
-		<Insulation_Heat>15</Insulation_Heat>
+		<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+		<ArmorRating_Sharp>0.15</ArmorRating_Sharp>
+		<ArmorRating_Heat>0.4</ArmorRating_Heat>
+		<ArmorRating_Alignment>0.6</ArmorRating_Alignment>
+		<Insulation_Cold>2</Insulation_Cold>
+		<Insulation_Heat>2</Insulation_Heat>
+		<StuffEffectMultiplierArmor>0.3</StuffEffectMultiplierArmor>
+        <StuffEffectMultiplierInsulation_Cold>1</StuffEffectMultiplierInsulation_Cold>
+        <StuffEffectMultiplierInsulation_Heat>1</StuffEffectMultiplierInsulation_Heat>
 	</statBases>
 	<equippedStatOffsets>
 		<MoveSpeed>0.20</MoveSpeed>
-		<MeleeDodgeChance>10</MeleeDodgeChance>
+		<MeleeDodgeChance>.5</MeleeDodgeChance>
 	</equippedStatOffsets>
 	<recipeMaker>
       <workAmount>66600</workAmount>
@@ -619,9 +629,13 @@ Augmented by Phantom Shift</description>
 		</researchPrerequisite>
     </recipeMaker>
 	<costList>
-	  <Hyperweave>150</Hyperweave>
 	  <RawMagicyte>400</RawMagicyte>
 	</costList>
+	<costStuffCount>150</costStuffCount>
+	<stuffCategories>
+		<li>Fabric</li>
+		<li>Leathery</li>
+	</stuffCategories>
 	<thingCategories>
 	  <li>Apparel</li>
 	</thingCategories>
@@ -695,19 +709,22 @@ Class XP Gain: +10%</description>
     <graphicData> 
 		<texPath>Equipment/royalarmor</texPath>
 		<graphicClass>Graphic_Single</graphicClass>
-		<drawSize>1.40</drawSize>
+		<drawSize>2.0</drawSize>
 	</graphicData>
 	<statBases>
 		<WorkToMake>50000</WorkToMake>
 		<Mass>10</Mass>
 		<MaxHitPoints>500</MaxHitPoints>
 		<MarketValue>5000</MarketValue>
-		<ArmorRating_Blunt>0.6</ArmorRating_Blunt>
-		<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
-		<ArmorRating_Heat>0.20</ArmorRating_Heat>
+		<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+		<ArmorRating_Sharp>0.2</ArmorRating_Sharp>
+		<ArmorRating_Heat>0.10</ArmorRating_Heat>
 		<ArmorRating_Alignment>0.40</ArmorRating_Alignment>
 		<Insulation_Cold>5</Insulation_Cold>
 		<Insulation_Heat>5</Insulation_Heat>
+		<StuffEffectMultiplierArmor>0.75</StuffEffectMultiplierArmor>
+        <StuffEffectMultiplierInsulation_Cold>0.75</StuffEffectMultiplierInsulation_Cold>
+        <StuffEffectMultiplierInsulation_Heat>0.25</StuffEffectMultiplierInsulation_Heat>
 	</statBases>
 	<equippedStatOffsets>
 		<SocialImpact>0.15</SocialImpact>
@@ -781,14 +798,17 @@ Arcane Resistance: 30%</description>
 	<statBases>
 		<WorkToMake>35000</WorkToMake>
 		<Mass>.7</Mass>
-		<MaxHitPoints>180</MaxHitPoints>
+		<MaxHitPoints>90</MaxHitPoints>
 		<MarketValue>3500</MarketValue>
-		<ArmorRating_Blunt>0.15</ArmorRating_Blunt>
-		<ArmorRating_Sharp>0.15</ArmorRating_Sharp>
-		<ArmorRating_Heat>0.40</ArmorRating_Heat>
+		<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+		<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
+		<ArmorRating_Heat>0.20</ArmorRating_Heat>
 		<ArmorRating_Alignment>0.50</ArmorRating_Alignment>
-		<Insulation_Cold>8</Insulation_Cold>
-		<Insulation_Heat>8</Insulation_Heat>		
+		<Insulation_Cold>4</Insulation_Cold>
+		<Insulation_Heat>4</Insulation_Heat>
+		<StuffEffectMultiplierArmor>0.2</StuffEffectMultiplierArmor>
+        <StuffEffectMultiplierInsulation_Cold>0.40</StuffEffectMultiplierInsulation_Cold>
+        <StuffEffectMultiplierInsulation_Heat>0.40</StuffEffectMultiplierInsulation_Heat>		
 	</statBases>
 	<equippedStatOffsets>
 		<SocialImpact>-0.15</SocialImpact>
@@ -817,7 +837,6 @@ Arcane Resistance: 30%</description>
 		<li>Leathery</li>
 	</stuffCategories>
 	<costList>
-	  <DevilstrandCloth>70</DevilstrandCloth>
 	  <RawMagicyte>75</RawMagicyte>
     </costList>
 	<thingCategories>
@@ -866,23 +885,26 @@ Arcane Resistance: +10%</description>
 		<graphicClass>Graphic_Single</graphicClass> 
 	</graphicData>
 	<statBases>
-		<WorkToMake>8000</WorkToMake>
+		<WorkToMake>80</WorkToMake>
 		<Mass>.4</Mass>
-		<MaxHitPoints>120</MaxHitPoints>
+		<MaxHitPoints>60</MaxHitPoints>
 		<MarketValue>900</MarketValue>
-		<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
-		<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
-		<ArmorRating_Heat>0.20</ArmorRating_Heat>
+		<ArmorRating_Blunt>0.05</ArmorRating_Blunt>
+		<ArmorRating_Sharp>0.05</ArmorRating_Sharp>
+		<ArmorRating_Heat>0.10</ArmorRating_Heat>
 		<ArmorRating_Alignment>0.30</ArmorRating_Alignment>
 		<Insulation_Cold>10</Insulation_Cold>
 		<Insulation_Heat>10</Insulation_Heat>		
+		<StuffEffectMultiplierArmor>0.15</StuffEffectMultiplierArmor>
+        <StuffEffectMultiplierInsulation_Cold>0.25</StuffEffectMultiplierInsulation_Cold>
+        <StuffEffectMultiplierInsulation_Heat>0.25</StuffEffectMultiplierInsulation_Heat>
 	</statBases>
 	<equippedStatOffsets>
 		<PsychicSensitivity>0.20</PsychicSensitivity>
 		<MentalBreakThreshold>-0.04</MentalBreakThreshold>
 	</equippedStatOffsets>
 	<recipeMaker>
-      <workAmount>8000</workAmount>
+      <workAmount>80</workAmount>
 	  <skillRequirements>
 			<Intellectual>6</Intellectual>
 	  </skillRequirements>

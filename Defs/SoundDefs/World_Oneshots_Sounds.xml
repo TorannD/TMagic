@@ -14,12 +14,36 @@
           </li>
         </grains>
         <volumeRange>
-          <min>30</min>
-          <max>26</max>
+          <min>26</min>
+          <max>30</max>
         </volumeRange>
         <pitchRange>
           <min>.7</min>
           <max>.9</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>TM_FireWooshSD</defName>
+    <eventNames />
+    <maxSimultaneous>5</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/FireWoosh</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>25</min>
+          <max>30</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.6</min>
+          <max>1.1</max>
         </pitchRange>
       </li>
     </subSounds>

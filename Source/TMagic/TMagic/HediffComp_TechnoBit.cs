@@ -152,7 +152,7 @@ namespace TorannMagic
                         }
                     }
 
-                    if(Find.TickManager.TicksGame % (160 - 3 * EffVal) == 0 && this.Pawn.Drafted && comp.Mana.CurLevel >= (.03f - .0008f * EffVal))
+                    if(comp.useTechnoBitRepairToggle && Find.TickManager.TicksGame % (160 - 3 * EffVal) == 0 && this.Pawn.Drafted && comp.Mana.CurLevel >= (.03f - .0008f * EffVal))
                     {
                         Thing damagedThing = TM_Calc.FindNearbyDamagedThing(this.Pawn, Mathf.RoundToInt(5 + .33f * EffVal));
                         Building repairBuilding = damagedThing as Building;
@@ -175,7 +175,7 @@ namespace TorannMagic
                         }
                     }
 
-                    if (Find.TickManager.TicksGame % (600 - 6 * EffVal) == 0 && !this.Pawn.Drafted && comp.Mana.CurLevel >= .05f)
+                    if (comp.useTechnoBitRepairToggle && Find.TickManager.TicksGame % (600 - 6 * EffVal) == 0 && !this.Pawn.Drafted && comp.Mana.CurLevel >= .05f)
                     {
                         Thing damagedThing = TM_Calc.FindNearbyDamagedThing(this.Pawn, Mathf.RoundToInt(10 + .5f * EffVal));
                         Building repairBuilding = damagedThing as Building;

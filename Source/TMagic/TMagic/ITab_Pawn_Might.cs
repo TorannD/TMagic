@@ -40,29 +40,32 @@ namespace TorannMagic
             {
                 
                 bool flag = base.SelPawn.story != null && base.SelPawn.IsColonist;
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
+                if (flag)
                 {
-                    return flag && true;
-                }
-                if(base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper))
-                {
-                    return flag && true;
-                }
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer))
-                {
-                    return flag && true;
-                }
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Ranger))
-                {
-                    return flag && true;
-                }
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-                {
-                    return flag && true;
-                }
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
-                {
-                    return flag && true;
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
+                    {
+                        return flag && true;
+                    }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper))
+                    {
+                        return flag && true;
+                    }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer))
+                    {
+                        return flag && true;
+                    }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Ranger))
+                    {
+                        return flag && true;
+                    }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                    {
+                        return flag && true;
+                    }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
+                    {
+                        return flag && true;
+                    }
                 }
 
                 return false;

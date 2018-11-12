@@ -54,7 +54,8 @@ namespace TorannMagic
             }
 
             Pawn pawn = (Pawn)this.currentTarget;
-            bool flag = pawn != null && !pawn.Dead;
+            bool flag = pawn != null && !pawn.Dead && !TM_Calc.IsUndead(pawn);
+            bool undeadFlag = pawn != null && !pawn.Dead && TM_Calc.IsUndead(pawn);
             if (flag)
             {
                 int num = 3 + verVal;
@@ -105,6 +106,10 @@ namespace TorannMagic
                         }
                     }
                 }
+            }
+            if(undeadFlag)
+            {
+                TM_Action.DamageUndead(pawn, (8.0f + (float)pwrVal * 5f) * comp.arcaneDmg, this.CasterPawn);
             }
             return true;
         }

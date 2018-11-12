@@ -619,6 +619,7 @@ namespace TorannMagic
         public static EffecterDef TM_DeathExplosion;
         public static EffecterDef TM_OSExplosion;
         public static EffecterDef TM_SabotageExplosion;
+        public static EffecterDef TM_HolyImplosion;
 
         //Apparel layers
         public static ApparelLayerDef TM_Cloak;
@@ -653,6 +654,7 @@ namespace TorannMagic
         public static SoundDef TM_Implosion;
         public static SoundDef TM_ThrumBow;
         public static SoundDef TM_FastReleaseSD;
+        public static SoundDef TM_FireWooshSD;
 
         //Inspirations
         public static InspirationDef ID_Champion;
@@ -663,5 +665,9 @@ namespace TorannMagic
         public static InspirationDef ID_ManaRegen;
         public static InspirationDef Frenzy_Go;
         public static InspirationDef Frenzy_Shoot;
+
+        //Magic Work Defs
+        public static PawnCapacityDef MagicManipulation;
+        public static WorkTypeDef TM_Magic;
     }
 }

@@ -441,4 +441,36 @@
     </stages>
   </HediffDef>
   
+  <HediffDef>
+    <defName>TM_UndeadStageHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Body stage</label>
+    <defaultLabelColor>(1,0.8,0.0)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<minSeverity>0.001</minSeverity>
+	<maxSeverity>2.0</maxSeverity>
+	<initialSeverity>0.001</initialSeverity>
+	<isBad>false</isBad>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>0.2</severityPerDay>
+      </li>	  
+    </comps>
+	<stages>
+      <li>
+        <label>Rotting</label>
+        <minSeverity>0.001</minSeverity>
+		<becomeVisible>false</becomeVisible>
+      </li>
+      <li>
+        <label>Dessicated</label>
+        <minSeverity>1</minSeverity>	
+		<becomeVisible>false</becomeVisible>
+      </li>
+    </stages>
+  </HediffDef>
+  
 </Defs>

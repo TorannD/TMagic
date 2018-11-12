@@ -24,6 +24,9 @@ namespace TorannMagic.ModOptions
         public bool showIconsMultiSelect = true;
         public float riftChallenge = 1f;
         public bool showGizmo = true;
+        public bool showLevelUpMessage = true;
+        public bool changeUndeadPawnAppearance = true;
+        public bool changeUndeadAnimalAppearance = true;
 
         //autocast options
         public bool autocastEnabled = true;
@@ -51,7 +54,7 @@ namespace TorannMagic.ModOptions
         public bool Sniper = true;
         public bool Ranger = true;
         public bool Faceless = true;
-        public bool Psionic = true;
+        public bool Psionic = true;        
 
         public static Settings Instance;
 
@@ -80,6 +83,9 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<bool>(ref this.showIconsMultiSelect, "showIconsMultiSelect", true, false);
             Scribe_Values.Look<float>(ref this.riftChallenge, "riftChallenge", 1f, false);
             Scribe_Values.Look<bool>(ref this.showGizmo, "showGizmo", true, false);
+            Scribe_Values.Look<bool>(ref this.showLevelUpMessage, "showLevelUpMessage", true, false);
+            Scribe_Values.Look<bool>(ref this.changeUndeadPawnAppearance, "changeUndeadPawnAppearance", true, false);
+            Scribe_Values.Look<bool>(ref this.changeUndeadAnimalAppearance, "changeUndeadAnimalAppearance", true, false);
 
             Scribe_Values.Look<bool>(ref this.autocastEnabled, "autocastEnabled", true, false);
             Scribe_Values.Look<float>(ref this.autocastMinThreshold, "autocastMinThreshold", 0.7f, false);

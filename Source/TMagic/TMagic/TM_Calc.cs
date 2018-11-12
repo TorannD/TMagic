@@ -19,6 +19,163 @@ namespace TorannMagic
             return isRobot;
         }
 
+        public static bool IsUndead(Pawn pawn)
+        {
+            if (pawn != null)
+            {
+                bool flag_Hediff = false;
+                if (pawn.health != null)
+                {
+                    if (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD"), false) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadAnimalHD"), false) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD"), false) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadStageHD"), false))
+                    {
+                        flag_Hediff = true;
+                    }
+                    Hediff hediff = null;
+                    for (int i = 0; i < pawn.health.hediffSet.hediffs.Count; i++)
+                    {
+                        hediff = pawn.health.hediffSet.hediffs[i];
+                        if (hediff.def.defName.Contains("ROM_Vamp"))
+                        {
+                            flag_Hediff = true;
+                        }
+                    }
+                }
+                bool flag_DefName = false;
+                if (pawn.def.defName == "SL_Runner" || pawn.def.defName == "SL_Peon" || pawn.def.defName == "SL_Archer" || pawn.def.defName == "SL_Hero")
+                {
+                    flag_DefName = true;
+                }
+                bool flag_Trait = false;
+                if (pawn.story != null && pawn.story.traits != null)
+                {
+                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Undead))
+                    {
+                        flag_Trait = true;
+                    }
+                }
+                bool isUndead = flag_Hediff || flag_DefName || flag_Trait;
+                return isUndead;
+            }
+            return false;
+        }
+
+        public static bool IsUndeadNotVamp(Pawn pawn)
+        {
+            if (pawn != null)
+            {
+                bool flag_Hediff = false;
+                if (pawn.health != null)
+                {
+                    if (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD"), false) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadAnimalHD"), false) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD"), false) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadStageHD"), false))
+                    {
+                        flag_Hediff = true;
+                    }
+                }
+                bool flag_DefName = false;
+                if (pawn.def.defName == "SL_Runner" || pawn.def.defName == "SL_Peon" || pawn.def.defName == "SL_Archer" || pawn.def.defName == "SL_Hero")
+                {
+                    flag_DefName = true;
+                }
+                bool flag_Trait = false;
+                if (pawn.story != null && pawn.story.traits != null)
+                {
+                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Undead))
+                    {
+                        flag_Trait = true;
+                    }
+                }
+                bool isUndead = flag_Hediff || flag_DefName || flag_Trait;
+                return isUndead;
+            }
+            return false;
+        }
+
+        public static bool IsMightUser(Pawn pawn)
+        {
+            if (pawn != null)
+            {
+                bool flag_Hediff = false;
+                if (pawn.health != null)
+                {
+                    if (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_MightUserHD"), false))
+                    {
+                        flag_Hediff = true;
+                    }
+                }
+                bool flag_Need = false;
+                if (pawn.needs != null)
+                {
+                    List<Need> needs = pawn.needs.AllNeeds;
+                    for (int i = 0; i < needs.Count; i++)
+                    {
+                        if (needs[i].def.defName == "TM_Stamina")
+                        {
+                            flag_Need = true;
+                        }
+                    }
+                }
+                bool flag_Trait = false;
+                if (pawn.story != null && pawn.story.traits != null)
+                {
+                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) || 
+                        pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
+                    { 
+                        flag_Trait = true;
+                    }
+                }
+                bool isMightUser = flag_Hediff || flag_Trait || flag_Need;
+                return isMightUser;
+            }
+            return false;
+        }
+
+        public static bool IsMagicUser(Pawn pawn)
+        {
+            if (pawn != null)
+            {
+                bool flag_Hediff = false;
+                if (pawn.health != null)
+                {
+                    if (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_MagicUserHD"), false))
+                    {
+                        flag_Hediff = true;
+                    }
+                }
+                bool flag_Need = false;
+                if (pawn.needs != null)
+                {
+                    List<Need> needs = pawn.needs.AllNeeds;
+                    for (int i = 0; i < needs.Count; i++)
+                    {
+                        if (needs[i].def.defName == "TM_Mana")
+                        {
+                            flag_Need = true;
+                        }
+                    }
+                }
+                bool flag_Trait = false;
+                if (pawn.story != null && pawn.story.traits != null)
+                {
+                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Warlock) || 
+                        pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus) || pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) || pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || 
+                        pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || 
+                        pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin) || pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner) || pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) || 
+                        (pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich)) || pawn.story.traits.HasTrait(TorannMagicDefOf.Priest) || 
+                        pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
+                    {
+                        flag_Trait = true;
+                    }
+                    if(pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                    {
+                        return false;
+                    }
+                }                
+                bool isMagicUser = flag_Hediff || flag_Trait || flag_Need;
+                return isMagicUser;
+            }
+            return false;
+        }
+
         public static Vector3 GetVector(IntVec3 from, IntVec3 to)
         {
             Vector3 heading = (to - from).ToVector3();
@@ -192,7 +349,7 @@ namespace TorannMagic
             for (int i = 0; i < mapPawns.Count; i++)
             {
                 targetPawn = mapPawns[i];
-                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed)
+                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !TM_Calc.IsUndead(targetPawn))
                 {
                     if (targetPawn.IsColonist && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
                     {
@@ -257,7 +414,7 @@ namespace TorannMagic
             for (int i = 0; i < mapPawns.Count; i++)
             {
                 targetPawn = mapPawns[i];
-                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed)
+                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !TM_Calc.IsUndead(targetPawn))
                 {
                     if (targetPawn.IsColonist && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
                     {

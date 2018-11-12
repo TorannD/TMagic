@@ -2,13 +2,16 @@
 
 <Defs>
 
-<!--   <PawnCapacityDef>
+  <PawnCapacityDef>
     <defName>MagicManipulation</defName>
     <label>magic manipulation</label>
     <listOrder>310</listOrder>
     <workerClass>TorannMagic.PawnCapacityWorker_MagicManipulation</workerClass>
     <lethalFlesh>false</lethalFlesh>
     <showOnCaravanHealthTab>false</showOnCaravanHealthTab>
-  </PawnCapacityDef> -->
+	<showOnHumanlikes>false</showOnHumanlikes>
+	<showOnAnimals>false</showOnAnimals>
+	<showOnMechanoids>false</showOnMechanoids>
+  </PawnCapacityDef>
 
 </Defs>

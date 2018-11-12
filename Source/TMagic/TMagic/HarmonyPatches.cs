@@ -39,14 +39,32 @@ namespace TorannMagic
                 postfix: new HarmonyMethod(type: patchType, name: nameof(PowerCompTick_Overdrive_Postfix)), transpiler: null);
             harmonyInstance.Patch(original: AccessTools.Method(type: typeof(Building_TurretGun), name: "Tick"), prefix: null,
                 postfix: new HarmonyMethod(type: patchType, name: nameof(TurretGunTick_Overdrive_Postfix)), transpiler: null);
-
-            harmonyInstance.Patch(original: AccessTools.Method(type: typeof(PawnRenderer), name: "RenderPawnAt"), prefix: null,
-                postfix: new HarmonyMethod(type: patchType, name: nameof(PawnRenderer_Undead_Prefix)), transpiler: null);
+            harmonyInstance.Patch(original: AccessTools.Method(type: typeof(CompRefuelable), name: "PostDraw"), prefix: new HarmonyMethod(type: patchType, name: nameof(CompRefuelable_DrawBar_Prefix)),
+                postfix: null, transpiler: null);
+            harmonyInstance.Patch(original: AccessTools.Method(type: typeof(AutoUndrafter), name: "AutoUndraftTick"), prefix: new HarmonyMethod(type: patchType, name: nameof(AutoUndrafter_Undead_Prefix)),
+                postfix: null, transpiler: null);
 
             harmonyInstance.Patch(AccessTools.Method(typeof(Caravan), "get_NightResting", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_NightResting_Undead", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(Pawn_StanceTracker), "get_Staggered", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_Staggered", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(Verb_LaunchProjectile), "get_Projectile", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_Projectile_ES", null), null);
 
+            harmonyInstance.Patch(AccessTools.Method(typeof(PawnRenderer), "RenderPawnInternal", new Type[]
+                {
+                    typeof(Vector3),
+                    typeof(float),
+                    typeof(bool),
+                    typeof(Rot4),
+                    typeof(Rot4),
+                    typeof(RotDrawMode),
+                    typeof(bool),
+                    typeof(bool)
+                }, null), new HarmonyMethod(typeof(HarmonyPatches), "PawnRenderer_UndeadInternal_Prefix", null), null);
+            harmonyInstance.Patch(AccessTools.Method(typeof(PawnRenderer), "RenderPawnAt", new Type[]
+                {
+                    typeof(Vector3),
+                    typeof(RotDrawMode),
+                    typeof(bool)
+                }, null), new HarmonyMethod(typeof(HarmonyPatches), "PawnRenderer_Undead_Prefix", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(PawnDiedOrDownedThoughtsUtility), "AppendThoughts_Relations", new Type[]
                 {
                     typeof(Pawn),
@@ -180,12 +198,155 @@ namespace TorannMagic
         //    }
         //}
 
+        [HarmonyPatch(typeof(Corpse), "PostMake", null)]
+        public class Corpse_UndeadStage_Patch
+        {
+            public static void Postfix(Corpse __instance)
+            {
+                CompRottable compRottable = __instance.GetComp<CompRottable>();
+                Pawn undeadPawn = __instance.InnerPawn;
+                if(compRottable != null && undeadPawn != null)
+                {
+                    Hediff hediff = undeadPawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_UndeadStageHD"), false);
+                    if (hediff != null)
+                    {
+                        compRottable.RotProgress = hediff.Severity;
+                    }
+                }
+            }
+        }
+       
+        public static bool CompRefuelable_DrawBar_Prefix(CompRefuelable __instance)
+        {
+            if(__instance.parent.def.defName == "TM_ArcaneCapacitor")
+            {
+                if (!__instance.HasFuel && __instance.Props.drawOutOfFuelOverlay)
+                {
+                    __instance.parent.Map.overlayDrawer.DrawOverlay(__instance.parent, OverlayTypes.OutOfFuel);
+                }
+                if (__instance.Props.drawFuelGaugeInMap)
+                {
+                    GenDraw.FillableBarRequest r = default(GenDraw.FillableBarRequest);
+                    r.center = __instance.parent.DrawPos + Vector3.up * 0.1f;
+                    r.center.z -= .2f;
+                    r.size = new Vector2(.5f, .15f);
+                    r.fillPercent = __instance.FuelPercentOfMax;
+                    r.filledMat = SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.6f, 0.0f, 0.6f));
+                    r.unfilledMat = SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.3f, 0.3f, 0.3f));
+                    r.margin = 0.15f;
+                    Rot4 rotation = __instance.parent.Rotation;
+                    if (!rotation.IsHorizontal)
+                    {
+                        rotation.Rotate(RotationDirection.Clockwise);
+                    }
+                    r.rotation = rotation;
+                    GenDraw.DrawFillableBar(r);
+                }
+                return false;
+            }
+            if (__instance.parent.def.defName == "TM_DimensionalManaPocket")
+            {
+                if (!__instance.HasFuel && __instance.Props.drawOutOfFuelOverlay)
+                {
+                    __instance.parent.Map.overlayDrawer.DrawOverlay(__instance.parent, OverlayTypes.OutOfFuel);
+                }
+                if (__instance.Props.drawFuelGaugeInMap)
+                {
+                    GenDraw.FillableBarRequest r = default(GenDraw.FillableBarRequest);
+                    r.center = __instance.parent.DrawPos + Vector3.up * 0.1f;
+                    r.center.z -= .6f;
+                    r.size = new Vector2(.5f, .15f);
+                    r.fillPercent = __instance.FuelPercentOfMax;
+                    r.filledMat = SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.6f, 0.0f, 0.6f));
+                    r.unfilledMat = SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.3f, 0.3f, 0.3f));
+                    r.margin = 0.15f;
+                    Rot4 rotation = __instance.parent.Rotation;
+                    if (rotation.IsHorizontal)
+                    {
+                        rotation.Rotate(RotationDirection.Clockwise);
+                    }
+                    r.rotation = rotation;
+                    GenDraw.DrawFillableBar(r);
+                }
+                return false;
+            }
+            return true;
+        }
+
+        public static bool AutoUndrafter_Undead_Prefix(AutoUndrafter __instance)
+        {
+            Pawn pawn = Traverse.Create(root: __instance).Field(name: "pawn").GetValue<Pawn>();
+            if (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")))
+            {
+                return false;
+            }
+            return true;
+        }
+
         public static bool PawnRenderer_Undead_Prefix(PawnRenderer __instance, Vector3 drawLoc, ref RotDrawMode bodyDrawType, bool headStump)
         {
             Pawn pawn = Traverse.Create(root: __instance).Field(name: "pawn").GetValue<Pawn>();
-            if(pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")))
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            if (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadStageHD")))
             {
-                bodyDrawType = RotDrawMode.Rotting;
+                if (settingsRef.changeUndeadPawnAppearance && pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")))
+                {
+                    Hediff hediff = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_UndeadStageHD"));
+                    if (hediff.Severity < 1)
+                    {
+                        bodyDrawType = RotDrawMode.Rotting;
+                    }
+                    else
+                    {
+                        bodyDrawType = RotDrawMode.Dessicated;
+                    }
+                }
+                if (settingsRef.changeUndeadAnimalAppearance && pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadAnimalHD")))
+                {
+                    Hediff hediff = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_UndeadStageHD"));
+                    if (hediff.Severity < 1)
+                    {
+                        bodyDrawType = RotDrawMode.Rotting;
+                    }
+                    else
+                    {
+                        bodyDrawType = RotDrawMode.Dessicated;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public static bool PawnRenderer_UndeadInternal_Prefix(PawnRenderer __instance, Vector3 rootLoc, float angle, bool renderBody, Rot4 bodyFacing, Rot4 headFacing, ref RotDrawMode bodyDrawType, bool portrait, bool headStump)
+        {
+            Pawn pawn = Traverse.Create(root: __instance).Field(name: "pawn").GetValue<Pawn>();
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            if (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadStageHD")))
+            {
+                if (settingsRef.changeUndeadPawnAppearance && pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")))
+                {
+                    Hediff hediff = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_UndeadStageHD"));
+                    if (hediff.Severity < 1)
+                    {
+                        bodyDrawType = RotDrawMode.Rotting;
+                    }
+                    else
+                    {
+                        bodyDrawType = RotDrawMode.Dessicated;
+                    }
+                }
+                if (settingsRef.changeUndeadAnimalAppearance && pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadAnimalHD")))
+                {
+                    Hediff hediff = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_UndeadStageHD"));
+                    if (hediff.Severity < 1)
+                    {
+                        bodyDrawType = RotDrawMode.Rotting;
+                    }
+                    else
+                    {
+                        bodyDrawType = RotDrawMode.Dessicated;
+                    }
+                }
             }
             return true;
         }
@@ -537,6 +698,27 @@ namespace TorannMagic
                         icon = ContentFinder<Texture2D>.Get("UI/" + toggle, true)                            
                     };
                     gizmoList.Add(item);
+
+                    String toggle_repair = "bit_repairon";
+                    String label_repair = "TM_TechnoBitRepair".Translate();
+                    String desc_repair = "TM_TechnoBitRepairDesc".Translate();
+                    if (!compMagic.useTechnoBitRepairToggle)
+                    {
+                        toggle_repair = "bit_repairoff";
+                    }
+                    var item_repair = new Command_Toggle
+                    {
+                        isActive = () => compMagic.useTechnoBitRepairToggle,
+                        toggleAction = () =>
+                        {
+                            compMagic.useTechnoBitRepairToggle = !compMagic.useTechnoBitRepairToggle;
+                        },
+                        defaultLabel = label_repair,
+                        defaultDesc = desc_repair,
+                        order = -88,
+                        icon = ContentFinder<Texture2D>.Get("UI/" + toggle_repair, true)
+                    };
+                    gizmoList.Add(item_repair);
                 }
 
                 if (__instance.story.traits.HasTrait(TorannMagicDefOf.Technomancer) && compMagic.HasTechnoWeapon)
@@ -583,7 +765,7 @@ namespace TorannMagic
                 bool result;
                 if (flag)
                 {
-                    if (dinfo.Value.Def == TMDamageDefOf.DamageDefOf.TM_Whirlwind || dinfo.Value.Def == TMDamageDefOf.DamageDefOf.TM_GrapplingHook || dinfo.Value.Def == TMDamageDefOf.DamageDefOf.TM_DisablingShot || dinfo.Value.Def == TMDamageDefOf.DamageDefOf.TM_Tranquilizer)
+                    if ((dinfo.Value.Def == TMDamageDefOf.DamageDefOf.TM_Whirlwind || dinfo.Value.Def == TMDamageDefOf.DamageDefOf.TM_GrapplingHook || dinfo.Value.Def == TMDamageDefOf.DamageDefOf.TM_DisablingShot || dinfo.Value.Def == TMDamageDefOf.DamageDefOf.TM_Tranquilizer) || TM_Calc.IsUndeadNotVamp(pawn))
                     {
                         bool flag2 = !__instance.Dead;
                         if (flag2)
@@ -609,6 +791,14 @@ namespace TorannMagic
                                     bool flag7 = !__instance.forceIncap && dinfo.HasValue && dinfo.Value.Def.ExternalViolenceFor(pawn) && (pawn.Faction == null || !pawn.Faction.IsPlayer) && !pawn.IsPrisonerOfColony && pawn.RaceProps.IsFlesh && Rand.Value < num;
                                     if (flag7)
                                     {
+                                        pawn.Kill(dinfo, null);
+                                        result = false;
+                                        return result;
+                                    }
+                                    bool flagUndead = !__instance.forceIncap && dinfo.HasValue && dinfo.Value.Def.ExternalViolenceFor(pawn) && TM_Calc.IsUndeadNotVamp(pawn) && !pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD"));
+                                    if (flagUndead)
+                                    {
+                                        TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Ghost"), pawn.DrawPos, pawn.Map, .65f, .05f, .05f, .4f, 0, Rand.Range(3, 4), Rand.Range(-15, 15), 0);
                                         pawn.Kill(dinfo, null);
                                         result = false;
                                         return result;
@@ -790,11 +980,27 @@ namespace TorannMagic
             }
         }
 
+        //[HarmonyPatch(typeof(DamageWorker), "Apply", null)]
+        //public class DamageWorker_Patch
+        //{
+        //    public static bool Prefix(ref DamageInfo dinfo, Thing victim)
+        //    {
+        //        Log.Message("apply damage patch");
+        //        Pawn pawn = victim as Pawn;
+        //        Log.Message("pawn is " + pawn + " and is dead " + pawn.Dead);
+        //        Log.Message("pawn is undead " + TM_Calc.IsUndead(pawn));
+        //        Log.Message("dinfo def is " + dinfo.Def);
+
+                
+        //        return true;
+        //    }
+        //}
+
         [HarmonyPatch(typeof(Pawn_HealthTracker), "PreApplyDamage", null)]
         public class PreApplyDamage_Patch
         {
             public static FieldInfo pawn = typeof(Pawn_HealthTracker).GetField("pawn", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.GetField);
-            public static bool Prefix(Pawn __instance, DamageInfo dinfo, out bool absorbed)
+            public static bool Prefix(Pawn __instance, ref DamageInfo dinfo, out bool absorbed)
             {
                 Traverse traverse = Traverse.Create(__instance);
                 Pawn pawn = (Pawn)PreApplyDamage_Patch.pawn.GetValue(__instance);
@@ -927,6 +1133,15 @@ namespace TorannMagic
                                 displayVec.x += Rand.Range(-.2f, .2f);
                                 displayVec.z += Rand.Range(-.2f, .2f);
                                 TM_MoteMaker.ThrowArcaneDaggers(displayVec, pawn.Map, .7f);
+                            }
+                        }
+
+                        if (dinfo.Def != null && !pawn.Dead && TM_Calc.IsUndead(pawn))
+                        {
+                            if (dinfo.Def.armorCategory.defName == "Light" && Rand.Chance(.25f))
+                            {
+                                dinfo.SetAmount(dinfo.Amount * .7f);
+                                pawn.TakeDamage(dinfo);
                             }
                         }
 
@@ -2485,6 +2700,11 @@ namespace TorannMagic
                         __result = false;
                         return false;
                     }
+                    //if(pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadAnimalHD")))
+                    //{
+                    //    __result = false;
+                    //    return false;
+                    //}
                 }
                 return true;
             }

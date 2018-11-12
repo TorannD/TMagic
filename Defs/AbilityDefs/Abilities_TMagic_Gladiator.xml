@@ -333,7 +333,7 @@ Range: 14</description>
         <description>Forcefully hooks and yanks an opponent to the Gladiator, followed by a violent leg sweep, knocking the opponent down.
 		
 Casting time: .4s
-Range: 22</description>
+Range: 17</description>
         <staminaCost>0.08</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Grapple</verbClass>

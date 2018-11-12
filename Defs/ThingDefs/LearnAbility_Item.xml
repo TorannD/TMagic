@@ -1662,7 +1662,7 @@ Produces 400Wd.</description>
   
   <ThingDef ParentName="ArcaneSpellBase">
     <defName>SpellOf_CauterizeWound</defName>
-    <label>Mage Spell: Cauterize Wound</label>
+    <label>Fire Spell: Cauterize Wound</label>
     <thingClass>ThingWithComps</thingClass>
     <description>Teaches a fire mage how to use elemental fire to instantly clean and close wounds - may leave burn scars.</description>
 	<category>Item</category>

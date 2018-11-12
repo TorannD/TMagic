@@ -47,65 +47,68 @@ namespace TorannMagic
             {
                 
                 bool flag = base.SelPawn.story != null && base.SelPawn.IsColonist;
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
+                if (flag)
                 {
-                    return flag && true;
-                }
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
-                {
-                    return flag && true;
-                }
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost))
-                {
-                    return flag && true;
-                }
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn))
-                {
-                    return flag && true;
-                }
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
-                {
-                    return flag && true;
-                }
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Paladin))
-                {
-                    return flag && true;
-                }
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
-                {
-                    return flag && true;
-                }
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Druid))
-                {
-                    return flag && true;
-                }
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
-                {
-                    return flag && true;
-                }
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Priest))
-                {
-                    return flag && true;
-                }
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
-                {
-                    return flag && true;
-                }
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Succubus))
-                {
-                    return flag && true;
-                }
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Warlock))
-                {
-                    return flag && true;
-                }
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
-                {
-                    return flag && true;
-                }
-                if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
-                {
-                    return flag && true;
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
+                    {
+                        return flag && true;
+                    }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
+                    {
+                        return flag && true;
+                    }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost))
+                    {
+                        return flag && true;
+                    }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn))
+                    {
+                        return flag && true;
+                    }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
+                    {
+                        return flag && true;
+                    }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Paladin))
+                    {
+                        return flag && true;
+                    }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
+                    {
+                        return flag && true;
+                    }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Druid))
+                    {
+                        return flag && true;
+                    }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
+                    {
+                        return flag && true;
+                    }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Priest))
+                    {
+                        return flag && true;
+                    }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
+                    {
+                        return flag && true;
+                    }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Succubus))
+                    {
+                        return flag && true;
+                    }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Warlock))
+                    {
+                        return flag && true;
+                    }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
+                    {
+                        return flag && true;
+                    }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+                    {
+                        return flag && true;
+                    }
                 }
                 return false;
                 //return flag && (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Paladin));

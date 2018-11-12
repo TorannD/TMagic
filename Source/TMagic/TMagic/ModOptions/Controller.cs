@@ -9,6 +9,8 @@ namespace TorannMagic.ModOptions
         public static Controller Instance;
 
         private bool reset = false;
+        private bool challenge = false;
+        private bool easy = false;
         private bool classOptions = false;
 
         private Vector2 scrollPosition = Vector2.zero;
@@ -104,18 +106,32 @@ namespace TorannMagic.ModOptions
             Widgets.CheckboxLabeled(rowRect91, "AIFighterMarking".Translate(), ref Settings.Instance.AIFighterMarking, false);
             num++;
             Rect rowRect92 = UIHelper.GetRowRect(rowRect9, rowHeight, num);
-            Widgets.CheckboxLabeled(rowRect92, "AIFriendlyMarking".Translate(), ref Settings.Instance.AIFriendlyMarking, false);            
+            Widgets.CheckboxLabeled(rowRect92, "AIFriendlyMarking".Translate(), ref Settings.Instance.AIFriendlyMarking, false);
+            Rect rowRect92ShiftRight = UIHelper.GetRowRect(rowRect92, rowHeight, num);
+            rowRect92ShiftRight.x += rowRect92.width + 56f;
+            Widgets.CheckboxLabeled(rowRect92ShiftRight, "showLevelUpMessage".Translate(), ref Settings.Instance.showLevelUpMessage, false);
             num++;
             Rect rowRect93 = UIHelper.GetRowRect(rowRect92, rowHeight, num);
-            Widgets.CheckboxLabeled(rowRect93, "showMagicGizmo".Translate(), ref Settings.Instance.showGizmo, false);            
+            Widgets.CheckboxLabeled(rowRect93, "showMagicGizmo".Translate(), ref Settings.Instance.showGizmo, false);
+            Rect rowRect93ShiftRight = UIHelper.GetRowRect(rowRect93, rowHeight, num);
+            rowRect93ShiftRight.x += rowRect93.width + 56f;
+            Widgets.CheckboxLabeled(rowRect93ShiftRight, "showUndeadPawnChange".Translate(), ref Settings.Instance.changeUndeadPawnAppearance, false);
             num++;
             Rect rowRect10 = UIHelper.GetRowRect(rowRect93, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect10, "showAbilitiesOnMultiSelect".Translate(), ref Settings.Instance.showIconsMultiSelect, false);
+            Rect rowRect10ShiftRight = UIHelper.GetRowRect(rowRect10, rowHeight, num);
+            rowRect10ShiftRight.x += rowRect10.width + 56f;
+            Widgets.CheckboxLabeled(rowRect10ShiftRight, "showUndeadAnimalChange".Translate(), ref Settings.Instance.changeUndeadAnimalAppearance, false);
             num++;
-            Rect rowRect20 = UIHelper.GetRowRect(rowRect10, rowHeight, num);            
+            Rect rowRect20 = UIHelper.GetRowRect(rowRect10, rowHeight, num);
+            rowRect20.width = 120f;
+            Rect rowRect20ShiftRight1 = UIHelper.GetRowRect(rowRect20, rowHeight, num);
+            rowRect20ShiftRight1.x = rowRect20.width + 40f;
+            Rect rowRect20ShiftRight2 = UIHelper.GetRowRect(rowRect20ShiftRight1, rowHeight, num);
+            rowRect20ShiftRight2.x = rowRect20.width + rowRect20ShiftRight1.width + 40f;
             //GUI.color = Color.yellow;
             //GUI.backgroundColor = Color.yellow;
-            reset = Widgets.ButtonText(rowRect20, "Reset", true, false, true);
+            reset = Widgets.ButtonText(rowRect20, "Default", true, false, true);
             if (reset)
             {
                 Settings.Instance.xpMultiplier = 1f;
@@ -135,16 +151,85 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.magicyteChance = .005f;
                 Settings.Instance.showIconsMultiSelect = true;
                 Settings.Instance.showGizmo = true;
+                Settings.Instance.showLevelUpMessage = true;
+                Settings.Instance.changeUndeadPawnAppearance = true;
+                Settings.Instance.changeUndeadAnimalAppearance = true;
                 Settings.Instance.riftChallenge = 1f;
                 this.deathExplosionDmgMax = "50.0";
                 this.deathExplosionDmgMin = "20.0";
 
-                Settings.Instance.autocastEnabled = false;
+                Settings.Instance.autocastEnabled = true;
                 Settings.Instance.autocastMinThreshold = .7f;
                 Settings.Instance.autocastCombatMinThreshold = .2f;
                 Settings.Instance.autocastEvaluationFrequency = 180;
             }
-            
+
+            challenge = Widgets.ButtonText(rowRect20ShiftRight1, "Challenge me!", true, false, true);
+            if (challenge)
+            {
+                Settings.Instance.xpMultiplier = .75f;
+                Settings.Instance.needMultiplier = .75f;
+                Settings.Instance.deathExplosionRadius = 5f;
+                Settings.Instance.deathExplosionMin = 30;
+                Settings.Instance.deathExplosionMax = 60;
+                Settings.Instance.AICasting = true;
+                Settings.Instance.AIHardMode = true;
+                Settings.Instance.AIMarking = false;
+                Settings.Instance.AIFighterMarking = false;
+                Settings.Instance.AIFriendlyMarking = false;
+                Settings.Instance.baseMageChance = .8f;
+                Settings.Instance.baseFighterChance = .8f;
+                Settings.Instance.advMageChance = 1.5f;
+                Settings.Instance.advFighterChance = 1.5f;
+                Settings.Instance.magicyteChance = .003f;
+                Settings.Instance.showIconsMultiSelect = true;
+                Settings.Instance.showGizmo = true;
+                Settings.Instance.showLevelUpMessage = false;
+                Settings.Instance.changeUndeadPawnAppearance = true;
+                Settings.Instance.changeUndeadAnimalAppearance = true;
+                Settings.Instance.riftChallenge = 3f;
+                this.deathExplosionDmgMax = "60.0";
+                this.deathExplosionDmgMin = "30.0";
+
+                Settings.Instance.autocastEnabled = true;
+                Settings.Instance.autocastMinThreshold = .8f;
+                Settings.Instance.autocastCombatMinThreshold = .2f;
+                Settings.Instance.autocastEvaluationFrequency = 300;
+            }
+
+            //easy = Widgets.ButtonText(rowRect20ShiftRight1, "Easy", true, false, true);
+            if (easy)
+            {
+                Settings.Instance.xpMultiplier = 1.5f;
+                Settings.Instance.needMultiplier = 2f;
+                Settings.Instance.deathExplosionRadius = 1f;
+                Settings.Instance.deathExplosionMin = 5;
+                Settings.Instance.deathExplosionMax = 10;
+                Settings.Instance.AICasting = false;
+                Settings.Instance.AIHardMode = false;
+                Settings.Instance.AIMarking = false;
+                Settings.Instance.AIFighterMarking = false;
+                Settings.Instance.AIFriendlyMarking = false;
+                Settings.Instance.baseMageChance = 2f;
+                Settings.Instance.baseFighterChance = 2f;
+                Settings.Instance.advMageChance = 1f;
+                Settings.Instance.advFighterChance = 1f;
+                Settings.Instance.magicyteChance = .01f;
+                Settings.Instance.showIconsMultiSelect = true;
+                Settings.Instance.showGizmo = true;
+                Settings.Instance.showLevelUpMessage = true;
+                Settings.Instance.changeUndeadPawnAppearance = true;
+                Settings.Instance.changeUndeadAnimalAppearance = true;
+                Settings.Instance.riftChallenge = 1f;
+                this.deathExplosionDmgMax = "5.0";
+                this.deathExplosionDmgMin = "10.0";
+
+                Settings.Instance.autocastEnabled = true;
+                Settings.Instance.autocastMinThreshold = .6f;
+                Settings.Instance.autocastCombatMinThreshold = .05f;
+                Settings.Instance.autocastEvaluationFrequency = 180;
+            }
+
         }
 
         public static class UIHelper

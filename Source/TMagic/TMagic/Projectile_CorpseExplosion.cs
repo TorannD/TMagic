@@ -72,15 +72,18 @@ namespace TorannMagic
                     bool flag = undead != null && !undead.Dead;
                     if (flag)
                     {
-                        
-                        if (undead.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD))
+                        if(TM_Calc.IsUndead(undead))
                         {
                             this.targetPawn = undead;
                         }
-                        if (undead.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadAnimalHD))
-                        {
-                            this.targetPawn = undead;
-                        }
+                        //if (undead.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD))
+                        //{
+                        //    this.targetPawn = undead;
+                        //}
+                        //if (undead.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadAnimalHD))
+                        //{
+                        //    this.targetPawn = undead;
+                        //}
                     }
 
                     Thing corpseThing = curCell.GetFirstItem(map);
@@ -89,13 +92,12 @@ namespace TorannMagic
                     {
                         bool validator = corpseThing is Corpse;
                         if (validator)
-                        {
-                            
+                        {                            
                             corpse = corpseThing as Corpse;
                             Pawn corpsePawn = corpse.InnerPawn;
                             if (corpsePawn.RaceProps.IsFlesh)
                             {
-                                if (corpsePawn.RaceProps.Humanlike || corpsePawn.RaceProps.Animal)
+                                if (corpsePawn.RaceProps.Humanlike || corpsePawn.RaceProps.Animal || TM_Calc.IsUndead(corpsePawn))
                                 {
                                     this.targetCorpse = corpse;
                                 }

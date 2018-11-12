@@ -88,7 +88,8 @@ namespace TorannMagic
             }
 
             if (!launchedFlag)
-            {                
+            {
+                ModOptions.Constants.SetPawnInFlight(true);
                 skyfaller = SkyfallerMaker.SpawnSkyfaller(ThingDef.Named("TM_ScornLeaving"), pawn.Position, this.map);
                 if(base.Position.x < pawn.Position.x)
                 {
@@ -114,6 +115,7 @@ namespace TorannMagic
                 landedFlag = true;
                 GenSpawn.Spawn(pawn, base.Position, this.map);
                 pawn.drafter.Drafted = true;
+                ModOptions.Constants.SetPawnInFlight(false);
             }
             if(landedFlag)
             { 

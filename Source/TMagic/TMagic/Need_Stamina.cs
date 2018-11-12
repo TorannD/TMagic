@@ -146,7 +146,7 @@ namespace TorannMagic
 
         public void GainNeed(float amount)
         {
-            if (base.pawn.Map != null)
+            if (base.pawn.Map != null && !base.pawn.NonHumanlikeOrWildMan())
             {
                 Pawn pawn = base.pawn;
                 CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
