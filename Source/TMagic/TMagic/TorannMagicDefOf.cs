@@ -669,5 +669,9 @@ namespace TorannMagic
         //Magic Work Defs
         public static PawnCapacityDef MagicManipulation;
         public static WorkTypeDef TM_Magic;
+
+        //Forge
+        public static AbilityDef Forge_Verb;
+        public static RecipeDef ArcaneForge_Replication;
     }
 }

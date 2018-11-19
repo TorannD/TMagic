@@ -2487,7 +2487,6 @@ namespace TorannMagic
             return base.CompGetGizmosExtra();
         }
 
-
         private void ResolveSustainedSkills()
         {
             float _maxSP = 0;
@@ -2501,32 +2500,48 @@ namespace TorannMagic
             bool _phantomShift = false;
 
             List<Apparel> apparel = this.Pawn.apparel.WornApparel;
-            for (int i = 0; i < this.Pawn.apparel.WornApparelCount; i++)
+            if (apparel != null)
             {
-                Enchantment.CompEnchantedItem item = apparel[i].GetComp<Enchantment.CompEnchantedItem>();
-                if (item != null)
+                for (int i = 0; i < this.Pawn.apparel.WornApparelCount; i++)
                 {
-                    if (item.HasEnchantment)
+                    Enchantment.CompEnchantedItem item = apparel[i].GetComp<Enchantment.CompEnchantedItem>();
+                    if (item != null)
                     {
-                        _maxSP += item.maxMP;
-                        _spRegenRate += item.mpRegenRate;
-                        _coolDown += item.coolDown;
-                        _xpGain += item.xpGain;
-                        _spCost += item.mpCost;
-                        _arcaneRes += item.arcaneRes;
-                        _arcaneDmg += item.arcaneDmg;
-                        if (item.arcaneSpectre == true)
+                        if (item.HasEnchantment)
                         {
-                            _arcaneSpectre = true;
-                        }
-                        if (item.phantomShift == true)
-                        {
-                            _phantomShift = true;
+                            if (apparel[i].Stuff != null && apparel[i].Stuff.defName == "TM_Manaweave")
+                            {
+                                _maxSP += item.maxMP * 1.5f;
+                                _spRegenRate += item.mpRegenRate * 1.5f;
+                                _coolDown += item.coolDown * 1.5f;
+                                _xpGain += item.xpGain * 1.5f;
+                                _spCost += item.mpCost * 1.5f;
+                                _arcaneRes += item.arcaneRes * 1.5f;
+                                _arcaneDmg += item.arcaneDmg * 1.5f;
+                            }
+                            else
+                            {
+                                _maxSP += item.maxMP;
+                                _spRegenRate += item.mpRegenRate;
+                                _coolDown += item.coolDown;
+                                _xpGain += item.xpGain;
+                                _spCost += item.mpCost;
+                                _arcaneRes += item.arcaneRes;
+                                _arcaneDmg += item.arcaneDmg;
+                            }
+                            if (item.arcaneSpectre == true)
+                            {
+                                _arcaneSpectre = true;
+                            }
+                            if (item.phantomShift == true)
+                            {
+                                _phantomShift = true;
+                            }
                         }
                     }
                 }
             }
-            if (this.Pawn.equipment.Primary != null)
+            if (this.Pawn.equipment != null && this.Pawn.equipment.Primary != null)
             {
                 Enchantment.CompEnchantedItem item = this.Pawn.equipment.Primary.GetComp<Enchantment.CompEnchantedItem>();
                 if (item != null)

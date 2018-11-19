@@ -37,7 +37,7 @@
     <stages>
       <li>
         <label>lich</label>
-        <baseOpinionOffset>-40</baseOpinionOffset>
+        <baseOpinionOffset>-35</baseOpinionOffset>
       </li>
     </stages>
   </ThoughtDef>
@@ -64,12 +64,12 @@
       <li>
         <label>Envious of succubus</label>
 		<description>Everyone pays attention to her because of her looks, doesn't anything else matter?</description>
-        <baseOpinionOffset>-45</baseOpinionOffset>
+        <baseOpinionOffset>-25</baseOpinionOffset>
       </li>
 	  <li>
         <label>Unnatural beauty</label>
 		<description>She has an air of attraction that I'll never have... and I hate her for it.</description>
-        <baseOpinionOffset>-55</baseOpinionOffset>
+        <baseOpinionOffset>-40</baseOpinionOffset>
       </li>
     </stages>
   </ThoughtDef>
@@ -82,18 +82,18 @@
     <stages>
 	  <li>
         <label>Illusion of beauty</label>
-		<description>Experience in the arts of combat reveal the lie in her form and movement, but sometimes it's nice to believe a lie</description>
-        <baseOpinionOffset>15</baseOpinionOffset>
+		<description>Experience in the arts of combat reveal the lie in her form and movement, but sometimes it's easier to just accept the deception</description>
+        <baseOpinionOffset>12</baseOpinionOffset>
       </li>
 	  <li>
         <label>Devilishly attractive</label>
 		<description>I can tell she's uses demonic powers to make herself more attractive, but that knowledge does little to diminish the effect</description>
-        <baseOpinionOffset>25</baseOpinionOffset>
+        <baseOpinionOffset>16</baseOpinionOffset>
       </li>
       <li>
         <label>Alluring</label>
-		<description>There's something about her that is undeniably attractive</description>
-        <baseOpinionOffset>50</baseOpinionOffset>
+		<description>There's something about her that is undeniably and overwhelmingly attractive</description>
+        <baseOpinionOffset>40</baseOpinionOffset>
       </li>
     </stages>
   </ThoughtDef>

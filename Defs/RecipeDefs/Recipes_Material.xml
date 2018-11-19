@@ -12,7 +12,7 @@
     <workSpeedStat>TailoringSpeed</workSpeedStat>
     <effectWorking>Tailor</effectWorking>
     <soundWorking>Recipe_Tailor</soundWorking>
-    <workAmount>4000</workAmount>
+    <workAmount>8000</workAmount>
 	<workSkillLearnFactor>1.1</workSkillLearnFactor>
 <!-- 	<recipeUsers>
 		<li>TableGemcutting</li>
@@ -39,7 +39,6 @@
       <TM_Manaweave>25</TM_Manaweave>
     </products>
     <skillRequirements>
-      <Crafting>8</Crafting>
 	  <Intellectual>4</Intellectual>
     </skillRequirements>
     <workSkill>Intellectual</workSkill>

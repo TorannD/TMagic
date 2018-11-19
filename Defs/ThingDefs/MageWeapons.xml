@@ -133,6 +133,7 @@
         <li>ElectricSmithy</li>
         <li>FueledSmithy</li>
 		<li>CraftingSpot</li>
+		<li>TableArcaneForge</li>
       </recipeUsers>
       <workAmount>6000</workAmount>
 	  <skillRequirements>
@@ -660,6 +661,7 @@ Damage Boost: +40%</description>
         <li>ElectricSmithy</li>
         <li>FueledSmithy</li>
 		<li>CraftingSpot</li>
+		<li>TableArcaneForge</li>
       </recipeUsers>
       <workAmount>77700</workAmount>
 	  <skillRequirements>
@@ -800,6 +802,7 @@ Augmentation adds ability: Arcane Barrier</description>
         <li>ElectricSmithy</li>
         <li>FueledSmithy</li>
 		<li>CraftingSpot</li>
+		<li>TableArcaneForge</li>
       </recipeUsers>
       <workAmount>77700</workAmount>
 	  <skillRequirements>

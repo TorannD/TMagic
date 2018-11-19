@@ -86,18 +86,23 @@ namespace TorannMagic
                         if (curCell.IsValid && curCell.InBounds(pawn.Map))
                         {
                             Vector3 angle = GetVector(explosionCenters[i], curCell);
-                            TM_MoteMaker.ThrowArcaneWaveMote(curCell.ToVector3(), pawn.Map, .2f * (curCell - explosionCenters[i]).LengthHorizontal, .1f, .05f, .3f, 0, 3, (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat(), (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat());
+                            if (explosionRadii[i] <= 3)
+                            {
+                                TM_MoteMaker.ThrowArcaneWaveMote(curCell.ToVector3(), pawn.Map, .2f * (curCell - explosionCenters[i]).LengthHorizontal, .1f, .05f, .3f, 0, 3, (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat(), (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat());
+                            }
                             Pawn victim = curCell.GetFirstPawn(pawn.Map);
 
                             if (victim != null && !victim.Dead)
                             {
                                 if (victim.Faction != this.pawn.Faction)
                                 {
-                                    GenExplosion.DoExplosion(curCell, pawn.Map, .4f, DamageDefOf.Stun, this.launcher, Mathf.RoundToInt((4 * (this.def.projectile.GetDamageAmount(1, null) + pwrVal) * this.arcaneDmg)), 0, SoundDefOf.Crunch, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
+                                    //GenExplosion.DoExplosion(curCell, pawn.Map, .4f, DamageDefOf.Stun, this.launcher, Mathf.RoundToInt((4 * (2+this.def.projectile.GetDamageAmount(1, null) + pwrVal) * this.arcaneDmg)), 0, SoundDefOf.Crunch, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
+                                    damageEntities(victim, null, Mathf.RoundToInt((4 * (2 + this.def.projectile.GetDamageAmount(1, null) + pwrVal) * this.arcaneDmg)), DamageDefOf.Stun);
                                 }
                                 else
                                 {
-                                    GenExplosion.DoExplosion(curCell, pawn.Map, .4f, DamageDefOf.Stun, this.launcher, Mathf.RoundToInt(((this.def.projectile.GetDamageAmount(1, null) + pwrVal) * this.arcaneDmg)), 0, SoundDefOf.Crunch, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
+                                    damageEntities(victim, null, Mathf.RoundToInt(((2 + this.def.projectile.GetDamageAmount(1, null) + pwrVal) * this.arcaneDmg)), DamageDefOf.Stun);
+                                    //GenExplosion.DoExplosion(curCell, pawn.Map, .4f, DamageDefOf.Stun, this.launcher, Mathf.RoundToInt(((2+this.def.projectile.GetDamageAmount(1, null) + pwrVal) * this.arcaneDmg)), 0, SoundDefOf.Crunch, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
                                 }
                             }
 
@@ -114,9 +119,28 @@ namespace TorannMagic
                                     }
                                 }
                             }
+                            victim = null;
                         }
                     }
                     explosionRadii[i]++;
+                    if(explosionCenters.Count <= 3)
+                    {
+                        
+                        this.maxRadius = 6 + verVal;
+                    }
+                    else if(explosionCenters.Count <= 5)
+                    {
+                        this.maxRadius = 5 + verVal;
+                    }
+                    else if(explosionCenters.Count <= 7)
+                    {
+                        this.maxRadius = 4 + verVal;
+                    }
+                    else
+                    {
+                        this.maxRadius = 3 + verVal;
+                    }
+                    
                     if (explosionRadii[i] > this.maxRadius)
                     {
                         explosionRadii.Remove(explosionRadii[i]);
@@ -163,15 +187,15 @@ namespace TorannMagic
                 if (vitalPart != null)
                 {
                     float rnd = Rand.Range(0f, 1f);
-                    if(rnd > .95f)
+                    if(rnd > .97f)
                     {
                         rnd = 5;
                     }
-                    else if(rnd > .85f)
+                    else if(rnd > .92f)
                     {
                         rnd = 2;
                     }
-                    else if(rnd > .4f)
+                    else if(rnd > .55f)
                     {
                         rnd = 1;
                     }
@@ -187,7 +211,7 @@ namespace TorannMagic
         public void damageEntities(Pawn victim, BodyPartRecord hitPart, int amt, DamageDef type)
         {
             amt = (int)((float)amt * Rand.Range(.75f, 1.25f));
-            DamageInfo dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Shadow, amt, 0, (float)-1, this.pawn, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
+            DamageInfo dinfo = new DamageInfo(type, amt, 0, (float)-1, this.pawn, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
             dinfo.SetAllowDamagePropagation(false);
             victim.TakeDamage(dinfo);
             if (!victim.IsColonist && !victim.IsPrisoner && victim.Faction != null && !victim.Faction.HostileTo(pawn.Faction))

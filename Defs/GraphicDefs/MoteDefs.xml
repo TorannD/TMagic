@@ -13,6 +13,19 @@
       <fadeOutTime>0.2</fadeOutTime>
     </mote>
   </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_Scan</defName>
+    <graphicData>
+      <texPath>Motes/scan</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.01</fadeInTime>
+      <solidTime>0.35</solidTime>
+      <fadeOutTime>0.2</fadeOutTime>
+    </mote>
+  </ThingDef>
 
   <ThingDef ParentName="MoteBase">
     <defName>Mote_Rubble</defName>
@@ -20,6 +33,55 @@
       <texPath>Motes/Rubble</texPath>
     </graphicData>
     <altitudeLayer>MoteLow</altitudeLayer>
+    <mote>
+      <fadeInTime>0.02</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>0.05</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_ArcaneFabricationA</defName>
+    <graphicData>
+      <texPath>Motes/FabricationEffect/FabricationEffectA</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.02</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>0.05</fadeOutTime>
+    </mote>
+  </ThingDef>
+    <ThingDef ParentName="MoteBase">
+    <defName>Mote_ArcaneFabricationB</defName>
+    <graphicData>
+      <texPath>Motes/FabricationEffect/FabricationEffectB</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.02</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>0.05</fadeOutTime>
+    </mote>
+  </ThingDef>
+    <ThingDef ParentName="MoteBase">
+    <defName>Mote_ArcaneFabricationC</defName>
+    <graphicData>
+      <texPath>Motes/FabricationEffect/FabricationEffectC</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.02</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>0.05</fadeOutTime>
+    </mote>
+  </ThingDef>
+    <ThingDef ParentName="MoteBase">
+    <defName>Mote_ArcaneFabricationD</defName>
+    <graphicData>
+      <texPath>Motes/FabricationEffect/FabricationEffectD</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
     <mote>
       <fadeInTime>0.02</fadeInTime>
       <solidTime>0.2</solidTime>

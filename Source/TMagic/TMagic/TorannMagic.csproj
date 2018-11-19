@@ -76,6 +76,7 @@
     <Compile Include="AbilityWorker_TargetCorpse.cs" />
     <Compile Include="AutoCast\Scripts.cs" />
     <Compile Include="Building_ProximityTrap.cs" />
+    <Compile Include="Building_TMArcaneForge.cs" />
     <Compile Include="Building_TM_DMP.cs" />
     <Compile Include="Building_TMBarrier.cs" />
     <Compile Include="Building_TMArcaneCapacitor.cs" />
@@ -87,6 +88,8 @@
     <Compile Include="Building_TMPortal.cs" />
     <Compile Include="Building_PoisonTrap.cs" />
     <Compile Include="Buiding_TechnoTurret.cs" />
+    <Compile Include="Command_LocalTargetInfo.cs" />
+    <Compile Include="WorkGiver_DoMagicBill.cs" />
     <Compile Include="IngestionOutcomeDoer_RemoveHediff.cs" />
     <Compile Include="PawnCapacityWorker_MagicManipulation.cs" />
     <Compile Include="HediffComp_NanoStimulant.cs" />

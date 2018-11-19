@@ -43,7 +43,7 @@ namespace TorannMagic.SihvRMagicScrollScribe
             }
             else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.Druid))
             {
-                tempPod = ThingDef.Named("BookOfNature");
+                tempPod = ThingDef.Named("BookOfDruid");
                 this.parent.Destroy(DestroyMode.Vanish);
             }
             else if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || user.story.traits.HasTrait(TorannMagicDefOf.Lich)))

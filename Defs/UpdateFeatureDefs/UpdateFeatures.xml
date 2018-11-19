@@ -5,23 +5,6 @@
 		<modIdentifier>ARimWorldOfMagic</modIdentifier>
 		<linkUrl>https://ludeon.com/forums/index.php?topic=37161.0</linkUrl>
 	</HugsLib.UpdateFeatureDef>	
-	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_2_2_2</defName>
-		<assemblyVersion>2.2.2</assemblyVersion>
-		<content>
-- New Class: Psionic - pawns influenced by increased sensitivity or events of psychic power and being physically adept allows access to a combat class that blends mental and physical strength to overcome challenges.
-
-Psionics gain access to a unique mechanic called psionic energy; the balanced use of physical and psionic energy produces the most effective results for a psionic.
-
-*Psionic Augmentation - a psionic is most efficient when combining physical and mental strength; psionic augmentation is the application of psionic energy into living tissue and practices in three major ways:
->Movement - infusing psionic energy into the core and legs the psionic is able to move at incredible speeds
->Manipulation - applying psionic energy into hands and arms increases manipulation speed and power
->Mind - exerts raw psionic power to strike at foes from a distance
-*Psionic blast - launch a bolt of explosive energy; higher levels of psionic energy can produce multiple bolts
-*Psionic dash - a physical burst of energy propelled by psionic energy causes the psionic to move at devastating speeds over a short distance
-*Psionic storm - harnesses all reserves of psionic energy in a spectacular display of power
-		</content>
-	</HugsLib.UpdateFeatureDef>	
 		<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
 		<defName>ARimWorldOfMagic_2_2_4</defName>
 		<assemblyVersion>2.2.4</assemblyVersion>
@@ -161,6 +144,32 @@ Fixed a bug with autocast phase strike and blink that was selecting the incorrec
 Wildman pawns will not generate errors if they are a mage or fighter
 Rangers cannot bond animals that belong to another faction and will dismiss a bonded animal that is a member of a caravan if they choose to form another bond
 Necromancer ability 'Consume Corpse' will not generate errors if a vampire (or pawn type lacking certain needs) uses the ability
+		</content>
+	</HugsLib.UpdateFeatureDef>	
+	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_2_2_9</defName>
+		<assemblyVersion>2.2.9</assemblyVersion>
+		<content>
+**Magic Development: Update #2**
+
+*Research: Arcane Forge - forge items with a combination of technology and raw arcane power
+*Research: Forge Replication - enhance the arcane forge with a technique that allows it to replicate the design of almost any craftable item
+
+*Structure: Arcane Forge - a powerful crafting table that dramatically accelerates crafting speeds and can apply these bonuses to any design it replicates; the forge can only be used by mages and consumes mana during the crafting process
+
+*Plant: Paracyte thornbush - a delicate plant known for its keen beauty - its slow to grow but able to produce small quantities of magicyte; can also grow without light but at a slower rate
+
+*Material: Manaweave - cloth infused with magicyte and arcane runes that enhances the magical enchantments of any apparel made from manaweave
+
+Tweaks:
+Psychic shock is less likely to deal lethal brain damage; implemented several tweaks to improve its performance
+Sentinels will only evaluate prisoners as threats if the prisoner is performing hostile actions
+
+Bug fixes: 
+Druids can now write their Arcane Tome correctly
+Fixed a bug with Overdrive that was generated when turrets had a null map (eg when mounted on a mechanoid)
+Fixed several bugs with resurrection that could occur if the corpse moved, was being carried, or was destroyed or if the game was saved and loaded during the resurrection process
+Fixed a bug with the mana drain incident if the player was present on 2 or more maps
 		</content>
 	</HugsLib.UpdateFeatureDef>	
 	

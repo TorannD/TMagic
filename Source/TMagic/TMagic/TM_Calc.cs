@@ -24,7 +24,7 @@ namespace TorannMagic
             if (pawn != null)
             {
                 bool flag_Hediff = false;
-                if (pawn.health != null)
+                if (pawn.health != null && pawn.health.hediffSet != null)
                 {
                     if (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD"), false) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadAnimalHD"), false) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD"), false) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadStageHD"), false))
                     {

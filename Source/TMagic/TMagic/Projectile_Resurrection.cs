@@ -17,6 +17,8 @@ namespace TorannMagic
         private int pwrVal = 0;
         private int timeToRaise = 2400;
         private int age = -1;
+        IntVec3 deadPawnPosition = default(IntVec3);
+        Thing corpseThing = null;
         Pawn deadPawn;
         Pawn caster;
 
@@ -41,7 +43,9 @@ namespace TorannMagic
             Scribe_Values.Look<int>(ref this.timeToRaise, "timeToRaise", 1800, false);
             Scribe_Values.Look<int>(ref this.verVal, "verVal", 0, false);
             Scribe_Values.Look<int>(ref this.pwrVal, "pwrVal", 0, false);
+            Scribe_Values.Look<IntVec3>(ref this.deadPawnPosition, "deadPawnPosition", default(IntVec3), false);
             Scribe_References.Look<Pawn>(ref this.deadPawn, "deadPawn", false);
+            Scribe_References.Look<Thing>(ref this.corpseThing, "corpseThing", false);
         }
 
         private int TicksLeft
@@ -66,7 +70,6 @@ namespace TorannMagic
                 verVal = ver.level;
                 this.angle = Rand.Range(-12f, 12f);               
                 
-                Thing corpseThing = null;
                 IntVec3 curCell = base.Position;
 
                 this.CheckSpawnSustainer();
@@ -87,6 +90,7 @@ namespace TorannMagic
                             {
                                 corpse = corpseThing as Corpse;
                                 deadPawn = corpse.InnerPawn;
+                                deadPawnPosition = corpse.Position;
                                 if (deadPawn.RaceProps.IsFlesh && !TM_Calc.IsUndead(deadPawn))
                                 {
                                     if (!corpse.IsNotFresh())
@@ -107,6 +111,12 @@ namespace TorannMagic
                 this.initialized = true;
             }
 
+            if(corpseThing.Position != this.deadPawnPosition || corpseThing.Map == null)
+            {
+                Log.Message("Corpse was moved or destroyed during resurrection process.");
+                this.age = this.timeToRaise;
+            }
+
             if (this.validTarget)
             {
                 if (this.sustainer != null)
@@ -123,33 +133,46 @@ namespace TorannMagic
                 if (this.age+1 == this.timeToRaise)
                 {
                     TM_MoteMaker.MakePowerBeamMoteColor(base.Position, base.Map, this.radius * 3f, 2f, 2f, .1f, 1.5f, colorInt.ToColor);
-                    if (!deadPawn.kindDef.RaceProps.Animal && deadPawn.kindDef.RaceProps.Humanlike)
+                    if (this.deadPawn == null)
                     {
-                        ResurrectionUtility.ResurrectWithSideEffects(deadPawn);                        
-                        SoundDef.Named("Thunder_OffMap").PlayOneShot(null);
-                        SoundDef.Named("Thunder_OffMap").PlayOneShot(null);
-                        using (IEnumerator<Hediff> enumerator = deadPawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+                        if (corpseThing != null)
                         {
-                            while (enumerator.MoveNext())
+                            Corpse corpse = corpseThing as Corpse;
+                            if (corpse != null)
                             {
-                                Hediff rec = enumerator.Current;
-                                if (rec.def.defName == "ResurrectionPsychosis" || rec.def.defName == "Blindness")
+                                this.deadPawn = corpse.InnerPawn;
+                            }
+                        }
+                    }
+                    if (deadPawn != null)
+                    {
+                        if (!deadPawn.kindDef.RaceProps.Animal && deadPawn.kindDef.RaceProps.Humanlike)
+                        {
+                            ResurrectionUtility.ResurrectWithSideEffects(deadPawn);
+                            SoundDef.Named("Thunder_OffMap").PlayOneShot(null);
+                            SoundDef.Named("Thunder_OffMap").PlayOneShot(null);
+                            using (IEnumerator<Hediff> enumerator = deadPawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+                            {
+                                while (enumerator.MoveNext())
                                 {
-                                    if(Rand.Chance(verVal * .33f))
+                                    Hediff rec = enumerator.Current;
+                                    if (rec.def.defName == "ResurrectionPsychosis" || rec.def.defName == "Blindness")
                                     {
-                                        deadPawn.health.RemoveHediff(rec);
+                                        if (Rand.Chance(verVal * .33f))
+                                        {
+                                            deadPawn.health.RemoveHediff(rec);
+                                        }
                                     }
                                 }
                             }
+                            HealthUtility.AdjustSeverity(deadPawn, HediffDef.Named("TM_ResurrectionHD"), 1f);
                         }
-                        HealthUtility.AdjustSeverity(deadPawn, HediffDef.Named("TM_ResurrectionHD"), 1f);
-                    }
-                    if (deadPawn.kindDef.RaceProps.Animal)
-                    {
-                        ResurrectionUtility.Resurrect(deadPawn);
-                        HealthUtility.AdjustSeverity(deadPawn, HediffDef.Named("TM_ResurrectionHD"), 1f);
-                    }
-                    
+                        if (deadPawn.kindDef.RaceProps.Animal)
+                        {
+                            ResurrectionUtility.Resurrect(deadPawn);
+                            HealthUtility.AdjustSeverity(deadPawn, HediffDef.Named("TM_ResurrectionHD"), 1f);
+                        }
+                    }                    
                 }
             }
             else

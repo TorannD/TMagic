@@ -187,6 +187,7 @@ namespace TorannMagic
         public float overdrivePowerOutput = 0;
         public int overdriveFrequency = 100;
         public Building sabotageBuilding = null;
+        public bool ArcaneForging = false;
 
         private Effecter powerEffecter = null;
         private int powerModifier = 0;
@@ -1191,6 +1192,10 @@ namespace TorannMagic
                         }
                         base.CompTick();
                         this.age++;
+                        if(Find.TickManager.TicksGame % 4 == 0 && this.Pawn.CurJob != null && this.Pawn.CurJobDef == JobDefOf.DoBill && this.Pawn.CurJob.targetA != null && this.Pawn.CurJob.targetA.Thing != null)
+                        {
+                            DoArcaneForging();
+                        }
                         if (this.Mana.CurLevel >= (.99f * this.Mana.MaxLevel))
                         {                            
                             if (this.age > (lastXPGain + magicXPRate))
@@ -4246,6 +4251,58 @@ namespace TorannMagic
             }
         }
 
+        public void DoArcaneForging()
+        {
+            if (this.Pawn.CurJob.targetA.Thing.def.defName == "TableArcaneForge")
+            {
+                this.ArcaneForging = true;
+                Job job = this.Pawn.CurJob;
+                Thing forge = this.Pawn.CurJob.targetA.Thing;
+                if (this.Pawn.Position == forge.InteractionCell && this.Pawn.jobs.curDriver.CurToilIndex >= 10)
+                {
+                    if (Find.TickManager.TicksGame % 20 == 0)
+                    {
+                        if (this.Mana.CurLevel >= .025f)
+                        {
+                            this.Mana.CurLevel -= .025f;
+                            this.MagicUserXP += 4;
+                            MoteMaker.ThrowSmoke(forge.DrawPos, forge.Map, Rand.Range(.8f, 1.2f));
+                        }
+                        else
+                        {
+                            this.Pawn.jobs.EndCurrentJob(JobCondition.InterruptForced, true);
+                        }
+                    }
+
+                    ThingDef mote = null;
+                    int rnd = Rand.RangeInclusive(0, 3);
+                    switch (rnd)
+                    {
+                        case 0:
+                            mote = ThingDef.Named("Mote_ArcaneFabricationA");
+                            break;
+                        case 1:
+                            mote = ThingDef.Named("Mote_ArcaneFabricationB");
+                            break;
+                        case 2:
+                            mote = ThingDef.Named("Mote_ArcaneFabricationC");
+                            break;
+                        case 3:
+                            mote = ThingDef.Named("Mote_ArcaneFabricationD");
+                            break;
+                    }
+                    Vector3 drawPos = forge.DrawPos;
+                    drawPos.x += Rand.Range(-.05f, .05f);
+                    drawPos.z += Rand.Range(-.05f, .05f);
+                    TM_MoteMaker.ThrowGenericMote(mote, drawPos, forge.Map, Rand.Range(.25f, .4f), .02f, 0f, .01f, Rand.Range(-200, 200), 0, 0, forge.Rotation.AsAngle);
+                }
+            }
+            else
+            {
+                this.ArcaneForging = false;
+            }
+        }
+
         public void ResolveAutoCast()
         {
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
@@ -5802,32 +5859,49 @@ namespace TorannMagic
             bool _arcaneSpectre = false;
             bool _phantomShift = false;
             List<Apparel> apparel = this.Pawn.apparel.WornApparel;
-            for (int i = 0; i < this.Pawn.apparel.WornApparelCount; i++)
+            if (apparel != null)
             {
-                Enchantment.CompEnchantedItem item = apparel[i].GetComp<Enchantment.CompEnchantedItem>();
-                if (item != null)
+                for (int i = 0; i < this.Pawn.apparel.WornApparelCount; i++)
                 {
-                    if (item.HasEnchantment)
+                    Enchantment.CompEnchantedItem item = apparel[i].GetComp<Enchantment.CompEnchantedItem>();
+                    if (item != null)
                     {
-                        _maxMP += item.maxMP;
-                        _mpRegenRate += item.mpRegenRate;
-                        _coolDown += item.coolDown;
-                        _xpGain += item.xpGain;
-                        _mpCost += item.mpCost;
-                        _arcaneRes += item.arcaneRes;
-                        _arcaneDmg += item.arcaneDmg;
-                        if(item.arcaneSpectre == true)
+                        if (item.HasEnchantment)
                         {
-                            _arcaneSpectre = true;
+                            if (apparel[i].Stuff != null && apparel[i].Stuff.defName == "TM_Manaweave")
+                            {
+                                _maxMP += item.maxMP * 1.5f;
+                                _mpRegenRate += item.mpRegenRate * 1.5f;
+                                _coolDown += item.coolDown * 1.5f;
+                                _xpGain += item.xpGain * 1.5f;
+                                _mpCost += item.mpCost * 1.5f;
+                                _arcaneRes += item.arcaneRes * 1.5f;
+                                _arcaneDmg += item.arcaneDmg * 1.5f;
+                            }
+                            else
+                            {
+                                _maxMP += item.maxMP;
+                                _mpRegenRate += item.mpRegenRate;
+                                _coolDown += item.coolDown;
+                                _xpGain += item.xpGain;
+                                _mpCost += item.mpCost;
+                                _arcaneRes += item.arcaneRes;
+                                _arcaneDmg += item.arcaneDmg;
+                            }
+                            if (item.arcaneSpectre == true)
+                            {
+                                _arcaneSpectre = true;
+                            }
+                            if (item.phantomShift == true)
+                            {
+                                _phantomShift = true;
+                            }
                         }
-                        if(item.phantomShift == true)
-                        {
-                            _phantomShift = true;
-                        }
+
                     }
                 }
             }
-            if (this.Pawn.equipment.Primary != null)
+            if (this.Pawn.equipment != null && this.Pawn.equipment.Primary != null)
             {
                 Enchantment.CompEnchantedItem item = this.Pawn.equipment.Primary.GetComp<Enchantment.CompEnchantedItem>();
                 if (item != null)
@@ -5860,53 +5934,22 @@ namespace TorannMagic
                     }
                 }
             }
+            CleanupSummonedStructures();
             if(this.summonedLights.Count > 0)
-            {
-                for (int i = 0; i < this.summonedLights.Count; i++)
-                {
-                    if (this.summonedLights[i].Destroyed)
-                    {
-                        this.summonedLights.Remove(this.summonedLights[i]);
-                        i--;
-                    }
-                }
+            {                
                 _maxMP -= (this.summonedLights.Count * .4f);
                 _mpRegenRate -= (this.summonedLights.Count * .4f);
             }
             if (this.summonedHeaters.Count > 0)
-            {
-                for (int i = 0; i < this.summonedHeaters.Count; i++)
-                {
-                    if (this.summonedHeaters[i].Destroyed)
-                    {
-                        this.summonedHeaters.Remove(this.summonedHeaters[i]);
-                        i--;
-                    }
-                }
+            {                
                 _maxMP -= (this.summonedHeaters.Count * .25f);
             }
             if (this.summonedCoolers.Count > 0)
-            {
-                for (int i = 0; i < this.summonedCoolers.Count; i++)
-                {
-                    if (this.summonedCoolers[i].Destroyed)
-                    {
-                        this.summonedCoolers.Remove(this.summonedCoolers[i]);
-                        i--;
-                    }
-                }
+            {                
                 _maxMP -= (this.summonedCoolers.Count * .25f);
             }
             if (this.summonedPowerNodes.Count > 0)
-            {
-                for (int i = 0; i < this.summonedPowerNodes.Count; i++)
-                {
-                    if (this.summonedPowerNodes[i].Destroyed)
-                    {
-                        this.summonedPowerNodes.Remove(this.summonedPowerNodes[i]);
-                        i--;
-                    }
-                }
+            {                
                 _maxMP -= (this.summonedPowerNodes.Count * .25f);
                 _mpRegenRate -= (this.summonedPowerNodes.Count * .25f);
             }
@@ -6057,6 +6100,42 @@ namespace TorannMagic
                             Pawn.health.RemoveHediff(rec);
                         }
                     }
+                }
+            }
+        }
+
+        private void CleanupSummonedStructures()
+        {
+            for (int i = 0; i < this.summonedLights.Count; i++)
+            {
+                if (this.summonedLights[i].Destroyed)
+                {
+                    this.summonedLights.Remove(this.summonedLights[i]);
+                    i--;
+                }
+            }
+            for (int i = 0; i < this.summonedHeaters.Count; i++)
+            {
+                if (this.summonedHeaters[i].Destroyed)
+                {
+                    this.summonedHeaters.Remove(this.summonedHeaters[i]);
+                    i--;
+                }
+            }
+            for (int i = 0; i < this.summonedCoolers.Count; i++)
+            {
+                if (this.summonedCoolers[i].Destroyed)
+                {
+                    this.summonedCoolers.Remove(this.summonedCoolers[i]);
+                    i--;
+                }
+            }
+            for (int i = 0; i < this.summonedPowerNodes.Count; i++)
+            {
+                if (this.summonedPowerNodes[i].Destroyed)
+                {
+                    this.summonedPowerNodes.Remove(this.summonedPowerNodes[i]);
+                    i--;
                 }
             }
         }

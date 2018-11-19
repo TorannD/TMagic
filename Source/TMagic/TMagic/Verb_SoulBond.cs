@@ -160,16 +160,32 @@ namespace TorannMagic
             if (flagSD)
             {
                 hediff = oldBondPawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_SoulBondPhysicalHD"));
-                oldBondPawn.health.RemoveHediff(hediff);
+                if (hediff != null)
+                {
+                    oldBondPawn.health.RemoveHediff(hediff);
+                    hediff = null;
+                }
                 hediff = caster.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_SDSoulBondPhysicalHD"));
-                caster.health.RemoveHediff(hediff);
+                if (hediff != null)
+                {
+                    caster.health.RemoveHediff(hediff);
+                    hediff = null;
+                }
             }
             if (flagWD)
             {
                 hediff = oldBondPawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_SoulBondMentalHD"));
-                oldBondPawn.health.RemoveHediff(hediff);
+                if (hediff != null)
+                {
+                    oldBondPawn.health.RemoveHediff(hediff);
+                    hediff = null;
+                }
                 hediff = caster.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_WDSoulBondMentalHD"));
-                caster.health.RemoveHediff(hediff);
+                if (hediff != null)
+                {
+                    caster.health.RemoveHediff(hediff);
+                    hediff = null;
+                }
             }
         }
     }

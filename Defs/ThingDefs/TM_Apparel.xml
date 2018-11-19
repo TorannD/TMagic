@@ -40,6 +40,7 @@
       <recipeUsers>
         <li>ElectricTailoringBench</li>
         <li>HandTailoringBench</li>
+		<li>TableArcaneForge</li>
       </recipeUsers>
 	  <workSpeedStat>TailoringSpeed</workSpeedStat>
       <workSkill>Crafting</workSkill>
@@ -66,6 +67,7 @@
       <recipeUsers>
         <li>ElectricSmithy</li>
         <li>FueledSmithy</li>
+		<li>TableArcaneForge</li>
       </recipeUsers>
 	  <workSpeedStat>SmithingSpeed</workSpeedStat>
       <workSkill>Crafting</workSkill>
@@ -381,7 +383,7 @@ Arcane Res: +10%</description>
 	<costList>
 		<RawMagicyte>350</RawMagicyte>
 	</costList>
-	<costStuffCount>60</costStuffCount>
+	<costStuffCount>100</costStuffCount>
 	<stuffCategories>
 		<li>Fabric</li>
 		<li>Leathery</li>
@@ -738,7 +740,7 @@ Class XP Gain: +10%</description>
 	  </skillRequirements>
 	  <researchPrerequisite>
 			<li>TM_ArcaneArtifacts</li>
-		</researchPrerequisite>
+	  </researchPrerequisite>
     </recipeMaker>
 	<costStuffCount>450</costStuffCount>
 	<stuffCategories>
@@ -885,7 +887,7 @@ Arcane Resistance: +10%</description>
 		<graphicClass>Graphic_Single</graphicClass> 
 	</graphicData>
 	<statBases>
-		<WorkToMake>80</WorkToMake>
+		<WorkToMake>8000</WorkToMake>
 		<Mass>.4</Mass>
 		<MaxHitPoints>60</MaxHitPoints>
 		<MarketValue>900</MarketValue>
@@ -904,7 +906,7 @@ Arcane Resistance: +10%</description>
 		<MentalBreakThreshold>-0.04</MentalBreakThreshold>
 	</equippedStatOffsets>
 	<recipeMaker>
-      <workAmount>80</workAmount>
+      <workAmount>8000</workAmount>
 	  <skillRequirements>
 			<Intellectual>6</Intellectual>
 	  </skillRequirements>
@@ -912,7 +914,7 @@ Arcane Resistance: +10%</description>
 			<li>TM_ArcaneApparel</li>
 		</researchPrerequisite>
     </recipeMaker>
-	<costStuffCount>120</costStuffCount>
+	<costStuffCount>80</costStuffCount>
 	<stuffCategories>
 		<li>Fabric</li>
 		<li>Leathery</li>

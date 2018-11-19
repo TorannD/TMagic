@@ -10,15 +10,26 @@ namespace TorannMagic
 {
     public class GameCondition_ManaDrain : GameCondition
     {
-        IEnumerable<Pawn> victims;
+        List<Pawn> victims;
 
         public override void Init()
         {
             Map map = base.SingleMap;
+            victims = new List<Pawn>();
+            victims.Clear();
             
             if (map != null)
             {
-                victims = map.mapPawns.FreeColonistsAndPrisoners;
+                victims = map.mapPawns.FreeColonistsAndPrisoners.ToList();
+            }
+            else
+            {
+                List<Map> allMaps = base.AffectedMaps;
+                for(int i = 0; i < allMaps.Count; i++)
+                {
+                    victims.AddRange(allMaps[i].mapPawns.AllPawnsSpawned);
+                }
+                
             }
             int num = victims.Count<Pawn>();
             Pawn pawn;

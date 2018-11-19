@@ -845,7 +845,7 @@ Radius: 8</description>
         <projectile>
 			<flyOverhead>true</flyOverhead>
             <damageDef>TM_Shadow</damageDef>
-            <damageAmountBase>3</damageAmountBase>
+            <damageAmountBase>1</damageAmountBase>
             <speed>999</speed>
 			<explosionRadius>5</explosionRadius>
 			<postExplosionSpawnChance>1</postExplosionSpawnChance>

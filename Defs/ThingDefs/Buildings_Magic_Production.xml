@@ -157,5 +157,112 @@
       <li>TM_MagicScribing</li>
     </researchPrerequisites>
   </ThingDef>
+  
+  <ThingDef ParentName="MagicBenchBase">
+    <defName>TableArcaneForge</defName>
+    <label>arcane forge</label>
+<!--     <thingClass>Building_WorkTable</thingClass> -->
+	<thingClass>TorannMagic.Building_TMArcaneForge</thingClass>
+    <description>The arcane forge allows a mage to wield raw arcane power to create material objects. 
+	
+Scientifically, the arcane forge might be described as a matter fabricator, though the exact mechanics have yet to be determined.  Only those possessing the ability to manipulate arcane power are able to use the arcane forge.
+
+Using the arcane forge dramatically increases crafting speed but consumes mana.  Items of quality are determined by the mage's intelligence skill and class level.</description>
+    <graphicData>
+      <texPath>Items/anvil</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(3.5,1.5)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <costList>
+      <Steel>200</Steel>
+	  <Jade>100</Jade>
+	  <Uranium>100</Uranium>	  
+    </costList>
+    <stuffCategories>
+      <li>Metallic</li>
+	  <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>400</costStuffCount>
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>42000</WorkToBuild>
+      <MaxHitPoints>1000</MaxHitPoints>
+      <Flammability>0.0</Flammability>
+      <Cleanliness>-6</Cleanliness>
+	  <WorkTableWorkSpeedFactor>25</WorkTableWorkSpeedFactor>
+    </statBases>
+    <size>(3,1)</size>
+    <designationCategory>Production</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>100</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+	<recipes>
+      <li>TM_MakeManaweave</li>
+    </recipes>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+    </building>
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+    <designationHotKey>Misc2</designationHotKey>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+	<researchPrerequisites>
+      <li>TM_ArcaneForging</li>
+    </researchPrerequisites>
+  </ThingDef>
+  
+  <AbilityUser.AbilityDef ParentName="BaseAbility">
+        <defName>Forge_Verb</defName>
+        <label>secondary targeter</label>
+        <uiIconPath>UI/replicate</uiIconPath>
+        <description>verb used forge replication</description>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Warlock</defaultProjectile>
+            <abilityDef>Forge_Verb</abilityDef>
+			<isViolent>false</isViolent>
+            <warmupTime>0</warmupTime>
+            <SecondsToRecharge>0</SecondsToRecharge>
+            <range>40</range>
+			<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>VibrationLow</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>2</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<targetParams>
+                <canTargetPawns>false</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </AbilityUser.AbilityDef>
 
 </Defs>

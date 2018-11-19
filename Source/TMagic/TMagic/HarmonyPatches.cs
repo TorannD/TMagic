@@ -354,7 +354,7 @@ namespace TorannMagic
         public static void TurretGunTick_Overdrive_Postfix(Building_TurretGun __instance)
         {            
             Thing overdriveThing = __instance;
-            if(!overdriveThing.DestroyedOrNull())
+            if(!overdriveThing.DestroyedOrNull() && overdriveThing.Map != null)
             {
                 int burstCooldownTicksLeft = Traverse.Create(root: __instance).Field(name: "burstCooldownTicksLeft").GetValue<int>();
                 int burstWarmupTicksLeft = Traverse.Create(root: __instance).Field(name: "burstWarmupTicksLeft").GetValue<int>();
@@ -1076,8 +1076,8 @@ namespace TorannMagic
                 Traverse traverse = Traverse.Create(__instance);
                 Pawn pawn = (Pawn)PostApplyDamage_Patch.pawn.GetValue(__instance);
                 if (dinfo.Def != null)
-                {
-                    if (dinfo.Instigator != null && !pawn.Dead)
+                {                    
+                    if (dinfo.Instigator != null && pawn != null && dinfo.Instigator != pawn && !pawn.Destroyed && !pawn.Dead && pawn.Map != null)
                     {
                         Pawn instigator = dinfo.Instigator as Pawn;
                         if (instigator != null && dinfo.Def != TMDamageDefOf.DamageDefOf.TM_Shrapnel)
@@ -1136,9 +1136,9 @@ namespace TorannMagic
                             }
                         }
 
-                        if (dinfo.Def != null && !pawn.Dead && TM_Calc.IsUndead(pawn))
+                        if (TM_Calc.IsUndead(pawn))
                         {
-                            if (dinfo.Def.armorCategory.defName == "Light" && Rand.Chance(.25f))
+                            if (dinfo.Def.armorCategory != null && dinfo.Def.armorCategory.defName == "Light" && Rand.Chance(.25f))
                             {
                                 dinfo.SetAmount(dinfo.Amount * .7f);
                                 pawn.TakeDamage(dinfo);
@@ -1169,7 +1169,6 @@ namespace TorannMagic
 
                         if (instigator != null && instigator.health.hediffSet.HasHediff(HediffDef.Named("TM_PsionicHD"), false))
                         {
-
                             if (instigator.equipment.Primary == null && dinfo.Def != TMDamageDefOf.DamageDefOf.TM_PsionicInjury && dinfo.Def != DamageDefOf.Stun)
                             {
                                 CompAbilityUserMight comp = instigator.GetComp<CompAbilityUserMight>();
@@ -2757,6 +2756,40 @@ namespace TorannMagic
                     return false;
                 }
                 return true;
+            }
+        }
+
+        [HarmonyPatch(typeof(QualityUtility), "GenerateQualityCreatedByPawn", null)]
+        [HarmonyPatch(new Type[]
+        {
+            typeof(Pawn),
+            typeof(SkillDef)
+        })]
+        public static class ArcaneForge_Quality_Patch
+        {
+            public static void Postfix(Pawn pawn, SkillDef relevantSkill, ref QualityCategory __result)
+            {
+                Log.Message("generating quality");
+                CompAbilityUserMagic comp = pawn.TryGetComp<CompAbilityUserMagic>();
+                if(comp != null && comp.IsMagicUser && pawn.story.traits != null && !pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) && comp.ArcaneForging)
+                {
+                    Log.Message("created at arcane forge, initial quality is " + __result);
+                    int mageLevel = Rand.Range(0, Mathf.RoundToInt(comp.MagicUserLevel / 5));
+                    __result = (QualityCategory)Mathf.Min((int)__result + mageLevel, 6);
+                    Log.Message("new quality is " + __result);
+                    SoundInfo info = SoundInfo.InMap(new TargetInfo(pawn.Position, pawn.Map, false), MaintenanceType.None);
+                    info.pitchFactor = .6f;
+                    info.volumeFactor = 1.6f;
+                    TorannMagicDefOf.TM_Gong.PlayOneShot(info);
+
+                    List<IntVec3> cellList = GenRadial.RadialCellsAround(pawn.Position, (int)__result, false).ToList<IntVec3>();
+                    for (int i = 0; i < cellList.Count; i++)
+                    {
+                        IntVec3 curCell = cellList[i];
+                        Vector3 angle = TM_Calc.GetVector(pawn.Position, curCell);
+                        TM_MoteMaker.ThrowArcaneWaveMote(curCell.ToVector3(), pawn.Map, .4f * (curCell - pawn.Position).LengthHorizontal, .1f, .05f, .1f, 0, 3, (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat(), (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat());
+                    }
+                }
             }
         }
 

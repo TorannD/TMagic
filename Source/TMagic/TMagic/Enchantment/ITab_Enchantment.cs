@@ -41,6 +41,11 @@ namespace TorannMagic.Enchantment
         protected override void FillTab()
         {
             CompEnchantedItem enchantedItem = ThingCompUtility.TryGetComp<CompEnchantedItem>(Find.Selector.SingleSelectedThing);
+            float enchantmentMultiplier = 1;
+            if (Find.Selector.SingleSelectedThing.Stuff != null && Find.Selector.SingleSelectedThing.Stuff.defName == "TM_Manaweave") ;
+            {
+                enchantmentMultiplier = 1.5f;
+            }
             Rect rect = GenUI.ContractedBy(new Rect(0f, 0f, ITab_Enchantment.WinSize.x, ITab_Enchantment.WinSize.y), 10f);
             Rect rect2 = rect;
             Text.Font = GameFont.Small;

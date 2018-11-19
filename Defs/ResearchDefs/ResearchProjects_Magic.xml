@@ -37,6 +37,31 @@
 	</ResearchProjectDef>
 	
 	<ResearchProjectDef>
+		<defName>TM_ArcaneForging</defName>
+		<label>Arcane Forge</label>
+		<tab>TMagic</tab>
+		<description>Develop the means of using arcane power to craft various items and equipment. Completion of this research will also reveal how to make Manaweave, a unique material that enhances arcane power.</description>
+		<baseCost>1500</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>0.0</researchViewX>
+		<researchViewY>3.0</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TM_ForgeReplication</defName>
+		<label>Forge Replication</label>
+		<tab>TMagic</tab>
+		<description>Enhances the Arcane Forge with a technique that allows it to extract the design from any craftable item and create it at the forge.</description>
+		<baseCost>3000</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>0.0</researchViewX>
+		<researchViewY>4.0</researchViewY>
+		<prerequisites>
+			<li>TM_ArcaneForging</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
 		<defName>TM_Enchanting</defName>
 		<label>enchanting</label>
 		<tab>TMagic</tab>

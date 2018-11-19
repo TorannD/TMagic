@@ -113,6 +113,9 @@
 <TM_AnimalHasAllegience>This animal is already committed to another cause.</TM_AnimalHasAllegience>
 <TM_TechnoBitRepair>Repair</TM_TechnoBitRepair>
 <TM_TechnoBitRepairDesc>Toggles the repair function of the techno-bit.</TM_TechnoBitRepairDesc>
+<TM_FoundNoReplicateTarget>Unable to detect a valid item to replicate.</TM_FoundNoReplicateTarget>
+<TM_FoundNoReplicateRecipe>Unable to determine a design or recipe for {0}.</TM_FoundNoReplicateRecipe>
+
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
@@ -1040,6 +1043,10 @@ Level 3: 50</TM_PsionicStorm_eff_desc>
 <TM_PsionicBlastAddCost>Subsequent Blast Energy Cost: {0}</TM_PsionicBlastAddCost>
 <TM_PsionicBarrierMaintenanceCost></TM_PsionicBarrierMaintenanceCost>
 <TM_PsionicBarrierConversionRate></TM_PsionicBarrierConversionRate>
+<TM_Replicate>Replication Scan</TM_Replicate>
+<TM_ReplicateDesc>The Arcane Forge is capable of scanning a single item and replicating its design. If successful, the forge stores the design blueprints of the scanned item and the item can then be crafted at the forge./n/nReplicated items require the same material as the standard item to craft, but any research requirements or crafting skill requirements are bypassed. All replicated items require a high intelligence to reproduce and the forge can only be operated by a mage./n/n*Admin note: the forge can perform scans at no cost, but the active design is replaced by the default recipe if the game is reloaded.</TM_ReplicateDesc>
+<TM_ReplicateDisabled>Replication Disabled</TM_ReplicateDisabled>
+<TM_ReplicateDisabledDesc>Clear bills related to replication and allow a new replication.</TM_ReplicateDisabledDesc>
 
 <!-- ========== Building Menu's ========== -->
 
