@@ -256,34 +256,34 @@ namespace TorannMagic
 
         public override void PostDraw()
         {
-			if (IsMagicUser)
-			{
-				ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-				if (settingsRef.AIFriendlyMarking && base.AbilityUser.IsColonist)
-				{
-					if (!this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-					{
-						DrawMageMark();
-					}
-				}
-				if (settingsRef.AIMarking && !base.AbilityUser.IsColonist)
-				{
-					if (!this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-					{
-						DrawMageMark();
-					}
-				}
+            if (IsMagicUser)
+            {
+                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                if (settingsRef.AIFriendlyMarking && base.AbilityUser.IsColonist)
+                {
+                    if (!this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                    {
+                        DrawMageMark();
+                    }
+                }
+                if (settingsRef.AIMarking && !base.AbilityUser.IsColonist)
+                {
+                    if (!this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                    {
+                        DrawMageMark();
+                    }
+                }
 
-				if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) && this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower mp) => mp.abilityDef == TorannMagicDefOf.TM_TechnoBit).learned == true)
-				{
-					DrawTechnoBit();
-				}
+                if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) && this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower mp) => mp.abilityDef == TorannMagicDefOf.TM_TechnoBit).learned == true)
+                {
+                    DrawTechnoBit();
+                }
 
-				if (Pawn.TryGetComp<Enchantment.CompEnchant>()?.enchantingContainer?.Count > 0)
-				{
-					DrawEnchantMark();
-				}
-			}
+                if (Pawn.TryGetComp<Enchantment.CompEnchant>()?.enchantingContainer?.Count > 0)
+                {
+                    DrawEnchantMark();
+                }
+            }
             base.PostDraw();
         }
 
