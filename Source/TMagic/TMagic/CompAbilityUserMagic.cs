@@ -274,15 +274,15 @@ namespace TorannMagic
                     }
                 }
 
-                if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) && this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower mp) => mp.abilityDef == TorannMagicDefOf.TM_TechnoBit).learned == true)
-                {
-                    DrawTechnoBit();
-                }
-
                 if (Pawn.TryGetComp<Enchantment.CompEnchant>()?.enchantingContainer?.Count > 0)
                 {
                     DrawEnchantMark();
                 }
+            }
+
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) && this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower mp) => mp.abilityDef == TorannMagicDefOf.TM_TechnoBit).learned == true)
+            {
+                DrawTechnoBit();
             }
             base.PostDraw();
         }
