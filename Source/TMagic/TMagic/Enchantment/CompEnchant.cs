@@ -17,7 +17,7 @@ namespace TorannMagic.Enchantment
         public override void PostDeSpawn(Map map)
         {
             base.PostDeSpawn(map);
-            enchantingContainer.TryDropAll(parent.Position, map, ThingPlaceMode.Near, null, null);
+            enchantingContainer?.TryDropAll(parent.Position, map, ThingPlaceMode.Near, null, null);
         }
 
         public ThingOwner GetDirectlyHeldThings()
@@ -27,7 +27,10 @@ namespace TorannMagic.Enchantment
 
         public void GetChildHolders(List<IThingHolder> outChildren)
         {
-            ThingOwnerUtility.AppendThingHoldersFromThings(outChildren, GetDirectlyHeldThings());
+            if (enchantingContainer != null) // Just in case.
+            {
+                ThingOwnerUtility.AppendThingHoldersFromThings(outChildren, enchantingContainer);
+            }
         }
 
         public override void PostExposeData()
