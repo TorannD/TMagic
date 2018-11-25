@@ -1206,8 +1206,59 @@ namespace TorannMagic
             }
         }
 
-        public void ClearPowers()
+        public void ResetSkills()
         {
+            List<bool> powerLearned = new List<bool>();
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
+            {
+                for (int i = 0; i < this.MightData.MightPowersG.Count; i++)
+                {
+                    powerLearned.Add(this.MightData.MightPowersG[i].learned);
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper))
+            {
+                for (int i = 0; i < this.MightData.MightPowersS.Count; i++)
+                {
+                    powerLearned.Add(this.MightData.MightPowersS[i].learned);
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer))
+            {
+                for (int i = 0; i < this.MightData.MightPowersB.Count; i++)
+                {
+                    powerLearned.Add(this.MightData.MightPowersB[i].learned);
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger))
+            {
+                for (int i = 0; i < this.MightData.MightPowersR.Count; i++)
+                {
+                    powerLearned.Add(this.MightData.MightPowersR[i].learned);
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            {
+                for (int i = 0; i < this.MightData.MightPowersF.Count; i++)
+                {
+                    powerLearned.Add(this.MightData.MightPowersF[i].learned);
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
+            {
+                for (int i = 0; i < this.MightData.MightPowersP.Count; i++)
+                {
+                    powerLearned.Add(this.MightData.MightPowersP[i].learned);
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight))
+            {
+                for (int i = 0; i < this.MightData.MightPowersDK.Count; i++)
+                {
+                    powerLearned.Add(this.MightData.MightPowersDK[i].learned);
+                }
+            }
+
             int tmpLvl = this.MightUserLevel;
             int tmpExp = this.MightUserXP;
             base.IsInitialized = false;
@@ -1216,6 +1267,79 @@ namespace TorannMagic
             this.MightUserLevel = tmpLvl;
             this.MightUserXP = tmpExp;
             this.mightData.MightAbilityPoints = tmpLvl;
+
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MightData.MightPowersG[i].learned = powerLearned[i];
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MightData.MightPowersS[i].learned = powerLearned[i];
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MightData.MightPowersB[i].learned = powerLearned[i];
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MightData.MightPowersR[i].learned = powerLearned[i];
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MightData.MightPowersF[i].learned = powerLearned[i];
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MightData.MightPowersP[i].learned = powerLearned[i];
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MightData.MightPowersDK[i].learned = powerLearned[i];
+                }
+            }
+        }
+
+        public void RemoveTMagicHediffs()
+        {
+            List<Hediff> allHediffs = this.Pawn.health.hediffSet.GetHediffs<Hediff>().ToList();
+            for (int i = 0; i < allHediffs.Count(); i++)
+            {
+                Hediff hediff = allHediffs[i];
+                if (hediff.def.defName.Contains("TM_"))
+                {
+                    this.Pawn.health.RemoveHediff(hediff);
+                }
+
+            }
+        }
+
+        public void RemoveAbilityUser()
+        {
+            this.RemovePowers();
+            this.RemoveTMagicHediffs();
+            this.RemoveTraits();
+            this.mightData = null;
+            base.IsInitialized = false;
         }
 
         private void ClearPower(MightPower current)
@@ -1225,44 +1349,15 @@ namespace TorannMagic
             base.UpdateAbilities();
         }
 
-        public void ClearTraits()
+        public void RemoveTraits()
         {
             List<Trait> traits = this.AbilityUser.story.traits.allTraits;
             for (int i = 0; i < traits.Count; i++)
             {
-                if (traits[i].def.defName == "Gladiator")
+                if (traits[i].def == TorannMagicDefOf.Gladiator || traits[i].def == TorannMagicDefOf.Bladedancer || traits[i].def == TorannMagicDefOf.Ranger || traits[i].def == TorannMagicDefOf.Faceless ||
+                    traits[i].def == TorannMagicDefOf.DeathKnight || traits[i].def == TorannMagicDefOf.TM_Psionic || traits[i].def == TorannMagicDefOf.TM_Sniper)
                 {
-                    Log.Message("Removing trait " + traits[i].def.defName);
-                    traits.Remove(traits[i]);
-                    i--;
-                }
-                if (traits[i].def.defName == "TM_Sniper")
-                {
-                    Log.Message("Removing trait " + traits[i].def.defName);
-                    traits.Remove(traits[i]);
-                    i--;
-                }
-                if (traits[i].def.defName == "Bladedancer")
-                {
-                    Log.Message("Removing trait " + traits[i].def.defName);
-                    traits.Remove(traits[i]);
-                    i--;
-                }
-                if (traits[i].def.defName == "Ranger")
-                {
-                    Log.Message("Removing trait " + traits[i].def.defName);
-                    traits.Remove(traits[i]);
-                    i--;
-                }
-                if (traits[i].def.defName == "TM_Psionic")
-                {
-                    Log.Message("Removing trait " + traits[i].def.defName);
-                    traits.Remove(traits[i]);
-                    i--;
-                }
-                if (traits[i].def.defName == "DeathKnight")
-                {
-                    Log.Message("Removing trait " + traits[i].def.defName);
+                    Log.Message("Removing trait " + traits[i].Label);
                     traits.Remove(traits[i]);
                     i--;
                 }

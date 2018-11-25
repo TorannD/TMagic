@@ -102,7 +102,7 @@ namespace TorannMagic
                     CompAbilityUserMagic undeadComp = undeadPawn.GetComp<CompAbilityUserMagic>();
                     if (undeadComp.IsMagicUser)
                     {
-                        undeadComp.ClearPowers();
+                        //undeadComp.ClearPowers();
                     }
                     List<SkillRecord> skills = undeadPawn.skills.skills;
                     for (int j = 0; j < skills.Count; j++)

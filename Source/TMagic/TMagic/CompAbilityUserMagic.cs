@@ -148,9 +148,6 @@ namespace TorannMagic
         public float arcaneDmg = 1;
         public float arcaneRes = 1;
 
-        public Verb_UseAbility lastVerbUsed = null;
-        public int lastTickVerbUsed = 0;
-
         public TMAbilityDef mimicAbility = null;
         public List<Thing> summonedMinions = new List<Thing>();
         public List<Thing> summonedSentinels = new List<Thing>();
@@ -2784,7 +2781,7 @@ namespace TorannMagic
             base.UpdateAbilities();
         }
 
-        public void ClearPowers()
+        public void ResetSkills()
         {
             List<bool> powerLearned = new List<bool>();
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
@@ -2878,6 +2875,14 @@ namespace TorannMagic
                     powerLearned.Add(this.MagicData.MagicPowersG[i].learned);
                 }
             }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+            {
+                for (int i = 0; i < this.MagicData.MagicPowersT.Count; i++)
+                {
+                    powerLearned.Add(this.MagicData.MagicPowersT[i].learned);
+                }
+            }
+
             int tmpLvl = this.MagicUserLevel;
             int tmpExp = this.MagicUserXP;
             base.IsInitialized = false;
@@ -2978,7 +2983,16 @@ namespace TorannMagic
                     this.MagicData.MagicPowersG[i].learned = powerLearned[i];
                 }
             }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MagicData.MagicPowersT[i].learned = powerLearned[i];
+                }
+            }
         }
+
+
 
         private void LoadPowers()
         {
@@ -3032,7 +3046,7 @@ namespace TorannMagic
             }
         }
 
-        public void ClearTraits()
+        public void RemoveTraits()
         {
             List<Trait> traits = this.AbilityUser.story.traits.allTraits;
             for (int i = 0; i < traits.Count; i++)
@@ -3045,7 +3059,30 @@ namespace TorannMagic
                     traits.Remove(traits[i]);
                     i--;
                 }
+            }            
+        }
+
+        public void RemoveTMagicHediffs()
+        {
+            List<Hediff> allHediffs = this.Pawn.health.hediffSet.GetHediffs<Hediff>().ToList();
+            for (int i = 0; i < allHediffs.Count(); i++)
+            {
+                Hediff hediff = allHediffs[i];
+                if(hediff.def.defName.Contains("TM_"))
+                {
+                    this.Pawn.health.RemoveHediff(hediff);
+                }
+
             }
+        }
+
+        public void RemoveAbilityUser()
+        {            
+            this.RemovePowers();
+            this.RemoveTMagicHediffs();
+            this.RemoveTraits();
+            this.magicData = null;
+            base.IsInitialized = false;            
         }
 
         public int MagicAttributeEffeciencyLevel(string attributeName)

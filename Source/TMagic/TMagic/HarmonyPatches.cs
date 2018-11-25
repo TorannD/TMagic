@@ -1293,6 +1293,11 @@ namespace TorannMagic
         {
             public static bool Prefix(Recipe_Surgery __instance, Pawn surgeon, Pawn patient, List<Thing> ingredients, BodyPartRecord part, ref bool __result)
             {
+                if (patient.health.hediffSet.HasHediff(HediffDef.Named("TM_StoneskinHD")))
+                {
+                    Hediff hediff = patient.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_StoneskinHD"), false);
+                    patient.health.RemoveHediff(hediff);
+                }
 
                 if (patient.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")) || patient.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadAnimalHD")))
                 {

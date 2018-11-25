@@ -167,7 +167,7 @@ namespace TorannMagic
 
                     if(this.parent.Severity < 20f)
                     {                        
-                        severityAdjustment += Rand.Range(.2f, .3f);
+                        severityAdjustment += Rand.Range(.1f, .15f);
                     }
                     if((this.lastHate + .35f) < this.parent.Severity)
                     {

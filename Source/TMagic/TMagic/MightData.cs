@@ -1090,6 +1090,22 @@ namespace TorannMagic
             this.mightPawn = newUser.AbilityUser;
         }
 
+        public void ClearData()
+        {
+            this.mightUserLevel = 0;
+            this.mightUserXP = 0;
+            this.mightPowerB.Clear();
+            this.mightPowerDK.Clear();
+            this.mightPowerF.Clear();
+            this.mightPowerG.Clear();
+            this.mightPowerP.Clear();
+            this.mightPowerR.Clear();
+            this.mightPowerS.Clear();
+            this.MightPowersStandalone.Clear();
+            this.mightPawn = null;
+            this.initialized = false;
+        }
+
         public void ExposeData()
         {
             Scribe_References.Look<Pawn>(ref this.mightPawn, "mightPawn", false);

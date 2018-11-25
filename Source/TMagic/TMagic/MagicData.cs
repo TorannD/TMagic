@@ -2180,7 +2180,29 @@ namespace TorannMagic
 
         public MagicData(CompAbilityUserMagic newUser)
         {
-            this.magicPawn = newUser.AbilityUser;
+            this.magicPawn = newUser.AbilityUser;            
+        }
+
+        public void ClearData()
+        {
+            this.magicUserLevel = 0;
+            this.magicUserXP = 0;
+            this.magicAbilityPoints = 0;
+            this.dominationCount = 0;
+            this.magicPowerA.Clear();
+            this.magicPowerB.Clear();
+            this.magicPowerD.Clear();
+            this.magicPowerG.Clear();
+            this.magicPowerHoF.Clear();
+            this.magicPowerIF.Clear();
+            this.magicPowerN.Clear();
+            this.magicPowerP.Clear();
+            this.magicPowerPR.Clear();
+            this.magicPowerS.Clear();
+            this.magicPowerSB.Clear();
+            this.magicPowerSD.Clear();
+            this.magicPawn = null;            
+            this.initialized = false;           
         }
 
         public void ExposeData()
