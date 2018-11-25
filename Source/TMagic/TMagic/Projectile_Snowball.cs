@@ -108,5 +108,14 @@ namespace TorannMagic
 			}
 		}
 
-	}
+        public override void Tick()
+        {
+            Vector3 rndPos = this.DrawPos;
+            rndPos.x += Rand.Range(-.3f, .3f);
+            rndPos.z += Rand.Range(-.3f, .3f);
+            TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Ice"), rndPos, this.Map, Rand.Range(.7f, 1.3f), .05f, 0.05f, .15f, Rand.Range(-300, 300), Rand.Range(.8f, 2f), Rand.Range(0, 360), Rand.Range(0, 360));
+            base.Tick();
+        }
+
+    }
 }

@@ -8,6 +8,7 @@
     <backstoryCategories>
       <li>Civil</li>
 	  <li>Raider</li>
+	  <li>Tribal</li>
     </backstoryCategories>
     <chemicalAddictionChance>0.15</chemicalAddictionChance>
     <invNutrition>2.55</invNutrition>
@@ -36,13 +37,17 @@
 
 
   <PawnKindDef Abstract="True" Name="EliteSeerBase" ParentName="SeerBase">
-    <combatPower>250</combatPower>
+<!--     <defName>Seer</defName> -->
+    <combatPower>50</combatPower>
     <maxGenerationAge>45</maxGenerationAge>
     <gearHealthRange>
-      <min>1</min>
+      <min>.6</min>
       <max>3.5</max>
     </gearHealthRange>
+	<canBeSapper>true</canBeSapper>
+	<itemQuality>Normal</itemQuality>
     <apparelTags>
+	  <li>Neolithic</li>
       <li>Outlander</li>
       <li>Military</li>
       <li>Spacer</li>
@@ -57,11 +62,6 @@
       <min>1600</min>
       <max>2000</max>
     </weaponMoney>
-    <weaponTags>
-	  <li>MageAttack</li>
-<!--       <li>EliteGun</li>
-      <li>AdvancedGun</li> -->
-    </weaponTags>
     <techHediffsMoney>
       <min>2000</min>
       <max>3000</max>
@@ -98,8 +98,32 @@
 
   <PawnKindDef ParentName="EliteSeerBase">
     <defName>SeerDefender</defName>
+	<combatPower>150</combatPower>
     <label>Magic Protector</label>
     <labelPlural>magic protectors</labelPlural>
+	    <weaponTags>
+	  <li>MageAttack</li>
+    </weaponTags>
+  </PawnKindDef>
+  
+  <PawnKindDef ParentName="EliteSeerBase">
+    <defName>SeerSpearman</defName>
+	<combatPower>60</combatPower>
+    <label>Guardsman</label>
+    <labelPlural>Guardsmen</labelPlural>
+	<weaponTags>
+      <li>SeerSpearman</li>
+    </weaponTags>
+  </PawnKindDef>
+  
+  <PawnKindDef ParentName="EliteSeerBase">
+    <defName>SeerBowman</defName>
+	<combatPower>90</combatPower>
+    <label>Seer Archer</label>
+    <labelPlural>Seer Archers</labelPlural>
+	<weaponTags>
+      <li>SeerBowman</li>
+    </weaponTags>
   </PawnKindDef>
 
 </Defs>

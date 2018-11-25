@@ -12,6 +12,10 @@ namespace TorannMagic
         private int pwrVal;
         private float arcaneDmg = 1;
 
+        public override void Tick()
+        {
+            base.Tick();
+        }
         protected override void Impact(Thing hitThing)
         {
             Map map = base.Map;

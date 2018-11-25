@@ -1196,7 +1196,7 @@ namespace TorannMagic
                         {
                             DoArcaneForging();
                         }
-                        if (this.Mana.CurLevel >= (.99f * this.Mana.MaxLevel))
+                        if (this.Pawn.needs.AllNeeds.Contains(this.Mana) && this.Mana.CurLevel >= (.99f * this.Mana.MaxLevel))
                         {                            
                             if (this.age > (lastXPGain + magicXPRate))
                             {
@@ -5870,13 +5870,13 @@ namespace TorannMagic
                         {
                             if (apparel[i].Stuff != null && apparel[i].Stuff.defName == "TM_Manaweave")
                             {
-                                _maxMP += item.maxMP * 1.5f;
-                                _mpRegenRate += item.mpRegenRate * 1.5f;
-                                _coolDown += item.coolDown * 1.5f;
-                                _xpGain += item.xpGain * 1.5f;
-                                _mpCost += item.mpCost * 1.5f;
-                                _arcaneRes += item.arcaneRes * 1.5f;
-                                _arcaneDmg += item.arcaneDmg * 1.5f;
+                                _maxMP += item.maxMP * 1.2f;
+                                _mpRegenRate += item.mpRegenRate * 1.2f;
+                                _coolDown += item.coolDown * 1.2f;
+                                _xpGain += item.xpGain * 1.2f;
+                                _mpCost += item.mpCost * 1.2f;
+                                _arcaneRes += item.arcaneRes * 1.2f;
+                                _arcaneDmg += item.arcaneDmg * 1.2f;
                             }
                             else
                             {

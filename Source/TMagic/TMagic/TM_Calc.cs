@@ -90,6 +90,16 @@ namespace TorannMagic
             return false;
         }
 
+        public static bool HasHateHediff(Pawn pawn)
+        {
+            if(pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HateHD_I"), false) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HateHD_II"), false) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HateHD_III"), false) ||
+                pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HateHD"), false) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HateHD_IV"), false) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HateHD_V"), false))
+            {
+                return true;
+            }
+            return false;
+        }
+
         public static bool IsMightUser(Pawn pawn)
         {
             if (pawn != null)
@@ -179,6 +189,14 @@ namespace TorannMagic
         public static Vector3 GetVector(IntVec3 from, IntVec3 to)
         {
             Vector3 heading = (to - from).ToVector3();
+            float distance = heading.magnitude;
+            Vector3 direction = heading / distance;
+            return direction;
+        }
+
+        public static Vector3 GetVector(Vector3 from, Vector3 to)
+        {
+            Vector3 heading = (to - from);
             float distance = heading.magnitude;
             Vector3 direction = heading / distance;
             return direction;
@@ -371,6 +389,71 @@ namespace TorannMagic
                                         injurySeverity += current.Severity;
                                     }                                        
                                 }                                
+                            }
+                        }
+                        if (minSeverity != 0)
+                        {
+                            if (injurySeverity >= minSeverity)
+                            {
+                                pawnList.Add(targetPawn);
+                            }
+                        }
+                        else
+                        {
+                            if (injurySeverity != 0)
+                            {
+                                pawnList.Add(targetPawn);
+                            }
+                        }
+                        targetPawn = null;
+                    }
+                    else
+                    {
+                        targetPawn = null;
+                    }
+                }
+            }
+            if (pawnList.Count > 0)
+            {
+                return pawnList.RandomElement();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static Pawn FindNearbyInjuredPawnOther(Pawn pawn, int radius, float minSeverity)
+        {
+            List<Pawn> mapPawns = pawn.Map.mapPawns.AllPawnsSpawned;
+            List<Pawn> pawnList = new List<Pawn>();
+            Pawn targetPawn = null;
+            pawnList.Clear();
+            for (int i = 0; i < mapPawns.Count; i++)
+            {
+                targetPawn = mapPawns[i];
+                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !TM_Calc.IsUndead(targetPawn))
+                {
+                    if (targetPawn.IsColonist && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius && targetPawn != pawn)
+                    {
+                        float injurySeverity = 0;
+                        using (IEnumerator<BodyPartRecord> enumerator = targetPawn.health.hediffSet.GetInjuredParts().GetEnumerator())
+                        {
+                            while (enumerator.MoveNext())
+                            {
+                                BodyPartRecord rec = enumerator.Current;
+                                IEnumerable<Hediff_Injury> arg_BB_0 = targetPawn.health.hediffSet.GetHediffs<Hediff_Injury>();
+                                Func<Hediff_Injury, bool> arg_BB_1;
+                                arg_BB_1 = ((Hediff_Injury injury) => injury.Part == rec);
+
+                                foreach (Hediff_Injury current in arg_BB_0.Where(arg_BB_1))
+                                {
+                                    bool flag5 = current.CanHealNaturally() && !current.IsPermanent();
+                                    if (flag5)
+                                    {
+                                        injurySeverity += current.Severity;
+                                    }
+                                }
                             }
                         }
                         if (minSeverity != 0)

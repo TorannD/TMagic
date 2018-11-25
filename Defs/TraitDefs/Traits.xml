@@ -44,6 +44,7 @@
 		  <li>Warlock</li>
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -91,6 +92,7 @@
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -137,6 +139,7 @@
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -181,6 +184,7 @@
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -226,6 +230,7 @@
 		<li>Faceless</li>
 		<li>Succubus</li>
 		  <li>Warlock</li>
+		  <li>DeathKnight</li>
 		<li>TM_Psionic</li>
 		<li>Geomancer</li>
 		<li>Technomancer</li>
@@ -275,6 +280,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>DeathKnight</li>
 		  <li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
@@ -319,6 +325,7 @@
 		  <li>Succubus</li>
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
+		  <li>DeathKnight</li>
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
 		</conflictingTraits>	
@@ -364,6 +371,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>DeathKnight</li>
 		  <li>Technomancer</li>
 		</conflictingTraits>	
 	</TraitDef> 	
@@ -412,6 +420,7 @@
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -486,6 +495,7 @@
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -543,6 +553,7 @@
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -664,6 +675,7 @@
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -714,6 +726,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -766,6 +779,7 @@
 		  <li>Warlock</li>
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
+		  <li>DeathKnight</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -810,6 +824,7 @@
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -861,6 +876,7 @@
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -970,6 +986,7 @@
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1062,6 +1079,7 @@
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1152,6 +1170,7 @@
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1201,6 +1220,7 @@
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1253,6 +1273,7 @@
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1275,7 +1296,7 @@
 					<MeleeDodgeChance>-5</MeleeDodgeChance>
 					<ResearchSpeed>+.25</ResearchSpeed>
 					<MeleeHitChance>-5</MeleeHitChance>
-					<PainShockThreshold>0.15</PainShockThreshold>
+					<PainShockThreshold>-0.15</PainShockThreshold>
 					<PsychicSensitivity>0.40</PsychicSensitivity>
 					<ComfyTemperatureMax>+10</ComfyTemperatureMax>
 					<ComfyTemperatureMin>-10</ComfyTemperatureMin>
@@ -1305,6 +1326,7 @@
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1326,7 +1348,7 @@
 					<CarryingCapacity>20</CarryingCapacity>
 					<MeleeDodgeChance>10</MeleeDodgeChance>
 					<MeleeHitChance>10</MeleeHitChance>
-					<PainShockThreshold>-0.20</PainShockThreshold>
+					<PainShockThreshold>0.20</PainShockThreshold>
 					<PsychicSensitivity>0.20</PsychicSensitivity>
                 </statOffsets>
 		  </li>
@@ -1354,6 +1376,52 @@
 		  <li>Warlock</li>
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>
+		<defName>DeathKnight</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
+		<degreeDatas>	
+		  <li>
+			<label>Death Knight</label>
+			<description>[PAWN_nameDef] is a Death Knight - harbinger of doom and a representative of the ever approaching inevitability of death and decay. [PAWN_possessive] solemn attitude makes most pawns uneasy and even fewer approve of [PAWN_possessive] methods.</description>
+			<degree>4</degree>
+				<statOffsets>
+					<SocialImpact>-0.25</SocialImpact>
+					<NegotiationAbility>-0.25</NegotiationAbility>
+					<CarryingCapacity>30</CarryingCapacity>
+					<PainShockThreshold>+0.30</PainShockThreshold>
+					<PsychicSensitivity>-.25</PsychicSensitivity>				
+                </statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>PhysicalProdigy</li>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>Arcanist</li>
+		  <li>StormBorn</li>
+		  <li>Summoner</li>
+		  <li>Gifted</li>
+	      <li>Paladin</li>
+		  <li>TM_Sniper</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Gladiator</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		  <li>Faceless</li>
+		  <li>Succubus</li>
+		  <li>Warlock</li>
+		  <li>Geomancer</li>
+		  <li>Technomancer</li>
+		  <li>TM_Psionic</li>
 		</conflictingTraits>	
 	</TraitDef>
 

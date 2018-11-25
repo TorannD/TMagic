@@ -513,7 +513,7 @@ Paracyte is difficult to grow and only skilled herbalists are able to plant and 
 	<altitudeLayer>Item</altitudeLayer>
     <plant>
       <harvestedThingDef>RawMagicyte</harvestedThingDef>
-      <harvestYield>7</harvestYield>
+      <harvestYield>6</harvestYield>
       <sowMinSkill>12</sowMinSkill>
       <growDays>15</growDays>
       <sowWork>1200</sowWork>

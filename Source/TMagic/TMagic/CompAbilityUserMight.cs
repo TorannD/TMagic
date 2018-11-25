@@ -48,6 +48,9 @@ namespace TorannMagic
         private float P_PsionicBlast_eff = 0.08f;
         private float P_PsionicDash_eff = 0.10f;
         private float P_PsionicStorm_eff = 0.10f;
+        private float DK_WaveOfFear_eff = 0.10f;
+        private float DK_Spite_eff = 0.10f;
+        private float DK_GraveBlade_eff = .08f;
 
         private float global_seff = 0.03f;
 
@@ -71,7 +74,6 @@ namespace TorannMagic
         private int resMitigationDelay = 0;
 
         public bool animalBondingDisabled = false;
-        private int animalFriendDisabledPeriod;
 
         public bool usePsionicAugmentationToggle = true;
         public List<Thing> combatItems = new List<Thing>();
@@ -158,6 +160,10 @@ namespace TorannMagic
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
             {
                 Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.psionicMarkMat, 0);
+            }
+            else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.DeathKnight))
+            {
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.deathknightMarkMat, 0);
             }
             else
             {
@@ -573,6 +579,62 @@ namespace TorannMagic
             return result;
         }
 
+        public int LevelUpSkill_Shroud(string skillName)
+        {
+            int result = 0;
+            MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_Shroud.FirstOrDefault((MightPowerSkill x) => x.label == skillName);
+            bool flag = mightPowerSkill != null;
+            if (flag)
+            {
+                result = mightPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_WaveOfFear(string skillName)
+        {
+            int result = 0;
+            MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_WaveOfFear.FirstOrDefault((MightPowerSkill x) => x.label == skillName);
+            bool flag = mightPowerSkill != null;
+            if (flag)
+            {
+                result = mightPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_Spite(string skillName)
+        {
+            int result = 0;
+            MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_Spite.FirstOrDefault((MightPowerSkill x) => x.label == skillName);
+            bool flag = mightPowerSkill != null;
+            if (flag)
+            {
+                result = mightPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_LifeSteal(string skillName)
+        {
+            int result = 0;
+            MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_LifeSteal.FirstOrDefault((MightPowerSkill x) => x.label == skillName);
+            bool flag = mightPowerSkill != null;
+            if (flag)
+            {
+                result = mightPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_GraveBlade(string skillName)
+        {
+            int result = 0;
+            MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_GraveBlade.FirstOrDefault((MightPowerSkill x) => x.label == skillName);
+            bool flag = mightPowerSkill != null;
+            if (flag)
+            {
+                result = mightPowerSkill.level;
+            }
+            return result;
+        }
+
         public override void CompTick()
         {
             bool flag = base.AbilityUser != null;
@@ -613,7 +675,7 @@ namespace TorannMagic
                             }
                             this.autocastTick = Find.TickManager.TicksGame + (int)Rand.Range(.8f * settingsRef.autocastEvaluationFrequency, 1.2f * settingsRef.autocastEvaluationFrequency);
                         }
-                        if (this.Stamina.CurLevel >  (.99f * this.Stamina.MaxLevel))
+                        if (this.Pawn.needs.AllNeeds.Contains(this.Stamina) && this.Stamina.CurLevel >  (.99f * this.Stamina.MaxLevel))
                         {                            
                             if (this.age > (lastMightXPGain + mightXPRate))
                             {
@@ -732,7 +794,7 @@ namespace TorannMagic
                     bool flag3 = base.AbilityUser.story != null;
                     if (flag3)
                     {
-                        bool flag4 = base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Ranger) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless);
+                        bool flag4 = base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.DeathKnight) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Ranger) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless);
                         if (flag4)
                         {                            
                             return true;
@@ -904,7 +966,6 @@ namespace TorannMagic
                         this.AddPawnAbility(TorannMagicDefOf.TM_Transpose);
                         this.AddPawnAbility(TorannMagicDefOf.TM_Possess);
                     }
-                    this.mightPowersInitialized = true;
                     flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic);
                     if (flag2)
                     {
@@ -913,6 +974,14 @@ namespace TorannMagic
                         this.AddPawnAbility(TorannMagicDefOf.TM_PsionicBlast);
                         this.AddPawnAbility(TorannMagicDefOf.TM_PsionicDash);
                         this.AddPawnAbility(TorannMagicDefOf.TM_PsionicStorm);
+                    }
+                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.DeathKnight);
+                    if (flag2)
+                    {
+                        //Log.Message("Initializing Death Knight Abilities");
+                        this.AddPawnAbility(TorannMagicDefOf.TM_WaveOfFear);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Spite);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_GraveBlade);
                     }
                     this.mightPowersInitialized = true;
                     //base.UpdateAbilities();
@@ -1125,6 +1194,15 @@ namespace TorannMagic
                         this.RemovePawnAbility(current.abilityDef);
                     }
                 }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.DeathKnight);
+                if (flag2)
+                {
+                    foreach (MightPower current in this.MightData.MightPowersDK)
+                    {
+                        current.learned = false;
+                        this.RemovePawnAbility(current.abilityDef);
+                    }
+                }
             }
         }
 
@@ -1177,6 +1255,12 @@ namespace TorannMagic
                     i--;
                 }
                 if (traits[i].def.defName == "TM_Psionic")
+                {
+                    Log.Message("Removing trait " + traits[i].def.defName);
+                    traits.Remove(traits[i]);
+                    i--;
+                }
+                if (traits[i].def.defName == "DeathKnight")
                 {
                     Log.Message("Removing trait " + traits[i].def.defName);
                     traits.Remove(traits[i]);
@@ -1401,6 +1485,33 @@ namespace TorannMagic
                     result = magicPowerSkill.level;
                 }
             }
+            if (attributeName == "TM_WaveOfFear_eff")
+            {
+                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_WaveOfFear.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_Spite_eff")
+            {
+                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Spite.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_GraveBlade_eff")
+            {
+                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_GraveBlade.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
 
             return result;
         }
@@ -1517,6 +1628,21 @@ namespace TorannMagic
             {
                 MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_PsionicStorm.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicStorm_eff");
                 adjustedStaminaCost = mightDef.staminaCost - mightDef.staminaCost * (this.P_PsionicStorm_eff * (float)mightPowerSkill.level);
+            }
+            if (mightDef == TorannMagicDefOf.TM_Spite || mightDef == TorannMagicDefOf.TM_Spite_I || mightDef == TorannMagicDefOf.TM_Spite_II || mightDef == TorannMagicDefOf.TM_Spite_III)
+            {
+                MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_Spite.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Spite_eff");
+                adjustedStaminaCost = mightDef.staminaCost - mightDef.staminaCost * (this.DK_Spite_eff * (float)mightPowerSkill.level);
+            }
+            if (mightDef == TorannMagicDefOf.TM_WaveOfFear)
+            {
+                MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_WaveOfFear.FirstOrDefault((MightPowerSkill x) => x.label == "TM_WaveOfFear_eff");
+                adjustedStaminaCost = mightDef.staminaCost - mightDef.staminaCost * (this.DK_WaveOfFear_eff * (float)mightPowerSkill.level);
+            }
+            if (mightDef == TorannMagicDefOf.TM_GraveBlade || mightDef == TorannMagicDefOf.TM_GraveBlade_I || mightDef == TorannMagicDefOf.TM_GraveBlade_II || mightDef == TorannMagicDefOf.TM_GraveBlade_III)
+            {
+                MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_GraveBlade.FirstOrDefault((MightPowerSkill x) => x.label == "TM_GraveBlade_eff");
+                adjustedStaminaCost = mightDef.staminaCost - mightDef.staminaCost * (this.DK_GraveBlade_eff * (float)mightPowerSkill.level);
             }
             if (this.spCost != 1f)
             {
@@ -1984,7 +2110,65 @@ namespace TorannMagic
                                     }
                                 }
                             }
-                        }                        
+                        }
+                        if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            PawnAbility ability = null;
+                            foreach (MightPower current in this.MightData.MightPowersDK)
+                            {
+                                if (current.abilityDef != null)
+                                {
+                                    if ((current.abilityDef == TorannMagicDefOf.TM_Spite || current.abilityDef == TorannMagicDefOf.TM_Spite_I || current.abilityDef == TorannMagicDefOf.TM_Spite_II || current.abilityDef == TorannMagicDefOf.TM_Spite_III))
+                                    {
+                                        if (this.Pawn.equipment.Primary != null && this.Pawn.equipment.Primary.def.IsRangedWeapon)
+                                        {
+                                            if (current.level == 0)
+                                            {
+                                                MightPower mightPower = this.MightData.MightPowersDK.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Spite);
+                                                if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                                {
+                                                    ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Spite);
+                                                    AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_Spite, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
+                                                    if (castSuccess) goto AutoCastExit;
+                                                }
+                                            }
+                                            else if (current.level == 1)
+                                            {
+                                                MightPower mightPower = this.MightData.MightPowersDK.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Spite);
+                                                if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                                {
+                                                    ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Spite_I);
+                                                    AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_Spite_I, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
+                                                    if (castSuccess) goto AutoCastExit;
+                                                }
+
+                                            }
+                                            else if (current.level == 2)
+                                            {
+                                                MightPower mightPower = this.MightData.MightPowersDK.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Spite_I);
+                                                if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                                {
+                                                    ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Spite_II);
+                                                    AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_Spite_II, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
+                                                    if (castSuccess) goto AutoCastExit;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                MightPower mightPower = this.MightData.MightPowersDK.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Spite_II);
+                                                if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                                {
+                                                    ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Spite_III);
+                                                    AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_Spite_III, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
+                                                    if (castSuccess) goto AutoCastExit;
+                                                }
+                                            }
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }                    
 
                     if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
@@ -2197,6 +2381,63 @@ namespace TorannMagic
                             }
                         }
                     }
+
+                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    {
+                        PawnAbility ability = null;
+                        foreach (MightPower current in this.MightData.MightPowersDK)
+                        {
+                            if (current.abilityDef != null)
+                            {
+                                if ((current.abilityDef == TorannMagicDefOf.TM_Spite || current.abilityDef == TorannMagicDefOf.TM_Spite_I || current.abilityDef == TorannMagicDefOf.TM_Spite_II || current.abilityDef == TorannMagicDefOf.TM_Spite_III))
+                                {
+                                    if (current.level == 0)
+                                    {
+                                        MightPower mightPower = this.MightData.MightPowersDK.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Spite);
+                                        if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                        {
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Spite);
+                                            AutoCast.CombatAbility.EvaluateMinRange(this, TorannMagicDefOf.TM_Spite, ability, mightPower, 4, out castSuccess);
+                                            if (castSuccess) goto AutoCastExit;
+                                        }
+                                    }
+                                    else if (current.level == 1)
+                                    {
+                                        MightPower mightPower = this.MightData.MightPowersDK.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Spite);
+                                        if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                        {
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Spite_I);
+                                            AutoCast.CombatAbility.EvaluateMinRange(this, TorannMagicDefOf.TM_Spite_I, ability, mightPower, 4, out castSuccess);
+                                            if (castSuccess) goto AutoCastExit;
+                                        }
+
+                                    }
+                                    else if (current.level == 2)
+                                    {
+                                        MightPower mightPower = this.MightData.MightPowersDK.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Spite_I);
+                                        if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                        {
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Spite_II);
+                                            AutoCast.CombatAbility.EvaluateMinRange(this, TorannMagicDefOf.TM_Spite_II, ability, mightPower, 4, out castSuccess);
+                                            if (castSuccess) goto AutoCastExit;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MightPower mightPower = this.MightData.MightPowersDK.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Spite_II);
+                                        if (mightPower != null && mightPower.learned && mightPower.autocast)
+                                        {
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Spite_III);
+                                            AutoCast.CombatAbility.EvaluateMinRange(this, TorannMagicDefOf.TM_Spite_III, ability, mightPower, 4, out castSuccess);
+                                            if (castSuccess) goto AutoCastExit;
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+
                     if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                     {
                         PawnAbility ability = null;
@@ -2422,6 +2663,61 @@ namespace TorannMagic
                         }
                     }
                 }
+
+                if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight))
+                {
+
+                    int hatePwr = this.MightData.MightPowerSkill_Shroud.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Shroud_pwr").level;
+                    float sevSvr = 0;
+                    Hediff hediff = null;
+                    for (int h = 0; h < this.Pawn.health.hediffSet.hediffs.Count; h++)
+                    {
+                        if (this.Pawn.health.hediffSet.hediffs[h].def.defName.Contains("TM_HateH"))
+                        {
+                            hediff = this.Pawn.health.hediffSet.hediffs[h];
+                        }
+                    }
+
+                    if (hediff != null)
+                    {
+                        sevSvr = hediff.Severity;
+                        if (hatePwr == 5 && hediff.def.defName != "TM_HateHD_V")
+                        {
+                            this.Pawn.health.RemoveHediff(hediff);
+                            HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HateHD_V"), sevSvr);
+                        }
+                        else if (hatePwr == 4 && hediff.def.defName != "TM_HateHD_IV")
+                        {
+                            this.Pawn.health.RemoveHediff(hediff);
+                            HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HateHD_IV"), sevSvr);
+                        }
+                        else if (hatePwr == 3 && hediff.def.defName != "TM_HateHD_III")
+                        {
+                            this.Pawn.health.RemoveHediff(hediff);
+                            HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HateHD_III"), sevSvr);
+                        }
+                        else if (hatePwr == 2 && hediff.def.defName != "TM_HateHD_II")
+                        {
+                            this.Pawn.health.RemoveHediff(hediff);
+                            HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HateHD_II"), sevSvr);
+                        }
+                        else if (hatePwr == 1 && hediff.def.defName != "TM_HateHD_I")
+                        {
+                            this.Pawn.health.RemoveHediff(hediff);
+                            HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HateHD_I"), sevSvr);
+                        }
+                        else if (hatePwr == 0 && hediff.def.defName != "TM_HateHD")
+                        {
+                            this.Pawn.health.RemoveHediff(hediff);
+                            HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HateHD"), sevSvr);
+                        }
+                    }
+                    
+                    if(!TM_Calc.HasHateHediff(this.Pawn))
+                    { 
+                        HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HateHD"), 1);
+                    }
+                }
             }
         }
 
@@ -2511,13 +2807,13 @@ namespace TorannMagic
                         {
                             if (apparel[i].Stuff != null && apparel[i].Stuff.defName == "TM_Manaweave")
                             {
-                                _maxSP += item.maxMP * 1.5f;
-                                _spRegenRate += item.mpRegenRate * 1.5f;
-                                _coolDown += item.coolDown * 1.5f;
-                                _xpGain += item.xpGain * 1.5f;
-                                _spCost += item.mpCost * 1.5f;
-                                _arcaneRes += item.arcaneRes * 1.5f;
-                                _arcaneDmg += item.arcaneDmg * 1.5f;
+                                _maxSP += item.maxMP * 1.2f;
+                                _spRegenRate += item.mpRegenRate * 1.2f;
+                                _coolDown += item.coolDown * 1.2f;
+                                _xpGain += item.xpGain * 1.2f;
+                                _spCost += item.mpCost * 1.2f;
+                                _arcaneRes += item.arcaneRes * 1.2f;
+                                _arcaneDmg += item.arcaneDmg * 1.2f;
                             }
                             else
                             {
@@ -3130,6 +3426,65 @@ namespace TorannMagic
                     //this.AddPawnAbility(TorannMagicDefOf.TM_PsionicBarrier);
                     this.AddPawnAbility(TorannMagicDefOf.TM_PsionicDash);
                     this.AddPawnAbility(TorannMagicDefOf.TM_PsionicStorm);
+                }
+
+                bool flag46 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.DeathKnight);
+                if (flag46)
+                {
+                    bool flag21 = !this.MightData.MightPowersDK.NullOrEmpty<MightPower>();
+                    if (flag21)
+                    {
+                        foreach (MightPower current9 in this.MightData.MightPowersDK)
+                        {
+                            bool flag22 = current9.abilityDef != null;
+                            if (flag22)
+                            {
+                                if ((current9.abilityDef == TorannMagicDefOf.TM_Spite || current9.abilityDef == TorannMagicDefOf.TM_Spite_I || current9.abilityDef == TorannMagicDefOf.TM_Spite_II || current9.abilityDef == TorannMagicDefOf.TM_Spite_III))
+                                {
+                                    if (current9.level == 0)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_Spite);
+                                    }
+                                    else if (current9.level == 1)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_Spite_I);
+                                    }
+                                    else if (current9.level == 2)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_Spite_II);
+                                    }
+                                    else
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_Spite_III);
+                                    }
+                                }
+                                if ((current9.abilityDef == TorannMagicDefOf.TM_GraveBlade || current9.abilityDef == TorannMagicDefOf.TM_GraveBlade_I || current9.abilityDef == TorannMagicDefOf.TM_GraveBlade_II || current9.abilityDef == TorannMagicDefOf.TM_GraveBlade_III))
+                                {
+                                    if (current9.level == 0)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_GraveBlade);
+                                    }
+                                    else if (current9.level == 1)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_GraveBlade_I);
+                                    }
+                                    else if (current9.level == 2)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_GraveBlade_II);
+                                    }
+                                    else
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_GraveBlade_III);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if (flag46)
+                {
+                    //Log.Message("Loading Death Knight Abilities");
+                    this.AddPawnAbility(TorannMagicDefOf.TM_WaveOfFear);
                 }
 
                 this.InitializeSkill();

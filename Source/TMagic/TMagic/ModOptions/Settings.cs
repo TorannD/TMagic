@@ -54,7 +54,8 @@ namespace TorannMagic.ModOptions
         public bool Sniper = true;
         public bool Ranger = true;
         public bool Faceless = true;
-        public bool Psionic = true;        
+        public bool Psionic = true;
+        public bool DeathKnight = true;
 
         public static Settings Instance;
 
@@ -111,6 +112,7 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<bool>(ref this.Ranger, "Ranger", true, false);
             Scribe_Values.Look<bool>(ref this.Faceless, "Faceless", true, false);
             Scribe_Values.Look<bool>(ref this.Psionic, "Psionic", true, false);
+            Scribe_Values.Look<bool>(ref this.DeathKnight, "DeathKnight", true, false);
         }
     }
 }

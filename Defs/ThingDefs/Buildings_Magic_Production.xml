@@ -251,7 +251,7 @@ Using the arcane forge dramatically increases crafting speed but consumes mana. 
             <range>40</range>
 			<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
             <burstShotCount>1</burstShotCount>
-            <soundCast>VibrationLow</soundCast>
+            <soundCast>TM_VibrationLow</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>2</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>

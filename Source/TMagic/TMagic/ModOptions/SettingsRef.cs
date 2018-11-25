@@ -54,6 +54,7 @@ namespace TorannMagic.ModOptions
         public bool Ranger = Settings.Instance.Ranger;
         public bool Faceless = Settings.Instance.Faceless;
         public bool Psionic = Settings.Instance.Psionic;
+        public bool DeathKnight = Settings.Instance.DeathKnight;
 
     }
 }

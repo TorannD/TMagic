@@ -159,7 +159,7 @@ namespace TorannMagic.Enchantment
             {
                 if(this.parent.Stuff != null && this.parent.Stuff.defName == "TM_Manaweave")
                 {
-                    return 150f;
+                    return 120f;
                 }
                 else
                 {

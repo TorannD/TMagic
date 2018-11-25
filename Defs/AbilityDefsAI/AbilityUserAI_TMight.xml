@@ -654,4 +654,101 @@
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
 	
+	<!-- death knight -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="DeathKnightMightAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMight</compAbilityUserClass>
+		<!-- Decision tree which helps pick ability to use. -->
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>	
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+							<maxDistance>30.0</maxDistance>
+							<minDistance>10.0</minDistance>
+							<subNodes>
+								<!-- Use mid range projectile splash -->
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>GraveBlade</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>					
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+							<maxDistance>20.0</maxDistance>
+							<subNodes>
+								<!-- Use close range dash to blast past the enemy. -->
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>Spite</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>	
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+							<maxDistance>5.0</maxDistance>
+							<subNodes>
+								<!-- Use close range dash to blast past the enemy. -->
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>WaveOfFear</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>							
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- DeathKnight -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="DeathKnightMightAbilityUserAI">
+		<defName>TMagic_DeathKnight</defName>
+		<matchingTraits>
+			<li>DeathKnight</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_Spite</li>
+			<li>TMagic_GraveBlade</li>
+			<li>TMagic_WaveOfFear</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- DeathKnight Abilities -->
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
+		<defName>TMagic_Spite</defName>
+		<ability>TM_Spite</ability>		
+		<power>10.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<maxRange>20.0</maxRange>
+		<tags>
+			<li>Spite</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
+		<defName>TMagic_WaveOfFear</defName>
+		<ability>TM_WaveOfFear</ability>
+		<power>2.0</power>
+		<needSeeingTarget>false</needSeeingTarget>
+		<maxRange>5.0</maxRange>
+		<tags>
+			<li>WaveOfFear</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
+		<defName>TMagic_GraveBlade</defName>
+		<ability>TM_GraveBlade</ability>
+		<minRange>4</minRange>
+		<maxRange>30.0</maxRange>
+		<power>20</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>GraveBlade</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
 </Defs>

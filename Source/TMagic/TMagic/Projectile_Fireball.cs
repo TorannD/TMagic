@@ -112,8 +112,17 @@ namespace TorannMagic
             explosion.StartExplosion(explosionSound);
             
 		}
-		
-	}	
+
+        public override void Tick()
+        {
+            Vector3 rndPos = this.DrawPos;
+            rndPos.x += Rand.Range(-.4f, .4f);
+            rndPos.z += Rand.Range(-.4f, .4f);
+            TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Heat"), rndPos, this.Map, Rand.Range(.5f, .6f), .05f, 0.15f, .1f, Rand.Range(-300, 300), Rand.Range(.8f, 1.3f), Rand.Range(0, 360), Rand.Range(0, 360));
+            base.Tick();
+        }
+
+    }	
 }
 
 

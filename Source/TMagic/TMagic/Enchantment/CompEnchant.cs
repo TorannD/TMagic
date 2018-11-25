@@ -28,7 +28,8 @@ namespace TorannMagic.Enchantment
         {
             base.Initialize(props);
             Pawn pawn = this.parent as Pawn;
-            if(initialize)
+            CompEnchant comp = pawn.TryGetComp<CompEnchant>();
+            if(initialize && comp.enchantingContainer == null)
             {
                 this.enchantingContainer = new ThingOwner<Thing>();
                 this.initialize = false;

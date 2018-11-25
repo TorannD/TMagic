@@ -33,16 +33,14 @@
     <unspawnedCanDo>false</unspawnedCanDo>
   </MentalStateDef>
   
-  <MentalStateDef ParentName="TM_BaseMentalState">
+  <MentalStateDef ParentName="BaseMentalState">
     <defName>TM_PanicFlee</defName>
     <label>panic fleeing</label>
     <stateClass>MentalState_PanicFlee</stateClass>
     <category>Misc</category>
     <nameColor>(0.65, 0.9, 0.93)</nameColor>
-	<minTicksBeforeRecovery>600</minTicksBeforeRecovery>
-	<recoveryMtbDays>0.1</recoveryMtbDays>
-	<maxTicksBeforeRecovery>1200</maxTicksBeforeRecovery>
-    <recoveryMessage>{0} is no longer fleeing in panic.</recoveryMessage>
+	<minTicksBeforeRecovery>240</minTicksBeforeRecovery>
+	<maxTicksBeforeRecovery>420</maxTicksBeforeRecovery>
     <baseInspectLine>Mental state: Fleeing in panic</baseInspectLine>
     <blockNormalThoughts>true</blockNormalThoughts>
     <unspawnedCanDo>false</unspawnedCanDo>

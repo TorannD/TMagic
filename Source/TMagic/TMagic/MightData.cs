@@ -38,6 +38,139 @@ namespace TorannMagic
             }
         }
 
+        public List<MightPower> mightPowerDK;
+        public List<MightPowerSkill> mightPowerSkill_Shroud;
+        public List<MightPowerSkill> mightPowerSkill_WaveOfFear;
+        public List<MightPowerSkill> mightPowerSkill_Spite;
+        public List<MightPowerSkill> mightPowerSkill_LifeSteal;
+        public List<MightPowerSkill> mightPowerSkill_GraveBlade;
+
+        public List<MightPower> MightPowersDK
+        {
+            get
+            {
+                bool flag = this.mightPowerDK == null;
+                if (flag)
+                {
+                    this.mightPowerDK = new List<MightPower>
+                    {
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Shroud
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_WaveOfFear
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Spite,
+                            TorannMagicDefOf.TM_Spite_I,
+                            TorannMagicDefOf.TM_Spite_II,
+                            TorannMagicDefOf.TM_Spite_III
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_LifeSteal
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_GraveBlade,
+                            TorannMagicDefOf.TM_GraveBlade_I,
+                            TorannMagicDefOf.TM_GraveBlade_II,
+                            TorannMagicDefOf.TM_GraveBlade_III
+                        }),
+                    };
+                }
+                return this.mightPowerDK;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_Shroud
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_Shroud == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_Shroud = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_Shroud_pwr", "TM_Shroud_pwr_desc"), //psionic punch / manipulation
+                        new MightPowerSkill("TM_Shroud_eff", "TM_Shroud_eff_desc"), //psionic dash / movement
+                        new MightPowerSkill("TM_Shroud_ver", "TM_Shroud_ver_desc")  //psionic preassure
+                    };
+                }
+                return this.mightPowerSkill_Shroud;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_WaveOfFear
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_WaveOfFear == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_WaveOfFear = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_WaveOfFear_pwr", "TM_WaveOfFear_pwr_desc"), //applies skill powers to ability
+                        new MightPowerSkill("TM_WaveOfFear_eff", "TM_WaveOfFear_eff_desc"), //increases how long ability is available and reduces stamina cost to acquire
+                        new MightPowerSkill("TM_WaveOfFear_ver", "TM_WaveOfFear_ver_desc")
+                    };
+                }
+                return this.mightPowerSkill_WaveOfFear;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_Spite
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_Spite == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_Spite = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_Spite_pwr", "TM_Spite_pwr_desc"),
+                        new MightPowerSkill("TM_Spite_eff", "TM_Spite_eff_desc"),
+                        new MightPowerSkill("TM_Spite_ver", "TM_Spite_ver_desc")
+                    };
+                }
+                return this.mightPowerSkill_Spite;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_LifeSteal
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_LifeSteal == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_LifeSteal = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_LifeSteal_pwr", "TM_LifeSteal_pwr_desc"),
+                        new MightPowerSkill("TM_LifeSteal_eff", "TM_LifeSteal_eff_desc"),
+                        new MightPowerSkill("TM_LifeSteal_ver", "TM_LifeSteal_ver_desc")
+                    };
+                }
+                return this.mightPowerSkill_LifeSteal;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_GraveBlade
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_GraveBlade == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_GraveBlade = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_GraveBlade_pwr", "TM_GraveBlade_pwr_desc"), //duration of possession, 
+                        new MightPowerSkill("TM_GraveBlade_eff", "TM_GraveBlade_eff_desc"),
+                        new MightPowerSkill("TM_GraveBlade_ver", "TM_GraveBlade_ver_desc") //applies mental states or effects , fewer debuffs during possession
+                    };
+                }
+                return this.mightPowerSkill_GraveBlade;
+            }
+        }
+
         public List<MightPower> mightPowerP;
         public List<MightPowerSkill> mightPowerSkill_PsionicAugmentation;
         public List<MightPowerSkill> mightPowerSkill_PsionicBlast;
@@ -76,7 +209,7 @@ namespace TorannMagic
                         }),
                         new MightPower(new List<AbilityDef>
                         {
-                            TorannMagicDefOf.TM_PsionicStorm,
+                            TorannMagicDefOf.TM_PsionicStorm
                         }),
                     };
                 }
@@ -944,7 +1077,7 @@ namespace TorannMagic
         {
             get
             {
-                return this.MightPowersG.Concat(this.MightPowersS.Concat(this.MightPowersB.Concat(this.mightPowerR.Concat(this.MightPowersF.Concat(this.mightPowerP.Concat(this.mightPowerStandalone))))));
+                return this.MightPowersDK.Concat(this.MightPowersG.Concat(this.MightPowersS.Concat(this.MightPowersB.Concat(this.mightPowerR.Concat(this.MightPowersF.Concat(this.mightPowerP.Concat(this.mightPowerStandalone)))))));
             }
         }
 
@@ -1006,6 +1139,12 @@ namespace TorannMagic
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_PsionicBlast, "mightPowerSkill_PsionicBlast", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_PsionicDash, "mightPowerSkill_PsionicDash", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_PsionicStorm, "mightPowerSkill_PsionicStorm", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPower>(ref this.mightPowerDK, "mightPowerDK", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_Shroud, "mightPowerSkill_Shroud", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_WaveOfFear, "mightPowerSkill_WaveOfFear", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_Spite, "mightPowerSkill_Spite", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_LifeSteal, "mightPowerSkill_LifeSteal", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_GraveBlade, "mightPowerSkill_GraveBlade", (LookMode)2, new object[0]);
         }
 
     }

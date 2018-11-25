@@ -5,33 +5,7 @@
 		<modIdentifier>ARimWorldOfMagic</modIdentifier>
 		<linkUrl>https://ludeon.com/forums/index.php?topic=37161.0</linkUrl>
 	</HugsLib.UpdateFeatureDef>	
-		<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_2_2_4</defName>
-		<assemblyVersion>2.2.4</assemblyVersion>
-		<content>
-** New gizmo (icon) added for all classes to show their energy (mana, stamina, psionic energy) status.  Shows only when a single pawn is selected.  This gizmo is enabled by default but can be disabled in the mod options.
-
-Psionic changes: 
-	Added a toggle button to enable or disable the use of "augmentation" abilities for a psionic
-	Psionics will no longer use augmented dash in combat if using a ranged weapon
-	Psionics will return to their starting position after using psionic storm
-	Psionic blast has a reduced stamina cost / Psionic dash has an increased stamina cost
-
-Geomancer changes:
-	Stoneskin charges reduced from 6,8,9,10 -> 4,5,6,7
-	Stoneskin will be reapplied on a pawn if they already have stoneskin but the number of charges is less than the number the casting geomancer can apply and will be dispelled if the charges are equal or greater
-	
-Mana drain: maximum duration has been reduced by 5 game hrs
-Mana sickness: mages will recover from mana sickness 40% faster
-
-Bug fixes: 
-	Attempting to see what a trader wants to buy no longer generates an error
-	Minions will no longer "divide by zero" for caravan food supplies
-	Dismissing a minion that's part of a caravan will remove the minion from the caravan (instantly)
-	Sending a minion on a caravan will no longer remove it from the casters list of minions
-		</content>
-	</HugsLib.UpdateFeatureDef>	
-			<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
 		<defName>ARimWorldOfMagic_2_2_5</defName>
 		<assemblyVersion>2.2.5</assemblyVersion>
 		<content>
@@ -170,6 +144,30 @@ Druids can now write their Arcane Tome correctly
 Fixed a bug with Overdrive that was generated when turrets had a null map (eg when mounted on a mechanoid)
 Fixed several bugs with resurrection that could occur if the corpse moved, was being carried, or was destroyed or if the game was saved and loaded during the resurrection process
 Fixed a bug with the mana drain incident if the player was present on 2 or more maps
+		</content>
+	</HugsLib.UpdateFeatureDef>	
+	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_2_3_0</defName>
+		<assemblyVersion>2.3.0</assemblyVersion>
+		<content>
+** New class: Deathknight - these warriors stand at the precipice of death and are among the toughest and most resolute fighters the rim has to offer; the closer they get to death, the more dangerous they become
+-Shroud of Darkness: wreathed in an endless void, the shroud of darkness is the signature skill of any deathknight and is able to nullify attacks and increase their armor; its strength grows as the deathknight builds rage
+-Wave of Fear: the deathknight amplifies the fears of their opponents to send them reeling and reduces their ability to resist dark attacks
+-Spite: once sufficient rage is built, the deathknight can channel their malice into a physical attack, dealing a painful spirit attack at enemies up to medium range
+-Spirit Tap: absorbs the life energy of enemies struck in melee range and uses it to build rage, restore energy, and heal their wounds and wounds of nearby allies
+-Grave blade: calls forth the spirits of the dead to strike from the grave at any enemies in an a target area
+
+*Equipment: Helm of the Valiant - special thanks to wrathofdog for the artwork; the helm of the valiant is a complimentary piece to the armor of the valiant and offers strong protection to frontline fighters
+
+Tweaks:
+Fireball and Snowball now have additional flight effects
+Paracyte yield reduced by 1
+
+Bug fixes:
+Arcane forge: replication will no longer affect the original design/recipe; only items withs specified ingredients will replicate, the exception is equipment made from stuff in which case the design can be replicated using the same material; arcane gemstones can now be replicated
+Added additional exception checking for magic pawns
+Added a check to enchanting to prevent a mage from acquiring additional enchanting container slots
+The Seer faction will now load their faction apparel correctly during pawn generation
 		</content>
 	</HugsLib.UpdateFeatureDef>	
 	

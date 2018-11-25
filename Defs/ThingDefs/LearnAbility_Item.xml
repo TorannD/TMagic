@@ -1033,6 +1033,33 @@ This arcane script is incomplete and the reader will not learn any supporting te
     <drawGUIOverlay>false</drawGUIOverlay>
   </ThingDef>
   
+  <ThingDef ParentName="CombatFormBase">
+    <defName>BookOfDeathKnight</defName>
+    <label>Combat Style: Death Knight</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a physically adept pawn to embrace the inevitable and become a death knight.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>5500</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/deathknight</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
     <!--=============== Magic Spells - Single ====================-->
 
   <ThingDef ParentName="ArcaneSpellBase">

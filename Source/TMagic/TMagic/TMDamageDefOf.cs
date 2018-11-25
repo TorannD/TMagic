@@ -81,6 +81,7 @@ namespace TorannMagic
             public static StatDef ArmorRating_Alignment;
 
             public static DamageDef TM_ElectricalBurn;
+            public static DamageDef TM_Spirit;
 
         }
     }

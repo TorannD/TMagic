@@ -203,7 +203,7 @@ namespace TorannMagic
                     {
                         rnd = 0;
                     }
-                    damageEntities(victim, vitalPart, Mathf.RoundToInt(((this.def.projectile.GetDamageAmount(1,null) + pwrVal) * this.arcaneDmg) * rnd), TMDamageDefOf.DamageDefOf.TM_Shadow);
+                    damageEntities(victim, vitalPart, Mathf.RoundToInt(((this.def.projectile.GetDamageAmount(1,null) + (.5f * pwrVal)) * this.arcaneDmg) * rnd), TMDamageDefOf.DamageDefOf.TM_Shadow);
                 }
             }
         }

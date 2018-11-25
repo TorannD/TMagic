@@ -66,6 +66,10 @@ namespace TorannMagic
                     {
                         return flag && true;
                     }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight))
+                    {
+                        return flag && true;
+                    }
                 }
 
                 return false;

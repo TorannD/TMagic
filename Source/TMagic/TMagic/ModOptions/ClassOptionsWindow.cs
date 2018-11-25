@@ -92,6 +92,9 @@ namespace TorannMagic.ModOptions
             num++;
             Rect rowRect6 = Controller.UIHelper.GetRowRect(rowRect5, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect6, "TM_Paladin".Translate(), ref Settings.Instance.Paladin, false);
+            Rect rowRect6ShiftRight = Controller.UIHelper.GetRowRect(rowRect6, rowHeight, num);
+            rowRect6ShiftRight.x += rowRect.width + 140f;
+            Widgets.CheckboxLabeled(rowRect6ShiftRight, "TM_DeathKnight".Translate(), ref Settings.Instance.DeathKnight, false);
             num++;
             Rect rowRect7 = Controller.UIHelper.GetRowRect(rowRect6, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect7, "TM_Priest".Translate(), ref Settings.Instance.Priest, false);

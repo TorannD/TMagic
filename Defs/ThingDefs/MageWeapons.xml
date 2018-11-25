@@ -260,7 +260,7 @@ Arcane Resistance: +20%</description>
 			<drawSize>1.2</drawSize>
 		</graphicData>
     <weaponTags>
-	
+      <li>SeerSpearman</li>
     </weaponTags>
 	<statBases>
       <WorkToMake>20000</WorkToMake>
@@ -1246,6 +1246,9 @@ Ability Cooldown: -10%</description>
 	  <drawSize>1.5</drawSize>
     </graphicData>
     <soundInteract>Bow_Large</soundInteract>	
+	<weaponTags>
+      <li>SeerBowman</li>
+    </weaponTags>
     <statBases>
       <WorkToMake>12000</WorkToMake>
 	  <MarketValue>900</MarketValue>

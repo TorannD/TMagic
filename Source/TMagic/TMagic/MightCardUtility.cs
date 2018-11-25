@@ -105,6 +105,12 @@ namespace TorannMagic
                         Rect inRect3 = new Rect(rect.x, rect11.y, MightCardUtility.PowersColumnWidth, MightCardUtility.PowersColumnHeight);
                         MightCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMight>(), pawn.GetComp<CompAbilityUserMight>().MightData.MightPowersP, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PsionicAugmentation, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PsionicBarrier, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PsionicBlast, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PsionicDash, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PsionicStorm, TexButton.TMTex_SkillPointUsed);
                     }
+                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight))
+                    {
+
+                        Rect inRect3 = new Rect(rect.x, rect11.y, MightCardUtility.PowersColumnWidth, MightCardUtility.PowersColumnHeight);
+                        MightCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMight>(), pawn.GetComp<CompAbilityUserMight>().MightData.MightPowersDK, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Shroud, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_WaveOfFear, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Spite, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_LifeSteal, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_GraveBlade, TexButton.TMTex_SkillPointUsed);
+                    }
                 }
             }
             GUI.EndGroup();
@@ -362,6 +368,8 @@ namespace TorannMagic
                         power.abilityDef == TorannMagicDefOf.TM_PhaseStrike || power.abilityDef == TorannMagicDefOf.TM_PhaseStrike_I || power.abilityDef == TorannMagicDefOf.TM_PhaseStrike_II ||
                         power.abilityDef == TorannMagicDefOf.TM_ArrowStorm || power.abilityDef == TorannMagicDefOf.TM_ArrowStorm_I || power.abilityDef == TorannMagicDefOf.TM_ArrowStorm_II ||
                         power.abilityDef == TorannMagicDefOf.TM_PsionicBlast || power.abilityDef == TorannMagicDefOf.TM_PsionicBlast_I || power.abilityDef == TorannMagicDefOf.TM_PsionicBlast_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_GraveBlade || power.abilityDef == TorannMagicDefOf.TM_GraveBlade_I || power.abilityDef == TorannMagicDefOf.TM_GraveBlade_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_Spite || power.abilityDef == TorannMagicDefOf.TM_Spite_I || power.abilityDef == TorannMagicDefOf.TM_Spite_II ||
                         power.abilityDef == TorannMagicDefOf.TM_Transpose || power.abilityDef == TorannMagicDefOf.TM_Transpose_I || power.abilityDef == TorannMagicDefOf.TM_Transpose_II))
 
                     {
@@ -422,6 +430,8 @@ namespace TorannMagic
                         power.abilityDef.defName == "TM_PhaseStrike" || power.abilityDef.defName == "TM_PhaseStrike_I" || power.abilityDef.defName == "TM_PhaseStrike_II" || power.abilityDef.defName == "TM_PhaseStrike_III" ||
                         power.abilityDef.defName == "TM_ArrowStorm" || power.abilityDef.defName == "TM_ArrowStorm_I" || power.abilityDef.defName == "TM_ArrowStorm_II" || power.abilityDef.defName == "TM_ArrowStorm_III" ||
                         power.abilityDef.defName == "TM_PsionicBlast" || power.abilityDef.defName == "TM_PsionicBlast_I" || power.abilityDef.defName == "TM_PsionicBlast_II" || power.abilityDef.defName == "TM_PsionicBlast_III" ||
+                        power.abilityDef.defName == "TM_GraveBlade" || power.abilityDef.defName == "TM_GraveBlade_I" || power.abilityDef.defName == "TM_GraveBlade_II" || power.abilityDef.defName == "TM_GraveBlade_III" ||
+                        power.abilityDef.defName == "TM_Spite" || power.abilityDef.defName == "TM_Spite_I" || power.abilityDef.defName == "TM_Spite_II" || power.abilityDef.defName == "TM_Spite_III" ||
                         power.abilityDef.defName == "TM_Transpose" || power.abilityDef.defName == "TM_Transpose_I" || power.abilityDef.defName == "TM_Transpose_II" || power.abilityDef.defName == "TM_Transpose_III")
                     {
                         flag999 = true;
@@ -742,6 +752,37 @@ namespace TorannMagic
                                 skill.level++;
                                 compMight.MightData.MightAbilityPoints -= 1;
                             }
+                            if (enumerator.Current.abilityDef.defName == "TM_Shroud")
+                            {
+                                compMight.LevelUpSkill_Shroud(skill.label);
+                                skill.level++;
+                                compMight.MightData.MightAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_WaveOfFear")
+                            {
+                                compMight.LevelUpSkill_WaveOfFear(skill.label);
+                                skill.level++;
+                                compMight.MightData.MightAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Spite" || enumerator.Current.abilityDef.defName == "TM_Spite_I" || enumerator.Current.abilityDef.defName == "TM_Spite_II" || enumerator.Current.abilityDef.defName == "TM_Spite_III")
+                            {
+                                compMight.LevelUpSkill_Spite(skill.label);
+                                skill.level++;
+                                compMight.MightData.MightAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_LifeSteal")
+                            {
+                                compMight.LevelUpSkill_LifeSteal(skill.label);
+                                skill.level++;
+                                compMight.MightData.MightAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_GraveBlade" || enumerator.Current.abilityDef.defName == "TM_GraveBlade_I" || enumerator.Current.abilityDef.defName == "TM_GraveBlade_II" || enumerator.Current.abilityDef.defName == "TM_GraveBlade_III")
+                            {
+                                compMight.LevelUpSkill_GraveBlade(skill.label);
+                                skill.level++;
+                                compMight.MightData.MightAbilityPoints -= 1;
+                            }
+
                         }
                     }
                     num2 += (MightCardUtility.mightCardSize.x / 3) - MightCardUtility.SpacingOffset;

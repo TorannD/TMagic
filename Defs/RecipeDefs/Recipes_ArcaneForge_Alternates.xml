@@ -312,13 +312,44 @@ Ability Cooldown: -10%</description>
     <workSpeedStat>ResearchSpeed</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
-    <workAmount>1000</workAmount>
+    <workAmount>10000</workAmount>
 	<workSkillLearnFactor>0</workSkillLearnFactor>
     <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 	<researchPrerequisite>TM_ForgeReplication</researchPrerequisite>
 	<recipeUsers>
 		<li>TableArcaneForge</li>
 	</recipeUsers>
+    <ingredients>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>RawMagicyte</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>	
+    </ingredients>
+    <products>
+	
+    </products>
+    <skillRequirements>
+	  <Intellectual>8</Intellectual>
+    </skillRequirements>
+    <workSkill>Intellectual</workSkill>
+  </RecipeDef>
+  
+  <RecipeDef>
+    <defName>ArcaneForge_Replication_Restore</defName>
+    <label>Forge replication</label>
+    <description>Storage data for details and designs of replicated objects.</description>
+    <jobString>replicating</jobString>
+    <workSpeedStat>ResearchSpeed</workSpeedStat>
+    <effectWorking>Smelt</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <workAmount>10000</workAmount>
+	<workSkillLearnFactor>0</workSkillLearnFactor>
+    <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+	<researchPrerequisite>TM_ForgeReplication</researchPrerequisite>
     <ingredients>
 	  <li>
         <filter>

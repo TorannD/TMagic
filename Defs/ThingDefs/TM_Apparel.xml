@@ -705,7 +705,7 @@ Augmented by Phantom Shift: 20% chance to avoid an attack</description>
     <label>Armor of the Valiant</label>    
     <description>A breastplate etched in holy symbols that is designed to protect vital areas without restricting movement. Said to have been worn by holy warriors of a bygone age who maintained peace with justice and compassion in equal measure. It is unknown what became of this order, though it is hard to believe it had anything to do with their skill in armor craft.
 
-Royal Armor is enchanted and provides additional benefits to trained mages and fighters:
+Armor of the Valiant is enchanted and provides additional benefits to trained mages and fighters:
 Energy Costs: -10%
 Class XP Gain: +10%</description>
     <graphicData> 
@@ -781,6 +781,88 @@ Class XP Gain: +10%</description>
 			<li>Torso</li>
 			<li>Arms</li>
 			<li>Legs</li>
+		</bodyPartGroups>
+	</apparel>
+  </ThingDef>
+  
+  <ThingDef ParentName="TMSmithedApparelBase">
+    <defName>RoyalHelm</defName>
+    <label>Helm of the Valiant</label>    
+    <description>A barbute shaped helm designed to maximize protection without restricting vision or voice. These helmets are a complementary piece to the Armor of the Valiant set and further enhance a wearers arcane capabilities while also providing noteworthy physical protection.
+
+Helm of the Valiant is enchanted and provides additional benefits to trained mages and fighters:
+Energy Costs: -5%
+Class XP Gain: +10%</description>
+    <graphicData> 
+		<texPath>Equipment/royalhelm_east</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<drawSize>2.0</drawSize>
+	</graphicData>
+	<statBases>
+		<WorkToMake>20000</WorkToMake>
+		<Mass>4</Mass>
+		<MaxHitPoints>200</MaxHitPoints>
+		<MarketValue>2000</MarketValue>
+		<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+		<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+		<ArmorRating_Heat>0.10</ArmorRating_Heat>
+		<ArmorRating_Alignment>0.40</ArmorRating_Alignment>
+		<Insulation_Cold>1</Insulation_Cold>
+		<Insulation_Heat>1</Insulation_Heat>
+		<StuffEffectMultiplierArmor>0.75</StuffEffectMultiplierArmor>
+        <StuffEffectMultiplierInsulation_Cold>0.75</StuffEffectMultiplierInsulation_Cold>
+        <StuffEffectMultiplierInsulation_Heat>0.25</StuffEffectMultiplierInsulation_Heat>
+	</statBases>
+	<equippedStatOffsets>
+		<SocialImpact>0.20</SocialImpact>
+		<MeleeHitChance>0.02</MeleeHitChance>
+		<AimingDelayFactor>-0.04</AimingDelayFactor>
+	</equippedStatOffsets>
+	<recipeMaker>
+      <workAmount>20000</workAmount>
+	  <skillRequirements>
+			<Intellectual>6</Intellectual>
+	  </skillRequirements>
+	  <researchPrerequisite>
+			<li>TM_ArcaneArtifacts</li>
+	  </researchPrerequisite>
+    </recipeMaker>
+	<costStuffCount>200</costStuffCount>
+	<stuffCategories>
+		<li>Metallic</li>
+	</stuffCategories>
+	<costList>
+	  <RawMagicyte>60</RawMagicyte>
+	  <Silver>10</Silver>
+	  <Gold>20</Gold>
+    </costList>
+	<thingCategories>
+	  <li>Apparel</li>
+	</thingCategories>
+	<comps>
+	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		<hasEnchantment>true</hasEnchantment>
+		<xpGain>0.10</xpGain>
+		<xpGainTier>Standard</xpGainTier>
+		<mpCost>-.05</mpCost>
+		<mpCostTier>Standard</mpCostTier>
+	  </li>
+	</comps>
+	<generateCommonality>0.001</generateCommonality>
+	<apparel>
+	 <tags>
+	   <li>Arcane</li>
+	 </tags>
+	 <defaultOutfitTags>
+		<li>Worker</li>
+		<li>Soldier</li>
+	 </defaultOutfitTags>
+	 <wornGraphicPath>Equipment/royalhelm</wornGraphicPath>
+		<layers>
+        <li>Overhead</li>
+      </layers>
+		<bodyPartGroups>
+			<li>FullHead</li>
 		</bodyPartGroups>
 	</apparel>
   </ThingDef>

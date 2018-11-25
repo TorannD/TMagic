@@ -73,24 +73,21 @@
       <li>
         <kindDef>Combat</kindDef>
         <options>
-			<Villager>50</Villager>
-			<Grenadier_Destructive>15</Grenadier_Destructive>
-			<Mercenary_Slasher>70</Mercenary_Slasher>
-			<Town_Guard>100</Town_Guard>
-			<Town_Councilman>100</Town_Councilman>
-			<Mercenary_Gunner>100</Mercenary_Gunner>
-			<Mercenary_Elite>100</Mercenary_Elite>
-			<SeerDefender>100</SeerDefender>
+			<Mercenary_Slasher>7</Mercenary_Slasher>
+			<SeerSpearman>12</SeerSpearman>
+			<SeerBowman>10</SeerBowman>
+			<SeerDefender>5</SeerDefender>
 		</options>
       </li>
 	  <li>
         <kindDef>Peaceful</kindDef>
         <options>
-			<Villager>50</Villager>
-			<Town_Guard>100</Town_Guard>
-			<Town_Councilman>100</Town_Councilman>
-			<Mercenary_Gunner>100</Mercenary_Gunner>
-			<SeerDefender>100</SeerDefender>
+			<Villager>5</Villager>
+			<SeerSpearman>10</SeerSpearman>
+			<Town_Councilman>5</Town_Councilman>
+			<Mercenary_Slasher>1</Mercenary_Slasher>
+			<SeerBowman>6</SeerBowman>
+			<SeerDefender>5</SeerDefender>
         </options>
       </li>
       <li>
@@ -105,29 +102,24 @@
           <Elephant>6</Elephant>
         </carriers>
         <guards>
-			<Grenadier_Destructive>70</Grenadier_Destructive>
-			<Mercenary_Slasher>200</Mercenary_Slasher>
-			<Town_Guard>150</Town_Guard>
-			<Mercenary_Gunner>250</Mercenary_Gunner>
-			<Mercenary_Elite>200</Mercenary_Elite>
-			<AncientSoldier>250</AncientSoldier>
-			<Mercenary_Heavy>200</Mercenary_Heavy>
-			<SeerDefender>100</SeerDefender>
+			<SeerBowman>8</SeerBowman>
+			<Mercenary_Slasher>4</Mercenary_Slasher>
+			<SeerSpearman>10</SeerSpearman>
+			<SeerDefender>5</SeerDefender>
 		</guards>
       </li>
       <li>
         <kindDef>Settlement</kindDef>
         <options>
-			<Grenadier_Destructive>75</Grenadier_Destructive>
-			<Mercenary_Slasher>250</Mercenary_Slasher>
-			<Villager>100</Villager>
-			<Town_Guard>250</Town_Guard>
-			<Town_Councilman>200</Town_Councilman>
-			<Mercenary_Gunner>350</Mercenary_Gunner>
-			<Mercenary_Elite>250</Mercenary_Elite>
-			<AncientSoldier>100</AncientSoldier>
-			<Mercenary_Heavy>200</Mercenary_Heavy>
-			<SeerDefender>300</SeerDefender>
+			<SeerBowman>10</SeerBowman>
+			<Mercenary_Slasher>12</Mercenary_Slasher>
+			<Villager>10</Villager>
+			<Town_Guard>12</Town_Guard>
+			<Town_Councilman>10</Town_Councilman>
+			<SeerSpearman>16</SeerSpearman>
+			<Mercenary_Elite>12</Mercenary_Elite>
+			<AncientSoldier>5</AncientSoldier>
+			<SeerDefender>10</SeerDefender>
 		</options>
       </li>
     </pawnGroupMakers>

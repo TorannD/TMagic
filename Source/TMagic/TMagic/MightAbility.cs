@@ -194,12 +194,12 @@ namespace TorannMagic
                         );
                     }
                 }
-                else if (mightUser.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_PsionicHD"), false)) 
+                else if (mightUser.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_PsionicHD"), false))
                 {
                     num = mightUser.ActualStaminaCost(mightAbilityDef);
                     if (mightAbilityDef == TorannMagicDefOf.TM_PsionicBlast || mightAbilityDef == TorannMagicDefOf.TM_PsionicBlast_I || mightAbilityDef == TorannMagicDefOf.TM_PsionicBlast_II || mightAbilityDef == TorannMagicDefOf.TM_PsionicBlast_III)
                     {
-                        num2 = 4 - (mightUser.MightData.MightPowerSkill_PsionicBlast.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicBlast_ver").level);                     
+                        num2 = 4 - (mightUser.MightData.MightPowerSkill_PsionicBlast.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicBlast_ver").level);
                         text2 = "TM_PsionicInitialCost".Translate(
                             20
                         ) + "\n" + "TM_PsionicBlastAddCost".Translate(
@@ -229,6 +229,13 @@ namespace TorannMagic
                             num2
                         );
                     }
+                }
+                else if (TM_Calc.HasHateHediff(mightUser.Pawn) && (mightAbilityDef == TorannMagicDefOf.TM_Spite || mightAbilityDef == TorannMagicDefOf.TM_Spite_I || mightAbilityDef == TorannMagicDefOf.TM_Spite_II || mightAbilityDef == TorannMagicDefOf.TM_Spite_III))
+                {
+                    num = mightUser.ActualStaminaCost(mightAbilityDef);
+                    text2 = "TM_RequiresHateAmount".Translate(
+                        20
+                    );
                 }
                 else
                 {
@@ -310,6 +317,32 @@ namespace TorannMagic
                             base.Pawn.Label,
                             wornApparel[i].Label
                         );
+                        return false;
+                    }
+                }
+                if(TM_Calc.HasHateHediff(this.MightUser.Pawn) && this.MightUser.Pawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight))
+                {
+                    Hediff hediff = null;
+                    for (int h = 0; h < this.MightUser.Pawn.health.hediffSet.hediffs.Count; h++)
+                    {
+                        if (this.MightUser.Pawn.health.hediffSet.hediffs[h].def.defName.Contains("TM_HateHD"))
+                        {
+                            hediff = this.MightUser.Pawn.health.hediffSet.hediffs[h];
+                        }
+                    }
+                    if (hediff != null)
+                    {
+                        if ((this.mightDef.defName == "TM_Spite" || this.mightDef.defName == "TM_Spite_I" || this.mightDef.defName == "TM_Spite_II" || this.mightDef.defName == "TM_Spite_III") && hediff.Severity < 20f)
+                        {
+                            reason = "TM_NotEnoughHate".Translate(
+                            base.Pawn.LabelShort,
+                            "Spite"
+                            );
+                            return false;
+                        }
+                    }
+                    else
+                    {
                         return false;
                     }
                 }

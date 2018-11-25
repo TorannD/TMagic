@@ -26,7 +26,7 @@ namespace TorannMagic
             {
                 this.levelMax = 50;
             }
-            else if (newLabel == "TM_global_refresh_pwr" || newLabel == "TM_global_seff_pwr" || newLabel == "TM_global_strength_pwr")
+            else if (newLabel == "TM_global_refresh_pwr" || newLabel == "TM_global_seff_pwr" || newLabel == "TM_global_strength_pwr" || newLabel == "TM_Shroud_pwr" || newLabel == "TM_Shroud_ver" || newLabel == "TM_Shroud_eff")
             {
                 this.levelMax = 5;
             }

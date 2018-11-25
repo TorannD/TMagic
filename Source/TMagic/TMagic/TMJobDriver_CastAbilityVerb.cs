@@ -66,7 +66,12 @@ namespace TorannMagic
                             PsionicEnergyCost(verb);                            
                         }
 
-                        if(verb.Ability.CooldownTicksLeft != -1)
+                        if (this.pawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight))
+                        {
+                            HateCost(verb);
+                        }
+
+                        if (verb.Ability.CooldownTicksLeft != -1)
                         {
                             this.EndJobWith(JobCondition.Incompletable);
                         }
@@ -259,6 +264,22 @@ namespace TorannMagic
                 //float sevReduct = 65 - (5 * this.pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PsionicStorm.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicStorm_eff").level);
                 HealthUtility.AdjustSeverity(this.pawn, HediffDef.Named("TM_PsionicHD"), -100);
             }
+        }
+
+        private void HateCost(Verb_UseAbility verbCast)
+        {
+            Hediff hediff = null;
+            for (int h = 0; h < this.pawn.health.hediffSet.hediffs.Count; h++)
+            {
+                if (this.pawn.health.hediffSet.hediffs[h].def.defName.Contains("TM_HateHD"))
+                {
+                    hediff = this.pawn.health.hediffSet.hediffs[h];
+                }
+            }
+            if (hediff != null && verbCast.AbilityProjectileDef.defName == "Projectile_Spite")
+            {
+                HealthUtility.AdjustSeverity(this.pawn, hediff.def, -20f);
+            }            
         }
 
         private void RemoveMimicAbility(Verb_UseAbility verbCast)

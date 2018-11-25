@@ -1,6 +1,82 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+<!-- Sabotage EMP wave -->
+
+  <EffecterDef>
+    <defName>TM_FearWave</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_FearWaveInner</moteDef>
+        <scale>
+          <min>1</min>
+          <max>1</max>
+        </scale>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_FearWaveMiddle</moteDef>
+        <scale>
+          <min>3</min>
+          <max>3</max>
+        </scale>
+      </li>
+    </children>
+  </EffecterDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>TM_Mote_FearWaveInner</defName>
+    <graphicData>
+      <texPath>Motes/PowerBeam_Corrupt</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <drawSize>(.4, .4)</drawSize>
+	  <color>(0.0,0.2,.4,1)</color>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.1</fadeInTime>
+      <solidTime>.1</solidTime>
+      <fadeOutTime>0.8</fadeOutTime>
+      <growthRate>75</growthRate>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>TM_Mote_FearWaveMiddle</defName>
+    <graphicData>
+      <texPath>Motes/PowerBeam_Corrupt</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <color>(.9,.95,1,.5)</color>
+	  <drawSize>(.7, .7)</drawSize>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.4</fadeInTime>
+      <solidTime>0</solidTime>
+      <fadeOutTime>1.1</fadeOutTime>
+      <growthRate>50</growthRate>
+    </mote>
+  </ThingDef>
+  
+    <ThingDef ParentName="MoteBase">
+    <defName>TM_Mote_FearWaveOuter</defName>
+    <graphicData>
+      <texPath>Motes/PowerBeam_Corrupt</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <color>(.9,.95,1,.5)</color>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.4</fadeInTime>
+      <solidTime>0</solidTime>
+      <fadeOutTime>1</fadeOutTime>
+      <growthRate>18</growthRate>
+    </mote>
+  </ThingDef>
 
 	<!-- Psionic mental attack -->
 

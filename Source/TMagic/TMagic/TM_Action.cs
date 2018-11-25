@@ -277,7 +277,7 @@ namespace TorannMagic
         public static void DamageEntities(Thing victim, BodyPartRecord hitPart, float amt, DamageDef type, Thing instigator)
         {
             DamageInfo dinfo;
-            dinfo = new DamageInfo(type, amt, -1, (float)-1, instigator, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
+            dinfo = new DamageInfo(type, amt, 0, (float)-1, instigator, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
             dinfo.SetAllowDamagePropagation(false);
             victim.TakeDamage(dinfo);
         }

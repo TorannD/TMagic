@@ -86,6 +86,22 @@
 	</DamageDef>
 	
 	<DamageDef ParentName="TM_LocalInjuryBase">
+		<defName>TM_Spirit</defName>
+		<label>Spirit</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was drained of spirit.</deathMessage>
+		<hediff>TM_SpiritHD</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<defaultDamage>9</defaultDamage>
+		<armorCategory>Dark</armorCategory>
+		<explosionSnowMeltAmount>0</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_BlastDry</explosionCellMote>
+		<explosionColorCenter>(0, .1, .2)</explosionColorCenter>
+		<explosionColorEdge>(.8, 0.9, 1)</explosionColorEdge>
+		<soundExplosion>TM_SoftExplosion</soundExplosion>
+	</DamageDef>
+	
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Death</defName>
 		<label>Death</label>
 		<externalViolence>true</externalViolence>

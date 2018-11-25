@@ -93,6 +93,30 @@
 			<destroyedOutLabel>burned out</destroyedOutLabel>
 	</injuryProps>
   </HediffDef>
+  
+  <HediffDef ParentName="TM_InjuryBase">
+    <defName>TM_SpiritHD</defName>
+    <label>Spirit</label>
+    <displayWound>false</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_GetsPermanent">
+        <permanentLabel>drained of spirit</permanentLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.02</painPerSeverity>
+		<averagePainPerSeverityPermanent>0.008</averagePainPerSeverityPermanent>
+		<bleedRate>0.000</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>lifeless</destroyedLabel>
+			<destroyedOutLabel>lifeless</destroyedOutLabel>
+	</injuryProps>
+  </HediffDef>
 
   <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_MagicMissile</defName>

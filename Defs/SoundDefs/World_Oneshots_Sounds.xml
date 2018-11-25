@@ -25,6 +25,30 @@
     </subSounds>
   </SoundDef>
   
+    <SoundDef>
+    <defName>TM_GaspingAir</defName>
+    <eventNames />
+    <maxSimultaneous>2</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/GaspingAir</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>10</min>
+          <max>12</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.4</min>
+          <max>.5</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
   <SoundDef>
     <defName>TM_FireWooshSD</defName>
     <eventNames />

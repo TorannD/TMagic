@@ -89,6 +89,10 @@
     <Compile Include="Building_PoisonTrap.cs" />
     <Compile Include="Buiding_TechnoTurret.cs" />
     <Compile Include="Command_LocalTargetInfo.cs" />
+    <Compile Include="HediffComp_Hate.cs" />
+    <Compile Include="Projectile_Spite.cs" />
+    <Compile Include="Projectile_GraveBlade.cs" />
+    <Compile Include="Projectile_WaveOfFear.cs" />
     <Compile Include="WorkGiver_DoMagicBill.cs" />
     <Compile Include="IngestionOutcomeDoer_RemoveHediff.cs" />
     <Compile Include="PawnCapacityWorker_MagicManipulation.cs" />

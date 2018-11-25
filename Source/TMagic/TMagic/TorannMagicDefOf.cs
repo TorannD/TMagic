@@ -420,6 +420,7 @@ namespace TorannMagic
         public static ThingDef BookOfRanger;
         public static ThingDef BookOfFaceless;
         public static ThingDef BookOfPsionic;
+        public static ThingDef BookOfDeathKnight;
         public static TraitDef PhysicalProdigy;
 
         //Might (Gladiator)
@@ -529,6 +530,23 @@ namespace TorannMagic
         public static ThingDef FlyingObject_PsiStorm;
         public static ThingDef FlyingObject_PsionicLeap;
 
+        //Death Knight
+        public static TraitDef DeathKnight;
+
+        public static HediffDef TM_HateHD;
+        public static TMAbilityDef TM_Shroud;
+        public static TMAbilityDef TM_WaveOfFear;
+        public static HediffDef TM_WaveOfFearHD;
+        public static TMAbilityDef TM_Spite;
+        public static TMAbilityDef TM_Spite_I;
+        public static TMAbilityDef TM_Spite_II;
+        public static TMAbilityDef TM_Spite_III;
+        public static TMAbilityDef TM_LifeSteal;
+        public static TMAbilityDef TM_GraveBlade;
+        public static TMAbilityDef TM_GraveBlade_I;
+        public static TMAbilityDef TM_GraveBlade_II;
+        public static TMAbilityDef TM_GraveBlade_III;
+
         //Standalone
         public static TMAbilityDef TM_Heater;
         public static TMAbilityDef TM_DismissHeater;
@@ -620,6 +638,7 @@ namespace TorannMagic
         public static EffecterDef TM_OSExplosion;
         public static EffecterDef TM_SabotageExplosion;
         public static EffecterDef TM_HolyImplosion;
+        public static EffecterDef TM_FearWave;
 
         //Apparel layers
         public static ApparelLayerDef TM_Cloak;
@@ -655,6 +674,7 @@ namespace TorannMagic
         public static SoundDef TM_ThrumBow;
         public static SoundDef TM_FastReleaseSD;
         public static SoundDef TM_FireWooshSD;
+        public static SoundDef TM_GaspingAir;
 
         //Inspirations
         public static InspirationDef ID_Champion;
@@ -666,6 +686,13 @@ namespace TorannMagic
         public static InspirationDef Frenzy_Go;
         public static InspirationDef Frenzy_Shoot;
 
+        //Mental States
+        public static MentalStateDef TM_Berserk;
+        public static MentalStateDef TM_PanicFlee;
+        public static MentalStateDef TM_WanderPsychotic;
+        public static MentalStateDef TM_WanderSad;
+        public static MentalStateDef TM_WanderConfused;
+
         //Magic Work Defs
         public static PawnCapacityDef MagicManipulation;
         public static WorkTypeDef TM_Magic;
@@ -673,5 +700,6 @@ namespace TorannMagic
         //Forge
         public static AbilityDef Forge_Verb;
         public static RecipeDef ArcaneForge_Replication;
+        public static RecipeDef ArcaneForge_Replication_Restore;
     }
 }

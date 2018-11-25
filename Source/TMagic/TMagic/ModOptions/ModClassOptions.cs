@@ -69,6 +69,13 @@ namespace TorannMagic.ModOptions
                         removedThings.Add(current);
                     }
                 }
+                if (!settingsRef.DeathKnight)
+                {
+                    if (current.defName == "BookOfDeathKnight")
+                    {
+                        removedThings.Add(current);
+                    }
+                }
 
                 if (!settingsRef.Arcanist)
                 {

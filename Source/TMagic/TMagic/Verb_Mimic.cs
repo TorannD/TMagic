@@ -885,6 +885,33 @@ namespace TorannMagic
                                 }
                             }
                         }
+                        else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight))
+                        {
+                            int rnd = Rand.RangeInclusive(1, 2);
+                            if (rnd == 1 || magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                            {
+                                tempAbility = TorannMagicDefOf.TM_WaveOfFear;                                
+                            }
+                            else
+                            {
+                                int level = mightPawn.MightData.MightPowersDK[4].level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_GraveBlade;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_GraveBlade_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_GraveBlade_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_GraveBlade_III;
+                                        break;
+                                }
+                            }
+                        }
                         else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                         {
 

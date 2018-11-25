@@ -42,6 +42,11 @@ namespace TorannMagic.SihvRMagicScrollScribe
                 tempPod = ThingDef.Named("BookOfPsionic");
                 this.parent.Destroy(DestroyMode.Vanish);
             }
+            else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.DeathKnight))
+            {
+                tempPod = ThingDef.Named("BookOfDeathKnight");
+                this.parent.Destroy(DestroyMode.Vanish);
+            }
             else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy))
             {
                 int attempt = 0;
@@ -49,7 +54,7 @@ namespace TorannMagic.SihvRMagicScrollScribe
                 RetryWrite:;
                 if (attempt < 20)
                 {
-                    float rnd = Rand.Range(0, 6);
+                    float rnd = Rand.Range(0, 7);
                     if (rnd < 1)
                     {
                         if (settingsRef.Gladiator)
@@ -104,6 +109,18 @@ namespace TorannMagic.SihvRMagicScrollScribe
                         if (settingsRef.Psionic)
                         {
                             tempPod = ThingDef.Named("BookOfPsionic");
+                        }
+                        else
+                        {
+                            attempt++;
+                            goto RetryWrite;
+                        }
+                    }
+                    else if (rnd < 6)
+                    {
+                        if (settingsRef.DeathKnight)
+                        {
+                            tempPod = ThingDef.Named("BookOfDeathKnight");
                         }
                         else
                         {

@@ -115,6 +115,9 @@
 <TM_TechnoBitRepairDesc>Toggles the repair function of the techno-bit.</TM_TechnoBitRepairDesc>
 <TM_FoundNoReplicateTarget>Unable to detect a valid item to replicate.</TM_FoundNoReplicateTarget>
 <TM_FoundNoReplicateRecipe>Unable to determine a design or recipe for {0}.</TM_FoundNoReplicateRecipe>
+<TM_RequiresHateAmount>Required Hate: {0}</TM_RequiresHateAmount>
+<TM_NotEnoughHate>{0} does not have enough Hate to use {1}.</TM_NotEnoughHate>
+<TM_ReplicatedUnrecognizedIngredient>{0} contains an unspecified ingredient and cannot be replicated.</TM_ReplicatedUnrecognizedIngredient>
 
 
 <!-- Surgery Failed letters -->
@@ -180,6 +183,7 @@
 <TM_Faceless>Faceless</TM_Faceless>
 <TM_Psionic>Psionic</TM_Psionic>
 <TM_Technomancer>Technomancer</TM_Technomancer>
+<TM_DeathKnight>Death Knight</TM_DeathKnight>
 
 <!-- Magic Ability Point Descriptions -->
 <TM_global_regen_pwr>Clarity</TM_global_regen_pwr>
@@ -1000,6 +1004,54 @@ Level 3: 50</TM_PsionicStorm_eff_desc>
 <TM_PsionicStorm_pwr>Destructive Will</TM_PsionicStorm_pwr>
 <TM_PsionicStorm_eff>Mental Reserves</TM_PsionicStorm_eff>
 <TM_PsionicStorm_ver>Unrelenting Storm</TM_PsionicStorm_ver>
+
+<TM_Shroud_pwr_desc>Increases the defensive bonuses and retaliation damage of Shroud of Darkness by roughly 20% per skill point. (actual amount varies depending on level of hate)</TM_Shroud_pwr_desc>
+<TM_Shroud_eff_desc>Increases the amount of Hate generated when the Death Knight is wounded by 10%.  
+
+Reduces the amount of hate consumed when Shroud of Darkness nullifies a projectile by 25% or retaliates against a melee attacker by 12%.</TM_Shroud_eff_desc>
+<TM_Shroud_ver_desc>Increases the chances for Shroud of Darkness to retaliate by 10% per skill point, or nullify a projectile by 6% per skill point.
+Base retaliation chance: 0%
+Base nullification chance: 30%</TM_Shroud_ver_desc>
+<TM_WaveOfFear_pwr_desc>Affected pawns are beset by a debilitating fear that increases aiming time and decreases movement and armor vs dark and light attacks. Training in this skill increases the effect and duration of this debuff.</TM_WaveOfFear_pwr_desc>
+<TM_WaveOfFear_eff_desc>Reduces the stamina and hate costs for Wave of Fear by 10% per skill level.</TM_WaveOfFear_eff_desc>
+<TM_WaveOfFear_ver_desc>Increases the Wave of Fear effect radius by .8 cells per skill point. Default radius is 4 cells. 
+
+The radius is further increase by .7 cells per every 10% of Hate.</TM_WaveOfFear_ver_desc>
+<TM_Spite_pwr_desc>Increase Spite damage by 10% per skill level.</TM_Spite_pwr_desc>
+<TM_Spite_eff_desc>Decreases stamina cost of Spite by 10% per skill level.</TM_Spite_eff_desc>
+<TM_Spite_ver_desc>Increases the chance Spite will overwhelm the emotions of the target, stunning them for a brief period.
+Level 0: 0%
+Level 1: 15%
+Level 2: 30%
+Level 3: 45%</TM_Spite_ver_desc>
+<TM_LifeSteal_pwr_desc>Melee attacks steal life proportional to the damage dealt; each skill level increases the amount by 5%
+Base amount: 25%</TM_LifeSteal_pwr_desc>
+<TM_LifeSteal_eff_desc>Steals stamina and generates hate proportional to damage dealt.
+Level 0: 0%
+Level 1: 5%
+Level 2: 10%
+Level 3: 15%</TM_LifeSteal_eff_desc>
+<TM_LifeSteal_ver_desc>Each strike can heal a nearby ally (within 3 cells) by 20% of damage dealt per skill level.
+Base amount: 0%</TM_LifeSteal_ver_desc>
+<TM_GraveBlade_pwr_desc>Increases the damage of each grave blade by 12% per skill level.</TM_GraveBlade_pwr_desc>
+<TM_GraveBlade_eff_desc>Reduces the stamina cost of Grave Blade by 8% per skill level.</TM_GraveBlade_eff_desc>
+<TM_GraveBlade_ver_desc>Each strike has a 10% chance per skill point heal the caster by half the damage dealt and/or induce fear in the target.</TM_GraveBlade_ver_desc>
+
+<TM_Shroud_pwr>Darkest Knight</TM_Shroud_pwr>
+<TM_Shroud_eff>Billowing Hate</TM_Shroud_eff>
+<TM_Shroud_ver>Clinging Darkness</TM_Shroud_ver>
+<TM_WaveOfFear_pwr>Incite Terror</TM_WaveOfFear_pwr>
+<TM_WaveOfFear_eff>Icy Hatred</TM_WaveOfFear_eff>
+<TM_WaveOfFear_ver>Contagion</TM_WaveOfFear_ver>
+<TM_Spite_pwr>Intensity</TM_Spite_pwr>
+<TM_Spite_eff>Unrelenting</TM_Spite_eff>
+<TM_Spite_ver>Staggering</TM_Spite_ver>
+<TM_LifeSteal_pwr>Unquenchable Hate</TM_LifeSteal_pwr>
+<TM_LifeSteal_eff>Double Tap</TM_LifeSteal_eff>
+<TM_LifeSteal_ver>Proximity Heal</TM_LifeSteal_ver>
+<TM_GraveBlade_pwr>At Deaths Door</TM_GraveBlade_pwr>
+<TM_GraveBlade_eff>Ferryman</TM_GraveBlade_eff>
+<TM_GraveBlade_ver>Blood and Spirit</TM_GraveBlade_ver>
 
 <!-- UI -->
 <TM_TabMagic>Magic</TM_TabMagic>

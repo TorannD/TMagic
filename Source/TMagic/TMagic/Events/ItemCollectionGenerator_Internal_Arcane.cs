@@ -32,7 +32,7 @@ namespace TorannMagic
             for (int j = 0; j < 10; j++)
             {
                 //Torn Scripts
-                if (Rand.Chance(0.3f) && (totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.Torn_BookOfArcanist.BaseMarketValue / 1.5)
+                if (Rand.Chance(0.3f) && (totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.Torn_BookOfArcanist.BaseMarketValue *.8f)
                 {
                     if (Rand.Chance(ArcaneScriptChance))
                     {
@@ -115,10 +115,10 @@ namespace TorannMagic
 
                 }
                 //Arcane Scripts
-                if (Rand.Chance(ArcaneScriptChance) && (totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.BookOfArcanist.BaseMarketValue / 2)
+                if (Rand.Chance(ArcaneScriptChance) && (totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.BookOfArcanist.BaseMarketValue *.8f)
                 {
                     float rnd = Rand.Range(0f, 1f);
-                    float scriptCount = 19f;
+                    float scriptCount = 20f;
                     if (rnd < 1f/scriptCount)
                     {
                         Thing thing = ThingMaker.MakeThing(TorannMagicDefOf.BookOfInnerFire, null);
@@ -224,6 +224,12 @@ namespace TorannMagic
                     else if (rnd < 18f / scriptCount)
                     {
                         Thing thing = ThingMaker.MakeThing(TorannMagicDefOf.BookOfMagitech, null);
+                        outThings.Add(thing);
+                        collectiveMarketValue += thing.MarketValue;
+                    }
+                    else if (rnd < 19f / scriptCount)
+                    {
+                        Thing thing = ThingMaker.MakeThing(TorannMagicDefOf.BookOfDeathKnight, null);
                         outThings.Add(thing);
                         collectiveMarketValue += thing.MarketValue;
                     }
@@ -495,7 +501,7 @@ namespace TorannMagic
                     }
                 }
                 //Skills
-                if (Rand.Chance(SpellChance) && (totalMarketValue - collectiveMarketValue) > 600f)
+                if (Rand.Chance(SpellChance) && (totalMarketValue - collectiveMarketValue) > 800f)
                 {
                     int randomInRange = SkillCountRange.RandomInRange;
                     Thing thing = new Thing();
