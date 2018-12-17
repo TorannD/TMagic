@@ -2,18 +2,18 @@
 <Defs>
 
   <MentalStateDef Abstract="True" Name="TM_BaseMentalState">
-    <minTicksBeforeRecovery>600</minTicksBeforeRecovery>
-    <recoveryMtbDays>0.1</recoveryMtbDays>
+    <minTicksBeforeRecovery>900</minTicksBeforeRecovery>
+    <recoveryMtbDays>0.15</recoveryMtbDays>
   </MentalStateDef>
 
   <!-- Mental breaks: extreme -->
 
-<!--   <MentalBreakDef>
+  <MentalBreakDef>
     <defName>TM_Berserk</defName>
     <mentalState>TM_Berserk</mentalState>
-    <baseCommonality>1.5</baseCommonality>
+    <baseCommonality>0.1</baseCommonality>
     <intensity>Extreme</intensity>
-  </MentalBreakDef> -->
+  </MentalBreakDef>
   <MentalStateDef ParentName="TM_BaseMentalState">
     <defName>TM_Berserk</defName>
     <stateClass>MentalState_Berserk</stateClass>
@@ -22,9 +22,9 @@
     <moodRecoveryThought>Catharsis</moodRecoveryThought>
     <blockNormalThoughts>true</blockNormalThoughts>
     <nameColor>(0.9,0.2,0.5)</nameColor>
-    <minTicksBeforeRecovery>600</minTicksBeforeRecovery>
-    <recoveryMtbDays>0.1</recoveryMtbDays>
-    <maxTicksBeforeRecovery>1200</maxTicksBeforeRecovery>
+    <minTicksBeforeRecovery>900</minTicksBeforeRecovery>
+    <recoveryMtbDays>0.15</recoveryMtbDays>
+    <maxTicksBeforeRecovery>1800</maxTicksBeforeRecovery>
     <recoveryMessage>{0}'s berserk rage has come to an end.</recoveryMessage>
     <baseInspectLine>Mental state: Berserk</baseInspectLine>
     <stateEffecter>Berserk</stateEffecter>
@@ -33,7 +33,13 @@
     <unspawnedCanDo>false</unspawnedCanDo>
   </MentalStateDef>
   
-  <MentalStateDef ParentName="BaseMentalState">
+  <MentalBreakDef>
+    <defName>TM_PanicFlee</defName>
+    <mentalState>TM_PanicFlee</mentalState>
+    <baseCommonality>.1</baseCommonality>
+    <intensity>Major</intensity>
+  </MentalBreakDef>
+  <MentalStateDef ParentName="TM_BaseMentalState">
     <defName>TM_PanicFlee</defName>
     <label>panic fleeing</label>
     <stateClass>MentalState_PanicFlee</stateClass>
@@ -49,7 +55,7 @@
 <!--   <MentalBreakDef>
     <defName>TM_WanderPsychotic</defName>
     <mentalState>TM_WanderPsychotic</mentalState>
-    <baseCommonality>1</baseCommonality>
+    <baseCommonality>.1</baseCommonality>
     <intensity>Major</intensity>
   </MentalBreakDef> -->
   <MentalStateDef ParentName="TM_BaseMentalState">
@@ -60,9 +66,9 @@
     <moodRecoveryThought>Catharsis</moodRecoveryThought>
     <blockNormalThoughts>true</blockNormalThoughts>
     <nameColor>(0.65, 0.9, 0.93)</nameColor>
-    <minTicksBeforeRecovery>1000</minTicksBeforeRecovery>
-    <recoveryMtbDays>0.15</recoveryMtbDays>
-    <maxTicksBeforeRecovery>2000</maxTicksBeforeRecovery>
+    <minTicksBeforeRecovery>3000</minTicksBeforeRecovery>
+    <recoveryMtbDays>0.3</recoveryMtbDays>
+    <maxTicksBeforeRecovery>8000</maxTicksBeforeRecovery>
     <recoveryMessage>{0} is no longer wandering in a psychotic state.</recoveryMessage>
     <baseInspectLine>Mental state: Psychotic wandering</baseInspectLine>
     <tale>MentalStateGaveUp</tale>
@@ -72,7 +78,7 @@
 <!--   <MentalBreakDef>
     <defName>TM_WanderSad</defName>
     <mentalState>TM_WanderSad</mentalState>
-    <baseCommonality>0.75</baseCommonality>
+    <baseCommonality>0.15</baseCommonality>
     <intensity>Minor</intensity>
   </MentalBreakDef> -->
   <MentalStateDef ParentName="TM_BaseMentalState">
@@ -81,9 +87,9 @@
     <label>sad wandering</label>
     <category>Misc</category>
     <colonistsOnly>false</colonistsOnly>
-    <minTicksBeforeRecovery>1000</minTicksBeforeRecovery>
-    <recoveryMtbDays>0.15</recoveryMtbDays>
-    <maxTicksBeforeRecovery>2000</maxTicksBeforeRecovery>
+    <minTicksBeforeRecovery>2000</minTicksBeforeRecovery>
+    <recoveryMtbDays>0.3</recoveryMtbDays>
+    <maxTicksBeforeRecovery>3000</maxTicksBeforeRecovery>
     <recoverFromSleep>true</recoverFromSleep>
     <moodRecoveryThought>Catharsis</moodRecoveryThought>
     <blockNormalThoughts>true</blockNormalThoughts>
@@ -94,6 +100,12 @@
     <unspawnedCanDo>false</unspawnedCanDo>
   </MentalStateDef>
   
+<!--   <MentalBreakDef>
+    <defName>TM_WanderConfused</defName>
+    <mentalState>TM_WanderConfused</mentalState>
+    <baseCommonality>0.15</baseCommonality>
+    <intensity>Minor</intensity>
+  </MentalBreakDef> -->
   <MentalStateDef ParentName="TM_BaseMentalState">
     <defName>TM_WanderConfused</defName>
     <label>confused wandering</label>

@@ -1,6 +1,7 @@
 ﻿using Verse;
 using AbilityUser;
 using System.Linq;
+using RimWorld;
 
 
 namespace TorannMagic
@@ -20,31 +21,38 @@ namespace TorannMagic
 
             if (hitPawn != null && !hitPawn.Dead && !caster.Dead && !caster.Downed && caster != null)
             {
-                if (compHitPawn.IsMagicUser)
+                if (Rand.Chance(TM_Calc.GetSpellSuccessChance(caster, hitPawn, true)))
                 {
-                    MagicPowerSkill regen = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
-                    float manaDrained = compHitPawn.Mana.CurLevel;
-                    if (manaDrained > .5f)
+                    if (compHitPawn.IsMagicUser)
                     {
-                        manaDrained = .5f;
+                        MagicPowerSkill regen = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
+                        float manaDrained = compHitPawn.Mana.CurLevel;
+                        if (manaDrained > .5f)
+                        {
+                            manaDrained = .5f;
+                        }
+                        compHitPawn.Mana.CurLevel -= manaDrained;
+                        compCaster.Mana.CurLevel += (manaDrained * .6f) * (1 + regen.level * .05f);
+                        TM_MoteMaker.ThrowSiphonMote(hitPawn.Position.ToVector3(), hitPawn.Map, 1f);
+                        TM_MoteMaker.ThrowManaPuff(caster.Position.ToVector3(), caster.Map, 1f);
                     }
-                    compHitPawn.Mana.CurLevel -= manaDrained;
-                    compCaster.Mana.CurLevel += (manaDrained * .6f) * (1 + regen.level * .05f);
-                    TM_MoteMaker.ThrowSiphonMote(hitPawn.Position.ToVector3(), hitPawn.Map, 1f);
-                    TM_MoteMaker.ThrowManaPuff(caster.Position.ToVector3(), caster.Map, 1f);
+                    else
+                    {
+                        float sev = Rand.Range(0, 10);
+                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_AntiManipulation, sev);
+                        sev = Rand.Range(0, 10);
+                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_AntiMovement, sev);
+                        sev = Rand.Range(0, 10);
+                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_AntiBreathing, sev);
+                        sev = Rand.Range(0, 10);
+                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_AntiSight, sev);
+                        TM_MoteMaker.ThrowSiphonMote(hitPawn.Position.ToVector3(), hitPawn.Map, 1f);
+                        TM_MoteMaker.ThrowSiphonMote(hitPawn.Position.ToVector3(), hitPawn.Map, 1f);
+                    }
                 }
                 else
                 {
-                    float sev = Rand.Range(0, 10);
-                    HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_AntiManipulation, sev);
-                    sev = Rand.Range(0, 10);
-                    HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_AntiMovement, sev);
-                    sev = Rand.Range(0, 10);
-                    HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_AntiBreathing, sev);
-                    sev = Rand.Range(0, 10);
-                    HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_AntiSight, sev);
-                    TM_MoteMaker.ThrowSiphonMote(hitPawn.Position.ToVector3(), hitPawn.Map, 1f);
-                    TM_MoteMaker.ThrowSiphonMote(hitPawn.Position.ToVector3(), hitPawn.Map, 1f);
+                    MoteMaker.ThrowText(hitPawn.DrawPos, hitPawn.Map, "TM_ResistedSpell".Translate(), -1);
                 }
             }
         }

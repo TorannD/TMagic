@@ -16,8 +16,9 @@
 	<value>		
 		<li>Undead</li>
 		<li>Necromancer</li>
-		<li>Deathknight</li>
-		<li>Lich</li>		
+		<li>DeathKnight</li>
+		<li>Lich</li>	
+		<li>BloodMage</li>
 	</value>
   </Operation> 
   

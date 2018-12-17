@@ -25,7 +25,20 @@
     <defName>TM_RangerTraining</defName>
     <label>Ranger Training</label>
     <uiIconPath>UI/rangertraining</uiIconPath>
-    <description>Training that advances the ranger trait.</description>
+    <description>Training that the ranger's professional skills. Each level will increase the ranger trait to reflect the skill of the ranger.
+	
+Ranks:
+Woodsman: Speed +0.15c/s, Aiming Delay -15%, Immunity Gain +20%, Comf. Temperature +-10C., Toxic Sensitivity -10%
+Tame and train animal +5%, butchering speed +5%, smelting and construction speed -10%
+
+Hunter: Speed +0.2c/s, Aiming Delay -20%, Immunity Gain +25%, Comf. Temperature +-15C., Toxic Sensitivity -15%
+Tame and train animal +8%, butchering speed +10%, smelting and construction speed -15%
+
+Scout: Speed +0.25c/s, Aiming Delay -30%, Immunity Gain +30%, Comf. Temperature +-18C., Toxic Sensitivity -20%
+Tame and train animal +10%, butchering speed +15%, smelting and construction speed -18%
+
+Ranger: Speed +0.3c/s, Aiming Delay -40%, Immunity Gain +35%, Comf. Temperature +-25C., Toxic Sensitivity -25%
+Tame and train animal +12%, butchering speed +20%, smelting and construction speed -20%</description>
     <staminaCost>0.01</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_RangerTraining</verbClass>
@@ -60,7 +73,12 @@
     <defName>TM_BowTraining</defName>
     <label>Bow Training</label>
     <uiIconPath>UI/bowtraining</uiIconPath>
-    <description>Training that increases damage and accuracy when using a bow.</description>
+    <description>Training that increases damage and accuracy when using a bow.
+	
+Level 0: Hearing and Sight +20%, +20% bow damage
+Level 1: Hearing and Sight +40%, +40% bow damage
+Level 2: Hearing and Sight +60%, Breathing +15%, +60% bow damage
+Level 3: Hearing and Sight +80%, Breathing +25%, Blood filtration +10%, +80% bow damage</description>
     <staminaCost>0.01</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_BowTraining</verbClass>
@@ -95,7 +113,9 @@
         <defName>TM_PoisonTrap</defName>
         <label>Poison Trap</label>
         <uiIconPath>UI/trap</uiIconPath>
-        <description>The ranger uses a dose of druidic poison to arm a wooden trap. Traps last indefinitely, but a ranger is only able to deploy a limited number at a time.</description>
+        <description>The ranger uses a dose of druidic poison to arm a wooden trap. Traps last indefinitely, but a ranger is only able to deploy a limited number at a time.
+
+Enemies caught in the poison will take 1-8 poison damage every 0.66 seconds. Poison damage also applies a slowing effect.</description>
         <staminaCost>0.20</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PoisonTrap</verbClass>

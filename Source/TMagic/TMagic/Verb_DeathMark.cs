@@ -67,31 +67,38 @@ namespace TorannMagic
                         Pawn victim = this.TargetsAoE[i].Thing as Pawn;
                         if(!victim.RaceProps.IsMechanoid)
                         {
-                            HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_DeathMarkCurse"), Rand.Range(1f + pwrVal, 4 + 2 * pwrVal));
-                            TM_MoteMaker.ThrowSiphonMote(victim.DrawPos, victim.Map, 1f);
-                            if (comp.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD"), false))
+                            if (Rand.Chance(TM_Calc.GetSpellSuccessChance(this.CasterPawn, victim, true)))
                             {
-                                comp.PowerModifier += 1;
-                            }                            
-
-                            if (Rand.Chance(verVal * .2f))
-                            {
-                                if (Rand.Chance(verVal * .1f)) //terror
+                                HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_DeathMarkCurse"), Rand.Range(1f + pwrVal, 4 + 2 * pwrVal));
+                                TM_MoteMaker.ThrowSiphonMote(victim.DrawPos, victim.Map, 1f);
+                                if (comp.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD"), false))
                                 {
-                                    HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_Terror"), Rand.Range(3f * verVal, 5f * verVal));
-                                    TM_MoteMaker.ThrowDiseaseMote(victim.DrawPos, victim.Map, 1f, .5f, .2f, .4f);
-                                    MoteMaker.ThrowText(victim.DrawPos, victim.Map, "Terror", -1);
+                                    comp.PowerModifier += 1;
                                 }
-                                if (Rand.Chance(verVal * .1f)) //berserk
+
+                                if (Rand.Chance(verVal * .2f))
                                 {
-                                    if (victim.mindState != null && victim.RaceProps != null && victim.RaceProps.Humanlike)
+                                    if (Rand.Chance(verVal * .1f)) //terror
                                     {
-                                        victim.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk, "cursed", true, false, null);
-                                        MoteMaker.ThrowMicroSparks(victim.DrawPos, victim.Map);
-                                        MoteMaker.ThrowText(victim.DrawPos, victim.Map, "Berserk", -1);
+                                        HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_Terror"), Rand.Range(3f * verVal, 5f * verVal));
+                                        TM_MoteMaker.ThrowDiseaseMote(victim.DrawPos, victim.Map, 1f, .5f, .2f, .4f);
+                                        MoteMaker.ThrowText(victim.DrawPos, victim.Map, "Terror", -1);
                                     }
+                                    if (Rand.Chance(verVal * .1f)) //berserk
+                                    {
+                                        if (victim.mindState != null && victim.RaceProps != null && victim.RaceProps.Humanlike)
+                                        {
+                                            victim.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk, "cursed", true, false, null);
+                                            MoteMaker.ThrowMicroSparks(victim.DrawPos, victim.Map);
+                                            MoteMaker.ThrowText(victim.DrawPos, victim.Map, "Berserk", -1);
+                                        }
 
+                                    }
                                 }
+                            }
+                            else
+                            {
+                                MoteMaker.ThrowText(victim.DrawPos, victim.Map, "TM_ResistedSpell".Translate(), -1);
                             }
                         }
                     }

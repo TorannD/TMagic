@@ -32,10 +32,13 @@ namespace TorannMagic.ModOptions
         public override void DoSettingsWindowContents(Rect canvas)
         {
             int num = 0;
-            float rowHeight = 40f;
+            float rowHeight = 28f;
+
+            Widgets.BeginScrollView(canvas, ref scrollPosition, canvas, true);
 
             Rect rect1 = new Rect(canvas);
             rect1.width /= 2f;
+            num++;
             num++;
             SettingsRef settingsRef = new SettingsRef();
             Rect rowRect = UIHelper.GetRowRect(rect1, rowHeight, num);        
@@ -93,6 +96,7 @@ namespace TorannMagic.ModOptions
             rowRect67ShiftRight.x += rowRect67.width + 56f;
             Settings.Instance.autocastEvaluationFrequency = Mathf.RoundToInt(Widgets.HorizontalSlider(rowRect67ShiftRight, Settings.Instance.autocastEvaluationFrequency, 60, 600, false, "TM_autocastEvaluationFrequency".Translate() + " " + (Settings.Instance.autocastEvaluationFrequency / 60) + "seconds", "1", "10", .1f));
             num++;
+            num++;
             Rect rowRect7 = UIHelper.GetRowRect(rowRect67, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect7, "AICanCast".Translate(), ref Settings.Instance.AICasting, false);
             Rect rowRect7ShiftRight = UIHelper.GetRowRect(rowRect7, rowHeight, num);
@@ -122,6 +126,10 @@ namespace TorannMagic.ModOptions
             Rect rowRect10ShiftRight = UIHelper.GetRowRect(rowRect10, rowHeight, num);
             rowRect10ShiftRight.x += rowRect10.width + 56f;
             Widgets.CheckboxLabeled(rowRect10ShiftRight, "showUndeadAnimalChange".Translate(), ref Settings.Instance.changeUndeadAnimalAppearance, false);
+            num++;
+            Rect rowRect11 = UIHelper.GetRowRect(rowRect10, rowHeight, num);
+            Widgets.CheckboxLabeled(rowRect11, "unrestrictedBloodTypesForBloodMagic".Translate(), ref Settings.Instance.unrestrictedBloodTypes, false);
+            num++;
             num++;
             Rect rowRect20 = UIHelper.GetRowRect(rowRect10, rowHeight, num);
             rowRect20.width = 120f;
@@ -229,6 +237,8 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.autocastCombatMinThreshold = .05f;
                 Settings.Instance.autocastEvaluationFrequency = 180;
             }
+
+            Widgets.EndScrollView();
 
         }
 

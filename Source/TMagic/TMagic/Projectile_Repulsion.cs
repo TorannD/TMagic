@@ -107,8 +107,11 @@ namespace TorannMagic
                             IntVec3 projectedPosition = victim.Position + (force * launchVector).ToIntVec3();
                             if (projectedPosition.IsValid && projectedPosition.InBounds(pawn.Map))
                             {
-                                damageEntities(victim, force * (.2f * verVal), DamageDefOf.Blunt);
-                                LaunchFlyingObect(projectedPosition, victim, force);
+                                if (Rand.Chance(TM_Calc.GetSpellSuccessChance(pawn, victim, true)))
+                                {
+                                    damageEntities(victim, force * (.2f * verVal), DamageDefOf.Blunt);
+                                    LaunchFlyingObect(projectedPosition, victim, force);
+                                }
                             }
                         }
                     }

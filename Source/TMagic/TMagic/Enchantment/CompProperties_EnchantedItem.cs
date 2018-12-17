@@ -45,6 +45,10 @@ namespace TorannMagic.Enchantment
         public bool arcaneSpectre = false;
         public bool phantomShift = false;
 
+        //Hediffs
+        public HediffDef hediff = null;
+        public float hediffSeverity = 0f;        
+
         public void ExposeData()
         {
             Scribe_Values.Look<float>(ref this.maxMP, "maxMP", 0, false);

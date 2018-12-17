@@ -166,11 +166,11 @@ Arcane Resistance: +30%</description>
 			<drawSize>1.4</drawSize>
 		</graphicData>
     <weaponTags>
-	
+		<li>SeerElite</li>
     </weaponTags>
 	<statBases>
       <WorkToMake>60000</WorkToMake>
-	  <MarketValue>5000</MarketValue>
+	  <MarketValue>4650</MarketValue>
       <Mass>4</Mass>
 	  <MaxHitPoints>450</MaxHitPoints>
 	  <Flammability>1.0</Flammability>
@@ -264,7 +264,7 @@ Arcane Resistance: +20%</description>
     </weaponTags>
 	<statBases>
       <WorkToMake>20000</WorkToMake>
-	  <MarketValue>700</MarketValue>
+	  <MarketValue>800</MarketValue>
       <Mass>2.2</Mass>
 	  <MaxHitPoints>300</MaxHitPoints>
 	  <Flammability>0.5</Flammability>
@@ -378,7 +378,7 @@ Damage Boost: +15%</description>
     <soundInteract>Interact_Revolver</soundInteract>	
     <statBases>
       <WorkToMake>10000</WorkToMake>
-	  <MarketValue>400</MarketValue>
+	  <MarketValue>480</MarketValue>
       <Mass>1.0</Mass>
       <AccuracyTouch>0.91</AccuracyTouch>
       <AccuracyShort>0.71</AccuracyShort>
@@ -462,7 +462,7 @@ Damage Boost: +15%</description>
     <soundInteract>Interact_Revolver</soundInteract>
     <statBases>
       <WorkToMake>10000</WorkToMake>
-	  <MarketValue>400</MarketValue>
+	  <MarketValue>480</MarketValue>
       <Mass>1.0</Mass>
       <AccuracyTouch>0.91</AccuracyTouch>
       <AccuracyShort>0.82</AccuracyShort>
@@ -551,7 +551,7 @@ Damage Boost: +15%</description>
     <soundInteract>Interact_Revolver</soundInteract>
     <statBases>
       <WorkToMake>10000</WorkToMake>
-	  <MarketValue>400</MarketValue>
+	  <MarketValue>480</MarketValue>
       <Mass>1.0</Mass>
       <AccuracyTouch>.67</AccuracyTouch>
       <AccuracyShort>1</AccuracyShort>
@@ -636,7 +636,7 @@ Damage Boost: +40%</description>
     <soundInteract>Interact_Revolver</soundInteract>	
     <statBases>
       <WorkToMake>77700</WorkToMake>
-	  <MarketValue>6000</MarketValue>
+	  <MarketValue>3750</MarketValue>
       <Mass>3.0</Mass>
       <AccuracyTouch>0.90</AccuracyTouch>
       <AccuracyShort>0.68</AccuracyShort>
@@ -777,7 +777,7 @@ Augmentation adds ability: Arcane Barrier</description>
     <soundInteract>Interact_Revolver</soundInteract>	
     <statBases>
       <WorkToMake>77700</WorkToMake>
-	  <MarketValue>5000</MarketValue>
+	  <MarketValue>3350</MarketValue>
       <Mass>3.0</Mass>
       <AccuracyTouch>0.88</AccuracyTouch>
       <AccuracyShort>0.71</AccuracyShort>
@@ -1127,7 +1127,7 @@ Class XP Gain: -20%</description>
     <soundInteract>Bow_Large</soundInteract>	
     <statBases>
       <WorkToMake>77700</WorkToMake>
-	  <MarketValue>6000</MarketValue>
+	  <MarketValue>4480</MarketValue>
       <Mass>1.0</Mass>
 	  <MaxHitPoints>300</MaxHitPoints>
       <AccuracyTouch>0.50</AccuracyTouch>
@@ -1251,7 +1251,7 @@ Ability Cooldown: -10%</description>
     </weaponTags>
     <statBases>
       <WorkToMake>12000</WorkToMake>
-	  <MarketValue>900</MarketValue>
+	  <MarketValue>1250</MarketValue>
       <Mass>2.5</Mass>
 	  <MaxHitPoints>180</MaxHitPoints>
       <AccuracyTouch>0.55</AccuracyTouch>

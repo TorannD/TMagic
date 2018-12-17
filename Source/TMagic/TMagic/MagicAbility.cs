@@ -28,6 +28,39 @@ namespace TorannMagic
             }
         }
 
+        private float ActualBloodCost
+        {
+            get
+            {
+                float num = 1;
+                if(magicDef != null)
+                {
+                    if(magicDef == TorannMagicDefOf.TM_IgniteBlood)
+                    {
+                        num *= (1 - .05f * this.MagicUser.MagicData.MagicPowerSkill_IgniteBlood.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_IgniteBlood_eff").level);
+                    }
+                    if (magicDef == TorannMagicDefOf.TM_BloodForBlood)
+                    {
+                        num *= (1 - .05f * this.MagicUser.MagicData.MagicPowerSkill_BloodForBlood.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodForBlood_eff").level);
+                    }
+                    if (magicDef == TorannMagicDefOf.TM_BloodShield)
+                    {
+                        num *= (1 - .05f * this.MagicUser.MagicData.MagicPowerSkill_BloodShield.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodShield_eff").level);
+                    }
+                    if (magicDef == TorannMagicDefOf.TM_Rend || magicDef == TorannMagicDefOf.TM_Rend_I || magicDef == TorannMagicDefOf.TM_Rend_II || magicDef == TorannMagicDefOf.TM_Rend_III)
+                    {
+                        num *= (1 - .04f * this.MagicUser.MagicData.MagicPowerSkill_Rend.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Rend_eff").level);
+                    }
+                    if (magicDef == TorannMagicDefOf.TM_BloodMoon || magicDef == TorannMagicDefOf.TM_BloodMoon_I || magicDef == TorannMagicDefOf.TM_BloodMoon_II || magicDef == TorannMagicDefOf.TM_BloodMoon_III)
+                    {
+                        num *= (1 - .03f * this.MagicUser.MagicData.MagicPowerSkill_BloodMoon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodMoon_eff").level);
+                    }
+                    num *= (1 - .03f * this.MagicUser.MagicData.MagicPowerSkill_BloodGift.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodGift_eff").level);
+                }
+                return magicDef.bloodCost * num;
+            }
+        }
+
         private float ActualManaCost
         {
             get
@@ -69,6 +102,10 @@ namespace TorannMagic
                         ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                         this.MagicUser.MagicUserXP += (int)((magicDef.manaCost * 300) * this.MagicUser.xpGain * settingsRef.xpMultiplier);
                     }
+                }
+                if(this.magicDef.bloodCost != 0)
+                {
+                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_BloodHD"), -100 * this.ActualBloodCost);
                 }
             }
         }
@@ -153,6 +190,18 @@ namespace TorannMagic
                     num.ToString("p1")
                 );
 
+                if(magicAbilityDef == TorannMagicDefOf.TM_IgniteBlood || magicAbilityDef == TorannMagicDefOf.TM_BloodShield || magicAbilityDef == TorannMagicDefOf.TM_BloodForBlood || 
+                    magicAbilityDef == TorannMagicDefOf.TM_Rend || magicAbilityDef == TorannMagicDefOf.TM_Rend_I || magicAbilityDef == TorannMagicDefOf.TM_Rend_II || magicAbilityDef == TorannMagicDefOf.TM_Rend_III ||
+                    magicAbilityDef == TorannMagicDefOf.TM_BloodMoon || magicAbilityDef == TorannMagicDefOf.TM_BloodMoon_I || magicAbilityDef == TorannMagicDefOf.TM_BloodMoon_II || magicAbilityDef == TorannMagicDefOf.TM_BloodMoon_III)
+                {
+                    num = this.ActualBloodCost;
+                    text = "TM_AbilityDescBaseBloodCost".Translate(
+                    magicAbilityDef.bloodCost.ToString("p1")
+                    ) + "\n" + "TM_AbilityDescAdjustedBloodCost".Translate(
+                        num.ToString("p1")
+                    );
+                }
+
                 if(this.MagicUser.coolDown != 1f)
                 {
                     text3 = "TM_AdjustedCooldown".Translate(
@@ -203,6 +252,15 @@ namespace TorannMagic
                             result = false;
                             return result;
                         }
+                        bool flag6 = magicDef.bloodCost > 0f && this.MagicUser.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_BloodHD"),false) && (this.ActualBloodCost * 100) > this.MagicUser.Pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_BloodHD"), false).Severity;
+                        if (flag6)
+                        {
+                            reason = "TM_NotEnoughBlood".Translate(
+                                base.Pawn.LabelShort
+                            );
+                            result = false;
+                            return result;
+                        }
                     }
                 }
                 List<Apparel> wornApparel = base.Pawn.apparel.WornApparel;
@@ -215,6 +273,7 @@ namespace TorannMagic
                         this.magicDef.defName.Contains("TM_MagicMissile") ||
                         this.magicDef.defName.Contains("TM_DeathBolt") ||
                         this.magicDef.defName.Contains("TM_ShadowBolt") ||
+                        this.magicDef.defName == "TM_BloodForBlood" || this.magicDef.defName == "TM_IgniteBlood" ||
                         this.magicDef.defName == "TM_Poison" ) )
                     {
                         reason = "TM_ShieldBlockingPowers".Translate(

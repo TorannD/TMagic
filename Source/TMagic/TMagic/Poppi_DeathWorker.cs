@@ -17,21 +17,21 @@ namespace TorannMagic
             bool flag = corpse.InnerPawn.ageTracker.CurLifeStageIndex == 0;
             if (flag)
             {
-                radius = radius * Rand.Range(.6f, .8f);
+                radius = radius * Rand.Range(.8f, 1f);
             }
             else
             {
                 bool flag2 = corpse.InnerPawn.ageTracker.CurLifeStageIndex == 1;
                 if (flag2)
                 {
-                    radius = radius * Rand.Range(1f, 1.5f); 
+                    radius = radius * Rand.Range(1.2f, 1.8f); 
                 }
                 else
                 {
-                    radius = radius * Rand.Range(1.3f, 1.7f);
+                    radius = radius * Rand.Range(1.5f, 2f);
                 }
             }
-            GenExplosion.DoExplosion(corpse.Position, corpse.Map, radius, DamageDefOf.Burn, corpse.InnerPawn, Rand.Range(6, 10), 0,  null, null, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
+            GenExplosion.DoExplosion(corpse.Position, corpse.Map, radius, DamageDefOf.Burn, corpse.InnerPawn, Rand.Range(12, 16), 0,  null, null, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
         }
     }
 }

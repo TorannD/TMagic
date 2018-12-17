@@ -650,7 +650,7 @@ namespace TorannMagic
             return FindNearbyEnemy(pawn.Position, pawn.Map, pawn.Faction, radius, 0);
         }
 
-        public static Pawn FindNearbyEnemy(IntVec3 position, Map map, Faction faction, int radius, int minRange)
+        public static Pawn FindNearbyEnemy(IntVec3 position, Map map, Faction faction, float radius, float minRange)
         {
             List<Pawn> mapPawns = map.mapPawns.AllPawnsSpawned;
             List<Pawn> pawnList = new List<Pawn>();
@@ -853,6 +853,87 @@ namespace TorannMagic
             {
                 return null;
             }
+        }
+
+        public static float GetArcaneResistance(Pawn pawn, bool includePsychicSensitivity)
+        {
+            float resistance = 0;
+            CompAbilityUserMagic compMagic = pawn.GetComp<CompAbilityUserMagic>();
+            if(compMagic != null)
+            {
+                resistance += (compMagic.arcaneRes - 1);
+            }
+
+            CompAbilityUserMight compMight = pawn.GetComp<CompAbilityUserMight>();
+            if(compMight != null)
+            {
+                resistance += (compMight.arcaneRes - 1);
+            }
+
+            if (includePsychicSensitivity && resistance == 0f)
+            {
+                resistance += (1 - pawn.GetStatValue(StatDefOf.PsychicSensitivity, false))/2;
+            }
+
+            if (pawn.health != null && pawn.health.capacities != null)
+            {
+                resistance += (pawn.health.capacities.GetLevel(PawnCapacityDefOf.Consciousness) - 1);
+            }
+
+            return resistance;
+        }
+
+        public static float GetSpellPenetration(Pawn pawn)
+        {
+            float penetration = 0;
+            CompAbilityUserMagic compMagic = pawn.GetComp<CompAbilityUserMagic>();
+            if (compMagic != null)
+            {
+                penetration += (compMagic.arcaneDmg - 1);
+            }
+
+            CompAbilityUserMight compMight = pawn.GetComp<CompAbilityUserMight>();
+            if (compMight != null)
+            {
+                penetration += (compMight.arcaneRes - 1);
+            }
+
+            if (pawn.health != null && pawn.health.capacities != null)
+            {
+                penetration += (pawn.health.capacities.GetLevel(PawnCapacityDefOf.Consciousness) - 1);
+            }
+
+            return penetration;
+        }
+
+        public static float GetSpellSuccessChance(Pawn caster, Pawn victim, bool usePsychicSensitivity = true)
+        {
+            float successChance;
+            float penetration = TM_Calc.GetSpellPenetration(caster);
+            float resistance = TM_Calc.GetArcaneResistance(victim, usePsychicSensitivity);
+            successChance = 1f + penetration - resistance;
+            return successChance;
+        }
+
+        public static List<ThingDef> GetAllRaceBloodTypes()
+        {
+            List<ThingDef> bloodTypes = new List<ThingDef>();
+            bloodTypes.Clear();
+
+            IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
+                                                  where (def.race != null && def.race.BloodDef != null)
+                                                  select def;
+
+            foreach (ThingDef current in enumerable)
+            {
+                bloodTypes.AddDistinct(current.race.BloodDef);                
+            }
+
+            //for(int i =0; i< bloodTypes.Count; i++)
+            //{
+            //    Log.Message("blood type includes " + bloodTypes[i].defName);
+            //}
+            return bloodTypes;
         }
     }
 }

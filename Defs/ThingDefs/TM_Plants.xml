@@ -453,6 +453,8 @@ The claims that pomanasyrrium grant insight and clarity is disregarded by most a
       </li>
     </comps>
     <stages>
+		<li>
+		</li>
       <li>
         <label>withdrawal</label>
         <capMods>
@@ -484,6 +486,9 @@ The claims that pomanasyrrium grant insight and clarity is disregarded by most a
     <hediff>TM_SyrriumAddiction</hediff>
     <validWhileDespawned>true</validWhileDespawned>
     <stages>
+	  <li>
+		<visible>false</visible>
+	  </li>
       <li>
         <label>syrrium withdrawal</label>
         <description>My mind feels muddled. With syrrium I was brilliant, I'm sure everyone was impressed with my intellect. That's who I am, I need to have that!</description>

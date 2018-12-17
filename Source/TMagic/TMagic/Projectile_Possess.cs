@@ -22,6 +22,7 @@ namespace TorannMagic
         Pawn hitPawn = null;
         Pawn caster = null;
         List<int> hitPawnWorkSetting = new List<int>();
+        private bool prisoner = false;
 
         Pawn loadPawn = new Pawn();
 
@@ -32,6 +33,7 @@ namespace TorannMagic
         {
             base.ExposeData();
             Scribe_Values.Look<bool>(ref this.initialized, "initialized", false, false);
+            Scribe_Values.Look<bool>(ref this.prisoner, "prisoner", false, false);
             Scribe_Values.Look<int>(ref this.age, "age", 0, false);
             Scribe_Values.Look<int>(ref this.duration, "duration", 1200, false);
             Scribe_Values.Look<int>(ref this.inventoryCount, "inventoryCount", 0, false);
@@ -63,7 +65,7 @@ namespace TorannMagic
                     pwrVal = 3;
                     verVal = 3;
                 }
-                this.duration += verVal * 300;
+                this.duration += pwrVal * 300;
                 if (hitThing != null && hitThing is Pawn && hitPawn.RaceProps.Humanlike)
                 {
                     possessedFlag = (hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD) || hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD_I) || hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD_II) || hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD_III) ||
@@ -71,6 +73,7 @@ namespace TorannMagic
                     if (!hitPawn.Downed && !hitPawn.Dead && !possessedFlag)
                     {
                         this.pFaction = hitPawn.Faction;
+                        this.prisoner = hitPawn.IsPrisoner;
                         if(!caster.IsColonist && hitPawn.IsColonist)
                         {
                             List<WorkTypeDef> allWorkTypes = WorkTypeDefsUtility.WorkTypeDefsInPriorityOrder.ToList();
@@ -84,8 +87,8 @@ namespace TorannMagic
                         
                         if (this.pFaction != caster.Faction)
                         {
-                            float resistance = (hitPawn.GetStatValue(StatDefOf.PsychicSensitivity) - 1f) + (hitPawn.health.capacities.GetLevel(PawnCapacityDefOf.Consciousness) - 1f);
-                            if (Rand.Chance(1 - resistance))
+                            
+                            if (Rand.Chance(TM_Calc.GetSpellSuccessChance(caster, hitPawn, true)))
                             {
                                 //possess enemy or neutral
                                 int weaponCount = 0;
@@ -95,20 +98,20 @@ namespace TorannMagic
                                 }
                                 this.inventoryCount = hitPawn.inventory.innerContainer.Count + hitPawn.apparel.WornApparelCount + weaponCount;
                                 hitPawn.SetFaction(caster.Faction, null);
-                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_DisguiseHD_II, 20f + 5f * verVal);
-                                switch (pwrVal)
+                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_DisguiseHD_II, 20f + 5f * pwrVal);
+                                switch (verVal)
                                 {
                                     case 0:
-                                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_PossessionHD, 20f + 5f * verVal);
+                                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_PossessionHD, 20f + 5f * pwrVal);
                                         break;
                                     case 1:
-                                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_PossessionHD_I, 20f + 5f * verVal);
+                                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_PossessionHD_I, 20f + 5f * pwrVal);
                                         break;
                                     case 2:
-                                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_PossessionHD_II, 20f + 5f * verVal);
+                                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_PossessionHD_II, 20f + 5f * pwrVal);
                                         break;
                                     case 3:
-                                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_PossessionHD_III, 20f + 5f * verVal);
+                                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_PossessionHD_III, 20f + 5f * pwrVal);
                                         break;
                                 }
                                 initialized = true;
@@ -136,7 +139,7 @@ namespace TorannMagic
                             }
                             else
                             {
-                                MoteMaker.ThrowText(hitThing.DrawPos, hitThing.Map, "TM_ResistedSpell", -1);
+                                MoteMaker.ThrowText(hitThing.DrawPos, hitThing.Map, "TM_ResistedSpell".Translate(), -1);
                                 this.age = this.duration;
                                 this.Destroy(DestroyMode.Vanish);
                             }
@@ -144,20 +147,20 @@ namespace TorannMagic
                         else
                         {
                             //possess friendly
-                            HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_DisguiseHD_II, 20f + 5f * verVal);
-                            switch (pwrVal)
+                            HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_DisguiseHD_II, 20f + 5f * pwrVal);
+                            switch (verVal)
                             {
                                 case 0:
-                                    HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_CoOpPossessionHD, 20f + 5f * verVal);
+                                    HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_CoOpPossessionHD, 20f + 5f * pwrVal);
                                     break;
                                 case 1:
-                                    HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_CoOpPossessionHD_I, 20f + 5f * verVal);
+                                    HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_CoOpPossessionHD_I, 20f + 5f * pwrVal);
                                     break;
                                 case 2:
-                                    HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_CoOpPossessionHD_II, 20f + 5f * verVal);
+                                    HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_CoOpPossessionHD_II, 20f + 5f * pwrVal);
                                     break;
                                 case 3:
-                                    HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_CoOpPossessionHD_III, 20f + 5f * verVal);
+                                    HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_CoOpPossessionHD_III, 20f + 5f * pwrVal);
                                     break;
                             }
                             initialized = true;
@@ -226,7 +229,14 @@ namespace TorannMagic
                         bool flag3 = hitPawn.Faction != pFaction;
                         if (flag3)
                         {
-                            hitPawn.SetFaction(pFaction, null);
+                            if(prisoner)
+                            {
+                                hitPawn.guest.SetGuestStatus(this.caster.Faction, true);
+                            }
+                            else
+                            {
+                                hitPawn.SetFaction(pFaction, null);
+                            }
                         }
                         int weaponCount = 0;
                         if (hitPawn.equipment.PrimaryEq != null)
@@ -244,7 +254,7 @@ namespace TorannMagic
                         }
                         if (hitPawn.IsColonist)
                         {
-                            hitPawn.jobs.EndCurrentJob(JobCondition.InterruptForced, false);
+                            //hitPawn.jobs.EndCurrentJob(JobCondition.InterruptForced, false);
                         }
                         if(!caster.IsColonist && hitPawn.IsColonist)
                         {

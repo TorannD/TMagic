@@ -27,7 +27,7 @@
     <canOverlapZones>false</canOverlapZones>
     <statBases>
       <MaxHitPoints>300</MaxHitPoints>
-      <WorkToBuild>10000</WorkToBuild>
+      <WorkToBuild>8000</WorkToBuild>
       <Flammability>0.8</Flammability>
     </statBases>
     <description>The Arcane Capacitor is able to store mana as a form of potential energy that mages can draw upon at a later time. Mages assigned to magic tasks will charge the battery until it reaches its set fill level. A mage will only perform this task if their mana level is above 90% of their maximum.
@@ -111,7 +111,7 @@ Efficiency: 71%</description>
     <canOverlapZones>false</canOverlapZones>
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>
-      <WorkToBuild>60000</WorkToBuild>
+      <WorkToBuild>15000</WorkToBuild>
       <Flammability>0.0</Flammability>
     </statBases>
     <description>The dimensional mana pocket stores a tremendous amount of mana and has a large distribution coverage area but is slower than the arcane capacitor to redistribute mana when it's needed

@@ -17,6 +17,7 @@ namespace TorannMagic
         private static readonly Texture2D FullManaTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.55f, 0.03f, 1f));
         private static readonly Texture2D FullPsionicTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.0f, 0.5f, 1f));
         private static readonly Texture2D FullDeathKnightTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.6f, 0.0f, 0f));
+        private static readonly Texture2D FullBloodMageTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.4f, 0.0f, 0f));
         private static readonly Texture2D FullCountTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.2f, 0.2f, 0.24f));
 
         private static readonly Texture2D EmptyShieldBarTex = SolidColorMaterials.NewSolidColorTexture(Color.clear);
@@ -36,6 +37,7 @@ namespace TorannMagic
             bool isMage = compMagic.IsMagicUser && !pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless);
             bool isFighter = compMight.IsMightUser;
             bool isPsionic = pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_PsionicHD"), false);
+            bool isBloodMage = pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_BloodHD"), false);
             Hediff hediff = null;
             for(int h =0; h < pawn.health.hediffSet.hediffs.Count; h++)
             {
@@ -63,13 +65,17 @@ namespace TorannMagic
             {
                 barCount++;
             }
+            if(isBloodMage)
+            {
+                barCount++;
+            }
             float barHeight;
             float initialShift=0;
             if (barCount == 2)
             {
                 initialShift = 14f;
             }
-            else if (barCount == 3)
+            else if (barCount >= 3)
             {
                 initialShift = 6f;
             }
@@ -100,6 +106,14 @@ namespace TorannMagic
                         fillPercent = hediff.Severity / 100f;
                         Widgets.FillableBar(rect2, fillPercent, Gizmo_EnergyStatus.FullDeathKnightTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
                         Widgets.Label(rect2, "" + hediff.Severity.ToString("F0") + " / 100");
+                        yShift += (barHeight) + 5f;
+                    }
+                    if (isBloodMage)
+                    {
+                        rect2.y += yShift;
+                        fillPercent = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_BloodHD"), false).Severity / 100f;
+                        Widgets.FillableBar(rect2, fillPercent, Gizmo_EnergyStatus.FullBloodMageTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
+                        Widgets.Label(rect2, "" + (pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_BloodHD"), false).Severity).ToString("F0") + " / 100");
                         yShift += (barHeight) + 5f;
                     }
                     Rect rect3 = rect; // bar rect, starts at bottom of label rect

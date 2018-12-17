@@ -140,7 +140,7 @@ namespace TorannMagic
             potentialRecipes.Clear();
 
             IEnumerable<RecipeDef> enumerable = from def in DefDatabase<RecipeDef>.AllDefs
-                                                where (def.defName.Contains(this.targetThing.def.defName))
+                                                where (def.defName.Contains(this.targetThing.def.defName) && !def.defName.Contains("Administer") && !def.label.Contains("Replicate"))
                                                 select def;
 
             foreach (RecipeDef current in enumerable)
@@ -248,6 +248,10 @@ namespace TorannMagic
             String gemString = "Cut";
             String gemType = "";
             String gemQual = "";
+            if (this.targetThing.def.defName.Contains("wonder"))
+            {
+                gemType = "wonder";
+            }
             if (this.targetThing.def.defName.Contains("maxMP"))
             {
                 gemType = "MPGem";

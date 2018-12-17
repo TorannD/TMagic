@@ -43,7 +43,7 @@
     </tradeTags>
 	<tradeability>All</tradeability>
     <statBases>
-      <MarketValue>4000</MarketValue>
+      <MarketValue>3300</MarketValue>
       <MaxHitPoints>1000</MaxHitPoints>
       <Mass>0.2</Mass>
 	  <Flammability>0.5</Flammability>
@@ -75,7 +75,7 @@
     </tradeTags>
 	<tradeability>All</tradeability>
     <statBases>
-      <MarketValue>2000</MarketValue>
+      <MarketValue>1750</MarketValue>
       <MaxHitPoints>1000</MaxHitPoints>
       <Mass>0.2</Mass>
 	  <Flammability>0.5</Flammability>
@@ -107,7 +107,7 @@
     </tradeTags>
 	<tradeability>All</tradeability>
     <statBases>
-      <MarketValue>4000</MarketValue>
+      <MarketValue>2575</MarketValue>
       <MaxHitPoints>1000</MaxHitPoints>
       <Mass>0.2</Mass>
 	  <Flammability>0.5</Flammability>
@@ -209,7 +209,7 @@
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
 	<statBases>
-      <MarketValue>1700</MarketValue>
+      <MarketValue>1500</MarketValue>
     </statBases>
     <useHitPoints>true</useHitPoints>
 	<comps>
@@ -550,6 +550,56 @@ This arcane script is incomplete and the reader will not learn any supporting te
     </graphicData>
     <drawGUIOverlay>false</drawGUIOverlay>
   </ThingDef>
+  
+  <ThingDef ParentName="Partial_ArcaneScriptBase">
+    <defName>Torn_BookOfHemomancy</defName>
+    <label>Torn Script: Hemomancy</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a gifted pawn how to become a hemomancer, or blood mage, and use the power of blood to fuel their magic.
+This arcane script is incomplete and the reader may not be able to learn some, or any, blood mage abilities.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/torn_blood</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+  <ThingDef ParentName="Partial_ArcaneScriptBase">
+    <defName>Torn_BookOfEnchanter</defName>
+    <label>Torn Script: Enchanter</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a gifted pawn how to become an enchanter, able to manipulate matter and material to serve their purpose.
+This arcane script is incomplete and the reader may not be able to learn some, or any, enchanter abilities.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/torn_enchanter</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
 
   <!--=============== Arcane Scripts ====================-->
 
@@ -867,6 +917,54 @@ This arcane script is incomplete and the reader will not learn any supporting te
     <drawGUIOverlay>false</drawGUIOverlay>
   </ThingDef>
   
+  <ThingDef ParentName="ArcaneScriptBase">
+    <defName>BookOfHemomancy</defName>
+    <label>Arcane Script: Hemomancy</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a gifted pawn how to become a hemomancer, or blood mage, and use the power of blood to fuel their magic.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/bloodmage</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneScriptBase">
+    <defName>BookOfEnchanter</defName>
+    <label>Arcane Script: Enchanter</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a gifted pawn how to become an enchanter, able to manipulate matter and material to serve their purpose.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/enchanter</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
     <!--=============== Combat Forms ====================-->
 
   <ThingDef ParentName="CombatFormBase">
@@ -882,9 +980,6 @@ This arcane script is incomplete and the reader will not learn any supporting te
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>4000</MarketValue>
-	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
@@ -912,7 +1007,7 @@ This arcane script is incomplete and the reader will not learn any supporting te
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>7000</MarketValue>
+      <MarketValue>2850</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -938,9 +1033,6 @@ This arcane script is incomplete and the reader will not learn any supporting te
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>4000</MarketValue>
-	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
@@ -965,9 +1057,6 @@ This arcane script is incomplete and the reader will not learn any supporting te
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>5000</MarketValue>
-	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
@@ -992,9 +1081,6 @@ This arcane script is incomplete and the reader will not learn any supporting te
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>5000</MarketValue>
-	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
@@ -1019,9 +1105,6 @@ This arcane script is incomplete and the reader will not learn any supporting te
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>5000</MarketValue>
-	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
@@ -1046,9 +1129,6 @@ This arcane script is incomplete and the reader will not learn any supporting te
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>5500</MarketValue>
-	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
@@ -1076,7 +1156,7 @@ This arcane script is incomplete and the reader will not learn any supporting te
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>300</MarketValue>
+      <MarketValue>260</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -1124,7 +1204,7 @@ This arcane script is incomplete and the reader will not learn any supporting te
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>720</MarketValue>
+      <MarketValue>500</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -1172,7 +1252,7 @@ This arcane script is incomplete and the reader will not learn any supporting te
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>1500</MarketValue>
+      <MarketValue>1320</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -1220,7 +1300,7 @@ This arcane script is incomplete and the reader will not learn any supporting te
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>720</MarketValue>
+      <MarketValue>460</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -1268,7 +1348,7 @@ This arcane script is incomplete and the reader will not learn any supporting te
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>480</MarketValue>
+      <MarketValue>380</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -1316,7 +1396,7 @@ This arcane script is incomplete and the reader will not learn any supporting te
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>800</MarketValue>
+      <MarketValue>610</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -1364,7 +1444,7 @@ This arcane script is incomplete and the reader will not learn any supporting te
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>480</MarketValue>
+      <MarketValue>380</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -1412,7 +1492,7 @@ This arcane script is incomplete and the reader will not learn any supporting te
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>800</MarketValue>
+      <MarketValue>670</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -1460,7 +1540,7 @@ This arcane script is incomplete and the reader will not learn any supporting te
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>600</MarketValue>
+      <MarketValue>540</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -1508,7 +1588,7 @@ This arcane script is incomplete and the reader will not learn any supporting te
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>600</MarketValue>
+      <MarketValue>540</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -1653,7 +1733,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>420</MarketValue>
+      <MarketValue>340</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -1701,7 +1781,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>400</MarketValue>
+      <MarketValue>320</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -1749,7 +1829,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>650</MarketValue>
+      <MarketValue>580</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -1797,7 +1877,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>2500</MarketValue>
+      <MarketValue>2150</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -1845,7 +1925,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>2500</MarketValue>
+      <MarketValue>2150</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -1893,7 +1973,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>2500</MarketValue>
+      <MarketValue>2150</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -1941,7 +2021,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>1200</MarketValue>
+      <MarketValue>1050</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -1989,7 +2069,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>1000</MarketValue>
+      <MarketValue>740</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -2037,7 +2117,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>1600</MarketValue>
+      <MarketValue>1075</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -2085,7 +2165,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>820</MarketValue>
+      <MarketValue>760</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -2133,7 +2213,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>820</MarketValue>
+      <MarketValue>760</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -2181,7 +2261,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>1600</MarketValue>
+      <MarketValue>1860</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -2229,7 +2309,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>1000</MarketValue>
+      <MarketValue>960</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -2277,7 +2357,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>3000</MarketValue>
+      <MarketValue>2860</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -2325,7 +2405,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>4000</MarketValue>
+      <MarketValue>3750</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -2373,7 +2453,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>2000</MarketValue>
+      <MarketValue>1900</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -2421,7 +2501,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>3000</MarketValue>
+      <MarketValue>2575</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -2469,7 +2549,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>2500</MarketValue>
+      <MarketValue>2260</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -2517,7 +2597,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>1500</MarketValue>
+      <MarketValue>1650</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -2565,7 +2645,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>1500</MarketValue>
+      <MarketValue>1800</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -2613,7 +2693,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>1500</MarketValue>
+      <MarketValue>1650</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -2661,7 +2741,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>1500</MarketValue>
+      <MarketValue>1650</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -2709,7 +2789,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>500</MarketValue>
+      <MarketValue>400</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -2757,7 +2837,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>750</MarketValue>
+      <MarketValue>500</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -2805,7 +2885,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>650</MarketValue>
+      <MarketValue>480</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -2853,7 +2933,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>1800</MarketValue>
+      <MarketValue>1700</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -2882,6 +2962,102 @@ Produces 400Wd.</description>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_BloodMoon</defName>
+    <label>Blood Mage Spell: Blood Moon</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a blood mage how to summon a vicious pack of blood demons.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>2250</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>200</RawMagicyte>
+		<DevilstrandCloth>150</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_blood</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_Shapeshift</defName>
+    <label>Enchanter Spell: Shapeshift</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches an enchanter how to perform shapeshifting on themselves without losing their identity.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>2000</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>180</RawMagicyte>
+		<DevilstrandCloth>130</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_power</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <drawGUIOverlay>false</drawGUIOverlay>
@@ -3264,13 +3440,13 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>5000</MarketValue>
+      <MarketValue>4000</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>500</RawMagicyte>
+		<RawMagicyte>400</RawMagicyte>
 	</costList>
 	<recipeMaker>		    
 		<workAmount>6000</workAmount>

@@ -111,28 +111,35 @@ namespace TorannMagic
                         {
                             if (TM_Calc.IsRobotPawn(targetPawn))
                             {
-                                if (rnd <= .33f)
+                                if (Rand.Chance(TM_Calc.GetSpellSuccessChance(caster, targetPawn, true)))
                                 {
-                                    TM_Action.DamageEntities(targetPawn, null, Rand.Range(8, 15) + pwrVal, TMDamageDefOf.DamageDefOf.TM_ElectricalBurn, this.launcher);
+                                    if (rnd <= .33f)
+                                    {
+                                        TM_Action.DamageEntities(targetPawn, null, Rand.Range(8, 15) + pwrVal, TMDamageDefOf.DamageDefOf.TM_ElectricalBurn, this.launcher);
+                                    }
+                                    else if (rnd <= .66f)
+                                    {
+                                        if (targetPawn.mindState != null)
+                                        {
+                                            targetPawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk, "logic circuits sabotaged", true, false, null, true);
+                                        }
+                                        else
+                                        {
+                                            targetPawn.TryStartAttack(TM_Calc.FindNearbyPawn(targetPawn, 10));
+                                        }
+                                    }
+                                    else if (rnd <= 1f)
+                                    {
+                                        int rndCount = Rand.Range(2, 5);
+                                        for (int j = 0; j < rndCount; j++)
+                                        {
+                                            TM_Action.DamageEntities(targetPawn, null, Rand.Range(3, 5) + pwrVal, TMDamageDefOf.DamageDefOf.TM_ElectricalBurn, this.launcher);
+                                        }
+                                    }
                                 }
-                                else if (rnd <= .66f)
+                                else
                                 {
-                                    if (targetPawn.mindState != null)
-                                    {
-                                        targetPawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk, "logic circuits sabotaged", true, false, null, true);
-                                    }
-                                    else
-                                    {
-                                        targetPawn.TryStartAttack(TM_Calc.FindNearbyPawn(targetPawn, 10));
-                                    }
-                                }
-                                else if (rnd <= 1f)
-                                {
-                                    int rndCount = Rand.Range(2, 5);
-                                    for (int j = 0; j < rndCount; j++)
-                                    {
-                                        TM_Action.DamageEntities(targetPawn, null, Rand.Range(3, 5) + pwrVal, TMDamageDefOf.DamageDefOf.TM_ElectricalBurn, this.launcher);
-                                    }
+                                    MoteMaker.ThrowText(targetPawn.DrawPos, targetPawn.Map, "TM_ResistedSpell".Translate(), -1);
                                 }
                                 this.age = this.duration;
                             }

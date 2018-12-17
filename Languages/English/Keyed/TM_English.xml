@@ -3,6 +3,7 @@
 
 <!-- Notification messages  -->
 <TM_NotEnoughMana>{0} needs more mana to cast this spell.</TM_NotEnoughMana>
+<TM_NotEnoughBlood>{0} has not sacrificed enough blood to cast this spell.</TM_NotEnoughBlood>
 <TM_NotEnoughMaxMana>{0} does not have the mana reserves to sustain {1}</TM_NotEnoughMaxMana>
 <TM_NotEnoughStamina>{0} does not have enough stamina to execute this ability.</TM_NotEnoughStamina>
 <TM_NotEnoughPsionicEnergy>{0} does not have enough psionic energy for {1}.</TM_NotEnoughPsionicEnergy>
@@ -118,6 +119,18 @@
 <TM_RequiresHateAmount>Required Hate: {0}</TM_RequiresHateAmount>
 <TM_NotEnoughHate>{0} does not have enough Hate to use {1}.</TM_NotEnoughHate>
 <TM_ReplicatedUnrecognizedIngredient>{0} contains an unspecified ingredient and cannot be replicated.</TM_ReplicatedUnrecognizedIngredient>
+<TM_NoExternalBodyPartsCanBleed>{0} has no body part to draw blood from.</TM_NoExternalBodyPartsCanBleed>
+<TM_NoThingToTransmutate>{0} found no resources to transmutate at the target location.</TM_NoThingToTransmutate>
+<TM_UnableToTransmutate>{0} is unable to transmutate {1}.</TM_UnableToTransmutate>
+<TM_TransmutationLostCohesion>The material of {0} lost cohesion during transmutation and disintegrated.</TM_TransmutationLostCohesion>
+<TM_CancelPolymorph>Cancel Shapeshift</TM_CancelPolymorph>
+<TM_CancelPolymorphDesc>Returns the caster to their original form prior to shape shifting.</TM_CancelPolymorphDesc>
+<TM_NoMeleeWeaponToEnchant>No melee weapon found on {0} to enchant.</TM_NoMeleeWeaponToEnchant>
+<TM_CannotEnchantArtifact>{0} is unable to enchant {1}, this item cannot be enchanted further.</TM_CannotEnchantArtifact>
+<TM_BrokenOutOfMentalState>{0} has broken out of mental state {1} with help from a mind ward.</TM_BrokenOutOfMentalState>
+<TM_InsufficientMaterialForArtifact>Not enough {0} to create an enchanters stone.</TM_InsufficientMaterialForArtifact>
+<TM_CannotCreateStone>{0} is not yet able to create an artifact from {1}.</TM_CannotCreateStone>
+<TM_CannotMimicBloodMage>{0} cannot mimic the abilities of a blood mage</TM_CannotMimicBloodMage>
 
 
 <!-- Surgery Failed letters -->
@@ -155,7 +168,8 @@
 <TM_autocastEvaluationFrequency>Autocast evaluation frequency</TM_autocastEvaluationFrequency>
 <showLevelUpMessage>Show level up messages</showLevelUpMessage>
 <showUndeadPawnChange>Change undead pawn appearance</showUndeadPawnChange>
-<showUndeadAnimalChange>Change undead animal appearance</showUndeadAnimalChange>
+<showUndeadAnimalChange>Change undead animal appearance</showUndeadAnimalChange>
+<unrestrictedBloodTypesForBloodMagic>Unrestricted blood types for blood magic</unrestrictedBloodTypesForBloodMagic>
 
 <!-- Mod Settings Class options -->
 
@@ -184,6 +198,8 @@
 <TM_Psionic>Psionic</TM_Psionic>
 <TM_Technomancer>Technomancer</TM_Technomancer>
 <TM_DeathKnight>Death Knight</TM_DeathKnight>
+<TM_BloodMage>Blood Mage</TM_BloodMage>
+<TM_Enchanter>Enchanter</TM_Enchanter>
 
 <!-- Magic Ability Point Descriptions -->
 <TM_global_regen_pwr>Clarity</TM_global_regen_pwr>
@@ -448,12 +464,16 @@ Level 3: 5</TM_RaiseUndead_pwr_desc>
 <TM_DeathMark_eff_desc>Reduces mana cost of Death Mark by 8% per skill level.</TM_DeathMark_eff_desc>
 <TM_DeathMark_pwr_desc>Increases the severity of Death Mark by 50% per skill level.</TM_DeathMark_pwr_desc>
 <TM_FogOfTorment_eff_desc>Reduces mana cost of Fog of Torment by 8% per skill level.</TM_FogOfTorment_eff_desc>
-<TM_FogOfTorment_pwr_desc>Increases damage and penalties caused by fog of torment by 33% per skill level.  Also increases the amount undead are healed by 50% per skill level.</TM_FogOfTorment_pwr_desc>
+<TM_FogOfTorment_pwr_desc>Increases damage and penalties caused by fog of torment by 33% per skill level.  Also increases the amount undead are healed by 50% per skill level.
+Level 0: 2-4 damage, 2 healing 
+Level 1: 3-5 damage, 3 healing
+Level 2: 4-6 damage, 4 healing
+Level 3: 5-7 damage, 5 healing</TM_FogOfTorment_pwr_desc>
 <TM_FogOfTorment_ver_desc>Increases the duration, reduces time between effects, and expands the radius of Fog of Torment.
-Level 0: radius 6, effect/3s, duration 30s
-Level 1: radius 7, effect/2.7s, duration 33s
-Level 2: radius 8, effect/2.4s, duration 36s
-Level 3: radius 9, effect/2.1s, duration 39s</TM_FogOfTorment_ver_desc>
+Level 0: radius 6, effect/2s, duration 30s
+Level 1: radius 7, effect/1.7s, duration 33s
+Level 2: radius 8, effect/1.4s, duration 36s
+Level 3: radius 9, effect/1.1s, duration 39s</TM_FogOfTorment_ver_desc>
 <TM_ConsumeCorpse_eff_desc>Increases mana restored by Consume Corpse by 7% per skill level.</TM_ConsumeCorpse_eff_desc>
 <TM_ConsumeCorpse_ver_desc>Consume corpse also heals the physical wounds of the caster.  
 The amount of health varies based on type (human or animal) and freshness of the corpse or undead being consumed.</TM_ConsumeCorpse_ver_desc>
@@ -561,7 +581,7 @@ Level 1: -10% consciousness
 Level 2: -15% consciousness
 Level 3: -20% consciousness</TM_Lullaby_ver_desc>
 <TM_BattleHymn_eff_desc>Reduces mana cost to use and maintain Battle Hymn by 6% per skill level.</TM_BattleHymn_eff_desc>
-<TM_BattleHymn_ver_desc>Increases range of battle hymn by 2m per skill point (base 11m). Also increases the tempo of battle hymn by .5s (5s base).</TM_BattleHymn_ver_desc>
+<TM_BattleHymn_ver_desc>Increases range of battle hymn by 3m per skill point (base 17m). Also increases the tempo of battle hymn by .5s (5s base).</TM_BattleHymn_ver_desc>
 <TM_BattleHymn_pwr_desc>Increases the effects of battle hymn 12% per skill point for each verse (iteration) it remains active and increases the chance of invoking an inspiration by 1%.</TM_BattleHymn_pwr_desc>
 
 <TM_BardTraining_pwr>Bard Training</TM_BardTraining_pwr>
@@ -664,7 +684,10 @@ Level 2: 12 weight
 Level 3: 14 weight</TM_EarthernHammer_pwr_desc>
 <TM_EarthernHammer_eff_desc>Decreases mana cost of EarthernHammer by 6% per skill level.</TM_EarthernHammer_eff_desc>
 <TM_EarthernHammer_ver_desc>Reduces the time between each throw and reduces the duration of stun applied to the caster.</TM_EarthernHammer_ver_desc>
-<TM_Sentinel_pwr_desc>Increases the combat power of a sentinel. Requires 2 ability points to level.</TM_Sentinel_pwr_desc>
+<TM_Sentinel_pwr_desc>Increases the combat power of a sentinel. Requires 2 ability points to level.
+Level 0 (lesser sentinel): Power 12, Armor 45%, Speed 3.2c/s, Health 75%
+Level 1 (sentinel): Power 14, Armor 51%, Speed 4c/s, Health 100%
+Level 2 (greater sentinel): Power 16, Armor 55%, Speed 4.8c/s, Health 125%</TM_Sentinel_pwr_desc>
 <TM_Sentinel_eff_desc>Decreases the upkeep cost for each sentinel.
 Level 0: -20% max mana
 Level 1: -18% max mana
@@ -764,6 +787,127 @@ Lightning shot: stuns the target (1% mana)</TM_TechnoWeapon_ver_desc>
 <TM_OrbitalStrike_pwr>Overkill</TM_OrbitalStrike_pwr>
 <TM_OrbitalStrike_eff>Calculated Alignment</TM_OrbitalStrike_eff>
 <TM_OrbitalStrike_ver>Authorization Bypass</TM_OrbitalStrike_ver>
+
+<TM_BloodGift_pwr_desc>Increases the damage of all blood magic by 10% per skill point.</TM_BloodGift_pwr_desc>
+<TM_BloodGift_eff_desc>Reduces the mana cost of blood sacrifice by 5% per skill point and reduces the blood cost of all blood magic by 3% per skill point.</TM_BloodGift_eff_desc>
+<TM_BloodGift_ver_desc>Increases the amount of blood magic gained when using blood sacrifice or through bleeding by 10%. Increased skill levels allows the blood mage to draw fresh blood from the ground:
+Level 0: none
+Level 1: 1cell radius
+Level 2: 3cell radius
+Level 3: 5cell radius</TM_BloodGift_ver_desc>
+<TM_IgniteBlood_pwr_desc>Increases the damage of Ignite Blood by 12% per skill level.</TM_IgniteBlood_pwr_desc>
+<TM_IgniteBlood_eff_desc>Reduces the blood magic cost required to use Ignite Blood by 5% per skill level.</TM_IgniteBlood_eff_desc>
+<TM_IgniteBlood_ver_desc>Increases the burn rate of Ignite Blood by 15% per skill point. This affects how fast flames spread and how quickly flames pulse.</TM_IgniteBlood_ver_desc>
+<TM_BloodForBlood_pwr_desc>Increases the duration of Blood For Blood by 10%.</TM_BloodForBlood_pwr_desc>
+<TM_BloodForBlood_eff_desc>Reduces the blood magic cost required to use Blood For Blood by 5% per skill level.</TM_BloodForBlood_eff_desc>
+<TM_BloodForBlood_ver_desc>Increase the amount healed by Blood For Blood by 0.35 pts each skill level. Base 1 pt. 
+
+Each tick of Blood For Blood can emit a healing wave generated from the caster that will heal any nearby, friendly pawns. Each skill level also increases the radius of healing pulse:
+Level 0: none
+Level 1: 1cell radius
+Level 2: 2cell radius
+Level 3: 3cell radius</TM_BloodForBlood_ver_desc>
+<TM_BloodShield_pwr_desc>Increases the strength of the blood shield by 10% per skill point.</TM_BloodShield_pwr_desc>
+<TM_BloodShield_eff_desc>Decreases blood magic cost required to use Blood Shield by 5% per skill level.</TM_BloodShield_eff_desc>
+<TM_BloodShield_ver_desc>Increases the amount of healing generated by blood shield by 15% per skill level.</TM_BloodShield_ver_desc>
+<TM_Rend_pwr_desc>Increases the damage of rend by 15% per skill point.</TM_Rend_pwr_desc>
+<TM_Rend_eff_desc>Decreases the blood magic cost required to use Rend by 4% per skill level.</TM_Rend_eff_desc>
+<TM_Rend_ver_desc>Increases the duration of rend by 20% per skill level and increases the amount of blood created.</TM_Rend_ver_desc>
+<TM_BloodMoon_pwr_desc>Deepen the night and call forth more powerful blood terrors, increasing their size and damage by 15% per skill level.</TM_BloodMoon_pwr_desc>
+<TM_BloodMoon_eff_desc>Blood terrors eagerly await your call, decreasing the blood magic required to to use Blood Moon by 3% per skill point and increases blood terror attack frequency by 5%.</TM_BloodMoon_eff_desc>
+<TM_BloodMoon_ver_desc>Extend the duration of Blood Moon by 10% per skill point.</TM_BloodMoon_ver_desc>
+
+<TM_BloodGift_pwr>Blood Is Power</TM_BloodGift_pwr>
+<TM_BloodGift_eff>Blood Sacrifice</TM_BloodGift_eff>
+<TM_BloodGift_ver>Pure Blood</TM_BloodGift_ver>
+<TM_IgniteBlood_pwr>Hemorage</TM_IgniteBlood_pwr>
+<TM_IgniteBlood_eff>Blood Spark</TM_IgniteBlood_eff>
+<TM_IgniteBlood_ver>Wildfire</TM_IgniteBlood_ver>
+<TM_BloodForBlood_pwr>Hemophilia</TM_BloodForBlood_pwr>
+<TM_BloodForBlood_eff>Blood Ties</TM_BloodForBlood_eff>
+<TM_BloodForBlood_ver>Life Pulse</TM_BloodForBlood_ver>
+<TM_BloodShield_pwr>Thickened Blood</TM_BloodShield_pwr>
+<TM_BloodShield_eff>Blood Rush</TM_BloodShield_eff>
+<TM_BloodShield_ver>Coagulate Wounds</TM_BloodShield_ver>
+<TM_Rend_pwr>Serrated Edge</TM_Rend_pwr>
+<TM_Rend_eff>Mystic Claw</TM_Rend_eff>
+<TM_Rend_ver>Thousand Cuts</TM_Rend_ver>
+<TM_BloodMoon_pwr>Full Moon</TM_BloodMoon_pwr>
+<TM_BloodMoon_eff>Hunger</TM_BloodMoon_eff>
+<TM_BloodMoon_ver>Endless Night</TM_BloodMoon_ver>
+
+<TM_EnchantedBody_pwr_desc>Increases the power of Enchanted Body and Enchanted Aura by ~33% per skill level.</TM_EnchantedBody_pwr_desc>
+<TM_EnchantedBody_eff_desc>Reduces spell cost and maximum mana upkeep cost of Enchanted Body and Enchanted Aura by 5% per skill level.</TM_EnchantedBody_eff_desc>
+<TM_EnchantedBody_ver_desc>Reduces the mana regeneration penalty of Enchanted Body and Enchanted Aura by 15% per skill level.</TM_EnchantedBody_ver_desc>
+<TM_Transmutate_pwr_desc>Decreases the amount of value lost by 5% per skill level when performing a transmutation. Base conversion value is 70%.
+Transmuting equipment will degrade the equipment:
+Level 0: -20% HP
+Level 1: -10% HP
+Level 2: no degradation
+Level 3: +10% HP
+
+Equipment will disintegrate if it degrades below 0 durability. Equipment transmutations will always remove 'tainted.'</TM_Transmutate_pwr_desc>
+<TM_Transmutate_eff_desc>Reduces the mana cost required to use Transmutate by 6% per skill level.</TM_Transmutate_eff_desc>
+<TM_Transmutate_ver_desc>Transmutation can be performed on more complex material.
+Level 0: Raw resources (stone, steel, silver, etc)
+Level 1: Foods (meat, rice, meals) - will always convert to pemmican or nutrient paste
+Level 2: Corpses - will always convert to nutrient paste
+Level 3: Equipment - applies to equipment made from stuff; transmutes to stuff between 95% - 200% value of the original stuff</TM_Transmutate_ver_desc> 
+<TM_EnchanterStone_eff_desc>Reduces the mana required to cast Enchanter's Stone by 6% per skill level.</TM_EnchanterStone_eff_desc>
+<TM_EnchanterStone_ver_desc>Allows the enchanter to create artifacts out of more resources types. This skill requires 2 ability points to train.
+Level 0: stone chunks (slate, sandstone, limestone, marble, granite)
+Level 1: steel, silver, *iron
+Level 2: herbal medicine, jade, wood
+Level 3: gold, magicyte</TM_EnchanterStone_ver_desc>
+<TM_EnchantWeapon_pwr_desc>Increases the power of the weapon enchantment.
+Fire: +33% average damage
+Ice: +25% average damage
+Stun: +25% stun duration
+Dark: +10% application chance</TM_EnchantWeapon_pwr_desc>
+<TM_EnchantWeapon_eff_desc>Decreases mana cost of Enchant Weapon by 6% per skill level.</TM_EnchantWeapon_eff_desc>
+<TM_Polymorph_pwr_desc>Reduces targets chance to resist. Resistance is affected by the arcane resistance and psychic sensitivity of the target. May enrage (berserk) enemies.
+
+Resistance chance prior to modifiers:
+Level 0: Pawn 50%, Mechanoid 0%
+Level 1: Pawn 60%, Mechanoid 20%, enrage 20%
+Level 2: Pawn 70%, Mechanoid 40%, enrage 40%
+Level 3: Pawn 80%, Mechanoid 60%, enrage 50%</TM_Polymorph_pwr_desc>
+<TM_Polymorph_eff_desc>Decrease the cost to cast Polymorph by 6% per skill level.</TM_Polymorph_eff_desc>
+<TM_Polymorph_ver_desc>Increases the duration of polymorph and applies more control over the creature combat powers for enemies and allies. This skill requires 2 ability points to train.
+Level 0: Duration 30s, enemy 100 / ally 60
+Level 1: Duration 40s, enemy 80 / ally 100
+Level 2: Duration 50s, enemy 60 / ally 160
+Level 3: Permanent, enemy 60 / ally 200</TM_Polymorph_ver_desc>
+<TM_Shapeshift_pwr_desc>The enchanter takes some liberties to improve the physical traits of the creature they shapeshift into. Learn to further enhance physical power while shape-shifted. This skill requires 2 ability points to train.
+Level 0: physical +25%, attack speed +10%, armor +10%
+Level 1: physical +35%, attack speed +10%, armor +15%
+Level 2: physical +40%, attack speed +15%, armor +15%
+Level 3: physical +50%, attack speed +15%, armor +20%
+</TM_Shapeshift_pwr_desc>
+<TM_Shapeshift_eff_desc>Decreases mana cost of Shapeshift by 5% of base cost per skill level. Increases duration by 20%. This skill requires 2 ability points to train.
+Level 3: shapeshift is permanent until canceled.</TM_Shapeshift_eff_desc>
+<TM_Shapeshift_ver_desc>Shapeshift into creatures with higher combat power. Min/Max values are multiplied by Arcane Power. This skill requires 2 ability points to train.
+Level 0: min 80, max 250
+Level 1: min 120, max 320
+Level 2: min 150, max 420
+Level 3: min 200, max 500; unlocks access to Shapeshift: Dire Wolf</TM_Shapeshift_ver_desc>
+
+<TM_EnchantedBody_pwr>Mind Over Body</TM_EnchantedBody_pwr>
+<TM_EnchantedBody_eff>Compliant Form</TM_EnchantedBody_eff>
+<TM_EnchantedBody_ver>Adaption</TM_EnchantedBody_ver>
+<TM_Transmutate_pwr>Conversion Rate</TM_Transmutate_pwr>
+<TM_Transmutate_eff>Transformation Cost</TM_Transmutate_eff>
+<TM_Transmutate_ver>Material Application</TM_Transmutate_ver>
+<TM_EnchanterStone_eff>Sub-Atomic Control</TM_EnchanterStone_eff>
+<TM_EnchanterStone_ver>Material Matters</TM_EnchanterStone_ver>
+<TM_EnchantWeapon_pwr>Elemental Edge</TM_EnchantWeapon_pwr>
+<TM_EnchantWeapon_eff>Elemental Weaving</TM_EnchantWeapon_eff>
+<TM_Polymorph_pwr>Reduce Resistance</TM_Polymorph_pwr>
+<TM_Polymorph_eff>Seamless</TM_Polymorph_eff> 
+<TM_Polymorph_ver>Loose Ends</TM_Polymorph_ver>
+<TM_Shapeshift_pwr>Enhanced Form</TM_Shapeshift_pwr>
+<TM_Shapeshift_eff>Enduring Transformation</TM_Shapeshift_eff>
+<TM_Shapeshift_ver>Natural Selection</TM_Shapeshift_ver>
 
 <!-- Might Ability Point Descriptions -->
 
@@ -1049,7 +1193,7 @@ Base amount: 0%</TM_LifeSteal_ver_desc>
 <TM_LifeSteal_pwr>Unquenchable Hate</TM_LifeSteal_pwr>
 <TM_LifeSteal_eff>Double Tap</TM_LifeSteal_eff>
 <TM_LifeSteal_ver>Proximity Heal</TM_LifeSteal_ver>
-<TM_GraveBlade_pwr>At Deaths Door</TM_GraveBlade_pwr>
+<TM_GraveBlade_pwr>At Death's Door</TM_GraveBlade_pwr>
 <TM_GraveBlade_eff>Ferryman</TM_GraveBlade_eff>
 <TM_GraveBlade_ver>Blood and Spirit</TM_GraveBlade_ver>
 
@@ -1088,6 +1232,8 @@ Base amount: 0%</TM_LifeSteal_ver_desc>
 <TM_AbilityDescAdjustedManaCost>Adjusted Mana Cost: {0} </TM_AbilityDescAdjustedManaCost>
 <TM_AbilityDescBaseStaminaCost>Base Stamina Cost: {0} </TM_AbilityDescBaseStaminaCost>
 <TM_AbilityDescAdjustedStaminaCost>Adjusted Stamina Cost: {0} </TM_AbilityDescAdjustedStaminaCost>
+<TM_AbilityDescBaseBloodCost>Base Blood Cost: {0} </TM_AbilityDescBaseBloodCost>
+<TM_AbilityDescAdjustedBloodCost>Adjusted Blood Cost: {0} </TM_AbilityDescAdjustedBloodCost>
 <TM_AbilityDescPortalTime>Portal collapse in {0} seconds</TM_AbilityDescPortalTime>
 <TM_AbilityDescSummonDuration>Summon duration: {0} seconds</TM_AbilityDescSummonDuration>
 <TM_AdjustedCooldown>Adjusted Cooldown: {0} seconds</TM_AdjustedCooldown>

@@ -89,6 +89,7 @@ namespace TorannMagic
                 }
 
                 SearchForTargets(base.CasterPawn.Position, (2f + (float)(.5f * ver.level)), map);
+                TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_BladeSweep"), this.CasterPawn.DrawPos, this.CasterPawn.Map, 1.6f + .4f * ver.level, .04f, 0f, .18f, 1000, 0, 0, Rand.Range(0, 360));
             }
             else
             {
@@ -107,7 +108,7 @@ namespace TorannMagic
         public void SearchForTargets(IntVec3 center, float radius, Map map)
         {
             Pawn victim = null;
-            IntVec3 curCell;
+            IntVec3 curCell;            
             DrawBlade(base.CasterPawn.Position.ToVector3Shifted(), 4f + (float)(verVal));
             IEnumerable<IntVec3> targets = GenRadial.RadialCellsAround(center, radius, true);
             for (int i = 0; i < targets.Count(); i++)

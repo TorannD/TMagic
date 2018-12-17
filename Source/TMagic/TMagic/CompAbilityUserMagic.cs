@@ -94,6 +94,19 @@ namespace TorannMagic
         private float T_Overdrive_eff = 0.08f;
         private float T_Sabotage_eff = 0.06f;
         private float T_OrbitalStrike_eff = 0.05f;
+        private float BM_BloodGift_eff = 0.05f;
+        private float BM_IgniteBlood_eff = .06f;
+        private float BM_BloodForBlood_eff = .06f;
+        private float BM_BloodShield_eff = .06f;
+        private float BM_Rend_eff = .08f;
+        private float BM_BloodMoon_eff = .05f;
+        private float E_EnchantedBody_eff = .05f;
+        private float E_Transmutate_eff = .06f;
+        private float E_EnchantWeapon_eff = .06f;
+        private float E_EnchanterStone_eff = .06f;
+        private float E_Polymorph_eff = .06f;
+        private float E_Shapeshift_eff = .05f;
+
 
         private float global_eff = 0.025f;
 
@@ -137,6 +150,10 @@ namespace TorannMagic
         public bool spell_Meteor = false;
         public bool spell_Teach = false;
         public bool spell_OrbitalStrike = false;
+        public bool spell_BloodMoon = false;
+        public bool spell_EnchantedAura = false;        
+        public bool spell_Shapeshift = false;
+        public bool spell_ShapeshiftDW = false;
 
         private bool item_StaffOfDefender = false;
 
@@ -170,6 +187,7 @@ namespace TorannMagic
         private bool dismissCoolerSpell = false;
         private bool dismissHeaterSpell = false;
         private bool dismissPowerNodeSpell = false;
+        private bool dispelEnchantWeapon = false;
         public List<IntVec3> fertileLands = new List<IntVec3>();
         public bool useTechnoBitToggle = true;
         public bool useTechnoBitRepairToggle = true;
@@ -185,6 +203,8 @@ namespace TorannMagic
         public int overdriveFrequency = 100;
         public Building sabotageBuilding = null;
         public bool ArcaneForging = false;
+        public List<Pawn> weaponEnchants = new List<Pawn>();
+        public Thing enchanterStone = null;
 
         private Effecter powerEffecter = null;
         private int powerModifier = 0;
@@ -1140,6 +1160,138 @@ namespace TorannMagic
             }
             return result;
         }
+        public int LevelUpSkill_BloodGift(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_BloodGift.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_IgniteBlood(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_IgniteBlood.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_BloodForBlood(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_BloodForBlood.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_BloodShield(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_BloodShield.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_Rend(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Rend.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_BloodMoon(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_BloodMoon.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_EnchantedBody(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_EnchantedBody.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_Transmutate(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Transmutate.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_EnchanterStone(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_EnchanterStone.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_EnchantWeapon(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_EnchantWeapon.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_Polymorph(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Polymorph.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_Shapeshift(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Shapeshift.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
 
         private void SingleEvent()
         {
@@ -1344,7 +1496,15 @@ namespace TorannMagic
                     bool flag3 = base.AbilityUser.story != null;
                     if (flag3)
                     {
-                        bool flag4 = base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Geomancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Warlock) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Succubus) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Paladin) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Druid) || (base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Lich)) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Priest) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Bard);
+                        bool flag4 = base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Enchanter) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.BloodMage) || 
+                            base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Geomancer) || 
+                            base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Warlock) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Succubus) || 
+                            base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || 
+                            base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || 
+                            base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Paladin) || 
+                            base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Druid) || 
+                            (base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Lich)) || 
+                            base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Priest) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Bard);
                         if (flag4)
                         {
                             result = true;
@@ -1450,6 +1610,14 @@ namespace TorannMagic
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
             {
                 Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.technoMarkMat, 0);
+            }
+            else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.BloodMage))
+            {
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.bloodmageMarkMat, 0);
+            }
+            else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
+            {
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.enchanterMarkMat, 0);
             }
             else 
             {
@@ -2344,6 +2512,126 @@ namespace TorannMagic
                             this.AddPawnAbility(TorannMagicDefOf.TM_Overdrive);
                         }
                     }
+                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.BloodMage);
+                    if (flag2)
+                    {
+                        //Log.Message("Initializing Heart of Frost Abilities");
+                        if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                        {
+                            if (Rand.Chance(1f))
+                            {
+                                this.AddPawnAbility(TorannMagicDefOf.TM_BloodGift);
+                            }
+                            if (Rand.Chance(.4f))
+                            {
+                                this.AddPawnAbility(TorannMagicDefOf.TM_IgniteBlood);
+                            }
+                            else
+                            {
+                                MagicPower mpBM = this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_IgniteBlood);
+                                mpBM.learned = false;
+                            }
+                            if (Rand.Chance(.4f))
+                            {
+                                this.AddPawnAbility(TorannMagicDefOf.TM_BloodForBlood);
+                            }
+                            else
+                            {
+                                MagicPower mpBM = this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodForBlood);
+                                mpBM.learned = false;
+                            }
+                            if (Rand.Chance(.5f))
+                            {
+                                this.AddPawnAbility(TorannMagicDefOf.TM_BloodShield);
+                            }
+                            else
+                            {
+                                MagicPower mpBM = this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodShield);
+                                mpBM.learned = false;
+                            }
+                            if (Rand.Chance(.3f))
+                            {
+                                this.AddPawnAbility(TorannMagicDefOf.TM_Rend);
+                            }
+                            else
+                            {
+                                MagicPower mpBM = this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Rend);
+                                mpBM.learned = false;
+                            }
+                        }
+                        else
+                        {
+                            this.AddPawnAbility(TorannMagicDefOf.TM_BloodGift);
+                            this.AddPawnAbility(TorannMagicDefOf.TM_IgniteBlood);
+                            this.AddPawnAbility(TorannMagicDefOf.TM_BloodForBlood);
+                            this.AddPawnAbility(TorannMagicDefOf.TM_BloodShield);
+                            this.AddPawnAbility(TorannMagicDefOf.TM_Rend);
+                        }
+                    }
+                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Enchanter);
+                    if (flag2)
+                    {
+                        //Log.Message("Initializing Heart of Frost Abilities");
+                        if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                        {
+                            if (Rand.Chance(.5f))
+                            {
+                                this.AddPawnAbility(TorannMagicDefOf.TM_EnchantedBody);
+                                this.AddPawnAbility(TorannMagicDefOf.TM_EnchantedAura);
+                                this.spell_EnchantedAura = true;
+                            }
+                            else
+                            {
+                                MagicPower mpE = this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedBody);
+                                mpE.learned = false;
+                            }
+                            if (Rand.Chance(.3f))
+                            {
+                                this.AddPawnAbility(TorannMagicDefOf.TM_Transmutate);
+                            }
+                            else
+                            {
+                                MagicPower mpE = this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Transmutate);
+                                mpE.learned = false;
+                            }
+                            if (Rand.Chance(.4f))
+                            {
+                                this.AddPawnAbility(TorannMagicDefOf.TM_EnchanterStone);
+                            }
+                            else
+                            {
+                                MagicPower mpE = this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchanterStone);
+                                mpE.learned = false;
+                            }
+                            if (Rand.Chance(.4f))
+                            {
+                                this.AddPawnAbility(TorannMagicDefOf.TM_EnchantWeapon);
+                            }
+                            else
+                            {
+                                MagicPower mpE = this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantWeapon);
+                                mpE.learned = false;
+                            }
+                            if (Rand.Chance(.4f))
+                            {
+                                this.AddPawnAbility(TorannMagicDefOf.TM_Polymorph);
+                            }
+                            else
+                            {
+                                MagicPower mpE = this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Polymorph);
+                                mpE.learned = false;
+                            }
+                        }
+                        else
+                        {
+                            this.AddPawnAbility(TorannMagicDefOf.TM_EnchantedBody);
+                            this.AddPawnAbility(TorannMagicDefOf.TM_EnchantedAura);
+                            this.AddPawnAbility(TorannMagicDefOf.TM_Transmutate);
+                            this.AddPawnAbility(TorannMagicDefOf.TM_EnchanterStone);
+                            this.AddPawnAbility(TorannMagicDefOf.TM_EnchantWeapon);
+                            this.AddPawnAbility(TorannMagicDefOf.TM_Polymorph);
+                        }
+                    }
                 }
 
                 this.magicPowersInitialized = true;
@@ -2614,6 +2902,57 @@ namespace TorannMagic
                         this.AddPawnAbility(TorannMagicDefOf.TM_OrbitalStrike);
                     }
                 }
+                if (this.spell_BloodMoon == true)
+                {
+                    MagicPower BloodMoonPower = this.MagicData.magicPowerBM.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodMoon);
+                    if (BloodMoonPower == null)
+                    {
+                        BloodMoonPower = this.MagicData.magicPowerBM.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodMoon_I);
+                        if (BloodMoonPower == null)
+                        {
+                            BloodMoonPower = this.MagicData.magicPowerBM.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodMoon_II);
+                            if (BloodMoonPower == null)
+                            {
+                                BloodMoonPower = this.MagicData.magicPowerBM.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodMoon_III);
+                            }
+                        }
+                    }
+                    if (BloodMoonPower.level == 3)
+                    {
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_BloodMoon_III);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_BloodMoon_III);
+                    }
+                    else if (BloodMoonPower.level == 2)
+                    {
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_BloodMoon_II);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_BloodMoon_II);
+                    }
+                    else if (BloodMoonPower.level == 1)
+                    {
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_BloodMoon_I);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_BloodMoon_I);
+                    }
+                    else
+                    {
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_BloodMoon);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_BloodMoon);
+                    }
+                }
+                if (this.spell_EnchantedAura == true)
+                {
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_EnchantedAura);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_EnchantedAura);
+                }
+                if (this.spell_Shapeshift== true)
+                {
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_Shapeshift);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Shapeshift);
+                }
+                if(this.spell_ShapeshiftDW == true)
+                {
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_ShapeshiftDW);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_ShapeshiftDW);
+                }
                 //this.UpdateAbilities();
             }            
         }
@@ -2757,6 +3096,24 @@ namespace TorannMagic
                         this.RemovePawnAbility(currentT.abilityDef);
                     }
                 }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.BloodMage);
+                if (flag2)
+                {
+                    foreach (MagicPower currentBM in this.MagicData.MagicPowersBM)
+                    {
+                        currentBM.learned = false;
+                        this.RemovePawnAbility(currentBM.abilityDef);
+                    }
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Enchanter);
+                if (flag2)
+                {
+                    foreach (MagicPower currentE in this.MagicData.MagicPowersE)
+                    {
+                        currentE.learned = false;
+                        this.RemovePawnAbility(currentE.abilityDef);
+                    }
+                }
             }
         }
 
@@ -2784,113 +3141,377 @@ namespace TorannMagic
         public void ResetSkills()
         {
             List<bool> powerLearned = new List<bool>();
+            int skillpoints = 0;
+            skillpoints += this.MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr").level;
+            skillpoints += this.MagicData.MagicPowerSkill_global_eff.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_eff_pwr").level;
+            skillpoints += this.MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr").level;
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
             {
+                skillpoints += this.MagicData.MagicPowerSkill_RayofHope.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RayofHope_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Firebolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Firebolt_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Firebolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Firebolt_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Fireball.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Fireball_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Fireball.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Fireball_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Fireball.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Fireball_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Fireclaw.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Fireclaw_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Fireclaw.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Fireclaw_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Fireclaw.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Fireclaw_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Firestorm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Firestorm_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Firestorm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Firestorm_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Firestorm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Firestorm_ver").level;
+
                 for (int i = 0; i < this.MagicData.MagicPowersIF.Count; i++)
                 {
+                    skillpoints += this.MagicData.MagicPowersIF[i].level;
                     powerLearned.Add(this.MagicData.MagicPowersIF[i].learned);
                 }
             }
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost))
             {
+                skillpoints += this.MagicData.MagicPowerSkill_Soothe.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Soothe_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Icebolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Icebolt_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Icebolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Icebolt_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Icebolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Icebolt_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Snowball.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Snowball_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Snowball.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Snowball_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Snowball.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Snowball_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Rainmaker.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Rainmaker_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_FrostRay.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_FrostRay_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Blizzard.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Blizzard_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Blizzard.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Blizzard_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Blizzard.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Blizzard_ver").level;
                 for (int i = 0; i < this.MagicData.MagicPowersHoF.Count; i++)
                 {
+                    skillpoints += this.MagicData.MagicPowersHoF[i].level;
                     powerLearned.Add(this.MagicData.MagicPowersHoF[i].learned);
                 }
             }
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn))
             {
+                skillpoints += this.MagicData.MagicPowerSkill_AMP.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AMP_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_LightningBolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_LightningBolt_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_LightningBolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_LightningBolt_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_LightningBolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_LightningBolt_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_LightningCloud.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_LightningCloud_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_LightningCloud.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_LightningCloud_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_LightningCloud.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_LightningCloud_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_LightningStorm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_LightningStorm_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_LightningStorm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_LightningStorm_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_LightningStorm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_LightningStorm_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_EyeOfTheStorm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EyeOfTheStorm_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_EyeOfTheStorm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EyeOfTheStorm_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_EyeOfTheStorm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EyeOfTheStorm_ver").level;
                 for (int i = 0; i < this.MagicData.MagicPowersSB.Count; i++)
                 {
+                    skillpoints += this.MagicData.MagicPowersSB[i].level;
                     powerLearned.Add(this.MagicData.MagicPowersSB[i].learned);
                 }
             }
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
             {
+                skillpoints += this.MagicData.MagicPowerSkill_Shadow.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Shadow_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_MagicMissile.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_MagicMissile_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Blink.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Blink_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Summon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Summon_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Teleport.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Teleport_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Teleport.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Teleport_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Teleport.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Teleport_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_FoldReality.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_FoldReality_eff").level;
                 for (int i = 0; i < this.MagicData.MagicPowersA.Count; i++)
                 {
+                    skillpoints += this.MagicData.MagicPowersA[i].level;
                     powerLearned.Add(this.MagicData.MagicPowersA[i].learned);
                 }
             }
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Druid))
             {
+                skillpoints += this.MagicData.MagicPowerSkill_SootheAnimal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SootheAnimal_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_SootheAnimal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SootheAnimal_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Regenerate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Regenerate_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Regenerate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Regenerate_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Regenerate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Regenerate_ver").level;                
+                skillpoints += this.MagicData.MagicPowerSkill_Poison.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Poison_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Poison.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Poison_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Poison.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Poison_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_CureDisease.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_CureDisease_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_CureDisease.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_CureDisease_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_CureDisease.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_CureDisease_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_RegrowLimb.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RegrowLimb_eff").level;
                 for (int i = 0; i < this.MagicData.MagicPowersD.Count; i++)
                 {
+                    skillpoints += this.MagicData.MagicPowersD[i].level;
                     powerLearned.Add(this.MagicData.MagicPowersD[i].learned);
                 }
             }
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin))
             {
-                for(int i = 0; i < this.MagicData.MagicPowersP.Count; i++)
+                skillpoints += this.MagicData.MagicPowerSkill_Heal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Heal_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Heal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Heal_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Heal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Heal_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Shield.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Shield_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_ValiantCharge.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ValiantCharge_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_ValiantCharge.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ValiantCharge_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_ValiantCharge.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ValiantCharge_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Overwhelm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Overwhelm_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Overwhelm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Overwhelm_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Overwhelm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Overwhelm_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_HolyWrath.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_HolyWrath_pwr").level * 2;
+                skillpoints += this.MagicData.MagicPowerSkill_HolyWrath.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_HolyWrath_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_HolyWrath.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_HolyWrath_ver").level * 2;
+                for (int i = 0; i < this.MagicData.MagicPowersP.Count; i++)
                 {
+                    skillpoints += this.MagicData.MagicPowersP[i].level;
                     powerLearned.Add(this.MagicData.MagicPowersP[i].learned);
                 }
             }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer))
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
             {
+                skillpoints += this.MagicData.MagicPowerSkill_RaiseUndead.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RaiseUndead_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_RaiseUndead.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RaiseUndead_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_RaiseUndead.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RaiseUndead_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_DeathMark.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_DeathMark_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_DeathMark.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_DeathMark_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_DeathMark.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_DeathMark_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_FogOfTorment.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_FogOfTorment_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_FogOfTorment.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_FogOfTorment_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_FogOfTorment.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_FogOfTorment_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_ConsumeCorpse.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ConsumeCorpse_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_ConsumeCorpse.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ConsumeCorpse_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_CorpseExplosion.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_CorpseExplosion_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_CorpseExplosion.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_CorpseExplosion_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_CorpseExplosion.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_CorpseExplosion_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_DeathBolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_DeathBolt_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_DeathBolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_DeathBolt_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_DeathBolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_DeathBolt_ver").level;
+
                 for (int i = 0; i < this.MagicData.MagicPowersN.Count; i++)
                 {
+                    skillpoints += this.MagicData.MagicPowersN[i].level;
                     powerLearned.Add(this.MagicData.MagicPowersN[i].learned);
                 }
             }
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
             {
+                skillpoints += this.MagicData.MagicPowerSkill_SummonMinion.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonMinion_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_SummonMinion.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonMinion_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_SummonMinion.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonMinion_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_SummonPylon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonPylon_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_SummonPylon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonPylon_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_SummonPylon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonPylon_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_SummonExplosive.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonExplosive_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_SummonExplosive.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonExplosive_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_SummonExplosive.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonExplosive_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_SummonElemental.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonElemental_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_SummonElemental.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonElemental_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_SummonElemental.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonElemental_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_SummonPoppi.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonPoppi_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_SummonPoppi.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonPoppi_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_SummonPoppi.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonPoppi_ver").level;
                 for (int i = 0; i < this.MagicData.MagicPowersS.Count; i++)
                 {
+                    skillpoints += this.MagicData.MagicPowersS[i].level;
                     powerLearned.Add(this.MagicData.MagicPowersS[i].learned);
                 }
             }
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Priest))
             {
+                skillpoints += this.MagicData.MagicPowerSkill_Resurrection.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Resurrection_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Resurrection.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Resurrection_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_AdvancedHeal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AdvancedHeal_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_AdvancedHeal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AdvancedHeal_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_AdvancedHeal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AdvancedHeal_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Purify.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Purify_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Purify.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Purify_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Purify.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Purify_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_HealingCircle.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_HealingCircle_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_HealingCircle.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_HealingCircle_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_HealingCircle.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_HealingCircle_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_BestowMight.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BestowMight_eff").level;
                 for (int i = 0; i < this.MagicData.MagicPowersPR.Count; i++)
                 {
+                    skillpoints += this.MagicData.MagicPowersPR[i].level;
                     powerLearned.Add(this.MagicData.MagicPowersPR[i].learned);
                 }
             }
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
             {
+                skillpoints += this.MagicData.MagicPowerSkill_BardTraining.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BardTraining_pwr").level * 2;
+                skillpoints += this.MagicData.MagicPowerSkill_Entertain.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Entertain_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Entertain.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Entertain_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Inspire.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Inspire_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Inspire.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Inspire_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Lullaby.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Lullaby_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Lullaby.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Lullaby_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Lullaby.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Lullaby_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_BattleHymn.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BattleHymn_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_BattleHymn.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BattleHymn_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_BattleHymn.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BattleHymn_eff").level;
                 for (int i = 0; i < this.MagicData.MagicPowersB.Count; i++)
                 {
+                    skillpoints += this.MagicData.MagicPowersB[i].level;
                     powerLearned.Add(this.MagicData.MagicPowersB[i].learned);
                 }
             }
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus))
             {
+                skillpoints += this.MagicData.MagicPowerSkill_SoulBond.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SoulBond_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_SoulBond.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SoulBond_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_SoulBond.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SoulBond_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_ShadowBolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ShadowBolt_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_ShadowBolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ShadowBolt_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_ShadowBolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ShadowBolt_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Dominate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Dominate_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Dominate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Dominate_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Dominate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Dominate_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Attraction.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Attraction_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Attraction.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Attraction_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Attraction.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Attraction_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Scorn.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Scorn_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Scorn.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Scorn_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Scorn.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Scorn_eff").level;
                 for (int i = 0; i < this.MagicData.MagicPowersSD.Count; i++)
                 {
+                    skillpoints += this.MagicData.MagicPowersSD[i].level;
                     powerLearned.Add(this.MagicData.MagicPowersSD[i].learned);
                 }
             }
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Warlock))
             {
+                skillpoints += this.MagicData.MagicPowerSkill_SoulBond.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SoulBond_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_SoulBond.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SoulBond_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_SoulBond.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SoulBond_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_ShadowBolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ShadowBolt_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_ShadowBolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ShadowBolt_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_ShadowBolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ShadowBolt_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Dominate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Dominate_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Dominate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Dominate_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Dominate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Dominate_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Repulsion.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Repulsion_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Repulsion.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Repulsion_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Repulsion.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Repulsion_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_PsychicShock.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_PsychicShock_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_PsychicShock.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_PsychicShock_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_PsychicShock.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_PsychicShock_eff").level;
                 for (int i = 0; i < this.MagicData.MagicPowersWD.Count; i++)
                 {
+                    skillpoints += this.MagicData.MagicPowersWD[i].level;
                     powerLearned.Add(this.MagicData.MagicPowersWD[i].learned);
                 }
             }
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
             {
+                skillpoints += this.MagicData.MagicPowerSkill_Stoneskin.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Stoneskin_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Stoneskin.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Stoneskin_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Stoneskin.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Stoneskin_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Encase.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Encase_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Encase.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Encase_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Encase.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Encase_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_EarthSprites.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EarthSprites_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_EarthSprites.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EarthSprites_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_EarthSprites.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EarthSprites_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_EarthernHammer.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EarthernHammer_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_EarthernHammer.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EarthernHammer_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_EarthernHammer.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EarthernHammer_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Sentinel.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Sentinel_pwr").level * 2;
+                skillpoints += this.MagicData.MagicPowerSkill_Sentinel.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Sentinel_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Sentinel.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Sentinel_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Meteor.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Meteor_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Meteor.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Meteor_eff").level;
                 for (int i = 0; i < this.MagicData.MagicPowersG.Count; i++)
                 {
+                    skillpoints += this.MagicData.MagicPowersG[i].level;
                     powerLearned.Add(this.MagicData.MagicPowersG[i].learned);
                 }
             }
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
             {
+                skillpoints += this.MagicData.MagicPowerSkill_TechnoBit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoBit_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_TechnoBit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoBit_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_TechnoBit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoBit_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_TechnoTurret.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoTurret_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_TechnoTurret.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoTurret_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_TechnoTurret.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoTurret_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_TechnoWeapon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoWeapon_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_TechnoWeapon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoWeapon_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_TechnoWeapon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoWeapon_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_TechnoShield.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoShield_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_TechnoShield.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoShield_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_TechnoShield.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoShield_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Sabotage.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Sabotage_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Sabotage.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Sabotage_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Sabotage.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Sabotage_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Overdrive.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Overdrive_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Overdrive.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Overdrive_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Overdrive.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Overdrive_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_OrbitalStrike.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_OrbitalStrike_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_OrbitalStrike.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_OrbitalStrike_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_OrbitalStrike.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_OrbitalStrike_eff").level;
                 for (int i = 0; i < this.MagicData.MagicPowersT.Count; i++)
                 {
+                    skillpoints += this.MagicData.MagicPowersT[i].level;
                     powerLearned.Add(this.MagicData.MagicPowersT[i].learned);
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.BloodMage))
+            {
+                skillpoints += this.MagicData.MagicPowerSkill_BloodGift.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodGift_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_BloodGift.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodGift_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_BloodGift.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodGift_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_IgniteBlood.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_IgniteBlood_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_IgniteBlood.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_IgniteBlood_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_IgniteBlood.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_IgniteBlood_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_BloodForBlood.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodForBlood_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_BloodForBlood.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodForBlood_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_BloodForBlood.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodForBlood_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_BloodShield.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodShield_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_BloodShield.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodShield_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_BloodShield.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodShield_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Rend.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Rend_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Rend.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Rend_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Rend.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Rend_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_BloodMoon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodMoon_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_BloodMoon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodMoon_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_BloodMoon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodMoon_eff").level;
+                for (int i = 0; i < this.MagicData.MagicPowersBM.Count; i++)
+                {
+                    skillpoints += this.MagicData.MagicPowersBM[i].level;
+                    powerLearned.Add(this.MagicData.MagicPowersBM[i].learned);
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
+            {
+                skillpoints += this.MagicData.MagicPowerSkill_EnchantedBody.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchantedBody_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_EnchantedBody.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchantedBody_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_EnchantedBody.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchantedBody_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Transmutate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Transmutate_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Transmutate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Transmutate_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Transmutate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Transmutate_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_EnchanterStone.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchanterStone_ver").level * 2;
+                skillpoints += this.MagicData.MagicPowerSkill_EnchanterStone.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchanterStone_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_EnchantWeapon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchantWeapon_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_EnchantWeapon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchantWeapon_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Polymorph.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Polymorph_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Polymorph.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Polymorph_ver").level * 2;
+                skillpoints += this.MagicData.MagicPowerSkill_Polymorph.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Polymorph_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Shapeshift.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Shapeshift_pwr").level * 2;
+                skillpoints += this.MagicData.MagicPowerSkill_Shapeshift.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Shapeshift_ver").level * 2;
+                skillpoints += this.MagicData.MagicPowerSkill_Shapeshift.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Shapeshift_eff").level * 2;
+                for (int i = 0; i < this.MagicData.MagicPowersE.Count; i++)
+                {
+                    skillpoints += this.MagicData.MagicPowersE[i].level;
+                    powerLearned.Add(this.MagicData.MagicPowersE[i].learned);
                 }
             }
 
             int tmpLvl = this.MagicUserLevel;
             int tmpExp = this.MagicUserXP;
+            int magicPts = this.magicData.MagicAbilityPoints;
             base.IsInitialized = false;
             this.magicData = null;
             this.CompTick();
             this.MagicUserLevel = tmpLvl;
             this.MagicUserXP = tmpExp;
-            this.magicData.MagicAbilityPoints = tmpLvl;
+            this.magicData.MagicAbilityPoints = magicPts + skillpoints;
 
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
             {
@@ -2990,6 +3611,20 @@ namespace TorannMagic
                     this.MagicData.MagicPowersT[i].learned = powerLearned[i];
                 }
             }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.BloodMage))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MagicData.MagicPowersBM[i].learned = powerLearned[i];
+                }
+            }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MagicData.MagicPowersE[i].learned = powerLearned[i];
+                }
+            }
         }
 
 
@@ -3053,7 +3688,7 @@ namespace TorannMagic
             {
                 if (traits[i].def == TorannMagicDefOf.InnerFire || traits[i].def == TorannMagicDefOf.HeartOfFrost || traits[i].def == TorannMagicDefOf.StormBorn  || traits[i].def == TorannMagicDefOf.Arcanist || traits[i].def == TorannMagicDefOf.Paladin ||
                     traits[i].def == TorannMagicDefOf.Druid || traits[i].def == TorannMagicDefOf.Priest || traits[i].def == TorannMagicDefOf.Necromancer || traits[i].def == TorannMagicDefOf.Warlock || traits[i].def == TorannMagicDefOf.Succubus ||
-                    traits[i].def == TorannMagicDefOf.TM_Bard || traits[i].def == TorannMagicDefOf.Geomancer || traits[i].def == TorannMagicDefOf.Technomancer)
+                    traits[i].def == TorannMagicDefOf.TM_Bard || traits[i].def == TorannMagicDefOf.Geomancer || traits[i].def == TorannMagicDefOf.Technomancer || traits[i].def == TorannMagicDefOf.BloodMage || traits[i].def == TorannMagicDefOf.Enchanter)
                 {
                     Log.Message("Removing trait " + traits[i].Label);
                     traits.Remove(traits[i]);
@@ -3704,6 +4339,114 @@ namespace TorannMagic
                     result = magicPowerSkill.level;
                 }
             }
+            if (attributeName == "TM_BloodGift_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_BloodGift.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_IgniteBlood_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_IgniteBlood.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_BloodForBlood_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_BloodForBlood.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_BloodShield_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_BloodShield.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_Rend_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Rend.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_BloodMoon_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_BloodMoon.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_EnchantedBody_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_EnchantedBody.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_Transmutate_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Transmutate.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_EnchanterStone_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_EnchanterStone.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_EnchantWeapon_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_EnchantWeapon.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_Polymorph_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Polymorph.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_Shapeshift_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Shapeshift.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
 
             return result;
         }
@@ -4050,7 +4793,62 @@ namespace TorannMagic
                 MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_OrbitalStrike.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_OrbitalStrike_eff");
                 adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.T_OrbitalStrike_eff * (float)magicPowerSkill.level);
             }
-            if(this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_SyrriumSenseHD"), false))
+            if (magicDef == TorannMagicDefOf.TM_BloodGift)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_BloodGift.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodGift_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.BM_BloodGift_eff * (float)magicPowerSkill.level);
+            }
+            //if (magicDef == TorannMagicDefOf.TM_BloodForBlood)
+            //{
+            //    MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_BloodForBlood.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodForBlood_eff");
+            //    adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.BM_BloodForBlood_eff * (float)magicPowerSkill.level);
+            //}
+            //if (magicDef == TorannMagicDefOf.TM_BloodShield)
+            //{
+            //    MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_BloodShield.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodShield_eff");
+            //    adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.BM_BloodShield_eff * (float)magicPowerSkill.level);
+            //}
+            //if (magicDef == TorannMagicDefOf.TM_Rend || magicDef == TorannMagicDefOf.TM_Rend_I || magicDef == TorannMagicDefOf.TM_Rend_II || magicDef == TorannMagicDefOf.TM_Rend_III)
+            //{
+            //    MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Rend.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Rend_eff");
+            //    adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.BM_Rend_eff * (float)magicPowerSkill.level);
+            //}
+            //if (magicDef == TorannMagicDefOf.TM_BloodMoon || magicDef == TorannMagicDefOf.TM_BloodMoon_I || magicDef == TorannMagicDefOf.TM_BloodMoon_II || magicDef == TorannMagicDefOf.TM_BloodMoon_III)
+            //{
+            //    MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_BloodMoon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodMoon_eff");
+            //    adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.BM_BloodMoon_eff * (float)magicPowerSkill.level);
+            //}
+            if (magicDef == TorannMagicDefOf.TM_EnchantedBody || magicDef == TorannMagicDefOf.TM_EnchantedAura)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_EnchantedBody.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchantedBody_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.E_EnchantedBody_eff * (float)magicPowerSkill.level);
+            }
+            if (magicDef == TorannMagicDefOf.TM_Transmutate)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Transmutate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Transmutate_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.E_Transmutate_eff * (float)magicPowerSkill.level);
+            }
+            if (magicDef == TorannMagicDefOf.TM_EnchantWeapon)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_EnchantWeapon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchantWeapon_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.E_EnchantWeapon_eff * (float)magicPowerSkill.level);
+            }
+            if (magicDef == TorannMagicDefOf.TM_EnchanterStone)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_EnchanterStone.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchanterStone_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.E_EnchanterStone_eff * (float)magicPowerSkill.level);
+            }
+            if (magicDef == TorannMagicDefOf.TM_Polymorph || magicDef == TorannMagicDefOf.TM_Polymorph_I || magicDef == TorannMagicDefOf.TM_Polymorph_II || magicDef == TorannMagicDefOf.TM_Polymorph_III)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Polymorph.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Polymorph_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.E_Polymorph_eff * (float)magicPowerSkill.level);
+            }
+            if (magicDef == TorannMagicDefOf.TM_Shapeshift || magicDef == TorannMagicDefOf.TM_ShapeshiftDW)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Shapeshift.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Shapeshift_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.E_Shapeshift_eff * (float)magicPowerSkill.level);
+            }
+            if (this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_SyrriumSenseHD"), false))
             {
                 adjustedManaCost = adjustedManaCost * .9f;
             }
@@ -4349,7 +5147,17 @@ namespace TorannMagic
                 //non-combat (undrafted) spells
                 bool castSuccess = false;
                 if (!this.Pawn.Drafted && this.Mana.CurLevelPercentage >= settingsRef.autocastMinThreshold)
-                {                                              
+                {
+                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
+                    {
+                        MagicPower magicPower = this.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonMinion);
+                        if (magicPower != null && magicPower.autocast && magicPower.learned && this.summonedMinions.Count() < 4)
+                        {
+                            PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_SummonMinion);
+                            AutoCast.CastOnSelf.Evaluate(this, TorannMagicDefOf.TM_SummonMinion, ability, magicPower, out castSuccess);
+                            if (castSuccess) goto AutoCastExit;
+                        }
+                    }
                     if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
                     {
                         PawnAbility ability = null;
@@ -4668,7 +5476,10 @@ namespace TorannMagic
                                                                                 select def;
                                             foreach (ChemicalDef addiction in enumerable)
                                             {
-                                                addictionList.AddDistinct(addiction.defName);
+                                                if (addiction.defName != "ROMV_VitaeAddiction")
+                                                {
+                                                    addictionList.AddDistinct(addiction.defName);
+                                                }
                                             }                                            
                                         }
                                         AutoCast.CureAddictionSpell.Evaluate(this, TorannMagicDefOf.TM_Purify, ability, magicPower, addictionList, out castSuccess);
@@ -4735,6 +5546,16 @@ namespace TorannMagic
                         {
                             PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_TeachMagic);
                             AutoCast.Teach.Evaluate(this, TorannMagicDefOf.TM_TeachMagic, ability, magicPower, out castSuccess);
+                            if (castSuccess) goto AutoCastExit;
+                        }
+                    }
+                    if (this.spell_SummonMinion && !this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
+                    {
+                        MagicPower magicPower = this.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonMinion);
+                        if (magicPower.autocast && this.summonedMinions.Count() < 4)
+                        {
+                            PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_SummonMinion);
+                            AutoCast.CastOnSelf.Evaluate(this, TorannMagicDefOf.TM_SummonMinion, ability, magicPower, out castSuccess);
                             if (castSuccess) goto AutoCastExit;
                         }
                     }
@@ -5625,6 +6446,29 @@ namespace TorannMagic
                     this.InitializeSpell();
                 }
             }
+
+            if(this.weaponEnchants != null && this.weaponEnchants.Count > 0)
+            {
+                for(int i =0; i < this.weaponEnchants.Count; i++)
+                {
+                    Pawn ewPawn = weaponEnchants[i];
+                    if(ewPawn.DestroyedOrNull() || ewPawn.Dead)
+                    {
+                        this.weaponEnchants.Remove(ewPawn);
+                    }
+                }
+
+                if(this.dispelEnchantWeapon == false)
+                {
+                    this.dispelEnchantWeapon = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_DispelEnchantWeapon);
+                }
+            }
+            else if(this.dispelEnchantWeapon == true)
+            {
+                this.dispelEnchantWeapon = false;
+                this.RemovePawnAbility(TorannMagicDefOf.TM_DispelEnchantWeapon);
+            }
         }
 
         public void ResolveMinions()
@@ -5734,6 +6578,33 @@ namespace TorannMagic
 
         public void ResolveClassSkills()
         {
+            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.BloodMage))
+            {
+                if (!this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_BloodHD")))
+                {
+                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_BloodHD"), .1f);
+                    for (int i = 0; i < 4; i++)
+                    {
+                        TM_MoteMaker.ThrowBloodSquirt(this.Pawn.DrawPos, this.Pawn.Map, Rand.Range(.5f, .8f));
+                    }
+                }
+            }
+
+            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
+            {
+                if (this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedBody).learned && this.spell_EnchantedAura == false)
+                {
+                    this.spell_EnchantedAura = true;
+                    this.InitializeSpell();
+                }
+
+                if(this.MagicData.MagicPowerSkill_Shapeshift.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Shapeshift_ver").level >= 3 && this.spell_ShapeshiftDW != true)
+                {
+                    this.spell_ShapeshiftDW = true;
+                    this.InitializeSpell();
+                }
+            }
+
             if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
             {
                 if (this.HasTechnoBit)
@@ -5826,7 +6697,7 @@ namespace TorannMagic
                             if (traits[i].Degree != bardtraining_pwr.level)
                             {
                                 traits.Remove(traits[i]);
-                                this.Pawn.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Bard"), bardtraining_pwr.level, false));
+                                this.Pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Bard, bardtraining_pwr.level, false));
                                 MoteMaker.ThrowHeatGlow(this.Pawn.Position, this.Pawn.Map, 2);
                             }
                         }
@@ -5990,6 +6861,10 @@ namespace TorannMagic
                 _maxMP -= (this.summonedPowerNodes.Count * .25f);
                 _mpRegenRate -= (this.summonedPowerNodes.Count * .25f);
             }
+            if(this.weaponEnchants.Count > 0)
+            {
+                _maxMP -= (this.weaponEnchants.Count * ActualManaCost(TorannMagicDefOf.TM_EnchantWeapon));
+            }
             try
             {
                 if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) && this.fertileLands.Count > 0)
@@ -6018,6 +6893,12 @@ namespace TorannMagic
             if(this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_EntertainingHD"), false))
             {
                 _maxMP += -.3f;
+            }
+            if(this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_EnchantedAuraHD) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_EnchantedBodyHD))
+            {
+                
+                _maxMP += -.3f + (.015f * this.MagicData.MagicPowerSkill_EnchantedBody.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchantedBody_eff").level);
+                _mpRegenRate += -.3f + (.045f * this.MagicData.MagicPowerSkill_EnchantedBody.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchantedBody_ver").level);
             }
             if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
             {
@@ -6218,6 +7099,9 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.spell_Meteor, "spell_Meteor", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Teach, "spell_Teach", false, false);
             Scribe_Values.Look<bool>(ref this.spell_OrbitalStrike, "spell_OrbitalStrike", false, false);
+            Scribe_Values.Look<bool>(ref this.spell_BloodMoon, "spell_BloodMoon", false, false);
+            Scribe_Values.Look<bool>(ref this.spell_Shapeshift, "spell_Shapeshift", false, false);
+            Scribe_Values.Look<bool>(ref this.spell_ShapeshiftDW, "spell_ShapeshiftDW", false, false);
             Scribe_Values.Look<bool>(ref this.useTechnoBitToggle, "useTechnoBitToggle", true, false);
             Scribe_Values.Look<bool>(ref this.useTechnoBitRepairToggle, "useTechnoBitRepairToggle", true, false);
             Scribe_Values.Look<bool>(ref this.useElementalShotToggle, "useElementalShotToggle", true, false);
@@ -6226,6 +7110,7 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.doOnce, "doOnce", true, false);
             Scribe_References.Look<Pawn>(ref this.soulBondPawn, "soulBondPawn", false);
             Scribe_References.Look<Thing>(ref this.technoWeaponThing, "technoWeaponThing", false);
+            Scribe_References.Look<Thing>(ref this.enchanterStone, "enchanterStone", false);
             Scribe_Collections.Look<Thing>(ref this.summonedMinions, "summonedMinions", LookMode.Reference);
             Scribe_Collections.Look<Thing>(ref this.summonedLights, "summonedLights", LookMode.Reference);
             Scribe_Collections.Look<Thing>(ref this.summonedPowerNodes, "summonedPowerNodes", LookMode.Reference);
@@ -6906,6 +7791,76 @@ namespace TorannMagic
                         }
                     }
                 }
+                bool flag54 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.BloodMage);
+                if (flag54)
+                {
+                    bool flagBM = !this.MagicData.MagicPowersBM.NullOrEmpty<MagicPower>();
+                    if (flagBM)
+                    {
+                        //this.LoadPowers();
+                        foreach (MagicPower current16 in this.MagicData.MagicPowersBM)
+                        {
+                            bool flagBM2 = current16.abilityDef != null;
+                            if (flagBM2)
+                            {
+                                if (current16.learned == true && (current16.abilityDef == TorannMagicDefOf.TM_Rend || current16.abilityDef == TorannMagicDefOf.TM_Rend_I || current16.abilityDef == TorannMagicDefOf.TM_Rend_II || current16.abilityDef == TorannMagicDefOf.TM_Rend_III))
+                                {
+                                    if (current16.level == 0)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_Rend);
+                                    }
+                                    else if (current16.level == 1)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_Rend_I);
+                                    }
+                                    else if (current16.level == 2)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_Rend_II);
+                                    }
+                                    else
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_Rend_III);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                bool flag55 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Enchanter);
+                if (flag55)
+                {
+                    bool flagE = !this.MagicData.MagicPowersE.NullOrEmpty<MagicPower>();
+                    if (flagE)
+                    {
+                        //this.LoadPowers();
+                        foreach (MagicPower current17 in this.MagicData.MagicPowersE)
+                        {
+                            bool flagE2 = current17.abilityDef != null;
+                            if (flagE2)
+                            {
+                                if (current17.learned == true && (current17.abilityDef == TorannMagicDefOf.TM_Polymorph || current17.abilityDef == TorannMagicDefOf.TM_Polymorph_I || current17.abilityDef == TorannMagicDefOf.TM_Polymorph_II || current17.abilityDef == TorannMagicDefOf.TM_Polymorph_III))
+                                {
+                                    if (current17.level == 0)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_Polymorph);
+                                    }
+                                    else if (current17.level == 1)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_Polymorph_I);
+                                    }
+                                    else if (current17.level == 2)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_Polymorph_II);
+                                    }
+                                    else
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_Polymorph_III);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
                 if (flag40)
                 {
                     //Log.Message("Loading Inner Fire Abilities");
@@ -7165,7 +8120,55 @@ namespace TorannMagic
                         this.AddPawnAbility(TorannMagicDefOf.TM_Overdrive);
                     }
                 }
-
+                if (flag54)
+                {
+                    //Log.Message("Loading BloodMage Abilities");
+                    MagicPower mpBM = this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodGift);
+                    if (mpBM.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_BloodGift);
+                    }
+                    mpBM = this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_IgniteBlood);
+                    if (mpBM.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_IgniteBlood);
+                    }
+                    mpBM = this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodForBlood);
+                    if (mpBM.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_BloodForBlood);
+                    }
+                    mpBM = this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodShield);
+                    if (mpBM.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_BloodShield);
+                    }
+                }
+                if (flag55)
+                {
+                    //Log.Message("Loading Enchanter Abilities");
+                    MagicPower mpE = this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedBody);
+                    if (mpE.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_EnchantedBody);
+                        this.spell_EnchantedAura = true;
+                    }
+                    mpE = this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Transmutate);
+                    if (mpE.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Transmutate);
+                    }
+                    mpE = this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchanterStone);
+                    if (mpE.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_EnchanterStone);
+                    }
+                    mpE = this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantWeapon);
+                    if (mpE.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_EnchantWeapon);
+                    }
+                }
                 this.InitializeSpell();
                 //base.UpdateAbilities();
             }

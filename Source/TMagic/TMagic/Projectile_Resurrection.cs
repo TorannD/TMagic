@@ -89,9 +89,11 @@ namespace TorannMagic
                             if (validator)
                             {
                                 corpse = corpseThing as Corpse;
+                                CompRottable compRot = corpse.GetComp<CompRottable>(); 
+                                
                                 deadPawn = corpse.InnerPawn;
                                 deadPawnPosition = corpse.Position;
-                                if (deadPawn.RaceProps.IsFlesh && !TM_Calc.IsUndead(deadPawn))
+                                if (deadPawn.RaceProps.IsFlesh && !TM_Calc.IsUndead(deadPawn) && compRot != null)
                                 {
                                     if (!corpse.IsNotFresh())
                                     {

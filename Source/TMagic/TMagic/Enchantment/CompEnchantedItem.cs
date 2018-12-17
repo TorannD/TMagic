@@ -56,9 +56,45 @@ namespace TorannMagic.Enchantment
                 this.phantomShift = this.Props.phantomShift;
 
                 this.skillTier = this.Props.skillTier;
+
+                this.hediff = this.Props.hediff;
+                this.hediffSeverity = this.Props.hediffSeverity;
+
+                if (this.parent.def.tickerType == TickerType.Rare)
+                {
+                    Find.TickManager.RegisterAllTickabilityFor(this.parent);
+                }
+
                 this.initialized = true;
             }
+        }
 
+        public override void CompTickRare()
+        {
+            if (this.hediff != null)
+            {
+                Apparel artifact = this.parent as Apparel;
+                if (artifact != null)
+                {
+                    if (artifact.Wearer != null)
+                    {
+                        //Log.Message("" + artifact.LabelShort + " has holding owner " + artifact.Wearer.LabelShort);
+                        if(artifact.Wearer.health.hediffSet.GetFirstHediffOfDef(hediff, false) != null)
+                        {
+
+                        }
+                        else
+                        {                            
+                            HealthUtility.AdjustSeverity(artifact.Wearer, hediff, hediffSeverity);
+                            artifact.Wearer.health.hediffSet.GetFirstHediffOfDef(hediff, false).TryGetComp<HediffComp_EnchantedItem>().enchantedItem = artifact;
+                            //HediffComp_EnchantedItem comp = diff.TryGetComp<HediffComp_EnchantedItem>();
+
+                        }
+                    }
+
+                }
+            }
+            base.CompTickRare();
         }
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
@@ -66,10 +102,11 @@ namespace TorannMagic.Enchantment
             bool flag = this.parent.def.tickerType == TickerType.Never;
             if (flag)
             {
-                this.parent.def.tickerType = TickerType.Rare;
+                //this.parent.def.tickerType = TickerType.Rare;
+                //Find.TickManager.RegisterAllTickabilityFor(this.parent);
             }
             base.PostSpawnSetup(respawningAfterLoad);
-            Find.TickManager.RegisterAllTickabilityFor(this.parent);
+            
         }
         
         public override void PostExposeData()
@@ -152,6 +189,12 @@ namespace TorannMagic.Enchantment
         public EnchantmentTier skillTier = EnchantmentTier.Skill;
         public bool arcaneSpectre = false;
         public bool phantomShift = false;
+
+        //Hediffs
+        HediffDef hediff = null;
+        float hediffSeverity = 0f;
+
+        //Abilities
 
         private float StuffMultiplier
         {
@@ -300,6 +343,6 @@ namespace TorannMagic.Enchantment
             {
                 hasEnchantment = value;
             }
-        }
+        }        
     }
 }

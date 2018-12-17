@@ -922,6 +922,137 @@
     <workSkill>Crafting</workSkill>
   </RecipeDef>
   
+  <RecipeDef>
+    <defName>CutMinorArcaneWonderGem</defName>
+    <label>minor gem of wonder</label>
+    <description>Cut and refine raw magicyte into an enchanting gem able to harness all manner of enchantments.</description>
+    <jobString>cut minor gem of wonder</jobString>
+<!-- 	<researchPrerequisite>TechPlasteelCrafting</researchPrerequisite> -->
+    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <effectWorking>Smelt</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <workAmount>6500</workAmount>
+	<workSkillLearnFactor>1</workSkillLearnFactor>
+    <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
+	<recipeUsers>
+		<li>TableGemcutting</li>
+	</recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawMagicyte</li>
+          </thingDefs>
+        </filter>
+        <count>100</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>Jade</li>
+          </thingDefs>
+        </filter>
+        <count>125</count>
+      </li>
+    </ingredients>
+    <products>
+      <TM_EStone_wonder_minor>1</TM_EStone_wonder_minor>
+    </products>
+    <skillRequirements>
+      <Crafting>8</Crafting>
+	  <Intellectual>6</Intellectual>
+    </skillRequirements>
+    <workSkill>Crafting</workSkill>
+  </RecipeDef>
+  
+  <RecipeDef>
+    <defName>CutArcaneWonderGem</defName>
+    <label>gem of wonder</label>
+    <description>Cut and refine magicyte into an enchanting gem able to harness all manner of enchantments.</description>
+    <jobString>cut gem of wonder</jobString>
+    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <effectWorking>Smelt</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <workAmount>20000</workAmount>
+	<workSkillLearnFactor>1.0</workSkillLearnFactor>
+    <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
+	<recipeUsers>
+		<li>TableGemcutting</li>
+	</recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawMagicyte</li>
+          </thingDefs>
+        </filter>
+        <count>250</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>Jade</li>
+          </thingDefs>
+        </filter>
+        <count>240</count>
+      </li>
+    </ingredients>
+    <products>
+      <TM_EStone_wonder>1</TM_EStone_wonder>
+    </products>
+    <skillRequirements>
+      <Crafting>10</Crafting>
+	  <Intellectual>8</Intellectual>
+	  <Artistic>2</Artistic>
+    </skillRequirements>
+	<researchPrerequisite>TM_AdvancedEnchanting</researchPrerequisite>
+    <workSkill>Crafting</workSkill>
+  </RecipeDef>
+  
+  <RecipeDef>
+    <defName>CutMajorArcaneWonderGem</defName>
+    <label>major gem of wonder</label>
+    <description>Cut and refine magicyte into an enchanting gem able to harness all manner of enchantments.</description>
+    <jobString>cut major gem of wonder</jobString>
+    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <effectWorking>Smelt</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <workAmount>30000</workAmount>
+	<workSkillLearnFactor>1.0</workSkillLearnFactor>
+    <unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
+	<recipeUsers>
+		<li>TableGemcutting</li>
+	</recipeUsers>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawMagicyte</li>
+          </thingDefs>
+        </filter>
+        <count>650</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>Jade</li>
+          </thingDefs>
+        </filter>
+        <count>600</count>
+      </li>
+    </ingredients>
+    <products>
+      <TM_EStone_wonder_major>1</TM_EStone_wonder_major>
+    </products>
+    <skillRequirements>
+      <Crafting>14</Crafting>
+	  <Intellectual>10</Intellectual>
+	  <Artistic>5</Artistic>
+    </skillRequirements>
+	<researchPrerequisite>TM_ExpertEnchanting</researchPrerequisite>
+    <workSkill>Crafting</workSkill>
+  </RecipeDef>
+  
     <!--================== Refinement Recipes ==================-->
 	
   <RecipeDef>

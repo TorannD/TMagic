@@ -193,7 +193,7 @@ Using the arcane forge dramatically increases crafting speed but consumes mana. 
     <fillPercent>0.5</fillPercent>
     <useHitPoints>True</useHitPoints>
     <statBases>
-      <WorkToBuild>42000</WorkToBuild>
+      <WorkToBuild>24000</WorkToBuild>
       <MaxHitPoints>1000</MaxHitPoints>
       <Flammability>0.0</Flammability>
       <Cleanliness>-6</Cleanliness>

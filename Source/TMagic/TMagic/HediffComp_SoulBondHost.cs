@@ -12,12 +12,14 @@ namespace TorannMagic
         private bool initialized = false;
         private bool soulPawnRemove = false;
 
-        Pawn bonderPawn;
+        public Pawn bonderPawn;
+        public Pawn polyHost;
 
         public override void CompExposeData()
         {
             base.CompExposeData();
             Scribe_References.Look<Pawn>(ref this.bonderPawn, "bonderPawn", false);
+            Scribe_References.Look<Pawn>(ref this.polyHost, "polyHost", false);
         }
 
         public Pawn BonderPawn

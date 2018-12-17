@@ -62,7 +62,7 @@ namespace TorannMagic
                 Pawn newPawn = this.TargetsAoE[i].Thing as Pawn;
                 if(newPawn.RaceProps.IsFlesh)
                 {
-                    if (Rand.Chance(.4f + .1f * pwr.level))
+                    if (Rand.Chance(.4f + (.1f * pwr.level) + TM_Calc.GetSpellSuccessChance(this.CasterPawn, newPawn, true)))
                     {
                         if(newPawn.InMentalState)
                         {

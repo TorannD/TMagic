@@ -551,5 +551,32 @@
 			<destroyedOutLabel>Cut out</destroyedOutLabel>
 		</injuryProps>
 	</HediffDef>
+	
+	<HediffDef ParentName="TM_InjuryBase">
+    <defName>TM_BloodyCutHD</defName>
+    <label>bloody cut</label>
+    <labelNoun>a bloody cut</labelNoun>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_Infecter">
+        <infectionChance>0.03</infectionChance>
+      </li>
+      <li Class="HediffCompProperties_GetsPermanent">
+        <permanentLabel>cut scar</permanentLabel>
+      </li>
+    </comps>
+    <injuryProps>
+      <painPerSeverity>0.0025</painPerSeverity>
+      <averagePainPerSeverityPermanent>0.001</averagePainPerSeverityPermanent>
+      <bleedRate>0.10</bleedRate>
+      <canMerge>false</canMerge>
+      <destroyedLabel>Cut off</destroyedLabel>
+      <destroyedOutLabel>Cut out</destroyedOutLabel>
+    </injuryProps>
+  </HediffDef>
 
 </Defs>

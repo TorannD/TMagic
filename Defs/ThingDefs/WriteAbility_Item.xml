@@ -33,7 +33,11 @@
 		<defName>UnfinishedArcane</defName>
 		<label>Unfinished Torn Script</label>
 		<thingClass>ThingWithComps</thingClass>
-		<description>An arcane script ready to be filled with the secrets of unlocking magical powers...</description>
+		<description>An arcane script ready to be filled with the secrets of unlocking magical powers...
+		
+Use a trained mage to record their arcane secrets in the book. The book can then be used to teach another, gifted pawn how to become the same class.
+
+Gifted pawns can journal their theories and experiments in this book and learn to become a random magic class.</description>
 		<category>Item</category>
 		<selectable>true</selectable>
 		<altitudeLayer>Item</altitudeLayer>
@@ -42,7 +46,7 @@
 		<resourceReadoutPriority>Middle</resourceReadoutPriority>
 		<tradeNeverStack>true</tradeNeverStack>
 		<statBases>
-			<MarketValue>1700</MarketValue>
+			<MarketValue>1400</MarketValue>
 		</statBases>
 		<useHitPoints>true</useHitPoints>
 		<comps>
@@ -85,7 +89,11 @@
 		<defName>UnfinishedAdvArcane</defName>
 		<label>Unfinished Arcane Book</label>
 		<thingClass>ThingWithComps</thingClass>
-		<description>A arcane tome ready to be filled with the secrets of unlocking magical powers...</description>
+		<description>A arcane tome ready to be filled with the secrets of unlocking magical powers...
+		
+Use a trained mage to record their arcane secrets in the book. The book can then be used to teach another, gifted pawn how to become the same class.
+
+Gifted pawns can journal their theories and experiments in this book and learn to become a random magic class.</description>
 		<category>Item</category>
 		<selectable>true</selectable>
 		<altitudeLayer>Item</altitudeLayer>
@@ -94,7 +102,7 @@
 		<resourceReadoutPriority>Middle</resourceReadoutPriority>
 		<tradeNeverStack>true</tradeNeverStack>
 		<statBases>
-			<MarketValue>3000</MarketValue>
+			<MarketValue>2635</MarketValue>
 		</statBases>
 		<useHitPoints>true</useHitPoints>
 		<comps>
@@ -140,7 +148,9 @@
 		<defName>UnfinishedMartial</defName>
 		<label>Unfinished Martial Book</label>
 		<thingClass>ThingWithComps</thingClass>
-		<description>A book ready to be filled with the secrets of unlocking martial powers...</description>
+		<description>A book ready to be filled with the secrets of unlocking martial powers...
+
+Use a trained fighter to record their combat techniques in the book. The book can then be used to teach another pawn this combat technique.</description>
 		<category>Item</category>
 		<selectable>true</selectable>
 		<altitudeLayer>Item</altitudeLayer>
@@ -149,7 +159,7 @@
 		<resourceReadoutPriority>Middle</resourceReadoutPriority>
 		<tradeNeverStack>true</tradeNeverStack>
 		<statBases>
-			<MarketValue>2500</MarketValue>
+			<MarketValue>2055</MarketValue>
 		</statBases>
 		<useHitPoints>true</useHitPoints>
 		<comps>

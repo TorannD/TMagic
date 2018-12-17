@@ -297,7 +297,7 @@ Cast time: 1.1s</description>
 Radius: 6
 Range: 65
 Cast time: 1.0s</description>
-        <manaCost>0.030</manaCost>
+        <manaCost>0.30</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -333,7 +333,7 @@ Cast time: 1.0s</description>
         <defName>TM_EarthSprites</defName>
         <label>Earth Sprites</label>
         <uiIconPath>UI/earthsprite</uiIconPath>
-        <description>Calls forth an earth sprite to transform the terrain. Sprites are diligent workers capable of breaking rock or stone down into its base component or increase the richness and fertility of soil. 
+        <description>Calls forth earth sprites to transform the terrain. Sprites appear as flecks of light and can easily be missed by the inattentive, but they are diligent workers capable of breaking rock or stone down into its base component or increase the richness and fertility of soil. 
 		
 Once summoned, they will continue to work on the terrain, even moving to nearby area's, until dismissed by the geomancer. Earth sprites only understand basic instructions and will move randomly to a new area to continue their work; if no nearby area needs work, the summoning will end.
 
@@ -482,7 +482,7 @@ The first, and every third stone after, will always be subterranean unless there
         <defName>TM_Sentinel</defName>
         <label>Sentinel</label>
         <uiIconPath>PawnKind/gargoyle_south</uiIconPath>
-        <description>Creates a stone sentinel to defend an area. Sentinels will remain dormant until an enemy is within range, then they will break free of their stone chains to defend their terrain.
+        <description>Creates a stone sentinel to defend an area. Sentinels will remain dormant until an enemy is within range, then they will break free of their stone prison to defend their terrain.
 		
 Using this ability on a dormant sentinel will dismiss the sentinel.
 

@@ -11,7 +11,7 @@ using Harmony;
 
 namespace TorannMagic
 {
-    public struct Encase
+    public struct Encase //: IExposable
     {
         public IntVec3 position;
         public TerrainDef terrain;
@@ -21,6 +21,12 @@ namespace TorannMagic
             position = pos;
             terrain = ter;
         }
+
+        //public void ExposeData()
+        //{
+        //    Scribe_Defs.Look<TerrainDef>(ref terrain, "terrain");
+        //    Scribe_Values.Look<IntVec3>(ref this.position, "position", default(IntVec3), false);
+        //}
     }
 
     [StaticConstructorOnStartup]
@@ -56,6 +62,7 @@ namespace TorannMagic
             Scribe_References.Look<Pawn>(ref this.caster, "caster", false);
             Scribe_Collections.Look<IntVec3>(ref this.wallPositions, "wallPositions", LookMode.Value);
             Scribe_Collections.Look<Thing>(ref this.despawnedThingList, "despawnedThingList", LookMode.Value);
+            //Scribe_Collections.Look<Encase>(ref this.wall, "wall", LookMode.Deep);
         }
 
         protected override void Impact(Thing hitThing)

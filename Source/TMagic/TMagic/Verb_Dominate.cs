@@ -72,60 +72,67 @@ namespace TorannMagic
                 
                 if (hitPawn != null && hitPawn is Pawn && !hitPawn.Dead)
                 {
-                    Hediff hediff = new Hediff();
-                    if (p.gender == Gender.Female || p.story.traits.HasTrait(TorannMagicDefOf.Succubus))
+                    if (Rand.Chance(TM_Calc.GetSpellSuccessChance(p, hitPawn, true)))
                     {
-                        if (pwrVal == 3)
+                        Hediff hediff = new Hediff();
+                        if (p.gender == Gender.Female || p.story.traits.HasTrait(TorannMagicDefOf.Succubus))
                         {
-                            HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_SDDominateHD_III, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
-                            hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_SDDominateHD_III);
+                            if (pwrVal == 3)
+                            {
+                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_SDDominateHD_III, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
+                                hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_SDDominateHD_III);
+                            }
+                            else if (pwrVal == 2)
+                            {
+                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_SDDominateHD_II, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
+                                hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_SDDominateHD_II);
+                            }
+                            else if (pwrVal == 1)
+                            {
+                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_SDDominateHD_I, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
+                                hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_SDDominateHD_I);
+                            }
+                            else
+                            {
+                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_SDDominateHD, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
+                                hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_SDDominateHD);
+                            }
+                            for (int i = 0; i < 4; i++)
+                            {
+                                TM_MoteMaker.ThrowShadowMote(hitPawn.Position.ToVector3(), map, Rand.Range(.6f, 1f));
+                            }
                         }
-                        else if (pwrVal == 2)
+                        if (p.gender == Gender.Male || p.story.traits.HasTrait(TorannMagicDefOf.Warlock))
                         {
-                            HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_SDDominateHD_II, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
-                            hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_SDDominateHD_II);
+                            if (pwrVal == 3)
+                            {
+                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_WDDominateHD_III, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
+                                hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_WDDominateHD_III);
+                            }
+                            else if (pwrVal == 2)
+                            {
+                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_WDDominateHD_II, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
+                                hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_WDDominateHD_II);
+                            }
+                            else if (pwrVal == 1)
+                            {
+                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_WDDominateHD_I, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
+                                hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_WDDominateHD_I);
+                            }
+                            else
+                            {
+                                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_WDDominateHD, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
+                                hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_WDDominateHD);
+                            }
                         }
-                        else if (pwrVal == 1)
-                        {
-                            HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_SDDominateHD_I, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
-                            hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_SDDominateHD_I);
-                        }
-                        else
-                        {
-                            HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_SDDominateHD, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
-                            hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_SDDominateHD);
-                        }
-                        for (int i = 0; i < 4; i++)
-                        {
-                            TM_MoteMaker.ThrowShadowMote(hitPawn.Position.ToVector3(), map, Rand.Range(.6f, 1f));
-                        }                        
+                        HediffComp_Dominate hediffComp = hediff.TryGetComp<HediffComp_Dominate>();
+                        hediffComp.EffVal = effVal;
+                        hediffComp.VerVal = verVal;
                     }
-                    if (p.gender == Gender.Male || p.story.traits.HasTrait(TorannMagicDefOf.Warlock))
+                    else
                     {
-                        if (pwrVal == 3)
-                        {
-                            HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_WDDominateHD_III, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
-                            hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_WDDominateHD_III);
-                        }
-                        else if (pwrVal == 2)
-                        {
-                            HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_WDDominateHD_II, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
-                            hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_WDDominateHD_II);
-                        }
-                        else if (pwrVal == 1)
-                        {
-                            HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_WDDominateHD_I, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
-                            hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_WDDominateHD_I);
-                        }
-                        else
-                        {
-                            HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_WDDominateHD, Rand.Range(1.5f + verVal, 3f + (verVal * 1)));
-                            hediff = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_WDDominateHD);
-                        }                        
+                        MoteMaker.ThrowText(hitPawn.DrawPos, hitPawn.Map, "TM_ResistedSpell".Translate(), -1);
                     }
-                    HediffComp_Dominate hediffComp = hediff.TryGetComp<HediffComp_Dominate>();
-                    hediffComp.EffVal = effVal;
-                    hediffComp.VerVal = verVal;
                 }
                 else
                 {

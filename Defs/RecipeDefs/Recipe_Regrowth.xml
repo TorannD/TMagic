@@ -3,13 +3,13 @@
 
 	<!-- base -->
 
-	<RecipeDef Abstract="True" Name="SurgeryFlesh">
+<!-- 	<RecipeDef Abstract="True" Name="SurgeryFlesh">
 		<effectWorking>Surgery</effectWorking>
 		<soundWorking>Recipe_Surgery</soundWorking>
 		<workSpeedStat>MedicalOperationSpeed</workSpeedStat>
 		<workSkill>Medicine</workSkill>
 		<workSkillLearnFactor>20</workSkillLearnFactor>
-	</RecipeDef>
+	</RecipeDef> -->
 
 	<RecipeDef Name="SurgeryRegrowth" ParentName="SurgeryFlesh" Abstract="True">
 		<surgerySuccessChanceFactor>0.99</surgerySuccessChanceFactor>

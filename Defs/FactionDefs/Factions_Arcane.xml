@@ -62,10 +62,10 @@
     </allowedArrivalTemperatureRange>
 	<maxPawnCostPerTotalPointsCurve>
       <points>
-        <li>(0,35)</li>
-        <li>(70, 50)</li>
-        <li>(700, 100)</li>
-        <li>(1300, 150)</li>
+        <li>(0,40)</li>
+        <li>(70, 70)</li>
+        <li>(700, 150)</li>
+        <li>(1300, 250)</li>
         <li>(100000, 10000)</li>
       </points>
     </maxPawnCostPerTotalPointsCurve>
@@ -77,17 +77,17 @@
 			<SeerSpearman>12</SeerSpearman>
 			<SeerBowman>10</SeerBowman>
 			<SeerDefender>5</SeerDefender>
+			<SeerElite>2</SeerElite>
 		</options>
       </li>
 	  <li>
         <kindDef>Peaceful</kindDef>
         <options>
-			<Villager>5</Villager>
 			<SeerSpearman>10</SeerSpearman>
-			<Town_Councilman>5</Town_Councilman>
 			<Mercenary_Slasher>1</Mercenary_Slasher>
 			<SeerBowman>6</SeerBowman>
 			<SeerDefender>5</SeerDefender>
+			<SeerElite>2</SeerElite>
         </options>
       </li>
       <li>
@@ -113,9 +113,7 @@
         <options>
 			<SeerBowman>10</SeerBowman>
 			<Mercenary_Slasher>12</Mercenary_Slasher>
-			<Villager>10</Villager>
-			<Town_Guard>12</Town_Guard>
-			<Town_Councilman>10</Town_Councilman>
+			<SeerElite>4</SeerElite>
 			<SeerSpearman>16</SeerSpearman>
 			<Mercenary_Elite>12</Mercenary_Elite>
 			<AncientSoldier>5</AncientSoldier>

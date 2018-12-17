@@ -12,6 +12,8 @@ namespace TorannMagic
     {
         public static Vector2 magicCardSize = new Vector2(700f, 556f);
 
+        public static Vector2 scrollPosition = Vector2.zero;
+
         public static float ButtonSize = 40f;
 
         public static float MagicButtonSize = 46f;
@@ -46,7 +48,9 @@ namespace TorannMagic
 
         public static void DrawMagicCard(Rect rect, Pawn pawn)
         {
-            GUI.BeginGroup(rect);            
+            GUI.BeginGroup(rect);
+            Widgets.BeginScrollView(rect, ref scrollPosition, rect, true);
+
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
             bool flag = comp != null;
             if (flag)
@@ -282,8 +286,33 @@ namespace TorannMagic
                             }                            
                         }                        
                     }
+                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.BloodMage))
+                    {
+                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                        if (pawn.GetComp<CompAbilityUserMagic>().spell_BloodMoon == true)
+                        {
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersBM, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodGift, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_IgniteBlood, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodForBlood, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Rend, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodMoon, TexButton.TMTex_SkillPointUsed);
+                        }
+                        else
+                        {
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersBM, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodGift, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_IgniteBlood, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodForBlood, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Rend, null, TexButton.TMTex_SkillPointUsed);
+                        }
+                    }
+                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
+                    {
+                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                        if (pawn.GetComp<CompAbilityUserMagic>().spell_Shapeshift == true)
+                        {
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersE, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchantedBody, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Transmutate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchanterStone, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchantWeapon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Polymorph, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Shapeshift, TexButton.TMTex_SkillPointUsed);
+                        }
+                        else
+                        {
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersE, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchantedBody, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Transmutate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchanterStone, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchantWeapon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Polymorph, null, TexButton.TMTex_SkillPointUsed);
+                        }
+                    }
                 }
             }
+            Widgets.EndScrollView();
             GUI.EndGroup();
         }
 
@@ -555,6 +584,9 @@ namespace TorannMagic
                         power.abilityDef == TorannMagicDefOf.TM_Encase || power.abilityDef == TorannMagicDefOf.TM_Encase_I || power.abilityDef == TorannMagicDefOf.TM_Encase_II ||
                         power.abilityDef == TorannMagicDefOf.TM_Meteor || power.abilityDef == TorannMagicDefOf.TM_Meteor_I || power.abilityDef == TorannMagicDefOf.TM_Meteor_II ||
                         power.abilityDef == TorannMagicDefOf.TM_OrbitalStrike || power.abilityDef == TorannMagicDefOf.TM_OrbitalStrike_I || power.abilityDef == TorannMagicDefOf.TM_OrbitalStrike_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_Rend || power.abilityDef == TorannMagicDefOf.TM_Rend_I || power.abilityDef == TorannMagicDefOf.TM_Rend_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_BloodMoon || power.abilityDef == TorannMagicDefOf.TM_BloodMoon_I || power.abilityDef == TorannMagicDefOf.TM_BloodMoon_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_Polymorph || power.abilityDef == TorannMagicDefOf.TM_Polymorph_I || power.abilityDef == TorannMagicDefOf.TM_Polymorph_II ||
                         power.abilityDef == TorannMagicDefOf.TM_BestowMight || power.abilityDef == TorannMagicDefOf.TM_BestowMight_I || power.abilityDef == TorannMagicDefOf.TM_BestowMight_II))
                     {
 
@@ -614,6 +646,9 @@ namespace TorannMagic
                         power.abilityDef.defName == "TM_Meteor" || power.abilityDef.defName == "TM_Meteor_I" || power.abilityDef.defName == "TM_Meteor_II" || power.abilityDef.defName == "TM_Meteor_III" ||
                         power.abilityDef.defName == "TM_Encase" || power.abilityDef.defName == "TM_Encase_I" || power.abilityDef.defName == "TM_Encase_II" || power.abilityDef.defName == "TM_Encase_III" ||
                         power.abilityDef.defName == "TM_OrbitalStrike" || power.abilityDef.defName == "TM_OrbitalStrike_I" || power.abilityDef.defName == "TM_OrbitalStrike_II" || power.abilityDef.defName == "TM_OrbitalStrike_III" ||
+                        power.abilityDef.defName == "TM_Rend" || power.abilityDef.defName == "TM_Rend_I" || power.abilityDef.defName == "TM_Rend_II" || power.abilityDef.defName == "TM_Rend_III" ||
+                        power.abilityDef.defName == "TM_BloodMoon" || power.abilityDef.defName == "TM_BloodMoon_I" || power.abilityDef.defName == "TM_BloodMoon_II" || power.abilityDef.defName == "TM_BloodMoon_III" ||
+                        power.abilityDef.defName == "TM_Polymorph" || power.abilityDef.defName == "TM_Polymorph_I" || power.abilityDef.defName == "TM_Polymorph_II" || power.abilityDef.defName == "TM_Polymorph_III" ||
                         power.abilityDef.defName == "TM_BestowMight" || power.abilityDef.defName == "TM_BestowMight_I" || power.abilityDef.defName == "TM_BestowMight_II" || power.abilityDef.defName == "TM_BestowMight_III")
                     {
                         flag999 = true;
@@ -667,7 +702,7 @@ namespace TorannMagic
                         {
                             if (flag999)
                             {
-                                if ((power.abilityDef.defName == "TM_Meteor" && compMagic.spell_Meteor != true) || (power.abilityDef.defName == "TM_OrbitalStrike" && compMagic.spell_OrbitalStrike != true))
+                                if ((power.abilityDef.defName == "TM_Meteor" && compMagic.spell_Meteor != true) || (power.abilityDef.defName == "TM_OrbitalStrike" && compMagic.spell_OrbitalStrike != true) || (power.abilityDef.defName == "TM_BloodMoon" && compMagic.spell_BloodMoon != true))
                                 {
                                     Widgets.DrawTextureFitted(rect, power.Icon, 1f);
                                 }
@@ -687,7 +722,7 @@ namespace TorannMagic
                         {
                             if (flag999)
                             {
-                                if ((power.abilityDef.defName == "TM_Meteor" && compMagic.spell_Meteor != true) || (power.abilityDef.defName == "TM_OrbitalStrike" && compMagic.spell_OrbitalStrike != true))
+                                if ((power.abilityDef.defName == "TM_Meteor" && compMagic.spell_Meteor != true) || (power.abilityDef.defName == "TM_OrbitalStrike" && compMagic.spell_OrbitalStrike != true) || (power.abilityDef.defName == "TM_BloodMoon" && compMagic.spell_BloodMoon != true))
                                 {
                                     Widgets.DrawTextureFitted(rect, power.Icon, 1f);
                                 }
@@ -720,6 +755,8 @@ namespace TorannMagic
                             (power.abilityDef.defName == "TM_PsychicShock" && MagicPowerSkill5 == null) ||
                             (power.abilityDef.defName == "TM_Meteor" && MagicPowerSkill6 == null) ||
                             (power.abilityDef.defName == "TM_OrbitalStrike" && MagicPowerSkill5 == null) ||
+                            (power.abilityDef.defName == "TM_BloodMoon" && MagicPowerSkill6 == null) ||
+                            (power.abilityDef.defName == "TM_Shapeshift" && MagicPowerSkill6 == null) ||
                             (power.abilityDef.defName == "TM_Resurrection" && MagicPowerSkill5 == null))
                         {
                             Rect rectMasterLock = new Rect(rect.xMax - 23f - "TM_MasterSpellLocked".Translate().Length * 4, rect.yMin + MagicCardUtility.MagicButtonSize + 4f, "TM_MasterSpellLocked".Translate().Length * 8, MagicCardUtility.TextSize * 3);
@@ -786,7 +823,7 @@ namespace TorannMagic
                     Rect rect42 = new Rect(rect41.x, rect4.y, rect4.width - MagicCardUtility.MagicButtonPointSize, rect4.height / 2);
                     MagicPowerSkill skill = enumeratorN.Current;
                     TooltipHandler.TipRegion(rect42, new TipSignal(() => skill.desc.Translate(), rect4.GetHashCode()));
-                    bool flag11 = (skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0 || !enumerator.Current.learned) || ((enumerator.Current.abilityDef.defName == "TM_BardTraining") && compMagic.MagicData.MagicAbilityPoints < 2 ) || ((skill.label == "TM_HolyWrath_ver" || skill.label == "TM_HolyWrath_pwr") && compMagic.MagicData.MagicAbilityPoints < 2) || ((skill.label == "TM_Sentinel_pwr") && compMagic.MagicData.MagicAbilityPoints < 2);
+                    bool flag11 = (skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0 || !enumerator.Current.learned) || ((enumerator.Current.abilityDef.defName == "TM_Shapeshift") && compMagic.MagicData.MagicAbilityPoints < 2) || (skill.label == "TM_Polymorph_ver" && compMagic.MagicData.MagicAbilityPoints < 2) || ((enumerator.Current.abilityDef.defName == "TM_BardTraining") && compMagic.MagicData.MagicAbilityPoints < 2 ) || ((skill.label == "TM_HolyWrath_ver" || skill.label == "TM_HolyWrath_pwr") && compMagic.MagicData.MagicAbilityPoints < 2) || ((skill.label == "TM_Sentinel_pwr") && compMagic.MagicData.MagicAbilityPoints < 2) || ((skill.label == "TM_EnchanterStone_ver") && compMagic.MagicData.MagicAbilityPoints < 2);
                     if (flag11)
                     {
                         Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
@@ -1262,6 +1299,98 @@ namespace TorannMagic
                                 compMagic.LevelUpSkill_OrbitalStrike(skill.label);
                                 skill.level++;
                                 compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+
+                            if (enumerator.Current.abilityDef.defName == "TM_BloodGift")
+                            {
+                                compMagic.LevelUpSkill_BloodGift(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_IgniteBlood")
+                            {
+                                compMagic.LevelUpSkill_IgniteBlood(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_BloodForBlood")
+                            {
+                                compMagic.LevelUpSkill_BloodForBlood(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_BloodShield")
+                            {
+                                compMagic.LevelUpSkill_BloodShield(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Rend" || enumerator.Current.abilityDef.defName == "TM_Rend_I" || enumerator.Current.abilityDef.defName == "TM_Rend_II" || enumerator.Current.abilityDef.defName == "TM_Rend_III")
+                            {
+                                compMagic.LevelUpSkill_Rend(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_BloodMoon" || enumerator.Current.abilityDef.defName == "TM_BloodMoon_I" || enumerator.Current.abilityDef.defName == "TM_BloodMoon_II" || enumerator.Current.abilityDef.defName == "TM_BloodMoon_III")
+                            {
+                                compMagic.LevelUpSkill_BloodMoon(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+
+                            if (enumerator.Current.abilityDef.defName == "TM_EnchantedBody")
+                            {
+                                compMagic.LevelUpSkill_EnchantedBody(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Transmutate")
+                            {
+                                compMagic.LevelUpSkill_Transmutate(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_EnchanterStone")
+                            {
+                                if (skill.label == "TM_EnchanterStone_ver")
+                                {
+                                    compMagic.LevelUpSkill_Sentinel(skill.label);
+                                    skill.level++;
+                                    compMagic.MagicData.MagicAbilityPoints -= 2;
+                                }
+                                else
+                                {
+                                    compMagic.LevelUpSkill_EnchanterStone(skill.label);
+                                    skill.level++;
+                                    compMagic.MagicData.MagicAbilityPoints -= 1;
+                                }                                
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_EnchantWeapon")
+                            {
+                                compMagic.LevelUpSkill_EnchantWeapon(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Polymorph" || enumerator.Current.abilityDef.defName == "TM_Polymorph_I" || enumerator.Current.abilityDef.defName == "TM_Polymorph_II" || enumerator.Current.abilityDef.defName == "TM_Polymorph_III")
+                            {
+                                if (skill.label == "TM_Polymorph_ver")
+                                {
+                                    compMagic.LevelUpSkill_Sentinel(skill.label);
+                                    skill.level++;
+                                    compMagic.MagicData.MagicAbilityPoints -= 2;
+                                }
+                                else
+                                {
+                                    compMagic.LevelUpSkill_Sentinel(skill.label);
+                                    skill.level++;
+                                    compMagic.MagicData.MagicAbilityPoints -= 1;
+                                }
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Shapeshift")
+                            {
+                                compMagic.LevelUpSkill_Shapeshift(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 2;
                             }
                         }
                     }

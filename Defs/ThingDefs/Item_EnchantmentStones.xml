@@ -25,6 +25,7 @@
 	<stackLimit>1500</stackLimit>
 	<statBases>
 		<Beauty>10</Beauty>
+		<SellPriceFactor>.30</SellPriceFactor>
 	</statBases>
 	<comps>
 		<li Class="CompProperties_Forbiddable"/>
@@ -63,7 +64,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>300</MarketValue>
+      <MarketValue>170</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -81,7 +82,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>900</MarketValue>
+      <MarketValue>390</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -99,7 +100,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>2700</MarketValue>
+      <MarketValue>955</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -117,7 +118,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>300</MarketValue>
+      <MarketValue>170</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -135,7 +136,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>900</MarketValue>
+      <MarketValue>390</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -153,7 +154,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>2700</MarketValue>
+      <MarketValue>955</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -171,7 +172,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>300</MarketValue>
+      <MarketValue>170</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -189,7 +190,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>900</MarketValue>
+      <MarketValue>390</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -207,7 +208,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>2700</MarketValue>
+      <MarketValue>955</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -225,7 +226,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>300</MarketValue>
+      <MarketValue>170</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -243,7 +244,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>900</MarketValue>
+      <MarketValue>390</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -261,7 +262,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>2700</MarketValue>
+      <MarketValue>955</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -279,7 +280,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>300</MarketValue>
+      <MarketValue>170</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -297,7 +298,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>900</MarketValue>
+      <MarketValue>390</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -315,7 +316,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>2700</MarketValue>
+      <MarketValue>955</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -333,7 +334,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>300</MarketValue>
+      <MarketValue>170</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -351,7 +352,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>900</MarketValue>
+      <MarketValue>390</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -369,7 +370,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>2700</MarketValue>
+      <MarketValue>955</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -388,7 +389,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>300</MarketValue>
+      <MarketValue>170</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -406,7 +407,7 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>900</MarketValue>
+      <MarketValue>390</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -424,7 +425,61 @@
 	<stackLimit>1</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>2700</MarketValue>
+      <MarketValue>955</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase">
+    <defName>TM_EStone_wonder_minor</defName>
+    <label>Minor Arcane Gem of Wonder</label>
+    <description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem hums with intense power, as if perpetually suspended at the edge of a waterfall. This gem can be used to imbue an item with magical potential, granting minor bonuses to all enchantment categories.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/wonderstone_minor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>1</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>1190</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase">
+    <defName>TM_EStone_wonder</defName>
+    <label>Arcane Gem of Wonder</label>
+    <description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem hums with intense power, as if perpetually suspended at the edge of a waterfall. This gem can be used to imbue an item with magical potential, granting moderate bonuses to all enchantment categories.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/wonderstone</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>1</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>2650</MarketValue>
+      <Mass>0.1</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MagicResourceBase">
+    <defName>TM_EStone_wonder_major</defName>
+    <label>Major Arcane Gem of Wonder</label>
+    <description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem hums with intense power, as if perpetually suspended at the edge of a waterfall. This gem can be used to imbue an item with magical potential, granting major bonuses to all enchantment categories.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/wonderstone_major</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<stackLimit>1</stackLimit>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <MarketValue>6550</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
@@ -451,8 +506,7 @@ Raw Magicyte can be refined to make a variety of enchanting gems at the gemcutti
 	<statBases>
 	  <Beauty>4</Beauty>
 	  <MaxHitPoints>500</MaxHitPoints>
-      <MarketValue>6</MarketValue>
-	  <SellPriceFactor>.25</SellPriceFactor>
+      <MarketValue>5</MarketValue>
       <Mass>0.1</Mass>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>

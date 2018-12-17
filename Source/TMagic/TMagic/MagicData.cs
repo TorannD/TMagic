@@ -34,6 +34,9 @@ namespace TorannMagic
         public List<MagicPower> magicPowerSD;
         public List<MagicPower> magicPowerG;
         public List<MagicPower> magicPowerT;
+        public List<MagicPower> magicPowerBM;
+        public List<MagicPower> magicPowerE;
+
 
         public List<MagicPower> magicPowerStandalone;
 
@@ -129,6 +132,20 @@ namespace TorannMagic
         public List<MagicPowerSkill> magicPowerSkill_Overdrive;
         public List<MagicPowerSkill> magicPowerSkill_OrbitalStrike;
 
+        public List<MagicPowerSkill> magicPowerSkill_BloodGift;         //BloodGift & BloodSacrifice
+        public List<MagicPowerSkill> magicPowerSkill_IgniteBlood;
+        public List<MagicPowerSkill> magicPowerSkill_BloodForBlood;
+        public List<MagicPowerSkill> magicPowerSkill_BloodShield;
+        public List<MagicPowerSkill> magicPowerSkill_Rend;
+        public List<MagicPowerSkill> magicPowerSkill_BloodMoon;
+
+        public List<MagicPowerSkill> magicPowerSkill_EnchantedBody;  //EnchantedBody & EnchantedAura
+        public List<MagicPowerSkill> magicPowerSkill_Transmutate;
+        public List<MagicPowerSkill> magicPowerSkill_EnchanterStone;
+        public List<MagicPowerSkill> magicPowerSkill_EnchantWeapon;
+        public List<MagicPowerSkill> magicPowerSkill_Polymorph;
+        public List<MagicPowerSkill> magicPowerSkill_Shapeshift;
+
         public List<MagicPowerSkill> MagicPowerSkill_global_regen
         {
             get
@@ -203,6 +220,10 @@ namespace TorannMagic
                         new MagicPower(new List<AbilityDef>
                         {
                             TorannMagicDefOf.TM_TeachMagic
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_EnchantedAura
                         }),
                     };
                 }
@@ -2050,6 +2071,297 @@ namespace TorannMagic
             }
         }
 
+        public List<MagicPower> MagicPowersBM
+        {
+            get
+            {
+                bool flag = this.magicPowerBM == null;
+                if (flag)
+                {
+                    this.magicPowerBM = new List<MagicPower>
+                    {
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_BloodGift
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_IgniteBlood
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_BloodForBlood
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_BloodShield
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Rend,
+                            TorannMagicDefOf.TM_Rend_I,
+                            TorannMagicDefOf.TM_Rend_II,
+                            TorannMagicDefOf.TM_Rend_III
+                        }),                        
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_BloodMoon,
+                            TorannMagicDefOf.TM_BloodMoon_I,
+                            TorannMagicDefOf.TM_BloodMoon_II,
+                            TorannMagicDefOf.TM_BloodMoon_III
+                        }),
+                    };
+                }
+                return this.magicPowerBM;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_BloodGift
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_BloodGift == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_BloodGift = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_BloodGift_pwr", "TM_BloodGift_pwr_desc"),
+                        new MagicPowerSkill("TM_BloodGift_eff", "TM_BloodGift_eff_desc"),
+                        new MagicPowerSkill("TM_BloodGift_ver", "TM_BloodGift_ver_desc")
+
+                    };
+                }
+                return this.magicPowerSkill_BloodGift;
+            }
+        }        
+        public List<MagicPowerSkill> MagicPowerSkill_IgniteBlood
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_IgniteBlood == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_IgniteBlood = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_IgniteBlood_pwr", "TM_IgniteBlood_pwr_desc"),
+                        new MagicPowerSkill("TM_IgniteBlood_eff", "TM_IgniteBlood_eff_desc"),
+                        new MagicPowerSkill("TM_IgniteBlood_ver", "TM_IgniteBlood_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_IgniteBlood;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_BloodForBlood
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_BloodForBlood == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_BloodForBlood = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_BloodForBlood_pwr", "TM_BloodForBlood_pwr_desc" ),
+                        new MagicPowerSkill("TM_BloodForBlood_eff", "TM_BloodForBlood_eff_desc" ),
+                        new MagicPowerSkill("TM_BloodForBlood_ver", "TM_BloodForBlood_ver_desc" )
+                    };
+                }
+                return this.magicPowerSkill_BloodForBlood;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_BloodShield
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_BloodShield == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_BloodShield = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_BloodShield_pwr", "TM_BloodShield_pwr_desc"),
+                        new MagicPowerSkill("TM_BloodShield_eff", "TM_BloodShield_eff_desc"),
+                        new MagicPowerSkill("TM_BloodShield_ver", "TM_BloodShield_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_BloodShield;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Rend
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Rend == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Rend = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Rend_pwr", "TM_Rend_pwr_desc"),
+                        new MagicPowerSkill("TM_Rend_eff", "TM_Rend_eff_desc"),
+                        new MagicPowerSkill("TM_Rend_ver", "TM_Rend_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_Rend;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_BloodMoon
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_BloodMoon == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_BloodMoon = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_BloodMoon_pwr", "TM_BloodMoon_pwr_desc"),
+                        new MagicPowerSkill("TM_BloodMoon_eff", "TM_BloodMoon_eff_desc"),
+                        new MagicPowerSkill("TM_BloodMoon_ver", "TM_BloodMoon_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_BloodMoon;
+            }
+        }
+
+        public List<MagicPower> MagicPowersE
+        {
+            get
+            {
+                bool flag = this.magicPowerE == null;
+                if (flag)
+                {
+                    this.magicPowerE = new List<MagicPower>
+                    {
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_EnchantedBody
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Transmutate
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_EnchanterStone
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_EnchantWeapon
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Polymorph,
+                            TorannMagicDefOf.TM_Polymorph_I,
+                            TorannMagicDefOf.TM_Polymorph_II,
+                            TorannMagicDefOf.TM_Polymorph_III
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Shapeshift
+                        }),
+                    };
+                }
+                return this.magicPowerE;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_EnchantedBody
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_EnchantedBody == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_EnchantedBody = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_EnchantedBody_pwr", "TM_EnchantedBody_pwr_desc"),
+                        new MagicPowerSkill("TM_EnchantedBody_eff", "TM_EnchantedBody_eff_desc"),
+                        new MagicPowerSkill("TM_EnchantedBody_ver", "TM_EnchantedBody_ver_desc")
+
+                    };
+                }
+                return this.magicPowerSkill_EnchantedBody;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Transmutate
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Transmutate == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Transmutate = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Transmutate_pwr", "TM_Transmutate_pwr_desc"),
+                        new MagicPowerSkill("TM_Transmutate_eff", "TM_Transmutate_eff_desc"),
+                        new MagicPowerSkill("TM_Transmutate_ver", "TM_Transmutate_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_Transmutate;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_EnchanterStone
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_EnchanterStone == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_EnchanterStone = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_EnchanterStone_eff", "TM_EnchanterStone_eff_desc" ),
+                        new MagicPowerSkill("TM_EnchanterStone_ver", "TM_EnchanterStone_ver_desc" )
+                    };
+                }
+                return this.magicPowerSkill_EnchanterStone;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_EnchantWeapon
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_EnchantWeapon == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_EnchantWeapon = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_EnchantWeapon_pwr", "TM_EnchantWeapon_pwr_desc"),
+                        new MagicPowerSkill("TM_EnchantWeapon_eff", "TM_EnchantWeapon_eff_desc")
+                    };
+                }
+                return this.magicPowerSkill_EnchantWeapon;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Polymorph
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Polymorph == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Polymorph = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Polymorph_pwr", "TM_Polymorph_pwr_desc"),
+                        new MagicPowerSkill("TM_Polymorph_eff", "TM_Polymorph_eff_desc"),
+                        new MagicPowerSkill("TM_Polymorph_ver", "TM_Polymorph_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_Polymorph;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Shapeshift
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Shapeshift == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Shapeshift = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Shapeshift_pwr", "TM_Shapeshift_pwr_desc"),
+                        new MagicPowerSkill("TM_Shapeshift_eff", "TM_Shapeshift_eff_desc"),
+                        new MagicPowerSkill("TM_Shapeshift_ver", "TM_Shapeshift_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_Shapeshift;
+            }
+        }
+
         public bool IsNecromancer
         {
             get
@@ -2170,7 +2482,7 @@ namespace TorannMagic
         {
             get
             {
-                return this.MagicPowersIF.Concat(this.MagicPowersHoF.Concat(this.MagicPowersSB.Concat(this.MagicPowersA.Concat(this.MagicPowersP.Concat(this.MagicPowersS.Concat(this.MagicPowersD.Concat(this.MagicPowersN.Concat(this.MagicPowersPR.Concat(this.MagicPowersB.Concat(this.MagicPowersWD.Concat(this.MagicPowersSD.Concat(this.MagicPowersG.Concat(this.MagicPowersT.Concat(this.MagicPowersStandalone))))))))))))));
+                return this.MagicPowersE.Concat(this.MagicPowersBM.Concat(this.MagicPowersIF.Concat(this.MagicPowersHoF.Concat(this.MagicPowersSB.Concat(this.MagicPowersA.Concat(this.MagicPowersP.Concat(this.MagicPowersS.Concat(this.MagicPowersD.Concat(this.MagicPowersN.Concat(this.MagicPowersPR.Concat(this.MagicPowersB.Concat(this.MagicPowersWD.Concat(this.MagicPowersSD.Concat(this.MagicPowersG.Concat(this.MagicPowersT.Concat(this.MagicPowersStandalone))))))))))))))));
             }
         }
 
@@ -2308,6 +2620,20 @@ namespace TorannMagic
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Sabotage, "magicPowerSkill_Sabotage", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Overdrive, "magicPowerSkill_Overdrive", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_OrbitalStrike, "magicPowerSkill_OrbitalStrike", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPower>(ref this.magicPowerBM, "magicPowerBM", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_BloodGift, "magicPowerSkill_BloodGift", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_IgniteBlood, "magicPowerSkill_IgniteBlood", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_BloodForBlood, "magicPowerSkill_BloodForBlood", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_BloodShield, "magicPowerSkill_BloodShield", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Rend, "magicPowerSkill_Rend", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_BloodMoon, "magicPowerSkill_BloodMoon", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPower>(ref this.magicPowerE, "magicPowerE", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_EnchantedBody, "magicPowerSkill_EnchantedBody", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Transmutate, "magicPowerSkill_Transmutate", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_EnchanterStone, "magicPowerSkill_EnchanterStone", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_EnchantWeapon, "magicPowerSkill_EnchantWeapon", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Polymorph, "magicPowerSkill_Polymorph", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Shapeshift, "magicPowerSkill_Shapeshift", LookMode.Deep, new object[0]);
         }
     }
 }

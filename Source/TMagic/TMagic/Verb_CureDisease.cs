@@ -62,7 +62,7 @@ namespace TorannMagic
                             if (rec.def.makesSickThought)
                             {
                                 bool success = false;
-                                if ( rec.def.defName == "WoundInfection" || rec.def.defName == "Flu")
+                                if ( rec.def.defName == "WoundInfection" || rec.def.defName == "Flu" || rec.def.defName == "Animal_Flu")
                                 {
                                     rec.Severity -= sevAdjustment;
                                     success = true;

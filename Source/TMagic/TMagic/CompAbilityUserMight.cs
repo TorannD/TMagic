@@ -1036,6 +1036,11 @@ namespace TorannMagic
                 this.RemovePawnAbility(TorannMagicDefOf.TM_TeachMight);
                 this.AddPawnAbility(TorannMagicDefOf.TM_TeachMight);
             }
+            if(this.mimicAbility != null)
+            {
+                this.RemovePawnAbility(mimicAbility);
+                this.AddPawnAbility(mimicAbility);
+            }
 
         }
 
@@ -2337,8 +2342,8 @@ namespace TorannMagic
                 }
 
                 //combat (drafted) spells
-                if (this.Pawn.Drafted && this.Stamina.CurLevelPercentage >= settingsRef.autocastCombatMinThreshold && this.Pawn.CurJob.def != JobDefOf.Goto)
-                {
+                if (this.Pawn.Drafted && this.Stamina.CurLevelPercentage >= settingsRef.autocastCombatMinThreshold && this.Pawn.CurJob.def != JobDefOf.Goto && this.Pawn.CurJob.def != JobDefOf.AttackMelee)
+                {                    
                     if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                     {
                         PawnAbility ability = null;
@@ -2685,7 +2690,7 @@ namespace TorannMagic
                             if (traits[i].Degree != sniperfocus_pwr.level)
                             {
                                 traits.Remove(traits[i]);
-                                this.Pawn.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Sniper"), sniperfocus_pwr.level, false));
+                                this.Pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Sniper, sniperfocus_pwr.level, false));
                                 MoteMaker.ThrowHeatGlow(base.Pawn.Position, this.Pawn.Map, 2);
                             }
                         }
@@ -3233,6 +3238,7 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.skill_ThickSkin, "skill_ThickSkin", false, false);
             Scribe_Values.Look<bool>(ref this.skill_FightersFocus, "skill_FightersFocus", false, false);
             Scribe_Values.Look<bool>(ref this.skill_Teach, "skill_Teach", false, false);
+            Scribe_Defs.Look<TMAbilityDef>(ref this.mimicAbility, "mimicAbility");
             Scribe_Deep.Look<MightData>(ref this.mightData, "mightData", new object[]
             {
                 this

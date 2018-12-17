@@ -9,7 +9,7 @@ namespace TorannMagic
     class HediffComp_BattleHymn : HediffComp
     {
         private bool initializing = true;
-        private float chantRange = 11f;
+        private float chantRange = 15f;
         private int chantFrequency = 300;
         private int pwrVal = 0;
         private int verVal = 0;
@@ -43,7 +43,7 @@ namespace TorannMagic
                 this.verVal = ver.level;
                 this.pwrVal = pwr.level;
                 this.effVal = eff.level;
-                this.chantRange = 11f + (this.verVal * 2f);
+                this.chantRange = this.chantRange + (this.verVal * 3f);
                 this.chantFrequency = 300 - (30 * verVal);
             }
         }

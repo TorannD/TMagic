@@ -113,6 +113,12 @@ namespace TorannMagic.ModOptions
             num++;
             Rect rowRect12 = Controller.UIHelper.GetRowRect(rowRect11, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect12, "TM_Technomancer".Translate(), ref Settings.Instance.Technomancer, false);
+            num++;
+            Rect rowRect13 = Controller.UIHelper.GetRowRect(rowRect12, rowHeight, num);
+            Widgets.CheckboxLabeled(rowRect13, "TM_BloodMage".Translate(), ref Settings.Instance.BloodMage, false);
+            num++;
+            Rect rowRect14 = Controller.UIHelper.GetRowRect(rowRect13, rowHeight, num);
+            Widgets.CheckboxLabeled(rowRect14, "TM_Enchanter".Translate(), ref Settings.Instance.Enchanter, false);
 
             GUI.EndGroup();
         }        

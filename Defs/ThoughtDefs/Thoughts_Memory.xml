@@ -37,6 +37,39 @@
       </li>
 	  </stages>
   </ThoughtDef>
+  
+  <ThoughtDef ParentName="TM_Memory">
+    <defName>Polymorphed</defName>
+    <durationDays>3</durationDays>
+	<nullifyingTraits>
+	  <li>Enchanter</li>
+	  <li>Transhumanist</li>
+	</nullifyingTraits>
+    <stages>
+      <li>
+        <label>polymorphed against will</label>
+        <!-- generic penalty -->
+        <description>I was polymorphed and forced to exist in the body of an animal, how dehumanizing.</description>
+        <baseMoodEffect>-18</baseMoodEffect>
+      </li>	  
+	  </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef ParentName="TM_Memory">
+    <defName>Polymorphed_Transhumanist</defName>
+    <durationDays>3</durationDays>
+	<nullifyingTraits>
+	  <li>Enchanter</li>
+	</nullifyingTraits>
+    <stages>
+	  <li>
+        <label>polymorphed!</label>
+        <!-- generic penalty -->
+        <description>I was polymorphed into a wild animal - and it was AMAZING!.</description>
+        <baseMoodEffect>22</baseMoodEffect>
+      </li>
+	  </stages>
+  </ThoughtDef>
 
   <ThoughtDef ParentName="TM_Memory">
     <defName>WarlockEmpathy</defName>

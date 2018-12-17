@@ -166,9 +166,28 @@ namespace TorannMagic.ModOptions
                         removedThings.Add(current);
                     }
                 }
-                if (!settingsRef.Demonkin)
+                if (!settingsRef.Technomancer)
                 {
-                    if (current.defName == "Torn_BookOfMagitech" || current.defName == "BookOfMagitech" || current.defName == "SpellOf_TechnoShield" || current.defName == "SpellOf_Sabotage" || current.defName == "SpellOf_Overdrive" || current.defName == "SpellOf_OrbitalStrike")
+                    if (current == TorannMagicDefOf.Torn_BookOfMagitech || current == TorannMagicDefOf.BookOfMagitech || current == TorannMagicDefOf.SpellOf_TechnoShield || current == TorannMagicDefOf.SpellOf_Sabotage || current == TorannMagicDefOf.SpellOf_Overdrive || current == TorannMagicDefOf.SpellOf_OrbitalStrike)
+                    {
+                        removedThings.Add(current);
+                    }
+                }
+
+                if (!settingsRef.BloodMage)
+                {
+                    if (current == TorannMagicDefOf.BookOfHemomancy || current == TorannMagicDefOf.Torn_BookOfHemomancy || current == TorannMagicDefOf.SpellOf_BloodMoon)
+                    {
+                        removedThings.Add(current);
+                    }
+                }
+
+                if (!settingsRef.Enchanter)
+                {
+                    if (current == TorannMagicDefOf.BookOfEnchanter || current == TorannMagicDefOf.Torn_BookOfEnchanter || current == TorannMagicDefOf.SpellOf_Shapeshift || 
+                        current == TorannMagicDefOf.TM_Artifact_Gold || current == TorannMagicDefOf.TM_Artifact_Silver || current == TorannMagicDefOf.TM_Artifact_Jade || current == TorannMagicDefOf.TM_Artifact_Wood ||
+                        current == TorannMagicDefOf.TM_Artifact_Medicine || current == TorannMagicDefOf.TM_Artifact_Magicyte || current == TorannMagicDefOf.TM_Artifact_Iron || current == TorannMagicDefOf.TM_Artifact_Steel ||
+                        current == TorannMagicDefOf.TM_Artifact_Slate || current == TorannMagicDefOf.TM_Artifact_Granite || current == TorannMagicDefOf.TM_Artifact_Marble || current == TorannMagicDefOf.TM_Artifact_Sandstone || current == TorannMagicDefOf.TM_Artifact_Limestone)
                     {
                         removedThings.Add(current);
                     }
@@ -190,14 +209,14 @@ namespace TorannMagic.ModOptions
             {
                 if (!settingsRef.Arcanist)
                 {
-                    if (current.defName == "SpellOf_FoldReality")
+                    if (current.defName == "Make_SpellOf_FoldReality")
                     {
                         removedRecipes.Add(current);
                     }
                 }
                 if (!settingsRef.FireMage)
                 {
-                    if (current.defName == "Make_Make_SpellOf_Firestorm" || current.defName == "Make_Make_SpellOf_DryGround")
+                    if (current.defName == "Make_SpellOf_Firestorm" || current.defName == "Make_SpellOf_DryGround")
                     {
                         removedRecipes.Add(current);
                     }
@@ -275,6 +294,20 @@ namespace TorannMagic.ModOptions
                 if (!settingsRef.Technomancer)
                 {
                     if (current.defName == "Make_SpellOf_TechnoShield" || current.defName == "Make_SpellOf_Sabotage" || current.defName == "Make_SpellOf_Overdrive" || current.defName == "Make_SpellOf_OrbitalStrike")
+                    {
+                        removedRecipes.Add(current);
+                    }
+                }
+                if (!settingsRef.BloodMage)
+                {
+                    if (current.defName == "Make_SpellOf_BloodMoon")
+                    {
+                        removedRecipes.Add(current);
+                    }
+                }
+                if (!settingsRef.Enchanter)
+                {
+                    if (current.defName == "Make_SpellOf_Shapeshift")
                     {
                         removedRecipes.Add(current);
                     }

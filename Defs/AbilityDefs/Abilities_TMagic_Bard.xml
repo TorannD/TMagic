@@ -26,7 +26,20 @@
     <defName>TM_BardTraining</defName>
     <label>Bard Training</label>
     <uiIconPath>UI/bardtraining</uiIconPath>
-    <description>Hone the skills of a bard by undergoing training in performing arts, comedy, socializing, and inspiration.</description>
+    <description>Hone the skills of a bard by undergoing training in performing arts, comedy, socializing, and inspiration. Each level will change the bard's trait to reflect their skill level.
+	
+Ranks:
+Entertainer: Social impact +10%, Negotiation +20%, Trade +10%,
+Pain threshold -10%, carrying capacity -10, work speed -10%
+
+Performer: Social impact +20%, Negotiation +30%, Trade +15%,
+Pain threshold -12%, carrying capacity -15, work speed -12%
+
+Minstrel: Social impact +30%, Negotiation +35%, Trade +20%,
+Pain threshold -14%, carrying capacity -18, work speed -14%
+
+Bard: Social impact +35%, Negotiation +40%, Trade +25%,
+Pain threshold -15%, carrying capacity -20, work speed -15%</description>
     <manaCost>0.0</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>AbilityUser.Verb_UseAbility</verbClass>
@@ -229,7 +242,7 @@ Activating the ability casts a net over the colony and allows the bard to detect
             <abilityDef>TM_Lullaby_II</abilityDef>
             <warmupTime>2.6</warmupTime>
             <SecondsToRecharge>60.0</SecondsToRecharge>
-            <range>340</range>
+            <range>40</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Vibration</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>

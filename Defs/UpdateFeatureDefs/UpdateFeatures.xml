@@ -6,34 +6,6 @@
 		<linkUrl>https://ludeon.com/forums/index.php?topic=37161.0</linkUrl>
 	</HugsLib.UpdateFeatureDef>	
 	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_2_2_5</defName>
-		<assemblyVersion>2.2.5</assemblyVersion>
-		<content>
-** New feature: Auto-casting - many basic spells or skills can now be enabled for automatic use.  There are a few things you should know:
-- Abilities with autocast will have a checkbox at the top right of the ability icon; right click the ability icon to toggle the feature.
-- There are two separate routines for drafted and undrafted.  Some spells, like magic combat spells, will only autocast while drafted.
-- The only offensive abilities that will be used while undrafted are Ranger "Arrow Storm" and Sniper "Headshot" - and only when hunting.
-- Autocast settings can be found in the mod options, and can be turned off globally if desired or for performance reasons.
-- Outside of combat and hunting, autocast abilities will only target human colonists.
-- Enabling autocast does not prevent normal use of abilities.
-	
-** New feature: Class options - within the mod settings there is a button for "Class Options" that will allow you to disable certain classes from being generated during gameplay.
-- This does not remove traits from the database.  Disabled class traits will never be assigned during normal gameplay but use of mods like EdB Prepare Carefully or any mod that ignores trait commonality settings, will still show the trait.
-- This feature should not be used in the middle of a game, only apply changes before starting a new game.
-	
-* New weapons - Elephant bow and Elephant spear - these weapons are intended to provide extra benefit to fighter classes at mid-tier (industrial equivalent) and have minor enchantments, similar to wands for mages.
-
-Bug fixes: 
-Geomancer "Encase" has been recoded to prevent "terrain swapping" and accidental destruction of a building if the swapped terrain type didn't support the building
-Fixed an issue where several spells that should ignore terrain were 'hitting' objects or terrain prior to reaching their designated targets
-Equipment (apparel) should now show their enchantments in the gear tab, along with weapons
-Fixed an issue where Bards performing the "entertain" job wouldn't properly reserve their targets
-Fixed a bug with Warlock "Empathy Bleed" that would attempt to feel empathy for colony pets
-Warlock/Succubus can no longer soulbond themselves
-
-		</content>
-	</HugsLib.UpdateFeatureDef>	
-	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
 		<defName>ARimWorldOfMagic_2_2_6</defName>
 		<assemblyVersion>2.2.6</assemblyVersion>
 		<content>
@@ -168,6 +140,31 @@ Arcane forge: replication will no longer affect the original design/recipe; only
 Added additional exception checking for magic pawns
 Added a check to enchanting to prevent a mage from acquiring additional enchanting container slots
 The Seer faction will now load their faction apparel correctly during pawn generation
+		</content>
+	</HugsLib.UpdateFeatureDef>
+	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_2_3_1</defName>
+		<assemblyVersion>2.3.1</assemblyVersion>
+		<content>
+** New class: Blood Mage - willing to sacrifice even their own life blood for power, the blood mages are definition of high cost / high reward
+-Blood Gift: the source of a blood mage's power; Blood Gift is the mechanism used to infused blood with mana and fuel blood magic
+-Rend: cause hemorrhaging to all targets in an area; not a devastating, single blow, but a multitude of attacks that will drain energy from its victims
+-Ignite Blood: detonates all exposed blood in an area and blossoms like a wildfire to any nearby sources of blood
+-Blood For Blood: heats and accelerates the blood in a target causing it to discharge from its target in a mist which is transferred to the caster; the process closes the wounds of both victim and caster 
+-Blood Shield: generate a protective barrier of blood that absorbs damage and slowly heals the wounds on its target; any damage absorbed by a blood shield will partially be transferred to the caster
+-Blood Moon (master): summon demons of blood and terror to assault all enemies in a large area
+
+** New class: Enchanter - masters of transmutation, enchanters are able to modify the composition and arrangement of almost any material, be it organic or synthetic
+-Enchanted Body / Enchanted Aura: a self-enchantment that augments the capabilities of its caster, but only one enchantment can be maintained at a time
+-Enchant weapon: enchants melee weapons with elemental attacks
+-Transmute: converts stacks of raw resources into other raw resources
+-Enchanter's Stone: created a minor enchanted artifact out of raw resources; each resource type creates a unique item
+-Polymorph: an area affect ability that can change all targets into random animals
+-Shapeshift: the enchanter shape shifts into a random animal and augments the physical traits of the animal in the process; the enchanter maintains most of the control over their body and can revert the shape shift at any time
+
+*New creature: dire wolf - rarely seen, and only in the coldest environments, the dire wolf is larger and more deadly than the timber wolf and possesses unique mythical qualities
+
+--See mod discord announcements for full details! - https://discord.gg/ksksHj --
 		</content>
 	</HugsLib.UpdateFeatureDef>	
 	

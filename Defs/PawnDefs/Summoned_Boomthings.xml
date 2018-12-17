@@ -58,7 +58,7 @@
         <capacities>
           <li>Snuggle</li>
         </capacities>
-        <power>3</power>
+        <power>5</power>
         <cooldownTime>.4</cooldownTime>
       </li>
     </tools>
@@ -67,7 +67,7 @@
       <deathActionWorkerClass>TorannMagic.Poppi_DeathWorker</deathActionWorkerClass>
 	  <needsRest>false</needsRest>
       <baseBodySize>0.2</baseBodySize>
-      <baseHealthScale>0.4</baseHealthScale>
+      <baseHealthScale>0.6</baseHealthScale>
 	  <predator>true</predator>
 	  <wildness>0.8</wildness>
       <foodType>OmnivoreRoughAnimal</foodType>

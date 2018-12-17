@@ -195,7 +195,7 @@ namespace TorannMagic
             return thing;
         }
 
-        private static Faction ResolveFaction(Pawn caster, SpawnThings spawnables)
+        public static Faction ResolveFaction(Pawn caster, SpawnThings spawnables)
         {
             FactionDef val = FactionDefOf.PlayerColony;
             Faction obj = null;
@@ -272,6 +272,143 @@ namespace TorannMagic
                 lord.AddPawn(newPawn);
             }
             return newPawn;
+        }
+
+        public static Pawn PolymorphPawn(Pawn caster, Pawn original, Pawn polymorphFactionPawn, SpawnThings spawnables, IntVec3 position, bool temporary, int duration)
+        {
+            Pawn polymorphPawn = null;
+            bool flag = spawnables.def != null;
+            if (flag)
+            {
+                Faction faction = TM_Action.ResolveFaction(polymorphFactionPawn, spawnables);
+                bool flag2 = spawnables.def.race != null;
+                if (flag2)
+                {
+                    bool flag3 = spawnables.kindDef == null;
+                    if (flag3)
+                    {
+                        Log.Error("Missing kinddef");
+                    }
+                    else
+                    {
+                        Pawn newPawn = new Pawn();
+                        
+                        newPawn = (Pawn)PawnGenerator.GeneratePawn(spawnables.kindDef, faction);
+                        newPawn.AllComps.Add(new CompPolymorph());
+                        CompPolymorph compPoly = newPawn.GetComp<CompPolymorph>();
+                        CompProperties_Polymorph props = new CompProperties_Polymorph();
+                        compPoly.Initialize(props);
+                        
+                        if (compPoly != null)
+                        {
+                            compPoly.ParentPawn = newPawn;
+                            compPoly.Spawner = caster;
+                            compPoly.Temporary = temporary;
+                            compPoly.TicksToDestroy = duration;
+                            compPoly.Original = original;
+                        }
+                        else
+                        {
+                            Log.Message("CompPolymorph was null.");
+                        }
+                        
+                        try
+                        {
+                            GenSpawn.Spawn(newPawn, position, original.Map);
+                            polymorphPawn = newPawn;
+
+                            polymorphPawn.drafter = new Pawn_DraftController(polymorphPawn);
+                            polymorphPawn.equipment = new Pawn_EquipmentTracker(polymorphPawn);
+                            polymorphPawn.story = new Pawn_StoryTracker(polymorphPawn);
+
+                            //polymorphPawn.apparel = new Pawn_ApparelTracker(polymorphPawn);
+                            //polymorphPawn.mindState = new Pawn_MindState(polymorphPawn);
+                            //polymorphPawn.thinker = new Pawn_Thinker(polymorphPawn);
+                            //polymorphPawn.jobs = new Pawn_JobTracker(polymorphPawn);
+                            PawnComponentsUtility.AddAndRemoveDynamicComponents(polymorphPawn, true);
+
+                            polymorphPawn.Name = original.Name;
+                            polymorphPawn.gender = original.gender;
+
+                            if (original.health.hediffSet.HasHediff(HediffDef.Named("TM_SoulBondPhysicalHD")) || original.health.hediffSet.HasHediff(HediffDef.Named("TM_SoulBondMentalHD")))
+                            {
+                                TM_Action.TransferSoulBond(original, polymorphPawn);
+                            }
+                        }
+                        catch(NullReferenceException ex)
+                        {
+                            Log.Message("TM_Exception".Translate(
+                                caster.LabelShort,
+                                ex.ToString()
+                                ));
+                            polymorphPawn = null;
+                        }
+                        if (polymorphPawn != null && newPawn.Faction != null && newPawn.Faction != Faction.OfPlayer)
+                        {
+                            Lord lord = null;
+                            if (newPawn.Map.mapPawns.SpawnedPawnsInFaction(faction).Any((Pawn p) => p != newPawn))
+                            {
+                                Predicate<Thing> validator = (Thing p) => p != newPawn && ((Pawn)p).GetLord() != null;
+                                Pawn p2 = (Pawn)GenClosest.ClosestThing_Global(newPawn.Position, newPawn.Map.mapPawns.SpawnedPawnsInFaction(faction), 99999f, validator, null);
+                                lord = p2.GetLord();
+                            }
+                            bool flag4 = lord == null;
+                            if (flag4)
+                            {
+                                LordJob_DefendPoint lordJob = new LordJob_DefendPoint(newPawn.Position);
+                                lord = LordMaker.MakeNewLord(faction, lordJob, original.Map, null);
+                            }
+                            lord.AddPawn(newPawn);
+                        }
+                    }
+                }
+                else
+                {
+                    Log.Message("Missing race");
+                }
+            }
+            return polymorphPawn;
+        }
+
+        public static void TransferSoulBond(Pawn bondedPawn, Pawn polymorphedPawn)
+        {
+            Hediff bondHediff = null;
+            bondHediff = bondedPawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_SoulBondPhysicalHD"), false);
+            if (bondHediff != null)
+            {
+                HediffComp_SoulBondHost comp = bondHediff.TryGetComp<HediffComp_SoulBondHost>();
+                if (comp != null)
+                {
+                    comp.polyHost = polymorphedPawn;
+                }
+            }
+            bondHediff = null;
+
+            bondHediff = bondedPawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_SoulBondMentalHD"), false);
+            if (bondHediff != null)
+            {
+                HediffComp_SoulBondHost comp = bondHediff.TryGetComp<HediffComp_SoulBondHost>();
+                if (comp != null)
+                {
+                    comp.polyHost = polymorphedPawn;
+                }
+            }
+        }
+
+        public static SpawnThings AssignRandomCreatureDef(SpawnThings spawnthing, int combatPowerMin, int combatPowerMax)
+        {
+            IEnumerable<PawnKindDef> enumerable = from def in DefDatabase<PawnKindDef>.AllDefs
+                                               where (def.combatPower >= combatPowerMin && def.combatPower <= combatPowerMax && def.race != null && def.race.race != null && def.race.race.thinkTreeMain.ToString() == "Animal")
+                                               select def;
+
+            foreach (PawnKindDef current in enumerable)
+            {
+                //Log.Message("random creature includes " + current.defName + " race of " + current.race.defName);
+            }
+            PawnKindDef assignDef = enumerable.RandomElement();
+            spawnthing.kindDef = assignDef;
+            spawnthing.def = assignDef.race;
+            return spawnthing;
         }
 
         public static void DamageEntities(Thing victim, BodyPartRecord hitPart, float amt, DamageDef type, Thing instigator)

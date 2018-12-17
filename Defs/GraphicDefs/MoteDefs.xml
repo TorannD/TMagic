@@ -2,6 +2,45 @@
 <Defs>
 
   <ThingDef ParentName="MoteBase">
+    <defName>Mote_BladeSweep</defName>
+    <graphicData>
+      <texPath>Motes/BladeSweepMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_Cleave</defName>
+    <graphicData>
+      <texPath>Spells/cleave</texPath>
+    </graphicData>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_DirectionalDirt</defName>
+    <graphicData>
+      <texPath>Motes/DirectionalDirt</texPath>
+    </graphicData>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
     <defName>Mote_Heat</defName>
     <graphicData>
       <texPath>Motes/HeatMote</texPath>
@@ -311,6 +350,71 @@
       <fadeOutTime>2</fadeOutTime>
     </mote>
   </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_BloodCircle</defName>
+    <graphicData>
+      <texPath>Motes/blood_circle1</texPath>
+    </graphicData>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <mote>
+      <fadeInTime>1</fadeInTime>
+      <solidTime>2</solidTime>
+      <fadeOutTime>2</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_BloodWolfNorth</defName>
+    <graphicData>
+      <texPath>Motes/bloodwolf_north</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.35</fadeInTime>
+      <solidTime>0.3</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_BloodWolfEast</defName>
+    <graphicData>
+      <texPath>Motes/bloodwolf_east</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.35</fadeInTime>
+      <solidTime>0.3</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_BloodWolfWest</defName>
+    <graphicData>
+      <texPath>Motes/bloodwolf_west</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.35</fadeInTime>
+      <solidTime>0.3</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_BloodWolfSouth</defName>
+    <graphicData>
+      <texPath>Motes/bloodwolf_south</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.35</fadeInTime>
+      <solidTime>0.3</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
 
   <ThingDef ParentName="MoteBase">
     <defName>Mote_ArcaneWaves</defName>
@@ -318,6 +422,58 @@
       <texPath>Motes/ArcaneWavesMote</texPath>
     </graphicData>
     <altitudeLayer>MoteLow</altitudeLayer>
+    <mote>
+      <fadeInTime>0.35</fadeInTime>
+      <solidTime>0.3</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_DWPhase_North</defName>
+    <graphicData>
+      <texPath>Motes/DW_PhaseMote_north</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.35</fadeInTime>
+      <solidTime>0.3</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_DWPhase_East</defName>
+    <graphicData>
+      <texPath>Motes/DW_PhaseMote_east</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.35</fadeInTime>
+      <solidTime>0.3</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_DWPhase_West</defName>
+    <graphicData>
+      <texPath>Motes/DW_PhaseMote_west</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.35</fadeInTime>
+      <solidTime>0.3</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_DWPhase_South</defName>
+    <graphicData>
+      <texPath>Motes/DW_PhaseMote_south</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
     <mote>
       <fadeInTime>0.35</fadeInTime>
       <solidTime>0.3</solidTime>
@@ -569,6 +725,34 @@
       <fadeInTime>0.01</fadeInTime>
       <solidTime>0.15</solidTime>
       <fadeOutTime>0.55</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_BloodFlame</defName>
+	<graphicData>
+      <texPath>Motes/bloodflame</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <drawSize>(.8, .8)</drawSize>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <solidTime>0.05</solidTime>
+      <fadeOutTime>0.55</fadeOutTime>
+	  <growthRate>6</growthRate>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_BloodMist</defName>
+    <graphicData>
+      <texPath>Motes/BloodMist</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.5</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>1.2</fadeOutTime>
     </mote>
   </ThingDef>
   

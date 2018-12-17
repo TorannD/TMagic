@@ -26,6 +26,7 @@ namespace TorannMagic.ModOptions
         public bool showLevelUpMessage = Settings.Instance.showLevelUpMessage;
         public bool changeUndeadPawnAppearance = Settings.Instance.changeUndeadPawnAppearance;
         public bool changeUndeadAnimalAppearance = Settings.Instance.changeUndeadAnimalAppearance;
+        public bool unrestrictedBloodTypes = Settings.Instance.unrestrictedBloodTypes;
 
         //autocast
         public bool autocastEnabled = Settings.Instance.autocastEnabled;
@@ -47,6 +48,8 @@ namespace TorannMagic.ModOptions
         public bool Geomancer = Settings.Instance.Geomancer;
         public bool Summoner = Settings.Instance.Summoner;
         public bool Technomancer = Settings.Instance.Technomancer;
+        public bool BloodMage = Settings.Instance.BloodMage;
+        public bool Enchanter = Settings.Instance.Enchanter;
 
         public bool Gladiator = Settings.Instance.Gladiator;
         public bool Bladedancer = Settings.Instance.Bladedancer;

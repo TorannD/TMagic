@@ -59,7 +59,7 @@ namespace TorannMagic
                 if (victim != null && !victim.Dead && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracyPawn, true)))
                 {
                     int dmg = GetWeaponDmg(pawn, this.def);
-                    if (!victim.RaceProps.IsFlesh)
+                    if (victim.RaceProps.FleshType != FleshTypeDefOf.Normal )
                     {
                         MoteMaker.ThrowMicroSparks(victim.Position.ToVector3(), map);
                         damageEntities(victim, null, dmg, this.def.projectile.damageDef);

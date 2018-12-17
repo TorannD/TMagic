@@ -22,6 +22,30 @@ namespace TorannMagic
             {
                 bool drafted = soulPawn.Drafted;
                 Map map = soulPawn.Map;
+                if(map == null)
+                {
+                    Hediff bondHediff = null;
+                    bondHediff = soulPawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_SoulBondPhysicalHD"), false);
+                    if (bondHediff != null)
+                    {
+                        HediffComp_SoulBondHost compS = bondHediff.TryGetComp<HediffComp_SoulBondHost>();
+                        if (compS != null && compS.polyHost != null && !compS.polyHost.DestroyedOrNull() && !compS.polyHost.Dead)
+                        {
+                            soulPawn = compS.polyHost;
+                        }
+                    }
+                    bondHediff = null;
+
+                    bondHediff = soulPawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_SoulBondMentalHD"), false);
+                    if (bondHediff != null)
+                    {
+                        HediffComp_SoulBondHost compS = bondHediff.TryGetComp<HediffComp_SoulBondHost>();
+                        if (compS != null && compS.polyHost != null && !compS.polyHost.DestroyedOrNull() && !compS.polyHost.Dead)
+                        {
+                            soulPawn = compS.polyHost;
+                        }
+                    }
+                }
                 IntVec3 casterCell = this.CasterPawn.Position;
                 IntVec3 targetCell = soulPawn.Position;
                 try

@@ -348,22 +348,24 @@
 		<capMods>
 			<li>
 			  <capacity>Moving</capacity>
-			  <offset>0.4</offset>
+			  <offset>0.6</offset>
 			</li>
 			<li>
 			  <capacity>Manipulation</capacity>
-			  <offset>0.4</offset>
+			  <offset>0.6</offset>
 			</li>
 			<li>
 			  <capacity>Consciousness</capacity>
-			  <offset>0.1</offset>
+			  <offset>0.2</offset>
 			</li>
 		</capMods>
 		<statOffsets>
 		  <PainShockThreshold>.1</PainShockThreshold>
 		  <MeleeDodgeChance>10</MeleeDodgeChance>
-		  <AimingDelayFactor>-0.20</AimingDelayFactor>
+		  <AimingDelayFactor>-0.3</AimingDelayFactor>
 		  <ShootingAccuracyPawn>20</ShootingAccuracyPawn>
+		  <GlobalLearningFactor>0.5</GlobalLearningFactor>
+		  <WorkSpeedGlobal>0.20</WorkSpeedGlobal>
 	    </statOffsets>
       </li>      
 	</stages>
@@ -395,22 +397,24 @@
 		<capMods>
 			<li>
 			  <capacity>Moving</capacity>
-			  <offset>0.5</offset>
+			  <offset>0.75</offset>
 			</li>
 			<li>
 			  <capacity>Manipulation</capacity>
-			  <offset>0.5</offset>
+			  <offset>0.75</offset>
 			</li>
 			<li>
 			  <capacity>Consciousness</capacity>
-			  <offset>0.15</offset>
+			  <offset>0.25</offset>
 			</li>
 		</capMods>
 		<statOffsets>
 		  <PainShockThreshold>.07</PainShockThreshold>
 		  <MeleeDodgeChance>7</MeleeDodgeChance>
-		  <AimingDelayFactor>-.25</AimingDelayFactor>
+		  <AimingDelayFactor>-.35</AimingDelayFactor>
 		  <ShootingAccuracyPawn>25</ShootingAccuracyPawn>
+		  <GlobalLearningFactor>0.6</GlobalLearningFactor>
+		  <WorkSpeedGlobal>0.25</WorkSpeedGlobal>
 	    </statOffsets>
       </li>
 	</stages>
@@ -442,22 +446,24 @@
 		<capMods>
 			<li>
 			  <capacity>Moving</capacity>
-			  <offset>0.6</offset>
+			  <offset>0.85</offset>
 			</li>
 			<li>
 			  <capacity>Manipulation</capacity>
-			  <offset>0.6</offset>
+			  <offset>0.85</offset>
 			</li>
 			<li>
 			  <capacity>Consciousness</capacity>
-			  <offset>0.20</offset>
+			  <offset>0.3</offset>
 			</li>
 		</capMods>
 		<statOffsets>
 		  <PainShockThreshold>.09</PainShockThreshold>
 		  <MeleeDodgeChance>9</MeleeDodgeChance>
-		  <AimingDelayFactor>-.30</AimingDelayFactor>
+		  <AimingDelayFactor>-.4</AimingDelayFactor>
 		  <ShootingAccuracyPawn>30</ShootingAccuracyPawn>
+		  <GlobalLearningFactor>0.7</GlobalLearningFactor>
+		  <WorkSpeedGlobal>0.3</WorkSpeedGlobal>
 	    </statOffsets>
       </li>
 	</stages>
@@ -489,22 +495,24 @@
 		<capMods>
 			<li>
 			  <capacity>Moving</capacity>
-			  <offset>0.7</offset>
+			  <offset>0.95</offset>
 			</li>
 			<li>
 			  <capacity>Manipulation</capacity>
-			  <offset>0.7</offset>
+			  <offset>0.95</offset>
 			</li>
 			<li>
 			  <capacity>Consciousness</capacity>
-			  <offset>0.25</offset>
+			  <offset>0.35</offset>
 			</li>
 		</capMods>
 		<statOffsets>
 		  <PainShockThreshold>.10</PainShockThreshold>
 		  <MeleeDodgeChance>10</MeleeDodgeChance>
-		  <AimingDelayFactor>-.35</AimingDelayFactor>
+		  <AimingDelayFactor>-.45</AimingDelayFactor>
 		  <ShootingAccuracyPawn>35</ShootingAccuracyPawn>
+		  <GlobalLearningFactor>0.8</GlobalLearningFactor>
+		  <WorkSpeedGlobal>0.35</WorkSpeedGlobal>
 	    </statOffsets>
       </li>
 	</stages>

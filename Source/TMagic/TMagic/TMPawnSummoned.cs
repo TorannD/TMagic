@@ -1,5 +1,7 @@
 ﻿using RimWorld;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Verse;
 
@@ -8,19 +10,26 @@ namespace TorannMagic
     public class TMPawnSummoned : Pawn
     {
         private Effecter effecter;
-
         private bool initialized;
-
         private bool temporary;
-
         private int ticksLeft;
-
         private int ticksToDestroy = 1800;
-
         public bool validSummoning = false;
 
         CompAbilityUserMagic compSummoner;
         Pawn spawner;
+        Pawn original = null;
+
+        List<float> bodypartDamage = new List<float>();
+        List<DamageDef> bodypartDamageType = new List<DamageDef>();
+
+        List<Hediff_Injury> injuries = new List<Hediff_Injury>();
+
+        public Pawn Original
+        {
+            get => this.original;
+            set => original = value;
+        }
 
         public Pawn Spawner
         {
@@ -192,10 +201,17 @@ namespace TorannMagic
                     ));
                 }
             }
+            if(this.original != null)
+            {
+                Log.Message("pre destroy");
+                CopyDamage(this);
+                SpawnOriginal();
+                ApplyDamage(original);
+            }
         }
 
         public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
-        {
+        {            
             bool flag = this.effecter != null;
             if (flag)
             {
@@ -208,15 +224,56 @@ namespace TorannMagic
         {
             base.ExposeData();
             Scribe_Values.Look<bool>(ref this.temporary, "temporary", false, false);
+            Scribe_Values.Look<bool>(ref this.validSummoning, "validSummoning", true, false);
             Scribe_Values.Look<int>(ref this.ticksLeft, "ticksLeft", 0, false);
             Scribe_Values.Look<int>(ref this.ticksToDestroy, "ticksToDestroy", 1800, false);
             Scribe_Values.Look<CompAbilityUserMagic>(ref this.compSummoner, "compSummoner", null, false);
             Scribe_References.Look<Pawn>(ref this.spawner, "spawner", false);
+            Scribe_References.Look<Pawn>(ref this.original, "original", false);
         }
 
         public TMPawnSummoned()
         {
 
+        }
+
+        public void CopyDamage(Pawn pawn)
+        {
+            using (IEnumerator<BodyPartRecord> enumerator = pawn.health.hediffSet.GetInjuredParts().GetEnumerator())
+            {
+                while (enumerator.MoveNext())
+                {
+                    BodyPartRecord rec = enumerator.Current;
+                    IEnumerable<Hediff_Injury> arg_BB_0 = pawn.health.hediffSet.GetHediffs<Hediff_Injury>();
+                    Func<Hediff_Injury, bool> arg_BB_1;
+                    arg_BB_1 = ((Hediff_Injury injury) => injury.Part == rec);
+
+                    foreach (Hediff_Injury current in arg_BB_0.Where(arg_BB_1))
+                    {
+                        bool flag5 = current.CanHealNaturally() && !current.IsPermanent();
+                        if (flag5)
+                        {
+                            this.injuries.Add(current);
+                            //this.bodypartDamage.Add(current.Severity);
+                            //this.bodypartDamageType.Add(current.)
+                        }                            
+                    }                    
+                }
+            }
+        }
+
+        public void SpawnOriginal()
+        {
+            GenSpawn.Spawn(this.original, this.Position, this.Map, WipeMode.Vanish);
+        }
+
+        public void ApplyDamage(Pawn pawn)
+        {
+            List<BodyPartRecord> bodyparts = pawn.health.hediffSet.GetNotMissingParts().ToList();
+            for(int i =0; i < this.injuries.Count; i++)
+            {
+                pawn.health.AddHediff(this.injuries[i], bodyparts.RandomElement());
+            }
         }
     }
 }

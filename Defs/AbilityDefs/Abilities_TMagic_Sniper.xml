@@ -23,7 +23,13 @@
     <defName>TM_SniperFocus</defName>
     <label>Sniper Training</label>
     <uiIconPath>UI/sniper_training</uiIconPath>
-    <description>Training that improves technique and status as sniper.</description>
+    <description>Training that improves technique and status as sniper. Each level will change the trait of the sniper to reflect their skill level.
+	
+Ranks:
+Sharpshooter: Speed +0.1c/s, Aiming Delay -10%, Shooting Acc. +2%, Research and work speed -10%, tame and train animal -10%
+Sniper: Speed +0.15c/s, Aiming Delay -15%, Shooting Acc. +4%, Research and work speed -13%, tame and train animal -13%
+Master Sniper: Speed +0.2c/s, Aiming Delay -22%, Shooting Acc. +6%, Research and work speed -15%, tame and train animal -15%
+Legendary Sniper: Speed +0.25c/s, Aiming Delay -30%, Shooting Acc. +8%, Research and work speed -16%, tame and train animal -16%</description>
     <staminaCost>0.01</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SniperFocus</verbClass>

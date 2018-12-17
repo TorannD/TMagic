@@ -110,7 +110,7 @@ namespace TorannMagic
                                         case 3:
                                             tempAbility = TorannMagicDefOf.TM_MagicMissile_III;
                                             break;
-                                    }                                    
+                                    }
                                     i = 5;
                                 }
                                 else if (rnd == 2 && magicPawn.MagicData.MagicPowersA[rnd].learned)
@@ -130,7 +130,7 @@ namespace TorannMagic
                                         case 3:
                                             tempAbility = TorannMagicDefOf.TM_Blink_III;
                                             break;
-                                    }                                    
+                                    }
                                     i = 5;
                                 }
                                 else if (rnd == 3 && magicPawn.MagicData.MagicPowersA[rnd].learned)
@@ -150,7 +150,7 @@ namespace TorannMagic
                                         case 3:
                                             tempAbility = TorannMagicDefOf.TM_Summon_III;
                                             break;
-                                    }                                    
+                                    }
                                     i = 5;
                                 }
                             }
@@ -300,7 +300,7 @@ namespace TorannMagic
                                     i = 5;
                                 }
                             }
-                        }                        
+                        }
                         else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Druid))
                         {
                             for (int i = 0; i < 5; i++)
@@ -328,7 +328,7 @@ namespace TorannMagic
                                         case 3:
                                             tempAbility = TorannMagicDefOf.TM_SootheAnimal_III;
                                             break;
-                                    }                                    
+                                    }
                                     i = 5;
                                 }
                                 else if (rnd == 2 && magicPawn.MagicData.MagicPowersD[rnd].learned)
@@ -373,9 +373,9 @@ namespace TorannMagic
                                     tempAbility = TorannMagicDefOf.TM_FogOfTorment;
                                     i = 5;
                                 }
-                                else if (rnd == 3 && magicPawn.MagicData.MagicPowersN[rnd+1].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                                else if (rnd == 3 && magicPawn.MagicData.MagicPowersN[rnd + 1].learned && !magicPawn.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                                 {
-                                    int level = magicPawn.MagicData.MagicPowersN[rnd+1].level;
+                                    int level = magicPawn.MagicData.MagicPowersN[rnd + 1].level;
                                     switch (level)
                                     {
                                         case 0:
@@ -644,16 +644,16 @@ namespace TorannMagic
                             for (int i = 0; i < 5; i++)
                             {
                                 int rnd = Rand.RangeInclusive(0, 2);
-                                if(rnd == 2)
+                                if (rnd == 2)
                                 {
                                     rnd = 3;
                                 }
                                 if (rnd == 0 && magicPawn.MagicData.MagicPowersG[rnd].learned)
                                 {
-                                    tempAbility = TorannMagicDefOf.TM_Stoneskin;                                     
+                                    tempAbility = TorannMagicDefOf.TM_Stoneskin;
                                     i = 5;
                                 }
-                                else if (rnd == 1 && magicPawn.MagicData.MagicPowersG[rnd].learned )
+                                else if (rnd == 1 && magicPawn.MagicData.MagicPowersG[rnd].learned)
                                 {
                                     int level = magicPawn.MagicData.MagicPowersG[rnd].level;
                                     switch (level)
@@ -677,7 +677,7 @@ namespace TorannMagic
                                 {
                                     tempAbility = TorannMagicDefOf.TM_EarthernHammer;
                                     i = 5;
-                                }                                
+                                }
                             }
                         }
                         else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
@@ -701,6 +701,44 @@ namespace TorannMagic
                                     i = 5;
                                 }
                             }
+                        }
+                        else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
+                        {
+                            for (int i = 0; i < 5; i++)
+                            {
+                                int rnd = Rand.RangeInclusive(4, 5);
+                                if (rnd == 4 && magicPawn.MagicData.MagicPowersE[rnd].learned)
+                                {
+                                    int level = magicPawn.MagicData.MagicPowersE[rnd].level;
+                                    switch (level)
+                                    {
+                                        case 0:
+                                            tempAbility = TorannMagicDefOf.TM_Polymorph;
+                                            break;
+                                        case 1:
+                                            tempAbility = TorannMagicDefOf.TM_Polymorph_I;
+                                            break;
+                                        case 2:
+                                            tempAbility = TorannMagicDefOf.TM_Polymorph_II;
+                                            break;
+                                        case 3:
+                                            tempAbility = TorannMagicDefOf.TM_Polymorph_III;
+                                            break;
+                                    }
+                                    i = 5;
+                                }
+                                else if (rnd == 5 && magicPawn.MagicData.MagicPowersE[rnd].learned)
+                                {
+                                    tempAbility = TorannMagicDefOf.TM_Shapeshift;
+                                    i = 5;
+                                }
+                            }
+                        }
+                        else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.BloodMage))
+                        {
+                            Messages.Message("TM_CannotMimicBloodMage".Translate(
+                                    this.CasterPawn.LabelShort
+                                ), MessageTypeDefOf.RejectInput);
                         }
 
 

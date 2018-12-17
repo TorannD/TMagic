@@ -22,7 +22,7 @@ namespace TorannMagic
                         int rnd = Rand.RangeInclusive(0, 6);
                         RemoveTrait(rnd, user.story.traits.allTraits);
                     }
-                    user.story.traits.GainTrait(new Trait(TraitDef.Named("Gifted"), 2, false));
+                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Gifted, 2, false));
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
                 else if(parent.def != null && parent.def.defName == "GemstoneOfInsight_Might")
@@ -32,7 +32,7 @@ namespace TorannMagic
                         int rnd = Rand.RangeInclusive(0, 6);
                         RemoveTrait(rnd, user.story.traits.allTraits);
                     }
-                    user.story.traits.GainTrait(new Trait(TraitDef.Named("PhysicalProdigy"), 2, false));
+                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.PhysicalProdigy, 2, false));
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
                 else

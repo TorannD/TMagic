@@ -112,13 +112,25 @@ namespace TorannMagic
                         outThings.Add(thing);
                         collectiveMarketValue += thing.MarketValue;
                     }
+                    if (Rand.Chance(ArcaneScriptChance))
+                    {
+                        Thing thing = ThingMaker.MakeThing(TorannMagicDefOf.Torn_BookOfHemomancy, null);
+                        outThings.Add(thing);
+                        collectiveMarketValue += thing.MarketValue;
+                    }
+                    if (Rand.Chance(ArcaneScriptChance))
+                    {
+                        Thing thing = ThingMaker.MakeThing(TorannMagicDefOf.Torn_BookOfEnchanter, null);
+                        outThings.Add(thing);
+                        collectiveMarketValue += thing.MarketValue;
+                    }
 
                 }
                 //Arcane Scripts
                 if (Rand.Chance(ArcaneScriptChance) && (totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.BookOfArcanist.BaseMarketValue *.8f)
                 {
                     float rnd = Rand.Range(0f, 1f);
-                    float scriptCount = 20f;
+                    float scriptCount = 22f;
                     if (rnd < 1f/scriptCount)
                     {
                         Thing thing = ThingMaker.MakeThing(TorannMagicDefOf.BookOfInnerFire, null);
@@ -233,6 +245,18 @@ namespace TorannMagic
                         outThings.Add(thing);
                         collectiveMarketValue += thing.MarketValue;
                     }
+                    else if (rnd < 20f / scriptCount)
+                    {
+                        Thing thing = ThingMaker.MakeThing(TorannMagicDefOf.BookOfHemomancy, null);
+                        outThings.Add(thing);
+                        collectiveMarketValue += thing.MarketValue;
+                    }
+                    else if (rnd < 21f / scriptCount)
+                    {
+                        Thing thing = ThingMaker.MakeThing(TorannMagicDefOf.BookOfEnchanter, null);
+                        outThings.Add(thing);
+                        collectiveMarketValue += thing.MarketValue;
+                    }
                     else 
                     {
                         Thing thing = ThingMaker.MakeThing(TorannMagicDefOf.BookOfPsionic, null);
@@ -291,10 +315,18 @@ namespace TorannMagic
                 if (Rand.Chance(MasterSpellChance) && (totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.SpellOf_Blizzard.BaseMarketValue)
                 {
                     Thing thing;
-                    float rnd = Rand.Range(0f, 26f);
-                    if (rnd > 24)
+                    float rnd = Rand.Range(0f, 30f);
+                    if (rnd > 28)
                     {
                         thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_PsychicShock, null);
+                    }
+                    else if (rnd > 26 && rnd <= 28)
+                    {
+                        thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Shapeshift, null);
+                    }
+                    else if (rnd > 24 && rnd <= 26)
+                    {
+                        thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_BloodMoon, null);
                     }
                     else if (rnd > 22 && rnd <= 24)
                     {

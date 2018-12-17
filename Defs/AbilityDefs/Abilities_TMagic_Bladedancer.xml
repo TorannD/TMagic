@@ -23,7 +23,13 @@
     <defName>TM_BladeFocus</defName>
     <label>Blade training</label>
     <uiIconPath>UI/bladeart</uiIconPath>
-    <description>Training that improves technique and skill with melee weapons, and raises the status of the bladedancer.</description>
+    <description>Training that improves technique and skill with melee weapons and raises the status of the bladedancer. Each level will change the trait of the bladedancer to reflect their skill level.
+
+Ranks:
+Bladesman: Speed +0.15c/s, MBT -3%, Hit chance +3%, Dodge +5%, Shooting Acc. -20%, Global Workspeed -10%
+Blademaster: Speed +0.2c/s, MBT -5%, Hit chance +6%, Dodge +10%, Shooting Acc. -25%, Global Workspeed -8%
+Bladedancer: Speed +0.3c/s, MBT -8%, Hit chance +10%, Dodge +15%, Shooting Acc. -28%, Global Workspeed -6%, Pain threshold +5%
+Legendary Bladedancer: Speed +0.4c/s, MBT -10%, Hit chance +15%, Dodge +20%, Shooting Acc. -30%, Global Workspeed -5%, Pain threshold +10%</description>
     <staminaCost>0.01</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_BladeFocus</verbClass>
@@ -73,7 +79,12 @@
     <defName>TM_BladeArt</defName>
     <label>Body Training</label>
     <uiIconPath>UI/bodytraining</uiIconPath>
-    <description>Training that enhances physical capabilities.</description>
+    <description>Training that enhances physical capabilities.
+
+Level 0: Moving +10%, Manipulation +10%
+Level 1: Moving +15%, Manipulation +15%
+Level 2: Moving +20%, Manipulation +20%, Breathing +10%
+Level 3: Moving +25%, Manipulation +25%, Breathing +15%, Blood pumping +10%, Blood filtration +10%</description>
     <staminaCost>0.01</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_BladeArt</verbClass>

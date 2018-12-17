@@ -40,6 +40,10 @@ namespace TorannMagic
         public static ThingDef Torn_BookOfEarth;
         public static ThingDef BookOfMagitech;
         public static ThingDef Torn_BookOfMagitech;
+        public static ThingDef BookOfHemomancy;
+        public static ThingDef Torn_BookOfHemomancy;
+        public static ThingDef BookOfEnchanter;
+        public static ThingDef Torn_BookOfEnchanter;
         public static ThingDef BookOfQuestion;
 
 
@@ -83,6 +87,8 @@ namespace TorannMagic
         public static ThingDef SpellOf_Overdrive;
         public static ThingDef SpellOf_TechnoShield;
         public static ThingDef SpellOf_OrbitalStrike;
+        public static ThingDef SpellOf_BloodMoon;
+        public static ThingDef SpellOf_Shapeshift;
 
         public static ThingDef SkillOf_Sprint;
         public static ThingDef SkillOf_GearRepair;
@@ -93,12 +99,28 @@ namespace TorannMagic
         public static ThingDef SkillOf_HeavyBlow;
 
         public static ThingDef ManaPotion;
+        public static ThingDef FlyingObject_Spinning;
 
         public static GameConditionDef ManaDrain;
         public static GameConditionDef ManaSurge;
         public static HediffDef TM_ManaSickness;
         public static HediffDef TM_ArcaneSickness;
         public static HediffDef TM_ArcaneWeakness;
+
+        //Artifacts
+        public static ThingDef TM_Artifact_Silver;
+        public static ThingDef TM_Artifact_Slate;
+        public static ThingDef TM_Artifact_Limestone;
+        public static ThingDef TM_Artifact_Granite;
+        public static ThingDef TM_Artifact_Marble;
+        public static ThingDef TM_Artifact_Sandstone;
+        public static ThingDef TM_Artifact_Steel;
+        public static ThingDef TM_Artifact_Iron;
+        public static ThingDef TM_Artifact_Medicine;
+        public static ThingDef TM_Artifact_Jade;
+        public static ThingDef TM_Artifact_Gold;
+        public static ThingDef TM_Artifact_Wood;
+        public static ThingDef TM_Artifact_Magicyte;
 
         //Site Defs
         public static WorldObjectDef ArcaneAdventure;
@@ -410,6 +432,51 @@ namespace TorannMagic
         public static TMAbilityDef TM_OrbitalStrike_II;
         public static TMAbilityDef TM_OrbitalStrike_III;
 
+        //Blood Mage
+        public static TraitDef BloodMage;
+
+        public static HediffDef TM_BloodHD;
+        public static TMAbilityDef TM_BloodGift;
+        public static TMAbilityDef TM_IgniteBlood;
+        public static TMAbilityDef TM_BloodForBlood;
+        public static HediffDef TM_BloodForBloodHD;
+        public static TMAbilityDef TM_BloodShield;
+        public static TMAbilityDef TM_Rend;
+        public static TMAbilityDef TM_Rend_I;
+        public static TMAbilityDef TM_Rend_II;
+        public static TMAbilityDef TM_Rend_III;
+        public static HediffDef TM_RendHD;
+        public static TMAbilityDef TM_BloodMoon;
+        public static TMAbilityDef TM_BloodMoon_I;
+        public static TMAbilityDef TM_BloodMoon_II;
+        public static TMAbilityDef TM_BloodMoon_III;
+
+        //Enchanter
+        public static TraitDef Enchanter;
+
+        public static TMAbilityDef TM_EnchantedBody;
+        public static HediffDef TM_EnchantedBodyHD;
+        public static TMAbilityDef TM_EnchantedAura;
+        public static HediffDef TM_EnchantedAuraHD;
+        public static HediffDef TM_ArtifactPathfindingHD;
+        public static TMAbilityDef TM_Transmutate;
+        public static TMAbilityDef TM_EnchanterStone;
+        public static TMAbilityDef TM_EnchantWeapon;
+        public static HediffDef TM_WeaponEnchantment_IceHD;
+        public static HediffDef TM_WeaponEnchantment_FireHD;
+        public static HediffDef TM_WeaponEnchantment_LitHD;
+        public static HediffDef TM_WeaponEnchantment_DarkHD;
+        public static TMAbilityDef TM_DispelEnchantWeapon;
+        public static TMAbilityDef TM_Polymorph;
+        public static TMAbilityDef TM_Polymorph_I;
+        public static TMAbilityDef TM_Polymorph_II;
+        public static TMAbilityDef TM_Polymorph_III;
+        public static TMAbilityDef TM_Shapeshift;
+        public static ThoughtDef Polymorphed;
+        public static ThoughtDef Polymorphed_Transhumanist;
+        public static TMAbilityDef TM_ShapeshiftDW;
+        public static HediffDef TM_ShapeshiftHD;
+
         //Might 
         public static NeedDef TM_Stamina;
         public static HediffDef TM_MightUserHD;
@@ -639,6 +706,8 @@ namespace TorannMagic
         public static EffecterDef TM_SabotageExplosion;
         public static EffecterDef TM_HolyImplosion;
         public static EffecterDef TM_FearWave;
+        public static EffecterDef TM_BFBEffecter;
+        public static EffecterDef TM_BloodShieldEffecter;
 
         //Apparel layers
         public static ApparelLayerDef TM_Cloak;

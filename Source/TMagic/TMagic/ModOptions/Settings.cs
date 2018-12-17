@@ -27,6 +27,7 @@ namespace TorannMagic.ModOptions
         public bool showLevelUpMessage = true;
         public bool changeUndeadPawnAppearance = true;
         public bool changeUndeadAnimalAppearance = true;
+        public bool unrestrictedBloodTypes = true;
 
         //autocast options
         public bool autocastEnabled = true;
@@ -48,6 +49,8 @@ namespace TorannMagic.ModOptions
         public bool Geomancer = true;
         public bool Summoner = true;
         public bool Technomancer = true;
+        public bool BloodMage = true;
+        public bool Enchanter = true;
 
         public bool Gladiator = true;
         public bool Bladedancer = true;
@@ -87,6 +90,7 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<bool>(ref this.showLevelUpMessage, "showLevelUpMessage", true, false);
             Scribe_Values.Look<bool>(ref this.changeUndeadPawnAppearance, "changeUndeadPawnAppearance", true, false);
             Scribe_Values.Look<bool>(ref this.changeUndeadAnimalAppearance, "changeUndeadAnimalAppearance", true, false);
+            Scribe_Values.Look<bool>(ref this.unrestrictedBloodTypes, "unrestrictedBloodTypes", true, false);
 
             Scribe_Values.Look<bool>(ref this.autocastEnabled, "autocastEnabled", true, false);
             Scribe_Values.Look<float>(ref this.autocastMinThreshold, "autocastMinThreshold", 0.7f, false);
@@ -106,6 +110,8 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<bool>(ref this.Necromancer, "Necromancer", true, false);
             Scribe_Values.Look<bool>(ref this.Technomancer, "Technomancer", true, false);
             Scribe_Values.Look<bool>(ref this.Demonkin, "Demonkin", true, false);
+            Scribe_Values.Look<bool>(ref this.BloodMage, "BloodMage", true, false);
+            Scribe_Values.Look<bool>(ref this.Enchanter, "Enchanter", true, false);
             Scribe_Values.Look<bool>(ref this.Gladiator, "Gladiator", true, false);
             Scribe_Values.Look<bool>(ref this.Bladedancer, "Bladedancer", true, false);
             Scribe_Values.Look<bool>(ref this.Sniper, "Sniper", true, false);

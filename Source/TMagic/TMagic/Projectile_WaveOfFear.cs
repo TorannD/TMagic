@@ -134,11 +134,18 @@ namespace TorannMagic
                 {
                     if(victim.Faction != null && victim.Faction != caster.Faction && (victim.Position - caster.Position).LengthHorizontal < this.waveRange)
                     {
-                        LocalTargetInfo t = new LocalTargetInfo(victim.Position + (6 * TM_Calc.GetVector(caster.DrawPos, victim.DrawPos)).ToIntVec3());
-                        Job job = new Job(JobDefOf.FleeAndCower, t);
-                        victim.jobs.TryTakeOrderedJob(job, JobTag.Misc);
-                        HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_WaveOfFearHD"), .5f + pwrVal);
-                        this.affectedPawns.Add(victim);
+                        if (Rand.Chance(TM_Calc.GetSpellSuccessChance(caster, victim, true)))
+                        {
+                            LocalTargetInfo t = new LocalTargetInfo(victim.Position + (6 * TM_Calc.GetVector(caster.DrawPos, victim.DrawPos)).ToIntVec3());
+                            Job job = new Job(JobDefOf.FleeAndCower, t);
+                            victim.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                            HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_WaveOfFearHD"), .5f + pwrVal);
+                            this.affectedPawns.Add(victim);
+                        }
+                        else
+                        {
+                            MoteMaker.ThrowText(victim.DrawPos, victim.Map, "TM_ResistedSpell".Translate(), -1);
+                        }
                     }
                 }
             }

@@ -137,11 +137,18 @@ namespace TorannMagic
                         DrawStrike(strikeVec.ToIntVec3(), strikeVec, map);
                         damageEntities(victim, null, dmgNum, DamageDefOf.Cut);
                     }
-                    MoteMaker.ThrowTornadoDustPuff(strikeVec, map, .6f, Color.white);
+                    float angle = (Quaternion.AngleAxis(90, Vector3.up) * TM_Calc.GetVector(this.CasterPawn.DrawPos, this.currentTarget.CenterVector3)).ToAngleFlat();
+                    TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_DirectionalDirt"), strikeVec, this.CasterPawn.Map, .3f + (.08f * i), .05f, .15f, .38f, 0, 5f - (.2f * i), angle, angle);
+                    if (i == 2)
+                    {
+                        TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Cleave"), strikeVec, this.CasterPawn.Map, .6f + (.05f * i), .05f, .04f + (.03f * i), .15f, -10000, 30, angle, angle);
+                    }
+                    //MoteMaker.ThrowTornadoDustPuff(strikeVec, map, .6f, Color.white);
                     for (int j = 0; j < 2+(2*verVal); j++)
                     {
                         IntVec3 searchCell = strikeVec.ToIntVec3() + GenAdj.AdjacentCells8WayRandomized()[j];
-                        MoteMaker.ThrowTornadoDustPuff(searchCell.ToVector3(), map, .1f, Color.gray);
+                        TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_DirectionalDirt"), searchCell.ToVector3Shifted(), this.CasterPawn.Map, .1f + (.04f * i), .05f, .04f, .28f, 0, 4f - (.2f * i), angle, angle);
+                        //MoteMaker.ThrowTornadoDustPuff(searchCell.ToVector3(), map, .4f, Color.gray);
                         victim = searchCell.GetFirstPawn(map);
                         if (victim != null && victim.Faction != base.CasterPawn.Faction)
                         {

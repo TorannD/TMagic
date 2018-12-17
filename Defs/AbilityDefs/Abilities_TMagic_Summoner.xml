@@ -272,7 +272,7 @@
     <defName>TM_SummonPoppi</defName>
     <label>Summon Poppi</label>
     <uiIconPath>UI/poppihorde</uiIconPath>
-    <description>Summon a pack of vicious poppi straight from the gates of insanity.</description>
+    <description>Summon a pack of vicious poppi straight from the gates of insanity. This pack of poppi are rabid and will eagerly tear into enemy formations.</description>
     <manaCost>0.60</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>

@@ -98,6 +98,74 @@
     </stages>
   </ThoughtDef>
   
+  <ThoughtDef>
+	<defName>Thought_EnchantedAura</defName>
+	<thoughtClass>Thought_SituationalSocial</thoughtClass>
+	<validWhileDespawned>false</validWhileDespawned>
+	<workerClass>TorannMagic.Thoughts.ThoughtWorker_TM_EnchantedAura</workerClass>
+	<stages>
+		<li>
+			<label>charming</label>
+			<description>Has a charming presence.</description>
+			<baseOpinionOffset>5</baseOpinionOffset>
+		</li>
+		<li>
+			<label>enchanting</label>
+			<description>Has an enchanting aura.</description>
+			<baseOpinionOffset>10</baseOpinionOffset>
+		</li>
+		<li>
+			<label>powerful allure</label>
+			<description>Has a powerful allure.</description>
+			<baseOpinionOffset>15</baseOpinionOffset>
+		</li>
+		<li>
+			<label>positively glamorous</label>
+			<description>Is positively glamorous.</description>
+			<baseOpinionOffset>20</baseOpinionOffset>
+		</li>
+	</stages>
+  </ThoughtDef>
+  
+  <ThoughtDef>
+	<defName>Thought_EnchantedBody</defName>
+	<thoughtClass>Thought_SituationalSocial</thoughtClass>
+	<validWhileDespawned>false</validWhileDespawned>
+	<workerClass>TorannMagic.Thoughts.ThoughtWorker_TM_EnchantedBody</workerClass>
+	<stages>
+		<li>
+			<label>third arm</label>
+			<description>Has a third arm... it's uncomfortable to look at and unnatural.</description>
+			<baseOpinionOffset>-6</baseOpinionOffset>
+		</li>
+		<li>
+			<label>four arms</label>
+			<description>I don't care if those extra arms are magical, it's freakish.</description>
+			<baseOpinionOffset>-8</baseOpinionOffset>
+		</li>
+		<li>
+			<label>strange growth</label>
+			<description>It goes beyond reason to simply start sprouting extra body parts; it seems like that third eye is always staring at me.</description>
+			<baseOpinionOffset>-12</baseOpinionOffset>
+		</li>
+		<li>
+			<label>mutant</label>
+			<description>What's next, another head? This has gone too far.</description>
+			<baseOpinionOffset>-15</baseOpinionOffset>
+		</li>
+		<li>
+			<label>admiring transhumanist</label>
+			<description>To be able to morph yourself into whatever you wish, what an amazing ability.</description>
+			<baseOpinionOffset>10</baseOpinionOffset>
+		</li>
+		<li>
+			<label>hateful body purist</label>
+			<description>What a freak, I think -it- is gross.</description>
+			<baseOpinionOffset>-30</baseOpinionOffset>
+		</li>
+	</stages>
+  </ThoughtDef>
+  
   <!-- affecting mood -->
   
   <ThoughtDef>
@@ -118,5 +186,6 @@
 			</li>
 		</stages>
 	</ThoughtDef>
+	
   
 </Defs>

@@ -25,7 +25,7 @@ namespace TorannMagic
                     if ( traits[i].Degree < pwr.level)
                     {
                         traits.Remove(traits[i]);
-                        this.CasterPawn.story.traits.GainTrait(new Trait(TraitDef.Named("TM_Sniper"), pwr.level, false));
+                        this.CasterPawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Sniper, pwr.level, false));
                         MoteMaker.ThrowHeatGlow(base.CasterPawn.Position, map, 2);
                     }
                 }

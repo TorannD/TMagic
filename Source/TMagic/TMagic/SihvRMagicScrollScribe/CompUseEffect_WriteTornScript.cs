@@ -73,7 +73,17 @@ namespace TorannMagic.SihvRMagicScrollScribe
             }
             else if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Technomancer)))
             {
-                tempPod = ThingDef.Named("Torn_BookOfMagitech");
+                tempPod = TorannMagicDefOf.Torn_BookOfMagitech;
+                this.parent.Destroy(DestroyMode.Vanish);
+            }
+            else if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.BloodMage)))
+            {
+                tempPod = TorannMagicDefOf.Torn_BookOfHemomancy;
+                this.parent.Destroy(DestroyMode.Vanish);
+            }
+            else if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Enchanter)))
+            {
+                tempPod = TorannMagicDefOf.Torn_BookOfEnchanter;
                 this.parent.Destroy(DestroyMode.Vanish);
             }
             else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.Gifted))

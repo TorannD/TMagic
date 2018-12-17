@@ -82,6 +82,11 @@ namespace TorannMagic
 
             public static DamageDef TM_ElectricalBurn;
             public static DamageDef TM_Spirit;
+            public static DamageDef TM_BloodyCut;
+            public static DamageDef TM_BloodBurn;
+
+            public static DamageDef TM_Enchanted_Fire;
+            public static DamageDef TM_Enchanted_Ice;
 
         }
     }

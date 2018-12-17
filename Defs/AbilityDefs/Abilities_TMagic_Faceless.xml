@@ -26,7 +26,9 @@
     <defName>TM_Disguise</defName>
     <label>Deception</label>
     <uiIconPath>UI/disguise</uiIconPath>
-    <description>The faceless manipulates light and motion to make their form appear meaningless to any observer; on a subconscious level, any observer will cognitively dismiss the faceless as an unimportant, harmless object, essentially making the faceless invisible.</description>
+    <description>The faceless manipulates light and motion to make their form appear meaningless to any observer; on a subconscious level, any observer will cognitively dismiss the faceless as an unimportant, harmless object, essentially making the faceless invisible.
+	
+Disguise will not fool any pawn that already sees the faceless as a threat.</description>
     <staminaCost>0.30</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Disguise</verbClass>

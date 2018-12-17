@@ -94,7 +94,7 @@ namespace TorannMagic
                         victim = cellList[i].GetFirstPawn(pawn.Map);
                         if (victim != null && !victim.Dead && !victim.Downed)
                         {
-                            HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_GravitySlowHD"), .5f);
+                            HealthUtility.AdjustSeverity(victim, TorannMagicDefOf.TM_GravitySlowHD, .5f);
                         }
                     }
                 }
@@ -113,14 +113,17 @@ namespace TorannMagic
                         victim = curCell.GetFirstPawn(base.Map);
                         if (victim != null && !victim.Dead && victim.RaceProps.IsFlesh && victim != this.pawn)
                         {
-                            Vector3 launchVector = GetVector(base.Position, victim.Position);
-                            HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_GravitySlowHD"), (.4f + (.1f * verVal)));
-                            LaunchFlyingObect(victim.Position + (2f * (1 + (.4f * pwrVal)) * launchVector).ToIntVec3(), victim);
+                            if (Rand.Chance(TM_Calc.GetSpellSuccessChance(this.pawn, victim)))
+                            {
+                                Vector3 launchVector = GetVector(base.Position, victim.Position);
+                                HealthUtility.AdjustSeverity(victim, TorannMagicDefOf.TM_GravitySlowHD, (.4f + (.1f * verVal)));
+                                LaunchFlyingObect(victim.Position + (2f * (1 + (.4f * pwrVal)) * launchVector).ToIntVec3(), victim);
+                            }
                         }
-                        else if (victim != null && !victim.Dead && !victim.RaceProps.IsFlesh)
-                        {
-                            HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_GravitySlowHD"), .4f + (.1f * verVal));
-                        }
+                        //else if (victim != null && !victim.Dead && !victim.RaceProps.IsFlesh)
+                        //{
+                        //    HealthUtility.AdjustSeverity(victim, TorannMagicDefOf.TM_GravitySlowHD, .4f + (.1f * verVal));
+                        //}
                     }
                 }
                 for(int i =0; i < hediffCellList.Count(); i++)
@@ -129,9 +132,12 @@ namespace TorannMagic
                     if (curCell.IsValid && curCell.InBounds(base.Map))
                     {
                         victim = curCell.GetFirstPawn(base.Map);
-                        if (victim != null && !victim.Dead)
+                        if (victim != null && !victim.Dead && victim != this.pawn)
                         {
-                            HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_GravitySlowHD"), .3f + (.1f * verVal));
+                            if (Rand.Chance(TM_Calc.GetSpellSuccessChance(this.pawn, victim)))
+                            {
+                                HealthUtility.AdjustSeverity(victim, TorannMagicDefOf.TM_GravitySlowHD, .3f + (.1f * verVal));
+                            }
                         }
                     }
                 }   
@@ -145,7 +151,7 @@ namespace TorannMagic
             {
                 if (pawn != null && pawn.Position.IsValid && pawn.Spawned && pawn.Map != null && !pawn.Downed && !pawn.Dead)
                 {
-                    FlyingObject_Spinning flyingObject = (FlyingObject_Spinning)GenSpawn.Spawn(ThingDef.Named("FlyingObject_Spinning"), pawn.Position, pawn.Map);
+                    FlyingObject_Spinning flyingObject = (FlyingObject_Spinning)GenSpawn.Spawn(TorannMagicDefOf.FlyingObject_Spinning, pawn.Position, pawn.Map);
                     flyingObject.Launch(pawn, targetCell, pawn);
                 }
             }

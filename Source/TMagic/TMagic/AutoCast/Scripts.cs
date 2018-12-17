@@ -524,6 +524,23 @@ namespace TorannMagic.AutoCast
         }
     }
 
+    public static class CastOnSelf
+    {
+        public static void Evaluate(CompAbilityUserMagic casterComp, TMAbilityDef abilitydef, PawnAbility ability, MagicPower power, out bool success)
+        {
+            success = false;
+            Pawn caster = casterComp.Pawn;
+            LocalTargetInfo jobTarget = caster.Position;
+
+            if (casterComp.Mana.CurLevel >= casterComp.ActualManaCost(abilitydef) && ability.CooldownTicksLeft <= 0 && jobTarget != null)
+            {                
+                Job job = ability.GetJob(AbilityContext.AI, jobTarget);
+                caster.jobs.TryTakeOrderedJob(job);
+                success = true;                
+            }
+        }
+    }
+
     public static class SpellMending
     {
         public static void Evaluate(CompAbilityUserMagic casterComp, TMAbilityDef abilitydef, PawnAbility ability, MagicPower power, HediffDef hediffDef, out bool success)
@@ -595,7 +612,7 @@ namespace TorannMagic.AutoCast
                     Pawn targetPawn = jobTarget.Thing as Pawn;
                     CompAbilityUserMagic targetPawnComp = targetPawn.GetComp<CompAbilityUserMagic>();
 
-                    if (targetPawn.IsColonist && targetPawnComp.MagicUserXP <= casterComp.MagicUserXP)
+                    if (targetPawn.IsColonist && targetPawnComp.MagicUserXP <= casterComp.MagicUserXP && caster.relations.OpinionOf(targetPawn) > -20)
                     {
                         Job job = ability.GetJob(AbilityContext.AI, jobTarget);
                         caster.jobs.TryTakeOrderedJob(job);
@@ -621,7 +638,7 @@ namespace TorannMagic.AutoCast
                     Pawn targetPawn = jobTarget.Thing as Pawn;
                     CompAbilityUserMight targetPawnComp = targetPawn.GetComp<CompAbilityUserMight>();
 
-                    if (targetPawn.IsColonist && targetPawnComp.MightUserXP < casterComp.MightUserXP)
+                    if (targetPawn.IsColonist && targetPawnComp.MightUserXP < casterComp.MightUserXP && caster.relations.OpinionOf(targetPawn) > -20)
                     {
                         Job job = ability.GetJob(AbilityContext.AI, jobTarget);
                         caster.jobs.TryTakeOrderedJob(job);
@@ -731,9 +748,11 @@ namespace TorannMagic.AutoCast
                     carriedThing.DeSpawn();
                     GenSpawn.Spawn(cT, targetCell, map);
                 }
-
-                caster.GetComp<CompAbilityUserMagic>().MagicUserXP -= 30;
-                ability.PostAbilityAttempt();
+                if (caster.kindDef != PawnKindDef.Named("TM_Dire_Wolf"))
+                {
+                    caster.GetComp<CompAbilityUserMagic>().MagicUserXP -= 30;
+                    ability.PostAbilityAttempt();
+                }
                 if(selectCaster)
                 {
                     Find.Selector.Select(caster, false, true);
@@ -759,5 +778,161 @@ namespace TorannMagic.AutoCast
                 }
             }
         }
-    }    
+    }
+
+    public static class AnimalBlink
+    {
+        public static void Evaluate(Pawn casterComp, float minDistance, float maxDistance, out bool success)
+        {
+            success = false;
+            Pawn caster = casterComp;
+            LocalTargetInfo jobTarget = caster.CurJob.targetA;
+            Thing carriedThing = null;
+            if (caster.CurJob.targetA.Thing != null) //&& caster.CurJob.def.defName != "Sow")
+            {
+                if (caster.CurJob.targetA.Thing.Map != caster.Map) //carrying thing
+                {
+                    jobTarget = caster.CurJob.targetB;
+                    carriedThing = caster.CurJob.targetA.Thing;
+                }
+                else if (caster.CurJob.targetB != null && caster.CurJob.targetB.Thing != null && caster.CurJob.def.defName != "Rescue") //targetA using targetB for job
+                {
+                    if (caster.CurJob.targetB.Thing.Map != caster.Map) //carrying targetB to targetA
+                    {
+                        jobTarget = caster.CurJob.targetA;
+                        carriedThing = caster.CurJob.targetB.Thing;
+                    }
+                    else //Getting targetA to carry to TargetB
+                    {
+                        jobTarget = caster.CurJob.targetA;
+                    }
+                }
+                else
+                {
+                    jobTarget = caster.CurJob.targetA;
+                }
+            }
+            float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
+            Vector3 directionToTarget = TM_Calc.GetVector(caster.Position, jobTarget.Cell);
+            //Log.Message("" + caster.LabelShort + " job def is " + caster.CurJob.def.defName + " targetA " + caster.CurJob.targetA + " targetB " + caster.CurJob.targetB + " jobTarget " + jobTarget + " at distance " + distanceToTarget + " min distance " + minDistance + " at vector " + directionToTarget);
+            if (distanceToTarget < 200)
+            {
+                if (distanceToTarget > minDistance && caster.CurJob.locomotionUrgency >= LocomotionUrgency.Jog && caster.CurJob.bill == null)
+                {
+                    if (distanceToTarget <= maxDistance && jobTarget.Cell != default(IntVec3))
+                    {
+                        //Log.Message("doing blink to thing");
+                        DoBlink(caster, jobTarget.Cell, carriedThing);
+                        success = true;
+                    }
+                    else
+                    {
+                        IntVec3 blinkToCell = caster.Position + (directionToTarget * maxDistance).ToIntVec3();
+                        //Log.Message("doing partial blink to cell " + blinkToCell);
+                        //MoteMaker.ThrowHeatGlow(blinkToCell, caster.Map, 1f);
+                        if (blinkToCell.IsValid && blinkToCell.InBounds(caster.Map) && blinkToCell.Walkable(caster.Map) && !blinkToCell.Fogged(caster.Map) && ((blinkToCell - caster.Position).LengthHorizontal < distanceToTarget))
+                        {
+                            DoBlink(caster, blinkToCell, carriedThing);
+                            success = true;
+                        }
+                    }
+                }
+            }
+        }
+
+        private static void DoBlink(Pawn caster, IntVec3 targetCell, Thing carriedThing)
+        {
+            JobDef retainJobDef = caster.CurJobDef;
+            int retainCount = 1;
+            LocalTargetInfo retainTargetA = caster.CurJob.targetA;
+            if (retainTargetA.Thing != null && retainTargetA.Thing.stackCount != 1)
+            {
+                retainCount = retainTargetA.Thing.stackCount;
+            }
+            LocalTargetInfo retainTargetB = caster.CurJob.targetB;
+            LocalTargetInfo retainTargetC = caster.CurJob.targetC;
+            Pawn p = caster;
+            Thing cT = carriedThing;
+            if (cT != null && cT.stackCount != 1)
+            {
+                retainCount = cT.stackCount;
+            }
+            Map map = caster.Map;
+            IntVec3 casterCell = caster.Position;
+            bool selectCaster = false;
+            if (Find.Selector.FirstSelectedObject == caster)
+            {
+                selectCaster = true;
+            }
+            try
+            {
+                ThingDef moteThrown = null;
+                Vector3 moteVector = TM_Calc.GetVector(casterCell, targetCell);
+                float angle = moteVector.ToAngleFlat();
+                if (angle >= -135 && angle < -45) //north
+                {
+                    moteThrown = ThingDef.Named("Mote_DWPhase_North");
+                }
+                else if (angle >= 45 && angle < 135) //south
+                {
+                    moteThrown = ThingDef.Named("Mote_DWPhase_South");
+                }
+                else if (angle >= -45 && angle < 45) //east
+                {
+                    moteThrown = ThingDef.Named("Mote_DWPhase_East");
+                }
+                else //west
+                {
+                    moteThrown = ThingDef.Named("Mote_DWPhase_West");
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, caster.DrawPos, caster.Map, Rand.Range(.6f, 1f), .2f, .1f, .5f, 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);                    
+                }
+                TM_MoteMaker.ThrowGenericMote(moteThrown, caster.DrawPos, caster.Map, 1.4f, .1f, 0f, .4f, 0, 5f, (Quaternion.AngleAxis(90, Vector3.up) * moteVector).ToAngleFlat(), 0);
+                bool drafted = caster.drafter.Drafted;
+                caster.DeSpawn();
+                GenSpawn.Spawn(p, targetCell, map);
+                if (carriedThing != null)
+                {
+                    carriedThing.DeSpawn();
+                    GenSpawn.Spawn(cT, targetCell, map);
+                }
+                if (selectCaster)
+                {
+                    Find.Selector.Select(caster, false, true);
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, caster.DrawPos, caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
+                    //TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Casting, caster.DrawPos, caster.Map, Rand.Range(1.4f, 2f), .2f, .05f, Rand.Range(.4f, .6f), Rand.Range(-200, 200), 0, 0, 0);
+                }
+                Vector3 drawPos = caster.DrawPos + (-2 * moteVector);
+                TM_MoteMaker.ThrowGenericMote(moteThrown, drawPos, caster.Map, 1.4f, .1f, .3f, 0f, 0, 8f, (Quaternion.AngleAxis(90, Vector3.up) * moteVector).ToAngleFlat(), 0);
+                if (caster.drafter == null)
+                {
+                    caster.drafter = new Pawn_DraftController(caster);
+                }                
+
+                if (drafted)
+                {
+                    caster.drafter.Drafted = true;
+                }
+
+                Job job = new Job(retainJobDef, retainTargetA, retainTargetB, retainTargetC)
+                {
+                    count = retainCount
+                };
+                //caster.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                caster.jobs.StartJob(job);
+            }
+            catch
+            {
+                if (!caster.Spawned)
+                {
+                    GenSpawn.Spawn(p, casterCell, map);
+                }
+            }
+        }
+    }
 }

@@ -64,17 +64,21 @@ namespace TorannMagic
                     {
                         if (this.CasterPawn.IsColonist)
                         {
+                            ModOptions.Constants.SetPawnInFlight(true);
                             ThingSelectionUtility.SelectNextColonist();
                             this.CasterPawn.DeSpawn();
                             //p.SetPositionDirect(this.currentTarget.Cell);
                             GenSpawn.Spawn(p, this.currentTarget.Cell, map);
                             p.drafter.Drafted = true;
                             ThingSelectionUtility.SelectPreviousColonist();
+                            ModOptions.Constants.SetPawnInFlight(false);
                         }
                         else
                         {
+                            ModOptions.Constants.SetPawnInFlight(true);
                             this.CasterPawn.DeSpawn();
                             GenSpawn.Spawn(p, this.currentTarget.Cell, map);
+                            ModOptions.Constants.SetPawnInFlight(false);
                         }
                     }
                     catch

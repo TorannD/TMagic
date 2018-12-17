@@ -158,14 +158,13 @@ namespace TorannMagic
 
                 if (Find.TickManager.TicksGame % this.eventFrequency == 0)
                 {
-                    //EvaluateOffsets();
 
-                    if ((this.lastHateTick + 1200) < Find.TickManager.TicksGame && this.parent.Severity > 25f)
+                    if ((this.lastHateTick + 1200) < Find.TickManager.TicksGame && this.parent.Severity > (25f + (this.Pawn.health.hediffSet.PainTotal * 50)))
                     {
                         severityAdjustment -= Rand.Range(.1f, .2f);
                     }
 
-                    if(this.parent.Severity < 20f)
+                    if(this.parent.Severity < (20f + (this.Pawn.health.hediffSet.PainTotal * 50)))
                     {                        
                         severityAdjustment += Rand.Range(.1f, .15f);
                     }
@@ -205,7 +204,7 @@ namespace TorannMagic
                         Vector3 projectileOrigin = Traverse.Create(root: projectile).Field(name: "origin").GetValue<Vector3>();
                         Thing launcher = Traverse.Create(root: projectile).Field(name: "launcher").GetValue<Thing>();
                         float weaponDamageMultiplier = Traverse.Create(root: projectile).Field(name: "weaponDamageMultiplier").GetValue<float>();
-                        if (weaponDamageMultiplier > 0 && launcher != null && launcher != this.Pawn && (projectileOrigin - this.Pawn.DrawPos).magnitude > 6 && Rand.Chance(.3f + (.06f * this.hateVer)))
+                        if (weaponDamageMultiplier > 0 && launcher != null && launcher != this.Pawn && (projectileOrigin - this.Pawn.DrawPos).MagnitudeHorizontal() > 6 && Rand.Chance(.3f + (.06f * this.hateVer)))
                         {                            
                             Vector3 moteDirection = TM_Calc.GetVector(projectile.ExactPosition, this.Pawn.DrawPos);
                             //Vector3 displayEffect = projectile.DrawPos;
@@ -213,7 +212,11 @@ namespace TorannMagic
                             //displayEffect.y += Rand.Range(-.3f, .3f);
                             //displayEffect.z += Rand.Range(-.3f, .3f);
 
-                            float projectileDamage = projectile.def.projectile.GetDamageAmount(1, null);
+                            float projectileDamage = 1;
+                            if (projectile.def.defName != "Spark")
+                            {
+                                projectileDamage = projectile.def.projectile.GetDamageAmount(1, null);
+                            }
                             TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Shadow"), projectile.DrawPos, this.Pawn.Map, Rand.Range(.6f, .8f), 0.3f, Rand.Range(.1f, .2f), Rand.Range(.2f, .5f), Rand.Range(-300, 300), Rand.Range(1.2f, 2f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), Rand.Range(0, 360));
                             TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Shadow"), projectile.DrawPos, this.Pawn.Map, Rand.Range(.4f, .6f), 0.3f, Rand.Range(.1f, .2f), Rand.Range(.2f, .5f), Rand.Range(-300, 300), Rand.Range(.8f, 1.2f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), Rand.Range(0, 360));
                             TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_LightningGlow"), projectile.DrawPos, this.Pawn.Map, projectileDamage / 8f, .2f, .1f, .3f, 0, 0, 0, Rand.Range(0, 360));

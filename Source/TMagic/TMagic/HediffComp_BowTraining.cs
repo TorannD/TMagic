@@ -6,7 +6,7 @@ namespace TorannMagic
     [StaticConstructorOnStartup]
     class HediffComp_BowTraining : HediffComp
     {
-
+        
         private bool initializing = true;
 
         public string labelCap

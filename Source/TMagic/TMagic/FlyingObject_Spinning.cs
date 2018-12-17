@@ -344,14 +344,14 @@ namespace TorannMagic
                     }
 
                     int num = GenRadial.NumCellsInRadius(radius);
-                    for (int i = 0; i < num / 2; i++)
+                    for (int i = 0; i < (num *.75f); i++)
                     {
                         IntVec3 intVec = center.ToIntVec3() + GenRadial.RadialPattern[Rand.Range(1, num)];
                         if (intVec.IsValid && intVec.InBounds(base.Map))
                         {
                             Vector3 moteDirection = TM_Calc.GetVector(this.ExactPosition.ToIntVec3(), intVec);
                             TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Rubble"), this.ExactPosition, base.Map, Rand.Range(.3f, .5f), .2f, .02f, .05f, Rand.Range(-100, 100), 12f, (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
-                            GenExplosion.DoExplosion(intVec, base.Map, .4f, DamageDefOf.Blunt, pawn, Rand.Range(14, 22), 0, SoundDefOf.Pawn_Melee_Punch_HitBuilding, null, null, null, ThingDef.Named("Filth_RubbleRock"), .6f, 1, false, null, 0f, 1, 0, false);
+                            GenExplosion.DoExplosion(intVec, base.Map, .4f, DamageDefOf.Blunt, pawn, Rand.Range(14, 22), 0, SoundDefOf.Pawn_Melee_Punch_HitBuilding, null, null, null, ThingDefOf.Filth_RubbleRock, .6f, 1, false, null, 0f, 1, 0, false);
                             MoteMaker.ThrowSmoke(intVec.ToVector3Shifted(), base.Map, Rand.Range(.6f, 1f));
                         }
                     }

@@ -161,7 +161,7 @@
 		<hediff>Shredded</hediff>
 		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
 		<defaultDamage>20</defaultDamage>
-		<armorCategory>Blunt</armorCategory>
+		<armorCategory>Dark</armorCategory>
 		<explosionSnowMeltAmount>.25</explosionSnowMeltAmount>
 		<explosionCellMote>Mote_BlastFlame</explosionCellMote>
 		<explosionColorCenter>(0.27, 0.17, 0.28)</explosionColorCenter>
@@ -215,7 +215,7 @@
 		<hediff>TM_MagicMissile</hediff>
 		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
 		<impactSoundType>Slice</impactSoundType>
-		<armorCategory>Sharp</armorCategory>
+		<armorCategory>Blunt</armorCategory>
 		<additionalHediffs>
 			<li>
 				<hediff>TM_Confused</hediff>
@@ -730,7 +730,7 @@
 		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
 		<isExplosive>false</isExplosive>
 		<impactSoundType>Bullet</impactSoundType>
-		<armorCategory>Sharp</armorCategory>
+		<armorCategory>Dark</armorCategory>
 		<additionalHediffs>
 			<li>
 				<hediff>TM_Slow_HD</hediff>
@@ -820,5 +820,67 @@
 		<combatLogRules>Damage_EMP</combatLogRules>
 		<armorCategory>Heat</armorCategory>
 	</DamageDef>
+	
+   <DamageDef ParentName="TM_LocalInjuryBase">
+    <defName>TM_BloodyCut</defName>
+    <label>bloody cut</label>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has perished from drawing too much blood</deathMessage>
+    <hediff>TM_BloodyCutHD</hediff>
+    <hediffSolid>TM_BloodyCutHD</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+	<defaultDamage>4</defaultDamage>
+    <impactSoundType>Slice</impactSoundType>
+    <armorCategory>Dark</armorCategory>
+	<isExplosive>false</isExplosive>
+	<harmsHealth>true</harmsHealth>
+	<makesBlood>true</makesBlood>
+  </DamageDef>
+  
+  <DamageDef ParentName="TM_LocalInjuryBase">
+	<defName>TM_BloodBurn</defName>
+	<label>blood burn</label>
+	<externalViolence>true</externalViolence>
+	<hediff>Burn</hediff>
+	<deathMessage>{0} has been burned to death.</deathMessage>
+	<defaultDamage>20</defaultDamage>
+	<explosionSnowMeltAmount>1</explosionSnowMeltAmount>
+	<explosionCellMote>Mote_BloodFlame</explosionCellMote>
+	<explosionColorCenter>(.6, .6, .4, 1)</explosionColorCenter>
+	<explosionColorEdge>(0.2, 0, 0, .7)</explosionColorEdge>
+<!-- 		<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote> -->
+	<soundExplosion>TM_FireWooshSD</soundExplosion>
+	<combatLogRules>Damage_Flame</combatLogRules>
+	<armorCategory>Heat</armorCategory>
+	<harmsHealth>true</harmsHealth>
+	<makesBlood>true</makesBlood>
+  </DamageDef>
+  
+  <DamageDef ParentName="TM_LocalInjuryBase">
+	<defName>TM_Enchanted_Fire</defName>
+	<workerClass>DamageWorker_Flame</workerClass>
+	<label>fire enchantment</label>
+	<externalViolence>true</externalViolence>
+	<hediff>Burn</hediff>
+	<deathMessage>{0} has been burned to death.</deathMessage>
+	<defaultDamage>10</defaultDamage>
+	<combatLogRules>Damage_Flame</combatLogRules>
+	<armorCategory>Heat</armorCategory>
+	<harmsHealth>true</harmsHealth>
+	<makesBlood>false</makesBlood>
+  </DamageDef>
+  
+  <DamageDef ParentName="TM_LocalInjuryBase">
+	<defName>TM_Enchanted_Ice</defName>
+	<label>ice enchantment</label>
+	<externalViolence>true</externalViolence>
+	<hediff>Iceshard</hediff>
+	<deathMessage>{0} has frozen to death.</deathMessage>
+	<defaultDamage>10</defaultDamage>
+	<combatLogRules>Combat_MeleeDamageIncludes</combatLogRules>
+	<armorCategory>Heat</armorCategory>
+	<harmsHealth>true</harmsHealth>
+	<makesBlood>true</makesBlood>
+  </DamageDef>
 	
 </Defs>

@@ -45,6 +45,8 @@
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
 		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -93,6 +95,8 @@
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
 		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -140,6 +144,8 @@
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
 		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -185,6 +191,8 @@
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
 		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -234,6 +242,8 @@
 		<li>TM_Psionic</li>
 		<li>Geomancer</li>
 		<li>Technomancer</li>
+		<li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -282,6 +292,8 @@
 		  <li>Geomancer</li>
 		  <li>DeathKnight</li>
 		  <li>Technomancer</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -328,6 +340,8 @@
 		  <li>DeathKnight</li>
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 
@@ -373,6 +387,8 @@
 		  <li>Geomancer</li>
 		  <li>DeathKnight</li>
 		  <li>Technomancer</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef> 	
 	
@@ -421,6 +437,8 @@
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
 		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -496,6 +514,8 @@
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
 		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -554,6 +574,8 @@
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
 		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -676,6 +698,8 @@
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
 		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -727,6 +751,8 @@
 		  <li>TM_Psionic</li>
 		  <li>Technomancer</li>
 		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -780,6 +806,112 @@
 		  <li>TM_Psionic</li>
 		  <li>Geomancer</li>
 		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>
+		<defName>BloodMage</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
+		<degreeDatas>	
+		  <li>
+			<label>Blood Mage</label>
+			<description>[PAWN_nameDef] is a blood mage and has consigned to the dark art of manipulating the life blood of living things as a means of increasing [PAWN_possessive] power.\n\nAs a blood mage, [PAWN_nameDef] has learned to control the life force within and command it to [PAWN_possessive] will. [PAWN_possessive] connection to life makes it easier to associate with other living things, but doesn't appreciate effort without immediate results.</description>
+			<degree>4</degree>
+			<statOffsets>
+				<SocialImpact>0.20</SocialImpact>
+				<NegotiationAbility>0.15</NegotiationAbility>
+				<TradePriceImprovement>0.10</TradePriceImprovement>
+				<TameAnimalChance>0.15</TameAnimalChance>
+				<TrainAnimalChance>0.10</TrainAnimalChance>
+				<GlobalLearningFactor>-0.20</GlobalLearningFactor>	
+				<ResearchSpeed>-0.30</ResearchSpeed>
+				<ImmunityGainSpeed>0.10</ImmunityGainSpeed>
+			</statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>StormBorn</li>
+		  <li>Arcanist</li>
+		  <li>Gifted</li>
+		  <li>PhysicalProdigy</li>
+		  <li>Paladin</li>
+		  <li>Gladiator</li>
+		  <li>TM_Sniper</li>
+		  <li>Summoner</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		  <li>Faceless</li>
+		  <li>Succubus</li>
+		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
+		  <li>Technomancer</li>
+		  <li>Enchanter</li>
+		  <li>DeathKnight</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>
+		<defName>Enchanter</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
+		<degreeDatas>	
+		  <li>
+			<label>Enchanter</label>
+			<description>[PAWN_nameDef] is an enchanter, attuned to the composition of matter and materials. [PAWN_pronoun] can manipulate matter to [PAWN_possessive] will, frequently in unnatural ways, and [PAWN_possessive] powers of transmutation can be permanent when sufficient effort is applied.</description>
+			<degree>4</degree>
+			<statOffsets>
+				<SocialImpact>-0.10</SocialImpact>
+				<NegotiationAbility>-0.10</NegotiationAbility>
+				<TradePriceImprovement>0.10</TradePriceImprovement>
+				<TameAnimalChance>-0.10</TameAnimalChance>
+				<TrainAnimalChance>-0.10</TrainAnimalChance>
+				<GlobalLearningFactor>0.10</GlobalLearningFactor>	
+				<WorkSpeedGlobal>0.10</WorkSpeedGlobal>
+				<ComfyTemperatureMin>+3</ComfyTemperatureMin>
+				<ComfyTemperatureMax>-3</ComfyTemperatureMax>
+				<ToxicSensitivity>.10</ToxicSensitivity>
+				<ImmunityGainSpeed>-.03</ImmunityGainSpeed>
+				<PainShockThreshold>-.10</PainShockThreshold>
+			</statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>StormBorn</li>
+		  <li>Arcanist</li>
+		  <li>Gifted</li>
+		  <li>PhysicalProdigy</li>
+		  <li>Paladin</li>
+		  <li>Gladiator</li>
+		  <li>TM_Sniper</li>
+		  <li>Summoner</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		  <li>Faceless</li>
+		  <li>Succubus</li>
+		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
+		  <li>Technomancer</li>
+		  <li>BloodMage</li>
+		  <li>DeathKnight</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -825,6 +957,8 @@
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
 		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -877,6 +1011,8 @@
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
 		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -899,7 +1035,7 @@
 					<ToxicSensitivity>-.10</ToxicSensitivity>
 					<ButcheryFleshSpeed>0.05</ButcheryFleshSpeed>
 					<SmeltingSpeed>-0.10</SmeltingSpeed>
-					<ConstructionSpeed>-.05</ConstructionSpeed>
+					<ConstructionSpeed>-.10</ConstructionSpeed>
 					<TameAnimalChance>.05</TameAnimalChance>
 					<TrainAnimalChance>.05</TrainAnimalChance>
                 </statOffsets>
@@ -911,14 +1047,14 @@
 			<degree>1</degree>
 				<statOffsets>
 					<MoveSpeed>.2</MoveSpeed>
-					<ImmunityGainSpeed>0.3</ImmunityGainSpeed>
+					<ImmunityGainSpeed>0.25</ImmunityGainSpeed>
 					<ComfyTemperatureMax>+15</ComfyTemperatureMax>
 					<ComfyTemperatureMin>-15</ComfyTemperatureMin>
                     <AimingDelayFactor>-0.20</AimingDelayFactor>
 					<ToxicSensitivity>-.15</ToxicSensitivity>
 					<ButcheryFleshSpeed>0.10</ButcheryFleshSpeed>
 					<SmeltingSpeed>-0.15</SmeltingSpeed>
-					<ConstructionSpeed>-.10</ConstructionSpeed>
+					<ConstructionSpeed>-.15</ConstructionSpeed>
 					<TameAnimalChance>.08</TameAnimalChance>
 					<TrainAnimalChance>.08</TrainAnimalChance>
                 </statOffsets>
@@ -930,14 +1066,14 @@
 			<degree>2</degree>
 				<statOffsets>
 					<MoveSpeed>.25</MoveSpeed>
-					<ImmunityGainSpeed>0.4</ImmunityGainSpeed>
-					<ComfyTemperatureMax>+20</ComfyTemperatureMax>
-					<ComfyTemperatureMin>-20</ComfyTemperatureMin>
+					<ImmunityGainSpeed>0.3</ImmunityGainSpeed>
+					<ComfyTemperatureMax>+18</ComfyTemperatureMax>
+					<ComfyTemperatureMin>-18</ComfyTemperatureMin>
                     <AimingDelayFactor>-0.30</AimingDelayFactor>
 					<ToxicSensitivity>-.20</ToxicSensitivity>
 					<ButcheryFleshSpeed>0.15</ButcheryFleshSpeed>
 					<SmeltingSpeed>-0.18</SmeltingSpeed>
-					<ConstructionSpeed>-.13</ConstructionSpeed>
+					<ConstructionSpeed>-.18</ConstructionSpeed>
 					<TameAnimalChance>.10</TameAnimalChance>
 					<TrainAnimalChance>.10</TrainAnimalChance>
                 </statOffsets>
@@ -949,14 +1085,14 @@
 			<degree>3</degree>
 				<statOffsets>
 					<MoveSpeed>.3</MoveSpeed>
-					<ImmunityGainSpeed>0.5</ImmunityGainSpeed>
-					<ComfyTemperatureMax>+25</ComfyTemperatureMax>
-					<ComfyTemperatureMin>-25</ComfyTemperatureMin>
+					<ImmunityGainSpeed>0.35</ImmunityGainSpeed>
+					<ComfyTemperatureMax>+20</ComfyTemperatureMax>
+					<ComfyTemperatureMin>-20</ComfyTemperatureMin>
                     <AimingDelayFactor>-0.40</AimingDelayFactor>
 					<ToxicSensitivity>-.25</ToxicSensitivity>
 					<ButcheryFleshSpeed>0.20</ButcheryFleshSpeed>
 					<SmeltingSpeed>-0.20</SmeltingSpeed>
-					<ConstructionSpeed>-.15</ConstructionSpeed>
+					<ConstructionSpeed>-.20</ConstructionSpeed>
 					<TameAnimalChance>.12</TameAnimalChance>
 					<TrainAnimalChance>.12</TrainAnimalChance>
 					
@@ -987,6 +1123,8 @@
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
 		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1080,6 +1218,8 @@
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
 		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1113,7 +1253,7 @@
 					<MeleeHitChance>6</MeleeHitChance>
 					<MeleeDodgeChance>10</MeleeDodgeChance>
 					<ShootingAccuracyPawn>-25</ShootingAccuracyPawn>
-					<WorkSpeedGlobal>-.12</WorkSpeedGlobal>
+					<WorkSpeedGlobal>-.08</WorkSpeedGlobal>
                 </statOffsets>
 		  </li>
 		  <li>
@@ -1128,7 +1268,7 @@
 					<MeleeDodgeChance>15</MeleeDodgeChance>
 					<PainShockThreshold>0.05</PainShockThreshold>
 					<ShootingAccuracyPawn>-28</ShootingAccuracyPawn>
-					<WorkSpeedGlobal>-.14</WorkSpeedGlobal>
+					<WorkSpeedGlobal>-.06</WorkSpeedGlobal>
                 </statOffsets>
 		  </li>
 		  <li>
@@ -1143,7 +1283,7 @@
 					<MeleeDodgeChance>20</MeleeDodgeChance>
 					<PainShockThreshold>0.10</PainShockThreshold>
 					<ShootingAccuracyPawn>-30</ShootingAccuracyPawn>
-					<WorkSpeedGlobal>-.15</WorkSpeedGlobal>
+					<WorkSpeedGlobal>-.05</WorkSpeedGlobal>
                 </statOffsets>
 		  </li>
 		</degreeDatas>
@@ -1171,6 +1311,8 @@
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
 		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1221,6 +1363,8 @@
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
 		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1274,6 +1418,8 @@
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
 		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1327,6 +1473,8 @@
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
 		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1339,7 +1487,9 @@
 			<label>Psionic</label>
 			<description>[PAWN_nameDef] is a Psionic - able to manifest thought into raw energy. [PAWN_pronoun] is able to project psionic energy but finds it easier and more efficient to apply it as an extension and augmentation of [PAWN_possessive] body. For this reason, [PAWN_pronoun] prefers to be free of encumbering weapons.
 
-[PAWN_nameDef] has become less social since developing psionic powers since [PAWN_objective] can perform any task on [PAWN_possessive] own and can do without the jealousy of others.</description>
+[PAWN_nameDef] has become less social since developing psionic powers since [PAWN_objective] can perform any task on [PAWN_possessive] own and can do without the jealousy of others.
+
+*The regeneration rate of psionic energy is based on psychic sensitivity - reducing sensitivity to 0 will prevent psionic energy from regenerating.</description>
 			<degree>4</degree>
 				<statOffsets>
 					<SocialImpact>-0.25</SocialImpact>
@@ -1377,6 +1527,8 @@
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
 		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1387,7 +1539,7 @@
 		<degreeDatas>	
 		  <li>
 			<label>Death Knight</label>
-			<description>[PAWN_nameDef] is a Death Knight - harbinger of doom and a representative of the ever approaching inevitability of death and decay. [PAWN_possessive] solemn attitude makes most pawns uneasy and even fewer approve of [PAWN_possessive] methods.</description>
+			<description>[PAWN_nameDef] is a Death Knight - harbinger of doom and a representative of the ever approaching inevitability of death and decay. [PAWN_possessive] solemn attitude makes most pawns uneasy and even few approve of [PAWN_possessive] methods.</description>
 			<degree>4</degree>
 				<statOffsets>
 					<SocialImpact>-0.25</SocialImpact>
@@ -1422,6 +1574,8 @@
 		  <li>Geomancer</li>
 		  <li>Technomancer</li>
 		  <li>TM_Psionic</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 

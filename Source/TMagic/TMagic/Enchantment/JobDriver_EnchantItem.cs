@@ -82,6 +82,14 @@ namespace TorannMagic.Enchantment
                     actor.jobs.EndCurrentJob(JobCondition.Incompletable, true);
                     Log.Message("Failed to initialize enchanting - invalid item type.");
                 }
+                else if(thing.def.defName.Contains("TM_Artifact"))
+                {
+                    Messages.Message("TM_CannotEnchantArtifact".Translate(
+                        actor.LabelShort,
+                        thing.LabelShort
+                    ), MessageTypeDefOf.RejectInput);
+                    actor.jobs.EndCurrentJob(JobCondition.Incompletable, true);                    
+                }
             };
             enchanting.tickAction = delegate
             {
@@ -136,6 +144,54 @@ namespace TorannMagic.Enchantment
             enchantment.HasEnchantment = true;
             switch (gemstone.def.defName)
             {
+                case "TM_EStone_wonder_minor":
+                    enchantment.maxMP = .05f;
+                    enchantment.maxMPTier = EnchantmentTier.Minor;
+                    enchantment.mpRegenRate = .05f;
+                    enchantment.mpRegenRateTier = EnchantmentTier.Minor;
+                    enchantment.mpCost = -.03f;
+                    enchantment.mpCostTier = EnchantmentTier.Minor;
+                    enchantment.coolDown = -.03f;
+                    enchantment.coolDownTier = EnchantmentTier.Minor;
+                    enchantment.xpGain = .05f;
+                    enchantment.xpGainTier = EnchantmentTier.Minor;
+                    enchantment.arcaneRes = .10f;
+                    enchantment.arcaneResTier = EnchantmentTier.Minor;
+                    enchantment.arcaneDmg = .04f;
+                    enchantment.arcaneDmgTier = EnchantmentTier.Minor;
+                    break;
+                case "TM_EStone_wonder":
+                    enchantment.maxMP = .1f;
+                    enchantment.maxMPTier = EnchantmentTier.Standard;
+                    enchantment.mpRegenRate = .1f;
+                    enchantment.mpRegenRateTier = EnchantmentTier.Standard;
+                    enchantment.mpCost = -.05f;
+                    enchantment.mpCostTier = EnchantmentTier.Standard;
+                    enchantment.coolDown = -.05f;
+                    enchantment.coolDownTier = EnchantmentTier.Standard;
+                    enchantment.xpGain = .10f;
+                    enchantment.xpGainTier = EnchantmentTier.Standard;
+                    enchantment.arcaneRes = .20f;
+                    enchantment.arcaneResTier = EnchantmentTier.Standard;
+                    enchantment.arcaneDmg = .08f;
+                    enchantment.arcaneDmgTier = EnchantmentTier.Standard;
+                    break;
+                case "TM_EStone_wonder_major":
+                    enchantment.maxMP = .15f;
+                    enchantment.maxMPTier = EnchantmentTier.Major;
+                    enchantment.mpRegenRate = .15f;
+                    enchantment.mpRegenRateTier = EnchantmentTier.Major;
+                    enchantment.mpCost = -.07f;
+                    enchantment.mpCostTier = EnchantmentTier.Major;
+                    enchantment.coolDown = -.07f;
+                    enchantment.coolDownTier = EnchantmentTier.Major;
+                    enchantment.xpGain = .15f;
+                    enchantment.xpGainTier = EnchantmentTier.Major;
+                    enchantment.arcaneRes = .30f;
+                    enchantment.arcaneResTier = EnchantmentTier.Major;
+                    enchantment.arcaneDmg = .12f;
+                    enchantment.arcaneDmgTier = EnchantmentTier.Major;
+                    break;
                 case "TM_EStone_maxMP_minor":                    
                     enchantment.maxMP = .05f;
                     enchantment.maxMPTier = EnchantmentTier.Minor;

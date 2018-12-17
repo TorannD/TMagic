@@ -550,24 +550,12 @@
 		<becomeVisible>true</becomeVisible>
 		<mentalStateGivers>
 			<li>
-				<mentalState>TM_WanderSad</mentalState>
-				<mtbDays>.2</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderConfused</mentalState>
-				<mtbDays>.3</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderPsychotic</mentalState>
-				<mtbDays>.4</mtbDays>
-			</li>
-			<li>
 				<mentalState>TM_PanicFlee</mentalState>
-				<mtbDays>.2</mtbDays>
+				<mtbDays>.15</mtbDays>
 			</li>
 			<li>
 				<mentalState>TM_Berserk</mentalState>
-				<mtbDays>.5</mtbDays>
+				<mtbDays>.4</mtbDays>
 			</li>
 		</mentalStateGivers>
 		<capMods>
@@ -587,24 +575,12 @@
 		<becomeVisible>true</becomeVisible>
 		<mentalStateGivers>
 			<li>
-				<mentalState>TM_WanderSad</mentalState>
-				<mtbDays>.18</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderConfused</mentalState>
-				<mtbDays>.27</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderPsychotic</mentalState>
-				<mtbDays>.36</mtbDays>
-			</li>
-			<li>
 				<mentalState>TM_PanicFlee</mentalState>
-				<mtbDays>.18</mtbDays>
+				<mtbDays>.13</mtbDays>
 			</li>
 			<li>
 				<mentalState>TM_Berserk</mentalState>
-				<mtbDays>.4</mtbDays>
+				<mtbDays>.35</mtbDays>
 			</li>
 		</mentalStateGivers>
 		<capMods>
@@ -624,20 +600,8 @@
 		<becomeVisible>true</becomeVisible>
 		<mentalStateGivers>
 			<li>
-				<mentalState>TM_WanderSad</mentalState>
-				<mtbDays>.16</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderConfused</mentalState>
-				<mtbDays>.24</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderPsychotic</mentalState>
-				<mtbDays>.32</mtbDays>
-			</li>
-			<li>
 				<mentalState>TM_PanicFlee</mentalState>
-				<mtbDays>.16</mtbDays>
+				<mtbDays>.11</mtbDays>
 			</li>
 			<li>
 				<mentalState>TM_Berserk</mentalState>
@@ -661,20 +625,8 @@
 		<becomeVisible>true</becomeVisible>
 		<mentalStateGivers>
 			<li>
-				<mentalState>TM_WanderSad</mentalState>
-				<mtbDays>.14</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderConfused</mentalState>
-				<mtbDays>.21</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderPsychotic</mentalState>
-				<mtbDays>.28</mtbDays>
-			</li>
-			<li>
 				<mentalState>TM_PanicFlee</mentalState>
-				<mtbDays>.14</mtbDays>
+				<mtbDays>.09</mtbDays>
 			</li>
 			<li>
 				<mentalState>TM_Berserk</mentalState>
@@ -719,24 +671,12 @@
 		<becomeVisible>true</becomeVisible>
 		<mentalStateGivers>
 			<li>
-				<mentalState>TM_WanderSad</mentalState>
-				<mtbDays>.15</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderConfused</mentalState>
-				<mtbDays>.25</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderPsychotic</mentalState>
-				<mtbDays>.35</mtbDays>
-			</li>
-			<li>
 				<mentalState>TM_PanicFlee</mentalState>
-				<mtbDays>.15</mtbDays>
+				<mtbDays>.14</mtbDays>
 			</li>
 			<li>
 				<mentalState>TM_Berserk</mentalState>
-				<mtbDays>.4</mtbDays>
+				<mtbDays>.35</mtbDays>
 			</li>
 		</mentalStateGivers>
 		<capMods>
@@ -756,24 +696,12 @@
 		<becomeVisible>true</becomeVisible>
 		<mentalStateGivers>
 			<li>
-				<mentalState>TM_WanderSad</mentalState>
-				<mtbDays>.135</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderConfused</mentalState>
-				<mtbDays>.225</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderPsychotic</mentalState>
-				<mtbDays>.315</mtbDays>
-			</li>
-			<li>
 				<mentalState>TM_PanicFlee</mentalState>
-				<mtbDays>.12</mtbDays>
+				<mtbDays>.11</mtbDays>
 			</li>
 			<li>
 				<mentalState>TM_Berserk</mentalState>
-				<mtbDays>.3</mtbDays>
+				<mtbDays>.25</mtbDays>
 			</li>
 		</mentalStateGivers>
 		<capMods>
@@ -793,24 +721,12 @@
 		<becomeVisible>true</becomeVisible>
 		<mentalStateGivers>
 			<li>
-				<mentalState>TM_WanderSad</mentalState>
-				<mtbDays>.12</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderConfused</mentalState>
-				<mtbDays>.20</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderPsychotic</mentalState>
-				<mtbDays>.28</mtbDays>
-			</li>
-			<li>
 				<mentalState>TM_PanicFlee</mentalState>
-				<mtbDays>.09</mtbDays>
+				<mtbDays>.08</mtbDays>
 			</li>
 			<li>
 				<mentalState>TM_Berserk</mentalState>
-				<mtbDays>.2</mtbDays>
+				<mtbDays>.15</mtbDays>
 			</li>
 		</mentalStateGivers>
 		<capMods>
@@ -830,20 +746,8 @@
 		<becomeVisible>true</becomeVisible>
 		<mentalStateGivers>
 			<li>
-				<mentalState>TM_WanderSad</mentalState>
-				<mtbDays>.105</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderConfused</mentalState>
-				<mtbDays>.175</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderPsychotic</mentalState>
-				<mtbDays>.245</mtbDays>
-			</li>
-			<li>
 				<mentalState>TM_PanicFlee</mentalState>
-				<mtbDays>.06</mtbDays>
+				<mtbDays>.05</mtbDays>
 			</li>
 			<li>
 				<mentalState>TM_Berserk</mentalState>
@@ -888,24 +792,12 @@
 		<becomeVisible>true</becomeVisible>
 		<mentalStateGivers>
 			<li>
-				<mentalState>TM_WanderSad</mentalState>
-				<mtbDays>.1</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderConfused</mentalState>
-				<mtbDays>.2</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderPsychotic</mentalState>
-				<mtbDays>.3</mtbDays>
-			</li>
-			<li>
 				<mentalState>TM_PanicFlee</mentalState>
-				<mtbDays>.1</mtbDays>
+				<mtbDays>.09</mtbDays>
 			</li>
 			<li>
 				<mentalState>TM_Berserk</mentalState>
-				<mtbDays>.3</mtbDays>
+				<mtbDays>.25</mtbDays>
 			</li>
 		</mentalStateGivers>
 		<capMods>
@@ -925,24 +817,12 @@
 		<becomeVisible>true</becomeVisible>
 		<mentalStateGivers>
 			<li>
-				<mentalState>TM_WanderSad</mentalState>
-				<mtbDays>.09</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderConfused</mentalState>
-				<mtbDays>.18</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderPsychotic</mentalState>
-				<mtbDays>.27</mtbDays>
-			</li>
-			<li>
 				<mentalState>TM_PanicFlee</mentalState>
-				<mtbDays>.08</mtbDays>
+				<mtbDays>.07</mtbDays>
 			</li>
 			<li>
 				<mentalState>TM_Berserk</mentalState>
-				<mtbDays>.2</mtbDays>
+				<mtbDays>.18</mtbDays>
 			</li>
 		</mentalStateGivers>
 		<capMods>
@@ -962,24 +842,12 @@
 		<becomeVisible>true</becomeVisible>
 		<mentalStateGivers>
 			<li>
-				<mentalState>TM_WanderSad</mentalState>
-				<mtbDays>.08</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderConfused</mentalState>
-				<mtbDays>.16</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderPsychotic</mentalState>
-				<mtbDays>.24</mtbDays>
-			</li>
-			<li>
 				<mentalState>TM_PanicFlee</mentalState>
-				<mtbDays>.06</mtbDays>
+				<mtbDays>.05</mtbDays>
 			</li>
 			<li>
 				<mentalState>TM_Berserk</mentalState>
-				<mtbDays>.1</mtbDays>
+				<mtbDays>.09</mtbDays>
 			</li>
 		</mentalStateGivers>
 		<capMods>
@@ -999,24 +867,12 @@
 		<becomeVisible>true</becomeVisible>
 		<mentalStateGivers>
 			<li>
-				<mentalState>TM_WanderSad</mentalState>
-				<mtbDays>.07</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderConfused</mentalState>
-				<mtbDays>.14</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderPsychotic</mentalState>
-				<mtbDays>.21</mtbDays>
-			</li>
-			<li>
 				<mentalState>TM_PanicFlee</mentalState>
-				<mtbDays>.04</mtbDays>
+				<mtbDays>.03</mtbDays>
 			</li>
 			<li>
 				<mentalState>TM_Berserk</mentalState>
-				<mtbDays>.05</mtbDays>
+				<mtbDays>.04</mtbDays>
 			</li>
 		</mentalStateGivers>
 		<capMods>
@@ -1057,24 +913,12 @@
 		<becomeVisible>true</becomeVisible>
 		<mentalStateGivers>
 			<li>
-				<mentalState>TM_WanderSad</mentalState>
-				<mtbDays>.08</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderConfused</mentalState>
-				<mtbDays>.18</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderPsychotic</mentalState>
-				<mtbDays>.27</mtbDays>
-			</li>
-			<li>
 				<mentalState>TM_PanicFlee</mentalState>
-				<mtbDays>.08</mtbDays>
+				<mtbDays>.07</mtbDays>
 			</li>
 			<li>
 				<mentalState>TM_Berserk</mentalState>
-				<mtbDays>.2</mtbDays>
+				<mtbDays>.18</mtbDays>
 			</li>
 		</mentalStateGivers>
 		<capMods>
@@ -1094,24 +938,12 @@
 		<becomeVisible>true</becomeVisible>
 		<mentalStateGivers>
 			<li>
-				<mentalState>TM_WanderSad</mentalState>
-				<mtbDays>.07</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderConfused</mentalState>
-				<mtbDays>.16</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderPsychotic</mentalState>
-				<mtbDays>.24</mtbDays>
-			</li>
-			<li>
 				<mentalState>TM_PanicFlee</mentalState>
-				<mtbDays>.06</mtbDays>
+				<mtbDays>.05</mtbDays>
 			</li>
 			<li>
 				<mentalState>TM_Berserk</mentalState>
-				<mtbDays>.1</mtbDays>
+				<mtbDays>.09</mtbDays>
 			</li>
 		</mentalStateGivers>
 		<capMods>
@@ -1130,18 +962,6 @@
         <minSeverity>2.5</minSeverity>
 		<becomeVisible>true</becomeVisible>
 		<mentalStateGivers>
-			<li>
-				<mentalState>TM_WanderSad</mentalState>
-				<mtbDays>.06</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderConfused</mentalState>
-				<mtbDays>.14</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderPsychotic</mentalState>
-				<mtbDays>.21</mtbDays>
-			</li>
 			<li>
 				<mentalState>TM_PanicFlee</mentalState>
 				<mtbDays>.04</mtbDays>
@@ -1167,18 +987,6 @@
         <minSeverity>4</minSeverity>
 		<becomeVisible>true</becomeVisible>
 		<mentalStateGivers>
-			<li>
-				<mentalState>TM_WanderSad</mentalState>
-				<mtbDays>.05</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderConfused</mentalState>
-				<mtbDays>.12</mtbDays>
-			</li>
-			<li>
-				<mentalState>TM_WanderPsychotic</mentalState>
-				<mtbDays>.18</mtbDays>
-			</li>
 			<li>
 				<mentalState>TM_PanicFlee</mentalState>
 				<mtbDays>.02</mtbDays>

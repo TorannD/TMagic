@@ -84,7 +84,14 @@ namespace TorannMagic
                             }
                             if (targetPawn.HostileTo(this.CasterPawn) && targetPawn.needs.food != null)
                             {
-                                HealthUtility.AdjustSeverity(targetPawn, HediffDef.Named("TM_DisorientedVomit"), 1f);                             
+                                if (Rand.Chance(TM_Calc.GetSpellSuccessChance(this.CasterPawn, targetPawn, true)))
+                                {
+                                    HealthUtility.AdjustSeverity(targetPawn, HediffDef.Named("TM_DisorientedVomit"), 1f);
+                                }
+                                else
+                                {
+                                    MoteMaker.ThrowText(targetPawn.DrawPos, targetPawn.Map, "TM_ResistedSpell".Translate(), -1);
+                                }
                             }
                             else
                             {

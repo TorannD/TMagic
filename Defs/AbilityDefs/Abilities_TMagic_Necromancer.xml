@@ -333,8 +333,8 @@ Range: 46</description>
         <defName>TM_FogOfTorment</defName>
         <label>Fog of Torment</label>
         <uiIconPath>UI/fogoftorment</uiIconPath>
-        <description>Creates a fog that causes pain and suffering every living thing within. Undead within the fog are slowly healed and suffer no penalties from the fog.</description>
-        <manaCost>0.25</manaCost>
+        <description>Creates a fog that causes pain and suffering to every living creature within. Undead within the fog are slowly healed and suffer no penalties from the fog.</description>
+        <manaCost>0.3</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
