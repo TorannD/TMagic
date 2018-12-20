@@ -37,18 +37,22 @@ namespace TorannMagic
             if(this.currentTarget.Thing != null && this.currentTarget.Thing is Pawn)
             {
                 Pawn victim = this.currentTarget.Thing as Pawn;
-                if (victim.RaceProps.BloodDef == this.CasterPawn.RaceProps.BloodDef && victim != this.CasterPawn)
+                if (victim.RaceProps.BloodDef != null && victim != this.CasterPawn)
                 {
                     for (int i = 0; i < 4; i++)
                     {
                         TM_MoteMaker.ThrowBloodSquirt(victim.DrawPos, victim.Map, Rand.Range(.6f, .9f));
                     }
 
-                    HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_BloodForBloodHD"), (.5f + (.1f * pwrVal)) * this.arcaneDmg);
-                    HediffComp_BloodForBlood comp = victim.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_BloodForBloodHD"), false).TryGetComp<HediffComp_BloodForBlood>();
+                    HealthUtility.AdjustSeverity(victim, TorannMagicDefOf.TM_BloodForBloodHD, (.5f + (.1f * pwrVal)) * this.arcaneDmg);
+                    HediffComp_BloodForBlood comp = victim.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_BloodForBloodHD, false).TryGetComp<HediffComp_BloodForBlood>();
                     if (comp != null)
                     {
                         comp.linkedPawn = this.CasterPawn;
+                    }
+                    else
+                    {
+                        Messages.Message("TM_InvalidTarget".Translate(this.CasterPawn.LabelShort, TorannMagicDefOf.TM_BloodForBlood.label), MessageTypeDefOf.RejectInput);
                     }
                 }
                 else

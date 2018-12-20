@@ -208,7 +208,7 @@ namespace TorannMagic
                     ;
                 }
             }
-            if (this.original == this.spawner)
+            if (true)
             {
                 String label = "TM_CancelPolymorph".Translate();
                 String desc = "TM_CancelPolymorphDesc".Translate();

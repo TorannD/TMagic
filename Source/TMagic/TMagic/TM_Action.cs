@@ -325,6 +325,8 @@ namespace TorannMagic
                             //polymorphPawn.mindState = new Pawn_MindState(polymorphPawn);
                             //polymorphPawn.thinker = new Pawn_Thinker(polymorphPawn);
                             //polymorphPawn.jobs = new Pawn_JobTracker(polymorphPawn);
+                            //polymorphPawn.records = new Pawn_RecordsTracker(polymorphPawn);
+                            //polymorphPawn.skills = new Pawn_SkillTracker(polymorphPawn);
                             PawnComponentsUtility.AddAndRemoveDynamicComponents(polymorphPawn, true);
 
                             polymorphPawn.Name = original.Name;

@@ -430,12 +430,12 @@ Level 3: 67s - 200s</TM_Regenerate_ver_desc>
 <TM_CureDisease_eff_desc>Reduces the cost of Cure Disease by 10% per skill level.</TM_CureDisease_eff_desc>
 <TM_CureDisease_pwr_desc>Improves the effectiveness of Cure Disease. The higher the skill level, the more likely the spell cures the disease instead of reducing it.
 Level 0: 50% chance to fail; reduces severity of disease by 1 if successful.
-Level 1: Always succeeds; 20% chance to reduce severity by 2.
-Level 2: 75% chance to reduce severity by 2.
-Level 3: 66% chance to reduce severity by 2, 33% chance to reduce severity by 3.</TM_CureDisease_pwr_desc>
+Level 1: Always succeeds on understood diseases (Disease Knowledge)
+Level 2: Boost disease immunity of the target by 15% for 3 days
+Level 3: Boost disease immunity of the target by 25% for 5 days</TM_CureDisease_pwr_desc>
 <TM_CureDisease_ver_desc>Study of diseases allows the druid to cure more advanced maladies.
 Level 0: Flu and Wound Infections
-Level 1: Gut Worms and Malaria
+Level 1: Gut Worms, Food Poisoning, and Malaria
 Level 2: Sleeping Sickness and Muscle Parasites
 Level 3: The Plague</TM_CureDisease_ver_desc>
 <TM_RegrowLimb_eff_desc>Reduces the mana required to regrow limbs (surgery) by 6% per skill level.  Regrowth is unaffected by global mana cost reductions.</TM_RegrowLimb_eff_desc>

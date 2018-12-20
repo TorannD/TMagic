@@ -16,7 +16,7 @@ namespace TorannMagic
         private int initializeDelay = 0;
         private bool removeNow = false;
 
-        private int eventFrequency = 60;
+        private int eventFrequency = 180;
 
         //private int bfbPwr = 0;  //increased amount blood levels affect ability power
         private int bloodshieldVer = 0;  //increased blood per bleed rate and blood gift use
@@ -90,7 +90,7 @@ namespace TorannMagic
                             HealWounds((severityChange / 2) * (1 + .15f *this.bloodshieldVer));
                             ReverseHealLinkedPawn(severityChange);
                         }
-                        severityAdjustment -= Rand.Range(.7f, 1.2f);
+                        severityAdjustment -= Rand.Range(2.5f, 4f);
                         this.lastSeverity = this.parent.Severity;
                     }                    
                     else
@@ -112,7 +112,7 @@ namespace TorannMagic
             {
                 if (bloodHediff.Severity < 1)
                 {
-                    TM_Action.DamageEntities(this.linkedPawn, null, severity / 2, TMDamageDefOf.DamageDefOf.TM_BloodBurn, this.Pawn);
+                    TM_Action.DamageEntities(this.linkedPawn, null, severity, TMDamageDefOf.DamageDefOf.TM_BloodBurn, this.Pawn);
                 }
                 else
                 {

@@ -5319,6 +5319,7 @@ namespace TorannMagic
                                         {
                                             afflictionList.Add("GutWorms");
                                             afflictionList.Add("Malaria");
+                                            afflictionList.Add("FoodPoisoning");
                                         }
                                         if (ver.level >= 2)
                                         {

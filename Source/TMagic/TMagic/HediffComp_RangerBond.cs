@@ -47,7 +47,7 @@ namespace TorannMagic
                 if (!mapPawns[i].DestroyedOrNull() && mapPawns[i].Spawned && !mapPawns[i].Downed && mapPawns[i].RaceProps.Humanlike)
                 {
                     CompAbilityUserMight comp = mapPawns[i].GetComp<CompAbilityUserMight>();
-                    if (comp.IsMightUser&& comp.bondedPet != null)
+                    if (comp.IsMightUser && comp.bondedPet != null)
                     {
                         if (comp.bondedPet == this.Pawn)
                         {
@@ -109,10 +109,15 @@ namespace TorannMagic
                         }
                     }
                 }
-                if (this.bonderPawn != null)
+                if (this.bonderPawn != null && !this.bonderPawn.Destroyed && !this.bonderPawn.Dead)
                 {
                     RefreshBond();
-                    UpdateBond();
+                    UpdateBond();                    
+                }
+                else
+                {
+                    this.Pawn.health.RemoveHediff(this.Pawn.health.hediffSet.GetFirstHediffOfDef(this.parent.def));
+                    //this.Pawn.SetFactionDirect(null);
                 }
             }
         }

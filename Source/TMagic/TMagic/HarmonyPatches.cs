@@ -217,37 +217,46 @@ namespace TorannMagic
         //}
 
 
-        //[HarmonyPatch(typeof(Alert_Thought), "GetReport", null)]
-        //public class AddNullException_Alerts_Patch
+        [HarmonyPatch(typeof(CaravanFormingUtility), "AllSendablePawns", null)]
+        public class AddNullException_Alerts_Patch
+        {
+            public static void Postfix(ref List<Pawn> __result)
+            {
+                if (__result != null)
+                {
+                    for (int i = 0; i < __result.Count; i++)
+                    {
+                        CompPolymorph comp = __result[i].GetComp<CompPolymorph>();
+                        if (comp != null && comp.Original != null)
+                        {
+                            __result.Remove(__result[i]);
+                            i--;                            
+                        }
+                    }
+                }
+            }
+        }
+
+        //[HarmonyPatch(typeof(StatWorker), "IsDisabledFor", null)]
+        //public class StatWorker_Polymorph_Postfix
         //{
-        //    public static bool Prefix(Alert_Thought __instance, ref AlertReport __result)
+        //    public static bool Prefix(Thing thing, ref bool __result)
         //    {
-        //        //try
-        //        //{                    
-        //        __result = AlertReport.CulpritsAre(Traverse.Create(root: __instance).Field(name: "AffectedPawns").GetValue<IEnumerable<Pawn>>());
-        //        //}
-        //        //catch (NullReferenceException ex)
-        //        //{
-
-        //        //}
-        //        return false;
-        //    }
-        //} 
-
-        //[HarmonyPatch(typeof(ThoughtHandler), "GetAllMoodThoughts", null)]
-        //public class ThoughtHandler_Alerts_Patch
-        //{
-        //    public static bool Prefix(ThoughtHandler __instance, List<Thought> outThoughts)
-        //    {                 
-        //        Pawn pawn = Traverse.Create(root: __instance).Field(name: "pawn").GetValue<Pawn>();
-        //        if(!pawn.Spawned)
+        //        Pawn pawn = thing as Pawn;
+        //        if(pawn != null)
         //        {
-        //            Log.Message("patching thought handler for " + pawn.LabelShort);
-        //            return false;
+        //            CompPolymorph comp = pawn.GetComp<CompPolymorph>();
+        //            if(comp != null && comp.Original != null)
+        //            {
+        //                Log.Message("no stats for " + pawn.LabelShort);
+        //                __result = false;
+        //                return false;
+        //            }
         //        }
         //        return true;
         //    }
-        //}        
+        //}
+
         public static bool Pawn_PathFollower_Pathfinder_Prefix(Pawn pawn, IntVec3 c, ref int __result)
         {
             if (pawn != null && pawn.health != null && pawn.health.hediffSet != null && pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ArtifactPathfindingHD))

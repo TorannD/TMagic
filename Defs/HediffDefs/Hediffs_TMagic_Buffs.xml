@@ -1891,4 +1891,52 @@
     </stages>
   </HediffDef>
   
+  <HediffDef>
+    <defName>TM_DiseaseImmunityHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Disease Immunity</label>
+    <defaultLabelColor>(.4,.8,0)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>3.0</maxSeverity>	
+	<isBad>false</isBad>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-1</severityPerDay>
+      </li>	  
+    </comps>
+	<stages>
+      <li>
+        <label>I</label>
+		<becomeVisible>true</becomeVisible>
+		<statOffsets>
+		  <ImmunityGainSpeed>0.15</ImmunityGainSpeed>
+	    </statOffsets>
+      </li>  
+	</stages>
+  </HediffDef>
+  
+  <HediffDef>
+    <defName>TM_DiseaseImmunity2HD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Disease Immunity</label>
+    <defaultLabelColor>(.4,.8,0)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>5.0</maxSeverity>	
+	<isBad>false</isBad>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-1</severityPerDay>
+      </li>	  
+    </comps>
+	<stages>
+      <li>
+        <label>II</label>
+		<becomeVisible>true</becomeVisible>
+		<statOffsets>
+		  <ImmunityGainSpeed>0.25</ImmunityGainSpeed>
+	    </statOffsets>
+      </li>  
+	</stages>
+  </HediffDef>
+  
 </Defs>

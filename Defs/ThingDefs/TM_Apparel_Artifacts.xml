@@ -54,7 +54,7 @@
 	</statBases>
 	<equippedStatOffsets>
 		<MoveSpeed>0.5</MoveSpeed>
-		<MeleeDodgeChance>10</MeleeDodgeChance>
+		<MeleeDodgeChance>.10</MeleeDodgeChance>
 	</equippedStatOffsets>
 	<thingCategories>
 	  <li>Apparel</li>

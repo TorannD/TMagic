@@ -96,7 +96,6 @@
 		<painOffset>0.40</painOffset>
 		<hungerRateFactor>2</hungerRateFactor>
 		<restFallFactor>2</restFallFactor>
-		<mentalBreakMtbDays>0.01</mentalBreakMtbDays>
 		<lifeThreatening>true</lifeThreatening>
         <capMods>
           <li>

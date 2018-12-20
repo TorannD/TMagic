@@ -35,7 +35,7 @@
 	<label>Hemorrhaging</label>
     <defaultLabelColor>(0.6,0,0.0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
-	<makesSickThought>true</makesSickThought>
+	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
     <makesAlert>false</makesAlert>
 	<maxSeverity>5.0</maxSeverity>
@@ -61,7 +61,7 @@
 	<label>Blood Drain</label>
     <defaultLabelColor>(0.6,0,0.0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
-	<makesSickThought>true</makesSickThought>
+	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
     <makesAlert>false</makesAlert>
 	<maxSeverity>2.0</maxSeverity>

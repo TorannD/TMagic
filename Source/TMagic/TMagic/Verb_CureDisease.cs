@@ -35,65 +35,66 @@ namespace TorannMagic
             {
                 int num = 1;
                 int sevAdjustment = 0;
-                if (pwrVal == 3)
+                if (pwrVal == 2)
                 {
-                    sevAdjustment = Mathf.RoundToInt(Rand.Range(1.5f, 3f));
+                    //apply immunity buff, 60k ticks in a day
+                    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_DiseaseImmunityHD, 3);
                 }
-                else if (pwrVal == 2)
+                else if (pwrVal == 3)
                 {
-                    sevAdjustment = Mathf.RoundToInt(Rand.Range(1.2f, 2.3f));
+                    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_DiseaseImmunityHD, 5);
                 }
-                else if (pwrVal == 1)
+
+                if (pwrVal >= 1)
                 {
-                    sevAdjustment = Mathf.RoundToInt(Rand.Range(1f, 1.6f));
+                    sevAdjustment = 5;
                 }
                 else
                 {
-                    sevAdjustment = Mathf.RoundToInt(Rand.Range(0f, 1f));
+                    sevAdjustment = Mathf.RoundToInt(Rand.Range(0, 1));
                 }
                 if(sevAdjustment !=0 ) 
                 {
+                    bool success = false;
                     using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
                     {
                         while (enumerator.MoveNext())
                         {
                             Hediff rec = enumerator.Current;
                             bool flag2 = num > 0;
-                            if (rec.def.makesSickThought)
+
+                            
+                            if ( rec.def.defName == "WoundInfection" || rec.def.defName == "Flu" || rec.def.defName == "Animal_Flu")
                             {
-                                bool success = false;
-                                if ( rec.def.defName == "WoundInfection" || rec.def.defName == "Flu" || rec.def.defName == "Animal_Flu")
-                                {
-                                    rec.Severity -= sevAdjustment;
-                                    success = true;
-                                }
-                                if (verVal >= 1 && (rec.def.defName == "GutWorms" || rec.def.defName == "Malaria"))
-                                {
-                                    rec.Severity -= sevAdjustment;
-                                    success = true;
-                                }
-                                if (verVal >= 2 && (rec.def.defName == "SleepingSickness" || rec.def.defName == "MuscleParasites"))
-                                {
-                                    rec.Severity -= sevAdjustment;
-                                    success = true;
-                                }
-                                if (verVal == 3)
-                                {
-                                    rec.Severity -= sevAdjustment;
-                                    success = true;
-                                }
-                                if(success == true)
-                                {
-                                    TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3(), pawn.Map, 1.5f);
-                                    MoteMaker.ThrowText(pawn.DrawPos, pawn.Map, "Cure Disease" + ": " + StringsToTranslate.AU_CastSuccess, -1f);
-                                }
-                                else
-                                {
-                                    Messages.Message("TM_CureDiseaseTypeFail".Translate(), MessageTypeDefOf.NegativeEvent);
-                                    MoteMaker.ThrowText(pawn.DrawPos, pawn.Map, "Cure Disease" + ": " + StringsToTranslate.AU_CastFailure, -1f);
-                                }                                
+                                rec.Severity -= sevAdjustment;
+                                success = true;
                             }
+                            if (verVal >= 1 && (rec.def.defName == "GutWorms" || rec.def == HediffDefOf.Malaria || rec.def == HediffDefOf.FoodPoisoning))
+                            {
+                                rec.Severity -= sevAdjustment;
+                                success = true;
+                            }
+                            if (verVal >= 2 && (rec.def.defName == "SleepingSickness" || rec.def.defName == "MuscleParasites"))
+                            {
+                                rec.Severity -= sevAdjustment;
+                                success = true;
+                            }
+                            if (verVal == 3 && rec.def.makesSickThought)
+                            {
+                                rec.Severity -= sevAdjustment;
+                                success = true;
+                            }                                                          
                         }
+                    }
+                    if (success == true)
+                    {
+                        TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3(), pawn.Map, 1.5f);
+                        MoteMaker.ThrowText(pawn.DrawPos, pawn.Map, "Cure Disease" + ": " + StringsToTranslate.AU_CastSuccess, -1f);
+                    }
+                    else
+                    {
+                        Messages.Message("TM_CureDiseaseTypeFail".Translate(), MessageTypeDefOf.NegativeEvent);
+                        MoteMaker.ThrowText(pawn.DrawPos, pawn.Map, "Cure Disease" + ": " + StringsToTranslate.AU_CastFailure, -1f);
                     }
                 }
                 else

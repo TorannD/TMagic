@@ -87,7 +87,7 @@ namespace TorannMagic
                         AdjustBloodLoss();
                         severityAdjustment -= Rand.Range(.04f, .06f);
 
-                        if (Rand.Chance(.35f) && !this.Pawn.DestroyedOrNull() && !this.Pawn.Dead && !this.linkedPawn.DestroyedOrNull() && !this.linkedPawn.Dead)
+                        if (Rand.Chance(.4f) && !this.Pawn.DestroyedOrNull() && !this.Pawn.Dead && !this.linkedPawn.DestroyedOrNull() && !this.linkedPawn.Dead)
                         {
                             List<Need> needs = linkedPawn.needs.AllNeeds;
                             for (int n = 0; n < needs.Count; n++)

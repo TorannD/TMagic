@@ -5,7 +5,7 @@
 
 	<ConceptDef>
 		<defName>TM_Portals</defName>
-		<label>Using portals</label>
+		<label>Magic - Portals</label>
 		<priority>50</priority>
 		<needsOpportunity>True</needsOpportunity>
 		<helpText>Magical portals representation the height of magical power.  There are a few things you should know about using portals:
@@ -38,7 +38,7 @@ Portals must be deactivated before they can be reactivated and assigned a new de
 	
 		<ConceptDef>
 		<defName>TM_Enchanting</defName>
-		<label>Enchanting</label>
+		<label>Magic - Enchanting</label>
 		<priority>52</priority>
 		<needsOpportunity>False</needsOpportunity>
 		<helpText>Enchanting offers mages the ability to imbue weapons and armor with enhancements.  There are a few things you should know about enchanting:
@@ -61,7 +61,7 @@ Portals must be deactivated before they can be reactivated and assigned a new de
 
 			<ConceptDef>
 		<defName>TM_EnchantingII</defName>
-		<label>Enchanting II</label>
+		<label>Magic - Enchanting II</label>
 		<priority>51</priority>
 		<needsOpportunity>False</needsOpportunity>
 		<helpText>Enchanting: Part II

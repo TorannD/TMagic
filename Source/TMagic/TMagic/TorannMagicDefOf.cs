@@ -270,6 +270,8 @@ namespace TorannMagic
         public static HediffDef TM_Regeneration_II;
         public static HediffDef TM_Regeneration_III;
         public static TMAbilityDef TM_CureDisease;
+        public static HediffDef TM_DiseaseImmunityHD;
+        public static HediffDef TM_DiseaseImmunity2HD;
         public static TMAbilityDef TM_RegrowLimb;  // ultimate 
         public static HediffDef TM_ArmRegrowth;
         public static HediffDef TM_HandRegrowth;
