@@ -69,6 +69,7 @@ Efficiency: 71%</description>
         <initialConfigurableTargetFuelLevel>200</initialConfigurableTargetFuelLevel>
         <fuelFilter>
           <thingDefs>
+			<li>Portfuel</li>
           </thingDefs>
         </fuelFilter>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
@@ -155,6 +156,7 @@ Efficiency: 80%</description>
         <initialConfigurableTargetFuelLevel>2000</initialConfigurableTargetFuelLevel>
         <fuelFilter>
           <thingDefs>
+			<li>Portfuel</li>
           </thingDefs>
         </fuelFilter>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
