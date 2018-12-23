@@ -608,6 +608,22 @@
 		  </li>
 		</degreeDatas>	
 	</TraitDef>
+	
+	<TraitDef>
+		<defName>TM_OKWithDeath</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>.1</commonality>	
+		<degreeDatas>	
+		  <li>
+			<label>Unaffected by death</label>
+			<description>[PAWN_nameDef] has accepted that death is another part of life and doesn't get upset when learning about a dead ally or seeing one of the undead.</description>
+			<degree>0</degree>
+		  </li>
+		</degreeDatas>	
+		<conflictingTraits>
+		  <li>Kind</li>
+		</conflictingTraits>
+	</TraitDef>
 
 	<TraitDef>
 		<defName>TM_Bard</defName>
@@ -974,16 +990,16 @@
 				<statOffsets>
                     <MoveSpeed>.20</MoveSpeed>
 					<WorkSpeedGlobal>0.20</WorkSpeedGlobal>
-                    <ImmunityGainSpeed>.4</ImmunityGainSpeed>
+                    <ImmunityGainSpeed>.2</ImmunityGainSpeed>
 					<PsychicSensitivity>-0.6</PsychicSensitivity>
-					<MentalBreakThreshold>0.05</MentalBreakThreshold>
-					<GlobalLearningFactor>-.20</GlobalLearningFactor>
+					<MentalBreakThreshold>-0.03</MentalBreakThreshold>
+					<GlobalLearningFactor>-.3</GlobalLearningFactor>
 					<MeleeDodgeChance>4</MeleeDodgeChance>
 					<MiningSpeed>0.2</MiningSpeed>
 					<MiningYield>0.2</MiningYield>
-					<PlantWorkSpeed>-.2</PlantWorkSpeed>
+					<PlantWorkSpeed>-.25</PlantWorkSpeed>
 					<PlantHarvestYield>-.2</PlantHarvestYield>
-					<ResearchSpeed>-.2</ResearchSpeed>
+					<ResearchSpeed>-.25</ResearchSpeed>
                 </statOffsets>
 		  </li>
 		</degreeDatas>

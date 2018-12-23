@@ -25,9 +25,9 @@
 		<defaultDamage>12</defaultDamage>
 		<armorCategory>Light</armorCategory>
 		<explosionSnowMeltAmount>.5</explosionSnowMeltAmount>
-		<explosionCellMote>Mote_BlastFlame</explosionCellMote>
-		<explosionColorCenter>(1, 1, 1)</explosionColorCenter>
-		<explosionColorEdge>(1, 1, 1)</explosionColorEdge>
+		<explosionCellMote>Mote_BlastExtinguisher</explosionCellMote>
+		<explosionColorCenter>(.8, .9, 1)</explosionColorCenter>
+		<explosionColorEdge>(0, .4, .8)</explosionColorEdge>
 		<soundExplosion>Explosion_Flame</soundExplosion>
 		<additionalHediffs>
 			<li>
@@ -47,7 +47,7 @@
 		<defaultDamage>12</defaultDamage>
 		<armorCategory>Light</armorCategory>
 		<explosionSnowMeltAmount>.5</explosionSnowMeltAmount>
-		<explosionCellMote>Mote_BlastFlame</explosionCellMote>
+		<explosionCellMote>Mote_BlastExtinguisher</explosionCellMote>
 		<explosionColorCenter>(1, 1, 1)</explosionColorCenter>
 		<explosionColorEdge>(1, 0.85, 0.8)</explosionColorEdge>
 		<soundExplosion>Explosion_Flame</soundExplosion>
@@ -63,7 +63,7 @@
 		<defaultDamage>10</defaultDamage>
 		<armorCategory>Dark</armorCategory>
 		<explosionSnowMeltAmount>.5</explosionSnowMeltAmount>
-		<explosionCellMote>Mote_BlastFlame</explosionCellMote>
+		<explosionCellMote>Mote_BlastExtinguisher</explosionCellMote>
 		<explosionColorCenter>(.2, 0, .2)</explosionColorCenter>
 		<explosionColorEdge>(.3, 0.0, 0.6)</explosionColorEdge>
 		<soundExplosion>TM_SoftExplosion</soundExplosion>

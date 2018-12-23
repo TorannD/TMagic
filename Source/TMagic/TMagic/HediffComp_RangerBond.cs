@@ -104,6 +104,12 @@ namespace TorannMagic
                                         num--;
                                         num2--;
                                     }
+                                    else
+                                    {
+                                        current.Heal(.2f);
+                                        num--;
+                                        num2--;
+                                    }
                                 }
                             }
                         }

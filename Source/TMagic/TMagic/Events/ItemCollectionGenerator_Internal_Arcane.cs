@@ -9,7 +9,7 @@ namespace TorannMagic
 {
     public class ItemCollectionGenerator_Internal_Arcane
     {
-        private const float ArtifactsChance = 0.03f;
+        private const float GemstoneChance = 0.03f;
         private const float LuciferiumChance = 0.2f;
         private const float ArcaneScriptChance = 0.06f;
         private const float DrugChance = 0.15f;
@@ -17,8 +17,9 @@ namespace TorannMagic
         private const float SkillChance = 0.2f;
         private const float MasterSpellChance = 0.1f;
 
-        private static readonly IntRange ArtifactsCountRange = new IntRange(1, 2);
-        private static readonly IntRange LuciferiumCountRange = new IntRange(4, 8);
+        private static readonly IntRange GemstoneCountRange = new IntRange(1, 2);
+        private static readonly IntRange LuciferiumCountRange = new IntRange(8, 12);
+        private static readonly IntRange RawMagicyteRange = new IntRange(40, 100);
         private static readonly IntRange ManaPotionRange = new IntRange(1, 4);
         private static readonly IntRange DrugCountRange = new IntRange(3, 10);
         private static readonly IntRange SpellCountRange = new IntRange(1, 2);
@@ -277,39 +278,41 @@ namespace TorannMagic
                         collectiveMarketValue += thing.MarketValue * thing.stackCount;
                     }
                 }
-                //Artifacts
-                if (Rand.Chance(ArtifactsChance) && (totalMarketValue - collectiveMarketValue) > 1000f)
+                //Gemstones
+                if (Rand.Chance(GemstoneChance) && (totalMarketValue - collectiveMarketValue) > 1000f)
                 {
-                    int randomInRange = ArtifactsCountRange.RandomInRange;
+                    int randomInRange = GemstoneCountRange.RandomInRange;
                     for (int i = 0; i < randomInRange; i++)
-                    {                       
-                        IEnumerable<ThingDef> source = from x in DefDatabase<ThingDef>.AllDefs
-                                                       where x.thingCategories.Contains(ThingCategoryDef.Named("Artifacts"))
-                                                       select x;
-                        ThingDef def = source.RandomElement<ThingDef>();
-                        Thing item = ThingMaker.MakeThing(def, null);
-                        outThings.Add(item);
-                        collectiveMarketValue += item.MarketValue;
+                    {
+                        List<Thing> gemstoneZero = new List<Thing>();
+                        Thing item = null;
+                        ItemCollectionGenerator_Gemstones icg_g = new ItemCollectionGenerator_Gemstones();
+                        icg_g.Generate(1000, gemstoneZero);
+                        item = gemstoneZero[0];
+                        if (item != null)
+                        {
+                            outThings.Add(item);
+                            collectiveMarketValue += item.MarketValue;
+                        }
                     }
                 }
-                //Luciferium
-                if (Rand.Chance(LuciferiumChance) && (totalMarketValue - collectiveMarketValue) > ThingDefOf.Luciferium.BaseMarketValue * LuciferiumCountRange.RandomInRange)
+                //Syrrium
+                if (Rand.Chance(LuciferiumChance) && (totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.TM_Syrrium.BaseMarketValue * LuciferiumCountRange.RandomInRange)
                 {
-                    Thing thing = ThingMaker.MakeThing(ThingDefOf.Luciferium, null);
+                    Thing thing = ThingMaker.MakeThing(TorannMagicDefOf.TM_Syrrium, null);
                     thing.stackCount = LuciferiumCountRange.RandomInRange;
                     outThings.Add(thing);
                     collectiveMarketValue += thing.MarketValue * thing.stackCount;
                 }
-                //Ambrosia
+                //Raw Magicyte
                 if (Rand.Chance(DrugChance))
                 {
-                    int randomInRange = ArtifactsCountRange.RandomInRange;
-                    for (int i = 0; i < randomInRange; i++)
-                    {
-                        //Thing thing = ThingMaker.MakeThing(, null);
-                        Thing thing = ThingMaker.MakeThing(ThingDef.Named("Ambrosia"), null);
-                        outThings.Add(thing);
-                    }
+
+                    Thing thing = ThingMaker.MakeThing(TorannMagicDefOf.RawMagicyte, null);
+                    thing.stackCount = RawMagicyteRange.RandomInRange;
+                    outThings.Add(thing);
+                    collectiveMarketValue += thing.MarketValue * thing.stackCount;
+
                 }
                 //Master Spells
                 if (Rand.Chance(MasterSpellChance) && (totalMarketValue - collectiveMarketValue) > TorannMagicDefOf.SpellOf_Blizzard.BaseMarketValue)

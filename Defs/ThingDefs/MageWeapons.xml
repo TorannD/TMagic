@@ -614,8 +614,6 @@ Damage Boost: +15%</description>
 		<damageDef>TM_BlazingPower</damageDef>
 		<damageAmountBase>6</damageAmountBase>
 		<speed>45</speed>
-		<explosionRadius>.8</explosionRadius>
-		<postExplosionSpawnChance>1</postExplosionSpawnChance>
 	</projectile>
   </ThingDef>
 

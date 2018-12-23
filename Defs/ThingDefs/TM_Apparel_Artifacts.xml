@@ -532,5 +532,52 @@
 	</comps>
   </ThingDef>
   
+  <!-- Craftable Artifacts -->
+  <!-- 
+  <ThingDef ParentName="TM_ArtifactBase">
+    <defName>TM_Artifact_BracersOfThePacifist</defName>
+    <label>Bracers of the Pacifist</label>    
+    <description>These bracer appears as little more than thin cloth wrapped in leather but its unremarkable appearance is belied by remarkable power. These item can only be worn by a pawn that rejects violence.</description>
+    <graphicData> 
+		<texPath>Items/artifact_bracers</texPath>
+		<graphicClass>Graphic_Single</graphicClass> 
+	</graphicData>
+	<statBases>
+		<Mass>.05</Mass>
+		<MaxHitPoints>200</MaxHitPoints>
+	</statBases>
+	<equippedStatOffsets>
+
+	</equippedStatOffsets>
+	<thingCategories>
+	  <li>Apparel</li>
+	</thingCategories>
+	<generateCommonality>0</generateCommonality>
+	<apparel>
+	 <tags>
+	   <li>Arcane</li>
+	 </tags>
+		<layers>
+			<li>TM_Artifact</li>
+		</layers>
+		<bodyPartGroups>
+			<li>Arms</li>
+		</bodyPartGroups>
+	</apparel>
+	<comps>
+	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		<hasEnchantment>true</hasEnchantment>
+		<hediff>TM_ArtifactArcaneRecoveryHD</hediff>
+		<hediffSeverity>1</hediffSeverity>
+		<maxMP>0.40</maxMP>
+		<maxMPTier>Major</maxMPTier>
+		<mpRegenRate>0.40</mpRegenRate>
+		<mpRegenRateTier>Major</mpRegenRateTier>
+		<arcaneRes>0.50</arcaneRes>
+		<arcaneResTier>Artifact</arcaneResTier>
+	  </li>
+	</comps>
+  </ThingDef> -->
+  
 
 </Defs>

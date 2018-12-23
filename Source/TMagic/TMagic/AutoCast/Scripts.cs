@@ -109,7 +109,8 @@ namespace TorannMagic.AutoCast
                 if (carriedThing != null)
                 {
                     carriedThing.DeSpawn();
-                    GenSpawn.Spawn(cT, targetCell, map);
+                    GenPlace.TryPlaceThing(cT, targetCell, map, ThingPlaceMode.Near);
+                    //GenSpawn.Spawn(cT, targetCell, map);
                 }
 
                 caster.GetComp<CompAbilityUserMight>().MightUserXP -= 36;
@@ -605,18 +606,20 @@ namespace TorannMagic.AutoCast
             if (casterComp.Mana.CurLevel >= casterComp.ActualManaCost(abilitydef) && ability.CooldownTicksLeft <= 0)
             {
                 Pawn caster = casterComp.Pawn;
-                LocalTargetInfo jobTarget = TM_Calc.FindNearbyMage(caster, (int)(abilitydef.MainVerb.range * .9f), false);
+                LocalTargetInfo jobTarget = TM_Calc.FindNearbyMage(caster, (int)(abilitydef.MainVerb.range * 1.5f), false);
                 float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
-                if (distanceToTarget < (abilitydef.MainVerb.range * .9f) && jobTarget != null && jobTarget.Thing != null && jobTarget.Thing is Pawn)
+                if (distanceToTarget < (abilitydef.MainVerb.range * 1.5f) && jobTarget != null && jobTarget.Thing != null && jobTarget.Thing is Pawn)
                 {
                     Pawn targetPawn = jobTarget.Thing as Pawn;
                     CompAbilityUserMagic targetPawnComp = targetPawn.GetComp<CompAbilityUserMagic>();
-
-                    if (targetPawn.IsColonist && targetPawnComp.MagicUserXP <= casterComp.MagicUserXP && caster.relations.OpinionOf(targetPawn) > -20)
+                    if (targetPawn.CurJobDef.joyKind != null || targetPawn.CurJobDef == JobDefOf.Wait_Wander || targetPawn.CurJobDef == JobDefOf.GotoWander)
                     {
-                        Job job = ability.GetJob(AbilityContext.AI, jobTarget);
-                        caster.jobs.TryTakeOrderedJob(job);
-                        success = true;
+                        if (targetPawn.IsColonist && targetPawnComp.MagicUserXP <= casterComp.MagicUserXP && caster.relations.OpinionOf(targetPawn) >= 0)
+                        {
+                            Job job = ability.GetJob(AbilityContext.AI, jobTarget);
+                            caster.jobs.TryTakeOrderedJob(job);
+                            success = true;
+                        }
                     }
                 }
             }
@@ -631,18 +634,20 @@ namespace TorannMagic.AutoCast
             if (casterComp.Stamina.CurLevel >= abilitydef.staminaCost && ability.CooldownTicksLeft <= 0)
             {
                 Pawn caster = casterComp.Pawn;
-                LocalTargetInfo jobTarget = TM_Calc.FindNearbyFighter(caster, (int)(abilitydef.MainVerb.range * .9f), false);
+                LocalTargetInfo jobTarget = TM_Calc.FindNearbyFighter(caster, (int)(abilitydef.MainVerb.range * 1.5f), false);
                 float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
-                if (distanceToTarget < (abilitydef.MainVerb.range * .9f) && jobTarget != null && jobTarget.Thing != null && jobTarget.Thing is Pawn)
+                if (distanceToTarget < (abilitydef.MainVerb.range * 1.5f) && jobTarget != null && jobTarget.Thing != null && jobTarget.Thing is Pawn)
                 {
                     Pawn targetPawn = jobTarget.Thing as Pawn;
                     CompAbilityUserMight targetPawnComp = targetPawn.GetComp<CompAbilityUserMight>();
-
-                    if (targetPawn.IsColonist && targetPawnComp.MightUserXP < casterComp.MightUserXP && caster.relations.OpinionOf(targetPawn) > -20)
+                    if (targetPawn.CurJobDef.joyKind != null || targetPawn.CurJobDef == JobDefOf.Wait_Wander || targetPawn.CurJobDef == JobDefOf.GotoWander)
                     {
-                        Job job = ability.GetJob(AbilityContext.AI, jobTarget);
-                        caster.jobs.TryTakeOrderedJob(job);
-                        success = true;
+                        if (targetPawn.IsColonist && targetPawnComp.MightUserXP < casterComp.MightUserXP && caster.relations.OpinionOf(targetPawn) >= 0)
+                        {
+                            Job job = ability.GetJob(AbilityContext.AI, jobTarget);
+                            caster.jobs.TryTakeOrderedJob(job);
+                            success = true;
+                        }
                     }
                 }
             }
@@ -746,7 +751,8 @@ namespace TorannMagic.AutoCast
                 if(carriedThing != null)
                 {
                     carriedThing.DeSpawn();
-                    GenSpawn.Spawn(cT, targetCell, map);
+                    GenPlace.TryPlaceThing(cT, targetCell, map, ThingPlaceMode.Near);
+                    //GenSpawn.Spawn(cT, targetCell, map);
                 }
                 if (caster.kindDef != PawnKindDef.Named("TM_Dire_Wolf"))
                 {
@@ -896,7 +902,8 @@ namespace TorannMagic.AutoCast
                 if (carriedThing != null)
                 {
                     carriedThing.DeSpawn();
-                    GenSpawn.Spawn(cT, targetCell, map);
+                    GenPlace.TryPlaceThing(cT, targetCell, map, ThingPlaceMode.Near);
+                    //GenSpawn.Spawn(cT, targetCell, map);
                 }
                 if (selectCaster)
                 {

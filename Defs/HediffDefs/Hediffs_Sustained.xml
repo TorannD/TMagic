@@ -181,7 +181,7 @@
 		<li>
 			<label>II</label>
 			<minSeverity>1</minSeverity>
-			  <restFallFactor>1.45</restFallFactor>
+			  <restFallFactor>1.35</restFallFactor>
 			  <capMods>
 				  <li>
 					<capacity>Moving</capacity>
@@ -200,7 +200,7 @@
 		<li>
 			<label>III</label>
 			<minSeverity>2</minSeverity>
-			  <restFallFactor>1.50</restFallFactor>
+			  <restFallFactor>1.3</restFallFactor>
 			  <capMods>
 				  <li>
 					<capacity>Moving</capacity>
@@ -219,7 +219,7 @@
 		<li>
 			<label>IV</label>
 			<minSeverity>3</minSeverity>
-			  <restFallFactor>1.55</restFallFactor>
+			  <restFallFactor>1.25</restFallFactor>
 			  <capMods>
 				  <li>
 					<capacity>Moving</capacity>

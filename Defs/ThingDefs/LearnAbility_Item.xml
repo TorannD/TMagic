@@ -18,7 +18,7 @@
 	  <Flammability>0.0</Flammability>
 	  <DeteriorationRate>0.0001</DeteriorationRate>
 	  <Beauty>10</Beauty>
-	  <SellPriceFactor>.6</SellPriceFactor>
+	  <SellPriceFactor>.4</SellPriceFactor>
 	</statBases>
 	<stackLimit>1</stackLimit>
 	<techLevel>Neolithic</techLevel>
@@ -3440,7 +3440,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>4000</MarketValue>
+      <MarketValue>2400</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
@@ -3489,7 +3489,7 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>5000</MarketValue>
+      <MarketValue>3000</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />

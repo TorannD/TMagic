@@ -240,8 +240,22 @@ namespace TorannMagic
             int mentorOpinion = this.pawn.relations.OpinionOf(student);
             int xpBase = Rand.Range(150,220) + studentOpinion + mentorOpinion;
             int xpGain = (int)Math.Abs((xpBase * ((mentorComp.MagicUserLevel - studentComp.MagicUserLevel) / 10)));
+            if(xpGain > 600)
+            {
+                xpGain = 600;
+            }
             MoteMaker.ThrowText(student.DrawPos, student.MapHeld, "XP +" + xpGain, -1f);
             studentComp.MagicUserXP += xpGain;
+            if(this.pawn.needs.joy != null)
+            {
+                this.pawn.needs.joy.GainJoy(.4f, TorannMagicDefOf.Gaming_Cerebral);
+                this.pawn.needs.joy.GainJoy(.2f, TorannMagicDefOf.Social);                
+            }
+            if(student.needs.joy != null)
+            {
+                student.needs.joy.GainJoy(.4f, TorannMagicDefOf.Gaming_Cerebral);
+                student.needs.joy.GainJoy(.2f, TorannMagicDefOf.Social);
+            }
         }
 
         private void AssignMightXP(Pawn student)
@@ -253,9 +267,22 @@ namespace TorannMagic
             int mentorOpinion = this.pawn.relations.OpinionOf(student);
             int xpBase = Rand.Range(150, 220) + studentOpinion + mentorOpinion;
             int xpGain = (int)Math.Abs((xpBase * ((mentorComp.MightUserLevel - studentComp.MightUserLevel) / 10)));
+            if (xpGain > 600)
+            {
+                xpGain = 600;
+            }
             MoteMaker.ThrowText(student.DrawPos, student.MapHeld, "XP +" + xpGain, -1f);
             studentComp.MightUserXP += xpGain;
-
+            if (this.pawn.needs.joy != null)
+            {
+                this.pawn.needs.joy.GainJoy(.4f, TorannMagicDefOf.Gaming_Dexterity);
+                this.pawn.needs.joy.GainJoy(.2f, TorannMagicDefOf.Social);
+            }
+            if (student.needs.joy != null)
+            {
+                student.needs.joy.GainJoy(.4f, TorannMagicDefOf.Gaming_Dexterity);
+                student.needs.joy.GainJoy(.2f, TorannMagicDefOf.Social);
+            }
         }
 
         public Vector3 GetVector(IntVec3 center, IntVec3 objectPos)

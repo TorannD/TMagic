@@ -51,11 +51,6 @@ Extremely difficult and taxing to create, only a talented and knowledgeable mage
 	<tradeTags>
 	  <li>RawArcane</li>
     </tradeTags>
-	<comps>
-      <li>
-        <compClass>CompColorable</compClass>
-      </li>
-    </comps>
   </ThingDef>
 
 </Defs>

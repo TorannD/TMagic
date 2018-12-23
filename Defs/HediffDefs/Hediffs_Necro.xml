@@ -26,6 +26,16 @@
       <li>
         <label>I</label>
         <minSeverity>0.001</minSeverity>
+		<capMods>
+		  <li>
+            <capacity>Talking</capacity>
+            <setMax>0</setMax>
+          </li>
+          <li>
+            <capacity>Hearing</capacity>
+            <setMax>0</setMax>
+          </li>
+        </capMods>
       </li>
       <li>
         <label>II</label>
@@ -38,6 +48,14 @@
 	      <li>
             <capacity>Manipulation</capacity>
             <offset>0.10</offset>
+          </li>
+		  <li>
+            <capacity>Talking</capacity>
+            <setMax>0</setMax>
+          </li>
+          <li>
+            <capacity>Hearing</capacity>
+            <setMax>0</setMax>
           </li>
         </capMods>
 		<statOffsets>
@@ -56,6 +74,14 @@
             <capacity>Manipulation</capacity>
             <offset>0.15</offset>
           </li>
+		  <li>
+            <capacity>Talking</capacity>
+            <setMax>0</setMax>
+          </li>
+          <li>
+            <capacity>Hearing</capacity>
+            <setMax>0</setMax>
+          </li>
         </capMods>
 		<statOffsets>
 			<WorkSpeedGlobal>0.15</WorkSpeedGlobal>
@@ -72,6 +98,14 @@
 	      <li>
             <capacity>Manipulation</capacity>
             <offset>0.20</offset>
+          </li>
+		  <li>
+            <capacity>Talking</capacity>
+            <setMax>0</setMax>
+          </li>
+          <li>
+            <capacity>Hearing</capacity>
+            <setMax>0</setMax>
           </li>
         </capMods>
 		<statOffsets>

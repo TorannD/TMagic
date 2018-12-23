@@ -1821,14 +1821,14 @@ namespace TorannMagic
             {
                 foreach (Hediff current in list)
                 {
-                    if (current.def.defName == "TM_HediffInvulnerable")
+                    if (current.def == TorannMagicDefOf.TM_HediffInvulnerable)
                     {
                         absorbed = true;
                         MoteMaker.MakeStaticMote(AbilityUser.Position, AbilityUser.Map, ThingDefOf.Mote_ExplosionFlash, 10);
                         dinfo.SetAmount(0);
                         return;
                     }
-                    if(current.def.defName == "TM_PsionicHD")
+                    if(current.def ==  TorannMagicDefOf.TM_PsionicHD)
                     {
                         if(dinfo.Def == TMDamageDefOf.DamageDefOf.TM_PsionicInjury)
                         {
@@ -1837,12 +1837,12 @@ namespace TorannMagic
                             return;
                         }
                     }
-                    if (current.def.defName == "TM_ReversalHD")
+                    if (current.def == TorannMagicDefOf.TM_ReversalHD)
                     {
                         Pawn instigator = dinfo.Instigator as Pawn;
                         if (instigator != null)
                         {
-                            if (instigator.equipment.PrimaryEq != null)
+                            if (instigator.equipment != null && instigator.equipment.PrimaryEq != null)
                             {
                                 if (instigator.equipment.PrimaryEq.PrimaryVerb != null)
                                 {
@@ -1861,9 +1861,25 @@ namespace TorannMagic
                                     return;
                                 }
                             }
+                            else if(instigator.RaceProps.Animal && dinfo.Amount != 0 && (instigator.Position - this.Pawn.Position).LengthHorizontal <= 2)
+                            {
+                                absorbed = true;
+                                Vector3 drawPos = AbilityUser.DrawPos;
+                                drawPos.x += ((instigator.DrawPos.x - drawPos.x) / 20f) + Rand.Range(-.2f, .2f);
+                                drawPos.z += ((instigator.DrawPos.z - drawPos.z) / 20f) + Rand.Range(-.2f, .2f);
+                                TM_MoteMaker.ThrowSparkFlashMote(drawPos, this.Pawn.Map, 2f);
+                                DoMeleeReversal(dinfo);
+                                dinfo.SetAmount(0);
+                                MightPowerSkill ver = this.MightData.MightPowerSkill_Reversal.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Reversal_ver");
+                                if (ver.level > 0)
+                                {
+                                    SiphonReversal(ver.level);
+                                }
+                                return;
+                            }
                         }
                     }
-                    if (current.def.defName == "TM_HediffEnchantment_phantomShift" && Rand.Chance(.2f))
+                    if (current.def == TorannMagicDefOf.TM_HediffEnchantment_phantomShift && Rand.Chance(.2f))
                     {
                         absorbed = true;
                         MoteMaker.MakeStaticMote(AbilityUser.Position, AbilityUser.Map, ThingDefOf.Mote_ExplosionFlash, 8);
@@ -1873,7 +1889,7 @@ namespace TorannMagic
                     }
                     if (arcaneRes != 0 && resMitigationDelay < this.age)
                     {
-                        if (current.def.defName == "TM_HediffEnchantment_arcaneRes")
+                        if (current.def == TorannMagicDefOf.TM_HediffEnchantment_arcaneRes)
                         {
                             if (dinfo.Def.defName.Contains("TM_") || dinfo.Def.defName == "FrostRay" || dinfo.Def.defName == "Snowball" || dinfo.Def.defName == "Iceshard" || dinfo.Def.defName == "Firebolt")
                             {
@@ -1888,7 +1904,7 @@ namespace TorannMagic
                     }
                     if (fortitudeMitigationDelay < this.age )
                     {
-                        if (current.def.defName == "TM_HediffFortitude")
+                        if (current.def == TorannMagicDefOf.TM_HediffFortitude)
                         {
                             MightPowerSkill pwr = this.MightData.MightPowerSkill_Fortitude.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Fortitude_pwr");
                             MightPowerSkill ver = this.MightData.MightPowerSkill_Fortitude.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Fortitude_ver");
@@ -1926,6 +1942,23 @@ namespace TorannMagic
             base.PostPreApplyDamage(dinfo, out absorbed);
         }
 
+        public void DoMeleeReversal(DamageInfo dinfo)
+        {
+            Thing instigator = dinfo.Instigator;
+
+            if (instigator is Pawn)
+            {
+                Pawn meleePawn = instigator as Pawn;
+                if (dinfo.Weapon.IsMeleeWeapon || dinfo.WeaponBodyPartGroup != null)
+                {
+                    DamageInfo dinfo2 = new DamageInfo(dinfo.Def, dinfo.Amount, dinfo.ArmorPenetrationInt, dinfo.Angle, this.Pawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown, meleePawn);
+                    meleePawn.TakeDamage(dinfo2);
+                }
+            }
+
+            //GiveReversalJob(dinfo);            
+        }
+
         public void DoReversal(DamageInfo dinfo)
         {
             Thing instigator = dinfo.Instigator;
@@ -1936,6 +1969,10 @@ namespace TorannMagic
                 if (!dinfo.Weapon.IsMeleeWeapon && dinfo.WeaponBodyPartGroup == null)
                 {
                     TM_CopyAndLaunchProjectile.CopyAndLaunchThing(shooterPawn.equipment.PrimaryEq.PrimaryVerb.verbProps.defaultProjectile, this.Pawn, instigator, shooterPawn, ProjectileHitFlags.IntendedTarget, null);
+                }
+                else if ((dinfo.Weapon != null && dinfo.Weapon.IsMeleeWeapon) || dinfo.WeaponBodyPartGroup != null)
+                {
+                    DoMeleeReversal(dinfo);
                 }
             }
             
@@ -2334,9 +2371,12 @@ namespace TorannMagic
                         MightPower mightPower = this.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_TeachMight);
                         if (mightPower.autocast)
                         {
-                            PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_TeachMight);
-                            AutoCast.TeachMight.Evaluate(this, TorannMagicDefOf.TM_TeachMight, ability, mightPower, out castSuccess);
-                            if (castSuccess) goto AutoCastExit;
+                            if (this.Pawn.CurJobDef.joyKind != null || this.Pawn.CurJobDef == JobDefOf.Wait_Wander || Pawn.CurJobDef == JobDefOf.GotoWander)
+                            {
+                                PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_TeachMight);
+                                AutoCast.TeachMight.Evaluate(this, TorannMagicDefOf.TM_TeachMight, ability, mightPower, out castSuccess);
+                                if (castSuccess) goto AutoCastExit;
+                            }
                         }
                     }
                 }

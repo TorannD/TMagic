@@ -1061,9 +1061,9 @@ Level 3: +20% movement</TM_Disguise_pwr_desc>
 <TM_Mimic_eff_desc>Reduces the stamina cost required to Mimic another pawn by 8% per skill level.</TM_Mimic_eff_desc>
 <TM_Mimic_ver_desc>This versatility level is applied to any ability the faceless mimics.</TM_Mimic_ver_desc>
 <TM_Transpose_eff_desc>Decreases stamina cost of Transpose by 8% per level of base stamina cost.</TM_Transpose_eff_desc>
-<TM_Transpose_ver_desc>Level 1: the faceless is no longer disoriented following a transposition.
-Level 2: friendly targets are no longer disoriented following a transposition.
-Level 3: transpose no longer requires the target to be visible to the faceless.</TM_Transpose_ver_desc>
+<TM_Transpose_ver_desc>Level 1: the faceless is no longer disoriented following a transposition. The faceless gains 3 seconds of reversal.
+Level 2: friendly targets are no longer disoriented following a transposition. The faceless gains 4 seconds of reversal.
+Level 3: transpose no longer requires the target to be visible to the faceless. The faceless gains 5 seconds of reversal.</TM_Transpose_ver_desc>
 <TM_Reversal_eff_desc>Decreases stamina cost of Reversal by 10% per skill level.</TM_Reversal_eff_desc>
 <TM_Reversal_pwr_desc>Increases the duration of Reversal by 2s per skill level. Reversal lasts 8s by default.</TM_Reversal_pwr_desc>
 <TM_Reversal_ver_desc>Reversal siphons off a portion of kinetic energy to restore the stamina and life of the user.</TM_Reversal_ver_desc>

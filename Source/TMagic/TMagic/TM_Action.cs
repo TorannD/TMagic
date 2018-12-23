@@ -421,6 +421,14 @@ namespace TorannMagic
             victim.TakeDamage(dinfo);
         }
 
+        public static void DamageEntities(Thing victim, BodyPartRecord hitPart, float amt, float armorPenetration, DamageDef type, Thing instigator)
+        {
+            DamageInfo dinfo;
+            dinfo = new DamageInfo(type, amt, armorPenetration, (float)-1, instigator, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
+            dinfo.SetAllowDamagePropagation(false);
+            victim.TakeDamage(dinfo);
+        }
+
         public static void DamageUndead(Pawn undead, float amt, Thing instigator)
         {
             DamageInfo dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Holy, Rand.Range(amt*.8f, amt*1.2f), 1, -1, instigator);

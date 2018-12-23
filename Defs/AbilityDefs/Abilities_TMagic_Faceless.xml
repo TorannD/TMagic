@@ -137,10 +137,10 @@ Disguise will not fool any pawn that already sees the faceless as a threat.</des
         <defName>TM_Transpose</defName>
         <label>Transpose</label>
         <uiIconPath>UI/transpose</uiIconPath>
-        <description>Swap places with a target pawn. The faceless and the target will be disoriented following transposition.
-Cast time: 2s
+        <description>Swap places with a target pawn. The faceless and the target will be disoriented following transposition. The faceless will gain reversal for a short period.
+Cast time: .8s
 Range: 40
-Cooldown: 60</description>
+Cooldown: 15</description>
         <staminaCost>0.20</staminaCost>		
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Transpose</verbClass>
@@ -153,8 +153,8 @@ Cooldown: 60</description>
 				<canTargetLocations>false</canTargetLocations>
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
-            <warmupTime>2.0</warmupTime>
-            <SecondsToRecharge>60</SecondsToRecharge>
+            <warmupTime>.8</warmupTime>
+            <SecondsToRecharge>15</SecondsToRecharge>
             <range>40</range>
 			<isViolent>false</isViolent>
 			<AlwaysHits>true</AlwaysHits>
@@ -170,10 +170,10 @@ Cooldown: 60</description>
         <defName>TM_Transpose_I</defName>
         <label>Transpose I</label>
         <uiIconPath>UI/transpose</uiIconPath>
-        <description>Swap places with a target pawn. The faceless and the target will be disoriented following transposition.
-Cast time: 1.5s
+        <description>Swap places with a target pawn. The faceless and the target will be disoriented following transposition. The faceless will gain reversal for a short period.
+Cast time: .6s
 Range: 44
-Cooldown: 55</description>
+Cooldown: 13</description>
         <staminaCost>0.20</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Transpose</verbClass>
@@ -186,8 +186,8 @@ Cooldown: 55</description>
 				<canTargetLocations>false</canTargetLocations>
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
-            <warmupTime>1.5</warmupTime>
-            <SecondsToRecharge>55</SecondsToRecharge>
+            <warmupTime>.6</warmupTime>
+            <SecondsToRecharge>13</SecondsToRecharge>
             <range>44</range>
 			<isViolent>false</isViolent>
 			<AlwaysHits>true</AlwaysHits>
@@ -203,10 +203,10 @@ Cooldown: 55</description>
         <defName>TM_Transpose_II</defName>
         <label>Transpose II</label>
         <uiIconPath>UI/transpose</uiIconPath>
-        <description>Swap places with a target pawn. The faceless and the target will be disoriented following transposition.
-Cast time: 1.0s
+        <description>Swap places with a target pawn. The faceless and the target will be disoriented following transposition. The faceless will gain reversal for a short period.
+Cast time: .4s
 Range: 47
-Cooldown: 50</description>
+Cooldown: 11</description>
         <staminaCost>0.20</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Transpose</verbClass>
@@ -219,8 +219,8 @@ Cooldown: 50</description>
 				<canTargetLocations>false</canTargetLocations>
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
-            <warmupTime>1.0</warmupTime>
-            <SecondsToRecharge>50</SecondsToRecharge>
+            <warmupTime>.4</warmupTime>
+            <SecondsToRecharge>11</SecondsToRecharge>
             <range>47</range>
 			<isViolent>false</isViolent>
 			<AlwaysHits>true</AlwaysHits>
@@ -236,10 +236,10 @@ Cooldown: 50</description>
         <defName>TM_Transpose_III</defName>
         <label>Transpose III</label>
         <uiIconPath>UI/transpose</uiIconPath>
-        <description>Swap places with a target pawn. The faceless and the target will be disoriented following transposition.
-Cast time: 0.5s
+        <description>Swap places with a target pawn. The faceless and the target will be disoriented following transposition. The faceless will gain reversal for a short period.
+Cast time: .2s
 Range: 50
-Cooldown: 45</description>
+Cooldown: 9</description>
         <staminaCost>0.20</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Transpose</verbClass>
@@ -252,11 +252,12 @@ Cooldown: 45</description>
 				<canTargetLocations>false</canTargetLocations>
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
-            <warmupTime>0.5</warmupTime>
-            <SecondsToRecharge>45</SecondsToRecharge>
+            <warmupTime>0.2</warmupTime>
+            <SecondsToRecharge>9</SecondsToRecharge>
             <range>50</range>
 			<isViolent>false</isViolent>
 			<AlwaysHits>true</AlwaysHits>
+			<canCastInMelee>true</canCastInMelee>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
             <soundCast>TM_AirWoosh</soundCast>

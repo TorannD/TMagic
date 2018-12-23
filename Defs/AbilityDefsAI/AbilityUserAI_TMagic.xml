@@ -2121,7 +2121,7 @@ Document made by ChJees
 								</li>
 							</subNodes>
 						</li>
-						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+<!-- 						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
 							<minHealth>.9</minHealth>
 							<subNodes>
 								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
@@ -2130,13 +2130,13 @@ Document made by ChJees
 									</tags>
 								</li>						
 							</subNodes>
-						</li>
+						</li> -->
 					</subNodes>
 				</li>
 				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
 					<invert>true</invert>
 					<subNodes>
-						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+<!-- 						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
 							<minHealth>.95</minHealth>
 							<subNodes>
 								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
@@ -2145,7 +2145,7 @@ Document made by ChJees
 									</tags>
 								</li>
 							</subNodes>
-						</li>
+						</li> -->
 						<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
 							<tags>
 								<li>BloodShield</li>

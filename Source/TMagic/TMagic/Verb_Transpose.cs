@@ -82,6 +82,7 @@ namespace TorannMagic
                             {
                                 HealthUtility.AdjustSeverity(p, HediffDef.Named("TM_DisorientedVomit"), 1f);
                             }
+                            HealthUtility.AdjustSeverity(p, TorannMagicDefOf.TM_ReversalHD, 2f + (ver.level));
                             if (targetPawn.HostileTo(this.CasterPawn) && targetPawn.needs.food != null)
                             {
                                 if (Rand.Chance(TM_Calc.GetSpellSuccessChance(this.CasterPawn, targetPawn, true)))
@@ -122,7 +123,7 @@ namespace TorannMagic
                             GenSpawn.Spawn(targetPawn, targetCell, map);
                         }
                     }
-                    this.Ability.PostAbilityAttempt();
+                    //this.Ability.PostAbilityAttempt();
 
                     //this.CasterPawn.SetPositionDirect(this.currentTarget.Cell);
                     //base.CasterPawn.SetPositionDirect(this.currentTarget.Cell);

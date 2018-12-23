@@ -174,7 +174,7 @@ Firing Delay: 2.3s
 Recharge 43s</description>
     <staminaCost>0.30</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
-        <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+        <verbClass>TorannMagic.Verb_SniperShot</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
@@ -211,7 +211,7 @@ Firing Delay: 2.1s
 Recharge 41s</description>
     <staminaCost>0.30</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
-        <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+        <verbClass>TorannMagic.Verb_SniperShot</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
@@ -248,7 +248,7 @@ Firing Delay: 2s
 Recharge 40s</description>
     <staminaCost>0.30</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
-        <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+        <verbClass>TorannMagic.Verb_SniperShot</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>

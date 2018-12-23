@@ -538,7 +538,7 @@
       <li>
         <label>I</label>
         <minSeverity>0.1</minSeverity>
-		<vomitMtbDays>0.001</vomitMtbDays>
+		<vomitMtbDays>0.004</vomitMtbDays>
         <capMods>
           <li>
             <capacity>Sight</capacity>

@@ -78,6 +78,10 @@ namespace TorannMagic
                         //Log.Message("current bleed rate is " + this.Pawn.health.hediffSet.BleedRateTotal);
                         severityAdjustment += this.Pawn.health.hediffSet.BleedRateTotal * (1 + (.1f *this.bloodVer));
                     }
+                    else if(!this.Pawn.IsColonist)
+                    {
+                        severityAdjustment += 5;
+                    }
                     else
                     {
                         severityAdjustment -= Rand.Range(.04f, .1f);

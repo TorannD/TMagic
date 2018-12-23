@@ -1,6 +1,7 @@
 ﻿using RimWorld;
 using Verse;
 using System.Collections.Generic;
+using Harmony;
 
 namespace TorannMagic
 {
@@ -72,6 +73,10 @@ namespace TorannMagic
                         TM_MoteMaker.ThrowTwinkle(this.Pawn.DrawPos, this.Pawn.Map, Rand.Range(.4f, .7f), Rand.Range(100, 500), Rand.Range(.4f, 1f), Rand.Range(.05f, .2f), .05f, Rand.Range(.4f, .85f));
                     }
                     tmpDmgItems++;
+                }
+                if (gear[i].WornByCorpse && Rand.Chance(.1f))
+                {
+                    Traverse.Create(root: gear[i]).Field(name: "wornByCorpseInt").SetValue(false);
                 }
             }
             Thing weapon = this.Pawn.equipment.Primary;

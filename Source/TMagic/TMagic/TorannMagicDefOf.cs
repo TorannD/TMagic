@@ -132,6 +132,7 @@ namespace TorannMagic
         public static IncidentDef ArcaneEnemyRaid;
         
         public static TraitDef Gifted;
+        public static TraitDef TM_OKWithDeath;
         
 		//Fire
 		public static TraitDef InnerFire;
@@ -565,6 +566,7 @@ namespace TorannMagic
         public static HediffDef TM_DisguiseHD_III;
         public static TMAbilityDef TM_Mimic;
         public static TMAbilityDef TM_Reversal;
+        public static HediffDef TM_ReversalHD;
         public static TMAbilityDef TM_Transpose;
         public static TMAbilityDef TM_Transpose_I;
         public static TMAbilityDef TM_Transpose_II;
@@ -642,8 +644,6 @@ namespace TorannMagic
         public static TMAbilityDef TM_SpellMending;
         public static TMAbilityDef TM_TeachMagic;
         public static TMAbilityDef TM_TeachMight;
-        
-        public static HediffDef TM_HediffEnchantment_arcaneSpectre;        
 
         public static HediffDef TM_Sight;
         public static HediffDef TM_Breathing;
@@ -714,6 +714,17 @@ namespace TorannMagic
         //Apparel layers
         public static ApparelLayerDef TM_Cloak;
 
+        //Enchantments
+        public static HediffDef TM_HediffEnchantment_maxMP;
+        public static HediffDef TM_HediffEnchantment_coolDown;
+        public static HediffDef TM_HediffEnchantment_mpCost;
+        public static HediffDef TM_HediffEnchantment_mpRegenRate;
+        public static HediffDef TM_HediffEnchantment_xpGain;
+        public static HediffDef TM_HediffEnchantment_arcaneRes;
+        public static HediffDef TM_HediffEnchantment_arcaneDmg;
+        public static HediffDef TM_HediffEnchantment_arcaneSpectre;
+        public static HediffDef TM_HediffEnchantment_phantomShift;
+
         //Jobs
         public static JobDef TMCastAbilityVerb;
         public static JobDef TMCastAbilitySelf;
@@ -727,8 +738,9 @@ namespace TorannMagic
         public static JobDef JobDriver_PsionicBarrier;
         public static JobDef JobDriver_TM_Teach;
 
-        //Magicyte
+        //Things
         public static ThingDef RawMagicyte;
+        public static ThingDef TM_Syrrium;
 
         //Sounds
         public static SoundDef ItemEnchanted;
@@ -763,6 +775,11 @@ namespace TorannMagic
         public static MentalStateDef TM_WanderPsychotic;
         public static MentalStateDef TM_WanderSad;
         public static MentalStateDef TM_WanderConfused;
+
+        //Joy kinds
+        public static JoyKindDef Social;
+        public static JoyKindDef Gaming_Dexterity;
+        public static JoyKindDef Gaming_Cerebral;
 
         //Magic Work Defs
         public static PawnCapacityDef MagicManipulation;

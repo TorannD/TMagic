@@ -48,7 +48,7 @@ namespace TorannMagic
                 {
                     if(studentCompMagic.IsMagicUser)
                     {
-                        if (mentor.relations.OpinionOf(student) > -20)
+                        if (mentor.relations.OpinionOf(student) >= 0)
                         {
                             Job job = new Job(TorannMagicDefOf.JobDriver_TM_Teach, student);
                             student.jobs.EndCurrentJob(JobCondition.InterruptForced);
@@ -74,7 +74,7 @@ namespace TorannMagic
                 {
                     if(studentCompMight.IsMightUser)
                     {
-                        if(mentor.relations.OpinionOf(student) > -20)
+                        if(mentor.relations.OpinionOf(student) >= 0)
                         {
                             Job job = new Job(TorannMagicDefOf.JobDriver_TM_Teach, student);
                             student.jobs.EndCurrentJob(JobCondition.InterruptForced);

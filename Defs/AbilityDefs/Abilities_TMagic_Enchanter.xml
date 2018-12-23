@@ -84,7 +84,7 @@ Using this ability while the enchantment is active will dispel the enchantment. 
 This ability only works on raw resources and bricks by default, but can be upgraded to transmutate other material. Material will never be converted into brick, but brick can be converted into other material.
 
 Check skill descriptions for additional details.</description>
-        <manaCost>0.50</manaCost>
+        <manaCost>0.40</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Transmutate</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -95,7 +95,7 @@ Check skill descriptions for additional details.</description>
             <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_Transmutate</abilityDef>
             <warmupTime>5</warmupTime>
-            <SecondsToRecharge>600</SecondsToRecharge>
+            <SecondsToRecharge>5</SecondsToRecharge>
             <range>20</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Vibration</soundCast>
