@@ -3166,19 +3166,32 @@ namespace TorannMagic
                 CompAbilityUserMagic comp = pawn.TryGetComp<CompAbilityUserMagic>();
                 if(comp != null && comp.IsMagicUser && pawn.story.traits != null && !pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) && comp.ArcaneForging)
                 {
-                    int mageLevel = Rand.Range(0, Mathf.RoundToInt(comp.MagicUserLevel / 5));
-                    __result = (QualityCategory)Mathf.Min((int)__result + mageLevel, 6);
-                    SoundInfo info = SoundInfo.InMap(new TargetInfo(pawn.Position, pawn.Map, false), MaintenanceType.None);
-                    info.pitchFactor = .6f;
-                    info.volumeFactor = 1.6f;
-                    TorannMagicDefOf.TM_Gong.PlayOneShot(info);
-
-                    List<IntVec3> cellList = GenRadial.RadialCellsAround(pawn.Position, (int)__result, false).ToList<IntVec3>();
-                    for (int i = 0; i < cellList.Count; i++)
+                    List<IntVec3> cellList = GenRadial.RadialCellsAround(pawn.Position, 2, true).ToList();
+                    bool forgeNearby = false;
+                    for(int i = 0; i < cellList.Count; i++)
                     {
-                        IntVec3 curCell = cellList[i];
-                        Vector3 angle = TM_Calc.GetVector(pawn.Position, curCell);
-                        TM_MoteMaker.ThrowArcaneWaveMote(curCell.ToVector3(), pawn.Map, .4f * (curCell - pawn.Position).LengthHorizontal, .1f, .05f, .1f, 0, 3, (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat(), (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat());
+                        Building bldg = cellList[i].GetFirstBuilding(pawn.Map);
+                        if(bldg != null && bldg.def == TorannMagicDefOf.TableArcaneForge)
+                        {
+                            forgeNearby = true;
+                        }
+                    }
+                    if (forgeNearby)
+                    {
+                        int mageLevel = Rand.Range(0, Mathf.RoundToInt(comp.MagicUserLevel / 5));
+                        __result = (QualityCategory)Mathf.Min((int)__result + mageLevel, 6);
+                        SoundInfo info = SoundInfo.InMap(new TargetInfo(pawn.Position, pawn.Map, false), MaintenanceType.None);
+                        info.pitchFactor = .6f;
+                        info.volumeFactor = 1.6f;
+                        TorannMagicDefOf.TM_Gong.PlayOneShot(info);
+                        cellList.Clear();
+                        cellList = GenRadial.RadialCellsAround(pawn.Position, (int)__result, false).ToList<IntVec3>();
+                        for (int i = 0; i < cellList.Count; i++)
+                        {
+                            IntVec3 curCell = cellList[i];
+                            Vector3 angle = TM_Calc.GetVector(pawn.Position, curCell);
+                            TM_MoteMaker.ThrowArcaneWaveMote(curCell.ToVector3(), pawn.Map, .4f * (curCell - pawn.Position).LengthHorizontal, .1f, .05f, .1f, 0, 3, (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat(), (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat());
+                        }
                     }
                 }
             }

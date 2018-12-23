@@ -787,6 +787,7 @@ namespace TorannMagic
 
         //Forge
         public static AbilityDef Forge_Verb;
+        public static ThingDef TableArcaneForge;
         public static RecipeDef ArcaneForge_Replication;
         public static RecipeDef ArcaneForge_Replication_Restore;
     }
