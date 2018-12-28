@@ -43,6 +43,8 @@ namespace TorannMagic
                 postfix: null, transpiler: null);
             harmonyInstance.Patch(original: AccessTools.Method(type: typeof(AutoUndrafter), name: "AutoUndraftTick"), prefix: new HarmonyMethod(type: patchType, name: nameof(AutoUndrafter_Undead_Prefix)),
                 postfix: null, transpiler: null);
+            harmonyInstance.Patch(original: AccessTools.Method(type: typeof(PawnUtility), name: "IsTravelingInTransportPodWorldObject"),
+                prefix: new HarmonyMethod(type: patchType, name: nameof(IsTravelingInTeleportPod_Prefix)), postfix: null);
 
             //harmonyInstance.Patch(AccessTools.Method(typeof(Thing), "get_Suspended", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_Suspended_Polymorphed", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(Pawn), "get_IsColonist", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_IsColonist_Polymorphed", null), null);
@@ -2614,19 +2616,21 @@ namespace TorannMagic
             }
         }
 
-        [HarmonyPatch(typeof(PawnUtility), "IsTravelingInTransportPodWorldObject", null), HarmonyPriority(1000)]
-        public class IsTravelingInTransportPodWorldObject_ThirdAgeOverwrite_Patch
+        //[HarmonyPatch(typeof(PawnUtility), "IsTravelingInTransportPodWorldObject", null), HarmonyPriority(1000)]
+        //[HarmonyBefore(new string[] { "TheThirdAge.RemoveModernStuffHarmony.IsTravelingInTransportPodWorldObject", "rimworld.PawnUtility.IsTravelingInTransportPodWorldObject" })]        
+        //[HarmonyPatch(typeof(PawnUtility), "IsTravelingInTransportPodWorldObject", null)]
+
+        [HarmonyPriority(2000)]
+        public static bool IsTravelingInTeleportPod_Prefix(Pawn pawn, ref bool __result)
         {
-            public static bool Prefix(Pawn pawn, ref bool __result)
+            if(pawn.IsColonist)
             {
-                if(pawn.IsColonist)
-                {
-                    __result = pawn.IsWorldPawn() && ThingOwnerUtility.AnyParentIs<ActiveDropPodInfo>(pawn);
-                    return false;
-                }
-                return true;
+                __result = pawn.IsWorldPawn() && ThingOwnerUtility.AnyParentIs<ActiveDropPodInfo>(pawn);
+                return false;
             }
+            return true;
         }
+        
 
         [HarmonyPatch(typeof(PawnAbility), "PostAbilityAttempt", null)]
         public class PawnAbility_Patch

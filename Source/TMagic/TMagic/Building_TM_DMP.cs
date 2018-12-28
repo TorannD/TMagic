@@ -155,7 +155,7 @@ namespace TorannMagic
                 for(int i = 0; i < mapPawns.Count; i++)
                 {
                     pawn = mapPawns[i];
-                    if(!pawn.DestroyedOrNull() && !pawn.Dead && !pawn.Downed && pawn.RaceProps.Humanlike && pawn.Faction != null && pawn.Faction == this.Faction)
+                    if(!pawn.DestroyedOrNull() && pawn.Spawned && !pawn.Dead && !pawn.Downed && pawn.RaceProps != null && !pawn.AnimalOrWildMan() && pawn.RaceProps.Humanlike && pawn.Faction != null && pawn.Faction == this.Faction)
                     {
                         CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
                         float rangeToTarget = (pawn.Position - this.Position).LengthHorizontal;

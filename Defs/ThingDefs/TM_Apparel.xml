@@ -62,7 +62,7 @@
 		</thingCategories>
 	</ThingDef>
   
-  <ThingDef Name="TMSmithedApparelBase" ParentName="ApparelBase" Abstract="True">
+  <ThingDef Name="TMSmithedApparelBase" ParentName="TM_ApparelBase" Abstract="True">
     <recipeMaker>
       <recipeUsers>
         <li>ElectricSmithy</li>
