@@ -55,7 +55,7 @@ namespace TorannMagic
             if (friendlyTarget)
             {
                 Pawn pawn = this.currentTarget.Thing as Pawn;
-                if (pawn != null && pawn.needs != null && pawn.needs.mood.thoughts != null)
+                if (pawn != null && pawn.RaceProps.Humanlike && pawn.needs != null && pawn.needs.mood.thoughts != null)
                 {
                     if (Rand.Chance(TM_Calc.GetSpellSuccessChance(this.CasterPawn, pawn, true)))
                     {

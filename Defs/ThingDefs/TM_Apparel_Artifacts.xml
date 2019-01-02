@@ -52,9 +52,6 @@
       <effectWorking>Smith</effectWorking>
       <soundWorking>Recipe_Smith</soundWorking>
       <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
-	  <researchPrerequisite>
-		<li>TM_ArcaneArtifacts</li>
-	  </researchPrerequisite>
     </recipeMaker>
 	<tradeTags>
 	  <li>Arcane</li>
@@ -971,6 +968,9 @@ The Ring of Malice's power depends on the fame of its bearer and will grow with 
 	  <skillRequirements>
 			<Intellectual>8</Intellectual>
 	  </skillRequirements>
+	  <researchPrerequisite>
+		<li>TM_ArcaneArtifacts</li>
+	  </researchPrerequisite>
     </recipeMaker>
 	<costList>
 	  <RawMagicyte>250</RawMagicyte>
