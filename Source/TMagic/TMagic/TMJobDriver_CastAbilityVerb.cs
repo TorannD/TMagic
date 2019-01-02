@@ -95,18 +95,25 @@ namespace TorannMagic
                 {
                     if (Find.TickManager.TicksGame % 12 == 0)
                     {
-                        TM_MoteMaker.ThrowCastingMote(pawn.DrawPos, pawn.Map, Rand.Range(1.2f, 2f));
+                        if (verb.Ability.Def == TorannMagicDefOf.TM_Artifact_TraitThief || verb.Ability.Def == TorannMagicDefOf.TM_Artifact_TraitInfuse)
+                        {
+                            float direction = Rand.Range(0, 360);
+                            TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Psi_Arcane"), pawn.DrawPos, pawn.Map, Rand.Range(.1f, .4f), 0.2f, .02f, .1f, 0, Rand.Range(8, 10), direction, direction);
+                        }
+                        else
+                        {
+                            TM_MoteMaker.ThrowCastingMote(pawn.DrawPos, pawn.Map, Rand.Range(1.2f, 2f));
+                        }
                     }
                     
                     this.duration--;
                 };
                 combatToil.AddFinishAction(delegate
                 {
-                    if (this.duration <= 5)
-                    {                        
+                    if (this.duration <= 5 && !this.pawn.DestroyedOrNull() && !this.pawn.Dead && !this.pawn.Downed)
+                    {
                         verb.Ability.PostAbilityAttempt();                        
-                    }
-                    
+                    }                    
                 });
                 //if (combatToil.actor.CurJob != this.job)
                 //{
@@ -204,11 +211,11 @@ namespace TorannMagic
                                 this.duration--;
                             };
                             toil.AddFinishAction(delegate
-                            {
-                                if (this.duration <= 5)
+                            {                                
+                                if (this.duration <= 5 && !this.pawn.DestroyedOrNull() && !this.pawn.Dead && !this.pawn.Downed)
                                 {
                                     verb.Ability.PostAbilityAttempt();
-                                }                               
+                                }
                             });
                             toil.defaultCompleteMode = ToilCompleteMode.FinishedBusy;
                             yield return toil;

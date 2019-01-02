@@ -140,7 +140,7 @@
 			<Intellectual>6</Intellectual>
 	  </skillRequirements>
 	  <researchPrerequisite>
-			<li>TM_ArcaneApparel</li>
+			<li>TM_ArcaneCrafting</li>
 	  </researchPrerequisite>
     </recipeMaker>	
 	<equippedAngleOffset>40</equippedAngleOffset>
@@ -291,7 +291,7 @@ Arcane Resistance: +20%</description>
 			<Crafting>5</Crafting>
 	  </skillRequirements>
 	  <researchPrerequisite>
-			<li>TM_ArcaneApparel</li>
+			<li>TM_ArcaneCrafting</li>
 	  </researchPrerequisite>
     </recipeMaker>	
 	<comps>
@@ -666,7 +666,7 @@ Damage Boost: +40%</description>
 			<Intellectual>10</Intellectual>
 	  </skillRequirements>
 	  <researchPrerequisite>
-			<li>TM_ArcaneArtifacts</li>
+			<li>TM_ArcaneApparel</li>
 	  </researchPrerequisite>
     </recipeMaker>	
 	<comps>
@@ -807,7 +807,7 @@ Augmentation adds ability: Arcane Barrier</description>
 			<Intellectual>10</Intellectual>
 	  </skillRequirements>
 	  <researchPrerequisite>
-			<li>TM_ArcaneArtifacts</li>
+			<li>TM_ArcaneApparel</li>
 	  </researchPrerequisite>
     </recipeMaker>	
 	<comps>
@@ -1159,7 +1159,7 @@ Class XP Gain: -20%</description>
 			<Crafting>7</Crafting>
 	  </skillRequirements>
 	  <researchPrerequisite>
-			<li>TM_ArcaneArtifacts</li>
+			<li>TM_ArcaneApparel</li>
 	  </researchPrerequisite>
     </recipeMaker>	
 	<comps>
@@ -1280,7 +1280,7 @@ Ability Cooldown: -10%</description>
 			<Crafting>6</Crafting>
 	  </skillRequirements>
 	  <researchPrerequisite>
-			<li>TM_ArcaneApparel</li>
+			<li>TM_ArcaneCrafting</li>
 	  </researchPrerequisite>
     </recipeMaker>	
 	<comps>

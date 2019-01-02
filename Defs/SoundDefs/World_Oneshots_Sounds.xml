@@ -2,6 +2,30 @@
 <Defs>
 
   <SoundDef>
+    <defName>TM_MetalImpact</defName>
+    <eventNames />
+    <maxSimultaneous>10</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/MetalImpact</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>40</min>
+          <max>50</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.8</min>
+          <max>1.2</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
     <defName>TM_ThrumBow</defName>
     <eventNames />
     <maxSimultaneous>5</maxSimultaneous>

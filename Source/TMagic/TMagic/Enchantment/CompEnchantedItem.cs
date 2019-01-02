@@ -10,7 +10,9 @@ namespace TorannMagic.Enchantment
 {
     public class CompEnchantedItem : ThingComp
     {
-        public List<MagicAbility> MagicAbilities = new List<MagicAbility>();
+        public List<AbilityDef> MagicAbilities = new List<AbilityDef>();
+
+        public List<Trait> SoulOrbTraits = new List<Trait>();
 
         public CompAbilityUserMagic CompAbilityUserMagicTarget = null;
 
@@ -65,7 +67,22 @@ namespace TorannMagic.Enchantment
                     Find.TickManager.RegisterAllTickabilityFor(this.parent);
                 }
 
+                if(this.Props.hasAbility && !abilitiesInitialized)
+                {
+                    InitializeAbilities(this.parent as Apparel);
+                }
+
                 this.initialized = true;
+            }
+        }
+
+        private void InitializeAbilities(Apparel abilityApparel)
+        {
+            if (abilityApparel != null && abilityApparel.Wearer != null)
+            {
+                AbilityUserMod.Notify_ApparelRemoved_PostFix(abilityApparel.Wearer.apparel, abilityApparel);
+                AbilityUserMod.Notify_ApparelAdded_PostFix(abilityApparel.Wearer.apparel, abilityApparel);
+                this.abilitiesInitialized = true;
             }
         }
 
@@ -92,6 +109,23 @@ namespace TorannMagic.Enchantment
                         }
                     }
 
+                }
+            }
+            if (this.Props.hasAbility && !this.abilitiesInitialized)
+            {
+                Apparel artifact = this.parent as Apparel;
+                if (artifact != null)
+                {
+                    if (artifact.Wearer != null)
+                    {
+                        //Log.Message("" + artifact.LabelShort + " has holding owner " + artifact.Wearer.LabelShort);
+                        this.InitializeAbilities(artifact);                        
+                    }
+
+                    this.MagicAbilities = artifact.GetComp<CompAbilityItem>().Props.Abilities;
+                    //this.MagicAbilities = new List<AbilityDef>();
+                    //this.MagicAbilities.Clear();
+                    // abilities;
                 }
             }
             base.CompTickRare();
@@ -130,6 +164,7 @@ namespace TorannMagic.Enchantment
             Scribe_Values.Look<EnchantmentTier>(ref this.arcaneDmgTier, "arcaneDmgTier", (EnchantmentTier)0, false);
             Scribe_Values.Look<bool>(ref this.hasEnchantment, "hasEnchantment", false, false);
             Scribe_Values.Look<bool>(ref this.initialized, "initialized", false, false);
+            Scribe_Collections.Look<Trait>(ref this.SoulOrbTraits, "SoulOrbTraits", LookMode.Value);
             //this.Props.ExposeData();
         }
 
@@ -155,10 +190,22 @@ namespace TorannMagic.Enchantment
                 text = text + current.label.CapitalizeFirst() + " - ";
                 text += current.GetDescription();
             }
+            bool flag3 = this.SoulOrbTraits != null && this.SoulOrbTraits.Count > 0;
+            if (flag3)
+            {
+                text += "Absorbed Traits:";
+                foreach (Trait current in this.SoulOrbTraits)
+                {
+                    text += "\n";
+                    text = text + current.LabelCap;
+                }
+
+            }
             return text;
         }
 
         private bool initialized = false;
+        private bool abilitiesInitialized = false;
         private bool hasEnchantment = false;
 
         public EnchantmentTier maxMPTier;
@@ -191,8 +238,8 @@ namespace TorannMagic.Enchantment
         public bool phantomShift = false;
 
         //Hediffs
-        HediffDef hediff = null;
-        float hediffSeverity = 0f;
+        public HediffDef hediff = null;
+        public float hediffSeverity = 0f;
 
         //Abilities
 
@@ -294,6 +341,14 @@ namespace TorannMagic.Enchantment
             get
             {
                 return "TM_PhantomShift".Translate();
+            }
+        }
+
+        public string HediffLabel
+        {
+            get
+            {
+                return this.hediff.LabelCap;
             }
         }
 

@@ -187,4 +187,136 @@
     </comps>	 
   </HediffDef>
   
+  	<!-- Defensive Bracers -->
+  
+   <HediffDef ParentName="BaseArtifactHD">
+    <defName>TM_ArtifactBlockHD</defName>
+	<label>Blocking</label>
+    <defaultLabelColor>(0.63,0.63,0.63)</defaultLabelColor>
+      <stages>
+        <li>
+			<minSeverity>.001</minSeverity>
+        </li>
+	 </stages>
+	<comps>
+      <li>
+        <compClass>TorannMagic.Enchantment.HediffComp_EnchantedItem</compClass>
+      </li>  
+    </comps>	 
+  </HediffDef>
+  
+   <HediffDef ParentName="BaseArtifactHD">
+    <defName>TM_ArtifactDeflectHD</defName>
+	<label>Deflective Blocking</label>
+    <defaultLabelColor>(0.63,0.63,0.63)</defaultLabelColor>
+      <stages>
+        <li>
+			<minSeverity>.001</minSeverity>
+        </li>
+	 </stages>
+	<comps>
+      <li>
+        <compClass>TorannMagic.Enchantment.HediffComp_EnchantedItem</compClass>
+      </li>  
+    </comps>	 
+  </HediffDef>
+  
+  <!-- Energy Pool Boosts -->
+  
+  <HediffDef ParentName="BaseArtifactHD">
+    <defName>TM_Artifact_BloodBoostHD</defName>
+	<label>Blood Boost</label>
+	<maxSeverity>100.0</maxSeverity>
+    <defaultLabelColor>(0.6,0.0,0.0)</defaultLabelColor>
+      <stages>
+        <li>
+			<minSeverity>.001</minSeverity>
+			<becomeVisible>false</becomeVisible>
+        </li>
+	 </stages>
+	<comps>
+      <li>
+        <compClass>TorannMagic.Enchantment.HediffComp_BloodBoost</compClass>
+      </li>  
+    </comps>	 
+  </HediffDef>
+  
+    <HediffDef ParentName="BaseArtifactHD">
+    <defName>TM_Artifact_PsionicBoostHD</defName>
+	<label>Psionic Boost</label>
+	<maxSeverity>100.0</maxSeverity>
+    <defaultLabelColor>(0,.5,1)</defaultLabelColor>
+      <stages>
+        <li>
+			<minSeverity>.001</minSeverity>
+			<becomeVisible>false</becomeVisible>
+        </li>
+	 </stages>
+	<comps>
+      <li>
+        <compClass>TorannMagic.Enchantment.HediffComp_PsionicBoost</compClass>
+      </li>  
+    </comps>	 
+  </HediffDef>
+  
+    <HediffDef ParentName="BaseArtifactHD">
+    <defName>TM_Artifact_HateBoostHD</defName>
+	<label>Hate Boost</label>
+	<maxSeverity>100.0</maxSeverity>
+    <defaultLabelColor>(0.6,0.0,0.0)</defaultLabelColor>
+      <stages>
+        <li>
+			<minSeverity>.001</minSeverity>
+			<becomeVisible>false</becomeVisible>
+        </li>
+	 </stages>
+	<comps>
+      <li>
+        <compClass>TorannMagic.Enchantment.HediffComp_HateBoost</compClass>
+      </li>  
+    </comps>	 
+  </HediffDef>
+  
+  <!-- soul orb infusion debuff -->
+  
+  <HediffDef >
+    <defName>TM_TraitInfusionHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Trait Infusion</label>
+	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<maxSeverity>1.0</maxSeverity>
+	<isBad>false</isBad>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.25</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+		<minSeverity>.001</minSeverity>
+		<becomeVisible>false</becomeVisible>
+        <restFallFactor>1.1</restFallFactor>
+		<hungerRateFactor>1.1</hungerRateFactor>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <ThoughtDef>
+    <defName>TM_TraitInfusion</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>TM_TraitInfusionHD</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>Absorbed traits</label>
+        <description>These changes make me feel like a stranger to myself, it's going to take some time to rediscover who I am.</description>
+        <baseMoodEffect>-8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
 </Defs>

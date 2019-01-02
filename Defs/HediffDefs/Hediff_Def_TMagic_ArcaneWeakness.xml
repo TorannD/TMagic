@@ -6,7 +6,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.55, 0.05, 1)</defaultLabelColor>
     <label>arcane weakness</label>
-    <lethalSeverity>40</lethalSeverity>
+<!--     <lethalSeverity>40</lethalSeverity> -->
 	<tendable>false</tendable>
 	<makesSickThought>true</makesSickThought>
 	<isBad>true</isBad>
@@ -96,7 +96,7 @@
 		<painOffset>0.40</painOffset>
 		<hungerRateFactor>2</hungerRateFactor>
 		<restFallFactor>2</restFallFactor>
-		<lifeThreatening>true</lifeThreatening>
+		<lifeThreatening>false</lifeThreatening>
         <capMods>
           <li>
             <capacity>Moving</capacity>
@@ -129,6 +129,21 @@
 		  <li>
             <capacity>BloodPumping</capacity>
             <offset>-0.2</offset>
+          </li>
+        </capMods>
+      </li>
+	  <li>
+        <label>near death</label>
+        <minSeverity>39</minSeverity>
+		<lifeThreatening>true</lifeThreatening>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.1</setMax>
+          </li>
+		  <li>
+            <capacity>BloodPumping</capacity>
+            <setMax>0.0</setMax>
           </li>
         </capMods>
       </li>

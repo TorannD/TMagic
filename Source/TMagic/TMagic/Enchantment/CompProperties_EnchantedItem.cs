@@ -15,6 +15,7 @@ namespace TorannMagic.Enchantment
         public Type AbilityUserClass;
 
         public bool hasEnchantment = false;
+        public bool hasAbility = false;
 
         public EnchantmentTier maxMPTier;
         public EnchantmentTier mpRegenRateTier;

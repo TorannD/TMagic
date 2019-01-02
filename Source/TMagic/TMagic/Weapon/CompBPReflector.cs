@@ -72,7 +72,7 @@ namespace TorannMagic.Weapon
             bool flag = dinfo.Weapon != null;
             if (flag)
             {
-                bool flag2 = !dinfo.Weapon.IsMeleeWeapon && dinfo.WeaponBodyPartGroup == null;
+                bool flag2 = !dinfo.Weapon.IsMeleeWeapon && dinfo.WeaponBodyPartGroup == null && GetPawn != null;
                 if (flag2)
                 {
                     bool hasCompActivatableEffect = this.HasCompActivatableEffect;
@@ -88,7 +88,7 @@ namespace TorannMagic.Weapon
                     }
                     float deflectionChance = this.DeflectionChance;
                     CompAbilityUserMagic holder = GetPawn.GetComp<CompAbilityUserMagic>();
-                    if(!holder.IsMagicUser)
+                    if(holder != null && !holder.IsMagicUser)
                     {
                         deflectionChance = 0;
                     }

@@ -48,7 +48,8 @@ namespace TorannMagic
             }
             bool isDeathKnight = hediff != null;            
             //bool isLich = pawn.story.traits.HasTrait(TorannMagicDefOf.Lich);
-            float barCount = 1;            
+            float barCount = 1;
+            float boostSev = 100;
             if(isFighter)
             {
                 barCount++;
@@ -60,14 +61,29 @@ namespace TorannMagic
             if(isPsionic)
             {
                 barCount++;
+                Hediff hediffBoost = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_Artifact_PsionicBoostHD);
+                if (hediffBoost != null)
+                {
+                    boostSev += hediffBoost.Severity;
+                }
             }
             if (isDeathKnight)
             {
                 barCount++;
+                Hediff hediffBoost = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_Artifact_HateBoostHD);
+                if (hediffBoost != null)
+                {
+                    boostSev += hediffBoost.Severity;
+                }
             }
             if(isBloodMage)
             {
                 barCount++;
+                Hediff hediffBoost = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_Artifact_BloodBoostHD);
+                if (hediffBoost != null)
+                {
+                    boostSev += hediffBoost.Severity;
+                }
             }
             float barHeight;
             float initialShift=0;
@@ -95,25 +111,25 @@ namespace TorannMagic
                     if (isPsionic)
                     {
                         rect2.y += yShift;
-                        fillPercent = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_PsionicHD"), false).Severity / 100f;
+                        fillPercent = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_PsionicHD"), false).Severity / (boostSev);
                         Widgets.FillableBar(rect2, fillPercent, Gizmo_EnergyStatus.FullPsionicTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
-                        Widgets.Label(rect2, "" + (pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_PsionicHD"), false).Severity).ToString("F0") + " / 100");
+                        Widgets.Label(rect2, "" + (pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_PsionicHD"), false).Severity).ToString("F0") + " / " + boostSev.ToString("F0"));
                         yShift += (barHeight) + 5f;
                     }
                     if (isDeathKnight)
                     {
                         rect2.y += yShift;
-                        fillPercent = hediff.Severity / 100f;
+                        fillPercent = hediff.Severity / boostSev;
                         Widgets.FillableBar(rect2, fillPercent, Gizmo_EnergyStatus.FullDeathKnightTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
-                        Widgets.Label(rect2, "" + hediff.Severity.ToString("F0") + " / 100");
+                        Widgets.Label(rect2, "" + hediff.Severity.ToString("F0") + " / " + boostSev.ToString("F0"));
                         yShift += (barHeight) + 5f;
                     }
                     if (isBloodMage)
                     {
                         rect2.y += yShift;
-                        fillPercent = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_BloodHD"), false).Severity / 100f;
+                        fillPercent = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_BloodHD"), false).Severity / boostSev;
                         Widgets.FillableBar(rect2, fillPercent, Gizmo_EnergyStatus.FullBloodMageTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
-                        Widgets.Label(rect2, "" + (pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_BloodHD"), false).Severity).ToString("F0") + " / 100");
+                        Widgets.Label(rect2, "" + (pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_BloodHD"), false).Severity).ToString("F0") + " / " + boostSev.ToString("F0"));
                         yShift += (barHeight) + 5f;
                     }
                     Rect rect3 = rect; // bar rect, starts at bottom of label rect

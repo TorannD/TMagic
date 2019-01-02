@@ -517,6 +517,18 @@ namespace TorannMagic
                         }
                         if (Rand.Range(0, 10f) > 9f)
                         {
+                            thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_Blur, null);
+                            outThings.Add(thing);
+                            collectiveMarketValue += thing.MarketValue;
+                        }
+                        if (Rand.Range(0, 10f) > 9f)
+                        {
+                            thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_BlankMind, null);
+                            outThings.Add(thing);
+                            collectiveMarketValue += thing.MarketValue;
+                        }
+                        if (Rand.Range(0, 10f) > 9f)
+                        {
                             thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_TechnoShield, null);
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;

@@ -160,7 +160,7 @@
 		<defName>TM_ArcaneCrafting</defName>
 		<label>arcane crafting</label>
 		<tab>TMagic</tab>
-		<description>The first step in understanding the link between the arcane and physical. Enables construction of powerful gems of insight.</description>
+		<description>The first step in understanding the link between the arcane and physical. Enables construction of powerful gems of insight and magical equipment.</description>
 		<baseCost>1000</baseCost>
 		<techLevel>Neolithic</techLevel>
 		<researchViewX>3.0</researchViewX>
@@ -174,7 +174,7 @@
 		<defName>TM_ArcaneApparel</defName>
 		<label>magical equipment</label>
 		<tab>TMagic</tab>
-		<description>Applies knowledge of arcane crafting and enchantments to learn how to recreate equipment with magical properties.</description>
+		<description>Applies knowledge of arcane crafting and enchantments to learn how to recreate equipment with more powerful magical properties.</description>
 		<baseCost>1500</baseCost>
 		<techLevel>Neolithic</techLevel>
 		<researchViewX>3.0</researchViewX>

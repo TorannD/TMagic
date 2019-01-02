@@ -1177,5 +1177,88 @@ Trained fighters will gain class XP.  The amount of XP gained depends on the soc
 		</targetParams>
     </MainVerb>
   </TorannMagic.TMAbilityDef>
+  
+  <!-- blur -->	
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Blur</defName>
+        <label>Blur</label>
+        <uiIconPath>UI/blur</uiIconPath>
+        <description>Increases chance to dodge attacks by distorting light around the caster. Requires 20% mana to sustain. Re-use the ability to deactivate blur.</description>
+        <manaCost>0.000</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Blur</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_Blur</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>10</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>ThrowGrenade</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	  <!-- blank mind -->	
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_BlankMind</defName>
+        <label>Blank Mind</label>
+        <uiIconPath>UI/blankmind</uiIconPath>
+        <description>Wipes the memories of a pawn and breaks them out of any mental state but will induce a brief period of confusion as they gather their wits. When used on enemies, it will apply a mental freeze, stunning the enemy for a brief period.
+		
+AoE effects are only applied when the primary target is not a friendly pawn. Friendly pawns will lose both good and bad memories.</description>
+		<manaCost>0.40</manaCost>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_BlankMind</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_BlankMind</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>600.0</SecondsToRecharge>
+            <range>28</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>4</maxTargets>
+                <range>4</range>
+            </TargetAoEProperties>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
 
 </Defs>

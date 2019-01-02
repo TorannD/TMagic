@@ -103,13 +103,14 @@
 <!--   <MentalBreakDef>
     <defName>TM_WanderConfused</defName>
     <mentalState>TM_WanderConfused</mentalState>
-    <baseCommonality>0.15</baseCommonality>
+    <baseCommonality>0.0</baseCommonality>
     <intensity>Minor</intensity>
   </MentalBreakDef> -->
   <MentalStateDef ParentName="TM_BaseMentalState">
     <defName>TM_WanderConfused</defName>
     <label>confused wandering</label>
     <stateClass>MentalState_WanderConfused</stateClass>
+	<moodRecoveryThought>Catharsis</moodRecoveryThought>
     <category>Misc</category>
     <minTicksBeforeRecovery>1000</minTicksBeforeRecovery>
 	<maxTicksBeforeRecovery>2000</maxTicksBeforeRecovery>

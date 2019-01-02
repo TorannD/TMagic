@@ -135,6 +135,14 @@ namespace TorannMagic
                         hediffStage.label = this.parent.Severity.ToString("0.00") + "%";
                     }
 
+                    Hediff hediff = this.Pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_Artifact_PsionicBoostHD);
+                    float maxSev = 100;
+                    if (hediff != null)
+                    {
+                        maxSev += hediff.Severity;
+                    }
+                    this.parent.Severity = Mathf.Clamp(this.parent.Severity, 0, maxSev);
+
                 }
 
                 if (comp.usePsionicAugmentationToggle)

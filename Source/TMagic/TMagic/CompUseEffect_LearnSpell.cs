@@ -271,6 +271,18 @@ namespace TorannMagic
                     comp.InitializeSpell();
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
+                else if (parent.def.defName == "SpellOf_Blur" && comp.spell_Blur == false)
+                {
+                    comp.spell_Blur = true;
+                    comp.InitializeSpell();
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def == TorannMagicDefOf.SpellOf_BlankMind && comp.spell_BlankMind == false && user.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
+                {
+                    comp.spell_BlankMind = true;
+                    comp.InitializeSpell();
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
                 else
                 {
                     Messages.Message("CannotLearnSpell".Translate(), MessageTypeDefOf.RejectInput);

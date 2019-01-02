@@ -11,7 +11,7 @@
 	<tendable>false</tendable>
     <makesAlert>false</makesAlert>
 	<minSeverity>0.001</minSeverity>
-	<maxSeverity>100.0</maxSeverity>
+	<maxSeverity>200.0</maxSeverity>
 	<isBad>false</isBad>
 	<initialSeverity>.5</initialSeverity>
 	<comps>

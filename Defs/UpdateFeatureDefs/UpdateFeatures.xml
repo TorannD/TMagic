@@ -6,58 +6,6 @@
 		<linkUrl>https://ludeon.com/forums/index.php?topic=37161.0</linkUrl>
 	</HugsLib.UpdateFeatureDef>	
 	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_2_2_6</defName>
-		<assemblyVersion>2.2.6</assemblyVersion>
-		<content>
-** New class: Technomancer - the technomancer combines technology and the arcane power as the basis for their abilities. They are unique in that they can select one (and only one) of three primary paths: offense, defense, and support
-- Offensive Path: by using an existing, mechanical weapon as a blueprint, the technomancer can design a modified version of that weapon and mold it out of mana; the combination of this improved weapon system, nanites that increase their combat abilites, and projectiles infused with elemental properties makes the offensive technomancer a formidable option
-- Defensive Path: the Mark-IV weapon system was a prototype that failed due to a lack of sustainable energy; technomancers use their own mana as a means to fuel this weapon system, and are able to effectively deploy and operate it as a powerful, manned turret
-- Support Path: support technomancers prefer to craft an independent and autonomous AI to assist them in many tasks; this "techno-bit" is able to accelerate the work speed of many projects, can repair almost any mechanical system, and even has some combat abilities
-In addition to the primary paths, all technomancers have access to several core, class abilities:
-- Overdrive: bypasses safety features or increases power of generators, turrets, and robotic AI to drastically improve their output capacity for a short period but can cause stress and damage the targeted system
-- Sabotage: like overdrive, it can target many different powered, computer, or mechanical systems to cause everything from minor to catastrophic failure of all vulnerable systems in a small area
-- Kinetic Shield: surrounds the target with a shield able to deflect projectiles; the shields power determines the limit of kinetic energy that can be deflected - high powered rounds can penetrate low powered kinetic shields
-- Orbital Strike; hacks into orbital bombardment satellites to input target coordinates, can take some time to align and launch the attack but packs a punch when it hits
-
-** New Features:
-Purify can be selected for Autocast
-	
-** Tweaks:
-Autocast blink and phase strike XP gain has been reduced
-Mana potion recipe for the gemcrafting replaces Go-Juice with other, less technological, ingredients
-Autocast will not select targets out of line of sight - this was causing some abilities to move the casting pawn into a position it could see the target; this does not affect abilities that do not require line of sight
-Sentinels will now activate on manhunter animals
-Faceless ability "possess" can be resisted with above average values of consciousness and/or psychic sensitivity
-Arcane cooler, heater, and power node have been changed to sustained abilities
-
-Bug fixes:
-Pawns of non-standard sizes will only be drawn as their intended sizes
-Carrying capacity has been fixed for several traits that increased or decreased this state
-		</content>
-	</HugsLib.UpdateFeatureDef>	
-	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_2_2_7</defName>
-		<assemblyVersion>2.2.7</assemblyVersion>
-		<content>
-**Undead and Skeletal Legion update**
-
-Undead will now appear more -undead-
-- pawns raised as undead will assume either their rotting or desiccated bodies
-- rotting will not stop for raised undead and they will eventually deteriorate until they appear desiccated
-- corpses raised that are already rotten or desiccated will retain their level of rot
-
-Compatibility has been added for the Skeletal Legion mod by Jernfalk: https://ludeon.com/forums/index.php?topic=46598.0
-- Skeleton Legion creatures are considered "undead" for purposes of RimWorld of Magic spells and abilities
-- these creatures can be raised as undead by a necromancer
-
-Tweaks:
-- healing spells will now harm the unliving instead of heal them, this includes Jecrells "Vampires" as well as Jernfalk's "Skeletal Legion"
-- 'light' based attacks (which includes healing spells) will have a chance to deal bonus damage to the unliving
-- undead will always 'die' when downed - lichs and vampires are excluded from this behavior
-- Autocast Magic and Fighter mentoring (Teach) will no longer select pawns of higher XP levels than the casters
-		</content>
-	</HugsLib.UpdateFeatureDef>
-	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
 		<defName>ARimWorldOfMagic_2_2_8</defName>
 		<assemblyVersion>2.2.8</assemblyVersion>
 		<content>
@@ -163,6 +111,39 @@ The Seer faction will now load their faction apparel correctly during pawn gener
 -Shapeshift: the enchanter shape shifts into a random animal and augments the physical traits of the animal in the process; the enchanter maintains most of the control over their body and can revert the shape shift at any time
 
 *New creature: dire wolf - rarely seen, and only in the coldest environments, the dire wolf is larger and more deadly than the timber wolf and possesses unique mythical qualities
+
+--See mod discord announcements for full details! - https://discord.gg/ksksHj --
+		</content>
+	</HugsLib.UpdateFeatureDef>		
+	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_2_3_2</defName>
+		<assemblyVersion>2.3.2</assemblyVersion>
+		<content>
+Update 2.3.2 contains new artifacts and generic mage spells.
+
+**Craftable artifacts:**
+Bracers of the Pacifist - can only be worn by non-violent pawns but adds considerable stats and magic bonuses
+Bracers of Deflection - 30% chance to block physical attacks and deflect projectiles to nearby enemies
+Bracers of Defense - 40% chance to block physical attacks
+Ring of Keen Intellect - increases the rate at which a pawn can learn and research, but increases mental stress
+
+The Psionic, Bloodmage, and Deathknight each have a unique ring that increases their unique energy pool; each of these rings can 'grow' depending on the actions and records of the wearer.
+
+**Non-craftable artifacts:**
+Orb of Conviction - can be used to instantly convince a human-like pawn from another faction to join your cause
+Orb of Souls - can harvest the soul of another pawn, stripping them of their traits; the orb will then be filled and can be used to transfer those traits into another pawn - some side effects may occur, including but not limited to death
+Orb of the Eternal - an orb infused with a single blast of healing magic - heals wounds, cures diseases, and restores limbs
+
+New generic mage spell: Blur - 20% chance to dodge any non-explosive attack, sustained spell that requires 20% mana to maintained
+New enchanter spell: Blank Mind - wipes any non-persistent memory from the pawn and causes them to enter a confused state for a brief period; can also be used on enemies to disorient (stun) them
+
+Tweaks:
+Available after researching arcane crafting: wanderer's cloak, royal armor and helm, dark robe, arcane hood, all wands, elephant spear and bow
+Available after researching arcane apparel: robes of the archmage, robes of supremacy (renamed cloak of supremacy), paragon's helm, hood of madness, thrumbow, both staves
+Ability cost reduction is now hard-capped at 50% of the base ability cost
+
+Bug Fixes:
+Faceless reversal will reflect projectiles from turrets
 
 --See mod discord announcements for full details! - https://discord.gg/ksksHj --
 		</content>

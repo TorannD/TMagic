@@ -1752,12 +1752,11 @@ namespace TorannMagic
             MightPowerSkill globalSkill = this.MightData.MightPowerSkill_global_seff.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_seff_pwr");
             if (globalSkill != null)
             {
-                return (adjustedStaminaCost - (adjustedStaminaCost * (global_seff * globalSkill.level)));
+                adjustedStaminaCost -= (adjustedStaminaCost * (global_seff * globalSkill.level));
             }
-            else
-            {
-                return adjustedStaminaCost;
-            }
+
+            return Mathf.Max(adjustedStaminaCost, (.5f * mightDef.staminaCost));
+            
 
         }
 
@@ -1878,6 +1877,26 @@ namespace TorannMagic
                                 return;
                             }
                         }
+                        Building instigatorBldg = dinfo.Instigator as Building;
+                        if(instigatorBldg != null)
+                        {
+                            if(instigatorBldg.def.Verbs != null)
+                            {
+                                absorbed = true;
+                                Vector3 drawPos = AbilityUser.DrawPos;
+                                drawPos.x += ((instigatorBldg.DrawPos.x - drawPos.x) / 20f) + Rand.Range(-.2f, .2f);
+                                drawPos.z += ((instigatorBldg.DrawPos.z - drawPos.z) / 20f) + Rand.Range(-.2f, .2f);
+                                TM_MoteMaker.ThrowSparkFlashMote(drawPos, this.Pawn.Map, 2f);
+                                DoReversal(dinfo);
+                                dinfo.SetAmount(0);
+                                MightPowerSkill ver = this.MightData.MightPowerSkill_Reversal.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Reversal_ver");
+                                if (ver.level > 0)
+                                {
+                                    SiphonReversal(ver.level);
+                                }
+                                return;
+                            }
+                        }
                     }
                     if (current.def == TorannMagicDefOf.TM_HediffEnchantment_phantomShift && Rand.Chance(.2f))
                     {
@@ -1944,39 +1963,12 @@ namespace TorannMagic
 
         public void DoMeleeReversal(DamageInfo dinfo)
         {
-            Thing instigator = dinfo.Instigator;
-
-            if (instigator is Pawn)
-            {
-                Pawn meleePawn = instigator as Pawn;
-                if (dinfo.Weapon.IsMeleeWeapon || dinfo.WeaponBodyPartGroup != null)
-                {
-                    DamageInfo dinfo2 = new DamageInfo(dinfo.Def, dinfo.Amount, dinfo.ArmorPenetrationInt, dinfo.Angle, this.Pawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown, meleePawn);
-                    meleePawn.TakeDamage(dinfo2);
-                }
-            }
-
-            //GiveReversalJob(dinfo);            
+            TM_Action.DoMeleeReversal(dinfo, this.Pawn);          
         }
 
         public void DoReversal(DamageInfo dinfo)
         {
-            Thing instigator = dinfo.Instigator;
-            
-            if(instigator is Pawn)
-            {
-                Pawn shooterPawn = instigator as Pawn;
-                if (!dinfo.Weapon.IsMeleeWeapon && dinfo.WeaponBodyPartGroup == null)
-                {
-                    TM_CopyAndLaunchProjectile.CopyAndLaunchThing(shooterPawn.equipment.PrimaryEq.PrimaryVerb.verbProps.defaultProjectile, this.Pawn, instigator, shooterPawn, ProjectileHitFlags.IntendedTarget, null);
-                }
-                else if ((dinfo.Weapon != null && dinfo.Weapon.IsMeleeWeapon) || dinfo.WeaponBodyPartGroup != null)
-                {
-                    DoMeleeReversal(dinfo);
-                }
-            }
-            
-            //GiveReversalJob(dinfo);            
+            TM_Action.DoReversal(dinfo, this.Pawn);       
         }
 
         public void SiphonReversal(int verVal)

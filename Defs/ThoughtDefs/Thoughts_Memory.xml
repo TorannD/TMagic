@@ -107,4 +107,17 @@
     </stages>
   </ThoughtDef>
   
+  	<ThoughtDef>
+		<defName>TM_MemoryWipe</defName>
+		<durationDays>2</durationDays>
+		<stackLimit>5</stackLimit>
+		<stages>
+			<li>
+				<label>clean slate</label>
+				<description>I can't remember the last few days, maybe that is for the best.</description>
+				<baseMoodEffect>25</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+  
 </Defs>

@@ -140,7 +140,7 @@ Arcane Resistance: +5%</description>
 			<Intellectual>6</Intellectual>
 	  </skillRequirements>
 	  <researchPrerequisite>
-			<li>TM_ArcaneApparel</li>
+			<li>TM_ArcaneCrafting</li>
 		</researchPrerequisite>
     </recipeMaker>
 	<costStuffCount>150</costStuffCount>
@@ -369,7 +369,7 @@ Arcane Res: +10%</description>
 			<Intellectual>6</Intellectual>
 	  </skillRequirements>
 	  <researchPrerequisite>
-			<li>TM_ArcaneApparel</li>
+			<li>TM_ArcaneCrafting</li>
 		</researchPrerequisite>
     </recipeMaker>
 	<costList>
@@ -492,7 +492,7 @@ Arcane Res: +10%</description>
 			<Intellectual>10</Intellectual>
 	  </skillRequirements>
 	  <researchPrerequisite>
-			<li>TM_ArcaneArtifacts</li>
+			<li>TM_ArcaneApparel</li>
 		</researchPrerequisite>
     </recipeMaker>
 	<costList>
@@ -573,7 +573,7 @@ Arcane Res: +10%</description>
   
   <ThingDef ParentName="TMTailoredApparelBase">
     <defName>DemonLordCloak</defName>
-    <label>Robes of Supremacy</label>    
+    <label>Cloak of Supremacy</label>    
     <description>A cloak heavily augmented by arcane power believed to have been first made for a black knight acting as the ambassador for an astral demon. The fabric is difficult to focus on in a way that can only be described as "visual noise" and the folds of cloth move in an unnatural way as if unrestrained by natural law. Those few who have worn this cloak in battle swear that it possesses a consciousness of its own and tell stories of the cloth shielding them from certain destruction.  Others claim those observations were nothing but hallucinations by deranged fools. Because of these claims, it is rumored that the cloak possesses the ability to completely mitigate attacks against the wearer, but no one has been able to reproduce these results with any reliability.
 
 Robes of Supremacy are enchanted and provide additional benefits to trained mages and fighters:
@@ -612,7 +612,7 @@ Augmented by Phantom Shift: 20% chance to avoid an attack</description>
 			<Intellectual>10</Intellectual>
 	  </skillRequirements>
 	  <researchPrerequisite>
-			<li>TM_ArcaneArtifacts</li>
+			<li>TM_ArcaneApparel</li>
 		</researchPrerequisite>
     </recipeMaker>
 	<costList>
@@ -721,7 +721,7 @@ Class XP Gain: +10%</description>
 			<Intellectual>8</Intellectual>
 	  </skillRequirements>
 	  <researchPrerequisite>
-			<li>TM_ArcaneArtifacts</li>
+			<li>TM_ArcaneCrafting</li>
 	  </researchPrerequisite>
     </recipeMaker>
 	<costStuffCount>450</costStuffCount>
@@ -803,7 +803,7 @@ Class XP Gain: +10%</description>
 			<Intellectual>6</Intellectual>
 	  </skillRequirements>
 	  <researchPrerequisite>
-			<li>TM_ArcaneArtifacts</li>
+			<li>TM_ArcaneCrafting</li>
 	  </researchPrerequisite>
     </recipeMaker>
 	<costStuffCount>100</costStuffCount>
@@ -883,7 +883,7 @@ Arcane Res: +10%</description>
 			<Intellectual>8</Intellectual>
 	  </skillRequirements>
 	  <researchPrerequisite>
-			<li>TM_ArcaneArtifacts</li>
+			<li>TM_ArcaneApparel</li>
 	  </researchPrerequisite>
     </recipeMaker>
 	<costStuffCount>200</costStuffCount>
@@ -940,7 +940,7 @@ Arcane Resistance: 30%</description>
 		<graphicClass>Graphic_Single</graphicClass> 
 	</graphicData>
 	<statBases>
-		<WorkToMake>35000</WorkToMake>
+		<WorkToMake>20000</WorkToMake>
 		<Mass>.7</Mass>
 		<MaxHitPoints>90</MaxHitPoints>
 		<MarketValue>1260</MarketValue>
@@ -967,12 +967,12 @@ Arcane Resistance: 30%</description>
 		<ResearchSpeed>0.15</ResearchSpeed>
 	</equippedStatOffsets>
 	<recipeMaker>
-      <workAmount>35000</workAmount>
+      <workAmount>20000</workAmount>
 	  <skillRequirements>
 			<Intellectual>10</Intellectual>
 	  </skillRequirements>
 	  <researchPrerequisite>
-			<li>TM_ArcaneArtifacts</li>
+			<li>TM_ArcaneApparel</li>
 		</researchPrerequisite>
     </recipeMaker>
 	<costStuffCount>80</costStuffCount>
@@ -1049,7 +1049,7 @@ Arcane Resistance: +10%</description>
 			<Intellectual>6</Intellectual>
 	  </skillRequirements>
 	  <researchPrerequisite>
-			<li>TM_ArcaneApparel</li>
+			<li>TM_ArcaneCrafting</li>
 		</researchPrerequisite>
     </recipeMaker>
 	<costStuffCount>80</costStuffCount>

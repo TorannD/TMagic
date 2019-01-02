@@ -135,6 +135,12 @@ namespace TorannMagic
                                 }
                                 //loadPawn = caster;
                                 //loadPawn.ThingID += Rand.Range(0, 214).ToString();
+                                if(caster.IsColonist)
+                                {
+                                    //
+                                    ModOptions.Constants.SetPawnInFlight(true);
+                                    //
+                                }
                                 caster.DeSpawn();
                             }
                             else
@@ -221,10 +227,22 @@ namespace TorannMagic
                         if (!flag2)
                         {
                             GenPlace.TryPlaceThing(caster, this.oldPosition, this.Map, ThingPlaceMode.Near, null, null);
+                            if (caster.IsColonist)
+                            {
+                                //
+                                ModOptions.Constants.SetPawnInFlight(false);
+                                //
+                            }
                         }
                         if(!caster.Spawned)
                         {
                             GenSpawn.Spawn(this.launcher, this.oldPosition, this.Map, WipeMode.Vanish);
+                            if (caster.IsColonist)
+                            {
+                                //
+                                ModOptions.Constants.SetPawnInFlight(false);
+                                //
+                            }
                         }
                         bool flag3 = hitPawn.Faction != pFaction;
                         if (flag3)

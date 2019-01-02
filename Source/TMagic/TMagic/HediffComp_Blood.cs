@@ -86,7 +86,18 @@ namespace TorannMagic
                     {
                         severityAdjustment -= Rand.Range(.04f, .1f);
                     }
+
+                    Hediff hediff = this.Pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_Artifact_BloodBoostHD);
+                    float maxSev = 100;
+                    if(hediff != null)
+                    {
+                        maxSev += hediff.Severity;
+                    }
+                    this.parent.Severity = Mathf.Clamp(this.parent.Severity, 0, maxSev);
                 }
+
+               
+                
             }
         }
 

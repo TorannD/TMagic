@@ -89,6 +89,8 @@ namespace TorannMagic
         public static ThingDef SpellOf_OrbitalStrike;
         public static ThingDef SpellOf_BloodMoon;
         public static ThingDef SpellOf_Shapeshift;
+        public static ThingDef SpellOf_Blur;
+        public static ThingDef SpellOf_BlankMind;
 
         public static ThingDef SkillOf_Sprint;
         public static ThingDef SkillOf_GearRepair;
@@ -121,6 +123,25 @@ namespace TorannMagic
         public static ThingDef TM_Artifact_Gold;
         public static ThingDef TM_Artifact_Wood;
         public static ThingDef TM_Artifact_Magicyte;
+
+        public static ThingDef TM_Artifact_BracersOfThePacifist;
+        public static ThingDef TM_Artifact_BracersOfDefense;
+        public static HediffDef TM_ArtifactBlockHD;
+        public static ThingDef TM_Artifact_BracersOfDeflection;
+        public static HediffDef TM_ArtifactDeflectHD;
+        public static ThingDef TM_Artifact_RingOfBlood;
+        public static HediffDef TM_Artifact_BloodBoostHD;
+        public static ThingDef TM_Artifact_RingOfMalice;
+        public static HediffDef TM_Artifact_HateBoostHD;
+        public static ThingDef TM_Artifact_RingOfEternalBlue;
+        public static HediffDef TM_Artifact_PsionicBoostHD;
+        public static ThingDef TM_Artifact_OrbOfConviction;
+        public static TMAbilityDef TM_Artifact_Conviction;
+        public static ThingDef TM_Artifact_OrbOfSouls;
+        public static AbilityDef TM_Artifact_TraitThief;
+        public static ThingDef TM_Artifact_OrbOfSouls_Full;
+        public static AbilityDef TM_Artifact_TraitInfuse;
+        public static HediffDef TM_TraitInfusionHD;
 
         //Site Defs
         public static WorldObjectDef ArcaneAdventure;
@@ -644,6 +665,9 @@ namespace TorannMagic
         public static TMAbilityDef TM_SpellMending;
         public static TMAbilityDef TM_TeachMagic;
         public static TMAbilityDef TM_TeachMight;
+        public static TMAbilityDef TM_Blur;
+        public static HediffDef TM_BlurHD;
+        public static TMAbilityDef TM_BlankMind;
 
         public static HediffDef TM_Sight;
         public static HediffDef TM_Breathing;
@@ -699,6 +723,9 @@ namespace TorannMagic
         public static ThingDef Mote_Shadow;
         public static ThingDef Mote_ShadowCleave;
         public static ThingDef Mote_ArcaneWaves;
+        public static ThingDef Mote_BracerBlock;
+        public static ThingDef Mote_BracerBlock_NoFlash;
+
 
         public static EffecterDef GiantExplosion;
         public static EffecterDef TM_GiantExplosion;
@@ -758,6 +785,7 @@ namespace TorannMagic
         public static SoundDef TM_FastReleaseSD;
         public static SoundDef TM_FireWooshSD;
         public static SoundDef TM_GaspingAir;
+        public static SoundDef TM_MetalImpact;
 
         //Inspirations
         public static InspirationDef ID_Champion;
@@ -775,6 +803,8 @@ namespace TorannMagic
         public static MentalStateDef TM_WanderPsychotic;
         public static MentalStateDef TM_WanderSad;
         public static MentalStateDef TM_WanderConfused;
+        public static MentalStateDef WanderConfused;
+        public static ThoughtDef TM_MemoryWipe;
 
         //Joy kinds
         public static JoyKindDef Social;

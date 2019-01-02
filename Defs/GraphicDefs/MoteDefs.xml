@@ -2,6 +2,32 @@
 <Defs>
 
   <ThingDef ParentName="MoteBase">
+    <defName>Mote_BracerBlock</defName>
+    <graphicData>
+      <texPath>Motes/BracerBlockMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_BracerBlock_NoFlash</defName>
+    <graphicData>
+      <texPath>Motes/BracerBlockMote_NoFlash</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
     <defName>Mote_BladeSweep</defName>
     <graphicData>
       <texPath>Motes/BladeSweepMote</texPath>

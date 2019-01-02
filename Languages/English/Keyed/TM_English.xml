@@ -131,6 +131,8 @@
 <TM_InsufficientMaterialForArtifact>Not enough {0} to create an enchanters stone.</TM_InsufficientMaterialForArtifact>
 <TM_CannotCreateStone>{0} is not yet able to create an artifact from {1}.</TM_CannotCreateStone>
 <TM_CannotMimicBloodMage>{0} cannot mimic the abilities of a blood mage</TM_CannotMimicBloodMage>
+<TM_ViolentCannotEquip>{0} is capable of violence and cannot equip {1}</TM_ViolentCannotEquip>
+<TM_TraitorOrbRecruit>{0} has successfully convicted {1} to join your cause using the Orb of the Traitor.\n\nThe use of vile magic against {2} has angered {3} and reduced your standing with them by {4} by {5}.</TM_TraitorOrbRecruit>
 
 
 <!-- Surgery Failed letters -->

@@ -23,6 +23,7 @@ namespace TorannMagic
         public const float ThreshVeryHigh = 0.9f;
 
         public float lastNeed;
+        private float lastCast = 0;
 
         public float drainMinion;
         public float drainUndead;
@@ -391,20 +392,24 @@ namespace TorannMagic
             if ((amount) > .25f && (amount) < .45f)
             {
                 //0.0 to 0.2 max
-                float sev = ((amount) - .25f) * 10;
+                float sev = ((amount - .25f) * 10);
                 HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
             }
             else if ((amount) >= .45f && (amount) < .79f)
             {
                 //0.0 to 0.34 max
-                float sev = 1.4f + ((amount) - .45f) * 25;
+                float sev = 2f + ((amount - .45f) * 25);
                 HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
             }
             else if ((amount) >= .79f && (amount) < 5)
             {
                 //0.0 to 0.21 max
-                float sev = 8.5f + ((amount) - .79f) * 40;
-                HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
+                float sev = 8.5f + ((amount - .79f) * 40);              
+                if (lastCast != Find.TickManager.TicksGame)
+                {
+                    this.lastCast = Find.TickManager.TicksGame;
+                    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);                    
+                }
             }
         }
 

@@ -158,13 +158,22 @@ namespace TorannMagic
 
                 if (Find.TickManager.TicksGame % this.eventFrequency == 0)
                 {
+                    Hediff hediff = this.Pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_Artifact_HateBoostHD);
+                    float maxSev = 100;
+                    float minSev = 0;
+                    if (hediff != null)
+                    {
+                        minSev = 5f;
+                        maxSev += hediff.Severity;
+                    }
+                    this.parent.Severity = Mathf.Clamp(this.parent.Severity, 0, maxSev);
 
-                    if ((this.lastHateTick + 1200) < Find.TickManager.TicksGame && this.parent.Severity > (25f + (this.Pawn.health.hediffSet.PainTotal * 50)))
+                    if ((this.lastHateTick + 1200) < Find.TickManager.TicksGame && this.parent.Severity > (25f + minSev + (this.Pawn.health.hediffSet.PainTotal * 50)))
                     {
                         severityAdjustment -= Rand.Range(.1f, .2f);
                     }
 
-                    if(this.parent.Severity < (20f + (this.Pawn.health.hediffSet.PainTotal * 50)))
+                    if(this.parent.Severity < (20f + minSev + (this.Pawn.health.hediffSet.PainTotal * 50)))
                     {                        
                         severityAdjustment += Rand.Range(.1f, .15f);
                     }

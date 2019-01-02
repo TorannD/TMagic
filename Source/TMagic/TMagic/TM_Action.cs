@@ -14,6 +14,21 @@ namespace TorannMagic
     public static class TM_Action
     {
 
+        public static void DoMeleeReversal(DamageInfo dinfo, Pawn reflectingPawn)
+        {
+            Thing instigator = dinfo.Instigator;
+
+            if (instigator is Pawn)
+            {
+                Pawn meleePawn = instigator as Pawn;
+                if (dinfo.Weapon.IsMeleeWeapon || dinfo.WeaponBodyPartGroup != null)
+                {
+                    DamageInfo dinfo2 = new DamageInfo(dinfo.Def, dinfo.Amount, dinfo.ArmorPenetrationInt, dinfo.Angle, reflectingPawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown, meleePawn);
+                    meleePawn.TakeDamage(dinfo2);
+                }
+            }
+        }
+
         public static void DoReversal(DamageInfo dinfo, Pawn reflectingPawn)
         {
             Thing instigator = dinfo.Instigator;
@@ -26,8 +41,80 @@ namespace TorannMagic
                     TM_CopyAndLaunchProjectile.CopyAndLaunchThing(shooterPawn.equipment.PrimaryEq.PrimaryVerb.verbProps.defaultProjectile, reflectingPawn, instigator, shooterPawn, ProjectileHitFlags.All, null);
                 }
             }
+            if (instigator is Building)
+            {
+                Building turret = instigator as Building;
+                ThingDef projectile = null;
+
+                if (turret.def.building.turretGunDef != null)
+                {
+                    ThingDef turretGun = turret.def.building.turretGunDef;
+                    for (int i = 0; i < turretGun.Verbs.Count; i++)
+                    {
+                        if (turretGun.Verbs[i].defaultProjectile != null)
+                        {
+                            projectile = turretGun.Verbs[i].defaultProjectile;
+                        }
+                    }
+                }
+
+                if (projectile != null)
+                {
+                    TM_CopyAndLaunchProjectile.CopyAndLaunchThing(projectile, reflectingPawn, instigator, turret, ProjectileHitFlags.All, null);
+                }
+            }
 
             //GiveReversalJob(dinfo);            
+        }
+
+        public static void DoReversalRandomTarget(DamageInfo dinfo, Pawn reflectingPawn, float minRange, float maxRange)
+        {
+            Thing instigator = dinfo.Instigator;
+
+            if (instigator is Pawn)
+            {
+                Pawn shooterPawn = instigator as Pawn;
+                if (!dinfo.Weapon.IsMeleeWeapon && dinfo.WeaponBodyPartGroup == null)
+                {
+                    Pawn randomTarget = null;
+                    randomTarget = TM_Calc.FindNearbyEnemy(reflectingPawn, (int)maxRange);
+                    if (randomTarget != null)
+                    {
+                        TM_CopyAndLaunchProjectile.CopyAndLaunchThing(shooterPawn.equipment.PrimaryEq.PrimaryVerb.verbProps.defaultProjectile, reflectingPawn, randomTarget, randomTarget, ProjectileHitFlags.All, null);
+                    }
+                }
+            }
+            if(instigator is Building)
+            {
+                Building turret = instigator as Building;
+                ThingDef projectile = null;
+
+                if (turret.def.building.turretGunDef != null)
+                {
+                    ThingDef turretGun = turret.def.building.turretGunDef;
+                    for (int i = 0; i < turretGun.Verbs.Count; i++)
+                    {
+                        if(turretGun.Verbs[i].defaultProjectile != null)
+                        {
+                            projectile = turretGun.Verbs[i].defaultProjectile;
+                        }
+                    }
+                }
+
+                if (projectile != null)
+                {
+                    Thing target = null;
+                    if((turret.Position - reflectingPawn.Position).LengthHorizontal <= maxRange)
+                    {
+                        target = turret;
+                    }
+                    else
+                    {
+                        target = TM_Calc.FindNearbyEnemy(reflectingPawn, (int)maxRange);
+                    }
+                    TM_CopyAndLaunchProjectile.CopyAndLaunchThing(projectile, reflectingPawn, target, target, ProjectileHitFlags.All, null);
+                }
+            }
         }
 
         public static void DoAction_TechnoWeaponCopy(Pawn caster, Thing thing)

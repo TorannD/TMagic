@@ -15,9 +15,12 @@
       <onGroundRandomRotateAngle>0</onGroundRandomRotateAngle>
     </graphicData>
     <drawGUIOverlay>true</drawGUIOverlay>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Metal_Drop</soundDrop>
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>
-      <Flammability>1.0</Flammability>
+      <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
 		<Beauty>2</Beauty>
 		<SellPriceFactor>0.0</SellPriceFactor>
@@ -32,6 +35,47 @@
     <comps>
       <li Class="CompProperties_Forbiddable"/>
     </comps>
+  </ThingDef>
+  
+  <ThingDef Name="TM_CraftableArtifactBase" ParentName="TM_ArtifactBase" Abstract="True">
+    <statBases>
+      <DeteriorationRate>0</DeteriorationRate>
+		<Beauty>5</Beauty>
+		<SellPriceFactor>0.6</SellPriceFactor>
+	</statBases>
+    <recipeMaker>
+      <recipeUsers>
+		<li>TableArcaneForge</li>
+      </recipeUsers>
+	  <workSpeedStat>SmithingSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+	  <researchPrerequisite>
+		<li>TM_ArcaneArtifacts</li>
+	  </researchPrerequisite>
+    </recipeMaker>
+	<tradeTags>
+	  <li>Arcane</li>
+    </tradeTags>
+  </ThingDef>
+  
+    <ThingDef Name="TM_BuyableArtifactBase" ParentName="TM_ArtifactBase" Abstract="True">
+    <statBases>
+        <DeteriorationRate>0</DeteriorationRate>
+		<Beauty>20</Beauty>
+		<SellPriceFactor>0.75</SellPriceFactor>
+	</statBases>
+	<tradeability>All</tradeability>
+	<tradeTags>
+	  <li>ExoticMisc</li>
+	  <li>Artifacts</li>
+	  <li>Arcane</li>
+    </tradeTags>
+	<thingSetMakerTags>
+      <li>RewardSpecial</li>
+    </thingSetMakerTags>
   </ThingDef>
   
   <ApparelLayerDef>
@@ -533,22 +577,53 @@
   </ThingDef>
   
   <!-- Craftable Artifacts -->
-  <!-- 
-  <ThingDef ParentName="TM_ArtifactBase">
+  
+  <ThingDef ParentName="TM_CraftableArtifactBase">
     <defName>TM_Artifact_BracersOfThePacifist</defName>
     <label>Bracers of the Pacifist</label>    
-    <description>These bracer appears as little more than thin cloth wrapped in leather but its unremarkable appearance is belied by remarkable power. These item can only be worn by a pawn that rejects violence.</description>
+    <description>These bracers appear to be little more than thin cloth wrapped in leather, but their unremarkable appearance is belied by remarkable power. This item can only be worn by a pawn that has rejected violence.
+
+Enchantments:
+Max Energy +40%
+Energy Regen +40%
+Arcane Resistance +50%
+Arcane Recovery - decreases time to recover from arcane weakness</description>
     <graphicData> 
 		<texPath>Items/artifact_bracers</texPath>
 		<graphicClass>Graphic_Single</graphicClass> 
 	</graphicData>
 	<statBases>
-		<Mass>.05</Mass>
-		<MaxHitPoints>200</MaxHitPoints>
+		<Mass>.5</Mass>
+		<MaxHitPoints>100</MaxHitPoints>
+		<WorkToMake>30000</WorkToMake>
+		<MarketValue>3825</MarketValue>
+		<StuffEffectMultiplierArmor>0.3</StuffEffectMultiplierArmor>
+		<StuffEffectMultiplierInsulation_Cold>0.05</StuffEffectMultiplierInsulation_Cold>
+        <StuffEffectMultiplierInsulation_Heat>0.05</StuffEffectMultiplierInsulation_Heat>	
 	</statBases>
 	<equippedStatOffsets>
-
+		<GlobalLearningFactor>.20</GlobalLearningFactor>
+		<MentalBreakThreshold>-0.05</MentalBreakThreshold>
+		<ResearchSpeed>0.1</ResearchSpeed>
 	</equippedStatOffsets>
+	<recipeMaker>
+      <workAmount>30000</workAmount>
+	  <skillRequirements>
+			<Intellectual>8</Intellectual>
+	  </skillRequirements>
+	  <researchPrerequisite>
+		<li>TM_ArcaneArtifacts</li>
+	  </researchPrerequisite>
+    </recipeMaker>
+	<costStuffCount>100</costStuffCount>
+	<stuffCategories>
+		<li>Fabric</li>
+		<li>Leathery</li>
+	</stuffCategories>
+	<costList>
+	  <RawMagicyte>500</RawMagicyte>
+	  <TM_Manaweave>50</TM_Manaweave>
+    </costList>
 	<thingCategories>
 	  <li>Apparel</li>
 	</thingCategories>
@@ -570,14 +645,549 @@
 		<hediff>TM_ArtifactArcaneRecoveryHD</hediff>
 		<hediffSeverity>1</hediffSeverity>
 		<maxMP>0.40</maxMP>
-		<maxMPTier>Major</maxMPTier>
+		<maxMPTier>Crafted</maxMPTier>
 		<mpRegenRate>0.40</mpRegenRate>
-		<mpRegenRateTier>Major</mpRegenRateTier>
+		<mpRegenRateTier>Crafted</mpRegenRateTier>
 		<arcaneRes>0.50</arcaneRes>
-		<arcaneResTier>Artifact</arcaneResTier>
+		<arcaneResTier>Crafted</arcaneResTier>
 	  </li>
 	</comps>
-  </ThingDef> -->
+  </ThingDef>
+  
+  <ThingDef ParentName="TM_CraftableArtifactBase">
+    <defName>TM_Artifact_BracersOfDefense</defName>
+    <label>Bracers of Defense</label>    
+    <description>Bracers crafted into hardened material that allow the wearer to block physical attacks. 40% block chance.
+
+Enchantments:
+Arcane Resistance 10%</description>
+    <graphicData> 
+		<texPath>Items/artifact_bracers_metal</texPath>
+		<graphicClass>Graphic_Single</graphicClass> 
+	</graphicData>
+	<statBases>
+		<Mass>.5</Mass>
+		<MaxHitPoints>150</MaxHitPoints>
+		<WorkToMake>20000</WorkToMake>
+		<MarketValue>890</MarketValue>
+		<StuffEffectMultiplierArmor>0.6</StuffEffectMultiplierArmor>
+		<StuffEffectMultiplierInsulation_Cold>0.05</StuffEffectMultiplierInsulation_Cold>
+        <StuffEffectMultiplierInsulation_Heat>0.05</StuffEffectMultiplierInsulation_Heat>	
+	</statBases>
+	<recipeMaker>
+      <workAmount>20000</workAmount>
+	  <skillRequirements>
+			<Intellectual>5</Intellectual>
+	  </skillRequirements>
+	  <researchPrerequisite>
+		<li>TM_ArcaneApparel</li>
+	  </researchPrerequisite>
+    </recipeMaker>
+	<costStuffCount>100</costStuffCount>
+	<stuffCategories>
+		<li>Metallic</li>
+	</stuffCategories>
+	<costList>
+	  <RawMagicyte>100</RawMagicyte>
+    </costList>
+	<thingCategories>
+	  <li>Apparel</li>
+	</thingCategories>
+	<generateCommonality>0</generateCommonality>
+	<apparel>
+	 <tags>
+	   <li>Arcane</li>
+	 </tags>
+		<layers>
+			<li>TM_Artifact</li>
+		</layers>
+		<bodyPartGroups>
+			<li>Arms</li>
+		</bodyPartGroups>
+	</apparel>
+	<comps>
+	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		<hasEnchantment>true</hasEnchantment>
+		<hediff>TM_ArtifactBlockHD</hediff>
+		<hediffSeverity>1</hediffSeverity>
+		<arcaneRes>0.10</arcaneRes>
+		<arcaneResTier>Minor</arcaneResTier>
+	  </li>
+	</comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="TM_CraftableArtifactBase">
+    <defName>TM_Artifact_BracersOfDeflection</defName>
+    <label>Bracers of Deflection</label>    
+    <description>Bracers crafted into reactive material that allow the wearer to block attacks and deflect projectiles. 30% block chance, all blocked attacks are deflected against enemies within 8 cells.
+
+Enchantments:
+Arcane Resistance 10%</description>
+    <graphicData> 
+		<texPath>Items/artifact_bracers_metal</texPath>
+		<graphicClass>Graphic_Single</graphicClass> 
+	</graphicData>
+	<statBases>
+		<Mass>.5</Mass>
+		<MaxHitPoints>150</MaxHitPoints>
+		<WorkToMake>20000</WorkToMake>
+		<MarketValue>935</MarketValue>
+		<StuffEffectMultiplierArmor>0.5</StuffEffectMultiplierArmor>
+		<StuffEffectMultiplierInsulation_Cold>0.05</StuffEffectMultiplierInsulation_Cold>
+        <StuffEffectMultiplierInsulation_Heat>0.05</StuffEffectMultiplierInsulation_Heat>	
+	</statBases>
+	<recipeMaker>
+      <workAmount>25000</workAmount>
+	  <skillRequirements>
+			<Intellectual>6</Intellectual>
+	  </skillRequirements>
+	  <researchPrerequisite>
+		<li>TM_ArcaneApparel</li>
+	  </researchPrerequisite>
+    </recipeMaker>
+	<costStuffCount>120</costStuffCount>
+	<stuffCategories>
+		<li>Metallic</li>
+	</stuffCategories>
+	<costList>
+	  <RawMagicyte>100</RawMagicyte>
+    </costList>
+	<thingCategories>
+	  <li>Apparel</li>
+	</thingCategories>
+	<generateCommonality>0</generateCommonality>
+	<apparel>
+	 <tags>
+	   <li>Arcane</li>
+	 </tags>
+		<layers>
+			<li>TM_Artifact</li>
+		</layers>
+		<bodyPartGroups>
+			<li>Arms</li>
+		</bodyPartGroups>
+	</apparel>
+	<comps>
+	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		<hasEnchantment>true</hasEnchantment>
+		<hediff>TM_ArtifactDeflectHD</hediff>
+		<hediffSeverity>1</hediffSeverity>
+		<arcaneRes>0.10</arcaneRes>
+		<arcaneResTier>Minor</arcaneResTier>
+	  </li>
+	</comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="TM_CraftableArtifactBase">
+    <defName>TM_Artifact_RingOfKeenIntellect</defName>
+    <label>Ring of Keen Intellect</label>    
+    <description>A ring that expands the mind and heightens mental acuity but increases mental stress.
+
+Enchantments:
+XP Gain +25%</description>
+    <graphicData> 
+		<texPath>Items/artifact_magicring</texPath>
+		<graphicClass>Graphic_Single</graphicClass> 
+	</graphicData>
+	<statBases>
+		<Mass>.05</Mass>
+		<MaxHitPoints>200</MaxHitPoints>
+		<WorkToMake>30000</WorkToMake>
+		<MarketValue>2100</MarketValue>
+	</statBases>
+	<equippedStatOffsets>
+		<GlobalLearningFactor>.35</GlobalLearningFactor>
+		<MentalBreakThreshold>0.05</MentalBreakThreshold>
+		<ResearchSpeed>0.25</ResearchSpeed>
+		<PsychicSensitivity>0.15</PsychicSensitivity>
+	</equippedStatOffsets>
+	<recipeMaker>
+      <workAmount>30000</workAmount>
+	  <skillRequirements>
+			<Intellectual>8</Intellectual>
+	  </skillRequirements>
+	  <researchPrerequisite>
+		<li>TM_ArcaneArtifacts</li>
+	  </researchPrerequisite>
+    </recipeMaker>
+	<costList>
+	  <RawMagicyte>250</RawMagicyte>
+	  <Silver>200</Silver>
+	  <Jade>50</Jade>
+    </costList>
+	<thingCategories>
+	  <li>Apparel</li>
+	</thingCategories>
+	<generateCommonality>0</generateCommonality>
+	<apparel>
+	 <tags>
+	   <li>Arcane</li>
+	 </tags>
+		<layers>
+			<li>TM_Artifact</li>
+		</layers>
+		<bodyPartGroups>
+			<li>RightHand</li>
+		</bodyPartGroups>
+	</apparel>
+	<comps>
+	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		<hasEnchantment>true</hasEnchantment>
+		<xpGain>0.25</xpGain>
+		<xpGainTier>Crafted</xpGainTier>
+	  </li>
+	</comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="TM_CraftableArtifactBase">
+    <defName>TM_Artifact_RingOfBlood</defName>
+    <label>Ring of Blood</label>    
+    <description>A ring inset with a dark stone; currents of deep red and black swirl beneath its surface. This type of ring was first created by an ancient vampire to increase blood reserves and can be used by a blood mage to store blood magic.
+
+The Ring of Blood's power depends on the fame of its bearer and will grow with each human downed or killed.</description>
+    <graphicData> 
+		<texPath>Items/artifact_bloodring</texPath>
+		<graphicClass>Graphic_Single</graphicClass> 
+	</graphicData>
+	<statBases>
+		<Mass>.05</Mass>
+		<MaxHitPoints>200</MaxHitPoints>
+		<WorkToMake>40000</WorkToMake>
+		<MarketValue>1900</MarketValue>
+	</statBases>
+	<recipeMaker>
+      <workAmount>40000</workAmount>
+	  <skillRequirements>
+			<Intellectual>8</Intellectual>
+	  </skillRequirements>
+	  <researchPrerequisite>
+		<li>TM_ArcaneArtifacts</li>
+	  </researchPrerequisite>
+    </recipeMaker>
+	<costList>
+	  <RawMagicyte>250</RawMagicyte>
+	  <Silver>200</Silver>
+	  <Jade>50</Jade>
+    </costList>
+	<thingCategories>
+	  <li>Apparel</li>
+	</thingCategories>
+	<generateCommonality>0</generateCommonality>
+	<apparel>
+	 <tags>
+	   <li>Arcane</li>
+	 </tags>
+		<layers>
+			<li>TM_Artifact</li>
+		</layers>
+		<bodyPartGroups>
+			<li>RightHand</li>
+		</bodyPartGroups>
+	</apparel>
+	<comps>
+	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		<hasEnchantment>true</hasEnchantment>
+		<hediff>TM_Artifact_BloodBoostHD</hediff>
+		<hediffSeverity>1</hediffSeverity>
+	  </li>
+	</comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="TM_CraftableArtifactBase">
+    <defName>TM_Artifact_RingOfEternalBlue</defName>
+    <label>Ring of the Eternal Blue</label>    
+    <description>A ring that seems to pulse with a soft blue light. This ring increases psychic sensitivity and reciprocates the psychic sensitivity of its bearer.
+
+The Ring of Eternal Blue will increase a psionic's energy proportionally with their psychic sensitivity.</description>
+    <graphicData> 
+		<texPath>Items/artifact_magicring</texPath>
+		<graphicClass>Graphic_Single</graphicClass> 
+	</graphicData>
+	<statBases>
+		<Mass>.05</Mass>
+		<MaxHitPoints>200</MaxHitPoints>
+		<WorkToMake>40000</WorkToMake>
+		<MarketValue>2000</MarketValue>
+	</statBases>
+	<equippedStatOffsets>
+		<PsychicSensitivity>0.25</PsychicSensitivity>
+	</equippedStatOffsets>
+	<recipeMaker>
+      <workAmount>40000</workAmount>
+	  <skillRequirements>
+			<Intellectual>8</Intellectual>
+	  </skillRequirements>
+	  <researchPrerequisite>
+		<li>TM_ArcaneArtifacts</li>
+	  </researchPrerequisite>
+    </recipeMaker>
+	<costList>
+	  <RawMagicyte>250</RawMagicyte>
+	  <Silver>250</Silver>
+	  <Jade>50</Jade>
+    </costList>
+	<thingCategories>
+	  <li>Apparel</li>
+	</thingCategories>
+	<generateCommonality>0</generateCommonality>
+	<apparel>
+	 <tags>
+	   <li>Arcane</li>
+	 </tags>
+		<layers>
+			<li>TM_Artifact</li>
+		</layers>
+		<bodyPartGroups>
+			<li>RightHand</li>
+		</bodyPartGroups>
+	</apparel>
+	<comps>
+	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		<hasEnchantment>true</hasEnchantment>
+		<hediff>TM_Artifact_PsionicBoostHD</hediff>
+		<hediffSeverity>1</hediffSeverity>
+	  </li>
+	</comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="TM_CraftableArtifactBase">
+    <defName>TM_Artifact_RingOfMalice</defName>
+    <label>Ring of Malice</label>    
+    <description>This ring gives off a dark aura and is perpetually cold to touch. The Ring of Malice increases the idle and maximum hate levels of a death knight.
+
+The Ring of Malice's power depends on the fame of its bearer and will grow with each wound taken or inflicted.</description>
+    <graphicData> 
+		<texPath>Items/artifact_ring</texPath>
+		<graphicClass>Graphic_Single</graphicClass> 
+	</graphicData>
+	<statBases>
+		<Mass>.05</Mass>
+		<MaxHitPoints>200</MaxHitPoints>
+		<WorkToMake>40000</WorkToMake>
+		<MarketValue>1900</MarketValue>
+	</statBases>
+	<recipeMaker>
+      <workAmount>40000</workAmount>
+	  <skillRequirements>
+			<Intellectual>8</Intellectual>
+	  </skillRequirements>
+    </recipeMaker>
+	<costList>
+	  <RawMagicyte>250</RawMagicyte>
+	  <Silver>200</Silver>
+	  <Jade>50</Jade>
+    </costList>
+	<thingCategories>
+	  <li>Apparel</li>
+	</thingCategories>
+	<generateCommonality>0</generateCommonality>
+	<apparel>
+	 <tags>
+	   <li>Arcane</li>
+	 </tags>
+		<layers>
+			<li>TM_Artifact</li>
+		</layers>
+		<bodyPartGroups>
+			<li>RightHand</li>
+		</bodyPartGroups>
+	</apparel>
+	<comps>
+	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		<hasEnchantment>true</hasEnchantment>
+		<hediff>TM_Artifact_HateBoostHD</hediff>
+		<hediffSeverity>1</hediffSeverity>
+	  </li>
+	</comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="TM_BuyableArtifactBase">
+    <defName>TM_Artifact_OrbOfConviction</defName>
+    <label>Orb Of Conviction</label>    
+    <description>Also known as the Traitors Trinket, Orb of Insanity, and Mind Thief - the Orb of Conviction is a powerful and dangerous artifact. When filled with the conviction and magic of a caster, it can be used to press that conviction upon another.
+	
+If successful, the target will immediately join the casters faction, but will be affected by psychic shock.
+
+Only the most powerful mages can direct the power of this artifact; even then, it will exact a heavy price. The orb will implode once the spell has been cast and can only be used once.</description>
+    <graphicData> 
+		<texPath>UI/orb_conviction</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<drawSize>(.5, .5)</drawSize>
+	</graphicData>
+	<statBases>
+		<Mass>.05</Mass>
+		<MaxHitPoints>100</MaxHitPoints>
+		<MarketValue>1500</MarketValue>
+	</statBases>
+	<thingCategories>
+	  <li>Apparel</li>
+	</thingCategories>
+	<generateCommonality>0</generateCommonality>
+	<apparel>
+	 <tags>
+	   <li>Arcane</li>
+	 </tags>
+		<layers>
+			<li>TM_Artifact</li>
+		</layers>
+		<bodyPartGroups>
+			<li>RightHand</li>
+		</bodyPartGroups>
+	</apparel>
+	<comps>
+	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		<hasEnchantment>true</hasEnchantment>
+		<hasAbility>true</hasAbility>
+	  </li>
+      <li Class="AbilityUser.CompProperties_AbilityItem">
+        <Abilities>
+			<li>TM_Artifact_Conviction</li>
+		</Abilities>
+        <AbilityUserClass>TorannMagic.CompAbilityUserMagic</AbilityUserClass>
+      </li>
+	</comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="TM_BuyableArtifactBase">
+    <defName>TM_Artifact_OrbOfSouls</defName>
+    <label>Orb of Souls (empty)</label>    
+    <description>The Orb of Souls is a powerful and dangerous artifact. It requires no external power and can extract the soul of a pawn possessing traits.
+	
+If successful, the Orb of Souls will absorb up to three traits from the target; the target will lose the absorbed traits. The process is almost always lethal.
+
+Once filled, the Orb of Souls can be used to transfers the absorbed traits into another human-like pawn.</description>
+    <graphicData> 
+		<texPath>UI/orb_souls</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<drawSize>(.5, .5)</drawSize>
+	</graphicData>
+	<statBases>
+		<Mass>.05</Mass>
+		<MaxHitPoints>100</MaxHitPoints>
+		<MarketValue>1500</MarketValue>
+	</statBases>
+	<thingCategories>
+	  <li>Apparel</li>
+	</thingCategories>
+	<generateCommonality>0</generateCommonality>
+	<apparel>
+	 <tags>
+	   <li>Arcane</li>
+	 </tags>
+		<layers>
+			<li>TM_Artifact</li>
+		</layers>
+		<bodyPartGroups>
+			<li>RightHand</li>
+		</bodyPartGroups>
+	</apparel>
+	<comps>
+	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		<hasEnchantment>true</hasEnchantment>
+		<hasAbility>true</hasAbility>
+	  </li>
+      <li Class="AbilityUser.CompProperties_AbilityItem">
+        <Abilities>
+			<li>TM_Artifact_TraitThief</li>
+		</Abilities>
+<!--         <AbilityUserClass>TorannMagic.CompAbilityUserMagic</AbilityUserClass> -->
+      </li>
+	</comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="TM_ArtifactBase">
+    <defName>TM_Artifact_OrbOfSouls_Full</defName>
+    <label>Orb of Souls (filled)</label>    
+    <description>The Orb of Souls is a powerful and dangerous artifact. This orb has absorbed traits and can be used to infuse these traits into a human-like pawn.
+
+Conflicting traits can never transfer into the target pawn. If the pawn possesses over 7 traits, then there is a 75% chance that a random, existing trait will be replaced with the trait being infused.
+
+The orb will implode and be destroyed once the traits have been released.</description>
+    <graphicData> 
+		<texPath>UI/orb_souls_full</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<drawSize>(.5, .5)</drawSize>
+	</graphicData>
+	<statBases>
+		<Mass>.05</Mass>
+		<MaxHitPoints>100</MaxHitPoints>
+		<MarketValue>1500</MarketValue>
+	</statBases>
+	<thingCategories>
+	  <li>Apparel</li>
+	</thingCategories>
+	<generateCommonality>0</generateCommonality>
+	<apparel>
+	 <tags>
+	   <li>Arcane</li>
+	 </tags>
+		<layers>
+			<li>TM_Artifact</li>
+		</layers>
+		<bodyPartGroups>
+			<li>RightHand</li>
+		</bodyPartGroups>
+	</apparel>
+	<comps>
+	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		<hasEnchantment>true</hasEnchantment>
+		<hasAbility>true</hasAbility>
+	  </li>
+      <li Class="AbilityUser.CompProperties_AbilityItem">
+        <Abilities>
+			<li>TM_Artifact_TraitInfuse</li>
+		</Abilities>
+<!--         <AbilityUserClass>TorannMagic.CompAbilityUserMagic</AbilityUserClass> -->
+      </li>
+	</comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="TM_BuyableArtifactBase">
+	<thingClass>ThingWithComps</thingClass>
+    <defName>TM_Artifact_OrbOfEternal</defName>
+    <label>Orb of the Eternal</label>
+    <description>A single use infusion of magical energy prepared to heal wounds, restore limbs, and cure diseases. The healing energy will target and heal the single worst health condition affecting someone at any given time.
+
+Orbs of the Eternal have been used by mages, rulers, and the elite to prolong life. These orbs are valuable and rare due mostly to the secrecy surrounding the process of crafting an orb.</description>
+    <graphicData>
+      <texPath>UI/orb_eternal</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <drawSize>(.5, .5)</drawSize>
+    </graphicData>
+	<thingCategories>
+      <li>Items</li>
+    </thingCategories>
+    <statBases>
+		<Mass>.1</Mass>
+		<MaxHitPoints>100</MaxHitPoints>
+      <MarketValue>1500</MarketValue>
+	  <WorkToMake>20000</WorkToMake>
+    </statBases>
+	<recipeMaker>
+      <workAmount>20000</workAmount>
+	  <skillRequirements>
+			<Intellectual>8</Intellectual>
+	  </skillRequirements>
+    </recipeMaker>
+	<costList>
+	  <RawMagicyte>200</RawMagicyte>
+	  <Silver>20</Silver>
+	  <Jade>20</Jade>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Usable">
+        <useJob>UseItem</useJob>
+        <useLabel>Use orb of the eternal</useLabel>
+        <useDuration>300</useDuration>
+      </li>
+      <li Class="CompProperties_UseEffect">
+        <compClass>CompUseEffect_FixWorstHealthCondition</compClass>
+      </li>
+      <li Class="CompProperties_UseEffect">
+        <compClass>CompUseEffect_DestroySelf</compClass>
+      </li>
+    </comps>
+  </ThingDef>
   
 
 </Defs>

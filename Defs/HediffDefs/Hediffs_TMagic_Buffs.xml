@@ -1939,4 +1939,24 @@
 	</stages>
   </HediffDef>
   
+  <HediffDef>
+    <defName>TM_BlurHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Blur</label>
+    <defaultLabelColor>(0.0,0.5,1.0)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<minSeverity>0.001</minSeverity>
+	<maxSeverity>1.0</maxSeverity>
+	<initialSeverity>1.0</initialSeverity>
+	<isBad>false</isBad>
+	<comps>
+	  <li>
+        <compClass>TorannMagic.HediffComp_Blur</compClass>
+      </li>  
+    </comps>
+  </HediffDef>
+  
 </Defs>

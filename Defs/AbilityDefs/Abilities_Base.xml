@@ -79,10 +79,13 @@
     <uiIconPath>Spells/invis</uiIconPath>
   </AbilityUser.AbilityDef>
   
-  <AbilityUser.AbilityDef Name="BaseMightAbility" Abstract="True">
+  <AbilityUser.AbilityDef Name="BaseMightAbility" Abstract="True"> 
     <abilityClass>TorannMagic.MightAbility</abilityClass>
     <uiIconPath>Spells/invis</uiIconPath>
   </AbilityUser.AbilityDef>
-
+  
+  <AbilityUser.AbilityDef Name="BaseArtifactAbility" Abstract="True">
+    <uiIconPath>Spells/invis</uiIconPath>
+  </AbilityUser.AbilityDef>
 
 </Defs>

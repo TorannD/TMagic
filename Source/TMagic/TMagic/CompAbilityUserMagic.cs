@@ -154,6 +154,8 @@ namespace TorannMagic
         public bool spell_EnchantedAura = false;        
         public bool spell_Shapeshift = false;
         public bool spell_ShapeshiftDW = false;
+        public bool spell_Blur = false;
+        public bool spell_BlankMind = false;
 
         private bool item_StaffOfDefender = false;
 
@@ -2667,23 +2669,33 @@ namespace TorannMagic
                 }
                 if (this.spell_Heater == true)
                 {
-                    this.RemovePawnAbility(TorannMagicDefOf.TM_Heater);
-                    this.AddPawnAbility(TorannMagicDefOf.TM_Heater);
+                    //if (this.summonedHeaters == null || (this.summonedHeaters != null && this.summonedHeaters.Count <= 0))
+                    //{
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_Heater);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Heater);
+                    //}
                 }
                 if (this.spell_Cooler == true)
                 {
-                    this.RemovePawnAbility(TorannMagicDefOf.TM_Cooler);
-                    this.AddPawnAbility(TorannMagicDefOf.TM_Cooler);
+                    //if(this.summonedCoolers == null || (this.summonedCoolers != null && this.summonedCoolers.Count <= 0))
+                    //{
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_Cooler);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Cooler);
+                    //}
                 }
                 if (this.spell_PowerNode == true)
                 {
-                    this.RemovePawnAbility(TorannMagicDefOf.TM_PowerNode);
-                    this.AddPawnAbility(TorannMagicDefOf.TM_PowerNode);
+                    //if (this.summonedPowerNodes == null || (this.summonedPowerNodes != null && this.summonedPowerNodes.Count <= 0))
+                    //{
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_PowerNode);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_PowerNode);
+                    //}
                 }
                 if (this.spell_Sunlight == true)
                 {
                     this.RemovePawnAbility(TorannMagicDefOf.TM_Sunlight);
                     this.AddPawnAbility(TorannMagicDefOf.TM_Sunlight);
+                    
                 }
                 if (this.spell_DryGround == true)
                 {
@@ -2726,7 +2738,7 @@ namespace TorannMagic
                     this.AddPawnAbility(TorannMagicDefOf.TM_Firestorm);
                 }
                 if (this.spell_SummonMinion == true && !abilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner))
-                {
+                {                    
                     this.RemovePawnAbility(TorannMagicDefOf.TM_SummonMinion);
                     this.AddPawnAbility(TorannMagicDefOf.TM_SummonMinion);
                 }
@@ -2751,9 +2763,14 @@ namespace TorannMagic
                     this.AddPawnAbility(TorannMagicDefOf.TM_EyeOfTheStorm);
                 }
                 if (this.spell_ManaShield == true)
-                {
+                {                    
                     this.RemovePawnAbility(TorannMagicDefOf.TM_ManaShield);
                     this.AddPawnAbility(TorannMagicDefOf.TM_ManaShield);
+                }
+                if (this.spell_Blur == true)
+                {
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_Blur);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Blur);
                 }
                 if (this.spell_FoldReality == true)
                 {
@@ -2802,8 +2819,11 @@ namespace TorannMagic
                 }
                 if (this.spell_FertileLands == true)
                 {
-                    this.RemovePawnAbility(TorannMagicDefOf.TM_FertileLands);
-                    this.AddPawnAbility(TorannMagicDefOf.TM_FertileLands);
+                    //if (this.fertileLands == null || (this.fertileLands != null && this.fertileLands.Count <= 0))
+                    //{
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_FertileLands);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_FertileLands);
+                    //}
                 }
                 if (this.spell_PsychicShock == true)
                 {
@@ -2814,6 +2834,11 @@ namespace TorannMagic
                 {
                     this.RemovePawnAbility(TorannMagicDefOf.TM_Scorn);
                     this.AddPawnAbility(TorannMagicDefOf.TM_Scorn);
+                }
+                if (this.spell_BlankMind == true)
+                {
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_BlankMind);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_BlankMind);
                 }
                 if (this.spell_ShadowStep == true)
                 {
@@ -4860,7 +4885,7 @@ namespace TorannMagic
             {
                 adjustedManaCost = 0;
             }
-            return adjustedManaCost;           
+            return Mathf.Max(adjustedManaCost, (.5f * magicDef.manaCost));           
         }
 
         public override List<HediffDef> IgnoredHediffs()
@@ -6925,6 +6950,10 @@ namespace TorannMagic
                     _maxMP += -((.2f - (.02f * heartofstone.level)) * this.summonedSentinels.Count);
                 }
             }
+            if(this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BlurHD))
+            {
+                _maxMP += -.2f;
+            }
             MagicPowerSkill spirit = this.MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr");
             MagicPowerSkill clarity = this.MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
             MagicPowerSkill focus = this.MagicData.MagicPowerSkill_global_eff.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_eff_pwr");
@@ -7106,6 +7135,8 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.spell_BloodMoon, "spell_BloodMoon", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Shapeshift, "spell_Shapeshift", false, false);
             Scribe_Values.Look<bool>(ref this.spell_ShapeshiftDW, "spell_ShapeshiftDW", false, false);
+            Scribe_Values.Look<bool>(ref this.spell_Blur, "spell_Blur", false, false);
+            Scribe_Values.Look<bool>(ref this.spell_BlankMind, "spell_BlankMind", false, false);
             Scribe_Values.Look<bool>(ref this.useTechnoBitToggle, "useTechnoBitToggle", true, false);
             Scribe_Values.Look<bool>(ref this.useTechnoBitRepairToggle, "useTechnoBitRepairToggle", true, false);
             Scribe_Values.Look<bool>(ref this.useElementalShotToggle, "useElementalShotToggle", true, false);

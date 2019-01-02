@@ -42,9 +42,9 @@ namespace TorannMagic.Enchantment
         {
             CompEnchantedItem enchantedItem = ThingCompUtility.TryGetComp<CompEnchantedItem>(Find.Selector.SingleSelectedThing);
             float enchantmentMultiplier = 1;
-            if (Find.Selector.SingleSelectedThing.Stuff != null && Find.Selector.SingleSelectedThing.Stuff.defName == "TM_Manaweave") ;
+            if (Find.Selector.SingleSelectedThing.Stuff != null && Find.Selector.SingleSelectedThing.Stuff.defName == "TM_Manaweave")
             {
-                enchantmentMultiplier = 1.5f;
+                enchantmentMultiplier = 1.2f;
             }
             Rect rect = GenUI.ContractedBy(new Rect(0f, 0f, ITab_Enchantment.WinSize.x, ITab_Enchantment.WinSize.y), 10f);
             Rect rect2 = rect;
@@ -123,6 +123,59 @@ namespace TorannMagic.Enchantment
                 GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.skillTier);
                 rectLabel = enchantedItem.PhantomShiftLabel;
                 Widgets.Label(rect9, rectLabel);
+                num++;
+            }
+            Rect rect10 = GetRowRect(rect9, num);
+            if (enchantedItem.hediff != null)
+            {
+                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.skillTier);
+                rectLabel = enchantedItem.HediffLabel;
+                Widgets.Label(rect10, rectLabel);
+                num++;
+            }
+            Rect rect11 = GetRowRect(rect10, num);
+            if (enchantedItem.MagicAbilities != null && enchantedItem.MagicAbilities.Count > 0)
+            {
+                StringBuilder stringBuilder = new StringBuilder();
+                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.skillTier);
+                string abilityLabels = "Abilities: ";
+                stringBuilder.Append(abilityLabels);
+                for (int i = 0; i < enchantedItem.MagicAbilities.Count; i++)
+                {
+                    if (i + 1 < enchantedItem.MagicAbilities.Count)
+                    {
+                        stringBuilder.Append(enchantedItem.MagicAbilities[i].LabelCap + ", ");
+                    }
+                    else
+                    {
+                        stringBuilder.Append(enchantedItem.MagicAbilities[i].LabelCap);
+                    }                    
+                }
+                rectLabel = stringBuilder.ToString();
+                Widgets.Label(rect11, rectLabel);
+                num++;
+            }
+            Rect rect12 = GetRowRect(rect11, num);
+            if (enchantedItem.SoulOrbTraits != null && enchantedItem.SoulOrbTraits.Count > 0)
+            {
+                StringBuilder stringBuilder = new StringBuilder();
+                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.skillTier);
+                string abilityLabels = "Absorbed Traits: ";
+                stringBuilder.Append(abilityLabels);
+                for (int i = 0; i < enchantedItem.SoulOrbTraits.Count; i++)
+                {
+                    //abilityLabels = enchantedItem.SoulOrbTraits[i].LabelCap + "\n";
+                    if (i + 1 < enchantedItem.SoulOrbTraits.Count)
+                    {
+                        stringBuilder.Append(enchantedItem.SoulOrbTraits[i].LabelCap + ", ");
+                    }
+                    else
+                    {
+                        stringBuilder.Append(enchantedItem.SoulOrbTraits[i].LabelCap);
+                    }
+                }
+                rectLabel = stringBuilder.ToString();
+                Widgets.Label(rect12, rectLabel);
                 num++;
             }
             //rect3.yMin += Text.CalcHeight(rectLabel, rect.width);
