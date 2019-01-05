@@ -59,9 +59,9 @@ namespace TorannMagic
                     if (this.CasterPawn.RaceProps.BloodDef != null && (this.CasterPawn.RaceProps.BloodDef == ThingDefOf.Filth_Blood || settingsRef.unrestrictedBloodTypes))
                     {
                         BodyPartRecord damagePart = validParts.RandomElement();
-                        TM_Action.DamageEntities(this.CasterPawn, damagePart, 4f, 5f, TMDamageDefOf.DamageDefOf.TM_BloodyCut, this.CasterPawn);
+                        TM_Action.DamageEntities(this.CasterPawn, damagePart, 4f, 10f, TMDamageDefOf.DamageDefOf.TM_BloodyCut, this.CasterPawn);
                         damagePart = validParts.RandomElement();
-                        TM_Action.DamageEntities(this.CasterPawn, damagePart, 2f, 5f, TMDamageDefOf.DamageDefOf.TM_BloodyCut, this.CasterPawn);
+                        TM_Action.DamageEntities(this.CasterPawn, damagePart, 2f, 10f, TMDamageDefOf.DamageDefOf.TM_BloodyCut, this.CasterPawn);
                         bloodGain += 10;
                         List<Need> needs = this.CasterPawn.needs.AllNeeds;
                         for (int n = 0; n < needs.Count; n++)
