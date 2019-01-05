@@ -180,7 +180,7 @@ Arcane Resistance: +30%</description>
       <Steel>200</Steel>
       <WoodLog>50</WoodLog>
 	  <Jade>50</Jade>
-	  <Silver>200</Silver>
+	  <Silver>20</Silver>
 	  <RawMagicyte>200</RawMagicyte>
 	  <ThrumboHorn>2</ThrumboHorn>
     </costList>
@@ -646,8 +646,8 @@ Damage Boost: +40%</description>
       <Steel>120</Steel>
       <WoodLog>100</WoodLog>
 	  <Jade>50</Jade>
-	  <Gold>30</Gold>
-	  <Uranium>10</Uranium>
+	  <Gold>5</Gold>
+	  <Uranium>20</Uranium>
 	  <RawMagicyte>200</RawMagicyte>
     </costList>
 	<recipeMaker>
@@ -787,8 +787,8 @@ Augmentation adds ability: Arcane Barrier</description>
       <Steel>50</Steel>
       <WoodLog>200</WoodLog>
 	  <Jade>75</Jade>
-	  <Gold>10</Gold>
-	  <Uranium>5</Uranium>
+	  <Gold>2</Gold>
+	  <Uranium>10</Uranium>
 	  <RawMagicyte>200</RawMagicyte>
     </costList>
 	<recipeMaker>
@@ -1138,8 +1138,8 @@ Class XP Gain: -20%</description>
       <Steel>50</Steel>
       <WoodLog>250</WoodLog>
 	  <Jade>50</Jade>
-	  <Gold>20</Gold>
-	  <Silver>200</Silver>
+	  <Gold>2</Gold>
+	  <Silver>20</Silver>
 	  <RawMagicyte>250</RawMagicyte>
 	  <ThrumboHorn>1</ThrumboHorn>
     </costList>

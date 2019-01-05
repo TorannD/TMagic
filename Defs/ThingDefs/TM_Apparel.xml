@@ -262,7 +262,7 @@ Augmented by Arcane Spectre: 50% chance to deal 20% bonus damage</description>
 	<costList>
 	  <RawMagicyte>200</RawMagicyte>
       <Jade>50</Jade>
-	  <Silver>100</Silver>
+	  <Silver>10</Silver>
 	  <Cloth>50</Cloth>
     </costList>
 	<thingCategories>
@@ -731,7 +731,7 @@ Class XP Gain: +10%</description>
 	<costList>
 	  <RawMagicyte>100</RawMagicyte>
 	  <Silver>20</Silver>
-	  <Gold>50</Gold>
+	  <Gold>5</Gold>
     </costList>
 	<thingCategories>
 	  <li>Apparel</li>
@@ -813,7 +813,7 @@ Class XP Gain: +10%</description>
 	<costList>
 	  <RawMagicyte>60</RawMagicyte>
 	  <Silver>10</Silver>
-	  <Gold>20</Gold>
+	  <Gold>2</Gold>
     </costList>
 	<thingCategories>
 	  <li>Apparel</li>
@@ -892,8 +892,8 @@ Arcane Res: +10%</description>
 	</stuffCategories>
 	<costList>
 	  <RawMagicyte>100</RawMagicyte>
-	  <Silver>100</Silver>
-	  <Gold>30</Gold>
+	  <Silver>15</Silver>
+	  <Gold>3</Gold>
     </costList>
 	<thingCategories>
 	  <li>Apparel</li>

@@ -63,7 +63,7 @@ Arcane Resistance: +30%</description>
             <li>Silver</li>
           </thingDefs>
         </filter>
-        <count>200</count>
+        <count>20</count>
       </li>
 	  <li>
         <filter>
@@ -209,7 +209,7 @@ Class XP Gain: -20%</description>
             <li>Gold</li>
           </thingDefs>
         </filter>
-        <count>20</count>
+        <count>2</count>
       </li>
 	  <li>
         <filter>
@@ -217,7 +217,7 @@ Class XP Gain: -20%</description>
             <li>Silver</li>
           </thingDefs>
         </filter>
-        <count>200</count>
+        <count>20</count>
       </li>
 	  <li>
         <filter>

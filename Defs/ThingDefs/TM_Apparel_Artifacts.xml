@@ -809,7 +809,7 @@ XP Gain +25%</description>
     </recipeMaker>
 	<costList>
 	  <RawMagicyte>250</RawMagicyte>
-	  <Silver>200</Silver>
+	  <Silver>20</Silver>
 	  <Jade>50</Jade>
     </costList>
 	<thingCategories>
@@ -863,7 +863,7 @@ The Ring of Blood's power depends on the fame of its bearer and will grow with e
     </recipeMaker>
 	<costList>
 	  <RawMagicyte>250</RawMagicyte>
-	  <Silver>200</Silver>
+	  <Silver>20</Silver>
 	  <Jade>50</Jade>
     </costList>
 	<thingCategories>
@@ -920,7 +920,7 @@ The Ring of Eternal Blue will increase a psionic's energy proportionally with th
     </recipeMaker>
 	<costList>
 	  <RawMagicyte>250</RawMagicyte>
-	  <Silver>250</Silver>
+	  <Silver>25</Silver>
 	  <Jade>50</Jade>
     </costList>
 	<thingCategories>
@@ -974,7 +974,7 @@ The Ring of Malice's power depends on the fame of its bearer and will grow with 
     </recipeMaker>
 	<costList>
 	  <RawMagicyte>250</RawMagicyte>
-	  <Silver>200</Silver>
+	  <Silver>20</Silver>
 	  <Jade>50</Jade>
     </costList>
 	<thingCategories>

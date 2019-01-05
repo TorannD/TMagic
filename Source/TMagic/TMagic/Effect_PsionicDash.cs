@@ -41,7 +41,11 @@ namespace TorannMagic
             {
                 Pawn casterPawn = base.CasterPawn;
                 //this.Ability.PostAbilityAttempt();
-                
+                if (ModCheck.Validate.GiddyUp.Core_IsInitialized())
+                {
+                    ModCheck.GiddyUp.ForceDismount(base.CasterPawn);
+                }
+
                 LongEventHandler.QueueLongEvent(delegate
                 {
                     FlyingObject_PsionicDash flyingObject = (FlyingObject_PsionicDash)GenSpawn.Spawn(ThingDef.Named("FlyingObject_PsionicDash"), this.CasterPawn.Position, this.CasterPawn.Map);

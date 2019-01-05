@@ -1934,7 +1934,7 @@ Damage: 7</description>
     <label>Teleport</label>
     <uiIconPath>UI/teleport</uiIconPath>
     <description>Mass teleport spell. Creates a temporary method of long range transport; be warned, the portal collapses after a brief period causing a feedback explosion at the point the portal was created.</description>
-    <manaCost>0.40</manaCost>
+    <manaCost>0.45</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -1945,9 +1945,9 @@ Damage: 7</description>
         <defaultProjectile>Projectile_Teleport</defaultProjectile>
 		<abilityDef>TM_Teleport</abilityDef>
         <warmupTime>3</warmupTime>
-        <SecondsToRecharge>30</SecondsToRecharge>
+        <SecondsToRecharge>1800</SecondsToRecharge>
 		<burstShotCount>1</burstShotCount>
-        <range>100</range>
+        <range>40</range>
 		<isViolent>false</isViolent>
         <soundCast>ThrowGrenade</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
@@ -1989,7 +1989,7 @@ Damage: 7</description>
         <uiIconPath>UI/blink</uiIconPath>
         <description>Instantly moves the caster to the target location.
 		
-Casting time: 2s
+Casting time: .5s
 Recharge time: 10s
 Range: 30</description>
         <manaCost>0.15</manaCost>
@@ -2002,7 +2002,7 @@ Range: 30</description>
             <targetParams>
                 <canTargetLocations>true</canTargetLocations>
             </targetParams>
-            <warmupTime>2.0</warmupTime>
+            <warmupTime>.5</warmupTime>
             <SecondsToRecharge>10.0</SecondsToRecharge>
             <range>30</range>
 			<isViolent>false</isViolent>
@@ -2022,7 +2022,7 @@ Range: 30</description>
         <uiIconPath>UI/blink</uiIconPath>
         <description>Instantly moves the caster to the target location.
 		
-Casting time: .8s
+Casting time: .3s
 Recharge time: 8s
 Range: 50</description>
         <manaCost>0.15</manaCost>
@@ -2035,7 +2035,7 @@ Range: 50</description>
             <targetParams>
                 <canTargetLocations>true</canTargetLocations>
             </targetParams>
-            <warmupTime>0.8</warmupTime>
+            <warmupTime>0.3</warmupTime>
             <SecondsToRecharge>8.0</SecondsToRecharge>
             <range>50</range>
 			<isViolent>false</isViolent>
@@ -2053,7 +2053,7 @@ Range: 50</description>
         <uiIconPath>UI/blink</uiIconPath>
         <description>Instantly moves the caster to the target location.
 		
-Casting time: .6s
+Casting time: .1s
 Recharge time: 6s
 Range: 70</description>
         <manaCost>0.15</manaCost>
@@ -2066,7 +2066,7 @@ Range: 70</description>
             <targetParams>
                 <canTargetLocations>true</canTargetLocations>
             </targetParams>
-            <warmupTime>0.6</warmupTime>
+            <warmupTime>0.1</warmupTime>
             <SecondsToRecharge>6.0</SecondsToRecharge>
             <range>70</range>
 			<isViolent>false</isViolent>
@@ -2084,7 +2084,7 @@ Range: 70</description>
         <uiIconPath>UI/blink</uiIconPath>
         <description>Instantly moves the caster to the target location.
 		
-Casting time: .4s
+Casting time: 0s
 Recharge time: 5s
 Range: 90</description>
         <manaCost>0.15</manaCost>
@@ -2097,7 +2097,7 @@ Range: 90</description>
             <targetParams>
                 <canTargetLocations>true</canTargetLocations>
             </targetParams>
-            <warmupTime>0.4</warmupTime>
+            <warmupTime>0</warmupTime>
             <SecondsToRecharge>5.0</SecondsToRecharge>
             <range>90</range>
 			<isViolent>false</isViolent>
@@ -2452,7 +2452,7 @@ Range: 100</description>
         <label>Gateway</label>
         <uiIconPath>UI/gateway2</uiIconPath>
         <description>Folds reality to open a gateway to another player controlled location and instantly moves all pawns and items in a 7 cell radius around the target cell to the caster.</description>
-        <manaCost>0.75</manaCost>
+        <manaCost>0.80</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_FoldReality</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -2466,7 +2466,7 @@ Range: 100</description>
 			  <canTargetLocations>false</canTargetLocations>
 			</targetParams>
             <warmupTime>3</warmupTime>
-            <SecondsToRecharge>600</SecondsToRecharge>
+            <SecondsToRecharge>2400</SecondsToRecharge>
             <range>0</range>
 			<isViolent>false</isViolent>
             <burstShotCount>1</burstShotCount>

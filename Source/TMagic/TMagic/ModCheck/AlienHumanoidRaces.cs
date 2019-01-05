@@ -14,9 +14,10 @@ namespace TorannMagic.ModCheck
         {
             bool traitIsAllowed = true;
             //Log.Message("checking for alien races...");
-            if (AlienHumanoidRaces.IsInitialized())
+
+            if (Validate.AlienHumanoidRaces.IsInitialized())
             {
-                //Log.Message("initialized. Checking if " + thingDef.defName + " is an alien race...");
+                Log.Message("initialized. Checking if " + thingDef.defName + " is an alien race...");
                 ThingDef_AlienRace alienDef = thingDef as ThingDef_AlienRace;
                 if (alienDef != null && alienDef.alienRace != null)
                 {
@@ -30,8 +31,8 @@ namespace TorannMagic.ModCheck
                         foreach (Backstory bs in pawn.story.AllBackstories)
                         {
                             IEnumerable<BackstoryDef> enumerable = from def in DefDatabase<BackstoryDef>.AllDefs
-                                                                   where (def.backstory == bs)
-                                                                   select def;
+                                                                    where (def.backstory == bs)
+                                                                    select def;
                             foreach (BackstoryDef current in enumerable)
                             {
                                 //Log.Message(current.LabelCap + " has disallowed traits: " + current.disallowedTraits.Count);
@@ -46,54 +47,12 @@ namespace TorannMagic.ModCheck
                                 }
                             }
                         }
-                    }                    
+                    }
                 }
             }
+
             //Log.Message("trait " + traitString + " is allowed: " + traitIsAllowed);
             return traitIsAllowed;
-        }
-
-        public static bool IsInitialized()
-        {
-            bool initialized = false;
-            foreach (ModContentPack p in LoadedModManager.RunningMods)
-            {
-                if (p.Name == "Humanoid Alien Races 2.0")
-                {
-                    initialized = true;
-                }
-            }
-            return initialized;
-        }
-    }
-
-    public static class GiddyUp
-    {
-
-        public static bool Core_IsInitialized()
-        {
-            bool initialized = false;
-            foreach (ModContentPack p in LoadedModManager.RunningMods)
-            {
-                if (p.Name == "Giddy-Up! Core")
-                {
-                    initialized = true;
-                }
-            }
-            return initialized;
-        }
-
-        public static bool BM_IsInitialized()
-        {
-            bool initialized = false;
-            foreach (ModContentPack p in LoadedModManager.RunningMods)
-            {
-                if (p.Name == "Giddy-Up! Battle Mounts")
-                {
-                    initialized = true;
-                }
-            }
-            return initialized;
-        }
+        }        
     }
 }

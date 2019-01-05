@@ -40,6 +40,11 @@ namespace TorannMagic
             {
                 Pawn casterPawn = base.CasterPawn;
                 //this.Ability.PostAbilityAttempt();
+                if (ModCheck.Validate.GiddyUp.Core_IsInitialized())
+                {
+                    ModCheck.GiddyUp.ForceDismount(base.CasterPawn);
+                }
+
                 LongEventHandler.QueueLongEvent(delegate
                 {
                     FlyingObject_ValiantCharge flyingObject = (FlyingObject_ValiantCharge)GenSpawn.Spawn(ThingDef.Named("FlyingObject_ValiantCharge"), this.CasterPawn.Position, this.CasterPawn.Map);

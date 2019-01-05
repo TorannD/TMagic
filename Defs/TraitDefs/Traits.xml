@@ -257,10 +257,10 @@
 			<description>[PAWN_nameDef] is attuned with the forces of nature.</description>
 			<degree>4</degree>
 			<statOffsets>
-				<ImmunityGainSpeed>0.3</ImmunityGainSpeed>
+				<ImmunityGainSpeed>0.15</ImmunityGainSpeed>
 				<ToxicSensitivity>-0.20</ToxicSensitivity>
-				<TameAnimalChance>0.40</TameAnimalChance>
-				<TrainAnimalChance>0.20</TrainAnimalChance>
+				<PlantWorkSpeed>.25</PlantWorkSpeed>
+				<PlantHarvestYield>.25</PlantHarvestYield>
 				<SocialImpact>-.10</SocialImpact>
 				<NegotiationAbility>-.10</NegotiationAbility>
 				<TradePriceImprovement>-.10</TradePriceImprovement>
@@ -1052,8 +1052,8 @@
 					<ButcheryFleshSpeed>0.05</ButcheryFleshSpeed>
 					<SmeltingSpeed>-0.10</SmeltingSpeed>
 					<ConstructionSpeed>-.10</ConstructionSpeed>
-					<TameAnimalChance>.05</TameAnimalChance>
-					<TrainAnimalChance>.05</TrainAnimalChance>
+					<TameAnimalChance>.10</TameAnimalChance>
+					<TrainAnimalChance>.10</TrainAnimalChance>
                 </statOffsets>
 		  </li>
 		  <li>
@@ -1071,8 +1071,8 @@
 					<ButcheryFleshSpeed>0.10</ButcheryFleshSpeed>
 					<SmeltingSpeed>-0.15</SmeltingSpeed>
 					<ConstructionSpeed>-.15</ConstructionSpeed>
-					<TameAnimalChance>.08</TameAnimalChance>
-					<TrainAnimalChance>.08</TrainAnimalChance>
+					<TameAnimalChance>.12</TameAnimalChance>
+					<TrainAnimalChance>.12</TrainAnimalChance>
                 </statOffsets>
 		  </li>
 		  <li>
@@ -1090,8 +1090,8 @@
 					<ButcheryFleshSpeed>0.15</ButcheryFleshSpeed>
 					<SmeltingSpeed>-0.18</SmeltingSpeed>
 					<ConstructionSpeed>-.18</ConstructionSpeed>
-					<TameAnimalChance>.10</TameAnimalChance>
-					<TrainAnimalChance>.10</TrainAnimalChance>
+					<TameAnimalChance>.14</TameAnimalChance>
+					<TrainAnimalChance>.14</TrainAnimalChance>
                 </statOffsets>
 		  </li>
 		  <li>
@@ -1109,8 +1109,8 @@
 					<ButcheryFleshSpeed>0.20</ButcheryFleshSpeed>
 					<SmeltingSpeed>-0.20</SmeltingSpeed>
 					<ConstructionSpeed>-.20</ConstructionSpeed>
-					<TameAnimalChance>.12</TameAnimalChance>
-					<TrainAnimalChance>.12</TrainAnimalChance>
+					<TameAnimalChance>.15</TameAnimalChance>
+					<TrainAnimalChance>.15</TrainAnimalChance>
 					
                 </statOffsets>
 		  </li>

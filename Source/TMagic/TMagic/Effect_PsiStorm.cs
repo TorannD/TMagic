@@ -40,9 +40,13 @@ namespace TorannMagic
             if (flag)
             {
                 Pawn casterPawn = base.CasterPawn;
-                this.Ability.PostAbilityAttempt();
+                //this.Ability.PostAbilityAttempt();
                 Thing psiOrb = new Thing();
                 psiOrb.def = TorannMagicDefOf.FlyingObject_PsiStorm;
+                if (ModCheck.Validate.GiddyUp.Core_IsInitialized())
+                {
+                    ModCheck.GiddyUp.ForceDismount(base.CasterPawn);
+                }
 
                 LongEventHandler.QueueLongEvent(delegate
                 {

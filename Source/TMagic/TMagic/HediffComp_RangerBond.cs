@@ -37,23 +37,26 @@ namespace TorannMagic
         private void Initialize()
         {
             bool spawned = base.Pawn.Spawned;
-            if (spawned)
+            if (bonderPawn == null)
             {
-                MoteMaker.ThrowHeatGlow(base.Pawn.DrawPos.ToIntVec3(), base.Pawn.Map, 2f);
-            }
-            List<Pawn> mapPawns = this.Pawn.Map.mapPawns.AllPawnsSpawned;
-            for (int i = 0; i < mapPawns.Count(); i++)
-            {
-                if (!mapPawns[i].DestroyedOrNull() && mapPawns[i].Spawned && !mapPawns[i].Downed && mapPawns[i].RaceProps.Humanlike)
+                if (spawned)
                 {
-                    CompAbilityUserMight comp = mapPawns[i].GetComp<CompAbilityUserMight>();
-                    if (comp.IsMightUser && comp.bondedPet != null)
+                    MoteMaker.ThrowHeatGlow(base.Pawn.DrawPos.ToIntVec3(), base.Pawn.Map, 2f);
+                }
+                List<Pawn> mapPawns = this.Pawn.Map.mapPawns.AllPawnsSpawned;
+                for (int i = 0; i < mapPawns.Count(); i++)
+                {
+                    if (!mapPawns[i].DestroyedOrNull() && mapPawns[i].Spawned && !mapPawns[i].Downed && mapPawns[i].RaceProps.Humanlike)
                     {
-                        if (comp.bondedPet == this.Pawn)
+                        CompAbilityUserMight comp = mapPawns[i].GetComp<CompAbilityUserMight>();
+                        if (comp.IsMightUser && comp.bondedPet != null)
                         {
-                            this.bonderPawn = comp.Pawn;
-                            break;
-                        }                        
+                            if (comp.bondedPet == this.Pawn)
+                            {
+                                this.bonderPawn = comp.Pawn;
+                                break;
+                            }
+                        }
                     }
                 }
             }

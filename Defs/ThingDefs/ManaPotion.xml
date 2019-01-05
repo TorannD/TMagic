@@ -16,7 +16,8 @@
     <rotatable>false</rotatable>
     <statBases>
       <WorkToMake>1000</WorkToMake>
-      <MarketValue>177</MarketValue>
+      <MarketValue>90</MarketValue>
+	  <SellPriceFactor>0.6</SellPriceFactor>
       <Mass>0.1</Mass>
     </statBases>
 <!-- 	<thingCategories>

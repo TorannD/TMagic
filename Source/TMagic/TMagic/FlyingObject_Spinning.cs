@@ -22,6 +22,7 @@ namespace TorannMagic
         protected Thing launcher;
         protected Thing assignedTarget;
         protected Thing flyingThing;
+        private bool drafted = false;
 
         public float force = 1f;
 
@@ -99,6 +100,7 @@ namespace TorannMagic
             Scribe_References.Look<Thing>(ref this.assignedTarget, "assignedTarget", false);
             Scribe_References.Look<Thing>(ref this.launcher, "launcher", false);
             Scribe_Deep.Look<Thing>(ref this.flyingThing, "flyingThing", new object[0]);
+            Scribe_Values.Look<bool>(ref this.drafted, "drafted", false, false);
         }
 
         private void Initialize()
@@ -133,6 +135,10 @@ namespace TorannMagic
             
             bool spawned = flyingThing.Spawned;            
             pawn = launcher as Pawn;
+            if (pawn != null && pawn.Drafted)
+            {
+                this.drafted = true;
+            }
             if (spawned)
             {               
                 flyingThing.DeSpawn();
@@ -303,7 +309,11 @@ namespace TorannMagic
                 SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);                
 
                 GenSpawn.Spawn(this.flyingThing, base.Position, base.Map);
-                Thing p = this.flyingThing;
+                Pawn p = this.flyingThing as Pawn;
+                if (p.IsColonist && this.drafted)
+                {
+                    p.drafter.Drafted = true;
+                }
                 if (this.flyingThing is Pawn)
                 {
                     if (this.earlyImpact)

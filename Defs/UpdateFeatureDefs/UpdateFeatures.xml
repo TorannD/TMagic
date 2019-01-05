@@ -4,68 +4,7 @@
 		<modNameReadable>A RimWorld Of Magic</modNameReadable>
 		<modIdentifier>ARimWorldOfMagic</modIdentifier>
 		<linkUrl>https://ludeon.com/forums/index.php?topic=37161.0</linkUrl>
-	</HugsLib.UpdateFeatureDef>	
-	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_2_2_8</defName>
-		<assemblyVersion>2.2.8</assemblyVersion>
-		<content>
-**Magic Development: Update #1**
-
-Magic development updates will focus on adding new methods to develop and improve the colony through magical means.
-
-New work type: Magic - mages selected for this work type will automatically perform various magic related tasks such as charging a portal or crafting at an arcane workbench; work type can be toggled under work settings
-
-New research: Arcane Storage - allows construction of the Arcane Capacitor and Dimensional Mana Pocket
-
-New research: Arcane cultivation - allows growing and creation of Pomanasyrrium, a fruit that enhances arcane senses
-
-New structure: Arcane Capacitor - allows mages to transfer mana into the arcane capacitor and absorb it at a later time
-
-New structure: Dimensional Mana Pocket - similar to the arcane capacitor but has significantly more storage capacity and discharge range but redistributes mana at a slower rate
-
-New plant: Pomanasyrrium bush - produces fruit typically consumed as a delicacy, pomanasyrrium has unique properties that enhance a mages access to mana.  This chemical is called Syrrium and can be extracted from raw pomanasyrrium to concentrate the effects.
-
-Tweaks:
-Undead will not auto-undraft
-Arcane apparel (all pieces) will inherit defense and insulation properties of the material used in creation; any magic apparel with specific material requirements were replaced with stuff categories
-Added options to the mod settings to disable appearance changes for undead animals and pawns
-Added an option to toggle mage and fighter level up messages
-Added a gizmo for the technomancer to toggle the repair function
-
-Bug fixes: 
-Maps will no longer close when using the succubus ability 'Scorn' and the succubus is the only player owned pawn on the map
-Fixed a bug with autocast phase strike and blink that was selecting the incorrect target during haul/load jobs
-Wildman pawns will not generate errors if they are a mage or fighter
-Rangers cannot bond animals that belong to another faction and will dismiss a bonded animal that is a member of a caravan if they choose to form another bond
-Necromancer ability 'Consume Corpse' will not generate errors if a vampire (or pawn type lacking certain needs) uses the ability
-		</content>
-	</HugsLib.UpdateFeatureDef>	
-	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_2_2_9</defName>
-		<assemblyVersion>2.2.9</assemblyVersion>
-		<content>
-**Magic Development: Update #2**
-
-*Research: Arcane Forge - forge items with a combination of technology and raw arcane power
-*Research: Forge Replication - enhance the arcane forge with a technique that allows it to replicate the design of almost any craftable item
-
-*Structure: Arcane Forge - a powerful crafting table that dramatically accelerates crafting speeds and can apply these bonuses to any design it replicates; the forge can only be used by mages and consumes mana during the crafting process
-
-*Plant: Paracyte thornbush - a delicate plant known for its keen beauty - its slow to grow but able to produce small quantities of magicyte; can also grow without light but at a slower rate
-
-*Material: Manaweave - cloth infused with magicyte and arcane runes that enhances the magical enchantments of any apparel made from manaweave
-
-Tweaks:
-Psychic shock is less likely to deal lethal brain damage; implemented several tweaks to improve its performance
-Sentinels will only evaluate prisoners as threats if the prisoner is performing hostile actions
-
-Bug fixes: 
-Druids can now write their Arcane Tome correctly
-Fixed a bug with Overdrive that was generated when turrets had a null map (eg when mounted on a mechanoid)
-Fixed several bugs with resurrection that could occur if the corpse moved, was being carried, or was destroyed or if the game was saved and loaded during the resurrection process
-Fixed a bug with the mana drain incident if the player was present on 2 or more maps
-		</content>
-	</HugsLib.UpdateFeatureDef>	
+	</HugsLib.UpdateFeatureDef>		
 	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
 		<defName>ARimWorldOfMagic_2_3_0</defName>
 		<assemblyVersion>2.3.0</assemblyVersion>
@@ -144,6 +83,29 @@ Ability cost reduction is now hard-capped at 50% of the base ability cost
 
 Bug Fixes:
 Faceless reversal will reflect projectiles from turrets
+
+--See mod discord announcements for full details! - https://discord.gg/ksksHj --
+		</content>
+	</HugsLib.UpdateFeatureDef>
+		<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+		<defName>ARimWorldOfMagic_2_3_3</defName>
+		<assemblyVersion>2.3.3</assemblyVersion>
+		<content>
+Update 2.3.3
+
+**Tweaks**
+Paracyte thornbush leaches mana from the atmosphere; each bush reduces mana regeneration by 1%
+
+Druid trait focus changed from tame/train animals to plants
+Mana potion market value adjust; 
+Mana shield absorbs up to 10 damage per hit, excess damage will harm the target
+Fighters and mages add wealth to the colony; the higher the class level, the more wealth is added
+
+Bug Fixes:
+The magical heater allows bills to be worked
+Compatibility for Giddy-up! - no longer despawns a mount if a flight ability is used
+Compatibility for Rimmu-Nation Weapons and ability users
+Crafted apparel correctly accounts for silver/gold crafting modifiers
 
 --See mod discord announcements for full details! - https://discord.gg/ksksHj --
 		</content>

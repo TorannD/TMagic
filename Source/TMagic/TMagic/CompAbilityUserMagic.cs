@@ -4945,14 +4945,14 @@ namespace TorannMagic
             {
                 foreach (Hediff current in list)
                 {
-                    if (current.def.defName == "TM_HediffInvulnerable") 
+                    if (current.def == TorannMagicDefOf.TM_HediffInvulnerable) 
                     {
                         absorbed = true;
                         MoteMaker.MakeStaticMote(AbilityUser.Position, AbilityUser.Map, ThingDefOf.Mote_ExplosionFlash, 10);
                         dinfo.SetAmount(0);
                         return;
                     }
-                    if (current.def.defName == "TM_LichHD" && this.damageMitigationDelay < this.age)
+                    if (current.def == TorannMagicDefOf.TM_LichHD && this.damageMitigationDelay < this.age)
                     {
                         absorbed = true;
                         int mitigationAmt = 4;
@@ -4977,7 +4977,7 @@ namespace TorannMagic
                         abilityUser.TakeDamage(dinfo);
                         return;
                     }
-                    if (current.def.defName == "TM_HediffEnchantment_phantomShift" && Rand.Chance(.2f))
+                    if (current.def == TorannMagicDefOf.TM_HediffEnchantment_phantomShift && Rand.Chance(.2f))
                     {
                         absorbed = true;
                         MoteMaker.MakeStaticMote(AbilityUser.Position, AbilityUser.Map, ThingDefOf.Mote_ExplosionFlash, 8);
@@ -4987,7 +4987,7 @@ namespace TorannMagic
                     }
                     if (arcaneRes !=0 && resMitigationDelay < this.age)
                     {
-                        if (current.def.defName == "TM_HediffEnchantment_arcaneRes")
+                        if (current.def == TorannMagicDefOf.TM_HediffEnchantment_arcaneRes)
                         {
                             if (dinfo.Def.defName.Contains("TM_") || dinfo.Def.defName == "FrostRay" || dinfo.Def.defName == "Snowball" || dinfo.Def.defName == "Iceshard" || dinfo.Def.defName == "Firebolt")
                             {
@@ -5000,7 +5000,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if (current.def.defName == "TM_HediffShield")
+                    if (current.def == TorannMagicDefOf.TM_HediffShield)
                     {
                         float sev = current.Severity;
                         absorbed = true;
@@ -5031,14 +5031,22 @@ namespace TorannMagic
                 
                         return;
                     }
-                    if (current.def.defName == "TM_ManaShieldHD")
+                    if (current.def == TorannMagicDefOf.TM_ManaShieldHD && this.damageMitigationDelay < this.age)
                     {
                         float sev = this.Mana.CurLevel;
                         absorbed = true;
                         int actualDmg = 0;
                         float dmgAmt = (float)dinfo.Amount;
-                        float dmgToSev = 0.01f;
-                        sev = sev - (dmgAmt * dmgToSev);
+                        float dmgToSev = 0.02f;
+                        if (dmgAmt >= 11)
+                        {
+                            actualDmg = Mathf.RoundToInt(dmgAmt - 10);                            
+                            sev = sev - (10 * dmgToSev);
+                        }
+                        else
+                        {
+                            sev = sev - (dmgAmt * dmgToSev);
+                        }
                         this.Mana.CurLevel = sev;
                         if (sev < 0)
                         {
@@ -5048,7 +5056,9 @@ namespace TorannMagic
                             abilityUser.health.RemoveHediff(current);
                         }
                         DisplayShield(abilityUser, dinfo, sev);
+                        this.damageMitigationDelay = this.age + 2;
                         dinfo.SetAmount(actualDmg);
+                        abilityUser.TakeDamage(dinfo);
                         return;
                     }
 

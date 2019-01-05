@@ -181,7 +181,7 @@ namespace TorannMagic
                                 {
                                     if (FactionUtility.HostileTo(this.Pawn.Faction, allPawns[i].Faction))
                                     {
-                                        if(ModOptions.ModCompatibilityCheck.PrisonLaborIsActive)
+                                        if(ModCheck.Validate.PrisonLabor.IsInitialized())
                                         {
                                             if(!allPawns[i].IsPrisoner)
                                             {

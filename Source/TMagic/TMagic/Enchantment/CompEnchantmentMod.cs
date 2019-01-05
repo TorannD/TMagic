@@ -16,10 +16,10 @@ namespace TorannMagic.Enchantment
         private static void AddComp()
         {
             //unrelated, single time load mod check
-            foreach (ModContentPack p in LoadedModManager.RunningMods)
-            {
-                Log.Message(p.Name + "");
-            }
+            //foreach (ModContentPack p in LoadedModManager.RunningMods)
+            //{
+            //    Log.Message(p.Name + "");
+            //}
 
             //&& def.HasComp(typeof(CompQuality))
             IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs

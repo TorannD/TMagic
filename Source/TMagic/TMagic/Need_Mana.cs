@@ -41,6 +41,9 @@ namespace TorannMagic
 
         private int lastGainTick;
 
+        private float paracyteCountReduction = 0;
+        private int lastParacyteCheck = 0;
+
         public override float CurLevel
         {            
             get => base.CurLevel;
@@ -162,9 +165,15 @@ namespace TorannMagic
         }
 
         public void GainNeed(float amount)
-        {
+        {            
             if (base.pawn.Map != null && !base.pawn.Dead && !base.pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) && !base.pawn.NonHumanlikeOrWildMan())
             {
+                if(this.lastParacyteCheck < Find.TickManager.TicksGame + 3000)
+                {
+                    List<Thing> paracyteBushes = this.pawn.Map.listerThings.ThingsOfDef(TorannMagicDefOf.TM_Plant_Paracyte);
+                    int paracyteCount = paracyteBushes.Count;
+                    this.paracyteCountReduction = 0.000012f * paracyteCount;
+                }
                 Pawn pawn = base.pawn;
                 CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
                 if (comp.IsMagicUser)
@@ -282,8 +291,8 @@ namespace TorannMagic
 
                         if (pawn.Map.GameConditionManager.ConditionIsActive(TorannMagicDefOf.ManaDrain))
                         {
-                            this.curLevelInt = this.curLevelInt - amount - necroReduction;
-                            this.lastGainPct = -amount - necroReduction;
+                            this.curLevelInt = this.curLevelInt - amount - necroReduction - this.paracyteCountReduction;
+                            this.lastGainPct = -amount - necroReduction - this.paracyteCountReduction;
                             this.drainManaDrain = 2 * amount;
                             if (this.CurLevel < .01)
                             {
@@ -301,32 +310,32 @@ namespace TorannMagic
                         {
                             if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ArcaneWeakness))
                             {
-                                this.curLevelInt += amount - necroReduction;
-                                this.lastGainPct = amount - necroReduction;
+                                this.curLevelInt += amount - necroReduction - this.paracyteCountReduction;
+                                this.lastGainPct = amount - necroReduction - this.paracyteCountReduction;
                                 this.drainManaSickness = 0;
                                 this.drainManaSurge = 0;
 
                             }
                             else
                             {
-                                this.curLevelInt += (amount * 2.25f) - necroReduction;
-                                this.lastGainPct = (amount * 2.25f) - necroReduction;
+                                this.curLevelInt += (amount * 2.25f) - necroReduction - this.paracyteCountReduction;
+                                this.lastGainPct = (amount * 2.25f) - necroReduction - this.paracyteCountReduction;
                                 this.drainManaSurge = amount * 1.25f;
                             }
                         }
                         else if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ArcaneSickness))
                         {
                             //no mana gain
-                            this.lastGainPct = necroReduction;
-                            this.curLevelInt -= necroReduction;
+                            this.lastGainPct = necroReduction - this.paracyteCountReduction;
+                            this.curLevelInt -= necroReduction - this.paracyteCountReduction;
                             this.drainManaSickness = amount;
                             
                         }
                         else if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ArcaneWeakness))
                         {
                             //reduced mana gain if weakened
-                            this.lastGainPct = (amount * 0.25f) - necroReduction;
-                            this.curLevelInt += (amount * 0.25f) - necroReduction;
+                            this.lastGainPct = (amount * 0.25f) - necroReduction - this.paracyteCountReduction;
+                            this.curLevelInt += (amount * 0.25f) - necroReduction - this.paracyteCountReduction;
                             this.drainManaWeakness = amount * .75f;
                         }
                         else
@@ -335,8 +344,8 @@ namespace TorannMagic
                             this.drainManaWeakness = 0;
                             this.drainManaSurge = 0;
                             this.drainManaSickness = 0;
-                            this.lastGainPct = amount - necroReduction;
-                            this.curLevelInt += amount - necroReduction;
+                            this.lastGainPct = amount - necroReduction - this.paracyteCountReduction;
+                            this.curLevelInt += amount - necroReduction - this.paracyteCountReduction;
                            
                         }
                         //if ((lastNeed - this.curLevelInt) > .25f && (lastNeed - this.curLevelInt) < .45f)

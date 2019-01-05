@@ -38,6 +38,10 @@ namespace TorannMagic
             if (flag)
             {
                 //this.Ability.PostAbilityAttempt();
+                if (ModCheck.Validate.GiddyUp.Core_IsInitialized())
+                {
+                    ModCheck.GiddyUp.ForceDismount(base.CasterPawn);
+                }
                 base.CasterPawn.rotationTracker.Face(t.CenterVector3);
                 LongEventHandler.QueueLongEvent(delegate
                 {

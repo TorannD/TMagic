@@ -107,10 +107,10 @@ The fruit it produces, known more commonly as pomona, can be consumed raw and is
     </comps>
     <ingestible>
       <preferability>RawTasty</preferability>
-	  <joy>0.3</joy>
+	  <joy>0.02</joy>
       <joyKind>Gluttonous</joyKind>
 	  <tasteThought></tasteThought>
-	  <baseIngestTicks>32</baseIngestTicks>
+	  <baseIngestTicks>350</baseIngestTicks>
       <foodType>VegetableOrFruit</foodType>
       <optimalityOffsetHumanlikes>-25</optimalityOffsetHumanlikes>
       <optimalityOffsetFeedingAnimals>-50</optimalityOffsetFeedingAnimals>
@@ -153,7 +153,7 @@ The fruit it produces, known more commonly as pomona, can be consumed raw and is
     <ingestible>
       <preferability>RawBad</preferability>
 	  <tasteThought>AteRawFood</tasteThought>
-	  <baseIngestTicks>40</baseIngestTicks>
+	  <baseIngestTicks>120</baseIngestTicks>
       <foodType>VegetableOrFruit</foodType>
       <optimalityOffsetHumanlikes>-50</optimalityOffsetHumanlikes>
       <optimalityOffsetFeedingAnimals>10</optimalityOffsetFeedingAnimals>
@@ -181,6 +181,14 @@ The fruit it produces, known more commonly as pomona, can be consumed raw and is
 	      <li>
             <capacity>Consciousness</capacity>
             <offset>0.05</offset>
+          </li>
+		  <li>
+            <capacity>Moving</capacity>
+            <offset>-0.15</offset>
+          </li>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.2</offset>
           </li>
         </capMods>
 		<statOffsets>

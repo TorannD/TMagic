@@ -330,6 +330,7 @@ namespace TorannMagic
         public static TMAbilityDef TM_DeathBolt_II;
         public static TMAbilityDef TM_DeathBolt_III;
         public static TMAbilityDef TM_LichForm;
+        public static HediffDef TM_LichHD;
         public static ThingDef FlyingObject_DeathBolt;
         public static TMAbilityDef TM_Flight;
         public static ThingDef FlyingObject_Flight;
@@ -767,6 +768,7 @@ namespace TorannMagic
 
         //Things
         public static ThingDef RawMagicyte;
+        public static ThingDef TM_Plant_Paracyte;
         public static ThingDef TM_Syrrium;
 
         //Sounds

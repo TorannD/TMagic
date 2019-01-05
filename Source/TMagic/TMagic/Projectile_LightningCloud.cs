@@ -83,7 +83,7 @@ namespace TorannMagic
             {
                 if (((this.shockDelay + this.lastStrike) < this.age))
                 {
-                    for (int i = 0; i < 4; i++)
+                    for (int i = 0; i < 3; i++)
                     {
                         randomCell = cellRect.RandomCell;
                         if (randomCell.InBounds(map))
@@ -116,7 +116,7 @@ namespace TorannMagic
 
                     strikeInt++;
                     this.lastStrike = this.age;
-                    this.shockDelay = Rand.Range(1, 3);
+                    this.shockDelay = Rand.Range(1, 5);
 
                     bool flag1 = this.age <= duration;
                     if (!flag1)
@@ -169,6 +169,7 @@ namespace TorannMagic
             Explosion explosion = (Explosion)GenSpawn.Spawn(ThingDefOf.Explosion, center, map);
             explosion.damageFalloff = false;
             explosion.chanceToStartFire = 0.0f;
+            explosion.armorPenetration = 10;
             explosion.Position = center;
             explosion.radius = radius;
             explosion.damType = damType;
