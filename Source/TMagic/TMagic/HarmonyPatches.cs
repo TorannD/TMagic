@@ -49,6 +49,8 @@ namespace TorannMagic
                 postfix: new HarmonyMethod(type: patchType, name: nameof(AddHumanLikeOrders_RestrictEquipmentPatch)), transpiler: null);
             harmonyInstance.Patch(original: AccessTools.Method(type: typeof(CompAbilityItem), name: "PostDrawExtraSelectionOverlays"), prefix: new HarmonyMethod(type: patchType, name: nameof(CompAbilityItem_Overlay_Prefix)),
                 postfix: null, transpiler: null);
+            harmonyInstance.Patch(original: AccessTools.Method(type: typeof(Verb), name: "CanHitCellFromCellIgnoringRange"), prefix: new HarmonyMethod(type: patchType, name: nameof(RimmuNation_CHCFCIR_Patch)),
+                postfix: null, transpiler: null);
 
             //harmonyInstance.Patch(AccessTools.Method(typeof(Thing), "get_Suspended", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_Suspended_Polymorphed", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(Pawn), "get_IsColonist", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_IsColonist_Polymorphed", null), null);
@@ -113,33 +115,33 @@ namespace TorannMagic
                 }, null), new HarmonyMethod(typeof(HarmonyPatches), "TryGiveThoughts_PrefixPatch", null), null, null);
 
 
-            #region PrisonLabor
-            {
-                try
-                {
-                    ((Action)(() =>
-                    {
-                        if (ModOptions.ModCompatibilityCheck.PrisonLaborIsActive)
-                        {
-                            harmonyInstance.Patch(AccessTools.Method(typeof(PrisonLabor.JobDriver_Mine_Tweak), "ResetTicksToPickHit"), null, new HarmonyMethod(typeof(HarmonyPatches), "TM_PrisonLabor_JobDriver_Mine_Tweak"));
-                        }
-                    }))();
-                }
-                catch (TypeLoadException) { }
+            //#region PrisonLabor
+            //{
+            //    try
+            //    {
+            //        ((Action)(() =>
+            //        {
+            //            if (ModOptions.ModCompatibilityCheck.PrisonLaborIsActive)
+            //            {
+            //                harmonyInstance.Patch(AccessTools.Method(typeof(PrisonLabor.JobDriver_Mine_Tweak), "ResetTicksToPickHit"), null, new HarmonyMethod(typeof(HarmonyPatches), "TM_PrisonLabor_JobDriver_Mine_Tweak"));
+            //            }
+            //        }))();
+            //    }
+            //    catch (TypeLoadException) { }
 
-                //try
-                //{
-                //    ((Action)(() =>
-                //    {
-                //        if (AccessTools.Method(typeof(PrisonLabor.JobDriver_Mine_Tweak), nameof(PrisonLabor.JobDriver_Mine_Tweak.ExposeData)) != null)
-                //        {
-                //            harmonyInstance.Patch(AccessTools.Method(typeof(PrisonLabor.JobDriver_Mine_Tweak), "ResetTicksToPickHit"), null, new HarmonyMethod(typeof(HarmonyPatches), "TM_PrisonLabor_JobDriver_Mine_Tweak"));
-                //        }
-                //    }))();
-                //}
-                //catch (TypeLoadException) { }
-            }
-            #endregion PrisonLabor
+            //    //try
+            //    //{
+            //    //    ((Action)(() =>
+            //    //    {
+            //    //        if (AccessTools.Method(typeof(PrisonLabor.JobDriver_Mine_Tweak), nameof(PrisonLabor.JobDriver_Mine_Tweak.ExposeData)) != null)
+            //    //        {
+            //    //            harmonyInstance.Patch(AccessTools.Method(typeof(PrisonLabor.JobDriver_Mine_Tweak), "ResetTicksToPickHit"), null, new HarmonyMethod(typeof(HarmonyPatches), "TM_PrisonLabor_JobDriver_Mine_Tweak"));
+            //    //        }
+            //    //    }))();
+            //    //}
+            //    //catch (TypeLoadException) { }
+            //}
+            //#endregion PrisonLabor
 
             //#region RimQuest
             //{
@@ -158,21 +160,21 @@ namespace TorannMagic
             //}
             //#endregion RimQuest
 
-            #region Children
-            {
-                try
-                {
-                    ((Action)(() =>
-                    {
-                        if (ModOptions.ModCompatibilityCheck.ChildrenIsActive)
-                        {
-                            harmonyInstance.Patch(AccessTools.Method(typeof(PawnUtility), "TrySpawnHatchedOrBornPawn"), null, new HarmonyMethod(typeof(HarmonyPatches), "TM_Children_TrySpawnHatchedOrBornPawn_Tweak"));
-                        }
-                    }))();
-                }
-                catch (TypeLoadException) { }
-            }
-            #endregion Children           
+            //#region Children
+            //{
+            //    try
+            //    {
+            //        ((Action)(() =>
+            //        {
+            //            if (ModOptions.ModCompatibilityCheck.ChildrenIsActive)
+            //            {
+            //                harmonyInstance.Patch(AccessTools.Method(typeof(PawnUtility), "TrySpawnHatchedOrBornPawn"), null, new HarmonyMethod(typeof(HarmonyPatches), "TM_Children_TrySpawnHatchedOrBornPawn_Tweak"));
+            //            }
+            //        }))();
+            //    }
+            //    catch (TypeLoadException) { }
+            //}
+            //#endregion Children           
 
         }
 
@@ -268,6 +270,37 @@ namespace TorannMagic
         //        return true;
         //    }
         //}
+
+        [HarmonyPriority(2000)] 
+        public static bool RimmuNation_CHCFCIR_Patch(Verb __instance, IntVec3 sourceSq, IntVec3 targetLoc, bool includeCorners, ref bool __result)
+        {
+            if (__instance != null && (__instance.verbProps.verbClass.ToString().Contains("AbilityUser") || __instance.verbProps.verbClass.ToString().Contains("TorannMagic")))
+            {
+                __result = true;
+                VerbProperties verbProps = Traverse.Create(root: __instance).Field(name: "verbProps").GetValue<VerbProperties>();
+                Thing caster = Traverse.Create(root: __instance).Field(name: "caster").GetValue<Thing>();
+                if (verbProps.mustCastOnOpenGround && (!targetLoc.Standable(caster.Map) || caster.Map.thingGrid.CellContains(targetLoc, ThingCategory.Pawn)))
+                {
+                    __result = false;
+                }
+                if (verbProps.requireLineOfSight)
+                {
+                    if (!includeCorners)
+                    {
+                        if (!GenSight.LineOfSight(sourceSq, targetLoc, caster.Map, skipFirstCell: true))
+                        {
+                            __result = false;
+                        }
+                    }
+                    else if (!GenSight.LineOfSightToEdges(sourceSq, targetLoc, caster.Map, skipFirstCell: true))
+                    {
+                        __result = false;
+                    }
+                }
+                return false;
+            }
+            return true;
+        }
 
         public static bool Pawn_PathFollower_Pathfinder_Prefix(Pawn pawn, IntVec3 c, ref int __result)
         {
@@ -778,7 +811,7 @@ namespace TorannMagic
                 }
             }
         }
-       
+
         public static bool Get_Staggered(Pawn_StanceTracker __instance, ref bool __result)
         {
             if (__instance.pawn.def.defName == "TM_DemonR")
@@ -2119,11 +2152,11 @@ namespace TorannMagic
                             pawnTraits.Remove(pawnTraits[pawnTraits.Count - 1]);
                         }
                         float rnd = Rand.Range(0, 4 * (settingsRef.baseFighterChance + settingsRef.baseMageChance) + (7 * settingsRef.advFighterChance) + (15 * settingsRef.advMageChance));
-                        if (rnd < (4 * settingsRef.baseMageChance) && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Gifted, 2)))
+                        if (rnd < (4 * settingsRef.baseMageChance) && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Gifted, 2)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.Gifted.ToString()))
                         {
                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.Gifted, 2, false));
                         }
-                        else if (rnd >= 4 * settingsRef.baseMageChance && rnd < (4 * (settingsRef.baseFighterChance + settingsRef.baseMageChance)) && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.PhysicalProdigy, 2)))
+                        else if (rnd >= 4 * settingsRef.baseMageChance && rnd < (4 * (settingsRef.baseFighterChance + settingsRef.baseMageChance)) && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.PhysicalProdigy, 2)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.PhysicalProdigy.ToString()))
                         {
                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.PhysicalProdigy, 2, false));
                         }
@@ -2136,7 +2169,7 @@ namespace TorannMagic
                                 {
                                     case 1:
                                         Gladiator:;
-                                        if (settingsRef.Gladiator && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Gladiator, 4)))
+                                        if (settingsRef.Gladiator && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Gladiator, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.Gladiator.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.Gladiator, 4, false));
                                             break;
@@ -2147,7 +2180,7 @@ namespace TorannMagic
                                         }
                                     case 2:
                                         Sniper:;
-                                        if (settingsRef.Sniper && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.TM_Sniper, 4)))
+                                        if (settingsRef.Sniper && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.TM_Sniper, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.TM_Sniper.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Sniper, 0, false));
                                             break;
@@ -2158,7 +2191,7 @@ namespace TorannMagic
                                         }
                                     case 3:
                                         Bladedancer:;
-                                        if (settingsRef.Bladedancer && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Bladedancer, 4)))
+                                        if (settingsRef.Bladedancer && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Bladedancer, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.Bladedancer.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.Bladedancer, 0, false));
                                             break;
@@ -2169,7 +2202,7 @@ namespace TorannMagic
                                         }
                                     case 4:
                                         Ranger:;
-                                        if (settingsRef.Ranger && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Ranger, 4)))
+                                        if (settingsRef.Ranger && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Ranger, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.Ranger.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.Ranger, 0, false));
                                             break;
@@ -2180,7 +2213,7 @@ namespace TorannMagic
                                         }
                                     case 5:
                                         Faceless:;
-                                        if (settingsRef.Faceless && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Faceless, 4)))
+                                        if (settingsRef.Faceless && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Faceless, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.Faceless.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.Faceless, 4, false));
                                             break;
@@ -2191,7 +2224,7 @@ namespace TorannMagic
                                         }
                                     case 6:
                                         Psionic:;
-                                        if (settingsRef.Psionic && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.TM_Psionic, 4)))
+                                        if (settingsRef.Psionic && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.TM_Psionic, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.TM_Psionic.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Psionic, 4, false));
                                             break;
@@ -2202,7 +2235,7 @@ namespace TorannMagic
                                         }
                                     case 7:
                                         DeathKnight:;
-                                        if (settingsRef.DeathKnight && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.DeathKnight, 4)))
+                                        if (settingsRef.DeathKnight && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.DeathKnight, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.DeathKnight.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.DeathKnight, 4, false));
                                             break;
@@ -2227,7 +2260,7 @@ namespace TorannMagic
                                 {
                                     case 1:
                                         FireMage:;
-                                        if (settingsRef.FireMage && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.InnerFire, 4)))
+                                        if (settingsRef.FireMage && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.InnerFire, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.InnerFire.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.InnerFire, 4, false));
                                             break;
@@ -2238,7 +2271,7 @@ namespace TorannMagic
                                         }
                                     case 2:
                                         IceMage:;
-                                        if (settingsRef.IceMage && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.HeartOfFrost, 4)))
+                                        if (settingsRef.IceMage && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.HeartOfFrost, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.HeartOfFrost.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.HeartOfFrost, 4, false));
                                             break;
@@ -2249,7 +2282,7 @@ namespace TorannMagic
                                         }
                                     case 3:
                                         LitMage:;
-                                        if (settingsRef.LitMage && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.StormBorn, 4)))
+                                        if (settingsRef.LitMage && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.StormBorn, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.StormBorn.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.StormBorn, 4, false));
                                             break;
@@ -2260,7 +2293,7 @@ namespace TorannMagic
                                         }
                                     case 4:
                                         Arcanist:;
-                                        if (settingsRef.Arcanist && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Arcanist, 4)))
+                                        if (settingsRef.Arcanist && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Arcanist, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.Arcanist.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.Arcanist, 4, false));
                                             break;
@@ -2271,7 +2304,7 @@ namespace TorannMagic
                                         }
                                     case 5:
                                         Druid:;
-                                        if (settingsRef.Druid && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Druid, 4)))
+                                        if (settingsRef.Druid && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Druid, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.Druid.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.Druid, 4, false));
                                             break;
@@ -2282,7 +2315,7 @@ namespace TorannMagic
                                         }
                                     case 6:
                                         Paladin:;
-                                        if (settingsRef.Paladin && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Paladin, 4)))
+                                        if (settingsRef.Paladin && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Paladin, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.Paladin.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.Paladin, 4, false));
                                             break;
@@ -2293,7 +2326,7 @@ namespace TorannMagic
                                         }
                                     case 7:
                                         Summoner:;
-                                        if (settingsRef.Summoner && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Summoner, 4)))
+                                        if (settingsRef.Summoner && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Summoner, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.Summoner.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.Summoner, 4, false));
                                             break;
@@ -2304,7 +2337,7 @@ namespace TorannMagic
                                         }
                                     case 8:
                                         Necromancer:;
-                                        if (settingsRef.Necromancer && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Necromancer, 4)))
+                                        if (settingsRef.Necromancer && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Necromancer, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.Necromancer.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.Necromancer, 4, false));
                                             break;
@@ -2315,7 +2348,7 @@ namespace TorannMagic
                                         }
                                     case 9:
                                         Priest:;
-                                        if (settingsRef.Priest && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Priest, 4)))
+                                        if (settingsRef.Priest && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Priest, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.Priest.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.Priest, 4, false));
                                             break;
@@ -2326,7 +2359,7 @@ namespace TorannMagic
                                         }
                                     case 10:
                                         Demonkin:;
-                                        if (settingsRef.Demonkin && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Warlock, 4)) && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Succubus, 4)))
+                                        if (settingsRef.Demonkin && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Warlock, 4)) && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Succubus, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.Succubus.ToString()) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.Warlock.ToString()))
                                         {
                                             if (pawn.gender != Gender.Female)
                                             {
@@ -2343,7 +2376,7 @@ namespace TorannMagic
                                             goto Bard;
                                         }
                                     case 11:
-                                        if (settingsRef.Demonkin && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Warlock, 4)) && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Succubus, 4)))
+                                        if (settingsRef.Demonkin && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Warlock, 4)) && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Succubus, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.Succubus.ToString()) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.Warlock.ToString()))
                                         {
                                             if (pawn.gender != Gender.Male)
                                             {
@@ -2361,7 +2394,7 @@ namespace TorannMagic
                                         }
                                     case 12:
                                         Bard:;
-                                        if (settingsRef.Bard && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.TM_Bard, 4)))
+                                        if (settingsRef.Bard && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.TM_Bard, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.TM_Bard.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Bard, 0, false));
                                             break;
@@ -2372,7 +2405,7 @@ namespace TorannMagic
                                         }
                                     case 13:
                                         Geomancer:;
-                                        if (settingsRef.Geomancer && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Geomancer, 4)))
+                                        if (settingsRef.Geomancer && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Geomancer, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.Geomancer.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.Geomancer, 4, false));
                                             break;
@@ -2383,7 +2416,7 @@ namespace TorannMagic
                                         }
                                     case 14:
                                         Technomancer:;
-                                        if (settingsRef.Technomancer && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Technomancer, 4)))
+                                        if (settingsRef.Technomancer && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Technomancer, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.Technomancer.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.Technomancer, 4, false));
                                             break;
@@ -2394,7 +2427,7 @@ namespace TorannMagic
                                         }
                                     case 15:
                                         BloodMage:;
-                                        if (settingsRef.Technomancer && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.BloodMage, 4)))
+                                        if (settingsRef.Technomancer && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.BloodMage, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.BloodMage.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.BloodMage, 4, false));
                                             break;
@@ -2405,7 +2438,7 @@ namespace TorannMagic
                                         }
                                     case 16:
                                         Enchanter:;
-                                        if (settingsRef.Technomancer && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Enchanter, 4)))
+                                        if (settingsRef.Technomancer && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Enchanter, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, TorannMagicDefOf.Enchanter.ToString()))
                                         {
                                             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.Enchanter, 4, false));
                                             break;

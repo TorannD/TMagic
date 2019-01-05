@@ -44,6 +44,10 @@
       <HintPath>..\..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\AbilityUserAI.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="AlienRace">
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\839005762\Assemblies\AlienRace.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
@@ -110,6 +114,7 @@
     <Compile Include="HediffComp_Shapeshift.cs" />
     <Compile Include="HediffComp_Blood.cs" />
     <Compile Include="HediffComp_Hate.cs" />
+    <Compile Include="ModCheck\AlienHumanoidRaces.cs" />
     <Compile Include="Projectile_IgniteBlood.cs" />
     <Compile Include="Projectile_BloodMoon.cs" />
     <Compile Include="Projectile_Spite.cs" />

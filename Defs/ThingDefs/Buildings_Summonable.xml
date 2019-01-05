@@ -471,6 +471,8 @@
     <tickerType>Normal</tickerType>
     <drawerType>RealtimeOnly</drawerType>
     <fillPercent>1.0</fillPercent>
+	<hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,0)</interactionCellOffset>
     <statBases>
       <MaxHitPoints>80</MaxHitPoints>
 <!--       <WorkToBuild>200</WorkToBuild>
@@ -504,10 +506,6 @@
         <compClass>CompGatherSpot</compClass>
       </li>
     </comps>
-<!--     <designationCategory>Temperature</designationCategory> -->
-<!--     <designationHotKey>Misc1</designationHotKey> -->
-    <hasInteractionCell>false</hasInteractionCell>
-    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
     <recipes>
       <li>CookMealSimple</li>
       <li>Make_Pemmican</li>

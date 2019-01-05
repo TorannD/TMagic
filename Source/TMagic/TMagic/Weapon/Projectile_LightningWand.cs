@@ -91,6 +91,7 @@ namespace TorannMagic.Weapon
             explosion.damType = damType;
             explosion.instigator = instigator;
             explosion.damAmount = ((projectile == null) ? GenMath.RoundRandom((float)damType.defaultDamage) : modDamAmountRand);
+            explosion.armorPenetration = .8f;
             explosion.weapon = source;
             explosion.preExplosionSpawnThingDef = preExplosionSpawnThingDef;
             explosion.preExplosionSpawnChance = preExplosionSpawnChance;

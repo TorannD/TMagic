@@ -16,7 +16,7 @@ namespace TorannMagic.Weapon
             ThingDef def = this.def;
             try
             {
-                GenExplosion.DoExplosion(base.Position, map, this.def.projectile.explosionRadius, DamageDefOf.Bomb, this.launcher, this.def.projectile.GetDamageAmount(1,null), 0, SoundDefOf.Crunch, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
+                GenExplosion.DoExplosion(base.Position, map, this.def.projectile.explosionRadius, DamageDefOf.Bomb, this.launcher, this.def.projectile.GetDamageAmount(1,null), 2, SoundDefOf.Crunch, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0.1f, false);
             }
             catch
             {
@@ -66,6 +66,7 @@ namespace TorannMagic.Weapon
             explosion.instigator = instigator;
             explosion.damAmount = ((projectile == null) ? GenMath.RoundRandom((float)damType.defaultDamage) : modDamAmountRand);
             explosion.weapon = source;
+            explosion.armorPenetration = 2;
             explosion.preExplosionSpawnThingDef = preExplosionSpawnThingDef;
             explosion.preExplosionSpawnChance = preExplosionSpawnChance;
             explosion.preExplosionSpawnThingCount = preExplosionSpawnThingCount;
