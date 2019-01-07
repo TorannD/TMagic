@@ -5512,7 +5512,7 @@ namespace TorannMagic
                                                                                 select def;
                                             foreach (ChemicalDef addiction in enumerable)
                                             {
-                                                if (addiction.defName != "ROMV_VitaeAddiction")
+                                                if (addiction.defName != "ROMV_VitaeAddiction" && addiction != TorannMagicDefOf.Luciferium)
                                                 {
                                                     addictionList.AddDistinct(addiction.defName);
                                                 }

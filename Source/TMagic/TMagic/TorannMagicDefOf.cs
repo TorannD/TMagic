@@ -349,6 +349,7 @@ namespace TorannMagic
 
         public static TMAbilityDef TM_AdvancedHeal;
         public static TMAbilityDef TM_Purify;
+        public static ChemicalDef Luciferium;
         public static TMAbilityDef TM_HealingCircle;
         public static TMAbilityDef TM_HealingCircle_I;
         public static TMAbilityDef TM_HealingCircle_II;

@@ -279,7 +279,7 @@ namespace TorannMagic
                 {
                     if(inCombat)
                     {
-                        if (targetPawn.HostileTo(pawn.Faction) && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
+                        if (pawn != targetPawn && targetPawn.HostileTo(pawn.Faction) && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
                         {
                             CompAbilityUserMagic targetComp = targetPawn.GetComp<CompAbilityUserMagic>();
                             if (targetComp != null && targetComp.IsMagicUser && !targetComp.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
@@ -290,7 +290,7 @@ namespace TorannMagic
                     }                    
                     else
                     {
-                        if (!targetPawn.HostileTo(pawn.Faction) && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
+                        if (pawn != targetPawn && !targetPawn.HostileTo(pawn.Faction) && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
                         {
                             CompAbilityUserMagic targetComp = targetPawn.GetComp<CompAbilityUserMagic>();
                             if (targetComp != null && targetComp.IsMagicUser)
@@ -321,7 +321,7 @@ namespace TorannMagic
             for (int i = 0; i < mapPawns.Count; i++)
             {
                 targetPawn = mapPawns[i];
-                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !targetPawn.Downed)
+                if (pawn != targetPawn && targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !targetPawn.Downed)
                 {
                     if (inCombat)
                     {
@@ -336,7 +336,7 @@ namespace TorannMagic
                     }
                     else
                     {
-                        if (!targetPawn.HostileTo(pawn.Faction) && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
+                        if (pawn != targetPawn && !targetPawn.HostileTo(pawn.Faction) && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
                         {
                             CompAbilityUserMight targetComp = targetPawn.GetComp<CompAbilityUserMight>();
                             if (targetComp != null && targetComp.IsMightUser)

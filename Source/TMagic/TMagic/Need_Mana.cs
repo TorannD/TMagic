@@ -172,7 +172,30 @@ namespace TorannMagic
                 {
                     List<Thing> paracyteBushes = this.pawn.Map.listerThings.ThingsOfDef(TorannMagicDefOf.TM_Plant_Paracyte);
                     int paracyteCount = paracyteBushes.Count;
-                    this.paracyteCountReduction = 0.000008f * paracyteCount;
+                    List<Pawn> mapPawns = this.pawn.Map.mapPawns.AllPawnsSpawned;
+                    int mageCount = 0;
+                    for(int i =0; i < mapPawns.Count; i++)
+                    {
+                        if(mapPawns[i] != null && mapPawns[i].Spawned && !mapPawns[i].Dead && !mapPawns[i].AnimalOrWildMan())
+                        {
+                            CompAbilityUserMagic mageCheck = mapPawns[i].GetComp<CompAbilityUserMagic>();
+                            if(mageCheck != null && mageCheck.IsMagicUser && !mapPawns[i].story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                            {
+                                mageCount++;
+                            }
+                        }
+                    }
+                    
+                    int mapManaDrainerCount = paracyteCount + (2*mageCount);
+                    if(mapManaDrainerCount > 50)
+                    {
+                        mapManaDrainerCount -= 50;
+                    }
+                    else
+                    {
+                        mapManaDrainerCount = 0;
+                    }
+                    this.paracyteCountReduction = 0.000005f * mapManaDrainerCount;
                 }
                 Pawn pawn = base.pawn;
                 CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
