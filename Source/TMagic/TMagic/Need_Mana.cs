@@ -172,7 +172,7 @@ namespace TorannMagic
                 {
                     List<Thing> paracyteBushes = this.pawn.Map.listerThings.ThingsOfDef(TorannMagicDefOf.TM_Plant_Paracyte);
                     int paracyteCount = paracyteBushes.Count;
-                    this.paracyteCountReduction = 0.000012f * paracyteCount;
+                    this.paracyteCountReduction = 0.000008f * paracyteCount;
                 }
                 Pawn pawn = base.pawn;
                 CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();

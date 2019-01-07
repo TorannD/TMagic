@@ -17,7 +17,7 @@ namespace TorannMagic.ModCheck
 
             if (Validate.AlienHumanoidRaces.IsInitialized())
             {
-                Log.Message("initialized. Checking if " + thingDef.defName + " is an alien race...");
+                //Log.Message("initialized. Checking if " + thingDef.defName + " is an alien race...");
                 ThingDef_AlienRace alienDef = thingDef as ThingDef_AlienRace;
                 if (alienDef != null && alienDef.alienRace != null)
                 {

@@ -28,7 +28,7 @@ namespace TorannMagic
         private void Initialize()
         {
             bool spawned = base.Pawn.Spawned;
-            if (spawned)
+            if (spawned && base.Pawn.Map != null)
             {
                 MoteMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 3f);
             }
