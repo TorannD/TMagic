@@ -264,15 +264,20 @@ Pain:		-40%</description>
         <defName>TM_Shadow</defName>
         <label>Shadow</label>
         <uiIconPath>UI/shadow</uiIconPath>
-        <description>Blessing: Arcane augmentation that assists the worker. Summons a shadow worker to improve worker efficiency. 70% success rate.
+        <description>Creates a shadow aura around the caster that periodically buffs an ally.
 		
-Duration:		500-600s
-Physical capacity: 	+20%
-Physical demand: 	-10%
-Mood decrease:	-4</description>
-		<manaCost>0.45</manaCost>
+Shadow: Arcane augmentation that assists the worker improving their physical capacity but causes a mood decrease.
+
+Application Frequency: 	80-90s
+Duration:	500-600s
+Manipulation, Sight, Hearing, Blood filtration: +10%
+Moving, Consciousness:	+5%
+Mood decrease: -3
+
+Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
@@ -281,36 +286,22 @@ Mood decrease:	-4</description>
             <defaultProjectile>Buff_Shadow</defaultProjectile>
             <abilityDef>TM_Shadow</abilityDef>
             <warmupTime>6</warmupTime>
-            <SecondsToRecharge>600.0</SecondsToRecharge>
-            <range>40</range>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
-			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
-            <TargetAoEProperties>
-                <targetClass>Pawn</targetClass>
-                <showRangeOnSelect>true</showRangeOnSelect>
-                <friendlyFire>true</friendlyFire>
-                <startsFromCaster>false</startsFromCaster>
-                <maxTargets>3</maxTargets>
-                <range>6</range>
-            </TargetAoEProperties>
             <isPrimary>false</isPrimary>
 			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
 			<targetParams>
-                <canTargetPawns>true</canTargetPawns>
-                <canTargetBuildings>false</canTargetBuildings>
-                <canTargetSelf>true</canTargetSelf>
-                <canTargetLocations>true</canTargetLocations>
-            </targetParams>
-			<hediffsToApply>
-				<li>
-					<hediffDef>Shadow_I</hediffDef>
-					<applyChance>0.7</applyChance>
-				</li>
-			</hediffsToApply>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
 	
@@ -318,15 +309,20 @@ Mood decrease:	-4</description>
         <defName>TM_Shadow_I</defName>
         <label>Shadow</label>
         <uiIconPath>UI/shadow</uiIconPath>
-        <description>Blessing: Arcane augmentation that assists the worker. Summons a shadow worker to improve worker efficiency. 80% success rate.
+        <description>Creates a shadow aura around the caster that periodically buffs an ally.
 		
-Duration:		500-600s
-Physical capacity: 	+20%
-Physical demand: 	-10%
-Mood decrease:	-4</description>
-		<manaCost>0.45</manaCost>
+Shadow: Arcane augmentation that assists the worker improving their physical capacity but causes a mood decrease.
+
+Application Frequency: 	80-90s
+Duration:	500-600s
+Manipulation, Sight, Hearing, Talking: +20%
+Moving, Consciousness, Metabolism, Blood filtration: +10%
+Mood decrease:	-4
+
+Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
@@ -335,36 +331,22 @@ Mood decrease:	-4</description>
             <defaultProjectile>Buff_Shadow</defaultProjectile>
             <abilityDef>TM_Shadow_I</abilityDef>
             <warmupTime>5</warmupTime>
-            <SecondsToRecharge>600.0</SecondsToRecharge>
-            <range>40</range>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
-			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
-            <TargetAoEProperties>
-                <targetClass>Pawn</targetClass>
-                <showRangeOnSelect>true</showRangeOnSelect>
-                <friendlyFire>true</friendlyFire>
-                <startsFromCaster>false</startsFromCaster>
-                <maxTargets>4</maxTargets>
-                <range>8</range>
-            </TargetAoEProperties>
             <isPrimary>false</isPrimary>
 			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
 			<targetParams>
-                <canTargetPawns>true</canTargetPawns>
-                <canTargetBuildings>false</canTargetBuildings>
-                <canTargetSelf>true</canTargetSelf>
-                <canTargetLocations>true</canTargetLocations>
-            </targetParams>
-			<hediffsToApply>
-				<li>
-					<hediffDef>Shadow_I</hediffDef>
-					<applyChance>.80</applyChance>
-				</li>
-			</hediffsToApply>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
 	
@@ -372,15 +354,21 @@ Mood decrease:	-4</description>
         <defName>TM_Shadow_II</defName>
         <label>Shadow</label>
         <uiIconPath>UI/shadow</uiIconPath>
-        <description>Blessing: Arcane augmentation that assists the worker. Summons a shadow worker to improve worker efficiency. 85% success rate.
+        <description>Creates a shadow aura around the caster that periodically buffs an ally.
 		
-Duration:		1100-1250s
-Physical capacity: 	+40%
-Physical demand: 	-15%
-Mood decrease:	-6</description>
-		<manaCost>0.45</manaCost>
+Shadow: Arcane augmentation that assists the worker improving their physical capacity but causes a mood decrease.
+	
+Application Frequency: 	80-90s	
+Duration:	1100-1250s
+Manipulation, Sight, Hearing, Talking: +25%
+Moving, Metabolism, Blood filtration: +15%
+Consciousness: 	+10%
+Mood decrease:	-6
+
+Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
@@ -389,36 +377,22 @@ Mood decrease:	-6</description>
             <defaultProjectile>Buff_Shadow</defaultProjectile>
             <abilityDef>TM_Shadow_II</abilityDef>
             <warmupTime>4</warmupTime>
-            <SecondsToRecharge>600.0</SecondsToRecharge>
-            <range>40</range>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
-			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
-            <TargetAoEProperties>
-                <targetClass>Pawn</targetClass>
-                <showRangeOnSelect>true</showRangeOnSelect>
-                <friendlyFire>true</friendlyFire>
-                <startsFromCaster>false</startsFromCaster>
-                <maxTargets>5</maxTargets>
-                <range>10</range>
-            </TargetAoEProperties>
             <isPrimary>false</isPrimary>
 			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
 			<targetParams>
-                <canTargetPawns>true</canTargetPawns>
-                <canTargetBuildings>false</canTargetBuildings>
-                <canTargetSelf>true</canTargetSelf>
-                <canTargetLocations>true</canTargetLocations>
-            </targetParams>
-			<hediffsToApply>
-				<li>
-					<hediffDef>Shadow_II</hediffDef>
-					<applyChance>.85</applyChance>
-				</li>
-			</hediffsToApply>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
 	
@@ -426,15 +400,21 @@ Mood decrease:	-6</description>
         <defName>TM_Shadow_III</defName>
         <label>Shadow</label>
         <uiIconPath>UI/shadow</uiIconPath>
-        <description>Blessing: Arcane augmentation that assists the worker. Summons a shadow worker to improve worker efficiency. 90% success rate.
+        <description>Creates a shadow aura around the caster that periodically buffs an ally.
 		
-Duration:		1100-1250s
-Physical capacity: 	+60%
-Physical demand: 	-30%
-Mood decrease:	-8</description>
-		<manaCost>0.45</manaCost>
+Shadow: Arcane augmentation that assists the worker improving their physical capacity but causes a mood decrease.
+	
+Application Frequency: 	80-90s	
+Duration:	1100-1250s
+Manipulation, Sight, Hearing, Talking: +25%
+Moving, Metabolism, Blood filtration: +20%
+Consciousness: 	+15%
+Mood decrease:	-8
+
+Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
@@ -442,37 +422,23 @@ Mood decrease:	-8</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Buff_Shadow</defaultProjectile>
             <abilityDef>TM_Shadow_III</abilityDef>
-            <warmupTime>4</warmupTime>
-            <SecondsToRecharge>600.0</SecondsToRecharge>
-            <range>40</range>
+            <warmupTime>3</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
-			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
-            <TargetAoEProperties>
-                <targetClass>Pawn</targetClass>
-                <showRangeOnSelect>true</showRangeOnSelect>
-                <friendlyFire>true</friendlyFire>
-                <startsFromCaster>false</startsFromCaster>
-                <maxTargets>6</maxTargets>
-                <range>12</range>
-            </TargetAoEProperties>
             <isPrimary>false</isPrimary>
 			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
 			<targetParams>
-                <canTargetPawns>true</canTargetPawns>
-                <canTargetBuildings>false</canTargetBuildings>
-                <canTargetSelf>true</canTargetSelf>
-                <canTargetLocations>true</canTargetLocations>
-            </targetParams>
-			<hediffsToApply>
-				<li>
-					<hediffDef>Shadow_III</hediffDef>
-					<applyChance>1.0</applyChance>
-				</li>
-			</hediffsToApply>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
 
@@ -502,17 +468,21 @@ Mood decrease:	-8</description>
         <defName>TM_Soothe</defName>
         <label>Soothing Breeze</label>
         <uiIconPath>UI/soothe</uiIconPath>
-        <description>Blessing: a soothing breeze settles anxiety and lightens the mood. 70% success rate.
+        <description>Creates a soothing aura around the caster that periodically buffs an ally.
 		
-Duration:		100-117s
-Physical capacity: 	+10%
-Physical demand: 	-12%
-Pain:		-20%
-Infighting:		-10%
-Mood increase:	+2</description>
-		<manaCost>0.45</manaCost>
+Soothing Breeze: Arcane augmentation that assists the worker, reducing pain and fatigue and increasing focus.
+	
+Application Frequency: 	80-90s	
+Duration:	200-223s
+Manipulation:	+10%
+Consciousness:	+5%
+Mood decrease:	+2
+Rest, Hunger and Pain: 	-10%
+
+Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
@@ -521,37 +491,22 @@ Mood increase:	+2</description>
             <defaultProjectile>Buff_Soothe</defaultProjectile>
             <abilityDef>TM_Soothe</abilityDef>
             <warmupTime>6</warmupTime>
-            <SecondsToRecharge>600.0</SecondsToRecharge>
-            <range>40</range>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
-			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
-            <TargetAoEProperties>
-                <targetClass>Pawn</targetClass>
-                <showRangeOnSelect>true</showRangeOnSelect>
-                <friendlyFire>true</friendlyFire>
-                <startsFromCaster>false</startsFromCaster>
-                <maxTargets>5</maxTargets>
-                <range>10</range>
-            </TargetAoEProperties>
             <isPrimary>false</isPrimary>
 			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
 			<targetParams>
-                <canTargetPawns>true</canTargetPawns>
-                <canTargetBuildings>false</canTargetBuildings>
-                <canTargetSelf>true</canTargetSelf>
-                <canTargetLocations>true</canTargetLocations>
-            </targetParams>
-			<hediffsToApply>
-				<li>
-					<hediffDef>SoothingBreeze_I</hediffDef>
-					<applyChance>.7</applyChance>
-				</li>
-			</hediffsToApply>
-			
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
 	
@@ -559,17 +514,21 @@ Mood increase:	+2</description>
         <defName>TM_Soothe_I</defName>
         <label>Soothing Breeze</label>
         <uiIconPath>UI/soothe</uiIconPath>
-        <description>Blessing: a soothing breeze settles anxiety and lightens the mood. 80% success rate.
+        <description>Creates a soothing aura around the caster that periodically buffs an ally.
 		
-Duration:		100-117s
-Physical capacity: 	+10%
-Physical demand: 	-12%
-Pain:		-20%
-Infighting:		-10%
-Mood increase:	+2</description>
-		<manaCost>0.45</manaCost>
+Soothing Breeze: Arcane augmentation that assists the worker, reducing pain and fatigue and increasing focus.
+	
+Application Frequency: 	80-90s	
+Duration:	200-223s
+Manipulation: 	+15%
+Consciousness: 	+10%
+Mood decrease:	+3
+Rest, Hunger and Pain: 	-15%
+
+Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
@@ -577,38 +536,23 @@ Mood increase:	+2</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Buff_Soothe</defaultProjectile>
             <abilityDef>TM_Soothe_I</abilityDef>
-            <warmupTime>4</warmupTime>
-            <SecondsToRecharge>600.0</SecondsToRecharge>
-            <range>40</range>
+            <warmupTime>5</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
-			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
-            <TargetAoEProperties>
-                <targetClass>Pawn</targetClass>
-                <showRangeOnSelect>true</showRangeOnSelect>
-                <friendlyFire>true</friendlyFire>
-                <startsFromCaster>false</startsFromCaster>
-                <maxTargets>6</maxTargets>
-                <range>10</range>
-            </TargetAoEProperties>
             <isPrimary>false</isPrimary>
 			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
 			<targetParams>
-                <canTargetPawns>true</canTargetPawns>
-                <canTargetBuildings>false</canTargetBuildings>
-                <canTargetSelf>true</canTargetSelf>
-                <canTargetLocations>true</canTargetLocations>
-            </targetParams>
-			<hediffsToApply>
-				<li>
-					<hediffDef>SoothingBreeze_I</hediffDef>
-					<applyChance>.8</applyChance>
-				</li>
-			</hediffsToApply>
-			
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
 	
@@ -616,17 +560,21 @@ Mood increase:	+2</description>
         <defName>TM_Soothe_II</defName>
         <label>Soothing Breeze</label>
         <uiIconPath>UI/soothe</uiIconPath>
-        <description>Blessing: a soothing effect that settles nerves and focuses the mind. 85% success rate.
+        <description>Creates a soothing aura around the caster that periodically buffs an ally.
 		
-Duration:		200-223s
-Physical capacity: 	+18%
-Physical demand: 	-25%
-Pain:		-40%
-Infighting:		-20%
-Mood increase:	+4</description>
-		<manaCost>0.45</manaCost>
+Soothing Breeze: Arcane augmentation that assists the worker, reducing pain and fatigue and increasing focus
+	
+Application Frequency: 	80-90s	
+Duration:	500-600s
+Manipulation: 	+20%
+Consciousness 	+15%
+Mood decrease:	+4
+Rest, Hunger and Pain: 	-20%
+
+Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
@@ -635,37 +583,22 @@ Mood increase:	+4</description>
             <defaultProjectile>Buff_Soothe</defaultProjectile>
             <abilityDef>TM_Soothe_II</abilityDef>
             <warmupTime>4</warmupTime>
-            <SecondsToRecharge>600.0</SecondsToRecharge>
-            <range>40</range>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
-			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
-            <TargetAoEProperties>
-                <targetClass>Pawn</targetClass>
-                <showRangeOnSelect>true</showRangeOnSelect>
-                <friendlyFire>true</friendlyFire>
-                <startsFromCaster>false</startsFromCaster>
-                <maxTargets>7</maxTargets>
-                <range>12</range>
-            </TargetAoEProperties>
             <isPrimary>false</isPrimary>
 			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
 			<targetParams>
-                <canTargetPawns>true</canTargetPawns>
-                <canTargetBuildings>false</canTargetBuildings>
-                <canTargetSelf>true</canTargetSelf>
-                <canTargetLocations>true</canTargetLocations>
-            </targetParams>
-			<hediffsToApply>
-				<li>
-					<hediffDef>SoothingBreeze_II</hediffDef>
-					<applyChance>.85</applyChance>
-				</li>
-			</hediffsToApply>
-			
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
 	
@@ -673,56 +606,45 @@ Mood increase:	+4</description>
         <defName>TM_Soothe_III</defName>
         <label>Soothing Breeze</label>
         <uiIconPath>UI/soothe</uiIconPath>
-        <description>Blessing: a soothing effect that settles nerves and focuses the mind. 90% success rate.
+        <description>Creates a soothing aura around the caster that periodically buffs an ally.
 		
-Duration:		500-600s
-Physical capacity: 	+25%
-Physical demand: 	-35%
-Pain:		-40%
-Infighting:		-30%
-Mood increase:	+6</description>
-		<manaCost>0.45</manaCost>
+Soothing Breeze: Arcane augmentation that assists the worker, reducing pain and fatigue and increasing focus
+	
+Application Frequency: 	80-90s	
+Duration:	500-600s
+Manipulation: 	+25%
+Consciousness: 	+20%
+Mood decrease:	+5
+Rest, Hunger and Pain:	-25%
+
+Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
-            <defaultProjectile>Buff_Soothe</defaultProjectile>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_Soothe_III</abilityDef>
-            <warmupTime>2.5</warmupTime>
-            <SecondsToRecharge>600.0</SecondsToRecharge>
-            <range>40</range>
+            <warmupTime>3</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
-			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
-            <TargetAoEProperties>
-                <targetClass>Pawn</targetClass>
-                <showRangeOnSelect>true</showRangeOnSelect>
-                <friendlyFire>true</friendlyFire>
-                <startsFromCaster>false</startsFromCaster>
-                <maxTargets>8</maxTargets>
-                <range>15</range>
-            </TargetAoEProperties>
             <isPrimary>false</isPrimary>
 			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
 			<targetParams>
-                <canTargetPawns>true</canTargetPawns>
-                <canTargetBuildings>false</canTargetBuildings>
-                <canTargetSelf>true</canTargetSelf>
-                <canTargetLocations>true</canTargetLocations>
-            </targetParams>
-			<hediffsToApply>
-				<li>
-					<hediffDef>SoothingBreeze_III</hediffDef>
-					<applyChance>.9</applyChance>
-				</li>
-			</hediffsToApply>
-			
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
 
@@ -752,54 +674,45 @@ Mood increase:	+6</description>
         <defName>TM_RayofHope</defName>
         <label>Ray of Hope</label>
         <uiIconPath>UI/rayofhope</uiIconPath>
-        <description>Blessing: Ray of Hope energizes and motivates the soul of any it touches. 70% success rate.
+        <description>Creates an aura of hope around the caster that periodically buffs an ally.
 		
-Duration:		100-117s
-Physical capacity: 	+23%
-Infighting:		+30%
-Mood increase:	+4</description>
-		<manaCost>0.45</manaCost>
+Ray of Hope: Arcane augmentation that assists the worker, improving their physical capacities and mood
+	
+Application Frequency: 	80-90s	
+Duration:  200-223s
+Manipulation, Moving:  +10%
+Blood pumping: 	+10%
+Consciousness: 	+5%
+Mood decrease:	+4
+
+Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
-            <defaultProjectile>Buff_RayofHope</defaultProjectile>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_RayofHope</abilityDef>
             <warmupTime>6</warmupTime>
-            <SecondsToRecharge>600.0</SecondsToRecharge>
-            <range>40</range>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
-			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
-            <TargetAoEProperties>
-                <targetClass>Pawn</targetClass>
-                <showRangeOnSelect>true</showRangeOnSelect>
-                <friendlyFire>true</friendlyFire>
-                <startsFromCaster>false</startsFromCaster>
-                <maxTargets>5</maxTargets>
-                <range>10</range>
-            </TargetAoEProperties>
             <isPrimary>false</isPrimary>
 			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
 			<targetParams>
-                <canTargetPawns>true</canTargetPawns>
-                <canTargetBuildings>false</canTargetBuildings>
-                <canTargetSelf>true</canTargetSelf>
-                <canTargetLocations>true</canTargetLocations>
-            </targetParams>
-			<hediffsToApply>
-				<li>
-					<hediffDef>RayofHope_I</hediffDef>
-					<applyChance>0.7</applyChance>
-				</li>
-			</hediffsToApply>
-			
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
 
@@ -807,15 +720,20 @@ Mood increase:	+4</description>
         <defName>TM_RayofHope_I</defName>
         <label>Ray of Hope</label>
         <uiIconPath>UI/rayofhope</uiIconPath>
-        <description>Blessing: Ray of Hope energizes and motivates the soul of any it touches. 80% success rate.
+        <description>Creates an aura of hope around the caster that periodically buffs an ally.
 		
-Duration:		100-117s
-Physical capacity: 	+23%
-Infighting:		+30%
-Mood increase:	+4</description>
-		<manaCost>0.45</manaCost>
+Ray of Hope: Arcane augmentation that assists the worker, improving their physical capacities and mood
+	
+Application Frequency: 	80-90s	
+Duration: 200-223s
+Manipulation, Moving: +15%
+Consciousness, Blood pumping: +10%
+Mood decrease:	+5
+
+Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
@@ -823,38 +741,23 @@ Mood increase:	+4</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Buff_RayofHope</defaultProjectile>
             <abilityDef>TM_RayofHope_I</abilityDef>
-            <warmupTime>4</warmupTime>
-            <SecondsToRecharge>600.0</SecondsToRecharge>
-            <range>40</range>
+            <warmupTime>5</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
-			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
-            <TargetAoEProperties>
-                <targetClass>Pawn</targetClass>
-                <showRangeOnSelect>true</showRangeOnSelect>
-                <friendlyFire>true</friendlyFire>
-                <startsFromCaster>false</startsFromCaster>
-                <maxTargets>6</maxTargets>
-                <range>10</range>
-            </TargetAoEProperties>
             <isPrimary>false</isPrimary>
 			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
 			<targetParams>
-                <canTargetPawns>true</canTargetPawns>
-                <canTargetBuildings>false</canTargetBuildings>
-                <canTargetSelf>true</canTargetSelf>
-                <canTargetLocations>true</canTargetLocations>
-            </targetParams>
-			<hediffsToApply>
-				<li>
-					<hediffDef>RayofHope_I</hediffDef>
-					<applyChance>.8</applyChance>
-				</li>
-			</hediffsToApply>
-			
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
 	
@@ -862,54 +765,44 @@ Mood increase:	+4</description>
         <defName>TM_RayofHope_II</defName>
         <label>Ray of Hope</label>
         <uiIconPath>UI/rayofhope</uiIconPath>
-        <description>Blessing: Ray of Hope energizes and motivates the soul of any it touches. 85% success rate.
+        <description>Creates an aura of hope around the caster that periodically buffs an ally.
 		
-Duration:		200-223s
-Physical capacity: 	+28%
-Infighting:		+20%
-Mood increase:	+7</description>
-		<manaCost>0.45</manaCost>
+Ray of Hope: Arcane augmentation that assists the worker, improving their physical capacities and mood
+	
+Application Frequency: 80-90s	
+Duration: 500-600s
+Manipulation, Moving: +20%
+Consciousness, Blood pumping: +10%
+Mood decrease:	+6
+
+Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
-            <defaultProjectile>Buff_RayofHope</defaultProjectile>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_RayofHope_II</abilityDef>
             <warmupTime>4</warmupTime>
-            <SecondsToRecharge>600.0</SecondsToRecharge>
-            <range>40</range>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
-			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
-            <TargetAoEProperties>
-                <targetClass>Pawn</targetClass>
-                <showRangeOnSelect>true</showRangeOnSelect>
-                <friendlyFire>true</friendlyFire>
-                <startsFromCaster>false</startsFromCaster>
-                <maxTargets>7</maxTargets>
-                <range>12</range>
-            </TargetAoEProperties>
             <isPrimary>false</isPrimary>
 			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
 			<targetParams>
-                <canTargetPawns>true</canTargetPawns>
-                <canTargetBuildings>false</canTargetBuildings>
-                <canTargetSelf>true</canTargetSelf>
-                <canTargetLocations>true</canTargetLocations>
-            </targetParams>
-			<hediffsToApply>
-				<li>
-					<hediffDef>RayofHope_II</hediffDef>
-					<applyChance>.85</applyChance>
-				</li>
-			</hediffsToApply>
-			
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
 	
@@ -917,15 +810,20 @@ Mood increase:	+7</description>
         <defName>TM_RayofHope_III</defName>
         <label>Ray of Hope</label>
         <uiIconPath>UI/rayofhope</uiIconPath>
-        <description>Blessing: Ray of Hope energizes and motivates the soul of any it touches. 90% success rate.
+        <description>Creates an aura of hope around the caster that periodically buffs an ally.
 		
-Duration:		500-600s
-Physical capacity: 	+33%
-Infighting:		+5%
-Mood increase:	+10</description>
-		<manaCost>0.45</manaCost>
+Ray of Hope: Arcane augmentation that assists the worker, improving their physical capacities and mood
+	
+Application Frequency: 	80-90s	
+Duration:	500-600s
+Manipulation, Moving:  +25%
+Consciousness, Blood pumping: +10%
+Mood decrease:	+7
+
+Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Verb_BLOS</verbClass>
+            <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
 				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
@@ -933,40 +831,25 @@ Mood increase:	+10</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Buff_RayofHope</defaultProjectile>
             <abilityDef>TM_RayofHope_III</abilityDef>
-            <warmupTime>2.5</warmupTime>
-            <SecondsToRecharge>600.0</SecondsToRecharge>
-            <range>40</range>
+            <warmupTime>3</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>0</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>Message_PositiveEvent</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
-			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
-            <TargetAoEProperties>
-                <targetClass>Pawn</targetClass>
-                <showRangeOnSelect>true</showRangeOnSelect>
-                <friendlyFire>true</friendlyFire>
-                <startsFromCaster>false</startsFromCaster>
-                <maxTargets>8</maxTargets>
-                <range>15</range>
-            </TargetAoEProperties>
             <isPrimary>false</isPrimary>
 			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
 			<targetParams>
-                <canTargetPawns>true</canTargetPawns>
-                <canTargetBuildings>false</canTargetBuildings>
-                <canTargetSelf>true</canTargetSelf>
-                <canTargetLocations>true</canTargetLocations>
-            </targetParams>
-			<hediffsToApply>
-				<li>
-					<hediffDef>RayofHope_III</hediffDef>
-					<applyChance>.9</applyChance>
-				</li>
-			</hediffsToApply>
-			
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
         </MainVerb>
-   </TorannMagic.TMAbilityDef>
+    </TorannMagic.TMAbilityDef>
 
     <!-- Ray of Hope End -->
 

@@ -52,6 +52,7 @@ namespace TorannMagic
             MagicPowerSkill ver = base.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Polymorph.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Polymorph_ver");
             verVal = ver.level;
             pwrVal = pwr.level;
+            CompAbilityUserMagic comp = base.CasterPawn.GetComp<CompAbilityUserMagic>();
             this.arcaneDmg = base.CasterPawn.GetComp<CompAbilityUserMagic>().arcaneDmg;
             this.duration += (600 * verVal); 
 

@@ -21,7 +21,7 @@ namespace TorannMagic
             if (instigator is Pawn)
             {
                 Pawn meleePawn = instigator as Pawn;
-                if (dinfo.Weapon.IsMeleeWeapon || dinfo.WeaponBodyPartGroup != null)
+                if ((dinfo.Weapon != null && dinfo.Weapon.IsMeleeWeapon) || dinfo.WeaponBodyPartGroup != null)
                 {
                     DamageInfo dinfo2 = new DamageInfo(dinfo.Def, dinfo.Amount, dinfo.ArmorPenetrationInt, dinfo.Angle, reflectingPawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown, meleePawn);
                     meleePawn.TakeDamage(dinfo2);
@@ -36,7 +36,7 @@ namespace TorannMagic
             if (instigator is Pawn)
             {
                 Pawn shooterPawn = instigator as Pawn;
-                if (!dinfo.Weapon.IsMeleeWeapon && dinfo.WeaponBodyPartGroup == null)
+                if (dinfo.Weapon != null && !dinfo.Weapon.IsMeleeWeapon && dinfo.WeaponBodyPartGroup == null)
                 {
                     TM_CopyAndLaunchProjectile.CopyAndLaunchThing(shooterPawn.equipment.PrimaryEq.PrimaryVerb.verbProps.defaultProjectile, reflectingPawn, instigator, shooterPawn, ProjectileHitFlags.All, null);
                 }
@@ -74,7 +74,7 @@ namespace TorannMagic
             if (instigator is Pawn)
             {
                 Pawn shooterPawn = instigator as Pawn;
-                if (!dinfo.Weapon.IsMeleeWeapon && dinfo.WeaponBodyPartGroup == null)
+                if (dinfo.Weapon != null && !dinfo.Weapon.IsMeleeWeapon && dinfo.WeaponBodyPartGroup == null)
                 {
                     Pawn randomTarget = null;
                     randomTarget = TM_Calc.FindNearbyEnemy(reflectingPawn, (int)maxRange);
@@ -383,8 +383,8 @@ namespace TorannMagic
                         newPawn = (Pawn)PawnGenerator.GeneratePawn(spawnables.kindDef, faction);
                         newPawn.AllComps.Add(new CompPolymorph());
                         CompPolymorph compPoly = newPawn.GetComp<CompPolymorph>();
-                        CompProperties_Polymorph props = new CompProperties_Polymorph();
-                        compPoly.Initialize(props);
+                        //CompProperties_Polymorph props = new CompProperties_Polymorph();
+                        //compPoly.Initialize(props);
                         
                         if (compPoly != null)
                         {
@@ -414,7 +414,7 @@ namespace TorannMagic
                             //polymorphPawn.jobs = new Pawn_JobTracker(polymorphPawn);
                             //polymorphPawn.records = new Pawn_RecordsTracker(polymorphPawn);
                             //polymorphPawn.skills = new Pawn_SkillTracker(polymorphPawn);
-                            PawnComponentsUtility.AddAndRemoveDynamicComponents(polymorphPawn, true);
+                            //PawnComponentsUtility.AddAndRemoveDynamicComponents(polymorphPawn, true);
 
                             polymorphPawn.Name = original.Name;
                             polymorphPawn.gender = original.gender;

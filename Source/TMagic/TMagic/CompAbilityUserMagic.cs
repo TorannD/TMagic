@@ -20,6 +20,7 @@ namespace TorannMagic
 
         public bool firstTick = false;
         public bool magicPowersInitialized = false;
+        public bool magicPowersInitializedForColonist = true;
         private int resMitigationDelay = 0;
         private int damageMitigationDelay = 0;
         public int magicXPRate = 1000;
@@ -190,6 +191,7 @@ namespace TorannMagic
         private bool dismissHeaterSpell = false;
         private bool dismissPowerNodeSpell = false;
         private bool dispelEnchantWeapon = false;
+        private bool dismissEnchanterStones = false;
         public List<IntVec3> fertileLands = new List<IntVec3>();
         public bool useTechnoBitToggle = true;
         public bool useTechnoBitRepairToggle = true;
@@ -207,6 +209,7 @@ namespace TorannMagic
         public bool ArcaneForging = false;
         public List<Pawn> weaponEnchants = new List<Pawn>();
         public Thing enchanterStone = null;
+        public List<Thing> enchanterStones = new List<Thing>();
 
         private Effecter powerEffecter = null;
         private int powerModifier = 0;
@@ -1366,23 +1369,34 @@ namespace TorannMagic
                         }
                         if (Find.TickManager.TicksGame % 60 == 0)
                         {
-                            ResolveEnchantments();
-                            for (int i = 0; i < this.summonedMinions.Count; i++)
+                            if(this.Pawn.IsColonist && !this.magicPowersInitializedForColonist)
                             {
-                                Pawn evaluateMinion = this.summonedMinions[i] as Pawn;
-                                if (evaluateMinion == null || evaluateMinion.Dead || evaluateMinion.Destroyed)
+                                ResolveFactionChange();
+                            }
+                            else if(!this.Pawn.IsColonist)
+                            {
+                                this.magicPowersInitializedForColonist = false;
+                            }
+                            if (this.Pawn.IsColonist)
+                            {
+                                ResolveEnchantments();
+                                for (int i = 0; i < this.summonedMinions.Count; i++)
                                 {
-                                    this.summonedMinions.Remove(this.summonedMinions[i]);
+                                    Pawn evaluateMinion = this.summonedMinions[i] as Pawn;
+                                    if (evaluateMinion == null || evaluateMinion.Dead || evaluateMinion.Destroyed)
+                                    {
+                                        this.summonedMinions.Remove(this.summonedMinions[i]);
+                                    }
                                 }
+                                ResolveMinions();
+                                ResolveSustainers();
+                                if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
+                                {
+                                    ResolveUndead();
+                                }
+                                ResolveEffecter();
+                                ResolveClassSkills();
                             }
-                            ResolveMinions();
-                            ResolveSustainers();
-                            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
-                            {
-                                ResolveUndead();
-                            }
-                            ResolveEffecter();
-                            ResolveClassSkills();
                             if (this.Mana.CurLevel < 0)
                             {
                                 this.Mana.CurLevel = 0;
@@ -1390,8 +1404,7 @@ namespace TorannMagic
                             else if(this.Mana.CurLevel > this.Mana.MaxLevel)
                             {
                                 this.Mana.CurLevel = this.Mana.MaxLevel;
-                            }                           
-                            
+                            }
                         }
                         if(this.autocastTick < Find.TickManager.TicksGame)  //180 default
                         {
@@ -1402,7 +1415,7 @@ namespace TorannMagic
                             }
                             this.autocastTick = Find.TickManager.TicksGame + (int)Rand.Range(.8f * settingsRef.autocastEvaluationFrequency, 1.2f * settingsRef.autocastEvaluationFrequency);
                         }
-                        if(Find.TickManager.TicksGame % this.overdriveFrequency  == 0)
+                        if(Find.TickManager.TicksGame % this.overdriveFrequency == 0)
                         {
                             if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
                             {
@@ -1746,6 +1759,42 @@ namespace TorannMagic
             }
         }
 
+        public void ResolveFactionChange()
+        {
+            RemovePowers();
+            this.spell_BattleHymn = false;
+            this.RemovePawnAbility(TorannMagicDefOf.TM_BattleHymn);
+            this.spell_Blizzard = false;
+            this.RemovePawnAbility(TorannMagicDefOf.TM_Blizzard);
+            this.spell_BloodMoon = false;
+            this.RemovePawnAbility(TorannMagicDefOf.TM_BloodMoon);
+            this.spell_EyeOfTheStorm = false;
+            this.RemovePawnAbility(TorannMagicDefOf.TM_EyeOfTheStorm);
+            this.spell_Firestorm = false;
+            this.RemovePawnAbility(TorannMagicDefOf.TM_Firestorm);
+            this.spell_FoldReality = false;
+            this.RemovePawnAbility(TorannMagicDefOf.TM_FoldReality);
+            this.spell_HolyWrath = false;
+            this.RemovePawnAbility(TorannMagicDefOf.TM_HolyWrath);
+            this.spell_LichForm = false;
+            this.RemovePawnAbility(TorannMagicDefOf.TM_BattleHymn);
+            this.spell_Meteor = false;
+            this.RemovePawnAbility(TorannMagicDefOf.TM_Meteor);
+            this.spell_OrbitalStrike = false;
+            this.RemovePawnAbility(TorannMagicDefOf.TM_OrbitalStrike);
+            this.spell_PsychicShock = false;
+            this.RemovePawnAbility(TorannMagicDefOf.TM_PsychicShock);
+            this.spell_RegrowLimb = false;
+            this.spell_Resurrection = false;
+            this.spell_Scorn = false;
+            this.RemovePawnAbility(TorannMagicDefOf.TM_Scorn);
+            this.spell_Shapeshift = false;
+            this.spell_SummonPoppi = false;
+            this.RemovePawnAbility(TorannMagicDefOf.TM_SummonPoppi);
+            AssignAbilities();
+            this.magicPowersInitializedForColonist = true;
+        }
+
         public override void PostInitialize()
         {
             base.PostInitialize();
@@ -1754,890 +1803,998 @@ namespace TorannMagic
             {
                 if (this.magicPowersInitialized == false)
                 {
-                    Pawn abilityUser = base.AbilityUser;
-                    bool flag2;
+                    
                     MagicData.MagicUserLevel = 0;
                     MagicData.MagicAbilityPoints = 0;
-
-                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.InnerFire);
-                    if (flag2)
+                    AssignAbilities();
+                    if(!this.Pawn.IsColonist)
                     {
-                        //Log.Message("Initializing Inner Fire Abilities");
-                        if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
-                        {
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_RayofHope);
-                            }
-                            else
-                            { 
-                                MagicPower mpIF = this.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope);
-                                mpIF.learned = false;
-                            }
-                            if (Rand.Chance(.5f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Firebolt);
-                            }
-                            else
-                            { 
-                                MagicPower mpIF = this.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Firebolt);
-                                mpIF.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Fireclaw);
-                            }
-                            else
-                            { 
-                                MagicPower mpIF = this.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Fireclaw);
-                                mpIF.learned = false;
-                            }
-                            if (Rand.Chance(.2f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Fireball);
-                            }
-                            else
-                            { 
-                                MagicPower mpIF = this.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Fireball);
-                                mpIF.learned = false;
-                            }
-                        }
-                        else
-                        {
-                            this.AddPawnAbility(TorannMagicDefOf.TM_RayofHope);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Firebolt);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Fireclaw);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Fireball);
-                        }                       
-                    }
-                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost);
-                    if (flag2)
-                    {
-                        //Log.Message("Initializing Heart of Frost Abilities");
-                        if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
-                        {
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Soothe);
-                            }
-                            else
-                            {
-                                MagicPower mpHoF = this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Soothe);
-                                mpHoF.learned = false;
-                            }
-                            if (Rand.Chance(.5f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Icebolt);
-                            }
-                            else
-                            {
-                                MagicPower mpHoF = this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Icebolt);
-                                mpHoF.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Snowball);
-                            }
-                            else
-                            {
-                                MagicPower mpHoF = this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Snowball);
-                                mpHoF.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_FrostRay);
-                            }
-                            else
-                            {
-                                MagicPower mpHoF = this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_FrostRay);
-                                mpHoF.learned = false;
-                            }
-                            if (Rand.Chance(.7f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Rainmaker);
-                                this.spell_Rain = true;
-                            }
-                            else
-                            {
-                                MagicPower mpHoF = this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Rainmaker);
-                                mpHoF.learned = false;
-                            }
-                        }
-                        else
-                        {
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Soothe);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Icebolt);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Snowball);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_FrostRay);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Rainmaker);
-                            this.spell_Rain = true;
-                        }                        
-                    }
-                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.StormBorn);
-                    if (flag2)
-                    {
-                        //Log.Message("Initializing Storm Born Abilities");
-                        if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
-                        {
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_AMP);
-                            }
-                            else
-                            {
-                                MagicPower mpSB = this.MagicData.MagicPowersSB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_AMP);
-                                mpSB.learned = false;
-                            }
-                            if (Rand.Chance(.5f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_LightningBolt);
-                            }
-                            else
-                            {
-                                MagicPower mpSB = this.MagicData.MagicPowersSB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_LightningBolt);
-                                mpSB.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_LightningCloud);
-                            }
-                            else
-                            {
-                                MagicPower mpSB = this.MagicData.MagicPowersSB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_LightningCloud);
-                                mpSB.learned = false;
-                            }
-                            if (Rand.Chance(.2f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_LightningStorm);
-                            }
-                            else
-                            {
-                                MagicPower mpSB = this.MagicData.MagicPowersSB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_LightningStorm);
-                                mpSB.learned = false;
-                            }
-                        }
-                        else
-                        {
-                            this.AddPawnAbility(TorannMagicDefOf.TM_AMP);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_LightningBolt);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_LightningCloud);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_LightningStorm);
-                        }
-                    }
-                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist);
-                    if (flag2)
-                    {
-                        //Log.Message("Initializing Arcane Abilities");
-                        if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
-                        {
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Shadow);
-                            }
-                            else
-                            { 
-                                this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shadow).learned = false;
-                            }
-                            if (Rand.Chance(.5f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_MagicMissile);
-                            }
-                            else
-                            { 
-                                this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_MagicMissile).learned = false;
-                            }
-                            if (Rand.Chance(.7f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Blink);
-                                this.spell_Blink = true;
-                            }
-                            else
-                            { 
-                                this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Blink).learned = false;                                
-                            }
-                            if (Rand.Chance(.5f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Summon);
-                            }
-                            else
-                            {
-                                this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Summon).learned = false;
-                            }
-                            if (Rand.Chance(.2f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Teleport);
-                                this.spell_Teleport = true;
-                            }
-                            else
-                            { 
-                                this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Teleport).learned = false;                                
-                            }
-                        }
-                        else
-                        {
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Shadow);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_MagicMissile);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Blink);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Summon);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Teleport);  //Pending Redesign (graphics?)
-                            this.spell_Blink = true;
-                            this.spell_Teleport = true;
-                        }
-                    }
-                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Paladin);
-                    if (flag2)
-                    {
-                        //Log.Message("Initializing Paladin Abilities");
-                        if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
-                        {
-                            if (Rand.Chance(.5f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Heal);
-                                this.spell_Heal = true;
-                            }
-                            else
-                            {
-                                MagicPower mpP = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Heal);
-                                mpP.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Shield);
-                            }
-                            else
-                            {
-                                MagicPower mpP = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shield);
-                                mpP.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_ValiantCharge);
-                            }
-                            else
-                            {
-                                MagicPower mpP = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ValiantCharge);
-                                mpP.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Overwhelm);
-                            }
-                            else
-                            {
-                                MagicPower mpP = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Overwhelm);
-                                mpP.learned = false;
-                            }
-                        }
-                        else
-                        {
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Heal);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Shield);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_ValiantCharge);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Overwhelm);
-                            this.spell_Heal = true;
-                        }
-                    }
-                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner);
-                    if (flag2)
-                    {
-                        //Log.Message("Initializing Summoner Abilities");
-                        if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
-                        {
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_SummonMinion);
-                                this.spell_SummonMinion = true;
-                            }
-                            else
-                            {
-                                MagicPower mpS = this.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonMinion);
-                                mpS.learned = false;
-                            }
-                            if (Rand.Chance(.5f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_SummonPylon);
-                            }
-                            else
-                            {
-                                MagicPower mpS = this.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonPylon);
-                                mpS.learned = false;
-                            }
-                            if (Rand.Chance(.5f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_SummonExplosive);
-                            }
-                            else
-                            {
-                                MagicPower mpS = this.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonExplosive);
-                                mpS.learned = false;
-                            }
-                            if (Rand.Chance(.2f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_SummonElemental);
-                            }
-                            else
-                            {
-                                MagicPower mpS = this.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonElemental);
-                                mpS.learned = false;
-                            }
-                        }
-                        else
-                        {
-                            this.AddPawnAbility(TorannMagicDefOf.TM_SummonMinion);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_SummonPylon);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_SummonExplosive);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_SummonElemental);
-                            this.spell_SummonMinion = true;
-                        }
-                    }
-                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Druid);
-                    if (flag2)
-                    {
-                       // Log.Message("Initializing Druid Abilities");
-                        if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
-                        {
-                            if (Rand.Chance(.5f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Poison);
-                            }
-                            else
-                            {
-                                MagicPower mpD = this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Poison);
-                                mpD.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_SootheAnimal);
-                            }
-                            else
-                            {
-                                MagicPower mpD = this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SootheAnimal);
-                                mpD.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Regenerate);
-                            }
-                            else
-                            {
-                                MagicPower mpD = this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Regenerate);
-                                mpD.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_CureDisease);
-                            }
-                            else
-                            {
-                                MagicPower mpD = this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_CureDisease);
-                                mpD.learned = false;
-                            }
-                        }
-                        else
-                        {
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Poison);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_SootheAnimal);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Regenerate);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_CureDisease);
-                        }
-                    }
-                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || abilityUser.story.traits.HasTrait(TorannMagicDefOf.Lich);
-                    if (flag2)
-                    {
-                        //Log.Message("Initializing Necromancer Abilities");
-                        if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
-                        {
-                            if (Rand.Chance(.5f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_RaiseUndead);
-                            }
-                            else
-                            {
-                                MagicPower mpN = this.MagicData.MagicPowersN.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RaiseUndead);
-                                mpN.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_DeathMark);
-                            }
-                            else
-                            {
-                                MagicPower mpN = this.MagicData.MagicPowersN.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_DeathMark);
-                                mpN.learned = false;
-                            }
-                            if (Rand.Chance(.5f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_FogOfTorment);
-                            }
-                            else
-                            {
-                                MagicPower mpN = this.MagicData.MagicPowersN.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_FogOfTorment);
-                                mpN.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_ConsumeCorpse);
-                            }
-                            else
-                            {
-                                MagicPower mpN = this.MagicData.MagicPowersN.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ConsumeCorpse);
-                                mpN.learned = false;
-                            }
-                            if (Rand.Chance(.2f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_CorpseExplosion);
-                            }
-                            else
-                            {
-                                MagicPower mpN = this.MagicData.MagicPowersN.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_CorpseExplosion);
-                                mpN.learned = false;
-                            }
-                        }
-                        else
-                        {
-                            this.AddPawnAbility(TorannMagicDefOf.TM_RaiseUndead);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_DeathMark);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_FogOfTorment);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_ConsumeCorpse);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_CorpseExplosion);
-                        }
-                    }
-                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Priest);
-                    if (flag2)
-                    {
-                        //Log.Message("Initializing Priest Abilities");
-                        if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
-                        {
-                            if (Rand.Chance(.5f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_AdvancedHeal);
-                            }
-                            else
-                            {
-                                MagicPower mpPR = this.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_AdvancedHeal);
-                                mpPR.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Purify);
-                            }
-                            else
-                            {
-                                MagicPower mpPR = this.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Purify);
-                                mpPR.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_HealingCircle);
-                            }
-                            else
-                            {
-                                MagicPower mpPR = this.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_HealingCircle);
-                                mpPR.learned = false;
-                            }
-                            if (Rand.Chance(.4f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_BestowMight);
-                            }
-                            else
-                            {
-                                MagicPower mpPR = this.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BestowMight);
-                                mpPR.learned = false;
-                            }
-                        }
-                        else
-                        {
-                            this.AddPawnAbility(TorannMagicDefOf.TM_AdvancedHeal);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Purify);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_HealingCircle);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_BestowMight);
-                        }
-                    }
-                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Bard);
-                    if (flag2)
-                    {
-                        //Log.Message("Initializing Priest Abilities");
-                        if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
-                        {
-                            //if (Rand.Chance(.5f))
-                            //{
-                            //    this.AddPawnAbility(TorannMagicDefOf.TM_BardTraining);
-                            //}
-                            //else
-                            //{
-                            //    MagicPower mpB = this.MagicData.MagicPowersB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BardTraining);
-                            //    mpB.learned = false;
-                            //}
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Entertain);
-                            }
-                            else
-                            {
-                                MagicPower mpB = this.MagicData.MagicPowersB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Entertain);
-                                mpB.learned = false;
-                            }
-                            //if (Rand.Chance(.3f))
-                            //{
-                            //    this.AddPawnAbility(TorannMagicDefOf.TM_Inspire);
-                            //}
-                            //else
-                            //{
-                            //    MagicPower mpB = this.MagicData.MagicPowersB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Inspire);
-                            //    mpB.learned = false;
-                            //}
-                            if (Rand.Chance(.5f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Lullaby);
-                            }
-                            else
-                            {
-                                MagicPower mpB = this.MagicData.MagicPowersB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Lullaby);
-                                mpB.learned = false;
-                            }
-                        }
-                        else
-                        {
-                            //this.AddPawnAbility(TorannMagicDefOf.TM_BardTraining);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Entertain);
-                            //this.AddPawnAbility(TorannMagicDefOf.TM_Inspire);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Lullaby);
-                        }
-                    }
-                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Succubus);
-                    if (flag2)
-                    {
-                        //Log.Message("Initializing Succubus Abilities");
-                        if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
-                        {
-                            if (Rand.Chance(.7f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_SoulBond);
-                            }
-                            else
-                            {
-                                MagicPower mpSD = this.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SoulBond);
-                                mpSD.learned = false;
-                            }
-                            if (Rand.Chance(.5f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_ShadowBolt);
-                            }
-                            else
-                            {
-                                MagicPower mpSD = this.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt);
-                                mpSD.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Dominate);
-                            }
-                            else
-                            {
-                                MagicPower mpSD = this.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Dominate);
-                                mpSD.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Attraction);
-                            }
-                            else
-                            {
-                                MagicPower mpSD = this.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Attraction);
-                                mpSD.learned = false;
-                            }
-                        }
-                        else
-                        {
-                            this.AddPawnAbility(TorannMagicDefOf.TM_SoulBond);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_ShadowBolt);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Dominate);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Attraction);
-                        }
-                    }
-                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Warlock);
-                    if (flag2)
-                    {
-                        //Log.Message("Initializing Succubus Abilities");
-                        if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
-                        {
-                            if (Rand.Chance(.7f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_SoulBond);
-                            }
-                            else
-                            {
-                                MagicPower mpWD = this.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SoulBond);
-                                mpWD.learned = false;
-                            }
-                            if (Rand.Chance(.5f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_ShadowBolt);
-                            }
-                            else
-                            {
-                                MagicPower mpWD = this.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt);
-                                mpWD.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Dominate);
-                            }
-                            else
-                            {
-                                MagicPower mpWD = this.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Dominate);
-                                mpWD.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Repulsion);
-                            }
-                            else
-                            {
-                                MagicPower mpWD = this.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Repulsion);
-                                mpWD.learned = false;
-                            }
-                        }
-                        else
-                        {
-                            this.AddPawnAbility(TorannMagicDefOf.TM_SoulBond);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_ShadowBolt);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Dominate);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Repulsion);
-                        }
-                    }
-                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Geomancer);
-                    if (flag2)
-                    {
-                        //Log.Message("Initializing Heart of Frost Abilities");
-                        if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
-                        {
-                            if (Rand.Chance(.4f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Stoneskin);
-                            }
-                            else
-                            {
-                                MagicPower mpG = this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Stoneskin);
-                                mpG.learned = false;
-                            }
-                            if (Rand.Chance(.6f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Encase);
-                            }
-                            else
-                            {
-                                MagicPower mpG = this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Encase);
-                                mpG.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_EarthSprites);
-                            }
-                            else
-                            {
-                                MagicPower mpG = this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EarthSprites);
-                                mpG.learned = false;
-                            }
-                            if (Rand.Chance(.5f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_EarthernHammer);
-                            }
-                            else
-                            {
-                                MagicPower mpG = this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EarthernHammer);
-                                mpG.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Sentinel);
-                            }
-                            else
-                            {
-                                MagicPower mpG = this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Sentinel);
-                                mpG.learned = false;
-                            }
-                        }
-                        else
-                        {
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Stoneskin);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Encase);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_EarthSprites);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_EarthernHammer);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Sentinel);
-                        }
-                    }
-                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Technomancer);
-                    if (flag2)
-                    {
-                        //Log.Message("Initializing Technomancer Abilities");
-                        
-                        this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoBit).learned = false;
-                        this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoTurret).learned = false;
-                        this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoWeapon).learned = false;
-                        if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
-                        {
-                            if (Rand.Chance(.4f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_TechnoShield);
-                            }
-                            else
-                            {
-                                this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoShield).learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Sabotage);
-                            }
-                            else
-                            {
-                                this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Sabotage).learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Overdrive);
-                            }
-                            else
-                            {
-                                this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Overdrive).learned = false;
-                            }
-                            if(Rand.Chance(.3f))
-                            {
-                                this.spell_OrbitalStrike = true;
-                                this.InitializeSpell();
-                            }
-                        }
-                        else
-                        {
-                            this.AddPawnAbility(TorannMagicDefOf.TM_TechnoShield);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Sabotage);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Overdrive);
-                        }
-                    }
-                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.BloodMage);
-                    if (flag2)
-                    {
-                        //Log.Message("Initializing Heart of Frost Abilities");
-                        if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
-                        {
-                            if (Rand.Chance(1f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_BloodGift);
-                            }
-                            if (Rand.Chance(.4f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_IgniteBlood);
-                            }
-                            else
-                            {
-                                MagicPower mpBM = this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_IgniteBlood);
-                                mpBM.learned = false;
-                            }
-                            if (Rand.Chance(.4f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_BloodForBlood);
-                            }
-                            else
-                            {
-                                MagicPower mpBM = this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodForBlood);
-                                mpBM.learned = false;
-                            }
-                            if (Rand.Chance(.5f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_BloodShield);
-                            }
-                            else
-                            {
-                                MagicPower mpBM = this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodShield);
-                                mpBM.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Rend);
-                            }
-                            else
-                            {
-                                MagicPower mpBM = this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Rend);
-                                mpBM.learned = false;
-                            }
-                        }
-                        else
-                        {
-                            this.AddPawnAbility(TorannMagicDefOf.TM_BloodGift);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_IgniteBlood);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_BloodForBlood);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_BloodShield);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Rend);
-                        }
-                    }
-                    flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Enchanter);
-                    if (flag2)
-                    {
-                        //Log.Message("Initializing Heart of Frost Abilities");
-                        if (!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
-                        {
-                            if (Rand.Chance(.5f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_EnchantedBody);
-                                this.AddPawnAbility(TorannMagicDefOf.TM_EnchantedAura);
-                                this.spell_EnchantedAura = true;
-                            }
-                            else
-                            {
-                                MagicPower mpE = this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedBody);
-                                mpE.learned = false;
-                            }
-                            if (Rand.Chance(.3f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Transmutate);
-                            }
-                            else
-                            {
-                                MagicPower mpE = this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Transmutate);
-                                mpE.learned = false;
-                            }
-                            if (Rand.Chance(.4f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_EnchanterStone);
-                            }
-                            else
-                            {
-                                MagicPower mpE = this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchanterStone);
-                                mpE.learned = false;
-                            }
-                            if (Rand.Chance(.4f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_EnchantWeapon);
-                            }
-                            else
-                            {
-                                MagicPower mpE = this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantWeapon);
-                                mpE.learned = false;
-                            }
-                            if (Rand.Chance(.4f))
-                            {
-                                this.AddPawnAbility(TorannMagicDefOf.TM_Polymorph);
-                            }
-                            else
-                            {
-                                MagicPower mpE = this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Polymorph);
-                                mpE.learned = false;
-                            }
-                        }
-                        else
-                        {
-                            this.AddPawnAbility(TorannMagicDefOf.TM_EnchantedBody);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_EnchantedAura);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Transmutate);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_EnchanterStone);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_EnchantWeapon);
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Polymorph);
-                        }
+                        InitializeSpell();
                     }
                 }
 
                 this.magicPowersInitialized = true;
                 base.UpdateAbilities();                                
+            }
+        }
+
+        private void AssignAbilities()
+        {
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            float hardModeMasterChance = .35f;
+            float masterChance = .05f;
+            Pawn abilityUser = base.AbilityUser;
+            bool flag2;
+            flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.InnerFire);
+            if (flag2)
+            {
+                //Log.Message("Initializing Inner Fire Abilities");
+                if (abilityUser.IsColonist && !abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                {
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_RayofHope);
+                    }
+                    else
+                    {
+                        MagicPower mpIF = this.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope);
+                        mpIF.learned = false;
+                    }
+                    if (Rand.Chance(.5f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Firebolt);
+                    }
+                    else
+                    {
+                        MagicPower mpIF = this.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Firebolt);
+                        mpIF.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Fireclaw);
+                    }
+                    else
+                    {
+                        MagicPower mpIF = this.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Fireclaw);
+                        mpIF.learned = false;
+                    }
+                    if (Rand.Chance(.2f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Fireball);
+                    }
+                    else
+                    {
+                        MagicPower mpIF = this.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Fireball);
+                        mpIF.learned = false;
+                    }
+                }
+                else
+                {
+                    this.AddPawnAbility(TorannMagicDefOf.TM_RayofHope);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Firebolt);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Fireclaw);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Fireball);
+
+                    if(!abilityUser.IsColonist)
+                    {
+                        if((settingsRef.AIHardMode && Rand.Chance(hardModeMasterChance)) || Rand.Chance(masterChance))
+                        {
+                            this.spell_Firestorm = true;
+                        }
+                    }
+                }
+            }
+            flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost);
+            if (flag2)
+            {
+                //Log.Message("Initializing Heart of Frost Abilities");
+                if (abilityUser.IsColonist && !abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                {
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Soothe);
+                    }
+                    else
+                    {
+                        MagicPower mpHoF = this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Soothe);
+                        mpHoF.learned = false;
+                    }
+                    if (Rand.Chance(.5f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Icebolt);
+                    }
+                    else
+                    {
+                        MagicPower mpHoF = this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Icebolt);
+                        mpHoF.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Snowball);
+                    }
+                    else
+                    {
+                        MagicPower mpHoF = this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Snowball);
+                        mpHoF.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_FrostRay);
+                    }
+                    else
+                    {
+                        MagicPower mpHoF = this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_FrostRay);
+                        mpHoF.learned = false;
+                    }
+                    if (Rand.Chance(.7f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Rainmaker);
+                        this.spell_Rain = true;
+                    }
+                    else
+                    {
+                        MagicPower mpHoF = this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Rainmaker);
+                        mpHoF.learned = false;
+                    }
+                }
+                else
+                {
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Soothe);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Icebolt);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Snowball);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_FrostRay);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Rainmaker);
+                    this.spell_Rain = true;
+
+                    if (!abilityUser.IsColonist)
+                    {
+                        if ((settingsRef.AIHardMode && Rand.Chance(hardModeMasterChance)) || Rand.Chance(masterChance))
+                        {
+                            this.spell_Blizzard = true;
+                        }
+                    }
+                }
+            }
+            flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.StormBorn);
+            if (flag2)
+            {
+                //Log.Message("Initializing Storm Born Abilities");
+                if (abilityUser.IsColonist && !abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                {
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_AMP);
+                    }
+                    else
+                    {
+                        MagicPower mpSB = this.MagicData.MagicPowersSB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_AMP);
+                        mpSB.learned = false;
+                    }
+                    if (Rand.Chance(.5f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_LightningBolt);
+                    }
+                    else
+                    {
+                        MagicPower mpSB = this.MagicData.MagicPowersSB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_LightningBolt);
+                        mpSB.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_LightningCloud);
+                    }
+                    else
+                    {
+                        MagicPower mpSB = this.MagicData.MagicPowersSB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_LightningCloud);
+                        mpSB.learned = false;
+                    }
+                    if (Rand.Chance(.2f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_LightningStorm);
+                    }
+                    else
+                    {
+                        MagicPower mpSB = this.MagicData.MagicPowersSB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_LightningStorm);
+                        mpSB.learned = false;
+                    }
+                }
+                else
+                {
+                    this.AddPawnAbility(TorannMagicDefOf.TM_AMP);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_LightningBolt);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_LightningCloud);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_LightningStorm);
+
+                    if (!abilityUser.IsColonist)
+                    {
+                        if ((settingsRef.AIHardMode && Rand.Chance(hardModeMasterChance)) || Rand.Chance(masterChance))
+                        {
+                            this.spell_EyeOfTheStorm = true;
+                        }
+                    }
+                }
+            }
+            flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist);
+            if (flag2)
+            {
+                //Log.Message("Initializing Arcane Abilities");
+                if (abilityUser.IsColonist && !abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                {
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Shadow);
+                    }
+                    else
+                    {
+                        this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shadow).learned = false;
+                    }
+                    if (Rand.Chance(.5f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_MagicMissile);
+                    }
+                    else
+                    {
+                        this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_MagicMissile).learned = false;
+                    }
+                    if (Rand.Chance(.7f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Blink);
+                        this.spell_Blink = true;
+                    }
+                    else
+                    {
+                        this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Blink).learned = false;
+                    }
+                    if (Rand.Chance(.5f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Summon);
+                    }
+                    else
+                    {
+                        this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Summon).learned = false;
+                    }
+                    if (Rand.Chance(.2f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Teleport);
+                        this.spell_Teleport = true;
+                    }
+                    else
+                    {
+                        this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Teleport).learned = false;
+                    }
+                }
+                else
+                {
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Shadow);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_MagicMissile);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Blink);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Summon);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Teleport);  //Pending Redesign (graphics?)
+                    this.spell_Blink = true;
+                    this.spell_Teleport = true;
+
+                }
+            }
+            flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Paladin);
+            if (flag2)
+            {
+                //Log.Message("Initializing Paladin Abilities");
+                if (abilityUser.IsColonist && !abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                {
+                    if (Rand.Chance(.5f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Heal);
+                        this.spell_Heal = true;
+                    }
+                    else
+                    {
+                        MagicPower mpP = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Heal);
+                        mpP.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Shield);
+                    }
+                    else
+                    {
+                        MagicPower mpP = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shield);
+                        mpP.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_ValiantCharge);
+                    }
+                    else
+                    {
+                        MagicPower mpP = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ValiantCharge);
+                        mpP.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Overwhelm);
+                    }
+                    else
+                    {
+                        MagicPower mpP = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Overwhelm);
+                        mpP.learned = false;
+                    }
+                }
+                else
+                {
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Heal);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Shield);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_ValiantCharge);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Overwhelm);
+                    this.spell_Heal = true;
+
+                    if (!abilityUser.IsColonist)
+                    {
+                        if ((settingsRef.AIHardMode && Rand.Chance(hardModeMasterChance)) || Rand.Chance(masterChance))
+                        {
+                            this.spell_HolyWrath = true;
+                        }
+                    }
+                }
+            }
+            flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner);
+            if (flag2)
+            {
+                //Log.Message("Initializing Summoner Abilities");
+                if (abilityUser.IsColonist && !abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                {
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_SummonMinion);
+                        this.spell_SummonMinion = true;
+                    }
+                    else
+                    {
+                        MagicPower mpS = this.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonMinion);
+                        mpS.learned = false;
+                    }
+                    if (Rand.Chance(.5f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_SummonPylon);
+                    }
+                    else
+                    {
+                        MagicPower mpS = this.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonPylon);
+                        mpS.learned = false;
+                    }
+                    if (Rand.Chance(.5f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_SummonExplosive);
+                    }
+                    else
+                    {
+                        MagicPower mpS = this.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonExplosive);
+                        mpS.learned = false;
+                    }
+                    if (Rand.Chance(.2f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_SummonElemental);
+                    }
+                    else
+                    {
+                        MagicPower mpS = this.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonElemental);
+                        mpS.learned = false;
+                    }
+                }
+                else
+                {
+                    this.AddPawnAbility(TorannMagicDefOf.TM_SummonMinion);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_SummonPylon);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_SummonExplosive);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_SummonElemental);
+                    this.spell_SummonMinion = true;
+
+                    if (!abilityUser.IsColonist)
+                    {
+                        if ((settingsRef.AIHardMode && Rand.Chance(hardModeMasterChance)) || Rand.Chance(masterChance))
+                        {
+                            this.spell_SummonPoppi = true;
+                        }
+                    }
+                }
+            }
+            flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Druid);
+            if (flag2)
+            {
+                // Log.Message("Initializing Druid Abilities");
+                if (abilityUser.IsColonist && !abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                {
+                    if (Rand.Chance(.5f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Poison);
+                    }
+                    else
+                    {
+                        MagicPower mpD = this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Poison);
+                        mpD.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_SootheAnimal);
+                    }
+                    else
+                    {
+                        MagicPower mpD = this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SootheAnimal);
+                        mpD.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Regenerate);
+                    }
+                    else
+                    {
+                        MagicPower mpD = this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Regenerate);
+                        mpD.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_CureDisease);
+                    }
+                    else
+                    {
+                        MagicPower mpD = this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_CureDisease);
+                        mpD.learned = false;
+                    }
+                }
+                else
+                {
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Poison);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_SootheAnimal);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Regenerate);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_CureDisease);
+                }
+            }
+            flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || abilityUser.story.traits.HasTrait(TorannMagicDefOf.Lich);
+            if (flag2)
+            {
+                //Log.Message("Initializing Necromancer Abilities");
+                if (abilityUser.IsColonist && !abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                {
+                    if (Rand.Chance(.5f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_RaiseUndead);
+                    }
+                    else
+                    {
+                        MagicPower mpN = this.MagicData.MagicPowersN.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RaiseUndead);
+                        mpN.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_DeathMark);
+                    }
+                    else
+                    {
+                        MagicPower mpN = this.MagicData.MagicPowersN.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_DeathMark);
+                        mpN.learned = false;
+                    }
+                    if (Rand.Chance(.5f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_FogOfTorment);
+                    }
+                    else
+                    {
+                        MagicPower mpN = this.MagicData.MagicPowersN.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_FogOfTorment);
+                        mpN.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_ConsumeCorpse);
+                    }
+                    else
+                    {
+                        MagicPower mpN = this.MagicData.MagicPowersN.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ConsumeCorpse);
+                        mpN.learned = false;
+                    }
+                    if (Rand.Chance(.2f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_CorpseExplosion);
+                    }
+                    else
+                    {
+                        MagicPower mpN = this.MagicData.MagicPowersN.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_CorpseExplosion);
+                        mpN.learned = false;
+                    }
+                }
+                else
+                {
+                    this.AddPawnAbility(TorannMagicDefOf.TM_RaiseUndead);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_DeathMark);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_FogOfTorment);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_ConsumeCorpse);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_CorpseExplosion);
+
+                    if (!abilityUser.IsColonist)
+                    {
+                        if ((settingsRef.AIHardMode && Rand.Chance(hardModeMasterChance)) || Rand.Chance(masterChance))
+                        {
+                            this.AddPawnAbility(TorannMagicDefOf.TM_DeathBolt);
+                        }
+                    }
+                }
+            }
+            flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Priest);
+            if (flag2)
+            {
+                //Log.Message("Initializing Priest Abilities");
+                if (abilityUser.IsColonist && !abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                {
+                    if (Rand.Chance(.5f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_AdvancedHeal);
+                    }
+                    else
+                    {
+                        MagicPower mpPR = this.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_AdvancedHeal);
+                        mpPR.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Purify);
+                    }
+                    else
+                    {
+                        MagicPower mpPR = this.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Purify);
+                        mpPR.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_HealingCircle);
+                    }
+                    else
+                    {
+                        MagicPower mpPR = this.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_HealingCircle);
+                        mpPR.learned = false;
+                    }
+                    if (Rand.Chance(.4f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_BestowMight);
+                    }
+                    else
+                    {
+                        MagicPower mpPR = this.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BestowMight);
+                        mpPR.learned = false;
+                    }
+                }
+                else
+                {
+                    this.AddPawnAbility(TorannMagicDefOf.TM_AdvancedHeal);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Purify);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_HealingCircle);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_BestowMight);
+                }
+            }
+            flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Bard);
+            if (flag2)
+            {
+                //Log.Message("Initializing Priest Abilities");
+                if (abilityUser.IsColonist && !abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                {
+                    //if (Rand.Chance(.5f))
+                    //{
+                    //    this.AddPawnAbility(TorannMagicDefOf.TM_BardTraining);
+                    //}
+                    //else
+                    //{
+                    //    MagicPower mpB = this.MagicData.MagicPowersB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BardTraining);
+                    //    mpB.learned = false;
+                    //}
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Entertain);
+                    }
+                    else
+                    {
+                        MagicPower mpB = this.MagicData.MagicPowersB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Entertain);
+                        mpB.learned = false;
+                    }
+                    //if (Rand.Chance(.3f))
+                    //{
+                    //    this.AddPawnAbility(TorannMagicDefOf.TM_Inspire);
+                    //}
+                    //else
+                    //{
+                    //    MagicPower mpB = this.MagicData.MagicPowersB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Inspire);
+                    //    mpB.learned = false;
+                    //}
+                    if (Rand.Chance(.5f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Lullaby);
+                    }
+                    else
+                    {
+                        MagicPower mpB = this.MagicData.MagicPowersB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Lullaby);
+                        mpB.learned = false;
+                    }
+                }
+                else
+                {
+                    //this.AddPawnAbility(TorannMagicDefOf.TM_BardTraining);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Entertain);
+                    //this.AddPawnAbility(TorannMagicDefOf.TM_Inspire);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Lullaby);
+
+                    if (!abilityUser.IsColonist)
+                    {
+                        if ((settingsRef.AIHardMode && Rand.Chance(hardModeMasterChance)) || Rand.Chance(masterChance))
+                        {
+                            this.spell_BattleHymn = true;
+                        }
+                    }
+                }
+            }
+            flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Succubus);
+            if (flag2)
+            {
+                //Log.Message("Initializing Succubus Abilities");
+                if (abilityUser.IsColonist && !abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                {
+                    if (Rand.Chance(.7f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_SoulBond);
+                    }
+                    else
+                    {
+                        MagicPower mpSD = this.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SoulBond);
+                        mpSD.learned = false;
+                    }
+                    if (Rand.Chance(.5f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_ShadowBolt);
+                    }
+                    else
+                    {
+                        MagicPower mpSD = this.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt);
+                        mpSD.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Dominate);
+                    }
+                    else
+                    {
+                        MagicPower mpSD = this.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Dominate);
+                        mpSD.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Attraction);
+                    }
+                    else
+                    {
+                        MagicPower mpSD = this.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Attraction);
+                        mpSD.learned = false;
+                    }
+                }
+                else
+                {
+                    this.AddPawnAbility(TorannMagicDefOf.TM_SoulBond);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_ShadowBolt);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Dominate);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Attraction);
+
+                    if (!abilityUser.IsColonist)
+                    {
+                        if ((settingsRef.AIHardMode && Rand.Chance(hardModeMasterChance)) || Rand.Chance(masterChance))
+                        {
+                            this.spell_Scorn = true;
+                        }
+                    }
+                }
+            }
+            flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Warlock);
+            if (flag2)
+            {
+                //Log.Message("Initializing Succubus Abilities");
+                if (abilityUser.IsColonist && !abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                {
+                    if (Rand.Chance(.7f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_SoulBond);
+                    }
+                    else
+                    {
+                        MagicPower mpWD = this.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SoulBond);
+                        mpWD.learned = false;
+                    }
+                    if (Rand.Chance(.5f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_ShadowBolt);
+                    }
+                    else
+                    {
+                        MagicPower mpWD = this.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt);
+                        mpWD.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Dominate);
+                    }
+                    else
+                    {
+                        MagicPower mpWD = this.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Dominate);
+                        mpWD.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Repulsion);
+                    }
+                    else
+                    {
+                        MagicPower mpWD = this.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Repulsion);
+                        mpWD.learned = false;
+                    }
+                }
+                else
+                {
+                    this.AddPawnAbility(TorannMagicDefOf.TM_SoulBond);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_ShadowBolt);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Dominate);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Repulsion);
+                    if (!abilityUser.IsColonist)
+                    {
+                        if ((settingsRef.AIHardMode && Rand.Chance(hardModeMasterChance)) || Rand.Chance(masterChance))
+                        {
+                            this.spell_PsychicShock = true;
+                        }
+                    }
+                }
+            }
+            flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Geomancer);
+            if (flag2)
+            {
+                //Log.Message("Initializing Heart of Frost Abilities");
+                if (abilityUser.IsColonist && !abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                {
+                    if (Rand.Chance(.4f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Stoneskin);
+                    }
+                    else
+                    {
+                        MagicPower mpG = this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Stoneskin);
+                        mpG.learned = false;
+                    }
+                    if (Rand.Chance(.6f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Encase);
+                    }
+                    else
+                    {
+                        MagicPower mpG = this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Encase);
+                        mpG.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_EarthSprites);
+                    }
+                    else
+                    {
+                        MagicPower mpG = this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EarthSprites);
+                        mpG.learned = false;
+                    }
+                    if (Rand.Chance(.5f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_EarthernHammer);
+                    }
+                    else
+                    {
+                        MagicPower mpG = this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EarthernHammer);
+                        mpG.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Sentinel);
+                    }
+                    else
+                    {
+                        MagicPower mpG = this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Sentinel);
+                        mpG.learned = false;
+                    }
+                }
+                else
+                {
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Stoneskin);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Encase);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_EarthSprites);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_EarthernHammer);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Sentinel);
+
+                    if (!abilityUser.IsColonist)
+                    {
+                        if ((settingsRef.AIHardMode && Rand.Chance(hardModeMasterChance)) || Rand.Chance(masterChance))
+                        {
+                            this.AddPawnAbility(TorannMagicDefOf.TM_Meteor);
+                            this.spell_Meteor = true;
+                        }
+                    }
+                }
+            }
+            flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Technomancer);
+            if (flag2)
+            {
+                //Log.Message("Initializing Technomancer Abilities");
+
+                this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoBit).learned = false;
+                this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoTurret).learned = false;
+                this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoWeapon).learned = false;
+                if (abilityUser.IsColonist && !abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                {
+                    if (Rand.Chance(.4f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_TechnoShield);
+                    }
+                    else
+                    {
+                        this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoShield).learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Sabotage);
+                    }
+                    else
+                    {
+                        this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Sabotage).learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Overdrive);
+                    }
+                    else
+                    {
+                        this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Overdrive).learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.spell_OrbitalStrike = true;
+                        this.InitializeSpell();
+                    }
+                }
+                else
+                {
+                    this.AddPawnAbility(TorannMagicDefOf.TM_TechnoShield);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Sabotage);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Overdrive);
+                    if (!abilityUser.IsColonist)
+                    {
+                        if ((settingsRef.AIHardMode && Rand.Chance(hardModeMasterChance)) || Rand.Chance(masterChance))
+                        {
+                            this.spell_OrbitalStrike = true;
+                        }
+                    }
+                }
+            }
+            flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.BloodMage);
+            if (flag2)
+            {
+                //Log.Message("Initializing Heart of Frost Abilities");
+                if (abilityUser.IsColonist && !abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                {
+                    if (Rand.Chance(1f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_BloodGift);
+                    }
+                    if (Rand.Chance(.4f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_IgniteBlood);
+                    }
+                    else
+                    {
+                        MagicPower mpBM = this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_IgniteBlood);
+                        mpBM.learned = false;
+                    }
+                    if (Rand.Chance(.4f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_BloodForBlood);
+                    }
+                    else
+                    {
+                        MagicPower mpBM = this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodForBlood);
+                        mpBM.learned = false;
+                    }
+                    if (Rand.Chance(.5f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_BloodShield);
+                    }
+                    else
+                    {
+                        MagicPower mpBM = this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodShield);
+                        mpBM.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Rend);
+                    }
+                    else
+                    {
+                        MagicPower mpBM = this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Rend);
+                        mpBM.learned = false;
+                    }
+                }
+                else
+                {
+                    this.AddPawnAbility(TorannMagicDefOf.TM_BloodGift);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_IgniteBlood);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_BloodForBlood);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_BloodShield);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Rend);
+                    if (!abilityUser.IsColonist)
+                    {
+                        if ((settingsRef.AIHardMode && Rand.Chance(hardModeMasterChance)) || Rand.Chance(masterChance))
+                        {
+                            this.AddPawnAbility(TorannMagicDefOf.TM_BloodMoon);
+                            this.spell_BloodMoon = true;
+                        }
+                    }
+                }
+            }
+            flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Enchanter);
+            if (flag2)
+            {
+                //Log.Message("Initializing Heart of Frost Abilities");
+                if (abilityUser.IsColonist && !abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                {
+                    if (Rand.Chance(.5f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_EnchantedBody);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_EnchantedAura);
+                        this.spell_EnchantedAura = true;
+                    }
+                    else
+                    {
+                        MagicPower mpE = this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedBody);
+                        mpE.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Transmutate);
+                    }
+                    else
+                    {
+                        MagicPower mpE = this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Transmutate);
+                        mpE.learned = false;
+                    }
+                    if (Rand.Chance(.4f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_EnchanterStone);
+                    }
+                    else
+                    {
+                        MagicPower mpE = this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchanterStone);
+                        mpE.learned = false;
+                    }
+                    if (Rand.Chance(.4f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_EnchantWeapon);
+                    }
+                    else
+                    {
+                        MagicPower mpE = this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantWeapon);
+                        mpE.learned = false;
+                    }
+                    if (Rand.Chance(.4f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Polymorph);
+                    }
+                    else
+                    {
+                        MagicPower mpE = this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Polymorph);
+                        mpE.learned = false;
+                    }
+                }
+                else
+                {
+                    this.AddPawnAbility(TorannMagicDefOf.TM_EnchantedBody);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_EnchantedAura);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Transmutate);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_EnchanterStone);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_EnchantWeapon);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Polymorph);
+                }
             }
         }
 
@@ -2857,16 +3014,16 @@ namespace TorannMagic
                 }
                 if (this.spell_Meteor == true)
                 {
-                    MagicPower meteorPower = this.MagicData.magicPowerG.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Meteor);
+                    MagicPower meteorPower = this.MagicData.MagicPowersG.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Meteor);
                     if(meteorPower == null)
                     {
-                        meteorPower = this.MagicData.magicPowerG.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Meteor_I);
+                        meteorPower = this.MagicData.MagicPowersG.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Meteor_I);
                         if(meteorPower == null)
                         {
-                            meteorPower = this.MagicData.magicPowerG.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Meteor_II);
+                            meteorPower = this.MagicData.MagicPowersG.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Meteor_II);
                             if (meteorPower == null)
                             {
-                                meteorPower = this.MagicData.magicPowerG.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Meteor_III);
+                                meteorPower = this.MagicData.MagicPowersG.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Meteor_III);
                             }
                         }
                     }
@@ -2929,16 +3086,16 @@ namespace TorannMagic
                 }
                 if (this.spell_BloodMoon == true)
                 {
-                    MagicPower BloodMoonPower = this.MagicData.magicPowerBM.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodMoon);
+                    MagicPower BloodMoonPower = this.MagicData.MagicPowersBM.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodMoon);
                     if (BloodMoonPower == null)
                     {
-                        BloodMoonPower = this.MagicData.magicPowerBM.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodMoon_I);
+                        BloodMoonPower = this.MagicData.MagicPowersBM.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodMoon_I);
                         if (BloodMoonPower == null)
                         {
-                            BloodMoonPower = this.MagicData.magicPowerBM.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodMoon_II);
+                            BloodMoonPower = this.MagicData.MagicPowersBM.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodMoon_II);
                             if (BloodMoonPower == null)
                             {
-                                BloodMoonPower = this.MagicData.magicPowerBM.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodMoon_III);
+                                BloodMoonPower = this.MagicData.MagicPowersBM.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodMoon_III);
                             }
                         }
                     }
@@ -6464,6 +6621,17 @@ namespace TorannMagic
                 dismissHeaterSpell = false;
             }
 
+            if (this.enchanterStones.Count > 0 && this.dismissEnchanterStones == false)
+            {
+                this.AddPawnAbility(TorannMagicDefOf.TM_DismissEnchanterStones);
+                dismissEnchanterStones = true;
+            }
+            if (this.enchanterStones.Count <= 0 && this.dismissEnchanterStones == true)
+            {
+                this.RemovePawnAbility(TorannMagicDefOf.TM_DismissEnchanterStones);
+                dismissEnchanterStones= false;
+            }
+
             if (this.soulBondPawn.DestroyedOrNull() && (this.spell_ShadowStep == true || this.spell_ShadowCall == true))
             {
                 this.soulBondPawn = null;
@@ -6904,6 +7072,17 @@ namespace TorannMagic
             {
                 _maxMP -= (this.weaponEnchants.Count * ActualManaCost(TorannMagicDefOf.TM_EnchantWeapon));
             }
+            if(this.enchanterStones != null && this.enchanterStones.Count > 0)
+            {
+                for(int i = 0; i < this.enchanterStones.Count; i++)
+                {
+                    if(this.enchanterStones[i].DestroyedOrNull())
+                    {
+                        this.enchanterStones.Remove(this.enchanterStones[i]);
+                    }
+                }
+                _maxMP -= .25f * this.enchanterStones.Count;
+            }
             try
             {
                 if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) && this.fertileLands.Count > 0)
@@ -6925,7 +7104,7 @@ namespace TorannMagic
                 _maxMP += .5f;
                 _mpRegenRate += .5f;
             }
-            if(this.Pawn.Inspired && this.Pawn.Inspiration.def.defName == "ManaRegen")
+            if(this.Pawn.Inspired && this.Pawn.Inspiration.def == TorannMagicDefOf.ID_ManaRegen)
             {
                 _mpRegenRate += 1f;
             }
@@ -6933,7 +7112,22 @@ namespace TorannMagic
             {
                 _maxMP += -.3f;
             }
-            if(this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_EnchantedAuraHD) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_EnchantedBodyHD))
+            if(this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Shadow_AuraHD, false))
+            {
+                _maxMP += -.4f * (1 - (.08f * this.MagicData.MagicPowerSkill_Shadow.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Shadow_eff").level));
+                _mpRegenRate += -.3f * (1 - (.08f * this.MagicData.MagicPowerSkill_Shadow.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Shadow_eff").level));
+            }
+            if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_RayOfHope_AuraHD, false))
+            {
+                _maxMP += -.4f * (1 - (.08f * this.MagicData.MagicPowerSkill_RayofHope.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RayofHope_eff").level));
+                _mpRegenRate += -.3f * (1 - (.08f * this.MagicData.MagicPowerSkill_RayofHope.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RayofHope_eff").level));
+            }
+            if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_SoothingBreeze_AuraHD, false))
+            {
+                _maxMP += -.4f * (1 - (.08f * this.MagicData.MagicPowerSkill_Soothe.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Soothe_eff").level));
+                _mpRegenRate += -.3f * (1 - (.08f * this.MagicData.MagicPowerSkill_Soothe.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Soothe_eff").level));
+            }
+            if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_EnchantedAuraHD) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_EnchantedBodyHD))
             {
                 
                 _maxMP += -.3f + (.015f * this.MagicData.MagicPowerSkill_EnchantedBody.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchantedBody_eff").level);
@@ -7104,7 +7298,8 @@ namespace TorannMagic
         public override void PostExposeData()
         {
             //base.PostExposeData();            
-            Scribe_Values.Look<bool>(ref this.magicPowersInitialized, "magicPowersInitialized", false, false);            
+            Scribe_Values.Look<bool>(ref this.magicPowersInitialized, "magicPowersInitialized", false, false);
+            Scribe_Values.Look<bool>(ref this.magicPowersInitializedForColonist, "magicPowersInitializedForColonist", true, false);
             Scribe_Values.Look<bool>(ref this.spell_Rain, "spell_Rain", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Blink, "spell_Blink", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Teleport, "spell_Teleport", false, false);
@@ -7156,6 +7351,7 @@ namespace TorannMagic
             Scribe_References.Look<Pawn>(ref this.soulBondPawn, "soulBondPawn", false);
             Scribe_References.Look<Thing>(ref this.technoWeaponThing, "technoWeaponThing", false);
             Scribe_References.Look<Thing>(ref this.enchanterStone, "enchanterStone", false);
+            Scribe_Collections.Look<Thing>(ref this.enchanterStones, "enchanterStones", LookMode.Reference);
             Scribe_Collections.Look<Thing>(ref this.summonedMinions, "summonedMinions", LookMode.Reference);
             Scribe_Collections.Look<Thing>(ref this.summonedLights, "summonedLights", LookMode.Reference);
             Scribe_Collections.Look<Thing>(ref this.summonedPowerNodes, "summonedPowerNodes", LookMode.Reference);

@@ -4,6 +4,7 @@ using System.Linq;
 using RimWorld;
 using Verse;
 using Verse.Sound;
+using UnityEngine;
 
 namespace TorannMagic
 {
@@ -11,6 +12,13 @@ namespace TorannMagic
     class HediffComp_Stoneskin : HediffComp
     {
         private bool initializing = true;
+        public int maxSev = 4;
+
+        public override void CompExposeData()
+        {
+            base.CompExposeData();
+            Scribe_Values.Look<int>(ref this.maxSev, "maxSev", 4, false);
+        }
 
         public string labelCap
         {
@@ -33,6 +41,7 @@ namespace TorannMagic
             bool spawned = base.Pawn.Spawned;
             if (spawned)
             {
+                this.maxSev = Mathf.RoundToInt(this.parent.Severity);
                 //MoteMaker.ThrowHeatGlow(base.Pawn.DrawPos.ToIntVec3(), base.Pawn.Map, 2f);
             }            
         }
@@ -54,7 +63,15 @@ namespace TorannMagic
             {
                 HediffStage hediffStage = this.Pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_StoneskinHD"), false).CurStage;
                 hediffStage.label = this.parent.Severity.ToString("0") + " charges";               
-            }            
+            }
+            
+            if(Find.TickManager.TicksGame % 1800 == 0)
+            {
+                if(this.parent.Severity < this.maxSev)
+                {
+                    this.parent.Severity++;
+                }
+            }
         }
 
         public override bool CompShouldRemove

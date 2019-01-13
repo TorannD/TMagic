@@ -84,7 +84,7 @@ namespace TorannMagic
                     }
                     if(!flag1)
                     {
-                        if (newPawn.kindDef.RaceProps.Animal)
+                        if (newPawn.kindDef.RaceProps.Animal && (this.TargetsAoE[i].Thing.Faction == null || this.TargetsAoE[i].Thing.HostileTo(base.CasterPawn.Faction)))
                         {
                             newPawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.ManhunterPermanent, null, true, false, null);
                             float sev = Rand.Range(pwrVal, 2 * pwrVal);

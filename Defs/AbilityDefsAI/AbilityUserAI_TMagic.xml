@@ -145,6 +145,7 @@ Document made by ChJees
 			<li>TMagic_Fireball</li>
 			<li>TMagic_Fireclaw</li>
 			<li>TMagic_RayOfHope</li>
+			<li>TMagic_Firestorm</li>
 		</abilities>
 	</AbilityUserAI.AbilityUserAIProfileDef>
 	
@@ -198,6 +199,21 @@ Document made by ChJees
 		<usedOnCaster>false</usedOnCaster>
 		<tags>
 			<li>Buff</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Firestorm</defName>
+		<ability>TM_Firestorm</ability>
+		<abilityRadius>5</abilityRadius>
+		<power>50.0</power>
+		<minRange>10.0</minRange>
+		<maxRange>55.0</maxRange>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Offensive</li>
+			<li>Mass</li>
+			<li>Building</li>
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
 	
@@ -323,6 +339,7 @@ Document made by ChJees
 			<li>TMagic_FrostRay</li>
 			<li>TMagic_Snowball</li>
 			<li>TMagic_Soothe</li>
+			<li>TMagic_Blizzard</li>
 		</abilities>
 	</AbilityUserAI.AbilityUserAIProfileDef>
 	
@@ -376,6 +393,22 @@ Document made by ChJees
 		<usedOnCaster>false</usedOnCaster>
 		<tags>
 			<li>Buff</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Blizzard</defName>
+		<ability>TM_Blizzard</ability>
+		<abilityRadius>6</abilityRadius>
+		<minRange>10.0</minRange>
+		<maxRange>75.0</maxRange>
+		<power>20</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<workerClass>AbilityUserAI.AbilityWorker_AreaOfEffect</workerClass>
+		<tags>
+			<li>Offensive</li>
+			<li>Mass</li>
+			<li>Building</li>
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
 	
@@ -489,6 +522,7 @@ Document made by ChJees
 			<li>TMagic_LightningCloud</li>
 			<li>TMagic_LightningStorm</li>
 			<li>TMagic_AMP</li>
+			<li>TMagic_EyeOfTheStorm</li>
 		</abilities>
 	</AbilityUserAI.AbilityUserAIProfileDef>
 	
@@ -543,6 +577,22 @@ Document made by ChJees
 		<usedOnCaster>false</usedOnCaster>
 		<tags>
 			<li>Buff</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_EyeOfTheStorm</defName>
+		<ability>TM_EyeOfTheStorm</ability>
+		<abilityRadius>3</abilityRadius>
+		<minRange>25.0</minRange>
+		<maxRange>75</maxRange>
+		<power>25.0</power>
+		<workerClass>AbilityUserAI.AbilityWorker_AreaOfEffect</workerClass>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Offensive</li>
+			<li>Mass</li>
+			<li>Building</li>
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
 	
@@ -762,7 +812,7 @@ Document made by ChJees
 								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingRangedWeapon">
 									<subNodes>
 										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
-											<maxDistance>28.0</maxDistance>
+											<maxDistance>40.0</maxDistance>
 											<minDistance>4.0</minDistance>
 											<subNodes>
 												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
@@ -788,7 +838,7 @@ Document made by ChJees
 								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingMeleeWeapon">
 									<subNodes>
 										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
-											<maxDistance>28.0</maxDistance>
+											<maxDistance>40.0</maxDistance>
 											<minDistance>4.0</minDistance>
 											<subNodes>
 												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
@@ -851,6 +901,7 @@ Document made by ChJees
 			<li>TMagic_Shield</li>
 			<li>TMagic_ValiantCharge</li>
 			<li>TMagic_Overwhelm</li>
+			<li>TMagic_HolyWrath</li>
 		</abilities>
 	</AbilityUserAI.AbilityUserAIProfileDef>
 	
@@ -900,6 +951,18 @@ Document made by ChJees
 		<power>10</power>
 		<maxRange>28.0</maxRange>
 		<minRange>4.0</minRange>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Assault</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_HolyWrath</defName>
+		<ability>TM_HolyWrath</ability>
+		<power>20</power>
+		<maxRange>36.0</maxRange>
+		<minRange>10.0</minRange>
 		<needSeeingTarget>true</needSeeingTarget>
 		<tags>
 			<li>Assault</li>
@@ -976,6 +1039,7 @@ Document made by ChJees
 			<li>TMagic_SummonedExplosive</li>
 			<li>TMagic_SummonMinion</li>
 			<li>TMagic_SummonElemental</li>
+			<li>TMagic_SummonPoppi</li>
 		</abilities>
 	</AbilityUserAI.AbilityUserAIProfileDef>
 	
@@ -1004,6 +1068,18 @@ Document made by ChJees
 		<defName>TMagic_SummonElemental</defName>
 		<ability>TM_SummonElemental</ability>
 		<power>5</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>CreaturePlus</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_SummonPoppi</defName>
+		<ability>TM_SummonPoppi</ability>
+		<power>25</power>
+		<maxRange>40</maxRange>
+		<minRange>6</minRange>
 		<needSeeingTarget>true</needSeeingTarget>
 		<tags>
 			<li>CreaturePlus</li>
@@ -1143,17 +1219,17 @@ Document made by ChJees
 					<subNodes>						
 						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_HasEnemyTarget">
 							<subNodes>
-								<!-- <li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
 									<maxDistance>38.0</maxDistance>
+									<minDistance>4</minDistance>
 									<subNodes>
 										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
 											<tags>
-												<li>Utility</li>
-												<li>Offensive</li>
+												<li>DeathBolt</li>
 											</tags>
 										</li>
 									</subNodes>
-								</li> -->
+								</li>
 								<!-- Using ranged weapon -->
 								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingRangedWeapon">
 									<subNodes>
@@ -1214,6 +1290,7 @@ Document made by ChJees
 		<abilities>
 			<li>TMagic_DeathMark</li>
 			<li>TMagic_FogOfTorment</li>
+			<li>TMagic_DeathBolt</li>
 <!-- 			<li>TMagic_CorpseExplosion</li>
 			<li>TMagic_RaiseUndead</li> -->
 		</abilities>
@@ -1247,6 +1324,20 @@ Document made by ChJees
 		<minRange>8</minRange>
 		<tags>
 			<li>Fog</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_DeathBolt</defName>
+		<ability>TM_DeathBolt</ability>		
+		<power>10</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<abilityRadius>2</abilityRadius>
+		<workerClass>AbilityUserAI.AbilityWorker_AreaOfEffect</workerClass>
+		<minRange>4</minRange>
+		<maxRange>36</maxRange>
+		<tags>
+			<li>DeathBolt</li>
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
 	
@@ -1424,6 +1515,16 @@ Document made by ChJees
 				<!-- In combat -->
 				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
 					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>0.9</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>BattleHymn</li>										
+									</tags>
+								</li>
+							</subNodes>
+						</li>
 						<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
 							<tags>
 								<li>Lullaby</li>
@@ -1443,6 +1544,7 @@ Document made by ChJees
 		</matchingTraits>
 		<abilities>
 			<li>TMagic_Lullaby</li>
+			<li>TMagic_BattleHymn</li>
 		</abilities>
 	</AbilityUserAI.AbilityUserAIProfileDef>
 	
@@ -1456,6 +1558,20 @@ Document made by ChJees
 		<tags>
 			<li>Lullaby</li>
 		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_BattleHymn</defName>
+		<ability>TM_BattleHymn</ability>
+		<power>6.0</power>
+		<needSeeingTarget>false</needSeeingTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<tags>
+			<li>BattleHymn</li>
+		</tags>
+<!-- 		<appliedHediffs>
+			<li>TM_HediffShield</li>
+		</appliedHediffs> -->
 	</AbilityUserAI.AbilityAIDef>
 	
 	<!-- warlock -->
@@ -1483,7 +1599,17 @@ Document made by ChJees
 											</subNodes>
 										</li>
 									</subNodes>
-								</li>									
+								</li>
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+									<maxDistance>5.0</maxDistance>
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+											<tags>
+												<li>PsychicShock</li>
+											</tags>
+										</li>
+									</subNodes>
+								</li>								
 								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
 									<maxDistance>38.0</maxDistance>
 									<minDistance>6.0</minDistance>
@@ -1533,6 +1659,7 @@ Document made by ChJees
 			<li>TMagic_ShadowBolt</li>
 			<li>TMagic_Repulsion</li>
 			<li>TMagic_Dominate</li>
+			<li>TMagic_PsychicShock</li>
 		</abilities>
 	</AbilityUserAI.AbilityUserAIProfileDef>
 	
@@ -1569,6 +1696,17 @@ Document made by ChJees
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
 	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_PsychicShock</defName>
+		<ability>TM_PsychicShock</ability>
+		<maxRange>6.0</maxRange>
+		<power>30.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>PsychicShock</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
 	<!-- succubus -->
 	<AbilityUserAI.AbilityUserAIProfileDef Name="SuccubusMagicAbilityUserAI" Abstract="True">
 		<compAbilityUserClass>TorannMagic.CompAbilityUserMagic</compAbilityUserClass>
@@ -1594,7 +1732,17 @@ Document made by ChJees
 											</subNodes>
 										</li>
 									</subNodes>
-								</li>									
+								</li>
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+									<maxHealth>0.9</maxHealth>
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+											<tags>
+												<li>Scorn</li>
+											</tags>
+										</li>
+									</subNodes>
+								</li>						
 								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
 									<maxDistance>38.0</maxDistance>
 									<minDistance>6.0</minDistance>
@@ -1644,6 +1792,7 @@ Document made by ChJees
 			<li>TMagic_ShadowBolt</li>
 			<li>TMagic_Attraction</li>
 			<li>TMagic_Dominate</li>
+			<li>TMagic_Scorn</li>
 		</abilities>
 	</AbilityUserAI.AbilityUserAIProfileDef>
 	
@@ -1656,6 +1805,18 @@ Document made by ChJees
 		<needSeeingTarget>true</needSeeingTarget>
 		<tags>
 			<li>Attraction</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Scorn</defName>
+		<ability>TM_Scorn</ability>
+		<abilityRadius>6</abilityRadius>
+		<power>25</power>
+		<needSeeingTarget>false</needSeeingTarget>
+		<workerClass>AbilityUserAI.AbilityWorker_AreaOfEffect</workerClass>
+		<tags>
+			<li>Scorn</li>
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
 	
@@ -1684,12 +1845,23 @@ Document made by ChJees
 						</li>
 						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_HasEnemyTarget">
 							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+									<maxDistance>74.0</maxDistance>
+									<minDistance>16.0</minDistance>
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+											<tags>
+												<li>Meteor</li>
+											</tags>
+										</li>
+									</subNodes>
+								</li>
 								<!-- Using ranged weapon -->
 								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingRangedWeapon">
 									<subNodes>
 										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
 											<maxDistance>55.0</maxDistance>
-											<minDistance>20.0</minDistance>
+											<minDistance>26.0</minDistance>
 											<subNodes>
 												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
 													<tags>
@@ -1789,6 +1961,7 @@ Document made by ChJees
 			<li>TMagic_EarthernHammer</li>
 			<li>TMagic_Encase</li>
 			<li>TMagic_Sentinel</li>
+			<li>TMagic_Meteor</li>
 		</abilities>
 	</AbilityUserAI.AbilityUserAIProfileDef>
 	
@@ -1856,6 +2029,20 @@ Document made by ChJees
 		<needSeeingTarget>true</needSeeingTarget>
 		<tags>
 			<li>Sentinel</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Meteor</defName>
+		<ability>TM_Meteor</ability>
+		<abilityRadius>6</abilityRadius>
+		<minRange>10.0</minRange>
+		<maxRange>75.0</maxRange>
+		<power>20</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<workerClass>AbilityUserAI.AbilityWorker_AreaOfEffect</workerClass>
+		<tags>
+			<li>Meteor</li>
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
 	
@@ -2054,9 +2241,20 @@ Document made by ChJees
 							<subNodes>
 								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
 									<maxDistance>38.0</maxDistance>
-									<minDistance>10.0</minDistance>
+									<minDistance>4.0</minDistance>
 									<subNodes>
 										<!-- Use long range AoE offensive abilities. -->
+										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+											<tags>
+												<li>BloodMoon</li>
+											</tags>
+										</li>
+									</subNodes>
+								</li>
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+									<maxDistance>38.0</maxDistance>
+									<minDistance>12.0</minDistance>
+									<subNodes>
 										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
 											<tags>
 												<li>IgniteBlood</li>
@@ -2169,6 +2367,7 @@ Document made by ChJees
 			<li>TMagic_BloodForBlood</li>
 			<li>TMagic_BloodShield</li>
 			<li>TMagic_Rend</li>
+			<li>TMagic_BloodMoon</li>
 		</abilities>
 	</AbilityUserAI.AbilityUserAIProfileDef>
 	
@@ -2229,6 +2428,19 @@ Document made by ChJees
 		<maxRange>26.0</maxRange>
 		<tags>
 			<li>BloodShield</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_BloodMoon</defName>
+		<ability>TM_BloodMoon</ability>
+		<abilityRadius>6</abilityRadius>
+		<maxRange>36.0</maxRange>
+		<power>20</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<workerClass>AbilityUserAI.AbilityWorker_AreaOfEffect</workerClass>
+		<tags>
+			<li>BloodMoon</li>
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
 	

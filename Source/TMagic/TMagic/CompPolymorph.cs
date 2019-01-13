@@ -12,7 +12,7 @@ namespace TorannMagic
     {
         private Effecter effecter;
         private bool initialized;
-        private bool temporary;
+        private bool temporary = false;
         private int ticksLeft;
         private int ticksToDestroy = 1800;
         public bool validSummoning = false;
@@ -20,7 +20,6 @@ namespace TorannMagic
         CompAbilityUserMagic compSummoner;
         Pawn spawner;
         Pawn original = null;
-        Map map;
 
         List<float> bodypartDamage = new List<float>();
         List<DamageDef> bodypartDamageType = new List<DamageDef>();
@@ -64,7 +63,7 @@ namespace TorannMagic
         public CompAbilityUserMagic CompSummoner
         {
             get
-            {
+            {                
                 return spawner.GetComp<CompAbilityUserMagic>();
             }
         }
@@ -113,10 +112,8 @@ namespace TorannMagic
         private void SpawnSetup()
         {
             this.ticksLeft = this.ticksToDestroy;
-            this.map = ParentPawn.Map;
             TransmutateEffects(ParentPawn.Position);
-            
-            if(this.spawner == this.original && this.original.Spawned)
+            if(this.original != null && this.spawner == this.original && this.original.Spawned)
             {
                 bool drafter = this.original.Drafted;
                 this.original.DeSpawn();
@@ -146,49 +143,52 @@ namespace TorannMagic
 
         public override void CompTick()
         {
-            base.CompTick();
-            if (Find.TickManager.TicksGame % 4 == 0)
+            if (this.original != null)
             {
-                if (!this.initialized)
+                base.CompTick();
+                if (Find.TickManager.TicksGame % 4 == 0)
                 {
-                    this.initialized = true;
-                    SpawnSetup();
-                }
-                bool flag2 = this.temporary;
-                if (flag2 && this.initialized)
-                {
-                    this.ticksLeft -= 4;
-                    bool flag3 = this.ticksLeft <= 0;
-                    if (flag3)
+                    if (!this.initialized)
                     {
-                        this.PreDestroy();
-                        ParentPawn.Destroy(DestroyMode.Vanish);
+                        this.initialized = true;
+                        SpawnSetup();
                     }
-                    CheckPawnState();
-                    bool spawned = this.parent.Spawned;
-                    if (spawned)
+                    bool flag2 = this.temporary;
+                    if (flag2 && this.initialized)
                     {
-                        bool flag4 = this.effecter == null;
-                        if (flag4)
+                        this.ticksLeft -= 4;
+                        bool flag3 = this.ticksLeft <= 0;
+                        if (flag3)
                         {
-                            EffecterDef progressBar = EffecterDefOf.ProgressBar;
-                            this.effecter = progressBar.Spawn();
+                            this.PreDestroy();
+                            ParentPawn.Destroy(DestroyMode.Vanish);
                         }
-                        else
+                        CheckPawnState();
+                        bool spawned = this.parent.Spawned;
+                        if (spawned)
                         {
-                            LocalTargetInfo localTargetInfo = this.parent;
-                            bool spawned2 = base.parent.Spawned;
-                            if (spawned2)
+                            bool flag4 = this.effecter == null;
+                            if (flag4)
                             {
-                                this.effecter.EffectTick(this.parent, TargetInfo.Invalid);
+                                EffecterDef progressBar = EffecterDefOf.ProgressBar;
+                                this.effecter = progressBar.Spawn();
                             }
-                            MoteProgressBar mote = ((SubEffecter_ProgressBar)this.effecter.children[0]).mote;
-                            bool flag5 = mote != null;
-                            if (flag5)
+                            else
                             {
-                                float value = 1f - (float)(this.TicksToDestroy - this.ticksLeft) / (float)this.TicksToDestroy;
-                                mote.progress = Mathf.Clamp01(value);
-                                mote.offsetZ = -0.5f;
+                                LocalTargetInfo localTargetInfo = this.parent;
+                                bool spawned2 = base.parent.Spawned;
+                                if (spawned2)
+                                {
+                                    this.effecter.EffectTick(this.parent, TargetInfo.Invalid);
+                                }
+                                MoteProgressBar mote = ((SubEffecter_ProgressBar)this.effecter.children[0]).mote;
+                                bool flag5 = mote != null;
+                                if (flag5)
+                                {
+                                    float value = 1f - (float)(this.TicksToDestroy - this.ticksLeft) / (float)this.TicksToDestroy;
+                                    mote.progress = Mathf.Clamp01(value);
+                                    mote.offsetZ = -0.5f;
+                                }
                             }
                         }
                     }
@@ -208,7 +208,7 @@ namespace TorannMagic
                     ;
                 }
             }
-            if (true)
+            if (this.original != null)
             {
                 String label = "TM_CancelPolymorph".Translate();
                 String desc = "TM_CancelPolymorphDesc".Translate();
@@ -254,14 +254,15 @@ namespace TorannMagic
         public override void PostExposeData()
         {
             base.PostExposeData();
+            Scribe_Values.Look<bool>(ref this.initialized, "initialized", false, false);
             Scribe_Values.Look<bool>(ref this.temporary, "temporary", false, false);
             Scribe_Values.Look<bool>(ref this.validSummoning, "validSummoning", true, false);
             Scribe_Values.Look<int>(ref this.ticksLeft, "ticksLeft", 0, false);
             Scribe_Values.Look<int>(ref this.ticksToDestroy, "ticksToDestroy", 1800, false);
             Scribe_Values.Look<CompAbilityUserMagic>(ref this.compSummoner, "compSummoner", null, false);
-            Scribe_References.Look<Pawn>(ref this.spawner, "spawner", false);
-            Scribe_References.Look<Pawn>(ref this.original, "original", false);
-            Scribe_References.Look<Map>(ref this.map, "map", false);
+            Scribe_References.Look<Pawn>(ref this.spawner, "spawner", true);
+            //Scribe_References.Look<Pawn>(ref this.original, "original", true);
+            Scribe_Deep.Look<Pawn>(ref this.original, true, "original", new object[0]);
         }
 
         public void CopyDamage(Pawn pawn)
@@ -291,8 +292,8 @@ namespace TorannMagic
         {
             if (this.ticksLeft > 0 && (this.parent.DestroyedOrNull() || ParentPawn.Dead))
             {                
-                DestroyParentCorpse(this.map);
-                SpawnOriginal(this.map);
+                DestroyParentCorpse(this.ParentPawn.Map);
+                SpawnOriginal(this.ParentPawn.Map);
                 original.Kill(null, null);
                 this.Original = null;
             }            
@@ -380,15 +381,22 @@ namespace TorannMagic
         public void TransmutateEffects(IntVec3 position)
         {
             Vector3 rndPos = position.ToVector3Shifted();
-            MoteMaker.ThrowHeatGlow(position, this.map, 1f);
+            MoteMaker.ThrowHeatGlow(position, this.ParentPawn.Map, 1f);
             for (int i = 0; i < 6; i++)
             {
                 rndPos.x += Rand.Range(-.5f, .5f);
                 rndPos.z += Rand.Range(-.5f, .5f);
                 rndPos.y += Rand.Range(.3f, 1.3f);
-                MoteMaker.ThrowSmoke(rndPos, this.map, Rand.Range(.7f, 1.1f));
-                MoteMaker.ThrowLightningGlow(position.ToVector3Shifted(), this.map, 1.4f);
+                MoteMaker.ThrowSmoke(rndPos, this.ParentPawn.Map, Rand.Range(.7f, 1.1f));
+                MoteMaker.ThrowLightningGlow(position.ToVector3Shifted(), this.ParentPawn.Map, 1.4f);
             }
         }
+
+        public override void PostSpawnSetup(bool respawningAfterLoad)
+        {
+            //initializes after reload
+            base.PostSpawnSetup(respawningAfterLoad);
+        }
+
     }
 }

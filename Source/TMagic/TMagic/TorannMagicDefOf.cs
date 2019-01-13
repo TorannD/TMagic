@@ -159,9 +159,14 @@ namespace TorannMagic
 		public static TraitDef InnerFire;
 
         public static TMAbilityDef TM_RayofHope;
+        public static HediffDef RayofHope;
         public static TMAbilityDef TM_RayofHope_I;
+        public static HediffDef RayofHope_I;
         public static TMAbilityDef TM_RayofHope_II;
+        public static HediffDef RayofHope_II;
         public static TMAbilityDef TM_RayofHope_III;
+        public static HediffDef RayofHope_III;
+        public static HediffDef TM_RayOfHope_AuraHD;
         public static TMAbilityDef TM_Firebolt;
         public static TMAbilityDef TM_Fireball;
 		public static TMAbilityDef TM_Fireclaw;
@@ -175,9 +180,14 @@ namespace TorannMagic
 		public static TraitDef HeartOfFrost;
 
         public static TMAbilityDef TM_Soothe;
+        public static HediffDef SoothingBreeze;
         public static TMAbilityDef TM_Soothe_I;
+        public static HediffDef SoothingBreeze_I;
         public static TMAbilityDef TM_Soothe_II;
+        public static HediffDef SoothingBreeze_II;
         public static TMAbilityDef TM_Soothe_III;
+        public static HediffDef SoothingBreeze_III;
+        public static HediffDef TM_SoothingBreeze_AuraHD;
         public static TMAbilityDef TM_Icebolt;
 		public static TMAbilityDef TM_Snowball;
         public static TMAbilityDef TM_FrostRay;
@@ -209,9 +219,14 @@ namespace TorannMagic
 		public static TraitDef Arcanist;
 
         public static TMAbilityDef TM_Shadow;
+        public static HediffDef Shadow;
         public static TMAbilityDef TM_Shadow_I;
+        public static HediffDef Shadow_I;
         public static TMAbilityDef TM_Shadow_II;
+        public static HediffDef Shadow_II;        
         public static TMAbilityDef TM_Shadow_III;
+        public static HediffDef Shadow_III;
+        public static HediffDef TM_Shadow_AuraHD;
         public static TMAbilityDef TM_MagicMissile;
         public static TMAbilityDef TM_MagicMissile_I;
         public static TMAbilityDef TM_MagicMissile_II;
@@ -487,6 +502,7 @@ namespace TorannMagic
         public static HediffDef TM_ArtifactPathfindingHD;
         public static TMAbilityDef TM_Transmutate;
         public static TMAbilityDef TM_EnchanterStone;
+        public static TMAbilityDef TM_DismissEnchanterStones;
         public static TMAbilityDef TM_EnchantWeapon;
         public static HediffDef TM_WeaponEnchantment_IceHD;
         public static HediffDef TM_WeaponEnchantment_FireHD;

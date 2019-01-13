@@ -369,7 +369,9 @@ namespace TorannMagic
                         "\nMana drain: -",
                         (200*compMagic.Mana.drainManaDrain).ToString("0.000"),
                         "\nMana sickness: -",
-                        (200*compMagic.Mana.drainManaSickness).ToString("0.000"),                        
+                        (200*compMagic.Mana.drainManaSickness).ToString("0.000"),
+                        "\nParacytic drain: -",
+                        (200*compMagic.Mana.paracyteCountReduction).ToString("0.000"),
                         }), 398552);
                 GUI.color = Color.white;
             }

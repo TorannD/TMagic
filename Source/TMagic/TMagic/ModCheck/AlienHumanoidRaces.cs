@@ -22,7 +22,7 @@ namespace TorannMagic.ModCheck
                 if (alienDef != null && alienDef.alienRace != null)
                 {
                     //Log.Message("alien race. checking if " + traitString + " is allowed for backstory...");
-                    if (alienDef.alienRace.generalSettings.disallowedTraits.Contains(traitString))
+                    if (alienDef.alienRace.generalSettings != null && alienDef.alienRace.generalSettings.disallowedTraits != null && alienDef.alienRace.generalSettings.disallowedTraits.Contains(traitString))
                     {
                         traitIsAllowed = false;
                     }

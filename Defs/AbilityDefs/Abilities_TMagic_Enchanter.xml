@@ -119,7 +119,7 @@ Check skill descriptions for additional details.</description>
         <defName>TM_EnchanterStone</defName>
         <label>Enchanter's Stone</label>
         <uiIconPath>UI/enchanterstone</uiIconPath>
-        <description>Creates an artifact imbued with magical properties. An enchanter can only create a single artifact; creating a new artifact will destroy an existing artifact.
+        <description>Creates an artifact imbued with magical properties. An enchanter can have as many artifacts as they wish, but each artifact reduces max MP by 20%.
 	
 Magical stones are called by many names: baubles, trinkets, heirlooms, even minor artifacts - regardless of the name, the benefits of the magical item are granted to any pawn that has the item equipped. These items have a unique equipment slot.</description>
         <manaCost>0.70</manaCost>
@@ -152,12 +152,46 @@ Magical stones are called by many names: baubles, trinkets, heirlooms, even mino
         </MainVerb>
     </TorannMagic.TMAbilityDef>
 	
+   <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_DismissEnchanterStones</defName>
+    <label>Dismiss Enchanter Stone</label>
+    <uiIconPath>UI/dismissenchanterstone</uiIconPath>
+    <description>Destroyes the oldest enchanter's stone</description>
+    <manaCost>0.0</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_DismissEnchanterStones</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>TM_Paladin_Heal</defaultProjectile>
+		<abilityDef>TM_DismissEnchanterStones</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>4</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>0</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+      	 <canTargetPawns>true</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>true</canTargetSelf>
+		 <canTargetLocations>false</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+	
 	<!-- Enchant Weapon -->	
     <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
         <defName>TM_EnchantWeapon</defName>
         <label>Enchant Weapon</label>
         <uiIconPath>UI/enchantweapon</uiIconPath>
-        <description>Enchant the weapon equipped by a target pawn. Enchanted weapons gain elemental properties. 
+        <description>Enchant a melee weapon equipped by a target pawn. Enchanted weapons gain elemental properties. 
 
 Fire enchantment deals additional burn damage and may set the target on fire
 Ice enchantment reduces the efficiency of the struck bodypart

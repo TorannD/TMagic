@@ -59,7 +59,7 @@ namespace TorannMagic
 
         private List<Thing> GenerateRewards(Faction alliedFaction, IncidentParms parms)
         {
-            int totalMarketValue = (int)Mathf.Clamp(StorytellerUtility.DefaultThreatPointsNow(parms.target) * 10, 1000, 10000);
+            int totalMarketValue = (int)Mathf.Clamp(StorytellerUtility.DefaultThreatPointsNow(parms.target) * 10, 1000, 3000);
             List<Thing> list = new List<Thing>();
             ItemCollectionGenerator_Internal_Arcane itc_ia = new ItemCollectionGenerator_Internal_Arcane();            
             return itc_ia.Generate(totalMarketValue, list);

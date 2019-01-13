@@ -266,6 +266,38 @@ namespace TorannMagic
             }
         }
 
+        public static Pawn FindNearbyFactionPawn(Pawn pawn, Faction faction, int radius)
+        {
+            List<Pawn> mapPawns = pawn.Map.mapPawns.AllPawnsSpawned;
+            List<Pawn> pawnList = new List<Pawn>();
+            Pawn targetPawn = null;
+            pawnList.Clear();
+            for (int i = 0; i < mapPawns.Count; i++)
+            {
+                targetPawn = mapPawns[i];
+                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !targetPawn.Downed)
+                {
+                    if (targetPawn.Faction == faction && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
+                    {
+                        pawnList.Add(targetPawn);
+                        targetPawn = null;
+                    }
+                    else
+                    {
+                        targetPawn = null;
+                    }
+                }
+            }
+            if (pawnList.Count > 0)
+            {
+                return pawnList.RandomElement();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public static Pawn FindNearbyMage(Pawn pawn, int radius, bool inCombat)
         {
             List<Pawn> mapPawns = pawn.Map.mapPawns.AllPawnsSpawned;

@@ -41,7 +41,7 @@ namespace TorannMagic
 
         private int lastGainTick;
 
-        private float paracyteCountReduction = 0;
+        public float paracyteCountReduction = 0;
         private int lastParacyteCheck = 0;
 
         public override float CurLevel

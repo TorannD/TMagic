@@ -336,7 +336,7 @@ namespace TorannMagic
         {
             public static bool Prefix(Mesh mesh, Vector3 loc, Quaternion quat, Material mat, bool drawNow)
             {
-                if(mat.mainTexture.ToString().Contains("demonlordcloak") || mat.mainTexture.name.Contains("opencloak"))
+                if(mat != null && mat.mainTexture != null && mat.mainTexture.name != null && (mat.mainTexture.ToString().Contains("demonlordcloak") || mat.mainTexture.name.Contains("opencloak")))
                 {
                     loc.y += .015f;
                     if(mat.name.ToString().Contains("_north"))
@@ -1278,7 +1278,7 @@ namespace TorannMagic
                     if ((pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_TechnoShieldHD) && dinfo.Amount <= 10) || (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_TechnoShieldHD_I) && dinfo.Amount <= 13) || (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_TechnoShieldHD_II) && dinfo.Amount <= 18) || (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_TechnoShieldHD_III) && dinfo.Amount <= 30))
                     {
                         Thing instigator = dinfo.Instigator as Thing;
-                        if (instigator != null)
+                        if (instigator != null && dinfo.Weapon != null && dinfo.Weapon.IsRangedWeapon)
                         {
                             Vector3 drawPos = pawn.DrawPos;
                             drawPos.x += ((instigator.DrawPos.x - drawPos.x) / 20f) + Rand.Range(-.2f, .2f);
@@ -3602,7 +3602,7 @@ namespace TorannMagic
                     }
                     if (forgeNearby)
                     {
-                        int mageLevel = Rand.Range(0, Mathf.RoundToInt(comp.MagicUserLevel / 5));
+                        int mageLevel = Rand.Range(0, Mathf.RoundToInt(comp.MagicUserLevel / 15));
                         __result = (QualityCategory)Mathf.Min((int)__result + mageLevel, 6);
                         SoundInfo info = SoundInfo.InMap(new TargetInfo(pawn.Position, pawn.Map, false), MaintenanceType.None);
                         info.pitchFactor = .6f;
@@ -3998,6 +3998,54 @@ namespace TorannMagic
                         if (__instance.pawnAbility.Def.defName == "TM_EnchantedBody")
                         {
                             magicPower = comp.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedBody);
+                        }
+                        if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_Shadow)
+                        {
+                            magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shadow);
+                        }
+                        if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_Shadow_I)
+                        {
+                            magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shadow);
+                        }
+                        if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_Shadow_II)
+                        {
+                            magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shadow_I);
+                        }
+                        if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_Shadow_III)
+                        {
+                            magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shadow_II);
+                        }
+                        if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_RayofHope)
+                        {
+                            magicPower = comp.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope);
+                        }
+                        if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_RayofHope_I)
+                        {
+                            magicPower = comp.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope);
+                        }
+                        if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_RayofHope_II)
+                        {
+                            magicPower = comp.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope_I);
+                        }
+                        if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_RayofHope_III)
+                        {
+                            magicPower = comp.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope_II);
+                        }
+                        if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_Soothe)
+                        {
+                            magicPower = comp.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Soothe);
+                        }
+                        if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_Soothe_I)
+                        {
+                            magicPower = comp.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Soothe);
+                        }
+                        if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_Soothe_II)
+                        {
+                            magicPower = comp.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Soothe_I);
+                        }
+                        if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_Soothe_III)
+                        {
+                            magicPower = comp.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Soothe_II);
                         }
                         if (__instance.pawnAbility.Def.defName == "TM_Poison")
                         {

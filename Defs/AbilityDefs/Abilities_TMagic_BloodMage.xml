@@ -233,7 +233,7 @@ Cast Time: 2.4s</description>
         <description>Causes the victims blood to violently reject its host and erupt from multiple wounds, resulting in massive hemorrhaging.
 		
 Range: 37
-Radius: 3.4
+Radius: 3
 Max Targets: 3
 Cooldown: 110
 Cast Time: 2.2s</description>
@@ -264,7 +264,7 @@ Cast Time: 2.2s</description>
                 <friendlyFire>false</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
                 <maxTargets>3</maxTargets>
-                <range>3.4</range>
+                <range>3</range>
             </TargetAoEProperties>
 			<targetParams>
                 <canTargetPawns>true</canTargetPawns>
@@ -313,7 +313,7 @@ Cast Time: 2s</description>
                 <friendlyFire>false</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
                 <maxTargets>4</maxTargets>
-                <range>3.8</range>
+                <range>4</range>
             </TargetAoEProperties>
 			<targetParams>
                 <canTargetPawns>true</canTargetPawns>
@@ -331,7 +331,7 @@ Cast Time: 2s</description>
         <description>Causes the victims blood to violently reject its host and erupt from multiple wounds, resulting in massive hemorrhaging.
 		
 Range: 41
-Radius: 4.2
+Radius: 4
 Max Targets: 5
 Cooldown: 90
 Cast Time: 1.8s</description>
@@ -362,7 +362,7 @@ Cast Time: 1.8s</description>
                 <friendlyFire>false</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
                 <maxTargets>5</maxTargets>
-                <range>4.2</range>
+                <range>4</range>
             </TargetAoEProperties>
 			<targetParams>
                 <canTargetPawns>true</canTargetPawns>

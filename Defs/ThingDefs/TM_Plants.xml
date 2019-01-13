@@ -514,7 +514,7 @@ Paracyte is difficult to grow and only skilled herbalists are able to plant and 
 	<statBases>
 		<MaxHitPoints>25</MaxHitPoints>
 		<Nutrition>0.1</Nutrition>
-		<Beauty>24</Beauty>
+		<Beauty>32</Beauty>
 	</statBases>
     <graphicData>
       <texPath>Items/Plants/Paracyte_Mature</texPath>
@@ -526,14 +526,14 @@ Paracyte is difficult to grow and only skilled herbalists are able to plant and 
 	<altitudeLayer>Item</altitudeLayer>
     <plant>
       <harvestedThingDef>RawMagicyte</harvestedThingDef>
-      <harvestYield>5</harvestYield>
+      <harvestYield>7</harvestYield>
       <sowMinSkill>12</sowMinSkill>
       <growDays>16</growDays>
       <sowWork>1200</sowWork>
       <harvestWork>600</harvestWork>
 	  <lifespanDaysPerGrowDays>60</lifespanDaysPerGrowDays>
 	  <dieIfLeafless>true</dieIfLeafless>
-	  <neverBlightable>true</neverBlightable>
+	  <neverBlightable>false</neverBlightable>
 	  <harvestTag>Standard</harvestTag>
 	  <sowTags>
 		<li>Ground</li>
@@ -559,7 +559,7 @@ Paracyte is difficult to grow and only skilled herbalists are able to plant and 
    <comps>
       <li Class="CompProperties_Glower">
         <glowRadius>3</glowRadius>
-		<glowColor>(204,255,150,0.3)</glowColor>
+		<glowColor>(204,255,150,0)</glowColor>
 	  </li>
    </comps>
   </ThingDef>
