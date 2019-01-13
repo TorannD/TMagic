@@ -401,7 +401,7 @@ namespace TorannMagic
         {
             public static bool Prefix(IntVec3 clickCell, Pawn pawn, List<FloatMenuOption> opts, bool drafted)
             {
-                if(pawn.GetComp<CompPolymorph>() != null)
+                if(pawn.GetComp<CompPolymorph>() != null && pawn.GetComp<CompPolymorph>().Original != null)
                 {
                     return false;
                 }
