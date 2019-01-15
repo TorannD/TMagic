@@ -96,7 +96,7 @@ namespace TorannMagic
                         {
                             enchantChance = (.0f + (.2f * pwr.level) + TM_Calc.GetSpellSuccessChance(this.CasterPawn, newPawn));
                         }
-                        if (Rand.Chance(enchantChance))
+                        if (Rand.Chance(enchantChance) && newPawn.GetComp<CompPolymorph>() != null)
                         { 
                             FactionDef fDef = TorannMagicDefOf.TM_SummonedFaction;
                             if (newPawn.Faction != null)

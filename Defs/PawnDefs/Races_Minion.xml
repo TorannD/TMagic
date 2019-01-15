@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>  
 
-  <ThingDef Name="TM_Base_Minion" ParentName="BasePawn" Abstract="True"> 
+  <ThingDef Name="TM_Base_Minion" Abstract="True"> 
 <!-- 	<thingClass>AbilityUser.PawnSummoned</thingClass>   // -->
 	<thingClass>TorannMagic.TMPawnSummoned</thingClass>
     <category>Pawn</category>
@@ -21,6 +21,12 @@
 	  <MeatAmount>20</MeatAmount>
 	  <MarketValue>0</MarketValue>
     </statBases>
+	<inspectorTabs>
+      <li>ITab_Pawn_Health</li>
+	  <li>ITab_Pawn_Needs</li>
+      <li>ITab_Pawn_Character</li>
+	  <li>ITab_Pawn_Log</li>
+    </inspectorTabs>
     <race>
       <body>Minion</body>
       <needsRest>false</needsRest>

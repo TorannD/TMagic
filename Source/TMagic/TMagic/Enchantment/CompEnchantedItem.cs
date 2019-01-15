@@ -164,7 +164,7 @@ namespace TorannMagic.Enchantment
             Scribe_Values.Look<EnchantmentTier>(ref this.arcaneDmgTier, "arcaneDmgTier", (EnchantmentTier)0, false);
             Scribe_Values.Look<bool>(ref this.hasEnchantment, "hasEnchantment", false, false);
             Scribe_Values.Look<bool>(ref this.initialized, "initialized", false, false);
-            Scribe_Collections.Look<Trait>(ref this.SoulOrbTraits, "SoulOrbTraits", LookMode.Value);
+            Scribe_Collections.Look<Trait>(ref this.SoulOrbTraits, "SoulOrbTraits", LookMode.Deep);
             //this.Props.ExposeData();
         }
 

@@ -3151,7 +3151,10 @@ namespace TorannMagic
                     //Log.Message("Fixing Inner Fire Abilities");
                     foreach (MagicPower currentIF in this.MagicData.MagicPowersIF)
                     {
-                        currentIF.learned = false;
+                        if (currentIF.abilityDef != TorannMagicDefOf.TM_Firestorm)
+                        {
+                            currentIF.learned = false;
+                        }
                         this.RemovePawnAbility(currentIF.abilityDef);
                     }
 
@@ -3162,7 +3165,10 @@ namespace TorannMagic
                     //Log.Message("Fixing Heart of Frost Abilities");
                     foreach (MagicPower currentHoF in this.MagicData.MagicPowersHoF)
                     {
-                        currentHoF.learned = false;
+                        if (currentHoF.abilityDef != TorannMagicDefOf.TM_Blizzard)
+                        {
+                            currentHoF.learned = false;
+                        }
                         this.RemovePawnAbility(currentHoF.abilityDef);                        
                     }
                 }
@@ -3172,7 +3178,10 @@ namespace TorannMagic
                     //Log.Message("Fixing Storm Born Abilities");                   
                     foreach (MagicPower currentSB in this.MagicData.MagicPowersSB)
                     {
-                        currentSB.learned = false;
+                        if (currentSB.abilityDef != TorannMagicDefOf.TM_EyeOfTheStorm)
+                        {
+                            currentSB.learned = false;
+                        }
                         this.RemovePawnAbility(currentSB.abilityDef);                        
                     }
                 }
@@ -3182,7 +3191,10 @@ namespace TorannMagic
                     //Log.Message("Fixing Arcane Abilities");
                     foreach (MagicPower currentA in this.MagicData.MagicPowersA)
                     {
-                        currentA.learned = false;
+                        if (currentA.abilityDef != TorannMagicDefOf.TM_FoldReality)
+                        {
+                            currentA.learned = false;
+                        }
                         this.RemovePawnAbility(currentA.abilityDef);                        
                     }
 
@@ -3193,7 +3205,10 @@ namespace TorannMagic
                     //Log.Message("Fixing Paladin Abilities");
                     foreach (MagicPower currentP in this.MagicData.MagicPowersP)
                     {
-                        currentP.learned = false;
+                        if (currentP.abilityDef != TorannMagicDefOf.TM_HolyWrath)
+                        {
+                            currentP.learned = false;
+                        }
                         this.RemovePawnAbility(currentP.abilityDef);                        
                     }
                 }
@@ -3202,7 +3217,10 @@ namespace TorannMagic
                 {
                     foreach (MagicPower currentS in this.MagicData.MagicPowersS)
                     {
-                        currentS.learned = false;
+                        if (currentS.abilityDef != TorannMagicDefOf.TM_SummonPoppi)
+                        {
+                            currentS.learned = false;
+                        }
                         this.RemovePawnAbility(currentS.abilityDef);
                     }
                 }
@@ -3211,7 +3229,10 @@ namespace TorannMagic
                 {
                     foreach (MagicPower currentD in this.MagicData.MagicPowersD)
                     {
-                        currentD.learned = false;
+                        if (currentD.abilityDef != TorannMagicDefOf.TM_RegrowLimb)
+                        {
+                            currentD.learned = false;
+                        }
                         this.RemovePawnAbility(currentD.abilityDef);
                     }
                 }
@@ -3220,7 +3241,10 @@ namespace TorannMagic
                 {
                     foreach (MagicPower currentN in this.MagicData.MagicPowersN)
                     {
-                        currentN.learned = false;
+                        if (currentN.abilityDef != TorannMagicDefOf.TM_LichForm)
+                        {
+                            currentN.learned = false;
+                        }
                         this.RemovePawnAbility(currentN.abilityDef);
                     }
                 }
@@ -3229,7 +3253,10 @@ namespace TorannMagic
                 {
                     foreach (MagicPower currentPR in this.MagicData.MagicPowersPR)
                     {
-                        currentPR.learned = false;
+                        if (currentPR.abilityDef != TorannMagicDefOf.TM_Resurrection)
+                        {
+                            currentPR.learned = false;
+                        }
                         this.RemovePawnAbility(currentPR.abilityDef);
                     }
                 }
@@ -3238,7 +3265,10 @@ namespace TorannMagic
                 {
                     foreach (MagicPower currentB in this.MagicData.MagicPowersB)
                     {
-                        currentB.learned = false;
+                        if (currentB.abilityDef != TorannMagicDefOf.TM_BattleHymn)
+                        {
+                            currentB.learned = false;
+                        }
                         this.RemovePawnAbility(currentB.abilityDef);
                     }
                 }
@@ -3247,7 +3277,10 @@ namespace TorannMagic
                 {
                     foreach (MagicPower currentSD in this.MagicData.MagicPowersSD)
                     {
-                        currentSD.learned = false;
+                        if (currentSD.abilityDef != TorannMagicDefOf.TM_Scorn)
+                        {
+                            currentSD.learned = false;
+                        }
                         this.RemovePawnAbility(currentSD.abilityDef);
                     }
                 }
@@ -3256,7 +3289,10 @@ namespace TorannMagic
                 {
                     foreach (MagicPower currentWD in this.MagicData.MagicPowersWD)
                     {
-                        currentWD.learned = false;
+                        if (currentWD.abilityDef != TorannMagicDefOf.TM_PsychicShock)
+                        {
+                            currentWD.learned = false;
+                        }
                         this.RemovePawnAbility(currentWD.abilityDef);
                     }
                 }
@@ -3265,7 +3301,14 @@ namespace TorannMagic
                 {
                     foreach (MagicPower currentG in this.MagicData.MagicPowersG)
                     {
-                        currentG.learned = false;
+                        if (currentG.abilityDef == TorannMagicDefOf.TM_Meteor || currentG.abilityDef == TorannMagicDefOf.TM_Meteor_I || currentG.abilityDef == TorannMagicDefOf.TM_Meteor_II || currentG.abilityDef == TorannMagicDefOf.TM_Meteor_III)
+                        {
+                            currentG.learned = true;
+                        }
+                        else
+                        {
+                            currentG.learned = false;
+                        }
                         this.RemovePawnAbility(currentG.abilityDef);
                     }
                 }
@@ -3274,7 +3317,14 @@ namespace TorannMagic
                 {
                     foreach (MagicPower currentT in this.MagicData.MagicPowersT)
                     {
-                        currentT.learned = false;
+                        if (currentT.abilityDef == TorannMagicDefOf.TM_OrbitalStrike || currentT.abilityDef == TorannMagicDefOf.TM_OrbitalStrike_I || currentT.abilityDef == TorannMagicDefOf.TM_OrbitalStrike_II || currentT.abilityDef == TorannMagicDefOf.TM_OrbitalStrike_III)
+                        {
+                            currentT.learned = true;
+                        }
+                        else
+                        {
+                            currentT.learned = false;
+                        }
                         this.RemovePawnAbility(currentT.abilityDef);
                     }
                 }
@@ -3283,7 +3333,14 @@ namespace TorannMagic
                 {
                     foreach (MagicPower currentBM in this.MagicData.MagicPowersBM)
                     {
-                        currentBM.learned = false;
+                        if (currentBM.abilityDef == TorannMagicDefOf.TM_BloodMoon || currentBM.abilityDef == TorannMagicDefOf.TM_BloodMoon_I || currentBM.abilityDef == TorannMagicDefOf.TM_BloodMoon_II || currentBM.abilityDef == TorannMagicDefOf.TM_BloodMoon_III)
+                        {
+                            currentBM.learned = true;
+                        }
+                        else
+                        {
+                            currentBM.learned = false;
+                        }
                         this.RemovePawnAbility(currentBM.abilityDef);
                     }
                 }
@@ -3292,7 +3349,10 @@ namespace TorannMagic
                 {
                     foreach (MagicPower currentE in this.MagicData.MagicPowersE)
                     {
-                        currentE.learned = false;
+                        if (currentE.abilityDef != TorannMagicDefOf.TM_Shapeshift)
+                        {
+                            currentE.learned = false;
+                        }
                         this.RemovePawnAbility(currentE.abilityDef);
                     }
                 }

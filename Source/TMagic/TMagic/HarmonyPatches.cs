@@ -223,6 +223,29 @@ namespace TorannMagic
             }
         }
 
+        public static bool Get_IsColonist_Polymorphed(Pawn __instance, ref bool __result)
+        {
+            if (__instance.GetComp<CompPolymorph>() != null && __instance.GetComp<CompPolymorph>().Original != null && __instance.GetComp<CompPolymorph>().Original.RaceProps.Humanlike)
+            {
+                __result = __instance.Faction != null && __instance.Faction.IsPlayer;
+                return false;
+            }
+            return true;
+        }
+
+        [HarmonyPatch(typeof(FloatMenuMakerMap), "AddJobGiverWorkOrders", null)]
+        public class SkipPolymorph_UndraftedOrders_Patch
+        {
+            public static bool Prefix(IntVec3 clickCell, Pawn pawn, List<FloatMenuOption> opts, bool drafted)
+            {
+                if (pawn.GetComp<CompPolymorph>() != null && pawn.GetComp<CompPolymorph>().Original != null)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
+
         [HarmonyPriority(2000)] 
         public static bool RimmuNation_CHCFCIR_Patch(Verb __instance, IntVec3 sourceSq, IntVec3 targetLoc, bool includeCorners, ref bool __result)
         {
@@ -321,38 +344,31 @@ namespace TorannMagic
             return true;
         }
 
-        public static bool Get_IsColonist_Polymorphed(Pawn __instance, ref bool __result)
-        {
-            if (__instance.GetComp<CompPolymorph>() != null)
-            {
-                __result = __instance.Faction != null && __instance.Faction.IsPlayer;
-                return false;
-            }
-            return true;
-        }
-
         [HarmonyPatch(typeof(GenDraw), "DrawMeshNowOrLater", null)]
         public class DrawMesh_Cloaks_Patch
         {
             public static bool Prefix(Mesh mesh, Vector3 loc, Quaternion quat, Material mat, bool drawNow)
             {
-                if(mat != null && mat.mainTexture != null && mat.mainTexture.name != null && (mat.mainTexture.ToString().Contains("demonlordcloak") || mat.mainTexture.name.Contains("opencloak")))
+                if (mesh != null && loc != null && quat != null && mat != null)
                 {
-                    loc.y += .015f;
-                    if(mat.name.ToString().Contains("_north"))
+                    if (mat.mainTexture != null && mat.mainTexture.name != null && mat.mainTexture.ToString() != null && (mat.mainTexture.ToString().Contains("demonlordcloak") || mat.mainTexture.name.Contains("opencloak")))
                     {
-                        loc.y += .006f;
+                        loc.y += .015f;
+                        if (mat.name.ToString().Contains("_north"))
+                        {
+                            loc.y += .006f;
+                        }
+                        if (drawNow)
+                        {
+                            mat.SetPass(0);
+                            Graphics.DrawMeshNow(mesh, loc, quat);
+                        }
+                        else
+                        {
+                            Graphics.DrawMesh(mesh, loc, quat, mat, 0);
+                        }
+                        return false;
                     }
-                    if (drawNow)
-                    {
-                        mat.SetPass(0);
-                        Graphics.DrawMeshNow(mesh, loc, quat);
-                    }
-                    else
-                    {
-                        Graphics.DrawMesh(mesh, loc, quat, mat, 0);
-                    }
-                    return false;
                 }
                 return true;
             }
@@ -393,19 +409,6 @@ namespace TorannMagic
                         compRottable.RotProgress = hediff.Severity;
                     }
                 }
-            }
-        }
-
-        [HarmonyPatch(typeof(FloatMenuMakerMap), "AddJobGiverWorkOrders", null)]
-        public class SkipPolymorph_UndraftedOrders_Patch
-        {
-            public static bool Prefix(IntVec3 clickCell, Pawn pawn, List<FloatMenuOption> opts, bool drafted)
-            {
-                if(pawn.GetComp<CompPolymorph>() != null && pawn.GetComp<CompPolymorph>().Original != null)
-                {
-                    return false;
-                }
-                return true;
             }
         }
 
