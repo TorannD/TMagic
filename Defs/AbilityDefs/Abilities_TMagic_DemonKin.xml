@@ -803,7 +803,7 @@ Radius: 8</description>
         <label>Scorn</label>
         <uiIconPath>UI/scorn</uiIconPath>
         <description>The succubus uses her demonic powers to partially transform into a winged demon, launching herself towards a distant location to crush her foes in a torrent of dark fury.</description>
-        <manaCost>0.60</manaCost>
+        <manaCost>0.35</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -814,7 +814,7 @@ Radius: 8</description>
             <defaultProjectile>Projectile_Scorn</defaultProjectile>
             <abilityDef>TM_Scorn</abilityDef>
             <warmupTime>1</warmupTime>
-            <SecondsToRecharge>300</SecondsToRecharge>
+            <SecondsToRecharge>30</SecondsToRecharge>
             <range>300</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Launch</soundCast>

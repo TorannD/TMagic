@@ -37,23 +37,23 @@ namespace TorannMagic
                 {
                     if(magicDef == TorannMagicDefOf.TM_IgniteBlood)
                     {
-                        num *= (1 - .05f * this.MagicUser.MagicData.MagicPowerSkill_IgniteBlood.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_IgniteBlood_eff").level);
+                        num *= (1 - .06f * this.MagicUser.MagicData.MagicPowerSkill_IgniteBlood.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_IgniteBlood_eff").level);
                     }
                     if (magicDef == TorannMagicDefOf.TM_BloodForBlood)
                     {
-                        num *= (1 - .05f * this.MagicUser.MagicData.MagicPowerSkill_BloodForBlood.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodForBlood_eff").level);
+                        num *= (1 - .06f * this.MagicUser.MagicData.MagicPowerSkill_BloodForBlood.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodForBlood_eff").level);
                     }
                     if (magicDef == TorannMagicDefOf.TM_BloodShield)
                     {
-                        num *= (1 - .05f * this.MagicUser.MagicData.MagicPowerSkill_BloodShield.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodShield_eff").level);
+                        num *= (1 - .06f * this.MagicUser.MagicData.MagicPowerSkill_BloodShield.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodShield_eff").level);
                     }
                     if (magicDef == TorannMagicDefOf.TM_Rend || magicDef == TorannMagicDefOf.TM_Rend_I || magicDef == TorannMagicDefOf.TM_Rend_II || magicDef == TorannMagicDefOf.TM_Rend_III)
                     {
-                        num *= (1 - .04f * this.MagicUser.MagicData.MagicPowerSkill_Rend.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Rend_eff").level);
+                        num *= (1 - .05f * this.MagicUser.MagicData.MagicPowerSkill_Rend.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Rend_eff").level);
                     }
                     if (magicDef == TorannMagicDefOf.TM_BloodMoon || magicDef == TorannMagicDefOf.TM_BloodMoon_I || magicDef == TorannMagicDefOf.TM_BloodMoon_II || magicDef == TorannMagicDefOf.TM_BloodMoon_III)
                     {
-                        num *= (1 - .03f * this.MagicUser.MagicData.MagicPowerSkill_BloodMoon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodMoon_eff").level);
+                        num *= (1 - .04f * this.MagicUser.MagicData.MagicPowerSkill_BloodMoon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodMoon_eff").level);
                     }
                     num *= (1 - .03f * this.MagicUser.MagicData.MagicPowerSkill_BloodGift.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodGift_eff").level);
                 }

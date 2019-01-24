@@ -281,6 +281,11 @@ namespace TorannMagic
                             {
                                 hitPawn.workSettings.SetPriority(allWorkTypes[i], hitPawnWorkSetting[i]);
                             }
+                            CompAbilityUserMagic comp = hitPawn.GetComp<CompAbilityUserMagic>();
+                            if(comp != null && comp.IsMagicUser)
+                            {
+                                comp.magicPowersInitializedForColonist = true;
+                            }
                         }
                         RemoveHediffs();
                     }

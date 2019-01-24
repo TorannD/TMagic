@@ -25,6 +25,8 @@ namespace TorannMagic
         List<DamageDef> bodypartDamageType = new List<DamageDef>();
         List<Hediff_Injury> injuries = new List<Hediff_Injury>();
 
+        public Map activeMap = null;
+
         public CompProperties_Polymorph Props
         {
             get
@@ -113,7 +115,7 @@ namespace TorannMagic
         {
             this.ticksLeft = this.ticksToDestroy;
             TransmutateEffects(ParentPawn.Position);
-            if(this.original != null && this.spawner == this.original && this.original.Spawned)
+            if (this.original != null && this.spawner == this.original && this.original.Spawned)
             {
                 bool drafter = this.original.Drafted;
                 this.original.DeSpawn();
@@ -153,6 +155,7 @@ namespace TorannMagic
                         this.initialized = true;
                         SpawnSetup();
                     }
+                    this.activeMap = this.ParentPawn.Map;
                     bool flag2 = this.temporary;
                     if (flag2 && this.initialized)
                     {
@@ -161,7 +164,7 @@ namespace TorannMagic
                         if (flag3)
                         {
                             this.PreDestroy();
-                            ParentPawn.Destroy(DestroyMode.Vanish);
+                            ParentPawn.Destroy(DestroyMode.Vanish);                            
                         }
                         CheckPawnState();
                         bool spawned = this.parent.Spawned;
@@ -208,7 +211,7 @@ namespace TorannMagic
                     ;
                 }
             }
-            if (this.original != null)
+            if (this.original != null && this.original.Faction != null && this.spawner != null && this.spawner.Faction == this.original.Faction)
             {
                 String label = "TM_CancelPolymorph".Translate();
                 String desc = "TM_CancelPolymorphDesc".Translate();
@@ -237,6 +240,7 @@ namespace TorannMagic
                 CopyDamage(ParentPawn);
                 SpawnOriginal(ParentPawn.Map);
                 ApplyDamage(original);
+                this.original = null;
             }
         }
 
@@ -291,9 +295,9 @@ namespace TorannMagic
         public override void PostDestroy(DestroyMode mode, Map previousMap)
         {
             if (this.ticksLeft > 0 && (this.parent.DestroyedOrNull() || ParentPawn.Dead))
-            {                
-                DestroyParentCorpse(this.ParentPawn.Map);
-                SpawnOriginal(this.ParentPawn.Map);
+            {
+                DestroyParentCorpse(this.activeMap);
+                SpawnOriginal(this.activeMap);
                 original.Kill(null, null);
                 this.Original = null;
             }            

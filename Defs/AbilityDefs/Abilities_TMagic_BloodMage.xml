@@ -9,7 +9,7 @@
     <uiIconPath>UI/bloodgift</uiIconPath>
     <description>Combines blood and mana into a hybrid form of power used to perform blood magic. The use of blood sacrifice inflicts several deep cuts to allow ready access to blood and combines it with mana to generate an immediate amount of blood magic power.
 	
-Blood mages can slowly generate blood magic power from open, bleeding wounds without the use of mana, and can aslo train to use fresh, exposed blood near them to fuel blood magic.
+Blood mages can slowly generate blood magic power from open, bleeding wounds without the use of mana, and can also train to use fresh, exposed blood near them to fuel blood magic.
 
 A blood mage will slowly lose blood magic power when they are no longer bleeding.</description>
     <manaCost>0.15</manaCost>
@@ -64,7 +64,7 @@ A blood mage will slowly lose blood magic power when they are no longer bleeding
         <label>Ignite Blood</label>
         <uiIconPath>UI/igniteblood</uiIconPath>
         <description>Ignites and burns any exposed blood in an intense flash fire. Fire will continue to spread to nearby blood.</description>
-		<bloodCost>0.55</bloodCost>
+		<bloodCost>0.45</bloodCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>AbilityUser.Verb_UseAbility</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -105,7 +105,7 @@ The blood that's expelled from the target becomes a mist that the caster absorbs
 The wounds and injuries of a target will also be healed as the blood exits their body. The victim loses a portion of their blood each pulse and, like any wound, can result in incapacitation or death if they lose too much blood.
 
 The transfer and healing rate is increased for both caster and victim depending on how much the victim is bleeding. The effects are the same when used on friendly or enemy pawns, but will trigger an outrage if used to down or slay an allied or neutral pawn.</description>
-        <bloodCost>0.35</bloodCost>
+        <bloodCost>0.30</bloodCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BloodForBlood</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -188,7 +188,7 @@ Radius: 3
 Max Targets: 2
 Cooldown: 120
 Cast Time: 2.4s</description>
-		<bloodCost>0.50</bloodCost>
+		<bloodCost>0.40</bloodCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Rend</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -237,7 +237,7 @@ Radius: 3
 Max Targets: 3
 Cooldown: 110
 Cast Time: 2.2s</description>
-		<bloodCost>0.50</bloodCost>
+		<bloodCost>0.40</bloodCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Rend</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -286,7 +286,7 @@ Radius: 3.8
 Max Targets: 4
 Cooldown: 100
 Cast Time: 2s</description>
-		<bloodCost>0.50</bloodCost>
+		<bloodCost>0.40</bloodCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Rend</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -335,7 +335,7 @@ Radius: 4
 Max Targets: 5
 Cooldown: 90
 Cast Time: 1.8s</description>
-		<bloodCost>0.50</bloodCost>
+		<bloodCost>0.40</bloodCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Rend</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -456,7 +456,7 @@ Cast Time: 1.8s</description>
         <label>Blood Moon</label>
         <uiIconPath>UI/BloodMoon</uiIconPath>
         <description>Surrounds an area in blood magic, calling forth demons of rage and terror to prey on enemies within.</description>
-        <bloodCost>0.75</bloodCost>
+        <bloodCost>0.70</bloodCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -491,7 +491,7 @@ Cast Time: 1.8s</description>
         <label>Blood Moon I</label>
         <uiIconPath>UI/BloodMoon</uiIconPath>
         <description>Surrounds an area in blood magic, calling forth demons of rage and terror to prey on enemies within.</description>
-        <bloodCost>0.75</bloodCost>
+        <bloodCost>0.70</bloodCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -526,7 +526,7 @@ Cast Time: 1.8s</description>
         <label>Blood Moon II</label>
         <uiIconPath>UI/BloodMoon</uiIconPath>
         <description>Surrounds an area in blood magic, calling forth demons of rage and terror to prey on enemies within.</description>
-        <bloodCost>0.75</bloodCost>
+        <bloodCost>0.70</bloodCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -561,7 +561,7 @@ Cast Time: 1.8s</description>
         <label>Blood Moon III</label>
         <uiIconPath>UI/BloodMoon</uiIconPath>
         <description>Surrounds an area in blood magic, calling forth demons of rage and terror to prey on enemies within.</description>
-        <bloodCost>0.75</bloodCost>
+        <bloodCost>0.7</bloodCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

@@ -14,18 +14,23 @@ namespace TorannMagic
 
             //Thing thing = GenClosest.ClosestThingReachable(pawn.Position, pawn.Map, ThingRequest.ForGroup(ThingRequestGroup.Filth), PathEndMode.ClosestTouch,
             //    TraverseParms.For(pawn, Danger.Deadly, TraverseMode.ByPawn, false), 300f, filth, null, 0, -1, false, RegionType.Set_Passable, false);
-
-            List<Thing> filthList = pawn.Map.listerFilthInHomeArea.FilthInHomeArea;
-            for(int i = 0; i < filthList.Count; i++)
+            if (pawn != null && pawn.Map != null)
             {
-                if(pawn.CanReserve(filthList[i], 1, -1, ReservationLayerDefOf.Floor, false))
+                List<Thing> filthList = pawn.Map.listerFilthInHomeArea.FilthInHomeArea;
+                if (filthList != null && filthList.Count > 0)
                 {
-                    Thing thing = filthList[i];
-                    if (thing != null && pawn.CanReserve(thing))
+                    for (int i = 0; i < filthList.Count; i++)
                     {
-                        Job job = new Job(JobDefOf.Clean);
-                        job.AddQueuedTarget(TargetIndex.A, thing);
-                        return job;
+                        if (pawn.CanReserve(filthList[i], 1, -1, ReservationLayerDefOf.Floor, false))
+                        {
+                            Thing thing = filthList[i];
+                            if (thing != null && pawn.CanReserve(thing))
+                            {
+                                Job job = new Job(JobDefOf.Clean);
+                                job.AddQueuedTarget(TargetIndex.A, thing);
+                                return job;
+                            }
+                        }
                     }
                 }
             }
