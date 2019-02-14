@@ -354,10 +354,8 @@ Arcane Resistance: +20%</description>
 	</graphicData>
 	<projectile>
 		<damageDef>Bomb</damageDef>
-		<damageAmountBase>8</damageAmountBase>
-		<speed>35</speed>
-		<explosionRadius>.6</explosionRadius>
-		<postExplosionSpawnChance>1</postExplosionSpawnChance>
+		<damageAmountBase>9</damageAmountBase>
+		<speed>32</speed>
 	</projectile>
   </ThingDef>
 
@@ -384,7 +382,7 @@ Damage Boost: +15%</description>
       <AccuracyShort>0.71</AccuracyShort>
       <AccuracyMedium>0.50</AccuracyMedium>
       <AccuracyLong>0.32</AccuracyLong>
-      <RangedWeapon_Cooldown>1.8</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>1.9</RangedWeapon_Cooldown>
     </statBases>
     <costList>
       <Steel>20</Steel>
@@ -414,7 +412,7 @@ Damage Boost: +15%</description>
         <soundCastTail>GunTail_Light</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
 		<burstShotCount>3</burstShotCount>
-		<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+		<ticksBetweenBurstShots>9</ticksBetweenBurstShots>
       </li>
     </verbs>
     <tools>
@@ -441,8 +439,8 @@ Damage Boost: +15%</description>
         </graphicData>
         <projectile>
             <damageDef>Iceshard</damageDef>
-			<damageAmountBase>15</damageAmountBase>
-			<speed>60</speed>
+			<damageAmountBase>18</damageAmountBase>
+			<speed>65</speed>
         </projectile>
     </ThingDef>
   
@@ -468,7 +466,7 @@ Damage Boost: +15%</description>
       <AccuracyShort>0.82</AccuracyShort>
       <AccuracyMedium>0.76</AccuracyMedium>
       <AccuracyLong>0.70</AccuracyLong>
-      <RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>.6</RangedWeapon_Cooldown>
     </statBases>
 		<comps>
 		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
@@ -492,8 +490,8 @@ Damage Boost: +15%</description>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Projectile_IceWand</defaultProjectile>
-        <warmupTime>.75</warmupTime>
-        <range>36</range>
+        <warmupTime>.5</warmupTime>
+        <range>40</range>
         <soundCast>TM_Woosh</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
         <muzzleFlashScale>5</muzzleFlashScale>
@@ -506,7 +504,7 @@ Damage Boost: +15%</description>
           <li>Blunt</li>
         </capacities>
         <power>6</power>
-        <cooldownTime>1.2</cooldownTime>
+        <cooldownTime>1</cooldownTime>
       </li>
     </tools>
   </ThingDef>

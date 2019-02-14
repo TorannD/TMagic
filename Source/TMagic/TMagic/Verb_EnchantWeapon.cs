@@ -68,7 +68,7 @@ namespace TorannMagic
                     RemoveExistingEnchantment(pawn);
                     ApplyEnchantment(pawn);
                 }
-                else
+                else if(this.CasterPawn.IsColonist)
                 {
                     Messages.Message("TM_NoMeleeWeaponToEnchant".Translate(
                     pawn

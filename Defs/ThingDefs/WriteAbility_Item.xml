@@ -35,9 +35,9 @@
 		<thingClass>ThingWithComps</thingClass>
 		<description>An arcane script ready to be filled with the secrets of unlocking magical powers...
 		
-Use a trained mage to record their arcane secrets in the book. The book can then be used to teach another, gifted pawn how to become the same class.
+Use a trained mage to record their arcane secrets in the book. The book can then be used to teach another, gifted pawn how to become the same class. Torn scripts will promote a gifted pawn to a magic class but will start with a random set of class abilities.
 
-Gifted pawns can journal their theories and experiments in this book and learn to become a random magic class.</description>
+Magically Gifted pawns can journal their theories and experiments in this book and learn to become a random magic class.</description>
 		<category>Item</category>
 		<selectable>true</selectable>
 		<altitudeLayer>Item</altitudeLayer>
@@ -91,7 +91,7 @@ Gifted pawns can journal their theories and experiments in this book and learn t
 		<thingClass>ThingWithComps</thingClass>
 		<description>A arcane tome ready to be filled with the secrets of unlocking magical powers...
 		
-Use a trained mage to record their arcane secrets in the book. The book can then be used to teach another, gifted pawn how to become the same class.
+Use a trained mage to record their arcane secrets in the book. The book can then be used to teach another, gifted pawn how to become the same class. Arcane Tomes will promote a gifted pawn to a magic class and all class abilities except the class's master ability.
 
 Gifted pawns can journal their theories and experiments in this book and learn to become a random magic class.</description>
 		<category>Item</category>

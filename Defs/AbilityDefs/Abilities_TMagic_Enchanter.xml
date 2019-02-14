@@ -12,7 +12,7 @@
 Using this ability while the enchantment is active will dispel the enchantment. Only one enchantment type may be active at a given time.
 
 *All Enchanted Body skills apply to Enchanted Aura</description>
-    <manaCost>0.30</manaCost>
+    <manaCost>0.00</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_EnchantedBody</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -47,7 +47,7 @@ Using this ability while the enchantment is active will dispel the enchantment. 
     <description>Radiates a charming aura that disarms social barriers and improves social interaction and opinions. This spell is sustained and reduces max mp by 30% and mana regeneration by 30%.
 	
 Using this ability while the enchantment is active will dispel the enchantment. Only one enchantment type may be active at a given time.</description>
-    <manaCost>0.30</manaCost>
+    <manaCost>0.00</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_EnchantedAura</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -119,9 +119,11 @@ Check skill descriptions for additional details.</description>
         <defName>TM_EnchanterStone</defName>
         <label>Enchanter's Stone</label>
         <uiIconPath>UI/enchanterstone</uiIconPath>
-        <description>Creates an artifact imbued with magical properties. An enchanter can have as many artifacts as they wish, but each artifact reduces max MP by 20%.
+        <description>Creates an artifact out of raw material and imbues it with magical properties. An enchanter can have as many artifacts as they wish, but each artifact reduces max MP by 20%.
 	
-Magical stones are called by many names: baubles, trinkets, heirlooms, even minor artifacts - regardless of the name, the benefits of the magical item are granted to any pawn that has the item equipped. These items have a unique equipment slot.</description>
+The benefits of the artifact are granted to the pawn that has the item equipped. Artifacts have unique equipment slots.
+
+This ability is used on raw resources such as stone chunks, steel, or silver - see skill descriptions for a full list of resources that can be used to create an enchanater's stone.</description>
         <manaCost>0.70</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_EnchanterStone</verbClass>

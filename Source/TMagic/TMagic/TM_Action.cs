@@ -378,6 +378,18 @@ namespace TorannMagic
                     }
                     else
                     {
+                        try
+                        {
+                            if (ModCheck.Validate.GiddyUp.Core_IsInitialized())
+                            {
+                                ModCheck.GiddyUp.ForceDismount(original);
+                            }
+                        }
+                        catch
+                        {
+
+                        }
+
                         Pawn newPawn = new Pawn();
                         
                         newPawn = (Pawn)PawnGenerator.GeneratePawn(spawnables.kindDef, faction);

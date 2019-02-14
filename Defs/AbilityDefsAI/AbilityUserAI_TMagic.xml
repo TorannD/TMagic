@@ -2484,7 +2484,7 @@ Document made by ChJees
 							</tags>
 						</li>
 						<!-- Using melee weapon -->
-						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingMeleeWeapon">
+<!-- 						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingMeleeWeapon">
 							<subNodes>
 								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
 									<tags>
@@ -2492,7 +2492,7 @@ Document made by ChJees
 									</tags>
 								</li>								
 							</subNodes>
-						</li>						
+						</li>	 -->					
 					</subNodes>
 				</li>
 			</subNodes>

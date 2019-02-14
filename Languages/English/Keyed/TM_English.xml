@@ -540,10 +540,11 @@ Level 1: 2 injuries
 Level 2: 3 injuries
 Level 3: 4 injuries</TM_HealingCircle_ver_desc>
 <TM_HealingCircle_pwr_desc>Increases amount each wound is healed. Also increases the duration of Healing Circle by 3s per skill point.
-Level 0: 4 health
-Level 1: 6 health
-Level 2: 8 health
-Level 3: 10 health</TM_HealingCircle_pwr_desc>
+Level 0: 4.8 health
+Level 1: 7.2 health
+Level 2: 9.6 health
+Level 3: 12 health
+Level 4: 14.4 health</TM_HealingCircle_pwr_desc>
 <TM_BestowMight_eff_desc>Reduces mana cost of Bestow Might by 8% per skill point.</TM_BestowMight_eff_desc>
 <TM_Resurrection_eff_desc>Reduces mana cost of Resurrection by 5% per skill level.</TM_Resurrection_eff_desc>
 <TM_Resurrection_ver_desc>Increases the chance to prevent resurrection side effects such as blindness and psychosis by 33% per level.  Base chance is 0%.</TM_Resurrection_ver_desc>

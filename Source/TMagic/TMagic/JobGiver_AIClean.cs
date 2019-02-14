@@ -21,7 +21,7 @@ namespace TorannMagic
                 {
                     for (int i = 0; i < filthList.Count; i++)
                     {
-                        if (pawn.CanReserve(filthList[i], 1, -1, ReservationLayerDefOf.Floor, false))
+                        if (pawn.CanReserve(filthList[i], 1, -1, ReservationLayerDefOf.Floor, false) && pawn.CanReach(filthList[i], PathEndMode.Touch, Danger.Deadly, false, TraverseMode.ByPawn))
                         {
                             Thing thing = filthList[i];
                             if (thing != null && pawn.CanReserve(thing))

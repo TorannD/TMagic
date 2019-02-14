@@ -887,11 +887,8 @@
 			<description>[PAWN_nameDef] is an enchanter, attuned to the composition of matter and materials. [PAWN_pronoun] can manipulate matter to [PAWN_possessive] will, frequently in unnatural ways, and [PAWN_possessive] powers of transmutation can be permanent when sufficient effort is applied.</description>
 			<degree>4</degree>
 			<statOffsets>
-				<SocialImpact>-0.10</SocialImpact>
-				<NegotiationAbility>-0.10</NegotiationAbility>
-				<TradePriceImprovement>0.10</TradePriceImprovement>
-				<TameAnimalChance>-0.10</TameAnimalChance>
-				<TrainAnimalChance>-0.10</TrainAnimalChance>
+				<TameAnimalChance>-0.15</TameAnimalChance>
+				<TrainAnimalChance>-0.15</TrainAnimalChance>
 				<GlobalLearningFactor>0.10</GlobalLearningFactor>	
 				<WorkSpeedGlobal>0.10</WorkSpeedGlobal>
 				<ComfyTemperatureMin>+3</ComfyTemperatureMin>
@@ -1555,7 +1552,7 @@
 		<degreeDatas>	
 		  <li>
 			<label>Death Knight</label>
-			<description>[PAWN_nameDef] is a Death Knight - harbinger of doom and a representative of the ever approaching inevitability of death and decay. [PAWN_possessive] solemn attitude makes most pawns uneasy and even few approve of [PAWN_possessive] methods.</description>
+			<description>[PAWN_nameDef] is a Death Knight - harbinger of doom and a representative of the ever approaching inevitability of death and decay. [PAWN_possessive] solemn attitude makes most pawns uneasy and even fewer approve of [PAWN_possessive] methods.</description>
 			<degree>4</degree>
 				<statOffsets>
 					<SocialImpact>-0.25</SocialImpact>

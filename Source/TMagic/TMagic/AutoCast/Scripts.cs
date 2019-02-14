@@ -113,7 +113,7 @@ namespace TorannMagic.AutoCast
                     //GenSpawn.Spawn(cT, targetCell, map);
                 }
 
-                caster.GetComp<CompAbilityUserMight>().MightUserXP -= 36;
+                caster.GetComp<CompAbilityUserMight>().MightUserXP -= 50;
                 ability.PostAbilityAttempt();
                 if (selectCaster)
                 {

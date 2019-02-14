@@ -1387,229 +1387,232 @@ namespace TorannMagic
         {
             int result = 0;
 
-            if (attributeName == "TM_Sprint_eff")
+            if (this.mightData != null && attributeName != null)
             {
-                MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_Sprint.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = mightPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_Sprint_eff")
                 {
-                    result = mightPowerSkill.level;
+                    MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_Sprint.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = mightPowerSkill != null;
+                    if (flag)
+                    {
+                        result = mightPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_Fortitude_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Fortitude.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_Fortitude_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Fortitude.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_Grapple_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Grapple.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_Grapple_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Grapple.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_Cleave_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Cleave.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_Cleave_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Cleave.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_Whirlwind_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Whirlwind.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_Whirlwind_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Whirlwind.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_Headshot_eff")
-            {
-                MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_Headshot.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = mightPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_Headshot_eff")
                 {
-                    result = mightPowerSkill.level;
+                    MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_Headshot.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = mightPowerSkill != null;
+                    if (flag)
+                    {
+                        result = mightPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_DisablingShot_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_DisablingShot.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_DisablingShot_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_DisablingShot.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_AntiArmor_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_AntiArmor.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_AntiArmor_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_AntiArmor.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_SeismicSlash_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_SeismicSlash_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_BladeSpin_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_BladeSpin.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_BladeSpin_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_BladeSpin.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_PhaseStrike_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_PhaseStrike.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_PhaseStrike_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_PhaseStrike.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_AnimalFriend_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_AnimalFriend.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_AnimalFriend_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_AnimalFriend.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_ArrowStorm_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_ArrowStorm.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_ArrowStorm_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_ArrowStorm.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_Disguise_eff")
-            {
-                MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_Disguise.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = mightPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_Disguise_eff")
                 {
-                    result = mightPowerSkill.level;
+                    MightPowerSkill mightPowerSkill = this.MightData.MightPowerSkill_Disguise.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = mightPowerSkill != null;
+                    if (flag)
+                    {
+                        result = mightPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_Mimic_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_Mimic_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_Reversal_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Reversal.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_Reversal_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Reversal.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_Transpose_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Transpose.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_Transpose_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Transpose.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_Possess_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Possess.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_Possess_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Possess.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_PsionicBarrier_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_PsionicBarrier.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_PsionicBarrier_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_PsionicBarrier.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_PsionicBlast_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_PsionicBlast.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_PsionicBlast_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_PsionicBlast.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_PsionicDash_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_PsionicDash.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_PsionicDash_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_PsionicDash.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_PsionicStorm_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_PsionicStorm.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_PsionicStorm_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_PsionicStorm.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_WaveOfFear_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_WaveOfFear.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_WaveOfFear_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_WaveOfFear.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_Spite_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Spite.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_Spite_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_Spite.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
-            }
-            if (attributeName == "TM_GraveBlade_eff")
-            {
-                MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_GraveBlade.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
-                bool flag = magicPowerSkill != null;
-                if (flag)
+                if (attributeName == "TM_GraveBlade_eff")
                 {
-                    result = magicPowerSkill.level;
+                    MightPowerSkill magicPowerSkill = this.MightData.MightPowerSkill_GraveBlade.FirstOrDefault((MightPowerSkill x) => x.label == attributeName);
+                    bool flag = magicPowerSkill != null;
+                    if (flag)
+                    {
+                        result = magicPowerSkill.level;
+                    }
                 }
             }
 

@@ -38,7 +38,7 @@ namespace TorannMagic
             
             if (spawned)
             {
-                MoteMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 1f);
+                MoteMaker.ThrowLightningGlow(base.Pawn.DrawPos, base.Pawn.Map, 1f);
                 if (this.Def.defName == "TM_Regeneration_III")
                 {
                     hediffPwr = 3;
@@ -70,74 +70,75 @@ namespace TorannMagic
                 }
             }
             this.age++;
-            
-            if (age > lastRegen + regenRate)
+            if(!this.Pawn.DestroyedOrNull() && !this.Pawn.Dead)
             {
-                HealthUtility.AdjustSeverity(base.Pawn, this.Def, -0.3f);
-                this.lastRegen = this.age;
-                Pawn pawn = base.Pawn as Pawn;
-                
-                TM_MoteMaker.ThrowRegenMote(pawn.DrawPos, pawn.Map, 1f);
-                bool flag = pawn != null && !TM_Calc.IsUndead(pawn);
-                bool undeadFlag = pawn != null && TM_Calc.IsUndead(pawn);
-                if (flag)
+                if (age > lastRegen + regenRate)
                 {
-                    ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                    int num = 1; // + ver.level;
-                    if(settingsRef.AIHardMode && !pawn.IsColonist)
+                    HealthUtility.AdjustSeverity(base.Pawn, this.Def, -0.3f);
+                    this.lastRegen = this.age;
+                    Pawn pawn = base.Pawn as Pawn;
+
+                    TM_MoteMaker.ThrowRegenMote(pawn.DrawPos, pawn.Map, 1f);
+                    bool flag = !TM_Calc.IsUndead(pawn);
+                    if (flag)
                     {
-                        num = 2;
-                    }
-  
-                    using (IEnumerator<BodyPartRecord> enumerator = pawn.health.hediffSet.GetInjuredParts().GetEnumerator())
-                    {
-                        while (enumerator.MoveNext())
+                        ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                        int num = 1; // + ver.level;
+                        if (settingsRef.AIHardMode && !pawn.IsColonist)
                         {
-                            BodyPartRecord rec = enumerator.Current;
-                            bool flag2 = num > 0;
+                            num = 2;
+                        }
 
-                            if (flag2)
+                        using (IEnumerator<BodyPartRecord> enumerator = pawn.health.hediffSet.GetInjuredParts().GetEnumerator())
+                        {
+                            while (enumerator.MoveNext())
                             {
-                                
-                                int num2 = 1; // + ver.level;
-                                if(settingsRef.AIHardMode && !pawn.IsColonist)
-                                {
-                                    num2 = 2;
-                                }
-                                IEnumerable<Hediff_Injury> arg_BB_0 = pawn.health.hediffSet.GetHediffs<Hediff_Injury>();
-                                Func<Hediff_Injury, bool> arg_BB_1;
+                                BodyPartRecord rec = enumerator.Current;
+                                bool flag2 = num > 0;
 
-                                arg_BB_1 = ((Hediff_Injury injury) => injury.Part == rec);
-
-                                foreach (Hediff_Injury current in arg_BB_0.Where(arg_BB_1))
+                                if (flag2)
                                 {
-                                    bool flag4 = num2 > 0;
-                                    if (flag4)
+
+                                    int num2 = 1; // + ver.level;
+                                    if (settingsRef.AIHardMode && !pawn.IsColonist)
                                     {
-                                        bool flag5 = current.CanHealNaturally() && !current.IsPermanent();
-                                        if (flag5)
+                                        num2 = 2;
+                                    }
+                                    IEnumerable<Hediff_Injury> arg_BB_0 = pawn.health.hediffSet.GetHediffs<Hediff_Injury>();
+                                    Func<Hediff_Injury, bool> arg_BB_1;
+
+                                    arg_BB_1 = ((Hediff_Injury injury) => injury.Part == rec);
+
+                                    foreach (Hediff_Injury current in arg_BB_0.Where(arg_BB_1))
+                                    {
+                                        bool flag4 = num2 > 0;
+                                        if (flag4)
                                         {
-                                            
-                                            if(!pawn.IsColonist)
+                                            bool flag5 = current.CanHealNaturally() && !current.IsPermanent();
+                                            if (flag5)
                                             {
-                                                current.Heal(10f + (1.5f * hediffPwr));
+
+                                                if (!pawn.IsColonist)
+                                                {
+                                                    current.Heal(10f + (1.5f * hediffPwr));
+                                                }
+                                                else
+                                                {
+                                                    current.Heal(2f + (1f * hediffPwr));
+                                                }
+                                                num--;
+                                                num2--;
                                             }
-                                            else
-                                            {
-                                                current.Heal(2f + (1f * hediffPwr));
-                                            }
-                                            num--;
-                                            num2--;
                                         }
                                     }
                                 }
                             }
                         }
                     }
-                }
-                if(undeadFlag)
-                {
-                    TM_Action.DamageUndead(pawn, (2f + 1f * hediffPwr), null);
+                    else
+                    {
+                        TM_Action.DamageUndead(pawn, (2f + 1f * hediffPwr), null);
+                    }
                 }
             }
         }

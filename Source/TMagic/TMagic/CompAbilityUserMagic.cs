@@ -1724,17 +1724,24 @@ namespace TorannMagic
         {
             if (!this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
-                this.MagicUserLevel++;
-                bool flag = !hideNotification;
-                if (flag)
+                if (this.MagicUserLevel < 150)
                 {
-                    ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                    if (Pawn.IsColonist && settingsRef.showLevelUpMessage)
+                    this.MagicUserLevel++;
+                    bool flag = !hideNotification;
+                    if (flag)
                     {
-                        Messages.Message(TranslatorFormattedStringExtensions.Translate("TM_MagicLevelUp", 
-                    this.parent.Label
-                        ), this.Pawn, MessageTypeDefOf.PositiveEvent);
+                        ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                        if (Pawn.IsColonist && settingsRef.showLevelUpMessage)
+                        {
+                            Messages.Message(TranslatorFormattedStringExtensions.Translate("TM_MagicLevelUp",
+                        this.parent.Label
+                            ), this.Pawn, MessageTypeDefOf.PositiveEvent);
+                        }
                     }
+                }
+                else
+                {
+                    this.MagicUserXP = 74999;
                 }
             }
         }

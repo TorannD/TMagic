@@ -1184,7 +1184,7 @@ Trained fighters will gain class XP.  The amount of XP gained depends on the soc
         <defName>TM_Blur</defName>
         <label>Blur</label>
         <uiIconPath>UI/blur</uiIconPath>
-        <description>Increases chance to dodge attacks by distorting light around the caster. Requires 20% mana to sustain. Re-use the ability to deactivate blur.</description>
+        <description>Increases chance to avoid all attacks by distorting light around the caster. Requires 20% mana to sustain. Re-use the ability to deactivate blur.</description>
         <manaCost>0.000</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Blur</verbClass>

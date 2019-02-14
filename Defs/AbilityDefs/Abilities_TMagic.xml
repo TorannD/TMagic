@@ -1079,7 +1079,7 @@ Shots: 1</description>
 Recharge time: 10s
 Range: 32
 Shots: 2</description>
-        <manaCost>0.26</manaCost>
+        <manaCost>0.29</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>AbilityUser.Verb_UseAbility_TrueBurst</verbClass>
             <tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -1093,7 +1093,7 @@ Shots: 2</description>
             <SecondsToRecharge>10.0</SecondsToRecharge>
             <range>32</range>
             <burstShotCount>2</burstShotCount>
-            <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
+            <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
             <isPrimary>true</isPrimary>
             <soundCast>DropPod_Open</soundCast>
             <soundCastTail>GunTail_Medium</soundCastTail>
@@ -1117,7 +1117,7 @@ Shots: 2</description>
 Recharge time: 10s
 Range: 34
 Shots: 3</description>
-        <manaCost>0.32</manaCost>
+        <manaCost>0.29</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>AbilityUser.Verb_UseAbility_TrueBurst</verbClass>
             <tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -1131,7 +1131,7 @@ Shots: 3</description>
             <SecondsToRecharge>10.0</SecondsToRecharge>
             <range>36</range>
             <burstShotCount>3</burstShotCount>
-            <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
+            <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
             <isPrimary>true</isPrimary>
             <soundCast>DropPod_Open</soundCast>
             <soundCastTail>GunTail_Medium</soundCastTail>

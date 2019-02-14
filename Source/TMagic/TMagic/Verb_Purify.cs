@@ -81,8 +81,8 @@ namespace TorannMagic
                         }
                     }
                 }
-                if (pawn.RaceProps.Humanlike)
-                {
+                //if (pawn.RaceProps.Humanlike)
+                //{
                     using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
                     {
                         while (enumerator.MoveNext())
@@ -120,7 +120,7 @@ namespace TorannMagic
                             }
                         }
                     }                    
-                }
+                //}
 
                 using (IEnumerator<Hediff_Addiction> enumerator = pawn.health.hediffSet.GetHediffs<Hediff_Addiction>().GetEnumerator())
                 {

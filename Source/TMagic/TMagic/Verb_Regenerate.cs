@@ -48,7 +48,7 @@ namespace TorannMagic
             MagicPowerSkill ver = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Regenerate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Regenerate_ver");
             verVal = ver.level;
             pwrVal = pwr.level;
-            if (caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            if (caster.story != null && caster.story.traits != null && caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
                 MightPowerSkill mpwr = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
                 MightPowerSkill mver = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");

@@ -22,12 +22,14 @@ namespace TorannMagic.Weapon
                     this.arcaneDmg = comp.arcaneDmg;
                 }
             }
-            Map map = base.Map;
+            Map map = this.launcher.Map;
             base.Impact(hitThing);
-            ThingDef def = this.def;            
+            ThingDef def = this.def;
+            GenExplosion.DoExplosion(base.Position, map, 1, DamageDefOf.Burn, this.launcher, Mathf.RoundToInt(this.def.projectile.GetDamageAmount(1, null) * this.arcaneDmg), 2, SoundDefOf.Crunch, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0, true);
+
             try
             {
-                GenExplosion.DoExplosion(base.Position, map, this.def.projectile.explosionRadius, DamageDefOf.Bomb, this.launcher, Mathf.RoundToInt(this.def.projectile.GetDamageAmount(1,null) * this.arcaneDmg), 2, SoundDefOf.Crunch, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
+                //GenExplosion.DoExplosion(base.Position, map, 1, DamageDefOf.Burn, this.launcher, Mathf.RoundToInt(this.def.projectile.GetDamageAmount(1,null) * this.arcaneDmg), 2, SoundDefOf.Crunch, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0, true);
             }
             catch
             {
