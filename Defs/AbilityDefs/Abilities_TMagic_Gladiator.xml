@@ -250,7 +250,7 @@ Base mitigation: 2</description>
 			<shaderType>TransparentPostLight</shaderType>
         </graphicData>
         <projectile>
-            <damageDef>TM_GrapplingHook</damageDef>
+            <damageDef>Stun</damageDef>
             <damageAmountBase>5</damageAmountBase>
             <speed>35</speed>
         </projectile>

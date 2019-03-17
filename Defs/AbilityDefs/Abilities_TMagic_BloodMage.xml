@@ -98,7 +98,7 @@ A blood mage will slowly lose blood magic power when they are no longer bleeding
         <defName>TM_BloodForBlood</defName>
         <label>Blood For Blood</label>
         <uiIconPath>UI/bloodforblood</uiIconPath>
-        <description>Curses a targets blood to heat and accelerate until it seeps from every pore of its victim. The target must have the same blood type as the caster for this spell to work.  This curse has several affects. 
+        <description>Curses a targets blood to heat and accelerate until it seeps from every pore of its victim. This curse has several affects. 
 
 The blood that's expelled from the target becomes a mist that the caster absorbs as restorative energy, and uses it to mend the their wounds and replenish their blood reserves.
 

@@ -706,10 +706,9 @@ namespace TorannMagic
                         {
                             for (int i = 0; i < 5; i++)
                             {
-                                int rnd = Rand.RangeInclusive(4, 5);
-                                if (rnd == 4 && magicPawn.MagicData.MagicPowersE[rnd].learned)
+                                if (magicPawn.MagicData.MagicPowersE[4].learned)
                                 {
-                                    int level = magicPawn.MagicData.MagicPowersE[rnd].level;
+                                    int level = magicPawn.MagicData.MagicPowersE[4].level;
                                     switch (level)
                                     {
                                         case 0:
@@ -725,11 +724,6 @@ namespace TorannMagic
                                             tempAbility = TorannMagicDefOf.TM_Polymorph_III;
                                             break;
                                     }
-                                    i = 5;
-                                }
-                                else if (rnd == 5 && magicPawn.MagicData.MagicPowersE[rnd].learned)
-                                {
-                                    tempAbility = TorannMagicDefOf.TM_Shapeshift;
                                     i = 5;
                                 }
                             }

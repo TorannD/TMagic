@@ -68,7 +68,7 @@ namespace TorannMagic
                         flag10 = false;
                     }
                 }
-            }            
+            }
 
             CellRect cellRect = CellRect.CenteredOn(this.currentTarget.Cell, 1);
             Map map = caster.Map;
@@ -77,8 +77,9 @@ namespace TorannMagic
             IntVec3 centerCell = cellRect.CenterCell;
             Thing summonableThing = new Thing();
             FlyingObject summonablePawn = new FlyingObject();
-            dinfo.SetAmount(10);            
-            dinfo.SetWeaponHediff(TorannMagicDefOf.TM_GrapplingHook);
+            Pawn victim = null;
+            //dinfo.SetAmount(10);            
+            //dinfo.SetWeaponHediff(TorannMagicDefOf.TM_GrapplingHook);
 
             bool pflag = true;
 
@@ -94,7 +95,7 @@ namespace TorannMagic
                 pVect.x = base.caster.TrueCenter().x;
                 pVect.z = base.caster.TrueCenter().z;
                 pVect.y = 0f;
-                Pawn victim = summonableThing as Pawn;
+                victim = summonableThing as Pawn;
                 if (victim != null)
                 {
                     if (!victim.IsColonist && !victim.IsPrisoner && !victim.Faction.HostileTo(this.CasterPawn.Faction) && victim.Faction != null && victim.RaceProps.Humanlike)
@@ -102,8 +103,8 @@ namespace TorannMagic
                         Faction faction = victim.Faction;
                         faction.TrySetRelationKind(this.CasterPawn.Faction, FactionRelationKind.Ally, false, null);
                     }
-                }
-                summonablePawn = (FlyingObject)GenSpawn.Spawn(ThingDef.Named("TM_SummonedPawn"), summonableThing.Position, summonableThing.Map);
+                }                
+                
             }
             bool result;
             bool arg_40_0;
@@ -123,10 +124,24 @@ namespace TorannMagic
                 {
                     if (pflag)
                     {
-                        
-                        summonablePawn.impactDamage = dinfo;
-                        summonablePawn.Launch(base.caster, new LocalTargetInfo(pVect.ToIntVec3()), summonableThing);
-                        
+                        DamageInfo dinfo2 = new DamageInfo(DamageDefOf.Stun, 10, 10, -1, this.CasterPawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown, victim);
+                        if (!victim.RaceProps.Humanlike || victim.Faction == this.CasterPawn.Faction)
+                        {
+                            summonablePawn = (FlyingObject)GenSpawn.Spawn(ThingDef.Named("TM_SummonedPawn"), summonableThing.Position, summonableThing.Map);
+                            summonablePawn.impactDamage = dinfo2;
+                            summonablePawn.Launch(base.caster, new LocalTargetInfo(pVect.ToIntVec3()), summonableThing);
+                        }
+                        else if (victim.RaceProps.Humanlike && victim.Faction != this.CasterPawn.Faction && Rand.Chance(TM_Calc.GetSpellSuccessChance(this.CasterPawn, victim, true)))
+                        {
+                            
+                            summonablePawn = (FlyingObject)GenSpawn.Spawn(ThingDef.Named("TM_SummonedPawn"), summonableThing.Position, summonableThing.Map);
+                            summonablePawn.impactDamage = dinfo2;
+                            summonablePawn.Launch(base.caster, new LocalTargetInfo(pVect.ToIntVec3()), summonableThing);
+                        }
+                        else
+                        {
+                            MoteMaker.ThrowText(victim.DrawPos, victim.Map, "TM_ResistedSpell".Translate(), -1);
+                        }
                     }
                     else
                     {

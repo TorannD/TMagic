@@ -871,17 +871,24 @@ namespace TorannMagic
 
         public void LevelUp(bool hideNotification = false)
         {
-            this.MightUserLevel++;
-            bool flag = !hideNotification;
-            if (flag)
+            if (this.MightUserLevel < 150)
             {
-                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                if (Pawn.IsColonist && settingsRef.showLevelUpMessage)
+                this.MightUserLevel++;
+                bool flag = !hideNotification;
+                if (flag)
                 {
-                    Messages.Message("TM_MightLevelUp".Translate(
-                        this.parent.Label
-                    ), Pawn, MessageTypeDefOf.PositiveEvent);
+                    ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                    if (Pawn.IsColonist && settingsRef.showLevelUpMessage)
+                    {
+                        Messages.Message("TM_MightLevelUp".Translate(
+                            this.parent.Label
+                        ), Pawn, MessageTypeDefOf.PositiveEvent);
+                    }
                 }
+            }
+            else
+            {
+                this.MightUserXP = (int)this.XPLastLevel;
             }
         }
 

@@ -1058,7 +1058,7 @@
   <RecipeDef>
     <defName>ManaPotion_Refined</defName>
     <label>mana potion</label>
-    <description>Go-Juice is mixed with magicyte powder to produce 2 mana potions.</description>
+    <description>Herbs are mixed with magicyte powder to produce 2 mana potions.</description>
     <jobString>processing mana potion</jobString>
 	<researchPrerequisite>TM_MagicyteRefining</researchPrerequisite>
     <workSpeedStat>WorkSpeedGlobal</workSpeedStat>

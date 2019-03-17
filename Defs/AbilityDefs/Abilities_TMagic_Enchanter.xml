@@ -81,10 +81,10 @@ Using this ability while the enchantment is active will dispel the enchantment. 
         <uiIconPath>UI/transmutate</uiIconPath>
         <description>Transmutates one material into another material of equal or greater value. The amount of new material created from the old material is based on the value of the old material; some material will be consumed in the conversion process.
 
-This ability only works on raw resources and bricks by default, but can be upgraded to transmutate other material. Material will never be converted into brick, but brick can be converted into other material.
+This ability only works on raw resources (silver, steel, furs, cloth, etc) and bricks by default, but can be upgraded to transmutate other material.
 
 Check skill descriptions for additional details.</description>
-        <manaCost>0.40</manaCost>
+        <manaCost>0.20</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Transmutate</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

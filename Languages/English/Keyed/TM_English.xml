@@ -850,12 +850,13 @@ Level 2: no degradation
 Level 3: +10% HP
 
 Equipment will disintegrate if it degrades below 0 durability. Equipment transmutations will always remove 'tainted.'</TM_Transmutate_pwr_desc>
-<TM_Transmutate_eff_desc>Reduces the mana cost required to use Transmutate by 6% per skill level.</TM_Transmutate_eff_desc>
+<TM_Transmutate_eff_desc>Reduces the mana cost required to use Transmutate by 12% per skill level.</TM_Transmutate_eff_desc>
 <TM_Transmutate_ver_desc>Transmutation can be performed on more complex material.
 Level 0: Raw resources (stone, steel, silver, etc)
 Level 1: Foods (meat, rice, meals) - will always convert to pemmican or nutrient paste
 Level 2: Corpses - will always convert to nutrient paste
-Level 3: Equipment - applies to equipment made from stuff; transmutes to stuff between 95% - 200% value of the original stuff</TM_Transmutate_ver_desc> 
+Level 3: Equipment - applies to equipment made from stuff; transmutes to stuff between 95% - 200% value of the original stuff.
+Equipment made only from set material will be repaired by 30% + 10% * Conversion Rate skill level and has a (2% * Conversion Rate skill level) chance to increase the quality of the item by one level.</TM_Transmutate_ver_desc> 
 <TM_EnchanterStone_eff_desc>Reduces the mana required to cast Enchanter's Stone by 6% per skill level.</TM_EnchanterStone_eff_desc>
 <TM_EnchanterStone_ver_desc>Allows the enchanter to create artifacts out of more resources types. This skill requires 2 ability points to train.
 Level 0: stone chunks (slate, sandstone, limestone, marble, granite)
@@ -1280,8 +1281,8 @@ Base amount: 0%</TM_LifeSteal_ver_desc>
 <TM_CoolDownLabel>Ability Cooldown Reduction: {0}&#37;</TM_CoolDownLabel>
 <TM_MPCostLabel>Ability Cost Reduction: {0}&#37;</TM_MPCostLabel>
 <TM_XPGainLabel>XP Gain Increase: {0}&#37;</TM_XPGainLabel>
-<TM_ArcaneResLabel>Damage Resistance: {0}&#37;</TM_ArcaneResLabel>
-<TM_ArcaneDmgLabel>Damage Bonus: {0}&#37;</TM_ArcaneDmgLabel>
+<TM_ArcaneResLabel>Ability Resistance: {0}&#37;</TM_ArcaneResLabel>
+<TM_ArcaneDmgLabel>Ability Bonus: {0}&#37;</TM_ArcaneDmgLabel>
 <TM_ArcaneSpectre>Arcane Spectre</TM_ArcaneSpectre>
 <TM_PhantomShift>Phantom Shift</TM_PhantomShift>
 

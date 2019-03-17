@@ -839,5 +839,9 @@ namespace TorannMagic
         public static ThingDef TableArcaneForge;
         public static RecipeDef ArcaneForge_Replication;
         public static RecipeDef ArcaneForge_Replication_Restore;
+
+        //ThoughtDefs
+        public static ThoughtDef AteMysteryMeatDirect;
+        public static ThoughtDef AteMysteryMeatAsIngredient;
     }
 }

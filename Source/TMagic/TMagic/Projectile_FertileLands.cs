@@ -28,12 +28,27 @@ namespace TorannMagic
             CompAbilityUserMagic comp = this.caster.GetComp<CompAbilityUserMagic>();
             comp.fertileLands = new List<IntVec3>();
             comp.fertileLands.Clear();
-            IEnumerable<IntVec3> targetCells = GenRadial.RadialCellsAround(base.Position, 6, true);            
+            List<IntVec3> affectedCells = new List<IntVec3>();
+            affectedCells.Clear();
+            affectedCells = ModOptions.Constants.GetGrowthCells();
+            List<IntVec3> targetCells = GenRadial.RadialCellsAround(base.Position, 6, true).ToList();            
             for (int i = 0; i < targetCells.Count(); i++)
             {
-                comp.fertileLands.Add(targetCells.ToArray<IntVec3>()[i]);
+                bool uniqueCell = true;
+                for(int j =0; j < affectedCells.Count; j++)
+                {
+                    if(affectedCells[j] == targetCells[i])
+                    {
+                        uniqueCell = false;
+                    }
+                }
+                if(uniqueCell)
+                {
+                    comp.fertileLands.Add(targetCells.ToArray<IntVec3>()[i]);
+                }                
             }
             TM_MoteMaker.ThrowTwinkle(base.Position.ToVector3Shifted(), map, 1f);
+            
             ModOptions.Constants.SetGrowthCells(comp.fertileLands);
             comp.RemovePawnAbility(TorannMagicDefOf.TM_FertileLands);
             comp.AddPawnAbility(TorannMagicDefOf.TM_DismissFertileLands);

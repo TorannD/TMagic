@@ -34,7 +34,10 @@ namespace TorannMagic
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look<bool>(ref this.initialized, "initialized", true, false);
+            Scribe_Values.Look<bool>(ref this.initialized, "initialized", false, false);
+            Scribe_Values.Look<bool>(ref this.launchedFlag, "launchedFlag", false, false);
+            Scribe_Values.Look<bool>(ref this.landedFlag, "landedFlag", false, false);
+            Scribe_Values.Look<bool>(ref this.pivotFlag, "pivotFlag", false, false);
             Scribe_Values.Look<int>(ref this.age, "age", -1, false);
             Scribe_Values.Look<int>(ref this.duration, "duration", 1800, false);
             Scribe_Values.Look<int>(ref this.strikeDelay, "strikeDelay", 0, false);
@@ -139,13 +142,13 @@ namespace TorannMagic
                             GenExplosion.DoExplosion(curCell, this.Map, .4f, TMDamageDefOf.DamageDefOf.TM_Shadow, this.pawn, (int)((this.def.projectile.GetDamageAmount(1,null) * (1 + .15*pwrVal)) * this.arcaneDmg * Rand.Range(.75f, 1.25f)), 0, TorannMagicDefOf.TM_SoftExplosion, def, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
                         }
                     }
-                    this.strikeNum++;
-                    if (this.strikeNum > this.radius)
-                    {
-                        this.age = this.duration;
-                        this.Destroy(DestroyMode.Vanish);
-                    }
+                    this.strikeNum++;                    
                 }               
+            }
+            if (this.strikeNum > this.radius)
+            {
+                this.age = this.duration;
+                this.Destroy(DestroyMode.Vanish);
             }
         }
 

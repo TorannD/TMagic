@@ -98,62 +98,98 @@ namespace TorannMagic
             CompAbilityUserMagic comp = this.Pawn.GetComp<CompAbilityUserMagic>();
             if (parent.def == TorannMagicDefOf.TM_Shadow_AuraHD && comp != null)
             {
-                abilityPower = comp.MagicData.MagicPowersA.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shadow);
-                this.hediffDef = TorannMagicDefOf.Shadow;
+                abilityPower = comp.MagicData.MagicPowersA.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shadow);                
                 if (abilityPower == null)
                 {
-                    abilityPower = comp.MagicData.MagicPowersA.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shadow_I);
-                    this.hediffDef = TorannMagicDefOf.Shadow_I;
+                    abilityPower = comp.MagicData.MagicPowersA.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shadow_I);                    
                     if (abilityPower == null)
                     {
-                        abilityPower = comp.MagicData.MagicPowersA.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shadow_II);
-                        this.hediffDef = TorannMagicDefOf.Shadow_II;
+                        abilityPower = comp.MagicData.MagicPowersA.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shadow_II);                        
                         if (abilityPower == null)
-                        {
-                            this.hediffDef = TorannMagicDefOf.Shadow_III;
+                        {                            
                             abilityPower = comp.MagicData.MagicPowersA.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shadow_III);
                         }
                     }
+                }
+                if (abilityPower.level == 0)
+                {
+                    this.hediffDef = TorannMagicDefOf.Shadow;
+                }
+                else if (abilityPower.level == 1)
+                {
+                    this.hediffDef = TorannMagicDefOf.Shadow_I;
+                }
+                else if (abilityPower.level == 2)
+                {
+                    this.hediffDef = TorannMagicDefOf.Shadow_II;
+                }
+                else
+                {
+                    this.hediffDef = TorannMagicDefOf.Shadow_III;
                 }
             }
             if (parent.def == TorannMagicDefOf.TM_RayOfHope_AuraHD && comp != null)
             {
                 abilityPower = comp.MagicData.MagicPowersIF.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope);
-                this.hediffDef = TorannMagicDefOf.RayofHope;
                 if (abilityPower == null)
                 {
                     abilityPower = comp.MagicData.MagicPowersIF.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope_I);
-                    this.hediffDef = TorannMagicDefOf.RayofHope_I;
                     if (abilityPower == null)
                     {
                         abilityPower = comp.MagicData.MagicPowersIF.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope_II);
-                        this.hediffDef = TorannMagicDefOf.RayofHope_II;
                         if (abilityPower == null)
                         {
-                            this.hediffDef = TorannMagicDefOf.RayofHope_III;
                             abilityPower = comp.MagicData.MagicPowersIF.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope_III);
                         }
                     }
+                }
+                if (abilityPower.level == 0)
+                {
+                    this.hediffDef = TorannMagicDefOf.RayofHope;
+                }
+                else if (abilityPower.level == 1)
+                {
+                    this.hediffDef = TorannMagicDefOf.RayofHope_I;
+                }
+                else if (abilityPower.level == 2)
+                {
+                    this.hediffDef = TorannMagicDefOf.RayofHope_II;
+                }
+                else
+                {
+                    this.hediffDef = TorannMagicDefOf.RayofHope_III;
                 }
             }
             if (parent.def == TorannMagicDefOf.TM_SoothingBreeze_AuraHD && comp != null)
             {
                 abilityPower = comp.MagicData.MagicPowersHoF.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Soothe);
-                this.hediffDef = TorannMagicDefOf.SoothingBreeze;
                 if (abilityPower == null)
                 {
                     abilityPower = comp.MagicData.MagicPowersHoF.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Soothe_I);
-                    this.hediffDef = TorannMagicDefOf.SoothingBreeze_I;
                     if (abilityPower == null)
                     {
                         abilityPower = comp.MagicData.MagicPowersHoF.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Soothe_II);
-                        this.hediffDef = TorannMagicDefOf.SoothingBreeze_II;
                         if (abilityPower == null)
                         {
-                            this.hediffDef = TorannMagicDefOf.SoothingBreeze_III;
                             abilityPower = comp.MagicData.MagicPowersHoF.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Soothe_III);
                         }
                     }
+                }
+                if (abilityPower.level == 0)
+                {
+                    this.hediffDef = TorannMagicDefOf.SoothingBreeze;
+                }
+                else if (abilityPower.level == 1)
+                {
+                    this.hediffDef = TorannMagicDefOf.SoothingBreeze_I;
+                }
+                else if (abilityPower.level == 2)
+                {
+                    this.hediffDef = TorannMagicDefOf.SoothingBreeze_II;
+                }
+                else
+                {
+                    this.hediffDef = TorannMagicDefOf.SoothingBreeze_III;
                 }
             }
             if (abilityPower != null)

@@ -50,6 +50,7 @@ namespace TorannMagic
 
             bool flagRawResource = false;
             bool flagStuffItem = false;
+            bool flagNoStuffItem = false;
             bool flagNutrition = false;
             bool flagCorpse = false;
 
@@ -57,27 +58,39 @@ namespace TorannMagic
             {
                 if (thingList[i] != null && !(thingList[i] is Pawn) && !(thingList[i] is Building))
                 {
-                    if ((thingList[i].def.thingCategories != null && thingList[i].def.thingCategories.Count > 0 && (thingList[i].def.thingCategories.Contains(ThingCategoryDefOf.ResourcesRaw) || thingList[i].def.thingCategories.Contains(ThingCategoryDefOf.StoneBlocks))) || thingList[i].def.defName == "RawMagicyte")
+                    //if (thingList[i].def.thingCategories != null && thingList[i].def.thingCategories.Count > 0 && (thingList[i].def.thingCategories.Contains(ThingCategoryDefOf.ResourcesRaw) || thingList[i].def.thingCategories.Contains(ThingCategoryDefOf.StoneBlocks) || thingList[i].def.defName == "RawMagicyte"))                    
+                    if (thingList[i].def.MadeFromStuff)
                     {
-                        flagRawResource = true;
+                        //Log.Message("stuff item");
+                        flagStuffItem = true;
                         transmutateThing = thingList[i];
                         break;
                     }
-                    if (thingList[i].def.MadeFromStuff)
+                    if(!thingList[i].def.MadeFromStuff && thingList[i].TryGetComp<CompQuality>() != null)
                     {
-                        flagStuffItem = true;
+                        //Log.Message("non stuff item");
+                        flagNoStuffItem = true;
                         transmutateThing = thingList[i];
                         break;
                     }
                     if ((thingList[i].def.statBases != null && thingList[i].GetStatValue(StatDefOf.Nutrition) > 0) && !(thingList[i] is Corpse))
                     {
+                        //Log.Message("food item");
                         flagNutrition = true;
                         transmutateThing = thingList[i];
                         break;
                     }
                     if(thingList[i] is Corpse)
                     {
+                        //Log.Message("corpse");
                         flagCorpse = true;
+                        transmutateThing = thingList[i];
+                        break;
+                    }
+                    if (thingList[i].def != null && !thingList[i].def.IsIngestible && ((thingList[i].def.stuffProps != null && thingList[i].def.stuffProps.categories != null && thingList[i].def.stuffProps.categories.Count > 0) || thingList[i].def.defName == "RawMagicyte"))
+                    {
+                        //Log.Message("resource");
+                        flagRawResource = true;
                         transmutateThing = thingList[i];
                         break;
                     }
@@ -87,9 +100,35 @@ namespace TorannMagic
             if(transmutateThing != null)
             {
                 //Log.Message("Current target thing is " + transmutateThing.LabelShort + " with a stack count of " + transmutateThing.stackCount + " and market value of " + transmutateThing.MarketValue + " base market value of " + transmutateThing.def.BaseMarketValue + " total value of stack " + transmutateThing.def.BaseMarketValue * transmutateThing.stackCount);
-                if (flagRawResource)
+                if(flagNoStuffItem)
                 {
-                   
+                    CompQuality compQual = transmutateThing.TryGetComp<CompQuality>();
+                    float wornRatio = ((float)transmutateThing.HitPoints / (float)transmutateThing.MaxHitPoints);
+                    Thing thing = transmutateThing;
+
+                    if (compQual != null && Rand.Chance(.02f * pwrVal))
+                    {
+                        thing.TryGetComp<CompQuality>().SetQuality(compQual.Quality + 1, ArtGenerationContext.Colony);
+                    }
+                    thing.HitPoints = Mathf.RoundToInt((wornRatio * thing.MaxHitPoints) + ((.3f + (.1f * pwrVal)) * thing.MaxHitPoints));
+                    if (thing.HitPoints > thing.MaxHitPoints)
+                    {
+                        thing.HitPoints = thing.MaxHitPoints;
+                    }
+
+                    TransmutateEffects(this.currentTarget.Cell);
+                    
+                }
+                else if (flagRawResource)
+                {
+                    //if (transmutateThing.def.defName != "RawMagicyte")
+                    //{
+                    //    for (int i = 0; i < transmutateThing.def.stuffProps.categories.Count; i++)
+                    //    {
+                    //        Log.Message("categories include " + transmutateThing.def.stuffProps.categories[i].defName);
+                    //    }
+                    //}
+
                     int transStackCount = 0;
                     if (transmutateThing.stackCount > 200)
                     {
@@ -102,7 +141,7 @@ namespace TorannMagic
                     int transStackValue = Mathf.RoundToInt(transStackCount * transmutateThing.def.BaseMarketValue);
                     float newMatCount = 0;
                     IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
-                                                        where (def != transmutateThing.def && (def.thingCategories != null && def.thingCategories.Contains(ThingCategoryDefOf.ResourcesRaw) || def.defName == "RawMagicyte"))
+                                                        where (def != transmutateThing.def && ((def.stuffProps != null && def.stuffProps.categories != null && def.stuffProps.categories.Count > 0) || def.defName == "RawMagicyte"))
                                                         select def;
 
                     foreach (ThingDef current in enumerable)
@@ -132,7 +171,7 @@ namespace TorannMagic
                     //Log.Message("" + transmutateThing.LabelShort + " is made from " + transmutateThing.Stuff.label);
                     float transValue = transmutateThing.MarketValue;
                     IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
-                                                       where (def.stuffProps != null && def.stuffProps.categories != null && def.stuffProps.categories.Contains(transmutateThing.Stuff.stuffProps.categories.RandomElement()) && def.BaseMarketValue <= (2f * transmutateThing.Stuff.BaseMarketValue) && def.BaseMarketValue >= (.95f * transmutateThing.Stuff.BaseMarketValue))
+                                                       where (def.stuffProps != null && def.stuffProps.categories != null && def.stuffProps.categories.Contains(transmutateThing.Stuff.stuffProps.categories.RandomElement()))
                                                        select def;
 
                     //foreach (ThingDef current in enumerable)
@@ -167,7 +206,10 @@ namespace TorannMagic
                             thing.Destroy(DestroyMode.Vanish);
                             Messages.Message("TM_TransmutationLostCohesion".Translate(thing.def.label), MessageTypeDefOf.NeutralEvent);
                         }
-
+                        else
+                        {
+                            thing.SetForbidden(true, false);
+                        }
                         TransmutateEffects(this.currentTarget.Cell);
                     }
                 }

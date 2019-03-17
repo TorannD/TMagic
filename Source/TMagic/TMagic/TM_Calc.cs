@@ -927,7 +927,7 @@ namespace TorannMagic
             CompAbilityUserMight compMight = pawn.GetComp<CompAbilityUserMight>();
             if (compMight != null)
             {
-                penetration += (compMight.arcaneRes - 1);
+                penetration += (compMight.mightPwr - 1);
             }
 
             if (pawn.health != null && pawn.health.capacities != null)

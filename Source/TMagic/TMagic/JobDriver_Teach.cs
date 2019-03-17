@@ -102,6 +102,10 @@ namespace TorannMagic
                 }
                 age++;
                 ticksLeftThisToil = duration - age;
+                if((student.Position - this.pawn.Position).LengthHorizontal > 5)
+                {
+                    age = duration + 1;
+                }
                 if (age > duration)
                 {
                     this.EndJobWith(JobCondition.Succeeded);
@@ -236,29 +240,39 @@ namespace TorannMagic
             CompAbilityUserMagic studentComp = student.GetComp<CompAbilityUserMagic>();
             CompAbilityUserMagic mentorComp = this.pawn.GetComp<CompAbilityUserMagic>();
 
-            int studentOpinion = student.relations.OpinionOf(this.pawn);
-            int mentorOpinion = this.pawn.relations.OpinionOf(student);
-            int xpBase = Rand.Range(150,220) + studentOpinion + mentorOpinion;
-            int xpGain = Mathf.RoundToInt(xpBase * ((mentorComp.MagicUserLevel - studentComp.MagicUserLevel) / 10));
-            if(xpGain > 600)
+            if (studentComp != null && mentorComp != null)
             {
-                xpGain = 600;
-            }
-            if (xpGain < 100)
-            {
-                xpGain = 100;
-            }
-            MoteMaker.ThrowText(student.DrawPos, student.MapHeld, "XP +" + xpGain, -1f);
-            studentComp.MagicUserXP += xpGain;
-            if(this.pawn.needs.joy != null)
-            {
-                this.pawn.needs.joy.GainJoy(.4f, TorannMagicDefOf.Gaming_Cerebral);
-                this.pawn.needs.joy.GainJoy(.2f, TorannMagicDefOf.Social);                
-            }
-            if(student.needs.joy != null)
-            {
-                student.needs.joy.GainJoy(.4f, TorannMagicDefOf.Gaming_Cerebral);
-                student.needs.joy.GainJoy(.2f, TorannMagicDefOf.Social);
+                try
+                {
+                    int studentOpinion = student.relations.OpinionOf(this.pawn);
+                    int mentorOpinion = this.pawn.relations.OpinionOf(student);
+                    int xpBase = Rand.Range(150, 220) + studentOpinion + mentorOpinion;
+                    int xpGain = Mathf.RoundToInt(xpBase * ((mentorComp.MagicUserLevel - studentComp.MagicUserLevel) / 10));
+                    if (xpGain > 600)
+                    {
+                        xpGain = 600;
+                    }
+                    if (xpGain < 100)
+                    {
+                        xpGain = 100;
+                    }
+                    MoteMaker.ThrowText(student.DrawPos, student.MapHeld, "XP +" + xpGain, -1f);
+                    studentComp.MagicUserXP += xpGain;
+                    if (this.pawn.needs.joy != null)
+                    {
+                        this.pawn.needs.joy.GainJoy(.4f, TorannMagicDefOf.Gaming_Cerebral);
+                        this.pawn.needs.joy.GainJoy(.2f, TorannMagicDefOf.Social);
+                    }
+                    if (student.needs.joy != null)
+                    {
+                        student.needs.joy.GainJoy(.4f, TorannMagicDefOf.Gaming_Cerebral);
+                        student.needs.joy.GainJoy(.2f, TorannMagicDefOf.Social);
+                    }
+                }
+                catch(NullReferenceException ex)
+                {
+                    //failed
+                }
             }
         }
 
@@ -267,29 +281,39 @@ namespace TorannMagic
             CompAbilityUserMight studentComp = student.GetComp<CompAbilityUserMight>();
             CompAbilityUserMight mentorComp = this.pawn.GetComp<CompAbilityUserMight>();
 
-            int studentOpinion = student.relations.OpinionOf(this.pawn);
-            int mentorOpinion = this.pawn.relations.OpinionOf(student);
-            int xpBase = Rand.Range(150, 220) + studentOpinion + mentorOpinion;
-            int xpGain = Mathf.RoundToInt(xpBase * ((mentorComp.MightUserLevel - studentComp.MightUserLevel) / 10));
-            if (xpGain > 600)
+            if (studentComp != null && mentorComp != null)
             {
-                xpGain = 600;
-            }
-            if(xpGain < 100)
-            {
-                xpGain = 100;
-            }
-            MoteMaker.ThrowText(student.DrawPos, student.MapHeld, "XP +" + xpGain, -1f);
-            studentComp.MightUserXP += xpGain;
-            if (this.pawn.needs.joy != null)
-            {
-                this.pawn.needs.joy.GainJoy(.4f, TorannMagicDefOf.Gaming_Dexterity);
-                this.pawn.needs.joy.GainJoy(.2f, TorannMagicDefOf.Social);
-            }
-            if (student.needs.joy != null)
-            {
-                student.needs.joy.GainJoy(.4f, TorannMagicDefOf.Gaming_Dexterity);
-                student.needs.joy.GainJoy(.2f, TorannMagicDefOf.Social);
+                try
+                {
+                    int studentOpinion = student.relations.OpinionOf(this.pawn);
+                    int mentorOpinion = this.pawn.relations.OpinionOf(student);
+                    int xpBase = Rand.Range(150, 220) + studentOpinion + mentorOpinion;
+                    int xpGain = Mathf.RoundToInt(xpBase * ((mentorComp.MightUserLevel - studentComp.MightUserLevel) / 10));
+                    if (xpGain > 600)
+                    {
+                        xpGain = 600;
+                    }
+                    if(xpGain < 100)
+                    {
+                        xpGain = 100;
+                    }
+                    MoteMaker.ThrowText(student.DrawPos, student.MapHeld, "XP +" + xpGain, -1f);
+                    studentComp.MightUserXP += xpGain;
+                    if (this.pawn.needs.joy != null)
+                    {
+                        this.pawn.needs.joy.GainJoy(.4f, TorannMagicDefOf.Gaming_Dexterity);
+                        this.pawn.needs.joy.GainJoy(.2f, TorannMagicDefOf.Social);
+                    }
+                    if (student.needs.joy != null)
+                    {
+                        student.needs.joy.GainJoy(.4f, TorannMagicDefOf.Gaming_Dexterity);
+                        student.needs.joy.GainJoy(.2f, TorannMagicDefOf.Social);
+                    }
+                }
+                catch (NullReferenceException ex)
+                {
+                    //failed
+                }
             }
         }
 

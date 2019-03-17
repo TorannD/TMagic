@@ -98,20 +98,29 @@ namespace TorannMagic
                     if (pflag)// && flyingPawn != null)
                     {
                         //Thing p = summonablePawn;
+                        if(!summonablePawn.RaceProps.Humanlike || summonablePawn.Faction == this.CasterPawn.Faction)
+                        {
+                            summonablePawn.DeSpawn();
+                            GenSpawn.Spawn(summonablePawn, base.CasterPawn.Position, map);
+                        }
+                        else if (summonablePawn.RaceProps.Humanlike && summonablePawn.Faction != this.CasterPawn.Faction && Rand.Chance(TM_Calc.GetSpellSuccessChance(this.CasterPawn, summonablePawn, true)))
+                        {
+                            //summonablePawn.DeSpawn();
+                            //GenSpawn.Spawn(p, base.caster.Position, base.CasterPawn.Map, Rot4.North, false);
 
-                        //summonablePawn.DeSpawn();
-                        //GenSpawn.Spawn(p, base.caster.Position, base.CasterPawn.Map, Rot4.North, false);
+                            //Pawn p = summonablePawn;
+                            summonablePawn.DeSpawn();
+                            //p.SetPositionDirect(this.currentTarget.Cell);
+                            GenSpawn.Spawn(summonablePawn, base.CasterPawn.Position, map);
+                            //flyingPawn = null;
 
-                        //Pawn p = summonablePawn;
-                        summonablePawn.DeSpawn();
-                        //p.SetPositionDirect(this.currentTarget.Cell);
-                        GenSpawn.Spawn(summonablePawn, base.CasterPawn.Position, map);
-                        //flyingPawn = null;
-                        
-                        
-                        
-                        //summonablePawn.Position = base.CasterPawn.Position;
-                        //p.jobs.StopAll(false);
+                            //summonablePawn.Position = base.CasterPawn.Position;
+                            //p.jobs.StopAll(false);
+                        }
+                        else
+                        {
+                            MoteMaker.ThrowText(summonablePawn.DrawPos, summonablePawn.Map, "TM_ResistedSpell".Translate(), -1);
+                        }
                     }
                     else
                     {

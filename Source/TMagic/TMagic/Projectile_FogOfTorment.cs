@@ -154,11 +154,17 @@ namespace TorannMagic
         {
             int amt = Mathf.RoundToInt(Rand.Range(.5f, 1.5f) * d);
             DamageInfo dinfo = new DamageInfo(type, amt, 0, (float)-1, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+            if (this.launcher != null && this.launcher is Pawn)
+            {
+                Pawn caster = this.launcher as Pawn;
+                dinfo = new DamageInfo(type, amt, 0, (float)-1, caster, null, null, DamageInfo.SourceCategory.ThingOrUnknown);                
+            }
             bool flag = e != null;
             if (flag)
             {
                 e.TakeDamage(dinfo);
             }
+            
         }
     }    
 }

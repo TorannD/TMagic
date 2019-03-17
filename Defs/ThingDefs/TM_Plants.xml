@@ -129,7 +129,7 @@ The fruit it produces, known more commonly as pomona, can be consumed raw and is
   <ThingDef ParentName="PlantFoodRawBase">
 	<defName>TM_RawPomanaMash</defName>
 	<label>mashed pomana</label>
-	<description>A bitter and unappetizing leftover when extracting syrrium from raw pomonasyrrium. This byproduct retains some nutritional value but is largely left for animal consumption.</description>
+	<description>A bitter and unappetizing byproduct when extracting syrrium from raw pomonasyrrium. This byproduct retains some nutritional value but is largely left for animal consumption or as a nutrient base for meals.</description>
 	<graphicData>
       <texPath>Items/Plants/Pomana_Mash</texPath>
     </graphicData>
@@ -139,7 +139,7 @@ The fruit it produces, known more commonly as pomona, can be consumed raw and is
       <FoodPoisonChanceFixedHuman>0.0</FoodPoisonChanceFixedHuman>
 	  <MaxHitPoints>80</MaxHitPoints>
 	  <DeteriorationRate>12</DeteriorationRate>
-      <Nutrition>0.03</Nutrition>
+      <Nutrition>0.018</Nutrition>
     </statBases>
     <comps>
       <li Class="CompProperties_Rottable">
@@ -233,7 +233,7 @@ The fruit it produces, known more commonly as pomona, can be consumed raw and is
       </li>
     </ingredients>
 	<products>
-		<TM_Syrrium>5</TM_Syrrium>
+		<TM_Syrrium>2</TM_Syrrium>
 		<TM_RawPomanaMash>20</TM_RawPomanaMash>
 	</products>
     <workSkill>Cooking</workSkill>
@@ -263,10 +263,10 @@ The claims that pomanasyrrium grant insight and clarity is disregarded by most a
 	  <stackLimit>50</stackLimit>
       <statBases>
 		  <DeteriorationRate>0.1</DeteriorationRate>
-		  <MarketValue>35</MarketValue>
+		  <MarketValue>45</MarketValue>
 		  <Mass>0.1</Mass>
 		  <Flammability>0.3</Flammability>
-		  <SellPriceFactor>.3</SellPriceFactor>
+		  <SellPriceFactor>.35</SellPriceFactor>
       </statBases>
     <ingestible>
       <foodType>Fluid, Processed, Liquor</foodType>
@@ -292,7 +292,7 @@ The claims that pomanasyrrium grant insight and clarity is disregarded by most a
         </li>
         <li Class="IngestionOutcomeDoer_GiveHediff">
           <hediffDef>TM_SyrriumTolerance</hediffDef>
-          <severity>0.02</severity>
+          <severity>0.026</severity>
 		  <divideByBodySize>true</divideByBodySize>
 		</li>
 		<li Class="TorannMagic.IngestionOutcomeDoer_RemoveHediff">
@@ -303,7 +303,7 @@ The claims that pomanasyrrium grant insight and clarity is disregarded by most a
 	  <comps>
 		<li Class="CompProperties_Drug">
 			<chemical>TM_SyrriumChemical</chemical>
-			<addictiveness>0.021</addictiveness>
+			<addictiveness>0.028</addictiveness>
 			<minToleranceToAddict>0.55</minToleranceToAddict>
 			<existingAddictionSeverityOffset>0.25</existingAddictionSeverityOffset>
 			<needLevelOffset>1</needLevelOffset>

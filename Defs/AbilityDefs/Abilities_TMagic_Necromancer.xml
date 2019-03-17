@@ -412,7 +412,7 @@ Cast Time: 2s</description>
             <muzzleFlashScale>4</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
             <isPrimary>true</isPrimary>
-			<isViolent>true</isViolent>
+			<isViolent>false</isViolent>
 			<targetParams>
                 <canTargetPawns>true</canTargetPawns>
                 <canTargetBuildings>false</canTargetBuildings>
@@ -451,7 +451,7 @@ Cast Time: 1.8s</description>
             <muzzleFlashScale>4</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
             <isPrimary>true</isPrimary>
-			<isViolent>true</isViolent>
+			<isViolent>false</isViolent>
 			<targetParams>
                 <canTargetPawns>true</canTargetPawns>
                 <canTargetBuildings>false</canTargetBuildings>
@@ -490,7 +490,7 @@ Cast Time: 1.5s</description>
             <muzzleFlashScale>4</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
             <isPrimary>true</isPrimary>
-			<isViolent>true</isViolent>
+			<isViolent>false</isViolent>
 			<targetParams>
                 <canTargetPawns>true</canTargetPawns>
                 <canTargetBuildings>false</canTargetBuildings>
@@ -529,7 +529,7 @@ Cast Time: 1.2s</description>
             <muzzleFlashScale>4</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
             <isPrimary>true</isPrimary>
-			<isViolent>true</isViolent>
+			<isViolent>false</isViolent>
 			<targetParams>
                 <canTargetPawns>true</canTargetPawns>
                 <canTargetBuildings>false</canTargetBuildings>

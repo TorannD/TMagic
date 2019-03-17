@@ -102,7 +102,7 @@ namespace TorannMagic
         private float BM_Rend_eff = .08f;
         private float BM_BloodMoon_eff = .05f;
         private float E_EnchantedBody_eff = .05f;
-        private float E_Transmutate_eff = .06f;
+        private float E_Transmutate_eff = .12f;
         private float E_EnchantWeapon_eff = .06f;
         private float E_EnchanterStone_eff = .06f;
         private float E_Polymorph_eff = .06f;
@@ -1741,7 +1741,7 @@ namespace TorannMagic
                 }
                 else
                 {
-                    this.MagicUserXP = 74999;
+                    this.MagicUserXP = (int)this.XPLastLevel;
                 }
             }
         }

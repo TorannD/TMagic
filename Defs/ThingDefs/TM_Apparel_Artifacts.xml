@@ -1117,6 +1117,7 @@ The orb will implode and be destroyed once the traits have been released.</descr
 	  <li>Apparel</li>
 	</thingCategories>
 	<generateCommonality>0</generateCommonality>
+	<generateAllowChance>0</generateAllowChance>
 	<apparel>
 	 <tags>
 	   <li>Arcane</li>

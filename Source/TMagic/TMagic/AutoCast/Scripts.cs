@@ -614,7 +614,7 @@ namespace TorannMagic.AutoCast
                     CompAbilityUserMagic targetPawnComp = targetPawn.GetComp<CompAbilityUserMagic>();
                     if (targetPawn.CurJobDef.joyKind != null || targetPawn.CurJobDef == JobDefOf.Wait_Wander || targetPawn.CurJobDef == JobDefOf.GotoWander)
                     {
-                        if (targetPawn.IsColonist && targetPawnComp.MagicUserXP <= casterComp.MagicUserXP && caster.relations.OpinionOf(targetPawn) >= 0)
+                        if (targetPawn.IsColonist && targetPawnComp.MagicUserLevel < casterComp.MagicUserLevel && caster.relations.OpinionOf(targetPawn) >= 0)
                         {
                             Job job = ability.GetJob(AbilityContext.AI, jobTarget);
                             caster.jobs.TryTakeOrderedJob(job);
@@ -642,7 +642,7 @@ namespace TorannMagic.AutoCast
                     CompAbilityUserMight targetPawnComp = targetPawn.GetComp<CompAbilityUserMight>();
                     if (targetPawn.CurJobDef.joyKind != null || targetPawn.CurJobDef == JobDefOf.Wait_Wander || targetPawn.CurJobDef == JobDefOf.GotoWander)
                     {
-                        if (targetPawn.IsColonist && targetPawnComp.MightUserXP < casterComp.MightUserXP && caster.relations.OpinionOf(targetPawn) >= 0)
+                        if (targetPawn.IsColonist && targetPawnComp.MightUserLevel < casterComp.MightUserLevel && caster.relations.OpinionOf(targetPawn) >= 0)
                         {
                             Job job = ability.GetJob(AbilityContext.AI, jobTarget);
                             caster.jobs.TryTakeOrderedJob(job);
