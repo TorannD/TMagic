@@ -115,6 +115,18 @@ namespace TorannMagic
                     typeof(DamageInfo?),
                     typeof(PawnDiedOrDownedThoughtsKind)
                 }, null), new HarmonyMethod(typeof(HarmonyPatches), "TryGiveThoughts_PrefixPatch", null), null, null);
+            //harmonyInstance.Patch(AccessTools.Method(typeof(DaysWorthOfFoodCalculator), "ApproxDaysWorthOfFood", new Type[]
+            //    {
+            //        typeof(List<Pawn>),
+            //        typeof(List<ThingDefCount>),
+            //        typeof(int),
+            //        typeof(IgnorePawnsInventoryMode),
+            //        typeof(Faction),
+            //        typeof(WorldPath),
+            //        typeof(float),
+            //        typeof(int),
+            //        typeof(bool)
+            //    }, null), new HarmonyMethod(typeof(HarmonyPatches), "DaysWorthOfFoodCalc_Undead_Prefix", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(DaysWorthOfFoodCalculator), "ApproxDaysWorthOfFood", new Type[]
                 {
                     typeof(List<Pawn>),
@@ -126,7 +138,7 @@ namespace TorannMagic
                     typeof(float),
                     typeof(int),
                     typeof(bool)
-                }, null), new HarmonyMethod(typeof(HarmonyPatches), "DaysWorthOfFoodCalc_Undead_Prefix", null), null);
+                }, null), null, new HarmonyMethod(typeof(HarmonyPatches), "DaysWorthOfFoodCalc_Undead_Postfix", null), null);
 
 
             #region PrisonLabor
@@ -180,9 +192,12 @@ namespace TorannMagic
         {
             public static void Postfix(ThingDef ingredient, Pawn ingester, ref List<ThoughtDef> ingestThoughts)
             {
-                if (ingredient.ingestible.sourceDef != null && ingredient.ingestible.sourceDef.race != null && ingredient.ingestible.sourceDef.race.meatLabel == "mystery meat")
+                if (ingredient != null && ingredient.ingestible != null && ingredient.ingestible.sourceDef != null && ingredient.ingestible.sourceDef.race != null && ingredient.ingestible.sourceDef.race.meatLabel == "mystery meat")
                 {
-                    ingestThoughts.Add(TorannMagicDefOf.AteMysteryMeatAsIngredient);
+                    if (ingester.needs != null && ingester.needs.mood != null && ingester.needs.mood.thoughts != null && ingester.needs.mood.thoughts.memories != null)
+                    {
+                        ingestThoughts.Add(TorannMagicDefOf.AteMysteryMeatAsIngredient);
+                    }
                 }
             }
         }
@@ -192,9 +207,12 @@ namespace TorannMagic
         {
             public static void Postfix(Pawn ingester, Thing foodSource, ThingDef foodDef)
             {
-                if (foodDef.ingestible.sourceDef != null && foodDef.ingestible.sourceDef.race != null && foodDef.ingestible.sourceDef.race.meatLabel == "mystery meat")
+                if (foodDef != null && foodDef.ingestible != null && foodDef.ingestible.sourceDef != null && foodDef.ingestible.sourceDef.race != null && foodDef.ingestible.sourceDef.race.meatLabel == "mystery meat")
                 {
-                    ingester.needs.mood.thoughts.memories.TryGainMemory(TorannMagicDefOf.AteMysteryMeatDirect, null);
+                    if (ingester.needs != null && ingester.needs.mood != null && ingester.needs.mood.thoughts != null && ingester.needs.mood.thoughts.memories != null)
+                    {
+                        ingester.needs.mood.thoughts.memories.TryGainMemory(TorannMagicDefOf.AteMysteryMeatDirect, null);
+                    }
                 }
             }
         }
@@ -216,17 +234,38 @@ namespace TorannMagic
             }
         }
 
-        public static bool DaysWorthOfFoodCalc_Undead_Prefix(ref List<Pawn> pawns, List<ThingDefCount> extraFood, int tile, IgnorePawnsInventoryMode ignoreInventory, Faction faction, ref float __result, WorldPath path = null, float nextTileCostLeft = 0f, int caravanTicksPerMove = 3300, bool assumeCaravanMoving = true)
+        //public static bool DaysWorthOfFoodCalc_Undead_Prefix(ref List<Pawn> pawns, List<ThingDefCount> extraFood, int tile, IgnorePawnsInventoryMode ignoreInventory, Faction faction, ref float __result, WorldPath path = null, float nextTileCostLeft = 0f, int caravanTicksPerMove = 3300, bool assumeCaravanMoving = true)
+        //{
+        //    for(int i = 0; i < pawns.Count; i++)
+        //    {
+        //        if (TM_Calc.IsUndead(pawns[i]))
+        //        {
+        //            pawns.Remove(pawns[i]);
+        //            i--;
+        //        }
+        //    }
+        //    return true;
+        //}
+
+        public static void DaysWorthOfFoodCalc_Undead_Postfix(List<Pawn> pawns, List<ThingDefCount> extraFood, int tile, IgnorePawnsInventoryMode ignoreInventory, Faction faction, ref float __result, WorldPath path = null, float nextTileCostLeft = 0f, int caravanTicksPerMove = 3300, bool assumeCaravanMoving = true)
         {
-            for(int i = 0; i < pawns.Count; i++)
+            if (pawns.Count != 0)
             {
-                if (TM_Calc.IsUndead(pawns[i]))
+                float undeadCount = 0;
+                float undeadRatio = 0;
+                for (int i = 0; i < pawns.Count; i++)
                 {
-                    pawns.Remove(pawns[i]);
-                    i--;
+                    if (TM_Calc.IsUndead(pawns[i]))
+                    {
+                        undeadCount++;
+                    }
+                }
+                undeadRatio = undeadCount / pawns.Count;                
+                if (undeadRatio != 0)
+                {
+                    __result = __result / (1 - undeadRatio);
                 }
             }
-            return true;
         }
 
         public static void WealthWatcher_ClassAdjustment_Postfix(WealthWatcher __instance, bool allowDuringInit = false)
