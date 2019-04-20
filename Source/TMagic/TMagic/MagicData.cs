@@ -225,6 +225,14 @@ namespace TorannMagic
                         {
                             TorannMagicDefOf.TM_EnchantedAura
                         }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_MechaniteReprogramming
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_DirtDevil
+                        }),
                     };
                 }
                 return this.magicPowerStandalone;

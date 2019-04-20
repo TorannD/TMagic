@@ -18,7 +18,7 @@
       <Flammability>0</Flammability>
       <ComfyTemperatureMin>-200</ComfyTemperatureMin>
       <ComfyTemperatureMax>200</ComfyTemperatureMax>
-	  <MeatAmount>20</MeatAmount>
+	  <MeatAmount>6</MeatAmount>
 	  <MarketValue>0</MarketValue>
     </statBases>
 	<inspectorTabs>

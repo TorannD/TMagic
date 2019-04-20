@@ -101,7 +101,7 @@ namespace TorannMagic
             }
             IntVec3 curCell = cellList.RandomElement();
             Vector3 angle = GetVector(base.Position, curCell);
-            TM_MoteMaker.ThrowArcaneWaveMote(curCell.ToVector3(), base.Map, .4f * (curCell-base.Position).LengthHorizontal, .1f, .05f, .5f, 0, Rand.Range(1, 2), (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat(), (Quaternion.AngleAxis(-90, Vector3.up) * angle).ToAngleFlat());
+            TM_MoteMaker.ThrowArcaneWaveMote(curCell.ToVector3(), base.Map, .4f * (curCell - base.Position).LengthHorizontal, .1f, .05f, .5f, 0, Rand.Range(1, 2), (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat(), (Quaternion.AngleAxis(-90, Vector3.up) * angle).ToAngleFlat());
 
             if (Find.TickManager.TicksGame % this.strikeDelay == 0)
             {

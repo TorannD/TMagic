@@ -157,6 +157,8 @@ namespace TorannMagic
         public bool spell_ShapeshiftDW = false;
         public bool spell_Blur = false;
         public bool spell_BlankMind = false;
+        public bool spell_DirtDevil = false;
+        public bool spell_MechaniteReprogramming;
 
         private bool item_StaffOfDefender = false;
 
@@ -3142,6 +3144,16 @@ namespace TorannMagic
                     this.RemovePawnAbility(TorannMagicDefOf.TM_ShapeshiftDW);
                     this.AddPawnAbility(TorannMagicDefOf.TM_ShapeshiftDW);
                 }
+                if (this.spell_DirtDevil == true)
+                {
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_DirtDevil);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_DirtDevil);
+                }
+                if (this.spell_MechaniteReprogramming == true)
+                {
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_MechaniteReprogramming);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_MechaniteReprogramming);
+                }
                 //this.UpdateAbilities();
             }            
         }
@@ -5749,6 +5761,20 @@ namespace TorannMagic
                             }
                         }
                     }
+                    if (this.spell_MechaniteReprogramming && this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+                    {
+                        MagicPower magicPower = this.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_MechaniteReprogramming);
+                        if (magicPower.autocast)
+                        {
+                            PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_MechaniteReprogramming);
+                            List<string> afflictionList = new List<string>();
+                            afflictionList.Clear();
+                            afflictionList.Add("SensoryMechanites");
+                            afflictionList.Add("FibrousMechanites");
+                            AutoCast.CureSpell.Evaluate(this, TorannMagicDefOf.TM_MechaniteReprogramming, ability, magicPower, afflictionList, out castSuccess);
+                            if (castSuccess) goto AutoCastExit;
+                        }
+                    }
                     if (this.spell_Heal && !this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin))
                     {
                         MagicPower magicPower = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Heal);
@@ -5820,6 +5846,22 @@ namespace TorannMagic
                             PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_SummonMinion);
                             AutoCast.CastOnSelf.Evaluate(this, TorannMagicDefOf.TM_SummonMinion, ability, magicPower, out castSuccess);
                             if (castSuccess) goto AutoCastExit;
+                        }
+                    }
+                    if (this.spell_DirtDevil)
+                    {
+                        MagicPower magicPower = this.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_DirtDevil);
+                        if (magicPower.autocast && this.Pawn.GetRoom() != null)
+                        {
+                            float roomCleanliness = this.Pawn.GetRoom().GetStat(RoomStatDefOf.Cleanliness);
+                            Log.Message("Room cleanliness is " + roomCleanliness);
+
+                            if (roomCleanliness < -2f)
+                            {
+                                PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_DirtDevil);
+                                AutoCast.CastOnSelf.Evaluate(this, TorannMagicDefOf.TM_DirtDevil, ability, magicPower, out castSuccess);
+                                if (castSuccess) goto AutoCastExit;
+                            }
                         }
                     }
                     if (this.spell_Blink && !this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
@@ -7409,6 +7451,8 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.spell_ShapeshiftDW, "spell_ShapeshiftDW", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Blur, "spell_Blur", false, false);
             Scribe_Values.Look<bool>(ref this.spell_BlankMind, "spell_BlankMind", false, false);
+            Scribe_Values.Look<bool>(ref this.spell_DirtDevil, "spell_DirtDevil", false, false);
+            Scribe_Values.Look<bool>(ref this.spell_MechaniteReprogramming, "spell_MechaniteReprogramming", false, false);
             Scribe_Values.Look<bool>(ref this.useTechnoBitToggle, "useTechnoBitToggle", true, false);
             Scribe_Values.Look<bool>(ref this.useTechnoBitRepairToggle, "useTechnoBitRepairToggle", true, false);
             Scribe_Values.Look<bool>(ref this.useElementalShotToggle, "useElementalShotToggle", true, false);

@@ -545,6 +545,18 @@ namespace TorannMagic
                             outThings.Add(thing);
                             collectiveMarketValue += thing.MarketValue;
                         }
+                        if (Rand.Range(0, 10f) > 9f)
+                        {
+                            thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_DirtDevil, null);
+                            outThings.Add(thing);
+                            collectiveMarketValue += thing.MarketValue;
+                        }
+                        if (Rand.Range(0, 10f) > 9f)
+                        {
+                            thing = ThingMaker.MakeThing(TorannMagicDefOf.SpellOf_MechaniteReprogramming, null);
+                            outThings.Add(thing);
+                            collectiveMarketValue += thing.MarketValue;
+                        }
                     }
                 }
                 //Skills

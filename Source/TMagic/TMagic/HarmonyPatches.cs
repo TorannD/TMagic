@@ -187,35 +187,35 @@ namespace TorannMagic
 
         }
 
-        [HarmonyPatch(typeof(FoodUtility), "AddIngestThoughtsFromIngredient", null)]
-        public class FoodUtility_MinionMeat_ThoughtFromEatingIngredient_Patch
-        {
-            public static void Postfix(ThingDef ingredient, Pawn ingester, ref List<ThoughtDef> ingestThoughts)
-            {
-                if (ingredient != null && ingredient.ingestible != null && ingredient.ingestible.sourceDef != null && ingredient.ingestible.sourceDef.race != null && ingredient.ingestible.sourceDef.race.meatLabel == "mystery meat")
-                {
-                    if (ingester.needs != null && ingester.needs.mood != null && ingester.needs.mood.thoughts != null && ingester.needs.mood.thoughts.memories != null)
-                    {
-                        ingestThoughts.Add(TorannMagicDefOf.AteMysteryMeatAsIngredient);
-                    }
-                }
-            }
-        }
+        //[HarmonyPatch(typeof(FoodUtility), "AddIngestThoughtsFromIngredient", null)]
+        //public class FoodUtility_MinionMeat_ThoughtFromEatingIngredient_Patch
+        //{
+        //    public static void Postfix(ThingDef ingredient, Pawn ingester, ref List<ThoughtDef> ingestThoughts)
+        //    {
+        //        if (ingredient != null && ingredient.ingestible != null && ingredient.ingestible.sourceDef != null && ingredient.ingestible.sourceDef.race != null && ingredient.ingestible.sourceDef.race.meatLabel == "mystery meat")
+        //        {
+        //            if (ingester.needs != null && ingester.needs.mood != null && ingester.needs.mood.thoughts != null && ingester.needs.mood.thoughts.memories != null)
+        //            {
+        //                ingestThoughts.Add(TorannMagicDefOf.AteMysteryMeatAsIngredient);
+        //            }
+        //        }
+        //    }
+        //}
 
-        [HarmonyPatch(typeof(FoodUtility), "ThoughtsFromIngesting", null)]
-        public class FoodUtility_MinionMeat_ThoughtFromEatingRaw_Patch
-        {
-            public static void Postfix(Pawn ingester, Thing foodSource, ThingDef foodDef)
-            {
-                if (foodDef != null && foodDef.ingestible != null && foodDef.ingestible.sourceDef != null && foodDef.ingestible.sourceDef.race != null && foodDef.ingestible.sourceDef.race.meatLabel == "mystery meat")
-                {
-                    if (ingester.needs != null && ingester.needs.mood != null && ingester.needs.mood.thoughts != null && ingester.needs.mood.thoughts.memories != null)
-                    {
-                        ingester.needs.mood.thoughts.memories.TryGainMemory(TorannMagicDefOf.AteMysteryMeatDirect, null);
-                    }
-                }
-            }
-        }
+        //[HarmonyPatch(typeof(FoodUtility), "ThoughtsFromIngesting", null)]
+        //public class FoodUtility_MinionMeat_ThoughtFromEatingRaw_Patch
+        //{
+        //    public static void Postfix(Pawn ingester, Thing foodSource, ThingDef foodDef)
+        //    {
+        //        if (foodDef != null && foodDef.ingestible != null && foodDef.ingestible.sourceDef != null && foodDef.ingestible.sourceDef.race != null && foodDef.ingestible.sourceDef.race.meatLabel == "mystery meat")
+        //        {
+        //            if (ingester.needs != null && ingester.needs.mood != null && ingester.needs.mood.thoughts != null && ingester.needs.mood.thoughts.memories != null)
+        //            {
+        //                ingester.needs.mood.thoughts.memories.TryGainMemory(TorannMagicDefOf.AteMysteryMeatDirect, null);
+        //            }
+        //        }
+        //    }
+        //}
 
         [HarmonyPatch(typeof(AbilityDecisionConditionalNode_CasterHealth), "CanContinueTraversing", null)]
         public class CasterHealth_Check_Patch
@@ -1739,6 +1739,7 @@ namespace TorannMagic
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_Overdrive" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_Heal" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_BlankMind" ||
+                    __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_MechaniteReprogramming" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_AdvancedHeal")
                 {
                     //Ignores line of sight
@@ -3041,7 +3042,7 @@ namespace TorannMagic
                     }
                     if (emptyGround && !pawn.Drafted) //c.GetThingList(pawn.Map).Count == 0 &&
                     {
-                        if (comp.enchantingContainer.Count > 0)
+                        if (comp.enchantingContainer?.Count > 0)
                         {
                             if (!pawn.CanReach(c, PathEndMode.ClosestTouch, Danger.Deadly, false, TraverseMode.ByPawn))
                             {
@@ -3092,7 +3093,7 @@ namespace TorannMagic
                                 }, MenuOptionPriority.High, null, null, 0f, null, null), pawn, t, "ReservedBy"));
                             }
                         }
-                        else if ((current.def.IsApparel || current.def.IsWeapon || current.def.IsRangedWeapon) && comp.enchantingContainer.Count > 0)
+                        else if ((current.def.IsApparel || current.def.IsWeapon || current.def.IsRangedWeapon) && comp.enchantingContainer?.Count > 0)
                         {
                             if (!pawn.CanReach(t, PathEndMode.ClosestTouch, Danger.Deadly, false, TraverseMode.ByPawn))
                             {
@@ -4378,6 +4379,28 @@ namespace TorannMagic
                         if (__instance.pawnAbility.Def.defName == "TM_SummonMinion")
                         {
                             magicPower = comp.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonMinion);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_MechaniteReprogramming")
+                        {
+                            magicPower = comp.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_MechaniteReprogramming);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def.defName == "TM_DirtDevil")
+                        {
+                            magicPower = comp.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_DirtDevil);
 
                             if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
                             {

@@ -119,6 +119,7 @@ namespace TorannMagic
                                             undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Undead"), 0, false));
                                             undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Psychopath"), 0, false));                                            
                                             undeadPawn.needs.AddOrRemoveNeedsAsAppropriate();
+                                            RemoveClassHediff(undeadPawn);
                                             //Color undeadColor = new Color(.2f, .4f, 0);
                                             //undeadPawn.story.hairColor = undeadColor;
                                             //CompAbilityUserMagic undeadComp = undeadPawn.GetComp<CompAbilityUserMagic>();
@@ -277,6 +278,25 @@ namespace TorannMagic
             {
                 traits.Remove(traits[i]);
                 i--;
+            }
+        }
+
+        private void RemoveClassHediff(Pawn pawn)
+        {
+            if (pawn.health != null && pawn.health.hediffSet != null && pawn.health.hediffSet.hediffs != null && pawn.health.hediffSet.hediffs.Count > 0)
+            {
+                for (int i = 0; i < pawn.health.hediffSet.hediffs.Count; i++)
+                {
+                    Hediff hediff = pawn.health.hediffSet.hediffs[i];
+                    if(hediff.def == TorannMagicDefOf.TM_MagicUserHD)
+                    {
+                        pawn.health.RemoveHediff(hediff);
+                    }
+                    if(hediff.def == TorannMagicDefOf.TM_MightUserHD)
+                    {
+                        pawn.health.RemoveHediff(hediff);
+                    }
+                }
             }
         }
     }

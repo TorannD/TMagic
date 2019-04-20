@@ -3159,6 +3159,102 @@ Produces 400Wd.</description>
     <drawGUIOverlay>false</drawGUIOverlay>
   </ThingDef>
   
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_DirtDevil</defName>
+    <label>Mage Spell: Dirt Devil</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a magic user how to create a whirlwind that seeks out and cleans filth inside the home area.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>850</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>150</RawMagicyte>
+		<DevilstrandCloth>30</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_MechaniteReprogramming</defName>
+    <label>Technomancer Spell: Mechanite Reprogramming</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a technomancer how to reprogramming fibrous or sensory mechanites in a way that enhances the attributes of the host.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<stackLimit>1</stackLimit>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>850</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>150</RawMagicyte>
+		<DevilstrandCloth>30</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+  
       <!--=============== Fighter Skills - Single ====================-->
 
   <ThingDef ParentName="FighterSkillBase">

@@ -1310,5 +1310,124 @@
     </stages>
   </HediffDef>
   
+  <HediffDef Abstract="True" ParentName="InfectionBase" Name="TM_ReprogrammedMechanitesBase">
+    <hediffClass>HediffWithComps</hediffClass>
+    <makesSickThought>false</makesSickThought>
+    <makesAlert>false</makesAlert>
+    <minSeverity>0.001</minSeverity>
+    <maxSeverity>1</maxSeverity>
+    <initialSeverity>0.001</initialSeverity>
+    <tendable>false</tendable>
+	<isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>
+          <min>900000</min>
+          <max>1800000</max>
+        </disappearsAfterTicks>
+      </li>
+    </comps>
+  </HediffDef>
+  
+  <HediffDef ParentName="TM_ReprogrammedMechanitesBase">
+    <defName>TM_ReprogrammedFibrousMechanites_HD</defName>
+    <label>reprogrammed fibrous mechanites</label>
+    <stages>
+      <li>
+        <label>mechanite augmentation (physical)</label>
+        <restFallFactorOffset>0.2</restFallFactorOffset>
+		<painOffset>0.1</painOffset>
+        <capMods>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>0.5</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>0.5</offset>
+          </li>
+          <li>
+            <capacity>BloodPumping</capacity>
+            <offset>0.5</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.5</minSeverity>
+        <label>mechanite augmentation (physical)</label>
+        <painOffset>0.2</painOffset>
+        <restFallFactorOffset>0.4</restFallFactorOffset>
+        <capMods>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>0.6</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>0.6</offset>
+          </li>
+          <li>
+            <capacity>BloodPumping</capacity>
+            <offset>0.6</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="TM_ReprogrammedMechanitesBase">
+    <defName>TM_ReprogrammedSensoryMechanites_HD</defName>
+    <label>reprogrammed sensory mechanites</label>
+    <stages>
+      <li>
+        <painOffset>0.1</painOffset>
+        <label>mechanite augmentation (sensory)</label>
+        <restFallFactorOffset>0.2</restFallFactorOffset>
+        <capMods>
+          <li>
+            <capacity>Sight</capacity>
+            <offset>0.5</offset>
+          </li>
+          <li>
+            <capacity>Hearing</capacity>
+            <offset>0.5</offset>
+          </li>
+          <li>
+            <capacity>Talking</capacity>
+            <offset>0.5</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>0.3</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.5</minSeverity>
+        <label>mechanite augmentation (sensory)</label>
+        <painOffset>0.2</painOffset>
+        <restFallFactorOffset>0.4</restFallFactorOffset>
+        <capMods>
+          <li>
+            <capacity>Sight</capacity>
+            <offset>0.5</offset>
+          </li>
+          <li>
+            <capacity>Hearing</capacity>
+            <offset>0.5</offset>
+          </li>
+          <li>
+            <capacity>Talking</capacity>
+            <offset>0.5</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>0.3</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+  
   
 </Defs>

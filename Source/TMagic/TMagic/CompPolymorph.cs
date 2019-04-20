@@ -130,7 +130,6 @@ namespace TorannMagic
 
         public void CheckPawnState()
         {
-            
             if (Find.TickManager.TicksGame % Rand.Range(30, 60) == 0 && this.ParentPawn.kindDef == PawnKindDef.Named("TM_Dire_Wolf"))
             {
                 bool castSuccess = false;                
@@ -194,6 +193,10 @@ namespace TorannMagic
                                 }
                             }
                         }
+                    }
+                    else if(this.initialized && !flag2 && this.parent.Spawned)
+                    {
+                        CheckPawnState();
                     }
                 }
             }

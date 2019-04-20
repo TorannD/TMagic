@@ -432,7 +432,7 @@ namespace TorannMagic.AutoCast
             {
                 Pawn caster = casterComp.Pawn;
                 LocalTargetInfo jobTarget = TM_Calc.FindNearbyMage(caster, (int)(abilitydef.MainVerb.range * .9f), inCombat);
-                if (!inCombat)
+                if (!inCombat && jobTarget != null && jobTarget.Thing != null)
                 {
                     Pawn transferPawn = jobTarget.Thing as Pawn;
                     CompAbilityUserMagic tComp = transferPawn.GetComp<CompAbilityUserMagic>();

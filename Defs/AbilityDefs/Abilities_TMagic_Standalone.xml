@@ -1260,5 +1260,99 @@ AoE effects are only applied when the primary target is not a friendly pawn. Fri
             </targetParams>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
+	
+  <!-- dirt devil -->	
+	
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_Ability</thingClass>
+	    <defName>Projectile_DirtDevil</defName>
+        <label>dirt devil</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>TM_Holy</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>30</speed>
+        </projectile>
+    </ThingDef>	
+	
+	<ThingDef ParentName="BaseBullet" Name="FlyingObject_DirtDevil">
+	   <defName>FlyingObject_DirtDevil</defName>
+	   <thingClass>TorannMagic.FlyingObject_DirtDevil</thingClass>
+	   <label>flying object</label>
+	   <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	   <projectile>
+			<flyOverhead>true</flyOverhead>
+			<damageDef>Stun</damageDef>
+			<damageAmountBase>0</damageAmountBase>
+			<speed>30</speed>
+	   </projectile>
+	</ThingDef>
+
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_DirtDevil</defName>
+        <label>Dirt Devil</label>
+        <uiIconPath>UI/dirtdevil</uiIconPath>
+        <description>Create a small vacuum of elemental air that seeks out and vaporizes dirt and debris.</description>
+        <manaCost>0.35</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Effect_DirtDevil</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_DirtDevil</defaultProjectile>
+            <abilityDef>TM_DirtDevil</abilityDef>
+            <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+            <targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+            <warmupTime>0.5</warmupTime>
+            <SecondsToRecharge>180.0</SecondsToRecharge>
+            <range>0</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>TM_AirWoosh</soundCast>
+            <muzzleFlashScale>0</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_MechaniteReprogramming</defName>
+        <label>Mechanite Reprogramming</label>
+        <uiIconPath>UI/mechanitereprogramming</uiIconPath>
+        <description>Reprograms fibrous or sensory mechanites to harmonize with a hosts biological systems. The result will significantly reduce the strain on the host while the mechanites are active.</description>
+        <manaCost>0.30</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_MechaniteReprogramming</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_MechaniteReprogramming</abilityDef>
+            <targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>300.0</SecondsToRecharge>
+            <range>25</range>
+			<isViolent>false</isViolent>
+            <burstShotCount>1</burstShotCount>
+            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+            <soundCast>TM_Vibration</soundCast>
+            <muzzleFlashScale>0</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
 
 </Defs>

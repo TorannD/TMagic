@@ -91,6 +91,8 @@ namespace TorannMagic
         public static ThingDef SpellOf_Shapeshift;
         public static ThingDef SpellOf_Blur;
         public static ThingDef SpellOf_BlankMind;
+        public static ThingDef SpellOf_DirtDevil;
+        public static ThingDef SpellOf_MechaniteReprogramming;
 
         public static ThingDef SkillOf_Sprint;
         public static ThingDef SkillOf_GearRepair;
@@ -639,6 +641,7 @@ namespace TorannMagic
         public static ThingDef FlyingObject_PsionicStorm;
         public static ThingDef FlyingObject_PsiStorm;
         public static ThingDef FlyingObject_PsionicLeap;
+        public static ThingDef FlyingObject_DirtDevil;
 
         //Death Knight
         public static TraitDef DeathKnight;
@@ -686,6 +689,10 @@ namespace TorannMagic
         public static TMAbilityDef TM_Blur;
         public static HediffDef TM_BlurHD;
         public static TMAbilityDef TM_BlankMind;
+        public static TMAbilityDef TM_DirtDevil;
+        public static TMAbilityDef TM_MechaniteReprogramming;
+        public static HediffDef TM_ReprogrammedSensoryMechanites_HD;
+        public static HediffDef TM_ReprogrammedFibrousMechanites_HD;
 
         public static HediffDef TM_Sight;
         public static HediffDef TM_Breathing;
@@ -743,6 +750,7 @@ namespace TorannMagic
         public static ThingDef Mote_ArcaneWaves;
         public static ThingDef Mote_BracerBlock;
         public static ThingDef Mote_BracerBlock_NoFlash;
+        public static ThingDef Mote_ThickDust;
 
 
         public static EffecterDef GiantExplosion;
@@ -841,7 +849,7 @@ namespace TorannMagic
         public static RecipeDef ArcaneForge_Replication_Restore;
 
         //ThoughtDefs
-        public static ThoughtDef AteMysteryMeatDirect;
-        public static ThoughtDef AteMysteryMeatAsIngredient;
+        //public static ThoughtDef AteMysteryMeatDirect;
+        //public static ThoughtDef AteMysteryMeatAsIngredient;
     }
 }

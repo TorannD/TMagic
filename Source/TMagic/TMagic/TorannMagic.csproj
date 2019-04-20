@@ -102,6 +102,7 @@
     <Compile Include="Buiding_TechnoTurret.cs" />
     <Compile Include="Command_LocalTargetInfo.cs" />
     <Compile Include="CompProperties_Polymorph.cs" />
+    <Compile Include="Effect_DirtDevil.cs" />
     <Compile Include="Enchantment\HediffComp_ArcaneRecovery.cs" />
     <Compile Include="Enchantment\HediffComp_HateBoost.cs" />
     <Compile Include="Enchantment\HediffComp_PsionicBoost.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Enchantment\HediffComp_EnchantedItem.cs" />
     <Compile Include="Enchantment\Verb_OrbTraitInfuse.cs" />
     <Compile Include="Enchantment\Verb_OrbTraitThief.cs" />
+    <Compile Include="FlyingObject_DirtDevil.cs" />
     <Compile Include="HediffComp_Aura.cs" />
     <Compile Include="HediffComp_EnchantedWeapon.cs" />
     <Compile Include="HediffComp_BloodShield.cs" />
@@ -138,6 +140,7 @@
     <Compile Include="Enchantment\Verb_OrbTraitor.cs" />
     <Compile Include="Verb_BloodForBlood.cs" />
     <Compile Include="Verb_BloodGift.cs" />
+    <Compile Include="Verb_MechaniteReprogramming.cs" />
     <Compile Include="Verb_DismissEnchanterStones.cs" />
     <Compile Include="Verb_DispelEnchantWeapon.cs" />
     <Compile Include="Verb_EnchantedAura.cs" />

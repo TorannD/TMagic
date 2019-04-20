@@ -265,13 +265,13 @@ namespace TorannMagic
                     comp.InitializeSpell();
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
-                else if (parent.def.defName == "SpellOf_Shapeshift" && comp.spell_Shapeshift == false && user.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
+                else if (parent.def == TorannMagicDefOf.SpellOf_Shapeshift && comp.spell_Shapeshift == false && user.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
                 {
                     comp.spell_Shapeshift = true;
                     comp.InitializeSpell();
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
-                else if (parent.def.defName == "SpellOf_Blur" && comp.spell_Blur == false)
+                else if (parent.def == TorannMagicDefOf.SpellOf_Blur && comp.spell_Blur == false)
                 {
                     comp.spell_Blur = true;
                     comp.InitializeSpell();
@@ -280,6 +280,18 @@ namespace TorannMagic
                 else if (parent.def == TorannMagicDefOf.SpellOf_BlankMind && comp.spell_BlankMind == false && user.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
                 {
                     comp.spell_BlankMind = true;
+                    comp.InitializeSpell();
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def == TorannMagicDefOf.SpellOf_DirtDevil && comp.spell_DirtDevil == false)
+                {
+                    comp.spell_DirtDevil = true;
+                    comp.InitializeSpell();
+                    this.parent.Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def == TorannMagicDefOf.SpellOf_MechaniteReprogramming && comp.spell_MechaniteReprogramming == false && user.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+                {
+                    comp.spell_MechaniteReprogramming = true;
                     comp.InitializeSpell();
                     this.parent.Destroy(DestroyMode.Vanish);
                 }
