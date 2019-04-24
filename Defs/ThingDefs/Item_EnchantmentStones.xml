@@ -61,7 +61,7 @@
       <texPath>Items/Gemstones/arcane_minor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>170</MarketValue>
@@ -79,7 +79,7 @@
       <texPath>Items/Gemstones/arcane</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>390</MarketValue>
@@ -97,7 +97,7 @@
       <texPath>Items/Gemstones/arcane_major</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>955</MarketValue>
@@ -115,7 +115,7 @@
       <texPath>Items/Gemstones/ice_minor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>170</MarketValue>
@@ -133,7 +133,7 @@
       <texPath>Items/Gemstones/ice</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>390</MarketValue>
@@ -151,7 +151,7 @@
       <texPath>Items/Gemstones/ice_major</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>955</MarketValue>
@@ -169,7 +169,7 @@
       <texPath>Items/Gemstones/naturestone_minor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>170</MarketValue>
@@ -187,7 +187,7 @@
       <texPath>Items/Gemstones/naturestone</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>390</MarketValue>
@@ -205,7 +205,7 @@
       <texPath>Items/Gemstones/naturestone_major</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>955</MarketValue>
@@ -223,7 +223,7 @@
       <texPath>Items/Gemstones/lightning_minor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>170</MarketValue>
@@ -241,7 +241,7 @@
       <texPath>Items/Gemstones/lightning</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>390</MarketValue>
@@ -259,7 +259,7 @@
       <texPath>Items/Gemstones/lightning_major</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>955</MarketValue>
@@ -277,7 +277,7 @@
       <texPath>Items/Gemstones/bloodgem_minor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>170</MarketValue>
@@ -295,7 +295,7 @@
       <texPath>Items/Gemstones/bloodgem</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>390</MarketValue>
@@ -313,7 +313,7 @@
       <texPath>Items/Gemstones/bloodgem_major</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>955</MarketValue>
@@ -331,7 +331,7 @@
       <texPath>Items/Gemstones/ice_magicyte_small</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>170</MarketValue>
@@ -349,7 +349,7 @@
       <texPath>Items/Gemstones/ice_magicyte</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>390</MarketValue>
@@ -367,7 +367,7 @@
       <texPath>Items/Gemstones/ice_magicyte_large</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>955</MarketValue>
@@ -386,7 +386,7 @@
       <texPath>Items/Gemstones/fire_magicyte_small</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>170</MarketValue>
@@ -404,7 +404,7 @@
       <texPath>Items/Gemstones/fire_magicyte</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>390</MarketValue>
@@ -422,7 +422,7 @@
       <texPath>Items/Gemstones/fire_magicyte_large</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>955</MarketValue>
@@ -440,7 +440,7 @@
       <texPath>Items/Gemstones/wonderstone_minor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>1190</MarketValue>
@@ -458,7 +458,7 @@
       <texPath>Items/Gemstones/wonderstone</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>2650</MarketValue>
@@ -476,7 +476,7 @@
       <texPath>Items/Gemstones/wonderstone_major</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-	<stackLimit>1</stackLimit>
+	<stackLimit>50</stackLimit>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>6550</MarketValue>

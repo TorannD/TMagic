@@ -3027,11 +3027,20 @@ namespace TorannMagic
         {
             public static void Postfix(Vector3 clickPos, Pawn pawn, ref List<FloatMenuOption> opts)
             {
+                if (pawn == null)
+                {
+                    return;
+                }
                 IntVec3 c = IntVec3.FromVector3(clickPos);
                 Enchantment.CompEnchant comp = pawn.TryGetComp<Enchantment.CompEnchant>();
                 CompAbilityUserMagic pawnComp = pawn.TryGetComp<CompAbilityUserMagic>();
                 if (comp != null && pawnComp != null && pawnComp.IsMagicUser)
                 {
+                    if (comp.enchantingContainer == null)
+                    {
+                        Log.Warning($"Enchanting container is null for {pawn}, initializing.");
+                        comp.enchantingContainer = new ThingOwner<Thing>(comp);
+                    }
                     bool emptyGround = true;
                     foreach (Thing current in c.GetThingList(pawn.Map))
                     {

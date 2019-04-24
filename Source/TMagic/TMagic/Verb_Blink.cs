@@ -60,6 +60,7 @@ namespace TorannMagic
                     Pawn p = this.CasterPawn;
                     Map map = this.CasterPawn.Map;
                     IntVec3 cell = this.CasterPawn.Position;
+                    bool draftFlag = this.CasterPawn.Drafted;
                     try
                     {
                         if (this.CasterPawn.IsColonist)
@@ -69,7 +70,7 @@ namespace TorannMagic
                             this.CasterPawn.DeSpawn();
                             //p.SetPositionDirect(this.currentTarget.Cell);
                             GenSpawn.Spawn(p, this.currentTarget.Cell, map);
-                            p.drafter.Drafted = true;
+                            p.drafter.Drafted = draftFlag;
                             ThingSelectionUtility.SelectPreviousColonist();
                             ModOptions.Constants.SetPawnInFlight(false);
                         }

@@ -17,7 +17,7 @@ namespace TorannMagic
                 {
                     FixTrait(user, user.story.traits.allTraits);
                     user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Gladiator, 4, false));
-                    this.parent.Destroy(DestroyMode.Vanish);
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                     CompAbilityUserMight comp = user.GetComp<CompAbilityUserMight>();
                     comp.skill_Sprint = true;
                 }
@@ -25,31 +25,31 @@ namespace TorannMagic
                 {
                     FixTrait(user, user.story.traits.allTraits);
                     user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Sniper, 0, false));
-                    this.parent.Destroy(DestroyMode.Vanish);
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
                 else if (parent.def.defName == "BookOfBladedancer")
                 {
                     FixTrait(user, user.story.traits.allTraits);
                     user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Bladedancer, 0, false));
-                    this.parent.Destroy(DestroyMode.Vanish);
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
                 else if (parent.def.defName == "BookOfRanger")
                 {
                     FixTrait(user, user.story.traits.allTraits);
                     user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Ranger, 0, false));
-                    this.parent.Destroy(DestroyMode.Vanish);
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
                 else if (parent.def.defName == "BookOfFaceless")
                 {
                     FixTrait(user, user.story.traits.allTraits);
                     user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Faceless, 4, false));
-                    this.parent.Destroy(DestroyMode.Vanish);
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
                 else if (parent.def.defName == "BookOfDeathKnight")
                 {
                     FixTrait(user, user.story.traits.allTraits);
                     user.story.traits.GainTrait(new Trait(TorannMagicDefOf.DeathKnight, 4, false));
-                    this.parent.Destroy(DestroyMode.Vanish);
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
                 else if (parent.def.defName == "BookOfPsionic")
                 {
@@ -57,13 +57,13 @@ namespace TorannMagic
                     {
                         FixTrait(user, user.story.traits.allTraits);
                         user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Psionic, 4, false));
-                        this.parent.Destroy(DestroyMode.Vanish);
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                     }
                     else if(user.Map.GameConditionManager.ConditionIsActive(GameConditionDefOf.PsychicDrone) || user.Map.GameConditionManager.ConditionIsActive(GameConditionDefOf.PsychicSoothe))
                     {
                         FixTrait(user, user.story.traits.allTraits);
                         user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Psionic, 4, false));
-                        this.parent.Destroy(DestroyMode.Vanish);
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                     }
                     else
                     {

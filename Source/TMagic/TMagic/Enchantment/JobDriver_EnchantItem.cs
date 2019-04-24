@@ -122,7 +122,7 @@ namespace TorannMagic.Enchantment
                 if (enchantment != null && enchantingItem != null && enchanting.actor.jobs.curDriver.ticksLeftThisToil < 1)
                 {
                     EnchantItem(enchantingItem.enchantingContainer[0], enchantment);
-                    enchantingItem.enchantingContainer[0].Destroy();
+                    enchantingItem.enchantingContainer[0].SplitOff(1).Destroy(DestroyMode.Vanish);
                     pawnComp.Mana.CurLevel -= .5f;
                     int num = Rand.Range(130, 180);
                     pawnComp.MagicUserXP += num;

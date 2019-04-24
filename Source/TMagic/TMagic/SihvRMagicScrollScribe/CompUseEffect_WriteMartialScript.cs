@@ -15,37 +15,37 @@ namespace TorannMagic.SihvRMagicScrollScribe
             if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
             {
                 tempPod = ThingDef.Named("BookOfGladiator");
-                this.parent.Destroy(DestroyMode.Vanish);
+                this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
             }
             else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper))
             {
                 tempPod = ThingDef.Named("BookOfSniper");
-                this.parent.Destroy(DestroyMode.Vanish);
+                this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
             }
             else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.Bladedancer))
             {
                 tempPod = ThingDef.Named("BookOfBladedancer");
-                this.parent.Destroy(DestroyMode.Vanish);
+                this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
             }
             else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.Ranger))
             {
                 tempPod = ThingDef.Named("BookOfRanger");
-                this.parent.Destroy(DestroyMode.Vanish);
+                this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
             }
             else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
                 tempPod = ThingDef.Named("BookOfFaceless");
-                this.parent.Destroy(DestroyMode.Vanish);
+                this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
             }
             else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
             {
                 tempPod = ThingDef.Named("BookOfPsionic");
-                this.parent.Destroy(DestroyMode.Vanish);
+                this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
             }
             else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.DeathKnight))
             {
                 tempPod = ThingDef.Named("BookOfDeathKnight");
-                this.parent.Destroy(DestroyMode.Vanish);
+                this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
             }
             else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy))
             {
@@ -140,7 +140,7 @@ namespace TorannMagic.SihvRMagicScrollScribe
                             goto RetryWrite;
                         }
                     }
-                    this.parent.Destroy(DestroyMode.Vanish);
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
                 else
                 {

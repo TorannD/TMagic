@@ -58,7 +58,7 @@ namespace TorannMagic.Enchantment
                 Pawn actor = takeThing.actor;
                 Thing thing = actor.CurJob.GetTarget(ind).Thing;
                 Toils_Enchant.ErrorCheck(actor, thing);
-                int num = Mathf.Min(countGetter(), thing.stackCount);
+                int num = Mathf.Min(1, thing.stackCount);
                 if (num <= 0)
                 {
                     actor.jobs.curDriver.ReadyForNextToil();

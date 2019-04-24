@@ -280,39 +280,42 @@ namespace TorannMagic
 
         public override void PostDraw()
         {
-            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            if (settingsRef.AIFriendlyMarking && base.AbilityUser.IsColonist && this.IsMagicUser)
+            if (IsMagicUser)
             {
-                if (!this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                if (settingsRef.AIFriendlyMarking && base.AbilityUser.IsColonist && this.IsMagicUser)
                 {
-                    DrawMageMark();
+                    if (!this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                    {
+                        DrawMageMark();
+                    }
                 }
-            }
-            if (settingsRef.AIMarking && !base.AbilityUser.IsColonist && this.IsMagicUser)
-            {
-                if (!this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                if (settingsRef.AIMarking && !base.AbilityUser.IsColonist && this.IsMagicUser)
                 {
-                    DrawMageMark();
+                    if (!this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                    {
+                        DrawMageMark();
+                    }
                 }
-            }
 
-            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) && this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower mp) => mp.abilityDef == TorannMagicDefOf.TM_TechnoBit).learned == true)
-            {
-                DrawTechnoBit();
-            }
-            
-            Enchantment.CompEnchant compEnchant = this.Pawn.GetComp<Enchantment.CompEnchant>();
-            try
-            {
-                if (this.IsMagicUser && compEnchant != null && compEnchant.enchantingContainer.Count > 0)
+                if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) && this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower mp) => mp.abilityDef == TorannMagicDefOf.TM_TechnoBit).learned == true)
                 {
-                    DrawEnchantMark();
+                    DrawTechnoBit();
                 }
-            }
-            catch
-            {
-                Enchantment.CompProperties_Enchant newEnchantComp = new Enchantment.CompProperties_Enchant();
-                this.Pawn.def.comps.Add(newEnchantComp);
+
+                Enchantment.CompEnchant compEnchant = this.Pawn.GetComp<Enchantment.CompEnchant>();
+                try
+                {
+                    if (this.IsMagicUser && compEnchant != null && compEnchant.enchantingContainer.Count > 0)
+                    {
+                        DrawEnchantMark();
+                    }
+                }
+                catch
+                {
+                    Enchantment.CompProperties_Enchant newEnchantComp = new Enchantment.CompProperties_Enchant();
+                    this.Pawn.def.comps.Add(newEnchantComp);
+                }
             }
             base.PostDraw();
         }
@@ -5764,7 +5767,7 @@ namespace TorannMagic
                     if (this.spell_MechaniteReprogramming && this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
                     {
                         MagicPower magicPower = this.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_MechaniteReprogramming);
-                        if (magicPower.autocast)
+                        if (magicPower != null && magicPower.autocast)
                         {
                             PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_MechaniteReprogramming);
                             List<string> afflictionList = new List<string>();

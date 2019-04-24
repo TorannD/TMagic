@@ -1,27 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
 using Verse;
 using RimWorld;
 
 namespace TorannMagic.Enchantment
 {
-    public class CompEnchant : ThingComp
+    public class CompEnchant : ThingComp, IThingHolder
     {
-        public ThingOwner<Thing> enchantingContainer = new ThingOwner<Thing>();
+        public ThingOwner enchantingContainer;
 
         private bool initialize = true;
 
-        private Pawn Pawn
+        public CompEnchant()
         {
-            get
-            {
-                Pawn pawn = this.parent as Pawn;
-                bool flag = pawn == null;
-                if (flag)
-                {
-                    Log.Error("pawn is null");
-                }
-                return pawn;
-            }
+            enchantingContainer = new ThingOwner<Thing>(this);
+        }
+
+        public override void PostDeSpawn(Map map)
+        {
+            base.PostDeSpawn(map);
+            enchantingContainer?.TryDropAll(parent.Position, map, ThingPlaceMode.Near, null, null);
         }
 
         public override void Initialize(CompProperties props)
@@ -37,11 +35,34 @@ namespace TorannMagic.Enchantment
             
         }
 
+        public ThingOwner GetDirectlyHeldThings()
+        {
+            return enchantingContainer;
+        }
+
+        public void GetChildHolders(List<IThingHolder> outChildren)
+        {
+            if (enchantingContainer != null)
+            {
+                ThingOwnerUtility.AppendThingHoldersFromThings(outChildren, GetDirectlyHeldThings());
+            }
+        }
+
         public override void PostExposeData()
         {
             base.PostExposeData();
-            Scribe_Deep.Look<ThingOwner<Thing>>(ref this.enchantingContainer, "enchantingContainer", new object[0]);
-            Scribe_Values.Look<bool>(ref this.initialize, "initialize", true, false);
+            Scribe_Deep.Look(ref enchantingContainer, "enchantingContainer", new object[]
+            {
+                this
+            });
         }
     }
+
+    //public override void PostExposeData()
+    //{
+    //    base.PostExposeData();
+    //    Scribe_Deep.Look<ThingOwner<Thing>>(ref this.enchantingContainer, "enchantingContainer", new object[0]);
+    //    Scribe_Values.Look<bool>(ref this.initialize, "initialize", true, false);
+    //}
 }
+

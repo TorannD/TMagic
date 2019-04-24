@@ -19,8 +19,9 @@
 			<Beauty>10</Beauty>
 			<SellPriceFactor>.7</SellPriceFactor>
 		</statBases>
-		<stackLimit>1</stackLimit>
+		<stackLimit>10</stackLimit>
 		<techLevel>Neolithic</techLevel>
+		<drawGUIOverlay>true</drawGUIOverlay>
 		<comps>
 			<li Class="CompProperties_Usable">
 				<useJob>UseArtifact</useJob>
@@ -42,7 +43,6 @@ Magically Gifted pawns can journal their theories and experiments in this book a
 		<selectable>true</selectable>
 		<altitudeLayer>Item</altitudeLayer>
 		<alwaysHaulable>true</alwaysHaulable>
-		<stackLimit>1</stackLimit>
 		<resourceReadoutPriority>Middle</resourceReadoutPriority>
 		<tradeNeverStack>true</tradeNeverStack>
 		<statBases>
@@ -82,7 +82,6 @@ Magically Gifted pawns can journal their theories and experiments in this book a
 			<texPath>Books/blankscript_magic</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<drawGUIOverlay>false</drawGUIOverlay>
 	</ThingDef>
 	
 	<ThingDef ParentName="WritableScriptBase">
@@ -98,7 +97,6 @@ Gifted pawns can journal their theories and experiments in this book and learn t
 		<selectable>true</selectable>
 		<altitudeLayer>Item</altitudeLayer>
 		<alwaysHaulable>true</alwaysHaulable>
-		<stackLimit>1</stackLimit>
 		<resourceReadoutPriority>Middle</resourceReadoutPriority>
 		<tradeNeverStack>true</tradeNeverStack>
 		<statBases>
@@ -141,7 +139,6 @@ Gifted pawns can journal their theories and experiments in this book and learn t
 			<texPath>Books/blanktome_magic</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<drawGUIOverlay>false</drawGUIOverlay>
 	</ThingDef>
 	
 	<ThingDef ParentName="WritableScriptBase">
@@ -155,7 +152,6 @@ Use a trained fighter to record their combat techniques in the book. The book ca
 		<selectable>true</selectable>
 		<altitudeLayer>Item</altitudeLayer>
 		<alwaysHaulable>true</alwaysHaulable>
-		<stackLimit>1</stackLimit>
 		<resourceReadoutPriority>Middle</resourceReadoutPriority>
 		<tradeNeverStack>true</tradeNeverStack>
 		<statBases>
@@ -195,7 +191,6 @@ Use a trained fighter to record their combat techniques in the book. The book ca
 			<texPath>Books/blankscript_might</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<drawGUIOverlay>false</drawGUIOverlay>
 	</ThingDef>
 	
 </Defs>

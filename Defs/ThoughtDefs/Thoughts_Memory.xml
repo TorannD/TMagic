@@ -120,16 +120,16 @@
 		</stages>
 	</ThoughtDef>
 	
-<!--   <ThoughtDef>
+  <ThoughtDef>
     <defName>AteMysteryMeatDirect</defName>
 		<showBubble>true</showBubble>
 		<icon>Things/Mote/ThoughtSymbol/Food</icon>
-		<durationDays>1</durationDays>
+		<durationDays>.1</durationDays>
     <stages>
       <li>
         <label>ate minion meat</label>
         <description>I ate some disgusting mystery meat from a dead minion. It was mashed together with sludge and other decaying things I couldn't identify. Was that a fingernail? Gross.</description>
-        <baseMoodEffect>-8</baseMoodEffect>
+        <baseMoodEffect>0</baseMoodEffect>
       </li>
     </stages>
   </ThoughtDef>
@@ -138,14 +138,14 @@
 		<defName>AteMysteryMeatAsIngredient</defName>
 		<showBubble>true</showBubble>
 		<icon>Things/Mote/ThoughtSymbol/Food</icon>
-		<durationDays>1</durationDays>
+		<durationDays>.1</durationDays>
 		<stages>
 			<li>
 				<label>ate cooked minion meat</label>
 				<description>I ate a meal cooked with minion meat. No amount of seasoning or spices could prevent the impression that I was eating something disgusting.</description>
-				<baseMoodEffect>-3</baseMoodEffect>
+				<baseMoodEffect>0</baseMoodEffect>
 			</li>
 		</stages>
-	</ThoughtDef> -->
+	</ThoughtDef>
   
 </Defs>

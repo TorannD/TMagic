@@ -38,7 +38,7 @@
 		</graphicData>
 		<soundInteract>Metal_Drop</soundInteract>
 		<soundDrop>Standard_Drop</soundDrop>
-		<stackLimit>1</stackLimit>
+		<stackLimit>10</stackLimit>
 		<tickerType>Normal</tickerType>
 		<statBases>
 			<MaxHitPoints>70</MaxHitPoints>

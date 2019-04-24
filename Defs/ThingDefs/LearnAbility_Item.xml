@@ -11,6 +11,7 @@
 	  <li>Arcane</li>
     </tradeTags>
 	<tradeability>All</tradeability>
+	<drawGUIOverlay>true</drawGUIOverlay>
     <statBases>
       <MarketValue>6000</MarketValue>
       <MaxHitPoints>1000</MaxHitPoints>
@@ -20,7 +21,7 @@
 	  <Beauty>10</Beauty>
 	  <SellPriceFactor>.4</SellPriceFactor>
 	</statBases>
-	<stackLimit>1</stackLimit>
+	<stackLimit>10</stackLimit>
 	<techLevel>Neolithic</techLevel>
     <comps>
       <li Class="CompProperties_Usable">
@@ -42,6 +43,7 @@
 	  <li>Arcane</li>
     </tradeTags>
 	<tradeability>All</tradeability>
+	<drawGUIOverlay>true</drawGUIOverlay>
     <statBases>
       <MarketValue>3300</MarketValue>
       <MaxHitPoints>1000</MaxHitPoints>
@@ -51,7 +53,7 @@
 	  <Beauty>10</Beauty>
 	  <SellPriceFactor>.8</SellPriceFactor>
 	</statBases>
-	<stackLimit>1</stackLimit>
+	<stackLimit>10</stackLimit>
 	<techLevel>Neolithic</techLevel>
     <comps>
       <li Class="CompProperties_Usable">
@@ -74,6 +76,7 @@
 	  <li>Arcane</li>
     </tradeTags>
 	<tradeability>All</tradeability>
+	<drawGUIOverlay>true</drawGUIOverlay>
     <statBases>
       <MarketValue>1750</MarketValue>
       <MaxHitPoints>1000</MaxHitPoints>
@@ -84,7 +87,7 @@
 	  <SellPriceFactor>.8</SellPriceFactor>
 	</statBases>
 	<techLevel>Neolithic</techLevel>
-	<stackLimit>1</stackLimit>
+	<stackLimit>10</stackLimit>
     <comps>
       <li Class="CompProperties_Usable">
         <useJob>UseArtifact</useJob>
@@ -106,6 +109,7 @@
 	  <li>Arcane</li>
     </tradeTags>
 	<tradeability>All</tradeability>
+	<drawGUIOverlay>true</drawGUIOverlay>
     <statBases>
       <MarketValue>2575</MarketValue>
       <MaxHitPoints>1000</MaxHitPoints>
@@ -116,7 +120,7 @@
 	  <SellPriceFactor>.8</SellPriceFactor>
 	</statBases>
 	<techLevel>Neolithic</techLevel>
-	<stackLimit>1</stackLimit>
+	<stackLimit>10</stackLimit>
     <comps>
       <li Class="CompProperties_Usable">
         <useJob>UseArtifact</useJob>
@@ -139,6 +143,7 @@
 	  <li>Arcane</li>
     </tradeTags>
 	<tradeability>All</tradeability>
+	<drawGUIOverlay>true</drawGUIOverlay>
     <statBases>
       <MarketValue>777</MarketValue>
       <MaxHitPoints>1000</MaxHitPoints>
@@ -149,7 +154,7 @@
 	  <SellPriceFactor>.8</SellPriceFactor>
 	</statBases>
 	<techLevel>Neolithic</techLevel>
-	<stackLimit>1</stackLimit>
+	<stackLimit>25</stackLimit>
     <comps>
       <li Class="CompProperties_Usable">
         <useJob>UseArtifact</useJob>
@@ -172,6 +177,7 @@
 	  <li>Arcane</li>
     </tradeTags>
 	<tradeability>All</tradeability>
+	<drawGUIOverlay>true</drawGUIOverlay>
     <statBases>
       <MarketValue>777</MarketValue>
       <MaxHitPoints>1000</MaxHitPoints>
@@ -182,7 +188,7 @@
 	  <SellPriceFactor>.8</SellPriceFactor>
 	</statBases>
 	<techLevel>Neolithic</techLevel>
-	<stackLimit>1</stackLimit>
+	<stackLimit>25</stackLimit>
     <comps>
       <li Class="CompProperties_Usable">
         <useJob>UseArtifact</useJob>
@@ -205,7 +211,6 @@
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
 	<statBases>
@@ -220,7 +225,6 @@
       <texPath>Books/random</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
   </ThingDef>
   
   <ThingDef ParentName="Partial_ArcaneScriptBase">
@@ -233,7 +237,6 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -245,7 +248,6 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/torn_fire</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
   </ThingDef>
   
   <ThingDef ParentName="Partial_ArcaneScriptBase">
@@ -258,7 +260,6 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -270,7 +271,6 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/torn_water</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
   </ThingDef>
   
   <ThingDef ParentName="Partial_ArcaneScriptBase">
@@ -283,7 +283,6 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -295,7 +294,6 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/torn_lightning</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
   </ThingDef>
   
   <ThingDef ParentName="Partial_ArcaneScriptBase">
@@ -308,7 +306,6 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -320,7 +317,6 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/torn_arcane</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
   </ThingDef>
   
   <ThingDef ParentName="Partial_ArcaneScriptBase">
@@ -333,7 +329,6 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -345,7 +340,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/torn_holy</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="Partial_ArcaneScriptBase">
@@ -358,7 +353,6 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -370,7 +364,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/torn_summoning</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="Partial_ArcaneScriptBase">
@@ -382,8 +376,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	<alwaysHaulable>true</alwaysHaulable>	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -395,7 +388,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/torn_nature</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="Partial_ArcaneScriptBase">
@@ -408,7 +401,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -420,7 +413,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/torn_necro</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="Partial_ArcaneScriptBase">
@@ -433,7 +426,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -445,7 +438,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/torn_healing</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
     <ThingDef ParentName="Partial_ArcaneScriptBase">
@@ -458,7 +451,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -470,7 +463,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/torn_bard</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="Partial_ArcaneScriptBase">
@@ -486,7 +479,7 @@ This arcane script is incomplete and does not explain the full contract process;
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -498,7 +491,7 @@ This arcane script is incomplete and does not explain the full contract process;
       <texPath>Books/torn_warlock</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="Partial_ArcaneScriptBase">
@@ -511,7 +504,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -523,7 +516,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/torn_earth</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="Partial_ArcaneScriptBase">
@@ -536,7 +529,7 @@ This arcane script is incomplete and the reader will not learn any supporting te
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -548,7 +541,7 @@ This arcane script is incomplete and the reader will not learn any supporting te
       <texPath>Books/torn_earth</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="Partial_ArcaneScriptBase">
@@ -561,7 +554,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -573,7 +566,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/torn_blood</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="Partial_ArcaneScriptBase">
@@ -586,7 +579,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -598,7 +591,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/torn_enchanter</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
 
   <!--=============== Arcane Scripts ====================-->
@@ -612,7 +605,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -624,7 +617,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/fire</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneScriptBase">
@@ -636,7 +629,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -648,7 +641,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/ice</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneScriptBase">
@@ -660,7 +653,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -672,7 +665,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/lightning</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneScriptBase">
@@ -684,7 +677,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -696,7 +689,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/arcane</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneScriptBase">
@@ -708,7 +701,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -720,7 +713,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/paladin</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
 
   <ThingDef ParentName="ArcaneScriptBase">
@@ -732,7 +725,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -744,7 +737,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/summoner</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneScriptBase">
@@ -756,7 +749,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -768,7 +761,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/druid</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneScriptBase">
@@ -780,7 +773,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -792,7 +785,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/necromancer</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneScriptBase">
@@ -804,7 +797,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -816,7 +809,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/priest</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
     <ThingDef ParentName="ArcaneScriptBase">
@@ -828,7 +821,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -840,7 +833,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/bard</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneScriptBase">
@@ -854,7 +847,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -866,7 +859,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/warlock</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneScriptBase">
@@ -878,7 +871,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -890,7 +883,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/earth</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneScriptBase">
@@ -902,7 +895,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -914,7 +907,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/technomancer</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneScriptBase">
@@ -926,7 +919,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -938,7 +931,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/bloodmage</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneScriptBase">
@@ -950,7 +943,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -962,7 +955,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/enchanter</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
     <!--=============== Combat Forms ====================-->
@@ -976,7 +969,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -988,7 +981,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/gladiator</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="CombatFormBase">
@@ -1002,7 +995,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1017,7 +1010,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/psionic</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="CombatFormBase">
@@ -1029,7 +1022,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1041,7 +1034,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/faceless</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="CombatFormBase">
@@ -1053,7 +1046,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1065,7 +1058,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/sniper</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="CombatFormBase">
@@ -1077,7 +1070,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1089,7 +1082,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/bladedancer</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="CombatFormBase">
@@ -1101,7 +1094,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1113,7 +1106,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/ranger</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="CombatFormBase">
@@ -1125,7 +1118,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1137,7 +1130,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/deathknight</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
     <!--=============== Magic Spells - Single ====================-->
@@ -1151,7 +1144,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1187,7 +1180,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/scroll_water</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -1199,7 +1192,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1235,7 +1228,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
  
    <ThingDef ParentName="ArcaneSpellBase">
@@ -1247,7 +1240,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1283,7 +1276,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/scroll_power</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -1295,7 +1288,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1331,7 +1324,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/scroll_holy</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -1343,7 +1336,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1379,7 +1372,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/scroll_fire</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
     <ThingDef ParentName="ArcaneSpellBase">
@@ -1391,7 +1384,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1427,7 +1420,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/scroll_lit</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -1439,7 +1432,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1475,7 +1468,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/scroll_water</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -1487,7 +1480,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1523,7 +1516,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/scroll_lit</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
     <ThingDef ParentName="ArcaneSpellBase">
@@ -1535,7 +1528,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1571,7 +1564,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/scroll_fire</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -1583,7 +1576,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1619,7 +1612,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/scroll_water</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -1632,7 +1625,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1668,7 +1661,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_lit</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -1680,7 +1673,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1716,7 +1709,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -1728,7 +1721,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1764,7 +1757,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -1776,7 +1769,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1812,7 +1805,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_fire</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -1824,7 +1817,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1860,7 +1853,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_lit</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -1872,7 +1865,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1908,7 +1901,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_fire</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -1920,7 +1913,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1956,7 +1949,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_water</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -1968,7 +1961,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2004,7 +1997,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_lit</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -2016,7 +2009,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2052,7 +2045,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_power</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -2064,7 +2057,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2100,7 +2093,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_water</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -2112,7 +2105,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2148,7 +2141,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
    <ThingDef ParentName="ArcaneSpellBase">
@@ -2160,7 +2153,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2196,7 +2189,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_power</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
  <ThingDef ParentName="ArcaneSpellBase">
@@ -2208,7 +2201,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2244,7 +2237,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_power</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
    <ThingDef ParentName="ArcaneSpellBase">
@@ -2256,7 +2249,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2292,7 +2285,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -2304,7 +2297,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2340,7 +2333,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_power</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -2352,7 +2345,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2388,7 +2381,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_power</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -2400,7 +2393,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2436,7 +2429,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_holy</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -2448,7 +2441,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2484,7 +2477,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_holy</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -2496,7 +2489,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2532,7 +2525,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_power</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -2544,7 +2537,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2580,7 +2573,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -2592,7 +2585,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2628,7 +2621,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -2640,7 +2633,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2676,7 +2669,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_power</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -2688,7 +2681,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2724,7 +2717,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_power</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -2736,7 +2729,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2772,7 +2765,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -2784,7 +2777,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2820,7 +2813,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -2832,7 +2825,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2868,7 +2861,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -2880,7 +2873,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2916,7 +2909,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -2928,7 +2921,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -2964,7 +2957,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -2976,7 +2969,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -3012,7 +3005,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_blood</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -3024,7 +3017,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -3060,7 +3053,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_power</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -3072,7 +3065,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -3108,7 +3101,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_water</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -3120,7 +3113,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -3156,7 +3149,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_power</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -3168,7 +3161,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -3204,7 +3197,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -3216,7 +3209,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -3252,7 +3245,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
       <!--=============== Fighter Skills - Single ====================-->
@@ -3266,7 +3259,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -3305,7 +3298,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
     <ThingDef ParentName="FighterSkillBase">
@@ -3317,7 +3310,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -3356,7 +3349,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
     <ThingDef ParentName="FighterSkillBase">
@@ -3368,7 +3361,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -3407,7 +3400,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
       <ThingDef ParentName="FighterSkillBase">
@@ -3419,7 +3412,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -3458,7 +3451,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
       <ThingDef ParentName="FighterSkillBase">
@@ -3470,7 +3463,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -3509,7 +3502,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
 	<ThingDef ParentName="FighterSkillBase">
@@ -3521,7 +3514,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -3560,7 +3553,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="FighterSkillBase">
@@ -3572,7 +3565,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -3611,7 +3604,7 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
 
       <!--=============== Gems of Insight ====================-->
@@ -3627,7 +3620,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -3662,7 +3655,7 @@ Produces 400Wd.</description>
       <texPath>Items/Gemstones/mightinsight</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
   
   <ThingDef ParentName="UsableGemstoneBase">
@@ -3676,7 +3669,7 @@ Produces 400Wd.</description>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<alwaysHaulable>true</alwaysHaulable>
-	<stackLimit>1</stackLimit>
+	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -3711,7 +3704,7 @@ Produces 400Wd.</description>
       <texPath>Items/Gemstones/magicinsight</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <drawGUIOverlay>false</drawGUIOverlay>
+
   </ThingDef>
 	  
 </Defs>
