@@ -3375,8 +3375,9 @@ namespace TorannMagic
                         {
                             currentE.learned = false;
                         }
-                        this.RemovePawnAbility(currentE.abilityDef);
+                        this.RemovePawnAbility(currentE.abilityDef);                       
                     }
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_EnchantedAura);
                 }
             }
         }

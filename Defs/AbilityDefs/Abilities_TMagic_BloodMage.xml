@@ -102,7 +102,7 @@ A blood mage will slowly lose blood magic power when they are no longer bleeding
 
 The blood that's expelled from the target becomes a mist that the caster absorbs as restorative energy, and uses it to mend the their wounds and replenish their blood reserves.
 
-The wounds and injuries of a target will also be healed as the blood exits their body. The victim loses a portion of their blood each pulse and, like any wound, can result in incapacitation or death if they lose too much blood.
+The wounds and injuries of a target will also be healed as the blood exits their body. The target loses a portion of their blood each pulse and, like any wound, can result in incapacitation or death if they lose too much blood.
 
 The transfer and healing rate is increased for both caster and victim depending on how much the victim is bleeding. The effects are the same when used on friendly or enemy pawns, but will trigger an outrage if used to down or slay an allied or neutral pawn.</description>
         <bloodCost>0.30</bloodCost>

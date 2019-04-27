@@ -120,11 +120,11 @@ There is no limit to the number of undead a necromancer may control, however, wh
         <uiIconPath>UI/deathmark</uiIconPath>
         <description>Mark a victim with a curse that causes their life to flash before their eyes. Cursed victims will lose focus and the will to fight, reducing the attack rate. Marking targets for death empowers Death Bolt. Does not work on mechanoids.
 		
-Max Targets: 3
+Max Targets: 4
 Cast Time: 3s
 Cooldown: 120s
 Range: 34</description>
-        <manaCost>0.25</manaCost>
+        <manaCost>0.20</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_DeathMark</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -156,7 +156,7 @@ Range: 34</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>false</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>3</maxTargets>
+                <maxTargets>4</maxTargets>
                 <range>3</range>
             </TargetAoEProperties>
         </MainVerb>
@@ -168,11 +168,11 @@ Range: 34</description>
         <uiIconPath>UI/deathmark</uiIconPath>
         <description>Mark a victim with a curse that causes their life to flash before their eyes. Cursed victims will lose focus and the will to fight, reducing the attack rate. Marking targets for death empowers Death Bolt. Does not work on mechanoids.
 		
-Max Targets: 4
+Max Targets: 5
 Cast Time: 2.5s
 Cooldown: 90s
 Range: 38</description>
-        <manaCost>0.25</manaCost>
+        <manaCost>0.20</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_DeathMark</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -204,8 +204,8 @@ Range: 38</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>false</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>4</maxTargets>
-                <range>3</range>
+                <maxTargets>5</maxTargets>
+                <range>4</range>
             </TargetAoEProperties>
 
         </MainVerb>
@@ -217,11 +217,11 @@ Range: 38</description>
         <uiIconPath>UI/deathmark</uiIconPath>
         <description>Mark a victim with a curse that causes their life to flash before their eyes. Cursed victims will lose focus and the will to fight, reducing the attack rate. Marking targets for death empowers Death Bolt. Does not work on mechanoids.
 		
-Max Targets: 4
+Max Targets: 6
 Cast Time: 2s
 Cooldown: 60s
 Range: 42</description>
-        <manaCost>0.25</manaCost>
+        <manaCost>0.20</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_DeathMark</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -253,8 +253,8 @@ Range: 42</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>false</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>4</maxTargets>
-                <range>4</range>
+                <maxTargets>6</maxTargets>
+                <range>5</range>
             </TargetAoEProperties>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
@@ -265,11 +265,11 @@ Range: 42</description>
         <uiIconPath>UI/deathmark</uiIconPath>
         <description>Mark a victim with a curse that causes their life to flash before their eyes. Cursed victims will lose focus and the will to fight, reducing the attack rate. Marking targets for death empowers Death Bolt. Does not work on mechanoids.
 		
-Max Targets: 5
+Max Targets: 7
 Cast Time: 1.8s
 Cooldown: 45s
 Range: 46</description>
-        <manaCost>0.25</manaCost>
+        <manaCost>0.20</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_DeathMark</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -301,8 +301,8 @@ Range: 46</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>false</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>5</maxTargets>
-                <range>4</range>
+                <maxTargets>7</maxTargets>
+                <range>5</range>
             </TargetAoEProperties>
         </MainVerb>
     </TorannMagic.TMAbilityDef>

@@ -472,10 +472,10 @@ Level 1: 3-5 damage, 3 healing
 Level 2: 4-6 damage, 4 healing
 Level 3: 5-7 damage, 5 healing</TM_FogOfTorment_pwr_desc>
 <TM_FogOfTorment_ver_desc>Increases the duration, reduces time between effects, and expands the radius of Fog of Torment.
-Level 0: radius 6, effect/2s, duration 30s
-Level 1: radius 7, effect/1.7s, duration 33s
-Level 2: radius 8, effect/1.4s, duration 36s
-Level 3: radius 9, effect/1.1s, duration 39s</TM_FogOfTorment_ver_desc>
+Level 0: radius 6, effect/2s, duration 24s
+Level 1: radius 7, effect/1.7s, duration 27s
+Level 2: radius 8, effect/1.4s, duration 30s
+Level 3: radius 9, effect/1.1s, duration 33s</TM_FogOfTorment_ver_desc>
 <TM_ConsumeCorpse_eff_desc>Increases mana restored by Consume Corpse by 7% per skill level.</TM_ConsumeCorpse_eff_desc>
 <TM_ConsumeCorpse_ver_desc>Consume corpse also heals the physical wounds of the caster.  
 The amount of health varies based on type (human or animal) and freshness of the corpse or undead being consumed.</TM_ConsumeCorpse_ver_desc>

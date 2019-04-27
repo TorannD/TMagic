@@ -252,10 +252,10 @@ This arcane script is incomplete and the reader may not be able to learn some, o
   
   <ThingDef ParentName="Partial_ArcaneScriptBase">
     <defName>Torn_BookOfHeartOfFrost</defName>
-    <label>Torn Script: Water</label>
+    <label>Torn Script: Ice</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a gifted pawn how to harness elements of water.  
-This arcane script is incomplete and the reader may not be able to learn some, or any, water spells.</description>
+    <description>Teaches a gifted pawn how to harness elemental ice and water.  
+This arcane script is incomplete and the reader may not be able to learn some, or any, ice mage spells.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
@@ -622,9 +622,9 @@ This arcane script is incomplete and the reader may not be able to learn some, o
   
   <ThingDef ParentName="ArcaneScriptBase">
     <defName>BookOfHeartOfFrost</defName>
-    <label>Arcane Script: Water</label>
+    <label>Arcane Script: Ice</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a gifted pawn how to harness elements of water.</description>
+    <description>Teaches a gifted pawn how to harness elemental ice and water.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>

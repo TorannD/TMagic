@@ -10,7 +10,7 @@ namespace TorannMagic
     class Projectile_FogOfTorment : Projectile_AbilityBase
     {
         int age = -1;
-        int duration = 1800;
+        int duration = 1440;
         int verVal = 0;
         int pwrVal = 0;
         float arcaneDmg = 1;
@@ -142,7 +142,7 @@ namespace TorannMagic
             base.ExposeData();
             Scribe_Values.Look<bool>(ref this.initialized, "initialized", true, false);
             Scribe_Values.Look<int>(ref this.age, "age", -1, false);
-            Scribe_Values.Look<int>(ref this.duration, "duration", 1800, false);
+            Scribe_Values.Look<int>(ref this.duration, "duration", 1440, false);
             Scribe_Values.Look<int>(ref this.strikeDelay, "shockDelay", 0, false);
             Scribe_Values.Look<int>(ref this.lastStrike, "lastStrike", 0, false);
             Scribe_Values.Look<int>(ref this.verVal, "verVal", 0, false);

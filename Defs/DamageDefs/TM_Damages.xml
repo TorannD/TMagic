@@ -41,7 +41,7 @@
 		<defName>TM_Holy</defName>
 		<label>Holy</label>
 		<externalViolence>true</externalViolence>
-		<deathMessage>{0} was destroyed by divine power.</deathMessage>
+		<deathMessage>{0} was destroyed by holy power.</deathMessage>
 		<hediff>TM_Holy</hediff>
 		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
 		<defaultDamage>12</defaultDamage>
@@ -179,7 +179,7 @@
 		<defName>TM_Overwhelm</defName>
 		<label>Divine Power</label>
 		<externalViolence>true</externalViolence>
-		<deathMessage>{0} was destroyed by divine power.</deathMessage>
+		<deathMessage>{0} was destroyed by holy power.</deathMessage>
 		<hediff>TM_Holy</hediff>
 		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
 		<defaultDamage>12</defaultDamage>
