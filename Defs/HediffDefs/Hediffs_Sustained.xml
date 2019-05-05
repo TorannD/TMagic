@@ -238,4 +238,45 @@
 	 </stages>	
   </HediffDef>
   
+      <!-- Burning Fury -->
+  
+   <HediffDef>
+    <defName>TM_BurningFuryHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Burning Fury</label>
+    <defaultLabelColor>(1,0.4,0.25)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>4.0</maxSeverity>	
+	<isBad>false</isBad>
+      <stages>
+        <li>
+			<label>I</label>
+			<minSeverity>.001</minSeverity>
+			<capMods>
+				  <li>
+					<capacity>Moving</capacity>
+					<offset>0.1</offset>
+				  </li>
+				  <li>
+					<capacity>BloodPumping</capacity>
+					<offset>0.4</offset>
+				  </li>
+				  <li>
+					<capacity>Breathing</capacity>
+					<offset>0.4</offset>
+				  </li>
+			</capMods>
+			<statOffsets>
+			  <PainShockThreshold>0.4</PainShockThreshold>
+			  <ArmorRating_Heat>1</ArmorRating_Heat>
+			</statOffsets>
+        </li>
+	 </stages>
+	<comps>
+      <li>
+        <compClass>TorannMagic.HediffComp_BurningFury</compClass>
+      </li>  
+    </comps>		 
+  </HediffDef>
+  
 </Defs>

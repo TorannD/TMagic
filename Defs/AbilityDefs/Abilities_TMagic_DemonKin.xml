@@ -37,6 +37,7 @@ Succubi and Warlocks form distinct types of soul bonds - warlocks bonds are ment
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_Warlock</defaultProjectile>
             <abilityDef>TM_SoulBond</abilityDef>
             <warmupTime>4</warmupTime>
@@ -115,9 +116,9 @@ Succubi and Warlocks form distinct types of soul bonds - warlocks bonds are ment
             <SecondsToRecharge>60</SecondsToRecharge>
             <range>0</range>
             <burstShotCount>1</burstShotCount>
-            <soundCast>TM_Vibration</soundCast>
-			<soundCastTail>TM_VibrationLow</soundCastTail>
-            <muzzleFlashScale>4</muzzleFlashScale>
+<!--             <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail> -->
+            <muzzleFlashScale>0</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
             <isPrimary>true</isPrimary>
 			<isViolent>false</isViolent>
@@ -793,7 +794,7 @@ Radius: 8</description>
             <damageDef>TM_Shadow</damageDef>
             <damageAmountBase>24</damageAmountBase>
             <speed>999</speed>
-			<explosionRadius>7</explosionRadius>
+			<explosionRadius>5</explosionRadius>
 			<postExplosionSpawnChance>1</postExplosionSpawnChance>
         </projectile>
     </ThingDef>
@@ -802,8 +803,10 @@ Radius: 8</description>
         <defName>TM_Scorn</defName>
         <label>Scorn</label>
         <uiIconPath>UI/scorn</uiIconPath>
-        <description>The succubus uses her demonic powers to partially transform into a winged demon, launching herself towards a distant location to crush her foes in a torrent of dark fury.</description>
-        <manaCost>0.35</manaCost>
+        <description>The succubus uses her demonic powers to partially transform into a winged demon, launching herself towards a distant location to crush her foes in a torrent of dark fury.
+		
+A succubus will retain her partial demon form for a short period after using this ability, granting her improved physical capacities and a damage shield.</description>
+        <manaCost>0.50</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -811,10 +814,11 @@ Radius: 8</description>
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_Scorn</defaultProjectile>
             <abilityDef>TM_Scorn</abilityDef>
             <warmupTime>1</warmupTime>
-            <SecondsToRecharge>30</SecondsToRecharge>
+            <SecondsToRecharge>60</SecondsToRecharge>
             <range>300</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Launch</soundCast>

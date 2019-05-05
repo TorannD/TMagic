@@ -74,16 +74,16 @@ namespace TorannMagic
                 this.pawn = this.launcher as Pawn;
                 this.map = this.pawn.Map;                
                 CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
-                MagicPowerSkill pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Repulsion.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Repulsion_pwr");
-                MagicPowerSkill ver = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Repulsion.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Repulsion_ver");
+                MagicPowerSkill pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Scorn.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Scorn_pwr");
+                MagicPowerSkill ver = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Scorn.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Scorn_ver");
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 pwrVal = pwr.level;
                 verVal = ver.level;
                 this.arcaneDmg = comp.arcaneDmg;
                 if (settingsRef.AIHardMode && !pawn.IsColonist)
                 {
-                    pwrVal = 3;
-                    verVal = 3;
+                    pwrVal = 1;
+                    verVal = 1;
                 }
                 this.radius = this.def.projectile.explosionRadius + verVal;
                 //this.duration = Mathf.RoundToInt(this.radius * this.strikeDelay);
@@ -117,8 +117,27 @@ namespace TorannMagic
             {
                 landedFlag = true;
                 GenSpawn.Spawn(pawn, base.Position, this.map);
-                pawn.drafter.Drafted = true;
+                if (pawn.drafter != null)
+                {
+                    pawn.drafter.Drafted = true;
+                }
                 ModOptions.Constants.SetPawnInFlight(false);
+                if(verVal == 0)
+                {
+                    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_DemonScornHD, 60f + (pwrVal * 15));
+                }
+                else if(verVal == 1)
+                {
+                    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_DemonScornHD_I, 60f + (pwrVal * 15));
+                }
+                else if(verVal == 2)
+                {
+                    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_DemonScornHD_II, 60f + (pwrVal * 15));
+                }
+                else
+                {
+                    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_DemonScornHD_III, 60f + (pwrVal * 15));
+                }
             }
             if(landedFlag)
             { 

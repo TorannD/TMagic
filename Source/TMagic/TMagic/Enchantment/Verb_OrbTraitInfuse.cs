@@ -46,8 +46,9 @@ namespace TorannMagic.Enchantment
                 if(this.currentTarget.Thing != null && this.currentTarget.Thing is Pawn)
                 {
                     Pawn victim = this.currentTarget.Thing as Pawn;
-                    if(victim.Faction != null && victim.RaceProps.Humanlike && victim.story != null && victim.story.traits != null)
+                    if(victim.Faction != null && victim.RaceProps.Humanlike && victim.story != null && victim.story.traits != null && !TM_Calc.IsUndeadNotVamp(victim))
                     {
+                        int traitsApplied = 0;
                         List<Apparel> apparel = this.CasterPawn.apparel.WornApparel;
                         List<Trait> orbTraits = new List<Trait>();
                         orbTraits.Clear();
@@ -83,10 +84,20 @@ namespace TorannMagic.Enchantment
                                 if(!conflicting)
                                 {
                                     AddTrait(victim, orbTraits[i]);
+                                    traitsApplied++;
                                 }
                             }
-                            Effects(victim.Position);
-                            result = true;
+
+                            if (traitsApplied > 0)
+                            {
+                                Effects(victim.Position);
+                                result = true;
+                            }
+                            else
+                            {
+                                Messages.Message("TM_NoTraitsApplied".Translate(victim), MessageTypeDefOf.RejectInput);
+                                result = false;
+                            }
                         }
                         else
                         {

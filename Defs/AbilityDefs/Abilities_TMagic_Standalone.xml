@@ -592,9 +592,9 @@
         <projectile>
 			<flyOverhead>true</flyOverhead>
             <damageDef>Extinguish</damageDef>
-            <damageAmountBase>400</damageAmountBase>
+            <damageAmountBase>1000</damageAmountBase>
             <speed>45</speed>
-			<explosionRadius>3</explosionRadius>
+			<explosionRadius>5</explosionRadius>
 			<postExplosionSpawnChance>1</postExplosionSpawnChance>
         </projectile>
     </ThingDef>
@@ -724,6 +724,7 @@
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_TransferMana</defaultProjectile>
             <abilityDef>TM_TransferMana</abilityDef>
             <warmupTime>1.3</warmupTime>
@@ -778,6 +779,7 @@
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_SiphonMana</defaultProjectile>
             <abilityDef>TM_SiphonMana</abilityDef>
             <warmupTime>1.3</warmupTime>
@@ -921,6 +923,7 @@ Casting the spell when a barrier is active will remove the barrier. Can be used 
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Effect_Flight</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_Flight</defaultProjectile>
             <abilityDef>TM_Flight</abilityDef>
             <AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
@@ -1048,6 +1051,7 @@ Casting the spell when a barrier is active will remove the barrier. Can be used 
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_TM_SpawnThing</defaultProjectile>
             <abilityDef>TM_SpellMending</abilityDef>
             <warmupTime>2</warmupTime>
@@ -1085,6 +1089,7 @@ Casting the spell when a barrier is active will remove the barrier. Can be used 
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_TM_SpawnThing</defaultProjectile>
             <abilityDef>TM_CauterizeWound</abilityDef>
             <warmupTime>2</warmupTime>
@@ -1232,6 +1237,7 @@ AoE effects are only applied when the primary target is not a friendly pawn. Fri
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_BlankMind</abilityDef>
             <warmupTime>2</warmupTime>
@@ -1328,13 +1334,14 @@ AoE effects are only applied when the primary target is not a friendly pawn. Fri
 	
 	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
         <defName>TM_MechaniteReprogramming</defName>
-        <label>Mechanite Reprogramming</label>
+        <label>Reprogram Mechanites</label>
         <uiIconPath>UI/mechanitereprogramming</uiIconPath>
         <description>Reprograms fibrous or sensory mechanites to harmonize with a hosts biological systems. The result will significantly reduce the strain on the host while the mechanites are active.</description>
         <manaCost>0.30</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_MechaniteReprogramming</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_MechaniteReprogramming</abilityDef>
             <targetParams>
@@ -1354,5 +1361,327 @@ AoE effects are only applied when the primary target is not a friendly pawn. Fri
             <isPrimary>false</isPrimary>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
+	
+	<!-- Arcane Bolt -->
+	
+  <ThingDef Class="AbilityUser.ProjectileDef_Ability" ParentName="BaseBullet">
+    <defName>Projectile_ArcaneBolt</defName>
+	<thingClass>TorannMagic.Projectile_ArcaneBolt</thingClass>
+    <label>arcane bolt</label>
+	<graphicData>
+      <texPath>Spells/arcanebolt1</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+	  <soundExplode>TM_SoftExplosion</soundExplode>
+	  <flyOverhead>false</flyOverhead>
+      <damageDef>TM_Arcane</damageDef>
+      <damageAmountBase>8</damageAmountBase>
+      <speed>55</speed>
+	  <explosionRadius>1</explosionRadius>
+	  <postExplosionSpawnChance>1</postExplosionSpawnChance>
+    </projectile>
+  </ThingDef>
+  
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_ArcaneBolt</defName>
+    <label>Arcane Bolt</label>
+    <description>Launches a bolt of raw arcane energy. This ability will slowly grow in power based on the casters magic level.
+
+Arcane Bolt is inefficient because of the unrefined nature of the spell, but it can be learned and cast by any mage capable of violence.</description>
+	<uiIconPath>UI/arcanebolt</uiIconPath>
+    <manaCost>0.25</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_ArcaneBolt</verbClass>
+			<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>true</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_ArcaneBolt</defaultProjectile>
+		<abilityDef>TM_ArcaneBolt</abilityDef>
+        <warmupTime>1.25</warmupTime>
+        <SecondsToRecharge>20</SecondsToRecharge>
+        <range>35</range>
+        <soundCast>TM_AirWooshLow</soundCast>
+        <muzzleFlashScale>4</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+		<isViolent>true</isViolent>
+		<burstShotCount>15</burstShotCount>
+		<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+		<forcedMissRadius>1</forcedMissRadius>
+		<targetParams>
+			<canTargetPawns>true</canTargetPawns>
+			<canTargetBuildings>true</canTargetBuildings>
+			<canTargetSelf>false</canTargetSelf>
+			<canTargetLocations>true</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+  
+  <!-- Throwing Knife -->
+  
+    <ThingDef Class="AbilityUser.ProjectileDef_Ability" ParentName="BaseBullet">
+    <defName>Projectile_ThrowingKnife</defName>
+	<thingClass>TorannMagic.Projectile_Spinning</thingClass>
+    <label>Throwing Knife</label>
+	<graphicData>
+      <texPath>Spells/throwingknife</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+	  <flyOverhead>false</flyOverhead>
+      <damageDef>Cut</damageDef>
+      <damageAmountBase>14</damageAmountBase>
+      <speed>40</speed>
+    </projectile>
+  </ThingDef>
+  
+ <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_ThrowingKnife</defName>
+    <label>Throwing Knife</label>
+    <description>A ranged attack using a concealed throwing knife, designed to complement any equipped weapon system.</description>
+	<uiIconPath>UI/throwingknife</uiIconPath>
+    <staminaCost>0.30</staminaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+			<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>true</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_ThrowingKnife</defaultProjectile>
+		<abilityDef>TM_ThrowingKnife</abilityDef>
+        <warmupTime>.75</warmupTime>
+        <SecondsToRecharge>60</SecondsToRecharge>
+        <range>40</range>
+        <soundCast>TM_Woosh</soundCast>
+		<soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>0</muzzleFlashScale>
+        <isPrimary>true</isPrimary>
+		<isViolent>true</isViolent>
+		<burstShotCount>1</burstShotCount>
+		<targetParams>
+			<canTargetPawns>true</canTargetPawns>
+			<canTargetBuildings>false</canTargetBuildings>
+			<canTargetSelf>false</canTargetSelf>
+			<canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+  
+  <!-- Pommel Strike -->
+  
+ <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_PommelStrike</defName>
+    <label>Pommel Strike</label>
+    <description>A melee attack that delivers a non-lethal blow dealing minor damage and stunning the target for a short period. 
+	
+This ability can instantly down a target pawn; the more pain the target is in, the more likely the blow will knock down the target instead of stun.
+
+Autocast only triggers when the target has 80% or greater chance of being downed from this attack.</description>
+	<uiIconPath>UI/pommelstrike</uiIconPath>
+    <staminaCost>0.30</staminaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_PommelStrike</verbClass>
+			<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>true</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+		<abilityDef>TM_PommelStrike</abilityDef>
+        <warmupTime>.25</warmupTime>
+        <SecondsToRecharge>30</SecondsToRecharge>
+        <range>1.42</range>
+        <soundCast>MeleeHit_Wood</soundCast>
+        <muzzleFlashScale>0</muzzleFlashScale>
+        <isPrimary>true</isPrimary>
+		<isViolent>true</isViolent>
+		<burstShotCount>1</burstShotCount>
+		<targetParams>
+			<canTargetPawns>true</canTargetPawns>
+			<canTargetBuildings>false</canTargetBuildings>
+			<canTargetSelf>false</canTargetSelf>
+			<canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+  
+  <!-- Lightning Trap -->
+  <ThingDef ParentName="BaseBullet" Name="FlyingObject_LightningTrap">
+	   <defName>FlyingObject_LightningTrap</defName>
+	   <thingClass>TorannMagic.FlyingObject_LightningTrap</thingClass>
+	   <label>lightning</label>
+	   <graphicData>
+			<texPath>Spells/eyeofthestorm</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>(.25, .25)</drawSize>
+        </graphicData>
+        <projectile>
+            <flyOverhead>true</flyOverhead>
+            <damageDef>TM_Holy</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <speed>10</speed>
+        </projectile>
+	</ThingDef>
+  
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_LightningTrap</defName>
+    <label>Lightning Trap</label>
+    <description>Elemental lightning is charged inside a hardened arcane shell and placed as a trap. Arcane strands that activate the spell are extended around the trap and trigger when disturbed by enemies. Traps last indefinitely, but a mage is only able to sustain a single trap.</description>
+	<uiIconPath>UI/lightningtrap</uiIconPath>
+    <manaCost>0.40</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_LightningTrap</verbClass>
+			<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>true</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+		<abilityDef>TM_LightningTrap</abilityDef>
+        <warmupTime>0</warmupTime>
+        <SecondsToRecharge>15</SecondsToRecharge>
+        <range>70</range>
+        <soundCast>MeleeHit_Metal_Sharp</soundCast>
+        <muzzleFlashScale>0</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+		<isViolent>true</isViolent>
+		<burstShotCount>1</burstShotCount>
+		<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+		<targetParams>
+			<canTargetPawns>false</canTargetPawns>
+			<canTargetBuildings>false</canTargetBuildings>
+			<canTargetSelf>false</canTargetSelf>
+			<canTargetLocations>true</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+  
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_DismissLightningTrap</defName>
+    <label>Dismiss Lightning Trap</label>
+    <uiIconPath>UI/dismisslightningtrap</uiIconPath>
+    <description>Dismisses a lightning trap</description>
+    <manaCost>0.0</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_DismissLightningTrap</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+		<abilityDef>TM_DismissLightningTrap</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>4</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>0</range>
+		<isViolent>false</isViolent>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+      	 <canTargetPawns>true</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>true</canTargetSelf>
+		 <canTargetLocations>false</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+ 
+ <!-- invisibility -->	
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Invisibility</defName>
+        <label>Invisibility</label>
+        <uiIconPath>UI/invisibility</uiIconPath>
+        <description>Become invisible for 20 seconds. Any overt interaction will immediately break the spell. Clears caster from all hostile targeting.</description>
+        <manaCost>0.25</manaCost>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Invisibility</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_Invisibility</abilityDef>
+            <warmupTime>.5</warmupTime>
+            <SecondsToRecharge>300</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>4</muzzleFlashScale>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- briar patch -->
+	
+  <ThingDef Class="AbilityUser.ProjectileDef_Ability" ParentName="BaseBullet">
+    <defName>Projectile_BriarPatch</defName>
+	<thingClass>AbilityUser.Projectile_Ability</thingClass>
+    <label>briar patch</label>
+	<graphicData>
+      <texPath>Spells/invis</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+	  <flyOverhead>true</flyOverhead>
+      <damageDef>TM_Arcane</damageDef>
+      <damageAmountBase>0</damageAmountBase>
+      <speed>999</speed>
+	  <explosionRadius>6</explosionRadius>
+	  <postExplosionSpawnChance>1</postExplosionSpawnChance>
+    </projectile>
+  </ThingDef>
+  
+ <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_BriarPatch</defName>
+    <label>Briar Patch</label>
+    <description>Creates a hazard made of thorny vines. Any movement over the affected area will be slowed, and creatures moving through the briar patch may take minor damage.</description>
+	<uiIconPath>UI/briarpatch</uiIconPath>
+    <manaCost>0.35</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_BriarPatch</verbClass>
+			<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>true</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_BriarPatch</defaultProjectile>
+		<abilityDef>TM_BriarPatch</abilityDef>
+        <warmupTime>2</warmupTime>
+        <SecondsToRecharge>300</SecondsToRecharge>
+        <range>60</range>
+        <soundCast>TM_VibrationLow</soundCast>
+        <muzzleFlashScale>4</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+		<isViolent>false</isViolent>
+		<burstShotCount>1</burstShotCount>
+		<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+		<targetParams>
+			<canTargetPawns>false</canTargetPawns>
+			<canTargetBuildings>false</canTargetBuildings>
+			<canTargetSelf>false</canTargetSelf>
+			<canTargetLocations>true</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
 
 </Defs>

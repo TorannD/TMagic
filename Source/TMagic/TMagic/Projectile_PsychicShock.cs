@@ -57,8 +57,8 @@ namespace TorannMagic
                 this.arcaneDmg = comp.arcaneDmg * psychicEnergy;
                 if (settingsRef.AIHardMode && !pawn.IsColonist)
                 {
-                    pwrVal = 3;
-                    verVal = 3;
+                    pwrVal = 1;
+                    verVal = 1;
                 }
                 explosionCenters.Add(base.Position);
                 explosionRadii.Add(1);

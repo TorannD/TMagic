@@ -28,11 +28,63 @@ Document made by ChJees
 									<subNodes>
 										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
 											<maxDistance>100.0</maxDistance>
+											<minDistance>60.0</minDistance>
 											<subNodes>
-												<!-- Use long range AoE offensive abilities. -->
 												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
 													<tags>
-														<li>Building</li>
+														<li>Fireball</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>60.0</maxDistance>
+											<minDistance>40.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Firestorm</li>
+													</tags>
+												</li>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Fireball</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>40.0</maxDistance>
+											<minDistance>10.0</minDistance>
+											<subNodes>
+											<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Firestorm</li>
+													</tags>
+												</li>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Fireball</li>
+													</tags>
+												</li>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Firebolt</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>20</maxDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Fireclaw</li>
+													</tags>
+												</li>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Firebolt</li>
 													</tags>
 												</li>
 											</subNodes>
@@ -43,26 +95,54 @@ Document made by ChJees
 								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingRangedWeapon">
 									<subNodes>
 										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
-											<maxDistance>40.0</maxDistance>
+											<maxDistance>100.0</maxDistance>
+											<minDistance>60.0</minDistance>
 											<subNodes>
-												<!-- Use direct single abilities. -->
 												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
 													<tags>
-														<li>Offensive</li>
-														<li>Single</li>
+														<li>Fireball</li>
 													</tags>
 												</li>
 											</subNodes>
 										</li>
 										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
-											<maxDistance>100.0</maxDistance>
-											<minDistance>6.0</minDistance>
+											<maxDistance>60.0</maxDistance>
+											<minDistance>28.0</minDistance>
 											<subNodes>
-												<!-- Use long range AoE offensive abilities. -->
 												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
 													<tags>
-														<li>Offensive</li>
-														<li>Mass</li>
+														<li>Firestorm</li>
+													</tags>
+												</li>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Fireball</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>40.0</maxDistance>
+											<minDistance>24.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Fireball</li>
+													</tags>
+												</li>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Firebolt</li>
+													</tags>
+												</li>												
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>24</maxDistance>											
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Firebolt</li>
 													</tags>
 												</li>
 											</subNodes>
@@ -72,43 +152,60 @@ Document made by ChJees
 								<!-- Using melee weapon, agressive ability use. -->
 								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingMeleeWeapon">
 									<subNodes>
-										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
-											<maxDistance>38.0</maxDistance>
-											<minDistance>6.0</minDistance>
+									<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>18.0</maxDistance>
+											<minDistance>3.0</minDistance>
 											<subNodes>
+												<!-- Use direct damage single target abilities. -->
 												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
 													<tags>
-														<li>Offensive</li>
-														<li>MeleeOnly</li>
+														<li>Fireclaw</li>
+													</tags>
+												</li>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Firebolt</li>
+													</tags>
+												</li>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Fireball</li>
 													</tags>
 												</li>
 											</subNodes>
 										</li>
 										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
 											<maxDistance>40.0</maxDistance>
+											<minDistance>18.0</minDistance>
 											<subNodes>
-												<!-- Use direct damage single target abilities. -->
 												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
 													<tags>
-														<li>Offensive</li>
-														<li>Single</li>
+														<li>Fireball</li>
 													</tags>
 												</li>
-											</subNodes>
-										</li>										
-										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
-											<maxDistance>100.0</maxDistance>
-											<minDistance>6.0</minDistance>
-											<subNodes>
-												<!-- Use long range AoE offensive abilities. -->
 												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
 													<tags>
-														<li>Offensive</li>
-														<li>Mass</li>
+														<li>Firebolt</li>
 													</tags>
 												</li>
 											</subNodes>
 										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>60.0</maxDistance>
+											<minDistance>40.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Fireball</li>
+													</tags>
+												</li>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Firestorm</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>										
 									</subNodes>
 								</li>
 							</subNodes>
@@ -156,37 +253,30 @@ Document made by ChJees
 		<power>1.0</power>
 		<needSeeingTarget>true</needSeeingTarget>
 		<tags>
-			<li>Offensive</li>
-			<li>Single</li>
-			<li>Building</li>
+			<li>Firebolt</li>
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
 	
 	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
 		<defName>TMagic_Fireball</defName>
 		<ability>TM_Fireball</ability>
-		<abilityRadius>4</abilityRadius>
 		<power>25.0</power>
+		<minRange>6.0</minRange>
 		<maxRange>80.0</maxRange>
 		<needSeeingTarget>true</needSeeingTarget>
 		<tags>
-			<li>Offensive</li>
-			<li>Mass</li>
-			<li>Building</li>
+			<li>Fireball</li>
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
 	
 	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
 		<defName>TMagic_Fireclaw</defName>
 		<ability>TM_Fireclaw</ability>
-		<abilityRadius>1</abilityRadius>
-		<minRange>6.0</minRange>
-		<power>1.5</power>
+		<minRange>3.0</minRange>
+		<power>5</power>
 		<needSeeingTarget>true</needSeeingTarget>
 		<tags>
-			<li>Offensive</li>
-			<li>MeleeOnly</li>
-			<li>Single</li>
+			<li>Fireclaw</li>
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
 	
@@ -205,15 +295,12 @@ Document made by ChJees
 	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
 		<defName>TMagic_Firestorm</defName>
 		<ability>TM_Firestorm</ability>
-		<abilityRadius>5</abilityRadius>
 		<power>50.0</power>
 		<minRange>10.0</minRange>
 		<maxRange>55.0</maxRange>
 		<needSeeingTarget>true</needSeeingTarget>
 		<tags>
-			<li>Offensive</li>
-			<li>Mass</li>
-			<li>Building</li>
+			<li>Firestorm</li>
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
 	
@@ -347,7 +434,7 @@ Document made by ChJees
 	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
 		<defName>TMagic_Icebolt</defName>
 		<ability>TM_Icebolt</ability>		
-		<power>1.0</power>
+		<power>1.5</power>
 		<maxRange>36.0</maxRange>
 		<minRange>5.0</minRange>
 		<needSeeingTarget>true</needSeeingTarget>
@@ -530,7 +617,7 @@ Document made by ChJees
 	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
 		<defName>TMagic_LightningBolt</defName>
 		<ability>TM_LightningBolt</ability>		
-		<power>1.0</power>
+		<power>2.0</power>
 		<needSeeingTarget>true</needSeeingTarget>
 		<tags>
 			<li>Offensive</li>
@@ -1609,21 +1696,27 @@ Document made by ChJees
 											</tags>
 										</li>
 									</subNodes>
+								</li>
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+									<maxDistance>48.0</maxDistance>
+									<minDistance>30</minDistance>
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+											<tags>
+												<li>Dominate</li>
+											</tags>
+										</li>
+									</subNodes>
 								</li>								
 								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
 									<maxDistance>38.0</maxDistance>
-									<minDistance>6.0</minDistance>
+									<minDistance>20.0</minDistance>
 									<subNodes>
 										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
 											<tags>
 												<li>ShadowBolt</li>
 											</tags>
 										</li>
-									</subNodes>
-								</li>
-								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
-									<maxDistance>30.0</maxDistance>
-									<subNodes>
 										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
 											<tags>
 												<li>Repulsion</li>
@@ -1632,15 +1725,21 @@ Document made by ChJees
 									</subNodes>
 								</li>
 								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
-									<maxDistance>48.0</maxDistance>
+									<maxDistance>26.0</maxDistance>
+									<minDistance>5.0</minDistance>
 									<subNodes>
 										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
 											<tags>
-												<li>Dominate</li>
+												<li>Repulsion</li>
+											</tags>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+											<tags>
+												<li>ShadowBolt</li>
 											</tags>
 										</li>
 									</subNodes>
-								</li>																	
+								</li>																									
 							</subNodes>
 						</li>
 					</subNodes>
@@ -1678,7 +1777,7 @@ Document made by ChJees
 	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
 		<defName>TMagic_Dominate</defName>
 		<ability>TM_Dominate</ability>
-		<power>2.0</power>
+		<power>4.0</power>
 		<needSeeingTarget>true</needSeeingTarget>
 		<tags>
 			<li>Dominate</li>
@@ -1742,24 +1841,19 @@ Document made by ChJees
 											</tags>
 										</li>
 									</subNodes>
-								</li>						
-								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
-									<maxDistance>38.0</maxDistance>
-									<minDistance>6.0</minDistance>
-									<subNodes>
-										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
-											<tags>
-												<li>ShadowBolt</li>
-											</tags>
-										</li>
-									</subNodes>
-								</li>
+								</li>								
 								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
 									<maxDistance>48.0</maxDistance>
+									<minDistance>30.0</minDistance>
 									<subNodes>
 										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
 											<tags>
 												<li>Dominate</li>
+											</tags>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+											<tags>
+												<li>ShadowBolt</li>
 											</tags>
 										</li>
 									</subNodes>
@@ -1773,7 +1867,34 @@ Document made by ChJees
 											</tags>
 										</li>
 									</subNodes>
+								</li>	
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+									<maxDistance>70.0</maxDistance>
+									<minDistance>45.0</minDistance>
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+											<tags>
+												<li>Scorn</li>
+											</tags>
+										</li>
+									</subNodes>
 								</li>								
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+									<maxDistance>38.0</maxDistance>
+									<minDistance>6.0</minDistance>
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+											<tags>
+												<li>ShadowBolt</li>
+											</tags>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+											<tags>
+												<li>Dominate</li>
+											</tags>
+										</li>
+									</subNodes>
+								</li>																
 							</subNodes>
 						</li>
 					</subNodes>

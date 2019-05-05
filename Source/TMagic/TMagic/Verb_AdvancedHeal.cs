@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
+using Harmony;
 using System.Linq;
 using AbilityUser;
 using Verse;
+using RimWorld;
 
 namespace TorannMagic
 {
@@ -94,12 +97,27 @@ namespace TorannMagic
                                         }
                                         else
                                         {
-                                            current.Heal((8.0f + (float)pwrVal * 5f)*comp.arcaneDmg); // power affects how much to heal
+                                            current.Heal((14.0f + (float)pwrVal * 3f)*comp.arcaneDmg); // power affects how much to heal
                                         }
                                         TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, 1f+.2f*pwrVal);
                                         TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .8f+.1f*pwrVal);
                                         num--;
                                         num2--;
+                                    }
+                                }
+                            }
+                            using (IEnumerator<Hediff> enumerator1 = pawn.health.hediffSet.GetHediffsTendable().GetEnumerator())
+                            {
+                                while (enumerator1.MoveNext())
+                                {
+                                    if (num > 0)
+                                    {
+                                        Hediff rec1 = enumerator1.Current;
+                                        if (rec1.TendableNow() && rec1.Bleeding && rec1 is Hediff_MissingPart)
+                                        {
+                                            Traverse.Create(root: rec1).Field(name: "isFreshInt").SetValue(false);
+                                            num--;
+                                        }
                                     }
                                 }
                             }

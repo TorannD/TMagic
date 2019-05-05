@@ -133,7 +133,10 @@
 <TM_CannotMimicBloodMage>{0} cannot mimic the abilities of a blood mage</TM_CannotMimicBloodMage>
 <TM_ViolentCannotEquip>{0} is capable of violence and cannot equip {1}</TM_ViolentCannotEquip>
 <TM_TraitorOrbRecruit>{0} has successfully convicted {1} to join your cause using the Orb of the Traitor.\n\nThe use of vile magic against {2} has angered {3} and reduced your standing with them by {4} by {5}.</TM_TraitorOrbRecruit>
-
+<TM_InsufficientManaForJob>Not enough mana to start job: need 50, have {0}</TM_InsufficientManaForJob>
+<TM_NoTraitsApplied>Unable to apply any traits to {0}, the Orb of Souls can only apply traits that do not conflict with pre-existing traits.</TM_NoTraitsApplied>
+<TM_NothingEnchanted>{0} was unable to improve the enchantments on {1} using a {2}</TM_NothingEnchanted>
+<TM_Taunting>Taunting!</TM_Taunting>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
@@ -171,7 +174,9 @@
 <showLevelUpMessage>Show level up messages</showLevelUpMessage>
 <showUndeadPawnChange>Change undead pawn appearance</showUndeadPawnChange>
 <showUndeadAnimalChange>Change undead animal appearance</showUndeadAnimalChange>
-<unrestrictedBloodTypesForBloodMagic>Unrestricted blood types for blood magic</unrestrictedBloodTypesForBloodMagic>
+<unrestrictedBloodTypesForBloodMagic>Unrestricted blood types for blood magic</unrestrictedBloodTypesForBloodMagic>
+<showClassIconOnColonistBar>Show class icon on colonist bar</showClassIconOnColonistBar>
+<TM_AggressiveAICasting>Aggressive AI Casting</TM_AggressiveAICasting>
 
 <!-- Mod Settings Class options -->
 
@@ -342,7 +347,7 @@ Allows the portal to be held open 20s longer per level.</TM_Teleport_ver_desc>
 <TM_FoldReality_eff>Fold Reality Efficiency</TM_FoldReality_eff>
 
 <TM_Heal_eff_desc>Decreases mana cost of Heal by 7% of base mana cost.</TM_Heal_eff_desc>
-<TM_Heal_pwr_desc>Increases the amount each wound is healed by 3 points per level.</TM_Heal_pwr_desc>
+<TM_Heal_pwr_desc>Increases the amount each wound is healed by 2 points per level.</TM_Heal_pwr_desc>
 <TM_Heal_ver_desc>Increases the maximum number of wounds that can be healed per spell by 1 per level.</TM_Heal_ver_desc>
 <TM_Shield_eff_desc>Decreases mana cost of Shield by 8% of base mana cost.</TM_Shield_eff_desc>
 <TM_ValiantCharge_eff_desc>Decreases mana cost of Valiant Charge by 8% of base mana cost.</TM_ValiantCharge_eff_desc>
@@ -423,7 +428,7 @@ Level 3: (40%-80%), Duration 58.5s</TM_Poison_ver_desc>
 <TM_SootheAnimal_eff_desc>Reduces the cost of Beguile Animal by 8% per skill level.</TM_SootheAnimal_eff_desc>
 <TM_SootheAnimal_pwr_desc>Animals will receive arcane buffs when enraged, and arcane debuffs when pacified.  Skill level determines the strength of these modifiers, no modifiers occur at skill level 0.</TM_SootheAnimal_pwr_desc>
 <TM_Regenerate_eff_desc>Reduces the cost of Regeneration by 7% per skill level.</TM_Regenerate_eff_desc>
-<TM_Regenerate_pwr_desc>Increases the amount regeneration heals each tick by 1 health per level.  Base regeneration is 2 health.</TM_Regenerate_pwr_desc>
+<TM_Regenerate_pwr_desc>Increases the amount regeneration heals each tick by .5 health per level.  Base regeneration is 4 health.</TM_Regenerate_pwr_desc>
 <TM_Regenerate_ver_desc>Increases the duration of regeneration per skill level, duration is random between stated values:
 Level 0: 16s - 50s
 Level 1: 33s - 100s
@@ -514,7 +519,7 @@ Level 3: 33-50; Spreading Darkness: 21-33</TM_DeathBolt_pwr_desc>
 
 <TM_AdvancedHeal_eff_desc>Reduces mana cost of Advanced Heal by 8% per level.</TM_AdvancedHeal_eff_desc>
 <TM_AdvancedHeal_ver_desc>Increases the maximum number of wounds healed by 1 per level.</TM_AdvancedHeal_ver_desc>
-<TM_AdvancedHeal_pwr_desc>Increases the amount each wound is healed by 5 points per level.</TM_AdvancedHeal_pwr_desc>
+<TM_AdvancedHeal_pwr_desc>Increases the amount each wound is healed by 3 points per level.</TM_AdvancedHeal_pwr_desc>
 <TM_Purify_eff_desc>Reduces the mana cost of Purify by 7% per level.</TM_Purify_eff_desc>
 <TM_Purify_ver_desc>Increases number of ailments that can be cured per use. Skill increase expands the types of ailments that can be purified:
 Level 0: 
@@ -540,11 +545,11 @@ Level 1: 2 injuries
 Level 2: 3 injuries
 Level 3: 4 injuries</TM_HealingCircle_ver_desc>
 <TM_HealingCircle_pwr_desc>Increases amount each wound is healed. Also increases the duration of Healing Circle by 3s per skill point.
-Level 0: 4.8 health
-Level 1: 7.2 health
-Level 2: 9.6 health
-Level 3: 12 health
-Level 4: 14.4 health</TM_HealingCircle_pwr_desc>
+Level 0: 10 health
+Level 1: 12 health
+Level 2: 14 health
+Level 3: 16 health
+Level 4: 18 health</TM_HealingCircle_pwr_desc>
 <TM_BestowMight_eff_desc>Reduces mana cost of Bestow Might by 8% per skill point.</TM_BestowMight_eff_desc>
 <TM_Resurrection_eff_desc>Reduces mana cost of Resurrection by 5% per skill level.</TM_Resurrection_eff_desc>
 <TM_Resurrection_ver_desc>Increases the chance to prevent resurrection side effects such as blindness and psychosis by 33% per level.  Base chance is 0%.</TM_Resurrection_ver_desc>
@@ -623,8 +628,10 @@ Level 1: 20%
 Level 2: 40%
 Level 3: 60%</TM_Repulsion_ver_desc>
 <TM_Scorn_eff_desc>Reduces mana cost of Scorn by 6% per skill point.</TM_Scorn_eff_desc>
-<TM_Scorn_ver_desc>Increases impact radius of Scorn by 1cell per skill point. Base 7 cell radius.</TM_Scorn_ver_desc>
-<TM_Scorn_pwr_desc>Increases the damage of Scorn by 15% per skill level.</TM_Scorn_pwr_desc>
+<TM_Scorn_ver_desc>Increases impact radius of Scorn by 1cell per skill point. Base 7 cell radius. 
+Also increases the power of the partial demonic transformation.</TM_Scorn_ver_desc>
+<TM_Scorn_pwr_desc>Increases the damage of Scorn by 15% per skill level. 
+Also increases the power of the demonic damage shield by 25%. Base shield absorbs 60 damage.</TM_Scorn_pwr_desc>
 <TM_PsychicShock_eff_desc>Reduces mana cost of Psychic Shock by 6% per skill point.</TM_PsychicShock_eff_desc>
 <TM_PsychicShock_ver_desc>Increases the radius of Psychic Shock and any secondary pulses by 1cell. Base radius is 6.</TM_PsychicShock_ver_desc>
 <TM_PsychicShock_pwr_desc>Increases the damage of psychic assault by 1 point per skill level.</TM_PsychicShock_pwr_desc>
@@ -1246,7 +1253,7 @@ Base amount: 0%</TM_LifeSteal_ver_desc>
 <TM_PsionicBarrierMaintenanceCost></TM_PsionicBarrierMaintenanceCost>
 <TM_PsionicBarrierConversionRate></TM_PsionicBarrierConversionRate>
 <TM_Replicate>Replication Scan</TM_Replicate>
-<TM_ReplicateDesc>The Arcane Forge is capable of scanning a single item and replicating its design. If successful, the forge stores the design blueprints of the scanned item and the item can then be crafted at the forge./n/nReplicated items require the same material as the standard item to craft, but any research requirements or crafting skill requirements are bypassed. All replicated items require a high intelligence to reproduce and the forge can only be operated by a mage./n/n*Admin note: the forge can perform scans at no cost, but the active design is replaced by the default recipe if the game is reloaded.</TM_ReplicateDesc>
+<TM_ReplicateDesc>The Arcane Forge is capable of scanning a single item and replicating its design. If successful, the forge stores the design blueprints of the scanned item and the item can then be crafted at the forge.\n\nReplicated items require the same material as the standard item to craft, but any research requirements or crafting skill requirements are bypassed. All replicated items require a high intelligence to reproduce and the forge can only be operated by a mage.\n\n*Admin note: the forge can perform scans at no cost, but the active design is replaced by the default recipe if the game is reloaded.\n\nReplication has no use limit, but is benefits most when used to create items you do not have the research to create, to alter the crafting requirements, to take advantage of the dramatically increased crafting speed of the arcane forge or to benefit from the quality bonus when operated by a high level mage.</TM_ReplicateDesc>
 <TM_ReplicateDisabled>Replication Disabled</TM_ReplicateDisabled>
 <TM_ReplicateDisabledDesc>Clear bills related to replication and allow a new replication.</TM_ReplicateDisabledDesc>
 

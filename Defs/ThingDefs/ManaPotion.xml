@@ -82,7 +82,7 @@
         <minToleranceToAddict>0.3</minToleranceToAddict>
         <existingAddictionSeverityOffset>0.10</existingAddictionSeverityOffset>
         <needLevelOffset>1</needLevelOffset>
-        <isCombatEnhancingDrug>true</isCombatEnhancingDrug>
+        <isCombatEnhancingDrug>false</isCombatEnhancingDrug>
         <listOrder>200</listOrder>
         <overdoseSeverityOffset>
           <min>0.18</min>

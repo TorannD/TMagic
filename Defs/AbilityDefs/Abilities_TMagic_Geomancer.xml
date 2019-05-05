@@ -346,6 +346,7 @@ In exchange for their efforts, earth sprites expect a steady and substantial sup
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_Geomancer</defaultProjectile>
             <abilityDef>TM_EarthSprites</abilityDef>
             <warmupTime>5</warmupTime>

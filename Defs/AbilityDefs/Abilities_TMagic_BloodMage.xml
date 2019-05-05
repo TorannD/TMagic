@@ -12,7 +12,7 @@
 Blood mages can slowly generate blood magic power from open, bleeding wounds without the use of mana, and can also train to use fresh, exposed blood near them to fuel blood magic.
 
 A blood mage will slowly lose blood magic power when they are no longer bleeding.</description>
-    <manaCost>0.15</manaCost>
+    <manaCost>0.20</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_BloodGift</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -100,7 +100,7 @@ A blood mage will slowly lose blood magic power when they are no longer bleeding
         <uiIconPath>UI/bloodforblood</uiIconPath>
         <description>Curses a targets blood to heat and accelerate until it seeps from every pore of its victim. This curse has several affects. 
 
-The blood that's expelled from the target becomes a mist that the caster absorbs as restorative energy, and uses it to mend the their wounds and replenish their blood reserves.
+The blood that's expelled from the target becomes a mist that the caster absorbs as restorative energy and uses it to mend wounds and replenish blood reserves. This ability will slowly heal scars and other permanent injuries of the caster.
 
 The wounds and injuries of a target will also be healed as the blood exits their body. The target loses a portion of their blood each pulse and, like any wound, can result in incapacitation or death if they lose too much blood.
 
@@ -187,7 +187,7 @@ Range: 35
 Radius: 3
 Max Targets: 2
 Cooldown: 120
-Cast Time: 2.4s</description>
+Cast Time: 1.5s</description>
 		<bloodCost>0.40</bloodCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Rend</verbClass>
@@ -198,7 +198,7 @@ Cast Time: 2.4s</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_Rend</abilityDef>
-            <warmupTime>2.4</warmupTime>
+            <warmupTime>1.5</warmupTime>
             <SecondsToRecharge>120.0</SecondsToRecharge>
             <range>35</range>
             <burstShotCount>1</burstShotCount>
@@ -236,7 +236,7 @@ Range: 37
 Radius: 3
 Max Targets: 3
 Cooldown: 110
-Cast Time: 2.2s</description>
+Cast Time: 1.3s</description>
 		<bloodCost>0.40</bloodCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Rend</verbClass>
@@ -247,7 +247,7 @@ Cast Time: 2.2s</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_Rend_I</abilityDef>
-            <warmupTime>2.2</warmupTime>
+            <warmupTime>1.3</warmupTime>
             <SecondsToRecharge>110.0</SecondsToRecharge>
             <range>37</range>
             <burstShotCount>1</burstShotCount>
@@ -285,7 +285,7 @@ Range: 39
 Radius: 3.8
 Max Targets: 4
 Cooldown: 100
-Cast Time: 2s</description>
+Cast Time: 1.1s</description>
 		<bloodCost>0.40</bloodCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Rend</verbClass>
@@ -296,7 +296,7 @@ Cast Time: 2s</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_Rend_II</abilityDef>
-            <warmupTime>2</warmupTime>
+            <warmupTime>1.1</warmupTime>
             <SecondsToRecharge>100.0</SecondsToRecharge>
             <range>39</range>
             <burstShotCount>1</burstShotCount>
@@ -334,7 +334,7 @@ Range: 41
 Radius: 4
 Max Targets: 5
 Cooldown: 90
-Cast Time: 1.8s</description>
+Cast Time: 1s</description>
 		<bloodCost>0.40</bloodCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Rend</verbClass>
@@ -345,7 +345,7 @@ Cast Time: 1.8s</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_Rend_III</abilityDef>
-            <warmupTime>1.8</warmupTime>
+            <warmupTime>1</warmupTime>
             <SecondsToRecharge>90.0</SecondsToRecharge>
             <range>41</range>
             <burstShotCount>1</burstShotCount>

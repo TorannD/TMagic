@@ -159,7 +159,7 @@ namespace TorannMagic
                 }
                 if(pawn != null && TM_Calc.IsUndead(pawn))
                 {
-                    TM_Action.DamageUndead(pawn, (6.0f + (float)pwrVal * 3f) * this.arcaneDmg, this.launcher);
+                    TM_Action.DamageUndead(pawn, (10.0f + (float)pwrVal * 3f) * this.arcaneDmg, this.launcher);
                 }
             }
         }
@@ -197,7 +197,7 @@ namespace TorannMagic
                                         //current.Heal((float)((int)current.Severity + 1));
                                         if (Rand.Chance(.8f))
                                         {
-                                            current.Heal((6.0f + (float)pwrVal * 3f) * this.arcaneDmg); // power affects how much to heal
+                                            current.Heal((10.0f + (float)pwrVal * 2f) * this.arcaneDmg); // power affects how much to heal
                                             TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, 1.2f);
                                         }
                                         num--;

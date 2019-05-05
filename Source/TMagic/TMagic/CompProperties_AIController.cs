@@ -15,6 +15,8 @@ namespace TorannMagic
         public int aoeCooldownTicks = 0;
         public int knockbackCooldownTicks = 0;
         public int chargeCooldownTicks = 0;
+        public int tauntCooldownTicks = 0;
+        public float tauntChance = 1f;
 
         //public int rangedWarmupTicks = 0;
         //public int aoeWarmupTicks = 0;

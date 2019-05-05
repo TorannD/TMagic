@@ -13,6 +13,46 @@ namespace TorannMagic
 {
     public static class TM_Action
     {
+        public static class TM_Toils
+        {
+            public static void GotoAndWait(Pawn pawn, LocalTargetInfo target, int durationTicks)
+            {
+                if(pawn != null && target != null)
+                {
+                    if (pawn.drafter != null && !pawn.Drafted && pawn.GetPosture() == PawnPosture.Standing && pawn.jobs != null && pawn.CurJob != null && !pawn.CurJob.playerForced)
+                    {
+                        Job job = new Job(TorannMagicDefOf.JobDriver_TM_GotoAndWait, target, durationTicks, false);
+                        pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                    }
+                }
+            }
+
+            public static void SendPawnTo(Pawn pawn, LocalTargetInfo target)
+            {
+                if (pawn != null && target != null)
+                {
+                    if (pawn.drafter != null && !pawn.Drafted && pawn.GetPosture() == PawnPosture.Standing && pawn.jobs != null && pawn.CurJob != null && !pawn.CurJob.playerForced)
+                    {
+                        Job job = new Job(JobDefOf.Goto, target);
+                        pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                    }
+                }                
+            }
+
+            public static void PawnWait(Pawn pawn, int duration)
+            {
+                duration *= 60; //seconds to ticks
+                if (pawn != null)
+                {
+                    if (pawn.drafter != null && !pawn.Drafted && pawn.GetPosture() == PawnPosture.Standing && pawn.jobs != null && pawn.CurJob != null && !pawn.CurJob.playerForced)
+                    {
+                        Job job = new Job(JobDefOf.Wait);
+                        job.expiryInterval = duration;
+                        pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                    }
+                }
+            }
+        }
 
         public static void DoMeleeReversal(DamageInfo dinfo, Pawn reflectingPawn)
         {
@@ -530,7 +570,7 @@ namespace TorannMagic
 
         public static void DamageUndead(Pawn undead, float amt, Thing instigator)
         {
-            DamageInfo dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Holy, Rand.Range(amt*.8f, amt*1.2f), 1, -1, instigator);
+            DamageInfo dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Holy, Rand.Range(amt*1f, amt*1.4f), 1, -1, instigator);
             for (int i =0; i <4; i++)
             {
                 if (undead != null && !undead.Destroyed && !undead.Dead)

@@ -124,7 +124,7 @@ namespace TorannMagic
                                                 }
                                                 else
                                                 {
-                                                    current.Heal(2f + (1f * hediffPwr));
+                                                    current.Heal(4f + (.5f * hediffPwr));
                                                 }
                                                 num--;
                                                 num2--;

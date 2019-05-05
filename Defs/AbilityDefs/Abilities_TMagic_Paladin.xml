@@ -27,7 +27,7 @@
     <defName>TM_Heal</defName>
     <label>Heal</label>
     <uiIconPath>UI/Heal</uiIconPath>
-    <description>Invokes a divine power to heal the wounds of a target.</description>
+    <description>Invokes holy power to heal the wounds of a target. Base heal restores 8 health for up to 3 wounds. Cannot heal injuries of missing bodyparts.</description>
     <manaCost>0.15</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Heal</verbClass>
@@ -330,7 +330,7 @@ Reduces recharge to 18s.</description>
     <defName>TM_Overwhelm</defName>
     <label>Overwhelm</label>
     <uiIconPath>UI/overwhelm</uiIconPath>
-    <description>Divine power is unleashed from the paladin, overwhelming the physical and mental senses of any nearby creatures.</description>
+    <description>Holy power is unleashed from the paladin, overwhelming the physical and mental senses of any nearby creatures.</description>
     <manaCost>0.20</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>AbilityUser.Verb_UseAbility</verbClass>

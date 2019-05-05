@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
 <Defs>
 
   <!--============= Misc jobs ===============-->
@@ -6,21 +7,28 @@
   <JobDef>
     <defName>PlacePoisonTrap</defName>
     <driverClass>TorannMagic.JobDriver_PlacePoisonTrap</driverClass>
-    <reportString>placing poison trap.</reportString>
+    <reportString>placing poison trap</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  
+  <JobDef>
+    <defName>JobDriver_PlaceLightningTrap</defName>
+    <driverClass>TorannMagic.JobDriver_PlaceLightningTrap</driverClass>
+    <reportString>placing lightning trap</reportString>
     <casualInterruptible>false</casualInterruptible>
   </JobDef>
   
   <JobDef>
     <defName>JobDriver_SleepNow</defName>
     <driverClass>TorannMagic.JobDriver_SleepNow</driverClass>
-    <reportString>sleeping (lullaby).</reportString>
+    <reportString>sleeping (lullaby)</reportString>
     <casualInterruptible>false</casualInterruptible>
   </JobDef>
   
   <JobDef>
     <defName>JobDriver_Entertain</defName>
     <driverClass>TorannMagic.JobDriver_Entertain</driverClass>
-    <reportString>entertaining.</reportString>
+    <reportString>entertaining</reportString>
     <casualInterruptible>false</casualInterruptible>
   </JobDef>
   
@@ -49,6 +57,13 @@
     <defName>JobDriver_TM_Teach</defName>
     <driverClass>TorannMagic.JobDriver_Teach</driverClass>
     <reportString>training and mentoring</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  
+    <JobDef>
+    <defName>JobDriver_TM_GotoAndWait</defName>
+    <driverClass>TorannMagic.JobDriver_TM_GotoAndWait</driverClass>
+    <reportString>waiting at location</reportString>
     <casualInterruptible>false</casualInterruptible>
   </JobDef>
   

@@ -41,6 +41,7 @@ Pain:		-20%</description>
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Buff_AMP</defaultProjectile>
             <abilityDef>TM_AMP</abilityDef>
             <warmupTime>2</warmupTime>
@@ -95,6 +96,7 @@ Pain:		-20%</description>
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Buff_AMP</defaultProjectile>
             <abilityDef>TM_AMP_I</abilityDef>
             <warmupTime>4</warmupTime>
@@ -149,6 +151,7 @@ Pain:		-30%</description>
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Buff_AMP</defaultProjectile>
             <abilityDef>TM_AMP_II</abilityDef>
             <warmupTime>4</warmupTime>
@@ -203,6 +206,7 @@ Pain:		-40%</description>
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Buff_AMP</defaultProjectile>
             <abilityDef>TM_AMP_III</abilityDef>
             <warmupTime>4</warmupTime>
@@ -283,6 +287,7 @@ Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again t
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Buff_Shadow</defaultProjectile>
             <abilityDef>TM_Shadow</abilityDef>
             <warmupTime>6</warmupTime>
@@ -328,6 +333,7 @@ Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again t
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Buff_Shadow</defaultProjectile>
             <abilityDef>TM_Shadow_I</abilityDef>
             <warmupTime>5</warmupTime>
@@ -374,6 +380,7 @@ Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again t
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Buff_Shadow</defaultProjectile>
             <abilityDef>TM_Shadow_II</abilityDef>
             <warmupTime>4</warmupTime>
@@ -420,6 +427,7 @@ Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again t
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Buff_Shadow</defaultProjectile>
             <abilityDef>TM_Shadow_III</abilityDef>
             <warmupTime>3</warmupTime>
@@ -488,6 +496,7 @@ Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again t
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Buff_Soothe</defaultProjectile>
             <abilityDef>TM_Soothe</abilityDef>
             <warmupTime>6</warmupTime>
@@ -534,6 +543,7 @@ Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again t
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Buff_Soothe</defaultProjectile>
             <abilityDef>TM_Soothe_I</abilityDef>
             <warmupTime>5</warmupTime>
@@ -580,6 +590,7 @@ Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again t
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Buff_Soothe</defaultProjectile>
             <abilityDef>TM_Soothe_II</abilityDef>
             <warmupTime>4</warmupTime>
@@ -626,6 +637,7 @@ Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again t
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_Soothe_III</abilityDef>
             <warmupTime>3</warmupTime>
@@ -694,6 +706,7 @@ Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again t
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_RayofHope</abilityDef>
             <warmupTime>6</warmupTime>
@@ -739,6 +752,7 @@ Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again t
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Buff_RayofHope</defaultProjectile>
             <abilityDef>TM_RayofHope_I</abilityDef>
             <warmupTime>5</warmupTime>
@@ -784,6 +798,7 @@ Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again t
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_RayofHope_II</abilityDef>
             <warmupTime>4</warmupTime>
@@ -829,6 +844,7 @@ Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again t
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Buff_RayofHope</defaultProjectile>
             <abilityDef>TM_RayofHope_III</abilityDef>
             <warmupTime>3</warmupTime>
@@ -1912,6 +1928,7 @@ Range: 50</description>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Blink</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_Blink</defaultProjectile>
             <abilityDef>TM_Blink_I</abilityDef>
             <AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
@@ -1943,6 +1960,7 @@ Range: 70</description>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Blink</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_Blink</defaultProjectile>
             <abilityDef>TM_Blink_II</abilityDef>
             <AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
@@ -1974,6 +1992,7 @@ Range: 90</description>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Blink</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_Blink</defaultProjectile>
             <abilityDef>TM_Blink_III</abilityDef>
             <AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
@@ -2031,6 +2050,7 @@ Range: 70</description>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Summon</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_Summon</defaultProjectile>
             <abilityDef>TM_Summon</abilityDef>
             <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
@@ -2065,6 +2085,7 @@ Range: 80</description>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Summon</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_Summon</defaultProjectile>
             <abilityDef>TM_Summon_I</abilityDef>
             <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
@@ -2099,6 +2120,7 @@ Range: 90</description>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Summon</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_Summon</defaultProjectile>
             <abilityDef>TM_Summon_II</abilityDef>
             <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
@@ -2133,6 +2155,7 @@ Range: 100</description>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Summon</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_Summon</defaultProjectile>
             <abilityDef>TM_Summon_III</abilityDef>
             <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
@@ -2288,6 +2311,7 @@ Range: 100</description>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Effect_EyeOfTheStorm</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_EyeOfTheStorm</defaultProjectile>
             <abilityDef>TM_EyeOfTheStorm</abilityDef>
             <AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
@@ -2339,6 +2363,7 @@ Range: 100</description>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_FoldReality</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_FoldReality</defaultProjectile>
             <abilityDef>TM_FoldReality</abilityDef>
             <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>

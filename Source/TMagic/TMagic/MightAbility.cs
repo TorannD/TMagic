@@ -68,15 +68,31 @@ namespace TorannMagic
 
         public override void PostAbilityAttempt()  
         {
-            base.PostAbilityAttempt();
+            //base.PostAbilityAttempt();
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            if (!this.Pawn.IsColonist && settingsRef.AIAggressiveCasting)// for AI
+            {
+                this.CooldownTicksLeft = Mathf.RoundToInt(this.MaxCastingTicks/2f);
+            }
+            else
+            {
+                this.CooldownTicksLeft = this.MaxCastingTicks;
+            }
             bool flag = this.mightDef != null;
             if (flag)
             {
                 bool flag3 = this.MightUser.Stamina != null;
                 if (flag3)
                 {
-                    ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                    this.MightUser.Stamina.UseMightPower(this.MightUser.ActualStaminaCost(mightDef));
+                    if (!this.Pawn.IsColonist && settingsRef.AIAggressiveCasting)// for AI
+                    {
+                        this.MightUser.Stamina.UseMightPower(this.MightUser.ActualStaminaCost(mightDef) / 2f);
+                    }
+                    else
+                    {
+                        this.MightUser.Stamina.UseMightPower(this.MightUser.ActualStaminaCost(mightDef));
+                    }
+                    
                     this.MightUser.MightUserXP += (int)((mightDef.staminaCost * 180) * this.MightUser.xpGain * settingsRef.xpMultiplier);
                     
                 }
@@ -311,6 +327,7 @@ namespace TorannMagic
                         this.mightDef.defName == "TM_ArrowStorm" || this.mightDef.defName == "TM_ArrowStorm_I" || this.mightDef.defName == "TM_ArrowStorm_II" || this.mightDef.defName == "TM_ArrowStorm_III" ||
                         this.mightDef.defName == "TM_PsionicStorm" ||
                         this.mightDef.defName == "TM_PsionicBlast" || this.mightDef.defName == "TM_PsionicBlast_I" || this.mightDef.defName == "TM_PsionicBlast_II" || this.mightDef.defName == "TM_PsionicBlast_III" || 
+                        this.mightDef == TorannMagicDefOf.TM_ThrowingKnife ||
                         this.mightDef.defName == "TM_Mimic"))
                     {
                         reason = "TM_ShieldBlockingPowers".Translate(

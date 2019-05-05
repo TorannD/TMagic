@@ -577,6 +577,7 @@ Cast time: 2s</description>
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_CorpseExplosion</defaultProjectile>
             <abilityDef>TM_CorpseExplosion</abilityDef>
             <warmupTime>2</warmupTime>
@@ -616,6 +617,7 @@ Cast time: 1.5s</description>
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_CorpseExplosion</defaultProjectile>
             <abilityDef>TM_CorpseExplosion_I</abilityDef>
             <warmupTime>1.5</warmupTime>
@@ -655,6 +657,7 @@ Cast time: 1s</description>
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_CorpseExplosion</defaultProjectile>
             <abilityDef>TM_CorpseExplosion_II</abilityDef>
             <warmupTime>1</warmupTime>
@@ -694,6 +697,7 @@ Cast time: .5s</description>
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_CorpseExplosion</defaultProjectile>
             <abilityDef>TM_CorpseExplosion_III</abilityDef>
             <warmupTime>.5</warmupTime>

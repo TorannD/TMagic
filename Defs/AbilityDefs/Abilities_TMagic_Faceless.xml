@@ -145,6 +145,7 @@ Cooldown: 15</description>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Transpose</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>TM_Faceless_Projectile</defaultProjectile>
             <abilityDef>TM_Transpose</abilityDef>
             <targetParams>
@@ -178,6 +179,7 @@ Cooldown: 13</description>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Transpose</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>TM_Faceless_Projectile</defaultProjectile>
             <abilityDef>TM_Transpose_I</abilityDef>
             <targetParams>
@@ -211,6 +213,7 @@ Cooldown: 11</description>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Transpose</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>TM_Faceless_Projectile</defaultProjectile>
             <abilityDef>TM_Transpose_II</abilityDef>
             <targetParams>
@@ -244,6 +247,7 @@ Cooldown: 9</description>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Transpose</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>TM_Faceless_Projectile</defaultProjectile>
             <abilityDef>TM_Transpose_III</abilityDef>
             <targetParams>

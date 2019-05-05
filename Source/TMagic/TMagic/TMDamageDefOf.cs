@@ -50,6 +50,7 @@ namespace TorannMagic
             public static DamageDef TM_Whirlwind;
 
             public static DamageDef TM_DisablingShot;
+            public static DamageDef TM_DisablingBlow;
             public static DamageDef TM_Tranquilizer;
 
             public static DamageDef TM_Poison;
@@ -72,6 +73,7 @@ namespace TorannMagic
             public static DamageDef TM_ArcaneSpectre;
 
             public static DamageDef TM_BlazingPower;
+            public static DamageDef TM_Arcane;
 
             public static DamageDef TM_PsionicInjury;
 

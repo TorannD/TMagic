@@ -76,7 +76,7 @@ namespace TorannMagic
                         //.06 bleed rate per 1 dmg "cut"
                         //.1 bleed rate per 1 dmg sacrificial cut
                         //Log.Message("current bleed rate is " + this.Pawn.health.hediffSet.BleedRateTotal);
-                        severityAdjustment += this.Pawn.health.hediffSet.BleedRateTotal * (1 + (.1f *this.bloodVer));
+                        severityAdjustment += this.Pawn.health.hediffSet.BleedRateTotal * (1.25f + (.125f *this.bloodVer));
                     }
                     else if(!this.Pawn.IsColonist)
                     {

@@ -20,6 +20,30 @@
   </HediffDef>
   
   <HediffDef ParentName="TM_InjuryBase">
+    <defName>TM_ArcaneHD</defName>
+    <label>arcane</label>
+    <displayWound>false</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_GetsPermanent">
+        <permanentLabel>destroyed by arcane power</permanentLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.0125</painPerSeverity>
+		<averagePainPerSeverityPermanent>0.00625</averagePainPerSeverityPermanent>
+		<bleedRate>0.00625</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>blasted off</destroyedLabel>
+			<destroyedOutLabel>blasted out</destroyedOutLabel>
+	</injuryProps>
+  </HediffDef>
+  
+  <HediffDef ParentName="TM_InjuryBase">
 	<defName>TM_ThrumboCleave</defName>
 	<label>cleave</label>
     <labelNoun>a massive wound</labelNoun>
@@ -577,6 +601,50 @@
       <destroyedLabel>Cut off</destroyedLabel>
       <destroyedOutLabel>Cut out</destroyedOutLabel>
     </injuryProps>
+  </HediffDef>
+  
+  <HediffDef ParentName="TM_InjuryBase">
+    <defName>TM_DisablingBlowHD</defName>
+    <label>disabling blow</label>
+    <displayWound>true</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>
+          <min>1000</min>
+          <max>1200</max>
+        </disappearsAfterTicks>
+      </li>
+      <li Class="HediffCompProperties_GetsPermanent">
+        <permanentLabel>smashed</permanentLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.0225</painPerSeverity>
+		<averagePainPerSeverityPermanent>0.00825</averagePainPerSeverityPermanent>
+		<bleedRate>0</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>smashed</destroyedLabel>
+			<destroyedOutLabel>crushed</destroyedOutLabel>
+	</injuryProps>
+	<stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.0</postFactor>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <postFactor>0.0</postFactor>
+          </li>
+        </capMods>
+      </li>
+    </stages>
   </HediffDef>
 
 </Defs>

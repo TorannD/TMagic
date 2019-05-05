@@ -35,7 +35,10 @@ namespace TorannMagic
         public override void ExposeData()
         {
             base.ExposeData();
+            Scribe_Values.Look<int>(ref this.age, "age", 0, false);
             Scribe_Values.Look<bool>(ref this.initialized, "initialized", false, false);
+            Scribe_Values.Look<bool>(ref this.summoning, "summoning", false, false);
+            Scribe_Values.Look<bool>(ref this.summoningComplete, "summoningComplete", false, false);
             Scribe_Values.Look<bool>(ref this.destroyed, "destroyed", false, false);
             Scribe_References.Look<Pawn>(ref this.demonPawn, "demonPawn", false);
             Scribe_References.Look<Pawn>(ref this.sacrificedPawn, "sacrificedPawn", false);
@@ -60,9 +63,12 @@ namespace TorannMagic
         {
             bool flag = this.age < (duration + summoningDuration);
             if (!flag)
-            {                
-                GenPlace.TryPlaceThing(this.sacrificedPawn, this.summoningCircle[0], this.Map, ThingPlaceMode.Near, null, null);
-                HealthUtility.AdjustSeverity(this.sacrificedPawn, HediffDef.Named("TM_DemonicPriceHD"), 2f);
+            {
+                if (this.sacrificedPawn != null)
+                {
+                    GenPlace.TryPlaceThing(this.sacrificedPawn, this.summoningCircle[0], this.Map, ThingPlaceMode.Near, null, null);
+                    HealthUtility.AdjustSeverity(this.sacrificedPawn, HediffDef.Named("TM_DemonicPriceHD"), 2f);
+                }
                 base.Destroy(mode);
             }
         }
@@ -122,14 +128,15 @@ namespace TorannMagic
                 spawnThing.temporary = false;
                 spawnThing.def = TorannMagicDefOf.TM_DemonR;
                 spawnThing.kindDef = PawnKindDef.Named("TM_Demon");
-                this.sacrificedPawn.DeSpawn();
+                map = this.Map;
+                this.sacrificedPawn.DeSpawn();                
                 SingleSpawnLoop(spawnThing, centerCell, map);
 
                 MoteMaker.ThrowSmoke(centerCell.ToVector3(), map, 2);
                 MoteMaker.ThrowMicroSparks(centerCell.ToVector3(), map);
                 MoteMaker.ThrowHeatGlow(centerCell, map, 2);
 
-                SoundInfo info = SoundInfo.InMap(new TargetInfo(centerCell, this.casterPawn.Map, false), MaintenanceType.None);
+                SoundInfo info = SoundInfo.InMap(new TargetInfo(centerCell, map, false), MaintenanceType.None);
                 info.pitchFactor = 1.3f;
                 info.volumeFactor = 1.6f;
                 TorannMagicDefOf.TM_DemonDeath.PlayOneShot(info);
@@ -148,7 +155,7 @@ namespace TorannMagic
             bool flag = spawnables.def != null;
             if (flag)
             {
-                Faction faction = this.casterPawn.Faction;
+                Faction faction = this.launcher.Faction;
                 bool flag2 = spawnables.def.race != null;
                 if (flag2)
                 {
@@ -162,12 +169,12 @@ namespace TorannMagic
                         TMPawnSummoned newPawn = new TMPawnSummoned();
                         newPawn = (TMPawnSummoned)PawnGenerator.GeneratePawn(spawnables.kindDef, faction);
                         newPawn.validSummoning = true;
-                        newPawn.Spawner = this.Caster;
+                        newPawn.Spawner = this.casterPawn;
                         newPawn.Temporary = true;
                         newPawn.TicksToDestroy = this.duration;
                         try
                         {
-                            GenSpawn.Spawn(newPawn, position, this.Map);
+                            GenSpawn.Spawn(newPawn, position, map);
                             this.demonPawn = newPawn;
                         }
                         catch

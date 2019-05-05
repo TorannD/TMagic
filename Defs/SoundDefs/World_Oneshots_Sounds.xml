@@ -241,6 +241,30 @@
     </subSounds>
   </SoundDef>
   
+  <SoundDef>
+    <defName>TM_AirWooshLow</defName>
+    <eventNames />
+    <maxSimultaneous>10</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/AirWoosh</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>40</min>
+          <max>45</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.5</min>
+          <max>.7</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
     <SoundDef>
     <defName>TM_AirWoosh</defName>
     <eventNames />

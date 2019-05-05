@@ -39,43 +39,43 @@ namespace TorannMagic
         {
             bool flag = false;
 
-            Map map = base.CasterPawn.Map;
+            Map map = this.CasterPawn.Map;
 
             Pawn hitPawn = (Pawn)this.currentTarget;
-            Pawn caster = base.CasterPawn;
+            Pawn caster = this.CasterPawn;
 
             MagicPowerSkill pwr = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Regenerate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Regenerate_pwr");
             MagicPowerSkill ver = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Regenerate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Regenerate_ver");
             verVal = ver.level;
             pwrVal = pwr.level;
-            if (caster.story != null && caster.story.traits != null && caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            if (this.caster != null && caster.story != null && caster.story.traits != null && caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
                 MightPowerSkill mpwr = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
                 MightPowerSkill mver = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
                 pwrVal = mpwr.level;
                 verVal = mver.level;
             }
-            if (hitPawn != null & !hitPawn.Dead)
+            if (hitPawn != null & !hitPawn.Dead && hitPawn.Spawned && map != null)
             {
                 if(pwrVal == 3)
                 {
                     HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_Regeneration_III, Rand.Range(1f + verVal, 3f + (verVal * 3)));
-                    TM_MoteMaker.ThrowRegenMote(hitPawn.Position.ToVector3(), map, 1f + (.2f * (verVal + pwrVal)));
+                    TM_MoteMaker.ThrowRegenMote(hitPawn.DrawPos, map, 1f + (.2f * (verVal + pwrVal)));
                 }
                 else if (pwrVal == 2)
                 {
                     HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_Regeneration_II, Rand.Range(1f + verVal, 3f + (verVal * 3)));
-                    TM_MoteMaker.ThrowRegenMote(hitPawn.Position.ToVector3(), map, 1f + (.2f * (verVal + pwrVal)));
+                    TM_MoteMaker.ThrowRegenMote(hitPawn.DrawPos, map, 1f + (.2f * (verVal + pwrVal)));
                 }
                 else if (pwrVal == 1)
                 {
                     HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_Regeneration_I, Rand.Range(1f+verVal, 3f+(verVal*3)));
-                    TM_MoteMaker.ThrowRegenMote(hitPawn.Position.ToVector3(), map, 1f + (.2f * (verVal + pwrVal)));
+                    TM_MoteMaker.ThrowRegenMote(hitPawn.DrawPos, map, 1f + (.2f * (verVal + pwrVal)));
                 }
                 else
                 {
                     HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_Regeneration, Rand.Range(1f + verVal, 3f + (verVal * 3)));
-                    TM_MoteMaker.ThrowRegenMote(hitPawn.Position.ToVector3(), map, 1f + (.2f * (verVal + pwrVal)));
+                    TM_MoteMaker.ThrowRegenMote(hitPawn.DrawPos, map, 1f + (.2f * (verVal + pwrVal)));
                 }                
             }
             else

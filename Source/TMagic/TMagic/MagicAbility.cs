@@ -89,17 +89,35 @@ namespace TorannMagic
 
         public override void PostAbilityAttempt()  //commented out in CompAbilityUserMagic
         {
-            base.PostAbilityAttempt();
+            //base.PostAbilityAttempt();
+            
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            if (!this.Pawn.IsColonist && settingsRef.AIAggressiveCasting)// for AI
+            {
+                this.CooldownTicksLeft = Mathf.RoundToInt(this.MaxCastingTicks/2f);
+            }
+            else
+            {
+                this.CooldownTicksLeft = this.MaxCastingTicks;
+            }
             bool flag = this.magicDef != null;
             if (flag)
             {
                 bool flag3 = this.MagicUser.Mana != null;
                 if (flag3)
                 {
-                    this.MagicUser.Mana.UseMagicPower(this.MagicUser.ActualManaCost(magicDef));                    
+                    if(!this.Pawn.IsColonist && settingsRef.AIAggressiveCasting)// for AI
+                    {
+                        this.MagicUser.Mana.UseMagicPower(this.MagicUser.ActualManaCost(magicDef)/2f);
+                    }
+                    else
+                    {
+                        this.MagicUser.Mana.UseMagicPower(this.MagicUser.ActualManaCost(magicDef));
+                    }
+                                       
                     if(this.magicDef != TorannMagicDefOf.TM_TransferMana)
                     {
-                        ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                        
                         this.MagicUser.MagicUserXP += (int)((magicDef.manaCost * 300) * this.MagicUser.xpGain * settingsRef.xpMultiplier);
                     }
                 }
@@ -274,7 +292,8 @@ namespace TorannMagic
                         this.magicDef.defName.Contains("TM_DeathBolt") ||
                         this.magicDef.defName.Contains("TM_ShadowBolt") ||
                         this.magicDef.defName == "TM_BloodForBlood" || this.magicDef.defName == "TM_IgniteBlood" ||
-                        this.magicDef.defName == "TM_Poison" ) )
+                        this.magicDef.defName == "TM_Poison" ||
+                        this.magicDef == TorannMagicDefOf.TM_ArcaneBolt) )
                     {
                         reason = "TM_ShieldBlockingPowers".Translate(
                             base.Pawn.Label,

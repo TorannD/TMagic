@@ -208,7 +208,7 @@ namespace TorannMagic
             info.volumeFactor = 2f;
             TorannMagicDefOf.TM_AirWoosh.PlayOneShot(info);
 
-            CellRect cellRect = CellRect.CenteredOn(base.Position, radius);
+            CellRect cellRect = CellRect.CenteredOn(base.Position, radius+2);
             cellRect.ClipInsideMap(this.caster.Map);
             IntVec3 destination = cellRect.RandomCell;
 
@@ -221,7 +221,7 @@ namespace TorannMagic
                 }
                 FlyingObject_Spinning flyingObject = (FlyingObject_Spinning)GenSpawn.Spawn(ThingDef.Named("FlyingObject_Spinning"), origin, this.caster.Map);
                 flyingObject.force = this.arcaneDmg + .2f;
-                flyingObject.Launch(this.caster, destination, this.launchableThing, this.spinRate);
+                flyingObject.Launch(this.caster, destination, this.launchableThing.SplitOff(1), this.spinRate);
             }
         }
 

@@ -564,4 +564,45 @@ Paracyte is difficult to grow and only skilled herbalists are able to plant and 
    </comps>
   </ThingDef>
   
+  <ThingDef ParentName="TM_PlantBase">
+		<defName>TM_Plant_Briar</defName>
+		<label>thorny vines</label>
+		<description>A hazard of tangled, woody shoots covered in wicked thorns that slow down anyone moving over them. The thorns are razor sharp and can pierce even thick clothing.</description>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Nutrition>0.05</Nutrition>
+			<Beauty>-8</Beauty>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<pathCost>55</pathCost>
+		<graphicData>
+			<texPath>Items/Plants/Briar</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<ingestible />
+		<plant>
+			<fertilitySensitivity>0.4</fertilitySensitivity>
+			<growDays>.02</growDays>
+			<fertilityMin>0</fertilityMin>
+			<growMinGlow>0</growMinGlow>
+			<lifespanDaysPerGrowDays>20</lifespanDaysPerGrowDays>
+			<harvestWork>60</harvestWork>
+			<maxMeshCount>4</maxMeshCount>
+			<leaflessGraphicPath>Items/Plants/Briar</leaflessGraphicPath>
+			<dieIfLeafless>true</dieIfLeafless>
+			<visualSizeRange>
+				<min>.1</min>
+				<max>1</max>
+			</visualSizeRange>
+			<topWindExposure>0.05</topWindExposure>
+			<wildOrder>2</wildOrder>
+			<wildEqualLocalDistribution>false</wildEqualLocalDistribution>
+		</plant>
+	<comps>
+	  <li>
+        <compClass>TorannMagic.CompPlantHazard</compClass>
+      </li>	  
+    </comps>
+	</ThingDef>
+  
 </Defs>

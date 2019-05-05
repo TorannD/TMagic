@@ -27,12 +27,16 @@ namespace TorannMagic.AutoCast
                     jobTarget = caster.CurJob.targetB;
                     carriedThing = caster.CurJob.targetA.Thing;
                 }
-                else if (caster.CurJob.targetB != null && caster.CurJob.targetB.Thing != null && caster.CurJob.def.defName != "Rescue") //targetA using targetB for job
+                else if (caster.CurJob.targetB != null && caster.CurJob.targetB.Thing != null && caster.CurJob.def != JobDefOf.Rescue) //targetA using targetB for job
                 {
                     if (caster.CurJob.targetB.Thing.Map != caster.Map) //carrying targetB to targetA
                     {
                         jobTarget = caster.CurJob.targetA;
                         carriedThing = caster.CurJob.targetB.Thing;
+                    }
+                    else if(caster.CurJob.def == JobDefOf.TendPatient)
+                    {
+                        jobTarget = caster.CurJob.targetB;
                     }
                     else //Getting targetA to carry to TargetB
                     {
@@ -143,6 +147,27 @@ namespace TorannMagic.AutoCast
             }
         }
     }
+
+    public static class MeleeCombat_OnTarget
+    {
+        public static void TryExecute(CompAbilityUserMight casterComp, TMAbilityDef abilitydef, PawnAbility ability, MightPower power, LocalTargetInfo target, out bool success)
+        {
+            success = false;
+            if (casterComp.Stamina.CurLevel >= abilitydef.staminaCost && ability.CooldownTicksLeft <= 0)
+            {
+                Pawn caster = casterComp.Pawn;
+                LocalTargetInfo jobTarget = target;
+                float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
+                if (distanceToTarget < (abilitydef.MainVerb.range ) && jobTarget != null && jobTarget.Thing != null)
+                {
+                    Job job = ability.GetJob(AbilityContext.AI, jobTarget);
+                    caster.jobs.TryTakeOrderedJob(job);
+                    success = true;
+                }
+            }
+        }
+    }
+    
     public static class CombatAbility_OnTarget
     {
         public static void TryExecute(CompAbilityUserMight casterComp, TMAbilityDef abilitydef, PawnAbility ability, MightPower power, LocalTargetInfo target, int minRange, out bool success)
@@ -245,6 +270,7 @@ namespace TorannMagic.AutoCast
                     Job job = ability.GetJob(AbilityContext.AI, jobTarget);
                     caster.jobs.TryTakeOrderedJob(job);
                     success = true;
+                    TM_Action.TM_Toils.GotoAndWait(jobTarget.Thing as Pawn, caster, Mathf.RoundToInt(ability.Def.MainVerb.warmupTime * 60));
                 }
             }
         }
@@ -265,6 +291,7 @@ namespace TorannMagic.AutoCast
                     Job job = ability.GetJob(AbilityContext.AI, jobTarget);
                     caster.jobs.TryTakeOrderedJob(job);
                     success = true;
+                    TM_Action.TM_Toils.GotoAndWait(jobTarget.Thing as Pawn, caster, Mathf.RoundToInt(ability.Def.MainVerb.warmupTime * 60));
                 }
             }
         }
@@ -334,6 +361,7 @@ namespace TorannMagic.AutoCast
                         Job job = ability.GetJob(AbilityContext.AI, jobTarget);
                         caster.jobs.TryTakeOrderedJob(job);
                         success = true;
+                        TM_Action.TM_Toils.GotoAndWait(jobTarget.Thing as Pawn, caster, Mathf.RoundToInt(ability.Def.MainVerb.warmupTime * 60));
                     }
                 }
             }
@@ -360,7 +388,8 @@ namespace TorannMagic.AutoCast
                 {
                     Job job = ability.GetJob(AbilityContext.AI, jobTarget);
                     caster.jobs.TryTakeOrderedJob(job);
-                    success = true;                    
+                    success = true;
+                    TM_Action.TM_Toils.GotoAndWait(jobTarget.Thing as Pawn, caster, Mathf.RoundToInt(ability.Def.MainVerb.warmupTime * 60));
                 }
             }
         }
@@ -669,12 +698,16 @@ namespace TorannMagic.AutoCast
                     jobTarget = caster.CurJob.targetB;
                     carriedThing = caster.CurJob.targetA.Thing;
                 }
-                else if(caster.CurJob.targetB != null && caster.CurJob.targetB.Thing != null && caster.CurJob.def.defName != "Rescue") //targetA using targetB for job
+                else if(caster.CurJob.targetB != null && caster.CurJob.targetB.Thing != null && caster.CurJob.def != JobDefOf.Rescue) //targetA using targetB for job
                 {
                     if(caster.CurJob.targetB.Thing.Map != caster.Map) //carrying targetB to targetA
                     {
                         jobTarget = caster.CurJob.targetA;
                         carriedThing = caster.CurJob.targetB.Thing;
+                    }
+                    else if(caster.CurJob.def == JobDefOf.TendPatient)
+                    {
+                        jobTarget = caster.CurJob.targetB;
                     }
                     else //Getting targetA to carry to TargetB
                     {

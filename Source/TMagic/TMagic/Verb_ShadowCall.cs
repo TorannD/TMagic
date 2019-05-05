@@ -1,5 +1,6 @@
 ﻿using RimWorld;
 using System;
+using RimWorld.Planet;
 using Verse;
 using AbilityUser;
 using UnityEngine;
@@ -45,6 +46,21 @@ namespace TorannMagic
                             soulPawn = compS.polyHost;
                         }
                     }
+                    if (soulPawn.ParentHolder != null && soulPawn.ParentHolder is Caravan)
+                    {
+                        //Log.Message("caravan detected");
+                        //p.DeSpawn();
+                        Caravan van = soulPawn.ParentHolder as Caravan;
+                        van.RemovePawn(soulPawn);
+                        GenPlace.TryPlaceThing(soulPawn, this.CasterPawn.Position, this.CasterPawn.Map, ThingPlaceMode.Near);
+                        if(van.PawnsListForReading != null && van.PawnsListForReading.Count <= 0)
+                        {
+                            CaravanEnterMapUtility.Enter(van, this.CasterPawn.Map, CaravanEnterMode.Center, CaravanDropInventoryMode.DropInstantly, false);
+                        }
+                        
+                        //Messages.Message("" + p.LabelShort + " has shadow stepped to a caravan with " + soulPawn.LabelShort, MessageTypeDefOf.NeutralEvent);
+                        goto fin;
+                    }
                 }
                 IntVec3 casterCell = this.CasterPawn.Position;
                 IntVec3 targetCell = soulPawn.Position;
@@ -70,6 +86,7 @@ namespace TorannMagic
             {
                 Log.Warning("No soul bond found to shadow call.");
             }
+            fin:;
             this.burstShotsLeft = 0;
             //this.ability.TicksUntilCasting = (int)base.UseAbilityProps.SecondsToRecharge * 60;
             return result;

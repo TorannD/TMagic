@@ -12,6 +12,7 @@ namespace TorannMagic.ModOptions
         public int deathExplosionMin = 20;
         public int deathExplosionMax = 50;
         public bool AICasting = true;
+        public bool AIAggressiveCasting = true;
         public bool AIHardMode = false;
         public bool AIMarking = true;
         public bool AIFighterMarking = false;
@@ -27,6 +28,7 @@ namespace TorannMagic.ModOptions
         public bool showLevelUpMessage = true;
         public bool changeUndeadPawnAppearance = true;
         public bool changeUndeadAnimalAppearance = true;
+        public bool showClassIconOnColonistBar = true;
         public bool unrestrictedBloodTypes = true;
 
         //autocast options
@@ -75,6 +77,7 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<int>(ref this.deathExplosionMin, "deathExplosionMin", 20, false);
             Scribe_Values.Look<int>(ref this.deathExplosionMax, "deathExplosionMax", 50, false);
             Scribe_Values.Look<bool>(ref this.AICasting, "AICasting", true, false);
+            Scribe_Values.Look<bool>(ref this.AIAggressiveCasting, "AIAggressiveCasting", true, false);
             Scribe_Values.Look<bool>(ref this.AIHardMode, "AIHardMode", false, false);
             Scribe_Values.Look<bool>(ref this.AIMarking, "AIMarking", false, false);
             Scribe_Values.Look<bool>(ref this.AIFighterMarking, "AIFighterMarking", false, false);
@@ -90,6 +93,7 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<bool>(ref this.showLevelUpMessage, "showLevelUpMessage", true, false);
             Scribe_Values.Look<bool>(ref this.changeUndeadPawnAppearance, "changeUndeadPawnAppearance", true, false);
             Scribe_Values.Look<bool>(ref this.changeUndeadAnimalAppearance, "changeUndeadAnimalAppearance", true, false);
+            Scribe_Values.Look<bool>(ref this.showClassIconOnColonistBar, "showClassIconOnColonistBar", true, false);
             Scribe_Values.Look<bool>(ref this.unrestrictedBloodTypes, "unrestrictedBloodTypes", true, false);
 
             Scribe_Values.Look<bool>(ref this.autocastEnabled, "autocastEnabled", true, false);

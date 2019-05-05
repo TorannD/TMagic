@@ -43,6 +43,13 @@ namespace TorannMagic
                 this.verVal = ver.level;
                 this.pwrVal = pwr.level;
                 this.effVal = eff.level;
+                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                if (settingsRef.AIHardMode && !this.Pawn.IsColonist)
+                {
+                    pwrVal = 1;
+                    verVal = 1;
+                    effVal = 1;
+                }
                 this.chantRange = this.chantRange + (this.verVal * 3f);
                 this.chantFrequency = 300 - (30 * verVal);
             }

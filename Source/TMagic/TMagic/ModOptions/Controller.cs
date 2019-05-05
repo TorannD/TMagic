@@ -129,6 +129,12 @@ namespace TorannMagic.ModOptions
             num++;
             Rect rowRect11 = UIHelper.GetRowRect(rowRect10, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect11, "unrestrictedBloodTypesForBloodMagic".Translate(), ref Settings.Instance.unrestrictedBloodTypes, false);
+            Rect rowRect11ShiftRight = UIHelper.GetRowRect(rowRect11, rowHeight, num);
+            rowRect11ShiftRight.x += rowRect11.width + 56f;
+            Widgets.CheckboxLabeled(rowRect11ShiftRight, "showClassIconOnColonistBar".Translate(), ref Settings.Instance.showClassIconOnColonistBar, false);
+            num++;
+            Rect rowRect12 = UIHelper.GetRowRect(rowRect11, rowHeight, num);
+            Widgets.CheckboxLabeled(rowRect12, "TM_AggressiveAICasting".Translate(), ref Settings.Instance.AIAggressiveCasting, false);
             num++;
             num++;
             Rect rowRect20 = UIHelper.GetRowRect(rowRect10, rowHeight, num);
@@ -162,6 +168,8 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.showLevelUpMessage = true;
                 Settings.Instance.changeUndeadPawnAppearance = true;
                 Settings.Instance.changeUndeadAnimalAppearance = true;
+                Settings.Instance.showClassIconOnColonistBar = true;
+                Settings.Instance.AIAggressiveCasting = true;
                 Settings.Instance.riftChallenge = 1f;
                 this.deathExplosionDmgMax = "50.0";
                 this.deathExplosionDmgMin = "20.0";
@@ -195,6 +203,8 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.showLevelUpMessage = false;
                 Settings.Instance.changeUndeadPawnAppearance = true;
                 Settings.Instance.changeUndeadAnimalAppearance = true;
+                Settings.Instance.showClassIconOnColonistBar = true;
+                Settings.Instance.AIAggressiveCasting = true;
                 Settings.Instance.riftChallenge = 3f;
                 this.deathExplosionDmgMax = "60.0";
                 this.deathExplosionDmgMin = "30.0";
@@ -228,6 +238,8 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.showLevelUpMessage = true;
                 Settings.Instance.changeUndeadPawnAppearance = true;
                 Settings.Instance.changeUndeadAnimalAppearance = true;
+                Settings.Instance.showClassIconOnColonistBar = true;
+                Settings.Instance.AIAggressiveCasting = false;
                 Settings.Instance.riftChallenge = 1f;
                 this.deathExplosionDmgMax = "5.0";
                 this.deathExplosionDmgMin = "10.0";

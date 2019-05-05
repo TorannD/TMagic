@@ -124,8 +124,10 @@ namespace TorannMagic
                     }
                     else
                     {
-                        summonableThing.Position = base.CasterPawn.Position;
-                        summonableThing.Rotation = Rot4.North;
+                        summonableThing.DeSpawn(DestroyMode.Vanish);
+                        GenPlace.TryPlaceThing(summonableThing, this.CasterPawn.Position, this.CasterPawn.Map, ThingPlaceMode.Near);
+                        //summonableThing.Position = base.CasterPawn.Position;
+                        //summonableThing.Rotation = Rot4.North;
                         //summonableThing.SetPositionDirect(base.CasterPawn.InteractionCell);
                     }
                     result = true;

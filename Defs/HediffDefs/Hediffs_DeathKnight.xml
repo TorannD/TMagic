@@ -31,7 +31,7 @@
 			  <ArmorRating_Sharp>.1</ArmorRating_Sharp>
 			  <ArmorRating_Heat>.1</ArmorRating_Heat>
 			  <ArmorRating_Alignment>.1</ArmorRating_Alignment>
-			  <MoveSpeed>-.1</MoveSpeed>	
+			  <MoveSpeed>-.15</MoveSpeed>	
 		</statOffsets>
       </li>
 	  <li>
@@ -44,7 +44,7 @@
 			  <ArmorRating_Sharp>.2</ArmorRating_Sharp>
 			  <ArmorRating_Heat>.2</ArmorRating_Heat>
 			  <ArmorRating_Alignment>.2</ArmorRating_Alignment>
-			  <MoveSpeed>-.25</MoveSpeed>	
+			  <MoveSpeed>-.35</MoveSpeed>	
 		</statOffsets>
       </li>
 	  <li>
@@ -57,7 +57,7 @@
 			  <ArmorRating_Sharp>.3</ArmorRating_Sharp>
 			  <ArmorRating_Heat>.3</ArmorRating_Heat>
 			  <ArmorRating_Alignment>.3</ArmorRating_Alignment>
-			  <MoveSpeed>-.50</MoveSpeed>	
+			  <MoveSpeed>-.75</MoveSpeed>	
 		</statOffsets>
       </li>
 	  <li>
@@ -70,7 +70,7 @@
 			  <ArmorRating_Sharp>.4</ArmorRating_Sharp>
 			  <ArmorRating_Heat>.4</ArmorRating_Heat>
 			  <ArmorRating_Alignment>.4</ArmorRating_Alignment>
-			  <MoveSpeed>-1</MoveSpeed>	
+			  <MoveSpeed>-1.5</MoveSpeed>	
 		</statOffsets>
       </li>
 	  <li>
@@ -83,7 +83,7 @@
 			  <ArmorRating_Sharp>.5</ArmorRating_Sharp>
 			  <ArmorRating_Heat>.5</ArmorRating_Heat>
 			  <ArmorRating_Alignment>.5</ArmorRating_Alignment>
-			  <MoveSpeed>-1.6</MoveSpeed>	
+			  <MoveSpeed>-2</MoveSpeed>	
 		</statOffsets>
       </li>
 	</stages>

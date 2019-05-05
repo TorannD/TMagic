@@ -21,12 +21,16 @@ namespace TorannMagic
         Pawn pawn;
         MagicPowerSkill pwr;
         MagicPowerSkill ver;
+        private int verVal = 0;
+        private int pwrVal = 0;
 
         public override void ExposeData()
         {
             base.ExposeData();
             //Scribe_Values.Look<bool>(ref this.initialized, "initialized", false, false);
             Scribe_Values.Look<int>(ref this.age, "age", 0, false);
+            Scribe_Values.Look<int>(ref this.verVal, "verVal", 0, false);
+            Scribe_Values.Look<int>(ref this.pwrVal, "pwrVal", 0, false);
             Scribe_Values.Look<int>(ref this.duration, "duration", 720, false);
             Scribe_Values.Look<int>(ref this.lastStrikeTiny, "lastStrikeTiny", 0, false);
             Scribe_Values.Look<int>(ref this.lastStrikeSmall, "lastStrikeSmall", 0, false);
@@ -39,9 +43,17 @@ namespace TorannMagic
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
             pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Blizzard.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Blizzard_pwr");
             ver = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Blizzard.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Blizzard_ver");
-            cellRect = CellRect.CenteredOn(base.Position, (int)(base.def.projectile.explosionRadius + (.75 *(ver.level + pwr.level))));
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            pwrVal = pwr.level;
+            verVal = ver.level;
+            if (settingsRef.AIHardMode && !pawn.IsColonist)
+            {
+                pwrVal = 1;
+                verVal = 1;
+            }
+            cellRect = CellRect.CenteredOn(base.Position, (int)(base.def.projectile.explosionRadius + (.75 *(verVal + pwrVal))));
             cellRect.ClipInsideMap(map);
-            duration = duration + (90 * ver.level);
+            duration = duration + (90 * verVal);
             initialized = true;
         }
 
@@ -56,7 +68,7 @@ namespace TorannMagic
                 Initialize(map);
             }
             impactPos = cellRect.RandomCell;
-            if (this.age > lastStrikeLarge + Rand.Range(200 - (pwr.level * 30), duration/(4 + pwr.level)) && impactPos.Standable(map) && impactPos.InBounds(map) && impactPos.DistanceToEdge(map) >= 2)
+            if (this.age > lastStrikeLarge + Rand.Range(200 - (pwrVal * 30), duration/(4 + pwrVal)) && impactPos.Standable(map) && impactPos.InBounds(map) && impactPos.DistanceToEdge(map) >= 2)
             {
                 this.lastStrikeLarge = this.age;
                 SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Blizzard_Large, impactPos, map);
@@ -66,7 +78,7 @@ namespace TorannMagic
                 snowCount++;
             }
             impactPos = cellRect.RandomCell;
-            if (this.age > lastStrikeTiny + Rand.Range(6-(pwr.level), 18-(2*pwr.level)) && impactPos.Standable(map) && impactPos.InBounds(map))
+            if (this.age > lastStrikeTiny + Rand.Range(6-(pwrVal), 18-(2*pwrVal)) && impactPos.Standable(map) && impactPos.InBounds(map))
             {
                 this.lastStrikeTiny = this.age;
                 SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Blizzard_Tiny, impactPos, map);
@@ -76,7 +88,7 @@ namespace TorannMagic
                 snowCount++;
             }
             impactPos = cellRect.RandomCell;
-            if ( this.age > lastStrikeSmall + Rand.Range(30-(2*pwr.level), 60-(4*pwr.level)) && impactPos.Standable(map) && impactPos.InBounds(map))
+            if ( this.age > lastStrikeSmall + Rand.Range(30-(2*pwrVal), 60-(4*pwrVal)) && impactPos.Standable(map) && impactPos.InBounds(map))
             {
                 this.lastStrikeSmall = this.age;
                 SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Blizzard_Small, impactPos, map);

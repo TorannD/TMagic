@@ -82,6 +82,8 @@ namespace TorannMagic
                 this.duration = this.duration + (120 * verVal);
                 this.strikeDelay = this.strikeDelay - verVal;
                 this.radius = this.def.projectile.explosionRadius + (1.5f * pwrVal);
+                //GenExplosion.DoExplosion(base.Position, this.Map, this.radius, TMDamageDefOf.DamageDefOf.TM_Shadow, this.pawn, (int)((this.def.projectile.GetDamageAmount(1, null) * (1 + .15 * pwrVal)) * this.arcaneDmg * Rand.Range(.75f, 1.25f)), 0, TorannMagicDefOf.TM_SoftExplosion, def, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
+
                 this.initialized = true;
                 IEnumerable<IntVec3> hediffCells = GenRadial.RadialCellsAround(base.Position, 2, true);
                 hediffCellList = hediffCells.ToList<IntVec3>();
@@ -100,11 +102,35 @@ namespace TorannMagic
                 }
             }
             IntVec3 curCell = cellList.RandomElement();
-            Vector3 angle = GetVector(base.Position, curCell);
-            TM_MoteMaker.ThrowArcaneWaveMote(curCell.ToVector3(), base.Map, .4f * (curCell - base.Position).LengthHorizontal, .1f, .05f, .5f, 0, Rand.Range(1, 2), (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat(), (Quaternion.AngleAxis(-90, Vector3.up) * angle).ToAngleFlat());
+            //Vector3 angle = GetVector(base.Position, curCell);
+            //TM_MoteMaker.ThrowArcaneWaveMote(curCell.ToVector3(), base.Map, .4f * (curCell - base.Position).LengthHorizontal, .1f, .05f, .5f, 0, Rand.Range(1, 2), (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat(), (Quaternion.AngleAxis(-90, Vector3.up) * angle).ToAngleFlat());
 
-            if (Find.TickManager.TicksGame % this.strikeDelay == 0)
+            if (Find.TickManager.TicksGame % this.strikeDelay == 0 && this.Map != null)
             {
+                if (this.pwrVal == 0)
+                {
+                    Effecter AttractionEffect = TorannMagicDefOf.TM_AttractionEffecter.Spawn();
+                    AttractionEffect.Trigger(new TargetInfo(base.Position, this.Map, false), new TargetInfo(base.Position, this.Map, false));
+                    AttractionEffect.Cleanup();
+                }
+                else if(this.pwrVal ==1)
+                {
+                    Effecter AttractionEffect = TorannMagicDefOf.TM_AttractionEffecter_I.Spawn();
+                    AttractionEffect.Trigger(new TargetInfo(base.Position, this.Map, false), new TargetInfo(base.Position, this.Map, false));
+                    AttractionEffect.Cleanup();
+                }
+                else if(this.pwrVal == 2)
+                {
+                    Effecter AttractionEffect = TorannMagicDefOf.TM_AttractionEffecter_II.Spawn();
+                    AttractionEffect.Trigger(new TargetInfo(base.Position, this.Map, false), new TargetInfo(base.Position, this.Map, false));
+                    AttractionEffect.Cleanup();
+                }
+                else
+                {
+                    Effecter AttractionEffect = TorannMagicDefOf.TM_AttractionEffecter_III.Spawn();
+                    AttractionEffect.Trigger(new TargetInfo(base.Position, this.Map, false), new TargetInfo(base.Position, this.Map, false));
+                    AttractionEffect.Cleanup();
+                }
                 for (int i = 0; i < 3; i++)
                 {
                     curCell = cellList.RandomElement();

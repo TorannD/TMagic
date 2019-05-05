@@ -68,24 +68,31 @@ namespace TorannMagic
             get
             {
                 AbilityDef result = null;
-                bool flag = this.abilityDef != null && this.TMabilityDefs.Count > 0;
-                if (flag)
+                try
                 {
-                    result = this.TMabilityDefs[0];
-                    int num = this.level + 1;
-                    bool flag2 = num > -1 && num <= this.TMabilityDefs.Count;
-                    if (flag2)
+                    bool flag = this.abilityDef != null && this.TMabilityDefs.Count > 0;
+                    if (flag)
                     {
-                        result = this.TMabilityDefs[num];
-                    }
-                    else
-                    {
-                        bool flag3 = num >= this.TMabilityDefs.Count;
-                        if (flag3)
+                        result = this.TMabilityDefs[0];
+                        int num = this.level + 1;
+                        bool flag2 = num > -1 && num <= this.TMabilityDefs.Count;
+                        if (flag2)
                         {
-                            result = this.TMabilityDefs[this.TMabilityDefs.Count - 1];
+                            result = this.TMabilityDefs[num];
+                        }
+                        else
+                        {
+                            bool flag3 = num >= this.TMabilityDefs.Count;
+                            if (flag3)
+                            {
+                                result = this.TMabilityDefs[this.TMabilityDefs.Count - 1];
+                            }
                         }
                     }
+                }
+                catch
+                {
+
                 }
                 return result;
             }

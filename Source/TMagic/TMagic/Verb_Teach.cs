@@ -44,9 +44,9 @@ namespace TorannMagic
                 CompAbilityUserMight mentorCompMight = mentor.GetComp<CompAbilityUserMight>();
                 CompAbilityUserMagic studentCompMagic = student.GetComp<CompAbilityUserMagic>();
                 CompAbilityUserMight studentCompMight = student.GetComp<CompAbilityUserMight>();
-                if (mentorCompMagic.IsMagicUser && !mentor.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                if (mentorCompMagic != null && mentorCompMagic.IsMagicUser && !mentor.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                 {
-                    if(studentCompMagic.IsMagicUser)
+                    if(studentCompMagic != null && studentCompMagic.IsMagicUser)
                     {
                         if (mentor.relations.OpinionOf(student) >= 0)
                         {
@@ -70,9 +70,9 @@ namespace TorannMagic
                         ), MessageTypeDefOf.RejectInput, false);
                     }
                 }
-                else if (mentorCompMight.IsMightUser)
+                else if (mentorCompMight != null && mentorCompMight.IsMightUser)
                 {
-                    if(studentCompMight.IsMightUser)
+                    if(studentCompMight != null && studentCompMight.IsMightUser)
                     {
                         if(mentor.relations.OpinionOf(student) >= 0)
                         {

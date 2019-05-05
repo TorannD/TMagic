@@ -80,6 +80,8 @@
 		<rangedTicksBetweenBursts>8</rangedTicksBetweenBursts>
 		<aoeCooldownTicks>450</aoeCooldownTicks>
 		<knockbackCooldownTicks>800</knockbackCooldownTicks>
+		<tauntCooldownTicks>600</tauntCooldownTicks>
+		<tauntChance>.9</tauntChance>
 	  </li>
     </comps>
     <drawGUIOverlay>false</drawGUIOverlay>

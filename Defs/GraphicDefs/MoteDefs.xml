@@ -19,6 +19,19 @@
     <graphicData>
       <texPath>Motes/BracerBlockMote_NoFlash</texPath>
     </graphicData>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_Strike</defName>
+    <graphicData>
+      <texPath>Motes/StrikeMote</texPath>
+    </graphicData>
     <altitudeLayer>MoteOverhead</altitudeLayer>
     <mote>
       <fadeInTime>0.05</fadeInTime>
@@ -673,6 +686,19 @@
       <fadeInTime>0.25</fadeInTime>
       <solidTime>0.05</solidTime>
       <fadeOutTime>0.35</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_ArcaneBlast</defName>
+    <graphicData>
+      <texPath>Motes/ArcaneBlastMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.03</fadeInTime>
+      <solidTime>.05</solidTime>
+      <fadeOutTime>.1</fadeOutTime>
     </mote>
   </ThingDef>
   

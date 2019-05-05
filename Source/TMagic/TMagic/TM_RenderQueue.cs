@@ -11,7 +11,14 @@ namespace TorannMagic
     [StaticConstructorOnStartup]
     public static class TM_RenderQueue
     {
+        public static readonly Texture2D losIcon = ContentFinder<Texture2D>.Get("Other/cantsee");
+
         public static readonly Material bitMat = MaterialPool.MatFrom("Other/bit");
+
+        public static readonly Material scornWingsNS = MaterialPool.MatFrom("Other/scornwings_north");
+        public static readonly Material scornWingsE = MaterialPool.MatFrom("Other/scornwings_east");
+        public static readonly Material scornWingsW = MaterialPool.MatFrom("Other/scornwings_west");
+        //public static readonly Material scornWingsW = MaterialPool.MatFrom("Other/angelwings_west", ShaderDatabase.Transparent, HediffComp_Shield.shieldColor);
 
         //Magic
         public static readonly Material enchantMark = MaterialPool.MatFrom("Items/Gemstones/arcane_minor");
@@ -19,8 +26,14 @@ namespace TorannMagic
         public static readonly Color shieldColor = new Color(90f, 0f, 0f);
         public static readonly Material shieldMat = MaterialPool.MatFrom("Other/Shield", ShaderDatabase.Transparent, TM_RenderQueue.shieldColor);
 
+        public static readonly Color burningFuryColor = new Color(1f, .4f, .25f);
+        public static readonly Material burningFuryMat = MaterialPool.MatFrom("Other/Shield", ShaderDatabase.Transparent, TM_RenderQueue.burningFuryColor);
+
         public static readonly Color manaShieldColor = new Color(127f, 0f, 255f);
         public static readonly Material manaShieldMat = MaterialPool.MatFrom("Other/Shield", ShaderDatabase.Transparent, TM_RenderQueue.manaShieldColor);
+
+        public static readonly Color demonShieldColor = new Color(150f, 0f, 75f);
+        public static readonly Material demonShieldMat = MaterialPool.MatFrom("Other/Shield", ShaderDatabase.Transparent, TM_RenderQueue.demonShieldColor);
 
         public static readonly Material mageMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, Color.black);
         public static readonly Color necroMarkColor = new Color(.4f, .5f, .25f);

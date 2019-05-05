@@ -156,6 +156,46 @@ namespace TorannMagic
                 BFBEffect.Trigger(new TargetInfo(this.linkedPawn.Position, this.linkedPawn.Map, false), new TargetInfo(this.linkedPawn.Position, this.linkedPawn.Map, false));
                 BFBEffect.Cleanup();
             }
+            int num = 1;
+            using (IEnumerator<BodyPartRecord> enumerator =linkedPawn.health.hediffSet.GetInjuredParts().GetEnumerator())
+            {
+                while (enumerator.MoveNext())
+                {
+                    BodyPartRecord rec = enumerator.Current;
+                    bool flag2 = num > 0;
+                    if (flag2)
+                    {
+                        int num2 = 1;
+                        IEnumerable<Hediff_Injury> arg_BB_0 = linkedPawn.health.hediffSet.GetHediffs<Hediff_Injury>();
+                        Func<Hediff_Injury, bool> arg_BB_1;
+
+                        arg_BB_1 = ((Hediff_Injury injury) => injury.Part == rec);
+
+                        foreach (Hediff_Injury current in arg_BB_0.Where(arg_BB_1))
+                        {
+                            bool flag4 = num2 > 0;
+                            if (flag4)
+                            {
+                                bool flag5 = !current.CanHealNaturally() && current.IsPermanent();
+                                if (flag5)
+                                {
+                                    if (rec.def.tags.Contains(BodyPartTagDefOf.ConsciousnessSource))
+                                    {
+                                        current.Heal(Rand.Range(.03f, .05f));
+                                    }
+                                    else
+                                    {
+                                        current.Heal(Rand.Range(.15f, .25f));
+                                        //current.Heal(5.0f + (float)pwrVal * 3f); // power affects how much to heal
+                                        num--;
+                                        num2--;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         public void HealWounds()

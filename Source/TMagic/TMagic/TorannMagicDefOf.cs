@@ -93,6 +93,10 @@ namespace TorannMagic
         public static ThingDef SpellOf_BlankMind;
         public static ThingDef SpellOf_DirtDevil;
         public static ThingDef SpellOf_MechaniteReprogramming;
+        public static ThingDef SpellOf_ArcaneBolt;
+        public static ThingDef SpellOf_LightningTrap;
+        public static ThingDef SpellOf_Invisibility;
+        public static ThingDef SpellOf_BriarPatch;
 
         public static ThingDef SkillOf_Sprint;
         public static ThingDef SkillOf_GearRepair;
@@ -101,9 +105,14 @@ namespace TorannMagic
         public static ThingDef SkillOf_ThickSkin;
         public static ThingDef SkillOf_FightersFocus;
         public static ThingDef SkillOf_HeavyBlow;
+        public static ThingDef SkillOf_ThrowingKnife;
+        public static ThingDef SkillOf_BurningFury;
+        public static ThingDef SkillOf_PommelStrike;
 
         public static ThingDef ManaPotion;
         public static ThingDef FlyingObject_Spinning;
+        public static ThingDef FlyingObject_DirtDevil;
+        public static ThingDef FlyingObject_LightningTrap;
 
         public static GameConditionDef ManaDrain;
         public static GameConditionDef ManaSurge;
@@ -426,6 +435,10 @@ namespace TorannMagic
         public static TMAbilityDef TM_Repulsion_II;
         public static TMAbilityDef TM_Repulsion_III;
         public static TMAbilityDef TM_Scorn;
+        public static HediffDef TM_DemonScornHD;
+        public static HediffDef TM_DemonScornHD_I;
+        public static HediffDef TM_DemonScornHD_II;
+        public static HediffDef TM_DemonScornHD_III;
         public static TMAbilityDef TM_PsychicShock;
         public static TMAbilityDef TM_SummonDemon;
         public static ThingDef FlyingObject_DemonFlight;
@@ -640,8 +653,7 @@ namespace TorannMagic
         public static ThingDef FlyingObject_PsionicDash;
         public static ThingDef FlyingObject_PsionicStorm;
         public static ThingDef FlyingObject_PsiStorm;
-        public static ThingDef FlyingObject_PsionicLeap;
-        public static ThingDef FlyingObject_DirtDevil;
+        public static ThingDef FlyingObject_PsionicLeap;        
 
         //Death Knight
         public static TraitDef DeathKnight;
@@ -693,6 +705,14 @@ namespace TorannMagic
         public static TMAbilityDef TM_MechaniteReprogramming;
         public static HediffDef TM_ReprogrammedSensoryMechanites_HD;
         public static HediffDef TM_ReprogrammedFibrousMechanites_HD;
+        public static TMAbilityDef TM_ArcaneBolt;
+        public static TMAbilityDef TM_LightningTrap;
+        public static JobDef JobDriver_PlaceLightningTrap;
+        public static ThingDef TM_Trap_Lightning;
+        public static TMAbilityDef TM_DismissLightningTrap;
+        public static TMAbilityDef TM_Invisibility;
+        public static HediffDef TM_InvisibilityHD;
+        public static TMAbilityDef TM_BriarPatch;
 
         public static HediffDef TM_Sight;
         public static HediffDef TM_Breathing;
@@ -710,6 +730,11 @@ namespace TorannMagic
         public static TMAbilityDef TM_StrongBack;
         public static TMAbilityDef TM_ThickSkin;
         public static TMAbilityDef TM_FightersFocus;
+        public static TMAbilityDef TM_ThrowingKnife;
+        public static TMAbilityDef TM_BurningFury;
+        public static HediffDef TM_BurningFuryHD;
+        public static TMAbilityDef TM_PommelStrike;
+        public static HediffDef TM_DisablingBlowHD;
 
         //Elemental Magic
         public static TMAbilityDef TM_Elemental_Firebolt;
@@ -751,7 +776,8 @@ namespace TorannMagic
         public static ThingDef Mote_BracerBlock;
         public static ThingDef Mote_BracerBlock_NoFlash;
         public static ThingDef Mote_ThickDust;
-
+        public static ThingDef Mote_ArcaneBlast;
+        public static ThingDef Mote_Strike;
 
         public static EffecterDef GiantExplosion;
         public static EffecterDef TM_GiantExplosion;
@@ -763,6 +789,11 @@ namespace TorannMagic
         public static EffecterDef TM_FearWave;
         public static EffecterDef TM_BFBEffecter;
         public static EffecterDef TM_BloodShieldEffecter;
+        public static EffecterDef TM_InvisibilityEffecter;
+        public static EffecterDef TM_AttractionEffecter;
+        public static EffecterDef TM_AttractionEffecter_I;
+        public static EffecterDef TM_AttractionEffecter_II;
+        public static EffecterDef TM_AttractionEffecter_III;
 
         //Apparel layers
         public static ApparelLayerDef TM_Cloak;
@@ -790,11 +821,13 @@ namespace TorannMagic
         public static JobDef JobDriver_SummonDemon;
         public static JobDef JobDriver_PsionicBarrier;
         public static JobDef JobDriver_TM_Teach;
+        public static JobDef JobDriver_TM_GotoAndWait;
 
         //Things
         public static ThingDef RawMagicyte;
         public static ThingDef TM_Plant_Paracyte;
         public static ThingDef TM_Syrrium;
+        public static ThingDef TM_Plant_Briar;
 
         //Sounds
         public static SoundDef ItemEnchanted;
@@ -842,11 +875,16 @@ namespace TorannMagic
         public static PawnCapacityDef MagicManipulation;
         public static WorkTypeDef TM_Magic;
 
-        //Forge
+        //Structures
         public static AbilityDef Forge_Verb;
         public static ThingDef TableArcaneForge;
         public static RecipeDef ArcaneForge_Replication;
         public static RecipeDef ArcaneForge_Replication_Restore;
+        public static ThingDef TableMagicPrinter;
+        public static ThingDef TableGemcutting;
+        public static ThingDef TM_Portal;
+        public static ThingDef TM_ArcaneCapacitor;
+        public static ThingDef TM_DimensionalManaPocket;
 
         //ThoughtDefs
         //public static ThoughtDef AteMysteryMeatDirect;

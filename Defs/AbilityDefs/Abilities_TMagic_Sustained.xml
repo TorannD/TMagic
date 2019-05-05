@@ -221,5 +221,54 @@
 		</targetParams>
     </MainVerb>
   </TorannMagic.TMAbilityDef>
+  
+ <!-- Burning Fury -->
+
+ <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_BurningFury</defName>
+    <label>Burning Fury</label>
+    <uiIconPath>UI/burningfury</uiIconPath>
+    <description>Activates or deactivates the sustained combat skill Burning Fury.
+	
+Burning Fury causes periodic burning damage to nearby enemies as well as the caster. It also cauterizes bleeding wounds and applies a combat enhancement on the caster.
+
+Burning Fury:
+Movement +10%
+Breathing +40%
+Blood pumping +40%
+Pain threshold +40%
+Armor (Heat) +100%
+
+While active, the caster cannot be staggered and will reduce all incoming damage by 35%.
+
+This ability actively consumes stamina, and will automatically cancel once the caster's stamina reaches 0.</description>
+    <staminaCost>0.0</staminaCost>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_BurningFury</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_BurningFury</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_Sustained</defaultProjectile>
+        <warmupTime>0</warmupTime>
+        <SecondsToRecharge>10</SecondsToRecharge>
+        <range>0</range>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+   	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>true</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+  
+  
 
 </Defs>

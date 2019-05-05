@@ -15,6 +15,22 @@
   
   <!-- Torann Magic Damage Defs -->  	
   
+	<DamageDef ParentName="TM_LocalInjuryBase">
+		<defName>TM_Arcane</defName>
+		<label>Arcane</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} was destroyed by arcane power.</deathMessage>
+		<hediff>TM_ArcaneHD</hediff>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+		<defaultDamage>10</defaultDamage>
+		<armorCategory>Dark</armorCategory>
+		<explosionSnowMeltAmount>.2</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_ArcaneBlast</explosionCellMote>
+		<explosionColorCenter>(.8, .35, .8)</explosionColorCenter>
+		<explosionColorEdge>(1, .85, 1)</explosionColorEdge>
+		<soundExplosion>Explosion_Flame</soundExplosion>
+	</DamageDef>
+  
   	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_BlazingPower</defName>
 		<label>Blazing Power</label>
@@ -177,7 +193,7 @@
 	
 	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_Overwhelm</defName>
-		<label>Divine Power</label>
+		<label>overwhelming light</label>
 		<externalViolence>true</externalViolence>
 		<deathMessage>{0} was destroyed by holy power.</deathMessage>
 		<hediff>TM_Holy</hediff>
@@ -882,5 +898,22 @@
 	<harmsHealth>true</harmsHealth>
 	<makesBlood>true</makesBlood>
   </DamageDef>
+  
+  <DamageDef ParentName="TM_LocalInjuryBase">
+		<defName>TM_DisablingBlow</defName>
+		<label>disabling blow</label>
+		<externalViolence>true</externalViolence>
+		<canInterruptJobs>true</canInterruptJobs>
+		<makesBlood>false</makesBlood>
+		<hasForcefulImpact>true</hasForcefulImpact>
+		<deathMessage>{0} died from blunt force trauma...</deathMessage>
+		<hediff>TM_DisablingBlowHD</hediff>
+		<hediffSkin>TM_DisablingBlowHD</hediffSkin>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<isExplosive>false</isExplosive>
+		<impactSoundType>Blunt</impactSoundType>
+		<armorCategory>Blunt</armorCategory>
+	</DamageDef>
 	
 </Defs>

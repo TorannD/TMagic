@@ -27,7 +27,7 @@ namespace TorannMagic
         {
             
             return (from p in pawn.Map.listerBuildings.allBuildingsColonist
-                    where p.def.defName == "TM_Portal" || p.def.defName == "TM_ArcaneCapacitor" || p.def.defName == "TM_DimensionalManaPocket"
+                    where p.def == TorannMagicDefOf.TM_Portal || p.def == TorannMagicDefOf.TM_ArcaneCapacitor || p.def == TorannMagicDefOf.TM_DimensionalManaPocket
                     select p).Cast<Thing>();
         }
 

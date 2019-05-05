@@ -112,7 +112,14 @@ namespace TorannMagic
                 {
                     if (this.duration <= 5 && !this.pawn.DestroyedOrNull() && !this.pawn.Dead && !this.pawn.Downed)
                     {
-                        verb.Ability.PostAbilityAttempt();                        
+                        //ShootLine shootLine;
+                        //bool validTarg = verb.TryFindShootLineFromTo(pawn.Position, TargetLocA, out shootLine);
+                        //bool inRange = (pawn.Position - TargetLocA).LengthHorizontal < verb.verbProps.range;
+                        //if (inRange && validTarg)
+                        //{
+                        verb.Ability.PostAbilityAttempt();
+                        this.pawn.ClearReservationsForJob(this.job);
+                        //}
                     }                    
                 });
                 //if (combatToil.actor.CurJob != this.job)
@@ -215,6 +222,7 @@ namespace TorannMagic
                                 if (this.duration <= 5 && !this.pawn.DestroyedOrNull() && !this.pawn.Dead && !this.pawn.Downed)
                                 {
                                     verb.Ability.PostAbilityAttempt();
+                                    this.pawn.ClearReservationsForJob(this.job);
                                 }
                             });
                             toil.defaultCompleteMode = ToilCompleteMode.FinishedBusy;

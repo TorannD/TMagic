@@ -38,7 +38,7 @@ namespace TorannMagic.Conditions
 
         public override void Init()
         {           
-            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();            
             if (settingsRef.riftChallenge > 0)
             {
                 base.Init();

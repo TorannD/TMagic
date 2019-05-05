@@ -62,6 +62,24 @@ namespace TorannMagic
                     comp.InitializeSkill();
                     this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
+                else if(parent.def == TorannMagicDefOf.SkillOf_ThrowingKnife && comp.skill_ThrowingKnife == false && !comp.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                {
+                    comp.skill_ThrowingKnife = true;
+                    comp.InitializeSkill();
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def == TorannMagicDefOf.SkillOf_BurningFury && comp.skill_BurningFury == false && !comp.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                {
+                    comp.skill_BurningFury = true;
+                    comp.InitializeSkill();
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def == TorannMagicDefOf.SkillOf_PommelStrike && comp.skill_PommelStrike == false && !comp.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                {
+                    comp.skill_PommelStrike = true;
+                    comp.InitializeSkill();
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                }
                 else
                 {
                     Messages.Message("CannotLearnSkill".Translate(), MessageTypeDefOf.RejectInput);

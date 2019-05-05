@@ -92,6 +92,7 @@ AoE Size: 5</description>
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_SootheAnimal</defaultProjectile>
             <abilityDef>TM_SootheAnimal</abilityDef>
             <warmupTime>3</warmupTime>
@@ -140,6 +141,7 @@ AoE Size: 6</description>
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_SootheAnimal</defaultProjectile>
             <abilityDef>TM_SootheAnimal_I</abilityDef>
             <warmupTime>3</warmupTime>
@@ -188,6 +190,7 @@ AoE Size: 7</description>
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_SootheAnimal</defaultProjectile>
             <abilityDef>TM_SootheAnimal_II</abilityDef>
             <warmupTime>2.5</warmupTime>
@@ -236,6 +239,7 @@ AoE Size: 8</description>
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_SootheAnimal</defaultProjectile>
             <abilityDef>TM_SootheAnimal_III</abilityDef>
             <warmupTime>2</warmupTime>
@@ -290,7 +294,7 @@ AoE Size: 8</description>
         <defName>TM_Regenerate</defName>
         <label>Regenerate</label>
         <uiIconPath>UI/Regen</uiIconPath>
-        <description>Regeneration acts natural curative that continues to work over time and will restore even grievous wounds if given enough time. Only cures physical injuries and will not restore destroyed body parts.</description>
+        <description>Regeneration acts natural curative that continues to work over time and will restore even grievous wounds if given enough time. Base regeneration restores 4 health to 1 wound. Only cures physical injuries and will not restore or heal destroyed body parts.</description>
         <manaCost>0.40</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Regenerate</verbClass>
@@ -299,6 +303,7 @@ AoE Size: 8</description>
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_Regenerate</defaultProjectile>
             <abilityDef>TM_Regenerate</abilityDef>
             <warmupTime>2</warmupTime>

@@ -26,7 +26,7 @@
     <defName>TM_AdvancedHeal</defName>
     <label>Advanced Heal</label>
     <uiIconPath>UI/advancedheal</uiIconPath>
-    <description>Invokes a divine power to greatly heal the wounds of a target.</description>
+    <description>Invokes holy power to greatly heal the wounds of a target. Base heal restores 14 health for up to 3 wounds. Will immediately seal the bleeding of wounds from missing bodyparts.</description>
     <manaCost>0.24</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_AdvancedHeal</verbClass>
@@ -35,6 +35,7 @@
 			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
         <hasStandardCommand>true</hasStandardCommand>
+		<requiresLineOfSight>false</requiresLineOfSight>
 		<abilityDef>TM_AdvancedHeal</abilityDef>
 		<isViolent>false</isViolent>
         <defaultProjectile>TM_Projectile_Priest</defaultProjectile>
@@ -59,7 +60,7 @@
     <defName>TM_Purify</defName>
     <label>Purify</label>
     <uiIconPath>UI/purify</uiIconPath>
-    <description>Invokes a divine power to purify scars on the body, mind, and soul.</description>
+    <description>Invokes holy power to purify scars on the body, mind, and soul.</description>
     <manaCost>0.70</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Purify</verbClass>
@@ -71,7 +72,7 @@
 		<abilityDef>TM_Purify</abilityDef>
 		<isViolent>false</isViolent>
         <defaultProjectile>TM_Projectile_Priest</defaultProjectile>
-        <warmupTime>8</warmupTime>
+        <warmupTime>6</warmupTime>
         <SecondsToRecharge>600</SecondsToRecharge>
         <range>16</range>
         <soundCast>Message_PositiveEvent</soundCast>
@@ -165,7 +166,7 @@
         <defName>TM_HealingCircle</defName>
         <label>Healing Circle</label>
         <uiIconPath>UI/healingcircle</uiIconPath>
-        <description>Creates a field that heals friendly pawns within.
+        <description>Creates a field of light that heals friendly pawns within. Base ability heals 1 wound by 10 health for each pawn healed. Cannot heal injuries of missing bodyparts.
 		
 Circle radius: 3
 Range: 30</description>
@@ -201,7 +202,7 @@ Range: 30</description>
         <defName>TM_HealingCircle_I</defName>
         <label>Healing Circle (I)</label>
         <uiIconPath>UI/healingcircle</uiIconPath>
-        <description>Creates a field that heals friendly pawns within.
+        <description>Creates a field of light that heals friendly pawns within. Base ability heals 1 wound by 10 health for each pawn healed. Cannot heal injuries of missing bodyparts.
 		
 Circle radius: 4
 Range: 35</description>
@@ -237,7 +238,7 @@ Range: 35</description>
         <defName>TM_HealingCircle_II</defName>
         <label>Healing Circle (II)</label>
         <uiIconPath>UI/healingcircle</uiIconPath>
-        <description>Creates a field that heals friendly pawns within.
+        <description>Creates a field of light that heals friendly pawns within. Base ability heals 1 wound by 10 health for each pawn healed. Cannot heal injuries of missing bodyparts.
 		
 Circle radius: 5.5
 Range: 40</description>
@@ -273,7 +274,7 @@ Range: 40</description>
         <defName>TM_HealingCircle_III</defName>
         <label>Healing Circle (III)</label>
         <uiIconPath>UI/healingcircle</uiIconPath>
-        <description>Creates a field that heals friendly pawns within.
+        <description>Creates a field of light that heals friendly pawns within. Base ability heals 1 wound by 10 health for each pawn healed. Cannot heal injuries of missing bodyparts.
 		
 Circle radius: 7
 Range: 45</description>
@@ -311,7 +312,7 @@ Range: 45</description>
         <defName>TM_BestowMight</defName>
         <label>Bestow Might</label>
         <uiIconPath>UI/bestowmight</uiIconPath>
-        <description>Blesses a single target with greatly increased physical power.
+        <description>Blesses a single target with greatly increased physical power. 
 		
 Duration: 		30-40s
 Physical capacity: 	+40%
@@ -325,6 +326,7 @@ Pain:		-40%</description>
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>TM_Projectile_Priest</defaultProjectile>
             <abilityDef>TM_BestowMight</abilityDef>
             <warmupTime>1</warmupTime>
@@ -369,6 +371,7 @@ Pain:		-50%</description>
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>TM_Projectile_Priest</defaultProjectile>
             <abilityDef>TM_BestowMight_I</abilityDef>
             <warmupTime>1</warmupTime>
@@ -413,6 +416,7 @@ Pain:		-60%</description>
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>TM_Projectile_Priest</defaultProjectile>
             <abilityDef>TM_BestowMight_II</abilityDef>
             <warmupTime>1</warmupTime>
@@ -457,6 +461,7 @@ Pain:		-70%</description>
 				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>TM_Projectile_Priest</defaultProjectile>
             <abilityDef>TM_BestowMight_III</abilityDef>
             <warmupTime>1</warmupTime>

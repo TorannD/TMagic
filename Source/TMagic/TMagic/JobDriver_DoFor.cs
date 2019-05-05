@@ -24,15 +24,16 @@ namespace TorannMagic
             {
                 initAction = () =>
                 {
-                    this.durationTicks = this.job.takeExtraIngestibles;
+                    if(this.age > this.durationTicks)
+                    {
+                        this.EndJobWith(JobCondition.InterruptForced);
+                    }
                 },
                 tickAction = () =>
                 {
                     if (age > durationTicks)
                     {
                         this.EndJobWith(JobCondition.Succeeded);
-                        
-                        age = 0;
                     }
                     age++;
                 },

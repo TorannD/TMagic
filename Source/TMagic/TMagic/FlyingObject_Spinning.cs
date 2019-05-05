@@ -306,16 +306,17 @@ namespace TorannMagic
             }
             try
             {
-                SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);                
+                SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
 
                 GenSpawn.Spawn(this.flyingThing, base.Position, base.Map);
-                Pawn p = this.flyingThing as Pawn;
-                if (p.IsColonist && this.drafted)
-                {
-                    p.drafter.Drafted = true;
-                }
+                
                 if (this.flyingThing is Pawn)
                 {
+                    Pawn p = this.flyingThing as Pawn;
+                    if (p.IsColonist && this.drafted)
+                    {
+                        p.drafter.Drafted = true;
+                    }
                     if (this.earlyImpact)
                     {
                         damageEntities(p, this.impactForce, DamageDefOf.Blunt);
@@ -324,7 +325,7 @@ namespace TorannMagic
                 }
                 else if (flyingThing.def.thingCategories != null && (flyingThing.def.thingCategories.Contains(ThingCategoryDefOf.Chunks) || flyingThing.def.thingCategories.Contains(ThingCategoryDef.Named("StoneChunks"))))
                 {
-                    float radius = 3f;
+                    float radius = 4f;
                     Vector3 center = this.ExactPosition;
                     if (this.earlyImpact)
                     {
@@ -353,30 +354,60 @@ namespace TorannMagic
 
                     }
 
-                    int num = GenRadial.NumCellsInRadius(radius);
-                    for (int i = 0; i < (num *.75f); i++)
+                    List<IntVec3> damageRing = GenRadial.RadialCellsAround(base.Position, radius, true).ToList();
+                    List<IntVec3> outsideRing =  GenRadial.RadialCellsAround(base.Position, radius, false).Except(GenRadial.RadialCellsAround(base.Position, radius -1, true)).ToList();
+                    for(int i = 0; i < damageRing.Count; i++)
                     {
-                        IntVec3 intVec = center.ToIntVec3() + GenRadial.RadialPattern[Rand.Range(1, num)];
+                        List<Thing> allThings = damageRing[i].GetThingList(base.Map);
+                        for(int j =0; j < allThings.Count; j++)
+                        {
+                            if(allThings[j] is Pawn)
+                            {
+                                damageEntities(allThings[j], Rand.Range(14, 22), DamageDefOf.Blunt);
+                            }
+                            else if(allThings[j] is Building)
+                            {
+                                damageEntities(allThings[j], Rand.Range(56, 88), DamageDefOf.Blunt);
+                            }
+                            else
+                            {
+                                if (Rand.Chance(.1f))
+                                {
+                                    GenPlace.TryPlaceThing(ThingMaker.MakeThing(ThingDefOf.Filth_RubbleRock), damageRing[i], base.Map, ThingPlaceMode.Near);
+                                }
+                            }
+                        }
+                    }
+                    for (int i = 0; i < outsideRing.Count; i++)
+                    {
+                        IntVec3 intVec = outsideRing[i];
                         if (intVec.IsValid && intVec.InBounds(base.Map))
                         {
                             Vector3 moteDirection = TM_Calc.GetVector(this.ExactPosition.ToIntVec3(), intVec);
-                            TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Rubble"), this.ExactPosition, base.Map, Rand.Range(.3f, .5f), .2f, .02f, .05f, Rand.Range(-100, 100), 12f, (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
-                            GenExplosion.DoExplosion(intVec, base.Map, .4f, DamageDefOf.Blunt, pawn, Rand.Range(14, 22), 0, SoundDefOf.Pawn_Melee_Punch_HitBuilding, null, null, null, ThingDefOf.Filth_RubbleRock, .6f, 1, false, null, 0f, 1, 0, false);
-                            MoteMaker.ThrowSmoke(intVec.ToVector3Shifted(), base.Map, Rand.Range(.6f, 1f));
+                            TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Rubble"), this.ExactPosition, base.Map, Rand.Range(.3f, .6f), .2f, .02f, .05f, Rand.Range(-100, 100), Rand.Range(8f,13f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
+                            TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, this.ExactPosition, base.Map, Rand.Range(.9f, 1.2f), .3f, .02f, Rand.Range(.25f, .4f), Rand.Range(-100, 100), Rand.Range(5f, 8f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
+                            GenExplosion.DoExplosion(intVec, base.Map, .4f, DamageDefOf.Blunt, pawn, 0, 0, SoundDefOf.Pawn_Melee_Punch_HitBuilding, null, null, null, ThingDefOf.Filth_RubbleRock, .4f, 1, false, null, 0f, 1, 0, false);
+                            //MoteMaker.ThrowSmoke(intVec.ToVector3Shifted(), base.Map, Rand.Range(.6f, 1f));
                         }
                     }
-                    damageEntities(p, 305, DamageDefOf.Blunt);
+                    //damageEntities(this.flyingThing, 305, DamageDefOf.Blunt);
+                    this.flyingThing.Destroy(DestroyMode.Vanish);
                 }
                 this.Destroy(DestroyMode.Vanish);
             }
             catch
             {
-                GenSpawn.Spawn(this.flyingThing, base.Position, base.Map);
-                Pawn p = this.flyingThing as Pawn;
-
+                if (!this.flyingThing.Spawned)
+                {
+                    GenSpawn.Spawn(this.flyingThing, base.Position, base.Map);
+                }
+                if (this.flyingThing is Pawn)
+                {
+                    Pawn p = this.flyingThing as Pawn;
+                }
                 this.Destroy(DestroyMode.Vanish);
             }
-        }
+}
 
         public void damageEntities(Thing e, float d, DamageDef type)
         {

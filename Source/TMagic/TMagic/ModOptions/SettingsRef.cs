@@ -9,6 +9,7 @@ namespace TorannMagic.ModOptions
         public float needMultiplier = Settings.Instance.needMultiplier;
         public float deathExplosionRadius = Settings.Instance.deathExplosionRadius;
         public bool AICasting = Settings.Instance.AICasting;
+        public bool AIAggressiveCasting = Settings.Instance.AIAggressiveCasting;
         public bool AIHardMode = Settings.Instance.AIHardMode;
         public bool AIMarking = Settings.Instance.AIMarking;
         public bool AIFighterMarking = Settings.Instance.AIFighterMarking;
@@ -26,6 +27,7 @@ namespace TorannMagic.ModOptions
         public bool showLevelUpMessage = Settings.Instance.showLevelUpMessage;
         public bool changeUndeadPawnAppearance = Settings.Instance.changeUndeadPawnAppearance;
         public bool changeUndeadAnimalAppearance = Settings.Instance.changeUndeadAnimalAppearance;
+        public bool showClassIconOnColonistBar = Settings.Instance.showClassIconOnColonistBar;
         public bool unrestrictedBloodTypes = Settings.Instance.unrestrictedBloodTypes;
 
         //autocast

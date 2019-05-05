@@ -39,8 +39,8 @@ namespace TorannMagic
                 verVal = ver.level;
                 if (settingsRef.AIHardMode && !pawn.IsColonist)
                 {
-                    pwrVal = 3;
-                    verVal = 3;
+                    pwrVal = 1;
+                    verVal = 1;
                 }
                 CellRect cellRect = CellRect.CenteredOn(this.Position, 4);
                 cellRect.ClipInsideMap(map);

@@ -295,6 +295,30 @@ namespace TorannMagic
                     comp.InitializeSpell();
                     this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
+                else if (parent.def == TorannMagicDefOf.SpellOf_ArcaneBolt && comp.spell_ArcaneBolt == false && !comp.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                {
+                    comp.spell_ArcaneBolt = true;
+                    comp.InitializeSpell();
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def == TorannMagicDefOf.SpellOf_LightningTrap && comp.spell_LightningTrap == false && !comp.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                {
+                    comp.spell_LightningTrap = true;
+                    comp.InitializeSpell();
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def == TorannMagicDefOf.SpellOf_Invisibility && comp.spell_Invisibility == false)
+                {
+                    comp.spell_Invisibility = true;
+                    comp.InitializeSpell();
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def == TorannMagicDefOf.SpellOf_BriarPatch && comp.spell_BriarPatch == false && user.story.traits.HasTrait(TorannMagicDefOf.Druid))
+                {
+                    comp.spell_BriarPatch = true;
+                    comp.InitializeSpell();
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                }
                 else
                 {
                     Messages.Message("CannotLearnSpell".Translate(), MessageTypeDefOf.RejectInput);

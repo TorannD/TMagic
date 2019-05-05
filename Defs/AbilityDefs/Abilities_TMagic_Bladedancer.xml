@@ -252,6 +252,7 @@ Range: 30</description>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PhaseStrike</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_PhaseStrike</defaultProjectile>
             <abilityDef>TM_PhaseStrike</abilityDef>
 			<AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
@@ -286,6 +287,7 @@ Range: 35</description>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PhaseStrike</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_PhaseStrike</defaultProjectile>
 			<AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
             <abilityDef>TM_PhaseStrike_I</abilityDef>
@@ -320,6 +322,7 @@ Range: 40</description>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PhaseStrike</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_PhaseStrike</defaultProjectile>
 			<AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
             <abilityDef>TM_PhaseStrike_II</abilityDef>
@@ -354,6 +357,7 @@ Range: 45</description>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PhaseStrike</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_PhaseStrike</defaultProjectile>
 			<AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
             <abilityDef>TM_PhaseStrike_III</abilityDef>

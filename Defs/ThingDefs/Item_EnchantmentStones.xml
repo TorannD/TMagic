@@ -435,7 +435,7 @@
   <ThingDef ParentName="MagicResourceBase">
     <defName>TM_EStone_wonder_minor</defName>
     <label>Minor Arcane Gem of Wonder</label>
-    <description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem hums with intense power, as if perpetually suspended at the edge of a waterfall. This gem can be used to imbue an item with magical potential, granting minor bonuses to all enchantment categories.</description>
+    <description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem hums with intense power. This gem can be used to imbue an item with magical potential, granting minor bonuses to all enchantment categories.</description>
     <graphicData>
       <texPath>Items/Gemstones/wonderstone_minor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -453,7 +453,7 @@
   <ThingDef ParentName="MagicResourceBase">
     <defName>TM_EStone_wonder</defName>
     <label>Arcane Gem of Wonder</label>
-    <description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem hums with intense power, as if perpetually suspended at the edge of a waterfall. This gem can be used to imbue an item with magical potential, granting moderate bonuses to all enchantment categories.</description>
+    <description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem hums with intense power. This gem can be used to imbue an item with magical potential, granting moderate bonuses to all enchantment categories.</description>
     <graphicData>
       <texPath>Items/Gemstones/wonderstone</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -471,7 +471,7 @@
   <ThingDef ParentName="MagicResourceBase">
     <defName>TM_EStone_wonder_major</defName>
     <label>Major Arcane Gem of Wonder</label>
-    <description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem hums with intense power, as if perpetually suspended at the edge of a waterfall. This gem can be used to imbue an item with magical potential, granting major bonuses to all enchantment categories.</description>
+    <description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem hums with intense power. This gem can be used to imbue an item with magical potential, granting major bonuses to all enchantment categories.</description>
     <graphicData>
       <texPath>Items/Gemstones/wonderstone_major</texPath>
       <graphicClass>Graphic_Single</graphicClass>

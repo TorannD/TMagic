@@ -32,7 +32,7 @@ namespace TorannMagic
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_References.Look<Pawn>(ref this.trapPawn, "trapPawn", false);
+            //Scribe_References.Look<Pawn>(ref this.trapPawn, "trapPawn", false);
         }
 
         private void CheckPawn(IntVec3 position)
@@ -65,7 +65,7 @@ namespace TorannMagic
                 for (int j = 0; j < 8; j++)
                 {
                     IntVec3 intVec = this.Position + GenAdj.AdjacentCells[j];
-                    CheckPawn(intVec);  
+                    CheckPawn(intVec);
                 }
                 for (int j = 0; j < this.touchingPawns.Count; j++)
                 {
@@ -84,7 +84,7 @@ namespace TorannMagic
                     this.SpringSub(this.trapPawn);
                 }
             }
-            
+
             base.Tick();
         }
 
@@ -108,7 +108,7 @@ namespace TorannMagic
         {
             SoundDefOf.EnergyShield_Broken.PlayOneShot(new TargetInfo(base.Position, base.Map, false));
             this.trapPawn = p;
-            this.trapSprung = true;            
+            this.trapSprung = true;
         }
 
         protected override float SpringChance(Pawn p)
@@ -173,7 +173,7 @@ namespace TorannMagic
                 text += "Trap Not Armed";
             }
             return text;
-        }        
+        }
 
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {

@@ -22,6 +22,7 @@ namespace TorannMagic
         public int nextAoEAttack = 0;
         public int nextKnockbackAttack = 0;
         public int nextChargeAttack = 0;
+        public int nextTaunt = 0;
 
         private int rangedBurstShots = 0;
         private int rangedNextBurst = 0;
@@ -177,13 +178,70 @@ namespace TorannMagic
         private void DoChargeAttack(LocalTargetInfo t)
         {
             this.nextChargeAttack = this.Props.chargeCooldownTicks + Find.TickManager.TicksGame;
-            bool flag = t.Cell != default(IntVec3);
+            bool flag = t.Cell != default(IntVec3) && t.Cell.DistanceToEdge(this.Pawn.Map) > 6;
             if (flag)
             {
                 this.Pawn.rotationTracker.Face(t.CenterVector3);
                 FlyingObject_DemonFlight flyingObject = (FlyingObject_DemonFlight)GenSpawn.Spawn(ThingDef.Named("FlyingObject_DemonFlight"), this.Pawn.Position, this.Pawn.Map);
                 flyingObject.Launch(this.Pawn, t.Cell, this.Pawn);
 
+            }
+        }
+
+        private int NextTaunt
+        {
+            get
+            {
+                if (this.Props.chargeCooldownTicks > 0)
+                {
+                    return this.nextTaunt;
+                }
+                else
+                {
+                    return Find.TickManager.TicksGame;
+                }
+            }
+        }
+
+        private void DoTaunt(Map map)
+        {
+            this.nextTaunt = this.Props.tauntCooldownTicks + Find.TickManager.TicksGame;
+            if (map != null)
+            {
+                List<Pawn> threatPawns = map.mapPawns.AllPawnsSpawned;
+                bool anyPawnsTaunted = false;
+                if (threatPawns != null && threatPawns.Count > 0)
+                {
+                    for (int i = 0; i < threatPawns.Count; i++)
+                    {
+                        if (threatPawns[i].Faction != null && this.Pawn.Faction != null && threatPawns[i].Faction.HostileTo(this.Pawn.Faction) && !threatPawns[i].IsColonist)
+                        {
+                            if (threatPawns[i].jobs != null && threatPawns[i].CurJob != null && threatPawns[i].CurJob.targetA != null && threatPawns[i].CurJob.targetA.Thing != null && threatPawns[i].CurJob.targetA.Thing != this.Pawn)
+                            {
+                                if (Rand.Chance(this.Props.tauntChance) && (threatPawns[i].Position - this.Pawn.Position).LengthHorizontal < 60)
+                                {
+                                    //Log.Message("taunting " + threatPawns[i].LabelShort + " doing job " + threatPawns[i].CurJobDef.defName + " with follow radius of " + threatPawns[i].CurJob.followRadius);
+                                    if(threatPawns[i].CurJobDef == JobDefOf.Follow || threatPawns[i].CurJobDef == JobDefOf.FollowClose)
+                                    {
+                                        Job job = new Job(JobDefOf.AttackMelee, this.Pawn);
+                                        threatPawns[i].jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                                    }
+                                    else
+                                    {
+                                        Job job = new Job(threatPawns[i].CurJobDef, this.Pawn);
+                                        threatPawns[i].jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                                    }                                        
+                                    anyPawnsTaunted = true;                                    
+                                    //Log.Message("taunting " + threatPawns[i].LabelShort);
+                                }
+                            }
+                        }
+                    }
+                    if (anyPawnsTaunted)
+                    {
+                        MoteMaker.ThrowText(this.Pawn.DrawPos, this.Pawn.Map, "TM_Taunting".Translate(), -1);
+                    }
+                }
             }
         }
 
@@ -243,6 +301,12 @@ namespace TorannMagic
                 {
                     if (!this.Pawn.Downed)
                     {
+                        if (this.NextTaunt < Find.TickManager.TicksGame)
+                        {
+                            DoTaunt(this.Pawn.Map);
+                            this.nextTaunt = this.Props.tauntCooldownTicks + Find.TickManager.TicksGame;
+                        }
+
                         if (this.rangedBurstShots > 0 && this.rangedNextBurst < Find.TickManager.TicksGame)
                         {
                             DoRangedAttack(this.rangedTarget);
@@ -275,6 +339,7 @@ namespace TorannMagic
                                     else if (this.NextChargeAttack < Find.TickManager.TicksGame && TargetIsValid(currentTargetThing))
                                     {
                                         DoChargeAttack(currentTargetThing);
+                                        goto exitTick;
                                     }
                                 }
                             }
@@ -313,6 +378,7 @@ namespace TorannMagic
                                     {
                                         this.Pawn.TryStartAttack(tempTarget);
                                         DoChargeAttack(tempTarget);
+                                        goto exitTick;
                                     }
                                 }
                             }
@@ -386,6 +452,7 @@ namespace TorannMagic
                     }
                 }
             }
+            exitTick:;
             age++;
         }
 

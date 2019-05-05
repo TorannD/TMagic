@@ -40,8 +40,8 @@
       <TM_EStone_maxMP_minor>1</TM_EStone_maxMP_minor>
     </products>
     <skillRequirements>
-      <Crafting>8</Crafting>
-	  <Intellectual>4</Intellectual>
+      <Crafting>6</Crafting>
+	  <Intellectual>2</Intellectual>
     </skillRequirements>
     <workSkill>Intellectual</workSkill>
   </RecipeDef>
@@ -83,8 +83,7 @@
     </products>
     <skillRequirements>
       <Crafting>10</Crafting>
-	  <Intellectual>6</Intellectual>
-	  <Artistic>2</Artistic>
+	  <Intellectual>4</Intellectual>
     </skillRequirements>
 	<researchPrerequisite>TM_AdvancedEnchanting</researchPrerequisite>
     <workSkill>Crafting</workSkill>
@@ -126,9 +125,8 @@
       <TM_EStone_maxMP_major>1</TM_EStone_maxMP_major>
     </products>
     <skillRequirements>
-      <Crafting>14</Crafting>
-	  <Intellectual>8</Intellectual>
-	  <Artistic>5</Artistic>
+      <Crafting>12</Crafting>
+	  <Intellectual>6</Intellectual>
     </skillRequirements>
 	<researchPrerequisite>TM_ExpertEnchanting</researchPrerequisite>
     <workSkill>Crafting</workSkill>
@@ -171,8 +169,8 @@
       <TM_EStone_coolDown_minor>1</TM_EStone_coolDown_minor>
     </products>
     <skillRequirements>
-      <Crafting>8</Crafting>
-	  <Intellectual>4</Intellectual>
+      <Crafting>6</Crafting>
+	  <Intellectual>2</Intellectual>
     </skillRequirements>
     <workSkill>Crafting</workSkill>
   </RecipeDef>
@@ -214,8 +212,7 @@
     </products>
     <skillRequirements>
       <Crafting>10</Crafting>
-	  <Intellectual>6</Intellectual>
-	  <Artistic>2</Artistic>
+	  <Intellectual>4</Intellectual>
     </skillRequirements>
 	<researchPrerequisite>TM_AdvancedEnchanting</researchPrerequisite>
     <workSkill>Crafting</workSkill>
@@ -257,9 +254,8 @@
       <TM_EStone_coolDown_major>1</TM_EStone_coolDown_major>
     </products>
     <skillRequirements>
-      <Crafting>14</Crafting>
-	  <Intellectual>8</Intellectual>
-	  <Artistic>5</Artistic>
+      <Crafting>12</Crafting>
+	  <Intellectual>6</Intellectual>
     </skillRequirements>
 	<researchPrerequisite>TM_ExpertEnchanting</researchPrerequisite>
     <workSkill>Crafting</workSkill>
@@ -302,8 +298,8 @@
       <TM_EStone_mpCost_minor>1</TM_EStone_mpCost_minor>
     </products>
     <skillRequirements>
-      <Crafting>8</Crafting>
-	  <Intellectual>4</Intellectual>
+      <Crafting>6</Crafting>
+	  <Intellectual>2</Intellectual>
     </skillRequirements>
     <workSkill>Crafting</workSkill>
   </RecipeDef>
@@ -345,8 +341,7 @@
     </products>
     <skillRequirements>
       <Crafting>10</Crafting>
-	  <Intellectual>6</Intellectual>
-	  <Artistic>2</Artistic>
+	  <Intellectual>4</Intellectual>
     </skillRequirements>
 	<researchPrerequisite>TM_AdvancedEnchanting</researchPrerequisite>
     <workSkill>Crafting</workSkill>
@@ -388,9 +383,8 @@
       <TM_EStone_mpCost_major>1</TM_EStone_mpCost_major>
     </products>
     <skillRequirements>
-      <Crafting>14</Crafting>
-	  <Intellectual>8</Intellectual>
-	  <Artistic>5</Artistic>
+      <Crafting>12</Crafting>
+	  <Intellectual>6</Intellectual>
     </skillRequirements>
 	<researchPrerequisite>TM_ExpertEnchanting</researchPrerequisite>
     <workSkill>Crafting</workSkill>
@@ -433,8 +427,8 @@
       <TM_EStone_mpRegenRate_minor>1</TM_EStone_mpRegenRate_minor>
     </products>
     <skillRequirements>
-      <Crafting>8</Crafting>
-	  <Intellectual>4</Intellectual>
+      <Crafting>6</Crafting>
+	  <Intellectual>2</Intellectual>
     </skillRequirements>
     <workSkill>Crafting</workSkill>
   </RecipeDef>
@@ -476,8 +470,7 @@
     </products>
     <skillRequirements>
       <Crafting>10</Crafting>
-	  <Intellectual>6</Intellectual>
-	  <Artistic>2</Artistic>
+	  <Intellectual>4</Intellectual>
     </skillRequirements>
 	<researchPrerequisite>TM_AdvancedEnchanting</researchPrerequisite>
     <workSkill>Crafting</workSkill>
@@ -519,9 +512,8 @@
       <TM_EStone_mpRegenRate_major>1</TM_EStone_mpRegenRate_major>
     </products>
     <skillRequirements>
-      <Crafting>14</Crafting>
-	  <Intellectual>8</Intellectual>
-	  <Artistic>5</Artistic>
+      <Crafting>12</Crafting>
+	  <Intellectual>6</Intellectual>
     </skillRequirements>
 	<researchPrerequisite>TM_ExpertEnchanting</researchPrerequisite>
     <workSkill>Crafting</workSkill>
@@ -565,8 +557,8 @@
       <TM_EStone_xpGain_minor>1</TM_EStone_xpGain_minor>
     </products>
     <skillRequirements>
-      <Crafting>8</Crafting>
-	  <Intellectual>4</Intellectual>
+      <Crafting>6</Crafting>
+	  <Intellectual>2</Intellectual>
     </skillRequirements>
     <workSkill>Crafting</workSkill>
   </RecipeDef>
@@ -608,8 +600,7 @@
     </products>
     <skillRequirements>
       <Crafting>10</Crafting>
-	  <Intellectual>6</Intellectual>
-	  <Artistic>2</Artistic>
+	  <Intellectual>4</Intellectual>
     </skillRequirements>
 	<researchPrerequisite>TM_AdvancedEnchanting</researchPrerequisite>
     <workSkill>Crafting</workSkill>
@@ -651,9 +642,8 @@
       <TM_EStone_xpGain_major>1</TM_EStone_xpGain_major>
     </products>
     <skillRequirements>
-      <Crafting>14</Crafting>
-	  <Intellectual>8</Intellectual>
-	  <Artistic>5</Artistic>
+      <Crafting>12</Crafting>
+	  <Intellectual>6</Intellectual>
     </skillRequirements>
 	<researchPrerequisite>TM_ExpertEnchanting</researchPrerequisite>
     <workSkill>Crafting</workSkill>
@@ -696,8 +686,8 @@
       <TM_EStone_arcaneRes_minor>1</TM_EStone_arcaneRes_minor>
     </products>
     <skillRequirements>
-      <Crafting>8</Crafting>
-	  <Intellectual>4</Intellectual>
+      <Crafting>6</Crafting>
+	  <Intellectual>2</Intellectual>
     </skillRequirements>
     <workSkill>Crafting</workSkill>
   </RecipeDef>
@@ -739,8 +729,7 @@
     </products>
     <skillRequirements>
       <Crafting>10</Crafting>
-	  <Intellectual>6</Intellectual>
-	  <Artistic>2</Artistic>
+	  <Intellectual>4</Intellectual>
     </skillRequirements>
 	<researchPrerequisite>TM_AdvancedEnchanting</researchPrerequisite>
     <workSkill>Crafting</workSkill>
@@ -782,9 +771,8 @@
       <TM_EStone_arcaneRes_major>1</TM_EStone_arcaneRes_major>
     </products>
     <skillRequirements>
-      <Crafting>14</Crafting>
-	  <Intellectual>8</Intellectual>
-	  <Artistic>5</Artistic>
+      <Crafting>12</Crafting>
+	  <Intellectual>6</Intellectual>
     </skillRequirements>
 	<researchPrerequisite>TM_ExpertEnchanting</researchPrerequisite>
     <workSkill>Crafting</workSkill>
@@ -828,8 +816,8 @@
       <TM_EStone_arcaneDmg_minor>1</TM_EStone_arcaneDmg_minor>
     </products>
     <skillRequirements>
-      <Crafting>8</Crafting>
-	  <Intellectual>4</Intellectual>
+      <Crafting>6</Crafting>
+	  <Intellectual>2</Intellectual>
     </skillRequirements>
     <workSkill>Crafting</workSkill>
   </RecipeDef>
@@ -871,8 +859,7 @@
     </products>
     <skillRequirements>
       <Crafting>10</Crafting>
-	  <Intellectual>6</Intellectual>
-	  <Artistic>2</Artistic>
+	  <Intellectual>4</Intellectual>
     </skillRequirements>
 	<researchPrerequisite>TM_AdvancedEnchanting</researchPrerequisite>
     <workSkill>Crafting</workSkill>
@@ -914,9 +901,8 @@
       <TM_EStone_arcaneDmg_major>1</TM_EStone_arcaneDmg_major>
     </products>
     <skillRequirements>
-      <Crafting>14</Crafting>
-	  <Intellectual>8</Intellectual>
-	  <Artistic>5</Artistic>
+      <Crafting>12</Crafting>
+	  <Intellectual>6</Intellectual>
     </skillRequirements>
 	<researchPrerequisite>TM_ExpertEnchanting</researchPrerequisite>
     <workSkill>Crafting</workSkill>
@@ -959,8 +945,9 @@
       <TM_EStone_wonder_minor>1</TM_EStone_wonder_minor>
     </products>
     <skillRequirements>
-      <Crafting>8</Crafting>
-	  <Intellectual>6</Intellectual>
+      <Crafting>6</Crafting>
+	  <Intellectual>2</Intellectual>
+	  <Artistic>2</Artistic>
     </skillRequirements>
     <workSkill>Crafting</workSkill>
   </RecipeDef>
@@ -1002,8 +989,8 @@
     </products>
     <skillRequirements>
       <Crafting>10</Crafting>
-	  <Intellectual>8</Intellectual>
-	  <Artistic>2</Artistic>
+	  <Intellectual>4</Intellectual>
+	  <Artistic>3</Artistic>
     </skillRequirements>
 	<researchPrerequisite>TM_AdvancedEnchanting</researchPrerequisite>
     <workSkill>Crafting</workSkill>
@@ -1045,9 +1032,9 @@
       <TM_EStone_wonder_major>1</TM_EStone_wonder_major>
     </products>
     <skillRequirements>
-      <Crafting>14</Crafting>
-	  <Intellectual>10</Intellectual>
-	  <Artistic>5</Artistic>
+      <Crafting>12</Crafting>
+	  <Intellectual>6</Intellectual>
+	  <Artistic>4</Artistic>
     </skillRequirements>
 	<researchPrerequisite>TM_ExpertEnchanting</researchPrerequisite>
     <workSkill>Crafting</workSkill>

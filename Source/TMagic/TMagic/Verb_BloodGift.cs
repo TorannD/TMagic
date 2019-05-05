@@ -62,7 +62,7 @@ namespace TorannMagic
                         TM_Action.DamageEntities(this.CasterPawn, damagePart, 4f, 10f, TMDamageDefOf.DamageDefOf.TM_BloodyCut, this.CasterPawn);
                         damagePart = validParts.RandomElement();
                         TM_Action.DamageEntities(this.CasterPawn, damagePart, 2f, 10f, TMDamageDefOf.DamageDefOf.TM_BloodyCut, this.CasterPawn);
-                        bloodGain += 10;
+                        bloodGain += 18;
                         List<Need> needs = this.CasterPawn.needs.AllNeeds;
                         for (int n = 0; n < needs.Count; n++)
                         {

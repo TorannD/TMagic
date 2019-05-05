@@ -7,9 +7,9 @@
 	<voxPitch>1.5</voxPitch>
 	<bodySizeFactor>0.65</bodySizeFactor>
 	<foodMaxFactor>1.5</foodMaxFactor>
-	<healthScaleFactor>1.2</healthScaleFactor>
+	<healthScaleFactor>1.25</healthScaleFactor>
     <statFactors>
-      <MoveSpeed>0.8</MoveSpeed>
+      <MoveSpeed>1.1</MoveSpeed>
     </statFactors>
   </LifeStageDef>
   
@@ -17,9 +17,9 @@
     <defName>TM_Elemental_Lifestage</defName>
     <label>elemental</label>
 	<voxPitch>1</voxPitch>
-	<bodySizeFactor>1</bodySizeFactor>
+	<bodySizeFactor>.9</bodySizeFactor>
 	<foodMaxFactor>1</foodMaxFactor>
-	<healthScaleFactor>1.45</healthScaleFactor>
+	<healthScaleFactor>1.6</healthScaleFactor>
     <statFactors>
       <MoveSpeed>1</MoveSpeed>
     </statFactors>
@@ -31,9 +31,9 @@
 	<voxPitch>.8</voxPitch>
 	<bodySizeFactor>1.2</bodySizeFactor>
 	<foodMaxFactor>.8</foodMaxFactor>
-	<healthScaleFactor>1.85</healthScaleFactor>
+	<healthScaleFactor>2</healthScaleFactor>
     <statFactors>
-      <MoveSpeed>1.2</MoveSpeed>
+      <MoveSpeed>.9</MoveSpeed>
     </statFactors>
   </LifeStageDef>
   
@@ -79,7 +79,7 @@
 	<voxPitch>1.2</voxPitch>
 	<bodySizeFactor>.6</bodySizeFactor>
 	<foodMaxFactor>1.5</foodMaxFactor>
-	<healthScaleFactor>.44</healthScaleFactor>
+	<healthScaleFactor>.45</healthScaleFactor>
     <statFactors>
       <MoveSpeed>0.8</MoveSpeed>
     </statFactors>
@@ -91,7 +91,7 @@
 	<voxPitch>1</voxPitch>
 	<bodySizeFactor>.7</bodySizeFactor>
 	<foodMaxFactor>1</foodMaxFactor>
-	<healthScaleFactor>.55</healthScaleFactor>
+	<healthScaleFactor>.57</healthScaleFactor>
     <statFactors>
       <MoveSpeed>1</MoveSpeed>
     </statFactors>
@@ -103,7 +103,7 @@
 	<voxPitch>.8</voxPitch>
 	<bodySizeFactor>.8</bodySizeFactor>
 	<foodMaxFactor>.8</foodMaxFactor>
-	<healthScaleFactor>.66</healthScaleFactor>
+	<healthScaleFactor>.68</healthScaleFactor>
     <statFactors>
       <MoveSpeed>1.2</MoveSpeed>
     </statFactors>

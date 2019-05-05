@@ -27,6 +27,7 @@ namespace TorannMagic
         private int ticksTillNextAssault = 0;
         private float eventFrequencyMultiplier = 1;
         private float difficultyMultiplier = 1;
+        private float STDMultiplier = 0;
         private int ticksTillNextEvent = 0;
         private int eventTimer = 0;
         private int assaultTimer = 0;
@@ -81,6 +82,11 @@ namespace TorannMagic
                 BeginAssaultCondition();
                 SpawnCycle();
                 ModOptions.SettingsRef settings = new ModOptions.SettingsRef();
+                if (Find.Storyteller.difficulty.difficulty != 0)
+                {
+                    this.STDMultiplier = (float)(Find.Storyteller.difficulty.difficulty / 20f);
+                    Log.Message("std multipler is " + this.STDMultiplier);
+                }
                 if(settings.riftChallenge < 2f)
                 {
                     this.difficultyMultiplier = 1f;
@@ -93,7 +99,8 @@ namespace TorannMagic
                 {
                     this.difficultyMultiplier = .75f;
                 }
-                this.ticksTillNextAssault = (int)(Rand.Range(2400, 3600) * this.difficultyMultiplier);
+                this.difficultyMultiplier -= this.STDMultiplier;
+                this.ticksTillNextAssault = (int)(Rand.Range(2600, 4000) * this.difficultyMultiplier);
                 this.ticksTillNextEvent = (int)(Rand.Range(160, 300) * this.eventFrequencyMultiplier);
                 initialized = true;
             }
@@ -145,7 +152,7 @@ namespace TorannMagic
             {
                 SpawnCycle();
                 this.assaultTimer = 0;
-                this.ticksTillNextAssault = Rand.Range(1600, 3000);
+                this.ticksTillNextAssault = Mathf.RoundToInt(Rand.Range(2000, 3500) * this.difficultyMultiplier);
                 this.notifier = false;
             }
         }
@@ -348,9 +355,30 @@ namespace TorannMagic
 
         public void SpawnCycle()
         {
-            
+            float wealthMultiplier = .7f;
+            float wealth = this.Map.PlayerWealthForStoryteller;
+            if(wealth > 20000)
+            {
+                wealthMultiplier = .8f;
+            }
+            if(wealth > 50000)
+            {
+                wealthMultiplier = 1f;
+            }
+            if(wealth > 100000)
+            {
+                wealthMultiplier = 1.25f;
+            }
+            if(wealth > 250000)
+            {
+                wealthMultiplier = 1.5f;
+            }
+            if(wealth > 500000)
+            {
+                wealthMultiplier = 2.5f;
+            }
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            float geChance = 0.007f;
+            float geChance = 0.007f * wealthMultiplier;
             if (settingsRef.riftChallenge > 1 )
             {
                  geChance *= settingsRef.riftChallenge;
@@ -359,8 +387,8 @@ namespace TorannMagic
             {
                 geChance = 0;
             }
-            float eChance = 0.035f * settingsRef.riftChallenge;
-            float leChance = 0.12f * settingsRef.riftChallenge;
+            float eChance = 0.035f * settingsRef.riftChallenge * wealthMultiplier;
+            float leChance = 0.12f * settingsRef.riftChallenge * wealthMultiplier;            
 
             IntVec3 curCell;
             IEnumerable<IntVec3> targets = GenRadial.RadialCellsAround(this.Position, 2, true);

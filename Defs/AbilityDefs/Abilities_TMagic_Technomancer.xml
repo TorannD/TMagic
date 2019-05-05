@@ -340,6 +340,7 @@ Can be applied to: batteries, power generators, turrets, robots, androids, and m
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_Sabotage</defaultProjectile>
             <abilityDef>TM_Sabotage</abilityDef>
             <warmupTime>2</warmupTime>
@@ -379,6 +380,7 @@ Can be applied to: power generators, turrets, robots, androids, and mechanoids.<
 				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_Blink</defaultProjectile>
             <abilityDef>TM_Overdrive</abilityDef>
             <warmupTime>2</warmupTime>
@@ -482,8 +484,8 @@ Can be applied to: power generators, turrets, robots, androids, and mechanoids.<
         <description>Hack into a network of orbital bombardment satellites and enter a target designation. By using random, arcane signatures to mask their activity, technomancers can continually manipulate advanced systems without being positively identified and locked out.
 		
 Range: 70
-Warmup: 4s
-Radius: 3.3</description>
+Warmup: 3s
+Radius: 2.5</description>
         <manaCost>0.60</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
@@ -494,8 +496,8 @@ Radius: 3.3</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Projectile_OrbitalStrike</defaultProjectile>
             <abilityDef>TM_OrbitalStrike</abilityDef>
-            <warmupTime>4</warmupTime>
-            <SecondsToRecharge>600</SecondsToRecharge>
+            <warmupTime>2.5</warmupTime>
+            <SecondsToRecharge>120</SecondsToRecharge>
             <range>70</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Vibration</soundCast>
@@ -521,7 +523,7 @@ Radius: 3.3</description>
         <description>Hack into a network of orbital bombardment satellites and enter a target designation. By using random, arcane signatures to mask their activity, technomancers can continually manipulate advanced systems without being positively identified and locked out.
 		
 Range: 80
-Warmup: 3.6s
+Warmup: 2.1s
 Radius: 4.2</description>
         <manaCost>0.60</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -533,8 +535,8 @@ Radius: 4.2</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Projectile_OrbitalStrike_I</defaultProjectile>
             <abilityDef>TM_OrbitalStrike_I</abilityDef>
-            <warmupTime>3.6</warmupTime>
-            <SecondsToRecharge>600</SecondsToRecharge>
+            <warmupTime>2.1</warmupTime>
+            <SecondsToRecharge>110</SecondsToRecharge>
             <range>80</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Vibration</soundCast>
@@ -560,7 +562,7 @@ Radius: 4.2</description>
         <description>Hack into a network of orbital bombardment satellites and enter a target designation. By using random, arcane signatures to mask their activity, technomancers can continually manipulate advanced systems without being positively identified and locked out.
 		
 Range: 90
-Warmup: 3.2s
+Warmup: 1.8s
 Radius: 5.0</description>
         <manaCost>0.6</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -572,8 +574,8 @@ Radius: 5.0</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Projectile_OrbitalStrike_II</defaultProjectile>
             <abilityDef>TM_OrbitalStrike_II</abilityDef>
-            <warmupTime>3.2</warmupTime>
-            <SecondsToRecharge>600</SecondsToRecharge>
+            <warmupTime>1.8</warmupTime>
+            <SecondsToRecharge>100</SecondsToRecharge>
             <range>90</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Vibration</soundCast>
@@ -599,7 +601,7 @@ Radius: 5.0</description>
         <description>Hack into a network of orbital bombardment satellites and enter a target designation. By using random, arcane signatures to mask their activity, technomancers can continually manipulate advanced systems without being positively identified and locked out.
 		
 Range: 100
-Warmup: 2.8s
+Warmup: 1.6s
 Radius: 5.6</description>
         <manaCost>0.60</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -611,8 +613,8 @@ Radius: 5.6</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Projectile_OrbitalStrike_III</defaultProjectile>
             <abilityDef>TM_OrbitalStrike_III</abilityDef>
-            <warmupTime>2.8</warmupTime>
-            <SecondsToRecharge>600</SecondsToRecharge>
+            <warmupTime>1.6</warmupTime>
+            <SecondsToRecharge>90</SecondsToRecharge>
             <range>100</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Vibration</soundCast>
