@@ -2784,8 +2784,7 @@ namespace TorannMagic
                     }
                     if (this.skill_PommelStrike && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                     {
-                        MightPower mightPower = this.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PommelStrike);
-                        
+                        MightPower mightPower = this.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PommelStrike);                        
                         if (mightPower != null && mightPower.autocast && this.Pawn.TargetCurrentlyAimingAt != null)
                         {
                             PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_PommelStrike);

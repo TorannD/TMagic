@@ -6076,7 +6076,7 @@ namespace TorannMagic
                     if (this.spell_DirtDevil)
                     {
                         MagicPower magicPower = this.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_DirtDevil);
-                        if (magicPower.autocast && this.Pawn.GetRoom() != null)
+                        if (magicPower != null && magicPower.autocast && this.Pawn.GetRoom() != null)
                         {
                             float roomCleanliness = this.Pawn.GetRoom().GetStat(RoomStatDefOf.Cleanliness);
 
@@ -6536,7 +6536,7 @@ namespace TorannMagic
                     if (this.spell_ArcaneBolt && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                     {
                         MagicPower magicPower = this.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ArcaneBolt);
-                        if (magicPower.autocast)
+                        if (magicPower != null && magicPower.autocast)
                         {
                             PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ArcaneBolt);
                             AutoCast.DamageSpell.Evaluate(this, TorannMagicDefOf.TM_ArcaneBolt, ability, magicPower, out castSuccess);

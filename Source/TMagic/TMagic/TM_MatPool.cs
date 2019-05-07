@@ -22,5 +22,31 @@ namespace TorannMagic
         public static readonly Material doubleForkLightning = MaterialPool.MatFrom("Spells/LightningBolt", ShaderDatabase.MoteGlow);
         public static readonly Material multiForkLightning = MaterialPool.MatFrom("Spells/LightningBolt_w", ShaderDatabase.MoteGlow);
         public static readonly Material standardLightning = MatLoader.LoadMat("Weather/LightningBolt", -1);
+
+        //Colonist bar icons
+        public static readonly Texture2D bardIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/bardMageMark", true);
+        public static readonly Texture2D arcanistIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/arcanistMageMark", true);
+        public static readonly Texture2D bloodmageIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/bloodMageMark", true);
+        public static readonly Texture2D demonkinIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/demonMageMark", true);
+        public static readonly Texture2D druidIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/druidMageMark", true);
+        public static readonly Texture2D earthIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/earthMageMark", true);
+        public static readonly Texture2D enchanterIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/enchanterMageMark", true);
+        public static readonly Texture2D fireIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/fireMageMark", true);
+        public static readonly Texture2D iceIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/iceMageMark", true);
+        public static readonly Texture2D lightningIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/lightningMageMark", true);
+        public static readonly Texture2D necroIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/necroMageMark", true);
+        public static readonly Texture2D paladinIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/paladinMageMark", true);
+        public static readonly Texture2D priestIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/priestMageMark", true);
+        public static readonly Texture2D summonerIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/summonerMageMark", true);
+        public static readonly Texture2D technoIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/technoMageMark", true);
+
+        public static readonly Texture2D deathknightIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/deathknightFighterMark", true);
+        public static readonly Texture2D bladedancerIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/bladedancerFighterMark", true);
+        public static readonly Texture2D facelessIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/facelessFighterMark", true);
+        public static readonly Texture2D gladiatorIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/gladiatorFighterMark", true);
+        public static readonly Texture2D rangerIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/rangerFighterMark", true);
+        public static readonly Texture2D sniperIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/sniperFighterMark", true);
+
+        public static readonly Texture2D psiIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/psiPsiMark", true);
     }
 }

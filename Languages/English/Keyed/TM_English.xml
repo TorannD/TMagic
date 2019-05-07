@@ -93,6 +93,8 @@
 <TM_WarlockEmpathyDesc>I can feel the emotions of those around me.</TM_WarlockEmpathyDesc>
 <TM_WarlockEmpathyOverwhelmed>The emotions of those around me are overwhelming, I need to get away from all these people or find a way to mute these emotions.</TM_WarlockEmpathyOverwhelmed>
 <TM_Icon_Undead>Animated Undead</TM_Icon_Undead>
+<TM_Icon_Mage>Magic Class</TM_Icon_Mage>
+<TM_Icon_Fighter>Combat Class</TM_Icon_Fighter>
 <TM_NotPsychicSensitive>{0} attempted to become a psionic but does not seem to have the psychic sensitivity required to manifest psionic power.</TM_NotPsychicSensitive>
 <TM_TooManyStoneskins>{0} can only sustain stoneskin defenses on {1} pawns. {0} is currently defending {2} with stoneskin.</TM_TooManyStoneskins>
 <TM_NoSpritesToDismiss>{0} has no detected earth sprites - resetting ability parameters.</TM_NoSpritesToDismiss>
