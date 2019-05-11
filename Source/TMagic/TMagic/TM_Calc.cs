@@ -307,7 +307,7 @@ namespace TorannMagic
             for (int i = 0; i < mapPawns.Count; i++)
             {
                 targetPawn = mapPawns[i];
-                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !targetPawn.Downed)
+                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !targetPawn.Downed && targetPawn.Faction != null)
                 {
                     if(inCombat)
                     {
@@ -325,7 +325,7 @@ namespace TorannMagic
                         if (pawn != targetPawn && !targetPawn.HostileTo(pawn.Faction) && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
                         {
                             CompAbilityUserMagic targetComp = targetPawn.GetComp<CompAbilityUserMagic>();
-                            if (targetComp != null && targetComp.IsMagicUser)
+                            if (targetComp != null && targetComp.IsMagicUser && !targetComp.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                             {
                                 pawnList.Add(targetPawn);                                
                             }
@@ -353,7 +353,7 @@ namespace TorannMagic
             for (int i = 0; i < mapPawns.Count; i++)
             {
                 targetPawn = mapPawns[i];
-                if (pawn != targetPawn && targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !targetPawn.Downed)
+                if (pawn != targetPawn && targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !targetPawn.Downed && targetPawn.Faction != null)
                 {
                     if (inCombat)
                     {

@@ -27,20 +27,20 @@ namespace TorannMagic.Enchantment
             base.Initialize(props);
             Pawn pawn = this.parent as Pawn;
             CompEnchant comp = pawn.TryGetComp<CompEnchant>();
-            try
-            {
-                bool flag = comp.enchantingContainer.Count > 0;
-            }
-            catch(NullReferenceException ex)
-            {
-                this.enchantingContainer = new ThingOwner<Thing>();
-            }
-            //if(initialize && comp.enchantingContainer == null)
+            //try
+            //{
+            //    bool flag = comp.enchantingContainer.Count > 0;
+            //}
+            //catch(NullReferenceException ex)
             //{
             //    this.enchantingContainer = new ThingOwner<Thing>();
-            //    this.initialize = false;
             //}
-            
+            if (initialize && comp.enchantingContainer == null)
+            {
+                this.enchantingContainer = new ThingOwner<Thing>();
+                this.initialize = false;
+            }
+
         }
 
         //public ThingOwner GetDirectlyHeldThings()

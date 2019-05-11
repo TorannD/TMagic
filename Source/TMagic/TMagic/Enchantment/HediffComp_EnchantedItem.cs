@@ -28,7 +28,14 @@ namespace TorannMagic.Enchantment
         {
             get
             {
-                return base.Def.LabelCap;
+                if (base.Def.LabelCap != null)
+                {
+                    return base.Def.LabelCap;
+                }
+                else
+                {
+                    return "";
+                }
             }
         }
 
@@ -36,11 +43,32 @@ namespace TorannMagic.Enchantment
         {
             get
             {
-                return base.Def.label;
+                if (base.Def.label != null)
+                {
+                    return base.Def.label;
+                }
+                else
+                {
+                    return "";
+                }
             }
         }
 
-        public override string CompLabelInBracketsExtra => this.enchantedItem.def.label;
+
+        public override string CompLabelInBracketsExtra
+        {
+            get
+            {
+                if (this.enchantedItem != null && this.enchantedItem.def != null && this.enchantedItem.def.label != null)
+                {
+                    return this.enchantedItem.def.label;
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
 
         private void Initialize()
         {

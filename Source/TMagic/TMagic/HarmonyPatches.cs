@@ -2125,7 +2125,7 @@ namespace TorannMagic
         {
             private static bool Prefix(Thing caster, Verb verb, LocalTargetInfo target, ref ShotReport __result)
             {
-                if (verb.verbProps.verbClass.ToString() == "TorannMagic.Verb_SB" || verb.verbProps.verbClass.ToString() == "TorannMagic.Verb_BLOS")
+                if (verb?.verbProps?.verbClass?.ToString() == "TorannMagic.Verb_SB" || verb.verbProps.verbClass.ToString() == "TorannMagic.Verb_BLOS")
                 {
                     ShotReport result = default(ShotReport);
                     __result = result;
@@ -2140,7 +2140,7 @@ namespace TorannMagic
         {
             private static bool Prefix(Pawn p, ref bool __result)
             {
-                if (p.def.thingClass.ToString() == "TorannMagic.TMPawnSummoned")
+                if (p?.def?.thingClass?.ToString() == "TorannMagic.TMPawnSummoned")
                 {
                     __result = false;
                     return false;
@@ -2154,7 +2154,7 @@ namespace TorannMagic
         {
             private static bool Prefix(Pawn victim)
             {
-                if (victim.def.thingClass.ToString() == "TorannMagic.TMPawnSummoned")
+                if (victim?.def?.thingClass?.ToString() == "TorannMagic.TMPawnSummoned")
                 {
                     return false;
                 }
@@ -3592,12 +3592,12 @@ namespace TorannMagic
             public static bool Prefix(ColonistBarColonistDrawer __instance, ref Rect rect, Pawn colonist)
             {
                 if (!colonist.Dead)
-                {
-                    float num = 20f * Find.ColonistBar.Scale;
-                    Vector2 vector = new Vector2(rect.x + 1f, rect.yMax - num - 1f);
+                {                    
                     ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                     if (colonist.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")))
                     {
+                        float num = 20f * Find.ColonistBar.Scale;
+                        Vector2 vector = new Vector2(rect.x + 1f, rect.yMax - num - 1f);
                         rect = new Rect(vector.x, vector.y, num, num);
                         GUI.DrawTexture(rect, TM_MatPool.Icon_Undead);
                         TooltipHandler.TipRegion(rect, "TM_Icon_Undead".Translate());
@@ -3605,6 +3605,8 @@ namespace TorannMagic
                     }
                     else if(settingsRef.showClassIconOnColonistBar && colonist.story != null)
                     {
+                        float num = 20f * Find.ColonistBar.Scale;
+                        Vector2 vector = new Vector2(rect.x + 1f, rect.yMax - num - 1f);
                         rect = new Rect(vector.x, vector.y, num, num);
                         if (colonist.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
                         {

@@ -44,7 +44,7 @@ namespace TorannMagic
                 CompAbilityUserMight mentorCompMight = mentor.GetComp<CompAbilityUserMight>();
                 CompAbilityUserMagic studentCompMagic = student.GetComp<CompAbilityUserMagic>();
                 CompAbilityUserMight studentCompMight = student.GetComp<CompAbilityUserMight>();
-                if (mentorCompMagic != null && mentorCompMagic.IsMagicUser && !mentor.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                if (mentorCompMagic != null && mentorCompMagic.IsMagicUser && !mentor.story.traits.HasTrait(TorannMagicDefOf.Faceless) && student != null && student.story != null && !student.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                 {
                     if(studentCompMagic != null && studentCompMagic.IsMagicUser)
                     {

@@ -7738,6 +7738,7 @@ namespace TorannMagic
             Scribe_Collections.Look<Thing>(ref this.summonedHeaters, "summonedHeaters", LookMode.Reference);
             Scribe_Collections.Look<Thing>(ref this.summonedSentinels, "summonedSentinels", LookMode.Reference);
             Scribe_Collections.Look<Pawn>(ref this.stoneskinPawns, "stoneskinPawns", LookMode.Reference);
+            Scribe_Collections.Look<Pawn>(ref this.weaponEnchants, "weaponEnchants", LookMode.Reference);
             Scribe_Collections.Look<Thing>(ref this.lightningTraps, "lightningTraps", LookMode.Reference);
             Scribe_Values.Look<IntVec3>(ref this.earthSprites, "earthSprites", default(IntVec3), false);
             Scribe_Values.Look<int>(ref this.earthSpriteType, "earthSpriteType", 0, false);

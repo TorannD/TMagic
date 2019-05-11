@@ -2268,7 +2268,7 @@ namespace TorannMagic
                 if (this.Pawn.drafter != null && !this.Pawn.Drafted && this.Stamina != null && this.Stamina.CurLevelPercentage >= settingsRef.autocastMinThreshold)
                 {
                     //Hunting only
-                    if (this.Pawn.CurJob.def == JobDefOf.Hunt && this.Pawn.CurJob.targetA != null)
+                    if (this.Pawn.CurJob.def == JobDefOf.Hunt && this.Pawn.CurJob.targetA != null && this.Pawn.CurJob.targetA.Thing != null && this.Pawn.CurJob.targetA.Thing is Pawn)
                     {
                         if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                         {
