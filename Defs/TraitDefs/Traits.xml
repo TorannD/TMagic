@@ -452,7 +452,7 @@
 			<li>Animals</li>
 			<li>Artistic</li>
 		    <li>ManualDumb</li>
-			<li>ManualSkilled</li>
+<!-- 			<li>ManualSkilled</li> -->
 			<li>Firefighting</li>
 		</disabledWorkTags>
 		<degreeDatas>	
@@ -466,9 +466,10 @@
 				<ImmunityGainSpeed>1</ImmunityGainSpeed>
 				<ToxicSensitivity>-1</ToxicSensitivity>
 				<MentalBreakThreshold>-0.2</MentalBreakThreshold>
-				<GlobalLearningFactor>0.6</GlobalLearningFactor>
+				<GlobalLearningFactor>-0.4</GlobalLearningFactor>
 				<TradePriceImprovement>-0.5</TradePriceImprovement>
 				<NegotiationAbility>-.5</NegotiationAbility>
+				<WorkSpeedGlobal>-.75</WorkSpeedGlobal>
 			</statOffsets>
 			<skillGains>
 			  <li>

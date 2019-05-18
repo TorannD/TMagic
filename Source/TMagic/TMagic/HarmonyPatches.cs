@@ -2993,7 +2993,7 @@ namespace TorannMagic
                 {
                     Thing thing = null;
                     thing = ThingMaker.MakeThing(TorannMagicDefOf.RawMagicyte);
-                    thing.stackCount = Rand.Range(5, 12);
+                    thing.stackCount = Rand.Range(9, 25);
                     if (thing != null)
                     {
                         GenPlace.TryPlaceThing(thing, __instance.pawn.Position, __instance.pawn.Map, ThingPlaceMode.Near, null);
@@ -3602,6 +3602,7 @@ namespace TorannMagic
                         GUI.DrawTexture(rect, TM_MatPool.Icon_Undead);
                         TooltipHandler.TipRegion(rect, "TM_Icon_Undead".Translate());
                         vector.x += num;
+                        rect = new Rect(vector.x, vector.y, num, num);
                     }
                     else if(settingsRef.showClassIconOnColonistBar && colonist.story != null)
                     {
@@ -3740,6 +3741,7 @@ namespace TorannMagic
                             TooltipHandler.TipRegion(rect, "TM_Icon_Fighter".Translate());
                             vector.x += num;
                         }
+                        rect = new Rect(vector.x, vector.y, num, num);
                     }
                 }
                 return true;

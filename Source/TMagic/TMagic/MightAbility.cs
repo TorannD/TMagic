@@ -121,7 +121,7 @@ namespace TorannMagic
 
                 if (mightAbilityDef == TorannMagicDefOf.TM_Whirlwind)//mightAbilityDef == TorannMagicDefOf.)
                 {
-                    num = mightUser.ActualStaminaCost(mightAbilityDef);
+                    num = mightUser.ActualStaminaCost(mightAbilityDef)*100;
 
                     num2 = FlyingObject_Whirlwind.GetWeaponDmg(mightUser.Pawn);
                     text2 = "TM_WhirlwindDamage".Translate(
@@ -131,7 +131,7 @@ namespace TorannMagic
                 }
                 else if (mightAbilityDef == TorannMagicDefOf.TM_Cleave)
                 {
-                    num = mightUser.ActualStaminaCost(mightAbilityDef);
+                    num = mightUser.ActualStaminaCost(mightAbilityDef) * 100;
                     if (mightUser.Pawn.equipment.Primary != null && !mightUser.Pawn.equipment.Primary.def.IsRangedWeapon)
                     {
                         num2 = Mathf.Min((mightUser.Pawn.equipment.Primary.def.BaseMass * .3f) * 100f, 65f);
@@ -149,7 +149,7 @@ namespace TorannMagic
                 }
                 else if (mightUser.Pawn.equipment.Primary != null && mightUser.Pawn.equipment.Primary.def.IsRangedWeapon)
                 {
-                    num = mightUser.ActualStaminaCost(mightAbilityDef);
+                    num = mightUser.ActualStaminaCost(mightAbilityDef) * 100;
                     if (mightAbilityDef == TorannMagicDefOf.TM_Headshot)
                     {
                         num2 = Projectile_Headshot.GetWeaponDmg(mightUser.Pawn, ThingDef.Named("Projectile_Headshot"));
@@ -182,7 +182,7 @@ namespace TorannMagic
                 }
                 else if (mightUser.Pawn.equipment.Primary != null && !mightUser.Pawn.equipment.Primary.def.IsRangedWeapon)
                 {
-                    num = mightUser.ActualStaminaCost(mightAbilityDef);
+                    num = mightUser.ActualStaminaCost(mightAbilityDef) * 100;
                     if (mightAbilityDef == TorannMagicDefOf.TM_PhaseStrike || mightAbilityDef == TorannMagicDefOf.TM_PhaseStrike_I || mightAbilityDef == TorannMagicDefOf.TM_PhaseStrike_II || mightAbilityDef == TorannMagicDefOf.TM_PhaseStrike_III)
                     {
                         num2 = Verb_PhaseStrike.GetWeaponDmg(mightUser.Pawn);
@@ -193,7 +193,6 @@ namespace TorannMagic
                     }
                     if (mightAbilityDef == TorannMagicDefOf.TM_BladeSpin)
                     {
-                        num = mightUser.ActualStaminaCost(mightAbilityDef);
                         num2 = Verb_BladeSpin.GetWeaponDmg(mightUser.Pawn);
                         text2 = "TM_WeaponDamage".Translate(
                         mightAbilityDef.label,
@@ -202,7 +201,6 @@ namespace TorannMagic
                     }
                     if (mightAbilityDef == TorannMagicDefOf.TM_SeismicSlash)
                     {
-                        num = mightUser.ActualStaminaCost(mightAbilityDef);
                         num2 = Verb_SeismicSlash.GetWeaponDmg(mightUser.Pawn);
                         text2 = "TM_WeaponDamage".Translate(
                         mightAbilityDef.label,
@@ -212,7 +210,7 @@ namespace TorannMagic
                 }
                 else if (mightUser.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_PsionicHD"), false))
                 {
-                    num = mightUser.ActualStaminaCost(mightAbilityDef);
+                    num = mightUser.ActualStaminaCost(mightAbilityDef) * 100;
                     if (mightAbilityDef == TorannMagicDefOf.TM_PsionicBlast || mightAbilityDef == TorannMagicDefOf.TM_PsionicBlast_I || mightAbilityDef == TorannMagicDefOf.TM_PsionicBlast_II || mightAbilityDef == TorannMagicDefOf.TM_PsionicBlast_III)
                     {
                         num2 = 4 - (mightUser.MightData.MightPowerSkill_PsionicBlast.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicBlast_ver").level);
@@ -248,20 +246,20 @@ namespace TorannMagic
                 }
                 else if (TM_Calc.HasHateHediff(mightUser.Pawn) && (mightAbilityDef == TorannMagicDefOf.TM_Spite || mightAbilityDef == TorannMagicDefOf.TM_Spite_I || mightAbilityDef == TorannMagicDefOf.TM_Spite_II || mightAbilityDef == TorannMagicDefOf.TM_Spite_III))
                 {
-                    num = mightUser.ActualStaminaCost(mightAbilityDef);
+                    num = mightUser.ActualStaminaCost(mightAbilityDef) * 100;
                     text2 = "TM_RequiresHateAmount".Translate(
                         20
                     );
                 }
                 else
                 {
-                    num = mightUser.ActualStaminaCost(mightAbilityDef);
+                    num = mightUser.ActualStaminaCost(mightAbilityDef) * 100;
                 }
 
                 text = "TM_AbilityDescBaseStaminaCost".Translate(
-                    mightAbilityDef.staminaCost.ToString("p1")
+                    (mightAbilityDef.staminaCost * 100).ToString("n1")
                 ) + "\n" + "TM_AbilityDescAdjustedStaminaCost".Translate(
-                    num.ToString("p1")
+                    num.ToString("n1")
                 );
 
                 if (mightUser.coolDown != 1f && maxCastingTicks != 0)

@@ -145,7 +145,7 @@ namespace TorannMagic
                
                 if (magicAbilityDef == TorannMagicDefOf.TM_Teleport)
                 {
-                    num = this.MagicUser.ActualManaCost(magicDef);
+                    num = this.MagicUser.ActualManaCost(magicDef)*100;
                     MagicPowerSkill mps2 = this.MagicUser.MagicData.MagicPowerSkill_Teleport.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Teleport_ver");
                     MagicPowerSkill mps1 = this.MagicUser.MagicData.MagicPowerSkill_Teleport.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Teleport_pwr");
                     num2 = 80 + (mps1.level * 20) + (mps2.level * 20);
@@ -155,7 +155,7 @@ namespace TorannMagic
                 }
                 else if (magicAbilityDef == TorannMagicDefOf.TM_SummonMinion)
                 {
-                    num = this.MagicUser.ActualManaCost(magicDef);
+                    num = this.MagicUser.ActualManaCost(magicDef)*100;
                     MagicPowerSkill mps1 = this.MagicUser.MagicData.MagicPowerSkill_SummonMinion.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonMinion_ver");
                     num2 = 1200 + (600 * mps1.level);
                     text2 = "TM_AbilityDescSummonDuration".Translate(
@@ -164,7 +164,7 @@ namespace TorannMagic
                 }
                 else if (magicAbilityDef == TorannMagicDefOf.TM_SummonPylon)
                 {
-                    num = this.MagicUser.ActualManaCost(magicDef);
+                    num = this.MagicUser.ActualManaCost(magicDef)*100;
                     MagicPowerSkill mps1 = this.MagicUser.MagicData.MagicPowerSkill_SummonPylon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonPylon_ver");
                     num2 = 240 + (120 * mps1.level);
                     text2 = "TM_AbilityDescSummonDuration".Translate(
@@ -173,7 +173,7 @@ namespace TorannMagic
                 }
                 else if (magicAbilityDef == TorannMagicDefOf.TM_SummonExplosive)
                 {
-                    num = this.MagicUser.ActualManaCost(magicDef);
+                    num = this.MagicUser.ActualManaCost(magicDef) * 100;
                     MagicPowerSkill mps1 = this.MagicUser.MagicData.MagicPowerSkill_SummonExplosive.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonExplosive_ver");
                     num2 = 240 + (120 * mps1.level);
                     text2 = "TM_AbilityDescSummonDuration".Translate(
@@ -182,7 +182,7 @@ namespace TorannMagic
                 }
                 else if (magicAbilityDef == TorannMagicDefOf.TM_SummonElemental)
                 {
-                    num = this.MagicUser.ActualManaCost(magicDef);
+                    num = this.MagicUser.ActualManaCost(magicDef) * 100;
                     MagicPowerSkill mps1 = this.MagicUser.MagicData.MagicPowerSkill_SummonElemental.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonElemental_ver");
                     num2 = 30 + (15 * mps1.level);
                     text2 = "TM_AbilityDescSummonDuration".Translate(
@@ -191,7 +191,7 @@ namespace TorannMagic
                 }
                 else if (magicAbilityDef == TorannMagicDefOf.TM_PsychicShock)
                 {
-                    num = this.MagicUser.ActualManaCost(magicDef);
+                    num = this.MagicUser.ActualManaCost(magicDef) * 100;
                     num2 = this.MagicUser.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false);
                     text3 = "TM_PsychicSensitivity".Translate(
                         num2.ToString()
@@ -199,24 +199,24 @@ namespace TorannMagic
                 }
                 else
                 {
-                    num = this.MagicUser.ActualManaCost(magicDef);
+                    num = this.MagicUser.ActualManaCost(magicDef) * 100;
                 }
 
                 text = "TM_AbilityDescBaseManaCost".Translate(
-                    magicAbilityDef.manaCost.ToString("p1")
+                    (magicAbilityDef.manaCost * 100).ToString("n1")
                 ) + "\n" + "TM_AbilityDescAdjustedManaCost".Translate(
-                    num.ToString("p1")
+                    num.ToString("n1")
                 );
 
                 if(magicAbilityDef == TorannMagicDefOf.TM_IgniteBlood || magicAbilityDef == TorannMagicDefOf.TM_BloodShield || magicAbilityDef == TorannMagicDefOf.TM_BloodForBlood || 
                     magicAbilityDef == TorannMagicDefOf.TM_Rend || magicAbilityDef == TorannMagicDefOf.TM_Rend_I || magicAbilityDef == TorannMagicDefOf.TM_Rend_II || magicAbilityDef == TorannMagicDefOf.TM_Rend_III ||
                     magicAbilityDef == TorannMagicDefOf.TM_BloodMoon || magicAbilityDef == TorannMagicDefOf.TM_BloodMoon_I || magicAbilityDef == TorannMagicDefOf.TM_BloodMoon_II || magicAbilityDef == TorannMagicDefOf.TM_BloodMoon_III)
                 {
-                    num = this.ActualBloodCost;
+                    num = this.ActualBloodCost * 100;
                     text = "TM_AbilityDescBaseBloodCost".Translate(
-                    magicAbilityDef.bloodCost.ToString("p1")
+                    (magicAbilityDef.bloodCost * 100).ToString("n1")
                     ) + "\n" + "TM_AbilityDescAdjustedBloodCost".Translate(
-                        num.ToString("p1")
+                        num.ToString("n1")
                     );
                 }
 

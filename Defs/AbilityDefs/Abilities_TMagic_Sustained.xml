@@ -24,7 +24,7 @@
     <defName>TM_GearRepair</defName>
     <label>Gear Repair</label>
     <uiIconPath>UI/gearrepair</uiIconPath>
-    <description>Activates or deactivates the sustained combat skill Gear Repair - slowly repairs equipped apparel and weapons. Requires 20% Stamina to sustain.</description>
+    <description>Activates or deactivates the sustained combat skill Gear Repair - slowly repairs equipped apparel and weapons. Requires 20 Stamina to sustain.</description>
     <staminaCost>0.0</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_GearRepair</verbClass>
@@ -58,7 +58,7 @@
     <defName>TM_InnerHealing</defName>
     <label>Inner Healing</label>
     <uiIconPath>UI/innerhealing</uiIconPath>
-    <description>Activates or deactivates the sustained combat skill Inner Healing - sacrifices physical energy to increase healing rate and disease immunity. Requires 10% Stamina to sustain.</description>
+    <description>Activates or deactivates the sustained combat skill Inner Healing - sacrifices physical energy to increase healing rate and disease immunity. Requires 10 Stamina to sustain.</description>
     <staminaCost>0.0</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_InnerHealing</verbClass>
@@ -92,7 +92,7 @@
     <defName>TM_HeavyBlow</defName>
     <label>Heavy Blow</label>
     <uiIconPath>UI/heavyblow</uiIconPath>
-    <description>Activates or deactivates the sustained combat skill Heavy Blow - increases damage of all attacks by 20%. Requires 30% Stamina to sustain.</description>
+    <description>Activates or deactivates the sustained combat skill Heavy Blow - increases damage of all attacks by 20%. Requires 30 Stamina to sustain.</description>
     <staminaCost>0.0</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_HeavyBlow</verbClass>
@@ -126,7 +126,7 @@
     <defName>TM_StrongBack</defName>
     <label>Strong Back</label>
     <uiIconPath>UI/strongback</uiIconPath>
-    <description>Activates or deactivates the sustained combat skill Strong Back - increases carry capacity by 40 and inventory capacity by 30% but causes a 10% increase in exhaustion rate. Requires 10% Stamina to sustain.</description>
+    <description>Activates or deactivates the sustained combat skill Strong Back - increases carry capacity by 40 and inventory capacity by 30% but causes a 10% increase in exhaustion rate. Requires 10 Stamina to sustain.</description>
     <staminaCost>0.0</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_StrongBack</verbClass>
@@ -160,7 +160,7 @@
     <defName>TM_ThickSkin</defName>
     <label>Thick Skin</label>
     <uiIconPath>UI/thickskin</uiIconPath>
-    <description>Activates or deactivates the sustained combat skill Thick Skin - increases all armor values by 10% and improves temperature thresholds slightly. Requires 30% Stamina to sustain.</description>
+    <description>Activates or deactivates the sustained combat skill Thick Skin - increases all armor values by 10% and improves temperature thresholds slightly. Requires 30 Stamina to sustain.</description>
     <staminaCost>0.0</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_ThickSkin</verbClass>
@@ -194,7 +194,7 @@
     <defName>TM_FightersFocus</defName>
     <label>Fighters Focus</label>
     <uiIconPath>UI/fightersfocus</uiIconPath>
-    <description>Activates or deactivates the sustained combat skill Fighters Focus - increases mental break threshold by 5% and pain threshold by 20%. Requires 15% Stamina to sustain.</description>
+    <description>Activates or deactivates the sustained combat skill Fighters Focus - increases mental break threshold by 5% and pain threshold by 20%. Requires 15 Stamina to sustain.</description>
     <staminaCost>0.0</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_FightersFocus</verbClass>

@@ -42,7 +42,7 @@
     <defName>TM_Heater</defName>
     <label>Magical heater</label>
     <uiIconPath>UI/heater</uiIconPath>
-    <description>Creates a dimensional pocket that taps into the Plane of Fire, generating constant heat in a confined area. The heater must be sustained by the mage - reduces max mana by 25% while active.</description>
+    <description>Creates a dimensional pocket that taps into the Plane of Fire, generating constant heat in a confined area. The heater must be sustained by the mage - reduces max mana by 25 while active.</description>
     <manaCost>0.25</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
@@ -128,7 +128,7 @@
     <defName>TM_Cooler</defName>
     <label>Magical cooler</label>
     <uiIconPath>Other/cooler</uiIconPath>
-    <description>Creates a dimensional pocket that taps into the Plane of Ice, reducing heat in a confined area. The cooler must be sustained by the mage - reduces max mana by 25% while active.</description>
+    <description>Creates a dimensional pocket that taps into the Plane of Ice, reducing heat in a confined area. The cooler must be sustained by the mage - reduces max mana by 25 while active.</description>
     <manaCost>0.25</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
@@ -214,7 +214,7 @@
     <defName>TM_PowerNode</defName>
     <label>Arcane Power Node</label>
     <uiIconPath>Other/energynode_1</uiIconPath>
-    <description>Creates an energy node that slowly releases arcane energy in the form of electricity. Can be used as a power source. The power node must be sustained by the mage - reduces max mana and mana regen by 25% while active.</description>
+    <description>Creates an energy node that slowly releases arcane energy in the form of electricity. Can be used as a power source. The power node must be sustained by the mage - reduces max mana by 25 and mana regen by 25% while active.</description>
     <manaCost>0.25</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
@@ -302,7 +302,7 @@
     <defName>TM_Sunlight</defName>
     <label>Sun Light</label>
     <uiIconPath>UI/sunlight</uiIconPath>	
-    <description>Creates a beacon of sunlight strong enough to grow plants. The beacon must be sustained by the mage - reduces max mana and mana regeneration by 40% while active.</description>
+    <description>Creates a beacon of sunlight strong enough to grow plants. The beacon must be sustained by the mage - reduces max mana by 40 and mana regeneration by 40% while active.</description>
     <manaCost>0.40</manaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
@@ -809,7 +809,7 @@
         <defName>TM_ManaShield</defName>
         <label>Mana Shield</label>
         <uiIconPath>UI/manashield</uiIconPath>
-        <description>Summons a protective barrier that draws power from the casters mana. Damage absorption rate is 1dmg to 1% mana. The barrier breaks when the caster has insufficient mana to absorb an attack.  
+        <description>Summons a protective barrier that draws power from the casters mana. Damage absorption rate is 1dmg to 1 mana. The barrier breaks when the caster has insufficient mana to absorb an attack.  
 
 Casting the spell when a barrier is active will remove the barrier. Can be used in conjunction with shield belts. Does not impede spell casting of any type.</description>
         <manaCost>0.005</manaCost>
@@ -1189,7 +1189,7 @@ Trained fighters will gain class XP.  The amount of XP gained depends on the soc
         <defName>TM_Blur</defName>
         <label>Blur</label>
         <uiIconPath>UI/blur</uiIconPath>
-        <description>Increases chance to avoid all attacks by distorting light around the caster. Requires 20% mana to sustain. Re-use the ability to deactivate blur.</description>
+        <description>Increases chance to avoid all attacks by distorting light around the caster. Requires 20 mana to sustain. Re-use the ability to deactivate blur.</description>
         <manaCost>0.000</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Blur</verbClass>

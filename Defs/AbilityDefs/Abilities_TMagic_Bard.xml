@@ -76,7 +76,7 @@ Pain threshold -15%, carrying capacity -20, work speed -15%</description>
 
 This command toggles the active skill on or off.
 	
-Activating the ability casts a net over the colony and allows the bard to detect troubled pawns and attempt to entertain them. The bard will gain experience points as a mage when active entertaining is successful. Keeping this ability active reduces max mana by 30%. The bard performs entertainment as a type of job, and will perform entertainment based on the priority of the "Warden" work type.</description>
+Activating the ability casts a net over the colony and allows the bard to detect troubled pawns and attempt to entertain them. The bard will gain experience points as a mage when active entertaining is successful. Keeping this ability active reduces max mana by 30. The bard performs entertainment as a type of job, and will perform entertainment based on the priority of the "Warden" work type.</description>
     <manaCost>0.0</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Entertain</verbClass>

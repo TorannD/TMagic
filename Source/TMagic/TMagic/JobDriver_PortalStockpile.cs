@@ -58,21 +58,22 @@ namespace TorannMagic
                     if (thingList != null)
                     {
                         while (z < thingList.Count)
-                        {
+                        {                            
                             bool validator = thingList[z] is Pawn;
                             if (validator)
                             {
                                 portalAnimal = thingList[z] as Pawn;
                                 if (portalAnimal != null)
                                 {
-                                    if (!portalAnimal.RaceProps.Humanlike && portalAnimal.RaceProps.Animal && portalAnimal.Faction == Faction.OfPlayer)
+                                    if (!portalAnimal.RaceProps.Humanlike && portalAnimal.RaceProps.Animal && portalAnimal.Faction != null && portalAnimal.Faction == Faction.OfPlayer)
                                     {
-                                        MoteMaker.ThrowHeatGlow(stockpileThing.Position, stockpileThing.Map, 1f);
-                                        MoteMaker.ThrowLightningGlow(stockpileThing.Position.ToVector3Shifted(), stockpileThing.Map, 1f);
+                                        MoteMaker.ThrowHeatGlow(current, portalBldg.Map, 1f);
+                                        MoteMaker.ThrowLightningGlow(portalAnimal.DrawPos, portalAnimal.Map, 1f);
                                         portalAnimal.jobs.ClearQueuedJobs();
                                         portalAnimal.DeSpawn();
-                                        GenSpawn.Spawn(portalAnimal, portalBldg.PortalDestinationPosition, portalBldg.PortalDestinationMap);
-                                        MoteMaker.ThrowLightningGlow(stockpileThing.Position.ToVector3Shifted(), stockpileThing.Map, 1f);
+                                        GenPlace.TryPlaceThing(portalAnimal, portalBldg.PortalDestinationPosition, portalBldg.PortalDestinationMap, ThingPlaceMode.Near);
+                                        //GenSpawn.Spawn(portalAnimal, portalBldg.PortalDestinationPosition, portalBldg.PortalDestinationMap);
+                                        MoteMaker.ThrowLightningGlow(portalAnimal.DrawPos, portalAnimal.Map, 1f);
                                     }
                                 }
                             }

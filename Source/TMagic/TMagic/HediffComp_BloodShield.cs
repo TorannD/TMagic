@@ -15,6 +15,7 @@ namespace TorannMagic
         private bool initialized = false;
         private int initializeDelay = 0;
         private bool removeNow = false;
+        private bool woundsHealed = false;
 
         private int eventFrequency = 180;
 
@@ -110,14 +111,17 @@ namespace TorannMagic
             Hediff bloodHediff = this.linkedPawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_BloodHD"), false);
             if(bloodHediff != null)
             {
-                if (bloodHediff.Severity < 1)
+                if (this.woundsHealed)
                 {
-                    TM_Action.DamageEntities(this.linkedPawn, null, severity, TMDamageDefOf.DamageDefOf.TM_BloodBurn, this.Pawn);
-                }
-                else
-                {
-                    bloodHediff.Severity -= severity / 3;
-                    TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_BloodMist"), this.linkedPawn.DrawPos, this.Pawn.Map, Rand.Range(.6f, .7f), .2f, 0.05f, 1f, Rand.Range(-50, 50), Rand.Range(1.5f, 2f), (Quaternion.AngleAxis(-90, Vector3.up) * this.directionToLinkedPawn).ToAngleFlat(), Rand.Range(0, 360));
+                    if (bloodHediff.Severity < 1)
+                    {
+                        TM_Action.DamageEntities(this.linkedPawn, null, severity, TMDamageDefOf.DamageDefOf.TM_BloodBurn, this.Pawn);
+                    }
+                    else
+                    {
+                        bloodHediff.Severity -= severity / 3;
+                        TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_BloodMist"), this.linkedPawn.DrawPos, this.Pawn.Map, Rand.Range(.6f, .7f), .2f, 0.05f, 1f, Rand.Range(-50, 50), Rand.Range(1.5f, 2f), (Quaternion.AngleAxis(-90, Vector3.up) * this.directionToLinkedPawn).ToAngleFlat(), Rand.Range(0, 360));
+                    }
                 }
             }
             else
@@ -135,6 +139,7 @@ namespace TorannMagic
 
         public void HealWounds(float healAmount)
         {
+            this.woundsHealed = false;
             int num = 1;
             using (IEnumerator<BodyPartRecord> enumerator = this.Pawn.health.hediffSet.GetInjuredParts().GetEnumerator())
             {
@@ -163,6 +168,7 @@ namespace TorannMagic
                                     TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_BloodMist"), this.Pawn.DrawPos, this.Pawn.Map, Rand.Range(.5f, .75f), .2f, 0.05f, 1f, Rand.Range(-50, 50), Rand.Range(.5f, .7f), Rand.Range(30,40), Rand.Range(0, 360));
                                     num--;
                                     num2--;
+                                    this.woundsHealed = true;
                                 }
                             }
                         }

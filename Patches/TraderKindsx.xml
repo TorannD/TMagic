@@ -10,8 +10,8 @@
         <thingDef>RawMagicyte</thingDef>
 		<price>Expensive</price>
         <countRange>
-          <min>30</min>
-          <max>70</max>
+          <min>400</min>
+          <max>700</max>
         </countRange>
       </li>
 	</value>
@@ -24,8 +24,8 @@
         <thingDef>RawMagicyte</thingDef>
 		<price>Expensive</price>
         <countRange>
-          <min>10</min>
-          <max>30</max>
+          <min>100</min>
+          <max>300</max>
         </countRange>
       </li>
 	</value>
@@ -37,8 +37,8 @@
 	  <li Class="StockGenerator_SingleDef">
         <thingDef>RawMagicyte</thingDef>
         <countRange>
-          <min>5</min>
-          <max>10</max>
+          <min>50</min>
+          <max>100</max>
         </countRange>
       </li>
 	</value>

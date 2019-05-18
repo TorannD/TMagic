@@ -7,7 +7,7 @@
     <defName>TM_EnchantedBody</defName>
     <label>Enchanted Body</label>
     <uiIconPath>UI/enchantedbody</uiIconPath>
-    <description>Grows extra limbs to improve manipulation and increases fighting speed. This enchantment tends to make the enchanter look quite horrifying and can alarm other pawns. This spell is sustained and reduces max mp by 30% and mana regeneration by 30%.
+    <description>Grows extra limbs to improve manipulation and increases fighting speed. This enchantment tends to make the enchanter look quite horrifying and can alarm other pawns. This spell is sustained and reduces max mp by 20 and mana regeneration by 50%.
 	
 Using this ability while the enchantment is active will dispel the enchantment. Only one enchantment type may be active at a given time.
 
@@ -44,7 +44,7 @@ Using this ability while the enchantment is active will dispel the enchantment. 
     <defName>TM_EnchantedAura</defName>
     <label>Enchanted Aura</label>
     <uiIconPath>UI/enchantedaura</uiIconPath>
-    <description>Radiates a charming aura that disarms social barriers and improves social interaction and opinions. This spell is sustained and reduces max mp by 30% and mana regeneration by 30%.
+    <description>Radiates a charming aura that disarms social barriers and improves social interaction and opinions. This spell is sustained and reduces max mp by 20 and mana regeneration by 50%.
 	
 Using this ability while the enchantment is active will dispel the enchantment. Only one enchantment type may be active at a given time.</description>
     <manaCost>0.00</manaCost>
@@ -119,11 +119,11 @@ Check skill descriptions for additional details.</description>
         <defName>TM_EnchanterStone</defName>
         <label>Enchanter's Stone</label>
         <uiIconPath>UI/enchanterstone</uiIconPath>
-        <description>Creates an artifact out of raw material and imbues it with magical properties. An enchanter can have as many artifacts as they wish, but each artifact reduces max MP by 20%.
+        <description>Creates an artifact out of raw material and imbues it with magical properties. An enchanter can have as many artifacts as they wish, but each artifact reduces max MP by 15.
 	
 The benefits of the artifact are granted to the pawn that has the item equipped. Artifacts have unique equipment slots.
 
-This ability is used on raw resources such as stone chunks, steel, or silver - see skill descriptions for a full list of resources that can be used to create an enchanater's stone.</description>
+This ability is used on raw resources such as stone chunks, steel, or silver - see skill descriptions for a full list of resources that can be used to create an enchanter's stone.</description>
         <manaCost>0.70</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_EnchanterStone</verbClass>
@@ -200,10 +200,10 @@ Ice enchantment reduces the efficiency of the struck bodypart
 Lightning enchantment may stun the enemy.
 Dark enchantment may blind the enemy.
 		
-Enchanted weapons require an allotment of mana equal to the application cost to sustain. The number of weapon enchantments is limited only by the enchanter mana capacity.
+Enchanted weapons require an allotment of mana equal to the casting cost to sustain. The number of weapon enchantments is limited only by the enchanter mana capacity.
 
-The enchantment will only remain active as long as the pawn holds the weapon. If it is dropped or swapped for another weapon, the enchantment will disperse. Weapon enchantments only affect melee weapons.</description>
-        <manaCost>0.20</manaCost>
+The enchantment will only remain active as long as the pawn holds the enchanted weapon. If it is dropped or swapped for another weapon, the enchantment will disperse. Weapon enchantments only affect melee weapons.</description>
+        <manaCost>0.10</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_EnchantWeapon</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

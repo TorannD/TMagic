@@ -103,10 +103,10 @@ namespace TorannMagic
         private float BM_BloodShield_eff = .06f;
         private float BM_Rend_eff = .08f;
         private float BM_BloodMoon_eff = .05f;
-        private float E_EnchantedBody_eff = .05f;
+        private float E_EnchantedBody_eff = .15f;
         private float E_Transmutate_eff = .12f;
-        private float E_EnchantWeapon_eff = .06f;
-        private float E_EnchanterStone_eff = .06f;
+        private float E_EnchantWeapon_eff = .1f;
+        private float E_EnchanterStone_eff = .10f;
         private float E_Polymorph_eff = .06f;
         private float E_Shapeshift_eff = .05f;
 
@@ -7446,7 +7446,7 @@ namespace TorannMagic
                         this.enchanterStones.Remove(this.enchanterStones[i]);
                     }
                 }
-                _maxMP -= .25f * this.enchanterStones.Count;
+                _maxMP -= (.15f - (.02f * this.MagicData.MagicPowerSkill_EnchanterStone.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchanterStone_eff").level)) * this.enchanterStones.Count;
             }
             try
             {
@@ -7495,8 +7495,8 @@ namespace TorannMagic
             if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_EnchantedAuraHD) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_EnchantedBodyHD))
             {
                 
-                _maxMP += -.3f + (.015f * this.MagicData.MagicPowerSkill_EnchantedBody.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchantedBody_eff").level);
-                _mpRegenRate += -.3f + (.045f * this.MagicData.MagicPowerSkill_EnchantedBody.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchantedBody_ver").level);
+                _maxMP += -.3f + (.045f * this.MagicData.MagicPowerSkill_EnchantedBody.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchantedBody_eff").level);
+                _mpRegenRate += -.5f + (.045f * this.MagicData.MagicPowerSkill_EnchantedBody.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchantedBody_ver").level);
             }
             if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
             {

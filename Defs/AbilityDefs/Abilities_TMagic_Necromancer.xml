@@ -729,14 +729,16 @@ Cast time: .5s</description>
         <description>Transforms the necromancer into an undead lich gaining an immortal existence and arcane power. Once used, there is no return.
 		
 Benefits: 
-Maximum Mana: +50%
+Maximum Mana: +50
 Mana Regeneration: +50%
 Gains unnatural immunities to diseases, resistances to damage, health regeneration, and no longer needs food or rest.
 Gains ability: Flight
 Gains ability: Death Bolt
 
 Penalties:
-Can no longer perform work involving Caring, Social, Animals, Firefighting, Artistic, Dumb Labor, or Skilled Labor.
+Can no longer perform work involving Caring, Social, Animals, Firefighting, Artistic, or Dumb Labor.
+Loses all passion for work except fighting and research.
+Reduced learning speed by 40% and global work speed by 75%
 Movement speed: -2.0 c/s</description>
         <manaCost>0.0</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -757,7 +759,7 @@ Movement speed: -2.0 c/s</description>
             <muzzleFlashScale>4</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
             <isPrimary>true</isPrimary>
-			<isViolent>true</isViolent>
+			<isViolent>false</isViolent>
 			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
 			<targetParams>
                 <canTargetPawns>true</canTargetPawns>

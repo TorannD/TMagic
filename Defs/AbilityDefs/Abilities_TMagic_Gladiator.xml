@@ -24,7 +24,7 @@
     <defName>TM_Sprint</defName>
     <label>Sprint</label>
     <uiIconPath>UI/sprint2</uiIconPath>
-    <description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30% Stamina to sustain.</description>
+    <description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30 Stamina to sustain.</description>
     <staminaCost>0.0</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Sprint</verbClass>
@@ -63,7 +63,7 @@
     <defName>TM_Sprint_I</defName>
     <label>Sprint</label>
     <uiIconPath>UI/sprint2</uiIconPath>
-    <description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30% Stamina to sustain.</description>
+    <description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30 Stamina to sustain.</description>
     <staminaCost>0.0</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Sprint</verbClass>
@@ -102,7 +102,7 @@
     <defName>TM_Sprint_II</defName>
     <label>Sprint</label>
     <uiIconPath>UI/sprint2</uiIconPath>
-    <description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30% Stamina to sustain.</description>
+    <description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30 Stamina to sustain.</description>
     <staminaCost>0.0</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Sprint</verbClass>
@@ -141,7 +141,7 @@
     <defName>TM_Sprint_III</defName>
     <label>Sprint</label>
     <uiIconPath>UI/sprint2</uiIconPath>
-    <description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30% Stamina to sustain.</description>
+    <description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30 Stamina to sustain.</description>
     <staminaCost>0.0</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Sprint</verbClass>

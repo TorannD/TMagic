@@ -352,16 +352,19 @@ namespace TorannMagic.AutoCast
             {
                 Pawn caster = casterComp.Pawn;
                 LocalTargetInfo jobTarget = TM_Calc.FindNearbyInjuredPawn(caster, (int)(abilitydef.MainVerb.range * .9f), minSeverity);
-                float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
-                if (distanceToTarget < (abilitydef.MainVerb.range * .9f) && jobTarget != null && jobTarget.Thing != null && jobTarget.Thing is Pawn)
+                if (jobTarget != null)
                 {
-                    Pawn targetPawn = jobTarget.Thing as Pawn;
-                    if (!targetPawn.health.hediffSet.HasHediff(hediffDef, false))
+                    float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
+                    if (distanceToTarget < (abilitydef.MainVerb.range * .9f) && jobTarget.Thing != null && jobTarget.Thing is Pawn)
                     {
-                        Job job = ability.GetJob(AbilityContext.AI, jobTarget);
-                        caster.jobs.TryTakeOrderedJob(job);
-                        success = true;
-                        TM_Action.TM_Toils.GotoAndWait(jobTarget.Thing as Pawn, caster, Mathf.RoundToInt(ability.Def.MainVerb.warmupTime * 60));
+                        Pawn targetPawn = jobTarget.Thing as Pawn;
+                        if (targetPawn.health != null && targetPawn.health.hediffSet != null && !targetPawn.health.hediffSet.HasHediff(hediffDef, false))
+                        {
+                            Job job = ability.GetJob(AbilityContext.AI, jobTarget);
+                            caster.jobs.TryTakeOrderedJob(job);
+                            success = true;
+                            TM_Action.TM_Toils.GotoAndWait(jobTarget.Thing as Pawn, caster, Mathf.RoundToInt(ability.Def.MainVerb.warmupTime * 60));
+                        }
                     }
                 }
             }

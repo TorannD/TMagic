@@ -3166,14 +3166,14 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>850</MarketValue>
+      <MarketValue>580</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>150</RawMagicyte>
-		<DevilstrandCloth>30</DevilstrandCloth>
+		<RawMagicyte>88</RawMagicyte>
+		<Cloth>40</Cloth>
 	</costList>
 	<recipeMaker>		    
 		<workAmount>2000</workAmount>
@@ -3186,10 +3186,10 @@ Produces 400Wd.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>6</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
-			<li>TM_AdvancedScribing</li>
+			<li>TM_MagicScribing</li>
 		</researchPrerequisite>
 	</recipeMaker>
 	<rotatable>false</rotatable>

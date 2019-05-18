@@ -212,12 +212,12 @@ Arcane Resistance: +5%</description>
   <ThingDef ParentName="TMSmithedApparelBase">
     <defName>AncientMail</defName>
     <label>Ancient Mail</label>    
-    <description>Chain mail forged with an ancient design that provides above average physical defense. The design of the armor includes a symmetrical etching of arcane runes that bestow the wearer with enhanced power. Once crafted, these runes will attract an ancient spirit to embody the mail and grants the wearer a chance to cause additional arcane damage following any attack; however, this comes at a price - all abilities will require more energy to use (this cannot be overwritten), and the bearer is beset with nightmares that slowly break down mental resistances.
+    <description>Chain mail forged with an ancient design that provides above average physical defense. The design of the armor includes a symmetrical etching of arcane runes that bestow the wearer with enhanced power. Once crafted, these runes will attract an ancient spirit to embody the mail and grants the wearer a chance to cause additional arcane damage following any attack; however, this comes at a price - all abilities will require more energy to use, and the bearer is beset with nightmares that slowly break down mental resistances.
 	
 Ancient mail is enchanted and provides additional benefits to trained mages and fighters:
 Max Energy: +8%
 Energy Regen: +10%
-Energy Costs: -15%
+Energy Costs: +15%
 Arcane Resistance: +20%
 
 Augmented by Arcane Spectre: 50% chance to deal 20% bonus damage</description>

@@ -83,16 +83,16 @@ namespace TorannMagic
             lich.workSettings.SetPriority(WorkTypeDefOf.Doctor, 0);
             lich.workSettings.SetPriority(WorkTypeDefOf.Warden, 0);
             lich.workSettings.SetPriority(WorkTypeDefOf.Handling, 0);
-            lich.workSettings.SetPriority(WorkTypeDefOf.Construction, 0);
-            lich.workSettings.SetPriority(WorkTypeDefOf.Crafting, 0);
+            //lich.workSettings.SetPriority(WorkTypeDefOf.Construction, 0);
+            //lich.workSettings.SetPriority(WorkTypeDefOf.Crafting, 0);
             lich.workSettings.SetPriority(WorkTypeDefOf.Firefighter, 0);
-            lich.workSettings.SetPriority(WorkTypeDefOf.Growing, 0);
-            lich.workSettings.SetPriority(WorkTypeDefOf.Mining, 0);
+            //lich.workSettings.SetPriority(WorkTypeDefOf.Growing, 0);
+            //lich.workSettings.SetPriority(WorkTypeDefOf.Mining, 0);
             lich.workSettings.SetPriority(TorannMagicDefOf.Cleaning, 0);
             lich.workSettings.SetPriority(TorannMagicDefOf.Hauling, 0);
-            lich.workSettings.SetPriority(TorannMagicDefOf.Tailoring, 0);
-            lich.workSettings.SetPriority(TorannMagicDefOf.Smithing, 0);
-            lich.workSettings.SetPriority(TorannMagicDefOf.PlantCutting, 0);
+            //lich.workSettings.SetPriority(TorannMagicDefOf.Tailoring, 0);
+            //lich.workSettings.SetPriority(TorannMagicDefOf.Smithing, 0);
+            //lich.workSettings.SetPriority(TorannMagicDefOf.PlantCutting, 0);
             lich.workSettings.SetPriority(TorannMagicDefOf.Cooking, 0);
             lich.workSettings.SetPriority(TorannMagicDefOf.Art, 0);
 

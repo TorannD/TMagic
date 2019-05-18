@@ -100,7 +100,7 @@ namespace TorannMagic
 
             if(Rand.Chance(.2f))
             {
-                TM_Action.DamageEntities(this.Pawn, null, Rand.Range(3, 5), DamageDefOf.Burn, this.Pawn);
+                TM_Action.DamageEntities(this.Pawn, null, Rand.Range(3, 5), 5f, DamageDefOf.Burn, this.Pawn);
                 TM_MoteMaker.ThrowFlames(this.Pawn.DrawPos, this.Pawn.Map, Rand.Range(.1f, .2f));
             }
 

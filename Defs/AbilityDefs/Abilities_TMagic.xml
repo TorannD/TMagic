@@ -278,7 +278,7 @@ Manipulation, Sight, Hearing, Blood filtration: +10%
 Moving, Consciousness:	+5%
 Mood decrease: -3
 
-Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
 		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
@@ -324,7 +324,7 @@ Manipulation, Sight, Hearing, Talking: +20%
 Moving, Consciousness, Metabolism, Blood filtration: +10%
 Mood decrease:	-4
 
-Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
 		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
@@ -371,7 +371,7 @@ Moving, Metabolism, Blood filtration: +15%
 Consciousness: 	+10%
 Mood decrease:	-6
 
-Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
 		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
@@ -418,7 +418,7 @@ Moving, Metabolism, Blood filtration: +20%
 Consciousness: 	+15%
 Mood decrease:	-8
 
-Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
 		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
@@ -487,7 +487,7 @@ Consciousness:	+5%
 Mood decrease:	+2
 Rest, Hunger and Pain: 	-10%
 
-Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
 		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
@@ -534,7 +534,7 @@ Consciousness: 	+10%
 Mood decrease:	+3
 Rest, Hunger and Pain: 	-15%
 
-Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
 		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
@@ -581,7 +581,7 @@ Consciousness 	+15%
 Mood decrease:	+4
 Rest, Hunger and Pain: 	-20%
 
-Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
 		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
@@ -628,7 +628,7 @@ Consciousness: 	+20%
 Mood decrease:	+5
 Rest, Hunger and Pain:	-25%
 
-Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
 		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
@@ -697,7 +697,7 @@ Blood pumping: 	+10%
 Consciousness: 	+5%
 Mood decrease:	+4
 
-Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
 		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
@@ -743,7 +743,7 @@ Manipulation, Moving: +15%
 Consciousness, Blood pumping: +10%
 Mood decrease:	+5
 
-Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
 		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
@@ -789,7 +789,7 @@ Manipulation, Moving: +20%
 Consciousness, Blood pumping: +10%
 Mood decrease:	+6
 
-Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
 		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ApplyAura</verbClass>
@@ -835,7 +835,7 @@ Manipulation, Moving:  +25%
 Consciousness, Blood pumping: +10%
 Mood decrease:	+7
 
-Requires 40% mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
+Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to deactivate. The caster gains xp each time an ally is buffed.</description>
 		<manaCost>0.0</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ApplyAura</verbClass>

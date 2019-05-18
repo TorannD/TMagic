@@ -26,7 +26,7 @@
         <uiIconPath>UI/stoneskin</uiIconPath>
         <description>Applies stoneskin to the target pawn. Each charge of stoneskin absorbs a single attack, regardless of how powerful, or weak, the attack is. Stoneskin is an unsubstantial defense, meaning the defensive measures it employs are not physical and will not interfere with the combat capabilities of its ward.
 		
-Stoneskin requires a constant reserve of mana to maintain, each application will reduce the casters maximum mana by 15%. The caster can only maintain a limited number of stoneskin instances regardless of how much mana the caster has available.
+Stoneskin requires a constant reserve of mana to maintain, each application will reduce the casters maximum mana by 15. The caster can only maintain a limited number of stoneskin instances regardless of how much mana the caster has available.
 
 Applying stoneskin to a target that already has stoneskin will remove all charges of stoneskin on the target and dissipate the spell (returning mana reserves back to the caster).</description>
         <manaCost>0.15</manaCost>
@@ -485,7 +485,7 @@ The first, and every third stone after, will always be subterranean unless there
         <uiIconPath>PawnKind/gargoyle_south</uiIconPath>
         <description>Creates a stone sentinel to defend an area. Sentinels will remain dormant until an enemy is within range, then they will break free of their stone prison to defend their terrain.
 		
-Using this ability on a dormant sentinel will dismiss the sentinel.
+Using this ability on a dormant sentinel will dismiss the sentinel. Each sentinel reduces max MP by 20.
 
 *Aesthetic note: sentinels will always face away from the caster.</description>
 		<manaCost>0.20</manaCost>

@@ -193,7 +193,7 @@ namespace TorannMagic
             {
                 this.LabelCap,
                 ": ",
-                (this.CurLevel / 1f).ToStringPercent(),
+                (this.CurLevel / .01f).ToString("n2"),
                 "\n",
                 this.def.description
             });
