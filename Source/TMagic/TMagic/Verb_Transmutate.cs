@@ -59,28 +59,28 @@ namespace TorannMagic
                 if (thingList[i] != null && !(thingList[i] is Pawn) && !(thingList[i] is Building))
                 {
                     //if (thingList[i].def.thingCategories != null && thingList[i].def.thingCategories.Count > 0 && (thingList[i].def.thingCategories.Contains(ThingCategoryDefOf.ResourcesRaw) || thingList[i].def.thingCategories.Contains(ThingCategoryDefOf.StoneBlocks) || thingList[i].def.defName == "RawMagicyte"))                    
-                    if (thingList[i].def.MadeFromStuff)
+                    if (thingList[i].def.MadeFromStuff && verVal >= 3)
                     {
                         //Log.Message("stuff item");
                         flagStuffItem = true;
                         transmutateThing = thingList[i];
                         break;
                     }
-                    if(!thingList[i].def.MadeFromStuff && thingList[i].TryGetComp<CompQuality>() != null)
+                    if(!thingList[i].def.MadeFromStuff && thingList[i].TryGetComp<CompQuality>() != null && verVal >= 3)
                     {
                         //Log.Message("non stuff item");
                         flagNoStuffItem = true;
                         transmutateThing = thingList[i];
                         break;
                     }
-                    if ((thingList[i].def.statBases != null && thingList[i].GetStatValue(StatDefOf.Nutrition) > 0) && !(thingList[i] is Corpse))
+                    if ((thingList[i].def.statBases != null && thingList[i].GetStatValue(StatDefOf.Nutrition) > 0) && !(thingList[i] is Corpse) && verVal >= 1)
                     {
                         //Log.Message("food item");
                         flagNutrition = true;
                         transmutateThing = thingList[i];
                         break;
                     }
-                    if(thingList[i] is Corpse)
+                    if(thingList[i] is Corpse && verVal >= 2)
                     {
                         //Log.Message("corpse");
                         flagCorpse = true;

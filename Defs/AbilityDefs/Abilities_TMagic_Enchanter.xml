@@ -119,7 +119,7 @@ Check skill descriptions for additional details.</description>
         <defName>TM_EnchanterStone</defName>
         <label>Enchanter's Stone</label>
         <uiIconPath>UI/enchanterstone</uiIconPath>
-        <description>Creates an artifact out of raw material and imbues it with magical properties. An enchanter can have as many artifacts as they wish, but each artifact reduces max MP by 15.
+        <description>Creates an artifact out of raw material and imbues it with magical properties. An enchanter can have as many artifacts as they wish, but each artifact reduces max MP by 20.
 	
 The benefits of the artifact are granted to the pawn that has the item equipped. Artifacts have unique equipment slots.
 
@@ -288,7 +288,7 @@ Max targets: 3
 Radius: 3
 Range: 36
 Cast time: 3s</description>
-		<manaCost>0.75</manaCost>
+		<manaCost>0.70</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Polymorph</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -341,7 +341,7 @@ Max targets: 4
 Radius: 3
 Range: 38
 Cast time: 2.8s</description>
-		<manaCost>0.75</manaCost>
+		<manaCost>0.70</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Polymorph</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -394,7 +394,7 @@ Max targets: 4
 Radius: 4
 Range: 40
 Cast time: 2.6s</description>
-		<manaCost>0.75</manaCost>
+		<manaCost>0.70</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Polymorph</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -447,7 +447,7 @@ Max targets: 5
 Radius: 4
 Range: 42
 Cast time: 2.4s</description>
-		<manaCost>0.75</manaCost>
+		<manaCost>0.70</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Polymorph</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

@@ -7446,7 +7446,7 @@ namespace TorannMagic
                         this.enchanterStones.Remove(this.enchanterStones[i]);
                     }
                 }
-                _maxMP -= (.15f - (.02f * this.MagicData.MagicPowerSkill_EnchanterStone.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchanterStone_eff").level)) * this.enchanterStones.Count;
+                _maxMP -= (.20f - (.02f * this.MagicData.MagicPowerSkill_EnchanterStone.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchanterStone_eff").level)) * this.enchanterStones.Count;
             }
             try
             {
