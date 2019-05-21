@@ -28,7 +28,7 @@ namespace TorannMagic
                             {
                                 closestThing = thing;
                             }
-                            else if(closestThing == null && (pawn.CanReserve(closestThing)))
+                            else if(closestThing == null)// && (pawn.CanReserve(closestThing)))
                             {
                                 closestThing = thing;
                             }

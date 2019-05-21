@@ -21,7 +21,7 @@ namespace TorannMagic
 
         public bool firstTick = false;
         public bool magicPowersInitialized = false;
-        public bool magicPowersInitializedForColonist = true;
+        public bool magicPowersInitializedForColonist = false;
         private int resMitigationDelay = 0;
         private int damageMitigationDelay = 0;
         public int magicXPRate = 1000;
@@ -109,7 +109,6 @@ namespace TorannMagic
         private float E_EnchanterStone_eff = .10f;
         private float E_Polymorph_eff = .06f;
         private float E_Shapeshift_eff = .05f;
-
 
         private float global_eff = 0.025f;
 
@@ -1391,10 +1390,7 @@ namespace TorannMagic
                             {
                                 ResolveFactionChange();
                             }
-                            else if(!this.Pawn.IsColonist)
-                            {
-                                this.magicPowersInitializedForColonist = false;
-                            }
+
                             if (this.Pawn.IsColonist)
                             {
                                 ResolveEnchantments();
@@ -1899,14 +1895,17 @@ namespace TorannMagic
             if (flag)
             {
                 if (this.magicPowersInitialized == false)
-                {
-                    
+                {                    
                     MagicData.MagicUserLevel = 0;
                     MagicData.MagicAbilityPoints = 0;
                     AssignAbilities();
                     if(!this.Pawn.IsColonist)
                     {
                         InitializeSpell();
+                    }
+                    else
+                    {
+                        this.magicPowersInitializedForColonist = true;
                     }
                 }
 
@@ -7672,7 +7671,7 @@ namespace TorannMagic
         {
             //base.PostExposeData();            
             Scribe_Values.Look<bool>(ref this.magicPowersInitialized, "magicPowersInitialized", false, false);
-            Scribe_Values.Look<bool>(ref this.magicPowersInitializedForColonist, "magicPowersInitializedForColonist", true, false);
+            Scribe_Values.Look<bool>(ref this.magicPowersInitializedForColonist, "magicPowersInitializedForColonist", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Rain, "spell_Rain", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Blink, "spell_Blink", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Teleport, "spell_Teleport", false, false);
