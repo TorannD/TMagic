@@ -10,7 +10,7 @@
 	<stackLimit>1</stackLimit>
     <tradeability>None</tradeability>
     <useHitPoints>True</useHitPoints>
-	<techLevel>Neolithic</techLevel>
+	<techLevel>Medieval</techLevel>
     <graphicData>
       <onGroundRandomRotateAngle>0</onGroundRandomRotateAngle>
     </graphicData>
@@ -1165,13 +1165,6 @@ Orbs of the Eternal have been used by mages, rulers, and the elite to prolong li
 	  <WorkToMake>20000</WorkToMake>
     </statBases>
 	<recipeMaker>
-      <soundWorking>Recipe_Smith</soundWorking>	  
-	  <workSpeedStat>SmithingSpeed</workSpeedStat>
-      <workSkill>Crafting</workSkill>
-	  <effectWorking>Smith</effectWorking>
-      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-	  <recipeUsers>
-      </recipeUsers>
       <workAmount>20000</workAmount>
 	  <skillRequirements>
 			<Intellectual>8</Intellectual>

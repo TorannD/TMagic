@@ -21,7 +21,8 @@ namespace TorannMagic
 
         public bool firstTick = false;
         public bool magicPowersInitialized = false;
-        public bool magicPowersInitializedForColonist = false;
+        public bool magicPowersInitializedForColonist = true;
+        private bool colonistPowerCheck = true;
         private int resMitigationDelay = 0;
         private int damageMitigationDelay = 0;
         public int magicXPRate = 1000;
@@ -1390,6 +1391,10 @@ namespace TorannMagic
                             {
                                 ResolveFactionChange();
                             }
+                            else if (!this.Pawn.IsColonist)
+                            {
+                                this.magicPowersInitializedForColonist = false;
+                            }
 
                             if (this.Pawn.IsColonist)
                             {
@@ -1854,38 +1859,42 @@ namespace TorannMagic
 
         public void ResolveFactionChange()
         {
-            RemovePowers();
-            this.spell_BattleHymn = false;
-            this.RemovePawnAbility(TorannMagicDefOf.TM_BattleHymn);
-            this.spell_Blizzard = false;
-            this.RemovePawnAbility(TorannMagicDefOf.TM_Blizzard);
-            this.spell_BloodMoon = false;
-            this.RemovePawnAbility(TorannMagicDefOf.TM_BloodMoon);
-            this.spell_EyeOfTheStorm = false;
-            this.RemovePawnAbility(TorannMagicDefOf.TM_EyeOfTheStorm);
-            this.spell_Firestorm = false;
-            this.RemovePawnAbility(TorannMagicDefOf.TM_Firestorm);
-            this.spell_FoldReality = false;
-            this.RemovePawnAbility(TorannMagicDefOf.TM_FoldReality);
-            this.spell_HolyWrath = false;
-            this.RemovePawnAbility(TorannMagicDefOf.TM_HolyWrath);
-            this.spell_LichForm = false;
-            this.RemovePawnAbility(TorannMagicDefOf.TM_BattleHymn);
-            this.spell_Meteor = false;
-            this.RemovePawnAbility(TorannMagicDefOf.TM_Meteor);
-            this.spell_OrbitalStrike = false;
-            this.RemovePawnAbility(TorannMagicDefOf.TM_OrbitalStrike);
-            this.spell_PsychicShock = false;
-            this.RemovePawnAbility(TorannMagicDefOf.TM_PsychicShock);
-            this.spell_RegrowLimb = false;
-            this.spell_Resurrection = false;
-            this.spell_Scorn = false;
-            this.RemovePawnAbility(TorannMagicDefOf.TM_Scorn);
-            this.spell_Shapeshift = false;
-            this.spell_SummonPoppi = false;
-            this.RemovePawnAbility(TorannMagicDefOf.TM_SummonPoppi);
-            AssignAbilities();
+            if (!this.colonistPowerCheck)
+            {
+                RemovePowers();
+                this.spell_BattleHymn = false;
+                this.RemovePawnAbility(TorannMagicDefOf.TM_BattleHymn);
+                this.spell_Blizzard = false;
+                this.RemovePawnAbility(TorannMagicDefOf.TM_Blizzard);
+                this.spell_BloodMoon = false;
+                this.RemovePawnAbility(TorannMagicDefOf.TM_BloodMoon);
+                this.spell_EyeOfTheStorm = false;
+                this.RemovePawnAbility(TorannMagicDefOf.TM_EyeOfTheStorm);
+                this.spell_Firestorm = false;
+                this.RemovePawnAbility(TorannMagicDefOf.TM_Firestorm);
+                this.spell_FoldReality = false;
+                this.RemovePawnAbility(TorannMagicDefOf.TM_FoldReality);
+                this.spell_HolyWrath = false;
+                this.RemovePawnAbility(TorannMagicDefOf.TM_HolyWrath);
+                this.spell_LichForm = false;
+                this.RemovePawnAbility(TorannMagicDefOf.TM_BattleHymn);
+                this.spell_Meteor = false;
+                this.RemovePawnAbility(TorannMagicDefOf.TM_Meteor);
+                this.spell_OrbitalStrike = false;
+                this.RemovePawnAbility(TorannMagicDefOf.TM_OrbitalStrike);
+                this.spell_PsychicShock = false;
+                this.RemovePawnAbility(TorannMagicDefOf.TM_PsychicShock);
+                this.spell_RegrowLimb = false;
+                this.spell_Resurrection = false;
+                this.spell_Scorn = false;
+                this.RemovePawnAbility(TorannMagicDefOf.TM_Scorn);
+                this.spell_Shapeshift = false;
+                this.spell_SummonPoppi = false;
+                this.RemovePawnAbility(TorannMagicDefOf.TM_SummonPoppi);
+                AssignAbilities();
+            }
             this.magicPowersInitializedForColonist = true;
+            this.colonistPowerCheck = true;
         }
 
         public override void PostInitialize()
@@ -1902,13 +1911,9 @@ namespace TorannMagic
                     if(!this.Pawn.IsColonist)
                     {
                         InitializeSpell();
-                    }
-                    else
-                    {
-                        this.magicPowersInitializedForColonist = true;
+                        this.colonistPowerCheck = false;
                     }
                 }
-
                 this.magicPowersInitialized = true;
                 base.UpdateAbilities();                                
             }
@@ -7671,7 +7676,8 @@ namespace TorannMagic
         {
             //base.PostExposeData();            
             Scribe_Values.Look<bool>(ref this.magicPowersInitialized, "magicPowersInitialized", false, false);
-            Scribe_Values.Look<bool>(ref this.magicPowersInitializedForColonist, "magicPowersInitializedForColonist", false, false);
+            Scribe_Values.Look<bool>(ref this.magicPowersInitializedForColonist, "magicPowersInitializedForColonist", true, false);
+            Scribe_Values.Look<bool>(ref this.colonistPowerCheck, "colonistPowerCheck", true, false);
             Scribe_Values.Look<bool>(ref this.spell_Rain, "spell_Rain", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Blink, "spell_Blink", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Teleport, "spell_Teleport", false, false);
