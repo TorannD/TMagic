@@ -3241,7 +3241,7 @@ namespace TorannMagic
                         if(item is Building && (item.def == TorannMagicDefOf.TableArcaneForge))
                         {
                             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
-                            if(comp != null && comp.Mana.CurLevel < .5f)
+                            if(comp != null && comp.Mana != null && comp.Mana.CurLevel < .5f)
                             {
                                 string text = null;
                                 Action action = null;
