@@ -3,6 +3,22 @@
  
 <Defs>
 
+	<TraitDef>
+		<defName>TM_OKWithDeath</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>.1</commonality>	
+		<degreeDatas>	
+		  <li>
+			<label>Unaffected by death</label>
+			<description>[PAWN_nameDef] has accepted that death is another part of life and doesn't get upset when learning about a dead ally or seeing one of the undead.</description>
+			<degree>0</degree>
+		  </li>
+		</degreeDatas>	
+		<conflictingTraits>
+		  <li>Kind</li>
+		</conflictingTraits>
+	</TraitDef>
+
     <TraitDef>
         <defName>Gifted</defName>
         <ignoreConfigErrors>true</ignoreConfigErrors>
@@ -47,6 +63,8 @@
 		  <li>DeathKnight</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -97,6 +115,8 @@
 		  <li>DeathKnight</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -146,6 +166,8 @@
 		  <li>DeathKnight</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -193,6 +215,8 @@
 		  <li>DeathKnight</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -244,6 +268,8 @@
 		<li>Technomancer</li>
 		<li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -294,6 +320,8 @@
 		  <li>Technomancer</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -342,6 +370,8 @@
 		  <li>Technomancer</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>TM_Monk</li>
+		  <li>Chronomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 
@@ -389,6 +419,8 @@
 		  <li>Technomancer</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>	
 	</TraitDef> 	
 	
@@ -439,6 +471,8 @@
 		  <li>DeathKnight</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -517,6 +551,8 @@
 		  <li>DeathKnight</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -577,6 +613,8 @@
 		  <li>DeathKnight</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -608,21 +646,34 @@
 			</statOffsets>
 		  </li>
 		</degreeDatas>	
-	</TraitDef>
-	
-	<TraitDef>
-		<defName>TM_OKWithDeath</defName>
-		<ignoreConfigErrors>true</ignoreConfigErrors>
-		<commonality>.1</commonality>	
-		<degreeDatas>	
-		  <li>
-			<label>Unaffected by death</label>
-			<description>[PAWN_nameDef] has accepted that death is another part of life and doesn't get upset when learning about a dead ally or seeing one of the undead.</description>
-			<degree>0</degree>
-		  </li>
-		</degreeDatas>	
 		<conflictingTraits>
-		  <li>Kind</li>
+		  <li>PhysicalProdigy</li>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>Arcanist</li>
+		  <li>StormBorn</li>
+		  <li>Summoner</li>
+		  <li>Gifted</li>
+	      <li>Paladin</li>
+		  <li>Gladiator</li>
+		  <li>Druid</li>
+		  <li>TM_Sniper</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Bladedancer</li>
+		  <li>Lich</li>
+		  <li>Ranger</li>
+		  <li>Faceless</li>
+		  <li>Succubus</li>
+		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
+		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>
 	</TraitDef>
 
@@ -717,6 +768,122 @@
 		  <li>DeathKnight</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>
+		<defName>Succubus</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
+		<degreeDatas>	
+		  <li>
+			<label>Succubus</label>
+			<description>[PAWN_nameDef] has a strange genetic strain that grants her enhanced physical attributes. She is also extremely attractive with an exotic facial structure that captures the eye. A succubus is more likely to exploit her physical advantages and have others do her work for her. [PAWN_possessive] succubus charm has its disadvantages and can cause some to become jealous and even despise [PAWN_objective].</description>
+			<degree>4</degree>
+				<statOffsets>
+                    <MoveSpeed>.20</MoveSpeed>
+					<WorkSpeedGlobal>-0.2</WorkSpeedGlobal>
+                    <ImmunityGainSpeed>.15</ImmunityGainSpeed>
+					<TradePriceImprovement>0.10</TradePriceImprovement>
+					<NegotiationAbility>0.20</NegotiationAbility>
+					<CarryingCapacity>-20</CarryingCapacity>
+					<GlobalLearningFactor>-0.20</GlobalLearningFactor>
+					<MeleeDodgeChance>5</MeleeDodgeChance>
+					<ResearchSpeed>-.20</ResearchSpeed>
+					<AimingDelayFactor>-0.10</AimingDelayFactor>
+					<MeleeHitChance>5</MeleeHitChance>
+					<ComfyTemperatureMax>+25</ComfyTemperatureMax>
+					<ComfyTemperatureMin>-5</ComfyTemperatureMin>
+                </statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>PhysicalProdigy</li>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>Arcanist</li>
+		  <li>StormBorn</li>
+		  <li>Summoner</li>
+		  <li>Gifted</li>
+	      <li>Paladin</li>
+		  <li>TM_Sniper</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Gladiator</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		  <li>Faceless</li>
+		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
+		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>
+		<defName>Warlock</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
+		<degreeDatas>	
+		  <li>
+			<label>Warlock</label>
+			<description>[PAWN_nameDef] is a Warlock - able to manifest physical and demonic forces using his unique access to arcane power. The warlock shares the same genetic mixture as a succubus, but as a male, [PAWN_pronoun] is affected with mental enhancements that include clairvoyance and telekineses. The warlock can occasionally affect the outcome of a social interaction using their mental capabilities, regardless of how the interaction actually occurred.</description>
+			<degree>4</degree>
+				<statOffsets>
+                    <MoveSpeed>-.10</MoveSpeed>
+					<WorkSpeedGlobal>-0.2</WorkSpeedGlobal>
+                    <ImmunityGainSpeed>-0.08</ImmunityGainSpeed>
+					<SocialImpact>0.20</SocialImpact>
+					<CarryingCapacity>-20</CarryingCapacity>
+					<GlobalLearningFactor>+0.25</GlobalLearningFactor>
+					<MeleeDodgeChance>-5</MeleeDodgeChance>
+					<ResearchSpeed>+.25</ResearchSpeed>
+					<MeleeHitChance>-5</MeleeHitChance>
+					<PainShockThreshold>-0.15</PainShockThreshold>
+					<PsychicSensitivity>0.40</PsychicSensitivity>
+					<ComfyTemperatureMax>+10</ComfyTemperatureMax>
+					<ComfyTemperatureMin>-10</ComfyTemperatureMin>
+                </statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>PhysicalProdigy</li>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>Arcanist</li>
+		  <li>StormBorn</li>
+		  <li>Summoner</li>
+		  <li>Gifted</li>
+	      <li>Paladin</li>
+		  <li>TM_Sniper</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Gladiator</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		  <li>Faceless</li>
+		  <li>Succubus</li>
+		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
+		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -770,6 +937,8 @@
 		  <li>DeathKnight</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -825,6 +994,8 @@
 		  <li>DeathKnight</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -875,6 +1046,8 @@
 		  <li>Technomancer</li>
 		  <li>Enchanter</li>
 		  <li>DeathKnight</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -926,6 +1099,57 @@
 		  <li>Technomancer</li>
 		  <li>BloodMage</li>
 		  <li>DeathKnight</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>
+		<defName>Chronomancer</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
+		<degreeDatas>	
+		  <li>
+			<label>Chronomancer</label>
+			<description>[PAWN_nameDef] is a chronomancer. Through arcane sight, [PAWN_pronoun] is able to view reality as it once was and as it could be, and can manipulate objects between those realities.</description>
+			<degree>4</degree>
+			<statOffsets>
+				<GlobalLearningFactor>0.25</GlobalLearningFactor>
+				<ResearchSpeed>0.40</ResearchSpeed>				
+				<WorkSpeedGlobal>-0.20</WorkSpeedGlobal>
+				<PainShockThreshold>-0.10</PainShockThreshold>
+				<PsychicSensitivity>0.10</PsychicSensitivity>
+			</statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>StormBorn</li>
+		  <li>Arcanist</li>
+		  <li>Gifted</li>
+		  <li>PhysicalProdigy</li>
+		  <li>Paladin</li>
+		  <li>Gladiator</li>
+		  <li>TM_Sniper</li>
+		  <li>Summoner</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		  <li>Faceless</li>
+		  <li>Succubus</li>
+		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
+		  <li>Technomancer</li>
+		  <li>BloodMage</li>
+		  <li>DeathKnight</li>
+		  <li>Enchanter</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -973,6 +1197,8 @@
 		  <li>DeathKnight</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -1027,6 +1253,8 @@
 		  <li>DeathKnight</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1139,6 +1367,8 @@
 		  <li>DeathKnight</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1234,6 +1464,8 @@
 		  <li>DeathKnight</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1327,6 +1559,8 @@
 		  <li>DeathKnight</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1379,116 +1613,8 @@
 		  <li>DeathKnight</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
-		</conflictingTraits>	
-	</TraitDef>
-	
-	<TraitDef>
-		<defName>Succubus</defName>
-		<ignoreConfigErrors>true</ignoreConfigErrors>
-		<commonality>0</commonality>
-		<degreeDatas>	
-		  <li>
-			<label>Succubus</label>
-			<description>[PAWN_nameDef] has a strange genetic strain that grants her enhanced physical attributes. She is also extremely attractive with an exotic facial structure that captures the eye. A succubus is more likely to exploit her physical advantages and have others do her work for her. [PAWN_possessive] succubus charm has its disadvantages and can cause some to become jealous and even despise [PAWN_objective].</description>
-			<degree>4</degree>
-				<statOffsets>
-                    <MoveSpeed>.20</MoveSpeed>
-					<WorkSpeedGlobal>-0.2</WorkSpeedGlobal>
-                    <ImmunityGainSpeed>.15</ImmunityGainSpeed>
-					<TradePriceImprovement>0.10</TradePriceImprovement>
-					<NegotiationAbility>0.20</NegotiationAbility>
-					<CarryingCapacity>-20</CarryingCapacity>
-					<GlobalLearningFactor>-0.20</GlobalLearningFactor>
-					<MeleeDodgeChance>5</MeleeDodgeChance>
-					<ResearchSpeed>-.20</ResearchSpeed>
-					<AimingDelayFactor>-0.10</AimingDelayFactor>
-					<MeleeHitChance>5</MeleeHitChance>
-					<ComfyTemperatureMax>+25</ComfyTemperatureMax>
-					<ComfyTemperatureMin>-5</ComfyTemperatureMin>
-                </statOffsets>
-		  </li>
-		</degreeDatas>
-		<conflictingTraits>
-		  <li>PhysicalProdigy</li>
-		  <li>InnerFire</li>
-		  <li>HeartOfFrost</li>
-		  <li>Arcanist</li>
-		  <li>StormBorn</li>
-		  <li>Summoner</li>
-		  <li>Gifted</li>
-	      <li>Paladin</li>
-		  <li>TM_Sniper</li>
-		  <li>Druid</li>
-		  <li>Bladedancer</li>
-		  <li>Gladiator</li>
-		  <li>Necromancer</li>
-		  <li>Priest</li>
-		  <li>Ranger</li>
-		  <li>Lich</li>
-		  <li>TM_Bard</li>
-		  <li>Faceless</li>
-		  <li>Warlock</li>
-		  <li>TM_Psionic</li>
-		  <li>Geomancer</li>
-		  <li>Technomancer</li>
-		  <li>DeathKnight</li>
-		  <li>Enchanter</li>		  
-		  <li>BloodMage</li>
-		</conflictingTraits>	
-	</TraitDef>
-	
-	<TraitDef>
-		<defName>Warlock</defName>
-		<ignoreConfigErrors>true</ignoreConfigErrors>
-		<commonality>0</commonality>
-		<degreeDatas>	
-		  <li>
-			<label>Warlock</label>
-			<description>[PAWN_nameDef] is a Warlock - able to manifest physical and demonic forces using his unique access to arcane power. The warlock shares the same genetic mixture as a succubus, but as a male, [PAWN_pronoun] is affected with mental enhancements that include clairvoyance and telekineses. The warlock can occasionally affect the outcome of a social interaction using their mental capabilities, regardless of how the interaction actually occurred.</description>
-			<degree>4</degree>
-				<statOffsets>
-                    <MoveSpeed>-.10</MoveSpeed>
-					<WorkSpeedGlobal>-0.2</WorkSpeedGlobal>
-                    <ImmunityGainSpeed>-0.08</ImmunityGainSpeed>
-					<SocialImpact>0.20</SocialImpact>
-					<CarryingCapacity>-20</CarryingCapacity>
-					<GlobalLearningFactor>+0.25</GlobalLearningFactor>
-					<MeleeDodgeChance>-5</MeleeDodgeChance>
-					<ResearchSpeed>+.25</ResearchSpeed>
-					<MeleeHitChance>-5</MeleeHitChance>
-					<PainShockThreshold>-0.15</PainShockThreshold>
-					<PsychicSensitivity>0.40</PsychicSensitivity>
-					<ComfyTemperatureMax>+10</ComfyTemperatureMax>
-					<ComfyTemperatureMin>-10</ComfyTemperatureMin>
-                </statOffsets>
-		  </li>
-		</degreeDatas>
-		<conflictingTraits>
-		  <li>PhysicalProdigy</li>
-		  <li>InnerFire</li>
-		  <li>HeartOfFrost</li>
-		  <li>Arcanist</li>
-		  <li>StormBorn</li>
-		  <li>Summoner</li>
-		  <li>Gifted</li>
-	      <li>Paladin</li>
-		  <li>TM_Sniper</li>
-		  <li>Druid</li>
-		  <li>Bladedancer</li>
-		  <li>Gladiator</li>
-		  <li>Necromancer</li>
-		  <li>Priest</li>
-		  <li>Ranger</li>
-		  <li>Lich</li>
-		  <li>TM_Bard</li>
-		  <li>Faceless</li>
-		  <li>Succubus</li>
-		  <li>TM_Psionic</li>
-		  <li>Geomancer</li>
-		  <li>Technomancer</li>
-		  <li>DeathKnight</li>
-		  <li>Enchanter</li>		  
-		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1543,6 +1669,8 @@
 		  <li>DeathKnight</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1590,6 +1718,60 @@
 		  <li>TM_Psionic</li>
 		  <li>Enchanter</li>		  
 		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>
+		<defName>TM_Monk</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
+		<degreeDatas>	
+		  <li>
+			<label>Monk</label>
+			<description>[PAWN_nameDef] is a Monk, dedicated to mastering Chi - the energy that connects all life in the universe. [PAWN_pronoun] harnesses Chi to create magical effects and exceed [PAWN_possessive] physical capabilities. [PAWN_nameDef] is also able to disrupt the Chi in others, affecting their command over spells and abilities.</description>
+			<degree>4</degree>
+				<statOffsets>
+					<MeleeDodgeChance>5</MeleeDodgeChance>
+					<MeleeHitChance>5</MeleeHitChance>
+					<CarryingCapacity>20</CarryingCapacity>
+					<PainShockThreshold>+0.10</PainShockThreshold>
+					<SocialImpact>-0.25</SocialImpact>
+					<NegotiationAbility>-0.25</NegotiationAbility>					
+					<PsychicSensitivity>-.80</PsychicSensitivity>	
+					<TradePriceImprovement>-0.20</TradePriceImprovement>									
+                </statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>PhysicalProdigy</li>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>Arcanist</li>
+		  <li>StormBorn</li>
+		  <li>Summoner</li>
+		  <li>Gifted</li>
+	      <li>Paladin</li>
+		  <li>TM_Sniper</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Gladiator</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		  <li>Faceless</li>
+		  <li>Succubus</li>
+		  <li>Warlock</li>
+		  <li>Geomancer</li>
+		  <li>Technomancer</li>
+		  <li>TM_Psionic</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>DeathKnight</li>
 		</conflictingTraits>	
 	</TraitDef>
 

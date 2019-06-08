@@ -98,7 +98,7 @@ namespace TorannMagic
             }
             else
             {
-                this.CooldownTicksLeft = this.MaxCastingTicks;
+                this.CooldownTicksLeft = Mathf.RoundToInt(this.MaxCastingTicks * this.MagicUser.coolDown);
             }
             bool flag = this.magicDef != null;
             if (flag)

@@ -37,6 +37,7 @@ namespace TorannMagic
             masterSpellList.Add(TorannMagicDefOf.SpellOf_OrbitalStrike);
             masterSpellList.Add(TorannMagicDefOf.SpellOf_BloodMoon);
             masterSpellList.Add(TorannMagicDefOf.SpellOf_Shapeshift);
+            masterSpellList.Add(TorannMagicDefOf.SpellOf_Recall);
             return masterSpellList;
         }
 
@@ -63,6 +64,7 @@ namespace TorannMagic
             fighterBookList.Add(TorannMagicDefOf.BookOfPsionic);
             fighterBookList.Add(TorannMagicDefOf.BookOfRanger);
             fighterBookList.Add(TorannMagicDefOf.BookOfSniper);
+            fighterBookList.Add(TorannMagicDefOf.BookOfMonk);
             return fighterBookList;
         }
 

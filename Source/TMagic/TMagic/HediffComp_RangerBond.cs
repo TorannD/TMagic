@@ -12,6 +12,8 @@ namespace TorannMagic
         private bool initializing = true;
         public Pawn bonderPawn = null;
 
+        public override string CompLabelInBracketsExtra => bonderPawn != null ? bonderPawn.LabelShort + base.CompLabelInBracketsExtra : base.CompLabelInBracketsExtra;
+
         public override void CompExposeData()
         {
             base.CompExposeData();

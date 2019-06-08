@@ -646,5 +646,53 @@
       </li>
     </stages>
   </HediffDef>
+  
+    <HediffDef ParentName="TM_InjuryBase">
+    <defName>TM_ChiBurnHD</defName>
+    <label>Chi burn</label>
+    <displayWound>false</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_GetsPermanent">
+        <permanentLabel>destroyed</permanentLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.0225</painPerSeverity>
+		<averagePainPerSeverityPermanent>0.02</averagePainPerSeverityPermanent>
+		<bleedRate>0.000</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>burned</destroyedLabel>
+			<destroyedOutLabel>disintegrated</destroyedOutLabel>
+	</injuryProps>
+  </HediffDef>
+  
+  <HediffDef ParentName="TM_InjuryBase">
+    <defName>TM_ChiFistHD</defName>
+    <label>strike</label>
+    <displayWound>false</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>tended</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_GetsPermanent">
+        <permanentLabel>destroyed</permanentLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.0085</painPerSeverity>
+		<averagePainPerSeverityPermanent>0.01</averagePainPerSeverityPermanent>
+		<bleedRate>0.000</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>broken</destroyedLabel>
+			<destroyedOutLabel>removed</destroyedOutLabel>
+	</injuryProps>
+  </HediffDef>
 
 </Defs>

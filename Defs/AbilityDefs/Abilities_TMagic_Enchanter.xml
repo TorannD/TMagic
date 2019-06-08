@@ -95,7 +95,7 @@ Check skill descriptions for additional details.</description>
             <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_Transmutate</abilityDef>
             <warmupTime>5</warmupTime>
-            <SecondsToRecharge>5</SecondsToRecharge>
+            <SecondsToRecharge>3</SecondsToRecharge>
             <range>20</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Vibration</soundCast>

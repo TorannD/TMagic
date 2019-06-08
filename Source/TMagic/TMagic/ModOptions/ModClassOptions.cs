@@ -76,6 +76,13 @@ namespace TorannMagic.ModOptions
                         removedThings.Add(current);
                     }
                 }
+                if (!settingsRef.DeathKnight)
+                {
+                    if (current.defName == "BookOfMonk")
+                    {
+                        removedThings.Add(current);
+                    }
+                }
 
                 if (!settingsRef.Arcanist)
                 {
@@ -193,6 +200,13 @@ namespace TorannMagic.ModOptions
                     }
                 }
 
+                if (!settingsRef.Chronomancer)
+                {
+                    if (current == TorannMagicDefOf.BookOfChronomancer || current == TorannMagicDefOf.Torn_BookOfChronomancer || current == TorannMagicDefOf.SpellOf_Recall)
+                    {
+                        removedThings.Add(current);
+                    }
+                }
             }
 
             for (int i = 0; i < removedThings.Count(); i++)
@@ -308,6 +322,13 @@ namespace TorannMagic.ModOptions
                 if (!settingsRef.Enchanter)
                 {
                     if (current.defName == "Make_SpellOf_Shapeshift")
+                    {
+                        removedRecipes.Add(current);
+                    }
+                }
+                if (!settingsRef.Enchanter)
+                {
+                    if (current.defName == "Make_SpellOf_Recall")
                     {
                         removedRecipes.Add(current);
                     }

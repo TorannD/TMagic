@@ -28,4 +28,11 @@
 	  </value>
 	</Operation> -->
 	
+	<Operation Class="PatchOperationAdd">
+	  <xpath>*/StatDef[defName = "MarketValue"]/parts</xpath>
+	  <value>
+		<li Class="TorannMagic.StatPart_Undead"/>
+	  </value>
+	</Operation>
+	
 </Patch>

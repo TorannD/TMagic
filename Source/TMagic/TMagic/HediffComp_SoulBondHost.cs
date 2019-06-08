@@ -22,6 +22,8 @@ namespace TorannMagic
             Scribe_References.Look<Pawn>(ref this.polyHost, "polyHost", false);
         }
 
+        public override string CompLabelInBracketsExtra => BonderPawn != null ? BonderPawn.LabelShort + "[-]" + base.CompLabelInBracketsExtra : base.CompLabelInBracketsExtra;
+
         public Pawn BonderPawn
         {
             get
@@ -38,6 +40,10 @@ namespace TorannMagic
         {
             get
             {
+                if (this.BonderPawn != null)
+                {
+                    return base.Def.LabelCap + "(" + this.BonderPawn.LabelShort + ")";
+                }
                 return base.Def.LabelCap;
             }
         }
@@ -46,6 +52,10 @@ namespace TorannMagic
         {
             get
             {
+                if (this.BonderPawn != null)
+                {
+                    return base.Def.label + "(" + this.BonderPawn.LabelShort + ")";
+                }
                 return base.Def.label;
             }
         }

@@ -98,6 +98,9 @@ namespace TorannMagic.ModOptions
             num++;
             Rect rowRect7 = Controller.UIHelper.GetRowRect(rowRect6, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect7, "TM_Priest".Translate(), ref Settings.Instance.Priest, false);
+            Rect rowRect7ShiftRight = Controller.UIHelper.GetRowRect(rowRect7, rowHeight, num);
+            rowRect7ShiftRight.x += rowRect.width + 140f;
+            Widgets.CheckboxLabeled(rowRect7ShiftRight, "TM_Monk".Translate(), ref Settings.Instance.Monk, false);
             num++;
             Rect rowRect8 = Controller.UIHelper.GetRowRect(rowRect7, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect8, "TM_Bard".Translate(), ref Settings.Instance.Bard, false);
@@ -119,6 +122,9 @@ namespace TorannMagic.ModOptions
             num++;
             Rect rowRect14 = Controller.UIHelper.GetRowRect(rowRect13, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect14, "TM_Enchanter".Translate(), ref Settings.Instance.Enchanter, false);
+            num++;
+            Rect rowRect15 = Controller.UIHelper.GetRowRect(rowRect14, rowHeight, num);
+            Widgets.CheckboxLabeled(rowRect15, "TM_Chronomancer".Translate(), ref Settings.Instance.Chronomancer, false);
 
             GUI.EndGroup();
         }        

@@ -173,7 +173,7 @@ namespace TorannMagic
             {
                 base.Position = this.ExactPosition.ToIntVec3();
                 MoteMaker.ThrowDustPuff(base.Position, base.Map, Rand.Range(0.8f, 1.2f));
-                if (Find.TickManager.TicksGame % 3 == 0)
+                if (Find.TickManager.TicksGame % 2 == 0)
                 {
                     DoWhirlwindDamage();
                 }

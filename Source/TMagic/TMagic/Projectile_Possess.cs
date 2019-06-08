@@ -6,6 +6,7 @@ using UnityEngine;
 using RimWorld;
 using Verse.AI;
 using Verse.AI.Group;
+using System;
 
 
 namespace TorannMagic
@@ -49,8 +50,8 @@ namespace TorannMagic
             Map map = base.Map;
             base.Impact(hitThing);
             ThingDef def = this.def;
-                        
-            if (!initialized)
+
+            if (!initialized && this.age < this.duration && hitThing != null)
             {
                 caster = this.launcher as Pawn;
                 hitPawn = hitThing as Pawn;
@@ -66,7 +67,7 @@ namespace TorannMagic
                     verVal = 3;
                 }
                 this.duration += pwrVal * 300;
-                if (hitThing != null && hitThing is Pawn && hitPawn.RaceProps.Humanlike)
+                if (hitPawn != null && hitPawn.Faction != null && hitPawn.RaceProps.Humanlike)
                 {
                     possessedFlag = (hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD) || hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD_I) || hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD_II) || hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD_III) ||
                         hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD) || hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_I) || hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_II) || hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_III));
@@ -196,8 +197,13 @@ namespace TorannMagic
                     this.Destroy(DestroyMode.Vanish);
                 }
             }
+            else
+            {
+                this.age = this.duration;
+                Destroy(DestroyMode.Vanish);
+            }
 
-            if(hitPawn.Downed || hitPawn.Dead)
+            if(hitPawn != null && hitPawn.Downed || hitPawn.Dead)
             {
                 this.age = this.duration;
             }
@@ -291,7 +297,7 @@ namespace TorannMagic
                     }
                     base.Destroy(mode);
                 }
-                catch
+                catch(NullReferenceException ex)
                 {
                     base.Destroy(mode);
                 }

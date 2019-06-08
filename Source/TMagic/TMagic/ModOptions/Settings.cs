@@ -53,6 +53,7 @@ namespace TorannMagic.ModOptions
         public bool Technomancer = true;
         public bool BloodMage = true;
         public bool Enchanter = true;
+        public bool Chronomancer = true;
 
         public bool Gladiator = true;
         public bool Bladedancer = true;
@@ -61,6 +62,7 @@ namespace TorannMagic.ModOptions
         public bool Faceless = true;
         public bool Psionic = true;
         public bool DeathKnight = true;
+        public bool Monk = true;
 
         public static Settings Instance;
 
@@ -116,6 +118,7 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<bool>(ref this.Demonkin, "Demonkin", true, false);
             Scribe_Values.Look<bool>(ref this.BloodMage, "BloodMage", true, false);
             Scribe_Values.Look<bool>(ref this.Enchanter, "Enchanter", true, false);
+            Scribe_Values.Look<bool>(ref this.Chronomancer, "Chronomancer", true, false);
             Scribe_Values.Look<bool>(ref this.Gladiator, "Gladiator", true, false);
             Scribe_Values.Look<bool>(ref this.Bladedancer, "Bladedancer", true, false);
             Scribe_Values.Look<bool>(ref this.Sniper, "Sniper", true, false);
@@ -123,6 +126,7 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<bool>(ref this.Faceless, "Faceless", true, false);
             Scribe_Values.Look<bool>(ref this.Psionic, "Psionic", true, false);
             Scribe_Values.Look<bool>(ref this.DeathKnight, "DeathKnight", true, false);
+            Scribe_Values.Look<bool>(ref this.Monk, "Monk", true, false);
         }
     }
 }

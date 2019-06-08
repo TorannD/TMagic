@@ -255,6 +255,42 @@ namespace TorannMagic.AutoCast
         }
     }
 
+    public static class MonkCombatAbility
+    {
+        public static void Evaluate(CompAbilityUserMight casterComp, TMAbilityDef abilitydef, PawnAbility ability, MightPower power, out bool success)
+        {
+            success = false;
+            EvaluateMinRange(casterComp, abilitydef, ability, power, null, 1.4f, out success);
+        }
+
+        public static void EvaluateMinRange(CompAbilityUserMight casterComp, TMAbilityDef abilitydef, PawnAbility ability, MightPower power, LocalTargetInfo jobTarget, float maxRange, out bool success)
+        {
+            success = false;
+            Hediff chi = casterComp.Pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ChiHD);
+            if (chi != null && chi.Severity >= (abilitydef.chiCost*100) && ability.CooldownTicksLeft <= 0)
+            {
+                Pawn caster = casterComp.Pawn;
+                if (jobTarget == null || (jobTarget.Thing != null && !(jobTarget.Thing is Pawn)))
+                {
+                   jobTarget = TM_Calc.FindNearbyEnemy(caster, (int)(abilitydef.MainVerb.range));
+                }
+                float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal; //&& distanceToTarget < (abilitydef.MainVerb.range * .9f)             
+                if (jobTarget != null && jobTarget.Thing != null && (distanceToTarget < maxRange) && TM_Calc.HasLoSFromTo(caster.Position, jobTarget, caster, 0, abilitydef.MainVerb.range))
+                {
+                    if (abilitydef == TorannMagicDefOf.TM_ThunderStrike && distanceToTarget < 1.5f)
+                    {
+                        jobTarget = jobTarget.Cell + (TM_Calc.GetVector(caster.Position, jobTarget.Cell) * 2f).ToIntVec3();
+                        MoteMaker.ThrowHeatGlow(jobTarget.Cell, caster.Map, 1f);
+                    }
+                    Job job = ability.GetJob(AbilityContext.AI, jobTarget);
+                    job.endIfCantShootTargetFromCurPos = true;
+                    caster.jobs.TryTakeOrderedJob(job);
+                    success = true;
+                }
+            }
+        }
+    }
+
     public static class CureSpell
     {
         public static void Evaluate(CompAbilityUserMagic casterComp, TMAbilityDef abilitydef, PawnAbility ability, MagicPower power, List<string> validAfflictionNames, out bool success)

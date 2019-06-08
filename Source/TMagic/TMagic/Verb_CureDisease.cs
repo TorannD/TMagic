@@ -63,8 +63,8 @@ namespace TorannMagic
                             Hediff rec = enumerator.Current;
                             bool flag2 = num > 0;
 
-                            
-                            if ( rec.def.defName == "WoundInfection" || rec.def.defName == "Flu" || rec.def.defName == "Animal_Flu")
+
+                            if (rec.def.defName == "WoundInfection" || rec.def.defName.Contains("Flu") || rec.def.defName == "Animal_Flu" || rec.def.defName.Contains("Infection"))
                             {
                                 rec.Severity -= sevAdjustment;
                                 success = true;

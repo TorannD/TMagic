@@ -142,8 +142,7 @@ namespace TorannMagic
                             pawn.health.RemoveHediff(rec);
                         }
                     }
-                }
-                
+                }                
             }
         }
     }

@@ -1,6 +1,330 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+
+<!-- Recall -->
+
+	<EffecterDef>
+    <defName>TM_RecallToED</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_RecallExpand</moteDef>
+        <scale>
+          <min>1</min>
+          <max>1</max>
+        </scale>
+      </li>
+    </children>
+  </EffecterDef>
+
+  <EffecterDef>
+    <defName>TM_RecallFromED</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_RecallCollapse</moteDef>
+        <scale>
+          <min>7</min>
+          <max>7</max>
+        </scale>
+      </li>
+    </children>
+  </EffecterDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>TM_Mote_RecallExpand</defName>
+    <graphicData>
+      <texPath>Motes/alterfateMote</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <drawSize>(1, 1)</drawSize>
+	  <color>(.4,.65,1)</color>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0</solidTime>
+      <fadeOutTime>0.3</fadeOutTime>
+      <growthRate>25</growthRate>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>TM_Mote_RecallCollapse</defName>
+    <graphicData>
+      <texPath>Motes/alterfateMote</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <color>(.4,.65,1)</color>
+	  <drawSize>(1, 1)</drawSize>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0</solidTime>
+      <fadeOutTime>0.3</fadeOutTime>
+      <growthRate>-25</growthRate>
+    </mote>
+  </ThingDef>
+
+<!-- Reverse time -->
+
+  <EffecterDef>
+    <defName>TM_TimeReverseEffecter</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_RedOutline</moteDef>
+        <scale>
+          <min>.1</min>
+          <max>.4</max>
+        </scale>
+      </li>
+	  <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_RedOutline</moteDef>
+        <scale>
+          <min>.1</min>
+          <max>.5</max>
+        </scale>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_RedOutline</moteDef>
+        <scale>
+          <min>1</min>
+          <max>3</max>
+        </scale>
+		<rotation>
+          <min>0</min>
+          <max>0</max>
+        </rotation>
+      </li>
+    </children>
+  </EffecterDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>TM_Mote_RedOutline</defName>
+    <graphicData>
+      <texPath>Motes/BodyOutline</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <color>(0.6,0,0,1)</color>
+	  <drawSize>(2, 2)</drawSize>
+	  <drawRotated>false</drawRotated>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.01</fadeInTime>
+      <solidTime>.1</solidTime>
+      <fadeOutTime>0.4</fadeOutTime>
+      <growthRate>-10</growthRate>
+    </mote>
+  </ThingDef>
+
+<!-- Accelerate time -->
+
+  <EffecterDef>
+    <defName>TM_TimeAccelerationEffecter</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_BlueOutline</moteDef>
+        <scale>
+          <min>.1</min>
+          <max>.4</max>
+        </scale>
+      </li>
+	  <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_BlueOutline</moteDef>
+        <scale>
+          <min>.1</min>
+          <max>.5</max>
+        </scale>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_BlueOutline</moteDef>
+        <scale>
+          <min>1</min>
+          <max>3</max>
+        </scale>
+		<rotation>
+          <min>0</min>
+          <max>0</max>
+        </rotation>
+      </li>
+    </children>
+  </EffecterDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>TM_Mote_BlueOutline</defName>
+    <graphicData>
+      <texPath>Motes/BodyOutline</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <color>(0.4,.65,1,1)</color>
+	  <drawSize>(.4, .4)</drawSize>
+	  <drawRotated>false</drawRotated>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.01</fadeInTime>
+      <solidTime>0</solidTime>
+      <fadeOutTime>0.4</fadeOutTime>
+      <growthRate>15</growthRate>
+    </mote>
+  </ThingDef>
+  
+  <EffecterDef>
+    <defName>TM_TimeAccelerationAreaEffecter</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_BlueAreaSmall</moteDef>
+        <scale>
+          <min>.1</min>
+          <max>.4</max>
+        </scale>
+      </li>
+	  <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_BlueArea</moteDef>
+        <scale>
+          <min>.1</min>
+          <max>1</max>
+        </scale>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_BlueAreaLarge</moteDef>
+        <scale>
+          <min>1</min>
+          <max>3</max>
+        </scale>
+      </li>
+    </children>
+  </EffecterDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>TM_Mote_BlueAreaSmall</defName>
+    <graphicData>
+      <texPath>Motes/BodyOutline</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <color>(0.4,.65,1,1)</color>
+	  <drawSize>(1.4, 1.4)</drawSize>
+	  <drawRotated>false</drawRotated>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.01</fadeInTime>
+      <solidTime>0</solidTime>
+      <fadeOutTime>0.4</fadeOutTime>
+      <growthRate>15</growthRate>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>TM_Mote_BlueArea</defName>
+    <graphicData>
+      <texPath>Motes/BodyOutline</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <color>(0.4,.65,1,1)</color>
+	  <drawSize>(1, 1)</drawSize>
+	  <drawRotated>false</drawRotated>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+      <growthRate>20</growthRate>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>TM_Mote_BlueAreaLarge</defName>
+    <graphicData>
+      <texPath>Motes/BodyOutline</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <color>(0.4,.65,1,1)</color>
+	  <drawSize>(.6, .6)</drawSize>
+	  <drawRotated>false</drawRotated>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.1</fadeInTime>
+      <solidTime>0</solidTime>
+      <fadeOutTime>0.6</fadeOutTime>
+      <growthRate>25</growthRate>
+    </mote>
+  </ThingDef>
+
+<!-- Chi Burst -->
+
+  <EffecterDef>
+    <defName>TM_ChiBurstED</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_ChiBurst</moteDef>
+        <scale>
+          <min>1</min>
+          <max>1</max>
+        </scale>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_ChiBurstInner</moteDef>
+        <scale>
+          <min>1</min>
+          <max>5</max>
+        </scale>
+      </li>
+    </children>
+  </EffecterDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>TM_Mote_ChiBurst</defName>
+    <graphicData>
+      <texPath>Other/PsionicBarrier</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <drawSize>(.3, .3)</drawSize>
+	  <color>(1,1,.6,1)</color>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0</solidTime>
+      <fadeOutTime>0.3</fadeOutTime>
+      <growthRate>70</growthRate>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>TM_Mote_ChiBurstInner</defName>
+    <graphicData>
+      <texPath>Things/Mote/PowerBeam</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <color>(1,1,0,1)</color>
+	  <drawSize>(.2, .2)</drawSize>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.01</fadeInTime>
+      <solidTime>0</solidTime>
+      <fadeOutTime>0.4</fadeOutTime>
+      <growthRate>500</growthRate>
+    </mote>
+  </ThingDef>
+
 <!-- Attraction -->
 
 <EffecterDef>
@@ -252,7 +576,7 @@
     </mote>
   </ThingDef>
 
-<!-- Sabotage EMP wave -->
+<!-- Wave of Fear -->
 
   <EffecterDef>
     <defName>TM_FearWave</defName>

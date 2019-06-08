@@ -70,6 +70,10 @@ namespace TorannMagic
                     {
                         return flag && true;
                     }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk))
+                    {
+                        return flag && true;
+                    }
                 }
 
                 return false;

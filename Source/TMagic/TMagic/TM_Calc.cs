@@ -5,6 +5,9 @@ using System.Linq;
 using Verse.AI;
 using RimWorld;
 using System;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace TorannMagic
 {
@@ -128,7 +131,8 @@ namespace TorannMagic
                 if (pawn.story != null && pawn.story.traits != null)
                 {
                     if (pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) || 
-                        pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
+                        pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic) ||
+                        pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk))
                     { 
                         flag_Trait = true;
                     }
@@ -171,7 +175,7 @@ namespace TorannMagic
                         pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || 
                         pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin) || pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner) || pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) || 
                         (pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich)) || pawn.story.traits.HasTrait(TorannMagicDefOf.Priest) || 
-                        pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
+                        pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard) || pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer))
                     {
                         flag_Trait = true;
                     }
@@ -184,6 +188,67 @@ namespace TorannMagic
                 return isMagicUser;
             }
             return false;
+        }
+
+        public static bool IsPawnInjured(Pawn targetPawn, float minInjurySeverity = 0)
+        {
+            float injurySeverity = 0;
+            using (IEnumerator<BodyPartRecord> enumerator = targetPawn.health.hediffSet.GetInjuredParts().GetEnumerator())
+            {
+                while (enumerator.MoveNext())
+                {
+                    BodyPartRecord rec = enumerator.Current;
+                    IEnumerable<Hediff_Injury> arg_BB_0 = targetPawn.health.hediffSet.GetHediffs<Hediff_Injury>();
+                    Func<Hediff_Injury, bool> arg_BB_1;
+                    arg_BB_1 = ((Hediff_Injury injury) => injury.Part == rec);
+
+                    foreach (Hediff_Injury current in arg_BB_0.Where(arg_BB_1))
+                    {
+                        bool flag5 = current.CanHealNaturally() && !current.IsPermanent();
+                        if (flag5)
+                        {
+                            injurySeverity += current.Severity;
+                        }
+                    }
+                }
+            }
+            return injurySeverity > minInjurySeverity;
+        }
+
+        public static List<Hediff> GetPawnAfflictions(Pawn targetPawn)
+        {
+            List<Hediff> afflictionList = new List<Hediff>();
+            afflictionList.Clear();
+            using (IEnumerator<Hediff> enumerator = targetPawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+            {
+                while (enumerator.MoveNext())
+                {
+                    Hediff rec = enumerator.Current;
+                    if (rec.def.isBad && rec.def.makesSickThought)
+                    {
+                        afflictionList.Add(rec);
+                    }
+                }
+            }
+            return afflictionList;
+        }
+
+        public static List<Hediff> GetPawnAddictions(Pawn targetPawn)
+        {
+            List<Hediff> addictionList = new List<Hediff>();
+            addictionList.Clear();
+            using (IEnumerator<Hediff_Addiction> enumerator = targetPawn.health.hediffSet.GetHediffs<Hediff_Addiction>().GetEnumerator())
+            {
+                while (enumerator.MoveNext())
+                {
+                    Hediff_Addiction rec = enumerator.Current;
+                    if (rec.Chemical.addictionHediff != null)
+                    {
+                        addictionList.Add(rec);
+                    }
+                }
+            }
+            return addictionList;
         }
 
         public static Vector3 GetVector(IntVec3 from, IntVec3 to)
@@ -887,6 +952,80 @@ namespace TorannMagic
             }
         }
 
+        public static List<Pawn> FindAllPawnsAround(Map map, IntVec3 center, float radius, Faction faction = null, bool sameFaction = false)
+        {
+            List<Pawn> mapPawns = map.mapPawns.AllPawnsSpawned;
+            List<Pawn> pawnList = new List<Pawn>();
+            Pawn targetPawn = null;
+            pawnList.Clear();
+            for (int i = 0; i < mapPawns.Count; i++)
+            {
+                targetPawn = mapPawns[i];
+                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed)
+                {
+                    if (faction != null && !sameFaction)
+                    {
+                        if ((targetPawn.Position - center).LengthHorizontal <= radius)
+                        {
+                            if (targetPawn.Faction != null)
+                            {
+                                if (targetPawn.Faction != faction)
+                                {
+                                    pawnList.Add(targetPawn);
+                                    targetPawn = null;
+                                }
+                                else
+                                {
+                                    targetPawn = null;
+                                }
+                            }
+                            else
+                            {
+                                pawnList.Add(targetPawn);
+                                targetPawn = null;
+                            }
+                        }
+                        else
+                        {
+                            targetPawn = null;
+                        }
+                    }
+                    else if(faction != null && sameFaction)
+                    {
+                        if (targetPawn.Faction != null && targetPawn.Faction == faction && (targetPawn.Position - center).LengthHorizontal <= radius)
+                        {
+                            pawnList.Add(targetPawn);
+                            targetPawn = null;
+                        }
+                        else
+                        {
+                            targetPawn = null;
+                        }
+                    }
+                    else
+                    {
+                        if((targetPawn.Position - center).LengthHorizontal <= radius)
+                        {
+                            pawnList.Add(targetPawn);
+                            targetPawn = null;
+                        }
+                        else
+                        {
+                            targetPawn = null;
+                        }
+                    }
+                }
+            }
+            if (pawnList.Count > 0)
+            {
+                return pawnList;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public static float GetArcaneResistance(Pawn pawn, bool includePsychicSensitivity)
         {
             float resistance = 0;
@@ -966,6 +1105,29 @@ namespace TorannMagic
             //    Log.Message("blood type includes " + bloodTypes[i].defName);
             //}
             return bloodTypes;
+        }
+
+        public static T Clone<T>(T source)
+        {
+            if (!typeof(T).IsSerializable)
+            {
+                throw new ArgumentException("The type must be serializable.", "source");
+            }
+
+            // Don't serialize a null object, simply return the default for that object
+            if (System.Object.ReferenceEquals(source, null))
+            {
+                return default(T);
+            }
+
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new MemoryStream();
+            using (stream)
+            {
+                formatter.Serialize(stream, source);
+                stream.Seek(0, SeekOrigin.Begin);
+                return (T)formatter.Deserialize(stream);
+            }
         }
     }
 }

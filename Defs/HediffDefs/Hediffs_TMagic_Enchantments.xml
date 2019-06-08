@@ -15,9 +15,9 @@
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
       </li> 
-	  <li Class="HediffCompProperties_SeverityPerDay">
+<!-- 	  <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-5</severityPerDay>
-      </li>
+      </li> -->
     </comps>
 	<stages>
       <li>
@@ -41,9 +41,9 @@
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
       </li> 
-	  <li Class="HediffCompProperties_SeverityPerDay">
+<!-- 	  <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-5</severityPerDay>
-      </li>
+      </li> -->
     </comps>
 	<stages>
       <li>
@@ -67,9 +67,9 @@
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
       </li> 
-	  <li Class="HediffCompProperties_SeverityPerDay">
+<!-- 	  <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-5</severityPerDay>
-      </li>
+      </li> -->
     </comps>
 	<stages>
       <li>
@@ -93,9 +93,9 @@
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
       </li> 
-	  <li Class="HediffCompProperties_SeverityPerDay">
+<!-- 	  <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-5</severityPerDay>
-      </li>
+      </li> -->
     </comps>
 	<stages>
       <li>
@@ -119,9 +119,9 @@
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
       </li> 
-	  <li Class="HediffCompProperties_SeverityPerDay">
+<!-- 	  <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-5</severityPerDay>
-      </li>
+      </li> -->
     </comps>
 	<stages>
       <li>
@@ -145,9 +145,9 @@
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
       </li> 
-	  <li Class="HediffCompProperties_SeverityPerDay">
+<!-- 	  <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-5</severityPerDay>
-      </li>
+      </li> -->
     </comps>
 	<stages>
       <li>
@@ -171,9 +171,9 @@
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
       </li> 
-	  <li Class="HediffCompProperties_SeverityPerDay">
+<!-- 	  <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-5</severityPerDay>
-      </li>
+      </li> -->
     </comps>
 	<stages>
       <li>
@@ -197,9 +197,9 @@
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
       </li> 
-	  <li Class="HediffCompProperties_SeverityPerDay">
+<!-- 	  <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-5</severityPerDay>
-      </li>
+      </li> -->
     </comps>
 	<stages>
       <li>
@@ -223,9 +223,9 @@
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
       </li> 
-	  <li Class="HediffCompProperties_SeverityPerDay">
+<!-- 	  <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-5</severityPerDay>
-      </li>
+      </li> -->
     </comps>
 	<stages>
       <li>

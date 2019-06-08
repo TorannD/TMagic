@@ -12,7 +12,7 @@ namespace TorannMagic
             CompAbilityUserMagic comp = user.GetComp<CompAbilityUserMagic>();
             MagicPower magicPower;
 
-            if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Enchanter) || user.story.traits.HasTrait(TorannMagicDefOf.BloodMage) || user.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || user.story.traits.HasTrait(TorannMagicDefOf.Geomancer) || user.story.traits.HasTrait(TorannMagicDefOf.Warlock) || user.story.traits.HasTrait(TorannMagicDefOf.Succubus) || user.story.traits.HasTrait(TorannMagicDefOf.TM_Bard) || user.story.traits.HasTrait(TorannMagicDefOf.Priest) || (user.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || user.story.traits.HasTrait(TorannMagicDefOf.Lich)) || user.story.traits.HasTrait(TorannMagicDefOf.Druid) || parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Summoner) || user.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || user.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || user.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || user.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || user.story.traits.HasTrait(TorannMagicDefOf.Paladin))))
+            if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Chronomancer) || user.story.traits.HasTrait(TorannMagicDefOf.Enchanter) || user.story.traits.HasTrait(TorannMagicDefOf.BloodMage) || user.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || user.story.traits.HasTrait(TorannMagicDefOf.Geomancer) || user.story.traits.HasTrait(TorannMagicDefOf.Warlock) || user.story.traits.HasTrait(TorannMagicDefOf.Succubus) || user.story.traits.HasTrait(TorannMagicDefOf.TM_Bard) || user.story.traits.HasTrait(TorannMagicDefOf.Priest) || (user.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || user.story.traits.HasTrait(TorannMagicDefOf.Lich)) || user.story.traits.HasTrait(TorannMagicDefOf.Druid) || parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Summoner) || user.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || user.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || user.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || user.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || user.story.traits.HasTrait(TorannMagicDefOf.Paladin))))
             {
                 if (parent.def.defName == "SpellOf_Rain" && comp.spell_Rain == false)
                 {
@@ -316,6 +316,12 @@ namespace TorannMagic
                 else if (parent.def == TorannMagicDefOf.SpellOf_BriarPatch && comp.spell_BriarPatch == false && user.story.traits.HasTrait(TorannMagicDefOf.Druid))
                 {
                     comp.spell_BriarPatch = true;
+                    comp.InitializeSpell();
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def == TorannMagicDefOf.SpellOf_Recall && comp.spell_Recall == false && user.story.traits.HasTrait(TorannMagicDefOf.Chronomancer))
+                {
+                    comp.spell_Recall = true;
                     comp.InitializeSpell();
                     this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }

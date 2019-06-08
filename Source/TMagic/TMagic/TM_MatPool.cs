@@ -15,7 +15,9 @@ namespace TorannMagic
         public static readonly Material redLightning = MaterialPool.MatFrom("Other/DemonBolt", true);
         public static readonly Texture2D Icon_Undead = ContentFinder<Texture2D>.Get("UI/undead_icon", true);
         public static readonly Material PsionicBarrier = MaterialPool.MatFrom("Other/PsionicBarrier", ShaderDatabase.Transparent);
+        public static readonly Material TimeBubble = MaterialPool.MatFrom("Other/TimeBubble", ShaderDatabase.Transparent);
         public static readonly Material psiLightning = MaterialPool.MatFrom("Other/PsiBolt", ShaderDatabase.Transparent);
+        public static readonly Material chiLightning = MaterialPool.MatFrom("Other/ChiBolt", ShaderDatabase.Transparent);
 
         public static readonly Material psiMote = MaterialPool.MatFrom("Motes/PsiMote", ShaderDatabase.MoteGlow);
         public static readonly Material singleForkLightning = MaterialPool.MatFrom("Spells/LightningBolt_back1", ShaderDatabase.MoteGlow);
@@ -39,6 +41,7 @@ namespace TorannMagic
         public static readonly Texture2D priestIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/priestMageMark", true);
         public static readonly Texture2D summonerIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/summonerMageMark", true);
         public static readonly Texture2D technoIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/technoMageMark", true);
+        public static readonly Texture2D chronoIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/chronomancerMageMark", true);
 
         public static readonly Texture2D deathknightIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/deathknightFighterMark", true);
         public static readonly Texture2D bladedancerIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/bladedancerFighterMark", true);
@@ -48,5 +51,6 @@ namespace TorannMagic
         public static readonly Texture2D sniperIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/sniperFighterMark", true);
 
         public static readonly Texture2D psiIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/psiPsiMark", true);
+        public static readonly Texture2D monkIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/monkPsiMark", true);
     }
 }

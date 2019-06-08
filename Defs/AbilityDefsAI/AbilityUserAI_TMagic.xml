@@ -2675,5 +2675,196 @@ Document made by ChJees
 			<li>Polymorph</li>
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
+	
+	
+	<!-- chronomancer  -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="ChronomancerMagicAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMagic</compAbilityUserClass>
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>0.8</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>ReverseTime_Self</li>										
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+							<tags>
+								<li>ReverseTime</li>
+							</tags>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_HasEnemyTarget">
+							<subNodes>
+								<!-- Using ranged weapon -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingRangedWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>40.0</maxDistance>
+											<minDistance>20.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>AccelerateTime</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>24.0</maxDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>TimeBubble</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+									</subNodes>
+								</li>
+								<!-- Using melee weapon -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingMeleeWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>40.0</maxDistance>
+											<minDistance>20.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>TimeBubble</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>24.0</maxDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>AccelerateTime</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>									
+									</subNodes>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<invert>true</invert>
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>1</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>Prediction</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- Chronomancer -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="ChronomancerMagicAbilityUserAI">
+		<defName>TMagic_Chronomancer</defName>
+		<matchingTraits>
+			<li>Chronomancer</li>
+		</matchingTraits>
+		<abilities>		
+			<li>TMagic_ReverseTime_Self</li>
+			<li>TMagic_ReverseTime</li>
+			<li>TMagic_AccelerateTime</li>
+			<li>TMagic_TimeBubble</li>
+			<li>TMagic_Prediction</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Chronomancer Abilities -->
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_ReverseTime_Self</defName>
+		<ability>TM_ReverseTime</ability>		
+		<power>2</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<tags>
+			<li>ReverseTime_Self</li>
+		</tags>
+		<appliedHediffs>
+			<li>TM_ReverseTimeHD</li>
+		</appliedHediffs>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_ReverseTime</defName>
+		<ability>TM_ReverseTime</ability>		
+		<power>2</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<workerClass>AbilityUserAI.AbilityWorker_HealAlly</workerClass>
+		<canTargetAlly>true</canTargetAlly>
+		<needEnemyTarget>false</needEnemyTarget>
+		<maxRange>26</maxRange>
+		<tags>
+			<li>ReverseTime</li>
+		</tags>
+		<appliedHediffs>
+			<li>TM_ReverseTimeHD</li>
+		</appliedHediffs>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_AccelerateTime</defName>
+		<ability>TM_AccelerateTime</ability>
+		<power>6.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<usedOnCaster>false</usedOnCaster>
+		<maxRange>38</maxRange>
+		<tags>
+			<li>AccelerateTime</li>
+		</tags>
+		<appliedHediffs>
+			<li>TM_AccelerateTimeHD</li>
+		</appliedHediffs>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_TimeBubble</defName>
+		<ability>TM_ChronostaticField</ability>
+		<power>10</power>
+		<maxRange>40</maxRange>
+		<abilityRadius>4</abilityRadius>
+		<workerClass>AbilityUserAI.AbilityWorker_AreaOfEffect</workerClass>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>TimeBubble</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Prediction</defName>
+		<ability>TM_Prediction</ability>
+		<power>2</power>
+		<usedOnCaster>true</usedOnCaster>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>Prediction</li>
+		</tags>
+		<appliedHediffs>
+			<li>TM_PredictionHD</li>
+		</appliedHediffs>
+	</AbilityUserAI.AbilityAIDef>
+
 
 </Defs>

@@ -728,6 +728,43 @@ namespace TorannMagic
                                 }
                             }
                         }
+                        else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer))
+                        {
+                            for (int i = 0; i < 5; i++)
+                            {
+                                int rnd = Rand.RangeInclusive(2, 4);
+                                if (rnd == 2 && magicPawn.MagicData.MagicPowersC[rnd].learned)
+                                {
+                                    tempAbility = TorannMagicDefOf.TM_AccelerateTime;
+                                    i = 5;
+                                }
+                                else if (rnd == 3 && magicPawn.MagicData.MagicPowersC[rnd].learned)
+                                {
+                                    tempAbility = TorannMagicDefOf.TM_ReverseTime;
+                                    i = 5;
+                                }
+                                else if (magicPawn.MagicData.MagicPowersC[4].learned)
+                                {
+                                    int level = magicPawn.MagicData.MagicPowersC[4].level;
+                                    switch (level)
+                                    {
+                                        case 0:
+                                            tempAbility = TorannMagicDefOf.TM_ChronostaticField;
+                                            break;
+                                        case 1:
+                                            tempAbility = TorannMagicDefOf.TM_ChronostaticField_I;
+                                            break;
+                                        case 2:
+                                            tempAbility = TorannMagicDefOf.TM_ChronostaticField_II;
+                                            break;
+                                        case 3:
+                                            tempAbility = TorannMagicDefOf.TM_ChronostaticField_III;
+                                            break;
+                                    }
+                                    i = 5;
+                                }
+                            }
+                        }
                         else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.BloodMage))
                         {
                             Messages.Message("TM_CannotMimicBloodMage".Translate(
@@ -942,6 +979,22 @@ namespace TorannMagic
                                         tempAbility = TorannMagicDefOf.TM_GraveBlade_III;
                                         break;
                                 }
+                            }
+                        }
+                        else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk))
+                        {
+                            int rnd = Rand.RangeInclusive(3, 5);
+                            if (rnd == 3)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_TigerStrike;
+                            }
+                            else if (rnd == 4)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_DragonStrike;
+                            }
+                            else
+                            {
+                                tempAbility = TorannMagicDefOf.TM_ThunderStrike;
                             }
                         }
                         else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))

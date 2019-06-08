@@ -27,7 +27,7 @@ namespace TorannMagic
             {
                 this.levelMax = 6;
             }
-            else if (newLabel == "TM_global_regen_pwr" || newLabel == "TM_global_eff_pwr" || newLabel == "TM_EarthSprites_pwr")
+            else if (newLabel == "TM_global_regen_pwr" || newLabel == "TM_global_eff_pwr" || newLabel == "TM_EarthSprites_pwr" || newLabel == "TM_Prediction_pwr")
             {
                 this.levelMax = 5;
             }

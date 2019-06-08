@@ -16,12 +16,25 @@ namespace TorannMagic
         public AbilityContext context => job.count == 1 ? AbilityContext.Player : AbilityContext.AI;
         public Verb_UseAbility verb = new Verb_UseAbility(); // = this.pawn.CurJob.verbToUse as Verb_UseAbility;
 
+        //public override bool TryMakePreToilReservations(bool errorOnFailed)
+        //{
+        //    if(TargetA.Thing != null)
+        //    {
+        //        return true;
+        //    }
+        //    if (pawn.Reserve(TargetA, this.job, 1, 1, null, errorOnFailed))
+        //    {
+        //        return true;
+        //    }
+        //    return false;
+        //}
+
         protected override IEnumerable<Toil> MakeNewToils()
         {
             yield return Toils_Misc.ThrowColonistAttackingMote(TargetIndex.A);
             this.verb = this.pawn.CurJob.verbToUse as Verb_UseAbility;
 
-            if (base.TargetA.HasThing)
+            if (base.TargetA.HasThing) 
             {
                 if (!base.GetActor().IsFighting() ? true : !verb.UseAbilityProps.canCastInMelee && !this.job.endIfCantShootTargetFromCurPos)
                 {
@@ -93,6 +106,10 @@ namespace TorannMagic
                 };
                 combatToil.tickAction = delegate
                 {
+                    if(this.pawn.Downed)
+                    {
+                        EndJobWith(JobCondition.InterruptForced);
+                    }
                     if (Find.TickManager.TicksGame % 12 == 0)
                     {
                         if (verb.Ability.Def == TorannMagicDefOf.TM_Artifact_TraitThief || verb.Ability.Def == TorannMagicDefOf.TM_Artifact_TraitInfuse)
@@ -127,6 +144,7 @@ namespace TorannMagic
                 //    curDriver.ReadyForNextToil();
                 //}
                 combatToil.defaultCompleteMode = ToilCompleteMode.FinishedBusy;
+                this.pawn.ClearReservationsForJob(this.job);
                 yield return combatToil;
                 //Toil toil2 = new Toil()
                 //{
@@ -148,7 +166,7 @@ namespace TorannMagic
                 //yield return toil1;
             }
             else
-            {
+            {                
                 if ((pawn.Position - TargetLocA).LengthHorizontal < verb.verbProps.range)
                 {
                     if (TargetLocA.IsValid && TargetLocA.InBounds(pawn.Map) && !TargetLocA.Fogged(pawn.Map))  //&& TargetLocA.Walkable(pawn.Map)
@@ -221,9 +239,9 @@ namespace TorannMagic
                             {                                
                                 if (this.duration <= 5 && !this.pawn.DestroyedOrNull() && !this.pawn.Dead && !this.pawn.Downed)
                                 {
-                                    verb.Ability.PostAbilityAttempt();
-                                    this.pawn.ClearReservationsForJob(this.job);
+                                    verb.Ability.PostAbilityAttempt();                                   
                                 }
+                                this.pawn.ClearReservationsForJob(this.job);
                             });
                             toil.defaultCompleteMode = ToilCompleteMode.FinishedBusy;
                             yield return toil;

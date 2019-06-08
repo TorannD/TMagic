@@ -196,6 +196,16 @@ namespace TorannMagic
                     }
                     this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
+                else if (parent.def.defName == "BookOfChronomancer" || parent.def.defName == "Torn_BookOfChronomancer")
+                {
+                    FixTrait(user, user.story.traits.allTraits);
+                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Chronomancer, 4, false));
+                    if (parent.def.defName == "BookOfChronomancer")
+                    {
+                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                    }
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                }
                 else if (parent.def.defName == "BookOfQuestion")
                 {
                     int attempts = 0;
@@ -204,7 +214,7 @@ namespace TorannMagic
                     RetryBookOfQuestion:;
                     if (attempts < 50)
                     {
-                        int rnd = Mathf.RoundToInt(Rand.RangeInclusive(0, 15));
+                        int rnd = Mathf.RoundToInt(Rand.RangeInclusive(0, 16));
                         switch (rnd)
                         {
                             case 0:
@@ -398,6 +408,17 @@ namespace TorannMagic
                                 if (settingsRef.Technomancer)
                                 {
                                     user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Enchanter, 4, false));
+                                }
+                                else
+                                {
+                                    attempts++;
+                                    goto RetryBookOfQuestion;
+                                }
+                                break;
+                            case 16:
+                                if (settingsRef.Chronomancer)
+                                {
+                                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Chronomancer, 4, false));
                                 }
                                 else
                                 {

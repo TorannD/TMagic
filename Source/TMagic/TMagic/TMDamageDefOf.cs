@@ -74,8 +74,11 @@ namespace TorannMagic
 
             public static DamageDef TM_BlazingPower;
             public static DamageDef TM_Arcane;
+            public static DamageDef TM_ChiBurn;
 
             public static DamageDef TM_PsionicInjury;
+            public static DamageDef TM_TigerStrike;
+            public static DamageDef TM_DragonStrike;
 
             public static DamageDef TM_Shadow;
             public static DamageArmorCategoryDef Dark;
@@ -89,6 +92,8 @@ namespace TorannMagic
 
             public static DamageDef TM_Enchanted_Fire;
             public static DamageDef TM_Enchanted_Ice;
+
+            public static DamageDef TM_ChiFist;
 
         }
     }

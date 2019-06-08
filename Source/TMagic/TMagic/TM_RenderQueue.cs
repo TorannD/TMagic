@@ -60,6 +60,8 @@ namespace TorannMagic
         public static readonly Material enchanterMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, TM_RenderQueue.enchanterMarkColor);
         public static readonly Color bloodmageMarkColor = new Color(0.6f, 0f, 0f);
         public static readonly Material bloodmageMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, TM_RenderQueue.bloodmageMarkColor);
+        public static readonly Color chronomancerMarkColor = new Color(.4f, .65f, 1f);
+        public static readonly Material chronomancerMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, TM_RenderQueue.chronomancerMarkColor);
 
         //Might
         public static readonly Material deceptionEye = MaterialPool.MatFrom("Motes/DeceptionMote");
@@ -77,7 +79,9 @@ namespace TorannMagic
         public static readonly Material sniperMarkMat = MaterialPool.MatFrom("Other/FighterMark", ShaderDatabase.Transparent, TM_RenderQueue.sniperMarkColor);
         public static readonly Color psionicMarkColor = new Color(0f, .5f, 1f);
         public static readonly Material psionicMarkMat = MaterialPool.MatFrom("Other/PsiMark", ShaderDatabase.Transparent, TM_RenderQueue.psionicMarkColor);
-        
+        public static readonly Color monkMarkColor = new Color(1f, 1f, 0f);
+        public static readonly Material monkMarkMat = MaterialPool.MatFrom("Other/PsiMark", ShaderDatabase.Transparent, TM_RenderQueue.monkMarkColor);
+
         public static readonly Color deathknightMarkColor = new Color(.01f, .01f, .01f);
         public static readonly Material deathknightMarkMat = MaterialPool.MatFrom("Other/FighterMark", ShaderDatabase.Transparent, TM_RenderQueue.deathknightMarkColor);
 

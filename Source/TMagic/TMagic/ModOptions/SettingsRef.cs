@@ -52,6 +52,7 @@ namespace TorannMagic.ModOptions
         public bool Technomancer = Settings.Instance.Technomancer;
         public bool BloodMage = Settings.Instance.BloodMage;
         public bool Enchanter = Settings.Instance.Enchanter;
+        public bool Chronomancer = Settings.Instance.Chronomancer;
 
         public bool Gladiator = Settings.Instance.Gladiator;
         public bool Bladedancer = Settings.Instance.Bladedancer;
@@ -60,6 +61,7 @@ namespace TorannMagic.ModOptions
         public bool Faceless = Settings.Instance.Faceless;
         public bool Psionic = Settings.Instance.Psionic;
         public bool DeathKnight = Settings.Instance.DeathKnight;
+        public bool Monk = Settings.Instance.Monk;
 
     }
 }

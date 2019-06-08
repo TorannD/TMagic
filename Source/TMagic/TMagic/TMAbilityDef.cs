@@ -11,6 +11,7 @@ namespace TorannMagic
         public float manaCost = 0f;
         public float staminaCost = 0f;
         public float bloodCost = 0f;
+        public float chiCost = 0f;
         public int abilityPoints = 1;
 
         public string GetPointDesc()

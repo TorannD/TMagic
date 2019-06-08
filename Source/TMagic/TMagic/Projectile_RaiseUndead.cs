@@ -72,7 +72,7 @@ namespace TorannMagic
                                     flag_SL = true;
                                     undeadPawn = newUndeadPawn;
                                 }                                                              
-                                if (undeadPawn.RaceProps.IsFlesh && (undeadPawn.Dead || flag_SL) && undeadPawn.def.thingClass.FullName != "TorannMagic.TMPawnSummoned")
+                                if (!undeadPawn.def.defName.Contains("ROM_") && undeadPawn.RaceProps.IsFlesh && (undeadPawn.Dead || flag_SL) && undeadPawn.def.thingClass.FullName != "TorannMagic.TMPawnSummoned")
                                 {
                                     bool wasVampire = false;
 

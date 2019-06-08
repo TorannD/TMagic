@@ -7,6 +7,7 @@
 <TM_NotEnoughMaxMana>{0} does not have the mana reserves to sustain {1}</TM_NotEnoughMaxMana>
 <TM_NotEnoughStamina>{0} does not have enough stamina to execute this ability.</TM_NotEnoughStamina>
 <TM_NotEnoughPsionicEnergy>{0} does not have enough psionic energy for {1}.</TM_NotEnoughPsionicEnergy>
+<TM_NotEnoughChi>{0} does not have enough ch'i to execute this ability.</TM_NotEnoughChi>
 <MentalStateByPsyker>{0} overcome by a psychic assault.</MentalStateByPsyker>
 
 <TM_InvalidTarget>{0} found no valid target for ability {1}.</TM_InvalidTarget>
@@ -33,6 +34,7 @@
 <PortalCollapseIn>Portal collapses in {0} seconds.</PortalCollapseIn>
 <InvalidTargetLocation>Invalid target location.</InvalidTargetLocation>
 <MustHaveRangedWeapon>{0} does not have a valid ranged weapon equipped. {0} must equip a ranged weapon to use this skill.</MustHaveRangedWeapon>
+<MustBeUnarmed>{0} must be unarmed to execute {1}</MustBeUnarmed>
 <MustHaveGunpowderWeapon>{0} does not have a valid ranged weapon equipped. {0} must equip a more advanced weapon to use this skill.</MustHaveGunpowderWeapon>
 <MustHaveMeleeWeapon>{0} does not have a valid melee weapon equipped. {0} must equip a melee weapon to use this skill.</MustHaveMeleeWeapon>
 <TM_ShieldBlockingPowers>{0} must unequip {1} to use this ability.</TM_ShieldBlockingPowers>
@@ -138,6 +140,17 @@
 <TM_NoTraitsApplied>Unable to apply any traits to {0}, the Orb of Souls can only apply traits that do not conflict with pre-existing traits.</TM_NoTraitsApplied>
 <TM_NothingEnchanted>{0} was unable to improve the enchantments on {1} using a {2}</TM_NothingEnchanted>
 <TM_Taunting>Taunting!</TM_Taunting>
+<TM_CeaseToExist>{0} has ceased to exist...</TM_CeaseToExist>
+<TM_EndingGameCondition>{0} has successfully ended the {1}.</TM_EndingGameCondition>
+<TM_GameConditionChanged>{0} has inadvertently changed {1} into a {2}!</TM_GameConditionChanged>
+<TM_GameConditionMadePermanent>The {0} has become permanent.</TM_GameConditionMadePermanent>
+<TM_GameConditionAdded>{0} has caused a(n) {1} while attempting to alter {2}.</TM_GameConditionAdded> 
+<TM_AlterGameConditionFailed>{0} has failed to alter the {1}.</TM_AlterGameConditionFailed>
+<TM_PredictionFeelsConfident>{0} feels confident that {1} has averted the {2}.</TM_PredictionFeelsConfident>
+<TM_PredictionFeelsUnsure>{0} is unsure if {1} has had any affect on the {2} prediction.</TM_PredictionFeelsUnsure>
+<TM_PredictionUnease>{0} feels uneasy about {1} changes made to the {2} prediction, perhaps something has gone awry...</TM_PredictionUnease>
+<TM_PredictionTerrified>{0} is terrified, {1} feels sure something disastrous is about to happen...</TM_PredictionTerrified>
+<TM_StatsReport_Undead>Undead: No Value</TM_StatsReport_Undead>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
@@ -149,6 +162,10 @@
 <!-- Caravan Request letters -->
 <LetterLabelArcaneScriptCaravan>Caravan request</LetterLabelArcaneScriptCaravan>
 <LetterArcaneScriptCaravan>A nearby settlement, {0}, contacts you with a special trade request. They would like to purchase:\n\n  {1}\n\nIn return, they offer:\n\n  {2}\n\nThis request expires after: {3}\n\nIf you want to make the trade, send a caravan with the requested supplies. You can review this offer by selecting {0} on the world map.</LetterArcaneScriptCaravan>
+
+<!-- Prediction letters -->
+<TM_PredictionLetter>Prediction: {0}</TM_PredictionLetter>
+<TM_PredictionText>{0} has predicted a {1} will occur within the next {2} hours.</TM_PredictionText>
 
 <!-- Mod Settings -->
 <XPMultiplier>Mage XP gain multiplier</XPMultiplier>
@@ -208,6 +225,8 @@
 <TM_DeathKnight>Death Knight</TM_DeathKnight>
 <TM_BloodMage>Blood Mage</TM_BloodMage>
 <TM_Enchanter>Enchanter</TM_Enchanter>
+<TM_Chronomancer>Chronomancer</TM_Chronomancer>
+<TM_Monk>Monk</TM_Monk>
 
 <!-- Magic Ability Point Descriptions -->
 <TM_global_regen_pwr>Clarity</TM_global_regen_pwr>
@@ -921,6 +940,92 @@ Level 3: min 200, max 500; unlocks access to Shapeshift: Dire Wolf</TM_Shapeshif
 <TM_Shapeshift_eff>Enduring Transformation</TM_Shapeshift_eff>
 <TM_Shapeshift_ver>Natural Selection</TM_Shapeshift_ver>
 
+<TM_Prediction_pwr_desc>Applies the power of prediction to safeguard the chronomancer.
+This skill reduces the amount of mental focus required to retain a precognitive state while simultaneously increasing reaction speed to predicted dangers.
+
+Level 0: -24% Consciousness, -10% aiming delay, +3% mental break threshold, +5% melee dodge chance, 5% chance to predict and avoid physical attacks
+
+Level 5: -10% Consciousness, -20% aiming delay, +6% mental break threshold, +15% melee dodge chance, 55% chance to predict and avoid physical attacks</TM_Prediction_pwr_desc>
+<TM_Prediction_eff_desc>Reduces amount of mana regeneration required to maintain Prediction.
+
+Level 0: -50% mana regeneration
+Level 1: -45% mana regeneration
+Level 2: -40% mana regeneration
+Level 3: -35% mana regeneration</TM_Prediction_eff_desc>
+<TM_Prediction_ver_desc>Increases chance to predict an event by 5% per skill level. Each chronomancer can only predict 1 event at a time.
+
+Level 0: 25%
+Level 1: 30%
+Level 2: 35%
+Level 3: 40%</TM_Prediction_ver_desc>
+<TM_AlterFate_pwr_desc>Increases the chance of favorable results when using Alter Fate. The primary objective when altering fate is to prevent the prediction; at level 3, it is possible to undo environmental conditions (heat wave, flash storm, etc) for a short period after they occur.
+
+Level 0: 25% prevention chance
+Level 1: 30% prevention chance
+Level 2: 35% prevention chance
+Level 3: 40% prevention chance; alter environmental conditions</TM_AlterFate_pwr_desc>
+<TM_AlterFate_eff_desc>Reduces the mana cost required to use Alter Fate by 10% per skill level.</TM_AlterFate_eff_desc>
+<TM_AccelerateTime_eff_desc>Reduces the mana required to cast Accelerate Time by 8% per skill level.</TM_AccelerateTime_eff_desc>
+<TM_AccelerateTime_ver_desc>Increases the potential to accelerate time by increasing the maximum number of enemy targets, reducing resist chance, and increasing duration of the time field.
+
+Level 0: 2 targets, 50% success rate, 100% duration
+Level 1: 3 targets, 60% success rate, 110% duration
+Level 2: 4 targets, 70% success rate, 120% duration
+Level 3: 5 targets, 80% success rate, 130% duration</TM_AccelerateTime_ver_desc>
+<TM_AccelerateTime_pwr_desc>Increases the potency of Accelerate Time.
+
+Pawns will age 10% faster, enemy pawns will begin to suffer from age related ailments at a younger age, and other conditions affecting health are accelerated. Also deteriorates equipment by an additional 100 durability.</TM_AccelerateTime_pwr_desc>
+<TM_ReverseTime_pwr_desc>Increases the potency of Reverse Time.
+Increases the amount of rot, decay, or equipment damage that is reverted, increases reversal rate of health conditions, and increases the efficacy of the reversal field surrounding the pawn.</TM_ReverseTime_pwr_desc>
+<TM_ReverseTime_eff_desc>Decreases mana cost of Reverse Time by 8% per skill level.</TM_ReverseTime_eff_desc>
+<TM_ReverseTime_ver_desc>Increases success chance and duration of Reverse Time by 10% per skill level.
+
+At skill level 3, may be used on a recently deceased (~2hrs game time) pawn to attempt to revert the physical conditions that caused death.</TM_ReverseTime_ver_desc>
+<TM_ChronostaticField_pwr_desc>Increases duration of Chronostatic Field by 20% per skill level. Base duration 26s.</TM_ChronostaticField_pwr_desc>
+<TM_ChronostaticField_eff_desc>Decrease the cost to cast Chronostatic Field by 6% per skill level.</TM_ChronostaticField_eff_desc>
+<TM_ChronostaticField_ver_desc>Decrease chance Chronostatic Field will be resisted by 10% per skill level. Resist chance is modified by caster spell power and target resistances.
+
+Level 0: 60%
+Level 1: 70%
+Level 2: 80%
+Level 3: 90%</TM_ChronostaticField_ver_desc>
+<TM_Recall_pwr_desc>Automates recall.
+
+Level 0: manual activation only
+Level 1: 50% chance to trigger on death
+Level 2: 50% chance to trigger on down
+Level 3: 100% chance to trigger on death or down</TM_Recall_pwr_desc>
+<TM_Recall_eff_desc>Reduces upkeep cost by 8% per skill level.
+
+Level 0: max MP -40, mana regen -30%
+Level 1: max MP -36.8, mana regen -27.6%
+Level 2: max MP -33.2, mana regen -25.2%
+Level 3: max MP -30.4, mana regen -22.8%</TM_Recall_eff_desc>
+<TM_Recall_ver_desc>Increases duration a time marker will remain active by 4 game hours per skill level.
+
+Level 0: 20hrs
+Level 1: 24hrs
+Level 2: 28hrs
+Level 3: 32hrs</TM_Recall_ver_desc>
+
+<TM_Prediction_pwr>Prime Cognition</TM_Prediction_pwr>
+<TM_Prediction_eff>River of Time</TM_Prediction_eff>
+<TM_Prediction_ver>Third Eye</TM_Prediction_ver>
+<TM_AlterFate_pwr>Soothsayer</TM_AlterFate_pwr>
+<TM_AlterFate_eff>Subtlety</TM_AlterFate_eff>
+<TM_AccelerateTime_pwr>Relativity</TM_AccelerateTime_pwr>
+<TM_AccelerateTime_eff>Forward Manipulator</TM_AccelerateTime_eff>
+<TM_AccelerateTime_ver>Mutability</TM_AccelerateTime_ver>
+<TM_ReverseTime_pwr>Rewrite History</TM_ReverseTime_pwr>
+<TM_ReverseTime_eff>Reverse Manipulator</TM_ReverseTime_eff>
+<TM_ReverseTime_ver>Denial</TM_ReverseTime_ver>
+<TM_ChronostaticField_pwr>Time Loop</TM_ChronostaticField_pwr>
+<TM_ChronostaticField_eff>Good Timing</TM_ChronostaticField_eff> 
+<TM_ChronostaticField_ver>Time Catcher</TM_ChronostaticField_ver>
+<TM_Recall_pwr>Insurance</TM_Recall_pwr>
+<TM_Recall_eff>Perfect Recall</TM_Recall_eff>
+<TM_Recall_ver>Impression</TM_Recall_ver>
+
 <!-- Might Ability Point Descriptions -->
 
 <TM_Sprint_eff_desc>Reduces the stamina cost required to sustain Sprint by 3 stamina per skill level.</TM_Sprint_eff_desc>
@@ -1209,6 +1314,54 @@ Base amount: 0%</TM_LifeSteal_ver_desc>
 <TM_GraveBlade_eff>Ferryman</TM_GraveBlade_eff>
 <TM_GraveBlade_ver>Blood and Spirit</TM_GraveBlade_ver>
 
+<TM_Chi_pwr_desc>Increases maximum amount of energy burned by 20%. Base max is 50 energy.
+Affected pawns take .4 damage per energy burned and are stunned.</TM_Chi_pwr_desc>
+<TM_Chi_eff_desc>Reduces the amount of ch'i required to use ch'i abilities by 6% per skill point.</TM_Chi_eff_desc>
+<TM_Chi_ver_desc>Decreases ch'i decay by 10% per skill point.</TM_Chi_ver_desc>
+<TM_MindOverBody_pwr_desc>Applies an additional stack of the Monk's passive buff (Mind Over Body) per skill level</TM_MindOverBody_pwr_desc>
+<TM_MindOverBody_ver_desc>Increases the maximum damage mitigation by 2 per skill level. Damage mitigation is reduced by 1 for each kg of apparel weight.
+Level 0: 7 damage
+Level 1: 9 damage
+Level 2: 11 damage
+Level 3: 13 damage</TM_MindOverBody_ver_desc>
+<TM_Meditate_pwr_desc>Increases regeneration rates for wounds, diseases and addictions by 10% per skill level.</TM_Meditate_pwr_desc>
+<TM_Meditate_eff_desc>Increases ch'i gained during meditation by 10% per skill level.</TM_Meditate_eff_desc>
+<TM_Meditate_ver_desc>Increases rest, joy and mood bonus gain while meditating by 10%.</TM_Meditate_ver_desc>
+<TM_TigerStrike_pwr_desc>Increases damage of Tiger Strike by 15% per skill level and increases passive chance to multi-strike by 5% (base 30%)</TM_TigerStrike_pwr_desc>
+<TM_TigerStrike_eff_desc>Decreases ch'i and stamina cost of Tiger Strike by 10%</TM_TigerStrike_eff_desc>
+<TM_TigerStrike_ver_desc>Each skill level adds 1 additional attack to Tiger Strike. Each skill level also adds a chance to apply bonus attacks.
+Level 0: Physical only
+Level 1: Stun (10% per strike)
+Level 2: Draining (40% per strike)
+Level 3: Lethal Blow (10% per strike)
+
+Draining attacks will absorb energy (mana, stamina) and convert it to ch'i
+Lethal Blow targets a vital bodypart and strikes it with a precise attack that deals an additional 40% damage</TM_TigerStrike_ver_desc>
+<TM_DragonStrike_pwr_desc>Increases the damage of Dragon Strike by 10% per skill level.</TM_DragonStrike_pwr_desc>
+<TM_DragonStrike_eff_desc>Reduces the stamina and ch'i cost of Dragon Strike by 10% per skill level.</TM_DragonStrike_eff_desc>
+<TM_DragonStrike_ver_desc>Increases passive chance that Dragon Strike will trigger by 5% per skill level. Base 30%. Only triggers when confronted with multiple opponents. Also increases the distance Dragon Strike knocks back a nearby target by 15% per skill level.</TM_DragonStrike_ver_desc>
+<TM_ThunderStrike_pwr_desc>Increases the damage of Thunder Strike by 12% per skill level.</TM_ThunderStrike_pwr_desc>
+<TM_ThunderStrike_eff_desc>Reduces the ch'i cost of Thunder Strike by 10% per skill level.</TM_ThunderStrike_eff_desc>
+<TM_ThunderStrike_ver_desc>Increased charge creates additional bolts that fork outward from the Monk in a fan pattern.</TM_ThunderStrike_ver_desc>
+
+<TM_Chi_pwr>Disrupting Burst</TM_Chi_pwr>
+<TM_Chi_eff>Life Sieve</TM_Chi_eff>
+<TM_Chi_ver>Spirit Capacitor</TM_Chi_ver>
+<TM_MindOverBody_pwr>Martial Arts</TM_MindOverBody_pwr>
+<TM_MindOverBody_ver>Ignore Damage</TM_MindOverBody_ver>
+<TM_Meditate_pwr>Cleansing Meditation</TM_Meditate_pwr>
+<TM_Meditate_eff>Deep Meditation</TM_Meditate_eff>
+<TM_Meditate_ver>Renewing Meditation</TM_Meditate_ver>
+<TM_TigerStrike_pwr>Tiger's Fury</TM_TigerStrike_pwr>
+<TM_TigerStrike_eff>Flowing Stance</TM_TigerStrike_eff>
+<TM_TigerStrike_ver>Tiger's Cunning</TM_TigerStrike_ver>
+<TM_DragonStrike_pwr>Dragon's Fury</TM_DragonStrike_pwr>
+<TM_DragonStrike_eff>Lurking Dragon</TM_DragonStrike_eff>
+<TM_DragonStrike_ver>Winged Feet</TM_DragonStrike_ver>
+<TM_ThunderStrike_pwr>Thunder's Fury</TM_ThunderStrike_pwr>
+<TM_ThunderStrike_eff>Electric Spirit</TM_ThunderStrike_eff>
+<TM_ThunderStrike_ver>Shatter</TM_ThunderStrike_ver>
+
 <!-- UI -->
 <TM_TabMagic>Magic</TM_TabMagic>
 <TM_TabMight>Might</TM_TabMight>
@@ -1246,6 +1399,8 @@ Base amount: 0%</TM_LifeSteal_ver_desc>
 <TM_AbilityDescAdjustedStaminaCost>Adjusted Stamina Cost: {0} </TM_AbilityDescAdjustedStaminaCost>
 <TM_AbilityDescBaseBloodCost>Base Blood Cost: {0} </TM_AbilityDescBaseBloodCost>
 <TM_AbilityDescAdjustedBloodCost>Adjusted Blood Cost: {0} </TM_AbilityDescAdjustedBloodCost>
+<TM_AbilityDescBaseChiCost>Base Chi Cost: {0} </TM_AbilityDescBaseChiCost>
+<TM_AbilityDescAdjustedChiCost>Adjusted Chi Cost: {0} </TM_AbilityDescAdjustedChiCost>
 <TM_AbilityDescPortalTime>Portal collapse in {0} seconds</TM_AbilityDescPortalTime>
 <TM_AbilityDescSummonDuration>Summon duration: {0} seconds</TM_AbilityDescSummonDuration>
 <TM_AdjustedCooldown>Adjusted Cooldown: {0} seconds</TM_AdjustedCooldown>

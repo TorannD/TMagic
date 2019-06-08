@@ -47,6 +47,18 @@ namespace TorannMagic
             }
         }
 
+        private float ActualChiCost
+        {
+            get
+            {
+                if (mightDef != null)
+                {
+                    return this.MightUser.ActualChiCost(mightDef);
+                }
+                return mightDef.chiCost;
+            }
+        }
+
         public MightAbility()
         {
         }
@@ -76,7 +88,7 @@ namespace TorannMagic
             }
             else
             {
-                this.CooldownTicksLeft = this.MaxCastingTicks;
+                this.CooldownTicksLeft = Mathf.RoundToInt(this.MaxCastingTicks * this.MightUser.coolDown);
             }
             bool flag = this.mightDef != null;
             if (flag)
@@ -95,6 +107,11 @@ namespace TorannMagic
                     
                     this.MightUser.MightUserXP += (int)((mightDef.staminaCost * 180) * this.MightUser.xpGain * settingsRef.xpMultiplier);
                     
+                }
+                if (this.mightDef.chiCost != 0)
+                {
+                    HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_ChiHD, -100 * this.ActualChiCost);
+                    this.MightUser.MightUserXP += (int)((mightDef.chiCost * 100) * this.MightUser.xpGain * settingsRef.xpMultiplier);
                 }
             }
         }
@@ -134,7 +151,7 @@ namespace TorannMagic
                     num = mightUser.ActualStaminaCost(mightAbilityDef) * 100;
                     if (mightUser.Pawn.equipment.Primary != null && !mightUser.Pawn.equipment.Primary.def.IsRangedWeapon)
                     {
-                        num2 = Mathf.Min((mightUser.Pawn.equipment.Primary.def.BaseMass * .3f) * 100f, 65f);
+                        num2 = Mathf.Min((mightUser.Pawn.equipment.Primary.def.BaseMass * .4f) * 100f, 75f);
                         text2 = "TM_CleaveChance".Translate(
                             num2.ToString()
                         );
@@ -251,16 +268,31 @@ namespace TorannMagic
                         20
                     );
                 }
+                else if (mightUser.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ChiHD, false) && (mightAbilityDef == TorannMagicDefOf.TM_TigerStrike || mightAbilityDef == TorannMagicDefOf.TM_DragonStrike || mightAbilityDef == TorannMagicDefOf.TM_ThunderStrike))
+                {
+                    //displays ability damage for active/passive attacks
+                }
                 else
                 {
                     num = mightUser.ActualStaminaCost(mightAbilityDef) * 100;
                 }
 
-                text = "TM_AbilityDescBaseStaminaCost".Translate(
-                    (mightAbilityDef.staminaCost * 100).ToString("n1")
-                ) + "\n" + "TM_AbilityDescAdjustedStaminaCost".Translate(
-                    num.ToString("n1")
-                );
+                if (mightAbilityDef.chiCost != 0)
+                {
+                    text = "TM_AbilityDescBaseChiCost".Translate(
+                        (mightAbilityDef.chiCost * 100).ToString("n1")
+                    ) + "\n" + "TM_AbilityDescAdjustedChiCost".Translate(
+                        (mightUser.ActualChiCost(mightAbilityDef)*100).ToString("n1")
+                    );
+                }
+                else
+                {
+                    text = "TM_AbilityDescBaseStaminaCost".Translate(
+                        (mightAbilityDef.staminaCost * 100).ToString("n1")
+                    ) + "\n" + "TM_AbilityDescAdjustedStaminaCost".Translate(
+                        num.ToString("n1")
+                    );
+                }
 
                 if (mightUser.coolDown != 1f && maxCastingTicks != 0)
                 {
@@ -308,6 +340,15 @@ namespace TorannMagic
                         if (flag5)
                         {
                             reason = "TM_NotEnoughStamina".Translate(
+                                base.Pawn.LabelShort
+                            );
+                            result = false;
+                            return result;
+                        }
+                        bool flag6 = mightDef.chiCost > 0f && this.MightUser.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ChiHD, false) && (this.ActualChiCost * 100) > this.MightUser.Pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ChiHD, false).Severity;
+                        if (flag6)
+                        {
+                            reason = "TM_NotEnoughChi".Translate(
                                 base.Pawn.LabelShort
                             );
                             result = false;

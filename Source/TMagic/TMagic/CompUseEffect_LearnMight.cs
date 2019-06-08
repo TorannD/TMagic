@@ -72,6 +72,12 @@ namespace TorannMagic
                         ), MessageTypeDefOf.RejectInput);
                     }
                 }
+                else if (parent.def.defName == "BookOfMonk")
+                {
+                    FixTrait(user, user.story.traits.allTraits);
+                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Monk, 4, false));
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                }
                 else
                 {
                     Messages.Message("NotCombatBook".Translate(), MessageTypeDefOf.RejectInput);

@@ -66,7 +66,7 @@ namespace TorannMagic
                 verVal = 3;
             }
 
-            if (pawn != null)
+            if (pawn != null && pawn.health != null && pawn.health.hediffSet != null)
             {
                 IEnumerable<Pawn> enumerable = from geomancer in caster.Map.mapPawns.AllPawnsSpawned
                                                    where (geomancer.RaceProps.Humanlike && geomancer.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
@@ -74,10 +74,10 @@ namespace TorannMagic
                 List<Pawn> geomancers = enumerable.ToList();
                 for (int i = 0; i < geomancers.Count(); i++)
                 {
-                    CompAbilityUserMagic comp = geomancers[i].GetComp<CompAbilityUserMagic>();
-                    if(comp.stoneskinPawns.Contains(pawn))
+                    CompAbilityUserMagic compGeo = geomancers[i].GetComp<CompAbilityUserMagic>();
+                    if(compGeo != null && compGeo.stoneskinPawns.Contains(pawn))
                     {
-                        comp.stoneskinPawns.Remove(pawn);
+                        compGeo.stoneskinPawns.Remove(pawn);
                     }
                 }
                 if(pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_StoneskinHD"), false))
@@ -109,42 +109,45 @@ namespace TorannMagic
 
         public void ApplyStoneskin(Pawn pawn)
         {
-            if (comp.stoneskinPawns.Count() < verVal + 2)
+            if (comp != null && !pawn.DestroyedOrNull() && !pawn.Dead && pawn.Map != null)
             {
-                ApplyHediffs(pawn);
-                if (!comp.stoneskinPawns.Contains(pawn))
+                if (comp.stoneskinPawns.Count() < verVal + 2)
                 {
-                    comp.stoneskinPawns.Add(pawn);
+                    ApplyHediffs(pawn);
+                    if (!comp.stoneskinPawns.Contains(pawn))
+                    {
+                        comp.stoneskinPawns.Add(pawn);
+                    }
+                    SoundInfo info = SoundInfo.InMap(new TargetInfo(pawn.Position, pawn.Map, false), MaintenanceType.None);
+                    info.pitchFactor = .7f;
+                    SoundDefOf.EnergyShield_Reset.PlayOneShot(info);
+                    MoteMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1.5f);
+                    Effecter stoneskinEffecter = TorannMagicDefOf.TM_Stoneskin_Effecter.Spawn();
+                    stoneskinEffecter.def.offsetTowardsTarget = FloatRange.Zero;
+                    stoneskinEffecter.Trigger(new TargetInfo(pawn.Position, pawn.Map, false), new TargetInfo(pawn.Position, pawn.Map, false));
+                    stoneskinEffecter.Cleanup();
                 }
-                SoundInfo info = SoundInfo.InMap(new TargetInfo(pawn.Position, pawn.Map, false), MaintenanceType.None);
-                info.pitchFactor = .7f;
-                SoundDefOf.EnergyShield_Reset.PlayOneShot(info);
-                MoteMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1.5f);
-                Effecter stoneskinEffecter = TorannMagicDefOf.TM_Stoneskin_Effecter.Spawn();
-                stoneskinEffecter.def.offsetTowardsTarget = FloatRange.Zero;
-                stoneskinEffecter.Trigger(new TargetInfo(pawn.Position, pawn.Map, false), new TargetInfo(pawn.Position, pawn.Map, false));
-                stoneskinEffecter.Cleanup();
-            }
-            else
-            {
-                string stoneskinPawns = "";
-                int count = comp.stoneskinPawns.Count();
-                for (int i = 0; i < count; i++)
+                else
                 {
-                    if (i + 1 == count) //last name
+                    string stoneskinPawns = "";
+                    int count = comp.stoneskinPawns.Count();
+                    for (int i = 0; i < count; i++)
                     {
-                        stoneskinPawns += comp.stoneskinPawns[i].LabelShort;
+                        if (i + 1 == count) //last name
+                        {
+                            stoneskinPawns += comp.stoneskinPawns[i].LabelShort;
+                        }
+                        else
+                        {
+                            stoneskinPawns += comp.stoneskinPawns[i].LabelShort + " & ";
+                        }
                     }
-                    else
-                    {
-                        stoneskinPawns += comp.stoneskinPawns[i].LabelShort + " & ";
-                    }
+                    Messages.Message("TM_TooManyStoneskins".Translate(
+                                    caster.LabelShort,
+                                    verVal + 2,
+                                    stoneskinPawns
+                        ), MessageTypeDefOf.RejectInput);
                 }
-                Messages.Message("TM_TooManyStoneskins".Translate(
-                                caster.LabelShort,
-                                verVal + 2,
-                                stoneskinPawns
-                    ), MessageTypeDefOf.RejectInput);
             }
         }
 

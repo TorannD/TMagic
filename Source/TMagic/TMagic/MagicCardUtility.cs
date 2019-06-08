@@ -310,6 +310,18 @@ namespace TorannMagic
                             MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersE, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchantedBody, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Transmutate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchanterStone, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchantWeapon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Polymorph, null, TexButton.TMTex_SkillPointUsed);
                         }
                     }
+                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer))
+                    {
+                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                        if (pawn.GetComp<CompAbilityUserMagic>().spell_Recall == true)
+                        {
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersC, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Prediction, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AlterFate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AccelerateTime, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ReverseTime, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ChronostaticField, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Recall, TexButton.TMTex_SkillPointUsed);
+                        }
+                        else
+                        {
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersC, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Prediction, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AlterFate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AccelerateTime, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ReverseTime, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ChronostaticField, null, TexButton.TMTex_SkillPointUsed);
+                        }
+                    }
                 }
             }
             Widgets.EndScrollView();
@@ -354,10 +366,16 @@ namespace TorannMagic
                 Widgets.Label(rect6, "TM_LastManaGainPct".Translate(
                     (compMagic.Mana.lastGainPct * 200).ToString("0.000")
                     ));
-                string str1 = "Base mana gain: " + (200 * compMagic.Mana.baseManaGain).ToString("0.000") + "\nMana surge: " + (200 * compMagic.Mana.drainManaSurge).ToString("0.000");
+                string str1 = "Base mana gain: " + (200 * compMagic.Mana.baseManaGain).ToString("0.000") + "\nMana regen bonus: " + (200 * compMagic.Mana.modifiedManaGain).ToString("0.000");
                 TooltipHandler.TipRegion(rect6, () => string.Concat(new string[]
                         {
                         str1,
+                         "\n\nMana surge: +",
+                        (200 * compMagic.Mana.drainManaSurge).ToString("0.000"),
+                        "\nSyrrium boost: +",
+                        (200*compMagic.Mana.drainSyrrium).ToString("0.000"),
+                        "\nModified mana gain: ",
+                        (200*(compMagic.Mana.baseManaGain + compMagic.Mana.modifiedManaGain + compMagic.Mana.drainSyrrium + compMagic.Mana.drainManaSurge)).ToString("0.000"),
                         "\n\nMana weakness: -",
                         (200*compMagic.Mana.drainManaWeakness).ToString("0.000"),
                         "\nMinion cost: -",
@@ -372,6 +390,8 @@ namespace TorannMagic
                         (200*compMagic.Mana.drainManaSickness).ToString("0.000"),
                         "\nParacytic drain: -",
                         (200*compMagic.Mana.paracyteCountReduction).ToString("0.000"),
+                        "\nTotal mana upkeep: ",
+                        (-200 *(compMagic.Mana.paracyteCountReduction + compMagic.Mana.drainManaSickness + compMagic.Mana.drainManaDrain + compMagic.Mana.drainUndead + compMagic.Mana.drainSprites + compMagic.Mana.drainMinion + compMagic.Mana.drainManaWeakness)).ToString("0.000"),
                         }), 398552);
                 GUI.color = Color.white;
             }
@@ -589,7 +609,8 @@ namespace TorannMagic
                         power.abilityDef == TorannMagicDefOf.TM_Rend || power.abilityDef == TorannMagicDefOf.TM_Rend_I || power.abilityDef == TorannMagicDefOf.TM_Rend_II ||
                         power.abilityDef == TorannMagicDefOf.TM_BloodMoon || power.abilityDef == TorannMagicDefOf.TM_BloodMoon_I || power.abilityDef == TorannMagicDefOf.TM_BloodMoon_II ||
                         power.abilityDef == TorannMagicDefOf.TM_Polymorph || power.abilityDef == TorannMagicDefOf.TM_Polymorph_I || power.abilityDef == TorannMagicDefOf.TM_Polymorph_II ||
-                        power.abilityDef == TorannMagicDefOf.TM_BestowMight || power.abilityDef == TorannMagicDefOf.TM_BestowMight_I || power.abilityDef == TorannMagicDefOf.TM_BestowMight_II))
+                        power.abilityDef == TorannMagicDefOf.TM_BestowMight || power.abilityDef == TorannMagicDefOf.TM_BestowMight_I || power.abilityDef == TorannMagicDefOf.TM_BestowMight_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_ChronostaticField || power.abilityDef == TorannMagicDefOf.TM_ChronostaticField_I || power.abilityDef == TorannMagicDefOf.TM_ChronostaticField_II))
                     {
 
                         TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
@@ -651,7 +672,8 @@ namespace TorannMagic
                         power.abilityDef.defName == "TM_Rend" || power.abilityDef.defName == "TM_Rend_I" || power.abilityDef.defName == "TM_Rend_II" || power.abilityDef.defName == "TM_Rend_III" ||
                         power.abilityDef.defName == "TM_BloodMoon" || power.abilityDef.defName == "TM_BloodMoon_I" || power.abilityDef.defName == "TM_BloodMoon_II" || power.abilityDef.defName == "TM_BloodMoon_III" ||
                         power.abilityDef.defName == "TM_Polymorph" || power.abilityDef.defName == "TM_Polymorph_I" || power.abilityDef.defName == "TM_Polymorph_II" || power.abilityDef.defName == "TM_Polymorph_III" ||
-                        power.abilityDef.defName == "TM_BestowMight" || power.abilityDef.defName == "TM_BestowMight_I" || power.abilityDef.defName == "TM_BestowMight_II" || power.abilityDef.defName == "TM_BestowMight_III")
+                        power.abilityDef.defName == "TM_BestowMight" || power.abilityDef.defName == "TM_BestowMight_I" || power.abilityDef.defName == "TM_BestowMight_II" || power.abilityDef.defName == "TM_BestowMight_III" ||
+                        power.abilityDef.defName == "TM_ChronostaticField" || power.abilityDef.defName == "TM_ChronostaticField_I" || power.abilityDef.defName == "TM_ChronostaticField_II" || power.abilityDef.defName == "TM_ChronostaticField_III")
                     {
                         flag999 = true;
                     }
@@ -759,6 +781,7 @@ namespace TorannMagic
                             (power.abilityDef.defName == "TM_OrbitalStrike" && MagicPowerSkill5 == null) ||
                             (power.abilityDef.defName == "TM_BloodMoon" && MagicPowerSkill6 == null) ||
                             (power.abilityDef.defName == "TM_Shapeshift" && MagicPowerSkill6 == null) ||
+                            (power.abilityDef.defName == "TM_Recall" && MagicPowerSkill6 == null) ||
                             (power.abilityDef.defName == "TM_Resurrection" && MagicPowerSkill5 == null))
                         {
                             Rect rectMasterLock = new Rect(rect.xMax - 23f - "TM_MasterSpellLocked".Translate().Length * 4, rect.yMin + MagicCardUtility.MagicButtonSize + 4f, "TM_MasterSpellLocked".Translate().Length * 8, MagicCardUtility.TextSize * 3);
@@ -825,7 +848,14 @@ namespace TorannMagic
                     Rect rect42 = new Rect(rect41.x, rect4.y, rect4.width - MagicCardUtility.MagicButtonPointSize, rect4.height / 2);
                     MagicPowerSkill skill = enumeratorN.Current;
                     TooltipHandler.TipRegion(rect42, new TipSignal(() => skill.desc.Translate(), rect4.GetHashCode()));
-                    bool flag11 = (skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0 || !enumerator.Current.learned) || ((enumerator.Current.abilityDef.defName == "TM_Shapeshift") && compMagic.MagicData.MagicAbilityPoints < 2) || (skill.label == "TM_Polymorph_ver" && compMagic.MagicData.MagicAbilityPoints < 2) || ((enumerator.Current.abilityDef.defName == "TM_BardTraining") && compMagic.MagicData.MagicAbilityPoints < 2 ) || ((skill.label == "TM_HolyWrath_ver" || skill.label == "TM_HolyWrath_pwr") && compMagic.MagicData.MagicAbilityPoints < 2) || ((skill.label == "TM_Sentinel_pwr") && compMagic.MagicData.MagicAbilityPoints < 2) || ((skill.label == "TM_EnchanterStone_ver") && compMagic.MagicData.MagicAbilityPoints < 2);
+                    bool flag11 = (skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0 || !enumerator.Current.learned) || 
+                        ((enumerator.Current.abilityDef.defName == "TM_Shapeshift") && compMagic.MagicData.MagicAbilityPoints < 2) || 
+                        (skill.label == "TM_Polymorph_ver" && compMagic.MagicData.MagicAbilityPoints < 2) || 
+                        ((enumerator.Current.abilityDef.defName == "TM_BardTraining") && compMagic.MagicData.MagicAbilityPoints < 2 ) || 
+                        ((skill.label == "TM_HolyWrath_ver" || skill.label == "TM_HolyWrath_pwr") && compMagic.MagicData.MagicAbilityPoints < 2) || 
+                        ((skill.label == "TM_Sentinel_pwr") && compMagic.MagicData.MagicAbilityPoints < 2) || 
+                        ((skill.label == "TM_EnchanterStone_ver") && compMagic.MagicData.MagicAbilityPoints < 2) ||
+                        ((skill.label == "TM_AlterFate_pwr") && compMagic.MagicData.MagicAbilityPoints < 2);
                     if (flag11)
                     {
                         Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
@@ -1393,6 +1423,51 @@ namespace TorannMagic
                                 compMagic.LevelUpSkill_Shapeshift(skill.label);
                                 skill.level++;
                                 compMagic.MagicData.MagicAbilityPoints -= 2;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Prediction")
+                            {
+                                compMagic.LevelUpSkill_Prediction(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_AlterFate")
+                            {
+                                if (skill.label == "TM_AlterFate_pwr")
+                                {
+                                    compMagic.LevelUpSkill_AlterFate(skill.label);
+                                    skill.level++;
+                                    compMagic.MagicData.MagicAbilityPoints -= 2;
+                                }
+                                else
+                                {
+                                    compMagic.LevelUpSkill_AlterFate(skill.label);
+                                    skill.level++;
+                                    compMagic.MagicData.MagicAbilityPoints -= 1;
+                                }                                
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_AccelerateTime")
+                            {
+                                compMagic.LevelUpSkill_AccelerateTime(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_ReverseTime")
+                            {
+                                compMagic.LevelUpSkill_ReverseTime(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_ChronostaticField" || enumerator.Current.abilityDef.defName == "TM_ChronostaticField_I" || enumerator.Current.abilityDef.defName == "TM_ChronostaticField_II" || enumerator.Current.abilityDef.defName == "TM_ChronostaticField_III")
+                            {
+                                compMagic.LevelUpSkill_ChronostaticField(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Recall")
+                            {
+                                compMagic.LevelUpSkill_Recall(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
                             }
                         }
                     }

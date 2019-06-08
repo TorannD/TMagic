@@ -86,6 +86,40 @@
 	</DamageDef>
 	
 	<DamageDef ParentName="TM_LocalInjuryBase">
+		<defName>TM_ChiBurn</defName>
+		<label>Ch'i burn</label>
+		<externalViolence>false</externalViolence>
+		<deathMessage>{0} was overwhelmed by spirit energy.</deathMessage>
+		<hediff>TM_ChiBurnHD</hediff>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+		<defaultDamage>10</defaultDamage>
+		<armorCategory>Light</armorCategory>
+		<explosionSnowMeltAmount>.5</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_BlastExtinguisher</explosionCellMote>
+		<explosionColorCenter>(1, 1, 1)</explosionColorCenter>
+		<explosionColorEdge>(1, 1, .6)</explosionColorEdge>
+		<soundExplosion>TM_SoftExplosion</soundExplosion>
+	</DamageDef>
+	
+	<DamageDef ParentName="TM_LocalInjuryBase">
+		<defName>TM_ChiFist</defName>
+		<label>strike</label>
+		<externalViolence>false</externalViolence>
+		<deathMessage>{0} was taken down by martial arts.</deathMessage>
+		<hediff>TM_ChiFistHD</hediff>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+		<defaultDamage>10</defaultDamage>
+		<armorCategory>Blunt</armorCategory>
+		<defaultArmorPenetration>6</defaultArmorPenetration>
+		<defaultStoppingPower>2</defaultStoppingPower>
+		<explosionSnowMeltAmount>.5</explosionSnowMeltAmount>
+		<explosionCellMote>Mote_BlastExtinguisher</explosionCellMote>
+		<explosionColorCenter>(1, 1, 1)</explosionColorCenter>
+		<explosionColorEdge>(1, 1, .6)</explosionColorEdge>
+		<soundExplosion>TM_SoftExplosion</soundExplosion>
+	</DamageDef>
+	
+	<DamageDef ParentName="TM_LocalInjuryBase">
 		<defName>TM_PsionicInjury</defName>
 		<label>Psionic</label>
 		<externalViolence>true</externalViolence>
@@ -916,4 +950,29 @@
 		<armorCategory>Blunt</armorCategory>
 	</DamageDef>
 	
+  <DamageDef ParentName="TM_LocalInjuryBase">
+    <defName>TM_DragonStrike</defName>
+    <label>dragon strike</label>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has been slain by martial arts: dragon strike</deathMessage>
+    <hediff>Crush</hediff>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Light</armorCategory>
+	<isExplosive>false</isExplosive>
+  </DamageDef>
+  
+  <DamageDef ParentName="TM_LocalInjuryBase">
+    <defName>TM_TigerStrike</defName>
+    <label>tiger strike</label>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has been slain by martial arts: tiger strike.</deathMessage>
+    <hediff>Crush</hediff>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Light</armorCategory>
+	<isExplosive>false</isExplosive>
+  </DamageDef>
 </Defs>

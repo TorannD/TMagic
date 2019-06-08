@@ -239,6 +239,64 @@ namespace TorannMagic
             }
         }
 
+        public static void DoAction_ApplySplashDamage(DamageInfo dinfo, Pawn caster, Pawn target, Map map, int ver = 0)
+        {
+            bool multiplePawns = false;
+            bool flag = !dinfo.InstantPermanentInjury;
+            CompAbilityUserMight comp = caster.GetComp<CompAbilityUserMight>();
+            MightPowerSkill eff = comp.MightData.MightPowerSkill_DragonStrike.FirstOrDefault((MightPowerSkill x) => x.label == "TM_DragonStrike_eff");
+            MightPowerSkill globalSkill = comp.MightData.MightPowerSkill_global_seff.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_seff_pwr");
+            float actualStaminaCost = .1f * (1 - (.1f * eff.level) * (1 - (.03f * globalSkill.level)));
+            if (flag && comp != null && comp.Stamina.CurLevel >= actualStaminaCost)
+            {
+                bool flag2 = dinfo.Instigator != null;
+                if (flag2)
+                {
+                    bool flag3 = caster != null && caster.PositionHeld != default(IntVec3) && !caster.Downed;
+                    if (flag3)
+                    {
+                        System.Random random = new System.Random();
+                        int rnd = GenMath.RoundRandom(random.Next(0, 100));
+                        if (rnd < (ver * 15))
+                        {
+                            target.TakeDamage(dinfo);
+                            MoteMaker.ThrowMicroSparks(target.Position.ToVector3(), map);
+                        }
+                        target.TakeDamage(dinfo);
+                        MoteMaker.ThrowMicroSparks(target.Position.ToVector3(), map);
+                        for (int i = 0; i < 8; i++)
+                        {
+                            IntVec3 intVec = target.PositionHeld + GenAdj.AdjacentCells[i];
+                            Pawn cleaveVictim = new Pawn();
+                            cleaveVictim = intVec.GetFirstPawn(map);
+                            if (cleaveVictim != null && cleaveVictim.Faction != caster.Faction)
+                            {
+                                cleaveVictim.TakeDamage(dinfo);
+                                MoteMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), map);
+                                multiplePawns = true;
+                                rnd = GenMath.RoundRandom(random.Next(0, 100));
+                                if (rnd < (ver * 15))
+                                {
+                                    cleaveVictim.TakeDamage(dinfo);
+                                    MoteMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), map);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            if(multiplePawns)
+            {
+                Vector3 angle = TM_Calc.GetVector(caster.DrawPos, target.DrawPos);
+                TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_DragonStrike, target.DrawPos, caster.Map, 1.1f, .1f, .01f, .1f, 650, 0, 0, (Quaternion.AngleAxis(-25, Vector3.up) * angle).ToAngleFlat());                
+                if (comp != null)
+                {
+                    comp.Stamina.CurLevel -= actualStaminaCost;
+                    comp.MightUserXP += (int)(.1f * 180);
+                }
+            }
+        }
+
         public static void DoAction_HealPawn(Pawn caster, Pawn pawn, int bodypartCount, float amountToHeal)
         {
             int num = bodypartCount;
@@ -256,6 +314,21 @@ namespace TorannMagic
                         Func<Hediff_Injury, bool> partInjured;
 
                         partInjured = ((Hediff_Injury injury) => injury.Part == rec);
+
+                        foreach (Hediff_Injury current in injury_hediff.Where(partInjured))
+                        {
+                            bool flag4 = num2 > 0;
+                            if (flag4)
+                            {
+                                bool flag5 = current.BleedRate > 0;
+                                if (flag5)
+                                {
+                                    current.Heal(amountToHeal);
+                                    num--;
+                                    num2--;
+                                }
+                            }
+                        }
 
                         foreach (Hediff_Injury current in injury_hediff.Where(partInjured))
                         {
@@ -589,6 +662,141 @@ namespace TorannMagic
             Effecter effecter = effecterDef.Spawn();
             effecter.Trigger(new TargetInfo(position, map, false), new TargetInfo(position, map, false));
             effecter.Cleanup();
+        }
+
+        /// <summary>
+        /// Actions used to perform Chronomancer ability "Recall"
+        /// Loaded in static to allow immediate execution when downed or dead
+        /// </summary>
+        /// <param name="pawn"></param>
+        /// <param name="comp"></param>
+        /// <param name="deathTrigger"></param>
+        public static void DoRecall(Pawn pawn, CompAbilityUserMagic comp, bool deathTrigger)
+        {
+            try
+            {
+                if (ModCheck.Validate.GiddyUp.Core_IsInitialized())
+                {
+                    ModCheck.GiddyUp.ForceDismount(pawn);
+                }
+            }
+            catch
+            {
+
+            }
+            MoteMaker.ThrowSmoke(pawn.DrawPos, pawn.Map, 1.4f);
+            TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_AlterFate, pawn.DrawPos, pawn.Map, 1.6f, .2f, .1f, .8f, -500, 0, 0, Rand.Range(0, 360));
+            Effecter RecallFromEffect = TorannMagicDefOf.TM_RecallFromED.Spawn();
+            RecallFromEffect.Trigger(new TargetInfo(pawn), new TargetInfo(pawn));
+            RecallFromEffect.Cleanup();
+            RecallHediffs(pawn, comp);
+            RecallNeeds(pawn, comp);
+            RecallPosition(pawn, comp);
+            ResetPowers(pawn, comp);
+            comp.recallSet = false;
+            comp.recallSpell = false;
+            comp.RemovePawnAbility(TorannMagicDefOf.TM_Recall);
+            TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_AlterFate, pawn.DrawPos, pawn.Map, 1.6f, .2f, .1f, .8f, 500, 0, 0, Rand.Range(0, 360));
+            Effecter RecallToEffect = TorannMagicDefOf.TM_RecallToED.Spawn();
+            RecallToEffect.Trigger(new TargetInfo(pawn), new TargetInfo(pawn));
+            RecallToEffect.Cleanup();
+            HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_HediffInvulnerable, .02f);
+            if(pawn.Dead)
+            {
+                ResurrectionUtility.Resurrect(pawn);
+                deathTrigger = true;
+            }
+            if(deathTrigger && Rand.Chance(.5f))
+            {
+                pawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Wander_Psychotic);
+            }
+        }
+
+        private static void RecallHediffs(Pawn pawn, CompAbilityUserMagic comp)
+        {
+            if (comp.recallInjuriesList != null && comp.recallHediffList != null)
+            {
+                for (int i = 0; i < pawn.health.hediffSet.hediffs.Count; i++)
+                {
+                    if (!pawn.health.hediffSet.hediffs[i].IsPermanent() && pawn.health.hediffSet.hediffs[i].def != TorannMagicDefOf.TM_MagicUserHD && !pawn.health.hediffSet.hediffs[i].def.defName.Contains("TM_HediffEnchantment") && !pawn.health.hediffSet.hediffs[i].def.defName.Contains("TM_Artifact"))
+                    {
+                        if (!(pawn.health.hediffSet.hediffs[i] is Hediff_MissingPart) && !(pawn.health.hediffSet.hediffs[i] is Hediff_AddedPart))
+                        {
+                            //Log.Message("removing " + pawn.health.hediffSet.hediffs[i].Label + " at severity " + pawn.health.hediffSet.hediffs[i].Severity);
+                            Hediff hediff = pawn.health.hediffSet.hediffs[i];
+                            pawn.health.RemoveHediff(hediff);
+                            i--;
+                        }
+                    }
+                }
+                for (int i = 0; i < comp.recallHediffList.Count; i++)
+                {
+                    //Log.Message("adding " + comp.recallHediffList[i].Label + " at severity " + comp.recallHediffList[i].Severity);
+                    pawn.health.AddHediff(comp.recallHediffList[i]);
+                }
+                for (int i = 0; i < comp.recallInjuriesList.Count; i++)
+                {
+                    //Log.Message("adding injury " + comp.recallInjuriesList[i].Label + " at severity " + comp.recallInjuriesList[i].Severity);
+                    pawn.health.AddHediff(comp.recallInjuriesList[i]);
+                }
+                comp.recallHediffList.Clear();
+                comp.recallInjuriesList.Clear();
+            }
+
+        }
+
+        private static void RecallNeeds(Pawn pawn, CompAbilityUserMagic comp)
+        {
+            for (int i = 0; i < pawn.needs.AllNeeds.Count; i++)
+            {
+                bool hasNeed = false;
+                for (int j = 0; j < comp.recallNeedValues.Count; j++)
+                {
+                    if (comp.recallNeedDefnames[j] == pawn.needs.AllNeeds[i].def.defName)
+                    {
+                        //Log.Message("setting " + pawn.needs.AllNeeds[i].def.defName + " from " + pawn.needs.AllNeeds[i].CurLevel + " to " + comp.recallNeedValues[j]);
+                        pawn.needs.AllNeeds[i].CurLevel = comp.recallNeedValues[j];
+                        hasNeed = true;
+                    }
+                }
+                if (!hasNeed)
+                {
+                    //Log.Message("removing need " + pawn.needs.AllNeeds[i].def.defName);
+                    pawn.needs.AllNeeds.Remove(pawn.needs.AllNeeds[i]);
+                }
+            }
+            pawn.needs.AddOrRemoveNeedsAsAppropriate();
+            comp.recallNeedDefnames.Clear();
+            comp.recallNeedValues.Clear();
+        }
+
+        private static void RecallPosition(Pawn pawn, CompAbilityUserMagic comp)
+        {
+            bool draftFlag = pawn.Drafted;
+            bool selectFlag = Find.Selector.IsSelected(pawn);
+            pawn.DeSpawn();
+            GenPlace.TryPlaceThing(pawn, comp.recallPosition, comp.recallMap, ThingPlaceMode.Near);
+            pawn.drafter.Drafted = draftFlag;
+            if (selectFlag)
+            {
+                CameraJumper.TryJumpAndSelect(pawn);
+            }
+            comp.recallPosition = default(IntVec3);
+        }
+
+        private static void ResetPowers(Pawn pawn, CompAbilityUserMagic comp)
+        {
+            foreach (PawnAbility current in comp.AbilityData.Powers)
+            {
+                if (current.Def != TorannMagicDefOf.TM_Recall && current.Def != TorannMagicDefOf.TM_TimeMark)
+                {
+                    current.CooldownTicksLeft = 0;
+                }
+                else if (current.Def == TorannMagicDefOf.TM_TimeMark)
+                {
+                    current.CooldownTicksLeft = Mathf.RoundToInt(current.MaxCastingTicks * comp.coolDown);
+                }
+            }
         }
     }
 }

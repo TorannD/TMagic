@@ -18,6 +18,7 @@ namespace TorannMagic
         private static readonly Texture2D FullPsionicTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.0f, 0.5f, 1f));
         private static readonly Texture2D FullDeathKnightTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.6f, 0.0f, 0f));
         private static readonly Texture2D FullBloodMageTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.4f, 0.0f, 0f));
+        private static readonly Texture2D FullChiTex = SolidColorMaterials.NewSolidColorTexture(new Color(1, .75f, 0));
         private static readonly Texture2D FullCountTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.2f, 0.2f, 0.24f));
 
         private static readonly Texture2D EmptyShieldBarTex = SolidColorMaterials.NewSolidColorTexture(Color.clear);
@@ -40,6 +41,7 @@ namespace TorannMagic
                 bool isFighter = compMight.IsMightUser;
                 bool isPsionic = pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_PsionicHD"), false);
                 bool isBloodMage = pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_BloodHD"), false);
+                bool isMonk = pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ChiHD, false);
                 Hediff hediff = null;
                 for (int h = 0; h < pawn.health.hediffSet.hediffs.Count; h++)
                 {
@@ -86,6 +88,10 @@ namespace TorannMagic
                     {
                         boostSev += hediffBoost.Severity;
                     }
+                }
+                if(isMonk)
+                {
+                    barCount++;
                 }
                 float barHeight;
                 float initialShift = 0;
@@ -157,6 +163,23 @@ namespace TorannMagic
                             {
                                 fillPercent = 0f;
                                 Widgets.FillableBar(rect2, fillPercent, Gizmo_EnergyStatus.FullBloodMageTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
+                                Widgets.Label(rect2, "");
+                            }
+                            yShift += (barHeight) + 5f;
+                        }
+                        if (isMonk)
+                        {
+                            rect2.y += yShift;
+                            try
+                            {
+                                fillPercent = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ChiHD, false).Severity / boostSev;
+                                Widgets.FillableBar(rect2, fillPercent, Gizmo_EnergyStatus.FullChiTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
+                                Widgets.Label(rect2, "" + (pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ChiHD, false).Severity).ToString("F0") + " / " + boostSev.ToString("F0"));
+                            }
+                            catch
+                            {
+                                fillPercent = 0f;
+                                Widgets.FillableBar(rect2, fillPercent, Gizmo_EnergyStatus.FullChiTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
                                 Widgets.Label(rect2, "");
                             }
                             yShift += (barHeight) + 5f;

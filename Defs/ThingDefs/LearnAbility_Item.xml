@@ -321,7 +321,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
   
   <ThingDef ParentName="Partial_ArcaneScriptBase">
     <defName>Torn_BookOfValiant</defName>
-    <label>Torn Script: Holy</label>
+    <label>Torn Script: Paladin</label>
     <thingClass>ThingWithComps</thingClass>
     <description>Teaches a gifted pawn how to harness holy powers.  
 This arcane script is incomplete and the reader may not be able to learn some, or any, holy spells.</description>
@@ -496,7 +496,7 @@ This arcane script is incomplete and does not explain the full contract process;
   
   <ThingDef ParentName="Partial_ArcaneScriptBase">
     <defName>Torn_BookOfEarth</defName>
-    <label>Torn Script: Geomancer</label>
+    <label>Torn Script: Geomancy</label>
     <thingClass>ThingWithComps</thingClass>
     <description>Teaches a gifted pawn to combine physical law, elements, and the arcane.
 This arcane script is incomplete and the reader may not be able to learn some, or any, geomancer abilities.</description>
@@ -591,7 +591,30 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/torn_enchanter</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-
+  </ThingDef>
+  
+  <ThingDef ParentName="Partial_ArcaneScriptBase">
+    <defName>Torn_BookOfChronomancer</defName>
+    <label>Torn Script: Chronomancy</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a gifted pawn how to become a chronomancer, able to see and manipulate realities across time.
+This arcane script is incomplete and the reader may not be able to learn some, or any, chronomancer abilities.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/torn_chronomancer</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
   </ThingDef>
 
   <!--=============== Arcane Scripts ====================-->
@@ -958,6 +981,30 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 
   </ThingDef>
   
+  <ThingDef ParentName="ArcaneScriptBase">
+    <defName>BookOfChronomancer</defName>
+    <label>Arcane Script: Chronomancer</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a gifted pawn how to become a chronomancer, able to see and manipulate realities across time.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/chronomancer</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
     <!--=============== Combat Forms ====================-->
 
   <ThingDef ParentName="CombatFormBase">
@@ -1128,6 +1175,30 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/deathknight</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="CombatFormBase">
+    <defName>BookOfMonk</defName>
+    <label>Combat Style: Monk</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a physically adept pawn to hone their mind and body into a lethal weapon.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/monk</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
 
@@ -3428,6 +3499,52 @@ Produces 400Wd.</description>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_Recall</defName>
+    <label>Chronomancer Spell: Recall</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a chronomancer how to recall their physical being to a past condition.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>2000</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>180</RawMagicyte>
+		<DevilstrandCloth>130</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_power</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
   </ThingDef>

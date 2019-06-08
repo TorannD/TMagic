@@ -36,7 +36,7 @@ namespace TorannMagic
         public List<MagicPower> magicPowerT;
         public List<MagicPower> magicPowerBM;
         public List<MagicPower> magicPowerE;
-
+        public List<MagicPower> magicPowerC;
 
         public List<MagicPower> magicPowerStandalone;
 
@@ -145,6 +145,13 @@ namespace TorannMagic
         public List<MagicPowerSkill> magicPowerSkill_EnchantWeapon;
         public List<MagicPowerSkill> magicPowerSkill_Polymorph;
         public List<MagicPowerSkill> magicPowerSkill_Shapeshift;
+
+        public List<MagicPowerSkill> magicPowerSkill_Prediction;
+        public List<MagicPowerSkill> magicPowerSkill_AlterFate;
+        public List<MagicPowerSkill> magicPowerSkill_AccelerateTime;
+        public List<MagicPowerSkill> magicPowerSkill_ReverseTime;
+        public List<MagicPowerSkill> magicPowerSkill_ChronostaticField;
+        public List<MagicPowerSkill> magicPowerSkill_Recall;
 
         public List<MagicPowerSkill> MagicPowerSkill_global_regen
         {
@@ -312,6 +319,10 @@ namespace TorannMagic
                         new MagicPower(new List<AbilityDef>
                         {
                             TorannMagicDefOf.TM_BriarPatch
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_TimeMark
                         }),
                     };
                 }
@@ -2450,6 +2461,150 @@ namespace TorannMagic
             }
         }
 
+        public List<MagicPower> MagicPowersC
+        {
+            get
+            {
+                bool flag = this.magicPowerC == null;
+                if (flag)
+                {
+                    this.magicPowerC = new List<MagicPower>
+                    {
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Prediction
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_AlterFate
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_AccelerateTime
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_ReverseTime
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_ChronostaticField,
+                            TorannMagicDefOf.TM_ChronostaticField_I,
+                            TorannMagicDefOf.TM_ChronostaticField_II,
+                            TorannMagicDefOf.TM_ChronostaticField_III
+                        }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Recall
+                        }),
+                    };
+                }
+                return this.magicPowerC;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Prediction
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Prediction == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Prediction = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Prediction_pwr", "TM_Prediction_pwr_desc"),
+                        new MagicPowerSkill("TM_Prediction_eff", "TM_Prediction_eff_desc"),
+                        new MagicPowerSkill("TM_Prediction_ver", "TM_Prediction_ver_desc")
+
+                    };
+                }
+                return this.magicPowerSkill_Prediction;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_AlterFate
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_AlterFate == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_AlterFate = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_AlterFate_pwr", "TM_AlterFate_pwr_desc"),
+                        new MagicPowerSkill("TM_AlterFate_eff", "TM_AlterFate_eff_desc")
+                    };
+                }
+                return this.magicPowerSkill_AlterFate;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_AccelerateTime
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_AccelerateTime == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_AccelerateTime = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_AccelerateTime_pwr", "TM_AccelerateTime_pwr_desc"),
+                        new MagicPowerSkill("TM_AccelerateTime_eff", "TM_AccelerateTime_eff_desc"),
+                        new MagicPowerSkill("TM_AccelerateTime_ver", "TM_AccelerateTime_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_AccelerateTime;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_ReverseTime
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_ReverseTime == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_ReverseTime = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_ReverseTime_pwr", "TM_ReverseTime_pwr_desc" ),
+                        new MagicPowerSkill("TM_ReverseTime_eff", "TM_ReverseTime_eff_desc" ),
+                        new MagicPowerSkill("TM_ReverseTime_ver", "TM_ReverseTime_ver_desc" )
+                    };
+                }
+                return this.magicPowerSkill_ReverseTime;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_ChronostaticField
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_ChronostaticField == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_ChronostaticField = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_ChronostaticField_pwr", "TM_ChronostaticField_pwr_desc"),
+                        new MagicPowerSkill("TM_ChronostaticField_eff", "TM_ChronostaticField_eff_desc"),
+                        new MagicPowerSkill("TM_ChronostaticField_ver", "TM_ChronostaticField_ver_desc")
+                    };
+                }
+                return this.magicPowerSkill_ChronostaticField;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Recall
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Recall == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Recall = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Recall_pwr", "TM_Recall_pwr_desc"),
+                        new MagicPowerSkill("TM_Recall_eff", "TM_Recall_eff_desc"),
+                        new MagicPowerSkill("TM_Recall_ver", "TM_Recall_ver_desc")                        
+                    };
+                }
+                return this.magicPowerSkill_Recall;
+            }
+        }
+
         public bool IsNecromancer
         {
             get
@@ -2570,7 +2725,7 @@ namespace TorannMagic
         {
             get
             {
-                return this.MagicPowersE.Concat(this.MagicPowersBM.Concat(this.MagicPowersIF.Concat(this.MagicPowersHoF.Concat(this.MagicPowersSB.Concat(this.MagicPowersA.Concat(this.MagicPowersP.Concat(this.MagicPowersS.Concat(this.MagicPowersD.Concat(this.MagicPowersN.Concat(this.MagicPowersPR.Concat(this.MagicPowersB.Concat(this.MagicPowersWD.Concat(this.MagicPowersSD.Concat(this.MagicPowersG.Concat(this.MagicPowersT.Concat(this.MagicPowersStandalone))))))))))))))));
+                return this.MagicPowersC.Concat(this.MagicPowersE.Concat(this.MagicPowersBM.Concat(this.MagicPowersIF.Concat(this.MagicPowersHoF.Concat(this.MagicPowersSB.Concat(this.MagicPowersA.Concat(this.MagicPowersP.Concat(this.MagicPowersS.Concat(this.MagicPowersD.Concat(this.MagicPowersN.Concat(this.MagicPowersPR.Concat(this.MagicPowersB.Concat(this.MagicPowersWD.Concat(this.MagicPowersSD.Concat(this.MagicPowersG.Concat(this.MagicPowersT.Concat(this.MagicPowersStandalone)))))))))))))))));
             }
         }
 
@@ -2601,6 +2756,7 @@ namespace TorannMagic
             this.magicPowerS.Clear();
             this.magicPowerSB.Clear();
             this.magicPowerSD.Clear();
+            this.magicPowerC.Clear();
             this.magicPawn = null;            
             this.initialized = false;           
         }
@@ -2722,6 +2878,13 @@ namespace TorannMagic
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_EnchantWeapon, "magicPowerSkill_EnchantWeapon", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Polymorph, "magicPowerSkill_Polymorph", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Shapeshift, "magicPowerSkill_Shapeshift", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPower>(ref this.magicPowerC, "magicPowerC", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Prediction, "magicPowerSkill_Prediction", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_AlterFate, "magicPowerSkill_AlterFate", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_AccelerateTime, "magicPowerSkill_AccelerateTime", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_ReverseTime, "magicPowerSkill_ReverseTime", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_ChronostaticField, "magicPowerSkill_ChronostaticField", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Recall, "magicPowerSkill_Recall", LookMode.Deep, new object[0]);
         }
     }
 }

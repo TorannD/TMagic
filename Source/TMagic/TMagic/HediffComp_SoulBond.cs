@@ -11,11 +11,18 @@ namespace TorannMagic
     {
         private bool initializing = true;
         private bool soulPawnRemove = false;
+        Pawn bondedPawn = null;
+
+        public override string CompLabelInBracketsExtra => bondedPawn != null ? bondedPawn.LabelShort + "[+]" + base.CompLabelInBracketsExtra : base.CompLabelInBracketsExtra;
 
         public string labelCap
         {
             get
             {
+                if(bondedPawn != null)
+                {
+                    return base.Def.LabelCap + "(" + bondedPawn.LabelShort + ")";
+                }
                 return base.Def.LabelCap;
             }
         }
@@ -24,6 +31,10 @@ namespace TorannMagic
         {
             get
             {
+                if (bondedPawn != null)
+                {
+                    return base.Def.label + "(" + bondedPawn.LabelShort + ")";
+                }
                 return base.Def.label;
             }
         }
@@ -55,6 +66,7 @@ namespace TorannMagic
                 Pawn pawn = base.Pawn;
                 CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
                 Pawn soulPawn = comp.soulBondPawn;
+                bondedPawn = soulPawn;
                 if(soulPawn != null)
                 {
                     if (soulPawn.Dead || soulPawn.Destroyed)

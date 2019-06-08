@@ -27,12 +27,16 @@ namespace TorannMagic
 
         public float drainMinion;
         public float drainUndead;
-        public float drainManaWeakness;
+        public float drainManaWeakness; //arcane weakness
         public float drainManaSickness;
         public float drainManaDrain;
         public float drainManaSurge;
+        public float drainSyrrium;
         public float drainSprites;
         public float drainSustainers; //not used
+        public float drainStructures; //not used
+        public float drainEnchantments; //not used
+        public float modifiedManaGain;
         public float baseManaGain;
 
         public float lastGainPct;
@@ -123,7 +127,7 @@ namespace TorannMagic
         }
 
         public Need_Mana(Pawn pawn) : base(pawn)
-		    {
+		{
             this.lastGainTick = -999;
             this.threshPercents = new List<float>();
             this.threshPercents.Add((0.25f / this.MaxLevel));
@@ -167,40 +171,11 @@ namespace TorannMagic
         public void GainNeed(float amount)
         {            
             if (base.pawn.Map != null && !base.pawn.Dead && !base.pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) && !base.pawn.NonHumanlikeOrWildMan())
-            {
-                if(this.lastParacyteCheck < Find.TickManager.TicksGame + 3000)
-                {
-                    List<Thing> paracyteBushes = this.pawn.Map.listerThings.ThingsOfDef(TorannMagicDefOf.TM_Plant_Paracyte);
-                    int paracyteCount = paracyteBushes.Count;
-                    List<Pawn> mapPawns = this.pawn.Map.mapPawns.AllPawnsSpawned;
-                    int mageCount = 0;
-                    for(int i =0; i < mapPawns.Count; i++)
-                    {
-                        if(mapPawns[i] != null && mapPawns[i].Spawned && !mapPawns[i].Dead && !mapPawns[i].AnimalOrWildMan())
-                        {
-                            CompAbilityUserMagic mageCheck = mapPawns[i].GetComp<CompAbilityUserMagic>();
-                            if(mageCheck != null && mageCheck.IsMagicUser && !mapPawns[i].story.traits.HasTrait(TorannMagicDefOf.Faceless))
-                            {
-                                mageCount++;
-                            }
-                        }
-                    }
-                    
-                    int mapManaDrainerCount = paracyteCount + (2*mageCount);
-                    if(mapManaDrainerCount > 50)
-                    {
-                        mapManaDrainerCount -= 50;
-                    }
-                    else
-                    {
-                        mapManaDrainerCount = 0;
-                    }
-                    this.paracyteCountReduction = 0.000005f * mapManaDrainerCount;
-                }
+            {                
                 Pawn pawn = base.pawn;
                 CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
-                if (comp.IsMagicUser)
-                {
+                if (comp != null && comp.IsMagicUser && pawn.Faction != null)
+                {                    
                     if (!pawn.Faction.IsPlayer)
                     {
                         amount *= (0.025f);
@@ -209,26 +184,110 @@ namespace TorannMagic
                     }
                     else
                     {
-                        ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                        
+                        ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();                        
                         MagicPowerSkill manaRegen = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
+                        this.baseManaGain = (amount * (0.0012f) * settingsRef.needMultiplier);
                         amount *= (((0.0012f * comp.mpRegenRate)) * settingsRef.needMultiplier);
-                        if(this.pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_SyrriumSenseHD"), false))
+                        this.modifiedManaGain = amount - this.baseManaGain;
+
+                        //Syrrium modifier
+                        if (this.pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_SyrriumSenseHD"), false))
                         {
-                            amount = (amount * 1.5f);
+                            this.drainSyrrium = this.baseManaGain * .5f;
+                            amount += this.drainSyrrium;                            
                         }
                         else if(this.pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_PomanaSenseHD"), false))
                         {
-                            amount = (amount * 1.2f);
+                            this.drainSyrrium = this.baseManaGain * .2f;
+                            amount += this.drainSyrrium;
                         }
-                        //amount = Mathf.Min(amount, this.MaxLevel - this.CurLevel);
-                        this.baseManaGain = amount;
-                        float necroReduction = 0;
-                        int necroCount = 0;
-                        int undeadCount = 0;
-                        float averageNecroMana=0;
+                        else
+                        {
+                            this.drainSyrrium = 0;
+                        }                        
 
-                        if(comp.summonedMinions.Count >0)
+                        //Mana drain modifier
+                        if (pawn.Map.GameConditionManager.ConditionIsActive(TorannMagicDefOf.ManaDrain))
+                        {
+                            this.drainManaDrain = 2*amount;
+                            //Arcane weakness modifier
+                            if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ArcaneWeakness))
+                            {
+                                this.drainManaWeakness = .75f * this.modifiedManaGain;
+                            }
+                            else
+                            {
+                                this.drainManaWeakness = 0;
+                            }
+                            amount = (-1 * amount) - this.drainManaWeakness;                            
+                            this.drainManaSurge = 0f;
+                        }
+                        else if (pawn.Map.GameConditionManager.ConditionIsActive(TorannMagicDefOf.ManaSurge))
+                        {
+                            //Arcane weakness modifier
+                            this.drainManaSurge = (2.25f * amount) - amount;
+                            amount = (2.25f * amount);
+                            if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ArcaneWeakness))
+                            {
+                                this.drainManaWeakness = .75f * this.baseManaGain;
+                            }
+                            else
+                            {
+                                this.drainManaWeakness = 0;
+                            }
+                            amount -= this.drainManaWeakness;
+                            this.drainManaDrain = 0;                            
+                        }
+                        else
+                        {
+                            //Arcane weakness modifier
+                            if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ArcaneWeakness))
+                            {
+                                this.drainManaWeakness = .75f * this.baseManaGain;                                
+                            }
+                            else
+                            {
+                                this.drainManaWeakness = 0;
+                            }
+                            amount -= this.drainManaWeakness;
+                            this.drainManaDrain = 0;
+                            this.drainManaSurge = 0;
+                        }
+
+                        //Paracyte modifier
+                        if (this.lastParacyteCheck < Find.TickManager.TicksGame + 3000)
+                        {
+                            List<Thing> paracyteBushes = this.pawn.Map.listerThings.ThingsOfDef(TorannMagicDefOf.TM_Plant_Paracyte);
+                            int paracyteCount = paracyteBushes.Count;
+                            List<Pawn> mapPawns = this.pawn.Map.mapPawns.AllPawnsSpawned;
+                            int mageCount = 0;
+                            for (int i = 0; i < mapPawns.Count; i++)
+                            {
+                                if (mapPawns[i] != null && mapPawns[i].Spawned && !mapPawns[i].Dead && !mapPawns[i].AnimalOrWildMan())
+                                {
+                                    CompAbilityUserMagic mageCheck = mapPawns[i].GetComp<CompAbilityUserMagic>();
+                                    if (mageCheck != null && mageCheck.IsMagicUser && !mapPawns[i].story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                                    {
+                                        mageCount++;
+                                    }
+                                }
+                            }
+
+                            int mapManaDrainerCount = paracyteCount + (2 * mageCount);
+                            if (mapManaDrainerCount > 50)
+                            {
+                                mapManaDrainerCount -= 50;
+                            }
+                            else
+                            {
+                                mapManaDrainerCount = 0;
+                            }
+                            this.paracyteCountReduction = 0.000005f * mapManaDrainerCount;
+                            amount -= this.paracyteCountReduction;
+                        }
+
+                        //Summoned minion modifier
+                        if (comp.summonedMinions.Count > 0)
                         {
                             MagicPowerSkill summonerEff = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonMinion.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonMinion_eff");
                             this.drainMinion = (0.0012f * (comp.summonedMinions.Count * (.2f - (.01f * summonerEff.level))));
@@ -239,6 +298,7 @@ namespace TorannMagic
                             this.drainMinion = 0;
                         }
 
+                        //Earth sprite modifier
                         if(comp.earthSpriteType != 0)
                         {
                             MagicPowerSkill manaDeviant = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EarthSprites.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EarthSprites_ver");
@@ -249,6 +309,12 @@ namespace TorannMagic
                         {
                             this.drainSprites = 0;
                         }
+
+                        //Undead modifier
+                        float necroReduction = 0;
+                        int necroCount = 0;
+                        int undeadCount = 0;
+                        float averageNecroMana = 0;
 
                         if (pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
                         {
@@ -311,85 +377,32 @@ namespace TorannMagic
                             //Log.Message("" + pawn.LabelShort + " is 1 of " + necroCount + " contributing necros and had necro reduction of " + necroReduction);
 
                         }
-
-                        if (pawn.Map.GameConditionManager.ConditionIsActive(TorannMagicDefOf.ManaDrain))
+                        else
                         {
-                            this.curLevelInt = this.curLevelInt - amount - necroReduction - this.paracyteCountReduction;
-                            this.lastGainPct = -amount - necroReduction - this.paracyteCountReduction;
-                            this.drainManaDrain = 2 * amount;
-                            if (this.CurLevel < .01)
-                            {
-                                float pain = pawn.health.hediffSet.PainTotal;
-                                float con = pawn.health.capacities.GetLevel(PawnCapacityDefOf.Consciousness);
-                                float sev = (.015f * (1 + (3 * pain) + (1 - con)));
-                                HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ManaSickness, sev);
-                            }
-                            if (this.CurLevel < 0)
-                            {
-                                this.CurLevel = 0;
-                            }
+                            this.drainUndead = 0;
                         }
-                        else if (pawn.Map.GameConditionManager.ConditionIsActive(TorannMagicDefOf.ManaSurge) && !pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ArcaneSickness))
-                        {
-                            if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ArcaneWeakness))
-                            {
-                                this.curLevelInt += amount - necroReduction - this.paracyteCountReduction;
-                                this.lastGainPct = amount - necroReduction - this.paracyteCountReduction;
-                                this.drainManaSickness = 0;
-                                this.drainManaSurge = 0;
 
-                            }
-                            else
-                            {
-                                this.curLevelInt += (amount * 2.25f) - necroReduction - this.paracyteCountReduction;
-                                this.lastGainPct = (amount * 2.25f) - necroReduction - this.paracyteCountReduction;
-                                this.drainManaSurge = amount * 1.25f;
-                            }
-                        }
-                        else if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ArcaneSickness))
+                        if (this.CurLevel < .01f && amount < 0)
                         {
-                            //no mana gain
-                            this.lastGainPct = necroReduction - this.paracyteCountReduction;
-                            this.curLevelInt -= necroReduction - this.paracyteCountReduction;
+                            float pain = pawn.health.hediffSet.PainTotal;
+                            float con = pawn.health.capacities.GetLevel(PawnCapacityDefOf.Consciousness);
+                            float sev = (.015f * (1 + (3 * pain) + (1 - con)));
+                            HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ManaSickness, sev);
+                        }
+
+                        if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ArcaneSickness))
+                        {
                             this.drainManaSickness = amount;
-                            
-                        }
-                        else if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ArcaneWeakness))
-                        {
-                            //reduced mana gain if weakened
-                            this.lastGainPct = (amount * 0.25f) - necroReduction - this.paracyteCountReduction;
-                            this.curLevelInt += (amount * 0.25f) - necroReduction - this.paracyteCountReduction;
-                            this.drainManaWeakness = amount * .75f;
+                            amount = 0;
+                            //no mana gain
                         }
                         else
                         {
-                            this.drainManaDrain = 0;
-                            this.drainManaWeakness = 0;
-                            this.drainManaSurge = 0;
                             this.drainManaSickness = 0;
-                            this.lastGainPct = amount - necroReduction - this.paracyteCountReduction;
-                            this.curLevelInt += amount - necroReduction - this.paracyteCountReduction;
-                           
                         }
-                        //if ((lastNeed - this.curLevelInt) > .25f && (lastNeed - this.curLevelInt) < .45f)
-                        //{
-                        //    //0.0 to 0.2 max
-                        //    float sev = ((lastNeed - this.curLevelInt) - .25f) * 10;
-                        //    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
-                        //}
-                        //else if ((lastNeed - this.curLevelInt) >= .45f && (lastNeed - this.curLevelInt) < .79f)
-                        //{
-                        //    //0.0 to 0.34 max
-                        //    float sev = 1.4f + ((lastNeed - this.curLevelInt) - .45f) * 25;
-                        //    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
-                        //}
-                        //else if ((lastNeed - this.curLevelInt) >= .79f && (lastNeed - this.curLevelInt) < 5)
-                        //{
-                        //    //0.0 to 0.21 max
-                        //    float sev = 8.5f + ((lastNeed - this.curLevelInt) - .79f) * 40;
-                        //    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
-                        //}                        
-                        comp.Mana.curLevelInt = Mathf.Clamp(comp.Mana.curLevelInt, 0f, this.MaxLevel);
+
+                        this.lastGainPct = amount;               
+                        comp.Mana.curLevelInt = Mathf.Clamp(comp.Mana.curLevelInt += amount, 0f, this.MaxLevel);
                         lastNeed = this.curLevelInt;
                         this.lastGainTick = Find.TickManager.TicksGame;
                     }
@@ -405,7 +418,7 @@ namespace TorannMagic
                 CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
                 if (comp != null)
                 {
-                    if (comp.IsMagicUser)
+                    if (comp.IsMagicUser && comp.Mana != null)
                     {
                         ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                         MagicPowerSkill manaRegen = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");

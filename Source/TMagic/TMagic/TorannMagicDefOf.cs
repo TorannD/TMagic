@@ -44,8 +44,9 @@ namespace TorannMagic
         public static ThingDef Torn_BookOfHemomancy;
         public static ThingDef BookOfEnchanter;
         public static ThingDef Torn_BookOfEnchanter;
+        public static ThingDef BookOfChronomancer;
+        public static ThingDef Torn_BookOfChronomancer;
         public static ThingDef BookOfQuestion;
-
 
         public static HediffDef TM_Uncertainty;        
 
@@ -97,6 +98,7 @@ namespace TorannMagic
         public static ThingDef SpellOf_LightningTrap;
         public static ThingDef SpellOf_Invisibility;
         public static ThingDef SpellOf_BriarPatch;
+        public static ThingDef SpellOf_Recall;
 
         public static ThingDef SkillOf_Sprint;
         public static ThingDef SkillOf_GearRepair;
@@ -534,6 +536,25 @@ namespace TorannMagic
         public static TMAbilityDef TM_ShapeshiftDW;
         public static HediffDef TM_ShapeshiftHD;
 
+        //Chronomancer
+        public static TraitDef Chronomancer;
+
+        public static TMAbilityDef TM_Prediction;
+        public static HediffDef TM_PredictionHD;
+        public static TMAbilityDef TM_AlterFate;
+        public static TMAbilityDef TM_AccelerateTime;
+        public static HediffDef TM_AccelerateTimeHD;
+        public static TMAbilityDef TM_ReverseTime;
+        public static HediffDef TM_ReverseTimeHD;
+        public static HediffDef TM_ReverseTimeBadHD;
+        public static TMAbilityDef TM_ChronostaticField;
+        public static TMAbilityDef TM_ChronostaticField_I;
+        public static TMAbilityDef TM_ChronostaticField_II;
+        public static TMAbilityDef TM_ChronostaticField_III;
+        public static ThingDef FlyingObject_TimeDelay;
+        public static TMAbilityDef TM_TimeMark;
+        public static TMAbilityDef TM_Recall;
+
         //Might 
         public static NeedDef TM_Stamina;
         public static HediffDef TM_MightUserHD;
@@ -545,6 +566,7 @@ namespace TorannMagic
         public static ThingDef BookOfFaceless;
         public static ThingDef BookOfPsionic;
         public static ThingDef BookOfDeathKnight;
+        public static ThingDef BookOfMonk;
         public static TraitDef PhysicalProdigy;
 
         //Might (Gladiator)
@@ -562,6 +584,7 @@ namespace TorannMagic
         public static TMAbilityDef TM_Grapple_III;
         public static HediffDef TM_GrapplingHook;
         public static TMAbilityDef TM_Cleave;
+        public static HediffDef TM_SunderArmorHD;
         public static TMAbilityDef TM_Whirlwind;
         public static HediffDef TM_Whirlwind_Knockdown;
 
@@ -672,6 +695,21 @@ namespace TorannMagic
         public static TMAbilityDef TM_GraveBlade_II;
         public static TMAbilityDef TM_GraveBlade_III;
 
+        //Monk
+        public static TraitDef TM_Monk;
+
+        public static TMAbilityDef TM_Chi;
+        public static JobDef JobDriver_TM_Meditate;
+        public static TMAbilityDef TM_ChiBurst;
+        public static HediffDef TM_ChiHD;
+        public static TMAbilityDef TM_MindOverBody;
+        public static HediffDef TM_MindOverBodyHD;
+        public static TMAbilityDef TM_Meditate;
+        public static TMAbilityDef TM_TigerStrike;
+        public static TMAbilityDef TM_DragonStrike;
+        public static ThingDef FlyingObject_DragonStrike;
+        public static TMAbilityDef TM_ThunderStrike;
+
         //Standalone
         public static TMAbilityDef TM_Heater;
         public static TMAbilityDef TM_DismissHeater;
@@ -778,6 +816,12 @@ namespace TorannMagic
         public static ThingDef Mote_ThickDust;
         public static ThingDef Mote_ArcaneBlast;
         public static ThingDef Mote_Strike;
+        public static ThingDef Mote_Psi_Grayscale;
+        public static ThingDef Mote_Chi_Grayscale;
+        public static ThingDef Mote_DragonStrike;
+        public static ThingDef Mote_TigerStrike;
+        public static ThingDef Mote_TechnoShield;
+        public static ThingDef Mote_AlterFate;
 
         public static EffecterDef GiantExplosion;
         public static EffecterDef TM_GiantExplosion;
@@ -794,6 +838,12 @@ namespace TorannMagic
         public static EffecterDef TM_AttractionEffecter_I;
         public static EffecterDef TM_AttractionEffecter_II;
         public static EffecterDef TM_AttractionEffecter_III;
+        public static EffecterDef TM_ChiBurstED;
+        public static EffecterDef TM_TimeAccelerationEffecter;
+        public static EffecterDef TM_TimeAccelerationAreaEffecter;
+        public static EffecterDef TM_TimeReverseEffecter;
+        public static EffecterDef TM_RecallToED;
+        public static EffecterDef TM_RecallFromED;
 
         //Apparel layers
         public static ApparelLayerDef TM_Cloak;

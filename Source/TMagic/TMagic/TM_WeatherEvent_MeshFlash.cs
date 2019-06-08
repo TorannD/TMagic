@@ -21,6 +21,10 @@ namespace TorannMagic
         private Vector2 shadowVector;
         public int duration;
         private int age = 0;
+        private DamageDef damageType = TMDamageDefOf.DamageDefOf.TM_Shadow;
+        private float averageRadius = 1.75f;
+        private int damageAmount = -1;
+        Thing instigator = null;
 
         private const int FlashFadeInTicks = 3;
         private const int MinFlashDuration = 15;
@@ -83,12 +87,24 @@ namespace TorannMagic
             this.weatherMeshMat = meshMat;
             this.strikeLoc = forcedStrikeLoc;
             this.duration = Rand.Range(15, 60);
+            this.shadowVector = new Vector2(Rand.Range(-5f, 5f), Rand.Range(-5f, 0f));            
+        }
+
+        public TM_WeatherEvent_MeshFlash(Map map, IntVec3 forcedStrikeLoc, Material meshMat, DamageDef dmgType, Thing instigator, int dmgAmt, float averageRad) : base(map)
+        {
+            this.weatherMeshMat = meshMat;
+            this.strikeLoc = forcedStrikeLoc;
+            this.duration = Rand.Range(15, 60);
             this.shadowVector = new Vector2(Rand.Range(-5f, 5f), Rand.Range(-5f, 0f));
+            this.damageType = dmgType;
+            this.damageAmount = dmgAmt;
+            this.averageRadius = averageRad;
+            this.instigator = instigator;
         }
 
         public override void FireEvent()
         {
-            SoundDefOf.Thunder_OffMap.PlayOneShotOnCamera(this.map);
+            //SoundDefOf.Thunder_OffMap.PlayOneShotOnCamera(this.map);
             if (!this.strikeLoc.IsValid)
             {
                 this.strikeLoc = CellFinderLoose.RandomCellWith((IntVec3 sq) => sq.Standable(this.map) && !this.map.roofGrid.Roofed(sq), this.map, 1000);
@@ -96,7 +112,7 @@ namespace TorannMagic
             this.boltMesh = RandomBoltMesh;
             if (!this.strikeLoc.Fogged(this.map))
             {
-                GenExplosion.DoExplosion(this.strikeLoc, this.map, Rand.Range(1.4f, 1.9f), TMDamageDefOf.DamageDefOf.TM_Shadow, null, -1, -1f, null, null, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
+                GenExplosion.DoExplosion(this.strikeLoc, this.map, (Rand.Range(.8f, 1.2f) * this.averageRadius), this.damageType, instigator, this.damageAmount, -1f, null, null, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
                 Vector3 loc = this.strikeLoc.ToVector3Shifted();
                 for (int i = 0; i < 4; i++)
                 {

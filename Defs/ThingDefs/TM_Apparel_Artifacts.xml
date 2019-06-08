@@ -1053,7 +1053,7 @@ Only the most powerful mages can direct the power of this artifact; even then, i
     <label>Orb of Souls (empty)</label>    
     <description>The Orb of Souls is a powerful and dangerous artifact. It requires no external power and can extract the soul of a pawn possessing traits.
 	
-If successful, the Orb of Souls will absorb up to three traits from the target; the target will lose the absorbed traits. The process is almost always lethal.
+If successful, the Orb of Souls will absorb all traits from the target; the target will lose the absorbed traits. The process is almost always lethal.
 
 Once filled, the Orb of Souls can be used to transfers the absorbed traits into another human-like pawn.</description>
     <graphicData> 

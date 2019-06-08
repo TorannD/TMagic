@@ -39,11 +39,38 @@
       <fadeOutTime>0.5</fadeOutTime>
     </mote>
   </ThingDef>
+  
+    <ThingDef ParentName="MoteBase">
+    <defName>Mote_TigerStrike</defName>
+    <graphicData>
+      <texPath>Motes/TigerStrikeMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
 
   <ThingDef ParentName="MoteBase">
     <defName>Mote_BladeSweep</defName>
     <graphicData>
       <texPath>Motes/BladeSweepMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_DragonStrike</defName>
+    <graphicData>
+      <texPath>Motes/dragonstrikeMote</texPath>
+	  <shaderType>MoteGlow</shaderType>
     </graphicData>
     <altitudeLayer>MoteLow</altitudeLayer>
     <mote>
@@ -109,6 +136,19 @@
     <defName>Mote_TechnoShield</defName>
     <graphicData>
       <texPath>UI/technoshield</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.01</fadeInTime>
+      <solidTime>0.35</solidTime>
+      <fadeOutTime>0.2</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_AlterFate</defName>
+    <graphicData>
+      <texPath>Motes/alterfateMote</texPath>
     </graphicData>
     <altitudeLayer>MoteOverhead</altitudeLayer>
     <mote>
@@ -331,6 +371,21 @@
       <texPath>Motes/PsiMote_grayscale</texPath>
     </graphicData>
     <altitudeLayer>MoteLow</altitudeLayer>
+    <mote>
+      <fadeInTime>0.02</fadeInTime>
+      <solidTime>0.12</solidTime>
+      <fadeOutTime>0.10</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_Chi_Grayscale</defName>
+    <graphicData>
+      <texPath>Motes/PsiMote_curved_grayscale</texPath>
+	  <shaderType>MoteGlow</shaderType>
+	  <color>(1,1,0,0.7)</color>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
     <mote>
       <fadeInTime>0.02</fadeInTime>
       <solidTime>0.12</solidTime>

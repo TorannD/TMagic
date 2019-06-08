@@ -110,6 +110,12 @@ namespace TorannMagic
         private float E_EnchanterStone_eff = .10f;
         private float E_Polymorph_eff = .06f;
         private float E_Shapeshift_eff = .05f;
+        private float C_Prediction_eff = .15f;
+        private float C_AlterFate_eff = .1f;
+        private float C_AccelerateTime_eff = .08f;
+        private float C_ReverseTime_eff = .08f;
+        private float C_ChronostaticField_eff = .06f;
+        private float C_Recall_eff = .1f;
 
         private float global_eff = 0.025f;
 
@@ -165,6 +171,7 @@ namespace TorannMagic
         public bool spell_LightningTrap = false;
         public bool spell_Invisibility = false;
         public bool spell_BriarPatch = false;
+        public bool spell_Recall = false;
 
         private bool item_StaffOfDefender = false;
 
@@ -220,6 +227,19 @@ namespace TorannMagic
         public Thing enchanterStone = null;
         public List<Thing> enchanterStones = new List<Thing>();
         public List<Thing> lightningTraps = new List<Thing>();
+        public IncidentDef predictionIncidentDef = null;
+        public int predictionTick = 0;
+        //Recall fields
+        //position, hediffs, needs, mana, manual recall bool, recall duration
+        public IntVec3 recallPosition = default(IntVec3);
+        public Map recallMap = null;
+        public List<string> recallNeedDefnames = null;
+        public List<float> recallNeedValues = null;
+        public List<Hediff> recallHediffList = null;
+        public List<Hediff_Injury> recallInjuriesList = null;
+        public bool recallSet = false;
+        public int recallExpiration = 0;
+        public bool recallSpell = false;
 
         private Effecter powerEffecter = null;
         private int powerModifier = 0;
@@ -1315,6 +1335,72 @@ namespace TorannMagic
             }
             return result;
         }
+        public int LevelUpSkill_Prediction(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Prediction.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_AlterFate(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_AlterFate.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_AccelerateTime(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_AccelerateTime.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_ReverseTime(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_ReverseTime.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_ChronostaticField(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_ChronostaticField.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_Recall(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Recall.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
 
         private void SingleEvent()
         {
@@ -1415,6 +1501,7 @@ namespace TorannMagic
                                 }
                                 ResolveEffecter();
                                 ResolveClassSkills();
+                                ResolveChronomancerTimeMark();
                             }
                             if (this.Mana.CurLevel < 0)
                             {
@@ -1575,7 +1662,8 @@ namespace TorannMagic
                             base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Paladin) || 
                             base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Druid) || 
                             (base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Lich)) || 
-                            base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Priest) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Bard);
+                            base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Priest) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Bard) ||
+                            base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Chronomancer);
                         if (flag4)
                         {
                             result = true;
@@ -1689,6 +1777,10 @@ namespace TorannMagic
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
             {
                 Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.enchanterMarkMat, 0);
+            }
+            else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Chronomancer))
+            {
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.chronomancerMarkMat, 0);
             }
             else 
             {
@@ -1891,6 +1983,8 @@ namespace TorannMagic
                 this.spell_Shapeshift = false;
                 this.spell_SummonPoppi = false;
                 this.RemovePawnAbility(TorannMagicDefOf.TM_SummonPoppi);
+                this.RemovePawnAbility(TorannMagicDefOf.TM_Recall);
+                this.spell_Recall = false;
                 AssignAbilities();
             }
             this.magicPowersInitializedForColonist = true;
@@ -2897,6 +2991,76 @@ namespace TorannMagic
                     this.AddPawnAbility(TorannMagicDefOf.TM_Polymorph);
                 }
             }
+            flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Chronomancer);
+            if (flag2)
+            {
+                //Log.Message("Initializing Chronomancer Abilities");
+                if (abilityUser.IsColonist && !abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
+                {
+                    if (Rand.Chance(.4f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Prediction);
+                    }
+                    else
+                    {
+                        MagicPower mpC = this.MagicData.MagicPowersC.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Prediction);
+                        mpC.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_AlterFate);
+                    }
+                    else
+                    {
+                        MagicPower mpC = this.MagicData.MagicPowersC.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_AlterFate);
+                        mpC.learned = false;
+                    }
+                    if (Rand.Chance(.4f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_AccelerateTime);
+                    }
+                    else
+                    {
+                        MagicPower mpC = this.MagicData.MagicPowersC.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_AccelerateTime);
+                        mpC.learned = false;
+                    }
+                    if (Rand.Chance(.4f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_ReverseTime);
+                    }
+                    else
+                    {
+                        MagicPower mpC = this.MagicData.MagicPowersC.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ReverseTime);
+                        mpC.learned = false;
+                    }
+                    if (Rand.Chance(.3f))
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_ChronostaticField);
+                    }
+                    else
+                    {
+                        MagicPower mpC = this.MagicData.MagicPowersC.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ChronostaticField);
+                        mpC.learned = false;
+                    }
+                }
+                else
+                {
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Prediction);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_AlterFate);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_AccelerateTime);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_ReverseTime);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_ChronostaticField);
+
+                    if (!abilityUser.IsColonist)
+                    {
+                        if ((settingsRef.AIHardMode && Rand.Chance(hardModeMasterChance)) || Rand.Chance(masterChance))
+                        {
+                            this.AddPawnAbility(TorannMagicDefOf.TM_Recall);
+                            this.spell_Recall = true;
+                        }
+                    }
+                }
+            }
         }
 
         public void InitializeSpell()
@@ -3266,6 +3430,16 @@ namespace TorannMagic
                     this.RemovePawnAbility(TorannMagicDefOf.TM_BriarPatch);
                     this.AddPawnAbility(TorannMagicDefOf.TM_BriarPatch);
                 }
+                if (this.spell_Recall == true)
+                {
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_TimeMark);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_TimeMark);
+                    if (this.recallSpell)
+                    {
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_Recall);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Recall);
+                    }
+                }
                 //this.UpdateAbilities();
             }            
         }
@@ -3565,7 +3739,22 @@ namespace TorannMagic
                     this.RemovePawnAbility(TorannMagicDefOf.TM_Polymorph_II);
                     this.RemovePawnAbility(TorannMagicDefOf.TM_Polymorph_III);
                 }
-                foreach(MagicPower currentStandalone in this.MagicData.MagicPowersStandalone)
+                // flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Chronomancer);
+                if (flag2)
+                {
+                    foreach (MagicPower currentC in this.MagicData.MagicPowersC)
+                    {
+                        if (currentC.abilityDef != TorannMagicDefOf.TM_Recall)
+                        {
+                            currentC.learned = false;
+                        }
+                        this.RemovePawnAbility(currentC.abilityDef);
+                    }
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_ChronostaticField_I);
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_ChronostaticField_II);
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_ChronostaticField_III);
+                }
+                foreach (MagicPower currentStandalone in this.MagicData.MagicPowersStandalone)
                 {
                     this.RemovePawnAbility(currentStandalone.abilityDef);
                 }
@@ -3957,6 +4146,31 @@ namespace TorannMagic
                     powerLearned.Add(this.MagicData.MagicPowersE[i].learned);
                 }
             }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer))
+            {
+                skillpoints += this.MagicData.MagicPowerSkill_Prediction.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Prediction_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Prediction.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Prediction_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Prediction.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Prediction_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_AlterFate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AlterFate_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_AlterFate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AlterFate_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_AccelerateTime.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AccelerateTime_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_AccelerateTime.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AccelerateTime_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_AccelerateTime.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AccelerateTime_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_ReverseTime.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ReverseTime_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_ReverseTime.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ReverseTime_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_ReverseTime.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ReverseTime_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_ChronostaticField.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ChronostaticField_pwr").level * 2;
+                skillpoints += this.MagicData.MagicPowerSkill_ChronostaticField.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ChronostaticField_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_ChronostaticField.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ChronostaticField_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Recall.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Recall_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Recall.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Recall_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Recall.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Recall_eff").level;
+                for (int i = 0; i < this.MagicData.MagicPowersC.Count; i++)
+                {
+                    skillpoints += this.MagicData.MagicPowersC[i].level;
+                    powerLearned.Add(this.MagicData.MagicPowersC[i].learned);
+                }
+            }
 
             int tmpLvl = this.MagicUserLevel;
             int tmpExp = this.MagicUserXP;
@@ -4080,9 +4294,14 @@ namespace TorannMagic
                     this.MagicData.MagicPowersE[i].learned = powerLearned[i];
                 }
             }
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MagicData.MagicPowersC[i].learned = powerLearned[i];
+                }
+            }
         }
-
-
 
         private void LoadPowers()
         {
@@ -4143,7 +4362,8 @@ namespace TorannMagic
             {
                 if (traits[i].def == TorannMagicDefOf.InnerFire || traits[i].def == TorannMagicDefOf.HeartOfFrost || traits[i].def == TorannMagicDefOf.StormBorn  || traits[i].def == TorannMagicDefOf.Arcanist || traits[i].def == TorannMagicDefOf.Paladin ||
                     traits[i].def == TorannMagicDefOf.Druid || traits[i].def == TorannMagicDefOf.Priest || traits[i].def == TorannMagicDefOf.Necromancer || traits[i].def == TorannMagicDefOf.Warlock || traits[i].def == TorannMagicDefOf.Succubus ||
-                    traits[i].def == TorannMagicDefOf.TM_Bard || traits[i].def == TorannMagicDefOf.Geomancer || traits[i].def == TorannMagicDefOf.Technomancer || traits[i].def == TorannMagicDefOf.BloodMage || traits[i].def == TorannMagicDefOf.Enchanter)
+                    traits[i].def == TorannMagicDefOf.TM_Bard || traits[i].def == TorannMagicDefOf.Geomancer || traits[i].def == TorannMagicDefOf.Technomancer || traits[i].def == TorannMagicDefOf.BloodMage || traits[i].def == TorannMagicDefOf.Enchanter ||
+                    traits[i].def == TorannMagicDefOf.Chronomancer)
                 {
                     Log.Message("Removing trait " + traits[i].Label);
                     traits.Remove(traits[i]);
@@ -4902,6 +5122,60 @@ namespace TorannMagic
                     result = magicPowerSkill.level;
                 }
             }
+            if (attributeName == "TM_Prediction_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Prediction.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_AlterFate_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_AlterFate.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_AccelerateTime_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_AccelerateTime.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_ReverseTime_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_ReverseTime.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_ChronostaticField_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_ChronostaticField.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_Recall_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Recall.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
 
             return result;
         }
@@ -5303,6 +5577,26 @@ namespace TorannMagic
                 MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Shapeshift.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Shapeshift_eff");
                 adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.E_Shapeshift_eff * (float)magicPowerSkill.level);
             }
+            if (magicDef == TorannMagicDefOf.TM_AlterFate)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_AlterFate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AlterFate_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.C_AlterFate_eff * (float)magicPowerSkill.level);
+            }
+            if (magicDef == TorannMagicDefOf.TM_AccelerateTime)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_AccelerateTime.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AccelerateTime_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.C_AccelerateTime_eff * (float)magicPowerSkill.level);
+            }
+            if (magicDef == TorannMagicDefOf.TM_ReverseTime)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_ReverseTime.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ReverseTime_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.C_ReverseTime_eff * (float)magicPowerSkill.level);
+            }
+            if (magicDef == TorannMagicDefOf.TM_ChronostaticField || magicDef == TorannMagicDefOf.TM_ChronostaticField_I || magicDef == TorannMagicDefOf.TM_ChronostaticField_II || magicDef == TorannMagicDefOf.TM_ChronostaticField_III)
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_ChronostaticField.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ChronostaticField_eff");
+                adjustedManaCost = magicDef.manaCost - magicDef.manaCost * (this.C_ChronostaticField_eff * (float)magicPowerSkill.level);
+            }
             if (this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_SyrriumSenseHD"), false))
             {
                 adjustedManaCost = adjustedManaCost * .9f;
@@ -5658,6 +5952,16 @@ namespace TorannMagic
                             if (castSuccess) goto AutoCastExit;
                         }
                     }
+                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer) && this.spell_Recall && !this.recallSet)
+                    {
+                        MagicPower magicPower = this.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TimeMark);
+                        if (magicPower != null && magicPower.autocast && magicPower.learned)
+                        {
+                            PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_TimeMark);
+                            AutoCast.CastOnSelf.Evaluate(this, TorannMagicDefOf.TM_TimeMark, ability, magicPower, out castSuccess);
+                            if (castSuccess) goto AutoCastExit;
+                        }
+                    }
                     if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
                     {
                         PawnAbility ability = null;
@@ -5813,6 +6117,7 @@ namespace TorannMagic
 
                                         List<string> afflictionList = new List<string>();
                                         afflictionList.Clear();
+                                        afflictionList.Add("Infection");
                                         afflictionList.Add("WoundInfection");
                                         afflictionList.Add("Flu");
                                         if (ver.level >= 1)
@@ -6890,6 +7195,24 @@ namespace TorannMagic
             }
         }
 
+        public void ResolveChronomancerTimeMark()
+        {
+            if(this.recallExpiration <= Find.TickManager.TicksGame)
+            {
+                this.recallSet = false;
+            }
+            if(this.recallSet && !this.recallSpell)
+            {
+                this.AddPawnAbility(TorannMagicDefOf.TM_Recall);
+                this.recallSpell = true;
+            }
+            if(this.recallSpell && (!this.recallSet || this.recallPosition == default(IntVec3)))
+            {
+                this.recallSpell = false;
+                this.RemovePawnAbility(TorannMagicDefOf.TM_Recall);
+            }
+        }
+
         public void ResolveSustainers()
         {
             if(this.stoneskinPawns.Count() > 0)
@@ -7155,7 +7478,15 @@ namespace TorannMagic
                 }
             }
 
-            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
+            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer))
+            {
+                if(this.predictionIncidentDef != null && (this.predictionTick + 2500) < Find.TickManager.TicksGame)
+                {
+                    this.predictionIncidentDef = null;
+                }
+            }
+
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
             {
                 if (this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedBody).learned && this.spell_EnchantedAura == false)
                 {
@@ -7481,7 +7812,16 @@ namespace TorannMagic
             {
                 _maxMP += -.3f;
             }
-            if(this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Shadow_AuraHD, false))
+            if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PredictionHD, false))
+            {
+                _mpRegenRate += -.5f * (1 - (.10f * this.MagicData.MagicPowerSkill_Prediction.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Prediction_eff").level));
+            }
+            if(this.recallSet)
+            {
+                _maxMP += -.4f * (1 - (.08f * this.MagicData.MagicPowerSkill_Recall.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Recall_eff").level));
+                _mpRegenRate += -.3f * (1 - (.08f * this.MagicData.MagicPowerSkill_Recall.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Recall_eff").level));
+            }
+            if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Shadow_AuraHD, false))
             {
                 _maxMP += -.4f * (1 - (.08f * this.MagicData.MagicPowerSkill_Shadow.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Shadow_eff").level));
                 _mpRegenRate += -.3f * (1 - (.08f * this.MagicData.MagicPowerSkill_Shadow.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Shadow_eff").level));
@@ -7632,7 +7972,7 @@ namespace TorannMagic
         {
             for (int i = 0; i < this.summonedLights.Count; i++)
             {
-                if (this.summonedLights[i].Destroyed)
+                if (this.summonedLights[i].DestroyedOrNull())
                 {
                     this.summonedLights.Remove(this.summonedLights[i]);
                     i--;
@@ -7640,7 +7980,7 @@ namespace TorannMagic
             }
             for (int i = 0; i < this.summonedHeaters.Count; i++)
             {
-                if (this.summonedHeaters[i].Destroyed)
+                if (this.summonedHeaters[i].DestroyedOrNull())
                 {
                     this.summonedHeaters.Remove(this.summonedHeaters[i]);
                     i--;
@@ -7648,7 +7988,7 @@ namespace TorannMagic
             }
             for (int i = 0; i < this.summonedCoolers.Count; i++)
             {
-                if (this.summonedCoolers[i].Destroyed)
+                if (this.summonedCoolers[i].DestroyedOrNull())
                 {
                     this.summonedCoolers.Remove(this.summonedCoolers[i]);
                     i--;
@@ -7656,7 +7996,7 @@ namespace TorannMagic
             }
             for (int i = 0; i < this.summonedPowerNodes.Count; i++)
             {
-                if (this.summonedPowerNodes[i].Destroyed)
+                if (this.summonedPowerNodes[i].DestroyedOrNull())
                 {
                     this.summonedPowerNodes.Remove(this.summonedPowerNodes[i]);
                     i--;
@@ -7664,7 +8004,7 @@ namespace TorannMagic
             }
             for (int i = 0; i < this.lightningTraps.Count; i++)
             {
-                if (this.lightningTraps[i].Destroyed)
+                if (this.lightningTraps[i].DestroyedOrNull())
                 {
                     this.lightningTraps.Remove(this.lightningTraps[i]);
                     i--;
@@ -7726,12 +8066,15 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.spell_Invisibility, "spell_Invisibility", false, false);
             Scribe_Values.Look<bool>(ref this.spell_BriarPatch, "spell_BriarPatch", false, false);
             Scribe_Values.Look<bool>(ref this.spell_MechaniteReprogramming, "spell_MechaniteReprogramming", false, false);
+            Scribe_Values.Look<bool>(ref this.spell_Recall, "spell_Recall", false, false);
             Scribe_Values.Look<bool>(ref this.useTechnoBitToggle, "useTechnoBitToggle", true, false);
             Scribe_Values.Look<bool>(ref this.useTechnoBitRepairToggle, "useTechnoBitRepairToggle", true, false);
             Scribe_Values.Look<bool>(ref this.useElementalShotToggle, "useElementalShotToggle", true, false);
             Scribe_Values.Look<int>(ref this.powerModifier, "powerModifier", 0, false);
             Scribe_Values.Look<int>(ref this.technoWeaponDefNum, "technoWeaponDefNum");
             Scribe_Values.Look<bool>(ref this.doOnce, "doOnce", true, false);
+            Scribe_Values.Look<int>(ref this.predictionTick, "predictionTick", 0, false);
+            Scribe_Defs.Look<IncidentDef>(ref this.predictionIncidentDef, "predictionIncidentDef");
             Scribe_References.Look<Pawn>(ref this.soulBondPawn, "soulBondPawn", false);
             Scribe_References.Look<Thing>(ref this.technoWeaponThing, "technoWeaponThing", false);
             Scribe_References.Look<Thing>(ref this.enchanterStone, "enchanterStone", false);
@@ -7750,6 +8093,17 @@ namespace TorannMagic
             Scribe_References.Look<Map>(ref this.earthSpriteMap, "earthSpriteMap", false);
             Scribe_Values.Look<int>(ref this.nextEarthSpriteAction, "nextEarthSpriteAction", 0, false);
             Scribe_Collections.Look<IntVec3>(ref this.fertileLands, "fertileLands", LookMode.Value);
+            //Recall variables 
+            Scribe_Values.Look<bool>(ref this.recallSet, "recallSet", false, false);
+            Scribe_Values.Look<bool>(ref this.recallSpell, "recallSpell", false, false);
+            Scribe_Values.Look<int>(ref this.recallExpiration, "recallExpiration", 0, false);
+            Scribe_Values.Look<IntVec3>(ref this.recallPosition, "recallPosition", default(IntVec3), false);
+            Scribe_References.Look<Map>(ref this.recallMap, "recallMap", false);
+            Scribe_Collections.Look<string>(ref this.recallNeedDefnames, "recallNeedDefnames", LookMode.Value);
+            Scribe_Collections.Look<float>(ref this.recallNeedValues, "recallNeedValues", LookMode.Value);
+            Scribe_Collections.Look<Hediff>(ref this.recallHediffList, "recallHediffList", LookMode.Deep);
+            Scribe_Collections.Look<Hediff_Injury>(ref this.recallInjuriesList, "recallInjuriesList", LookMode.Deep);
+            //
             Scribe_Deep.Look<MagicData>(ref this.magicData, "magicData", new object[]
             {
                 this
@@ -8488,6 +8842,41 @@ namespace TorannMagic
                         }
                     }
                 }
+                bool flag56 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Chronomancer);
+                if (flag56)
+                {
+                    bool flagC = !this.MagicData.MagicPowersC.NullOrEmpty<MagicPower>();
+                    if (flagC)
+                    {
+                        //this.LoadPowers();
+                        foreach (MagicPower current18 in this.MagicData.MagicPowersC)
+                        {
+                            bool flagC2 = current18.abilityDef != null;
+                            if (flagC2)
+                            {
+                                if (current18.learned == true && (current18.abilityDef == TorannMagicDefOf.TM_ChronostaticField || current18.abilityDef == TorannMagicDefOf.TM_ChronostaticField_I || current18.abilityDef == TorannMagicDefOf.TM_ChronostaticField_II || current18.abilityDef == TorannMagicDefOf.TM_ChronostaticField_III))
+                                {
+                                    if (current18.level == 0)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_ChronostaticField);
+                                    }
+                                    else if (current18.level == 1)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_ChronostaticField_I);
+                                    }
+                                    else if (current18.level == 2)
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_ChronostaticField_II);
+                                    }
+                                    else
+                                    {
+                                        base.AddPawnAbility(TorannMagicDefOf.TM_ChronostaticField_III);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
                 if (flag40)
                 {
                     //Log.Message("Loading Inner Fire Abilities");
@@ -8672,7 +9061,7 @@ namespace TorannMagic
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Dominate);
                     }
-                    mpSD = this.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SoulBond);
+                    mpSD = this.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SoulBond);
                     if (mpSD.learned == true)
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_SoulBond);
@@ -8794,6 +9183,30 @@ namespace TorannMagic
                     if (mpE.learned == true)
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_EnchantWeapon);
+                    }
+                }
+                if (flag56)
+                {
+                    //Log.Message("Loading Chronomancer Abilities");
+                    MagicPower mpC = this.MagicData.MagicPowersC.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Prediction);
+                    if (mpC.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Prediction);
+                    }
+                    mpC = this.MagicData.MagicPowersC.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_AlterFate);
+                    if (mpC.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_AlterFate);
+                    }
+                    mpC = this.MagicData.MagicPowersC.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_AccelerateTime);
+                    if (mpC.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_AccelerateTime);
+                    }
+                    mpC = this.MagicData.MagicPowersC.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ReverseTime);
+                    if (mpC.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_ReverseTime);
                     }
                 }
                 this.InitializeSpell();

@@ -74,6 +74,154 @@ namespace TorannMagic
             }
         }
 
+        public List<MightPower> mightPowerM;
+        public List<MightPowerSkill> mightPowerSkill_Chi;
+        public List<MightPowerSkill> mightPowerSkill_MindOverBody;
+        public List<MightPowerSkill> mightPowerSkill_Meditate;
+        public List<MightPowerSkill> mightPowerSkill_TigerStrike;
+        public List<MightPowerSkill> mightPowerSkill_DragonStrike;
+        public List<MightPowerSkill> mightPowerSkill_ThunderStrike;
+
+        public List<MightPower> MightPowersM
+        {
+            get
+            {
+                bool flag = this.mightPowerM == null;
+                if (flag)
+                {
+                    this.mightPowerM = new List<MightPower>
+                    {
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Chi
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_MindOverBody
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Meditate
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_TigerStrike
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_DragonStrike
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_ThunderStrike
+                        }),
+                    };
+                }
+                return this.mightPowerM;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_Chi
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_Chi== null;
+                if (flag)
+                {
+                    this.mightPowerSkill_Chi = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_Chi_pwr", "TM_Chi_pwr_desc"), //
+                        new MightPowerSkill("TM_Chi_eff", "TM_Chi_eff_desc"), //
+                        new MightPowerSkill("TM_Chi_ver", "TM_Chi_ver_desc")  //
+                    };
+                }
+                return this.mightPowerSkill_Chi;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_MindOverBody
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_MindOverBody == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_MindOverBody = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_MindOverBody_pwr", "TM_MindOverBody_pwr_desc"), //
+                        new MightPowerSkill("TM_MindOverBody_ver", "TM_MindOverBody_ver_desc")
+                    };
+                }
+                return this.mightPowerSkill_MindOverBody;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_Meditate
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_Meditate == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_Meditate = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_Meditate_pwr", "TM_Meditate_pwr_desc"),
+                        new MightPowerSkill("TM_Meditate_eff", "TM_Meditate_eff_desc"),
+                        new MightPowerSkill("TM_Meditate_ver", "TM_Meditate_ver_desc")
+                    };
+                }
+                return this.mightPowerSkill_Meditate;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_TigerStrike
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_TigerStrike == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_TigerStrike = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_TigerStrike_pwr", "TM_TigerStrike_pwr_desc"),
+                        new MightPowerSkill("TM_TigerStrike_eff", "TM_TigerStrike_eff_desc"),
+                        new MightPowerSkill("TM_TigerStrike_ver", "TM_TigerStrike_ver_desc")
+                    };
+                }
+                return this.mightPowerSkill_TigerStrike;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_DragonStrike
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_DragonStrike == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_DragonStrike = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_DragonStrike_pwr", "TM_DragonStrike_pwr_desc"), //
+                        new MightPowerSkill("TM_DragonStrike_eff", "TM_DragonStrike_eff_desc"),
+                        new MightPowerSkill("TM_DragonStrike_ver", "TM_DragonStrike_ver_desc") //
+                    };
+                }
+                return this.mightPowerSkill_DragonStrike;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_ThunderStrike
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_ThunderStrike == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_ThunderStrike = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_ThunderStrike_pwr", "TM_ThunderStrike_pwr_desc"), //
+                        new MightPowerSkill("TM_ThunderStrike_eff", "TM_ThunderStrike_eff_desc"),
+                        new MightPowerSkill("TM_ThunderStrike_ver", "TM_ThunderStrike_ver_desc") //
+                    };
+                }
+                return this.mightPowerSkill_ThunderStrike;
+            }
+        }
+
         public List<MightPower> mightPowerDK;
         public List<MightPowerSkill> mightPowerSkill_Shroud;
         public List<MightPowerSkill> mightPowerSkill_WaveOfFear;
@@ -1113,7 +1261,7 @@ namespace TorannMagic
         {
             get
             {
-                return this.MightPowersDK.Concat(this.MightPowersG.Concat(this.MightPowersS.Concat(this.MightPowersB.Concat(this.mightPowerR.Concat(this.MightPowersF.Concat(this.mightPowerP.Concat(this.mightPowerStandalone)))))));
+                return this.MightPowersM.Concat(this.MightPowersDK.Concat(this.MightPowersG.Concat(this.MightPowersS.Concat(this.MightPowersB.Concat(this.mightPowerR.Concat(this.MightPowersF.Concat(this.mightPowerP.Concat(this.mightPowerStandalone))))))));
             }
         }
 
@@ -1130,6 +1278,7 @@ namespace TorannMagic
         {
             this.mightUserLevel = 0;
             this.mightUserXP = 0;
+            this.mightPowerM.Clear();
             this.mightPowerB.Clear();
             this.mightPowerDK.Clear();
             this.mightPowerF.Clear();
@@ -1197,6 +1346,13 @@ namespace TorannMagic
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_Spite, "mightPowerSkill_Spite", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_LifeSteal, "mightPowerSkill_LifeSteal", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_GraveBlade, "mightPowerSkill_GraveBlade", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPower>(ref this.mightPowerM, "mightPowerM", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_Chi, "mightPowerSkill_Chi", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_MindOverBody, "mightPowerSkill_MindOverBody", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_Meditate, "mightPowerSkill_Meditate", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_TigerStrike, "mightPowerSkill_TigerStrike", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_DragonStrike, "mightPowerSkill_DragonStrike", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_ThunderStrike, "mightPowerSkill_ThunderStrike", (LookMode)2, new object[0]);
         }
 
     }
