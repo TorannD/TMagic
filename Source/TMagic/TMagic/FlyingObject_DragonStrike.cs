@@ -276,7 +276,7 @@ namespace TorannMagic
                     hitThing = hitPawn;
                 }
             }
-            bool hasValue = this.impactDamage.HasValue && hitThing != null;
+            bool hasValue = this.impactDamage.HasValue && hitThing != null && hitThing is Pawn;
             if (hasValue)
             {
                 this.impactDamage.Value.SetAmount(this.impactDamage.Value.Amount * this.damageMultiplier);

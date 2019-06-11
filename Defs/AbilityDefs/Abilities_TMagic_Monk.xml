@@ -254,6 +254,7 @@ Passive ability (10 stamina): performs a round-house kick that strikes multiple 
         <soundCast>TM_AirWoosh</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
         <isPrimary>false</isPrimary>
+		<AbilityTargetCategory>TargetLocation</AbilityTargetCategory>
 		<targetParams>
 		  <canTargetPawns>true</canTargetPawns>
 		  <canTargetBuildings>false</canTargetBuildings>

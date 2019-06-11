@@ -166,7 +166,7 @@ Reverse Time can be dispelled by countering the effects with Accelerate Time.</d
             <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_ReverseTime</abilityDef>
             <warmupTime>3</warmupTime>
-            <SecondsToRecharge>600</SecondsToRecharge>
+            <SecondsToRecharge>60</SecondsToRecharge>
             <range>30</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Vibration</soundCast>

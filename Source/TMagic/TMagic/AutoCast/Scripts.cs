@@ -20,6 +20,7 @@ namespace TorannMagic.AutoCast
             Pawn caster = casterComp.Pawn;
             LocalTargetInfo jobTarget = caster.CurJob.targetA;
             Thing carriedThing = null;
+            
             if (caster.CurJob.targetA.Thing != null) //&& caster.CurJob.def.defName != "Sow")
             {
                 if (caster.CurJob.targetA.Thing.Map != caster.Map) //carrying TargetA to TargetB
@@ -58,7 +59,7 @@ namespace TorannMagic.AutoCast
                     if (distanceToTarget <= abilitydef.MainVerb.range && jobTarget.Cell != default(IntVec3))
                     {
                         //Log.Message("doing blink to thing");
-                        DoPhase(caster, jobTarget.Cell, ability, carriedThing);
+                        DoPhase(caster, casterComp, abilitydef, jobTarget.Cell, ability, carriedThing, power);
                         success = true;
                     }
                     else
@@ -68,7 +69,7 @@ namespace TorannMagic.AutoCast
                         //MoteMaker.ThrowHeatGlow(blinkToCell, caster.Map, 1f);
                         if (phaseToCell.IsValid && phaseToCell.InBounds(caster.Map) && phaseToCell.Walkable(caster.Map) && !phaseToCell.Fogged(caster.Map) && ((phaseToCell - caster.Position).LengthHorizontal < distanceToTarget))
                         {
-                            DoPhase(caster, phaseToCell, ability, carriedThing);
+                            DoPhase(caster, casterComp, abilitydef, phaseToCell, ability, carriedThing, power);
                             success = true;
                         }
                     }
@@ -76,7 +77,7 @@ namespace TorannMagic.AutoCast
             }
         }
 
-        private static void DoPhase(Pawn caster, IntVec3 targetCell, PawnAbility ability, Thing carriedThing)
+        private static void DoPhase(Pawn caster, CompAbilityUserMight casterComp, TMAbilityDef abilitydef, IntVec3 targetCell, PawnAbility ability, Thing carriedThing, MightPower power)
         {
             JobDef retainJobDef = caster.CurJobDef;
             LocalTargetInfo retainTargetA = caster.CurJob.targetA;
@@ -117,7 +118,8 @@ namespace TorannMagic.AutoCast
                     //GenSpawn.Spawn(cT, targetCell, map);
                 }
 
-                caster.GetComp<CompAbilityUserMight>().MightUserXP -= 50;
+                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                casterComp.MightUserXP -= (int)((casterComp.ActualStaminaCost(abilitydef) * 180 * .8f * casterComp.xpGain * settingsRef.xpMultiplier));
                 ability.PostAbilityAttempt();
                 if (selectCaster)
                 {
@@ -768,7 +770,7 @@ namespace TorannMagic.AutoCast
                     if (distanceToTarget <= abilitydef.MainVerb.range && jobTarget.Cell != default(IntVec3))
                     {
                         //Log.Message("doing blink to thing");
-                        DoBlink(caster, jobTarget.Cell, ability, carriedThing);
+                        DoBlink(caster, casterComp, abilitydef, jobTarget.Cell, ability, carriedThing);
                         success = true;
                     }
                     else
@@ -778,7 +780,7 @@ namespace TorannMagic.AutoCast
                         //MoteMaker.ThrowHeatGlow(blinkToCell, caster.Map, 1f);
                         if (blinkToCell.IsValid && blinkToCell.InBounds(caster.Map) && blinkToCell.Walkable(caster.Map) && !blinkToCell.Fogged(caster.Map) && ((blinkToCell - caster.Position).LengthHorizontal < distanceToTarget))
                         {
-                            DoBlink(caster, blinkToCell, ability, carriedThing);
+                            DoBlink(caster, casterComp, abilitydef, blinkToCell, ability, carriedThing);
                             success = true;
                         }
                     }
@@ -786,7 +788,7 @@ namespace TorannMagic.AutoCast
             }
         }
 
-        private static void DoBlink(Pawn caster, IntVec3 targetCell, PawnAbility ability, Thing carriedThing)
+        private static void DoBlink(Pawn caster, CompAbilityUserMagic casterComp, TMAbilityDef abilitydef, IntVec3 targetCell, PawnAbility ability, Thing carriedThing)
         {
             JobDef retainJobDef = caster.CurJobDef;
             int retainCount = 1;
@@ -828,7 +830,8 @@ namespace TorannMagic.AutoCast
                 }
                 if (caster.kindDef != PawnKindDef.Named("TM_Dire_Wolf"))
                 {
-                    caster.GetComp<CompAbilityUserMagic>().MagicUserXP -= 30;
+                    ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                    casterComp.MagicUserXP -= (int)((casterComp.ActualManaCost(abilitydef) * 300 * .8f * casterComp.xpGain * settingsRef.xpMultiplier));
                     ability.PostAbilityAttempt();
                 }
                 if(selectCaster)

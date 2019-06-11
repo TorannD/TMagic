@@ -37,7 +37,7 @@ namespace TorannMagic
 
         public virtual void Effect()
         {
-            LocalTargetInfo t = this.TargetsAoE[0];
+            LocalTargetInfo t = this.currentTarget;
             CompAbilityUserMight comp = this.CasterPawn.GetComp<CompAbilityUserMight>();
             MightPowerSkill pwr = comp.MightData.MightPowerSkill_DragonStrike.FirstOrDefault((MightPowerSkill x) => x.label == "TM_DragonStrike_pwr");
             int pwrVal = pwr.level;
@@ -58,11 +58,11 @@ namespace TorannMagic
                     ModCheck.GiddyUp.ForceDismount(base.CasterPawn);
                 }
 
-                //LongEventHandler.QueueLongEvent(delegate
-                //{
+                LongEventHandler.QueueLongEvent(delegate
+                {
                     FlyingObject_DragonStrike flyingObject = (FlyingObject_DragonStrike)GenSpawn.Spawn(ThingDef.Named("FlyingObject_DragonStrike"), this.CasterPawn.Position, this.CasterPawn.Map);
                     flyingObject.Launch(this.CasterPawn, t, this.CasterPawn, dinfo2);
-                //}, "LaunchingFlyer", false, null);                
+                }, "LaunchingFlyer", false, null);
             }
         }
 

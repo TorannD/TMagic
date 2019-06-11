@@ -165,7 +165,7 @@ namespace TorannMagic
 
         private void AgePawn(Pawn pawn, int duration, bool isBad)
         {
-            if (!pawn.DestroyedOrNull() && !pawn.Dead && pawn.health != null && pawn.health.hediffSet != null)
+            if (!pawn.DestroyedOrNull() && !pawn.Dead && pawn.health != null && pawn.health.hediffSet != null && pawn.Map != null)
             {
                 if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_AccelerateTimeHD))
                 {
@@ -180,15 +180,21 @@ namespace TorannMagic
                         {
                             HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ReverseTimeBadHD, .5f + pwrVal);
                             HediffComp_ReverseTime hediffComp = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ReverseTimeBadHD, false).TryGetComp<HediffComp_ReverseTime>();
-                            hediffComp.durationTicks = (duration);
-                            hediffComp.isBad = isBad;
+                            if (hediffComp != null)
+                            {
+                                hediffComp.durationTicks = (duration);
+                                hediffComp.isBad = isBad;
+                            }
                         }
                         else
                         {
                             HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ReverseTimeHD, .5f + pwrVal);
                             HediffComp_ReverseTime hediffComp = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ReverseTimeHD, false).TryGetComp<HediffComp_ReverseTime>();
-                            hediffComp.durationTicks = (duration);
-                            hediffComp.isBad = isBad;
+                            if (hediffComp != null)
+                            {
+                                hediffComp.durationTicks = (duration);
+                                hediffComp.isBad = isBad;
+                            }
                         }                        
                         
                         TimeEffects(pawn, 3);

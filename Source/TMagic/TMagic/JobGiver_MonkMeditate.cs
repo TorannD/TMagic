@@ -97,8 +97,12 @@ namespace TorannMagic
                 {
                     return null;
                 }
+                if(curJoy.CurLevel >= .7f)
+                {
+                    return null;
+                }
                 CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
-                if (comp != null && curJoy.CurLevel < .8f)
+                if (comp != null)
                 {
                     MightPower mightPower = comp.MightData.MightPowersM.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Meditate);
                      

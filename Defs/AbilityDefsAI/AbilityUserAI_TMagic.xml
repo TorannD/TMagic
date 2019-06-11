@@ -2762,7 +2762,7 @@ Document made by ChJees
 					<invert>true</invert>
 					<subNodes>
 						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
-							<maxHealth>1</maxHealth>
+							<maxHealth>.8</maxHealth>
 							<subNodes>
 								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
 									<tags>

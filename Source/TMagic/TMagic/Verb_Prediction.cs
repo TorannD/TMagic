@@ -26,6 +26,10 @@ namespace TorannMagic
             {
                 pwrVal = 4;
             }
+            else if(!this.CasterPawn.IsColonist && this.CasterPawn.Faction != null && this.CasterPawn.Faction.HostileTo(Faction.OfPlayerSilentFail))
+            {
+                pwrVal = 5;
+            }
             bool flag = pawn != null && !pawn.Dead;
             if (flag)
             {
