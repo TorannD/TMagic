@@ -106,6 +106,10 @@ namespace TorannMagic
                     {
                         for (int i = 0; i < Mathf.Clamp(pawnList.Count, 0, 2+verVal); i++)
                         {
+                            if(pawnList[i].Faction != null && !pawnList[i].Faction.HostileTo(this.pawn.Faction))
+                            {
+                                pawnList[i].Faction.TryAffectGoodwillWith(this.pawn.Faction, -25);
+                            }
                             AgePawn(pawnList[i], Mathf.RoundToInt((2500) * (1 + (.1f * verVal))), true);
                         }
                     }

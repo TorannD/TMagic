@@ -3443,6 +3443,7 @@ namespace TorannMagic
                     if (comp.enchantingContainer == null)
                     {
                         Log.Warning($"Enchanting container is null for {pawn}, initializing.");
+                        comp.enchantingContainer = new ThingOwner<Thing>();
                         //comp.enchantingContainer = new ThingOwner<Thing>(comp);
                     }
                     bool emptyGround = true;
