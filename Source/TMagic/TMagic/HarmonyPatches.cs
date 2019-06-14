@@ -226,37 +226,37 @@ namespace TorannMagic
         //    }
         //}
 
-        [HarmonyPatch(typeof(JobGiver_GetJoy), "TryGiveJob", null)]
-        public class Monk_GetJoyByMeditate_Joy_Patch
-        {
-            public static void Postfix(JobGiver_GetJoy __instance, Pawn pawn, ref Job __result)
-            {
-                if (__result != null && pawn != null && pawn.health != null && pawn.health.hediffSet != null && pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ChiHD, false))
-                {
-                    Hediff chi = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ChiHD);
-                    if(chi != null && chi.Severity < 70)
-                    {
-                        __result = new Job(TorannMagicDefOf.JobDriver_TM_Meditate, __result.targetA.Cell);
-                    }
-                }
-            }
-        }
+        //[HarmonyPatch(typeof(JobGiver_GetJoy), "TryGiveJob", null)]
+        //public class Monk_GetJoyByMeditate_Joy_Patch
+        //{
+        //    public static void Postfix(JobGiver_GetJoy __instance, Pawn pawn, ref Job __result)
+        //    {
+        //        if (__result != null && pawn != null && pawn.health != null && pawn.health.hediffSet != null && pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ChiHD, false))
+        //        {
+        //            Hediff chi = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ChiHD);
+        //            if(chi != null && chi.Severity < 70)
+        //            {
+        //                __result = new Job(TorannMagicDefOf.JobDriver_TM_Meditate, __result.targetA.Cell);
+        //            }
+        //        }
+        //    }
+        //}
 
-        [HarmonyPatch(typeof(JobGiver_Wander), "TryGiveJob", null)]
-        public class Monk_GetJoyByMeditate_Wander_Patch
-        {
-            public static void Postfix(JobGiver_Wander __instance, Pawn pawn, ref Job __result)
-            {
-                if (__result != null && pawn != null && pawn.health != null && pawn.health.hediffSet != null && pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ChiHD, false))
-                {
-                    Hediff chi = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ChiHD);
-                    if (chi != null && chi.Severity < 90)
-                    {
-                        __result = new Job(TorannMagicDefOf.JobDriver_TM_Meditate, __result.targetA.Cell);
-                    }
-                }
-            }
-        }
+        //[HarmonyPatch(typeof(JobGiver_Wander), "TryGiveJob", null)]
+        //public class Monk_GetJoyByMeditate_Wander_Patch
+        //{
+        //    public static void Postfix(JobGiver_Wander __instance, Pawn pawn, ref Job __result)
+        //    {
+        //        if (__result != null && pawn != null && pawn.health != null && pawn.health.hediffSet != null && pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ChiHD, false))
+        //        {
+        //            Hediff chi = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ChiHD);
+        //            if (chi != null && chi.Severity < 90)
+        //            {
+        //                __result = new Job(TorannMagicDefOf.JobDriver_TM_Meditate, __result.targetA.Cell);
+        //            }
+        //        }
+        //    }
+        //}
 
         [HarmonyPatch(typeof(Pawn), "VerifyReservations", null)]
         public class VerifyReservations_Prefix_Patch

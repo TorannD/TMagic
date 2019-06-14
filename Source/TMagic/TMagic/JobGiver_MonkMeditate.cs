@@ -88,7 +88,7 @@ namespace TorannMagic
         {
             if (pawn != null && pawn.Map != null && pawn.health != null && pawn.health.hediffSet != null && pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ChiHD) && !pawn.Drafted)
             {
-                if (pawn.InBed() || HealthAIUtility.ShouldSeekMedicalRest(pawn))
+                if (pawn.InBed() || HealthAIUtility.ShouldSeekMedicalRest(pawn) || !(pawn.GetPosture() == PawnPosture.Standing))
                 {
                     return null;
                 }
@@ -97,7 +97,7 @@ namespace TorannMagic
                 {
                     return null;
                 }
-                if(curJoy.CurLevel >= .7f)
+                if(curJoy.CurLevel >= .8f)
                 {
                     return null;
                 }

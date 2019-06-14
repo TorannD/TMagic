@@ -6,6 +6,7 @@ using AbilityUser;
 using System.Linq;
 using UnityEngine;
 using System;
+using Harmony;
 
 
 namespace TorannMagic
@@ -65,7 +66,7 @@ namespace TorannMagic
                     {
                         Vector3 rndPos = this.pawn.DrawPos;
                         rndPos.x += (Rand.Range(-.5f, .5f));
-                        rndPos.z += Rand.Range(-.5f, .5f);
+                        rndPos.z += Rand.Range(-.4f, .6f);
                         float direction = (this.pawn.DrawPos - rndPos).ToAngleFlat();
                         Vector3 startPos = rndPos;
                         TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Chi_Grayscale, startPos, this.pawn.Map, Rand.Range(.1f, .22f), 0.2f, .3f, .2f, 30, .2f * (rndPos - this.pawn.DrawPos).MagnitudeHorizontal(), direction, direction);
@@ -104,12 +105,27 @@ namespace TorannMagic
                         {
                             Hediff hediff = afflictionList.RandomElement();
                             hediff.Severity -= .001f * chiMultiplier * (1 + (.1f * pwrVal));
+                            if(hediff.Severity <= 0)
+                            {
+                                this.pawn.health.RemoveHediff(hediff);
+                            }
+                            HediffComp_Disappears hediffTicks = hediff.TryGetComp<HediffComp_Disappears>();
+                            if(hediffTicks != null)
+                            {
+                                int ticksToDisappear = Traverse.Create(root: hediffTicks).Field(name: "ticksToDisappear").GetValue<int>();
+                                ticksToDisappear -= Mathf.RoundToInt(10000 * (chiMultiplier * (1 + (.1f * pwrVal))));
+                                Traverse.Create(root: hediffTicks).Field(name: "ticksToDisappear").SetValue(ticksToDisappear);
+                            }
                             chiHD.Severity -= 1f;
                         }
                         else if (addictionList != null && addictionList.Count > 0)
                         {
                             Hediff hediff = addictionList.RandomElement();
                             hediff.Severity -= .0015f * chiMultiplier * (1 + (.1f * pwrVal));
+                            if (hediff.Severity <= 0)
+                            {
+                                this.pawn.health.RemoveHediff(hediff);
+                            }
                             chiHD.Severity -= 1f;
                         }
                         else if(BreakRiskAlertUtility.PawnsAtRiskMinor.Contains(this.pawn) || BreakRiskAlertUtility.PawnsAtRiskMajor.Contains(this.pawn) || BreakRiskAlertUtility.PawnsAtRiskExtreme.Contains(this.pawn))
