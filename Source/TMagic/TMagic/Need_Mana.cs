@@ -372,8 +372,9 @@ namespace TorannMagic
                                 }
                             }
                             MagicPowerSkill eff = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RaiseUndead.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RaiseUndead_eff");
-                            necroReduction = ((0.0012f * (.15f - (.15f * (.1f * eff.level))) / necroCount) * undeadCount);
+                            necroReduction = (0.0012f * ((.15f - (.15f * (.1f * eff.level))) / necroCount) * undeadCount);
                             this.drainUndead = necroReduction;
+                            amount -= necroReduction;
                             //Log.Message("" + pawn.LabelShort + " is 1 of " + necroCount + " contributing necros and had necro reduction of " + necroReduction);
 
                         }

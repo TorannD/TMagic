@@ -50,7 +50,6 @@ namespace TorannMagic
             Map map = base.Map;
             base.Impact(hitThing);
             ThingDef def = this.def;
-
             if (!initialized && this.age < this.duration && hitThing != null)
             {
                 caster = this.launcher as Pawn;
@@ -199,11 +198,14 @@ namespace TorannMagic
             }
             else
             {
-                this.age = this.duration;
-                Destroy(DestroyMode.Vanish);
+                if (!this.initialized)
+                {
+                    this.age = this.duration;
+                    Destroy(DestroyMode.Vanish);
+                }
             }
 
-            if(hitPawn != null && hitPawn.Downed || hitPawn.Dead)
+            if(hitPawn != null && (hitPawn.Downed || hitPawn.Dead))
             {
                 this.age = this.duration;
             }
@@ -217,9 +219,9 @@ namespace TorannMagic
 
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {
-            bool flag = this.age < duration;
-
-            if (!flag)
+            bool flag = this.age >= duration;
+            
+            if (flag)
             {
                 try
                 {

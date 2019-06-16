@@ -348,11 +348,11 @@
 		<capMods>
 			<li>
 			  <capacity>Moving</capacity>
-			  <offset>0.6</offset>
+			  <offset>0.7</offset>
 			</li>
 			<li>
 			  <capacity>Manipulation</capacity>
-			  <offset>0.6</offset>
+			  <offset>0.7</offset>
 			</li>
 			<li>
 			  <capacity>Consciousness</capacity>
@@ -397,11 +397,11 @@
 		<capMods>
 			<li>
 			  <capacity>Moving</capacity>
-			  <offset>0.75</offset>
+			  <offset>0.85</offset>
 			</li>
 			<li>
 			  <capacity>Manipulation</capacity>
-			  <offset>0.75</offset>
+			  <offset>0.85</offset>
 			</li>
 			<li>
 			  <capacity>Consciousness</capacity>
@@ -446,11 +446,11 @@
 		<capMods>
 			<li>
 			  <capacity>Moving</capacity>
-			  <offset>0.85</offset>
+			  <offset>1</offset>
 			</li>
 			<li>
 			  <capacity>Manipulation</capacity>
-			  <offset>0.85</offset>
+			  <offset>1</offset>
 			</li>
 			<li>
 			  <capacity>Consciousness</capacity>
@@ -495,11 +495,11 @@
 		<capMods>
 			<li>
 			  <capacity>Moving</capacity>
-			  <offset>0.95</offset>
+			  <offset>1.15</offset>
 			</li>
 			<li>
 			  <capacity>Manipulation</capacity>
-			  <offset>0.95</offset>
+			  <offset>1.15</offset>
 			</li>
 			<li>
 			  <capacity>Consciousness</capacity>
