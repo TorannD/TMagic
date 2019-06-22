@@ -3502,7 +3502,7 @@ namespace TorannMagic
             }
             if (this.bondedPet != null)
             {
-                _maxSP -= (.3f - (this.R_AnimalFriend_eff * this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_AnimalFriend.FirstOrDefault((MightPowerSkill x) => x.label == "TM_AnimalFriend_eff").level));
+                _maxSP -= (.3f * (1f - (this.R_AnimalFriend_eff * this.Pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_AnimalFriend.FirstOrDefault((MightPowerSkill x) => x.label == "TM_AnimalFriend_eff").level)));
                 if (this.bondedPet.Dead || this.bondedPet.Destroyed)
                 {
                     this.Pawn.needs.mood.thoughts.memories.TryGainMemory(TorannMagicDefOf.RangerPetDied, null);
