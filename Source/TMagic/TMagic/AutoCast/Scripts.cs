@@ -72,21 +72,6 @@ namespace TorannMagic.AutoCast
                         try
                         {
                             canReach = caster.Map.reachability.CanReach(phaseToCell, jobTarget.Cell, PathEndMode.ClosestTouch, TraverseParms.For(TraverseMode.PassDoors));
-                            //if (canReach)
-                            //{
-                            //    float currentCost = caster.pather.curPath.TotalCost;
-                            //    Log.Message("current path cost" + currentCost);
-                            //    PawnPath pp = caster.Map.pathFinder.FindPath(phaseToCell, jobTarget.Cell, TraverseParms.For(TraverseMode.PassDoors, Danger.Deadly), PathEndMode.ClosestTouch);
-
-                            //    float futureCost = pp.TotalCost;
-                            //    pp.ReleaseToPool();
-                            //    Log.Message("future path cost" + futureCost);
-                            //    isCloser = currentCost > futureCost;
-                                
-                            //}
-
-                            
-
                             //Log.Message("future path cost" + );
                         }
                         catch
@@ -94,11 +79,24 @@ namespace TorannMagic.AutoCast
                             //Log.Warning("failed path check");
                         }
                         //Log.Message("can reach after phase: " + canReach);
-                        if (canReach && phaseToCell.IsValid && phaseToCell.InBounds(caster.Map) && phaseToCell.Walkable(caster.Map) && !phaseToCell.Fogged(caster.Map) && ((phaseToCell - caster.Position).LengthHorizontal < distanceToTarget))
+                        if (canReach && phaseToCell.IsValid && phaseToCell.InBounds(caster.Map) && phaseToCell.Walkable(caster.Map) && !phaseToCell.Fogged(caster.Map))// && ((phaseToCell - caster.Position).LengthHorizontal < distanceToTarget))
                         {
-                            //Log.Message("" + caster.LabelShort + " is phasing");
-                            DoPhase(caster, casterComp, abilitydef, phaseToCell, ability, carriedThing, power);
-                            success = true;
+
+                            PawnPath ppc = caster.Map.pathFinder.FindPath(caster.Position, jobTarget.Cell, TraverseParms.For(TraverseMode.PassDoors, Danger.Deadly), PathEndMode.ClosestTouch);
+                            float currentCost = ppc.TotalCost;
+                            float futureCost = currentCost;
+                            ppc.ReleaseToPool();
+
+                            PawnPath ppf = caster.Map.pathFinder.FindPath(phaseToCell, jobTarget.Cell, TraverseParms.For(TraverseMode.PassDoors, Danger.Deadly), PathEndMode.ClosestTouch);
+                            futureCost = ppf.TotalCost;
+                            ppf.ReleaseToPool();
+                            isCloser = currentCost > futureCost;
+
+                            if (isCloser)
+                            {
+                                DoPhase(caster, casterComp, abilitydef, phaseToCell, ability, carriedThing, power);
+                                success = true;
+                            }
                         }
                     }
                 }
@@ -817,10 +815,23 @@ namespace TorannMagic.AutoCast
                             //Log.Warning("failed path check");
                         }
 
-                        if (canReach && blinkToCell.IsValid && blinkToCell.InBounds(caster.Map) && blinkToCell.Walkable(caster.Map) && !blinkToCell.Fogged(caster.Map) && ((blinkToCell - caster.Position).LengthHorizontal < distanceToTarget))
+                        if (canReach && blinkToCell.IsValid && blinkToCell.InBounds(caster.Map) && blinkToCell.Walkable(caster.Map) && !blinkToCell.Fogged(caster.Map))// && ((blinkToCell - caster.Position).LengthHorizontal < distanceToTarget))
                         {
-                            DoBlink(caster, casterComp, abilitydef, blinkToCell, ability, carriedThing);
-                            success = true;
+                            PawnPath ppc = caster.Map.pathFinder.FindPath(caster.Position, jobTarget.Cell, TraverseParms.For(TraverseMode.PassDoors, Danger.Deadly), PathEndMode.ClosestTouch);
+                            float currentCost = ppc.TotalCost;
+                            float futureCost = currentCost;
+                            ppc.ReleaseToPool();
+
+                            PawnPath ppf = caster.Map.pathFinder.FindPath(blinkToCell, jobTarget.Cell, TraverseParms.For(TraverseMode.PassDoors, Danger.Deadly), PathEndMode.ClosestTouch);
+                            futureCost = ppf.TotalCost;
+                            ppf.ReleaseToPool();
+                            isCloser = currentCost > futureCost;
+
+                            if (isCloser)
+                            {
+                                DoBlink(caster, casterComp, abilitydef, blinkToCell, ability, carriedThing);
+                                success = true;
+                            }
                         }
                     }
                 }
