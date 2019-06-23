@@ -1066,6 +1066,17 @@ Once filled, the Orb of Souls can be used to transfers the absorbed traits into 
 		<MaxHitPoints>100</MaxHitPoints>
 		<MarketValue>1500</MarketValue>
 	</statBases>
+	<recipeMaker>
+      <workAmount>20000</workAmount>
+	  <skillRequirements>
+			<Intellectual>8</Intellectual>
+	  </skillRequirements>
+    </recipeMaker>
+	<costList>
+	  <RawMagicyte>250</RawMagicyte>
+	  <Silver>20</Silver>
+	  <Jade>50</Jade>
+    </costList>
 	<thingCategories>
 	  <li>Apparel</li>
 	</thingCategories>

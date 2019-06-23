@@ -128,6 +128,10 @@ namespace TorannMagic
             {
                 if (pawn != null && pawn.Position.IsValid && pawn.Spawned && pawn.Map != null && !pawn.Downed && !pawn.Dead)
                 {
+                    if (ModCheck.Validate.GiddyUp.Core_IsInitialized())
+                    {
+                        ModCheck.GiddyUp.ForceDismount(pawn);
+                    }
                     FlyingObject_TimeDelay flyingObject = (FlyingObject_TimeDelay)GenSpawn.Spawn(ThingDef.Named("FlyingObject_TimeDelay"), pawn.Position, pawn.Map);
                     flyingObject.speed = .01f;
                     flyingObject.duration = duration;

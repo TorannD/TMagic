@@ -97,6 +97,11 @@ namespace TorannMagic
                                     weaponCount = 1;
                                 }
                                 this.inventoryCount = hitPawn.inventory.innerContainer.Count + hitPawn.apparel.WornApparelCount + weaponCount;
+                                if (ModCheck.Validate.GiddyUp.Core_IsInitialized())
+                                {
+                                    ModCheck.GiddyUp.ForceDismount(caster);
+                                    ModCheck.GiddyUp.ForceDismount(hitPawn);
+                                }
                                 hitPawn.SetFaction(caster.Faction, null);
                                 HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_DisguiseHD_II, 20f + 5f * pwrVal);
                                 switch (verVal)
@@ -140,7 +145,7 @@ namespace TorannMagic
                                     //
                                     ModOptions.Constants.SetPawnInFlight(true);
                                     //
-                                }
+                                }                                
                                 caster.DeSpawn();
                             }
                             else

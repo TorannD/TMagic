@@ -93,6 +93,10 @@ namespace TorannMagic
             if (!launchedFlag)
             {
                 ModOptions.Constants.SetPawnInFlight(true);
+                if (ModCheck.Validate.GiddyUp.Core_IsInitialized())
+                {
+                    ModCheck.GiddyUp.ForceDismount(pawn);
+                }
                 skyfaller = SkyfallerMaker.SpawnSkyfaller(ThingDef.Named("TM_ScornLeaving"), pawn.Position, this.map);
                 if(base.Position.x < pawn.Position.x)
                 {

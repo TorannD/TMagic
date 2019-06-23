@@ -137,6 +137,10 @@ namespace TorannMagic
             {
                 if (pawn != null && pawn.Position.IsValid && pawn.Spawned && pawn.Map != null && !pawn.Downed && !pawn.Dead)
                 {
+                    if (ModCheck.Validate.GiddyUp.Core_IsInitialized())
+                    {
+                        ModCheck.GiddyUp.ForceDismount(pawn);
+                    }
                     FlyingObject_Spinning flyingObject = (FlyingObject_Spinning)GenSpawn.Spawn(ThingDef.Named("FlyingObject_Spinning"), pawn.Position, pawn.Map);
                     flyingObject.speed = 25 + force;
                     flyingObject.Launch(pawn, targetCell, pawn);

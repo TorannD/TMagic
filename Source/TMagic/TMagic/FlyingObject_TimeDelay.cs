@@ -142,7 +142,7 @@ namespace TorannMagic
                 this.drafted = true;
             }
             if (spawned)
-            {               
+            {
                 flyingThing.DeSpawn();
             }
             this.speed = this.speed * this.force;
