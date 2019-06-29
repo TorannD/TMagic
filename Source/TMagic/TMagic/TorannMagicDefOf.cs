@@ -937,6 +937,7 @@ namespace TorannMagic
         public static ThingDef TM_DimensionalManaPocket;
 
         //ThoughtDefs
+        public static ThoughtDef TM_PhantomLimb;
         //public static ThoughtDef AteMysteryMeatDirect;
         //public static ThoughtDef AteMysteryMeatAsIngredient;
     }

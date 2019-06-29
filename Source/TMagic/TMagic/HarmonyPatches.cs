@@ -284,46 +284,49 @@ namespace TorannMagic
         {
             public static bool Prefix(IncidentWorker __instance, IncidentParms parms, ref bool __result)
             {
-                List<Map> allMaps = Find.Maps;
-                if (allMaps != null && allMaps.Count > 0)
+                if (__instance.def.defName != "VisitorGroup" && __instance.def.defName != "VisitorGroupMax")
                 {
-                    for (int i = 0; i < allMaps.Count; i++)
+                    List<Map> allMaps = Find.Maps;
+                    if (allMaps != null && allMaps.Count > 0)
                     {
-                        if (allMaps[i].Tile == parms.target.Tile)
+                        for (int i = 0; i < allMaps.Count; i++)
                         {
-                            List<Pawn> mapPawns = allMaps[i].mapPawns.AllPawnsSpawned;
-                            for (int j = 0; j < mapPawns.Count; j++)
+                            if (allMaps[i].Tile == parms.target.Tile)
                             {
-                                if (mapPawns[j].health != null && mapPawns[j].health.hediffSet != null && mapPawns[j].health.hediffSet.HasHediff(TorannMagicDefOf.TM_PredictionHD, false) && mapPawns[j].IsColonist)
+                                List<Pawn> mapPawns = allMaps[i].mapPawns.AllPawnsSpawned;
+                                for (int j = 0; j < mapPawns.Count; j++)
                                 {
-                                    CompAbilityUserMagic comp = mapPawns[j].GetComp<CompAbilityUserMagic>();
-                                    MagicPowerSkill ver = comp.MagicData.MagicPowerSkill_Prediction.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Prediction_ver");
-                                    if (comp.predictionIncidentDef != null)
+                                    if (mapPawns[j].health != null && mapPawns[j].health.hediffSet != null && mapPawns[j].health.hediffSet.HasHediff(TorannMagicDefOf.TM_PredictionHD, false) && mapPawns[j].IsColonist)
                                     {
-                                        if (comp.predictionIncidentDef == __instance.def)
+                                        CompAbilityUserMagic comp = mapPawns[j].GetComp<CompAbilityUserMagic>();
+                                        MagicPowerSkill ver = comp.MagicData.MagicPowerSkill_Prediction.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Prediction_ver");
+                                        if (comp.predictionIncidentDef != null)
                                         {
-                                            //Log.Message("executing prediction" + __instance.def.defName);
-                                            comp.predictionIncidentDef = null;
-                                            return true;
+                                            if (comp.predictionIncidentDef == __instance.def)
+                                            {
+                                                //Log.Message("executing prediction" + __instance.def.defName);
+                                                comp.predictionIncidentDef = null;
+                                                return true;
+                                            }
                                         }
-                                    }
-                                    else
-                                    {
-                                        if (Rand.Chance(.25f + (.05f * ver.level))) //up to 40% chance to predict, per chronomancer
+                                        else
                                         {
-                                            int ticksTillIncident = Mathf.RoundToInt((Rand.Range(2500, 20000) * (1 + (.15f * ver.level))));  // from 1 to 8 hours, plus bonus
-                                            //Log.Message("pushing " + __instance.def.defName + " to iq for " + ticksTillIncident  + " ticks");
-                                            comp.predictionIncidentDef = __instance.def;
-                                            comp.predictionTick = Find.TickManager.TicksGame + ticksTillIncident;
-                                            QueuedIncident iq = new QueuedIncident(new FiringIncident(__instance.def, null, parms), comp.predictionTick);
-                                            Find.Storyteller.incidentQueue.Add(iq);
-                                            string labelText = "TM_PredictionLetter".Translate(__instance.def.label);
-                                            string text = "TM_PredictionText".Translate(mapPawns[j].LabelShort, __instance.def.label, Mathf.RoundToInt(ticksTillIncident / 2500));
-                                            //Log.Message("attempting to push letter");
-                                            Find.LetterStack.ReceiveLetter(labelText, text, LetterDefOf.NeutralEvent, null);
-                                            
-                                            __result = true;
-                                            return false;
+                                            if (Rand.Chance(.25f + (.05f * ver.level))) //up to 40% chance to predict, per chronomancer
+                                            {
+                                                int ticksTillIncident = Mathf.RoundToInt((Rand.Range(2500, 20000) * (1 + (.15f * ver.level))));  // from 1 to 8 hours, plus bonus
+                                                                                                                                                 //Log.Message("pushing " + __instance.def.defName + " to iq for " + ticksTillIncident  + " ticks");
+                                                comp.predictionIncidentDef = __instance.def;
+                                                comp.predictionTick = Find.TickManager.TicksGame + ticksTillIncident;
+                                                QueuedIncident iq = new QueuedIncident(new FiringIncident(__instance.def, null, parms), comp.predictionTick);
+                                                Find.Storyteller.incidentQueue.Add(iq);
+                                                string labelText = "TM_PredictionLetter".Translate(__instance.def.label);
+                                                string text = "TM_PredictionText".Translate(mapPawns[j].LabelShort, __instance.def.label, Mathf.RoundToInt(ticksTillIncident / 2500));
+                                                //Log.Message("attempting to push letter");
+                                                Find.LetterStack.ReceiveLetter(labelText, text, LetterDefOf.NeutralEvent, null);
+
+                                                __result = true;
+                                                return false;
+                                            }
                                         }
                                     }
                                 }

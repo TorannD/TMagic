@@ -147,5 +147,20 @@
 			</li>
 		</stages>
 	</ThoughtDef>
+	
+	<ThoughtDef>
+		<thoughtClass>Thought_Memory</thoughtClass>
+		<defName>TM_PhantomLimb</defName>
+		<durationDays>7</durationDays>
+		<stackLimit>10</stackLimit>
+		<stackedEffectMultiplier>.8</stackedEffectMultiplier>
+		<stages>
+			<li>
+				<label>phantom limb</label>
+				<description>Are these body parts really mine? I feel like a guest in my own body.</description>
+				<baseMoodEffect>-15</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
   
 </Defs>

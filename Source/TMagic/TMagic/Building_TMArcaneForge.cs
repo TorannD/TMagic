@@ -140,7 +140,7 @@ namespace TorannMagic
             potentialRecipes.Clear();
 
             IEnumerable<RecipeDef> enumerable = from def in DefDatabase<RecipeDef>.AllDefs
-                                                where (def.defName.Contains(this.targetThing.def.defName) && !def.defName.Contains("Administer") && !def.label.Contains("Replicate"))
+                                                where (def.defName.Contains(this.targetThing.def.defName) && !def.defName.Contains("Administer") && !def.label.Contains("Replicate") && !def.label.Contains("Install") && !def.label.Contains("install"))
                                                 select def;
 
             foreach (RecipeDef current in enumerable)

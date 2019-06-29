@@ -81,8 +81,8 @@ namespace TorannMagic
 
                 if (true)
                 {
-                    this.Pawn.ageTracker.AgeBiologicalTicks = Mathf.RoundToInt(this.Pawn.ageTracker.AgeBiologicalTicks - 10000);
-                    if (this.Pawn.ageTracker.AgeBiologicalTicks < 0)
+                    this.Pawn.ageTracker.AgeBiologicalTicks = Mathf.RoundToInt(this.Pawn.ageTracker.AgeBiologicalTicks - 25000);
+                    if (this.Pawn.ageTracker.AgeBiologicalTicks < 0 && this.Pawn.ageTracker.AgeBiologicalYears > -10)
                     {
                         Messages.Message("TM_CeaseToExist".Translate(this.Pawn.LabelShort), MessageTypeDefOf.NeutralEvent);
                         this.Pawn.Destroy(DestroyMode.Vanish);
@@ -109,7 +109,7 @@ namespace TorannMagic
                                 float immuneSevDay = immuneComp.Def.CompProps<HediffCompProperties_Immunizable>().severityPerDayNotImmune;
                                 if (immuneSevDay != 0 && !rec.FullyImmune())
                                 {
-                                    rec.Severity -= ((immuneSevDay * ticks * this.parent.Severity) / (2500));
+                                    rec.Severity -= ((immuneSevDay * ticks * this.parent.Severity) / (1000));
                                 }
                             }
                         }
@@ -121,7 +121,7 @@ namespace TorannMagic
                                 float sevDay = sevDayComp.Def.CompProps<HediffCompProperties_SeverityPerDay>().severityPerDay;
                                 if (sevDay != 0)
                                 {
-                                    rec.Severity -= ((sevDay * ticks * this.parent.Severity) / (2500));
+                                    rec.Severity -= ((sevDay * ticks * this.parent.Severity) / (1000));
                                 }
                             }
                         }
@@ -153,25 +153,40 @@ namespace TorannMagic
                     Hediff rec = hediffList[i];
                     if (rec != null && rec != this.parent)
                     {
-                        if ((rec.ageTicks - 2500) < 0)
+                        if (rec.def.scenarioCanAdd || rec.def.isBad)
                         {
-                            if (rec.def.defName.Contains("TM_"))
+                            if ((rec.ageTicks - 1000) < 0)
                             {
-                                if (rec.def.isBad)
+                                if (rec.def.defName.Contains("TM_"))
                                 {
-                                    this.Pawn.health.RemoveHediff(rec);                                    
-                                    break;
+                                    if (rec.def.isBad)
+                                    {
+                                        this.Pawn.health.RemoveHediff(rec);
+                                        break;
+                                    }
                                 }
+                                else
+                                {
+                                    Hediff_MissingPart mphd = rec as Hediff_MissingPart;
+                                    if (mphd != null && mphd.Part != null)
+                                    {
+                                        if(RemoveChildParts(mphd))
+                                        {
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            this.Pawn.needs.mood.thoughts.memories.TryGainMemory(TorannMagicDefOf.TM_PhantomLimb);
+                                        }
+                                    }                                    
+                                    this.Pawn.health.RemoveHediff(rec);
+                                    break;
+                                }                                
                             }
                             else
                             {
-                                this.Pawn.health.RemoveHediff(rec);
-                                break;
+                                rec.ageTicks -= 1000;
                             }
-                        }
-                        else
-                        {
-                            rec.ageTicks -= 2500;
                         }
                     }
                 }
@@ -219,6 +234,31 @@ namespace TorannMagic
             {
                 return base.CompShouldRemove || this.durationTicks <= 0;
             }
+        }
+
+        public bool RemoveChildParts(Hediff_MissingPart mphd)
+        {
+            List<Hediff> hediffList = this.Pawn.health.hediffSet.GetHediffs<Hediff>().ToList();
+            for (int i = 0; i < hediffList.Count; i++)
+            {
+                Hediff_MissingPart mpChild = hediffList[i] as Hediff_MissingPart;
+                if (mpChild != null && mpChild != this.parent && mpChild != mphd && mpChild.Part != null)
+                {
+                    if (mphd.Part == mpChild.Part.parent)
+                    {
+                        if (RemoveChildParts(mpChild))
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            this.Pawn.health.RemoveHediff(hediffList[i]);
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
         }
     }
 }

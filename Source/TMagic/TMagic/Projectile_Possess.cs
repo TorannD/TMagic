@@ -158,6 +158,10 @@ namespace TorannMagic
                         else
                         {
                             //possess friendly
+                            if (ModCheck.Validate.GiddyUp.Core_IsInitialized())
+                            {
+                                ModCheck.GiddyUp.ForceDismount(caster);
+                            }
                             HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_DisguiseHD_II, 20f + 5f * pwrVal);
                             switch (verVal)
                             {
