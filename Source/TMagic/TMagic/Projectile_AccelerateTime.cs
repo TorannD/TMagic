@@ -110,7 +110,15 @@ namespace TorannMagic
                             {
                                 pawnList[i].Faction.TryAffectGoodwillWith(this.pawn.Faction, -25);
                             }
-                            AgePawn(pawnList[i], Mathf.RoundToInt((2500) * (1 + (.1f * verVal))), true);
+
+                            if (pawnList[i].Faction != null && pawnList[i].Faction != this.pawn.Faction)
+                            {
+                                AgePawn(pawnList[i], Mathf.RoundToInt((2500) * (1 + (.1f * verVal))), true);
+                            }
+                            else if(pawnList[i].Faction == null)
+                            {
+                                AgePawn(pawnList[i], Mathf.RoundToInt((2500) * (1 + (.1f * verVal))), true);
+                            }
                         }
                     }
                 }
@@ -122,8 +130,20 @@ namespace TorannMagic
                 {                    
                     for (int i = 0; i < Mathf.Clamp(pawnList.Count, 0, 2 + verVal); i++)
                     {
+                        if (pawnList[i].Faction != null && !pawnList[i].Faction.HostileTo(this.pawn.Faction))
+                        {
+                            pawnList[i].Faction.TryAffectGoodwillWith(this.pawn.Faction, -25);
+                        }
+
                         targetPawn = pawnList[i];
-                        AgePawn(pawnList[i], Mathf.RoundToInt((2500) * (1 + (.1f * verVal))), true);
+                        if (targetPawn.Faction != null && targetPawn.Faction != this.pawn.Faction)
+                        {
+                            AgePawn(pawnList[i], Mathf.RoundToInt((2500) * (1 + (.1f * verVal))), true);
+                        }
+                        else if(targetPawn.Faction == null)
+                        {
+                            AgePawn(pawnList[i], Mathf.RoundToInt((2500) * (1 + (.1f * verVal))), true);
+                        }
                     }
                 }
             }
@@ -172,7 +192,7 @@ namespace TorannMagic
                                 Plant plant = thingList[j] as Plant;
                                 try
                                 {
-                                    plant.Growth = plant.Growth + (Rand.Range((2 + pwrVal), (4 + pwrVal)) / plant.def.plant.growDays);
+                                    plant.Growth = plant.Growth + ((Rand.Range((2 + pwrVal), (4 + pwrVal)) / plant.def.plant.growDays) * this.arcaneDmg);
                                 }
                                 catch (NullReferenceException ex)
                                 {
@@ -183,7 +203,7 @@ namespace TorannMagic
                             if(compHatcher != null)
                             {
                                 float gestateProgress = Traverse.Create(root: compHatcher).Field(name: "gestateProgress").GetValue<float>();
-                                Traverse.Create(root: compHatcher).Field(name: "gestateProgress").SetValue(gestateProgress + Rand.Range(.3f + (.1f * pwrVal), .7f + (.1f * pwrVal)));
+                                Traverse.Create(root: compHatcher).Field(name: "gestateProgress").SetValue((gestateProgress + Rand.Range(.3f + (.1f * pwrVal), .7f + (.1f * pwrVal))) * this.arcaneDmg);
                             }
                         }
                     }
@@ -200,6 +220,7 @@ namespace TorannMagic
 
         private void AgePawn(Pawn pawn, int duration, bool isBad)
         {
+            duration = Mathf.RoundToInt(duration * this.arcaneDmg);
             if (!pawn.DestroyedOrNull() && !pawn.Dead && pawn.health != null && pawn.health.hediffSet != null)
             {
                 if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ReverseTimeHD))
@@ -228,7 +249,7 @@ namespace TorannMagic
         private void AgeThing(Thing thing)
         {
 
-            thing.HitPoints -= 200 + (100 * pwrVal);
+            thing.HitPoints -= Mathf.RoundToInt((200 + (100 * pwrVal)) * this.arcaneDmg);
             if (thing.HitPoints <= 0)
             {
                 List<ThingDefCountClass> componentList = thing.def.costList;

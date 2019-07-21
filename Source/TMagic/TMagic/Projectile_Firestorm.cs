@@ -54,7 +54,7 @@ namespace TorannMagic
                 pwrVal = 1;
                 verVal = 1;
             }
-            duration = duration + (60 * verVal);
+            duration = (int)((duration + (60 * verVal)) * comp.arcaneDmg);
             cellRect = CellRect.CenteredOn(base.Position, (int)(base.def.projectile.explosionRadius + .5*(pwrVal + verVal)));
             cellRect.ClipInsideMap(map);
             initialized = true;

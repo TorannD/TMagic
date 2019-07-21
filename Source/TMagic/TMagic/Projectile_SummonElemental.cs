@@ -79,6 +79,7 @@ namespace TorannMagic
                 random = new System.Random();
  
                 duration += (verVal * 900);
+                duration = Mathf.RoundToInt(duration * pawn.GetComp<CompAbilityUserMagic>().arcaneDmg);
 
                 int rnd = GenMath.RoundRandom(random.Next(0, 8));
                 if (rnd < 2)

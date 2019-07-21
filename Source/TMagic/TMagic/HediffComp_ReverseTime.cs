@@ -28,10 +28,27 @@ namespace TorannMagic
             Scribe_Values.Look<int>(ref this.tickEffect, "tickEffect", 300, false);
         }
 
+        public override string CompLabelInBracketsExtra
+        {
+            get
+            {
+                if(isBad)
+                {
+                    return base.CompLabelInBracketsExtra + " (warped)";
+                }
+                return base.CompLabelInBracketsExtra;
+            }
+        }
+        
+
         public string labelCap
         {
             get
             {
+                if (isBad)
+                {
+                    return base.Def.LabelCap + " (warped)";
+                }
                 return base.Def.LabelCap;
             }
         }
@@ -40,6 +57,10 @@ namespace TorannMagic
         {
             get
             {
+                if(isBad)
+                {
+                    return base.Def.label + " (warped)";
+                }
                 return base.Def.label;
             }
         }
@@ -167,16 +188,34 @@ namespace TorannMagic
                                 }
                                 else
                                 {
+                                    List<BodyPartRecord> bpList = pawn.RaceProps.body.AllParts;
+                                    List<BodyPartRecord> replacementList = new List<BodyPartRecord>();
+                                    replacementList.Clear();
+                                    for (int j = 0; j < bpList.Count; j++)
+                                    {
+                                        BodyPartRecord record = bpList[j];
+                                        if (pawn.health.hediffSet.hediffs.Any((Hediff x) => x.Part == record) && (record.parent == null || pawn.health.hediffSet.GetNotMissingParts().Contains(record.parent)) && (!pawn.health.hediffSet.PartOrAnyAncestorHasDirectlyAddedParts(record) || pawn.health.hediffSet.HasDirectlyAddedPartFor(record)))
+                                        {
+                                            replacementList.Add(record);
+                                        }
+                                    }
                                     Hediff_MissingPart mphd = rec as Hediff_MissingPart;
                                     if (mphd != null && mphd.Part != null)
                                     {
-                                        if(RemoveChildParts(mphd))
+                                        if (replacementList.Contains(mphd.Part))
                                         {
-                                            break;
+                                            if (RemoveChildParts(mphd))
+                                            {
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                this.Pawn.needs.mood.thoughts.memories.TryGainMemory(TorannMagicDefOf.TM_PhantomLimb);
+                                            }
                                         }
                                         else
                                         {
-                                            this.Pawn.needs.mood.thoughts.memories.TryGainMemory(TorannMagicDefOf.TM_PhantomLimb);
+                                            break;
                                         }
                                     }                                    
                                     this.Pawn.health.RemoveHediff(rec);
@@ -234,6 +273,23 @@ namespace TorannMagic
             {
                 return base.CompShouldRemove || this.durationTicks <= 0;
             }
+        }
+
+        public bool HasParentPart(Hediff_MissingPart mphd)
+        {
+            bool hasMissingParent = false;
+            if (mphd.Part.parent != null)
+            {
+                List<Hediff_MissingPart> hediffList = this.Pawn.health.hediffSet.GetHediffs<Hediff_MissingPart>().ToList();
+                for (int i = 0; i < hediffList.Count; i++)
+                {
+                    if(mphd.Part.parent == hediffList[i].Part)
+                    {
+                        
+                    }
+                }
+            }
+            return hasMissingParent;
         }
 
         public bool RemoveChildParts(Hediff_MissingPart mphd)

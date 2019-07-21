@@ -67,7 +67,7 @@ namespace TorannMagic
 		{
 			System.Random rnd = new System.Random();
 			int modDamAmountRand = GenMath.RoundRandom(rnd.Next(3, 5+(projectile.projectile.GetDamageAmount(1,null) * pwr)/2)); //7
-            modDamAmountRand *= Mathf.RoundToInt(this.arcaneDmg);
+            modDamAmountRand = Mathf.RoundToInt(modDamAmountRand * this.arcaneDmg);
 			if (map == null)
 			{
 				Log.Warning("Tried to do explosion in a null map.");

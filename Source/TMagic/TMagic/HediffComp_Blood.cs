@@ -19,6 +19,7 @@ namespace TorannMagic
         private int bloodPwr = 0;  //increased amount blood levels affect ability power
         private int bloodVer = 0;  //increased blood per bleed rate and blood gift use
         private int bloodEff = 0;  //reduces ability blood costs
+        private float arcaneDmg = 1f;
 
         public override void CompExposeData()
         {
@@ -50,6 +51,7 @@ namespace TorannMagic
                 bloodPwr = comp.MagicData.MagicPowerSkill_BloodGift.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodGift_pwr").level;
                 bloodVer = comp.MagicData.MagicPowerSkill_BloodGift.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodGift_ver").level;
                 bloodEff = comp.MagicData.MagicPowerSkill_BloodGift.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodGift_eff").level;
+                this.arcaneDmg = comp.arcaneDmg;
             }
             else
             {
@@ -76,7 +78,7 @@ namespace TorannMagic
                         //.06 bleed rate per 1 dmg "cut"
                         //.1 bleed rate per 1 dmg sacrificial cut
                         //Log.Message("current bleed rate is " + this.Pawn.health.hediffSet.BleedRateTotal);
-                        severityAdjustment += this.Pawn.health.hediffSet.BleedRateTotal * (1.25f + (.125f *this.bloodVer));
+                        severityAdjustment += (this.Pawn.health.hediffSet.BleedRateTotal * (1.25f + (.125f *this.bloodVer))) * this.arcaneDmg;
                     }
                     else if(!this.Pawn.IsColonist)
                     {

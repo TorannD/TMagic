@@ -164,8 +164,7 @@ namespace TorannMagic
         public void damageEntities(Pawn victim, BodyPartRecord hitPart, int amt, DamageDef type)
         {
             DamageInfo dinfo;
-            amt = (int)((float)amt * Rand.Range(.5f, 1.2f));
-            amt *= Mathf.RoundToInt(this.arcaneDmg);
+            amt = Mathf.RoundToInt((float)amt * Rand.Range(.5f, 1.2f) * this.arcaneDmg);
             if (this.caster != null && victim != null && !victim.Dead && !victim.Downed && hitPart != null)
             {
                 dinfo = new DamageInfo(type, amt, 0, (float)-1, this.caster, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);

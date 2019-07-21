@@ -103,7 +103,7 @@ namespace TorannMagic
 
                 for (int i = 0; i < this.targetCells.Count; i++)
                 {
-                    if (Rand.Chance(.5f + (.1f * verVal)))
+                    if (Rand.Chance((.5f + (.1f * verVal)) * this.arcaneDmg))
                     {
                         float rnd = Rand.Range(0, 1f);
                         targetPawn = this.targetCells[i].GetFirstPawn(this.Map);
@@ -115,7 +115,7 @@ namespace TorannMagic
                                 {
                                     if (rnd <= .33f)
                                     {
-                                        TM_Action.DamageEntities(targetPawn, null, Rand.Range(8, 15) + pwrVal, TMDamageDefOf.DamageDefOf.TM_ElectricalBurn, this.launcher);
+                                        TM_Action.DamageEntities(targetPawn, null, (Rand.Range(8, 15) + pwrVal)*this.arcaneDmg, TMDamageDefOf.DamageDefOf.TM_ElectricalBurn, this.launcher);
                                     }
                                     else if (rnd <= .66f)
                                     {
@@ -133,7 +133,7 @@ namespace TorannMagic
                                         int rndCount = Rand.Range(2, 5);
                                         for (int j = 0; j < rndCount; j++)
                                         {
-                                            TM_Action.DamageEntities(targetPawn, null, Rand.Range(3, 5) + pwrVal, TMDamageDefOf.DamageDefOf.TM_ElectricalBurn, this.launcher);
+                                            TM_Action.DamageEntities(targetPawn, null, (Rand.Range(3, 5) + pwrVal)*this.arcaneDmg, TMDamageDefOf.DamageDefOf.TM_ElectricalBurn, this.launcher);
                                         }
                                     }
                                 }

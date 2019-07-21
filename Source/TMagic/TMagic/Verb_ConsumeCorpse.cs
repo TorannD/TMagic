@@ -52,21 +52,21 @@ namespace TorannMagic
                 {
                     if (undead.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD))
                     {
-                        comp.Mana.CurLevel += (.225f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)));
+                        comp.Mana.CurLevel += (.225f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)) * comp.arcaneDmg);
                         ConsumeHumanoid(undead);
                         if (ver.level > 0)
                         {
-                            HealCaster(caster, 2 + ver.level, 2, 5f + ver.level);
+                            HealCaster(caster, 2 + ver.level, 2, (5f + ver.level) * comp.arcaneDmg);
                         }
                         undead.Destroy();
                     }
                     else if (undead.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadAnimalHD))
                     {
-                        comp.Mana.CurLevel += (.18f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)));
+                        comp.Mana.CurLevel += (.18f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)) * comp.arcaneDmg);
                         ConsumeAnimalKind(undead);
                         if (ver.level > 0)
                         {
-                            HealCaster(caster, 2, 2, 2 + ver.level);
+                            HealCaster(caster, 2, 2, (3 + ver.level) * comp.arcaneDmg);
                         }
                         undead.Destroy();
                     }
@@ -100,18 +100,18 @@ namespace TorannMagic
                             {
                                 if (!corpse.IsNotFresh())
                                 {
-                                    comp.Mana.CurLevel += (.13f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)));
+                                    comp.Mana.CurLevel += (.13f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)) * comp.arcaneDmg);
                                     if (caster.needs != null && caster.needs.rest != null) { caster.needs.rest.CurLevel += .3f; }
                                     if (caster.needs != null && caster.needs.mood != null) { caster.needs.mood.CurLevel += .3f; }
                                     ConsumeHumanoid(corpse);
                                     if (ver.level > 0)
                                     {
-                                        HealCaster(caster, 1 + ver.level, 1 + ver.level, 2f + ver.level);
+                                        HealCaster(caster, 1 + ver.level, 1 + ver.level, (2f + ver.level) * comp.arcaneDmg);
                                     }
                                 }
                                 else
                                 {
-                                    comp.Mana.CurLevel += (.09f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)));
+                                    comp.Mana.CurLevel += (.09f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)) * comp.arcaneDmg);
                                     ConsumeHumanoid(corpse);
                                 }
                                 corpse.Destroy();
@@ -120,17 +120,17 @@ namespace TorannMagic
                             {
                                 if (!corpse.IsNotFresh())
                                 {
-                                    comp.Mana.CurLevel += (.09f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)));
+                                    comp.Mana.CurLevel += (.09f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)) * comp.arcaneDmg);
                                     if (caster.needs != null && caster.needs.food != null) { caster.needs.food.CurLevel += .4f; }
                                     ConsumeAnimalKind(corpse);
                                     if (ver.level > 0)
                                     {
-                                        HealCaster(caster, 1, 1, 2f + ver.level);
+                                        HealCaster(caster, 1, 1, (2f + ver.level) * comp.arcaneDmg);
                                     }
                                 }
                                 else
                                 {
-                                    comp.Mana.CurLevel += (.07f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)));
+                                    comp.Mana.CurLevel += (.07f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)) * comp.arcaneDmg);
                                     ConsumeAnimalKind(corpse);
                                 }
                                 corpse.Destroy();

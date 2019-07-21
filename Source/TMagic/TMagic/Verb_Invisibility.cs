@@ -39,7 +39,7 @@ namespace TorannMagic
                 }
                 else
                 {
-                    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_InvisibilityHD, 20f);
+                    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_InvisibilityHD, Mathf.RoundToInt(20f * pawn.GetComp<CompAbilityUserMagic>().arcaneDmg));
                     TM_MoteMaker.ThrowManaPuff(pawn.DrawPos, pawn.Map, .75f);
                     TM_MoteMaker.ThrowManaPuff(pawn.DrawPos, pawn.Map, 1);
                     TM_MoteMaker.ThrowManaPuff(pawn.DrawPos, pawn.Map, .75f);

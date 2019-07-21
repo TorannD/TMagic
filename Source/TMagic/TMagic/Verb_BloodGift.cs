@@ -90,7 +90,7 @@ namespace TorannMagic
                         Messages.Message("TM_NoExternalBodyPartsCanBleed".Translate(this.CasterPawn.LabelShort), MessageTypeDefOf.RejectInput, false);
                     }
                 }
-                HealthUtility.AdjustSeverity(this.CasterPawn, HediffDef.Named("TM_BloodHD"), bloodGain * (1 + (.1f * verVal)));
+                HealthUtility.AdjustSeverity(this.CasterPawn, HediffDef.Named("TM_BloodHD"), bloodGain * (1 + (.1f * verVal)) * comp.arcaneDmg);
                 arg_40_0 = true;
             }
             else

@@ -208,7 +208,7 @@ namespace TorannMagic
                         }
                     }
                 }
-                this.duration = 1800 + (240 * verVal);
+                this.duration = Mathf.RoundToInt(1800 + (240 * verVal) * comp.arcaneDmg);
                 this.initialized = true;
                 this.wallActive = true;
             }

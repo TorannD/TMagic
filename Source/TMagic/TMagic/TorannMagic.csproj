@@ -101,6 +101,7 @@
     <Compile Include="Building_PoisonTrap.cs" />
     <Compile Include="Buiding_TechnoTurret.cs" />
     <Compile Include="Building_ExplosiveProximityTrap.cs" />
+    <Compile Include="Gizmo_StatusBar.cs" />
     <Compile Include="StatPart_Undead.cs" />
     <Compile Include="Command_LocalTargetInfo.cs" />
     <Compile Include="CompProperties_Polymorph.cs" />

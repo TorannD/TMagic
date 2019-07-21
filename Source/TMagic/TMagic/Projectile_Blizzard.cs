@@ -2,6 +2,7 @@
 using Verse;
 using AbilityUser;
 using System.Linq;
+using UnityEngine;
 
 
 namespace TorannMagic
@@ -53,7 +54,7 @@ namespace TorannMagic
             }
             cellRect = CellRect.CenteredOn(base.Position, (int)(base.def.projectile.explosionRadius + (.75 *(verVal + pwrVal))));
             cellRect.ClipInsideMap(map);
-            duration = duration + (90 * verVal);
+            duration = Mathf.RoundToInt(duration + (90 * verVal) * comp.arcaneDmg);
             initialized = true;
         }
 

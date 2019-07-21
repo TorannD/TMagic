@@ -131,6 +131,7 @@ namespace TorannMagic
             bool spawned = flyingThing.Spawned;
             pawn = launcher as Pawn;
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
+            this.duration = Mathf.RoundToInt(this.duration * comp.arcaneDmg);
             if (spawned)
             {
                 flyingThing.DeSpawn();

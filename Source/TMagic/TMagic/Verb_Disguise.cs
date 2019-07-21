@@ -3,6 +3,7 @@ using System;
 using Verse;
 using AbilityUser;
 using System.Linq;
+using UnityEngine;
 
 namespace TorannMagic
 {
@@ -20,7 +21,7 @@ namespace TorannMagic
             bool flag = caster != null && !caster.Dead;
             if (flag)
             {
-                float sev = 30 + (8f * ver.level);
+                float sev = Mathf.RoundToInt(30 + (8f * ver.level) * comp.mightPwr);
                 if (pwr.level == 3)
                 {
                     HealthUtility.AdjustSeverity(caster, HediffDef.Named("TM_DisguiseHD_III"),sev);

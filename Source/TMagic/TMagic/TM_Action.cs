@@ -8,6 +8,7 @@ using Verse.Sound;
 using RimWorld;
 using System;
 using AbilityUser;
+using Harmony;
 
 namespace TorannMagic
 {
@@ -532,6 +533,14 @@ namespace TorannMagic
                             polymorphPawn.drafter = new Pawn_DraftController(polymorphPawn);
                             polymorphPawn.equipment = new Pawn_EquipmentTracker(polymorphPawn);
                             polymorphPawn.story = new Pawn_StoryTracker(polymorphPawn);
+                            if (original.workSettings != null)
+                            {
+                                polymorphPawn.workSettings = new Pawn_WorkSettings(polymorphPawn);                            
+                                DefMap<WorkTypeDef, int> priorities = Traverse.Create(root: original.workSettings).Field(name: "priorities").GetValue<DefMap<WorkTypeDef, int>>();
+                                priorities = new DefMap<WorkTypeDef, int>();
+                                priorities.SetAll(0);
+                                Traverse.Create(root: polymorphPawn.workSettings).Field(name: "priorities").SetValue(priorities);
+                            }
 
                             //polymorphPawn.apparel = new Pawn_ApparelTracker(polymorphPawn);
                             //polymorphPawn.mindState = new Pawn_MindState(polymorphPawn);
@@ -572,7 +581,19 @@ namespace TorannMagic
                                 LordJob_DefendPoint lordJob = new LordJob_DefendPoint(newPawn.Position);
                                 lord = LordMaker.MakeNewLord(faction, lordJob, original.Map, null);
                             }
-                            lord.AddPawn(newPawn);
+                            try
+                            {
+                                lord.AddPawn(newPawn);
+                            }
+                            catch (NullReferenceException ex)
+                            {
+                                if (lord != null)
+                                {
+                                    LordJob_AssaultColony lordJob = new LordJob_AssaultColony(faction, false, false, false, false);
+                                    lord = LordMaker.MakeNewLord(faction, lordJob, original.Map, null);
+                                }
+                            }
+                            
                         }
                     }
                 }

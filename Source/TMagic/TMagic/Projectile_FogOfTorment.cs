@@ -128,7 +128,10 @@ namespace TorannMagic
                             else
                             {
                                 //kills living
-                                damageEntities(victim, Mathf.RoundToInt(Rand.Range(2f + (1f * pwrVal), 4f + (1f * pwrVal)) * this.arcaneDmg), TMDamageDefOf.DamageDefOf.TM_Torment);
+                                if (Rand.Chance(TM_Calc.GetSpellSuccessChance(pawn, victim) - .4f))
+                                {
+                                    damageEntities(victim, Mathf.RoundToInt(Rand.Range(2f + (1f * pwrVal), 4f + (1f * pwrVal)) * this.arcaneDmg), TMDamageDefOf.DamageDefOf.TM_Torment);
+                                }
                             }
                         }
                     }

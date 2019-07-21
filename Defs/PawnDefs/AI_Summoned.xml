@@ -68,6 +68,7 @@
 		<li Class="ThinkNode_Tagger">
 			<tagToGive>Misc</tagToGive>
 			<subNodes>
+				<li Class="JobGiver_Haul" />
 				<li Class="TorannMagic.JobGiver_AIClean" />
 			</subNodes>
 		</li>
@@ -96,8 +97,7 @@
 			<subNodes>
 				<li Class="ThinkNode_ConditionalCanDoConstantThinkTreeJobNow">
 					<subNodes>
-						<li Class="JobGiver_AIFightEnemies" />
-						<li Class="JobGiver_Haul" />						
+						<li Class="JobGiver_AIFightEnemies" />												
 						<!-- <li Class="JobGiver_AIDefendSelf" /> -->
 					</subNodes>
 				

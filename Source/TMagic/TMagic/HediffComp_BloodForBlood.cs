@@ -20,6 +20,7 @@ namespace TorannMagic
 
         //private int bfbPwr = 0;  //increased amount blood levels affect ability power
         private int bfbVer = 0;  //increased blood per bleed rate and blood gift use
+        private float arcaneDmg = 1f;
 
         private float bleedRate = 0;
 
@@ -31,6 +32,7 @@ namespace TorannMagic
             base.CompExposeData();
             Scribe_References.Look<Pawn>(ref linkedPawn, "linkedPawn", false);
             Scribe_Values.Look<int>(ref this.bfbVer, "bfbVer", 0, false);
+            Scribe_Values.Look<float>(ref this.arcaneDmg, "arcaneDmg", 1f, false);
             Scribe_Values.Look<bool>(ref this.initialized, "initialized", false, false);
         }
 
@@ -57,6 +59,7 @@ namespace TorannMagic
             if (spawned && comp != null && comp.IsMagicUser)
             {
                 bfbVer = comp.MagicData.MagicPowerSkill_BloodForBlood.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodForBlood_ver").level;
+                this.arcaneDmg = comp.arcaneDmg;
                 directionToLinkedPawn = TM_Calc.GetVector(this.Pawn.DrawPos, linkedPawn.DrawPos);
             }
             else
@@ -142,7 +145,7 @@ namespace TorannMagic
                 Pawn healedPawn = cellList[i].GetFirstPawn(this.linkedPawn.Map);
                 if(healedPawn != null && healedPawn.Faction != null && healedPawn.Faction == linkedPawn.Faction)
                 {
-                    TM_Action.DoAction_HealPawn(this.linkedPawn, healedPawn, 1, (1f + .35f * this.bfbVer) * (1 + bleedRate));
+                    TM_Action.DoAction_HealPawn(this.linkedPawn, healedPawn, 1, (1f + .35f * this.bfbVer) * (1 + bleedRate) * this.arcaneDmg);
                     if(healedPawn == linkedPawn)
                     {
                         Vector3 revDir = this.linkedPawn.DrawPos - (2 * this.directionToLinkedPawn);
@@ -181,11 +184,11 @@ namespace TorannMagic
                                 {
                                     if (rec.def.tags.Contains(BodyPartTagDefOf.ConsciousnessSource))
                                     {
-                                        current.Heal(Rand.Range(.03f, .05f));
+                                        current.Heal(Rand.Range(.03f, .05f) * this.arcaneDmg);
                                     }
                                     else
                                     {
-                                        current.Heal(Rand.Range(.15f, .25f));
+                                        current.Heal(Rand.Range(.15f, .25f) * this.arcaneDmg);
                                         //current.Heal(5.0f + (float)pwrVal * 3f); // power affects how much to heal
                                         num--;
                                         num2--;

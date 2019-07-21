@@ -913,7 +913,7 @@ Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to
             <muzzleFlashScale>20</muzzleFlashScale>
 		    <AlwaysHits>true</AlwaysHits>
             <isPrimary>false</isPrimary>
-			<isViolent>false</isViolent>
+			<isViolent>true</isViolent>
 			<targetParams>
                 <canTargetPawns>true</canTargetPawns>
                 <canTargetBuildings>false</canTargetBuildings>

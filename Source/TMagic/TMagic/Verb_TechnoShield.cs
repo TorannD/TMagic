@@ -88,19 +88,19 @@ namespace TorannMagic
         {
             if (this.pwrVal == 3)
             {
-                HealthUtility.AdjustSeverity(target, TorannMagicDefOf.TM_TechnoShieldHD_III, 110 + (30 * verVal));
+                HealthUtility.AdjustSeverity(target, TorannMagicDefOf.TM_TechnoShieldHD_III, (110 + (30 * verVal))*comp.arcaneDmg);
             }
             else if(this.pwrVal == 2)
             {
-                HealthUtility.AdjustSeverity(target, TorannMagicDefOf.TM_TechnoShieldHD_II, 110 + (30 * verVal));
+                HealthUtility.AdjustSeverity(target, TorannMagicDefOf.TM_TechnoShieldHD_II, (110 + (30 * verVal))*comp.arcaneDmg);
             }
             else if(this.pwrVal == 1)
             {
-                HealthUtility.AdjustSeverity(target, TorannMagicDefOf.TM_TechnoShieldHD_I, 110 + (30 * verVal));
+                HealthUtility.AdjustSeverity(target, TorannMagicDefOf.TM_TechnoShieldHD_I, (110 + (30 * verVal))*comp.arcaneDmg);
             }
             else
             {
-                HealthUtility.AdjustSeverity(target, TorannMagicDefOf.TM_TechnoShieldHD, 110 + (30 * verVal));
+                HealthUtility.AdjustSeverity(target, TorannMagicDefOf.TM_TechnoShieldHD, (110 + (30 * verVal))*comp.arcaneDmg);
             }
         }
     }

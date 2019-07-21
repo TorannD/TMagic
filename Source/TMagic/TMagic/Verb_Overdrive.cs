@@ -89,8 +89,8 @@ namespace TorannMagic
                     if(compP != null && compP.Props.basePowerConsumption != 0 && cpt != null && cpt.powerOutputInt != 0)
                     {
                         comp.overdriveBuilding = bldg;
-                        comp.overdrivePowerOutput = Mathf.RoundToInt(cpt.powerOutputInt * (2 + .6f * pwrVal));
-                        comp.overdriveDuration = 20 + 2*pwrVal;
+                        comp.overdrivePowerOutput = Mathf.RoundToInt(cpt.powerOutputInt * (2 + .6f * pwrVal * comp.arcaneDmg));
+                        comp.overdriveDuration = Mathf.RoundToInt((20 + 2*pwrVal) * comp.arcaneDmg);
                         //compP.Props.basePowerConsumption *= 2;
                     }
 
@@ -98,7 +98,7 @@ namespace TorannMagic
                     if(bldgTurret != null && bldgTurret.gun != null)
                     {
                         comp.overdriveBuilding = bldgTurret;
-                        comp.overdriveDuration = 10 + pwrVal;
+                        comp.overdriveDuration = Mathf.RoundToInt((10 + pwrVal) * comp.arcaneDmg);
                     }
                 }
             }

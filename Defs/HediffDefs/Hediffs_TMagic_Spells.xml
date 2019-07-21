@@ -96,7 +96,7 @@
 
   <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_Holy</defName>
-    <label>Divine Wrath</label>
+    <label>Holy Wrath</label>
     <displayWound>false</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -105,7 +105,7 @@
         <labelSolidTendedWell>set</labelSolidTendedWell>
       </li>
       <li Class="HediffCompProperties_GetsPermanent">
-        <permanentLabel>destroyed by divine power</permanentLabel>
+        <permanentLabel>destroyed by holy power</permanentLabel>
       </li>
     </comps>
 	<injuryProps>
@@ -177,7 +177,7 @@
         <labelSolidTendedWell>set</labelSolidTendedWell>
       </li>
       <li Class="HediffCompProperties_GetsPermanent">
-        <permanentLabel>destroyed by mana</permanentLabel>
+        <permanentLabel>destroyed by a mana explosion</permanentLabel>
       </li>
     </comps>
 	<injuryProps>

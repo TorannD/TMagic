@@ -12,6 +12,7 @@ namespace TorannMagic
 
         private int verVal;
         private int pwrVal;
+        private float arcaneDmg = 1f;
 
         bool validTarg;
 
@@ -45,6 +46,7 @@ namespace TorannMagic
             MagicPowerSkill ver = comp.MagicData.MagicPowerSkill_DeathMark.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_DeathMark_ver");
             verVal = ver.level;
             pwrVal = pwr.level;
+            this.arcaneDmg = comp.arcaneDmg;
             if (p.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
                 MightPowerSkill mpwr = p.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
@@ -69,7 +71,7 @@ namespace TorannMagic
                         {
                             if (Rand.Chance(TM_Calc.GetSpellSuccessChance(this.CasterPawn, victim, true)))
                             {
-                                HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_DeathMarkCurse"), Rand.Range(1f + pwrVal, 4 + 2 * pwrVal));
+                                HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_DeathMarkCurse"), (Rand.Range(1f + pwrVal, 4 + 2 * pwrVal) * this.arcaneDmg));
                                 TM_MoteMaker.ThrowSiphonMote(victim.DrawPos, victim.Map, 1f);
                                 if (comp.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD"), false))
                                 {
@@ -80,7 +82,7 @@ namespace TorannMagic
                                 {
                                     if (Rand.Chance(verVal * .1f)) //terror
                                     {
-                                        HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_Terror"), Rand.Range(3f * verVal, 5f * verVal));
+                                        HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_Terror"), Rand.Range(3f * verVal, 5f * verVal) * this.arcaneDmg);
                                         TM_MoteMaker.ThrowDiseaseMote(victim.DrawPos, victim.Map, 1f, .5f, .2f, .4f);
                                         MoteMaker.ThrowText(victim.DrawPos, victim.Map, "Terror", -1);
                                     }

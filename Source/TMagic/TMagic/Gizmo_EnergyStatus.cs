@@ -20,10 +20,12 @@ namespace TorannMagic
         private static readonly Texture2D FullBloodMageTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.4f, 0.0f, 0f));
         private static readonly Texture2D FullChiTex = SolidColorMaterials.NewSolidColorTexture(new Color(1, .75f, 0));
         private static readonly Texture2D FullCountTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.2f, 0.2f, 0.24f));
+        private static readonly Texture2D FullNecroticTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.32f, 0.4f, 0.0f));
 
         private static readonly Texture2D EmptyShieldBarTex = SolidColorMaterials.NewSolidColorTexture(Color.clear);
 
         public Pawn pawn;
+        public Enchantment.CompEnchantedItem iComp = null;
 
         public override float GetWidth(float maxWidth)
         {
@@ -42,6 +44,7 @@ namespace TorannMagic
                 bool isPsionic = pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_PsionicHD"), false);
                 bool isBloodMage = pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_BloodHD"), false);
                 bool isMonk = pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ChiHD, false);
+                bool isEnchantedItem = this.iComp != null;
                 Hediff hediff = null;
                 for (int h = 0; h < pawn.health.hediffSet.hediffs.Count; h++)
                 {
@@ -93,6 +96,10 @@ namespace TorannMagic
                 {
                     barCount++;
                 }
+                if(isEnchantedItem)
+                {
+                    barCount++;
+                }
                 float barHeight;
                 float initialShift = 0;
                 if (barCount == 2)
@@ -103,7 +110,7 @@ namespace TorannMagic
                 {
                     initialShift = 6f;
                 }
-                if (barCount > 1 && ((isFighter && compMight.Stamina != null) || (isMage && compMagic.Mana != null)))
+                if (barCount > 1 && ((isFighter && compMight.Stamina != null) || (isMage && compMagic.Mana != null) || (isEnchantedItem && iComp.NecroticEnergy > 0)))
                 {
                     Rect overRect = new Rect(topLeft.x + 2, topLeft.y, this.GetWidth(100), 75); //overall rect size (shell)
                     Find.WindowStack.ImmediateWindow(984698, overRect, WindowLayer.GameUI, delegate
@@ -219,6 +226,25 @@ namespace TorannMagic
                                 Widgets.FillableBar(rect4, fillPercent, Gizmo_EnergyStatus.FullManaTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
                                 Widgets.Label(rect4, "");
                             }
+                            yShift += (barHeight) + 5f;
+                        }
+                        Rect rect5 = rect; // bar rect, starts at bottom of label rect
+                        if (isEnchantedItem)
+                        {
+                            rect5.y += yShift; //shift downward without changing height
+                            try
+                            {
+                                fillPercent = iComp.NecroticEnergy / 100f;
+                                Widgets.FillableBar(rect5, fillPercent, Gizmo_EnergyStatus.FullNecroticTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
+                                Widgets.Label(rect5, "" + (iComp.NecroticEnergy).ToString("F0") + " / " + (100).ToString("F0"));
+                            }
+                            catch
+                            {
+                                fillPercent = 0f;
+                                Widgets.FillableBar(rect5, fillPercent, Gizmo_EnergyStatus.FullNecroticTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
+                                Widgets.Label(rect5, "");
+                            }
+                            yShift += (barHeight) + 5f;
                         }
                         Text.Font = GameFont.Small;
                         Text.Anchor = TextAnchor.UpperLeft;

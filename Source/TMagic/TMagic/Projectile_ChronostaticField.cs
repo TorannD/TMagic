@@ -106,7 +106,7 @@ namespace TorannMagic
                                 {
                                     IntVec3 targetCell = pawn.Position;
                                     targetCell.z++;
-                                    LaunchFlyingObect(targetCell, pawn, 1, Mathf.RoundToInt(Rand.Range(1400, 1800) * (1f + (.2f * pwrVal))));
+                                    LaunchFlyingObect(targetCell, pawn, 1, Mathf.RoundToInt(Rand.Range(1400, 1800) * (1f + (.2f * pwrVal)) * this.arcaneDmg));
                                 }
                                 else
                                 {

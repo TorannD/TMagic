@@ -1206,31 +1206,30 @@ This arcane script is incomplete and the reader may not be able to learn some, o
   
     <!--=============== Magic Spells - Single ====================-->
 
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_Rain</defName>
-    <label>Mage Spell: Rain</label>
+	<ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_ArcaneBolt</defName>
+    <label>Mage Spell: Arcane Bolt</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a magic user how to harness energy in the atmosphere to induce a brief rain.</description>
+    <description>Teaches a magic user how to forcefully project arcane energy.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
+	<alwaysHaulable>true</alwaysHaulable>	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>260</MarketValue>
+      <MarketValue>570</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>40</RawMagicyte>
-		<Cloth>40</Cloth>
+		<RawMagicyte>80</RawMagicyte>
+		<Cloth>50</Cloth>
 	</costList>
 	<recipeMaker>		    
-		<workAmount>2000</workAmount>
+		<workAmount>2500</workAmount>
 		<workSpeedStat>SmithingSpeed</workSpeedStat>
 		<workSkill>Intellectual</workSkill>
 		<recipeUsers>
@@ -1248,13 +1247,12 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
-      <texPath>Books/scroll_water</texPath>
+      <texPath>Books/scroll_power</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
+    </graphicData>	
   </ThingDef>
   
-  <ThingDef ParentName="ArcaneSpellBase">
+	<ThingDef ParentName="ArcaneSpellBase">
     <defName>SpellOf_Blink</defName>
     <label>Mage Spell: Blink</label>
     <thingClass>ThingWithComps</thingClass>
@@ -1301,12 +1299,12 @@ This arcane script is incomplete and the reader may not be able to learn some, o
     </graphicData>
 
   </ThingDef>
- 
-   <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_Teleport</defName>
-    <label>Mage Spell: Teleport</label>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_Blur</defName>
+    <label>Mage Spell: Blur</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a magic user how to manipulate energy using arcane dimensions, allowing the mage to create a portal for rapid transport.</description>
+    <description>Teaches a magic user how to distort the light around their body.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
@@ -1316,14 +1314,14 @@ This arcane script is incomplete and the reader may not be able to learn some, o
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>1320</MarketValue>
+      <MarketValue>580</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>200</RawMagicyte>
-		<DevilstrandCloth>40</DevilstrandCloth>
+		<RawMagicyte>88</RawMagicyte>
+		<Cloth>40</Cloth>
 	</costList>
 	<recipeMaker>		    
 		<workAmount>2000</workAmount>
@@ -1336,15 +1334,207 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>10</Intellectual>
+			<Intellectual>6</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
-			<li>TM_AdvancedScribing</li>
+			<li>TM_MagicScribing</li>
 		</researchPrerequisite>
 	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
-      <texPath>Books/scroll_power</texPath>
+      <texPath>Books/scroll_water</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_Cooler</defName>
+    <label>Mage Spell: Dispel Heat</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches an arcane user how to create a temporary window into the plane of ice, creating a temporary cooling source.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>380</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>48</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_water</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_DirtDevil</defName>
+    <label>Mage Spell: Dirt Devil</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a magic user how to create a whirlwind that seeks out and cleans filth inside the home area.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>580</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>88</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>6</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_EMP</defName>
+    <label>Mage Spell: EMP</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a magic user how to generate an EMP burst at a target location.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>580</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>88</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_lit</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_Extinguish</defName>
+    <label>Mage Spell: Extinguish</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a magic user how to remove the element of fire at a target location, dispersing fires.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>340</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>56</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
 
@@ -1446,7 +1636,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 
   </ThingDef>
   
-    <ThingDef ParentName="ArcaneSpellBase">
+  <ThingDef ParentName="ArcaneSpellBase">
     <defName>SpellOf_PowerNode</defName>
     <label>Mage Spell: Power Node</label>
     <thingClass>ThingWithComps</thingClass>
@@ -1495,10 +1685,10 @@ This arcane script is incomplete and the reader may not be able to learn some, o
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_Cooler</defName>
-    <label>Mage Spell: Dispel Heat</label>
+    <defName>SpellOf_Rain</defName>
+    <label>Mage Spell: Rain</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches an arcane user how to create a temporary window into the plane of ice, creating a temporary cooling source.</description>
+    <description>Teaches a magic user how to harness energy in the atmosphere to induce a brief rain.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
@@ -1508,13 +1698,13 @@ This arcane script is incomplete and the reader may not be able to learn some, o
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>380</MarketValue>
+      <MarketValue>260</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>48</RawMagicyte>
+		<RawMagicyte>40</RawMagicyte>
 		<Cloth>40</Cloth>
 	</costList>
 	<recipeMaker>		    
@@ -1537,6 +1727,54 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_water</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_SmokeCloud</defName>
+    <label>Mage Spell: Smoke Cloud</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a magic user how to ignite particles in the air to create a smokescreen, temporarily concealing a target area.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>420</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>56</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
 
@@ -1585,6 +1823,103 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Books/scroll_lit</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_ChargeBattery</defName>
+    <label>Lightning Spell: Charge Battery</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a lightning mage how to charge a battery by infusing it with magical energy.
+Produces 400Wd adjusted by ability power.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>500</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>67</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_lit</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_CauterizeWound</defName>
+    <label>Fire Spell: Cauterize Wound</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a fire mage how to use elemental fire to instantly clean and close wounds - may leave burn scars.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>320</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>50</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_fire</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
 
@@ -1687,31 +2022,29 @@ This arcane script is incomplete and the reader may not be able to learn some, o
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_ChargeBattery</defName>
-    <label>Lightning Spell: Charge Battery</label>
+    <defName>SpellOf_Invisibility</defName>
+    <label>Mage Spell: Invisibility</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a lightning mage how to charge a battery by infusing it with magical energy.
-Produces 400Wd.</description>
+    <description>Teaches a magic user how to manipulate light and become invisible.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
+	<alwaysHaulable>true</alwaysHaulable>	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>500</MarketValue>
+      <MarketValue>1200</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>67</RawMagicyte>
-		<Cloth>40</Cloth>
+		<RawMagicyte>150</RawMagicyte>
+		<DevilstrandCloth>50</DevilstrandCloth>
 	</costList>
 	<recipeMaker>		    
-		<workAmount>2000</workAmount>
+		<workAmount>3000</workAmount>
 		<workSpeedStat>SmithingSpeed</workSpeedStat>
 		<workSkill>Intellectual</workSkill>
 		<recipeUsers>
@@ -1721,10 +2054,56 @@ Produces 400Wd.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>10</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
-			<li>TM_MagicScribing</li>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_LightningTrap</defName>
+    <label>Mage Spell: Lightning Trap</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a magic user how to create a trap that discharges bolts of lightning.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>1200</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>150</RawMagicyte>
+		<DevilstrandCloth>50</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>3000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>10</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
 		</researchPrerequisite>
 	</recipeMaker>
 	<rotatable>false</rotatable>
@@ -1732,14 +2111,13 @@ Produces 400Wd.</description>
       <texPath>Books/scroll_lit</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_SmokeCloud</defName>
-    <label>Mage Spell: Smoke Cloud</label>
+    <defName>SpellOf_ManaShield</defName>
+    <label>Mage Spell: Mana Shield</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a magic user how to ignite particles in the air to create a smokescreen, temporarily concealing a target area.</description>
+    <description>Teaches a magic user how to form a protective barrier made of mana to counter harmful affects on the caster's body.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
@@ -1749,14 +2127,14 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>420</MarketValue>
+      <MarketValue>960</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>56</RawMagicyte>
-		<Cloth>40</Cloth>
+		<RawMagicyte>132</RawMagicyte>
+		<DevilstrandCloth>40</DevilstrandCloth>
 	</costList>
 	<recipeMaker>		    
 		<workAmount>2000</workAmount>
@@ -1769,10 +2147,58 @@ Produces 400Wd.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>10</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
-			<li>TM_MagicScribing</li>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_power</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_SpellMending</defName>
+    <label>Mage Spell: Spell Mending</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a magic user how to reconstruct and repair worn equipment on a pawn.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>1075</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>200</RawMagicyte>
+		<DevilstrandCloth>40</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>10</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
 		</researchPrerequisite>
 	</recipeMaker>
 	<rotatable>false</rotatable>
@@ -1784,10 +2210,10 @@ Produces 400Wd.</description>
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_Extinguish</defName>
-    <label>Mage Spell: Extinguish</label>
+    <defName>SpellOf_SiphonMana</defName>
+    <label>Mage Spell: Siphon Mana</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a magic user how to remove the element of fire at a target location, dispersing fires.</description>
+    <description>Teaches a magic user how to siphon mana from another mage.  If used on a being that does not possess mana, their physical traits will be drained instead (no mana will be gained).  Effect is potentially lethal in extreme cases.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
@@ -1797,14 +2223,14 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>340</MarketValue>
+      <MarketValue>760</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>56</RawMagicyte>
-		<Cloth>40</Cloth>
+		<RawMagicyte>96</RawMagicyte>
+		<DevilstrandCloth>40</DevilstrandCloth>
 	</costList>
 	<recipeMaker>		    
 		<workAmount>2000</workAmount>
@@ -1817,255 +2243,15 @@ Produces 400Wd.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>10</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
-			<li>TM_MagicScribing</li>
+			<li>TM_AdvancedScribing</li>
 		</researchPrerequisite>
 	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
-      <texPath>Books/scroll</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_CauterizeWound</defName>
-    <label>Fire Spell: Cauterize Wound</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a fire mage how to use elemental fire to instantly clean and close wounds - may leave burn scars.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>320</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>50</RawMagicyte>
-		<Cloth>40</Cloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>2000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_MagicScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll_fire</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_EMP</defName>
-    <label>Mage Spell: EMP</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a magic user how to generate an EMP burst at a target location.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>580</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>88</RawMagicyte>
-		<Cloth>40</Cloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>2000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_MagicScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll_lit</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_Firestorm</defName>
-    <label>Fire Spell: Firestorm</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a fire mage how to wield the full fury of the fire element to scorch the earth with a firestorm.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>2150</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>252</RawMagicyte>
-		<DevilstrandCloth>100</DevilstrandCloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>4000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_MasterScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll_fire</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_Blizzard</defName>
-    <label>Ice Spell: Blizzard</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches an ice mage how to call forth a blizzard to bury your foes in a hail of ice and snow.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>2150</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>252</RawMagicyte>
-		<DevilstrandCloth>100</DevilstrandCloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>4000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_MasterScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll_water</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_EyeOfTheStorm</defName>
-    <label>Lightning Spell: Eye of the Storm</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a lightning mage how to contain the raw fury of a lightning storm into a small sphere and project it along a set path.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>2150</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>252</RawMagicyte>
-		<DevilstrandCloth>100</DevilstrandCloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>4000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_MasterScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll_lit</texPath>
+      <texPath>Books/scroll_power</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
 
@@ -2120,6 +2306,196 @@ Produces 400Wd.</description>
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_Teleport</defName>
+    <label>Mage Spell: Teleport</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a magic user how to manipulate energy using arcane dimensions, allowing the mage to create a portal for rapid transport.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>1320</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>200</RawMagicyte>
+		<DevilstrandCloth>40</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>10</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_power</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_TransferMana</defName>
+    <label>Mage Spell: Transfer Mana</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a magic user how to transfer mana to another mage.  If raw mana is infused into a non-mage recepient, their physical traits will be temporarily augmented.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>760</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+		<costList>
+		<RawMagicyte>96</RawMagicyte>
+		<DevilstrandCloth>40</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>10</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_power</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_BlankMind</defName>
+    <label>Enchanter Spell: Blank Mind</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches an enchanter how to wipe memories and break a pawn out of a mental state or cause a long duration stun on enemies.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>820</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>120</RawMagicyte>
+		<Cloth>50</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_power</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_BriarPatch</defName>
+    <label>Druid Spell: Briar Patch</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a Druid how to rapidly grow a hazard made of thorny vines.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>570</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>80</RawMagicyte>
+		<Cloth>50</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>10</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
     <defName>SpellOf_FertileLands</defName>
     <label>Druid Spell: Fertile Lands</label>
     <thingClass>ThingWithComps</thingClass>
@@ -2168,10 +2544,10 @@ Produces 400Wd.</description>
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_SpellMending</defName>
-    <label>Mage Spell: Spell Mending</label>
+    <defName>SpellOf_MechaniteReprogramming</defName>
+    <label>Technomancer Spell: Mechanite Reprogramming</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a magic user how to reconstruct and repair worn equipment on a pawn.</description>
+    <description>Teaches a technomancer how to reprogramming fibrous or sensory mechanites in a way that enhances the attributes of the host.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
@@ -2181,14 +2557,14 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>1075</MarketValue>
+      <MarketValue>850</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>200</RawMagicyte>
-		<DevilstrandCloth>40</DevilstrandCloth>
+		<RawMagicyte>150</RawMagicyte>
+		<DevilstrandCloth>30</DevilstrandCloth>
 	</costList>
 	<recipeMaker>		    
 		<workAmount>2000</workAmount>
@@ -2201,7 +2577,7 @@ Produces 400Wd.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>10</Intellectual>
+			<Intellectual>8</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_AdvancedScribing</li>
@@ -2215,11 +2591,11 @@ Produces 400Wd.</description>
 
   </ThingDef>
   
-   <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_TransferMana</defName>
-    <label>Mage Spell: Transfer Mana</label>
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_Overdrive</defName>
+    <label>Technomancer Spell: Overdrive</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a magic user how to transfer mana to another mage.  If raw mana is infused into a non-mage recepient, their physical traits will be temporarily augmented.</description>
+    <description>Teaches a technomancer user how to over-clock or bypass security features of mechanical, electrical, and robotic devices causing it to perform at a drastically increased rate for a short period.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
@@ -2229,14 +2605,14 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>760</MarketValue>
+      <MarketValue>480</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
-		<costList>
-		<RawMagicyte>96</RawMagicyte>
-		<DevilstrandCloth>40</DevilstrandCloth>
+	<costList>
+		<RawMagicyte>58</RawMagicyte>
+		<Cloth>40</Cloth>
 	</costList>
 	<recipeMaker>		    
 		<workAmount>2000</workAmount>
@@ -2249,586 +2625,10 @@ Produces 400Wd.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>10</Intellectual>
+			<Intellectual>8</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
-			<li>TM_AdvancedScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll_power</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
- <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_SiphonMana</defName>
-    <label>Mage Spell: Siphon Mana</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a magic user how to siphon mana from another mage.  If used on a being that does not possess mana, their physical traits will be drained instead (no mana will be gained).  Effect is potentially lethal in extreme cases.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>760</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>96</RawMagicyte>
-		<DevilstrandCloth>40</DevilstrandCloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>2000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>2</Crafting>
-			<Intellectual>10</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_AdvancedScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll_power</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
-   <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_RegrowLimb</defName>
-    <label>Druid Spell: Regrow Limb</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a druid how to regrow limbs by combining nature, arcane powers, and medical science.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>1860</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>212</RawMagicyte>
-		<DevilstrandCloth>100</DevilstrandCloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>4000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_MasterScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_ManaShield</defName>
-    <label>Mage Spell: Mana Shield</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a magic user how to form a protective barrier made of mana to counter harmful affects on the caster's body.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>960</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>132</RawMagicyte>
-		<DevilstrandCloth>40</DevilstrandCloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>2000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>2</Crafting>
-			<Intellectual>10</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_AdvancedScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll_power</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_FoldReality</defName>
-    <label>Arcane Spell: Gateway</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches an arcane mage how to fold reality in order to open a temporary window between colonies.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>2860</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>400</RawMagicyte>
-		<DevilstrandCloth>100</DevilstrandCloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>4000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_MasterScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll_power</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_Resurrection</defName>
-    <label>Priest Spell: Resurrection</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a priest how to restore the spark of life to the recently deceased.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>3750</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>480</RawMagicyte>
-		<DevilstrandCloth>100</DevilstrandCloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>4000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_MasterScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll_holy</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_HolyWrath</defName>
-    <label>Paladin Spell: Holy Wrath</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a paladin how to call forth the wrath of the gods.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>1900</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>240</RawMagicyte>
-		<DevilstrandCloth>100</DevilstrandCloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>4000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_MasterScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll_holy</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_LichForm</defName>
-    <label>Necromancer Spell: Lich Form</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a necromancer how to transform into a lich.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>2575</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>360</RawMagicyte>
-		<DevilstrandCloth>100</DevilstrandCloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>4000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_MasterScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll_power</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_SummonPoppi</defName>
-    <label>Summoner Spell: Summon Poppi</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a summoner how to summon a band of cute and cuddly poppi.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>2260</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>252</RawMagicyte>
-		<DevilstrandCloth>100</DevilstrandCloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>4000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_MasterScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_BattleHymn</defName>
-    <label>Bard Spell: Battle Hymn</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a bard how to perform Battle Hymn.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>1650</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>150</RawMagicyte>
-		<DevilstrandCloth>100</DevilstrandCloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>4000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_MasterScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_PsychicShock</defName>
-    <label>Warlock Spell: Psychic Shock</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a Warlock how to use his psychic powers to emit powerful psychic shock that overwhelms and reverberates from nearby pawn.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>1800</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>150</RawMagicyte>
-		<DevilstrandCloth>100</DevilstrandCloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>4000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_MasterScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll_power</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_Scorn</defName>
-    <label>Succubus Spell: Scorn</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a succubus how to unleash the full malice harbored by their demon heart.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>1650</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>150</RawMagicyte>
-		<DevilstrandCloth>100</DevilstrandCloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>4000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_MasterScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll_power</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_Meteor</defName>
-    <label>Geomancer Spell: Meteor</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a geomancer how to summon a massive meteor to bury an area in rock and debris.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>1650</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>150</RawMagicyte>
-		<DevilstrandCloth>100</DevilstrandCloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>4000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_MasterScribing</li>
+			<li>TM_MagicScribing</li>
 		</researchPrerequisite>
 	</recipeMaker>
 	<rotatable>false</rotatable>
@@ -2936,10 +2736,10 @@ Produces 400Wd.</description>
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_Overdrive</defName>
-    <label>Technomancer Spell: Overdrive</label>
+    <defName>SpellOf_BattleHymn</defName>
+    <label>Bard Spell: Battle Hymn</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a technomancer user how to over-clock or bypass security features of mechanical, electrical, and robotic devices causing it to perform at a drastically increased rate for a short period.</description>
+    <description>Teaches a bard how to perform Battle Hymn.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
@@ -2949,17 +2749,17 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>480</MarketValue>
+      <MarketValue>1650</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>58</RawMagicyte>
-		<Cloth>40</Cloth>
+		<RawMagicyte>150</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
 	</costList>
 	<recipeMaker>		    
-		<workAmount>2000</workAmount>
+		<workAmount>4000</workAmount>
 		<workSpeedStat>SmithingSpeed</workSpeedStat>
 		<workSkill>Intellectual</workSkill>
 		<recipeUsers>
@@ -2968,11 +2768,395 @@ Produces 400Wd.</description>
 		<effectWorking>Smelt</effectWorking>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
-			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
-			<li>TM_MagicScribing</li>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_Blizzard</defName>
+    <label>Ice Spell: Blizzard</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches an ice mage how to call forth a blizzard to bury your foes in a hail of ice and snow.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>2150</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>252</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_water</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_BloodMoon</defName>
+    <label>Blood Mage Spell: Blood Moon</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a blood mage how to summon a vicious pack of blood demons.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>2250</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>200</RawMagicyte>
+		<DevilstrandCloth>150</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_blood</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_EyeOfTheStorm</defName>
+    <label>Lightning Spell: Eye of the Storm</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a lightning mage how to contain the raw fury of a lightning storm into a small sphere and project it along a set path.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>2150</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>252</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_lit</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_Firestorm</defName>
+    <label>Fire Spell: Firestorm</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a fire mage how to wield the full fury of the fire element to scorch the earth with a firestorm.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>2150</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>252</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_fire</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_FoldReality</defName>
+    <label>Arcane Spell: Gateway</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches an arcane mage how to fold reality in order to open a temporary window between colonies.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>2860</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>400</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_power</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_HolyWrath</defName>
+    <label>Paladin Spell: Holy Wrath</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a paladin how to call forth the wrath of the gods.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>1900</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>240</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_holy</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_LichForm</defName>
+    <label>Necromancer Spell: Lich Form</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a necromancer how to transform into a lich.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>2575</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>360</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_power</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_Meteor</defName>
+    <label>Geomancer Spell: Meteor</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a geomancer how to summon a massive meteor to bury an area in rock and debris.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>1650</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>150</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
 		</researchPrerequisite>
 	</recipeMaker>
 	<rotatable>false</rotatable>
@@ -3032,10 +3216,10 @@ Produces 400Wd.</description>
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_BloodMoon</defName>
-    <label>Blood Mage Spell: Blood Moon</label>
+    <defName>SpellOf_PsychicShock</defName>
+    <label>Warlock Spell: Psychic Shock</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a blood mage how to summon a vicious pack of blood demons.</description>
+    <description>Teaches a Warlock how to use his psychic powers to emit powerful psychic shock that overwhelms and reverberates from nearby pawn.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
@@ -3045,14 +3229,14 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>2250</MarketValue>
+      <MarketValue>1800</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>200</RawMagicyte>
-		<DevilstrandCloth>150</DevilstrandCloth>
+		<RawMagicyte>150</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
 	</costList>
 	<recipeMaker>		    
 		<workAmount>4000</workAmount>
@@ -3073,7 +3257,197 @@ Produces 400Wd.</description>
 	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
-      <texPath>Books/scroll_blood</texPath>
+      <texPath>Books/scroll_power</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_Recall</defName>
+    <label>Chronomancer Spell: Recall</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a chronomancer how to recall their physical being to a past condition.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>2000</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>180</RawMagicyte>
+		<DevilstrandCloth>130</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_power</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+  
+   <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_RegrowLimb</defName>
+    <label>Druid Spell: Regrow Limb</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a druid how to regrow limbs by combining nature, arcane powers, and medical science.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>1860</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>212</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_Resurrection</defName>
+    <label>Priest Spell: Resurrection</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a priest how to restore the spark of life to the recently deceased.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>3750</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>480</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_holy</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_Scorn</defName>
+    <label>Succubus Spell: Scorn</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a succubus how to unleash the full malice harbored by their demon heart.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>1650</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>150</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>14</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_power</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
 
@@ -3128,10 +3502,10 @@ Produces 400Wd.</description>
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_Blur</defName>
-    <label>Mage Spell: Blur</label>
+    <defName>SpellOf_SummonPoppi</defName>
+    <label>Summoner Spell: Summon Poppi</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a magic user how to distort the light around their body.</description>
+    <description>Teaches a summoner how to summon a band of cute and cuddly poppi.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
@@ -3141,389 +3515,14 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>580</MarketValue>
+      <MarketValue>2260</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 	<costList>
-		<RawMagicyte>88</RawMagicyte>
-		<Cloth>40</Cloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>2000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>2</Crafting>
-			<Intellectual>6</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_MagicScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll_water</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_BlankMind</defName>
-    <label>Enchanter Spell: Blank Mind</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches an enchanter how to wipe memories and break a pawn out of a mental state or cause a long duration stun on enemies.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>820</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>120</RawMagicyte>
-		<Cloth>50</Cloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>2000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_AdvancedScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll_power</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_DirtDevil</defName>
-    <label>Mage Spell: Dirt Devil</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a magic user how to create a whirlwind that seeks out and cleans filth inside the home area.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>580</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>88</RawMagicyte>
-		<Cloth>40</Cloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>2000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>2</Crafting>
-			<Intellectual>6</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_MagicScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_MechaniteReprogramming</defName>
-    <label>Technomancer Spell: Mechanite Reprogramming</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a technomancer how to reprogramming fibrous or sensory mechanites in a way that enhances the attributes of the host.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>850</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>150</RawMagicyte>
-		<DevilstrandCloth>30</DevilstrandCloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>2000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_AdvancedScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_ArcaneBolt</defName>
-    <label>Mage Spell: Arcane Bolt</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a magic user how to forcefully project arcane energy.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>570</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>80</RawMagicyte>
-		<Cloth>50</Cloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>2500</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_MagicScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll_power</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>	
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_LightningTrap</defName>
-    <label>Mage Spell: Lightning Trap</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a magic user how to create a trap that discharges bolts of lightning.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>1200</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>150</RawMagicyte>
-		<DevilstrandCloth>50</DevilstrandCloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>3000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>2</Crafting>
-			<Intellectual>10</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_AdvancedScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll_lit</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_Invisibility</defName>
-    <label>Mage Spell: Invisibility</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a magic user how to manipulate light and become invisible.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>1200</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>150</RawMagicyte>
-		<DevilstrandCloth>50</DevilstrandCloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>3000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>2</Crafting>
-			<Intellectual>10</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_AdvancedScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_BriarPatch</defName>
-    <label>Druid Spell: Briar Patch</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a Druid how to rapidly grow a hazard made of thorny vines.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>570</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>80</RawMagicyte>
-		<Cloth>50</Cloth>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>2000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>2</Crafting>
-			<Intellectual>10</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_AdvancedScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-  </ThingDef>
-  
-  <ThingDef ParentName="ArcaneSpellBase">
-    <defName>SpellOf_Recall</defName>
-    <label>Chronomancer Spell: Recall</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a chronomancer how to recall their physical being to a past condition.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>2000</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>180</RawMagicyte>
-		<DevilstrandCloth>130</DevilstrandCloth>
+		<RawMagicyte>252</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
 	</costList>
 	<recipeMaker>		    
 		<workAmount>4000</workAmount>
@@ -3544,18 +3543,117 @@ Produces 400Wd.</description>
 	</recipeMaker>
 	<rotatable>false</rotatable>
     <graphicData>
-      <texPath>Books/scroll_power</texPath>
+      <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
+
   </ThingDef>
   
       <!--=============== Fighter Skills - Single ====================-->
 
-  <ThingDef ParentName="FighterSkillBase">
-    <defName>SkillOf_Sprint</defName>
-    <label>Fighter Skill: Sprint</label>
+	<ThingDef ParentName="FighterSkillBase">
+    <defName>SkillOf_ThrowingKnife</defName>
+    <label>Fighter Skill: Throwing Knife</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a fighter class how to dedicate an allotment of stamina to sustain an increased movement rate.</description>
+    <description>Teaches a fighter class the Throwing Knife skill. Non-violent pawns cannot learn this skill.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>950</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+		<costList>
+		<RawMagicyte>125</RawMagicyte>
+	</costList>
+	<costStuffCount>80</costStuffCount>
+	<stuffCategories>
+		<li>Leathery</li>
+	</stuffCategories>
+	<recipeMaker>		    
+		<workAmount>3000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+  
+  <ThingDef ParentName="FighterSkillBase">
+    <defName>SkillOf_BurningFury</defName>
+    <label>Fighter Skill: Burning Fury</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a fighter class how to activate the Burning Fury aura. Non-violent pawns cannot learn this skill.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>950</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+		<costList>
+		<RawMagicyte>125</RawMagicyte>
+	</costList>
+	<costStuffCount>80</costStuffCount>
+	<stuffCategories>
+		<li>Leathery</li>
+	</stuffCategories>
+	<recipeMaker>		    
+		<workAmount>3000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+	
+	<ThingDef ParentName="FighterSkillBase">
+    <defName>SkillOf_FightersFocus</defName>
+    <label>Fighter Skill: Fighters Focus</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a fighter class how to dedicate an allotment of stamina to withstand greater mental and physical stress.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
@@ -3565,13 +3663,13 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>500</MarketValue>
+      <MarketValue>800</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
-	<costList>
-		<RawMagicyte>80</RawMagicyte>
+		<costList>
+		<RawMagicyte>95</RawMagicyte>
 	</costList>
 	<costStuffCount>80</costStuffCount>
 	<stuffCategories>
@@ -3601,8 +3699,8 @@ Produces 400Wd.</description>
     </graphicData>
 
   </ThingDef>
-  
-    <ThingDef ParentName="FighterSkillBase">
+	
+	<ThingDef ParentName="FighterSkillBase">
     <defName>SkillOf_GearRepair</defName>
     <label>Fighter Skill: Gear Repair</label>
     <thingClass>ThingWithComps</thingClass>
@@ -3653,7 +3751,56 @@ Produces 400Wd.</description>
 
   </ThingDef>
   
-    <ThingDef ParentName="FighterSkillBase">
+  <ThingDef ParentName="FighterSkillBase">
+    <defName>SkillOf_HeavyBlow</defName>
+    <label>Fighter Skill: Heavy Blow</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a fighter class how to dedicate an allotment of stamina to increase the power of each attack.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>750</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+		<costList>
+		<RawMagicyte>125</RawMagicyte>
+	</costList>
+	<costStuffCount>80</costStuffCount>
+	<stuffCategories>
+		<li>Leathery</li>
+	</stuffCategories>
+	<recipeMaker>		    
+		<workAmount>3000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+  
+  <ThingDef ParentName="FighterSkillBase">
     <defName>SkillOf_InnerHealing</defName>
     <label>Fighter Skill: Inner Healing</label>
     <thingClass>ThingWithComps</thingClass>
@@ -3702,13 +3849,13 @@ Produces 400Wd.</description>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
 
-  </ThingDef>  
-  
-    <ThingDef ParentName="FighterSkillBase">
-    <defName>SkillOf_HeavyBlow</defName>
-    <label>Fighter Skill: Heavy Blow</label>
+  </ThingDef>
+
+  <ThingDef ParentName="FighterSkillBase">
+    <defName>SkillOf_PommelStrike</defName>
+    <label>Fighter Skill: Pommel Strike</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a fighter class how to dedicate an allotment of stamina to increase the power of each attack.</description>
+    <description>Teaches a fighter class how to perform a non-lethal blow to stun or knock-out a target.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
@@ -3717,13 +3864,13 @@ Produces 400Wd.</description>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
 	<statBases>
-      <MarketValue>750</MarketValue>
+      <MarketValue>1000</MarketValue>
 	</statBases>
 	<comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
 		<costList>
-		<RawMagicyte>125</RawMagicyte>
+		<RawMagicyte>130</RawMagicyte>
 	</costList>
 	<costStuffCount>80</costStuffCount>
 	<stuffCategories>
@@ -3751,6 +3898,57 @@ Produces 400Wd.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
+  </ThingDef>  
+  
+  <ThingDef ParentName="FighterSkillBase">
+    <defName>SkillOf_Sprint</defName>
+    <label>Fighter Skill: Sprint</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a fighter class how to dedicate an allotment of stamina to sustain an increased movement rate.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>500</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>80</RawMagicyte>
+	</costList>
+	<costStuffCount>80</costStuffCount>
+	<stuffCategories>
+		<li>Leathery</li>
+	</stuffCategories>
+	<recipeMaker>		    
+		<workAmount>3000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>8</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
   </ThingDef>
   
   <ThingDef ParentName="FighterSkillBase">
@@ -3854,256 +4052,9 @@ Produces 400Wd.</description>
     </graphicData>
 
   </ThingDef>
-  
-  <ThingDef ParentName="FighterSkillBase">
-    <defName>SkillOf_FightersFocus</defName>
-    <label>Fighter Skill: Fighters Focus</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a fighter class how to dedicate an allotment of stamina to withstand greater mental and physical stress.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>800</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-		<costList>
-		<RawMagicyte>95</RawMagicyte>
-	</costList>
-	<costStuffCount>80</costStuffCount>
-	<stuffCategories>
-		<li>Leathery</li>
-	</stuffCategories>
-	<recipeMaker>		    
-		<workAmount>3000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>4</Crafting>
-			<Intellectual>8</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_AdvancedScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
-  <ThingDef ParentName="FighterSkillBase">
-    <defName>SkillOf_ThrowingKnife</defName>
-    <label>Fighter Skill: Throwing Knife</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a fighter class the Throwing Knife skill. Non-violent pawns cannot learn this skill.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>950</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-		<costList>
-		<RawMagicyte>125</RawMagicyte>
-	</costList>
-	<costStuffCount>80</costStuffCount>
-	<stuffCategories>
-		<li>Leathery</li>
-	</stuffCategories>
-	<recipeMaker>		    
-		<workAmount>3000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_MagicScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-  </ThingDef>
-  
-  <ThingDef ParentName="FighterSkillBase">
-    <defName>SkillOf_BurningFury</defName>
-    <label>Fighter Skill: Burning Fury</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a fighter class how to activate the Burning Fury aura. Non-violent pawns cannot learn this skill.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>950</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-		<costList>
-		<RawMagicyte>125</RawMagicyte>
-	</costList>
-	<costStuffCount>80</costStuffCount>
-	<stuffCategories>
-		<li>Leathery</li>
-	</stuffCategories>
-	<recipeMaker>		    
-		<workAmount>3000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>4</Crafting>
-			<Intellectual>8</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_AdvancedScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-  </ThingDef>
-  
-  <ThingDef ParentName="FighterSkillBase">
-    <defName>SkillOf_PommelStrike</defName>
-    <label>Fighter Skill: Pommel Strike</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a fighter class how to perform a non-lethal blow to stun or knock-out a target.</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>1000</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-		<costList>
-		<RawMagicyte>130</RawMagicyte>
-	</costList>
-	<costStuffCount>80</costStuffCount>
-	<stuffCategories>
-		<li>Leathery</li>
-	</stuffCategories>
-	<recipeMaker>		    
-		<workAmount>3000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableMagicPrinter</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>4</Crafting>
-			<Intellectual>8</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_AdvancedScribing</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Books/scroll</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-  </ThingDef>
 
       <!--=============== Gems of Insight ====================-->
 	  
-  <ThingDef ParentName="UsableGemstoneBase">
-    <defName>GemstoneOfInsight_Might</defName>
-    <label>Gem of Physical Insight</label>
-    <thingClass>ThingWithComps</thingClass>
-    <description>Imbues the user with the spirit of a warrior, granting them the "physically adept" trait.	
-
-**Note: use of this item will replace a random trait if the user has more than 7 traits and cannot be used by a pawn with existing magic or fighter traits**</description>
-	<category>Item</category>
-	<selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
-	<resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
-	<statBases>
-      <MarketValue>2400</MarketValue>
-	</statBases>
-	<comps>
-      <li Class="CompProperties_Forbiddable" />
-    </comps>
-	<costList>
-		<RawMagicyte>400</RawMagicyte>
-	</costList>
-	<recipeMaker>		    
-		<workAmount>6000</workAmount>
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
-		<workSkill>Intellectual</workSkill>
-		<recipeUsers>
-			<li>TableGemcutting</li>
-		</recipeUsers>
-		<effectWorking>Smelt</effectWorking>
-		<unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
-		<skillRequirements>
-			<Crafting>6</Crafting>
-			<Intellectual>10</Intellectual>
-		</skillRequirements>
-		<researchPrerequisite>
-			<li>TM_ArcaneCrafting</li>
-		</researchPrerequisite>
-	</recipeMaker>
-	<rotatable>false</rotatable>
-    <graphicData>
-      <texPath>Items/Gemstones/mightinsight</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-
-  </ThingDef>
-  
   <ThingDef ParentName="UsableGemstoneBase">
     <defName>GemstoneOfInsight_Magic</defName>
     <label>Gem of Arcane Insight</label>
@@ -4148,6 +4099,55 @@ Produces 400Wd.</description>
 	<rotatable>false</rotatable>
     <graphicData>
       <texPath>Items/Gemstones/magicinsight</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+  </ThingDef>
+  
+  <ThingDef ParentName="UsableGemstoneBase">
+    <defName>GemstoneOfInsight_Might</defName>
+    <label>Gem of Physical Insight</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Imbues the user with the spirit of a warrior, granting them the "physically adept" trait.	
+
+**Note: use of this item will replace a random trait if the user has more than 7 traits and cannot be used by a pawn with existing magic or fighter traits**</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>2400</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>400</RawMagicyte>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>6000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableGemcutting</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>6</Crafting>
+			<Intellectual>10</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_ArcaneCrafting</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Items/Gemstones/mightinsight</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
 

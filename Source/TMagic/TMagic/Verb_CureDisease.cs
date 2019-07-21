@@ -13,6 +13,7 @@ namespace TorannMagic
     {
         private int verVal;
         private int pwrVal;
+        private float arcaneDmg = 1f;
             
         protected override bool TryCastShot()
         {
@@ -23,6 +24,7 @@ namespace TorannMagic
             MagicPowerSkill ver = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_CureDisease.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_CureDisease_ver");
             verVal = ver.level;
             pwrVal = pwr.level;
+            this.arcaneDmg = caster.GetComp<CompAbilityUserMagic>().arcaneDmg;
             if (caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
                 MightPowerSkill mpwr = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
@@ -51,7 +53,7 @@ namespace TorannMagic
                 }
                 else
                 {
-                    sevAdjustment = Mathf.RoundToInt(Rand.Range(0, 1));
+                    sevAdjustment = Mathf.RoundToInt(Rand.Range(0, 1) * this.arcaneDmg);
                 }
                 if(sevAdjustment !=0 ) 
                 {

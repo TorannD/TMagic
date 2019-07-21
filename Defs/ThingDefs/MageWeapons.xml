@@ -149,101 +149,7 @@
   
   <!-- =======================Magic Weapons========================================================================================= -->
 
-  <!-- =======================  Melee Weapons  ============================ -->
-
-  <ThingDef ParentName="TM_BaseMeleeMageWeapon">
-		<defName>TM_ThrumboAxe</defName>
-		<label>thrumbo axe</label>
-		<description>An axe crafted using thrumbo horns that are fused together with a clasp made from magicyte. This clasp stores arcane potential and transfers it as physical force when the axe is swung, allowing it to deliver mighty blows capable of cleaving through multiple opponents. The shaft is also etched with magical runes to augment the wielder's power.
-		
-This weapon is enchanted and provides additional benefits to trained mages and fighters:
-Max Energy: +10%
-Damage Boost: +20%
-Arcane Resistance: +30%</description>
-		<graphicData>
-			<texPath>Items/weapons/thrumboaxe_etched_offset</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>1.4</drawSize>
-		</graphicData>
-    <weaponTags>
-		<li>SeerElite</li>
-    </weaponTags>
-	<statBases>
-      <WorkToMake>60000</WorkToMake>
-	  <MarketValue>4650</MarketValue>
-      <Mass>4</Mass>
-	  <MaxHitPoints>450</MaxHitPoints>
-	  <Flammability>1.0</Flammability>
-	  <DeteriorationRate>1</DeteriorationRate>
-    </statBases>
-    <costList>
-      <Steel>200</Steel>
-      <WoodLog>50</WoodLog>
-	  <Jade>50</Jade>
-	  <Silver>20</Silver>
-	  <RawMagicyte>200</RawMagicyte>
-	  <ThrumboHorn>2</ThrumboHorn>
-    </costList>
-	<recipeMaker>
-	  <workSpeedStat>SmithingSpeed</workSpeedStat>
-      <workSkill>Crafting</workSkill>
-	  <effectWorking>Smelt</effectWorking>
-      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-	  <recipeUsers>
-        <li>ElectricSmithy</li>
-        <li>FueledSmithy</li>
-      </recipeUsers>
-      <workAmount>60000</workAmount>
-	  <skillRequirements>
-			<Intellectual>4</Intellectual>
-			<Crafting>6</Crafting>
-	  </skillRequirements>
-	  <researchPrerequisite>
-			<li>TM_ArcaneApparel</li>
-	  </researchPrerequisite>
-    </recipeMaker>	
-	<comps>
-		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
-		  <hasEnchantment>true</hasEnchantment>
-		  <maxMP>0.10</maxMP>
-		  <maxMPTier>Standard</maxMPTier>
-		  <arcaneDmg>0.20</arcaneDmg>
-		  <arcaneDmgTier>Crafted</arcaneDmgTier>	
-		  <arcaneRes>0.30</arcaneRes>
-		  <arcaneResTier>Major</arcaneResTier>	
-		</li>
-		<li>
-		  <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
-		</li>
-	</comps>
-	<equippedAngleOffset>-15</equippedAngleOffset>
-    <tools>
-      <li>
-        <label>handle</label>
-        <capacities>
-          <li>Blunt</li>
-        </capacities>
-        <power>9</power>
-        <cooldownTime>.9</cooldownTime>
-      </li>
-	  <li>
-	    <label>cleave</label>
-        <capacities>
-          <li>TM_ThrumboCleave</li>
-        </capacities>
-        <power>18</power>
-        <cooldownTime>1.6</cooldownTime>
-      </li>
-	  <li>
-        <label>horns</label>
-        <capacities>
-          <li>Stab</li>
-        </capacities>
-        <power>26</power>
-        <cooldownTime>2</cooldownTime>
-      </li>
-    </tools>
-  </ThingDef>  
+  <!-- =======================  Melee Weapons  ============================ --> 
   
   <ThingDef ParentName="TM_BaseMeleeMageWeapon">
 		<defName>TM_ElephantSpear</defName>
@@ -336,6 +242,340 @@ Arcane Resistance: +20%</description>
         <power>22</power>
 		<armorPenetration>0.2</armorPenetration>
         <cooldownTime>1.8</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  
+  <!-- Elephant Bow -->	
+  <ThingDef ParentName="BaseProjectileNeolithic"> <!-- Class="AbilityUser.ProjectileDef_Ability">
+	<thingClass>AbilityUser.ProjectileDef_Ability</thingClass> -->
+	<defName>Projectile_ElephantBow</defName>
+	<label>Elephant bow bolt</label>
+	<graphicData>
+		<texPath>Things/Projectile/Arrow_Small</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+	</graphicData>
+	<projectile>
+		<flyOverhead>false</flyOverhead>
+		<damageDef>ArrowHighVelocity</damageDef>
+		<damageAmountBase>19</damageAmountBase>
+		<speed>52</speed>
+		<stoppingPower>1.75</stoppingPower>
+		<armorPenetrationBase>0.20</armorPenetrationBase>
+	</projectile>
+  </ThingDef>
+
+
+  <ThingDef ParentName="TM_BaseRangedMageWeapon">
+    <defName>TM_ElephantBow</defName>
+    <label>Elephant Bow</label>
+    <description>A bow shaped from elephant tusks. The tusks are hallowed out to decrease rigidity and reduce weight and softened by soaking it in a magicyte compound that increases suppleness. The elephant bow offers significant improvements in range and accuracy for distant targets over the greatbow, though it is slightly more difficult to handle.
+	
+The elephant bow is engraved with minor enchantments and is a preferred weapon by many experienced rangers and hunters.
+
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Max Energy: +5%
+Energy Regen: +5%
+Damage Boost: +10%
+Ability Cooldown: -10%</description>
+    <graphicData>
+      <texPath>Items/weapons/elephantbow</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <drawSize>1.5</drawSize>
+    </graphicData>
+    <soundInteract>Bow_Large</soundInteract>	
+	<weaponTags>
+      <li>SeerBowman</li>
+    </weaponTags>
+    <statBases>
+      <WorkToMake>12000</WorkToMake>
+	  <MarketValue>1250</MarketValue>
+      <Mass>2.5</Mass>
+	  <MaxHitPoints>180</MaxHitPoints>
+      <AccuracyTouch>0.55</AccuracyTouch>
+      <AccuracyShort>0.91</AccuracyShort>
+      <AccuracyMedium>0.81</AccuracyMedium>
+      <AccuracyLong>0.68</AccuracyLong>
+      <RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>20</Steel>
+      <WoodLog>100</WoodLog>
+	  <RawMagicyte>100</RawMagicyte>
+	  <ElephantTusk>2</ElephantTusk>
+    </costList>
+	<recipeMaker>
+	  <workSpeedStat>SmithingSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+	  <effectWorking>Smelt</effectWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+	  <recipeUsers>
+        <li>ElectricSmithy</li>
+        <li>FueledSmithy</li>
+		<li>CraftingSpot</li>
+      </recipeUsers>
+      <workAmount>12000</workAmount>
+	  <skillRequirements>
+			<Intellectual>2</Intellectual>
+			<Crafting>6</Crafting>
+	  </skillRequirements>
+	  <researchPrerequisite>
+			<li>TM_ArcaneCrafting</li>
+	  </researchPrerequisite>
+    </recipeMaker>	
+	<comps>
+		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		  <hasEnchantment>true</hasEnchantment>
+		  <maxMP>0.05</maxMP>
+		  <maxMPTier>Minor</maxMPTier>
+		  <mpRegenRate>0.05</mpRegenRate>
+		  <mpRegenRateTier>Minor</mpRegenRateTier>
+		  <arcaneDmg>0.10</arcaneDmg>
+		  <arcaneDmgTier>Major</arcaneDmgTier>
+		  <coolDown>-0.10</coolDown>
+		  <coolDownTier>Standard</coolDownTier>
+		</li>
+		<li>
+		  <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
+		</li>
+	</comps>
+	<equippedAngleOffset>-20</equippedAngleOffset>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_ElephantBow</defaultProjectile>
+        <warmupTime>2</warmupTime>
+        <range>38</range>
+        <soundCast>TM_ThrumBow</soundCast>
+        <soundCastTail>TM_Woosh</soundCastTail>
+        <muzzleFlashScale>1</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>limb</label>
+        <capacities>
+          <li>Blunt</li>
+		  <li>Poke</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2.4</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  
+  <ThingDef ParentName="TM_BaseMeleeMageWeapon">
+		<defName>TM_ThrumboAxe</defName>
+		<label>thrumbo axe</label>
+		<description>An axe crafted using thrumbo horns that are fused together with a clasp made from magicyte. This clasp stores arcane potential and transfers it as physical force when the axe is swung, allowing it to deliver mighty blows capable of cleaving through multiple opponents. The shaft is also etched with magical runes to augment the wielder's power.
+		
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Max Energy: +10%
+Damage Boost: +20%
+Arcane Resistance: +30%</description>
+		<graphicData>
+			<texPath>Items/weapons/thrumboaxe_etched_offset</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.4</drawSize>
+		</graphicData>
+    <weaponTags>
+		<li>SeerElite</li>
+    </weaponTags>
+	<statBases>
+      <WorkToMake>60000</WorkToMake>
+	  <MarketValue>4650</MarketValue>
+      <Mass>4</Mass>
+	  <MaxHitPoints>450</MaxHitPoints>
+	  <Flammability>1.0</Flammability>
+	  <DeteriorationRate>1</DeteriorationRate>
+    </statBases>
+    <costList>
+      <Steel>200</Steel>
+      <WoodLog>50</WoodLog>
+	  <Jade>50</Jade>
+	  <Silver>20</Silver>
+	  <RawMagicyte>200</RawMagicyte>
+	  <ThrumboHorn>2</ThrumboHorn>
+    </costList>
+	<recipeMaker>
+	  <workSpeedStat>SmithingSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+	  <effectWorking>Smelt</effectWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+	  <recipeUsers>
+        <li>ElectricSmithy</li>
+        <li>FueledSmithy</li>
+      </recipeUsers>
+      <workAmount>60000</workAmount>
+	  <skillRequirements>
+			<Intellectual>4</Intellectual>
+			<Crafting>6</Crafting>
+	  </skillRequirements>
+	  <researchPrerequisite>
+			<li>TM_ArcaneApparel</li>
+	  </researchPrerequisite>
+    </recipeMaker>	
+	<comps>
+		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		  <hasEnchantment>true</hasEnchantment>
+		  <maxMP>0.10</maxMP>
+		  <maxMPTier>Standard</maxMPTier>
+		  <arcaneDmg>0.20</arcaneDmg>
+		  <arcaneDmgTier>Crafted</arcaneDmgTier>	
+		  <arcaneRes>0.30</arcaneRes>
+		  <arcaneResTier>Major</arcaneResTier>	
+		</li>
+		<li>
+		  <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
+		</li>
+	</comps>
+	<equippedAngleOffset>-15</equippedAngleOffset>
+    <tools>
+      <li>
+        <label>handle</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>.9</cooldownTime>
+      </li>
+	  <li>
+	    <label>cleave</label>
+        <capacities>
+          <li>TM_ThrumboCleave</li>
+        </capacities>
+        <power>18</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+	  <li>
+        <label>horns</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>26</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef> 
+  
+  <!-- Thrum Bow -->	
+  <ThingDef ParentName="BaseProjectileNeolithic"> <!-- Class="AbilityUser.ProjectileDef_Ability">
+	<thingClass>AbilityUser.ProjectileDef_Ability</thingClass> -->
+	<defName>Projectile_ThrumArrow</defName>
+	<label>Thrum bow bolt</label>
+	<graphicData>
+		<texPath>Spells/thrum_bolt</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shaderType>TransparentPostLight</shaderType>
+	</graphicData>
+	<projectile>
+		<flyOverhead>false</flyOverhead>
+		<damageDef>ArrowHighVelocity</damageDef>
+		<damageAmountBase>23</damageAmountBase>
+		<speed>58</speed>
+		<stoppingPower>2</stoppingPower>
+		<armorPenetrationBase>0.25</armorPenetrationBase>
+	</projectile>
+  </ThingDef>
+
+
+  <ThingDef ParentName="TM_BaseRangedMageWeapon">
+    <defName>TM_ThrumBow</defName>
+    <label>Thrum Bow</label>
+    <description>A bow shaped from the horn of a Thrumbo. The horn is hallowed out to decrease the weight and softened by soaking it in a magicyte compound that adds a surprising suppleness to the horn. The bow is further enhanced with embedded enchantments and arcane engravings that travel the length of the bow. The bow is said to be almost sentient, able to determine the intended target through a mental link with the wielder. Arrows fired from this bow almost always hit their intended target. This effect does have a tendency to delude the users own capability, however.
+
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Max Energy: +20%
+Energy Regen: +10%
+Damage Boost: +20%
+Ability Cooldown: -10%
+Class XP Gain: -20%</description>
+    <graphicData>
+      <texPath>Items/weapons/thrumbow</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <drawSize>1.65</drawSize>
+    </graphicData>
+    <soundInteract>Bow_Large</soundInteract>	
+    <statBases>
+      <WorkToMake>77700</WorkToMake>
+	  <MarketValue>4480</MarketValue>
+      <Mass>1.0</Mass>
+	  <MaxHitPoints>300</MaxHitPoints>
+      <AccuracyTouch>0.50</AccuracyTouch>
+      <AccuracyShort>0.90</AccuracyShort>
+      <AccuracyMedium>0.85</AccuracyMedium>
+      <AccuracyLong>0.80</AccuracyLong>
+      <RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>50</Steel>
+      <WoodLog>250</WoodLog>
+	  <Jade>50</Jade>
+	  <Gold>2</Gold>
+	  <Silver>20</Silver>
+	  <RawMagicyte>250</RawMagicyte>
+	  <ThrumboHorn>1</ThrumboHorn>
+    </costList>
+	<recipeMaker>
+	  <workSpeedStat>SmithingSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+	  <effectWorking>Smelt</effectWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+	  <recipeUsers>
+        <li>ElectricSmithy</li>
+        <li>FueledSmithy</li>
+		<li>CraftingSpot</li>
+      </recipeUsers>
+      <workAmount>77700</workAmount>
+	  <skillRequirements>
+			<Intellectual>4</Intellectual>
+			<Crafting>7</Crafting>
+	  </skillRequirements>
+	  <researchPrerequisite>
+			<li>TM_ArcaneApparel</li>
+	  </researchPrerequisite>
+    </recipeMaker>	
+	<comps>
+		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		  <hasEnchantment>true</hasEnchantment>
+		  <maxMP>0.20</maxMP>
+		  <maxMPTier>Crafted</maxMPTier>
+		  <mpRegenRate>0.10</mpRegenRate>
+		  <mpRegenRateTier>Standard</mpRegenRateTier>
+		  <arcaneDmg>0.20</arcaneDmg>
+		  <arcaneDmgTier>Crafted</arcaneDmgTier>
+		  <coolDown>-0.10</coolDown>
+		  <coolDownTier>Standard</coolDownTier>
+		  <xpGain>-0.20</xpGain>
+		  <xpGainTier>Negative</xpGainTier>
+		</li>
+		<li>
+		  <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
+		</li>
+	</comps>
+	<equippedAngleOffset>-20</equippedAngleOffset>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_ThrumArrow</defaultProjectile>
+        <warmupTime>1.7</warmupTime>
+        <range>45</range>
+        <soundCast>TM_ThrumBow</soundCast>
+        <soundCastTail>TM_Woosh</soundCastTail>
+        <muzzleFlashScale>1</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>limb</label>
+        <capacities>
+          <li>Blunt</li>
+		  <li>Poke</li>
+        </capacities>
+        <power>14</power>
+        <cooldownTime>2.2</cooldownTime>
       </li>
     </tools>
   </ThingDef>
@@ -597,6 +837,128 @@ Damage Boost: +15%</description>
       </li>
     </tools>
   </ThingDef>
+
+  <ThingDef ParentName="TM_BaseRangedMageWeapon">
+    <defName>TM_DefenderStaff</defName>
+    <label>Staff of the Defender</label>
+    <description>A staff crafted from an ancient design bearing a palpable aura of wisdom. This staff is able to tap into the spirit realm and allow the wielder to communicate with their ancestral spirits who can manifest their power in the form of a physical barrier. The energy to perform this action comes from the spirits themselves and does not draw energy from the user, though the spirits require time to rest between requests.
+
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Max Energy: +30%
+Energy Regen: +20%
+Arcane Resistance: +20%
+
+Augmentation adds ability: Arcane Barrier</description>
+    <graphicData>
+      <texPath>Items/weapons/staff_elements</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Revolver</soundInteract>	
+    <statBases>
+      <WorkToMake>77700</WorkToMake>
+	  <MarketValue>3350</MarketValue>
+      <Mass>3.0</Mass>
+      <AccuracyTouch>0.88</AccuracyTouch>
+      <AccuracyShort>0.71</AccuracyShort>
+      <AccuracyMedium>0.66</AccuracyMedium>
+      <AccuracyLong>0.56</AccuracyLong>
+      <RangedWeapon_Cooldown>2.6</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>50</Steel>
+      <WoodLog>200</WoodLog>
+	  <Jade>75</Jade>
+	  <Gold>2</Gold>
+	  <Uranium>10</Uranium>
+	  <RawMagicyte>200</RawMagicyte>
+    </costList>
+	<recipeMaker>
+	  <workSpeedStat>SmithingSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+	  <effectWorking>Smelt</effectWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+	  <recipeUsers>
+        <li>ElectricSmithy</li>
+        <li>FueledSmithy</li>
+		<li>CraftingSpot</li>
+		<li>TableArcaneForge</li>
+      </recipeUsers>
+      <workAmount>77700</workAmount>
+	  <skillRequirements>
+			<Intellectual>10</Intellectual>
+	  </skillRequirements>
+	  <researchPrerequisite>
+			<li>TM_ArcaneApparel</li>
+	  </researchPrerequisite>
+    </recipeMaker>	
+	<comps>
+		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		  <hasEnchantment>true</hasEnchantment>
+		  <maxMP>0.30</maxMP>
+		  <maxMPTier>Crafted</maxMPTier>
+		  <mpRegenRate>0.20</mpRegenRate>
+		  <mpRegenRateTier>Crafted</mpRegenRateTier>
+		  <arcaneRes>0.20</arcaneRes>
+		  <arcaneResTier>Standard</arcaneResTier>		  
+		</li>
+		<li>
+		  <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
+		</li>
+		<li Class="CompDeflector.CompProperties_Deflector">
+		    <compClass>TorannMagic.Weapon.CompBPReflector</compClass>
+			<baseDeflectChance>0.25</baseDeflectChance>
+			<useManipulationInCalc>true</useManipulationInCalc>
+			<useSkillInCalc>true</useSkillInCalc>
+			<deflectSound>TM_Shuffle</deflectSound>
+			<deflectSkill>Melee</deflectSkill>
+			<deflectRatePerSkillPoint>0.015</deflectRatePerSkillPoint>
+            <canReflect>true</canReflect>
+            <reflectSkill>Melee</reflectSkill>
+            <reflectRatePerSkillPoint>3</reflectRatePerSkillPoint>
+			<DeflectVerb Class="VerbProperties">
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Projectile_BlazingPower</defaultProjectile>
+				<warmupTime>0</warmupTime>
+				<range>40</range>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</DeflectVerb>			
+		  </li>
+	</comps>
+	<equippedAngleOffset>15</equippedAngleOffset>
+    <verbs>
+      <li>
+        <verbClass>TorannMagic.Weapon.Verb_BlazingPower</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_BlazingPower</defaultProjectile>
+        <warmupTime>1</warmupTime>
+        <range>40</range>
+        <soundCast>TM_Woosh</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>7</muzzleFlashScale>
+		<burstShotCount>5</burstShotCount>
+		<ticksBetweenBurstShots>15</ticksBetweenBurstShots>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>rod</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>15</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+	  <li>
+        <label>staff head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>22</power>
+        <cooldownTime>1.9</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
   
   <!-- Staff of Blazing Power -->	
   <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
@@ -753,129 +1115,6 @@ Damage Boost: +40%</description>
 		<postExplosionSpawnChance>1</postExplosionSpawnChance>
 	</projectile>
   </ThingDef> -->
-
-
-  <ThingDef ParentName="TM_BaseRangedMageWeapon">
-    <defName>TM_DefenderStaff</defName>
-    <label>Staff of the Defender</label>
-    <description>A staff crafted from an ancient design bearing a palpable aura of wisdom. This staff is able to tap into the spirit realm and allow the wielder to communicate with their ancestral spirits who can manifest their power in the form of a physical barrier. The energy to perform this action comes from the spirits themselves and does not draw energy from the user, though the spirits require time to rest between requests.
-
-This weapon is enchanted and provides additional benefits to trained mages and fighters:
-Max Energy: +30%
-Energy Regen: +20%
-Arcane Resistance: +20%
-
-Augmentation adds ability: Arcane Barrier</description>
-    <graphicData>
-      <texPath>Items/weapons/staff_elements</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <soundInteract>Interact_Revolver</soundInteract>	
-    <statBases>
-      <WorkToMake>77700</WorkToMake>
-	  <MarketValue>3350</MarketValue>
-      <Mass>3.0</Mass>
-      <AccuracyTouch>0.88</AccuracyTouch>
-      <AccuracyShort>0.71</AccuracyShort>
-      <AccuracyMedium>0.66</AccuracyMedium>
-      <AccuracyLong>0.56</AccuracyLong>
-      <RangedWeapon_Cooldown>2.6</RangedWeapon_Cooldown>
-    </statBases>
-    <costList>
-      <Steel>50</Steel>
-      <WoodLog>200</WoodLog>
-	  <Jade>75</Jade>
-	  <Gold>2</Gold>
-	  <Uranium>10</Uranium>
-	  <RawMagicyte>200</RawMagicyte>
-    </costList>
-	<recipeMaker>
-	  <workSpeedStat>SmithingSpeed</workSpeedStat>
-      <workSkill>Crafting</workSkill>
-	  <effectWorking>Smelt</effectWorking>
-      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-	  <recipeUsers>
-        <li>ElectricSmithy</li>
-        <li>FueledSmithy</li>
-		<li>CraftingSpot</li>
-		<li>TableArcaneForge</li>
-      </recipeUsers>
-      <workAmount>77700</workAmount>
-	  <skillRequirements>
-			<Intellectual>10</Intellectual>
-	  </skillRequirements>
-	  <researchPrerequisite>
-			<li>TM_ArcaneApparel</li>
-	  </researchPrerequisite>
-    </recipeMaker>	
-	<comps>
-		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
-		  <hasEnchantment>true</hasEnchantment>
-		  <maxMP>0.30</maxMP>
-		  <maxMPTier>Crafted</maxMPTier>
-		  <mpRegenRate>0.20</mpRegenRate>
-		  <mpRegenRateTier>Crafted</mpRegenRateTier>
-		  <arcaneRes>0.20</arcaneRes>
-		  <arcaneResTier>Standard</arcaneResTier>		  
-		</li>
-		<li>
-		  <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
-		</li>
-		<li Class="CompDeflector.CompProperties_Deflector">
-		    <compClass>TorannMagic.Weapon.CompBPReflector</compClass>
-			<baseDeflectChance>0.25</baseDeflectChance>
-			<useManipulationInCalc>true</useManipulationInCalc>
-			<useSkillInCalc>true</useSkillInCalc>
-			<deflectSound>TM_Shuffle</deflectSound>
-			<deflectSkill>Melee</deflectSkill>
-			<deflectRatePerSkillPoint>0.015</deflectRatePerSkillPoint>
-            <canReflect>true</canReflect>
-            <reflectSkill>Melee</reflectSkill>
-            <reflectRatePerSkillPoint>3</reflectRatePerSkillPoint>
-			<DeflectVerb Class="VerbProperties">
-				<verbClass>Verb_Shoot</verbClass>
-				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>Projectile_BlazingPower</defaultProjectile>
-				<warmupTime>0</warmupTime>
-				<range>40</range>
-				<muzzleFlashScale>9</muzzleFlashScale>
-			</DeflectVerb>			
-		  </li>
-	</comps>
-	<equippedAngleOffset>15</equippedAngleOffset>
-    <verbs>
-      <li>
-        <verbClass>TorannMagic.Weapon.Verb_BlazingPower</verbClass>
-        <hasStandardCommand>true</hasStandardCommand>
-        <defaultProjectile>Projectile_BlazingPower</defaultProjectile>
-        <warmupTime>1</warmupTime>
-        <range>40</range>
-        <soundCast>TM_Woosh</soundCast>
-        <soundCastTail>GunTail_Light</soundCastTail>
-        <muzzleFlashScale>7</muzzleFlashScale>
-		<burstShotCount>5</burstShotCount>
-		<ticksBetweenBurstShots>15</ticksBetweenBurstShots>
-      </li>
-    </verbs>
-    <tools>
-      <li>
-        <label>rod</label>
-        <capacities>
-          <li>Blunt</li>
-        </capacities>
-        <power>15</power>
-        <cooldownTime>1.6</cooldownTime>
-      </li>
-	  <li>
-        <label>staff head</label>
-        <capacities>
-          <li>Blunt</li>
-        </capacities>
-        <power>22</power>
-        <cooldownTime>1.9</cooldownTime>
-      </li>
-    </tools>
-  </ThingDef>
   
     <!-- =======================  Rings   ============================ -->
   
@@ -1079,246 +1318,6 @@ Augmentation adds ability: Arcane Barrier</description>
         </capacities>
         <power>18</power>
         <cooldownTime>1.6</cooldownTime>
-      </li>
-    </tools>
-  </ThingDef>
-  
-  <!-- Thrum Bow -->	
-  <ThingDef ParentName="BaseProjectileNeolithic"> <!-- Class="AbilityUser.ProjectileDef_Ability">
-	<thingClass>AbilityUser.ProjectileDef_Ability</thingClass> -->
-	<defName>Projectile_ThrumArrow</defName>
-	<label>Thrum bow bolt</label>
-	<graphicData>
-		<texPath>Spells/thrum_bolt</texPath>
-		<graphicClass>Graphic_Single</graphicClass>
-		<shaderType>TransparentPostLight</shaderType>
-	</graphicData>
-	<projectile>
-		<flyOverhead>false</flyOverhead>
-		<damageDef>ArrowHighVelocity</damageDef>
-		<damageAmountBase>23</damageAmountBase>
-		<speed>58</speed>
-		<stoppingPower>2</stoppingPower>
-		<armorPenetrationBase>0.25</armorPenetrationBase>
-	</projectile>
-  </ThingDef>
-
-
-  <ThingDef ParentName="TM_BaseRangedMageWeapon">
-    <defName>TM_ThrumBow</defName>
-    <label>Thrum Bow</label>
-    <description>A bow shaped from the horn of a Thrumbo. The horn is hallowed out to decrease the weight and softened by soaking it in a magicyte compound that adds a surprising suppleness to the horn. The bow is further enhanced with embedded enchantments and arcane engravings that travel the length of the bow. The bow is said to be almost sentient, able to determine the intended target through a mental link with the wielder. Arrows fired from this bow almost always hit their intended target. This effect does have a tendency to delude the users own capability, however.
-
-This weapon is enchanted and provides additional benefits to trained mages and fighters:
-Max Energy: +20%
-Energy Regen: +10%
-Damage Boost: +20%
-Ability Cooldown: -10%
-Class XP Gain: -20%</description>
-    <graphicData>
-      <texPath>Items/weapons/thrumbow</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-	  <drawSize>1.65</drawSize>
-    </graphicData>
-    <soundInteract>Bow_Large</soundInteract>	
-    <statBases>
-      <WorkToMake>77700</WorkToMake>
-	  <MarketValue>4480</MarketValue>
-      <Mass>1.0</Mass>
-	  <MaxHitPoints>300</MaxHitPoints>
-      <AccuracyTouch>0.50</AccuracyTouch>
-      <AccuracyShort>0.90</AccuracyShort>
-      <AccuracyMedium>0.85</AccuracyMedium>
-      <AccuracyLong>0.80</AccuracyLong>
-      <RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
-    </statBases>
-    <costList>
-      <Steel>50</Steel>
-      <WoodLog>250</WoodLog>
-	  <Jade>50</Jade>
-	  <Gold>2</Gold>
-	  <Silver>20</Silver>
-	  <RawMagicyte>250</RawMagicyte>
-	  <ThrumboHorn>1</ThrumboHorn>
-    </costList>
-	<recipeMaker>
-	  <workSpeedStat>SmithingSpeed</workSpeedStat>
-      <workSkill>Crafting</workSkill>
-	  <effectWorking>Smelt</effectWorking>
-      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-	  <recipeUsers>
-        <li>ElectricSmithy</li>
-        <li>FueledSmithy</li>
-		<li>CraftingSpot</li>
-      </recipeUsers>
-      <workAmount>77700</workAmount>
-	  <skillRequirements>
-			<Intellectual>4</Intellectual>
-			<Crafting>7</Crafting>
-	  </skillRequirements>
-	  <researchPrerequisite>
-			<li>TM_ArcaneApparel</li>
-	  </researchPrerequisite>
-    </recipeMaker>	
-	<comps>
-		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
-		  <hasEnchantment>true</hasEnchantment>
-		  <maxMP>0.20</maxMP>
-		  <maxMPTier>Crafted</maxMPTier>
-		  <mpRegenRate>0.10</mpRegenRate>
-		  <mpRegenRateTier>Standard</mpRegenRateTier>
-		  <arcaneDmg>0.20</arcaneDmg>
-		  <arcaneDmgTier>Crafted</arcaneDmgTier>
-		  <coolDown>-0.10</coolDown>
-		  <coolDownTier>Standard</coolDownTier>
-		  <xpGain>-0.20</xpGain>
-		  <xpGainTier>Negative</xpGainTier>
-		</li>
-		<li>
-		  <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
-		</li>
-	</comps>
-	<equippedAngleOffset>-20</equippedAngleOffset>
-    <verbs>
-      <li>
-        <verbClass>Verb_Shoot</verbClass>
-        <hasStandardCommand>true</hasStandardCommand>
-        <defaultProjectile>Projectile_ThrumArrow</defaultProjectile>
-        <warmupTime>1.7</warmupTime>
-        <range>45</range>
-        <soundCast>TM_ThrumBow</soundCast>
-        <soundCastTail>TM_Woosh</soundCastTail>
-        <muzzleFlashScale>1</muzzleFlashScale>
-      </li>
-    </verbs>
-    <tools>
-      <li>
-        <label>limb</label>
-        <capacities>
-          <li>Blunt</li>
-		  <li>Poke</li>
-        </capacities>
-        <power>14</power>
-        <cooldownTime>2.2</cooldownTime>
-      </li>
-    </tools>
-  </ThingDef>
-  
-  <!-- Elephant Bow -->	
-  <ThingDef ParentName="BaseProjectileNeolithic"> <!-- Class="AbilityUser.ProjectileDef_Ability">
-	<thingClass>AbilityUser.ProjectileDef_Ability</thingClass> -->
-	<defName>Projectile_ElephantBow</defName>
-	<label>Elephant bow bolt</label>
-	<graphicData>
-		<texPath>Things/Projectile/Arrow_Small</texPath>
-		<graphicClass>Graphic_Single</graphicClass>
-	</graphicData>
-	<projectile>
-		<flyOverhead>false</flyOverhead>
-		<damageDef>ArrowHighVelocity</damageDef>
-		<damageAmountBase>19</damageAmountBase>
-		<speed>52</speed>
-		<stoppingPower>1.75</stoppingPower>
-		<armorPenetrationBase>0.20</armorPenetrationBase>
-	</projectile>
-  </ThingDef>
-
-
-  <ThingDef ParentName="TM_BaseRangedMageWeapon">
-    <defName>TM_ElephantBow</defName>
-    <label>Elephant Bow</label>
-    <description>A bow shaped from elephant tusks. The tusks are hallowed out to decrease rigidity and reduce weight and softened by soaking it in a magicyte compound that increases suppleness. The elephant bow offers significant improvements in range and accuracy for distant targets over the greatbow, though it is slightly more difficult to handle.
-	
-The elephant bow is engraved with minor enchantments and is a preferred weapon by many experienced rangers and hunters.
-
-This weapon is enchanted and provides additional benefits to trained mages and fighters:
-Max Energy: +5%
-Energy Regen: +5%
-Damage Boost: +10%
-Ability Cooldown: -10%</description>
-    <graphicData>
-      <texPath>Items/weapons/elephantbow</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-	  <drawSize>1.5</drawSize>
-    </graphicData>
-    <soundInteract>Bow_Large</soundInteract>	
-	<weaponTags>
-      <li>SeerBowman</li>
-    </weaponTags>
-    <statBases>
-      <WorkToMake>12000</WorkToMake>
-	  <MarketValue>1250</MarketValue>
-      <Mass>2.5</Mass>
-	  <MaxHitPoints>180</MaxHitPoints>
-      <AccuracyTouch>0.55</AccuracyTouch>
-      <AccuracyShort>0.91</AccuracyShort>
-      <AccuracyMedium>0.81</AccuracyMedium>
-      <AccuracyLong>0.68</AccuracyLong>
-      <RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
-    </statBases>
-    <costList>
-      <Steel>20</Steel>
-      <WoodLog>100</WoodLog>
-	  <RawMagicyte>100</RawMagicyte>
-	  <ElephantTusk>2</ElephantTusk>
-    </costList>
-	<recipeMaker>
-	  <workSpeedStat>SmithingSpeed</workSpeedStat>
-      <workSkill>Crafting</workSkill>
-	  <effectWorking>Smelt</effectWorking>
-      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
-	  <recipeUsers>
-        <li>ElectricSmithy</li>
-        <li>FueledSmithy</li>
-		<li>CraftingSpot</li>
-      </recipeUsers>
-      <workAmount>12000</workAmount>
-	  <skillRequirements>
-			<Intellectual>2</Intellectual>
-			<Crafting>6</Crafting>
-	  </skillRequirements>
-	  <researchPrerequisite>
-			<li>TM_ArcaneCrafting</li>
-	  </researchPrerequisite>
-    </recipeMaker>	
-	<comps>
-		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
-		  <hasEnchantment>true</hasEnchantment>
-		  <maxMP>0.05</maxMP>
-		  <maxMPTier>Minor</maxMPTier>
-		  <mpRegenRate>0.05</mpRegenRate>
-		  <mpRegenRateTier>Minor</mpRegenRateTier>
-		  <arcaneDmg>0.10</arcaneDmg>
-		  <arcaneDmgTier>Major</arcaneDmgTier>
-		  <coolDown>-0.10</coolDown>
-		  <coolDownTier>Standard</coolDownTier>
-		</li>
-		<li>
-		  <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
-		</li>
-	</comps>
-	<equippedAngleOffset>-20</equippedAngleOffset>
-    <verbs>
-      <li>
-        <verbClass>Verb_Shoot</verbClass>
-        <hasStandardCommand>true</hasStandardCommand>
-        <defaultProjectile>Projectile_ElephantBow</defaultProjectile>
-        <warmupTime>2</warmupTime>
-        <range>38</range>
-        <soundCast>TM_ThrumBow</soundCast>
-        <soundCastTail>TM_Woosh</soundCastTail>
-        <muzzleFlashScale>1</muzzleFlashScale>
-      </li>
-    </verbs>
-    <tools>
-      <li>
-        <label>limb</label>
-        <capacities>
-          <li>Blunt</li>
-		  <li>Poke</li>
-        </capacities>
-        <power>12</power>
-        <cooldownTime>2.4</cooldownTime>
       </li>
     </tools>
   </ThingDef>

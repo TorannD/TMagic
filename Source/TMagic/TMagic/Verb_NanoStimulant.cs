@@ -19,7 +19,7 @@ namespace TorannMagic
             bool flag = caster != null && !caster.Dead;
             if (flag)
             {
-                HealthUtility.AdjustSeverity(caster, HediffDef.Named("TM_NanoStimulantHD"), eff.level + .01f);
+                HealthUtility.AdjustSeverity(caster, HediffDef.Named("TM_NanoStimulantHD"), (eff.level + .01f)*comp.arcaneDmg);
                 SoundInfo info = SoundInfo.InMap(new TargetInfo(caster.Position, caster.Map, false), MaintenanceType.None);
                 info.pitchFactor = 1.0f;
                 info.volumeFactor = 1.0f;

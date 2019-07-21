@@ -138,8 +138,8 @@ namespace TorannMagic
                     {
                         victim = curCell.GetFirstPawn(base.Map);
                         if (victim != null && !victim.Dead && victim.RaceProps.IsFlesh && victim != this.pawn)
-                        {
-                            if (Rand.Chance(TM_Calc.GetSpellSuccessChance(this.pawn, victim)))
+                        {                            
+                            if (Rand.Chance(TM_Calc.GetSpellSuccessChance(this.pawn, victim) - .4f))
                             {
                                 Vector3 launchVector = GetVector(base.Position, victim.Position);
                                 HealthUtility.AdjustSeverity(victim, TorannMagicDefOf.TM_GravitySlowHD, (.4f + (.1f * verVal)));
@@ -160,7 +160,7 @@ namespace TorannMagic
                         victim = curCell.GetFirstPawn(base.Map);
                         if (victim != null && !victim.Dead && victim != this.pawn)
                         {
-                            if (Rand.Chance(TM_Calc.GetSpellSuccessChance(this.pawn, victim)))
+                            if (Rand.Chance(TM_Calc.GetSpellSuccessChance(this.pawn, victim) - .4f))
                             {
                                 HealthUtility.AdjustSeverity(victim, TorannMagicDefOf.TM_GravitySlowHD, .3f + (.1f * verVal));
                             }

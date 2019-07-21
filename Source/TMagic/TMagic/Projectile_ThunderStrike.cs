@@ -25,6 +25,7 @@ namespace TorannMagic
 
         private int verVal = 0;
         private int pwrVal = 0;
+        private float arcaneDmg = 1f;
 
         int nextEventTick = 0;
         int nextRightEventTick = 0;
@@ -106,7 +107,7 @@ namespace TorannMagic
                     IntVec3 rndCell = cellRect.RandomCell;
                     if (rndCell.IsValid && rndCell.InBounds(base.Map) && rndCell.Walkable(base.Map) && rndCell.DistanceToEdge(base.Map) > 3)
                     {
-                        Map.weatherManager.eventHandler.AddEvent(new TM_WeatherEvent_MeshFlash(base.Map, rndCell, TM_MatPool.chiLightning, TMDamageDefOf.DamageDefOf.TM_ChiBurn, this.launcher, Mathf.RoundToInt(Rand.Range(8, 14) * (1 +(.12f * pwrVal))), Rand.Range(1.5f, 2f)));
+                        Map.weatherManager.eventHandler.AddEvent(new TM_WeatherEvent_MeshFlash(base.Map, rndCell, TM_MatPool.chiLightning, TMDamageDefOf.DamageDefOf.TM_ChiBurn, this.launcher, Mathf.RoundToInt(Rand.Range(8, 14) * (1 +(.12f * pwrVal)) * this.arcaneDmg), Rand.Range(1.5f, 2f)));
                     }
                 }
             }
@@ -125,6 +126,7 @@ namespace TorannMagic
                     verVal = mver.level;
                     pwrVal = mpwr.level;
                 }
+                this.arcaneDmg = pawn.GetComp<CompAbilityUserMight>().mightPwr;
                 this.origin = pawn.Position.ToVector3Shifted();
                 this.destination = target.ToVector3Shifted();
                 this.direction = TM_Calc.GetVector(this.origin, this.destination);

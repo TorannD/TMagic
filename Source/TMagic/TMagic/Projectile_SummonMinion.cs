@@ -77,6 +77,7 @@ namespace TorannMagic
                 random = new System.Random();
 
                 duration += (verVal * durationMultiplier);
+                duration = (int)(duration * comp.arcaneDmg);
                 
                 spawnThing.factionDef = TorannMagicDefOf.TM_SummonedFaction;
                 spawnThing.spawnCount = 1;

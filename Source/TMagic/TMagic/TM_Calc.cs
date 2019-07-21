@@ -1129,5 +1129,120 @@ namespace TorannMagic
                 return (T)formatter.Deserialize(stream);
             }
         }
+
+        //Rand.Chance(((settingsRef.baseFighterChance * 6) + (settingsRef.baseMageChance * 6) + (8 * settingsRef.advFighterChance) + (16 * settingsRef.advMageChance)) / (allTraits.Count))
+        public static float GetRWoMTraitChance()
+        {
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            List<TraitDef> allTraits = DefDatabase<TraitDef>.AllDefsListForReading;
+            float chance = ((settingsRef.baseFighterChance * 6) + (settingsRef.baseMageChance * 6) + (8 * settingsRef.advFighterChance) + (16 * settingsRef.advMageChance)) / (allTraits.Count);
+            return Mathf.Clamp01(chance);
+        }
+        
+        public static float GetMagePrecurserChance()
+        {
+            float chance = 0f;
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            chance = (settingsRef.baseMageChance * 6) / ((settingsRef.baseFighterChance * 6) + (settingsRef.baseMageChance * 6) + (8 * settingsRef.advFighterChance) + (16 * settingsRef.advMageChance));
+            chance *= GetRWoMTraitChance();
+            return chance;
+        }
+
+        public static float GetFighterPrecurserChance()
+        {
+            float chance = 0f;
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            chance = (settingsRef.baseFighterChance * 6) / ((settingsRef.baseFighterChance * 6) + (settingsRef.baseMageChance * 6) + (8 * settingsRef.advFighterChance) + (16 * settingsRef.advMageChance));
+            chance *= GetRWoMTraitChance();
+            return chance;
+        }
+
+        public static float GetMageSpawnChance()
+        {
+            float chance = 0f;
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            chance = (settingsRef.advMageChance * 16) / ((settingsRef.baseFighterChance * 6) + (settingsRef.baseMageChance * 6) + (8 * settingsRef.advFighterChance) + (16 * settingsRef.advMageChance));
+            chance *= GetRWoMTraitChance();
+            return chance;
+        }
+
+        public static float GetFighterSpawnChance()
+        {
+            float chance = 0f;
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            chance = (settingsRef.advFighterChance * 8) / ((settingsRef.baseFighterChance * 6) + (settingsRef.baseMageChance * 6) + (8 * settingsRef.advFighterChance) + (16 * settingsRef.advMageChance));
+            chance *= GetRWoMTraitChance();
+            return chance;
+        }
+
+        public static Area GetSpriteArea()
+        {
+            Area spriteArea = null;
+            List<Area> allAreas = Find.CurrentMap.areaManager.AllAreas;
+            if (allAreas != null && allAreas.Count > 0)
+            {
+                for (int i = 0; i < allAreas.Count; i++)
+                {
+                    if(allAreas[i].Label == "earth sprites")
+                    {
+                        spriteArea = allAreas[i];
+                    }
+                }
+            }
+            if(spriteArea == null)
+            {
+                Area_Allowed newArea = null;
+                if(Find.CurrentMap.areaManager.TryMakeNewAllowed(out newArea))
+                {
+                    newArea.SetLabel("earth sprites");                    
+                }
+            }
+            return spriteArea;
+        }
+
+        public static List<Apparel> GetNecroticOrbs(Pawn pawn)
+        {
+            List<Apparel> orbs = new List<Apparel>();
+            orbs.Clear();
+            if (pawn.Map != null)
+            {
+                List<Pawn> mapPawns = pawn.Map.mapPawns.AllPawnsSpawned;
+                for (int i = 0; i < mapPawns.Count; i++)
+                {
+                    if (mapPawns[i].RaceProps.Humanlike && mapPawns[i].apparel != null && mapPawns[i].Faction == pawn.Faction && mapPawns[i].apparel.WornApparelCount > 0)
+                    {
+                        List<Apparel> apparelList = mapPawns[i].apparel.WornApparel;
+                        for (int j = 0; j < apparelList.Count; j++)
+                        {
+                            if (apparelList[j].def == TorannMagicDefOf.TM_Artifact_NecroticOrb)
+                            {
+                                orbs.Add(apparelList[j]);
+                            }
+                        }
+                    }
+                }
+            }
+            else if (pawn.ParentHolder.ToString().Contains("Caravan"))
+            {
+                foreach (Pawn current in pawn.holdingOwner)
+                {
+                    if (current != null)
+                    {
+                        if (current.RaceProps.Humanlike && current.Faction == pawn.Faction && current.apparel != null && current.apparel.WornApparelCount > 0)
+                        {
+                            List<Apparel> apparelList = current.apparel.WornApparel;
+                            for (int j = 0; j < apparelList.Count; j++)
+                            {
+                                if (apparelList[j].def == TorannMagicDefOf.TM_Artifact_NecroticOrb)
+                                {
+                                    orbs.Add(apparelList[j]);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return orbs;
+        }
     }
 }

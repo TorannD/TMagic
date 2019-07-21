@@ -155,6 +155,7 @@ namespace TorannMagic
         public static ThingDef TM_Artifact_OrbOfSouls_Full;
         public static AbilityDef TM_Artifact_TraitInfuse;
         public static HediffDef TM_TraitInfusionHD;
+        public static ThingDef TM_Artifact_NecroticOrb;
 
         //Site Defs
         public static WorldObjectDef ArcaneAdventure;
@@ -822,6 +823,7 @@ namespace TorannMagic
         public static ThingDef Mote_TigerStrike;
         public static ThingDef Mote_TechnoShield;
         public static ThingDef Mote_AlterFate;
+        public static ThingDef Mote_EarthCrack;
 
         public static EffecterDef GiantExplosion;
         public static EffecterDef TM_GiantExplosion;

@@ -105,6 +105,11 @@ namespace TorannMagic
                                         Messages.Message("TM_ResurrectionTargetExpired".Translate(), MessageTypeDefOf.RejectInput);                                        
                                     }
                                 }
+                                if(TM_Calc.IsUndead(deadPawn))
+                                {
+                                    z = thingList.Count;
+                                    this.validTarget = true;
+                                }
                             }
                         }
                         z++;
@@ -148,31 +153,45 @@ namespace TorannMagic
                     }
                     if (deadPawn != null)
                     {
-                        if (!deadPawn.kindDef.RaceProps.Animal && deadPawn.kindDef.RaceProps.Humanlike)
+                        if (TM_Calc.IsUndead(deadPawn))
                         {
-                            ResurrectionUtility.ResurrectWithSideEffects(deadPawn);
-                            SoundDef.Named("Thunder_OffMap").PlayOneShot(null);
-                            SoundDef.Named("Thunder_OffMap").PlayOneShot(null);
-                            using (IEnumerator<Hediff> enumerator = deadPawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+                            if(deadPawn.RaceProps.Humanlike)
                             {
-                                while (enumerator.MoveNext())
+                                GenExplosion.DoExplosion(base.Position, this.Map, Rand.Range(10, 16), TMDamageDefOf.DamageDefOf.TM_Holy, this.launcher, Mathf.RoundToInt(Rand.Range(20, 32)), 6, TMDamageDefOf.DamageDefOf.TM_Holy.soundExplosion);
+                            }
+                            else
+                            {
+                                GenExplosion.DoExplosion(base.Position, this.Map, Rand.Range(10, 16), TMDamageDefOf.DamageDefOf.TM_Holy, this.launcher, Mathf.RoundToInt(Rand.Range(16, 24)), 3, TMDamageDefOf.DamageDefOf.TM_Holy.soundExplosion);
+                            }
+                        }
+                        else
+                        {
+                            if (!deadPawn.kindDef.RaceProps.Animal && deadPawn.kindDef.RaceProps.Humanlike)
+                            {
+                                ResurrectionUtility.ResurrectWithSideEffects(deadPawn);
+                                SoundDef.Named("Thunder_OffMap").PlayOneShot(null);
+                                SoundDef.Named("Thunder_OffMap").PlayOneShot(null);
+                                using (IEnumerator<Hediff> enumerator = deadPawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
                                 {
-                                    Hediff rec = enumerator.Current;
-                                    if (rec.def.defName == "ResurrectionPsychosis" || rec.def.defName == "Blindness")
+                                    while (enumerator.MoveNext())
                                     {
-                                        if (Rand.Chance(verVal * .33f))
+                                        Hediff rec = enumerator.Current;
+                                        if (rec.def.defName == "ResurrectionPsychosis" || rec.def.defName == "Blindness")
                                         {
-                                            deadPawn.health.RemoveHediff(rec);
+                                            if (Rand.Chance(verVal * .33f))
+                                            {
+                                                deadPawn.health.RemoveHediff(rec);
+                                            }
                                         }
                                     }
                                 }
+                                HealthUtility.AdjustSeverity(deadPawn, HediffDef.Named("TM_ResurrectionHD"), 1f);
                             }
-                            HealthUtility.AdjustSeverity(deadPawn, HediffDef.Named("TM_ResurrectionHD"), 1f);
-                        }
-                        if (deadPawn.kindDef.RaceProps.Animal)
-                        {
-                            ResurrectionUtility.Resurrect(deadPawn);
-                            HealthUtility.AdjustSeverity(deadPawn, HediffDef.Named("TM_ResurrectionHD"), 1f);
+                            if (deadPawn.kindDef.RaceProps.Animal)
+                            {
+                                ResurrectionUtility.Resurrect(deadPawn);
+                                HealthUtility.AdjustSeverity(deadPawn, HediffDef.Named("TM_ResurrectionHD"), 1f);
+                            }
                         }
                     }                    
                 }

@@ -2,6 +2,7 @@
 using AbilityUser;
 using Verse;
 using System.Linq;
+using UnityEngine;
 
 
 namespace TorannMagic
@@ -52,7 +53,7 @@ namespace TorannMagic
 
             if (this.primed != false)
             {
-                destructTimer = 4800 + (pwr.level * 1200) + (ver.level * 1200);
+                destructTimer = Mathf.RoundToInt((4800 + (pwr.level * 1200) + (ver.level * 1200)) * comp.arcaneDmg);
                 arg_pos_1 = centerCell;
                 centerCell.x++;
                 arg_pos_2 = centerCell;

@@ -4,6 +4,8 @@ using System.Linq;
 using RimWorld;
 using AbilityUser;
 using Verse;
+using UnityEngine;
+using Verse.Sound;
 
 
 namespace TorannMagic
@@ -57,6 +59,11 @@ namespace TorannMagic
                         var mineable = isBuilding as Mineable;
                         if (mineable != null)
                         {
+                            Area spriteArea = TM_Calc.GetSpriteArea();
+                            if(spriteArea != null && spriteArea.ActiveCells != null && spriteArea.ActiveCells.Contains(this.currentTarget.Cell))
+                            {
+                                comp.earthSpritesInArea = true;
+                            }
                             comp.earthSprites = this.currentTarget.Cell;
                             comp.earthSpriteType = 1;
                             comp.earthSpriteMap = this.CasterPawn.Map;
@@ -73,10 +80,19 @@ namespace TorannMagic
                     else if (terrain != null && (terrain.defName == "MarshyTerrain" || terrain.defName == "Mud" || terrain.defName == "Marsh" || terrain.defName == "WaterShallow" || terrain.defName == "Ice" ||
                         terrain.defName == "Sand" || terrain.defName == "Gravel" || terrain.defName == "Soil" || terrain.defName == "MossyTerrain" || terrain.defName == "SoftSand"))
                     {
+                        Area spriteArea = TM_Calc.GetSpriteArea();
+                        if (spriteArea != null && spriteArea.ActiveCells != null && spriteArea.ActiveCells.Contains(this.currentTarget.Cell))
+                        {
+                            comp.earthSpritesInArea = true;
+                        }
                         comp.earthSprites = this.currentTarget.Cell;
                         comp.earthSpriteType = 2;
                         comp.earthSpriteMap = this.CasterPawn.Map;
                         comp.nextEarthSpriteAction = Find.TickManager.TicksGame + 20000;
+                    }
+                    else if(terrain != null && !terrain.defName.Contains("water") && !terrain.defName.Contains("Water"))
+                    {
+                        ShatterTerrain(this.currentTarget.Cell, terrain);
                     }
                     else
                     {
@@ -104,6 +120,35 @@ namespace TorannMagic
 
             this.burstShotsLeft = 0;
             return false;
+        }
+
+        public void ShatterTerrain(IntVec3 center, TerrainDef terrainDef)
+        {
+            List<IntVec3> cellList = GenRadial.RadialCellsAround(center, 2f, true).ToList();
+            Building bldg = null;
+            TerrainDef terrain = null;
+            for (int i = 0; i < cellList.Count; i++)
+            {
+                IntVec3 cell = cellList[i];                
+                bldg = cell.GetFirstBuilding(this.CasterPawn.Map);
+                terrain = cell.GetTerrain(this.CasterPawn.Map);
+                if (cell.InBounds(this.CasterPawn.Map) && bldg == null && terrain == terrainDef)
+                {
+                    this.CasterPawn.Map.terrainGrid.SetTerrain(cell, TerrainDef.Named("Gravel"));
+                    MoteMaker.ThrowSmoke(cell.ToVector3Shifted(), this.CasterPawn.Map, Rand.Range(.8f, 1.2f));
+                    Vector3 moteDirection = TM_Calc.GetVector(center, cell);
+                    TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Rubble"), cell.ToVector3Shifted(), this.CasterPawn.Map, Rand.Range(.3f, .6f), .2f, .02f, .05f, Rand.Range(-100, 100), Rand.Range(2f, 4f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
+                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, cell.ToVector3Shifted(), this.CasterPawn.Map, Rand.Range(.9f, 1.2f), .3f, .02f, Rand.Range(.25f, .4f), Rand.Range(-100, 100), Rand.Range(2f, 4f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
+                }
+                bldg = null;
+            }
+            TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_EarthCrack, center.ToVector3Shifted(), this.CasterPawn.Map, Rand.Range(.4f, .7f), .2f, .05f, .5f, 0, 0f, 0f, Rand.Range(0, 360));
+            TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_EarthCrack, center.ToVector3Shifted(), this.CasterPawn.Map, Rand.Range(1.6f, 3f), .2f, .05f, .7f, 0, 0f, 0f, Rand.Range(0, 360));
+            Find.CameraDriver.shaker.DoShake(5f);
+            SoundInfo info = SoundInfo.InMap(new TargetInfo(center, this.CasterPawn.Map, false), MaintenanceType.None);
+            info.pitchFactor = .3f;
+            info.volumeFactor = 1.9f;
+            SoundDef.Named("PunchThroughRoofMetal").PlayOneShot(info);
         }
     }
 }

@@ -2,6 +2,7 @@
 using Verse;
 using RimWorld;
 using System.Linq;
+using UnityEngine;
 
 namespace TorannMagic
 {
@@ -62,8 +63,8 @@ namespace TorannMagic
                     }
                     else // regrowth surgery success
                     {
-                        comp.Mana.CurLevel -= (.9f - ((eff.level * .08f) * .9f));
-                        int num = Rand.Range(160, 280);
+                        comp.Mana.CurLevel -= ((.9f - ((eff.level * .08f) * .9f)) / comp.arcaneDmg);
+                        int num = Mathf.RoundToInt(Rand.Range(160, 280) * comp.xpGain);
                         comp.MagicUserXP += num;
                         MoteMaker.ThrowText(surgeon.DrawPos, surgeon.MapHeld, "XP +" + num, -1f);
                         TM_MoteMaker.ThrowRegenMote(patient.Position.ToVector3(), patient.Map, 1.2f);

@@ -59,7 +59,7 @@ namespace TorannMagic
                             bool flag5 = current.CanHealNaturally() && !current.IsPermanent() && current.TendableNow();
                             if (flag5)
                             {
-                                if (Rand.Chance(.25f))
+                                if (Rand.Chance(.25f / pawn.TryGetComp<CompAbilityUserMagic>().arcaneDmg))
                                 {
                                     DamageInfo dinfo;
                                     dinfo = new DamageInfo(DamageDefOf.Burn, Mathf.RoundToInt(current.Severity/2), 0, (float)-1, this.CasterPawn, rec, null, DamageInfo.SourceCategory.ThingOrUnknown);

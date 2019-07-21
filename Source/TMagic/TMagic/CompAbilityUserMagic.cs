@@ -188,6 +188,7 @@ namespace TorannMagic
         public List<Thing> summonedSentinels = new List<Thing>();
         public List<Pawn> stoneskinPawns = new List<Pawn>();
         public IntVec3 earthSprites = default(IntVec3);
+        public bool earthSpritesInArea = false;
         public Map earthSpriteMap = null;
         public int nextEarthSpriteAction = 0;
         public int nextEarthSpriteMote = 0;
@@ -2029,6 +2030,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_RayofHope);
+                        this.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RayofHope).learned = true;
                     }
                     else
                     {
@@ -2038,6 +2040,7 @@ namespace TorannMagic
                     if (Rand.Chance(.5f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Firebolt);
+                        this.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Firebolt).learned = true;
                     }
                     else
                     {
@@ -2047,6 +2050,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Fireclaw);
+                        this.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Fireclaw).learned = true;
                     }
                     else
                     {
@@ -2056,6 +2060,7 @@ namespace TorannMagic
                     if (Rand.Chance(.2f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Fireball);
+                        this.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Fireball).learned = true;
                     }
                     else
                     {
@@ -2088,6 +2093,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Soothe);
+                        this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Soothe).learned = true;
                     }
                     else
                     {
@@ -2097,6 +2103,7 @@ namespace TorannMagic
                     if (Rand.Chance(.5f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Icebolt);
+                        this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Icebolt).learned = true;
                     }
                     else
                     {
@@ -2106,6 +2113,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Snowball);
+                        this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Snowball).learned = true;
                     }
                     else
                     {
@@ -2115,6 +2123,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_FrostRay);
+                        this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_FrostRay).learned = true;
                     }
                     else
                     {
@@ -2124,6 +2133,7 @@ namespace TorannMagic
                     if (Rand.Chance(.7f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Rainmaker);
+                        this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Rainmaker).learned = true;
                         this.spell_Rain = true;
                     }
                     else
@@ -2159,6 +2169,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_AMP);
+                        this.MagicData.MagicPowersSB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_AMP).learned = true;
                     }
                     else
                     {
@@ -2168,6 +2179,7 @@ namespace TorannMagic
                     if (Rand.Chance(.5f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_LightningBolt);
+                        this.MagicData.MagicPowersSB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_LightningBolt).learned = true;
                     }
                     else
                     {
@@ -2177,6 +2189,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_LightningCloud);
+                        this.MagicData.MagicPowersSB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_LightningCloud).learned = true;
                     }
                     else
                     {
@@ -2186,6 +2199,7 @@ namespace TorannMagic
                     if (Rand.Chance(.2f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_LightningStorm);
+                        this.MagicData.MagicPowersSB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_LightningStorm).learned = true;
                     }
                     else
                     {
@@ -2218,6 +2232,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Shadow);
+                        this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shadow).learned = true;
                     }
                     else
                     {
@@ -2226,6 +2241,7 @@ namespace TorannMagic
                     if (Rand.Chance(.5f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_MagicMissile);
+                        this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_MagicMissile).learned = true;
                     }
                     else
                     {
@@ -2234,6 +2250,7 @@ namespace TorannMagic
                     if (Rand.Chance(.7f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Blink);
+                        this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Blink).learned = true;
                         this.spell_Blink = true;
                     }
                     else
@@ -2243,6 +2260,7 @@ namespace TorannMagic
                     if (Rand.Chance(.5f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Summon);
+                        this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Summon).learned = true;
                     }
                     else
                     {
@@ -2251,6 +2269,7 @@ namespace TorannMagic
                     if (Rand.Chance(.2f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Teleport);
+                        this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Teleport).learned = true;
                         this.spell_Teleport = true;
                     }
                     else
@@ -2279,6 +2298,7 @@ namespace TorannMagic
                     if (Rand.Chance(.5f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Heal);
+                        this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Heal).learned = true;
                         this.spell_Heal = true;
                     }
                     else
@@ -2289,6 +2309,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Shield);
+                        this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shield).learned = true;
                     }
                     else
                     {
@@ -2298,6 +2319,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_ValiantCharge);
+                        this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ValiantCharge).learned = true;
                     }
                     else
                     {
@@ -2307,6 +2329,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Overwhelm);
+                        this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Overwhelm).learned = true;
                     }
                     else
                     {
@@ -2340,6 +2363,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_SummonMinion);
+                        this.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonMinion).learned = true;
                         this.spell_SummonMinion = true;
                     }
                     else
@@ -2350,6 +2374,7 @@ namespace TorannMagic
                     if (Rand.Chance(.5f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_SummonPylon);
+                        this.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonPylon).learned = true;
                     }
                     else
                     {
@@ -2359,6 +2384,7 @@ namespace TorannMagic
                     if (Rand.Chance(.5f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_SummonExplosive);
+                        this.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonExplosive).learned = true;
                     }
                     else
                     {
@@ -2368,6 +2394,7 @@ namespace TorannMagic
                     if (Rand.Chance(.2f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_SummonElemental);
+                        this.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonElemental).learned = true;
                     }
                     else
                     {
@@ -2401,6 +2428,7 @@ namespace TorannMagic
                     if (Rand.Chance(.5f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Poison);
+                        this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Poison).learned = true;
                     }
                     else
                     {
@@ -2410,6 +2438,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_SootheAnimal);
+                        this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SootheAnimal).learned = true;
                     }
                     else
                     {
@@ -2419,6 +2448,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Regenerate);
+                        this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Regenerate).learned = true;
                     }
                     else
                     {
@@ -2428,6 +2458,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_CureDisease);
+                        this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_CureDisease).learned = true;
                     }
                     else
                     {
@@ -2452,6 +2483,7 @@ namespace TorannMagic
                     if (Rand.Chance(.5f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_RaiseUndead);
+                        this.MagicData.MagicPowersN.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RaiseUndead).learned = true;
                     }
                     else
                     {
@@ -2461,6 +2493,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_DeathMark);
+                        this.MagicData.MagicPowersN.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_DeathMark).learned = true;
                     }
                     else
                     {
@@ -2470,6 +2503,7 @@ namespace TorannMagic
                     if (Rand.Chance(.5f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_FogOfTorment);
+                        this.MagicData.MagicPowersN.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_FogOfTorment).learned = true;
                     }
                     else
                     {
@@ -2479,6 +2513,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_ConsumeCorpse);
+                        this.MagicData.MagicPowersN.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ConsumeCorpse).learned = true;
                     }
                     else
                     {
@@ -2488,6 +2523,7 @@ namespace TorannMagic
                     if (Rand.Chance(.2f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_CorpseExplosion);
+                        this.MagicData.MagicPowersN.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_CorpseExplosion).learned = true;
                     }
                     else
                     {
@@ -2521,6 +2557,7 @@ namespace TorannMagic
                     if (Rand.Chance(.5f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_AdvancedHeal);
+                        this.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_AdvancedHeal).learned = true;
                     }
                     else
                     {
@@ -2530,6 +2567,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Purify);
+                        this.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Purify).learned = true;
                     }
                     else
                     {
@@ -2539,6 +2577,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_HealingCircle);
+                        this.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_HealingCircle).learned = true;
                     }
                     else
                     {
@@ -2548,6 +2587,7 @@ namespace TorannMagic
                     if (Rand.Chance(.4f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_BestowMight);
+                        this.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BestowMight).learned = true;
                     }
                     else
                     {
@@ -2581,6 +2621,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Entertain);
+                        this.MagicData.MagicPowersB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Entertain).learned = true;
                     }
                     else
                     {
@@ -2599,6 +2640,7 @@ namespace TorannMagic
                     if (Rand.Chance(.5f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Lullaby);
+                        this.MagicData.MagicPowersB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Lullaby).learned = true;
                     }
                     else
                     {
@@ -2631,15 +2673,18 @@ namespace TorannMagic
                     if (Rand.Chance(.7f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_SoulBond);
+                        this.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SoulBond).learned = true;
                     }
                     else
                     {
                         MagicPower mpSD = this.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SoulBond);
                         mpSD.learned = false;
                     }
+
                     if (Rand.Chance(.5f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_ShadowBolt);
+                        this.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt).learned = true;
                     }
                     else
                     {
@@ -2649,6 +2694,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Dominate);
+                        this.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Dominate).learned = true;
                     }
                     else
                     {
@@ -2658,6 +2704,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Attraction);
+                        this.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Attraction).learned = true;
                     }
                     else
                     {
@@ -2690,6 +2737,7 @@ namespace TorannMagic
                     if (Rand.Chance(.7f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_SoulBond);
+                        this.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SoulBond).learned = true;
                     }
                     else
                     {
@@ -2699,6 +2747,7 @@ namespace TorannMagic
                     if (Rand.Chance(.5f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_ShadowBolt);
+                        this.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt).learned = true;
                     }
                     else
                     {
@@ -2708,6 +2757,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Dominate);
+                        this.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Dominate).learned = true;
                     }
                     else
                     {
@@ -2717,6 +2767,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Repulsion);
+                        this.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Repulsion).learned = true;
                     }
                     else
                     {
@@ -2748,6 +2799,7 @@ namespace TorannMagic
                     if (Rand.Chance(.4f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Stoneskin);
+                        this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Stoneskin).learned = true;
                     }
                     else
                     {
@@ -2757,6 +2809,7 @@ namespace TorannMagic
                     if (Rand.Chance(.6f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Encase);
+                        this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Encase).learned = true;
                     }
                     else
                     {
@@ -2766,6 +2819,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_EarthSprites);
+                        this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EarthSprites).learned = true;
                     }
                     else
                     {
@@ -2775,6 +2829,7 @@ namespace TorannMagic
                     if (Rand.Chance(.5f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_EarthernHammer);
+                        this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EarthernHammer).learned = true;
                     }
                     else
                     {
@@ -2784,6 +2839,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Sentinel);
+                        this.MagicData.MagicPowersG.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Sentinel).learned = true;
                     }
                     else
                     {
@@ -2822,6 +2878,7 @@ namespace TorannMagic
                     if (Rand.Chance(.4f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_TechnoShield);
+                        this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoShield).learned = true;
                     }
                     else
                     {
@@ -2830,6 +2887,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Sabotage);
+                        this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Sabotage).learned = true;
                     }
                     else
                     {
@@ -2838,6 +2896,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Overdrive);
+                        this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Overdrive).learned = true;
                     }
                     else
                     {
@@ -2846,6 +2905,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.spell_OrbitalStrike = true;
+                        this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_OrbitalStrike).learned = true;
                         this.InitializeSpell();
                     }
                 }
@@ -2872,10 +2932,12 @@ namespace TorannMagic
                     if (Rand.Chance(1f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_BloodGift);
+                        this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodGift).learned = true;
                     }
                     if (Rand.Chance(.4f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_IgniteBlood);
+                        this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_IgniteBlood).learned = true;
                     }
                     else
                     {
@@ -2885,6 +2947,7 @@ namespace TorannMagic
                     if (Rand.Chance(.4f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_BloodForBlood);
+                        this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodForBlood).learned = true;
                     }
                     else
                     {
@@ -2894,6 +2957,7 @@ namespace TorannMagic
                     if (Rand.Chance(.5f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_BloodShield);
+                        this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BloodShield).learned = true;
                     }
                     else
                     {
@@ -2903,6 +2967,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Rend);
+                        this.MagicData.MagicPowersBM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Rend).learned = true;
                     }
                     else
                     {
@@ -2937,6 +3002,8 @@ namespace TorannMagic
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_EnchantedBody);
                         this.AddPawnAbility(TorannMagicDefOf.TM_EnchantedAura);
+                        this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedAura).learned = true;
+                        this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedBody).learned = true;
                         this.spell_EnchantedAura = true;
                     }
                     else
@@ -2947,6 +3014,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Transmutate);
+                        this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Transmutate).learned = true;
                     }
                     else
                     {
@@ -2956,6 +3024,7 @@ namespace TorannMagic
                     if (Rand.Chance(.4f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_EnchanterStone);
+                        this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchanterStone).learned = true;
                     }
                     else
                     {
@@ -2965,6 +3034,7 @@ namespace TorannMagic
                     if (Rand.Chance(.4f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_EnchantWeapon);
+                        this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantWeapon).learned = true;
                     }
                     else
                     {
@@ -2974,6 +3044,7 @@ namespace TorannMagic
                     if (Rand.Chance(.4f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Polymorph);
+                        this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Polymorph).learned = true;
                     }
                     else
                     {
@@ -3000,6 +3071,7 @@ namespace TorannMagic
                     if (Rand.Chance(.4f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_Prediction);
+                        this.MagicData.MagicPowersC.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Prediction).learned = true;
                     }
                     else
                     {
@@ -3009,6 +3081,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_AlterFate);
+                        this.MagicData.MagicPowersC.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_AlterFate).learned = true;
                     }
                     else
                     {
@@ -3018,6 +3091,7 @@ namespace TorannMagic
                     if (Rand.Chance(.4f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_AccelerateTime);
+                        this.MagicData.MagicPowersC.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_AccelerateTime).learned = true;
                     }
                     else
                     {
@@ -3027,6 +3101,7 @@ namespace TorannMagic
                     if (Rand.Chance(.4f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_ReverseTime);
+                        this.MagicData.MagicPowersC.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ReverseTime).learned = true;
                     }
                     else
                     {
@@ -3036,6 +3111,7 @@ namespace TorannMagic
                     if (Rand.Chance(.3f))
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_ChronostaticField);
+                        this.MagicData.MagicPowersC.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ChronostaticField).learned = true;
                     }
                     else
                     {
@@ -6868,7 +6944,7 @@ namespace TorannMagic
             {                
                 Building mineTarget = this.earthSprites.GetFirstBuilding(this.earthSpriteMap);                
                 this.nextEarthSpriteAction = Find.TickManager.TicksGame + Mathf.RoundToInt((300 * (1 - (.1f * magicPowerSkill.level))) / this.arcaneDmg);
-                TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_SparkFlash"), this.earthSprites.ToVector3Shifted(), this.earthSpriteMap, Rand.Range(1.5f, 3f), .05f, 0f, .1f, 0, 0f, 0f, 0f);
+                TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_SparkFlash"), this.earthSprites.ToVector3Shifted(), this.earthSpriteMap, Rand.Range(2f, 5f), .05f, 0f, .1f, 0, 0f, 0f, 0f);
                 var mineable = mineTarget as Mineable;
                 int num = 80;
                 if(mineable != null && mineTarget.HitPoints > num)
@@ -6896,26 +6972,49 @@ namespace TorannMagic
                 {
                     IntVec3 oldEarthSpriteLoc = this.earthSprites;
                     Building newMineSpot = null;
-                    for (int i = 0; i < 20; i++)
+                    if (this.earthSpritesInArea)
                     {
-                        IntVec3 intVec = earthSprites + GenAdj.AdjacentCells.RandomElement();
-                        newMineSpot = intVec.GetFirstBuilding(this.earthSpriteMap);
-                        if(newMineSpot != null)
+                        List<IntVec3> spriteAreaCells = GenRadial.RadialCellsAround(oldEarthSpriteLoc, 5f, false).ToList();
+                        spriteAreaCells.Shuffle();
+                        for (int i = 0; i < spriteAreaCells.Count; i++)
                         {
-                            mineable = newMineSpot as Mineable;
-                            if(mineable != null)
+                            IntVec3 intVec = spriteAreaCells[i];
+                            newMineSpot = intVec.GetFirstBuilding(this.earthSpriteMap);
+                            if (newMineSpot != null && !intVec.Fogged(earthSpriteMap) && TM_Calc.GetSpriteArea() != null && TM_Calc.GetSpriteArea().ActiveCells.Contains(intVec))
                             {
-                                this.earthSprites = intVec;
-                                i = 20;
+                                mineable = newMineSpot as Mineable;
+                                if (mineable != null)
+                                {
+                                    this.earthSprites = intVec;
+                                }
+                                newMineSpot = null;
                             }
-                            newMineSpot = null;    
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < 20; i++)
+                        {
+                            IntVec3 intVec = earthSprites + GenAdj.AdjacentCells.RandomElement();
+                            newMineSpot = intVec.GetFirstBuilding(this.earthSpriteMap);
+                            if (newMineSpot != null)
+                            {
+                                mineable = newMineSpot as Mineable;
+                                if (mineable != null)
+                                {
+                                    this.earthSprites = intVec;
+                                    i = 20;
+                                }
+                                newMineSpot = null;
+                            }
                         }
                     }
 
                     if(oldEarthSpriteLoc == this.earthSprites)
                     {
                         this.earthSpriteType = 0;
-                        this.earthSprites = IntVec3.Invalid;
+                        this.earthSprites = IntVec3.Invalid;                        
+                        this.earthSpritesInArea = false;
                     }
                 }
             }
@@ -6929,7 +7028,7 @@ namespace TorannMagic
                 Map map = this.earthSpriteMap;
                 IntVec3 curCell = this.earthSprites;
                 TerrainDef terrain = curCell.GetTerrain(map);
-                if (Rand.Chance(50))
+                if (Rand.Chance(.8f))
                 {
                     Thing thing = null;
                     thing = ThingMaker.MakeThing(TorannMagicDefOf.RawMagicyte);
@@ -6971,6 +7070,7 @@ namespace TorannMagic
                         this.earthSprites = IntVec3.Invalid;
                         this.earthSpriteMap = null;
                         this.earthSpriteType = 0;
+                        this.earthSpritesInArea = false;
                     }
 
                     terrain = curCell.GetTerrain(map);
@@ -6978,19 +7078,42 @@ namespace TorannMagic
                     {
                         //look for new spot to transform
                         IntVec3 oldEarthSpriteLoc = this.earthSprites;
-                        for (int i = 0; i < 20; i++)
+                        if (this.earthSpritesInArea)
                         {
-                            IntVec3 intVec = earthSprites + GenAdj.AdjacentCells.RandomElement();
-                            terrain = intVec.GetTerrain(map);
-                            if (terrain.defName == "MarshyTerrain" || terrain.defName == "Mud" || terrain.defName == "Marsh" || terrain.defName == "WaterShallow" || terrain.defName == "Ice" ||
-                        terrain.defName == "Sand" || terrain.defName == "Gravel" || terrain.defName == "Soil" || terrain.defName == "MossyTerrain" || terrain.defName == "SoftSand")
+                            List<IntVec3> spriteAreaCells = GenRadial.RadialCellsAround(oldEarthSpriteLoc, 5f, false).ToList();
+                            spriteAreaCells.Shuffle();
+                            for (int i = 0; i < spriteAreaCells.Count; i++)
                             {
-                                Building terrainHasBuilding = null;
-                                terrainHasBuilding = intVec.GetFirstBuilding(this.earthSpriteMap);
-                                if (terrainHasBuilding == null) //dont transform terrain underneath buildings
+                                IntVec3 intVec = spriteAreaCells[i];
+                                terrain = intVec.GetTerrain(map);
+                                if (terrain.defName == "MarshyTerrain" || terrain.defName == "Mud" || terrain.defName == "Marsh" || terrain.defName == "WaterShallow" || terrain.defName == "Ice" ||
+                            terrain.defName == "Sand" || terrain.defName == "Gravel" || terrain.defName == "Soil" || terrain.defName == "MossyTerrain" || terrain.defName == "SoftSand")
                                 {
-                                    this.earthSprites = intVec;
-                                    i = 20;
+                                    Building terrainHasBuilding = null;
+                                    terrainHasBuilding = intVec.GetFirstBuilding(this.earthSpriteMap);
+                                    if (terrainHasBuilding == null && TM_Calc.GetSpriteArea() != null && TM_Calc.GetSpriteArea().ActiveCells.Contains(intVec)) //dont transform terrain underneath buildings
+                                    {
+                                        this.earthSprites = intVec;
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for (int i = 0; i < 20; i++)
+                            {
+                                IntVec3 intVec = earthSprites + GenAdj.AdjacentCells.RandomElement();
+                                terrain = intVec.GetTerrain(map);
+                                if (terrain.defName == "MarshyTerrain" || terrain.defName == "Mud" || terrain.defName == "Marsh" || terrain.defName == "WaterShallow" || terrain.defName == "Ice" ||
+                            terrain.defName == "Sand" || terrain.defName == "Gravel" || terrain.defName == "Soil" || terrain.defName == "MossyTerrain" || terrain.defName == "SoftSand")
+                                {
+                                    Building terrainHasBuilding = null;
+                                    terrainHasBuilding = intVec.GetFirstBuilding(this.earthSpriteMap);
+                                    if (terrainHasBuilding == null) //dont transform terrain underneath buildings
+                                    {
+                                        this.earthSprites = intVec;
+                                        i = 20;
+                                    }
                                 }
                             }
                         }
@@ -7000,6 +7123,7 @@ namespace TorannMagic
                             this.earthSpriteType = 0;
                             this.earthSpriteMap = null;
                             this.earthSprites = IntVec3.Invalid;
+                            this.earthSpritesInArea = false;
                         }
                     }
                 }
@@ -8091,6 +8215,7 @@ namespace TorannMagic
             Scribe_Values.Look<IntVec3>(ref this.earthSprites, "earthSprites", default(IntVec3), false);
             Scribe_Values.Look<int>(ref this.earthSpriteType, "earthSpriteType", 0, false);
             Scribe_References.Look<Map>(ref this.earthSpriteMap, "earthSpriteMap", false);
+            Scribe_Values.Look<bool>(ref this.earthSpritesInArea, "earthSpritesInArea", false, false);
             Scribe_Values.Look<int>(ref this.nextEarthSpriteAction, "nextEarthSpriteAction", 0, false);
             Scribe_Collections.Look<IntVec3>(ref this.fertileLands, "fertileLands", LookMode.Value);
             //Recall variables 

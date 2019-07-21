@@ -19,7 +19,7 @@ namespace TorannMagic
             bool flag = caster != null && !caster.Dead;
             if (flag)
             {
-                HealthUtility.AdjustSeverity(caster, HediffDef.Named("TM_ReversalHD"), 8 + (2 * pwr.level));
+                HealthUtility.AdjustSeverity(caster, HediffDef.Named("TM_ReversalHD"), (8 + (2 * pwr.level))*comp.mightPwr);
             }
             return true;
         }

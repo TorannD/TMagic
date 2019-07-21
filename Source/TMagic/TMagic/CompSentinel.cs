@@ -201,7 +201,7 @@ namespace TorannMagic
                     }
                 }
 
-                if (this.target != null)
+                if (this.target != null && this.Pawn.meleeVerbs.TryGetMeleeVerb(this.target.Thing) != null)
                 {
                     Thing currentTargetThing = this.Pawn.CurJob.targetA.Thing;
                     if (currentTargetThing == null)

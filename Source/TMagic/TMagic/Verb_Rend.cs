@@ -13,6 +13,7 @@ namespace TorannMagic
     {
 
         private int verVal;
+        private float arcaneDmg = 1f;
 
         bool validTarg;
         //can be used with shieldbelt
@@ -48,6 +49,7 @@ namespace TorannMagic
             //this.UpdateTargets();
             this.FindTargets();
             MagicPowerSkill ver = base.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Rend.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Rend_ver");
+            this.arcaneDmg = base.CasterPawn.GetComp<CompAbilityUserMagic>().arcaneDmg;
             verVal = ver.level;
             bool flag2 = this.UseAbilityProps.AbilityTargetCategory != AbilityTargetCategory.TargetAoE && this.TargetsAoE.Count > 1;
             if (flag2)
@@ -61,7 +63,7 @@ namespace TorannMagic
                 {
                     if (Rand.Chance(TM_Calc.GetSpellSuccessChance(this.CasterPawn, newPawn, true)))
                     {
-                        HealthUtility.AdjustSeverity(newPawn, HediffDef.Named("TM_RendHD"), 3f + (.6f * ver.level));
+                        HealthUtility.AdjustSeverity(newPawn, HediffDef.Named("TM_RendHD"), (3f + (.6f * ver.level))*this.arcaneDmg);
                     }
                     else
                     {

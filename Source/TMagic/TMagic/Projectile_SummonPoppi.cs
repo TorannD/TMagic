@@ -17,6 +17,7 @@ namespace TorannMagic
 
         private int pwrVal = 0;
         private int verVal = 0;
+        private float arcaneDmg = 1f;
 
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {
@@ -37,6 +38,7 @@ namespace TorannMagic
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 pwrVal = pwr.level;
                 verVal = ver.level;
+                this.arcaneDmg = pawn.GetComp<CompAbilityUserMagic>().arcaneDmg;
                 if (settingsRef.AIHardMode && !pawn.IsColonist)
                 {
                     pwrVal = 1;
@@ -94,13 +96,13 @@ namespace TorannMagic
                         newPawn.validSummoning = true;
                         newPawn.Spawner = this.Caster;
                         newPawn.Temporary = true;
-                        newPawn.TicksToDestroy = 1800;
+                        newPawn.TicksToDestroy = Mathf.RoundToInt(1800 * this.arcaneDmg);
 
                         try
                         {
                             GenSpawn.Spawn(newPawn, position, map);
                             CompLeaper comp = newPawn.GetComp<CompLeaper>();
-                            comp.explosionRadius += (verVal * .2f);
+                            comp.explosionRadius += ((verVal * .2f) * this.arcaneDmg);
                         }
                         catch
                         {

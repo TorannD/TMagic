@@ -13,6 +13,7 @@ namespace TorannMagic
         private int verVal;
         private int pwrVal;
         private int effVal;
+        private float arcaneDmg = 1f;
 
         Thing turret = null;
 
@@ -27,6 +28,7 @@ namespace TorannMagic
             effVal = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoTurret.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoTurret_eff").level;
             verVal = ver.level;
             pwrVal = pwr.level;
+            arcaneDmg = comp.arcaneDmg;
             if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
                 MightPowerSkill mpwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
@@ -58,9 +60,9 @@ namespace TorannMagic
                 turretGun.def.SetStatBaseValue(StatDefOf.AccuracyShort, 0.75f + (.01f * pwrVal));
                 turretGun.def.SetStatBaseValue(StatDefOf.AccuracyMedium, 0.65f + (.01f * pwrVal));
                 turretGun.def.SetStatBaseValue(StatDefOf.AccuracyLong, 0.35f + (.01f * pwrVal));
-                turretGun.def.Verbs.FirstOrDefault().burstShotCount = Mathf.RoundToInt(6 + (.4f * pwrVal));
+                turretGun.def.Verbs.FirstOrDefault().burstShotCount = Mathf.RoundToInt((6 + (.4f * pwrVal)) * this.arcaneDmg);
                 turretGun.def.Verbs.FirstOrDefault().warmupTime = 1.5f - (.03f * pwrVal);
-                turretGun.def.Verbs.FirstOrDefault().range = 35 + verVal;
+                turretGun.def.Verbs.FirstOrDefault().range = (Mathf.RoundToInt((35 + verVal)*this.arcaneDmg));
 
                 tempPod.def.building.turretGunDef = turretGun.def;
 

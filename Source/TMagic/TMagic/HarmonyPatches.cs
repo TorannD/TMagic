@@ -194,6 +194,19 @@ namespace TorannMagic
 
         }
 
+        [HarmonyPatch(typeof(ApparelUtility), "HasPartsToWear", null)]
+        public class BracersOfPacifist_Wear_Prevention
+        {
+            public static void Postfix(Pawn p, ThingDef apparel, ref bool __result)
+            {
+                if(p != null && p.story != null && !p.story.WorkTagIsDisabled(WorkTags.Violent) && apparel == TorannMagicDefOf.TM_Artifact_BracersOfThePacifist)
+                {
+                    __result = false;
+                }
+            }
+        }
+
+
         //[HarmonyPatch(typeof(FoodUtility), "AddIngestThoughtsFromIngredient", null)]
         //public class FoodUtility_MinionMeat_ThoughtFromEatingIngredient_Patch
         //{
@@ -257,6 +270,19 @@ namespace TorannMagic
         //        }
         //    }
         //}
+
+        [HarmonyPatch(typeof(Thing), "IDNumberFromThingID", null)]
+        public class TechnoWeapon_ThingID
+        {
+            public static void Postfix(string thingID, ref int __result)
+            {
+                if(thingID.Contains("TM_TechnoWeapon"))
+                {                    
+                    __result = Rand.Range(0, 50000);
+                    Log.Message("changing thing id to " + __result);
+                }
+            }
+        }
 
         [HarmonyPatch(typeof(Pawn), "VerifyReservations", null)]
         public class VerifyReservations_Prefix_Patch
@@ -1161,7 +1187,7 @@ namespace TorannMagic
             {
                 return;
             }
-            if (!__instance.Faction.Equals(Faction.OfPlayer) || __instance.story == null || __instance.story.traits.allTraits.Count < 1)
+            if (!__instance.Faction.Equals(Faction.OfPlayer) || __instance.story == null || __instance.story.traits == null || __instance.story.traits.allTraits.Count < 1)
             {
                 return;
             }
@@ -1174,11 +1200,22 @@ namespace TorannMagic
                 var gizmoList = __result.ToList();
                 if (settingsRef.showGizmo)
                 {
-                    if (compMagic == null && compMight == null)
+                    Enchantment.CompEnchantedItem itemComp = null;
+                    if(__instance.apparel != null && __instance.apparel.WornApparel != null)
+                    {
+                        for(int i = 0; i < __instance.apparel.WornApparel.Count; i++)
+                        {
+                            if(__instance.apparel.WornApparel[i].def == TorannMagicDefOf.TM_Artifact_NecroticOrb)
+                            {
+                                itemComp = __instance.apparel.WornApparel[i].TryGetComp<Enchantment.CompEnchantedItem>();
+                            }
+                        }
+                    }
+                    if (compMagic == null && compMight == null && itemComp == null)
                     {
                         return;
                     }
-                    if (!compMagic.IsMagicUser && !compMight.IsMightUser)
+                    if (!compMagic.IsMagicUser && !compMight.IsMightUser && itemComp == null)
                     {
                         return;
                     }
@@ -1188,6 +1225,7 @@ namespace TorannMagic
                         //All gizmo properties done in Gizmo_EnergyStatus
                         //Make it the first thing you see
                         pawn = __instance,
+                        iComp = itemComp,
                         order = -101f
                     };
 
@@ -2185,7 +2223,7 @@ namespace TorannMagic
         {
             private static bool Prefix(ThingDef thingDef, ref bool __result)
             {
-                if (thingDef.thingClass.ToString() == "TorannMagic.TMPawnSummoned")
+                if (thingDef != null && thingDef.thingClass != null && thingDef.thingClass.ToString() == "TorannMagic.TMPawnSummoned")
                 {
                     __result = false;
                     return false;
@@ -2309,6 +2347,11 @@ namespace TorannMagic
                 {
                     ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                     if (!settingsRef.AICasting)
+                    {
+                        __result = false;
+                        return false;
+                    }
+                    if(pawn.IsPrisoner || pawn.Downed)
                     {
                         __result = false;
                         return false;
@@ -2537,7 +2580,7 @@ namespace TorannMagic
                 {
                     if (ModCheck.Validate.AlienHumanoidRaces.IsInitialized())
                     {
-                        if (Rand.Chance(((settingsRef.baseFighterChance * 6) + (settingsRef.baseMageChance * 5) + (8 * settingsRef.advFighterChance) + (16 * settingsRef.advMageChance)) / (allTraits.Count - 24)))
+                        if (Rand.Chance(((settingsRef.baseFighterChance * 6) + (settingsRef.baseMageChance * 5) + (8 * settingsRef.advFighterChance) + (16 * settingsRef.advMageChance)) / (allTraits.Count)))
                         {
                             if (pawnTraits.Count > 0)
                             {
@@ -2872,7 +2915,7 @@ namespace TorannMagic
                     }
                     else
                     {
-                        if (Rand.Chance(((settingsRef.baseFighterChance * 6) + (settingsRef.baseMageChance * 6) + (8 * settingsRef.advFighterChance) + (16 * settingsRef.advMageChance)) / (allTraits.Count - 24)))
+                        if (Rand.Chance(((settingsRef.baseFighterChance * 6) + (settingsRef.baseMageChance * 6) + (8 * settingsRef.advFighterChance) + (16 * settingsRef.advMageChance)) / (allTraits.Count)))
                         {
                             if (pawnTraits.Count > 0)
                             {

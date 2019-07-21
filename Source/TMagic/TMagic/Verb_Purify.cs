@@ -45,9 +45,10 @@ namespace TorannMagic
         {
             Pawn caster = base.CasterPawn;
             Pawn pawn = this.currentTarget.Thing as Pawn;
+            CompAbilityUserMagic comp = caster.GetComp<CompAbilityUserMagic>();
 
-            MagicPowerSkill pwr = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Purify.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Purify_pwr");
-            MagicPowerSkill ver = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Purify.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Purify_ver");
+            MagicPowerSkill pwr = comp.MagicData.MagicPowerSkill_Purify.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Purify_pwr");
+            MagicPowerSkill ver = comp.MagicData.MagicPowerSkill_Purify.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Purify_ver");
             pwrVal = pwr.level;
             verVal = ver.level;
             if (caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
@@ -87,14 +88,14 @@ namespace TorannMagic
                                         {
                                             if (pwrVal >= 1)
                                             {
-                                                current.Heal(pwrVal);
+                                                current.Heal(pwrVal * comp.arcaneDmg);
                                                 num--;
                                                 num2--;
                                             }
                                         }
                                         else
                                         {
-                                            current.Heal(2f + pwrVal * 2);
+                                            current.Heal((2f + pwrVal * 2) * comp.arcaneDmg);
                                             //current.Heal(5.0f + (float)pwrVal * 3f); // power affects how much to heal
                                             num--;
                                             num2--;
@@ -159,27 +160,27 @@ namespace TorannMagic
                         {
                             if (rec.Chemical.defName == "Alcohol" || rec.Chemical.defName == "Smokeleaf")
                             {
-                                rec.Severity -= (.3f + .3f * pwrVal);
+                                rec.Severity -= ((.3f + .3f * pwrVal)*comp.arcaneDmg);
                                 num--;
                             }
                             if ((rec.Chemical.defName == "GoJuice" || rec.Chemical.defName == "WakeUp") && verVal >= 1)
                             {
-                                rec.Severity -= (.25f + .25f * pwrVal);
+                                rec.Severity -= ((.25f + .25f * pwrVal)*comp.arcaneDmg);
                                 num--;
                             }
                             if (rec.Chemical.defName == "Psychite" && verVal >= 2)
                             {
-                                rec.Severity -= (.25f + .25f * pwrVal);
+                                rec.Severity -= ((.25f + .25f * pwrVal)*comp.arcaneDmg);
                                 num--;
                             }
                             if (verVal >= 3)
                             {
-                                if (rec.Chemical.defName == "Luciferium" && (rec.Severity - (.15f + .15f * pwrVal) < 0))
+                                if (rec.Chemical.defName == "Luciferium" && (rec.Severity - ((.15f + .15f * pwrVal)*comp.arcaneDmg) < 0))
                                 {
                                     Hediff luciHigh = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("LuciferiumHigh"), false);
                                     pawn.health.RemoveHediff(luciHigh);
                                 }
-                                rec.Severity -= (.15f + .15f * pwrVal);
+                                rec.Severity -= ((.15f + .15f * pwrVal) * comp.arcaneDmg);
                                 num--;                                
                             }
                             TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .6f);

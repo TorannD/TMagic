@@ -1201,5 +1201,54 @@ Orbs of the Eternal have been used by mages, rulers, and the elite to prolong li
     </comps>
   </ThingDef>
   
+  <ThingDef ParentName="TM_BuyableArtifactBase">
+    <defName>TM_Artifact_NecroticOrb</defName>
+    <label>Necrotic Orb</label>
+    <description>An artifact that is able to contain the necrotic energy required to sustain the undead. The Necrotic Orb functions much like a battery; when equipped by a pawn, it absorbs energy from a necromancer as if it were an undead itself. When no energy is available from a necromancer, it will disperse energy to sustain undead.
+	
+Only one orb may be equipped by a pawn. Orbs only take affect when equipped.</description>
+    <graphicData>
+      <texPath>UI/orb_necrotic</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <drawSize>(.5, .5)</drawSize>
+    </graphicData>
+	<thingCategories>
+	  <li>Apparel</li>
+	</thingCategories>
+	<generateCommonality>0</generateCommonality>
+	<apparel>
+	 <tags>
+	   <li>Arcane</li>
+	 </tags>
+		<layers>
+			<li>TM_Artifact</li>
+		</layers>
+		<bodyPartGroups>
+			<li>RightHand</li>
+		</bodyPartGroups>
+	</apparel>
+    <statBases>
+		<Mass>1</Mass>
+		<MaxHitPoints>40</MaxHitPoints>
+      <MarketValue>1800</MarketValue>
+	  <WorkToMake>20000</WorkToMake>
+    </statBases>
+	<recipeMaker>
+      <workAmount>20000</workAmount>
+	  <skillRequirements>
+			<Intellectual>8</Intellectual>
+	  </skillRequirements>
+    </recipeMaker>
+	<costList>
+	  <RawMagicyte>250</RawMagicyte>
+	  <Silver>50</Silver>
+	  <Jade>50</Jade>
+    </costList>
+    <comps>
+	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		<hasEnchantment>true</hasEnchantment>
+	  </li>
+    </comps>
+  </ThingDef>  
 
 </Defs>

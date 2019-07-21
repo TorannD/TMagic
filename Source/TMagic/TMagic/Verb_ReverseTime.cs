@@ -16,6 +16,7 @@ namespace TorannMagic
 
         private int verVal =0;
         private int pwrVal =0;
+        private float arcaneDmg = 1f;
 
         bool validTarg;
         //can be used with shieldbelt
@@ -53,6 +54,7 @@ namespace TorannMagic
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             pwrVal = pwr.level;
             verVal = ver.level;
+            arcaneDmg = comp.arcaneDmg;
             if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
                 MightPowerSkill mpwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
@@ -165,6 +167,7 @@ namespace TorannMagic
 
         private void AgePawn(Pawn pawn, int duration, bool isBad)
         {
+            duration = Mathf.RoundToInt(duration * this.arcaneDmg);
             if (!pawn.DestroyedOrNull() && !pawn.Dead && pawn.health != null && pawn.health.hediffSet != null && pawn.Map != null)
             {
                 if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_AccelerateTimeHD))
@@ -210,7 +213,7 @@ namespace TorannMagic
         private void AgeThing(Thing thing)
         {
 
-            thing.HitPoints = Mathf.Clamp(thing.HitPoints + 200 + (100 * pwrVal), 0, thing.MaxHitPoints);
+            thing.HitPoints = Mathf.Clamp(thing.HitPoints + Mathf.RoundToInt((200 + (100 * pwrVal)) * this.arcaneDmg), 0, thing.MaxHitPoints);
             if (thing is Apparel)
             {
                 Apparel apparelThing = thing as Apparel;

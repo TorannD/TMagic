@@ -153,6 +153,7 @@ namespace TorannMagic.Enchantment
             Scribe_Values.Look<float>(ref this.xpGain, "xpGain", 0, false);
             Scribe_Values.Look<float>(ref this.arcaneRes, "arcaneRes", 0, false);
             Scribe_Values.Look<float>(ref this.arcaneDmg, "arcaneDmg", 0, false);
+            Scribe_Values.Look<float>(ref this.necroticEnergy, "necroticEnergy", 0f, false);
             Scribe_Values.Look<bool>(ref this.arcaneSpectre, "arcaneSpectre", false, false);
             Scribe_Values.Look<bool>(ref this.phantomShift, "phantomShift", false, false);
             Scribe_Values.Look<EnchantmentTier>(ref this.maxMPTier, "maxMPTier", (EnchantmentTier)0, false);
@@ -201,6 +202,11 @@ namespace TorannMagic.Enchantment
                 }
 
             }
+            bool flag4 = this.necroticEnergy != 0;
+            if(flag4)
+            {
+                text += "Necrotic Energy: " + this.NecroticEnergy.ToString("N1");
+            }
             return text;
         }
 
@@ -231,6 +237,7 @@ namespace TorannMagic.Enchantment
         //Common Stats (%)        
 
         public float healthRegenRate = 0;
+        private float necroticEnergy = 0f;
 
         //Special Abilities
         public EnchantmentTier skillTier = EnchantmentTier.Skill;
@@ -242,6 +249,18 @@ namespace TorannMagic.Enchantment
         public float hediffSeverity = 0f;
 
         //Abilities
+
+        public float NecroticEnergy
+        {
+            get
+            {
+                return Mathf.Clamp(this.necroticEnergy, 0f, 100f);
+            }
+            set
+            {
+                this.necroticEnergy = Mathf.Clamp(value, 0f, 100f);
+            }
+        }
 
         private float StuffMultiplier
         {

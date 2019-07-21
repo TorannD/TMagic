@@ -14,6 +14,7 @@ namespace TorannMagic
     public class Verb_AlterFate : Verb_UseAbility
     {        
         private int pwrVal = 0;
+        private float arcaneDmg = 1f;
 
         private bool confident = false;
         private bool unsure = false;
@@ -27,10 +28,11 @@ namespace TorannMagic
 
             CompAbilityUserMagic comp = caster.GetComp<CompAbilityUserMagic>();
             pwrVal = comp.MagicData.MagicPowerSkill_AlterFate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AlterFate_pwr").level;
+            arcaneDmg = comp.arcaneDmg;
 
             if(comp.predictionIncidentDef != null)
             {
-                if (Rand.Chance(.25f + (.05f * pwrVal))) //success end
+                if (Rand.Chance((.25f + (.05f * pwrVal))*this.arcaneDmg)) //success end
                 {
                     //Log.Message("remove event");
                     List<QueuedIncident> iQue = Traverse.Create(root: Find.Storyteller.incidentQueue).Field(name: "queuedIncidents").GetValue<List<QueuedIncident>>();

@@ -29,7 +29,7 @@ namespace TorannMagic
             verVal = comp.MagicData.MagicPowerSkill_Shapeshift.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Shapeshift_ver").level;
             pwrVal = comp.MagicData.MagicPowerSkill_Shapeshift.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Shapeshift_pwr").level;
             effVal = comp.MagicData.MagicPowerSkill_Shapeshift.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Shapeshift_eff").level;
-            this.duration = this.duration + (360 * effVal);
+            this.duration = Mathf.RoundToInt((this.duration + (360 * effVal))*comp.arcaneDmg);
             bool flag = caster != null && !caster.Dead;
             if (flag)
             {

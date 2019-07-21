@@ -33,7 +33,7 @@
     <stages>
       <li>
         <label>gained arcane knowledge</label>
-		<description>I've been enlightening by words from a powerful mage, now I just have to apply this knowledge...</description>
+		<description>I've been enlightened by words from a powerful mage, now I just have to apply this knowledge...</description>
 		<baseMoodEffect>2</baseMoodEffect>
         <baseOpinionOffset>6</baseOpinionOffset>
       </li>

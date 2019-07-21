@@ -75,7 +75,7 @@
 	<tendable>false</tendable>
     <makesAlert>false</makesAlert>
 	<isBad>false</isBad>
-	<maxSeverity>200.0</maxSeverity>
+	<maxSeverity>300.0</maxSeverity>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-700</severityPerDay>

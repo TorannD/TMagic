@@ -18,6 +18,65 @@
 		  <li>Kind</li>
 		</conflictingTraits>
 	</TraitDef>
+	
+	<TraitDef>
+		<defName>Undead</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>	
+		<disabledWorkTags> 
+			<li>Caring</li>
+			<li>Social</li>
+			<li>Animals</li>
+			<li>Artistic</li>
+			<li>Intellectual</li>
+		</disabledWorkTags>
+		<degreeDatas>	
+		  <li>
+			<label>Undead</label>
+			<description>[PAWN_nameDef] has been reanimated as an undead.</description>
+			<degree>0</degree>
+			<statOffsets>
+				<MoveSpeed>-2</MoveSpeed>
+				<ComfyTemperatureMin>-200</ComfyTemperatureMin>
+				<ComfyTemperatureMax>50</ComfyTemperatureMax>
+				<ToxicSensitivity>-1</ToxicSensitivity>
+				<ImmunityGainSpeed>49</ImmunityGainSpeed>
+				<PainShockThreshold>0.90</PainShockThreshold>
+				<NegotiationAbility>-0.7</NegotiationAbility>
+				<WorkSpeedGlobal>-0.50</WorkSpeedGlobal>
+			</statOffsets>
+		  </li>
+		</degreeDatas>	
+		<conflictingTraits>
+		  <li>PhysicalProdigy</li>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>Arcanist</li>
+		  <li>StormBorn</li>
+		  <li>Summoner</li>
+		  <li>Gifted</li>
+	      <li>Paladin</li>
+		  <li>Gladiator</li>
+		  <li>Druid</li>
+		  <li>TM_Sniper</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Bladedancer</li>
+		  <li>Lich</li>
+		  <li>Ranger</li>
+		  <li>Faceless</li>
+		  <li>Succubus</li>
+		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
+		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
+		</conflictingTraits>
+	</TraitDef>
 
     <TraitDef>
         <defName>Gifted</defName>
@@ -618,64 +677,6 @@
 		</conflictingTraits>	
 	</TraitDef>
 	
-	<TraitDef>
-		<defName>Undead</defName>
-		<ignoreConfigErrors>true</ignoreConfigErrors>
-		<commonality>0</commonality>	
-		<disabledWorkTags> 
-			<li>Caring</li>
-			<li>Social</li>
-			<li>Animals</li>
-			<li>Artistic</li>
-			<li>Intellectual</li>
-		</disabledWorkTags>
-		<degreeDatas>	
-		  <li>
-			<label>Undead</label>
-			<description>[PAWN_nameDef] has been reanimated as an undead.</description>
-			<degree>0</degree>
-			<statOffsets>
-				<MoveSpeed>-2</MoveSpeed>
-				<ComfyTemperatureMin>-200</ComfyTemperatureMin>
-				<ComfyTemperatureMax>50</ComfyTemperatureMax>
-				<ToxicSensitivity>-1</ToxicSensitivity>
-				<ImmunityGainSpeed>49</ImmunityGainSpeed>
-				<PainShockThreshold>0.90</PainShockThreshold>
-				<NegotiationAbility>-0.5</NegotiationAbility>
-				<WorkSpeedGlobal>-0.40</WorkSpeedGlobal>
-			</statOffsets>
-		  </li>
-		</degreeDatas>	
-		<conflictingTraits>
-		  <li>PhysicalProdigy</li>
-		  <li>InnerFire</li>
-		  <li>HeartOfFrost</li>
-		  <li>Arcanist</li>
-		  <li>StormBorn</li>
-		  <li>Summoner</li>
-		  <li>Gifted</li>
-	      <li>Paladin</li>
-		  <li>Gladiator</li>
-		  <li>Druid</li>
-		  <li>TM_Sniper</li>
-		  <li>Necromancer</li>
-		  <li>Priest</li>
-		  <li>Bladedancer</li>
-		  <li>Lich</li>
-		  <li>Ranger</li>
-		  <li>Faceless</li>
-		  <li>Succubus</li>
-		  <li>Warlock</li>
-		  <li>TM_Psionic</li>
-		  <li>Geomancer</li>
-		  <li>Technomancer</li>
-		  <li>DeathKnight</li>
-		  <li>Enchanter</li>		  
-		  <li>BloodMage</li>
-		  <li>Chronomancer</li>
-		  <li>TM_Monk</li>
-		</conflictingTraits>
-	</TraitDef>
 
 	<TraitDef>
 		<defName>TM_Bard</defName>

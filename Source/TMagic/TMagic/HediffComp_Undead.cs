@@ -101,6 +101,21 @@ namespace TorannMagic
             if (flag4)
             {                
                 necroValid = false;
+                float orbCount = 0;
+                float orbEnergy = 0;
+                List<Apparel> orbs = TM_Calc.GetNecroticOrbs(base.Pawn);
+                if (orbs != null && orbs.Count > 0)
+                {
+                    orbCount = orbs.Count;
+                    for (int i = 0; i < orbs.Count; i++)
+                    {
+                        Enchantment.CompEnchantedItem itemComp = orbs[i].GetComp<Enchantment.CompEnchantedItem>();
+                        if (itemComp != null)
+                        {
+                            orbEnergy += itemComp.NecroticEnergy;
+                        }
+                    }
+                }
                 if (base.Pawn.Map != null)
                 {                    
                     foreach (Pawn current in base.Pawn.Map.mapPawns.PawnsInFaction(base.Pawn.Faction))
@@ -116,8 +131,8 @@ namespace TorannMagic
                         }
                     }
                     if(necroValid == false)  //give a buffer that allows flight or other temporary despawning of the necromancers or lichs before destroying undead
-                    {
-                        if (lichStrike < 3)
+                    {                        
+                        if (lichStrike < 3 && orbEnergy <= 0)
                         {
                             lichStrike++;
                             necroValid = true;
@@ -149,24 +164,42 @@ namespace TorannMagic
                     }
                 }
 
-                if (!necroValid && base.Pawn.Map != null)
-                {
-                    TM_MoteMaker.ThrowScreamMote(base.Pawn.Position.ToVector3(), base.Pawn.Map, .8f, 255, 255, 255);
-                    base.Pawn.Kill(null, null);
-                }
-                else if (!necroValid && base.Pawn.Map == null)
-                {
-                    base.Pawn.Kill(null, null);
+                if (!necroValid && orbEnergy <= 0)
+                {                    
+                    if (base.Pawn.Map != null)
+                    {
+                        TM_MoteMaker.ThrowScreamMote(base.Pawn.Position.ToVector3(), base.Pawn.Map, .8f, 255, 255, 255);
+                        base.Pawn.Kill(null, null);
+                    }
+                    else
+                    {
+                        base.Pawn.Kill(null, null);
+                    }
                 }
                 else
                 {
-                    List<Need> needs = base.Pawn.needs.AllNeeds;
-                    for(int i =0; i < needs.Count; i++)
+                    for(int i = 0; i < orbs.Count; i++)
                     {
-                        if(needs[i].def.defName != "TM_Mana" && needs[i].def.defName != "TM_Stamina")
-                        {                            
+                        Enchantment.CompEnchantedItem itemComp = orbs[i].GetComp<Enchantment.CompEnchantedItem>();
+                        if (itemComp != null)
+                        {
+                            if (this.Pawn.RaceProps.Humanlike)
+                            {
+                                itemComp.NecroticEnergy -= (0.12f * .3f * 4f) / orbCount;
+                            }
+                            else if(this.Pawn.RaceProps.Animal)
+                            {
+                                itemComp.NecroticEnergy -= (0.12f * 4f * (this.Pawn.kindDef.combatPower / 100))/ orbCount;
+                            }
+                        }
+                    }
+                    List<Need> needs = base.Pawn.needs.AllNeeds;
+                    for (int i = 0; i < needs.Count; i++)
+                    {
+                        if (needs[i].def.defName != "TM_Mana" && needs[i].def.defName != "TM_Stamina")
+                        {
                             needs[i].CurLevel = needs[i].MaxLevel;
-                        }                        
+                        }
                     }
                     //if (base.Pawn.needs.food != null)
                     //{
@@ -263,10 +296,10 @@ namespace TorannMagic
                                     pawn.health.RemoveHediff(rec);
                                 }
                             }
-                            if(rec.def.makesSickThought)
+                            if (rec.def.makesSickThought)
                             {
                                 pawn.health.RemoveHediff(rec);
-                            }                            
+                            }
                         }
                     }
                 }                

@@ -14,6 +14,8 @@ namespace TorannMagic
             CellRect cellRect = CellRect.CenteredOn(base.Position, 1);
             cellRect.ClipInsideMap(map);
             Building bldg = new Building();
+            Pawn caster = this.launcher as Pawn;
+            CompAbilityUserMagic comp = caster.GetComp<CompAbilityUserMagic>();
 
             IntVec3 c = cellRect.CenterCell;
 
@@ -23,14 +25,15 @@ namespace TorannMagic
                 
                 if (bldg.GetComp<CompPowerBattery>() != null)
                 {
-                    bldg.GetComp<CompPowerBattery>().AddEnergy(400f);
-                    if (400f > bldg.GetComp<CompPowerBattery>().AmountCanAccept)
+                    float energyAdded = 400f * comp.arcaneDmg;
+                    bldg.GetComp<CompPowerBattery>().AddEnergy(energyAdded);
+                    if (energyAdded > bldg.GetComp<CompPowerBattery>().AmountCanAccept)
                     {
                         bldg.GetComp<CompPowerBattery>().AddEnergy(bldg.GetComp<CompPowerBattery>().AmountCanAccept);
                     }
                     else
                     {
-                        bldg.GetComp<CompPowerBattery>().AddEnergy(400f);
+                        bldg.GetComp<CompPowerBattery>().AddEnergy(energyAdded);
                     }
                 }
                 else

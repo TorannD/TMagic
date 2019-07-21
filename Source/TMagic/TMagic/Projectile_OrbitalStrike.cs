@@ -15,6 +15,7 @@ namespace TorannMagic
         private bool initialized = false;
         private int verVal = 0;
         private int pwrVal = 0;
+        private float arcaneDmg = 1f;
         private int beamAge = 0;
         private int strikeNum;
         private int age = -1;
@@ -42,6 +43,7 @@ namespace TorannMagic
             Scribe_Values.Look<int>(ref this.beamAge, "beamAge", 120, false);
             Scribe_Values.Look<int>(ref this.verVal, "verVal", 0, false);
             Scribe_Values.Look<int>(ref this.pwrVal, "pwrVal", 0, false);
+            Scribe_Values.Look<float>(ref this.arcaneDmg, "arcaneDmg", 1f, false);
             Scribe_Values.Look<int>(ref this.targettingAge, "targettingAge", 300, false);
             Scribe_Values.Look<IntVec3>(ref this.strikePos, "strikePos", default(IntVec3), false);
         }
@@ -62,10 +64,12 @@ namespace TorannMagic
             if (!this.initialized)
             {
                 caster = this.launcher as Pawn;
+                CompAbilityUserMagic comp = caster.GetComp<CompAbilityUserMagic>();
                 MagicPowerSkill pwr = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_OrbitalStrike.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_OrbitalStrike_pwr");
                 MagicPowerSkill ver = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_OrbitalStrike.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_OrbitalStrike_ver");
                 verVal = ver.level;
                 pwrVal = pwr.level;
+                this.arcaneDmg = comp.arcaneDmg;
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 if (settingsRef.AIHardMode && !caster.IsColonist)
                 {
@@ -95,10 +99,8 @@ namespace TorannMagic
 
             if (this.age == (this.targettingAge + this.beamDuration))
             {
-                TM_MoteMaker.MakePowerBeamMoteColor(this.strikePos, base.Map, this.radius * 4f, 2f, .5f, .1f, .5f, colorInt.ToColor);
-                this.caster = this.launcher as Pawn;
-                CompAbilityUserMagic comp = caster.GetComp<CompAbilityUserMagic>();
-                GenExplosion.DoExplosion(this.strikePos, map, this.def.projectile.explosionRadius, DamageDefOf.Bomb, this.launcher as Pawn, Mathf.RoundToInt((25 + 5*pwrVal) * comp.arcaneDmg), 0, null, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
+                TM_MoteMaker.MakePowerBeamMoteColor(this.strikePos, base.Map, this.radius * 4f, 2f, .5f, .1f, .5f, colorInt.ToColor);                
+                GenExplosion.DoExplosion(this.strikePos, map, this.def.projectile.explosionRadius, DamageDefOf.Bomb, this.launcher as Pawn, Mathf.RoundToInt((25 + 5*pwrVal) * this.arcaneDmg), 0, null, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
                 Effecter OSEffect = TorannMagicDefOf.TM_OSExplosion.Spawn();
                 OSEffect.Trigger(new TargetInfo(this.strikePos, this.Map, false), new TargetInfo(this.strikePos, this.Map, false));
                 OSEffect.Cleanup();

@@ -65,6 +65,7 @@ namespace TorannMagic
             if (!this.primed)
             {
                 duration += (verVal * 7200);
+                duration = (int)(duration * comp.arcaneDmg);
                 arg_pos_1 = centerCell;
 
                 if ((arg_pos_1.IsValid && arg_pos_1.Standable(map)))

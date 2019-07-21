@@ -103,7 +103,7 @@ namespace TorannMagic
 		{
 			System.Random rnd = new System.Random();
 			int modDamAmountRand = GenMath.RoundRandom(rnd.Next(4 + (pwr*1), projectile.projectile.GetDamageAmount(1,null) + (pwr * 2)));
-            modDamAmountRand *= Mathf.RoundToInt(this.arcaneDmg);
+            modDamAmountRand = Mathf.RoundToInt(modDamAmountRand * this.arcaneDmg);
             if (pwr >= 1)
             {
                 radius = (float)(rnd.Next(pwr, pwr*2)/1.8);

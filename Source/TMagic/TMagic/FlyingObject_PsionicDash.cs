@@ -10,8 +10,9 @@ namespace TorannMagic
     [StaticConstructorOnStartup]
     public class FlyingObject_PsionicDash : ThingWithComps
     {
-        private int verVal;
-        private int pwrVal;
+        private int verVal = 0;
+        private int pwrVal = 0;
+        private float arcaneDmg = 1f;
 
         protected Vector3 origin;
         private Vector3 trueOrigin;
@@ -119,6 +120,7 @@ namespace TorannMagic
                 CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
                 this.pwrVal = comp.MightData.MightPowerSkill_PsionicDash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicDash_pwr").level;
                 this.verVal = comp.MightData.MightPowerSkill_PsionicDash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicDash_ver").level;
+                this.arcaneDmg = comp.mightPwr;
                 if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                 {
                     this.pwrVal = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr").level;
@@ -361,7 +363,7 @@ namespace TorannMagic
             this.drawTicks = 120;
             this.speed = 40;
             TM_MoteMaker.MakePowerBeamMotePsionic(base.Position, this.Map, 10f, 2f, .7f, .1f, .6f);
-            GenExplosion.DoExplosion(base.Position, this.Map, 1.7f, TMDamageDefOf.DamageDefOf.TM_PsionicInjury, this.pawn, Mathf.RoundToInt(Rand.Range(8, 14) * (1+ .1f * pwrVal)), 0, this.def.projectile.soundExplode, def, null, null, null, 0f, 1, false, null, 0f, 1, 0.0f, false);
+            GenExplosion.DoExplosion(base.Position, this.Map, 1.7f, TMDamageDefOf.DamageDefOf.TM_PsionicInjury, this.pawn, Mathf.RoundToInt(Rand.Range(8, 14) * (1+ .1f * pwrVal) * this.arcaneDmg), 0, this.def.projectile.soundExplode, def, null, null, null, 0f, 1, false, null, 0f, 1, 0.0f, false);
             TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_PsiCurrent"), this.ExactPosition, this.Map, Rand.Range(.3f, .5f), .1f, 0f, .1f, 0, 4f, this.trueAngle, this.trueAngle);
             TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_PsiCurrent"), this.ExactPosition, this.Map, Rand.Range(.5f, .6f), .1f, .04f, .1f, 0, 7f, this.trueAngle, this.trueAngle);
             TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_PsiCurrent"), this.ExactPosition, this.Map, Rand.Range(.7f, .8f), .1f, .08f, .1f, 0, 10f, this.trueAngle, this.trueAngle);
@@ -376,7 +378,7 @@ namespace TorannMagic
             this.drawTicks = 60;
             this.speed = 20;
             TM_MoteMaker.MakePowerBeamMotePsionic(base.Position, this.Map, 10f, 2f, .7f, .1f, .6f);
-            GenExplosion.DoExplosion(base.Position, this.Map, 1.7f, TMDamageDefOf.DamageDefOf.TM_PsionicInjury, this.pawn, Mathf.RoundToInt(Rand.Range(10, 16) * (1 + .1f * pwrVal)), 0, this.def.projectile.soundExplode, def, null, null, null, 0f, 1, false, null, 0f, 1, 0.0f, false);
+            GenExplosion.DoExplosion(base.Position, this.Map, 1.7f, TMDamageDefOf.DamageDefOf.TM_PsionicInjury, this.pawn, Mathf.RoundToInt(Rand.Range(10, 16) * (1 + .1f * pwrVal) * this.arcaneDmg), 0, this.def.projectile.soundExplode, def, null, null, null, 0f, 1, false, null, 0f, 1, 0.0f, false);
             this.origin = this.ExactPosition;
             this.destination = this.origin + (this.direction * forwardMagnitude);
             this.ticksToImpact = this.StartingTicksToImpact;
@@ -422,7 +424,7 @@ namespace TorannMagic
 
         public void ApplyDashDamage()
         {
-            DamageInfo dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_PsionicInjury, Rand.Range(6,10) * (1 + .1f * pwrVal), 0, (float)-1, pawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
+            DamageInfo dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_PsionicInjury, Rand.Range(6,10) * (1 + .1f * pwrVal) * this.arcaneDmg, 0, (float)-1, pawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
 
             bool flag3 = base.Position != default(IntVec3);
             if (flag3)

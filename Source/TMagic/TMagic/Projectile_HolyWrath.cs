@@ -18,6 +18,7 @@ namespace TorannMagic
         private int timeToSmite = 360;
         private int strikeNum;
         private int age = -1;
+        private float arcaneDmg = 1;
         List<int> wrathAge = new List<int>();
         List<IntVec3> smitePos = new List<IntVec3>();
         Pawn caster;
@@ -42,6 +43,7 @@ namespace TorannMagic
             Scribe_Values.Look<int>(ref this.timeToSmite, "timeToSmite", 360, false);
             Scribe_Values.Look<int>(ref this.verVal, "verVal", 0, false);
             Scribe_Values.Look<int>(ref this.pwrVal, "pwrVal", 0, false);
+            Scribe_Values.Look<float>(ref this.arcaneDmg, "arcaneDmg", 1, false);
             Scribe_Collections.Look<int>(ref this.wrathAge, "wrathAge", LookMode.Value);
             Scribe_Collections.Look<IntVec3>(ref this.smitePos, "smitePos", LookMode.Value);
         }
@@ -62,10 +64,12 @@ namespace TorannMagic
             if (!this.initialized)
             {
                 caster = this.launcher as Pawn;
-                MagicPowerSkill pwr = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_HolyWrath.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_HolyWrath_pwr");
-                MagicPowerSkill ver = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_HolyWrath.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_HolyWrath_ver");
+                CompAbilityUserMagic comp = caster.GetComp<CompAbilityUserMagic>();
+                MagicPowerSkill pwr = comp.MagicData.MagicPowerSkill_HolyWrath.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_HolyWrath_pwr");
+                MagicPowerSkill ver = comp.MagicData.MagicPowerSkill_HolyWrath.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_HolyWrath_ver");
                 verVal = ver.level;
                 pwrVal = pwr.level;
+                this.arcaneDmg = comp.arcaneDmg;
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 if (settingsRef.AIHardMode && !caster.IsColonist)
                 {
@@ -99,7 +103,7 @@ namespace TorannMagic
                     TM_MoteMaker.MakePowerBeamMoteColor(smitePos[j], base.Map, this.radius * 3f, 2f, .5f, .1f, .5f, colorInt.ToColor);
                     this.caster = this.launcher as Pawn;
                     CompAbilityUserMagic comp = caster.GetComp<CompAbilityUserMagic>();
-                    GenExplosion.DoExplosion(smitePos[j], map, 2.4f, TMDamageDefOf.DamageDefOf.TM_Overwhelm, this.launcher as Pawn, Mathf.RoundToInt((10 + TMDamageDefOf.DamageDefOf.TM_Overwhelm.defaultDamage + 3*pwrVal) * comp.arcaneDmg), 0, TorannMagicDefOf.TM_Lightning, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
+                    GenExplosion.DoExplosion(smitePos[j], map, 2.4f, TMDamageDefOf.DamageDefOf.TM_Overwhelm, this.launcher as Pawn, Mathf.RoundToInt((10 + TMDamageDefOf.DamageDefOf.TM_Overwhelm.defaultDamage + 3*pwrVal) * this.arcaneDmg), 0, TorannMagicDefOf.TM_Lightning, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
                 }
             }
         }
@@ -172,7 +176,7 @@ namespace TorannMagic
                                                     }
                                                     else
                                                     {
-                                                        current.Heal((5.0f * this.caster.TryGetComp<CompAbilityUserMagic>().arcaneDmg)); // power affects how much to heal
+                                                        current.Heal((5.0f * this.arcaneDmg)); // power affects how much to heal
                                                     }
                                                     TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .6f);
                                                     TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .4f);
@@ -194,7 +198,7 @@ namespace TorannMagic
                 }
                 if(victim != null && !victim.Dead && TM_Calc.IsUndead(victim))
                 {
-                    TM_Action.DamageUndead(victim, Rand.Range(5f, 12f), this.launcher);
+                    TM_Action.DamageUndead(victim, Rand.Range(5f, 12f) * this.arcaneDmg, this.launcher);
                 }
                 targets.GetEnumerator().MoveNext();
             }

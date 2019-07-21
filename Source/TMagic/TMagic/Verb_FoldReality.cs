@@ -137,7 +137,7 @@ namespace TorannMagic
         public void InitiateMassSummon(Map map, LocalTargetInfo target)
         {
             IntVec3 curCell;
-            IEnumerable<IntVec3> targets = GenRadial.RadialCellsAround(target.Cell, 7, true);
+            IEnumerable<IntVec3> targets = GenRadial.RadialCellsAround(target.Cell, Mathf.RoundToInt(7*comp.arcaneDmg), true);
             int transportedItemCount = 0;
             for (int i = 0; i < targets.Count(); i++)
             {

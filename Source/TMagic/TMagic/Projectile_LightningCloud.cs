@@ -91,7 +91,10 @@ namespace TorannMagic
                             victim = randomCell.GetFirstPawn(map);
                             if (victim != null)
                             {
-                                damageEntities(victim, Mathf.RoundToInt((this.def.projectile.GetDamageAmount(1,null) + pwrVal) * this.arcaneDmg));
+                                if (Rand.Chance(TM_Calc.GetSpellSuccessChance(pawn, victim) - .3f))
+                                {
+                                    damageEntities(victim, Mathf.RoundToInt((this.def.projectile.GetDamageAmount(1, null) + pwrVal) * this.arcaneDmg));
+                                }
                             }
                         }
                     }

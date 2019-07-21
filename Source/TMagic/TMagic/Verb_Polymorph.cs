@@ -54,7 +54,7 @@ namespace TorannMagic
             pwrVal = pwr.level;
             CompAbilityUserMagic comp = base.CasterPawn.GetComp<CompAbilityUserMagic>();
             this.arcaneDmg = base.CasterPawn.GetComp<CompAbilityUserMagic>().arcaneDmg;
-            this.duration += (600 * verVal); 
+            this.duration += Mathf.RoundToInt(600 * verVal * this.arcaneDmg); 
 
             if (base.CasterPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
