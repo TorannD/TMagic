@@ -118,7 +118,11 @@ namespace TorannMagic
                     Vector3 rndVec = this.moteLoc;
                     rndVec.x += Rand.Range(-.15f, .15f);
                     rndVec.z += Rand.Range(-.15f, .15f);
-                    TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_SparkFlash"), rndVec, this.Pawn.Map, Rand.Range(.8f, 1.3f), .05f, 0f, .1f, 0, 0f, 0f, 0f);
+                    TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_SparkFlash"), rndVec, this.Pawn.Map, Rand.Range(.9f, 1.5f), .05f, 0f, .1f, 0, 0f, 0f, 0f);
+                    rndVec = this.moteLoc;
+                    rndVec.x += Rand.Range(-.15f, .15f);
+                    rndVec.z += Rand.Range(-.15f, .15f);
+                    TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_SparkFlash"), rndVec, this.Pawn.Map, Rand.Range(.6f, 1.1f), .05f, 0f, .1f, 0, 0f, 0f, 0f);
                     TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Enchanting, comp.bitPosition, this.Pawn.Map, Rand.Range(0.35f, 0.43f), .2f, .05f, Rand.Range(.4f, .6f), Rand.Range(-200, 200), 0, 0, 0);
                     this.ticksBitWorking--;
                     this.nextBitEffect = Find.TickManager.TicksGame + Rand.Range(6, 10);
@@ -152,24 +156,24 @@ namespace TorannMagic
                         }
                     }
 
-                    if(comp.useTechnoBitRepairToggle && Find.TickManager.TicksGame % (160 - 3 * EffVal) == 0 && this.Pawn.Drafted && comp.Mana.CurLevel >= (.03f - .0008f * EffVal))
+                    if(comp.useTechnoBitRepairToggle && Find.TickManager.TicksGame % (160 - 3 * EffVal) == 0 && this.Pawn.Drafted && comp.Mana.CurLevel >= (.03f - .0006f * EffVal))
                     {
                         Thing damagedThing = TM_Calc.FindNearbyDamagedThing(this.Pawn, Mathf.RoundToInt(5 + .33f * EffVal));
                         Building repairBuilding = damagedThing as Building;
                         if(repairBuilding != null)
                         {
-                            repairBuilding.HitPoints = Mathf.Min(Mathf.RoundToInt(repairBuilding.HitPoints + (6 + (.3f*EffVal))), repairBuilding.MaxHitPoints);
+                            repairBuilding.HitPoints = Mathf.Min(Mathf.RoundToInt(repairBuilding.HitPoints + (Rand.Range(8, 12) + (.5f*EffVal))), repairBuilding.MaxHitPoints);
                             comp.Mana.CurLevel -= (.03f - .0006f * EffVal);
-                            comp.MagicUserXP += Rand.Range(3, 4);
+                            comp.MagicUserXP += Rand.Range(4, 5);
                             this.ticksBitWorking = 8;
                             this.moteLoc = repairBuilding.DrawPos;
                         }
                         Pawn damagedRobot = damagedThing as Pawn;
                         if(damagedRobot != null)
                         {
-                            TM_Action.DoAction_HealPawn(this.Pawn, damagedRobot, 1, (3 + .3f * EffVal));
+                            TM_Action.DoAction_HealPawn(this.Pawn, damagedRobot, 1, (4 + .4f * EffVal));
                             comp.Mana.CurLevel -= (.03f - .0006f * EffVal);
-                            comp.MagicUserXP += Rand.Range(3, 4);
+                            comp.MagicUserXP += Rand.Range(4, 6);
                             this.ticksBitWorking = 5;
                             this.moteLoc = damagedRobot.DrawPos;
                         }
@@ -181,7 +185,7 @@ namespace TorannMagic
                         Building repairBuilding = damagedThing as Building;
                         if (repairBuilding != null)
                         {
-                            repairBuilding.HitPoints = Mathf.Min(repairBuilding.HitPoints + (20 + EffVal), repairBuilding.MaxHitPoints);
+                            repairBuilding.HitPoints = Mathf.Min(repairBuilding.HitPoints + (25 + (2*EffVal)), repairBuilding.MaxHitPoints);
                             comp.Mana.CurLevel -= (.05f - .0008f * EffVal);
                             comp.MagicUserXP += Rand.Range(9, 11);
                             this.ticksBitWorking = 8;
@@ -190,7 +194,7 @@ namespace TorannMagic
                         Pawn damagedRobot = damagedThing as Pawn;
                         if (damagedRobot != null)
                         {
-                            TM_Action.DoAction_HealPawn(this.Pawn, damagedRobot, 2, (6+.3f * EffVal));
+                            TM_Action.DoAction_HealPawn(this.Pawn, damagedRobot, 2, (8+.4f * EffVal));
                             comp.Mana.CurLevel -= (.05f - .0008f * EffVal);
                             comp.MagicUserXP += Rand.Range(9, 11);
                             this.ticksBitWorking = 5;

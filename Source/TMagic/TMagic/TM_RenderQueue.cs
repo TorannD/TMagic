@@ -34,8 +34,10 @@ namespace TorannMagic
 
         public static readonly Color demonShieldColor = new Color(150f, 0f, 75f);
         public static readonly Material demonShieldMat = MaterialPool.MatFrom("Other/Shield", ShaderDatabase.Transparent, TM_RenderQueue.demonShieldColor);
-
+        
         public static readonly Material mageMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, Color.black);
+        public static readonly Color arcanistMarkColor = new Color(1, 0, .5f);
+        public static readonly Material arcanistMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, TM_RenderQueue.arcanistMarkColor);
         public static readonly Color necroMarkColor = new Color(.4f, .5f, .25f);
         public static readonly Material necroMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, TM_RenderQueue.necroMarkColor);
         public static readonly Color summonerMarkColor = new Color(.8f, .4f, .0f);

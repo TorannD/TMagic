@@ -135,6 +135,12 @@ namespace TorannMagic.ModOptions
             num++;
             Rect rowRect12 = UIHelper.GetRowRect(rowRect11, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect12, "TM_AggressiveAICasting".Translate(), ref Settings.Instance.AIAggressiveCasting, false);
+            Rect rowRect12ShiftRight = UIHelper.GetRowRect(rowRect12, rowHeight, num);
+            rowRect12ShiftRight.x += rowRect12.width + 56f;
+            if (Settings.Instance.showClassIconOnColonistBar)
+            {
+                Settings.Instance.classIconSize = Widgets.HorizontalSlider(rowRect12ShiftRight, Settings.Instance.classIconSize, .5f, 2.5f, false, "classIconSize".Translate() + " " + Settings.Instance.classIconSize.ToString("P1"), "0", "2.5", .01f);
+            }
             num++;
             num++;
             Rect rowRect20 = UIHelper.GetRowRect(rowRect10, rowHeight, num);
@@ -169,6 +175,7 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.changeUndeadPawnAppearance = true;
                 Settings.Instance.changeUndeadAnimalAppearance = true;
                 Settings.Instance.showClassIconOnColonistBar = true;
+                Settings.Instance.classIconSize = 1f;
                 Settings.Instance.AIAggressiveCasting = true;
                 Settings.Instance.riftChallenge = 1f;
                 this.deathExplosionDmgMax = "50.0";

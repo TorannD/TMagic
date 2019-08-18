@@ -76,6 +76,7 @@ namespace TorannMagic
                 }
                 if (gear[i].WornByCorpse && Rand.Chance(.1f))
                 {
+                    gear[i].Notify_PawnResurrected();
                     Traverse.Create(root: gear[i]).Field(name: "wornByCorpseInt").SetValue(false);
                 }
             }

@@ -131,7 +131,7 @@ namespace TorannMagic
                             ageThing = thingList[i];
                             break;
                         }
-                        if (thingList[i] is Corpse && verVal >= 3)
+                        if (thingList[i] is Corpse)
                         {
                             //Log.Message("corpse");
                             flagCorpse = true;
@@ -219,6 +219,7 @@ namespace TorannMagic
                 Apparel apparelThing = thing as Apparel;
                 if(apparelThing.WornByCorpse)
                 {
+                    apparelThing.Notify_PawnResurrected();
                     Traverse.Create(root: apparelThing).Field(name: "wornByCorpseInt").SetValue(false);
                 }
             }
@@ -242,12 +243,22 @@ namespace TorannMagic
                 if(compRot.RotProgress <= (5000 + (5000*pwrVal)))
                 {
                     Corpse corpse = thing as Corpse;
-                    if (corpse != null)
+                    if (corpse != null && verVal >= 3)
                     {
                         TransmutateEffects(corpse.Position, 10);
                         Pawn innerPawn = corpse.InnerPawn;
                         ResurrectionUtility.ResurrectWithSideEffects(innerPawn);
-                        AgePawn(innerPawn, Mathf.RoundToInt((6*2500) * (1 + (.1f * verVal))), true);                        
+                        AgePawn(innerPawn, Mathf.RoundToInt((6*2500) * (1 + (.1f * verVal))), false);
+                        HealthUtility.AdjustSeverity(innerPawn, HediffDef.Named("TM_ResurrectionHD"), 1f);
+                        HealthUtility.AdjustSeverity(this.CasterPawn, HediffDef.Named("TM_ResurrectionHD"), 1f);
+                    }
+                }
+                else
+                {
+                    compRot.RotProgress = compRot.RotProgress * (.4f - (.125f * pwrVal));
+                    if(compRot.RotProgress <= 20000)
+                    {
+                        compRot.RotProgress = 20001;
                     }
                 }
             }

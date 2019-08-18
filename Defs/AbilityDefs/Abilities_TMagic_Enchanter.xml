@@ -284,11 +284,11 @@ Use of polymorph on a creature already affected by polymorph will end the existi
 
 When a target is polymorphed, their new form does not retain any pre-existing injuries, however, when they return to their original form they will have all their original injuries in addition to any injuries sustained while polymorphed.
 
-Max targets: 3
+Max targets: 4
 Radius: 3
 Range: 36
 Cast time: 3s</description>
-		<manaCost>0.70</manaCost>
+		<manaCost>0.40</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Polymorph</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -299,7 +299,7 @@ Cast time: 3s</description>
             <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_Polymorph</abilityDef>
             <warmupTime>3</warmupTime>
-            <SecondsToRecharge>600</SecondsToRecharge>
+            <SecondsToRecharge>60</SecondsToRecharge>
             <range>36</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Vibration</soundCast>
@@ -313,7 +313,7 @@ Cast time: 3s</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>true</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>3</maxTargets>
+                <maxTargets>4</maxTargets>
                 <range>3</range>
             </TargetAoEProperties>
 			<targetParams>
@@ -337,11 +337,11 @@ Use of polymorph on a creature already affected by polymorph will end the existi
 
 When a target is polymorphed, their new form does not retain any pre-existing injuries, however, when they return to their original form they will have all their original injuries in addition to any injuries sustained while polymorphed.
 
-Max targets: 4
+Max targets: 5
 Radius: 3
 Range: 38
 Cast time: 2.8s</description>
-		<manaCost>0.70</manaCost>
+		<manaCost>0.40</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Polymorph</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -352,7 +352,7 @@ Cast time: 2.8s</description>
             <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_Polymorph_I</abilityDef>
             <warmupTime>2.8</warmupTime>
-            <SecondsToRecharge>600</SecondsToRecharge>
+            <SecondsToRecharge>60</SecondsToRecharge>
             <range>38</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Vibration</soundCast>
@@ -366,7 +366,7 @@ Cast time: 2.8s</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>true</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>4</maxTargets>
+                <maxTargets>5</maxTargets>
                 <range>3</range>
             </TargetAoEProperties>
 			<targetParams>
@@ -390,11 +390,11 @@ Use of polymorph on a creature already affected by polymorph will end the existi
 
 When a target is polymorphed, their new form does not retain any pre-existing injuries, however, when they return to their original form they will have all their original injuries in addition to any injuries sustained while polymorphed.
 
-Max targets: 4
+Max targets: 5
 Radius: 4
 Range: 40
 Cast time: 2.6s</description>
-		<manaCost>0.70</manaCost>
+		<manaCost>0.40</manaCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Polymorph</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -405,61 +405,8 @@ Cast time: 2.6s</description>
             <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_Polymorph_II</abilityDef>
             <warmupTime>2.6</warmupTime>
-            <SecondsToRecharge>600</SecondsToRecharge>
+            <SecondsToRecharge>60</SecondsToRecharge>
             <range>40</range>
-            <burstShotCount>1</burstShotCount>
-            <soundCast>TM_Vibration</soundCast>
-			<soundCastTail>GunTail_Medium</soundCastTail>
-            <muzzleFlashScale>20</muzzleFlashScale>
-            <isPrimary>false</isPrimary>
-			<isViolent>false</isViolent>
-			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
-            <TargetAoEProperties>
-                <targetClass>Pawn</targetClass>
-                <showRangeOnSelect>true</showRangeOnSelect>
-                <friendlyFire>true</friendlyFire>
-                <startsFromCaster>false</startsFromCaster>
-                <maxTargets>4</maxTargets>
-                <range>4</range>
-            </TargetAoEProperties>
-			<targetParams>
-                <canTargetPawns>true</canTargetPawns>
-                <canTargetBuildings>false</canTargetBuildings>
-                <canTargetSelf>true</canTargetSelf>
-                <canTargetLocations>true</canTargetLocations>
-            </targetParams>
-        </MainVerb>
-    </TorannMagic.TMAbilityDef>
-	
-	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
-        <defName>TM_Polymorph_III</defName>
-        <label>Polymorph</label>
-        <uiIconPath>UI/Polymorph</uiIconPath>
-        <description>Transforms pawns in the target area into random beasts. The polymorphed creature will still retain enough of its original self to recognize, and be enraged by, its predicament. Allies can be controlled (drafted), but will still exhibit 'animal' behavior without a specific task.
-		
-Allies may be polymorphed, but most will be upset by the altercation. Enchanters cannot use this method to polymorph themselves.
-
-Use of polymorph on a creature already affected by polymorph will end the existing polymorph enchantment. The polymorph enchantment is broken if the polymorph creature dies.
-
-When a target is polymorphed, their new form does not retain any pre-existing injuries, however, when they return to their original form they will have all their original injuries in addition to any injuries sustained while polymorphed.
-
-Max targets: 5
-Radius: 4
-Range: 42
-Cast time: 2.4s</description>
-		<manaCost>0.70</manaCost>
-        <MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Verb_Polymorph</verbClass>
-				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
-				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
-				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
-				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
-            <hasStandardCommand>true</hasStandardCommand>
-            <defaultProjectile>TM_Projectile_Bard</defaultProjectile>
-            <abilityDef>TM_Polymorph_III</abilityDef>
-            <warmupTime>2.4</warmupTime>
-            <SecondsToRecharge>60.0</SecondsToRecharge>
-            <range>42</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Vibration</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
@@ -484,6 +431,59 @@ Cast time: 2.4s</description>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
 	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Polymorph_III</defName>
+        <label>Polymorph</label>
+        <uiIconPath>UI/Polymorph</uiIconPath>
+        <description>Transforms pawns in the target area into random beasts. The polymorphed creature will still retain enough of its original self to recognize, and be enraged by, its predicament. Allies can be controlled (drafted), but will still exhibit 'animal' behavior without a specific task.
+		
+Allies may be polymorphed, but most will be upset by the altercation. Enchanters cannot use this method to polymorph themselves.
+
+Use of polymorph on a creature already affected by polymorph will end the existing polymorph enchantment. The polymorph enchantment is broken if the polymorph creature dies.
+
+When a target is polymorphed, their new form does not retain any pre-existing injuries, however, when they return to their original form they will have all their original injuries in addition to any injuries sustained while polymorphed.
+
+Max targets: 6
+Radius: 4
+Range: 42
+Cast time: 2.4s</description>
+		<manaCost>0.40</manaCost>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Polymorph</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>TM_Projectile_Bard</defaultProjectile>
+            <abilityDef>TM_Polymorph_III</abilityDef>
+            <warmupTime>2.4</warmupTime>
+            <SecondsToRecharge>60.0</SecondsToRecharge>
+            <range>42</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>6</maxTargets>
+                <range>4</range>
+            </TargetAoEProperties>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
 	<!-- Shapeshift -->
  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
     <defName>TM_Shapeshift</defName>
@@ -492,7 +492,7 @@ Cast time: 2.4s</description>
     <description>Shapeshift into a random creature. The enchanter will retain their sense of self and will retain control of their actions. Damage suffered while shape shifted will be transferred in equal proportions to the enchanter after returning to their original form.
 	
 Shapeshifting is not without minor side effects; shapeshifting into an animal will cause the enchanter to inherit instincts and behavior of the animal, if they haven't been given specific instructions, they will wander or do other random tasks an animal would normally do.</description>
-    <manaCost>0.50</manaCost>
+    <manaCost>0.40</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Shapeshift</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -529,7 +529,7 @@ Shapeshifting is not without minor side effects; shapeshifting into an animal wi
 Shapeshifting is not without minor side effects; shapeshifting into an animal will cause the enchanter to inherit instincts and behavior of the animal, if they haven't been given specific instructions, they will wander or do other random tasks an animal would normally do.
 	
 Dire wolves are unique animals with a special connection to magic. While in dire wolf form, enchanters can exert small quantities of magic to allow the dire wolf to briefly phase in and out of reality.</description>
-    <manaCost>0.60</manaCost>
+    <manaCost>0.50</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_ShapeshiftDW</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

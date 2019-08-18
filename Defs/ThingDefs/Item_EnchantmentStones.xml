@@ -500,7 +500,7 @@
 Raw Magicyte can be refined to make a variety of enchanting gems at the gemcutting table.</description>
     <graphicData>
       <texPath>Items/Gemstones/magicyte_raw</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
+      <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
 <!-- 	<deepCommonality>0.1</deepCommonality> -->
 	<statBases>

@@ -93,7 +93,7 @@ namespace TorannMagic.SihvRMagicScrollScribe
             }
             else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.Gifted))
             {
-                tempPod = TorannMagicDefOf.BookOfQuestion;
+                tempPod = TM_Data.MageBookList().RandomElement();
                 this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
             }
             else

@@ -178,18 +178,21 @@ namespace TorannMagic
                 }
                 else
                 {
-                    for(int i = 0; i < orbs.Count; i++)
+                    if (!necroValid && orbEnergy >= 0)
                     {
-                        Enchantment.CompEnchantedItem itemComp = orbs[i].GetComp<Enchantment.CompEnchantedItem>();
-                        if (itemComp != null)
+                        for (int i = 0; i < orbs.Count; i++)
                         {
-                            if (this.Pawn.RaceProps.Humanlike)
+                            Enchantment.CompEnchantedItem itemComp = orbs[i].GetComp<Enchantment.CompEnchantedItem>();
+                            if (itemComp != null)
                             {
-                                itemComp.NecroticEnergy -= (0.12f * .3f * 4f) / orbCount;
-                            }
-                            else if(this.Pawn.RaceProps.Animal)
-                            {
-                                itemComp.NecroticEnergy -= (0.12f * 4f * (this.Pawn.kindDef.combatPower / 100))/ orbCount;
+                                if (this.Pawn.RaceProps.Humanlike)
+                                {
+                                    itemComp.NecroticEnergy -= (0.12f * .3f * 4f) / orbCount;
+                                }
+                                else if (this.Pawn.RaceProps.Animal)
+                                {
+                                    itemComp.NecroticEnergy -= (0.12f * 4f * (this.Pawn.kindDef.combatPower / 100)) / orbCount;
+                                }
                             }
                         }
                     }

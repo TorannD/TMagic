@@ -91,7 +91,7 @@ namespace TorannMagic
 
             if (Find.TickManager.TicksGame % this.strikeDelay == 0)
             {
-                int force = (10 + (2*pwrVal) - strikeNum);
+                int force = Mathf.RoundToInt((10 + (2*pwrVal) - strikeNum) * this.pawn.GetStatValue(StatDefOf.PsychicSensitivity, false));
                 IntVec3 curCell;
                 for (int i =0; i < cellList.Count; i++)
                 {

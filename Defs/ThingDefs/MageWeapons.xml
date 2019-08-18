@@ -850,7 +850,7 @@ Arcane Resistance: +20%
 
 Augmentation adds ability: Arcane Barrier</description>
     <graphicData>
-      <texPath>Items/weapons/staff_elements</texPath>
+      <texPath>Items/weapons/staff_elements_256</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <soundInteract>Interact_Revolver</soundInteract>	
@@ -988,7 +988,7 @@ Max Energy: +20%
 Energy Regen: +10%
 Damage Boost: +40%</description>
     <graphicData>
-      <texPath>Items/weapons/staff_blazingpower</texPath>
+      <texPath>Items/weapons/staff_blazingpower_256</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <soundInteract>Interact_Revolver</soundInteract>	

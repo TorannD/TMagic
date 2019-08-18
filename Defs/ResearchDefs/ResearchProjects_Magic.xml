@@ -68,6 +68,9 @@
 		<description>Enables construction of the gemcutting bench and the crafting of tier I enchanting gems.</description>
 		<baseCost>1500</baseCost>
 		<techLevel>Neolithic</techLevel>
+		<prerequisites>
+			<li>TM_MagicyteRefining</li>
+		</prerequisites>
 		<researchViewX>1.0</researchViewX>
 		<researchViewY>0.0</researchViewY>
 	</ResearchProjectDef>
@@ -109,9 +112,6 @@
 		<techLevel>Neolithic</techLevel>
 		<researchViewX>2.0</researchViewX>
 		<researchViewY>0.0</researchViewY>
-		<prerequisites>
-			<li>TM_Enchanting</li>
-		</prerequisites>
 	</ResearchProjectDef>
 	
 	<ResearchProjectDef>

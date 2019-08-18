@@ -15,6 +15,7 @@ namespace TorannMagic
         public bool isBad = false;
         public int durationTicks = 6000;
         private int tickEffect = 300;
+        float maxAge = 100f;
 
         private int currentAge = 1;
 
@@ -66,22 +67,44 @@ namespace TorannMagic
                     initialized = true;
                     this.Initialize();
                 }
-            }
+            }           
 
             if (Find.TickManager.TicksGame % 60 == 0)
             {
-                if (isBad)
+                if (this.Pawn.RaceProps != null && this.Pawn.RaceProps.lifeExpectancy != 0)
                 {
-                    this.Pawn.ageTracker.AgeBiologicalTicks = Mathf.RoundToInt(this.Pawn.ageTracker.AgeBiologicalTicks * (1.02f + (.002f * this.parent.Severity)));
+                    maxAge = this.Pawn.RaceProps.lifeExpectancy;
+                }
+                int roundedYearAging = Mathf.RoundToInt(this.Pawn.ageTracker.AgeBiologicalYears / 100);
+                if (isBad)
+                {                    
+                    if (this.Pawn.ageTracker.AgeBiologicalYears >= 100)
+                    {
+                        this.Pawn.ageTracker.AgeBiologicalTicks += roundedYearAging * 3600000;
+                    }
+                    else
+                    {
+                        this.Pawn.ageTracker.AgeBiologicalTicks = Mathf.RoundToInt(this.Pawn.ageTracker.AgeBiologicalTicks * (1.02f + (.002f * this.parent.Severity)));
+                    }                    
                 }
                 else
                 {
-                    this.Pawn.ageTracker.AgeBiologicalTicks = Mathf.RoundToInt(this.Pawn.ageTracker.AgeBiologicalTicks * 1.00001f) + 2500;
+                    if(this.Pawn.ageTracker.AgeBiologicalYears >= 200)
+                    {
+                        this.Pawn.ageTracker.AgeBiologicalTicks += roundedYearAging * 3600000;
+                    }
+                    else
+                    {
+                        this.Pawn.ageTracker.AgeBiologicalTicks = Mathf.RoundToInt(this.Pawn.ageTracker.AgeBiologicalTicks * 1.00001f) + 2500;
+                    }                    
                 }
                 if(this.Pawn.ageTracker.AgeBiologicalYears > this.currentAge)
                 {
-                    this.currentAge = this.Pawn.ageTracker.AgeBiologicalYears;
-                    BirthdayBiological(this.Pawn, this.currentAge);
+                    this.currentAge = this.Pawn.ageTracker.AgeBiologicalYears;                    
+                    if (Rand.Chance(this.currentAge / this.maxAge))
+                    {
+                        BirthdayBiological(this.Pawn, this.currentAge);
+                    }
                     if (this.isBad)
                     {
                         RaceAgainstTime(this.Pawn, this.currentAge);
@@ -98,31 +121,33 @@ namespace TorannMagic
             }
         }
 
-        private void BirthdayBiological(Pawn pawn, int age)
+        private void BirthdayBiological(Pawn pawn, float age)
         {
-            foreach (HediffGiver_Birthday item in AgeInjuryUtility.RandomHediffsToGainOnBirthday(pawn, age))
+            foreach (HediffGiver_Birthday item in AgeInjuryUtility.RandomHediffsToGainOnBirthday(pawn, Mathf.RoundToInt(age)))
             {
-                item.TryApply(pawn);
-               
+                if ((age > 150 && Rand.Chance(.01f * age)))
+                {
+                    item.TryApply(pawn);
+                }
             }
-
         }
 
-        private void RaceAgainstTime(Pawn pawn, int age)
+        private void RaceAgainstTime(Pawn pawn, float age)
         {
-            if (Rand.Chance(.02f * age))
+            
+            if (Rand.Chance(age/maxAge))
             {
                 AgeInjuryUtility.GenerateRandomOldAgeInjuries(pawn, false);
             }
-            if (Rand.Chance(.01f * age))
+            if (Rand.Chance((age/maxAge)*.5f))
             {
                 if (!pawn.health.hediffSet.HasHediff(HediffDef.Named("HeartArteryBlockage")))
                 {
-                    HealthUtility.AdjustSeverity(pawn, HediffDef.Named("HeartArteryBlockage"), Rand.Range(.195f, .395f));
+                    HealthUtility.AdjustSeverity(pawn, HediffDef.Named("HeartArteryBlockage"), Rand.Range(.095f, .195f));
                 }
                 else
                 {
-                    HealthUtility.AdjustSeverity(pawn, HediffDef.Named("HeartArteryBlockage"), Rand.Range(.0095f * this.parent.Severity, .0395f * this.parent.Severity));
+                    HealthUtility.AdjustSeverity(pawn, HediffDef.Named("HeartArteryBlockage"), Rand.Range(.0095f * this.parent.Severity, .0195f * this.parent.Severity));
                 }
             }
         }

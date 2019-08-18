@@ -337,7 +337,7 @@ namespace TorannMagic
                                         }
                                         else
                                         {
-                                            if (Rand.Chance(.25f + (.05f * ver.level))) //up to 40% chance to predict, per chronomancer
+                                            if (__instance.CanFireNow(parms, false) && Rand.Chance(.25f + (.05f * ver.level))) //up to 40% chance to predict, per chronomancer
                                             {
                                                 int ticksTillIncident = Mathf.RoundToInt((Rand.Range(2500, 20000) * (1 + (.15f * ver.level))));  // from 1 to 8 hours, plus bonus
                                                                                                                                                  //Log.Message("pushing " + __instance.def.defName + " to iq for " + ticksTillIncident  + " ticks");
@@ -682,6 +682,20 @@ namespace TorannMagic
         //        return true;
         //    }
         //}
+
+        [HarmonyPatch(typeof(Pawn), "CheckAcceptArrest", null)]
+        public class CheckArrest_Undead_Patch
+        {
+            public static bool Prefix(Pawn __instance, Pawn arrester, ref bool __result)
+            {
+                if (TM_Calc.IsUndead(__instance))
+                {
+                    __result = false;
+                    return false;
+                }
+                return true;
+            }
+        }
 
         [HarmonyPatch(typeof(Corpse), "PostMake", null)]
         public class Corpse_UndeadStage_Patch
@@ -1187,7 +1201,7 @@ namespace TorannMagic
             {
                 return;
             }
-            if (!__instance.Faction.Equals(Faction.OfPlayer) || __instance.story == null || __instance.story.traits == null || __instance.story.traits.allTraits.Count < 1)
+            if ((__instance.Faction != null && !__instance.Faction.Equals(Faction.OfPlayer)) || __instance.story == null || __instance.story.traits == null || __instance.story.traits.allTraits.Count < 1)
             {
                 return;
             }
@@ -2402,7 +2416,7 @@ namespace TorannMagic
         {
             private static bool Prefix(Pawn pawn, ref bool __result)
             {
-                if (pawn.story.traits.HasTrait(TorannMagicDefOf.Undead))
+                if (pawn != null && pawn.story != null && pawn.story.traits != null && pawn.story.traits.HasTrait(TorannMagicDefOf.Undead))
                 {
                     __result = true;
                     return false;
@@ -3956,7 +3970,7 @@ namespace TorannMagic
                     ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                     if (colonist.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")))
                     {
-                        float num = 20f * Find.ColonistBar.Scale;
+                        float num = 20f * Find.ColonistBar.Scale * settingsRef.classIconSize;
                         Vector2 vector = new Vector2(rect.x + 1f, rect.yMin + 1f);
                         rect = new Rect(vector.x, vector.y, num, num);
                         GUI.DrawTexture(rect, TM_MatPool.Icon_Undead);
@@ -3966,7 +3980,7 @@ namespace TorannMagic
                     }
                     else if(settingsRef.showClassIconOnColonistBar && colonist.story != null)
                     {
-                        float num = 20f * Find.ColonistBar.Scale;
+                        float num = 20f * Find.ColonistBar.Scale * settingsRef.classIconSize;
                         Vector2 vector = new Vector2(rect.x + 1f, rect.yMin + 1f);
                         rect = new Rect(vector.x, vector.y, num, num);
                         if (colonist.story.traits.HasTrait(TorannMagicDefOf.InnerFire))

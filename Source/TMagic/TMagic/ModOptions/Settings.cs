@@ -29,6 +29,7 @@ namespace TorannMagic.ModOptions
         public bool changeUndeadPawnAppearance = true;
         public bool changeUndeadAnimalAppearance = true;
         public bool showClassIconOnColonistBar = true;
+        public float classIconSize = 1f;
         public bool unrestrictedBloodTypes = true;
 
         //autocast options
@@ -96,6 +97,7 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<bool>(ref this.changeUndeadPawnAppearance, "changeUndeadPawnAppearance", true, false);
             Scribe_Values.Look<bool>(ref this.changeUndeadAnimalAppearance, "changeUndeadAnimalAppearance", true, false);
             Scribe_Values.Look<bool>(ref this.showClassIconOnColonistBar, "showClassIconOnColonistBar", true, false);
+            Scribe_Values.Look<float>(ref this.classIconSize, "classIconSize", 1f, false);
             Scribe_Values.Look<bool>(ref this.unrestrictedBloodTypes, "unrestrictedBloodTypes", true, false);
 
             Scribe_Values.Look<bool>(ref this.autocastEnabled, "autocastEnabled", true, false);

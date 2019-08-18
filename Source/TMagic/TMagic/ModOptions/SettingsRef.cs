@@ -28,6 +28,7 @@ namespace TorannMagic.ModOptions
         public bool changeUndeadPawnAppearance = Settings.Instance.changeUndeadPawnAppearance;
         public bool changeUndeadAnimalAppearance = Settings.Instance.changeUndeadAnimalAppearance;
         public bool showClassIconOnColonistBar = Settings.Instance.showClassIconOnColonistBar;
+        public float classIconSize = Settings.Instance.classIconSize;
         public bool unrestrictedBloodTypes = Settings.Instance.unrestrictedBloodTypes;
 
         //autocast

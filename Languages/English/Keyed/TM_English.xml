@@ -194,6 +194,7 @@
 <showUndeadAnimalChange>Change undead animal appearance</showUndeadAnimalChange>
 <unrestrictedBloodTypesForBloodMagic>Unrestricted blood types for blood magic</unrestrictedBloodTypesForBloodMagic>
 <showClassIconOnColonistBar>Show class icon on colonist bar</showClassIconOnColonistBar>
+<classIconSize>Class icon size</classIconSize>
 <TM_AggressiveAICasting>Aggressive AI Casting</TM_AggressiveAICasting>
 
 <!-- Mod Settings Class options -->

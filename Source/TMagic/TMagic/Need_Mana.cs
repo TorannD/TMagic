@@ -417,7 +417,14 @@ namespace TorannMagic
                                     Enchantment.CompEnchantedItem itemComp = necroOrbs[i].GetComp<Enchantment.CompEnchantedItem>();
                                     if (itemComp != null)
                                     {
-                                        itemComp.NecroticEnergy += (0.12f * (.30f - (.30f * (.1f * eff.level))));
+                                        if (itemComp.NecroticEnergy >= 100)
+                                        {
+                                            undeadCount = undeadCount - 2;
+                                        }
+                                        else
+                                        {
+                                            itemComp.NecroticEnergy += (0.036f);
+                                        }
                                     }
                                 }
                             }

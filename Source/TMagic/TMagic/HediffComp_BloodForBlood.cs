@@ -133,8 +133,17 @@ namespace TorannMagic
         {
             float bloodLoss = 1 + (.25f *this.bleedRate);
             //Log.Message("adjusting blood loss by " + .03f * bloodLoss +  " bleed rate is " + this.bleedRate);
-            HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("BloodLoss"), .04f * bloodLoss);
-            HealthUtility.AdjustSeverity(this.linkedPawn, HediffDef.Named("BloodLoss"), -(.03f * bloodLoss));
+            HediffDef bloodType = TM_Calc.GetBloodLossTypeDef(this.Pawn.health.hediffSet.hediffs);
+            if (bloodType != null)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named(bloodType.ToString()), .04f * bloodLoss);
+            }
+            bloodType = null;
+            bloodType = TM_Calc.GetBloodLossTypeDef(this.linkedPawn.health.hediffSet.hediffs);
+            if (bloodType != null)
+            {
+                HealthUtility.AdjustSeverity(this.linkedPawn, HediffDef.Named(bloodType.ToString()), -(.03f * bloodLoss));
+            }
         }
 
         public void HealLinkedPawnWounds()

@@ -72,8 +72,6 @@
     <driverClass>TorannMagic.JobDriver_Meditate</driverClass>
     <reportString>deep meditation</reportString>
     <casualInterruptible>false</casualInterruptible>
-	<joyDuration>8000</joyDuration>
-    <joyKind>Meditative</joyKind>
     <taleOnCompletion>Meditated</taleOnCompletion>
   </JobDef>
   

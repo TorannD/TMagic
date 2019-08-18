@@ -252,32 +252,32 @@
 		<capMods>
 		  <li>
             <capacity>Moving</capacity>
-            <offset>0.2</offset>
+            <offset>0.3</offset>
 		  </li>
 	      <li>
             <capacity>Manipulation</capacity>
-            <offset>0.2</offset>
+            <offset>0.3</offset>
           </li>
 		  <li>
             <capacity>Breathing</capacity>
-            <offset>0.05</offset>
+            <offset>0.10</offset>
           </li>
 		  <li>
             <capacity>BloodPumping</capacity>
-            <offset>0.05</offset>
+            <offset>0.10</offset>
           </li>
 		  <li>
             <capacity>BloodFiltration</capacity>
-            <offset>0.05</offset>
+            <offset>0.10</offset>
           </li>
         </capMods>
 		<statOffsets>
 			<AimingDelayFactor>-0.10</AimingDelayFactor>
-			<PainShockThreshold>.10</PainShockThreshold>
-			<ArmorRating_Blunt>.1</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.1</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.1</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.1</ArmorRating_Alignment>
+			<PainShockThreshold>.20</PainShockThreshold>
+			<ArmorRating_Blunt>.2</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.2</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.2</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.2</ArmorRating_Alignment>
 		</statOffsets>
       </li>
 	  <li>
@@ -287,32 +287,32 @@
 		<capMods>
 		  <li>
             <capacity>Moving</capacity>
-            <offset>0.3</offset>
+            <offset>0.45</offset>
 		  </li>
 	      <li>
             <capacity>Manipulation</capacity>
-            <offset>0.3</offset>
+            <offset>0.45</offset>
           </li>
 		  <li>
             <capacity>Breathing</capacity>
-            <offset>0.1</offset>
+            <offset>0.20</offset>
           </li>
 		  <li>
             <capacity>BloodPumping</capacity>
-            <offset>0.1</offset>
+            <offset>0.20</offset>
           </li>
 		  <li>
             <capacity>BloodFiltration</capacity>
-            <offset>0.1</offset>
+            <offset>0.20</offset>
           </li>
         </capMods>
 		<statOffsets>
 			<AimingDelayFactor>-0.10</AimingDelayFactor>
-			<PainShockThreshold>.12</PainShockThreshold>
-			<ArmorRating_Blunt>.15</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.15</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.15</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.15</ArmorRating_Alignment>
+			<PainShockThreshold>.24</PainShockThreshold>
+			<ArmorRating_Blunt>.3</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.3</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.3</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.3</ArmorRating_Alignment>
 		</statOffsets>
       </li>
 	  <li>
@@ -322,32 +322,32 @@
 		<capMods>
 		  <li>
             <capacity>Moving</capacity>
-            <offset>0.35</offset>
+            <offset>0.55</offset>
 		  </li>
 	      <li>
             <capacity>Manipulation</capacity>
-            <offset>0.35</offset>
+            <offset>0.55</offset>
           </li>
 		  <li>
             <capacity>Breathing</capacity>
-            <offset>0.15</offset>
+            <offset>0.30</offset>
           </li>
 		  <li>
             <capacity>BloodPumping</capacity>
-            <offset>0.15</offset>
+            <offset>0.30</offset>
           </li>
 		  <li>
             <capacity>BloodFiltration</capacity>
-            <offset>0.15</offset>
+            <offset>0.30</offset>
           </li>
         </capMods>
 		<statOffsets>
 			<AimingDelayFactor>-0.15</AimingDelayFactor>
-			<PainShockThreshold>.14</PainShockThreshold>
-			<ArmorRating_Blunt>.15</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.15</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.15</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.15</ArmorRating_Alignment>
+			<PainShockThreshold>.28</PainShockThreshold>
+			<ArmorRating_Blunt>.35</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.35</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.35</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.35</ArmorRating_Alignment>
 		</statOffsets>
       </li>
 	  <li>
@@ -357,32 +357,32 @@
 		<capMods>
 		  <li>
             <capacity>Moving</capacity>
-            <offset>0.4</offset>
+            <offset>0.60</offset>
 		  </li>
 	      <li>
             <capacity>Manipulation</capacity>
-            <offset>0.4</offset>
+            <offset>0.60</offset>
           </li>
 		  <li>
             <capacity>Breathing</capacity>
-            <offset>0.2</offset>
+            <offset>0.35</offset>
           </li>
 		  <li>
             <capacity>BloodPumping</capacity>
-            <offset>0.2</offset>
+            <offset>0.35</offset>
           </li>
 		  <li>
             <capacity>BloodFiltration</capacity>
-            <offset>0.2</offset>
+            <offset>0.35</offset>
           </li>
         </capMods>
 		<statOffsets>
 			<AimingDelayFactor>-0.15</AimingDelayFactor>
-			<PainShockThreshold>.15</PainShockThreshold>
-			<ArmorRating_Blunt>.2</ArmorRating_Blunt>
-			  <ArmorRating_Sharp>.2</ArmorRating_Sharp>
-			  <ArmorRating_Heat>.2</ArmorRating_Heat>
-			  <ArmorRating_Alignment>.2</ArmorRating_Alignment>
+			<PainShockThreshold>.30</PainShockThreshold>
+			<ArmorRating_Blunt>.4</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.4</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.4</ArmorRating_Heat>
+			  <ArmorRating_Alignment>.4</ArmorRating_Alignment>
 		</statOffsets>
       </li>
 	</stages>

@@ -5,7 +5,7 @@ using RimWorld;
 using AbilityUser;
 using Verse;
 using UnityEngine;
-
+using Harmony;
 
 namespace TorannMagic
 {
@@ -106,7 +106,7 @@ namespace TorannMagic
                     float wornRatio = ((float)transmutateThing.HitPoints / (float)transmutateThing.MaxHitPoints);
                     Thing thing = transmutateThing;
 
-                    if (compQual != null && Rand.Chance((.02f * pwrVal)* comp.arcaneDmg))
+                    if (compQual != null && Rand.Chance((.03f * pwrVal)* comp.arcaneDmg))
                     {
                         thing.TryGetComp<CompQuality>().SetQuality(compQual.Quality + 1, ArtGenerationContext.Colony);
                     }
@@ -114,6 +114,12 @@ namespace TorannMagic
                     if (thing.HitPoints > thing.MaxHitPoints)
                     {
                         thing.HitPoints = thing.MaxHitPoints;
+                    }
+                    Apparel aThing = thing as Apparel;
+                    if(aThing != null && aThing.WornByCorpse)
+                    {
+                        aThing.Notify_PawnResurrected();
+                        Traverse.Create(root: aThing).Field(name: "wornByCorpseInt").SetValue(false);
                     }
 
                     TransmutateEffects(this.currentTarget.Cell);
@@ -190,7 +196,14 @@ namespace TorannMagic
                    
                     if (compQual != null)
                     {
-                        thing.TryGetComp<CompQuality>().SetQuality(compQual.Quality, ArtGenerationContext.Colony);
+                        if (Rand.Chance((.02f * pwrVal) * comp.arcaneDmg))
+                        {
+                            thing.TryGetComp<CompQuality>().SetQuality(compQual.Quality + 1, ArtGenerationContext.Colony);
+                        }
+                        else
+                        {
+                            thing.TryGetComp<CompQuality>().SetQuality(compQual.Quality, ArtGenerationContext.Colony);
+                        }
                     }
                     thing.HitPoints = Mathf.RoundToInt((wornRatio * thing.MaxHitPoints) - ((.2f - (.1f * pwrVal)) * thing.MaxHitPoints));
                     if(thing.HitPoints > thing.MaxHitPoints)

@@ -2126,7 +2126,7 @@
           </li>
 		  <li>
             <capacity>Consciousness</capacity>
-            <offset>-0.2</offset>
+            <setMax>0.2</setMax>
           </li>
         </capMods>
 		<statOffsets>

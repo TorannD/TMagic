@@ -15,6 +15,7 @@ namespace TorannMagic
         public bool isBad = false;
         public int durationTicks = 6000;
         private int tickEffect = 300;
+        private int tickPeriod = 120;
 
         private int currentAge = 1;
 
@@ -89,26 +90,26 @@ namespace TorannMagic
                 }
             }
 
-            if (Find.TickManager.TicksGame % 60 == 0)
+            if (Find.TickManager.TicksGame % tickPeriod == 0)
             {                
 
-                ReverseHediff(this.Pawn, 60);
-                this.durationTicks -= 60;
-
-                if (Find.TickManager.TicksGame % this.tickEffect == 0)
-                {
-                    ReverseEffects(this.Pawn, 1);
-                }
+                ReverseHediff(this.Pawn, tickPeriod);
+                this.durationTicks -= tickPeriod;                
 
                 if (true)
                 {
-                    this.Pawn.ageTracker.AgeBiologicalTicks = Mathf.RoundToInt(this.Pawn.ageTracker.AgeBiologicalTicks - 25000);
+                    this.Pawn.ageTracker.AgeBiologicalTicks -= 25000;
                     if (this.Pawn.ageTracker.AgeBiologicalTicks < 0 && this.Pawn.ageTracker.AgeBiologicalYears > -10)
                     {
                         Messages.Message("TM_CeaseToExist".Translate(this.Pawn.LabelShort), MessageTypeDefOf.NeutralEvent);
                         this.Pawn.Destroy(DestroyMode.Vanish);
                     }
                 }
+            }
+
+            if (Find.TickManager.TicksGame % this.tickEffect == 0)
+            {
+                ReverseEffects(this.Pawn, 1);
             }
         }
 
@@ -152,7 +153,7 @@ namespace TorannMagic
                             int ticksToDisappear = Traverse.Create(root: tickComp).Field(name: "ticksToDisappear").GetValue<int>();
                             if (ticksToDisappear != 0)
                             {
-                                Traverse.Create(root: tickComp).Field(name: "ticksToDisappear").SetValue(ticksToDisappear + (Mathf.RoundToInt(60 * this.parent.Severity)));
+                                Traverse.Create(root: tickComp).Field(name: "ticksToDisappear").SetValue(ticksToDisappear + (Mathf.RoundToInt(ticks * this.parent.Severity)));
                             }
                         }
                         if (rec.Bleeding)
@@ -163,7 +164,7 @@ namespace TorannMagic
                 }
                 if (totalBleedRate != 0)
                 {
-                    HealthUtility.AdjustSeverity(pawn, HediffDefOf.BloodLoss, -(totalBleedRate * 60 * this.parent.Severity) / (24 * 2500));
+                    HealthUtility.AdjustSeverity(pawn, HediffDefOf.BloodLoss, -(totalBleedRate * ticks * this.parent.Severity) / (24 * 2500));
                 }
             }
             List<Hediff> hediffList = pawn.health.hediffSet.GetHediffs<Hediff>().ToList();
@@ -180,7 +181,7 @@ namespace TorannMagic
                             {
                                 if (rec.def.defName.Contains("TM_"))
                                 {
-                                    if (rec.def.isBad)
+                                    if (rec.def.isBad && rec.def != TorannMagicDefOf.TM_ResurrectionHD)
                                     {
                                         this.Pawn.health.RemoveHediff(rec);
                                         break;
@@ -215,11 +216,13 @@ namespace TorannMagic
                                         }
                                         else
                                         {
-                                            break;
+                                            goto IgnoreHediff;
                                         }
                                     }                                    
                                     this.Pawn.health.RemoveHediff(rec);
+                                    i = hediffList.Count;
                                     break;
+                                    IgnoreHediff:;                                    
                                 }                                
                             }
                             else

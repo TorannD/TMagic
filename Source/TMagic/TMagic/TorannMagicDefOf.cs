@@ -391,6 +391,7 @@ namespace TorannMagic
         public static TMAbilityDef TM_BestowMight_I;
         public static TMAbilityDef TM_BestowMight_II;
         public static TMAbilityDef TM_BestowMight_III;
+        public static HediffDef TM_ResurrectionHD;
         public static TMAbilityDef TM_Resurrection;
 
         //Bard
@@ -942,5 +943,8 @@ namespace TorannMagic
         public static ThoughtDef TM_PhantomLimb;
         //public static ThoughtDef AteMysteryMeatDirect;
         //public static ThoughtDef AteMysteryMeatAsIngredient;
+
+        //CustomDefs
+        public static TM_CustomDef TM_CustomDef;
     }
 }

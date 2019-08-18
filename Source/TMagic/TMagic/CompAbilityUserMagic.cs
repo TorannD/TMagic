@@ -1733,7 +1733,7 @@ namespace TorannMagic
             }
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
             {
-                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.warlockMarkMat, 0);
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.arcanistMarkMat, 0);
             }
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Paladin))
             {
@@ -5967,7 +5967,7 @@ namespace TorannMagic
                 {
                     if (Find.TickManager.TicksGame % 20 == 0)
                     {
-                        if (this.Mana.CurLevel >= .025f)
+                        if (this.Mana.CurLevel >= .1f)
                         {
                             this.Mana.CurLevel -= .025f;
                             this.MagicUserXP += 4;

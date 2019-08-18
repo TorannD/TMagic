@@ -696,6 +696,49 @@ namespace TorannMagic
             }
         }
 
+        public static Pawn FindNearbyAfflictedPawnAny(Pawn pawn, int radius)
+        {
+            List<Pawn> mapPawns = pawn.Map.mapPawns.AllPawnsSpawned;
+            List<Pawn> pawnList = new List<Pawn>();
+            Pawn targetPawn = null;
+            pawnList.Clear();
+            for (int i = 0; i < mapPawns.Count; i++)
+            {
+                targetPawn = mapPawns[i];
+                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed)
+                {
+                    if (targetPawn.IsColonist && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
+                    {
+                        using (IEnumerator<Hediff> enumerator = targetPawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+                        {
+                            while (enumerator.MoveNext())
+                            {
+                                Hediff rec = enumerator.Current;
+                                if (rec.def.PossibleToDevelopImmunityNaturally())
+                                {
+                                    pawnList.Add(targetPawn);
+                                }                               
+                            }
+                        }
+                        targetPawn = null;
+                    }
+                    else
+                    {
+                        targetPawn = null;
+                    }
+                }
+            }
+            if (pawnList.Count > 0)
+            {
+                Log.Message("returning pawn list containing " + pawnList.RandomElement().LabelShort);
+                return pawnList.RandomElement();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public static Pawn FindNearbyAddictedPawn(Pawn pawn, int radius, List<string> validAddictionDefnames)
         {
             List<Pawn> mapPawns = pawn.Map.mapPawns.AllPawnsSpawned;
@@ -1107,6 +1150,23 @@ namespace TorannMagic
             return bloodTypes;
         }
 
+        public static HediffDef GetBloodLossTypeDef(List<Hediff> hediffList)
+        {
+            List<TM_CustomDef> bltd = DefDatabase<TM_CustomDef>.AllDefsListForReading;
+            List<string> bltdHediffs = TM_CustomDef.Named("TM_CustomDef").BloodLossHediffs;
+            for (int i = 0; i < bltdHediffs.Count; i++)
+            {
+                for (int j = 0; j < hediffList.Count; j++)
+                {
+                    if (bltdHediffs[i].ToString() == hediffList[j].def.defName.ToString())
+                    {
+                        return hediffList[j].def;
+                    }
+                }                
+            }
+            return null;
+        }
+
         public static T Clone<T>(T source)
         {
             if (!typeof(T).IsSerializable)
@@ -1243,6 +1303,20 @@ namespace TorannMagic
                 }
             }
             return orbs;
+        }
+
+        public static LocalTargetInfo FindWalkableCellNextTo(IntVec3 cell, Map map)
+        {
+            List<IntVec3> cellList = GenAdjFast.AdjacentCells8Way(cell);
+            for(int i = 0; i < cellList.Count; i++)
+            {
+                if(cellList[i] != default(IntVec3) && cellList[i].InBounds(map) && cellList[i].Walkable(map) && !cellList[i].Fogged(map))
+                {
+                    cell = cellList[i];
+                    break;
+                }
+            }
+            return cell;
         }
     }
 }

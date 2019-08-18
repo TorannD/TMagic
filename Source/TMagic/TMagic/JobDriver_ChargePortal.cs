@@ -109,7 +109,7 @@ namespace TorannMagic
                         AttributeXP(comp);
                         this.EndJobWith(JobCondition.Succeeded);
                     }
-                    if (comp.Mana.CurLevel < .01f)
+                    if (comp.Mana.CurLevel < .1f)
                     {
                         AttributeXP(comp);
                         this.EndJobWith(JobCondition.Succeeded);
