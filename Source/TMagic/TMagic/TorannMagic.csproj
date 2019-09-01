@@ -89,6 +89,8 @@
     <Compile Include="AutoCast\Scripts.cs" />
     <Compile Include="Building_LightningTrap.cs" />
     <Compile Include="Building_TMArcaneForge.cs" />
+    <Compile Include="Building_TMMageLight.cs" />
+    <Compile Include="Building_TMMagicCircle.cs" />
     <Compile Include="Building_TM_DMP.cs" />
     <Compile Include="Building_TMBarrier.cs" />
     <Compile Include="Building_TMArcaneCapacitor.cs" />
@@ -101,6 +103,8 @@
     <Compile Include="Building_PoisonTrap.cs" />
     <Compile Include="Buiding_TechnoTurret.cs" />
     <Compile Include="Building_ExplosiveProximityTrap.cs" />
+    <Compile Include="HediffComp_MageLight.cs" />
+    <Compile Include="ModOptions\ExtraOptionsWindow.cs" />
     <Compile Include="TM_CustomDef.cs" />
     <Compile Include="Gizmo_StatusBar.cs" />
     <Compile Include="StatPart_Undead.cs" />
@@ -163,6 +167,7 @@
     <Compile Include="TM_Data.cs" />
     <Compile Include="TM_WeatherEvent_MeshFlash.cs" />
     <Compile Include="Enchantment\Verb_OrbTraitor.cs" />
+    <Compile Include="Verb_MageLight.cs" />
     <Compile Include="Verb_Recall.cs" />
     <Compile Include="Verb_TimeMark.cs" />
     <Compile Include="Verb_ReverseTime.cs" />

@@ -36,8 +36,8 @@ namespace TorannMagic.Enchantment
         protected override bool TryCastShot()
         {
             bool result = false;
-            
-            if (this.currentTarget != null && base.CasterPawn != null)
+            CompAbilityUserMagic comp = this.CasterPawn.GetComp<CompAbilityUserMagic>();
+            if (this.currentTarget != null && base.CasterPawn != null && comp != null)
             {
                 if(this.currentTarget.Thing != null && this.currentTarget.Thing is Pawn)
                 {

@@ -26,6 +26,7 @@ namespace TorannMagic
         Skyfaller skyfaller2;
         Skyfaller skyfaller;
         Map map;
+        IntVec3 safePos = default(IntVec3);
 
         bool launchedFlag = false;
         bool pivotFlag = false;
@@ -44,6 +45,7 @@ namespace TorannMagic
             Scribe_Values.Look<int>(ref this.strikeNum, "strikeNum", 0, false);
             Scribe_Values.Look<int>(ref this.verVal, "verVal", 0, false);
             Scribe_Values.Look<int>(ref this.pwrVal, "pwrVal", 0, false);
+            Scribe_Values.Look<IntVec3>(ref this.safePos, "safePos", default(IntVec3), false);
             Scribe_References.Look<Pawn>(ref this.pawn, "pawn", false);
             Scribe_Collections.Look<IntVec3>(ref this.cellList, "cellList", LookMode.Value);
         }
@@ -110,17 +112,36 @@ namespace TorannMagic
                 launchedFlag = true;
                 pawn.DeSpawn();
             }
-            if(skyfaller.DestroyedOrNull() && !pivotFlag)
+            if (skyfaller.DestroyedOrNull() && !pivotFlag)
             {
-                skyfaller2 = SkyfallerMaker.SpawnSkyfaller(ThingDef.Named("TM_ScornIncoming"), base.Position, this.map);
+                safePos = base.Position;
+                if (safePos.x > this.map.Size.x - 5)
+                {
+                    safePos.x = this.map.Size.x - 5;
+                }
+                else if (safePos.x < 5)
+                {
+                    safePos.x = 5;
+                }
+
+                if (safePos.z > this.map.Size.z - 5)
+                {
+                    safePos.z = this.map.Size.z - 5;
+                }
+                else if (safePos.z < 5)
+                {
+                    safePos.z = 5;
+                }
+                skyfaller2 = SkyfallerMaker.SpawnSkyfaller(ThingDef.Named("TM_ScornIncoming"), safePos, this.map);
                 skyfaller2.angle = this.angle;
                 pivotFlag = true;
 
             }
+
             if (skyfaller2.DestroyedOrNull() && pivotFlag && launchedFlag && !landedFlag)
             {
                 landedFlag = true;
-                GenSpawn.Spawn(pawn, base.Position, this.map);
+                GenSpawn.Spawn(pawn, safePos, this.map);
                 if (pawn.drafter != null)
                 {
                     pawn.drafter.Drafted = true;
@@ -147,20 +168,20 @@ namespace TorannMagic
             { 
                 if (Find.TickManager.TicksGame % strikeDelay == 0)
                 {
-                    IEnumerable<IntVec3> targets;
+                    List<IntVec3> targets;
                     if (strikeNum == 1)
                     {
-                        targets = GenRadial.RadialCellsAround(base.Position, this.strikeNum, false);
+                        targets = GenRadial.RadialCellsAround(safePos, this.strikeNum, false).ToList();
                     }
                     else
                     {
                         IEnumerable<IntVec3> oldTargets = GenRadial.RadialCellsAround(base.Position, this.strikeNum - 1, false);
-                        targets = GenRadial.RadialCellsAround(base.Position, this.strikeNum, false).Except(oldTargets);
+                        targets = GenRadial.RadialCellsAround(safePos, this.strikeNum, false).Except(oldTargets).ToList();
                     }
                     for (int j = 0; j < targets.Count(); j++)
                     {
-                        IntVec3 curCell = targets.ToArray<IntVec3>()[j];
-                        if (curCell.IsValid && curCell.InBounds(this.map))
+                        IntVec3 curCell = targets[j];
+                        if (this.map != null && curCell.IsValid && curCell.InBounds(this.map))
                         {
                             GenExplosion.DoExplosion(curCell, this.Map, .4f, TMDamageDefOf.DamageDefOf.TM_Shadow, this.pawn, (int)((this.def.projectile.GetDamageAmount(1,null) * (1 + .15*pwrVal)) * this.arcaneDmg * Rand.Range(.75f, 1.25f)), 0, TorannMagicDefOf.TM_SoftExplosion, def, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
                         }

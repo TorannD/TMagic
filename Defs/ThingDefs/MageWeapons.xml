@@ -1263,7 +1263,7 @@ Damage Boost: +40%</description>
         </graphicData>
         <projectile>
             <damageDef>TM_Lightning</damageDef>
-            <damageAmountBase>16</damageAmountBase>
+            <damageAmountBase>12</damageAmountBase>
             <speed>200</speed>
         </projectile>
 		<preFiringInitialIntensity>20</preFiringInitialIntensity>
@@ -1304,7 +1304,7 @@ Damage Boost: +40%</description>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Laser_SeerRing_Lightning</defaultProjectile>
-        <warmupTime>1</warmupTime>
+        <warmupTime>2</warmupTime>
         <range>32</range>
         <soundCastTail>GunTail_Light</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>

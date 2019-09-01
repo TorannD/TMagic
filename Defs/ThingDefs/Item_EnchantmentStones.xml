@@ -5,12 +5,8 @@
   
   <ThingDef Name="MagicResourceBase" Abstract="True">
     <thingClass>ThingWithComps</thingClass>
-	<thingCategories>
-      <li>TM_Magicyte</li>
-    </thingCategories>
-    <category>Item</category>
+	<category>Item</category>
     <resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <useHitPoints>false</useHitPoints>
     <selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
 	<tradeTags>
@@ -40,6 +36,20 @@
     </stuffProps>
   </ThingDef>
   
+  <ThingDef Name="MagicResourceBase_Magicyte" Abstract="True" ParentName="MagicResourceBase">
+    <useHitPoints>false</useHitPoints>
+	<thingCategories>
+      <li>TM_Magicyte</li>
+    </thingCategories>
+  </ThingDef>
+  
+  <ThingDef Name="MagicResourceBase_Textile" Abstract="True" ParentName="MagicResourceBase">
+	<useHitPoints>true</useHitPoints>
+  	<thingCategories>
+      <li>Textiles</li>
+    </thingCategories>
+  </ThingDef>
+  
   <ThingDef ParentName="UnfinishedBase">
     <defName>UnfinishedGem</defName>
     <label>unfinished gem</label>
@@ -53,7 +63,7 @@
 
   <!--=============== Enchanting Gems ====================-->
 
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_maxMP_minor</defName>
     <label>Minor Arcane Gem of Holding</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. Gazing into the stone gives the observer an eerie sense of vertigo, as if looking into a bottomless well. This gem can be used to imbue an item with magical potential, increasing the maximum energy of any mage or fighter wearing the item by 5%.</description>
@@ -71,7 +81,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_maxMP</defName>
     <label>Arcane Gem of Holding</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. Gazing into the stone gives the observer an eerie sense of vertigo, as if looking into a bottomless well. This gem can be used to imbue an item with magical potential, increasing the maximum energy of any mage or fighter wearing the item by 10%.</description>
@@ -89,7 +99,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_maxMP_major</defName>
     <label>Major Arcane Gem of Holding</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. Gazing into the stone gives the observer an eerie sense of vertigo, as if looking into a bottomless well. This gem can be used to imbue an item with magical potential, increasing the maximum energy of any mage or fighter wearing the item by 15%.</description>
@@ -107,7 +117,7 @@
     </statBases>
   </ThingDef>
   
-   <ThingDef ParentName="MagicResourceBase">
+   <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_mpRegenRate_minor</defName>
     <label>Minor Arcane Gem of Regeneration</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem can be used to imbue an item, increasing the energy regeneration rate of any mage or fighter wearing the item by 5%.</description>
@@ -125,7 +135,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_mpRegenRate</defName>
     <label>Arcane Gem of Regeneration</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem can be used to imbue an item, increasing the energy regeneration rate of any mage or fighter wearing the item by 10%.</description>
@@ -143,7 +153,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_mpRegenRate_major</defName>
     <label>Major Arcane Gem of Regeneration</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem can be used to imbue an item, increasing the energy regeneration rate of any mage or fighter wearing the item by 15%.</description>
@@ -161,7 +171,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_mpCost_minor</defName>
     <label>Minor Arcane Gem of Conservation</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem decreases the energy cost of any spell by 3%.</description>
@@ -179,7 +189,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_mpCost</defName>
     <label>Arcane Gem of Conservation</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem decreases the energy cost of any spell by 5%.</description>
@@ -197,7 +207,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_mpCost_major</defName>
     <label>Major Arcane Gem of Conservation</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem decreases the energy cost of any spell by 7%.</description>
@@ -215,7 +225,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_coolDown_minor</defName>
     <label>Minor Arcane Gem of Acceleration</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem decreases the cooldown timer of any ability by 3%.</description>
@@ -233,7 +243,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_coolDown</defName>
     <label>Arcane Gem of Acceleration</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem decreases the cooldown timer of any ability by 5%.</description>
@@ -251,7 +261,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_coolDown_major</defName>
     <label>Major Arcane Gem of Acceleration</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem decreases the cooldown timer of any ability by 7%.</description>
@@ -269,7 +279,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_xpGain_minor</defName>
     <label>Minor Arcane Gem of Learning</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem assists the wearer by storing a residual mimicry of the ability, allowing the wielder additional introspection and increasing XP gained by 5%.</description>
@@ -287,7 +297,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_xpGain</defName>
     <label>Arcane Gem of Learning</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem assists the wearer by storing a residual mimicry of the ability, allowing the wielder additional introspection and increasing XP gained by 10%.</description>
@@ -305,7 +315,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_xpGain_major</defName>
     <label>Major Arcane Gem of Learning</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem assists the wearer by storing a residual mimicry of the ability, allowing the wielder additional introspection and increasing XP gained by 15%.</description>
@@ -323,7 +333,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_arcaneRes_minor</defName>
     <label>Minor Arcane Gem of Resistance</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem creates a barrier that repels active arcane energy, reducing damage taken from arcane sources by 10%.</description>
@@ -341,7 +351,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_arcaneRes</defName>
     <label>Arcane Gem of Resistance</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem creates a barrier that repels active arcane energy, reducing damage taken from arcane sources by 20%.</description>
@@ -359,7 +369,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_arcaneRes_major</defName>
     <label>Major Arcane Gem of Resistance</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this gem creates a barrier that repels active arcane energy, reducing damage taken from arcane sources by 30%.</description>
@@ -378,7 +388,7 @@
   </ThingDef>
   
     
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_arcaneDmg_minor</defName>
     <label>Minor Arcane Gem of Force</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this enchantment augments the force of an attack, increasing the damage output by 4%.</description>
@@ -396,7 +406,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_arcaneDmg</defName>
     <label>Arcane Gem of Force</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this enchantment augments the force of an attack, increasing the damage output by 8%.</description>
@@ -414,7 +424,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_arcaneDmg_major</defName>
     <label>Major Arcane Gem of Force</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. When imbued into an item, this enchantment augments the force of an attack, increasing the damage output by 12%.</description>
@@ -432,7 +442,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_wonder_minor</defName>
     <label>Minor Arcane Gem of Wonder</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem hums with intense power. This gem can be used to imbue an item with magical potential, granting minor bonuses to all enchantment categories.</description>
@@ -450,7 +460,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_wonder</defName>
     <label>Arcane Gem of Wonder</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem hums with intense power. This gem can be used to imbue an item with magical potential, granting moderate bonuses to all enchantment categories.</description>
@@ -468,7 +478,7 @@
     </statBases>
   </ThingDef>
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>TM_EStone_wonder_major</defName>
     <label>Major Arcane Gem of Wonder</label>
     <description>A magical stone that can be used by a mage to enchant an item with magical energy. This gem hums with intense power. This gem can be used to imbue an item with magical potential, granting major bonuses to all enchantment categories.</description>
@@ -491,6 +501,9 @@
   
   <ThingDef ParentName="MagicResourceBase">
     <defName>RawMagicyte</defName>
+	<thingCategories>
+      <li>TM_MagicItems</li>
+    </thingCategories>
     <label>unrefined magicyte</label>
 	<tradeTags>
 	  <li>RawArcane</li>

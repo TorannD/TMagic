@@ -23,7 +23,7 @@ namespace TorannMagic.Weapon
             if (flag)
             {
                 int DamageAmount = this.def.projectile.GetDamageAmount(1,null);
-                DamageInfo dinfo = new DamageInfo(this.def.projectile.damageDef, DamageAmount, 2, this.ExactRotation.eulerAngles.y, this.launcher, null, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);
+                DamageInfo dinfo = new DamageInfo(this.def.projectile.damageDef, DamageAmount, .25f, this.ExactRotation.eulerAngles.y, this.launcher, null, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown);
                 hitThing.TakeDamage(dinfo);
 
                 bool flag2 = this.canStartFire && Rand.Range(0f, 1f) > this.startFireChance;

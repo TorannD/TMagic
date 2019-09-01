@@ -325,6 +325,12 @@ namespace TorannMagic
                     comp.InitializeSpell();
                     this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
+                else if(parent.def == TorannMagicDefOf.SpellOf_MageLight && comp.spell_MageLight == false)
+                {
+                    comp.spell_MageLight = true;
+                    comp.InitializeSpell();
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                }
                 else
                 {
                     Messages.Message("CannotLearnSpell".Translate(), MessageTypeDefOf.RejectInput);

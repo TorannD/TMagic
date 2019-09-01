@@ -184,6 +184,7 @@ namespace TorannMagic
                     {
                         if (ModCheck.Validate.ChildrenSchoolLearning.IsInitialized())
                         {
+                            Log.Message("executing CSL birth - normal");
                             harmonyInstance.Patch(AccessTools.Method(typeof(PawnUtility), "TrySpawnHatchedOrBornPawn"), null, new HarmonyMethod(typeof(HarmonyPatches), "TM_Children_TrySpawnHatchedOrBornPawn_Tweak"));
                         }
                     }))();
@@ -1057,10 +1058,10 @@ namespace TorannMagic
             }
         }
 
-        [HarmonyPriority(100)]
+        [HarmonyPriority(10)]
         public static void TM_Children_TrySpawnHatchedOrBornPawn_Tweak(ref Pawn pawn, Thing motherOrEgg, ref bool __result)
         {
-            if (pawn.RaceProps.Humanlike && pawn.story != null)
+            if (pawn.story != null && pawn.story.traits != null)
             {
                 bool hasMagicTrait = false;
                 bool hasFighterTrait = false;
@@ -1142,7 +1143,7 @@ namespace TorannMagic
             {
                 Pawn pawn = __instance.caster as Pawn;
                 CompAbilityUserMagic comp = pawn.TryGetComp<CompAbilityUserMagic>();
-                if(pawn.RaceProps.Humanlike && pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) && comp.HasTechnoWeapon && comp.useElementalShotToggle && pawn.equipment.Primary.def.IsRangedWeapon && pawn.equipment.Primary.def.techLevel >= TechLevel.Industrial)
+                if(comp != null && pawn.RaceProps.Humanlike && pawn.GetPosture() == PawnPosture.Standing && pawn.story != null && pawn.story.traits != null && pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) && comp.HasTechnoWeapon && comp.useElementalShotToggle && pawn.equipment.Primary.def.IsRangedWeapon && pawn.equipment.Primary.def.techLevel >= TechLevel.Industrial)
                 {
                     int verVal = comp.MagicData.MagicPowerSkill_TechnoWeapon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoWeapon_ver").level;
                     if (Rand.Chance(.2f + .01f * verVal) && comp.Mana.CurLevel >= .02f)
@@ -1412,7 +1413,7 @@ namespace TorannMagic
                                         result = false;
                                         return result;
                                     }
-                                    bool flagUndead = !__instance.forceIncap && dinfo.HasValue && dinfo.Value.Def.ExternalViolenceFor(pawn) && TM_Calc.IsUndeadNotVamp(pawn) && !pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD"));
+                                    bool flagUndead = dinfo.HasValue && TM_Calc.IsUndeadNotVamp(pawn) && !pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_LichHD);
                                     if (flagUndead)
                                     {
                                         TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Ghost"), pawn.DrawPos, pawn.Map, .65f, .05f, .05f, .4f, 0, Rand.Range(3, 4), Rand.Range(-15, 15), 0);

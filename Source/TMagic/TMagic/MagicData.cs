@@ -324,6 +324,10 @@ namespace TorannMagic
                         {
                             TorannMagicDefOf.TM_TimeMark
                         }),
+                        new MagicPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_MageLight
+                        }),
                     };
                 }
                 return this.magicPowerStandalone;

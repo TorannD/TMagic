@@ -286,28 +286,47 @@ namespace TorannMagic
                             }
                         }
 
-                        IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
-                                                           where (def.defName == "MealNutrientPaste")
-                                                           select def;
-
-                        newThingDef = enumerable.RandomElement();
-                        if (newThingDef != null)
+                        if (corpseNutritionValue > 0)
                         {
-                            transCorpse.Destroy(DestroyMode.Vanish);
-                            Thing thing = null;
-                            int newMatCount = Mathf.RoundToInt(corpseNutritionValue / newThingDef.GetStatValueAbstract(StatDefOf.Nutrition));
-                            thing = ThingMaker.MakeThing(newThingDef);
-                            thing.stackCount = Mathf.RoundToInt((.7f + (.05f * pwrVal)) * newMatCount);
+                            IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
+                                                               where (def.defName == "MealNutrientPaste")
+                                                               select def;
 
-                            if (thing != null)
+                            newThingDef = enumerable.RandomElement();
+                            if (newThingDef != null)
                             {
-                                GenPlace.TryPlaceThing(thing, this.currentTarget.Cell, this.caster.Map, ThingPlaceMode.Near, null);
-                                TransmutateEffects(this.currentTarget.Cell);
+                                transCorpse.Destroy(DestroyMode.Vanish);
+                                Thing thing = null;
+                                int newMatCount = Mathf.RoundToInt(corpseNutritionValue / newThingDef.GetStatValueAbstract(StatDefOf.Nutrition));
+                                thing = ThingMaker.MakeThing(newThingDef);
+                                thing.stackCount = Mathf.RoundToInt((.7f + (.05f * pwrVal)) * newMatCount);
+
+                                if (thing != null)
+                                {
+                                    GenPlace.TryPlaceThing(thing, this.currentTarget.Cell, this.caster.Map, ThingPlaceMode.Near, null);
+                                    TransmutateEffects(this.currentTarget.Cell);
+                                }
+                            }
+                            else
+                            {
+                                Log.Message("No known edible foods to transmutate to - nutrient paste removed?");
                             }
                         }
                         else
                         {
-                            Log.Message("No known edible foods to transmutate to - nutrient paste removed?");
+                            transCorpse.Destroy(DestroyMode.Vanish);
+                            for (int j = 0; j < butcherProducts.Count; j++)
+                            {
+                                Thing thing = null;
+                                thing = ThingMaker.MakeThing(butcherProducts[j].def);
+                                thing.stackCount = butcherProducts[j].stackCount;
+                                if(thing != null)
+                                {
+                                    GenPlace.TryPlaceThing(thing, this.currentTarget.Cell, this.caster.Map, ThingPlaceMode.Near, null);
+                                }
+                                
+                            }
+                            TransmutateEffects(this.currentTarget.Cell);
                         }
                     }
                 }

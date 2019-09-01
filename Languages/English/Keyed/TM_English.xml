@@ -229,6 +229,9 @@
 <TM_Chronomancer>Chronomancer</TM_Chronomancer>
 <TM_Monk>Monk</TM_Monk>
 
+<!-- Mod Settings extra options -->
+<TM_ExtraOptions>Extra Options</TM_ExtraOptions>
+
 <!-- Magic Ability Point Descriptions -->
 <TM_global_regen_pwr>Clarity</TM_global_regen_pwr>
 <TM_global_regen_pwr_desc>Increases the rate mana is recovered by 5% per level.</TM_global_regen_pwr_desc>

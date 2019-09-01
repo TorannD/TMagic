@@ -4,7 +4,7 @@
   
     <!--=============== Manaweave ====================-->
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Textile">
     <defName>TM_Manaweave</defName>
     <label>manaweave</label>
     <description>Manaweave is cloth that has been fused with magicyte and meticulously imbued with arcane symbols. Manaweave inherits many of the physical properties of cloth, but acquires an additional reactive response to physical force. What makes the fabric unique is its ability to act as a conductor of mana that enhances the effects of enchantments and naturally grants protection against light and dark magic. 
@@ -15,7 +15,6 @@ Extremely difficult and taxing to create, only a talented and knowledgeable mage
       <graphicClass>Graphic_StackCount</graphicClass>
 	  <color>(120,0,250)</color>
     </graphicData>
-	<useHitPoints>true</useHitPoints>
 	<stackLimit>75</stackLimit>
 	<statBases>
 	  <Beauty>2</Beauty>
@@ -45,9 +44,6 @@ Extremely difficult and taxing to create, only a talented and knowledgeable mage
 		<Beauty>2</Beauty>
       </statFactors>
     </stuffProps>
-	<thingCategories>
-      <li>Textiles</li>
-    </thingCategories>
 	<tradeTags>
 	  <li>RawArcane</li>
     </tradeTags>

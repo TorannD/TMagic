@@ -8,7 +8,7 @@
     <soundImpactDefault>MetalHitImportant</soundImpactDefault>
     <selectable>true</selectable>
     <drawerType>MapMeshAndRealTime</drawerType>
-    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+<!--     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded> -->
     <repairEffect>Repair</repairEffect>
     <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
     <filthLeaving>Filth_RubbleBuilding</filthLeaving>

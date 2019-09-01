@@ -44,8 +44,7 @@ namespace TorannMagic
         public override bool IsVisible
         {
             get
-            {
-                
+            {                
                 bool flag = base.SelPawn.story != null && base.SelPawn.IsColonist;
                 if (flag)
                 {

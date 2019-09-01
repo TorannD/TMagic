@@ -14,6 +14,7 @@ namespace TorannMagic
         public static readonly Texture2D losIcon = ContentFinder<Texture2D>.Get("Other/cantsee");
 
         public static readonly Material bitMat = MaterialPool.MatFrom("Other/bit");
+        public static readonly Material mageLightMat = MaterialPool.MatFrom("Other/magelight");
 
         public static readonly Material scornWingsNS = MaterialPool.MatFrom("Other/scornwings_north");
         public static readonly Material scornWingsE = MaterialPool.MatFrom("Other/scornwings_east");

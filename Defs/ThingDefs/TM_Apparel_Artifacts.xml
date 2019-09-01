@@ -5,6 +5,9 @@
   <ThingDef Name="TM_ArtifactBase" Abstract="True">
     <thingClass>Apparel</thingClass>
     <category>Item</category>
+	<thingCategories>
+	  <li>TM_MagicArtifacts</li>
+	</thingCategories>
     <selectable>True</selectable>
     <pathCost>10</pathCost>
 	<stackLimit>1</stackLimit>
@@ -96,10 +99,7 @@
 	<equippedStatOffsets>
 		<MoveSpeed>0.5</MoveSpeed>
 		<MeleeDodgeChance>.10</MeleeDodgeChance>
-	</equippedStatOffsets>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
+	</equippedStatOffsets>	
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -131,9 +131,6 @@
 		<Mass>.05</Mass>
 		<MaxHitPoints>200</MaxHitPoints>
 	</statBases>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -170,9 +167,6 @@
 	<equippedStatOffsets>
 	  <ImmunityGainSpeed>0.15</ImmunityGainSpeed>
 	</equippedStatOffsets>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -206,9 +200,6 @@
 		<Mass>.05</Mass>
 		<MaxHitPoints>200</MaxHitPoints>
 	</statBases>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -245,9 +236,6 @@
 	<equippedStatOffsets>
 		<CarryingCapacity>+30</CarryingCapacity>
 	</equippedStatOffsets>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -281,9 +269,6 @@
 		<Mass>.05</Mass>
 		<MaxHitPoints>200</MaxHitPoints>
 	</statBases>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -317,9 +302,6 @@
 		<Mass>.05</Mass>
 		<MaxHitPoints>200</MaxHitPoints>
 	</statBases>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -359,9 +341,6 @@
 	  <ArmorRating_Heat>.1</ArmorRating_Heat>
 	  <ArmorRating_Alignment>.1</ArmorRating_Alignment>
 	</equippedStatOffsets>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -399,9 +378,6 @@
 	  <ArmorRating_Heat>.07</ArmorRating_Heat>
 	  <ArmorRating_Alignment>.07</ArmorRating_Alignment>
 	</equippedStatOffsets>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -433,9 +409,6 @@
 		<Mass>.05</Mass>
 		<MaxHitPoints>200</MaxHitPoints>
 	</statBases>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -473,9 +446,6 @@
 	  <NegotiationAbility>.10</NegotiationAbility>
 	  <SocialImpact>.15</SocialImpact>
 	</equippedStatOffsets>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -510,9 +480,6 @@
 	<equippedStatOffsets>
 	  <GlobalLearningFactor>.10</GlobalLearningFactor>
 	</equippedStatOffsets>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -549,9 +516,6 @@
 	<equippedStatOffsets>
 	  <ForagedNutritionPerDay>.50</ForagedNutritionPerDay>
 	</equippedStatOffsets>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -621,9 +585,6 @@ Arcane Recovery - decreases time to recover from arcane weakness</description>
 	  <RawMagicyte>500</RawMagicyte>
 	  <TM_Manaweave>50</TM_Manaweave>
     </costList>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -687,9 +648,6 @@ Arcane Resistance 10%</description>
 	<costList>
 	  <RawMagicyte>100</RawMagicyte>
     </costList>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -749,9 +707,6 @@ Arcane Resistance 10%</description>
 	<costList>
 	  <RawMagicyte>100</RawMagicyte>
     </costList>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -812,9 +767,6 @@ XP Gain +25%</description>
 	  <Silver>20</Silver>
 	  <Jade>50</Jade>
     </costList>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -866,9 +818,6 @@ The Ring of Blood's power depends on the fame of its bearer and will grow with e
 	  <Silver>20</Silver>
 	  <Jade>50</Jade>
     </costList>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -923,9 +872,6 @@ The Ring of Eternal Blue will increase a psionic's energy proportionally with th
 	  <Silver>25</Silver>
 	  <Jade>50</Jade>
     </costList>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -977,9 +923,6 @@ The Ring of Malice's power depends on the fame of its bearer and will grow with 
 	  <Silver>20</Silver>
 	  <Jade>50</Jade>
     </costList>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -1019,9 +962,6 @@ Only the most powerful mages can direct the power of this artifact; even then, i
 		<MaxHitPoints>100</MaxHitPoints>
 		<MarketValue>1500</MarketValue>
 	</statBases>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -1077,9 +1017,6 @@ Once filled, the Orb of Souls can be used to transfers the absorbed traits into 
 	  <Silver>20</Silver>
 	  <Jade>50</Jade>
     </costList>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>
@@ -1124,9 +1061,6 @@ The orb will implode and be destroyed once the traits have been released.</descr
 		<MaxHitPoints>100</MaxHitPoints>
 		<MarketValue>1500</MarketValue>
 	</statBases>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<generateAllowChance>0</generateAllowChance>
 	<apparel>
@@ -1166,9 +1100,6 @@ Orbs of the Eternal have been used by mages, rulers, and the elite to prolong li
       <graphicClass>Graphic_Single</graphicClass>
 	  <drawSize>(.5, .5)</drawSize>
     </graphicData>
-	<thingCategories>
-      <li>Items</li>
-    </thingCategories>
     <statBases>
 		<Mass>.1</Mass>
 		<MaxHitPoints>100</MaxHitPoints>
@@ -1212,9 +1143,6 @@ Only one orb may be equipped by a pawn. Orbs only take affect when equipped.</de
       <graphicClass>Graphic_Single</graphicClass>
 	  <drawSize>(.5, .5)</drawSize>
     </graphicData>
-	<thingCategories>
-	  <li>Apparel</li>
-	</thingCategories>
 	<generateCommonality>0</generateCommonality>
 	<apparel>
 	 <tags>

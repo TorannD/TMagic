@@ -459,8 +459,11 @@ namespace TorannMagic
                             this.drainManaSickness = 0;
                         }
 
-                        this.lastGainPct = amount;               
-                        comp.Mana.curLevelInt = Mathf.Clamp(comp.Mana.curLevelInt += amount, 0f, this.MaxLevel);
+                        this.lastGainPct = amount;
+
+                        comp.Mana.curLevelInt = Mathf.Max(comp.Mana.curLevelInt + amount, 0f);
+                        //comp.Mana.curLevelInt = Mathf.Clamp(comp.Mana.curLevelInt += amount, 0f, this.MaxLevel);
+
                         lastNeed = this.curLevelInt;
                         this.lastGainTick = Find.TickManager.TicksGame;
                     }

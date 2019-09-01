@@ -670,7 +670,7 @@ namespace TorannMagic
                                 Hediff rec = enumerator.Current;
                                 for(int j =0; j < validAfflictionDefnames.Count; j++)
                                 {
-                                    if (rec.def.defName.Contains(validAfflictionDefnames[j]))
+                                    if (rec.def.defName.Contains(validAfflictionDefnames[j]) && rec.def.isBad)
                                     {
                                         pawnList.Add(targetPawn);
                                     }
@@ -714,7 +714,7 @@ namespace TorannMagic
                             while (enumerator.MoveNext())
                             {
                                 Hediff rec = enumerator.Current;
-                                if (rec.def.PossibleToDevelopImmunityNaturally())
+                                if (rec.def.PossibleToDevelopImmunityNaturally() && rec.def.isBad)
                                 {
                                     pawnList.Add(targetPawn);
                                 }                               
@@ -730,7 +730,7 @@ namespace TorannMagic
             }
             if (pawnList.Count > 0)
             {
-                Log.Message("returning pawn list containing " + pawnList.RandomElement().LabelShort);
+                //Log.Message("returning pawn list containing " + pawnList.RandomElement().LabelShort);
                 return pawnList.RandomElement();
             }
             else

@@ -265,5 +265,79 @@ Using the arcane forge dramatically increases crafting speed but consumes mana. 
             </targetParams>
         </MainVerb>
     </AbilityUser.AbilityDef>
+	
+	<ThingDef ParentName="TM_BuildingBase">
+    <defName>TableMagicCircle</defName>
+    <label>magic circle</label>
+	<thingClass>TorannMagic.Building_TMMagicCircle</thingClass>
+    <description>The magic circle is a construct that amplifies magic by aligning the physical and arcane into a focal point. While it may seem simple, the circle is outlined with elaborate runes and constructed with detailed precision.
+
+Mages can use the magic circle to augment their power or combine their energy with other mages to create unique, powerful effects. The circle may accomodate up to six mages.
+
+The type of material used in construction directly affects the quality of the magic circle.
+Stone (any): no bonuses
+Steel: no bonus
+Wood: no bonus
+Jade: success chance +20%
+Silver: refunds 20% of material cost
+Gold: duration +20%
+Uranium: duration and success chance +15%
+Magicyte: refunds 20% of mana cost</description>
+    <graphicData>
+      <texPath>Items/magic_circle</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(5.2,5.2)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <costList>
+      <Steel>100</Steel>
+	  <Jade>60</Jade>
+	  <Uranium>60</Uranium>
+	  <RawMagicyte>100</RawMagicyte>
+    </costList>
+    <stuffCategories>
+      <li>Metallic</li>
+	  <li>Stony</li>
+	  <li>Woody</li>
+    </stuffCategories>
+    <costStuffCount>500</costStuffCount>
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>30000</WorkToBuild>
+      <MaxHitPoints>1000</MaxHitPoints>
+      <Flammability>0.5</Flammability>
+      <Cleanliness>0</Cleanliness>
+	  <WorkTableWorkSpeedFactor>1</WorkTableWorkSpeedFactor>
+    </statBases>
+    <size>(5,5)</size>
+    <designationCategory>Misc</designationCategory>
+    <passability>Standable</passability>
+    <pathCost>20</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+	<recipes>
+      <li>TM_MakeManaweave</li>
+    </recipes>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+    </building>
+    <comps>
+    </comps>
+    <designationHotKey>Misc2</designationHotKey>
+	<researchPrerequisites>
+      <li>TM_ArcaneForging</li>
+    </researchPrerequisites>
+  </ThingDef>
 
 </Defs>

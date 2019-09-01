@@ -99,6 +99,8 @@ namespace TorannMagic
         public static ThingDef SpellOf_Invisibility;
         public static ThingDef SpellOf_BriarPatch;
         public static ThingDef SpellOf_Recall;
+        public static ThingDef SpellOf_MageLight;
+        public static HediffDef TM_MageLightHD;
 
         public static ThingDef SkillOf_Sprint;
         public static ThingDef SkillOf_GearRepair;
@@ -753,6 +755,7 @@ namespace TorannMagic
         public static TMAbilityDef TM_Invisibility;
         public static HediffDef TM_InvisibilityHD;
         public static TMAbilityDef TM_BriarPatch;
+        public static TMAbilityDef TM_MageLight;
 
         public static HediffDef TM_Sight;
         public static HediffDef TM_Breathing;
@@ -881,6 +884,7 @@ namespace TorannMagic
         public static ThingDef TM_Plant_Paracyte;
         public static ThingDef TM_Syrrium;
         public static ThingDef TM_Plant_Briar;
+        public static ThingDef TM_MageLightTD;
 
         //Sounds
         public static SoundDef ItemEnchanted;

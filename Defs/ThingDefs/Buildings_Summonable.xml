@@ -756,5 +756,52 @@ As you drawn near the statue, an eerie glint from the eyes of the stone sentinel
     <staticSunShadowHeight>0.0</staticSunShadowHeight>
     <designationHotKey>Misc3</designationHotKey>
   </ThingDef>
+  
+  <ThingDef ParentName="TM_BuildingBase">
+    <defName>TM_MageLightTD</defName>
+	<thingClass>TorannMagic.Building_TMMageLight</thingClass>
+    <label>magelight</label>
+    <description>A light source created by a mage.</description>    
+    <graphicData>
+      <texPath>Spells/invis</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawRotated>false</drawRotated>
+      <allowFlip>false</allowFlip>
+      <damageData>
+        <rect>(0.2,0,0.6,0.1)</rect>
+      </damageData>
+	  <drawSize>(1,1)</drawSize>
+    </graphicData>
+	<building>
+		<isInert>true</isInert>
+	</building>
+	<size>(1,1)</size>
+	<fillPercent>.1</fillPercent>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <passability>Standable</passability>
+	<tradeability>None</tradeability>
+    <pathCost>0</pathCost>
+    <!-- <constructEffect>ConstructDirt</constructEffect> -->
+    <tickerType>Normal</tickerType>
+    <drawerType>RealtimeOnly</drawerType>
+    <statBases>
+    <MaxHitPoints>100</MaxHitPoints>
+ <!--        <WorkToBuild>200</WorkToBuild>
+      <Flammability>0</Flammability> -->
+    </statBases>
+    <selectable>false</selectable>
+	<clearBuildingArea>false</clearBuildingArea>
+    <soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
+    <drawPlaceWorkersWhileSelected>false</drawPlaceWorkersWhileSelected>
+    <comps>
+<!--       <li Class="TorannMagic.CompProperties_Summoned"></li> -->
+      <li Class="CompProperties_Glower">
+        <glowRadius>20</glowRadius>
+        <glowColor>(252,255,204,1)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
 
 </Defs>

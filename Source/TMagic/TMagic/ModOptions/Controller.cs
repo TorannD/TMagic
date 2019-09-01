@@ -34,7 +34,7 @@ namespace TorannMagic.ModOptions
             int num = 0;
             float rowHeight = 28f;
 
-            Widgets.BeginScrollView(canvas, ref scrollPosition, canvas, true);
+            Widgets.BeginScrollView(canvas, ref scrollPosition, canvas);
 
             Rect rect1 = new Rect(canvas);
             rect1.width /= 2f;

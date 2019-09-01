@@ -1683,5 +1683,45 @@ Autocast only triggers when the target has 80% or greater chance of being downed
 		</targetParams>
     </MainVerb>
   </TorannMagic.TMAbilityDef>
+  
+  	<!-- Magelight -->
+  
+   <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_MageLight</defName>
+    <label>Magelight</label>
+    <uiIconPath>Other/magelight</uiIconPath>
+    <description>Creates a small orb of light that banishes the darkness. Magelight will remain in the proximity of the casting mage. This spell has an upkeep cost of 10 mana and 5% mana regen.
+
+Magelight grants a 20% vision bonus; only the caster benefits from this bonus.
+
+Magelight can be dispelled by using this ability on the caster.</description>
+    <manaCost>0.10</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_MageLight</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+		<abilityDef>TM_MageLight</abilityDef>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>10</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>0</range>
+		<isViolent>false</isViolent>
+        <soundCast>ThrowGrenade</soundCast>
+        <muzzleFlashScale>40</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+         <isPrimary>false</isPrimary>
+		 <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		 <targetParams>
+      	 <canTargetPawns>true</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>true</canTargetSelf>
+		 <canTargetLocations>true</canTargetLocations>
+        </targetParams>		
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
 
 </Defs>

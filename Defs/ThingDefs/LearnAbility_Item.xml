@@ -5,7 +5,7 @@
   <ThingDef ParentName="ResourceBase" Name="UsableGemstoneBase" Abstract="True">
     <thingClass>ThingWithComps</thingClass>
     <thingCategories>
-      <li>TM_SkillBooks</li>
+      <li>TM_MagicArtifacts</li>
     </thingCategories>
     <tradeTags>
 	  <li>Arcane</li>
@@ -1239,7 +1239,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>6</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MagicScribing</li>
@@ -1286,7 +1286,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>6</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MagicScribing</li>
@@ -1382,7 +1382,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>6</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MagicScribing</li>
@@ -1478,7 +1478,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>6</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MagicScribing</li>
@@ -1526,7 +1526,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>6</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MagicScribing</li>
@@ -1574,7 +1574,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>6</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MagicScribing</li>
@@ -1622,7 +1622,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>6</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MagicScribing</li>
@@ -1634,6 +1634,52 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
 
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_MageLight</defName>
+    <label>Mage Spell: Mage Light</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a magic user how to create a small orb of light.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>380</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>48</RawMagicyte>
+		<Cloth>40</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>6</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_lit</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -1670,7 +1716,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>6</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MagicScribing</li>
@@ -1718,7 +1764,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>6</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MagicScribing</li>
@@ -1766,7 +1812,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>6</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MagicScribing</li>
@@ -1814,7 +1860,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>6</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MagicScribing</li>
@@ -1863,7 +1909,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>6</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MagicScribing</li>
@@ -1911,7 +1957,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>6</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MagicScribing</li>
@@ -1959,7 +2005,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>6</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MagicScribing</li>
@@ -2007,7 +2053,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>6</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MagicScribing</li>
@@ -2020,6 +2066,8 @@ Produces 400Wd adjusted by ability power.</description>
     </graphicData>
 
   </ThingDef>
+  
+  <!-- Advanced Scribing -->
   
   <ThingDef ParentName="ArcaneSpellBase">
     <defName>SpellOf_Invisibility</defName>
@@ -2054,7 +2102,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>10</Intellectual>
+			<Intellectual>8</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_AdvancedScribing</li>
@@ -2100,7 +2148,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>10</Intellectual>
+			<Intellectual>8</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_AdvancedScribing</li>
@@ -2147,7 +2195,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>10</Intellectual>
+			<Intellectual>8</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_AdvancedScribing</li>
@@ -2195,7 +2243,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>10</Intellectual>
+			<Intellectual>8</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_AdvancedScribing</li>
@@ -2243,7 +2291,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>10</Intellectual>
+			<Intellectual>8</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_AdvancedScribing</li>
@@ -2291,7 +2339,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>10</Intellectual>
+			<Intellectual>8</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_AdvancedScribing</li>
@@ -2339,7 +2387,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>10</Intellectual>
+			<Intellectual>8</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_AdvancedScribing</li>
@@ -2387,7 +2435,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>10</Intellectual>
+			<Intellectual>8</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_AdvancedScribing</li>
@@ -2482,7 +2530,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>10</Intellectual>
+			<Intellectual>8</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_AdvancedScribing</li>
@@ -2529,7 +2577,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>2</Crafting>
-			<Intellectual>10</Intellectual>
+			<Intellectual>8</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_AdvancedScribing</li>
@@ -2735,6 +2783,8 @@ Produces 400Wd adjusted by ability power.</description>
 
   </ThingDef>
   
+  <!-- Master Scribing -->
+  
   <ThingDef ParentName="ArcaneSpellBase">
     <defName>SpellOf_BattleHymn</defName>
     <label>Bard Spell: Battle Hymn</label>
@@ -2769,7 +2819,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
+			<Intellectual>10</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MasterScribing</li>
@@ -2817,7 +2867,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
+			<Intellectual>10</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MasterScribing</li>
@@ -2865,7 +2915,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
+			<Intellectual>10</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MasterScribing</li>
@@ -2913,7 +2963,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
+			<Intellectual>10</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MasterScribing</li>
@@ -2961,7 +3011,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
+			<Intellectual>10</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MasterScribing</li>
@@ -3009,7 +3059,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
+			<Intellectual>10</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MasterScribing</li>
@@ -3057,7 +3107,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
+			<Intellectual>10</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MasterScribing</li>
@@ -3105,7 +3155,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
+			<Intellectual>10</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MasterScribing</li>
@@ -3153,7 +3203,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
+			<Intellectual>10</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MasterScribing</li>
@@ -3201,7 +3251,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
+			<Intellectual>10</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MasterScribing</li>
@@ -3249,7 +3299,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
+			<Intellectual>10</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MasterScribing</li>
@@ -3296,7 +3346,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
+			<Intellectual>10</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MasterScribing</li>
@@ -3343,7 +3393,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
+			<Intellectual>10</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MasterScribing</li>
@@ -3391,7 +3441,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
+			<Intellectual>10</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MasterScribing</li>
@@ -3439,7 +3489,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
+			<Intellectual>10</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MasterScribing</li>
@@ -3487,7 +3537,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
+			<Intellectual>10</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MasterScribing</li>
@@ -3535,7 +3585,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>14</Intellectual>
+			<Intellectual>10</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MasterScribing</li>
@@ -3586,8 +3636,8 @@ Produces 400Wd adjusted by ability power.</description>
 		<effectWorking>Smelt</effectWorking>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
-			<Crafting>2</Crafting>
-			<Intellectual>8</Intellectual>
+			<Crafting>4</Crafting>
+			<Intellectual>4</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_MagicScribing</li>
@@ -3636,7 +3686,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>4</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_AdvancedScribing</li>
@@ -3686,7 +3736,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>4</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_AdvancedScribing</li>
@@ -3737,7 +3787,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>4</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_AdvancedScribing</li>
@@ -3787,7 +3837,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>4</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_AdvancedScribing</li>
@@ -3837,7 +3887,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>4</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_AdvancedScribing</li>
@@ -3887,7 +3937,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>4</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_AdvancedScribing</li>
@@ -3937,7 +3987,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>4</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_AdvancedScribing</li>
@@ -3988,7 +4038,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>4</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_AdvancedScribing</li>
@@ -4039,7 +4089,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>4</Crafting>
-			<Intellectual>8</Intellectual>
+			<Intellectual>4</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_AdvancedScribing</li>
@@ -4090,7 +4140,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>6</Crafting>
-			<Intellectual>10</Intellectual>
+			<Intellectual>12</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_ArcaneCrafting</li>
@@ -4139,7 +4189,7 @@ Produces 400Wd adjusted by ability power.</description>
 		<unfinishedThingDef>UnfinishedGem</unfinishedThingDef>
 		<skillRequirements>
 			<Crafting>6</Crafting>
-			<Intellectual>10</Intellectual>
+			<Intellectual>12</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
 			<li>TM_ArcaneCrafting</li>
