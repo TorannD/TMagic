@@ -48,6 +48,10 @@ namespace TorannMagic
                 {
                     flag_DefName = true;
                 }
+                if(pawn.def == TorannMagicDefOf.TM_GiantSkeletonR || pawn.def == TorannMagicDefOf.TM_SkeletonR || pawn.def == TorannMagicDefOf.TM_SkeletonLichR)
+                {
+                    flag_DefName = true;
+                }
                 bool flag_Trait = false;
                 if (pawn.story != null && pawn.story.traits != null)
                 {
@@ -407,6 +411,43 @@ namespace TorannMagic
             {
                 return null;
             }
+        }
+
+        public static List<Pawn> FindNearbyMages(IntVec3 center, Map map, Faction faction, int radius, bool friendly)
+        {
+            List<Pawn> mapPawns = map.mapPawns.AllPawnsSpawned;
+            List<Pawn> pawnList = new List<Pawn>();
+            Pawn targetPawn = null;
+            pawnList.Clear();
+            for (int i = 0; i < mapPawns.Count; i++)
+            {
+                targetPawn = mapPawns[i];
+                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !targetPawn.Downed && targetPawn.Faction != null)
+                {
+                    if (targetPawn.Drafted)
+                    {
+                        continue;
+                    }
+                    if(friendly && targetPawn.Faction != faction)
+                    {
+                        continue;
+                    }
+                    else if(!friendly && targetPawn.Faction == faction)
+                    {
+                        continue;
+                    }
+                    if((targetPawn.Position - center).LengthHorizontal > radius)
+                    {
+                        continue;
+                    }
+                    if(!TM_Calc.IsMagicUser(targetPawn))
+                    {
+                        continue;
+                    }
+                    pawnList.Add(targetPawn);
+                }
+            }
+            return pawnList;
         }
 
         public static Pawn FindNearbyFighter(Pawn pawn, int radius, bool inCombat)
@@ -1067,6 +1108,35 @@ namespace TorannMagic
             {
                 return null;
             }
+        }
+
+        public static IntVec3 TryFindSafeCell(Pawn pawn, IntVec3 currentPos, int radius, int maxThreats, int attempts = 1)
+        {
+            //Log.Message("attempting to find safe cell");
+            for (int i = 0; i < attempts; i++)
+            {
+                IntVec3 tmp = currentPos;
+                tmp.x += (Rand.Range(-radius, radius));
+                tmp.z += Rand.Range(-radius, radius);
+                if (tmp.InBounds(pawn.Map) && tmp.IsValid && tmp.Walkable(pawn.Map) && tmp.DistanceToEdge(pawn.Map) > 8)
+                {
+                    List<Pawn> threatCount = TM_Calc.FindPawnsNearTarget(pawn, 4, tmp, true);
+                    if (threatCount != null)
+                    {
+                        if (threatCount.Count <= maxThreats)
+                        {
+                            //Log.Message("returning safe cell  (pawns)" + tmp);
+                            return tmp;
+                        }
+                    }
+                    else
+                    {
+                        //Log.Message("returning safe cell  " + tmp);
+                        return tmp;
+                    }
+                }
+            }
+            return default(IntVec3);
         }
 
         public static float GetArcaneResistance(Pawn pawn, bool includePsychicSensitivity)

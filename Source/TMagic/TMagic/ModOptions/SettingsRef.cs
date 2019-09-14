@@ -23,6 +23,7 @@ namespace TorannMagic.ModOptions
         public float magicyteChance = Settings.Instance.magicyteChance;
         public bool showIconsMultiSelect = Settings.Instance.showIconsMultiSelect;
         public float riftChallenge = Settings.Instance.riftChallenge;
+        public float wanderingLichChallenge = Settings.Instance.wanderingLichChallenge;
         public bool showGizmo = Settings.Instance.showGizmo;
         public bool showLevelUpMessage = Settings.Instance.showLevelUpMessage;
         public bool changeUndeadPawnAppearance = Settings.Instance.changeUndeadPawnAppearance;

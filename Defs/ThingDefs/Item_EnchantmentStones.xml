@@ -32,7 +32,6 @@
 	<pathCost>5</pathCost>
 	<stuffProps>
 	  <commonality>0.00</commonality>
-	  <smeltable>false</smeltable>
     </stuffProps>
   </ThingDef>
   
@@ -499,7 +498,7 @@
   
     <!--=============== Raw Magicyte ====================-->
   
-  <ThingDef ParentName="MagicResourceBase">
+  <ThingDef ParentName="MagicResourceBase_Magicyte">
     <defName>RawMagicyte</defName>
 	<thingCategories>
       <li>TM_MagicItems</li>
@@ -518,15 +517,37 @@ Raw Magicyte can be refined to make a variety of enchanting gems at the gemcutti
 <!-- 	<deepCommonality>0.1</deepCommonality> -->
 	<statBases>
 	  <Beauty>4</Beauty>
-	  <MaxHitPoints>500</MaxHitPoints>
       <MarketValue>5</MarketValue>
       <Mass>0.1</Mass>
-      <Flammability>0</Flammability>
-      <DeteriorationRate>0</DeteriorationRate>
     </statBases>
 <!-- 	<stuffProps>
 	  <commonality>0.05</commonality>
 	</stuffProps> -->
   </ThingDef>
+  
+      <!--=============== Bone Dust ====================-->
+  
+<!--     <ThingDef ParentName="MagicResourceBase_Magicyte">
+    <defName>RawMagicyte</defName>
+	<thingCategories>
+      <li>TM_MagicItems</li>
+    </thingCategories>
+    <label>unrefined magicyte</label>
+	<tradeTags>
+	  <li>RawArcane</li>
+    </tradeTags>
+    <description>A stone that seems to wrap itself in a dull, glassy surface, as if a mysterious power has cloaked itself in the center of the stone. Seemingly composed of the same stone it was cut from, this fairly unremarkable stone shimmers slightly, even in the dark, and it emits an energy signature that mages can detect when touching the stone.
+	
+Raw Magicyte can be refined to make a variety of enchanting gems at the gemcutting table.</description>
+    <graphicData>
+      <texPath>Items/Gemstones/magicyte_raw</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+	<statBases>
+	  <Beauty>4</Beauty>
+      <MarketValue>5</MarketValue>
+      <Mass>0.1</Mass>
+    </statBases>
+  </ThingDef> -->
 
 </Defs>

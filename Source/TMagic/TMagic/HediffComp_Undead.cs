@@ -36,7 +36,7 @@ namespace TorannMagic
             bool spawned = base.Pawn.Spawned;
             if (spawned)
             {
-                MoteMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 3f);
+                //MoteMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 3f);
             }            
         }
 
@@ -97,7 +97,7 @@ namespace TorannMagic
                     }
                 }
             }
-            bool flag4 = Find.TickManager.TicksGame % 600 == 0;
+            bool flag4 = Find.TickManager.TicksGame % 600 == 0 && this.Pawn.def != TorannMagicDefOf.TM_SkeletonR && this.Pawn.def != TorannMagicDefOf.TM_GiantSkeletonR;
             if (flag4)
             {                
                 necroValid = false;

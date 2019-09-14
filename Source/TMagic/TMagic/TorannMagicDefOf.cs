@@ -793,6 +793,8 @@ namespace TorannMagic
         public static ThingDef Mote_Regen;
         public static ThingDef Mote_CrossStrike;
         public static ThingDef Mote_BloodSquirt;
+        public static ThingDef Mote_BloodMist;
+        public static ThingDef Mote_BloodFlame;
         public static ThingDef Mote_MultiStrike;
         public static ThingDef Mote_ScreamMote;
         public static ThingDef Fog_Torment;
@@ -809,6 +811,7 @@ namespace TorannMagic
         public static ThingDef Mote_Twinkle;
         public static ThingDef Mote_Flame;
         public static ThingDef Mote_Casting;
+        public static ThingDef Mote_AntiCasting;
         public static ThingDef Mote_1sText;
         public static ThingDef Mote_DeceptionMask;
         public static ThingDef Mote_Possess;
@@ -828,6 +831,11 @@ namespace TorannMagic
         public static ThingDef Mote_TechnoShield;
         public static ThingDef Mote_AlterFate;
         public static ThingDef Mote_EarthCrack;
+        public static ThingDef Mote_Ghost;
+        public static ThingDef Mote_GrappleHook;
+        public static ThingDef Mote_BoneDust;
+
+        public static ThingDef Projectile_FogOfTorment;        
 
         public static EffecterDef GiantExplosion;
         public static EffecterDef TM_GiantExplosion;
@@ -850,6 +858,7 @@ namespace TorannMagic
         public static EffecterDef TM_TimeReverseEffecter;
         public static EffecterDef TM_RecallToED;
         public static EffecterDef TM_RecallFromED;
+        public static EffecterDef TM_MagicCircleED;
 
         //Apparel layers
         public static ApparelLayerDef TM_Cloak;
@@ -868,6 +877,8 @@ namespace TorannMagic
         //Jobs
         public static JobDef TMCastAbilityVerb;
         public static JobDef TMCastAbilitySelf;
+        public static JobDef JobDriver_DoMagicBill;
+        public static JobDef JobDriver_AssistMagicCircle;
         public static JobDef JobDriver_RemoveEnchantingGem;
         public static JobDef JobDriver_AddEnchantingGem;
         public static JobDef JobDriver_EnchantItem;
@@ -885,6 +896,11 @@ namespace TorannMagic
         public static ThingDef TM_Syrrium;
         public static ThingDef TM_Plant_Briar;
         public static ThingDef TM_MageLightTD;
+        public static ThingDef TM_SkeletonR;
+        public static ThingDef TM_GiantSkeletonR;
+        public static ThingDef TM_SkeletonLichR;
+        public static ThingDef TM_Arcalleum;
+        public static ThingDef TM_Manaweave;
 
         //Sounds
         public static SoundDef ItemEnchanted;
@@ -942,11 +958,15 @@ namespace TorannMagic
         public static ThingDef TM_Portal;
         public static ThingDef TM_ArcaneCapacitor;
         public static ThingDef TM_DimensionalManaPocket;
+        public static ThingDef TableMagicCircle;
 
         //ThoughtDefs
         public static ThoughtDef TM_PhantomLimb;
         //public static ThoughtDef AteMysteryMeatDirect;
         //public static ThoughtDef AteMysteryMeatAsIngredient;
+
+        //Factions
+        public static FactionDef TM_SkeletalFaction;
 
         //CustomDefs
         public static TM_CustomDef TM_CustomDef;

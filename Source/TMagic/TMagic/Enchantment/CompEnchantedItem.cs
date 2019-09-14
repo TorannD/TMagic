@@ -56,6 +56,7 @@ namespace TorannMagic.Enchantment
 
                 this.arcaneSpectre = this.Props.arcaneSpectre;
                 this.phantomShift = this.Props.phantomShift;
+                this.arcalleumCooldown = this.Props.arcalleumCooldown;
 
                 this.skillTier = this.Props.skillTier;
 
@@ -156,6 +157,7 @@ namespace TorannMagic.Enchantment
             Scribe_Values.Look<float>(ref this.necroticEnergy, "necroticEnergy", 0f, false);
             Scribe_Values.Look<bool>(ref this.arcaneSpectre, "arcaneSpectre", false, false);
             Scribe_Values.Look<bool>(ref this.phantomShift, "phantomShift", false, false);
+            Scribe_Values.Look<float>(ref this.arcalleumCooldown, "arcalleumCooldown", 0f, false);
             Scribe_Values.Look<EnchantmentTier>(ref this.maxMPTier, "maxMPTier", (EnchantmentTier)0, false);
             Scribe_Values.Look<EnchantmentTier>(ref this.mpRegenRateTier, "mpRegenRateTier", (EnchantmentTier)0, false);
             Scribe_Values.Look<EnchantmentTier>(ref this.coolDownTier, "coolDownTier", (EnchantmentTier)0, false);
@@ -243,6 +245,8 @@ namespace TorannMagic.Enchantment
         public EnchantmentTier skillTier = EnchantmentTier.Skill;
         public bool arcaneSpectre = false;
         public bool phantomShift = false;
+
+        public float arcalleumCooldown = 0f;
 
         //Hediffs
         public HediffDef hediff = null;
@@ -360,6 +364,15 @@ namespace TorannMagic.Enchantment
             get
             {
                 return "TM_PhantomShift".Translate();
+            }
+        }
+
+        public string ArcalleumCooldownLabel
+        {
+            get
+            {
+                return "TM_ArcalleumCooldown".Translate(
+                    this.arcalleumCooldown);
             }
         }
 

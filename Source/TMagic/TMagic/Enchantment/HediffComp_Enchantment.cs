@@ -150,6 +150,17 @@ namespace TorannMagic.Enchantment
             else if (this.parent.def.defName == "TM_HediffEnchantment_phantomShift")
             {
                 this.enchantment = "TM_PhantomShift".Translate();
+            }        
+            else if(this.parent.def.defName == "TM_HediffEnchantment_arcalleumCooldown")
+            {
+                if (flag)
+                {
+                    this.enchantment = (comp.arcalleumCooldown * 100).ToString("0.##") + "%";
+                }
+                else
+                {
+                    this.enchantment = (compMight.arcalleumCooldown * 100).ToString("0.##") + "%";
+                }
             }
             else
             {

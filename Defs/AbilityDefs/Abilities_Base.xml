@@ -41,6 +41,22 @@
 	   </projectile>
 	</ThingDef>
 	
+	<ThingDef ParentName="BaseBullet" Name="FlyingObject_SpinningBone">
+	   <defName>FlyingObject_SpinningBone</defName>
+	   <thingClass>TorannMagic.FlyingObject_Spinning</thingClass>
+	   <label>flying object that spins</label>
+	   <graphicData>
+			<texPath>Other/skeleton_bone</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	   <projectile>
+			<flyOverhead>true</flyOverhead>
+			<damageDef>Stun</damageDef>
+			<damageAmountBase>6</damageAmountBase>
+			<speed>250</speed>
+	   </projectile>
+	</ThingDef>
+	
 	<ThingDef ParentName="BaseBullet" Name="FlyingObject_Advanced">
 	   <defName>FlyingObject_Advanced</defName>
 	   <thingClass>TorannMagic.FlyingObject_Advanced</thingClass>

@@ -85,7 +85,6 @@ namespace TorannMagic
                 if (Find.Storyteller.difficulty.difficulty != 0)
                 {
                     this.STDMultiplier = (float)(Find.Storyteller.difficulty.difficulty / 20f);
-                    Log.Message("std multipler is " + this.STDMultiplier);
                 }
                 if(settings.riftChallenge < 2f)
                 {

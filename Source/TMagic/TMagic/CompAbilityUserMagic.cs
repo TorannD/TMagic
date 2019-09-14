@@ -183,6 +183,7 @@ namespace TorannMagic
         public float xpGain = 1;
         public float arcaneDmg = 1;
         public float arcaneRes = 1;
+        public float arcalleumCooldown = 0f;
 
         public TMAbilityDef mimicAbility = null;
         public List<Thing> summonedMinions = new List<Thing>();
@@ -7871,6 +7872,7 @@ namespace TorannMagic
             float _arcaneDmg = 0;
             bool _arcaneSpectre = false;
             bool _phantomShift = false;
+            float _arcalleumCooldown = 0f;
             List<Apparel> apparel = this.Pawn.apparel.WornApparel;
             if (apparel != null)
             {
@@ -7890,7 +7892,7 @@ namespace TorannMagic
                                 _mpCost += item.mpCost * 1.2f;
                                 _arcaneRes += item.arcaneRes * 1.2f;
                                 _arcaneDmg += item.arcaneDmg * 1.2f;
-                            }
+                            }                            
                             else
                             {
                                 _maxMP += item.maxMP;
@@ -7910,6 +7912,11 @@ namespace TorannMagic
                                 _phantomShift = true;
                             }
                         }
+                        if (apparel[i].Stuff != null && apparel[i].Stuff.defName == "TM_Arcalleum")
+                        {
+                            _arcaneRes += .05f;
+                            _arcalleumCooldown += (apparel[i].def.BaseMass * .01f);
+                        }
 
                     }
                 }
@@ -7928,6 +7935,11 @@ namespace TorannMagic
                         _mpCost += item.mpCost;
                         _arcaneRes += item.arcaneRes;
                         _arcaneDmg += item.arcaneDmg;
+                    }
+                    if (Pawn.equipment.Primary.Stuff != null && Pawn.equipment.Primary.Stuff.defName == "TM_Arcalleum")
+                    {
+                        _arcaneDmg += .1f;
+                        _arcalleumCooldown += (this.Pawn.equipment.Primary.def.BaseMass * .01f);
                     }
                 }
                 if(this.Pawn.equipment.Primary.def.defName == "TM_DefenderStaff")
@@ -8085,6 +8097,7 @@ namespace TorannMagic
             this.mpCost = 1f + _mpCost;
             this.arcaneRes = 1 + _arcaneRes;
             this.arcaneDmg = 1 + _arcaneDmg;
+            this.arcalleumCooldown = Mathf.Clamp(0f + _arcalleumCooldown, 0f, .5f);
             bool isFighter = this.Pawn.GetComp<CompAbilityUserMight>().IsMightUser;
             if (!isFighter)
             {
@@ -8123,6 +8136,10 @@ namespace TorannMagic
                 if (_phantomShift == true)
                 {
                     HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_phantomShift"), .5f);
+                }
+                if(_arcalleumCooldown != 0f)
+                {
+                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_arcalleumCooldown"), .5f);
                 }
 
                 using (IEnumerator<Hediff> enumerator = this.Pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
@@ -8163,6 +8180,10 @@ namespace TorannMagic
                             Pawn.health.RemoveHediff(rec);
                         }
                         if (rec.def.defName == "TM_HediffEnchantment_phantomShift" && _phantomShift == false)
+                        {
+                            Pawn.health.RemoveHediff(rec);
+                        }
+                        if(rec.def.defName == "TM_HediffEnchantment_phantomShift" && _arcalleumCooldown == 0f)
                         {
                             Pawn.health.RemoveHediff(rec);
                         }

@@ -6,6 +6,7 @@
     <thingClass>Apparel</thingClass>
     <category>Item</category>
 	<thingCategories>
+	  <li>Apparel</li>
 	  <li>TM_MagicArtifacts</li>
 	</thingCategories>
     <selectable>True</selectable>

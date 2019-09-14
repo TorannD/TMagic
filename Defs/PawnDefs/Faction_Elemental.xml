@@ -2,6 +2,25 @@
 <Defs>
 
 	<FactionDef>
+		<defName>TM_SkeletalFaction</defName>
+		<label>Skeletal</label>
+		<description>Skeletons and undead raised by arcane power.</description>
+		<pawnSingular>skeleton</pawnSingular>
+		<pawnsPlural>skeletal</pawnsPlural>
+		<requiredCountAtGameStart>1</requiredCountAtGameStart>
+		<fixedName>Skeletal</fixedName>
+		<humanlikeFaction>false</humanlikeFaction>
+		<techLevel>Neolithic</techLevel>
+		<hidden>true</hidden>
+		<rescueesCanJoin>false</rescueesCanJoin>
+		<autoFlee>false</autoFlee>
+		<startingGoodwill>
+		  <min>-100</min>
+		  <max>-100</max>
+		</startingGoodwill>
+	</FactionDef>
+
+	<FactionDef>
 		<defName>TM_ElementalFaction</defName>
 		<label>Elemental</label>
 		<description>Elemental spirits summoned from their planes of power.</description>

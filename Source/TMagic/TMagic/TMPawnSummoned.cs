@@ -89,7 +89,7 @@ namespace TorannMagic
 
         public virtual void PostSummonSetup()
         {
-            if(!this.validSummoning)
+            if (!this.validSummoning)
             {
                 this.Destroy(DestroyMode.Vanish);
             }
@@ -203,7 +203,7 @@ namespace TorannMagic
             }
             if(this.original != null)
             {
-                Log.Message("pre destroy");
+                //Log.Message("pre destroy");
                 CopyDamage(this);
                 SpawnOriginal();
                 ApplyDamage(original);

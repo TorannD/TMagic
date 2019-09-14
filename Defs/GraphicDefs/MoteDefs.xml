@@ -2,6 +2,32 @@
 <Defs>
 
   <ThingDef ParentName="MoteBase">
+    <defName>Mote_BoneDust</defName>
+    <graphicData>
+      <texPath>Motes/BoneDustMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_GrappleHook</defName>
+    <graphicData>
+      <texPath>Spells/grapplinghook</texPath>
+    </graphicData>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
     <defName>Mote_EarthCrack</defName>
     <graphicData>
       <texPath>Motes/EarthCrackMote</texPath>
@@ -696,6 +722,19 @@
     <defName>Mote_Casting</defName>
     <graphicData>
       <texPath>Motes/CastingMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.0</fadeInTime>
+      <solidTime>0.15</solidTime>
+      <fadeOutTime>.45</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_AntiCasting</defName>
+    <graphicData>
+      <texPath>Motes/CastingMote_Anti</texPath>
     </graphicData>
     <altitudeLayer>MoteOverhead</altitudeLayer>
     <mote>

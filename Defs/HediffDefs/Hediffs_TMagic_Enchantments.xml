@@ -234,5 +234,28 @@
       </li>
 	</stages>
    </HediffDef>
+   
+   	<HediffDef>
+    <defName>TM_HediffEnchantment_arcalleumCooldown</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Arcalleum Cooldown</label>
+    <defaultLabelColor>(.8,0,0.8)</defaultLabelColor>
+	<scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <maxSeverity>1</maxSeverity>	
+	<isBad>false</isBad>
+	<comps>
+      <li>
+        <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
+      </li> 
+    </comps>
+	<stages>
+      <li>
+        <label></label>
+        <minSeverity>0.001</minSeverity>
+      </li>
+	</stages>
+   </HediffDef>
   
 </Defs>

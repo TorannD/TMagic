@@ -6,6 +6,7 @@ using Verse;
 using Verse.AI;
 using RimWorld;
 using UnityEngine;
+using Harmony;
 
 namespace TorannMagic
 {
@@ -110,6 +111,8 @@ namespace TorannMagic
 
         public override PathEndMode PathEndMode => PathEndMode.InteractionCell;
 
+        private Building_TMMagicCircle magicCircle = null;
+
         public override ThingRequest PotentialWorkThingRequest
         {
             get
@@ -140,7 +143,8 @@ namespace TorannMagic
                 LocalTargetInfo target = thing;
                 bool ignoreOtherReservations = forced;
                 if (pawn.CanReserve(target, 1, -1, null, ignoreOtherReservations) && !thing.IsBurning() && !thing.IsForbidden(pawn))
-                {
+                {                   
+
                     CompRefuelable compRefuelable = thing.TryGetComp<CompRefuelable>();
                     if (compRefuelable != null && !compRefuelable.HasFuel)
                     {
@@ -151,12 +155,24 @@ namespace TorannMagic
                         return RefuelWorkGiverUtility.RefuelJob(pawn, thing, forced);
                     }
                     CompAbilityUserMagic compMagic = pawn.TryGetComp<CompAbilityUserMagic>();
-                    if(compMagic != null && compMagic.Mana != null && compMagic.Mana.CurLevel <=.5f)
+                    if (compMagic != null && compMagic.Mana != null)
                     {
-                        return null;
+                        if (thing is Building_TMMagicCircle)
+                        {
+                            Building_TMMagicCircle mc = thing as Building_TMMagicCircle;
+                            if(mc.InteractionCellOccupied())
+                            {
+                                return null;
+                            }
+                        }
+                        else if (compMagic.Mana.CurLevel < .5f)
+                        {
+                            return null;
+                        }
                     }
+
                     billGiver.BillStack.RemoveIncompletableBills();
-                    return StartOrResumeBillJob(pawn, billGiver);
+                    return StartOrResumeBillJob(pawn, billGiver, thing);
                 }
             }
             return null;
@@ -200,7 +216,7 @@ namespace TorannMagic
             return job2;
         }
 
-        private Job StartOrResumeBillJob(Pawn pawn, IBillGiver giver)
+        private Job StartOrResumeBillJob(Pawn pawn, IBillGiver giver, Thing thing)
         {
             for (int i = 0; i < giver.BillStack.Count; i++)
             {
@@ -210,6 +226,7 @@ namespace TorannMagic
                     bill.lastIngredientSearchFailTicks = 0;
                     if (bill.ShouldDoNow() && bill.PawnAllowedToStartAnew(pawn))
                     {
+
                         SkillRequirement skillRequirement = bill.recipe.FirstSkillRequirementPawnDoesntSatisfy(pawn);
                         if (skillRequirement != null)
                         {
@@ -236,6 +253,20 @@ namespace TorannMagic
                             }
                             if (TryFindBestBillIngredients(bill, pawn, (Thing)giver, chosenIngThings))
                             {
+                                this.magicCircle = thing as Building_TMMagicCircle;
+                                if (bill.recipe is MagicRecipeDef)
+                                {
+                                    MagicRecipeDef magicRecipe = bill.recipe as MagicRecipeDef;
+                                    CompAbilityUserMagic compMagic = pawn.TryGetComp<CompAbilityUserMagic>();
+                                    if (magicCircle.CanDoJob(compMagic, magicRecipe, thing))
+                                    {
+                                        for (int j = 1; j < magicCircle.MageList.Count; j++)
+                                        {
+                                            magicCircle.IssueAssistJob(magicCircle.MageList[j]);
+                                        }
+                                    }
+                                }
+
                                 Job result = TryStartNewDoBillJob(pawn, bill, giver);
                                 chosenIngThings.Clear();
                                 return result;
@@ -265,6 +296,10 @@ namespace TorannMagic
                 return job;
             }
             Job job2 = new Job(JobDefOf.DoBill, (Thing)giver);
+            if (bill.recipe is MagicRecipeDef)
+            {
+                job2 = new Job(TorannMagicDefOf.JobDriver_DoMagicBill, (Thing)giver);
+            }
             job2.targetQueueB = new List<LocalTargetInfo>(chosenIngThings.Count);
             job2.countQueue = new List<int>(chosenIngThings.Count);
             for (int i = 0; i < chosenIngThings.Count; i++)

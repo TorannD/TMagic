@@ -1453,6 +1453,7 @@ Lethal Blow targets a vital bodypart and strikes it with a precise attack that d
 <TM_ArcaneDmgLabel>Ability Bonus: {0}&#37;</TM_ArcaneDmgLabel>
 <TM_ArcaneSpectre>Arcane Spectre</TM_ArcaneSpectre>
 <TM_PhantomShift>Phantom Shift</TM_PhantomShift>
+<TM_ArcalleumCooldown>Arcalleum Cooldown: {0}&#37;</TM_ArcalleumCooldown>
 
 <!-- ============ Floating Text =============-->
 <TM_Enchanted>Enchanted!</TM_Enchanted>

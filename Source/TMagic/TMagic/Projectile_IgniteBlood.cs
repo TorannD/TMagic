@@ -218,7 +218,7 @@ namespace TorannMagic
                 Vector3 rndPos = this.DrawPos;
                 rndPos.x += Rand.Range(-.4f, .4f);
                 rndPos.z += Rand.Range(-.4f, .4f);
-                TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_BloodSquirt"), rndPos, this.Map, Rand.Range(.9f, 1.2f), .05f, 0f, .25f, Rand.Range(-300, 300), Rand.Range(8f, 12f), (Quaternion.AngleAxis(Rand.Range(60,120), Vector3.up) * this.direction).ToAngleFlat(), Rand.Range(0, 360));
+                TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_BloodSquirt, rndPos, this.Map, Rand.Range(.9f, 1.2f), .05f, 0f, .25f, Rand.Range(-300, 300), Rand.Range(8f, 12f), (Quaternion.AngleAxis(Rand.Range(60,120), Vector3.up) * this.direction).ToAngleFlat(), Rand.Range(0, 360));
             }
             else
             {

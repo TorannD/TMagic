@@ -72,15 +72,16 @@
 	
   <WorkGiverDef>
     <defName>DoBillsArcaneForge</defName>
-    <label>craft at arcane forge</label>
+    <label>work magic</label>
     <giverClass>TorannMagic.WorkGiver_DoMagicBill</giverClass>
     <workType>TM_Magic</workType>
     <priorityInType>119</priorityInType>
     <fixedBillGiverDefs>
       <li>TableArcaneForge</li>
+	  <li>TableMagicCircle</li>
     </fixedBillGiverDefs>
-    <verb>forge</verb>
-    <gerund>forging</gerund>
+    <verb>work magic</verb>
+    <gerund>working magic</gerund>
     <requiredCapacities>
       <li>MagicManipulation</li>
     </requiredCapacities>

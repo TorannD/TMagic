@@ -119,18 +119,9 @@ namespace TorannMagic
                     typeof(DamageInfo?),
                     typeof(PawnDiedOrDownedThoughtsKind)
                 }, null), new HarmonyMethod(typeof(HarmonyPatches), "TryGiveThoughts_PrefixPatch", null), null, null);
-            //harmonyInstance.Patch(AccessTools.Method(typeof(DaysWorthOfFoodCalculator), "ApproxDaysWorthOfFood", new Type[]
+            //harmonyInstance.Patch(AccessTools.Method(typeof(Toils_Recipe), "DoRecipeWork", new Type[]
             //    {
-            //        typeof(List<Pawn>),
-            //        typeof(List<ThingDefCount>),
-            //        typeof(int),
-            //        typeof(IgnorePawnsInventoryMode),
-            //        typeof(Faction),
-            //        typeof(WorldPath),
-            //        typeof(float),
-            //        typeof(int),
-            //        typeof(bool)
-            //    }, null), new HarmonyMethod(typeof(HarmonyPatches), "DaysWorthOfFoodCalc_Undead_Prefix", null), null);
+            //    }, null), new HarmonyMethod(typeof(HarmonyPatches), "DoMagicRecipeWork", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(DaysWorthOfFoodCalculator), "ApproxDaysWorthOfFood", new Type[]
                 {
                     typeof(List<Pawn>),
@@ -184,7 +175,6 @@ namespace TorannMagic
                     {
                         if (ModCheck.Validate.ChildrenSchoolLearning.IsInitialized())
                         {
-                            Log.Message("executing CSL birth - normal");
                             harmonyInstance.Patch(AccessTools.Method(typeof(PawnUtility), "TrySpawnHatchedOrBornPawn"), null, new HarmonyMethod(typeof(HarmonyPatches), "TM_Children_TrySpawnHatchedOrBornPawn_Tweak"));
                         }
                     }))();
@@ -207,6 +197,29 @@ namespace TorannMagic
             }
         }
 
+        //[HarmonyPatch(typeof(Toils_Recipe), "DoRecipeWork", null)]
+        //public class MagicRecipe_DoWork
+        //{
+        //    public static bool Prefix()
+        //    {
+        //        Toil toil = new Toil();
+        //        toil.initAction = delegate
+        //        {
+        //            Pawn actor3 = toil.actor;
+        //            Job curJob3 = actor3.jobs.curJob;
+        //            Log.Message("" + actor3.LabelShort + " is performing a new job of " + curJob3.def.defName);
+        //        };
+        //        Log.Message("prefix patching recipe work");
+        //        return true;
+        //    }
+        //}
+
+        //public static bool DoMagicRecipeWork()
+        //{
+
+        //    Log.Message("prefix patching recipe work");
+        //    return true;
+        //}
 
         //[HarmonyPatch(typeof(FoodUtility), "AddIngestThoughtsFromIngredient", null)]
         //public class FoodUtility_MinionMeat_ThoughtFromEatingIngredient_Patch
@@ -338,7 +351,7 @@ namespace TorannMagic
                                         }
                                         else
                                         {
-                                            if (__instance.CanFireNow(parms, false) && Rand.Chance(.25f + (.05f * ver.level))) //up to 40% chance to predict, per chronomancer
+                                            if (__instance.CanFireNow(parms, false) && Rand.Chance(.25f + (.05f * ver.level)) && !ModOptions.Constants.GetBypassPrediction()) //up to 40% chance to predict, per chronomancer
                                             {
                                                 int ticksTillIncident = Mathf.RoundToInt((Rand.Range(2500, 20000) * (1 + (.15f * ver.level))));  // from 1 to 8 hours, plus bonus
                                                                                                                                                  //Log.Message("pushing " + __instance.def.defName + " to iq for " + ticksTillIncident  + " ticks");

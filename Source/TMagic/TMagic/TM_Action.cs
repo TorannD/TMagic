@@ -18,7 +18,7 @@ namespace TorannMagic
         {
             public static void GotoAndWait(Pawn pawn, LocalTargetInfo target, int durationTicks)
             {
-                if(pawn != null && target != null)
+                if (pawn != null && target != null)
                 {
                     if (pawn.drafter != null && !pawn.Drafted && pawn.GetPosture() == PawnPosture.Standing && pawn.jobs != null && pawn.CurJob != null && !pawn.CurJob.playerForced)
                     {
@@ -37,7 +37,7 @@ namespace TorannMagic
                         Job job = new Job(JobDefOf.Goto, target);
                         pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
                     }
-                }                
+                }
             }
 
             public static void PawnWait(Pawn pawn, int duration)
@@ -125,7 +125,7 @@ namespace TorannMagic
                     }
                 }
             }
-            if(instigator is Building)
+            if (instigator is Building)
             {
                 Building turret = instigator as Building;
                 ThingDef projectile = null;
@@ -135,7 +135,7 @@ namespace TorannMagic
                     ThingDef turretGun = turret.def.building.turretGunDef;
                     for (int i = 0; i < turretGun.Verbs.Count; i++)
                     {
-                        if(turretGun.Verbs[i].defaultProjectile != null)
+                        if (turretGun.Verbs[i].defaultProjectile != null)
                         {
                             projectile = turretGun.Verbs[i].defaultProjectile;
                         }
@@ -145,7 +145,7 @@ namespace TorannMagic
                 if (projectile != null)
                 {
                     Thing target = null;
-                    if((turret.Position - reflectingPawn.Position).LengthHorizontal <= maxRange)
+                    if ((turret.Position - reflectingPawn.Position).LengthHorizontal <= maxRange)
                     {
                         target = turret;
                     }
@@ -210,7 +210,7 @@ namespace TorannMagic
                 newThingDef.SetStatBaseValue(StatDefOf.AccuracyShort, thing.GetStatValue(StatDefOf.AccuracyShort) * (1 + .01f * pwrVal));
                 newThingDef.SetStatBaseValue(StatDefOf.AccuracyMedium, thing.GetStatValue(StatDefOf.AccuracyMedium) * (1 + .01f * pwrVal));
                 newThingDef.SetStatBaseValue(StatDefOf.AccuracyLong, thing.GetStatValue(StatDefOf.AccuracyLong) * (1 + .01f * pwrVal));
-                
+
                 newThingDef.Verbs.FirstOrDefault().defaultProjectile = thing.def.Verbs.FirstOrDefault().defaultProjectile;
                 newThingDef.Verbs.FirstOrDefault().range = thing.def.Verbs.FirstOrDefault().range * (1f + .02f * pwrVal);
                 newThingDef.Verbs.FirstOrDefault().warmupTime = thing.def.Verbs.FirstOrDefault().warmupTime * (1f - .02f * pwrVal);
@@ -286,10 +286,10 @@ namespace TorannMagic
                     }
                 }
             }
-            if(multiplePawns)
+            if (multiplePawns)
             {
                 Vector3 angle = TM_Calc.GetVector(caster.DrawPos, target.DrawPos);
-                TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_DragonStrike, target.DrawPos, caster.Map, 1.1f, .1f, .01f, .1f, 650, 0, 0, (Quaternion.AngleAxis(-25, Vector3.up) * angle).ToAngleFlat());                
+                TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_DragonStrike, target.DrawPos, caster.Map, 1.1f, .1f, .01f, .1f, 650, 0, 0, (Quaternion.AngleAxis(-25, Vector3.up) * angle).ToAngleFlat());
                 if (comp != null)
                 {
                     comp.Stamina.CurLevel -= actualStaminaCost;
@@ -339,7 +339,7 @@ namespace TorannMagic
                                 bool flag5 = !current.IsPermanent();
                                 if (flag5)
                                 {
-                                    current.Heal(amountToHeal);                                     
+                                    current.Heal(amountToHeal);
                                     num--;
                                     num2--;
                                 }
@@ -350,13 +350,13 @@ namespace TorannMagic
             }
         }
 
-        public static Thing SingleSpawnLoop(Pawn caster, SpawnThings spawnables, IntVec3 position, Map map, int duration, bool temporary)
+        public static Thing SingleSpawnLoop(Pawn caster, SpawnThings spawnables, IntVec3 position, Map map, int duration, bool temporary, bool hostile = false, Faction spawnableFaction = null)
         {
             bool flag = spawnables.def != null;
             Thing thing = null;
             if (flag)
             {
-                Faction faction = TM_Action.ResolveFaction(caster, spawnables);
+                Faction faction = TM_Action.ResolveFaction(caster, spawnables, spawnableFaction, hostile);
                 bool flag2 = spawnables.def.race != null;
                 if (flag2)
                 {
@@ -367,7 +367,7 @@ namespace TorannMagic
                     }
                     else
                     {
-                        TM_Action.SpawnPawn(caster, spawnables, faction, position);
+                        thing = TM_Action.SpawnPawn(caster, spawnables, faction, position, duration);
                     }
                 }
                 else
@@ -396,52 +396,65 @@ namespace TorannMagic
             return thing;
         }
 
-        public static Faction ResolveFaction(Pawn caster, SpawnThings spawnables)
+        public static Faction ResolveFaction(Pawn caster, SpawnThings spawnables, Faction spawnAbleFaction, bool hostile = false)
         {
             FactionDef val = FactionDefOf.PlayerColony;
             Faction obj = null;
 
-            obj = ((caster != null) ? caster.Faction : null);            
+            if(spawnAbleFaction != null)
+            {
+                return spawnAbleFaction;
+            }
+            obj = ((caster != null) ? caster.Faction : null);
             Faction val2 = obj;
-            if (obj != null && !val2.IsPlayer)
+            if (!hostile)
             {
-                return val2;
+                if (obj != null && !val2.IsPlayer)
+                {
+                    return val2;
+                }
+                if (spawnables.factionDef != null)
+                {
+                    val = spawnables.factionDef;
+                }
+                if (spawnables.kindDef != null && spawnables.kindDef.defaultFactionType != null)
+                {
+                    val = spawnables.kindDef.defaultFactionType;
+                }
             }
-            if (spawnables.factionDef != null)
+            else
             {
-                val = spawnables.factionDef;
-            }
-            if (spawnables.kindDef != null && spawnables.kindDef.defaultFactionType != null)
-            {
-                val = spawnables.kindDef.defaultFactionType;
+                return Find.FactionManager.RandomEnemyFaction(true, true, true);
             }
             return FactionUtility.DefaultFactionFrom(val);
         }
 
-        public static PawnSummoned SpawnPawn(Pawn caster, SpawnThings spawnables, Faction faction, IntVec3 position)
+        public static TMPawnSummoned SpawnPawn(Pawn caster, SpawnThings spawnables, Faction faction, IntVec3 position, int duration)
         {
-            PawnSummoned newPawn = (PawnSummoned)PawnGenerator.GeneratePawn(spawnables.kindDef, faction);
+            TMPawnSummoned newPawn = (TMPawnSummoned)PawnGenerator.GeneratePawn(spawnables.kindDef, faction);
+            newPawn.validSummoning = true;
             newPawn.Spawner = caster;
             newPawn.Temporary = spawnables.temporary;
-            Faction val = default(Faction);
-            int num;
-            if (newPawn.Faction != Faction.OfPlayerSilentFail)
-            {
-                Faction obj = null;
+            newPawn.TicksToDestroy = duration;
+            //Faction val = default(Faction);
+            //int num;
+            //if (newPawn.Faction != Faction.OfPlayerSilentFail)
+            //{
+            //    Faction obj = null;
 
-                obj = ((caster != null) ? caster.Faction : null);
-                
-                val = obj;
-                num = ((obj != null) ? 1 : 0);
-            }
-            else
-            {
-                num = 0;
-            }
-            if (num != 0)
-            {
-                newPawn.SetFaction(val, null);
-            }
+            //    obj = ((caster != null) ? caster.Faction : null);
+
+            //    val = obj;
+            //    num = ((obj != null) ? 1 : 0);
+            //}
+            //else
+            //{
+            //    num = 0;
+            //}
+            //if (num != 0)
+            //{
+            //    newPawn.SetFaction(val, null);
+            //}
             GenSpawn.Spawn(newPawn, position, Find.CurrentMap, 0);
 
             if (newPawn.Faction != null && newPawn.Faction != Faction.OfPlayer)
@@ -475,13 +488,13 @@ namespace TorannMagic
             return newPawn;
         }
 
-        public static Pawn PolymorphPawn(Pawn caster, Pawn original, Pawn polymorphFactionPawn, SpawnThings spawnables, IntVec3 position, bool temporary, int duration)
+        public static Pawn PolymorphPawn(Pawn caster, Pawn original, Pawn polymorphFactionPawn, SpawnThings spawnables, IntVec3 position, bool temporary, int duration, Faction fac = null)
         {
             Pawn polymorphPawn = null;
             bool flag = spawnables.def != null;
             if (flag)
             {
-                Faction faction = TM_Action.ResolveFaction(polymorphFactionPawn, spawnables);
+                Faction faction = TM_Action.ResolveFaction(polymorphFactionPawn, spawnables, fac);
                 bool flag2 = spawnables.def.race != null;
                 if (flag2)
                 {
@@ -505,13 +518,13 @@ namespace TorannMagic
                         }
 
                         Pawn newPawn = new Pawn();
-                        
+
                         newPawn = (Pawn)PawnGenerator.GeneratePawn(spawnables.kindDef, faction);
                         newPawn.AllComps.Add(new CompPolymorph());
                         CompPolymorph compPoly = newPawn.GetComp<CompPolymorph>();
                         //CompProperties_Polymorph props = new CompProperties_Polymorph();
                         //compPoly.Initialize(props);
-                        
+
                         if (compPoly != null)
                         {
                             compPoly.ParentPawn = newPawn;
@@ -524,7 +537,7 @@ namespace TorannMagic
                         {
                             Log.Message("CompPolymorph was null.");
                         }
-                        
+
                         try
                         {
                             GenSpawn.Spawn(newPawn, position, original.Map);
@@ -535,7 +548,7 @@ namespace TorannMagic
                             polymorphPawn.story = new Pawn_StoryTracker(polymorphPawn);
                             if (original.workSettings != null)
                             {
-                                polymorphPawn.workSettings = new Pawn_WorkSettings(polymorphPawn);                            
+                                polymorphPawn.workSettings = new Pawn_WorkSettings(polymorphPawn);
                                 DefMap<WorkTypeDef, int> priorities = Traverse.Create(root: original.workSettings).Field(name: "priorities").GetValue<DefMap<WorkTypeDef, int>>();
                                 priorities = new DefMap<WorkTypeDef, int>();
                                 priorities.SetAll(0);
@@ -558,7 +571,7 @@ namespace TorannMagic
                                 TM_Action.TransferSoulBond(original, polymorphPawn);
                             }
                         }
-                        catch(NullReferenceException ex)
+                        catch (NullReferenceException ex)
                         {
                             Log.Message("TM_Exception".Translate(
                                 caster.LabelShort,
@@ -593,7 +606,7 @@ namespace TorannMagic
                                     lord = LordMaker.MakeNewLord(faction, lordJob, original.Map, null);
                                 }
                             }
-                            
+
                         }
                     }
                 }
@@ -633,8 +646,8 @@ namespace TorannMagic
         public static SpawnThings AssignRandomCreatureDef(SpawnThings spawnthing, int combatPowerMin, int combatPowerMax)
         {
             IEnumerable<PawnKindDef> enumerable = from def in DefDatabase<PawnKindDef>.AllDefs
-                                               where (def.combatPower >= combatPowerMin && def.combatPower <= combatPowerMax && def.race != null && def.race.race != null && def.race.race.thinkTreeMain.ToString() == "Animal")
-                                               select def;
+                                                  where (def.combatPower >= combatPowerMin && def.combatPower <= combatPowerMax && def.race != null && def.race.race != null && def.race.race.thinkTreeMain.ToString() == "Animal")
+                                                  select def;
 
             foreach (PawnKindDef current in enumerable)
             {
@@ -664,12 +677,12 @@ namespace TorannMagic
 
         public static void DamageUndead(Pawn undead, float amt, Thing instigator)
         {
-            DamageInfo dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Holy, Rand.Range(amt*1f, amt*1.4f), 1, -1, instigator);
-            for (int i =0; i <4; i++)
+            DamageInfo dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Holy, Rand.Range(amt * 1f, amt * 1.4f), 1, -1, instigator);
+            for (int i = 0; i < 4; i++)
             {
                 if (undead != null && !undead.Destroyed && !undead.Dead)
                 {
-                    TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Holy"), undead.DrawPos, undead.Map, Rand.Range(.5f, .8f), .1f, (.1f * i), .5f - (.1f * i), Rand.Range(-400, 400), Rand.Range(.5f, 1f), Rand.Range(0, 360), Rand.Range(0, 360)); 
+                    TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Holy"), undead.DrawPos, undead.Map, Rand.Range(.5f, .8f), .1f, (.1f * i), .5f - (.1f * i), Rand.Range(-400, 400), Rand.Range(.5f, 1f), Rand.Range(0, 360), Rand.Range(0, 360));
                 }
             }
             SoundInfo info = SoundInfo.InMap(new TargetInfo(undead.Position, undead.Map, false), MaintenanceType.None);
@@ -722,12 +735,12 @@ namespace TorannMagic
             RecallToEffect.Trigger(new TargetInfo(pawn), new TargetInfo(pawn));
             RecallToEffect.Cleanup();
             HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_HediffInvulnerable, .02f);
-            if(pawn.Dead)
+            if (pawn.Dead)
             {
                 ResurrectionUtility.Resurrect(pawn);
                 deathTrigger = true;
             }
-            if(deathTrigger && Rand.Chance(.5f))
+            if (deathTrigger && Rand.Chance(.5f))
             {
                 pawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Wander_Psychotic);
             }
@@ -819,5 +832,36 @@ namespace TorannMagic
                 }
             }
         }
+
+        public static void ConsumeManaXP(Pawn p, float mp, float xpMultiplier = 1f, bool applyArcaneWeakness = true)
+        {
+            if (p != null)
+            {
+                CompAbilityUserMagic comp = p.GetComp<CompAbilityUserMagic>();
+                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                if (comp != null && comp.Mana != null)
+                {
+                    int xpNum = (int)((mp * 300) * comp.xpGain * settingsRef.xpMultiplier * xpMultiplier);
+                    comp.MagicUserXP += xpNum;
+                    MoteMaker.ThrowText(p.DrawPos, p.MapHeld, "XP +" + xpNum, -1f);
+                    mp *= comp.mpCost;
+                    if (applyArcaneWeakness)
+                    {
+                        comp.Mana.UseMagicPower(mp);
+                    }
+                    else
+                    {
+                        comp.Mana.CurLevel = Mathf.Clamp(comp.Mana.CurLevel - mp, 0, comp.Mana.MaxLevel);
+                    }
+                }
+            }
+        }
+
+        public static void PawnActionDelay(Pawn pawn, int duration, LocalTargetInfo target, Verb verb)
+        {
+            //pawn.stances.SetStance(new Stance_Busy(duration, target, verb));
+            pawn.stances.SetStance(new Stance_Cooldown(duration, target, verb));            
+        }
+        
     }
 }

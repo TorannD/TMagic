@@ -61,5 +61,18 @@ namespace TorannMagic.ModOptions
         {
             return technoWeaponCount;
         }
+
+        private static bool bypassPrediction = false;
+
+        public static bool GetBypassPrediction()
+        {
+            return bypassPrediction;
+        }
+
+        public static bool SetBypassPrediction(bool value)
+        {
+            bypassPrediction = value;
+            return bypassPrediction;
+        }
     }
 }

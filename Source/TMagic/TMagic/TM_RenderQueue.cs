@@ -21,6 +21,11 @@ namespace TorannMagic
         public static readonly Material scornWingsW = MaterialPool.MatFrom("Other/scornwings_west");
         //public static readonly Material scornWingsW = MaterialPool.MatFrom("Other/angelwings_west", ShaderDatabase.Transparent, HediffComp_Shield.shieldColor);
 
+        public static readonly Material mc_north = MaterialPool.MatFrom("Items/magic_circle_north", ShaderDatabase.MoteGlow, Color.white);
+        public static readonly Material mc_south = MaterialPool.MatFrom("Items/magic_circle_south", ShaderDatabase.MoteGlow, Color.white);
+        public static readonly Material mc_east = MaterialPool.MatFrom("Items/magic_circle_east", ShaderDatabase.MoteGlow, Color.white);
+        public static readonly Material mc_west = MaterialPool.MatFrom("Items/magic_circle_west",ShaderDatabase.MoteGlow, Color.white);
+
         //Magic
         public static readonly Material enchantMark = MaterialPool.MatFrom("Items/Gemstones/arcane_minor");
 

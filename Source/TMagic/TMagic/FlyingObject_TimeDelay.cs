@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 using AbilityUser;
+using Verse.Sound;
 
 namespace TorannMagic
 {
@@ -14,21 +15,34 @@ namespace TorannMagic
         protected Vector3 origin;
         protected Vector3 destination;
         private Vector3 direction;
+        private Vector3 variationDestination;
+        private Vector3 drawPosition;
 
-        public float speed = 25f;
+        public float speed = 10f;
         public int spinRate = 0;        //spin rate > 0 makes the object rotate every spinRate Ticks
+        public float xVariation = 0;    //x variation makes the object move side to side by +- variation
+        public float zVariation = 0;    //z variation makes the object move up and down by +- variation
         private int rotation = 0;
         protected int ticksToImpact;
         protected Thing launcher;
         protected Thing assignedTarget;
         protected Thing flyingThing;
         private bool drafted = false;
+        public float destroyPctAtEnd = 0f;
+
+        public int moteFrequency = 0;
+        public ThingDef moteDef = null;
+        public float fadeInTime = .25f;
+        public float fadeOutTime = .25f;
+        public float solidTime = .5f;
+        public float moteScale = 1f;
 
         public float force = 1f;
         public int duration = 600;
 
         private bool earlyImpact = false;
         private float impactForce = 0;
+        private int variationShiftTick = 100;
 
         public DamageInfo? impactDamage;
 
@@ -40,7 +54,6 @@ namespace TorannMagic
 
         Pawn pawn;
         CompAbilityUserMagic comp;
-
         TMPawnSummoned newPawn = new TMPawnSummoned();
 
         protected int StartingTicksToImpact
@@ -103,6 +116,15 @@ namespace TorannMagic
             Scribe_References.Look<Thing>(ref this.launcher, "launcher", false);
             Scribe_Deep.Look<Thing>(ref this.flyingThing, "flyingThing", new object[0]);
             Scribe_Values.Look<bool>(ref this.drafted, "drafted", false, false);
+            Scribe_Values.Look<float>(ref this.xVariation, "xVariation", 0, false);
+            Scribe_Values.Look<float>(ref this.zVariation, "zVariation", 0, false);
+            Scribe_Values.Look<float>(ref this.solidTime, "solidTime", .5f, false);
+            Scribe_Values.Look<float>(ref this.fadeInTime, "fadeInTime", .25f, false);
+            Scribe_Values.Look<float>(ref this.fadeOutTime, "fadeOutTime", .25f, false);
+            Scribe_Defs.Look<ThingDef>(ref this.moteDef, "moteDef");
+            Scribe_Values.Look<float>(ref this.moteScale, "moteScale", 1f, false);
+            Scribe_Values.Look<int>(ref this.moteFrequency, "moteFrequency", 0, false);
+            Scribe_Values.Look<float>(ref this.destroyPctAtEnd, "destroyPctAtEnd", 0f, false);
         }
 
         private void Initialize()
@@ -132,9 +154,19 @@ namespace TorannMagic
             this.Launch(launcher, base.Position.ToVector3Shifted(), targ, flyingThing, null);
         }
 
-        public void Launch(Thing launcher, Vector3 origin, LocalTargetInfo targ, Thing flyingThing, DamageInfo? newDamageInfo = null)
+        public void LaunchVaryPosition(Thing launcher, LocalTargetInfo targ, Thing flyingThing, int _spinRate, float _xVariation, float _zVariation, ThingDef mote = null, int moteFreq = 0, float destroy = 0f)
         {
-            
+            this.destroyPctAtEnd = destroy;
+            this.moteDef = mote;
+            this.moteFrequency = moteFreq; 
+            this.xVariation = _xVariation;
+            this.zVariation = _zVariation;
+            this.spinRate = _spinRate;
+            this.Launch(launcher, flyingThing.DrawPos, flyingThing.Position, flyingThing, null);
+        }
+
+        public void Launch(Thing launcher, Vector3 origin, LocalTargetInfo targ, Thing flyingThing, DamageInfo? newDamageInfo = null)
+        {            
             bool spawned = flyingThing.Spawned;            
             pawn = launcher as Pawn;
             if (pawn != null && pawn.Drafted)
@@ -158,47 +190,25 @@ namespace TorannMagic
             }
             this.destination = targ.Cell.ToVector3Shifted();
             this.ticksToImpact = this.StartingTicksToImpact;
+            this.variationDestination = this.DrawPos;
+            this.drawPosition = this.DrawPos;
             this.Initialize();
         }        
 
         public override void Tick()
         {
-            //base.Tick();
-            //Vector3 exactPosition = this.ExactPosition;
-            //this.ticksToImpact--;
             this.duration--;
-            //bool flag = !this.ExactPosition.InBounds(base.Map);
-            //if (flag)
-            //{
-            //    this.ticksToImpact++;
-            //    base.Position = this.ExactPosition.ToIntVec3();
-            //    this.Destroy(DestroyMode.Vanish);
-            //}
-            //else if(!this.ExactPosition.ToIntVec3().Walkable(base.Map))
-            //{
-            //    this.earlyImpact = true;
-            //    this.impactForce = (this.DestinationCell - this.ExactPosition.ToIntVec3()).LengthHorizontal + (this.speed * .2f);
-            //    this.ImpactSomething();
-            //}
-            //else
-            //{
-            base.Position = this.origin.ToIntVec3(); // this.ExactPosition.ToIntVec3();
-                //if(Find.TickManager.TicksGame % 3 == 0)
-                //{
-                //    MoteMaker.ThrowDustPuff(base.Position, base.Map, Rand.Range(0.6f, .8f));
-                //}               
-                
-                bool flag2 = this.duration <= 0;
-                if (flag2)
-                {
-                    //bool flag3 = this.DestinationCell.InBounds(base.Map);
-                    //if (flag3)
-                    //{
-                    //base.Position = this.origin.ToIntVec3();
-                    //}
-                    this.ImpactSomething();
-                }                
-            //}
+            base.Position = this.origin.ToIntVec3();
+            bool flag2 = this.duration <= 0;
+            if(this.moteDef != null && Find.TickManager.TicksGame % this.moteFrequency == 0)
+            {
+                TM_MoteMaker.ThrowGenericMote(this.moteDef, this.ExactPosition, this.Map, Rand.Range(this.moteScale * .75f, this.moteScale * 1.25f), this.solidTime, this.fadeInTime, this.fadeOutTime, Rand.Range(200, 400), 0, 0, Rand.Range(0, 360));
+            }
+            if (flag2)
+            {
+                this.ImpactSomething();
+            }
+
         }
 
         public override void Draw()
@@ -235,7 +245,7 @@ namespace TorannMagic
                 }
 
                 bool flag2 = this.flyingThing is Pawn;
-                if (flag2)
+                if (flag2 && zVariation == 0 && xVariation == 0)
                 {
                     Vector3 arg_2B_0 = this.DrawPos;
                     bool flag4 = !this.DrawPos.ToIntVec3().IsValid;
@@ -254,6 +264,18 @@ namespace TorannMagic
                     Graphics.DrawMesh(MeshPool.plane10, matrix, bubble, 0, null);
                     //Graphics.DrawMesh(MeshPool.plane10, vec3, this.ExactRotation, bubble, 0);
                 }
+                else if(zVariation != 0 || xVariation != 0)
+                {
+                    this.drawPosition = VariationPosition(this.drawPosition);
+                    //bool flag4 = !this.DrawPos.ToIntVec3().IsValid;
+                    //if (flag4)
+                    //{
+                    //    return;
+                    //}
+                    //Pawn pawn = this.flyingThing as Pawn;
+                    //pawn.Drawer.DrawAt(this.DrawPos);
+                    this.flyingThing.DrawAt(this.drawPosition);
+                }
                 else
                 {
                     Graphics.DrawMesh(MeshPool.plane10, this.DrawPos, this.ExactRotation, this.flyingThing.def.DrawMatSingle, 0);
@@ -266,6 +288,39 @@ namespace TorannMagic
             base.Comps_PostDraw();
         }
 
+        private Vector3 VariationPosition(Vector3 currentDrawPos)
+        {
+            Vector3 startPos = currentDrawPos;
+            float variance = (xVariation / 100f);
+            if ((startPos.x - variationDestination.x) < -variance)
+            {
+                startPos.x += variance;
+            }
+            else if((startPos.x - variationDestination.x) > variance)
+            {
+                startPos.x += -variance;
+            }
+            else if (this.xVariation != 0)
+            {
+                variationDestination.x = this.DrawPos.x + Rand.Range(-xVariation, xVariation);
+            }
+            variance = (zVariation / 100f);
+            if ((startPos.z - variationDestination.z) < -variance)
+            {
+                startPos.z += variance;
+            }
+            else if ((startPos.z - variationDestination.z) > variance)
+            {
+                startPos.z += -variance;
+            }
+            else if (this.zVariation != 0)
+            {
+                variationDestination.z = this.DrawPos.z + Rand.Range(-zVariation, zVariation);
+            }
+
+            return startPos;
+        }
+
 
         private void ImpactSomething()
         {
@@ -274,30 +329,44 @@ namespace TorannMagic
 
         protected virtual void Impact(Thing hitThing)
         {
-            //try
-            //{
-
-                //GenSpawn.Spawn(this.flyingThing, base.Position, base.Map);
-                GenPlace.TryPlaceThing(this.flyingThing, base.Position, base.Map, ThingPlaceMode.Near);
-                if (this.flyingThing is Pawn)
+            GenPlace.TryPlaceThing(this.flyingThing, base.Position, base.Map, ThingPlaceMode.Direct);
+            if (this.flyingThing is Pawn)
+            {
+                Pawn p = this.flyingThing as Pawn;
+                if (p.IsColonist && this.drafted && p.drafter != null)
                 {
-                    Pawn p = this.flyingThing as Pawn;
-                    if (p.IsColonist && this.drafted && p.drafter != null)
-                    {
-                        p.drafter.Drafted = true;
-                    }
-                }                
-                this.Destroy(DestroyMode.Vanish);
-            //}
-            //catch
-            //{
-            //    if (!this.flyingThing.Spawned)
-            //    {
-            //        GenSpawn.Spawn(this.flyingThing, base.Position, base.Map);
-            //    }
-            //    this.Destroy(DestroyMode.Vanish);
-            //}
-        }
+                    p.drafter.Drafted = true;
+                }
+            }
 
+            if (this.destroyPctAtEnd != 0)
+            {
+                int rangeMax = 10;
+                for (int i = 0; i < rangeMax; i++)
+                {
+                    float direction = Rand.Range(0, 360);
+                    Vector3 rndPos = this.flyingThing.DrawPos;
+                    rndPos.x += Rand.Range(-.3f, .3f);
+                    rndPos.z += Rand.Range(-.3f, .3f);
+                    ThingDef mote = TorannMagicDefOf.Mote_Shadow;
+                    TM_MoteMaker.ThrowGenericMote(mote, rndPos, this.Map, Rand.Range(.5f, 1f), 0.4f, Rand.Range(.1f, .4f), Rand.Range(1.2f, 2f), Rand.Range(-200, 200), Rand.Range(1.2f, 2f), direction, direction);
+                    SoundInfo info = SoundInfo.InMap(new TargetInfo(base.Position, this.Map, false), MaintenanceType.None);
+                    info.pitchFactor = .8f;
+                    info.volumeFactor = 1.2f;
+                    TorannMagicDefOf.TM_Vibration.PlayOneShot(info);
+                }
+            }
+
+            if (this.destroyPctAtEnd >= 1f)
+            {
+                this.flyingThing.Destroy(DestroyMode.Vanish);
+            }
+            else if(this.destroyPctAtEnd != 0)
+            {
+                this.flyingThing.SplitOff(Mathf.RoundToInt(this.flyingThing.stackCount * this.destroyPctAtEnd)).Destroy(DestroyMode.Vanish);
+            }
+
+            this.Destroy(DestroyMode.Vanish);
+        }
     }
 }

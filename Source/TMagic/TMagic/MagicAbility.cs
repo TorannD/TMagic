@@ -100,6 +100,10 @@ namespace TorannMagic
             {
                 this.CooldownTicksLeft = Mathf.RoundToInt(this.MaxCastingTicks * this.MagicUser.coolDown);
             }
+            if(Rand.Chance(MagicUser.arcalleumCooldown))
+            {
+                this.CooldownTicksLeft = 4;
+            }
             bool flag = this.magicDef != null;
             if (flag)
             {

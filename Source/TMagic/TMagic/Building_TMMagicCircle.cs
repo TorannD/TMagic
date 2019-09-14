@@ -6,6 +6,7 @@ using Verse.AI;
 using System.Diagnostics;
 using UnityEngine;
 using RimWorld;
+using AbilityUser;
 
 
 namespace TorannMagic
@@ -18,15 +19,189 @@ namespace TorannMagic
         private static readonly Material EnergyBarFilledMat = SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.0f, 0.0f, 1f), false);
         private static readonly Material EnergyBarUnfilledMat = SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.4f, 0.4f, 0.4f), false);
 
+        private bool hasPendingJob = false;
         private bool isActive = false;
+        private int activeDuration = 0;
         private int matRng = 0;
-        private float matMagnitude = 0;
+        private float matMagnitude = 5.2f;
 
-        private List<Pawn> activeMageList = new List<Pawn>();
+        private int nextCircleEffect = 0;
+        private int circleRotation = 0;
+
+        private bool suspendReset = false;
+        private int resetDelay = 0;
+
+        private List<Thing> recipeIngredients = new List<Thing>();
+
+        public Job activeJob = null;
+        public MagicRecipeDef magicRecipeDef = null;
+
+        public float manaReq = 0;
+
+        private List<Pawn> mageList = new List<Pawn>();
+        public List<Pawn> MageList
+        {
+            get
+            {
+                if(mageList == null)
+                {
+                    mageList = new List<Pawn>();
+                    mageList.Clear();
+                }
+                return mageList;
+            }
+            set
+            {
+                if(mageList == null)
+                {
+                    mageList = new List<Pawn>();
+                    mageList.Clear();
+                }
+                mageList = value;
+            }
+        }
+
+        public IntVec3 GetCircleCenter
+        {
+            get
+            {
+                IntVec3 center = this.InteractionCell;
+                if (this.Rotation == Rot4.North)
+                {
+                    center.z -= 2;
+                }
+                else if (this.Rotation == Rot4.South)
+                {
+                    center.z += 2;
+                }
+                else if (this.Rotation == Rot4.East)
+                {
+                    center.x += 2;
+                }
+                else
+                {
+                    center.x -= 2;
+                }
+                return center;
+            }
+        }
+
+        public Job ActiveJob
+        {
+            get
+            {
+                if(MageList.Count > 0)
+                {
+                    return this.MageList[0].CurJob;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public float SpellSuccessModifier
+        {
+            get
+            {
+                if(Stuff != null)
+                {
+                    if (this.Stuff == ThingDef.Named("Jade"))
+                    {
+                        return .2f;
+                    }
+                    else if (this.Stuff == ThingDef.Named("Uranium"))
+                    {
+                        return .15f;
+                    }      
+                    else if(this.Stuff == TorannMagicDefOf.TM_Arcalleum)
+                    {
+                        return .1f;
+                    }
+                }
+                return 0f;
+            }
+        }
+
+        public float MaterialCostModifier
+        {
+            get
+            {
+                if (Stuff != null)
+                {
+                    if (this.Stuff == ThingDef.Named("Silver"))
+                    {
+                        return .2f;
+                    }
+                }
+                return 0f;
+            }
+        }
+
+        public float DurationModifier
+        {
+            get
+            {
+                if (Stuff != null)
+                {
+                    if (this.Stuff == ThingDef.Named("Gold"))
+                    {
+                        return .2f;
+                    }
+                    else if(this.Stuff == ThingDef.Named("Uranium"))
+                    {
+                        return .15f;
+                    }
+                }
+                return 0f;
+            }
+        }
+
+        public float ManaCostModifer
+        {
+            get
+            {
+                if (Stuff != null)
+                {
+                    if (this.Stuff == TorannMagicDefOf.TM_Arcalleum)
+                    {
+                        return .2f;
+                    }
+                }
+                return 0f;
+            }
+        }
+
+        public float PointModifer
+        {
+            get
+            {
+                if (Stuff != null)
+                {
+                    if (this.Stuff == ThingDef.Named("Gold"))
+                    {
+                        return .1f;
+                    }
+                }
+                return 0f;
+            }
+        }
 
         public override void ExposeData()
         {
             base.ExposeData();
+            Scribe_Values.Look<float>(ref this.manaReq, "manaReq", 0f, false);
+            Scribe_Collections.Look<Pawn>(ref this.mageList, "mageList", LookMode.Reference);
+            Scribe_Defs.Look<MagicRecipeDef>(ref this.magicRecipeDef, "magicRecipeDef");
+        }
+
+        public bool IsPending
+        {
+            get
+            {
+                return this.hasPendingJob;
+            }
         }
 
         public bool IsActive
@@ -37,10 +212,476 @@ namespace TorannMagic
             }
         }
 
+        public float PercentComplete
+        {
+            get
+            {
+                if(IsActive)
+                {
+                    return 1 - (this.activeDuration / (this.magicRecipeDef.workAmount / 100f));
+                }
+                else
+                {
+                    return 0f;
+                }
+            }
+        }
+
+        public int ExactRotation
+        {
+            get
+            {
+                return Mathf.RoundToInt((this.magicRecipeDef.workAmount/3000)*360*(this.PercentComplete*this.PercentComplete));
+            }
+        }
+
+        public bool HasIngredients
+        {
+            get
+            {
+                bool result = false;
+                if (ActiveJob != null && IsPending)
+                {
+                    if (ActiveJob.RecipeDef != null && ActiveJob.RecipeDef.ingredients != null)
+                    {
+                        for (int i = 0; i < ActiveJob.RecipeDef.ingredients.Count; i++)
+                        {
+                            //Log.Message("checking ingredient " + ActiveJob.RecipeDef.ingredients[i].FixedIngredient.defName + " with count " + ActiveJob.RecipeDef.ingredients[i].GetBaseCount());
+                            List<Thing> ingredient = this.Map.listerThings.ThingsOfDef(ActiveJob.RecipeDef.ingredients[i].FixedIngredient);
+                            bool hasThisIngredient = false;
+                            int totalStackCount = 0;
+                            for (int j = 0; j < ingredient.Count; j++)
+                            {
+                                if ((ingredient[j].Position - this.InteractionCell).LengthHorizontal <= 5)
+                                {
+                                    totalStackCount += ingredient[j].stackCount;
+                                    if (totalStackCount >= ActiveJob.RecipeDef.ingredients[i].GetBaseCount())
+                                    {
+                                        hasThisIngredient = true;
+                                        break;
+                                    }
+                                }
+                            }
+                            if(!hasThisIngredient)
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                    return true;
+                }
+                return result;                       
+            }
+        }
+
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
             //LessonAutoActivator.TeachOpportunity(ConceptDef.Named("TM_Portals"), OpportunityType.GoodToKnow);
+        }
+
+        public override void Tick()
+        { 
+            bool billsActionable = false;
+            if (this.suspendReset)
+            {
+                if(this.resetDelay < Find.TickManager.TicksGame)
+                {
+                    this.suspendReset = false;                    
+                }
+            }
+            else if(IsActive)
+            {
+                //rotate magic circle (draw) and do effects until job is complete
+                this.activeDuration--;
+                if(this.nextCircleEffect <= Find.TickManager.TicksGame)
+                {
+                    Vector3 rndPos = GetCircleCenter.ToVector3Shifted();
+                    rndPos.x += Rand.Range(-3, 3);
+                    rndPos.z += Rand.Range(-3, 3);
+                    MoteMaker.ThrowSmoke(rndPos, this.Map, Rand.Range(.8f, 1.5f));
+                    this.circleRotation = Mathf.Max(this.circleRotation - 2, 8);
+                    this.nextCircleEffect = Find.TickManager.TicksGame + Mathf.Clamp(this.circleRotation, 8, 300);
+                }
+                if(this.activeDuration <= 0)
+                {
+                    ModOptions.Constants.SetBypassPrediction(true);
+                    if (Rand.Chance(Mathf.Clamp01(this.magicRecipeDef.failChance - SpellSuccessModifier))) //- clamp on 0 and look for circle construction material for fail chance reduction
+                    {
+                        //do spell failure actions
+                        DoFailActions();
+                    }
+                    else
+                    {
+                        //do spell success actions
+                        DoSuccessActions();
+                    }
+                    Effecter CircleED = TorannMagicDefOf.TM_MagicCircleED.Spawn();
+                    CircleED.Trigger(new TargetInfo(GetCircleCenter, this.Map, false), new TargetInfo(GetCircleCenter, this.Map, false));
+                    CircleED.Cleanup();
+                    this.isActive = false;
+                    ClearAllJobs();
+                    ModOptions.Constants.SetBypassPrediction(false);
+                }
+            }
+            else
+            {
+                if (Find.TickManager.TicksGame % 51 == 0)
+                {
+                    for (int i = 0; i < this.BillStack.Bills.Count; i++)
+                    {
+                        Bill bill = this.BillStack.Bills[i];
+                        MagicRecipeDef mrDef = this.BillStack.Bills[i].recipe as MagicRecipeDef;
+                        List<Pawn> billDoers = new List<Pawn>();
+                        if (CanEverDoBill(bill, out billDoers))
+                        {
+                            bill.suspended = false;
+                            billsActionable = true;
+                        }
+                        else
+                        {
+                            bill.suspended = true;
+                        }
+                    }
+                    if (billsActionable)
+                    {
+                        this.GetComp<CompRefuelable>().Refuel(1);
+                    }
+                    else
+                    {
+                        this.GetComp<CompRefuelable>().ConsumeFuel(1);
+                        if(this.hasPendingJob)
+                        {
+                            ClearAllJobs();
+                        }
+                    }
+                }
+
+                if (this.IsPending)
+                {
+                    if (Find.TickManager.TicksGame % 51 == 0)
+                    {
+                        bool magesAvailable = PendingMagesStillAvailable(this.MageList);
+                        bool ingredientsAvailable = HasIngredients;
+                        bool magesReady = false;
+                        if (magesAvailable)
+                        {
+                            magesReady = MagesReadyToAssist(this.MageList);
+                        }
+                        else
+                        {
+                            ClearAllJobs();                            
+                        }
+                        if (magesAvailable && ingredientsAvailable && magesReady)
+                        {                            
+                            this.ActiveJob.bill.Notify_IterationCompleted(mageList[0], null);
+                            this.magicRecipeDef = this.ActiveJob.RecipeDef as MagicRecipeDef;
+                            this.isActive = true;
+                            this.activeDuration = Mathf.RoundToInt(this.magicRecipeDef.workAmount / 100);
+                            this.circleRotation = (int)(this.magicRecipeDef.workAmount / (1000));
+                            this.nextCircleEffect = Find.TickManager.TicksGame + this.circleRotation;
+                            LaunchJobPawns();
+                            LaunchIngredients();
+                        }
+                    }
+                }
+            }
+        }
+
+        public void DoFailActions()
+        {
+            if(this.mageList != null && this.mageList.Count > 0 && this.magicRecipeDef != null)
+            {
+                for(int i =0; i < this.mageList.Count; i++)
+                {
+                    TM_Action.ConsumeManaXP(mageList[i], (this.magicRecipeDef.manaCost/this.mageList.Count) * (this.magicRecipeDef.failManaConsumed * (1f - ManaCostModifer)), .75f, true);
+                    if(this.magicRecipeDef.failDamageApplied != 0)
+                    {
+                        TM_Action.DamageEntities(this.mageList[i], null, Rand.Range(this.magicRecipeDef.failDamageApplied * .75f, this.magicRecipeDef.failDamageApplied * 1.25f), TMDamageDefOf.DamageDefOf.TM_Arcane, this.mageList[i]);
+                    }
+                }
+            }
+        }
+
+        public void DoSuccessActions()
+        {
+            if (this.mageList != null && this.mageList.Count > 0 && this.magicRecipeDef != null)
+            {
+                for (int i = 0; i < this.mageList.Count; i++)
+                {                    
+                    TM_Action.ConsumeManaXP(mageList[i], (this.magicRecipeDef.manaCost/this.mageList.Count)*(1f-ManaCostModifer), 1f + ManaCostModifer, true);
+                }
+
+                if(this.magicRecipeDef.resultConditions != null && this.magicRecipeDef.resultConditions.Count > 0)
+                {
+                    for (int i = 0; i < this.magicRecipeDef.resultConditions.Count; i++)
+                    {                        
+                        TMDefs.TM_Condition con = this.magicRecipeDef.resultConditions[i];
+                        if (con.resultCondition != null || con.conditionRandom)
+                        {
+                            int range = con.countRange.RandomInRange;
+                            for (int j = 0; j < range; j++)
+                            {
+                                TryGenerateMapCondition(con.resultCondition, this.Map, Mathf.RoundToInt(con.conditionDuration * (1+DurationModifier)), con.conditionPermanent, con.conditionRemove, con.conditionReduceByDuration, con.conditionIncreaseByDuration, con.conditionRandom);
+                            }
+                        }
+                    }
+                }
+                if(this.magicRecipeDef.resultIncidents != null && this.magicRecipeDef.resultIncidents.Count > 0)
+                {
+                    for (int i = 0; i < this.magicRecipeDef.resultIncidents.Count; i++)
+                    {
+                        TMDefs.TM_Incident inc = this.magicRecipeDef.resultIncidents[i];
+                        if (inc.resultIncident != null)
+                        {
+                            int range = inc.countRange.RandomInRange;
+                            for (int j = 0; j < range; j++)
+                            {
+                                TryGenerateIncident(inc.resultIncident, this.Map, Mathf.RoundToInt(inc.incidentPoints * (1f+PointModifer)), inc.incidentHostile);
+                            }
+                        }
+                    }
+                }
+                if (this.magicRecipeDef.resultHediffs != null && this.magicRecipeDef.resultHediffs.Count > 0)
+                {
+                    for (int i = 0; i < this.magicRecipeDef.resultHediffs.Count; i++)
+                    {
+                        TMDefs.TM_Hediff hd = this.magicRecipeDef.resultHediffs[i];
+                        if (hd.resultHediff != null)
+                        {
+                            int range = hd.countRange.RandomInRange;
+                            for (int j = 0; j < range; j++)
+                            {
+                                TryApplyHediff(hd.resultHediff, this.Faction, this.Map, (hd.hediffSeverity * (1f+ DurationModifier)), Mathf.RoundToInt(hd.maxHediffCount * (1f + PointModifer)), hd.applyFriendly, hd.applyEnemy, hd.applyNeutral, hd.applyNullFaction, hd.moteDef);
+                            }
+                        }
+                    }
+                }
+                if (this.magicRecipeDef.resultSpawnThings != null && this.magicRecipeDef.resultSpawnThings.Count > 0)
+                {
+                    for (int i = 0; i < this.magicRecipeDef.resultSpawnThings.Count; i++)
+                    {
+                        TMDefs.TM_SpawnThings st = this.magicRecipeDef.resultSpawnThings[i];
+                        if (st.resultSpawnThing != null)
+                        {
+                            int range = st.countRange.RandomInRange;
+                            for (int j = 0; j < range; j++)
+                            {
+                                IntVec3 spawnPos = GetCircleCenter;
+                                spawnPos.x += Rand.Range(-(range - 1), (range - 1));
+                                spawnPos.z += Rand.Range(-(range - 1), (range - 1));
+                                TrySpawnThing(this.MageList.RandomElement(), st.resultSpawnThing, st.resultPawnKindDef, spawnPos, Mathf.RoundToInt(st.summonDuration * (1f+ DurationModifier)), st.summonTemporary, Mathf.RoundToInt(st.spawnThingCount * (1f + PointModifer)), Mathf.RoundToInt(st.spawnThingStackCount * (1f+ PointModifer)), st.spawnHostile);
+                            }
+                        }
+                    }
+                }
+            }            
+        }
+
+        public bool InteractionCellOccupied()
+        {
+            List<Thing> thingList = this.InteractionCell.GetThingList(this.Map);
+            for(int i = 0; i < thingList.Count; i++)
+            {
+                if(thingList[i] != this)
+                {
+                    //Log.Message("ic occupied by " + thingList[i].LabelShort);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool CanEverDoBill(Bill bill, out List<Pawn> pawnsAble, MagicRecipeDef mrDefIn = null)
+        {
+            MagicRecipeDef mrDef = null;
+            if (bill != null)
+            {
+                mrDef = bill.recipe as MagicRecipeDef;
+            }
+            if (mrDefIn != null)
+            {
+                mrDef = mrDefIn;
+            }            
+            pawnsAble = new List<Pawn>();
+            pawnsAble.Clear();
+            if (mrDef != null && mrDef is MagicRecipeDef)
+            {
+                float manaReq = mrDef.manaCost;
+                if (mrDef.mageCount > 0)
+                {
+                    manaReq = mrDef.manaCost / mrDef.mageCount;
+                }
+                List<Pawn> magePawnsInRange = TM_Calc.FindNearbyMages(this.Position, this.Map, this.Faction, 50, true);
+                if (magePawnsInRange != null && magePawnsInRange.Count > 0)
+                {
+                    for (int i =0; i < magePawnsInRange.Count; i++)
+                    {
+                        Pawn p = magePawnsInRange[i];
+                        CompAbilityUserMagic comp = p.GetComp<CompAbilityUserMagic>();
+                        if (p.Spawned && !p.Drafted && p.workSettings.WorkIsActive(TorannMagicDefOf.TM_Magic) && comp != null && comp.Mana != null && comp.Mana.CurLevel >= manaReq)
+                        {
+                            pawnsAble.Add(p);
+                            if(pawnsAble.Count >= mrDef.mageCount)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        public bool CanDoJob(CompAbilityUserMagic abilityUser, MagicRecipeDef mrDef, Thing workTable)
+        {
+            if (mrDef.mageCount == 0)
+            {
+                manaReq = mrDef.manaCost;
+            }
+            else
+            {
+                manaReq = mrDef.manaCost / mrDef.mageCount;
+            }
+            if (!this.hasPendingJob && !this.isActive && abilityUser.Mana != null && abilityUser.Mana.CurLevel >= manaReq)
+            {
+                this.mageList = new List<Pawn>();
+                this.mageList.Clear();
+                mageList.Add(abilityUser.Pawn);
+                if (mrDef.mageCount > 1)
+                {
+                    List<Pawn> magePawnsInRange = TM_Calc.FindNearbyMages(workTable.Position, workTable.Map, workTable.Faction, 40, true);
+                    if (magePawnsInRange != null && magePawnsInRange.Count > 0)
+                    {
+                        //Log.Message("Found " + magePawnsInRange.Count + " mages");
+                        if (magePawnsInRange.Count >= mrDef.mageCount)
+                        {
+                            for (int i = 0; i < magePawnsInRange.Count; i++)
+                            {
+                                Pawn p = magePawnsInRange[i];
+                                CompAbilityUserMagic comp = p.GetComp<CompAbilityUserMagic>();
+                                if (p != abilityUser.Pawn && p.workSettings.WorkIsActive(TorannMagicDefOf.TM_Magic) && comp != null && comp.Mana != null && comp.Mana.CurLevel >= manaReq)
+                                {
+                                    //Log.Message("" + p.LabelShort + " available to work recipe " + mrDef.defName);
+                                    mageList.Add(p);
+                                    if (mageList.Count >= mrDef.mageCount)
+                                    {
+                                        //Log.Message("" + mrDef.mageCount + " of " + mageList.Count + " found");                                        
+                                        this.hasPendingJob = true;
+                                        return true;
+                                        //break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    //else
+                    //{
+                    //    Log.Message("no mages found");
+                    //}
+                }
+                else
+                {
+                    this.hasPendingJob = true;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void IssueAssistJob(Pawn pawn)
+        {
+            Job job = new Job(TorannMagicDefOf.JobDriver_AssistMagicCircle, GetMageIndexPosition(this.MageList, pawn), this);
+            pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+        }
+
+        public void ClearAllJobs()
+        {
+            for (int i = 0; i < MageList.Count; i++)
+            {
+                //MageList[i].jobs.curDriver.EndJobWith(JobCondition.InterruptForced);
+                MageList[i].jobs.EndCurrentJob(JobCondition.InterruptForced, false);
+                MageList[i].jobs.StopAll(true);
+            }
+            MageList.Clear();
+            this.activeJob = null;
+            this.hasPendingJob = false;
+            this.suspendReset = true;
+            this.resetDelay = Find.TickManager.TicksGame + 301;
+            this.TryGetComp<CompRefuelable>().ConsumeFuel(1);
+            //for (int i = 0; i < this.InteractionCell.GetThingList(this.Map).Count; i++)
+            //{
+            //    Thing icThing = this.InteractionCell.GetThingList(this.Map)[i];
+            //    if (icThing != this && !(icThing is Pawn))
+            //    {
+            //        icThing.DeSpawn(DestroyMode.Vanish);
+            //        GenPlace.TryPlaceThing(icThing, this.Position, this.Map, ThingPlaceMode.Near);
+            //    }
+            //}
+        }
+
+        public bool PendingMagesStillAvailable(List<Pawn> mages)
+        {
+            for (int i = 0; i < mages.Count; i++)
+            {
+                CompAbilityUserMagic comp = mages[i].GetComp<CompAbilityUserMagic>();
+                if (comp != null && comp.Mana != null )
+                {
+                    //Log.Message("" + comp.Pawn.LabelShort + " is ready");
+                    if ((i == 0 && !(comp.Pawn.CurJobDef == TorannMagicDefOf.JobDriver_DoMagicBill || comp.Pawn.CurJobDef == JobDefOf.HaulToCell)) && comp.Mana.CurLevel >= this.manaReq && !comp.Pawn.Drafted && !comp.Pawn.Destroyed && comp.Pawn.Spawned && !comp.Pawn.Downed && !comp.Pawn.InMentalState)
+                    {
+                        //pawn working recipe is no longer doing the job
+                        //Log.Message("job pawn was " + mageList[i].LabelShort + " doing job  " + comp.Pawn.CurJobDef.defName);
+                        return false;                        
+                    }
+                    if ((i > 0 && comp.Pawn.CurJobDef != TorannMagicDefOf.JobDriver_AssistMagicCircle) && comp.Mana.CurLevel >= this.manaReq && !comp.Pawn.Drafted && !comp.Pawn.Destroyed && comp.Pawn.Spawned && !comp.Pawn.Downed && !comp.Pawn.InMentalState)
+                    {
+                        //Log.Message("" + comp.Pawn.LabelShort + " had job " + comp.Pawn.CurJobDef.defName + ";; searching for new pawn");
+                        List<Pawn> replacementList = new List<Pawn>();
+                        replacementList.Clear();
+                        if(CanEverDoBill(null, out replacementList, this.magicRecipeDef))
+                        {
+                            //Log.Message("can still do bill");
+                            List<Pawn> replacementsPawns = replacementList.Except(mageList).ToList();
+                            if(replacementsPawns != null && replacementsPawns.Count > 0)
+                            {
+                                Pawn p = replacementsPawns.RandomElement();
+                                mageList.Remove(comp.Pawn);
+                                mageList.Add(p);
+                                IssueAssistJob(p);
+                               // Log.Message("tried to issue job to new pawn " + p.LabelShort);
+                                return true;
+                            }
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                        //IssueAssistJob(comp.Pawn);
+                        //try to give a new job
+                        //return false;
+                    }
+                }
+                else
+                {
+                    //Log.Message("returning mages NOT available");
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public bool MagesReadyToAssist(List<Pawn> mages)
+        {
+            for(int i =0; i < mages.Count; i++)
+            {
+                if(mages[i].Position != GetMageIndexPosition(mages, mages[i]))
+                {
+                    //Log.Message("" + mages[i] + " out of position");
+                    return false;
+                }
+            }
+            return true;
         }
 
         //[DebuggerHidden]
@@ -68,47 +709,361 @@ namespace TorannMagic
         //    List<FloatMenuOption> list = new List<FloatMenuOption>();
            
         //    return list;
-        //}
-
-        public override void Tick()
-        {
-            if (Find.TickManager.TicksGame % 10 == 0)
-            {
-                
-            }
-        }
+        //}       
 
         public override void Draw()
-        {
-            base.Draw();
+        {            
             if (this.IsActive)
             {
                 Vector3 vector = base.DrawPos;
-                vector.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
-                Vector3 s = new Vector3(matMagnitude, matMagnitude, matMagnitude);
+                vector.y = Altitudes.AltitudeFor(AltitudeLayer.Blueprint);
+                Vector3 s = new Vector3(matMagnitude, 2*matMagnitude, matMagnitude);
+                Quaternion quaternion = Quaternion.AngleAxis(Rotation.AsAngle, Vector3.up);
                 Matrix4x4 matrix = default(Matrix4x4);
-                float angle = 0f;
+                float angle = this.ExactRotation;
                 matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
-                //if (matRng == 0)
-                //{
-                //    Graphics.DrawMesh(MeshPool.plane10, matrix, Building_TMPortal.portalMat_1, 0);
-                //}
-                //else if (matRng == 1)
-                //{
-                //    Graphics.DrawMesh(MeshPool.plane10, matrix, Building_TMPortal.portalMat_2, 0);
-                //}
-                //else if (matRng == 2)
-                //{
-                //    Graphics.DrawMesh(MeshPool.plane10, matrix, Building_TMPortal.portalMat_3, 0);
-                //}
-                //else if (matRng == 3)
-                //{
-                //    Graphics.DrawMesh(MeshPool.plane10, matrix, Building_TMPortal.portalMat_4, 0);
-                //}
-                //else
-                //{
-                //    Graphics.DrawMesh(MeshPool.plane10, matrix, Building_TMPortal.portalMat_5, 0);
-                //}
+                if (this.Rotation == Rot4.North)
+                {
+                    Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.mc_north, 0);
+                }
+                else if (this.Rotation == Rot4.South)
+                {
+                    Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.mc_south, 0);
+                }
+                else if (this.Rotation == Rot4.East)
+                {
+                    Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.mc_east, 0);
+                }
+                else if (this.Rotation == Rot4.West)
+                {
+                    Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.mc_west, 0);
+                }
+                else
+                {
+                    Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.mc_north, 0);
+                }
+            }
+            else
+            {
+                base.Draw();
+            }
+        }
+
+        private void LaunchJobPawns()
+        {
+            if(this.MageList != null && this.MageList.Count > 0)
+            {
+                for (int i = 0; i < mageList.Count; i++)
+                {
+                    Pawn pawn = mageList[i];
+                    if (pawn != null && pawn.Position.IsValid && pawn.Spawned && pawn.Map != null && !pawn.Downed && !pawn.Dead)
+                    {
+                        if (ModCheck.Validate.GiddyUp.Core_IsInitialized())
+                        {
+                            ModCheck.GiddyUp.ForceDismount(pawn);
+                        }
+                        FlyingObject_TimeDelay flyingObject = (FlyingObject_TimeDelay)GenSpawn.Spawn(TorannMagicDefOf.FlyingObject_TimeDelay, pawn.Position, pawn.Map);
+                        flyingObject.speed = 10f;
+                        flyingObject.duration = this.activeDuration - 10;
+                        flyingObject.solidTime = .2f;
+                        flyingObject.fadeInTime = 0;
+                        flyingObject.fadeOutTime = .45f;
+                        flyingObject.moteScale = 1.5f;
+                        flyingObject.LaunchVaryPosition(this, pawn.Position, pawn, 0, .2f, .5f, TorannMagicDefOf.Mote_Casting, 5);
+                    }
+                }
+            }
+        }
+
+        private void LaunchIngredients()
+        {
+            for (int i = 0; i < this.magicRecipeDef.ingredients.Count; i++)
+            {
+                List<Thing> ingredient = this.Map.listerThings.ThingsOfDef(this.magicRecipeDef.ingredients[i].FixedIngredient);
+                int launchedCount = 0;
+                float stackCount = this.magicRecipeDef.ingredients[i].GetBaseCount() * (1f - MaterialCostModifier);
+                for (int j = 0; j < ingredient.Count; j++)
+                {                    
+                    if ((ingredient[j].Position - this.InteractionCell).LengthHorizontal <= 5 && launchedCount < stackCount)
+                    {
+                        int thisLaunchCount = Mathf.Clamp(ingredient[j].stackCount, 0, (int)stackCount - launchedCount);
+                        launchedCount += thisLaunchCount;
+                        Thing thing = ingredient[j].SplitOff(Mathf.RoundToInt(thisLaunchCount));
+                        GenPlace.TryPlaceThing(thing, GetCircleCenter, this.Map, ThingPlaceMode.Direct);
+                        FlyingObject_TimeDelay flyingObject = (FlyingObject_TimeDelay)GenSpawn.Spawn(TorannMagicDefOf.FlyingObject_TimeDelay, GetCircleCenter, this.Map);
+                        flyingObject.speed = 10f;
+                        flyingObject.duration = this.activeDuration - 10;
+                        flyingObject.stackCount = thisLaunchCount;
+                        flyingObject.LaunchVaryPosition(this, thing.Position, thing, 0, .8f, .8f, null, 0, 1f);
+                    }
+                }
+            }
+        }
+
+        private static void ConsumeIngredients(List<Thing> ingredients, RecipeDef recipe, Map map)
+        {
+            for (int i = 0; i < ingredients.Count; i++)
+            {
+                recipe.Worker.ConsumeIngredient(ingredients[i], recipe, map);
+            }
+        }
+
+        public IntVec3 GetMageIndexPosition(List<Pawn> allMages, Pawn mage)
+        {
+            IntVec3 magePosition = default(IntVec3);
+            for (int i = 0; i < allMages.Count; i++)
+            {
+                if (allMages[i] == mage)
+                {
+                    IntVec3 ic = this.InteractionCell;
+                    if (i == 0)
+                    {
+                        //always interaction cell
+                    }
+                    else if (i == 1)
+                    {
+                        if (this.Rotation == Rot4.North)
+                        {
+                            ic.x -= 2;
+                            ic.z -= 3;
+                        }
+                        else if (this.Rotation == Rot4.South)
+                        {
+                            ic.x += 2;
+                            ic.z += 3;
+                        }
+                        else if (this.Rotation == Rot4.East)
+                        {
+                            ic.x += 3;
+                            ic.z -= 2;
+                        }
+                        else
+                        {
+                            ic.x -= 3;
+                            ic.z += 2;
+                        }
+                    }
+                    else if (i == 2)
+                    {
+                        if (this.Rotation == Rot4.North)
+                        {
+                            ic.x += 2;
+                            ic.z -= 3;
+                        }
+                        else if (this.Rotation == Rot4.South)
+                        {
+                            ic.x -= 2;
+                            ic.z += 3;
+                        }
+                        else if (this.Rotation == Rot4.East)
+                        {
+                            ic.x += 3;
+                            ic.z += 2;
+                        }
+                        else
+                        {
+                            ic.x -= 3;
+                            ic.z -= 2;
+                        }
+                    }
+                    else if (i == 3)
+                    {
+                        if (this.Rotation == Rot4.North)
+                        {
+                            ic.x += 0;
+                            ic.z -= 4;
+                        }
+                        else if (this.Rotation == Rot4.South)
+                        {
+                            ic.x -= 0;
+                            ic.z += 4;
+                        }
+                        else if (this.Rotation == Rot4.East)
+                        {
+                            ic.x += 4;
+                            ic.z += 0;
+                        }
+                        else
+                        {
+                            ic.x -= 4;
+                            ic.z -= 0;
+                        }
+                    }
+                    else if (i == 4)
+                    {
+                        if (this.Rotation == Rot4.North)
+                        {
+                            ic.x -= 2;
+                            ic.z -= 1;
+                        }
+                        else if (this.Rotation == Rot4.South)
+                        {
+                            ic.x += 2;
+                            ic.z += 1;
+                        }
+                        else if (this.Rotation == Rot4.East)
+                        {
+                            ic.x += 1;
+                            ic.z -= 2;
+                        }
+                        else
+                        {
+                            ic.x -= 1;
+                            ic.z += 2;
+                        }
+                    }
+                    else if (i == 5)
+                    {
+                        if (this.Rotation == Rot4.North)
+                        {
+                            ic.x += 2;
+                            ic.z -= 1;
+                        }
+                        else if (this.Rotation == Rot4.South)
+                        {
+                            ic.x -= 2;
+                            ic.z += 1;
+                        }
+                        else if (this.Rotation == Rot4.East)
+                        {
+                            ic.x += 1;
+                            ic.z += 2;
+                        }
+                        else
+                        {
+                            ic.x -= 1;
+                            ic.z -= 2;
+                        }
+                    }
+                    else
+                    {
+                        ic = GetCircleCenter;
+                        ic.x += Rand.Range(-4, 4);
+                        ic.z += Rand.Range(-4, 4);
+                    }
+                    magePosition = ic;
+                }
+            }
+            return magePosition;
+        }
+
+        public static void TryGenerateMapCondition(GameConditionDef gameCondition, Map map, int duration = -1, bool permanent = false, bool remove = false, bool reduce = false, bool increase = false, bool random = false)
+        {
+            GameCondition gc = null;
+            List<GameCondition> gcList = new List<GameCondition>();
+            map.GameConditionManager.GetAllGameConditionsAffectingMap(map, gcList);
+            if (random && gcList != null && gcList.Count > 0)
+            {
+                gc = map.GameConditionManager.GetActiveCondition(gcList.RandomElement().def);
+            }
+            else if(gameCondition != null)
+            {
+                gc = map.GameConditionManager.GetActiveCondition(gameCondition);
+            }
+
+            if (gc != null)
+            {
+                if (permanent)
+                {
+                    gc.Permanent = true;
+                }
+                else if (remove)
+                {
+                    gc.End();
+                }
+                else if (duration != -1)
+                {
+                    if (reduce)
+                    {
+                        gc.Duration -= duration;
+                        if (gc.Duration < 0)
+                        {
+                            gc.End();
+                        }
+                    }
+                    else if(increase)
+                    {
+                        gc.Duration += duration;
+                    }
+                    else
+                    {
+                        gc.Duration = duration;
+                    }
+                }
+            }
+            else
+            {
+                Messages.Message("No game condition found.", MessageTypeDefOf.RejectInput);
+            }
+        }
+
+        public static void TryGenerateIncident(IncidentDef id, Map map, float points = 0f, bool hostile = false)
+        {
+            IncidentParms parms = StorytellerUtility.DefaultParmsNow(id.category, map);
+            if (points != 0)
+            {
+                parms.points = points;
+            }
+            if(hostile)
+            {
+                parms.faction = Find.FactionManager.RandomEnemyFaction();
+            }
+            id.Worker.TryExecute(parms);
+        }
+
+        public static void TryApplyHediff(HediffDef hediff, Faction faction, Map map, float sev, int count = 0, bool friendly = false, bool enemy = false, bool neutral = false, bool nullFaction = false, ThingDef mote = null)
+        {
+            List<Pawn> allPawns = map.mapPawns.AllPawnsSpawned;
+            allPawns.Shuffle();
+            if (allPawns != null && allPawns.Count > 0)
+            {
+                int maxCount = allPawns.Count;
+                if (count != 0)
+                {
+                    maxCount = Mathf.Clamp(count, 0, allPawns.Count);
+                }
+                for (int i = 0; i < maxCount; i++)
+                {
+                    Pawn p = allPawns[i];
+                    if (p.Faction != null)
+                    {
+                        if (friendly && p.Faction == faction)
+                        {
+                            HealthUtility.AdjustSeverity(p, hediff, sev);
+                        }
+                        if (enemy && p.Faction.HostileTo(faction))
+                        {
+                            HealthUtility.AdjustSeverity(p, hediff, sev);
+                        }
+                        if (neutral && !p.Faction.HostileTo(faction))
+                        {
+                            HealthUtility.AdjustSeverity(p, hediff, sev);
+                        }
+                    }
+                    else if (nullFaction && p.Faction == null)
+                    {
+                        HealthUtility.AdjustSeverity(p, hediff, sev);
+                    }
+                    
+                    if(mote != null)
+                    {
+                        TM_MoteMaker.ThrowGenericMote(mote, p.DrawPos, p.Map, Rand.Range(.75f, 1.25f), .25f, .05f, .25f, Rand.Range(-100, 100), Rand.Range(0, 1), Rand.Range(0, 360), Rand.Range(0, 360));
+                    }
+                }
+            }
+        }
+
+        public static void TrySpawnThing(Pawn caster, ThingDef thingDef, PawnKindDef kindDef, IntVec3 position, int duration, bool temporary, int count = 1, int stackCount = 1, bool hostile = false)
+        {
+            AbilityUser.SpawnThings spawnables = new SpawnThings();
+            spawnables.def = thingDef;
+            spawnables.kindDef = kindDef;
+            spawnables.spawnCount = stackCount;
+            spawnables.temporary = temporary;
+
+            for (int i = 0; i < count; i++)
+            {
+                Thing thing = TM_Action.SingleSpawnLoop(caster, spawnables, position, caster.Map, duration, temporary, hostile);
             }
         }
     }

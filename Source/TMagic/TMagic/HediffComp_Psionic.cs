@@ -97,7 +97,7 @@ namespace TorannMagic
 
         public override void CompPostTick(ref float severityAdjustment)
         {
-            if (this.Pawn.Spawned && !this.Pawn.Dead && !this.Pawn.Downed)
+            if (!this.Pawn.Dead && !this.Pawn.Downed)
             {
                 base.CompPostTick(ref severityAdjustment);
                 if (base.Pawn != null & base.parent != null)

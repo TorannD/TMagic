@@ -23,6 +23,7 @@ namespace TorannMagic
         public Matrix4x4 drawingMatrix = default(Matrix4x4);
         public Vector3 drawingScale;
         public Vector3 drawingPosition;
+        private bool reverseDirection = false;
 
         private int pwrVal = 0;
         private int verVal = 0;
@@ -120,7 +121,7 @@ namespace TorannMagic
                 SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                 MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
                 CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
-                if (comp.PowerModifier > 0)
+                if (comp != null && comp.PowerModifier > 0)
                 {
                     this.arcaneDmg += .2f;
                     comp.PowerModifier--;
@@ -146,40 +147,49 @@ namespace TorannMagic
             bool spawned = flyingThing.Spawned;
             this.pawn = launcher as Pawn;
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
-            foreach (MagicPower current in comp.MagicData.MagicPowersN)
+            if (comp != null)
             {
-                if ((current.abilityDef == TorannMagicDefOf.TM_DeathBolt || current.abilityDef == TorannMagicDefOf.TM_DeathBolt_I || current.abilityDef == TorannMagicDefOf.TM_DeathBolt_II || current.abilityDef == TorannMagicDefOf.TM_DeathBolt_III))
+                foreach (MagicPower current in comp.MagicData.MagicPowersN)
                 {
-                    if (current.level == 0)
+                    if ((current.abilityDef == TorannMagicDefOf.TM_DeathBolt || current.abilityDef == TorannMagicDefOf.TM_DeathBolt_I || current.abilityDef == TorannMagicDefOf.TM_DeathBolt_II || current.abilityDef == TorannMagicDefOf.TM_DeathBolt_III))
                     {
-                        this.radius = 1.4f;
-                    }
-                    else if (current.level == 1)
-                    {
-                        this.radius = 2f;
-                    }
-                    else if (current.level == 2)
-                    {
-                        this.radius = 2f;
-                    }
-                    else
-                    {
-                        this.radius = 2.4f;
+                        if (current.level == 0)
+                        {
+                            this.radius = 1.4f;
+                        }
+                        else if (current.level == 1)
+                        {
+                            this.radius = 2f;
+                        }
+                        else if (current.level == 2)
+                        {
+                            this.radius = 2f;
+                        }
+                        else
+                        {
+                            this.radius = 2.4f;
+                        }
                     }
                 }
+                this.arcaneDmg = comp.arcaneDmg;
+                MagicPowerSkill pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_DeathBolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_DeathBolt_pwr");
+                MagicPowerSkill ver = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_DeathBolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_DeathBolt_ver");
+                verVal = ver.level;
+                pwrVal = pwr.level;
+                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                if (settingsRef.AIHardMode && !pawn.IsColonist)
+                {
+                    pwrVal = 1;
+                    verVal = 1;
+                }                
+            }      
+            else if (this.pawn.def == TorannMagicDefOf.TM_SkeletonLichR)
+            {
+                pwrVal = Rand.RangeInclusive(0, 3);
+                verVal = Rand.RangeInclusive(0, 3);
+                this.radius = 2f;
             }
 
-            this.arcaneDmg = comp.arcaneDmg;
-            MagicPowerSkill pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_DeathBolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_DeathBolt_pwr");
-            MagicPowerSkill ver = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_DeathBolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_DeathBolt_ver");
-            verVal = ver.level;
-            pwrVal = pwr.level;
-            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            if (settingsRef.AIHardMode && !pawn.IsColonist)
-            {
-                pwrVal = 1;
-                verVal = 1;
-            }
             if (spawned)
             {
                 flyingThing.DeSpawn();
@@ -207,7 +217,14 @@ namespace TorannMagic
             {
                 DrawEffects(this.ExactPosition, base.Map);
             }
-            this.ticksToImpact--;
+            if (this.reverseDirection)
+            {
+                this.ticksToImpact++;
+            }
+            else
+            {
+                this.ticksToImpact--;
+            }
             this.ticksFollowingImpact--;
             base.Position = this.ExactPosition.ToIntVec3();
             bool flag = !this.ExactPosition.InBounds(base.Map);
@@ -215,6 +232,11 @@ namespace TorannMagic
             {
                 this.ticksToImpact++;
                 this.Destroy(DestroyMode.Vanish);
+            }
+            else if (!this.ExactPosition.ToIntVec3().Walkable(base.Map) && !this.ExactPosition.ToIntVec3().CanBeSeenOverFast(this.Map))
+            {
+                this.reverseDirection = true;
+                this.ImpactSomething();
             }
             else
             {                                           
@@ -244,7 +266,7 @@ namespace TorannMagic
                     for (int i = 0; i < 2; i++)
                     {
                         spreadingDarknessCell = cellRect.RandomCell;
-                        if (spreadingDarknessCell.IsValid && spreadingDarknessCell.InBounds(base.Map))
+                        if (spreadingDarknessCell.InBounds(base.Map) && spreadingDarknessCell.IsValid)
                         {
                             GenExplosion.DoExplosion(spreadingDarknessCell, base.Map, .4f, TMDamageDefOf.DamageDefOf.TM_DeathBolt, this.pawn, Mathf.RoundToInt((Rand.Range(.4f * this.def.projectile.GetDamageAmount(1, null), .8f * this.def.projectile.GetDamageAmount(1, null)) + (3f * pwrVal)) * this.arcaneDmg), 2, this.def.projectile.soundExplode, def, null, null, null, 0f, 1, false, null, 0f, 0, 0.0f, true);
                             TM_MoteMaker.ThrowDiseaseMote(base.Position.ToVector3Shifted(), base.Map, .6f);

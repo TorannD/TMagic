@@ -109,4 +109,40 @@
     </statFactors>
   </LifeStageDef>
   
+    <LifeStageDef>
+    <defName>TM_Skeleton_Lifestage</defName>
+    <label>skeleton</label>
+	<voxPitch>.5</voxPitch>
+	<bodySizeFactor>1.0</bodySizeFactor>
+	<foodMaxFactor>1</foodMaxFactor>
+	<healthScaleFactor>1</healthScaleFactor>
+    <statFactors>
+      <MoveSpeed>1.0</MoveSpeed>
+    </statFactors>
+  </LifeStageDef>
+
+  <LifeStageDef>
+    <defName>TM_GiantSkeleton_Lifestage</defName>
+    <label>giant skeleton</label>
+	<voxPitch>.25</voxPitch>
+	<bodySizeFactor>1.0</bodySizeFactor>
+	<foodMaxFactor>1</foodMaxFactor>
+	<healthScaleFactor>1</healthScaleFactor>
+    <statFactors>
+      <MoveSpeed>1.0</MoveSpeed>
+    </statFactors>
+  </LifeStageDef>
+  
+    <LifeStageDef>
+    <defName>TM_SkeletonLich_Lifestage</defName>
+    <label>skeleton lich</label>
+	<voxPitch>.1</voxPitch>
+	<bodySizeFactor>1.0</bodySizeFactor>
+	<foodMaxFactor>1</foodMaxFactor>
+	<healthScaleFactor>1</healthScaleFactor>
+    <statFactors>
+      <MoveSpeed>1.0</MoveSpeed>
+    </statFactors>
+  </LifeStageDef>
+  
 </Defs>

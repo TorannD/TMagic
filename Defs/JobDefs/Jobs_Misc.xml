@@ -3,6 +3,21 @@
 <Defs>
 
   <!--============= Misc jobs ===============-->
+  
+   <JobDef>
+    <defName>JobDriver_DoMagicBill</defName>
+    <driverClass>TorannMagic.JobDriver_DoMagicBill</driverClass>
+    <reportString>doing magic bill at TargetA.</reportString>
+    <suspendable>false</suspendable>
+    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+  </JobDef>
+  
+  <JobDef>
+    <defName>JobDriver_AssistMagicCircle</defName>
+    <driverClass>TorannMagic.JobDriver_AssistMagicCircle</driverClass>
+    <reportString>preparing circle magic</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
 
   <JobDef>
     <defName>PlacePoisonTrap</defName>

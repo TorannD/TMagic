@@ -209,6 +209,7 @@ Using the arcane forge dramatically increases crafting speed but consumes mana. 
     <surfaceType>Item</surfaceType>
 	<recipes>
       <li>TM_MakeManaweave</li>
+	  <li>TM_MakeArcalleum</li>
     </recipes>
     <inspectorTabs>
       <li>ITab_Bills</li>
@@ -280,9 +281,9 @@ Steel: no bonus
 Wood: no bonus
 Jade: success chance +20%
 Silver: refunds 20% of material cost
-Gold: duration +20%
+Gold: event points +10%, duration +20%
 Uranium: duration and success chance +15%
-Magicyte: refunds 20% of mana cost</description>
+Arcalleum: success chance +10%, refunds 20% of mana cost</description>
     <graphicData>
       <texPath>Items/magic_circle</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -294,17 +295,19 @@ Magicyte: refunds 20% of mana cost</description>
         <cornerBR>Damage/Corner</cornerBR>
       </damageData>
     </graphicData>
+	<drawerType>RealtimeOnly</drawerType>
     <costList>
       <Steel>100</Steel>
 	  <Jade>60</Jade>
 	  <Uranium>60</Uranium>
-	  <RawMagicyte>100</RawMagicyte>
+	  <RawMagicyte>200</RawMagicyte>
     </costList>
     <stuffCategories>
       <li>Metallic</li>
 	  <li>Stony</li>
 	  <li>Woody</li>
     </stuffCategories>
+	<tickerType>Normal</tickerType>
     <costStuffCount>500</costStuffCount>
     <altitudeLayer>Building</altitudeLayer>
     <fillPercent>0.5</fillPercent>
@@ -317,26 +320,43 @@ Magicyte: refunds 20% of mana cost</description>
 	  <WorkTableWorkSpeedFactor>1</WorkTableWorkSpeedFactor>
     </statBases>
     <size>(5,5)</size>
-    <designationCategory>Misc</designationCategory>
+    <designationCategory>Production</designationCategory>
     <passability>Standable</passability>
     <pathCost>20</pathCost>
     <hasInteractionCell>True</hasInteractionCell>
-    <interactionCellOffset>(0,0,1)</interactionCellOffset>
+    <interactionCellOffset>(0,0,2)</interactionCellOffset>
     <surfaceType>Item</surfaceType>
 	<recipes>
-      <li>TM_MakeManaweave</li>
+
     </recipes>
     <inspectorTabs>
       <li>ITab_Bills</li>
     </inspectorTabs>
     <building>
       <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+	  <expandHomeArea>true</expandHomeArea>
+      <hasFuelingPort>false</hasFuelingPort>
     </building>
     <comps>
+	  <li Class="CompProperties_Refuelable">
+        <fuelCapacity>1</fuelCapacity>
+        <targetFuelLevelConfigurable>false</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>1</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Portfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>false</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+		<drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
     </comps>
     <designationHotKey>Misc2</designationHotKey>
 	<researchPrerequisites>
-      <li>TM_ArcaneForging</li>
+      <li>TM_MagicCircle</li>
     </researchPrerequisites>
   </ThingDef>
 
