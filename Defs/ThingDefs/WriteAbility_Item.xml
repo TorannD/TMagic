@@ -147,7 +147,9 @@ Gifted pawns can journal their theories and experiments in this book and learn t
 		<thingClass>ThingWithComps</thingClass>
 		<description>A book ready to be filled with the secrets of unlocking martial powers...
 
-Use a trained fighter to record their combat techniques in the book. The book can then be used to teach another pawn this combat technique.</description>
+Use a trained fighter to record their combat techniques in the book. The book can then be used to teach another pawn this combat technique.
+
+Physically adept pawns can journal their research and training in this book to develop the concepts of a random fighter class.</description>
 		<category>Item</category>
 		<selectable>true</selectable>
 		<altitudeLayer>Item</altitudeLayer>

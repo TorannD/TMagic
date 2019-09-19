@@ -88,12 +88,37 @@ namespace TorannMagic.Conditions
                 this.FindGoodEdgeLocation();
                 this.SpawnWanderingLich();
                 this.SetEventParameters();
+                if(settingsRef.wanderingLichChallenge >= 2)
+                {
+                    InitializeDeathSkies();
+                }
+                if(settingsRef.wanderingLichChallenge >= 3)
+                {
+                    InitializeSolarFlare();
+                }
+
             }
             else
             {
                 this.disabled = true;
                 Log.Message("Wandering Lich spawning disabled.");
             }
+        }
+
+        private void InitializeSolarFlare()
+        {
+            GameConditionManager gameConditionManager = this.SingleMap.GameConditionManager;
+            int duration = Mathf.RoundToInt(this.Duration);
+            GameCondition cond = GameConditionMaker.MakeCondition(GameConditionDefOf.SolarFlare, duration);
+            gameConditionManager.RegisterCondition(cond);
+        }
+
+        private void InitializeDeathSkies()
+        {
+            GameConditionManager gameConditionManager = this.SingleMap.GameConditionManager;
+            int duration = Mathf.RoundToInt(this.Duration);
+            GameCondition cond2 = GameConditionMaker.MakeCondition(TorannMagicDefOf.DarkClouds, duration);
+            gameConditionManager.RegisterCondition(cond2);
         }
 
         private void SetEventParameters()
@@ -255,7 +280,20 @@ namespace TorannMagic.Conditions
                         }
                     }
                 }
-            }           
+            }
+            List<GameCondition> gcs = new List<GameCondition>();
+            gcs = this.SingleMap.GameConditionManager.ActiveConditions;
+            for(int i = 0; i < gcs.Count; i++)
+            {
+                if(gcs[i].def == TorannMagicDefOf.DarkClouds)
+                {
+                    gcs[i].End();
+                }
+                else if(gcs[i].def == GameConditionDefOf.SolarFlare)
+                {
+                    gcs[i].End();
+                }
+            }
             
             base.End();
         }
@@ -370,7 +408,7 @@ namespace TorannMagic.Conditions
             }
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             geChance = 0.02f * wealthMultiplier * settingsRef.wanderingLichChallenge;
-            leChance = 0.12f * settingsRef.wanderingLichChallenge * wealthMultiplier;
+            leChance = 0.14f * settingsRef.wanderingLichChallenge * wealthMultiplier;
         }
 
         public void SpawnSkeletonMinions(IntVec3 center, int radius, Faction faction)

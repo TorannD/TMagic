@@ -12,6 +12,7 @@ namespace TorannMagic.ModOptions
         private bool challenge = false;
         private bool easy = false;
         private bool classOptions = false;
+        private bool eventOptions = false;
 
         private Vector2 scrollPosition = Vector2.zero;
 
@@ -57,9 +58,20 @@ namespace TorannMagic.ModOptions
             num++;
             Rect rowRect2 = UIHelper.GetRowRect(rowRect, rowHeight, num);
             Settings.Instance.needMultiplier = Widgets.HorizontalSlider(rowRect2, Settings.Instance.needMultiplier, .1f, 4f, false, "NeedMultiplier".Translate() + " " + Settings.Instance.needMultiplier, ".1", "4", .1f);
+            Rect rowRect2ShiftRight = UIHelper.GetRowRect(rowRect2, rowHeight, num);
+            rowRect2ShiftRight.x += rowRect.width + 56f;
+            rowRect2ShiftRight.width /= 2;
+            eventOptions = Widgets.ButtonText(rowRect2ShiftRight, "Event Options", true, false, true);
+            if (eventOptions)
+            {
+                Rect rect = new Rect(64f, 64f, 400, 400);
+                EventOptionsWindow newWindow = new EventOptionsWindow();
+                Find.WindowStack.Add(newWindow);
+
+            }
             num++;
             Rect rowRect21 = UIHelper.GetRowRect(rowRect2, rowHeight, num);
-            Settings.Instance.magicyteChance = Widgets.HorizontalSlider(rowRect21, Settings.Instance.magicyteChance, 0, .01f, false, "MagicyteChance".Translate() + " " + Settings.Instance.magicyteChance, "0%", "1%", .0001f);
+            Settings.Instance.magicyteChance = Widgets.HorizontalSlider(rowRect21, Settings.Instance.magicyteChance, 0, .05f, false, "MagicyteChance".Translate() + " " + Settings.Instance.magicyteChance, "0%", "5%", .001f);
             num++;
             Rect rowRect3 = UIHelper.GetRowRect(rowRect21, rowHeight, num);
             rowRect3.width = rowRect3.width * .7f;
@@ -91,13 +103,15 @@ namespace TorannMagic.ModOptions
             Settings.Instance.autocastCombatMinThreshold = Widgets.HorizontalSlider(rowRect66ShiftRight, Settings.Instance.autocastCombatMinThreshold, 0f, 1f, false, "TM_autocastDraftedThreshold".Translate() + " " + (Settings.Instance.autocastCombatMinThreshold * 100) + "%", "0", "1", .01f);
             num++;
             Rect rowRect67 = UIHelper.GetRowRect(rowRect66, rowHeight, num);
-            Settings.Instance.riftChallenge = Widgets.HorizontalSlider(rowRect67, Settings.Instance.riftChallenge, 0, 3, false, "riftChallenge".Translate() + " " + Challenge(Settings.Instance.riftChallenge), "0", "3", 1);
+            Settings.Instance.paracyteSoftCap = Widgets.HorizontalSlider(rowRect67, Settings.Instance.paracyteSoftCap, 0, 500, false, "TM_ParacyteSoftCap".Translate() + " " + (Settings.Instance.paracyteSoftCap), "0", "500", 1);
             Rect rowRect67ShiftRight = UIHelper.GetRowRect(rowRect67, rowHeight, num);
             rowRect67ShiftRight.x += rowRect67.width + 56f;
             Settings.Instance.autocastEvaluationFrequency = Mathf.RoundToInt(Widgets.HorizontalSlider(rowRect67ShiftRight, Settings.Instance.autocastEvaluationFrequency, 60, 600, false, "TM_autocastEvaluationFrequency".Translate() + " " + (Settings.Instance.autocastEvaluationFrequency / 60) + "seconds", "1", "10", .1f));
             num++;
+            Rect rowRect68 = UIHelper.GetRowRect(rowRect67, rowHeight, num);
+            Widgets.CheckboxLabeled(rowRect68, "TM_ParacyteMagesCount".Translate(), ref Settings.Instance.paracyteMagesCount, false);
             num++;
-            Rect rowRect7 = UIHelper.GetRowRect(rowRect67, rowHeight, num);
+            Rect rowRect7 = UIHelper.GetRowRect(rowRect68, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect7, "AICanCast".Translate(), ref Settings.Instance.AICasting, false);
             Rect rowRect7ShiftRight = UIHelper.GetRowRect(rowRect7, rowHeight, num);
             rowRect7ShiftRight.x += rowRect7.width + 56f;
@@ -177,7 +191,10 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.showClassIconOnColonistBar = true;
                 Settings.Instance.classIconSize = 1f;
                 Settings.Instance.AIAggressiveCasting = true;
+                Settings.Instance.paracyteSoftCap = 50f;
+                Settings.Instance.paracyteMagesCount = true;
                 Settings.Instance.riftChallenge = 1f;
+                Settings.Instance.wanderingLichChallenge = 1f;
                 this.deathExplosionDmgMax = "50.0";
                 this.deathExplosionDmgMin = "20.0";
 
@@ -212,7 +229,10 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.changeUndeadAnimalAppearance = true;
                 Settings.Instance.showClassIconOnColonistBar = true;
                 Settings.Instance.AIAggressiveCasting = true;
+                Settings.Instance.paracyteSoftCap = 30f;
+                Settings.Instance.paracyteMagesCount = true;
                 Settings.Instance.riftChallenge = 3f;
+                Settings.Instance.wanderingLichChallenge = 3f;
                 this.deathExplosionDmgMax = "60.0";
                 this.deathExplosionDmgMin = "30.0";
 
@@ -308,11 +328,11 @@ namespace TorannMagic.ModOptions
             {
                 rarity = "None (never happens)";
             }
-            else if (val == 1)
+            else if (val <= 1)
             {
                 rarity = "Easy";
             }
-            else if (val == 2)
+            else if (val <= 2)
             {
                 rarity = "Normal";
             }

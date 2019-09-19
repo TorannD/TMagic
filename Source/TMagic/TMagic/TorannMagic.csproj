@@ -107,8 +107,10 @@
     <Compile Include="CompProperties_SkeletonController.cs" />
     <Compile Include="CompSkeletonLichController.cs" />
     <Compile Include="CompSkeletonController.cs" />
+    <Compile Include="Conditions\GameCondition_DarkClouds.cs" />
     <Compile Include="Conditions\GameCondition_WanderingLich.cs" />
     <Compile Include="Conditions\IncidentWorker_WanderingLich.cs" />
+    <Compile Include="ModOptions\EventOptionsWindow.cs" />
     <Compile Include="Skeletal_DeathWorker.cs" />
     <Compile Include="JobDriver_DoMagicBill.cs" />
     <Compile Include="JobDriver_AssistMagicCircle.cs" />

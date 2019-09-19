@@ -16,7 +16,10 @@ namespace TorannMagic.TMDefs
         public bool applyEnemy = false;
         public bool applyNeutral = false;
         public bool applyNullFaction = false;
-        //Number of pawns the hediff applies to, 0 applies to all
+        //Checks spell penetration (of lead mage) and spell resistance of target
+        //Fails count against the total application number
+        public bool checkResistance = false;
+        //Number of pawns the hediff applies to, 0 applies to all        
         public int maxHediffCount = 0;
         public float hediffSeverity = .5f;
         //Mote to display on target

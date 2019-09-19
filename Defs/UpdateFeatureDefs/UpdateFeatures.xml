@@ -6,98 +6,16 @@
 		<linkUrl>https://ludeon.com/forums/index.php?topic=37161.0</linkUrl>
 	</HugsLib.UpdateFeatureDef>			
 	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_2_3_2</defName>
-		<assemblyVersion>2.3.2</assemblyVersion>
+		<defName>ARimWorldOfMagic_2_3_7</defName>
+		<assemblyVersion>2.3.7</assemblyVersion>
 		<content>
-Update 2.3.2 contains new artifacts and generic mage spells.
+Update 2.3.7
 
-**Craftable artifacts:**
-Bracers of the Pacifist - can only be worn by non-violent pawns but adds considerable stats and magic bonuses
-Bracers of Deflection - 30% chance to block physical attacks and deflect projectiles to nearby enemies
-Bracers of Defense - 40% chance to block physical attacks
-Ring of Keen Intellect - increases the rate at which a pawn can learn and research, but increases mental stress
+Magic Circle: mages perform group work to generate unique events.
 
-The Psionic, Bloodmage, and Deathknight each have a unique ring that increases their unique energy pool; each of these rings can 'grow' depending on the actions and records of the wearer.
-
-**Non-craftable artifacts:**
-Orb of Conviction - can be used to instantly convince a human-like pawn from another faction to join your cause
-Orb of Souls - can harvest the soul of another pawn, stripping them of their traits; the orb will then be filled and can be used to transfer those traits into another pawn - some side effects may occur, including but not limited to death
-Orb of the Eternal - an orb infused with a single blast of healing magic - heals wounds, cures diseases, and restores limbs
-
-New generic mage spell: Blur - 20% chance to dodge any non-explosive attack, sustained spell that requires 20% mana to maintain
-New enchanter spell: Blank Mind - wipes any non-persistent memory from the pawn and causes them to enter a confused state for a brief period; can also be used on enemies to disorient (stun) them
-
-Tweaks:
-Available after researching arcane crafting: wanderer's cloak, royal armor and helm, dark robe, arcane hood, all wands, elephant spear and bow
-Available after researching arcane apparel: robes of the archmage, robes of supremacy (renamed cloak of supremacy), paragon's helm, hood of madness, thrum bow, both staves
-Ability cost reduction is now hard-capped at 50% of the base ability cost
-
-Bug Fixes:
-Faceless reversal will reflect projectiles from turrets
-
---See mod discord announcements for full details! - https://discord.gg/ksksHj --
-		</content>
-	</HugsLib.UpdateFeatureDef>
-		<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_2_3_3</defName>
-		<assemblyVersion>2.3.3</assemblyVersion>
-		<content>
-Update 2.3.3
-
-**Tweaks**
-Paracyte thornbush leaches mana from the atmosphere; each bush reduces mana regeneration by .66%
-
-Druid trait focus changed from tame/train animals to plants
-Mana potion market value adjust; 
-Mana shield absorbs up to 10 damage per hit, excess damage will harm the target
-Fighters and mages add wealth to the colony; the higher the class level, the more wealth is added
-
-Bug Fixes:
-The magical heater allows bills to be worked
-Compatibility for Giddy-up! - no longer despawns a mount if a flight ability is used
-Compatibility for Rimmu-Nation Weapons and ability users
-Crafted apparel correctly accounts for silver/gold crafting modifiers
-
---See mod discord announcements for full details! - https://discord.gg/ksksHj --
-		</content>
-	</HugsLib.UpdateFeatureDef>	
-		<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_2_3_4</defName>
-		<assemblyVersion>2.3.4</assemblyVersion>
-		<content>
-Update 2.3.4
-
-Spanish translation available courtesy of Caferino!
-
-New:
-- Added functionality to give AI casters more chances to cast spells; this can be toggled in the mod options
-- Added an option to see class icons on the colonist bar; this can be toggled in the mod options
-- Enchanting improvement checks have been added - enchanting will only replace lesser enchantments, if no enchantment is replaced then the gem is not consumed
-- Succubus master spell "Scorn" now applies a combat buff/shield immediately following its use; base impact radius reduced from 7 to 5
-- Added mouse attachment icons to provide feedback when targets of abilities are out of sight or beyond range
-- Demons have an additional ability "taunt" to force raider to attack them
-
-- New Mage spell - Arcane Bolt: attack magic available to all casters
-- New Mage spell - Lightning Trap: a proximity trap that discharges bottled lightning
-- New Mage spell - Invisibility: makes the caster invisible and clears hostile targeting
-- New Druid spell - Briar Patch: quickly overgrows a patch of land with thorny entanglements
-
-- New Fighter skill - Throwing Knife: complimentary ranged skill for all fighter types
-- New Fighter skill - Burning Fury: consumes stamina to fuel a shield of fiery fury
-- New Fighter Skill - Pommel Strike: an attack meant to disable rather than kill, can be used to safely down a wounded target
-
---See mod discord announcements for all the details on tweaks and bug fixes! - https://discord.gg/ksksHj --
-		</content>
-	</HugsLib.UpdateFeatureDef>
-			<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>ARimWorldOfMagic_2_3_5</defName>
-		<assemblyVersion>2.3.5</assemblyVersion>
-		<content>
-Update 2.3.5
-
-Monk (fighter): martial arts masters that focus chi to enhance all aspects of their life.
-
-Chronomancer (mage): a utility mage that expands their awareness across time and has learned to manipulate those insights to their advantage.
+Wandering Lich Event: A new, magic event that will challenge mid to late game colonies. Once the lich appears, it will resurrect undead minions and send waves of undead to assault the colony. This event comes with a fully tailorable difficulty scale that takes into account player wealth, storyteller difficulty, and a custom difficulty set in mod options.
+	
+Arcalleum - a unique alloy that has elastic properties that provide excellent defense against blunt attacks, but less than nominal use in weapons. Fighters and mages equipped with Arcalleum also benefit from its power to instantly reset abilities.
 
 --See mod discord announcements for all the details on tweaks and bug fixes! - https://discord.gg/ksksHj --
 		</content>

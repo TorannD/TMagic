@@ -12,7 +12,7 @@
     <workSpeedStat>TailoringSpeed</workSpeedStat>
     <effectWorking>Tailor</effectWorking>
     <soundWorking>Recipe_Tailor</soundWorking>
-    <workAmount>8000</workAmount>
+    <workAmount>6000</workAmount>
 	<workSkillLearnFactor>1.1</workSkillLearnFactor>
 <!-- 	<recipeUsers>
 		<li>TableGemcutting</li>
@@ -53,7 +53,7 @@
     <workSpeedStat>SmeltingSpeed</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Smelt</soundWorking>
-    <workAmount>15000</workAmount>
+    <workAmount>6000</workAmount>
 	<workSkillLearnFactor>1.1</workSkillLearnFactor>
 <!-- 	<recipeUsers>
 		<li>TableGemcutting</li>
@@ -89,7 +89,7 @@
             <li>Silver</li>
           </thingDefs>
         </filter>
-        <count>50</count>
+        <count>5</count>
       </li>
     </ingredients>
     <products>

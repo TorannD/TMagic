@@ -32,6 +32,8 @@ namespace TorannMagic.ModOptions
         public bool showClassIconOnColonistBar = true;
         public float classIconSize = 1f;
         public bool unrestrictedBloodTypes = true;
+        public float paracyteSoftCap = 50f;
+        public bool paracyteMagesCount = true;
 
         //autocast options
         public bool autocastEnabled = true;
@@ -101,6 +103,8 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<bool>(ref this.showClassIconOnColonistBar, "showClassIconOnColonistBar", true, false);
             Scribe_Values.Look<float>(ref this.classIconSize, "classIconSize", 1f, false);
             Scribe_Values.Look<bool>(ref this.unrestrictedBloodTypes, "unrestrictedBloodTypes", true, false);
+            Scribe_Values.Look<float>(ref this.paracyteSoftCap, "paracyteSoftCap", 1f, false);
+            Scribe_Values.Look<bool>(ref this.paracyteMagesCount, "paracyteMagesCount", true, false);
 
             Scribe_Values.Look<bool>(ref this.autocastEnabled, "autocastEnabled", true, false);
             Scribe_Values.Look<float>(ref this.autocastMinThreshold, "autocastMinThreshold", 0.7f, false);

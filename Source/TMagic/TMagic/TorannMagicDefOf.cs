@@ -120,6 +120,7 @@ namespace TorannMagic
 
         public static GameConditionDef ManaDrain;
         public static GameConditionDef ManaSurge;
+        public static GameConditionDef DarkClouds;
         public static HediffDef TM_ManaSickness;
         public static HediffDef TM_ArcaneSickness;
         public static HediffDef TM_ArcaneWeakness;
@@ -344,6 +345,7 @@ namespace TorannMagic
         public static TMAbilityDef TM_DeathMark_I;
         public static TMAbilityDef TM_DeathMark_II;
         public static TMAbilityDef TM_DeathMark_III;
+        public static HediffDef TM_DeathMarkCurse;
         public static HediffDef TM_DeathMarkHD;
         public static TMAbilityDef TM_FogOfTorment;
         public static HediffDef TM_TormentHD;

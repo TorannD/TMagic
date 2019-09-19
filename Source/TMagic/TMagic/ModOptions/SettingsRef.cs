@@ -31,6 +31,8 @@ namespace TorannMagic.ModOptions
         public bool showClassIconOnColonistBar = Settings.Instance.showClassIconOnColonistBar;
         public float classIconSize = Settings.Instance.classIconSize;
         public bool unrestrictedBloodTypes = Settings.Instance.unrestrictedBloodTypes;
+        public float paracyteSoftCap = Settings.Instance.paracyteSoftCap;
+        public bool paracyteMagesCount = Settings.Instance.paracyteMagesCount;
 
         //autocast
         public bool autocastEnabled = Settings.Instance.autocastEnabled;

@@ -261,22 +261,25 @@ namespace TorannMagic
                             int paracyteCount = paracyteBushes.Count;
                             List<Pawn> mapPawns = this.pawn.Map.mapPawns.AllPawnsSpawned;
                             int mageCount = 0;
-                            for (int i = 0; i < mapPawns.Count; i++)
+                            if (settingsRef.paracyteMagesCount)
                             {
-                                if (mapPawns[i] != null && mapPawns[i].Spawned && !mapPawns[i].Dead && !mapPawns[i].AnimalOrWildMan())
+                                for (int i = 0; i < mapPawns.Count; i++)
                                 {
-                                    CompAbilityUserMagic mageCheck = mapPawns[i].GetComp<CompAbilityUserMagic>();
-                                    if (mageCheck != null && mageCheck.IsMagicUser && !mapPawns[i].story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                                    if (mapPawns[i] != null && mapPawns[i].Spawned && !mapPawns[i].Dead && !mapPawns[i].AnimalOrWildMan())
                                     {
-                                        mageCount++;
+                                        CompAbilityUserMagic mageCheck = mapPawns[i].GetComp<CompAbilityUserMagic>();
+                                        if (mageCheck != null && mageCheck.IsMagicUser && !mapPawns[i].story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                                        {
+                                            mageCount++;
+                                        }
                                     }
                                 }
                             }
 
                             int mapManaDrainerCount = paracyteCount + (2 * mageCount);
-                            if (mapManaDrainerCount > 50)
+                            if (mapManaDrainerCount > settingsRef.paracyteSoftCap)
                             {
-                                mapManaDrainerCount -= 50;
+                                mapManaDrainerCount -= Mathf.RoundToInt(settingsRef.paracyteSoftCap);
                             }
                             else
                             {

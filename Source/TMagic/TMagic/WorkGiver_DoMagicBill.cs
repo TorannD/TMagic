@@ -226,60 +226,87 @@ namespace TorannMagic
                     bill.lastIngredientSearchFailTicks = 0;
                     if (bill.ShouldDoNow() && bill.PawnAllowedToStartAnew(pawn))
                     {
-
-                        SkillRequirement skillRequirement = bill.recipe.FirstSkillRequirementPawnDoesntSatisfy(pawn);
-                        if (skillRequirement != null)
+                        bool issueBill = true;
+                        this.magicCircle = thing as Building_TMMagicCircle;
+                        List<Pawn> billPawns = new List<Pawn>();
+                        billPawns.Clear();
+                        if (bill.recipe is MagicRecipeDef)
                         {
-                            JobFailReason.Is("UnderRequiredSkill".Translate(skillRequirement.minLevel), bill.Label);
+                            MagicRecipeDef magicRecipe = bill.recipe as MagicRecipeDef;
+                            CompAbilityUserMagic compMagic = pawn.TryGetComp<CompAbilityUserMagic>();                            
+                            if (!magicCircle.CanEverDoBill(bill, out billPawns, magicRecipe))
+                            {
+                                issueBill = false;
+                            }
+                            if(!billPawns.Contains(pawn))
+                            {
+                                issueBill = false;
+                            }
                         }
-                        else
-                        {
-                            Bill_ProductionWithUft bill_ProductionWithUft = bill as Bill_ProductionWithUft;
-                            if (bill_ProductionWithUft != null)
-                            {
-                                if (bill_ProductionWithUft.BoundUft != null)
-                                {
-                                    if (bill_ProductionWithUft.BoundWorker == pawn && pawn.CanReserveAndReach(bill_ProductionWithUft.BoundUft, PathEndMode.Touch, Danger.Deadly) && !bill_ProductionWithUft.BoundUft.IsForbidden(pawn))
-                                    {
-                                        return FinishUftJob(pawn, bill_ProductionWithUft.BoundUft, bill_ProductionWithUft);
-                                    }
-                                    continue;
-                                }
-                                UnfinishedThing unfinishedThing = ClosestUnfinishedThingForBill(pawn, bill_ProductionWithUft);
-                                if (unfinishedThing != null)
-                                {
-                                    return FinishUftJob(pawn, unfinishedThing, bill_ProductionWithUft);
-                                }
-                            }
-                            if (TryFindBestBillIngredients(bill, pawn, (Thing)giver, chosenIngThings))
-                            {
-                                this.magicCircle = thing as Building_TMMagicCircle;
-                                if (bill.recipe is MagicRecipeDef)
-                                {
-                                    MagicRecipeDef magicRecipe = bill.recipe as MagicRecipeDef;
-                                    CompAbilityUserMagic compMagic = pawn.TryGetComp<CompAbilityUserMagic>();
-                                    if (magicCircle.CanDoJob(compMagic, magicRecipe, thing))
-                                    {
-                                        for (int j = 1; j < magicCircle.MageList.Count; j++)
-                                        {
-                                            magicCircle.IssueAssistJob(magicCircle.MageList[j]);
-                                        }
-                                    }
-                                }
 
-                                Job result = TryStartNewDoBillJob(pawn, bill, giver);
-                                chosenIngThings.Clear();
-                                return result;
-                            }
-                            if (FloatMenuMakerMap.makingFor != pawn)
+                        if (issueBill)
+                        {
+                            SkillRequirement skillRequirement = bill.recipe.FirstSkillRequirementPawnDoesntSatisfy(pawn);
+                            if (skillRequirement != null)
                             {
-                                bill.lastIngredientSearchFailTicks = Find.TickManager.TicksGame;
+                                JobFailReason.Is("UnderRequiredSkill".Translate(skillRequirement.minLevel), bill.Label);
                             }
                             else
                             {
-                                JobFailReason.Is(MissingMaterialsTranslated, bill.Label);
+                                Bill_ProductionWithUft bill_ProductionWithUft = bill as Bill_ProductionWithUft;
+                                if (bill_ProductionWithUft != null)
+                                {
+                                    if (bill_ProductionWithUft.BoundUft != null)
+                                    {
+                                        if (bill_ProductionWithUft.BoundWorker == pawn && pawn.CanReserveAndReach(bill_ProductionWithUft.BoundUft, PathEndMode.Touch, Danger.Deadly) && !bill_ProductionWithUft.BoundUft.IsForbidden(pawn))
+                                        {
+                                            return FinishUftJob(pawn, bill_ProductionWithUft.BoundUft, bill_ProductionWithUft);
+                                        }
+                                        continue;
+                                    }
+                                    UnfinishedThing unfinishedThing = ClosestUnfinishedThingForBill(pawn, bill_ProductionWithUft);
+                                    if (unfinishedThing != null)
+                                    {
+                                        return FinishUftJob(pawn, unfinishedThing, bill_ProductionWithUft);
+                                    }
+                                }
+                                if (TryFindBestBillIngredients(bill, pawn, (Thing)giver, chosenIngThings))
+                                {
+                                    this.magicCircle = thing as Building_TMMagicCircle;
+                                    if (this.magicCircle != null && bill.recipe is MagicRecipeDef)
+                                    {
+                                        this.magicCircle.magicRecipeDef = bill.recipe as MagicRecipeDef;
+                                        this.magicCircle.MageList.Clear();
+                                        magicCircle.MageList.Add(pawn);
+                                        //Log.Message("assigning magic bill to " + pawn.LabelShort);
+                                        if (bill.recipe is MagicRecipeDef && billPawns.Count > 1)
+                                        {
+                                            for (int j = 0; j < billPawns.Count; j++)
+                                            {
+                                                if (billPawns[j] != pawn)
+                                                {
+                                                    magicCircle.MageList.Add(billPawns[j]);
+                                                    magicCircle.IssueAssistJob(billPawns[j]);
+                                                    //Log.Message("assisting magic bill to " + billPawns[j].LabelShort);
+                                                }
+                                            }
+                                        }
+                                        this.magicCircle.IsPending = true;
+                                    }
+                                    Job result = TryStartNewDoBillJob(pawn, bill, giver);
+                                    chosenIngThings.Clear();
+                                    return result;
+                                }
+                                if (FloatMenuMakerMap.makingFor != pawn)
+                                {
+                                    bill.lastIngredientSearchFailTicks = Find.TickManager.TicksGame;
+                                }
+                                else
+                                {
+                                    JobFailReason.Is(MissingMaterialsTranslated, bill.Label);
+                                }
+                                chosenIngThings.Clear();
                             }
-                            chosenIngThings.Clear();
                         }
                     }
                 }

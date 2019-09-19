@@ -239,7 +239,7 @@ namespace TorannMagic
                             }
                         }
 
-                        if (this.nextPsionicAttack < Find.TickManager.TicksGame && this.Pawn.Drafted)
+                        if (this.nextPsionicAttack < Find.TickManager.TicksGame && this.Pawn.Drafted && comp.usePsionicMindAttackToggle)
                         {
                             if (this.Pawn.CurJob.def != TorannMagicDefOf.JobDriver_PsionicBarrier && VerVal > 0)
                             {

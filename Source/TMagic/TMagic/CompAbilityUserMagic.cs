@@ -3031,14 +3031,13 @@ namespace TorannMagic
                 flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Enchanter);
                 if (flag2)
                 {
-                    //Log.Message("Initializing Heart of Frost Abilities");
                     if (abilityUser.IsColonist && !abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false))
                     {
                         if (Rand.Chance(.5f))
                         {
                             this.AddPawnAbility(TorannMagicDefOf.TM_EnchantedBody);
                             this.AddPawnAbility(TorannMagicDefOf.TM_EnchantedAura);
-                            this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedAura).learned = true;
+                            this.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedAura).learned = true;
                             this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedBody).learned = true;
                             this.spell_EnchantedAura = true;
                         }
@@ -3092,6 +3091,7 @@ namespace TorannMagic
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_EnchantedBody);
                         this.AddPawnAbility(TorannMagicDefOf.TM_EnchantedAura);
+                        this.spell_EnchantedAura = true;
                         this.AddPawnAbility(TorannMagicDefOf.TM_Transmutate);
                         this.AddPawnAbility(TorannMagicDefOf.TM_EnchanterStone);
                         this.AddPawnAbility(TorannMagicDefOf.TM_EnchantWeapon);
@@ -3845,6 +3845,7 @@ namespace TorannMagic
                 //flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Enchanter);
                 if (flag2)
                 {
+
                     foreach (MagicPower currentE in this.MagicData.MagicPowersE)
                     {
                         if (currentE.abilityDef != TorannMagicDefOf.TM_Shapeshift)
@@ -3856,6 +3857,7 @@ namespace TorannMagic
                     this.RemovePawnAbility(TorannMagicDefOf.TM_Polymorph_I);
                     this.RemovePawnAbility(TorannMagicDefOf.TM_Polymorph_II);
                     this.RemovePawnAbility(TorannMagicDefOf.TM_Polymorph_III);
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_EnchantedAura);
                 }
                 // flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Chronomancer);
                 if (flag2)

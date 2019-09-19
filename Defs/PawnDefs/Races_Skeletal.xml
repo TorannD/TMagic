@@ -51,6 +51,7 @@
     <useHitPoints>false</useHitPoints>
     <hasTooltip>true</hasTooltip>
     <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+	<filthLeaving>Filth_CorpseBile</filthLeaving>
 	<tradeability>None</tradeability>
     <statBases>
       <Mass>100</Mass>
@@ -92,7 +93,7 @@
   <ThingDef ParentName="TM_Skeletal_Base" Name="TM_SkeletonLich">
     <defName>TM_SkeletonLichR</defName>
     <label>skeleton lich</label>
-    <description>The withered and faded bones of an ancient lich embodied by the spirit of malevolence and hatred; whoever, or whatever, this being once was is no more, its sole purpose is to destroy all life and replace it with undeath.</description>
+    <description>The withered and faded bones of an ancient lich embodied by the spirit of malevolence and hatred; whoever, or whatever, this being once was is no more; its sole purpose is to destroy all life and replace it with undeath.</description>
     <statBases>
       <MoveSpeed>4.5</MoveSpeed>
       <ArmorRating_Blunt>0.3</ArmorRating_Blunt>
@@ -105,8 +106,8 @@
         <capacities>
           <li>TM_ShadowBurn</li>
         </capacities>
-        <power>15</power>
-        <cooldownTime>.8</cooldownTime>
+        <power>19</power>
+        <cooldownTime>1.1</cooldownTime>
         <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
       </li>
 	  <li>
@@ -114,8 +115,8 @@
         <capacities>
           <li>TM_ShadowBurn</li>
         </capacities>
-        <power>15</power>
-        <cooldownTime>.8</cooldownTime>
+        <power>19</power>
+        <cooldownTime>1.1</cooldownTime>
         <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
       </li>
 	  <li>
@@ -203,12 +204,12 @@
   <ThingDef ParentName="TM_Skeletal_Base" Name="TM_GiantSkeleton">
     <defName>TM_GiantSkeletonR</defName>
     <label>Giant skeleton</label>
-    <description>An enourmous skeleton; this abomination was either created from the bones of an enourmous creature or from the combined bones of lesser creatures; created through the power of necromancy, this skeleton has wandered to world for ages - long enough to develop a simple instinct that hates all life.</description>
+    <description>An enormous skeleton; this abomination was either created from the bones of an enormous creature or by combining the bones of lesser creatures; created through the power of necromancy, this skeleton is embodied by a vengeful spirit that has wandered to world for ages - long enough to develop a simple instinct that hates all life.</description>
     <statBases>
       <MoveSpeed>3.5</MoveSpeed>
-      <ArmorRating_Blunt>0.4</ArmorRating_Blunt>
-      <ArmorRating_Sharp>0.95</ArmorRating_Sharp>
-      <ArmorRating_Heat>2</ArmorRating_Heat>      
+      <ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.9</ArmorRating_Sharp>
+      <ArmorRating_Heat>1.8</ArmorRating_Heat>      
     </statBases>
 	<tools>
       <li>
@@ -216,8 +217,8 @@
         <capacities>
           <li>Blunt</li>
         </capacities>
-        <power>17</power>
-        <cooldownTime>1.5</cooldownTime>
+        <power>21</power>
+        <cooldownTime>2.1</cooldownTime>
         <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
       </li>
 	  <li>
@@ -225,8 +226,8 @@
         <capacities>
           <li>Blunt</li>
         </capacities>
-        <power>17</power>
-        <cooldownTime>1.5</cooldownTime>
+        <power>21</power>
+        <cooldownTime>2.1</cooldownTime>
         <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
       </li>
 	  <li>
@@ -234,13 +235,13 @@
         <capacities>
           <li>Bite</li>
         </capacities>
-        <power>21</power>
-        <cooldownTime>2</cooldownTime>
+        <power>27</power>
+        <cooldownTime>2.5</cooldownTime>
         <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
       </li>
 	</tools>
     <race>
-	  <baseHealthScale>4.0</baseHealthScale>	
+	  <baseHealthScale>4</baseHealthScale>	
       <lifeExpectancy>2000</lifeExpectancy>
 		<lifeStageAges>
         <li>
@@ -309,12 +310,12 @@
   <ThingDef ParentName="TM_Skeletal_Base" Name="TM_Skeleton">
     <defName>TM_SkeletonR</defName>
     <label>Skeleton</label>
-    <description>Physical husks of creatures raised through the power of necromancy that have wandered to world for ages - long enough to develop a simple instinct that hates all life.</description>
+    <description>Physical husks of creatures raised through the power of necromancy; their sole instinct is to obey their master and destroy all life.</description>
     <statBases>
       <MoveSpeed>3.5</MoveSpeed>
       <ArmorRating_Blunt>0.1</ArmorRating_Blunt>
-      <ArmorRating_Sharp>0.6</ArmorRating_Sharp>
-      <ArmorRating_Heat>2</ArmorRating_Heat>      
+      <ArmorRating_Sharp>0.5</ArmorRating_Sharp>
+      <ArmorRating_Heat>1.5</ArmorRating_Heat>      
     </statBases>
 	<tools>
       <li>
@@ -322,8 +323,8 @@
         <capacities>
           <li>Blunt</li>
         </capacities>
-        <power>9</power>
-        <cooldownTime>1.5</cooldownTime>
+        <power>13</power>
+        <cooldownTime>2</cooldownTime>
         <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
       </li>
 	  <li>
@@ -331,8 +332,8 @@
         <capacities>
           <li>Blunt</li>
         </capacities>
-        <power>9</power>
-        <cooldownTime>1.5</cooldownTime>
+        <power>13</power>
+        <cooldownTime>2</cooldownTime>
         <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
       </li>
 	  <li>
@@ -340,13 +341,13 @@
         <capacities>
           <li>Bite</li>
         </capacities>
-        <power>11</power>
-        <cooldownTime>2</cooldownTime>
+        <power>17</power>
+        <cooldownTime>2.5</cooldownTime>
         <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
       </li>
 	</tools>
     <race>
-	  <baseHealthScale>1.0</baseHealthScale>	
+	  <baseHealthScale>1</baseHealthScale>	
       <lifeExpectancy>2000</lifeExpectancy>
 		<lifeStageAges>
         <li>

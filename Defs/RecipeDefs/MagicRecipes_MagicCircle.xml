@@ -18,8 +18,12 @@
   
   <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
     <defName>TM_HeatWaveMR</defName>
-    <label>Universal: Heatwave</label>
-    <description>A heat wave envelops the map</description>
+    <label>Alteration: Heatwave</label>
+    <description>A heat wave envelops the map
+Casters: 3
+Mana: 50 ea.
+Fail chance: 5%
+Fail backlash: 0</description>
     <jobString>summoning heat wave</jobString>
 	<mageCount>3</mageCount>
 	<manaCost>1.5</manaCost>
@@ -85,6 +89,7 @@
 	<resultHediffs>
 	  <li>
 		<resultHediff></resultHediff>
+		<checkResistance>false</checkResistance>
 		<maxHediffCount>0</maxHediffCount>
 		<hediffSeverity>.5</hediffSeverity>
 		<applyFriendly>false</applyFriendly>
@@ -115,8 +120,12 @@
   
   <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
     <defName>TM_ColdSnapMR</defName>
-    <label>Universal: Cold snap</label>
-    <description>A cold snap envelops the map</description>
+    <label>Alteration: Cold snap</label>
+    <description>A cold snap envelops the map
+Casters: 3
+Mana: 50 ea.
+Fail chance: 5%
+Fail backlash: 0</description>
     <jobString>summoning cold wave</jobString>
 	<mageCount>3</mageCount>
 	<manaCost>1.5</manaCost>
@@ -156,9 +165,62 @@
   </TorannMagic.MagicRecipeDef>
   
   <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
+    <defName>TM_PsychicSootheMR</defName>
+    <label>Alteration: Psychic Soothe</label>
+    <description>Create soothing psychic emanations
+Casters: 3
+Mana: 50 ea.
+Fail chance: 20%
+Fail backlash: 10</description>
+    <jobString>creating psychic soothe</jobString>
+	<mageCount>3</mageCount>
+	<manaCost>1.5</manaCost>
+    <workAmount>50000</workAmount>
+	<failChance>.2</failChance>
+	<failManaConsumed>.5</failManaConsumed>
+	<failDamageApplied>10</failDamageApplied>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawMagicyte</li>
+          </thingDefs>
+        </filter>
+        <count>50</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>Silver</li>
+          </thingDefs>
+        </filter>
+        <count>50</count>
+      </li>
+    </ingredients>
+    <products>
+	<!-- Enter produced products here; can also use spawn things -->
+    </products>
+	<resultIncidents>
+	  <li>
+		<resultIncident>PsychicSoothe</resultIncident>
+		<incidentPoints>0</incidentPoints>
+		<incidentHostile>false</incidentHostile> <!-- attempts to create the incident with hostile parameters if true -->
+		<countRange>
+		  <min>1</min>
+		  <max>1</max>
+		</countRange>
+	  </li>
+	</resultIncidents>	
+  </TorannMagic.MagicRecipeDef>
+  
+  <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
     <defName>TM_MeteorFallMR</defName>
     <label>Conjuration: Attract meteors</label>
-    <description>causes multiple meteors to impact nearby</description>
+    <description>Causes multiple meteors to impact nearby
+Casters: 3
+Mana: 60 ea.
+Fail chance: 8%
+Fail backlash: 0</description>
     <jobString>summoning meteors</jobString>
 	<mageCount>3</mageCount>
 	<manaCost>1.8</manaCost>
@@ -208,19 +270,24 @@
   <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
     <defName>TM_CreateGiantSkeletonMR</defName>
     <label>Conjuration: Giant skeleton</label>
-    <description>creates and animates giant skeleton from a pile of corpses; the skeleton will defend the colony for 5 days</description>
+    <description>Creates a giant, animated skeleton from a pile of corpses; the skeleton will defend the colony for 5 days or until destroyed.
+Casters: 4
+Mana: 50 ea.
+Fail chance: 10%
+Fail backlash: 8</description>
     <jobString>animating skeleton</jobString>
-	<mageCount>5</mageCount>
-	<manaCost>2.5</manaCost>
+	<mageCount>4</mageCount>
+	<manaCost>2</manaCost>
     <workAmount>80000</workAmount>
 	<failChance>.1</failChance>
 	<failManaConsumed>.5</failManaConsumed>
 	<failDamageApplied>8</failDamageApplied>
+	<allowMixingIngredients>true</allowMixingIngredients>
     <ingredients>
       <li>
         <filter>
           <categories>
-            <li>Corpses</li>
+            <li>CorpsesHumanlike</li>
           </categories>
         </filter>
         <count>3</count>
@@ -228,7 +295,7 @@
     </ingredients>
     <fixedIngredientFilter>
       <categories>
-        <li>Corpses</li>
+        <li>CorpsesHumanlike</li>
       </categories>
       <disallowedCategories>
         <li>CorpsesMechanoid</li>
@@ -265,7 +332,12 @@
   <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
     <defName>TM_ArcaneAugmentationMR</defName>
     <label>Enchantment: Arcane Augmentation</label>
-    <description>Applies numerous arcane buffs to colonists</description>
+    <description>Applies numerous arcane buffs to colonists.
+Casters: 3
+Target max: 10
+Mana: 40 ea.
+Fail chance: 15%
+Fail backlash: 6</description>
     <jobString>applying arcane augmentations</jobString>
 	<mageCount>3</mageCount>
 	<manaCost>1.2</manaCost>
@@ -342,6 +414,51 @@
 		  <max>1</max>
 		</countRange>
 	  </li>
+	</resultHediffs>
+  </TorannMagic.MagicRecipeDef>
+  
+  <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
+    <defName>TM_BlightWildlifeMR</defName>
+    <label>Enchantment: Blight wildlife</label>
+    <description>Blights all wildlife with the plague.
+Casters: 3
+Mana: 40 ea.
+Fail chance: 15%
+Fail backlash: 6</description>
+    <jobString>applying arcane augmentations</jobString>
+	<mageCount>3</mageCount>
+	<manaCost>1.2</manaCost>
+    <workAmount>80000</workAmount>
+	<failChance>.15</failChance>
+	<failManaConsumed>.25</failManaConsumed>
+	<failDamageApplied>6</failDamageApplied>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawMagicyte</li>
+          </thingDefs>
+        </filter>
+        <count>100</count>
+      </li>
+    </ingredients>
+    <products>
+    </products>
+	<resultHediffs>
+	  <li>
+		<resultHediff>Animal_Plague</resultHediff>
+		<maxHediffCount>0</maxHediffCount>
+		<hediffSeverity>.1</hediffSeverity>
+		<applyFriendly>false</applyFriendly>
+		<applyEnemy>false</applyEnemy>
+		<applyNeutral>false</applyNeutral>
+		<applyNullFaction>true</applyNullFaction>
+		<moteDef>Mote_Arcane</moteDef>
+		<countRange>
+		  <min>1</min>
+		  <max>1</max>
+		</countRange>
+	  </li>	  
 	</resultHediffs>
   </TorannMagic.MagicRecipeDef>
 

@@ -1260,6 +1260,30 @@ namespace TorannMagic
                     gizmoList.Add(energyGizmo);
 
                 }
+                if (__instance.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
+                {
+                    String toggle = "cleave";
+                    String label = "TM_CleaveEnabled".Translate();
+                    String desc = "TM_CleaveToggleDesc".Translate();
+                    if (!compMight.useCleaveToggle)
+                    {
+                        toggle = "cleavetoggle_off";
+                        label = "TM_CleaveDisabled".Translate();
+                    }
+                    Command_Toggle item = new Command_Toggle
+                    {
+                        defaultLabel = label,
+                        defaultDesc = desc,
+                        order = -90,
+                        icon = ContentFinder<Texture2D>.Get("UI/" + toggle, true),
+                        isActive = (() => compMight.useCleaveToggle),
+                        toggleAction = delegate
+                        {
+                            compMight.useCleaveToggle = !compMight.useCleaveToggle;
+                        }
+                    };
+                    gizmoList.Add(item);
+                }
                 if (__instance.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
                 {
                     String toggle = "psionicaugmentation";
@@ -1283,6 +1307,28 @@ namespace TorannMagic
                         }
                     };
                     gizmoList.Add(item);
+
+                    String toggle2 = "psionicmindattack";
+                    String label2 = "TM_MindAttackEnabled".Translate();
+                    String desc2 = "TM_MindAttackToggleDesc".Translate();
+                    if (!compMight.usePsionicMindAttackToggle)
+                    {
+                        toggle2 = "psionicmindattack_off";
+                        label2 = "TM_MindAttackDisabled".Translate();
+                    }
+                    Command_Toggle item2 = new Command_Toggle
+                    {
+                        defaultLabel = label2,
+                        defaultDesc = desc2,
+                        order = -89,
+                        icon = ContentFinder<Texture2D>.Get("UI/" + toggle2, true),
+                        isActive = (() => compMight.usePsionicMindAttackToggle),
+                        toggleAction = delegate
+                        {
+                            compMight.usePsionicMindAttackToggle = !compMight.usePsionicMindAttackToggle;
+                        }
+                    };
+                    gizmoList.Add(item2);
                 }
                 if (__instance.story.traits.HasTrait(TorannMagicDefOf.Technomancer) && compMagic.HasTechnoBit)
                 {
@@ -1943,11 +1989,11 @@ namespace TorannMagic
                         {
                             if (instigator.RaceProps.Humanlike && instigator.story != null && instigator.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
                             {
-                                if (instigator.equipment.Primary != null && !instigator.equipment.Primary.def.IsRangedWeapon)
+                                if (instigator.equipment.Primary != null && instigator.equipment.Primary.def.IsMeleeWeapon)
                                 {
                                     float cleaveChance = Mathf.Min(instigator.equipment.Primary.def.BaseMass * .4f, .75f);
                                     CompAbilityUserMight comp = instigator.GetComp<CompAbilityUserMight>();
-                                    if (Rand.Chance(cleaveChance) && comp.Stamina.CurLevel >= comp.ActualStaminaCost(TorannMagicDefOf.TM_Cleave))
+                                    if (comp.useCleaveToggle && Rand.Chance(cleaveChance) && comp.Stamina.CurLevel >= comp.ActualStaminaCost(TorannMagicDefOf.TM_Cleave) && (pawn.Position - instigator.Position).LengthHorizontal <= 1.6f)
                                     {
                                         MightPowerSkill pwr = comp.MightData.MightPowerSkill_Cleave.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Cleave_pwr");
                                         MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");

@@ -421,7 +421,7 @@ Range: 20</description>
         <label>Cleave</label>
         <uiIconPath>UI/cleave</uiIconPath>
         <description>Executes a powerful, sweeping blow that can strike multiple enemies adjacent to the target. As long as the gladiator has enough stamina, this ability works automatically whenever the gladiator performs a melee attack. Cleave chance is calculated from weapon mass - heavier weapons are more likely to cleave.</description>
-        <staminaCost>0.12</staminaCost>
+        <staminaCost>0.08</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Cleave</verbClass>
             <hasStandardCommand>true</hasStandardCommand>

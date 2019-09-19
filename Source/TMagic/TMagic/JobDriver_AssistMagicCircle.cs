@@ -83,6 +83,10 @@ namespace TorannMagic
                                 }
                                 age = 0;
                             }
+                            else
+                            {
+                                this.EndJobWith(JobCondition.InterruptForced);
+                            }
                         }
                         else
                         {

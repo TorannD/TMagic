@@ -106,7 +106,7 @@ namespace TorannMagic
                     float wornRatio = ((float)transmutateThing.HitPoints / (float)transmutateThing.MaxHitPoints);
                     Thing thing = transmutateThing;
 
-                    if (compQual != null && Rand.Chance((.03f * pwrVal)* comp.arcaneDmg))
+                    if (compQual != null && Rand.Chance((.03f * pwrVal)* comp.arcaneDmg) && compQual.Quality != QualityCategory.Legendary)
                     {
                         thing.TryGetComp<CompQuality>().SetQuality(compQual.Quality + 1, ArtGenerationContext.Colony);
                     }

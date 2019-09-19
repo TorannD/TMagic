@@ -401,13 +401,14 @@ namespace TorannMagic
             FactionDef val = FactionDefOf.PlayerColony;
             Faction obj = null;
 
-            if(spawnAbleFaction != null)
+            if(spawnAbleFaction != null && !hostile)
             {
                 return spawnAbleFaction;
             }
+
             obj = ((caster != null) ? caster.Faction : null);
             Faction val2 = obj;
-            if (!hostile)
+            if (hostile)
             {
                 if (obj != null && !val2.IsPlayer)
                 {
@@ -421,12 +422,21 @@ namespace TorannMagic
                 {
                     val = spawnables.kindDef.defaultFactionType;
                 }
+                if(val != null)
+                {
+                    return FactionUtility.DefaultFactionFrom(val);
+                }
+                else
+                {
+                    return Find.FactionManager.RandomEnemyFaction(true, true, true);
+                }
             }
-            else
+            if (caster != null && caster.Faction != null)
             {
-                return Find.FactionManager.RandomEnemyFaction(true, true, true);
+                return caster.Faction;
             }
-            return FactionUtility.DefaultFactionFrom(val);
+            return Find.FactionManager.AllFactionsVisible.RandomElement();            
+            
         }
 
         public static TMPawnSummoned SpawnPawn(Pawn caster, SpawnThings spawnables, Faction faction, IntVec3 position, int duration)

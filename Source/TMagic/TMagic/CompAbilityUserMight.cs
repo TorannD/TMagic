@@ -86,6 +86,8 @@ namespace TorannMagic
         public bool animalBondingDisabled = false;
 
         public bool usePsionicAugmentationToggle = true;
+        public bool usePsionicMindAttackToggle = true;
+        public bool useCleaveToggle = true;
         public List<Thing> combatItems = new List<Thing>();
         public int allowMeditateTick = 0;
 
@@ -2222,7 +2224,7 @@ namespace TorannMagic
                             }
                             float actualDmg;
                             float dmgAmt = dinfo.Amount;
-                            this.Stamina.GainNeed((.005f * dmgAmt) + (.002f * (float)ver.level));
+                            this.Stamina.GainNeed((.01f * dmgAmt) + (.005f * (float)ver.level));
                             if (dmgAmt < mitigationAmt)
                             {
                                 actualDmg = 0;
@@ -2232,7 +2234,7 @@ namespace TorannMagic
                             {
                                 actualDmg = dmgAmt - mitigationAmt;
                             }
-                            fortitudeMitigationDelay = this.age + 10;
+                            fortitudeMitigationDelay = this.age + 5;
                             dinfo.SetAmount(actualDmg);
                             abilityUser.TakeDamage(dinfo);
                             return;

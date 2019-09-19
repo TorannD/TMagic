@@ -147,5 +147,14 @@
       <max>.6</max>
     </durationDays>
   </IncidentDef>
+  
+  <GameConditionDef>
+    <defName>DarkClouds</defName>
+    <label>dark clouds</label>
+	<conditionClass>TorannMagic.Conditions.GameCondition_DarkClouds</conditionClass>
+    <description>A foreboding shadow has been cast over the land; there is an ominous presence in the dark shadow of these clouds that curses the living.</description>
+    <endMessage>The dark clouds are dispersing.</endMessage>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
 
 </Defs>

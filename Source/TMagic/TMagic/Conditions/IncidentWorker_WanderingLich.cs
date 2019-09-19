@@ -12,7 +12,7 @@ namespace TorannMagic.Conditions
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            if (settingsRef.riftChallenge > 0)
+            if (settingsRef.wanderingLichChallenge > 0)
             {
                 Map map = (Map)parms.target;
                 int duration = Mathf.RoundToInt(this.def.durationDays.RandomInRange * 60000f);
