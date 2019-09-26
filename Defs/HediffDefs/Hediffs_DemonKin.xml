@@ -70,7 +70,7 @@
     <defName>TM_SoulBondPhysicalHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Soul Bond</label>
-    <defaultLabelColor>(0.6,0,0.3)</defaultLabelColor>
+    <defaultLabelColor>(0.8,0,0.4)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
@@ -1014,7 +1014,7 @@
     <defName>TM_SDDominateHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Dominate I</label>
-    <defaultLabelColor>(0.6,0,0.3)</defaultLabelColor>
+    <defaultLabelColor>(0.8,0,0.4)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
@@ -1151,7 +1151,7 @@
     <defName>TM_SDDominateHD_I</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Dominate II</label>
-    <defaultLabelColor>(0.6,0,0.3)</defaultLabelColor>
+    <defaultLabelColor>(0.8,0,0.4)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
@@ -1288,7 +1288,7 @@
     <defName>TM_SDDominateHD_II</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Dominate III</label>
-    <defaultLabelColor>(0.6,0,0.3)</defaultLabelColor>
+    <defaultLabelColor>(0.8,0,0.4)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
@@ -1425,7 +1425,7 @@
     <defName>TM_SDDominateHD_III</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Dominate IV</label>
-    <defaultLabelColor>(0.6,0,0.3)</defaultLabelColor>
+    <defaultLabelColor>(0.8,0,0.4)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
@@ -1562,7 +1562,7 @@
     <defName>TM_VitalityDrainHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Vitality Drain</label>
-    <defaultLabelColor>(0.6,0,0.3)</defaultLabelColor>
+    <defaultLabelColor>(0.8,0,0.4)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
@@ -1613,7 +1613,7 @@
     <defName>TM_VitalityBoostHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Vitality Boost</label>
-    <defaultLabelColor>(0.6,0,0.3)</defaultLabelColor>
+    <defaultLabelColor>(0.8,0,0.4)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>

@@ -3660,6 +3660,10 @@ namespace TorannMagic
                     {
                         Pawn.health.RemoveHediff(rec);
                     }
+                    if (rec.def.defName == "TM_HediffEnchantment_arcalleumCooldown" && _arcalleumCooldown == 0f)
+                    {
+                        Pawn.health.RemoveHediff(rec);
+                    }
                 }
             }
         }

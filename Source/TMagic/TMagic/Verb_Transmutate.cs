@@ -87,7 +87,7 @@ namespace TorannMagic
                         transmutateThing = thingList[i];
                         break;
                     }
-                    if (thingList[i].def != null && !thingList[i].def.IsIngestible && ((thingList[i].def.stuffProps != null && thingList[i].def.stuffProps.categories != null && thingList[i].def.stuffProps.categories.Count > 0) || thingList[i].def.defName == "RawMagicyte"))
+                    if (thingList[i].def != null && !thingList[i].def.IsIngestible && ((thingList[i].def.stuffProps != null && thingList[i].def.stuffProps.categories != null && thingList[i].def.stuffProps.categories.Count > 0) || thingList[i].def.defName == "RawMagicyte" || thingList[i].def.IsWithinCategory(ThingCategoryDefOf.ResourcesRaw) || thingList[i].def.IsWithinCategory(ThingCategoryDefOf.Leathers)))
                     {
                         //Log.Message("resource");
                         flagRawResource = true;
@@ -147,7 +147,7 @@ namespace TorannMagic
                     int transStackValue = Mathf.RoundToInt(transStackCount * transmutateThing.def.BaseMarketValue);
                     float newMatCount = 0;
                     IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
-                                                        where (def != transmutateThing.def && ((def.stuffProps != null && def.stuffProps.categories != null && def.stuffProps.categories.Count > 0) || def.defName == "RawMagicyte"))
+                                                        where (def != transmutateThing.def && ((def.stuffProps != null && def.stuffProps.categories != null && def.stuffProps.categories.Count > 0) || def.defName == "RawMagicyte") || def.IsWithinCategory(ThingCategoryDefOf.ResourcesRaw) || def.IsWithinCategory(ThingCategoryDefOf.Leathers))
                                                         select def;
 
                     foreach (ThingDef current in enumerable)

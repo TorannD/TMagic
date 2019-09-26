@@ -401,7 +401,7 @@ namespace TorannMagic
             FactionDef val = FactionDefOf.PlayerColony;
             Faction obj = null;
 
-            if(spawnAbleFaction != null && !hostile)
+            if (spawnAbleFaction != null && !hostile)
             {
                 return spawnAbleFaction;
             }
@@ -422,7 +422,7 @@ namespace TorannMagic
                 {
                     val = spawnables.kindDef.defaultFactionType;
                 }
-                if(val != null)
+                if (val != null)
                 {
                     return FactionUtility.DefaultFactionFrom(val);
                 }
@@ -435,8 +435,8 @@ namespace TorannMagic
             {
                 return caster.Faction;
             }
-            return Find.FactionManager.AllFactionsVisible.RandomElement();            
-            
+            return Find.FactionManager.AllFactionsVisible.RandomElement();
+
         }
 
         public static TMPawnSummoned SpawnPawn(Pawn caster, SpawnThings spawnables, Faction faction, IntVec3 position, int duration)
@@ -870,8 +870,52 @@ namespace TorannMagic
         public static void PawnActionDelay(Pawn pawn, int duration, LocalTargetInfo target, Verb verb)
         {
             //pawn.stances.SetStance(new Stance_Busy(duration, target, verb));
-            pawn.stances.SetStance(new Stance_Cooldown(duration, target, verb));            
+            pawn.stances.SetStance(new Stance_Cooldown(duration, target, verb));
         }
-        
+
+        public static void ForceFactionDiscoveryAndRelation(FactionDef fDef)
+        {
+            foreach(FactionDef allDefs in DefDatabase<FactionDef>.AllDefs)
+            {
+                if(allDefs == fDef)
+                {
+                    List<Faction> allFactions = Find.FactionManager.AllFactions.ToList();
+                    bool flagList = false;
+                    bool flagRelation = false;
+                    for(int i = 0; i < allFactions.Count;i++)
+                    {
+                        if (allFactions[i].def.defName == fDef.defName)
+                        {
+                            flagList = true;
+                            if(allFactions[i].RelationWith(Faction.OfPlayer, true) != null)
+                            {
+                                flagRelation = true;
+                            }
+                        }
+                    }
+                    if(!flagList)
+                    {
+                        Faction f = FactionGenerator.NewGeneratedFaction(fDef);
+                        Find.FactionManager.Add(f);                        
+                        foreach (Map map in Find.Maps)
+                        {
+                            map.pawnDestinationReservationManager.RegisterFaction(f);
+                        }
+                    }
+                    if(!flagRelation)
+                    {
+                        Faction f = Find.FactionManager.FirstFactionOfDef(fDef);
+                        if (fDef.CanEverBeNonHostile)
+                        {
+                            f.TryAffectGoodwillWith(Faction.OfPlayerSilentFail, -200, false, false, null, null);
+                        }
+                        else
+                        {
+                            f.TryAffectGoodwillWith(Faction.OfPlayerSilentFail, fDef.startingGoodwill.RandomInRange, false, false, null, null);
+                        }
+                    }
+                }
+            }
+        }
     }
 }

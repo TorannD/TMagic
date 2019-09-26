@@ -351,7 +351,7 @@ namespace TorannMagic
                                         }
                                         else
                                         {
-                                            if (__instance.CanFireNow(parms, false) && Rand.Chance(.25f + (.05f * ver.level)) && !ModOptions.Constants.GetBypassPrediction()) //up to 40% chance to predict, per chronomancer
+                                            if (__instance.CanFireNow(parms, false) && !ModOptions.Constants.GetBypassPrediction() && Rand.Chance(.25f + (.05f * ver.level))) //up to 40% chance to predict, per chronomancer
                                             {
                                                 int ticksTillIncident = Mathf.RoundToInt((Rand.Range(2500, 20000) * (1 + (.15f * ver.level))));  // from 1 to 8 hours, plus bonus
                                                                                                                                                  //Log.Message("pushing " + __instance.def.defName + " to iq for " + ticksTillIncident  + " ticks");
@@ -363,7 +363,9 @@ namespace TorannMagic
                                                 string text = "TM_PredictionText".Translate(mapPawns[j].LabelShort, __instance.def.label, Mathf.RoundToInt(ticksTillIncident / 2500));
                                                 //Log.Message("attempting to push letter");
                                                 Find.LetterStack.ReceiveLetter(labelText, text, LetterDefOf.NeutralEvent, null);
-
+                                                int xpNum = Rand.Range(60, 120);
+                                                comp.MagicUserXP += xpNum;
+                                                MoteMaker.ThrowText(comp.Pawn.DrawPos, comp.Pawn.Map, "XP +" + xpNum, -1f);
                                                 __result = true;
                                                 return false;
                                             }
@@ -437,7 +439,7 @@ namespace TorannMagic
 
         public static void Targeter_Casting_Postfix(Targeter __instance)
         {
-            if (__instance.targetingVerb != null)
+            if (__instance.targetingVerb != null && __instance.targetingVerb.CasterIsPawn)
             {
                 Pawn caster = __instance.targetingVerb.CasterPawn;
                 if (caster != null)

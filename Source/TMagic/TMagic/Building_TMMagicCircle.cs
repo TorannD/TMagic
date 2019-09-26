@@ -77,7 +77,7 @@ namespace TorannMagic
                 {
                     center.z += 2;
                 }
-                else if (this.Rotation == Rot4.East)
+                else if (this.Rotation == Rot4.West)
                 {
                     center.x += 2;
                 }
@@ -280,7 +280,49 @@ namespace TorannMagic
                                 select x).FirstOrDefault((ThingDef x) => mrDef.fixedIngredientFilter.Allows(x));
                 if (def != null)
                 {
-                    yield return def;
+                    if (def.IsCorpse)
+                    {
+                        bool hasCorpses = false;
+                        List<Thing> ingredient = new List<Thing>();
+                        ingredient.Clear();
+                        for (int u = 0; u < ActiveJob.RecipeDef.ingredients.Count; u++)
+                        {
+                            List<ThingDef> allowedThings = ActiveJob.RecipeDef.ingredients[u].filter.AllowedThingDefs.ToList();
+                            if (allowedThings != null && allowedThings.Count > 0)
+                            {
+                                
+                                int corpseCount = 0;
+                                List<IntVec3> cellList = GenRadial.RadialCellsAround(this.InteractionCell, 3, true).ToList();
+                                for (int j = 0; j < cellList.Count; j++)
+                                {
+                                    List<Thing> cellThings = cellList[j].GetThingList(this.Map).ToList();
+                                    for (int k = 0; k < cellThings.Count; k++)
+                                    {
+                                        if (cellThings[k].def.IsCorpse)
+                                        {
+                                            corpseCount++;
+                                        }
+                                    }
+                                    if (ActiveJob.RecipeDef.ingredients[i].GetBaseCount() <= corpseCount)
+                                    {
+                                        hasCorpses = true;                                        
+                                    }
+                                }
+                            }
+                        }
+                        if(hasCorpses)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            yield return def;
+                        }
+                    }
+                    else
+                    {
+                        yield return def;
+                    }
                 }
             }
         }
@@ -295,59 +337,92 @@ namespace TorannMagic
                     if (ActiveJob.RecipeDef != null && ActiveJob.RecipeDef.ingredients != null)
                     {
                         //Log.Message("ingredients " + PotentiallyMissingIngredients(ActiveJob.RecipeDef as MagicRecipeDef).FirstOrDefault());
-                        if(PotentiallyMissingIngredients(ActiveJob.RecipeDef as MagicRecipeDef).FirstOrDefault() == null)
+                        ThingDef missingThing = PotentiallyMissingIngredients(ActiveJob.RecipeDef as MagicRecipeDef).FirstOrDefault();
+                        if (missingThing == null)
                         {
                             result = true;
                         }
-
-                        //List<Thing> ingredient = new List<Thing>();
-                        //ingredient.Clear();
-                        //for (int i = 0; i < ActiveJob.RecipeDef.ingredients.Count; i++)
+                        //else if (missingThing.IsCorpse)
                         //{
-                        //    //Log.Message("checking ingredient " + ActiveJob.RecipeDef.ingredients[i].FixedIngredient.defName + " with count " + ActiveJob.RecipeDef.ingredients[i].GetBaseCount());
-                            
-                        //    if (ActiveJob.RecipeDef.ingredients[i].IsFixedIngredient)
+                        //    Log.Message("missing this is a corpse");
+                        //    List<Thing> ingredient = new List<Thing>();
+                        //    ingredient.Clear();
+                        //    for (int i = 0; i < ActiveJob.RecipeDef.ingredients.Count; i++)
                         //    {
-                        //        ingredient = this.Map.listerThings.ThingsOfDef(ActiveJob.RecipeDef.ingredients[i].FixedIngredient);
-                        //    }
-                        //    else
-                        //    {
-                        //        ThingDef def = (from x in ActiveJob.RecipeDef.ingredients[i].filter.AllowedThingDefs
-                        //                        orderby x.BaseMarketValue
-                        //                        select x).FirstOrDefault((ThingDef x) => ActiveJob.RecipeDef.fixedIngredientFilter.Allows(x));
-                        //        if (def != null)
+                        //        List<ThingDef> allowedThings = ActiveJob.RecipeDef.ingredients[i].filter.AllowedThingDefs.ToList();
+                        //        if (allowedThings != null && allowedThings.Count > 0)
                         //        {
-                        //            for (int j = 0; j < this.Map.listerThings.AllThings.Count; j++)
+                        //            bool hasCorpses = false;
+                        //            int corpseCount = 0;
+                        //            List<IntVec3> cellList = GenRadial.RadialCellsAround(this.InteractionCell, 3, true).ToList();
+                        //            for(int j = 0; j < cellList.Count; j++)
                         //            {
-                        //                Thing t = this.Map.listerThings.AllThings[j];
-                        //                if ((t.Position - this.InteractionCell).LengthHorizontal < 4 && ActiveJob.RecipeDef.IsIngredient(def)
+                        //                List<Thing> cellThings = cellList[j].GetThingList(this.Map).ToList();
+                        //                for(int k = 0; k < cellThings.Count; k++)
                         //                {
-                        //                    ingredient.Add(t);
+                        //                    if(cellThings[k].def.IsCorpse)
+                        //                    {
+                        //                        corpseCount++;
+                        //                    }
                         //                }
-                        //            }
+                        //                if (ActiveJob.RecipeDef.ingredients[i].GetBaseCount() <= corpseCount)
+                        //                {
+                        //                    hasCorpses = true;
+                        //                    return true;
+                        //                }
+                        //            }                                    
                         //        }
-                                
-                        //    }
-                        //    bool hasThisIngredient = false;
-                        //    int totalStackCount = 0;
-                        //    for (int j = 0; j < ingredient.Count; j++)
-                        //    {
-                        //        if ((ingredient[j].Position - this.InteractionCell).LengthHorizontal <= 5)
-                        //        {
-                        //            totalStackCount += ingredient[j].stackCount;
-                        //            if (totalStackCount >= ActiveJob.RecipeDef.ingredients[i].GetBaseCount())
-                        //            {
-                        //                hasThisIngredient = true;
-                        //                break;
-                        //            }
-                        //        }
-                        //    }
-                        //    if(!hasThisIngredient)
-                        //    {
-                        //        return false;
                         //    }
                         //}
-                    }
+
+                            //List<Thing> ingredient = new List<Thing>();
+                            //ingredient.Clear();
+                            //for (int i = 0; i < ActiveJob.RecipeDef.ingredients.Count; i++)
+                            //{
+                            //    //Log.Message("checking ingredient " + ActiveJob.RecipeDef.ingredients[i].FixedIngredient.defName + " with count " + ActiveJob.RecipeDef.ingredients[i].GetBaseCount());
+
+                            //    if (ActiveJob.RecipeDef.ingredients[i].IsFixedIngredient)
+                            //    {
+                            //        ingredient = this.Map.listerThings.ThingsOfDef(ActiveJob.RecipeDef.ingredients[i].FixedIngredient);
+                            //    }
+                            //    else
+                            //    {
+                            //        ThingDef def = (from x in ActiveJob.RecipeDef.ingredients[i].filter.AllowedThingDefs
+                            //                        orderby x.BaseMarketValue
+                            //                        select x).FirstOrDefault((ThingDef x) => ActiveJob.RecipeDef.fixedIngredientFilter.Allows(x));
+                            //        if (def != null)
+                            //        {
+                            //            for (int j = 0; j < this.Map.listerThings.AllThings.Count; j++)
+                            //            {
+                            //                Thing t = this.Map.listerThings.AllThings[j];
+                            //                if ((t.Position - this.InteractionCell).LengthHorizontal < 4 && ActiveJob.RecipeDef.IsIngredient(def)
+                            //                {
+                            //                    ingredient.Add(t);
+                            //                }
+                            //            }
+                            //        }
+
+                            //    }
+                            //    bool hasThisIngredient = false;
+                            //    int totalStackCount = 0;
+                            //    for (int j = 0; j < ingredient.Count; j++)
+                            //    {
+                            //        if ((ingredient[j].Position - this.InteractionCell).LengthHorizontal <= 5)
+                            //        {
+                            //            totalStackCount += ingredient[j].stackCount;
+                            //            if (totalStackCount >= ActiveJob.RecipeDef.ingredients[i].GetBaseCount())
+                            //            {
+                            //                hasThisIngredient = true;
+                            //                break;
+                            //            }
+                            //        }
+                            //    }
+                            //    if(!hasThisIngredient)
+                            //    {
+                            //        return false;
+                            //    }
+                            //}
+                        }
                     //return true;
                 }
                 return result;                       
@@ -501,7 +576,7 @@ namespace TorannMagic
             string letterLabel = "LetterLabelRitualFail".Translate();
             if (this.magicRecipeDef.failDamageApplied > 0)
             {
-                Find.LetterStack.ReceiveLetter(letterLabel, "LetterRitualFailDamage".Translate(this.magicRecipeDef.label, this.magicRecipeDef.failChance, this.magicRecipeDef.failDamageApplied), LetterDefOf.NegativeEvent);
+                Find.LetterStack.ReceiveLetter(letterLabel, "LetterRitualFailDamage".Translate(this.magicRecipeDef.label, (this.magicRecipeDef.failChance * 100), this.magicRecipeDef.failDamageApplied), LetterDefOf.NegativeEvent);
             }
             else
             {
@@ -1036,7 +1111,7 @@ namespace TorannMagic
                             ic.x += 2;
                             ic.z += 3;
                         }
-                        else if (this.Rotation == Rot4.East)
+                        else if (this.Rotation == Rot4.West)
                         {
                             ic.x += 3;
                             ic.z -= 2;
@@ -1059,7 +1134,7 @@ namespace TorannMagic
                             ic.x -= 2;
                             ic.z += 3;
                         }
-                        else if (this.Rotation == Rot4.East)
+                        else if (this.Rotation == Rot4.West)
                         {
                             ic.x += 3;
                             ic.z += 2;
@@ -1082,7 +1157,7 @@ namespace TorannMagic
                             ic.x -= 0;
                             ic.z += 4;
                         }
-                        else if (this.Rotation == Rot4.East)
+                        else if (this.Rotation == Rot4.West)
                         {
                             ic.x += 4;
                             ic.z += 0;
@@ -1105,7 +1180,7 @@ namespace TorannMagic
                             ic.x += 2;
                             ic.z += 1;
                         }
-                        else if (this.Rotation == Rot4.East)
+                        else if (this.Rotation == Rot4.West)
                         {
                             ic.x += 1;
                             ic.z -= 2;
@@ -1128,7 +1203,7 @@ namespace TorannMagic
                             ic.x -= 2;
                             ic.z += 1;
                         }
-                        else if (this.Rotation == Rot4.East)
+                        else if (this.Rotation == Rot4.West)
                         {
                             ic.x += 1;
                             ic.z += 2;

@@ -107,7 +107,7 @@ namespace TorannMagic.Conditions
 
         private void InitializeSolarFlare()
         {
-            GameConditionManager gameConditionManager = this.SingleMap.GameConditionManager;
+            GameConditionManager gameConditionManager = this.gameConditionManager;
             int duration = Mathf.RoundToInt(this.Duration);
             GameCondition cond = GameConditionMaker.MakeCondition(GameConditionDefOf.SolarFlare, duration);
             gameConditionManager.RegisterCondition(cond);
@@ -115,7 +115,7 @@ namespace TorannMagic.Conditions
 
         private void InitializeDeathSkies()
         {
-            GameConditionManager gameConditionManager = this.SingleMap.GameConditionManager;
+            GameConditionManager gameConditionManager = this.gameConditionManager;
             int duration = Mathf.RoundToInt(this.Duration);
             GameCondition cond2 = GameConditionMaker.MakeCondition(TorannMagicDefOf.DarkClouds, duration);
             gameConditionManager.RegisterCondition(cond2);

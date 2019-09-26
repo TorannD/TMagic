@@ -53,7 +53,7 @@ namespace TorannMagic
                 }
                 else
                 {
-                    sevAdjustment = Mathf.RoundToInt(Rand.Range(0, 1) * this.arcaneDmg);
+                    sevAdjustment = Mathf.RoundToInt(Rand.Range(.25f, 1.25f) * this.arcaneDmg);
                 }
                 if(sevAdjustment !=0 ) 
                 {

@@ -161,10 +161,13 @@ namespace TorannMagic
         private void StartAoEAttack(IntVec3 center, LocalTargetInfo target)
         {
             //Log.Message("starting aoe");
-            this.nextAoEAttack = (int)(this.Props.aoeCooldownTicks * Rand.Range(.9f, 1.1f)) + Find.TickManager.TicksGame;
-            this.castingCompleteTick = this.Props.aoeAttackDelay + Find.TickManager.TicksGame;
-            TM_Action.PawnActionDelay(this.Pawn, this.Props.aoeAttackDelay, target, this.Pawn.meleeVerbs.TryGetMeleeVerb(this.rangedTarget.Thing));
-            this.shouldDoAOEAttack = true;
+            if (target.Thing != null && target.Thing.Map == this.Pawn.Map)
+            {
+                this.nextAoEAttack = (int)(this.Props.aoeCooldownTicks * Rand.Range(.9f, 1.1f)) + Find.TickManager.TicksGame;
+                this.castingCompleteTick = this.Props.aoeAttackDelay + Find.TickManager.TicksGame;
+                TM_Action.PawnActionDelay(this.Pawn, this.Props.aoeAttackDelay, target, this.Pawn.meleeVerbs.TryGetMeleeVerb(this.rangedTarget.Thing));
+                this.shouldDoAOEAttack = true;
+            }
         }
 
         private void DoAoEAttack(IntVec3 center, LocalTargetInfo target)
@@ -689,6 +692,10 @@ namespace TorannMagic
                 return !(target as Pawn).Downed;
             }
             if(target.Position.DistanceToEdge(this.Pawn.Map) < 8)
+            {
+                return false;
+            }
+            if (target.Map != this.Pawn.Map)
             {
                 return false;
             }

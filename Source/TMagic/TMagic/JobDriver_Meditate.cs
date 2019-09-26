@@ -96,10 +96,12 @@ namespace TorannMagic
                                 this.EndJobWith(JobCondition.InterruptForced);
                             }
                         }
+                        CompAbilityUserMight comp = this.pawn.GetComp<CompAbilityUserMight>();
                         if (TM_Calc.IsPawnInjured(this.pawn, 0))
                         {
                             TM_Action.DoAction_HealPawn(this.pawn, this.pawn, 1, Rand.Range(.25f, .4f) * chiMultiplier * (1+ (.1f *pwrVal)));
                             chiHD.Severity -= 1f;
+                            comp.MightUserXP += (int)(2 * chiMultiplier);
                         }
                         else if (afflictionList != null && afflictionList.Count > 0)
                         {
@@ -117,6 +119,7 @@ namespace TorannMagic
                                 Traverse.Create(root: hediffTicks).Field(name: "ticksToDisappear").SetValue(ticksToDisappear);
                             }
                             chiHD.Severity -= 1f;
+                            comp.MightUserXP += (int)(2*chiMultiplier);
                         }
                         else if (addictionList != null && addictionList.Count > 0)
                         {
@@ -127,11 +130,13 @@ namespace TorannMagic
                                 this.pawn.health.RemoveHediff(hediff);
                             }
                             chiHD.Severity -= 1f;
+                            comp.MightUserXP += (int)(2 * chiMultiplier);
                         }
                         else if(BreakRiskAlertUtility.PawnsAtRiskMinor.Contains(this.pawn) || BreakRiskAlertUtility.PawnsAtRiskMajor.Contains(this.pawn) || BreakRiskAlertUtility.PawnsAtRiskExtreme.Contains(this.pawn))
                         {
                             this.pawn.needs.mood.CurLevel += .004f * chiMultiplier * (1 + (.1f * verVal));
                             chiHD.Severity -= 1f;
+                            comp.MightUserXP += (int)(2 * chiMultiplier);
                         }
                         else
                         {

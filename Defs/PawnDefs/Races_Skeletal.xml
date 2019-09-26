@@ -82,7 +82,8 @@
       <thinkTreeConstant>TM_Elemental_AI_Constant</thinkTreeConstant>
       <thinkTreeMain>TM_Elemental_AI</thinkTreeMain>
       <baseBodySize>1</baseBodySize>
-	  <herdMigrationAllowed>false</herdMigrationAllowed>	  
+	  <herdMigrationAllowed>false</herdMigrationAllowed>	 
+	  <wildness>10</wildness>		  
 	  <packAnimal>false</packAnimal>
 	  <herdAnimal>false</herdAnimal>
     </race>
@@ -204,7 +205,7 @@
   <ThingDef ParentName="TM_Skeletal_Base" Name="TM_GiantSkeleton">
     <defName>TM_GiantSkeletonR</defName>
     <label>Giant skeleton</label>
-    <description>An enormous skeleton; this abomination was either created from the bones of an enormous creature or by combining the bones of lesser creatures; created through the power of necromancy, this skeleton is embodied by a vengeful spirit that has wandered to world for ages - long enough to develop a simple instinct that hates all life.</description>
+    <description>An enormous skeleton; this abomination was either created from the bones of an enormous creature or by combining the bones of lesser creatures. This skeleton is animated by necromancy and embodied by a vengeful spirit that has wandered the world for ages - long enough to develop a simple, single-minded hate for life.</description>
     <statBases>
       <MoveSpeed>3.5</MoveSpeed>
       <ArmorRating_Blunt>0.3</ArmorRating_Blunt>

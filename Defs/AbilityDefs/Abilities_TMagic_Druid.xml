@@ -78,7 +78,7 @@
         <defName>TM_SootheAnimal</defName>
         <label>Beguile Animal</label>
         <uiIconPath>UI/beguile_animal</uiIconPath>
-        <description>Using mastery over nature, the druid can overwhelm the emotional state of animals. This ability is dual purposed - if the animal is in a calm state, it will incite the beast into a manhunter rage; if the animal is already enraged, it will pacify the beast.
+        <description>Using mastery over nature, the druid can overwhelm the emotional state of animals. This ability is dual purposed - if the animal is in a calm state, it will incite the beast into a manhunter rage; if the animal is already enraged, it will pacify the beast. Will not work on animals that belong to a faction.
 		
 Range: 65
 Recharge: 80s
@@ -127,7 +127,7 @@ AoE Size: 5</description>
         <defName>TM_SootheAnimal_I</defName>
         <label>Beguile Animal (I)</label>
         <uiIconPath>UI/beguile_animal</uiIconPath>
-        <description>Using mastery over nature, the druid can overwhelm the emotional state of animals. This ability is dual purposed - if the animal is in a calm state, it will incite the beast into a manhunter rage; if the animal is already enraged, it will pacify the beast.
+        <description>Using mastery over nature, the druid can overwhelm the emotional state of animals. This ability is dual purposed - if the animal is in a calm state, it will incite the beast into a manhunter rage; if the animal is already enraged, it will pacify the beast. Will not work on animals that belong to a faction.
 		
 Range: 70
 Recharge: 75s
@@ -176,7 +176,7 @@ AoE Size: 6</description>
         <defName>TM_SootheAnimal_II</defName>
         <label>Beguile Animal (II)</label>
 		<uiIconPath>UI/beguile_animal</uiIconPath>
-        <description>Using mastery over nature, the druid can overwhelm the emotional state of animals. This ability is dual purposed - if the animal is in a calm state, it will incite the beast into a manhunter rage; if the animal is already enraged, it will pacify the beast.
+        <description>Using mastery over nature, the druid can overwhelm the emotional state of animals. This ability is dual purposed - if the animal is in a calm state, it will incite the beast into a manhunter rage; if the animal is already enraged, it will pacify the beast. Will not work on animals that belong to a faction.
 		
 Range: 75
 Recharge: 68s
@@ -225,7 +225,7 @@ AoE Size: 7</description>
         <defName>TM_SootheAnimal_III</defName>
         <label>Beguile Animal (III)</label>
         <uiIconPath>UI/beguile_animal</uiIconPath>
-        <description>Using mastery over nature, the druid can overwhelm the emotional state of animals. This ability is dual purposed - if the animal is in a calm state, it will incite the beast into a manhunter rage; if the animal is already enraged, it will pacify the beast.
+        <description>Using mastery over nature, the druid can overwhelm the emotional state of animals. This ability is dual purposed - if the animal is in a calm state, it will incite the beast into a manhunter rage; if the animal is already enraged, it will pacify the beast. Will not work on animals that belong to a faction.
 		
 Range: 80
 Recharge: 60s
@@ -294,7 +294,7 @@ AoE Size: 8</description>
         <defName>TM_Regenerate</defName>
         <label>Regenerate</label>
         <uiIconPath>UI/Regen</uiIconPath>
-        <description>Regeneration acts natural curative that continues to work over time and will restore even grievous wounds if given enough time. Base regeneration restores 4 health to 1 wound. Only cures physical injuries and will not restore or heal destroyed body parts.</description>
+        <description>Regeneration acts as a natural curative over time and will restore even grievous wounds with continued application. Base regeneration restores 4 health to 1 wound every 5 seconds. Only cures physical injuries and will not restore or heal destroyed body parts.</description>
         <manaCost>0.40</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Regenerate</verbClass>

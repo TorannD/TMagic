@@ -477,8 +477,8 @@ Level 2: 50s - 150s
 Level 3: 67s - 200s</TM_Regenerate_ver_desc>
 <TM_CureDisease_eff_desc>Reduces the cost of Cure Disease by 10% per skill level.</TM_CureDisease_eff_desc>
 <TM_CureDisease_pwr_desc>Improves the effectiveness of Cure Disease. The higher the skill level, the more likely the spell cures the disease instead of reducing it.
-Level 0: 50% chance to fail; reduces severity of disease by 1 if successful.
-Level 1: Always succeeds on understood diseases (Disease Knowledge)
+Level 0: 75% success chance; reduces severity of disease by 1 if successful.
+Level 1: 100% success chance on understood diseases (Disease Knowledge)
 Level 2: Boost disease immunity of the target by 15% for 3 days
 Level 3: Boost disease immunity of the target by 25% for 5 days</TM_CureDisease_pwr_desc>
 <TM_CureDisease_ver_desc>Study of diseases allows the druid to cure more advanced maladies.
@@ -1338,7 +1338,7 @@ Base amount: 0%</TM_LifeSteal_ver_desc>
 <TM_Chi_pwr_desc>Increases maximum amount of energy burned by 20%. Base max is 50 energy.
 Affected pawns take .4 damage per energy burned and are stunned.</TM_Chi_pwr_desc>
 <TM_Chi_eff_desc>Reduces the amount of ch'i required to use ch'i abilities by 6% per skill point.</TM_Chi_eff_desc>
-<TM_Chi_ver_desc>Decreases ch'i decay by 10% per skill point.</TM_Chi_ver_desc>
+<TM_Chi_ver_desc>Decreases ch'i decay by 20% per skill point.</TM_Chi_ver_desc>
 <TM_MindOverBody_pwr_desc>Applies an additional stack of the Monk's passive buff (Mind Over Body) per skill level</TM_MindOverBody_pwr_desc>
 <TM_MindOverBody_ver_desc>Increases the maximum damage mitigation by 2 per skill level. Damage mitigation is reduced by 1 for each kg of apparel weight.
 Level 0: 7 damage

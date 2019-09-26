@@ -302,13 +302,14 @@ Fail backlash: 8</description>
       </disallowedCategories>
     </fixedIngredientFilter>
     <defaultIngredientFilter>
+	  <categories>
+        <li>CorpsesHumanlike</li>
+      </categories>
       <specialFiltersToAllow>
         <li>AllowCorpsesColonist</li>
         <li>AllowCorpsesStranger</li>
+		<li>AllowRotten</li>
       </specialFiltersToAllow>
-	  <specialFiltersToDisallow>
-        <li>AllowRotten</li>
-      </specialFiltersToDisallow>
     </defaultIngredientFilter>
     <products>
     </products>

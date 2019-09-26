@@ -16,6 +16,7 @@ namespace TorannMagic.Conditions
             {
                 Map map = (Map)parms.target;
                 int duration = Mathf.RoundToInt(this.def.durationDays.RandomInRange * 60000f);
+                TM_Action.ForceFactionDiscoveryAndRelation(TorannMagicDefOf.TM_SkeletalFaction);
                 GameCondition_WanderingLich gameCondition_WanderingLich = (GameCondition_WanderingLich)GameConditionMaker.MakeCondition(GameConditionDef.Named("WanderingLich"), duration, 0);
                 map.gameConditionManager.RegisterCondition(gameCondition_WanderingLich);
                 base.SendStandardLetter(new TargetInfo(gameCondition_WanderingLich.edgeLocation.ToIntVec3, map, false), null, new string[0]);
