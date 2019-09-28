@@ -25,7 +25,7 @@ namespace TorannMagic.Enchantment
             Need rest = this.Pawn.needs.rest;
             if (rest != null)
             {
-                rest.CurLevel += .05f;               
+                rest.CurLevel += .0065f;               
             }
         }
 

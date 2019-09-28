@@ -5725,7 +5725,7 @@ namespace TorannMagic
             {
                 adjustedManaCost = adjustedManaCost * this.mpCost;
             }
-            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
                 adjustedManaCost = 0;
             }
@@ -6533,7 +6533,7 @@ namespace TorannMagic
                 //combat (drafted) spells
                 if (this.Pawn.drafter != null && this.Pawn.Drafted && this.Mana?.CurLevelPercentage >= settingsRef.autocastCombatMinThreshold && this.Pawn.CurJob.def != JobDefOf.Goto)
                 {
-                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire)&& !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersIF)
@@ -6617,7 +6617,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersSB)

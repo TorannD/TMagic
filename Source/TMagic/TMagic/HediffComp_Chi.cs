@@ -79,7 +79,7 @@ namespace TorannMagic
             {
                 if (this.Pawn.IsColonist)
                 {
-                    severityAdjustment -= (Rand.Range(.03f, .5f) - (.008f * verVal));
+                    severityAdjustment -= (Rand.Range(.03f, .05f) - (.008f * verVal));
                 }
                 else if(this.Pawn.IsPrisoner)
                 {

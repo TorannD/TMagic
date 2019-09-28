@@ -115,7 +115,7 @@ namespace TorannMagic
                         this.MagicUser.Mana.UseMagicPower(this.MagicUser.ActualManaCost(magicDef)/2f);
                     }
                     else
-                    {
+                    {                       
                         this.MagicUser.Mana.UseMagicPower(this.MagicUser.ActualManaCost(magicDef));
                     }
                                        
@@ -125,11 +125,18 @@ namespace TorannMagic
                         this.MagicUser.MagicUserXP += (int)((magicDef.manaCost * 300) * this.MagicUser.xpGain * settingsRef.xpMultiplier);
                     }
                 }
-                if(this.magicDef.bloodCost != 0)
+                else if (this.MagicUser.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                {
+                    CompAbilityUserMight mightComp = this.MagicUser.Pawn.GetComp<CompAbilityUserMight>();
+                    mightComp.Stamina.UseMightPower(magicDef.manaCost);
+                    mightComp.MightUserXP += (int)((magicDef.manaCost * 180) * mightComp.xpGain * settingsRef.xpMultiplier);
+                }
+
+                if (this.magicDef.bloodCost != 0)
                 {
                     HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_BloodHD"), -100 * this.ActualBloodCost);
                 }
-            }
+            }                       
         }
 
         public override string PostAbilityVerbCompDesc(VerbProperties_Ability verbDef)
@@ -206,11 +213,22 @@ namespace TorannMagic
                     num = this.MagicUser.ActualManaCost(magicDef) * 100;
                 }
 
-                text = "TM_AbilityDescBaseManaCost".Translate(
-                    (magicAbilityDef.manaCost * 100).ToString("n1")
-                ) + "\n" + "TM_AbilityDescAdjustedManaCost".Translate(
-                    num.ToString("n1")
-                );
+                if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                {                    
+                    text = "TM_AbilityDescBaseStaminaCost".Translate(
+                        (magicAbilityDef.manaCost * 100).ToString("n1")
+                    ) + "\n" + "TM_AbilityDescAdjustedStaminaCost".Translate(
+                        (magicDef.manaCost * 100).ToString("n1")
+                    );
+                }
+                else
+                {
+                    text = "TM_AbilityDescBaseManaCost".Translate(
+                        (magicAbilityDef.manaCost * 100).ToString("n1")
+                    ) + "\n" + "TM_AbilityDescAdjustedManaCost".Translate(
+                        num.ToString("n1")
+                    );
+                }
 
                 if(magicAbilityDef == TorannMagicDefOf.TM_IgniteBlood || magicAbilityDef == TorannMagicDefOf.TM_BloodShield || magicAbilityDef == TorannMagicDefOf.TM_BloodForBlood || 
                     magicAbilityDef == TorannMagicDefOf.TM_Rend || magicAbilityDef == TorannMagicDefOf.TM_Rend_I || magicAbilityDef == TorannMagicDefOf.TM_Rend_II || magicAbilityDef == TorannMagicDefOf.TM_Rend_III ||
@@ -279,6 +297,19 @@ namespace TorannMagic
                         {
                             reason = "TM_NotEnoughBlood".Translate(
                                 base.Pawn.LabelShort
+                            );
+                            result = false;
+                            return result;
+                        }                        
+                    }
+                    else if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                    {
+                        CompAbilityUserMight mightComp = this.Pawn.GetComp<CompAbilityUserMight>();
+                        bool flag7 = mightComp != null && mightComp.Stamina != null && magicDef.manaCost > 0f && this.magicDef.manaCost > mightComp.Stamina.CurLevel;
+                        if (flag7)
+                        {
+                            reason = "TM_NotEnoughStamina".Translate(
+                            base.Pawn.LabelShort
                             );
                             result = false;
                             return result;

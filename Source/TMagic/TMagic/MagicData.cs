@@ -2733,6 +2733,34 @@ namespace TorannMagic
             }
         }
 
+        public List<MagicPower> AllMagicPowers
+        {
+            get
+            {
+                List<MagicPower> list = new List<MagicPower>();
+                list.Clear();
+                list.AddRange(this.MagicPowersC);
+                list.AddRange(this.MagicPowersE);
+                list.AddRange(this.MagicPowersBM);
+                list.AddRange(this.MagicPowersIF);
+                list.AddRange(this.MagicPowersHoF);
+                list.AddRange(this.MagicPowersSB);
+                list.AddRange(this.MagicPowersA);
+                list.AddRange(this.MagicPowersP);
+                list.AddRange(this.MagicPowersPR);
+                list.AddRange(this.MagicPowersS);
+                list.AddRange(this.MagicPowersD);
+                list.AddRange(this.MagicPowersN);
+                list.AddRange(this.MagicPowersB);
+                list.AddRange(this.MagicPowersSD);
+                list.AddRange(this.MagicPowersWD);
+                list.AddRange(this.MagicPowersG);
+                list.AddRange(this.MagicPowersT);
+                list.AddRange(this.MagicPowersStandalone);
+                return list;
+            }
+        }
+
         public MagicData()
         {
         }

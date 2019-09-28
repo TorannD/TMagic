@@ -185,8 +185,8 @@ Blood mages cannot form a blood shield on themselves.</description>
 		
 Range: 35
 Radius: 3
-Max Targets: 2
-Cooldown: 120
+Max Targets: 3
+Cooldown: 40
 Cast Time: 1.5s</description>
 		<bloodCost>0.40</bloodCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -199,62 +199,13 @@ Cast Time: 1.5s</description>
             <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_Rend</abilityDef>
             <warmupTime>1.5</warmupTime>
-            <SecondsToRecharge>120.0</SecondsToRecharge>
+            <SecondsToRecharge>40.0</SecondsToRecharge>
             <range>35</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Vibration</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
             <muzzleFlashScale>20</muzzleFlashScale>
 			<AlwaysHits>true</AlwaysHits>
-            <isPrimary>true</isPrimary>
-			<isViolent>true</isViolent>
-			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
-            <TargetAoEProperties>
-                <targetClass>Pawn</targetClass>
-                <showRangeOnSelect>true</showRangeOnSelect>
-                <friendlyFire>false</friendlyFire>
-                <startsFromCaster>false</startsFromCaster>
-                <maxTargets>2</maxTargets>
-                <range>3</range>
-            </TargetAoEProperties>
-			<targetParams>
-                <canTargetPawns>true</canTargetPawns>
-                <canTargetBuildings>false</canTargetBuildings>
-                <canTargetSelf>false</canTargetSelf>
-                <canTargetLocations>true</canTargetLocations>
-            </targetParams>
-        </MainVerb>
-    </TorannMagic.TMAbilityDef>
-	
-	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
-        <defName>TM_Rend_I</defName>
-        <label>Rend I</label>
-        <uiIconPath>UI/rend</uiIconPath>
-        <description>Causes the victims blood to violently reject its host and erupt from multiple wounds, resulting in massive hemorrhaging.
-		
-Range: 37
-Radius: 3
-Max Targets: 3
-Cooldown: 110
-Cast Time: 1.3s</description>
-		<bloodCost>0.40</bloodCost>
-        <MainVerb Class="AbilityUser.VerbProperties_Ability">
-            <verbClass>TorannMagic.Verb_Rend</verbClass>
-				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
-				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
-				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
-				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
-            <hasStandardCommand>true</hasStandardCommand>
-            <defaultProjectile>Projectile_Default</defaultProjectile>
-            <abilityDef>TM_Rend_I</abilityDef>
-            <warmupTime>1.3</warmupTime>
-            <SecondsToRecharge>110.0</SecondsToRecharge>
-            <range>37</range>
-            <burstShotCount>1</burstShotCount>
-            <soundCast>TM_Vibration</soundCast>
-			<soundCastTail>GunTail_Medium</soundCastTail>
-            <muzzleFlashScale>20</muzzleFlashScale>
-            <AlwaysHits>true</AlwaysHits>
             <isPrimary>true</isPrimary>
 			<isViolent>true</isViolent>
 			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
@@ -276,16 +227,16 @@ Cast Time: 1.3s</description>
     </TorannMagic.TMAbilityDef>
 	
 	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
-        <defName>TM_Rend_II</defName>
-        <label>Rend (II)</label>
+        <defName>TM_Rend_I</defName>
+        <label>Rend I</label>
         <uiIconPath>UI/rend</uiIconPath>
         <description>Causes the victims blood to violently reject its host and erupt from multiple wounds, resulting in massive hemorrhaging.
 		
-Range: 39
-Radius: 3.8
+Range: 38
+Radius: 4
 Max Targets: 4
-Cooldown: 100
-Cast Time: 1.1s</description>
+Cooldown: 30
+Cast Time: 1.3s</description>
 		<bloodCost>0.40</bloodCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Rend</verbClass>
@@ -295,10 +246,10 @@ Cast Time: 1.1s</description>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Projectile_Default</defaultProjectile>
-            <abilityDef>TM_Rend_II</abilityDef>
-            <warmupTime>1.1</warmupTime>
-            <SecondsToRecharge>100.0</SecondsToRecharge>
-            <range>39</range>
+            <abilityDef>TM_Rend_I</abilityDef>
+            <warmupTime>1.3</warmupTime>
+            <SecondsToRecharge>30.0</SecondsToRecharge>
+            <range>38</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Vibration</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
@@ -325,16 +276,16 @@ Cast Time: 1.1s</description>
     </TorannMagic.TMAbilityDef>
 	
 	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
-        <defName>TM_Rend_III</defName>
-        <label>Rend</label>
+        <defName>TM_Rend_II</defName>
+        <label>Rend (II)</label>
         <uiIconPath>UI/rend</uiIconPath>
         <description>Causes the victims blood to violently reject its host and erupt from multiple wounds, resulting in massive hemorrhaging.
 		
 Range: 41
 Radius: 4
 Max Targets: 5
-Cooldown: 90
-Cast Time: 1s</description>
+Cooldown: 20 
+Cast Time: 1.1s</description>
 		<bloodCost>0.40</bloodCost>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Rend</verbClass>
@@ -344,9 +295,9 @@ Cast Time: 1s</description>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Projectile_Default</defaultProjectile>
-            <abilityDef>TM_Rend_III</abilityDef>
-            <warmupTime>1</warmupTime>
-            <SecondsToRecharge>90.0</SecondsToRecharge>
+            <abilityDef>TM_Rend_II</abilityDef>
+            <warmupTime>1.1</warmupTime>
+            <SecondsToRecharge>20.0</SecondsToRecharge>
             <range>41</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Vibration</soundCast>
@@ -363,6 +314,55 @@ Cast Time: 1s</description>
                 <startsFromCaster>false</startsFromCaster>
                 <maxTargets>5</maxTargets>
                 <range>4</range>
+            </TargetAoEProperties>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Rend_III</defName>
+        <label>Rend</label>
+        <uiIconPath>UI/rend</uiIconPath>
+        <description>Causes the victims blood to violently reject its host and erupt from multiple wounds, resulting in massive hemorrhaging.
+		
+Range: 44
+Radius: 5
+Max Targets: 5
+Cooldown: 10
+Cast Time: 1s</description>
+		<bloodCost>0.40</bloodCost>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Rend</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_Rend_III</abilityDef>
+            <warmupTime>1</warmupTime>
+            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <range>44</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>true</isViolent>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>false</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>5</maxTargets>
+                <range>5</range>
             </TargetAoEProperties>
 			<targetParams>
                 <canTargetPawns>true</canTargetPawns>

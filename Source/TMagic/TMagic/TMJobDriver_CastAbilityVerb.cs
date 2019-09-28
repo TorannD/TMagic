@@ -69,10 +69,10 @@ namespace TorannMagic
                     
                     if (this.pawn.RaceProps.Humanlike)
                     {
-                        if (this.pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-                        {
-                            RemoveMimicAbility(verb);
-                        }
+                        //if (this.pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                        //{
+                        //    RemoveMimicAbility(verb);
+                        //}
 
                         if (this.pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
                         {
@@ -196,10 +196,10 @@ namespace TorannMagic
                                 this.verb = toil.actor.jobs.curJob.verbToUse as Verb_UseAbility;
                                 if (this.pawn.RaceProps.Humanlike)
                                 {
-                                    if (this.pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-                                    {
-                                        RemoveMimicAbility(verb);                                        
-                                    }
+                                    //if (this.pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                                    //{
+                                    //    RemoveMimicAbility(verb);                                        
+                                    //}
 
                                     if(this.pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
                                     {

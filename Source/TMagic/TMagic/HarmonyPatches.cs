@@ -221,18 +221,28 @@ namespace TorannMagic
         //    return true;
         //}
 
-        //[HarmonyPatch(typeof(FoodUtility), "AddIngestThoughtsFromIngredient", null)]
-        //public class FoodUtility_MinionMeat_ThoughtFromEatingIngredient_Patch
+        //[HarmonyPatch(typeof(BillUtility), "GetWorkGiver", null)]
+        //public class BillUtility_DoMagicBill_Prefix_Patch
         //{
-        //    public static void Postfix(ThingDef ingredient, Pawn ingester, ref List<ThoughtDef> ingestThoughts)
+        //    public static bool Prefix(this IBillGiver billGiver, ref WorkGiverDef __result)
         //    {
-        //        if (ingredient != null && ingredient.ingestible != null && ingredient.ingestible.sourceDef != null && ingredient.ingestible.sourceDef.race != null && ingredient.ingestible.sourceDef.race.meatLabel == "mystery meat")
+        //        Thing thing = billGiver as Thing;
+        //        if (thing == null)
         //        {
-        //            if (ingester.needs != null && ingester.needs.mood != null && ingester.needs.mood.thoughts != null && ingester.needs.mood.thoughts.memories != null)
+        //            return true;
+        //        }
+        //        List<WorkGiverDef> allDefsListForReading = DefDatabase<WorkGiverDef>.AllDefsListForReading;
+        //        for (int i = 0; i < allDefsListForReading.Count; i++)
+        //        {
+        //            WorkGiverDef workGiverDef = allDefsListForReading[i];
+        //            WorkGiver_DoMagicBill workGiver_DoBill = workGiverDef.Worker as WorkGiver_DoMagicBill;
+        //            if (workGiver_DoBill != null && workGiver_DoBill.ThingIsUsableBillGiver(thing))
         //            {
-        //                ingestThoughts.Add(TorannMagicDefOf.AteMysteryMeatAsIngredient);
+        //                __result = workGiverDef;
+        //                return false;
         //            }
         //        }
+        //        return true;
         //    }
         //}
 

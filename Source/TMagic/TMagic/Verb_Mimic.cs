@@ -3,6 +3,8 @@ using System;
 using Verse;
 using AbilityUser;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TorannMagic
 {
@@ -777,11 +779,23 @@ namespace TorannMagic
                         {
                             if (mightComp.mimicAbility != null)
                             {
+                                if (mightComp.mimicAbility.manaCost > 0)
+                                {
+                                    MagicPower mp = magicComp.MagicData.AllMagicPowers.FirstOrDefault((MagicPower x) => x.abilityDef == mightComp.mimicAbility);
+                                    if (mp != null)
+                                    {
+                                        mp.autocast = false;
+                                    }
+                                }
+                                else if (mightComp.mimicAbility.staminaCost > 0)
+                                {
+                                    MightPower mp = mightComp.MightData.AllMightPowers.FirstOrDefault((MightPower x) => x.abilityDef == mightComp.mimicAbility);
+                                    if (mp != null)
+                                    {
+                                        mp.autocast = false;
+                                    }
+                                }
                                 mightComp.RemovePawnAbility(mightComp.mimicAbility);
-                            }
-                            if (magicComp.mimicAbility != null)
-                            {
-                                magicComp.RemovePawnAbility(magicComp.mimicAbility);
                             }
                             mightComp.mimicAbility = tempAbility;
                             mightComp.AddPawnAbility(tempAbility);
@@ -1006,10 +1020,26 @@ namespace TorannMagic
                         {
                             if (mightComp.mimicAbility != null)
                             {
+                                if (mightComp.mimicAbility.manaCost > 0)
+                                {
+                                    MagicPower mp = magicComp.MagicData.AllMagicPowers.FirstOrDefault((MagicPower x) => x.abilityDef == mightComp.mimicAbility);
+                                    if (mp != null)
+                                    {
+                                        mp.autocast = false;
+                                    }
+                                }
+                                else if (mightComp.mimicAbility.staminaCost > 0)
+                                {
+                                    MightPower mp = mightComp.MightData.AllMightPowers.FirstOrDefault((MightPower x) => x.abilityDef == mightComp.mimicAbility);
+                                    if (mp != null)
+                                    {
+                                        mp.autocast = false;
+                                    }
+                                }
                                 mightComp.RemovePawnAbility(mightComp.mimicAbility);
                             }
                             if(magicComp.mimicAbility != null)
-                            {
+                            {                                
                                 magicComp.RemovePawnAbility(magicComp.mimicAbility);
                             }
                             mightComp.mimicAbility = tempAbility;

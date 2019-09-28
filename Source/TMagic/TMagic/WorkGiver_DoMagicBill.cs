@@ -10,7 +10,7 @@ using Harmony;
 
 namespace TorannMagic
 {
-    public class WorkGiver_DoMagicBill : WorkGiver_Scanner
+    public class WorkGiver_DoMagicBill : WorkGiver_DoBill //WorkGiver_Scanner
     {
         private class DefCountList
         {
@@ -591,7 +591,7 @@ namespace TorannMagic
         }
 
         private static bool TryFindBestBillIngredientsInSet_AllowMix(List<Thing> availableThings, Bill bill, List<ThingCount> chosen)
-        {
+        {            
             chosen.Clear();
             for (int i = 0; i < bill.recipe.ingredients.Count; i++)
             {

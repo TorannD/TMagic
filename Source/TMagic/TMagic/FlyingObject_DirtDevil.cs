@@ -154,7 +154,7 @@ namespace TorannMagic
         public Vector3 FindNearestFilth(Vector3 origin)
         {
             Vector3 destination = default(Vector3);
-            List<Thing> filthList = this.pawn.Map.listerFilthInHomeArea.FilthInHomeArea;
+            List<Thing> filthList = this.Map.listerFilthInHomeArea.FilthInHomeArea;
             Thing closestDirt = null;
             float dirtPos = 0;
             for (int i = 0; i < filthList.Count; i++)

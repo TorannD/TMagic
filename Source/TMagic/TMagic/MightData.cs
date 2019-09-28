@@ -1257,10 +1257,41 @@ namespace TorannMagic
             }
         }
 
-        public IEnumerable<MightPower> Powers
+        public List<MightPower> AllMightPowers
         {
             get
             {
+                List<MightPower> list = new List<MightPower>();
+                list.Clear();
+                list.AddRange(this.MightPowersM);
+                list.AddRange(this.MightPowersDK);
+                list.AddRange(this.MightPowersG);
+                list.AddRange(this.MightPowersS);
+                list.AddRange(this.MightPowersB);
+                list.AddRange(this.MightPowersR);
+                list.AddRange(this.MightPowersF);
+                list.AddRange(this.MightPowersP);
+                list.AddRange(this.MightPowersStandalone);
+                return list;
+            }
+        }
+
+        public MightPower ReturnMatchingMightPower(TMAbilityDef def)
+        {
+            for(int i = 0; i < AllMightPowers.Count; i++)
+            {
+                if(AllMightPowers[i].TMabilityDefs.Contains(def))
+                {
+                    return AllMightPowers[i];
+                }
+            }
+            return null;
+        }
+
+        public IEnumerable<MightPower> Powers
+        {
+            get
+            {                
                 return this.MightPowersM.Concat(this.MightPowersDK.Concat(this.MightPowersG.Concat(this.MightPowersS.Concat(this.MightPowersB.Concat(this.mightPowerR.Concat(this.MightPowersF.Concat(this.mightPowerP.Concat(this.mightPowerStandalone))))))));
             }
         }
