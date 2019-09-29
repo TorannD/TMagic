@@ -42,20 +42,27 @@ namespace TorannMagic
             base.Impact(hitThing);
 
             Pawn pawn = this.launcher as Pawn;
-            CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
-            MagicPowerSkill pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_LightningStorm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_LightningStorm_pwr");
-            MagicPowerSkill ver = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_LightningStorm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_LightningStorm_ver");
+            
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            pwrVal = pwr.level;
-            verVal = ver.level;
+            
             if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
                 MightPowerSkill mpwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
                 MightPowerSkill mver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
                 pwrVal = mpwr.level;
                 verVal = mver.level;
+                this.arcaneDmg = pawn.GetComp<CompAbilityUserMight>().mightPwr;
             }
-            this.arcaneDmg = comp.arcaneDmg;
+            else
+            {
+                CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
+                MagicPowerSkill pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_LightningStorm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_LightningStorm_pwr");
+                MagicPowerSkill ver = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_LightningStorm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_LightningStorm_ver");
+                pwrVal = pwr.level;
+                verVal = ver.level;
+                this.arcaneDmg = comp.arcaneDmg;
+            }
+            
             if (settingsRef.AIHardMode && !pawn.IsColonist)
             {
                 pwrVal = 3;

@@ -96,7 +96,7 @@ namespace TorannMagic
                 return Building_TMArcaneCapacitor.portableCells;
 
             }
-            Region region = pos.GetRegion(map, RegionType.Set_Passable);
+            Region region = pos.GetRegion(map, RegionType.Set_All);
             if (region == null)
             {
                 return Building_TMArcaneCapacitor.portableCells;

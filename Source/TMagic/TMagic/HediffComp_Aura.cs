@@ -79,8 +79,16 @@ namespace TorannMagic
                             this.nextApplyTick = Find.TickManager.TicksGame + Rand.Range(4800, 5600);
                             MoteMaker.ThrowSmoke(pawn.DrawPos, pawn.Map, 1f);
                             MoteMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, .8f);
-                            CompAbilityUserMagic comp = this.Pawn.GetComp<CompAbilityUserMagic>();
-                            comp.MagicUserXP += Rand.Range(10, 15);
+                            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                            {
+                                CompAbilityUserMight comp = this.Pawn.GetComp<CompAbilityUserMight>();
+                                comp.MightUserXP += Rand.Range(10, 15);
+                            }
+                            else
+                            {
+                                CompAbilityUserMagic comp = this.Pawn.GetComp<CompAbilityUserMagic>();
+                                comp.MagicUserXP += Rand.Range(10, 15);
+                            }
                         }
                     }
                 }

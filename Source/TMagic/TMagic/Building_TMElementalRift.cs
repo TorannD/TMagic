@@ -586,7 +586,7 @@ namespace TorannMagic
                             if (flag4)
                             {
                                 LordJob_AssaultColony lordJob = new LordJob_AssaultColony(newPawn.Faction, false, false, false, true, false);
-                                lord = LordMaker.MakeNewLord(faction, lordJob, Find.CurrentMap, null);
+                                lord = LordMaker.MakeNewLord(faction, lordJob, this.Map, null);
                             }
                             lord.AddPawn(newPawn);                           
                         }                      

@@ -13,6 +13,7 @@ namespace TorannMagic
     {
         private int verVal;
         private int pwrVal;
+        float arcaneDmg = 1f;
 
         bool validTarg;
         //Used for non-unique abilities that can be used with shieldbelt
@@ -43,20 +44,26 @@ namespace TorannMagic
 
         protected override bool TryCastShot()
         {
-            Pawn caster = base.CasterPawn;
+            Pawn caster = this.CasterPawn;
             Pawn pawn = this.currentTarget.Thing as Pawn;
             CompAbilityUserMagic comp = caster.GetComp<CompAbilityUserMagic>();
-
-            MagicPowerSkill pwr = comp.MagicData.MagicPowerSkill_Purify.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Purify_pwr");
-            MagicPowerSkill ver = comp.MagicData.MagicPowerSkill_Purify.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Purify_ver");
-            pwrVal = pwr.level;
-            verVal = ver.level;
-            if (caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            if (comp != null && !caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
-                MightPowerSkill mpwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
-                MightPowerSkill mver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                MagicPowerSkill pwr = comp.MagicData.MagicPowerSkill_Purify.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Purify_pwr");
+                MagicPowerSkill ver = comp.MagicData.MagicPowerSkill_Purify.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Purify_ver");
+                pwrVal = pwr.level;
+                verVal = ver.level;
+                arcaneDmg = comp.arcaneDmg;
+            }
+            else if (caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            {
+
+                MightPowerSkill mpwr = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+                MightPowerSkill mver = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
                 pwrVal = mpwr.level;
                 verVal = mver.level;
+                arcaneDmg = caster.GetComp<CompAbilityUserMight>().mightPwr;
+
             }
             bool flag = pawn != null && !pawn.Dead;
             if (flag)
@@ -88,14 +95,14 @@ namespace TorannMagic
                                         {
                                             if (pwrVal >= 1)
                                             {
-                                                current.Heal(pwrVal * comp.arcaneDmg);
+                                                current.Heal(pwrVal * arcaneDmg);
                                                 num--;
                                                 num2--;
                                             }
                                         }
                                         else
                                         {
-                                            current.Heal((2f + pwrVal * 2) * comp.arcaneDmg);
+                                            current.Heal((2f + pwrVal * 2) * arcaneDmg);
                                             //current.Heal(5.0f + (float)pwrVal * 3f); // power affects how much to heal
                                             num--;
                                             num2--;
@@ -111,7 +118,7 @@ namespace TorannMagic
                 }
                 //if (pawn.RaceProps.Humanlike)
                 //{
-                    using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+                using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
                     {
                         while (enumerator.MoveNext())
                         {
@@ -147,9 +154,8 @@ namespace TorannMagic
                                 TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .4f);
                             }
                         }
-                    }                    
+                    }
                 //}
-
                 using (IEnumerator<Hediff_Addiction> enumerator = pawn.health.hediffSet.GetHediffs<Hediff_Addiction>().GetEnumerator())
                 {
                     while (enumerator.MoveNext())
@@ -160,27 +166,27 @@ namespace TorannMagic
                         {
                             if (rec.Chemical.defName == "Alcohol" || rec.Chemical.defName == "Smokeleaf")
                             {
-                                rec.Severity -= ((.3f + .3f * pwrVal)*comp.arcaneDmg);
+                                rec.Severity -= ((.3f + .3f * pwrVal)*arcaneDmg);
                                 num--;
                             }
                             if ((rec.Chemical.defName == "GoJuice" || rec.Chemical.defName == "WakeUp") && verVal >= 1)
                             {
-                                rec.Severity -= ((.25f + .25f * pwrVal)*comp.arcaneDmg);
+                                rec.Severity -= ((.25f + .25f * pwrVal)*arcaneDmg);
                                 num--;
                             }
                             if (rec.Chemical.defName == "Psychite" && verVal >= 2)
                             {
-                                rec.Severity -= ((.25f + .25f * pwrVal)*comp.arcaneDmg);
+                                rec.Severity -= ((.25f + .25f * pwrVal)*arcaneDmg);
                                 num--;
                             }
                             if (verVal >= 3)
                             {
-                                if (rec.Chemical.defName == "Luciferium" && (rec.Severity - ((.15f + .15f * pwrVal)*comp.arcaneDmg) < 0))
+                                if (rec.Chemical.defName == "Luciferium" && (rec.Severity - ((.15f + .15f * pwrVal)*arcaneDmg) < 0))
                                 {
                                     Hediff luciHigh = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("LuciferiumHigh"), false);
                                     pawn.health.RemoveHediff(luciHigh);
                                 }
-                                rec.Severity -= ((.15f + .15f * pwrVal) * comp.arcaneDmg);
+                                rec.Severity -= ((.15f + .15f * pwrVal) * arcaneDmg);
                                 num--;                                
                             }
                             TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .6f);

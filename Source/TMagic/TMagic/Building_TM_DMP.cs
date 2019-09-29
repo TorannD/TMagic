@@ -109,7 +109,7 @@ namespace TorannMagic
                 return Building_TM_DMP.portableCells;
 
             }
-            Region region = pos.GetRegion(map, RegionType.Set_Passable);
+            Region region = pos.GetRegion(map, RegionType.Set_All);
             if (region == null)
             {
                 return Building_TM_DMP.portableCells;
@@ -124,7 +124,7 @@ namespace TorannMagic
                     }
                 }
                 return false;
-            }, 13, RegionType.Set_Passable);
+            }, 54, RegionType.Set_Passable);
             return Building_TM_DMP.portableCells;
         }
 

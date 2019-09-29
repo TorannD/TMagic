@@ -367,7 +367,7 @@ namespace TorannMagic
                     }
                     else
                     {
-                        thing = TM_Action.SpawnPawn(caster, spawnables, faction, position, duration);
+                        thing = TM_Action.SpawnPawn(caster, spawnables, faction, position, duration, map);
                     }
                 }
                 else
@@ -439,7 +439,7 @@ namespace TorannMagic
 
         }
 
-        public static TMPawnSummoned SpawnPawn(Pawn caster, SpawnThings spawnables, Faction faction, IntVec3 position, int duration)
+        public static TMPawnSummoned SpawnPawn(Pawn caster, SpawnThings spawnables, Faction faction, IntVec3 position, int duration, Map map)
         {
             TMPawnSummoned newPawn = (TMPawnSummoned)PawnGenerator.GeneratePawn(spawnables.kindDef, faction);
             newPawn.validSummoning = true;
@@ -465,7 +465,7 @@ namespace TorannMagic
             //{
             //    newPawn.SetFaction(val, null);
             //}
-            GenSpawn.Spawn(newPawn, position, Find.CurrentMap, 0);
+            GenSpawn.Spawn(newPawn, position, map, 0);
 
             if (newPawn.Faction != null && newPawn.Faction != Faction.OfPlayer)
             {
@@ -613,7 +613,7 @@ namespace TorannMagic
                                 if (lord != null)
                                 {
                                     LordJob_AssaultColony lordJob = new LordJob_AssaultColony(faction, false, false, false, false);
-                                    lord = LordMaker.MakeNewLord(faction, lordJob, original.Map, null);
+                                    lord = LordMaker.MakeNewLord(faction, lordJob, original.Map, null);                                    
                                 }
                             }
 
