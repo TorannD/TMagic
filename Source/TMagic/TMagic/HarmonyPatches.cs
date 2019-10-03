@@ -4416,10 +4416,25 @@ namespace TorannMagic
                     bool forgeNearby = false;
                     for(int i = 0; i < cellList.Count; i++)
                     {
-                        Building bldg = cellList[i].GetFirstBuilding(pawn.Map);
-                        if(bldg != null && bldg.def == TorannMagicDefOf.TableArcaneForge)
+                        List<Thing> thingList = cellList[i].GetThingList(pawn.Map);
+                        if (thingList != null && thingList.Count > 0)
                         {
-                            forgeNearby = true;
+                            for (int j = 0; j < thingList.Count; j++)
+                            {
+                                if (thingList[j] != null && thingList[j] is Building)
+                                {
+                                    Building bldg = thingList[j] as Building;
+                                    if (bldg.def == TorannMagicDefOf.TableArcaneForge)
+                                    {
+                                        forgeNearby = true;
+                                        break;
+                                    }
+                                }
+                            }
+                            if(forgeNearby)
+                            {
+                                break;
+                            }
                         }
                     }
                     if (forgeNearby)

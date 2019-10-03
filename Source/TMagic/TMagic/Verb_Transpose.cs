@@ -63,6 +63,11 @@ namespace TorannMagic
                     Pawn p = this.CasterPawn;
                     Pawn targetPawn = targetThing as Pawn;
                     bool drafted = p.Drafted;
+                    bool tDrafted = false;
+                    if(targetThing is Pawn && targetPawn.IsColonist && targetPawn.Drafted)
+                    {
+                        tDrafted = true;
+                    }
                     Map map = this.CasterPawn.Map;
                     IntVec3 cell = this.CasterPawn.Position;
                     IntVec3 targetCell = targetPawn.Position;
@@ -74,7 +79,8 @@ namespace TorannMagic
                             targetPawn.DeSpawn();
                             GenSpawn.Spawn(p, this.currentTarget.Cell, map);
                             GenSpawn.Spawn(targetPawn, cell, map);
-                            p.drafter.Drafted = true;
+                            p.drafter.Drafted = drafted;
+                            targetPawn.drafter.Drafted = tDrafted;
                             CameraJumper.TryJumpAndSelect(p);
                             CompAbilityUserMight comp = this.CasterPawn.GetComp<CompAbilityUserMight>();
                             MightPowerSkill ver = comp.MightData.MightPowerSkill_Transpose.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Transpose_ver");

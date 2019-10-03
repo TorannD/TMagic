@@ -2649,11 +2649,11 @@ namespace TorannMagic
                         //{
                         //    this.AddPawnAbility(TorannMagicDefOf.TM_BardTraining);
                         //}
-                        //else
-                        //{
-                        //    MagicPower mpB = this.MagicData.MagicPowersB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BardTraining);
-                        //    mpB.learned = false;
-                        //}
+                        if(true)
+                        {
+                            MagicPower mpB = this.MagicData.MagicPowersB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BardTraining);
+                            mpB.learned = false;
+                        }
                         if (Rand.Chance(.3f))
                         {
                             this.AddPawnAbility(TorannMagicDefOf.TM_Entertain);
