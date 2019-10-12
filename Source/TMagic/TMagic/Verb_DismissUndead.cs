@@ -59,13 +59,16 @@ namespace TorannMagic
                     {
                         target.Kill(null, null);
                     }
-                }
+                }                
                 else
                 {
                     Messages.Message("TM_NoValidUndeadToDismiss".Translate(), MessageTypeDefOf.RejectInput);
                 }
                 
-
+                if (!target.Dead && target.story != null && target.story.traits != null && target.story.traits.HasTrait(TorannMagicDefOf.Undead) && target.Faction == caster.Faction)
+                {
+                    target.Kill(null, null);
+                }
             }
             return true;
         }

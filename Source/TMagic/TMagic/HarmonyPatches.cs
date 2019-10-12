@@ -352,6 +352,7 @@ namespace TorannMagic
                                         MagicPowerSkill ver = comp.MagicData.MagicPowerSkill_Prediction.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Prediction_ver");
                                         if (comp.predictionIncidentDef != null)
                                         {
+                                            //Log.Message("attempt to execute prediction " + comp.predictionIncidentDef.defName);
                                             if (comp.predictionIncidentDef == __instance.def)
                                             {
                                                 //Log.Message("executing prediction" + __instance.def.defName);
@@ -363,6 +364,7 @@ namespace TorannMagic
                                         {
                                             if (__instance.CanFireNow(parms, false) && !ModOptions.Constants.GetBypassPrediction() && Rand.Chance(.25f + (.05f * ver.level))) //up to 40% chance to predict, per chronomancer
                                             {
+                                                //Log.Message("prediction is " + __instance.def.defName + " and can fire now: " + __instance.CanFireNow(parms, false));
                                                 int ticksTillIncident = Mathf.RoundToInt((Rand.Range(2500, 20000) * (1 + (.15f * ver.level))));  // from 1 to 8 hours, plus bonus
                                                                                                                                                  //Log.Message("pushing " + __instance.def.defName + " to iq for " + ticksTillIncident  + " ticks");
                                                 comp.predictionIncidentDef = __instance.def;

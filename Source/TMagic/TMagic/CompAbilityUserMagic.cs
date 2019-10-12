@@ -6980,12 +6980,14 @@ namespace TorannMagic
         private void ResolveEarthSpriteAction()
         {
             MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_EarthSprites.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EarthSprites_pwr");
+            //Log.Message("resolving sprites");
             if(this.earthSpriteMap == null)
                 {
                     this.earthSpriteMap = this.Pawn.Map;
                 }
             if (this.earthSpriteType == 1) //mining stone
-            {                
+            {
+                //Log.Message("stone");
                 Building mineTarget = this.earthSprites.GetFirstBuilding(this.earthSpriteMap);                
                 this.nextEarthSpriteAction = Find.TickManager.TicksGame + Mathf.RoundToInt((300 * (1 - (.1f * magicPowerSkill.level))) / this.arcaneDmg);
                 TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_SparkFlash"), this.earthSprites.ToVector3Shifted(), this.earthSpriteMap, Rand.Range(2f, 5f), .05f, 0f, .1f, 0, 0f, 0f, 0f);
@@ -7018,7 +7020,8 @@ namespace TorannMagic
                     Building newMineSpot = null;
                     if (this.earthSpritesInArea)
                     {
-                        List<IntVec3> spriteAreaCells = GenRadial.RadialCellsAround(oldEarthSpriteLoc, 5f, false).ToList();
+                        //Log.Message("moving in area");
+                        List<IntVec3> spriteAreaCells = GenRadial.RadialCellsAround(oldEarthSpriteLoc, 6f, false).ToList();
                         spriteAreaCells.Shuffle();
                         for (int i = 0; i < spriteAreaCells.Count; i++)
                         {
@@ -7030,6 +7033,8 @@ namespace TorannMagic
                                 if (mineable != null)
                                 {
                                     this.earthSprites = intVec;
+                                    //Log.Message("assigning");
+                                    break;
                                 }
                                 newMineSpot = null;
                             }
@@ -7064,6 +7069,7 @@ namespace TorannMagic
             }
             else if(this.earthSpriteType == 2) //transforming soil
             {
+                //Log.Message("earth");
                 this.nextEarthSpriteAction = Find.TickManager.TicksGame + Mathf.RoundToInt((24000 * (1 - (.1f * magicPowerSkill.level)))/this.arcaneDmg); 
                 for (int m = 0; m < 4; m++)
                 {
@@ -7124,7 +7130,8 @@ namespace TorannMagic
                         IntVec3 oldEarthSpriteLoc = this.earthSprites;
                         if (this.earthSpritesInArea)
                         {
-                            List<IntVec3> spriteAreaCells = GenRadial.RadialCellsAround(oldEarthSpriteLoc, 5f, false).ToList();
+                            //Log.Message("moving in area");
+                            List<IntVec3> spriteAreaCells = GenRadial.RadialCellsAround(oldEarthSpriteLoc, 6f, false).ToList();
                             spriteAreaCells.Shuffle();
                             for (int i = 0; i < spriteAreaCells.Count; i++)
                             {
@@ -7135,9 +7142,11 @@ namespace TorannMagic
                                 {
                                     Building terrainHasBuilding = null;
                                     terrainHasBuilding = intVec.GetFirstBuilding(this.earthSpriteMap);
-                                    if (terrainHasBuilding == null && TM_Calc.GetSpriteArea() != null && TM_Calc.GetSpriteArea().ActiveCells.Contains(intVec)) //dont transform terrain underneath buildings
+                                    if (TM_Calc.GetSpriteArea() != null && TM_Calc.GetSpriteArea().ActiveCells.Contains(intVec)) //dont transform terrain underneath buildings
                                     {
+                                        //Log.Message("assigning");
                                         this.earthSprites = intVec;
+                                        break;
                                     }
                                 }
                             }
@@ -7168,6 +7177,7 @@ namespace TorannMagic
                             this.earthSpriteMap = null;
                             this.earthSprites = IntVec3.Invalid;
                             this.earthSpritesInArea = false;
+                            //Log.Message("ending");
                         }
                     }
                 }

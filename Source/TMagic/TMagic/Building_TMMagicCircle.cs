@@ -186,6 +186,10 @@ namespace TorannMagic
                     {
                         return .1f;
                     }
+                    else if(this.Stuff == ThingDefOf.Plasteel)
+                    {
+                        return .15f;
+                    }
                 }
                 return 0f;
             }

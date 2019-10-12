@@ -281,9 +281,12 @@ Steel: no bonus
 Wood: no bonus
 Jade: success chance +20%
 Silver: refunds 20% of material cost
+Plasteel: event points +15%
 Gold: event points +10%, duration +20%
 Uranium: duration and success chance +15%
-Arcalleum: success chance +10%, refunds 20% of mana cost</description>
+Arcalleum: success chance +10%, refunds 20% of mana cost
+
+*Admin note: the circle will fuel itself when it detects mages capable of performing the ritual.</description>
     <graphicData>
       <texPath>Items/magic_circle</texPath>
       <graphicClass>Graphic_Multi</graphicClass>

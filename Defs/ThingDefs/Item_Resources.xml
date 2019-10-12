@@ -75,7 +75,7 @@ Extremely difficult and taxing to create, only a talented and knowledgeable mage
 	  <Beauty>2</Beauty>
       <MarketValue>13</MarketValue>
 	  <SellPriceFactor>.4</SellPriceFactor>
-      <Mass>0.75</Mass>
+      <Mass>0.6</Mass>
       <Flammability>.1</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
 	  <StuffPower_Armor_Sharp>.92</StuffPower_Armor_Sharp>

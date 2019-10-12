@@ -4,6 +4,7 @@ using AbilityUser;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace TorannMagic
 {
@@ -110,6 +111,7 @@ namespace TorannMagic
                                                 compMight.Initialize();
                                                 compMight.RemovePowers();
                                             }
+                                            RemoveAddictionsAndPermanentInjuries(undeadPawn);
                                             HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, -4f);
                                             HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, .5f + ver.level);                                            
                                             HealthUtility.AdjustSeverity(undeadPawn, HediffDef.Named("TM_UndeadStageHD"), -2f);
@@ -298,6 +300,60 @@ namespace TorannMagic
                     }
                 }
             }
+        }
+
+        private void RemoveAddictionsAndPermanentInjuries(Pawn pawn)
+        {
+            List<Hediff> removeList = new List<Hediff>();
+            removeList.Clear();
+            using (IEnumerator<BodyPartRecord> enumerator = pawn.health.hediffSet.GetInjuredParts().GetEnumerator())
+            {
+                while (enumerator.MoveNext())
+                {
+                    BodyPartRecord rec = enumerator.Current;
+
+                    IEnumerable<Hediff_Injury> arg_BB_0 = pawn.health.hediffSet.GetHediffs<Hediff_Injury>();
+                    Func<Hediff_Injury, bool> arg_BB_1;
+
+                    arg_BB_1 = ((Hediff_Injury injury) => injury.Part == rec);
+
+                    foreach (Hediff_Injury current in arg_BB_0.Where(arg_BB_1))
+                    {
+                        bool flag5 = !current.CanHealNaturally() && current.IsPermanent();
+                        if (flag5)
+                        {
+                            removeList.Add(current);
+                        }                        
+                    }                    
+                }
+            }
+
+            if(removeList.Count > 0)
+            {
+                for(int i = 0; i < removeList.Count; i++)
+                {
+                    pawn.health.RemoveHediff(removeList[i]);
+                }
+            }
+            removeList.Clear();
+
+            using (IEnumerator<Hediff_Addiction> enumerator = pawn.health.hediffSet.GetHediffs<Hediff_Addiction>().GetEnumerator())
+            {
+                while (enumerator.MoveNext())
+                {
+                    Hediff_Addiction rec = enumerator.Current;
+                    removeList.Add(rec);                  
+                }
+            }
+
+            if (removeList.Count > 0)
+            {
+                for (int i = 0; i < removeList.Count; i++)
+                {
+                    pawn.health.RemoveHediff(removeList[i]);
+                }
+            }
+            removeList.Clear();
         }
     }
 }

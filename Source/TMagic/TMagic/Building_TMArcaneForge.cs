@@ -17,6 +17,25 @@ namespace TorannMagic
 
         List<RecipeDef> replicatedRecipes = new List<RecipeDef>();
 
+        //Saved forge recipe variables
+        private bool hasSavedRecipe = false;
+        private ThingDef copiedThingDef = null;
+        private ThingDef copiedStuffDef = null;
+
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            Scribe_Values.Look<bool>(ref this.hasSavedRecipe, "hasSavedRecipe", false, false);
+            Scribe_Defs.Look<ThingDef>(ref this.copiedThingDef, "copiedThingDef");
+            Scribe_Defs.Look<ThingDef>(ref this.copiedStuffDef, "copiedStuffDef");
+            bool flag = Scribe.mode == LoadSaveMode.PostLoadInit;
+            if (flag && this.hasSavedRecipe)
+            {
+                RestoreForgeRecipeAfterLoad();
+            }
+        }
+
+
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
@@ -130,17 +149,28 @@ namespace TorannMagic
             
         }
 
-        public void Replicate()
+        public void Replicate(ThingDef repThingDef = null, ThingDef repStuffDef = null)
         {
-            CheckForUnfinishedThing();
-
+            ThingDef replicatedThingDef = null;
+            ThingDef replicatedStuffDef = null;
+            if (repThingDef == null)
+            {
+                CheckForUnfinishedThing();
+                replicatedThingDef = this.targetThing.def;
+                replicatedStuffDef = targetThing.Stuff;
+            }
+            else
+            {
+                replicatedThingDef = repThingDef;
+                replicatedStuffDef = repStuffDef;
+            }
             RecipeDef forgeRecipe = TorannMagicDefOf.ArcaneForge_Replication;
             RecipeDef replicant = null;
             List<RecipeDef> potentialRecipes = new List<RecipeDef>();
             potentialRecipes.Clear();
 
             IEnumerable<RecipeDef> enumerable = from def in DefDatabase<RecipeDef>.AllDefs
-                                                where (def.defName.Contains(this.targetThing.def.defName) && !def.defName.Contains("Administer") && !def.label.Contains("Replicate") && !def.label.Contains("Install") && !def.label.Contains("install"))
+                                                where (def.defName.Contains(replicatedThingDef.defName) && !def.defName.Contains("Administer") && !def.label.Contains("Replicate") && !def.label.Contains("Install") && !def.label.Contains("install"))
                                                 select def;
 
             foreach (RecipeDef current in enumerable)
@@ -149,7 +179,7 @@ namespace TorannMagic
             }
 
             RecipeDef gemstoneRecipe = null;
-            gemstoneRecipe = CheckForGemstone();
+            gemstoneRecipe = CheckForGemstone(replicatedThingDef);
 
             if(gemstoneRecipe != null)
             {
@@ -165,9 +195,9 @@ namespace TorannMagic
                 {
                     for (int i = 0; i < replicant.ingredients.Count; i++)
                     {
-                        if (!replicant.ingredients[i].IsFixedIngredient && !targetThing.def.MadeFromStuff)
+                        if (!replicant.ingredients[i].IsFixedIngredient && !repThingDef.MadeFromStuff)
                         {
-                            Messages.Message("TM_ReplicatedUnrecognizedIngredient".Translate(this.targetThing.def.LabelCap), MessageTypeDefOf.RejectInput);
+                            Messages.Message("TM_ReplicatedUnrecognizedIngredient".Translate(replicatedThingDef.LabelCap), MessageTypeDefOf.RejectInput);
                             goto EndReplicate;
                         }
                     }
@@ -187,11 +217,11 @@ namespace TorannMagic
                 }
 
 
-                if (targetThing.Stuff != null && targetThing.def.MadeFromStuff)
+                if (replicatedStuffDef != null && replicatedThingDef.MadeFromStuff)
                 {
 
-                    ic.filter.SetAllow(targetThing.Stuff, true);
-                    ic.SetBaseCount(targetThing.def.costStuffCount);
+                    ic.filter.SetAllow(replicatedStuffDef, true);
+                    ic.SetBaseCount(replicatedThingDef.costStuffCount);
                     forgeRecipe.ingredients.Add(ic);
                 }
 
@@ -200,6 +230,9 @@ namespace TorannMagic
                 forgeRecipe.label = "Replicate " + replicant.label;
                 forgeRecipe.unfinishedThingDef = replicant.unfinishedThingDef;
                 forgeRecipe.products = replicant.products;
+                this.copiedThingDef = replicatedThingDef;
+                this.copiedStuffDef = replicatedStuffDef;
+                this.hasSavedRecipe = true;
 
                 EndReplicate:;
 
@@ -224,6 +257,7 @@ namespace TorannMagic
                         forgeRecipe.unfinishedThingDef = replicant.unfinishedThingDef;
                         forgeRecipe.products = replicant.products;
                     }
+                    this.hasSavedRecipe = false;
                 }
             }
             else
@@ -242,49 +276,49 @@ namespace TorannMagic
             }
         }
 
-        private RecipeDef CheckForGemstone()
+        private RecipeDef CheckForGemstone(ThingDef td)
         {
             RecipeDef returnedRecipe = null;
             String gemString = "Cut";
             String gemType = "";
             String gemQual = "";
-            if (this.targetThing.def.defName.Contains("wonder"))
+            if (td.defName.Contains("wonder"))
             {
                 gemType = "wonder";
             }
-            if (this.targetThing.def.defName.Contains("maxMP"))
+            if (td.defName.Contains("maxMP"))
             {
                 gemType = "MPGem";
             }
-            if (this.targetThing.def.defName.Contains("mpRegenRate"))
+            if (td.defName.Contains("mpRegenRate"))
             {
                 gemType = "MPRegenRateGem";
             }
-            if (this.targetThing.def.defName.Contains("mpCost"))
+            if (td.defName.Contains("mpCost"))
             {
                 gemType = "MPCostGem";
             }
-            if (this.targetThing.def.defName.Contains("coolDown"))
+            if (td.defName.Contains("coolDown"))
             {
                 gemType = "CoolDownGem";
             }
-            if (this.targetThing.def.defName.Contains("xpGain"))
+            if (td.defName.Contains("xpGain"))
             {
                 gemType = "XPGainGem";
             }
-            if (this.targetThing.def.defName.Contains("arcaneRes"))
+            if (td.defName.Contains("arcaneRes"))
             {
                 gemType = "ArcaneResGem";
             }
-            if (this.targetThing.def.defName.Contains("arcaneDmg"))
+            if (td.defName.Contains("arcaneDmg"))
             {
                 gemType = "ArcaneDmgGem";
             }
-            if(this.targetThing.def.defName.Contains("_major"))
+            if(td.defName.Contains("_major"))
             {
                 gemQual = "Major";
             }
-            if (this.targetThing.def.defName.Contains("_minor"))
+            if (td.defName.Contains("_minor"))
             {
                 gemQual = "Minor";
             }
@@ -304,5 +338,19 @@ namespace TorannMagic
 
             return returnedRecipe;
         }
+
+        private void RestoreForgeRecipeAfterLoad()
+        {
+            RecipeDef forgeRecipe = TorannMagicDefOf.ArcaneForge_Replication;            
+            if(this.hasSavedRecipe)
+            {
+                Replicate(this.copiedThingDef, this.copiedStuffDef);
+            }
+            else
+            {
+                ClearReplication();
+            }
+        }
+
     }
 }

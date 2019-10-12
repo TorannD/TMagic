@@ -63,7 +63,15 @@ namespace TorannMagic
                 {
                     if (Rand.Chance(TM_Calc.GetSpellSuccessChance(this.CasterPawn, newPawn, true)))
                     {
-                        HealthUtility.AdjustSeverity(newPawn, HediffDef.Named("TM_RendHD"), (3f + (.6f * ver.level))*this.arcaneDmg);
+                        HealthUtility.AdjustSeverity(newPawn, HediffDef.Named("TM_RendHD"), (3f + (.6f * ver.level)) * this.arcaneDmg);
+                        if (newPawn.Faction != null && !newPawn.Faction.HostileTo(base.CasterPawn.Faction))
+                        {
+                            newPawn.Faction.TryAffectGoodwillWith(base.CasterPawn.Faction, -20, true, false, null, null);
+                        }
+                        else if (newPawn.kindDef != null && newPawn.kindDef.RaceProps.Animal && newPawn.Faction == null)
+                        {
+                            newPawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Manhunter, null, true, false, null);
+                        }
                     }
                     else
                     {
