@@ -131,6 +131,17 @@ namespace TorannMagic
             bool spawned = flyingThing.Spawned;
             pawn = launcher as Pawn;
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
+            if (comp != null)
+            {
+                if (comp.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_pwr").level >= 3)
+                {
+                    this.speed = 12;
+                }
+                if (comp.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level >= 4)
+                {
+                    this.duration = Mathf.RoundToInt(this.duration * 1.25f);
+                }
+            }
             this.duration = Mathf.RoundToInt(this.duration * comp.arcaneDmg);
             if (spawned)
             {

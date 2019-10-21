@@ -46,6 +46,8 @@ namespace TorannMagic
         public static ThingDef Torn_BookOfEnchanter;
         public static ThingDef BookOfChronomancer;
         public static ThingDef Torn_BookOfChronomancer;
+        public static ThingDef BookOfChaos;
+        public static ThingDef Torn_BookOfChaos;
         public static ThingDef BookOfQuestion;
 
         public static HediffDef TM_Uncertainty;        
@@ -171,6 +173,12 @@ namespace TorannMagic
         
         public static TraitDef Gifted;
         public static TraitDef TM_OKWithDeath;
+
+        //Wanderer
+        public static TraitDef TM_Wanderer;
+
+        public static TMAbilityDef TM_WandererCraft;
+        public static TMAbilityDef TM_Cantrips;
         
 		//Fire
 		public static TraitDef InnerFire;
@@ -561,6 +569,12 @@ namespace TorannMagic
         public static TMAbilityDef TM_TimeMark;
         public static TMAbilityDef TM_Recall;
 
+        //Chaos Mage
+        public static TraitDef ChaosMage;
+
+        public static TMAbilityDef TM_ChaosTradition;
+        public static HediffDef TM_ChaosTraditionHD;
+
         //Might 
         public static NeedDef TM_Stamina;
         public static HediffDef TM_MightUserHD;
@@ -574,6 +588,12 @@ namespace TorannMagic
         public static ThingDef BookOfDeathKnight;
         public static ThingDef BookOfMonk;
         public static TraitDef PhysicalProdigy;
+
+        //Wayfarer
+        public static TraitDef TM_Wayfarer;
+
+        public static TMAbilityDef TM_WayfarerCraft;
+        public static TMAbilityDef TM_FieldTraining;
 
         //Might (Gladiator)
         public static TraitDef Gladiator;

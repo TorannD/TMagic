@@ -47,7 +47,7 @@ namespace TorannMagic
             {
                 pwr = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AdvancedHeal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AdvancedHeal_pwr");
                 ver = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AdvancedHeal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AdvancedHeal_ver");
-            }
+            }            
             pwrVal = pwr.level;
             verVal = ver.level;
             if (caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
@@ -56,6 +56,11 @@ namespace TorannMagic
                 MightPowerSkill mver = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
                 pwrVal = mpwr.level;
                 verVal = mver.level;
+            }
+            if (caster.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer))
+            {
+                pwrVal = (int)((caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_pwr").level) / 5);
+                verVal = (int)((caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level) / 5);
             }
 
             Pawn pawn = (Pawn)this.currentTarget;

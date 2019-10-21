@@ -11,7 +11,7 @@ namespace TorannMagic
         {
             CompAbilityUserMight comp = user.GetComp<CompAbilityUserMight>();
 
-            if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.DeathKnight) || user.story.traits.HasTrait(TorannMagicDefOf.TM_Monk) || user.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic) || user.story.traits.HasTrait(TorannMagicDefOf.Faceless) || user.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || user.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || user.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Ranger))))
+            if (parent.def != null && (TM_Calc.IsMightUser(user) || TM_Calc.IsWayfarer(user)))
             {
                 if (parent.def.defName == "SkillOf_Sprint" && comp.skill_Sprint == false && !user.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
                 {

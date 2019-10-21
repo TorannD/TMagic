@@ -26,6 +26,19 @@ namespace TorannMagic
                     compHitPawn.Mana.CurLevel += (.2f + (.01f * regen.level)) * compCaster.arcaneDmg;
                     TM_MoteMaker.ThrowManaPuff(hitPawn.Position.ToVector3(), hitPawn.Map, 1f);
                     TM_MoteMaker.ThrowManaPuff(hitPawn.Position.ToVector3(), hitPawn.Map, 1f);
+                    if(compCaster.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_pwr").level >= 6)
+                    {
+                        float sev = Rand.Range(0, 10) * compCaster.arcaneDmg;
+                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_Manipulation, sev);
+                        sev = Rand.Range(0, 10) * compCaster.arcaneDmg;
+                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_Movement, sev);
+                        sev = Rand.Range(0, 10) * compCaster.arcaneDmg;
+                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_Breathing, sev);
+                        sev = Rand.Range(0, 10) * compCaster.arcaneDmg;
+                        HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_Sight, sev);
+                        TM_MoteMaker.ThrowManaPuff(hitPawn.Position.ToVector3(), hitPawn.Map, 1f);
+                        TM_MoteMaker.ThrowManaPuff(hitPawn.Position.ToVector3(), hitPawn.Map, 1f);
+                    }
                 }
                 else
                 {

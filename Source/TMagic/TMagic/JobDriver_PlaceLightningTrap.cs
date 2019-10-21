@@ -40,11 +40,11 @@ namespace TorannMagic
                     {
                         for (int i = 0; i < comp.lightningTraps.Count; i++)
                         {
-                            if(comp.lightningTraps[i].Destroyed)
+                            if (comp.lightningTraps[i].Destroyed)
                             {
                                 comp.lightningTraps.Remove(comp.lightningTraps[i]);
                                 i--;
-                            }                            
+                            }
                         }
                         if (comp.lightningTraps.Count >= 1)
                         {
@@ -59,7 +59,7 @@ namespace TorannMagic
                                 tempThing.Destroy();
                             }
                         }
-                        this.SingleSpawnLoop(tempPod, pawn, TargetLocA, pawn.Map);                                              
+                        this.SingleSpawnLoop(tempPod, pawn, TargetLocA, pawn.Map);
                     }
                     catch
                     {
@@ -100,6 +100,15 @@ namespace TorannMagic
                     GenPlace.TryPlaceThing(thing, position, map, ThingPlaceMode.Direct);
                     //GenSpawn.Spawn(thing, position, map, Rot4.North, WipeMode.Vanish, false);
                     comp.lightningTraps.Add(thing);
+                    if (comp != null && comp.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_pwr").level >= 9)
+                    {
+                        Building_LightningTrap trap = thing as Building_LightningTrap;
+                        if(trap != null && thing is Building_LightningTrap)
+                        {
+                            trap.iceTrap = true;
+                            trap.extendedTrap = true;
+                        }
+                    }
                 }
             }
             else

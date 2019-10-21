@@ -52,7 +52,7 @@ namespace TorannMagic.SihvRMagicScrollScribe
                 tempPod = ThingDef.Named("BookOfMonk");
                 this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
             }
-            else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy))
+            else if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy) || user.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer)))
             {
                 int attempt = 0;
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();

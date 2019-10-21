@@ -240,6 +240,9 @@
 <TM_Enchanter>Enchanter</TM_Enchanter>
 <TM_Chronomancer>Chronomancer</TM_Chronomancer>
 <TM_Monk>Monk</TM_Monk>
+<TM_Wanderer>Wanderer</TM_Wanderer>
+<TM_Wayfarer>Wayfarer</TM_Wayfarer>
+<TM_ChaosMage>Chaos Mage</TM_ChaosMage>
 
 <!-- Mod Settings event options -->
 <TM_EventOptions>Event Options</TM_EventOptions>
@@ -265,6 +268,59 @@
 <TM_global_strength_pwr_desc>Increases the damage of combat abilities by 5% per level.</TM_global_strength_pwr_desc>
 <TM_global_endurance_pwr>Endurance</TM_global_endurance_pwr>
 <TM_global_endurance_pwr_desc>Increases maximum stamina by 4 per level.</TM_global_endurance_pwr_desc>
+
+<TM_WandererCraft_pwr_desc>Each skill point:
+Ability power: +1%
+Ability resistance: +2%</TM_WandererCraft_pwr_desc>
+<TM_WandererCraft_eff_desc>Each skill point:
+Ability cost: -1%
+Upkeep cost: -2%
+XP gain: +2%</TM_WandererCraft_eff_desc>
+<TM_WandererCraft_ver_desc>Each skill point:
+Ability cooldown: -1%
+Mana regeneration: +1%
+Max mana: +2%</TM_WandererCraft_ver_desc>
+<TM_Cantrips_pwr_desc>Adds additional power to cantrips:
++Level 1: Smokecloud causes blindness to enemies
++Level 2: Arcane bolt minimum burst count increased to 2
++Level 3: Dirt Devil moves 33% faster
++Level 4: Extinguish causes damage to elementals and high damage to demons
++Level 5: Teleport, Heal, and Summon Minion gain power level 1 class improvements
++Level 6: Transfer mana and Siphon mana always apply buffs/debuffs 
++Level 7: Arcane bolt minimum burst count increased to 3
++Level 8: Spell Mending reparation speed increased by 25%
++Level 9: Lightning Trap triggered effect lasts longer and creates a sheet of snow
++Level 10: Teleport, Heal, and Summon Minion gain power level 2 class improvements
+Level 11: Arcane Heater spits fire at enemies
+Level 12: Arcane Cooler slows movement of nearby enemies
+Level 13: Power Node shocks nearby enemies
+Level 14: Rain causes a thunderstorm (instead of rain) where lightning strikes will be focused around enemies
++Level 15: Teleport, Heal, and Summon Minion gain power level 3 class improvements</TM_Cantrips_pwr_desc>
+<TM_Cantrips_eff_desc>Decrease max MP upkeep costs by 2% and energy regeneration penalties by 2% per skill point.
+Level 15: Wanderer gains stamina and may learn Might classless abilities.</TM_Cantrips_eff_desc>
+<TM_Cantrips_ver_desc>Adds additional utility or versatility to cantrips:
+Level 1: Blink stuns enemies around the target area
++Level 2: Smokecloud radius is expanded by 2 cells
+Level 3: Increases the efficiency of mana shield by 25%
++Level 4: Dirt Devil lasts 25% longer
++Level 5: Teleport, Heal, and Summon Minion gain versatility level 1 class improvements
+Level 6: Arcane Cooler, Arcane Heater, and Power Node apply minor buffs
+Level 7: Increases the efficiency of mana shield by 40%
++Level 8: Spell Mending doesn't apply a debuff on the target
+Level 9: Arcane Cooler, Arcane Heater, and Power Node apply additional buffs
++Level 10: Teleport, Heal, and Summon Minion gain versatility level 2 class improvements
+Level 11: Blur dodge chance increased by 10%
+Level 12: Invisibility has increased duration and applies a self heal when activated
+Level 13: Magelight will fire lightning bolts at enemies
+Level 14: EMP can also cause Sabotage to mechanoids
++Level 15: Teleport, Heal, and Summon Minion gain versatility level 3 class improvements</TM_Cantrips_ver_desc>
+
+<TM_WandererCraft_pwr>Experimentation</TM_WandererCraft_pwr>
+<TM_WandererCraft_eff>Self-taught</TM_WandererCraft_eff>
+<TM_WandererCraft_ver>Expanded Mind</TM_WandererCraft_ver>
+<TM_Cantrips_pwr>Cantrips Power</TM_Cantrips_pwr>
+<TM_Cantrips_eff>Cantrips Efficiency</TM_Cantrips_eff>
+<TM_Cantrips_ver>Cantrips Versatility</TM_Cantrips_ver>
 
 <TM_RayofHope_eff>Ray of Hope Efficiency</TM_RayofHope_eff>
 <TM_RayofHope_eff_desc>Decreases the mana upkeep cost of Ray of Hope by 8% per level.</TM_RayofHope_eff_desc>
@@ -1434,6 +1490,18 @@ Lethal Blow targets a vital bodypart and strikes it with a precise attack that d
 <TM_ReplicateDesc>The Arcane Forge is capable of scanning a single item and replicating its design. If successful, the forge stores the design blueprints of the scanned item and the item can then be crafted at the forge.\n\nReplicated items require the same material as the standard item to craft, but any research requirements or crafting skill requirements are bypassed. All replicated items require a high intelligence to reproduce and the forge can only be operated by a mage.\n\n*Admin note: the forge can perform scans at no cost, but the active design is replaced by the default recipe if the game is reloaded.\n\nReplication has no use limit, but is benefits most when used to create items you do not have the research to create, to alter the crafting requirements, to take advantage of the dramatically increased crafting speed of the arcane forge or to benefit from the quality bonus when operated by a high level mage.</TM_ReplicateDesc>
 <TM_ReplicateDisabled>Replication Disabled</TM_ReplicateDisabled>
 <TM_ReplicateDisabledDesc>Clear bills related to replication and allow a new replication.</TM_ReplicateDisabledDesc>
+<TM_PromoteWanderer>Promote To Wanderer</TM_PromoteWanderer>
+<TM_PromoteWandererDesc>Promotes the Gifted pawn to the Wanderer class. The Wanderer has no class abilities but can learn all classless standalone abilities (cantrips) using scrolls, and can improve cantrips beyond their normal potential.
+
+*To become a mage class, the pawn must read a torn arcane script or arcane tome.*
+
+**Once promoted, the pawn cannot become another mage class, the decision is permanent and cannot be reverted - this includes the Wanderer class.**</TM_PromoteWandererDesc>
+<TM_PromoteWayfarer>Promote To Wayfarer</TM_PromoteWayfarer>
+<TM_PromoteWayfarerDesc>Promotes the Gifted pawn to the Wayfarer class. The Wayfarer has no class abilities but can learn all classless standalone abilities using scrolls, and can improve combat abilities beyond their normal potential.
+
+*To become a might class, the pawn must read a book teaching a Combat Form.*
+
+**Once promoted, the pawn cannot become another fighter class, the decision is permanent and cannot be reverted - this includes the Wayfarer class.**</TM_PromoteWayfarerDesc>
 
 <!-- ========== Building Menu's ========== -->
 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs> 
+ 
+  <!-- Chaos Tradition -->
+  <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_ChaosTradition</defName>
+    <label>Chaos Tradition</label>
+    <uiIconPath>UI/ChaosTradition</uiIconPath>
+    <description>Chaos Tradition is the practice in which chaos mages redefines their beliefs and exchange their available magic abilities. True to its name, the abilities learned cannot be controlled and will be randomly selected. Each use of this ability will cause the user to become disoriented for a short period.</description>
+    <manaCost>0.20</manaCost>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_ChaosTradition</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_ChaosTradition</abilityDef>
+		<isViolent>false</isViolent>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+        <warmupTime>4</warmupTime>
+        <SecondsToRecharge>60</SecondsToRecharge>
+        <range>0</range>
+        <soundCast>Message_PositiveEvent</soundCast>
+        <muzzleFlashScale>30</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+   	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>true</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+  
+</Defs>

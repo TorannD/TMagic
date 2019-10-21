@@ -54,7 +54,13 @@ namespace TorannMagic.ModOptions
             Widgets.Label(classRectShiftRight, "TM_EnabledFighters".Translate());
             num++;
             GUI.color = Color.white;
-            Rect rowRect = Controller.UIHelper.GetRowRect(classRect, rowHeight, num);
+            Rect rowRect0 = Controller.UIHelper.GetRowRect(classRect, rowHeight, num);
+            Widgets.CheckboxLabeled(rowRect0, "TM_Wanderer".Translate(), ref Settings.Instance.Wanderer, false);
+            Rect rowRect0ShiftRight = Controller.UIHelper.GetRowRect(rowRect0, rowHeight, num);
+            rowRect0ShiftRight.x += rowRect0.width + 140f;
+            Widgets.CheckboxLabeled(rowRect0ShiftRight, "TM_Wayfarer".Translate(), ref Settings.Instance.Wayfayer, false);
+            num++;
+            Rect rowRect = Controller.UIHelper.GetRowRect(rowRect0, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect, "TM_Arcanist".Translate(), ref Settings.Instance.Arcanist, false);
             Rect rowRectShiftRight = Controller.UIHelper.GetRowRect(rowRect, rowHeight, num);
             rowRectShiftRight.x += rowRect.width + 140f;
@@ -125,6 +131,9 @@ namespace TorannMagic.ModOptions
             num++;
             Rect rowRect15 = Controller.UIHelper.GetRowRect(rowRect14, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect15, "TM_Chronomancer".Translate(), ref Settings.Instance.Chronomancer, false);
+            num++;
+            Rect rowRect16 = Controller.UIHelper.GetRowRect(rowRect15, rowHeight, num);
+            Widgets.CheckboxLabeled(rowRect16, "TM_ChaosMage".Translate(), ref Settings.Instance.ChaosMage, false);
 
             GUI.EndGroup();
         }        

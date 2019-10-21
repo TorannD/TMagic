@@ -6,12 +6,14 @@ using Harmony;
 namespace TorannMagic
 {
     [StaticConstructorOnStartup]
-    class HediffComp_SpellMending : HediffComp
+    public class HediffComp_SpellMending : HediffComp
     {
 
         private bool initializing = true;
         private int ticksTillNextMend = 0;
         private int mendTick = 0;
+
+        public int mendTickTimer = 80;
 
         public string labelCap
         {
@@ -94,7 +96,7 @@ namespace TorannMagic
                 }
             }
             mendTick = 0;
-            ticksTillNextMend = 80 * tmpDmgItems;
+            ticksTillNextMend = mendTickTimer * tmpDmgItems;
         }
 
     }

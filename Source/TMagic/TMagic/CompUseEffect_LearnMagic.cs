@@ -18,7 +18,7 @@ namespace TorannMagic
                 {
                     FixTrait(user, user.story.traits.allTraits);
                     user.story.traits.GainTrait(new Trait(TorannMagicDefOf.InnerFire, 4, false));
-                    if(parent.def.defName == "BookOfInnerFire")
+                    if (parent.def.defName == "BookOfInnerFire")
                     {
                         HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
                     }
@@ -141,7 +141,7 @@ namespace TorannMagic
                     else
                     {
                         Log.Message("No gender found - assigning random trait.");
-                        if(Rand.Chance(.5f))
+                        if (Rand.Chance(.5f))
                         {
                             user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Succubus, 4, false));
                         }
@@ -206,6 +206,15 @@ namespace TorannMagic
                     }
                     this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
+                else if (parent.def == TorannMagicDefOf.BookOfChaos || parent.def == TorannMagicDefOf.Torn_BookOfChaos)
+                {
+                    FixTrait(user, user.story.traits.allTraits);
+                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.ChaosMage, 4, false));
+                    if (parent.def == TorannMagicDefOf.BookOfChaos)
+                    {
+                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                    }
+                }
                 else if (parent.def.defName == "BookOfQuestion")
                 {
                     int attempts = 0;
@@ -214,7 +223,7 @@ namespace TorannMagic
                     RetryBookOfQuestion:;
                     if (attempts < 50)
                     {
-                        int rnd = Mathf.RoundToInt(Rand.RangeInclusive(0, 16));
+                        int rnd = Mathf.RoundToInt(Rand.RangeInclusive(0, 17));
                         switch (rnd)
                         {
                             case 0:
@@ -260,7 +269,7 @@ namespace TorannMagic
                                     attempts++;
                                     goto RetryBookOfQuestion;
                                 }
-                                break;                                
+                                break;
                             case 1:
                                 if (settingsRef.Necromancer)
                                 {
@@ -273,8 +282,8 @@ namespace TorannMagic
                                 }
                                 break;
                             case 2:
-                                if(settingsRef.Druid)
-                                { 
+                                if (settingsRef.Druid)
+                                {
                                     user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Druid, 4, false));
                                 }
                                 else
@@ -284,8 +293,8 @@ namespace TorannMagic
                                 }
                                 break;
                             case 3:
-                                if(settingsRef.Summoner)
-                                { 
+                                if (settingsRef.Summoner)
+                                {
                                     user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Summoner, 4, false));
                                 }
                                 else
@@ -295,8 +304,8 @@ namespace TorannMagic
                                 }
                                 break;
                             case 4:
-                                if(settingsRef.FireMage)
-                                { 
+                                if (settingsRef.FireMage)
+                                {
                                     user.story.traits.GainTrait(new Trait(TorannMagicDefOf.InnerFire, 4, false));
                                 }
                                 else
@@ -426,6 +435,17 @@ namespace TorannMagic
                                     goto RetryBookOfQuestion;
                                 }
                                 break;
+                            case 17:
+                                if (settingsRef.ChaosMage)
+                                {
+                                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.ChaosMage, 4, false));
+                                }
+                                else
+                                {
+                                    attempts++;
+                                    goto RetryBookOfQuestion;
+                                }
+                                break;
                         }
                         this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                     }
@@ -433,7 +453,7 @@ namespace TorannMagic
                     {
                         user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Gifted, 2, false));
                         Messages.Message("Unable to find a valid class to assign after 50 attempts - ending attempt", MessageTypeDefOf.RejectInput);
-                    }                 
+                    }
                 }
                 else
                 {
@@ -454,7 +474,7 @@ namespace TorannMagic
         {
             for (int i = 0; i < traits.Count; i++)
             {
-                if (traits[i].def.defName == "Gifted")
+                if (traits[i].def == TorannMagicDefOf.Gifted)
                 {
                     traits.Remove(traits[i]);
                     i--;

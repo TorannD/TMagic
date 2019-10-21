@@ -40,7 +40,10 @@ namespace TorannMagic
 
         public static readonly Color demonShieldColor = new Color(150f, 0f, 75f);
         public static readonly Material demonShieldMat = MaterialPool.MatFrom("Other/Shield", ShaderDatabase.Transparent, TM_RenderQueue.demonShieldColor);
-        
+
+        public static readonly Material wandererMarkMat = MaterialPool.MatFrom("Other/wandererFlame");
+        public static readonly Material wayfarerMarkMat = MaterialPool.MatFrom("Other/wayfarerFlame");
+
         public static readonly Material mageMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, Color.black);
         public static readonly Color arcanistMarkColor = new Color(1, 0, .5f);
         public static readonly Material arcanistMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, TM_RenderQueue.arcanistMarkColor);
@@ -70,6 +73,7 @@ namespace TorannMagic
         public static readonly Material bloodmageMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, TM_RenderQueue.bloodmageMarkColor);
         public static readonly Color chronomancerMarkColor = new Color(.4f, .65f, 1f);
         public static readonly Material chronomancerMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, TM_RenderQueue.chronomancerMarkColor);
+        public static readonly Material chaosMarkMat = MaterialPool.MatFrom("Other/chaosMark");
 
         //Might
         public static readonly Material deceptionEye = MaterialPool.MatFrom("Motes/DeceptionMote");

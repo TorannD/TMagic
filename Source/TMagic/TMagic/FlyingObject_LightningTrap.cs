@@ -35,7 +35,7 @@ namespace TorannMagic
         //private int pwrVal = 0;
         //private int verVal = 0;
 
-        protected float speed = .8f;
+        public float speed = .8f;
         protected int ticksToImpact;
 
         protected Faction faction = null;
@@ -144,10 +144,11 @@ namespace TorannMagic
             this.Launch(launcher, base.Position.ToVector3Shifted(), targ, flyingThing, null, null);
         }
 
-        public void Launch(Thing launcher, Vector3 origin, LocalTargetInfo targ, Thing flyingThing, Faction faction, DamageInfo? newDamageInfo = null)
+        public void Launch(Thing launcher, Vector3 origin, LocalTargetInfo targ, Thing flyingThing, Faction faction, DamageInfo? newDamageInfo = null, float _speed = .8f)
         {
             bool spawned = flyingThing.Spawned;
             pawn = launcher as Pawn;
+            this.speed = _speed;
             //CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
             //this.arcaneDmg = comp.arcaneDmg;
             //MagicPowerSkill pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EyeOfTheStorm.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EyeOfTheStorm_pwr");

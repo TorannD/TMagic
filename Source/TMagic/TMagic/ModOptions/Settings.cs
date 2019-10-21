@@ -58,6 +58,8 @@ namespace TorannMagic.ModOptions
         public bool BloodMage = true;
         public bool Enchanter = true;
         public bool Chronomancer = true;
+        public bool Wanderer = true;
+        public bool ChaosMage = true;
 
         public bool Gladiator = true;
         public bool Bladedancer = true;
@@ -67,6 +69,7 @@ namespace TorannMagic.ModOptions
         public bool Psionic = true;
         public bool DeathKnight = true;
         public bool Monk = true;
+        public bool Wayfayer = true;
 
         public static Settings Instance;
 
@@ -134,6 +137,9 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<bool>(ref this.Faceless, "Faceless", true, false);
             Scribe_Values.Look<bool>(ref this.Psionic, "Psionic", true, false);
             Scribe_Values.Look<bool>(ref this.DeathKnight, "DeathKnight", true, false);
+            Scribe_Values.Look<bool>(ref this.Wanderer, "Wanderer", true, false);
+            Scribe_Values.Look<bool>(ref this.Wayfayer, "Wayfarer", true, false);
+            Scribe_Values.Look<bool>(ref this.ChaosMage, "ChaosMage", true, false);
             Scribe_Values.Look<bool>(ref this.Monk, "Monk", true, false);
         }
     }

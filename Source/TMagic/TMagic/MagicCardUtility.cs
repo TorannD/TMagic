@@ -322,6 +322,11 @@ namespace TorannMagic
                             MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersC, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Prediction, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AlterFate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AccelerateTime, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ReverseTime, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ChronostaticField, null, TexButton.TMTex_SkillPointUsed);
                         }
                     }
+                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer))
+                    {
+                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                        MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersW, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_WandererCraft, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips, null, null, null, null, TexButton.TMTex_SkillPointUsed);
+                    }
                 }
             }
             Widgets.EndScrollView();
@@ -782,6 +787,7 @@ namespace TorannMagic
                             (power.abilityDef.defName == "TM_BloodMoon" && MagicPowerSkill6 == null) ||
                             (power.abilityDef.defName == "TM_Shapeshift" && MagicPowerSkill6 == null) ||
                             (power.abilityDef.defName == "TM_Recall" && MagicPowerSkill6 == null) ||
+                            (power.abilityDef.defName == "TM_HolyWrath" && MagicPowerSkill5 == null) ||
                             (power.abilityDef.defName == "TM_Resurrection" && MagicPowerSkill5 == null))
                         {
                             Rect rectMasterLock = new Rect(rect.xMax - 23f - "TM_MasterSpellLocked".Translate().Length * 4, rect.yMin + MagicCardUtility.MagicButtonSize + 4f, "TM_MasterSpellLocked".Translate().Length * 8, MagicCardUtility.TextSize * 3);
@@ -789,7 +795,7 @@ namespace TorannMagic
                                         power.abilityDef.LabelCap
                                 ));
                         }
-                        if (MagicPowerSkill4 == null)
+                        if (MagicPowerSkill4 == null && compMagic.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
                         {
                             Rect rectTechnoPath = new Rect(rect.xMax - "TM_TechnomancerPathWarning".Translate().Length * 3, rect.yMin + (2*(MagicCardUtility.MagicButtonSize + 4f)), "TM_TechnomancerPathWarning".Translate().Length * 6, MagicCardUtility.TextSize * 3);
                             Widgets.Label(rectTechnoPath, "TM_TechnomancerPathWarning".Translate());
@@ -1464,6 +1470,18 @@ namespace TorannMagic
                                 compMagic.MagicData.MagicAbilityPoints -= 1;
                             }
                             if (enumerator.Current.abilityDef.defName == "TM_Recall")
+                            {
+                                compMagic.LevelUpSkill_Recall(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_WandererCraft")
+                            {
+                                compMagic.LevelUpSkill_Recall(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Cantrips")
                             {
                                 compMagic.LevelUpSkill_Recall(skill.label);
                                 skill.level++;

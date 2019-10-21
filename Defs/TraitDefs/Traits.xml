@@ -75,6 +75,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>
 	</TraitDef>
 
@@ -124,8 +127,67 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>
     </TraitDef>
+	
+	<TraitDef>
+		<defName>TM_Wanderer</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
+		<degreeDatas>	
+		  <li>
+			<label>Wanderer</label>
+			<description>[PAWN_nameDef] is a wanderer; the outcast, halfbreed mage class frequently dubbed a hedge-mage. [PAWN_possessive] carefree personality has kept [PAWN_possessive] from developing class abilities. Instead, [PAWN_pronoun] has learned to improve on a vast number of utility abilities that allow her to adapt to any situation.
+			
+			A Wanderer prefers the open road and will gain a mood boost for being in a caravan, but will suffer a mood penalty for remaining in a colony for too long. Additionally, any caravan with a wanderer will ignore the movement penalties of any world tile.</description>
+			<degree>4</degree>
+				<statOffsets>
+                    <MoveSpeed>.20</MoveSpeed>
+					<WorkSpeedGlobal>-0.10</WorkSpeedGlobal>
+                    <ImmunityGainSpeed>.2</ImmunityGainSpeed>
+					<PsychicSensitivity>0.10</PsychicSensitivity>
+					<MentalBreakThreshold>-0.03</MentalBreakThreshold>
+					<ComfyTemperatureMax>+3</ComfyTemperatureMax>
+					<ComfyTemperatureMin>+3</ComfyTemperatureMin>
+                </statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>HeartOfFrost</li>
+		  <li>Arcanist</li>
+		  <li>StormBorn</li>
+		  <li>Summoner</li>
+			<li>Gifted</li>
+			<li>Paladin</li>
+			<li>PhysicalProdigy</li>
+		  <li>Gladiator</li>
+		  <li>TM_Sniper</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		  <li>Faceless</li>
+		  <li>Succubus</li>
+		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
+		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
+		  <li>InnerFire</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
+		</conflictingTraits>	
+	</TraitDef> 
 	
 	<TraitDef>
 		<defName>InnerFire</defName>
@@ -176,6 +238,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -227,6 +292,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -276,6 +344,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -329,6 +400,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -381,6 +455,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -431,6 +508,9 @@
 		  <li>BloodMage</li>
 		  <li>TM_Monk</li>
 		  <li>Chronomancer</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 
@@ -480,6 +560,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef> 	
 	
@@ -532,6 +615,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -612,6 +698,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -674,6 +763,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -771,6 +863,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -828,6 +923,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -885,6 +983,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -940,6 +1041,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -997,6 +1101,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1049,6 +1156,9 @@
 		  <li>DeathKnight</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1102,6 +1212,9 @@
 		  <li>DeathKnight</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1151,6 +1264,61 @@
 		  <li>DeathKnight</li>
 		  <li>Enchanter</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>
+		<defName>ChaosMage</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
+		<degreeDatas>	
+		  <li>
+			<label>Chaos Mage</label>
+			<description>[PAWN_nameDef] has rejected all predefined magic paths and refuses to attribute objective reality in [PAWN_possessive] search for power; there are no truths, all magic is permitted. This tradition has enabled [PAWN_nameDef] to learn any type of magic, although [PAWN_pronoun] will never master any.</description>
+			<degree>4</degree>
+			<statOffsets>
+				<GlobalLearningFactor>0.25</GlobalLearningFactor>
+				<ResearchSpeed>-0.20</ResearchSpeed>				
+				<WorkSpeedGlobal>-0.10</WorkSpeedGlobal>
+				<PsychicSensitivity>0.5</PsychicSensitivity>
+				<ImmunityGainSpeed>-.05</ImmunityGainSpeed>
+			</statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>StormBorn</li>
+		  <li>Arcanist</li>
+		  <li>Gifted</li>
+		  <li>PhysicalProdigy</li>
+		  <li>Paladin</li>
+		  <li>Gladiator</li>
+		  <li>TM_Sniper</li>
+		  <li>Summoner</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		  <li>Faceless</li>
+		  <li>Succubus</li>
+		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
+		  <li>Technomancer</li>
+		  <li>BloodMage</li>
+		  <li>DeathKnight</li>
+		  <li>Enchanter</li>
+		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>Chronomancer</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1200,8 +1368,67 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>
     </TraitDef>
+	
+	<TraitDef>
+		<defName>TM_Wayfarer</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
+		<degreeDatas>	
+		  <li>
+			<label>Wayfarer</label>
+			<description>[PAWN_nameDef] is a wayfarer; an undisciplined fighter that resorts to tricks and cheats. [PAWN_nameDef] undisciplined personality has kept [PAWN_possessive] from developing class abilities. Instead, [PAWN_pronoun] has learned to improve on a vast number of utility abilities that allow [PAWN_possessive] to adapt to any situation.
+			
+			A Wayfarer prefers the open road and will gain a mood boost for being in a caravan, but will suffer a mood penalty for remaining in a colony for too long. Additionally, any caravan with a wayfarer will travel 25% faster.</description>
+			<degree>4</degree>
+				<statOffsets>
+                    <MoveSpeed>.20</MoveSpeed>
+					<WorkSpeedGlobal>-0.10</WorkSpeedGlobal>
+                    <ImmunityGainSpeed>.2</ImmunityGainSpeed>
+					<PsychicSensitivity>-0.10</PsychicSensitivity>
+					<MentalBreakThreshold>-0.03</MentalBreakThreshold>
+					<ComfyTemperatureMax>+3</ComfyTemperatureMax>
+					<ComfyTemperatureMin>+3</ComfyTemperatureMin>
+                </statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>HeartOfFrost</li>
+		  <li>Arcanist</li>
+		  <li>StormBorn</li>
+		  <li>Summoner</li>
+			<li>Gifted</li>
+			<li>Paladin</li>
+			<li>PhysicalProdigy</li>
+		  <li>Gladiator</li>
+		  <li>TM_Sniper</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		  <li>Faceless</li>
+		  <li>Succubus</li>
+		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
+		  <li>Technomancer</li>
+		  <li>DeathKnight</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>TM_Monk</li>
+		  <li>InnerFire</li>
+		  <li>TM_Wanderer</li>
+		  <li>ChaosMage</li>
+		</conflictingTraits>	
+	</TraitDef> 
 	
 	<TraitDef>
 		<defName>Gladiator</defName>
@@ -1256,6 +1483,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1370,6 +1600,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1467,6 +1700,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1562,6 +1798,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1616,6 +1855,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1672,6 +1914,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1721,6 +1966,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1773,6 +2021,9 @@
 		  <li>BloodMage</li>
 		  <li>Chronomancer</li>
 		  <li>DeathKnight</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
 		</conflictingTraits>	
 	</TraitDef>
 

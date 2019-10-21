@@ -22,6 +22,9 @@ namespace TorannMagic
         private int trapSpringDelay = 30;
         private bool trapSprung = false;
 
+        public bool extendedTrap = false;
+        public bool iceTrap = false;
+
         Pawn trapPawn = new Pawn();
 
         protected override void SpringSub(Pawn p)
@@ -32,7 +35,8 @@ namespace TorannMagic
         public override void ExposeData()
         {
             base.ExposeData();
-            //Scribe_References.Look<Pawn>(ref this.trapPawn, "trapPawn", false);
+            Scribe_Values.Look<bool>(ref this.extendedTrap, "extendedTrap",false, false);
+            Scribe_Values.Look<bool>(ref this.iceTrap, "iceTrap", false, false);
         }
 
         private void CheckPawn(IntVec3 position)
@@ -113,12 +117,37 @@ namespace TorannMagic
             targetPos.z += 2;
             LocalTargetInfo t = targetPos;
             bool flag = t.Cell != default(IntVec3);
+            float speed = .8f;
+            if(extendedTrap)
+            {
+                speed = .6f;
+            }
             if (flag)
             {
                 Thing eyeThing = new Thing();
                 eyeThing.def = TorannMagicDefOf.FlyingObject_LightningTrap;
                 FlyingObject_LightningTrap flyingObject = (FlyingObject_LightningTrap)GenSpawn.Spawn(TorannMagicDefOf.FlyingObject_LightningTrap, this.Position, this.Map);
-                flyingObject.Launch(p, this.Position.ToVector3Shifted(), t.Cell, eyeThing, this.Faction, null);
+                flyingObject.Launch(p, this.Position.ToVector3Shifted(), t.Cell, eyeThing, this.Faction, null, speed);
+            }
+            if(iceTrap)
+            {
+                AddSnowRadial(this.Position, this.Map, 6, 1.1f);
+            }
+        }
+
+        public static void AddSnowRadial(IntVec3 center, Map map, float radius, float depth)
+        {
+            int num = GenRadial.NumCellsInRadius(radius);
+            for (int i = 0; i < num; i++)
+            {
+                IntVec3 intVec = center + GenRadial.RadialPattern[i];
+                if (intVec.InBounds(map))
+                {
+                    float lengthHorizontal = (center - intVec).LengthHorizontal;
+                    float num2 = 1f - lengthHorizontal / radius;
+                    map.snowGrid.AddDepth(intVec, num2 * depth);
+
+                }
             }
         }
 

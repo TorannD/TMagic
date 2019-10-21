@@ -181,12 +181,14 @@
     <Compile Include="Thoughts\ThoughtWorker_TM_EnchantedBody.cs" />
     <Compile Include="CompPolymorph.cs" />
     <Compile Include="TM_Data.cs" />
+    <Compile Include="TM_TextPool.cs" />
     <Compile Include="TM_WeatherEvent_MeshFlash.cs" />
     <Compile Include="Enchantment\Verb_OrbTraitor.cs" />
     <Compile Include="Verb_DeathGaze.cs" />
     <Compile Include="Verb_ShadowBurn.cs" />
     <Compile Include="Verb_MageLight.cs" />
     <Compile Include="Verb_Recall.cs" />
+    <Compile Include="Verb_ChaosTradition.cs" />
     <Compile Include="Verb_TimeMark.cs" />
     <Compile Include="Verb_ReverseTime.cs" />
     <Compile Include="Verb_BloodForBlood.cs" />

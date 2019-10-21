@@ -117,6 +117,7 @@ namespace TorannMagic
         private float C_ChronostaticField_eff = .06f;
         private float C_Recall_eff = .1f;
 
+        private float W_eff = .01f;
         private float global_eff = 0.025f;
 
         public bool spell_Rain = false;
@@ -1412,6 +1413,39 @@ namespace TorannMagic
             }
             return result;
         }
+        public int LevelUpSkill_ChaosTradition(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_ChaosTradition.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_WandererCraft(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_WandererCraft.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
+        public int LevelUpSkill_Cantrips(string skillName)
+        {
+            int result = 0;
+            MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == skillName);
+            bool flag = magicPowerSkill != null;
+            if (flag)
+            {
+                result = magicPowerSkill.level;
+            }
+            return result;
+        }
 
         private void SingleEvent()
         {
@@ -1677,7 +1711,7 @@ namespace TorannMagic
                             base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Druid) || 
                             (base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Lich)) || 
                             base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Priest) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Bard) ||
-                            base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Chronomancer);
+                            base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Chronomancer) || TM_Calc.IsWanderer(base.AbilityUser) || base.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.ChaosMage);
                         if (flag4)
                         {
                             result = true;
@@ -1816,6 +1850,14 @@ namespace TorannMagic
             else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.Chronomancer))
             {
                 Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.chronomancerMarkMat, 0);
+            }
+            else if (this.AbilityUser.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
+            {
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.chaosMarkMat, 0);
+            }
+            else if (TM_Calc.IsWanderer(this.AbilityUser))
+            {
+                Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.wandererMarkMat, 0);
             }
             else 
             {
@@ -2020,6 +2062,11 @@ namespace TorannMagic
                 this.RemovePawnAbility(TorannMagicDefOf.TM_SummonPoppi);
                 this.RemovePawnAbility(TorannMagicDefOf.TM_Recall);
                 this.spell_Recall = false;
+                if (TM_Calc.IsWanderer(this.AbilityUser))
+                {
+                    this.spell_ArcaneBolt = false;
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_ArcaneBolt);
+                }
                 AssignAbilities();
             }
             this.magicPowersInitializedForColonist = true;
@@ -2057,6 +2104,16 @@ namespace TorannMagic
             bool flag2;
             if (abilityUser != null && abilityUser.story != null && abilityUser.story.traits != null)
             {
+                flag2 = TM_Calc.IsWanderer(abilityUser);
+                if (flag2)
+                {
+                    //Log.Message("Initializing Wanderer Abilities");
+                    if (!abilityUser.IsColonist) 
+                    {
+                        this.spell_ArcaneBolt = true;
+                        this.AddPawnAbility(TorannMagicDefOf.TM_ArcaneBolt);
+                    }
+                }
                 flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.InnerFire);
                 if (flag2)
                 {
@@ -3569,6 +3626,11 @@ namespace TorannMagic
             {
                 bool flag2 = true;
                 //flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.InnerFire);
+                if (TM_Calc.IsWanderer(this.AbilityUser))
+                {
+                    this.spell_ArcaneBolt = false;
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_ArcaneBolt);
+                }
                 if (flag2)
                 {
                     //Log.Message("Fixing Inner Fire Abilities");
@@ -3909,6 +3971,15 @@ namespace TorannMagic
             skillpoints += this.MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr").level;
             skillpoints += this.MagicData.MagicPowerSkill_global_eff.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_eff_pwr").level;
             skillpoints += this.MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr").level;
+            if (TM_Calc.IsWanderer(this.Pawn))
+            {
+                skillpoints += this.MagicData.MagicPowerSkill_WandererCraft.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_WandererCraft_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_WandererCraft.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_WandererCraft_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_WandererCraft.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_WandererCraft_ver").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_pwr").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_eff").level;
+                skillpoints += this.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level;
+            }
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
             {
                 skillpoints += this.MagicData.MagicPowerSkill_RayofHope.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RayofHope_eff").level;
@@ -4483,7 +4554,7 @@ namespace TorannMagic
                 if (traits[i].def == TorannMagicDefOf.InnerFire || traits[i].def == TorannMagicDefOf.HeartOfFrost || traits[i].def == TorannMagicDefOf.StormBorn  || traits[i].def == TorannMagicDefOf.Arcanist || traits[i].def == TorannMagicDefOf.Paladin ||
                     traits[i].def == TorannMagicDefOf.Druid || traits[i].def == TorannMagicDefOf.Priest || traits[i].def == TorannMagicDefOf.Necromancer || traits[i].def == TorannMagicDefOf.Warlock || traits[i].def == TorannMagicDefOf.Succubus ||
                     traits[i].def == TorannMagicDefOf.TM_Bard || traits[i].def == TorannMagicDefOf.Geomancer || traits[i].def == TorannMagicDefOf.Technomancer || traits[i].def == TorannMagicDefOf.BloodMage || traits[i].def == TorannMagicDefOf.Enchanter ||
-                    traits[i].def == TorannMagicDefOf.Chronomancer)
+                    traits[i].def == TorannMagicDefOf.Chronomancer || traits[i].def == TorannMagicDefOf.ChaosMage || traits[i].def == TorannMagicDefOf.TM_Wanderer)
                 {
                     Log.Message("Removing trait " + traits[i].Label);
                     traits.Remove(traits[i]);
@@ -5290,6 +5361,24 @@ namespace TorannMagic
             if (attributeName == "TM_Recall_eff")
             {
                 MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Recall.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_WandererCraft_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_WandererCraft.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
+            if (attributeName == "TM_Cantrips_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
                 bool flag = magicPowerSkill != null;
                 if (flag)
                 {

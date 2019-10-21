@@ -74,6 +74,67 @@ namespace TorannMagic
             }
         }
 
+        public List<MightPower> mightPowerW;
+        public List<MightPowerSkill> mightPowerSkill_WayfarerCraft;
+        public List<MightPowerSkill> mightPowerSkill_FieldTraining;
+
+        public List<MightPower> MightPowersW
+        {
+            get
+            {
+                bool flag = this.mightPowerW == null;
+                if (flag)
+                {
+                    this.mightPowerW = new List<MightPower>
+                    {
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_WayfarerCraft
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_FieldTraining
+                        }),
+                    };
+                }
+                return this.mightPowerW;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_WayfarerCraft
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_WayfarerCraft == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_WayfarerCraft = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_WayfarerCraft_pwr", "TM_WayfarerCraft_pwr_desc"), //
+                        new MightPowerSkill("TM_WayfarerCraft_eff", "TM_WayfarerCraft_eff_desc"), //
+                        new MightPowerSkill("TM_WayfarerCraft_ver", "TM_WayfarerCraft_ver_desc")  //
+                    };
+                }
+                return this.mightPowerSkill_WayfarerCraft;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_FieldTraining
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_FieldTraining == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_FieldTraining = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_FieldTraining_pwr", "TM_FieldTraining_pwr_desc"), //
+                        new MightPowerSkill("TM_FieldTraining_eff", "TM_FieldTraining_eff_desc"), //
+                        new MightPowerSkill("TM_FieldTraining_ver", "TM_FieldTraining_ver_desc")
+                    };
+                }
+                return this.mightPowerSkill_FieldTraining;
+            }
+        }
+
         public List<MightPower> mightPowerM;
         public List<MightPowerSkill> mightPowerSkill_Chi;
         public List<MightPowerSkill> mightPowerSkill_MindOverBody;
@@ -1263,6 +1324,7 @@ namespace TorannMagic
             {
                 List<MightPower> list = new List<MightPower>();
                 list.Clear();
+                list.AddRange(this.MightPowersW);
                 list.AddRange(this.MightPowersM);
                 list.AddRange(this.MightPowersDK);
                 list.AddRange(this.MightPowersG);
@@ -1292,7 +1354,7 @@ namespace TorannMagic
         {
             get
             {                
-                return this.MightPowersM.Concat(this.MightPowersDK.Concat(this.MightPowersG.Concat(this.MightPowersS.Concat(this.MightPowersB.Concat(this.mightPowerR.Concat(this.MightPowersF.Concat(this.mightPowerP.Concat(this.mightPowerStandalone))))))));
+                return this.MightPowersW.Concat(this.MightPowersM.Concat(this.MightPowersDK.Concat(this.MightPowersG.Concat(this.MightPowersS.Concat(this.MightPowersB.Concat(this.mightPowerR.Concat(this.MightPowersF.Concat(this.mightPowerP.Concat(this.mightPowerStandalone)))))))));
             }
         }
 
@@ -1309,6 +1371,7 @@ namespace TorannMagic
         {
             this.mightUserLevel = 0;
             this.mightUserXP = 0;
+            this.mightPowerW.Clear();
             this.mightPowerM.Clear();
             this.mightPowerB.Clear();
             this.mightPowerDK.Clear();
@@ -1336,6 +1399,9 @@ namespace TorannMagic
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_global_seff, "mightPowerSkill_global_seff", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_global_strength, "mightPowerSkill_global_strength", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_global_endurance, "mightPowerSkill_global_endurance", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPower>(ref this.mightPowerW, "mightPowerW", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_WayfarerCraft, "mightPowerSkill_WayfarerCraft", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_FieldTraining, "mightPowerSkill_FieldTraining", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPower>(ref this.mightPowerG, "mightPowerG", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_Sprint, "mightPowerSkill_Sprint", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_Fortitude, "mightPowerSkill_Fortitude", (LookMode)2, new object[0]);

@@ -44,8 +44,29 @@ namespace TorannMagic
 
             if (hitPawn != null & !hitPawn.Dead && !hitPawn.RaceProps.Animal)
             {
-                HealthUtility.AdjustSeverity(hitPawn, HediffDef.Named("SpellMendingHD"), .95f);
+                CompAbilityUserMagic compCaster = caster.TryGetComp<CompAbilityUserMagic>();
+                if (compCaster != null && compCaster.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level >= 8)
+                {
+                    HealthUtility.AdjustSeverity(hitPawn, HediffDef.Named("SpellMendingHD"), 1.95f);
+                }
+                else
+                {
+                    HealthUtility.AdjustSeverity(hitPawn, HediffDef.Named("SpellMendingHD"), .95f);
+                }
                 TM_MoteMaker.ThrowTwinkle(hitPawn.DrawPos, map, 1f);
+
+                if(compCaster != null && hitPawn.health.hediffSet.HasHediff(HediffDef.Named("SpellMendingHD"), false) && compCaster.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_pwr").level >= 8)
+                {
+                    Hediff hd = hitPawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("SpellMendingHD"));
+                    if(hd != null)
+                    {
+                        HediffComp_SpellMending hdComp = hd.TryGetComp<HediffComp_SpellMending>();
+                        if(hdComp != null)
+                        {
+                            hdComp.mendTickTimer = 60;
+                        }
+                    }
+                }
             }
             else
             {

@@ -917,5 +917,31 @@ namespace TorannMagic
                 }
             }
         }
+
+        public static void PromoteWanderer(Pawn pawn)
+        {
+            RemoveTrait(pawn, TorannMagicDefOf.Gifted);
+            pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Wanderer, 4, false));
+        }
+
+        public static void PromoteWayfarer(Pawn pawn)
+        {
+            RemoveTrait(pawn, TorannMagicDefOf.PhysicalProdigy);
+            pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Wayfarer, 4, false));
+        }
+
+        public static void RemoveTrait(Pawn pawn, TraitDef trait)
+        {
+            List<Trait> allTraits = pawn.story.traits.allTraits;
+
+            for (int i = 0; i < allTraits.Count; i++)
+            {
+                if (allTraits[i].def == trait)
+                {
+                    allTraits.Remove(allTraits[i]);
+                    break;
+                }
+            }
+        }
     }
 }

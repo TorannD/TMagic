@@ -66,6 +66,27 @@ namespace TorannMagic
             return false;
         }
 
+        public static bool IsElemental(Pawn pawn)
+        {
+            if (pawn != null)
+            {
+                bool flag_Def = false;
+                if (pawn.def != null)
+                {
+                    if (pawn.def == TorannMagicDefOf.TM_LesserEarth_ElementalR || pawn.def == TorannMagicDefOf.TM_LesserFire_ElementalR || pawn.def == TorannMagicDefOf.TM_LesserWater_ElementalR || pawn.def == TorannMagicDefOf.TM_LesserWind_ElementalR ||
+                        pawn.def == TorannMagicDefOf.TM_Earth_ElementalR || pawn.def == TorannMagicDefOf.TM_Fire_ElementalR || pawn.def == TorannMagicDefOf.TM_Water_ElementalR || pawn.def == TorannMagicDefOf.TM_Wind_ElementalR ||
+                        pawn.def == TorannMagicDefOf.TM_GreaterEarth_ElementalR || pawn.def == TorannMagicDefOf.TM_GreaterFire_ElementalR || pawn.def == TorannMagicDefOf.TM_GreaterWater_ElementalR || pawn.def == TorannMagicDefOf.TM_GreaterWind_ElementalR)
+                    {
+                        flag_Def = true;
+                    }
+                }
+
+                bool isElemental = flag_Def;
+                return isElemental;
+            }
+            return false;
+        }
+
         public static bool IsUndeadNotVamp(Pawn pawn)
         {
             if (pawn != null)
@@ -136,7 +157,7 @@ namespace TorannMagic
                 {
                     if (pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) || 
                         pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic) ||
-                        pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk))
+                        pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk) || IsWayfarer(pawn))
                     { 
                         flag_Trait = true;
                     }
@@ -179,7 +200,8 @@ namespace TorannMagic
                         pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || 
                         pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin) || pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner) || pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) || 
                         (pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich)) || pawn.story.traits.HasTrait(TorannMagicDefOf.Priest) || 
-                        pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard) || pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer))
+                        pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard) || pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer) || IsWanderer(pawn) ||
+                        pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
                     {
                         flag_Trait = true;
                     }
@@ -190,6 +212,36 @@ namespace TorannMagic
                 }                
                 bool isMagicUser = flag_Hediff || flag_Trait || flag_Need;
                 return isMagicUser;
+            }
+            return false;
+        }
+
+        public static bool IsWanderer(Pawn pawn)
+        {
+            if(pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer))
+            {
+                return true;
+            }
+            else if(pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer)) //pawn is a wayfarer with appropriate skill level
+            {
+                int lvl = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_WandererCraft.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_WandererCraft_eff").level;
+                if(lvl >= 15)
+                {
+                    return true;
+                }
+            }            
+            return false;
+        }
+
+        public static bool IsWayfarer(Pawn pawn)
+        {
+            if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
+            {
+                return true;
+            }
+            else if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer)) //pawn is a wanderer with appropriate skill level
+            {
+                //int lvl = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_WayfarerCraft.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_WayfarerCraft_eff").level;
             }
             return false;
         }
@@ -1265,7 +1317,7 @@ namespace TorannMagic
         {
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             List<TraitDef> allTraits = DefDatabase<TraitDef>.AllDefsListForReading;
-            float chance = ((settingsRef.baseFighterChance * 6) + (settingsRef.baseMageChance * 6) + (8 * settingsRef.advFighterChance) + (16 * settingsRef.advMageChance)) / (allTraits.Count);
+            float chance = ((settingsRef.baseFighterChance * 6) + (settingsRef.baseMageChance * 6) + (9 * settingsRef.advFighterChance) + (18 * settingsRef.advMageChance)) / (allTraits.Count);
             return Mathf.Clamp01(chance);
         }
         
@@ -1273,7 +1325,7 @@ namespace TorannMagic
         {
             float chance = 0f;
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            chance = (settingsRef.baseMageChance * 6) / ((settingsRef.baseFighterChance * 6) + (settingsRef.baseMageChance * 6) + (8 * settingsRef.advFighterChance) + (16 * settingsRef.advMageChance));
+            chance = (settingsRef.baseMageChance * 6) / ((settingsRef.baseFighterChance * 6) + (settingsRef.baseMageChance * 6) + (9 * settingsRef.advFighterChance) + (18 * settingsRef.advMageChance));
             chance *= GetRWoMTraitChance();
             return chance;
         }
@@ -1282,7 +1334,7 @@ namespace TorannMagic
         {
             float chance = 0f;
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            chance = (settingsRef.baseFighterChance * 6) / ((settingsRef.baseFighterChance * 6) + (settingsRef.baseMageChance * 6) + (8 * settingsRef.advFighterChance) + (16 * settingsRef.advMageChance));
+            chance = (settingsRef.baseFighterChance * 6) / ((settingsRef.baseFighterChance * 6) + (settingsRef.baseMageChance * 6) + (9 * settingsRef.advFighterChance) + (18 * settingsRef.advMageChance));
             chance *= GetRWoMTraitChance();
             return chance;
         }
@@ -1291,7 +1343,7 @@ namespace TorannMagic
         {
             float chance = 0f;
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            chance = (settingsRef.advMageChance * 16) / ((settingsRef.baseFighterChance * 6) + (settingsRef.baseMageChance * 6) + (8 * settingsRef.advFighterChance) + (16 * settingsRef.advMageChance));
+            chance = (settingsRef.advMageChance * 16) / ((settingsRef.baseFighterChance * 6) + (settingsRef.baseMageChance * 6) + (9 * settingsRef.advFighterChance) + (18 * settingsRef.advMageChance));
             chance *= GetRWoMTraitChance();
             return chance;
         }
@@ -1300,7 +1352,7 @@ namespace TorannMagic
         {
             float chance = 0f;
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            chance = (settingsRef.advFighterChance * 8) / ((settingsRef.baseFighterChance * 6) + (settingsRef.baseMageChance * 6) + (8 * settingsRef.advFighterChance) + (16 * settingsRef.advMageChance));
+            chance = (settingsRef.advFighterChance * 8) / ((settingsRef.baseFighterChance * 6) + (settingsRef.baseMageChance * 6) + (9 * settingsRef.advFighterChance) + (18 * settingsRef.advMageChance));
             chance *= GetRWoMTraitChance();
             return chance;
         }

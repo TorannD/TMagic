@@ -42,6 +42,15 @@ namespace TorannMagic
             bool result = false;
             Pawn pawn = this.CasterPawn;
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
+            int burstCountMin = 1;
+            if (pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_pwr").level >= 2)
+            {
+                burstCountMin++;
+                if (pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_pwr").level >= 7)
+                {
+                    burstCountMin++;
+                }
+            }
             //this.verVal = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PsionicBlast.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicBlast_ver").level;
             //if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             //{
@@ -59,7 +68,7 @@ namespace TorannMagic
             this.burstShotsLeft--;
             //Log.Message("burst shots left " + this.burstShotsLeft);
             float burstCountFloat = (float)(15f - this.burstShotsLeft);
-            float mageLevelFloat = (float)(1f + (comp.MagicUserLevel/10f));
+            float mageLevelFloat = (float)(burstCountMin + (comp.MagicUserLevel/10f));
             result = Rand.Chance(mageLevelFloat - burstCountFloat);            
             return result;
         }
