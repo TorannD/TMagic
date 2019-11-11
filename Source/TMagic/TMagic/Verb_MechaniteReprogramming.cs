@@ -58,14 +58,14 @@ namespace TorannMagic
                             if ( rec.def.defName == "SensoryMechanites")
                             {
                                 pawn.health.RemoveHediff(rec);
-                                HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ReprogrammedSensoryMechanites_HD, .001f);
+                                HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ReprogrammedSenMechanites_HD, .001f);
                                 num--;
                                 success = true;
                             }
                             else if(rec.def.defName == "FibrousMechanites")
                             {
                                 pawn.health.RemoveHediff(rec);
-                                HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ReprogrammedFibrousMechanites_HD, .001f);
+                                HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ReprogrammedFibMechanites_HD, .001f);
                                 num--;
                                 success = true;
                             }                            

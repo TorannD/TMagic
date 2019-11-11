@@ -550,8 +550,7 @@ Document made by ChJees
 												<!-- Use direct single abilities. -->
 												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
 													<tags>
-														<li>Offensive</li>
-														<li>Single</li>
+														<li>LightningBolt</li>
 													</tags>
 												</li>
 											</subNodes>
@@ -567,8 +566,7 @@ Document made by ChJees
 												<!-- Use direct damage single target abilities. -->
 												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
 													<tags>
-														<li>Offensive</li>
-														<li>Single</li>
+														<li>LightningBolt</li>
 													</tags>
 												</li>
 											</subNodes>
@@ -620,8 +618,7 @@ Document made by ChJees
 		<power>2.0</power>
 		<needSeeingTarget>true</needSeeingTarget>
 		<tags>
-			<li>Offensive</li>
-			<li>Single</li>
+			<li>LightningBolt</li>
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
 	
@@ -2865,6 +2862,276 @@ Document made by ChJees
 			<li>TM_PredictionHD</li>
 		</appliedHediffs>
 	</AbilityUserAI.AbilityAIDef>
+	
+	
+	<!-- chaos mage -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="ChaosMagicAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMagic</compAbilityUserClass>
+		<!-- Decision tree which helps pick ability to use. -->
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>0.9</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>Shield</li>										
+									</tags>
+								</li>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>HealSelf</li>										
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+							<tags>
+								<li>Heal</li>
+							</tags>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_HasEnemyTarget">
+							<subNodes>
+								<li Class="TorannMagic.AbilityDecisionConditionalNode_EnemyTargetIsBuilding">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>100.0</maxDistance>
+											<minDistance>60.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Fireball</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>60.0</maxDistance>
+											<minDistance>40.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Fireball</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>40.0</maxDistance>
+											<minDistance>10.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Fireball</li>
+													</tags>
+												</li>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>LightningBolt</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>20</maxDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>LightningBolt</li>
+													</tags>
+												</li>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Fireball</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+									</subNodes>
+								</li>
+								<!-- Using ranged weapon -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingRangedWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>100.0</maxDistance>
+											<minDistance>60.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Fireball</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>60.0</maxDistance>
+											<minDistance>28.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Fireball</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>40.0</maxDistance>
+											<minDistance>24.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Fireball</li>
+													</tags>
+												</li>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>LightningBolt</li>
+													</tags>
+												</li>												
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>24</maxDistance>											
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>LightningBolt</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+									</subNodes>
+								</li>
+								<!-- Using melee weapon, agressive ability use. -->
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingMeleeWeapon">
+									<subNodes>
+									<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>50.0</maxDistance>
+											<minDistance>15.0</minDistance>
+											<subNodes>
+												<!-- Use direct damage single target abilities. -->
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Fireball</li>
+													</tags>
+												</li>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>LightningBolt</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>20.0</maxDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>LightningBolt</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>									
+									</subNodes>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+				<!-- Out of combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<invert>true</invert>
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>0.8</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>HealSelf</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+							<tags>
+								<li>Heal</li>
+							</tags>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
 
+	<!-- Chaos Mage -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="ChaosMagicAbilityUserAI">
+		<defName>TMagic_Chaos</defName>
+		<matchingTraits>
+			<li>ChaosMage</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_Fireball</li>
+			<li>TMagic_LightningBolt</li>
+			<li>TMagic_Shield</li>
+			<li>TMagic_Heal</li>
+			<li>TMagic_Heal_Self</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	
+	<!-- wanderer  -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="WandererMagicAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMagic</compAbilityUserClass>
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>						
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_HasEnemyTarget">
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+									<maxDistance>34.0</maxDistance>
+									<minDistance>4.0</minDistance>
+									<subNodes>
+										<!-- Use long ranged offensive abilities. -->
+										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+											<tags>
+												<li>ArcaneBolt</li>
+											</tags>
+										</li>
+									</subNodes>
+								</li>								
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- Wanderer -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="WandererMagicAbilityUserAI">
+		<defName>TMagic_Wanderer</defName>
+		<matchingTraits>
+			<li>TM_Wanderer</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_ArcaneBolt</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Wanderer Abilities -->
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_ArcaneBolt</defName>
+		<ability>TM_ArcaneBolt</ability>		
+		<power>1</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<tags>
+			<li>ArcaneBolt</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>	
 
 </Defs>

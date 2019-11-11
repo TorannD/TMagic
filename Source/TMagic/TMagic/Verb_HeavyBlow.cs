@@ -19,14 +19,14 @@ namespace TorannMagic
             bool flag = pawn != null && !pawn.Dead;
             if (flag)
             {
-                if(pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HediffHeavyBlow")))
+                if(pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffHeavyBlow))
                 {
                     using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
                     {
                         while (enumerator.MoveNext())
                         {
                             Hediff rec = enumerator.Current;
-                            if (rec.def.defName.Contains("TM_HediffHeavyBlow"))
+                            if (rec.def == TorannMagicDefOf.TM_HediffHeavyBlow)
                             {
                                 pawn.health.RemoveHediff(rec);
                             }
@@ -35,8 +35,17 @@ namespace TorannMagic
                 }
                 else
                 {
-                    HealthUtility.AdjustSeverity(pawn, HediffDef.Named("TM_HediffHeavyBlow"), .5f );
-                    MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, 1f);
+                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
+                    {
+                        int lvl = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_pwr").level;
+                        HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_HediffHeavyBlow, .95f + (.19f * lvl));
+                        MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, 1f);
+                    }
+                    else
+                    {
+                        HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_HediffHeavyBlow, .5f);
+                        MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, 1f);
+                    }
                 }
             }
             return true;

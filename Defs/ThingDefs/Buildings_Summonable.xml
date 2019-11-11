@@ -451,8 +451,8 @@
   <ThingDef ParentName="TM_BuildingBase">
     <defName>TM_Heater</defName>
     <label>magical heater</label>
-    <thingClass>Building_WorkTable</thingClass>
-    <description>An active dimensional tap into the Plane of Fire that can be used to heat confined spaces.  Can also be used to cook simple meals.  Lasts about 3 days.</description>    
+    <thingClass>TorannMagic.Building_TMHeater</thingClass>
+    <description>An active dimensional tap into the Plane of Fire that can be used to heat confined spaces. Can also be used for various cooking or cremating tasks. Lasts about 3 days.</description>    
     <category>Building</category>
     <graphicData>
       <texPath>Spells/invis</texPath>
@@ -470,7 +470,7 @@
     <!-- <constructEffect>ConstructDirt</constructEffect> -->
     <tickerType>Normal</tickerType>
     <drawerType>RealtimeOnly</drawerType>
-    <fillPercent>1.0</fillPercent>
+    <fillPercent>.5</fillPercent>
 	<hasInteractionCell>True</hasInteractionCell>
     <interactionCellOffset>(0,0,0)</interactionCellOffset>
     <statBases>
@@ -546,7 +546,7 @@
     <constructEffect>ConstructDirt</constructEffect>
     <tickerType>Normal</tickerType>
     <drawerType>RealtimeOnly</drawerType>
-    <fillPercent>1.0</fillPercent>
+    <fillPercent>0.6</fillPercent>
     <statBases>
       <MaxHitPoints>80</MaxHitPoints>
       <WorkToBuild>200</WorkToBuild>
@@ -605,7 +605,7 @@
     <constructEffect>ConstructDirt</constructEffect>
     <tickerType>Normal</tickerType>
     <drawerType>RealtimeOnly</drawerType>
-    <fillPercent>1.0</fillPercent>
+    <fillPercent>0.4</fillPercent>
     <statBases>
       <MaxHitPoints>80</MaxHitPoints>
       <WorkToBuild>200</WorkToBuild>

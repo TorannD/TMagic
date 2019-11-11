@@ -186,6 +186,7 @@ namespace TorannMagic
         public float arcaneRes = 1;
         public float arcalleumCooldown = 0f;
 
+        public List<TM_ChaosPowers> chaosPowers = new List<TM_ChaosPowers>();
         public TMAbilityDef mimicAbility = null;
         public List<Thing> summonedMinions = new List<Thing>();
         public List<Thing> summonedSentinels = new List<Thing>();
@@ -246,7 +247,7 @@ namespace TorannMagic
         public List<Hediff_Injury> recallInjuriesList = null;
         public bool recallSet = false;
         public int recallExpiration = 0;
-        public bool recallSpell = false;
+        public bool recallSpell = false;        
 
         private Effecter powerEffecter = null;
         private int powerModifier = 0;
@@ -258,21 +259,22 @@ namespace TorannMagic
         {
             get
             {
-                return this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoBit).learned;
+                return this.IsMagicUser && this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoBit).learned;
             }
         }
         public bool HasTechnoTurret
         {
             get
             {
-                return this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoTurret).learned;
+                return this.IsMagicUser && this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoTurret).learned;
             }
         }
+
         public bool HasTechnoWeapon
         {
             get
             {
-                return this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoWeapon).learned;
+                return this.IsMagicUser && this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TechnoWeapon).learned;
             }
         }
 
@@ -333,7 +335,7 @@ namespace TorannMagic
                     }
                 }
 
-                if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) && this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower mp) => mp.abilityDef == TorannMagicDefOf.TM_TechnoBit).learned == true)
+                if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage)) && this.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower mp) => mp.abilityDef == TorannMagicDefOf.TM_TechnoBit).learned == true)
                 {
                     DrawTechnoBit();
                 }
@@ -1783,7 +1785,7 @@ namespace TorannMagic
             vector.x = vector.x + .45f;
             vector.z = vector.z + .45f;
             vector.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
-            float angle = 290f;
+            float angle = 0f;
             Vector3 s = new Vector3(.28f, 1f, .28f);
             Matrix4x4 matrix = default(Matrix4x4);
             matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
@@ -2062,11 +2064,6 @@ namespace TorannMagic
                 this.RemovePawnAbility(TorannMagicDefOf.TM_SummonPoppi);
                 this.RemovePawnAbility(TorannMagicDefOf.TM_Recall);
                 this.spell_Recall = false;
-                if (TM_Calc.IsWanderer(this.AbilityUser))
-                {
-                    this.spell_ArcaneBolt = false;
-                    this.RemovePawnAbility(TorannMagicDefOf.TM_ArcaneBolt);
-                }
                 AssignAbilities();
             }
             this.magicPowersInitializedForColonist = true;
@@ -2108,7 +2105,7 @@ namespace TorannMagic
                 if (flag2)
                 {
                     //Log.Message("Initializing Wanderer Abilities");
-                    if (!abilityUser.IsColonist) 
+                    if (!abilityUser.IsColonist)
                     {
                         this.spell_ArcaneBolt = true;
                         this.AddPawnAbility(TorannMagicDefOf.TM_ArcaneBolt);
@@ -2706,7 +2703,7 @@ namespace TorannMagic
                         //{
                         //    this.AddPawnAbility(TorannMagicDefOf.TM_BardTraining);
                         //}
-                        if(true)
+                        if (true)
                         {
                             MagicPower mpB = this.MagicData.MagicPowersB.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_BardTraining);
                             mpB.learned = false;
@@ -3230,6 +3227,27 @@ namespace TorannMagic
                         }
                     }
                 }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.ChaosMage);
+                if (flag2)
+                {
+                    foreach (MagicPower current in this.MagicData.AllMagicPowers)
+                    {
+                        if (current.abilityDef != TorannMagicDefOf.TM_ChaosTradition)
+                        {
+                            current.learned = false;
+                        }
+                    }
+                    this.AddPawnAbility(TorannMagicDefOf.TM_ChaosTradition);
+
+                    if (abilityUser.IsColonist)
+                    {
+                        TM_Calc.AssignChaosMagicPowers(this);
+                    }
+                    else
+                    {
+                        TM_Calc.AssignChaosMagicPowers(this, true);
+                    }
+                }
             }
         }
 
@@ -3246,18 +3264,27 @@ namespace TorannMagic
                 }
                 if (this.spell_Blink == true && !abilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
                 {
-                    this.RemovePawnAbility(TorannMagicDefOf.TM_Blink);
-                    this.AddPawnAbility(TorannMagicDefOf.TM_Blink);
+                    if (!(abilityUser.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) && this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Blink).learned))
+                    {
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_Blink);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Blink);
+                    }
                 }
                 if (this.spell_Teleport == true && !abilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
                 {
-                    this.RemovePawnAbility(TorannMagicDefOf.TM_Teleport);
-                    this.AddPawnAbility(TorannMagicDefOf.TM_Teleport);
+                    if (!(abilityUser.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) && this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Teleport).learned))
+                    {
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_Teleport);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Teleport);
+                    }
                 }
                 if (this.spell_Heal == true && !abilityUser.story.traits.HasTrait(TorannMagicDefOf.Paladin))
                 {
-                    this.RemovePawnAbility(TorannMagicDefOf.TM_Heal);
-                    this.AddPawnAbility(TorannMagicDefOf.TM_Heal);
+                    if (!(abilityUser.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) && this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Heal).learned))
+                    {
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_Heal);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_Heal);
+                    }
                 }
                 if (this.spell_Heater == true)
                 {
@@ -3331,8 +3358,11 @@ namespace TorannMagic
                 }
                 if (this.spell_SummonMinion == true && !abilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner))
                 {
-                    this.RemovePawnAbility(TorannMagicDefOf.TM_SummonMinion);
-                    this.AddPawnAbility(TorannMagicDefOf.TM_SummonMinion);
+                    if (!(abilityUser.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) && this.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonMinion).learned))
+                    {
+                        this.RemovePawnAbility(TorannMagicDefOf.TM_SummonMinion);
+                        this.AddPawnAbility(TorannMagicDefOf.TM_SummonMinion);
+                    }
                 }
                 if (this.spell_TransferMana == true)
                 {
@@ -3619,7 +3649,7 @@ namespace TorannMagic
             }            
         }
 
-        public void RemovePowers()
+        public void RemovePowers(bool clearStandalone = true)
         {
             Pawn abilityUser = base.AbilityUser;
             if (this.magicPowersInitialized == true)
@@ -3630,6 +3660,17 @@ namespace TorannMagic
                 {
                     this.spell_ArcaneBolt = false;
                     this.RemovePawnAbility(TorannMagicDefOf.TM_ArcaneBolt);
+                }
+                if (abilityUser.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
+                {
+                    foreach (MagicPower current in this.MagicData.AllMagicPowersForChaosMage)
+                    {
+                        if (current.abilityDef != TorannMagicDefOf.TM_ChaosTradition)
+                        {
+                            current.learned = false;
+                            this.RemovePawnAbility(current.abilityDef);
+                        }
+                    }
                 }
                 if (flag2)
                 {
@@ -3936,10 +3977,13 @@ namespace TorannMagic
                     this.RemovePawnAbility(TorannMagicDefOf.TM_ChronostaticField_II);
                     this.RemovePawnAbility(TorannMagicDefOf.TM_ChronostaticField_III);
                 }
-                foreach (MagicPower currentStandalone in this.MagicData.MagicPowersStandalone)
+                if (clearStandalone)
                 {
-                    this.RemovePawnAbility(currentStandalone.abilityDef);
-                }
+                    foreach (MagicPower currentStandalone in this.MagicData.MagicPowersStandalone)
+                    {
+                        this.RemovePawnAbility(currentStandalone.abilityDef);
+                    }
+                }                
             }
         }
 
@@ -4491,6 +4535,17 @@ namespace TorannMagic
                 {
                     this.MagicData.MagicPowersC[i].learned = powerLearned[i];
                 }
+            }
+            if(TM_Calc.IsWanderer(this.Pawn))
+            {
+                for (int i = 0; i < powerLearned.Count; i++)
+                {
+                    this.MagicData.MagicPowersW[i].learned = powerLearned[i];
+                }
+            }
+            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
+            {
+                this.magicData.MagicAbilityPoints = this.MagicUserLevel;
             }
         }
 
@@ -5385,6 +5440,15 @@ namespace TorannMagic
                     result = magicPowerSkill.level;
                 }
             }
+            if (attributeName == "TM_ChaosTradition_eff")
+            {
+                MagicPowerSkill magicPowerSkill = this.MagicData.MagicPowerSkill_ChaosTradition.FirstOrDefault((MagicPowerSkill x) => x.label == attributeName);
+                bool flag = magicPowerSkill != null;
+                if (flag)
+                {
+                    result = magicPowerSkill.level;
+                }
+            }
 
             return result;
         }
@@ -6002,10 +6066,21 @@ namespace TorannMagic
                         int actualDmg = 0;
                         float dmgAmt = (float)dinfo.Amount;
                         float dmgToSev = 0.02f;
-                        if (dmgAmt >= 11)
+                        float maxDmg = 11f;
+                        if (this.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level >= 3)
                         {
-                            actualDmg = Mathf.RoundToInt(dmgAmt - 10);                            
-                            sev = sev - (10 * dmgToSev);
+                            dmgToSev = 0.015f;
+                            maxDmg = 14f;
+                            if (this.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level >= 7)
+                            {
+                                dmgToSev = 0.012f;
+                                maxDmg = 17f;
+                            }
+                        }
+                        if (dmgAmt >= maxDmg)
+                        {
+                            actualDmg = Mathf.RoundToInt(dmgAmt - maxDmg);
+                            sev = sev - (maxDmg * dmgToSev);                            
                         }
                         else
                         {
@@ -6144,6 +6219,7 @@ namespace TorannMagic
         public void ResolveAutoCast()
         {
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            bool flagCM = this.Pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage);
             if (settingsRef.autocastEnabled && this.Pawn.jobs != null && this.Pawn.CurJob != null && this.Pawn.CurJob.def != TorannMagicDefOf.TMCastAbilityVerb && this.Pawn.CurJob.def != JobDefOf.Ingest && this.Pawn.GetPosture() == PawnPosture.Standing)
             {
                 //Log.Message("pawn " + this.Pawn.LabelShort + " current job is " + this.Pawn.CurJob.def.defName);
@@ -6151,7 +6227,7 @@ namespace TorannMagic
                 bool castSuccess = false;
                 if (this.Pawn.drafter != null && !this.Pawn.Drafted && this.Mana != null && this.Mana.CurLevelPercentage >= settingsRef.autocastMinThreshold)
                 {
-                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
+                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner) || flagCM)
                     {
                         MagicPower magicPower = this.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonMinion);
                         if (magicPower != null && magicPower.autocast && magicPower.learned && this.summonedMinions.Count() < 4)
@@ -6171,7 +6247,7 @@ namespace TorannMagic
                             if (castSuccess) goto AutoCastExit;
                         }
                     }
-                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
+                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || flagCM)
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersA)
@@ -6283,7 +6359,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Druid))
+                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) || flagCM)
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersD)
@@ -6352,7 +6428,7 @@ namespace TorannMagic
                             }
                         }
                     }                    
-                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin))
+                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin) || flagCM)
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersP)
@@ -6416,7 +6492,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Priest))
+                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Priest) || flagCM)
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersPR)
@@ -6504,7 +6580,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if (this.spell_MechaniteReprogramming && this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+                    if (this.spell_MechaniteReprogramming && this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || flagCM)
                     {
                         MagicPower magicPower = this.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_MechaniteReprogramming);
                         if (magicPower != null && magicPower.autocast)
@@ -6622,7 +6698,7 @@ namespace TorannMagic
                 //combat (drafted) spells
                 if (this.Pawn.drafter != null && this.Pawn.Drafted && this.Mana?.CurLevelPercentage >= settingsRef.autocastCombatMinThreshold && this.Pawn.CurJob.def != JobDefOf.Goto)
                 {
-                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire)&& !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || flagCM )&& !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersIF)
@@ -6642,7 +6718,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || flagCM) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersHoF)
@@ -6706,7 +6782,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || flagCM) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersSB)
@@ -6726,7 +6802,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || flagCM) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersA)
@@ -6780,7 +6856,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Druid))
+                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) || flagCM))
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersD)
@@ -6829,7 +6905,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus) || flagCM) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersSD)
@@ -6883,7 +6959,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Warlock) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Warlock) || flagCM) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersWD)
@@ -6937,7 +7013,7 @@ namespace TorannMagic
                             }
                         }
                     }                    
-                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin))
+                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin) || flagCM))
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersP)
@@ -7001,7 +7077,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Priest))
+                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Priest) || flagCM)
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersPR)
@@ -7766,6 +7842,8 @@ namespace TorannMagic
 
         public void ResolveClassSkills()
         {
+            bool flagCM = this.Pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage);
+
             if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.BloodMage))
             {
                 if (!this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_BloodHD")))
@@ -7778,7 +7856,7 @@ namespace TorannMagic
                 }
             }
 
-            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer))
+            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer) || flagCM)
             {
                 if(this.predictionIncidentDef != null && (this.predictionTick + 2500) < Find.TickManager.TicksGame)
                 {
@@ -7786,7 +7864,7 @@ namespace TorannMagic
                 }
             }
 
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter) || flagCM)
             {
                 if (this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedBody).learned && this.spell_EnchantedAura == false)
                 {
@@ -7801,13 +7879,13 @@ namespace TorannMagic
                 }
             }
 
-            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || flagCM)
             {
                 if (this.HasTechnoBit)
                 {
-                    if (!this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_TechnoBitHD")))
+                    if (!this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_TechnoBitHD))
                     {
-                        HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_TechnoBitHD"), .5f);
+                        HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_TechnoBitHD, .5f);
                         Vector3 bitDrawPos = this.Pawn.DrawPos;
                         bitDrawPos.x -= .5f;
                         bitDrawPos.z += .45f;
@@ -7836,7 +7914,7 @@ namespace TorannMagic
                 this.spell_Teach = true;
             }
 
-            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer) && this.earthSpriteType != 0 && this.earthSprites.IsValid)
+            if((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer) || flagCM) && this.earthSpriteType != 0 && this.earthSprites.IsValid)
             {
                 if (this.nextEarthSpriteAction < Find.TickManager.TicksGame)
                 {
@@ -8060,8 +8138,9 @@ namespace TorannMagic
                     }
                 }
             }
-            CleanupSummonedStructures();
-            if(this.summonedLights.Count > 0)
+            CleanupSummonedStructures();            
+
+            if (this.summonedLights.Count > 0)
             {                
                 _maxMP -= (this.summonedLights.Count * .4f);
                 _mpRegenRate -= (this.summonedLights.Count * .4f);
@@ -8153,7 +8232,7 @@ namespace TorannMagic
                 _maxMP += -.3f + (.045f * this.MagicData.MagicPowerSkill_EnchantedBody.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchantedBody_eff").level);
                 _mpRegenRate += -.5f + (.045f * this.MagicData.MagicPowerSkill_EnchantedBody.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchantedBody_ver").level);
             }
-            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
+            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer) || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
             {
                 MagicPowerSkill familiarSkin = this.MagicData.MagicPowerSkill_Stoneskin.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Stoneskin_eff");
                 MagicPowerSkill sharedSkin = this.MagicData.MagicPowerSkill_Stoneskin.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Stoneskin_ver");
@@ -8174,6 +8253,16 @@ namespace TorannMagic
                     _maxMP += -((.2f - (.02f * heartofstone.level)) * this.summonedSentinels.Count);
                 }
             }
+            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer) || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
+            {
+                _arcaneDmg += (.01f * this.MagicData.MagicPowerSkill_WandererCraft.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_WandererCraft_pwr").level);
+                _arcaneRes += (.02f * this.MagicData.MagicPowerSkill_WandererCraft.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_WandererCraft_pwr").level);
+                _mpCost -= (.01f * this.MagicData.MagicPowerSkill_WandererCraft.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_WandererCraft_eff").level);
+                _xpGain += (.02f * this.MagicData.MagicPowerSkill_WandererCraft.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_WandererCraft_eff").level);
+                _coolDown -= (.01f * this.MagicData.MagicPowerSkill_WandererCraft.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_WandererCraft_ver").level);
+                _mpRegenRate += (.01f * this.MagicData.MagicPowerSkill_WandererCraft.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_WandererCraft_ver").level);
+                _maxMP += (.02f * this.MagicData.MagicPowerSkill_WandererCraft.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_WandererCraft_ver").level);
+            }
             if(this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_MageLightHD))
             {
                 _maxMP += -.1f;
@@ -8191,6 +8280,13 @@ namespace TorannMagic
             _mpCost += (focus.level * -.025f);
             _arcaneRes += ((1 - this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false)) / 2);
             _arcaneDmg += ((this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false) - 1) / 4);
+            
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer) || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
+            {
+                float val = (1f - (.03f * this.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_eff").level));
+                _maxMP *= val;
+                _mpRegenRate *= val;
+            }
             this.maxMP = 1f + _maxMP;
             this.mpRegenRate = 1f +  _mpRegenRate;
             this.coolDown = 1f + _coolDown;
@@ -8427,6 +8523,7 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.earthSpritesInArea, "earthSpritesInArea", false, false);
             Scribe_Values.Look<int>(ref this.nextEarthSpriteAction, "nextEarthSpriteAction", 0, false);
             Scribe_Collections.Look<IntVec3>(ref this.fertileLands, "fertileLands", LookMode.Value);
+            //Scribe_Collections.Look<TM_ChaosPowers>(ref this.chaosPowers, "chaosPowers", LookMode.Deep, new object[0]);
             //Recall variables 
             Scribe_Values.Look<bool>(ref this.recallSet, "recallSet", false, false);
             Scribe_Values.Look<bool>(ref this.recallSpell, "recallSpell", false, false);
@@ -8446,8 +8543,8 @@ namespace TorannMagic
             if (flag11)
             {
                 Pawn abilityUser = base.AbilityUser;
-                
-                bool flag40 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.InnerFire);
+                bool flagCM = abilityUser.story.traits.HasTrait(TorannMagicDefOf.ChaosMage);
+                bool flag40 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || flagCM;
                 if (flag40)
                 {
                     bool flag14 = !this.MagicData.MagicPowersIF.NullOrEmpty<MagicPower>();
@@ -8482,7 +8579,7 @@ namespace TorannMagic
                         }
                     }
                 }
-                bool flag41 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost);
+                bool flag41 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || flagCM;
                 if (flag41)
                 {
                     bool flag17 = !this.MagicData.MagicPowersHoF.NullOrEmpty<MagicPower>();
@@ -8536,7 +8633,7 @@ namespace TorannMagic
                         }
                     }
                 }
-                bool flag42 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.StormBorn);
+                bool flag42 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || flagCM;
                 if (flag42)
                 {
                     bool flag20 = !this.MagicData.MagicPowersSB.NullOrEmpty<MagicPower>();
@@ -8568,7 +8665,7 @@ namespace TorannMagic
                         }
                     }
                 }
-                bool flag43 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist);
+                bool flag43 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || flagCM;
                 if (flag43)
                 {
                     bool flag23 = !this.MagicData.MagicPowersA.NullOrEmpty<MagicPower>();
@@ -8660,7 +8757,7 @@ namespace TorannMagic
                         }
                     }
                 }
-                bool flag44 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Paladin);
+                bool flag44 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Paladin) || flagCM;
                 if (flag44)
                 {
                     bool flag26 = !this.MagicData.MagicPowersP.NullOrEmpty<MagicPower>();
@@ -8695,7 +8792,7 @@ namespace TorannMagic
                         }
                     }
                 }
-                bool flag45 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner);
+                bool flag45 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Summoner) || flagCM;
                 if (flag45)
                 {
                     bool flag28 = !this.MagicData.MagicPowersS.NullOrEmpty<MagicPower>();
@@ -8730,7 +8827,7 @@ namespace TorannMagic
                         }
                     }
                 }
-                bool flag46 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Druid);
+                bool flag46 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Druid) || flagCM;
                 if (flag46)
                 {
                     bool flag30 = !this.MagicData.MagicPowersD.NullOrEmpty<MagicPower>();
@@ -8765,7 +8862,7 @@ namespace TorannMagic
                         }
                     }
                 }
-                bool flag47 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || abilityUser.story.traits.HasTrait(TorannMagicDefOf.Lich);
+                bool flag47 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || abilityUser.story.traits.HasTrait(TorannMagicDefOf.Lich) || flagCM;
                 if (flag47)
                 {
                     bool flag32 = !this.MagicData.MagicPowersN.NullOrEmpty<MagicPower>();
@@ -8857,7 +8954,7 @@ namespace TorannMagic
                         }
                     }
                 }
-                bool flag48 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Priest);
+                bool flag48 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Priest) || flagCM;
                 if (flag48)
                 {
                     bool flag34 = !this.MagicData.MagicPowersPR.NullOrEmpty<MagicPower>();
@@ -8911,7 +9008,7 @@ namespace TorannMagic
                         }
                     }
                 }
-                bool flag49 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Bard);
+                bool flag49 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Bard) || flagCM;
                 if (flag49)
                 {
                     bool flag35 = !this.MagicData.MagicPowersB.NullOrEmpty<MagicPower>();
@@ -8946,7 +9043,7 @@ namespace TorannMagic
                         }
                     }
                 }
-                bool flag50 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Succubus);
+                bool flag50 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Succubus) || flagCM;
                 if (flag50)
                 {
                     bool flag37 = !this.MagicData.MagicPowersSD.NullOrEmpty<MagicPower>();
@@ -9000,7 +9097,7 @@ namespace TorannMagic
                         }
                     }
                 }
-                bool flag51 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Warlock);
+                bool flag51 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Warlock) || flagCM;
                 if (flag51)
                 {
                     bool flagWD1 = !this.MagicData.MagicPowersWD.NullOrEmpty<MagicPower>();
@@ -9054,7 +9151,7 @@ namespace TorannMagic
                         }
                     }
                 }
-                bool flag52 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Geomancer);
+                bool flag52 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Geomancer) || flagCM;
                 if (flag52)
                 {
                     bool flagG = !this.MagicData.MagicPowersG.NullOrEmpty<MagicPower>();
@@ -9089,7 +9186,7 @@ namespace TorannMagic
                         }
                     }
                 }
-                bool flag53 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Technomancer);
+                bool flag53 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || flagCM;
                 if (flag53)
                 {
                     bool flagT = !this.MagicData.MagicPowersT.NullOrEmpty<MagicPower>();
@@ -9141,7 +9238,7 @@ namespace TorannMagic
                         }
                     }
                 }
-                bool flag55 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Enchanter);
+                bool flag55 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Enchanter) || flagCM;
                 if (flag55)
                 {
                     bool flagE = !this.MagicData.MagicPowersE.NullOrEmpty<MagicPower>();
@@ -9176,7 +9273,7 @@ namespace TorannMagic
                         }
                     }
                 }
-                bool flag56 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Chronomancer);
+                bool flag56 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Chronomancer) || flagCM;
                 if (flag56)
                 {
                     bool flagC = !this.MagicData.MagicPowersC.NullOrEmpty<MagicPower>();
@@ -9541,6 +9638,39 @@ namespace TorannMagic
                     if (mpC.learned == true)
                     {
                         this.AddPawnAbility(TorannMagicDefOf.TM_ReverseTime);
+                    }
+                }
+                if (flagCM)
+                {
+                    //Log.Message("Loading Chaos Mage Abilities");
+                    MagicPower mpCM = this.MagicData.MagicPowersCM.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ChaosTradition);
+                    if (mpCM.learned == true)
+                    {
+                        this.AddPawnAbility(TorannMagicDefOf.TM_ChaosTradition);
+                        this.chaosPowers = new List<TM_ChaosPowers>();
+                        this.chaosPowers.Clear();
+                        List<MagicPower> learnedList = new List<MagicPower>();
+                        learnedList.Clear();
+                        for(int i = 0; i < this.MagicData.AllMagicPowersForChaosMage.Count; i++)
+                        {
+                            MagicPower mp = this.MagicData.AllMagicPowersForChaosMage[i];
+                            if(mp.learned)
+                            {
+                                learnedList.Add(mp);
+                            }
+                        }
+                        int count = learnedList.Count;
+                        for (int i = 0; i < 5; i++)
+                        {
+                            if (i < count)
+                            {
+                                this.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)learnedList[i].abilityDef, TM_Calc.GetAssociatedMagicPowerSkill(this, learnedList[i])));
+                            }
+                            else
+                            {
+                                this.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)TM_Calc.GetRandomMagicPower(this).abilityDef, null));
+                            }
+                        }
                     }
                 }
                 this.InitializeSpell();

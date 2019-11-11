@@ -1,5 +1,7 @@
 ﻿using Verse;
 using UnityEngine;
+using RimWorld;
+using System.Collections.Generic;
 
 namespace TorannMagic
 {
@@ -19,18 +21,31 @@ namespace TorannMagic
         private float matMagnitude = 1;
 
         private bool initialized = false;
+        private int nextSearch = 10;
+        public bool defensive = false;
+        public bool buffJolt = false;
+        public bool buffShock = false;
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
             //LessonAutoActivator.TeachOpportunity(ConceptDef.Named("TM_Portals"), OpportunityType.GoodToKnow);
         }
-                
+
+        public override void ExposeData()
+        {
+            Scribe_Values.Look<bool>(ref this.defensive, "defensive", false, false);
+            Scribe_Values.Look<bool>(ref this.buffShock, "buffShock", false, false);
+            Scribe_Values.Look<bool>(ref this.buffJolt, "buffJolt", false, false);
+            base.ExposeData();
+        }
+
         public override void Tick()
         {
             if(!initialized)
             {
                 initialized = true;
+                this.nextSearch = Find.TickManager.TicksGame + Rand.Range(180, 220);
             }
             if(Find.TickManager.TicksGame % 8 == 0)
             {
@@ -39,6 +54,53 @@ namespace TorannMagic
                 {
                     matRng = 0;
                 }
+            }
+            if (Find.TickManager.TicksGame >= this.nextSearch)
+            {
+                this.nextSearch = Find.TickManager.TicksGame + Rand.Range(180, 220);
+                if (defensive)
+                {
+                    Pawn e = TM_Calc.FindNearbyEnemy(this.Position, this.Map, this.factionInt, 20, 0);
+                    if (e != null && TM_Calc.HasLoSFromTo(this.Position, e, this, 0, 20))
+                    {
+                        GenExplosion.DoExplosion(e.Position, this.Map, .4f, DamageDefOf.Stun, this, 4, 1f);
+                        if (e.RaceProps.IsMechanoid || TM_Calc.IsRobotPawn(e))
+                        {
+                            GenExplosion.DoExplosion(e.Position, this.Map, .4f, TMDamageDefOf.DamageDefOf.TM_ElectricalBurn, this, 8, 1f);
+                        }
+                    }
+                }
+                if (buffShock)
+                {
+                    List<Pawn> pList = TM_Calc.FindAllPawnsAround(this.Map, this.Position, 6, this.Faction, true);
+                    if (pList != null && pList.Count > 0)
+                    {
+                        for (int i = 0; i < pList.Count; i++)
+                        {
+                            Pawn p = pList[i];
+                            if (p.health != null && p.health.hediffSet != null)
+                            {
+                                HealthUtility.AdjustSeverity(p, TorannMagicDefOf.TM_ShockTherapyHD, 0.12f);
+                            }
+                        }
+                    }
+                }
+                if (buffJolt)
+                {
+                    List<Pawn> pList = TM_Calc.FindAllPawnsAround(this.Map, this.Position, 6, this.Faction, true);
+                    if (pList != null && pList.Count > 0)
+                    {
+                        for (int i = 0; i < pList.Count; i++)
+                        {
+                            Pawn p = pList[i];
+                            if (p.health != null && p.health.hediffSet != null)
+                            {
+                                HealthUtility.AdjustSeverity(p, TorannMagicDefOf.TM_JoltHD, 0.1f);
+                            }
+                        }
+                    }
+                }
+
             }
             base.Tick();
         }        

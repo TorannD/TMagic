@@ -11,25 +11,54 @@ namespace TorannMagic
 {
     public class Verb_ChaosTradition : Verb_UseAbility  
     {
+        private int verVal;
+        private int pwrVal;
+        private int effVal;
 
-        private int pwrVal = 0;
-        CompAbilityUserMagic comp;
-        Map map;
+        private int gRegen;
+        private int gEff;
+        private int gSpirit;
 
         protected override bool TryCastShot()
         {
             bool result = false;
-            map = this.CasterPawn.Map;
-            comp = this.CasterPawn.GetComp<CompAbilityUserMagic>();
-            MagicPowerSkill pwr = comp.MagicData.MagicPowerSkill_Recall.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Recall_pwr");
-            pwrVal = pwr.level;
+            Map map = this.CasterPawn.Map;
+            CompAbilityUserMagic comp = this.CasterPawn.GetComp<CompAbilityUserMagic>();
+            pwrVal = comp.MagicData.MagicPowerSkill_ChaosTradition.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ChaosTradition_pwr").level;
+            verVal = comp.MagicData.MagicPowerSkill_ChaosTradition.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ChaosTradition_ver").level;
+            effVal = comp.MagicData.MagicPowerSkill_ChaosTradition.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ChaosTradition_eff").level;
+
+            gRegen = comp.MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr").level;
+            gEff = comp.MagicData.MagicPowerSkill_global_eff.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_eff_pwr").level;
+            gSpirit = comp.MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr").level;
 
             if (this.CasterPawn != null && !this.CasterPawn.Downed && comp != null)
             {
-                comp.recallSet = true;
-                comp.recallExpiration = Mathf.RoundToInt(Find.TickManager.TicksGame + (20 * 2500 * (1 + (.2f * pwrVal))));
-                TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_AlterFate, CasterPawn.DrawPos, this.CasterPawn.Map, 1f, .2f, 0, 1f, Rand.Range(-500, 500), 0, 0, Rand.Range(0, 360));
-                MoteMaker.ThrowHeatGlow(this.CasterPawn.Position, this.CasterPawn.Map, 1.4f);
+                ClearSustainedMagicHediffs(comp);
+                TM_Calc.AssignChaosMagicPowers(comp);
+
+                if(effVal >= 3)
+                {
+                    HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_ChaosTraditionHD, 8f);
+                }
+                if(effVal >= 2)
+                {
+                    comp.Mana.CurLevel += .25f * comp.mpRegenRate;
+                }
+                if(effVal >= 1)
+                { 
+                    HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_ChaoticMindHD, 24f);
+                }
+
+                comp.MagicData.MagicAbilityPoints -= (pwrVal + verVal + effVal + gSpirit + gRegen + gEff);
+                comp.MagicData.MagicPowerSkill_ChaosTradition.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ChaosTradition_pwr").level = pwrVal;
+                comp.MagicData.MagicPowerSkill_ChaosTradition.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ChaosTradition_ver").level = verVal;
+                comp.MagicData.MagicPowerSkill_ChaosTradition.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ChaosTradition_eff").level = effVal;
+
+                comp.MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr").level = gRegen;
+                comp.MagicData.MagicPowerSkill_global_eff.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_eff_pwr").level = gEff;
+                comp.MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr").level = gSpirit;
+
             }
             else
             {
@@ -39,6 +68,31 @@ namespace TorannMagic
             this.burstShotsLeft = 0;
             return result;
         }
-        
+
+        public void ClearSustainedMagicHediffs(CompAbilityUserMagic comp)
+        {
+            if(comp != null)
+            {
+                Pawn p = comp.Pawn;
+                if(p != null && p.health != null && p.health.hediffSet != null)
+                {
+                    List<Hediff> recList = new List<Hediff>();
+                    recList.Clear();
+                    List<Hediff> hds = p.health.hediffSet.GetHediffs<Hediff>().ToList();
+                    if (hds != null && hds.Count > 0)
+                    {
+                        for (int i = 0; i < hds.Count; i++)
+                        {
+                            if (hds[i].def == TorannMagicDefOf.TM_RayOfHope_AuraHD || hds[i].def == TorannMagicDefOf.TM_SoothingBreeze_AuraHD || hds[i].def == TorannMagicDefOf.TM_Shadow_AuraHD ||
+                                hds[i].def == TorannMagicDefOf.TM_TechnoBitHD || hds[i].def == TorannMagicDefOf.TM_EnchantedAuraHD || hds[i].def == TorannMagicDefOf.TM_EnchantedBodyHD || 
+                                hds[i].def == TorannMagicDefOf.TM_PredictionHD)                                
+                            {
+                                p.health.RemoveHediff(hds[i]);
+                            }
+                        }
+                    }
+                }
+            }
+        }        
     }
 }

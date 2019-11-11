@@ -96,6 +96,22 @@ namespace TorannMagic
                     bldgComp.sustained = true;
                     GenSpawn.Spawn(thing, position, map, Rot4.North, WipeMode.Vanish, false);
                     comp.summonedCoolers.Add(thing);
+                    Building_TMCooler cooler = thing as Building_TMCooler;
+                    if (cooler != null)
+                    {
+                        if (comp.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_pwr").level >= 12)
+                        {
+                            cooler.defensive = true;
+                        }
+                        if (comp.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level >= 6)
+                        {
+                            cooler.buffCool = true;
+                        }
+                        if (comp.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level >= 9)
+                        {
+                            cooler.buffFresh = true;
+                        }
+                    }
                 }
             }
         }

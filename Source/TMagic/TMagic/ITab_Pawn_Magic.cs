@@ -64,10 +64,6 @@ namespace TorannMagic
                     {
                         return flag && true;
                     }
-                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
-                    {
-                        return flag && true;
-                    }
                     if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Paladin))
                     {
                         return flag && true;
@@ -124,6 +120,10 @@ namespace TorannMagic
                     {
                         return flag && true;
                     }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
+                    {
+                        return flag && true;
+                    }
                 }
                 return false;
                 //return flag && (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.Paladin));
@@ -140,6 +140,7 @@ namespace TorannMagic
         {
             Rect rect = new Rect(17f, 17f, MagicCardUtility.magicCardSize.x, MagicCardUtility.magicCardSize.y);
             MagicCardUtility.DrawMagicCard(rect, this.PawnToShowInfoAbout);
+            
         }
 
     }

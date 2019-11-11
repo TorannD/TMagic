@@ -8,6 +8,7 @@ using System;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using AbilityUser;
 
 namespace TorannMagic
 {
@@ -168,6 +169,23 @@ namespace TorannMagic
             return false;
         }
 
+        public static TraitDef GetMightTrait(Pawn pawn)
+        {
+            if (pawn.story != null && pawn.story.traits != null)
+            {
+                for (int i = 0; i < pawn.story.traits.allTraits.Count; i++)
+                {
+                    TraitDef td = pawn.story.traits.allTraits[i].def;
+                    if(td == TorannMagicDefOf.Bladedancer || td == TorannMagicDefOf.Gladiator || td == TorannMagicDefOf.Faceless || td == TorannMagicDefOf.TM_Sniper || td == TorannMagicDefOf.Ranger ||
+                        td == TorannMagicDefOf.TM_Psionic || td == TorannMagicDefOf.TM_Monk || td == TorannMagicDefOf.TM_Wayfarer)
+                    {
+                        return td;
+                    }
+                }
+            }
+            return null;
+        }
+
         public static bool IsMagicUser(Pawn pawn)
         {
             if (pawn != null)
@@ -224,8 +242,8 @@ namespace TorannMagic
             }
             else if(pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer)) //pawn is a wayfarer with appropriate skill level
             {
-                int lvl = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_WandererCraft.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_WandererCraft_eff").level;
-                if(lvl >= 15)
+                int lvl = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_eff").level;
+                if (lvl >= 15)
                 {
                     return true;
                 }
@@ -241,7 +259,11 @@ namespace TorannMagic
             }
             else if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer)) //pawn is a wanderer with appropriate skill level
             {
-                //int lvl = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_WayfarerCraft.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_WayfarerCraft_eff").level;
+                int lvl = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_eff").level;
+                if (lvl >= 15)
+                {
+                    return true;
+                }
             }
             return false;
         }
@@ -1439,6 +1461,1137 @@ namespace TorannMagic
                 }
             }
             return cell;
+        }
+
+        public static TMAbilityDef GetCopiedMightAbility(Pawn targetPawn, Pawn caster)
+        {
+            CompAbilityUserMight mightPawn = targetPawn.GetComp<CompAbilityUserMight>();
+            TMAbilityDef tempAbility = null;
+            if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+            {
+                int rnd = Rand.RangeInclusive(0, 1);
+                if (rnd == 0)
+                {
+                    int level = mightPawn.MightData.MightPowersG[2].level;
+                    switch (level)
+                    {
+                        case 0:
+                            tempAbility = TorannMagicDefOf.TM_Grapple;
+                            break;
+                        case 1:
+                            tempAbility = TorannMagicDefOf.TM_Grapple_I;
+                            break;
+                        case 2:
+                            tempAbility = TorannMagicDefOf.TM_Grapple_II;
+                            break;
+                        case 3:
+                            tempAbility = TorannMagicDefOf.TM_Grapple_III;
+                            break;
+                    }
+                }
+                else
+                {
+                    tempAbility = TorannMagicDefOf.TM_Whirlwind;
+                }
+            }
+            else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+            {
+                int rnd = Rand.RangeInclusive(0, 2);
+                if (rnd == 0)
+                {
+                    tempAbility = TorannMagicDefOf.TM_AntiArmor;
+                }
+                else if (rnd == 1)
+                {
+                    int level = mightPawn.MightData.MightPowersS[2].level;
+                    switch (level)
+                    {
+                        case 0:
+                            tempAbility = TorannMagicDefOf.TM_DisablingShot;
+                            break;
+                        case 1:
+                            tempAbility = TorannMagicDefOf.TM_DisablingShot_I;
+                            break;
+                        case 2:
+                            tempAbility = TorannMagicDefOf.TM_DisablingShot_II;
+                            break;
+                        case 3:
+                            tempAbility = TorannMagicDefOf.TM_DisablingShot_III;
+                            break;
+                    }
+                }
+                else
+                {
+                    tempAbility = TorannMagicDefOf.TM_Headshot;
+                }
+
+            }
+            else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+            {
+                int rnd = Rand.RangeInclusive(0, 2);
+                if (rnd == 0)
+                {
+                    tempAbility = TorannMagicDefOf.TM_SeismicSlash;
+                }
+                else if (rnd == 1)
+                {
+                    int level = mightPawn.MightData.MightPowersB[4].level;
+                    switch (level)
+                    {
+                        case 0:
+                            tempAbility = TorannMagicDefOf.TM_PhaseStrike;
+                            break;
+                        case 1:
+                            tempAbility = TorannMagicDefOf.TM_PhaseStrike_I;
+                            break;
+                        case 2:
+                            tempAbility = TorannMagicDefOf.TM_PhaseStrike_II;
+                            break;
+                        case 3:
+                            tempAbility = TorannMagicDefOf.TM_PhaseStrike_III;
+                            break;
+                    }
+                }
+                else
+                {
+                    tempAbility = TorannMagicDefOf.TM_BladeSpin;
+                }
+            }
+            else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+            {
+                int rnd = Rand.RangeInclusive(0, 1);
+                if (rnd == 0)
+                {
+                    int level = mightPawn.MightData.MightPowersB[4].level;
+                    switch (level)
+                    {
+                        case 0:
+                            tempAbility = TorannMagicDefOf.TM_ArrowStorm;
+                            break;
+                        case 1:
+                            tempAbility = TorannMagicDefOf.TM_ArrowStorm_I;
+                            break;
+                        case 2:
+                            tempAbility = TorannMagicDefOf.TM_ArrowStorm_II;
+                            break;
+                        case 3:
+                            tempAbility = TorannMagicDefOf.TM_ArrowStorm_III;
+                            break;
+                    }
+                }
+                else
+                {
+                    tempAbility = TorannMagicDefOf.TM_PoisonTrap;
+                }
+            }
+            else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
+            {
+                int rnd = Rand.RangeInclusive(0, 3);
+                if ((rnd == 0 || rnd == 3) && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                {
+                    int level = mightPawn.MightData.MightPowersP[1].level;
+                    switch (level)
+                    {
+                        case 0:
+                            tempAbility = TorannMagicDefOf.TM_PsionicBlast;
+                            break;
+                        case 1:
+                            tempAbility = TorannMagicDefOf.TM_PsionicBlast_I;
+                            break;
+                        case 2:
+                            tempAbility = TorannMagicDefOf.TM_PsionicBlast_II;
+                            break;
+                        case 3:
+                            tempAbility = TorannMagicDefOf.TM_PsionicBlast_III;
+                            break;
+                    }
+                }
+                else if (rnd == 1 && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                {
+                    tempAbility = TorannMagicDefOf.TM_PsionicDash;
+                }
+                else
+                {
+                    int level = mightPawn.MightData.MightPowersP[3].level;
+                    switch (level)
+                    {
+                        case 0:
+                            tempAbility = TorannMagicDefOf.TM_PsionicBarrier;
+                            break;
+                        case 1:
+                            tempAbility = TorannMagicDefOf.TM_PsionicBarrier_Projected;
+                            break;
+                    }
+                }
+            }
+            else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight))
+            {
+                int rnd = Rand.RangeInclusive(1, 2);
+                if (rnd == 1 || caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                {
+                    tempAbility = TorannMagicDefOf.TM_WaveOfFear;
+                }
+                else
+                {
+                    int level = mightPawn.MightData.MightPowersDK[4].level;
+                    switch (level)
+                    {
+                        case 0:
+                            tempAbility = TorannMagicDefOf.TM_GraveBlade;
+                            break;
+                        case 1:
+                            tempAbility = TorannMagicDefOf.TM_GraveBlade_I;
+                            break;
+                        case 2:
+                            tempAbility = TorannMagicDefOf.TM_GraveBlade_II;
+                            break;
+                        case 3:
+                            tempAbility = TorannMagicDefOf.TM_GraveBlade_III;
+                            break;
+                    }
+                }
+            }
+            else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk))
+            {
+                int rnd = Rand.RangeInclusive(3, 5);
+                if (rnd == 3)
+                {
+                    tempAbility = TorannMagicDefOf.TM_TigerStrike;
+                }
+                else if (rnd == 4)
+                {
+                    tempAbility = TorannMagicDefOf.TM_DragonStrike;
+                }
+                else
+                {
+                    tempAbility = TorannMagicDefOf.TM_ThunderStrike;
+                }
+            }
+            else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            {
+
+            }
+            return tempAbility;
+        }
+
+        public static TMAbilityDef GetCopiedMagicAbility(Pawn targetPawn, Pawn caster)
+        {
+            CompAbilityUserMagic magicPawn = targetPawn.GetComp<CompAbilityUserMagic>();
+            TMAbilityDef tempAbility = null;
+            if (magicPawn != null)
+            {
+                if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        int rnd = Rand.RangeInclusive(0, 3);
+                        if (rnd == 0 && magicPawn.MagicData.MagicPowersA[rnd].learned)
+                        {
+                            int level = magicPawn.MagicData.MagicPowersA[rnd].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_Shadow;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_Shadow_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_Shadow_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_Shadow_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                        else if (rnd == 1 && magicPawn.MagicData.MagicPowersA[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            int level = magicPawn.MagicData.MagicPowersA[rnd].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_MagicMissile;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_MagicMissile_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_MagicMissile_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_MagicMissile_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersA[rnd].learned)
+                        {
+                            int level = magicPawn.MagicData.MagicPowersA[rnd].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_Blink;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_Blink_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_Blink_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_Blink_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersA[rnd].learned)
+                        {
+                            int level = magicPawn.MagicData.MagicPowersA[rnd].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_Summon;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_Summon_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_Summon_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_Summon_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                    }
+                }
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn))
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        int rnd = Rand.RangeInclusive(0, 3);
+                        if (rnd == 0 && magicPawn.MagicData.MagicPowersSB[rnd].learned)
+                        {
+                            int level = magicPawn.MagicData.MagicPowersSB[rnd].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_AMP;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_AMP_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_AMP_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_AMP_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                        else if (rnd == 1 && magicPawn.MagicData.MagicPowersSB[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            tempAbility = TorannMagicDefOf.TM_LightningBolt;
+                            i = 5;
+                        }
+                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersSB[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            tempAbility = TorannMagicDefOf.TM_LightningCloud;
+                            i = 5;
+                        }
+                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersSB[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            tempAbility = TorannMagicDefOf.TM_LightningStorm;
+                            i = 5;
+                        }
+                    }
+                }
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        int rnd = Rand.RangeInclusive(0, 3);
+                        if (rnd == 0 && magicPawn.MagicData.MagicPowersIF[rnd].learned)
+                        {
+                            int level = magicPawn.MagicData.MagicPowersIF[rnd].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_RayofHope;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_RayofHope_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_RayofHope_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_RayofHope_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                        else if (rnd == 1 && magicPawn.MagicData.MagicPowersIF[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            tempAbility = TorannMagicDefOf.TM_Firebolt;
+                            i = 5;
+                        }
+                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersIF[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            tempAbility = TorannMagicDefOf.TM_Fireclaw;
+                            i = 5;
+                        }
+                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersIF[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            tempAbility = TorannMagicDefOf.TM_Fireball;
+                            i = 5;
+                        }
+                    }
+                }
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost))
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        int rnd = Rand.RangeInclusive(0, 4);
+                        if (rnd == 0 && magicPawn.MagicData.MagicPowersHoF[rnd].learned)
+                        {
+                            int level = magicPawn.MagicData.MagicPowersHoF[rnd].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_Soothe;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_Soothe_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_Soothe_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_Soothe_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                        else if (rnd == 1 && magicPawn.MagicData.MagicPowersHoF[rnd].learned)
+                        {
+                            tempAbility = TorannMagicDefOf.TM_Rainmaker;
+                            i = 5;
+                        }
+                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersHoF[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            tempAbility = TorannMagicDefOf.TM_Icebolt;
+                            i = 5;
+                        }
+                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersHoF[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            int level = magicPawn.MagicData.MagicPowersHoF[rnd].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_FrostRay;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_FrostRay_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_FrostRay_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_FrostRay_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                        else if (rnd == 4 && magicPawn.MagicData.MagicPowersHoF[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            tempAbility = TorannMagicDefOf.TM_Snowball;
+                            i = 5;
+                        }
+                    }
+                }
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Druid))
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        int rnd = Rand.RangeInclusive(0, 3);
+                        if (rnd == 0 && magicPawn.MagicData.MagicPowersD[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            tempAbility = TorannMagicDefOf.TM_Poison;
+                            i = 5;
+                        }
+                        else if (rnd == 1 && magicPawn.MagicData.MagicPowersD[rnd].learned)
+                        {
+                            int level = magicPawn.MagicData.MagicPowersD[rnd].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_SootheAnimal;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_SootheAnimal_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_SootheAnimal_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_SootheAnimal_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersD[rnd].learned)
+                        {
+                            tempAbility = TorannMagicDefOf.TM_Regenerate;
+                            i = 5;
+                        }
+                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersD[rnd].learned)
+                        {
+                            tempAbility = TorannMagicDefOf.TM_CureDisease;
+                            i = 5;
+                        }
+                    }
+                }
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer))
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        int rnd = Rand.RangeInclusive(1, 3);
+                        if (rnd == 1 && magicPawn.MagicData.MagicPowersN[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            int level = magicPawn.MagicData.MagicPowersN[rnd].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_DeathMark;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_DeathMark_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_DeathMark_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_DeathMark_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersN[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            tempAbility = TorannMagicDefOf.TM_FogOfTorment;
+                            i = 5;
+                        }
+                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersN[rnd + 1].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            int level = magicPawn.MagicData.MagicPowersN[rnd + 1].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_CorpseExplosion;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_CorpseExplosion_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_CorpseExplosion_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_CorpseExplosion_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                    }
+                }
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Paladin))
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        int rnd = Rand.RangeInclusive(0, 3);
+                        if (rnd == 1 && magicPawn.MagicData.MagicPowersP[rnd].learned)
+                        {
+                            int level = magicPawn.MagicData.MagicPowersP[rnd].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_Shield;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_Shield_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_Shield_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_Shield_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                        else if (rnd == 0 && magicPawn.MagicData.MagicPowersP[rnd].learned)
+                        {
+                            tempAbility = TorannMagicDefOf.TM_Heal;
+                            i = 5;
+                        }
+                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersP[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            tempAbility = TorannMagicDefOf.TM_ValiantCharge;
+                            i = 5;
+                        }
+                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersP[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            tempAbility = TorannMagicDefOf.TM_Overwhelm;
+                            i = 5;
+                        }
+                    }
+                }
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Priest))
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        int rnd = Rand.RangeInclusive(0, 3);
+                        if (rnd == 3 && magicPawn.MagicData.MagicPowersPR[rnd].learned)
+                        {
+                            int level = magicPawn.MagicData.MagicPowersPR[rnd].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_BestowMight;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_BestowMight_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_BestowMight_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_BestowMight_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersPR[rnd].learned)
+                        {
+                            int level = magicPawn.MagicData.MagicPowersPR[rnd].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_HealingCircle;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_HealingCircle_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_HealingCircle_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_HealingCircle_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                        else if (rnd == 1 && magicPawn.MagicData.MagicPowersPR[rnd].learned)
+                        {
+                            tempAbility = TorannMagicDefOf.TM_Purify;
+                            i = 5;
+                        }
+                        else if (rnd == 0 && magicPawn.MagicData.MagicPowersPR[rnd].learned)
+                        {
+                            tempAbility = TorannMagicDefOf.TM_AdvancedHeal;
+                            i = 5;
+                        }
+                    }
+                }
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        int rnd = Rand.RangeInclusive(1, 3);
+                        if (rnd == 1 && magicPawn.MagicData.MagicPowersS[rnd].learned)
+                        {
+                            tempAbility = TorannMagicDefOf.TM_SummonPylon;
+                            i = 5;
+                        }
+                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersS[rnd].learned)
+                        {
+                            tempAbility = TorannMagicDefOf.TM_SummonExplosive;
+                            i = 5;
+                        }
+                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersS[rnd].learned)
+                        {
+                            tempAbility = TorannMagicDefOf.TM_SummonElemental;
+                            i = 5;
+                        }
+                    }
+                }
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
+                {
+                    int level = magicPawn.MagicData.MagicPowersB[3].level;
+                    switch (level)
+                    {
+                        case 0:
+                            tempAbility = TorannMagicDefOf.TM_Lullaby;
+                            break;
+                        case 1:
+                            tempAbility = TorannMagicDefOf.TM_Lullaby_I;
+                            break;
+                        case 2:
+                            tempAbility = TorannMagicDefOf.TM_Lullaby_II;
+                            break;
+                        case 3:
+                            tempAbility = TorannMagicDefOf.TM_Lullaby_III;
+                            break;
+                    }
+                }
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Warlock))
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        int rnd = Rand.RangeInclusive(1, 3);
+                        if (rnd == 1 && magicPawn.MagicData.MagicPowersWD[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            int level = magicPawn.MagicData.MagicPowersWD[rnd].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_ShadowBolt;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_ShadowBolt_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_ShadowBolt_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_ShadowBolt_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersWD[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            tempAbility = TorannMagicDefOf.TM_Dominate;
+                            i = 5;
+                        }
+                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersWD[rnd].learned)
+                        {
+                            int level = magicPawn.MagicData.MagicPowersWD[rnd].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_Repulsion;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_Repulsion_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_Repulsion_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_Repulsion_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                    }
+                }
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Succubus))
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        int rnd = Rand.RangeInclusive(1, 3);
+                        if (rnd == 1 && magicPawn.MagicData.MagicPowersSD[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            int level = magicPawn.MagicData.MagicPowersSD[rnd].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_ShadowBolt;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_ShadowBolt_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_ShadowBolt_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_ShadowBolt_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersSD[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            tempAbility = TorannMagicDefOf.TM_Dominate;
+                            i = 5;
+                        }
+                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersSD[rnd].learned)
+                        {
+                            int level = magicPawn.MagicData.MagicPowersSD[rnd].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_Attraction;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_Attraction_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_Attraction_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_Attraction_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                    }
+                }
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        int rnd = Rand.RangeInclusive(0, 2);
+                        if (rnd == 2)
+                        {
+                            rnd = 3;
+                        }
+                        if (rnd == 0 && magicPawn.MagicData.MagicPowersG[rnd].learned)
+                        {
+                            tempAbility = TorannMagicDefOf.TM_Stoneskin;
+                            i = 5;
+                        }
+                        else if (rnd == 1 && magicPawn.MagicData.MagicPowersG[rnd].learned)
+                        {
+                            int level = magicPawn.MagicData.MagicPowersG[rnd].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_Encase;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_Encase_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_Encase_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_Encase_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersG[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                        {
+                            tempAbility = TorannMagicDefOf.TM_EarthernHammer;
+                            i = 5;
+                        }
+                    }
+                }
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        int rnd = Rand.RangeInclusive(3, 5);
+                        if (rnd == 3 && magicPawn.MagicData.MagicPowersT[rnd].learned)
+                        {
+                            tempAbility = TorannMagicDefOf.TM_TechnoShield;
+                            i = 5;
+                        }
+                        else if (rnd == 4 && magicPawn.MagicData.MagicPowersT[rnd].learned)
+                        {
+                            tempAbility = TorannMagicDefOf.TM_Sabotage;
+                            i = 5;
+                        }
+                        else if (rnd == 5 && magicPawn.MagicData.MagicPowersT[rnd].learned)
+                        {
+                            tempAbility = TorannMagicDefOf.TM_Overdrive;
+                            i = 5;
+                        }
+                    }
+                }
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        if (magicPawn.MagicData.MagicPowersE[4].learned)
+                        {
+                            int level = magicPawn.MagicData.MagicPowersE[4].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_Polymorph;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_Polymorph_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_Polymorph_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_Polymorph_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                    }
+                }
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer))
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        int rnd = Rand.RangeInclusive(2, 4);
+                        if (rnd == 2 && magicPawn.MagicData.MagicPowersC[rnd].learned)
+                        {
+                            tempAbility = TorannMagicDefOf.TM_AccelerateTime;
+                            i = 5;
+                        }
+                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersC[rnd].learned)
+                        {
+                            tempAbility = TorannMagicDefOf.TM_ReverseTime;
+                            i = 5;
+                        }
+                        else if (magicPawn.MagicData.MagicPowersC[4].learned)
+                        {
+                            int level = magicPawn.MagicData.MagicPowersC[4].level;
+                            switch (level)
+                            {
+                                case 0:
+                                    tempAbility = TorannMagicDefOf.TM_ChronostaticField;
+                                    break;
+                                case 1:
+                                    tempAbility = TorannMagicDefOf.TM_ChronostaticField_I;
+                                    break;
+                                case 2:
+                                    tempAbility = TorannMagicDefOf.TM_ChronostaticField_II;
+                                    break;
+                                case 3:
+                                    tempAbility = TorannMagicDefOf.TM_ChronostaticField_III;
+                                    break;
+                            }
+                            i = 5;
+                        }
+                    }
+                }
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.BloodMage))
+                {
+                    Messages.Message("TM_CannotMimicBloodMage".Translate(
+                        ), MessageTypeDefOf.RejectInput);
+                }
+            }
+            return tempAbility;
+        }
+
+        public static int GetMightSkillLevel(Pawn caster, List<MightPowerSkill> power, string skillLabel, string suffix, bool canCopy = true)
+        {
+            int val = 0;
+            string label = skillLabel + suffix;
+            CompAbilityUserMight comp = caster.GetComp<CompAbilityUserMight>();
+            val = power.FirstOrDefault((MightPowerSkill x) => x.label == label).level;
+            if (canCopy)
+            {
+                if (caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                {
+                    label = "TM_Mimic" + suffix;
+                    val = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == label).level;
+                }
+                if (caster.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer) || (caster.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) && comp.MightData.MightPowersW.FirstOrDefault((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_WayfarerCraft).learned))
+                {
+                    label = "TM_FieldTraining" + suffix;
+
+                    if (comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == label).level >= 13)
+                    {
+                        val = 2;
+                    }
+                    else if (comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == label).level >= 9)
+                    {
+                        val = 1;
+                    }
+                }                
+            }
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            if (settingsRef.AIHardMode && !caster.IsColonist)
+            {
+                val = 3;
+            }
+            return val;
+        }
+
+        public static bool IsIconAbility_02(AbilityDef def)
+        {
+            if((def == TorannMagicDefOf.TM_RayofHope || def == TorannMagicDefOf.TM_RayofHope_I || def == TorannMagicDefOf.TM_RayofHope_II ||
+                        def == TorannMagicDefOf.TM_Soothe || def == TorannMagicDefOf.TM_Soothe_I || def == TorannMagicDefOf.TM_Soothe_II ||
+                        def == TorannMagicDefOf.TM_Shadow || def == TorannMagicDefOf.TM_Shadow_I || def == TorannMagicDefOf.TM_Shadow_II ||
+                        def == TorannMagicDefOf.TM_AMP || def == TorannMagicDefOf.TM_AMP_I || def == TorannMagicDefOf.TM_AMP_II ||
+                        def == TorannMagicDefOf.TM_Shield || def == TorannMagicDefOf.TM_Shield_I || def == TorannMagicDefOf.TM_Shield_II ||
+                        def == TorannMagicDefOf.TM_Blink || def == TorannMagicDefOf.TM_Blink_I || def == TorannMagicDefOf.TM_Blink_II ||
+                        def == TorannMagicDefOf.TM_Summon || def == TorannMagicDefOf.TM_Summon_I || def == TorannMagicDefOf.TM_Summon_II ||
+                        def == TorannMagicDefOf.TM_MagicMissile || def == TorannMagicDefOf.TM_MagicMissile_I || def == TorannMagicDefOf.TM_MagicMissile_II ||
+                        def == TorannMagicDefOf.TM_FrostRay || def == TorannMagicDefOf.TM_FrostRay_I || def == TorannMagicDefOf.TM_FrostRay_II ||
+                        def == TorannMagicDefOf.TM_SootheAnimal || def == TorannMagicDefOf.TM_SootheAnimal_I || def == TorannMagicDefOf.TM_SootheAnimal_II ||
+                        def == TorannMagicDefOf.TM_DeathMark || def == TorannMagicDefOf.TM_DeathMark_I || def == TorannMagicDefOf.TM_DeathMark_II ||
+                        def == TorannMagicDefOf.TM_ConsumeCorpse || def == TorannMagicDefOf.TM_ConsumeCorpse_I || def == TorannMagicDefOf.TM_ConsumeCorpse_II ||
+                        def == TorannMagicDefOf.TM_CorpseExplosion || def == TorannMagicDefOf.TM_CorpseExplosion_I || def == TorannMagicDefOf.TM_CorpseExplosion_II ||
+                        def == TorannMagicDefOf.TM_DeathBolt || def == TorannMagicDefOf.TM_DeathBolt_I || def == TorannMagicDefOf.TM_DeathBolt_II ||
+                        def == TorannMagicDefOf.TM_HealingCircle || def == TorannMagicDefOf.TM_HealingCircle_I || def == TorannMagicDefOf.TM_HealingCircle_II ||
+                        def == TorannMagicDefOf.TM_Lullaby || def == TorannMagicDefOf.TM_Lullaby_I || def == TorannMagicDefOf.TM_Lullaby_II ||
+                        def == TorannMagicDefOf.TM_ShadowBolt || def == TorannMagicDefOf.TM_ShadowBolt_I || def == TorannMagicDefOf.TM_ShadowBolt_II ||
+                        def == TorannMagicDefOf.TM_Attraction || def == TorannMagicDefOf.TM_Attraction_I || def == TorannMagicDefOf.TM_Attraction_II ||
+                        def == TorannMagicDefOf.TM_Repulsion || def == TorannMagicDefOf.TM_Repulsion_I || def == TorannMagicDefOf.TM_Repulsion_II ||
+                        def == TorannMagicDefOf.TM_Encase || def == TorannMagicDefOf.TM_Encase_I || def == TorannMagicDefOf.TM_Encase_II ||
+                        def == TorannMagicDefOf.TM_Meteor || def == TorannMagicDefOf.TM_Meteor_I || def == TorannMagicDefOf.TM_Meteor_II ||
+                        def == TorannMagicDefOf.TM_OrbitalStrike || def == TorannMagicDefOf.TM_OrbitalStrike_I || def == TorannMagicDefOf.TM_OrbitalStrike_II ||
+                        def == TorannMagicDefOf.TM_Rend || def == TorannMagicDefOf.TM_Rend_I || def == TorannMagicDefOf.TM_Rend_II ||
+                        def == TorannMagicDefOf.TM_BloodMoon || def == TorannMagicDefOf.TM_BloodMoon_I || def == TorannMagicDefOf.TM_BloodMoon_II ||
+                        def == TorannMagicDefOf.TM_Polymorph || def == TorannMagicDefOf.TM_Polymorph_I || def == TorannMagicDefOf.TM_Polymorph_II ||
+                        def == TorannMagicDefOf.TM_BestowMight || def == TorannMagicDefOf.TM_BestowMight_I || def == TorannMagicDefOf.TM_BestowMight_II ||
+                        def == TorannMagicDefOf.TM_ChronostaticField || def == TorannMagicDefOf.TM_ChronostaticField_I || def == TorannMagicDefOf.TM_ChronostaticField_II))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool IsIconAbility_03(AbilityDef def)
+        {
+            if(TM_Calc.IsIconAbility_02(def))
+            {
+                return true;
+            }
+            else if ((def == TorannMagicDefOf.TM_RayofHope_III || def == TorannMagicDefOf.TM_Soothe_III || def == TorannMagicDefOf.TM_Shadow_III ||
+                        def == TorannMagicDefOf.TM_AMP_III || def == TorannMagicDefOf.TM_Shield_III || def == TorannMagicDefOf.TM_Blink_III ||
+                        def == TorannMagicDefOf.TM_Summon_III || def == TorannMagicDefOf.TM_MagicMissile_III || def == TorannMagicDefOf.TM_FrostRay_III ||
+                        def == TorannMagicDefOf.TM_SootheAnimal_III || def == TorannMagicDefOf.TM_DeathMark_III || def == TorannMagicDefOf.TM_ConsumeCorpse_III ||
+                        def == TorannMagicDefOf.TM_CorpseExplosion_III || def == TorannMagicDefOf.TM_DeathBolt_III || def == TorannMagicDefOf.TM_HealingCircle_III ||
+                        def == TorannMagicDefOf.TM_Lullaby_III || def == TorannMagicDefOf.TM_ShadowBolt_III || def == TorannMagicDefOf.TM_Attraction_III ||
+                        def == TorannMagicDefOf.TM_Repulsion_III || def == TorannMagicDefOf.TM_Encase_III || def == TorannMagicDefOf.TM_Meteor_III ||
+                        def == TorannMagicDefOf.TM_OrbitalStrike_III || def == TorannMagicDefOf.TM_Rend_III || def == TorannMagicDefOf.TM_BloodMoon_III ||
+                        def == TorannMagicDefOf.TM_Polymorph_III || def == TorannMagicDefOf.TM_BestowMight_III || def == TorannMagicDefOf.TM_ChronostaticField_III))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool IsMasterAbility(AbilityDef def)
+        {
+            if(def == TorannMagicDefOf.TM_Firestorm ||
+                def == TorannMagicDefOf.TM_Blizzard  ||
+                def == TorannMagicDefOf.TM_EyeOfTheStorm ||
+                def == TorannMagicDefOf.TM_FoldReality ||
+                def == TorannMagicDefOf.TM_RegrowLimb ||
+                def == TorannMagicDefOf.TM_LichForm ||
+                def == TorannMagicDefOf.TM_SummonPoppi ||
+                def == TorannMagicDefOf.TM_BattleHymn ||
+                def == TorannMagicDefOf.TM_Scorn ||
+                def == TorannMagicDefOf.TM_PsychicShock  ||
+                def == TorannMagicDefOf.TM_Meteor || def == TorannMagicDefOf.TM_Meteor_I || def == TorannMagicDefOf.TM_Meteor_II || def == TorannMagicDefOf.TM_Meteor_III ||
+                def == TorannMagicDefOf.TM_OrbitalStrike || def == TorannMagicDefOf.TM_OrbitalStrike_I || def == TorannMagicDefOf.TM_OrbitalStrike_II || def == TorannMagicDefOf.TM_OrbitalStrike_III ||
+                def == TorannMagicDefOf.TM_BloodMoon || def == TorannMagicDefOf.TM_BloodMoon_I || def == TorannMagicDefOf.TM_BloodMoon_II || def == TorannMagicDefOf.TM_BloodMoon_III ||
+                def == TorannMagicDefOf.TM_Shapeshift ||
+                def == TorannMagicDefOf.TM_Recall  ||
+                def == TorannMagicDefOf.TM_HolyWrath ||
+                def == TorannMagicDefOf.TM_Resurrection)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static void AssignChaosMagicPowers(CompAbilityUserMagic comp, bool forAI = false)
+        {
+            
+            if (comp != null)
+            {
+                int count = 2 + comp.MagicData.MagicPowerSkill_ChaosTradition.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ChaosTradition_ver").level;
+                comp.MagicData.ResetAllSkills();
+                comp.chaosPowers = new List<TM_ChaosPowers>();
+                comp.chaosPowers.Clear();
+                comp.RemovePowers(false);
+                comp.MagicData.MagicAbilityPoints = comp.MagicData.MagicUserLevel;
+                if(forAI)
+                {
+                    MagicPower p = comp.MagicData.AllMagicPowersForChaosMage.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Heal);
+                    p.learned = true;
+                    comp.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)p.abilityDef, TM_Calc.GetAssociatedMagicPowerSkill(comp, p)));
+                    comp.AddPawnAbility(p.abilityDef);
+                    p = comp.MagicData.AllMagicPowersForChaosMage.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_LightningBolt);
+                    p.learned = true;
+                    comp.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)p.abilityDef, TM_Calc.GetAssociatedMagicPowerSkill(comp, p)));
+                    comp.AddPawnAbility(p.abilityDef);
+                    p = comp.MagicData.AllMagicPowersForChaosMage.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shield);
+                    p.learned = true;
+                    comp.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)p.abilityDef, TM_Calc.GetAssociatedMagicPowerSkill(comp, p)));
+                    comp.AddPawnAbility(p.abilityDef);
+                    p = comp.MagicData.AllMagicPowersForChaosMage.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Fireball);
+                    p.learned = true;
+                    comp.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)p.abilityDef, TM_Calc.GetAssociatedMagicPowerSkill(comp, p)));
+                    comp.AddPawnAbility(p.abilityDef);
+                    p = TM_Calc.GetRandomMagicPower(comp); ;
+                    comp.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)p.abilityDef, null));
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    MagicPower power = TM_Calc.GetRandomMagicPower(comp);
+                    if (i < count)
+                    {
+                        power.learned = true;
+                        comp.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)power.abilityDef, TM_Calc.GetAssociatedMagicPowerSkill(comp, power)));
+                        if (power.abilityDef != TorannMagicDefOf.TM_TechnoBit && power.abilityDef != TorannMagicDefOf.TM_WandererCraft && power.abilityDef != TorannMagicDefOf.TM_Cantrips)
+                        {
+                            comp.AddPawnAbility(power.abilityDef);
+                        }
+                    }
+                    else
+                    {
+                        comp.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)power.abilityDef, null));
+                    }
+                }
+                comp.InitializeSpell();
+            }
+            else
+            {
+                Log.Message("failed chaos mage ability assignment - null comp");
+            }
+        }
+
+        public static MagicPower GetRandomMagicPower(CompAbilityUserMagic comp, bool includeMasterPower = false)
+        {
+            bool isDuplicate = true;
+            MagicPower power = null;
+            while (isDuplicate)
+            {
+                isDuplicate = false;
+                power = comp.MagicData.AllMagicPowersForChaosMage.RandomElement();
+                for (int i = 0; i < comp.chaosPowers.Count; i++)
+                {
+                    if (comp.chaosPowers[i].Ability == power.abilityDef)
+                    {
+                        isDuplicate = true;
+                    }
+                }
+            }
+            return power;
+        }
+
+        public static List<MagicPowerSkill> GetAssociatedMagicPowerSkill(CompAbilityUserMagic comp, MagicPower power)
+        {
+            string str = power.TMabilityDefs.FirstOrDefault().defName.ToString() + "_";
+            List<MagicPowerSkill> skills = new List<MagicPowerSkill>();
+            skills.Clear();
+            for (int i = 0; i < comp.MagicData.AllMagicPowerSkills.Count; i++)
+            {
+                MagicPowerSkill mps = comp.MagicData.AllMagicPowerSkills[i];
+                if (mps.label.Contains(str))
+                {
+                    skills.Add(mps);
+                }
+            }
+            return skills;
         }
     }
 }

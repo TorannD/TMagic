@@ -138,7 +138,7 @@
 <TM_BrokenOutOfMentalState>{0} has broken out of mental state {1} with help from a mind ward.</TM_BrokenOutOfMentalState>
 <TM_InsufficientMaterialForArtifact>Not enough {0} to create an enchanters stone.</TM_InsufficientMaterialForArtifact>
 <TM_CannotCreateStone>{0} is not yet able to create an artifact from {1}.</TM_CannotCreateStone>
-<TM_CannotMimicBloodMage>{0} cannot mimic the abilities of a blood mage</TM_CannotMimicBloodMage>
+<TM_CannotMimicBloodMage>Blood mage abilities can not be copied.</TM_CannotMimicBloodMage>
 <TM_ViolentCannotEquip>{0} is capable of violence and cannot equip {1}</TM_ViolentCannotEquip>
 <TM_TraitorOrbRecruit>{0} has successfully convicted {1} to join your cause using the Orb of the Traitor.\n\nThe use of vile magic against {2} has angered {3} and reduced your standing with them by {4} by {5}.</TM_TraitorOrbRecruit>
 <TM_InsufficientManaForJob>Not enough mana to start job: need 50, have {0}</TM_InsufficientManaForJob>
@@ -156,10 +156,12 @@
 <TM_PredictionUnease>{0} feels uneasy about {1} changes made to the {2} prediction, perhaps something has gone awry...</TM_PredictionUnease>
 <TM_PredictionTerrified>{0} is terrified, {1} feels sure something disastrous is about to happen...</TM_PredictionTerrified>
 <TM_StatsReport_Undead>Undead: No Value</TM_StatsReport_Undead>
+<TM_IncompatibleWeapon>Incompatible weapon for this ability.</TM_IncompatibleWeapon>
+<TM_BondedPawnNotSpawned>Unable to link to bonded pawn {0}, soul in transition.</TM_BondedPawnNotSpawned>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
-<LetterRegrowthSurgeryFail>{0} just attempted to perform {1} on {2} but failed because {4} {3}.\n\nIn order successfully perform this surgery, the following conditions must be met:\n\n1. Surgeon must be a trained Druid\n2. The druid must have learned the Regrow Limb spell.\n3. You must have a Seed of Life as an ingredient to perform the surgery.\n4. The druid must have 90 or more mana at the time of the surgery.\n5. After all these conditions are met, the druid must still perform the surgery successfully, which depends on their medical skill.\n\nGood luck, mage!</LetterRegrowthSurgeryFail>
+<LetterRegrowthSurgeryFail>{0} just attempted to perform {1} on {2} but failed because {4} {3}.\n\nIn order to successfully perform this surgery, the following conditions must be met:\n\n1. Surgeon must be a Druid\n2. The druid must have learned the Regrow Limb spell.\n3. You must have a Seed of Life as an ingredient to perform the surgery.\n4. The druid must have 90 or more mana at the time of the surgery.\n5. After all these conditions are met, the druid must still perform the surgery successfully, which depends on their medical skill.\n\nGood luck, mage!</LetterRegrowthSurgeryFail>
 <TM_NotMagicUser>is not a magic user</TM_NotMagicUser>
 <TM_NoRegrowthSpell>has not learned the spell Regrow Limb</TM_NoRegrowthSpell>
 <TM_InsufficientManaForSurgery>did not have enough mana to complete the operation - 90 or greater is required</TM_InsufficientManaForSurgery>
@@ -274,46 +276,45 @@ Ability power: +1%
 Ability resistance: +2%</TM_WandererCraft_pwr_desc>
 <TM_WandererCraft_eff_desc>Each skill point:
 Ability cost: -1%
-Upkeep cost: -2%
 XP gain: +2%</TM_WandererCraft_eff_desc>
 <TM_WandererCraft_ver_desc>Each skill point:
 Ability cooldown: -1%
 Mana regeneration: +1%
 Max mana: +2%</TM_WandererCraft_ver_desc>
 <TM_Cantrips_pwr_desc>Adds additional power to cantrips:
-+Level 1: Smokecloud causes blindness to enemies
-+Level 2: Arcane bolt minimum burst count increased to 2
-+Level 3: Dirt Devil moves 33% faster
-+Level 4: Extinguish causes damage to elementals and high damage to demons
-+Level 5: Teleport, Heal, and Summon Minion gain power level 1 class improvements
-+Level 6: Transfer mana and Siphon mana always apply buffs/debuffs 
-+Level 7: Arcane bolt minimum burst count increased to 3
-+Level 8: Spell Mending reparation speed increased by 25%
-+Level 9: Lightning Trap triggered effect lasts longer and creates a sheet of snow
-+Level 10: Teleport, Heal, and Summon Minion gain power level 2 class improvements
+Level 1: Smokecloud causes blindness to enemies
+Level 2: Arcane bolt minimum burst count increased to 2
+Level 3: Dirt Devil moves 33% faster
+Level 4: Extinguish causes damage to elementals and high damage to demons
+Level 5: Teleport, Heal, and Summon Minion gain power level 1 class improvements
+Level 6: Transfer mana and Siphon mana always apply buffs/debuffs 
+Level 7: Arcane bolt minimum burst count increased to 3
+Level 8: Spell Mending reparation speed increased by 25%
+Level 9: Lightning Trap triggered effect lasts longer and creates a sheet of snow
+Level 10: Teleport, Heal, and Summon Minion gain power level 2 class improvements
 Level 11: Arcane Heater spits fire at enemies
 Level 12: Arcane Cooler slows movement of nearby enemies
 Level 13: Power Node shocks nearby enemies
-Level 14: Rain causes a thunderstorm (instead of rain) where lightning strikes will be focused around enemies
-+Level 15: Teleport, Heal, and Summon Minion gain power level 3 class improvements</TM_Cantrips_pwr_desc>
-<TM_Cantrips_eff_desc>Decrease max MP upkeep costs by 2% and energy regeneration penalties by 2% per skill point.
-Level 15: Wanderer gains stamina and may learn Might classless abilities.</TM_Cantrips_eff_desc>
+Level 14: Rain causes a violent thunderstorm (instead of rain) where lightning strikes focus on enemies
+Level 15: Teleport, Heal, and Summon Minion gain power level 3 class improvements</TM_Cantrips_pwr_desc>
+<TM_Cantrips_eff_desc>Decrease max MP upkeep costs by 3% and energy regeneration penalties by 3% per skill point.
+Level 15: Wanderer gains stamina and can learn Might classless abilities.</TM_Cantrips_eff_desc>
 <TM_Cantrips_ver_desc>Adds additional utility or versatility to cantrips:
 Level 1: Blink stuns enemies around the target area
-+Level 2: Smokecloud radius is expanded by 2 cells
+Level 2: Smokecloud radius is expanded by 2 cells
 Level 3: Increases the efficiency of mana shield by 25%
-+Level 4: Dirt Devil lasts 25% longer
-+Level 5: Teleport, Heal, and Summon Minion gain versatility level 1 class improvements
+Level 4: Dirt Devil lasts 25% longer
+Level 5: Teleport, Heal, and Summon Minion gain versatility level 1 class improvements
 Level 6: Arcane Cooler, Arcane Heater, and Power Node apply minor buffs
 Level 7: Increases the efficiency of mana shield by 40%
-+Level 8: Spell Mending doesn't apply a debuff on the target
+Level 8: Spell Mending doesn't apply a debuff on the target
 Level 9: Arcane Cooler, Arcane Heater, and Power Node apply additional buffs
-+Level 10: Teleport, Heal, and Summon Minion gain versatility level 2 class improvements
+Level 10: Teleport, Heal, and Summon Minion gain versatility level 2 class improvements
 Level 11: Blur dodge chance increased by 10%
-Level 12: Invisibility has increased duration and applies a self heal when activated
-Level 13: Magelight will fire lightning bolts at enemies
-Level 14: EMP can also cause Sabotage to mechanoids
-+Level 15: Teleport, Heal, and Summon Minion gain versatility level 3 class improvements</TM_Cantrips_ver_desc>
+Level 12: Invisibility has 25% increased duration and applies a self heal when activated
+Level 13: Magelight will fire a lightning bolt at enemies within 24 cells every 7-13 seconds
+Level 14: EMP has a 40% chance to attempt Sabotage to robots and mechanoids
+Level 15: Teleport, Heal, and Summon Minion gain versatility level 3 class improvements</TM_Cantrips_ver_desc>
 
 <TM_WandererCraft_pwr>Experimentation</TM_WandererCraft_pwr>
 <TM_WandererCraft_eff>Self-taught</TM_WandererCraft_eff>
@@ -1103,7 +1104,82 @@ Level 3: 32hrs</TM_Recall_ver_desc>
 <TM_Recall_eff>Perfect Recall</TM_Recall_eff>
 <TM_Recall_ver>Impression</TM_Recall_ver>
 
+<TM_ChaosTradition_pwr_desc>Increases the chance wild magic has beneficial fluctuation and decreases the chance of backfiring. Requires 2 skill points to train.
+
+Level 0: (+)5%   : (-)20%
+Level 1: (+)10% : (-)15%
+Level 2: (+)15% : (-)10%
+Level 3: (+)20% : (-)5%</TM_ChaosTradition_pwr_desc>
+<TM_ChaosTradition_eff_desc>Chaos Mages thrive on change - each skill level brings added benefits when Chaos Tradition is used. Requires 2 skill points to train.
+
+Level 0: changes all learned abilities
+Level 1: gains a +8 mood boost for 24hrs
+Level 2: gains 25 mana
+Level 3: applies a stacking buff that increases stats</TM_ChaosTradition_eff_desc>
+<TM_ChaosTradition_ver_desc>Increases the number of abilities the Chaos Mage is able to learn through Chaos Tradition. Chaos Tradition is never removed. Requires 2 skill points to train.
+
+Level 0: 2 abilities
+Level 1: 3 abilities
+Level 2: 4 abilities
+Level 3: 5 abilities</TM_ChaosTradition_ver_desc>
+
+<TM_ChaosTradition_pwr>Chaos Flux</TM_ChaosTradition_pwr>
+<TM_ChaosTradition_eff>Mercurial</TM_ChaosTradition_eff>
+<TM_ChaosTradition_ver>Protean</TM_ChaosTradition_ver>
+
 <!-- Might Ability Point Descriptions -->
+
+<TM_WayfarerCraft_pwr_desc>Each skill point:
+Ability power: +1%
+Ability resistance: +2%</TM_WayfarerCraft_pwr_desc>
+<TM_WayfarerCraft_eff_desc>Each skill point:
+Ability cost: -1%
+XP gain: +2%</TM_WayfarerCraft_eff_desc>
+<TM_WayfarerCraft_ver_desc>Each skill point:
+Ability cooldown: -1%
+Stamina regeneration: +1%
+Max SP: +2%</TM_WayfarerCraft_ver_desc>
+<TM_FieldTraining_pwr_desc>Adds additional power to combat abilities:
+Level 1: Heavy Blow increases damage by 25%
+Level 2: Pommel Strike chance to down an enemy is doubled (non-lethal)
+Level 3: Throwing Knife applies an instant sedative to prisoners or poison to hostile pawns
+Level 4: Burning Fury intensity is increased by 50%
+Level 5: Sprint increases movement by 40%
+Level 6: Heavy Blow increases damage by 27.5%
+Level 7: Fighters Focus has a 20% chance to disarm a target during a successful melee attack
+Level 8: Tempest Strike gains a 20% damage bonus
+Level 9: Increases power of Legion to level 1
+Level 10: Sprint increases movement by 50%
+Level 11: Heavy Blow increases damage by 30%
+Level 12: Throwing Knife throws 3 knives instead of one
+Level 13: Increases power of Legion to Level 2
+Level 14: Burning Fury intensity is increased by 100%
+Level 15: Sprint increases movement by 60%</TM_FieldTraining_pwr_desc>
+<TM_FieldTraining_eff_desc>Decrease max SP upkeep costs by 3% and energy regeneration penalties by 3% per skill point.
+Level 15: Wayfarer gains mana and can learn mage cantrips.</TM_FieldTraining_eff_desc>
+<TM_FieldTraining_ver_desc>Adds additional utility or versatility to combat abilities:
+Level 1: Fighters Focus reduces rest loss by 20%
+Level 2: Thick Skin increases resistances by 12%
+Level 3: Strong Back increases mining speed by 20%
+Level 4: Inner Healing recovery rate increased by 65%
+Level 5: Gear Repair will remove tainted from fully repaired equipment
+Level 6: Gain access to the Legion ability
+Level 7: Thick Skin increases resistances by 14%
+Level 8: Strong Back increases construction speed by 20%
+Level 9: Increases versatility of Legion to level 1
+Level 10: When gear repair is active, a wayfarer will repair the gear of other pawns during casual interaction
+Level 11: Inner healing will slowly heal scars and other permanent injuries
+Level 12: Thick Skin increases resistances by 15% and grows barbs that can injure a melee attacker
+Level 13: Increases versatility of Legion to level 2
+Level 14: Burning Fury stamina consumption is reduced by 35%
+Level 15: Tempest strike consumes 25% less stamina per attack</TM_FieldTraining_ver_desc>
+
+<TM_WayfarerCraft_pwr>Enhancement</TM_WayfarerCraft_pwr>
+<TM_WayfarerCraft_eff>Senpai</TM_WayfarerCraft_eff>
+<TM_WayfarerCraft_ver>Endurance</TM_WayfarerCraft_ver>
+<TM_FieldTraining_pwr>Lethality</TM_FieldTraining_pwr>
+<TM_FieldTraining_eff>Balance</TM_FieldTraining_eff>
+<TM_FieldTraining_ver>Survival</TM_FieldTraining_ver>
 
 <TM_Sprint_eff_desc>Reduces the stamina cost required to sustain Sprint by 3 stamina per skill level.</TM_Sprint_eff_desc>
 <TM_Sprint_pwr_desc>Increases the speed of sprint but also increases physical drain.

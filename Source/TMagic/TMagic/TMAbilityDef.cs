@@ -2,6 +2,7 @@
 using AbilityUser;
 using RimWorld;
 using Verse;
+using System.Collections.Generic;
 
 namespace TorannMagic
 {
@@ -20,7 +21,5 @@ namespace TorannMagic
 			stringBuilder.AppendLine(this.GetDescription());
 			return stringBuilder.ToString();
 		}        
-
-        
     }
 }

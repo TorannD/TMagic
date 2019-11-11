@@ -303,6 +303,8 @@ namespace TorannMagic
                 }
                 GenPlace.TryPlaceThing(newThing, this.currentTarget.Cell, this.CasterPawn.Map, ThingPlaceMode.Near);
                 comp.enchanterStones.Add(newThing);
+
+                TM_Action.TransmutateEffects(this.currentTarget.Cell, this.CasterPawn);
             }
 
             this.burstShotsLeft = 0;

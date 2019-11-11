@@ -39,13 +39,14 @@ namespace TorannMagic
                     int verVal = 0;
                     try
                     {
+                        verVal = TM_Calc.GetMightSkillLevel(pawn, comp.MightData.MightPowerSkill_PoisonTrap, "TM_PoisonTrap", "_ver", true);
                         MightPowerSkill ver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PoisonTrap.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PoisonTrap_ver");
-                        verVal = ver.level;
-                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-                        {
-                            MightPowerSkill mver = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
-                            verVal = mver.level;
-                        }
+                        //verVal = ver.level;
+                        //if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                        //{
+                        //    MightPowerSkill mver = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                        //    verVal = mver.level;
+                        //}
                         for (int i = 0; i < comp.combatItems.Count; i++)
                         {
                             if(comp.combatItems[i].Destroyed)

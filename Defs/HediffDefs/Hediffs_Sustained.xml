@@ -78,6 +78,27 @@
 			  <MeleeWeapon_DamageMultiplier>0.2</MeleeWeapon_DamageMultiplier>
 			</statOffsets>
         </li>
+		<li>
+			<label>II</label>
+			<minSeverity>1</minSeverity>
+			<statOffsets>
+			  <MeleeWeapon_DamageMultiplier>0.25</MeleeWeapon_DamageMultiplier>
+			</statOffsets>
+        </li>
+		<li>
+			<label>III</label>
+			<minSeverity>2</minSeverity>
+			<statOffsets>
+			  <MeleeWeapon_DamageMultiplier>0.275</MeleeWeapon_DamageMultiplier>
+			</statOffsets>
+        </li>
+		<li>
+			<label>IV</label>
+			<minSeverity>3</minSeverity>
+			<statOffsets>
+			  <MeleeWeapon_DamageMultiplier>0.30</MeleeWeapon_DamageMultiplier>
+			</statOffsets>
+        </li>
 	 </stages>	
   </HediffDef>
 
@@ -98,6 +119,25 @@
 			<restFallFactor>1.1</restFallFactor>
 			<statOffsets>
 			  <CarryingCapacity>+40</CarryingCapacity>
+			</statOffsets>
+        </li>
+		<li>
+			<label>II</label>
+			<minSeverity>1</minSeverity>
+			<restFallFactor>1.1</restFallFactor>
+			<statOffsets>
+			  <CarryingCapacity>+40</CarryingCapacity>
+			  <MiningSpeed>0.2</MiningSpeed>
+			</statOffsets>
+        </li>
+		<li>
+			<label>III</label>
+			<minSeverity>2</minSeverity>
+			<restFallFactor>1.1</restFallFactor>
+			<statOffsets>
+			  <CarryingCapacity>+40</CarryingCapacity>
+			  <MiningSpeed>0.2</MiningSpeed>
+			  <ConstructionSpeed>.20</ConstructionSpeed>
 			</statOffsets>
         </li>
 	 </stages>	
@@ -125,6 +165,39 @@
 			  <ArmorRating_Heat>.1</ArmorRating_Heat>
 			</statOffsets>
         </li>
+		<li>
+			<label>II</label>
+			<minSeverity>1</minSeverity>
+			<statOffsets>
+			  <ComfyTemperatureMin>-5</ComfyTemperatureMin>
+			  <ComfyTemperatureMax>5</ComfyTemperatureMax>
+			  <ArmorRating_Blunt>.12</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.12</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.12</ArmorRating_Heat>
+			</statOffsets>
+        </li>
+		<li>
+			<label>III</label>
+			<minSeverity>2</minSeverity>
+			<statOffsets>
+			  <ComfyTemperatureMin>-5</ComfyTemperatureMin>
+			  <ComfyTemperatureMax>5</ComfyTemperatureMax>
+			  <ArmorRating_Blunt>.14</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.14</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.14</ArmorRating_Heat>
+			</statOffsets>
+        </li>
+		<li>
+			<label>IV</label>
+			<minSeverity>3</minSeverity>
+			<statOffsets>
+			  <ComfyTemperatureMin>-5</ComfyTemperatureMin>
+			  <ComfyTemperatureMax>5</ComfyTemperatureMax>
+			  <ArmorRating_Blunt>.15</ArmorRating_Blunt>
+			  <ArmorRating_Sharp>.15</ArmorRating_Sharp>
+			  <ArmorRating_Heat>.15</ArmorRating_Heat>
+			</statOffsets>
+        </li>
 	 </stages>	
   </HediffDef>
   
@@ -140,6 +213,15 @@
         <li>
 			<label>I</label>
 			<minSeverity>.001</minSeverity>
+			<statOffsets>
+			  <MentalBreakThreshold>-.05</MentalBreakThreshold>
+			  <PainShockThreshold>0.20</PainShockThreshold>
+			</statOffsets>
+        </li>
+		<li>
+			<label>II</label>
+			<minSeverity>1</minSeverity>
+			<restFallFactor>.8</restFallFactor>
 			<statOffsets>
 			  <MentalBreakThreshold>-.05</MentalBreakThreshold>
 			  <PainShockThreshold>0.20</PainShockThreshold>

@@ -298,6 +298,40 @@ namespace TorannMagic
             }
         }
 
+        public static void DoAction_SabotagePawn(Pawn targetPawn, Pawn caster, float rnd, int pwrVal, float arcaneDmg, Thing instigator)
+        {
+            if (Rand.Chance(TM_Calc.GetSpellSuccessChance(caster, targetPawn, true)))
+            {
+                if (rnd <= .33f)
+                {
+                    TM_Action.DamageEntities(targetPawn, null, (Rand.Range(8, 15) + pwrVal) * arcaneDmg, TMDamageDefOf.DamageDefOf.TM_ElectricalBurn, instigator);
+                }
+                else if (rnd <= .66f)
+                {
+                    if (targetPawn.mindState != null)
+                    {
+                        targetPawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk, "logic circuits sabotaged", true, false, null, true);
+                    }
+                    else
+                    {
+                        targetPawn.TryStartAttack(TM_Calc.FindNearbyPawn(targetPawn, 10));
+                    }
+                }
+                else if (rnd <= 1f)
+                {
+                    int rndCount = Rand.Range(2, 5);
+                    for (int j = 0; j < rndCount; j++)
+                    {
+                        TM_Action.DamageEntities(targetPawn, null, (Rand.Range(3, 5) + pwrVal) * arcaneDmg, TMDamageDefOf.DamageDefOf.TM_ElectricalBurn, instigator);
+                    }
+                }
+            }
+            else
+            {
+                MoteMaker.ThrowText(targetPawn.DrawPos, targetPawn.Map, "TM_ResistedSpell".Translate(), -1);
+            }
+        }
+
         public static void DoAction_HealPawn(Pawn caster, Pawn pawn, int bodypartCount, float amountToHeal)
         {
             int num = bodypartCount;
@@ -922,12 +956,14 @@ namespace TorannMagic
         {
             RemoveTrait(pawn, TorannMagicDefOf.Gifted);
             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Wanderer, 4, false));
+            pawn.needs.AddOrRemoveNeedsAsAppropriate();
         }
 
         public static void PromoteWayfarer(Pawn pawn)
         {
             RemoveTrait(pawn, TorannMagicDefOf.PhysicalProdigy);
             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Wayfarer, 4, false));
+            pawn.needs.AddOrRemoveNeedsAsAppropriate();
         }
 
         public static void RemoveTrait(Pawn pawn, TraitDef trait)
@@ -941,6 +977,20 @@ namespace TorannMagic
                     allTraits.Remove(allTraits[i]);
                     break;
                 }
+            }
+        }
+
+        public static void TransmutateEffects(IntVec3 position, Pawn p)
+        {
+            Vector3 rndPos = position.ToVector3Shifted();
+            MoteMaker.ThrowHeatGlow(position, p.Map, 1f);
+            for (int i = 0; i < 6; i++)
+            {
+                rndPos.x += Rand.Range(-.5f, .5f);
+                rndPos.z += Rand.Range(-.5f, .5f);
+                rndPos.y += Rand.Range(.3f, 1.3f);
+                MoteMaker.ThrowSmoke(rndPos, p.Map, Rand.Range(.7f, 1.1f));
+                MoteMaker.ThrowLightningGlow(position.ToVector3Shifted(), p.Map, 1.4f);
             }
         }
     }

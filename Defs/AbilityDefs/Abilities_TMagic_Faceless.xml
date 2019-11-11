@@ -65,7 +65,7 @@ Disguise will not fool any pawn that already sees the faceless as a threat.</des
     <defName>TM_Mimic</defName>
     <label>Mimic</label>
     <uiIconPath>UI/mimic</uiIconPath>
-    <description>The faceless copies a random ability from a mage or fighter that has a one time use. Only one ability may be stored at a time. The ability is lost after the faceless mimics it.</description>
+    <description>The faceless copies a random ability from a mage or fighter. Only one ability may be stored at a time. The ability is retained after use; reusing Mimic will replace the stored ability.</description>
 <!--    <thingClass>ThingWithComps</thingClass> -->
     <staminaCost>0.4</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">

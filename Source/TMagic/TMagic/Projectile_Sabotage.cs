@@ -111,36 +111,7 @@ namespace TorannMagic
                         {
                             if (TM_Calc.IsRobotPawn(targetPawn))
                             {
-                                if (Rand.Chance(TM_Calc.GetSpellSuccessChance(caster, targetPawn, true)))
-                                {
-                                    if (rnd <= .33f)
-                                    {
-                                        TM_Action.DamageEntities(targetPawn, null, (Rand.Range(8, 15) + pwrVal)*this.arcaneDmg, TMDamageDefOf.DamageDefOf.TM_ElectricalBurn, this.launcher);
-                                    }
-                                    else if (rnd <= .66f)
-                                    {
-                                        if (targetPawn.mindState != null)
-                                        {
-                                            targetPawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk, "logic circuits sabotaged", true, false, null, true);
-                                        }
-                                        else
-                                        {
-                                            targetPawn.TryStartAttack(TM_Calc.FindNearbyPawn(targetPawn, 10));
-                                        }
-                                    }
-                                    else if (rnd <= 1f)
-                                    {
-                                        int rndCount = Rand.Range(2, 5);
-                                        for (int j = 0; j < rndCount; j++)
-                                        {
-                                            TM_Action.DamageEntities(targetPawn, null, (Rand.Range(3, 5) + pwrVal)*this.arcaneDmg, TMDamageDefOf.DamageDefOf.TM_ElectricalBurn, this.launcher);
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    MoteMaker.ThrowText(targetPawn.DrawPos, targetPawn.Map, "TM_ResistedSpell".Translate(), -1);
-                                }
+                                TM_Action.DoAction_SabotagePawn(targetPawn, caster, rnd, pwrVal, this.arcaneDmg, this.launcher);
                                 this.age = this.duration;
                             }
                             else

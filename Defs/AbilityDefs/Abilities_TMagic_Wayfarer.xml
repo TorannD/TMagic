@@ -7,7 +7,7 @@
     <defName>TM_WayfarerCraft</defName>
     <label>The Wayfarer</label>
     <uiIconPath>UI/wayfarer</uiIconPath>
-    <description>The wayfarer is able to increase their attributes through training and hard work. See skills for more details.</description>
+    <description>Increase attributes through training and hard work. See skills for more details.</description>
     <staminaCost>0.0</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
@@ -38,9 +38,13 @@
     <!-- Field Training -->
   <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
     <defName>TM_FieldTraining</defName>
-    <label>Field Craft</label>
+    <label>Combat Training</label>
     <uiIconPath>UI/combattraining</uiIconPath>
-    <description>Wayfarers might not have class specific abilities, but that doesn't prevent them from excelling at general combat. General combat techniques discarded by most fighters as mere conveniences which require no additional skill training, but the wayfarer takes another approach. By investing time and effort into understanding and improving these combat skills, the wayfarer is able to improve almost all general abilities in utility, power, and efficiency. See skills for more details.</description>
+    <description>Wayfarers do not have class specific abilities, instead, they excel at general combat. 
+
+General combat techniques are discarded by most fighters as supplementary skills which require no additional skill training. The wayfarer takes another approach; by investing time and effort into understanding these combat skills, the wayfarer is able to improve almost all general abilities in utility, power, and efficiency. 
+
+See skills for more details.</description>
     <staminaCost>0.0</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>

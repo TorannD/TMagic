@@ -7,7 +7,7 @@
     <defName>TM_WandererCraft</defName>
     <label>The Wanderer</label>
     <uiIconPath>UI/wanderer</uiIconPath>
-    <description>The wanderer is able to increase their attributes through hard work and creativity. See skills for more details.</description>
+    <description>Increase attributes through hard work and creativity. See skills for more details.</description>
     <manaCost>0.0</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
@@ -40,7 +40,11 @@
     <defName>TM_Cantrips</defName>
     <label>Cantrips</label>
     <uiIconPath>UI/cantrips</uiIconPath>
-    <description>Wandering mages might not have class specific abilities, but that doesn't prevent them from excelling at general spells or cantrips. Cantrips are discarded by most mages as mere conveniences which require no additional skill training, but the wanderer takes another approach. By investing time and effort into understanding and improving general spells, the wanderer is able to improve almost all general abilities in utility, power, and efficiency. See skills for more details.</description>
+    <description>Wandering mages do not have class specific abilities, instead, they excel at general spells or cantrips. 
+	
+Cantrips are discarded by most mages as mere conveniences which require no additional skill training, but the wanderer takes another approach. By investing time and effort into understanding cantrips, the wanderer is able to improve almost all general abilities in utility, power, and efficiency. 
+
+See skills for more details.</description>
     <manaCost>0.0</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>

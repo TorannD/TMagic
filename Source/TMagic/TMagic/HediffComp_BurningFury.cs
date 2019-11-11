@@ -15,6 +15,9 @@ namespace TorannMagic
         private int nextAction = 1;
         private int nextSlowAction = 1;
         private bool removeNow = false;
+        CompAbilityUserMight comp = null;
+        private float intensity = 1f;
+        private float drain = 1f;
 
         public string labelCap
         {
@@ -56,12 +59,29 @@ namespace TorannMagic
             }
             if (!this.Pawn.DestroyedOrNull() && this.Pawn.Spawned && !this.Pawn.Downed)
             {
-                if (Find.TickManager.TicksGame % 30 == 0)
+                if(comp == null)
                 {
-                    CompAbilityUserMight comp = this.Pawn.GetComp<CompAbilityUserMight>();
+                    comp = this.Pawn.GetComp<CompAbilityUserMight>();
+                    int pwrVal = comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_pwr").level;
+                    if (pwrVal >= 4)
+                    {
+                        this.intensity = 1.5f;
+                        if(pwrVal >= 14)
+                        {
+                            this.intensity = 2f;
+                        }
+                    }
+                    int verVal = comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level;
+                    if (pwrVal >= 14)
+                    {
+                        this.drain = .65f;
+                    }
+                }
+                if (Find.TickManager.TicksGame % 30 == 0)
+                {                    
                     if (comp != null && comp.Stamina != null)
                     {
-                        comp.Stamina.CurLevel -= .02f;
+                        comp.Stamina.CurLevel -= (.02f * this.drain);
                         if (comp.Stamina.CurLevel <= .001f)
                         {
                             this.removeNow = true;
@@ -72,9 +92,9 @@ namespace TorannMagic
                         this.removeNow = true;
                     }
                 }
-                if (!removeNow && Find.TickManager.TicksGame % nextAction == 0)
+                if (!removeNow && Find.TickManager.TicksGame >= this.nextAction)
                 {
-                    this.nextAction = Rand.Range(50, 80);
+                    this.nextAction = Find.TickManager.TicksGame + Mathf.RoundToInt(Rand.Range(50f/this.intensity, 80f/this.intensity));
                     TickAction();
                 }
                 if (!removeNow && Find.TickManager.TicksGame % nextSlowAction == 0)

@@ -214,6 +214,7 @@ namespace TorannMagic
                     {
                         HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
                     }
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
                 else if (parent.def.defName == "BookOfQuestion")
                 {

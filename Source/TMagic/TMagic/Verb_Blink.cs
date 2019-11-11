@@ -3,6 +3,8 @@ using System;
 using Verse;
 using AbilityUser;
 using UnityEngine;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace TorannMagic
 {
@@ -71,6 +73,18 @@ namespace TorannMagic
                             //p.SetPositionDirect(this.currentTarget.Cell);
                             GenSpawn.Spawn(p, this.currentTarget.Cell, map);
                             p.drafter.Drafted = draftFlag;
+                            if (base.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level >= 1)
+                            {
+                                List<Pawn> eList = TM_Calc.FindPawnsNearTarget(p, 2, this.currentTarget.Cell, true);
+                                if(eList != null && eList.Count > 0)
+                                {
+                                    for(int i = 0; i < eList.Count; i++)
+                                    {
+                                        Pawn e = eList[i];
+                                        TM_Action.DamageEntities(e, null, 5f, DamageDefOf.Stun, p);
+                                    }
+                                }
+                            }
                             ThingSelectionUtility.SelectPreviousColonist();
                             ModOptions.Constants.SetPawnInFlight(false);
                         }

@@ -1,5 +1,6 @@
 ﻿using RimWorld;
 using System;
+using System.Linq;
 using Verse;
 using AbilityUser;
 using UnityEngine;
@@ -50,6 +51,11 @@ namespace TorannMagic
                         {
                             allPawns[i].jobs.EndCurrentJob(Verse.AI.JobCondition.InterruptForced, true);
                         }
+                    }
+                    if (this.CasterPawn.TryGetComp<CompAbilityUserMagic>()?.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level >= 12)
+                    {
+                        HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_InvisibilityHD, 5f);
+                        TM_Action.DoAction_HealPawn(this.CasterPawn, this.CasterPawn, 3, 7);
                     }
                 }                
                 arg_40_0 = true;

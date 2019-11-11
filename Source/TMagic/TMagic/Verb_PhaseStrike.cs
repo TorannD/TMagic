@@ -51,8 +51,6 @@ namespace TorannMagic
         public static int GetWeaponDmg(Pawn pawn)
         {
             CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
-            MightPowerSkill pwr = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_pwr");
-            MightPowerSkill ver = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_ver");
             MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
             ThingWithComps weaponComp = pawn.equipment.Primary;
             float weaponDPS = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_AverageDPS, false) * .7f;
@@ -68,17 +66,19 @@ namespace TorannMagic
             bool arg_40_0;
 
             CompAbilityUserMight comp = this.CasterPawn.GetComp<CompAbilityUserMight>();
-            pwr = comp.MightData.MightPowerSkill_PhaseStrike.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PhaseStrike_pwr");
-            ver = comp.MightData.MightPowerSkill_PhaseStrike.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PhaseStrike_ver");
-            verVal = ver.level;
-            pwrVal = pwr.level;
-            if (base.CasterPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-            {
-                MightPowerSkill mver = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
-                MightPowerSkill mpwr = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
-                verVal = mver.level;
-                pwrVal = mpwr.level;
-            }
+            verVal = TM_Calc.GetMightSkillLevel(this.CasterPawn, comp.MightData.MightPowerSkill_PhaseStrike, "TM_PhaseStrike", "_ver", true);
+            pwrVal = TM_Calc.GetMightSkillLevel(this.CasterPawn, comp.MightData.MightPowerSkill_PhaseStrike, "TM_PhaseStrike", "_pwr", true);
+            //pwr = comp.MightData.MightPowerSkill_PhaseStrike.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PhaseStrike_pwr");
+            //ver = comp.MightData.MightPowerSkill_PhaseStrike.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PhaseStrike_ver");
+            //verVal = ver.level;
+            //pwrVal = pwr.level;
+            //if (base.CasterPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            //{
+            //    MightPowerSkill mver = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+            //    MightPowerSkill mpwr = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+            //    verVal = mver.level;
+            //    pwrVal = mpwr.level;
+            //}
             if (this.CasterPawn.equipment.Primary != null && !this.CasterPawn.equipment.Primary.def.IsRangedWeapon)
             {
                 this.dmgNum = GetWeaponDmg(this.CasterPawn);

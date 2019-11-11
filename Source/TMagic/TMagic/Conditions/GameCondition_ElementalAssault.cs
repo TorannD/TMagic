@@ -117,7 +117,7 @@ namespace TorannMagic.Conditions
             {
                 throw new Exception("Map too small for elemental assault");
             }
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 16; i++)
             {
                 this.centerLocation = new IntVec2(Rand.Range(8, base.SingleMap.Size.x - 8), Rand.Range(8, base.SingleMap.Size.z - 8));
                 if (this.IsGoodCenterLocation(this.centerLocation))

@@ -17,6 +17,8 @@ namespace TorannMagic
 
         private bool primed = true;
 
+        private int pwrVal = 0;
+        private int verVal = 0;
 
 
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
@@ -46,14 +48,19 @@ namespace TorannMagic
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
             MagicPowerSkill pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Teleport.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Teleport_pwr");
             MagicPowerSkill ver = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Teleport.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Teleport_ver");
-
+            pwrVal = pwr.level;
+            verVal = ver.level;
             CellRect cellRect = CellRect.CenteredOn(base.Position, 1);
             cellRect.ClipInsideMap(map);
             IntVec3 centerCell = cellRect.CenterCell;
-
+            if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer))
+            {
+                pwrVal = (int)((pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_pwr").level) / 5);
+                verVal = (int)((pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level) / 5);
+            }
             if (this.primed != false)
             {
-                destructTimer = Mathf.RoundToInt((4800 + (pwr.level * 1200) + (ver.level * 1200)) * comp.arcaneDmg);
+                destructTimer = Mathf.RoundToInt((4800 + (pwrVal * 1200) + (pwrVal * 1200)) * comp.arcaneDmg);
                 arg_pos_1 = centerCell;
                 centerCell.x++;
                 arg_pos_2 = centerCell;
@@ -67,15 +74,15 @@ namespace TorannMagic
                     IntVec3 shiftPos = centerCell;
                     centerCell.x++;
 
-                    if (pwr.level == 1)
+                    if (pwrVal == 1)
                     {
                         tempPod.def = ThingDef.Named("TM_Teleporter_I");
                     }
-                    else if (pwr.level == 2)
+                    else if (pwrVal == 2)
                     {
                         tempPod.def = ThingDef.Named("TM_Teleporter_II");
                     }
-                    else if (pwr.level == 3)
+                    else if (pwrVal == 3)
                     {
                         tempPod.def = ThingDef.Named("TM_Teleporter_III");
                     }
@@ -105,15 +112,15 @@ namespace TorannMagic
                     }
                     
 
-                    if (ver.level == 1)
+                    if (verVal == 1)
                     {
                         tempPod.def = ThingDef.Named("TM_TeleportPod_I");
                     }
-                    else if (ver.level == 2)
+                    else if (verVal == 2)
                     {
                         tempPod.def = ThingDef.Named("TM_TeleportPod_II");
                     }
-                    else if (ver.level == 3)
+                    else if (verVal == 3)
                     {
                         tempPod.def = ThingDef.Named("TM_TeleportPod_III");
                     }

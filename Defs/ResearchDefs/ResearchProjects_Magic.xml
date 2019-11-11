@@ -86,7 +86,7 @@
 		<defName>TM_ForgeReplication</defName>
 		<label>Forge Replication</label>
 		<tab>TMagic</tab>
-		<description>Enhances the Arcane Forge with a technique that allows it to extract the design from any craftable item and create it at the forge.</description>
+		<description>Enhances the Arcane Forge with a technique that allows it to extract the design from any craftable item and duplicate it at the forge.</description>
 		<baseCost>3000</baseCost>
 		<techLevel>Neolithic</techLevel>
 		<researchViewX>4.0</researchViewX>
@@ -142,7 +142,7 @@
 		<defName>TM_MagicyteRefining</defName>
 		<label>magicyte refining</label>
 		<tab>TMagic</tab>
-		<description>Allows gemcrafters to grind magicyte down into a powdered form that can be imbibed or imbued into an object.</description>
+		<description>Experimental research that identifies ways to use magicyte to create magical items. Develops a recipe to create mana potions at the drug lab.</description>
 		<baseCost>800</baseCost>
 		<techLevel>Neolithic</techLevel>
 		<researchViewX>2.0</researchViewX>

@@ -36,24 +36,26 @@ namespace TorannMagic
             try
             {
                 CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
-                MightPowerSkill pwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_AntiArmor.FirstOrDefault((MightPowerSkill x) => x.label == "TM_AntiArmor_pwr");
-                MightPowerSkill ver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_AntiArmor.FirstOrDefault((MightPowerSkill x) => x.label == "TM_AntiArmor_ver");
+                //MightPowerSkill pwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_AntiArmor.FirstOrDefault((MightPowerSkill x) => x.label == "TM_AntiArmor_pwr");
+                verVal = TM_Calc.GetMightSkillLevel(pawn, comp.MightData.MightPowerSkill_AntiArmor, "TM_AntiArmor", "_ver", true);
+                pwrVal = TM_Calc.GetMightSkillLevel(pawn, comp.MightData.MightPowerSkill_AntiArmor, "TM_AntiArmor", "_pwr", true);
+                //MightPowerSkill ver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_AntiArmor.FirstOrDefault((MightPowerSkill x) => x.label == "TM_AntiArmor_ver");
                 MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
-                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                pwrVal = pwr.level;
-                verVal = ver.level;
-                if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-                {
-                    MightPowerSkill mpwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
-                    MightPowerSkill mver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
-                    pwrVal = mpwr.level;
-                    verVal = mver.level;
-                }
-                if (settingsRef.AIHardMode && !pawn.IsColonist)
-                {
-                    pwrVal = 3;
-                    verVal = 3;
-                }
+                //ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                //pwrVal = pwr.level;
+                //verVal = ver.level;
+                //if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                //{
+                //    MightPowerSkill mpwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+                //    MightPowerSkill mver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                //    pwrVal = mpwr.level;
+                //    verVal = mver.level;
+                //}
+                //if (settingsRef.AIHardMode && !pawn.IsColonist)
+                //{
+                //    pwrVal = 3;
+                //    verVal = 3;
+                //}
                 this.Initialize(base.Position, pawn);
 
                 if (victim != null && !victim.Dead && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracyPawn, true)))
@@ -127,8 +129,9 @@ namespace TorannMagic
         public static int GetWeaponDmgMech(Pawn pawn, int dmg)
         {
             
-            MightPowerSkill pwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_AntiArmor.FirstOrDefault((MightPowerSkill x) => x.label == "TM_AntiArmor_pwr");
-            int mechDmg = dmg + Mathf.RoundToInt(dmg * (1 + .5f * pwr.level));
+            //MightPowerSkill pwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_AntiArmor.FirstOrDefault((MightPowerSkill x) => x.label == "TM_AntiArmor_pwr");
+            int pwrVal = TM_Calc.GetMightSkillLevel(pawn, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_AntiArmor, "TM_AntiArmor", "_pwr", true);
+            int mechDmg = dmg + Mathf.RoundToInt(dmg * (1 + .5f * pwrVal));
             return mechDmg;
         }
 

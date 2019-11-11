@@ -80,6 +80,18 @@ namespace TorannMagic
                     comp.InitializeSkill();
                     this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
+                else if (parent.def == TorannMagicDefOf.SkillOf_Legion && comp.skill_Legion == false && !user.story.traits.HasTrait(TorannMagicDefOf.Faceless) && !comp.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                {
+                    comp.skill_Legion = true;
+                    comp.InitializeSkill();
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def == TorannMagicDefOf.SkillOf_TempestStrike && comp.skill_TempestStrike == false && !comp.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                {
+                    comp.skill_TempestStrike = true;
+                    comp.InitializeSkill();
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                }
                 else
                 {
                     Messages.Message("CannotLearnSkill".Translate(), MessageTypeDefOf.RejectInput);

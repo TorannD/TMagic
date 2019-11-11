@@ -1330,7 +1330,7 @@
   </HediffDef>
   
   <HediffDef ParentName="TM_ReprogrammedMechanitesBase">
-    <defName>TM_ReprogrammedFibrousMechanites_HD</defName>
+    <defName>TM_ReprogrammedFibMechanites_HD</defName>
     <label>reprogrammed fibrous mechanites</label>
     <stages>
       <li>
@@ -1376,7 +1376,7 @@
   </HediffDef>
 
   <HediffDef ParentName="TM_ReprogrammedMechanitesBase">
-    <defName>TM_ReprogrammedSensoryMechanites_HD</defName>
+    <defName>TM_ReprogrammedSenMechanites_HD</defName>
     <label>reprogrammed sensory mechanites</label>
     <stages>
       <li>

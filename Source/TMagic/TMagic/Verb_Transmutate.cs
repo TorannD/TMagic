@@ -122,8 +122,8 @@ namespace TorannMagic
                         Traverse.Create(root: aThing).Field(name: "wornByCorpseInt").SetValue(false);
                     }
 
-                    TransmutateEffects(this.currentTarget.Cell);
-                    
+                    TM_Action.TransmutateEffects(this.currentTarget.Cell, this.CasterPawn);
+
                 }
                 else if (flagRawResource)
                 {
@@ -169,7 +169,7 @@ namespace TorannMagic
                     if (thing != null)
                     {
                         GenPlace.TryPlaceThing(thing, this.currentTarget.Cell, this.caster.Map, ThingPlaceMode.Near, null);
-                        TransmutateEffects(this.currentTarget.Cell);
+                        TM_Action.TransmutateEffects(this.currentTarget.Cell, this.CasterPawn);
                     }
                 }
                 else if (flagStuffItem)
@@ -223,7 +223,7 @@ namespace TorannMagic
                         {
                             thing.SetForbidden(true, false);
                         }
-                        TransmutateEffects(this.currentTarget.Cell);
+                        TM_Action.TransmutateEffects(this.currentTarget.Cell, this.CasterPawn);
                     }
                 }
                 else if (flagNutrition)
@@ -261,7 +261,7 @@ namespace TorannMagic
                         if (thing != null)
                         {
                             GenPlace.TryPlaceThing(thing, this.currentTarget.Cell, this.caster.Map, ThingPlaceMode.Near, null);
-                            TransmutateEffects(this.currentTarget.Cell);
+                            TM_Action.TransmutateEffects(this.currentTarget.Cell, this.CasterPawn);
                         }
                     }
                     else
@@ -276,57 +276,60 @@ namespace TorannMagic
                     float corpseNutritionValue = 0;
                     if (transCorpse != null)
                     {
-                        List<Thing> butcherProducts = transCorpse.ButcherProducts(this.CasterPawn, 1f).ToList();
-                        for (int j = 0; j < butcherProducts.Count; j++)
+                        if (transCorpse.ButcherProducts(this.CasterPawn, 1f) != null && transCorpse.ButcherProducts(this.CasterPawn, 1f).Count() > 0)
                         {
-                            if (butcherProducts[j].GetStatValue(StatDefOf.Nutrition) > 0)
+                            List<Thing> butcherProducts = transCorpse.ButcherProducts(this.CasterPawn, 1f).ToList();
+                            for (int j = 0; j < butcherProducts.Count; j++)
                             {
-                                corpseNutritionValue = (butcherProducts[j].GetStatValue(StatDefOf.Nutrition) * butcherProducts[j].stackCount);
-                                //Log.Message("corpse has a meat nutrition amount of " + (butcherProducts[j].GetStatValue(StatDefOf.Nutrition) * butcherProducts[j].stackCount));
-                            }
-                        }
-
-                        if (corpseNutritionValue > 0)
-                        {
-                            IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
-                                                               where (def.defName == "MealNutrientPaste")
-                                                               select def;
-
-                            newThingDef = enumerable.RandomElement();
-                            if (newThingDef != null)
-                            {
-                                transCorpse.Destroy(DestroyMode.Vanish);
-                                Thing thing = null;
-                                int newMatCount = Mathf.RoundToInt(corpseNutritionValue / newThingDef.GetStatValueAbstract(StatDefOf.Nutrition));
-                                thing = ThingMaker.MakeThing(newThingDef);
-                                thing.stackCount = Mathf.RoundToInt((.7f + (.05f * pwrVal)) * newMatCount);
-
-                                if (thing != null)
+                                if (butcherProducts[j].GetStatValue(StatDefOf.Nutrition) > 0)
                                 {
-                                    GenPlace.TryPlaceThing(thing, this.currentTarget.Cell, this.caster.Map, ThingPlaceMode.Near, null);
-                                    TransmutateEffects(this.currentTarget.Cell);
+                                    corpseNutritionValue = (butcherProducts[j].GetStatValue(StatDefOf.Nutrition) * butcherProducts[j].stackCount);
+                                    //Log.Message("corpse has a meat nutrition amount of " + (butcherProducts[j].GetStatValue(StatDefOf.Nutrition) * butcherProducts[j].stackCount));
+                                }
+                            }
+
+                            if (corpseNutritionValue > 0)
+                            {
+                                IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
+                                                                   where (def.defName == "MealNutrientPaste")
+                                                                   select def;
+
+                                newThingDef = enumerable.RandomElement();
+                                if (newThingDef != null)
+                                {
+                                    transCorpse.Destroy(DestroyMode.Vanish);
+                                    Thing thing = null;
+                                    int newMatCount = Mathf.RoundToInt(corpseNutritionValue / newThingDef.GetStatValueAbstract(StatDefOf.Nutrition));
+                                    thing = ThingMaker.MakeThing(newThingDef);
+                                    thing.stackCount = Mathf.RoundToInt((.7f + (.05f * pwrVal)) * newMatCount);
+
+                                    if (thing != null)
+                                    {
+                                        GenPlace.TryPlaceThing(thing, this.currentTarget.Cell, this.caster.Map, ThingPlaceMode.Near, null);
+                                        TM_Action.TransmutateEffects(this.currentTarget.Cell, this.CasterPawn);
+                                    }
+                                }
+                                else
+                                {
+                                    Log.Message("No known edible foods to transmutate to - nutrient paste removed?");
                                 }
                             }
                             else
                             {
-                                Log.Message("No known edible foods to transmutate to - nutrient paste removed?");
-                            }
-                        }
-                        else
-                        {
-                            transCorpse.Destroy(DestroyMode.Vanish);
-                            for (int j = 0; j < butcherProducts.Count; j++)
-                            {
-                                Thing thing = null;
-                                thing = ThingMaker.MakeThing(butcherProducts[j].def);
-                                thing.stackCount = butcherProducts[j].stackCount;
-                                if(thing != null)
+                                transCorpse.Destroy(DestroyMode.Vanish);
+                                for (int j = 0; j < butcherProducts.Count; j++)
                                 {
-                                    GenPlace.TryPlaceThing(thing, this.currentTarget.Cell, this.caster.Map, ThingPlaceMode.Near, null);
+                                    Thing thing = null;
+                                    thing = ThingMaker.MakeThing(butcherProducts[j].def);
+                                    thing.stackCount = butcherProducts[j].stackCount;
+                                    if (thing != null)
+                                    {
+                                        GenPlace.TryPlaceThing(thing, this.currentTarget.Cell, this.caster.Map, ThingPlaceMode.Near, null);
+                                    }
+
                                 }
-                                
+                                TM_Action.TransmutateEffects(this.currentTarget.Cell, this.CasterPawn);
                             }
-                            TransmutateEffects(this.currentTarget.Cell);
                         }
                     }
                 }
@@ -349,18 +352,6 @@ namespace TorannMagic
             return false;
         }
 
-        public void TransmutateEffects(IntVec3 position)
-        {
-            Vector3 rndPos = position.ToVector3Shifted();
-            MoteMaker.ThrowHeatGlow(position, this.CasterPawn.Map, 1f);
-            for(int i =0; i < 6; i++)
-            {
-                rndPos.x += Rand.Range(-.5f, .5f);
-                rndPos.z += Rand.Range(-.5f, .5f);
-                rndPos.y += Rand.Range(.3f, 1.3f);
-                MoteMaker.ThrowSmoke(rndPos, this.CasterPawn.Map, Rand.Range(.7f, 1.1f));
-                MoteMaker.ThrowLightningGlow(position.ToVector3Shifted(), this.CasterPawn.Map, 1.4f);
-            }
-        }
+        
     }
 }

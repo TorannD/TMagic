@@ -96,6 +96,22 @@ namespace TorannMagic
                     bldgComp.sustained = true;
                     GenSpawn.Spawn(thing, position, map, Rot4.North, WipeMode.Vanish, false);
                     comp.summonedPowerNodes.Add(thing);
+                    Building_TMPowerNode pNode = thing as Building_TMPowerNode;
+                    if (pNode != null)
+                    {
+                        if (comp.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_pwr").level >= 13)
+                        {                        
+                            pNode.defensive = true;
+                        }
+                        if (comp.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level >= 6)
+                        {
+                            pNode.buffShock = true;
+                        }
+                        if (comp.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level >= 9)
+                        {
+                            pNode.buffJolt = true;
+                        }
+                    }
                 }
             }
         }

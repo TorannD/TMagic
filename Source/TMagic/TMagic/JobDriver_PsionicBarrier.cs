@@ -29,14 +29,15 @@ namespace TorannMagic
         {
             CompAbilityUserMight comp = this.pawn.GetComp<CompAbilityUserMight>();
             float radius = 2f;
-            if (this.pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
-            {
-                radius = 2 + (.5f * comp.MightData.MightPowerSkill_PsionicBarrier.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicBarrier_ver").level);
-            }
-            else if(this.pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-            {
-                radius = 2 + (.5f * comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver").level);
-            }
+            radius = 2 + (.5f * TM_Calc.GetMightSkillLevel(pawn, comp.MightData.MightPowerSkill_PsionicBarrier, "TM_PsionicBarrier", "_ver", true));
+            //if (this.pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
+            //{
+            //    radius = 2 + (.5f * comp.MightData.MightPowerSkill_PsionicBarrier.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicBarrier_ver").level);
+            //}
+            //else if(this.pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            //{
+            //    radius = 2 + (.5f * comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver").level);
+            //}
             this.psiFlag = this.pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_PsionicHD"), false);
             Toil psionicBarrier = new Toil();
             psionicBarrier.initAction = delegate

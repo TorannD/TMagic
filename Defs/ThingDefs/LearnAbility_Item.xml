@@ -3943,6 +3943,55 @@ Produces 400Wd adjusted by ability power.</description>
     </graphicData>
 
   </ThingDef>
+  
+  <ThingDef ParentName="FighterSkillBase">
+    <defName>SkillOf_Legion</defName>
+    <label>Fighter Skill: Legion</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a fighter how to replicate the combat abilities of another fighter class.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>800</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+		<costList>
+		<RawMagicyte>150</RawMagicyte>
+	</costList>
+	<costStuffCount>110</costStuffCount>
+	<stuffCategories>
+		<li>Leathery</li>
+	</stuffCategories>
+	<recipeMaker>		    
+		<workAmount>5000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>4</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
 
   <ThingDef ParentName="FighterSkillBase">
     <defName>SkillOf_PommelStrike</defName>
@@ -4093,6 +4142,55 @@ Produces 400Wd adjusted by ability power.</description>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
 
+  </ThingDef>
+  
+  <ThingDef ParentName="FighterSkillBase">
+    <defName>SkillOf_TempestStrike</defName>
+    <label>Fighter Skill: Tempest Strike</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a fighter class a technique to strike in rapid succession using their weapon.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>600</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+		<costList>
+		<RawMagicyte>110</RawMagicyte>
+	</costList>
+	<costStuffCount>80</costStuffCount>
+	<stuffCategories>
+		<li>Leathery</li>
+	</stuffCategories>
+	<recipeMaker>		    
+		<workAmount>3000</workAmount>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>4</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
   </ThingDef>
   
 	<ThingDef ParentName="FighterSkillBase">

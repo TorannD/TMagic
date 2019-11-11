@@ -207,6 +207,14 @@ namespace TorannMagic.ModOptions
                         removedThings.Add(current);
                     }
                 }
+
+                if (!settingsRef.ChaosMage)
+                {
+                    if (current == TorannMagicDefOf.BookOfChaos || current == TorannMagicDefOf.Torn_BookOfChaos)
+                    {
+                        removedThings.Add(current);
+                    }
+                }
             }
 
             for (int i = 0; i < removedThings.Count(); i++)
@@ -326,7 +334,7 @@ namespace TorannMagic.ModOptions
                         removedRecipes.Add(current);
                     }
                 }
-                if (!settingsRef.Enchanter)
+                if (!settingsRef.Chronomancer)
                 {
                     if (current.defName == "Make_SpellOf_Recall")
                     {

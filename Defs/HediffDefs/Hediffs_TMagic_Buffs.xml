@@ -2217,7 +2217,7 @@
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
     <makesAlert>false</makesAlert>
-	<maxSeverity>20.0</maxSeverity>
+	<maxSeverity>50.0</maxSeverity>
 	<isBad>false</isBad>
 	<initialSeverity>20</initialSeverity>
 	<comps>
@@ -2265,6 +2265,200 @@
         <compClass>TorannMagic.HediffComp_MageLight</compClass>
       </li>  
     </comps>
+  </HediffDef>
+  
+  <HediffDef>
+    <defName>TM_FrostSlowHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.0, 0.25, 1)</defaultLabelColor>
+    <label>Slow</label>
+    <lethalSeverity>15</lethalSeverity>
+	<isBad>true</isBad>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-25</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>frost</label>
+        <minSeverity>1</minSeverity>
+        <capMods>
+		  <li>
+            <capacity>Moving</capacity>
+            <setMax>.5</setMax>
+          </li>
+        </capMods>
+      </li>      
+    </stages>
+  </HediffDef>
+  
+  <HediffDef>
+    <defName>TM_CoolHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.0, 0.3, 1)</defaultLabelColor>
+    <label>Heat Protection</label>
+	<isBad>false</isBad>
+	<scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<maxSeverity>1</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-2</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>Cooler</label>
+        <minSeverity>.001</minSeverity>
+		<statOffsets>
+		  <ComfyTemperatureMin>4</ComfyTemperatureMin>
+	    </statOffsets>
+      </li>      
+    </stages>
+  </HediffDef>
+  
+  <HediffDef>
+    <defName>TM_RefreshedHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.0, 0.3, 1)</defaultLabelColor>
+    <label>Refreshed</label>
+	<isBad>false</isBad>
+	<scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<maxSeverity>1</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-2</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>Cooler</label>
+        <minSeverity>.001</minSeverity>
+		<restFallFactor>.9</restFallFactor>
+      </li>      
+    </stages>
+  </HediffDef>
+  
+  <HediffDef>
+    <defName>TM_WarmHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(1, 0.3, 0.0)</defaultLabelColor>
+    <label>Cold Protection</label>
+	<isBad>false</isBad>
+	<scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<maxSeverity>1</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-2</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>Heater</label>
+        <minSeverity>.001</minSeverity>
+		<statOffsets>
+		  <ComfyTemperatureMax>4</ComfyTemperatureMax>
+	    </statOffsets>
+      </li>      
+    </stages>
+  </HediffDef>
+  
+  <HediffDef>
+    <defName>TM_ShockTherapyHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(.8, 0.8, 0.0)</defaultLabelColor>
+    <label>Shock Therapy</label>
+	<isBad>false</isBad>
+	<scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<maxSeverity>1</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-2</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>Power Node</label>
+        <minSeverity>.001</minSeverity>
+		<statOffsets>
+		  <MentalBreakThreshold>-.02</MentalBreakThreshold>
+	    </statOffsets>
+      </li>      
+    </stages>
+  </HediffDef>
+  
+    <HediffDef>
+    <defName>TM_JoltHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(.8, 0.8, 0.0)</defaultLabelColor>
+    <label>Jolt</label>
+	<isBad>false</isBad>
+	<scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<maxSeverity>1</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-4</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>I</label>
+        <minSeverity>.001</minSeverity>
+        <capMods>
+		  <li>
+            <capacity>Moving</capacity>
+            <offset>0.04</offset>
+          </li>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>0.04</offset>
+          </li>
+        </capMods>
+      </li>
+	  <li>
+        <label>II</label>
+        <minSeverity>.3</minSeverity>
+        <capMods>
+		  <li>
+            <capacity>Moving</capacity>
+            <offset>0.05</offset>
+          </li>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>0.05</offset>
+          </li>
+        </capMods>
+      </li> 
+	  <li>
+        <label>III</label>
+        <minSeverity>.7</minSeverity>
+        <capMods>
+		  <li>
+            <capacity>Moving</capacity>
+            <offset>0.06</offset>
+          </li>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>0.06</offset>
+          </li>
+        </capMods>
+      </li>       
+    </stages>
   </HediffDef>
   
 </Defs>

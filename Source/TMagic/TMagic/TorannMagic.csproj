@@ -89,6 +89,7 @@
     <Compile Include="AutoCast\Scripts.cs" />
     <Compile Include="Building_LightningTrap.cs" />
     <Compile Include="Building_TMArcaneForge.cs" />
+    <Compile Include="Building_TMHeater.cs" />
     <Compile Include="Building_TMMageLight.cs" />
     <Compile Include="Building_TMMagicCircle.cs" />
     <Compile Include="Building_TM_DMP.cs" />
@@ -107,10 +108,16 @@
     <Compile Include="CompProperties_SkeletonController.cs" />
     <Compile Include="CompSkeletonLichController.cs" />
     <Compile Include="CompSkeletonController.cs" />
+    <Compile Include="Conditions\GameCondition_DarkThunderstorm.cs" />
     <Compile Include="Conditions\GameCondition_DarkClouds.cs" />
     <Compile Include="Conditions\GameCondition_WanderingLich.cs" />
     <Compile Include="Conditions\IncidentWorker_WanderingLich.cs" />
+    <Compile Include="Thoughts\ThoughtWorker_TM_NeedTravel.cs" />
+    <Compile Include="TM_ChaosPower.cs" />
+    <Compile Include="TravelCategory.cs" />
     <Compile Include="ModOptions\EventOptionsWindow.cs" />
+    <Compile Include="Need_Travel.cs" />
+    <Compile Include="Projectile_TempestStrike.cs" />
     <Compile Include="Skeletal_DeathWorker.cs" />
     <Compile Include="JobDriver_DoMagicBill.cs" />
     <Compile Include="JobDriver_AssistMagicCircle.cs" />
@@ -185,6 +192,8 @@
     <Compile Include="TM_WeatherEvent_MeshFlash.cs" />
     <Compile Include="Enchantment\Verb_OrbTraitor.cs" />
     <Compile Include="Verb_DeathGaze.cs" />
+    <Compile Include="Verb_Legion.cs" />
+    <Compile Include="Verb_TempestStrike.cs" />
     <Compile Include="Verb_ShadowBurn.cs" />
     <Compile Include="Verb_MageLight.cs" />
     <Compile Include="Verb_Recall.cs" />

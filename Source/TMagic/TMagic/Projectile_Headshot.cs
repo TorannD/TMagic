@@ -30,13 +30,14 @@ namespace TorannMagic
             try
             {
                 CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
-                MightPowerSkill ver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Headshot.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Headshot_ver");
-                verVal = ver.level;
-                if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-                {
-                    MightPowerSkill mver = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
-                    verVal = mver.level;
-                }
+                verVal = TM_Calc.GetMightSkillLevel(pawn, comp.MightData.MightPowerSkill_Headshot, "TM_Headshot", "_ver", true);
+                //MightPowerSkill ver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Headshot.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Headshot_ver");
+                //verVal = ver.level;
+                //if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                //{
+                //    MightPowerSkill mver = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                //    verVal = mver.level;
+                //}
                 CellRect cellRect = CellRect.CenteredOn(base.Position, 1);
                 cellRect.ClipInsideMap(map);
                 int dmg = GetWeaponDmg(pawn, this.def);
@@ -59,14 +60,15 @@ namespace TorannMagic
         public static int GetWeaponDmg(Pawn pawn, ThingDef projectileDef)
         {
             CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
-            MightPowerSkill pwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Headshot.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Headshot_pwr");            
+            //MightPowerSkill pwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Headshot.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Headshot_pwr");
+            pwrVal = TM_Calc.GetMightSkillLevel(pawn, comp.MightData.MightPowerSkill_Headshot, "TM_Headshot", "_pwr", true);
             MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
-            pwrVal = pwr.level;
-            if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-            {
-                MightPowerSkill mpwr = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
-                pwrVal = mpwr.level;
-            }
+            //pwrVal = pwr.level;
+            //if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            //{
+            //    MightPowerSkill mpwr = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+            //    pwrVal = mpwr.level;
+            //}
             ThingWithComps arg_3C_0;
             int value = 0;
             if (pawn == null)

@@ -28,7 +28,10 @@ namespace TorannMagic
                     comp.spell_Blink = true;
                     magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Blink);
                     comp.AddPawnAbility(TorannMagicDefOf.TM_Blink);
-                    magicPower.learned = true;
+                    if (!user.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
+                    {
+                        magicPower.learned = true;
+                    }
                     comp.InitializeSpell();
                     this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
@@ -37,7 +40,10 @@ namespace TorannMagic
                     comp.spell_Teleport = true;
                     magicPower = comp.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Teleport);
                     comp.AddPawnAbility(TorannMagicDefOf.TM_Teleport);
-                    magicPower.learned = true;
+                    if (!user.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
+                    {
+                        magicPower.learned = true;
+                    }
                     comp.InitializeSpell();
                     this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
@@ -46,7 +52,10 @@ namespace TorannMagic
                     comp.spell_Heal = true;
                     magicPower = comp.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Heal);
                     comp.AddPawnAbility(TorannMagicDefOf.TM_Heal);
-                    magicPower.learned = true;
+                    if (!user.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
+                    {
+                        magicPower.learned = true;
+                    }
                     comp.InitializeSpell();
                     this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
@@ -127,7 +136,10 @@ namespace TorannMagic
                     comp.spell_SummonMinion = true;
                     magicPower = comp.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonMinion);
                     comp.AddPawnAbility(TorannMagicDefOf.TM_SummonMinion);
-                    magicPower.learned = true;
+                    if (!user.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
+                    {
+                        magicPower.learned = true;
+                    }
                     comp.InitializeSpell();
                     this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }

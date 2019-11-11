@@ -9,6 +9,7 @@ namespace TorannMagic
     {
 
         private int pwrVal = 0;
+        private float arcaneDmg = 1f;
         protected override void Impact(Thing hitThing)
         {
             Map map = base.Map;
@@ -18,24 +19,28 @@ namespace TorannMagic
 
             Pawn pawn = this.launcher as Pawn;
             Pawn victim = hitThing as Pawn;
-            CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
-            MagicPowerSkill pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Firebolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Firebolt_pwr");
-            pwrVal = pwr.level;
-            if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            if (pawn != null)
             {
-                MightPowerSkill mpwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
-                pwrVal = mpwr.level;
+                CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
+                MagicPowerSkill pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Firebolt.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Firebolt_pwr");
+                pwrVal = pwr.level;
+                arcaneDmg = comp.arcaneDmg;
+                if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                {
+                    MightPowerSkill mpwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+                    pwrVal = mpwr.level;
+                }
             }
             
-            GenExplosion.DoExplosion(base.Position, map, 0.4f, TMDamageDefOf.DamageDefOf.Firebolt, this.launcher, Mathf.RoundToInt(this.def.projectile.GetDamageAmount(1,null) * comp.arcaneDmg), 0, this.def.projectile.soundExplode, def, this.equipmentDef, this.intendedTarget.Thing, null, 0f, 1, false, null, 0f, 1, 0.6f, false);
+            GenExplosion.DoExplosion(base.Position, map, 0.4f, TMDamageDefOf.DamageDefOf.Firebolt, this.launcher, Mathf.RoundToInt(this.def.projectile.GetDamageAmount(1,null) * arcaneDmg), 0, this.def.projectile.soundExplode, def, this.equipmentDef, this.intendedTarget.Thing, null, 0f, 1, false, null, 0f, 1, 0.6f, false);
             CellRect cellRect = CellRect.CenteredOn(base.Position, 3);
             cellRect.ClipInsideMap(map);
 
             victim = base.Position.GetFirstPawn(map);
             if (victim != null)
             {                
-                int dmg = Mathf.RoundToInt(((this.def.projectile.GetDamageAmount(1,null) / 3) * pwr.level)* comp.arcaneDmg);  //projectile = 16
-                if (settingsRef.AIHardMode && !pawn.IsColonist)
+                int dmg = Mathf.RoundToInt(((this.def.projectile.GetDamageAmount(1,null) / 3) * pwrVal)* arcaneDmg);  //projectile = 16
+                if (settingsRef.AIHardMode && this.launcher is Pawn && !pawn.IsColonist)
                 {
                     dmg += 10;
                 }

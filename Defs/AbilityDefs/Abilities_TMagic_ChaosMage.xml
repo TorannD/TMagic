@@ -7,8 +7,8 @@
     <defName>TM_ChaosTradition</defName>
     <label>Chaos Tradition</label>
     <uiIconPath>UI/ChaosTradition</uiIconPath>
-    <description>Chaos Tradition is the practice in which chaos mages redefines their beliefs and exchange their available magic abilities. True to its name, the abilities learned cannot be controlled and will be randomly selected. Each use of this ability will cause the user to become disoriented for a short period.</description>
-    <manaCost>0.20</manaCost>
+    <description>Chaos Tradition is the practice in which chaos mages redefines their thought process to exchange their available magic abilities. True to its name, the abilities learned cannot be controlled and will be randomly selected. Every ability cast by a chaos mage has a chance to be affected by arcane fluctuations.</description>
+    <manaCost>0.0</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_ChaosTradition</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -19,10 +19,10 @@
 		<abilityDef>TM_ChaosTradition</abilityDef>
 		<isViolent>false</isViolent>
         <defaultProjectile>Projectile_Default</defaultProjectile>
-        <warmupTime>4</warmupTime>
-        <SecondsToRecharge>60</SecondsToRecharge>
+        <warmupTime>2</warmupTime>
+        <SecondsToRecharge>30</SecondsToRecharge>
         <range>0</range>
-        <soundCast>Message_PositiveEvent</soundCast>
+        <soundCast>TM_Vibration</soundCast>
         <muzzleFlashScale>30</muzzleFlashScale>
         <isPrimary>false</isPrimary>
    	    <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>

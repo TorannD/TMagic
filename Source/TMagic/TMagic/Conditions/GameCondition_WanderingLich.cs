@@ -15,7 +15,7 @@ namespace TorannMagic.Conditions
     {
         public IntVec2 centerLocation;
         public IntVec2 edgeLocation;
-        private int areaRadius = 6;
+        private int areaRadius = 4;
         bool initialized = false;
         bool disabled = false;
         Thing thing;
@@ -300,11 +300,12 @@ namespace TorannMagic.Conditions
 
         private void FindGoodEdgeLocation()
         {
+            bool centerLocFound = false;
             if (this.SingleMap.Size.x <= 32 || this.SingleMap.Size.z <= 32)
             {
                 throw new Exception("Map too small for wandering lich");
             }
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 20; i++)
             {
                 int xVar = 0;
                 int zVar = 0;
@@ -322,8 +323,13 @@ namespace TorannMagic.Conditions
                 if (this.IsGoodCenterLocation(this.edgeLocation))
                 {
                     this.centerLocation = this.edgeLocation;
+                    centerLocFound = true;
                     break;
                 }
+            }
+            if(!centerLocFound)
+            {
+                FindGoodCenterLocation();
             }
         }
 

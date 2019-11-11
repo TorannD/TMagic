@@ -11,18 +11,24 @@ namespace TorannMagic
 {
     public class Verb_Sprint : Verb_UseAbility
     {
+
+        private int pwrVal = 0;
+
         protected override bool TryCastShot()
         {
             Pawn caster = base.CasterPawn;
             Pawn pawn = this.currentTarget.Thing as Pawn;
 
             MightPowerSkill pwr = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Sprint.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Sprint_pwr");
-            MightPowerSkill ver = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Sprint.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Sprint_ver");
-
+            pwrVal = pwr.level;
+            if(pawn.story != null && pawn.story.traits != null && pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
+            {
+                pwrVal = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_pwr").level;
+            }
             bool flag = pawn != null && !pawn.Dead;
             if (flag)
             {
-                if(pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HediffSprint")))
+                if(pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffSprint))
                 {
                     using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
                     {
@@ -38,7 +44,7 @@ namespace TorannMagic
                 }
                 else
                 {
-                    HealthUtility.AdjustSeverity(pawn, HediffDef.Named("TM_HediffSprint"), .5f + pwr.level);
+                    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_HediffSprint, .5f + pwrVal);
                     MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, 1f);
                 }
             }

@@ -4,6 +4,7 @@ using RimWorld;
 using Verse;
 using UnityEngine;
 using AbilityUser;
+using System.Linq;
 
 
 namespace TorannMagic
@@ -23,13 +24,21 @@ namespace TorannMagic
                 Pawn targetPawn = this.currentTarget.Thing as Pawn;
                 if(targetPawn != null)
                 {
-                    if (Rand.Chance(targetPawn.health.hediffSet.PainTotal * 2f))
+                    float rnd = 2f;
+                    if(this.CasterPawn.story != null && this.CasterPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
+                    {
+                        if(this.CasterPawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_pwr").level >= 2)
+                        {
+                            rnd = 4f;
+                        }
+                    }
+                    if (Rand.Chance(targetPawn.health.hediffSet.PainTotal * rnd))
                     {
                         //Log.Message("target pawn in " + targetPawn.health.hediffSet.PainTotal + " pain");
                         hitPart = targetPawn.RaceProps.body.GetPartsWithTag(BodyPartTagDefOf.Spine).RandomElement();
                         if (hitPart != null && this.CasterPawn.equipment != null && this.CasterPawn.equipment.Primary != null)
                         {
-                            dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_DisablingBlow, 6, 12, (float)-1, this.CasterPawn, hitPart, this.CasterPawn.equipment.Primary.def, DamageInfo.SourceCategory.ThingOrUnknown, targetPawn);
+                            dinfo = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_DisablingBlow, 3 * rnd, 6 * rnd, (float)-1, this.CasterPawn, hitPart, this.CasterPawn.equipment.Primary.def, DamageInfo.SourceCategory.ThingOrUnknown, targetPawn);
                         }
                         else if (hitPart != null)
                         {

@@ -68,15 +68,17 @@ namespace TorannMagic
             {
                 this.caster = this.launcher as Pawn;               
                 CompAbilityUserMight comp = caster.GetComp<CompAbilityUserMight>();
-                pwrVal = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_GraveBlade.FirstOrDefault((MightPowerSkill x) => x.label == "TM_GraveBlade_pwr").level;
-                verVal = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_GraveBlade.FirstOrDefault((MightPowerSkill x) => x.label == "TM_GraveBlade_ver").level;
-                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                //pwrVal = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_GraveBlade.FirstOrDefault((MightPowerSkill x) => x.label == "TM_GraveBlade_pwr").level;
+                //verVal = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_GraveBlade.FirstOrDefault((MightPowerSkill x) => x.label == "TM_GraveBlade_ver").level;
+                verVal = TM_Calc.GetMightSkillLevel(caster, comp.MightData.MightPowerSkill_GraveBlade, "TM_GraveBlade", "_ver", true);
+                pwrVal = TM_Calc.GetMightSkillLevel(caster, comp.MightData.MightPowerSkill_GraveBlade, "TM_GraveBlade", "_pwr", true);
+                //ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 this.arcaneDmg = comp.mightPwr;
-                if (settingsRef.AIHardMode && !caster.IsColonist)
-                {
-                    pwrVal = 3;
-                    verVal = 3;
-                }
+                //if (settingsRef.AIHardMode && !caster.IsColonist)
+                //{
+                //    pwrVal = 3;
+                //    verVal = 3;
+                //}
                 this.radius = this.def.projectile.explosionRadius;
                 this.duration = 10 + (int)(this.radius * 20);
                 this.innerCellList = GenRadial.RadialCellsAround(base.Position, this.radius, true).ToList();

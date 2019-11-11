@@ -140,9 +140,9 @@
 		<degreeDatas>	
 		  <li>
 			<label>Wanderer</label>
-			<description>[PAWN_nameDef] is a wanderer; the outcast, halfbreed mage class frequently dubbed a hedge-mage. [PAWN_possessive] carefree personality has kept [PAWN_possessive] from developing class abilities. Instead, [PAWN_pronoun] has learned to improve on a vast number of utility abilities that allow her to adapt to any situation.
-			
-			A Wanderer prefers the open road and will gain a mood boost for being in a caravan, but will suffer a mood penalty for remaining in a colony for too long. Additionally, any caravan with a wanderer will ignore the movement penalties of any world tile.</description>
+			<description>[PAWN_nameDef] is a wanderer; an outcast, half-breed mage class frequently dubbed a hedge-mage. [PAWN_possessive] carefree personality has kept [PAWN_possessive] from developing class abilities. Instead, [PAWN_pronoun] has learned to improve on a vast number of utility abilities that allow [PAWN_objective] to adapt to any situation.
+		
+Wanderers prefer the open road and gain a mood boost for being in a caravan. Caravans with a wanderer will ignore the movement penalties of any world tile. However, their wanderlust will cause them to suffer a mood penalty for remaining at a colony for too long.</description>
 			<degree>4</degree>
 				<statOffsets>
                     <MoveSpeed>.20</MoveSpeed>
@@ -1381,9 +1381,9 @@
 		<degreeDatas>	
 		  <li>
 			<label>Wayfarer</label>
-			<description>[PAWN_nameDef] is a wayfarer; an undisciplined fighter that resorts to tricks and cheats. [PAWN_nameDef] undisciplined personality has kept [PAWN_possessive] from developing class abilities. Instead, [PAWN_pronoun] has learned to improve on a vast number of utility abilities that allow [PAWN_possessive] to adapt to any situation.
-			
-			A Wayfarer prefers the open road and will gain a mood boost for being in a caravan, but will suffer a mood penalty for remaining in a colony for too long. Additionally, any caravan with a wayfarer will travel 25% faster.</description>
+			<description>[PAWN_nameDef] is a wayfarer; an self-disciplined fighter that excels at tricks and dirty fighting. [PAWN_possessive] carefree personality has kept [PAWN_objective] from developing class abilities. Instead, [PAWN_pronoun] has learned to improve a vast number of utility abilities that allow [PAWN_objective] to adapt to any situation.
+
+Wayfarers prefer the open road and will gain a mood boost for being in a caravan, and any caravan with a wayfarer will travel 25% faster. However, wayfarers will suffer a mood penalty if they remain at colony for too long.</description>
 			<degree>4</degree>
 				<statOffsets>
                     <MoveSpeed>.20</MoveSpeed>

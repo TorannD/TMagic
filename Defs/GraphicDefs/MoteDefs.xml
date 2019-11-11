@@ -418,6 +418,21 @@
   </ThingDef>
   
   <ThingDef ParentName="MoteBase">
+    <defName>Mote_Psi_Yellow</defName>
+    <graphicData>
+      <texPath>Motes/PsiMote_grayscale</texPath>
+	  <shaderType>MoteGlow</shaderType>
+	  <color>(1,1,.55,0.7)</color>
+    </graphicData>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <mote>
+      <fadeInTime>0.02</fadeInTime>
+      <solidTime>0.12</solidTime>
+      <fadeOutTime>0.10</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
     <defName>Mote_Chi_Grayscale</defName>
     <graphicData>
       <texPath>Motes/PsiMote_curved_grayscale</texPath>

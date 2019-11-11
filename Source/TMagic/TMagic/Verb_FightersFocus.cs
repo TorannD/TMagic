@@ -19,23 +19,22 @@ namespace TorannMagic
             bool flag = pawn != null && !pawn.Dead;
             if (flag)
             {
-                if(pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HediffFightersFocus")))
+                if(pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffFightersFocus))
                 {
-                    using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
-                    {
-                        while (enumerator.MoveNext())
-                        {
-                            Hediff rec = enumerator.Current;
-                            if (rec.def.defName.Contains("TM_HediffFightersFocus"))
-                            {
-                                pawn.health.RemoveHediff(rec);
-                            }
-                        }
-                    }
+                    Hediff rec = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_HediffFightersFocus, false);
+                    pawn.health.RemoveHediff(rec);
                 }
                 else
                 {
-                    HealthUtility.AdjustSeverity(pawn, HediffDef.Named("TM_HediffFightersFocus"), .5f );
+                    float val = .5f;
+                    if(caster.story != null && caster.story.traits != null && caster.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
+                    {
+                        if (caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level >= 1)
+                        {
+                            val = 1.5f;
+                        }
+                    }
+                    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_HediffFightersFocus, val);
                     MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, 1f);
                 }
             }

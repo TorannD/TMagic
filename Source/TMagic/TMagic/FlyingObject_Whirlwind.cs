@@ -227,13 +227,14 @@ namespace TorannMagic
                                 cleaveVictim.TakeDamage(dinfo);
                                 MoteMaker.ThrowMicroSparks(cleaveVictim.Position.ToVector3(), base.Map);
                                 CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
-                                MightPowerSkill ver = comp.MightData.MightPowerSkill_Whirlwind.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Whirlwind_ver");
-                                verVal = ver.level;
-                                if(pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-                                {
-                                    MightPowerSkill mver = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
-                                    verVal = mver.level;
-                                }
+                                verVal = TM_Calc.GetMightSkillLevel(pawn, comp.MightData.MightPowerSkill_Whirlwind, "TM_Whirlwind", "_ver", true);
+                                //MightPowerSkill ver = comp.MightData.MightPowerSkill_Whirlwind.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Whirlwind_ver");
+                                //verVal = ver.level;
+                                //if(pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                                //{
+                                //    MightPowerSkill mver = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                                //    verVal = mver.level;
+                                //}
                                 DamageInfo dinfo2 = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Whirlwind, weaponDmg, 0, (float)-1, pawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
                                 System.Random random = new System.Random();
                                 int rnd = GenMath.RoundRandom(random.Next(0, 100));
@@ -253,19 +254,20 @@ namespace TorannMagic
         {
             int dmgNum = 2;
             CompAbilityUserMight comp = caster.GetComp<CompAbilityUserMight>();
-            MightPowerSkill pwr = comp.MightData.MightPowerSkill_Whirlwind.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Whirlwind_pwr");
+            //MightPowerSkill pwr = comp.MightData.MightPowerSkill_Whirlwind.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Whirlwind_pwr");
+            pwrVal = TM_Calc.GetMightSkillLevel(caster, comp.MightData.MightPowerSkill_Whirlwind, "TM_Whirlwind", "_pwr", true);
             MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
             float weaponDPS = 0;
             float dmgMultiplier = 1;
             float pawnDPS = 0;
             float skillMultiplier = 1;
             ThingWithComps weaponComp;
-            pwrVal = pwr.level;
-            if (caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-            {
-                MightPowerSkill mpwr = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
-                verVal = mpwr.level;
-            }
+            //pwrVal = pwr.level;
+            //if (caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            //{
+            //    MightPowerSkill mpwr = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+            //    verVal = mpwr.level;
+            //}
 
             if (caster.equipment.Primary != null && !caster.equipment.Primary.def.IsRangedWeapon)
             {

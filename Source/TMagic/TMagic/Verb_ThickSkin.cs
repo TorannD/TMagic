@@ -19,23 +19,14 @@ namespace TorannMagic
             bool flag = pawn != null && !pawn.Dead;
             if (flag)
             {
-                if(pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HediffThickSkin")))
+                if(pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffThickSkin))
                 {
-                    using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
-                    {
-                        while (enumerator.MoveNext())
-                        {
-                            Hediff rec = enumerator.Current;
-                            if (rec.def.defName.Contains("TM_HediffThickSkin"))
-                            {
-                                pawn.health.RemoveHediff(rec);
-                            }
-                        }
-                    }
+                    Hediff rec = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_HediffThickSkin);
+                    pawn.health.RemoveHediff(rec);
                 }
                 else
                 {
-                    HealthUtility.AdjustSeverity(pawn, HediffDef.Named("TM_HediffThickSkin"), .5f );
+                    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_HediffThickSkin, .5f );
                     MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, 1f);
                 }
             }

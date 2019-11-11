@@ -199,6 +199,16 @@ namespace TorannMagic
                         num3.ToString()
                         );
                     }
+                    if(mightAbilityDef == TorannMagicDefOf.TM_TempestStrike)
+                    {
+                        num2 = Projectile_TempestStrike.GetWeaponDmg(mightUser.Pawn);
+                        int num3 = Mathf.RoundToInt(Verb_TempestStrike.HitChance(mightUser.Pawn) * 100);
+                        text2 = "TM_ArrowStormDamage".Translate(
+                        mightAbilityDef.label,
+                        (num2.ToString() + " per strike\n"),
+                        num3.ToString()
+                        );
+                    }
 
                 }
                 else if (mightUser.Pawn.equipment.Primary != null && !mightUser.Pawn.equipment.Primary.def.IsRangedWeapon)
@@ -227,6 +237,14 @@ namespace TorannMagic
                         mightAbilityDef.label,
                         num2.ToString()
                         );
+                    }
+                    if (mightAbilityDef == TorannMagicDefOf.TM_TempestStrike)
+                    {
+                        num2 = Projectile_TempestStrike.GetWeaponDmg(mightUser.Pawn);
+                        text2 = "TM_WeaponDamage".Translate(
+                        mightAbilityDef.label,
+                        num2.ToString()
+                        ) + " per strike";
                     }
                 }
                 else if (mightUser.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_PsionicHD"), false))
@@ -370,7 +388,7 @@ namespace TorannMagic
                         this.mightDef.defName == "TM_ArrowStorm" || this.mightDef.defName == "TM_ArrowStorm_I" || this.mightDef.defName == "TM_ArrowStorm_II" || this.mightDef.defName == "TM_ArrowStorm_III" ||
                         this.mightDef.defName == "TM_PsionicStorm" ||
                         this.mightDef.defName == "TM_PsionicBlast" || this.mightDef.defName == "TM_PsionicBlast_I" || this.mightDef.defName == "TM_PsionicBlast_II" || this.mightDef.defName == "TM_PsionicBlast_III" || 
-                        this.mightDef == TorannMagicDefOf.TM_ThrowingKnife ||
+                        this.mightDef == TorannMagicDefOf.TM_ThrowingKnife || this.mightDef == TorannMagicDefOf.TM_TempestStrike ||
                         this.mightDef.defName == "TM_Mimic"))
                     {
                         reason = "TM_ShieldBlockingPowers".Translate(

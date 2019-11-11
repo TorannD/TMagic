@@ -1723,5 +1723,97 @@ Magelight can be dispelled by using this ability on the caster.</description>
         </targetParams>		
     </MainVerb>
  </TorannMagic.TMAbilityDef>
+ 
+ <!-- Legion start-->
+ 
+ <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_Legion</defName>
+    <label>Legion</label>
+    <uiIconPath>UI/legion</uiIconPath>
+    <description>Copy an ability from another fighter. All bonuses and restrictions of the copied ability apply. Only one ability may be stored at a time.</description>
+<!--    <thingClass>ThingWithComps</thingClass> -->
+    <staminaCost>0.3</staminaCost>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_Legion</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_Legion</abilityDef>
+		<isViolent>false</isViolent>
+		<AlwaysHits>true</AlwaysHits>
+        <defaultProjectile>Projectile_Default</defaultProjectile>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>120</SecondsToRecharge>
+        <range>50</range>
+        <soundCast>TM_Vibration</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>false</canTargetBuildings>
+		  <canTargetSelf>false</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
+  
+   <!-- Tempest Strike -->
+   
+ <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+   <defName>Projectile_TempestStrike</defName>
+   <thingClass>TorannMagic.Projectile_TempestStrike</thingClass>
+   <label>Tempest strike</label>
+   <graphicData>
+		<texPath>Spells/Moon_Edge</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+   </graphicData>
+   <projectile>
+		<flyOverhead>false</flyOverhead>
+		<damageDef>Cut</damageDef>
+		<damageAmountBase>8</damageAmountBase>
+		<speed>50</speed>
+   </projectile>
+ </ThingDef>
+ 
+ <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+    <defName>TM_TempestStrike</defName>
+    <label>Tempest Strike</label>
+    <uiIconPath>UI/tempeststrike</uiIconPath>
+    <description>Launch multiple attacks in rapid succession. Each attack consumes 20 stamina. Tempest Strike will end when the fighter has insufficient stamina or after 5 attacks.
+	
+Melee weapons generate blades of energy.
+	
+This attack only works when the weapon equipped is not normally consumed after use.</description>
+<!--    <thingClass>ThingWithComps</thingClass> -->
+    <staminaCost>0.2</staminaCost>
+    <MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_TempestStrike</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+		<abilityDef>TM_TempestStrike</abilityDef>
+		<isViolent>true</isViolent>
+		<AlwaysHits>true</AlwaysHits>
+        <defaultProjectile>Projectile_TempestStrike</defaultProjectile>
+        <warmupTime>1</warmupTime>
+        <SecondsToRecharge>120</SecondsToRecharge>
+        <range>30</range>
+        <soundCast>TM_Vibration</soundCast>
+        <muzzleFlashScale>20</muzzleFlashScale>
+        <isPrimary>false</isPrimary>
+		<burstShotCount>5</burstShotCount>
+		<ticksBetweenBurstShots>12</ticksBetweenBurstShots>
+		<targetParams>
+		  <canTargetPawns>true</canTargetPawns>
+		  <canTargetBuildings>true</canTargetBuildings>
+		  <canTargetSelf>false</canTargetSelf>
+		  <canTargetLocations>false</canTargetLocations>
+		</targetParams>
+    </MainVerb>
+  </TorannMagic.TMAbilityDef>
 
 </Defs>

@@ -11,6 +11,7 @@ namespace TorannMagic
     {
 
         private bool initializing = true;
+        CompAbilityUserMight comp = null;
 
         public string labelCap
         {
@@ -54,6 +55,27 @@ namespace TorannMagic
             {
                 TickAction();
             }
+            if(comp != null && Pawn.story != null && Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
+            {
+                if (Find.TickManager.TicksGame % 1200 == 0)
+                {
+                    if(comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level >= 4)
+                    {
+                        TickAction();
+                    }
+                }
+                if(Find.TickManager.TicksGame % 2000 ==0)
+                {
+                    if (comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level >= 11)
+                    {
+                        TickActionPerm();
+                    }
+                }
+            }
+            else
+            {
+                comp = this.Pawn.TryGetComp<CompAbilityUserMight>();
+            }
         }
 
         public void TickAction()
@@ -86,6 +108,44 @@ namespace TorannMagic
                                     current.Heal(Rand.Range(.2f, 1f));
                                     num--;
                                     num2--;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public void TickActionPerm()
+        {
+            Pawn pawn = this.Pawn;
+            int num = 1;
+            using (IEnumerator<BodyPartRecord> enumerator = pawn.health.hediffSet.GetInjuredParts().GetEnumerator())
+            {
+                while (enumerator.MoveNext())
+                {
+                    BodyPartRecord rec = enumerator.Current;
+                    bool flag2 = num > 0;
+                    if (flag2)
+                    {
+                        int num2 = 1;
+                        IEnumerable<Hediff_Injury> arg_BB_0 = pawn.health.hediffSet.GetHediffs<Hediff_Injury>();
+                        Func<Hediff_Injury, bool> arg_BB_1;
+
+                        arg_BB_1 = ((Hediff_Injury injury) => injury.Part == rec);
+
+                        foreach (Hediff_Injury current in arg_BB_0.Where(arg_BB_1))
+                        {
+                            bool flag4 = num2 > 0;
+                            if (flag4)
+                            {
+                                bool flag5 = !current.CanHealNaturally() && current.IsPermanent();
+                                if (flag5)
+                                {
+                                    current.Heal(Rand.Range(.1f, .3f));
+                                    num--;
+                                    num2--;
+
                                 }
                             }
                         }

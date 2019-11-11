@@ -221,7 +221,7 @@ namespace TorannMagic
         private void AgePawn(Pawn pawn, int duration, bool isBad)
         {
             duration = Mathf.RoundToInt(duration * this.arcaneDmg);
-            if (!pawn.DestroyedOrNull() && !pawn.Dead && pawn.health != null && pawn.health.hediffSet != null)
+            if (pawn != null && !pawn.DestroyedOrNull() && !pawn.Dead && pawn.health != null && pawn.health.hediffSet != null)
             {
                 if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ReverseTimeHD))
                 {
@@ -234,13 +234,19 @@ namespace TorannMagic
                     {
                         HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_AccelerateTimeHD, .5f + pwrVal);
                         HediffComp_AccelerateTime hediffComp = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_AccelerateTimeHD, false).TryGetComp<HediffComp_AccelerateTime>();
-                        hediffComp.durationTicks = (duration);
-                        hediffComp.isBad = isBad;
-                        AccelerateEffects(pawn, 1);
+                        if (hediffComp != null)
+                        {
+                            hediffComp.durationTicks = (duration);
+                            hediffComp.isBad = isBad;
+                            AccelerateEffects(pawn, 1);
+                        }
                     }
                     else
                     {
-                        MoteMaker.ThrowText(pawn.DrawPos, pawn.Map, "TM_ResistedSpell".Translate(), -1);
+                        if (pawn.Map != null)
+                        {
+                            MoteMaker.ThrowText(pawn.DrawPos, pawn.Map, "TM_ResistedSpell".Translate(), -1);
+                        }
                     }
                 }
             }

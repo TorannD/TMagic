@@ -47,8 +47,6 @@ namespace TorannMagic
         public static int GetWeaponDmg(Pawn pawn)
         {
             CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
-            MightPowerSkill pwr = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_pwr");
-            MightPowerSkill ver = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_ver");
             MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
             int dmgNum = 0;
             ThingWithComps weaponComp = pawn.equipment.Primary;
@@ -65,17 +63,19 @@ namespace TorannMagic
             if (this.CasterPawn.equipment.Primary != null && !this.CasterPawn.equipment.Primary.def.IsRangedWeapon)
             {
                 CompAbilityUserMight comp = this.CasterPawn.GetComp<CompAbilityUserMight>();
-                MightPowerSkill ver = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_ver");
-                MightPowerSkill pwr = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_pwr");
-                verVal = ver.level;
-                pwrVal = pwr.level;
-                if (base.CasterPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-                {
-                    MightPowerSkill mver = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
-                    MightPowerSkill mpwr = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
-                    verVal = mver.level;
-                    pwrVal = mpwr.level;
-                }
+                //MightPowerSkill ver = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_ver");
+                //MightPowerSkill pwr = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_pwr");
+                verVal = TM_Calc.GetMightSkillLevel(this.CasterPawn, comp.MightData.MightPowerSkill_BladeSpin, "TM_BladeSpin", "_ver", true);
+                pwrVal = TM_Calc.GetMightSkillLevel(this.CasterPawn, comp.MightData.MightPowerSkill_BladeSpin, "TM_BladeSpin", "_pwr", true);
+                //verVal = ver.level;
+                //pwrVal = pwr.level;
+                //if (base.CasterPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                //{
+                //    MightPowerSkill mver = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                //    MightPowerSkill mpwr = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+                //    verVal = mver.level;
+                //    pwrVal = mpwr.level;
+                //}
                 CellRect cellRect = CellRect.CenteredOn(base.CasterPawn.Position, 1);
                 Map map = base.CasterPawn.Map;
                 cellRect.ClipInsideMap(map);
@@ -88,8 +88,8 @@ namespace TorannMagic
                     dmgNum += 10;
                 }
 
-                SearchForTargets(base.CasterPawn.Position, (2f + (float)(.5f * ver.level)), map);
-                TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_BladeSweep"), this.CasterPawn.DrawPos, this.CasterPawn.Map, 1.6f + .4f * ver.level, .04f, 0f, .18f, 1000, 0, 0, Rand.Range(0, 360));
+                SearchForTargets(base.CasterPawn.Position, (2f + (float)(.5f * verVal)), map);
+                TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_BladeSweep"), this.CasterPawn.DrawPos, this.CasterPawn.Map, 1.6f + .4f * verVal, .04f, 0f, .18f, 1000, 0, 0, Rand.Range(0, 360));
             }
             else
             {

@@ -149,7 +149,12 @@ namespace TorannMagic
             {
                 this.age = this.duration;
             }
-		}
+
+            if (this.age >= this.duration)
+            {
+                this.Destroy(DestroyMode.Vanish);
+            }
+        }
 
         public void BurnBloodAtCell()
         {

@@ -40,11 +40,12 @@ namespace TorannMagic
         {
             bool result = false;
             Pawn pawn = this.CasterPawn;
-            this.verVal = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PsionicBlast.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicBlast_ver").level;
-            if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-            {
-                this.verVal = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver").level;
-            }
+            verVal = TM_Calc.GetMightSkillLevel(pawn, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PsionicBlast, "TM_PsionicBlast", "_ver", true);
+            //this.verVal = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PsionicBlast.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicBlast_ver").level;
+            //if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            //{
+            //    this.verVal = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver").level;
+            //}
             Map map = this.CasterPawn.Map;
             IntVec3 targetVariation = this.currentTarget.Cell;
             targetVariation.x += Mathf.RoundToInt(Rand.Range(-.1f, .1f) * Vector3.Distance(pawn.DrawPos, this.currentTarget.CenterVector3) + Rand.Range(-1f, 1f)) ;

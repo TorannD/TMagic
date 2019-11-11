@@ -847,4 +847,56 @@
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
 	
+	
+	<!-- wayfarer -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="WayfarerMightAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMight</compAbilityUserClass>
+		<!-- Decision tree which helps pick ability to use. -->
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+							<maxDistance>38.0</maxDistance>
+							<subNodes>
+								<!-- Use long ranged offensive abilities. -->
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>Throw</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- Wayfarer -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="WayfarerMightAbilityUserAI">
+		<defName>TMagic_Wayfarer</defName>
+		<matchingTraits>
+			<li>TM_Wayfarer</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_ThrowingKnife</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Wayfarer Abilities -->
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
+		<defName>TMagic_ThrowingKnife</defName>
+		<ability>TM_ThrowingKnife</ability>		
+		<power>1.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<minRange>4.0</minRange>
+		<maxRange>38.0</maxRange>
+		<tags>
+			<li>Throw</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	
 </Defs>

@@ -25,20 +25,23 @@ namespace TorannMagic
                 if (p.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_pwr").level >= 1)
                 {
                     List<Pawn> blindedPawns = TM_Calc.FindAllPawnsAround(map, base.Position, explosionRadius);
-                    for (int i = 0; i < blindedPawns.Count; i++)
+                    if (blindedPawns != null && blindedPawns.Count > 0)
                     {
-                        if (blindedPawns[i].Faction != null && blindedPawns[i].Faction.HostileTo(p.Faction))
+                        for (int i = 0; i < blindedPawns.Count; i++)
                         {
-                            HealthUtility.AdjustSeverity(blindedPawns[i], HediffDef.Named("TM_Blind"), .6f);
-                        }
-                        else if (blindedPawns[i].Faction != p.Faction)
-                        {
-                            HealthUtility.AdjustSeverity(blindedPawns[i], HediffDef.Named("TM_Blind"), .6f);
-                            if (blindedPawns[i].RaceProps.Animal)
+                            if (blindedPawns[i].Faction != null && blindedPawns[i].Faction.HostileTo(p.Faction))
                             {
-                                if (Rand.Chance(.5f))
+                                HealthUtility.AdjustSeverity(blindedPawns[i], HediffDef.Named("TM_Blind"), .6f);
+                            }
+                            else if (blindedPawns[i].Faction != p.Faction)
+                            {
+                                HealthUtility.AdjustSeverity(blindedPawns[i], HediffDef.Named("TM_Blind"), .6f);
+                                if (blindedPawns[i].RaceProps.Animal)
                                 {
-                                    blindedPawns[i].mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Manhunter, null, false, false, null, false);
+                                    if (Rand.Chance(.5f))
+                                    {
+                                        blindedPawns[i].mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Manhunter, null, false, false, null, false);
+                                    }
                                 }
                             }
                         }

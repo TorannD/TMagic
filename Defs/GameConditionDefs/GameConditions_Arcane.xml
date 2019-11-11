@@ -156,5 +156,14 @@
     <endMessage>The dark clouds are dispersing.</endMessage>
     <canBePermanent>false</canBePermanent>
   </GameConditionDef>
+  
+    <GameConditionDef>
+    <defName>DarkThunderstorm</defName>
+    <label>Violent Storm</label>
+	<conditionClass>TorannMagic.Conditions.GameCondition_DarkThunderstorm</conditionClass>
+    <description>There is a malicious energy hidden within these dark clouds.</description>
+    <endMessage>The violent thunderstorm is receding.</endMessage>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
 
 </Defs>

@@ -96,6 +96,22 @@ namespace TorannMagic
                     bldgComp.sustained = true;
                     GenSpawn.Spawn(thing, position, map, Rot4.North, WipeMode.Vanish, false);
                     comp.summonedHeaters.Add(thing);
+                    Building_TMHeater heater = thing as Building_TMHeater;
+                    if (heater != null)
+                    {
+                        if (comp.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_pwr").level >= 11)
+                        {                        
+                            heater.defensive = true;
+                        }
+                        if (comp.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level >= 6)
+                        {
+                            heater.buffWarm = true;
+                        }
+                        if (comp.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level >= 9)
+                        {
+                            heater.boostJoy = true;
+                        }
+                    }
                 }
             }
         }

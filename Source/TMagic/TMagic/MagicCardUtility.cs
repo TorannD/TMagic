@@ -322,6 +322,18 @@ namespace TorannMagic
                             MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersC, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Prediction, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AlterFate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AccelerateTime, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ReverseTime, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ChronostaticField, null, TexButton.TMTex_SkillPointUsed);
                         }
                     }
+                    if(pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
+                    {
+                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                        List<MagicPower> CMList = new List<MagicPower>();
+                        CMList.Clear();
+                        CMList.AddRange(comp.MagicData.MagicPowersCM);
+                        for(int i = 0; i < comp.chaosPowers.Count; i++)
+                        {
+                            CMList.Add(comp.MagicData.AllMagicPowersForChaosMage.FirstOrDefault<MagicPower>((MagicPower cm) => cm.abilityDef == comp.chaosPowers[i].Ability));
+                        }
+                        MagicCardUtility.PowersGUIHandler_CM(inRect3, comp, CMList, comp.MagicData.MagicPowerSkill_ChaosTradition, comp.chaosPowers[0].Skills, comp.chaosPowers[1].Skills, comp.chaosPowers[2].Skills, comp.chaosPowers[3].Skills, comp.chaosPowers[4].Skills, TexButton.TMTex_SkillPointUsed);
+                    }
                     if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer))
                     {
                         Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
@@ -589,33 +601,7 @@ namespace TorannMagic
                     {
                         Widgets.DrawLineHorizontal(0f + 20f, rect.y - 2f, 700f - 40f);
                     }
-                    if (power.level < 3 && (power.abilityDef == TorannMagicDefOf.TM_RayofHope || power.abilityDef == TorannMagicDefOf.TM_RayofHope_I || power.abilityDef == TorannMagicDefOf.TM_RayofHope_II || 
-                        power.abilityDef == TorannMagicDefOf.TM_Soothe || power.abilityDef == TorannMagicDefOf.TM_Soothe_I || power.abilityDef == TorannMagicDefOf.TM_Soothe_II || 
-                        power.abilityDef == TorannMagicDefOf.TM_Shadow || power.abilityDef == TorannMagicDefOf.TM_Shadow_I || power.abilityDef == TorannMagicDefOf.TM_Shadow_II || 
-                        power.abilityDef == TorannMagicDefOf.TM_AMP || power.abilityDef == TorannMagicDefOf.TM_AMP_I || power.abilityDef == TorannMagicDefOf.TM_AMP_II || 
-                        power.abilityDef == TorannMagicDefOf.TM_Shield || power.abilityDef == TorannMagicDefOf.TM_Shield_I || power.abilityDef == TorannMagicDefOf.TM_Shield_II || 
-                        power.abilityDef == TorannMagicDefOf.TM_Blink || power.abilityDef == TorannMagicDefOf.TM_Blink_I || power.abilityDef == TorannMagicDefOf.TM_Blink_II || 
-                        power.abilityDef == TorannMagicDefOf.TM_Summon || power.abilityDef == TorannMagicDefOf.TM_Summon_I || power.abilityDef == TorannMagicDefOf.TM_Summon_II || 
-                        power.abilityDef == TorannMagicDefOf.TM_MagicMissile || power.abilityDef == TorannMagicDefOf.TM_MagicMissile_I || power.abilityDef == TorannMagicDefOf.TM_MagicMissile_II || 
-                        power.abilityDef == TorannMagicDefOf.TM_FrostRay || power.abilityDef == TorannMagicDefOf.TM_FrostRay_I || power.abilityDef == TorannMagicDefOf.TM_FrostRay_II ||
-                        power.abilityDef == TorannMagicDefOf.TM_SootheAnimal || power.abilityDef == TorannMagicDefOf.TM_SootheAnimal_I || power.abilityDef == TorannMagicDefOf.TM_SootheAnimal_II ||
-                        power.abilityDef == TorannMagicDefOf.TM_DeathMark || power.abilityDef == TorannMagicDefOf.TM_DeathMark_I || power.abilityDef == TorannMagicDefOf.TM_DeathMark_II ||
-                        power.abilityDef == TorannMagicDefOf.TM_ConsumeCorpse || power.abilityDef == TorannMagicDefOf.TM_ConsumeCorpse_I || power.abilityDef == TorannMagicDefOf.TM_ConsumeCorpse_II ||
-                        power.abilityDef == TorannMagicDefOf.TM_CorpseExplosion || power.abilityDef == TorannMagicDefOf.TM_CorpseExplosion_I || power.abilityDef == TorannMagicDefOf.TM_CorpseExplosion_II ||
-                        power.abilityDef == TorannMagicDefOf.TM_DeathBolt || power.abilityDef == TorannMagicDefOf.TM_DeathBolt_I || power.abilityDef == TorannMagicDefOf.TM_DeathBolt_II ||
-                        power.abilityDef == TorannMagicDefOf.TM_HealingCircle || power.abilityDef == TorannMagicDefOf.TM_HealingCircle_I || power.abilityDef == TorannMagicDefOf.TM_HealingCircle_II ||
-                        power.abilityDef == TorannMagicDefOf.TM_Lullaby || power.abilityDef == TorannMagicDefOf.TM_Lullaby_I || power.abilityDef == TorannMagicDefOf.TM_Lullaby_II ||
-                        power.abilityDef == TorannMagicDefOf.TM_ShadowBolt || power.abilityDef == TorannMagicDefOf.TM_ShadowBolt_I || power.abilityDef == TorannMagicDefOf.TM_ShadowBolt_II ||
-                        power.abilityDef == TorannMagicDefOf.TM_Attraction || power.abilityDef == TorannMagicDefOf.TM_Attraction_I || power.abilityDef == TorannMagicDefOf.TM_Attraction_II ||
-                        power.abilityDef == TorannMagicDefOf.TM_Repulsion || power.abilityDef == TorannMagicDefOf.TM_Repulsion_I || power.abilityDef == TorannMagicDefOf.TM_Repulsion_II ||
-                        power.abilityDef == TorannMagicDefOf.TM_Encase || power.abilityDef == TorannMagicDefOf.TM_Encase_I || power.abilityDef == TorannMagicDefOf.TM_Encase_II ||
-                        power.abilityDef == TorannMagicDefOf.TM_Meteor || power.abilityDef == TorannMagicDefOf.TM_Meteor_I || power.abilityDef == TorannMagicDefOf.TM_Meteor_II ||
-                        power.abilityDef == TorannMagicDefOf.TM_OrbitalStrike || power.abilityDef == TorannMagicDefOf.TM_OrbitalStrike_I || power.abilityDef == TorannMagicDefOf.TM_OrbitalStrike_II ||
-                        power.abilityDef == TorannMagicDefOf.TM_Rend || power.abilityDef == TorannMagicDefOf.TM_Rend_I || power.abilityDef == TorannMagicDefOf.TM_Rend_II ||
-                        power.abilityDef == TorannMagicDefOf.TM_BloodMoon || power.abilityDef == TorannMagicDefOf.TM_BloodMoon_I || power.abilityDef == TorannMagicDefOf.TM_BloodMoon_II ||
-                        power.abilityDef == TorannMagicDefOf.TM_Polymorph || power.abilityDef == TorannMagicDefOf.TM_Polymorph_I || power.abilityDef == TorannMagicDefOf.TM_Polymorph_II ||
-                        power.abilityDef == TorannMagicDefOf.TM_BestowMight || power.abilityDef == TorannMagicDefOf.TM_BestowMight_I || power.abilityDef == TorannMagicDefOf.TM_BestowMight_II ||
-                        power.abilityDef == TorannMagicDefOf.TM_ChronostaticField || power.abilityDef == TorannMagicDefOf.TM_ChronostaticField_I || power.abilityDef == TorannMagicDefOf.TM_ChronostaticField_II))
+                    if (power.level < 3 && TM_Calc.IsIconAbility_02(power.abilityDef))
                     {
 
                         TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
@@ -652,33 +638,7 @@ namespace TorannMagic
                     float x4 = Text.CalcSize(" # / # ").x;
                     //bool flag9 = power.abilityDef.label == "Ray of Hope" || power.abilityDef.label == "Soothing Breeze" || power.abilityDef.label == "Frost Ray" || power.abilityDef.label == "AMP" || power.abilityDef.label == "Shadow" || power.abilityDef.label == "Magic Missile" || power.abilityDef.label == "Blink" || power.abilityDef.label == "Summon" || power.abilityDef.label == "Shield"; //add all other buffs or xml based upgrades
                     
-                    if (power.abilityDef.defName == "TM_RayofHope" || power.abilityDef.defName ==  "TM_RayofHope_I" || power.abilityDef.defName ==  "TM_RayofHope_II" || power.abilityDef.defName == "TM_RayofHope_III" || 
-                        power.abilityDef.defName == "TM_Soothe" || power.abilityDef.defName == "TM_Soothe_I" || power.abilityDef.defName == "TM_Soothe_II" || power.abilityDef.defName == "TM_Soothe_III" ||
-                        power.abilityDef.defName == "TM_FrostRay" || power.abilityDef.defName == "TM_FrostRay_I" || power.abilityDef.defName == "TM_FrostRay_II" || power.abilityDef.defName == "TM_FrostRay_III" ||
-                        power.abilityDef.defName == "TM_AMP" || power.abilityDef.defName == "TM_AMP_I" || power.abilityDef.defName == "TM_AMP_II" || power.abilityDef.defName == "TM_AMP_III" ||
-                        power.abilityDef.defName == "TM_Shadow" || power.abilityDef.defName == "TM_Shadow_I" || power.abilityDef.defName == "TM_Shadow_II" || power.abilityDef.defName == "TM_Shadow_III" ||
-                        power.abilityDef.defName == "TM_Blink" || power.abilityDef.defName == "TM_Blink_I" || power.abilityDef.defName == "TM_Blink_II" || power.abilityDef.defName == "TM_Blink_III" ||
-                        power.abilityDef.defName == "TM_Summon" || power.abilityDef.defName == "TM_Summon_I" || power.abilityDef.defName == "TM_Summon_II" || power.abilityDef.defName == "TM_Summon_III" ||
-                        power.abilityDef.defName == "TM_MagicMissile" || power.abilityDef.defName == "TM_MagicMissile_I" || power.abilityDef.defName == "TM_MagicMissile_II" || power.abilityDef.defName == "TM_MagicMissile_III" ||
-                        power.abilityDef.defName == "TM_Shield" || power.abilityDef.defName == "TM_Shield_I" || power.abilityDef.defName == "TM_Shield_II" || power.abilityDef.defName == "TM_Shield_III" ||
-                        power.abilityDef.defName == "TM_SootheAnimal" || power.abilityDef.defName == "TM_SootheAnimal_I" || power.abilityDef.defName == "TM_SootheAnimal_II" || power.abilityDef.defName == "TM_SootheAnimal_III" ||
-                        power.abilityDef.defName == "TM_DeathMark" || power.abilityDef.defName == "TM_DeathMark_I" || power.abilityDef.defName == "TM_DeathMark_II" || power.abilityDef.defName == "TM_DeathMark_III" ||
-                        power.abilityDef.defName == "TM_ConsumeCorpse" || power.abilityDef.defName == "TM_ConsumeCorpse_I" || power.abilityDef.defName == "TM_ConsumeCorpse_II" || power.abilityDef.defName == "TM_ConsumeCorpse_III" ||
-                        power.abilityDef.defName == "TM_CorpseExplosion" || power.abilityDef.defName == "TM_CorpseExplosion_I" || power.abilityDef.defName == "TM_CorpseExplosion_II" || power.abilityDef.defName == "TM_CorpseExplosion_III" ||
-                        power.abilityDef.defName == "TM_DeathBolt" || power.abilityDef.defName == "TM_DeathBolt_I" || power.abilityDef.defName == "TM_DeathBolt_II" || power.abilityDef.defName == "TM_DeathBolt_III" ||
-                        power.abilityDef.defName == "TM_HealingCircle" || power.abilityDef.defName == "TM_HealingCircle_I" || power.abilityDef.defName == "TM_HealingCircle_II" || power.abilityDef.defName == "TM_HealingCircle_III" ||
-                        power.abilityDef.defName == "TM_Lullaby" || power.abilityDef.defName == "TM_Lullaby_I" || power.abilityDef.defName == "TM_Lullaby_II" || power.abilityDef.defName == "TM_Lullaby_III" ||
-                        power.abilityDef.defName == "TM_Attraction" || power.abilityDef.defName == "TM_Attraction_I" || power.abilityDef.defName == "TM_Attraction_II" || power.abilityDef.defName == "TM_Attraction_III" ||
-                        power.abilityDef.defName == "TM_Repulsion" || power.abilityDef.defName == "TM_Repulsion_I" || power.abilityDef.defName == "TM_Repulsion_II" || power.abilityDef.defName == "TM_Repulsion_III" ||
-                        power.abilityDef.defName == "TM_ShadowBolt" || power.abilityDef.defName == "TM_ShadowBolt_I" || power.abilityDef.defName == "TM_ShadowBolt_II" || power.abilityDef.defName == "TM_ShadowBolt_III" ||
-                        power.abilityDef.defName == "TM_Meteor" || power.abilityDef.defName == "TM_Meteor_I" || power.abilityDef.defName == "TM_Meteor_II" || power.abilityDef.defName == "TM_Meteor_III" ||
-                        power.abilityDef.defName == "TM_Encase" || power.abilityDef.defName == "TM_Encase_I" || power.abilityDef.defName == "TM_Encase_II" || power.abilityDef.defName == "TM_Encase_III" ||
-                        power.abilityDef.defName == "TM_OrbitalStrike" || power.abilityDef.defName == "TM_OrbitalStrike_I" || power.abilityDef.defName == "TM_OrbitalStrike_II" || power.abilityDef.defName == "TM_OrbitalStrike_III" ||
-                        power.abilityDef.defName == "TM_Rend" || power.abilityDef.defName == "TM_Rend_I" || power.abilityDef.defName == "TM_Rend_II" || power.abilityDef.defName == "TM_Rend_III" ||
-                        power.abilityDef.defName == "TM_BloodMoon" || power.abilityDef.defName == "TM_BloodMoon_I" || power.abilityDef.defName == "TM_BloodMoon_II" || power.abilityDef.defName == "TM_BloodMoon_III" ||
-                        power.abilityDef.defName == "TM_Polymorph" || power.abilityDef.defName == "TM_Polymorph_I" || power.abilityDef.defName == "TM_Polymorph_II" || power.abilityDef.defName == "TM_Polymorph_III" ||
-                        power.abilityDef.defName == "TM_BestowMight" || power.abilityDef.defName == "TM_BestowMight_I" || power.abilityDef.defName == "TM_BestowMight_II" || power.abilityDef.defName == "TM_BestowMight_III" ||
-                        power.abilityDef.defName == "TM_ChronostaticField" || power.abilityDef.defName == "TM_ChronostaticField_I" || power.abilityDef.defName == "TM_ChronostaticField_II" || power.abilityDef.defName == "TM_ChronostaticField_III")
+                    if (TM_Calc.IsIconAbility_03(power.abilityDef))
                     {
                         flag999 = true;
                     }
@@ -772,23 +732,23 @@ namespace TorannMagic
                                 Widgets.DrawTextureFitted(rect, power.Icon, 1f);
                             }
                         }
-                        if ((power.abilityDef.defName == "TM_Firestorm" && MagicPowerSkill5 == null) || 
-                            (power.abilityDef.defName == "TM_Blizzard" && MagicPowerSkill6 == null) ||
-                            (power.abilityDef.defName == "TM_EyeOfTheStorm" && MagicPowerSkill5 == null) ||
-                            (power.abilityDef.defName == "TM_FoldReality" && MagicPowerSkill6 == null) ||
-                            (power.abilityDef.defName == "TM_RegrowLimb" && MagicPowerSkill5 == null) ||
-                            (power.abilityDef.defName == "TM_LichForm" && MagicPowerSkill6 == null) ||
-                            (power.abilityDef.defName == "TM_SummonPoppi" && MagicPowerSkill5 == null) ||
-                            (power.abilityDef.defName == "TM_BattleHymn" && MagicPowerSkill5 == null) ||
-                            (power.abilityDef.defName == "TM_Scorn" && MagicPowerSkill5 == null) ||
-                            (power.abilityDef.defName == "TM_PsychicShock" && MagicPowerSkill5 == null) ||
-                            (power.abilityDef.defName == "TM_Meteor" && MagicPowerSkill6 == null) ||
-                            (power.abilityDef.defName == "TM_OrbitalStrike" && MagicPowerSkill5 == null) ||
-                            (power.abilityDef.defName == "TM_BloodMoon" && MagicPowerSkill6 == null) ||
-                            (power.abilityDef.defName == "TM_Shapeshift" && MagicPowerSkill6 == null) ||
-                            (power.abilityDef.defName == "TM_Recall" && MagicPowerSkill6 == null) ||
-                            (power.abilityDef.defName == "TM_HolyWrath" && MagicPowerSkill5 == null) ||
-                            (power.abilityDef.defName == "TM_Resurrection" && MagicPowerSkill5 == null))
+                        if ((power.abilityDef == TorannMagicDefOf.TM_Firestorm && MagicPowerSkill5 == null) ||
+                            (power.abilityDef == TorannMagicDefOf.TM_Blizzard && MagicPowerSkill6 == null) ||
+                            (power.abilityDef == TorannMagicDefOf.TM_EyeOfTheStorm && MagicPowerSkill5 == null) ||
+                            (power.abilityDef == TorannMagicDefOf.TM_FoldReality && MagicPowerSkill6 == null) ||
+                            (power.abilityDef == TorannMagicDefOf.TM_RegrowLimb && MagicPowerSkill5 == null) ||
+                            (power.abilityDef == TorannMagicDefOf.TM_LichForm && MagicPowerSkill6 == null) ||
+                            (power.abilityDef == TorannMagicDefOf.TM_SummonPoppi && MagicPowerSkill5 == null) ||
+                            (power.abilityDef == TorannMagicDefOf.TM_BattleHymn && MagicPowerSkill5 == null) ||
+                            (power.abilityDef == TorannMagicDefOf.TM_Scorn && MagicPowerSkill5 == null) ||
+                            (power.abilityDef == TorannMagicDefOf.TM_PsychicShock && MagicPowerSkill5 == null) ||
+                            (power.abilityDef == TorannMagicDefOf.TM_Meteor && MagicPowerSkill6 == null) ||
+                            (power.abilityDef == TorannMagicDefOf.TM_OrbitalStrike && MagicPowerSkill5 == null) ||
+                            (power.abilityDef == TorannMagicDefOf.TM_BloodMoon && MagicPowerSkill6 == null) ||
+                            (power.abilityDef == TorannMagicDefOf.TM_Shapeshift && MagicPowerSkill6 == null) ||
+                            (power.abilityDef == TorannMagicDefOf.TM_Recall && MagicPowerSkill6 == null) ||
+                            (power.abilityDef == TorannMagicDefOf.TM_HolyWrath && MagicPowerSkill5 == null) ||
+                            (power.abilityDef == TorannMagicDefOf.TM_Resurrection && MagicPowerSkill5 == null))
                         {
                             Rect rectMasterLock = new Rect(rect.xMax - 23f - "TM_MasterSpellLocked".Translate().Length * 4, rect.yMin + MagicCardUtility.MagicButtonSize + 4f, "TM_MasterSpellLocked".Translate().Length * 8, MagicCardUtility.TextSize * 3);
                             Widgets.Label(rectMasterLock, "TM_MasterSpellLocked".Translate(
@@ -855,13 +815,14 @@ namespace TorannMagic
                     MagicPowerSkill skill = enumeratorN.Current;
                     TooltipHandler.TipRegion(rect42, new TipSignal(() => skill.desc.Translate(), rect4.GetHashCode()));
                     bool flag11 = (skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0 || !enumerator.Current.learned) || 
-                        ((enumerator.Current.abilityDef.defName == "TM_Shapeshift") && compMagic.MagicData.MagicAbilityPoints < 2) || 
+                        ((enumerator.Current.abilityDef == TorannMagicDefOf.TM_Shapeshift) && compMagic.MagicData.MagicAbilityPoints < 2) || 
                         (skill.label == "TM_Polymorph_ver" && compMagic.MagicData.MagicAbilityPoints < 2) || 
-                        ((enumerator.Current.abilityDef.defName == "TM_BardTraining") && compMagic.MagicData.MagicAbilityPoints < 2 ) || 
+                        ((enumerator.Current.abilityDef ==  TorannMagicDefOf.TM_BardTraining) && compMagic.MagicData.MagicAbilityPoints < 2 ) || 
                         ((skill.label == "TM_HolyWrath_ver" || skill.label == "TM_HolyWrath_pwr") && compMagic.MagicData.MagicAbilityPoints < 2) || 
                         ((skill.label == "TM_Sentinel_pwr") && compMagic.MagicData.MagicAbilityPoints < 2) || 
                         ((skill.label == "TM_EnchanterStone_ver") && compMagic.MagicData.MagicAbilityPoints < 2) ||
-                        ((skill.label == "TM_AlterFate_pwr") && compMagic.MagicData.MagicAbilityPoints < 2);
+                        ((skill.label == "TM_AlterFate_pwr") && compMagic.MagicData.MagicAbilityPoints < 2) ||
+                        ((enumerator.Current.abilityDef == TorannMagicDefOf.TM_ChaosTradition) && compMagic.MagicData.MagicAbilityPoints < 2 );
                     if (flag11)
                     {
                         Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
@@ -1487,10 +1448,156 @@ namespace TorannMagic
                                 skill.level++;
                                 compMagic.MagicData.MagicAbilityPoints -= 1;
                             }
+                            if (enumerator.Current.abilityDef.defName == "TM_ChaosTradition")
+                            {
+                                compMagic.LevelUpSkill_ChaosTradition(skill.label);
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 2;
+                            }
                         }
                     }
                     num2 += (MagicCardUtility.magicCardSize.x / 3) - MagicCardUtility.SpacingOffset;
                 }                
+            }
+        }
+
+        public static void PowersGUIHandler_CM(Rect inRect, CompAbilityUserMagic compMagic, List<MagicPower> MagicPowers, List<MagicPowerSkill> MagicPowerSkill1, List<MagicPowerSkill> MagicPowerSkill2, List<MagicPowerSkill> MagicPowerSkill3, List<MagicPowerSkill> MagicPowerSkill4, List<MagicPowerSkill> MagicPowerSkill5, List<MagicPowerSkill> MagicPowerSkill6, Texture2D pointTexture)
+        {
+            float num = inRect.y;
+            int itnum = 1;
+            bool flag999;
+            using (List<MagicPower>.Enumerator enumerator = MagicPowers.GetEnumerator())
+            {
+                EnumerationStart:;
+                while (enumerator.MoveNext())
+                {
+                    MagicPower power = enumerator.Current;
+                    if (!power.learned)
+                    {
+                        goto EnumerationStart;
+                    }
+
+                    Text.Font = GameFont.Small;
+                    Rect rect = new Rect(MagicCardUtility.magicCardSize.x / 2f - MagicCardUtility.MagicButtonSize, num, MagicCardUtility.MagicButtonSize, MagicCardUtility.MagicButtonSize);
+                    if (itnum > 1)
+                    {
+                        Widgets.DrawLineHorizontal(0f + 20f, rect.y - 2f, 700f - 40f);
+                    }
+                    if (power.level < 3 && TM_Calc.IsIconAbility_02(power.abilityDef))
+                    {
+                        TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
+                        {
+                        power.abilityDef.label,
+                        "\n\nCurrent Level:\n",
+                        power.abilityDescDef.description,
+                        "\n\nNext Level:\n",
+                        power.nextLevelAbilityDescDef.description,
+                        "\n\n",
+                        "TM_CheckPointsForMoreInfo".Translate()
+                        }), 398462);
+
+                    }
+                    else
+                    {
+                        TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
+                            {
+                            power.abilityDef.label,
+                            "\n\n",
+                            power.abilityDescDef.description,
+                            "\n\n",
+                            "TM_CheckPointsForMoreInfo".Translate()
+                            }), 398462);
+                    }
+
+                    float x2 = Text.CalcSize("TM_Effeciency".Translate()).x;
+                    float x3 = Text.CalcSize("TM_Versatility".Translate()).x;
+                    Rect rect3 = new Rect(0f + MagicCardUtility.SpacingOffset, rect.y + 2f, MagicCardUtility.magicCardSize.x, MagicCardUtility.ButtonSize * 1.15f);
+
+                    Rect rect5 = new Rect(rect3.x + rect3.width / 2f - x2, rect3.y, (rect3.width - 20f) / 3f, rect3.height);
+                    Rect rect6 = new Rect(rect3.width - x3 * 2f, rect3.y, rect3.width / 3f, rect3.height);
+
+                    float x4 = Text.CalcSize(" # / # ").x;
+
+                    if (TM_Calc.IsIconAbility_03(power.abilityDef))
+                    {
+                        flag999 = true;
+                    }
+                    else
+                    {
+                        flag999 = false;
+                    }
+
+                    bool flag10 = enumerator.Current.level >= 3 || compMagic.MagicData.MagicAbilityPoints == 0;
+                    if (flag10)
+                    {
+                        if (flag999)
+                        {
+                            Widgets.DrawTextureFitted(rect, power.Icon, 1f);
+                            Rect rect19 = new Rect(rect.xMax, rect.yMin, x4, MagicCardUtility.TextSize);
+                            Widgets.Label(rect19, " " + enumerator.Current.level + " / 3");
+                        }
+                        else
+                        {
+                            Widgets.DrawTextureFitted(rect, power.Icon, 1f);
+                        }
+                    }
+                    else
+                    {
+                        if (flag999)
+                        {
+                            Rect rect10 = new Rect(rect.xMax, rect.yMin, x4, MagicCardUtility.TextSize);
+                            bool flag1 = Widgets.ButtonImage(rect, power.Icon) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
+                            Widgets.Label(rect10, " " + power.level + " / 3");
+                            if (flag1)
+                            {
+                                compMagic.LevelUpPower(power);
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                        }
+                        else
+                        {
+                            Widgets.DrawTextureFitted(rect, power.Icon, 1f);
+                        }
+                    }
+
+                    Text.Font = GameFont.Tiny;
+                    float num2 = rect3.x;
+                    if (itnum == 1 && MagicPowerSkill1 != null)
+                    {
+                        MagicCardUtility.DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill1, rect3);
+                        itnum++;
+                    }
+                    else if (itnum == 2 && MagicPowerSkill2 != null)
+                    {
+                        MagicCardUtility.DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill2, rect3);
+                        itnum++;
+                    }
+                    else if (itnum == 3 && MagicPowerSkill3 != null)
+                    {
+                        MagicCardUtility.DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill3, rect3);
+                        itnum++;
+                    }
+                    else if (itnum == 4 && MagicPowerSkill4 != null)
+                    {
+                        MagicCardUtility.DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill4, rect3);
+                        itnum++;
+                    }
+                    else if (itnum == 5 && MagicPowerSkill5 != null)
+                    {
+                        MagicCardUtility.DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill5, rect3);
+                        itnum++;
+                    }
+                    else if (itnum == 6 && MagicPowerSkill6 != null)
+                    {
+                        MagicCardUtility.DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill6, rect3);
+                        itnum++;
+                    }
+                    else
+                    {
+                        //Log.Message("No skill iteration found.");
+                    }
+                    num += MagicCardUtility.MagicButtonSize + MagicCardUtility.TextSize + 4f;//MagicCardUtility.SpacingOffset; //was 4f                    
+                }
             }
         }
     }

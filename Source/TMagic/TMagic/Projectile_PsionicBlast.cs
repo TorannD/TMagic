@@ -25,21 +25,23 @@ namespace TorannMagic
             Pawn victim = hitThing as Pawn;
             if(!pawn.Spawned)
             {
-                pwrVal = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PsionicStorm.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicStorm_pwr").level;
+                //pwrVal = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PsionicStorm.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicStorm_pwr").level;
+                pwrVal = TM_Calc.GetMightSkillLevel(pawn, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PsionicStorm, "TM_PsionicStorm", "_pwr", true);
                 arcaneDmg = pawn.GetComp<CompAbilityUserMight>().mightPwr;
             }
             else
             {
-                MightPowerSkill pwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PsionicBlast.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicBlast_pwr");
-                pwrVal = pwr.level;
+                //MightPowerSkill pwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PsionicBlast.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PsionicBlast_pwr");
+                pwrVal = TM_Calc.GetMightSkillLevel(pawn, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PsionicBlast, "TM_PsionicBlast", "_pwr", true);
+                //pwrVal = pwr.level;
                 arcaneDmg = pawn.GetComp<CompAbilityUserMight>().mightPwr;
             }
            
-            if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-            {
-                MightPowerSkill mpwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
-                pwrVal = mpwr.level;
-            }
+            //if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            //{
+            //    MightPowerSkill mpwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+            //    pwrVal = mpwr.level;
+            //}
 
             TM_MoteMaker.MakePowerBeamMotePsionic(base.Position, map, this.def.projectile.explosionRadius * 6f, 2f, .7f, .1f, .6f);
             float angle = (Quaternion.AngleAxis(90, Vector3.up) * GetVector(pawn.Position, base.Position)).ToAngleFlat();

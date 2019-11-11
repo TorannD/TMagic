@@ -3,6 +3,7 @@ using RimWorld;
 using AbilityUser;
 using RimWorld.Planet;
 using System;
+using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -13,6 +14,7 @@ using Verse.Sound;
 using Verse.AI;
 using AbilityUserAI;
 using System.Reflection.Emit;
+using TorannMagic.Conditions;
 
 namespace TorannMagic
 {
@@ -136,6 +138,15 @@ namespace TorannMagic
                     typeof(int),
                     typeof(bool)
                 }, null), null, new HarmonyMethod(typeof(HarmonyPatches), "DaysWorthOfFoodCalc_Undead_Postfix", null), null);
+            //harmonyInstance.Patch(AccessTools.Method(typeof(CaravanArrivalTimeEstimator), "EstimatedTicksToArrive", new Type[]
+            //    {
+            //        typeof(int),
+            //        typeof(int),
+            //        typeof(WorldPath),
+            //        typeof(float),
+            //        typeof(int),
+            //        typeof(int)
+            //    }, null), null, new HarmonyMethod(typeof(HarmonyPatches), "EstimatedTicksToArrive_Wayfarer_Postfix", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(Targeter), "TargeterOnGUI", new Type[]
                 {
                 }, null), null, new HarmonyMethod(typeof(HarmonyPatches), "Targeter_Casting_Postfix", null), null);
@@ -187,6 +198,77 @@ namespace TorannMagic
 
         }
 
+        //public static void EstimatedTicksToArrive_Wayfarer_Postfix(ref int __result)
+        //{
+
+        //}
+
+        [HarmonyPatch(typeof(Caravan_PathFollower), "CostToPayThisTick", null)]
+        public class CostToPayThisTick_Base_Patch
+        {
+            private static void Postfix(Caravan_PathFollower __instance, ref float __result)
+            {
+                Caravan caravan = Traverse.Create(root: __instance).Field(name: "caravan").GetValue<Caravan>();
+                if (caravan != null)
+                {
+                    IEnumerable<Pawn> pList = caravan.PlayerPawnsForStoryteller;
+                    bool hasWayfarer = false;
+                    if (pList != null && pList.Count() > 0)
+                    {
+                        foreach (Pawn p in pList)
+                        {
+                            if (p.story != null && p.story.traits != null && p.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
+                            {
+                                hasWayfarer = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (hasWayfarer)
+                    {
+                        __result *= 1.25f;
+                    }
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(Caravan_PathFollower), "CostToMove", new Type[]
+        {
+            typeof(Caravan),
+            typeof(int),
+            typeof(int),
+            typeof(int?)
+        })]
+        public static class CostToMove_Caravan_Patch
+        {
+            [HarmonyPostfix]
+            public static void CostToMove_Caravan_Postfix(Caravan_PathFollower __instance, Caravan caravan, int start, int end, ref int __result, int? ticksAbs = default(int?))
+            {
+                if (caravan != null)
+                {
+                    IEnumerable<Pawn> pList = caravan.PlayerPawnsForStoryteller;
+                    bool hasWanderer = false;
+                    if (pList != null && pList.Count() > 0)
+                    {
+                        foreach (Pawn p in pList)
+                        {
+                            if (p.story != null && p.story.traits != null && p.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer))
+                            {
+                                hasWanderer = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (hasWanderer)
+                    {
+                        StringBuilder stringBuilder = new StringBuilder();
+                        float num = WorldPathGrid.CalculatedMovementDifficultyAt(end, false, ticksAbs, stringBuilder);
+                        __result = (int)(__result/num);
+                    }
+                }
+            }
+        }
+
         [HarmonyPatch(typeof(ApparelUtility), "HasPartsToWear", null)]
         public class BracersOfPacifist_Wear_Prevention
         {
@@ -199,71 +281,209 @@ namespace TorannMagic
             }
         }
 
-        //[HarmonyPatch(typeof(Toils_Recipe), "DoRecipeWork", null)]
-        //public class MagicRecipe_DoWork
-        //{
-        //    public static bool Prefix()
-        //    {
-        //        Toil toil = new Toil();
-        //        toil.initAction = delegate
-        //        {
-        //            Pawn actor3 = toil.actor;
-        //            Job curJob3 = actor3.jobs.curJob;
-        //            Log.Message("" + actor3.LabelShort + " is performing a new job of " + curJob3.def.defName);
-        //        };
-        //        Log.Message("prefix patching recipe work");
-        //        return true;
-        //    }
-        //}
+        [HarmonyPatch(typeof(WeatherEvent_LightningStrike), "FireEvent", null)]
+        public class LightningStrike_DarkThunderstorm_Patch
+        {
+            public static bool Prefix(ref WeatherEvent_LightningStrike __instance)
+            {
+                //Log.Message("thunder strike");
+                Map map = Traverse.Create(root: __instance).Field(name: "map").GetValue<Map>();
+                if(map != null && map.GameConditionManager != null)
+                {
+                    //Log.Message("checking condition");
+                    GameCondition_DarkThunderstorm gcdt = map.GameConditionManager.GetActiveCondition(TorannMagicDefOf.DarkThunderstorm) as GameCondition_DarkThunderstorm;
+                    if(gcdt != null && gcdt.enemyPawns != null && gcdt.enemyPawns.Count > 0)
+                    {
+                        //Log.Message("setting strike loc to...");
+                        Pawn e = gcdt.enemyPawns.RandomElement();
+                        IntVec3 rndLoc = e.Position;
+                        rndLoc.x += (Rand.Range(-2, 2));
+                        rndLoc.z += (Rand.Range(-2, 2));
+                        //Log.Message("setting rndloc " + rndLoc + " to strike loc...");
+                        Traverse.Create(root: __instance).Field(name: "strikeLoc").SetValue(rndLoc);
+                        //IntVec3 loc = Traverse.Create(root: __instance).Field(name: "strikeLoc").GetValue<IntVec3>();
+                        //Log.Message("" + loc);
+                    }
+                }
+                return true;
+            }
+        }
 
-        //public static bool DoMagicRecipeWork()
-        //{
+        [HarmonyPatch(typeof(WeatherManager), "TransitionTo", null)]
+        public class WeatherManager_RemoveDarkThunderstorm_Postfix
+        {
+            public static void Postfix(WeatherManager __instance, WeatherDef newWeather)
+            {
+                Map map = Traverse.Create(root: __instance).Field(name: "map").GetValue<Map>();
+                if (map != null && map.GameConditionManager != null)
+                {
+                    GameCondition_DarkThunderstorm gcdt = map.GameConditionManager.GetActiveCondition(TorannMagicDefOf.DarkThunderstorm) as GameCondition_DarkThunderstorm;
+                    if (gcdt != null)
+                    {
+                        //Log.Message("ending thunderstorm");
+                        gcdt.End();
+                    }
+                }
+            }
+        }
 
-        //    Log.Message("prefix patching recipe work");
-        //    return true;
-        //}
-
-        //[HarmonyPatch(typeof(BillUtility), "GetWorkGiver", null)]
-        //public class BillUtility_DoMagicBill_Prefix_Patch
-        //{
-        //    public static bool Prefix(this IBillGiver billGiver, ref WorkGiverDef __result)
-        //    {
-        //        Thing thing = billGiver as Thing;
-        //        if (thing == null)
-        //        {
-        //            return true;
-        //        }
-        //        List<WorkGiverDef> allDefsListForReading = DefDatabase<WorkGiverDef>.AllDefsListForReading;
-        //        for (int i = 0; i < allDefsListForReading.Count; i++)
-        //        {
-        //            WorkGiverDef workGiverDef = allDefsListForReading[i];
-        //            WorkGiver_DoMagicBill workGiver_DoBill = workGiverDef.Worker as WorkGiver_DoMagicBill;
-        //            if (workGiver_DoBill != null && workGiver_DoBill.ThingIsUsableBillGiver(thing))
-        //            {
-        //                __result = workGiverDef;
-        //                return false;
-        //            }
-        //        }
-        //        return true;
-        //    }
-        //}
-
-        //[HarmonyPatch(typeof(Tradeable), "AddThing", null)]
-        //public class CannotTradeUndead_Prefix_Patch
-        //{
-        //    public static bool Prefix(Tradeable __instance, Thing t, Transactor trans)
-        //    {
-        //        if (t is Pawn)
-        //        {
-        //            Pawn p = t as Pawn;
-        //            if(TM_Calc.IsUndeadNotVamp(p))
-        //            {
-        //                return false;
-        //            }
-        //        }
-        //        return true;
-        //    }
-        //}
+        [HarmonyPatch(typeof(InteractionWorker), "Interacted", null)]
+        public class GearRepair_InteractionWorker_Postfix
+        {
+            public static void Postfix(InteractionWorker __instance, Pawn initiator, Pawn recipient)
+            {
+                if (__instance.interaction == InteractionDefOf.Chitchat)
+                {
+                    if (initiator.story != null && initiator.story.traits != null && initiator.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
+                    {
+                        if (initiator.health != null && initiator.health.hediffSet != null && initiator.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffGearRepair))
+                        {
+                            CompAbilityUserMight comp = initiator.GetComp<CompAbilityUserMight>();
+                            if (comp != null && comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level >= 10)
+                            {
+                                if (recipient.equipment != null)
+                                {
+                                    Thing weapon = recipient.equipment.Primary;
+                                    if (weapon != null && (weapon.def.IsRangedWeapon || weapon.def.IsMeleeWeapon))
+                                    {
+                                        if (weapon.HitPoints < weapon.MaxHitPoints)
+                                        {
+                                            weapon.HitPoints++;
+                                        }
+                                    }
+                                }
+                                if (recipient.apparel != null)
+                                {
+                                    List<Apparel> gear = recipient.apparel.WornApparel;
+                                    for (int i = 0; i < gear.Count; i++)
+                                    {
+                                        if (gear[i].HitPoints < gear[i].MaxHitPoints)
+                                        {
+                                            gear[i].HitPoints++;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (recipient.story != null && recipient.story.traits != null && recipient.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
+                    {
+                        if (recipient.health != null && recipient.health.hediffSet != null && recipient.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffGearRepair))
+                        {
+                            CompAbilityUserMight comp = recipient.GetComp<CompAbilityUserMight>();
+                            if (comp != null && comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level >= 10)
+                            {
+                                if (initiator.equipment != null)
+                                {
+                                    Thing weapon = initiator.equipment.Primary;
+                                    if (weapon != null && (weapon.def.IsRangedWeapon || weapon.def.IsMeleeWeapon))
+                                    {
+                                        if (weapon.HitPoints < weapon.MaxHitPoints)
+                                        {
+                                            weapon.HitPoints++;
+                                        }
+                                    }
+                                }
+                                if (initiator.apparel != null)
+                                {
+                                    List<Apparel> gear = initiator.apparel.WornApparel;
+                                    for (int i = 0; i < gear.Count; i++)
+                                    {
+                                        if (gear[i].HitPoints < gear[i].MaxHitPoints)
+                                        {
+                                            gear[i].HitPoints++;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else if(__instance.interaction == InteractionDefOf.DeepTalk)
+                {
+                    if (initiator.story != null && initiator.story.traits != null && initiator.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
+                    {
+                        if (initiator.health != null && initiator.health.hediffSet != null && initiator.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffGearRepair))
+                        {
+                            CompAbilityUserMight comp = initiator.GetComp<CompAbilityUserMight>();
+                            if (comp != null && comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level >= 10)
+                            {
+                                if (recipient.equipment != null)
+                                {
+                                    Thing weapon = recipient.equipment.Primary;
+                                    if (weapon != null && (weapon.def.IsRangedWeapon || weapon.def.IsMeleeWeapon))
+                                    {
+                                        if (weapon.HitPoints < weapon.MaxHitPoints)
+                                        {
+                                            weapon.HitPoints++;
+                                        }
+                                        if (weapon.HitPoints < weapon.MaxHitPoints)
+                                        {
+                                            weapon.HitPoints++;
+                                        }
+                                        if (weapon.HitPoints < weapon.MaxHitPoints)
+                                        {
+                                            weapon.HitPoints++;
+                                        }
+                                    }
+                                }
+                                if (recipient.apparel != null)
+                                {
+                                    List<Apparel> gear = recipient.apparel.WornApparel;
+                                    for (int i = 0; i < gear.Count; i++)
+                                    {
+                                        if (gear[i].HitPoints < gear[i].MaxHitPoints)
+                                        {
+                                            gear[i].HitPoints++;
+                                        }
+                                        if (gear[i].HitPoints < gear[i].MaxHitPoints)
+                                        {
+                                            gear[i].HitPoints++;
+                                        }
+                                        if (gear[i].HitPoints < gear[i].MaxHitPoints)
+                                        {
+                                            gear[i].HitPoints++;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (recipient.story != null && recipient.story.traits != null && recipient.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
+                    {
+                        if (recipient.health != null && recipient.health.hediffSet != null && recipient.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffGearRepair))
+                        {
+                            CompAbilityUserMight comp = recipient.GetComp<CompAbilityUserMight>();
+                            if (comp != null && comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level >= 10)
+                            {
+                                if (initiator.equipment != null)
+                                {
+                                    Thing weapon = initiator.equipment.Primary;
+                                    if (weapon != null && (weapon.def.IsRangedWeapon || weapon.def.IsMeleeWeapon))
+                                    {
+                                        if (weapon.HitPoints < weapon.MaxHitPoints)
+                                        {
+                                            weapon.HitPoints++;
+                                        }
+                                    }
+                                }
+                                if (initiator.apparel != null)
+                                {
+                                    List<Apparel> gear = initiator.apparel.WornApparel;
+                                    for (int i = 0; i < gear.Count; i++)
+                                    {
+                                        if (gear[i].HitPoints < gear[i].MaxHitPoints)
+                                        {
+                                            gear[i].HitPoints++;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         //[HarmonyPatch(typeof(JobGiver_GetJoy), "TryGiveJob", null)]
         //public class Monk_GetJoyByMeditate_Joy_Patch
@@ -960,7 +1180,7 @@ namespace TorannMagic
                     if (!pawn.DestroyedOrNull() && pawn.RaceProps.Humanlike && pawn.story != null)
                     {
                         CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
-                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) && comp.IsMagicUser && comp.overdriveBuilding != null)
+                        if (comp.IsMagicUser && comp.overdriveBuilding != null)
                         {
                             if (overdriveThing == comp.overdriveBuilding)
                             {
@@ -993,7 +1213,7 @@ namespace TorannMagic
                     if (!pawn.DestroyedOrNull() && pawn.RaceProps.Humanlike && pawn.story != null)
                     {
                         CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
-                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) && comp.IsMagicUser && comp.overdriveBuilding != null)
+                        if (comp.IsMagicUser && comp.overdriveBuilding != null)
                         {
                             if (overdriveThing == comp.overdriveBuilding)
                             {                                
@@ -1173,7 +1393,7 @@ namespace TorannMagic
             {
                 Pawn pawn = __instance.caster as Pawn;
                 CompAbilityUserMagic comp = pawn.TryGetComp<CompAbilityUserMagic>();
-                if(comp != null && pawn.RaceProps.Humanlike && pawn.GetPosture() == PawnPosture.Standing && pawn.story != null && pawn.story.traits != null && pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) && comp.HasTechnoWeapon && comp.useElementalShotToggle && pawn.equipment.Primary.def.IsRangedWeapon && pawn.equipment.Primary.def.techLevel >= TechLevel.Industrial)
+                if(comp != null && pawn.RaceProps.Humanlike && pawn.GetPosture() == PawnPosture.Standing && comp.HasTechnoWeapon && (pawn.story != null && pawn.story.traits != null && (pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))) && comp.useElementalShotToggle && pawn.equipment.Primary.def.IsRangedWeapon && pawn.equipment.Primary.def.techLevel >= TechLevel.Industrial)
                 {
                     int verVal = comp.MagicData.MagicPowerSkill_TechnoWeapon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoWeapon_ver").level;
                     if (Rand.Chance(.2f + .01f * verVal) && comp.Mana.CurLevel >= .02f)
@@ -1402,7 +1622,7 @@ namespace TorannMagic
                     };
                     gizmoList.Add(item2);
                 }
-                if (__instance.story.traits.HasTrait(TorannMagicDefOf.Technomancer) && compMagic.HasTechnoBit)
+                if ((__instance.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || __instance.story.traits.HasTrait(TorannMagicDefOf.ChaosMage)) && compMagic.HasTechnoBit)
                 {
                     String toggle = "bit_c";
                     String label = "TM_TechnoBitEnabled".Translate();
@@ -1448,7 +1668,7 @@ namespace TorannMagic
                     gizmoList.Add(item_repair);
                 }
 
-                if (__instance.story.traits.HasTrait(TorannMagicDefOf.Technomancer) && compMagic.HasTechnoWeapon)
+                if ((__instance.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || __instance.story.traits.HasTrait(TorannMagicDefOf.ChaosMage)) && compMagic.HasTechnoWeapon)
                 {
                     String toggle = "elementalshot";
                     String label = "TM_TechnoWeapon_ver".Translate();
@@ -1726,21 +1946,19 @@ namespace TorannMagic
             }
         }
 
-        //[HarmonyPatch(typeof(DamageWorker), "Apply", null)]
-        //public class DamageWorker_Patch
-        //{
-        //    public static bool Prefix(ref DamageInfo dinfo, Thing victim)
-        //    {
-        //        Log.Message("apply damage patch");
-        //        Pawn pawn = victim as Pawn;
-        //        Log.Message("pawn is " + pawn + " and is dead " + pawn.Dead);
-        //        Log.Message("pawn is undead " + TM_Calc.IsUndead(pawn));
-        //        Log.Message("dinfo def is " + dinfo.Def);
-
-
-        //        return true;
-        //    }
-        //}
+        [HarmonyPatch(typeof(Hediff_Injury), "PostAdd", null)]
+        public class Hediff_Injury_RemoveError_Prefix
+        {
+            public static bool Prefix(Hediff_Injury __instance, DamageInfo? dinfo)
+            {
+                if(__instance.Part != null && __instance.Part.coverageAbs <= 0f)
+                {
+                    __instance.PostAdd(dinfo);
+                    return false;
+                }
+                return true;
+            }
+        }
 
         [HarmonyPatch(typeof(Pawn), "PreApplyDamage", null)]
         public class Pawn_PreApplyDamage
@@ -1874,13 +2092,21 @@ namespace TorannMagic
                         }
                         absorbed = true;
                         return false;
-                    }
-                    if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BlurHD, false) && Rand.Chance(.2f) && !dinfo.Def.isExplosive)
+                    }                    
+                    if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BlurHD, false) && !dinfo.Def.isExplosive)
                     {
-                        Hediff blur = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_BlurHD);
-                        blur.TryGetComp<HediffComp_Blur>().blurTick = Find.TickManager.TicksGame;
-                        absorbed = true;
-                        return false;
+                        float blurVal = .2f;
+                        if (pawn.TryGetComp<CompAbilityUserMagic>()?.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level >= 11)
+                        {
+                            blurVal = .3f;
+                        }
+                        if (Rand.Chance(blurVal))
+                        {
+                            Hediff blur = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_BlurHD);
+                            blur.TryGetComp<HediffComp_Blur>().blurTick = Find.TickManager.TicksGame;
+                            absorbed = true;
+                            return false;
+                        }
                     }
                     if (pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PredictionHD, false) && !dinfo.Def.isExplosive)
                     {
@@ -2021,7 +2247,7 @@ namespace TorannMagic
                                             {
                                                 amt = dinfo.Amount * .2f;
                                             }
-                                            dinfo2 = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Shrapnel, (int)amt, 0, (float)-1, instigator, dinfo.HitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
+                                            dinfo2 = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Shrapnel, (int)amt, 3, (float)-1, instigator, dinfo.HitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);                                            
                                             dinfo2.SetAllowDamagePropagation(false);
                                             pawn.TakeDamage(dinfo2);
                                         }
@@ -2141,6 +2367,48 @@ namespace TorannMagic
                                         HealthUtility.AdjustSeverity(instigator, HediffDef.Named("TM_PsionicHD"), -2f);
                                         comp.Stamina.CurLevel -= .01f;
                                         comp.MightUserXP += Rand.Range(2, 3);
+                                    }
+                                }
+                            }
+                        }
+
+                        if(instigator != null && instigator.equipment != null && instigator.equipment.Primary != null && instigator.equipment.Primary.def.IsMeleeWeapon)
+                        {
+                            if (instigator.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffFightersFocus) && Rand.Chance(.2f))
+                            {
+                                CompAbilityUserMight comp = instigator.GetComp<CompAbilityUserMight>();
+                                if (comp != null && comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_pwr").level >= 7)
+                                {
+                                    if (pawn.equipment != null && pawn.equipment.Primary != null && (pawn.equipment.Primary.def.IsRangedWeapon || pawn.equipment.Primary.def.IsMeleeWeapon))
+                                    {
+                                        ThingWithComps outThing = new ThingWithComps();
+                                        pawn.equipment.TryDropEquipment(pawn.equipment.Primary, out outThing, pawn.Position, false);
+                                        MoteMaker.ThrowText(pawn.DrawPos, pawn.MapHeld, "disarmed!", -1);
+                                    }
+                                }
+                            }
+                            if(pawn.health != null && pawn.health.hediffSet != null && pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffThickSkin))
+                            {
+                                Hediff hd = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_HediffThickSkin);
+                                if(hd.Severity >= 3)
+                                {
+                                    bool flagDmg = false;
+                                    if (dinfo.WeaponBodyPartGroup != null)
+                                    {
+                                        List<BodyPartRecord> bpr = new List<BodyPartRecord>();
+                                        bpr.Clear();
+                                        bpr.Add(instigator.RaceProps.body.AllParts.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.ManipulationLimbSegment)));
+                                        bpr.Add(instigator.RaceProps.body.AllParts.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.ManipulationLimbCore)));
+                                        bpr.Add(instigator.RaceProps.body.AllParts.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.ManipulationLimbDigit)));
+                                        if (bpr != null && bpr.Count > 0)
+                                        {
+                                            TM_Action.DamageEntities(instigator, bpr.RandomElement(), Rand.Range(1f, 4f), DamageDefOf.Scratch, pawn);
+                                            flagDmg = true;
+                                        }
+                                    }
+                                    if(!flagDmg)
+                                    {
+                                        TM_Action.DamageEntities(instigator, null, Rand.Range(1f, 4f), DamageDefOf.Scratch, pawn);
                                     }
                                 }
                             }
@@ -2517,7 +2785,7 @@ namespace TorannMagic
                         Building bldg2 = target.Thing as Building;
                         if (bldg2 != null)
                         {
-                            if (pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) || pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk) || pawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight) || pawn.story.traits.HasTrait(TorannMagicDefOf.BloodMage) || pawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter) || pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) || pawn.story.traits.HasTrait(TorannMagicDefOf.Priest) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard) || pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) || pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) || pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
+                            if (pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk) || pawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight) || pawn.story.traits.HasTrait(TorannMagicDefOf.BloodMage) || pawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter) || pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) || pawn.story.traits.HasTrait(TorannMagicDefOf.Priest) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard) || pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) || pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) || pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
                             {
                                 __result = false;
                                 return false;
@@ -4472,6 +4740,10 @@ namespace TorannMagic
                         __result = false;
                         return false;
                     }
+                    if(nd == TorannMagicDefOf.TM_Travel && pawn.story != null && pawn.story.traits != null && (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer)))
+                    {
+                        return true;
+                    }
                     //if(pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadAnimalHD")))
                     //{
                     //    __result = false;
@@ -5595,6 +5867,17 @@ namespace TorannMagic
                         if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_PommelStrike)
                         {
                             mightPower = mightComp.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PommelStrike);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                mightPower.AutoCast = !mightPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_TempestStrike)
+                        {
+                            mightPower = mightComp.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_TempestStrike);
 
                             if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
                             {

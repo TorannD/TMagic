@@ -71,23 +71,25 @@ namespace TorannMagic
             if(!this.initialized)
             {
                 CompAbilityUserMight comp = caster.GetComp<CompAbilityUserMight>();
-                pwrVal = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_WaveOfFear.FirstOrDefault((MightPowerSkill x) => x.label == "TM_WaveOfFear_pwr").level;
-                verVal = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_WaveOfFear.FirstOrDefault((MightPowerSkill x) => x.label == "TM_WaveOfFear_ver").level;
+                //pwrVal = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_WaveOfFear.FirstOrDefault((MightPowerSkill x) => x.label == "TM_WaveOfFear_pwr").level;
+                //verVal = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_WaveOfFear.FirstOrDefault((MightPowerSkill x) => x.label == "TM_WaveOfFear_ver").level;
+                verVal = TM_Calc.GetMightSkillLevel(caster, comp.MightData.MightPowerSkill_WaveOfFear, "TM_WaveOfFear", "_ver", true);
+                pwrVal = TM_Calc.GetMightSkillLevel(caster, comp.MightData.MightPowerSkill_WaveOfFear, "TM_WaveOfFear", "_pwr", true);
                 effVal = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_WaveOfFear.FirstOrDefault((MightPowerSkill x) => x.label == "TM_WaveOfFear_eff").level;
-                if (caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-                {
-                    MightPowerSkill mpwr = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
-                    MightPowerSkill mver = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
-                    pwrVal = mpwr.level;
-                    verVal = mver.level;
-                }
+                //if (caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                //{
+                //    MightPowerSkill mpwr = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
+                //    MightPowerSkill mver = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
+                //    pwrVal = mpwr.level;
+                //    verVal = mver.level;
+                //}
                 this.arcaneDmg = comp.mightPwr;
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                if (!caster.IsColonist && settingsRef.AIHardMode)
-                {
-                    pwrVal = 3;
-                    verVal = 3;
-                }
+                //if (!caster.IsColonist && settingsRef.AIHardMode)
+                //{
+                //    pwrVal = 3;
+                //    verVal = 3;
+                //}
                 for (int h = 0; h < caster.health.hediffSet.hediffs.Count; h++)
                 {
                     if (caster.health.hediffSet.hediffs[h].def.defName.Contains("TM_HateHD"))

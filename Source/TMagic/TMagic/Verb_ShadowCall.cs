@@ -22,6 +22,7 @@ namespace TorannMagic
             if(soulPawn != null && !soulPawn.Dead && !soulPawn.Destroyed)
             {
                 bool drafted = soulPawn.Drafted;
+                bool soulPawnSpawned = soulPawn.Spawned;
                 Map map = soulPawn.Map;
                 if(map == null)
                 {
@@ -32,6 +33,7 @@ namespace TorannMagic
                         HediffComp_SoulBondHost compS = bondHediff.TryGetComp<HediffComp_SoulBondHost>();
                         if (compS != null && compS.polyHost != null && !compS.polyHost.DestroyedOrNull() && !compS.polyHost.Dead)
                         {
+                            soulPawnSpawned = true;
                             soulPawn = compS.polyHost;
                         }
                     }
@@ -43,6 +45,7 @@ namespace TorannMagic
                         HediffComp_SoulBondHost compS = bondHediff.TryGetComp<HediffComp_SoulBondHost>();
                         if (compS != null && compS.polyHost != null && !compS.polyHost.DestroyedOrNull() && !compS.polyHost.Dead)
                         {
+                            soulPawnSpawned = true;
                             soulPawn = compS.polyHost;
                         }
                     }
@@ -64,20 +67,28 @@ namespace TorannMagic
                 }
                 IntVec3 casterCell = this.CasterPawn.Position;
                 IntVec3 targetCell = soulPawn.Position;
-                try
-                {                    
-                    soulPawn.DeSpawn();
-                    GenSpawn.Spawn(soulPawn, casterCell, this.CasterPawn.Map);
-                    if (drafted)
+                if (soulPawnSpawned)
+                {
+                    try
                     {
-                        soulPawn.drafter.Drafted = true;
+                        soulPawn.DeSpawn();
+                        GenSpawn.Spawn(soulPawn, casterCell, this.CasterPawn.Map);
+                        if (drafted)
+                        {
+                            soulPawn.drafter.Drafted = true;
+                        }
+                    }
+                    catch
+                    {
+                        Log.Message("Exception occured when trying to summon soul bound pawn - recovered pawn at original position");
+                        GenSpawn.Spawn(soulPawn, targetCell, map);
+
                     }
                 }
-                catch
+                else
                 {
-                    Log.Message("Exception occured when trying to summon soul bound pawn - recovered pawn at original position");
-                    GenSpawn.Spawn(soulPawn, targetCell, map);
-                    
+                    Messages.Message("TM_BondedPawnNotSpawned".Translate(
+                        soulPawn.LabelShort), MessageTypeDefOf.RejectInput);
                 }
                 //this.Ability.PostAbilityAttempt();
                 result = true;

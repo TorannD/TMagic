@@ -1,6 +1,8 @@
 ﻿using RimWorld;
 using Verse;
 using System.Collections.Generic;
+using Harmony;
+using System.Linq;
 
 namespace TorannMagic
 {
@@ -62,6 +64,15 @@ namespace TorannMagic
                 if(Rand.Chance(.2f) && gear[i].HitPoints < gear[i].MaxHitPoints)
                 {
                     gear[i].HitPoints++;
+                }
+                CompAbilityUserMight comp = this.Pawn.GetComp<CompAbilityUserMight>();
+                if (comp != null && comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level >= 5)
+                {
+                    if (gear[i].HitPoints >= gear[i].MaxHitPoints && gear[i].WornByCorpse)
+                    {
+                        gear[i].Notify_PawnResurrected();
+                        Traverse.Create(root: gear[i]).Field(name: "wornByCorpseInt").SetValue(false);
+                    }
                 }
             }
             Thing weapon = this.Pawn.equipment.Primary;

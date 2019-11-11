@@ -114,6 +114,8 @@ namespace TorannMagic
         public static ThingDef SkillOf_ThrowingKnife;
         public static ThingDef SkillOf_BurningFury;
         public static ThingDef SkillOf_PommelStrike;
+        public static ThingDef SkillOf_TempestStrike;
+        public static ThingDef SkillOf_Legion;
 
         public static ThingDef ManaPotion;
         public static ThingDef FlyingObject_Spinning;
@@ -123,6 +125,7 @@ namespace TorannMagic
         public static GameConditionDef ManaDrain;
         public static GameConditionDef ManaSurge;
         public static GameConditionDef DarkClouds;
+        public static GameConditionDef DarkThunderstorm;
         public static HediffDef TM_ManaSickness;
         public static HediffDef TM_ArcaneSickness;
         public static HediffDef TM_ArcaneWeakness;
@@ -179,6 +182,12 @@ namespace TorannMagic
 
         public static TMAbilityDef TM_WandererCraft;
         public static TMAbilityDef TM_Cantrips;
+        public static HediffDef TM_FrostSlowHD;
+        public static HediffDef TM_CoolHD;
+        public static HediffDef TM_WarmHD;
+        public static HediffDef TM_RefreshedHD;
+        public static HediffDef TM_JoltHD;
+        public static HediffDef TM_ShockTherapyHD;
         
 		//Fire
 		public static TraitDef InnerFire;
@@ -483,6 +492,7 @@ namespace TorannMagic
         public static TraitDef Technomancer;
 
         public static TMAbilityDef TM_TechnoBit;
+        public static HediffDef TM_TechnoBitHD;
         public static TMAbilityDef TM_TechnoTurret;
         public static TMAbilityDef TM_TechnoWeapon;
         public static TMAbilityDef TM_NanoStimulant;
@@ -574,6 +584,9 @@ namespace TorannMagic
 
         public static TMAbilityDef TM_ChaosTradition;
         public static HediffDef TM_ChaosTraditionHD;
+        public static HediffDef TM_ChaoticMindHD;
+        public static ThoughtDef TM_ChaoticMindTD;
+        public static HediffDef TM_ControlledChaosHD;
 
         //Might 
         public static NeedDef TM_Stamina;
@@ -767,8 +780,8 @@ namespace TorannMagic
         public static TMAbilityDef TM_BlankMind;
         public static TMAbilityDef TM_DirtDevil;
         public static TMAbilityDef TM_MechaniteReprogramming;
-        public static HediffDef TM_ReprogrammedSensoryMechanites_HD;
-        public static HediffDef TM_ReprogrammedFibrousMechanites_HD;
+        public static HediffDef TM_ReprogrammedSenMechanites_HD;
+        public static HediffDef TM_ReprogrammedFibMechanites_HD;
         public static TMAbilityDef TM_ArcaneBolt;
         public static TMAbilityDef TM_LightningTrap;
         public static JobDef JobDriver_PlaceLightningTrap;
@@ -778,6 +791,15 @@ namespace TorannMagic
         public static HediffDef TM_InvisibilityHD;
         public static TMAbilityDef TM_BriarPatch;
         public static TMAbilityDef TM_MageLight;
+        public static HediffDef TM_Tranquilizer_HD;
+        public static HediffDef TM_HediffFightersFocus;
+        public static HediffDef TM_HediffThickSkin;
+        public static HediffDef TM_HediffStrongBack;
+        public static HediffDef TM_HediffGearRepair;
+        public static HediffDef TM_HediffHeavyBlow;
+        public static HediffDef TM_HediffSprint;
+        public static TMAbilityDef TM_Legion;
+        public static TMAbilityDef TM_TempestStrike;
 
         public static HediffDef TM_Sight;
         public static HediffDef TM_Breathing;
@@ -832,6 +854,7 @@ namespace TorannMagic
         public static ThingDef Mote_Exclamation;
         public static ThingDef Mote_Twinkle;
         public static ThingDef Mote_Flame;
+        public static ThingDef Mote_Ice;
         public static ThingDef Mote_Casting;
         public static ThingDef Mote_AntiCasting;
         public static ThingDef Mote_1sText;
@@ -856,6 +879,7 @@ namespace TorannMagic
         public static ThingDef Mote_Ghost;
         public static ThingDef Mote_GrappleHook;
         public static ThingDef Mote_BoneDust;
+        public static ThingDef Mote_Psi_Yellow;
 
         public static ThingDef Projectile_FogOfTorment;        
 
@@ -984,11 +1008,15 @@ namespace TorannMagic
 
         //ThoughtDefs
         public static ThoughtDef TM_PhantomLimb;
+        public static ThoughtDef TM_NeedTravel;        
         //public static ThoughtDef AteMysteryMeatDirect;
         //public static ThoughtDef AteMysteryMeatAsIngredient;
 
         //Factions
         public static FactionDef TM_SkeletalFaction;
+
+        //NeedDefs
+        public static NeedDef TM_Travel;
 
         //CustomDefs
         public static TM_CustomDef TM_CustomDef;

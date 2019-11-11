@@ -21,6 +21,7 @@ namespace TorannMagic
             {
                 Pawn p = this.CasterPawn;
                 bool drafted = this.CasterPawn.Drafted;
+                bool soulPawnSpawned = soulPawn.Spawned;
                 Map map = this.CasterPawn.Map;
                 Map sMap = soulPawn.Map;
                 if (sMap == null)
@@ -33,6 +34,7 @@ namespace TorannMagic
                         if (compS != null && compS.polyHost != null && !compS.polyHost.DestroyedOrNull() && !compS.polyHost.Dead)
                         {
                             soulPawn = compS.polyHost;
+                            soulPawnSpawned = true;
                         }
                     }
                     bondHediff = null;
@@ -44,6 +46,7 @@ namespace TorannMagic
                         if (compS != null && compS.polyHost != null && !compS.polyHost.DestroyedOrNull() && !compS.polyHost.Dead)
                         {
                             soulPawn = compS.polyHost;
+                            soulPawnSpawned = true;
                         }
                     }
                     if(soulPawn.ParentHolder != null && soulPawn.ParentHolder is Caravan)
@@ -60,7 +63,7 @@ namespace TorannMagic
                 }
                 IntVec3 casterCell = this.CasterPawn.Position;
                 IntVec3 targetCell = soulPawn.Position;
-                if (p.Spawned)
+                if (p.Spawned && soulPawnSpawned)
                 {
                     try
                     {
@@ -78,8 +81,13 @@ namespace TorannMagic
                         GenSpawn.Spawn(p, casterCell, map);
 
                     }
-                }               
-                this.Ability.PostAbilityAttempt();
+                    this.Ability.PostAbilityAttempt();
+                }
+                else
+                {
+                    Messages.Message("TM_BondedPawnNotSpawned".Translate(
+                        soulPawn.LabelShort), MessageTypeDefOf.RejectInput);
+                }                
                 result = true;
             }
             else

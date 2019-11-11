@@ -68,6 +68,14 @@ namespace TorannMagic
                         {
                             TorannMagicDefOf.TM_PommelStrike
                         }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Legion
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_TempestStrike
+                        }),
                     };
                 }
                 return this.mightPowerStandalone;
