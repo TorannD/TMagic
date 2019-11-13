@@ -800,6 +800,7 @@ namespace TorannMagic
         public static HediffDef TM_HediffSprint;
         public static TMAbilityDef TM_Legion;
         public static TMAbilityDef TM_TempestStrike;
+        public static HediffDef TM_MuteHD;
 
         public static HediffDef TM_Sight;
         public static HediffDef TM_Breathing;
@@ -880,6 +881,7 @@ namespace TorannMagic
         public static ThingDef Mote_GrappleHook;
         public static ThingDef Mote_BoneDust;
         public static ThingDef Mote_Psi_Yellow;
+        public static ThingDef Mote_Flowers;
 
         public static ThingDef Projectile_FogOfTorment;        
 

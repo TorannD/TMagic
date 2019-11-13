@@ -39,8 +39,8 @@ namespace TorannMagic
 
         private int age = -1;
 
-        public float geChance = .003f;
-        public float leChance = .012f;
+        public float geChance = .0023f;
+        public float leChance = .011f;
         public float raiseRadius = 4f;
         public bool shouldAssault = false;
 

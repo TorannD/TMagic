@@ -294,10 +294,10 @@
 	    <label>giant skeleton</label>
         <labelPlural>skeletal</labelPlural>
         <bodyGraphicData>
-          <texPath>PawnKind/skeleton</texPath>
+          <texPath>PawnKind/bone_giant_nc</texPath>
           <graphicClass>Graphic_Multi</graphicClass>
 		  <shaderType>TransparentPostLight</shaderType>
-          <drawSize>4</drawSize>
+          <drawSize>3</drawSize>
 		  <color>(180, 180, 180)</color>
           <shadowData>
             <volume>(0.6, 0.4, 0.2)</volume>

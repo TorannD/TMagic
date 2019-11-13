@@ -561,4 +561,29 @@
     </stages>
   </HediffDef>  
   
+  
+  <HediffDef>
+    <defName>TM_MuteHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.8, 0.05, 0.05)</defaultLabelColor>
+    <label>Magically Mute</label>
+	<maxSeverity>10.0</maxSeverity>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<isBad>true</isBad>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-25</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label></label>
+		<becomeVisible>true</becomeVisible>
+        <minSeverity>.001</minSeverity>
+      </li>      
+    </stages>
+  </HediffDef>  
+  
 </Defs>

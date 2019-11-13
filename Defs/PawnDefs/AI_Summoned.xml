@@ -15,6 +15,17 @@
           <treeDef>LordDuty</treeDef>
         </li>
 		
+		        <!-- Colony Creature -->
+        <li Class="ThinkNode_ConditionalOfPlayerFaction">
+          <subNodes>
+            
+            <li Class="JobGiver_SeekAllowedArea" />
+            <li Class="JobGiver_SeekSafeTemperature" />
+            
+		  </subNodes>
+        </li>
+        
+		
 		<!-- Do a queued job if possible -->
 		<li Class="ThinkNode_QueuedJob">
 		  <inBedOnly>false</inBedOnly>

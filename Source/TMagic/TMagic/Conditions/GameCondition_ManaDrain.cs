@@ -39,7 +39,7 @@ namespace TorannMagic
                 if (pawn != null)
                 {
                     CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
-                    if (comp.IsMagicUser)
+                    if (comp != null && comp.IsMagicUser)
                     {
                         if ( comp.Mana.CurLevel == 1)
                         {

@@ -158,9 +158,21 @@ namespace TorannMagic
                 {
                     ((Action)(() =>
                     {
-                        if (ModCheck.Validate.PrisonLabor.IsInitialized())
+                        if (ModCheck.Validate.PrisonLaborOutdated.IsInitialized())
                         {
                             harmonyInstance.Patch(AccessTools.Method(typeof(PrisonLabor.JobDriver_Mine_Tweak), "ResetTicksToPickHit"), null, new HarmonyMethod(typeof(HarmonyPatches), "TM_PrisonLabor_JobDriver_Mine_Tweak"));
+                        }
+                    }))();
+                }
+                catch (TypeLoadException) { }
+
+                try
+                {
+                    ((Action)(() =>
+                    {
+                        if (ModCheck.Validate.PrisonLabor.IsInitialized())
+                        {
+                            harmonyInstance.Patch(AccessTools.Method(typeof(PrisonLabor.Tweaks.JobDriver_Mine_Tweak), "ResetTicksToPickHit"), null, new HarmonyMethod(typeof(HarmonyPatches), "TM_PrisonLabor_JobDriver_Mine_Tweak"));
                         }
                     }))();
                 }
@@ -1692,6 +1704,21 @@ namespace TorannMagic
                     gizmoList.Add(item);
                 }
                 __result = gizmoList;
+            }
+        }
+
+        [HarmonyPatch(typeof(Pawn), "Kill", null)]
+        public static class Undead_Kill_Prefix
+        {
+            public static bool Prefix(ref Pawn __instance)
+            {
+                if (__instance != null && __instance.health != null && (__instance.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD) || __instance.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadAnimalHD)))
+                {
+                    __instance.SetFaction(null, null);
+                }
+
+                return true;
+
             }
         }
 

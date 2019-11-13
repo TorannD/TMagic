@@ -85,7 +85,7 @@ namespace TorannMagic
                                     }
                                 }
                             }
-                            ThingSelectionUtility.SelectPreviousColonist();
+                            CameraJumper.TryJumpAndSelect(p);                            
                             ModOptions.Constants.SetPawnInFlight(false);
                         }
                         else

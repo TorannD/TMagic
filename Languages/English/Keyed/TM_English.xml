@@ -158,6 +158,8 @@
 <TM_StatsReport_Undead>Undead: No Value</TM_StatsReport_Undead>
 <TM_IncompatibleWeapon>Incompatible weapon for this ability.</TM_IncompatibleWeapon>
 <TM_BondedPawnNotSpawned>Unable to link to bonded pawn {0}, soul in transition.</TM_BondedPawnNotSpawned>
+<TM_WildSurge>Wild Surge: {0}!</TM_WildSurge>
+<TM_CasterMute>{0} cannot cast spells while muted.</TM_CasterMute>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
@@ -1104,12 +1106,12 @@ Level 3: 32hrs</TM_Recall_ver_desc>
 <TM_Recall_eff>Perfect Recall</TM_Recall_eff>
 <TM_Recall_ver>Impression</TM_Recall_ver>
 
-<TM_ChaosTradition_pwr_desc>Increases the chance wild magic has beneficial fluctuation and decreases the chance of backfiring. Requires 2 skill points to train.
+<TM_ChaosTradition_pwr_desc>Increases the chance wild magic has a beneficial surge and decreases the chance of backfiring. Does not change neutral events which is always 3%. Requires 2 skill points to train.
 
-Level 0: (+)5%   : (-)20%
-Level 1: (+)10% : (-)15%
-Level 2: (+)15% : (-)10%
-Level 3: (+)20% : (-)5%</TM_ChaosTradition_pwr_desc>
+Level 0: (+)2%  : (-)5%
+Level 1: (+)3% : (-)4%
+Level 2: (+)4% : (-)3%
+Level 3: (+)5% : (-)2%</TM_ChaosTradition_pwr_desc>
 <TM_ChaosTradition_eff_desc>Chaos Mages thrive on change - each skill level brings added benefits when Chaos Tradition is used. Requires 2 skill points to train.
 
 Level 0: changes all learned abilities

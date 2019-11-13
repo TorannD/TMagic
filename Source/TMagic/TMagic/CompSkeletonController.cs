@@ -40,6 +40,68 @@ namespace TorannMagic
 
         //private LocalTargetInfo universalTarget = null;
 
+        public override void PostDraw()
+        {
+            base.PostDraw();
+            if (this.NextChargeAttack < Find.TickManager.TicksGame)
+            {
+                float matMagnitude = 2.5f;
+                if (this.Pawn.def == TorannMagicDefOf.TM_GiantSkeletonR)
+                {
+                    Vector3 vector = ChainDrawPos;
+                    vector.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
+                    Vector3 s = new Vector3(matMagnitude, 1, matMagnitude);
+                    Matrix4x4 matrix = default(Matrix4x4);
+                    float angle = 0;
+                    if (this.Pawn.Rotation == Rot4.North || this.Pawn.Rotation == Rot4.South)
+                    {
+                        angle = Rand.Range(0, 360);
+                        matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
+                        Graphics.DrawMesh(MeshPool.plane10, matrix, TM_MatPool.circleChain, 0);
+                    }
+                    else
+                    {
+                        angle = Rand.Range(40, 60);
+                        if (this.Pawn.Rotation == Rot4.West)
+                        {
+                            angle *= -1;
+                        }
+                        matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
+                        Graphics.DrawMesh(MeshPool.plane10, matrix, TM_MatPool.lineChain, 0);
+                    }
+                }
+            }
+        }
+
+        private Vector3 ChainDrawPos
+        {
+            get
+            {
+                Vector3 drawpos = this.Pawn.DrawPos;
+                if(this.Pawn.Rotation == Rot4.North)
+                {
+                    drawpos.x += 1.05f;
+                    drawpos.z += .49f;
+                }
+                else if(this.Pawn.Rotation == Rot4.East)
+                {
+                    drawpos.x -= .23f;
+                    drawpos.z += 1.03f;
+                }
+                else if(this.Pawn.Rotation == Rot4.West)
+                {
+                    drawpos.x += .23f;
+                    drawpos.z += 1.03f;
+                }
+                else
+                {
+                    drawpos.x -= 1.05f;
+                    drawpos.z += .49f;
+                }
+                return drawpos;
+            }
+        }
+
         private Vector3 MoteDrawPos
         {
             get

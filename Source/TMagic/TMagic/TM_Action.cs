@@ -993,5 +993,245 @@ namespace TorannMagic
                 MoteMaker.ThrowLightningGlow(position.ToVector3Shifted(), p.Map, 1.4f);
             }
         }
+
+        public static void DoWildSurge(Pawn p, CompAbilityUserMagic comp, MagicAbility ability, TMAbilityDef abilityDef, LocalTargetInfo target, bool canDoBad = true)
+        {
+            float rnd = Rand.Range(0f, 1f);
+            float pwrVal = (comp.MagicData.MagicPowerSkill_ChaosTradition.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ChaosTradition_pwr").level * .1f);
+            float good = .2f + pwrVal;
+            float bad = (.5f - pwrVal) + good;
+            string surgeText = "";
+            if (rnd < good)
+            {
+                int rndGood = Rand.RangeInclusive(0, 2);
+                switch (rndGood)
+                {
+                    case 0:
+                        List<Pawn> nearPawns = TM_Calc.FindPawnsNearTarget(p, 4, p.Position, false);
+                        if (nearPawns != null && nearPawns.Count > 0)
+                        {
+                            for (int i = 0; i < nearPawns.Count; i++)
+                            {
+                                TM_Action.DoAction_HealPawn(p, nearPawns[i], 1, 10);
+                            }
+                        }
+                        TM_MoteMaker.MakePowerBeamMote(p.Position, p.Map, 4 * 6f, 1.2f, 2f, .3f, 1f);
+                        surgeText = "Healing Wave";
+                        break;
+                    case 1:
+                        comp.Mana.CurLevel += comp.ActualManaCost(abilityDef);
+                        TM_MoteMaker.ThrowRegenMote(p.DrawPos, p.Map, 1.2f);
+                        surgeText = "Zero Cost";
+                        break;
+                    case 2:
+                        ability.CooldownTicksLeft = 0;
+                        TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_PowerWave"), p.DrawPos, p.Map, .8f, .2f, .1f, .1f, 0, 1f, 0, Rand.Chance(.5f) ? 0 : 180);
+                        surgeText = "Ability Reset";
+                        break;
+                }
+            }
+            else if ((rnd < bad) && canDoBad)
+            {
+                int rndBad = Rand.RangeInclusive(0, 3);
+                switch (rndBad)
+                {
+                    case 0:
+                        GenExplosion.DoExplosion(p.Position, p.Map, 5f, DamageDefOf.Bomb, p, Rand.Range(8, 12), 1f, null, null, null, null, null, 0, 1, false, null, 0, 1, 0, true);
+                        surgeText = "Explosion";
+                        break;
+                    case 1:
+                        List<Pawn> allPawns = p.Map.mapPawns.AllPawnsSpawned;
+                        for (int i = 0; i < allPawns.Count; i++)
+                        {
+                            if (TM_Calc.IsMagicUser(allPawns[i]))
+                            {
+                                CompAbilityUserMagic apComp = allPawns[i].TryGetComp<CompAbilityUserMagic>();
+                                if (apComp != null)
+                                {
+                                    for (int j = 0; j < apComp.AbilityData.AllPowers.Count; j++)
+                                    {
+                                        MagicAbility ma = apComp.AbilityData.AllPowers[j] as MagicAbility;
+                                        if (ma != null)
+                                        {
+                                            ma.CooldownTicksLeft = (int)(ma.Def.MainVerb.SecondsToRecharge * 60);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        surgeText = "Delay Magic";
+                        break;
+                    case 2:
+                        HealthUtility.AdjustSeverity(p, TorannMagicDefOf.TM_MuteHD, Rand.Range(5, 8));
+                        TM_Action.TransmutateEffects(p.Position, p);
+                        surgeText = "Muted";
+                        break;
+                    case 3:
+                        List<IntVec3> cellList = new List<IntVec3>();
+                        cellList.Clear();
+                        cellList = GenRadial.RadialCellsAround(p.Position, 6, true).ToList();
+                        for (int i = 0; i < cellList.Count; i++)
+                        {
+                            if (cellList[i].IsValid && cellList[i].InBounds(p.Map))
+                            {
+                                List<Thing> thingList = cellList[i].GetThingList(p.Map);
+                                if (thingList != null && thingList.Count > 0)
+                                {
+                                    for (int j = 0; j < thingList.Count; j++)
+                                    {
+                                        Pawn pawn = thingList[j] as Pawn;
+                                        if (pawn != null && pawn != p)
+                                        {
+                                            RemoveFireAt(thingList[j].Position, pawn.Map);
+                                            if (Rand.Chance(TM_Calc.GetSpellSuccessChance(p, pawn, false)))
+                                            {
+                                                IntVec3 targetCell = pawn.Position;
+                                                targetCell.z++;
+                                                DoTimeDelayLaunch(targetCell, p, pawn, 1, Mathf.RoundToInt(Rand.Range(1400, 1800)));
+                                            }
+                                            else
+                                            {
+                                                MoteMaker.ThrowText(pawn.DrawPos, pawn.Map, "TM_ResistedSpell".Translate(), -1);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        surgeText = "Time Field";
+                        break;
+                }
+            }
+            else
+            {
+                int rndNeutral = Rand.RangeInclusive(0, 3);
+                switch (rndNeutral)
+                {
+                    case 0:
+                        ModOptions.Constants.SetPawnInFlight(true);
+                        bool draftFlag = p.Drafted;
+                        IntVec3 initPos = p.Position;
+                        Map map = p.Map;                                               
+                        IntVec3 moveTo = TM_Calc.TryFindSafeCell(p, p.Position, 16, 3, 10);
+                        p.DeSpawn();
+                        if (moveTo != default(IntVec3))
+                        {
+                            GenSpawn.Spawn(p, moveTo, map);
+                        }
+                        else
+                        {
+                            GenSpawn.Spawn(p, initPos, map);
+                        }
+                        p.drafter.Drafted = draftFlag;                        
+                        if (p.IsColonist)
+                        {
+                            p.drafter.Drafted = true;
+                            CameraJumper.TryJumpAndSelect(p);
+                        }
+                        surgeText = "Teleportation";
+                        ModOptions.Constants.SetPawnInFlight(false);
+                        break;
+                    case 1:
+                        if(target != null && target != p && target.Cell != null && target.Cell.IsValid && target.Cell != default(IntVec3))
+                        {
+                            float angle = (Quaternion.AngleAxis(90, Vector3.up) * TM_Calc.GetVector(p.Position, target.Cell)).ToAngleFlat();
+                            for (int i = 0; i < 6; i++)
+                            {                                
+                                TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Flowers, p.DrawPos, p.Map, Rand.Range(.3f, 1f), Rand.Range(1f, 1.5f), .1f, Rand.Range(.2f, .5f), Rand.Range(-100,100),Rand.Range(1,3), angle, Rand.Range(0,360));
+                                MoteMaker.ThrowLightningGlow(p.DrawPos, p.Map, Rand.Range(.5f, 1f));
+                                TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, p.DrawPos, p.Map, Rand.Range(.5f, 1f), 3f, .1f, Rand.Range(.5f, 1f), Rand.Range(-20, 20), Rand.Range(.5f, .8f), angle, Rand.Range(0, 360));
+                            }
+                        }
+                        else
+                        {
+                            for (int i = 0; i < 6; i++)
+                            {
+                                float angle = Rand.Range(0, 360);
+                                TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Flowers, p.DrawPos, p.Map, Rand.Range(.3f, 1f), Rand.Range(1f, 1.5f), .1f, Rand.Range(.2f, .5f), Rand.Range(-100, 100), Rand.Range(1, 3), angle, Rand.Range(0, 360));
+                                MoteMaker.ThrowLightningGlow(p.DrawPos, p.Map, Rand.Range(.5f, 1f));
+                                TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, p.DrawPos, p.Map, Rand.Range(.5f, 1f), 3f, .1f, Rand.Range(.5f, 1f), Rand.Range(-20, 20), Rand.Range(.5f, .8f), angle, Rand.Range(0, 360));
+                            }
+                        }
+                        surgeText = "Flowers";
+                        break;
+                    case 2:
+                        if (p.Map != null)
+                        {
+                            List<Pawn> allPawns = p.Map.mapPawns.AllPawnsSpawned;
+                            if (allPawns != null && allPawns.Count > 0)
+                            {
+                                for (int i = 0; i < allPawns.Count; i++)
+                                {
+                                    if(allPawns[i].needs != null && allPawns[i].needs.food != null)
+                                    {
+                                        HealthUtility.AdjustSeverity(allPawns[i], HediffDefOf.FoodPoisoning, Rand.Range(.3f, .7f));
+                                    }
+                                }
+                            }
+                        }
+                        surgeText = "Mass Poison";
+                        break;
+                    case 3:
+                        if (p.Map != null)
+                        {
+                            List<Pawn> allPawns = p.Map.mapPawns.AllPawnsSpawned;
+                            if (allPawns != null && allPawns.Count > 0)
+                            {
+                                for (int i = 0; i < allPawns.Count; i++)
+                                {
+                                    if (allPawns[i].needs != null && allPawns[i].needs.rest != null)
+                                    {
+                                        Need need = allPawns[i].needs.TryGetNeed(NeedDefOf.Rest);
+                                        if(need != null)
+                                        {
+                                            need.CurLevel = 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        surgeText = "Mass Exhaustion";
+                        break;
+                }
+            }
+            MoteMaker.ThrowText(p.DrawPos, p.Map, "TM_WildSurge".Translate(surgeText), -1);
+        }
+
+        public static void DoTimeDelayLaunch(IntVec3 targetCell, Pawn caster, Pawn pawn, int force, int duration)
+        {
+            bool flag = targetCell != null && targetCell != default(IntVec3);
+            if (flag)
+            {
+                if (pawn != null && pawn.Position.IsValid && pawn.Spawned && pawn.Map != null && !pawn.Downed && !pawn.Dead)
+                {
+                    if (ModCheck.Validate.GiddyUp.Core_IsInitialized())
+                    {
+                        ModCheck.GiddyUp.ForceDismount(pawn);
+                    }
+                    FlyingObject_TimeDelay flyingObject = (FlyingObject_TimeDelay)GenSpawn.Spawn(ThingDef.Named("FlyingObject_TimeDelay"), pawn.Position, pawn.Map);
+                    flyingObject.speed = .01f;
+                    flyingObject.duration = duration;
+                    flyingObject.Launch(caster, targetCell, pawn);
+                }
+            }       
+        }
+
+        private static void RemoveFireAt(IntVec3 position, Map map)
+        {
+            List<Thing> thingList = position.GetThingList(map);
+            if (thingList != null && thingList.Count > 0)
+            {
+                for (int i = 0; i < thingList.Count; i++)
+                {
+                    if (thingList[i].def == ThingDefOf.Fire)
+                    {
+                        //Log.Message("removing fire at " + position);
+                        MoteMaker.ThrowHeatGlow(position, map, .6f);
+                        thingList[i].Destroy(DestroyMode.Vanish);
+                        i--;
+                    }
+                }
+            }
+        }
     }
 }

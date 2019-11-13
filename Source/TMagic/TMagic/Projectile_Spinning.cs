@@ -61,16 +61,18 @@ namespace TorannMagic
                     {
                         TM_Action.DamageEntities(victim, null, this.def.projectile.GetDamageAmount(1, null) * comp.mightPwr, DamageDefOf.Cut, pawn);
                         TM_MoteMaker.ThrowBloodSquirt(victim.DrawPos, victim.Map, .8f);
-
-                        if(victim.IsPrisoner || victim.IsColonist)
+                        if (comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_pwr").level >= 3)
                         {
-                            LegShot(victim, Rand.Range(4, 6), TMDamageDefOf.DamageDefOf.TM_Tranquilizer);
-                            LegShot(victim, Rand.Range(4, 6), TMDamageDefOf.DamageDefOf.TM_DisablingShot);
-                        }
-                        else if(victim.HostileTo(pawn.Faction))
-                        {
-                            HealthUtility.AdjustSeverity(victim, TorannMagicDefOf.TM_Poisoned_HD, Rand.Range(2,4));
-                        }
+                            if (victim.IsPrisoner || victim.IsColonist)
+                            {
+                                LegShot(victim, Rand.Range(4, 6), TMDamageDefOf.DamageDefOf.TM_Tranquilizer);
+                                LegShot(victim, Rand.Range(4, 6), TMDamageDefOf.DamageDefOf.TM_DisablingShot);
+                            }
+                            else if (victim.HostileTo(pawn.Faction))
+                            {
+                                HealthUtility.AdjustSeverity(victim, TorannMagicDefOf.TM_Poisoned_HD, Rand.Range(2, 4));
+                            }
+                        }                        
                     }
                 }
             }

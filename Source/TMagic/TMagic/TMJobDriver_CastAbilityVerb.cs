@@ -15,6 +15,7 @@ namespace TorannMagic
         private int duration;
         public AbilityContext context => job.count == 1 ? AbilityContext.Player : AbilityContext.AI;
         public Verb_UseAbility verb = new Verb_UseAbility(); // = this.pawn.CurJob.verbToUse as Verb_UseAbility;
+        private bool wildCheck = false;
 
         //public override bool TryMakePreToilReservations(bool errorOnFailed)
         //{
@@ -124,6 +125,16 @@ namespace TorannMagic
                     }
                     
                     this.duration--;
+                    if (!wildCheck && this.duration <= 6)
+                    {
+                        wildCheck = true;
+                        if (this.pawn.story != null && this.pawn.story.traits != null && this.pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) && Rand.Chance(.1f))
+                        {
+                            verb.Ability.PostAbilityAttempt();
+                            TM_Action.DoWildSurge(this.pawn, this.pawn.GetComp<CompAbilityUserMagic>(), (MagicAbility)verb.Ability, (TMAbilityDef)verb.Ability.Def, TargetA);
+                            EndJobWith(JobCondition.InterruptForced);
+                        }
+                    }
                 };
                 combatToil.AddFinishAction(delegate
                 {
@@ -234,12 +245,22 @@ namespace TorannMagic
                                     TM_MoteMaker.ThrowCastingMote(pawn.DrawPos, pawn.Map, Rand.Range(1.2f, 2f));
                                 }
                                 this.duration--;
+                                if (!wildCheck && this.duration <= 6)
+                                {
+                                    wildCheck = true;
+                                    if (this.pawn.story != null && this.pawn.story.traits != null && this.pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) && Rand.Chance(.1f))
+                                    {
+                                        verb.Ability.PostAbilityAttempt();
+                                        TM_Action.DoWildSurge(this.pawn, this.pawn.GetComp<CompAbilityUserMagic>(), (MagicAbility)verb.Ability, (TMAbilityDef)verb.Ability.Def, TargetA);
+                                        EndJobWith(JobCondition.InterruptForced);
+                                    }
+                                }
                             };
                             toil.AddFinishAction(delegate
-                            {                                
+                            {
                                 if (this.duration <= 5 && !this.pawn.DestroyedOrNull() && !this.pawn.Dead && !this.pawn.Downed)
                                 {
-                                    verb.Ability.PostAbilityAttempt();                                   
+                                    verb.Ability.PostAbilityAttempt();
                                 }
                                 this.pawn.ClearReservationsForJob(this.job);
                             });

@@ -6,6 +6,13 @@
   <ThingDef Name="MagicBenchBase" ParentName="TM_BuildingBase" Abstract="True">
     <castEdgeShadows>true</castEdgeShadows>
     <staticSunShadowHeight>0.20</staticSunShadowHeight>
+	<minifiedDef>MinifiedThing</minifiedDef>
+	<thingCategories>
+      <li>BuildingsProduction</li>
+    </thingCategories>
+	<statBases>
+      <Mass>10</Mass>
+    </statBases>
     <canOverlapZones>false</canOverlapZones>
 		<building>
 			<workSpeedPenaltyOutdoors>true</workSpeedPenaltyOutdoors>

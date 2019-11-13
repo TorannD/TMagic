@@ -25,6 +25,22 @@ namespace TorannMagic.ModCheck
             }
         }
 
+        public static class PrisonLaborOutdated
+        {
+            public static bool IsInitialized()
+            {
+                bool initialized = false;
+                foreach (ModContentPack p in LoadedModManager.RunningMods)
+                {
+                    if (p.Name == "Prison Labor 0.9 (Outdated)")
+                    {
+                        initialized = true;
+                    }
+                }
+                return initialized;
+            }
+        }
+
         public static class RimOfMadness_Vampires
         {
             public static bool IsInitialized()

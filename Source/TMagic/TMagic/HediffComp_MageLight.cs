@@ -88,7 +88,7 @@ namespace TorannMagic
                         this.Pawn.Map.mapDrawer.MapMeshDirty(oldPos, MapMeshFlag.Things);
                         this.Pawn.Map.glowGrid.DeRegisterGlower(glower);
                     }
-                    if ((this.Pawn.Map.skyManager.CurSkyGlow < 0.8f || this.Pawn.needs.mood.recentMemory.TicksSinceLastLight > 120) && !comp.mageLightSet)
+                    if ((this.Pawn.Map.skyManager.CurSkyGlow < 0.7f || this.Pawn.Position.Roofed(Pawn.Map)) && !comp.mageLightSet)
                     {
                         this.Pawn.Map.mapDrawer.MapMeshDirty(this.Pawn.Position, MapMeshFlag.Things);
                         oldPos = this.Pawn.Position;

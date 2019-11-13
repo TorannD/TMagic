@@ -121,8 +121,8 @@ namespace TorannMagic
                                 SearchForTargets(arg_29_0, (2f + (float)(.5f * verVal)), map, p);
                                 GenSpawn.Spawn(p, this.currentTarget.Cell, map);
                                 DrawBlade(p.Position.ToVector3Shifted(), 4f + (float)(verVal));
-                                p.drafter.Drafted = drafted;                                
-                                ThingSelectionUtility.SelectPreviousColonist();
+                                p.drafter.Drafted = drafted;
+                                CameraJumper.TryJumpAndSelect(p);
                                 TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_BladeSweep"), this.CasterPawn.DrawPos, this.CasterPawn.Map, 1.4f + .4f * ver.level, .04f, 0f, .18f, 1000, 0, 0, Rand.Range(0, 360));
                             }
                             catch

@@ -149,7 +149,7 @@ namespace TorannMagic
                 {
                     if(thingList[i].def == ThingDefOf.Fire)
                     {
-                        Log.Message("removing fire at " + position);
+                        //Log.Message("removing fire at " + position);
                         MoteMaker.ThrowHeatGlow(position, this.Map, .6f);
                         thingList[i].Destroy(DestroyMode.Vanish);
                         i--;

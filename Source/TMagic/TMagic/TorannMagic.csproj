@@ -68,6 +68,10 @@
       <HintPath>..\..\..\..\..\..\..\workshop\content\294100\972057888\Assemblies\PrisonLabor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="PrisonLaborNew">
+      <HintPath>..\..\..\..\..\..\dlls\PrisonLaborNew.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="RimQuest">
       <HintPath>..\..\..\..\..\..\..\workshop\content\294100\1354114366\Assemblies\RimQuest.dll</HintPath>
       <Private>False</Private>

@@ -123,7 +123,7 @@ namespace TorannMagic
                     {
                         
                         this.MagicUser.MagicUserXP += (int)((magicDef.manaCost * 300) * this.MagicUser.xpGain * settingsRef.xpMultiplier);
-                    }
+                    }                    
                 }
                 else if (this.MagicUser.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                 {
@@ -300,7 +300,16 @@ namespace TorannMagic
                             );
                             result = false;
                             return result;
-                        }                        
+                        }
+                        bool flagMute = this.MagicUser.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_MuteHD);
+                        if(flagMute)
+                        {
+                            reason = "TM_CasterMute".Translate(
+                                base.Pawn.LabelShort
+                            );
+                            result = false;
+                            return result;
+                        }
                     }
                     else if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                     {
