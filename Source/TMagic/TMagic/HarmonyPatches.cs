@@ -15,6 +15,7 @@ using Verse.AI;
 using AbilityUserAI;
 using System.Reflection.Emit;
 using TorannMagic.Conditions;
+using PrisonLabor.Tweaks;
 
 namespace TorannMagic
 {
@@ -4767,9 +4768,10 @@ namespace TorannMagic
                         __result = false;
                         return false;
                     }
-                    if(nd == TorannMagicDefOf.TM_Travel && pawn.story != null && pawn.story.traits != null && (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer)))
+                    if(nd == TorannMagicDefOf.TM_Travel)// && pawn.story != null && pawn.story.traits != null)
                     {
-                        return true;
+                        __result = false;
+                        return false;
                     }
                     //if(pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD")) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadAnimalHD")))
                     //{

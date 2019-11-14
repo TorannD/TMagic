@@ -2508,6 +2508,12 @@ namespace TorannMagic
             if (comp != null)
             {
                 int count = 2 + comp.MagicData.MagicPowerSkill_ChaosTradition.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ChaosTradition_ver").level;
+                for(int x =0; x < comp.MagicData.AllMagicPowersForChaosMage.Count; x++)
+                {
+                    MagicPower mp = comp.MagicData.AllMagicPowersForChaosMage[x];
+                    mp.level = 0;
+                    mp.autocast = false;
+                }
                 comp.MagicData.ResetAllSkills();
                 comp.chaosPowers = new List<TM_ChaosPowers>();
                 comp.chaosPowers.Clear();

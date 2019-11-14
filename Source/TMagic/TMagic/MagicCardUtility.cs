@@ -330,8 +330,11 @@ namespace TorannMagic
                         CMList.AddRange(comp.MagicData.MagicPowersCM);
                         for(int i = 0; i < comp.chaosPowers.Count; i++)
                         {
-                            CMList.Add(comp.MagicData.AllMagicPowersForChaosMage.FirstOrDefault<MagicPower>((MagicPower cm) => cm.abilityDef == comp.chaosPowers[i].Ability));
+                            MagicPower mp = comp.MagicData.AllMagicPowersForChaosMage.FirstOrDefault<MagicPower>((MagicPower cm) => cm.abilityDef.defName.Contains(comp.chaosPowers[i].Ability.defName));
+
+                            CMList.Add(mp);
                         }
+                        //MagicCardUtility.PowersGUIHandler_CM(inRect3, comp, comp.MagicData.AllMagicPowersForChaosMage, comp.MagicData.MagicPowerSkill_ChaosTradition, comp.chaosPowers[0].Skills, comp.chaosPowers[1].Skills, comp.chaosPowers[2].Skills, comp.chaosPowers[3].Skills, comp.chaosPowers[4].Skills, TexButton.TMTex_SkillPointUsed);
                         MagicCardUtility.PowersGUIHandler_CM(inRect3, comp, CMList, comp.MagicData.MagicPowerSkill_ChaosTradition, comp.chaosPowers[0].Skills, comp.chaosPowers[1].Skills, comp.chaosPowers[2].Skills, comp.chaosPowers[3].Skills, comp.chaosPowers[4].Skills, TexButton.TMTex_SkillPointUsed);
                     }
                     if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer))
@@ -1471,8 +1474,8 @@ namespace TorannMagic
                 EnumerationStart:;
                 while (enumerator.MoveNext())
                 {
-                    MagicPower power = enumerator.Current;
-                    if (!power.learned)
+                    MagicPower power = enumerator.Current;                    
+                    if (power == null || !power.learned)
                     {
                         goto EnumerationStart;
                     }
