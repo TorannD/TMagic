@@ -994,8 +994,10 @@ namespace TorannMagic
             }
         }
 
-        public static void DoWildSurge(Pawn p, CompAbilityUserMagic comp, MagicAbility ability, TMAbilityDef abilityDef, LocalTargetInfo target, bool canDoBad = true)
+        public static bool DoWildSurge(Pawn p, CompAbilityUserMagic comp, MagicAbility ability, TMAbilityDef abilityDef, LocalTargetInfo target, bool canDoBad = true)
         {
+            bool completeJob = false;
+
             float rnd = Rand.Range(0f, 1f);
             float pwrVal = (comp.MagicData.MagicPowerSkill_ChaosTradition.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ChaosTradition_pwr").level * .1f);
             float good = .2f + pwrVal;
@@ -1017,16 +1019,19 @@ namespace TorannMagic
                         }
                         TM_MoteMaker.MakePowerBeamMote(p.Position, p.Map, 4 * 6f, 1.2f, 2f, .3f, 1f);
                         surgeText = "Healing Wave";
+                        completeJob = true;
                         break;
                     case 1:
                         comp.Mana.CurLevel += comp.ActualManaCost(abilityDef);
                         TM_MoteMaker.ThrowRegenMote(p.DrawPos, p.Map, 1.2f);
                         surgeText = "Zero Cost";
+                        completeJob = true;
                         break;
                     case 2:
                         ability.CooldownTicksLeft = 0;
                         TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_PowerWave"), p.DrawPos, p.Map, .8f, .2f, .1f, .1f, 0, 1f, 0, Rand.Chance(.5f) ? 0 : 180);
                         surgeText = "Ability Reset";
+                        completeJob = true;
                         break;
                 }
             }
@@ -1195,6 +1200,8 @@ namespace TorannMagic
                 }
             }
             MoteMaker.ThrowText(p.DrawPos, p.Map, "TM_WildSurge".Translate(surgeText), -1);
+
+            return completeJob;
         }
 
         public static void DoTimeDelayLaunch(IntVec3 targetCell, Pawn caster, Pawn pawn, int force, int duration)

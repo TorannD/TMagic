@@ -249,10 +249,13 @@ namespace TorannMagic
                                 {
                                     wildCheck = true;
                                     if (this.pawn.story != null && this.pawn.story.traits != null && this.pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) && Rand.Chance(.1f))
-                                    {
-                                        verb.Ability.PostAbilityAttempt();
-                                        TM_Action.DoWildSurge(this.pawn, this.pawn.GetComp<CompAbilityUserMagic>(), (MagicAbility)verb.Ability, (TMAbilityDef)verb.Ability.Def, TargetA);
-                                        EndJobWith(JobCondition.InterruptForced);
+                                    {                                        
+                                        bool completeJob = TM_Action.DoWildSurge(this.pawn, this.pawn.GetComp<CompAbilityUserMagic>(), (MagicAbility)verb.Ability, (TMAbilityDef)verb.Ability.Def, TargetA);
+                                        if (!completeJob)
+                                        {
+                                            verb.Ability.PostAbilityAttempt();
+                                            EndJobWith(JobCondition.InterruptForced);
+                                        }
                                     }
                                 }
                             };

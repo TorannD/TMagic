@@ -8096,6 +8096,8 @@ namespace TorannMagic
 
         public void ResolveEnchantments()
         {
+            float _maxMPUpkeep = 0;
+            float _mpRegenRateUpkeep = 0;
             float _maxMP = 0;
             float _mpRegenRate = 0;
             float _coolDown = 0;
@@ -8196,25 +8198,25 @@ namespace TorannMagic
 
             if (this.summonedLights.Count > 0)
             {                
-                _maxMP -= (this.summonedLights.Count * .4f);
-                _mpRegenRate -= (this.summonedLights.Count * .4f);
+                _maxMPUpkeep -= (this.summonedLights.Count * .4f);
+                _mpRegenRateUpkeep -= (this.summonedLights.Count * .4f);
             }
             if (this.summonedHeaters.Count > 0)
             {                
-                _maxMP -= (this.summonedHeaters.Count * .25f);
+                _maxMPUpkeep -= (this.summonedHeaters.Count * .25f);
             }
             if (this.summonedCoolers.Count > 0)
             {                
-                _maxMP -= (this.summonedCoolers.Count * .25f);
+                _maxMPUpkeep -= (this.summonedCoolers.Count * .25f);
             }
             if (this.summonedPowerNodes.Count > 0)
             {                
-                _maxMP -= (this.summonedPowerNodes.Count * .25f);
-                _mpRegenRate -= (this.summonedPowerNodes.Count * .25f);
+                _maxMPUpkeep -= (this.summonedPowerNodes.Count * .25f);
+                _mpRegenRateUpkeep -= (this.summonedPowerNodes.Count * .25f);
             }
             if(this.weaponEnchants.Count > 0)
             {
-                _maxMP -= (this.weaponEnchants.Count * ActualManaCost(TorannMagicDefOf.TM_EnchantWeapon));
+                _maxMPUpkeep -= (this.weaponEnchants.Count * ActualManaCost(TorannMagicDefOf.TM_EnchantWeapon));
             }
             if(this.enchanterStones != null && this.enchanterStones.Count > 0)
             {
@@ -8225,13 +8227,13 @@ namespace TorannMagic
                         this.enchanterStones.Remove(this.enchanterStones[i]);
                     }
                 }
-                _maxMP -= (.20f - (.02f * this.MagicData.MagicPowerSkill_EnchanterStone.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchanterStone_eff").level)) * this.enchanterStones.Count;
+                _maxMPUpkeep -= (.20f - (.02f * this.MagicData.MagicPowerSkill_EnchanterStone.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchanterStone_eff").level)) * this.enchanterStones.Count;
             }
             try
             {
                 if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) && this.fertileLands.Count > 0)
                 {
-                    _mpRegenRate += -.4f;
+                    _mpRegenRateUpkeep += -.4f;
                 }
             }
             catch
@@ -8254,43 +8256,42 @@ namespace TorannMagic
             }
             if(this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_EntertainingHD"), false))
             {
-                _maxMP += -.3f;
+                _maxMPUpkeep += -.3f;
             }
             if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PredictionHD, false))
             {
-                _mpRegenRate += -.5f * (1 - (.10f * this.MagicData.MagicPowerSkill_Prediction.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Prediction_eff").level));
+                _mpRegenRateUpkeep += -.5f * (1 - (.10f * this.MagicData.MagicPowerSkill_Prediction.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Prediction_eff").level));
             }
             if(this.recallSet)
             {
-                _maxMP += -.4f * (1 - (.08f * this.MagicData.MagicPowerSkill_Recall.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Recall_eff").level));
-                _mpRegenRate += -.3f * (1 - (.08f * this.MagicData.MagicPowerSkill_Recall.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Recall_eff").level));
+                _maxMPUpkeep += -.4f * (1 - (.08f * this.MagicData.MagicPowerSkill_Recall.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Recall_eff").level));
+                _mpRegenRateUpkeep += -.3f * (1 - (.08f * this.MagicData.MagicPowerSkill_Recall.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Recall_eff").level));
             }
             if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Shadow_AuraHD, false))
             {
-                _maxMP += -.4f * (1 - (.08f * this.MagicData.MagicPowerSkill_Shadow.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Shadow_eff").level));
-                _mpRegenRate += -.3f * (1 - (.08f * this.MagicData.MagicPowerSkill_Shadow.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Shadow_eff").level));
+                _maxMPUpkeep += -.4f * (1 - (.08f * this.MagicData.MagicPowerSkill_Shadow.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Shadow_eff").level));
+                _mpRegenRateUpkeep += -.3f * (1 - (.08f * this.MagicData.MagicPowerSkill_Shadow.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Shadow_eff").level));
             }
             if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_RayOfHope_AuraHD, false))
             {
-                _maxMP += -.4f * (1 - (.08f * this.MagicData.MagicPowerSkill_RayofHope.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RayofHope_eff").level));
-                _mpRegenRate += -.3f * (1 - (.08f * this.MagicData.MagicPowerSkill_RayofHope.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RayofHope_eff").level));
+                _maxMPUpkeep += -.4f * (1 - (.08f * this.MagicData.MagicPowerSkill_RayofHope.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RayofHope_eff").level));
+                _mpRegenRateUpkeep += -.3f * (1 - (.08f * this.MagicData.MagicPowerSkill_RayofHope.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RayofHope_eff").level));
             }
             if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_SoothingBreeze_AuraHD, false))
             {
-                _maxMP += -.4f * (1 - (.08f * this.MagicData.MagicPowerSkill_Soothe.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Soothe_eff").level));
-                _mpRegenRate += -.3f * (1 - (.08f * this.MagicData.MagicPowerSkill_Soothe.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Soothe_eff").level));
+                _maxMPUpkeep += -.4f * (1 - (.08f * this.MagicData.MagicPowerSkill_Soothe.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Soothe_eff").level));
+                _mpRegenRateUpkeep += -.3f * (1 - (.08f * this.MagicData.MagicPowerSkill_Soothe.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Soothe_eff").level));
             }
             if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_EnchantedAuraHD) || this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_EnchantedBodyHD))
-            {
-                
-                _maxMP += -.3f + (.045f * this.MagicData.MagicPowerSkill_EnchantedBody.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchantedBody_eff").level);
-                _mpRegenRate += -.5f + (.045f * this.MagicData.MagicPowerSkill_EnchantedBody.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchantedBody_ver").level);
+            {                
+                _maxMPUpkeep += -.3f + (.045f * this.MagicData.MagicPowerSkill_EnchantedBody.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchantedBody_eff").level);
+                _mpRegenRateUpkeep += -.5f + (.045f * this.MagicData.MagicPowerSkill_EnchantedBody.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_EnchantedBody_ver").level);
             }
             if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer) || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
             {
                 MagicPowerSkill familiarSkin = this.MagicData.MagicPowerSkill_Stoneskin.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Stoneskin_eff");
                 MagicPowerSkill sharedSkin = this.MagicData.MagicPowerSkill_Stoneskin.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Stoneskin_ver");
-                _maxMP += -((.15f - (.02f * familiarSkin.level)) * this.stoneskinPawns.Count());
+                _maxMPUpkeep += -((.15f - (.02f * familiarSkin.level)) * this.stoneskinPawns.Count());
                 //if(this.earthSpriteType != 0) //this is handled within mana gain function
                 //{
                 //    _mpRegenRate += -(.6f - (.07f * sharedSkin.level));
@@ -8300,11 +8301,11 @@ namespace TorannMagic
 
                 if(heartofstone.level == 3)
                 {
-                    _maxMP += -(.15f * this.summonedSentinels.Count);
+                    _maxMPUpkeep += -(.15f * this.summonedSentinels.Count);
                 }
                 else
                 {
-                    _maxMP += -((.2f - (.02f * heartofstone.level)) * this.summonedSentinels.Count);
+                    _maxMPUpkeep += -((.2f - (.02f * heartofstone.level)) * this.summonedSentinels.Count);
                 }
             }
             if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer) || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
@@ -8319,12 +8320,12 @@ namespace TorannMagic
             }
             if(this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_MageLightHD))
             {
-                _maxMP += -.1f;
-                _mpRegenRate += -.05f;
+                _maxMPUpkeep += -.1f;
+                _mpRegenRateUpkeep += -.05f;
             }
             if(this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BlurHD))
             {
-                _maxMP += -.2f;
+                _maxMPUpkeep += -.2f;
             }
             MagicPowerSkill spirit = this.MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr");
             MagicPowerSkill clarity = this.MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
@@ -8334,13 +8335,15 @@ namespace TorannMagic
             _mpCost += (focus.level * -.025f);
             _arcaneRes += ((1 - this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false)) / 2);
             _arcaneDmg += ((this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false) - 1) / 4);
-            
+
+            float val = 1f;
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer) || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
             {
-                float val = (1f - (.03f * this.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_eff").level));
-                _maxMP *= val;
-                _mpRegenRate *= val;
+               val = (1f - (.03f * this.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_eff").level));                
             }
+            _maxMP = _maxMP + (_maxMPUpkeep * val);
+            _mpRegenRate = _mpRegenRate + (_mpRegenRateUpkeep * val);
+
             this.maxMP = 1f + _maxMP;
             this.mpRegenRate = 1f +  _mpRegenRate;
             this.coolDown = 1f + _coolDown;
