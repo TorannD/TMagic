@@ -1467,45 +1467,48 @@ namespace TorannMagic
                 {
                     return;
                 }
-                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            
-                var gizmoList = __result.ToList();
-                if (settingsRef.Wanderer && __instance.story.traits.HasTrait(TorannMagicDefOf.Gifted))
+                if (__instance.IsColonist)
                 {
-                    Pawn p = __instance;
-                    Command_Action itemWanderer = new Command_Action
-                    {
-                        action = new Action(delegate
-                        {
-                            TM_Action.PromoteWanderer(p);
-                        }),
-                        hotKey = KeyBindingDefOf.Misc3,
-                        order = 51,
-                        defaultLabel = TM_TextPool.TM_PromoteWanderer,
-                        defaultDesc = TM_TextPool.TM_PromoteWandererDesc,
-                        icon = ContentFinder<Texture2D>.Get("UI/wanderer", true),
-                    };
-                    gizmoList.Add(itemWanderer);
-                }
-                if (settingsRef.Wayfarer && __instance.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy))
-                {
-                    Pawn p = __instance;
-                    Command_Action itemWayfarer = new Command_Action
-                    {
+                    ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
 
-                        action = new Action(delegate
+                    var gizmoList = __result.ToList();
+                    if (settingsRef.Wanderer && __instance.story.traits.HasTrait(TorannMagicDefOf.Gifted))
+                    {
+                        Pawn p = __instance;
+                        Command_Action itemWanderer = new Command_Action
                         {
-                            TM_Action.PromoteWayfarer(p);
-                        }),
-                        hotKey = KeyBindingDefOf.Misc3,
-                        order = 52,
-                        defaultLabel = TM_TextPool.TM_PromoteWayfarer,
-                        defaultDesc = TM_TextPool.TM_PromoteWayfarerDesc,
-                        icon = ContentFinder<Texture2D>.Get("UI/wayfarer", true),
-                    };
-                    gizmoList.Add(itemWayfarer);
+                            action = new Action(delegate
+                            {
+                                TM_Action.PromoteWanderer(p);
+                            }),
+                            hotKey = KeyBindingDefOf.Misc3,
+                            order = 51,
+                            defaultLabel = TM_TextPool.TM_PromoteWanderer,
+                            defaultDesc = TM_TextPool.TM_PromoteWandererDesc,
+                            icon = ContentFinder<Texture2D>.Get("UI/wanderer", true),
+                        };
+                        gizmoList.Add(itemWanderer);
+                    }
+                    if (settingsRef.Wayfarer && __instance.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy))
+                    {
+                        Pawn p = __instance;
+                        Command_Action itemWayfarer = new Command_Action
+                        {
+
+                            action = new Action(delegate
+                            {
+                                TM_Action.PromoteWayfarer(p);
+                            }),
+                            hotKey = KeyBindingDefOf.Misc3,
+                            order = 52,
+                            defaultLabel = TM_TextPool.TM_PromoteWayfarer,
+                            defaultDesc = TM_TextPool.TM_PromoteWayfarerDesc,
+                            icon = ContentFinder<Texture2D>.Get("UI/wayfarer", true),
+                        };
+                        gizmoList.Add(itemWayfarer);
+                    }
+                    __result = gizmoList;
                 }
-                __result = gizmoList;
             }
         }
 
