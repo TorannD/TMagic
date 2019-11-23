@@ -6,7 +6,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.55, 0.05, 1)</defaultLabelColor>
     <label>arcane speed</label>
-    <lethalSeverity>20</lethalSeverity>
+    <maxSeverity>20.0</maxSeverity>
 	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
@@ -55,16 +55,12 @@
         </capMods>
       </li>
 	  <li>
-        <label>overwhelmed</label>
+        <label>V</label>
         <minSeverity>15</minSeverity>	
         <capMods>
 		  <li>
             <capacity>Moving</capacity>
-            <offset>-.8</offset>
-          </li>
-		  <li>
-            <capacity>Consciousness</capacity>
-            <offset>-.3</offset>
+            <offset>1.5</offset>
           </li>
         </capMods>
       </li>
@@ -76,7 +72,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.55, 0.05, 1)</defaultLabelColor>
     <label>arcane dexterity</label>
-    <lethalSeverity>20</lethalSeverity>
+    <maxSeverity>20.0</maxSeverity>
 	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
@@ -125,16 +121,12 @@
         </capMods>
       </li>
 	  <li>
-        <label>overwhelmed</label>
+        <label>V</label>
         <minSeverity>15</minSeverity>	
         <capMods>
 		  <li>
             <capacity>Manipulation</capacity>
-            <offset>-.8</offset>
-          </li>
-		  <li>
-            <capacity>Consciousness</capacity>
-            <offset>-.3</offset>
+            <offset>1.5</offset>
           </li>
         </capMods>
       </li>
@@ -146,7 +138,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.55, 0.05, 1)</defaultLabelColor>
     <label>infused oxygen</label>
-    <lethalSeverity>20</lethalSeverity>
+    <maxSeverity>20.0</maxSeverity>
 	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
@@ -195,16 +187,12 @@
         </capMods>
       </li>
 	  <li>
-        <label>overwhelmed</label>
+        <label>V</label>
         <minSeverity>15</minSeverity>	
         <capMods>
 		  <li>
             <capacity>Breathing</capacity>
-            <offset>-.3</offset>
-          </li>
-		  <li>
-            <capacity>Consciousness</capacity>
-            <offset>-.3</offset>
+            <offset>1.5</offset>
           </li>
         </capMods>
       </li>
@@ -216,7 +204,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.55, 0.05, 1)</defaultLabelColor>
     <label>arcane vision</label>
-    <lethalSeverity>20</lethalSeverity>
+    <maxSeverity>20.0</maxSeverity>
 	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
@@ -265,16 +253,12 @@
         </capMods>
       </li>
 	  <li>
-        <label>overwhelmed</label>
+        <label>V</label>
         <minSeverity>10</minSeverity>	
         <capMods>
 		  <li>
             <capacity>Sight</capacity>
-            <offset>-.8</offset>
-          </li>
-		  <li>
-            <capacity>Consciousness</capacity>
-            <offset>-.3</offset>
+            <offset>1.5</offset>
           </li>
         </capMods>
       </li>
