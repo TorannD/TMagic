@@ -3,104 +3,52 @@
 	<BodyDef>
 		<defName>TM_Skeletal</defName>
 		<label>skeletal</label>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
 		<corePart>
 			<def>Ribcage</def>
 			<customLabel>ribcage</customLabel>
 			<height>Middle</height>
 			<depth>Outside</depth>
-			<groups>
-				<li>Torso</li>
-			</groups>
 			<parts>
 				<li>
-					<def>Sternum</def>
-					<coverage>0.015</coverage>
-					<depth>Outside</depth>
-					<groups>
-						<li>Torso</li>
-					</groups>
-				</li>
-				<li>
-					<def>Pelvis</def>
-					<coverage>0.025</coverage>
-					<height>Bottom</height>
-					<depth>Outside</depth>
-					<groups>
-						<li>Torso</li>
-					</groups>
-				</li>
-				<li>
-					<def>Spine</def>
-					<coverage>0.025</coverage>
-					<depth>Outside</depth>
-					<groups>
-						<li>Torso</li>
-					</groups>
-				</li>
-				<li>
-					<def>Stomach</def>
-					<coverage>0</coverage>
-					<depth>Inside</depth>
-					<groups>
-						<li>Torso</li>
-					</groups>
-				</li>
-				<li>
-					<def>Heart</def>
-					<coverage>0</coverage>
-					<depth>Inside</depth>
-					<groups>
-						<li>Torso</li>
-					</groups>
-				</li>
-				<li>
-					<def>Lung</def>
-					<customLabel>left lung</customLabel>
-					<coverage>0</coverage>
-					<depth>Inside</depth>
-					<groups>
-						<li>Torso</li>
-					</groups>
-				</li>
-				<li>
-					<def>Lung</def>
-					<customLabel>right lung</customLabel>
-					<coverage>0</coverage>
-					<depth>Inside</depth>
-					<groups>
-						<li>Torso</li>
-					</groups>
-				</li>
-				<li>
-					<def>Kidney</def>
-					<customLabel>left kidney</customLabel>
-					<coverage>0</coverage>
-					<depth>Inside</depth>
-					<groups>
-						<li>Torso</li>
-					</groups>
-				</li>
-				<li>
-					<def>Kidney</def>
-					<customLabel>right kidney</customLabel>
-					<coverage>0</coverage>
-					<depth>Inside</depth>
-					<groups>
-						<li>Torso</li>
-					</groups>
-				</li>
-				<li>
-					<def>Liver</def>
-					<coverage>0</coverage>
-					<depth>Inside</depth>
-					<groups>
-						<li>Torso</li>
-					</groups>
+				  <def>Skeletal_Ribcage</def>
+				  <coverage>0.28</coverage>
+				  <height>Middle</height>
+				  <groups>
+					<li>Torso</li>
+				  </groups>
+				  <parts>
+					<li>
+						<def>Sternum</def>
+						<coverage>0.15</coverage>
+						<depth>Outside</depth>
+						<groups>
+							<li>Torso</li>
+						</groups>
+					</li>
+					<li>
+						<def>Pelvis</def>
+						<coverage>0.25</coverage>
+						<height>Bottom</height>
+						<depth>Outside</depth>
+						<groups>
+							<li>Torso</li>
+						</groups>
+					</li>
+					<li>
+						<def>Spine</def>
+						<coverage>0.25</coverage>
+						<depth>Outside</depth>
+						<groups>
+							<li>Torso</li>
+						</groups>
+					</li>					
+				  </parts>	
 				</li>
 				<li>
 					<def>Skeletal_Neck</def>
 					<customLabel>neck bones</customLabel>
-					<coverage>0.075</coverage>
+					<coverage>0.20</coverage>
 					<height>Top</height>
 					<groups>
 						<li>Neck</li>
@@ -109,82 +57,22 @@
 						<li>
 							<def>Skeletal_Head</def>
 							<customLabel>skull</customLabel>
-							<coverage>0.80</coverage>
+							<coverage>0.8</coverage>
 							<groups>
 								<li>UpperHead</li>
 								<li>FullHead</li>
 								<li>HeadAttackTool</li>
+								<li>Eyes</li>
 							</groups>
-							<parts>
-								<li>
-									<def>Skull</def>
-									<coverage>0</coverage>
-									<depth>Inside</depth>
-									<groups>
-										<li>UpperHead</li>
-										<li>FullHead</li>
-									</groups>
-									<parts>
-										<li>
-											<def>Brain</def>
-											<coverage>0</coverage>
-											<groups>
-												<li>UpperHead</li>
-												<li>FullHead</li>
-											</groups>
-										</li>
-									</parts>
-								</li>
-								<li>
-									<def>Eye</def>
-									<customLabel>left eye</customLabel>
-									<coverage>0</coverage>
-									<groups>
-										<li>FullHead</li>
-										<li>Eyes</li>
-									</groups>
-								</li>
-								<li>
-									<def>Eye</def>
-									<customLabel>right eye</customLabel>
-									<coverage>0</coverage>
-									<groups>
-										<li>FullHead</li>
-										<li>Eyes</li>
-									</groups>
-								</li>
-								<li>
-									<def>Ear</def>
-									<customLabel>left ear</customLabel>
-									<coverage>0</coverage>
-									<groups>
-										<li>UpperHead</li>
-										<li>FullHead</li>
-									</groups>
-								</li>
-								<li>
-									<def>Ear</def>
-									<customLabel>right ear</customLabel>
-									<coverage>0</coverage>
-									<groups>
-										<li>UpperHead</li>
-										<li>FullHead</li>
-									</groups>
-								</li>
-								<li>
-									<def>Nose</def>
-									<coverage>0</coverage>
-									<groups>
-										<li>FullHead</li>
-									</groups>
-								</li>
+							<parts>								
 								<li>
 									<def>Skeletal_Jaw</def>
 									<customLabel>jaw</customLabel>
-									<coverage>0.15</coverage>
+									<coverage>0.2</coverage>
 									<groups>
 										<li>Teeth</li>
 										<li>FullHead</li>
+										<li>HeadAttackTool</li>
 									</groups>
 								</li>
 							</parts>
@@ -398,14 +286,6 @@
 								</parts>
 							</li>
 						</parts>
-					</li>
-					<li>
-						<def>Waist</def>
-						<coverage>0</coverage>
-						<height>Bottom</height>
-						<groups>
-							<li>Waist</li>
-						</groups>
 					</li>
 					<li>
 						<def>Skeletal_Leg</def>

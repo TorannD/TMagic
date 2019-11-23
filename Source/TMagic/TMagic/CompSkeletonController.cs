@@ -472,7 +472,8 @@ namespace TorannMagic
                                     }
                                 }
                             }
-                            else if (this.Pawn.TargetCurrentlyAimingAt != null && this.closeThreats.Count() > 1)
+
+                            if (this.closeThreats.Count() > 1)
                             {
                                 if (Rand.Chance(.2f) && this.NextAoEAttack < Find.TickManager.TicksGame)
                                 {
@@ -483,7 +484,7 @@ namespace TorannMagic
                                     DoAoEAttack(this.Pawn.Position, false, 2.5f, DamageDefOf.Crush, 0, TorannMagicDefOf.Mote_EarthCrack);
                                 }
 
-                                if (Rand.Chance(.2f) && this.farThreats.Count() > (5 * this.closeThreats.Count()))
+                                if (Rand.Chance(.1f) && this.farThreats.Count() > (5 * this.closeThreats.Count()))
                                 {
                                     this.Pawn.CurJob.targetA = this.farThreats.RandomElement();
                                 }
@@ -565,7 +566,7 @@ namespace TorannMagic
 
                         }
 
-                        if (Find.TickManager.TicksGame <= this.scanTick)
+                        if (Find.TickManager.TicksGame >= this.scanTick)
                         {
                             this.scanTick = Rand.Range(250, 320) + Find.TickManager.TicksGame;
                             DetermineThreats();

@@ -207,39 +207,42 @@ namespace TorannMagic
             int pwrVal = 3;
             int verVal = 3;
             List<Pawn> TargetsAoE = TM_Calc.FindPawnsNearTarget(this.Pawn, 5, target, true);
-            for (int i = 0; i < TargetsAoE.Count; i++)
+            if (TargetsAoE != null && TargetsAoE.Count > 0)
             {
-                Pawn victim = TargetsAoE[i];
-                if (!victim.RaceProps.IsMechanoid)
+                for (int i = 0; i < TargetsAoE.Count; i++)
                 {
-                    if (Rand.Chance(TM_Calc.GetSpellSuccessChance(this.Pawn, victim, true)))
+                    Pawn victim = TargetsAoE[i];
+                    if (!victim.RaceProps.IsMechanoid)
                     {
-                        HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_DeathMarkCurse"), (Rand.Range(1f + pwrVal, 4 + 2 * pwrVal)));
-                        TM_MoteMaker.ThrowSiphonMote(victim.DrawPos, victim.Map, 1f);
-
-                        if (Rand.Chance(verVal * .2f))
+                        if (Rand.Chance(TM_Calc.GetSpellSuccessChance(this.Pawn, victim, true)))
                         {
-                            if (Rand.Chance(verVal * .1f)) //terror
-                            {
-                                HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_Terror"), Rand.Range(3f * verVal, 5f * verVal));
-                                TM_MoteMaker.ThrowDiseaseMote(victim.DrawPos, victim.Map, 1f, .5f, .2f, .4f);
-                                MoteMaker.ThrowText(victim.DrawPos, victim.Map, "Terror", -1);
-                            }
-                            if (Rand.Chance(verVal * .1f)) //berserk
-                            {
-                                if (victim.mindState != null && victim.RaceProps != null && victim.RaceProps.Humanlike)
-                                {
-                                    victim.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk, "cursed", true, false, null);
-                                    MoteMaker.ThrowMicroSparks(victim.DrawPos, victim.Map);
-                                    MoteMaker.ThrowText(victim.DrawPos, victim.Map, "Berserk", -1);
-                                }
+                            HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_DeathMarkCurse"), (Rand.Range(1f + pwrVal, 4 + 2 * pwrVal)));
+                            TM_MoteMaker.ThrowSiphonMote(victim.DrawPos, victim.Map, 1f);
 
+                            if (Rand.Chance(verVal * .2f))
+                            {
+                                if (Rand.Chance(verVal * .1f)) //terror
+                                {
+                                    HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_Terror"), Rand.Range(3f * verVal, 5f * verVal));
+                                    TM_MoteMaker.ThrowDiseaseMote(victim.DrawPos, victim.Map, 1f, .5f, .2f, .4f);
+                                    MoteMaker.ThrowText(victim.DrawPos, victim.Map, "Terror", -1);
+                                }
+                                if (Rand.Chance(verVal * .1f)) //berserk
+                                {
+                                    if (victim.mindState != null && victim.RaceProps != null && victim.RaceProps.Humanlike)
+                                    {
+                                        victim.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk, "cursed", true, false, null);
+                                        MoteMaker.ThrowMicroSparks(victim.DrawPos, victim.Map);
+                                        MoteMaker.ThrowText(victim.DrawPos, victim.Map, "Berserk", -1);
+                                    }
+
+                                }
                             }
                         }
-                    }
-                    else
-                    {
-                        MoteMaker.ThrowText(victim.DrawPos, victim.Map, "TM_ResistedSpell".Translate(), -1);
+                        else
+                        {
+                            MoteMaker.ThrowText(victim.DrawPos, victim.Map, "TM_ResistedSpell".Translate(), -1);
+                        }
                     }
                 }
             }

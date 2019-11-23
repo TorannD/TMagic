@@ -111,9 +111,9 @@ Drafted: uses its anti-gravity system to propel small, time delayed explosives a
     <defName>TM_TechnoTurret</defName>
     <label>Mark-IV Turret</label>
     <uiIconPath>Other/TechnoTurret</uiIconPath>
-    <description>Deploys and establishes a neural link to the Mark-IV weapon system. Any activity or movement will break the neural link and miniaturize the Mark-IV weapon system. Rockets and mortars consume mana per shot.
+    <description>Deploys and establishes a neural link to the Mark-IV turret. The Mark-IV is remotely controlled by the caster. After the turret is deployed,any activity or movement by the caster will break the neural link and miniaturize the Mark-IV weapon system. Rockets and mortars consume mana per shot.
 
-The Mark-IV will automatically miniaturize itself when it takes critical damage and can cause neural feedback to any pawn with an active link to the system.</description>
+The Mark-IV will automatically miniaturize itself when it takes critical damage and can cause neural feedback to the technomancer manning the system.</description>
     <manaCost>0.5</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
