@@ -110,7 +110,7 @@ namespace TorannMagic
                     {
                         thing.TryGetComp<CompQuality>().SetQuality(compQual.Quality + 1, ArtGenerationContext.Colony);
                     }
-                    thing.HitPoints = Mathf.RoundToInt((wornRatio * thing.MaxHitPoints) + ((.3f + (.1f * pwrVal)) * thing.MaxHitPoints));
+                    thing.HitPoints = Mathf.RoundToInt((wornRatio * thing.MaxHitPoints) - ((.2f - (.1f * pwrVal)) * thing.MaxHitPoints));
                     if (thing.HitPoints > thing.MaxHitPoints)
                     {
                         thing.HitPoints = thing.MaxHitPoints;

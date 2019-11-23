@@ -2314,7 +2314,7 @@
         <label>Cooler</label>
         <minSeverity>.001</minSeverity>
 		<statOffsets>
-		  <ComfyTemperatureMin>4</ComfyTemperatureMin>
+		  <ComfyTemperatureMin>-4</ComfyTemperatureMin>
 	    </statOffsets>
       </li>      
     </stages>

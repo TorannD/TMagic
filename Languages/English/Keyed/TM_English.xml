@@ -962,7 +962,7 @@ Equipment will disintegrate if it degrades below 0 durability. Equipment transmu
 Level 0: Raw resources (stone, steel, silver, etc)
 Level 1: Foods (meat, rice, meals) - will always convert to pemmican or nutrient paste
 Level 2: Corpses - will always convert to nutrient paste
-Level 3: Equipment - applies to equipment made from stuff; transmutes to stuff between 95% - 200% value of the original stuff.
+Level 3: Equipment - applies to equipment made from stuff; randomly transmutes to stuff in the same category.
 Equipment made only from set material will be repaired by 30% + 10% * Conversion Rate skill level and has a (2% * Conversion Rate skill level) chance to increase the quality of the item by one level.</TM_Transmutate_ver_desc> 
 <TM_EnchanterStone_eff_desc>Reduces the mana required to cast Enchanter's Stone by 10% and reduces max MP upkeep by 2 mana per skill level .</TM_EnchanterStone_eff_desc>
 <TM_EnchanterStone_ver_desc>Allows the enchanter to create artifacts out of more resources types. This skill requires 2 ability points to train.

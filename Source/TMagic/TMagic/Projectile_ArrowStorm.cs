@@ -108,6 +108,7 @@ namespace TorannMagic
             {
                 dmg = Mathf.RoundToInt((projectileDef.projectile.GetDamageAmount(1,null) + (value / 50)) * (1 + (.1f * pwrVal)));
             }
+            dmg = Mathf.Clamp(dmg, 0, 60);
             return Mathf.RoundToInt(dmg * comp.mightPwr);
         }
 

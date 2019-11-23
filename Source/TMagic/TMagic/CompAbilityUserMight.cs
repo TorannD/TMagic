@@ -2553,7 +2553,7 @@ namespace TorannMagic
                             PawnAbility ability = null;
                             foreach (MightPower current in this.MightData.MightPowersR)
                             {
-                                if (current.abilityDef != null)
+                                if (current.abilityDef != null && (current.abilityDef == this.mimicAbility || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger)))
                                 {
                                     if ((current.abilityDef == TorannMagicDefOf.TM_ArrowStorm || current.abilityDef == TorannMagicDefOf.TM_ArrowStorm_I || current.abilityDef == TorannMagicDefOf.TM_ArrowStorm_II || current.abilityDef == TorannMagicDefOf.TM_ArrowStorm_III))
                                     {
@@ -2615,7 +2615,7 @@ namespace TorannMagic
                             PawnAbility ability = null;
                             foreach (MightPower current in this.MightData.MightPowersS)
                             {
-                                if (current.abilityDef != null)
+                                if (current.abilityDef != null && (current.abilityDef == this.mimicAbility || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper)))
                                 {
                                     if (this.Pawn.equipment.Primary != null && this.Pawn.equipment.Primary.def.IsRangedWeapon)
                                     {
@@ -2638,7 +2638,7 @@ namespace TorannMagic
                             PawnAbility ability = null;
                             foreach (MightPower current in this.MightData.MightPowersDK)
                             {
-                                if (current.abilityDef != null)
+                                if (current.abilityDef != null && (current.abilityDef == this.mimicAbility || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight)))
                                 {
                                     if ((current.abilityDef == TorannMagicDefOf.TM_Spite || current.abilityDef == TorannMagicDefOf.TM_Spite_I || current.abilityDef == TorannMagicDefOf.TM_Spite_II || current.abilityDef == TorannMagicDefOf.TM_Spite_III))
                                     {
@@ -2717,7 +2717,7 @@ namespace TorannMagic
                         PawnAbility ability = null;
                         foreach (MightPower current in this.MightData.MightPowersB)
                         {
-                            if (current.abilityDef != null)
+                            if (current.abilityDef != null && (current.abilityDef == this.mimicAbility || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer)))
                             {
                                 if (current.abilityDef == TorannMagicDefOf.TM_PhaseStrike || current.abilityDef == TorannMagicDefOf.TM_PhaseStrike_I || current.abilityDef == TorannMagicDefOf.TM_PhaseStrike_II || current.abilityDef == TorannMagicDefOf.TM_PhaseStrike_III)
                                 {                                 
@@ -2793,7 +2793,7 @@ namespace TorannMagic
                         PawnAbility ability = null;
                         foreach (MightPower current in this.MightData.MightPowersB)
                         {
-                            if (current.abilityDef != null)
+                            if (current.abilityDef != null && (current.abilityDef == this.mimicAbility || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer)))
                             {
                                 if (current.abilityDef == TorannMagicDefOf.TM_BladeSpin)
                                 {
@@ -2814,7 +2814,7 @@ namespace TorannMagic
                         PawnAbility ability = null;
                         foreach (MightPower current in this.MightData.MightPowersM)
                         {
-                            if (current.abilityDef != null)
+                            if (current.abilityDef != null && (current.abilityDef == this.mimicAbility || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk)))
                             {
                                 if (current.abilityDef == TorannMagicDefOf.TM_TigerStrike)
                                 {
@@ -2844,7 +2844,7 @@ namespace TorannMagic
                         PawnAbility ability = null;
                         foreach (MightPower current in this.MightData.MightPowersG)
                         {
-                            if (current.abilityDef != null)
+                            if (current.abilityDef != null && (current.abilityDef == this.mimicAbility || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator)))
                             {
                                 if ((current.abilityDef == TorannMagicDefOf.TM_Grapple || current.abilityDef == TorannMagicDefOf.TM_Grapple_I || current.abilityDef == TorannMagicDefOf.TM_Grapple_II || current.abilityDef == TorannMagicDefOf.TM_Grapple_III))
                                 {
@@ -2898,7 +2898,7 @@ namespace TorannMagic
                         PawnAbility ability = null;
                         foreach (MightPower current in this.MightData.MightPowersR)
                         {
-                            if (current.abilityDef != null)
+                            if (current.abilityDef != null && (current.abilityDef == this.mimicAbility || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger)))
                             {
                                 if ((current.abilityDef == TorannMagicDefOf.TM_ArrowStorm || current.abilityDef == TorannMagicDefOf.TM_ArrowStorm_I || current.abilityDef == TorannMagicDefOf.TM_ArrowStorm_II || current.abilityDef == TorannMagicDefOf.TM_ArrowStorm_III))
                                 {
@@ -3017,7 +3017,7 @@ namespace TorannMagic
                         PawnAbility ability = null;
                         foreach (MightPower current in this.MightData.MightPowersS)
                         {
-                            if (current.abilityDef != null)
+                            if (current.abilityDef != null && (current.abilityDef == this.mimicAbility || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper))) 
                             {
                                 if(this.Pawn.equipment.Primary != null && this.Pawn.equipment.Primary.def.IsRangedWeapon)
                                 {

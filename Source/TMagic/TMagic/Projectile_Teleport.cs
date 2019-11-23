@@ -268,7 +268,7 @@ namespace TorannMagic
             bool flag = spawnables.def != null;
             if (flag)
             {
-                Faction faction = this.ResolveFaction(spawnables);
+                Faction faction = TM_Action.ResolveFaction(this.launcher as Pawn, spawnables, this.launcher.Faction);
                 bool flag2 = spawnables.def.race != null;
                 if (flag2)
                 {
@@ -279,7 +279,7 @@ namespace TorannMagic
                     }
                     else
                     {
-                        this.SpawnPawn(spawnables, faction);
+                        TM_Action.SpawnPawn(this.launcher as Pawn, spawnables, faction, position, 0, map);
                     }
                 }
                 else

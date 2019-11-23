@@ -102,7 +102,7 @@ namespace TorannMagic
             {
                 dmg += 8;
             }
-
+            dmg = Mathf.Clamp(dmg, 0, 60);
             return Mathf.RoundToInt(dmg * comp.mightPwr);
         }
 

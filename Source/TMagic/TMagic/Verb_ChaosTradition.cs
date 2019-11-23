@@ -50,7 +50,7 @@ namespace TorannMagic
                     HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_ChaoticMindHD, 24f);
                 }
 
-                comp.MagicData.MagicAbilityPoints -= (pwrVal + verVal + effVal + gSpirit + gRegen + gEff);
+                comp.MagicData.MagicAbilityPoints -= ((2*(pwrVal + verVal + effVal)) + gSpirit + gRegen + gEff);
                 comp.MagicData.MagicPowerSkill_ChaosTradition.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ChaosTradition_pwr").level = pwrVal;
                 comp.MagicData.MagicPowerSkill_ChaosTradition.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ChaosTradition_ver").level = verVal;
                 comp.MagicData.MagicPowerSkill_ChaosTradition.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_ChaosTradition_eff").level = effVal;
@@ -58,6 +58,11 @@ namespace TorannMagic
                 comp.MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr").level = gRegen;
                 comp.MagicData.MagicPowerSkill_global_eff.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_eff_pwr").level = gEff;
                 comp.MagicData.MagicPowerSkill_global_spirit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_spirit_pwr").level = gSpirit;
+
+                if(comp.MagicData.MagicAbilityPoints < 0)
+                {
+                    comp.MagicData.MagicAbilityPoints = 0;
+                }
 
             }
             else
