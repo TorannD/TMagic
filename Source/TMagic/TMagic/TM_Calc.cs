@@ -268,6 +268,29 @@ namespace TorannMagic
             return false;
         }
 
+        public static bool IsCrossClass(Pawn pawn, bool forMagic)
+        {
+            if (pawn.story != null && pawn.story.traits != null)
+            {
+                if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) && forMagic)
+                {
+                    return true;
+                }
+
+                if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer) && !forMagic)
+                {
+                    return true;
+                }
+
+                if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer) && forMagic)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public static bool IsPawnInjured(Pawn targetPawn, float minInjurySeverity = 0)
         {
             float injurySeverity = 0;
@@ -457,7 +480,7 @@ namespace TorannMagic
                         if (pawn != targetPawn && targetPawn.HostileTo(pawn.Faction) && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
                         {
                             CompAbilityUserMagic targetComp = targetPawn.GetComp<CompAbilityUserMagic>();
-                            if (targetComp != null && targetComp.IsMagicUser && !targetComp.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                            if (targetComp != null && targetComp.IsMagicUser && !TM_Calc.IsCrossClass(targetPawn, true))
                             {
                                 pawnList.Add(targetPawn);
                             }
@@ -468,7 +491,7 @@ namespace TorannMagic
                         if (pawn != targetPawn && !targetPawn.HostileTo(pawn.Faction) && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
                         {
                             CompAbilityUserMagic targetComp = targetPawn.GetComp<CompAbilityUserMagic>();
-                            if (targetComp != null && targetComp.IsMagicUser && !targetComp.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                            if (targetComp != null && targetComp.IsMagicUser && !TM_Calc.IsCrossClass(targetPawn, true))
                             {
                                 pawnList.Add(targetPawn);                                
                             }
@@ -518,6 +541,10 @@ namespace TorannMagic
                     {
                         continue;
                     }
+                    if(TM_Calc.IsCrossClass(targetPawn, true))
+                    {
+                        continue;
+                    }
                     pawnList.Add(targetPawn);
                 }
             }
@@ -540,7 +567,7 @@ namespace TorannMagic
                         if (targetPawn.HostileTo(pawn.Faction) && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
                         {
                             CompAbilityUserMight targetComp = targetPawn.GetComp<CompAbilityUserMight>();
-                            if (targetComp != null && targetComp.IsMightUser)
+                            if (targetComp != null && targetComp.IsMightUser && !TM_Calc.IsCrossClass(targetPawn, false))
                             {
                                 pawnList.Add(targetPawn);
                             }
@@ -551,7 +578,7 @@ namespace TorannMagic
                         if (pawn != targetPawn && !targetPawn.HostileTo(pawn.Faction) && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
                         {
                             CompAbilityUserMight targetComp = targetPawn.GetComp<CompAbilityUserMight>();
-                            if (targetComp != null && targetComp.IsMightUser)
+                            if (targetComp != null && targetComp.IsMightUser && !TM_Calc.IsCrossClass(targetPawn, false))
                             {
                                 pawnList.Add(targetPawn);
                             }

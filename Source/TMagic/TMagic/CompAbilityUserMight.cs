@@ -2610,7 +2610,7 @@ namespace TorannMagic
                                 }
                             }
                         }
-                        if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || isFaceless)&& !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                        if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || isFaceless) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                         {
                             PawnAbility ability = null;
                             foreach (MightPower current in this.MightData.MightPowersS)
