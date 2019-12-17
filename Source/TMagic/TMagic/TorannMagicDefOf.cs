@@ -483,6 +483,7 @@ namespace TorannMagic
         public static TMAbilityDef TM_DismissEarthSprites;
         public static TMAbilityDef TM_EarthernHammer;
         public static TMAbilityDef TM_Sentinel;
+        public static TMAbilityDef TM_ShatterSentinel;
         public static TMAbilityDef TM_Meteor;
         public static TMAbilityDef TM_Meteor_I;
         public static TMAbilityDef TM_Meteor_II;

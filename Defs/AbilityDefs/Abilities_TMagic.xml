@@ -1133,7 +1133,7 @@ Shots: 2</description>
 Recharge time: 10s
 Range: 34
 Shots: 3</description>
-        <manaCost>0.29</manaCost>
+        <manaCost>0.34</manaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>AbilityUser.Verb_UseAbility_TrueBurst</verbClass>
             <tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>

@@ -235,8 +235,15 @@ namespace TorannMagic
             }
             else if (!this.ExactPosition.ToIntVec3().Walkable(base.Map) && !this.ExactPosition.ToIntVec3().CanBeSeenOverFast(this.Map))
             {
-                this.reverseDirection = true;
-                this.ImpactSomething();
+                if (this.reverseDirection)
+                {
+                    this.Destroy(DestroyMode.Vanish);
+                }
+                else
+                {
+                    this.reverseDirection = true;
+                    this.ImpactSomething();
+                }
             }
             else
             {                                           

@@ -23,6 +23,7 @@ namespace TorannMagic
             {
                 isViolent = true;
             }
+
             if (map.mapTemperature.OutdoorTemp < 0)
             {
                 if (map.weatherManager.curWeather.defName == "SnowHard" || map.weatherManager.curWeather.defName == "SnowGentle")
@@ -50,13 +51,14 @@ namespace TorannMagic
             {
                 if (map.weatherManager.curWeather.defName == "Rain" || map.weatherManager.curWeather.defName == "RainyThunderstorm" || map.weatherManager.curWeather.defName == "FoggyRain")
                 {
-                    if (isViolent)
+                    if (isViolent && !(map.weatherManager.curWeather.defName == "RainyThunderstorm"))
                     {
                         rainMakerDef = WeatherDef.Named("RainyThunderstorm");
                     }
                     else
                     {
                         rainMakerDef = WeatherDef.Named("Clear");
+                        isViolent = false;
                     }
                     map.weatherManager.TransitionTo(rainMakerDef);
                     

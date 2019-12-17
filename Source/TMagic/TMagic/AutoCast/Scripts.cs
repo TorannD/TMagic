@@ -20,7 +20,15 @@ namespace TorannMagic.AutoCast
             Pawn caster = casterComp.Pawn;
             LocalTargetInfo jobTarget = caster.CurJob.targetA;
             Thing carriedThing = null;
-            
+
+            //if (caster.CurJob.targetA.Thing != null && caster.CurJob.targetA.Thing.Map != caster.Map)
+            //{
+            //    Log.Message("" + caster.LabelShort + " jobdef " + caster.CurJobDef.defName + " checking phase - target a: " + caster.CurJob.targetA + " target b: " + caster.CurJob.targetB + " carrying: " + caster.CurJob.targetA.Thing.stackCount +  " " + caster.CurJob.targetA);
+            //}
+            //else
+            //{
+            //    Log.Message("" + caster.LabelShort + " jobdef " + caster.CurJobDef.defName + " checking phase - target a: " + caster.CurJob.targetA + " target b: " + caster.CurJob.targetB + " carrying: none");
+            //}
             if (caster.CurJob.targetA.Thing != null) //&& caster.CurJob.def.defName != "Sow")
             {
                 if (caster.CurJob.targetA.Thing.Map != caster.Map) //carrying TargetA to TargetB
@@ -35,7 +43,8 @@ namespace TorannMagic.AutoCast
                         jobTarget = caster.CurJob.targetA;
                         carriedThing = caster.CurJob.targetB.Thing;
                     }
-                    else if(caster.CurJob.def == JobDefOf.TendPatient)
+                    else if(caster.CurJob.def == JobDefOf.TendPatient || caster.CurJobDef == JobDefOf.Refuel || caster.CurJobDef == JobDefOf.RefuelAtomic || caster.CurJobDef == JobDefOf.RearmTurret || 
+                        caster.CurJobDef == JobDefOf.RearmTurretAtomic || caster.CurJobDef == JobDefOf.FillFermentingBarrel)
                     {
                         jobTarget = caster.CurJob.targetB;
                     }
@@ -816,7 +825,8 @@ namespace TorannMagic.AutoCast
                         jobTarget = caster.CurJob.targetA;
                         carriedThing = caster.CurJob.targetB.Thing;
                     }
-                    else if(caster.CurJob.def == JobDefOf.TendPatient)
+                    else if(caster.CurJob.def == JobDefOf.TendPatient || caster.CurJobDef == JobDefOf.Refuel || caster.CurJobDef == JobDefOf.RefuelAtomic || caster.CurJobDef == JobDefOf.RearmTurret ||
+                        caster.CurJobDef == JobDefOf.RearmTurretAtomic || caster.CurJobDef == JobDefOf.FillFermentingBarrel)
                     {
                         jobTarget = caster.CurJob.targetB;
                     }

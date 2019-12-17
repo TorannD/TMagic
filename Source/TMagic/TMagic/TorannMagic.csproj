@@ -196,6 +196,7 @@
     <Compile Include="TM_WeatherEvent_MeshFlash.cs" />
     <Compile Include="Enchantment\Verb_OrbTraitor.cs" />
     <Compile Include="Verb_DeathGaze.cs" />
+    <Compile Include="Verb_ShatterSentinel.cs" />
     <Compile Include="Verb_Legion.cs" />
     <Compile Include="Verb_TempestStrike.cs" />
     <Compile Include="Verb_ShadowBurn.cs" />

@@ -213,6 +213,7 @@ namespace TorannMagic
         private bool dispelEnchantWeapon = false;
         private bool dismissEnchanterStones = false;
         private bool dismissLightningTrap = false;
+        private bool shatterSentinel = false;
         public List<IntVec3> fertileLands = new List<IntVec3>();
         public Thing mageLightThing = null;
         public bool mageLightActive = false;
@@ -7710,6 +7711,17 @@ namespace TorannMagic
                 dismissLightningTrap = false;
             }
 
+            if (this.summonedSentinels.Count > 0 && this.shatterSentinel == false)
+            {
+                this.AddPawnAbility(TorannMagicDefOf.TM_ShatterSentinel);
+                shatterSentinel = true;
+            }
+            if (this.summonedSentinels.Count <= 0 && this.shatterSentinel == true)
+            {
+                this.RemovePawnAbility(TorannMagicDefOf.TM_ShatterSentinel);
+                shatterSentinel = false;
+            }
+
             if (this.soulBondPawn.DestroyedOrNull() && (this.spell_ShadowStep == true || this.spell_ShadowCall == true))
             {
                 this.soulBondPawn = null;
@@ -8346,14 +8358,13 @@ namespace TorannMagic
 
             this.maxMP = 1f + _maxMP;
             this.mpRegenRate = 1f +  _mpRegenRate;
-            this.coolDown = 1f + _coolDown;
+            this.coolDown = Mathf.Clamp(1f + _coolDown, 0.25f, 10f);
             this.xpGain = 1f + _xpGain;
             this.mpCost = 1f + _mpCost;
             this.arcaneRes = 1 + _arcaneRes;
             this.arcaneDmg = 1 + _arcaneDmg;
             this.arcalleumCooldown = Mathf.Clamp(0f + _arcalleumCooldown, 0f, .5f);
-            bool isFighter = this.Pawn.GetComp<CompAbilityUserMight>().IsMightUser;
-            if (!isFighter)
+            if (this.IsMagicUser && !TM_Calc.IsCrossClass(this.Pawn, true))
             {
                 if (_maxMP != 0)
                 {
@@ -8580,6 +8591,7 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.earthSpritesInArea, "earthSpritesInArea", false, false);
             Scribe_Values.Look<int>(ref this.nextEarthSpriteAction, "nextEarthSpriteAction", 0, false);
             Scribe_Collections.Look<IntVec3>(ref this.fertileLands, "fertileLands", LookMode.Value);
+            Scribe_Values.Look<float>(ref this.maxMP, "maxMP", 1f, false);
             //Scribe_Collections.Look<TM_ChaosPowers>(ref this.chaosPowers, "chaosPowers", LookMode.Deep, new object[0]);
             //Recall variables 
             Scribe_Values.Look<bool>(ref this.recallSet, "recallSet", false, false);

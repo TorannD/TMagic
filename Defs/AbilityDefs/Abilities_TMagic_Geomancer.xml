@@ -518,6 +518,40 @@ Using this ability on a dormant sentinel will dismiss the sentinel. Each sentine
         </MainVerb>
     </TorannMagic.TMAbilityDef>
 	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+    <defName>TM_ShatterSentinel</defName>
+    <label>Shatter Sentinel</label>
+    <uiIconPath>UI/shattersentinel</uiIconPath>
+    <description>All sentinels maintained by this pawn are shattered in a violent eruption.</description>
+    <manaCost>0.0</manaCost>
+	<MainVerb Class="AbilityUser.VerbProperties_Ability">
+        <verbClass>TorannMagic.Verb_ShatterSentinel</verbClass>
+			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+			<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+			<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+			<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>TM_Paladin_Heal</defaultProjectile>
+		<abilityDef>TM_ShatterSentinel</abilityDef>
+        <warmupTime>2</warmupTime>
+        <SecondsToRecharge>10</SecondsToRecharge>
+		<burstShotCount>1</burstShotCount>
+        <range>0</range>
+		<isViolent>false</isViolent>
+        <soundCast>TM_Gong</soundCast>
+        <muzzleFlashScale>10</muzzleFlashScale>
+		<AlwaysHits>true</AlwaysHits>
+        <isPrimary>false</isPrimary>
+		<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+		<targetParams>
+      	 <canTargetPawns>true</canTargetPawns>
+      	 <canTargetBuildings>false</canTargetBuildings>
+      	 <canTargetSelf>true</canTargetSelf>
+		 <canTargetLocations>false</canTargetLocations>
+        </targetParams>
+    </MainVerb>
+ </TorannMagic.TMAbilityDef>
+	
 	<!-- Meteor -->	
 
     <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">

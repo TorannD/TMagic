@@ -1481,7 +1481,6 @@ namespace TorannMagic
                             {
                                 TM_Action.PromoteWanderer(p);
                             }),
-                            hotKey = KeyBindingDefOf.Misc3,
                             order = 51,
                             defaultLabel = TM_TextPool.TM_PromoteWanderer,
                             defaultDesc = TM_TextPool.TM_PromoteWandererDesc,
@@ -1499,7 +1498,6 @@ namespace TorannMagic
                             {
                                 TM_Action.PromoteWayfarer(p);
                             }),
-                            hotKey = KeyBindingDefOf.Misc3,
                             order = 52,
                             defaultLabel = TM_TextPool.TM_PromoteWayfarer,
                             defaultDesc = TM_TextPool.TM_PromoteWayfarerDesc,

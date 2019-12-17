@@ -54,6 +54,7 @@ namespace TorannMagic
                     TerrainDef terrain = null;
                     isBuilding = this.currentTarget.Cell.GetFirstBuilding(this.CasterPawn.Map);
                     terrain = this.currentTarget.Cell.GetTerrain(this.CasterPawn.Map);
+                    //Log.Message("terrain type is " + terrain.defName);
                     if (isBuilding != null)
                     {
                         var mineable = isBuilding as Mineable;
@@ -142,8 +143,8 @@ namespace TorannMagic
                 }
                 bldg = null;
             }
-            TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_EarthCrack, center.ToVector3Shifted(), this.CasterPawn.Map, Rand.Range(.4f, .7f), .2f, .05f, .5f, 0, 0f, 0f, Rand.Range(0, 360));
-            TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_EarthCrack, center.ToVector3Shifted(), this.CasterPawn.Map, Rand.Range(1.6f, 3f), .2f, .05f, .7f, 0, 0f, 0f, Rand.Range(0, 360));
+            TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_EarthCrack, center.ToVector3Shifted(), this.CasterPawn.Map, Rand.Range(2f, 2.3f), .2f, .25f, 1.5f, 0, 0f, 0f, Rand.Range(0, 360));
+            TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_EarthCrack, center.ToVector3Shifted(), this.CasterPawn.Map, Rand.Range(3f, 3.5f), .2f, .25f, 1.7f, 0, 0f, 0f, Rand.Range(0, 360));
             Find.CameraDriver.shaker.DoShake(5f);
             SoundInfo info = SoundInfo.InMap(new TargetInfo(center, this.CasterPawn.Map, false), MaintenanceType.None);
             info.pitchFactor = .3f;

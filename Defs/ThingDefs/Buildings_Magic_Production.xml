@@ -318,7 +318,7 @@ Arcalleum: success chance +10%, refunds 20% of mana cost
 	  <li>Woody</li>
     </stuffCategories>
 	<tickerType>Normal</tickerType>
-    <costStuffCount>500</costStuffCount>
+    <costStuffCount>100</costStuffCount>
     <altitudeLayer>Building</altitudeLayer>
     <fillPercent>0.5</fillPercent>
     <useHitPoints>True</useHitPoints>
