@@ -76,6 +76,10 @@
       <HintPath>..\..\..\..\..\..\..\workshop\content\294100\1354114366\Assemblies\RimQuest.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="SRTS">
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\1845423808\Assemblies\SRTS.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

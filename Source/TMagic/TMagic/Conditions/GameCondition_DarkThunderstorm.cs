@@ -40,7 +40,7 @@ namespace TorannMagic.Conditions
                     for (int i = 0; i < allPawns.Count; i++)
                     {
                         Pawn p = allPawns[i];
-                        if (p != null && !p.Downed && faction != null && p.Faction.HostileTo(faction))
+                        if (p != null && !p.Downed && faction != null && p.Faction.HostileTo(faction) && !p.IsPrisoner)
                         {
                             enemyPawns.Add(p);
                         }

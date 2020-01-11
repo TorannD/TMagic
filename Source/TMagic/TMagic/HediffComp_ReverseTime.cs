@@ -211,7 +211,10 @@ namespace TorannMagic
                                             }
                                             else
                                             {
-                                                this.Pawn.needs.mood.thoughts.memories.TryGainMemory(TorannMagicDefOf.TM_PhantomLimb);
+                                                if (this.Pawn.needs != null && this.Pawn.needs.mood != null && this.Pawn.needs.mood.thoughts != null && this.Pawn.needs.mood.thoughts.memories != null)
+                                                {
+                                                    this.Pawn.needs.mood.thoughts.memories.TryGainMemory(TorannMagicDefOf.TM_PhantomLimb);
+                                                }
                                             }
                                         }
                                         else

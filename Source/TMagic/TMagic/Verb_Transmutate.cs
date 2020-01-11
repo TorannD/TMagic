@@ -196,7 +196,7 @@ namespace TorannMagic
                    
                     if (compQual != null)
                     {
-                        if (Rand.Chance((.02f * pwrVal) * comp.arcaneDmg))
+                        if (Rand.Chance((.02f * pwrVal) * comp.arcaneDmg) && compQual.Quality != QualityCategory.Legendary)
                         {
                             thing.TryGetComp<CompQuality>().SetQuality(compQual.Quality + 1, ArtGenerationContext.Colony);
                         }

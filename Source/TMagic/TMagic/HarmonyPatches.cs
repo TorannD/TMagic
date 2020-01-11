@@ -16,6 +16,7 @@ using AbilityUserAI;
 using System.Reflection.Emit;
 using TorannMagic.Conditions;
 using PrisonLabor.Tweaks;
+using SRTS;
 
 namespace TorannMagic
 {
@@ -207,7 +208,23 @@ namespace TorannMagic
                 }
                 catch (TypeLoadException) { }
             }
-            #endregion Children           
+            #endregion Children
+
+            #region SRTS_Expanded
+            {
+                try
+                {
+                    ((Action)(() =>
+                    {
+                        if (ModCheck.Validate.SRTS_Expanded.IsInitialized())
+                        {
+                            harmonyInstance.Patch(AccessTools.Method(typeof(SRTS.StartUp), "RotateSRTS"), new HarmonyMethod(typeof(HarmonyPatches), "TM_SRTS_Rotate_Bypass"), null);
+                        }
+                    }))();
+                }
+                catch (TypeLoadException) { }
+            }
+            #endregion SRTS_Expanded   
 
         }
 
@@ -215,6 +232,16 @@ namespace TorannMagic
         //{
 
         //}
+
+        public static bool TM_SRTS_Rotate_Bypass(Thing t, ref ThingOwner ic, ref Thing __result)
+        {
+            if(t.def.defName.Contains("TM_"))
+            {
+                __result = t;
+                return false;
+            }
+            return true;
+        }
 
         [HarmonyPatch(typeof(Caravan_PathFollower), "CostToPayThisTick", null)]
         public class CostToPayThisTick_Base_Patch

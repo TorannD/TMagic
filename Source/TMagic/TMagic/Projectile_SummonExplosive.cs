@@ -22,7 +22,7 @@ namespace TorannMagic
 
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {
-            bool flag = this.age < duration;
+            bool flag = this.age <= duration;
             if (!flag)
             {
                 base.Destroy(mode);
@@ -111,7 +111,10 @@ namespace TorannMagic
                 else
                 {
                     Messages.Message("InvalidSummon".Translate(), MessageTypeDefOf.RejectInput);
-                    comp.Mana.GainNeed(comp.ActualManaCost(TorannMagicDefOf.TM_SummonExplosive));
+                    if (comp.Mana != null)
+                    {
+                        comp.Mana.GainNeed(comp.ActualManaCost(TorannMagicDefOf.TM_SummonExplosive));
+                    }
                     this.duration = 0;
                 }
             }

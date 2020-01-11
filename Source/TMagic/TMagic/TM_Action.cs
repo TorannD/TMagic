@@ -435,7 +435,7 @@ namespace TorannMagic
             FactionDef val = FactionDefOf.PlayerColony;
             Faction obj = null;
 
-            if (spawnAbleFaction != null && !hostile)
+            if (!hostile)
             {
                 return spawnAbleFaction;
             }

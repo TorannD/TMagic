@@ -98,7 +98,7 @@ namespace TorannMagic
                         }
                         if (Rand.Chance(enchantChance) && newPawn.GetComp<CompPolymorph>() != null)
                         { 
-                            FactionDef fDef = TorannMagicDefOf.TM_SummonedFaction;
+                            FactionDef fDef = null;
                             if (newPawn.Faction != null)
                             {
                                 fDef = newPawn.Faction.def;
@@ -118,7 +118,7 @@ namespace TorannMagic
                                 Log.Message("random creature was null");
                             }
 
-                            Pawn polymorphedPawn = TM_Action.PolymorphPawn(this.CasterPawn, newPawn, newPawn, spawnThing, newPawn.Position, true, duration);
+                            Pawn polymorphedPawn = TM_Action.PolymorphPawn(this.CasterPawn, newPawn, newPawn, spawnThing, newPawn.Position, true, duration, newPawn.Faction);
 
                             if (polymorphedPawn.Faction != this.CasterPawn.Faction && polymorphedPawn.mindState != null && Rand.Chance(Mathf.Clamp((.2f * this.pwrVal), 0f, .5f)))
                             {

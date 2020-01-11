@@ -56,6 +56,10 @@ namespace TorannMagic
         {
             bool spawned = base.Pawn.Spawned;
             CompAbilityUserMagic comp = this.linkedPawn.GetComp<CompAbilityUserMagic>();
+            if(TM_Calc.GetBloodLossTypeDef(this.Pawn.health.hediffSet.hediffs) == null)
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, HediffDefOf.BloodLoss, .05f);
+            }
             if (spawned && comp != null && comp.IsMagicUser)
             {
                 bfbVer = comp.MagicData.MagicPowerSkill_BloodForBlood.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_BloodForBlood_ver").level;
@@ -132,6 +136,10 @@ namespace TorannMagic
         public void AdjustBloodLoss()
         {
             float bloodLoss = 1 + (.25f *this.bleedRate);
+            if(this.Pawn.Faction == this.linkedPawn.Faction)
+            {
+                bloodLoss = (bloodLoss / 2f);
+            }
             //Log.Message("adjusting blood loss by " + .03f * bloodLoss +  " bleed rate is " + this.bleedRate);
             HediffDef bloodType = TM_Calc.GetBloodLossTypeDef(this.Pawn.health.hediffSet.hediffs);
             if (bloodType != null)
