@@ -117,6 +117,10 @@ namespace TorannMagic
                                             HealthUtility.AdjustSeverity(undeadPawn, HediffDef.Named("TM_UndeadStageHD"), -2f);
                                             HealthUtility.AdjustSeverity(undeadPawn, HediffDef.Named("TM_UndeadStageHD"), rotStage);
                                             RedoSkills(undeadPawn);
+                                            if (undeadPawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
+                                            {
+                                                compMagic.RemovePawnAbility(TorannMagicDefOf.TM_ChaosTradition);
+                                            }
                                             RemoveTraits(undeadPawn, undeadPawn.story.traits.allTraits);
                                             undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Undead"), 0, false));
                                             undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Psychopath"), 0, false));                                            

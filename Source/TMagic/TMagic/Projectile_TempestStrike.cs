@@ -109,7 +109,10 @@ namespace TorannMagic
                                 dmg = (10 + (int)((value / 50)));
                             }
                             float weaponDPS = dmg;
-                            float skillMultiplier = (.6f) * comp.mightPwr;
+                            int shots = Mathf.Clamp(weaponComp.def.Verbs.FirstOrDefault().burstShotCount, 1, 5);
+                            float shotMultiplier = 1f - ((float)shots / 15f);
+                            float skillMultiplier = (.5f) * comp.mightPwr * shotMultiplier;
+                            
                             dmgNum = Mathf.RoundToInt(skillMultiplier * weaponDPS);
                         }
                     }

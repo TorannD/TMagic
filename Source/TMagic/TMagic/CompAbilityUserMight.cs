@@ -1038,16 +1038,23 @@ namespace TorannMagic
         {
             if (this.MightUserLevel < 150)
             {
-                this.MightUserLevel++;
-                bool flag = !hideNotification;
-                if (flag)
+                if (TM_Calc.IsCrossClass(this.Pawn, false))
                 {
-                    ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                    if (Pawn.IsColonist && settingsRef.showLevelUpMessage)
+                    this.MightData.MightUserXP = 0;
+                }
+                else
+                {
+                    this.MightUserLevel++;
+                    bool flag = !hideNotification;
+                    if (flag)
                     {
-                        Messages.Message("TM_MightLevelUp".Translate(
-                            this.parent.Label
-                        ), Pawn, MessageTypeDefOf.PositiveEvent);
+                        ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                        if (Pawn.IsColonist && settingsRef.showLevelUpMessage)
+                        {
+                            Messages.Message("TM_MightLevelUp".Translate(
+                                this.parent.Label
+                            ), Pawn, MessageTypeDefOf.PositiveEvent);
+                        }
                     }
                 }
             }

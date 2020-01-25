@@ -29,7 +29,7 @@ namespace TorannMagic.ModCheck
         {
             public static bool IsInitialized()
             {
-                bool initialized = false;
+                bool initialized = false;                
                 foreach (ModContentPack p in LoadedModManager.RunningMods)
                 {
                     if (p.Name == "Prison Labor 0.9 (Outdated)")
@@ -63,7 +63,7 @@ namespace TorannMagic.ModCheck
             {
                 bool initialized = false;
                 foreach (ModContentPack p in LoadedModManager.RunningMods)
-                {
+                {                    
                     if (p.Name == "Children, school and learning")
                     {
                         initialized = true;
@@ -126,6 +126,7 @@ namespace TorannMagic.ModCheck
                 bool initialized = false;
                 foreach (ModContentPack p in LoadedModManager.RunningMods)
                 {
+                    Log.Message("srts: " + p.Name);
                     if (p.Name == "SRTS Expanded")
                     {
                         initialized = true;

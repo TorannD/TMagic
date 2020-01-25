@@ -15,8 +15,8 @@ using Verse.AI;
 using AbilityUserAI;
 using System.Reflection.Emit;
 using TorannMagic.Conditions;
-using PrisonLabor.Tweaks;
 using SRTS;
+using PrisonLabor.Tweaks;
 
 namespace TorannMagic
 {
@@ -65,7 +65,7 @@ namespace TorannMagic
             harmonyInstance.Patch(AccessTools.Method(typeof(Caravan), "get_NightResting", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_NightResting_Undead", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(Pawn_StanceTracker), "get_Staggered", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_Staggered", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(Verb_LaunchProjectile), "get_Projectile", null, null), new HarmonyMethod(typeof(HarmonyPatches), "Get_Projectile_ES", null), null);
-
+            
             harmonyInstance.Patch(AccessTools.Method(typeof(Pawn_PathFollower), "CostToMoveIntoCell", new Type[]
                 {
                     typeof(Pawn),
@@ -178,19 +178,8 @@ namespace TorannMagic
                         }
                     }))();
                 }
-                catch (TypeLoadException) { }
+                catch (TypeLoadException) { Log.Message("pl exception"); }
 
-                //try
-                //{
-                //    ((Action)(() =>
-                //    {
-                //        if (AccessTools.Method(typeof(PrisonLabor.JobDriver_Mine_Tweak), nameof(PrisonLabor.JobDriver_Mine_Tweak.ExposeData)) != null)
-                //        {
-                //            harmonyInstance.Patch(AccessTools.Method(typeof(PrisonLabor.JobDriver_Mine_Tweak), "ResetTicksToPickHit"), null, new HarmonyMethod(typeof(HarmonyPatches), "TM_PrisonLabor_JobDriver_Mine_Tweak"));
-                //        }
-                //    }))();
-                //}
-                //catch (TypeLoadException) { }
             }
             #endregion PrisonLabor
 
@@ -932,11 +921,15 @@ namespace TorannMagic
                 {
                     if (mat.mainTexture != null && mat.mainTexture.name != null && mat.mainTexture.ToString() != null && (mat.mainTexture.ToString().Contains("demonlordcloak") || mat.mainTexture.name.Contains("opencloak")))
                     {
-                        loc.y += .015f;
+                        //Log.Message("item is " + mat.mainTexture.ToString() + " at y: " + loc.y);
+                        loc.y = 7.995f;
+                        //loc.y += .010f; //was 0.015f
                         if (mat.name.ToString().Contains("_north"))
                         {
-                            loc.y += .006f;
+                            //loc.y += .00175f; //was 0.006f
+                            loc.y = 7.9961f;
                         }
+
                         if (drawNow)
                         {
                             mat.SetPass(0);
@@ -948,6 +941,10 @@ namespace TorannMagic
                         }
                         return false;
                     }
+                    //if(mat.mainTexture != null && mat.mainTexture.name != null && loc.y > 7.9961f)
+                    //{
+                    //    Log.Message("thing: " + mat.mainTexture.name + " at loc.y:" + loc.y);
+                    //}
                 }
                 return true;
             }

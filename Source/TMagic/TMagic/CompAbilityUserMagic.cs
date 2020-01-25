@@ -1985,16 +1985,23 @@ namespace TorannMagic
             {
                 if (this.MagicUserLevel < 150)
                 {
-                    this.MagicUserLevel++;
-                    bool flag = !hideNotification;
-                    if (flag)
+                    if (TM_Calc.IsCrossClass(this.Pawn, true))
                     {
-                        ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                        if (Pawn.IsColonist && settingsRef.showLevelUpMessage)
+                        this.MagicData.MagicUserXP = 0;
+                    }
+                    else
+                    {
+                        this.MagicUserLevel++;
+                        bool flag = !hideNotification;
+                        if (flag)
                         {
-                            Messages.Message(TranslatorFormattedStringExtensions.Translate("TM_MagicLevelUp",
-                        this.parent.Label
-                            ), this.Pawn, MessageTypeDefOf.PositiveEvent);
+                            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                            if (Pawn.IsColonist && settingsRef.showLevelUpMessage)
+                            {
+                                Messages.Message(TranslatorFormattedStringExtensions.Translate("TM_MagicLevelUp",
+                            this.parent.Label
+                                ), this.Pawn, MessageTypeDefOf.PositiveEvent);
+                            }
                         }
                     }
                 }
@@ -3718,6 +3725,10 @@ namespace TorannMagic
                         {
                             current.learned = false;
                             this.RemovePawnAbility(current.abilityDef);
+                        }
+                        if(current.abilityDef == TorannMagicDefOf.TM_EnchantedBody)
+                        {
+                            this.RemovePawnAbility(TorannMagicDefOf.TM_EnchantedAura);
                         }
                     }
                 }

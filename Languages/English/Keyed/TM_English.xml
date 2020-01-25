@@ -336,7 +336,7 @@ Level 3: 12</TM_Fireclaw_pwr_desc>
 <TM_Fireclaw_eff_desc>Decrease mana cost by 10% per level.</TM_Fireclaw_eff_desc>
 <TM_Fireclaw_ver_desc>Adds additional claws at levels 1 and 2, expands claw strike radius at level 3.</TM_Fireclaw_ver_desc>
 <TM_Fireball_pwr_desc>Increases the number of secondary explosions by 3 per level.</TM_Fireball_pwr_desc>
-<TM_Fireball_eff_desc>Decrease mana cost by 10% per level.</TM_Fireball_eff_desc>
+<TM_Fireball_eff_desc>Decrease mana cost by 8% per level.</TM_Fireball_eff_desc>
 <TM_Fireball_ver_desc>Fireball causes Terror at level 1; levels 2 and 3 increase Terror potency. Terror lowers the enemies ability to fight effectively and may cause them to flee in panic.</TM_Fireball_ver_desc>
 <TM_Firestorm_pwr_desc>Increases the frequency of all meteor types.
 Increases Firestorm radius by .25 per skill level.</TM_Firestorm_pwr_desc>

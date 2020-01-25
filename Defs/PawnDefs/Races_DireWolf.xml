@@ -23,7 +23,7 @@
         <capacities>
           <li>Scratch</li>
         </capacities>
-        <power>9.4</power>
+        <power>11.4</power>
         <cooldownTime>1</cooldownTime>
         <linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
         <surpriseAttack>
@@ -41,8 +41,8 @@
         <capacities>
           <li>Scratch</li>
         </capacities>
-        <power>9.9</power>
-        <cooldownTime>1</cooldownTime>
+        <power>12.2</power>
+        <cooldownTime>1.1</cooldownTime>
         <linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
         <surpriseAttack>
           <extraMeleeDamages>
@@ -58,7 +58,7 @@
         <capacities>
           <li>Bite</li>
         </capacities>
-        <power>18</power>
+        <power>23</power>
         <cooldownTime>1.6</cooldownTime>
         <linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
         <chanceFactor>0.9</chanceFactor>
@@ -76,7 +76,7 @@
         <capacities>
           <li>Blunt</li>
         </capacities>
-        <power>6</power>
+        <power>8</power>
         <cooldownTime>.6</cooldownTime>
         <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
         <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
@@ -90,7 +90,7 @@
       <petness>0.05</petness>
       <baseBodySize>2.3</baseBodySize>
       <baseHungerRate>0.28</baseHungerRate>
-      <baseHealthScale>1.78</baseHealthScale>
+      <baseHealthScale>1.9</baseHealthScale>
       <foodType>CarnivoreAnimal</foodType>
       <leatherDef>Leather_Wolf</leatherDef>
 	  <meatLabel>wolfmeat</meatLabel>
