@@ -1036,13 +1036,9 @@ namespace TorannMagic
 
         public void LevelUp(bool hideNotification = false)
         {
-            if (this.MightUserLevel < 150)
+            if (!this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer))
             {
-                if (TM_Calc.IsCrossClass(this.Pawn, false))
-                {
-                    this.MightData.MightUserXP = 0;
-                }
-                else
+                if (this.MightUserLevel < 150)
                 {
                     this.MightUserLevel++;
                     bool flag = !hideNotification;
@@ -1055,7 +1051,7 @@ namespace TorannMagic
                                 this.parent.Label
                             ), Pawn, MessageTypeDefOf.PositiveEvent);
                         }
-                    }
+                    }                    
                 }
             }
             else

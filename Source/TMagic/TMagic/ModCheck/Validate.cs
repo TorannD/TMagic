@@ -126,7 +126,6 @@ namespace TorannMagic.ModCheck
                 bool initialized = false;
                 foreach (ModContentPack p in LoadedModManager.RunningMods)
                 {
-                    Log.Message("srts: " + p.Name);
                     if (p.Name == "SRTS Expanded")
                     {
                         initialized = true;

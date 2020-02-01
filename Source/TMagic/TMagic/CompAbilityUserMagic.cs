@@ -1981,29 +1981,22 @@ namespace TorannMagic
 
         public void LevelUp(bool hideNotification = false)
         {
-            if (!this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            if (!(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer)))
             {
                 if (this.MagicUserLevel < 150)
                 {
-                    if (TM_Calc.IsCrossClass(this.Pawn, true))
+                    this.MagicUserLevel++;
+                    bool flag = !hideNotification;
+                    if (flag)
                     {
-                        this.MagicData.MagicUserXP = 0;
-                    }
-                    else
-                    {
-                        this.MagicUserLevel++;
-                        bool flag = !hideNotification;
-                        if (flag)
+                        ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                        if (Pawn.IsColonist && settingsRef.showLevelUpMessage)
                         {
-                            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                            if (Pawn.IsColonist && settingsRef.showLevelUpMessage)
-                            {
-                                Messages.Message(TranslatorFormattedStringExtensions.Translate("TM_MagicLevelUp",
-                            this.parent.Label
-                                ), this.Pawn, MessageTypeDefOf.PositiveEvent);
-                            }
+                            Messages.Message(TranslatorFormattedStringExtensions.Translate("TM_MagicLevelUp",
+                        this.parent.Label
+                            ), this.Pawn, MessageTypeDefOf.PositiveEvent);
                         }
-                    }
+                    }                    
                 }
                 else
                 {
@@ -3725,12 +3718,12 @@ namespace TorannMagic
                         {
                             current.learned = false;
                             this.RemovePawnAbility(current.abilityDef);
-                        }
-                        if(current.abilityDef == TorannMagicDefOf.TM_EnchantedBody)
-                        {
-                            this.RemovePawnAbility(TorannMagicDefOf.TM_EnchantedAura);
-                        }
+                        }                           
                     }
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_EnchantedAura);
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_NanoStimulant);
+                    this.spell_EnchantedAura = false;
+                    
                 }
                 if (flag2)
                 {
