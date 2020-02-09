@@ -34,14 +34,14 @@ namespace TorannMagic.AutoCast
                 if (caster.CurJob.targetA.Thing.Map != caster.Map) //carrying TargetA to TargetB
                 {
                     jobTarget = caster.CurJob.targetB;
-                    carriedThing = caster.CurJob.targetA.Thing;
+                    //carriedThing = caster.CurJob.targetA.Thing;                    
                 }
                 else if (caster.CurJob.targetB != null && caster.CurJob.targetB.Thing != null && caster.CurJob.def != JobDefOf.Rescue) //targetA using targetB for job
                 {
                     if (caster.CurJob.targetB.Thing.Map != caster.Map) //carrying targetB to targetA
                     {
                         jobTarget = caster.CurJob.targetA;
-                        carriedThing = caster.CurJob.targetB.Thing;
+                        //carriedThing = caster.CurJob.targetB.Thing;
                     }
                     else if(caster.CurJob.def == JobDefOf.TendPatient || caster.CurJobDef == JobDefOf.Refuel || caster.CurJobDef == JobDefOf.RefuelAtomic || caster.CurJobDef == JobDefOf.RearmTurret || 
                         caster.CurJobDef == JobDefOf.RearmTurretAtomic || caster.CurJobDef == JobDefOf.FillFermentingBarrel)
@@ -72,6 +72,11 @@ namespace TorannMagic.AutoCast
             float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
             Vector3 directionToTarget = TM_Calc.GetVector(caster.Position, jobTarget.Cell);
             //Log.Message("" + caster.LabelShort + " job def is " + caster.CurJob.def.defName + " targetA " + caster.CurJob.targetA + " targetB " + caster.CurJob.targetB + " jobTarget " + jobTarget + " at distance " + distanceToTarget + " min distance " + minDistance + " at vector " + directionToTarget);
+            if (caster.carryTracker != null && caster.carryTracker.CarriedThing != null)
+            {
+                carriedThing = caster.carryTracker.CarriedThing;
+                //Log.Message("carrying: " + caster.carryTracker.CarriedThing.def.defName + " count " + caster.carryTracker.CarriedThing.stackCount);
+            }
             if (casterComp.Stamina.CurLevel >= casterComp.ActualStaminaCost(abilitydef) && ability.CooldownTicksLeft <= 0 && distanceToTarget < 200)
             {
                 if (distanceToTarget > minDistance && caster.CurJob.locomotionUrgency >= LocomotionUrgency.Jog && caster.CurJob.bill == null)
@@ -127,19 +132,19 @@ namespace TorannMagic.AutoCast
         {
             JobDef retainJobDef = caster.CurJobDef;
             LocalTargetInfo retainTargetA = caster.CurJob.targetA;
-            int retainCount = 1;
-            if (retainTargetA.Thing != null && retainTargetA.Thing.stackCount != 1)
+            int retainJobCount = 1;
+            if (caster.CurJob != null)
             {
-                 retainCount = retainTargetA.Thing.stackCount;
+                retainJobCount = caster.CurJob.count;
             }
             LocalTargetInfo retainTargetB = caster.CurJob.targetB;
             LocalTargetInfo retainTargetC = caster.CurJob.targetC;
             Pawn p = caster;
             Thing cT = carriedThing;
-            if (cT != null && cT.stackCount != 1)
-            {
-                retainCount = cT.stackCount;
-            }
+            //if (cT != null && cT.stackCount != 1)
+            //{
+            //    retainCount = cT.stackCount;
+            //}
             Map map = caster.Map;
             IntVec3 casterCell = caster.Position;
             bool selectCaster = false;
@@ -154,7 +159,7 @@ namespace TorannMagic.AutoCast
                     TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, caster.DrawPos, caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
                     TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Enchanting, caster.DrawPos, caster.Map, Rand.Range(1.4f, 2f), .2f, .05f, Rand.Range(.4f, .6f), Rand.Range(-200, 200), 0, 0, 0);
                 }
-
+                caster.ClearReservationsForJob(caster.CurJob);
                 caster.DeSpawn();
                 GenSpawn.Spawn(p, targetCell, map);
                 if (!carriedThing.DestroyedOrNull() && carriedThing.Spawned)
@@ -179,11 +184,12 @@ namespace TorannMagic.AutoCast
 
                 Job job = new Job(retainJobDef, retainTargetA, retainTargetB, retainTargetC)
                 {
-                    count = retainCount,
-                    playerForced = false                    
+                    count = retainJobCount,                    
+                    //playerForced = false                    
                 };
                 //caster.jobs.TryTakeOrderedJob();
-                
+                caster.jobs.ClearQueuedJobs();
+                caster.jobs.startingNewJob = true;
                 caster.jobs.StartJob(job);
             }
             catch
@@ -816,14 +822,14 @@ namespace TorannMagic.AutoCast
                 if(caster.CurJob.targetA.Thing.Map != caster.Map) //carrying thing
                 {
                     jobTarget = caster.CurJob.targetB;
-                    carriedThing = caster.CurJob.targetA.Thing;
+                    //carriedThing = caster.CurJob.targetA.Thing;
                 }
                 else if(caster.CurJob.targetB != null && caster.CurJob.targetB.Thing != null && caster.CurJob.def != JobDefOf.Rescue) //targetA using targetB for job
                 {
                     if(caster.CurJob.targetB.Thing.Map != caster.Map) //carrying targetB to targetA
                     {
                         jobTarget = caster.CurJob.targetA;
-                        carriedThing = caster.CurJob.targetB.Thing;
+                        //carriedThing = caster.CurJob.targetB.Thing;
                     }
                     else if(caster.CurJob.def == JobDefOf.TendPatient || caster.CurJobDef == JobDefOf.Refuel || caster.CurJobDef == JobDefOf.RefuelAtomic || caster.CurJobDef == JobDefOf.RearmTurret ||
                         caster.CurJobDef == JobDefOf.RearmTurretAtomic || caster.CurJobDef == JobDefOf.FillFermentingBarrel)
@@ -843,6 +849,11 @@ namespace TorannMagic.AutoCast
             float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
             Vector3 directionToTarget = TM_Calc.GetVector(caster.Position, jobTarget.Cell);
             //Log.Message("" + caster.LabelShort + " job def is " + caster.CurJob.def.defName + " targetA " + caster.CurJob.targetA + " targetB " + caster.CurJob.targetB + " jobTarget " + jobTarget + " at distance " + distanceToTarget + " min distance " + minDistance + " at vector " + directionToTarget);
+            if (caster.carryTracker != null && caster.carryTracker.CarriedThing != null)
+            {
+                carriedThing = caster.carryTracker.CarriedThing;
+                //Log.Message("carrying: " + caster.carryTracker.CarriedThing.def.defName + " count " + caster.carryTracker.CarriedThing.stackCount);
+            }
             if (casterComp.Mana.CurLevel >= casterComp.ActualManaCost(abilitydef) && ability.CooldownTicksLeft <= 0 && distanceToTarget < 200)
             {
                 if (distanceToTarget > minDistance && caster.CurJob.locomotionUrgency >= LocomotionUrgency.Jog && caster.CurJob.bill == null)
@@ -895,20 +906,20 @@ namespace TorannMagic.AutoCast
         private static void DoBlink(Pawn caster, CompAbilityUserMagic casterComp, TMAbilityDef abilitydef, IntVec3 targetCell, PawnAbility ability, Thing carriedThing)
         {
             JobDef retainJobDef = caster.CurJobDef;
-            int retainCount = 1;
             LocalTargetInfo retainTargetA = caster.CurJob.targetA;
-            if(retainTargetA.Thing != null && retainTargetA.Thing.stackCount != 1)
+            int retainJobCount = 1;
+            if (caster.CurJob != null)
             {
-                retainCount = retainTargetA.Thing.stackCount;
+                retainJobCount = caster.CurJob.count;
             }
             LocalTargetInfo retainTargetB = caster.CurJob.targetB;
             LocalTargetInfo retainTargetC = caster.CurJob.targetC;
             Pawn p = caster;
             Thing cT = carriedThing;
-            if (cT != null && cT.stackCount != 1)
-            {
-                retainCount = cT.stackCount;
-            }
+            //if (cT != null && cT.stackCount != 1)
+            //{
+            //    retainCount = cT.stackCount;
+            //}
             Map map = caster.Map;
             IntVec3 casterCell = caster.Position;
             bool selectCaster = false;
@@ -923,7 +934,8 @@ namespace TorannMagic.AutoCast
                     TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, caster.DrawPos, caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
                     TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Casting, caster.DrawPos, caster.Map, Rand.Range(1.4f, 2f), .2f, .05f, Rand.Range(.4f, .6f), Rand.Range(-200, 200), 0, 0, 0);
                 }
-                
+
+                caster.ClearReservationsForJob(caster.CurJob);
                 caster.DeSpawn();                
                 GenSpawn.Spawn(p, targetCell, map);
                 if(carriedThing != null)
@@ -950,9 +962,11 @@ namespace TorannMagic.AutoCast
 
                 Job job = new Job(retainJobDef, retainTargetA, retainTargetB, retainTargetC)
                 {
-                    count = retainCount
+                    count = retainJobCount
                 };
                 //caster.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                caster.jobs.ClearQueuedJobs();
+                caster.jobs.startingNewJob = true;
                 caster.jobs.StartJob(job);
             }
             catch
@@ -978,14 +992,14 @@ namespace TorannMagic.AutoCast
                 if (caster.CurJob.targetA.Thing.Map != caster.Map) //carrying thing
                 {
                     jobTarget = caster.CurJob.targetB;
-                    carriedThing = caster.CurJob.targetA.Thing;
+                    //carriedThing = caster.CurJob.targetA.Thing;
                 }
                 else if (caster.CurJob.targetB != null && caster.CurJob.targetB.Thing != null && caster.CurJob.def.defName != "Rescue") //targetA using targetB for job
                 {
                     if (caster.CurJob.targetB.Thing.Map != caster.Map) //carrying targetB to targetA
                     {
                         jobTarget = caster.CurJob.targetA;
-                        carriedThing = caster.CurJob.targetB.Thing;
+                        //carriedThing = caster.CurJob.targetB.Thing;
                     }
                     else //Getting targetA to carry to TargetB
                     {
@@ -1011,6 +1025,11 @@ namespace TorannMagic.AutoCast
             float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
             Vector3 directionToTarget = TM_Calc.GetVector(caster.Position, jobTarget.Cell);
             //Log.Message("" + caster.LabelShort + " job def is " + caster.CurJob.def.defName + " targetA " + caster.CurJob.targetA + " targetB " + caster.CurJob.targetB + " jobTarget " + jobTarget + " at distance " + distanceToTarget + " min distance " + minDistance + " at vector " + directionToTarget);
+            if (caster.carryTracker != null && caster.carryTracker.CarriedThing != null)
+            {
+                carriedThing = caster.carryTracker.CarriedThing;
+                //Log.Message("carrying: " + caster.carryTracker.CarriedThing.def.defName + " count " + caster.carryTracker.CarriedThing.stackCount);
+            }
             if (distanceToTarget < 200)
             {
                 if (distanceToTarget > minDistance && caster.CurJob.locomotionUrgency >= LocomotionUrgency.Jog && caster.CurJob.bill == null)
@@ -1039,20 +1058,20 @@ namespace TorannMagic.AutoCast
         private static void DoBlink(Pawn caster, IntVec3 targetCell, Thing carriedThing)
         {
             JobDef retainJobDef = caster.CurJobDef;
-            int retainCount = 1;
             LocalTargetInfo retainTargetA = caster.CurJob.targetA;
-            if (retainTargetA.Thing != null && retainTargetA.Thing.stackCount != 1)
+            int retainJobCount = 1;
+            if (caster.CurJob != null)
             {
-                retainCount = retainTargetA.Thing.stackCount;
+                retainJobCount = caster.CurJob.count;
             }
             LocalTargetInfo retainTargetB = caster.CurJob.targetB;
             LocalTargetInfo retainTargetC = caster.CurJob.targetC;
             Pawn p = caster;
             Thing cT = carriedThing;
-            if (cT != null && cT.stackCount != 1)
-            {
-                retainCount = cT.stackCount;
-            }
+            //if (cT != null && cT.stackCount != 1)
+            //{
+            //    retainCount = cT.stackCount;
+            //}
             Map map = caster.Map;
             IntVec3 casterCell = caster.Position;
             bool selectCaster = false;
@@ -1087,11 +1106,11 @@ namespace TorannMagic.AutoCast
                 }
                 TM_MoteMaker.ThrowGenericMote(moteThrown, caster.DrawPos, caster.Map, 1.4f, .1f, 0f, .4f, 0, 5f, (Quaternion.AngleAxis(90, Vector3.up) * moteVector).ToAngleFlat(), 0);
                 bool drafted = caster.drafter.Drafted;
+                caster.ClearReservationsForJob(caster.CurJob);
                 caster.DeSpawn();
                 GenSpawn.Spawn(p, targetCell, map);
                 if (!carriedThing.DestroyedOrNull() && carriedThing.Spawned)
                 {
-
                     carriedThing.DeSpawn();
                     GenPlace.TryPlaceThing(cT, targetCell, map, ThingPlaceMode.Near);
                     //GenSpawn.Spawn(cT, targetCell, map);
@@ -1119,9 +1138,11 @@ namespace TorannMagic.AutoCast
 
                 Job job = new Job(retainJobDef, retainTargetA, retainTargetB, retainTargetC)
                 {
-                    count = retainCount
+                    count = retainJobCount
                 };
                 //caster.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                caster.jobs.ClearQueuedJobs();
+                caster.jobs.startingNewJob = true;
                 caster.jobs.StartJob(job);
             }
             catch

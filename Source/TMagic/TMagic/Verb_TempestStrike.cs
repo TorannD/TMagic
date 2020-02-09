@@ -85,7 +85,7 @@ namespace TorannMagic
                             return false;
                         }
                     }
-                    else if(wpn.def.IsMeleeWeapon)
+                    else
                     {
                         this.TryLaunchProjectile(this.Projectile, this.currentTarget);
                     }

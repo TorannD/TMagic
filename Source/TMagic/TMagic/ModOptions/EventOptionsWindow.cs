@@ -16,6 +16,8 @@ namespace TorannMagic.ModOptions
         private bool reset = false;
         private bool challenge = false;
 
+        public Vector2 scrollPosition = Vector2.zero;
+
         public EventOptionsWindow()
         {
             base.closeOnCancel = true;
@@ -30,8 +32,10 @@ namespace TorannMagic.ModOptions
             int num = 0;
             float rowHeight = 28f;
 
-            GUI.BeginGroup(inRect);
-            
+            //GUI.BeginGroup(inRect);
+            Rect sRect = new Rect(inRect.x, inRect.y, inRect.width - 36f, inRect.height + 360f);
+            scrollPosition = GUI.BeginScrollView(inRect, scrollPosition, sRect, false, true);
+
             Text.Font = GameFont.Medium;
             float x = Text.CalcSize("TM_EventOptions".Translate()).x;
             Rect headerRect = new Rect(inRect.width / 2f - (x / 2), inRect.y, inRect.width, EventOptionsWindow.HeaderSize);
@@ -64,7 +68,8 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.riftChallenge = 3f;
                 Settings.Instance.wanderingLichChallenge = 3f;
             }
-            GUI.EndGroup();
+            //GUI.EndGroup();
+            GUI.EndScrollView();
         }
 
         public static class UIHelper

@@ -15,7 +15,7 @@ namespace TorannMagic
     [StaticConstructorOnStartup]
     public class Building_TechnoTurret : Building_TurretGun
     {
-        int mortarMaxRange = 100;
+        int mortarMaxRange = 120;
         int mortarMinRange = 40;
         int mortarTicksToFire = 900;
         float mortarManaCost = .1f;
@@ -83,7 +83,7 @@ namespace TorannMagic
                         this.mortarMaxRange += ((verVal - 10) * 5);
                         this.mortarManaCost = .1f - (.002f * effVal);
                     }
-
+                    
                     this.initialized = true;
                 }
 
@@ -122,8 +122,9 @@ namespace TorannMagic
                         }
                     }
 
-                    if (this.verVal >= 10 && this.mortarTicksToFire < Find.TickManager.TicksGame && this.TargetCurrentlyAimingAt == null && comp.Mana.CurLevel >= this.mortarManaCost)
+                    if (this.verVal >= 10 && this.mortarTicksToFire < Find.TickManager.TicksGame && comp.Mana.CurLevel >= this.mortarManaCost)
                     {
+                        this.mortarTicksToFire = Find.TickManager.TicksGame + (900 - ((verVal - 10) * 40));
                         Pawn target = TM_Calc.FindNearbyEnemy(this.Position, this.Map, this.Faction, this.mortarMaxRange, this.mortarMinRange);
                         if (target != null && target.Position.IsValid && target.Position.DistanceToEdge(this.Map) > 5)
                         {
@@ -135,8 +136,7 @@ namespace TorannMagic
                                 rndTarget.z += Rand.RangeInclusive(-4, 4);
                                 Projectile newProjectile = (Projectile)GenSpawn.Spawn(ThingDef.Named("Bullet_Shell_TechnoTurretExplosive"), this.Position, this.Map, WipeMode.Vanish);
                                 newProjectile.Launch(this, rndTarget, target, ProjectileHitFlags.All, null);
-                            }
-                            this.mortarTicksToFire = Find.TickManager.TicksGame + (900 - ((verVal - 10) * 40));
+                            }                            
                             SoundInfo info = SoundInfo.InMap(new TargetInfo(this.Position, this.Map, false), MaintenanceType.None);
                             info.pitchFactor = 1.3f;
                             info.volumeFactor = .8f;

@@ -70,6 +70,14 @@ namespace TorannMagic
                     {
                         //do nothing
                     }
+                    else if(this.CasterPawn.health.hediffSet.hediffs[i] is Hediff_Addiction)
+                    {
+                        //Hediff_Addiction rhd = this.CasterPawn.health.hediffSet.hediffs[i] as Hediff_Addiction;                        
+                    }
+                    else if(this.CasterPawn.health.hediffSet.hediffs[i].def.defName == "LuciferiumHigh")
+                    {
+                        //do nothing
+                    }
                     else
                     {
                         Hediff rhd = this.CasterPawn.health.hediffSet.hediffs[i];
@@ -101,8 +109,12 @@ namespace TorannMagic
             //comp.recallNeedValues.Clear();
             for (int i = 0; i < this.CasterPawn.needs.AllNeeds.Count; i++)
             {
-                comp.recallNeedDefnames.Add(this.CasterPawn.needs.AllNeeds[i].def.defName);
-                comp.recallNeedValues.Add(this.CasterPawn.needs.AllNeeds[i].CurLevel);
+                Log.Message("" + this.CasterPawn.needs.AllNeeds[i].def.defName);
+                if (this.CasterPawn.needs.AllNeeds[i].def.defName != "Chemical_Luciferium")
+                {                    
+                    comp.recallNeedDefnames.Add(this.CasterPawn.needs.AllNeeds[i].def.defName);
+                    comp.recallNeedValues.Add(this.CasterPawn.needs.AllNeeds[i].CurLevel);
+                }
                 //comp.recallNeedValues.Add(TM_Calc.Clone<Need>(this.CasterPawn.needs.AllNeeds[i]));
             }
             //Log.Message("needs set");

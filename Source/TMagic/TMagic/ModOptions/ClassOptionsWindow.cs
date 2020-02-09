@@ -9,9 +9,11 @@ namespace TorannMagic.ModOptions
     public class ClassOptionsWindow : Window
     {
 
-        public override Vector2 InitialSize => new Vector2(480f, 640f);
+        public override Vector2 InitialSize => new Vector2(520f, 640f);
         public static float HeaderSize = 28f;
         public static float TextSize = 22f;
+
+        public Vector2 scrollPosition = Vector2.zero;
 
         public ClassOptionsWindow()
         {
@@ -19,15 +21,16 @@ namespace TorannMagic.ModOptions
             base.doCloseButton = true;
             base.doCloseX = true;
             base.absorbInputAroundWindow = true;
-            base.forcePause = true;
+            base.forcePause = true;            
         }
 
         public override void DoWindowContents(Rect inRect)
         {
             int num = 0;
             float rowHeight = 28f;
-
-            GUI.BeginGroup(inRect);
+            Rect sRect = new Rect(inRect.x, inRect.y, inRect.width - 36f, inRect.height + 360f);
+            scrollPosition = GUI.BeginScrollView(inRect, scrollPosition, sRect, false, true);
+            //GUI.BeginGroup(inRect);
             
             Text.Font = GameFont.Medium;
             float x = Text.CalcSize("TM_ClassOptions".Translate()).x;
@@ -135,7 +138,8 @@ namespace TorannMagic.ModOptions
             Rect rowRect16 = Controller.UIHelper.GetRowRect(rowRect15, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect16, "TM_ChaosMage".Translate(), ref Settings.Instance.ChaosMage, false);
 
-            GUI.EndGroup();
+            //GUI.EndGroup();
+            GUI.EndScrollView();
         }        
     }   
 }

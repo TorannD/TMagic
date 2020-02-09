@@ -90,11 +90,11 @@ namespace TorannMagic
                         float enchantChance = .5f;
                         if (newPawn.RaceProps.IsFlesh)
                         {
-                            enchantChance = (.5f + (.1f * pwrVal) + TM_Calc.GetSpellSuccessChance(this.CasterPawn, newPawn));
+                            enchantChance = (.5f + (.1f * pwrVal) * TM_Calc.GetSpellSuccessChance(this.CasterPawn, newPawn));
                         }
                         else
                         {
-                            enchantChance = (.0f + (.2f * pwrVal) + TM_Calc.GetSpellSuccessChance(this.CasterPawn, newPawn));
+                            enchantChance = (.0f + (.2f * pwrVal) * TM_Calc.GetSpellSuccessChance(this.CasterPawn, newPawn));
                         }
                         if (Rand.Chance(enchantChance) && newPawn.GetComp<CompPolymorph>() != null)
                         { 

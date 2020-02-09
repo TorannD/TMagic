@@ -161,8 +161,9 @@ namespace TorannMagic
         public static void DoAction_TechnoWeaponCopy(Pawn caster, Thing thing)
         {
             CompAbilityUserMagic comp = caster.TryGetComp<CompAbilityUserMagic>();
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
 
-            if (thing != null && thing.def != null && thing.def.IsRangedWeapon && thing.def.techLevel >= TechLevel.Industrial && thing.def.Verbs.FirstOrDefault().verbClass.ToString() == "Verse.Verb_Shoot")
+            if (thing != null && thing.def != null && thing.def.IsRangedWeapon && (thing.def.techLevel >= TechLevel.Industrial || settingsRef.unrestrictedWeaponCopy) && (thing.def.Verbs.FirstOrDefault().verbClass.ToString() == "Verse.Verb_Shoot" || settingsRef.unrestrictedWeaponCopy))
             {
                 int verVal = comp.MagicData.MagicPowerSkill_TechnoWeapon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoWeapon_ver").level;
                 int pwrVal = comp.MagicData.MagicPowerSkill_TechnoWeapon.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoWeapon_pwr").level;

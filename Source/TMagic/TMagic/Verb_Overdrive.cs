@@ -100,6 +100,12 @@ namespace TorannMagic
                         comp.overdriveBuilding = bldgTurret;
                         comp.overdriveDuration = Mathf.RoundToInt((10 + pwrVal) * comp.arcaneDmg);
                     }
+                    List<Pawn> odPawns = ModOptions.Constants.GetOverdrivePawnList();
+                    if(odPawns != null)
+                    {
+                        odPawns.AddDistinct(caster);
+                        ModOptions.Constants.SetOverdrivePawnList(odPawns);
+                    }
                 }
             }
             else

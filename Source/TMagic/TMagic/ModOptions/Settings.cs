@@ -34,9 +34,11 @@ namespace TorannMagic.ModOptions
         public bool unrestrictedBloodTypes = true;
         public float paracyteSoftCap = 50f;
         public bool paracyteMagesCount = true;
+        public bool unrestrictedWeaponCopy = false;
 
         //autocast options
         public bool autocastEnabled = true;
+        public bool autocastAnimals = false;
         public float autocastMinThreshold = 0.7f;
         public float autocastCombatMinThreshold = 0.2f;
         public int autocastEvaluationFrequency = 180;
@@ -108,11 +110,13 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<bool>(ref this.unrestrictedBloodTypes, "unrestrictedBloodTypes", true, false);
             Scribe_Values.Look<float>(ref this.paracyteSoftCap, "paracyteSoftCap", 1f, false);
             Scribe_Values.Look<bool>(ref this.paracyteMagesCount, "paracyteMagesCount", true, false);
+            Scribe_Values.Look<bool>(ref this.unrestrictedWeaponCopy, "unrestrictedWeaponCopy", false, false);
 
             Scribe_Values.Look<bool>(ref this.autocastEnabled, "autocastEnabled", true, false);
             Scribe_Values.Look<float>(ref this.autocastMinThreshold, "autocastMinThreshold", 0.7f, false);
             Scribe_Values.Look<float>(ref this.autocastCombatMinThreshold, "autocastCombatMinThreshold", 0.2f, false);
             Scribe_Values.Look<int>(ref this.autocastEvaluationFrequency, "autocastEvaluationFrequency", 180, false);
+            Scribe_Values.Look<bool>(ref this.autocastAnimals, "autocastAnimals", false, false);
 
             Scribe_Values.Look<bool>(ref this.Arcanist, "Arcanist", true, false);
             Scribe_Values.Look<bool>(ref this.FireMage, "FireMage", true, false);

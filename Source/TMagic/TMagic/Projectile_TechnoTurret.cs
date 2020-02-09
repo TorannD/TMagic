@@ -70,7 +70,7 @@ namespace TorannMagic
                 tempPod.spawnCount = 1;
                 try
                 {
-                    this.turret = TM_Action.SingleSpawnLoop(pawn, tempPod, base.Position, map, 6000, true);
+                    this.turret = TM_Action.SingleSpawnLoop(pawn, tempPod, base.Position, map, 6000, true, false, pawn.Faction);
                     this.turret.def.building.turretBurstCooldownTime = 4.5f - (.1f * pwrVal);
 
                     for (int i = 0; i < 4; i++)

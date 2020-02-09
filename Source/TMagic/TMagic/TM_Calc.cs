@@ -606,9 +606,10 @@ namespace TorannMagic
             for (int i = 0; i < mapPawns.Count; i++)
             {
                 targetPawn = mapPawns[i];
-                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !TM_Calc.IsUndead(targetPawn))
+                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !TM_Calc.IsUndead(targetPawn) && targetPawn.Faction != null && targetPawn.Faction == pawn.Faction)
                 {
-                    if (targetPawn.IsColonist && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
+                    ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                    if ((targetPawn.RaceProps.Humanlike || settingsRef.autocastAnimals) && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
                     {
                         float injurySeverity = 0;
                         using (IEnumerator<BodyPartRecord> enumerator = targetPawn.health.hediffSet.GetInjuredParts().GetEnumerator())
@@ -671,9 +672,10 @@ namespace TorannMagic
             for (int i = 0; i < mapPawns.Count; i++)
             {
                 targetPawn = mapPawns[i];
-                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !TM_Calc.IsUndead(targetPawn))
+                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !TM_Calc.IsUndead(targetPawn) && targetPawn.Faction != null && targetPawn.Faction == pawn.Faction)
                 {
-                    if (targetPawn.IsColonist && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius && targetPawn != pawn)
+                    ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                    if ((targetPawn.RaceProps.Humanlike || settingsRef.autocastAnimals) && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius && targetPawn != pawn)
                     {
                         float injurySeverity = 0;
                         using (IEnumerator<BodyPartRecord> enumerator = targetPawn.health.hediffSet.GetInjuredParts().GetEnumerator())
@@ -736,9 +738,10 @@ namespace TorannMagic
             for (int i = 0; i < mapPawns.Count; i++)
             {
                 targetPawn = mapPawns[i];
-                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !TM_Calc.IsUndead(targetPawn))
+                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !TM_Calc.IsUndead(targetPawn) && targetPawn.Faction != null && targetPawn.Faction == pawn.Faction)
                 {
-                    if (targetPawn.IsColonist && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
+                    ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                    if ((targetPawn.RaceProps.Humanlike || settingsRef.autocastAnimals) && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
                     {
                         float injurySeverity = 0;
                         using (IEnumerator<BodyPartRecord> enumerator = targetPawn.health.hediffSet.GetInjuredParts().GetEnumerator())
@@ -801,9 +804,10 @@ namespace TorannMagic
             for (int i = 0; i < mapPawns.Count; i++)
             {
                 targetPawn = mapPawns[i];
-                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed)
+                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && targetPawn.Faction != null && targetPawn.Faction == pawn.Faction)
                 {
-                    if (targetPawn.IsColonist && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
+                    ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                    if ((targetPawn.RaceProps.Humanlike || settingsRef.autocastAnimals) && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
                     {
                         using (IEnumerator<Hediff> enumerator = targetPawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
                         {
@@ -847,9 +851,10 @@ namespace TorannMagic
             for (int i = 0; i < mapPawns.Count; i++)
             {
                 targetPawn = mapPawns[i];
-                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed)
+                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && targetPawn.Faction != null && targetPawn.Faction == pawn.Faction)
                 {
-                    if (targetPawn.IsColonist && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
+                    ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                    if ((targetPawn.RaceProps.Humanlike || settingsRef.autocastAnimals) && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
                     {
                         using (IEnumerator<Hediff> enumerator = targetPawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
                         {
@@ -890,9 +895,10 @@ namespace TorannMagic
             for (int i = 0; i < mapPawns.Count; i++)
             {
                 targetPawn = mapPawns[i];
-                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed)
+                if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && targetPawn.Faction != null && targetPawn.Faction == pawn.Faction)
                 {
-                    if (targetPawn.IsColonist && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
+                    ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                    if ((targetPawn.RaceProps.Humanlike || settingsRef.autocastAnimals) && (pawn.Position - targetPawn.Position).LengthHorizontal <= radius)
                     {
                         using (IEnumerator<Hediff_Addiction> enumerator = targetPawn.health.hediffSet.GetHediffs<Hediff_Addiction>().GetEnumerator())
                         {
@@ -943,7 +949,7 @@ namespace TorannMagic
                 targetPawn = mapPawns[i];
                 if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !targetPawn.Downed)
                 {
-                    if (targetPawn.Position != position && targetPawn.HostileTo(faction) && (position - targetPawn.Position).LengthHorizontal <= radius && (position - targetPawn.Position).LengthHorizontal > minRange)
+                    if (targetPawn.Position != position && targetPawn.Faction.HostileTo(faction) && (position - targetPawn.Position).LengthHorizontal <= radius && (position - targetPawn.Position).LengthHorizontal > minRange)
                     {
                         pawnList.Add(targetPawn);
                         targetPawn = null;
@@ -956,6 +962,7 @@ namespace TorannMagic
             }
             if (pawnList.Count > 0)
             {
+                Log.Message("returning a pawn");
                 return pawnList.RandomElement();
             }
             else

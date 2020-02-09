@@ -74,5 +74,30 @@ namespace TorannMagic.ModOptions
             bypassPrediction = value;
             return bypassPrediction;
         }
+
+        static List<Pawn> overdrivePawns = new List<Pawn>();
+
+        public static List<Pawn> SetOverdrivePawnList(List<Pawn> value)
+        {            
+            if(overdrivePawns == null)
+            {
+                overdrivePawns = new List<Pawn>();
+            }
+            for(int i = 0; i < value.Count; i++)
+            {
+                overdrivePawns.AddDistinct<Pawn>(value[i]);
+            }
+            return overdrivePawns;
+        }
+
+        public static List<Pawn> GetOverdrivePawnList()
+        {
+            if(overdrivePawns == null)
+            {
+                overdrivePawns = new List<Pawn>();
+                overdrivePawns.Clear();
+            }
+            return overdrivePawns;
+        }
     }
 }

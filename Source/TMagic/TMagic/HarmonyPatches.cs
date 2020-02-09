@@ -1183,7 +1183,7 @@ namespace TorannMagic
             {
                 int burstCooldownTicksLeft = Traverse.Create(root: __instance).Field(name: "burstCooldownTicksLeft").GetValue<int>();
                 int burstWarmupTicksLeft = Traverse.Create(root: __instance).Field(name: "burstWarmupTicksLeft").GetValue<int>();
-                List<Pawn> mapPawns = overdriveThing.Map.mapPawns.AllPawnsSpawned;
+                List<Pawn> mapPawns = ModOptions.Constants.GetOverdrivePawnList();
                 for (int i = 0; i < mapPawns.Count; i++)
                 {
                     Pawn pawn = mapPawns[i];
@@ -1215,8 +1215,8 @@ namespace TorannMagic
 
             Thing overdriveThing = __instance.parent;
             if (overdriveThing != null && __instance.PowerOn && __instance.powerOutputInt != 0)
-            {
-                List<Pawn> mapPawns = overdriveThing.Map.mapPawns.AllPawnsSpawned;
+            {               
+                List<Pawn> mapPawns = ModOptions.Constants.GetOverdrivePawnList();
                 for (int i = 0; i < mapPawns.Count; i++)
                 {
                     Pawn pawn = mapPawns[i];
@@ -1226,13 +1226,12 @@ namespace TorannMagic
                         if (comp.IsMagicUser && comp.overdriveBuilding != null)
                         {
                             if (overdriveThing == comp.overdriveBuilding)
-                            {                                
+                            {
                                 __instance.powerOutputInt = comp.overdrivePowerOutput;
-                               
                             }
                         }
                     }
-                }
+                }                               
             }
         }
 

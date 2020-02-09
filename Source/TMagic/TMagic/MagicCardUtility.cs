@@ -48,8 +48,11 @@ namespace TorannMagic
 
         public static void DrawMagicCard(Rect rect, Pawn pawn)
         {
-            GUI.BeginGroup(rect);
-            Widgets.BeginScrollView(rect, ref scrollPosition, rect, true);
+            //GUI.BeginGroup(rect);
+            //Widgets.BeginScrollView(rect, ref scrollPosition, rect, true);
+
+            Rect sRect = new Rect(rect.x, rect.y, rect.width - 36f, rect.height + 120f);
+            scrollPosition = GUI.BeginScrollView(rect, scrollPosition, sRect, false, true);
 
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
             bool flag = comp != null;
@@ -344,8 +347,9 @@ namespace TorannMagic
                     }
                 }
             }
-            Widgets.EndScrollView();
-            GUI.EndGroup();
+            GUI.EndScrollView();
+            //Widgets.EndScrollView();
+            //GUI.EndGroup();
         }
 
         public static void InfoPane(Rect inRect, CompAbilityUserMagic compMagic, Pawn pawn)
@@ -649,9 +653,13 @@ namespace TorannMagic
                     {
                         flag999 = false;
                     }
+                    Rect rectLabel = new Rect(0f + 20f, rect.yMin, 350f - 44f, MagicCardUtility.MagicButtonPointSize);
+                    //GUI.color = Color.yellow;
+                    Widgets.Label(rectLabel, power.abilityDef.LabelCap);
+                    //GUI.color = Color.white;
                     if (enumerator.Current.learned != true)
                     {
-                        Widgets.DrawTextureFitted(rect, power.Icon, 1f);
+                        Widgets.DrawTextureFitted(rect, power.Icon, 1f);                        
                         Rect rectLearn = new Rect(rect.xMin - 44f, rect.yMin, 40f, MagicCardUtility.MagicButtonPointSize);
                         if (compMagic.MagicData.MagicAbilityPoints >= enumerator.Current.learnCost)
                         {
@@ -675,7 +683,7 @@ namespace TorannMagic
                         {
                             if ((power.abilityDef.defName == "TM_TechnoShield" || power.abilityDef.defName == "TM_Sabotage" || power.abilityDef.defName == "TM_Overdrive"))
                             {
-                                Rect rectToLearn = new Rect(rect.xMin - 268f, rect.yMin, 250f, MagicButtonPointSize);
+                                Rect rectToLearn = new Rect(rect.xMin - 268f, rect.yMin + 22f, 250f, MagicButtonPointSize);
                                 Text.Font = GameFont.Tiny;
                                 bool flagLearn = Widgets.ButtonText(rectToLearn, "TM_SpellLocked".Translate(power.abilityDef.LabelCap), false, false, false) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
                             }

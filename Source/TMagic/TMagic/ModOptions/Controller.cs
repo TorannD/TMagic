@@ -34,15 +34,16 @@ namespace TorannMagic.ModOptions
         {
             int num = 0;
             float rowHeight = 28f;
-
-            Widgets.BeginScrollView(canvas, ref scrollPosition, canvas);
+            Rect sRect = new Rect(canvas.x, canvas.y, canvas.width - 36f, canvas.height + 360f);
+            scrollPosition = GUI.BeginScrollView(canvas, scrollPosition, sRect, false, true);
+            //Widgets.BeginScrollView(canvas, ref scrollPosition, canvas, true);
 
             Rect rect1 = new Rect(canvas);
             rect1.width /= 2f;
             num++;
             num++;
             SettingsRef settingsRef = new SettingsRef();
-            Rect rowRect = UIHelper.GetRowRect(rect1, rowHeight, num);        
+            Rect rowRect = UIHelper.GetRowRect(rect1, rowHeight, num);
             Settings.Instance.xpMultiplier = Widgets.HorizontalSlider(rowRect, Settings.Instance.xpMultiplier, .1f, 2f, false, "XPMultiplier".Translate() + " " + Settings.Instance.xpMultiplier, ".1", "2", .1f);
             Rect rowRectShiftRight = UIHelper.GetRowRect(rowRect, rowHeight, num);
             rowRectShiftRight.x += rowRect.width + 56f;
@@ -50,7 +51,7 @@ namespace TorannMagic.ModOptions
             classOptions = Widgets.ButtonText(rowRectShiftRight, "Class Options", true, false, true);
             if (classOptions)
             {
-                Rect rect = new Rect(64f, 64f, 400, 400);
+                Rect rect = new Rect(64f, 64f, 480, 400);
                 ClassOptionsWindow newWindow = new ClassOptionsWindow();
                 Find.WindowStack.Add(newWindow);                
 
@@ -110,6 +111,9 @@ namespace TorannMagic.ModOptions
             num++;
             Rect rowRect68 = UIHelper.GetRowRect(rowRect67, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect68, "TM_ParacyteMagesCount".Translate(), ref Settings.Instance.paracyteMagesCount, false);
+            Rect rowRect68ShiftRight = UIHelper.GetRowRect(rowRect68, rowHeight, num);
+            rowRect68ShiftRight.x += rowRect68.width + 56f;
+            Widgets.CheckboxLabeled(rowRect68ShiftRight, "TM_autocastAnimals".Translate(), ref Settings.Instance.autocastAnimals, false);
             num++;
             Rect rowRect7 = UIHelper.GetRowRect(rowRect68, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect7, "AICanCast".Translate(), ref Settings.Instance.AICasting, false);
@@ -156,6 +160,9 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.classIconSize = Widgets.HorizontalSlider(rowRect12ShiftRight, Settings.Instance.classIconSize, .5f, 2.5f, false, "classIconSize".Translate() + " " + Settings.Instance.classIconSize.ToString("P1"), "0", "2.5", .01f);
             }
             num++;
+            Rect rowRect13 = UIHelper.GetRowRect(rowRect12, rowHeight, num);
+            Widgets.CheckboxLabeled(rowRect13, "TM_UnrestrictedWeaponCopy".Translate(), ref Settings.Instance.unrestrictedWeaponCopy, false);
+            num++;
             num++;
             Rect rowRect20 = UIHelper.GetRowRect(rowRect10, rowHeight, num);
             rowRect20.width = 120f;
@@ -195,6 +202,9 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.paracyteMagesCount = true;
                 Settings.Instance.riftChallenge = 1f;
                 Settings.Instance.wanderingLichChallenge = 1f;
+                Settings.Instance.autocastAnimals = false;
+                Settings.Instance.unrestrictedWeaponCopy = false;
+
                 this.deathExplosionDmgMax = "50.0";
                 this.deathExplosionDmgMin = "20.0";
 
@@ -233,6 +243,8 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.paracyteMagesCount = true;
                 Settings.Instance.riftChallenge = 3f;
                 Settings.Instance.wanderingLichChallenge = 3f;
+                Settings.Instance.autocastAnimals = false;
+                Settings.Instance.unrestrictedWeaponCopy = false;
                 this.deathExplosionDmgMax = "60.0";
                 this.deathExplosionDmgMin = "30.0";
 
@@ -268,6 +280,8 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.showClassIconOnColonistBar = true;
                 Settings.Instance.AIAggressiveCasting = false;
                 Settings.Instance.riftChallenge = 1f;
+                Settings.Instance.autocastAnimals = false;
+                Settings.Instance.unrestrictedWeaponCopy = false;
                 this.deathExplosionDmgMax = "5.0";
                 this.deathExplosionDmgMin = "10.0";
 
@@ -277,7 +291,8 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.autocastEvaluationFrequency = 180;
             }
 
-            Widgets.EndScrollView();
+            //Widgets.EndScrollView();
+            GUI.EndScrollView();
 
         }
 

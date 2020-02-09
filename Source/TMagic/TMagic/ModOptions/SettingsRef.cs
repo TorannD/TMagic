@@ -33,9 +33,11 @@ namespace TorannMagic.ModOptions
         public bool unrestrictedBloodTypes = Settings.Instance.unrestrictedBloodTypes;
         public float paracyteSoftCap = Settings.Instance.paracyteSoftCap;
         public bool paracyteMagesCount = Settings.Instance.paracyteMagesCount;
+        public bool unrestrictedWeaponCopy = Settings.Instance.unrestrictedWeaponCopy;
 
         //autocast
         public bool autocastEnabled = Settings.Instance.autocastEnabled;
+        public bool autocastAnimals = Settings.Instance.autocastAnimals;
         public float autocastMinThreshold = Settings.Instance.autocastMinThreshold;
         public float autocastCombatMinThreshold = Settings.Instance.autocastCombatMinThreshold;
         public float autocastEvaluationFrequency = Settings.Instance.autocastEvaluationFrequency;

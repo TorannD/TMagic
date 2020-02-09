@@ -211,7 +211,9 @@
 <classIconSize>Class icon size</classIconSize>
 <TM_AggressiveAICasting>Aggressive AI Casting</TM_AggressiveAICasting>
 <TM_ParacyteSoftCap>Paracyte Soft Cap: </TM_ParacyteSoftCap>
-<TM_ParacyteMagesCount>Mages count against soft cap (2ea)</TM_ParacyteMagesCount>
+<TM_ParacyteMagesCount>Mages count against soft cap (2ea)</TM_ParacyteMagesCount>
+<TM_autocastAnimals>Autocast targets animals</TM_autocastAnimals>
+<TM_UnrestrictedWeaponCopy>Unrestricted Techno-Weapons</TM_UnrestrictedWeaponCopy>
 
 <!-- Mod Settings Class options -->
 
@@ -397,7 +399,7 @@ Increases the radius of blizzard by .5 per skill level.</TM_Blizzard_ver_desc>
 <TM_Blizzard_pwr>Blizzard Power</TM_Blizzard_pwr>
 <TM_Blizzard_ver>Blizzard Versatility</TM_Blizzard_ver>
 
-<TM_AMP_eff_desc>Decreases mana cost of AMP by 10% per level of base mana cost.</TM_AMP_eff_desc>
+<TM_AMP_eff_desc>Decreases mana cost of AMP by 8% per level of base mana cost.</TM_AMP_eff_desc>
 <TM_LightningBolt_pwr_desc>Increases raw damage of Lightning Bolt by 6 per level.</TM_LightningBolt_pwr_desc>
 <TM_LightningBolt_eff_desc>Decreases mana cost of Lightning Bolt by 8% of base mana cost.</TM_LightningBolt_eff_desc>
 <TM_LightningBolt_ver_desc>Increases the possibility of secondary lightning strikes by 1 to 4 per level.</TM_LightningBolt_ver_desc>

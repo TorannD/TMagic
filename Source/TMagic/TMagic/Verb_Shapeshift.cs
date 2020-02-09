@@ -62,7 +62,7 @@ namespace TorannMagic
                         Log.Message("random creature was null");
                     }
 
-                    Pawn polymorphedPawn = TM_Action.PolymorphPawn(this.CasterPawn, caster, caster, spawnThing, caster.Position, true, duration);
+                    Pawn polymorphedPawn = TM_Action.PolymorphPawn(this.CasterPawn, caster, caster, spawnThing, caster.Position, true, duration, caster.Faction);
 
                     if (this.effVal >= 3)
                     {

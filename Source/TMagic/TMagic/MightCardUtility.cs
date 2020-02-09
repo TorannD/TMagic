@@ -11,6 +11,8 @@ namespace TorannMagic
 
         public static Vector2 mightCardSize = new Vector2(700f, 556f);
 
+        public static Vector2 scrollPosition = Vector2.zero;
+
         public static float ButtonSize = 40f;
 
         public static float MagicButtonSize = 46f;
@@ -45,7 +47,10 @@ namespace TorannMagic
 
         public static void DrawMightCard(Rect rect, Pawn pawn)
         {
-            GUI.BeginGroup(rect);
+            //GUI.BeginGroup(rect);
+            Rect sRect = new Rect(rect.x, rect.y, rect.width - 36f, rect.height + 360f);
+            scrollPosition = GUI.BeginScrollView(rect, scrollPosition, sRect, false, true);
+
             CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
             bool flag = comp != null;
             if (flag)
@@ -117,7 +122,8 @@ namespace TorannMagic
                     }
                 }
             }
-            GUI.EndGroup();
+            //GUI.EndGroup();
+            GUI.EndScrollView();
         }
 
         public static void InfoPane(Rect inRect, CompAbilityUserMight compMight, Pawn pawn)
@@ -457,6 +463,10 @@ namespace TorannMagic
                     {
                         flag10 = enumerator.Current.level >= 1 || compMight.MightData.MightAbilityPoints < 2;
                     }
+                    //Ability label
+                    Rect rectLabel = new Rect(0f + 20f, rect.yMin, 350f - 44f, MagicCardUtility.MagicButtonPointSize);
+                    Widgets.Label(rectLabel, power.abilityDef.LabelCap);
+
                     if (flag10)
                     {                        
                         if (flag999)

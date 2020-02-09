@@ -2776,7 +2776,7 @@ namespace TorannMagic
                     if (this.skill_Teach)
                     {
                         MightPower mightPower = this.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_TeachMight);
-                        if (mightPower.autocast)
+                        if (mightPower.autocast && !this.Pawn.CurJob.playerForced)
                         {
                             if (this.Pawn.CurJobDef.joyKind != null || this.Pawn.CurJobDef == JobDefOf.Wait_Wander || Pawn.CurJobDef == JobDefOf.GotoWander)
                             {
