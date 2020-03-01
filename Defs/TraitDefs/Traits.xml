@@ -78,6 +78,8 @@
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>
 	</TraitDef>
 
@@ -130,6 +132,8 @@
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -186,6 +190,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>InnerFire</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -241,6 +247,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -295,6 +303,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -347,6 +357,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -403,6 +415,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -458,6 +472,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -511,6 +527,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 
@@ -563,6 +581,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef> 	
 	
@@ -618,6 +638,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -701,6 +723,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -766,6 +790,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -866,6 +892,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -926,6 +954,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -986,6 +1016,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1044,6 +1076,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1104,6 +1138,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1159,6 +1195,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1215,6 +1253,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1267,6 +1307,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1319,6 +1361,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>Chronomancer</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1371,6 +1415,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -1427,6 +1473,8 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>InnerFire</li>
 		  <li>TM_Wanderer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -1486,6 +1534,8 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1603,6 +1653,8 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1703,6 +1755,8 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1757,7 +1811,7 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>
 			<label>Legendary bladedancer</label>
 			<commonality>0</commonality>
-			<description>[PAWN_nameDef] has become a legend, [PAWN_possessive] skill in melee combat is is known across the world.  [PAWN_possessive] skill in combat makes it look as if each movement, each strike, is merely a stitch in a tapestry that depicts [PAWN_possessive] victory.</description>
+			<description>[PAWN_nameDef] has become a legend, [PAWN_possessive] skill in melee combat is is known across the world. [PAWN_possessive] skill in combat makes it look as if each movement, each strike, is merely a stitch in a tapestry that depicts [PAWN_possessive] victory.</description>
 			<degree>3</degree>
 				<statOffsets>
 					<MoveSpeed>.40</MoveSpeed>
@@ -1801,6 +1855,8 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1858,6 +1914,8 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1917,6 +1975,8 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1969,6 +2029,8 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -2024,6 +2086,123 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>TM_Wanderer</li>
 		  <li>TM_Wayfarer</li>
 		  <li>ChaosMage</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>
+		<defName>TM_Commander</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
+		<disabledWorkTags>
+		  <li>ManualDumb</li>
+		</disabledWorkTags>	
+		<degreeDatas>	
+		  <li>
+			<label>Commander</label>
+			<description>As a Commander, [PAWN_nameDef] exhibits a charismatic personality and stalwart presence that make other pawns flock to [PAWN_possessive] lead. Commander's utilize the weight of their presence to naturally inspire nearby pawns, and when that's not enough, they can issue orders that drive their followers to victory. Because {PAWN_nameDef] is used to everyone doing [PAWN_possessive] bidding, [PAWN_pronoun] considers menial tasks beneath [PAWN_possessive] status, and is generally a lackluster worker.</description>
+			<degree>4</degree>
+				<statOffsets>
+					<SocialImpact>+0.4</SocialImpact>
+					<NegotiationAbility>+0.3</NegotiationAbility>	
+					<CarryingCapacity>-20</CarryingCapacity>
+					<WorkSpeedGlobal>-0.3</WorkSpeedGlobal>
+					<ResearchSpeed>-0.4</ResearchSpeed>									
+                </statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>PhysicalProdigy</li>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>Arcanist</li>
+		  <li>StormBorn</li>
+		  <li>Summoner</li>
+		  <li>Gifted</li>
+	      <li>Paladin</li>
+		  <li>TM_Sniper</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Gladiator</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		  <li>Faceless</li>
+		  <li>Succubus</li>
+		  <li>Warlock</li>
+		  <li>Geomancer</li>
+		  <li>Technomancer</li>
+		  <li>TM_Psionic</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>DeathKnight</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
+		  <li>TM_Monk</li>
+		  <li>TM_SuperSoldier</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>
+		<defName>TM_SuperSoldier</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
+		<degreeDatas>	
+		  <li>
+			<label>Super Soldier</label>
+			<description>[PAWN_nameDef] is a highly trained Soldier, specializing in pistol, shotgun, or rifle weapons. [PAWN_possessive] weapon specialization is augmented by a standard set of combat training. Super Soldiers are trained to be aggressive and consider violence the natural solution to any argument.</description>
+			<degree>4</degree>
+				<statOffsets>
+					<ImmunityGainSpeed>.05</ImmunityGainSpeed>
+					<MoveSpeed>.1</MoveSpeed>
+					<CarryingCapacity>20</CarryingCapacity>
+					<PainShockThreshold>+0.25</PainShockThreshold>
+					<AimingDelayFactor>-0.15</AimingDelayFactor>
+					<SocialImpact>-0.25</SocialImpact>				
+					<PsychicSensitivity>-.25</PsychicSensitivity>
+					<WorkSpeedGlobal>-0.1</WorkSpeedGlobal>
+					<GlobalLearningFactor>-0.20</GlobalLearningFactor>
+                </statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>PhysicalProdigy</li>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>Arcanist</li>
+		  <li>StormBorn</li>
+		  <li>Summoner</li>
+		  <li>Gifted</li>
+	      <li>Paladin</li>
+		  <li>TM_Sniper</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Gladiator</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		  <li>Faceless</li>
+		  <li>Succubus</li>
+		  <li>Warlock</li>
+		  <li>Geomancer</li>
+		  <li>Technomancer</li>
+		  <li>TM_Psionic</li>
+		  <li>Enchanter</li>		  
+		  <li>BloodMage</li>
+		  <li>Chronomancer</li>
+		  <li>DeathKnight</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>ChaosMage</li>
+		  <li>TM_Monk</li>
+		  <li>TM_Commander</li>
 		</conflictingTraits>	
 	</TraitDef>
 

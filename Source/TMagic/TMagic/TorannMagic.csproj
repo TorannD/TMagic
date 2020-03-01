@@ -37,15 +37,15 @@
       <HintPath>..\..\..\..\..\..\..\..\..\..\Assemblies\Release\net35\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="AbilityUser">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\AbilityUser.dll</HintPath>
+      <HintPath>..\..\..\..\JecsTools-1.1.0.16\Assemblies\AbilityUser.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AbilityUserAI">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\AbilityUserAI.dll</HintPath>
+      <HintPath>..\..\..\..\JecsTools-1.1.0.16\Assemblies\AbilityUserAI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AlienRace">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\839005762\Assemblies\AlienRace.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\839005762\1.0\Assemblies\AlienRace.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
@@ -53,7 +53,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="CompDeflector">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\CompDeflector.dll</HintPath>
+      <HintPath>..\..\..\..\JecsTools-1.1.0.16\Assemblies\CompDeflector.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="GiddyUpCore">
@@ -90,6 +90,7 @@
     <Compile Include="AbilityDecisionConditionalNode_EnemyTargetIsBuilding.cs" />
     <Compile Include="AbilityWorker_TargetCorpse.cs" />
     <Compile Include="AutoCast\Scripts.cs" />
+    <Compile Include="Building_60mmMortar.cs" />
     <Compile Include="Building_LightningTrap.cs" />
     <Compile Include="Building_TMArcaneForge.cs" />
     <Compile Include="Building_TMHeater.cs" />
@@ -105,8 +106,9 @@
     <Compile Include="Building_TMElementalRift.cs" />
     <Compile Include="Building_TMPortal.cs" />
     <Compile Include="Building_PoisonTrap.cs" />
-    <Compile Include="Buiding_TechnoTurret.cs" />
+    <Compile Include="Building_TechnoTurret.cs" />
     <Compile Include="Building_ExplosiveProximityTrap.cs" />
+    <Compile Include="WeaponCategoryList.cs" />
     <Compile Include="CompProperties_SkeletonLichController.cs" />
     <Compile Include="CompProperties_SkeletonController.cs" />
     <Compile Include="CompSkeletonLichController.cs" />
@@ -115,6 +117,16 @@
     <Compile Include="Conditions\GameCondition_DarkClouds.cs" />
     <Compile Include="Conditions\GameCondition_WanderingLich.cs" />
     <Compile Include="Conditions\IncidentWorker_WanderingLich.cs" />
+    <Compile Include="HediffComp_EnergyRegen.cs" />
+    <Compile Include="HediffComp_TaskMaster.cs" />
+    <Compile Include="HediffComp_TaskMasterAura.cs" />
+    <Compile Include="HediffComp_Provisioner.cs" />
+    <Compile Include="HediffComp_ProvisionerAura.cs" />
+    <Compile Include="HediffComp_CommanderAura.cs" />
+    <Compile Include="HediffComp_HTLShield.cs" />
+    <Compile Include="JobDriver_Command.cs" />
+    <Compile Include="Projectile_BreachingCharge.cs" />
+    <Compile Include="Projectile_Mk203GL.cs" />
     <Compile Include="Thoughts\ThoughtWorker_TM_NeedTravel.cs" />
     <Compile Include="TM_ChaosPower.cs" />
     <Compile Include="TravelCategory.cs" />
@@ -194,7 +206,14 @@
     <Compile Include="TM_TextPool.cs" />
     <Compile Include="TM_WeatherEvent_MeshFlash.cs" />
     <Compile Include="Enchantment\Verb_OrbTraitor.cs" />
+    <Compile Include="Verb_60mmMortar.cs" />
+    <Compile Include="Verb_FirstAid.cs" />
+    <Compile Include="Verb_CommanderAuras.cs" />
     <Compile Include="Verb_DeathGaze.cs" />
+    <Compile Include="Verb_CommanderOrders.cs" />
+    <Compile Include="Verb_PistolWhip.cs" />
+    <Compile Include="Verb_Buckshot.cs" />
+    <Compile Include="Verb_SuppressingFire.cs" />
     <Compile Include="Verb_ShatterSentinel.cs" />
     <Compile Include="Verb_Legion.cs" />
     <Compile Include="Verb_TempestStrike.cs" />
@@ -235,6 +254,7 @@
     <Compile Include="Verb_Rend.cs" />
     <Compile Include="Verb_BloodShield.cs" />
     <Compile Include="Verb_EnchantWeapon.cs" />
+    <Compile Include="WorkGiver_DoCommanderMotivate.cs" />
     <Compile Include="WorkGiver_DoMagicBill.cs" />
     <Compile Include="IngestionOutcomeDoer_RemoveHediff.cs" />
     <Compile Include="PawnCapacityWorker_MagicManipulation.cs" />

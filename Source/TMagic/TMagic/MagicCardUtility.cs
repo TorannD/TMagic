@@ -195,7 +195,7 @@ namespace TorannMagic
                     }
                     if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
                     {
-                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);                      
                         if (pawn.GetComp<CompAbilityUserMagic>().spell_BattleHymn == true)
                         {
                             MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersB, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BardTraining, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Entertain, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Inspire, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Lullaby, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BattleHymn, null, TexButton.TMTex_SkillPointUsed);
@@ -400,6 +400,8 @@ namespace TorannMagic
                         (200*compMagic.Mana.drainSyrrium).ToString("0.000"),
                         "\nModified mana gain: ",
                         (200*(compMagic.Mana.baseManaGain + compMagic.Mana.modifiedManaGain + compMagic.Mana.drainSyrrium + compMagic.Mana.drainManaSurge)).ToString("0.000"),
+                        "\nEnergy regen bonus: -",
+                        (200*compMagic.Mana.drainEnergyHD).ToString("0.000"),
                         "\n\nMana weakness: -",
                         (200*compMagic.Mana.drainManaWeakness).ToString("0.000"),
                         "\nMinion cost: -",
@@ -586,7 +588,12 @@ namespace TorannMagic
                     if(power.abilityDef == TorannMagicDefOf.TM_LichForm && compMagic.Pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
                     {
                         enumerator.MoveNext();
-                        power = enumerator.Current;
+                        power = enumerator.Current;                        
+                    }
+                    if(power.abilityDef.defName.Contains("TM_DeathBolt") && !compMagic.Pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
+                    {
+                        enumerator.MoveNext();
+                        goto EnumerationStart;
                     }
                     if(MagicPowerSkill4 == null)
                     {

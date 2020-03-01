@@ -77,7 +77,7 @@ namespace TorannMagic
                             if (circle.IsPending)
                             {
                                 this.totalWaitDuration += age;
-                                if(totalWaitDuration >= (10 * this.durationTicks))
+                                if(totalWaitDuration >= (15 * this.durationTicks))
                                 {
                                     this.EndJobWith(JobCondition.Incompletable);
                                 }

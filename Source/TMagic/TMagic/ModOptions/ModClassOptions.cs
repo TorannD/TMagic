@@ -76,9 +76,23 @@ namespace TorannMagic.ModOptions
                         removedThings.Add(current);
                     }
                 }
-                if (!settingsRef.DeathKnight)
+                if (!settingsRef.Monk)
                 {
                     if (current.defName == "BookOfMonk")
+                    {
+                        removedThings.Add(current);
+                    }
+                }
+                if (!settingsRef.Commander)
+                {
+                    if (current == TorannMagicDefOf.BookOfCommander)
+                    {
+                        removedThings.Add(current);
+                    }
+                }
+                if (!settingsRef.SuperSoldier)
+                {
+                    if (current == TorannMagicDefOf.BookOfSuperSoldier || current == TorannMagicDefOf.TM_60mmMortar_Base || current.defName.Contains("TM_PistolSpec_Base") || current.defName.Contains("TM_RifleSpec_Base") || current.defName.Contains("TM_ShotgunSpec_Base"))
                     {
                         removedThings.Add(current);
                     }
@@ -337,6 +351,13 @@ namespace TorannMagic.ModOptions
                 if (!settingsRef.Chronomancer)
                 {
                     if (current.defName == "Make_SpellOf_Recall")
+                    {
+                        removedRecipes.Add(current);
+                    }
+                }
+                if (!settingsRef.SuperSoldier)
+                {
+                    if (current.defName == "Make_BookOfSuperSoldier")
                     {
                         removedRecipes.Add(current);
                     }

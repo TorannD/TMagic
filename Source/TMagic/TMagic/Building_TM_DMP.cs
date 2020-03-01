@@ -18,7 +18,7 @@ namespace TorannMagic
         private int rotationRate = 4;
         private float arcaneEnergyCur = 0;
         private int matRot = 0;
-        private float matMagnitude = 1f;
+        private float matMagnitude = .5f;
         private float matMagnitudeValue = .01f;
         private static List<IntVec3> portableCells = new List<IntVec3>();
 
@@ -138,13 +138,13 @@ namespace TorannMagic
                     this.matRot = 0;
                 }
                 this.matMagnitude += this.matMagnitudeValue;
-                if(this.matMagnitude >= .8f)
+                if(this.matMagnitude >= .5f)
                 {
-                    this.matMagnitudeValue = -.01f;
+                    this.matMagnitudeValue = -.005f;
                 }
-                if(this.matMagnitude <= .6f)
+                if(this.matMagnitude <= .2f)
                 {
-                    this.matMagnitudeValue = .01f;
+                    this.matMagnitudeValue = .005f;
                 }
             }
 
@@ -200,7 +200,7 @@ namespace TorannMagic
             vector.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
             Vector3 s = new Vector3(matMagnitude, matMagnitude, matMagnitude);
             Matrix4x4 matrix = default(Matrix4x4);
-            float angle = 0f;
+            float angle = 0;
             matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
             if (matRot == 0)
             {

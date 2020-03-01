@@ -27,7 +27,7 @@ namespace TorannMagic
                         //    JobDriver_CastAbilityVerb.CheckForAutoAttack(this.pawn);
                         //}
                     },
-                defaultCompleteMode = ToilCompleteMode.Instant
+                defaultCompleteMode = ToilCompleteMode.Instant                
             };
             yield return toil1;
             Toil toil = new Toil()

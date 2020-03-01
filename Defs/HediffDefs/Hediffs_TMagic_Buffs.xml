@@ -2461,4 +2461,177 @@
     </stages>
   </HediffDef>
   
+  <!-- Energy Regen - increases stamina/mana regeneration rates by multiplying the HD severity -->
+  
+  <HediffDef>
+    <defName>TM_EnergyRegenHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Energy Regeneration</label>
+	<defaultLabelColor>(0,.5,1)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+	<maxSeverity>5.0</maxSeverity>
+	<isBad>false</isBad>
+	<makesSickThought>false</makesSickThought>
+	<comps>
+	  <li>
+        <compClass>TorannMagic.HediffComp_EnergyRegen</compClass>
+      </li>	  
+    </comps>
+    <stages>
+      <li>
+	    <label></label>
+		<minSeverity>.001</minSeverity>
+		<becomeVisible>true</becomeVisible>
+      </li>
+    </stages>
+  </HediffDef>
+  
+    <!-- Super Soldier Serum  -->
+  
+  <HediffDef>
+    <defName>TM_SS_SerumHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>SS Serum</label>
+	<defaultLabelColor>(0.2,0.6,1)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+	<maxSeverity>100.0</maxSeverity>
+	<isBad>false</isBad>
+	<makesSickThought>false</makesSickThought>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>1</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+	    <label>Stage 0</label>
+		<minSeverity>.001</minSeverity>
+		<becomeVisible>true</becomeVisible>
+		<restFallFactor>2</restFallFactor>
+		<hungerRateFactor>2</hungerRateFactor>
+		<capMods>
+		  <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.1</setMax>
+          </li>
+        </capMods>
+      </li>
+	  <li>
+	    <label>Stage 1</label>
+		<minSeverity>2</minSeverity>
+		<becomeVisible>true</becomeVisible>
+		<hungerRateFactor>1.1</hungerRateFactor>
+		<painOffset>-0.1</painOffset>
+		<capMods>
+		  <li>
+            <capacity>Moving</capacity>
+            <offset>0.1</offset>
+          </li>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>0.05</offset>
+          </li>	
+		  <li>
+            <capacity>Sight</capacity>
+            <offset>0.1</offset>
+          </li>
+		  <li>
+            <capacity>Hearing</capacity>
+            <offset>0.1</offset>
+          </li>
+        </capMods>
+		<statOffsets>
+		  <ComfyTemperatureMin>-2</ComfyTemperatureMin>
+		  <ComfyTemperatureMax>2</ComfyTemperatureMax>
+	    </statOffsets>
+      </li>
+	  <li>
+	    <label>Stage 2</label>
+		<minSeverity>30</minSeverity>
+		<becomeVisible>true</becomeVisible>
+		<hungerRateFactor>1.15</hungerRateFactor>
+		<painOffset>-0.15</painOffset>
+		<capMods>
+		  <li>
+            <capacity>Moving</capacity>
+            <offset>0.15</offset>
+          </li>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>0.1</offset>
+          </li>	
+		  <li>
+            <capacity>BloodPumping</capacity>
+            <offset>0.1</offset>
+          </li>
+		  <li>
+            <capacity>Sight</capacity>
+            <offset>0.2</offset>
+          </li>
+		  <li>
+            <capacity>Hearing</capacity>
+            <offset>0.2</offset>
+          </li>
+		  <li>
+            <capacity>Breathing</capacity>
+            <offset>0.1</offset>
+          </li>		
+		  <li>
+            <capacity>BloodFiltration</capacity>
+            <offset>0.1</offset>
+          </li>
+        </capMods>
+		<statOffsets>
+		  <ComfyTemperatureMin>-4</ComfyTemperatureMin>
+		  <ComfyTemperatureMax>4</ComfyTemperatureMax>
+		  <MeleeDodgeChance>1.1</MeleeDodgeChance>
+		  <AimingDelayFactor>-0.05</AimingDelayFactor>
+	    </statOffsets>
+      </li>
+	  <li>
+	    <label>Stage 3</label>
+		<minSeverity>95</minSeverity>
+		<becomeVisible>true</becomeVisible>
+		<hungerRateFactor>1.2</hungerRateFactor>
+		<painOffset>-0.2</painOffset>
+		<capMods>
+		  <li>
+            <capacity>Moving</capacity>
+            <offset>0.2</offset>
+          </li>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>0.15</offset>
+          </li>	
+		  <li>
+            <capacity>BloodPumping</capacity>
+            <offset>0.15</offset>
+          </li>
+		  <li>
+            <capacity>Sight</capacity>
+            <offset>0.25</offset>
+          </li>
+		  <li>
+            <capacity>Hearing</capacity>
+            <offset>0.25</offset>
+          </li>
+		  <li>
+            <capacity>Breathing</capacity>
+            <offset>0.2</offset>
+          </li>		
+		  <li>
+            <capacity>BloodFiltration</capacity>
+            <offset>0.2</offset>
+          </li>
+        </capMods>
+		<statOffsets>
+		  <ComfyTemperatureMin>-6</ComfyTemperatureMin>
+		  <ComfyTemperatureMax>6</ComfyTemperatureMax>
+		  <MeleeDodgeChance>1.2</MeleeDodgeChance>
+		  <AimingDelayFactor>-0.10</AimingDelayFactor>
+	    </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+  
 </Defs>

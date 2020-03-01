@@ -170,6 +170,15 @@ namespace TorannMagic
                         amount *= ((0.015f) + (0.0015f * staminaRefresh.level));
                         amount = Mathf.Min(amount, this.MaxLevel - this.CurLevel);
                         comp.Stamina.curLevelInt = Mathf.Clamp(comp.Stamina.curLevelInt += amount, 0f, this.MaxLevel);
+
+                        if (pawn.health != null && pawn.health.hediffSet != null)
+                        {
+                            Hediff hdRegen = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_EnergyRegenHD);
+                            if (hdRegen != null)
+                            {
+                                amount *= hdRegen.Severity;
+                            }
+                        }
                     }
                 }
             }

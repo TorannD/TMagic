@@ -65,6 +65,8 @@ namespace TorannMagic
             fighterBookList.Add(TorannMagicDefOf.BookOfRanger);
             fighterBookList.Add(TorannMagicDefOf.BookOfSniper);
             fighterBookList.Add(TorannMagicDefOf.BookOfMonk);
+            fighterBookList.Add(TorannMagicDefOf.BookOfCommander);
+            fighterBookList.Add(TorannMagicDefOf.BookOfSuperSoldier);
             return fighterBookList;
         }
 
@@ -94,6 +96,72 @@ namespace TorannMagic
                                                select def;
 
             return enumerable.ToList();
+        }
+
+        public static List<ThingDef> PistolList()
+        {
+            List<ThingDef> pistols = new List<ThingDef>();
+            pistols.Clear();
+            IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
+                                               where (true)
+                                               select def;
+            List<string> pistolList = WeaponCategoryList.Named("TM_Category_Pistols").weaponDefNames;
+            foreach (ThingDef current in enumerable)
+            {
+                for(int i =0; i < pistolList.Count; i++)
+                {
+                    if(current.defName == pistolList[i].ToString())
+                    {
+                        //Log.Message("adding pistol def " + current.defName);
+                        pistols.AddDistinct(current);
+                    }
+                }
+            }
+            return pistols;
+        }
+
+        public static List<ThingDef> RifleList()
+        {
+            List<ThingDef> rifles = new List<ThingDef>();
+            rifles.Clear();
+            IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
+                                               where (true)
+                                               select def;
+            List<string> rifleList = WeaponCategoryList.Named("TM_Category_Rifles").weaponDefNames;
+            foreach (ThingDef current in enumerable)
+            {
+                for (int i = 0; i < rifleList.Count; i++)
+                {
+                    if (current.defName == rifleList[i].ToString())
+                    {
+                        //Log.Message("adding rifle def " + current.defName);
+                        rifles.AddDistinct(current);
+                    }
+                }
+            }
+            return rifles;
+        }
+
+        public static List<ThingDef> ShotgunList()
+        {
+            List<ThingDef> shotguns = new List<ThingDef>();
+            shotguns.Clear();
+            IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
+                                               where (true)
+                                               select def;
+            List<string> shotgunList = WeaponCategoryList.Named("TM_Category_Shotguns").weaponDefNames;
+            foreach (ThingDef current in enumerable)
+            {
+                for (int i = 0; i < shotgunList.Count; i++)
+                {
+                    if (current.defName == shotgunList[i].ToString())
+                    {
+                        //Log.Message("adding shotgun def " + current.defName);
+                        shotguns.AddDistinct(current);
+                    }
+                }
+            }
+            return shotguns;
         }
 
     }

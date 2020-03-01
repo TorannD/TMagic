@@ -209,6 +209,16 @@ namespace TorannMagic
                         num3.ToString()
                         );
                     }
+                    if(mightAbilityDef == TorannMagicDefOf.TM_SuppressingFire)
+                    {
+                        num2 = Verb_SuppressingFire.GetShotCount(mightUser.Pawn);
+                        text2 = "TM_SuppressingFireCount".Translate(num2).ToString();
+                    }
+                    if (mightAbilityDef == TorannMagicDefOf.TM_Buckshot)
+                    {
+                        num2 = Verb_Buckshot.GetShotCount(mightUser.Pawn);
+                        text2 = "TM_BuckshotFireCount".Translate(num2).ToString();
+                    }
 
                 }
                 else if (mightUser.Pawn.equipment.Primary != null && !mightUser.Pawn.equipment.Primary.def.IsRangedWeapon)
@@ -377,7 +387,25 @@ namespace TorannMagic
                             return result;
                         }
                     }
-                }                
+                }
+                if(MightUser.specWpnRegNum == -1 && 
+                    (this.mightDef == TorannMagicDefOf.TM_PistolWhip || this.mightDef == TorannMagicDefOf.TM_SuppressingFire || this.mightDef == TorannMagicDefOf.TM_Mk203GL ||
+                    this.mightDef == TorannMagicDefOf.TM_Buckshot || this.mightDef == TorannMagicDefOf.TM_BreachingCharge))
+                {
+                    if (MightUser.Pawn.equipment != null && MightUser.Pawn.equipment.Primary != null)
+                    {
+                        reason = "TM_MustHaveWeaponType".Translate(
+                                base.Pawn.LabelShort,
+                                base.Pawn.equipment.Primary.def.label,
+                                "specialized weapon"
+                            );                        
+                    }
+                    else
+                    {
+                        reason = "TM_IncompatibleWeapon".Translate();
+                    }
+                    return false;
+                }
                 List<Apparel> wornApparel = base.Pawn.apparel.WornApparel;
                 for (int i = 0; i < wornApparel.Count; i++)
                 {
@@ -386,9 +414,11 @@ namespace TorannMagic
                         this.mightDef.defName == "TM_DisablingShot" || this.mightDef.defName == "TM_DisablingShot_I" || this.mightDef.defName == "TM_DisablingShot_II" || this.mightDef.defName == "TM_DisablingShot_III" || 
                         this.mightDef.defName == "TM_AntiArmor" || 
                         this.mightDef.defName == "TM_ArrowStorm" || this.mightDef.defName == "TM_ArrowStorm_I" || this.mightDef.defName == "TM_ArrowStorm_II" || this.mightDef.defName == "TM_ArrowStorm_III" ||
-                        this.mightDef.defName == "TM_PsionicStorm" ||
+                        this.mightDef == TorannMagicDefOf.TM_PsionicStorm ||
                         this.mightDef.defName == "TM_PsionicBlast" || this.mightDef.defName == "TM_PsionicBlast_I" || this.mightDef.defName == "TM_PsionicBlast_II" || this.mightDef.defName == "TM_PsionicBlast_III" || 
                         this.mightDef == TorannMagicDefOf.TM_ThrowingKnife || this.mightDef == TorannMagicDefOf.TM_TempestStrike ||
+                        this.mightDef == TorannMagicDefOf.TM_SuppressingFire || this.mightDef == TorannMagicDefOf.TM_Mk203GL ||
+                        this.mightDef == TorannMagicDefOf.TM_Buckshot ||
                         this.mightDef.defName == "TM_Mimic"))
                     {
                         reason = "TM_ShieldBlockingPowers".Translate(
@@ -410,7 +440,7 @@ namespace TorannMagic
                     }
                     if (hediff != null)
                     {
-                        if ((this.mightDef.defName == "TM_Spite" || this.mightDef.defName == "TM_Spite_I" || this.mightDef.defName == "TM_Spite_II" || this.mightDef.defName == "TM_Spite_III") && hediff.Severity < 20f)
+                        if ((this.mightDef == TorannMagicDefOf.TM_Spite || this.mightDef == TorannMagicDefOf.TM_Spite_I || this.mightDef == TorannMagicDefOf.TM_Spite_II|| this.mightDef == TorannMagicDefOf.TM_Spite_III) && hediff.Severity < 20f)
                         {
                             reason = "TM_NotEnoughHate".Translate(
                             base.Pawn.LabelShort,

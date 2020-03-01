@@ -26,7 +26,7 @@ namespace TorannMagic
             {
                 this.levelMax = 50;
             }
-            else if (newLabel == "TM_FieldTraining_pwr" || newLabel == "TM_FieldTraining_eff" || newLabel == "TM_FieldTraining_ver")
+            else if (newLabel == "TM_FieldTraining_pwr" || newLabel == "TM_FieldTraining_eff" || newLabel == "TM_FieldTraining_ver" || newLabel == "TM_PistolSpec_pwr" || newLabel == "TM_RifleSpec_pwr" || newLabel == "TM_ShotgunSpec_pwr")
             {
                 this.levelMax = 15;
             }

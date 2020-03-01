@@ -6056,17 +6056,17 @@ namespace TorannMagic
                         absorbed = true;
                         int actualDmg = 0;
                         float dmgAmt = (float)dinfo.Amount;
-                        float dmgToSev = 0.0075f;
+                        float dmgToSev = 0.004f;
                         ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                         if (!abilityUser.IsColonist)
                         {
                             if (settingsRef.AIHardMode)
                             {
-                                dmgToSev = 0.0010f;
+                                dmgToSev = 0.0025f;
                             }
                             else
                             {
-                                dmgToSev = 0.0020f;
+                                dmgToSev = 0.003f;
                             }
                         }
                         sev = sev - (dmgAmt * dmgToSev);
@@ -6075,7 +6075,7 @@ namespace TorannMagic
                             actualDmg = (int)Mathf.RoundToInt(Mathf.Abs(sev / dmgToSev));
                             BreakShield(abilityUser);
                         }
-                        DisplayShield(abilityUser, dinfo, sev);
+                        TM_Action.DisplayShieldHit(abilityUser, dinfo);
                         current.Severity = sev;
                         dinfo.SetAmount(actualDmg);
                 
@@ -6106,7 +6106,7 @@ namespace TorannMagic
                             actualDmg = (int)Mathf.RoundToInt(Mathf.Abs(sev / dmgToSev));
                             BreakShield(abilityUser);
                         }
-                        DisplayShield(abilityUser, dinfo, sev);
+                        TM_Action.DisplayShieldHit(abilityUser, dinfo);
                         current.Severity = sev;
                         dinfo.SetAmount(actualDmg);
 
@@ -6147,7 +6147,7 @@ namespace TorannMagic
                             current.Severity = sev;
                             abilityUser.health.RemoveHediff(current);
                         }
-                        DisplayShield(abilityUser, dinfo, sev);
+                        TM_Action.DisplayShieldHit(abilityUser, dinfo);
                         this.damageMitigationDelay = this.age + 2;
                         dinfo.SetAmount(actualDmg);
                         abilityUser.TakeDamage(dinfo);
@@ -6170,50 +6170,6 @@ namespace TorannMagic
             {
                 Vector3 loc = pawn.TrueCenter() + Vector3Utility.HorizontalVectorFromAngle((float)Rand.Range(0, 360)) * Rand.Range(0.3f, 0.6f);
                 MoteMaker.ThrowDustPuff(loc, pawn.Map, Rand.Range(0.8f, 1.2f));
-            }
-        }
-
-        private void DisplayShield(Pawn shieldedPawn, DamageInfo dinfo, float sev)
-        {
-            Vector3 impactAngleVect;
-            SoundDefOf.EnergyShield_AbsorbDamage.PlayOneShot(new TargetInfo(shieldedPawn.Position, shieldedPawn.Map, false));
-            impactAngleVect = Vector3Utility.HorizontalVectorFromAngle(dinfo.Angle);
-            Vector3 loc = shieldedPawn.TrueCenter() + impactAngleVect.RotatedBy(180f) * 0.5f;
-            float num = Mathf.Min(10f, 2f + (float)dinfo.Amount / 10f);
-            MoteMaker.MakeStaticMote(loc, shieldedPawn.Map, ThingDefOf.Mote_ExplosionFlash, num);
-            int num2 = (int)num;
-            for (int i = 0; i < num2; i++)
-            {
-                MoteMaker.ThrowDustPuff(loc, shieldedPawn.Map, Rand.Range(0.8f, 1.2f));
-                this.DrawShieldHit(shieldedPawn, dinfo.Amount, impactAngleVect);
-            }
-        }
-
-        private void DrawShieldHit(Pawn shieldedPawn, float magnitude, Vector3 impactAngleVect)
-        {
-            bool flag = !shieldedPawn.Dead && !shieldedPawn.Downed;
-            if (flag)
-            {
-                float num = Mathf.Lerp(1.2f, 1.55f, magnitude);
-                Vector3 vector = shieldedPawn.Drawer.DrawPos;
-                vector.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
-
-                float angle = (float)Rand.Range(0, 360);
-                Vector3 s = new Vector3(1.7f, 1f, 1.7f);
-                Matrix4x4 matrix = default(Matrix4x4);
-                matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
-                if(shieldedPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffShield))
-                {
-                    Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.shieldMat, 0);
-                }
-                else if(shieldedPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DemonScornHD) || shieldedPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DemonScornHD_I) || shieldedPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DemonScornHD_II) || shieldedPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DemonScornHD_III))
-                {
-                    Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.demonShieldMat, 0);
-                }
-                else
-                {
-                    Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.manaShieldMat, 0);
-                }              
             }
         }
 
@@ -6273,6 +6229,12 @@ namespace TorannMagic
         {
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             bool flagCM = this.Pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage);
+            //bool flagCP = this.Pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless);
+            //CompAbilityUserMight compMight = null;
+            //if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            //{
+            //    compMight = this.Pawn.TryGetComp<CompAbilityUserMight>();
+            //}
             if (settingsRef.autocastEnabled && this.Pawn.jobs != null && this.Pawn.CurJob != null && this.Pawn.CurJob.def != TorannMagicDefOf.TMCastAbilityVerb && this.Pawn.CurJob.def != JobDefOf.Ingest && this.Pawn.GetPosture() == PawnPosture.Standing)
             {
                 //Log.Message("pawn " + this.Pawn.LabelShort + " current job is " + this.Pawn.CurJob.def.defName);
@@ -6755,7 +6717,7 @@ namespace TorannMagic
                 }
 
                 //combat (drafted) spells
-                if (this.Pawn.drafter != null && this.Pawn.Drafted && this.Mana?.CurLevelPercentage >= settingsRef.autocastCombatMinThreshold && this.Pawn.CurJob.def != JobDefOf.Goto)
+                if (this.Pawn.drafter != null && this.Pawn.Drafted && this.Pawn.CurJob.def != JobDefOf.Goto && this.Mana != null && this.Mana.CurLevelPercentage >= settingsRef.autocastMinThreshold)
                 {
                     if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || flagCM ) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
                     {
@@ -8351,7 +8313,15 @@ namespace TorannMagic
                 _maxMPUpkeep += -.1f;
                 _mpRegenRateUpkeep += -.05f;
             }
-            if(this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BlurHD))
+            if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_SS_SerumHD))
+            {
+                Hediff def = this.Pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_SS_SerumHD, false);
+                _mpRegenRate -= (float)(.15f * def.CurStageIndex);
+                _maxMP -= .25f;
+                _arcaneRes += (float)(.15f * def.CurStageIndex);
+                _arcaneDmg -= (float)(.1f * def.CurStageIndex);
+            }
+            if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BlurHD))
             {
                 _maxMPUpkeep += -.2f;
             }

@@ -101,6 +101,14 @@ namespace TorannMagic
                 {
                     return null;
                 }
+                if(pawn.CurJob != null && pawn.CurJob.playerForced)
+                {
+                    return null;
+                }
+                if(pawn.timetable != null && !(pawn.timetable.CurrentAssignment.allowJoy && pawn.timetable.CurrentAssignment.allowRest))
+                {
+                    return null;
+                }
                 CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
                 if (comp != null)
                 {

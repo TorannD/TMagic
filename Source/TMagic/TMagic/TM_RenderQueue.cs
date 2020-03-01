@@ -29,8 +29,10 @@ namespace TorannMagic
         //Magic
         public static readonly Material enchantMark = MaterialPool.MatFrom("Items/Gemstones/arcane_minor");
 
-        public static readonly Color shieldColor = new Color(90f, 0f, 0f);
-        public static readonly Material shieldMat = MaterialPool.MatFrom("Other/Shield", ShaderDatabase.Transparent, TM_RenderQueue.shieldColor);
+        public static readonly Color redShieldColor = new Color(90f, 0f, 0f);
+        public static readonly Color whiteShieldColor = new Color(1f, 1f, 1f);
+        public static readonly Material whiteShieldMat = MaterialPool.MatFrom("Other/Shield", ShaderDatabase.Transparent, TM_RenderQueue.whiteShieldColor);
+        public static readonly Material redShieldMat = MaterialPool.MatFrom("Other/Shield", ShaderDatabase.Transparent, TM_RenderQueue.redShieldColor);
 
         public static readonly Color burningFuryColor = new Color(1f, .4f, .25f);
         public static readonly Material burningFuryMat = MaterialPool.MatFrom("Other/Shield", ShaderDatabase.Transparent, TM_RenderQueue.burningFuryColor);
@@ -93,9 +95,12 @@ namespace TorannMagic
         public static readonly Material psionicMarkMat = MaterialPool.MatFrom("Other/PsiMark", ShaderDatabase.Transparent, TM_RenderQueue.psionicMarkColor);
         public static readonly Color monkMarkColor = new Color(1f, 1f, 0f);
         public static readonly Material monkMarkMat = MaterialPool.MatFrom("Other/PsiMark", ShaderDatabase.Transparent, TM_RenderQueue.monkMarkColor);
-
         public static readonly Color deathknightMarkColor = new Color(.01f, .01f, .01f);
         public static readonly Material deathknightMarkMat = MaterialPool.MatFrom("Other/FighterMark", ShaderDatabase.Transparent, TM_RenderQueue.deathknightMarkColor);
+
+        public static readonly Material supersoldierMarkMat = MaterialPool.MatFrom("Other/SSMark");
+        public static readonly Material commanderMarkMat = MaterialPool.MatFrom("Other/CommanderMark");
+
 
     }
 }

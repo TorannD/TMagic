@@ -78,6 +78,14 @@ namespace TorannMagic
                     {
                         return flag && true;
                     }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Commander))
+                    {
+                        return flag && true;
+                    }
+                    if (base.SelPawn.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier))
+                    {
+                        return flag && true;
+                    }
                 }
 
                 return false;

@@ -80,7 +80,7 @@
     <label>Shield</label>
     <uiIconPath>UI/Shield</uiIconPath>
     <description>Protects the paladin from damage for 50s or until the shield is broken.
-Absorbs up to 40 damage.</description>
+Absorbs up to 100 damage.</description>
 <!--    <thingClass>ThingWithComps</thingClass> -->
     <manaCost>0.30</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -94,7 +94,7 @@ Absorbs up to 40 damage.</description>
 		<isViolent>false</isViolent>
         <defaultProjectile>TM_Paladin_Shield</defaultProjectile>
         <warmupTime>.2</warmupTime>
-        <SecondsToRecharge>25.0</SecondsToRecharge>
+        <SecondsToRecharge>35.0</SecondsToRecharge>
         <range>0</range>
         <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
@@ -121,8 +121,8 @@ Absorbs up to 40 damage.</description>
     <label>Shield</label>
     <uiIconPath>UI/Shield</uiIconPath>
     <description>Protects the paladin from damage for 50s or until the shield is broken.
-Absorbs up to 60 damage.
-Reduces recharge to 20s.</description>
+Absorbs up to 120 damage.
+Reduces recharge to 30s.</description>
 <!--    <thingClass>ThingWithComps</thingClass> -->
     <manaCost>0.30</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -136,7 +136,7 @@ Reduces recharge to 20s.</description>
 		<isViolent>false</isViolent>
         <defaultProjectile>TM_Paladin_Shield</defaultProjectile>
         <warmupTime>.2</warmupTime>
-        <SecondsToRecharge>20.0</SecondsToRecharge>
+        <SecondsToRecharge>30.0</SecondsToRecharge>
         <range>0</range>
         <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
@@ -163,7 +163,8 @@ Reduces recharge to 20s.</description>
     <label>Shield</label>
     <uiIconPath>UI/Shield</uiIconPath>
     <description>Protects the paladin from damage for 50s or until the shield is broken.
-Absorbs up to 100 damage.</description>
+Absorbs up to 135 damage.
+Reduces recharge to 27s.</description>
 <!--    <thingClass>ThingWithComps</thingClass> -->
     <manaCost>0.30</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -177,7 +178,7 @@ Absorbs up to 100 damage.</description>
 		<isViolent>false</isViolent>
         <defaultProjectile>TM_Paladin_Shield</defaultProjectile>
         <warmupTime>.2</warmupTime>
-        <SecondsToRecharge>20.0</SecondsToRecharge>
+        <SecondsToRecharge>27.0</SecondsToRecharge>
         <range>0</range>
         <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
@@ -204,8 +205,8 @@ Absorbs up to 100 damage.</description>
     <label>Shield</label>
     <uiIconPath>UI/Shield</uiIconPath>
     <description>Protects the paladin from damage for 50s or until the shield is broken.
-Absorbs up to 130 damage.
-Reduces recharge to 18s.</description>
+Absorbs up to 150 damage.
+Reduces recharge to 25s.</description>
 <!--    <thingClass>ThingWithComps</thingClass> -->
     <manaCost>0.30</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -219,7 +220,7 @@ Reduces recharge to 18s.</description>
 		<isViolent>false</isViolent>
         <defaultProjectile>TM_Paladin_Shield</defaultProjectile>
         <warmupTime>.2</warmupTime>
-        <SecondsToRecharge>18.0</SecondsToRecharge>
+        <SecondsToRecharge>25.0</SecondsToRecharge>
         <range>0</range>
         <soundCast>Message_PositiveEvent</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
@@ -321,7 +322,7 @@ Reduces recharge to 18s.</description>
    <projectile>
 		<flyOverhead>true</flyOverhead>
 		<damageDef>TM_Heal_I</damageDef>
-		<damageAmountBase>8</damageAmountBase>
+		<damageAmountBase>10</damageAmountBase>
 		<speed>100</speed>
    </projectile>
  </ThingDef>
@@ -343,7 +344,7 @@ Reduces recharge to 18s.</description>
 		<isViolent>true</isViolent>
         <defaultProjectile>TM_Paladin_Overwhelm</defaultProjectile>
         <warmupTime>.2</warmupTime>
-        <SecondsToRecharge>15.0</SecondsToRecharge>
+        <SecondsToRecharge>8.0</SecondsToRecharge>
         <range>0</range>
         <soundCast>InfernoCannon_Fire</soundCast>
         <muzzleFlashScale>20</muzzleFlashScale>
@@ -397,8 +398,8 @@ Reduces recharge to 18s.</description>
                 <canTargetLocations>true</canTargetLocations>
             </targetParams>
             <warmupTime>2.5</warmupTime>
-            <SecondsToRecharge>10.0</SecondsToRecharge>
-            <range>40</range>
+            <SecondsToRecharge>45.0</SecondsToRecharge>
+            <range>45</range>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>

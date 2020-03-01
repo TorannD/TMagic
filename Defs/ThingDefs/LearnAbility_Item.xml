@@ -104,7 +104,7 @@
     <thingCategories>
       <li>TM_SkillBooks</li>
     </thingCategories>
-    <tradeTags>
+    <tradeTags>      
       <li>Artifact</li>
 	  <li>Arcane</li>
     </tradeTags>
@@ -125,6 +125,42 @@
       <li Class="CompProperties_Usable">
         <useJob>UseArtifact</useJob>
         <useLabel>Read</useLabel>
+      </li>
+      <li Class="CompProperties_UseEffect">
+        <compClass>TorannMagic.CompUseEffect_LearnMight</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="ResourceBase" Name="CombatSerumBase" Abstract="True">
+    <thingClass>ThingWithComps</thingClass>
+    <thingCategories>
+      <li>TM_SkillBooks</li>
+    </thingCategories>
+    <tradeTags>
+	  <li>ExoticMisc</li>
+      <li>Artifact</li>
+    </tradeTags>
+	<thingSetMakerTags>
+      <li>RewardSpecial</li>
+    </thingSetMakerTags>
+	<tradeability>All</tradeability>
+	<drawGUIOverlay>true</drawGUIOverlay>
+    <statBases>
+      <MarketValue>3300</MarketValue>
+      <MaxHitPoints>1000</MaxHitPoints>
+      <Mass>0.1</Mass>
+	  <Flammability>0.5</Flammability>
+	  <DeteriorationRate>0.0001</DeteriorationRate>
+	  <Beauty>2</Beauty>
+	  <SellPriceFactor>.8</SellPriceFactor>
+	</statBases>
+	<techLevel>Spacer</techLevel>
+	<stackLimit>10</stackLimit>
+    <comps>
+      <li Class="CompProperties_Usable">
+        <useJob>UseArtifact</useJob>
+        <useLabel>Inject</useLabel>
       </li>
       <li Class="CompProperties_UseEffect">
         <compClass>TorannMagic.CompUseEffect_LearnMight</compClass>
@@ -1231,8 +1267,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
+	<alwaysHaulable>true</alwaysHaulable>	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -1244,7 +1279,66 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/monk</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-
+  </ThingDef>
+  
+  <ThingDef ParentName="CombatFormBase">
+    <defName>BookOfCommander</defName>
+    <label>Combat Style: Commander</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a physically adept pawn how to become a charismatic leader.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/commander</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+  
+  <ThingDef ParentName="CombatSerumBase">
+    <defName>BookOfSuperSoldier</defName>
+    <label>Serum: Super Soldier</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Inject a pawn with a serum that enhances their physical abilities. Incapacitates a pawn for a couple days while the serum takes affect and develops over several stages. Any pawn may take SS Serum, but only physically adept pawns may acquire the Super Soldier trait. This serum will reduce magical potency and potential.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+	  <WorkToMake>25000</WorkToMake>
+    </statBases>
+	<recipeMaker>
+      <workAmount>25000</workAmount>
+	  <skillRequirements>
+			<Intellectual>10</Intellectual>
+	  </skillRequirements>
+    </recipeMaker>
+	<costList>
+	  <RawMagicyte>200</RawMagicyte>
+	  <Silver>10</Silver>
+	  <MedicineUltratech>3</MedicineUltratech>
+	  <PsychoidLeaves>20</PsychoidLeaves>
+	  <Neutroamine>20</Neutroamine>
+    </costList>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Items/ss_serum</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
   </ThingDef>
   
     <!--=============== Magic Spells - Single ====================-->

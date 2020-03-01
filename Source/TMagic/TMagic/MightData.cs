@@ -6,6 +6,7 @@ using Verse;
 
 namespace TorannMagic
 {
+    [StaticConstructorOnStartup]
     public class MightData : IExposable
     {
         private Pawn mightPawn;        
@@ -16,6 +17,7 @@ namespace TorannMagic
         public bool initialized = false;
         private Faction affiliation = null;
         private int ticksAffiliation = 0;
+        //public ThingOwner<ThingWithComps> equipmentContainer = new ThingOwner<ThingWithComps>();
 
         public List<MightPower> mightPowerStandalone;
 
@@ -75,10 +77,335 @@ namespace TorannMagic
                         new MightPower(new List<AbilityDef>
                         {
                             TorannMagicDefOf.TM_TempestStrike
-                        }),
+                        }),                        
                     };
                 }
                 return this.mightPowerStandalone;
+            }
+        }
+
+        public List<MightPower> mightPowerSS;
+        public List<MightPowerSkill> mightPowerSkill_PistolSpec;
+        public List<MightPowerSkill> mightPowerSkill_RifleSpec;
+        public List<MightPowerSkill> mightPowerSkill_ShotgunSpec;
+        public List<MightPowerSkill> mightPowerSkill_CQC;
+        public List<MightPowerSkill> mightPowerSkill_FirstAid;
+        public List<MightPowerSkill> mightPowerSkill_60mmMortar;
+
+        public List<MightPower> MightPowersSS
+        {
+            get
+            {
+                bool flag = this.mightPowerSS == null;
+                if (flag)
+                {
+                    this.mightPowerSS = new List<MightPower>
+                    {
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_PistolSpec
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_RifleSpec
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_ShotgunSpec
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_CQC
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_FirstAid
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_60mmMortar
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_PistolWhip
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_SuppressingFire
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Mk203GL
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Buckshot
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_BreachingCharge
+                        }),
+                    };
+                }
+                return this.mightPowerSS;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_PistolSpec
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_PistolSpec == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_PistolSpec = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_PistolSpec_pwr", "TM_PistolSpec_pwr_desc"), //
+                        new MightPowerSkill("TM_PistolSpec_eff", "TM_PistolSpec_eff_desc"), //
+                        new MightPowerSkill("TM_PistolSpec_ver", "TM_PistolSpec_ver_desc")  //
+                    };
+                }
+                return this.mightPowerSkill_PistolSpec;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_RifleSpec
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_RifleSpec == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_RifleSpec = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_RifleSpec_pwr", "TM_RifleSpec_pwr_desc"), //
+                        new MightPowerSkill("TM_RifleSpec_eff", "TM_RifleSpec_eff_desc"), //
+                        new MightPowerSkill("TM_RifleSpec_ver", "TM_RifleSpec_ver_desc")  //
+                    };
+                }
+                return this.mightPowerSkill_RifleSpec;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_ShotgunSpec
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_ShotgunSpec == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_ShotgunSpec = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_ShotgunSpec_pwr", "TM_ShotgunSpec_pwr_desc"), //
+                        new MightPowerSkill("TM_ShotgunSpec_eff", "TM_ShotgunSpec_eff_desc"), //
+                        new MightPowerSkill("TM_ShotgunSpec_ver", "TM_ShotgunSpec_ver_desc")  //
+                    };
+                }
+                return this.mightPowerSkill_ShotgunSpec;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_CQC
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_CQC == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_CQC = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_CQC_pwr", "TM_CQC_pwr_desc"), //
+                        new MightPowerSkill("TM_CQC_eff", "TM_CQC_eff_desc"), //
+                        new MightPowerSkill("TM_CQC_ver", "TM_CQC_ver_desc")  //
+                    };
+                }
+                return this.mightPowerSkill_CQC;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_FirstAid
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_FirstAid == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_FirstAid = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_FirstAid_pwr", "TM_FirstAid_pwr_desc"), //
+                        new MightPowerSkill("TM_FirstAid_eff", "TM_FirstAid_eff_desc"), //
+                        new MightPowerSkill("TM_FirstAid_ver", "TM_FirstAid_ver_desc")  //
+                    };
+                }
+                return this.mightPowerSkill_FirstAid;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_60mmMortar
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_60mmMortar == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_60mmMortar = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_60mmMortar_pwr", "TM_60mmMortar_pwr_desc"), //
+                        new MightPowerSkill("TM_60mmMortar_eff", "TM_60mmMortar_eff_desc"), //
+                        new MightPowerSkill("TM_60mmMortar_ver", "TM_60mmMortar_ver_desc")  //
+                    };
+                }
+                return this.mightPowerSkill_60mmMortar;
+            }
+        }
+
+
+        public List<MightPower> mightPowerC;
+        public List<MightPowerSkill> mightPowerSkill_ProvisionerAura;
+        public List<MightPowerSkill> mightPowerSkill_TaskMasterAura;
+        public List<MightPowerSkill> mightPowerSkill_CommanderAura;
+        public List<MightPowerSkill> mightPowerSkill_StayAlert;
+        public List<MightPowerSkill> mightPowerSkill_MoveOut;
+        public List<MightPowerSkill> mightPowerSkill_HoldTheLine;
+
+        public List<MightPower> MightPowersC
+        {
+            get
+            {
+                bool flag = this.mightPowerC == null;
+                if (flag)
+                {
+                    this.mightPowerC = new List<MightPower>
+                    {
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_ProvisionerAura
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_TaskMasterAura
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_CommanderAura
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_StayAlert,
+                            TorannMagicDefOf.TM_StayAlert_I,
+                            TorannMagicDefOf.TM_StayAlert_II,
+                            TorannMagicDefOf.TM_StayAlert_III
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_MoveOut,
+                            TorannMagicDefOf.TM_MoveOut_I,
+                            TorannMagicDefOf.TM_MoveOut_II,
+                            TorannMagicDefOf.TM_MoveOut_III
+                        }),
+                        new MightPower(new List<AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_HoldTheLine,
+                            TorannMagicDefOf.TM_HoldTheLine_I,
+                            TorannMagicDefOf.TM_HoldTheLine_II,
+                            TorannMagicDefOf.TM_HoldTheLine_III
+                        }),
+                    };
+                }
+                return this.mightPowerC;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_ProvisionerAura
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_ProvisionerAura == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_ProvisionerAura = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_ProvisionerAura_pwr", "TM_ProvisionerAura_pwr_desc"), //
+                        new MightPowerSkill("TM_ProvisionerAura_eff", "TM_ProvisionerAura_eff_desc"), //
+                        new MightPowerSkill("TM_ProvisionerAura_ver", "TM_ProvisionerAura_ver_desc")  //
+                    };
+                }
+                return this.mightPowerSkill_ProvisionerAura;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_TaskMasterAura
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_TaskMasterAura == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_TaskMasterAura = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_TaskMasterAura_pwr", "TM_TaskMasterAura_pwr_desc"), //
+                        new MightPowerSkill("TM_TaskMasterAura_eff", "TM_TaskMasterAura_eff_desc"), //
+                        new MightPowerSkill("TM_TaskMasterAura_ver", "TM_TaskMasterAura_ver_desc")  //
+                    };
+                }
+                return this.mightPowerSkill_TaskMasterAura;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_CommanderAura
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_CommanderAura == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_CommanderAura = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_CommanderAura_pwr", "TM_CommanderAura_pwr_desc"), //
+                        new MightPowerSkill("TM_CommanderAura_eff", "TM_CommanderAura_eff_desc"), //
+                        new MightPowerSkill("TM_CommanderAura_ver", "TM_CommanderAura_ver_desc")  //
+                    };
+                }
+                return this.mightPowerSkill_CommanderAura;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_StayAlert
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_StayAlert == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_StayAlert = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_StayAlert_pwr", "TM_StayAlert_pwr_desc"), //
+                        new MightPowerSkill("TM_StayAlert_eff", "TM_StayAlert_eff_desc") //
+                    };
+                }
+                return this.mightPowerSkill_StayAlert;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_MoveOut
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_MoveOut == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_MoveOut = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_MoveOut_pwr", "TM_MoveOut_pwr_desc"), //
+                        new MightPowerSkill("TM_MoveOut_eff", "TM_MoveOut_eff_desc") //
+                    };
+                }
+                return this.mightPowerSkill_MoveOut;
+            }
+        }
+        public List<MightPowerSkill> MightPowerSkill_HoldTheLine
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_HoldTheLine == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_HoldTheLine = new List<MightPowerSkill>
+                    {
+                        new MightPowerSkill("TM_HoldTheLine_pwr", "TM_HoldTheLine_pwr_desc"), //
+                        new MightPowerSkill("TM_HoldTheLine_eff", "TM_HoldTheLine_eff_desc")
+                    };
+                }
+                return this.mightPowerSkill_HoldTheLine;
             }
         }
 
@@ -1341,6 +1668,8 @@ namespace TorannMagic
                 list.AddRange(this.MightPowersR);
                 list.AddRange(this.MightPowersF);
                 list.AddRange(this.MightPowersP);
+                list.AddRange(this.MightPowersC);
+                list.AddRange(this.MightPowersSS);
                 list.AddRange(this.MightPowersStandalone);
                 return list;
             }
@@ -1362,7 +1691,7 @@ namespace TorannMagic
         {
             get
             {                
-                return this.MightPowersW.Concat(this.MightPowersM.Concat(this.MightPowersDK.Concat(this.MightPowersG.Concat(this.MightPowersS.Concat(this.MightPowersB.Concat(this.mightPowerR.Concat(this.MightPowersF.Concat(this.mightPowerP.Concat(this.mightPowerStandalone)))))))));
+                return this.MightPowersSS.Concat(this.MightPowersC.Concat(this.MightPowersW.Concat(this.MightPowersM.Concat(this.MightPowersDK.Concat(this.MightPowersG.Concat(this.MightPowersS.Concat(this.MightPowersB.Concat(this.mightPowerR.Concat(this.MightPowersF.Concat(this.mightPowerP.Concat(this.mightPowerStandalone)))))))))));
             }
         }
 
@@ -1388,6 +1717,8 @@ namespace TorannMagic
             this.mightPowerP.Clear();
             this.mightPowerR.Clear();
             this.mightPowerS.Clear();
+            this.mightPowerC.Clear();
+            this.mightPowerSS.Clear();
             this.MightPowersStandalone.Clear();
             this.mightPawn = null;
             this.initialized = false;
@@ -1395,6 +1726,7 @@ namespace TorannMagic
 
         public void ExposeData()
         {
+            //Scribe_Deep.Look(ref this.equipmentContainer, "equipmentContainer", new object[] { this });
             Scribe_References.Look<Pawn>(ref this.mightPawn, "mightPawn", false);
             Scribe_Values.Look<int>(ref this.mightUserLevel, "mightUserLevel", 0, false);
             Scribe_Values.Look<int>(ref this.mightUserXP, "mightUserXP", 0, false);
@@ -1458,7 +1790,20 @@ namespace TorannMagic
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_TigerStrike, "mightPowerSkill_TigerStrike", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_DragonStrike, "mightPowerSkill_DragonStrike", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_ThunderStrike, "mightPowerSkill_ThunderStrike", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPower>(ref this.mightPowerC, "mightPowerC", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_ProvisionerAura, "mightPowerSkill_ProvisionerAura", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_TaskMasterAura, "mightPowerSkill_TaskMasterAura", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_CommanderAura, "mightPowerSkill_CommanderAura", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_StayAlert, "mightPowerSkill_StayAlert", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_MoveOut, "mightPowerSkill_MoveOut", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_HoldTheLine, "mightPowerSkill_HoldTheLine", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPower>(ref this.mightPowerSS, "mightPowerSS", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_PistolSpec, "mightPowerSkill_PistolSpec", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_RifleSpec, "mightPowerSkill_RifleSpec", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_ShotgunSpec, "mightPowerSkill_ShotgunSpec", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_CQC, "mightPowerSkill_CQC", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_FirstAid, "mightPowerSkill_FirstAid", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_60mmMortar, "mightPowerSkill_60mmMortar", (LookMode)2, new object[0]);
         }
-
     }
 }

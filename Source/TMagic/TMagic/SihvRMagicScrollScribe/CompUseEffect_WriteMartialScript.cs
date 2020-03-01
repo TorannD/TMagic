@@ -52,14 +52,19 @@ namespace TorannMagic.SihvRMagicScrollScribe
                 tempPod = ThingDef.Named("BookOfMonk");
                 this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
             }
-            else if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy) || user.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer)))
+            else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.TM_Commander))
+            {
+                tempPod = ThingDef.Named("BookOfCommander");
+                this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+            }
+            else if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy) || user.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer) || user.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier)))
             {
                 int attempt = 0;
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 RetryWrite:;
                 if (attempt < 20)
                 {
-                    float rnd = Rand.Range(0, 8);
+                    float rnd = Rand.Range(0, 9);
                     if (rnd < 1)
                     {
                         if (settingsRef.Gladiator)
@@ -138,6 +143,18 @@ namespace TorannMagic.SihvRMagicScrollScribe
                         if (settingsRef.Monk)
                         {
                             tempPod = TorannMagicDefOf.BookOfMonk;
+                        }
+                        else
+                        {
+                            attempt++;
+                            goto RetryWrite;
+                        }
+                    }
+                    else if (rnd < 8)
+                    {
+                        if (settingsRef.Commander)
+                        {
+                            tempPod = TorannMagicDefOf.BookOfCommander;
                         }
                         else
                         {

@@ -72,6 +72,8 @@ namespace TorannMagic.ModOptions
         public bool DeathKnight = true;
         public bool Monk = true;
         public bool Wayfayer = true;
+        public bool Commander = true;
+        public bool SuperSoldier = true;
 
         public static Settings Instance;
 
@@ -145,6 +147,8 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<bool>(ref this.Wayfayer, "Wayfarer", true, false);
             Scribe_Values.Look<bool>(ref this.ChaosMage, "ChaosMage", true, false);
             Scribe_Values.Look<bool>(ref this.Monk, "Monk", true, false);
+            Scribe_Values.Look<bool>(ref this.Commander, "Commander", true, false);
+            Scribe_Values.Look<bool>(ref this.SuperSoldier, "SuperSoldier", true, false);
         }
     }
 }

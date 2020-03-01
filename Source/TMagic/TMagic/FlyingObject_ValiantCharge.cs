@@ -440,7 +440,7 @@ namespace TorannMagic
         {
 
             System.Random rnd = new System.Random();
-            int modDamAmountRand = GenMath.RoundRandom(rnd.Next(6 + pwr, 13 + (4*pwr)));
+            int modDamAmountRand = GenMath.RoundRandom(rnd.Next(8 + pwr, 15 + (4*pwr)));
             modDamAmountRand = Mathf.RoundToInt(modDamAmountRand * this.arcaneDmg);
             if (map == null)
             {

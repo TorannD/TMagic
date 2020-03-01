@@ -54,6 +54,9 @@ namespace TorannMagic
         public static readonly Texture2D psiIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/psiPsiMark", true);
         public static readonly Texture2D monkIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/monkPsiMark", true);
 
+        public static readonly Texture2D commanderIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/CommanderMark", true);
+        public static readonly Texture2D SSIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/supersoldierFighterMark", true);
+
         public static readonly Texture2D wandererIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/wandererFlame", true);
         public static readonly Texture2D wayfarerIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/wayfarerFlame", true);
 

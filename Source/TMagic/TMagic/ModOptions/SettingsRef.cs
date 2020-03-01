@@ -71,6 +71,8 @@ namespace TorannMagic.ModOptions
         public bool DeathKnight = Settings.Instance.DeathKnight;
         public bool Monk = Settings.Instance.Monk;
         public bool Wayfarer = Settings.Instance.Wayfayer;
+        public bool Commander = Settings.Instance.Commander;
+        public bool SuperSoldier = Settings.Instance.SuperSoldier;
 
     }
 }

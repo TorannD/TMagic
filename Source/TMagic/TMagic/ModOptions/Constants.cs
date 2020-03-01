@@ -99,5 +99,53 @@ namespace TorannMagic.ModOptions
             }
             return overdrivePawns;
         }
+
+        private static int pistolSpecCount;
+
+        public static void SetPistolSpecCount(int value)
+        {
+            pistolSpecCount = value;
+            if (pistolSpecCount >= 20)
+            {
+                pistolSpecCount = 0;
+            }
+        }
+
+        public static int GetPistolSpecCount()
+        {
+            return pistolSpecCount;
+        }
+
+        private static int rifleSpecCount;
+
+        public static void SetRifleSpecCount(int value)
+        {
+            rifleSpecCount = value;
+            if (rifleSpecCount >= 20)
+            {
+                rifleSpecCount = 0;
+            }
+        }
+
+        public static int GetRifleSpecCount()
+        {
+            return rifleSpecCount;
+        }
+
+        private static int shotgunSpecCount;
+
+        public static void SetShotgunSpecCount(int value)
+        {
+            shotgunSpecCount = value;
+            if(shotgunSpecCount >= 20)
+            {
+                shotgunSpecCount = 0;
+            }
+        }
+
+        public static int GetShotgunSpecCount()
+        {
+            return shotgunSpecCount;
+        }
     }
 }

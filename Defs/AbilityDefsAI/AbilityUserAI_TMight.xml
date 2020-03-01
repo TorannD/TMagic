@@ -898,5 +898,177 @@
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
 	
+	<!-- commander -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="CommanderMightAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMight</compAbilityUserClass>
+		<!-- Decision tree which helps pick ability to use. -->
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>	
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+							<maxDistance>40.0</maxDistance>
+							<minDistance>10.0</minDistance>
+							<subNodes>
+								<!-- Use gap closer command -->
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>MoveOut</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>					
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+							<maxDistance>20.0</maxDistance>
+							<subNodes>
+								<!-- heighten defenses at close range -->
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>HoldTheLine</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>	
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+							<maxDistance>55.0</maxDistance>
+							<minDistance>20.0</minDistance>
+							<subNodes>
+								<!-- increase aim at long range -->
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>StayAlert</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>							
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- Commander -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="CommanderMightAbilityUserAI">
+		<defName>TMagic_Commander</defName>
+		<matchingTraits>
+			<li>TM_Commander</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_MoveOut</li>
+			<li>TMagic_HoldTheLine</li>
+			<li>TMagic_StayAlert</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Commander Abilities -->
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
+		<defName>TMagic_MoveOut</defName>
+		<ability>TM_MoveOut</ability>		
+		<power>10.0</power>
+		<needSeeingTarget>false</needSeeingTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<maxRange>50.0</maxRange>
+		<tags>
+			<li>MoveOut</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
+		<defName>TMagic_HoldTheLine</defName>
+		<ability>TM_HoldTheLine</ability>
+		<power>5.0</power>
+		<needSeeingTarget>false</needSeeingTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<maxRange>20.0</maxRange>
+		<tags>
+			<li>HoldTheLine</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
+		<defName>TMagic_StayAlert</defName>
+		<ability>TM_StayAlert</ability>
+		<power>20</power>
+		<maxRange>60.0</maxRange>
+		<minRange>10</minRange>
+		<usedOnCaster>true</usedOnCaster>
+		<needSeeingTarget>false</needSeeingTarget>
+		<tags>
+			<li>StayAlert</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<!-- super soldier -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="SuperSoldierMightAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMight</compAbilityUserClass>
+		<!-- Decision tree which helps pick ability to use. -->
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>0.8</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>FirstAid</li>										
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+							<maxDistance>50.0</maxDistance>
+							<subNodes>
+								<!-- Use most dangerous ability first -->
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>60mmMortar</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- SuperSoldier -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="SuperSoldierMightAbilityUserAI">
+		<defName>TMagic_SuperSoldier</defName>
+		<matchingTraits>
+			<li>TM_SuperSoldier</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_FirstAid</li>
+			<li>TMagic_60mmMortar</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- SuperSoldier Abilities -->	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
+		<defName>TMagic_FirstAid</defName>
+		<ability>TM_FirstAid</ability>
+		<power>5.0</power>
+		<needSeeingTarget>false</needSeeingTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<tags>
+			<li>FirstAid</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
+		<defName>TMagic_60mmMortar</defName>
+		<ability>TM_60mmMortar</ability>
+		<power>10</power>
+		<maxRange>100.0</maxRange>
+		<minRange>20</minRange>
+		<needSeeingTarget>false</needSeeingTarget>
+		<tags>
+			<li>60mmMortar</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
 	
 </Defs>

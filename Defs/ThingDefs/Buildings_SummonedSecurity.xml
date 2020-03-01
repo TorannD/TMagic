@@ -990,4 +990,78 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
     </projectile>
   </ThingDef>
   
-  </Defs>
+  
+  <!--========================= 60mm Mortar =============================-->
+  
+  <ThingDef Name="TM_60mmMortar_Base" ParentName="TM_BuildingBase">
+    <defName>TM_60mmMortar_Base</defName>
+    <label>60mm Mortar Tube</label>
+	<description>60mm Mortar is a personally transportable and deployable indirect fire system. Due to the weight of the system, the shells are typically distributed for transport. The system is intended for indirect fire and only amateurs attempt to use the system for direct lay as it is both inaccurate and exposes the mortar-man. 
+	
+	The range and firepower of the system are limited compared to stationary systems due the containment capacity of the mortar tube and the blast cartridge.</description>
+    <thingClass>TorannMagic.Building_60mmMortar</thingClass>
+    <graphicData>
+      <texPath>Other/60mmMortar_Pod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+	<hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,0)</interactionCellOffset>
+    <stealable>false</stealable>
+	<tradeability>None</tradeability>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>3000</WorkToBuild>
+      <Mass>150</Mass>
+      <Beauty>-20</Beauty>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+	  <li Class="CompProperties_Mannable">
+        <manWorkType>Violent</manWorkType>
+      </li>
+	  <li Class="TorannMagic.CompProperties_Summoned"></li>
+    </comps>    
+    <size>(1,1)</size>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>0.4</fillPercent>
+    <hasTooltip>false</hasTooltip>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <costStuffCount>120</costStuffCount>
+    <costList>
+    </costList>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <specialDisplayRadius>40</specialDisplayRadius>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+	  <expandHomeArea>false</expandHomeArea>
+	  <deconstructible>false</deconstructible>
+	  <claimable>false</claimable>
+	  <repairable>false</repairable>
+	  <isPlayerEjectable>false</isPlayerEjectable>
+    </building>
+	<resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
+	<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <researchPrerequisites>
+    </researchPrerequisites>
+  </ThingDef>
+  
+  <ThingDef ParentName="FlyingObject_Advanced">
+   <defName>FlyingObject_60mmMortar</defName>
+   <label>60mm mortar</label>
+   <graphicData>
+		<texPath>Spells/TT_Shell</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+	</graphicData>
+  </ThingDef>
+  
+</Defs>

@@ -129,6 +129,7 @@ namespace TorannMagic
         public static HediffDef TM_ManaSickness;
         public static HediffDef TM_ArcaneSickness;
         public static HediffDef TM_ArcaneWeakness;
+        public static HediffDef TM_EnergyRegenHD;
 
         //Artifacts
         public static ThingDef TM_Artifact_Silver;
@@ -601,6 +602,8 @@ namespace TorannMagic
         public static ThingDef BookOfPsionic;
         public static ThingDef BookOfDeathKnight;
         public static ThingDef BookOfMonk;
+        public static ThingDef BookOfCommander;
+        public static ThingDef BookOfSuperSoldier;
         public static TraitDef PhysicalProdigy;
 
         //Wayfarer
@@ -750,6 +753,64 @@ namespace TorannMagic
         public static ThingDef FlyingObject_DragonStrike;
         public static TMAbilityDef TM_ThunderStrike;
 
+        //Commander
+        public static TraitDef TM_Commander;
+
+        public static TMAbilityDef TM_ProvisionerAura;
+        public static HediffDef TM_ProvisionerAuraHD;
+        public static HediffDef TM_ProvisionerHD;
+        public static TMAbilityDef TM_TaskMasterAura;
+        public static HediffDef TM_TaskMasterAuraHD;
+        public static ThoughtDef TM_TaskMasterTD;
+        public static HediffDef TM_TaskMasterHD;
+        public static TMAbilityDef TM_CommanderAura;
+        public static HediffDef TM_CommanderAuraHD;
+        public static ThoughtDef TM_CommanderTD;
+        public static HediffDef TM_CommanderHD;
+        public static ThoughtDef TM_CommanderTD_I;
+        public static HediffDef TM_CommanderHD_I;
+        public static ThoughtDef TM_CommanderTD_II;
+        public static HediffDef TM_CommanderHD_II;
+        public static ThoughtDef TM_CommanderTD_III;
+        public static HediffDef TM_CommanderHD_III;
+        public static JobDef JobDriver_TM_Command;
+        public static TMAbilityDef TM_StayAlert;
+        public static TMAbilityDef TM_StayAlert_I;
+        public static TMAbilityDef TM_StayAlert_II;
+        public static TMAbilityDef TM_StayAlert_III;
+        public static HediffDef TM_StayAlertHD;
+        public static TMAbilityDef TM_MoveOut;
+        public static TMAbilityDef TM_MoveOut_I;
+        public static TMAbilityDef TM_MoveOut_II;
+        public static TMAbilityDef TM_MoveOut_III;
+        public static HediffDef TM_MoveOutHD;
+        public static TMAbilityDef TM_HoldTheLine;
+        public static TMAbilityDef TM_HoldTheLine_I;
+        public static TMAbilityDef TM_HoldTheLine_II;
+        public static TMAbilityDef TM_HoldTheLine_III;
+        public static HediffDef TM_HoldTheLineHD;
+        public static HediffDef TM_HTLShieldHD;
+        public static ThoughtDef TM_TakingOrdersTD;
+
+        //Super Soldier
+        public static TraitDef TM_SuperSoldier;
+        public static HediffDef TM_SS_SerumHD;
+
+        public static TMAbilityDef TM_PistolSpec;
+        //public static TMAbilityDef TM_Gunslinger;
+        public static TMAbilityDef TM_PistolWhip;
+        public static TMAbilityDef TM_RifleSpec;
+        public static TMAbilityDef TM_SuppressingFire;
+        public static TMAbilityDef TM_Mk203GL;
+        public static TMAbilityDef TM_ShotgunSpec;
+        public static TMAbilityDef TM_Buckshot;
+        public static TMAbilityDef TM_BreachingCharge;
+        public static TMAbilityDef TM_CQC;
+        public static TMAbilityDef TM_FirstAid;
+        public static TMAbilityDef TM_60mmMortar;
+        public static ThingDef FlyingObject_60mmMortar;
+        public static ThingDef TM_60mmMortar_Base;
+
         //Standalone
         public static TMAbilityDef TM_Heater;
         public static TMAbilityDef TM_DismissHeater;
@@ -883,6 +944,8 @@ namespace TorannMagic
         public static ThingDef Mote_BoneDust;
         public static ThingDef Mote_Psi_Yellow;
         public static ThingDef Mote_Flowers;
+        public static ThingDef Mote_PowerWave;
+        public static ThingDef Mote_CQC;
 
         public static ThingDef Projectile_FogOfTorment;        
 
@@ -908,6 +971,8 @@ namespace TorannMagic
         public static EffecterDef TM_RecallToED;
         public static EffecterDef TM_RecallFromED;
         public static EffecterDef TM_MagicCircleED;
+        public static EffecterDef TM_CommanderOrderED;
+        public static EffecterDef TM_HTL_EffecterED;
 
         //Apparel layers
         public static ApparelLayerDef TM_Cloak;

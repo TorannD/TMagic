@@ -34,6 +34,7 @@ namespace TorannMagic
         private int explosionDamage;
         private bool isExplosive = false;
         private DamageDef impactDamageType = null;
+        private bool fliesOverhead = false;
 
         private bool earlyImpact = false;
         private float impactForce = 0;
@@ -43,6 +44,7 @@ namespace TorannMagic
         public bool damageLaunched = true;
         public bool explosion = false;
         public int weaponDmg = 0;
+        private int doublesidedVariance = 0;
 
         Pawn pawn;
 
@@ -134,8 +136,9 @@ namespace TorannMagic
             this.Launch(launcher, base.Position.ToVector3Shifted(), targ, flyingThing, null);
         }
 
-        public void AdvancedLaunch(Thing launcher, ThingDef effectMote, int moteFrequencyTicks, float curveAmount, bool shouldSpin, Vector3 origin, LocalTargetInfo targ, Thing flyingThing, int flyingSpeed, bool isExplosion, int _impactDamage, float _impactRadius, DamageDef damageType, DamageInfo? newDamageInfo = null)
+        public void AdvancedLaunch(Thing launcher, ThingDef effectMote, int moteFrequencyTicks, float curveAmount, bool shouldSpin, Vector3 origin, LocalTargetInfo targ, Thing flyingThing, int flyingSpeed, bool isExplosion, int _impactDamage, float _impactRadius, DamageDef damageType, DamageInfo? newDamageInfo = null, int doubleVariance = 0, bool flyOverhead = false)
         {
+            this.fliesOverhead = flyOverhead;
             this.explosionDamage = _impactDamage;
             this.isExplosive = isExplosion;
             this.impactRadius = _impactRadius;
@@ -145,6 +148,7 @@ namespace TorannMagic
             this.curveVariance = curveAmount;
             this.spinning = shouldSpin;
             this.speed = flyingSpeed;
+            this.doublesidedVariance = doubleVariance;
             this.curvePoints = new List<Vector3>();
             this.curvePoints.Clear();
             this.Launch(launcher, origin, targ, flyingThing, newDamageInfo);
@@ -190,24 +194,25 @@ namespace TorannMagic
             Vector3 initialVector = GetVector(start, end);
             initialVector.y = 0;
             float initialAngle = (initialVector).ToAngleFlat(); //Quaternion.AngleAxis(90, Vector3.up) *
-            float curveAngle = 0;
-            if(Rand.Chance(.5f))
-            {
-                curveAngle = variance;
+            float curveAngle = variance;
+            if(doublesidedVariance == 0 && Rand.Chance(.5f))
+            { 
+                curveAngle = (-1) * variance;
             }
             else
             {
-                curveAngle = (-1) * variance;
+                curveAngle = (doublesidedVariance * variance);
             }
+
             //calculate extra distance bolt travels around the ellipse
-            float a = .5f * Vector3.Distance(start, end);
+            float a = .525f * Vector3.Distance(start, end);
             float b = a * Mathf.Sin(.5f * Mathf.Deg2Rad * variance);
             float p = .5f * Mathf.PI * (3 * (a + b) - (Mathf.Sqrt((3 * a + b) * (a + 3 * b))));
                     
             float incrementalDistance = p / variancePoints; 
-            float incrementalAngle = (curveAngle / variancePoints) * 2;
+            float incrementalAngle = (curveAngle / variancePoints) * 2f;
             this.curvePoints.Add(this.trueOrigin);
-            for(int i = 1; i < variancePoints; i++)
+            for(int i = 1; i <= variancePoints; i++)
             {
                 this.curvePoints.Add(this.curvePoints[i - 1] + ((Quaternion.AngleAxis(curveAngle, Vector3.up) * initialVector) * incrementalDistance)); //(Quaternion.AngleAxis(curveAngle, Vector3.up) *
                 curveAngle -= incrementalAngle;
@@ -238,7 +243,7 @@ namespace TorannMagic
                 base.Position = this.ExactPosition.ToIntVec3();
                 this.Destroy(DestroyMode.Vanish);
             }
-            else if(!this.ExactPosition.ToIntVec3().Walkable(base.Map))
+            else if(!this.ExactPosition.ToIntVec3().Walkable(base.Map) && !fliesOverhead)
             {
                 this.earlyImpact = true;
                 this.impactForce = (this.DestinationCell - this.ExactPosition.ToIntVec3()).LengthHorizontal + (this.speed * .2f);

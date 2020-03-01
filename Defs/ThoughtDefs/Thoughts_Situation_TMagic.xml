@@ -155,7 +155,7 @@
 		</li>
 		<li>
 			<label>admiring transhumanist</label>
-			<description>To be able to morph yourself into whatever you wish, what an amazing ability.</description>
+			<description>To be able to morph yourself into whatever you wish - what an amazing ability!</description>
 			<baseOpinionOffset>10</baseOpinionOffset>
 		</li>
 		<li>
@@ -185,7 +185,6 @@
 				<baseMoodEffect>-8</baseMoodEffect>
 			</li>
 		</stages>
-	</ThoughtDef>
-	
+	</ThoughtDef>	
   
 </Defs>

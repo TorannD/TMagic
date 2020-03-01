@@ -158,7 +158,8 @@ namespace TorannMagic
                 {
                     if (pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) || 
                         pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic) ||
-                        pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk) || IsWayfarer(pawn))
+                        pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Commander) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier) ||
+                        IsWayfarer(pawn))
                     { 
                         flag_Trait = true;
                     }
@@ -350,6 +351,12 @@ namespace TorannMagic
                 }
             }
             return addictionList;
+        }
+
+        public static Vector3 GetVectorBetween(Vector3 v1, Vector3 v2)
+        {
+            Vector3 vectorBetween = v1 + ((v1 - v2).MagnitudeHorizontal() * TM_Calc.GetVector(v1, v2));
+            return vectorBetween;
         }
 
         public static Vector3 GetVector(IntVec3 from, IntVec3 to)
@@ -949,7 +956,7 @@ namespace TorannMagic
                 targetPawn = mapPawns[i];
                 if (targetPawn != null && !targetPawn.Dead && !targetPawn.Destroyed && !targetPawn.Downed)
                 {
-                    if (targetPawn.Position != position && targetPawn.Faction.HostileTo(faction) && (position - targetPawn.Position).LengthHorizontal <= radius && (position - targetPawn.Position).LengthHorizontal > minRange)
+                    if (targetPawn.Position != position && targetPawn.Faction.HostileTo(faction) && !targetPawn.IsPrisoner && (position - targetPawn.Position).LengthHorizontal <= radius && (position - targetPawn.Position).LengthHorizontal > minRange)
                     {
                         pawnList.Add(targetPawn);
                         targetPawn = null;
@@ -962,7 +969,7 @@ namespace TorannMagic
             }
             if (pawnList.Count > 0)
             {
-                Log.Message("returning a pawn");
+                //Log.Message("returning a pawn");
                 return pawnList.RandomElement();
             }
             else
@@ -1507,6 +1514,7 @@ namespace TorannMagic
                 if (rnd == 0)
                 {
                     int level = mightPawn.MightData.MightPowersG[2].level;
+                    caster.GetComp<CompAbilityUserMight>().MightData.MightPowersG[2].level = level;
                     switch (level)
                     {
                         case 0:
@@ -1538,6 +1546,7 @@ namespace TorannMagic
                 else if (rnd == 1)
                 {
                     int level = mightPawn.MightData.MightPowersS[2].level;
+                    caster.GetComp<CompAbilityUserMight>().MightData.MightPowersS[2].level = level;
                     switch (level)
                     {
                         case 0:
@@ -1570,6 +1579,7 @@ namespace TorannMagic
                 else if (rnd == 1)
                 {
                     int level = mightPawn.MightData.MightPowersB[4].level;
+                    caster.GetComp<CompAbilityUserMight>().MightData.MightPowersB[4].level = level;                    
                     switch (level)
                     {
                         case 0:
@@ -1596,7 +1606,8 @@ namespace TorannMagic
                 int rnd = Rand.RangeInclusive(0, 1);
                 if (rnd == 0)
                 {
-                    int level = mightPawn.MightData.MightPowersB[4].level;
+                    int level = mightPawn.MightData.MightPowersR[4].level;
+                    caster.GetComp<CompAbilityUserMight>().MightData.MightPowersR[4].level = level;
                     switch (level)
                     {
                         case 0:
@@ -1624,6 +1635,7 @@ namespace TorannMagic
                 if ((rnd == 0 || rnd == 3) && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
                 {
                     int level = mightPawn.MightData.MightPowersP[1].level;
+                    caster.GetComp<CompAbilityUserMight>().MightData.MightPowersP[1].level = level;
                     switch (level)
                     {
                         case 0:
@@ -1647,6 +1659,7 @@ namespace TorannMagic
                 else
                 {
                     int level = mightPawn.MightData.MightPowersP[3].level;
+                    caster.GetComp<CompAbilityUserMight>().MightData.MightPowersP[3].level = level;
                     switch (level)
                     {
                         case 0:
@@ -1668,6 +1681,7 @@ namespace TorannMagic
                 else
                 {
                     int level = mightPawn.MightData.MightPowersDK[4].level;
+                    caster.GetComp<CompAbilityUserMight>().MightData.MightPowersDK[4].level = level;
                     switch (level)
                     {
                         case 0:
@@ -1701,6 +1715,82 @@ namespace TorannMagic
                     tempAbility = TorannMagicDefOf.TM_ThunderStrike;
                 }
             }
+            else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Commander))
+            {
+                int rnd = Rand.RangeInclusive(3, 5);
+                if (rnd == 3)
+                {
+                    int level = mightPawn.MightData.MightPowersC[3].level;
+                    caster.GetComp<CompAbilityUserMight>().MightData.MightPowersC[3].level = level;
+                    switch (level)
+                    {
+                        case 0:
+                            tempAbility = TorannMagicDefOf.TM_StayAlert;
+                            break;
+                        case 1:
+                            tempAbility = TorannMagicDefOf.TM_StayAlert_I;
+                            break;
+                        case 2:
+                            tempAbility = TorannMagicDefOf.TM_StayAlert_II;
+                            break;
+                        case 3:
+                            tempAbility = TorannMagicDefOf.TM_StayAlert_III;
+                            break;
+                    }
+                }
+                else if (rnd == 4)
+                {
+                    int level = mightPawn.MightData.MightPowersC[4].level;
+                    caster.GetComp<CompAbilityUserMight>().MightData.MightPowersC[4].level = level;
+                    switch (level)
+                    {
+                        case 0:
+                            tempAbility = TorannMagicDefOf.TM_MoveOut;
+                            break;
+                        case 1:
+                            tempAbility = TorannMagicDefOf.TM_MoveOut_I;
+                            break;
+                        case 2:
+                            tempAbility = TorannMagicDefOf.TM_MoveOut_II;
+                            break;
+                        case 3:
+                            tempAbility = TorannMagicDefOf.TM_MoveOut_III;
+                            break;
+                    }
+                }
+                else
+                {
+                    int level = mightPawn.MightData.MightPowersC[5].level;
+                    caster.GetComp<CompAbilityUserMight>().MightData.MightPowersC[5].level = level;
+                    switch (level)
+                    {
+                        case 0:
+                            tempAbility = TorannMagicDefOf.TM_HoldTheLine;
+                            break;
+                        case 1:
+                            tempAbility = TorannMagicDefOf.TM_HoldTheLine_I;
+                            break;
+                        case 2:
+                            tempAbility = TorannMagicDefOf.TM_HoldTheLine_II;
+                            break;
+                        case 3:
+                            tempAbility = TorannMagicDefOf.TM_HoldTheLine_III;
+                            break;
+                    }
+                }
+            }
+            else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier) )
+            {
+                int rnd = Rand.RangeInclusive(0, 1);
+                if (rnd == 0 && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
+                {
+                    tempAbility = TorannMagicDefOf.TM_60mmMortar;
+                }
+                else
+                {
+                    tempAbility = TorannMagicDefOf.TM_FirstAid;
+                }
+            }
             else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
 
@@ -1722,6 +1812,7 @@ namespace TorannMagic
                         if (rnd == 0 && magicPawn.MagicData.MagicPowersA[rnd].learned)
                         {
                             int level = magicPawn.MagicData.MagicPowersA[rnd].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA[rnd].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -1742,6 +1833,7 @@ namespace TorannMagic
                         else if (rnd == 1 && magicPawn.MagicData.MagicPowersA[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
                         {
                             int level = magicPawn.MagicData.MagicPowersA[rnd].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA[rnd].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -1762,6 +1854,7 @@ namespace TorannMagic
                         else if (rnd == 2 && magicPawn.MagicData.MagicPowersA[rnd].learned)
                         {
                             int level = magicPawn.MagicData.MagicPowersA[rnd].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA[rnd].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -1782,6 +1875,7 @@ namespace TorannMagic
                         else if (rnd == 3 && magicPawn.MagicData.MagicPowersA[rnd].learned)
                         {
                             int level = magicPawn.MagicData.MagicPowersA[rnd].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA[rnd].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -1809,6 +1903,7 @@ namespace TorannMagic
                         if (rnd == 0 && magicPawn.MagicData.MagicPowersSB[rnd].learned)
                         {
                             int level = magicPawn.MagicData.MagicPowersSB[rnd].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersSB[rnd].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -1851,6 +1946,7 @@ namespace TorannMagic
                         if (rnd == 0 && magicPawn.MagicData.MagicPowersIF[rnd].learned)
                         {
                             int level = magicPawn.MagicData.MagicPowersIF[rnd].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersIF[rnd].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -1893,6 +1989,7 @@ namespace TorannMagic
                         if (rnd == 0 && magicPawn.MagicData.MagicPowersHoF[rnd].learned)
                         {
                             int level = magicPawn.MagicData.MagicPowersHoF[rnd].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersHoF[rnd].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -1923,6 +2020,7 @@ namespace TorannMagic
                         else if (rnd == 3 && magicPawn.MagicData.MagicPowersHoF[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
                         {
                             int level = magicPawn.MagicData.MagicPowersHoF[rnd].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersHoF[rnd].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -1960,6 +2058,7 @@ namespace TorannMagic
                         else if (rnd == 1 && magicPawn.MagicData.MagicPowersD[rnd].learned)
                         {
                             int level = magicPawn.MagicData.MagicPowersD[rnd].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersD[rnd].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -1997,6 +2096,7 @@ namespace TorannMagic
                         if (rnd == 1 && magicPawn.MagicData.MagicPowersN[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
                         {
                             int level = magicPawn.MagicData.MagicPowersN[rnd].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersN[rnd].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -2022,6 +2122,7 @@ namespace TorannMagic
                         else if (rnd == 3 && magicPawn.MagicData.MagicPowersN[rnd + 1].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
                         {
                             int level = magicPawn.MagicData.MagicPowersN[rnd + 1].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersN[rnd + 1].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -2049,6 +2150,7 @@ namespace TorannMagic
                         if (rnd == 1 && magicPawn.MagicData.MagicPowersP[rnd].learned)
                         {
                             int level = magicPawn.MagicData.MagicPowersP[rnd].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP[rnd].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -2091,6 +2193,7 @@ namespace TorannMagic
                         if (rnd == 3 && magicPawn.MagicData.MagicPowersPR[rnd].learned)
                         {
                             int level = magicPawn.MagicData.MagicPowersPR[rnd].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersPR[rnd].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -2111,6 +2214,7 @@ namespace TorannMagic
                         else if (rnd == 2 && magicPawn.MagicData.MagicPowersPR[rnd].learned)
                         {
                             int level = magicPawn.MagicData.MagicPowersPR[rnd].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersPR[rnd].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -2165,6 +2269,7 @@ namespace TorannMagic
                 else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
                 {
                     int level = magicPawn.MagicData.MagicPowersB[3].level;
+                    caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersB[3].level = level;
                     switch (level)
                     {
                         case 0:
@@ -2189,6 +2294,7 @@ namespace TorannMagic
                         if (rnd == 1 && magicPawn.MagicData.MagicPowersWD[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
                         {
                             int level = magicPawn.MagicData.MagicPowersWD[rnd].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersWD[rnd].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -2214,6 +2320,7 @@ namespace TorannMagic
                         else if (rnd == 3 && magicPawn.MagicData.MagicPowersWD[rnd].learned)
                         {
                             int level = magicPawn.MagicData.MagicPowersWD[rnd].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersWD[rnd].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -2241,6 +2348,7 @@ namespace TorannMagic
                         if (rnd == 1 && magicPawn.MagicData.MagicPowersSD[rnd].learned && !caster.story.WorkTagIsDisabled(WorkTags.Violent))
                         {
                             int level = magicPawn.MagicData.MagicPowersSD[rnd].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersSD[rnd].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -2266,6 +2374,7 @@ namespace TorannMagic
                         else if (rnd == 3 && magicPawn.MagicData.MagicPowersSD[rnd].learned)
                         {
                             int level = magicPawn.MagicData.MagicPowersSD[rnd].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersSD[rnd].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -2302,6 +2411,7 @@ namespace TorannMagic
                         else if (rnd == 1 && magicPawn.MagicData.MagicPowersG[rnd].learned)
                         {
                             int level = magicPawn.MagicData.MagicPowersG[rnd].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersG[rnd].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -2355,6 +2465,7 @@ namespace TorannMagic
                         if (magicPawn.MagicData.MagicPowersE[4].learned)
                         {
                             int level = magicPawn.MagicData.MagicPowersE[4].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersE[4].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -2392,6 +2503,7 @@ namespace TorannMagic
                         else if (magicPawn.MagicData.MagicPowersC[4].learned)
                         {
                             int level = magicPawn.MagicData.MagicPowersC[4].level;
+                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersC[4].level = level;
                             switch (level)
                             {
                                 case 0:
@@ -2632,6 +2744,126 @@ namespace TorannMagic
                 }
             }
             return skills;
+        }
+
+        public static bool IsUsingPistol(Pawn p)
+        {
+            bool result = false;
+            if (p != null && p.equipment != null && p.equipment.Primary != null && p.equipment.Primary.def.IsRangedWeapon)
+            {
+                Thing wpn = p.equipment.Primary;
+                CompAbilityUserMight mightComp = p.TryGetComp<CompAbilityUserMight>();
+                //Log.Message("" + p.LabelShort + " is using a " + wpn.def.defName);
+                if(mightComp != null && mightComp.equipmentContainer != null && mightComp.equipmentContainer.Count > 0)
+                {
+                    result = true;
+                }
+                else if (wpn.def.defName.Contains("Pistol") || wpn.def.defName.Contains("pistol") || wpn.def.defName.Contains("revolver"))
+                {
+                    //Log.Message("weapon name contains pistol: " + wpn.def.defName);
+                    result = true;
+                }
+                else if(TM_Data.PistolList().Contains(wpn.def))
+                {
+                    //Log.Message("weapon found in custom defnames");
+                    result = true;
+                }
+                //else
+                //{
+                //    Messages.Message("TM_MustHaveWeaponType".Translate(
+                //    p.LabelShort,
+                //    wpn.LabelShort,
+                //    "pistol"
+                //    ), MessageTypeDefOf.NegativeEvent);                    
+                //}
+            }
+            //else
+            //{
+            //    Messages.Message("MustHaveRangedWeapon".Translate(
+            //        p.LabelCap
+            //    ), MessageTypeDefOf.RejectInput);
+            //}
+            return result;
+        }
+
+        public static bool IsUsingRifle(Pawn p)
+        {
+            bool result = false;
+            if (p != null && p.equipment != null && p.equipment.Primary != null && p.equipment.Primary.def.IsRangedWeapon)
+            {
+                Thing wpn = p.equipment.Primary;
+                CompAbilityUserMight mightComp = p.TryGetComp<CompAbilityUserMight>();
+                //Log.Message("" + p.LabelShort + " is using a " + wpn.def.defName);
+                if (mightComp != null && mightComp.equipmentContainer != null && mightComp.equipmentContainer.Count > 0)
+                {
+                    result = true;
+                }
+                else if (wpn.def.defName.Contains("Rifle") || wpn.def.defName.Contains("rifle") || wpn.def.defName.Contains("SMG") || wpn.def.defName.Contains("LMG"))
+                {
+                    //Log.Message("weapon name contains rifle: " + wpn.def.defName);
+                    result = true;
+                }
+                else if (TM_Data.RifleList().Contains(wpn.def))
+                {
+                    //Log.Message("weapon found in custom defnames");
+                    result = true;
+                }
+                //else
+                //{
+                //    Messages.Message("TM_MustHaveWeaponType".Translate(
+                //    p.LabelShort,
+                //    wpn.LabelShort,
+                //    "rifle"
+                //    ), MessageTypeDefOf.NegativeEvent);
+                //}
+            }
+            //else
+            //{
+            //    Messages.Message("MustHaveRangedWeapon".Translate(
+            //        p.LabelCap
+            //    ), MessageTypeDefOf.RejectInput);
+            //}
+            return result;
+        }
+
+        public static bool IsUsingShotgun(Pawn p)
+        {
+            bool result = false;
+            if (p != null && p.equipment != null && p.equipment.Primary != null && p.equipment.Primary.def.IsRangedWeapon)
+            {
+                Thing wpn = p.equipment.Primary;
+                CompAbilityUserMight mightComp = p.TryGetComp<CompAbilityUserMight>();
+                //Log.Message("" + p.LabelShort + " is using a " + wpn.def.defName);
+                if (mightComp != null && mightComp.equipmentContainer != null && mightComp.equipmentContainer.Count > 0)
+                {
+                    result = true;
+                }
+                else if (wpn.def.defName.Contains("Shotgun") || wpn.def.defName.Contains("shotgun"))
+                {
+                    //Log.Message("weapon name contains shotgun: " + wpn.def.defName);
+                    result = true;
+                }
+                else if (TM_Data.ShotgunList().Contains(wpn.def))
+                {
+                    //Log.Message("weapon found in custom defnames");
+                    result = true;
+                }
+                //else
+                //{
+                //    Messages.Message("TM_MustHaveWeaponType".Translate(
+                //    p.LabelShort,
+                //    wpn.LabelShort,
+                //    "shotgun"
+                //    ), MessageTypeDefOf.NegativeEvent);
+                //}
+            }
+            //else
+            //{
+            //    Messages.Message("MustHaveRangedWeapon".Translate(
+            //        p.LabelCap
+            //    ), MessageTypeDefOf.RejectInput);
+            //}
+            return result;
         }
     }
 }

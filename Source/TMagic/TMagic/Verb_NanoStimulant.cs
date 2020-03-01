@@ -24,7 +24,7 @@ namespace TorannMagic
                 info.pitchFactor = 1.0f;
                 info.volumeFactor = 1.0f;
                 TorannMagicDefOf.TM_FastReleaseSD.PlayOneShot(info);
-                TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_PowerWave"), caster.DrawPos, caster.Map, .8f, .2f, .1f, .1f, 0, 1f, 0, Rand.Chance(.5f) ? 0 : 180);
+                TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_PowerWave, caster.DrawPos, caster.Map, .8f, .2f, .1f, .1f, 0, 1f, 0, Rand.Chance(.5f) ? 0 : 180);
             }
             return true;
         }

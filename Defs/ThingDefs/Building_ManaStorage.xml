@@ -62,6 +62,10 @@ Efficiency: 71%</description>
         <explosiveRadius>2.2</explosiveRadius>
         <explosiveDamageType>TM_ManaMine</explosiveDamageType>
 		<startWickHitPointsPercent>0.05</startWickHitPointsPercent>
+		<wickTicks>
+          <min>120</min>
+          <max>150</max>
+        </wickTicks>
       </li>
 	  <li Class="CompProperties_Refuelable">
         <fuelCapacity>200.0</fuelCapacity>
@@ -149,6 +153,10 @@ Efficiency: 80%</description>
         <explosiveRadius>7.7</explosiveRadius>
         <explosiveDamageType>TM_ManaMine</explosiveDamageType>
 		<startWickHitPointsPercent>0.7</startWickHitPointsPercent>
+		<wickTicks>
+          <min>120</min>
+          <max>150</max>
+        </wickTicks>
       </li>
 	  <li Class="CompProperties_Refuelable">
         <fuelCapacity>2000.0</fuelCapacity>

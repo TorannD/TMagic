@@ -257,7 +257,7 @@ namespace TorannMagic
             
             if (ver >= 2)
             {
-                int rnd = Rand.Range(1, 10);
+                int rnd = Rand.Range(3, 12);
                 if (rnd >= 5)
                 {
                     Explosion(pwr, pos, map, radius, DamageDefOf.Stun, this.launcher, null, def, this.equipmentDef, ThingDefOf.Mote_HeatGlow, 0.4f, 1, false, null, 0f, 1);
@@ -270,7 +270,7 @@ namespace TorannMagic
         public void Explosion(int pwr, IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
         {
             System.Random rnd = new System.Random();
-            int modDamAmountRand = (pwr * 3) + GenMath.RoundRandom(rnd.Next(3, projectile.projectile.GetDamageAmount(1,null)));
+            int modDamAmountRand = (pwr * 3) + GenMath.RoundRandom(rnd.Next(5, projectile.projectile.GetDamageAmount(1,null)));
             modDamAmountRand = Mathf.RoundToInt(modDamAmountRand * this.arcaneDmg);
             if (map == null)
             {

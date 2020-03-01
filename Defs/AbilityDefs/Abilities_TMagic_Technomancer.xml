@@ -203,7 +203,7 @@ Because of this, the weapon will disintegrate if separated from the technomancer
 
 Weapon specialists also have access to modified ammunition and nano stimulants for improved combat capabilities.
 
-To create a techno weapon: target a weapon on the ground. Targetted weapon must be ranged, with an industrial or higher tech level, and use standard firing action.</description>
+To create a techno weapon: target a weapon on the ground. Targeted weapon must be ranged, with an industrial or higher tech level, and use standard firing action.</description>
     <manaCost>0.50</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_TechnoWeapon</verbClass>

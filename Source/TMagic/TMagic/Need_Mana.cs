@@ -36,6 +36,7 @@ namespace TorannMagic
         public float drainSustainers; //not used
         public float drainStructures; //not used
         public float drainEnchantments; //not used
+        public float drainEnergyHD;
         public float modifiedManaGain;
         public float baseManaGain;
 
@@ -189,6 +190,24 @@ namespace TorannMagic
                         this.baseManaGain = (amount * (0.0012f) * settingsRef.needMultiplier);
                         amount *= (((0.0012f * comp.mpRegenRate)) * settingsRef.needMultiplier);
                         this.modifiedManaGain = amount - this.baseManaGain;
+
+                        if (pawn.health != null && pawn.health.hediffSet != null)
+                        {
+                            Hediff hdRegen = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_EnergyRegenHD);
+                            if (hdRegen != null)
+                            {
+                                drainEnergyHD = (amount * hdRegen.Severity) - amount;
+                                amount *= hdRegen.Severity;
+                            }
+                            else
+                            {
+                                drainEnergyHD = 0;
+                            }
+                        }
+                        else
+                        {
+                            drainEnergyHD = 0;
+                        }
 
                         //Syrrium modifier
                         if (this.pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_SyrriumSenseHD"), false))

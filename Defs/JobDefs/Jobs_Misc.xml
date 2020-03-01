@@ -90,4 +90,11 @@
     <taleOnCompletion>Meditated</taleOnCompletion>
   </JobDef>
   
+    <JobDef>
+    <defName>JobDriver_TM_Command</defName>
+    <driverClass>TorannMagic.JobDriver_Command</driverClass>
+    <reportString>motivating pawn</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  
 </Defs>

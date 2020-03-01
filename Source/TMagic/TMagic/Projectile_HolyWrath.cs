@@ -39,7 +39,7 @@ namespace TorannMagic
             base.ExposeData();
             Scribe_Values.Look<bool>(ref this.initialized, "initialized", false, false);
             Scribe_Values.Look<int>(ref this.age, "age", -1, false);
-            Scribe_Values.Look<int>(ref this.strikeNum, "strikeNum", 3, false);
+            Scribe_Values.Look<int>(ref this.strikeNum, "strikeNum", 5, false);
             Scribe_Values.Look<int>(ref this.timeToSmite, "timeToSmite", 360, false);
             Scribe_Values.Look<int>(ref this.verVal, "verVal", 0, false);
             Scribe_Values.Look<int>(ref this.pwrVal, "pwrVal", 0, false);
@@ -77,7 +77,7 @@ namespace TorannMagic
                     verVal = 1;
                 }
                 this.angle = Rand.Range(-12f, 12f);
-                this.strikeNum = 3 + pwrVal;
+                this.strikeNum = 5 + pwrVal;
                 IntVec3 curCell = base.Position;
                 this.CheckSpawnSustainer();
                 this.GetSmites(curCell, map);

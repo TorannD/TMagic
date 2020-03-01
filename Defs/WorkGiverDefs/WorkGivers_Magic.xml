@@ -54,6 +54,21 @@
     <prioritizeSustains>true</prioritizeSustains>
   </WorkGiverDef>
   
+        <!-- ============= Commander Motivate ============= -->
+	
+  <WorkGiverDef>
+    <defName>DoCommanderMotivate</defName>
+    <label>motivating pawn</label>
+    <giverClass>TorannMagic.WorkGiver_DoCommanderMotivate</giverClass>
+    <workType>Warden</workType>
+    <verb>motivate</verb>
+    <gerund>motivating</gerund>
+    <requiredCapacities>
+      <li>Talking</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+  
      <!-- ============= Magic Work Related ============= -->
 
   <WorkGiverDef>

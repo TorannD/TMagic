@@ -112,6 +112,9 @@
 <TM_CleaveToggleDesc>Enables or disables the automatic use of gladiator Cleave; this ability only triggers in melee combat.</TM_CleaveToggleDesc>
 <TM_CleaveEnabled>Cleave Enabled</TM_CleaveEnabled>
 <TM_CleaveDisabled>Cleave Disabled</TM_CleaveDisabled>
+<TM_CQCToggleDesc>Enables or disables the automatic use of CQC; this ability only triggers in melee combat.</TM_CQCToggleDesc>
+<TM_CQCEnabled>CQC Enabled</TM_CQCEnabled>
+<TM_CQCDisabled>CQC Disabled</TM_CQCDisabled>
 <TM_CanNotTeachMagic>{0} is unable to mentor {1} in magic since {1} is not a mage.</TM_CanNotTeachMagic>
 <TM_CanNotTeachCombat>{0} is unable to train {1} in combat since {1} is not a fighter.</TM_CanNotTeachCombat>
 <TM_CanNotTeachMagicDislike>{0} refuses to mentor {1} in magic due to the opinion {0} has of {1}.</TM_CanNotTeachMagicDislike>
@@ -160,6 +163,10 @@
 <TM_BondedPawnNotSpawned>Unable to link to bonded pawn {0}, soul in transition.</TM_BondedPawnNotSpawned>
 <TM_WildSurge>Wild Surge: {0}!</TM_WildSurge>
 <TM_CasterMute>{0} cannot cast spells while muted.</TM_CasterMute>
+<TM_IgnoredOrder>Ignored order</TM_IgnoredOrder>
+<TM_MustHaveWeaponType>{0} is armed with a {1}, {0} must equip a {2} to use this ability.</TM_MustHaveWeaponType>
+<TM_SuppressingFireCount>Shots fired: {0}</TM_SuppressingFireCount>
+<TM_BuckshotFireCount>Buckshot pellets: {0}</TM_BuckshotFireCount>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
@@ -249,6 +256,8 @@
 <TM_Wanderer>Wanderer</TM_Wanderer>
 <TM_Wayfarer>Wayfarer</TM_Wayfarer>
 <TM_ChaosMage>Chaos Mage</TM_ChaosMage>
+<TM_Commander>Commander</TM_Commander>
+<TM_SuperSoldier>Super Soldier</TM_SuperSoldier>
 
 <!-- Mod Settings event options -->
 <TM_EventOptions>Event Options</TM_EventOptions>
@@ -314,7 +323,7 @@ Level 7: Increases the efficiency of mana shield by 40%
 Level 8: Spell Mending doesn't apply a debuff on the target
 Level 9: Arcane Cooler, Arcane Heater, and Power Node apply additional buffs
 Level 10: Teleport, Heal, and Summon Minion gain versatility level 2 class improvements
-Level 11: Blur dodge chance increased by 10%
+Level 11: Blur evasion chance increased from 20% to 30%
 Level 12: Invisibility has 25% increased duration and applies a self heal when activated
 Level 13: Magelight will fire a lightning bolt at enemies within 24 cells every 7-13 seconds
 Level 14: EMP has a 40% chance to attempt Sabotage to robots and mechanoids
@@ -461,7 +470,7 @@ Can stun at level 2.</TM_ValiantCharge_ver_desc>
 <TM_Overwhelm_ver_desc>Summons more powerful symbols at level 1 and 3.
 Overwhelm can stun at level 2 and improved stun at level 3.</TM_Overwhelm_ver_desc>
 <TM_HolyWrath_eff_desc>Decreases mana cost of Holy Wrath by 5% of base mana cost.</TM_HolyWrath_eff_desc>
-<TM_HolyWrath_pwr_desc>Requires 2 ability points per skill level. Increases number of strikes by 1 per skill level. Base number of strikes is 3.</TM_HolyWrath_pwr_desc>
+<TM_HolyWrath_pwr_desc>Requires 2 ability points per skill level. Increases number of strikes by 1 per skill level. Base number of strikes is 5.</TM_HolyWrath_pwr_desc>
 <TM_HolyWrath_ver_desc>Requires 2 ability points per skill level.
 Level 1: allies within the field of Holy Wrath become temporarily invulnerable
 Level 2: allies are healed for a small amount
@@ -1519,6 +1528,125 @@ Lethal Blow targets a vital bodypart and strikes it with a precise attack that d
 <TM_ThunderStrike_eff>Electric Spirit</TM_ThunderStrike_eff>
 <TM_ThunderStrike_ver>Shatter</TM_ThunderStrike_ver>
 
+<TM_ProvisionerAura_pwr_desc>Increases the effectiveness of all aspects of Commander's provisions.</TM_ProvisionerAura_pwr_desc>
+<TM_ProvisionerAura_eff_desc>Reduces energy activation cost and upkeep cost by 10% per skill point.</TM_ProvisionerAura_eff_desc>
+<TM_ProvisionerAura_ver_desc>Expands the scope of provisions.
+Level 0: reduces rest and food decay
+Level 1: maintains equipped weapons and gear
+Level 2: improves natural health regeneration
+Level 3: adds a 15% boost to stamina and mana regeneration</TM_ProvisionerAura_ver_desc>
+<TM_TaskMasterAura_pwr_desc>Increases the work effectiveness of pawns under a task master.</TM_TaskMasterAura_pwr_desc>
+<TM_TaskMasterAura_eff_desc>Reduces energy activation cost and upkeep cost by 10% per skill point.</TM_TaskMasterAura_eff_desc>
+<TM_TaskMasterAura_ver_desc>Increases the reach of the Task Master Aura by 2 cells per skill point; base reach is 15c. Increases the frequency the effect is applied by 5%.</TM_TaskMasterAura_ver_desc>
+<TM_CommanderAura_pwr_desc>Improves effect of Commander's Aura and reduces the amount of time between motivational speeches by 10%.</TM_CommanderAura_pwr_desc>
+<TM_CommanderAura_eff_desc>Reduces energy activation cost and upkeep cost by 10% per skill point.</TM_CommanderAura_eff_desc>
+<TM_CommanderAura_ver_desc>Increases the reach of Commander's Aura by 2 cells per skill point; base reach is 15c. Increases duration of aura effect on pawns by 10% per skill point; base duration is .5hrs (game time).</TM_CommanderAura_ver_desc>
+<TM_StayAlert_pwr_desc>Increases the amount of rest gained by each affected pawn by 20% per skill level and extends the duration pawns stay alert.</TM_StayAlert_pwr_desc>
+<TM_StayAlert_eff_desc>Reduces the stamina required to order Stay Alert! by 10% per skill level.</TM_StayAlert_eff_desc>
+<TM_MoveOut_pwr_desc>Increases the movement bonus by 12% per skill level.</TM_MoveOut_pwr_desc>
+<TM_MoveOut_eff_desc>Reduces the stamina required to order Move Out! by 10% per skill level.</TM_MoveOut_eff_desc>
+<TM_HoldTheLine_pwr_desc>Increases the effectiveness of Hold The Line and increases the amount each affected pawn is shielded.</TM_HoldTheLine_pwr_desc>
+<TM_HoldTheLine_eff_desc>Reduces the stamina required to order Hold The Line! by 10% per skill level.</TM_HoldTheLine_eff_desc>
+
+<TM_ProvisionerAura_pwr>Adept Accounting</TM_ProvisionerAura_pwr>
+<TM_ProvisionerAura_eff>Efficient Manager</TM_ProvisionerAura_eff>
+<TM_ProvisionerAura_ver>Supply Broker</TM_ProvisionerAura_ver>
+<TM_TaskMasterAura_pwr>Drill Master</TM_TaskMasterAura_pwr>
+<TM_TaskMasterAura_eff>Greater Good</TM_TaskMasterAura_eff>
+<TM_TaskMasterAura_ver>Voice Projection</TM_TaskMasterAura_ver>
+<TM_CommanderAura_pwr>Visionary Leader</TM_CommanderAura_pwr>
+<TM_CommanderAura_eff>Mask of the Commander</TM_CommanderAura_eff>
+<TM_CommanderAura_ver>Motivating Personality</TM_CommanderAura_ver>
+<TM_StayAlert_pwr>Command Authority</TM_StayAlert_pwr>
+<TM_StayAlert_eff>Command Presence</TM_StayAlert_eff>
+<TM_MoveOut_pwr>Command Authority</TM_MoveOut_pwr>
+<TM_MoveOut_eff>Command Presence</TM_MoveOut_eff>
+<TM_HoldTheLine_pwr>Command Authority</TM_HoldTheLine_pwr>
+<TM_HoldTheLine_eff>Command Presence</TM_HoldTheLine_eff>
+
+<TM_PistolSpec_pwr_desc>Equipped pistols gain the following improvements for each skill level:
+Damage 		+3%
+Shot Count 	+2%
+Cooldown 	-2.5%
+Warmup 		-2.5%
+Burst Time 	-3%
+Range 		+1%
+Acc. Short 	+1.5%
+Acc. Medium	+0.5%</TM_PistolSpec_pwr_desc>
+<TM_PistolSpec_eff_desc>Increases chance to ignore cooldown after each pistol shot burst.
+Level 0: 25%
+Level 1: 30%
+Level 2: 35%
+Level 3: 40%</TM_PistolSpec_eff_desc>
+<TM_PistolSpec_ver_desc>Improves the Pistol Whip ability.
+Level 0: (Stun) 6-9 damage, (Blunt) 6-8 damage, 35% chance to disarm
+Level 1: (Stun) 7-10 damage, (Blunt) 7-9 damage, 40% chance to disarm, -10% energy cost
+Level 2: (Stun) 8-11 damage, (Blunt) 8-10 damage, 45% chance to disarm, -20% energy cost
+Level 3: (Stun) 9-12 damage, (Blunt) 9-11 damage, 50% chance to disarm, -30% energy cost</TM_PistolSpec_ver_desc>
+<TM_RifleSpec_pwr_desc>Equipped rifles gain the following improvements for each skill level:
+Damage 		+1%
+Shot Count 	+3%
+Cooldown 	-1%
+Warmup 		-1%
+Burst Time 	-2%
+Range 		+2%
+Acc. Short 	+1%
+Acc. Medium	+1%
+Acc. Long	+1%</TM_RifleSpec_pwr_desc>
+<TM_RifleSpec_eff_desc>Increases round count of Suppressing Fire by 12.5% and reduces energy cost by 8% per skill level.</TM_RifleSpec_eff_desc>
+<TM_RifleSpec_ver_desc>Increases explosion damage of the Mk203 Grenade Launcher by 1.5 and reduces energy cost by 8% per skill level.</TM_RifleSpec_ver_desc>
+<TM_ShotgunSpec_pwr_desc>Equipped shotguns gain the following improvements for each skill level:
+Damage 		+2%
+Cooldown 	-3%
+Warmup 		-3%
+Burst Time 	-2%
+Range 		+1%
+Acc. Touch	+1%
+Acc. Short 	+1.5%
+Acc. Medium	+0.5%</TM_ShotgunSpec_pwr_desc>
+<TM_ShotgunSpec_eff_desc>Increases pellet count of Buckshot by 3 and reduces energy cost by 8% per skill level.</TM_ShotgunSpec_eff_desc>
+<TM_ShotgunSpec_ver_desc>Increases damage of Breaching Charge by 15% and reduces energy cost by 8% per skill level.</TM_ShotgunSpec_ver_desc>
+<TM_CQC_pwr_desc>Increases damage of CQC strike by 2 per skill level. Base 10-14 damage.</TM_CQC_pwr_desc>
+<TM_CQC_eff_desc>Reduces energy cost to use CQC by 10% per skill level.</TM_CQC_eff_desc>
+<TM_CQC_ver_desc>Increases chance to perform a CQC attack:
+Level 0: 20%
+Level 1: 25%
+Level 2: 28%
+Level 3: 30%</TM_CQC_ver_desc>
+<TM_FirstAid_pwr_desc>Increases number of wounds tended by 1 per skill level. Base 2 wounds tended.</TM_FirstAid_pwr_desc>
+<TM_FirstAid_eff_desc>Reduces energy cost to use Self Aid by 10% per skill level.</TM_FirstAid_eff_desc>
+<TM_FirstAid_ver_desc>Improves the tend quality of Self Aid
+Level 0: 0-40%
+Level 1: 10-50%
+Level 2: 20-60%
+Level 3: 30-70%</TM_FirstAid_ver_desc>
+<TM_60mmMortar_pwr_desc>Increases blast damage and radius.
+Level 0: 14-20 damage, 2c radius
+Level 1: 15-22 damage, 2.35c radius
+Level 2: 16-24 damage, 2.7c radius
+Level 3: 17-26 damage, 3.05c radius</TM_60mmMortar_pwr_desc>
+<TM_60mmMortar_eff_desc>Reduces energy cost to deploy a 60mm Mortar system by 8% and increases accuracy by 10% per skill level .</TM_60mmMortar_eff_desc>
+<TM_60mmMortar_ver_desc>Increases the max range and reduces the delay between rounds. Rank 3 increases round count to 4.</TM_60mmMortar_ver_desc>
+
+<TM_PistolSpec_pwr>Pistol Specialization</TM_PistolSpec_pwr>
+<TM_PistolSpec_eff>Double Tap</TM_PistolSpec_eff>
+<TM_PistolSpec_ver>Pistol Whip</TM_PistolSpec_ver>
+<TM_RifleSpec_pwr>Rifle Specialization</TM_RifleSpec_pwr>
+<TM_RifleSpec_eff>Bullet Storm</TM_RifleSpec_eff>
+<TM_RifleSpec_ver>Grenadier</TM_RifleSpec_ver>
+<TM_ShotgunSpec_pwr>Shotgun Specialization</TM_ShotgunSpec_pwr>
+<TM_ShotgunSpec_eff>Shell Shock</TM_ShotgunSpec_eff>
+<TM_ShotgunSpec_ver>Shape Charge</TM_ShotgunSpec_ver>
+<TM_CQC_pwr>Force</TM_CQC_pwr>
+<TM_CQC_eff>Quickness</TM_CQC_eff>
+<TM_CQC_ver>Balance</TM_CQC_ver>
+<TM_FirstAid_pwr>Troll's Blood</TM_FirstAid_pwr>
+<TM_FirstAid_eff>Natural Tendency</TM_FirstAid_eff>
+<TM_FirstAid_ver>Second Skin</TM_FirstAid_ver>
+<TM_60mmMortar_pwr>High Explosive</TM_60mmMortar_pwr>
+<TM_60mmMortar_eff>Mortar Expert</TM_60mmMortar_eff>
+<TM_60mmMortar_ver>Quality Shells</TM_60mmMortar_ver>
+
 <!-- UI -->
 <TM_TabMagic>Magic</TM_TabMagic>
 <TM_TabMight>Might</TM_TabMight>
@@ -1541,6 +1669,7 @@ Lethal Blow targets a vital bodypart and strikes it with a precise attack that d
 <TM_Versatility>Lightning Storm versatility</TM_Versatility>
 
 <TM_TechnomancerPathWarning>**Only one technomancy path can be chosen; once a path is selected all other paths will be closed**</TM_TechnomancerPathWarning>
+<TM_SuperSoldierPathWarning>**Only one weapon specialization can be chosen; once a path is selected all other paths will be closed**</TM_SuperSoldierPathWarning>
 <TM_SpellLocked>Locked: learn {0} using a scroll</TM_SpellLocked>
 <TM_MasterSpellLocked>Locked: learn {0} using a master scroll</TM_MasterSpellLocked>
 

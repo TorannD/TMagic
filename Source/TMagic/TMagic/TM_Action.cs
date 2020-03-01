@@ -9,6 +9,7 @@ using RimWorld;
 using System;
 using AbilityUser;
 using Harmony;
+using TorannMagic.Enchantment;
 
 namespace TorannMagic
 {
@@ -233,6 +234,312 @@ namespace TorannMagic
                 GenPlace.TryPlaceThing(technoWeapon, caster.Position, caster.Map, ThingPlaceMode.Direct, null, null);
                 Job job = new Job(JobDefOf.Equip, technoWeapon);
                 caster.jobs.TryTakeOrderedJob(job, JobTag.ChangingApparel);
+
+            }
+            else
+            {
+                Log.Message("cannot copy target thing or unable to restore techno weapon");
+            }
+        }
+
+        public static void DoAction_PistolSpecCopy(Pawn caster, ThingWithComps thing)
+        {
+            CompAbilityUserMight comp = caster.TryGetComp<CompAbilityUserMight>();
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+
+            if (thing != null && thing.def != null && thing.def.IsRangedWeapon)
+            {
+                int pwrVal = comp.MightData.MightPowerSkill_PistolSpec.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PistolSpec_pwr").level;
+                ThingDef newThingDef = new ThingDef();
+                ThingDef newProjectileDef = new ThingDef();
+                if (comp.specWpnRegNum != -1)
+                {
+                    newThingDef = ThingDef.Named("TM_PistolSpec_Base" + comp.specWpnRegNum.ToString());
+                }
+                else
+                {
+                    int highNum = 0;
+                    if (ModOptions.Constants.GetPistolSpecCount() > highNum)
+                    {
+                        highNum = ModOptions.Constants.GetPistolSpecCount();
+                    }
+                    highNum++;
+                    newThingDef = ThingDef.Named("TM_PistolSpec_Base" + highNum.ToString());
+                    comp.specWpnRegNum = highNum;
+                    ModOptions.Constants.SetPistolSpecCount(highNum);
+                }
+                newThingDef.label = thing.def.label + "++";
+                newThingDef.description = thing.def.description + "\n\nThis weapon has improved stats in the hands of a specialist.";
+                newThingDef.graphic = thing.def.graphic;
+                newThingDef.graphicData = thing.def.graphicData;
+                newThingDef.graphicData.texPath = thing.def.graphicData.texPath;
+                newThingDef.equipmentType = EquipmentType.Primary;
+                newThingDef.uiIcon = thing.def.uiIcon;
+                newThingDef.soundInteract = thing.def.soundInteract;
+
+                newThingDef.SetStatBaseValue(StatDefOf.RangedWeapon_DamageMultiplier, thing.GetStatValue(StatDefOf.RangedWeapon_DamageMultiplier) * (1f + (.03f * pwrVal)));
+                newThingDef.SetStatBaseValue(StatDefOf.RangedWeapon_Cooldown, thing.GetStatValue(StatDefOf.RangedWeapon_Cooldown) * (1 - .025f * pwrVal));
+                newThingDef.SetStatBaseValue(StatDefOf.AccuracyTouch, thing.GetStatValue(StatDefOf.AccuracyTouch));
+                newThingDef.SetStatBaseValue(StatDefOf.AccuracyShort, thing.GetStatValue(StatDefOf.AccuracyShort) * (1 + .015f * pwrVal));
+                newThingDef.SetStatBaseValue(StatDefOf.AccuracyMedium, thing.GetStatValue(StatDefOf.AccuracyMedium) * (1 + .005f * pwrVal));
+                newThingDef.SetStatBaseValue(StatDefOf.AccuracyLong, thing.GetStatValue(StatDefOf.AccuracyLong));
+
+                newThingDef.Verbs.FirstOrDefault().defaultProjectile = thing.def.Verbs.FirstOrDefault().defaultProjectile;
+                newThingDef.Verbs.FirstOrDefault().range = thing.def.Verbs.FirstOrDefault().range * (1f + .01f * pwrVal);
+                newThingDef.Verbs.FirstOrDefault().warmupTime = thing.def.Verbs.FirstOrDefault().warmupTime * (1f - .025f * pwrVal);
+                newThingDef.Verbs.FirstOrDefault().burstShotCount = Mathf.RoundToInt(thing.def.Verbs.FirstOrDefault().burstShotCount * (1f + .02f * pwrVal));
+                newThingDef.Verbs.FirstOrDefault().ticksBetweenBurstShots = Mathf.RoundToInt(thing.def.Verbs.FirstOrDefault().ticksBetweenBurstShots * (1f - .03f * pwrVal));
+                newThingDef.Verbs.FirstOrDefault().soundCast = thing.def.Verbs.FirstOrDefault().soundCast;
+                ThingWithComps specWeapon = (ThingWithComps)ThingMaker.MakeThing(newThingDef, null);
+
+                try
+                {
+                    CompQuality twcq = specWeapon.TryGetComp<CompQuality>();
+                    QualityCategory qc = thing.TryGetComp<CompQuality>().Quality;
+                    twcq.SetQuality(qc, ArtGenerationContext.Colony);
+                }
+                catch (NullReferenceException ex)
+                {
+                    //ignore
+                }
+
+                try
+                {
+                    for (int i = 0; i < thing.AllComps.Count; i++)
+                    {
+
+                        if (specWeapon.AllComps[i] is CompEquippable)
+                        {
+                            //CompEquippable ce = thing.AllComps[i] as CompEquippable;
+                            //ce.PrimaryVerb.loadID = String.Concat(ce.PrimaryVerb.loadID, "1");
+
+                        }
+                        else
+                        {
+                            specWeapon.AllComps.AddDistinct(thing.AllComps[i]);
+                        }
+                    }
+                }
+                catch (NullReferenceException ex)
+                {
+                    //ignore
+                }
+                specWeapon.HitPoints = thing.HitPoints;
+                if (caster.equipment.Primary != null)
+                {
+                    caster.equipment.Primary.Destroy(DestroyMode.Vanish);
+                }
+                caster.equipment.AddEquipment(specWeapon);
+                //GenPlace.TryPlaceThing(technoWeapon, caster.Position, caster.Map, ThingPlaceMode.Direct, null, null);
+                //Job job = new Job(JobDefOf.Equip, technoWeapon);
+                //caster.jobs.TryTakeOrderedJob(job, JobTag.ChangingApparel);
+
+            }
+            else
+            {
+                Log.Message("cannot copy target thing or unable to restore techno weapon");
+            }
+        }
+
+        public static void DoAction_RifleSpecCopy(Pawn caster, ThingWithComps thing)
+        {
+            CompAbilityUserMight comp = caster.TryGetComp<CompAbilityUserMight>();
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+
+            if (thing != null && thing.def != null && thing.def.IsRangedWeapon)
+            {
+                int pwrVal = comp.MightData.MightPowerSkill_RifleSpec.FirstOrDefault((MightPowerSkill x) => x.label == "TM_RifleSpec_pwr").level;
+                ThingDef newThingDef = new ThingDef();
+                ThingDef newProjectileDef = new ThingDef();
+                if (comp.specWpnRegNum != -1)
+                {
+                    newThingDef = ThingDef.Named("TM_RifleSpec_Base" + comp.specWpnRegNum.ToString());
+                }
+                else
+                {
+                    int highNum = 0;
+                    if (ModOptions.Constants.GetRifleSpecCount() > highNum)
+                    {
+                        highNum = ModOptions.Constants.GetRifleSpecCount();
+                    }
+                    highNum++;
+                    newThingDef = ThingDef.Named("TM_RifleSpec_Base" + highNum.ToString());
+                    comp.specWpnRegNum = highNum;
+                    ModOptions.Constants.SetRifleSpecCount(highNum);
+                }
+                newThingDef.label = thing.def.label + "++";
+                newThingDef.description = thing.def.description + "\n\nThis weapon has improved stats in the hands of a specialist.";
+                newThingDef.graphic = thing.def.graphic;
+                newThingDef.graphicData = thing.def.graphicData;
+                newThingDef.graphicData.texPath = thing.def.graphicData.texPath;
+                newThingDef.equipmentType = EquipmentType.Primary;
+                newThingDef.uiIcon = thing.def.uiIcon;
+                newThingDef.soundInteract = thing.def.soundInteract;
+
+                newThingDef.SetStatBaseValue(StatDefOf.RangedWeapon_DamageMultiplier, thing.GetStatValue(StatDefOf.RangedWeapon_DamageMultiplier) * (1f + (.02f * pwrVal)));
+                newThingDef.SetStatBaseValue(StatDefOf.RangedWeapon_Cooldown, thing.GetStatValue(StatDefOf.RangedWeapon_Cooldown) * (1 - .01f * pwrVal));
+                newThingDef.SetStatBaseValue(StatDefOf.AccuracyTouch, thing.GetStatValue(StatDefOf.AccuracyTouch));
+                newThingDef.SetStatBaseValue(StatDefOf.AccuracyShort, thing.GetStatValue(StatDefOf.AccuracyShort) * (1 + .01f * pwrVal));
+                newThingDef.SetStatBaseValue(StatDefOf.AccuracyMedium, thing.GetStatValue(StatDefOf.AccuracyMedium) * (1 + .01f * pwrVal));
+                newThingDef.SetStatBaseValue(StatDefOf.AccuracyLong, thing.GetStatValue(StatDefOf.AccuracyLong) * (1 + .01f * pwrVal));
+
+                newThingDef.Verbs.FirstOrDefault().defaultProjectile = thing.def.Verbs.FirstOrDefault().defaultProjectile;
+                newThingDef.Verbs.FirstOrDefault().range = thing.def.Verbs.FirstOrDefault().range * (1f + .02f * pwrVal);
+                newThingDef.Verbs.FirstOrDefault().warmupTime = thing.def.Verbs.FirstOrDefault().warmupTime * (1f - .01f * pwrVal);
+                newThingDef.Verbs.FirstOrDefault().burstShotCount = Mathf.RoundToInt(thing.def.Verbs.FirstOrDefault().burstShotCount * (1f + .03f * pwrVal));
+                newThingDef.Verbs.FirstOrDefault().ticksBetweenBurstShots = Mathf.RoundToInt(thing.def.Verbs.FirstOrDefault().ticksBetweenBurstShots * (1f - .02f * pwrVal));
+                newThingDef.Verbs.FirstOrDefault().soundCast = thing.def.Verbs.FirstOrDefault().soundCast;
+                ThingWithComps specWeapon = (ThingWithComps)ThingMaker.MakeThing(newThingDef, null);
+
+                try
+                {
+                    CompQuality twcq = specWeapon.TryGetComp<CompQuality>();
+                    QualityCategory qc = thing.TryGetComp<CompQuality>().Quality;
+                    twcq.SetQuality(qc, ArtGenerationContext.Colony);
+                }
+                catch (NullReferenceException ex)
+                {
+                    //ignore
+                }
+
+                try
+                {
+                    for (int i = 0; i < thing.AllComps.Count; i++)
+                    {
+
+                        if (specWeapon.AllComps[i] is CompEquippable)
+                        {
+                            //CompEquippable ce = thing.AllComps[i] as CompEquippable;
+                            //ce.PrimaryVerb.loadID = String.Concat(ce.PrimaryVerb.loadID, "1");
+
+                        }
+                        else
+                        {
+                            specWeapon.AllComps.AddDistinct(thing.AllComps[i]);
+                        }
+                    }
+                }
+                catch (NullReferenceException ex)
+                {
+                    //ignore
+                }
+                specWeapon.HitPoints = thing.HitPoints;
+                if (caster.equipment.Primary != null)
+                {
+                    caster.equipment.Primary.Destroy(DestroyMode.Vanish);
+                }
+                caster.equipment.AddEquipment(specWeapon);
+                //GenPlace.TryPlaceThing(technoWeapon, caster.Position, caster.Map, ThingPlaceMode.Direct, null, null);
+                //Job job = new Job(JobDefOf.Equip, technoWeapon);
+                //caster.jobs.TryTakeOrderedJob(job, JobTag.ChangingApparel);
+
+            }
+            else
+            {
+                Log.Message("cannot copy target thing or unable to restore techno weapon");
+            }
+        }
+
+        //public static void DoAction_ShotgunSpecCopy(Pawn caster, ThingDef thingDef, int wpnQuality, ThingDef stuff = null)
+        public static void DoAction_ShotgunSpecCopy(Pawn caster, ThingWithComps thing)
+        {
+            CompAbilityUserMight comp = caster.TryGetComp<CompAbilityUserMight>();
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+
+            if (thing != null && thing.def != null && thing.def.IsRangedWeapon)
+            {
+                int pwrVal = comp.MightData.MightPowerSkill_ShotgunSpec.FirstOrDefault((MightPowerSkill x) => x.label == "TM_ShotgunSpec_pwr").level;
+
+                //ThingWithComps thing = (ThingWithComps)ThingMaker.MakeThing(thingDef, stuff);
+                //CompQuality cq = thing.TryGetComp<CompQuality>();
+                //if(cq != null)
+                //{
+                //    cq.SetQuality((QualityCategory)wpnQuality, ArtGenerationContext.Colony);
+                //}
+
+                ThingDef newThingDef = new ThingDef();
+                ThingDef newProjectileDef = new ThingDef();
+                if (comp.specWpnRegNum != -1)
+                {
+                    newThingDef = ThingDef.Named("TM_ShotgunSpec_Base" + comp.specWpnRegNum.ToString());
+                }
+                else
+                {
+                    int highNum = 0;
+                    if (ModOptions.Constants.GetShotgunSpecCount() > highNum)
+                    {
+                        highNum = ModOptions.Constants.GetShotgunSpecCount();
+                    }
+                    highNum++;
+                    newThingDef = ThingDef.Named("TM_ShotgunSpec_Base" + highNum.ToString());
+                    comp.specWpnRegNum = highNum;
+                    ModOptions.Constants.SetShotgunSpecCount(highNum);
+                }
+                newThingDef.label = thing.def.label + "++";
+                newThingDef.description = thing.def.description + "\n\nThis weapon has improved stats in the hands of a specialist.";
+                newThingDef.equipmentType = EquipmentType.Primary;
+                newThingDef.graphic = thing.def.graphic;
+                newThingDef.graphicData = thing.def.graphicData;
+                newThingDef.graphicData.texPath = thing.def.graphicData.texPath;
+                newThingDef.uiIcon = thing.def.uiIcon;
+                newThingDef.soundInteract = thing.def.soundInteract;
+
+                newThingDef.SetStatBaseValue(StatDefOf.RangedWeapon_DamageMultiplier, thing.GetStatValue(StatDefOf.RangedWeapon_DamageMultiplier) * (1f + (.02f * pwrVal)));
+                newThingDef.SetStatBaseValue(StatDefOf.RangedWeapon_Cooldown, thing.GetStatValue(StatDefOf.RangedWeapon_Cooldown) * (1 - .03f * pwrVal));
+                newThingDef.SetStatBaseValue(StatDefOf.AccuracyTouch, thing.GetStatValue(StatDefOf.AccuracyTouch) * (1 + .01f * pwrVal));
+                newThingDef.SetStatBaseValue(StatDefOf.AccuracyShort, thing.GetStatValue(StatDefOf.AccuracyShort) * (1 + .015f * pwrVal));
+                newThingDef.SetStatBaseValue(StatDefOf.AccuracyMedium, thing.GetStatValue(StatDefOf.AccuracyMedium) * (1 + .005f * pwrVal));
+                newThingDef.SetStatBaseValue(StatDefOf.AccuracyLong, thing.GetStatValue(StatDefOf.AccuracyLong));
+                                
+                newThingDef.Verbs.FirstOrDefault().defaultProjectile = thing.def.Verbs.FirstOrDefault().defaultProjectile;
+                newThingDef.Verbs.FirstOrDefault().range = thing.def.Verbs.FirstOrDefault().range * (1f + .01f * pwrVal);
+                newThingDef.Verbs.FirstOrDefault().warmupTime = thing.def.Verbs.FirstOrDefault().warmupTime * (1f - .03f * pwrVal);
+                newThingDef.Verbs.FirstOrDefault().burstShotCount = Mathf.RoundToInt(thing.def.Verbs.FirstOrDefault().burstShotCount);
+                newThingDef.Verbs.FirstOrDefault().ticksBetweenBurstShots = Mathf.RoundToInt(thing.def.Verbs.FirstOrDefault().ticksBetweenBurstShots * (1f - .02f * pwrVal));
+                newThingDef.Verbs.FirstOrDefault().soundCast = thing.def.Verbs.FirstOrDefault().soundCast;
+                ThingWithComps specWeapon = (ThingWithComps)ThingMaker.MakeThing(newThingDef, null);
+
+                try
+                {
+                    CompQuality twcq = specWeapon.TryGetComp<CompQuality>();
+                    QualityCategory qc = thing.TryGetComp<CompQuality>().Quality;
+                    twcq.SetQuality(qc, ArtGenerationContext.Colony);
+                }
+                catch (NullReferenceException ex)
+                {
+                    //ignore
+                }
+
+                try
+                {
+                    for (int i = 0; i < thing.AllComps.Count; i++)
+                    {
+                        
+                        if(specWeapon.AllComps[i] is CompEquippable)
+                        {
+                            //CompEquippable ce = thing.AllComps[i] as CompEquippable;
+                            //ce.PrimaryVerb.loadID = String.Concat(ce.PrimaryVerb.loadID, "1");
+                            
+                        }
+                        else
+                        {
+                            specWeapon.AllComps.AddDistinct(thing.AllComps[i]);
+                        }
+                    }
+                }
+                catch (NullReferenceException ex)
+                {
+                    //ignore
+                }
+                specWeapon.HitPoints = thing.HitPoints;
+                if(caster.equipment.Primary != null)
+                {
+                    caster.equipment.Primary.Destroy(DestroyMode.Vanish);
+                }
+                caster.equipment.AddEquipment(specWeapon);
+                //GenPlace.TryPlaceThing(technoWeapon, caster.Position, caster.Map, ThingPlaceMode.Direct, null, null);
+                //Job job = new Job(JobDefOf.Equip, technoWeapon);
+                //caster.jobs.TryTakeOrderedJob(job, JobTag.ChangingApparel);
 
             }
             else
@@ -1238,6 +1545,55 @@ namespace TorannMagic
                         thingList[i].Destroy(DestroyMode.Vanish);
                         i--;
                     }
+                }
+            }
+        }
+
+        public static void DisplayShieldHit(Pawn shieldedPawn, DamageInfo dinfo)
+        {
+            DisplayShield(shieldedPawn, dinfo);
+        }
+
+        private static void DisplayShield(Pawn shieldedPawn, DamageInfo dinfo)
+        {
+            Vector3 impactAngleVect;
+            SoundDefOf.EnergyShield_AbsorbDamage.PlayOneShot(new TargetInfo(shieldedPawn.Position, shieldedPawn.Map, false));
+            impactAngleVect = Vector3Utility.HorizontalVectorFromAngle(dinfo.Angle);
+            Vector3 loc = shieldedPawn.TrueCenter() + impactAngleVect.RotatedBy(180f) * 0.5f;
+            float num = Mathf.Min(10f, 2f + (float)dinfo.Amount / 10f);
+            MoteMaker.MakeStaticMote(loc, shieldedPawn.Map, ThingDefOf.Mote_ExplosionFlash, num);
+            int num2 = (int)num;
+            for (int i = 0; i < num2; i++)
+            {
+                MoteMaker.ThrowDustPuff(loc, shieldedPawn.Map, Rand.Range(0.8f, 1.2f));
+                DrawShieldHit(shieldedPawn, dinfo.Amount, impactAngleVect);
+            }
+        }
+
+        private static void DrawShieldHit(Pawn shieldedPawn, float magnitude, Vector3 impactAngleVect)
+        {
+            bool flag = !shieldedPawn.Dead && !shieldedPawn.Downed;
+            if (flag)
+            {
+                float num = Mathf.Lerp(1.2f, 1.55f, magnitude);
+                Vector3 vector = shieldedPawn.Drawer.DrawPos;
+                vector.y = Altitudes.AltitudeFor(AltitudeLayer.MoteOverhead);
+
+                float angle = (float)Rand.Range(0, 360);
+                Vector3 s = new Vector3(1.7f, 1f, 1.7f);
+                Matrix4x4 matrix = default(Matrix4x4);
+                matrix.SetTRS(vector, Quaternion.AngleAxis(angle, Vector3.up), s);
+                if (shieldedPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffShield) || shieldedPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HTLShieldHD))
+                {
+                    Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.whiteShieldMat, 0);
+                }
+                else if (shieldedPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DemonScornHD) || shieldedPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DemonScornHD_I) || shieldedPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DemonScornHD_II) || shieldedPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_DemonScornHD_III))
+                {
+                    Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.demonShieldMat, 0);
+                }
+                else
+                {
+                    Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.manaShieldMat, 0);
                 }
             }
         }

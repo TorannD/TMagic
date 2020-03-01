@@ -7,8 +7,27 @@
     <stackLimit>3</stackLimit>
   </ThoughtDef>
   
-  <!--=================== executions and prisoner deaths ===================-->
+  <ThoughtDef Name="TM_MemoryOrder" Abstract="True">
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <stackedEffectMultiplier>.8</stackedEffectMultiplier>
+    <stackLimit>8</stackLimit>
+  </ThoughtDef>
+  
+  <!--=================== ah, the memories ===================-->
 
+  <ThoughtDef ParentName="TM_MemoryOrder">
+    <defName>TM_TakingOrdersTD</defName>
+    <durationDays>2</durationDays>
+    <stages>
+      <li>
+        <label>taking orders</label>
+        <!-- generic penalty -->
+        <description>Another pawn gave me orders. This could become annoying.</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+	  </stages>
+  </ThoughtDef>
+  
   <ThoughtDef ParentName="TM_Memory">
     <defName>RangerSoldBondedPet</defName>
     <durationDays>10</durationDays>
@@ -16,7 +35,7 @@
       <li>
         <label>sold bonded animal</label>
         <!-- generic penalty -->
-        <description>I allowed my animal companion to be sold into slavery, I won't soon be forgiven by the animal kingdom. (animal bonding disabled while this mood effect is active)</description>
+        <description>I allowed my animal companion to be sold into slavery. I won't soon be forgiven by the animal kingdom. (animal bonding disabled while this mood effect is active)</description>
         <baseMoodEffect>-24</baseMoodEffect>
       </li>
 	  </stages>

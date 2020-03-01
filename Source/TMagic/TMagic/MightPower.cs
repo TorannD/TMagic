@@ -199,6 +199,11 @@ namespace TorannMagic
         {
             this.level = 0;
             this.TMabilityDefs = newAbilityDefs;
+
+            if (this.abilityDef == TorannMagicDefOf.TM_PistolSpec || this.abilityDef == TorannMagicDefOf.TM_RifleSpec || this.abilityDef == TorannMagicDefOf.TM_ShotgunSpec)
+            {
+                this.learnCost = 0;
+            }
         }
 
         public void ExposeData()

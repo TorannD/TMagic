@@ -141,10 +141,11 @@ namespace TorannMagic.AutoCast
             LocalTargetInfo retainTargetC = caster.CurJob.targetC;
             Pawn p = caster;
             Thing cT = carriedThing;
-            //if (cT != null && cT.stackCount != 1)
-            //{
-            //    retainCount = cT.stackCount;
-            //}
+            if (cT != null && cT.stackCount != retainJobCount && retainJobCount == 0)
+            {
+                //Log.Message("stack count " + cT.stackCount + " rjob count " + retainJobCount + " job count " + caster.CurJob.count);
+                retainJobCount = cT.stackCount;
+            }
             Map map = caster.Map;
             IntVec3 casterCell = caster.Position;
             bool selectCaster = false;
@@ -304,6 +305,66 @@ namespace TorannMagic.AutoCast
                     job.endIfCantShootTargetFromCurPos = true;
                     caster.jobs.TryTakeOrderedJob(job);
                     success = true;
+                }
+            }
+        }
+    }
+
+    public static class HealSelf
+    {
+        public static void Evaluate(CompAbilityUserMight mightComp, TMAbilityDef abilitydef, PawnAbility ability, MightPower power, out bool success)
+        {
+            success = false;
+            if (mightComp != null)
+            {
+                EvaluateMinSeverity(mightComp, abilitydef, ability, power, 0, out success);
+            }
+        }
+
+        public static void EvaluateMinSeverity(CompAbilityUserMight casterComp, TMAbilityDef abilitydef, PawnAbility ability, MightPower power, float minSeverity, out bool success)
+        {
+            success = false;
+            if (casterComp.Stamina.CurLevel >= casterComp.ActualStaminaCost(abilitydef) && ability.CooldownTicksLeft <= 0)
+            {
+                Pawn caster = casterComp.Pawn;
+                LocalTargetInfo jobTarget = casterComp.Pawn;
+                if (jobTarget != null && jobTarget.Thing != null && caster.health.HasHediffsNeedingTend(false))
+                {
+                    if (minSeverity != 0)
+                    {
+                        float injurySeverity = 0f;
+                        using (IEnumerator<BodyPartRecord> enumerator = caster.health.hediffSet.GetInjuredParts().GetEnumerator())
+                        {
+                            while (enumerator.MoveNext())
+                            {
+                                BodyPartRecord rec = enumerator.Current;
+                                IEnumerable<Hediff_Injury> arg_BB_0 = caster.health.hediffSet.GetHediffs<Hediff_Injury>();
+                                Func<Hediff_Injury, bool> arg_BB_1;
+                                arg_BB_1 = ((Hediff_Injury injury) => injury.Part == rec);
+
+                                foreach (Hediff_Injury current in arg_BB_0.Where(arg_BB_1))
+                                {
+                                    bool flag5 = current.CanHealNaturally() && !current.IsPermanent();
+                                    if (flag5)
+                                    {
+                                        injurySeverity += current.Severity;
+                                    }
+                                }
+                            }
+                        }
+                        if(injurySeverity >= minSeverity)
+                        {
+                            Job job = ability.GetJob(AbilityContext.AI, jobTarget);
+                            caster.jobs.TryTakeOrderedJob(job);
+                            success = true;
+                        }                        
+                    }
+                    else
+                    {
+                        Job job = ability.GetJob(AbilityContext.AI, jobTarget);
+                        caster.jobs.TryTakeOrderedJob(job);
+                        success = true;
+                    }                    
                 }
             }
         }
@@ -916,10 +977,11 @@ namespace TorannMagic.AutoCast
             LocalTargetInfo retainTargetC = caster.CurJob.targetC;
             Pawn p = caster;
             Thing cT = carriedThing;
-            //if (cT != null && cT.stackCount != 1)
-            //{
-            //    retainCount = cT.stackCount;
-            //}
+            if (cT != null && cT.stackCount != retainJobCount && retainJobCount == 0)
+            {
+                //Log.Message("stack count " + cT.stackCount + " rjob count " + retainJobCount + " job count " + caster.CurJob.count);
+                retainJobCount = cT.stackCount;
+            }
             Map map = caster.Map;
             IntVec3 casterCell = caster.Position;
             bool selectCaster = false;
@@ -1068,10 +1130,11 @@ namespace TorannMagic.AutoCast
             LocalTargetInfo retainTargetC = caster.CurJob.targetC;
             Pawn p = caster;
             Thing cT = carriedThing;
-            //if (cT != null && cT.stackCount != 1)
-            //{
-            //    retainCount = cT.stackCount;
-            //}
+            if (cT != null && cT.stackCount != retainJobCount && retainJobCount == 0)
+            {
+                //Log.Message("stack count " + cT.stackCount + " rjob count " + retainJobCount + " job count " + caster.CurJob.count);
+                retainJobCount = cT.stackCount;
+            }
             Map map = caster.Map;
             IntVec3 casterCell = caster.Position;
             bool selectCaster = false;

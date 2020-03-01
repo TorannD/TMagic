@@ -95,6 +95,9 @@ namespace TorannMagic
 
             public static DamageDef TM_ChiFist;
 
+            public static DamageDef TM_CQC;
+            public static DamageDef TM_BreachingCharge;
+
         }
     }
 }

@@ -72,10 +72,26 @@ namespace TorannMagic
                         ), MessageTypeDefOf.RejectInput);
                     }
                 }
-                else if (parent.def.defName == "BookOfMonk")
+                else if (parent.def == TorannMagicDefOf.BookOfMonk)
                 {
                     FixTrait(user, user.story.traits.allTraits);
                     user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Monk, 4, false));
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def == TorannMagicDefOf.BookOfCommander)
+                {
+                    FixTrait(user, user.story.traits.allTraits);
+                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Commander, 4, false));
+                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                }
+                else if (parent.def == TorannMagicDefOf.BookOfSuperSoldier)
+                {
+                    FixTrait(user, user.story.traits.allTraits);
+                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_SuperSoldier, 4, false));
+                    if(user.health != null && user.health.hediffSet != null)
+                    {
+                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_SS_SerumHD, .1f);
+                    }
                     this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
                 else
@@ -83,6 +99,14 @@ namespace TorannMagic
                     Messages.Message("NotCombatBook".Translate(), MessageTypeDefOf.RejectInput);
                 }
 
+            }
+            else if(parent.def == TorannMagicDefOf.BookOfSuperSoldier)
+            {
+                if (user.health != null && user.health.hediffSet != null)
+                {
+                    HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_SS_SerumHD, .1f);
+                }
+                this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
             }
             else
             {
