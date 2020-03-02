@@ -73,7 +73,7 @@ namespace TorannMagic
             this.abilityUser = (abilityData.Pawn.AllComps.FirstOrDefault((ThingComp x) => x.GetType() == abilityData.AbilityClass) as CompAbilityUserMight);
         }
 
-        public MightAbility(Pawn user, AbilityDef pdef) : base(user, pdef)
+        public MightAbility(Pawn user, AbilityUser.AbilityDef pdef) : base(user, pdef)
 		{
 
         }

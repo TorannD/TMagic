@@ -100,6 +100,7 @@
     <defName>ManaPotionHigh</defName>
     <hediffClass>HediffWithComps</hediffClass>
     <label>arcane high</label>
+	<description>Consciousness is raised by consuming liquid mana.</description>
     <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
     <maxSeverity>1.0</maxSeverity>
@@ -163,6 +164,7 @@
   <HediffDef ParentName="DrugToleranceBase">
     <defName>ManaPotionTolerance</defName>
     <label>mana potion tolerance</label>
+	<description>Natural adjustment to normalize the effects of consuming liquid mana.</description>
     <comps>
       <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-0.025</severityPerDay>
@@ -187,6 +189,7 @@
     <defName>ManaPotionAddiction</defName>
     <hediffClass>Hediff_Addiction</hediffClass>
     <label>mana potion addiction</label>
+	<description>The urge to consume mana potions has developed into a need.</description>
     <causesNeed>Chemical_ManaPotion</causesNeed>
     <comps>
       <li Class="HediffCompProperties_SeverityPerDay">

@@ -309,7 +309,7 @@
 			<ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>Launcher_DefensePylon</turretGunDef>
       <turretBurstCooldownTime>1.6</turretBurstCooldownTime>
-      <turretTopGraphicPath>Other/defense_pylon_top</turretTopGraphicPath>
+      <!-- <turretTopGraphicPath>Other/defense_pylon_top</turretTopGraphicPath> -->
 	  <expandHomeArea>false</expandHomeArea>
 	  <deconstructible>false</deconstructible>
 	  <claimable>false</claimable>
@@ -431,7 +431,7 @@
 			<ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>Launcher_DefensePylon_I</turretGunDef>
       <turretBurstCooldownTime>1.8</turretBurstCooldownTime>
-      <turretTopGraphicPath>Other/defense_pylon_top</turretTopGraphicPath>
+      <!-- <turretTopGraphicPath>Other/defense_pylon_top</turretTopGraphicPath> -->
 	  <expandHomeArea>false</expandHomeArea>
 	  <deconstructible>false</deconstructible>
 	  <claimable>false</claimable>
@@ -540,7 +540,7 @@
 			<ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>Launcher_DefensePylon_II</turretGunDef>
       <turretBurstCooldownTime>2.2</turretBurstCooldownTime>
-      <turretTopGraphicPath>Other/defense_pylon_top</turretTopGraphicPath>
+      <!-- <turretTopGraphicPath>Other/defense_pylon_top</turretTopGraphicPath> -->
 	  <expandHomeArea>false</expandHomeArea>
 	  <deconstructible>false</deconstructible>
 	  <claimable>false</claimable>
@@ -648,7 +648,7 @@
 			<ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>Launcher_DefensePylon_III</turretGunDef>
       <turretBurstCooldownTime>2.4</turretBurstCooldownTime>
-      <turretTopGraphicPath>Other/defense_pylon_top</turretTopGraphicPath>
+      <!-- <turretTopGraphicPath>Other/defense_pylon_top</turretTopGraphicPath> -->
 	  <expandHomeArea>false</expandHomeArea>
 	  <deconstructible>false</deconstructible>
 	  <claimable>false</claimable>
@@ -839,7 +839,7 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>Gun_Mark-IV</turretGunDef>
       <turretBurstCooldownTime>4.5</turretBurstCooldownTime>
-      <turretTopGraphicPath>Other/TechnoTurret1</turretTopGraphicPath>
+      <!-- <turretTopGraphicPath>Other/TechnoTurret1</turretTopGraphicPath> -->
 	  <turretTopDrawSize>1.8</turretTopDrawSize>
 	  <expandHomeArea>false</expandHomeArea>
 	  <deconstructible>false</deconstructible>
@@ -859,7 +859,7 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>Gun_Mark-IV</turretGunDef>
       <turretBurstCooldownTime>4.5</turretBurstCooldownTime>
-      <turretTopGraphicPath>Other/TechnoTurret_RL</turretTopGraphicPath>
+      <!-- <turretTopGraphicPath>Other/TechnoTurret_RL</turretTopGraphicPath> -->
 	  <turretTopDrawSize>1.8</turretTopDrawSize>
 	  <expandHomeArea>false</expandHomeArea>
 	  <deconstructible>false</deconstructible>
@@ -875,7 +875,7 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>Gun_Mark-IV</turretGunDef>
       <turretBurstCooldownTime>4.5</turretBurstCooldownTime>
-      <turretTopGraphicPath>Other/TechnoTurret_RL_MTR</turretTopGraphicPath>
+      <!-- <turretTopGraphicPath>Other/TechnoTurret_RL_MTR</turretTopGraphicPath> -->
 	  <turretTopDrawSize>1.8</turretTopDrawSize>
 	  <expandHomeArea>false</expandHomeArea>
 	  <deconstructible>false</deconstructible>

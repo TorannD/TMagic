@@ -9,7 +9,7 @@
     <description>Cut and refine raw magicyte into an enchanting gem able to maintain reserves of mana.</description>
     <jobString>cut minor gem of holding</jobString>
 <!-- 	<researchPrerequisite>TechPlasteelCrafting</researchPrerequisite> -->
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>2000</workAmount>
@@ -51,7 +51,7 @@
     <label>gem of holding</label>
     <description>Cut and refine magicyte into an enchanting gem able to maintain reserves of mana.</description>
     <jobString>cut gem of holding</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>4000</workAmount>
@@ -94,7 +94,7 @@
     <label>major gem of holding</label>
     <description>Cut and refine magicyte into an enchanting gem able to maintain reserves of mana.</description>
     <jobString>cut major gem of holding</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>8000</workAmount>
@@ -138,7 +138,7 @@
     <description>Cut and refine raw raw magicyte into an enchanting gem able to reduce the time before an ability can be used again.</description>
     <jobString>cut minor gem of acceleration</jobString>
 <!-- 	<researchPrerequisite>TechPlasteelCrafting</researchPrerequisite> -->
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>2000</workAmount>
@@ -180,7 +180,7 @@
     <label>gem of acceleration</label>
     <description>Cut and refine magicyte into an enchanting gem able to reduce the time before an ability can be used again.</description>
     <jobString>cut gem of acceleration</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>4000</workAmount>
@@ -223,7 +223,7 @@
     <label>major gem of acceleration</label>
     <description>Cut and refine magicyte into an enchanting gem able to reduce the time before an ability can be used again.</description>
     <jobString>cut major gem of acceleration</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>8000</workAmount>
@@ -267,7 +267,7 @@
     <description>Cut and refine raw magicyte into an enchanting gem able to reduce the amount of mana required to use an ability.</description>
     <jobString>cut minor gem of conservation</jobString>
 <!-- 	<researchPrerequisite>TechPlasteelCrafting</researchPrerequisite> -->
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>2000</workAmount>
@@ -309,7 +309,7 @@
     <label>gem of conservation</label>
     <description>Cut and refine magicyte into an enchanting gem able to reduce the amount of mana required to use an ability.</description>
     <jobString>cut gem of conservation</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>4000</workAmount>
@@ -352,7 +352,7 @@
     <label>major gem of conservation</label>
     <description>Cut and refine magicyte into an enchanting gem able to reduce the amount of mana required to use an ability.</description>
     <jobString>cut major gem of conservation</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>8000</workAmount>
@@ -396,7 +396,7 @@
     <description>Cut and refine raw magicyte into an enchanting gem able to increase the rate mana is gained.</description>
     <jobString>cut minor gem of regeneration</jobString>
 <!-- 	<researchPrerequisite>TechPlasteelCrafting</researchPrerequisite> -->
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>2000</workAmount>
@@ -438,7 +438,7 @@
     <label>gem of regeneration</label>
     <description>Cut and refine magicyte into an enchanting gem able to increase the rate mana is gained.</description>
     <jobString>cut gem of regeneration</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>4000</workAmount>
@@ -481,7 +481,7 @@
     <label>major gem of regeneration</label>
     <description>Cut and refine magicyte into an enchanting gem able to increase the rate mana is gained.</description>
     <jobString>cut major gem of regeneration</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>8000</workAmount>
@@ -526,7 +526,7 @@
     <description>Cut and refine raw magicyte into an enchanting gem able to increase experience gained when using abilities.</description>
     <jobString>cut minor gem of learning</jobString>
 <!-- 	<researchPrerequisite>TechPlasteelCrafting</researchPrerequisite> -->
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>2000</workAmount>
@@ -568,7 +568,7 @@
     <label>gem of learning</label>
     <description>Cut and refine magicyte into an enchanting gem able to increase experience gained when using abilities.</description>
     <jobString>cut gem of learning</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>4000</workAmount>
@@ -611,7 +611,7 @@
     <label>major gem of learning</label>
     <description>Cut and refine magicyte into an enchanting gem able to increase experience gained when using abilities.</description>
     <jobString>cut major gem of learning</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>8000</workAmount>
@@ -655,7 +655,7 @@
     <description>Cut and refine raw magicyte into an enchanting gem able to resist the effects of magical attacks.</description>
     <jobString>cut minor gem of resistance</jobString>
 <!-- 	<researchPrerequisite>TechPlasteelCrafting</researchPrerequisite> -->
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>2000</workAmount>
@@ -697,7 +697,7 @@
     <label>gem of resistance</label>
     <description>Cut and refine magicyte into an enchanting gem able to resist the effects of magical attacks.</description>
     <jobString>cut gem of resistance</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>4000</workAmount>
@@ -740,7 +740,7 @@
     <label>major gem of resistance</label>
     <description>Cut and refine magicyte into an enchanting gem able to resist the effects of magical attacks.</description>
     <jobString>cut major gem of resistance</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>8000</workAmount>
@@ -785,7 +785,7 @@
     <description>Cut and refine raw magicyte into an enchanting gem able to increase the force of magical attacks.</description>
     <jobString>cut minor gem of force</jobString>
 <!-- 	<researchPrerequisite>TechPlasteelCrafting</researchPrerequisite> -->
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>2000</workAmount>
@@ -827,7 +827,7 @@
     <label>gem of force</label>
     <description>Cut and refine magicyte into an enchanting gem able to increase the force of magical attacks.</description>
     <jobString>cut gem of force</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>4000</workAmount>
@@ -870,7 +870,7 @@
     <label>major gem of force</label>
     <description>Cut and refine magicyte into an enchanting gem able to increase the force of magical attacks.</description>
     <jobString>cut major gem of force</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>8000</workAmount>
@@ -914,7 +914,7 @@
     <description>Cut and refine raw magicyte into an enchanting gem able to harness all manner of enchantments.</description>
     <jobString>cut minor gem of wonder</jobString>
 <!-- 	<researchPrerequisite>TechPlasteelCrafting</researchPrerequisite> -->
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>6500</workAmount>
@@ -957,7 +957,7 @@
     <label>gem of wonder</label>
     <description>Cut and refine magicyte into an enchanting gem able to harness all manner of enchantments.</description>
     <jobString>cut gem of wonder</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>20000</workAmount>
@@ -1001,7 +1001,7 @@
     <label>major gem of wonder</label>
     <description>Cut and refine magicyte into an enchanting gem able to harness all manner of enchantments.</description>
     <jobString>cut major gem of wonder</jobString>
-    <workSpeedStat>SmithingSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Smelt</effectWorking>
     <soundWorking>Recipe_Machining</soundWorking>
     <workAmount>30000</workAmount>

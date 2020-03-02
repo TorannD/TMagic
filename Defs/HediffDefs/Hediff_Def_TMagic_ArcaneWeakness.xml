@@ -6,6 +6,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.55, 0.05, 1)</defaultLabelColor>
     <label>arcane weakness</label>
+	<description>Arcane Weakness is a byproduct of casting magical abilities. Minor abilities with a mana cost less than 25 will not incur Arcane Weakness. The amount of Arcane Weakness that will affect a mage is relative to the mana cost of the ability.</description>
 <!--     <lethalSeverity>40</lethalSeverity> -->
 	<tendable>false</tendable>
 	<makesSickThought>true</makesSickThought>

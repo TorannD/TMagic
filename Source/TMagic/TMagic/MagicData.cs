@@ -215,123 +215,123 @@ namespace TorannMagic
                 {
                     this.magicPowerStandalone = new List<MagicPower>
                     {
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_TransferMana
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_SiphonMana
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_SpellMending
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_CauterizeWound
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_TeachMagic
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_EnchantedAura
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_MechaniteReprogramming
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_DirtDevil
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Heater
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Cooler
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_PowerNode
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Sunlight
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_DryGround
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_WetGround
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_ChargeBattery
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_SmokeCloud
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Extinguish
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_EMP
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_ManaShield
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_ArcaneBarrier
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Flight
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_FertileLands
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Blur
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_BlankMind
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_ArcaneBolt
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_LightningTrap
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Invisibility
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_BriarPatch
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_TimeMark
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_MageLight
                         }),
@@ -350,11 +350,11 @@ namespace TorannMagic
                 {
                     this.magicPowerW = new List<MagicPower>
                     {
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_WandererCraft
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Cantrips
                         }),
@@ -407,26 +407,26 @@ namespace TorannMagic
                 {
                     this.magicPowerIF = new List<MagicPower>
                     {
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_RayofHope,
                             TorannMagicDefOf.TM_RayofHope_I,
                             TorannMagicDefOf.TM_RayofHope_II,
                             TorannMagicDefOf.TM_RayofHope_III
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Firebolt
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Fireclaw
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Fireball
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Firestorm
                         }),
@@ -527,33 +527,33 @@ namespace TorannMagic
                 {
                     this.magicPowerHoF = new List<MagicPower>
                     {
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Soothe,
                             TorannMagicDefOf.TM_Soothe_I,
                             TorannMagicDefOf.TM_Soothe_II,
                             TorannMagicDefOf.TM_Soothe_III
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Rainmaker
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Icebolt
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_FrostRay,
                             TorannMagicDefOf.TM_FrostRay_I,
                             TorannMagicDefOf.TM_FrostRay_II,
                             TorannMagicDefOf.TM_FrostRay_III
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Snowball
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Blizzard
                         }),
@@ -668,26 +668,26 @@ namespace TorannMagic
                 {
                     this.magicPowerSB = new List<MagicPower>
                     {
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_AMP,
                             TorannMagicDefOf.TM_AMP_I,
                             TorannMagicDefOf.TM_AMP_II,
                             TorannMagicDefOf.TM_AMP_III
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_LightningBolt
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_LightningCloud
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_LightningStorm
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_EyeOfTheStorm
                         }),
@@ -789,14 +789,14 @@ namespace TorannMagic
                 {
                     this.magicPowerA = new List<MagicPower>
                     {
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Shadow,
                             TorannMagicDefOf.TM_Shadow_I,
                             TorannMagicDefOf.TM_Shadow_II,
                             TorannMagicDefOf.TM_Shadow_III
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_MagicMissile,
                             TorannMagicDefOf.TM_MagicMissile_I,
@@ -804,25 +804,25 @@ namespace TorannMagic
                             TorannMagicDefOf.TM_MagicMissile_III
 
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Blink,
                             TorannMagicDefOf.TM_Blink_I,
                             TorannMagicDefOf.TM_Blink_II,
                             TorannMagicDefOf.TM_Blink_III
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Summon,
                             TorannMagicDefOf.TM_Summon_I,
                             TorannMagicDefOf.TM_Summon_II,
                             TorannMagicDefOf.TM_Summon_III
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Teleport
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_FoldReality
                         }),
@@ -933,26 +933,26 @@ namespace TorannMagic
                 {
                     this.magicPowerP = new List<MagicPower>
                     {
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Heal
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Shield,
                             TorannMagicDefOf.TM_Shield_I,
                             TorannMagicDefOf.TM_Shield_II,
                             TorannMagicDefOf.TM_Shield_III
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_ValiantCharge
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Overwhelm
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_HolyWrath
                         }),
@@ -1055,23 +1055,23 @@ namespace TorannMagic
                 {
                     this.magicPowerS = new List<MagicPower>
                     {
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_SummonMinion
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_SummonPylon
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_SummonExplosive
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_SummonElemental
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_SummonPoppi
                         }),
@@ -1176,26 +1176,26 @@ namespace TorannMagic
                 {
                     this.magicPowerD = new List<MagicPower>
                     {
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Poison
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_SootheAnimal,
                             TorannMagicDefOf.TM_SootheAnimal_I,
                             TorannMagicDefOf.TM_SootheAnimal_II,
                             TorannMagicDefOf.TM_SootheAnimal_III
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Regenerate
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_CureDisease
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_RegrowLimb
                         }),
@@ -1296,40 +1296,40 @@ namespace TorannMagic
                 {
                     this.magicPowerN = new List<MagicPower>
                     {
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_RaiseUndead
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_DeathMark,
                             TorannMagicDefOf.TM_DeathMark_I,
                             TorannMagicDefOf.TM_DeathMark_II,
                             TorannMagicDefOf.TM_DeathMark_III
                         }),                        
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_FogOfTorment
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_ConsumeCorpse,
                             TorannMagicDefOf.TM_ConsumeCorpse_I,
                             TorannMagicDefOf.TM_ConsumeCorpse_II,
                             TorannMagicDefOf.TM_ConsumeCorpse_III
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_CorpseExplosion,
                             TorannMagicDefOf.TM_CorpseExplosion_I,
                             TorannMagicDefOf.TM_CorpseExplosion_II,
                             TorannMagicDefOf.TM_CorpseExplosion_III
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_LichForm
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_DeathBolt,
                             TorannMagicDefOf.TM_DeathBolt_I,
@@ -1467,29 +1467,29 @@ namespace TorannMagic
                 {
                     this.magicPowerPR = new List<MagicPower>
                     {
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_AdvancedHeal
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Purify
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_HealingCircle,
                             TorannMagicDefOf.TM_HealingCircle_I,
                             TorannMagicDefOf.TM_HealingCircle_II,
                             TorannMagicDefOf.TM_HealingCircle_III
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_BestowMight,
                             TorannMagicDefOf.TM_BestowMight_I,
                             TorannMagicDefOf.TM_BestowMight_II,
                             TorannMagicDefOf.TM_BestowMight_III
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Resurrection
                         }),
@@ -1590,26 +1590,26 @@ namespace TorannMagic
                 {
                     this.magicPowerB = new List<MagicPower>
                     {
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_BardTraining
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Entertain
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Inspire
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Lullaby,
                             TorannMagicDefOf.TM_Lullaby_I,
                             TorannMagicDefOf.TM_Lullaby_II,
                             TorannMagicDefOf.TM_Lullaby_III
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_BattleHymn
                         }),
@@ -1709,33 +1709,33 @@ namespace TorannMagic
                 {
                     this.magicPowerWD = new List<MagicPower>
                     {
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_SoulBond
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_ShadowBolt,
                             TorannMagicDefOf.TM_ShadowBolt_I,
                             TorannMagicDefOf.TM_ShadowBolt_II,
                             TorannMagicDefOf.TM_ShadowBolt_III
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Dominate
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Repulsion,
                             TorannMagicDefOf.TM_Repulsion_I,
                             TorannMagicDefOf.TM_Repulsion_II,
                             TorannMagicDefOf.TM_Repulsion_III
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_PsychicShock
                         }),
-                        //new MagicPower(new List<AbilityDef>
+                        //new MagicPower(new List<AbilityUser.AbilityDef>
                         //{
                         //    TorannMagicDefOf.TM_SummonDemon
                         //}),
@@ -1856,33 +1856,33 @@ namespace TorannMagic
                 {
                     this.magicPowerSD = new List<MagicPower>
                     {
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_SoulBond
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_ShadowBolt,
                             TorannMagicDefOf.TM_ShadowBolt_I,
                             TorannMagicDefOf.TM_ShadowBolt_II,
                             TorannMagicDefOf.TM_ShadowBolt_III
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Dominate
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Attraction,
                             TorannMagicDefOf.TM_Attraction_I,
                             TorannMagicDefOf.TM_Attraction_II,
                             TorannMagicDefOf.TM_Attraction_III
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Scorn
                         }),
-                        //new MagicPower(new List<AbilityDef>
+                        //new MagicPower(new List<AbilityUser.AbilityDef>
                         //{
                         //    TorannMagicDefOf.TM_SummonDemon
                         //}),
@@ -1935,30 +1935,30 @@ namespace TorannMagic
                 {
                     this.magicPowerG = new List<MagicPower>
                     {
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Stoneskin
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Encase,
                             TorannMagicDefOf.TM_Encase_I,
                             TorannMagicDefOf.TM_Encase_II,
                             TorannMagicDefOf.TM_Encase_III
                         }),                        
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_EarthSprites
                         }),                        
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_EarthernHammer
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Sentinel
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Meteor,
                             TorannMagicDefOf.TM_Meteor_I,
@@ -2082,31 +2082,31 @@ namespace TorannMagic
                 {
                     this.magicPowerT = new List<MagicPower>
                     {
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_TechnoBit
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_TechnoTurret
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_TechnoWeapon
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_TechnoShield  
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Overdrive
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {                            
                             TorannMagicDefOf.TM_Sabotage
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_OrbitalStrike,
                             TorannMagicDefOf.TM_OrbitalStrike_I,
@@ -2247,30 +2247,30 @@ namespace TorannMagic
                 {
                     this.magicPowerBM = new List<MagicPower>
                     {
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_BloodGift
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_IgniteBlood
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_BloodForBlood
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_BloodShield
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Rend,
                             TorannMagicDefOf.TM_Rend_I,
                             TorannMagicDefOf.TM_Rend_II,
                             TorannMagicDefOf.TM_Rend_III
                         }),                        
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_BloodMoon,
                             TorannMagicDefOf.TM_BloodMoon_I,
@@ -2395,30 +2395,30 @@ namespace TorannMagic
                 {
                     this.magicPowerE = new List<MagicPower>
                     {
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_EnchantedBody
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Transmutate
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_EnchanterStone
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_EnchantWeapon
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Polymorph,
                             TorannMagicDefOf.TM_Polymorph_I,
                             TorannMagicDefOf.TM_Polymorph_II,
                             TorannMagicDefOf.TM_Polymorph_III
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Shapeshift
                         }),
@@ -2538,30 +2538,30 @@ namespace TorannMagic
                 {
                     this.magicPowerC = new List<MagicPower>
                     {
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Prediction
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_AlterFate
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_AccelerateTime
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_ReverseTime
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_ChronostaticField,
                             TorannMagicDefOf.TM_ChronostaticField_I,
                             TorannMagicDefOf.TM_ChronostaticField_II,
                             TorannMagicDefOf.TM_ChronostaticField_III
                         }),
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Recall
                         }),
@@ -2682,7 +2682,7 @@ namespace TorannMagic
                 {
                     this.magicPowerCM = new List<MagicPower>
                     {
-                        new MagicPower(new List<AbilityDef>
+                        new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_ChaosTradition
                         }),

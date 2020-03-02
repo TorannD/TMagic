@@ -108,7 +108,7 @@ namespace TorannMagic
                 }
                 else if (parent.def.defName == "BookOfBard" || parent.def.defName == "Torn_BookOfBard")
                 {
-                    if (!user.story.WorkTagIsDisabled(WorkTags.Social))
+                    if (user.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Social)
                     {
                         FixTrait(user, user.story.traits.allTraits);
                         FixBardSkills(user);

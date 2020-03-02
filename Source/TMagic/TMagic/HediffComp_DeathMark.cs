@@ -161,7 +161,7 @@ namespace TorannMagic
         {
             undeadPawn.story.childhood = null;
             undeadPawn.story.adulthood = null;
-            undeadPawn.story.DisabledWorkTypes.Clear();
+            //undeadPawn.story.DisabledWorkTypes.Clear();
             //undeadPawn.story.WorkTypeIsDisabled(WorkTypeDefOf.Warden);
             //undeadPawn.story.WorkTypeIsDisabled(WorkTypeDefOf.Hunting);
             //undeadPawn.story.WorkTypeIsDisabled(WorkTypeDefOf.Handling);

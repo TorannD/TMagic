@@ -1224,7 +1224,7 @@ namespace TorannMagic
 
         public void LevelUpPower(MightPower power)
         {
-            foreach (AbilityDef current in power.TMabilityDefs)
+            foreach (AbilityUser.AbilityDef current in power.TMabilityDefs)
             {
                 base.RemovePawnAbility(current);
             }
@@ -2940,7 +2940,7 @@ namespace TorannMagic
                     //Hunting only
                     if (this.Pawn.CurJob.def == JobDefOf.Hunt && this.Pawn.CurJob.targetA != null && this.Pawn.CurJob.targetA.Thing != null && this.Pawn.CurJob.targetA.Thing is Pawn)
                     {
-                        if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) || isFaceless) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                        if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) || isFaceless) && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                         {
                             PawnAbility ability = null;
                             foreach (MightPower current in this.MightData.MightPowersR)
@@ -3002,7 +3002,7 @@ namespace TorannMagic
                                 }
                             }
                         }
-                        if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier) || isFaceless) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                        if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier) || isFaceless) && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                         {
                             PawnAbility ability = null;
 
@@ -3061,7 +3061,7 @@ namespace TorannMagic
                                 }
                             }                            
                         }
-                        if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || isFaceless) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                        if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || isFaceless) && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                         {
                             PawnAbility ability = null;
                             foreach (MightPower current in this.MightData.MightPowersS)
@@ -3084,7 +3084,7 @@ namespace TorannMagic
                                 }
                             }
                         }
-                        if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                        if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight) && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                         {
                             PawnAbility ability = null;
                             foreach (MightPower current in this.MightData.MightPowersDK)
@@ -3141,7 +3141,7 @@ namespace TorannMagic
                                 }
                             }
                         }
-                        if (this.skill_ThrowingKnife && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                        if (this.skill_ThrowingKnife && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                         {
                             MightPower mightPower = this.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ThrowingKnife);
                             if (mightPower != null && mightPower.autocast)
@@ -3151,7 +3151,7 @@ namespace TorannMagic
                                 if (castSuccess) goto AutoCastExit;                                
                             }
                         }
-                        if (this.skill_TempestStrike && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                        if (this.skill_TempestStrike && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                         {
                             MightPower mightPower = this.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_TempestStrike);
                             if (mightPower != null && mightPower.autocast)
@@ -3163,7 +3163,7 @@ namespace TorannMagic
                         }
                     }                    
 
-                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || isFaceless) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || isFaceless) && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
                         PawnAbility ability = null;
                         foreach (MightPower current in this.MightData.MightPowersB)
@@ -3260,7 +3260,7 @@ namespace TorannMagic
                 //combat (drafted) spells
                 if (this.Pawn.drafter != null && this.Pawn.Drafted && this.Stamina != null && (this.Stamina.CurLevelPercentage >= settingsRef.autocastCombatMinThreshold || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk)) && this.Pawn.CurJob.def != JobDefOf.Goto && this.Pawn.CurJob.def != JobDefOf.AttackMelee)
                 {                    
-                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || isFaceless) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || isFaceless) && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
                         PawnAbility ability = null;
                         foreach (MightPower current in this.MightData.MightPowersB)
@@ -3281,7 +3281,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk) && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
                         PawnAbility ability = null;
                         foreach (MightPower current in this.MightData.MightPowersM)
@@ -3311,7 +3311,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || isFaceless) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || isFaceless) && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
                         PawnAbility ability = null;
                         foreach (MightPower current in this.MightData.MightPowersG)
@@ -3365,7 +3365,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) || isFaceless) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) || isFaceless) && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
                         PawnAbility ability = null;
                         foreach (MightPower current in this.MightData.MightPowersR)
@@ -3427,7 +3427,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight) && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
                         PawnAbility ability = null;
                         foreach (MightPower current in this.MightData.MightPowersDK)
@@ -3482,7 +3482,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || isFaceless) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || isFaceless) && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
                         PawnAbility ability = null;
                         foreach (MightPower current in this.MightData.MightPowersS)
@@ -3579,7 +3579,7 @@ namespace TorannMagic
                                 }                                
                             }
                         }
-                        if (!this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                        if (this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                         {
                             foreach (MightPower current in this.MightData.MightPowersSS)
                             {
@@ -3637,7 +3637,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if (this.skill_ThrowingKnife && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if (this.skill_ThrowingKnife && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
                         MightPower mightPower = this.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ThrowingKnife);
                         if (mightPower != null && mightPower.autocast)
@@ -3648,7 +3648,7 @@ namespace TorannMagic
                             if (castSuccess) goto AutoCastExit;
                         }
                     }
-                    if (this.skill_TempestStrike && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if (this.skill_TempestStrike && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
                         MightPower mightPower = this.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_TempestStrike);
                         if (mightPower != null && mightPower.autocast)
@@ -3659,7 +3659,7 @@ namespace TorannMagic
                             if (castSuccess) goto AutoCastExit;
                         }
                     }
-                    if (this.skill_PommelStrike && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if (this.skill_PommelStrike && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
                         MightPower mightPower = this.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PommelStrike);                        
                         if (mightPower != null && mightPower.autocast && this.Pawn.TargetCurrentlyAimingAt != null)

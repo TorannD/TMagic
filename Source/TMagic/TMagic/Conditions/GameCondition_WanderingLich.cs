@@ -7,7 +7,7 @@ using Verse;
 using RimWorld;
 using AbilityUser;
 using Verse.AI.Group;
-using Harmony;
+using HarmonyLib;
 
 namespace TorannMagic.Conditions
 {

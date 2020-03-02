@@ -34,32 +34,31 @@ namespace TorannMagic
         {
             yield return Toils_Misc.ThrowColonistAttackingMote(TargetIndex.A);
             this.verb = this.pawn.CurJob.verbToUse as Verb_UseAbility;
-
-            if (base.TargetA.HasThing) 
+            if (base.TargetA.HasThing && base.TargetA.Thing is Pawn && (!pawn.Position.InHorDistOf(base.TargetA.Cell, pawn.CurJob.verbToUse.verbProps.range) || !Verb.UseAbilityProps.canCastInMelee)) 
             {
-                if (!base.GetActor().IsFighting() ? true : !verb.UseAbilityProps.canCastInMelee && !this.job.endIfCantShootTargetFromCurPos)
-                {
+                //if (!base.GetActor().IsFighting() ? true : !verb.UseAbilityProps.canCastInMelee && !this.job.endIfCantShootTargetFromCurPos)
+                //{
                     Toil toil = Toils_Combat.GotoCastPosition(TargetIndex.A, false);
                     yield return toil;
-                    toil = null;
-                }
+                    //toil = null;
+                //}
             }
             if (this.Context == AbilityContext.Player)
             {
-                Find.Targeter.targetingVerb = this.verb;
+                Find.Targeter.targetingSource = this.verb;
             }
             Pawn targetPawn = null;
             if (this.TargetThingA != null)
             {
                 targetPawn = TargetThingA as Pawn;
             }
-            
+
             if (targetPawn != null)
             {
                 //yield return Toils_Combat.CastVerb(TargetIndex.A, false);
                 Toil combatToil = new Toil();
-                combatToil.FailOnDestroyedOrNull(TargetIndex.A);
-                combatToil.FailOnDespawnedOrNull(TargetIndex.A);
+                //combatToil.FailOnDestroyedOrNull(TargetIndex.A);
+                //combatToil.FailOnDespawnedOrNull(TargetIndex.A);
                 //combatToil.FailOnDowned(TargetIndex.A);
                 //CompAbilityUserMagic comp = this.pawn.GetComp<CompAbilityUserMagic>();                
                 //JobDriver curDriver = this.pawn.jobs.curDriver;
@@ -92,7 +91,7 @@ namespace TorannMagic
                     }                    
                     
                     LocalTargetInfo target = combatToil.actor.jobs.curJob.GetTarget(TargetIndex.A);
-                    verb.TryStartCastOn(target, false, false);
+                    verb.TryStartCastOn(target, false, true);
                     using (IEnumerator<Hediff> enumerator = this.pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
                     {
                         while (enumerator.MoveNext())
@@ -260,7 +259,7 @@ namespace TorannMagic
                                 }
                             };
                             toil.AddFinishAction(delegate
-                            {
+                            {                                
                                 if (this.duration <= 5 && !this.pawn.DestroyedOrNull() && !this.pawn.Dead && !this.pawn.Downed)
                                 {
                                     verb.Ability.PostAbilityAttempt();

@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TorannMagic</RootNamespace>
     <AssemblyName>TorannMagic</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
@@ -20,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,20 +30,23 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <RunPostBuildEvent>Always</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\Assemblies\Release\net35\0Harmony.dll</HintPath>
+    <Reference Include="0Harmony, Version=1.2.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\2009463077\Assemblies\0Harmony.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="AbilityUser">
-      <HintPath>..\..\..\..\JecsTools-1.1.0.16\Assemblies\AbilityUser.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\AbilityUser.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AbilityUserAI">
-      <HintPath>..\..\..\..\JecsTools-1.1.0.16\Assemblies\AbilityUserAI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\AbilityUserAI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AlienRace">
@@ -53,7 +58,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="CompDeflector">
-      <HintPath>..\..\..\..\JecsTools-1.1.0.16\Assemblies\CompDeflector.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\CompDeflector.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="GiddyUpCore">
@@ -85,6 +90,22 @@
       <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbilityDecisionConditionalNode_EnemyTargetIsBuilding.cs" />
@@ -108,6 +129,7 @@
     <Compile Include="Building_PoisonTrap.cs" />
     <Compile Include="Building_TechnoTurret.cs" />
     <Compile Include="Building_ExplosiveProximityTrap.cs" />
+    <Compile Include="Events\IncidentWorker_QuestArcaneCamp.cs" />
     <Compile Include="WeaponCategoryList.cs" />
     <Compile Include="CompProperties_SkeletonLichController.cs" />
     <Compile Include="CompProperties_SkeletonController.cs" />
@@ -506,7 +528,6 @@
     <Compile Include="Projectile_SummonMinion.cs" />
     <Compile Include="Events\ArcaneItemCollectionGeneratorUtility.cs" />
     <Compile Include="Events\GenStep_ArcaneBanditSquad.cs" />
-    <Compile Include="Events\IncidentWorker_QuestArcaneCamp.cs" />
     <Compile Include="Events\ItemCollectionGenerator_Internal_Arcane.cs" />
     <Compile Include="HarmonyPatches.cs" />
     <Compile Include="Effect_ValiantCharge.cs" />

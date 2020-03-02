@@ -109,7 +109,7 @@ namespace TorannMagic
 			explosion.applyDamageToExplosionCellsNeighbors = applyDamageToExplosionCellsNeighbors;
             explosion.damageFalloff = true;
             explosion.chanceToStartFire = 0.05f;
-            explosion.StartExplosion(explosionSound);
+            explosion.StartExplosion(explosionSound, null);
             
 		}
 

@@ -18,6 +18,7 @@
   <HediffDef ParentName="BaseArtifactHD">
     <defName>TM_ArtifactMendingHD</defName>
 	<label>Mending</label>
+	<description>Mends and repairs equipped apparel and weapons.</description>
     <defaultLabelColor>(1,1,0.8)</defaultLabelColor>
 	<stages>
 		<li>
@@ -36,6 +37,7 @@
    <HediffDef ParentName="BaseArtifactHD">
     <defName>TM_ArtifactHealthHD</defName>
 	<label>Improved Health</label>
+	<description>Increases natural healing.</description>
     <defaultLabelColor>(0,0.8,0.4)</defaultLabelColor>
       <stages>
         <li>
@@ -54,6 +56,7 @@
    <HediffDef ParentName="BaseArtifactHD">
     <defName>TM_ArtifactCatEyesHD</defName>
 	<label>Dark Sight</label>
+	<description>Improves sight and grants minor night vision.</description>
     <defaultLabelColor>(0,1,0)</defaultLabelColor>
       <stages>
         <li>
@@ -78,6 +81,7 @@
    <HediffDef ParentName="BaseArtifactHD">
     <defName>TM_ArtifactStrengthHD</defName>
 	<label>Strength of Stone</label>
+	<description>An enchantment that increases manipulation.</description>
     <defaultLabelColor>(0.5,0.5,0.5)</defaultLabelColor>
       <stages>
         <li>
@@ -102,6 +106,7 @@
    <HediffDef ParentName="BaseArtifactHD">
     <defName>TM_ArtifactMindHD</defName>
 	<label>Mind Ward</label>
+	<description>A unique talisman that helps a pawn compartmentalize their emotions to quickly recover from a mental breakdown.</description>
     <defaultLabelColor>(0.8,0.8,0.8)</defaultLabelColor>
       <stages>
         <li>
@@ -135,6 +140,7 @@
    <HediffDef ParentName="BaseArtifactHD">
     <defName>TM_ArtifactRenewalHD</defName>
 	<label>Renewal</label>
+	<description>Improves the quality of sleep.</description>
     <defaultLabelColor>(0.2,0.6,1)</defaultLabelColor>
       <stages>
         <li>
@@ -156,6 +162,7 @@
    <HediffDef ParentName="BaseArtifactHD">
     <defName>TM_ArtifactArcaneRecoveryHD</defName>
 	<label>Arcane Recovery</label>
+	<description>Increases the recovery rate from Arcane Weakness; does not reduce the amount of Arcane Weakness acquired.</description>
     <defaultLabelColor>(0.0,1,0.5)</defaultLabelColor>
       <stages>
         <li>
@@ -174,6 +181,7 @@
    <HediffDef ParentName="BaseArtifactHD">
     <defName>TM_ArtifactPathfindingHD</defName>
 	<label>Pathfinding</label>
+	<description>A talisman that uncannily ascertains an easy path across any obstacle; bypasses the movement penalty for obstacles and terrain.</description>
     <defaultLabelColor>(0.2,0.4,0)</defaultLabelColor>
       <stages>
         <li>
@@ -192,6 +200,7 @@
    <HediffDef ParentName="BaseArtifactHD">
     <defName>TM_ArtifactBlockHD</defName>
 	<label>Blocking</label>
+	<description>Blocks physical attacks; prevents damage from successfully blocked attacks.</description>
     <defaultLabelColor>(0.63,0.63,0.63)</defaultLabelColor>
       <stages>
         <li>
@@ -208,6 +217,7 @@
    <HediffDef ParentName="BaseArtifactHD">
     <defName>TM_ArtifactDeflectHD</defName>
 	<label>Deflective Blocking</label>
+	<description>Blocks attacks and can deflect projectiles to nearby enemies; prevents damage from a successfully deflected attack.</description>
     <defaultLabelColor>(0.63,0.63,0.63)</defaultLabelColor>
       <stages>
         <li>
@@ -226,6 +236,7 @@
   <HediffDef ParentName="BaseArtifactHD">
     <defName>TM_Artifact_BloodBoostHD</defName>
 	<label>Blood Boost</label>
+	<description>Increases the maximum blood magic available to a blood mage.</description>
 	<maxSeverity>100.0</maxSeverity>
     <defaultLabelColor>(0.6,0.0,0.0)</defaultLabelColor>
       <stages>
@@ -244,6 +255,7 @@
     <HediffDef ParentName="BaseArtifactHD">
     <defName>TM_Artifact_PsionicBoostHD</defName>
 	<label>Psionic Boost</label>
+	<description>Increases the maximum psionic energy available to a psionic.</description>
 	<maxSeverity>100.0</maxSeverity>
     <defaultLabelColor>(0,.5,1)</defaultLabelColor>
       <stages>
@@ -262,6 +274,7 @@
     <HediffDef ParentName="BaseArtifactHD">
     <defName>TM_Artifact_HateBoostHD</defName>
 	<label>Hate Boost</label>
+	<description>Increases the maximum hate available to a death knight.</description>
 	<maxSeverity>100.0</maxSeverity>
     <defaultLabelColor>(0.6,0.0,0.0)</defaultLabelColor>
       <stages>
@@ -283,6 +296,7 @@
     <defName>TM_TraitInfusionHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Trait Infusion</label>
+	<description>A pawn has gained traits through magical infusion; this will affect their sense of self.</description>
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>

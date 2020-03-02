@@ -6,6 +6,7 @@
     <defName>TM_AccelerateTimeHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Aging</label>
+	<description>Rapidly ages a pawn. Any other conditions affecting the pawn will also accelerate their natural tendencies. Pawns aged beyond their typical lifespan are frequently beset by age related illnesses or conditions.</description>
     <defaultLabelColor>(.4,.65,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>true</makesSickThought>
@@ -95,6 +96,7 @@
     <defName>TM_ReverseTimeBadHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Reverse Aging</label>
+	<description>Rapidly reverses the age of a pawn. Any other conditions affecting the pawn will also reverse their natural tendencies. Conditions reversed beyond the point in time that they were acquired will cease to exist. Pawns reversed before the point int time that they were spawned will also cease to exist.</description>
     <defaultLabelColor>(.4,.65,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -237,6 +239,7 @@
     <defName>TM_ReverseTimeHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Reverse Aging</label>
+	<description>Rapidly reverses the age of a pawn. Any other conditions affecting the pawn will also reverse their natural tendencies. Conditions reversed beyond the point in time that they were acquired will cease to exist. Pawns reversed before the point int time that they were spawned will also cease to exist.</description>
     <defaultLabelColor>(.4,.65,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -338,6 +341,9 @@
     <defName>TM_PredictionHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Prediction</label>
+	<description>Allows the prediction of future events or actions.
+	
+	Admin note: this ability predicts and delays any event. Some mods use these types of events as triggers for effects or outcomes, this can cause errors if the situation changes and certain objects, items, or conditions are no longer valid when a predicted event occurs.</description>
     <defaultLabelColor>(.4,.65,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>

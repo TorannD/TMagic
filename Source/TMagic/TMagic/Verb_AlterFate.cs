@@ -6,7 +6,7 @@ using AbilityUser;
 using Verse;
 using Verse.AI;
 using UnityEngine;
-using Harmony;
+using HarmonyLib;
 
 
 namespace TorannMagic

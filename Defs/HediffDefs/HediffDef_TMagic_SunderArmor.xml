@@ -6,6 +6,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.8, 0.8, 1)</defaultLabelColor>
     <label>Sunder Armor</label>
+	<description>Reduces armor rating.</description>
 	<makesSickThought>false</makesSickThought>
 	<maxSeverity>50.0</maxSeverity>
 	<isBad>true</isBad>

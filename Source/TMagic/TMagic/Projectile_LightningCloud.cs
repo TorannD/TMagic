@@ -194,7 +194,7 @@ namespace TorannMagic
             explosion.postExplosionSpawnThingCount = postExplosionSpawnThingCount;
             explosion.applyDamageToExplosionCellsNeighbors = applyDamageToExplosionCellsNeighbors;
             //map.GetComponent<ExplosionManager>().StartExplosion(explosion, explosionSound);
-            explosion.StartExplosion(explosionSound);
+            explosion.StartExplosion(explosionSound, null);
         }
 
         public override void Tick()

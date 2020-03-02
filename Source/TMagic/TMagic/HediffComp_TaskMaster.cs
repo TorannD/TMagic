@@ -2,7 +2,7 @@
 using Verse;
 using System;
 using System.Collections.Generic;
-using Harmony;
+using HarmonyLib;
 using System.Linq;
 
 namespace TorannMagic

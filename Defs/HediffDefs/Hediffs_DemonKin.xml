@@ -4,6 +4,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_ShadowHD</defName>
     <label>Shadow</label>
+	<description>Shadow damage.</description>
     <displayWound>false</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -30,6 +31,7 @@
     <defName>TM_GravitySlowHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Gravity Well</label>
+	<description>Slowed by an unnatural gravitational attraction.</description>
     <defaultLabelColor>(0.6,0,0.6)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -70,6 +72,7 @@
     <defName>TM_SoulBondPhysicalHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Soul Bond</label>
+	<description>Soul bonded to a Succubus.</description>
     <defaultLabelColor>(0.8,0,0.4)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -217,6 +220,7 @@
     <defName>TM_SDSoulBondPhysicalHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Soul Bond</label>
+	<description>Maintaining a soul bond contract with another pawn.</description>
     <defaultLabelColor>(.6,0,.3)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -338,6 +342,7 @@
     <defName>TM_SoulBondMentalHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Soul Bond</label>
+	<description>Soul bonded to a Warlock.</description>
     <defaultLabelColor>(0.5,0,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -441,6 +446,7 @@
     <defName>TM_WDSoulBondMentalHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Soul Bond</label>
+	<description>Maintaining a contract with another pawn that bonds their soul with mine.</description>
     <defaultLabelColor>(0.5,0,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -530,6 +536,7 @@
     <defName>TM_WDDominateHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Dominate I</label>
+	<description>Mentally dominated by a warlock - reduces mental state and may cause various mental breaks.</description>
     <defaultLabelColor>(0.5,0,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -651,6 +658,7 @@
     <defName>TM_WDDominateHD_I</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Dominate II</label>
+	<description>Mentally dominated by a warlock - reduces mental state and may cause various mental breaks.</description>
     <defaultLabelColor>(0.5,0,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -772,6 +780,7 @@
     <defName>TM_WDDominateHD_II</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Dominate III</label>
+	<description>Mentally dominated by a warlock - reduces mental state and may cause various mental breaks.</description>
     <defaultLabelColor>(0.5,0,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -893,6 +902,7 @@
     <defName>TM_WDDominateHD_III</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Dominate IV</label>
+	<description>Mentally dominated by a warlock - reduces mental state and may cause various mental breaks.</description>
     <defaultLabelColor>(0.5,0,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -1014,6 +1024,7 @@
     <defName>TM_SDDominateHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Dominate I</label>
+	<description>Under the effects of a succubus dominatrix - stunts all physical actions.</description>
     <defaultLabelColor>(0.8,0,0.4)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -1151,6 +1162,7 @@
     <defName>TM_SDDominateHD_I</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Dominate II</label>
+	<description>Under the effects of a succubus dominatrix - stunts all physical actions.</description>
     <defaultLabelColor>(0.8,0,0.4)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -1288,6 +1300,7 @@
     <defName>TM_SDDominateHD_II</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Dominate III</label>
+	<description>Under the effects of a succubus dominatrix - stunts all physical actions.</description>
     <defaultLabelColor>(0.8,0,0.4)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -1425,6 +1438,7 @@
     <defName>TM_SDDominateHD_III</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Dominate IV</label>
+	<description>Under the effects of a succubus dominatrix - stunts all physical actions.</description>
     <defaultLabelColor>(0.8,0,0.4)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -1562,6 +1576,7 @@
     <defName>TM_VitalityDrainHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Vitality Drain</label>
+	<description>Physically drained but mentally relaxed through intimacy with a succubus.</description>
     <defaultLabelColor>(0.8,0,0.4)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -1613,6 +1628,7 @@
     <defName>TM_VitalityBoostHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Vitality Boost</label>
+	<description>Physical boost acquired by draining the energy from a pawn during intimacy.</description>
     <defaultLabelColor>(0.8,0,0.4)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -1649,6 +1665,7 @@
     <defName>TM_DemonHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Demonic Flames</label>
+	<description>Demonic flames that swirl and writhe around the form of a demon.</description>
     <defaultLabelColor>(1,0.65,0.2)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -1716,6 +1733,7 @@
     <defName>TM_DemonicPriceHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Soul Consumption</label>
+	<description>Flames of destruction that will never cease until they consume the soul of this pawn.</description>
     <defaultLabelColor>(1,0.65,0.2)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -1743,6 +1761,7 @@
     <defName>TM_DemonScornHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Demon's Scorn</label>
+	<description>The partial transformation of a succubus into a demon; grants increased physical powers and absorbs damage.</description>
     <defaultLabelColor>(.6,0,.3)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -1792,6 +1811,7 @@
     <defName>TM_DemonScornHD_I</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Demon's Scorn</label>
+	<description>The partial transformation of a succubus into a demon; grants increased physical powers and absorbs damage.</description>
     <defaultLabelColor>(.6,0,.3)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -1841,6 +1861,7 @@
     <defName>TM_DemonScornHD_II</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Demon's Scorn</label>
+	<description>The partial transformation of a succubus into a demon; grants increased physical powers and absorbs damage.</description>
     <defaultLabelColor>(.6,0,.3)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -1890,6 +1911,7 @@
     <defName>TM_DemonScornHD_III</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Demon's Scorn</label>
+	<description>The partial transformation of a succubus into a demon; grants increased physical powers and absorbs damage.</description>
     <defaultLabelColor>(.6,0,.3)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>

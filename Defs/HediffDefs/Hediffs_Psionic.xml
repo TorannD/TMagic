@@ -5,6 +5,7 @@
     <defName>TM_PsionicHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Psionic Energy</label>
+	<description>Accounts for the unique energy of a Psionic.</description>
     <defaultLabelColor>(0,.5,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -30,6 +31,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_PsionicInjuryHD</defName>
     <label>Psionic</label>
+	<description>Injury caused by psionic power.</description>
     <displayWound>false</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -56,6 +58,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.0, 0.5, 1)</defaultLabelColor>
     <label>psionic speed</label>
+	<description>Enhanced speed through psionic augmentation.</description>
 	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
@@ -81,6 +84,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.0, 0.5, 1)</defaultLabelColor>
     <label>psionic speed</label>
+	<description>Enhanced speed through psionic augmentation.</description>
 	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
@@ -106,6 +110,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.0, 0.5, 1)</defaultLabelColor>
     <label>psionic speed</label>
+	<description>Enhanced speed through psionic augmentation.</description>
 	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
@@ -131,6 +136,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.0, 0.5, 1)</defaultLabelColor>
     <label>psionic speed</label>
+	<description>Enhanced speed through psionic augmentation.</description>
 	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
@@ -156,6 +162,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.0, 0.5, 1)</defaultLabelColor>
     <label>psionic manipulation</label>
+	<description>Enhanced dexterity through psionic augmentation.</description>
 	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
@@ -181,6 +188,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.0, 0.5, 1)</defaultLabelColor>
     <label>psionic manipulation</label>
+	<description>Enhanced dexterity through psionic augmentation.</description>
 	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
@@ -206,6 +214,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.0, 0.5, 1)</defaultLabelColor>
     <label>psionic manipulation</label>
+	<description>Enhanced dexterity through psionic augmentation.</description>
 	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
@@ -231,6 +240,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.0, 0.5, 1)</defaultLabelColor>
     <label>psionic manipulation</label>
+	<description>Enhanced dexterity through psionic augmentation.</description>
 	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">

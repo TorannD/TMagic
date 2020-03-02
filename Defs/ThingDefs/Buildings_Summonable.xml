@@ -436,7 +436,6 @@
 				<explosiveRadius>3.1</explosiveRadius>
 				<explosiveDamageType>Stun</explosiveDamageType>
 				<explosiveExpandPerStackcount>0.5</explosiveExpandPerStackcount>
-				<startWickOnDamageTaken>Stun</startWickOnDamageTaken>
 				<startWickHitPointsPercent>0.333</startWickHitPointsPercent>
 <!-- 				<preExplosionSpawnThingDef>FilthFuel</preExplosionSpawnThingDef> -->
 				<preExplosionSpawnChance>1</preExplosionSpawnChance>

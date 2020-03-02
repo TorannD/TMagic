@@ -22,6 +22,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_ArcaneHD</defName>
     <label>arcane</label>
+	<description>Destructive arcane power</description>
     <displayWound>false</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -46,6 +47,7 @@
   <HediffDef ParentName="TM_InjuryBase">
 	<defName>TM_ThrumboCleave</defName>
 	<label>cleave</label>
+	<description>An attack powerful enough to shear through multiple objects.</description>
     <labelNoun>a massive wound</labelNoun>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -73,6 +75,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_BlazingPowerHD</defName>
     <label>Blazing Power</label>
+	<description>Arcane power directed through a focusing vessel.</description>
     <displayWound>false</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -97,6 +100,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_Holy</defName>
     <label>Holy Wrath</label>
+	<description>Destructive energy from the domain of light.</description>
     <displayWound>false</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -121,6 +125,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_SpiritHD</defName>
     <label>Spirit</label>
+	<description>Harmful spiritual energy.</description>
     <displayWound>false</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -145,6 +150,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_MagicMissile</defName>
     <label>Magic Missile</label>
+	<description>Arcane energy projected in small, focused bursts.</description>
     <displayWound>false</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -169,6 +175,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_ManaMine</defName>
     <label>mana explosion</label>
+	<description>Explosive release of contained mana.</description>
     <displayWound>false</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -193,6 +200,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_Firebolt</defName>
     <label>Firebolt</label>
+	<description>Projected bolt of elemental fire.</description>
     <displayWound>false</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -217,6 +225,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_LightningCloud</defName>
     <label>Lightning</label>
+	<description>Ambient electrical discharge caused by condensing charged particles.</description>
     <displayWound>false</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -241,6 +250,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_Lightning</defName>
     <label>Lightning</label>
+	<description>A powerful bolt of electricity.</description>
     <displayWound>false</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -265,6 +275,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>FrostRay</defName>
     <label>frostray</label>
+	<description>Super-cooled bolt of energy.</description>
     <displayWound>false</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -304,6 +315,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>Snowball</defName>
     <label>snowball</label>
+	<description>Packed ice and snow.</description>
     <displayWound>false</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -343,6 +355,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>Blizzard</defName>
     <label>blizzard</label>
+	<description>A storm of ice and snow.</description>
     <displayWound>false</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -382,6 +395,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>Iceshard</defName>
     <label>iceshard</label>
+	<description>A projected bolt of ice formed with razor sharp edges.</description>
     <displayWound>true</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -420,6 +434,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_GrapplingHook</defName>
     <label>Grappling Hook</label>
+	<description>Pulls targets close.</description>
     <displayWound>true</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -464,6 +479,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_Whirlwind_Knockdown</defName>
     <label>Whirlwind Knockdown</label>
+	<description>Overwhelmed from a flurry of attacks.</description>
     <displayWound>true</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -508,6 +524,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_DisablingShot_HD</defName>
     <label>disabling shot</label>
+	<description>A projectile designed to disable rather than kill.</description>
     <displayWound>true</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -552,6 +569,7 @@
   <HediffDef ParentName="TM_InjuryBase">
 		<defName>TM_arcaneSpectre</defName>
 		<label>spirit cut</label>
+		<description>Spirit damage from a spectre.</description>
     <labelNoun>a cut</labelNoun>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -579,6 +597,7 @@
 	<HediffDef ParentName="TM_InjuryBase">
     <defName>TM_BloodyCutHD</defName>
     <label>bloody cut</label>
+	<description>A deep cut that bleeds profusely.</description>
     <labelNoun>a bloody cut</labelNoun>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -606,6 +625,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_DisablingBlowHD</defName>
     <label>disabling blow</label>
+	<description>A melee blow meant to disable rather than kill.</description>
     <displayWound>true</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -650,6 +670,7 @@
     <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_ChiBurnHD</defName>
     <label>Chi burn</label>
+	<description>Damage sustained from a burst of ch'i energy.</description>
     <displayWound>false</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -674,6 +695,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_ChiFistHD</defName>
     <label>strike</label>
+	<description>A melee strike from a monk.</description>
     <displayWound>false</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">

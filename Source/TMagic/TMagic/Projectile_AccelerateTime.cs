@@ -5,7 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System;
 using RimWorld;
-using Harmony;
+using HarmonyLib;
 
 namespace TorannMagic
 {

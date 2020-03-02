@@ -67,7 +67,7 @@
   
     <ThingDef Name="TM_BaseMakeableGun" ParentName="TM_BaseGun" Abstract="True">
     <recipeMaker>
-      <workSpeedStat>SmithingSpeed</workSpeedStat>
+      <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
       <workSkill>Crafting</workSkill>
       <effectWorking>Smith</effectWorking>
       <soundWorking>Recipe_Smith</soundWorking>

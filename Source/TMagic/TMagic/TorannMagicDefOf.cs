@@ -160,9 +160,9 @@ namespace TorannMagic
         public static ThingDef TM_Artifact_OrbOfConviction;
         public static TMAbilityDef TM_Artifact_Conviction;
         public static ThingDef TM_Artifact_OrbOfSouls;
-        public static AbilityDef TM_Artifact_TraitThief;
+        public static AbilityUser.AbilityDef TM_Artifact_TraitThief;
         public static ThingDef TM_Artifact_OrbOfSouls_Full;
-        public static AbilityDef TM_Artifact_TraitInfuse;
+        public static AbilityUser.AbilityDef TM_Artifact_TraitInfuse;
         public static HediffDef TM_TraitInfusionHD;
         public static ThingDef TM_Artifact_NecroticOrb;
 
@@ -173,7 +173,7 @@ namespace TorannMagic
         //public static SitePartDef ArcaneDefenders;
         //public static SitePartDef EnemyRaidOnArrival;
         public static SitePartDef ArcaneBanditSquad;
-        public static IncidentDef ArcaneEnemyRaid;
+        //public static IncidentDef ArcaneEnemyRaid;
         
         public static TraitDef Gifted;
         public static TraitDef TM_OKWithDeath;
@@ -1063,7 +1063,7 @@ namespace TorannMagic
         public static WorkTypeDef TM_Magic;
 
         //Structures
-        public static AbilityDef Forge_Verb;
+        public static AbilityUser.AbilityDef Forge_Verb;
         public static ThingDef TableArcaneForge;
         public static RecipeDef ArcaneForge_Replication;
         public static RecipeDef ArcaneForge_Replication_Restore;

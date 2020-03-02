@@ -66,7 +66,7 @@ Magically Gifted pawns can journal their theories and experiments in this book a
 		</costList>
 		<recipeMaker>		    
 			<workAmount>2500</workAmount>
-			<workSpeedStat>SmithingSpeed</workSpeedStat>
+			<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
 			<workSkill>Intellectual</workSkill>
 			<recipeUsers>
 				<li>TableMagicPrinter</li>
@@ -120,7 +120,7 @@ Gifted pawns can journal their theories and experiments in this book and learn t
 		</costList>
 		<recipeMaker>
 			<workAmount>3500</workAmount>
-			<workSpeedStat>SmithingSpeed</workSpeedStat>
+			<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
 			<workSkill>Intellectual</workSkill>
 			<recipeUsers>
 				<li>TableMagicPrinter</li>
@@ -177,7 +177,7 @@ Physically adept pawns can journal their research and training in this book to d
 		</costList>
 		<recipeMaker>
 			<workAmount>3000</workAmount>
-			<workSpeedStat>SmithingSpeed</workSpeedStat>
+			<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
 			<workSkill>Intellectual</workSkill>
 			<recipeUsers>
 				<li>TableMagicPrinter</li>

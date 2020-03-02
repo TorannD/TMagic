@@ -79,7 +79,7 @@ namespace TorannMagic
             skill.passion = Passion.None;
             skill = lich.skills.GetSkill(SkillDefOf.Social);
             skill.passion = Passion.None;
-            lich.story.DisabledWorkTypes.Clear();
+            //lich.story.DisabledWorkTypes.Clear();
             lich.workSettings.SetPriority(WorkTypeDefOf.Doctor, 0);
             lich.workSettings.SetPriority(WorkTypeDefOf.Warden, 0);
             lich.workSettings.SetPriority(WorkTypeDefOf.Handling, 0);

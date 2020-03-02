@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Harmony;
+using HarmonyLib;
 
 namespace TorannMagic
 {

@@ -10,7 +10,7 @@ namespace TorannMagic.Enchantment
 {
     public class CompEnchantedItem : ThingComp
     {
-        public List<AbilityDef> MagicAbilities = new List<AbilityDef>();
+        public List<AbilityUser.AbilityDef> MagicAbilities = new List<AbilityUser.AbilityDef>();
 
         public List<Trait> SoulOrbTraits = new List<Trait>();
 

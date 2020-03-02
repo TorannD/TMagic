@@ -82,7 +82,7 @@ namespace TorannMagic
             this.abilityUser = (abilityUser as CompAbilityUserMagic);
         }
 
-        public MagicAbility(Pawn user, AbilityDef pdef) : base(user, pdef)
+        public MagicAbility(Pawn user, AbilityUser.AbilityDef pdef) : base(user, pdef)
 		{
 
         }

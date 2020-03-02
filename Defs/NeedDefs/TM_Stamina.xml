@@ -25,6 +25,7 @@
     <defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
     <initialSeverity>1.0</initialSeverity>	
     <label>might user</label>
+	<description>Hediff required for might users.</description>
     <causesNeed>TM_Stamina</causesNeed>
     <comps>
       <li Class="HediffCompProperties_SeverityPerDay">

@@ -5,6 +5,7 @@
     <defName>TM_DisguiseHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Deception</label>
+	<description>Wrapped in a clever disguise to deceive opponents.</description>
     <defaultLabelColor>(1,.5,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -38,6 +39,7 @@
     <defName>TM_DisguiseHD_I</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Deception</label>
+	<description>Wrapped in a clever disguise to deceive opponents.</description>
     <defaultLabelColor>(1,.5,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -71,6 +73,7 @@
     <defName>TM_DisguiseHD_II</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Deception</label>
+	<description>Wrapped in a clever disguise to deceive opponents.</description>
     <defaultLabelColor>(1,.5,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -98,6 +101,7 @@
     <defName>TM_DisguiseHD_III</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Deception</label>
+	<description>Wrapped in a clever disguise to deceive opponents.</description>
     <defaultLabelColor>(1,.5,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -131,6 +135,7 @@
     <defName>TM_ReversalHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Reversal Stance</label>
+	<description>Turns the energy of attack back on the attacker.</description>
     <defaultLabelColor>(1,.5,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -158,6 +163,7 @@
     <defName>TM_PossessionHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Possessed</label>
+	<description>Actions are being influenced by a master of deception.</description>
     <defaultLabelColor>(1,.5,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>true</makesSickThought>
@@ -205,6 +211,7 @@
     <defName>TM_PossessionHD_I</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Possessed</label>
+	<description>Actions are being influenced by a master of deception.</description>
     <defaultLabelColor>(1,.5,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>true</makesSickThought>
@@ -252,6 +259,7 @@
     <defName>TM_PossessionHD_II</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Possessed</label>
+	<description>Actions are being influenced by a master of deception.</description>
     <defaultLabelColor>(1,.5,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -279,6 +287,7 @@
     <defName>TM_PossessionHD_III</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Possessed</label>
+	<description>Actions are being influenced by a master of deception.</description>
     <defaultLabelColor>(1,.5,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -326,6 +335,7 @@
     <defName>TM_CoOpPossessionHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Possessed</label>
+	<description>Actions are being influenced by a master of deception.</description>
     <defaultLabelColor>(1,.5,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -375,6 +385,7 @@
     <defName>TM_CoOpPossessionHD_I</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Possessed</label>
+	<description>Actions are being influenced by a master of deception.</description>
     <defaultLabelColor>(1,.5,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -424,6 +435,7 @@
     <defName>TM_CoOpPossessionHD_II</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Possessed</label>
+	<description>Actions are being influenced by a master of deception.</description>
     <defaultLabelColor>(1,.5,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -473,6 +485,7 @@
     <defName>TM_CoOpPossessionHD_III</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Possessed</label>
+	<description>Actions are being influenced by a master of deception.</description>
     <defaultLabelColor>(1,.5,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -523,6 +536,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.55, 0.05, 1)</defaultLabelColor>
     <label>disoriented</label>
+	<description>Disoriented after swapping positions with another pawn.</description>
     <lethalSeverity>10</lethalSeverity>
 	<makesSickThought>true</makesSickThought>
 	<isBad>true</isBad>

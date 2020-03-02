@@ -6,6 +6,7 @@
     <defName>TM_ChiHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Ch'i</label>
+	<description>Accounts for the unique energy utilized by a Monk.</description>
     <defaultLabelColor>(1,1,0.0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -33,6 +34,7 @@
     <defName>TM_MindOverBodyHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Mind over body</label>
+	<description>Reinforces physical power by overcoming the limitations of the body.</description>
     <defaultLabelColor>(1,1,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>

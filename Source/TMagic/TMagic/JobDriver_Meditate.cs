@@ -6,7 +6,7 @@ using AbilityUser;
 using System.Linq;
 using UnityEngine;
 using System;
-using Harmony;
+using HarmonyLib;
 
 
 namespace TorannMagic

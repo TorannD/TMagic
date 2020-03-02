@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using Verse;
 using System.Collections.Generic;
-using Harmony;
+using HarmonyLib;
 
 namespace TorannMagic
 {

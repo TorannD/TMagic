@@ -17,6 +17,7 @@
     <defName>TM_ArmRegrowth</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Regrown Arm</label>
+	<description>The magical entwining of nature and flesh will regrow this body part over several days.</description>
     <addedPartProps>
 	  <partEfficiency>1</partEfficiency>
 	  <isGoodWeapon>true</isGoodWeapon>
@@ -70,6 +71,7 @@
     <defName>TM_HandRegrowth</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Regrown Hand</label>
+	<description>The magical entwining of nature and flesh will regrow this body part over several days.</description>
     <addedPartProps>
 	  <partEfficiency>1</partEfficiency>
 	  <isGoodWeapon>true</isGoodWeapon>
@@ -121,6 +123,7 @@
     <defName>TM_FingerRegrowth</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Regrown Finger</label>
+	<description>The magical entwining of nature and flesh will regrow this body part over several days.</description>
     <addedPartProps>
 	  <partEfficiency>1</partEfficiency>
     </addedPartProps>
@@ -150,6 +153,7 @@
     <defName>TM_ToeRegrowth</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Regrown Toe</label>
+	<description>The magical entwining of nature and flesh will regrow this body part over several days.</description>
     <addedPartProps>
 	  <partEfficiency>1</partEfficiency>
     </addedPartProps>
@@ -179,6 +183,7 @@
     <defName>TM_EyeRegrowth</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Regrown Eye</label>
+	<description>The magical entwining of nature and flesh will regrow this eye over several days.</description>
     <addedPartProps>
 	  <partEfficiency>1</partEfficiency>
     </addedPartProps>
@@ -217,6 +222,7 @@
     <defName>TM_EarRegrowth</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Regrown Ear</label>
+	<description>The magical entwining of nature and flesh will regrow this body part over several days.</description>
     <addedPartProps>
 	  <partEfficiency>1</partEfficiency>
     </addedPartProps>
@@ -255,6 +261,7 @@
     <defName>TM_LegRegrowth</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Regrown Leg</label>
+	<description>The magical entwining of nature and flesh will regrow this body part over several days.</description>
     <addedPartProps>
 	  <partEfficiency>1</partEfficiency>
     </addedPartProps>
@@ -293,6 +300,7 @@
     <defName>TM_FootRegrowth</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Regrown Foot</label>
+	<description>The magical entwining of nature and flesh will regrow this body part over several days.</description>
     <addedPartProps>
 	  <partEfficiency>1</partEfficiency>
     </addedPartProps>
@@ -331,6 +339,7 @@
     <defName>TM_StandardRegrowth</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Regrown Part</label>
+	<description>The magical entwining of nature and flesh will regrow this body part over several days.</description>
     <addedPartProps>
 	  <partEfficiency>1</partEfficiency>
     </addedPartProps>
@@ -360,6 +369,7 @@
     <defName>TM_JawRegrowth</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Regrown Jaw</label>
+	<description>The magical entwining of nature and flesh will regrow this body part over several days.</description>
     <addedPartProps>
 	  <partEfficiency>1</partEfficiency>
     </addedPartProps>
@@ -397,6 +407,7 @@
     <defName>TM_HeartRegrowth</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Heart of the Wild</label>
+	<description>The magical entwining of nature and flesh will regrow or enhance a heart over several days.</description>
     <addedPartProps>
 	  <partEfficiency>1.1</partEfficiency>
     </addedPartProps>
@@ -437,6 +448,7 @@
     <defName>TM_LungRegrowth</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Regrown Lung</label>
+	<description>The magical entwining of nature and flesh will regrow this body part over several days.</description>
     <addedPartProps>
 	  <partEfficiency>1.1</partEfficiency>
     </addedPartProps>
@@ -477,6 +489,7 @@
     <defName>TM_KidneyRegrowth</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Regrown Kidney</label>
+	<description>The magical entwining of nature and flesh will regrow this body part over several days.</description>
     <addedPartProps>
 	  <partEfficiency>1.1</partEfficiency>
     </addedPartProps>
@@ -517,6 +530,7 @@
     <defName>TM_LiverRegrowth</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Regrown Liver</label>
+	<description>The magical entwining of nature and flesh will regrow this body part over several days.</description>
     <addedPartProps>
 	  <partEfficiency>1.1</partEfficiency>
     </addedPartProps>
@@ -557,6 +571,7 @@
     <defName>TM_StomachRegrowth</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Regrown Stomach</label>
+	<description>The magical entwining of nature and flesh will regrow this body part over several days.</description>
     <addedPartProps>
 	  <partEfficiency>1.1</partEfficiency>
     </addedPartProps>
@@ -593,6 +608,7 @@
     <defName>TM_SpineRegrowth</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Spine Meld</label>
+	<description>The magical entwining of nature and flesh will meld to form a powerful spine in several days.</description>
     <addedPartProps>
 	  <partEfficiency>1.1</partEfficiency>
     </addedPartProps>

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace TorannMagic
 {
-	public class TMAbilityDef : AbilityDef
+	public class TMAbilityDef : AbilityUser.AbilityDef
 	{
         //Add new variables here to control skill levels
         public float manaCost = 0f;

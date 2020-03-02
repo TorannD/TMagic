@@ -8,7 +8,7 @@ using Verse.Sound;
 using RimWorld;
 using System;
 using AbilityUser;
-using Harmony;
+using HarmonyLib;
 using TorannMagic.Enchantment;
 
 namespace TorannMagic
@@ -1239,10 +1239,10 @@ namespace TorannMagic
                     {
                         Faction f = FactionGenerator.NewGeneratedFaction(fDef);
                         Find.FactionManager.Add(f);                        
-                        foreach (Map map in Find.Maps)
-                        {
-                            map.pawnDestinationReservationManager.RegisterFaction(f);
-                        }
+                        //foreach (Map map in Find.Maps)
+                        //{
+                        //    map.pawnDestinationReservationManager.RegisterFaction(f);
+                        //}
                     }
                     if(!flagRelation)
                     {

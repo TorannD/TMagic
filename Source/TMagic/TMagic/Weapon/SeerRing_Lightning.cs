@@ -92,7 +92,7 @@ namespace TorannMagic.Weapon
             explosion.postExplosionSpawnChance = postExplosionSpawnChance;
             explosion.postExplosionSpawnThingCount = postExplosionSpawnThingCount;
             explosion.applyDamageToExplosionCellsNeighbors = applyDamageToExplosionCellsNeighbors;
-            explosion.StartExplosion(explosionSound);
+            explosion.StartExplosion(explosionSound, null);
         }
     }
 }

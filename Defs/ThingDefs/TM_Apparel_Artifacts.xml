@@ -51,7 +51,7 @@
       <recipeUsers>
 		<li>TableArcaneForge</li>
       </recipeUsers>
-	  <workSpeedStat>SmithingSpeed</workSpeedStat>
+	  <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
       <workSkill>Crafting</workSkill>
       <effectWorking>Smith</effectWorking>
       <soundWorking>Recipe_Smith</soundWorking>

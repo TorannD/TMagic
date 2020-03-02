@@ -5,6 +5,7 @@
     <defName>TM_Uncertainty</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Uncertain Future</label>
+	<description>Used to control mage promotions.</description>
     <defaultLabelColor>(1,1,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -235,6 +236,7 @@
     <defName>TM_SoothingBreeze_AuraHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Soothing Aura</label>
+	<description>An aura that generates and bestows a soothing presence on nearby pawns.</description>
     <defaultLabelColor>(.2,.6,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -273,6 +275,7 @@
     <defName>SoothingBreeze</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Soothing Breeze</label>
+	<description>A soothing presence that calms the spirit.</description>
 	<defaultLabelColor>(.2,.6,1)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
@@ -303,6 +306,7 @@
     <defName>SoothingBreeze_I</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Soothing Breeze</label>
+	<description>A soothing presence that calms the spirit.</description>
 	<defaultLabelColor>(.2,.6,1)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
@@ -333,6 +337,7 @@
     <defName>SoothingBreeze_II</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Soothing Breeze</label>
+	<description>A soothing presence that calms the spirit.</description>
 	<defaultLabelColor>(.2,.6,1)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
@@ -363,6 +368,7 @@
     <defName>SoothingBreeze_III</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Soothing Breeze</label>
+	<description>A soothing presence that calms the spirit.</description>
 	<defaultLabelColor>(.2,.6,1)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
@@ -451,6 +457,7 @@
     <defName>TM_RayOfHope_AuraHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Aura of Hope</label>
+	<description>An aura that generates and bestows an uplifting presence.</description>
     <defaultLabelColor>(1,.8,0.6)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -489,6 +496,7 @@
     <defName>RayofHope</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Ray of Hope</label>
+	<description>An uplifting presence that enlivens the spirit.</description>
 	<defaultLabelColor>(1,.8,0.6)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
@@ -523,6 +531,7 @@
     <defName>RayofHope_I</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Ray of Hope</label>
+	<description>An uplifting presence that enlivens the spirit.</description>
 	<defaultLabelColor>(1,.8,0.6)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
@@ -557,6 +566,7 @@
     <defName>RayofHope_II</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Ray of Hope</label>
+	<description>An uplifting presence that enlivens the spirit.</description>
 	<defaultLabelColor>(1,.8,0.6)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
@@ -591,6 +601,7 @@
     <defName>RayofHope_III</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Ray of Hope</label>
+	<description>An uplifting presence that enlivens the spirit.</description>
 	<defaultLabelColor>(1,.8,0.6)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
@@ -681,6 +692,7 @@
 		<defName>AMP_I</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>AMP</label>
+	<description>A burst of energy that amplifies physical attributes.</description>
 	<defaultLabelColor>(1,1,1)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
@@ -734,6 +746,7 @@
 		<defName>AMP_II</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>AMP</label>
+	<description>A burst of energy that amplifies physical attributes.</description>
 	<defaultLabelColor>(1,1,1)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
@@ -787,6 +800,7 @@
 		<defName>AMP_III</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>AMP</label>
+	<description>A burst of energy that amplifies physical attributes.</description>
 	<defaultLabelColor>(1,1,1)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
@@ -883,6 +897,7 @@
     <defName>TM_Shadow_AuraHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Shadow Aura</label>
+	<description>An aura that generates and bestows a shadowy presence.</description>
     <defaultLabelColor>(0.4,0.0,0.8)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -921,6 +936,7 @@
     <defName>Shadow</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Arcane Shadow</label>
+	<description>A shadowy presence that precipitates action.</description>
 	<defaultLabelColor>(0.4,0.0,0.8)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
@@ -965,6 +981,7 @@
     <defName>Shadow_I</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Arcane Shadow</label>
+	<description>A shadowy presence that precipitates action.</description>
 	<defaultLabelColor>(0.4,0.0,0.8)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
@@ -1017,6 +1034,7 @@
     <defName>Shadow_II</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Arcane Shadow</label>
+	<description>A shadowy presence that precipitates action.</description>
 	<defaultLabelColor>(0.4,0.0,0.8)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
@@ -1069,6 +1087,7 @@
     <defName>Shadow_III</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Arcane Shadow</label>
+	<description>A shadowy presence that precipitates action.</description>
 	<defaultLabelColor>(0.4,0.0,0.8)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
@@ -1179,6 +1198,7 @@
     <defName>BestowMightHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Bestow Might</label>
+	<description>A mighty combat boon.</description>
 	<defaultLabelColor>(.96,.9,0.45)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
@@ -1222,6 +1242,7 @@
     <defName>BestowMightHD_I</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Bestow Might</label>
+	<description>A mighty combat boon.</description>
 	<defaultLabelColor>(.96,.9,0.45)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
@@ -1265,6 +1286,7 @@
     <defName>BestowMightHD_II</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Bestow Might</label>
+	<description>A mighty combat boon.</description>
 	<defaultLabelColor>(.96,.9,0.45)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
@@ -1308,6 +1330,7 @@
     <defName>BestowMightHD_III</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Bestow Might</label>
+	<description>A mighty combat boon.</description>
 	<defaultLabelColor>(.96,.9,0.45)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
@@ -1352,6 +1375,7 @@
     <defName>TM_RangerBondHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Ranger Bond</label>
+	<description>Represents the bond this animal shares with a Ranger. Increases physical attributes and enhances healing.</description>
     <defaultLabelColor>(0,0.8,0.0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -1467,6 +1491,7 @@
     <defName>TM_HediffShield</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Shield</label>
+	<description>Absorbs damage.</description>
     <defaultLabelColor>(1,0.3,0.5)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>3.0</maxSeverity>	
@@ -1492,6 +1517,7 @@
     <defName>TM_HediffSprint_I</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Sprint (I)</label>
+	<description>Increases movement.</description>
     <defaultLabelColor>(1,0.3,0.5)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>3.0</maxSeverity>	
@@ -1532,6 +1558,7 @@
     <defName>TM_HediffSprint_II</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Sprint (II)</label>
+	<description>Increases movement.</description>
     <defaultLabelColor>(1,0.3,0.5)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>3.0</maxSeverity>	
@@ -1572,6 +1599,7 @@
     <defName>TM_HediffSprint_III</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Sprint (III)</label>
+	<description>Increases movement.</description>
     <defaultLabelColor>(1,0.3,0.5)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>3.0</maxSeverity>	
@@ -1613,6 +1641,7 @@
     <defName>TM_HediffInvulnerable</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Invulnerable</label>
+	<description>Prevents damage while active.</description>
     <defaultLabelColor>(1,1,0.2)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>3.0</maxSeverity>	
@@ -1631,6 +1660,7 @@
     <defName>TM_HediffTimedInvulnerable</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Invulnerable</label>
+	<description>Prevents damage while active.</description>
     <defaultLabelColor>(1,1,0.2)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>3.0</maxSeverity>	
@@ -1652,6 +1682,7 @@
     <defName>TM_HediffFortitude</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Fortitude</label>
+	<description>Mitigates all damage by a set amount.</description>
     <defaultLabelColor>(1,0.3,0.5)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -1675,6 +1706,7 @@
     <defName>TM_ManaShieldHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Mana Shield</label>
+	<description>Sacrifices magical energy to absorb damage.</description>
     <defaultLabelColor>(0.4,0.4,1.0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -1697,6 +1729,7 @@
     <defName>TM_Blind</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Blinded</label>
+	<description>Reduces sight.</description>
 	<defaultLabelColor>(1,1,1)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>1</maxSeverity>
@@ -1753,6 +1786,7 @@
     <defName>TM_Regeneration</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Regeneration</label>
+	<description>Regenerates health and heals wounds over time. Each tick will restore health to an injury until the injury is healed.</description>
     <defaultLabelColor>(0,0.5,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>10</maxSeverity>	
@@ -1771,6 +1805,7 @@
     <defName>TM_Regeneration_I</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Regeneration (I)</label>
+	<description>Regenerates health and heals wounds over time. Each tick will restore health to an injury until the injury is healed.</description>
     <defaultLabelColor>(0,0.5,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>10</maxSeverity>	
@@ -1789,6 +1824,7 @@
     <defName>TM_Regeneration_II</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Regeneration (II)</label>
+	<description>Regenerates health and heals wounds over time. Each tick will restore health to an injury until the injury is healed.</description>
     <defaultLabelColor>(0,0.5,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>10</maxSeverity>	
@@ -1807,6 +1843,7 @@
     <defName>TM_Regeneration_III</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Regeneration (III)</label>
+	<description>Regenerates health and heals wounds over time. Each tick will restore health to an injury until the injury is healed.</description>
     <defaultLabelColor>(0,0.5,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>10</maxSeverity>
@@ -1825,6 +1862,7 @@
     <defName>TM_BladeArtHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Bladedancer</label>
+	<description>Bladedancer stat boon.</description>
     <defaultLabelColor>(1,0.3,0.5)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -1922,6 +1960,7 @@
     <defName>TM_BowTrainingHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Bow Mastery</label>
+	<description>Ranger stat and bow enhancement boon.</description>
     <defaultLabelColor>(0,0.4,0.0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -2015,6 +2054,7 @@
     <defName>SpellMendingHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Spell Mending</label>
+	<description>Rapidly repairs equipped apparel and weapons.</description>
 	<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
 	<maxSeverity>2.0</maxSeverity>
@@ -2061,6 +2101,7 @@
     <scenarioCanAdd>false</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
 	<isBad>true</isBad>
+	<description>Result of being resurrected through magic.</description>
 	<makesSickThought>true</makesSickThought>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
@@ -2144,6 +2185,7 @@
     <defName>TM_DiseaseImmunityHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Disease Immunity</label>
+	<description>Increases natural disease immunity rates.</description>
     <defaultLabelColor>(.4,.8,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>3.0</maxSeverity>	
@@ -2168,6 +2210,7 @@
     <defName>TM_DiseaseImmunity2HD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Disease Immunity</label>
+	<description>Increases natural disease immunity rates.</description>
     <defaultLabelColor>(.4,.8,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>5.0</maxSeverity>	
@@ -2192,6 +2235,7 @@
     <defName>TM_BlurHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Blur</label>
+	<description>Manipulates possibility to avoid damage.</description>
     <defaultLabelColor>(0.0,0.5,1.0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -2212,6 +2256,7 @@
     <defName>TM_InvisibilityHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Invisibility</label>
+	<description>Causes the affected pawn to become invisible and untargetable by nearby enemies.</description>
     <defaultLabelColor>(.25,.15,.95)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -2244,6 +2289,7 @@
     <defName>TM_MageLightHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Magelight</label>
+	<description>A small light sustained by magic.</description>
 	<defaultLabelColor>(1,1,0.8)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<maxSeverity>1.0</maxSeverity>
@@ -2272,6 +2318,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.0, 0.25, 1)</defaultLabelColor>
     <label>Slow</label>
+	<description>Slowed limbs affected by frost.</description>
     <lethalSeverity>15</lethalSeverity>
 	<isBad>true</isBad>
 	<comps>
@@ -2298,6 +2345,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.0, 0.3, 1)</defaultLabelColor>
     <label>Heat Protection</label>
+	<description>A small boon that cools and increases resistance to high temperatures.</description>
 	<isBad>false</isBad>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -2314,7 +2362,7 @@
         <label>Cooler</label>
         <minSeverity>.001</minSeverity>
 		<statOffsets>
-		  <ComfyTemperatureMin>-4</ComfyTemperatureMin>
+		  <ComfyTemperatureMax>4</ComfyTemperatureMax>		  
 	    </statOffsets>
       </li>      
     </stages>
@@ -2325,6 +2373,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.0, 0.3, 1)</defaultLabelColor>
     <label>Refreshed</label>
+	<description>Refreshes a pawn, reducing weariness.</description>
 	<isBad>false</isBad>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -2350,6 +2399,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(1, 0.3, 0.0)</defaultLabelColor>
     <label>Cold Protection</label>
+	<description>A small boon that heats and increases resilience to cold temperatures</description>
 	<isBad>false</isBad>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -2366,7 +2416,7 @@
         <label>Heater</label>
         <minSeverity>.001</minSeverity>
 		<statOffsets>
-		  <ComfyTemperatureMax>4</ComfyTemperatureMax>
+		  <ComfyTemperatureMin>-4</ComfyTemperatureMin>
 	    </statOffsets>
       </li>      
     </stages>
@@ -2377,6 +2427,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(.8, 0.8, 0.0)</defaultLabelColor>
     <label>Shock Therapy</label>
+	<description>Trains the mind to improve behavior.</description>
 	<isBad>false</isBad>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -2404,6 +2455,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(.8, 0.8, 0.0)</defaultLabelColor>
     <label>Jolt</label>
+	<description>A small boon that increases physical energy.</description>
 	<isBad>false</isBad>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -2467,6 +2519,7 @@
     <defName>TM_EnergyRegenHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Energy Regeneration</label>
+	<description>Increases energy regeneration rates as a multiple of the buff's severity.</description>
 	<defaultLabelColor>(0,.5,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<maxSeverity>5.0</maxSeverity>
@@ -2492,6 +2545,7 @@
     <defName>TM_SS_SerumHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>SS Serum</label>
+	<description>A chemical enhancing physical abilities and magical resistance; reduces magical power and energy regeneration. The potency of the chemical increases in 3 stages and takes 100 days to fully mature.</description>
 	<defaultLabelColor>(0.2,0.6,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<maxSeverity>100.0</maxSeverity>

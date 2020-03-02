@@ -280,7 +280,7 @@ namespace TorannMagic
             {
                 if(!this.Map.GameConditionManager.ConditionIsActive(GameConditionDefOf.ToxicFallout))
                 {
-                    this.Map.GameConditionManager.RegisterCondition(GameConditionMaker.MakeCondition(GameConditionDefOf.ToxicFallout, 500000, 60));
+                    this.Map.GameConditionManager.RegisterCondition(GameConditionMaker.MakeCondition(GameConditionDefOf.ToxicFallout, 500000));
                 }
                 this.eventFrequencyMultiplier = 4;
             }
@@ -296,7 +296,7 @@ namespace TorannMagic
                 }
                 if (!this.Map.GameConditionManager.ConditionIsActive(GameConditionDefOf.HeatWave))
                 {
-                    this.Map.GameConditionManager.RegisterCondition(GameConditionMaker.MakeCondition(GameConditionDefOf.HeatWave, 500000, 60));
+                    this.Map.GameConditionManager.RegisterCondition(GameConditionMaker.MakeCondition(GameConditionDefOf.HeatWave, 500000));
                 }
                 this.eventFrequencyMultiplier = .5f;
                 this.areaRadius = 2;
@@ -314,7 +314,7 @@ namespace TorannMagic
                 }
                 if (!this.Map.GameConditionManager.ConditionIsActive(GameConditionDefOf.ColdSnap))
                 {
-                    this.Map.GameConditionManager.RegisterCondition(GameConditionMaker.MakeCondition(GameConditionDefOf.ColdSnap, 500000, 60));
+                    this.Map.GameConditionManager.RegisterCondition(GameConditionMaker.MakeCondition(GameConditionDefOf.ColdSnap, 500000));
                 }
                 weatherDef = WeatherDef.Named("SnowHard");
                 this.Map.weatherManager.TransitionTo(weatherDef);

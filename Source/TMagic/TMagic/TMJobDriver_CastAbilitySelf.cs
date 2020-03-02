@@ -17,7 +17,7 @@ namespace TorannMagic
         {
             yield return Toils_Misc.ThrowColonistAttackingMote(TargetIndex.A);
             verb = this.pawn.CurJob.verbToUse as Verb_UseAbility;
-            Find.Targeter.targetingVerb = verb;            
+            Find.Targeter.targetingSource = verb;            
             yield return Toils_Combat.CastVerb(TargetIndex.A, false);
             Toil toil1 = new Toil()
             {

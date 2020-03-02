@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using RimWorld;
 using System.Collections.Generic;
 using System.Linq;
@@ -680,7 +680,7 @@ namespace TorannMagic
                         Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
                         if (flag12)
                         {
-                            bool flag17 = compMight.AbilityUser.story != null && compMight.AbilityUser.story.WorkTagIsDisabled(WorkTags.Violent) && power.abilityDef.MainVerb.isViolent;
+                            bool flag17 = compMight.AbilityUser.story != null && compMight.AbilityUser.story.DisabledWorkTagsBackstoryAndTraits == WorkTags.Violent && power.abilityDef.MainVerb.isViolent;
                             if (flag17)
                             {
                                 Messages.Message("IsIncapableOfViolenceLower".Translate(

@@ -6,6 +6,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.8, 0.8, 1)</defaultLabelColor>
     <label>Terror</label>
+	<description>A raw display of magical power is inducing fear in this pawn.</description>
     <lethalSeverity>50</lethalSeverity>
 	<isBad>true</isBad>
 	<comps>

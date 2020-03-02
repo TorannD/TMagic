@@ -2,10 +2,11 @@
 <Defs>
 
 
-  <HediffDef >
+<!--   <HediffDef >
     <defName>TM_ShapeshiftHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Shape shifter</label>
+	<description>Improves the power of any animal form taken by a shape shifter.</description>
     <defaultLabelColor>(0.6,0.8,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -27,12 +28,13 @@
 		<becomeVisible>true</becomeVisible>
       </li>	  
 	</stages>
-  </HediffDef>
+  </HediffDef> -->
   
   <HediffDef >
     <defName>TM_EnchantedBodyHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Enchanted Body</label>
+	<description>Creation of enchanted body parts to enhance physical capability.</description>
     <defaultLabelColor>(0.6,0.8,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -130,6 +132,7 @@
     <defName>TM_EnchantedAuraHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Enchanted Aura</label>
+	<description>An enchanted aspect surrounds the pawn enhancing qualities considered for beauty, endearment, and attraction.</description>
     <defaultLabelColor>(0.6,0.8,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -235,6 +238,7 @@
     <defName>TM_ShapeshiftHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Shapeshifter</label>
+	<description>Improves the power of any animal form taken by a shape shifter.</description>
     <defaultLabelColor>(0.6,0.8,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -392,6 +396,7 @@
     <defName>TM_WeaponEnchantment_FireHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Enchanted Weapon</label>
+	<description>Enchants the currently equipped weapon with elemental fire that can burn or set fire to an object. This enchantment will end if the weapon is unequipped or swapped.</description>
     <defaultLabelColor>(0.8,0.2,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -434,6 +439,7 @@
     <defName>TM_WeaponEnchantment_IceHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Enchanted Weapon</label>
+	<description>Enchants the currently equipped weapon with elemental ice that inflicts frostbite. This enchantment will end if the weapon is unequipped or swapped.</description>
     <defaultLabelColor>(0.0,0.4,.8)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -476,6 +482,7 @@
     <defName>TM_WeaponEnchantment_LitHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Enchanted Weapon</label>
+	<description>Enchants the currently equipped weapon with elemental lightning that sends stunning shockwaves through an object. This enchantment will end if the weapon is unequipped or swapped.</description>
     <defaultLabelColor>(1,1,.6)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -518,6 +525,7 @@
     <defName>TM_WeaponEnchantment_DarkHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Enchanted Weapon</label>
+	<description>Enchants the currently equipped weapon with a touch of darkness that causes blindness. This enchantment will end if the weapon is unequipped or swapped.</description>
     <defaultLabelColor>(0.8,0.8,0.8)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>

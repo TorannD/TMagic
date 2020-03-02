@@ -307,13 +307,13 @@ namespace TorannMagic
                     comp.InitializeSpell();
                     this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
-                else if (parent.def == TorannMagicDefOf.SpellOf_ArcaneBolt && comp.spell_ArcaneBolt == false && !comp.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                else if (parent.def == TorannMagicDefOf.SpellOf_ArcaneBolt && comp.spell_ArcaneBolt == false && comp.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                 {
                     comp.spell_ArcaneBolt = true;
                     comp.InitializeSpell();
                     this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
-                else if (parent.def == TorannMagicDefOf.SpellOf_LightningTrap && comp.spell_LightningTrap == false && !comp.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                else if (parent.def == TorannMagicDefOf.SpellOf_LightningTrap && comp.spell_LightningTrap == false && comp.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                 {
                     comp.spell_LightningTrap = true;
                     comp.InitializeSpell();

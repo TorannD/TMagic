@@ -78,7 +78,7 @@ namespace TorannMagic
                             IntVec3 rndPos = this.CasterPawn.Position;
                             rndPos.x += Mathf.RoundToInt(Rand.Range(-1.5f, 1.5f));
                             rndPos.z += Mathf.RoundToInt(Rand.Range(-1.5f, 1.5f));
-                            FilthMaker.MakeFilth(rndPos, this.CasterPawn.Map, this.CasterPawn.RaceProps.BloodDef, Rand.RangeInclusive(1, 2));
+                            FilthMaker.TryMakeFilth(rndPos, this.CasterPawn.Map, this.CasterPawn.RaceProps.BloodDef, Rand.RangeInclusive(1, 2));
                             TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_BloodSquirt"), this.CasterPawn.DrawPos, this.CasterPawn.Map, Rand.Range(.7f, 1.1f), .15f, .05f, .66f, Rand.Range(-100, 100), Rand.Range(1, 2), Rand.Range(0, 360), Rand.Range(0, 360));
                         }
                     }

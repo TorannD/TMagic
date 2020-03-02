@@ -6,6 +6,7 @@
     <defName>TM_BloodHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Blood Magic</label>
+	<description>Accounts for the blood power of a blood mage.</description>
     <defaultLabelColor>(0.6,0,0.0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -33,6 +34,7 @@
     <defName>TM_RendHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Hemorrhaging</label>
+	<description>A horrendous wound causing massive bleeding.</description>
     <defaultLabelColor>(0.6,0,0.0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -59,6 +61,7 @@
     <defName>TM_BloodForBloodHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Blood Drain</label>
+	<description>Transfers blood from this target to a blood mage. Heals wounds in the process.</description>
     <defaultLabelColor>(0.6,0,0.0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -84,6 +87,7 @@
     <defName>TM_BloodShieldHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Blood Shield</label>
+	<description>Enveloped in a protective bubble of life energy; energy from each blow to the Blood Shield restores health to the protected pawn.</description>
     <defaultLabelColor>(0.6,0,0.0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>

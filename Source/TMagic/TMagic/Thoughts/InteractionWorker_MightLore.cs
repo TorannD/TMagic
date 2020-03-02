@@ -8,11 +8,12 @@ namespace TorannMagic.Thoughts
     public class InteractionWorker_MightLore : InteractionWorker
     {
 
-        public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks, out string letterText, out string letterLabel, out LetterDef letterDef)
+        public override void Interacted(Pawn initiator, Pawn recipient, List<RulePackDef> extraSentencePacks, out string letterText, out string letterLabel, out LetterDef letterDef, out LookTargets lookTargets)
         {
             letterText = null;
             letterLabel = null;
             letterDef = null;
+            lookTargets = null;
             CompAbilityUserMight compInit = initiator.GetComp<CompAbilityUserMight>();
             CompAbilityUserMight compRec = recipient.GetComp<CompAbilityUserMight>();
             //base.Interacted(initiator, recipient, extraSentencePacks);

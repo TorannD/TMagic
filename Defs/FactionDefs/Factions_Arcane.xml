@@ -15,7 +15,7 @@
     <leaderTitle>Mage King</leaderTitle>
 	<autoFlee>false</autoFlee>
 	<earliestRaidDays>7</earliestRaidDays>
-    <expandingIconTexture>World/ArcaneTown</expandingIconTexture>
+    <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
     <colorSpectrum>
       <li>(0.64, 0.05, 0.8)</li>
       <li>(0.8, 0.05, 0.64)</li>
@@ -121,7 +121,7 @@
 		</options>
       </li>
     </pawnGroupMakers>
-    <homeIconPath>World/WorldObjects/DefaultSettlement</homeIconPath>
+    <factionIconPath>World/ArcaneTown</factionIconPath>
   </FactionDef>
 
 

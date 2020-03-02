@@ -5,6 +5,7 @@
     <defName>TM_UndeadHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Undead</label>
+	<description>A pawn animated by necrotic energy. This pawn possesses no intent of its own, and requires continual direction and energy from a necromancer.</description>
     <defaultLabelColor>(1,0.8,0.0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -119,6 +120,7 @@
     <defName>TM_LichHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Lich</label>
+	<description>A pawn that has achieved immortality by severing their connection to the cycle of life and death.</description>
     <defaultLabelColor>(.8,0,0.8)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -148,6 +150,7 @@
     <defName>TM_UndeadAnimalHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Undead</label>
+	<description>A pawn animated by necrotic energy. This pawn possesses no intent of its own, and requires continual direction and energy from a necromancer.</description>
     <defaultLabelColor>(1,0.8,0.0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -245,6 +248,7 @@
     <defName>TM_DeathMarkHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Death Mark</label>
+	<description>Marked by death, this pawn will soon die and be reanimated as an undead. (not used)</description>
     <defaultLabelColor>(1,0.8,0.2)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>true</makesSickThought>
@@ -268,6 +272,7 @@
     <defName>TM_DeathMarkCurse</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Death Mark</label>
+	<description>Marked by death, this pawn is unable to focus on the present due to their focus on their inevitable death.</description>
     <defaultLabelColor>(1,0.8,0.2)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>true</makesSickThought>
@@ -343,6 +348,7 @@
     <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_TormentHD</defName>
 	<label>Torment</label>
+	<description>Pain induced by dark energy.</description>
     <defaultLabelColor>(0.1,0.1,0.1)</defaultLabelColor>
 	<displayWound>false</displayWound>
 	<makesSickThought>false</makesSickThought>
@@ -373,6 +379,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_DeathBoltHD</defName>
 	<label>death bolt</label>
+	<description>Destructive energy that kills all living things.</description>
     <defaultLabelColor>(0.1,0.1,0.1)</defaultLabelColor>
 	<displayWound>false</displayWound>
 	<makesSickThought>false</makesSickThought>
@@ -405,6 +412,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.3, 0.37, .11)</defaultLabelColor>
     <label>Tormented</label>
+	<description>Painfully tormented by dark magic.</description>
 	<makesSickThought>true</makesSickThought>
     <lethalSeverity>50</lethalSeverity>
 	<isBad>true</isBad>
@@ -479,6 +487,7 @@
     <defName>TM_UndeadStageHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Body stage</label>
+	<description>The current stage of undead.</description>
     <defaultLabelColor>(1,0.8,0.0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>

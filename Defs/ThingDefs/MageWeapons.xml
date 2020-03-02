@@ -125,7 +125,7 @@
       </li>
     </comps>
 	<recipeMaker>
-      <workSpeedStat>SmithingSpeed</workSpeedStat>
+      <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
       <workSkill>Crafting</workSkill>
 	  <effectWorking>Smelt</effectWorking>
       <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
@@ -183,7 +183,7 @@ Arcane Resistance: +20%</description>
 	  <ElephantTusk>2</ElephantTusk>
     </costList>
 	<recipeMaker>
-	  <workSpeedStat>SmithingSpeed</workSpeedStat>
+	  <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
       <workSkill>Crafting</workSkill>
 	  <effectWorking>Smelt</effectWorking>
       <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
@@ -305,7 +305,7 @@ Ability Cooldown: -10%</description>
 	  <ElephantTusk>2</ElephantTusk>
     </costList>
 	<recipeMaker>
-	  <workSpeedStat>SmithingSpeed</workSpeedStat>
+	  <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
       <workSkill>Crafting</workSkill>
 	  <effectWorking>Smelt</effectWorking>
       <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
@@ -399,7 +399,7 @@ Arcane Resistance: +30%</description>
 	  <ThrumboHorn>2</ThrumboHorn>
     </costList>
 	<recipeMaker>
-	  <workSpeedStat>SmithingSpeed</workSpeedStat>
+	  <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
       <workSkill>Crafting</workSkill>
 	  <effectWorking>Smelt</effectWorking>
       <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
@@ -518,7 +518,7 @@ Class XP Gain: -20%</description>
 	  <ThrumboHorn>1</ThrumboHorn>
     </costList>
 	<recipeMaker>
-	  <workSpeedStat>SmithingSpeed</workSpeedStat>
+	  <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
       <workSkill>Crafting</workSkill>
 	  <effectWorking>Smelt</effectWorking>
       <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
@@ -873,7 +873,7 @@ Augmentation adds ability: Arcane Barrier</description>
 	  <RawMagicyte>200</RawMagicyte>
     </costList>
 	<recipeMaker>
-	  <workSpeedStat>SmithingSpeed</workSpeedStat>
+	  <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
       <workSkill>Crafting</workSkill>
 	  <effectWorking>Smelt</effectWorking>
       <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
@@ -1011,7 +1011,7 @@ Damage Boost: +40%</description>
 	  <RawMagicyte>200</RawMagicyte>
     </costList>
 	<recipeMaker>
-	  <workSpeedStat>SmithingSpeed</workSpeedStat>
+	  <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
       <workSkill>Crafting</workSkill>
 	  <effectWorking>Smelt</effectWorking>
       <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>

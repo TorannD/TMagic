@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	
+
+	<!-- 
   <IncidentDef>
     <defName>ArcaneEnemyRaid</defName>
     <label>enemy arcane raiding party</label>
@@ -51,7 +52,7 @@
 				<li>(7,1)</li>
 			</points>
 		</chanceFactorByPopulationCurve>
-  </IncidentDef>
+  </IncidentDef> -->
   
 
 </Defs>

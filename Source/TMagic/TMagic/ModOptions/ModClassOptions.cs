@@ -6,7 +6,7 @@ using Verse;
 using UnityEngine;
 using System.Text;
 using System.Reflection;
-using Harmony;
+using HarmonyLib;
 
 namespace TorannMagic.ModOptions
 {

@@ -260,7 +260,7 @@ namespace TorannMagic
             explosion.postExplosionSpawnChance = postExplosionSpawnChance;
             explosion.postExplosionSpawnThingCount = postExplosionSpawnThingCount;
             explosion.applyDamageToExplosionCellsNeighbors = applyDamageToExplosionCellsNeighbors;
-            explosion.StartExplosion(explosionSound);
+            explosion.StartExplosion(explosionSound, null);
         }
 
         public void SingleSpawnLoop(SpawnThings spawnables, IntVec3 position, Map map)

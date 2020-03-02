@@ -5,6 +5,7 @@
     <defName>TM_StoneskinHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Stoneskin</label>
+	<description>Each charge nullifies the damage from a single attack.</description>
     <defaultLabelColor>(0.7,0.55,0.05)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>

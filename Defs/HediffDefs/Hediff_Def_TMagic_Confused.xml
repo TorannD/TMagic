@@ -6,6 +6,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.8, 0.8, 1)</defaultLabelColor>
     <label>Confused</label>
+	<description>Frequently causes a target to become confused.</description>
     <lethalSeverity>50</lethalSeverity>
 	<isBad>true</isBad>
 	<comps>

@@ -4,6 +4,7 @@
   <HediffDef ParentName="TM_InjuryBase">  
     <defName>TM_Poison_HD</defName>
     <label>Poison</label>
+	<description>Damage caused by poison.</description>
     <displayWound>true</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -30,6 +31,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.52, 0.9, 0.05)</defaultLabelColor>
     <label>Poisoned</label>
+	<description>Side effects of poison.</description>
 	<makesSickThought>true</makesSickThought>
 	<displayWound>false</displayWound>
     <lethalSeverity>10</lethalSeverity>

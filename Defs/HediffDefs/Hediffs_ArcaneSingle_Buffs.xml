@@ -6,6 +6,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.55, 0.05, 1)</defaultLabelColor>
     <label>arcane speed</label>
+	<description>Arcane power that augments a pawns movement speed.</description>
     <maxSeverity>20.0</maxSeverity>
 	<isBad>false</isBad>
 	<comps>
@@ -72,6 +73,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.55, 0.05, 1)</defaultLabelColor>
     <label>arcane dexterity</label>
+	<description>Arcane power that augments dexterity (manipulation).</description>
     <maxSeverity>20.0</maxSeverity>
 	<isBad>false</isBad>
 	<comps>
@@ -138,6 +140,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.55, 0.05, 1)</defaultLabelColor>
     <label>infused oxygen</label>
+	<description>Arcane power that enhances the efficiency and capacity of breathing.</description>
     <maxSeverity>20.0</maxSeverity>
 	<isBad>false</isBad>
 	<comps>
@@ -204,6 +207,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.55, 0.05, 1)</defaultLabelColor>
     <label>arcane vision</label>
+	<description>Arcane power that augments vision.</description>
     <maxSeverity>20.0</maxSeverity>
 	<isBad>false</isBad>
 	<comps>
@@ -270,6 +274,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.8, 0.05, 0.05)</defaultLabelColor>
     <label>arcane slow</label>
+	<description>Arcane power that reduces movement.</description>
     <lethalSeverity>15</lethalSeverity>
 	<isBad>true</isBad>
 	<comps>
@@ -340,6 +345,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.8, 0.05, 0.05)</defaultLabelColor>
     <label>arcane cripple</label>
+	<description>Arcane power that reduces dexterity (manipulation).</description>
     <lethalSeverity>15</lethalSeverity>
 	<isBad>true</isBad>
 	<comps>
@@ -410,6 +416,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.8, 0.05, 0.05)</defaultLabelColor>
     <label>arcane suffocation</label>
+	<description>Arcane power that diminishes the circulation of air.</description>
     <lethalSeverity>15</lethalSeverity>
 	<isBad>true</isBad>
 	<comps>
@@ -480,6 +487,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.8, 0.05, 0.05)</defaultLabelColor>
     <label>arcane blind</label>
+	<description>Arcane power that decreases sight.</description>
     <lethalSeverity>15</lethalSeverity>
 	<isBad>true</isBad>
 	<comps>
@@ -551,6 +559,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.8, 0.05, 0.05)</defaultLabelColor>
     <label>Magically Mute</label>
+	<description>A curse that prevents the use of magical abilities.</description>
 	<maxSeverity>10.0</maxSeverity>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>

@@ -6,6 +6,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.55, 0.05, 1)</defaultLabelColor>
     <label>mana sickness</label>
+	<description>Mana sickness affects mages when they have 0 mana and their regeneration is negative. Mana sickness will eventually kill a mage if it is not reversed. Players may evaluate a mage's mana regeneration in the Magic Tab while hovering over the Mana regeneration value to display a tooltip showing contributors affecting mana regeneration.</description>
     <lethalSeverity>10</lethalSeverity>
 	<isBad>true</isBad>
 	<comps>
@@ -116,6 +117,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
 	<defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
     <label>arcane sickness</label>
+	<description>A sickness caused by tainted magic.</description>
     <taleOnVisible>IllnessRevealed</taleOnVisible>
     <lethalSeverity>1</lethalSeverity>
 	<initialSeverity>0.001</initialSeverity>

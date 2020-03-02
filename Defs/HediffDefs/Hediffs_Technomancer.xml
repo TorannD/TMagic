@@ -6,6 +6,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.0, 0.8, 0)</defaultLabelColor>
     <label>kinetic shield</label>
+	<description>A shield that redirects kinetic energy; the shield can be penetrated by a projectile with sufficient force.</description>
 	<tendable>false</tendable>
     <makesAlert>false</makesAlert>
 	<isBad>false</isBad>
@@ -28,6 +29,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.0, 0.8, 0)</defaultLabelColor>
     <label>kinetic shield</label>
+	<description>A shield that redirects kinetic energy; the shield can be penetrated by a projectile with sufficient force.</description>
 	<tendable>false</tendable>
     <makesAlert>false</makesAlert>
 	<isBad>false</isBad>
@@ -50,6 +52,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.0, 0.8, 0)</defaultLabelColor>
     <label>kinetic shield</label>
+	<description>A shield that redirects kinetic energy; the shield can be penetrated by a projectile with sufficient force.</description>
 	<tendable>false</tendable>
     <makesAlert>false</makesAlert>
 	<isBad>false</isBad>
@@ -72,6 +75,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.0, 0.8, 0)</defaultLabelColor>
     <label>kinetic shield</label>
+	<description>A shield that redirects kinetic energy; the shield can be penetrated by a projectile with sufficient force.</description>
 	<tendable>false</tendable>
     <makesAlert>false</makesAlert>
 	<isBad>false</isBad>
@@ -93,6 +97,7 @@
     <defName>TM_TechnoBitHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Techno Bit</label>
+	<description>A small, floating sphere that assists the Technomancer.</description>
     <defaultLabelColor>(0,.8,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -120,6 +125,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.0, 0.8, 0)</defaultLabelColor>
     <label>bit assist</label>
+	<description>Assistance provided by the Techno Bit.</description>
 	<isBad>false</isBad>
 	<comps>
       <li Class="HediffCompProperties_Disappears">
@@ -302,6 +308,7 @@
     <defName>TM_NanoStimulantWithdrawalHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>stim withdrawal</label>
+	<description>Withdrawal after the effects of the nano stim wear off.</description>
     <defaultLabelColor>(0.8,0,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -354,6 +361,7 @@
     <defName>TM_OverdriveHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>overdrive</label>
+	<description>Overclocked electronics and machinery are performing at hazardous rates.</description>
 	<defaultLabelColor>(0,.8,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -462,6 +470,7 @@
     <defName>TM_OverdriveHD_I</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>overdrive</label>
+	<description>Overclocked electronics and machinery are performing at hazardous rates.</description>
 	<defaultLabelColor>(0,.8,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -570,6 +579,7 @@
     <defName>TM_OverdriveHD_II</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>overdrive</label>
+	<description>Overclocked electronics and machinery are performing at hazardous rates.</description>
 	<defaultLabelColor>(0,.8,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -678,6 +688,7 @@
     <defName>TM_OverdriveHD_III</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>overdrive</label>
+	<description>Overclocked electronics and machinery are performing at hazardous rates.</description>
 	<defaultLabelColor>(0,.8,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -788,6 +799,7 @@
     <defName>TM_NanoStimulantHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>nano stimulant</label>
+	<description>Combat enhancing stimulant; followed by a brief withdrawal period.</description>
 	<defaultLabelColor>(0,.8,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -1332,6 +1344,7 @@
   <HediffDef ParentName="TM_ReprogrammedMechanitesBase">
     <defName>TM_ReprogrammedFibMechanites_HD</defName>
     <label>reprogrammed fibrous mechanites</label>
+	<description>Fibrous mechanites reprogrammed to cause less stress on the host.</description>
     <stages>
       <li>
         <label>mechanite augmentation (physical)</label>
@@ -1378,6 +1391,7 @@
   <HediffDef ParentName="TM_ReprogrammedMechanitesBase">
     <defName>TM_ReprogrammedSenMechanites_HD</defName>
     <label>reprogrammed sensory mechanites</label>
+	<description>Sensory mechanites reprogrammed to cause less stress on the host.</description>
     <stages>
       <li>
         <painOffset>0.1</painOffset>

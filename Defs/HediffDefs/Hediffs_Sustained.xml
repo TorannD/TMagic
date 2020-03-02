@@ -7,6 +7,7 @@
     <defName>TM_HediffGearRepair</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Gear Repair</label>
+	<description>Maintenance and care of equipment.</description>
     <defaultLabelColor>(1,0.3,0.5)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>4.0</maxSeverity>	
@@ -30,6 +31,7 @@
     <defName>TM_HediffInnerHealing</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Inner Healing</label>
+	<description>Improves natural healing.</description>
     <defaultLabelColor>(1,0.3,0.5)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>4.0</maxSeverity>	
@@ -66,6 +68,7 @@
     <defName>TM_HediffHeavyBlow</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Heavy Blow</label>
+	<description>Increases damage dealt with each physical strike.</description>
     <defaultLabelColor>(1,0.3,0.5)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>4.0</maxSeverity>	
@@ -108,6 +111,7 @@
     <defName>TM_HediffStrongBack</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Strong Back</label>
+	<description>Increases carrying capacity.</description>
     <defaultLabelColor>(1,0.3,0.5)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>4.0</maxSeverity>	
@@ -149,6 +153,7 @@
     <defName>TM_HediffThickSkin</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Thick Skin</label>
+	<description>Hardens skin, making it tougher.</description>
     <defaultLabelColor>(1,0.3,0.5)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>4.0</maxSeverity>	
@@ -205,6 +210,7 @@
     <defName>TM_HediffFightersFocus</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Fighters Focus</label>
+	<description>Mental focus for fighters.</description>
     <defaultLabelColor>(1,0.3,0.5)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>4.0</maxSeverity>	
@@ -236,6 +242,7 @@
     <defName>TM_HediffSprint</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Sprint</label>
+	<description>Move faster.</description>
     <defaultLabelColor>(1,0.3,0.5)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>4.0</maxSeverity>	
@@ -326,6 +333,7 @@
     <defName>TM_BurningFuryHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Burning Fury</label>
+	<description>Emits a shield of raw energy that both deflects attacks and inflicts harm on nearby enemies.</description>
     <defaultLabelColor>(1,0.4,0.25)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>4.0</maxSeverity>	

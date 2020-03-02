@@ -64,7 +64,7 @@ namespace TorannMagic
                                 bool flag_SL = false;
                                 if (undeadPawn.def.defName == "SL_Runner" || undeadPawn.def.defName == "SL_Peon" || undeadPawn.def.defName == "SL_Archer" || undeadPawn.def.defName == "SL_Hero")
                                 {                                    
-                                    PawnGenerationRequest pgr = new PawnGenerationRequest(PawnKindDef.Named("Tribesperson"), pawn.Faction, PawnGenerationContext.NonPlayer, -1, true, false, false, false, false, true, 0, false, false, false, false, false, false, false, null, null, null, null, null, null, null, "Undead");
+                                    PawnGenerationRequest pgr = new PawnGenerationRequest(PawnKindDef.Named("Tribesperson"), pawn.Faction, PawnGenerationContext.NonPlayer, -1, true, false, false, false, false, true, 0, false, false, false, false, false, false, false, false, 0, null, 0);
                                     Pawn newUndeadPawn = PawnGenerator.GeneratePawn(pgr);
                                     GenSpawn.Spawn(newUndeadPawn, corpse.Position, corpse.Map, WipeMode.Vanish);
                                     corpse.Strip();
@@ -221,7 +221,7 @@ namespace TorannMagic
         {
             undeadPawn.story.childhood = null;
             undeadPawn.story.adulthood = null;
-            undeadPawn.story.DisabledWorkTypes.Clear();
+            //undeadPawn.story.DisabledWorkTypes.Clear();
             //undeadPawn.story.WorkTypeIsDisabled(WorkTypeDefOf.Warden);
             //undeadPawn.story.WorkTypeIsDisabled(WorkTypeDefOf.Hunting);
             //undeadPawn.story.WorkTypeIsDisabled(WorkTypeDefOf.Handling);

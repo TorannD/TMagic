@@ -6,6 +6,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.8, 0.8, 1)</defaultLabelColor>
     <label>Sedated</label>
+	<description>Effects of a tranquilizer.</description>
 	<makesSickThought>true</makesSickThought>
     <lethalSeverity>50</lethalSeverity>
 	<isBad>true</isBad>
@@ -80,6 +81,7 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.8, 0.8, 1)</defaultLabelColor>
     <label>Slowed</label>
+	<description>Effects of an ability that reduces physical and mental agility.</description>
 	<makesSickThought>false</makesSickThought>
     <lethalSeverity>100</lethalSeverity>
 	<isBad>true</isBad>

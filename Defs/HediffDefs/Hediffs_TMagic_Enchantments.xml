@@ -5,6 +5,7 @@
     <defName>TM_HediffEnchantment_maxMP</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Max Energy:</label>
+	<description>Energy capacity enchantment.</description>
     <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -31,6 +32,7 @@
     <defName>TM_HediffEnchantment_coolDown</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>CoolDown:</label>
+	<description>Ability cooldown enchantment.</description>
     <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -57,6 +59,7 @@
     <defName>TM_HediffEnchantment_mpCost</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Energy Cost:</label>
+	<description>Energy cost enchantment.</description>
     <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -83,6 +86,7 @@
     <defName>TM_HediffEnchantment_mpRegenRate</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Energy Regen:</label>
+	<description>Energy regeneration enchantment.</description>
     <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -109,6 +113,7 @@
     <defName>TM_HediffEnchantment_xpGain</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>XP Gain:</label>
+	<description>Enchantment improves experience gain.</description>
     <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -135,6 +140,7 @@
     <defName>TM_HediffEnchantment_arcaneRes</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Arcane Resistance:</label>
+	<description>Resists the effects of the arcane.</description>
     <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -161,6 +167,7 @@
     <defName>TM_HediffEnchantment_arcaneDmg</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Damage Bonus:</label>
+	<description>Increases the effects of arcane abilities.</description>
     <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -187,6 +194,7 @@
     <defName>TM_HediffEnchantment_arcaneSpectre</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Arcane Spectre</label>
+	<description>An enchantment that can add bonus spiritual damage to any attack.</description>
     <defaultLabelColor>(.8,0,0.8)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -213,6 +221,7 @@
     <defName>TM_HediffEnchantment_phantomShift</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Phantom Shift</label>
+	<description>An enchantment that shifts all damage from an attack to the nether.</description>
     <defaultLabelColor>(.8,0,0.8)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -239,6 +248,7 @@
     <defName>TM_HediffEnchantment_arcalleumCooldown</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Arcalleum Cooldown</label>
+	<description>An enchantment that can instantly refresh the cooldown of an ability.</description>
     <defaultLabelColor>(.8,0,0.8)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>

@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Harmony;
+using HarmonyLib;
 
 namespace TorannMagic
 {
@@ -113,7 +113,7 @@ namespace TorannMagic
                     rndPos.z += Mathf.RoundToInt(Rand.Range(-2f, 2f));
                     if (this.Pawn.RaceProps != null && this.Pawn.RaceProps.BloodDef != null && this.Pawn.Map != null)
                     {
-                        FilthMaker.MakeFilth(rndPos, this.Pawn.Map, this.Pawn.RaceProps.BloodDef, 1);
+                        FilthMaker.TryMakeFilth(rndPos, this.Pawn.Map, this.Pawn.RaceProps.BloodDef, 1);
                         TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_BloodSquirt"), this.Pawn.DrawPos, this.Pawn.Map, Rand.Range(.6f, 1.0f), .15f, .05f, .66f, Rand.Range(-100, 100), Rand.Range(1, 2), Rand.Range(0, 360), Rand.Range(0, 360));
                     }                    
                 }

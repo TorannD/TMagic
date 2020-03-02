@@ -2007,7 +2007,7 @@ namespace TorannMagic
 
         public void LevelUpPower(MagicPower power)
         {
-            foreach (AbilityDef current in power.TMabilityDefs)
+            foreach (AbilityUser.AbilityDef current in power.TMabilityDefs)
             {
                 base.RemovePawnAbility(current);
             }
@@ -6719,7 +6719,7 @@ namespace TorannMagic
                 //combat (drafted) spells
                 if (this.Pawn.drafter != null && this.Pawn.Drafted && this.Pawn.CurJob.def != JobDefOf.Goto && this.Mana != null && this.Mana.CurLevelPercentage >= settingsRef.autocastMinThreshold)
                 {
-                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || flagCM ) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || flagCM ) && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersIF)
@@ -6739,7 +6739,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || flagCM) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || flagCM) && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersHoF)
@@ -6803,7 +6803,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || flagCM) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || flagCM) && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersSB)
@@ -6823,7 +6823,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || flagCM) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || flagCM) && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersA)
@@ -6884,7 +6884,7 @@ namespace TorannMagic
                         {
                             if (current != null && current.abilityDef != null && current.learned)
                             {
-                                if (current.abilityDef == TorannMagicDefOf.TM_Poison && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                                if (current.abilityDef == TorannMagicDefOf.TM_Poison && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                                 {
                                     MagicPower magicPower = this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Poison);
                                     if (magicPower != null && magicPower.learned && magicPower.autocast)
@@ -6926,7 +6926,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus) || flagCM) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus) || flagCM) && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersSD)
@@ -6980,7 +6980,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Warlock) || flagCM) && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Warlock) || flagCM) && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
                         PawnAbility ability = null;
                         foreach (MagicPower current in this.MagicData.MagicPowersWD)
@@ -7148,7 +7148,7 @@ namespace TorannMagic
                             if (castSuccess) goto AutoCastExit;
                         }
                     }
-                    if (this.spell_ArcaneBolt && !this.Pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+                    if (this.spell_ArcaneBolt && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
                         MagicPower magicPower = this.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ArcaneBolt);
                         if (magicPower != null && magicPower.autocast)

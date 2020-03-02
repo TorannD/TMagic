@@ -5,7 +5,7 @@ using RimWorld;
 using AbilityUser;
 using Verse;
 using UnityEngine;
-using Harmony;
+using HarmonyLib;
 
 namespace TorannMagic
 {

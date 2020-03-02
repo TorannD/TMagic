@@ -164,6 +164,7 @@ The fruit it produces, known more commonly as pomona, can be consumed raw and is
     <defName>TM_PomanaSenseHD</defName>
     <hediffClass>HediffWithComps</hediffClass>
     <label>pomana sense</label>
+	<description>Relaxation and heightened senses from consuming raw pomana fruit.</description>
     <defaultLabelColor>(1,0.45,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>1.0</maxSeverity>
@@ -316,6 +317,7 @@ The claims that pomanasyrrium grant insight and clarity is disregarded by most a
     <defName>TM_SyrriumSenseHD</defName>
     <hediffClass>HediffWithComps</hediffClass>
     <label>syrrium sense</label>
+	<description>Heightened senses resulting from consuming condensed pomanasyrrium.</description>
     <defaultLabelColor>(1,0.45,0)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>2.0</maxSeverity>
@@ -406,6 +408,7 @@ The claims that pomanasyrrium grant insight and clarity is disregarded by most a
   <HediffDef ParentName="DrugToleranceBase">
     <defName>TM_SyrriumTolerance</defName>
     <label>syrrium tolerance</label>
+	<description>Natural adjustment to normalize the effects of consuming condensed pomanasyrrium.</description>
     <comps>
       <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-0.010</severityPerDay>
@@ -454,6 +457,7 @@ The claims that pomanasyrrium grant insight and clarity is disregarded by most a
     <defName>TM_SyrriumAddiction</defName>
     <hediffClass>Hediff_Addiction</hediffClass>
     <label>syrrium addiction</label>
+	<description>The urge to feel the effects of syrrium have developed into a need.</description>
     <causesNeed>Chemical_Syrrium</causesNeed>
     <comps>
       <li Class="HediffCompProperties_SeverityPerDay">

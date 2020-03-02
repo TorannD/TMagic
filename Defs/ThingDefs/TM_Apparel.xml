@@ -45,7 +45,7 @@
         <li>HandTailoringBench</li>
 		<li>TableArcaneForge</li>
       </recipeUsers>
-	  <workSpeedStat>TailoringSpeed</workSpeedStat>
+	  <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
       <workSkill>Crafting</workSkill>
       <effectWorking>Tailor</effectWorking>
       <soundWorking>Recipe_Tailor</soundWorking>
@@ -72,7 +72,7 @@
         <li>FueledSmithy</li>
 		<li>TableArcaneForge</li>
       </recipeUsers>
-	  <workSpeedStat>SmithingSpeed</workSpeedStat>
+	  <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
       <workSkill>Crafting</workSkill>
       <effectWorking>Smith</effectWorking>
       <soundWorking>Recipe_Smith</soundWorking>

@@ -5,6 +5,7 @@
     <defName>TM_LullabyHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Lullaby</label>
+	<description>Reduces the consciousness of a pawn.</description>
     <defaultLabelColor>(0,1,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -71,6 +72,7 @@
     <defName>TM_InspirationalHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Inspirational</label>
+	<description>Causes others to gain inspirations.</description>
     <defaultLabelColor>(.8,0,0.8)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -101,6 +103,7 @@
     <defName>TM_EntertainingHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Entertaining</label>
+	<description>Actively seeks out other pawns to cheer up and entertain.</description>
     <defaultLabelColor>(.8,0,0.8)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -127,6 +130,7 @@
     <defName>TM_SingBattleHymnHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>battle chant</label>
+	<description>Chanting a resounding battle hymn to spur allies to victory.</description>
     <defaultLabelColor>(.8,0,0.8)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -164,6 +168,7 @@
     <defName>TM_BattleHymnHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Battle Hymn</label>
+	<description>Inspired and energized by a battle hymn.</description>
 	<defaultLabelColor>(.96,.9,0.45)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<isBad>false</isBad>

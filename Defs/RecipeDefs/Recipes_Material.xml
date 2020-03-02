@@ -9,7 +9,7 @@
     <description>Weave mana, magicyte, and cloth into manaweave</description>
     <jobString>weaving mana</jobString>
 <!-- 	<researchPrerequisite>TechPlasteelCrafting</researchPrerequisite> -->
-    <workSpeedStat>TailoringSpeed</workSpeedStat>
+    <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
     <effectWorking>Tailor</effectWorking>
     <soundWorking>Recipe_Tailor</soundWorking>
     <workAmount>6000</workAmount>
