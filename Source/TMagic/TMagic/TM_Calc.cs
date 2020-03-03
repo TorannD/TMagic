@@ -2758,7 +2758,7 @@ namespace TorannMagic
                 {
                     result = true;
                 }
-                else if (wpn.def.defName.Contains("Pistol") || wpn.def.defName.Contains("pistol") || wpn.def.defName.Contains("revolver"))
+                else if (wpn.def.defName.Contains("Pistol") || wpn.def.defName.Contains("pistol") || wpn.def.defName.Contains("SMG") || wpn.def.defName.Contains("revolver"))
                 {
                     //Log.Message("weapon name contains pistol: " + wpn.def.defName);
                     result = true;
@@ -2798,7 +2798,7 @@ namespace TorannMagic
                 {
                     result = true;
                 }
-                else if (wpn.def.defName.Contains("Rifle") || wpn.def.defName.Contains("rifle") || wpn.def.defName.Contains("SMG") || wpn.def.defName.Contains("LMG"))
+                else if ((wpn.def.defName.Contains("Rifle") || wpn.def.defName.Contains("rifle") || wpn.def.defName.Contains("LMG")) && !(wpn.def.defName.Contains("Sniper") || wpn.def.defName.Contains("sniper")))
                 {
                     //Log.Message("weapon name contains rifle: " + wpn.def.defName);
                     result = true;

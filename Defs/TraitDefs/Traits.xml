@@ -2101,7 +2101,7 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		<degreeDatas>	
 		  <li>
 			<label>Commander</label>
-			<description>As a Commander, [PAWN_nameDef] exhibits a charismatic personality and stalwart presence that make other pawns flock to [PAWN_possessive] lead. Commander's utilize the weight of their presence to naturally inspire nearby pawns, and when that's not enough, they can issue orders that drive their followers to victory. Because {PAWN_nameDef] is used to everyone doing [PAWN_possessive] bidding, [PAWN_pronoun] considers menial tasks beneath [PAWN_possessive] status, and is generally a lackluster worker.</description>
+			<description>As a Commander, [PAWN_nameDef] exhibits a charismatic personality and stalwart presence that makes other pawns want to follow [PAWN_possessive] lead. Commander's utilize the weight of their presence to inspire nearby pawns, and when that's not enough, they can issue orders that drive their followers to victory. Because [PAWN_nameDef] is used to everyone doing [PAWN_possessive] bidding, [PAWN_pronoun] considers menial tasks beneath [PAWN_possessive] status, and is generally a lackluster worker.</description>
 			<degree>4</degree>
 				<statOffsets>
 					<SocialImpact>+0.4</SocialImpact>

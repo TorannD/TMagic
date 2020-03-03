@@ -18,7 +18,7 @@ namespace TorannMagic.Conditions
         private int areaRadius = 4;
         bool initialized = false;
         bool disabled = false;
-        Thing thing;
+        public Thing thing;
         private int nextEventTick = 0;
         private int ticksBetweenEvents = 4000;
 

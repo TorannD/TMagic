@@ -20,7 +20,7 @@ namespace TorannMagic.Conditions
                 int duration = Mathf.RoundToInt(this.def.durationDays.RandomInRange * 60000f);
                 GameCondition_ElementalAssault gameCondition_ElementalAssault = (GameCondition_ElementalAssault)GameConditionMaker.MakeCondition(GameConditionDef.Named("ElementalAssault"), duration);
                 map.gameConditionManager.RegisterCondition(gameCondition_ElementalAssault);
-                base.SendStandardLetter(parms, null, str);
+                base.SendStandardLetter(parms, gameCondition_ElementalAssault.thing, str);
                 //base.SendStandardLetter(new TargetInfo(gameCondition_ElementalAssault.centerLocation.ToIntVec3, map, false), null, new string[0]);
                 List<Faction> elementalFaction = Find.FactionManager.AllFactions.ToList();
                 bool factionFlag = false;

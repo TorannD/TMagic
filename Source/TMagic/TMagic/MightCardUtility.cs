@@ -259,7 +259,7 @@ namespace TorannMagic
                 while (enumerator1.MoveNext())
                 {
                     MightPowerSkill skill = enumerator1.Current;
-                    TooltipHandler.TipRegion(rect3, new TipSignal(() => enumerator1.Current.desc.Translate(), rect3.GetHashCode()));
+                    TooltipHandler.TipRegion(rect3, new TipSignal(() => skill.desc.Translate(), rect3.GetHashCode()));
                     bool flag11 = skill.level >= skill.levelMax || compMight.MightData.MightAbilityPoints == 0;
                     if (flag11)
                     {
@@ -286,7 +286,7 @@ namespace TorannMagic
                 while (enumerator2.MoveNext())
                 {
                     MightPowerSkill skill = enumerator2.Current;
-                    TooltipHandler.TipRegion(rect4, new TipSignal(() => enumerator2.Current.desc.Translate(), rect4.GetHashCode()));
+                    TooltipHandler.TipRegion(rect4, new TipSignal(() => skill.desc.Translate(), rect4.GetHashCode()));
                     bool flag11 = skill.level >= skill.levelMax || compMight.MightData.MightAbilityPoints == 0;
                     if (flag11)
                     {
@@ -313,7 +313,7 @@ namespace TorannMagic
                 while (enumerator3.MoveNext())
                 {
                     MightPowerSkill skill = enumerator3.Current;
-                    TooltipHandler.TipRegion(rect5, new TipSignal(() => enumerator3.Current.desc.Translate(), rect5.GetHashCode()));
+                    TooltipHandler.TipRegion(rect5, new TipSignal(() => skill.desc.Translate(), rect5.GetHashCode()));
                     bool flag11 = skill.level >= skill.levelMax || compMight.MightData.MightAbilityPoints == 0;
                     if (flag11)
                     {
@@ -340,7 +340,7 @@ namespace TorannMagic
                 while (enumerator4.MoveNext())
                 {
                     MightPowerSkill skill = enumerator4.Current;
-                    TooltipHandler.TipRegion(rect6, new TipSignal(() => enumerator4.Current.desc.Translate(), rect6.GetHashCode()));
+                    TooltipHandler.TipRegion(rect6, new TipSignal(() => skill.desc.Translate(), rect6.GetHashCode()));
                     bool flag11 = skill.level >= skill.levelMax || compMight.MightData.MightAbilityPoints == 0;
                     if (flag11)
                     {

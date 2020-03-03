@@ -7,6 +7,8 @@
     <label>mana drain</label>
     <description>The planet's celestial alignment is causing an ebb in mana.  All creatures attuned with magical powers will slowly lose power.</description>
     <endMessage>Magic is returning to normal.</endMessage>
+    <letterText>The planet's celestial alignment is shifting, causing an ebb in mana.\n\nAll creatures attuned with magical powers will slowly lose mana and will become physical ill if they have no mana remaining.</letterText>
+	<letterDef>NegativeEvent</letterDef>
     <exclusiveConditions>
       <li>ManaSurge</li>
     </exclusiveConditions>
@@ -39,6 +41,8 @@
     <label>mana surge</label>
     <description>The planet's celestial alignment is causing a surge in mana.  All creatures attuned with magical powers will gain mana at an increased rate.</description>
     <endMessage>Magic is returning to normal.</endMessage>
+    <letterText>The planet's celestial alignment has shifted, causing a surge in mana.  All creatures attuned with magical powers will gain mana at an increased rate.</letterText>
+    <letterDef>PositiveEvent</letterDef>
     <exclusiveConditions>
       <li>ManaDrain</li>
     </exclusiveConditions>
@@ -54,8 +58,8 @@
     </targetTags>
     <workerClass>IncidentWorker_MakeGameCondition</workerClass>
     <gameCondition>ManaSurge</gameCondition>
-    <letterLabel>Mana surge</letterLabel>
-    <letterText>The planet's celestial alignment has shifted, causing a surge in mana.  All creatures attuned with magical powers will gain mana at an increased rate.</letterText>
+	<letterLabel>Mana surge</letterLabel>
+	<letterText>The planet's celestial alignment has shifted, causing a surge in mana.  All creatures attuned with magical powers will gain mana at an increased rate.</letterText>
     <letterDef>PositiveEvent</letterDef>
     <baseChance>1.5</baseChance>
     <minRefireDays>15</minRefireDays>
@@ -70,7 +74,7 @@
     <defName>Disease_ManaSickness</defName>
     <label>mana sickness</label>
 	<workerClass>TorannMagic.IncidentWorker_ArcaneSickness</workerClass>
-	<letterLabel>Mana Sickness</letterLabel>
+	<letterLabel>Mana sickness</letterLabel>
     <letterText>{0} has gotten sick from {1}.\n\nEnsure you have a medical bed and a doctor. Make sure that {2} gets proper treatment and spends as much time in bed as possible.  During this period {0} will be unable to gain mana.</letterText>
     <letterDef>NegativeEvent</letterDef>
 	<category>DiseaseHuman</category>
@@ -92,6 +96,8 @@
     <label>elemental assault</label>
     <description>Hostile elementals have created a breach into your world and are preparing to send assault teams through the rift!\n\nRifts cause mayhem in the atmosphere as energy leaks through the rift into your world. The following effects occur for each rift element:\n\nFire Rift: meteor showers and heat waves.\nEarth Rift: toxic fumes and causes animals to go berserk\nIce Rift: hailstorms and rapid decline in temperature\nAir Rift: lightning storms</description>
     <endMessage>The rift has closed.</endMessage>
+    <letterText>Hostile elementals have created a breach into your world and are preparing to send assault teams through the rift!\n\nRifts cause mayhem in the atmosphere as energy leaks through the rift into your world. The following effects occur for each rift element:\n\nFire Rift: meteor showers and heat waves.\nEarth Rift: toxic fumes and causes animals to go berserk\nIce Rift: hailstorms and rapid decline in temperature\nAir Rift: lightning storms\n\nDestroy the rift to end this nightmare!</letterText>
+    <letterDef>ThreatBig</letterDef>
     <canBePermanent>false</canBePermanent>
   </GameConditionDef>
   
@@ -104,8 +110,8 @@
     </targetTags>
     <workerClass>TorannMagic.Conditions.IncidentWorker_ElementalAssault</workerClass>
     <gameCondition>ElementalAssault</gameCondition>
-    <letterLabel>elemental assault</letterLabel>
-    <letterText>Hostile elementals have created a breach into your world and are preparing to send assault teams through the rift!\n\nRifts cause mayhem in the atmosphere as energy leaks through the rift into your world. The following effects occur for each rift element:\n\nFire Rift: meteor showers and heat waves.\nEarth Rift: toxic fumes and causes animals to go berserk\nIce Rift: hailstorms and rapid decline in temperature\nAir Rift: lightning storms\n\nDestroy the rift to end this nightmare!</letterText>
+	<letterLabel>Elemental assault</letterLabel>    
+	<letterText>Hostile elementals have created a breach into your world and are preparing to send assault teams through the rift!\n\nRifts cause mayhem in the atmosphere as energy leaks through the rift into your world. The following effects occur for each rift element:\n\nFire Rift: meteor showers and heat waves.\nEarth Rift: toxic fumes and causes animals to go berserk\nIce Rift: hailstorms and rapid decline in temperature\nAir Rift: lightning storms\n\nDestroy the rift to end this nightmare!</letterText>
     <letterDef>ThreatBig</letterDef>
     <baseChance>0.6</baseChance>
     <minRefireDays>10</minRefireDays>
@@ -123,6 +129,8 @@
     <label>Wandering lich</label>
     <description>An ancient lich has wandered into the area and is preparing to assault your colony.\n\nLichs are powerful creatures by themselves, but their true strength resides in their ability to create animated undead from the corpses of the deceased.\n\nThis lich is an ancient being that despises all life, and your merry band of living -things- has so far resisted being snuffed out. It will actively seek to end your story of survival by creating a horde of undead to overwhelm your defenses.\n\nThe lich will periodically create new skeleton warriors to attack the colony; allowing the lich to complete a ritual near an exposed corpse will increase the chance skeleton giants are created. Ultimately, the lich will assault the colony itself, if waves of undead are unable to complete the task first.</description>
     <endMessage>The lich's assault it ending.</endMessage>
+    <letterText>An ancient lich has wandered into the area and is preparing to assault your colony.\n\nLichs are powerful creatures by themselves, but their true strength resides in their ability to create animated undead from the corpses of the deceased.\n\nThis lich is an ancient being that despises all life, and your merry band of living -things- has so far resisted being snuffed out. It will actively seek to end your story of survival by creating a horde of undead to overwhelm your defenses.\n\nThe lich will periodically create new skeleton warriors to attack the colony; allowing the lich to complete a ritual near an exposed corpse will increase the chance skeleton giants are created. Ultimately, the lich will assault the colony itself, if waves of undead are unable to complete the task first.</letterText>
+    <letterDef>ThreatBig</letterDef>
     <canBePermanent>false</canBePermanent>
   </GameConditionDef>
   
@@ -135,9 +143,9 @@
     </targetTags>
     <workerClass>TorannMagic.Conditions.IncidentWorker_WanderingLich</workerClass>
     <gameCondition>WanderingLich</gameCondition>
-    <letterLabel>Wandering lich</letterLabel>
-    <letterText>An ancient lich has wandered into the area and is preparing to assault your colony.\n\nLichs are powerful creatures by themselves, but their true strength resides in their ability to create animated undead from the corpses of the deceased.\n\nThis lich is an ancient being that despises all life, and your merry band of living -things- has so far resisted being snuffed out. It will actively seek to end your story of survival by creating a horde of undead to overwhelm your defenses.\n\nThe lich will periodically create new skeleton warriors to attack the colony; allowing the lich to complete a ritual near an exposed corpse will increase the chance skeleton giants are created. Ultimately, the lich will assault the colony itself, if waves of undead are unable to complete the task first.</letterText>
-    <letterDef>ThreatBig</letterDef>
+	<letterLabel>Wandering lich</letterLabel>
+<letterText>An ancient lich has wandered into the area and is preparing to assault your colony.\n\nLichs are powerful creatures by themselves, but their true strength resides in their ability to create animated undead from the corpses of the deceased.\n\nThis lich is an ancient being that despises all life, and your merry band of living -things- has so far resisted being snuffed out. It will actively seek to end your story of survival by creating a horde of undead to overwhelm your defenses.\n\nThe lich will periodically create new skeleton warriors to attack the colony; allowing the lich to complete a ritual near an exposed corpse will increase the chance skeleton giants are created. Ultimately, the lich will assault the colony itself, if waves of undead are unable to complete the task first.</letterText>
+    <letterDef>ThreatBig</letterDef>	
     <baseChance>0.4</baseChance>
     <minRefireDays>10</minRefireDays>
 	<earliestDay>150</earliestDay>
@@ -154,6 +162,8 @@
 	<conditionClass>TorannMagic.Conditions.GameCondition_DarkClouds</conditionClass>
     <description>A foreboding shadow has been cast over the land; there is an ominous presence in the dark shadow of these clouds that curses the living.</description>
     <endMessage>The dark clouds are dispersing.</endMessage>
+    <letterText>A foreboding shadow has been cast over the land; there is an ominous presence in the dark shadow of these clouds that curses the living.</letterText>
+    <letterDef>NegativeEvent</letterDef>
     <canBePermanent>false</canBePermanent>
   </GameConditionDef>
   

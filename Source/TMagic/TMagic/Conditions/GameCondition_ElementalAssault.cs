@@ -13,7 +13,7 @@ namespace TorannMagic.Conditions
         private int areaRadius = 2;
         bool initialized = false;
         bool disabled = false;
-        Thing thing;
+        public Thing thing;
 
         public override void GameConditionTick()
         {

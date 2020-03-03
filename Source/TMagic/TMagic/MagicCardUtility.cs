@@ -478,9 +478,9 @@ namespace TorannMagic
             using (List<MagicPowerSkill>.Enumerator enumerator1 = skill1.GetEnumerator())
             {
                 while (enumerator1.MoveNext())
-                {
+                {                    
                     MagicPowerSkill skill = enumerator1.Current;
-                    TooltipHandler.TipRegion(rect3, new TipSignal(() => enumerator1.Current.desc.Translate(), rect3.GetHashCode()));
+                    TooltipHandler.TipRegion(rect3, new TipSignal(() => skill.desc.Translate(), rect3.GetHashCode()));
                     bool flag11 = skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0;
                     if (flag11)
                     {
@@ -507,7 +507,7 @@ namespace TorannMagic
                 while (enumerator2.MoveNext())
                 {
                     MagicPowerSkill skill = enumerator2.Current;
-                    TooltipHandler.TipRegion(rect4, new TipSignal(() => enumerator2.Current.desc.Translate(), rect4.GetHashCode()));
+                    TooltipHandler.TipRegion(rect4, new TipSignal(() => skill.desc.Translate(), rect4.GetHashCode()));
                     bool flag11 = skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0;
                     if (flag11)
                     {
@@ -534,7 +534,7 @@ namespace TorannMagic
                 while (enumerator3.MoveNext())
                 {
                     MagicPowerSkill skill = enumerator3.Current;
-                    TooltipHandler.TipRegion(rect5, new TipSignal(() => enumerator3.Current.desc.Translate(), rect5.GetHashCode()));
+                    TooltipHandler.TipRegion(rect5, new TipSignal(() => skill.desc.Translate(), rect5.GetHashCode()));
                     bool flag11 = skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0;
                     if (flag11)
                     {
