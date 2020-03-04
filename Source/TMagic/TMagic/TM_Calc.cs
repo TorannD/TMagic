@@ -1254,6 +1254,65 @@ namespace TorannMagic
             return default(IntVec3);
         }
 
+
+        public static IntVec3 GetEmptyCellForNewBuilding(IntVec3 pos, Map map, float radius, bool useCenter, float exludeInnerRadius = 0)
+        {
+            List<IntVec3> outerCells = GenRadial.RadialCellsAround(pos, radius, useCenter).ToList();
+            if (exludeInnerRadius != 0)
+            {
+                List<IntVec3> innerCells = GenRadial.RadialCellsAround(pos, exludeInnerRadius, useCenter).ToList();
+                outerCells = outerCells.Except(innerCells).ToList();
+            }
+
+            for (int k = 0; k < outerCells.Count; k++)
+            {
+                IntVec3 wall = outerCells[k];
+                if (wall.IsValid && wall.InBounds(map) && !wall.Fogged(map) && wall.Standable(map) && !wall.Roofed(map))
+                {
+                    List<Thing> cellList = new List<Thing>();
+                    try
+                    {
+                        cellList = wall.GetThingList(map);
+                        if (cellList != null && cellList.Count > 0)
+                        {
+                            bool hasThing = false;
+                            for (int i = 0; i < cellList.Count(); i++)
+                            {
+                                if (cellList[i].def.designationCategory != null && cellList[i].def.designationCategory == DesignationCategoryDefOf.Structure)
+                                {
+                                    hasThing = true;
+                                    break;
+                                }
+                                if (cellList[i].def.altitudeLayer == AltitudeLayer.Building || cellList[i].def.altitudeLayer == AltitudeLayer.Item || cellList[i].def.altitudeLayer == AltitudeLayer.ItemImportant)
+                                {
+                                    hasThing = true;
+                                    break;
+                                }
+                                if (cellList[i].def.EverHaulable)
+                                {
+                                    hasThing = true;
+                                    break;
+                                }
+                            }
+                            if (!hasThing)
+                            {
+                                return wall;
+                            }
+                        }
+                        else
+                        {
+                            return wall;
+                        }
+                    }
+                    catch
+                    {
+                        continue;
+                    }
+                }
+            }
+            return default(IntVec3);
+        }
+
         public static float GetArcaneResistance(Pawn pawn, bool includePsychicSensitivity)
         {
             float resistance = 0;

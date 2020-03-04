@@ -5018,21 +5018,30 @@ namespace TorannMagic
                         //Thing outThing = new Thing();
                         try
                         {
-                            if (this.Pawn.equipment.Primary != null)
+                            //Log.Message("primary is " + this.Pawn.equipment.Primary);
+                            //Log.Message("equipment container is " + this.equipmentContainer[0]);
+                            for (int i = 0; i < this.Pawn.equipment.AllEquipmentListForReading.Count; i++)
                             {
-                                this.Pawn.equipment.Primary.Destroy(DestroyMode.Vanish);
-                            }
-                            if (this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PistolSpec).learned)
+                                ThingWithComps t = this.Pawn.equipment.AllEquipmentListForReading[i];
+                                if (t.def.defName.Contains("Spec_Base"))
+                                {
+                                    t.Destroy(DestroyMode.Vanish);
+                                }
+                            }                            
+                            if (this.specWpnRegNum == -1)
                             {
-                                TM_Action.DoAction_PistolSpecCopy(this.Pawn, this.equipmentContainer[0]);
-                            }
-                            else if (this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_RifleSpec).learned)
-                            {
-                                TM_Action.DoAction_RifleSpecCopy(this.Pawn, this.equipmentContainer[0]);
-                            }
-                            else if (this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ShotgunSpec).learned)
-                            {
-                                TM_Action.DoAction_ShotgunSpecCopy(this.Pawn, this.equipmentContainer[0]);
+                                if (this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PistolSpec).learned)
+                                {
+                                    TM_Action.DoAction_PistolSpecCopy(this.Pawn, this.equipmentContainer[0]);
+                                }
+                                else if (this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_RifleSpec).learned)
+                                {
+                                    TM_Action.DoAction_RifleSpecCopy(this.Pawn, this.equipmentContainer[0]);
+                                }
+                                else if (this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ShotgunSpec).learned)
+                                {
+                                    TM_Action.DoAction_ShotgunSpecCopy(this.Pawn, this.equipmentContainer[0]);
+                                }
                             }
                         }
                         catch(Exception ex)

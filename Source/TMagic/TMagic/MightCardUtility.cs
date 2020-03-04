@@ -950,73 +950,73 @@ namespace TorannMagic
                             }
                             if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_ProvisionerAura)
                             {
-                                compMight.LevelUpSkill_FieldTraining(skill.label);
+                                compMight.LevelUpSkill_Provisioner(skill.label);
                                 skill.level++;
                                 compMight.MightData.MightAbilityPoints -= 1;
                             }
                             if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_TaskMasterAura)
                             {
-                                compMight.LevelUpSkill_FieldTraining(skill.label);
+                                compMight.LevelUpSkill_TaskMaster(skill.label);
                                 skill.level++;
                                 compMight.MightData.MightAbilityPoints -= 1;
                             }
                             if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_CommanderAura)
                             {
-                                compMight.LevelUpSkill_FieldTraining(skill.label);
+                                compMight.LevelUpSkill_Commander(skill.label);
                                 skill.level++;
                                 compMight.MightData.MightAbilityPoints -= 1;
                             }
-                            if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_StayAlert)
+                            if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_StayAlert || enumerator.Current.abilityDef == TorannMagicDefOf.TM_StayAlert_I || enumerator.Current.abilityDef == TorannMagicDefOf.TM_StayAlert_II || enumerator.Current.abilityDef == TorannMagicDefOf.TM_StayAlert_III)
                             {
-                                compMight.LevelUpSkill_FieldTraining(skill.label);
+                                compMight.LevelUpSkill_StayAlert(skill.label);
                                 skill.level++;
                                 compMight.MightData.MightAbilityPoints -= 1;
                             }
-                            if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_MoveOut)
+                            if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_MoveOut || enumerator.Current.abilityDef == TorannMagicDefOf.TM_MoveOut_I || enumerator.Current.abilityDef == TorannMagicDefOf.TM_MoveOut_II || enumerator.Current.abilityDef == TorannMagicDefOf.TM_MoveOut_III)
                             {
-                                compMight.LevelUpSkill_FieldTraining(skill.label);
+                                compMight.LevelUpSkill_MoveOut(skill.label);
                                 skill.level++;
                                 compMight.MightData.MightAbilityPoints -= 1;
                             }
-                            if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_HoldTheLine)
+                            if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_HoldTheLine || enumerator.Current.abilityDef == TorannMagicDefOf.TM_HoldTheLine_I || enumerator.Current.abilityDef == TorannMagicDefOf.TM_HoldTheLine_II || enumerator.Current.abilityDef == TorannMagicDefOf.TM_HoldTheLine_III)
                             {
-                                compMight.LevelUpSkill_FieldTraining(skill.label);
+                                compMight.LevelUpSkill_HoldTheLine(skill.label);
                                 skill.level++;
                                 compMight.MightData.MightAbilityPoints -= 1;
                             }
                             if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_PistolSpec)
                             {
-                                compMight.LevelUpSkill_FieldTraining(skill.label);
+                                compMight.LevelUpSkill_PistolSpec(skill.label);
                                 skill.level++;
                                 compMight.MightData.MightAbilityPoints -= 1;
                             }
                             if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_RifleSpec)
                             {
-                                compMight.LevelUpSkill_FieldTraining(skill.label);
+                                compMight.LevelUpSkill_RifleSpec(skill.label);
                                 skill.level++;
                                 compMight.MightData.MightAbilityPoints -= 1;
                             }
                             if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_ShotgunSpec)
                             {
-                                compMight.LevelUpSkill_FieldTraining(skill.label);
+                                compMight.LevelUpSkill_ShotgunSpec(skill.label);
                                 skill.level++;
                                 compMight.MightData.MightAbilityPoints -= 1;
                             }
                             if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_CQC)
                             {
-                                compMight.LevelUpSkill_FieldTraining(skill.label);
+                                compMight.LevelUpSkill_CQC(skill.label);
                                 skill.level++;
                                 compMight.MightData.MightAbilityPoints -= 1;
                             }
                             if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_FirstAid)
                             {
-                                compMight.LevelUpSkill_FieldTraining(skill.label);
+                                compMight.LevelUpSkill_FirstAid(skill.label);
                                 skill.level++;
                                 compMight.MightData.MightAbilityPoints -= 1;
                             }
                             if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_60mmMortar)
                             {
-                                compMight.LevelUpSkill_FieldTraining(skill.label);
+                                compMight.LevelUpSkill_60mmMortar(skill.label);
                                 skill.level++;
                                 compMight.MightData.MightAbilityPoints -= 1;
                             }

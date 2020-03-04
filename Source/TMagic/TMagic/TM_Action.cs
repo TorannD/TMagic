@@ -325,10 +325,11 @@ namespace TorannMagic
                     //ignore
                 }
                 specWeapon.HitPoints = thing.HitPoints;
-                if (caster.equipment.Primary != null)
-                {
-                    caster.equipment.Primary.Destroy(DestroyMode.Vanish);
-                }
+                //if (caster.equipment.Primary != null)
+                //{
+                //    Log.Message("destroying " + caster.equipment.Primary + " in pistol copy");
+                //    caster.equipment.Primary.Destroy(DestroyMode.Vanish);
+                //}
                 caster.equipment.AddEquipment(specWeapon);
                 //GenPlace.TryPlaceThing(technoWeapon, caster.Position, caster.Map, ThingPlaceMode.Direct, null, null);
                 //Job job = new Job(JobDefOf.Equip, technoWeapon);
@@ -424,10 +425,10 @@ namespace TorannMagic
                     //ignore
                 }
                 specWeapon.HitPoints = thing.HitPoints;
-                if (caster.equipment.Primary != null)
-                {
-                    caster.equipment.Primary.Destroy(DestroyMode.Vanish);
-                }
+                //if (caster.equipment.Primary != null)
+                //{
+                //    caster.equipment.Primary.Destroy(DestroyMode.Vanish);
+                //}
                 caster.equipment.AddEquipment(specWeapon);
                 //GenPlace.TryPlaceThing(technoWeapon, caster.Position, caster.Map, ThingPlaceMode.Direct, null, null);
                 //Job job = new Job(JobDefOf.Equip, technoWeapon);
@@ -532,10 +533,10 @@ namespace TorannMagic
                     //ignore
                 }
                 specWeapon.HitPoints = thing.HitPoints;
-                if(caster.equipment.Primary != null)
-                {
-                    caster.equipment.Primary.Destroy(DestroyMode.Vanish);
-                }
+                //if(caster.equipment.Primary != null)
+                //{
+                //    caster.equipment.Primary.Destroy(DestroyMode.Vanish);
+                //}
                 caster.equipment.AddEquipment(specWeapon);
                 //GenPlace.TryPlaceThing(technoWeapon, caster.Position, caster.Map, ThingPlaceMode.Direct, null, null);
                 //Job job = new Job(JobDefOf.Equip, technoWeapon);

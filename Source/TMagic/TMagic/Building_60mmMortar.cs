@@ -120,7 +120,7 @@ namespace TorannMagic
             {                
                 this.Destroy(DestroyMode.Vanish);
             }
-        }
+        }        
 
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {

@@ -18,6 +18,7 @@ namespace TorannMagic.Conditions
                 string str = "";
                 Map map = (Map)parms.target;
                 int duration = Mathf.RoundToInt(this.def.durationDays.RandomInRange * 60000f);
+                TM_Action.ForceFactionDiscoveryAndRelation(TorannMagicDefOf.TM_ElementalFaction);
                 GameCondition_ElementalAssault gameCondition_ElementalAssault = (GameCondition_ElementalAssault)GameConditionMaker.MakeCondition(GameConditionDef.Named("ElementalAssault"), duration);
                 map.gameConditionManager.RegisterCondition(gameCondition_ElementalAssault);
                 base.SendStandardLetter(parms, gameCondition_ElementalAssault.thing, str);

@@ -15,7 +15,7 @@ namespace TorannMagic.ModCheck
             {
                 bool initialized = false;
                 foreach (ModContentPack p in LoadedModManager.RunningMods)
-                {
+                {                    
                     if (p.Name == "Prison Labor")
                     {
                         initialized = true;
@@ -80,6 +80,7 @@ namespace TorannMagic.ModCheck
                 bool initialized = false;
                 foreach (ModContentPack p in LoadedModManager.RunningMods)
                 {
+                    Log.Message("mod pack name is " + p.Name);
                     if (p.Name == "Humanoid Alien Races 2.0")
                     {
                         initialized = true;
@@ -127,6 +128,22 @@ namespace TorannMagic.ModCheck
                 foreach (ModContentPack p in LoadedModManager.RunningMods)
                 {
                     if (p.Name == "SRTS Expanded")
+                    {
+                        initialized = true;
+                    }
+                }
+                return initialized;
+            }
+        }
+
+        public static class DualWield
+        {
+            public static bool IsInitialized()
+            {
+                bool initialized = false;
+                foreach (ModContentPack p in LoadedModManager.RunningMods)
+                {
+                    if (p.Name == "Dual Wield")
                     {
                         initialized = true;
                     }

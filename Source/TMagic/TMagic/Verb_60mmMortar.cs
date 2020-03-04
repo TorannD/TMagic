@@ -30,7 +30,7 @@ namespace TorannMagic
             if ((pawn.Position.IsValid && pawn.Position.Standable(map)))
             {
                 AbilityUser.SpawnThings tempPod = new SpawnThings();
-                IntVec3 shiftPos = GetMortarBasePosition(pawn.Position, map);
+                IntVec3 shiftPos = TM_Calc.GetEmptyCellForNewBuilding(pawn.Position, map, 1.6f, false, 0);
 
                 tempPod.def = TorannMagicDefOf.TM_60mmMortar_Base;
                 tempPod.spawnCount = 1;
@@ -86,32 +86,6 @@ namespace TorannMagic
             }
 
             return false;
-        }
-
-        private IntVec3 GetMortarBasePosition(IntVec3 pos, Map map)
-        {
-            pos.x++;
-            if(pos.IsValid && pos.Standable(map) && !pos.Roofed(map))
-            {
-                return pos;
-            }
-            pos.x -= 2;
-            if (pos.IsValid && pos.Standable(map) && !pos.Roofed(map))
-            {
-                return pos;
-            }
-            pos.x++;
-            pos.z++;
-            if (pos.IsValid && pos.Standable(map) && !pos.Roofed(map))
-            {
-                return pos;
-            }
-            pos.z -= 2;
-            if (pos.IsValid && pos.Standable(map) && !pos.Roofed(map))
-            {
-                return pos;
-            }
-            return default(IntVec3);
         }
     }
 }
