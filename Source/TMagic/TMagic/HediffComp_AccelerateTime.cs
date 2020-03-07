@@ -6,6 +6,7 @@ using System.Linq;
 using UnityEngine;
 using HarmonyLib;
 
+
 namespace TorannMagic
 {
     public class HediffComp_AccelerateTime : HediffComp

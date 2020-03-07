@@ -51,7 +51,8 @@ namespace TorannMagic
         protected override void Impact(Thing hitThing)
         {
             Map map = base.Map;
-            base.Impact(hitThing);
+            GenClamor.DoClamor(this, 2.1f, ClamorDefOf.Impact);
+            //base.Impact(hitThing);
             ThingDef def = this.def;
             Pawn victim = hitThing as Pawn;
             Thing item = hitThing as Thing;
@@ -128,6 +129,7 @@ namespace TorannMagic
                 }
             }
             this.age = this.duration;
+            Destroy();
         }
 
         public void SingleSpawnLoop(SpawnThings spawnables, IntVec3 position, Map map)

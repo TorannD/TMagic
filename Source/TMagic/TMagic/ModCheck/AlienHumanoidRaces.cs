@@ -14,7 +14,6 @@ namespace TorannMagic.ModCheck
         {
             bool traitIsAllowed = true;
             //Log.Message("checking for alien races...");
-
             if (Validate.AlienHumanoidRaces.IsInitialized())
             {
                 //Log.Message("initialized. Checking if " + thingDef.defName + " is an alien race...");

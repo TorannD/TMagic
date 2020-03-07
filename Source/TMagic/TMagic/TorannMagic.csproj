@@ -36,9 +36,8 @@
     <RunPostBuildEvent>Always</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony, Version=1.2.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\2009463077\Assemblies\0Harmony.dll</HintPath>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\2009463077\v1.1\Assemblies\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AbilityUser">
@@ -129,7 +128,9 @@
     <Compile Include="Building_PoisonTrap.cs" />
     <Compile Include="Building_TechnoTurret.cs" />
     <Compile Include="Building_ExplosiveProximityTrap.cs" />
+    <Compile Include="TM_Command_Target.cs" />
     <Compile Include="Events\IncidentWorker_QuestArcaneCamp.cs" />
+    <Compile Include="Thoughts\ThoughtWorker_TM_Boundless.cs" />
     <Compile Include="WeaponCategoryList.cs" />
     <Compile Include="CompProperties_SkeletonLichController.cs" />
     <Compile Include="CompProperties_SkeletonController.cs" />

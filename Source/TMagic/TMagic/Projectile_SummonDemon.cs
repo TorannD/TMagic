@@ -91,7 +91,7 @@ namespace TorannMagic
         protected override void Impact(Thing hitThing)
         {
             Map map = base.Map;
-            base.Impact(hitThing);
+            //base.Impact(hitThing);
 
             if (!initialized)
             {
@@ -143,6 +143,7 @@ namespace TorannMagic
                 this.summoningComplete = true;
                 this.summoning = false;
             }
+            Destroy();
         }
 
         public void DoLightningStrike()

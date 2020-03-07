@@ -1040,7 +1040,6 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
     <costList>
     </costList>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-    <specialDisplayRadius>40</specialDisplayRadius>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
 	  <expandHomeArea>false</expandHomeArea>

@@ -33,12 +33,12 @@ namespace TorannMagic
         protected override void Impact(Thing hitThing)
         {
             Map map = base.Map;
-            base.Impact(hitThing);
+            //base.Impact(hitThing);
             ThingDef def = this.def;
             Pawn victim = hitThing as Pawn;
             Thing item = hitThing as Thing;
             IntVec3 arg_pos_1;
-
+            GenClamor.DoClamor(this, 2.1f, ClamorDefOf.Impact);
             Pawn pawn = this.launcher as Pawn;
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
             MagicPowerSkill pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonExplosive.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonExplosive_pwr");
@@ -120,6 +120,7 @@ namespace TorannMagic
             }
 
             this.age = this.duration;
+            Destroy();
 
         }
 

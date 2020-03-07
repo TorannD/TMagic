@@ -4,6 +4,57 @@
 <Defs>
 
 	<TraitDef>
+		<defName>TM_ArcaneConduitTD</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>	
+		<degreeDatas>	
+		  <li>
+			<label>Arcane Conduit</label>
+			<description>[PAWN_nameDef] is abnormally receptive to the ebb and flow of mana, [PAWN_pronoun] will gain mana 40% faster than normal but [PAWN_possessive] maximum mana capacity is reduced by 20.</description>
+			<degree>0</degree>
+		  </li>
+		</degreeDatas>	
+		<conflictingTraits>
+			<li>TM_BoundlessTD</li>
+		  <li>TM_ManaWellTD</li>
+		</conflictingTraits>
+	</TraitDef>
+
+	<TraitDef>
+		<defName>TM_ManaWellTD</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>	
+		<degreeDatas>	
+		  <li>
+			<label>Mana Well</label>
+			<description>[PAWN_nameDef] has an increased resistance to the ebb and flow of mana which allows [PAWN_objective] to hold an additional 40 mana, but reduces [PAWN_possessive] mana regeneration by 20%.</description>
+			<degree>0</degree>
+		  </li>
+		</degreeDatas>	
+		<conflictingTraits>
+			<li>TM_BoundlessTD</li>
+		  <li>TM_ArcaneConduitTD</li>
+		</conflictingTraits>
+	</TraitDef>
+	
+	<TraitDef>
+		<defName>TM_BoundlessTD</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>	
+		<degreeDatas>	
+		  <li>
+			<label>Boundless</label>
+			<description>[PAWN_nameDef] excels at combat arts and is able to execute combat maneuvers 40% more frequently, however, [PAWN_possessive] talent has fostered an arrogant attitude that reduces [PAWN_possessive] experience gain by 25% and causes other fighters to dislike [PAWN_objective].</description>
+			<degree>0</degree>
+		  </li>
+		</degreeDatas>	
+		<conflictingTraits>
+		  <li>TM_ArcaneConduitTD</li>
+		  <li>TM_ManaWellTD</li>
+		</conflictingTraits>
+	</TraitDef>
+	
+	<TraitDef>
 		<defName>TM_OKWithDeath</defName>
 		<ignoreConfigErrors>true</ignoreConfigErrors>
 		<commonality>.1</commonality>	
@@ -14,9 +65,6 @@
 			<degree>0</degree>
 		  </li>
 		</degreeDatas>	
-		<conflictingTraits>
-		  <li>Kind</li>
-		</conflictingTraits>
 	</TraitDef>
 	
 	<TraitDef>
@@ -1926,7 +1974,7 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		<degreeDatas>	
 		  <li>
 			<label>Psionic</label>
-			<description>[PAWN_nameDef] is a Psionic - able to manifest thought into raw energy. [PAWN_pronoun] is able to project psionic energy but finds it easier and more efficient to apply it as an extension and augmentation of [PAWN_possessive] body. For this reason, [PAWN_pronoun] prefers to be free of encumbering weapons.
+			<description>[PAWN_nameDef] is a Psionic - able to manifest mental willpower into raw energy without the use of a psychic amplifier. [PAWN_pronoun] is able to project psionic energy but finds it easier and more efficient to apply it as an extension and augmentation of [PAWN_possessive] body. For this reason, [PAWN_pronoun] prefers to be free of encumbering weapons.
 
 [PAWN_nameDef] has become less social since developing psionic powers since [PAWN_objective] can perform any task on [PAWN_possessive] own and can do without the jealousy of others.
 

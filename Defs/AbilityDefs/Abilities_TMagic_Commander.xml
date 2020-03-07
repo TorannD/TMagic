@@ -8,7 +8,7 @@
     <defName>TM_ProvisionerAura</defName>
     <label>Provisioner</label>
     <uiIconPath>UI/provisioner</uiIconPath>
-    <description>Toggles the Provisioner Aura: improves rest and reduces hunger of nearby pawns. Can be improved to repair equipment, increase natural healing rates, and boost energy regeneration. This aura requires 60 stamina to maintain.</description>
+    <description>Use ability to toggle the Provisioner Aura: improves rest and reduces hunger of nearby pawns. Can be improved to repair equipment, increase natural healing rates, and boost energy regeneration. This aura requires 60 stamina to maintain.</description>
     <staminaCost>0.60</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderAuras</verbClass>
@@ -42,7 +42,7 @@
     <defName>TM_TaskMasterAura</defName>
     <label>Task Master</label>
     <uiIconPath>UI/taskmaster</uiIconPath>
-    <description>Toggles the Task Master Aura: increases work speed, eating speed, and carrying capacity but causes pawns to be less social. Pawns under the scrutiny of a Task Master will acquire a mood penalty. This aura requires 70 stamina to maintain.</description>
+    <description>Use ability to toggle the Task Master Aura: increases work speed, eating speed, and carrying capacity but causes pawns to be less social. Pawns under the scrutiny of a Task Master will acquire a mood penalty. This aura requires 70 stamina to maintain.</description>
     <staminaCost>0.70</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderAuras</verbClass>
@@ -76,7 +76,7 @@
     <defName>TM_CommanderAura</defName>
     <label>Commander</label>
     <uiIconPath>UI/commander</uiIconPath>
-    <description>Toggles the Commander Aura: improves the mood of all nearby pawns but decreases their productivity. While this aura is enabled, the Commander will seek out pawns that have broken down due to mental stress and give them a motivational speech to overcome a breakdown. Pawns that overcome a mental break in this manner will not gain Catharsis. This aura requires 80 stamina to maintain.</description>
+    <description>Use ability to toggle the Commander Aura: improves the mood of all nearby pawns but decreases their productivity. While this aura is enabled, the Commander will seek out pawns that have broken down due to mental stress and give them a motivational speech to overcome a breakdown. Pawns that overcome a mental break in this manner will not gain Catharsis. This aura requires 80 stamina to maintain.</description>
     <staminaCost>0.80</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderAuras</verbClass>

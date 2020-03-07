@@ -21,6 +21,7 @@ namespace TorannMagic.ModOptions
         public float baseFighterChance = 1f;
         public float advMageChance = 0.5f;
         public float advFighterChance = 0.5f;
+        public float supportTraitChance = 0.1f;
         public float magicyteChance = .005f;
         public bool showIconsMultiSelect = true;
         public float riftChallenge = 1f;
@@ -75,6 +76,10 @@ namespace TorannMagic.ModOptions
         public bool Commander = true;
         public bool SuperSoldier = true;
 
+        public bool ArcaneConduit = true;
+        public bool ManaWell = true;
+        public bool Boundless = true;
+
         public static Settings Instance;
 
         public Settings()
@@ -99,6 +104,7 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<float>(ref this.baseFighterChance, "baseFighterChance", 1f, false);
             Scribe_Values.Look<float>(ref this.advMageChance, "advMageChance", 0.5f, false);
             Scribe_Values.Look<float>(ref this.advFighterChance, "advFighterChance", 0.5f, false);
+            Scribe_Values.Look<float>(ref this.supportTraitChance, "supportTraitChance", 0.1f, false);
             Scribe_Values.Look<float>(ref this.magicyteChance, "magicyteChance", 0.005f, false);
             Scribe_Values.Look<bool>(ref this.showIconsMultiSelect, "showIconsMultiSelect", true, false);
             Scribe_Values.Look<float>(ref this.riftChallenge, "riftChallenge", 1f, false);
@@ -149,6 +155,9 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<bool>(ref this.Monk, "Monk", true, false);
             Scribe_Values.Look<bool>(ref this.Commander, "Commander", true, false);
             Scribe_Values.Look<bool>(ref this.SuperSoldier, "SuperSoldier", true, false);
+            Scribe_Values.Look<bool>(ref this.ManaWell, "ManaWell", true, false);
+            Scribe_Values.Look<bool>(ref this.ArcaneConduit, "ArcaneConduit", true, false);
+            Scribe_Values.Look<bool>(ref this.Boundless, "Boundless", true, false);
         }
     }
 }

@@ -80,7 +80,6 @@ namespace TorannMagic.ModCheck
                 bool initialized = false;
                 foreach (ModContentPack p in LoadedModManager.RunningMods)
                 {
-                    Log.Message("mod pack name is " + p.Name);
                     if (p.Name == "Humanoid Alien Races 2.0")
                     {
                         initialized = true;

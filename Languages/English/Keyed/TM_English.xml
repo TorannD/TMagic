@@ -223,7 +223,7 @@
 <TM_UnrestrictedWeaponCopy>Unrestricted Techno-Weapons</TM_UnrestrictedWeaponCopy>
 
 <!-- Mod Settings Class options -->
-
+<supportTraitChance>Supporting Trait Commonality</supportTraitChance>
 <TM_ClassWarning>**Change class settings only when starting a new game**</TM_ClassWarning>
 <TM_RequiresRestart>**Any change requires a game restart**</TM_RequiresRestart>
 <TM_ClassOptions>Enabled Classes</TM_ClassOptions>
@@ -258,6 +258,9 @@
 <TM_ChaosMage>Chaos Mage</TM_ChaosMage>
 <TM_Commander>Commander</TM_Commander>
 <TM_SuperSoldier>Super Soldier</TM_SuperSoldier>
+<TM_ArcaneConduit>Arcane Conduit</TM_ArcaneConduit>
+<TM_ManaWell>Mana Well</TM_ManaWell>
+<TM_Boundless>Boundless</TM_Boundless>
 
 <!-- Mod Settings event options -->
 <TM_EventOptions>Event Options</TM_EventOptions>

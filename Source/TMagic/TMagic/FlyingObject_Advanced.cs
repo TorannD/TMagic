@@ -205,14 +205,14 @@ namespace TorannMagic
             }
 
             //calculate extra distance bolt travels around the ellipse
-            float a = .525f * Vector3.Distance(start, end);
+            float a = .5f * Vector3.Distance(start, end);
             float b = a * Mathf.Sin(.5f * Mathf.Deg2Rad * variance);
             float p = .5f * Mathf.PI * (3 * (a + b) - (Mathf.Sqrt((3 * a + b) * (a + 3 * b))));
                     
             float incrementalDistance = p / variancePoints; 
             float incrementalAngle = (curveAngle / variancePoints) * 2f;
             this.curvePoints.Add(this.trueOrigin);
-            for(int i = 1; i <= variancePoints; i++)
+            for(int i = 1; i <= (variancePoints + 1); i++)
             {
                 this.curvePoints.Add(this.curvePoints[i - 1] + ((Quaternion.AngleAxis(curveAngle, Vector3.up) * initialVector) * incrementalDistance)); //(Quaternion.AngleAxis(curveAngle, Vector3.up) *
                 curveAngle -= incrementalAngle;

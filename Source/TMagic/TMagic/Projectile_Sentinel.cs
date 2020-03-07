@@ -20,7 +20,7 @@ namespace TorannMagic
 
         protected override void Impact(Thing hitThing)
         {
-            base.Impact(hitThing);
+            GenClamor.DoClamor(this, 2.1f, ClamorDefOf.Impact);
             caster = this.launcher as Pawn;
             Building existingSentinel = base.Position.GetFirstBuilding(caster.Map);
             if (existingSentinel != null)
@@ -77,6 +77,7 @@ namespace TorannMagic
                     comp.summonedSentinels.Add(spawnedThing);
                 }
             }
+            Destroy();
         }
 
         public void SingleSpawnLoop(SpawnThings spawnables, IntVec3 position, Map map)

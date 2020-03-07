@@ -114,7 +114,9 @@ namespace TorannMagic
             {
                 Log.Message("turret was null");
             }
-            base.Impact(hitThing);
+            GenClamor.DoClamor(this, 2.1f, ClamorDefOf.Impact);
+            Destroy();
+            //base.Impact(hitThing);
         }
     }
 }

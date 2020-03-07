@@ -35,7 +35,8 @@ namespace TorannMagic
         protected override void Impact(Thing hitThing)
         {
             Map map = base.Map;
-            base.Impact(hitThing);
+            GenClamor.DoClamor(this, 2.1f, ClamorDefOf.Impact);
+            //base.Impact(hitThing);
             string msg;
             ThingDef def = this.def;
             Pawn victim = hitThing as Pawn;
@@ -223,9 +224,10 @@ namespace TorannMagic
             {
                 //age expired, destroy teleport
                 this.PortalCollapse(centerCell, map, 3);
-                return;
+                Destroy();
 
             }
+            Destroy();
         }
 
         protected void PortalCollapse(IntVec3 pos, Map map, float radius)

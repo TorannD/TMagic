@@ -27,7 +27,8 @@ namespace TorannMagic
         private int mightXPRate = 900;
         private int lastMightXPGain = 0;
         private int autocastTick = 0;
-        private int nextAICastAttemptTick = 0;        
+        private int nextAICastAttemptTick = 0;
+        private int nextSSTend = 0;
 
         private float G_Sprint_eff = 0.20f;
         private float G_Grapple_eff = 0.10f;
@@ -4015,6 +4016,31 @@ namespace TorannMagic
                         this.AddPawnAbility(TorannMagicDefOf.TM_Legion);
                     }
                 }
+
+                if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier))
+                {
+                    if(!this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_SS_SerumHD, false))
+                    {
+                        if (!this.Pawn.IsColonist)
+                        {
+                            float range = Rand.Range(5f, 25f);
+                            HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_SS_SerumHD, range);
+                        }
+                        else
+                        {
+                            HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_SS_SerumHD, 2.2f);
+                        }
+                    }
+                    if (this.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_SS_SerumHD) && this.Pawn.Downed && nextSSTend < Find.TickManager.TicksGame)
+                    {
+                        Hediff_Injury wound = this.Pawn.health.hediffSet.GetInjuriesTendable().RandomElement();
+                        if (wound != null && wound.CanHealNaturally())
+                        {
+                            wound.Tended(Rand.Range(0, .3f));
+                        }
+                        nextSSTend = Find.TickManager.TicksGame + Rand.Range(6000, 8000);
+                    }
+                }
             }
         }
 
@@ -4349,7 +4375,7 @@ namespace TorannMagic
             if(MightData.MightAbilityPoints < 0)
             {
                 MightData.MightAbilityPoints = 0;
-            }
+            }            
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
             {
                 _arcaneDmg += (.01f * this.MightData.MightPowerSkill_WayfarerCraft.FirstOrDefault((MightPowerSkill x) => x.label == "TM_WayfarerCraft_pwr").level);
@@ -4372,6 +4398,15 @@ namespace TorannMagic
             _spCost += (coordination.level * -.025f);
             _arcaneRes += ((1 - this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false)) / 2);
             _arcaneDmg += ((this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false) - 1) / 4);
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_BoundlessTD))
+            {
+                _xpGain -= .25f;
+                this.arcalleumCooldown = Mathf.Clamp(0f + _arcalleumCooldown, 0f, .1f);
+            }
+            else
+            {
+                this.arcalleumCooldown = Mathf.Clamp(0f + _arcalleumCooldown, 0f, .5f);
+            }
             this.maxSP = 1 + (.04f * endurance.level) + _maxSP;
             this.spRegenRate = 1f + _spRegenRate;
             this.coolDown = Mathf.Clamp(1f + _coolDown, .25f, 10f);
@@ -4379,7 +4414,8 @@ namespace TorannMagic
             this.spCost = 1f + _spCost;
             this.arcaneRes = 1 + _arcaneRes;
             this.mightPwr = 1 + _arcaneDmg + (.05f * strength.level);
-            this.arcalleumCooldown = Mathf.Clamp(0f + _arcalleumCooldown, 0f, .5f);
+            
+            
             if (this.IsMightUser && !TM_Calc.IsCrossClass(this.Pawn, false))
             {
                 if (_maxSP != 0)

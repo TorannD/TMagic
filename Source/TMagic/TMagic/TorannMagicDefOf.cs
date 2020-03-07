@@ -177,6 +177,9 @@ namespace TorannMagic
         
         public static TraitDef Gifted;
         public static TraitDef TM_OKWithDeath;
+        public static TraitDef TM_ManaWellTD;
+        public static TraitDef TM_ArcaneConduitTD;
+        
 
         //Wanderer
         public static TraitDef TM_Wanderer;
@@ -604,13 +607,16 @@ namespace TorannMagic
         public static ThingDef BookOfMonk;
         public static ThingDef BookOfCommander;
         public static ThingDef BookOfSuperSoldier;
+
         public static TraitDef PhysicalProdigy;
+        public static TraitDef TM_BoundlessTD;
+        public static ThoughtDef TM_OpinionOfBoundless;
 
         //Wayfarer
         public static TraitDef TM_Wayfarer;
 
         public static TMAbilityDef TM_WayfarerCraft;
-        public static TMAbilityDef TM_FieldTraining;
+        public static TMAbilityDef TM_FieldTraining;        
 
         //Might (Gladiator)
         public static TraitDef Gladiator;

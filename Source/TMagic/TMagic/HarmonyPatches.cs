@@ -72,6 +72,7 @@ namespace TorannMagic
             harmonyInstance.Patch(AccessTools.Method(typeof(Caravan), "get_NightResting", null, null), new HarmonyMethod(typeof(TorannMagicMod), "Get_NightResting_Undead", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(Pawn_StanceTracker), "get_Staggered", null, null), new HarmonyMethod(typeof(TorannMagicMod), "Get_Staggered", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(Verb_LaunchProjectile), "get_Projectile", null, null), new HarmonyMethod(typeof(TorannMagicMod), "Get_Projectile_ES", null), null);
+            //harmonyInstance.Patch(AccessTools.Method(typeof(GenRadial), "get_MaxRadialPatternRadius", null, null), null, new HarmonyMethod(typeof(TorannMagicMod), "Get_MaxDrawRadius_Patch", null));
 
             harmonyInstance.Patch(AccessTools.Method(typeof(GenDraw), "DrawRadiusRing", new Type[]
                 {
@@ -774,7 +775,7 @@ namespace TorannMagic
                 if (caster != null)
                 {
                     IntVec3 targ = UI.MouseMapPosition().ToIntVec3();
-                    if(targ != null)
+                    if(targ != null && __instance.targetingSource.GetVerb != null && __instance.targetingSource.GetVerb.EquipmentSource == null && __instance.targetingSource.GetVerb.loadID == null) // && __instance.targetingSource.GetVerb.EquipmentSource == null)
                     {
                         if ((caster.Position - targ).LengthHorizontal > __instance.targetingSource.GetVerb.verbProps.range)
                         {
@@ -789,8 +790,7 @@ namespace TorannMagic
                         }
                     }
                 }
-            }
-            
+            }            
         }
 
         public static void DaysWorthOfFoodCalc_Undead_Postfix(List<Pawn> pawns, List<ThingDefCount> extraFood, int tile, IgnorePawnsInventoryMode ignoreInventory, Faction faction, ref float __result, WorldPath path = null, float nextTileCostLeft = 0f, int caravanTicksPerMove = 3300, bool assumeCaravanMoving = true)
@@ -1366,6 +1366,11 @@ namespace TorannMagic
             }
             return true;
         }
+
+        //public static void Get_MaxDrawRadius_Patch(ref float __result)
+        //{
+        //    __result = 250f;
+        //}
 
         public static bool TryGiveThoughts_PrefixPatch(ref Pawn victim)
         {
@@ -3186,7 +3191,9 @@ namespace TorannMagic
                 bool anyMagesEnabled = false;
                 int baseCount = 6;
                 int mageCount = 18;
-                int fighterCount = 10;
+                int fighterCount = 11;
+                int supportingFighterCount = 1;
+                int supportingMageCount = 2;
                 if (settingsRef.Gladiator || settingsRef.Bladedancer || settingsRef.Ranger || settingsRef.Sniper || settingsRef.Faceless || settingsRef.DeathKnight || settingsRef.Psionic || settingsRef.Monk || settingsRef.Wayfarer || settingsRef.Commander || settingsRef.SuperSoldier)
                 {
                     anyFightersEnabled = true;
@@ -3721,17 +3728,17 @@ namespace TorannMagic
                                             //    goto SuperSoldier;
                                             //}
                                             break;
-                                        //case 11:
-                                        //    SuperSoldier:;
-                                        //    if (settingsRef.SuperSoldier && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.TM_SuperSoldier, 4)))
-                                        //    {
-                                        //        pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_SuperSoldier, 4, false));
-                                        //    }
-                                        //    //else
-                                        //    //{
-                                        //    //    goto Gladiator;
-                                        //    //}
-                                        //    break;
+                                        case 11:
+                                            SuperSoldier:;
+                                            if (settingsRef.SuperSoldier && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.TM_SuperSoldier, 4)))
+                                            {
+                                                pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_SuperSoldier, 4, false));
+                                            }
+                                            //else
+                                            //{
+                                            //    goto Gladiator;
+                                            //}
+                                            break;
                                     }
                                 }
                                 else
@@ -3977,6 +3984,42 @@ namespace TorannMagic
                             }
                         }
                     }
+
+                    if (Rand.Chance(settingsRef.supportTraitChance))
+                    {
+                        if (TM_Calc.IsMagicUser(pawn) || pawn.story.traits.HasTrait(TorannMagicDefOf.Gifted))
+                        {
+                            int rndS = Rand.RangeInclusive(1, supportingMageCount);
+                            switch (rndS)
+                            {
+                                case 1:
+                                    if (settingsRef.ArcaneConduit && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.TM_ArcaneConduitTD, 0)))
+                                    {
+                                        pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_ArcaneConduitTD, 0, false));
+                                    }
+                                    break;
+                                case 2:
+                                    if (settingsRef.ManaWell && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.TM_ManaWellTD, 0)))
+                                    {
+                                        pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_ManaWellTD, 0, false));
+                                    }
+                                    break;
+                            }                                
+                        }
+                        else
+                        {
+                            int rndS = Rand.RangeInclusive(1, supportingFighterCount);
+                            switch (rndS)
+                            {
+                                case 1:
+                                    if (settingsRef.Boundless && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.TM_BoundlessTD, 0)))
+                                    {
+                                        pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_BoundlessTD, 0, false));
+                                    }
+                                    break;
+                            }
+                        }
+                    }                    
                 }
                 TraitEnd:;
             }
@@ -4106,40 +4149,16 @@ namespace TorannMagic
                         ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                         if (Find.Selector.SelectedObjects.Count >= 2 && !settingsRef.showIconsMultiSelect)
                         {
-                            for (int z = 0; z < 5; z++)
+                            for (int i = 0; i < list.Count; i++)
                             {
-                                for (int i = 0; i < list.Count; i++)
+                                if (!(list[i].ToString().Contains("label=Attack") || list[i].ToString().Contains("label=Melee attack") || list[i].ToString().Contains("Desc=Toggle") || list[i].ToString().Contains("label=Draft")))
                                 {
-                                    if (list[i].ToString().Contains("label=Attack") || list[i].ToString().Contains("label=Melee attack") || list[i].ToString().Contains("Desc=Toggle") || list[i].ToString().Contains("label=Draft"))
-                                    {
-                                        //yes, filter 5 time                                   
-                                    }
-                                    else
-                                    {
-                                        list.Remove(list[i]);
-                                    }
+                                    list.Remove(list[i]);
+                                    i--;
                                 }
-                            }                            
+                            }                          
                         }                       
                     }
-
-                    //if (pawn.Faction == Faction.OfPlayer)
-                    //{
-                    //    if (pawn.drafter != null)
-                    //    {
-                    //        Command_Action TM_PolymorphDrafter = new Command_Action();
-                    //        TM_PolymorphDrafter.action = delegate
-                    //        {
-                    //            pawn.drafter.Drafted = !pawn.drafter.Drafted;
-                    //        };
-                    //        TM_PolymorphDrafter.defaultLabel = "CommandDraftLabel".Translate();
-                    //        TM_PolymorphDrafter.defaultDesc = "CommandToggleDraftDesc".Translate();
-                    //        TM_PolymorphDrafter.icon = TexCommand.Draft;
-                    //        TM_PolymorphDrafter.activateSound = SoundDefOf.DraftOn;
-                    //        list.Insert(0, TM_PolymorphDrafter);
-                    //    }
-                    //}
-
                     __result = list;
                 }
             }

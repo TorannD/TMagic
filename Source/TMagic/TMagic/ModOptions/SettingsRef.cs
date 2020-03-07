@@ -18,6 +18,7 @@ namespace TorannMagic.ModOptions
         public float baseFighterChance = Settings.Instance.baseFighterChance;
         public float advMageChance = Settings.Instance.advMageChance;
         public float advFighterChance = Settings.Instance.advFighterChance;
+        public float supportTraitChance = Settings.Instance.supportTraitChance;
         public int deathExplosionMin = Settings.Instance.deathExplosionMin;
         public int deathExplosionMax = Settings.Instance.deathExplosionMax;
         public float magicyteChance = Settings.Instance.magicyteChance;
@@ -73,6 +74,10 @@ namespace TorannMagic.ModOptions
         public bool Wayfarer = Settings.Instance.Wayfayer;
         public bool Commander = Settings.Instance.Commander;
         public bool SuperSoldier = Settings.Instance.SuperSoldier;
+
+        public bool ArcaneConduit = Settings.Instance.ArcaneConduit;
+        public bool ManaWell = Settings.Instance.ManaWell;
+        public bool Boundless = Settings.Instance.Boundless;
 
     }
 }

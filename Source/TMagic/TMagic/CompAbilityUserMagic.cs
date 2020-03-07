@@ -8333,7 +8333,16 @@ namespace TorannMagic
             _mpCost += (focus.level * -.025f);
             _arcaneRes += ((1 - this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false)) / 2);
             _arcaneDmg += ((this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false) - 1) / 4);
-
+            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_ArcaneConduitTD))
+            {
+                _mpRegenRate += .4f;
+                _maxMP -= .2f;
+            }
+            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_ManaWellTD))
+            {
+                _mpRegenRate -= .2f;
+                _maxMP += .4f;
+            }
             float val = 1f;
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer) || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
             {

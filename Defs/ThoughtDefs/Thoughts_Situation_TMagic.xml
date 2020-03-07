@@ -30,6 +30,19 @@
   </ThoughtDef>
   
   <ThoughtDef>
+    <defName>TM_OpinionOfBoundless</defName>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <workerClass>TorannMagic.Thoughts.ThoughtWorker_TM_Boundless</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stages>
+      <li>
+        <label>boundless arrogance</label>
+        <baseOpinionOffset>-20</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef>
     <defName>TM_Lich</defName>
     <thoughtClass>Thought_SituationalSocial</thoughtClass>
     <workerClass>TorannMagic.Thoughts.ThoughtWorker_Lich</workerClass>

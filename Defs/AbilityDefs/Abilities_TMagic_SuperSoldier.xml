@@ -370,7 +370,7 @@ Weapon specializations apply automatically when a Super Soldier equips a weapon 
         <defName>TM_FirstAid</defName>
         <label>Self Aid</label>
         <uiIconPath>UI/firstaid</uiIconPath>
-        <description>Self Aid is possible for Super Soldiers as a result of the genetic enhancements they acquire from the serum. This ability allows them to consciously focus energy to rapid tend wounds.</description>
+        <description>Self Aid is possible for Super Soldiers as a result of the genetic enhancements they acquire from the serum. This ability allows them to consciously focus energy to rapid tend wounds. Self Aid is unable to tend grievous wounds, such as missing body parts.</description>
         <staminaCost>0.40</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_FirstAid</verbClass>

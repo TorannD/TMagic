@@ -1018,17 +1018,6 @@
 								</li>
 							</subNodes>
 						</li>
-						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
-							<maxDistance>50.0</maxDistance>
-							<subNodes>
-								<!-- Use most dangerous ability first -->
-								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
-									<tags>
-										<li>60mmMortar</li>
-									</tags>
-								</li>
-							</subNodes>
-						</li>
 					</subNodes>
 				</li>
 			</subNodes>
