@@ -19,11 +19,12 @@ namespace TorannMagic.AutoCast
             success = false;
             Pawn caster = casterComp.Pawn;
             LocalTargetInfo jobTarget = caster.CurJob.targetA;
+            LocalTargetInfo faceTarget = null;
             Thing carriedThing = null;
 
             //if (caster.CurJob.targetA.Thing != null && caster.CurJob.targetA.Thing.Map != caster.Map)
             //{
-            //    Log.Message("" + caster.LabelShort + " jobdef " + caster.CurJobDef.defName + " checking phase - target a: " + caster.CurJob.targetA + " target b: " + caster.CurJob.targetB + " carrying: " + caster.CurJob.targetA.Thing.stackCount +  " " + caster.CurJob.targetA);
+            //    Log.Message("" + caster.LabelShort + " jobdef " + caster.CurJobDef.defName + " checking phase - target a: " + caster.CurJob.targetA + " target b: " + caster.CurJob.targetB + " carrying: " + caster.CurJob.targetA.Thing.stackCount + " " + caster.CurJob.targetA);
             //}
             //else
             //{
@@ -65,6 +66,7 @@ namespace TorannMagic.AutoCast
                     }
                 }
             }
+            faceTarget = jobTarget;
             if(!jobTarget.Cell.Walkable(caster.Map))
             {
                 jobTarget = TM_Calc.FindWalkableCellNextTo(jobTarget.Cell, caster.Map);
@@ -84,7 +86,8 @@ namespace TorannMagic.AutoCast
                     if (distanceToTarget <= abilitydef.MainVerb.range && jobTarget.Cell != default(IntVec3))
                     {
                         //Log.Message("doing blink to thing");
-                        DoPhase(caster, casterComp, abilitydef, jobTarget.Cell, ability, carriedThing, power);
+                        //DoPhase(caster, casterComp, abilitydef, jobTarget.Cell, ability, carriedThing, power);
+                        DoPhase2(caster, casterComp, abilitydef, jobTarget.Cell, ability, carriedThing, power, faceTarget);
                         success = true;
                     }
                     else
@@ -119,12 +122,49 @@ namespace TorannMagic.AutoCast
 
                             if (isCloser)
                             {
-                                DoPhase(caster, casterComp, abilitydef, phaseToCell, ability, carriedThing, power);
+                                //DoPhase(caster, casterComp, abilitydef, phaseToCell, ability, carriedThing, power);
+                                DoPhase2(caster, casterComp, abilitydef, phaseToCell, ability, carriedThing, power, faceTarget);
                                 success = true;
                             }
                         }
                     }
                 }
+            }
+        }
+
+        private static void DoPhase2(Pawn caster, CompAbilityUserMight casterComp, TMAbilityDef abilitydef, IntVec3 targetCell, PawnAbility ability, Thing carriedThing, MightPower power, LocalTargetInfo faceTarget)
+        {
+            Pawn p = caster;
+            Map map = caster.Map;
+            IntVec3 casterCell = caster.Position;
+
+            bool selectCaster = false;
+            if (Find.Selector.FirstSelectedObject == caster)
+            {
+                selectCaster = true;
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, caster.DrawPos, caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
+                TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Enchanting, caster.DrawPos, caster.Map, Rand.Range(1.4f, 2f), .2f, .05f, Rand.Range(.4f, .6f), Rand.Range(-200, 200), 0, 0, 0);
+            }
+                
+            caster.Position = targetCell;
+            caster.Notify_Teleported(true, true);
+            //GenClamor.DoClamor(caster, 2f, ClamorDefOf.Ability);
+
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            casterComp.MightUserXP -= (int)((casterComp.ActualStaminaCost(abilitydef) * 180 * .8f * casterComp.xpGain * settingsRef.xpMultiplier));
+            ability.PostAbilityAttempt();
+            if (selectCaster)
+            {
+                Find.Selector.Select(caster, false, true);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, targetCell.ToVector3Shifted(), caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
+                TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Enchanting, targetCell.ToVector3Shifted(), caster.Map, Rand.Range(1.4f, 2f), .2f, .05f, Rand.Range(.4f, .6f), Rand.Range(-200, 200), 0, 0, 0);
             }
         }
 
@@ -966,22 +1006,22 @@ namespace TorannMagic.AutoCast
 
         private static void DoBlink(Pawn caster, CompAbilityUserMagic casterComp, TMAbilityDef abilitydef, IntVec3 targetCell, PawnAbility ability, Thing carriedThing)
         {
-            JobDef retainJobDef = caster.CurJobDef;
-            LocalTargetInfo retainTargetA = caster.CurJob.targetA;
-            int retainJobCount = 1;
-            if (caster.CurJob != null)
-            {
-                retainJobCount = caster.CurJob.count;
-            }
-            LocalTargetInfo retainTargetB = caster.CurJob.targetB;
-            LocalTargetInfo retainTargetC = caster.CurJob.targetC;
+            //JobDef retainJobDef = caster.CurJobDef;
+            //LocalTargetInfo retainTargetA = caster.CurJob.targetA;
+            //int retainJobCount = 1;
+            //if (caster.CurJob != null)
+            //{
+            //    retainJobCount = caster.CurJob.count;
+            //}
+            //LocalTargetInfo retainTargetB = caster.CurJob.targetB;
+            //LocalTargetInfo retainTargetC = caster.CurJob.targetC;
             Pawn p = caster;
-            Thing cT = carriedThing;
-            if (cT != null && cT.stackCount != retainJobCount && retainJobCount == 0)
-            {
-                //Log.Message("stack count " + cT.stackCount + " rjob count " + retainJobCount + " job count " + caster.CurJob.count);
-                retainJobCount = cT.stackCount;
-            }
+            //Thing cT = carriedThing;
+            //if (cT != null && cT.stackCount != retainJobCount && retainJobCount == 0)
+            //{
+            //    //Log.Message("stack count " + cT.stackCount + " rjob count " + retainJobCount + " job count " + caster.CurJob.count);
+            //    retainJobCount = cT.stackCount;
+            //}
             Map map = caster.Map;
             IntVec3 casterCell = caster.Position;
             bool selectCaster = false;
@@ -997,15 +1037,19 @@ namespace TorannMagic.AutoCast
                     TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Casting, caster.DrawPos, caster.Map, Rand.Range(1.4f, 2f), .2f, .05f, Rand.Range(.4f, .6f), Rand.Range(-200, 200), 0, 0, 0);
                 }
 
-                caster.ClearReservationsForJob(caster.CurJob);
-                caster.DeSpawn();                
-                GenSpawn.Spawn(p, targetCell, map);
-                if(carriedThing != null)
-                {
-                    carriedThing.DeSpawn();
-                    GenPlace.TryPlaceThing(cT, targetCell, map, ThingPlaceMode.Near);
-                    //GenSpawn.Spawn(cT, targetCell, map);
-                }
+                //caster.ClearReservationsForJob(caster.CurJob);
+                //caster.DeSpawn();                
+                //GenSpawn.Spawn(p, targetCell, map);
+                //if(carriedThing != null)
+                //{
+                //    carriedThing.DeSpawn();
+                //    GenPlace.TryPlaceThing(cT, targetCell, map, ThingPlaceMode.Near);
+                //    //GenSpawn.Spawn(cT, targetCell, map);
+                //}
+                caster.Position = targetCell;
+                caster.Notify_Teleported(true, true);
+                //GenClamor.DoClamor(caster, 2f, ClamorDefOf.Ability);
+
                 if (caster.kindDef != PawnKindDef.Named("TM_Dire_Wolf"))
                 {
                     ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
@@ -1018,18 +1062,18 @@ namespace TorannMagic.AutoCast
                 }
                 for (int i = 0; i < 3; i++)
                 {
-                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, caster.DrawPos, caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
-                    TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Casting, caster.DrawPos, caster.Map, Rand.Range(1.4f, 2f), .2f, .05f, Rand.Range(.4f, .6f), Rand.Range(-200, 200), 0, 0, 0);
+                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, targetCell.ToVector3Shifted(), caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
+                    TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Casting, targetCell.ToVector3Shifted(), caster.Map, Rand.Range(1.4f, 2f), .2f, .05f, Rand.Range(.4f, .6f), Rand.Range(-200, 200), 0, 0, 0);
                 }
 
-                Job job = new Job(retainJobDef, retainTargetA, retainTargetB, retainTargetC)
-                {
-                    count = retainJobCount
-                };
-                //caster.jobs.TryTakeOrderedJob(job, JobTag.Misc);
-                caster.jobs.ClearQueuedJobs();
-                caster.jobs.startingNewJob = true;
-                caster.jobs.StartJob(job);
+                //Job job = new Job(retainJobDef, retainTargetA, retainTargetB, retainTargetC)
+                //{
+                //    count = retainJobCount
+                //};
+                ////caster.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                //caster.jobs.ClearQueuedJobs();
+                //caster.jobs.startingNewJob = true;
+                //caster.jobs.StartJob(job);
             }
             catch
             {
@@ -1178,16 +1222,19 @@ namespace TorannMagic.AutoCast
                     GenPlace.TryPlaceThing(cT, targetCell, map, ThingPlaceMode.Near);
                     //GenSpawn.Spawn(cT, targetCell, map);
                 }
+                caster.Position = targetCell;
+                caster.Notify_Teleported(true, true);
+                //GenClamor.DoClamor(caster, 2f, ClamorDefOf.Ability);
                 if (selectCaster)
                 {
                     Find.Selector.Select(caster, false, true);
                 }
                 for (int i = 0; i < 3; i++)
                 {
-                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, caster.DrawPos, caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
+                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, targetCell.ToVector3Shifted(), caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
                     //TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Casting, caster.DrawPos, caster.Map, Rand.Range(1.4f, 2f), .2f, .05f, Rand.Range(.4f, .6f), Rand.Range(-200, 200), 0, 0, 0);
                 }
-                Vector3 drawPos = caster.DrawPos + (-2 * moteVector);
+                Vector3 drawPos = targetCell.ToVector3Shifted() + (-2 * moteVector);
                 TM_MoteMaker.ThrowGenericMote(moteThrown, drawPos, caster.Map, 1.4f, .1f, .3f, 0f, 0, 8f, (Quaternion.AngleAxis(90, Vector3.up) * moteVector).ToAngleFlat(), 0);
                 if (caster.drafter == null)
                 {

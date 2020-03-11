@@ -41,7 +41,7 @@ namespace TorannMagic
 
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {
-            bool flag = this.age <= duration;
+            bool flag = this.age < duration;
             if (!flag)
             {
                 base.Destroy(mode);
@@ -52,7 +52,7 @@ namespace TorannMagic
         protected override void Impact(Thing hitThing)
         {
             Map map = base.Map;
-            GenClamor.DoClamor(this, 2.1f, ClamorDefOf.Impact);
+            //GenClamor.DoClamor(this, 2.1f, ClamorDefOf.Impact);
             //base.Impact(hitThing);
 
             if (!initialized)

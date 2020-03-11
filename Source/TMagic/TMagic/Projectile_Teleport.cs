@@ -26,8 +26,7 @@ namespace TorannMagic
             bool flag = this.age < destructTimer;
             if (!flag)
             {
-                Messages.Message("PortalCollapseFinal".Translate(), MessageTypeDefOf.SilentInput);
-
+                Messages.Message("PortalCollapseFinal".Translate(), MessageTypeDefOf.SilentInput);                
                 base.Destroy(mode);
             }
         }
@@ -224,8 +223,6 @@ namespace TorannMagic
             {
                 //age expired, destroy teleport
                 this.PortalCollapse(centerCell, map, 3);
-                Destroy();
-
             }
             Destroy();
         }

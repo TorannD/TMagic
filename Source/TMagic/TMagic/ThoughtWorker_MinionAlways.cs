@@ -8,16 +8,16 @@ namespace TorannMagic
     {
         protected override ThoughtState CurrentStateInternal(Pawn p)
         {
-            bool flag = p.kindDef.defName == "TM_Minion";
-            ThoughtState result;
-            if (flag)
+            ThoughtState result = ThoughtState.Inactive;
+            if (p != null && p.kindDef != null)
             {
-                result = ThoughtState.ActiveAtStage(0);
-            }
-            else
-            {
-                result = ThoughtState.Inactive;
-            }
+                bool flag = p.kindDef.defName == "TM_Minion";
+
+                if (flag)
+                {
+                    result = ThoughtState.ActiveAtStage(0);
+                }
+            }            
             return result;
         }
     }

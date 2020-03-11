@@ -52,7 +52,7 @@ namespace TorannMagic
         public override float CurLevel
         {            
             get => base.CurLevel;
-            set => base.CurLevel = Mathf.Clamp(value, 0f, this.pawn.GetComp<CompAbilityUserMagic>().maxMP);            
+            set => base.CurLevel = Mathf.Clamp(value, 0f, 2f*this.pawn.GetComp<CompAbilityUserMagic>().maxMP);            
         }
 
         public override float MaxLevel => this.pawn.GetComp<CompAbilityUserMagic>().maxMP;
@@ -483,7 +483,7 @@ namespace TorannMagic
 
                         this.lastGainPct = amount;
 
-                        comp.Mana.curLevelInt = Mathf.Max(comp.Mana.curLevelInt + amount, 0f);
+                        comp.Mana.CurLevel = Mathf.Max(comp.Mana.curLevelInt + amount, 0f);
                         //comp.Mana.curLevelInt = Mathf.Clamp(comp.Mana.curLevelInt += amount, 0f, this.MaxLevel);
 
                         lastNeed = this.curLevelInt;

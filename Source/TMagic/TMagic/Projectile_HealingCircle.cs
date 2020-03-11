@@ -15,7 +15,7 @@ namespace TorannMagic
         int verVal = 0;
         private float arcaneDmg = 1;
         int age = -1;
-        int duration = 1800;
+        int duration = 1200;
         float radius = 6;
         bool initialized = false;
         int healDelay = 40;
@@ -39,7 +39,7 @@ namespace TorannMagic
             base.ExposeData();
             Scribe_Values.Look<bool>(ref this.initialized, "initialized", true, false);
             Scribe_Values.Look<int>(ref this.age, "age", -1, false);
-            Scribe_Values.Look<int>(ref this.duration, "duration", 1800, false);
+            Scribe_Values.Look<int>(ref this.duration, "duration", 1200, false);
             Scribe_Values.Look<int>(ref this.healDelay, "healDelay", 30, false);
             Scribe_Values.Look<int>(ref this.lastHeal, "lastHeal", 0, false);
             Scribe_Values.Look<int>(ref this.waveDelay, "waveDelay", 240, false);
@@ -134,8 +134,7 @@ namespace TorannMagic
                 {
                     ringFrac = 0;
                 }
-            }
-            this.age++;        
+            }       
         }
 
         public void Search(Map map)

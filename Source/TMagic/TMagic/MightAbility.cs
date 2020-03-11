@@ -416,7 +416,7 @@ namespace TorannMagic
                         this.mightDef.defName == "TM_ArrowStorm" || this.mightDef.defName == "TM_ArrowStorm_I" || this.mightDef.defName == "TM_ArrowStorm_II" || this.mightDef.defName == "TM_ArrowStorm_III" ||
                         this.mightDef == TorannMagicDefOf.TM_PsionicStorm ||
                         this.mightDef.defName == "TM_PsionicBlast" || this.mightDef.defName == "TM_PsionicBlast_I" || this.mightDef.defName == "TM_PsionicBlast_II" || this.mightDef.defName == "TM_PsionicBlast_III" || 
-                        this.mightDef == TorannMagicDefOf.TM_ThrowingKnife || this.mightDef == TorannMagicDefOf.TM_TempestStrike ||
+                        this.mightDef == TorannMagicDefOf.TM_TempestStrike ||
                         this.mightDef == TorannMagicDefOf.TM_SuppressingFire || this.mightDef == TorannMagicDefOf.TM_Mk203GL ||
                         this.mightDef == TorannMagicDefOf.TM_Buckshot ||
                         this.mightDef.defName == "TM_Mimic"))

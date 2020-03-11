@@ -178,7 +178,7 @@ namespace TorannMagic
                 {
                     TraitDef td = pawn.story.traits.allTraits[i].def;
                     if(td == TorannMagicDefOf.Bladedancer || td == TorannMagicDefOf.Gladiator || td == TorannMagicDefOf.Faceless || td == TorannMagicDefOf.TM_Sniper || td == TorannMagicDefOf.Ranger ||
-                        td == TorannMagicDefOf.TM_Psionic || td == TorannMagicDefOf.TM_Monk || td == TorannMagicDefOf.TM_Wayfarer)
+                        td == TorannMagicDefOf.TM_Psionic || td == TorannMagicDefOf.TM_Monk || td == TorannMagicDefOf.TM_Wayfarer || td == TorannMagicDefOf.TM_SuperSoldier || td == TorannMagicDefOf.TM_Commander)
                     {
                         return td;
                     }
@@ -215,12 +215,12 @@ namespace TorannMagic
                 if (pawn.story != null && pawn.story.traits != null)
                 {
                     if (pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Warlock) || 
-                        pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus) || pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) || pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || 
+                        pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus) || pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) ||
                         pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || 
                         pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin) || pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner) || pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) || 
                         (pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich)) || pawn.story.traits.HasTrait(TorannMagicDefOf.Priest) || 
-                        pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard) || pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer) || IsWanderer(pawn) ||
-                        pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
+                        pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard) || pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter) ||
+                        pawn.story.traits.HasTrait(TorannMagicDefOf.BloodMage) || IsWanderer(pawn))
                     {
                         flag_Trait = true;
                     }

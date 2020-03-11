@@ -27,9 +27,6 @@
         
 		
 		<!-- Do a queued job if possible -->
-		<li Class="ThinkNode_QueuedJob">
-		  <inBedOnly>false</inBedOnly>
-		</li>
 
         <li Class="ThinkNode_Tagger">
           <tagToGive>Idle</tagToGive>

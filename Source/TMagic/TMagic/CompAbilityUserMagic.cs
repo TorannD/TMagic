@@ -1557,10 +1557,15 @@ namespace TorannMagic
                                 {
                                     this.Mana.CurLevel = 0;
                                 }
-                                else if (this.Mana.CurLevel > this.Mana.MaxLevel)
+                                else if (this.Mana.CurLevel > (this.Mana.MaxLevel + .01f))
                                 {
                                     this.Mana.CurLevel -= .01f;
                                 }
+                                else if(this.Mana.CurLevel > (this.Mana.MaxLevel))
+                                {
+                                    this.Mana.CurLevel = this.Mana.MaxLevel;
+                                }
+
                             }
                             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                             if (this.autocastTick < Find.TickManager.TicksGame)  //180 default

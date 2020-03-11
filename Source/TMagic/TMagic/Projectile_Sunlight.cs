@@ -13,8 +13,7 @@ namespace TorannMagic
 
         protected override void Impact(Thing hitThing)
         {
-            Map map = base.Map;
-            base.Impact(hitThing);
+            Map map = base.Map;            
             ThingDef def = this.def;
             Pawn victim = hitThing as Pawn;
             Thing item = hitThing as Thing;
@@ -55,6 +54,7 @@ namespace TorannMagic
                     comp.Mana.GainNeed(comp.ActualManaCost(TorannMagicDefOf.TM_Sunlight));
                 }
             }
+            base.Impact(hitThing);
         }
 
         public void SingleSpawnLoop(SpawnThings spawnables, IntVec3 position, Map map)

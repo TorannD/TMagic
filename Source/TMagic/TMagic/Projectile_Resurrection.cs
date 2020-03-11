@@ -15,7 +15,7 @@ namespace TorannMagic
         private bool validTarget = false;
         private int verVal = 0;
         private int pwrVal = 0;
-        private int timeToRaise = 2400;
+        private int timeToRaise = 1200;
         private int age = -1;
         IntVec3 deadPawnPosition = default(IntVec3);
         Thing corpseThing = null;
@@ -203,7 +203,6 @@ namespace TorannMagic
                 ), MessageTypeDefOf.RejectInput);
                 this.age = this.timeToRaise;
             }
-            this.age++;
         }
 
         public override void Draw()
@@ -244,7 +243,7 @@ namespace TorannMagic
 
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {
-            bool flag = this.age <= this.timeToRaise;
+            bool flag = this.age < this.timeToRaise;
             if (!flag)
             {
                 base.Destroy(mode);

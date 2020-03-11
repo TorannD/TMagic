@@ -28,10 +28,14 @@ namespace TorannMagic
         {
             Map map = base.Map;
             GenClamor.DoClamor(this, 5.1f, ClamorDefOf.Impact);
-            base.Impact(hitThing);
+            if (initialized)
+            {
+                Destroy();
+            }
 
             if (!initialized)
             {
+                this.initialized = true;
                 SpawnThings spawnThing = new SpawnThings();
                 pawn = this.launcher as Pawn;
                 MagicPowerSkill pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonPoppi.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SummonPoppi_pwr");
@@ -72,10 +76,8 @@ namespace TorannMagic
                         i--;
                     }
                 }
-               
-                this.initialized = true;
             }
-            Destroy();
+            
         }
 
         public void SingleSpawnLoop(SpawnThings spawnables, IntVec3 position, Map map)
