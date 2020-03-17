@@ -114,7 +114,7 @@ namespace TorannMagic
         }
 
         private void DoRangedAttack(LocalTargetInfo target)
-        {            
+        {
             bool flag = target.Cell != default(IntVec3);
             if (flag)
             {
@@ -160,7 +160,6 @@ namespace TorannMagic
 
         private void StartAoEAttack(IntVec3 center, LocalTargetInfo target)
         {
-            //Log.Message("starting aoe");
             if (target.Thing != null && target.Thing.Map == this.Pawn.Map)
             {
                 this.nextAoEAttack = (int)(this.Props.aoeCooldownTicks * Rand.Range(.9f, 1.1f)) + Find.TickManager.TicksGame;
@@ -172,7 +171,6 @@ namespace TorannMagic
 
         private void DoAoEAttack(IntVec3 center, LocalTargetInfo target)
         {
-            //Log.Message("doing aoe");
             TM_CopyAndLaunchProjectile.CopyAndLaunchThing(TorannMagicDefOf.Projectile_FogOfTorment, this.Pawn, center, target, ProjectileHitFlags.All, null);
             this.shouldDoAOEAttack = false;
         }
@@ -194,7 +192,6 @@ namespace TorannMagic
 
         private void StartKnockbackAttack(IntVec3 target, float radius)
         {
-            //Log.Message("starting flight");
             this.nextKnockbackAttack = (int)(this.Props.knockbackCooldownTicks * Rand.Range(.9f, 1.1f)) + Find.TickManager.TicksGame;
             this.castingCompleteTick = this.Props.knockbackAttackDelay + Find.TickManager.TicksGame;
             TM_Action.PawnActionDelay(this.Pawn, this.Props.knockbackAttackDelay, target, this.Pawn.meleeVerbs.TryGetMeleeVerb(this.rangedTarget.Thing));
@@ -203,7 +200,6 @@ namespace TorannMagic
 
         private void DoKnockbackAttack(IntVec3 target, float radius)
         {
-            //Log.Message("doing flight");
             int pwrVal = 3;
             int verVal = 3;
             List<Pawn> TargetsAoE = TM_Calc.FindPawnsNearTarget(this.Pawn, 5, target, true);
@@ -266,7 +262,6 @@ namespace TorannMagic
 
         private void StartChargeAttack(IntVec3 t)
         {
-            //Log.Message("starting flight");
             this.nextChargeAttack = this.Props.chargeCooldownTicks + Find.TickManager.TicksGame;
             bool flag = t != null && t.DistanceToEdge(this.Pawn.Map) > 6;
             if (flag && t.InBounds(this.Pawn.Map) && t.IsValid && t.Walkable(this.Pawn.Map) && Pawn.Position.DistanceTo(t) <= 60)
@@ -321,7 +316,7 @@ namespace TorannMagic
         }
 
         private void StartTaunt(Map map, LocalTargetInfo target)
-        {            
+        {
             this.castingCompleteTick = Find.TickManager.TicksGame + this.Props.tauntAttackDelay;
             TM_Action.PawnActionDelay(this.Pawn, this.Props.tauntAttackDelay, target, this.Pawn.meleeVerbs.TryGetMeleeVerb(this.Pawn));
             this.shouldDoTaunt = true;
@@ -437,7 +432,6 @@ namespace TorannMagic
 
                             if (Find.TickManager.TicksGame % 30 == 0)
                             {
-
                                 if (this.buildingThreats.Count() > 0)
                                 {
                                     Building randomBuildingThreat = this.buildingThreats.RandomElement();
@@ -586,16 +580,16 @@ namespace TorannMagic
                         }
                     }
 
-                    if (this.Pawn.Downed)
-                    {
-                        this.Pawn.Kill(null);
-                    }
-
                     if (Find.TickManager.TicksGame % 4 == 0)
                     {
                         ThingDef rndMote = ThingDefOf.Mote_Smoke;
                         TM_MoteMaker.ThrowGenericMote(rndMote, MoteDrawPos, this.Pawn.Map, Rand.Range(.4f, .5f), .1f, 0f, Rand.Range(.5f, .6f), Rand.Range(-40, 40), Rand.Range(.2f, .3f), Rand.Range(-95, -110), Rand.Range(0, 360));
                         TM_MoteMaker.ThrowGenericMote(rndMote, MoteDrawPos, this.Pawn.Map, Rand.Range(.4f, .5f), .1f, 0f, Rand.Range(.5f, .6f), Rand.Range(-40, 40), Rand.Range(.2f, .3f), Rand.Range(90, 110), Rand.Range(0, 360));
+                    }
+
+                    if (this.Pawn.Downed)
+                    {
+                        this.Pawn.Kill(null);
                     }
                 }
             }
@@ -611,13 +605,15 @@ namespace TorannMagic
         public override void PostPreApplyDamage(DamageInfo dinfo, out bool absorbed)
         {
             base.PostPreApplyDamage(dinfo, out absorbed);
-            if(dinfo.Instigator != null)
+            //Log.Message("taking damage");
+            if (dinfo.Instigator != null)
             {
                 Thing instigatorThing = dinfo.Instigator;
-                if(instigatorThing is Building)
+                if (instigatorThing is Building)
                 {
                     if (instigatorThing.Faction != null && instigatorThing.Faction != this.Pawn.Faction)
                     {
+                        //Log.Message("adding building threat");
                         this.buildingThreats.AddDistinct(instigatorThing as Building);
                     }
                 }
@@ -626,58 +622,50 @@ namespace TorannMagic
 
         private void DetermineThreats()
         {
-            try
+            //Log.Message("checking threats - lich");
+            this.closeThreats.Clear();
+            this.farThreats.Clear();
+            List<Pawn> allPawns = this.Pawn.Map.mapPawns.AllPawnsSpawned;
+            for (int i = 0; i < allPawns.Count; i++)
             {
-                this.closeThreats.Clear();
-                this.farThreats.Clear();
-                List<Pawn> allPawns = this.Pawn.Map.mapPawns.AllPawnsSpawned;
-                for (int i = 0; i < allPawns.Count(); i++)
+                if (!allPawns[i].DestroyedOrNull() && allPawns[i] != this.Pawn)
                 {
-                    if (!allPawns[i].DestroyedOrNull() && allPawns[i] != this.Pawn)
+                    if (!allPawns[i].Dead && !allPawns[i].Downed)
                     {
-                        if (!allPawns[i].Dead && !allPawns[i].Downed)
+                        if (allPawns[i].Faction != null && allPawns[i].Faction != this.Pawn.Faction)
                         {
                             if ((allPawns[i].Position - this.Pawn.Position).LengthHorizontal <= this.Props.maxRangeForCloseThreat)
                             {
-                                if (allPawns[i].Faction != null && allPawns[i].Faction != this.Pawn.Faction)
-                                {
-                                    this.closeThreats.Add(allPawns[i]);
-                                }
+                                this.closeThreats.Add(allPawns[i]);
                             }
                             else if ((allPawns[i].Position - this.Pawn.Position).LengthHorizontal <= this.Props.maxRangeForFarThreat)
                             {
-                                if (allPawns[i].Faction != null && allPawns[i].Faction != this.Pawn.Faction)
-                                {
-                                    this.farThreats.Add(allPawns[i]);
-                                }
+                                this.farThreats.Add(allPawns[i]);                                    
                             }
                         }
                     }
                 }
-                if (this.closeThreats.Count() < 1 && this.farThreats.Count() < 1)
-                {
-                    Pawn randomMapPawn = allPawns.RandomElement();
-                    if (TargetIsValid(randomMapPawn) && randomMapPawn.RaceProps.Humanlike)
-                    {
-                        if (randomMapPawn.Faction != null && randomMapPawn.Faction != this.Pawn.Faction)
-                        {
-                            this.farThreats.Add(randomMapPawn);
-                        }
-                    }
-                }
-                for (int i = 0; i < this.buildingThreats.Count(); i++)
-                {
-                    if (this.buildingThreats[i].DestroyedOrNull())
-                    {
-                        this.buildingThreats.Remove(this.buildingThreats[i]);
-                    }
-                }
-                LearnAndShareBuildingThreats();
             }
-            catch(NullReferenceException ex)
+            if (this.closeThreats.Count() < 1 && this.farThreats.Count() < 1)
             {
-                //Log.Message("Error processing threats" + ex);
+                Pawn randomMapPawn = allPawns.RandomElement();
+                if (TargetIsValid(randomMapPawn) && randomMapPawn.RaceProps.Humanlike)
+                {
+                    if (randomMapPawn.Faction != null && randomMapPawn.Faction != this.Pawn.Faction)
+                    {
+                        this.farThreats.Add(randomMapPawn);
+                    }
+                }
             }
+            for (int i = 0; i < this.buildingThreats.Count(); i++)
+            {
+                if (this.buildingThreats[i].DestroyedOrNull())
+                {
+                    this.buildingThreats.Remove(this.buildingThreats[i]);
+                }
+            }
+            //LearnAndShareBuildingThreats();
+
         }
 
         public bool TargetIsValid(Thing target)
@@ -750,7 +738,7 @@ namespace TorannMagic
 
                     if (skeleton != null)
                     {
-                        TM_Action.SingleSpawnLoop(null, skeleton, curCell, map, 0, false, true, faction);
+                        TM_Action.SingleSpawnLoop(null, skeleton, curCell, map, 0, false, false, faction);
                     }
                 }
             }
@@ -758,11 +746,12 @@ namespace TorannMagic
 
         public void LearnAndShareBuildingThreats()
         {
+            //Log.Message("sharing threats");
             List<Pawn> allPawns = this.Pawn.Map.mapPawns.AllPawnsSpawned;
             for(int i =0; i < allPawns.Count; i++)
             {
                 Pawn p = allPawns[i];
-                if(p.Faction == this.Pawn.Faction)
+                if(p != this.Pawn && p.Faction == this.Pawn.Faction)
                 {
                     if(p.def == TorannMagicDefOf.TM_SkeletonLichR)
                     {
@@ -796,6 +785,7 @@ namespace TorannMagic
                     }
                 }
             }
+            //Log.Message("ending threat share");
         }
     }
 }

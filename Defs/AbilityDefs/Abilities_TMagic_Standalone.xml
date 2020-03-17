@@ -1444,7 +1444,7 @@ Arcane Bolt is inefficient because of the unrefined nature of the spell, but it 
 	<uiIconPath>UI/throwingknife</uiIconPath>
     <staminaCost>0.30</staminaCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
-        <verbClass>AbilityUser.Verb_UseAbility</verbClass>
+        <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
 			<tooltipShowExtraDamages>true</tooltipShowExtraDamages>
 			<tooltipShowHediffsToApply>true</tooltipShowHediffsToApply>

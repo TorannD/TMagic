@@ -33,7 +33,7 @@ namespace TorannMagic
             return flag;
         }
 
-        public void RemoveExistingEnchantment(Pawn pawn)
+        public static void RemoveExistingEnchantment(Pawn pawn)
         {
             Hediff hediff = null;
             List<Hediff> allHediffs = new List<Hediff>();

@@ -11,7 +11,9 @@
     <description>Weapon Specialization: Pistol
 
 This specialization improves all aspects of pistols: accuracy, damage, shot delay, shot count, range, and more.
-Weapon specializations apply automatically when a Super Soldier equips a weapon in their specialization category. Specialized weapons are denoted by a "++" after the item name.</description>
+Weapon specializations apply automatically when a Super Soldier equips a weapon in their specialization category. Specialized weapons are denoted by a "++" after the item name.
+
+Super Soldiers with a specialized pistol equipped gain a unique "double tap" talent which will occasionally ignore cooldown and immediately begin another shot burst; this talent consumes stamina when it occurs.</description>
     <staminaCost>0.0</staminaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>

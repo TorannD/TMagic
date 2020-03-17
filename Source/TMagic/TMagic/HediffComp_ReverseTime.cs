@@ -143,7 +143,19 @@ namespace TorannMagic
                                 float sevDay = sevDayComp.Def.CompProps<HediffCompProperties_SeverityPerDay>().severityPerDay;
                                 if (sevDay != 0)
                                 {
-                                    rec.Severity -= ((sevDay * ticks * this.parent.Severity) / (1000));
+                                    bool drugTolerance = false;
+                                    HediffComp_DrugEffectFactor drugEffectComp = rec.TryGetComp<HediffComp_DrugEffectFactor>();
+                                    if (drugEffectComp != null)
+                                    {
+                                        if (drugEffectComp.Def.CompProps < HediffCompProperties_DrugEffectFactor>().chemical != null)
+                                        {
+                                            drugTolerance = true;
+                                        }
+                                    }
+                                    if (!drugTolerance)
+                                    {
+                                        rec.Severity -= ((sevDay * ticks * this.parent.Severity) / (1000));
+                                    }
                                 }
                             }
                         }

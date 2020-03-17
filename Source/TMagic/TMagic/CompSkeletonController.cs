@@ -613,56 +613,46 @@ namespace TorannMagic
 
         private void DetermineThreats()
         {
-            try
+            this.closeThreats.Clear();
+            this.farThreats.Clear();
+            List<Pawn> allPawns = this.Pawn.Map.mapPawns.AllPawnsSpawned;
+            for (int i = 0; i < allPawns.Count; i++)
             {
-                this.closeThreats.Clear();
-                this.farThreats.Clear();
-                List<Pawn> allPawns = this.Pawn.Map.mapPawns.AllPawnsSpawned;
-                for (int i = 0; i < allPawns.Count(); i++)
+                if (!allPawns[i].DestroyedOrNull() && allPawns[i] != this.Pawn)
                 {
-                    if (!allPawns[i].DestroyedOrNull() && allPawns[i] != this.Pawn)
+                    if (!allPawns[i].Dead && !allPawns[i].Downed)
                     {
-                        if (!allPawns[i].Dead && !allPawns[i].Downed)
+                        if (allPawns[i].Faction != null && allPawns[i].Faction != this.Pawn.Faction)
                         {
                             if ((allPawns[i].Position - this.Pawn.Position).LengthHorizontal <= this.Props.maxRangeForCloseThreat)
                             {
-                                if (allPawns[i].Faction != null && allPawns[i].Faction != this.Pawn.Faction)
-                                {
-                                    this.closeThreats.Add(allPawns[i]);
-                                }
+                                this.closeThreats.Add(allPawns[i]);
                             }
                             else if ((allPawns[i].Position - this.Pawn.Position).LengthHorizontal <= this.Props.maxRangeForFarThreat)
                             {
-                                if (allPawns[i].Faction != null && allPawns[i].Faction != this.Pawn.Faction)
-                                {
-                                    this.farThreats.Add(allPawns[i]);
-                                }
+                                this.farThreats.Add(allPawns[i]);
                             }
                         }
                     }
                 }
-                if (this.closeThreats.Count() < 1 && this.farThreats.Count() < 1)
+            }
+            if (this.closeThreats.Count() < 1 && this.farThreats.Count() < 1)
+            {
+                Pawn randomMapPawn = allPawns.RandomElement();
+                if (TargetIsValid(randomMapPawn) && randomMapPawn.RaceProps.Humanlike)
                 {
-                    Pawn randomMapPawn = allPawns.RandomElement();
-                    if (TargetIsValid(randomMapPawn) && randomMapPawn.RaceProps.Humanlike)
+                    if (randomMapPawn.Faction != null && randomMapPawn.Faction != this.Pawn.Faction)
                     {
-                        if (randomMapPawn.Faction != null && randomMapPawn.Faction != this.Pawn.Faction)
-                        {
-                            this.farThreats.Add(randomMapPawn);
-                        }
-                    }
-                }
-                for (int i = 0; i < this.buildingThreats.Count(); i++)
-                {
-                    if (this.buildingThreats[i].DestroyedOrNull())
-                    {
-                        this.buildingThreats.Remove(this.buildingThreats[i]);
+                        this.farThreats.Add(randomMapPawn);
                     }
                 }
             }
-            catch(NullReferenceException ex)
+            for (int i = 0; i < this.buildingThreats.Count(); i++)
             {
-                //Log.Message("Error processing threats" + ex);
+                if (this.buildingThreats[i].DestroyedOrNull())
+                {
+                    this.buildingThreats.Remove(this.buildingThreats[i]);
+                }
             }
         }
 

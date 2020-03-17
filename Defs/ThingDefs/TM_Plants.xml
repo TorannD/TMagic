@@ -514,7 +514,9 @@ The claims that pomanasyrrium grant insight and clarity is disregarded by most a
 	<label>Paracyte thornbush</label>
 	<description>The paracyte thornbush is a genetically engineered plant that absorbs mana through a process of arcane transpiration and collects it into a chrysalis. As the plant matures, the chrysalis hardens into magicyte which can be harvested.  The rest of the plant consists of almost glass-like thorns and rigid stems. 
 	
-Paracyte is difficult to grow and only skilled herbalists are able to plant and harvest it safely, but for all it's difficulties, it has a delicate beauty and gives off an ethereal glow that reflects light along its crystalline edges.</description>
+Paracyte is difficult to grow and only skilled herbalists are able to plant and harvest it safely, but for all it's difficulties, it has a delicate beauty and gives off an ethereal glow that reflects light along its crystalline edges.
+
+NOTE: Paracyte plants will lower mana regen for all mages on the map if the number of paracyte plants exceeds the soft cap. Check mod settings for the soft cap value. Paracyte plans have no effect on mana regen when the total count on the map is lower than the soft cap.</description>
 	<statBases>
 		<MaxHitPoints>25</MaxHitPoints>
 		<Nutrition>0.1</Nutrition>

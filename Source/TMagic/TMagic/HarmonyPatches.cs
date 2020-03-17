@@ -2391,6 +2391,7 @@ namespace TorannMagic
                     if (dinfo.Instigator != null && pawn != null && dinfo.Instigator != pawn && !pawn.Destroyed && !pawn.Dead && pawn.Map != null)
                     {
                         Pawn instigator = dinfo.Instigator as Pawn;
+                        //Log.Message("harmony patch");
                         if (instigator != null && dinfo.Def != TMDamageDefOf.DamageDefOf.TM_Shrapnel)
                         {
                             if (instigator.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BowTrainingHD))
@@ -2449,8 +2450,10 @@ namespace TorannMagic
 
                         if (TM_Calc.IsUndead(pawn))
                         {
-                            if (dinfo.Def.armorCategory != null && dinfo.Def.armorCategory.defName == "Light" && Rand.Chance(.25f))
+                            //Log.Message("undead taking damage");
+                            if (dinfo.Def != null && dinfo.Def.armorCategory != null && dinfo.Def.armorCategory.defName == "Light" && Rand.Chance(.25f))
                             {
+                                //Log.Message("taking light damage");
                                 dinfo.SetAmount(dinfo.Amount * .7f);
                                 pawn.TakeDamage(dinfo);
                             }
@@ -2460,6 +2463,7 @@ namespace TorannMagic
                         {
                             if (instigator.RaceProps.Humanlike && instigator.story != null)
                             {
+                                //Log.Message("checking class bonus damage");
                                 if (instigator.story.traits.HasTrait(TorannMagicDefOf.Gladiator) && instigator.equipment.Primary != null && instigator.equipment.Primary.def.IsMeleeWeapon)
                                 {
                                     float cleaveChance = Mathf.Min(instigator.equipment.Primary.def.BaseMass * .4f, .75f);
@@ -2580,6 +2584,7 @@ namespace TorannMagic
 
                         if(instigator != null && instigator.equipment != null && instigator.equipment.Primary != null && instigator.equipment.Primary.def.IsMeleeWeapon)
                         {
+                            //Log.Message("checking instigator melee bonus ");
                             if (instigator.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffFightersFocus) && Rand.Chance(.2f))
                             {
                                 CompAbilityUserMight comp = instigator.GetComp<CompAbilityUserMight>();
@@ -2622,6 +2627,7 @@ namespace TorannMagic
 
                         if (instigator != null)
                         {
+                            //Log.Message("checking enchantment damage");
                             if (instigator.health.hediffSet.HasHediff(TorannMagicDefOf.TM_WeaponEnchantment_FireHD) && dinfo.Def != TMDamageDefOf.DamageDefOf.TM_Enchanted_Fire && Rand.Chance(.5f))
                             {
                                 float sev = instigator.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_WeaponEnchantment_FireHD).Severity;
@@ -2699,12 +2705,12 @@ namespace TorannMagic
                         {
                             int doubleTapPwr = comp.MightData.MightPowerSkill_PistolSpec.FirstOrDefault((MightPowerSkill x) => x.label == "TM_PistolSpec_eff").level;
                             MightPowerSkill globalSkill = comp.MightData.MightPowerSkill_global_seff.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_seff_pwr");
-                            float actualStaminaCost = .05f * (1 - (.1f * doubleTapPwr) * (1 - (.03f * globalSkill.level)));
+                            float actualStaminaCost = .03f * (1 - (.1f * doubleTapPwr) * (1 - (.03f * globalSkill.level)));
                             if (comp != null && comp.Stamina.CurLevel >= actualStaminaCost && Rand.Chance(.25f + (.05f * doubleTapPwr)))
                             {
                                 __instance.CasterPawn.stances.SetStance(new Stance_Cooldown(5, currentTarget, __instance));
                                 comp.Stamina.CurLevel -= actualStaminaCost;
-                                comp.MightUserXP += (int)(.05f * 180);
+                                comp.MightUserXP += (int)(.03f * 180);
                             }
                         }
                     }
@@ -3076,20 +3082,21 @@ namespace TorannMagic
             }
         }
 
-        [HarmonyPatch(typeof(ShotReport), "HitReportFor", null)]
-        public static class ShotReport_Patch
-        {
-            private static bool Prefix(Thing caster, Verb verb, LocalTargetInfo target, ref ShotReport __result)
-            {
-                if (verb?.verbProps?.verbClass?.ToString() == "TorannMagic.Verb_SB" || verb.verbProps.verbClass.ToString() == "TorannMagic.Verb_BLOS")
-                {
-                    ShotReport result = default(ShotReport);
-                    __result = result;
-                    return false;
-                }
-                return true;
-            }
-        }
+        //[HarmonyPatch(typeof(ShotReport), "HitReportFor", null)]
+        //public static class ShotReport_Patch
+        //{
+        //    private static bool Prefix(Thing caster, Verb verb, LocalTargetInfo target, ref ShotReport __result)
+        //    {
+        //        if(false) //verb != null && verb.verbProps != null && verb.verbProps.verbClass != null && (verb.verbProps.verbClass.ToString() == "TorannMagic.Verb_SB" || verb.verbProps.verbClass.ToString() == "TorannMagic.Verb_BLOS"))
+        //        {
+        //            //ShotReport shotReport = default(ShotReport);
+                    
+        //            //__result = result;
+        //            //return false;
+        //        }
+        //        return true;
+        //    }
+        //}
 
         [HarmonyPatch(typeof(LordToil_Siege), "CanBeBuilder", null)]
         public static class CanBeBuilder_Patch
@@ -6006,7 +6013,7 @@ namespace TorannMagic
                                 return false;
                             }
                         }
-                        if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_ArrowStorm_III)
+                        if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_ArrowStorm)
                         {
                             mightPower = mightComp.MightData.MightPowersR.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ArrowStorm);
 

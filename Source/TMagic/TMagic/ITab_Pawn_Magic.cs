@@ -132,13 +132,13 @@ namespace TorannMagic
 
         public ITab_Pawn_Magic()
         {
-            this.size = MagicCardUtility.magicCardSize + new Vector2(17f, 17f) * 2f;
+            this.size = MagicCardUtility.MagicCardSize + new Vector2(17f, 17f) * 2f;
             this.labelKey = "TM_TabMagic";
         }
 
         protected override void FillTab()
         {
-            Rect rect = new Rect(17f, 17f, MagicCardUtility.magicCardSize.x, MagicCardUtility.magicCardSize.y);
+            Rect rect = new Rect(17f, 17f, MagicCardUtility.MagicCardSize.x, MagicCardUtility.MagicCardSize.y);
             MagicCardUtility.DrawMagicCard(rect, this.PawnToShowInfoAbout);
             
         }

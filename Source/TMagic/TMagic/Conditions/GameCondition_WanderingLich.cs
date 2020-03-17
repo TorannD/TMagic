@@ -44,7 +44,7 @@ namespace TorannMagic.Conditions
                         this.nextEventTick = Find.TickManager.TicksGame + this.ticksBetweenEvents;
                         comp.raiseRadius = this.areaRadius;
                         comp.tauntTarget = TM_Calc.TryFindSafeCell(comp.ParentPawn, comp.ParentPawn.Position, 30, 1, 10);
-                        if(comp.tauntTarget == null)
+                        if(comp.tauntTarget == null || comp.tauntTarget == default(IntVec3))
                         {
                             FindGoodCenterLocation();                            
                             comp.tauntTarget = this.centerLocation.ToIntVec3;
@@ -445,7 +445,7 @@ namespace TorannMagic.Conditions
 
                     if (skeleton != null)
                     {
-                        TM_Action.SingleSpawnLoop(null, skeleton, curCell, map, 0, false, true, faction);
+                        TM_Action.SingleSpawnLoop(null, skeleton, curCell, map, 0, false, false, faction);
                     }
                 }
             }

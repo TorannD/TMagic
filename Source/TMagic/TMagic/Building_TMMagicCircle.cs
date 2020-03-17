@@ -1375,7 +1375,7 @@ namespace TorannMagic
 
             for (int i = 0; i < count; i++)
             {
-                Thing thing = TM_Action.SingleSpawnLoop(caster, spawnables, position, caster.Map, duration, temporary, hostile);                
+                Thing thing = TM_Action.SingleSpawnLoop(caster, spawnables, position, caster.Map, duration, temporary, hostile, caster.Faction);                
             }
         }
     }

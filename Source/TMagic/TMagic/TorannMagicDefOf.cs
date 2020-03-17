@@ -438,6 +438,8 @@ namespace TorannMagic
         public static TraitDef Warlock;
 
         public static TMAbilityDef TM_SoulBond;
+        public static HediffDef TM_SDSoulBondPhysicalHD;
+        public static HediffDef TM_WDSoulBondMentalHD;
         public static TMAbilityDef TM_ShadowCall;
         public static TMAbilityDef TM_ShadowStep;
         public static TMAbilityDef TM_ShadowBolt;

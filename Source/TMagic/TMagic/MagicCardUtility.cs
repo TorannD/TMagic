@@ -10,7 +10,22 @@ namespace TorannMagic
 {
     class MagicCardUtility //original code by Jecrell
     {
-        public static Vector2 magicCardSize = new Vector2(700f, 556f);
+        public static Vector2 magicCardSize = default(Vector2); // new Vector2(700f, 556f);
+        public static Vector2 MagicCardSize
+        {
+            get
+            {
+                if (magicCardSize == default(Vector2))
+                {
+                    magicCardSize = new Vector2(700f, 556f);
+                    if(Screen.currentResolution.height <= 800)
+                    {
+                        magicCardSize = new Vector2(700f, 476f);
+                    }
+                }
+                return magicCardSize;
+            }
+        }
 
         public static Vector2 scrollPosition = Vector2.zero;
 
@@ -48,9 +63,10 @@ namespace TorannMagic
 
         public static void DrawMagicCard(Rect rect, Pawn pawn)
         {
+            Log.Message("resolution height " + Screen.currentResolution.height);
             //GUI.BeginGroup(rect);
             //Widgets.BeginScrollView(rect, ref scrollPosition, rect, true);
-
+            
             Rect sRect = new Rect(rect.x, rect.y, rect.width - 36f, rect.height + 120f);
             scrollPosition = GUI.BeginScrollView(rect, scrollPosition, sRect, false, true);
 
@@ -610,10 +626,10 @@ namespace TorannMagic
                         }
                     }
                     Text.Font = GameFont.Small;
-                    Rect rect = new Rect(MagicCardUtility.magicCardSize.x / 2f - MagicCardUtility.MagicButtonSize, num, MagicCardUtility.MagicButtonSize, MagicCardUtility.MagicButtonSize);
+                    Rect rect = new Rect(MagicCardUtility.MagicCardSize.x / 2f - MagicCardUtility.MagicButtonSize, num, MagicCardUtility.MagicButtonSize, MagicCardUtility.MagicButtonSize);
                     if (itnum > 1)
                     {
-                        Widgets.DrawLineHorizontal(0f + 20f, rect.y - 2f, 700f - 40f);
+                        Widgets.DrawLineHorizontal(0f + 20f, rect.y - 2f, MagicCardUtility.MagicCardSize.x - 40f);
                     }
                     if (power.level < 3 && TM_Calc.IsIconAbility_02(power.abilityDef))
                     {
@@ -644,7 +660,7 @@ namespace TorannMagic
 
                     float x2 = Text.CalcSize("TM_Effeciency".Translate()).x;
                     float x3 = Text.CalcSize("TM_Versatility".Translate()).x;
-                    Rect rect3 = new Rect(0f + MagicCardUtility.SpacingOffset, rect.y + 2f, MagicCardUtility.magicCardSize.x, MagicCardUtility.ButtonSize * 1.15f);
+                    Rect rect3 = new Rect(0f + MagicCardUtility.SpacingOffset, rect.y + 2f, MagicCardUtility.MagicCardSize.x, MagicCardUtility.ButtonSize * 1.15f);
 
                     Rect rect5 = new Rect(rect3.x + rect3.width / 2f - x2, rect3.y, (rect3.width - 20f) / 3f, rect3.height);
                     Rect rect6 = new Rect(rect3.width - x3 * 2f, rect3.y, rect3.width / 3f, rect3.height);
@@ -827,7 +843,7 @@ namespace TorannMagic
             {
                 while (enumeratorN.MoveNext())
                 {
-                    Rect rect4 = new Rect(num2 + MagicCardUtility.MagicButtonPointSize, rect3.yMax, MagicCardUtility.magicCardSize.x / 3f, rect3.height);
+                    Rect rect4 = new Rect(num2 + MagicCardUtility.MagicButtonPointSize, rect3.yMax, MagicCardUtility.MagicCardSize.x / 3f, rect3.height);
                     Rect rect41 = new Rect(num2, rect4.y, MagicCardUtility.MagicButtonPointSize, MagicCardUtility.MagicButtonPointSize);
                     Rect rect42 = new Rect(rect41.x, rect4.y, rect4.width - MagicCardUtility.MagicButtonPointSize, rect4.height / 2);
                     MagicPowerSkill skill = enumeratorN.Current;
@@ -1474,7 +1490,7 @@ namespace TorannMagic
                             }
                         }
                     }
-                    num2 += (MagicCardUtility.magicCardSize.x / 3) - MagicCardUtility.SpacingOffset;
+                    num2 += (MagicCardUtility.MagicCardSize.x / 3) - MagicCardUtility.SpacingOffset;
                 }                
             }
         }
@@ -1496,7 +1512,7 @@ namespace TorannMagic
                     }
 
                     Text.Font = GameFont.Small;
-                    Rect rect = new Rect(MagicCardUtility.magicCardSize.x / 2f - MagicCardUtility.MagicButtonSize, num, MagicCardUtility.MagicButtonSize, MagicCardUtility.MagicButtonSize);
+                    Rect rect = new Rect(MagicCardUtility.MagicCardSize.x / 2f - MagicCardUtility.MagicButtonSize, num, MagicCardUtility.MagicButtonSize, MagicCardUtility.MagicButtonSize);
                     if (itnum > 1)
                     {
                         Widgets.DrawLineHorizontal(0f + 20f, rect.y - 2f, 700f - 40f);
@@ -1529,7 +1545,7 @@ namespace TorannMagic
 
                     float x2 = Text.CalcSize("TM_Effeciency".Translate()).x;
                     float x3 = Text.CalcSize("TM_Versatility".Translate()).x;
-                    Rect rect3 = new Rect(0f + MagicCardUtility.SpacingOffset, rect.y + 2f, MagicCardUtility.magicCardSize.x, MagicCardUtility.ButtonSize * 1.15f);
+                    Rect rect3 = new Rect(0f + MagicCardUtility.SpacingOffset, rect.y + 2f, MagicCardUtility.MagicCardSize.x, MagicCardUtility.ButtonSize * 1.15f);
 
                     Rect rect5 = new Rect(rect3.x + rect3.width / 2f - x2, rect3.y, (rect3.width - 20f) / 3f, rect3.height);
                     Rect rect6 = new Rect(rect3.width - x3 * 2f, rect3.y, rect3.width / 3f, rect3.height);

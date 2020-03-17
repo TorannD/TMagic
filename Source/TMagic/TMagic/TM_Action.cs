@@ -159,10 +159,16 @@ namespace TorannMagic
             }
         }
 
-        public static void DoAction_TechnoWeaponCopy(Pawn caster, Thing thing)
+        public static void DoAction_TechnoWeaponCopy(Pawn caster, Thing thing, ThingDef td = null)
         {
             CompAbilityUserMagic comp = caster.TryGetComp<CompAbilityUserMagic>();
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            bool destroyThingAtEnd = false;
+            if(thing == null && td != null)
+            {
+                destroyThingAtEnd = true;
+                thing = ThingMaker.MakeThing(td);
+            }
 
             if (thing != null && thing.def != null && thing.def.IsRangedWeapon && (thing.def.techLevel >= TechLevel.Industrial || settingsRef.unrestrictedWeaponCopy) && (thing.def.Verbs.FirstOrDefault().verbClass.ToString() == "Verse.Verb_Shoot" || settingsRef.unrestrictedWeaponCopy))
             {
@@ -201,6 +207,7 @@ namespace TorannMagic
                     ModOptions.Constants.SetTechnoWeaponCount(highNum);
                 }
                 comp.technoWeaponThing = thing;
+                comp.technoWeaponThingDef = thing.def;
                 newThingDef.label = thing.def.label + " (modified)";
                 newThingDef.description = thing.def.description + "\n\nThis weapon has been modified by a Technomancer.";
                 newThingDef.graphicData.texPath = thing.def.graphicData.texPath;
@@ -239,6 +246,10 @@ namespace TorannMagic
             else
             {
                 Log.Message("cannot copy target thing or unable to restore techno weapon");
+            }
+            if(destroyThingAtEnd)
+            {
+                thing.Destroy(DestroyMode.Vanish);
             }
         }
 

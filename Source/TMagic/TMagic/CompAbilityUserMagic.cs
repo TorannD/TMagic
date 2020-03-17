@@ -225,6 +225,7 @@ namespace TorannMagic
         private float bitOffset = .45f;
         public int technoWeaponDefNum = -1;
         public Thing technoWeaponThing = null;
+        public ThingDef technoWeaponThingDef = null;
         public bool useElementalShotToggle = true;
         public Building overdriveBuilding = null;
         public int overdriveDuration = 0;
@@ -3727,8 +3728,12 @@ namespace TorannMagic
                     }
                     this.RemovePawnAbility(TorannMagicDefOf.TM_EnchantedAura);
                     this.RemovePawnAbility(TorannMagicDefOf.TM_NanoStimulant);
-                    this.spell_EnchantedAura = false;
-                    
+                    this.spell_EnchantedAura = false;                    
+                    this.spell_ShadowCall = false;
+                    this.spell_ShadowStep = false;
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_ShadowCall);
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_ShadowStep);
+
                 }
                 if (flag2)
                 {
@@ -5940,6 +5945,10 @@ namespace TorannMagic
             {
                 adjustedManaCost = 0;
             }
+            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
+            {
+                adjustedManaCost = adjustedManaCost * 1.2f;
+            }
             return Mathf.Max(adjustedManaCost, (.5f * magicDef.manaCost));           
         }
 
@@ -7946,13 +7955,15 @@ namespace TorannMagic
                 }
                 if(this.HasTechnoWeapon && this.Pawn.equipment.Primary != null)
                 {
-                    if(this.Pawn.equipment.Primary.def.defName.Contains("TM_TechnoWeapon_Base") && !this.technoWeaponThing.DestroyedOrNull() && this.Pawn.equipment.Primary.def.Verbs.FirstOrDefault().range < 2)
+                    if(this.Pawn.equipment.Primary.def.defName.Contains("TM_TechnoWeapon_Base") && this.Pawn.equipment.Primary.def.Verbs.FirstOrDefault().range < 2)
                     {
-                        TM_Action.DoAction_TechnoWeaponCopy(this.Pawn, this.technoWeaponThing);
+                        TM_Action.DoAction_TechnoWeaponCopy(this.Pawn, this.technoWeaponThing, this.technoWeaponThingDef);                                               
                     }
-                    if(!this.Pawn.equipment.Primary.def.defName.Contains("TM_TechnoWeapon_Base") && this.technoWeaponThing != null)
+
+                    if(!this.Pawn.equipment.Primary.def.defName.Contains("TM_TechnoWeapon_Base") && (this.technoWeaponThing != null || this.technoWeaponThingDef != null))
                     {
                         this.technoWeaponThing = null;
+                        this.technoWeaponThingDef = null;
                     }
                 }
             }
@@ -8574,6 +8585,7 @@ namespace TorannMagic
             Scribe_Defs.Look<IncidentDef>(ref this.predictionIncidentDef, "predictionIncidentDef");
             Scribe_References.Look<Pawn>(ref this.soulBondPawn, "soulBondPawn", false);
             Scribe_References.Look<Thing>(ref this.technoWeaponThing, "technoWeaponThing", false);
+            Scribe_Defs.Look<ThingDef>(ref this.technoWeaponThingDef, "technoWeaponThingDef");
             Scribe_References.Look<Thing>(ref this.enchanterStone, "enchanterStone", false);
             Scribe_Collections.Look<Thing>(ref this.enchanterStones, "enchanterStones", LookMode.Reference);
             Scribe_Collections.Look<Thing>(ref this.summonedMinions, "summonedMinions", LookMode.Reference);

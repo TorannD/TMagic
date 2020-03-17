@@ -95,13 +95,13 @@ namespace TorannMagic
 
         public ITab_Pawn_Might()
         {
-            this.size = MightCardUtility.mightCardSize + new Vector2(17f, 17f) * 2f;
+            this.size = MightCardUtility.MightCardSize + new Vector2(17f, 17f) * 2f;
             this.labelKey = "TM_TabMight";
         }
 
         protected override void FillTab()
         {
-            Rect rect = new Rect(17f, 17f, MightCardUtility.mightCardSize.x, MightCardUtility.mightCardSize.y);
+            Rect rect = new Rect(17f, 17f, MightCardUtility.MightCardSize.x, MightCardUtility.MightCardSize.y);
             MightCardUtility.DrawMightCard(rect, this.PawnToShowInfoAbout);
         }
 

@@ -62,7 +62,6 @@ namespace TorannMagic
                 Pawn pawn = base.Pawn;
                 int num = 1;
                 int num2 = 1;
-
                 using (IEnumerator<BodyPartRecord> enumerator = pawn.health.hediffSet.GetInjuredParts().GetEnumerator())
                 {
                     while (enumerator.MoveNext())

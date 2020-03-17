@@ -36,7 +36,7 @@ namespace TorannMagic
         private void Initialize()
         {
             bool spawned = base.Pawn.Spawned;
-            if (spawned && base.Pawn.Map != null && this.Pawn.story != null && this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer))
+            if (spawned && base.Pawn.Map != null && this.Pawn.story != null)
             {
                 //MoteMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 3f);
                 Pawn caster = this.Pawn;

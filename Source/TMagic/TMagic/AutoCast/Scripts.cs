@@ -18,8 +18,8 @@ namespace TorannMagic.AutoCast
         {
             success = false;
             Pawn caster = casterComp.Pawn;
-            LocalTargetInfo jobTarget = caster.CurJob.targetA;
-            LocalTargetInfo faceTarget = null;
+            //LocalTargetInfo jobTarget = caster.CurJob.targetA;
+            LocalTargetInfo jobTarget = caster.pather.Destination;
             Thing carriedThing = null;
 
             //if (caster.CurJob.targetA.Thing != null && caster.CurJob.targetA.Thing.Map != caster.Map)
@@ -30,43 +30,42 @@ namespace TorannMagic.AutoCast
             //{
             //    Log.Message("" + caster.LabelShort + " jobdef " + caster.CurJobDef.defName + " checking phase - target a: " + caster.CurJob.targetA + " target b: " + caster.CurJob.targetB + " carrying: none");
             //}
-            if (caster.CurJob.targetA.Thing != null) //&& caster.CurJob.def.defName != "Sow")
-            {
-                if (caster.CurJob.targetA.Thing.Map != caster.Map) //carrying TargetA to TargetB
-                {
-                    jobTarget = caster.CurJob.targetB;
-                    //carriedThing = caster.CurJob.targetA.Thing;                    
-                }
-                else if (caster.CurJob.targetB != null && caster.CurJob.targetB.Thing != null && caster.CurJob.def != JobDefOf.Rescue) //targetA using targetB for job
-                {
-                    if (caster.CurJob.targetB.Thing.Map != caster.Map) //carrying targetB to targetA
-                    {
-                        jobTarget = caster.CurJob.targetA;
-                        //carriedThing = caster.CurJob.targetB.Thing;
-                    }
-                    else if(caster.CurJob.def == JobDefOf.TendPatient || caster.CurJobDef == JobDefOf.Refuel || caster.CurJobDef == JobDefOf.RefuelAtomic || caster.CurJobDef == JobDefOf.RearmTurret || 
-                        caster.CurJobDef == JobDefOf.RearmTurretAtomic || caster.CurJobDef == JobDefOf.FillFermentingBarrel)
-                    {
-                        jobTarget = caster.CurJob.targetB;
-                    }
-                    else //Getting targetA to carry to TargetB
-                    {
-                        jobTarget = caster.CurJob.targetA;
-                    }
-                }
-                else
-                {
-                    if (caster.CurJob.targetA.Thing.InteractionCell != null && caster.CurJob.targetA.Cell != caster.CurJob.targetA.Thing.InteractionCell)
-                    {
-                        jobTarget = caster.CurJob.targetA.Thing.InteractionCell;
-                    }
-                    else
-                    {
-                        jobTarget = caster.CurJob.targetA;
-                    }
-                }
-            }
-            faceTarget = jobTarget;
+            //if (caster.CurJob.targetA.Thing != null) //&& caster.CurJob.def.defName != "Sow")
+            //{
+            //    if (caster.CurJob.targetA.Thing.Map != caster.Map) //carrying TargetA to TargetB
+            //    {
+            //        jobTarget = caster.CurJob.targetB;
+            //        //carriedThing = caster.CurJob.targetA.Thing;                    
+            //    }
+            //    else if (caster.CurJob.targetB != null && caster.CurJob.targetB.Thing != null && caster.CurJob.def != JobDefOf.Rescue) //targetA using targetB for job
+            //    {
+            //        if (caster.CurJob.targetB.Thing.Map != caster.Map) //carrying targetB to targetA
+            //        {
+            //            jobTarget = caster.CurJob.targetA;
+            //            //carriedThing = caster.CurJob.targetB.Thing;
+            //        }
+            //        else if(caster.CurJob.def == JobDefOf.TendPatient || caster.CurJobDef == JobDefOf.Refuel || caster.CurJobDef == JobDefOf.RefuelAtomic || caster.CurJobDef == JobDefOf.RearmTurret || 
+            //            caster.CurJobDef == JobDefOf.RearmTurretAtomic || caster.CurJobDef == JobDefOf.FillFermentingBarrel)// || caster.CurJobDef == JobDefOf.)
+            //        {
+            //            jobTarget = caster.CurJob.targetB;
+            //        }
+            //        else //Getting targetA to carry to TargetB
+            //        {
+            //            jobTarget = caster.CurJob.targetA;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        if (caster.CurJob.targetA.Thing.InteractionCell != null && caster.CurJob.targetA.Cell != caster.CurJob.targetA.Thing.InteractionCell)
+            //        {
+            //            jobTarget = caster.CurJob.targetA.Thing.InteractionCell;
+            //        }
+            //        else
+            //        {
+            //            jobTarget = caster.CurJob.targetA;
+            //        }
+            //    }
+            //}
             if(!jobTarget.Cell.Walkable(caster.Map))
             {
                 jobTarget = TM_Calc.FindWalkableCellNextTo(jobTarget.Cell, caster.Map);
@@ -74,20 +73,20 @@ namespace TorannMagic.AutoCast
             float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
             Vector3 directionToTarget = TM_Calc.GetVector(caster.Position, jobTarget.Cell);
             //Log.Message("" + caster.LabelShort + " job def is " + caster.CurJob.def.defName + " targetA " + caster.CurJob.targetA + " targetB " + caster.CurJob.targetB + " jobTarget " + jobTarget + " at distance " + distanceToTarget + " min distance " + minDistance + " at vector " + directionToTarget);
-            if (caster.carryTracker != null && caster.carryTracker.CarriedThing != null)
-            {
-                carriedThing = caster.carryTracker.CarriedThing;
-                //Log.Message("carrying: " + caster.carryTracker.CarriedThing.def.defName + " count " + caster.carryTracker.CarriedThing.stackCount);
-            }
+            //if (caster.carryTracker != null && caster.carryTracker.CarriedThing != null)
+            //{
+            //    carriedThing = caster.carryTracker.CarriedThing;
+            //    //Log.Message("carrying: " + caster.carryTracker.CarriedThing.def.defName + " count " + caster.carryTracker.CarriedThing.stackCount);
+            //}
             if (casterComp.Stamina.CurLevel >= casterComp.ActualStaminaCost(abilitydef) && ability.CooldownTicksLeft <= 0 && distanceToTarget < 200)
             {
-                if (distanceToTarget > minDistance && caster.CurJob.locomotionUrgency >= LocomotionUrgency.Jog && caster.CurJob.bill == null)
+                if (distanceToTarget > minDistance && caster.CurJob.locomotionUrgency >= LocomotionUrgency.Jog)// && caster.CurJob.bill == null)
                 {
                     if (distanceToTarget <= abilitydef.MainVerb.range && jobTarget.Cell != default(IntVec3))
                     {
                         //Log.Message("doing blink to thing");
                         //DoPhase(caster, casterComp, abilitydef, jobTarget.Cell, ability, carriedThing, power);
-                        DoPhase2(caster, casterComp, abilitydef, jobTarget.Cell, ability, carriedThing, power, faceTarget);
+                        DoPhase2(caster, casterComp, abilitydef, jobTarget.Cell, ability, carriedThing, power);
                         success = true;
                     }
                     else
@@ -123,7 +122,7 @@ namespace TorannMagic.AutoCast
                             if (isCloser)
                             {
                                 //DoPhase(caster, casterComp, abilitydef, phaseToCell, ability, carriedThing, power);
-                                DoPhase2(caster, casterComp, abilitydef, phaseToCell, ability, carriedThing, power, faceTarget);
+                                DoPhase2(caster, casterComp, abilitydef, phaseToCell, ability, carriedThing, power);
                                 success = true;
                             }
                         }
@@ -132,7 +131,7 @@ namespace TorannMagic.AutoCast
             }
         }
 
-        private static void DoPhase2(Pawn caster, CompAbilityUserMight casterComp, TMAbilityDef abilitydef, IntVec3 targetCell, PawnAbility ability, Thing carriedThing, MightPower power, LocalTargetInfo faceTarget)
+        private static void DoPhase2(Pawn caster, CompAbilityUserMight casterComp, TMAbilityDef abilitydef, IntVec3 targetCell, PawnAbility ability, Thing carriedThing, MightPower power)
         {
             Pawn p = caster;
             Map map = caster.Map;
@@ -149,9 +148,17 @@ namespace TorannMagic.AutoCast
                 TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, caster.DrawPos, caster.Map, Rand.Range(.6f, 1f), .4f, .1f, Rand.Range(.8f, 1.2f), 0, Rand.Range(2, 3), Rand.Range(-30, 30), 0);
                 TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Enchanting, caster.DrawPos, caster.Map, Rand.Range(1.4f, 2f), .2f, .05f, Rand.Range(.4f, .6f), Rand.Range(-200, 200), 0, 0, 0);
             }
-                
+
+            LocalTargetInfo pathEndTarget = caster.pather.Destination;
+            PathEndMode pem = Traverse.Create(root: caster.pather).Field(name: "peMode").GetValue<PathEndMode>();
+
             caster.Position = targetCell;
-            caster.Notify_Teleported(true, true);
+            //caster.Notify_Teleported(false, false);            
+            caster.pather.StopDead();
+            caster.pather.nextCell = targetCell;
+            caster.pather.nextCellCostLeft = 0f;
+            caster.pather.nextCellCostTotal = 1f;
+            caster.pather.StartPath(pathEndTarget, pem);
             //GenClamor.DoClamor(caster, 2f, ClamorDefOf.Ability);
 
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
@@ -916,37 +923,38 @@ namespace TorannMagic.AutoCast
         {
             success = false;
             Pawn caster = casterComp.Pawn;
-            LocalTargetInfo jobTarget = caster.CurJob.targetA;
+            //LocalTargetInfo jobTarget = caster.CurJob.targetA;
+            LocalTargetInfo jobTarget = caster.pather.Destination;
             Thing carriedThing = null;
-            if (caster.CurJob.targetA.Thing != null ) //&& caster.CurJob.def.defName != "Sow")
-            {
-                if(caster.CurJob.targetA.Thing.Map != caster.Map) //carrying thing
-                {
-                    jobTarget = caster.CurJob.targetB;
-                    //carriedThing = caster.CurJob.targetA.Thing;
-                }
-                else if(caster.CurJob.targetB != null && caster.CurJob.targetB.Thing != null && caster.CurJob.def != JobDefOf.Rescue) //targetA using targetB for job
-                {
-                    if(caster.CurJob.targetB.Thing.Map != caster.Map) //carrying targetB to targetA
-                    {
-                        jobTarget = caster.CurJob.targetA;
-                        //carriedThing = caster.CurJob.targetB.Thing;
-                    }
-                    else if(caster.CurJob.def == JobDefOf.TendPatient || caster.CurJobDef == JobDefOf.Refuel || caster.CurJobDef == JobDefOf.RefuelAtomic || caster.CurJobDef == JobDefOf.RearmTurret ||
-                        caster.CurJobDef == JobDefOf.RearmTurretAtomic || caster.CurJobDef == JobDefOf.FillFermentingBarrel)
-                    {
-                        jobTarget = caster.CurJob.targetB;
-                    }
-                    else //Getting targetA to carry to TargetB
-                    {
-                        jobTarget = caster.CurJob.targetA;
-                    }
-                }
-                else
-                {
-                    jobTarget = caster.CurJob.targetA;
-                }
-            }
+            //if (caster.CurJob.targetA.Thing != null ) //&& caster.CurJob.def.defName != "Sow")
+            //{
+            //    if(caster.CurJob.targetA.Thing.Map != caster.Map) //carrying thing
+            //    {
+            //        jobTarget = caster.CurJob.targetB;
+            //        //carriedThing = caster.CurJob.targetA.Thing;
+            //    }
+            //    else if(caster.CurJob.targetB != null && caster.CurJob.targetB.Thing != null && caster.CurJob.def != JobDefOf.Rescue) //targetA using targetB for job
+            //    {
+            //        if(caster.CurJob.targetB.Thing.Map != caster.Map) //carrying targetB to targetA
+            //        {
+            //            jobTarget = caster.CurJob.targetA;
+            //            //carriedThing = caster.CurJob.targetB.Thing;
+            //        }
+            //        else if(caster.CurJob.def == JobDefOf.TendPatient || caster.CurJobDef == JobDefOf.Refuel || caster.CurJobDef == JobDefOf.RefuelAtomic || caster.CurJobDef == JobDefOf.RearmTurret ||
+            //            caster.CurJobDef == JobDefOf.RearmTurretAtomic || caster.CurJobDef == JobDefOf.FillFermentingBarrel)
+            //        {
+            //            jobTarget = caster.CurJob.targetB;
+            //        }
+            //        else //Getting targetA to carry to TargetB
+            //        {
+            //            jobTarget = caster.CurJob.targetA;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        jobTarget = caster.CurJob.targetA;
+            //    }
+            //}
             float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
             Vector3 directionToTarget = TM_Calc.GetVector(caster.Position, jobTarget.Cell);
             //Log.Message("" + caster.LabelShort + " job def is " + caster.CurJob.def.defName + " targetA " + caster.CurJob.targetA + " targetB " + caster.CurJob.targetB + " jobTarget " + jobTarget + " at distance " + distanceToTarget + " min distance " + minDistance + " at vector " + directionToTarget);
@@ -957,7 +965,7 @@ namespace TorannMagic.AutoCast
             }
             if (casterComp.Mana.CurLevel >= casterComp.ActualManaCost(abilitydef) && ability.CooldownTicksLeft <= 0 && distanceToTarget < 200)
             {
-                if (distanceToTarget > minDistance && caster.CurJob.locomotionUrgency >= LocomotionUrgency.Jog && caster.CurJob.bill == null)
+                if (distanceToTarget > minDistance && caster.CurJob.locomotionUrgency >= LocomotionUrgency.Jog)// && caster.CurJob.bill == null)
                 {
                     if (distanceToTarget <= abilitydef.MainVerb.range && jobTarget.Cell != default(IntVec3))
                     {
@@ -1046,8 +1054,16 @@ namespace TorannMagic.AutoCast
                 //    GenPlace.TryPlaceThing(cT, targetCell, map, ThingPlaceMode.Near);
                 //    //GenSpawn.Spawn(cT, targetCell, map);
                 //}
+                LocalTargetInfo pathEndTarget = caster.pather.Destination;
+                PathEndMode pem = Traverse.Create(root: caster.pather).Field(name: "peMode").GetValue<PathEndMode>();
+
                 caster.Position = targetCell;
-                caster.Notify_Teleported(true, true);
+                //caster.Notify_Teleported(false, false);            
+                caster.pather.StopDead();
+                caster.pather.nextCell = targetCell;
+                caster.pather.nextCellCostLeft = 0f;
+                caster.pather.nextCellCostTotal = 1f;
+                caster.pather.StartPath(pathEndTarget, pem);
                 //GenClamor.DoClamor(caster, 2f, ClamorDefOf.Ability);
 
                 if (caster.kindDef != PawnKindDef.Named("TM_Dire_Wolf"))
