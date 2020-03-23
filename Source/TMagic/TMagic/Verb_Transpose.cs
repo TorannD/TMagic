@@ -115,6 +115,10 @@ namespace TorannMagic
                             targetPawn.DeSpawn();
                             GenSpawn.Spawn(p, this.currentTarget.Cell, map);
                             GenSpawn.Spawn(targetPawn, cell, map);
+                            if (targetPawn.IsColonist && !p.IsColonist)
+                            {
+                                TM_Action.SpellAffectedPlayerWarning(targetPawn);
+                            }
                         }
                     }
                     catch

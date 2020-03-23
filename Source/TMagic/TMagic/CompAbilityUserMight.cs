@@ -2930,7 +2930,7 @@ namespace TorannMagic
         public void ResolveAutoCast()
         {
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            if (settingsRef.autocastEnabled && this.Pawn.jobs != null && this.Pawn.CurJob != null && this.Pawn.CurJob.def != TorannMagicDefOf.TMCastAbilityVerb && this.Pawn.CurJob.def != JobDefOf.Ingest && this.Pawn.GetPosture() == PawnPosture.Standing)
+            if (settingsRef.autocastEnabled && this.Pawn.jobs != null && this.Pawn.CurJob != null && this.Pawn.CurJob.def != TorannMagicDefOf.TMCastAbilityVerb && this.Pawn.CurJob.def != TorannMagicDefOf.TMCastAbilitySelf && this.Pawn.CurJob.def != JobDefOf.Ingest && this.Pawn.CurJob.def != JobDefOf.ManTurret && this.Pawn.GetPosture() == PawnPosture.Standing)
             {
                 //Log.Message("pawn " + this.Pawn.LabelShort + " current job is " + this.Pawn.CurJob.def.defName);
                 //non-combat (undrafted) spells    
@@ -3022,7 +3022,7 @@ namespace TorannMagic
                                                 {
                                                     ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_PistolWhip);
                                                     Pawn targetPawn = this.Pawn.TargetCurrentlyAimingAt.Thing as Pawn;
-                                                    if (targetPawn != null)
+                                                    if (targetPawn != null && this.Pawn.TargetCurrentlyAimingAt != this.Pawn)
                                                     {
                                                         AutoCast.MeleeCombat_OnTarget.TryExecute(this, TorannMagicDefOf.TM_PistolWhip, ability, mightPower, targetPawn, out castSuccess);
                                                         if (castSuccess) goto AutoCastExit;
@@ -3613,7 +3613,7 @@ namespace TorannMagic
                                                     Pawn targetPawn = this.Pawn.TargetCurrentlyAimingAt.Thing as Pawn;
                                                     if (targetPawn != null)
                                                     {
-                                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_SuppressingFire, ability, mightPower, targetPawn, 1, out castSuccess);
+                                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_SuppressingFire, ability, mightPower, targetPawn, 6, out castSuccess);
                                                         if (castSuccess) goto AutoCastExit;
                                                     }
                                                 }
@@ -3627,7 +3627,7 @@ namespace TorannMagic
                                                     Pawn targetPawn = this.Pawn.TargetCurrentlyAimingAt.Thing as Pawn;
                                                     if (targetPawn != null)
                                                     {
-                                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_Buckshot, ability, mightPower, targetPawn, 1, out castSuccess);
+                                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_Buckshot, ability, mightPower, targetPawn, 2, out castSuccess);
                                                         if (castSuccess) goto AutoCastExit;
                                                     }
                                                 }
@@ -3663,7 +3663,7 @@ namespace TorannMagic
                     if (this.skill_PommelStrike && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
                         MightPower mightPower = this.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PommelStrike);                        
-                        if (mightPower != null && mightPower.autocast && this.Pawn.TargetCurrentlyAimingAt != null)
+                        if (mightPower != null && mightPower.autocast && this.Pawn.TargetCurrentlyAimingAt != null && this.Pawn.TargetCurrentlyAimingAt != this.Pawn)
                         {
                             PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_PommelStrike);
                             Pawn targetPawn = this.Pawn.TargetCurrentlyAimingAt.Thing as Pawn;
@@ -4040,80 +4040,6 @@ namespace TorannMagic
                         }
                         nextSSTend = Find.TickManager.TicksGame + Rand.Range(6000, 8000);
                     }
-                }
-            }
-        }
-
-        public void ResolveClassPassions()
-        {
-            SkillRecord skill;
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer))
-            {                
-                skill = this.Pawn.skills.GetSkill(SkillDefOf.Melee);
-                if (skill.passion != Passion.Major)
-                {
-                    skill.passion = Passion.Major;
-                }
-                skill = this.Pawn.skills.GetSkill(SkillDefOf.Shooting);
-                if (skill.passion != Passion.None)
-                {
-                    skill.passion = Passion.None;
-                }
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper))
-            {
-                skill = this.Pawn.skills.GetSkill(SkillDefOf.Melee);
-                if (skill.passion != Passion.None)
-                {
-                    skill.passion = Passion.None;
-                }
-                skill = this.Pawn.skills.GetSkill(SkillDefOf.Shooting);
-                if (skill.passion != Passion.Major)
-                {
-                    skill.passion = Passion.Major;
-                }
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
-            {
-                skill = this.Pawn.skills.GetSkill(SkillDefOf.Melee);
-                if (skill.passion == Passion.None)
-                {
-                    skill.passion = Passion.Minor;
-                }
-                skill = this.Pawn.skills.GetSkill(SkillDefOf.Shooting);
-                if (skill.passion == Passion.None)
-                {
-                    skill.passion = Passion.Minor;
-                }
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger))
-            {
-                skill = this.Pawn.skills.GetSkill(SkillDefOf.Melee);
-                if (skill.passion == Passion.None)
-                {
-                    skill.passion = Passion.Minor;
-                }
-                skill = this.Pawn.skills.GetSkill(SkillDefOf.Shooting);
-                if (skill.passion == Passion.None)
-                {
-                    skill.passion = Passion.Minor;
-                }
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier))
-            {
-                skill = this.Pawn.skills.GetSkill(SkillDefOf.Melee);
-                if (skill.passion == Passion.None)
-                {
-                    skill.passion = Passion.Minor;
-                }
-                skill = this.Pawn.skills.GetSkill(SkillDefOf.Shooting);
-                if(skill.passion == Passion.Minor)
-                {
-                    skill.passion = Passion.Major;
-                }
-                if (skill.passion == Passion.None)
-                {
-                    skill.passion = Passion.Minor;
                 }
             }
         }

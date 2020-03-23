@@ -187,6 +187,10 @@ namespace TorannMagic
                             {
                                 hediffComp.durationTicks = (duration);
                                 hediffComp.isBad = isBad;
+                                if (pawn.IsColonist && !base.CasterPawn.IsColonist)
+                                {
+                                    TM_Action.SpellAffectedPlayerWarning(pawn);
+                                }
                             }
                         }
                         else

@@ -35,6 +35,7 @@ namespace TorannMagic.ModOptions
         public float paracyteSoftCap = Settings.Instance.paracyteSoftCap;
         public bool paracyteMagesCount = Settings.Instance.paracyteMagesCount;
         public bool unrestrictedWeaponCopy = Settings.Instance.unrestrictedWeaponCopy;
+        public float undeadUpkeepMultiplier = Settings.Instance.undeadUpkeepMultiplier;
 
         //autocast
         public bool autocastEnabled = Settings.Instance.autocastEnabled;

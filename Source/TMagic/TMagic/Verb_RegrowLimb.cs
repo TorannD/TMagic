@@ -53,7 +53,7 @@ namespace TorannMagic
             {
                 AbilityUser.SpawnThings tempThing = new SpawnThings();
                 tempThing.def = ThingDef.Named("SeedofRegrowth");
-                this.SingleSpawnLoop(tempThing, centerCell, map);
+                Verb_RegrowLimb.SingleSpawnLoop(tempThing, centerCell, map);
             }
             else
             {
@@ -62,7 +62,7 @@ namespace TorannMagic
             return false;
         }
 
-        public void SingleSpawnLoop(SpawnThings spawnables, IntVec3 position, Map map)
+        public static void SingleSpawnLoop(SpawnThings spawnables, IntVec3 position, Map map)
         {
             bool flag = spawnables.def != null;
             if (flag)

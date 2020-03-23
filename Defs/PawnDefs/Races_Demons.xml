@@ -65,7 +65,7 @@
       <meatLabel>demon flesh</meatLabel>
       <baseBodySize>2</baseBodySize>
 	  <herdMigrationAllowed>false</herdMigrationAllowed>
-	  <wildness>1</wildness>	  
+	  <wildness>10</wildness>	  
 	  <packAnimal>false</packAnimal>
 	  <herdAnimal>false</herdAnimal>
     </race>

@@ -97,4 +97,11 @@
     <casualInterruptible>false</casualInterruptible>
   </JobDef>
   
+  <JobDef>
+    <defName>JobDriver_GotoAndCast</defName>
+    <driverClass>TorannMagic.JobDriver_GotoAndCast</driverClass>
+    <reportString>doing magic job</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  
 </Defs>

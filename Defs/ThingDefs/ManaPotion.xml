@@ -23,9 +23,6 @@
 	  <SellPriceFactor>0.6</SellPriceFactor>
       <Mass>0.1</Mass>
     </statBases>
-<!-- 	<thingCategories>
-      <li>TM_MagicItems</li>
-    </thingCategories> -->
 	<stackLimit>25</stackLimit>
     <techLevel>Neolithic</techLevel>
     <ingestible>

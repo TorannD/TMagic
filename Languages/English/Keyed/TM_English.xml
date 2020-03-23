@@ -167,6 +167,7 @@
 <TM_MustHaveWeaponType>{0} is armed with a {1}, {0} must equip a {2} to use this ability.</TM_MustHaveWeaponType>
 <TM_SuppressingFireCount>Shots fired: {0}</TM_SuppressingFireCount>
 <TM_BuckshotFireCount>Buckshot pellets: {0}</TM_BuckshotFireCount>
+<TM_LendColonist_UndeadFail>You're sending us dead bodies - Is this some kind of joke!?</TM_LendColonist_UndeadFail>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
@@ -181,8 +182,8 @@
 
 <!-- Magic circle failed letters -->
 <LetterLabelRitualFail>Ritual failed</LetterLabelRitualFail>
-<LetterRitualFail>Your mages have failed to activate group ritual {0}. This ritual has a {1}&#37; success chance.</LetterRitualFail>
-<LetterRitualFailDamage>Your mages have failed to activate group ritual {0} and suffered from a backlash of magic for up to {2} damage. This ritual has a {1}&#37; success chance.</LetterRitualFailDamage>
+<LetterRitualFail>Your mages have failed to activate group ritual {0}. This ritual has a {1}&#37; success chance. All resources were lost.</LetterRitualFail>
+<LetterRitualFailDamage>Your mages have failed to activate group ritual {0} and suffered from a backlash of magic for up to {2} damage. This ritual has a {1}&#37; success chance. All resources were lost.</LetterRitualFailDamage>
 
 <!-- Prediction letters -->
 <TM_PredictionLetter>Prediction: {0}</TM_PredictionLetter>
@@ -203,6 +204,7 @@
 <advFighterChance>Fighter commonality: </advFighterChance>
 <DeathExplosionMin>minimum damage</DeathExplosionMin>
 <DeathExplosionMax>maximum damage</DeathExplosionMax>
+<DeathExplosionField>{0}</DeathExplosionField>
 <MagicyteChance>Magicyte Drop Chance</MagicyteChance>
 <showAbilitiesOnMultiSelect>Show abilities when selecting multiple pawns</showAbilitiesOnMultiSelect>
 <showMagicGizmo>Show mana/stamina/psi energy as gizmo</showMagicGizmo>
@@ -219,6 +221,7 @@
 <TM_AggressiveAICasting>Aggressive AI Casting</TM_AggressiveAICasting>
 <TM_ParacyteSoftCap>Paracyte Soft Cap: </TM_ParacyteSoftCap>
 <TM_ParacyteMagesCount>Mages count against soft cap (2ea)</TM_ParacyteMagesCount>
+<TM_UndeadUpkeepMultiplier>Undead upkeep cost</TM_UndeadUpkeepMultiplier>
 <TM_autocastAnimals>Autocast targets animals</TM_autocastAnimals>
 <TM_UnrestrictedWeaponCopy>Unrestricted Techno-Weapons</TM_UnrestrictedWeaponCopy>
 

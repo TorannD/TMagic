@@ -49,6 +49,10 @@ namespace TorannMagic
                     if (comp != null)
                     {
                         comp.linkedPawn = this.CasterPawn;
+                        if (victim.IsColonist && !base.CasterPawn.IsColonist)
+                        {
+                            TM_Action.SpellAffectedPlayerWarning(victim);
+                        }
                     }
                     else
                     {

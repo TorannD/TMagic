@@ -580,11 +580,11 @@ namespace TorannMagic
             string letterLabel = "LetterLabelRitualFail".Translate();
             if (this.magicRecipeDef.failDamageApplied > 0)
             {
-                Find.LetterStack.ReceiveLetter(letterLabel, "LetterRitualFailDamage".Translate(this.magicRecipeDef.label, (this.magicRecipeDef.failChance * 100), this.magicRecipeDef.failDamageApplied), LetterDefOf.NegativeEvent);
+                Find.LetterStack.ReceiveLetter(letterLabel, "LetterRitualFailDamage".Translate(this.magicRecipeDef.label, ((1f - this.magicRecipeDef.failChance) * 100), this.magicRecipeDef.failDamageApplied), LetterDefOf.NegativeEvent);
             }
             else
             {
-                Find.LetterStack.ReceiveLetter(letterLabel, "LetterRitualFail".Translate(this.magicRecipeDef.label, this.magicRecipeDef.failChance), LetterDefOf.NegativeEvent);
+                Find.LetterStack.ReceiveLetter(letterLabel, "LetterRitualFail".Translate(this.magicRecipeDef.label, (1f - this.magicRecipeDef.failChance) * 100f), LetterDefOf.NegativeEvent);
             }
         }
 

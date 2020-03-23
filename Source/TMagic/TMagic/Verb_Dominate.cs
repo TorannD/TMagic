@@ -128,6 +128,10 @@ namespace TorannMagic
                         HediffComp_Dominate hediffComp = hediff.TryGetComp<HediffComp_Dominate>();
                         hediffComp.EffVal = effVal;
                         hediffComp.VerVal = verVal;
+                        if (hitPawn.IsColonist && !p.IsColonist)
+                        {
+                            TM_Action.SpellAffectedPlayerWarning(hitPawn);
+                        }
                     }
                     else
                     {

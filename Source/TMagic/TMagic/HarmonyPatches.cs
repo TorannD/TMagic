@@ -15,6 +15,7 @@ using Verse.AI;
 using AbilityUserAI;
 using System.Reflection.Emit;
 using TorannMagic.Conditions;
+using RimWorld.QuestGen;
 
 namespace TorannMagic
 {
@@ -158,6 +159,27 @@ namespace TorannMagic
             harmonyInstance.Patch(AccessTools.Method(typeof(Targeter), "TargeterOnGUI", new Type[]
                 {
                 }, null), null, new HarmonyMethod(typeof(TorannMagicMod), "Targeter_Casting_Postfix", null), null);
+            harmonyInstance.Patch(AccessTools.Method(typeof(QuestPart_LendColonistsToFaction), "Enable", new Type[]
+                {
+                    typeof(SignalArgs)
+                }, null), null, new HarmonyMethod(typeof(TorannMagicMod), "QuestPart_LendColonists_Enable_NoUndead"));
+            harmonyInstance.Patch(AccessTools.Method(typeof(HealthUtility), "AdjustSeverity", new Type[]
+                {
+                    typeof(Pawn),
+                    typeof(HediffDef),
+                    typeof(float)
+                }, null), new HarmonyMethod(typeof(TorannMagicMod), "HealthUtility_HeatCold_HediffGiverForUndead"), null);
+            harmonyInstance.Patch(AccessTools.Method(typeof(ThingFilter), "SetFromPreset", new Type[]
+                {
+                    typeof(StorageSettingsPreset)
+                }, null), new HarmonyMethod(typeof(TorannMagicMod), "DefaultStorageSettings_IncludeMagicItems"), null);
+            harmonyInstance.Patch(AccessTools.Method(typeof(AreaManager), "AddStartingAreas", new Type[]
+                {
+                }, null), null, new HarmonyMethod(typeof(TorannMagicMod), "AreaManager_AddMagicZonesToStartingAreas"));
+            //harmonyInstance.Patch(AccessTools.Method(typeof(QuestNode_RaceProperty), "Matches", new Type[]
+            //    {
+            //        typeof(object)
+            //    }, null), null, new HarmonyMethod(typeof(TorannMagicMod), "QuestNode_RaceProperties_ExcludeSummoned"));
 
             //harmonyInstance.Patch(original: AccessTools.Method(type: typeof(Pawn_DraftController), name: "Notify_PrimaryWeaponChanged"), prefix: null,
             //    postfix: new HarmonyMethod(methodType: patchType, methodName: nameof(PawnEquipment_Change_Postfix)), transpiler: null);
@@ -224,6 +246,151 @@ namespace TorannMagic
             #endregion Children
 
         }
+
+        public static void AreaManager_AddMagicZonesToStartingAreas(AreaManager __instance)
+        {
+            TM_Calc.GetSpriteArea(__instance.map);
+            TM_Calc.GetTransmutateArea(__instance.map);
+            TM_Calc.GetSeedOfRegrowthArea(__instance.map);
+        }
+
+        public static bool DefaultStorageSettings_IncludeMagicItems(ThingFilter __instance, StorageSettingsPreset preset)
+        {
+            MethodBase SetAllow = AccessTools.Method(typeof(ThingFilter), "SetAllow", new Type[]
+                {
+                    typeof(ThingCategoryDef),
+                    typeof(bool),
+                    typeof(IEnumerable<ThingDef>),
+                    typeof(IEnumerable<SpecialThingFilterDef>)
+                }, null);
+            if (preset == StorageSettingsPreset.DefaultStockpile)
+            {
+                SetAllow.Invoke(__instance, new object[]
+                {
+                    TorannMagicDefOf.TM_MagicItems,
+                    true,
+                    null,
+                    null
+                });
+            }
+            return true;
+        }
+
+        public static bool HealthUtility_HeatCold_HediffGiverForUndead(Pawn pawn, ref HediffDef hdDef, float sevOffset)
+        {
+            if (hdDef != null && hdDef == HediffDefOf.Heatstroke)
+            {
+                if (TM_Calc.IsUndead(pawn))
+                {
+                    hdDef = TorannMagicDefOf.TM_SlaggedHD;
+                }
+            }
+            if (hdDef != null && hdDef == HediffDefOf.Hypothermia)
+            {
+                if (TM_Calc.IsUndead(pawn))
+                {
+                    hdDef = TorannMagicDefOf.TM_BrittleBonesHD;
+                }
+            }
+            return true;
+        }
+
+        public static void QuestPart_LendColonists_Enable_NoUndead(QuestPart_LendColonistsToFaction __instance, ref SignalArgs receivedArgs)
+        {
+            //MethodBase Complete = AccessTools.Method(typeof(QuestPart_LendColonistsToFaction), "Complete", null, null);
+
+            if (__instance.LentColonistsListForReading != null && __instance.LentColonistsListForReading.Count > 0)
+            {
+                bool undeadSent = false;
+                for(int i = 0; i < __instance.LentColonistsListForReading.Count; i++)
+                {
+                    Thing lentColonist = __instance.LentColonistsListForReading[i];
+                    if(lentColonist is Pawn && ((Pawn)lentColonist).health != null && ((Pawn)lentColonist).health.hediffSet != null && (((Pawn)lentColonist).health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD) || ((Pawn)lentColonist).health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadAnimalHD)))
+                    {
+                        undeadSent = true;
+                        break;
+                    }
+                }
+                if(undeadSent)
+                {
+                    for (int i = 0; i < __instance.LentColonistsListForReading.Count; i++)
+                    {
+                        Thing t = __instance.LentColonistsListForReading[i];
+                        GenPlace.TryPlaceThing(t, __instance.shuttle.Position, __instance.shuttle.Map, ThingPlaceMode.Near);
+                        if(t is Pawn)
+                        {
+                            Pawn p = t as Pawn;
+                            if(p.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD) || p.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadAnimalHD))
+                            {
+                                p.Kill(null, null);
+                            }
+                        }
+                    }
+                    Messages.Message("TM_LendColonist_UndeadFail".Translate(), MessageTypeDefOf.SilentInput, false);
+                    __instance.quest.End(QuestEndOutcome.Fail, true);
+                }
+            }
+        }
+
+        //public static void QuestNode_RaceProperties_ExcludeSummoned(object obj, ref bool __result)
+        //{
+        //    Log.Message("triggered race properites Match object");
+        //    if(obj != null)
+        //    {
+        //        if(obj is PawnKindDef)
+        //        {
+
+        //            Log.Message("object pkd is " + ((PawnKindDef)obj).defName);
+        //        }
+        //        if (obj is ThingDef)
+        //        {
+
+        //            Log.Message("object td is " + ((ThingDef)obj).defName);
+        //        }
+        //        if (obj is Pawn)
+        //        {
+
+        //            Log.Message("object pawn is " + ((Pawn)obj).def.defName);
+        //        }
+        //        if (obj is Faction)
+        //        {
+        //            Log.Message("object faction ");
+        //        }
+        //        if (obj is IEnumerable<Pawn>)
+        //        {
+        //            Log.Message("object ie pawn ");
+        //        }
+        //        if (obj is IEnumerable<Thing>)
+        //        {
+        //            Log.Message("object ie thing");
+        //        }
+        //        if (obj is IEnumerable<object>)
+        //        {
+        //            Log.Message("object ie object ");
+        //            if (((IEnumerable<object>)obj).Any())
+        //            {
+        //                //foreach (ThingDef current in enumerable)
+        //                foreach (object current in (IEnumerable<object>)obj)
+        //                {
+        //                    if(current is Pawn)
+        //                    {
+        //                        Log.Message("current obj is " + ((Pawn)current).def.defName);
+        //                        if(((Pawn)current).def.defName.Contains("TM_"))
+        //                        {
+        //                            Log.Message("returning false");
+        //                            __result = false;
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        if (obj is string && !((string)obj).NullOrEmpty())
+        //        {
+        //            Log.Message("object string");
+        //        }
+        //    }
+        //}
+
 
         public static void PawnEquipment_Drop_Postfix(Pawn_EquipmentTracker __instance, ThingWithComps eq, ref bool __result)
         {
@@ -650,7 +817,7 @@ namespace TorannMagic
         [HarmonyPatch(typeof(IncidentWorker), "TryExecute", null)]
         public class IncidentWorker_TryExecute_Prefix_Patch
         {
-            public static bool Prefix(IncidentWorker __instance, IncidentParms parms, ref bool __result)
+            public static bool Prefix(IncidentWorker __instance, ref IncidentParms parms, ref bool __result)
             {
                 if (__instance != null && __instance.def.defName != "VisitorGroup" && __instance.def.defName != "VisitorGroupMax")
                 {
@@ -680,12 +847,14 @@ namespace TorannMagic
                                                         if (comp.predictionIncidentDef == __instance.def)
                                                         {
                                                             //Log.Message("executing prediction" + __instance.def.defName);
+                                                            parms.forced = true;
                                                             comp.predictionIncidentDef = null;
                                                             return true;
                                                         }
                                                     }
                                                     catch (NullReferenceException ex)
                                                     {
+                                                        parms.forced = true;
                                                         return true;
                                                     }
                                                 }
@@ -693,10 +862,10 @@ namespace TorannMagic
                                                 {
                                                     try
                                                     {
-                                                        if (__instance.CanFireNow(parms, false) && !ModOptions.Constants.GetBypassPrediction())// && Rand.Chance(.25f + (.05f * ver.level))) //up to 40% chance to predict, per chronomancer
+                                                        if (__instance.CanFireNow(parms, false) && !ModOptions.Constants.GetBypassPrediction() && Rand.Chance(.25f + (.05f * ver.level))) //up to 40% chance to predict, per chronomancer
                                                         {
                                                             //Log.Message("prediction is " + __instance.def.defName + " and can fire now: " + __instance.CanFireNow(parms, false));
-                                                            int ticksTillIncident = Mathf.RoundToInt((Rand.Range(2500, 20000) * (1 + (.15f * ver.level))));  // from 1 to 8 hours, plus bonus
+                                                            int ticksTillIncident = Mathf.RoundToInt((Rand.Range(1800, 3600) * (1 + (.15f * ver.level))));  // from .72 to 1.44 hours, plus bonus (1.05 - 2.1)
                                                                                                                                                              //Log.Message("pushing " + __instance.def.defName + " to iq for " + ticksTillIncident  + " ticks");
                                                             comp.predictionIncidentDef = __instance.def;
                                                             comp.predictionTick = Find.TickManager.TicksGame + ticksTillIncident;
@@ -2149,6 +2318,43 @@ namespace TorannMagic
                             dinfo.SetAmount(Mathf.RoundToInt(dinfo.Amount + hediff.Severity + Rand.Range(0f, 3f)));
                             dinfo.Def = TMDamageDefOf.DamageDefOf.TM_ChiFist;
                         }
+
+                        Pawn ranger = dinfo.Instigator as Pawn;
+                        if (ranger != null)
+                        {
+                            if (ranger.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BowTrainingHD))
+                            {
+                                if (ranger.equipment.Primary != null)
+                                {
+                                    Thing wpn = ranger.equipment.Primary;
+                                    if (wpn.def.IsRangedWeapon)
+                                    {
+                                        if (wpn.def.Verbs.FirstOrDefault<VerbProperties>().defaultProjectile.projectile.damageDef.defName == "Arrow" || wpn.def.defName.Contains("Bow") || wpn.def.defName.Contains("bow") || wpn.def.Verbs.FirstOrDefault<VerbProperties>().defaultProjectile.projectile.damageDef.defName.Contains("Arrow") || wpn.def.Verbs.FirstOrDefault<VerbProperties>().defaultProjectile.projectile.damageDef.defName.Contains("arrow"))
+                                        {
+                                            Hediff hediff = ranger.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_BowTrainingHD);
+                                            float amt;
+                                            if (hediff.Severity >= 1)
+                                            {
+                                                amt = dinfo.Amount * 1.4f;
+                                            }
+                                            else if (hediff.Severity >= 2)
+                                            {
+                                                amt = dinfo.Amount * 1.6f;
+                                            }
+                                            else if (hediff.Severity >= 3)
+                                            {
+                                                amt = dinfo.Amount * 1.8f;
+                                            }
+                                            else
+                                            {
+                                                amt = dinfo.Amount * 1.2f;
+                                            }
+                                            dinfo.SetAmount(amt);
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 return true;
@@ -2391,46 +2597,6 @@ namespace TorannMagic
                     if (dinfo.Instigator != null && pawn != null && dinfo.Instigator != pawn && !pawn.Destroyed && !pawn.Dead && pawn.Map != null)
                     {
                         Pawn instigator = dinfo.Instigator as Pawn;
-                        //Log.Message("harmony patch");
-                        if (instigator != null && dinfo.Def != TMDamageDefOf.DamageDefOf.TM_Shrapnel)
-                        {
-                            if (instigator.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BowTrainingHD))
-                            {
-                                if (instigator.equipment.Primary != null)
-                                {
-                                    Thing wpn = instigator.equipment.Primary;
-                                    if (wpn.def.IsRangedWeapon)
-                                    {
-                                        if (wpn.def.Verbs.FirstOrDefault<VerbProperties>().defaultProjectile.projectile.damageDef.defName == "Arrow" || wpn.def.defName.Contains("Bow") || wpn.def.defName.Contains("bow") || wpn.def.Verbs.FirstOrDefault<VerbProperties>().defaultProjectile.projectile.damageDef.defName.Contains("Arrow") || wpn.def.Verbs.FirstOrDefault<VerbProperties>().defaultProjectile.projectile.damageDef.defName.Contains("arrow"))
-                                        {
-                                            Hediff hediff = instigator.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_BowTrainingHD);
-                                            DamageInfo dinfo2;
-                                            float amt;
-                                            if (hediff.Severity >= 1)
-                                            {
-                                                amt = dinfo.Amount * .4f;
-                                            }
-                                            else if (hediff.Severity >= 2)
-                                            {
-                                                amt = dinfo.Amount * .6f;
-                                            }
-                                            else if (hediff.Severity >= 3)
-                                            {
-                                                amt = dinfo.Amount * .8f;
-                                            }
-                                            else
-                                            {
-                                                amt = dinfo.Amount * .2f;
-                                            }
-                                            dinfo2 = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Shrapnel, (int)amt, 3, (float)-1, instigator, dinfo.HitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);                                            
-                                            dinfo2.SetAllowDamagePropagation(false);
-                                            pawn.TakeDamage(dinfo2);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
                         if (instigator != null && dinfo.Def != TMDamageDefOf.DamageDefOf.TM_ArcaneSpectre)
                         {
                             if (instigator.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffEnchantment_arcaneSpectre) && Rand.Chance(.5f))
@@ -2665,7 +2831,7 @@ namespace TorannMagic
         {
             public static void Postfix(Verb __instance)
             {
-                if(__instance.CasterIsPawn && __instance.CasterPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_MindOverBodyHD, false))
+                if (__instance.CasterIsPawn && __instance.CasterPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_MindOverBodyHD, false))
                 {
                     LocalTargetInfo currentTarget = Traverse.Create(root: __instance).Field(name: "currentTarget").GetValue<LocalTargetInfo>();
                     int burstShotsLeft = Traverse.Create(root: __instance).Field(name: "burstShotsLeft").GetValue<int>();
@@ -2694,7 +2860,7 @@ namespace TorannMagic
                     }
                 }
 
-                if(__instance.CasterIsPawn && __instance.CasterPawn.story != null && __instance.CasterPawn.story.traits != null && __instance.CasterPawn.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier))
+                if (__instance.CasterIsPawn && __instance.CasterPawn.story != null && __instance.CasterPawn.story.traits != null && __instance.CasterPawn.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier))
                 {
                     LocalTargetInfo currentTarget = Traverse.Create(root: __instance).Field(name: "currentTarget").GetValue<LocalTargetInfo>();
                     int burstShotsLeft = Traverse.Create(root: __instance).Field(name: "burstShotsLeft").GetValue<int>();
@@ -5909,7 +6075,29 @@ namespace TorannMagic
                                 __result = new GizmoResult(GizmoState.Mouseover, null);
                                 return false;
                             }
-                        }                        
+                        }
+                        if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_Transmutate)
+                        {
+                            magicPower = comp.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Transmutate);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
+                        if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_RegrowLimb)
+                        {
+                            magicPower = comp.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RegrowLimb);
+
+                            if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                            {
+                                magicPower.AutoCast = !magicPower.AutoCast;
+                                __result = new GizmoResult(GizmoState.Mouseover, null);
+                                return false;
+                            }
+                        }
                     }
                     if (mightComp != null && __instance.pawnAbility.Def != null)
                     {

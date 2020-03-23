@@ -1225,6 +1225,73 @@ namespace TorannMagic
             }
         }
 
+        public static Thing GetTransmutableThingFromCell(IntVec3 cell, Pawn enchanter, out bool flagRawResource, out bool flagStuffItem, out bool flagNoStuffItem, out bool flagNutrition, out bool flagCorpse, bool manualCast = false)
+        {
+            CompAbilityUserMagic comp = enchanter.GetComp<CompAbilityUserMagic>();
+            int pwrVal = enchanter.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Transmutate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Transmutate_pwr").level;
+            int verVal = enchanter.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Transmutate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Transmutate_ver").level;
+
+            List<Thing> thingList = cell.GetThingList(enchanter.Map);
+            Thing transmutateThing = null;
+
+            flagRawResource = false;
+            flagStuffItem = false;
+            flagNoStuffItem = false;
+            flagNutrition = false;
+            flagCorpse = false;
+
+            for (int i = 0; i < thingList.Count; i++)
+            {
+                if (thingList[i] != null && !(thingList[i] is Pawn) && !(thingList[i] is Building) && (manualCast || !thingList[i].IsForbidden(enchanter)))
+                {
+                    //if (thingList[i].def.thingCategories != null && thingList[i].def.thingCategories.Count > 0 && (thingList[i].def.thingCategories.Contains(ThingCategoryDefOf.ResourcesRaw) || thingList[i].def.thingCategories.Contains(ThingCategoryDefOf.StoneBlocks) || thingList[i].def.defName == "RawMagicyte"))                    
+                    if (thingList[i].def.MadeFromStuff && verVal >= 3)
+                    {
+                        //Log.Message("stuff item");
+                        flagStuffItem = true;
+                        transmutateThing = thingList[i];
+                        break;
+                    }
+                    if (!thingList[i].def.MadeFromStuff && thingList[i].TryGetComp<CompQuality>() != null && verVal >= 3)
+                    {
+                        //Log.Message("non stuff item");
+                        flagNoStuffItem = true;
+                        transmutateThing = thingList[i];
+                        break;
+                    }
+                    if ((thingList[i].def.statBases != null && thingList[i].GetStatValue(StatDefOf.Nutrition) > 0) && !(thingList[i] is Corpse) && verVal >= 1)
+                    {
+                        //Log.Message("food item");
+                        if (thingList[i].def.IsIngestible && thingList[i].def.ingestible.preferability > FoodPreferability.MealAwful)
+                        {
+                            flagNutrition = false;
+                        }
+                        else
+                        {
+                            flagNutrition = true;
+                            transmutateThing = thingList[i];
+                        }                        
+                        break;
+                    }
+                    if (thingList[i] is Corpse && verVal >= 2)
+                    {
+                        //Log.Message("corpse");
+                        flagCorpse = true;
+                        transmutateThing = thingList[i];
+                        break;
+                    }
+                    if (thingList[i].def != null && !thingList[i].def.IsIngestible && ((thingList[i].def.stuffProps != null && thingList[i].def.stuffProps.categories != null && thingList[i].def.stuffProps.categories.Count > 0) || thingList[i].def.defName == "RawMagicyte" || thingList[i].def.IsWithinCategory(ThingCategoryDefOf.ResourcesRaw) || thingList[i].def.IsWithinCategory(ThingCategoryDefOf.Leathers)))
+                    {
+                        //Log.Message("resource");
+                        flagRawResource = true;
+                        transmutateThing = thingList[i];
+                        break;
+                    }
+                }
+            }
+            return transmutateThing;
+        }
+
         public static IntVec3 TryFindSafeCell(Pawn pawn, IntVec3 currentPos, int radius, int maxThreats, int attempts = 1)
         {
             //Log.Message("attempting to find safe cell");
@@ -1479,29 +1546,100 @@ namespace TorannMagic
             return chance;
         }
 
-        public static Area GetSpriteArea()
+        public static Area GetSpriteArea(Map map = null, bool makeNewArea = true)
         {
             Area spriteArea = null;
-            List<Area> allAreas = Find.CurrentMap.areaManager.AllAreas;
-            if (allAreas != null && allAreas.Count > 0)
+            if (map == null)
             {
-                for (int i = 0; i < allAreas.Count; i++)
+                map = Find.CurrentMap;
+            }
+            if (map != null)
+            {
+                List<Area> allAreas = map.areaManager.AllAreas;
+                if (allAreas != null && allAreas.Count > 0)
                 {
-                    if(allAreas[i].Label == "earth sprites")
+                    for (int i = 0; i < allAreas.Count; i++)
                     {
-                        spriteArea = allAreas[i];
+                        if (allAreas[i].Label == "earth sprites")
+                        {
+                            spriteArea = allAreas[i];
+                        }
+                    }
+                }
+                if (spriteArea == null && makeNewArea)
+                {
+                    Area_Allowed newArea = null;
+                    if (map.areaManager.TryMakeNewAllowed(out newArea))
+                    {
+                        newArea.SetLabel("earth sprites");
                     }
                 }
             }
-            if(spriteArea == null)
+            return spriteArea;
+        }
+
+        public static Area GetTransmutateArea(Map map = null, bool makeNewArea = true)
+        {
+            Area transmutateArea = null;
+            if(map == null)
             {
-                Area_Allowed newArea = null;
-                if(Find.CurrentMap.areaManager.TryMakeNewAllowed(out newArea))
+                map = Find.CurrentMap;
+            }
+            if (map != null)
+            {
+                List<Area> allAreas = map.areaManager.AllAreas;
+                if (allAreas != null && allAreas.Count > 0)
                 {
-                    newArea.SetLabel("earth sprites");                    
+                    for (int i = 0; i < allAreas.Count; i++)
+                    {
+                        if (allAreas[i].Label == "transmutate")
+                        {
+                            transmutateArea = allAreas[i];
+                        }
+                    }
+                }
+                if (transmutateArea == null && makeNewArea)
+                {
+                    Area_Allowed newArea = null;
+                    if (map.areaManager.TryMakeNewAllowed(out newArea))
+                    {
+                        newArea.SetLabel("transmutate");
+                    }
                 }
             }
-            return spriteArea;
+            return transmutateArea;
+        }
+
+        public static Area GetSeedOfRegrowthArea(Map map = null, bool makeNewArea = true)
+        {
+            Area regrowthSeedArea = null;
+            if (map == null)
+            {
+                map = Find.CurrentMap;
+            }
+            if (map != null)
+            {
+                List<Area> allAreas = map.areaManager.AllAreas;
+                if (allAreas != null && allAreas.Count > 0)
+                {
+                    for (int i = 0; i < allAreas.Count; i++)
+                    {
+                        if (allAreas[i].Label == "regrowth seed")
+                        {
+                            regrowthSeedArea = allAreas[i];
+                        }
+                    }
+                }
+                if (regrowthSeedArea == null && makeNewArea)
+                {
+                    Area_Allowed newArea = null;
+                    if (map.areaManager.TryMakeNewAllowed(out newArea))
+                    {
+                        newArea.SetLabel("regrowth seed");
+                    }
+                }
+            }
+            return regrowthSeedArea;
         }
 
         public static List<Apparel> GetNecroticOrbs(Pawn pawn)

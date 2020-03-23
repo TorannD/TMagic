@@ -335,6 +335,14 @@ namespace TorannMagic
                         {
                             TorannMagicDefOf.TM_MageLight
                         }),
+                        new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Ignite
+                        }),
+                        new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_SnapFreeze
+                        }),
                     };
                 }
                 return this.magicPowerStandalone;

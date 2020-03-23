@@ -38,7 +38,7 @@
       <predator>true</predator>
       <foodType>OmnivoreAnimal</foodType>
       <baseHungerRate>0.01</baseHungerRate>
-	  <wildness>1</wildness>	  
+	  <wildness>10</wildness>	  
 	  <packAnimal>false</packAnimal>
 	  <herdAnimal>false</herdAnimal>
 <!-- 	  <intelligence>ToolUser</intelligence> -->

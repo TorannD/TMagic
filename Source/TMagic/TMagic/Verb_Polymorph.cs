@@ -135,6 +135,10 @@ namespace TorannMagic
                             MoteMaker.ThrowHeatGlow(newPawn.Position, newPawn.Map, 2);
                             
                             newPawn.DeSpawn();
+                            if (polymorphedPawn.IsColonist && !base.CasterPawn.IsColonist)
+                            {
+                                TM_Action.SpellAffectedPlayerWarning(polymorphedPawn);
+                            }
                         }
                         else
                         {

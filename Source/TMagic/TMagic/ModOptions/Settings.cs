@@ -36,6 +36,7 @@ namespace TorannMagic.ModOptions
         public float paracyteSoftCap = 50f;
         public bool paracyteMagesCount = true;
         public bool unrestrictedWeaponCopy = false;
+        public float undeadUpkeepMultiplier = 1f;
 
         //autocast options
         public bool autocastEnabled = true;
@@ -109,6 +110,7 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<bool>(ref this.showIconsMultiSelect, "showIconsMultiSelect", true, false);
             Scribe_Values.Look<float>(ref this.riftChallenge, "riftChallenge", 1f, false);
             Scribe_Values.Look<float>(ref this.wanderingLichChallenge, "wanderingLichChallenge", 1f, false);
+            Scribe_Values.Look<float>(ref this.undeadUpkeepMultiplier, "undeadUpkeepMultiplier", 1f, false);
             Scribe_Values.Look<bool>(ref this.showGizmo, "showGizmo", true, false);
             Scribe_Values.Look<bool>(ref this.showLevelUpMessage, "showLevelUpMessage", true, false);
             Scribe_Values.Look<bool>(ref this.changeUndeadPawnAppearance, "changeUndeadPawnAppearance", true, false);

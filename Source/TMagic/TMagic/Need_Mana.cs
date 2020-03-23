@@ -338,7 +338,7 @@ namespace TorannMagic
                         float undeadCount = 0;
                         float averageNecroMana = 0;
 
-                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
+                        if (settingsRef.undeadUpkeepMultiplier > 0f && pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
                         {
                             List<Apparel> necroOrbs = TM_Calc.GetNecroticOrbs(this.pawn);
                             float orbEnergy = 0;
@@ -360,8 +360,7 @@ namespace TorannMagic
                                 if (current.RaceProps.Humanlike)
                                 {
                                     if (current.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || current.story.traits.HasTrait(TorannMagicDefOf.Lich))
-                                    {
-                                        
+                                    {                                        
                                         CompAbilityUserMagic tempComp = current.GetComp<CompAbilityUserMagic>();
                                         if(tempComp.Mana.CurLevel < 0.01f && current != pawn)
                                         {
@@ -373,6 +372,10 @@ namespace TorannMagic
                                     if (current.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD))
                                     {
                                         undeadCount += 2;
+                                        if(current.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BrittleBonesHD) || current.health.hediffSet.HasHediff(TorannMagicDefOf.TM_SlaggedHD))
+                                        {
+                                            undeadCount++;
+                                        }
                                     }
                                 }
                                 if (current.RaceProps.Animal)
@@ -451,7 +454,7 @@ namespace TorannMagic
                                 }
                             }
                             
-                            necroReduction = (0.0012f * ((.15f - (.15f * (.1f * eff.level))) / necroCount) * undeadCount);
+                            necroReduction = ((0.0012f * ((.15f - (.15f * (.1f * eff.level))) / necroCount) * undeadCount) * settingsRef.undeadUpkeepMultiplier);
                             this.drainUndead = necroReduction;
                             amount -= necroReduction;
                             //Log.Message("" + pawn.LabelShort + " is 1 of " + necroCount + " contributing necros and had necro reduction of " + necroReduction);

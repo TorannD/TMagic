@@ -733,6 +733,19 @@
     </mote>
   </ThingDef>
   
+    <ThingDef ParentName="MoteBase">
+    <defName>Mote_ExclamationRed</defName>
+    <graphicData>
+      <texPath>Motes/ExclamationMote_Red</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.85</solidTime>
+      <fadeOutTime>0.15</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
   <ThingDef ParentName="MoteBase">
     <defName>Mote_Barrier</defName>
     <graphicData>
@@ -1187,6 +1200,75 @@
       <solidTime>1</solidTime>
       <fadeOutTime>0</fadeOutTime>
     </mote>
+  </ThingDef>
+  
+  <!--=============== Psycast copies ==============-->
+  <!--=============== So I can adjust def values without affecting originals ==============-->
+
+  <ThingDef Abstract="True" Name="TM_MoteGlowDistortBackground" ParentName="MoteBase">
+    <graphicData>
+      <shaderType>MoteGlowDistortBackground</shaderType>
+      <shaderParameters>
+        <_DistortionTex>/Things/Mote/PsycastDistortionMask</_DistortionTex>
+      </shaderParameters>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="TM_MoteGlowDistortBackground">
+    <defName>TM_Mote_PsycastPsychicEffect</defName>
+    <thingClass>MoteThrownAttached</thingClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.03</fadeInTime>
+      <fadeOutTime>0.05</fadeOutTime>
+      <solidTime>0.15</solidTime>
+      <growthRate>1.5</growthRate>
+    </mote>
+    <graphicData>
+      <texPath>Things/Mote/Black</texPath>
+      <shaderParameters>
+        <_distortionIntensity>0.024</_distortionIntensity>
+        <_brightnessMultiplier>1.1</_brightnessMultiplier>
+      </shaderParameters>
+      <drawSize>2.5</drawSize>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="TM_MoteGlowDistortBackground">
+    <defName>TM_Mote_PsycastPsychicLine</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.04</fadeInTime>
+      <fadeOutTime>0.1</fadeOutTime>
+      <solidTime>0.0</solidTime>
+    </mote>
+    <graphicData>
+      <texPath>Things/Mote/PsycastPsychicLine</texPath>
+      <shaderParameters>
+        <_distortionIntensity>0.15</_distortionIntensity>
+        <_DistortionTex>/Things/Mote/PsycastPsychicLineMask</_DistortionTex>
+      </shaderParameters>
+    </graphicData>
+  </ThingDef>
+
+
+  <ThingDef ParentName="TM_MoteGlowDistortBackground">
+    <defName>TM_Mote_PsycastAreaEffect</defName>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <mote>
+      <fadeInTime>0.02</fadeInTime>
+      <fadeOutTime>0.6</fadeOutTime>
+      <solidTime>0.12</solidTime>
+      <growthRate>1.5</growthRate>
+    </mote>
+    <graphicData>
+      <texPath>Things/Mote/Black</texPath>
+      <shaderParameters>
+        <_distortionIntensity>0.25</_distortionIntensity>
+        <_brightnessMultiplier>1.15</_brightnessMultiplier>
+      </shaderParameters>
+      <drawSize>2.3</drawSize>
+    </graphicData>
   </ThingDef>
   
 </Defs>

@@ -64,7 +64,7 @@ namespace TorannMagic
             //    MightPowerSkill mver = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
             //    verVal = mver.level;
             //}
-            weaponAccuracy = Mathf.Min(1f, weaponAccuracy + (.05f * verVal));
+            weaponAccuracy = Mathf.Min(1f, (.8f * weaponAccuracy) + (.05f * verVal));
             return weaponAccuracy;
         }
 
@@ -102,13 +102,13 @@ namespace TorannMagic
             if (value > 1000)
             {
                 value -= 1000;
-                dmg = (projectileDef.projectile.GetDamageAmount(1,null)) + (int)((20 + (value / 120)) * (1 + (.1f * pwrVal)));
+                dmg = (projectileDef.projectile.GetDamageAmount(1,null)) + (int)((15f + (value / 150f)) * (1 + (.1f * pwrVal)));
             }
             else
             {
-                dmg = Mathf.RoundToInt((projectileDef.projectile.GetDamageAmount(1,null) + (value / 50)) * (1 + (.1f * pwrVal)));
+                dmg = Mathf.RoundToInt((projectileDef.projectile.GetDamageAmount(1,null) + (value / 67f)) * (1 + (.1f * pwrVal)));
             }
-            dmg = Mathf.Clamp(dmg, 0, 60);
+            dmg = Mathf.Clamp(dmg, 0, 50);
             return Mathf.RoundToInt(dmg * comp.mightPwr);
         }
 

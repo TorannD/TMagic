@@ -31,16 +31,17 @@
       <body>Minion</body>
       <needsRest>false</needsRest>
       <hasGenders>false</hasGenders>
+	  <nameGenerator>NamerAnimalGenericMale</nameGenerator>
       <predator>true</predator>
       <foodType>CarnivoreAnimal, OvivoreAnimal</foodType>
       <baseHungerRate>0.01</baseHungerRate>
-<!-- 	  <intelligence>ToolUser</intelligence>	   -->
+	  <intelligence>ToolUser</intelligence>	  
       <trainability>None</trainability>
       <thinkTreeConstant>TM_Minion_AI_Constant</thinkTreeConstant>
       <thinkTreeMain>TM_Minion_AI</thinkTreeMain>
       <meatLabel>mystery meat</meatLabel>
 	  <herdMigrationAllowed>false</herdMigrationAllowed>
-	  <wildness>1</wildness>
+	  <wildness>10</wildness>
       <baseBodySize>2</baseBodySize>
     </race>
     <comps>

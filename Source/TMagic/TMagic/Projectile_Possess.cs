@@ -145,8 +145,13 @@ namespace TorannMagic
                                     //
                                     ModOptions.Constants.SetPawnInFlight(true);
                                     //
-                                }                                
+                                }
+                                if (hitPawn.IsColonist && !caster.IsColonist)
+                                {
+                                    TM_Action.SpellAffectedPlayerWarning(hitPawn);
+                                }
                                 caster.DeSpawn();
+                                
                             }
                             else
                             {

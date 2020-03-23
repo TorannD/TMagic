@@ -1774,6 +1774,52 @@ This arcane script is incomplete and the reader may not be able to learn some, o
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_Ignite</defName>
+    <label>Mage Spell: Ignite</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a magic user how to concentrate heat at a target location.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>570</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>80</RawMagicyte>
+		<Cloth>50</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2500</workAmount>
+		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>6</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_fire</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>	
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
     <defName>SpellOf_MageLight</defName>
     <label>Mage Spell: Mage Light</label>
     <thingClass>ThingWithComps</thingClass>
@@ -1913,6 +1959,52 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
 
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_SnapFreeze</defName>
+    <label>Mage Spell: Snap Freeze</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a magic user how to remove all heat at a target location.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>570</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>80</RawMagicyte>
+		<Cloth>50</Cloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>2500</workAmount>
+		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>2</Crafting>
+			<Intellectual>6</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MagicScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_water</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>	
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">
@@ -3876,7 +3968,7 @@ Produces 400Wd adjusted by ability power.</description>
 			<Intellectual>4</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
-			<li>TM_AdvancedScribing</li>
+			<li>TM_MagicScribing</li>
 		</researchPrerequisite>
 	</recipeMaker>
 	<rotatable>false</rotatable>
@@ -3927,7 +4019,7 @@ Produces 400Wd adjusted by ability power.</description>
 			<Intellectual>4</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
-			<li>TM_AdvancedScribing</li>
+			<li>TM_MagicScribing</li>
 		</researchPrerequisite>
 	</recipeMaker>
 	<rotatable>false</rotatable>
@@ -4126,7 +4218,7 @@ Produces 400Wd adjusted by ability power.</description>
 			<Intellectual>4</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
-			<li>TM_AdvancedScribing</li>
+			<li>TM_MagicScribing</li>
 		</researchPrerequisite>
 	</recipeMaker>
 	<rotatable>false</rotatable>
@@ -4176,7 +4268,7 @@ Produces 400Wd adjusted by ability power.</description>
 			<Intellectual>4</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
-			<li>TM_AdvancedScribing</li>
+			<li>TM_MagicScribing</li>
 		</researchPrerequisite>
 	</recipeMaker>
 	<rotatable>false</rotatable>
@@ -4227,7 +4319,7 @@ Produces 400Wd adjusted by ability power.</description>
 			<Intellectual>4</Intellectual>
 		</skillRequirements>
 		<researchPrerequisite>
-			<li>TM_AdvancedScribing</li>
+			<li>TM_MagicScribing</li>
 		</researchPrerequisite>
 	</recipeMaker>
 	<rotatable>false</rotatable>

@@ -99,6 +99,10 @@ namespace TorannMagic
 
                                     }
                                 }
+                                if (victim.IsColonist && !base.CasterPawn.IsColonist)
+                                {
+                                    TM_Action.SpellAffectedPlayerWarning(victim);
+                                }
                             }
                             else
                             {

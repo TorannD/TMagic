@@ -174,6 +174,8 @@ namespace TorannMagic
         public bool spell_BriarPatch = false;
         public bool spell_Recall = false;
         public bool spell_MageLight = false;
+        public bool spell_SnapFreeze = false;
+        public bool spell_Ignite = false;
 
         private bool item_StaffOfDefender = false;
 
@@ -3700,6 +3702,16 @@ namespace TorannMagic
                     this.RemovePawnAbility(TorannMagicDefOf.TM_MageLight);
                     this.AddPawnAbility(TorannMagicDefOf.TM_MageLight);
                 }
+                if (this.spell_SnapFreeze == true)
+                {
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_SnapFreeze);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_SnapFreeze);
+                }
+                if (this.spell_Ignite == true)
+                {
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_Ignite);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Ignite);
+                }
                 //this.UpdateAbilities();
             }            
         }
@@ -6249,7 +6261,7 @@ namespace TorannMagic
             //{
             //    compMight = this.Pawn.TryGetComp<CompAbilityUserMight>();
             //}
-            if (settingsRef.autocastEnabled && this.Pawn.jobs != null && this.Pawn.CurJob != null && this.Pawn.CurJob.def != TorannMagicDefOf.TMCastAbilityVerb && this.Pawn.CurJob.def != JobDefOf.Ingest && this.Pawn.GetPosture() == PawnPosture.Standing)
+            if (settingsRef.autocastEnabled && this.Pawn.jobs != null && this.Pawn.CurJob != null && this.Pawn.CurJob.def != TorannMagicDefOf.TMCastAbilityVerb && this.Pawn.CurJob.def != TorannMagicDefOf.TMCastAbilitySelf && this.Pawn.CurJob.def != JobDefOf.Ingest && this.Pawn.CurJob.def != JobDefOf.ManTurret && this.Pawn.GetPosture() == PawnPosture.Standing)
             {
                 //Log.Message("pawn " + this.Pawn.LabelShort + " current job is " + this.Pawn.CurJob.def.defName);
                 //non-combat (undrafted) spells
@@ -6460,6 +6472,25 @@ namespace TorannMagic
                                         if (castSuccess) goto AutoCastExit;
                                     }
                                 }
+                                if (current.abilityDef == TorannMagicDefOf.TM_RegrowLimb && spell_RegrowLimb)
+                                {
+                                    MagicPower magicPower = this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RegrowLimb);
+                                    bool workPriorities = true;
+                                    if (this.Pawn.CurJob != null && this.Pawn.CurJob.workGiverDef != null && this.Pawn.CurJob.workGiverDef.workType != null)
+                                    {
+                                        workPriorities = this.Pawn.workSettings.GetPriority(this.Pawn.CurJob.workGiverDef.workType) >= this.Pawn.workSettings.GetPriority(TorannMagicDefOf.TM_Magic);
+                                    }
+                                    if (magicPower != null && magicPower.autocast && magicPower.learned && !this.Pawn.CurJob.playerForced && workPriorities)
+                                    {
+                                        Area tArea = TM_Calc.GetSeedOfRegrowthArea(this.Pawn.Map, false);
+                                        if (tArea != null)
+                                        {
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_RegrowLimb);
+                                            AutoCast.OnTarget_Spell.TryExecute(this, TorannMagicDefOf.TM_RegrowLimb, ability, magicPower, tArea.ActiveCells.RandomElement(), 40, out castSuccess);
+                                            if (castSuccess) goto AutoCastExit;                                            
+                                        }
+                                    }
+                                }
                             }
                         }
                     }                    
@@ -6611,6 +6642,30 @@ namespace TorannMagic
                                         AutoCast.CureAddictionSpell.Evaluate(this, TorannMagicDefOf.TM_Purify, ability, magicPower, addictionList, out castSuccess);
                                         if (castSuccess) goto AutoCastExit;
                                     }
+                                }
+                            }
+                        }
+                    }
+                    if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter) || flagCM)
+                    {
+                        MagicPower magicPower = this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Transmutate);
+                        bool workPriorities = true;
+                        if(this.Pawn.CurJob != null && this.Pawn.CurJob.workGiverDef != null && this.Pawn.CurJob.workGiverDef.workType != null)
+                        {
+                            workPriorities = this.Pawn.workSettings.GetPriority(this.Pawn.CurJob.workGiverDef.workType) >= this.Pawn.workSettings.GetPriority(TorannMagicDefOf.TM_Magic);
+                        }
+                        if (magicPower != null && magicPower.autocast && magicPower.learned && !this.Pawn.CurJob.playerForced && workPriorities)
+                        {
+                            Area tArea = TM_Calc.GetTransmutateArea(this.Pawn.Map, false);
+                            if (tArea != null)
+                            {
+                                bool _out;
+                                Thing transmuteThing = TM_Calc.GetTransmutableThingFromCell(tArea.ActiveCells.RandomElement(), this.Pawn, out _out, out _out, out _out, out _out, out _out);
+                                if (transmuteThing != null)
+                                {
+                                    PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Transmutate);
+                                    AutoCast.OnTarget_Spell.TryExecute(this, TorannMagicDefOf.TM_Transmutate, ability, magicPower, transmuteThing, 50, out castSuccess);
+                                    if (castSuccess) goto AutoCastExit;
                                 }
                             }
                         }
@@ -8572,6 +8627,8 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.spell_MechaniteReprogramming, "spell_MechaniteReprogramming", false, false);
             Scribe_Values.Look<bool>(ref this.spell_Recall, "spell_Recall", false, false);
             Scribe_Values.Look<bool>(ref this.spell_MageLight, "spell_MageLight", false, false);
+            Scribe_Values.Look<bool>(ref this.spell_SnapFreeze, "spell_SnapFreeze", false, false);
+            Scribe_Values.Look<bool>(ref this.spell_Ignite, "spell_Ignite", false, false);
             Scribe_Values.Look<bool>(ref this.useTechnoBitToggle, "useTechnoBitToggle", true, false);
             Scribe_Values.Look<bool>(ref this.useTechnoBitRepairToggle, "useTechnoBitRepairToggle", true, false);
             Scribe_Values.Look<bool>(ref this.useElementalShotToggle, "useElementalShotToggle", true, false);

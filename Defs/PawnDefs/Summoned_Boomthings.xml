@@ -79,10 +79,12 @@
 	  <packAnimal>false</packAnimal>
 	  <herdAnimal>false</herdAnimal>
 	  <hasGenders>true</hasGenders>
+	  <nameGenerator>NamerAnimalGenericMale</nameGenerator>
+	  <nameGeneratorFemale>NamerAnimalGenericFemale</nameGeneratorFemale>
 	  <manhunterOnDamageChance>0</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0</manhunterOnTameFailChance>
 	  <trainability>None</trainability>
-	  <!-- <intelligence>ToolUser</intelligence>	 -->
+	  <intelligence>ToolUser</intelligence>	
       <lifeStageAges>
         <li>
           <def>AnimalBaby</def>

@@ -128,9 +128,12 @@
     <Compile Include="Building_PoisonTrap.cs" />
     <Compile Include="Building_TechnoTurret.cs" />
     <Compile Include="Building_ExplosiveProximityTrap.cs" />
+    <Compile Include="JobDriver_GotoAndCast.cs" />
     <Compile Include="TM_Command_Target.cs" />
     <Compile Include="Events\IncidentWorker_QuestArcaneCamp.cs" />
     <Compile Include="Thoughts\ThoughtWorker_TM_Boundless.cs" />
+    <Compile Include="Verb_SnapFreeze.cs" />
+    <Compile Include="Verb_Ignite.cs" />
     <Compile Include="WeaponCategoryList.cs" />
     <Compile Include="CompProperties_SkeletonLichController.cs" />
     <Compile Include="CompProperties_SkeletonController.cs" />

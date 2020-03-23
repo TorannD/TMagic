@@ -19,6 +19,9 @@ namespace TorannMagic.ModOptions
         private string deathExplosionDmgMin = "20.0";
         private string deathExplosionDmgMax = "50.0";
 
+        private int deathExplosionDmgMinInt = 20;
+        private int deathExplosionDmgMaxInt = 50;
+
         public override string SettingsCategory()
         {
             return "A RimWorld of Magic";
@@ -31,7 +34,7 @@ namespace TorannMagic.ModOptions
         }
 
         public override void DoSettingsWindowContents(Rect canvas)
-        {
+        {            
             int num = 0;
             float rowHeight = 28f;
             Rect sRect = new Rect(canvas.x, canvas.y, canvas.width - 36f, canvas.height + 360f);
@@ -43,6 +46,8 @@ namespace TorannMagic.ModOptions
             num++;
             num++;
             SettingsRef settingsRef = new SettingsRef();
+            deathExplosionDmgMin = settingsRef.deathExplosionMin.ToString();
+            deathExplosionDmgMax = settingsRef.deathExplosionMax.ToString();
             Rect rowRect = UIHelper.GetRowRect(rect1, rowHeight, num);
             Settings.Instance.xpMultiplier = Widgets.HorizontalSlider(rowRect, Settings.Instance.xpMultiplier, .1f, 2f, false, "XPMultiplier".Translate() + " " + Settings.Instance.xpMultiplier, ".1", "2", .1f);
             Rect rowRectShiftRight = UIHelper.GetRowRect(rowRect, rowHeight, num);
@@ -78,7 +83,7 @@ namespace TorannMagic.ModOptions
             rowRect3.width = rowRect3.width * .7f;
             Settings.Instance.deathExplosionRadius = Widgets.HorizontalSlider(rowRect3, Settings.Instance.deathExplosionRadius, .1f, 6f, false, "DeathRadius".Translate() + " " + Settings.Instance.deathExplosionRadius, ".1", "6", .1f);
             Rect rowRect31 = new Rect(rowRect3.xMax + 4f, rowRect3.y, rowRect2.width/2, rowRect3.height);
-            Widgets.TextFieldNumericLabeled<int>(rowRect31, "DeathExplosionMin".Translate(), ref Settings.Instance.deathExplosionMin, ref this.deathExplosionDmgMin, 0, 100);
+            Widgets.TextFieldNumericLabeled<int>(rowRect31, "DeathExplosionMin".Translate(), ref Settings.Instance.deathExplosionMin, ref this.deathExplosionDmgMin, 0, 100);            
             Rect rowRect32 = new Rect(rowRect31.xMax + 4f, rowRect3.y, rowRect2.width/2, rowRect3.height);
             Widgets.TextFieldNumericLabeled<int>(rowRect32, "DeathExplosionMax".Translate(), ref Settings.Instance.deathExplosionMax, ref this.deathExplosionDmgMax, 0, 200);
             num++;
@@ -98,7 +103,7 @@ namespace TorannMagic.ModOptions
             Settings.Instance.autocastMinThreshold = Widgets.HorizontalSlider(rowRect6ShiftRight, Settings.Instance.autocastMinThreshold, 0f, 1f, false, "TM_autocastUndraftedThreshold".Translate() + " " + (Settings.Instance.autocastMinThreshold * 100) + "%", "0", "1", .01f);
             num++;
             Rect rowRect66 = UIHelper.GetRowRect(rowRect6, rowHeight, num);
-            //Settings.Instance.advFighterChance = Widgets.HorizontalSlider(rowRect66, Settings.Instance.advFighterChance, 0f, 2f, false, "advFighterChance".Translate() + " " + Rarity(Settings.Instance.advFighterChance) + " " + TM_Calc.GetFighterSpawnChance().ToString("P1"), "0", "2", .01f);
+            Settings.Instance.undeadUpkeepMultiplier = Widgets.HorizontalSlider(rowRect66, Settings.Instance.undeadUpkeepMultiplier, 0f, 5f, false, "TM_UndeadUpkeepMultiplier".Translate() + " " + Settings.Instance.undeadUpkeepMultiplier.ToString("P1"), "0", "5", .01f);
             Rect rowRect66ShiftRight = UIHelper.GetRowRect(rowRect66, rowHeight, num);
             rowRect66ShiftRight.x += rowRect66.width + 56f;
             Settings.Instance.autocastCombatMinThreshold = Widgets.HorizontalSlider(rowRect66ShiftRight, Settings.Instance.autocastCombatMinThreshold, 0f, 1f, false, "TM_autocastDraftedThreshold".Translate() + " " + (Settings.Instance.autocastCombatMinThreshold * 100) + "%", "0", "1", .01f);
@@ -199,6 +204,7 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.classIconSize = 1f;
                 Settings.Instance.AIAggressiveCasting = true;
                 Settings.Instance.paracyteSoftCap = 50f;
+                Settings.Instance.undeadUpkeepMultiplier = 1f;
                 Settings.Instance.paracyteMagesCount = true;
                 Settings.Instance.riftChallenge = 1f;
                 Settings.Instance.wanderingLichChallenge = 1f;
@@ -240,6 +246,7 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.showClassIconOnColonistBar = true;
                 Settings.Instance.AIAggressiveCasting = true;
                 Settings.Instance.paracyteSoftCap = 30f;
+                Settings.Instance.undeadUpkeepMultiplier = 1.5f;
                 Settings.Instance.paracyteMagesCount = true;
                 Settings.Instance.riftChallenge = 3f;
                 Settings.Instance.wanderingLichChallenge = 3f;
@@ -274,6 +281,8 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.magicyteChance = .01f;
                 Settings.Instance.showIconsMultiSelect = true;
                 Settings.Instance.showGizmo = true;
+                Settings.Instance.paracyteSoftCap = 75f;
+                Settings.Instance.undeadUpkeepMultiplier = 1f;
                 Settings.Instance.showLevelUpMessage = true;
                 Settings.Instance.changeUndeadPawnAppearance = true;
                 Settings.Instance.changeUndeadAnimalAppearance = true;

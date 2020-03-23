@@ -1,65 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <!--================== Bases ==================-->
-  
-  <ThingDef Name="MagicResourceBase" Abstract="True">
-    <thingClass>ThingWithComps</thingClass>
-	<category>Item</category>
-    <resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <selectable>true</selectable>
-    <altitudeLayer>Item</altitudeLayer>
-	<tradeTags>
-	  <li>Arcane</li>
-    </tradeTags>
-	<tradeability>All</tradeability>
-	<techLevel>Neolithic</techLevel>
-	<tradeNeverStack>false</tradeNeverStack>
-	<resourceReadoutAlwaysShow>false</resourceReadoutAlwaysShow>
-	<soundInteract>Metal_Drop</soundInteract>
-    <soundDrop>Metal_Drop</soundDrop>
-	<stackLimit>1500</stackLimit>
-	<statBases>
-		<Beauty>10</Beauty>
-		<SellPriceFactor>.30</SellPriceFactor>
-	</statBases>
-	<comps>
-		<li Class="CompProperties_Forbiddable"/>
-	</comps>
-	<alwaysHaulable>true</alwaysHaulable>
-	<drawGUIOverlay>true</drawGUIOverlay>
-	<rotatable>false</rotatable>
-	<pathCost>5</pathCost>
-	<stuffProps>
-	  <commonality>0.00</commonality>
-    </stuffProps>
-  </ThingDef>
-  
-  <ThingDef Name="MagicResourceBase_Magicyte" Abstract="True" ParentName="MagicResourceBase">
-    <useHitPoints>false</useHitPoints>
-	<thingCategories>
-      <li>TM_Magicyte</li>
-    </thingCategories>
-  </ThingDef>
-  
-  <ThingDef Name="MagicResourceBase_Textile" Abstract="True" ParentName="MagicResourceBase">
-	<useHitPoints>true</useHitPoints>
-  	<thingCategories>
-      <li>Textiles</li>
-    </thingCategories>
-  </ThingDef>
-  
-  <ThingDef ParentName="UnfinishedBase">
-    <defName>UnfinishedGem</defName>
-    <label>unfinished gem</label>
-	<isUnfinishedThing>true</isUnfinishedThing>
-    <graphicData>
-      <texPath>Items/Gemstones/unfinishedgem</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-	<stuffCategories Inherit="false" />
-  </ThingDef>
-
   <!--=============== Enchanting Gems ====================-->
 
   <ThingDef ParentName="MagicResourceBase_Magicyte">

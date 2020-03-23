@@ -704,13 +704,17 @@ namespace TorannMagic
             }
         }
 
-        public static Thing SingleSpawnLoop(Pawn caster, SpawnThings spawnables, IntVec3 position, Map map, int duration, bool temporary, bool hostile = false, Faction spawnableFaction = null)
+        public static Thing SingleSpawnLoop(Pawn caster, SpawnThings spawnables, IntVec3 position, Map map, int duration, bool temporary, bool hostile = false, Faction spawnableFaction = null, bool hasFaction = true)
         {
             bool flag = spawnables.def != null;
             Thing thing = null;
             if (flag)
             {
-                Faction faction = TM_Action.ResolveFaction(caster, spawnables, spawnableFaction, hostile);
+                Faction faction = spawnableFaction;
+                if (hasFaction)
+                {
+                    faction = TM_Action.ResolveFaction(caster, spawnables, spawnableFaction, hostile);
+                }
                 bool flag2 = spawnables.def.race != null;
                 if (flag2)
                 {
@@ -1314,6 +1318,22 @@ namespace TorannMagic
             }
         }
 
+        public static void SpellAffectedPlayerWarning(Pawn p)
+        {
+            Vector3 rndPos = p.DrawPos;
+            rndPos.z += .5f;
+            for (int i = 0; i < 3; i++)
+            {
+                float angle = Rand.Range(-30, 30);
+                TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_ExclamationRed, rndPos, p.Map, .4f, .6f, .05f, .25f, Rand.Range(-20, 20), 1f, angle, angle);
+                MoteMaker.ThrowLightningGlow(p.DrawPos, p.Map, .8f);
+            }
+            SoundInfo info = SoundInfo.InMap(new TargetInfo(p.Position, p.Map, false), MaintenanceType.None);
+            info.pitchFactor = .6f;
+            info.volumeFactor = 2f;
+            SoundDefOf.TinyBell.PlayOneShot(info);
+        }
+
         public static bool DoWildSurge(Pawn p, CompAbilityUserMagic comp, MagicAbility ability, TMAbilityDef abilityDef, LocalTargetInfo target, bool canDoBad = true)
         {
             bool completeJob = false;
@@ -1607,6 +1627,262 @@ namespace TorannMagic
                 {
                     Graphics.DrawMesh(MeshPool.plane10, matrix, TM_RenderQueue.manaShieldMat, 0);
                 }
+            }
+        }
+
+        public static void DoTransmutate(Pawn caster, Thing transmutateThing, bool flagNoStuffItem, bool flagRawResource, bool flagStuffItem, bool flagNutrition, bool flagCorpse)
+        {
+            CompAbilityUserMagic comp = caster.GetComp<CompAbilityUserMagic>();
+            int pwrVal = comp.MagicData.MagicPowerSkill_Transmutate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Transmutate_pwr").level;
+            int verVal = comp.MagicData.MagicPowerSkill_Transmutate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Transmutate_ver").level;
+
+            //Log.Message("Current target thing is " + transmutateThing.LabelShort + " with a stack count of " + transmutateThing.stackCount + " and market value of " + transmutateThing.MarketValue + " base market value of " + transmutateThing.def.BaseMarketValue + " total value of stack " + transmutateThing.def.BaseMarketValue * transmutateThing.stackCount);
+            if (flagNoStuffItem)
+            {
+                CompQuality compQual = transmutateThing.TryGetComp<CompQuality>();
+                float wornRatio = ((float)transmutateThing.HitPoints / (float)transmutateThing.MaxHitPoints);
+                Thing thing = transmutateThing;
+
+                if (compQual != null && Rand.Chance((.03f * pwrVal) * comp.arcaneDmg) && compQual.Quality != QualityCategory.Legendary)
+                {
+                    thing.TryGetComp<CompQuality>().SetQuality(compQual.Quality + 1, ArtGenerationContext.Colony);
+                    if(compQual.Quality == QualityCategory.Legendary && thing.HitPoints == thing.MaxHitPoints)
+                    {
+                        thing.SetForbidden(true, false);
+                    }
+                }
+                thing.HitPoints = Mathf.RoundToInt((wornRatio * thing.MaxHitPoints) - ((.2f - (.1f * pwrVal)) * thing.MaxHitPoints));
+                if (thing.HitPoints > thing.MaxHitPoints)
+                {
+                    thing.HitPoints = thing.MaxHitPoints;
+                    thing.SetForbidden(true, false);
+                }
+
+                Apparel aThing = thing as Apparel;
+                if (aThing != null && aThing.WornByCorpse)
+                {
+                    aThing.Notify_PawnResurrected();
+                    Traverse.Create(root: aThing).Field(name: "wornByCorpseInt").SetValue(false);
+                }
+
+                TM_Action.TransmutateEffects(transmutateThing.Position, caster);
+
+            }
+            else if (flagRawResource)
+            {
+                //if (transmutateThing.def.defName != "RawMagicyte")
+                //{
+                //    for (int i = 0; i < transmutateThing.def.stuffProps.categories.Count; i++)
+                //    {
+                //        Log.Message("categories include " + transmutateThing.def.stuffProps.categories[i].defName);
+                //    }
+                //}
+
+                int transStackCount = 0;
+                if (transmutateThing.stackCount > 250)
+                {
+                    transStackCount = 250;
+                }
+                else
+                {
+                    transStackCount = transmutateThing.stackCount;
+                }
+                int transStackValue = Mathf.RoundToInt(transStackCount * transmutateThing.def.BaseMarketValue);
+                float newMatCount = 0;
+                IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
+                                                   where (def != transmutateThing.def && ((def.stuffProps != null && def.stuffProps.categories != null && def.stuffProps.categories.Count > 0) || def.defName == "RawMagicyte") || def.IsWithinCategory(ThingCategoryDefOf.ResourcesRaw) || def.IsWithinCategory(ThingCategoryDefOf.Leathers))
+                                                   select def;
+
+                foreach (ThingDef current in enumerable)
+                {
+                    if (current != null && current.defName != null)
+                    {
+                        newMatCount = transStackValue / current.BaseMarketValue;
+                        //Log.Message("transumtation resource " + current.defName + " base value " + current.BaseMarketValue + " value count converts to " + newMatCount);
+                    }
+                }
+
+                transmutateThing.SplitOff(transStackCount).Destroy(DestroyMode.Vanish);
+                Thing thing = null;
+                ThingDef newThingDef = enumerable.RandomElement();
+                newMatCount = transStackValue / newThingDef.BaseMarketValue;
+                thing = ThingMaker.MakeThing(newThingDef);
+                thing.stackCount = Mathf.RoundToInt((.7f + (.05f * pwrVal)) * newMatCount);
+
+                if (thing != null)
+                {
+                    GenPlace.TryPlaceThing(thing, transmutateThing.Position, caster.Map, ThingPlaceMode.Near, null);
+                    TM_Action.TransmutateEffects(transmutateThing.Position, caster);
+                }
+            }
+            else if (flagStuffItem)
+            {
+                //Log.Message("" + transmutateThing.LabelShort + " is made from " + transmutateThing.Stuff.label);
+                float transValue = transmutateThing.MarketValue;
+                IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
+                                                   where (def.stuffProps != null && def.stuffProps.categories != null && def.stuffProps.categories.Contains(transmutateThing.Stuff.stuffProps.categories.RandomElement()))
+                                                   select def;
+
+                //foreach (ThingDef current in enumerable)
+                //{
+                //    if (current != null && current.defName != null)
+                //    {
+                //        Log.Message("transumtation resource " + current.defName + " base value " + current.BaseMarketValue);
+                //    }
+                //}
+
+                CompQuality compQual = transmutateThing.TryGetComp<CompQuality>();
+                float wornRatio = ((float)transmutateThing.HitPoints / (float)transmutateThing.MaxHitPoints);
+                Thing thing = new Thing();
+                ThingDef newThingDef = enumerable.RandomElement();
+                thing = ThingMaker.MakeThing(transmutateThing.def, newThingDef);
+
+                if (compQual != null)
+                {
+                    if (Rand.Chance((.02f * pwrVal) * comp.arcaneDmg) && compQual.Quality != QualityCategory.Legendary)
+                    {
+                        thing.TryGetComp<CompQuality>().SetQuality(compQual.Quality + 1, ArtGenerationContext.Colony);
+                        if (compQual.Quality == QualityCategory.Legendary && thing.HitPoints == thing.MaxHitPoints)
+                        {
+                            thing.SetForbidden(true, false);
+                        }
+                    }
+                    else
+                    {
+                        thing.TryGetComp<CompQuality>().SetQuality(compQual.Quality, ArtGenerationContext.Colony);
+                    }
+                }
+                thing.HitPoints = Mathf.RoundToInt((wornRatio * thing.MaxHitPoints) - ((.2f - (.1f * pwrVal)) * thing.MaxHitPoints));
+                if (thing.HitPoints > thing.MaxHitPoints)
+                {
+                    thing.HitPoints = thing.MaxHitPoints;
+                    thing.SetForbidden(true, false);
+                }
+                transmutateThing.Destroy(DestroyMode.Vanish);
+                if (thing != null)
+                {
+                    GenPlace.TryPlaceThing(thing, transmutateThing.Position, caster.Map, ThingPlaceMode.Near, null);
+                    if (thing.HitPoints <= 0)
+                    {
+                        thing.Destroy(DestroyMode.Vanish);
+                        Messages.Message("TM_TransmutationLostCohesion".Translate(thing.def.label), MessageTypeDefOf.NeutralEvent);
+                    }
+                    TM_Action.TransmutateEffects(transmutateThing.Position, caster);
+                }
+            }
+            else if (flagNutrition)
+            {
+                int transStackCount = 0;
+                if (transmutateThing.stackCount > 500)
+                {
+                    transStackCount = 500;
+                }
+                else
+                {
+                    transStackCount = transmutateThing.stackCount;
+                }
+                float transNutritionTotal = transmutateThing.GetStatValue(StatDefOf.Nutrition) * transStackCount;
+                float newMatCount = 0;
+                ThingDef newThingDef = null;
+                //Log.Message("" + transmutateThing.LabelShort + " has a nutrition value of " + transmutateThing.GetStatValue(StatDefOf.Nutrition) + " and stack count of " + transmutateThing.stackCount + " for a total nutrition value of " + transNutritionTotal);
+                IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
+                                                   where (def.defName == "Pemmican" || def.defName == "MealNutrientPaste")
+                                                   select def;
+
+                newThingDef = enumerable.RandomElement();
+                if (newThingDef != null)
+                {
+                    transmutateThing.SplitOff(transStackCount).Destroy(DestroyMode.Vanish);
+                    Thing thing = null;
+                    newMatCount = transNutritionTotal / newThingDef.GetStatValueAbstract(StatDefOf.Nutrition);
+                    thing = ThingMaker.MakeThing(newThingDef);
+                    thing.stackCount = Mathf.RoundToInt((.7f + (.05f * pwrVal)) * newMatCount);
+                    if (thing.stackCount < 1)
+                    {
+                        thing.stackCount = 1;
+                    }
+
+                    if (thing != null)
+                    {
+                        GenPlace.TryPlaceThing(thing, transmutateThing.Position, caster.Map, ThingPlaceMode.Near, null);
+                        TM_Action.TransmutateEffects(transmutateThing.Position, caster);
+                    }
+                }
+                else
+                {
+                    Log.Message("No known edible foods to transmutate to - pemmican and nutrient paste removed?");
+                }
+            }
+            else if (flagCorpse)
+            {
+                Corpse transCorpse = transmutateThing as Corpse;
+                ThingDef newThingDef = null;
+                float corpseNutritionValue = 0;
+                if (transCorpse != null)
+                {
+                    if (transCorpse.ButcherProducts(caster, 1f) != null && transCorpse.ButcherProducts(caster, 1f).Count() > 0)
+                    {
+                        List<Thing> butcherProducts = transCorpse.ButcherProducts(caster, 1f).ToList();
+                        for (int j = 0; j < butcherProducts.Count; j++)
+                        {
+                            if (butcherProducts[j].GetStatValue(StatDefOf.Nutrition) > 0)
+                            {
+                                corpseNutritionValue = (butcherProducts[j].GetStatValue(StatDefOf.Nutrition) * butcherProducts[j].stackCount);
+                                //Log.Message("corpse has a meat nutrition amount of " + (butcherProducts[j].GetStatValue(StatDefOf.Nutrition) * butcherProducts[j].stackCount));
+                            }
+                        }
+
+                        if (corpseNutritionValue > 0)
+                        {
+                            IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
+                                                               where (def.defName == "MealNutrientPaste")
+                                                               select def;
+
+                            newThingDef = enumerable.RandomElement();
+                            if (newThingDef != null)
+                            {
+                                transCorpse.Destroy(DestroyMode.Vanish);
+                                Thing thing = null;
+                                int newMatCount = Mathf.RoundToInt(corpseNutritionValue / newThingDef.GetStatValueAbstract(StatDefOf.Nutrition));
+                                thing = ThingMaker.MakeThing(newThingDef);
+                                thing.stackCount = Mathf.RoundToInt((.7f + (.05f * pwrVal)) * newMatCount);
+
+                                if (thing != null)
+                                {
+                                    GenPlace.TryPlaceThing(thing, transmutateThing.Position, caster.Map, ThingPlaceMode.Near, null);
+                                    TM_Action.TransmutateEffects(transmutateThing.Position, caster);
+                                }
+                            }
+                            else
+                            {
+                                Log.Message("No known edible foods to transmutate to - nutrient paste removed?");
+                            }
+                        }
+                        else
+                        {
+                            transCorpse.Destroy(DestroyMode.Vanish);
+                            for (int j = 0; j < butcherProducts.Count; j++)
+                            {
+                                Thing thing = null;
+                                thing = ThingMaker.MakeThing(butcherProducts[j].def);
+                                thing.stackCount = butcherProducts[j].stackCount;
+                                if (thing != null)
+                                {
+                                    GenPlace.TryPlaceThing(thing, transmutateThing.Position, caster.Map, ThingPlaceMode.Near, null);
+                                }
+
+                            }
+                            TM_Action.TransmutateEffects(transmutateThing.Position, caster);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Messages.Message("TM_UnableToTransmutate".Translate(
+                    caster.LabelShort,
+                    transmutateThing.LabelShort
+                ), MessageTypeDefOf.RejectInput);
             }
         }
     }

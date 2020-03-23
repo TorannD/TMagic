@@ -17,7 +17,7 @@
 
   <ThoughtDef ParentName="TM_MemoryOrder">
     <defName>TM_TakingOrdersTD</defName>
-    <durationDays>2</durationDays>
+    <durationDays>.6</durationDays>
     <stages>
       <li>
         <label>taking orders</label>

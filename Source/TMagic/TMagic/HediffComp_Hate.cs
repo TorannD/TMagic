@@ -213,7 +213,7 @@ namespace TorannMagic
                         Vector3 projectileOrigin = Traverse.Create(root: projectile).Field(name: "origin").GetValue<Vector3>();
                         Thing launcher = Traverse.Create(root: projectile).Field(name: "launcher").GetValue<Thing>();
                         float weaponDamageMultiplier = Traverse.Create(root: projectile).Field(name: "weaponDamageMultiplier").GetValue<float>();
-                        if (weaponDamageMultiplier > 0 && launcher != null && launcher != this.Pawn && (projectileOrigin - this.Pawn.DrawPos).MagnitudeHorizontal() > 6 && Rand.Chance(.3f + (.06f * this.hateVer)))
+                        if (weaponDamageMultiplier > 0 && launcher != null && launcher != this.Pawn && (projectileOrigin - this.Pawn.DrawPos).MagnitudeHorizontal() > 8 && Rand.Chance(.3f + (.06f * this.hateVer)))
                         {                            
                             Vector3 moteDirection = TM_Calc.GetVector(projectile.ExactPosition, this.Pawn.DrawPos);
                             //Vector3 displayEffect = projectile.DrawPos;

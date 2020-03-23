@@ -162,7 +162,7 @@ namespace TorannMagic.AutoCast
             //GenClamor.DoClamor(caster, 2f, ClamorDefOf.Ability);
 
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            casterComp.MightUserXP -= (int)((casterComp.ActualStaminaCost(abilitydef) * 180 * .8f * casterComp.xpGain * settingsRef.xpMultiplier));
+            casterComp.MightUserXP -= (int)((casterComp.ActualStaminaCost(abilitydef) * 180 * .9f * casterComp.xpGain * settingsRef.xpMultiplier));
             ability.PostAbilityAttempt();
             if (selectCaster)
             {
@@ -218,7 +218,7 @@ namespace TorannMagic.AutoCast
                 }
 
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                casterComp.MightUserXP -= (int)((casterComp.ActualStaminaCost(abilitydef) * 180 * .8f * casterComp.xpGain * settingsRef.xpMultiplier));
+                casterComp.MightUserXP -= (int)((casterComp.ActualStaminaCost(abilitydef) * 180 * .9f * casterComp.xpGain * settingsRef.xpMultiplier));
                 ability.PostAbilityAttempt();
                 if (selectCaster)
                 {
@@ -250,6 +250,40 @@ namespace TorannMagic.AutoCast
         }
     }
 
+    public static class OnTarget_Spell
+    {
+        public static void TryExecute(CompAbilityUserMagic casterComp, TMAbilityDef abilitydef, PawnAbility ability, MagicPower power, LocalTargetInfo target, int maxRange, out bool success)
+        {
+            success = false;
+            if (casterComp.Mana.CurLevel >= abilitydef.manaCost && ability.CooldownTicksLeft <= 0)
+            {
+                Pawn caster = casterComp.Pawn;
+                LocalTargetInfo jobTarget = target;
+                if (jobTarget != null)
+                {
+                    float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
+                    bool canReserve = false;
+                    if (jobTarget.Thing != null)
+                    {
+                        canReserve = caster.CanReserveAndReach(target, PathEndMode.Touch, Danger.Deadly);
+                    }
+                    else
+                    {
+                        canReserve = caster.CanReach(target, PathEndMode.Touch, Danger.Some);
+                    }
+                    if (distanceToTarget < maxRange && canReserve)
+                    {
+                        Job job = new Job(TorannMagicDefOf.JobDriver_GotoAndCast, jobTarget);
+                        caster.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                        JobDriver_GotoAndCast jobDriver = (JobDriver_GotoAndCast)caster.jobs.curDriver;
+                        jobDriver.ability = ability;
+                        success = true;
+                    }
+                }
+            }
+        }
+    }
+
     public static class MeleeCombat_OnTarget
     {
         public static void TryExecute(CompAbilityUserMight casterComp, TMAbilityDef abilitydef, PawnAbility ability, MightPower power, LocalTargetInfo target, out bool success)
@@ -260,11 +294,14 @@ namespace TorannMagic.AutoCast
                 Pawn caster = casterComp.Pawn;
                 LocalTargetInfo jobTarget = target;
                 float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
-                if (distanceToTarget < (abilitydef.MainVerb.range ) && jobTarget != null && jobTarget.Thing != null)
+                if (distanceToTarget < (abilitydef.MainVerb.range) && jobTarget != null && jobTarget.Thing != null)
                 {
-                    Job job = ability.GetJob(AbilityContext.AI, jobTarget);
-                    caster.jobs.TryTakeOrderedJob(job);
-                    success = true;
+                    if (jobTarget.Thing != caster)
+                    {
+                        Job job = ability.GetJob(AbilityContext.AI, jobTarget);
+                        caster.jobs.TryTakeOrderedJob(job);
+                        success = true;
+                    }
                 }
             }
         }
@@ -1069,7 +1106,7 @@ namespace TorannMagic.AutoCast
                 if (caster.kindDef != PawnKindDef.Named("TM_Dire_Wolf"))
                 {
                     ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                    casterComp.MagicUserXP -= (int)((casterComp.ActualManaCost(abilitydef) * 300 * .8f * casterComp.xpGain * settingsRef.xpMultiplier));
+                    casterComp.MagicUserXP -= (int)((casterComp.ActualManaCost(abilitydef) * 300 * .85f * casterComp.xpGain * settingsRef.xpMultiplier));
                     ability.PostAbilityAttempt();
                 }
                 if(selectCaster)

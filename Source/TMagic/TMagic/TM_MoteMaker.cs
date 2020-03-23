@@ -8,6 +8,37 @@ namespace TorannMagic
 {
     public static class TM_MoteMaker
     {
+        //public static void ThrowGenericMote(ThingDef moteDef, Vector3 loc, Map map, float scale, float solidTime, float fadeIn, float fadeOut, int rotationRate, float velocity, float velocityAngle, float lookAngle)
+        public static Mote MakeOverlay(Thing target, ThingDef moteDef, Map map, Vector3 offset, float scale, float lookAngle, float fadeIn, float fadeOut, float solidTimeOverride, float growthRate)
+        {
+            Mote obj = (Mote)ThingMaker.MakeThing(moteDef);
+            obj.Attach(target);
+            obj.Scale = scale;
+            obj.exactPosition = target.DrawPos + offset;            
+            obj.exactRotation = lookAngle;
+            obj.def.mote.fadeInTime = fadeIn;
+            obj.def.mote.fadeOutTime = fadeOut;
+            obj.def.mote.growthRate = growthRate;
+            obj.solidTimeOverride = solidTimeOverride;
+            GenSpawn.Spawn(obj, target.Position, map);
+            return obj;
+        }
+
+        public static Mote MakeOverlay(TargetInfo target, ThingDef moteDef, Map map, Vector3 offset, float scale, float lookAngle, float fadeIn, float fadeOut, float solidTimeOverride, float growthRate)
+        {
+            Mote obj = (Mote)ThingMaker.MakeThing(moteDef);
+            obj.Attach(target);
+            obj.Scale = scale;
+            obj.exactPosition = target.CenterVector3 + offset;            
+            obj.exactRotation = lookAngle;
+            obj.def.mote.fadeInTime = fadeIn;
+            obj.def.mote.fadeOutTime = fadeOut;
+            obj.def.mote.growthRate = growthRate;
+            obj.solidTimeOverride = solidTimeOverride;
+            GenSpawn.Spawn(obj, target.Cell, map);
+            return obj;
+        }
+
         public static void ThrowManaPuff(Vector3 loc, Map map, float scale)
         {
             if (!loc.ShouldSpawnMotesAt(map) || map.moteCounter.SaturatedLowPriority)

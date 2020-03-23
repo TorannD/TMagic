@@ -75,6 +75,10 @@ namespace TorannMagic
                     HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_Poisoned_HD, Rand.Range(1f + verVal, 4f + (2f * verVal)));                    
                     initialized = true;
                     TM_MoteMaker.ThrowPoisonMote(hitPawn.Position.ToVector3(), map, 2.2f);
+                    if (hitPawn.IsColonist && !caster.IsColonist)
+                    {
+                        TM_Action.SpellAffectedPlayerWarning(hitPawn);
+                    }
                 }
                 else
                 {

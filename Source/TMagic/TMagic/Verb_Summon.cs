@@ -113,7 +113,10 @@ namespace TorannMagic
                             //p.SetPositionDirect(this.currentTarget.Cell);
                             GenSpawn.Spawn(summonablePawn, base.CasterPawn.Position, map);
                             //flyingPawn = null;
-
+                            if(summonablePawn.IsColonist && !base.CasterPawn.IsColonist)
+                            {
+                                TM_Action.SpellAffectedPlayerWarning(summonablePawn);
+                            }
                             //summonablePawn.Position = base.CasterPawn.Position;
                             //p.jobs.StopAll(false);
                         }

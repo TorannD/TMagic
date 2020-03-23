@@ -534,4 +534,128 @@
     </stages>
   </HediffDef>
   
+  <HediffDef>
+    <defName>TM_BrittleBonesHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0, 0.4, .8)</defaultLabelColor>
+    <label>Brittle bones</label>
+	<description>Occurs when exposed to extremely cold temperatures and causes bones and ligaments to become brittle which reduces movement and manipulation. Undead with this condition require 50% additional mana to sustain.</description>
+	<isBad>true</isBad>
+	<scenarioCanAdd>false</scenarioCanAdd>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<maxSeverity>1.0</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-1</severityPerDay>
+      </li>	  
+    </comps>
+    <stages>
+	  <li>
+        <label>I</label>
+        <minSeverity>0.01</minSeverity>
+        <capMods>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.1</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.1</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <label>II</label>
+        <minSeverity>.4</minSeverity>
+        <capMods>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.3</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.3</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <label>III</label>
+        <minSeverity>.8</minSeverity>
+        <capMods>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.7</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.7</offset>
+          </li>
+        </capMods>
+      </li>  	  
+    </stages>
+  </HediffDef>
+  
+  <HediffDef>
+    <defName>TM_SlaggedHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.6, 0, 0)</defaultLabelColor>
+    <label>Slagged</label>
+	<description>Occurs when exposed to extremely hot temperatures and causes organic matter to decompose and even melt. Undead affected by this condition require 50% more mana to sustain.</description>
+	<isBad>true</isBad>
+	<scenarioCanAdd>false</scenarioCanAdd>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<maxSeverity>1.0</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-1</severityPerDay>
+      </li>	  
+    </comps>
+    <stages>
+	  <li>
+        <label>I</label>
+        <minSeverity>0.01</minSeverity>
+        <capMods>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.1</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.1</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <label>II</label>
+        <minSeverity>.4</minSeverity>
+        <capMods>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.3</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.3</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <label>III</label>
+        <minSeverity>.8</minSeverity>
+        <capMods>
+		  <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.7</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.7</offset>
+          </li>
+        </capMods>
+      </li>  	  
+    </stages>
+  </HediffDef>
+  
 </Defs>

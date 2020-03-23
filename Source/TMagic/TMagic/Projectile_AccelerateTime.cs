@@ -114,6 +114,10 @@ namespace TorannMagic
                             if (pawnList[i].Faction != null && pawnList[i].Faction != this.pawn.Faction)
                             {
                                 AgePawn(pawnList[i], Mathf.RoundToInt((2500) * (1 + (.1f * verVal))), true);
+                                if (pawnList[i].IsColonist && !this.pawn.IsColonist)
+                                {
+                                    TM_Action.SpellAffectedPlayerWarning(pawnList[i]);
+                                }
                             }
                             else if(pawnList[i].Faction == null)
                             {

@@ -50,13 +50,6 @@ Extremely difficult and taxing to create, only a talented and knowledgeable mage
   </ThingDef>
   
     <!--=============== Arcalleum ====================-->
-	
-  <ThingDef Name="MagicResourceBase_Resource" Abstract="True" ParentName="MagicResourceBase">
-	<useHitPoints>true</useHitPoints>
-  	<thingCategories>
-      <li>ResourcesRaw</li>
-    </thingCategories>
-  </ThingDef>
   
   <ThingDef ParentName="MagicResourceBase_Resource">
     <defName>TM_Arcalleum</defName>

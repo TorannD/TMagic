@@ -99,6 +99,8 @@ namespace TorannMagic
                     Messages.Message("NotCombatBook".Translate(), MessageTypeDefOf.RejectInput);
                 }
 
+                //ResolveClassPassions(user);  currently disabled
+
             }
             else if(parent.def == TorannMagicDefOf.BookOfSuperSoldier)
             {
@@ -126,5 +128,91 @@ namespace TorannMagic
                 }                
             }
         }
-	}
+
+        private void ResolveClassPassions(Pawn p)
+        {
+            SkillRecord skill;
+            if (p.story.traits.HasTrait(TorannMagicDefOf.Bladedancer))
+            {
+                skill = p.skills.GetSkill(SkillDefOf.Melee);
+                if (skill.passion != Passion.Major)
+                {
+                    skill.passion = Passion.Major;
+                }
+                skill = p.skills.GetSkill(SkillDefOf.Shooting);
+                if (skill.passion != Passion.None)
+                {
+                    skill.passion = Passion.None;
+                }
+            }
+            if (p.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper))
+            {
+                skill = p.skills.GetSkill(SkillDefOf.Melee);
+                if (skill.passion != Passion.None)
+                {
+                    skill.passion = Passion.None;
+                }
+                skill = p.skills.GetSkill(SkillDefOf.Shooting);
+                if (skill.passion != Passion.Major)
+                {
+                    skill.passion = Passion.Major;
+                }
+            }
+            if (p.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
+            {
+                skill = p.skills.GetSkill(SkillDefOf.Melee);
+                if (skill.passion == Passion.None)
+                {
+                    skill.passion = Passion.Minor;
+                }
+                skill = p.skills.GetSkill(SkillDefOf.Shooting);
+                if (skill.passion == Passion.None)
+                {
+                    skill.passion = Passion.Minor;
+                }
+            }
+            if (p.story.traits.HasTrait(TorannMagicDefOf.Ranger))
+            {
+                skill = p.skills.GetSkill(SkillDefOf.Melee);
+                if (skill.passion == Passion.None)
+                {
+                    skill.passion = Passion.Minor;
+                }
+                skill = p.skills.GetSkill(SkillDefOf.Shooting);
+                if (skill.passion == Passion.None)
+                {
+                    skill.passion = Passion.Minor;
+                }
+            }
+            if (p.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier))
+            {
+                skill = p.skills.GetSkill(SkillDefOf.Melee);
+                if (skill.passion == Passion.None)
+                {
+                    skill.passion = Passion.Minor;
+                }
+                skill = p.skills.GetSkill(SkillDefOf.Shooting);
+                if (skill.passion == Passion.Minor)
+                {
+                    skill.passion = Passion.Major;
+                }
+                if (skill.passion == Passion.None)
+                {
+                    skill.passion = Passion.Minor;
+                }
+            }
+            if (p.story.traits.HasTrait(TorannMagicDefOf.TM_Commander))
+            {
+                skill = p.skills.GetSkill(SkillDefOf.Social);
+                if (skill.passion == Passion.Minor)
+                {
+                    skill.passion = Passion.Major;
+                }
+                if (skill.passion == Passion.None)
+                {
+                    skill.passion = Passion.Minor;
+                }
+            }
+        }
+    }
 }

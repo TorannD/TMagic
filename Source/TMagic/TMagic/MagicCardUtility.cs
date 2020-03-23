@@ -63,7 +63,6 @@ namespace TorannMagic
 
         public static void DrawMagicCard(Rect rect, Pawn pawn)
         {
-            Log.Message("resolution height " + Screen.currentResolution.height);
             //GUI.BeginGroup(rect);
             //Widgets.BeginScrollView(rect, ref scrollPosition, rect, true);
             

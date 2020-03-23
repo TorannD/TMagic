@@ -103,6 +103,8 @@ namespace TorannMagic
         public static ThingDef SpellOf_Recall;
         public static ThingDef SpellOf_MageLight;
         public static HediffDef TM_MageLightHD;
+        public static ThingDef SpellOf_Ignite;
+        public static ThingDef SpellOf_SnapFreeze;
 
         public static ThingDef SkillOf_Sprint;
         public static ThingDef SkillOf_GearRepair;
@@ -130,6 +132,9 @@ namespace TorannMagic
         public static HediffDef TM_ArcaneSickness;
         public static HediffDef TM_ArcaneWeakness;
         public static HediffDef TM_EnergyRegenHD;
+
+        public static HediffDef TM_BrittleBonesHD;
+        public static HediffDef TM_SlaggedHD;
 
         //Artifacts
         public static ThingDef TM_Artifact_Silver;
@@ -565,7 +570,7 @@ namespace TorannMagic
         public static ThoughtDef Polymorphed;
         public static ThoughtDef Polymorphed_Transhumanist;
         public static TMAbilityDef TM_ShapeshiftDW;
-        public static HediffDef TM_ShapeshiftHD;
+        public static HediffDef TM_ShapeshiftHD;        
 
         //Chronomancer
         public static TraitDef Chronomancer;
@@ -871,6 +876,8 @@ namespace TorannMagic
         public static TMAbilityDef TM_Legion;
         public static TMAbilityDef TM_TempestStrike;
         public static HediffDef TM_MuteHD;
+        public static TMAbilityDef TM_Ignite;
+        public static TMAbilityDef TM_SnapFreeze;
 
         public static HediffDef TM_Sight;
         public static HediffDef TM_Breathing;
@@ -923,6 +930,7 @@ namespace TorannMagic
         public static ThingDef Mote_Arcane;
         public static ThingDef Mote_Note;
         public static ThingDef Mote_Exclamation;
+        public static ThingDef Mote_ExclamationRed;
         public static ThingDef Mote_Twinkle;
         public static ThingDef Mote_Flame;
         public static ThingDef Mote_Ice;
@@ -981,6 +989,14 @@ namespace TorannMagic
         public static EffecterDef TM_MagicCircleED;
         public static EffecterDef TM_CommanderOrderED;
         public static EffecterDef TM_HTL_EffecterED;
+        public static EffecterDef TM_IgniteED;
+        public static EffecterDef TM_SnapFreezeED;
+
+        //psychast copies, used with tm_motemaker.makeoverlay
+        //adjusts def values on each cast
+        public static ThingDef TM_Mote_PsycastPsychicEffect;
+        public static ThingDef TM_Mote_PsycastPsychicLine;
+        public static ThingDef TM_Mote_PsycastAreaEffect;
 
         //Apparel layers
         public static ApparelLayerDef TM_Cloak;
@@ -1011,6 +1027,7 @@ namespace TorannMagic
         public static JobDef JobDriver_PsionicBarrier;
         public static JobDef JobDriver_TM_Teach;
         public static JobDef JobDriver_TM_GotoAndWait;
+        public static JobDef JobDriver_GotoAndCast;
 
         //Things
         public static ThingDef RawMagicyte;
@@ -1041,6 +1058,8 @@ namespace TorannMagic
         public static SoundDef TM_FireWooshSD;
         public static SoundDef TM_GaspingAir;
         public static SoundDef TM_MetalImpact;
+        public static SoundDef TM_FireBombSD;
+        public static SoundDef TM_WindLowSD;
 
         //Inspirations
         public static InspirationDef ID_Champion;
@@ -1096,5 +1115,13 @@ namespace TorannMagic
 
         //CustomDefs
         public static TM_CustomDef TM_CustomDef;
+
+        //Custom ThingCategories
+        public static ThingCategoryDef TM_MagicItems;
+        public static ThingCategoryDef TM_SkillBooks;
+        public static ThingCategoryDef TM_Scrolls;
+        public static ThingCategoryDef TM_Magicyte;
+        public static ThingCategoryDef TM_MagicArtifacts;
+        public static ThingCategoryDef TM_MagicEquipment;
     }
 }

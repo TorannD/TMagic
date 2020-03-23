@@ -39,14 +39,7 @@ namespace TorannMagic
 
         protected override bool TryCastShot()
         {
-            CompAbilityUserMagic comp = this.CasterPawn.GetComp<CompAbilityUserMagic>();
-            MagicPowerSkill pwr = base.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Transmutate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Transmutate_pwr");
-            MagicPowerSkill ver = base.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Transmutate.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Transmutate_ver");
-            pwrVal = pwr.level;
-            verVal = ver.level;
-
-            List<Thing> thingList = this.currentTarget.Cell.GetThingList(caster.Map);
-            Thing transmutateThing = null;
+            
 
             bool flagRawResource = false;
             bool flagStuffItem = false;
@@ -54,292 +47,57 @@ namespace TorannMagic
             bool flagNutrition = false;
             bool flagCorpse = false;
 
-            for (int i = 0; i < thingList.Count; i++)
-            {
-                if (thingList[i] != null && !(thingList[i] is Pawn) && !(thingList[i] is Building))
-                {
-                    //if (thingList[i].def.thingCategories != null && thingList[i].def.thingCategories.Count > 0 && (thingList[i].def.thingCategories.Contains(ThingCategoryDefOf.ResourcesRaw) || thingList[i].def.thingCategories.Contains(ThingCategoryDefOf.StoneBlocks) || thingList[i].def.defName == "RawMagicyte"))                    
-                    if (thingList[i].def.MadeFromStuff && verVal >= 3)
-                    {
-                        //Log.Message("stuff item");
-                        flagStuffItem = true;
-                        transmutateThing = thingList[i];
-                        break;
-                    }
-                    if(!thingList[i].def.MadeFromStuff && thingList[i].TryGetComp<CompQuality>() != null && verVal >= 3)
-                    {
-                        //Log.Message("non stuff item");
-                        flagNoStuffItem = true;
-                        transmutateThing = thingList[i];
-                        break;
-                    }
-                    if ((thingList[i].def.statBases != null && thingList[i].GetStatValue(StatDefOf.Nutrition) > 0) && !(thingList[i] is Corpse) && verVal >= 1)
-                    {
-                        //Log.Message("food item");
-                        flagNutrition = true;
-                        transmutateThing = thingList[i];
-                        break;
-                    }
-                    if(thingList[i] is Corpse && verVal >= 2)
-                    {
-                        //Log.Message("corpse");
-                        flagCorpse = true;
-                        transmutateThing = thingList[i];
-                        break;
-                    }
-                    if (thingList[i].def != null && !thingList[i].def.IsIngestible && ((thingList[i].def.stuffProps != null && thingList[i].def.stuffProps.categories != null && thingList[i].def.stuffProps.categories.Count > 0) || thingList[i].def.defName == "RawMagicyte" || thingList[i].def.IsWithinCategory(ThingCategoryDefOf.ResourcesRaw) || thingList[i].def.IsWithinCategory(ThingCategoryDefOf.Leathers)))
-                    {
-                        //Log.Message("resource");
-                        flagRawResource = true;
-                        transmutateThing = thingList[i];
-                        break;
-                    }
-                }
-            }
+            
+            Thing transmutateThing = TM_Calc.GetTransmutableThingFromCell(this.currentTarget.Cell, this.CasterPawn, out flagRawResource, out flagStuffItem, out flagNoStuffItem, out flagNutrition, out flagCorpse, true);
+
+            //List<Thing> thingList = this.currentTarget.Cell.GetThingList(caster.Map);
+
+            //for (int i = 0; i < thingList.Count; i++)
+            //{
+            //    if (thingList[i] != null && !(thingList[i] is Pawn) && !(thingList[i] is Building))
+            //    {
+            //        //if (thingList[i].def.thingCategories != null && thingList[i].def.thingCategories.Count > 0 && (thingList[i].def.thingCategories.Contains(ThingCategoryDefOf.ResourcesRaw) || thingList[i].def.thingCategories.Contains(ThingCategoryDefOf.StoneBlocks) || thingList[i].def.defName == "RawMagicyte"))                    
+            //        if (thingList[i].def.MadeFromStuff && verVal >= 3)
+            //        {
+            //            //Log.Message("stuff item");
+            //            flagStuffItem = true;
+            //            transmutateThing = thingList[i];
+            //            break;
+            //        }
+            //        if(!thingList[i].def.MadeFromStuff && thingList[i].TryGetComp<CompQuality>() != null && verVal >= 3)
+            //        {
+            //            //Log.Message("non stuff item");
+            //            flagNoStuffItem = true;
+            //            transmutateThing = thingList[i];
+            //            break;
+            //        }
+            //        if ((thingList[i].def.statBases != null && thingList[i].GetStatValue(StatDefOf.Nutrition) > 0) && !(thingList[i] is Corpse) && verVal >= 1)
+            //        {
+            //            //Log.Message("food item");
+            //            flagNutrition = true;
+            //            transmutateThing = thingList[i];
+            //            break;
+            //        }
+            //        if(thingList[i] is Corpse && verVal >= 2)
+            //        {
+            //            //Log.Message("corpse");
+            //            flagCorpse = true;
+            //            transmutateThing = thingList[i];
+            //            break;
+            //        }
+            //        if (thingList[i].def != null && !thingList[i].def.IsIngestible && ((thingList[i].def.stuffProps != null && thingList[i].def.stuffProps.categories != null && thingList[i].def.stuffProps.categories.Count > 0) || thingList[i].def.defName == "RawMagicyte" || thingList[i].def.IsWithinCategory(ThingCategoryDefOf.ResourcesRaw) || thingList[i].def.IsWithinCategory(ThingCategoryDefOf.Leathers)))
+            //        {
+            //            //Log.Message("resource");
+            //            flagRawResource = true;
+            //            transmutateThing = thingList[i];
+            //            break;
+            //        }
+            //    }
+            //}
 
             if(transmutateThing != null)
             {
-                //Log.Message("Current target thing is " + transmutateThing.LabelShort + " with a stack count of " + transmutateThing.stackCount + " and market value of " + transmutateThing.MarketValue + " base market value of " + transmutateThing.def.BaseMarketValue + " total value of stack " + transmutateThing.def.BaseMarketValue * transmutateThing.stackCount);
-                if(flagNoStuffItem)
-                {
-                    CompQuality compQual = transmutateThing.TryGetComp<CompQuality>();
-                    float wornRatio = ((float)transmutateThing.HitPoints / (float)transmutateThing.MaxHitPoints);
-                    Thing thing = transmutateThing;
-
-                    if (compQual != null && Rand.Chance((.03f * pwrVal)* comp.arcaneDmg) && compQual.Quality != QualityCategory.Legendary)
-                    {
-                        thing.TryGetComp<CompQuality>().SetQuality(compQual.Quality + 1, ArtGenerationContext.Colony);
-                    }
-                    thing.HitPoints = Mathf.RoundToInt((wornRatio * thing.MaxHitPoints) - ((.2f - (.1f * pwrVal)) * thing.MaxHitPoints));
-                    if (thing.HitPoints > thing.MaxHitPoints)
-                    {
-                        thing.HitPoints = thing.MaxHitPoints;
-                    }
-                    Apparel aThing = thing as Apparel;
-                    if(aThing != null && aThing.WornByCorpse)
-                    {
-                        aThing.Notify_PawnResurrected();
-                        Traverse.Create(root: aThing).Field(name: "wornByCorpseInt").SetValue(false);
-                    }
-
-                    TM_Action.TransmutateEffects(this.currentTarget.Cell, this.CasterPawn);
-
-                }
-                else if (flagRawResource)
-                {
-                    //if (transmutateThing.def.defName != "RawMagicyte")
-                    //{
-                    //    for (int i = 0; i < transmutateThing.def.stuffProps.categories.Count; i++)
-                    //    {
-                    //        Log.Message("categories include " + transmutateThing.def.stuffProps.categories[i].defName);
-                    //    }
-                    //}
-
-                    int transStackCount = 0;
-                    if (transmutateThing.stackCount > 250)
-                    {
-                        transStackCount = 250;
-                    }
-                    else
-                    {
-                        transStackCount = transmutateThing.stackCount;
-                    }
-                    int transStackValue = Mathf.RoundToInt(transStackCount * transmutateThing.def.BaseMarketValue);
-                    float newMatCount = 0;
-                    IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
-                                                        where (def != transmutateThing.def && ((def.stuffProps != null && def.stuffProps.categories != null && def.stuffProps.categories.Count > 0) || def.defName == "RawMagicyte") || def.IsWithinCategory(ThingCategoryDefOf.ResourcesRaw) || def.IsWithinCategory(ThingCategoryDefOf.Leathers))
-                                                        select def;
-
-                    foreach (ThingDef current in enumerable)
-                    {
-                        if (current != null && current.defName != null)
-                        {
-                            newMatCount = transStackValue / current.BaseMarketValue;
-                            //Log.Message("transumtation resource " + current.defName + " base value " + current.BaseMarketValue + " value count converts to " + newMatCount);
-                        }
-                    }
-
-                    transmutateThing.SplitOff(transStackCount).Destroy(DestroyMode.Vanish);
-                    Thing thing = null;
-                    ThingDef newThingDef = enumerable.RandomElement();
-                    newMatCount = transStackValue / newThingDef.BaseMarketValue;
-                    thing = ThingMaker.MakeThing(newThingDef);
-                    thing.stackCount = Mathf.RoundToInt((.7f + (.05f * pwrVal)) * newMatCount);
-
-                    if (thing != null)
-                    {
-                        GenPlace.TryPlaceThing(thing, this.currentTarget.Cell, this.caster.Map, ThingPlaceMode.Near, null);
-                        TM_Action.TransmutateEffects(this.currentTarget.Cell, this.CasterPawn);
-                    }
-                }
-                else if (flagStuffItem)
-                {
-                    //Log.Message("" + transmutateThing.LabelShort + " is made from " + transmutateThing.Stuff.label);
-                    float transValue = transmutateThing.MarketValue;
-                    IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
-                                                       where (def.stuffProps != null && def.stuffProps.categories != null && def.stuffProps.categories.Contains(transmutateThing.Stuff.stuffProps.categories.RandomElement()))
-                                                       select def;
-
-                    //foreach (ThingDef current in enumerable)
-                    //{
-                    //    if (current != null && current.defName != null)
-                    //    {
-                    //        Log.Message("transumtation resource " + current.defName + " base value " + current.BaseMarketValue);
-                    //    }
-                    //}
-
-                    CompQuality compQual = transmutateThing.TryGetComp<CompQuality>();
-                    float wornRatio = ((float)transmutateThing.HitPoints / (float)transmutateThing.MaxHitPoints);
-                    Thing thing = new Thing();
-                    ThingDef newThingDef = enumerable.RandomElement();
-                    thing = ThingMaker.MakeThing(transmutateThing.def, newThingDef);
-                   
-                    if (compQual != null)
-                    {
-                        if (Rand.Chance((.02f * pwrVal) * comp.arcaneDmg) && compQual.Quality != QualityCategory.Legendary)
-                        {
-                            thing.TryGetComp<CompQuality>().SetQuality(compQual.Quality + 1, ArtGenerationContext.Colony);
-                        }
-                        else
-                        {
-                            thing.TryGetComp<CompQuality>().SetQuality(compQual.Quality, ArtGenerationContext.Colony);
-                        }
-                    }
-                    thing.HitPoints = Mathf.RoundToInt((wornRatio * thing.MaxHitPoints) - ((.2f - (.1f * pwrVal)) * thing.MaxHitPoints));
-                    if(thing.HitPoints > thing.MaxHitPoints)
-                    {
-                        thing.HitPoints = thing.MaxHitPoints;
-                    }
-                    transmutateThing.Destroy(DestroyMode.Vanish);
-                    if (thing != null)
-                    {
-                        GenPlace.TryPlaceThing(thing, this.currentTarget.Cell, this.caster.Map, ThingPlaceMode.Near, null);                        
-                        if (thing.HitPoints <= 0)
-                        {
-                            thing.Destroy(DestroyMode.Vanish);
-                            Messages.Message("TM_TransmutationLostCohesion".Translate(thing.def.label), MessageTypeDefOf.NeutralEvent);
-                        }
-                        else
-                        {
-                            thing.SetForbidden(true, false);
-                        }
-                        TM_Action.TransmutateEffects(this.currentTarget.Cell, this.CasterPawn);
-                    }
-                }
-                else if (flagNutrition)
-                {                    
-                    int transStackCount = 0;
-                    if (transmutateThing.stackCount > 500)
-                    {
-                        transStackCount = 500;
-                    }
-                    else
-                    {
-                        transStackCount = transmutateThing.stackCount;
-                    }
-                    float transNutritionTotal = transmutateThing.GetStatValue(StatDefOf.Nutrition) * transStackCount;
-                    float newMatCount = 0;
-                    ThingDef newThingDef = null;
-                    //Log.Message("" + transmutateThing.LabelShort + " has a nutrition value of " + transmutateThing.GetStatValue(StatDefOf.Nutrition) + " and stack count of " + transmutateThing.stackCount + " for a total nutrition value of " + transNutritionTotal);
-                    IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
-                                                       where (def.defName == "Pemmican" || def.defName == "MealNutrientPaste")
-                                                       select def;
-
-                    newThingDef = enumerable.RandomElement();
-                    if(newThingDef != null)
-                    {
-                        transmutateThing.SplitOff(transStackCount).Destroy(DestroyMode.Vanish);
-                        Thing thing = null;
-                        newMatCount = transNutritionTotal / newThingDef.GetStatValueAbstract(StatDefOf.Nutrition);
-                        thing = ThingMaker.MakeThing(newThingDef);
-                        thing.stackCount = Mathf.RoundToInt((.7f + (.05f * pwrVal)) * newMatCount);
-                        if(thing.stackCount < 1)
-                        {
-                            thing.stackCount = 1;
-                        }
-
-                        if (thing != null)
-                        {
-                            GenPlace.TryPlaceThing(thing, this.currentTarget.Cell, this.caster.Map, ThingPlaceMode.Near, null);
-                            TM_Action.TransmutateEffects(this.currentTarget.Cell, this.CasterPawn);
-                        }
-                    }
-                    else
-                    {
-                        Log.Message("No known edible foods to transmutate to - pemmican and nutrient paste removed?");
-                    }
-                }
-                else if(flagCorpse)
-                {
-                    Corpse transCorpse = transmutateThing as Corpse;
-                    ThingDef newThingDef = null;
-                    float corpseNutritionValue = 0;
-                    if (transCorpse != null)
-                    {
-                        if (transCorpse.ButcherProducts(this.CasterPawn, 1f) != null && transCorpse.ButcherProducts(this.CasterPawn, 1f).Count() > 0)
-                        {
-                            List<Thing> butcherProducts = transCorpse.ButcherProducts(this.CasterPawn, 1f).ToList();
-                            for (int j = 0; j < butcherProducts.Count; j++)
-                            {
-                                if (butcherProducts[j].GetStatValue(StatDefOf.Nutrition) > 0)
-                                {
-                                    corpseNutritionValue = (butcherProducts[j].GetStatValue(StatDefOf.Nutrition) * butcherProducts[j].stackCount);
-                                    //Log.Message("corpse has a meat nutrition amount of " + (butcherProducts[j].GetStatValue(StatDefOf.Nutrition) * butcherProducts[j].stackCount));
-                                }
-                            }
-
-                            if (corpseNutritionValue > 0)
-                            {
-                                IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
-                                                                   where (def.defName == "MealNutrientPaste")
-                                                                   select def;
-
-                                newThingDef = enumerable.RandomElement();
-                                if (newThingDef != null)
-                                {
-                                    transCorpse.Destroy(DestroyMode.Vanish);
-                                    Thing thing = null;
-                                    int newMatCount = Mathf.RoundToInt(corpseNutritionValue / newThingDef.GetStatValueAbstract(StatDefOf.Nutrition));
-                                    thing = ThingMaker.MakeThing(newThingDef);
-                                    thing.stackCount = Mathf.RoundToInt((.7f + (.05f * pwrVal)) * newMatCount);
-
-                                    if (thing != null)
-                                    {
-                                        GenPlace.TryPlaceThing(thing, this.currentTarget.Cell, this.caster.Map, ThingPlaceMode.Near, null);
-                                        TM_Action.TransmutateEffects(this.currentTarget.Cell, this.CasterPawn);
-                                    }
-                                }
-                                else
-                                {
-                                    Log.Message("No known edible foods to transmutate to - nutrient paste removed?");
-                                }
-                            }
-                            else
-                            {
-                                transCorpse.Destroy(DestroyMode.Vanish);
-                                for (int j = 0; j < butcherProducts.Count; j++)
-                                {
-                                    Thing thing = null;
-                                    thing = ThingMaker.MakeThing(butcherProducts[j].def);
-                                    thing.stackCount = butcherProducts[j].stackCount;
-                                    if (thing != null)
-                                    {
-                                        GenPlace.TryPlaceThing(thing, this.currentTarget.Cell, this.caster.Map, ThingPlaceMode.Near, null);
-                                    }
-
-                                }
-                                TM_Action.TransmutateEffects(this.currentTarget.Cell, this.CasterPawn);
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    Messages.Message("TM_UnableToTransmutate".Translate(
-                        this.CasterPawn.LabelShort,
-                        this.currentTarget.Thing.LabelShort
-                    ), MessageTypeDefOf.RejectInput);
-                }                
+                TM_Action.DoTransmutate(this.CasterPawn, transmutateThing, flagNoStuffItem, flagRawResource, flagStuffItem, flagNutrition, flagCorpse);
             }
             else
             {

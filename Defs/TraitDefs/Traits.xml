@@ -85,8 +85,8 @@
 			<degree>0</degree>
 			<statOffsets>
 				<MoveSpeed>-2</MoveSpeed>
-				<ComfyTemperatureMin>-200</ComfyTemperatureMin>
-				<ComfyTemperatureMax>50</ComfyTemperatureMax>
+				<ComfyTemperatureMin>-66</ComfyTemperatureMin>
+				<ComfyTemperatureMax>58</ComfyTemperatureMax>
 				<ToxicSensitivity>-1</ToxicSensitivity>
 				<ImmunityGainSpeed>49</ImmunityGainSpeed>
 				<PainShockThreshold>0.90</PainShockThreshold>
@@ -711,7 +711,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 			<degree>4</degree>
 			<statOffsets>
 				<MoveSpeed>-2</MoveSpeed>
-				<ComfyTemperatureMin>-40</ComfyTemperatureMin>
+				<ComfyTemperatureMin>-42</ComfyTemperatureMin>
+				<ComfyTemperatureMax>46</ComfyTemperatureMax>
 				<ImmunityGainSpeed>1</ImmunityGainSpeed>
 				<ToxicSensitivity>-1</ToxicSensitivity>
 				<MentalBreakThreshold>-0.2</MentalBreakThreshold>

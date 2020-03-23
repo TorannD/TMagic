@@ -72,6 +72,10 @@ namespace TorannMagic
                         {
                             newPawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Manhunter, null, true, false, null);
                         }
+                        if (newPawn.IsColonist && !base.CasterPawn.IsColonist)
+                        {
+                            TM_Action.SpellAffectedPlayerWarning(newPawn);
+                        }
                     }
                     else
                     {

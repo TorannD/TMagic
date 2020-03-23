@@ -98,6 +98,30 @@
   </SoundDef>
   
   <SoundDef>
+    <defName>TM_FireBombSD</defName>
+    <eventNames />
+    <maxSimultaneous>2</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/Firebomb</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>5</min>
+          <max>10</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.6</min>
+          <max>1.1</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
     <defName>TM_FastReleaseSD</defName>
     <eventNames />
     <maxSimultaneous>5</maxSimultaneous>
@@ -284,6 +308,30 @@
         <pitchRange>
           <min>.9</min>
           <max>1.1</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>TM_WindLowSD</defName>
+    <eventNames />
+    <maxSimultaneous>10</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/Wind</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>15</min>
+          <max>25</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.5</min>
+          <max>.7</max>
         </pitchRange>
       </li>
     </subSounds>
