@@ -207,7 +207,7 @@
 	<tradeability>All</tradeability>
 	<techLevel>Neolithic</techLevel>
 	<tradeNeverStack>false</tradeNeverStack>
-	<resourceReadoutAlwaysShow>true</resourceReadoutAlwaysShow>
+	<resourceReadoutAlwaysShow>false</resourceReadoutAlwaysShow>
 	<soundInteract>Metal_Drop</soundInteract>
     <soundDrop>Metal_Drop</soundDrop>
 	<stackLimit>1500</stackLimit>

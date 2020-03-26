@@ -46,7 +46,10 @@ namespace TorannMagic
                 initAction = () =>
                 {
                     //pawn.pather.StartPath(portalBldg.InteractionCell, PathEndMode.OnCell);
-                    pawn.pather.StartPath(bldg.InteractionCell, PathEndMode.OnCell);
+                    if (pawn.pather != null && bldg.InteractionCell != null)
+                    {
+                        pawn.pather.StartPath(bldg.InteractionCell, PathEndMode.OnCell);
+                    }
                 },
                 defaultCompleteMode = ToilCompleteMode.PatherArrival
             };
@@ -60,7 +63,7 @@ namespace TorannMagic
                     {
                         this.EndJobWith(JobCondition.Succeeded);
                     }
-                    if (comp.Mana.CurLevel < .01f)
+                    if (comp != null && comp.Mana != null && comp.Mana.CurLevel < .01f)
                     {
                         this.EndJobWith(JobCondition.Succeeded);
                     }

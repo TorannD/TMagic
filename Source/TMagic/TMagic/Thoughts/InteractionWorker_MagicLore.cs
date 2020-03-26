@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using Verse;
+using UnityEngine;
 
 namespace TorannMagic.Thoughts
 {
@@ -18,7 +19,7 @@ namespace TorannMagic.Thoughts
             CompAbilityUserMagic compRec = recipient.GetComp<CompAbilityUserMagic>();
             //base.Interacted(initiator, recipient, extraSentencePacks);
             int num = compInit.MagicUserLevel - compRec.MagicUserLevel;
-            int num2 = (int)(50f + Rand.Range(8f, 15f)*(float)num);
+            int num2 = Mathf.Clamp((int)(50f + Rand.Range(6f, 11f)*(float)num),0, 700);
             compRec.MagicUserXP += num2;
             MoteMaker.ThrowText(recipient.DrawPos, recipient.MapHeld, "XP +" + num2, -1f);
         }

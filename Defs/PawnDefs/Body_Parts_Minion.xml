@@ -8,6 +8,7 @@
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
     <canSuggestAmputation>false</canSuggestAmputation>
+	<bleedRate>0</bleedRate>
   </BodyPartDef>
   
    <BodyPartDef>
@@ -15,7 +16,7 @@
     <label>brain</label>
     <hitPoints>10</hitPoints>
     <permanentInjuryChanceFactor>1</permanentInjuryChanceFactor>
-	<bleedRate>4</bleedRate>
+	<bleedRate>60</bleedRate>
     <skinCovered>false</skinCovered>
     <tags>
       <li>ConsciousnessSource</li>
@@ -31,6 +32,7 @@
 	<permanentInjuryChanceFactor>1</permanentInjuryChanceFactor>
 	<frostbiteVulnerability>1</frostbiteVulnerability>
     <beautyRelated>true</beautyRelated>
+	<bleedRate>10</bleedRate>
 	<socketed>true</socketed>
     <tags>
       <li>SightSource</li>
@@ -41,6 +43,7 @@
     <defName>Minion_RightHorn</defName>
     <label>right horn</label>
     <hitPoints>20</hitPoints>
+	<bleedRate>0</bleedRate>
     <permanentInjuryChanceFactor>0.00</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
     <beautyRelated>true</beautyRelated>
@@ -56,6 +59,7 @@
     <permanentInjuryChanceFactor>0.00</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
     <beautyRelated>true</beautyRelated>
+	<bleedRate>0</bleedRate>
     <tags>
       <li>HearingSource</li>
     </tags>
@@ -73,6 +77,7 @@
     <hitPoints>10</hitPoints>
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
+	<bleedRate>10</bleedRate>
     <tags>
       <li>ManipulationLimbCore</li>
     </tags>
@@ -84,6 +89,7 @@
     <hitPoints>10</hitPoints>
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
+	<bleedRate>10</bleedRate>
     <tags>
       <li>ManipulationLimbCore</li>
     </tags>
@@ -95,6 +101,7 @@
     <hitPoints>20</hitPoints>
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
+	<bleedRate>10</bleedRate>
     <tags>
       <li>BreathingPathway</li>
       <li>EatingPathway</li>
@@ -129,7 +136,7 @@
     <label>core</label>
     <hitPoints>20</hitPoints>
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
-    <bleedRate>5</bleedRate>
+    <bleedRate>25</bleedRate>
     <skinCovered>false</skinCovered>
     <tags>
       <li>BloodPumpingSource</li>

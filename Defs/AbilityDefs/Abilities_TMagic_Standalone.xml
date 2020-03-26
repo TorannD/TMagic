@@ -642,7 +642,7 @@
 	    <defName>Projectile_EMP</defName>
         <label>EMP</label>
         <graphicData>
-			<texPath>Spells/invis</texPath>
+			<texPath>Spells/EMP</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
         </graphicData>

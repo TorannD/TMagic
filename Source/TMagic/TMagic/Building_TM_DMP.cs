@@ -130,6 +130,7 @@ namespace TorannMagic
 
         public override void Tick()
         {
+            base.Tick();
             if(Find.TickManager.TicksGame % this.rotationRate == 0)
             {
                 this.matRot++;

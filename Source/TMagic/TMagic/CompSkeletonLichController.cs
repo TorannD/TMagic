@@ -456,13 +456,13 @@ namespace TorannMagic
                                 }
                                 else if (this.Pawn.TargetCurrentlyAimingAt != null && this.closeThreats.Count() > 3)
                                 {
-                                    if (Rand.Chance(.4f) && this.NextAoEAttack < Find.TickManager.TicksGame)
+                                    if (Rand.Chance(.4f) && this.NextAoEAttack < Find.TickManager.TicksGame && TM_Calc.HasLoSFromTo(this.Pawn.Position, this.attackTarget, this.Pawn, 0, 60))
                                     {
                                         this.attackTarget = this.Pawn.TargetCurrentlyAimingAt;
                                         StartAoEAttack(this.attackTarget.Cell, this.attackTarget);                                        
                                     }
 
-                                    if (Rand.Chance(.8f) && this.NextAoEAttack < Find.TickManager.TicksGame && this.farThreats.Count() > (4 * this.closeThreats.Count()))
+                                    if (Rand.Chance(.8f) && this.NextAoEAttack < Find.TickManager.TicksGame && this.farThreats.Count() > (4 * this.closeThreats.Count()) && TM_Calc.HasLoSFromTo(this.Pawn.Position, this.attackTarget, this.Pawn, 0, 60))
                                     {
                                         Pawn p = this.farThreats.RandomElement();
                                         if (TM_Calc.FindAllPawnsAround(this.Pawn.Map, p.Position, 5, p.Faction, false).Count > 3)
@@ -519,7 +519,7 @@ namespace TorannMagic
                                     if(Rand.Chance(.2f) && this.NextAoEAttack < Find.TickManager.TicksGame)
                                     {
                                         Pawn p = this.farThreats.RandomElement();
-                                        if ((p.Position - this.Pawn.Position).LengthHorizontal < this.Props.maxRangeForFarThreat * 2f)
+                                        if ((p.Position - this.Pawn.Position).LengthHorizontal < this.Props.maxRangeForFarThreat * 2f && TM_Calc.HasLoSFromTo(this.Pawn.Position, this.attackTarget, this.Pawn, 0, 60))
                                         {
                                             List<Pawn> threatPawns = TM_Calc.FindAllPawnsAround(this.Pawn.Map, p.Position, 5, p.Faction, true);
                                             if (threatPawns != null && threatPawns.Count > 3)

@@ -117,6 +117,7 @@ namespace TorannMagic
 
         public override void Tick()
         {
+            base.Tick();
             if (Find.TickManager.TicksGame % 120 == 0 && this.CapacitorIsOn)
             {
                 List<Pawn> mapPawns = this.Map.mapPawns.AllPawnsSpawned;

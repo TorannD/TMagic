@@ -160,11 +160,11 @@
 		<maxRangeForCloseThreat>5</maxRangeForCloseThreat>
 		<maxRangeForFarThreat>60</maxRangeForFarThreat>
 		<chargeCooldownTicks>1480</chargeCooldownTicks>
-		<rangedCooldownTicks>750</rangedCooldownTicks>
-		<rangedBurstCount>3</rangedBurstCount>
-		<rangedTicksBetweenBursts>5</rangedTicksBetweenBursts>
+		<rangedCooldownTicks>550</rangedCooldownTicks>
+		<rangedBurstCount>4</rangedBurstCount>
+		<rangedTicksBetweenBursts>4</rangedTicksBetweenBursts>
 		<rangedAttackDelay>150</rangedAttackDelay>
-		<aoeCooldownTicks>400</aoeCooldownTicks>
+		<aoeCooldownTicks>650</aoeCooldownTicks>
 		<aoeAttackDelay>130</aoeAttackDelay>
 		<knockbackCooldownTicks>1500</knockbackCooldownTicks>
 		<knockbackAttackDelay>240</knockbackAttackDelay>
@@ -205,7 +205,7 @@
   <ThingDef ParentName="TM_Skeletal_Base" Name="TM_GiantSkeleton">
     <defName>TM_GiantSkeletonR</defName>
     <label>Giant skeleton</label>
-    <description>An enormous skeleton; this abomination was either created from the bones of an enormous creature or by combining the bones of lesser creatures. This skeleton is animated by necromancy and embodied by a vengeful spirit that has wandered the world for ages - long enough to develop a simple, single-minded hate for life.</description>
+    <description>An enormous skeleton; this abomination was either created from the bones of a giant creature or by combining the bones of lesser creatures. This skeleton is animated by necromancy and embodied by a vengeful spirit that has wandered the world for ages - long enough to develop a simple, single-minded hate for life.</description>
     <statBases>
       <MoveSpeed>3.5</MoveSpeed>
       <ArmorRating_Blunt>0.3</ArmorRating_Blunt>
