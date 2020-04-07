@@ -203,7 +203,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 					<PsychicSensitivity>0.10</PsychicSensitivity>
 					<MentalBreakThreshold>-0.03</MentalBreakThreshold>
 					<ComfyTemperatureMax>+3</ComfyTemperatureMax>
-					<ComfyTemperatureMin>+3</ComfyTemperatureMin>
+					<ComfyTemperatureMin>-3</ComfyTemperatureMin>
                 </statOffsets>
 		  </li>
 		</degreeDatas>
@@ -968,7 +968,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 					<AimingDelayFactor>-0.10</AimingDelayFactor>
 					<MeleeHitChance>5</MeleeHitChance>
 					<ComfyTemperatureMax>+25</ComfyTemperatureMax>
-					<ComfyTemperatureMin>-5</ComfyTemperatureMin>
+					<ComfyTemperatureMin>+5</ComfyTemperatureMin>
                 </statOffsets>
 		  </li>
 		</degreeDatas>
@@ -1487,7 +1487,7 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 					<PsychicSensitivity>-0.10</PsychicSensitivity>
 					<MentalBreakThreshold>-0.03</MentalBreakThreshold>
 					<ComfyTemperatureMax>+3</ComfyTemperatureMax>
-					<ComfyTemperatureMin>+3</ComfyTemperatureMin>
+					<ComfyTemperatureMin>-3</ComfyTemperatureMin>
                 </statOffsets>
 		  </li>
 		</degreeDatas>

@@ -1000,6 +1000,7 @@ namespace TorannMagic
 
         //Apparel layers
         public static ApparelLayerDef TM_Cloak;
+        public static ApparelLayerDef TM_Artifact;
 
         //Enchantments
         public static HediffDef TM_HediffEnchantment_maxMP;
@@ -1112,6 +1113,9 @@ namespace TorannMagic
 
         //NeedDefs
         public static NeedDef TM_Travel;
+
+        //Stats
+        public static StatDef ArmorRating_Alignment;
 
         //CustomDefs
         public static TM_CustomDef TM_CustomDef;

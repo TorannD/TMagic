@@ -1547,11 +1547,11 @@ Level 3: adds a 15% boost to stamina and mana regeneration</TM_ProvisionerAura_v
 <TM_CommanderAura_pwr_desc>Improves effect of Commander's Aura and reduces the amount of time between motivational speeches by 10%.</TM_CommanderAura_pwr_desc>
 <TM_CommanderAura_eff_desc>Reduces energy activation cost and upkeep cost by 10% per skill point.</TM_CommanderAura_eff_desc>
 <TM_CommanderAura_ver_desc>Increases the reach of Commander's Aura by 2 cells per skill point; base reach is 15c. Increases duration of aura effect on pawns by 10% per skill point; base duration is .5hrs (game time).</TM_CommanderAura_ver_desc>
-<TM_StayAlert_pwr_desc>Increases the amount of rest gained by each affected pawn by 20% per skill level and extends the duration pawns stay alert.</TM_StayAlert_pwr_desc>
+<TM_StayAlert_pwr_desc>Increases the amount of rest gained by each affected pawn by 10% per skill level and extends the duration pawns stay alert. This is a flat bonus, unaffected by the number of pawns receiving the order.</TM_StayAlert_pwr_desc>
 <TM_StayAlert_eff_desc>Reduces the stamina required to order Stay Alert! by 10% per skill level.</TM_StayAlert_eff_desc>
-<TM_MoveOut_pwr_desc>Increases the movement bonus by 12% per skill level.</TM_MoveOut_pwr_desc>
+<TM_MoveOut_pwr_desc>Increases the movement bonus by 10% per skill level. This is a flat bonus, unaffected by the number of pawns receiving the order.</TM_MoveOut_pwr_desc>
 <TM_MoveOut_eff_desc>Reduces the stamina required to order Move Out! by 10% per skill level.</TM_MoveOut_eff_desc>
-<TM_HoldTheLine_pwr_desc>Increases the effectiveness of Hold The Line and increases the amount each affected pawn is shielded.</TM_HoldTheLine_pwr_desc>
+<TM_HoldTheLine_pwr_desc>Increases the effectiveness of Hold The Line and increases the amount each affected pawn is shielded. This is a flat bonus, unaffected by the number of pawns receiving the order.</TM_HoldTheLine_pwr_desc>
 <TM_HoldTheLine_eff_desc>Reduces the stamina required to order Hold The Line! by 10% per skill level.</TM_HoldTheLine_eff_desc>
 
 <TM_ProvisionerAura_pwr>Adept Accounting</TM_ProvisionerAura_pwr>

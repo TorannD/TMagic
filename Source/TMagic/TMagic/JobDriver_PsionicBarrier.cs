@@ -160,7 +160,7 @@ namespace TorannMagic
                             {
                                 this.pawn.GetComp<CompAbilityUserMight>().Stamina.CurLevel -= (projectileDamage / 500);
                             }
-                            if(cellList[j].def.projectile.explosionRadius > 0)
+                            if(cellList[j].def.projectile.explosionRadius > 0 && cellList[j].def != TorannMagicDefOf.Projectile_FogOfTorment)
                             {
                                 GenExplosion.DoExplosion(barrierCells[i], this.pawn.Map, cellList[j].def.projectile.explosionRadius, cellList[j].def.projectile.damageDef, this.pawn, (int)projectileDamage, cellList[j].def.projectile.GetArmorPenetration(1, null), cellList[j].def.projectile.soundExplode,
                                     null, cellList[j].def, null, cellList[j].def.projectile.postExplosionSpawnThingDef, cellList[j].def.projectile.postExplosionSpawnChance, cellList[j].def.projectile.postExplosionSpawnThingCount, cellList[j].def.projectile.applyDamageToExplosionCellsNeighbors,

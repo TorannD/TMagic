@@ -1562,7 +1562,7 @@ namespace TorannMagic
                                 }
                                 else if (this.Mana.CurLevel > (this.Mana.MaxLevel + .01f))
                                 {
-                                    this.Mana.CurLevel -= .01f;
+                                    this.Mana.CurLevel -= .005f;
                                 }
                                 else if(this.Mana.CurLevel > (this.Mana.MaxLevel))
                                 {

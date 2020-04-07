@@ -9,6 +9,8 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using AbilityUser;
+using TorannMagic.Enchantment;
+using System.Text;
 
 namespace TorannMagic
 {
@@ -1701,6 +1703,18 @@ namespace TorannMagic
             return cell;
         }
 
+        public static float GetRelationsFactor(Pawn p1, Pawn p2)
+        {
+            float factor = 0f;
+            if(p1.relations != null && p2.relations != null)
+            {               
+                float p1R = p1.relations.OpinionOf(p2);
+                float p2R = p2.relations.OpinionOf(p1);
+                factor = (p1R + p2R) / 100; // -2 to 2
+            }
+            return factor;
+        }
+
         public static TMAbilityDef GetCopiedMightAbility(Pawn targetPawn, Pawn caster)
         {
             CompAbilityUserMight mightPawn = targetPawn.GetComp<CompAbilityUserMight>();
@@ -3061,6 +3075,97 @@ namespace TorannMagic
             //    ), MessageTypeDefOf.RejectInput);
             //}
             return result;
+        }
+
+        public static string GetEnchantmentsString(Thing item)
+        {
+            CompEnchantedItem enchantedItem = ThingCompUtility.TryGetComp<CompEnchantedItem>(item);
+            if (enchantedItem != null)
+            {
+                StringBuilder stringBuilder = new StringBuilder();
+                string rectLabel = "Enchantments:";
+                stringBuilder.Append(rectLabel);
+                if (enchantedItem.maxMP != 0)
+                {
+                    stringBuilder.AppendInNewLine(enchantedItem.MaxMPLabel );
+                }
+                if (enchantedItem.mpCost != 0)
+                {
+                    stringBuilder.AppendInNewLine(enchantedItem.MPCostLabel );
+                }
+                if (enchantedItem.mpRegenRate != 0)
+                {
+                    stringBuilder.AppendInNewLine(enchantedItem.MPRegenRateLabel );
+                }
+                if (enchantedItem.coolDown != 0)
+                {
+                    stringBuilder.AppendInNewLine(enchantedItem.CoolDownLabel);
+                }
+                if (enchantedItem.xpGain != 0)
+                {
+                    stringBuilder.AppendInNewLine(enchantedItem.XPGainLabel);
+                }
+                if (enchantedItem.arcaneRes != 0)
+                {
+                    stringBuilder.AppendInNewLine(enchantedItem.ArcaneResLabel );
+                }
+                if (enchantedItem.arcaneDmg != 0)
+                {
+                    stringBuilder.AppendInNewLine(enchantedItem.ArcaneDmgLabel);
+                }
+                if (enchantedItem.arcaneSpectre != false)
+                {
+                    stringBuilder.AppendInNewLine(enchantedItem.ArcaneSpectreLabel);
+                }
+                if (enchantedItem.phantomShift != false)
+                {
+                    stringBuilder.AppendInNewLine(enchantedItem.PhantomShiftLabel);
+                }
+                if (enchantedItem.hediff != null)
+                {
+                    stringBuilder.AppendInNewLine(enchantedItem.HediffLabel);
+                }
+                if (enchantedItem.MagicAbilities != null && enchantedItem.MagicAbilities.Count > 0)
+                {
+                    StringBuilder stringBuilder2 = new StringBuilder();
+                    GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.skillTier);
+                    string abilityLabels = "Abilities: ";
+                    stringBuilder2.Append(abilityLabels);
+                    for (int i = 0; i < enchantedItem.MagicAbilities.Count; i++)
+                    {
+                        if (i + 1 < enchantedItem.MagicAbilities.Count)
+                        {
+                            stringBuilder2.Append(enchantedItem.MagicAbilities[i].LabelCap + ", ");
+                        }
+                        else
+                        {
+                            stringBuilder2.Append(enchantedItem.MagicAbilities[i].LabelCap);
+                        }
+                    }
+                    stringBuilder.AppendInNewLine(stringBuilder2.ToString());
+                }
+                if (enchantedItem.SoulOrbTraits != null && enchantedItem.SoulOrbTraits.Count > 0)
+                {
+                    StringBuilder stringBuilder3 = new StringBuilder();
+                    string abilityLabels = "Absorbed Traits: ";
+                    stringBuilder3.Append(abilityLabels);
+                    for (int i = 0; i < enchantedItem.SoulOrbTraits.Count; i++)
+                    {
+                        if (i + 1 < enchantedItem.SoulOrbTraits.Count)
+                        {
+                            stringBuilder3.Append(enchantedItem.SoulOrbTraits[i].LabelCap + ", ");
+                        }
+                        else
+                        {
+                            stringBuilder3.Append(enchantedItem.SoulOrbTraits[i].LabelCap);
+                        }
+                    }
+                    rectLabel = stringBuilder3.ToString();
+                    stringBuilder.AppendInNewLine(rectLabel);
+                }
+                return stringBuilder.ToString();
+            }
+            return "";
         }
     }
 }

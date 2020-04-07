@@ -49,10 +49,12 @@ namespace TorannMagic
         public float paracyteCountReduction = 0;
         private int lastParacyteCheck = 0;
 
+        protected new float curLevelInt;
+
         public override float CurLevel
         {            
-            get => base.CurLevel;
-            set => base.CurLevel = Mathf.Clamp(value, 0f, 2f*this.pawn.GetComp<CompAbilityUserMagic>().maxMP);            
+            get => curLevelInt;
+            set => curLevelInt = Mathf.Clamp(value, 0f, 2f*this.pawn.GetComp<CompAbilityUserMagic>().maxMP);            
         }
 
         public override float MaxLevel => this.pawn.GetComp<CompAbilityUserMagic>().maxMP;
@@ -486,10 +488,10 @@ namespace TorannMagic
 
                         this.lastGainPct = amount;
 
-                        comp.Mana.CurLevel = Mathf.Max(comp.Mana.curLevelInt + amount, 0f);
+                        comp.Mana.CurLevel = Mathf.Max(comp.Mana.CurLevel + amount, 0f);
                         //comp.Mana.curLevelInt = Mathf.Clamp(comp.Mana.curLevelInt += amount, 0f, this.MaxLevel);
 
-                        lastNeed = this.curLevelInt;
+                        lastNeed = this.CurLevel;
                         this.lastGainTick = Find.TickManager.TicksGame;
                     }
                 }
@@ -519,7 +521,7 @@ namespace TorannMagic
 
         public void UseMagicPower(float amount)
         {
-            this.curLevelInt = Mathf.Clamp(this.curLevelInt - amount, 0f, this.pawn.GetComp<CompAbilityUserMagic>().maxMP);
+            this.curLevelInt = Mathf.Clamp(this.curLevelInt - amount, 0f, 2f*this.pawn.GetComp<CompAbilityUserMagic>().maxMP);
             if ((amount) > .25f && (amount) < .45f)
             {
                 //0.0 to 0.2 max

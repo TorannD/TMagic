@@ -29,12 +29,12 @@ namespace TorannMagic.Thoughts
             CompAbilityUserMagic compInit = initiator.GetComp<CompAbilityUserMagic>();
             CompAbilityUserMagic compRec = recipient.GetComp<CompAbilityUserMagic>();
             bool flag = !initiator.IsColonist || !recipient.IsColonist;
-            float result;
+            float result = 0f;
             if (flag)
             {
                 result = 0f;
             }
-            else
+            else if(compInit != null && compRec != null)
             {
                 bool flag2 = !compInit.IsMagicUser;
                 if (flag2)
@@ -50,13 +50,13 @@ namespace TorannMagic.Thoughts
                     }
                     else
                     {
-                        if (initiator.jobs.curDriver.asleep)
+                        if (initiator.jobs != null && initiator.jobs.curDriver != null && initiator.jobs.curDriver.asleep)
                         {
                             result = 0f;
                         }
                         else
                         {
-                            if (recipient.jobs.curDriver.asleep)
+                            if (recipient.jobs != null && recipient.jobs.curDriver != null && recipient.jobs.curDriver.asleep)
                             {
                                 result = 0f;
                             }
@@ -70,10 +70,10 @@ namespace TorannMagic.Thoughts
                                 }
                                 else
                                 {
-                                    bool flag5 = initiator.relations.OpinionOf(recipient) > 0 || recipient.relations.OpinionOf(initiator) > 0;
+                                    bool flag5 = (initiator.relations !=  null && initiator.relations.OpinionOf(recipient) > 0) || (recipient.relations != null && recipient.relations.OpinionOf(initiator) > 0);
                                     if (flag5)
                                     {
-                                        result = Rand.Range(0.8f, 1f);
+                                        result = Rand.Range(0.6f, 0.8f);
                                     }
                                     else
                                     {

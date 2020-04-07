@@ -287,6 +287,7 @@ namespace TorannMagic
                 newThingDef.equipmentType = EquipmentType.Primary;
                 newThingDef.uiIcon = thing.def.uiIcon;
                 newThingDef.soundInteract = thing.def.soundInteract;
+                newThingDef.equippedAngleOffset = thing.def.equippedAngleOffset;
 
                 newThingDef.SetStatBaseValue(StatDefOf.RangedWeapon_DamageMultiplier, thing.GetStatValue(StatDefOf.RangedWeapon_DamageMultiplier) * (1f + (.03f * pwrVal)));
                 newThingDef.SetStatBaseValue(StatDefOf.RangedWeapon_Cooldown, thing.GetStatValue(StatDefOf.RangedWeapon_Cooldown) * (1 - .025f * pwrVal));
@@ -387,6 +388,7 @@ namespace TorannMagic
                 newThingDef.equipmentType = EquipmentType.Primary;
                 newThingDef.uiIcon = thing.def.uiIcon;
                 newThingDef.soundInteract = thing.def.soundInteract;
+                newThingDef.equippedAngleOffset = thing.def.equippedAngleOffset;
 
                 newThingDef.SetStatBaseValue(StatDefOf.RangedWeapon_DamageMultiplier, thing.GetStatValue(StatDefOf.RangedWeapon_DamageMultiplier) * (1f + (.02f * pwrVal)));
                 newThingDef.SetStatBaseValue(StatDefOf.RangedWeapon_Cooldown, thing.GetStatValue(StatDefOf.RangedWeapon_Cooldown) * (1 - .01f * pwrVal));
@@ -495,6 +497,7 @@ namespace TorannMagic
                 newThingDef.graphicData.texPath = thing.def.graphicData.texPath;
                 newThingDef.uiIcon = thing.def.uiIcon;
                 newThingDef.soundInteract = thing.def.soundInteract;
+                newThingDef.equippedAngleOffset = thing.def.equippedAngleOffset;
 
                 newThingDef.SetStatBaseValue(StatDefOf.RangedWeapon_DamageMultiplier, thing.GetStatValue(StatDefOf.RangedWeapon_DamageMultiplier) * (1f + (.02f * pwrVal)));
                 newThingDef.SetStatBaseValue(StatDefOf.RangedWeapon_Cooldown, thing.GetStatValue(StatDefOf.RangedWeapon_Cooldown) * (1 - .03f * pwrVal));

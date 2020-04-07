@@ -34,7 +34,7 @@
 	<description>Side effects of poison.</description>
 	<makesSickThought>true</makesSickThought>
 	<displayWound>false</displayWound>
-    <lethalSeverity>10</lethalSeverity>
+    <maxSeverity>5</maxSeverity>
 	<isBad>true</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">

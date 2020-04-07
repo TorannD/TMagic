@@ -864,22 +864,26 @@ namespace TorannMagic
                                                     {
                                                         if (__instance.CanFireNow(parms, false) && !ModOptions.Constants.GetBypassPrediction() && Rand.Chance(.25f + (.05f * ver.level))) //up to 40% chance to predict, per chronomancer
                                                         {
-                                                            //Log.Message("prediction is " + __instance.def.defName + " and can fire now: " + __instance.CanFireNow(parms, false));
-                                                            int ticksTillIncident = Mathf.RoundToInt((Rand.Range(1800, 3600) * (1 + (.15f * ver.level))));  // from .72 to 1.44 hours, plus bonus (1.05 - 2.1)
-                                                                                                                                                             //Log.Message("pushing " + __instance.def.defName + " to iq for " + ticksTillIncident  + " ticks");
-                                                            comp.predictionIncidentDef = __instance.def;
-                                                            comp.predictionTick = Find.TickManager.TicksGame + ticksTillIncident;
-                                                            QueuedIncident iq = new QueuedIncident(new FiringIncident(__instance.def, null, parms), comp.predictionTick);
-                                                            Find.Storyteller.incidentQueue.Add(iq);
-                                                            string labelText = "TM_PredictionLetter".Translate(__instance.def.label);
-                                                            string text = "TM_PredictionText".Translate(mapPawns[j].LabelShort, __instance.def.label, Mathf.RoundToInt(ticksTillIncident / 2500));
-                                                            //Log.Message("attempting to push letter");
-                                                            Find.LetterStack.ReceiveLetter(labelText, text, LetterDefOf.NeutralEvent, null);
-                                                            int xpNum = Rand.Range(60, 120);
-                                                            comp.MagicUserXP += xpNum;
-                                                            MoteMaker.ThrowText(comp.Pawn.DrawPos, comp.Pawn.Map, "XP +" + xpNum, -1f);
-                                                            __result = true;
-                                                            return false;
+                                                            if (__instance.def.category != null && (__instance.def.category == IncidentCategoryDefOf.ThreatBig || __instance.def.category == IncidentCategoryDefOf.ThreatSmall || __instance.def.category == IncidentCategoryDefOf.DeepDrillInfestation ||
+                                                                __instance.def.category == IncidentCategoryDefOf.DiseaseAnimal || __instance.def.category == IncidentCategoryDefOf.DiseaseHuman || __instance.def.category == IncidentCategoryDefOf.Misc))
+                                                            {
+                                                                //Log.Message("prediction is " + __instance.def.defName + " and can fire now: " + __instance.CanFireNow(parms, false));
+                                                                int ticksTillIncident = Mathf.RoundToInt((Rand.Range(1800, 3600) * (1 + (.15f * ver.level))));  // from .72 to 1.44 hours, plus bonus (1.05 - 2.1)
+                                                                                                                                                                //Log.Message("pushing " + __instance.def.defName + " to iq for " + ticksTillIncident  + " ticks");
+                                                                comp.predictionIncidentDef = __instance.def;
+                                                                comp.predictionTick = Find.TickManager.TicksGame + ticksTillIncident;
+                                                                QueuedIncident iq = new QueuedIncident(new FiringIncident(__instance.def, null, parms), comp.predictionTick);
+                                                                Find.Storyteller.incidentQueue.Add(iq);
+                                                                string labelText = "TM_PredictionLetter".Translate(__instance.def.label);
+                                                                string text = "TM_PredictionText".Translate(mapPawns[j].LabelShort, __instance.def.label, Mathf.RoundToInt(ticksTillIncident / 2500));
+                                                                //Log.Message("attempting to push letter");
+                                                                Find.LetterStack.ReceiveLetter(labelText, text, LetterDefOf.NeutralEvent, null);
+                                                                int xpNum = Rand.Range(60, 120);
+                                                                comp.MagicUserXP += xpNum;
+                                                                MoteMaker.ThrowText(comp.Pawn.DrawPos, comp.Pawn.Map, "XP +" + xpNum, -1f);
+                                                                __result = true;
+                                                                return false;
+                                                            }
                                                         }
                                                     }
                                                     catch (NullReferenceException ex)

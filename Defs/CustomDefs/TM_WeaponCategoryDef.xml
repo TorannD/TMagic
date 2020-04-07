@@ -10,6 +10,7 @@
 		  <li>Gun_Autopistol</li>
 		  <li>Gun_MachinePistol</li>
 		  <li>Gun_HeavySMG</li>
+		  <li>Gun_SMG</li>
 		  <li>GD_MSST</li>
 		  <li>GD_MSSS</li>
 		  <li>GD_MSSH</li>
@@ -46,6 +47,7 @@
 		  <li>Gun_BoltActionRifle</li>		  
 		  <li>Gun_LMG</li>
 		  <li>Gun_AssaultRifle</li>
+		  <li>Gun_AssaultCharger</li>
 		  <li>Gun_SniperRifle</li>
 		  <li>Gun_ChargeLance</li>
 		  <li>Gun_ChargeBlasterHeavy</li>
@@ -55,6 +57,7 @@
 		  <li>GD_ModularDMR</li>
 		  <li>GD_HybridRifle</li>		  
 		  <li>JI_Hrunting</li>
+		  <li>SmartMG</li>
 		  <li>TE_KineticRifle</li>
 		  <li>YP_SeoLi</li>
 		  <li>YP_SangAe</li>
