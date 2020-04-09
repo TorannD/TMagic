@@ -13,7 +13,7 @@ namespace TorannMagic
         public TargetingParameters targetingParams;
 
         public override void ProcessInput(Event ev)
-        {
+        {            
             base.ProcessInput(ev);
             SoundDefOf.Tick_Tiny.PlayOneShotOnCamera();
             Find.Targeter.BeginTargeting(targetingParams, delegate (LocalTargetInfo target)

@@ -7,7 +7,7 @@ using RimWorld;
 
 namespace TorannMagic
 {
-    public class ItemCollectionGenerator_Internal_Arcane
+    public static class ItemCollectionGenerator_Internal_Arcane
     {
         private const float GemstoneChance = 0.03f;
         private const float LuciferiumChance = 0.2f;
@@ -25,11 +25,12 @@ namespace TorannMagic
         private static readonly IntRange SpellCountRange = new IntRange(1, 2);
         private static readonly IntRange SkillCountRange = new IntRange(1, 2);
 
-        private float collectiveMarketValue = 0;
+        private static float collectiveMarketValue = 0;
 
-        public List<Thing> Generate(int totalMarketValue, List<Thing> outThings)
+        public static List<Thing> Generate(int totalMarketValue)
         {
-            
+            List<Thing> outThings = new List<Thing>();
+            outThings.Clear();
             for (int j = 0; j < 10; j++)
             {
                 //Torn Scripts

@@ -247,6 +247,29 @@ namespace TorannMagic
 
         }
 
+        [HarmonyPatch(typeof(Reward_Items), "InitFromValue", null)]
+        public class Reward_Items_TMQuests_Patch
+        {
+            private static bool Prefix(Reward_Items __instance, float rewardValue, RewardsGeneratorParams parms, out float valueActuallyUsed)
+            {
+                float num = 0f;
+                if (parms.chosenPawnSignal != null && parms.chosenPawnSignal == "TM_ArcaneRewards")
+                {
+                    int value = Mathf.RoundToInt(rewardValue * Rand.Range(0.7f, 1.3f));
+                    __instance.items.Clear();
+                    __instance.items.AddRange(ItemCollectionGenerator_Internal_Arcane.Generate(value));                    
+                    for (int i = 0; i < __instance.items.Count; i++)
+                    {
+                        num += __instance.items[i].MarketValue * (float)__instance.items[i].stackCount;
+                    }
+                    valueActuallyUsed = num;
+                    return false;
+                }
+                valueActuallyUsed = num;
+                return true;
+            }
+        }
+
         public static void AreaManager_AddMagicZonesToStartingAreas(AreaManager __instance)
         {
             TM_Calc.GetSpriteArea(__instance.map);

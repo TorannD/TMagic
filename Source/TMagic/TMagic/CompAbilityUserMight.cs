@@ -2662,10 +2662,10 @@ namespace TorannMagic
                     {
                         if (current.def == TorannMagicDefOf.TM_HediffEnchantment_arcaneRes)
                         {
-                            if (dinfo.Def.defName.Contains("TM_") || dinfo.Def.defName == "FrostRay" || dinfo.Def.defName == "Snowball" || dinfo.Def.defName == "Iceshard" || dinfo.Def.defName == "Firebolt")
+                            if ((dinfo.Def.armorCategory != null && (dinfo.Def.armorCategory == TorannMagicDefOf.Dark || dinfo.Def.armorCategory == TorannMagicDefOf.Light)) || dinfo.Def.defName.Contains("TM_") || dinfo.Def.defName == "FrostRay" || dinfo.Def.defName == "Snowball" || dinfo.Def.defName == "Iceshard" || dinfo.Def.defName == "Firebolt")
                             {
                                 absorbed = true;
-                                int actualDmg = Mathf.RoundToInt(dinfo.Amount - (dinfo.Amount * arcaneRes));
+                                int actualDmg = Mathf.RoundToInt(dinfo.Amount / arcaneRes);
                                 resMitigationDelay = this.age + 10;
                                 dinfo.SetAmount(actualDmg);
                                 abilityUser.TakeDamage(dinfo);

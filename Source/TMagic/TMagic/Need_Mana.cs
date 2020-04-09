@@ -59,6 +59,12 @@ namespace TorannMagic
 
         public override float MaxLevel => this.pawn.GetComp<CompAbilityUserMagic>().maxMP;
 
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            Scribe_Values.Look(ref curLevelInt, "curLevelInt", 1f);
+        }
+
         public ManaPoolCategory CurCategory
         {
             get
@@ -159,7 +165,27 @@ namespace TorannMagic
             if (this.MaxLevel > 1.75f)
             {
                 this.threshPercents.Add((1.75f / this.MaxLevel));
-            }            
+            }
+            if (this.MaxLevel > 2f)
+            {
+                this.threshPercents.Add((2f / this.MaxLevel));
+            }
+            if (this.MaxLevel > 2.5f)
+            {
+                this.threshPercents.Add((2.5f / this.MaxLevel));
+            }
+            if (this.MaxLevel > 3f)
+            {
+                this.threshPercents.Add((3f / this.MaxLevel));
+            }
+            if (this.MaxLevel > 4f)
+            {
+                this.threshPercents.Add((4f / this.MaxLevel));
+            }
+            if (this.MaxLevel > 5f)
+            {
+                this.threshPercents.Add((5f / this.MaxLevel));
+            }
         }
 
         public override void SetInitialLevel()
@@ -168,7 +194,7 @@ namespace TorannMagic
             {
                 this.def.showOnNeedList = false;
             }
-            this.CurLevel = 0.7f;
+            this.CurLevel = 0.8f;
         }
 
         public void GainNeed(float amount)
@@ -210,7 +236,7 @@ namespace TorannMagic
                         {
                             drainEnergyHD = 0;
                         }
-
+                        
                         //Syrrium modifier
                         if (this.pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_SyrriumSenseHD"), false))
                         {
@@ -226,7 +252,7 @@ namespace TorannMagic
                         {
                             this.drainSyrrium = 0;
                         }                        
-
+                        
                         //Mana drain modifier
                         if (pawn.Map.GameConditionManager.ConditionIsActive(TorannMagicDefOf.ManaDrain))
                         {

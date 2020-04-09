@@ -37,10 +37,7 @@ namespace TorannMagic
                     Thing tome = ThingMaker.MakeThing(TM_Data.MageBookList().RandomElement(), null);
                     tome.stackCount = 1;
                     rewards.Add(tome);
-                    ItemCollectionGenerator_Internal_Arcane icg = new ItemCollectionGenerator_Internal_Arcane();
-                    List<Thing> icgThings = new List<Thing>();
-                    icgThings = icg.Generate(2000, icgThings);
-                    rewards.AddRange(icgThings);
+                    rewards.AddRange(ItemCollectionGenerator_Internal_Arcane.Generate(2000));
                 }
                 for (int i = 0; i < rewards.Count; i++)
                 {

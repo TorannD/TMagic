@@ -1117,6 +1117,10 @@ namespace TorannMagic
         //Stats
         public static StatDef ArmorRating_Alignment;
 
+        //Armor Categories
+        public static DamageArmorCategoryDef Dark;
+        public static DamageArmorCategoryDef Light;
+
         //CustomDefs
         public static TM_CustomDef TM_CustomDef;
 
