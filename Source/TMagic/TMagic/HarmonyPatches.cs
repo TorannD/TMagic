@@ -844,47 +844,48 @@ namespace TorannMagic
             {
                 if (__instance != null && __instance.def.defName != "VisitorGroup" && __instance.def.defName != "VisitorGroupMax")
                 {
-                    List<Map> allMaps = Find.Maps;
-                    if (allMaps != null && allMaps.Count > 0)
+                    try
                     {
-                        for (int i = 0; i < allMaps.Count; i++)
+                        List<Map> allMaps = Find.Maps;
+                        if (allMaps != null && allMaps.Count > 0)
                         {
-                            if (allMaps[i].Tile == parms.target.Tile)
+                            for (int i = 0; i < allMaps.Count; i++)
                             {
-                                List<Pawn> mapPawns = allMaps[i].mapPawns.AllPawnsSpawned;
-                                if (mapPawns != null && mapPawns.Count > 0)
+                                if (parms.target != null && allMaps[i].Tile == parms.target.Tile)
                                 {
-                                    for (int j = 0; j < mapPawns.Count; j++)
+                                    List<Pawn> mapPawns = allMaps[i].mapPawns.AllPawnsSpawned;
+                                    if (mapPawns != null && mapPawns.Count > 0)
                                     {
-                                        if (mapPawns[j].health != null && mapPawns[j].health.hediffSet != null && mapPawns[j].health.hediffSet.HasHediff(TorannMagicDefOf.TM_PredictionHD, false) && mapPawns[j].IsColonist)
+                                        for (int j = 0; j < mapPawns.Count; j++)
                                         {
-                                            CompAbilityUserMagic comp = mapPawns[j].GetComp<CompAbilityUserMagic>();
-                                            if (comp != null && comp.MagicData != null)
+                                            if (mapPawns[j].health != null && mapPawns[j].health.hediffSet != null && mapPawns[j].health.hediffSet.HasHediff(TorannMagicDefOf.TM_PredictionHD, false) && mapPawns[j].IsColonist)
                                             {
-                                                MagicPowerSkill ver = comp.MagicData.MagicPowerSkill_Prediction.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Prediction_ver");
-                                                if (comp.predictionIncidentDef != null)
+                                                CompAbilityUserMagic comp = mapPawns[j].GetComp<CompAbilityUserMagic>();
+                                                if (comp != null && comp.MagicData != null)
                                                 {
-                                                    try
+                                                    MagicPowerSkill ver = comp.MagicData.MagicPowerSkill_Prediction.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Prediction_ver");
+                                                    if (comp.predictionIncidentDef != null)
                                                     {
-                                                        //Log.Message("attempt to execute prediction " + comp.predictionIncidentDef.defName);
-                                                        if (comp.predictionIncidentDef == __instance.def)
+                                                        try
                                                         {
-                                                            //Log.Message("executing prediction" + __instance.def.defName);
+                                                            //Log.Message("attempt to execute prediction " + comp.predictionIncidentDef.defName);
+                                                            if (comp.predictionIncidentDef == __instance.def)
+                                                            {
+                                                                //Log.Message("executing prediction" + __instance.def.defName);
+                                                                parms.forced = true;
+                                                                comp.predictionIncidentDef = null;
+                                                                return true;
+                                                            }
+                                                        }
+                                                        catch (NullReferenceException ex)
+                                                        {
                                                             parms.forced = true;
-                                                            comp.predictionIncidentDef = null;
                                                             return true;
                                                         }
                                                     }
-                                                    catch (NullReferenceException ex)
+                                                    else
                                                     {
-                                                        parms.forced = true;
-                                                        return true;
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    try
-                                                    {
+                                                    
                                                         if (__instance.CanFireNow(parms, false) && !ModOptions.Constants.GetBypassPrediction() && Rand.Chance(.25f + (.05f * ver.level))) //up to 40% chance to predict, per chronomancer
                                                         {
                                                             if (__instance.def.category != null && (__instance.def.category == IncidentCategoryDefOf.ThreatBig || __instance.def.category == IncidentCategoryDefOf.ThreatSmall || __instance.def.category == IncidentCategoryDefOf.DeepDrillInfestation ||
@@ -908,10 +909,7 @@ namespace TorannMagic
                                                                 return false;
                                                             }
                                                         }
-                                                    }
-                                                    catch (NullReferenceException ex)
-                                                    {
-                                                        return true;
+
                                                     }
                                                 }
                                             }
@@ -920,6 +918,10 @@ namespace TorannMagic
                                 }
                             }
                         }
+                    }
+                    catch (NullReferenceException ex)
+                    {
+                        return true;
                     }
                 }
                 return true;
@@ -2209,98 +2211,30 @@ namespace TorannMagic
                 Pawn pawn = (Pawn)CheckForStateChange_Patch.pawn.GetValue(__instance);
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
 
-
                 bool flag = pawn != null && dinfo.HasValue && hediff != null;
                 if (flag)
                 {
                     if (pawn != null && !pawn.IsColonist && pawn.RaceProps.Humanlike)
                     {
-
-                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer) || pawn.story.traits.HasTrait(TorannMagicDefOf.BloodMage) || pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter) || pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Warlock) || pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus) || pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) || pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin) || pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner) || pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich) || pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost))
+                        if (pawn.Downed && !pawn.Dead && !pawn.IsPrisoner)
                         {
-                            if (pawn.Downed && !pawn.Dead && !pawn.IsPrisoner)
+                            if (pawn.Map == null)
                             {
-                                float chc = 0f;
-                                if (settingsRef.AICasting)
+                                Log.Warning("Tried to do death retaliation in a null map.");
+                                return;
+                            }
+                            float chc = 1f * settingsRef.deathRetaliationChance;
+                            if (Rand.Chance(chc))
+                            {
+                                CompAbilityUserMagic compMagic = pawn.GetComp<CompAbilityUserMagic>();
+                                CompAbilityUserMight compMight = pawn.GetComp<CompAbilityUserMight>();
+                                if (compMagic != null && compMagic.IsMagicUser)
                                 {
-                                    chc = .4f;
-                                    if (settingsRef.AIHardMode)
-                                    {
-                                        chc = 1f;
-                                    }
+                                    compMagic.canDeathRetaliate = true;                                    
                                 }
-                                if (Rand.Chance(chc))
+                                else if(compMight != null && compMight.IsMightUser)
                                 {
-                                    IntVec3 curCell;
-                                    Pawn victim = new Pawn();
-
-                                    float radius = 2f;
-                                    if (settingsRef.AIHardMode)
-                                    {
-                                        radius = settingsRef.deathExplosionRadius * 2;
-                                    }
-                                    else
-                                    {
-                                        radius = settingsRef.deathExplosionRadius;
-                                    }
-
-                                    if (pawn.Map == null || !pawn.Position.IsValid)
-                                    {
-                                        Log.Warning("Tried to do explosion in a null map.");
-                                        return;
-                                    }
-
-                                    Faction faction = pawn.Faction;
-                                    Pawn p = new Pawn();
-                                    p = pawn;
-                                    Map map = p.Map;
-                                    GenExplosion.DoExplosion(p.Position, p.Map, 0f, DamageDefOf.Burn, p as Thing, 0, 0, SoundDefOf.Thunder_OnMap, null, null, null, null, 0f, 0, false, null, 0f, 0, 0.0f, false);
-                                    Effecter deathEffect = TorannMagicDefOf.TM_DeathExplosion.Spawn();
-                                    deathEffect.Trigger(new TargetInfo(p.Position, p.Map, false), new TargetInfo(p.Position, p.Map, false));
-                                    deathEffect.Cleanup();
-
-                                    IEnumerable<IntVec3> targets = GenRadial.RadialCellsAround(p.Position, radius, true);
-                                    for (int i = 0; i < targets.Count(); i++)
-                                    {
-                                        curCell = targets.ToArray<IntVec3>()[i];
-                                        if (curCell.InBounds(map) && curCell.IsValid)
-                                        {
-                                            victim = curCell.GetFirstPawn(map);
-                                        }
-                                        if (victim != null)
-                                        {
-                                            if (victim.Faction != faction || victim == pawn)
-                                            {
-                                                DamageInfo dinfo1;
-                                                int amt = 0;
-                                                if (settingsRef.deathExplosionMin > settingsRef.deathExplosionMax)
-                                                {
-                                                    amt = Mathf.RoundToInt(Rand.Range(settingsRef.deathExplosionMin, settingsRef.deathExplosionMin));
-                                                }
-                                                else
-                                                {
-                                                    amt = Mathf.RoundToInt(Rand.Range(settingsRef.deathExplosionMin, settingsRef.deathExplosionMax));
-                                                }
-                                                dinfo1 = new DamageInfo(DamageDefOf.Burn, amt, 0, (float)-1, p as Thing, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
-                                                dinfo1.SetAllowDamagePropagation(false);
-                                                victim.TakeDamage(dinfo1);
-                                            }
-                                        }
-                                        victim = null;
-                                        targets.GetEnumerator().MoveNext();
-                                    }
-
-                                    if (pawn != null && !pawn.Dead)
-                                    {
-                                        DamageInfo dinfo2;
-                                        BodyPartRecord vitalPart = null;
-                                        int amt = 30;
-                                        IEnumerable<BodyPartRecord> partSearch = pawn.def.race.body.AllParts;
-                                        vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.ConsciousnessSource));
-                                        dinfo2 = new DamageInfo(DamageDefOf.Burn, amt, 0, (float)-1, p as Thing, vitalPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
-                                        dinfo2.SetAllowDamagePropagation(false);
-                                        pawn.TakeDamage(dinfo2);
-                                    }
+                                    compMight.canDeathRetaliate = true;
                                 }
                             }
                         }
@@ -4424,7 +4358,7 @@ namespace TorannMagic
                 {
                     string labelShort = equipment.LabelShort;
                     FloatMenuOption nve_option;
-                    if(pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                    if(!(pawn.story.traits.HasTrait(TorannMagicDefOf.Priest) || pawn.story.DisabledWorkTagsBackstoryAndTraits == WorkTags.Violent))
                     {
                         for(int j = 0; j< opts.Count; j++)
                         {

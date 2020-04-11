@@ -42,7 +42,7 @@ namespace TorannMagic.ModOptions
             //Widgets.BeginScrollView(canvas, ref scrollPosition, canvas, true);
 
             Rect rect1 = new Rect(canvas);
-            rect1.width /= 2f;
+            rect1.width /= 2.4f;
             num++;
             num++;
             SettingsRef settingsRef = new SettingsRef();
@@ -52,7 +52,7 @@ namespace TorannMagic.ModOptions
             Settings.Instance.xpMultiplier = Widgets.HorizontalSlider(rowRect, Settings.Instance.xpMultiplier, .1f, 2f, false, "XPMultiplier".Translate() + " " + Settings.Instance.xpMultiplier, ".1", "2", .1f);
             Rect rowRectShiftRight = UIHelper.GetRowRect(rowRect, rowHeight, num);
             rowRectShiftRight.x += rowRect.width + 56f;
-            rowRectShiftRight.width /= 2;
+            rowRectShiftRight.width /= 3;
             classOptions = Widgets.ButtonText(rowRectShiftRight, "Class Options", true, false, true);
             if (classOptions)
             {
@@ -66,7 +66,7 @@ namespace TorannMagic.ModOptions
             Settings.Instance.needMultiplier = Widgets.HorizontalSlider(rowRect2, Settings.Instance.needMultiplier, .1f, 4f, false, "NeedMultiplier".Translate() + " " + Settings.Instance.needMultiplier, ".1", "4", .1f);
             Rect rowRect2ShiftRight = UIHelper.GetRowRect(rowRect2, rowHeight, num);
             rowRect2ShiftRight.x += rowRect.width + 56f;
-            rowRect2ShiftRight.width /= 2;
+            rowRect2ShiftRight.width /= 3;
             eventOptions = Widgets.ButtonText(rowRect2ShiftRight, "Event Options", true, false, true);
             if (eventOptions)
             {
@@ -78,20 +78,21 @@ namespace TorannMagic.ModOptions
             num++;
             Rect rowRect21 = UIHelper.GetRowRect(rowRect2, rowHeight, num);
             Settings.Instance.magicyteChance = Widgets.HorizontalSlider(rowRect21, Settings.Instance.magicyteChance, 0, .05f, false, "MagicyteChance".Translate() + " " + Settings.Instance.magicyteChance, "0%", "5%", .001f);
-            num++;
+            num++;            
             Rect rowRect3 = UIHelper.GetRowRect(rowRect21, rowHeight, num);
-            rowRect3.width = rowRect3.width * .7f;
-            Settings.Instance.deathExplosionRadius = Widgets.HorizontalSlider(rowRect3, Settings.Instance.deathExplosionRadius, .1f, 6f, false, "DeathRadius".Translate() + " " + Settings.Instance.deathExplosionRadius, ".1", "6", .1f);
-            Rect rowRect31 = new Rect(rowRect3.xMax + 4f, rowRect3.y, rowRect2.width/2, rowRect3.height);
-            Widgets.TextFieldNumericLabeled<int>(rowRect31, "DeathExplosionMin".Translate(), ref Settings.Instance.deathExplosionMin, ref this.deathExplosionDmgMin, 0, 100);            
-            Rect rowRect32 = new Rect(rowRect31.xMax + 4f, rowRect3.y, rowRect2.width/2, rowRect3.height);
-            Widgets.TextFieldNumericLabeled<int>(rowRect32, "DeathExplosionMax".Translate(), ref Settings.Instance.deathExplosionMax, ref this.deathExplosionDmgMax, 0, 200);
+            Widgets.CheckboxLabeled(rowRect3, "TM_DeathRetaliationIsLethal".Translate(), ref Settings.Instance.deathRetaliationIsLethal, false);
+            //rowRect3.width = rowRect3.width * .7f;
+            //Settings.Instance.deathExplosionRadius = Widgets.HorizontalSlider(rowRect3, Settings.Instance.deathExplosionRadius, .1f, 6f, false, "DeathRadius".Translate() + " " + Settings.Instance.deathExplosionRadius, ".1", "6", .1f);
+            //Rect rowRect31 = new Rect(rowRect3.xMax + 4f, rowRect3.y, rowRect2.width/2, rowRect3.height);
+            //Widgets.TextFieldNumericLabeled<int>(rowRect31, "DeathExplosionMin".Translate(), ref Settings.Instance.deathExplosionMin, ref this.deathExplosionDmgMin, 0, 100);            
+            //Rect rowRect32 = new Rect(rowRect31.xMax + 4f, rowRect3.y, rowRect2.width/2, rowRect3.height);
+            //Widgets.TextFieldNumericLabeled<int>(rowRect32, "DeathExplosionMax".Translate(), ref Settings.Instance.deathExplosionMax, ref this.deathExplosionDmgMax, 0, 200);
             num++;
             Rect rowRect4 = UIHelper.GetRowRect(rowRect3, rowHeight, num);
-            //Settings.Instance.baseMageChance = Widgets.HorizontalSlider(rowRect4, Settings.Instance.baseMageChance, 0f, 5f, false, "baseMageChance".Translate() + " " + Rarity(Settings.Instance.baseMageChance) + " " + TM_Calc.GetMagePrecurserChance().ToString("P1"), "0", "5", .01f);
+            Settings.Instance.deathRetaliationChance = Widgets.HorizontalSlider(rowRect4, Settings.Instance.deathRetaliationChance, 0f, 1f, false, "TM_DeathRetaliationChance".Translate() + " " + Settings.Instance.deathRetaliationChance.ToString("P0"), "0", "1", .01f);
             num++;
             Rect rowRect5 = UIHelper.GetRowRect(rowRect4, rowHeight, num);
-            //Settings.Instance.baseFighterChance = Widgets.HorizontalSlider(rowRect5, Settings.Instance.baseFighterChance, 0f, 5f, false, "baseFighterChance".Translate() + " " + Rarity(Settings.Instance.baseFighterChance) + " " + TM_Calc.GetFighterPrecurserChance().ToString("P1"), "0", "5", .01f);
+            Settings.Instance.deathRetaliationDelayFactor = Widgets.HorizontalSlider(rowRect5, Settings.Instance.deathRetaliationDelayFactor, .1f, 4f, false, "TM_DeathRetaliationDelay".Translate() + " " + Settings.Instance.deathRetaliationDelayFactor.ToString("P0"), "0", "4", .01f);
             Rect rowRect5ShiftRight = UIHelper.GetRowRect(rowRect5, rowHeight, num);
             rowRect5ShiftRight.x += rowRect5.width + 56f;
             Widgets.CheckboxLabeled(rowRect5ShiftRight, "TM_enableAutocast".Translate(), ref Settings.Instance.autocastEnabled, false);
@@ -210,6 +211,9 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.wanderingLichChallenge = 1f;
                 Settings.Instance.autocastAnimals = false;
                 Settings.Instance.unrestrictedWeaponCopy = false;
+                Settings.Instance.deathRetaliationIsLethal = true;
+                Settings.Instance.deathRetaliationChance = 1f;
+                Settings.Instance.deathRetaliationDelayFactor = 1f;
 
                 this.deathExplosionDmgMax = "50.0";
                 this.deathExplosionDmgMin = "20.0";
@@ -252,6 +256,9 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.wanderingLichChallenge = 3f;
                 Settings.Instance.autocastAnimals = false;
                 Settings.Instance.unrestrictedWeaponCopy = false;
+                Settings.Instance.deathRetaliationIsLethal = true;
+                Settings.Instance.deathRetaliationChance = 1f;
+                Settings.Instance.deathRetaliationDelayFactor = .3f;
                 this.deathExplosionDmgMax = "60.0";
                 this.deathExplosionDmgMin = "30.0";
 

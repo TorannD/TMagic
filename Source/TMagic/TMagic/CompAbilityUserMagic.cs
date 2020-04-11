@@ -31,6 +31,10 @@ namespace TorannMagic
         private bool doOnce = true;
         private int autocastTick = 0;
         private int nextAICastAttemptTick = 0;
+        public bool canDeathRetaliate = false;
+        private bool deathRetaliating = false;
+        private int ticksTillRetaliation = 600;
+        private List<IntVec3> deathRing = new List<IntVec3>();
 
         private float IF_RayofHope_eff = 0.08f;
         private float IF_Firebolt_eff = 0.10f;
@@ -1523,7 +1527,7 @@ namespace TorannMagic
                                 {
                                     this.LevelUp(false);
                                 }
-                            }
+                            }                            
                             if (Find.TickManager.TicksGame % 60 == 0)
                             {
                                 if (this.Pawn.IsColonist && !this.magicPowersInitializedForColonist)
@@ -1532,7 +1536,7 @@ namespace TorannMagic
                                 }
                                 else if (!this.Pawn.IsColonist)
                                 {
-                                    this.magicPowersInitializedForColonist = false;
+                                    this.magicPowersInitializedForColonist = false;                                    
                                 }
 
                                 if (this.Pawn.IsColonist)
@@ -1638,6 +1642,14 @@ namespace TorannMagic
                                 ResolveSuccubusLovin();
                             }
                         }
+                        if (deathRetaliating)
+                        {
+                            DoDeathRetaliation();
+                        }
+                        else if (Find.TickManager.TicksGame % 67 == 0 && !this.Pawn.IsColonist && this.Pawn.Downed)
+                        {
+                            DoDeathRetaliation();
+                        }
                     }
                 }
                 else
@@ -1679,6 +1691,43 @@ namespace TorannMagic
                 //custom code
             }
         }
+
+        public void DoDeathRetaliation()
+        {
+            if (this.canDeathRetaliate && this.deathRetaliating)
+            {
+                this.ticksTillRetaliation--;
+                if(!this.Pawn.Downed || this.Pawn.Map == null)
+                {
+                    this.deathRetaliating = false;
+                    this.canDeathRetaliate = false;
+                }
+                if (this.deathRing == null || this.deathRing.Count < 1)
+                {
+                    this.deathRing = TM_Calc.GetOuterRing(this.Pawn.Position, 1f, 2f);
+                }
+                if(Find.TickManager.TicksGame % 6 == 0)
+                {
+                    Vector3 moteVec = this.deathRing.RandomElement().ToVector3Shifted();
+                    moteVec.x += Rand.Range(-.4f, .4f);
+                    moteVec.z += Rand.Range(-.4f, .4f);
+                    float angle = (Quaternion.AngleAxis(90, Vector3.up) * TM_Calc.GetVector(moteVec, this.Pawn.DrawPos)).ToAngleFlat();                    
+                    TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Psi_Grayscale, moteVec, this.Pawn.Map, Rand.Range(.25f, .6f), .1f, .05f, .05f, 0, Rand.Range(4f, 6f), angle, angle);
+                }
+                if(this.ticksTillRetaliation <= 0)
+                {
+                    this.canDeathRetaliate = false;
+                    TM_Action.CreateMagicDeathEffect(this.Pawn, this.Pawn.Position);
+                }
+            }
+            else if (this.canDeathRetaliate && Rand.Value < .04f)
+            {
+                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                this.deathRetaliating = true;
+                this.ticksTillRetaliation = Mathf.RoundToInt(Rand.Range(400, 1200) * settingsRef.deathRetaliationDelayFactor);
+                this.deathRing = TM_Calc.GetOuterRing(this.Pawn.Position, 2f, 3f);
+            }
+        }       
 
         public void PostInitializeTick()
         {
@@ -2114,11 +2163,133 @@ namespace TorannMagic
                 if (flag2)
                 {
                     //Log.Message("Initializing Wanderer Abilities");
+                    for(int i = 0; i < 3; i++)
+                    {
+                        MagicPower mp = this.MagicData.MagicPowersStandalone.RandomElement();
+                        if (mp.abilityDef == TorannMagicDefOf.TM_TransferMana)
+                        {
+                            mp.learned = true;
+                            spell_TransferMana = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_SiphonMana)
+                        {
+                            mp.learned = true;
+                            spell_SiphonMana = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_SpellMending)
+                        {
+                            mp.learned = true;
+                            spell_SpellMending = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_DirtDevil)
+                        {
+                            mp.learned = true;
+                            spell_DirtDevil = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_Heater)
+                        {
+                            mp.learned = true;
+                            spell_Heater = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_Cooler)
+                        {
+                            mp.learned = true;
+                            spell_Cooler = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_PowerNode)
+                        {
+                            mp.learned = true;
+                            spell_PowerNode = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_Sunlight)
+                        {
+                            mp.learned = true;
+                            spell_Sunlight = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_SmokeCloud)
+                        {
+                            mp.learned = true;
+                            spell_SmokeCloud = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_Extinguish)
+                        {
+                            mp.learned = true;
+                            spell_Extinguish = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_EMP)
+                        {
+                            mp.learned = true;
+                            spell_EMP = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_ManaShield)
+                        {
+                            mp.learned = true;
+                            spell_ManaShield = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_Blur)
+                        {
+                            mp.learned = true;
+                            spell_Blur = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_ArcaneBolt)
+                        {
+                            mp.learned = true;
+                            spell_ArcaneBolt = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_LightningTrap)
+                        {
+                            mp.learned = true;
+                            spell_LightningTrap = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_Invisibility)
+                        {
+                            mp.learned = true;
+                            spell_Invisibility = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_MageLight)
+                        {
+                            mp.learned = true;
+                            spell_MageLight = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_Ignite)
+                        {
+                            mp.learned = true;
+                            spell_Ignite = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_SnapFreeze)
+                        {
+                            mp.learned = true;
+                            spell_SnapFreeze = true;
+                        }
+                        else
+                        {
+                            int rnd = Rand.RangeInclusive(0, 4);
+                            switch (rnd)
+                            {
+                                case 0:
+                                    spell_Heal = true;
+                                    break;
+                                case 1:
+                                    spell_Blink = true;
+                                    break;
+                                case 2:
+                                    spell_Rain = true;
+                                    break;
+                                case 3:
+                                    spell_SummonMinion = true;
+                                    break;
+                                case 4:
+                                    spell_Teleport = true;
+                                    break;
+                            }
+                        }
+                    }
                     if (!abilityUser.IsColonist)
                     {
                         this.spell_ArcaneBolt = true;
                         this.AddPawnAbility(TorannMagicDefOf.TM_ArcaneBolt);
                     }
+                    InitializeSpell();
                 }
                 flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.InnerFire);
                 if (flag2)
@@ -8639,6 +8810,8 @@ namespace TorannMagic
             Scribe_References.Look<Thing>(ref this.mageLightThing, "mageLightThing", false);
             Scribe_Values.Look<bool>(ref this.mageLightActive, "mageLightActive", false, false);
             Scribe_Values.Look<bool>(ref this.mageLightSet, "mageLightSet", false, false);
+            Scribe_Values.Look<bool>(ref this.deathRetaliating, "deathRetaliating", false, false);
+            Scribe_Values.Look<int>(ref this.ticksTillRetaliation, "ticksTillRetaliation", 600, false);
             Scribe_Defs.Look<IncidentDef>(ref this.predictionIncidentDef, "predictionIncidentDef");
             Scribe_References.Look<Pawn>(ref this.soulBondPawn, "soulBondPawn", false);
             Scribe_References.Look<Thing>(ref this.technoWeaponThing, "technoWeaponThing", false);

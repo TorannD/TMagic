@@ -117,6 +117,7 @@ namespace TorannMagic
                 bool raining = map.weatherManager.RainRate > 0f || map.weatherManager.SnowRate > 0f;
                 for(int i = 0; i< cellList.Count; i++)
                 {
+                    cellList[i] = cellList[i].ClampInsideMap(map);
                     if(cellList[i].GetSnowDepth(map) > 0f)
                     {
                         map.snowGrid.SetDepth(cellList[i], 0f);

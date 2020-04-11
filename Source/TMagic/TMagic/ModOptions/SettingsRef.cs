@@ -36,6 +36,9 @@ namespace TorannMagic.ModOptions
         public bool paracyteMagesCount = Settings.Instance.paracyteMagesCount;
         public bool unrestrictedWeaponCopy = Settings.Instance.unrestrictedWeaponCopy;
         public float undeadUpkeepMultiplier = Settings.Instance.undeadUpkeepMultiplier;
+        public float deathRetaliationDelayFactor = Settings.Instance.deathRetaliationDelayFactor;
+        public float deathRetaliationChance = Settings.Instance.deathRetaliationChance;
+        public bool deathRetaliationIsLethal = Settings.Instance.deathRetaliationIsLethal;
 
         //autocast
         public bool autocastEnabled = Settings.Instance.autocastEnabled;

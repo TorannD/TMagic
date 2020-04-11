@@ -56,7 +56,7 @@ namespace TorannMagic
             float weaponDPS = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_AverageDPS, false) * .7f;
             float dmgMultiplier = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_DamageMultiplier, false);
             float pawnDPS = pawn.GetStatValue(StatDefOf.MeleeDPS, false);
-            float skillMultiplier = (.8f) * comp.mightPwr;
+            float skillMultiplier = (.6f) * comp.mightPwr;
             return Mathf.RoundToInt(skillMultiplier * dmgMultiplier * (pawnDPS + weaponDPS));
         }
 

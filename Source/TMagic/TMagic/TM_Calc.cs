@@ -3167,5 +3167,12 @@ namespace TorannMagic
             }
             return "";
         }
+
+        public static List<IntVec3> GetOuterRing(IntVec3 center, float innerRadius, float outerRadius)
+        {
+            List<IntVec3> innerRing = GenRadial.RadialCellsAround(center, innerRadius, true).ToList();
+            List<IntVec3> outerRing = GenRadial.RadialCellsAround(center, outerRadius, false).Except(innerRing).ToList();
+            return outerRing;
+        }
     }
 }

@@ -64,9 +64,11 @@ namespace TorannMagic
                             if (curCell.InBounds(base.Map) && curCell.IsValid)
                             {
                                 Pawn victim = curCell.GetFirstPawn(base.Map);
-                                if (victim != null && !victim.Dead && victim.RaceProps.IsFlesh && !victim.Downed)
+                                if (victim != null && !victim.Dead && victim.RaceProps.IsFlesh)
                                 {
-                                    DamageEntities(victim, Mathf.RoundToInt(Rand.Range(2, 4)), TMDamageDefOf.DamageDefOf.TM_Poison);
+                                    BodyPartRecord bpr = null;
+                                    bpr = victim.def.race.body.AllParts.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.BreathingSource));
+                                    TM_Action.DamageEntities(victim, bpr, Rand.Range(1, 2), 2, TMDamageDefOf.DamageDefOf.TM_Poison, this);
                                 }
                             }
                         }
@@ -250,17 +252,5 @@ namespace TorannMagic
                 SoundDef.Named("Building_Deconstructed").PlayOneShot(new TargetInfo(base.Position, map, false));
             }
         }
-
-        public void DamageEntities(Pawn e, float d, DamageDef type)
-        {
-            int amt = Mathf.RoundToInt(Rand.Range(.5f, 1.5f) * d);
-            DamageInfo dinfo = new DamageInfo(type, amt, 0, (float)-1, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
-            bool flag = e != null;
-            if (flag)
-            {
-                e.TakeDamage(dinfo);
-            }
-        }
-
     }
 }

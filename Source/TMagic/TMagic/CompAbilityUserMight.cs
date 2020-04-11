@@ -29,6 +29,10 @@ namespace TorannMagic
         private int autocastTick = 0;
         private int nextAICastAttemptTick = 0;
         private int nextSSTend = 0;
+        public bool canDeathRetaliate = false;
+        private bool deathRetaliating = false;
+        private int ticksTillRetaliation = 600;
+        private List<IntVec3> deathRing = new List<IntVec3>();
 
         private float G_Sprint_eff = 0.20f;
         private float G_Grapple_eff = 0.10f;
@@ -941,7 +945,7 @@ namespace TorannMagic
                         }
                         base.CompTick();
                         this.age++;
-                        if(Find.TickManager.TicksGame % 20 == 0)
+                        if (Find.TickManager.TicksGame % 20 == 0)
                         {
                             ResolveSustainedSkills();
                             if (reversalTarget != null)
@@ -1000,8 +1004,8 @@ namespace TorannMagic
                                 }
                             }
                         }
-                        if (this.Pawn.needs.AllNeeds.Contains(this.Stamina) && this.Stamina.CurLevel >  (.99f * this.Stamina.MaxLevel))
-                        {                            
+                        if (this.Pawn.needs.AllNeeds.Contains(this.Stamina) && this.Stamina.CurLevel > (.99f * this.Stamina.MaxLevel))
+                        {
                             if (this.age > (lastMightXPGain + mightXPRate))
                             {
                                 MightData.MightUserXP++;
@@ -1017,34 +1021,42 @@ namespace TorannMagic
                                 this.LevelUp(false);
                             }
                         }
-                    }
-                    if(Find.TickManager.TicksGame % 30 == 0)
-                    {
-                        bool flag6 = this.Pawn.TargetCurrentlyAimingAt != null;
-                        if (flag6)
+                        if (Find.TickManager.TicksGame % 30 == 0)
                         {
-                            if (this.Pawn.TargetCurrentlyAimingAt.Thing is Pawn)
+                            bool flag6 = this.Pawn.TargetCurrentlyAimingAt != null;
+                            if (flag6)
                             {
-                                Pawn targetPawn = this.Pawn.TargetCurrentlyAimingAt.Thing as Pawn;
-                                if (targetPawn.RaceProps.Humanlike)
+                                if (this.Pawn.TargetCurrentlyAimingAt.Thing is Pawn)
                                 {
-                                    bool flag7 = (this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_DisguiseHD")) || this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_DisguiseHD_I")) || this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_DisguiseHD_II")) || this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_DisguiseHD_III")));
-                                    if (targetPawn.Faction != this.Pawn.Faction && flag7)
+                                    Pawn targetPawn = this.Pawn.TargetCurrentlyAimingAt.Thing as Pawn;
+                                    if (targetPawn.RaceProps.Humanlike)
                                     {
-                                        using (IEnumerator<Hediff> enumerator = this.Pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+                                        bool flag7 = (this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_DisguiseHD")) || this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_DisguiseHD_I")) || this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_DisguiseHD_II")) || this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_DisguiseHD_III")));
+                                        if (targetPawn.Faction != this.Pawn.Faction && flag7)
                                         {
-                                            while (enumerator.MoveNext())
+                                            using (IEnumerator<Hediff> enumerator = this.Pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
                                             {
-                                                Hediff rec = enumerator.Current;
-                                                if (rec.def == TorannMagicDefOf.TM_DisguiseHD || rec.def == TorannMagicDefOf.TM_DisguiseHD_I || rec.def == TorannMagicDefOf.TM_DisguiseHD_II || rec.def == TorannMagicDefOf.TM_DisguiseHD_III)
+                                                while (enumerator.MoveNext())
                                                 {
-                                                    this.Pawn.health.RemoveHediff(rec);
+                                                    Hediff rec = enumerator.Current;
+                                                    if (rec.def == TorannMagicDefOf.TM_DisguiseHD || rec.def == TorannMagicDefOf.TM_DisguiseHD_I || rec.def == TorannMagicDefOf.TM_DisguiseHD_II || rec.def == TorannMagicDefOf.TM_DisguiseHD_III)
+                                                    {
+                                                        this.Pawn.health.RemoveHediff(rec);
+                                                    }
                                                 }
                                             }
                                         }
                                     }
                                 }
                             }
+                        }
+                        if (deathRetaliating)
+                        {
+                            DoDeathRetaliation();
+                        }
+                        else if (Find.TickManager.TicksGame % 67 == 0 && !this.Pawn.IsColonist && this.Pawn.Downed)
+                        {
+                            DoDeathRetaliation();
                         }
                     }
                 }
@@ -1085,6 +1097,43 @@ namespace TorannMagic
             if (IsInitialized)
             {
                 //custom code
+            }
+        }
+
+        public void DoDeathRetaliation()
+        {
+            if (this.canDeathRetaliate && this.deathRetaliating)
+            {
+                this.ticksTillRetaliation--;
+                if (!this.Pawn.Downed || this.Pawn.Map == null)
+                {
+                    this.deathRetaliating = false;
+                    this.canDeathRetaliate = false;
+                }
+                if (this.deathRing == null || this.deathRing.Count < 1)
+                {
+                    this.deathRing = TM_Calc.GetOuterRing(this.Pawn.Position, 1f, 2f);
+                }
+                if (Find.TickManager.TicksGame % 7 == 0)
+                {
+                    Vector3 moteVec = this.deathRing.RandomElement().ToVector3Shifted();
+                    moteVec.x += Rand.Range(-.4f, .4f);
+                    moteVec.z += Rand.Range(-.4f, .4f);
+                    float angle = (Quaternion.AngleAxis(90, Vector3.up) * TM_Calc.GetVector(moteVec, this.Pawn.DrawPos)).ToAngleFlat();                    
+                    TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Psi_Grayscale, moteVec, this.Pawn.Map, Rand.Range(.25f, .6f), .1f, .05f, .05f, 0, Rand.Range(4f, 6f), angle, angle);
+                }
+                if (this.ticksTillRetaliation <= 0)
+                {
+                    this.canDeathRetaliate = false;
+                    TM_Action.CreateMightDeathEffect(this.Pawn, this.Pawn.Position);
+                }
+            }
+            else if (this.canDeathRetaliate && Rand.Value < .04f)
+            {
+                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                this.deathRetaliating = true;
+                this.ticksTillRetaliation = Mathf.RoundToInt(Rand.Range(400, 1200) * settingsRef.deathRetaliationDelayFactor);
+                this.deathRing = TM_Calc.GetOuterRing(this.Pawn.Position, 2f, 3f);
             }
         }
 
@@ -1580,10 +1629,60 @@ namespace TorannMagic
             if (this.mightPowersInitialized == true)
             {
                 bool flag2 = true;
+                foreach (MightPower current in this.MightData.MightPowersStandalone)
+                {
+                    this.RemovePawnAbility(current.abilityDef);
+                }
                 if (TM_Calc.IsWayfarer(this.AbilityUser))
                 {
                     this.skill_ThrowingKnife = false;
                     this.RemovePawnAbility(TorannMagicDefOf.TM_ThrowingKnife);
+                    for (int i = 0; i < 2; i++)
+                    {
+                        MightPower mp = this.MightData.MightPowersStandalone.RandomElement();
+                        if (mp.abilityDef == TorannMagicDefOf.TM_GearRepair)
+                        {
+                            mp.learned = true;
+                            skill_GearRepair = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_InnerHealing)
+                        {
+                            mp.learned = true;
+                            skill_InnerHealing = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_HeavyBlow)
+                        {
+                            mp.learned = true;
+                            skill_HeavyBlow = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_ThickSkin)
+                        {
+                            mp.learned = true;
+                            skill_ThickSkin = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_FightersFocus)
+                        {
+                            mp.learned = true;
+                            skill_FightersFocus = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_StrongBack)
+                        {
+                            mp.learned = true;
+                            skill_StrongBack = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_ThrowingKnife)
+                        {
+                            mp.learned = true;
+                            skill_ThrowingKnife= true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_PommelStrike)
+                        {
+                            mp.learned = true;
+                            skill_PommelStrike = true;
+                        }
+                    }
+                    InitializeSkill();
+                    
                 }
                 //flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Gladiator);
                 if (flag2)
@@ -1721,11 +1820,7 @@ namespace TorannMagic
                     this.skill_Buckshot = false;
                     this.RemovePawnAbility(TorannMagicDefOf.TM_BreachingCharge);
                     this.skill_BreachingCharge = false;
-                }
-                foreach (MightPower current in this.MightData.MightPowersStandalone)
-                {
-                    this.RemovePawnAbility(current.abilityDef);
-                }
+                }                
             }
         }
 

@@ -132,6 +132,7 @@ namespace TorannMagic
         public static HediffDef TM_ArcaneSickness;
         public static HediffDef TM_ArcaneWeakness;
         public static HediffDef TM_EnergyRegenHD;
+        public static HediffDef TM_EnlightenedHD;
 
         public static HediffDef TM_BrittleBonesHD;
         public static HediffDef TM_SlaggedHD;
@@ -962,6 +963,7 @@ namespace TorannMagic
         public static ThingDef Mote_Flowers;
         public static ThingDef Mote_PowerWave;
         public static ThingDef Mote_CQC;
+        public static ThingDef Mote_ArcaneFlame;
 
         public static ThingDef Projectile_FogOfTorment;        
 
@@ -1071,6 +1073,7 @@ namespace TorannMagic
         public static InspirationDef ID_ManaRegen;
         public static InspirationDef Frenzy_Go;
         public static InspirationDef Frenzy_Shoot;
+        public static InspirationDef ID_Enlightened;
 
         //Mental States
         public static MentalStateDef TM_Berserk;

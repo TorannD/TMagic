@@ -223,7 +223,10 @@
 <TM_ParacyteMagesCount>Mages count against soft cap (2ea)</TM_ParacyteMagesCount>
 <TM_UndeadUpkeepMultiplier>Undead upkeep cost</TM_UndeadUpkeepMultiplier>
 <TM_autocastAnimals>Autocast targets animals</TM_autocastAnimals>
-<TM_UnrestrictedWeaponCopy>Unrestricted Techno-Weapons</TM_UnrestrictedWeaponCopy>
+<TM_UnrestrictedWeaponCopy>Unrestricted Techno-Weapons</TM_UnrestrictedWeaponCopy>
+<TM_DeathRetaliationIsLethal>Death retaliation always lethal</TM_DeathRetaliationIsLethal>
+<TM_DeathRetaliationChance>Death retaliation chance</TM_DeathRetaliationChance>
+<TM_DeathRetaliationDelay>Death retaliation delay factor</TM_DeathRetaliationDelay>
 
 <!-- Mod Settings Class options -->
 <supportTraitChance>Supporting Trait Commonality</supportTraitChance>

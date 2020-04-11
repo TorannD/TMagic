@@ -93,7 +93,7 @@ namespace TorannMagic
                     tempPod.spawnCount = 1;
                     try
                     {
-                        this.SingleSpawnLoop(tempPod, shiftPos, map);
+                        Projectile_SummonExplosive.SingleSpawnLoop(tempPod, shiftPos, map, this.launcher, this.duration);
                     }
                     catch
                     {
@@ -124,12 +124,12 @@ namespace TorannMagic
 
         }
 
-        public void SingleSpawnLoop(SpawnThings spawnables, IntVec3 position, Map map)
+        public static void SingleSpawnLoop(SpawnThings spawnables, IntVec3 position, Map map, Thing launcher, int duration)
         {
             bool flag = spawnables.def != null;
             if (flag)
             {
-                Faction faction = TM_Action.ResolveFaction(this.launcher as Pawn, spawnables, this.launcher.Faction);
+                Faction faction = TM_Action.ResolveFaction(launcher as Pawn, spawnables, launcher.Faction);
                 bool flag2 = spawnables.def.race != null;
                 if (flag2)
                 {
@@ -140,7 +140,7 @@ namespace TorannMagic
                     }
                     else
                     {
-                        TM_Action.SpawnPawn(this.launcher as Pawn, spawnables, faction, position, 0, map);
+                        TM_Action.SpawnPawn(launcher as Pawn, spawnables, faction, position, 0, map);
                     }
                 }
                 else
@@ -157,10 +157,9 @@ namespace TorannMagic
                     {
                         thing.SetFaction(faction, null);
                     }
-                    placedThing = thing;
                     CompSummoned bldgComp = thing.TryGetComp<CompSummoned>();
                     bldgComp.Temporary = true;
-                    bldgComp.TicksToDestroy = this.duration;
+                    bldgComp.TicksToDestroy = duration;
                     GenSpawn.Spawn(thing, position, map, Rot4.North, WipeMode.Vanish, false);
                 }
             }

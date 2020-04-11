@@ -45,7 +45,7 @@ namespace TorannMagic
                 {
                     if (Find.TickManager.TicksGame % 4 == 0)
                     {
-                        TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_ArcaneFlame"), this.Pawn.DrawPos, this.Pawn.Map, Rand.Range(.2f, .3f), .1f, .05f, .2f, 0, Rand.Range(1.5f, 2f), Rand.Range(-60, 60), 0);
+                        TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_ArcaneFlame, this.Pawn.DrawPos, this.Pawn.Map, Rand.Range(.2f, .3f), .1f, .05f, .2f, 0, Rand.Range(1.5f, 2f), Rand.Range(-60, 60), 0);
                     }    
                     if(Find.TickManager.TicksGame % 60 == 0)
                     {

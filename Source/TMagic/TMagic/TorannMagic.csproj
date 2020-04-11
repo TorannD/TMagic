@@ -129,6 +129,7 @@
     <Compile Include="Building_TechnoTurret.cs" />
     <Compile Include="Building_ExplosiveProximityTrap.cs" />
     <Compile Include="JobDriver_GotoAndCast.cs" />
+    <Compile Include="Thoughts\TM_Inspiration.cs" />
     <Compile Include="TM_Command_Target.cs" />
     <Compile Include="Events\IncidentWorker_QuestArcaneCamp.cs" />
     <Compile Include="Thoughts\ThoughtWorker_TM_Boundless.cs" />

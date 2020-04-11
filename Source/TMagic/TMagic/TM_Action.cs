@@ -672,6 +672,7 @@ namespace TorannMagic
                         Func<Hediff_Injury, bool> partInjured;
 
                         partInjured = ((Hediff_Injury injury) => injury.Part == rec);
+                        bool healedBleeding = false;
 
                         foreach (Hediff_Injury current in injury_hediff.Where(partInjured))
                         {
@@ -684,21 +685,25 @@ namespace TorannMagic
                                     current.Heal(amountToHeal);
                                     num--;
                                     num2--;
+                                    healedBleeding = true;
                                 }
                             }
                         }
 
-                        foreach (Hediff_Injury current in injury_hediff.Where(partInjured))
+                        if (!healedBleeding)
                         {
-                            bool flag4 = num2 > 0;
-                            if (flag4)
+                            foreach (Hediff_Injury current in injury_hediff.Where(partInjured))
                             {
-                                bool flag5 = !current.IsPermanent();
-                                if (flag5)
+                                bool flag4 = num2 > 0;
+                                if (flag4)
                                 {
-                                    current.Heal(amountToHeal);
-                                    num--;
-                                    num2--;
+                                    bool flag5 = !current.IsPermanent();
+                                    if (flag5)
+                                    {
+                                        current.Heal(amountToHeal);
+                                        num--;
+                                        num2--;
+                                    }
                                 }
                             }
                         }
@@ -748,8 +753,11 @@ namespace TorannMagic
                             thing.SetFaction(faction, null);
                         }
                         CompSummoned bldgComp = thing.TryGetComp<CompSummoned>();
-                        bldgComp.TicksToDestroy = duration;
-                        bldgComp.Temporary = temporary;
+                        if (bldgComp != null)
+                        {
+                            bldgComp.TicksToDestroy = duration;
+                            bldgComp.Temporary = temporary;
+                        }
                         GenSpawn.Spawn(thing, position, map, Rot4.North, WipeMode.Vanish, false);
                     }
                 }
@@ -1033,6 +1041,7 @@ namespace TorannMagic
         public static void DamageEntities(Thing victim, BodyPartRecord hitPart, float amt, DamageDef type, Thing instigator)
         {
             DamageInfo dinfo;
+            amt = Rand.Range(amt * .75f, amt * 1.25f);
             dinfo = new DamageInfo(type, amt, 0, (float)-1, instigator, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
             dinfo.SetAllowDamagePropagation(false);
             victim.TakeDamage(dinfo);
@@ -1041,6 +1050,7 @@ namespace TorannMagic
         public static void DamageEntities(Thing victim, BodyPartRecord hitPart, float amt, float armorPenetration, DamageDef type, Thing instigator)
         {
             DamageInfo dinfo;
+            amt = Rand.Range(amt * .75f, amt * 1.25f);
             dinfo = new DamageInfo(type, amt, armorPenetration, (float)-1, instigator, hitPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
             dinfo.SetAllowDamagePropagation(false);
             victim.TakeDamage(dinfo);
@@ -1886,6 +1896,294 @@ namespace TorannMagic
                     caster.LabelShort,
                     transmutateThing.LabelShort
                 ), MessageTypeDefOf.RejectInput);
+            }
+        }
+
+        public static void CreateMagicDeathEffect(Pawn pawn, IntVec3 pos)
+        {
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            List<IntVec3> targets = new List<IntVec3>();
+            List<Pawn> pawns = new List<Pawn>();
+            int rnd = Rand.RangeInclusive(0, 6);
+            switch(rnd)
+            {
+                case 0: //Death explosion
+                    IntVec3 curCell;
+                    Pawn victim = new Pawn();
+
+                    float radius = 3f;
+                    if (settingsRef.AIHardMode)
+                    {
+                        radius *= 1.5f;
+                    }
+
+                    if (pawn.Map == null || !pawn.Position.IsValid)
+                    {
+                        Log.Warning("Tried to do explosion in a null map.");
+                        return;
+                    }
+
+                    Faction faction = pawn.Faction;
+                    Pawn p = new Pawn();
+                    p = pawn;
+                    Map map = p.Map;
+                    GenExplosion.DoExplosion(p.Position, p.Map, 0f, DamageDefOf.Burn, p as Thing, 0, 0, SoundDefOf.Thunder_OnMap, null, null, null, null, 0f, 0, false, null, 0f, 0, 0.0f, false);
+                    Effecter deathEffect = TorannMagicDefOf.TM_DeathExplosion.Spawn();
+                    deathEffect.Trigger(new TargetInfo(p.Position, p.Map, false), new TargetInfo(p.Position, p.Map, false));
+                    deathEffect.Cleanup();
+                    targets = GenRadial.RadialCellsAround(p.Position, radius, true).ToList();
+                    for (int i = 0; i < targets.Count; i++)
+                    {
+                        curCell = targets.ToArray<IntVec3>()[i];
+                        if (curCell.InBounds(map) && curCell.IsValid)
+                        {
+                            victim = curCell.GetFirstPawn(map);
+                        }
+                        if (victim != null)
+                        {
+                            if (victim.Faction != faction || victim == pawn)
+                            {
+                                TM_Action.DamageEntities(victim, null, Rand.Range(12, 20), 1f, TMDamageDefOf.DamageDefOf.TM_Arcane, pawn);
+                            }
+                        }
+                        victim = null;
+                    }
+                    break;
+                case 1: //Berserk pulse
+                    Effecter berserkEffect = TorannMagicDefOf.TM_IgniteED.Spawn();
+                    berserkEffect.Trigger(new TargetInfo(pawn.Position, pawn.Map, false), new TargetInfo(pawn.Position, pawn.Map, false));
+                    berserkEffect.Cleanup();
+                    pawns = TM_Calc.FindAllPawnsAround(pawn.Map, pawn.Position, 4f, pawn.Faction, false);
+                    if (pawns != null && pawns.Count > 0)
+                    {
+                        for (int i = 0; i < pawns.Count; i++)
+                        {
+                            if (pawns[i] != null && pawns[i].mindState != null && pawns[i].mindState.mentalStateHandler != null)
+                            {
+                                if (pawns[i].Faction != pawn.Faction)
+                                {
+                                    if (Rand.Chance(TM_Calc.GetSpellSuccessChance(pawn, pawns[i], true)))
+                                    {
+                                        if (pawns[i].mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk))
+                                        {
+                                            pawns[i].mindState.mentalStateHandler.CurState.forceRecoverAfterTicks = 480;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    break;
+                case 2: //Summon 4x firestorm skyfallers
+                    Pawn targetF = TM_Calc.FindNearbyEnemy(pos, pawn.Map, pawn.Faction, 60, 10);
+                    if(targetF != null)
+                    {
+                        for(int i = 0; i < 4; i++)
+                        {
+                            IntVec3 cell = targetF.Position;
+                            cell.x += Rand.Range(-2, 2);
+                            cell.z += Rand.Range(-2, 2);
+                            if(Rand.Chance(.6f))
+                            {
+                                SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Firestorm_Tiny, cell, pawn.Map);
+                            }
+                            else if(Rand.Chance(.4f))
+                            {
+                                SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Firestorm_Small, cell, pawn.Map);
+                            }
+                            else
+                            {
+                                SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Firestorm_Large, cell, pawn.Map);
+                            }
+                        }
+                    }
+                    break;
+                case 3: //summon 4x blizzard skyfallers
+                    Pawn targetI = TM_Calc.FindNearbyEnemy(pos, pawn.Map, pawn.Faction, 70, 10);
+                    if (targetI != null)
+                    {
+                        for (int i = 0; i < 4; i++)
+                        {
+                            IntVec3 cell = targetI.Position;
+                            cell.x += Rand.Range(-2, 2);
+                            cell.z += Rand.Range(-2, 2);
+                            if (Rand.Chance(.6f))
+                            {
+                                SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Blizzard_Tiny, cell, pawn.Map);
+                            }
+                            else if (Rand.Chance(.4f))
+                            {
+                                SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Blizzard_Small, cell, pawn.Map);
+                            }
+                            else
+                            {
+                                SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Blizzard_Large, cell, pawn.Map);
+                            }
+                        }
+                    }
+                    break;
+                case 4: //stun pulse
+                    GenExplosion.DoExplosion(pos, pawn.Map, 6, DamageDefOf.Stun, pawn, 0, 0);
+                    pawns = TM_Calc.FindAllPawnsAround(pawn.Map, pos, 4f, pawn.Faction, false);
+                    if (pawns != null && pawns.Count > 0)
+                    {
+                        for (int i = 0; i < pawns.Count; i++)
+                        {
+                            DamageEntities(pawns[i], null, Rand.Range(4, 8), 0, DamageDefOf.Stun, pawn);
+                        }
+                    }
+                    break;
+                case 5: //mana mine trap
+                    AbilityUser.SpawnThings tempPod = new SpawnThings();
+                    tempPod.def = ThingDef.Named("TM_ManaMine_III");
+                    tempPod.spawnCount = 1;
+                    Projectile_SummonExplosive.SingleSpawnLoop(tempPod, pos, pawn.Map, pawn, 15000);                    
+                    break;
+                case 6:  //Healing wave
+                    Effecter healEffect = TorannMagicDefOf.TM_ChiBurstED.Spawn();
+                    healEffect.Trigger(new TargetInfo(pawn.Position, pawn.Map, false), new TargetInfo(pawn.Position, pawn.Map, false));
+                    healEffect.Cleanup();
+                    pawns = TM_Calc.FindAllPawnsAround(pawn.Map, pos, 4f, pawn.Faction, true);
+                    if (pawns != null && pawns.Count > 0)
+                    {
+                        for (int i = 0; i < pawns.Count; i++)
+                        {
+                            if (pawns[i] != null)
+                            {
+                                if (pawns[i].Faction == pawn.Faction)
+                                {
+                                    TM_Action.DoAction_HealPawn(pawn, pawns[i], 3, 25);
+                                }
+                            }
+                        }
+                    }
+                    break;
+            }
+            if(settingsRef.deathRetaliationIsLethal && rnd < 6)
+            {
+                KillPawnByMindBurn(pawn);
+            }
+        }
+
+        public static void KillPawnByMindBurn(Pawn pawn)
+        {
+            if (pawn != null && !pawn.Dead)
+            {
+                for(int i =0; i < 4; i++)
+                {
+                    TM_MoteMaker.ThrowBloodSquirt(pawn.DrawPos, pawn.Map, Rand.Range(.3f, .6f));
+                    TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_ArcaneFlame, pawn.DrawPos, pawn.Map, Rand.Range(.2f, .3f), .1f, .05f, .2f, 0, Rand.Range(1.5f, 2f), Rand.Range(-60, 60), 0);
+                }
+                DamageInfo dinfo2;
+                BodyPartRecord vitalPart = null;
+                int amt = 30;
+                IEnumerable<BodyPartRecord> partSearch = pawn.def.race.body.AllParts;
+                vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.ConsciousnessSource));
+                dinfo2 = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Arcane, amt, 2, 0, pawn as Thing, vitalPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
+                dinfo2.SetAllowDamagePropagation(false);
+                pawn.TakeDamage(dinfo2);
+            }
+        }
+
+        public static void CreateMightDeathEffect(Pawn pawn, IntVec3 pos)
+        {
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            List<IntVec3> targets = new List<IntVec3>();
+            List<Pawn> pawns = new List<Pawn>();
+            int rnd = Rand.RangeInclusive(0, 4);
+            switch (rnd)
+            {
+                case 0: //Spike trap
+                    Thing trap = ThingMaker.MakeThing(ThingDefOf.TrapSpike, ThingDefOf.WoodLog);
+                    trap.SetFactionDirect(pawn.Faction);
+                    GenPlace.TryPlaceThing(trap, pawn.Position, pawn.Map, ThingPlaceMode.Direct);
+                    break;
+                case 1: //poison trap
+                    Thing pTrap = ThingMaker.MakeThing(ThingDef.Named("TM_PoisonTrap"));
+                    pTrap.SetFactionDirect(pawn.Faction);
+                    GenPlace.TryPlaceThing(pTrap, pawn.Position, pawn.Map, ThingPlaceMode.Direct);
+                    break;
+                case 2: //burst into flames
+                    GenExplosion.DoExplosion(pawn.Position, pawn.Map, 2f, DamageDefOf.Flame, pawn, 10, 0, DamageDefOf.Flame.soundExplosion);
+                    break;
+                case 3: //wave of fear
+                    SoundInfo info = SoundInfo.InMap(new TargetInfo(pawn.Position, pawn.Map, false), MaintenanceType.None);
+                    TorannMagicDefOf.TM_GaspingAir.PlayOneShot(info);
+                    Effecter FearWave = TorannMagicDefOf.TM_FearWave.Spawn();
+                    FearWave.Trigger(new TargetInfo(pawn.Position, pawn.Map, false), new TargetInfo(pawn.Position, pawn.Map, false));
+                    FearWave.Cleanup();
+                    List<Pawn> mapPawns = pawn.Map.mapPawns.AllPawnsSpawned;
+                    if (mapPawns != null && mapPawns.Count > 0)
+                    {
+                        for (int i = 0; i < mapPawns.Count; i++)
+                        {
+                            Pawn victim = mapPawns[i];
+                            if (!victim.DestroyedOrNull() && !victim.Dead && victim.Map != null && !victim.Downed && victim.mindState != null && !victim.InMentalState)
+                            {
+                                if (victim.Faction != null && victim.Faction != pawn.Faction && (victim.Position - pawn.Position).LengthHorizontal < 6)
+                                {
+                                    if (Rand.Chance(TM_Calc.GetSpellSuccessChance(pawn, victim, true)))
+                                    {
+                                        LocalTargetInfo t = new LocalTargetInfo(victim.Position + (6 * TM_Calc.GetVector(pawn.DrawPos, victim.DrawPos)).ToIntVec3());
+                                        Job job = new Job(JobDefOf.FleeAndCower, t);
+                                        victim.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                                        HealthUtility.AdjustSeverity(victim, HediffDef.Named("TM_WaveOfFearHD"), .5f);
+                                    }
+                                    else
+                                    {
+                                        MoteMaker.ThrowText(victim.DrawPos, victim.Map, "TM_ResistedSpell".Translate(), -1);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    break;
+                case 4: //Ingest drugs
+                    Thing luci = ThingMaker.MakeThing(ThingDef.Named("Luciferium"));
+                    if (luci != null)
+                    {
+                        luci.stackCount = 1;
+                        GenSpawn.Spawn(luci, pawn.Position, pawn.Map, WipeMode.Vanish);
+                        luci.Ingested(pawn, 0f);
+                    }
+                    Thing go = ThingMaker.MakeThing(ThingDef.Named("GoJuice"));
+                    if (go != null)
+                    {
+                        go.stackCount = 1;
+                        GenSpawn.Spawn(go, pawn.Position, pawn.Map, WipeMode.Vanish);
+                        go.Ingested(pawn, 0f);
+                    }
+                    Thing yayo = ThingMaker.MakeThing(ThingDef.Named("Yayo"));
+                    if (yayo != null)
+                    {
+                        yayo.stackCount = 1;
+                        GenSpawn.Spawn(yayo, pawn.Position, pawn.Map, WipeMode.Vanish);
+                        yayo.Ingested(pawn, 0f);
+                    }
+                    break;                
+            }
+            if (settingsRef.deathRetaliationIsLethal && rnd < 4)
+            {
+                KillPawnBySepeku(pawn);
+            }
+        }
+
+        public static void KillPawnBySepeku(Pawn pawn)
+        {
+            if (pawn != null && !pawn.Dead)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    TM_MoteMaker.ThrowBloodSquirt(pawn.DrawPos, pawn.Map, Rand.Range(.5f, .7f));                    
+                }
+                DamageInfo dinfo2;
+                BodyPartRecord vitalPart = null;
+                int amt = 30;
+                IEnumerable<BodyPartRecord> partSearch = pawn.def.race.body.AllParts;
+                vitalPart = partSearch.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.BloodPumpingSource));
+                dinfo2 = new DamageInfo(TMDamageDefOf.DamageDefOf.TM_Arcane, amt, 2, 0, pawn as Thing, vitalPart, null, DamageInfo.SourceCategory.ThingOrUnknown);
+                dinfo2.SetAllowDamagePropagation(false);
+                pawn.TakeDamage(dinfo2);
             }
         }
     }

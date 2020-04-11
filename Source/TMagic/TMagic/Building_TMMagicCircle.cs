@@ -668,7 +668,7 @@ namespace TorannMagic
             List<Thing> thingList = this.InteractionCell.GetThingList(this.Map);
             for(int i = 0; i < thingList.Count; i++)
             {
-                if(thingList[i] != this)
+                if(thingList[i] != this && thingList[i].def.EverHaulable)
                 {
                     //Log.Message("ic occupied by " + thingList[i].LabelShort);
                     return true;
