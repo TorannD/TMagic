@@ -1102,14 +1102,14 @@ namespace TorannMagic
 
         public void DoDeathRetaliation()
         {
+            if (!this.Pawn.Downed || this.Pawn.Map == null || this.Pawn.IsPrisoner)
+            {
+                this.deathRetaliating = false;
+                this.canDeathRetaliate = false;
+            }
             if (this.canDeathRetaliate && this.deathRetaliating)
             {
-                this.ticksTillRetaliation--;
-                if (!this.Pawn.Downed || this.Pawn.Map == null)
-                {
-                    this.deathRetaliating = false;
-                    this.canDeathRetaliate = false;
-                }
+                this.ticksTillRetaliation--;                
                 if (this.deathRing == null || this.deathRing.Count < 1)
                 {
                     this.deathRing = TM_Calc.GetOuterRing(this.Pawn.Position, 1f, 2f);
@@ -1125,6 +1125,7 @@ namespace TorannMagic
                 if (this.ticksTillRetaliation <= 0)
                 {
                     this.canDeathRetaliate = false;
+                    this.deathRetaliating = false;
                     TM_Action.CreateMightDeathEffect(this.Pawn, this.Pawn.Position);
                 }
             }
@@ -1133,7 +1134,7 @@ namespace TorannMagic
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 this.deathRetaliating = true;
                 this.ticksTillRetaliation = Mathf.RoundToInt(Rand.Range(400, 1200) * settingsRef.deathRetaliationDelayFactor);
-                this.deathRing = TM_Calc.GetOuterRing(this.Pawn.Position, 2f, 3f);
+                this.deathRing = TM_Calc.GetOuterRing(this.Pawn.Position, 1f, 2f);
             }
         }
 
@@ -4618,6 +4619,9 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.skill_BreachingCharge, "skill_BreachingCharge", false, false);
             Scribe_Values.Look<bool>(ref this.skill_Teach, "skill_Teach", false, false);
             Scribe_Values.Look<int>(ref this.allowMeditateTick, "allowMeditateTick", 0, false);
+            Scribe_Values.Look<bool>(ref this.deathRetaliating, "deathRetaliating", false, false);
+            Scribe_Values.Look<bool>(ref this.canDeathRetaliate, "canDeathRetaliate", false, false);
+            Scribe_Values.Look<int>(ref this.ticksTillRetaliation, "ticksTillRetaliation", 600, false);
             Scribe_Defs.Look<TMAbilityDef>(ref this.mimicAbility, "mimicAbility");
             Scribe_Values.Look<float>(ref this.maxSP, "maxSP", 1f, false);
             Scribe_Deep.Look<MightData>(ref this.mightData, "mightData", new object[]

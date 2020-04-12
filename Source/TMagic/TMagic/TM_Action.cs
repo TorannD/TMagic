@@ -2160,6 +2160,7 @@ namespace TorannMagic
                         GenSpawn.Spawn(yayo, pawn.Position, pawn.Map, WipeMode.Vanish);
                         yayo.Ingested(pawn, 0f);
                     }
+                    TM_Action.DoAction_HealPawn(pawn, pawn, 2, 10f);
                     break;                
             }
             if (settingsRef.deathRetaliationIsLethal && rnd < 4)

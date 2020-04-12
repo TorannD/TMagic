@@ -135,14 +135,14 @@ namespace TorannMagic
             if (Rand.Value < this.SpringChance(p))
             {
                 this.Spring(p);
-                if (p.Faction == Faction.OfPlayer || p.HostFaction == Faction.OfPlayer)
-                {
-                    Find.LetterStack.ReceiveLetter("LetterFriendlyTrapSprungLabel".Translate(
-                        p.LabelShort
-                    ), "LetterFriendlyTrapSprung".Translate(
-                        p.LabelShort
-                    ), LetterDefOf.NegativeEvent, new TargetInfo(base.Position, base.Map, false), null);
-                }
+                //if (p.Faction == Faction.OfPlayer || p.HostFaction == Faction.OfPlayer)
+                //{
+                //    Find.LetterStack.ReceiveLetter("LetterFriendlyTrapSprungLabel".Translate(
+                //        p.LabelShort
+                //    ), "LetterFriendlyTrapSprung".Translate(
+                //        p.LabelShort
+                //    ), LetterDefOf.NegativeEvent, new TargetInfo(base.Position, base.Map, false), null);
+                //}
             }
         }
 
