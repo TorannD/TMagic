@@ -1102,7 +1102,7 @@ namespace TorannMagic
 
         public void DoDeathRetaliation()
         {
-            if (!this.Pawn.Downed || this.Pawn.Map == null || this.Pawn.IsPrisoner)
+            if (!this.Pawn.Downed || this.Pawn.Map == null || this.Pawn.IsPrisoner || this.Pawn.Faction == null || !this.Pawn.Faction.HostileTo(Faction.OfPlayerSilentFail))
             {
                 this.deathRetaliating = false;
                 this.canDeathRetaliate = false;
@@ -1119,7 +1119,9 @@ namespace TorannMagic
                     Vector3 moteVec = this.deathRing.RandomElement().ToVector3Shifted();
                     moteVec.x += Rand.Range(-.4f, .4f);
                     moteVec.z += Rand.Range(-.4f, .4f);
-                    float angle = (Quaternion.AngleAxis(90, Vector3.up) * TM_Calc.GetVector(moteVec, this.Pawn.DrawPos)).ToAngleFlat();                    
+                    float angle = (Quaternion.AngleAxis(90, Vector3.up) * TM_Calc.GetVector(moteVec, this.Pawn.DrawPos)).ToAngleFlat();
+                    ThingDef mote = TorannMagicDefOf.Mote_Psi_Grayscale;
+                    mote.graphicData.color = Color.white;
                     TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Psi_Grayscale, moteVec, this.Pawn.Map, Rand.Range(.25f, .6f), .1f, .05f, .05f, 0, Rand.Range(4f, 6f), angle, angle);
                 }
                 if (this.ticksTillRetaliation <= 0)

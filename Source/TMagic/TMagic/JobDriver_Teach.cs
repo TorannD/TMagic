@@ -160,8 +160,6 @@ namespace TorannMagic
                     ThingDef mote = new ThingDef();
                     mote = ThingDef.Named("Mote_Psi_Grayscale");
                     mote.graphicData.color = randomColor;
-                    mote.rotatable = true;
-                    mote.mote.rotateTowardsMoveDirection = true;
                     TM_MoteMaker.ThrowGenericMote(mote, drawPos, this.pawn.Map, Rand.Range(.1f, .3f), 0.2f, .02f, .1f, 0, Rand.Range(8, 10), direction, direction);
                     SoundInfo info = SoundInfo.InMap(new TargetInfo(this.pawn.Position, this.pawn.Map, false), MaintenanceType.None);
                     info.pitchFactor = 1.5f;

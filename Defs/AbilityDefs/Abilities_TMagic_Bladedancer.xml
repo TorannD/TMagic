@@ -246,7 +246,7 @@ Level 3: Moving +25%, Manipulation +25%, Breathing +15%, Blood pumping +10%, Blo
         <description>Melds the bladedancer's razor focus with the edge of a blade to slip between reality, appearing at a chosen location to execute a viscous strike on unsuspecting enemies.
 
 Warmup: .3s
-Cooldown: 15s
+Cooldown: 25s
 Range: 30</description>
         <staminaCost>0.30</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -263,7 +263,7 @@ Range: 30</description>
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
             <warmupTime>0.3</warmupTime>
-            <SecondsToRecharge>15.0</SecondsToRecharge>
+            <SecondsToRecharge>25.0</SecondsToRecharge>
             <range>30</range>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
@@ -281,7 +281,7 @@ Range: 30</description>
         <description>Melds the bladedancer's razor focus with the edge of a blade to slip between reality, appearing at a chosen location to execute a viscous strike on unsuspecting enemies.
 	
 Warmup: .2s
-Cooldown: 12s
+Cooldown: 23s
 Range: 35</description>
         <staminaCost>0.30</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -298,7 +298,7 @@ Range: 35</description>
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
             <warmupTime>0.2</warmupTime>
-            <SecondsToRecharge>12.0</SecondsToRecharge>
+            <SecondsToRecharge>23.0</SecondsToRecharge>
             <range>35</range>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
@@ -316,7 +316,7 @@ Range: 35</description>
         <description>Melds the bladedancer's razor focus with the edge of a blade to slip between reality, appearing at a chosen location to execute a viscous strike on unsuspecting enemies.
 		
 Warmup: .1s
-Cooldown: 9s
+Cooldown: 21s
 Range: 40</description>
         <staminaCost>0.30</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -333,7 +333,7 @@ Range: 40</description>
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
             <warmupTime>0.1</warmupTime>
-            <SecondsToRecharge>9.0</SecondsToRecharge>
+            <SecondsToRecharge>21.0</SecondsToRecharge>
             <range>40</range>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
@@ -351,7 +351,7 @@ Range: 40</description>
         <description>Melds the bladedancer's razor focus with the edge of a blade to slip between reality, appearing at a chosen location to execute a viscous strike on unsuspecting enemies.
 
 Warmup: 0s
-Cooldown: 6s
+Cooldown: 20s
 Range: 45</description>
         <staminaCost>0.30</staminaCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -368,7 +368,7 @@ Range: 45</description>
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
             <warmupTime>0.0</warmupTime>
-            <SecondsToRecharge>6.0</SecondsToRecharge>
+            <SecondsToRecharge>20.0</SecondsToRecharge>
             <range>45</range>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>

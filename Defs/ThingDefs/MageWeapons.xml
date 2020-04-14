@@ -294,8 +294,8 @@ Ability Cooldown: -10%</description>
 	  <MaxHitPoints>180</MaxHitPoints>
       <AccuracyTouch>0.55</AccuracyTouch>
       <AccuracyShort>0.91</AccuracyShort>
-      <AccuracyMedium>0.81</AccuracyMedium>
-      <AccuracyLong>0.68</AccuracyLong>
+      <AccuracyMedium>0.77</AccuracyMedium>
+      <AccuracyLong>0.64</AccuracyLong>
       <RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
     </statBases>
     <costList>
@@ -472,7 +472,7 @@ Arcane Resistance: +30%</description>
 	<projectile>
 		<flyOverhead>false</flyOverhead>
 		<damageDef>ArrowHighVelocity</damageDef>
-		<damageAmountBase>23</damageAmountBase>
+		<damageAmountBase>21</damageAmountBase>
 		<speed>58</speed>
 		<stoppingPower>2</stoppingPower>
 		<armorPenetrationBase>0.25</armorPenetrationBase>
@@ -502,10 +502,10 @@ Class XP Gain: -20%</description>
 	  <MarketValue>4480</MarketValue>
       <Mass>1.0</Mass>
 	  <MaxHitPoints>300</MaxHitPoints>
-      <AccuracyTouch>0.50</AccuracyTouch>
-      <AccuracyShort>0.90</AccuracyShort>
+      <AccuracyTouch>0.40</AccuracyTouch>
+      <AccuracyShort>0.80</AccuracyShort>
       <AccuracyMedium>0.85</AccuracyMedium>
-      <AccuracyLong>0.80</AccuracyLong>
+      <AccuracyLong>0.76</AccuracyLong>
       <RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
     </statBases>
     <costList>
@@ -515,7 +515,7 @@ Class XP Gain: -20%</description>
 	  <Gold>2</Gold>
 	  <Silver>20</Silver>
 	  <RawMagicyte>250</RawMagicyte>
-	  <ThrumboHorn>1</ThrumboHorn>
+	  <ThrumboHorn>2</ThrumboHorn>
     </costList>
 	<recipeMaker>
 	  <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
@@ -560,7 +560,7 @@ Class XP Gain: -20%</description>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Projectile_ThrumArrow</defaultProjectile>
-        <warmupTime>1.7</warmupTime>
+        <warmupTime>2.1</warmupTime>
         <range>45</range>
         <soundCast>TM_ThrumBow</soundCast>
         <soundCastTail>TM_Woosh</soundCastTail>

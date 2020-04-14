@@ -31,15 +31,7 @@ namespace TorannMagic
         {
             base.CompTick();
             if (this.Pawn.Spawned)
-            {
-                if (Find.TickManager.TicksGame % 10 == 0)
-                {
-                    if (this.Pawn.Downed && !this.Pawn.Dead)
-                    {
-                        GenExplosion.DoExplosion(this.Pawn.Position, this.Pawn.Map, Rand.Range(this.explosionRadius * .5f, this.explosionRadius * 1.5f), DamageDefOf.Burn, this.Pawn, Rand.Range(6, 10), 0, null, null, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
-                        this.Pawn.Kill(null, null);
-                    }
-                }
+            {                
                 if (Find.TickManager.TicksGame % nextLeap == 0 && !Pawn.Downed && !Pawn.Dead)
                 {
                     LocalTargetInfo lti = null;
@@ -91,12 +83,15 @@ namespace TorannMagic
                                         where x.Position.InHorDistOf(this.Pawn.Position, (float)this.Props.leapRangeMax) && x.Faction == targetFaction && !x.DestroyedOrNull() && !x.Downed
                                         select x).ToList<Pawn>();
 
-                                Pawn bounceTarget = list.RandomElement();
-                                if (Rand.Chance(1 - this.Props.leapChance))
+                                if (list.Count > 0)
                                 {
-                                    if (CanHitTargetFrom(this.Pawn.Position, target))
+                                    Pawn bounceTarget = list.RandomElement();
+                                    if (Rand.Chance(1 - this.Props.leapChance))
                                     {
-                                        LeapAttack(bounceTarget);
+                                        if (CanHitTargetFrom(this.Pawn.Position, target))
+                                        {
+                                            LeapAttack(bounceTarget);
+                                        }
                                     }
                                 }
                                 //IEnumerable<IntVec3> targets = GenRadial.RadialCellsAround(this.Pawn.Position, this.Props.leapRangeMax, false);
@@ -149,6 +144,14 @@ namespace TorannMagic
                                 //}
                             }
                         }
+                    }
+                }
+                if (Find.TickManager.TicksGame % 10 == 0)
+                {
+                    if (this.Pawn.Downed && !this.Pawn.Dead)
+                    {
+                        GenExplosion.DoExplosion(this.Pawn.Position, this.Pawn.Map, Rand.Range(this.explosionRadius * .5f, this.explosionRadius * 1.5f), DamageDefOf.Burn, this.Pawn, Rand.Range(6, 10), 0, null, null, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
+                        this.Pawn.Kill(null, null);
                     }
                 }
             }

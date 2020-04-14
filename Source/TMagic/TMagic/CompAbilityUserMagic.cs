@@ -245,6 +245,7 @@ namespace TorannMagic
         public List<Thing> lightningTraps = new List<Thing>();
         public IncidentDef predictionIncidentDef = null;
         public int predictionTick = 0;
+        public int predictionHash = 0;
         //Recall fields
         //position, hediffs, needs, mana, manual recall bool, recall duration
         public IntVec3 recallPosition = default(IntVec3);
@@ -1694,7 +1695,7 @@ namespace TorannMagic
 
         public void DoDeathRetaliation()
         {
-            if (!this.Pawn.Downed || this.Pawn.Map == null || this.Pawn.IsPrisoner)
+            if (!this.Pawn.Downed || this.Pawn.Map == null || this.Pawn.IsPrisoner || this.Pawn.Faction == null || !this.Pawn.Faction.HostileTo(Faction.OfPlayerSilentFail))
             {
                 this.deathRetaliating = false;
                 this.canDeathRetaliate = false;
@@ -1711,7 +1712,9 @@ namespace TorannMagic
                     Vector3 moteVec = this.deathRing.RandomElement().ToVector3Shifted();
                     moteVec.x += Rand.Range(-.4f, .4f);
                     moteVec.z += Rand.Range(-.4f, .4f);
-                    float angle = (Quaternion.AngleAxis(90, Vector3.up) * TM_Calc.GetVector(moteVec, this.Pawn.DrawPos)).ToAngleFlat();                    
+                    float angle = (Quaternion.AngleAxis(90, Vector3.up) * TM_Calc.GetVector(moteVec, this.Pawn.DrawPos)).ToAngleFlat();
+                    ThingDef mote = TorannMagicDefOf.Mote_Psi_Grayscale;
+                    mote.graphicData.color = Color.white;
                     TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Psi_Grayscale, moteVec, this.Pawn.Map, Rand.Range(.25f, .6f), .1f, .05f, .05f, 0, Rand.Range(4f, 6f), angle, angle);
                 }
                 if(this.ticksTillRetaliation <= 0)
@@ -8808,6 +8811,7 @@ namespace TorannMagic
             Scribe_Values.Look<int>(ref this.technoWeaponDefNum, "technoWeaponDefNum");
             Scribe_Values.Look<bool>(ref this.doOnce, "doOnce", true, false);
             Scribe_Values.Look<int>(ref this.predictionTick, "predictionTick", 0, false);
+            Scribe_Values.Look<int>(ref this.predictionHash, "predictionHash", 0, false);
             Scribe_References.Look<Thing>(ref this.mageLightThing, "mageLightThing", false);
             Scribe_Values.Look<bool>(ref this.mageLightActive, "mageLightActive", false, false);
             Scribe_Values.Look<bool>(ref this.mageLightSet, "mageLightSet", false, false);

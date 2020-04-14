@@ -186,16 +186,16 @@ namespace TorannMagic
                 potentialRecipes.Add(gemstoneRecipe);
             }
 
-            if(potentialRecipes.Count > 0)
+            if(potentialRecipes != null && replicatedThingDef != null && potentialRecipes.Count > 0)
             {
                 replicant = potentialRecipes.RandomElement();
 
                 IngredientCount ic = new IngredientCount();
-                if (replicant.ingredients != null)
+                if (replicant != null && replicant.ingredients != null)
                 {
                     for (int i = 0; i < replicant.ingredients.Count; i++)
                     {
-                        if (!replicant.ingredients[i].IsFixedIngredient && !repThingDef.MadeFromStuff)
+                        if (!replicant.ingredients[i].IsFixedIngredient && !replicatedThingDef.MadeFromStuff)
                         {
                             Messages.Message("TM_ReplicatedUnrecognizedIngredient".Translate(replicatedThingDef.LabelCap), MessageTypeDefOf.RejectInput);
                             goto EndReplicate;
@@ -208,7 +208,7 @@ namespace TorannMagic
                     {
                         for (int i = 0; i < replicant.ingredients.Count; i++)
                         {
-                            if (replicant.ingredients[i].filter.ToString() != "ingredients")
+                            if (replicant.ingredients[i].filter != null && replicant.ingredients[i].filter.ToString() != "ingredients")
                             {
                                 forgeRecipe.ingredients.Add(replicant.ingredients[i]);
                             }
@@ -216,10 +216,8 @@ namespace TorannMagic
                     }
                 }
 
-
-                if (replicatedStuffDef != null && replicatedThingDef.MadeFromStuff)
+                if (replicatedStuffDef != null && replicatedThingDef != null && replicatedThingDef.MadeFromStuff)
                 {
-
                     ic.filter.SetAllow(replicatedStuffDef, true);
                     ic.SetBaseCount(replicatedThingDef.costStuffCount);
                     forgeRecipe.ingredients.Add(ic);
@@ -232,11 +230,11 @@ namespace TorannMagic
                 forgeRecipe.products = replicant.products;
                 this.copiedThingDef = replicatedThingDef;
                 this.copiedStuffDef = replicatedStuffDef;
-                this.hasSavedRecipe = true;
+                this.hasSavedRecipe = true;                
 
                 EndReplicate:;
 
-                if(forgeRecipe.ingredients.Count == 0)
+                if (forgeRecipe.ingredients.Count == 0)
                 {
                     forgeRecipe.ingredients.Clear();
 

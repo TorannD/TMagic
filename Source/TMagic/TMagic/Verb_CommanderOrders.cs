@@ -53,10 +53,10 @@ namespace TorannMagic
                 if(newPawn.RaceProps.Humanlike && newPawn != caster)
                 {
                     float socialChance = (float)(caster.skills.GetSkill(SkillDefOf.Social).Level / 20f);
-                    float rChance = 0f;
-                    if(!caster.IsColonist)
+                    float rChance = Mathf.Clamp(socialChance * 2f, .1f, 1f);
+                    if (!caster.IsColonist)
                     {
-                        rChance = Mathf.Clamp(socialChance * 2f, .1f, 1f);
+                        rChance = Mathf.Clamp(socialChance * 3f, .5f, 1f);
                         ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                         if(settingsRef.AIHardMode)
                         {
