@@ -50,7 +50,10 @@ namespace TorannMagic.Enchantment
 
         //Hediffs
         public HediffDef hediff = null;
-        public float hediffSeverity = 0f;        
+        public float hediffSeverity = 0f;
+
+        //Thoughts
+        public ThoughtDef enchantmentThought = null;
 
         public void ExposeData()
         {

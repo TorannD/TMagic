@@ -82,12 +82,16 @@ namespace TorannMagic.AutoCast
             {
                 if (distanceToTarget > minDistance && caster.CurJob.locomotionUrgency >= LocomotionUrgency.Jog)// && caster.CurJob.bill == null)
                 {
-                    if (distanceToTarget <= abilitydef.MainVerb.range && jobTarget.Cell != default(IntVec3))
+                    if (distanceToTarget <= abilitydef.MainVerb.range && jobTarget.Cell != default(IntVec3) && jobTarget.Cell.Walkable(caster.Map))
                     {
                         //Log.Message("doing blink to thing");
                         //DoPhase(caster, casterComp, abilitydef, jobTarget.Cell, ability, carriedThing, power);
-                        DoPhase2(caster, casterComp, abilitydef, jobTarget.Cell, ability, carriedThing, power);
-                        success = true;
+                        IntVec3 walkableCell = TM_Action.FindNearestWalkableCell(caster, jobTarget.Cell);
+                        if (TM_Calc.PawnCanOccupyCell(caster, walkableCell))
+                        {
+                            DoPhase2(caster, casterComp, abilitydef, jobTarget.Cell, ability, carriedThing, power);
+                            success = true;
+                        }
                     }
                     else
                     {
@@ -1007,8 +1011,12 @@ namespace TorannMagic.AutoCast
                     if (distanceToTarget <= abilitydef.MainVerb.range && jobTarget.Cell != default(IntVec3))
                     {
                         //Log.Message("doing blink to thing");
-                        DoBlink(caster, casterComp, abilitydef, jobTarget.Cell, ability, carriedThing);
-                        success = true;
+                        IntVec3 walkableCell = TM_Action.FindNearestWalkableCell(caster, jobTarget.Cell);
+                        if (TM_Calc.PawnCanOccupyCell(caster, walkableCell))
+                        {
+                            DoBlink(caster, casterComp, abilitydef, walkableCell, ability, carriedThing);
+                            success = true;
+                        }
                     }
                     else
                     {
@@ -1017,31 +1025,34 @@ namespace TorannMagic.AutoCast
                         //MoteMaker.ThrowHeatGlow(blinkToCell, caster.Map, 1f);
                         bool canReach = false;
                         bool isCloser = false;
-                        try
+                        if (blinkToCell.Walkable(caster.Map))
                         {
-                            canReach = caster.Map.reachability.CanReach(blinkToCell, jobTarget.Cell, PathEndMode.ClosestTouch, TraverseParms.For(TraverseMode.PassDoors));
-                        }
-                        catch
-                        {
-                            //Log.Warning("failed path check");
-                        }
-
-                        if (canReach && blinkToCell.IsValid && blinkToCell.InBounds(caster.Map) && blinkToCell.Walkable(caster.Map) && !blinkToCell.Fogged(caster.Map))// && ((blinkToCell - caster.Position).LengthHorizontal < distanceToTarget))
-                        {
-                            PawnPath ppc = caster.Map.pathFinder.FindPath(caster.Position, jobTarget.Cell, TraverseParms.For(TraverseMode.PassDoors, Danger.Deadly), PathEndMode.ClosestTouch);
-                            float currentCost = ppc.TotalCost;
-                            float futureCost = currentCost;
-                            ppc.ReleaseToPool();
-
-                            PawnPath ppf = caster.Map.pathFinder.FindPath(blinkToCell, jobTarget.Cell, TraverseParms.For(TraverseMode.PassDoors, Danger.Deadly), PathEndMode.ClosestTouch);
-                            futureCost = ppf.TotalCost;
-                            ppf.ReleaseToPool();
-                            isCloser = currentCost > futureCost;
-
-                            if (isCloser)
+                            try
                             {
-                                DoBlink(caster, casterComp, abilitydef, blinkToCell, ability, carriedThing);
-                                success = true;
+                                canReach = caster.Map.reachability.CanReach(blinkToCell, jobTarget.Cell, PathEndMode.ClosestTouch, TraverseParms.For(TraverseMode.PassDoors));
+                            }
+                            catch
+                            {
+                                Log.Warning("failed path check");
+                            }
+
+                            if (canReach && blinkToCell.IsValid && blinkToCell.InBounds(caster.Map) && blinkToCell.Walkable(caster.Map) && !blinkToCell.Fogged(caster.Map))// && ((blinkToCell - caster.Position).LengthHorizontal < distanceToTarget))
+                            {
+                                PawnPath ppc = caster.Map.pathFinder.FindPath(caster.Position, jobTarget.Cell, TraverseParms.For(TraverseMode.PassDoors, Danger.Deadly), PathEndMode.ClosestTouch);
+                                float currentCost = ppc.TotalCost;
+                                float futureCost = currentCost;
+                                ppc.ReleaseToPool();
+
+                                PawnPath ppf = caster.Map.pathFinder.FindPath(blinkToCell, jobTarget.Cell, TraverseParms.For(TraverseMode.PassDoors, Danger.Deadly), PathEndMode.ClosestTouch);
+                                futureCost = ppf.TotalCost;
+                                ppf.ReleaseToPool();
+                                isCloser = currentCost > futureCost;
+
+                                if (isCloser)
+                                {
+                                    DoBlink(caster, casterComp, abilitydef, blinkToCell, ability, carriedThing);
+                                    success = true;
+                                }
                             }
                         }
                     }

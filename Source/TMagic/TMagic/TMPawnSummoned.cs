@@ -170,6 +170,10 @@ namespace TorannMagic
                                 mote.offsetZ = -0.5f;
                             }
                         }
+                        if(Find.TickManager.TicksGame % 120 == 0)
+                        {
+                            CheckAndTrain();
+                        }
                     }
                 }
             }
@@ -273,6 +277,17 @@ namespace TorannMagic
             for(int i =0; i < this.injuries.Count; i++)
             {
                 pawn.health.AddHediff(this.injuries[i], bodyparts.RandomElement());
+            }
+        }
+
+        public void CheckAndTrain()
+        {
+            if (this.training != null && this.training.CanBeTrained(TrainableDefOf.Tameness))
+            {
+                while (!this.training.HasLearned(TrainableDefOf.Tameness))
+                {
+                    this.training.Train(TrainableDefOf.Tameness, null);
+                }
             }
         }
     }

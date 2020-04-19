@@ -76,7 +76,7 @@
       <hasGenders>false</hasGenders>
       <foodType>None</foodType>
 	  <fleshType>TM_SkeletalFlesh</fleshType>
-      <baseHungerRate>0.01</baseHungerRate>	  
+      <baseHungerRate>0.00</baseHungerRate>	  
 <!-- 	  <intelligence>ToolUser</intelligence> -->
 	  <trainability>None</trainability>
       <thinkTreeConstant>TM_Elemental_AI_Constant</thinkTreeConstant>

@@ -97,9 +97,9 @@
     <statBases>
 	  <Mass>300</Mass>
       <MoveSpeed>6.66</MoveSpeed>
-      <ArmorRating_Blunt>0.74</ArmorRating_Blunt>
-      <ArmorRating_Sharp>0.82</ArmorRating_Sharp>
-      <ArmorRating_Heat>.98</ArmorRating_Heat>      
+      <ArmorRating_Blunt>0.84</ArmorRating_Blunt>
+      <ArmorRating_Sharp>1.03</ArmorRating_Sharp>
+      <ArmorRating_Heat>1.21</ArmorRating_Heat>      
     </statBases>
 	<tools>
       <li>
@@ -131,7 +131,7 @@
       </li>
 	</tools>
     <race>
-	  <baseHealthScale>18.0</baseHealthScale>	
+	  <baseHealthScale>22.0</baseHealthScale>	
       <lifeExpectancy>200</lifeExpectancy>
 		<lifeStageAges>
         <li>

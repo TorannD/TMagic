@@ -643,6 +643,17 @@ namespace TorannMagic
                                 this.farThreats.Add(allPawns[i]);                                    
                             }
                         }
+                        if(allPawns[i].Faction == null && allPawns[i].InMentalState)
+                        {
+                            if ((allPawns[i].Position - this.Pawn.Position).LengthHorizontal <= this.Props.maxRangeForCloseThreat)
+                            {
+                                this.closeThreats.Add(allPawns[i]);
+                            }
+                            else if ((allPawns[i].Position - this.Pawn.Position).LengthHorizontal <= this.Props.maxRangeForFarThreat)
+                            {
+                                this.farThreats.Add(allPawns[i]);
+                            }
+                        }
                     }
                 }
             }

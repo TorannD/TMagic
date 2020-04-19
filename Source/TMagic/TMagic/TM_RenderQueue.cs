@@ -26,6 +26,8 @@ namespace TorannMagic
         public static readonly Material mc_east = MaterialPool.MatFrom("Items/magic_circle_east", ShaderDatabase.MoteGlow, Color.white);
         public static readonly Material mc_west = MaterialPool.MatFrom("Items/magic_circle_west",ShaderDatabase.MoteGlow, Color.white);
 
+        public static readonly Material smc = MaterialPool.MatFrom("Items/small_circle_centered", ShaderDatabase.MoteGlow, Color.white);
+
         //Magic
         public static readonly Material enchantMark = MaterialPool.MatFrom("Items/Gemstones/arcane_minor");
 

@@ -10,6 +10,43 @@
          <solid>true</solid>
       </addedPartProps>
    </HediffDef>
+   
+   <HediffDef ParentName="DruidRegrowth">
+    <defName>TM_StandardRegrowth</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Regrown Part</label>
+	<description>The magical entwining of nature and flesh will regrow this body part over several days.</description>
+    <addedPartProps>
+	  <partEfficiency>1</partEfficiency>
+    </addedPartProps>
+	<initialSeverity>10</initialSeverity>
+	<maxSeverity>10</maxSeverity>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-1</severityPerDay>
+      </li>
+    </comps>
+    <stages>      
+	<li>
+		<label>regrown</label>
+		<minSeverity>1</minSeverity>
+      </li>
+	  <li>
+		<label>forming</label>
+		<minSeverity>4</minSeverity>
+		<restFallFactor>1.1</restFallFactor>
+		<hungerRateFactor>1.1</hungerRateFactor>
+		<partEfficiencyOffset>-.25</partEfficiencyOffset>
+      </li>      
+	  <li>
+		<label>stub</label>
+		<minSeverity>7</minSeverity>
+		<restFallFactor>1.3</restFallFactor>
+		<hungerRateFactor>1.3</hungerRateFactor>
+		<partEfficiencyOffset>-.5</partEfficiencyOffset>
+      </li>
+    </stages>
+  </HediffDef>
 
    <!--arms -->
    
@@ -25,7 +62,7 @@
 	<maxSeverity>15</maxSeverity>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>+2</severityPerDay>
+        <severityPerDay>+1</severityPerDay>
       </li>
 	  <li Class="HediffCompProperties_VerbGiver">
 		<tools>
@@ -79,7 +116,7 @@
 	<maxSeverity>15</maxSeverity>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>+3</severityPerDay>
+        <severityPerDay>+2</severityPerDay>
       </li>
 	  <li Class="HediffCompProperties_VerbGiver">
 		<tools>
@@ -190,7 +227,7 @@
 	<maxSeverity>15</maxSeverity>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>+2</severityPerDay>
+        <severityPerDay>+1.5</severityPerDay>
       </li>
     </comps>
     <stages>
@@ -268,7 +305,7 @@
 	<maxSeverity>15</maxSeverity>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>+2</severityPerDay>
+        <severityPerDay>+1</severityPerDay>
       </li>
     </comps>
     <stages>
@@ -307,7 +344,7 @@
 	<maxSeverity>15</maxSeverity>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>+3</severityPerDay>
+        <severityPerDay>+2</severityPerDay>
       </li>
     </comps>
     <stages>
@@ -336,36 +373,6 @@
   </HediffDef>
   
   <HediffDef ParentName="DruidRegrowth">
-    <defName>TM_StandardRegrowth</defName>
-	<hediffClass>HediffWithComps</hediffClass>
-    <label>Regrown Part</label>
-	<description>The magical entwining of nature and flesh will regrow this body part over several days.</description>
-    <addedPartProps>
-	  <partEfficiency>1</partEfficiency>
-    </addedPartProps>
-	<maxSeverity>4</maxSeverity>
-	<comps>
-      <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>+2</severityPerDay>
-      </li>
-    </comps>
-    <stages>
-      <li>
-		<label>forming</label>
-		<minSeverity>0.01</minSeverity>
-		<restFallFactor>1.3</restFallFactor>
-		<hungerRateFactor>1.3</hungerRateFactor>
-		<partEfficiencyOffset>-.25</partEfficiencyOffset>
-      </li>
-      <li>
-		<label>regrown</label>
-		<minSeverity>3</minSeverity>
-		<becomeVisible>false</becomeVisible>
-      </li>
-    </stages>
-  </HediffDef>
-  
-  <HediffDef ParentName="DruidRegrowth">
     <defName>TM_JawRegrowth</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>Regrown Jaw</label>
@@ -376,7 +383,7 @@
 	<maxSeverity>15</maxSeverity>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>+3</severityPerDay>
+        <severityPerDay>+2</severityPerDay>
       </li>
     </comps>
     <stages>
@@ -411,10 +418,10 @@
     <addedPartProps>
 	  <partEfficiency>1.1</partEfficiency>
     </addedPartProps>
-	<maxSeverity>15</maxSeverity>
+	<maxSeverity>50</maxSeverity>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>+2</severityPerDay>
+        <severityPerDay>+.8</severityPerDay>
       </li>
     </comps>
     <stages>
@@ -441,6 +448,11 @@
 		<minSeverity>14.9</minSeverity>
 		<partEfficiencyOffset>.2</partEfficiencyOffset>
       </li>
+	  <li>
+		<label>heart of the wild</label>
+		<minSeverity>49.9</minSeverity>
+		<partEfficiencyOffset>.35</partEfficiencyOffset>
+      </li>
     </stages>
   </HediffDef>
   
@@ -455,7 +467,7 @@
 	<maxSeverity>15</maxSeverity>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>+2</severityPerDay>
+        <severityPerDay>+1</severityPerDay>
       </li>
     </comps>
     <stages>
@@ -496,7 +508,7 @@
 	<maxSeverity>15</maxSeverity>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>+2</severityPerDay>
+        <severityPerDay>+1</severityPerDay>
       </li>
     </comps>
     <stages>
@@ -537,7 +549,7 @@
 	<maxSeverity>15</maxSeverity>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>+2</severityPerDay>
+        <severityPerDay>+1</severityPerDay>
       </li>
     </comps>
     <stages>
@@ -578,7 +590,7 @@
 	<maxSeverity>7</maxSeverity>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>+2</severityPerDay>
+        <severityPerDay>+1</severityPerDay>
       </li>
     </comps>
     <stages>
@@ -615,7 +627,7 @@
 	<maxSeverity>15</maxSeverity>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>+2</severityPerDay>
+        <severityPerDay>+1</severityPerDay>
       </li>
     </comps>
     <stages>

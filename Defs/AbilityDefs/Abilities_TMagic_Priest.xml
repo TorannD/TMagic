@@ -510,7 +510,7 @@ Pain:		-70%</description>
     <defName>TM_Resurrection</defName>
     <label>Resurrection</label>
     <uiIconPath>UI/resurrection</uiIconPath>
-    <description>Resurrection restores the life of a recently deceased pawn. This places an immense demand on the Priest and resurrected pawn and both will be weak for several days while their strength recovers.</description>
+    <description>Resurrection restores the life of a recently deceased pawn. This places an immense demand on the Priest and resurrected pawn and both will be weak for several days while their strength recovers. Resurrection comes at a price; the resurrected pawn will forfeit up to 20% of their skills and may develop detrimental health conditions.</description>
     <manaCost>0.95</manaCost>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>

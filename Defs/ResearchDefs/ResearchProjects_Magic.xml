@@ -15,16 +15,30 @@
 	</ResearchProjectDef>
 	
 	<ResearchProjectDef>
+		<defName>TM_ArcaneFundamentals</defName>
+		<label>arcane fundamentals</label>
+		<tab>TMagic</tab>
+		<description>Basic research on how arcane power is linked to the physical realm and to other mages.</description>
+		<baseCost>300</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>5.0</researchViewX>
+		<researchViewY>1.0</researchViewY>
+		<prerequisites>
+			<li>TM_ArcaneConstruction</li>
+		</prerequisites>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
 		<defName>TM_MagicCircle</defName>
 		<label>Magic Circle</label>
 		<tab>TMagic</tab>
-		<description>Researches the geometry and symmetry of ley lines that enables magic users to combine their energy to create incredible effects.</description>
+		<description>Advanced research on the geometry and symmetry of ley lines that enables magic users to combine their energy to create incredible effects.</description>
 		<baseCost>2000</baseCost>
 		<techLevel>Neolithic</techLevel>
-		<researchViewX>6.0</researchViewX>
-		<researchViewY>0.0</researchViewY>
+		<researchViewX>5.0</researchViewX>
+		<researchViewY>2.0</researchViewY>
 		<prerequisites>
-			<li>TM_ArcaneConstruction</li>
+			<li>TM_ArcaneFundamentals</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
@@ -35,8 +49,8 @@
 		<description>Allows the construction of a portal - a powerful artifact that enables instant travel between colonies.\n\nRequires an Arcane Mage trained in Gateways to activate.</description>
 		<baseCost>2000</baseCost>
 		<techLevel>Medieval</techLevel>
-		<researchViewX>5.0</researchViewX>
-		<researchViewY>1.0</researchViewY>
+		<researchViewX>6.0</researchViewX>
+		<researchViewY>0.0</researchViewY>
 		<prerequisites>
 			<li>TM_ArcaneConstruction</li>
 		</prerequisites>

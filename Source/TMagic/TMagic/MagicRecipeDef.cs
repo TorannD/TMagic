@@ -24,6 +24,8 @@ namespace TorannMagic
         //public IncidentDef resultIncident = new IncidentDef();
         //public int incidentPoints = 0;
         public List<TMDefs.TM_Incident> resultIncidents = new List<TMDefs.TM_Incident>();
+        public bool selectRandomIncident = false;
+        public int selectRandomIncidentCount = 0;
 
         //Game condition the recipe generates
         //public GameConditionDef resultCondition = new GameConditionDef();
@@ -48,5 +50,9 @@ namespace TorannMagic
         ////Number of things to spawn
         //public int spawnThingCount = 0;
         public List<TMDefs.TM_SpawnThings> resultSpawnThings = new List<TMDefs.TM_SpawnThings>();
+
+        //Magic Map component actions
+        public List<string> resultMapComponentConditions = new List<string>();
+        public float mapComponentConditionValue = 0f;
     }
 }

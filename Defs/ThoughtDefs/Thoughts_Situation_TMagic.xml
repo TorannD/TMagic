@@ -199,5 +199,19 @@
 			</li>
 		</stages>
 	</ThoughtDef>	
+	
+	 <!-- enchanted clothing material - not implemented -->
+	 
+<!-- 	  <ThoughtDef>
+		<defName>Thought_EnchantedApparelMaterial</defName>
+		<workerClass>TorannMagic.Enchantment.ThoughtWorker_TM_EnchantedItem</workerClass>
+		<stages>
+			<li>
+				<label></label>
+				<description>Enchanted clothing material.</description>
+				<baseMoodEffect>-0</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef> -->
   
 </Defs>

@@ -19,8 +19,8 @@ namespace TorannMagic
         protected Vector3 destination;
 
         private int searchDelay = 210;
-        private int maxStrikeDelay = 100;
-        private int maxStrikeDelayBldg = 60;
+        private int maxStrikeDelay = 90;
+        private int maxStrikeDelayBldg = 50;
         private int lastStrike = 0;
         private int lastStrikeBldg = 0;
         private int age = -1;
@@ -197,7 +197,7 @@ namespace TorannMagic
                 DrawOrb(exactPosition, base.Map);
                 if(this.searchDelay < 0)
                 {
-                    SearchForTargets(base.Position, 5f + (1 * verVal));
+                    SearchForTargets(base.Position, 8f + (1 * verVal));
                 }                
                 bool flag2 = this.ticksToImpact <= 0;
                 if (flag2)
@@ -233,68 +233,77 @@ namespace TorannMagic
         {            
             Pawn curPawnTarg = null;
             Building curBldgTarg = null;
-            IntVec3 curCell;
-            IEnumerable <IntVec3> targets = GenRadial.RadialCellsAround(center, radius, true);
-            for (int i = 0; i < targets.Count(); i++)
+            //IntVec3 curCell;
+            //IEnumerable <IntVec3> targets = GenRadial.RadialCellsAround(center, radius, true);
+            //for (int i = 0; i < targets.Count(); i++)
+            //{
+            //    curCell = targets.ToArray<IntVec3>()[i];
+            //    if ( curCell.InBounds(base.Map) && curCell.IsValid)
+            //    {
+            //        curPawnTarg = curCell.GetFirstPawn(base.Map);
+            //        curBldgTarg = curCell.GetFirstBuilding(base.Map);
+            //    }               
+            List<Pawn> targets = new List<Pawn>();
+            targets.Clear();
+            if (this.age > this.lastStrike)
             {
-                curCell = targets.ToArray<IntVec3>()[i];
-                if ( curCell.InBounds(base.Map) && curCell.IsValid)
+                targets = TM_Calc.FindAllPawnsAround(base.Map, center, radius);
+                if (targets != null && targets.Count > 0)
                 {
-                    curPawnTarg = curCell.GetFirstPawn(base.Map);
-                    curBldgTarg = curCell.GetFirstBuilding(base.Map);
-                }               
-
-                if (curPawnTarg != null && curPawnTarg != launcher)
-                {
-                    bool newTarg = false;
-                    if (this.age > this.lastStrike + (this.maxStrikeDelay - (int)Rand.Range(0 + (pwrVal * 20), 40 + (pwrVal *15))))
+                    curPawnTarg = targets.RandomElement();
+                    if (curPawnTarg != launcher)
                     {
-                        if( Rand.Chance(.1f))
+                        CellRect cellRect = CellRect.CenteredOn(curPawnTarg.Position, 2);
+                        cellRect.ClipInsideMap(base.Map);
+                        DrawStrike(center, curPawnTarg.Position.ToVector3());
+                        for (int k = 0; k < Rand.Range(1, 8); k++)
                         {
-                            newTarg = true;
+                            IntVec3 randomCell = cellRect.RandomCell;
+                            GenExplosion.DoExplosion(randomCell, base.Map, Rand.Range(.4f, .8f), TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(5 + pwrVal, 9 + 3 * pwrVal) * this.arcaneDmg), 0, SoundDefOf.Thunder_OnMap, null, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
                         }
-                        if (newTarg)
-                        {
-                            CellRect cellRect = CellRect.CenteredOn(curCell, 2);
-                            cellRect.ClipInsideMap(base.Map);
-                            DrawStrike(center, curPawnTarg.Position.ToVector3());
-                            for (int k = 0; k < Rand.Range(1, 8); k++)
-                            {
-                                IntVec3 randomCell = cellRect.RandomCell;
-                                GenExplosion.DoExplosion(randomCell, base.Map, Rand.Range(.4f, .8f), TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(5 + pwrVal, 9 + 3*pwrVal) * this.arcaneDmg), 0, SoundDefOf.Thunder_OnMap, null, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
-                            }
-                            GenExplosion.DoExplosion(curPawnTarg.Position, base.Map, 1f, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(5+  pwrVal, 9 + 3 * pwrVal) * this.arcaneDmg), 0, SoundDefOf.Thunder_OffMap, null, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
-                            this.lastStrike = this.age;
-                        }                        
+                        GenExplosion.DoExplosion(curPawnTarg.Position, base.Map, 1f, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(5 + pwrVal, 9 + 3 * pwrVal) * this.arcaneDmg), 0, SoundDefOf.Thunder_OffMap, null, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
+                        this.lastStrike = this.age + (this.maxStrikeDelay - (int)Rand.Range(0 + (pwrVal * 20), 50 + (pwrVal * 10)));
+                    }
+                    else
+                    {
+                        this.lastStrike += 10;
                     }
                 }
-                if (curBldgTarg != null)
+                else
                 {
-                    bool newTarg = false;
-                    if (this.age > this.lastStrikeBldg + (this.maxStrikeDelayBldg - (int)Rand.Range(0 + (pwrVal * 10), (pwrVal * 15))))
-                    {
-                        if (Rand.Chance(.1f))
-                        {
-                            newTarg = true;
-                        }
-                        if (newTarg)
-                        {
-                            CellRect cellRect = CellRect.CenteredOn(curCell, 1);
-                            cellRect.ClipInsideMap(base.Map);
-                            DrawStrike(center, curBldgTarg.Position.ToVector3());
-                            for (int k = 0; k < Rand.Range(1, 8); k++)
-                            {
-                                IntVec3 randomCell = cellRect.RandomCell;
-                                GenExplosion.DoExplosion(randomCell, base.Map, Rand.Range(.2f, .6f), TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(3 + 3 * pwrVal, 7 + 5 * pwrVal) * this.arcaneDmg), 0, SoundDefOf.Thunder_OffMap, null, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
-
-                            }
-                            GenExplosion.DoExplosion(curBldgTarg.Position, base.Map, 1f, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(5 + 5 * pwrVal, 10 + 10 * pwrVal) * this.arcaneDmg), 0, SoundDefOf.Thunder_OffMap, null, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
-                            this.lastStrikeBldg = this.age;
-                        }
-                    }
+                    this.lastStrike += 10;
                 }
-                targets.GetEnumerator().MoveNext();
+            }                
+
+            if (this.age > this.lastStrikeBldg)
+            {
+                List<Building> list = new List<Building>();
+                list.Clear();
+                list = (from x in base.Map.listerThings.AllThings
+                        where x.Position.InHorDistOf(center, radius) && !x.DestroyedOrNull() && x is Building
+                        select x as Building).ToList<Building>();
+                if (list.Count > 0)
+                {
+                    curBldgTarg = list.RandomElement();
+                    CellRect cellRect = CellRect.CenteredOn(curBldgTarg.Position, 1);
+                    cellRect.ClipInsideMap(base.Map);
+                    DrawStrike(center, curBldgTarg.Position.ToVector3());
+                    for (int k = 0; k < Rand.Range(1, 8); k++)
+                    {
+                        IntVec3 randomCell = cellRect.RandomCell;
+                        GenExplosion.DoExplosion(randomCell, base.Map, Rand.Range(.2f, .6f), TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(3 + 3 * pwrVal, 7 + 5 * pwrVal) * this.arcaneDmg), 0, SoundDefOf.Thunder_OffMap, null, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
+
+                    }
+                    GenExplosion.DoExplosion(curBldgTarg.Position, base.Map, 1f, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(10 + 3 * pwrVal, 25 + 5 * pwrVal) * this.arcaneDmg), 0, SoundDefOf.Thunder_OffMap, null, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
+                    this.lastStrikeBldg = this.age + (this.maxStrikeDelayBldg - (int)Rand.Range(0 + (pwrVal * 10), (pwrVal * 15)));
+                }
+                else
+                {
+                    this.lastStrikeBldg += 10;
+                }
             }
+
+            //}
             DrawStrikeFading();
             age++;
         }
@@ -389,8 +398,8 @@ namespace TorannMagic
                 }
             }
 
-            List<IntVec3> dissipationList = GenRadial.RadialCellsAround(this.ExactPosition.ToIntVec3(), 9, false).ToList();
-            for (int i = 0; i < (10 + 3*pwrVal); i++)
+            List<IntVec3> dissipationList = GenRadial.RadialCellsAround(this.ExactPosition.ToIntVec3(), 12, false).ToList();
+            for (int i = 0; i < (15 + 4*pwrVal); i++)
             {
                 IntVec3 strikeCell = dissipationList.RandomElement();
                 if (strikeCell.InBounds(base.Map) && strikeCell.IsValid && !strikeCell.Fogged(this.Map))
@@ -405,7 +414,7 @@ namespace TorannMagic
                     }
                 }
             }
-            GenExplosion.DoExplosion(this.ExactPosition.ToIntVec3(), base.Map, 1f + verVal, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(5 + 5 * pwrVal, 10 + 10 * pwrVal) * this.arcaneDmg), 0, SoundDefOf.Thunder_OffMap, null, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
+            GenExplosion.DoExplosion(this.ExactPosition.ToIntVec3(), base.Map, 3f + verVal, TMDamageDefOf.DamageDefOf.TM_Lightning, this.launcher, Mathf.RoundToInt(Rand.Range(5 + 5 * pwrVal, 10 + 10 * pwrVal) * this.arcaneDmg), 0, SoundDefOf.Thunder_OffMap, null, null, null, null, 0f, 1, false, null, 0f, 1, 0.1f, true);
 
 
             this.Destroy(DestroyMode.Vanish);

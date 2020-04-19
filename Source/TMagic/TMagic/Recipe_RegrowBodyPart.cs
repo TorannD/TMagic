@@ -169,8 +169,6 @@ namespace TorannMagic
                 case "Spine":
                     patient.health.AddHediff(HediffDef.Named("TM_SpineRegrowth"), part, null);
                     break;
-
-
             }
         }
     }

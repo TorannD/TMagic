@@ -4,6 +4,7 @@ using System.Linq;
 using RimWorld;
 using AbilityUser;
 using Verse;
+using Verse.AI;
 
 
 namespace TorannMagic
@@ -99,6 +100,21 @@ namespace TorannMagic
                             if (pwrVal > 0)
                             {
                                 TM_MoteMaker.ThrowManaPuff(newPawn.Position.ToVector3(), newPawn.Map, 1f);
+                            }
+                            List<Pawn> potentialHostiles = new List<Pawn>();
+                            potentialHostiles.Clear();
+                            for (int j = 0; j < newPawn.Map.mapPawns.AllPawnsSpawned.Count; j++)
+                            {
+                                Pawn hostile = newPawn.Map.mapPawns.AllPawnsSpawned[j];
+                                if (hostile.Faction.HostileTo(Faction.OfPlayerSilentFail))
+                                {
+                                    potentialHostiles.AddDistinct(hostile);
+                                }
+                            }
+                            if (potentialHostiles.Count > 0)
+                            {
+                                Job job = new Job(JobDefOf.AttackMelee, potentialHostiles.RandomElement());
+                                newPawn.jobs.TryTakeOrderedJob(job, JobTag.InMentalState);
                             }
                         }
                     }

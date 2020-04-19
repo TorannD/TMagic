@@ -286,12 +286,12 @@ The type of material used in construction directly affects the quality of the ma
 Stone (any): no bonuses
 Steel: no bonus
 Wood: no bonus
-Jade: success chance +20%
-Silver: refunds 20% of material cost
-Plasteel: event points +15%
-Gold: event points +10%, duration +20%
-Uranium: duration and success chance +15%
-Arcalleum: success chance +10%, refunds 20% of mana cost
+Jade: success chance +30%
+Silver: refunds 25% of material cost
+Plasteel: event points +15%, duration +10%
+Gold: event points +20%, duration +20%, refunds 15% of material cost
+Uranium: duration and success chance +20%
+Arcalleum: success chance +15%, refunds 25% of mana cost
 
 *Admin note: the circle will fuel itself when it detects mages capable of performing the ritual.</description>
     <graphicData>
@@ -307,10 +307,10 @@ Arcalleum: success chance +10%, refunds 20% of mana cost
     </graphicData>
 	<drawerType>RealtimeOnly</drawerType>
     <costList>
-      <Steel>100</Steel>
+      <Steel>200</Steel>
 	  <Jade>60</Jade>
 	  <Uranium>60</Uranium>
-	  <RawMagicyte>200</RawMagicyte>
+	  <RawMagicyte>400</RawMagicyte>
     </costList>
     <stuffCategories>
       <li>Metallic</li>
@@ -318,12 +318,12 @@ Arcalleum: success chance +10%, refunds 20% of mana cost
 	  <li>Woody</li>
     </stuffCategories>
 	<tickerType>Normal</tickerType>
-    <costStuffCount>100</costStuffCount>
+    <costStuffCount>200</costStuffCount>
     <altitudeLayer>Building</altitudeLayer>
     <fillPercent>0.5</fillPercent>
     <useHitPoints>True</useHitPoints>
     <statBases>
-      <WorkToBuild>30000</WorkToBuild>
+      <WorkToBuild>35000</WorkToBuild>
       <MaxHitPoints>1000</MaxHitPoints>
       <Flammability>0.5</Flammability>
       <Cleanliness>0</Cleanliness>
@@ -367,6 +367,100 @@ Arcalleum: success chance +10%, refunds 20% of mana cost
     <designationHotKey>Misc2</designationHotKey>
 	<researchPrerequisites>
       <li>TM_MagicCircle</li>
+    </researchPrerequisites>
+  </ThingDef>
+  
+  <ThingDef ParentName="TM_BuildingBase">
+    <defName>TableSmallMagicCircle</defName>
+    <label>magic focal point</label>
+	<thingClass>TorannMagic.Building_TMSmallMagicCircle</thingClass>
+    <description>Arcane focal points are the byproduct of research into magical ley lines and arcane interconnectivity. The focal point allows a mage to visualize their connection to gaia and other other mages, allowing them greater interaction with nature, order, and chaos. The focal point can link the arcane power of two mages to perform powerful rituals.
+
+The type of material used in construction directly affects the quality of the magic circle.
+Stone (any): no bonuses
+Steel: no bonus
+Wood: no bonus
+Jade: success chance +15%
+Silver: refunds 15% of material cost
+Plasteel: event points +15%
+Gold: event points +10%, duration +15%, refunds 10% of material cost
+Uranium: duration and success chance +10%
+Arcalleum: success chance +10%, refunds 10% of mana cost
+
+*Admin note: the circle will fuel itself when it detects mages capable of performing the ritual. Mages can not be forced to work at the focal point, but will perform rituals when conditions are met.</description>
+    <graphicData>
+      <texPath>Items/small_circle</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(5.2,5.2)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+	<drawerType>RealtimeOnly</drawerType>
+    <costList>
+      <Steel>100</Steel>
+	  <Jade>40</Jade>
+	  <Uranium>20</Uranium>
+	  <RawMagicyte>200</RawMagicyte>
+    </costList>
+    <stuffCategories>
+      <li>Metallic</li>
+	  <li>Stony</li>
+	  <li>Woody</li>
+    </stuffCategories>
+	<tickerType>Normal</tickerType>
+    <costStuffCount>100</costStuffCount>
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>10000</WorkToBuild>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Flammability>0.5</Flammability>
+      <Cleanliness>0</Cleanliness>
+	  <WorkTableWorkSpeedFactor>1</WorkTableWorkSpeedFactor>
+    </statBases>
+    <size>(3,5)</size>
+    <designationCategory>Production</designationCategory>
+    <passability>Standable</passability>
+    <pathCost>10</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,2)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+	<recipes>
+
+    </recipes>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+	  <expandHomeArea>true</expandHomeArea>
+      <hasFuelingPort>false</hasFuelingPort>
+    </building>
+    <comps>
+	  <li Class="CompProperties_Refuelable">
+        <fuelCapacity>1</fuelCapacity>
+        <targetFuelLevelConfigurable>false</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>1</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Portfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>false</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+		<drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+      </li>
+    </comps>
+    <designationHotKey>Misc2</designationHotKey>
+	<researchPrerequisites>
+      <li>TM_ArcaneFundamentals</li>
     </researchPrerequisites>
   </ThingDef>
 

@@ -25,7 +25,7 @@
 		<description>Use druidic powers to regrow body parts.</description>
 		<workerClass>TorannMagic.Recipe_RegrowBodyPart</workerClass>
 		<jobString>Regrowing body part.</jobString>
-		<workAmount>500</workAmount>
+		<workAmount>750</workAmount>
 		<dontShowIfAnyIngredientMissing>true</dontShowIfAnyIngredientMissing>
 		<ingredients>
 			<li>
@@ -34,7 +34,7 @@
 						<li>Medicine</li>
 					</categories>
 				</filter>
-				<count>1</count>
+				<count>3</count>
 			</li>
 			<li>
 				<filter>
@@ -50,7 +50,7 @@
 						<li>ManaPotion</li>
 					</thingDefs>
 				</filter>
-				<count>1</count>
+				<count>2</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
@@ -79,6 +79,50 @@
 			<li>Liver</li>
 			<li>Stomach</li>
 			<li>Spine</li>
+		</appliedOnFixedBodyParts>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRegrowth">
+		<defName>UniversalRegrowth</defName>
+		<label>regrow body part (Druid only, 90% mana required)</label>
+		<description>Use druidic powers to regrow body parts.</description>
+		<workerClass>TorannMagic.Recipe_RegrowUniversalBodyPart</workerClass>
+		<jobString>Regrowing body part.</jobString>
+		<workAmount>750</workAmount>
+		<dontShowIfAnyIngredientMissing>true</dontShowIfAnyIngredientMissing>
+		<ingredients>
+			<li>
+				<filter><categories><li>Medicine</li></categories></filter>
+				<count>2</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>SeedofRegrowth</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ManaPotion</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<categories>
+				<li>Medicine</li>
+			</categories>
+			<thingDefs>
+				<li>SeedofRegrowth</li>
+				<li>ManaPotion</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Heart</li>
 		</appliedOnFixedBodyParts>
 	</RecipeDef>
 

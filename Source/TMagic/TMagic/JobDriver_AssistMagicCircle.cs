@@ -19,7 +19,7 @@ namespace TorannMagic
         Pawn waitForPawn = null;
         Thing waitForThing = null;
         public JobDef targetJobDef = null;
-        public Building_TMMagicCircle circle = null;
+        public Building_TMMagicCircleBase circle = null;
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
@@ -32,7 +32,7 @@ namespace TorannMagic
             //this.FailOnDowned(TargetIndex.A);
             //this.FailOnCannotTouch(TargetIndex.A, PathEndMode.OnCell);
 
-            circle = TargetB.Thing as Building_TMMagicCircle;
+            circle = TargetB.Thing as Building_TMMagicCircleBase;
             Toil gotoPortal = new Toil()
             {
                 initAction = () =>
@@ -49,7 +49,7 @@ namespace TorannMagic
                 {
                     if (circle != null)
                     {
-                        this.pawn.rotationTracker.FaceTarget(circle.InteractionCell);
+                        this.pawn.rotationTracker.FaceTarget(circle.GetCircleCenter);
                         
                     }
                     if (this.age > this.durationTicks)
@@ -61,13 +61,13 @@ namespace TorannMagic
                 {
                     if (this.circle != null)
                     {
-                        this.pawn.rotationTracker.FaceTarget(circle.InteractionCell);
+                        this.pawn.rotationTracker.FaceTarget(circle.GetCircleCenter);
                     }
                     else
                     {
-                        if(TargetB.Thing != null && TargetB.Thing is Building_TMMagicCircle)
+                        if(TargetB.Thing != null && TargetB.Thing is Building_TMMagicCircleBase)
                         {
-                            circle = TargetB.Thing as Building_TMMagicCircle;
+                            circle = TargetB.Thing as Building_TMMagicCircleBase;
                         }
                     }
                     if (age > durationTicks)

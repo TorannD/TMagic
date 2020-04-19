@@ -115,6 +115,8 @@
     <Compile Include="Building_TMArcaneForge.cs" />
     <Compile Include="Building_TMHeater.cs" />
     <Compile Include="Building_TMMageLight.cs" />
+    <Compile Include="Building_TMMagicCircleBase.cs" />
+    <Compile Include="Building_TMSmallMagicCircle.cs" />
     <Compile Include="Building_TMMagicCircle.cs" />
     <Compile Include="Building_TM_DMP.cs" />
     <Compile Include="Building_TMBarrier.cs" />
@@ -128,7 +130,17 @@
     <Compile Include="Building_PoisonTrap.cs" />
     <Compile Include="Building_TechnoTurret.cs" />
     <Compile Include="Building_ExplosiveProximityTrap.cs" />
+    <Compile Include="Conditions\GameCondition_DivineBlessing.cs" />
+    <Compile Include="Conditions\GameCondition_TargetedPredatorInsanity.cs" />
+    <Compile Include="Conditions\GameCondition_DemonAssault.cs" />
+    <Compile Include="Conditions\IncidentWorker_DemonAssault.cs" />
+    <Compile Include="MagicMapComponent.cs" />
+    <Compile Include="Enchantment\ThoughtWorker_TM_EnchantedItem.cs" />
+    <Compile Include="Enchantment\CompEnchantedStuff.cs" />
+    <Compile Include="Enchantment\SetBonus.cs" />
+    <Compile Include="Enchantment\CompProperties_EnchantedStuff.cs" />
     <Compile Include="JobDriver_GotoAndCast.cs" />
+    <Compile Include="Recipe_RegrowUniversalBodyPart.cs" />
     <Compile Include="Thoughts\TM_Inspiration.cs" />
     <Compile Include="TM_Command_Target.cs" />
     <Compile Include="Events\IncidentWorker_QuestArcaneCamp.cs" />

@@ -358,6 +358,8 @@ namespace TorannMagic
         public static HediffDef TM_HandRegrowth;
         public static HediffDef TM_FootRegrowth;
         public static HediffDef TM_LegRegrowth;
+        public static RecipeDef Regrowth;
+        public static RecipeDef UniversalRegrowth;
 
         //Necromancer
         public static TraitDef Necromancer;
@@ -964,6 +966,9 @@ namespace TorannMagic
         public static ThingDef Mote_PowerWave;
         public static ThingDef Mote_CQC;
         public static ThingDef Mote_ArcaneFlame;
+        public static ThingDef Mote_GreenTwinkle;
+        public static ThingDef Mote_BlueTwinkle;
+        public static ThingDef Mote_Twinkle_grayscale;
 
         public static ThingDef Projectile_FogOfTorment;        
 
@@ -993,6 +998,7 @@ namespace TorannMagic
         public static EffecterDef TM_HTL_EffecterED;
         public static EffecterDef TM_IgniteED;
         public static EffecterDef TM_SnapFreezeED;
+        public static EffecterDef TM_SmallMagicCircleED;
 
         //psychast copies, used with tm_motemaker.makeoverlay
         //adjusts def values on each cast
@@ -1063,6 +1069,8 @@ namespace TorannMagic
         public static SoundDef TM_MetalImpact;
         public static SoundDef TM_FireBombSD;
         public static SoundDef TM_WindLowSD;
+        public static SoundDef TM_Thunder_OnMap;
+        public static SoundDef TM_Thunder_OffMap;
 
         //Inspirations
         public static InspirationDef ID_Champion;
@@ -1103,13 +1111,18 @@ namespace TorannMagic
         public static ThingDef TM_Portal;
         public static ThingDef TM_ArcaneCapacitor;
         public static ThingDef TM_DimensionalManaPocket;
+        //public static ThingDef TM_MagicCircleBase;
         public static ThingDef TableMagicCircle;
+        public static ThingDef TableSmallMagicCircle;
 
         //ThoughtDefs
         public static ThoughtDef TM_PhantomLimb;
-        public static ThoughtDef TM_NeedTravel;        
+        public static ThoughtDef TM_NeedTravel;
         //public static ThoughtDef AteMysteryMeatDirect;
         //public static ThoughtDef AteMysteryMeatAsIngredient;
+
+        //WeatherDefs
+        public static WeatherDef TM_HealingRainWD;
 
         //Factions
         public static FactionDef TM_SkeletalFaction;

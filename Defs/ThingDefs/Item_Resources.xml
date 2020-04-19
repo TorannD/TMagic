@@ -47,6 +47,12 @@ Extremely difficult and taxing to create, only a talented and knowledgeable mage
 	<tradeTags>
 	  <li>RawArcane</li>
     </tradeTags>
+	<comps>
+		<li Class="TorannMagic.Enchantment.CompProperties_EnchantedStuff">
+			<isEnchanted>true</isEnchanted>
+			<enchantmentBonusMultiplier>1.2</enchantmentBonusMultiplier>
+		</li>
+	</comps>
   </ThingDef>
   
     <!--=============== Arcalleum ====================-->
@@ -112,6 +118,11 @@ Extremely difficult and taxing to create, only a talented and knowledgeable mage
       <li>
         <compClass>CompColorable</compClass>
       </li>
+	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedStuff">
+		<isEnchanted>true</isEnchanted>
+		<arcalleumCooldownPerMass>1</arcalleumCooldownPerMass>
+		<appliedThoughts>Thought_EnchantedBody</appliedThoughts>
+	  </li>
     </comps>
     <colorGeneratorInTraderStock Class="ColorGenerator_Options">
       <options>

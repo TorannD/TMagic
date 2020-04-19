@@ -254,6 +254,7 @@ namespace TorannMagic
                     {
                         xpGain = 100;
                     }
+                    xpGain = Mathf.RoundToInt(xpGain * studentComp.xpGain);
                     MoteMaker.ThrowText(student.DrawPos, student.MapHeld, "XP +" + xpGain, -1f);
                     studentComp.MagicUserXP += xpGain;
                     if (this.pawn.needs.joy != null)
@@ -295,6 +296,7 @@ namespace TorannMagic
                     {
                         xpGain = 100;
                     }
+                    xpGain = Mathf.RoundToInt(xpGain * studentComp.xpGain);
                     MoteMaker.ThrowText(student.DrawPos, student.MapHeld, "XP +" + xpGain, -1f);
                     studentComp.MightUserXP += xpGain;
                     if (this.pawn.needs.joy != null)

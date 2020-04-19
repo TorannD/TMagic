@@ -175,5 +175,60 @@
     <endMessage>The violent thunderstorm is receding.</endMessage>
     <canBePermanent>false</canBePermanent>
   </GameConditionDef>
+  
+  <GameConditionDef>
+    <defName>TargetedPredatorInsanity</defName>
+    <conditionClass>TorannMagic.Conditions.GameCondition_TargetedPredatorInsanity</conditionClass>
+    <label>predator insanity</label>
+    <description>A psychic pulse enrages nearby predators... and nudges them towards aggressive humans.</description>
+    <endMessage>The predator pulse fades.</endMessage>
+    <letterText>You have enraged all nearby predators and focused them on your enemies. Be warned, the enraged animals will continue to hunt even after your enemies are gone.</letterText>
+	<letterDef>PositiveEvent</letterDef>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+  
+  <GameConditionDef>
+    <defName>DivineBlessing</defName>
+    <conditionClass>TorannMagic.Conditions.GameCondition_DivineBlessing</conditionClass>
+    <label>divine blessing</label>
+    <description>A higher power answers your plea for mercy.</description>
+    <endMessage>The benevolent presence fades away.</endMessage>
+    <letterText>Your plea for mercy has been answered by a higher power. Various blessings have been bestowed to contest existing ailments.</letterText>
+	<letterDef>PositiveEvent</letterDef>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+  
+  <GameConditionDef>
+    <defName>DemonAssault</defName>
+    <conditionClass>TorannMagic.Conditions.GameCondition_DemonAssault</conditionClass>
+    <label>demon attack</label>
+    <description>The end is nigh - a rampaging demon is attacking your colony!\n\nThis brute has an assortment of attacks and challenging tactics.\nFire and ash will fall from the skies.\nThere is very little time to prepare.\n\nGood luck!</description>
+    <endMessage>The demon is traveling to another location.</endMessage>
+    <letterText>The end is nigh - a rampaging demon is attacking your colony!\n\nThis brute has an assortment of attacks and challenging tactics.\nFire and ash will fall from the skies.\nThere is very little time to prepare.\n\nGood luck!</letterText>
+    <letterDef>ThreatBig</letterDef>
+    <canBePermanent>false</canBePermanent>
+  </GameConditionDef>
+  
+  	<IncidentDef>
+    <defName>DemonAssault</defName>
+    <label>demon attack</label>
+	<category>ThreatBig</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>TorannMagic.Conditions.IncidentWorker_DemonAssault</workerClass>
+    <gameCondition>DemonAssault</gameCondition>
+	<letterLabel>Demon attack</letterLabel>    
+	<letterText>The end is nigh - a rampaging demon is attacking your colony!\n\nThis brute has an assortment of attacks and challenging tactics.\nFire and ash will fall from the skies.\nThere is very little time to prepare.\n\nGood luck!</letterText>
+    <letterDef>ThreatBig</letterDef>
+    <baseChance>0.25</baseChance>
+    <minRefireDays>10</minRefireDays>
+	<earliestDay>166</earliestDay>
+	<minPopulation>10</minPopulation>
+    <durationDays>
+      <min>.5</min>
+      <max>1</max>
+    </durationDays>
+  </IncidentDef>
 
 </Defs>

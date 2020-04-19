@@ -111,7 +111,7 @@ namespace TorannMagic
 
         public override PathEndMode PathEndMode => PathEndMode.InteractionCell;
 
-        private Building_TMMagicCircle magicCircle = null;
+        private Building_TMMagicCircleBase magicCircle = null;
 
         public override ThingRequest PotentialWorkThingRequest
         {
@@ -227,13 +227,18 @@ namespace TorannMagic
                     if (bill.ShouldDoNow() && bill.PawnAllowedToStartAnew(pawn))
                     {
                         bool issueBill = true;
-                        this.magicCircle = thing as Building_TMMagicCircle;
+                        this.magicCircle = thing as Building_TMMagicCircleBase;
+                        
                         List<Pawn> billPawns = new List<Pawn>();
                         billPawns.Clear();
                         if (bill.recipe is MagicRecipeDef)
                         {
                             MagicRecipeDef magicRecipe = bill.recipe as MagicRecipeDef;
-                            CompAbilityUserMagic compMagic = pawn.TryGetComp<CompAbilityUserMagic>();                            
+                            CompAbilityUserMagic compMagic = pawn.TryGetComp<CompAbilityUserMagic>(); 
+                            if(magicCircle.IsActive)
+                            {
+                                issueBill = false;
+                            }
                             if (!magicCircle.CanEverDoBill(bill, out billPawns, magicRecipe))
                             {
                                 issueBill = false;

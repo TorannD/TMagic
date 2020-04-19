@@ -50,9 +50,12 @@ namespace TorannMagic.ModOptions
             num++;
             Rect rowRect2 = Controller.UIHelper.GetRowRect(rowRect1, rowHeight, num);
             Settings.Instance.wanderingLichChallenge = Widgets.HorizontalSlider(rowRect2, Settings.Instance.wanderingLichChallenge, 0, 3, false, "lichChallenge".Translate() + " " + Challenge(Settings.Instance.wanderingLichChallenge), "0", "3", 1);
+            num++;            
+            Rect rowRect3 = Controller.UIHelper.GetRowRect(rowRect2, rowHeight, num);
+            Settings.Instance.demonAssaultChallenge = Widgets.HorizontalSlider(rowRect3, Settings.Instance.demonAssaultChallenge, 0, 1, false, "demonChallenge".Translate() + " " + Challenge(Settings.Instance.demonAssaultChallenge), "0", "1", 1);
             num++;
             num++;
-            Rect rowRect99 = UIHelper.GetRowRect(rowRect2, rowHeight, num);
+            Rect rowRect99 = UIHelper.GetRowRect(rowRect3, rowHeight, num);
             rowRect99.width = 100f;
             Rect rowRect99ShiftRight1 = UIHelper.GetRowRect(rowRect99, rowHeight, num);
             rowRect99ShiftRight1.x = rowRect99.width + 40f;
@@ -61,12 +64,14 @@ namespace TorannMagic.ModOptions
             {
                 Settings.Instance.riftChallenge = 1f;
                 Settings.Instance.wanderingLichChallenge = 1f;
+                Settings.Instance.demonAssaultChallenge = 0f;
             }
             challenge = Widgets.ButtonText(rowRect99ShiftRight1, "Challenge", true, false, true);
             if (challenge)
             {
                 Settings.Instance.riftChallenge = 3f;
                 Settings.Instance.wanderingLichChallenge = 3f;
+                Settings.Instance.demonAssaultChallenge = 1f;
             }
             //GUI.EndGroup();
             GUI.EndScrollView();

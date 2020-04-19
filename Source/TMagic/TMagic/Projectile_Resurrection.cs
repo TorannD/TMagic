@@ -64,10 +64,15 @@ namespace TorannMagic
 
             if (!this.initialized)
             {
-                caster = this.launcher as Pawn;
-                CompAbilityUserMagic comp = caster.GetComp<CompAbilityUserMagic>();
-                MagicPowerSkill ver = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Resurrection.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Resurrection_ver");
-                verVal = ver.level;
+                if (this.launcher is Pawn)
+                {
+                    caster = this.launcher as Pawn;
+                    CompAbilityUserMagic comp = caster.GetComp<CompAbilityUserMagic>();
+                    MagicPowerSkill ver = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Resurrection.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Resurrection_ver");
+                    MagicPowerSkill pwr = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Resurrection.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Resurrection_eff");
+                    verVal = ver.level;
+                    pwrVal = pwr.level;
+                }
                 this.angle = Rand.Range(-12f, 12f);               
                 
                 IntVec3 curCell = base.Position;
@@ -99,6 +104,7 @@ namespace TorannMagic
                                     {
                                         z = thingList.Count;
                                         this.validTarget = true;
+                                        corpse.SetForbidden(true);
                                     }
                                     else
                                     {
@@ -176,7 +182,7 @@ namespace TorannMagic
                                     while (enumerator.MoveNext())
                                     {
                                         Hediff rec = enumerator.Current;
-                                        if (rec.def.defName == "ResurrectionPsychosis" || rec.def.defName == "Blindness")
+                                        if (rec.def.defName == "ResurrectionPsychosis")
                                         {
                                             if (Rand.Chance(verVal * .33f))
                                             {
@@ -186,6 +192,8 @@ namespace TorannMagic
                                     }
                                 }
                                 HealthUtility.AdjustSeverity(deadPawn, HediffDef.Named("TM_ResurrectionHD"), 1f);
+                                ReduceSkillsOfPawn(deadPawn, (.2f - .02f * pwrVal));
+                                ApplyHealthDefects(deadPawn, .5f - (.05f * verVal), .3f - .03f * verVal);
                             }
                             if (deadPawn.kindDef.RaceProps.Animal)
                             {
@@ -258,6 +266,113 @@ namespace TorannMagic
                 {
                     this.sustainer = SoundDef.Named("OrbitalBeam").TrySpawnSustainer(SoundInfo.InMap(this.selectedTarget, MaintenanceType.PerTick));
                 });
+            }
+        }
+
+        public static void ReduceSkillsOfPawn(Pawn p, float percent)
+        {
+            p.skills.Learn(SkillDefOf.Shooting, -(p.skills.GetSkill(SkillDefOf.Shooting).XpTotalEarned * percent), true);
+            p.skills.Learn(SkillDefOf.Animals, -(p.skills.GetSkill(SkillDefOf.Animals).XpTotalEarned * percent), true);
+            p.skills.Learn(SkillDefOf.Artistic, -(p.skills.GetSkill(SkillDefOf.Artistic).XpTotalEarned * percent), true);
+            p.skills.Learn(SkillDefOf.Cooking, -(p.skills.GetSkill(SkillDefOf.Cooking).XpTotalEarned * percent), true);
+            p.skills.Learn(SkillDefOf.Crafting, -(p.skills.GetSkill(SkillDefOf.Crafting).XpTotalEarned * percent), true);
+            p.skills.Learn(SkillDefOf.Plants, -(p.skills.GetSkill(SkillDefOf.Plants).XpTotalEarned * percent), true);
+            p.skills.Learn(SkillDefOf.Intellectual, -(p.skills.GetSkill(SkillDefOf.Intellectual).XpTotalEarned * percent), true);
+            p.skills.Learn(SkillDefOf.Medicine, -(p.skills.GetSkill(SkillDefOf.Medicine).XpTotalEarned * percent), true);
+            p.skills.Learn(SkillDefOf.Melee, -(p.skills.GetSkill(SkillDefOf.Melee).XpTotalEarned * percent), true);
+            p.skills.Learn(SkillDefOf.Mining, -(p.skills.GetSkill(SkillDefOf.Mining).XpTotalEarned * percent), true);
+            p.skills.Learn(SkillDefOf.Social, -(p.skills.GetSkill(SkillDefOf.Social).XpTotalEarned * percent), true);
+            p.skills.Learn(SkillDefOf.Construction, -(p.skills.GetSkill(SkillDefOf.Construction).XpTotalEarned * percent), true);
+        }
+
+        private void ApplyHealthDefects(Pawn p, float chanceMinor, float chanceMajor)
+        {
+            List<BodyPartRecord> parts = p.health.hediffSet.GetNotMissingParts(BodyPartHeight.Undefined, BodyPartDepth.Undefined).InRandomOrder().ToList();
+            for (int k = 0; k < 2; k++)
+            {
+                if (Rand.Chance(chanceMinor))
+                {
+                    List<HediffDef> minorHealthDefects = new List<HediffDef>();
+                    minorHealthDefects.Add(HediffDefOf.BadBack);
+                    minorHealthDefects.Add(HediffDef.Named("HearingLoss"));
+                    minorHealthDefects.Add(HediffDefOf.Carcinoma);
+                    minorHealthDefects.Add(HediffDef.Named("ChemicalDamageModerate"));
+
+                    HediffDef hdDef = minorHealthDefects.RandomElement();
+
+                    if (hdDef == HediffDefOf.BadBack)
+                    {
+                        for (int i = 0; i < parts.Count; i++)
+                        {
+                            if (parts[i].def.defName == "Spine")
+                            {
+                                p.health.AddHediff(hdDef, parts[i]);
+                                break;
+                            }
+                        }
+                    }
+                    else if (hdDef == HediffDef.Named("HearingLoss"))
+                    {
+                        for (int i = 0; i < parts.Count; i++)
+                        {
+                            if (parts[i].def.tags.Contains(BodyPartTagDefOf.HearingSource))
+                            {
+                                p.health.AddHediff(hdDef, parts[i]);
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        p.health.AddHediff(hdDef, parts.RandomElement());
+                        Hediff hd = p.health.hediffSet.GetFirstHediffOfDef(hdDef);
+                        hd.Severity = Rand.Range(.2f, .6f);
+                    }
+                }
+            }
+
+            if (Rand.Chance(chanceMajor))
+            {
+                List<HediffDef> majorHealthDefects = new List<HediffDef>();
+                majorHealthDefects.Add(HediffDefOf.Frail);
+                majorHealthDefects.Add(HediffDefOf.Dementia);
+                majorHealthDefects.Add(HediffDefOf.Carcinoma);
+                majorHealthDefects.Add(HediffDef.Named("HeartArteryBlockage"));
+                majorHealthDefects.Add(HediffDef.Named("ChemicalDamageSevere"));
+
+                HediffDef hdDef = majorHealthDefects.RandomElement();
+                if (hdDef == HediffDefOf.Dementia)
+                {
+                    for (int i = 0; i < parts.Count; i++)
+                    {
+                        if (parts[i].def.tags.Contains(BodyPartTagDefOf.ConsciousnessSource))
+                        {
+                            p.health.AddHediff(hdDef, parts[i]);
+                            break;
+                        }
+                    }
+                }
+                else if (hdDef == HediffDefOf.Frail)
+                {
+                    HealthUtility.AdjustSeverity(p, hdDef, 1f);
+                }
+                else if(hdDef == HediffDef.Named("HeartArteryBlockage"))
+                {
+                    for (int i = 0; i < parts.Count; i++)
+                    {
+                        if (parts[i].def.tags.Contains(BodyPartTagDefOf.BloodPumpingSource))
+                        {
+                            p.health.AddHediff(hdDef, parts[i]);
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    p.health.AddHediff(hdDef, parts.RandomElement());
+                    Hediff hd = p.health.hediffSet.GetFirstHediffOfDef(hdDef);
+                    hd.Severity = Rand.Range(.25f, .8f);
+                }
             }
         }
     }

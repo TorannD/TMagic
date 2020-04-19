@@ -19,7 +19,7 @@ namespace TorannMagic.Thoughts
             CompAbilityUserMagic compRec = recipient.GetComp<CompAbilityUserMagic>();
             //base.Interacted(initiator, recipient, extraSentencePacks);
             int num = compInit.MagicUserLevel - compRec.MagicUserLevel;
-            int num2 = Mathf.Clamp((int)(50f + Rand.Range(6f, 11f)*(float)num),0, 700);
+            int num2 = Mathf.RoundToInt(Mathf.Clamp((int)(25f + Rand.Range(5f, 75f) + num),0, 200) * compRec.xpGain);
             compRec.MagicUserXP += num2;
             MoteMaker.ThrowText(recipient.DrawPos, recipient.MapHeld, "XP +" + num2, -1f);
         }

@@ -68,12 +68,14 @@ namespace TorannMagic
                  new HarmonyMethod(patchType, nameof(PawnEquipment_Drop_Postfix)), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(Pawn_EquipmentTracker), "AddEquipment"), null,
                  new HarmonyMethod(patchType, nameof(PawnEquipment_Add_Postfix)), null);
+            //harmonyInstance.Patch(AccessTools.Method(typeof(Pawn_ApparelTracker), "Notify_ApparelAdded"), null, new HarmonyMethod(typeof(TorannMagicMod), "Notify_ApparelAdded_PostFix"));
+            //harmonyInstance.Patch(AccessTools.Method(typeof(Pawn_ApparelTracker), "Notify_ApparelRemoved"), null, new HarmonyMethod(typeof(TorannMagicMod), "Notify_ApparelRemoved_PostFix"));
 
             harmonyInstance.Patch(AccessTools.Method(typeof(Pawn), "get_IsColonist", null, null), new HarmonyMethod(typeof(TorannMagicMod), "Get_IsColonist_Polymorphed", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(Caravan), "get_NightResting", null, null), new HarmonyMethod(typeof(TorannMagicMod), "Get_NightResting_Undead", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(Pawn_StanceTracker), "get_Staggered", null, null), new HarmonyMethod(typeof(TorannMagicMod), "Get_Staggered", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(Verb_LaunchProjectile), "get_Projectile", null, null), new HarmonyMethod(typeof(TorannMagicMod), "Get_Projectile_ES", null), null);
-            //harmonyInstance.Patch(AccessTools.Method(typeof(GenRadial), "get_MaxRadialPatternRadius", null, null), null, new HarmonyMethod(typeof(TorannMagicMod), "Get_MaxDrawRadius_Patch", null));
+            harmonyInstance.Patch(AccessTools.Method(typeof(WindManager), "get_WindSpeed", null, null), new HarmonyMethod(typeof(TorannMagicMod), "Get_WindSpeed", null), null);
 
             harmonyInstance.Patch(AccessTools.Method(typeof(GenDraw), "DrawRadiusRing", new Type[]
                 {
@@ -245,6 +247,62 @@ namespace TorannMagic
             }
             #endregion Children
 
+        }
+
+        [HarmonyPatch(typeof(WeatherWorker), "WeatherTick", null)]
+        public class WeatherWorker_Patch
+        {
+            public static void Postfix(WeatherManager __instance, Map map)
+            {
+                if (map.weatherManager.curWeather == TorannMagicDefOf.TM_HealingRainWD)
+                {
+                    if (Find.TickManager.TicksGame % 20 == 0)
+                    {
+                        for (int i = 0; i < map.mapPawns.AllPawnsSpawned.Count; i++)
+                        {
+                            Pawn pawn = map.mapPawns.AllPawnsSpawned[i];
+                            if (!pawn.Position.Roofed(map) && Rand.Chance(.3f))
+                            {
+                                IEnumerable<Hediff_Injury> injuries = pawn.health.hediffSet.GetHediffs<Hediff_Injury>();
+                                if (injuries != null && injuries.Count() > 0)
+                                {
+                                    Hediff_Injury injury = injuries.RandomElement();
+                                    if (injury.CanHealNaturally() && !injury.IsPermanent())
+                                    {
+                                        float healAmt = Rand.Range(.025f, .15f);
+                                        
+                                        injury.Heal(healAmt);
+                                        Vector3 rndPos = pawn.DrawPos;
+                                        rndPos.x += Rand.Range(-.25f, .25f);
+                                        rndPos.z += Rand.Range(-.3f, .3f);
+                                        ThingDef mote = TorannMagicDefOf.Mote_BlueTwinkle;
+                                        if(Rand.Chance(.7f))
+                                        {
+                                            mote = TorannMagicDefOf.Mote_GreenTwinkle;
+                                        }
+                                        TM_MoteMaker.ThrowGenericMote(mote, rndPos, map, healAmt * 3f, Rand.Range(.2f, .35f), Rand.Range(0, .25f), Rand.Range(.25f, .75f), Rand.Range(-250, 250), Rand.Range(.2f, .6f), Rand.Range(-15f, 15f), Rand.Range(0f, 360f));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public static bool Get_WindSpeed(WindManager __instance, ref float __result)
+        {
+            Map map = Traverse.Create(root: __instance).Field(name: "map").GetValue<Map>();
+            if (map != null)
+            {
+                MagicMapComponent mmc = map.GetComponent<MagicMapComponent>();
+                if (mmc != null && mmc.windSpeedEndTick > Find.TickManager.TicksGame)
+                {
+                    __result = mmc.windSpeed;
+                    return false;
+                }
+            }
+            return true;                     
         }
 
         [HarmonyPatch(typeof(Reward_Items), "InitFromValue", null)]
@@ -3496,7 +3554,7 @@ namespace TorannMagic
                                             break;
                                         case 10:
                                             Commander:;
-                                            if (settingsRef.Wayfarer && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.TM_Commander, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, pawn, TorannMagicDefOf.TM_Commander.ToString()))
+                                            if (settingsRef.Commander && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.TM_Commander, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, pawn, TorannMagicDefOf.TM_Commander.ToString()))
                                             {
                                                 pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Commander, 4, false));
                                             }
@@ -3507,7 +3565,7 @@ namespace TorannMagic
                                             break;
                                         case 11:
                                             SuperSoldier:;
-                                            if (settingsRef.Wayfarer && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.TM_SuperSoldier, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, pawn, TorannMagicDefOf.TM_SuperSoldier.ToString()))
+                                            if (settingsRef.SuperSoldier && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.TM_SuperSoldier, 4)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, pawn, TorannMagicDefOf.TM_SuperSoldier.ToString()))
                                             {
                                                 pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_SuperSoldier, 4, false));
                                             }
@@ -5371,7 +5429,7 @@ namespace TorannMagic
                 {
                     return false;
                 }                
-                if(recipe.defName != "Regrowth")
+                if(!(recipe == TorannMagicDefOf.Regrowth || recipe == TorannMagicDefOf.UniversalRegrowth))
                 {
                     return false;
                 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Verse;
+using System;
 
 namespace TorannMagic
 {
@@ -66,6 +67,25 @@ namespace TorannMagic
             for (int i = 0; i < part.parts.Count; i++)
             {
                 TM_MedicalRecipesUtility.SpawnThingsFromHediffs(pawn, part.parts[i], pos, map);
+            }
+        }
+
+        public static IEnumerable<BodyPartRecord> GetAdjustedPartsToApplyOn(List<BodyPartRecord> parts, Pawn pawn, Func<BodyPartRecord, bool> validator = null)
+        {
+            int num;
+            for (int l = 0; l < parts.Count; l = num)
+            {
+                BodyPartDef part = parts[l].def;
+                List<BodyPartRecord> bpList = pawn.RaceProps.body.AllParts;
+                for (int i = 0; i < bpList.Count; i++)
+                {
+                    BodyPartRecord bodyPartRecord = bpList[i];
+                    if (bodyPartRecord.def == part && (validator == null || validator(bodyPartRecord)))
+                    {
+                        yield return bodyPartRecord;
+                    }
+                }
+                num = l + 1;
             }
         }
     }

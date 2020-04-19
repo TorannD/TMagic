@@ -1689,20 +1689,6 @@ namespace TorannMagic
             return orbs;
         }
 
-        public static LocalTargetInfo FindWalkableCellNextTo(IntVec3 cell, Map map)
-        {
-            List<IntVec3> cellList = GenAdjFast.AdjacentCells8Way(cell);
-            for(int i = 0; i < cellList.Count; i++)
-            {
-                if(cellList[i] != default(IntVec3) && cellList[i].InBounds(map) && cellList[i].Walkable(map) && !cellList[i].Fogged(map))
-                {
-                    cell = cellList[i];
-                    break;
-                }
-            }
-            return cell;
-        }
-
         public static float GetRelationsFactor(Pawn p1, Pawn p2)
         {
             float factor = 0f;
@@ -3173,6 +3159,45 @@ namespace TorannMagic
             List<IntVec3> innerRing = GenRadial.RadialCellsAround(center, innerRadius, true).ToList();
             List<IntVec3> outerRing = GenRadial.RadialCellsAround(center, outerRadius, false).Except(innerRing).ToList();
             return outerRing;
+        }
+
+        public static bool PawnCanOccupyCell(Pawn pawn, IntVec3 c)
+        {
+            if (!c.Walkable(pawn.Map))
+            {
+                return false;
+            }
+            Building edifice = c.GetEdifice(pawn.Map);
+            if (edifice != null)
+            {
+                Building_Door building_Door = edifice as Building_Door;
+                if (building_Door != null && !building_Door.PawnCanOpen(pawn) && !building_Door.Open)
+                {
+                    return false;
+                }
+            }
+            return true;            
+        }
+
+        public static LocalTargetInfo FindWalkableCellNextTo(IntVec3 cell, Map map)
+        {
+            List<IntVec3> cellList = GenAdjFast.AdjacentCells8Way(cell);
+            for (int i = 0; i < cellList.Count; i++)
+            {
+                if (cellList[i] != default(IntVec3) && cellList[i].InBounds(map) && cellList[i].Walkable(map) && !cellList[i].Fogged(map))
+                {
+                    cell = cellList[i];
+                    break;
+                }
+            }
+            return cell;
+        }
+
+        public static InspirationDef GetRandomAvailableInspirationDef(Pawn pawn)
+        {
+            return (from x in DefDatabase<InspirationDef>.AllDefsListForReading
+                    where x.Worker.InspirationCanOccur(pawn)
+                    select x).RandomElementByWeightWithFallback((InspirationDef x) => x.Worker.CommonalityFor(pawn), null);
         }
     }
 }

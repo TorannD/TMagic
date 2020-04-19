@@ -622,7 +622,18 @@ namespace TorannMagic
                 {
                     if (!allPawns[i].Dead && !allPawns[i].Downed)
                     {
-                        if (allPawns[i].Faction != null && allPawns[i].Faction != this.Pawn.Faction)
+                        if (allPawns[i].Faction != null && (allPawns[i].Faction.HostileTo(this.Pawn.Faction)))
+                        {
+                            if ((allPawns[i].Position - this.Pawn.Position).LengthHorizontal <= this.Props.maxRangeForCloseThreat)
+                            {
+                                this.closeThreats.Add(allPawns[i]);
+                            }
+                            else if ((allPawns[i].Position - this.Pawn.Position).LengthHorizontal <= this.Props.maxRangeForFarThreat)
+                            {
+                                this.farThreats.Add(allPawns[i]);
+                            }
+                        }
+                        if (allPawns[i].Faction == null && allPawns[i].InMentalState)
                         {
                             if ((allPawns[i].Position - this.Pawn.Position).LengthHorizontal <= this.Props.maxRangeForCloseThreat)
                             {
@@ -641,7 +652,7 @@ namespace TorannMagic
                 Pawn randomMapPawn = allPawns.RandomElement();
                 if (TargetIsValid(randomMapPawn) && randomMapPawn.RaceProps.Humanlike)
                 {
-                    if (randomMapPawn.Faction != null && randomMapPawn.Faction != this.Pawn.Faction)
+                    if (randomMapPawn.Faction != null && randomMapPawn.Faction.HostileTo(this.Pawn.Faction))
                     {
                         this.farThreats.Add(randomMapPawn);
                     }

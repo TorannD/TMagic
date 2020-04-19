@@ -48,7 +48,7 @@
   <BodyPartDef>
     <defName>Demon_Heart</defName>
     <label>demonic heart</label>
-    <hitPoints>2</hitPoints>
+    <hitPoints>3</hitPoints>
     <permanentInjuryChanceFactor>0.40</permanentInjuryChanceFactor>
     <bleedRate>5</bleedRate>
     <skinCovered>true</skinCovered>
@@ -161,7 +161,7 @@
   <BodyPartDef>
     <defName>Demon_Brain</defName>
     <label>brain</label>
-    <hitPoints>1</hitPoints>
+    <hitPoints>2</hitPoints>
     <permanentInjuryChanceFactor>0.90</permanentInjuryChanceFactor>
 	<bleedRate>2</bleedRate>
     <skinCovered>true</skinCovered>
@@ -237,7 +237,7 @@
   <BodyPartDef>
     <defName>Demon_SixthSense</defName>
     <label>inner sense</label>
-    <hitPoints>2</hitPoints>
+    <hitPoints>3</hitPoints>
     <permanentInjuryChanceFactor>0.2</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
     <beautyRelated>true</beautyRelated>

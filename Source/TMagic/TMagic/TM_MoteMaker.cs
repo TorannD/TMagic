@@ -327,8 +327,8 @@ namespace TorannMagic
             if (!loc.ShouldSpawnMotesAt(map) || map.moteCounter.SaturatedLowPriority)
             {
                 return;
-            }
-            MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(moteDef, null);
+            }            
+            MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(moteDef, null);            
             moteThrown.Scale = 1.9f * scale;
             moteThrown.rotationRate = rotationRate;
             moteThrown.exactPosition = loc;
@@ -337,7 +337,10 @@ namespace TorannMagic
             moteThrown.def.mote.solidTime = solidTime;
             moteThrown.def.mote.fadeInTime = fadeIn;
             moteThrown.def.mote.fadeOutTime = fadeOut;
+
             GenSpawn.Spawn(moteThrown, loc.ToIntVec3(), map);
+            
+
         }
 
         public static void ThrowRegenMote(Vector3 loc, Map map, float scale)

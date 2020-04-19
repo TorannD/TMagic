@@ -291,6 +291,60 @@
     </mote>
   </ThingDef>
   
+  <EffecterDef>
+    <defName>TM_SmallMagicCircleED</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>Mote_SmallMagicCircleInner</moteDef>
+        <scale>
+          <min>1</min>
+          <max>1</max>
+        </scale>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>Mote_SmallMagicCircleOuter</moteDef>
+        <scale>
+          <min>2</min>
+          <max>2</max>
+        </scale>
+      </li>
+    </children>
+  </EffecterDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_SmallMagicCircleInner</defName>
+    <graphicData>
+      <texPath>Items/small_circle_centered</texPath>
+	  <shaderType>MoteGlow</shaderType>
+	  <drawSize>(.01, .01)</drawSize>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>.2</fadeInTime>
+      <solidTime>0</solidTime>
+      <fadeOutTime>.6</fadeOutTime>
+      <growthRate>800</growthRate>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_SmallMagicCircleOuter</defName>
+    <graphicData>
+      <texPath>Items/small_circle_centered</texPath>
+	  <shaderType>MoteGlow</shaderType>
+	  <drawSize>(5, 5)</drawSize>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>.1</fadeInTime>
+      <solidTime>.2</solidTime>
+      <fadeOutTime>.6</fadeOutTime>
+      <growthRate>-2</growthRate>
+    </mote>
+  </ThingDef>
+  
 <!-- Recall -->
 
 	<EffecterDef>

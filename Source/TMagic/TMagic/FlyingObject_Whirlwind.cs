@@ -273,7 +273,7 @@ namespace TorannMagic
             {
                 weaponComp = caster.equipment.Primary;
                 weaponDPS = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_AverageDPS, false) * .7f;
-                dmgMultiplier = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_DamageMultiplier, false) * comp.mightPwr;
+                dmgMultiplier = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_DamageMultiplier, false) * comp.mightPwr * (1f + (.05f * str.level));
                 pawnDPS = caster.GetStatValue(StatDefOf.MeleeDPS, false);
                 skillMultiplier = (.8f + (.08f * pwrVal));
                 dmgNum = Mathf.RoundToInt(skillMultiplier * dmgMultiplier * (pawnDPS + weaponDPS));
@@ -281,9 +281,11 @@ namespace TorannMagic
             }
             else
             {
-                dmgNum = 2;
+                pawnDPS = caster.GetStatValue(StatDefOf.MeleeDPS, false);
+                skillMultiplier = 1.5f;
+                dmgNum = Mathf.RoundToInt(skillMultiplier * 5 * (pawnDPS) * comp.mightPwr * (1f + (.05f * str.level)));
             }
-            return Mathf.Max(2, dmgNum);
+            return Mathf.Max(5, dmgNum);
         }
 
         public override void Draw()

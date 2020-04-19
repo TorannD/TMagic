@@ -2187,5 +2187,17 @@ namespace TorannMagic
                 pawn.TakeDamage(dinfo2);
             }
         }
+
+        public static IntVec3 FindNearestWalkableCell(Pawn pawn, IntVec3 c)
+        {
+            if (c.Walkable(pawn.Map))
+            {
+                return c;
+            }
+            else
+            {
+                return TM_Calc.FindWalkableCellNextTo(c, pawn.Map).Cell;
+            }
+        }
     }
 }

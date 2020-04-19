@@ -58,8 +58,7 @@ namespace TorannMagic
         }
 
         protected override bool TryCastShot()
-        {
-            
+        {            
             if (this.CasterPawn.equipment.Primary != null && !this.CasterPawn.equipment.Primary.def.IsRangedWeapon)
             {
                 CompAbilityUserMight comp = this.CasterPawn.GetComp<CompAbilityUserMight>();

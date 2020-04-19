@@ -79,9 +79,16 @@ namespace TorannMagic.Conditions
         }
 
         public override void Init()
-        {           
+        {
+            bool tempAllow = false;
+            Map map = this.SingleMap;
+            MagicMapComponent mmc = map.GetComponent<MagicMapComponent>();
+            if (mmc != null && mmc.allowAllIncidents)
+            {
+                tempAllow = true;
+            }
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();            
-            if (settingsRef.wanderingLichChallenge > 0)
+            if (settingsRef.wanderingLichChallenge > 0 || tempAllow)
             {
                 base.Init();
                 this.disabled = false;
@@ -294,7 +301,12 @@ namespace TorannMagic.Conditions
                     gcs[i].End();
                 }
             }
-            
+
+            MagicMapComponent mmc = this.SingleMap.GetComponent<MagicMapComponent>();
+            if (mmc != null && mmc.allowAllIncidents)
+            {
+                mmc.allowAllIncidents = false; ;
+            }
             base.End();
         }
 

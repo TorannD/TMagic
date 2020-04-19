@@ -94,6 +94,7 @@
     <fixedBillGiverDefs>
       <li>TableArcaneForge</li>
 	  <li>TableMagicCircle</li>
+	  <li>TableSmallMagicCircle</li>
     </fixedBillGiverDefs>
     <verb>work magic</verb>
     <gerund>working magic</gerund>

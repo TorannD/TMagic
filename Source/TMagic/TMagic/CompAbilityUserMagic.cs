@@ -8354,26 +8354,28 @@ namespace TorannMagic
                     {
                         if (item.HasEnchantment)
                         {
-                            if (apparel[i].Stuff != null && apparel[i].Stuff.defName == "TM_Manaweave")
+                            float enchantmentFactor = 1f;
+                            if (item.MadeFromEnchantedStuff)
                             {
-                                _maxMP += item.maxMP * 1.2f;
-                                _mpRegenRate += item.mpRegenRate * 1.2f;
-                                _coolDown += item.coolDown * 1.2f;
-                                _xpGain += item.xpGain * 1.2f;
-                                _mpCost += item.mpCost * 1.2f;
-                                _arcaneRes += item.arcaneRes * 1.2f;
-                                _arcaneDmg += item.arcaneDmg * 1.2f;
-                            }                            
-                            else
-                            {
-                                _maxMP += item.maxMP;
-                                _mpRegenRate += item.mpRegenRate;
-                                _coolDown += item.coolDown;
-                                _xpGain += item.xpGain;
-                                _mpCost += item.mpCost;
-                                _arcaneRes += item.arcaneRes;
-                                _arcaneDmg += item.arcaneDmg;
+                                enchantmentFactor = item.EnchantedStuff.enchantmentBonusMultiplier;                                    
+
+                                float arcalleumFactor = item.EnchantedStuff.arcalleumCooldownPerMass;
+                                float apparelWeight = apparel[i].def.GetStatValueAbstract(StatDefOf.Mass, apparel[i].Stuff);
+                                if (apparel[i].Stuff.defName == "TM_Arcalleum")
+                                {
+                                    _arcaneRes += .05f;
+                                }
+                                _arcalleumCooldown += (apparelWeight * (arcalleumFactor / 100));
+                                
                             }
+                            _maxMP += item.maxMP * enchantmentFactor;
+                            _mpRegenRate += item.mpRegenRate * enchantmentFactor;
+                            _coolDown += item.coolDown * enchantmentFactor;
+                            _xpGain += item.xpGain * enchantmentFactor;
+                            _mpCost += item.mpCost * enchantmentFactor;
+                            _arcaneRes += item.arcaneRes * enchantmentFactor;
+                            _arcaneDmg += item.arcaneDmg * enchantmentFactor;
+
                             if (item.arcaneSpectre == true)
                             {
                                 _arcaneSpectre = true;
@@ -8383,12 +8385,6 @@ namespace TorannMagic
                                 _phantomShift = true;
                             }
                         }
-                        if (apparel[i].Stuff != null && apparel[i].Stuff.defName == "TM_Arcalleum")
-                        {
-                            _arcaneRes += .05f;
-                            _arcalleumCooldown += (apparel[i].def.BaseMass * .01f);
-                        }
-
                     }
                 }
             }
@@ -8399,18 +8395,30 @@ namespace TorannMagic
                 {
                     if (item.HasEnchantment)
                     {
-                        _maxMP += item.maxMP;
-                        _mpRegenRate += item.mpRegenRate;
-                        _coolDown += item.coolDown;
-                        _xpGain += item.xpGain;
-                        _mpCost += item.mpCost;
-                        _arcaneRes += item.arcaneRes;
-                        _arcaneDmg += item.arcaneDmg;
-                    }
-                    if (Pawn.equipment.Primary.Stuff != null && Pawn.equipment.Primary.Stuff.defName == "TM_Arcalleum")
-                    {
-                        _arcaneDmg += .1f;
-                        _arcalleumCooldown += (this.Pawn.equipment.Primary.def.BaseMass * .01f);
+                        float enchantmentFactor = 1f;  
+                        if (item.MadeFromEnchantedStuff)
+                        {                            
+                            Enchantment.CompProperties_EnchantedStuff compES = Pawn.equipment.Primary.Stuff.GetCompProperties<Enchantment.CompProperties_EnchantedStuff>();
+                            enchantmentFactor = compES.enchantmentBonusMultiplier;
+
+                            float arcalleumFactor = compES.arcalleumCooldownPerMass;
+                            if (Pawn.equipment.Primary.Stuff.defName == "TM_Arcalleum")
+                            {
+                                _arcaneDmg += .1f;
+                            }
+                            _arcalleumCooldown += (this.Pawn.equipment.Primary.def.GetStatValueAbstract(StatDefOf.Mass, this.Pawn.equipment.Primary.Stuff) * (arcalleumFactor / 100f));
+                            
+                        }
+                        else
+                        {
+                            _maxMP += item.maxMP * enchantmentFactor;
+                            _mpRegenRate += item.mpRegenRate * enchantmentFactor;
+                            _coolDown += item.coolDown * enchantmentFactor;
+                            _xpGain += item.xpGain * enchantmentFactor;
+                            _mpCost += item.mpCost * enchantmentFactor;
+                            _arcaneRes += item.arcaneRes * enchantmentFactor;
+                            _arcaneDmg += item.arcaneDmg * enchantmentFactor;
+                        }
                     }
                 }
                 if(this.Pawn.equipment.Primary.def.defName == "TM_DefenderStaff")

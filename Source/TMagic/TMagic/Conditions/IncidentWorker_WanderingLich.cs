@@ -12,9 +12,15 @@ namespace TorannMagic.Conditions
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            if (settingsRef.wanderingLichChallenge > 0)
+            bool tempAllow = false;
+            Map map = (Map)parms.target;
+            MagicMapComponent mmc = map.GetComponent<MagicMapComponent>();
+            if (mmc != null && mmc.allowAllIncidents)
             {
-                Map map = (Map)parms.target;
+                tempAllow = true;
+            }
+            if (settingsRef.wanderingLichChallenge > 0 || tempAllow)
+            {
                 int duration = Mathf.RoundToInt(this.def.durationDays.RandomInRange * 60000f);
                 List<Faction> lichFaction = Find.FactionManager.AllFactions.ToList();
                 bool factionFlag = false;

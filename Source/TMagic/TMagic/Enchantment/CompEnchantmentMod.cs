@@ -48,18 +48,22 @@ namespace TorannMagic.Enchantment
                     current.inspectorTabsResolved.Add(sharedInstance);
                 }
             }
-            
-            //IEnumerable<ThingDef> enumerable1 = from def in DefDatabase<ThingDef>.AllDefs
-            //                                   where (def.race != null && def.race.Humanlike && !def.HasComp(typeof(CompEnchant))) 
-            //                                    select def;
-            //foreach (ThingDef current1 in enumerable1)
-            //{
-            //    CompProperties_Enchant enchanting = new CompProperties_Enchant
-            //    {
-            //        compClass = typeof(CompEnchant)
-            //    };
-            //    current1.comps.Add(enchanting);
-            //}            
+
+            IEnumerable<BodyPartDef> universalBodyParts = from def in DefDatabase<BodyPartDef>.AllDefs
+                                                          where (def.destroyableByDamage)
+                                                          select def;
+            foreach (BodyPartDef current1 in universalBodyParts)
+            {
+                TorannMagicDefOf.UniversalRegrowth.appliedOnFixedBodyParts.AddDistinct(current1);
+            }
+
+            IEnumerable<ThingDef> universalPawnTypes = from def in DefDatabase<ThingDef>.AllDefs
+                                                       where (def.category == ThingCategory.Pawn && !def.defName.Contains("TM_") && def.race.IsFlesh)
+                                                       select def;
+            foreach (ThingDef current2 in universalPawnTypes)
+            {
+                TorannMagicDefOf.UniversalRegrowth.recipeUsers.AddDistinct(current2);
+            }
         }
 
     }

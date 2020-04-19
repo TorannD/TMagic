@@ -524,12 +524,12 @@
           </li>
         </grains>      
         <volumeRange>
-          <min>12.25788</min>        
-          <max>20.18052</max>
+          <min>8</min>        
+          <max>15</max>
         </volumeRange>      
         <pitchRange>
-          <min>0.7541547</min>        
-          <max>.95</max>
+          <min>0.7</min>        
+          <max>1</max>
         </pitchRange>
       </li>
     </subSounds>

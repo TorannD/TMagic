@@ -1325,11 +1325,11 @@ This arcane script is incomplete and the reader may not be able to learn some, o
 	  </skillRequirements>
     </recipeMaker>
 	<costList>
-	  <RawMagicyte>200</RawMagicyte>
-	  <Silver>10</Silver>
+	  <RawMagicyte>400</RawMagicyte>
+	  <Silver>50</Silver>
 	  <MedicineUltratech>3</MedicineUltratech>
-	  <PsychoidLeaves>20</PsychoidLeaves>
-	  <Neutroamine>20</Neutroamine>
+	  <PsychoidLeaves>50</PsychoidLeaves>
+	  <Neutroamine>40</Neutroamine>
     </costList>
 	<comps>
       <li Class="CompProperties_Forbiddable" />

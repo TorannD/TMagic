@@ -682,6 +682,45 @@
   </ThingDef>
   
   <ThingDef ParentName="MoteBase">
+    <defName>Mote_GreenTwinkle</defName>
+    <graphicData>
+      <texPath>Motes/TwinkleMote_green</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.25</solidTime>
+      <fadeOutTime>1.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_BlueTwinkle</defName>
+    <graphicData>
+      <texPath>Motes/TwinkleMote_blue</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.25</solidTime>
+      <fadeOutTime>1.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_Twinkle_grayscale</defName>
+    <graphicData>
+      <texPath>Motes/TwinkleMote_grayscale</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.25</solidTime>
+      <fadeOutTime>1.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
     <defName>Mote_Flame</defName>
     <graphicData>
       <texPath>Motes/FlameMote</texPath>

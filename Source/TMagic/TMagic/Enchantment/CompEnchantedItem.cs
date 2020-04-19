@@ -10,6 +10,7 @@ namespace TorannMagic.Enchantment
 {
     public class CompEnchantedItem : ThingComp
     {
+
         public List<AbilityUser.AbilityDef> MagicAbilities = new List<AbilityUser.AbilityDef>();
 
         public List<Trait> SoulOrbTraits = new List<Trait>();
@@ -24,6 +25,26 @@ namespace TorannMagic.Enchantment
             }
         }
 
+        public CompProperties_EnchantedStuff EnchantedStuff
+        {
+            get
+            {
+                return this.parent.Stuff.GetCompProperties<CompProperties_EnchantedStuff>();
+            }
+        }
+
+        public bool MadeFromEnchantedStuff
+        {
+            get
+            {
+                if (this.parent.def.MadeFromStuff && this.parent.Stuff.GetCompProperties<CompProperties_EnchantedStuff>() != null)
+                {                 
+                    return EnchantedStuff.isEnchanted;
+                }
+                return false;
+            }
+        }
+
         public void GetOverlayGraphic()
         {
         }
@@ -35,6 +56,10 @@ namespace TorannMagic.Enchantment
             if (!initialized)
             {
                 this.hasEnchantment = this.Props.hasEnchantment;
+                if(!this.hasEnchantment)
+                {
+                    this.hasEnchantment = this.MadeFromEnchantedStuff;
+                }
 
                 this.arcaneDmg = this.Props.arcaneDmg;
                 this.arcaneDmgTier = this.Props.arcaneDmgTier;
@@ -52,11 +77,21 @@ namespace TorannMagic.Enchantment
                 this.xpGain = this.Props.xpGain;
                 this.xpGainTier = this.Props.xpGainTier;
 
+                if(MadeFromEnchantedStuff)
+                {
+                    this.maxMP += this.EnchantedStuff.maxEnergyOffset;
+                    this.mpRegenRate += this.EnchantedStuff.energyRegenOffset;
+                    this.coolDown += this.EnchantedStuff.cooldownOffset;
+                    this.mpCost += this.EnchantedStuff.energyCostOffset;
+                    this.xpGain += this.EnchantedStuff.xpGainOffset;
+                }
+
                 this.healthRegenRate = this.Props.healthRegenRate;
 
                 this.arcaneSpectre = this.Props.arcaneSpectre;
                 this.phantomShift = this.Props.phantomShift;
                 this.arcalleumCooldown = this.Props.arcalleumCooldown;
+                this.enchantmentThought = this.Props.enchantmentThought;
 
                 this.skillTier = this.Props.skillTier;
 
@@ -157,6 +192,7 @@ namespace TorannMagic.Enchantment
             Scribe_Values.Look<float>(ref this.necroticEnergy, "necroticEnergy", 0f, false);
             Scribe_Values.Look<bool>(ref this.arcaneSpectre, "arcaneSpectre", false, false);
             Scribe_Values.Look<bool>(ref this.phantomShift, "phantomShift", false, false);
+            Scribe_Defs.Look<ThoughtDef>(ref this.enchantmentThought, "enchantmentThought");
             Scribe_Values.Look<float>(ref this.arcalleumCooldown, "arcalleumCooldown", 0f, false);
             Scribe_Values.Look<EnchantmentTier>(ref this.maxMPTier, "maxMPTier", (EnchantmentTier)0, false);
             Scribe_Values.Look<EnchantmentTier>(ref this.mpRegenRateTier, "mpRegenRateTier", (EnchantmentTier)0, false);
@@ -254,6 +290,9 @@ namespace TorannMagic.Enchantment
 
         //Abilities
 
+        //Thoughts
+        public ThoughtDef enchantmentThought = null;
+
         public float NecroticEnergy
         {
             get
@@ -270,9 +309,13 @@ namespace TorannMagic.Enchantment
         {
             get
             {
-                if(this.parent.Stuff != null && this.parent.Stuff.defName == "TM_Manaweave")
+                //if(this.parent.Stuff != null && this.parent.Stuff.defName == "TM_Manaweave")
+                //{
+                //    return 120f;
+                //}
+                if(this.parent.Stuff != null && MadeFromEnchantedStuff && EnchantedStuff.enchantmentBonusMultiplier != 1f)
                 {
-                    return 120f;
+                    return 100f * EnchantedStuff.enchantmentBonusMultiplier;
                 }
                 else
                 {

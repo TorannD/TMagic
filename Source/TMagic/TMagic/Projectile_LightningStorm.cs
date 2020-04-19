@@ -39,7 +39,8 @@ namespace TorannMagic
 		protected override void Impact(Thing hitThing)
 		{
 			Map map = base.Map;
-            base.Impact(hitThing);
+            GenClamor.DoClamor(this, 2.1f, ClamorDefOf.Ability);
+            Destroy();
 
             Pawn pawn = this.launcher as Pawn;
             
@@ -80,7 +81,8 @@ namespace TorannMagic
 					IntVec3 randomCell = cellRect.RandomCell;
                     if (randomCell.IsValid && randomCell.InBounds(base.Map))
                     {
-                        Map.weatherManager.eventHandler.AddEvent(new WeatherEvent_LightningStrike(map, randomCell));
+                        //Map.weatherManager.eventHandler.AddEvent(new WeatherEvent_LightningStrike(map, randomCell));
+                        Map.weatherManager.eventHandler.AddEvent(new TM_WeatherEvent_MeshFlash(map, randomCell, TM_MatPool.standardLightning, DamageDefOf.Flame, this.launcher, -1, 1.9f, 1f, 1.5f));
                         this.LightningBlast(pwrVal, randomCell, map, 2.2f);
                         strikeInt++;
                         this.lastStrike = this.age;
@@ -101,10 +103,11 @@ namespace TorannMagic
 		protected void LightningBlast(int pwr, IntVec3 pos, Map map, float radius)
 		{
 			ThingDef def = this.def;
-			Explosion(pwr, pos, map, radius, DamageDefOf.EMP, this.launcher, null, def, this.equipmentDef, ThingDefOf.Spark, 4.4f, 1, false, null, 0f, 1);
-			Explosion(pwr, pos, map, radius, DamageDefOf.Stun, this.launcher, null, def, this.equipmentDef, ThingDefOf.Mote_Stun, 1.4f, 1, false, null, 0f, 1);
-			Explosion(pwr, pos, map, radius, DamageDefOf.Bomb, this.launcher, null, def, this.equipmentDef, ThingDefOf.Mote_Smoke, 0.4f, 1, false, null, 0f, 1);
-		}
+            SoundDef exp = TorannMagicDefOf.TM_FireBombSD;
+            Explosion(pwr, pos, map, radius, DamageDefOf.EMP, this.launcher, exp, def, this.equipmentDef, ThingDefOf.Spark, 4.4f, 1, false, null, 0f, 1);
+            Explosion(pwr, pos, map, radius, DamageDefOf.Stun, this.launcher, exp, def, this.equipmentDef, ThingDefOf.Mote_Stun, 1.4f, 1, false, null, 0f, 1);
+            Explosion(pwr, pos, map, radius, DamageDefOf.Bomb, this.launcher, exp, def, this.equipmentDef, ThingDefOf.Mote_Smoke, 0.4f, 1, false, null, 0f, 1);
+        }
 
 		public void Explosion(int pwr, IntVec3 center, Map map, float radius, DamageDef damType, Thing instigator, SoundDef explosionSound = null, ThingDef projectile = null, ThingDef source = null, ThingDef postExplosionSpawnThingDef = null, float postExplosionSpawnChance = 0f, int postExplosionSpawnThingCount = 1, bool applyDamageToExplosionCellsNeighbors = false, ThingDef preExplosionSpawnThingDef = null, float preExplosionSpawnChance = 0f, int preExplosionSpawnThingCount = 1)
 		{
