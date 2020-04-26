@@ -130,6 +130,8 @@
     <Compile Include="Building_PoisonTrap.cs" />
     <Compile Include="Building_TechnoTurret.cs" />
     <Compile Include="Building_ExplosiveProximityTrap.cs" />
+    <Compile Include="HediffComp_SetDuration.cs" />
+    <Compile Include="HediffCompProperties_SetDuration.cs" />
     <Compile Include="Conditions\GameCondition_DivineBlessing.cs" />
     <Compile Include="Conditions\GameCondition_TargetedPredatorInsanity.cs" />
     <Compile Include="Conditions\GameCondition_DemonAssault.cs" />

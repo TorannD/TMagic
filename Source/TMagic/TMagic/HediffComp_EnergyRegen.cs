@@ -7,25 +7,17 @@ using System.Linq;
 namespace TorannMagic
 {
     [StaticConstructorOnStartup]
-    class HediffComp_EnergyRegen : HediffComp
+    class HediffComp_EnergyRegen : HediffComp_SetDuration
     {
 
         private bool initializing = true;
         private bool removeNow = false;
 
-        public int duration = 10;
-
-        public override void CompExposeData()
-        {
-            Scribe_Values.Look<int>(ref this.duration, "duration", 10, false);
-            base.CompExposeData();
-        }
-
         public string labelCap
         {
             get
             {
-                return base.Def.LabelCap + (" x"+ this.parent.Severity.ToString("#.#"));
+                return base.Def.LabelCap + (" seconds remaining "+ this.duration.ToString("#"));
             }
         }
 
@@ -33,9 +25,9 @@ namespace TorannMagic
         {
             get
             {
-                return base.Def.label + (" x" + this.parent.Severity.ToString("#.#"));
+                return base.Def.label + (" seconds remaining " + this.duration.ToString("#"));
             }
-        }
+        }        
 
 
         private void Initialize()

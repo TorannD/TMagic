@@ -415,7 +415,7 @@ namespace TorannMagic
                         (200*compMagic.Mana.drainSyrrium).ToString("0.000"),
                         "\nModified mana gain: ",
                         (200*(compMagic.Mana.baseManaGain + compMagic.Mana.modifiedManaGain + compMagic.Mana.drainSyrrium + compMagic.Mana.drainManaSurge)).ToString("0.000"),
-                        "\nEnergy regen bonus: -",
+                        "\nEnergy regen bonus: +",
                         (200*compMagic.Mana.drainEnergyHD).ToString("0.000"),
                         "\n\nMana weakness: -",
                         (200*compMagic.Mana.drainManaWeakness).ToString("0.000"),

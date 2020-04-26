@@ -900,7 +900,7 @@ namespace TorannMagic
         {
             public static bool Prefix(IncidentWorker __instance, ref IncidentParms parms, ref bool __result)
             {
-                if (__instance != null && __instance.def.defName != "VisitorGroup" && __instance.def.defName != "VisitorGroupMax")
+                if (__instance != null && __instance.def.defName != "VisitorGroup" && __instance.def.defName != "VisitorGroupMax" && !__instance.def.defName.Contains("Cult"))
                 {
                     try
                     {
@@ -945,8 +945,11 @@ namespace TorannMagic
                                                         }
                                                         catch (NullReferenceException ex)
                                                         {
-                                                            parms.forced = true;
-                                                            return true;
+                                                            if (__instance.CanFireNow(parms, false))
+                                                            {
+                                                                return true;
+                                                            }
+                                                            return false;
                                                         }
                                                     }
                                                     else
@@ -3204,9 +3207,14 @@ namespace TorannMagic
                     bool hasThing = target != null && target.HasThing;
                     if (hasThing)
                     {
+                        if (abilityDef.needSeeingTarget && !TM_Calc.HasLoSFromTo(pawn.Position, target, pawn, abilityDef.minRange, abilityDef.maxRange))
+                        {
+                            __result = false;
+                            return false;
+                        }
                         Pawn pawn2 = target.Thing as Pawn;
                         if (pawn2 != null)
-                        {
+                        {                            
                             bool flag = !abilityDef.canTargetAlly;
                             if (flag)
                             {

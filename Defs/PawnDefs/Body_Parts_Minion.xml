@@ -16,7 +16,7 @@
     <label>brain</label>
     <hitPoints>10</hitPoints>
     <permanentInjuryChanceFactor>1</permanentInjuryChanceFactor>
-	<bleedRate>60</bleedRate>
+	<bleedRate>0</bleedRate>
     <skinCovered>false</skinCovered>
     <tags>
       <li>ConsciousnessSource</li>
@@ -32,7 +32,7 @@
 	<permanentInjuryChanceFactor>1</permanentInjuryChanceFactor>
 	<frostbiteVulnerability>1</frostbiteVulnerability>
     <beautyRelated>true</beautyRelated>
-	<bleedRate>10</bleedRate>
+	<bleedRate>0</bleedRate>
 	<socketed>true</socketed>
     <tags>
       <li>SightSource</li>
@@ -77,7 +77,7 @@
     <hitPoints>10</hitPoints>
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
-	<bleedRate>10</bleedRate>
+	<bleedRate>0</bleedRate>
     <tags>
       <li>ManipulationLimbCore</li>
     </tags>
@@ -89,7 +89,7 @@
     <hitPoints>10</hitPoints>
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
-	<bleedRate>10</bleedRate>
+	<bleedRate>0</bleedRate>
     <tags>
       <li>ManipulationLimbCore</li>
     </tags>
@@ -101,7 +101,7 @@
     <hitPoints>20</hitPoints>
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
     <skinCovered>true</skinCovered>
-	<bleedRate>10</bleedRate>
+	<bleedRate>0</bleedRate>
     <tags>
       <li>BreathingPathway</li>
       <li>EatingPathway</li>
@@ -136,7 +136,7 @@
     <label>core</label>
     <hitPoints>20</hitPoints>
     <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
-    <bleedRate>25</bleedRate>
+    <bleedRate>0</bleedRate>
     <skinCovered>false</skinCovered>
     <tags>
       <li>BloodPumpingSource</li>

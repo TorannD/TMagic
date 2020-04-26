@@ -167,7 +167,7 @@ namespace TorannMagic.ModOptions
                 }
                 if (!settingsRef.Necromancer)
                 {
-                    if (current.defName == "Torn_BookOfArcanist" || current.defName == "BookOfArcanist" || current.defName == "SpellOf_FoldReality")
+                    if (current == TorannMagicDefOf.BookOfNecromancer|| current == TorannMagicDefOf.Torn_BookOfUndead || current == TorannMagicDefOf.SpellOf_LichForm || current == TorannMagicDefOf.TM_Artifact_NecroticOrb)
                     {
                         removedThings.Add(current);
                     }
