@@ -43,10 +43,19 @@ namespace TorannMagic
             string reason;
             if (comp.IsMagicUser)
             {
-                if (comp.spell_RegrowLimb == true)
+                bool canRegrow = false;
+                if (comp.spell_RegrowLimb)
+                {
+                    canRegrow = true;
+                }
+                if (comp.customClass != null && comp.MagicData.MagicPowersD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RegrowLimb).learned)
+                {
+                    canRegrow = true;
+                }
+                if (canRegrow)
                 {
                     MagicPowerSkill eff = surgeon.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RegrowLimb.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RegrowLimb_eff");
-                    if (comp.Mana.CurLevel < (.9f - ((eff.level * .08f) * .9f)))
+                    if (comp.Mana.CurLevel < (.9f - ((eff.level * TorannMagicDefOf.TM_RegrowLimb.efficiencyReductionPercent) * .9f)))
                     {
                         comp.Mana.CurLevel = comp.Mana.CurLevel / 2;
 
@@ -63,7 +72,7 @@ namespace TorannMagic
                     }
                     else // regrowth surgery success
                     {
-                        comp.Mana.CurLevel -= ((.9f - ((eff.level * .08f) * .9f)) / comp.arcaneDmg);
+                        comp.Mana.CurLevel -= ((.9f - ((eff.level * TorannMagicDefOf.TM_RegrowLimb.efficiencyReductionPercent) * .9f)) / comp.arcaneDmg);
                         int num = Mathf.RoundToInt(Rand.Range(160, 280) * comp.xpGain);
                         comp.MagicUserXP += num;
                         MoteMaker.ThrowText(surgeon.DrawPos, surgeon.MapHeld, "XP +" + num, -1f);

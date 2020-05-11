@@ -77,7 +77,7 @@ namespace TorannMagic
         public static readonly Material bloodmageMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, TM_RenderQueue.bloodmageMarkColor);
         public static readonly Color chronomancerMarkColor = new Color(.4f, .65f, 1f);
         public static readonly Material chronomancerMarkMat = MaterialPool.MatFrom("Other/MageMark", ShaderDatabase.Transparent, TM_RenderQueue.chronomancerMarkColor);
-        public static readonly Material chaosMarkMat = MaterialPool.MatFrom("Other/chaosMark");
+        public static readonly Material chaosMarkMat = MaterialPool.MatFrom("Other/chaosMark");       
 
         //Might
         public static readonly Material deceptionEye = MaterialPool.MatFrom("Motes/DeceptionMote");
@@ -103,6 +103,8 @@ namespace TorannMagic
         public static readonly Material supersoldierMarkMat = MaterialPool.MatFrom("Other/SSMark");
         public static readonly Material commanderMarkMat = MaterialPool.MatFrom("Other/CommanderMark");
 
+        //Custom
+        public static readonly Material customClassMarkMat = MaterialPool.MatFrom("Other/CustomMark");
 
     }
 }

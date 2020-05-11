@@ -10,6 +10,9 @@
     <uiIconPath>UI/provisioner</uiIconPath>
     <description>Use ability to toggle the Provisioner Aura: improves rest and reduces hunger of nearby pawns. Can be improved to repair equipment, increase natural healing rates, and boost energy regeneration. This aura requires 60 stamina to maintain.</description>
     <staminaCost>0.60</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<upkeepEnergyCost>.6</upkeepEnergyCost>
+	<upkeepEfficiencyPercent>.125</upkeepEfficiencyPercent>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderAuras</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -44,6 +47,9 @@
     <uiIconPath>UI/taskmaster</uiIconPath>
     <description>Use ability to toggle the Task Master Aura: increases work speed, eating speed, and carrying capacity but causes pawns to be less social. Pawns under the scrutiny of a Task Master will acquire a mood penalty. This aura requires 70 stamina to maintain.</description>
     <staminaCost>0.70</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<upkeepEnergyCost>.7</upkeepEnergyCost>
+	<upkeepEfficiencyPercent>.11</upkeepEfficiencyPercent>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderAuras</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -78,6 +84,9 @@
     <uiIconPath>UI/commander</uiIconPath>
     <description>Use ability to toggle the Commander Aura: improves the mood of all nearby pawns but decreases their productivity. While this aura is enabled, the Commander will seek out pawns that have broken down due to mental stress and give them a motivational speech to overcome a breakdown. Pawns that overcome a mental break in this manner will not gain Catharsis. This aura requires 80 stamina to maintain.</description>
     <staminaCost>0.80</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<upkeepEnergyCost>.8</upkeepEnergyCost>
+	<upkeepEfficiencyPercent>.1</upkeepEfficiencyPercent>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderAuras</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -120,6 +129,8 @@ Pawns may reject commands if the commander's social skill is below 10; a social 
 Commands cause a mood debuff; each command increases the severity of the debuff.
 Commands do not affect the commander.</description>
     <staminaCost>0.40</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<canCopy>true</canCopy>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderOrders</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -168,6 +179,8 @@ Pawns may reject commands if the commander's social skill is below 10; a social 
 Commands cause a mood debuff; each command increases the severity of the debuff.
 Commands do not affect the commander.</description>
     <staminaCost>0.40</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderOrders</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -216,6 +229,8 @@ Pawns may reject commands if the commander's social skill is below 10; a social 
 Commands cause a mood debuff; each command increases the severity of the debuff.
 Commands do not affect the commander.</description>
     <staminaCost>0.40</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderOrders</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -264,6 +279,8 @@ Pawns may reject commands if the commander's social skill is below 10; a social 
 Commands cause a mood debuff; each command increases the severity of the debuff.
 Commands do not affect the commander.</description>
     <staminaCost>0.40</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderOrders</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -314,6 +331,8 @@ Pawns may reject commands if the commander's social skill is below 10; a social 
 Commands cause a mood debuff; each command increases the severity of the debuff.
 Commands do not affect the commander.</description>
     <staminaCost>0.40</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<canCopy>true</canCopy>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderOrders</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -362,6 +381,8 @@ Pawns may reject commands if the commander's social skill is below 10; a social 
 Commands cause a mood debuff; each command increases the severity of the debuff.
 Commands do not affect the commander.</description>
     <staminaCost>0.40</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderOrders</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -410,6 +431,8 @@ Pawns may reject commands if the commander's social skill is below 10; a social 
 Commands cause a mood debuff; each command increases the severity of the debuff.
 Commands do not affect the commander.</description>
     <staminaCost>0.40</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderOrders</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -458,6 +481,8 @@ Pawns may reject commands if the commander's social skill is below 10; a social 
 Commands cause a mood debuff; each command increases the severity of the debuff.
 Commands do not affect the commander.</description>
     <staminaCost>0.40</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderOrders</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -509,6 +534,8 @@ Pawns may reject commands if the commander's social skill is below 10; a social 
 Commands cause a mood debuff; each command increases the severity of the debuff.
 Commands do not affect the commander.</description>
     <staminaCost>0.60</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<canCopy>true</canCopy>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderOrders</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -557,6 +584,8 @@ Pawns may reject commands if the commander's social skill is below 10; a social 
 Commands cause a mood debuff; each command increases the severity of the debuff.
 Commands do not affect the commander.</description>
     <staminaCost>0.60</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderOrders</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -605,6 +634,8 @@ Pawns may reject commands if the commander's social skill is below 10; a social 
 Commands cause a mood debuff; each command increases the severity of the debuff.
 Commands do not affect the commander.</description>
     <staminaCost>0.60</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderOrders</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -653,6 +684,8 @@ Pawns may reject commands if the commander's social skill is below 10; a social 
 Commands cause a mood debuff; each command increases the severity of the debuff.
 Commands do not affect the commander.</description>
     <staminaCost>0.60</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderOrders</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

@@ -32,6 +32,8 @@ Undead will remain under the Necromancers control indefinitely. Each undead huma
 
 There is no limit to the number of undead a necromancer may control, however, when the necromancer no longer has mana to maintain undead, they will automatically be consumed until the number of active undead is reduced to a manageable amount.</description>
         <manaCost>0.45</manaCost>
+		<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<learnChance>.5</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -67,6 +69,7 @@ There is no limit to the number of undead a necromancer may control, however, wh
     <uiIconPath>UI/dismissundead</uiIconPath>
     <description>Dismisses an undead.</description>
     <manaCost>0.0</manaCost>
+	<shouldInitialize>false</shouldInitialize>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_DismissUndead</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -125,6 +128,9 @@ Cast Time: 3s
 Cooldown: 120s
 Range: 34</description>
         <manaCost>0.20</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_DeathMark</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -173,6 +179,8 @@ Cast Time: 2.5s
 Cooldown: 90s
 Range: 38</description>
         <manaCost>0.20</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_DeathMark</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -222,6 +230,8 @@ Cast Time: 2s
 Cooldown: 60s
 Range: 42</description>
         <manaCost>0.20</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_DeathMark</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -270,6 +280,8 @@ Cast Time: 1.8s
 Cooldown: 45s
 Range: 46</description>
         <manaCost>0.20</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_DeathMark</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -335,6 +347,9 @@ Range: 46</description>
         <uiIconPath>UI/fogoftorment</uiIconPath>
         <description>Creates a fog that causes pain and suffering to every living creature within. Undead within the fog are slowly healed and suffer no penalties from the fog.</description>
         <manaCost>0.3</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.4</learnChance>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -394,6 +409,7 @@ Range: 50
 Cooldown: 20s
 Cast Time: 2s</description>
         <manaCost>0.03</manaCost>
+		<learnChance>.3</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ConsumeCorpse</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -433,6 +449,7 @@ Range: 60
 Cooldown: 18s
 Cast Time: 1.8s</description>
         <manaCost>0.025</manaCost>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ConsumeCorpse</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -472,6 +489,7 @@ Range: 70
 Cooldown: 16s
 Cast Time: 1.5s</description>
         <manaCost>0.02</manaCost>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ConsumeCorpse</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -511,6 +529,7 @@ Range: 80
 Cooldown: 15s
 Cast Time: 1.2s</description>
         <manaCost>0.015</manaCost>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ConsumeCorpse</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -570,6 +589,9 @@ Range: 40
 Cooldown: 10s
 Cast time: 2s</description>
         <manaCost>0.20</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.2</learnChance>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -610,6 +632,8 @@ Range: 50
 Cooldown: 7s
 Cast time: 1.5s</description>
         <manaCost>0.22</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -650,6 +674,8 @@ Range: 60
 Cooldown: 5s
 Cast time: 1s</description>
         <manaCost>0.24</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -690,6 +716,8 @@ Range: 70
 Cooldown: 4s
 Cast time: .5s</description>
         <manaCost>0.25</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -741,6 +769,8 @@ Loses all passion for work except fighting and research.
 Reduced learning speed by 40% and global work speed by 75%
 Movement speed: -2.0 c/s</description>
         <manaCost>0.0</manaCost>
+		<learnItem>SpellOf_LichForm</learnItem>
+		<learnChance>.05</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_LichForm</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -873,6 +903,8 @@ Cooldown: 15s
 Bolts: 2
 Range: 40</description>
         <manaCost>0.30</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>.1</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Effect_DeathBolt</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -914,6 +946,8 @@ Cooldown: 14s
 Bolts: 2
 Range 40</description>
         <manaCost>0.30</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Effect_DeathBolt</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -955,6 +989,8 @@ Cooldown: 13s
 Bolts: 3
 Range 40</description>
         <manaCost>0.30</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Effect_DeathBolt</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -996,6 +1032,8 @@ Cooldown: 12s
 Bolts: 3
 Range: 50</description>
         <manaCost>0.30</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Effect_DeathBolt</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>

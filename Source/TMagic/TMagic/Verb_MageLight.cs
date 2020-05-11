@@ -62,9 +62,19 @@ namespace TorannMagic
                     }
                     else
                     {
-                        comp.mageLightActive = true;
-                        comp.mageLightSet = false;
-                        HealthUtility.AdjustSeverity(base.CasterPawn, TorannMagicDefOf.TM_MageLightHD, .5f);
+                        if (comp.maxMP >= TorannMagicDefOf.TM_MageLight.upkeepEnergyCost)
+                        {
+                            comp.mageLightActive = true;
+                            comp.mageLightSet = false;
+                            HealthUtility.AdjustSeverity(base.CasterPawn, TorannMagicDefOf.TM_MageLightHD, .5f);
+                        }
+                        else
+                        {
+                            Messages.Message("TM_NotEnoughManaToSustain".Translate(
+                                            this.CasterPawn.LabelShort,
+                                            TorannMagicDefOf.TM_MageLight.label
+                                        ), MessageTypeDefOf.RejectInput);
+                        }
                     }                    
                 }
                 else

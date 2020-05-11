@@ -1,5 +1,7 @@
 ﻿using System;
 using Verse;
+using System.Collections.Generic;
+using RimWorld;
 
 namespace TorannMagic.ModOptions
 {
@@ -84,5 +86,8 @@ namespace TorannMagic.ModOptions
         public bool ManaWell = Settings.Instance.ManaWell;
         public bool Boundless = Settings.Instance.Boundless;
 
+        //faction settings
+        public Dictionary<string, float> FactionFighterSettings = Settings.Instance.FactionFighterSettings;
+        public Dictionary<string, float> FactionMageSettings = Settings.Instance.FactionMageSettings;
     }
 }

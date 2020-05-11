@@ -17,7 +17,9 @@ namespace TorannMagic
         public bool autocast = false;
         public int learnCost = 2;
         private int interactionTick = 0;
-
+        public bool requiresScroll = false;
+        public int maxLevel = 3;
+        
         public bool AutoCast
         {
             get
@@ -195,9 +197,10 @@ namespace TorannMagic
         {
         }
 
-        public MagicPower(List<AbilityDef> newAbilityDefs)
+        public MagicPower(List<AbilityDef> newAbilityDefs, bool requireScrollToLearn = false)
         {
             this.level = 0;
+            this.requiresScroll = requireScrollToLearn;
             this.TMabilityDefs = newAbilityDefs;
 
             if(this.abilityDef.defName == "TM_TechnoBit" || this.abilityDef.defName == "TM_TechnoTurret" || this.abilityDef.defName == "TM_TechnoWeapon")
@@ -218,7 +221,7 @@ namespace TorannMagic
                 this.learnCost = 1;
             }
 
-            if(this.abilityDef.defName == "TM_Fireball" || this.abilityDef.defName == "TM_LightningStorm" || this.abilityDef.defName == "TM_SummonElemental")
+            if(this.abilityDef.defName == "TM_Fireball" || this.abilityDef.defName == "TM_LightningStorm" || this.abilityDef.defName == "TM_SummonElemental" || this.abilityDef == TorannMagicDefOf.TM_DeathBolt)
             {
                 this.learnCost = 3;
             }
@@ -229,7 +232,8 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.learned, "learned", true, false);
             Scribe_Values.Look<bool>(ref this.autocast, "autocast", false, false);
             Scribe_Values.Look<int>(ref this.learnCost, "learnCost", 2, false);
-            Scribe_Values.Look<int>(ref this.level, "level", 0, false);            
+            Scribe_Values.Look<int>(ref this.level, "level", 0, false);
+            Scribe_Values.Look<int>(ref this.maxLevel, "maxLevel", 3, false);
             Scribe_Values.Look<int>(ref this.ticksUntilNextCast, "ticksUntilNextCast", -1, false);
             Scribe_Collections.Look<AbilityDef>(ref this.TMabilityDefs, "TMabilityDefs", LookMode.Def, null);
         }

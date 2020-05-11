@@ -16,7 +16,6 @@ namespace TorannMagic
         {
             
             Hediff chiHD = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ChiHD);
-            this.verVal = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_ThunderStrike.FirstOrDefault((MightPowerSkill x) => x.label == "TM_ThunderStrike_ver").level;
             CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
             if (chiHD == null)
             {

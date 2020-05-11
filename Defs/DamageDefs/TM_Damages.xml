@@ -1016,4 +1016,27 @@
     <combatLogRules>Damage_Bomb</combatLogRules>
   </DamageDef>
   
+    <!-- Toxin: damages inner organs without damaging outside parts -->
+  <DamageDef ParentName="TM_LocalInjuryBase">
+    <defName>TM_Toxin</defName>
+    <label>toxin</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <deathMessage>{0} has been killed by toxin.</deathMessage>
+    <hediff>TM_ToxinHD</hediff>
+    <harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+    <hasForcefulImpact>false</hasForcefulImpact>
+    <canInterruptJobs>false</canInterruptJobs>
+	<makesBlood>false</makesBlood>
+    <impactSoundType />
+    <armorCategory />
+	<buildingDamageFactor>0</buildingDamageFactor>
+    <plantDamageFactor>0</plantDamageFactor>
+	<explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>-2</explosionHeatEnergyPerCell>
+    <explosionCellMote>Mote_ShadowCloud</explosionCellMote>
+    <explosionColorCenter>(.45, 0.15, 0.64)</explosionColorCenter>
+    <explosionColorEdge>(0.97, 0.76, 1)</explosionColorEdge>
+    <soundExplosion>TM_SoftExplosion</soundExplosion>
+  </DamageDef>
+  
 </Defs>

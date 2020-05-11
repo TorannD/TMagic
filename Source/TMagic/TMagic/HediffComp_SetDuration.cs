@@ -26,6 +26,65 @@ namespace TorannMagic
             this.duration = Props.duration;
         }
 
+        public bool initialized = false;
+        public bool removeNow = false;
+
+        public virtual string labelCap
+        {
+            get
+            {
+                return base.Def.LabelCap + (" seconds remaining " + this.duration.ToString("#"));
+            }
+        }
+
+        public virtual string label
+        {
+            get
+            {
+                return base.Def.label + (" seconds remaining " + this.duration.ToString("#"));
+            }
+        }
+
+
+        public virtual void Initialize()
+        {
+            bool spawned = base.Pawn.Spawned;
+            if (spawned)
+            {
+
+            }
+        }
+
+        public override void CompPostTick(ref float severityAdjustment)
+        {
+            base.CompPostTick(ref severityAdjustment);
+            bool flag = base.Pawn != null;
+            if (flag)
+            {
+                if (!initialized)
+                {
+                    initialized = true;
+                    this.Initialize();
+                }
+            }
+            if (Find.TickManager.TicksGame % 60 == 0)
+            {
+                this.duration--;
+                if (this.duration <= 0)
+                {
+                    this.removeNow = true;
+                }
+            }
+        }
+
+        public override bool CompShouldRemove
+        {
+            get
+            {
+                return base.CompShouldRemove || this.removeNow;
+            }
+        }
+
         //public override void CompPostMerged(Hediff other)
         //{
         //    base.CompPostMerged(other);

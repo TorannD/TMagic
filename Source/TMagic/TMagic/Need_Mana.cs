@@ -535,8 +535,8 @@ namespace TorannMagic
                     if (comp.IsMagicUser && comp.Mana != null)
                     {
                         ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                        MagicPowerSkill manaRegen = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
-                        amount *= ((0.0012f + 0.00006f * manaRegen.level) * settingsRef.needMultiplier);
+                        MagicPowerSkill manaRegen = comp.MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
+                        amount *= ((0.0012f + 0.00006f * manaRegen.level) * comp.mpRegenRate * settingsRef.needMultiplier);
                         amount = Mathf.Min(amount, this.MaxLevel - this.CurLevel);
                         comp.Mana.curLevelInt = Mathf.Clamp(comp.Mana.curLevelInt += amount, 0f, this.MaxLevel);
                     }

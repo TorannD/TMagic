@@ -111,7 +111,7 @@
     <defName>TM_HediffStrongBack</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Strong Back</label>
-	<description>Increases carrying capacity.</description>
+	<description>Increases carrying capacity by 40 and inventory capacity by 50%.</description>
     <defaultLabelColor>(1,0.3,0.5)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
     <maxSeverity>4.0</maxSeverity>	

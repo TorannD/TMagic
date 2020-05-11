@@ -18,6 +18,7 @@ namespace TorannMagic
         public bool autocast = false;
         public int learnCost = 2;
         private int interactionTick = 0;
+        public int maxLevel = 3;
 
         public bool AutoCast
         {
@@ -204,6 +205,11 @@ namespace TorannMagic
             {
                 this.learnCost = 0;
             }
+
+            if (this.abilityDef == TorannMagicDefOf.TM_PsionicBarrier)
+            {
+                this.maxLevel = 1;
+            }
         }
 
         public void ExposeData()
@@ -212,6 +218,7 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.autocast, "autocast", false, false);
             Scribe_Values.Look<int>(ref this.learnCost, "learnCost", 2, false);
             Scribe_Values.Look<int>(ref this.level, "level", 0, false);
+            Scribe_Values.Look<int>(ref this.maxLevel, "maxLevel", 3, false);
             Scribe_Values.Look<int>(ref this.ticksUntilNextCast, "ticksUntilNextCast", -1, false);
             Scribe_Collections.Look<AbilityDef>(ref this.TMabilityDefs, "TMabilityDefs", (LookMode)4, null);
         }

@@ -26,6 +26,9 @@
         <uiIconPath>UI/poison</uiIconPath>
         <description>Fast acting toxin that works its way into the targets bloodstream. The more a target moves, the more lethal the poison becomes. Poison is ineffective against mechanoids.</description>
         <manaCost>0.15</manaCost>
+		<efficiencyReductionPercent>.10</efficiencyReductionPercent>
+		<learnChance>.6</learnChance>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -85,6 +88,9 @@ Recharge: 80s
 Max Targets: 3
 AoE Size: 5</description>
         <manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<learnChance>.5</learnChance>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SootheAnimal</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -134,6 +140,8 @@ Recharge: 75s
 Max Targets: 4
 AoE Size: 6</description>
 		<manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SootheAnimal</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -183,6 +191,8 @@ Recharge: 68s
 Max Targets: 5
 AoE Size: 7</description>
 		<manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SootheAnimal</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -232,6 +242,8 @@ Recharge: 60s
 Max Targets: 6
 AoE Size: 8</description>
 		<manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SootheAnimal</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -296,6 +308,9 @@ AoE Size: 8</description>
         <uiIconPath>UI/Regen</uiIconPath>
         <description>Regeneration acts as a natural curative over time and will restore even grievous wounds with continued application. Base regeneration restores 4 health to 1 wound every 5 seconds. Only cures physical injuries and will not restore or heal destroyed body parts.</description>
         <manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.07</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Regenerate</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -351,6 +366,9 @@ AoE Size: 8</description>
         <uiIconPath>UI/curedisease</uiIconPath>
         <description>Potential to cure most diseases and infections.</description>
         <manaCost>0.35</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<learnChance>.35</learnChance>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_CureDisease</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -403,8 +421,10 @@ AoE Size: 8</description>
         <defName>TM_RegrowLimb</defName>
         <label>Regrowth</label>
         <uiIconPath>UI/regrowlimb</uiIconPath>
-        <description>Creates the Seed of Life required to regrow body parts. Regrowth surgeries will only appear as an option when all components of regrowth are within resource zones: 1x Seed of Life , 1x mana potion, 1x medicine, then select the body part to regrow in the patient's surgery tab.  Ensure this druid (or another with this spell) performs the surgery and the druid has 90% mana or more at the time the surgery is performed.</description>
+        <description>Creates the Seed of Life required to regrow body parts. Regrowth surgeries will only appear as an option when all components of regrowth are within resource zones: 1x Seed of Life , mana potions, and medicine, then select the body part to regrow in the patient's surgery tab.  Ensure this druid (or another with this spell) performs the surgery and the druid has 90% mana or more at the time the surgery is performed.</description>
         <manaCost>0.10</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>.05</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_RegrowLimb</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>

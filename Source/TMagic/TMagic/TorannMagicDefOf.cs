@@ -48,6 +48,7 @@ namespace TorannMagic
         public static ThingDef Torn_BookOfChronomancer;
         public static ThingDef BookOfChaos;
         public static ThingDef Torn_BookOfChaos;
+        public static ThingDef BookOfShadow;
         public static ThingDef BookOfQuestion;
 
         public static HediffDef TM_Uncertainty;        
@@ -586,6 +587,7 @@ namespace TorannMagic
         public static TMAbilityDef TM_ReverseTime;
         public static HediffDef TM_ReverseTimeHD;
         public static HediffDef TM_ReverseTimeBadHD;
+        public static HediffDef TM_DeathReversalHD;
         public static TMAbilityDef TM_ChronostaticField;
         public static TMAbilityDef TM_ChronostaticField_I;
         public static TMAbilityDef TM_ChronostaticField_II;
@@ -602,6 +604,18 @@ namespace TorannMagic
         public static HediffDef TM_ChaoticMindHD;
         public static ThoughtDef TM_ChaoticMindTD;
         public static HediffDef TM_ControlledChaosHD;
+
+        //Shadow
+        public static TraitDef TM_TheShadow;
+
+        public static TMAbilityDef TM_ShadowWalk;   //magic
+        public static HediffDef TM_ShadowCloakHD;
+        public static TMAbilityDef TM_VeilOfShadows; //might
+        public static ThingDef Fog_Shadows;
+        public static TMAbilityDef TM_ShadowStrike; //might
+        public static TMAbilityDef TM_Nightshade; //might
+        public static HediffDef TM_NightshadeHD;
+        public static HediffDef TM_NightshadeToxinHD;            
 
         //Might 
         public static NeedDef TM_Stamina;
@@ -886,6 +900,7 @@ namespace TorannMagic
         public static HediffDef TM_Breathing;
         public static HediffDef TM_Manipulation;
         public static HediffDef TM_Movement;
+        public static HediffDef TM_HasteHD;
 
         public static HediffDef TM_AntiSight;
         public static HediffDef TM_AntiBreathing;
@@ -969,6 +984,7 @@ namespace TorannMagic
         public static ThingDef Mote_GreenTwinkle;
         public static ThingDef Mote_BlueTwinkle;
         public static ThingDef Mote_Twinkle_grayscale;
+        public static ThingDef Mote_ShadowCloud;
 
         public static ThingDef Projectile_FogOfTorment;        
 

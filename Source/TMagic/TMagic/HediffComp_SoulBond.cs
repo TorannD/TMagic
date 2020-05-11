@@ -81,7 +81,7 @@ namespace TorannMagic
                             while (enumerator.MoveNext())
                             {
                                 Hediff rec = enumerator.Current;
-                                if (rec.def.defName == "TM_SoulBondPhysicalHD" && this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus))
+                                if (rec.def.defName == "TM_SoulBondPhysicalHD")
                                 {
                                     soulPawnHasHediff = true;
                                     if (rec.Severity != .5f + comp.MagicData.MagicPowerSkill_SoulBond.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SoulBond_ver").level)
@@ -90,7 +90,7 @@ namespace TorannMagic
                                         HealthUtility.AdjustSeverity(soulPawn, HediffDef.Named("TM_SoulBondPhysicalHD"), 0.5f + comp.MagicData.MagicPowerSkill_SoulBond.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SoulBond_ver").level);
                                     }
                                 }
-                                else if(rec.def.defName == "TM_SoulBondMentalHD" && this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Warlock))
+                                else if(rec.def.defName == "TM_SoulBondMentalHD")
                                 {
                                     soulPawnHasHediff = true;
                                     if (rec.Severity != .5f + comp.MagicData.MagicPowerSkill_SoulBond.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SoulBond_ver").level)
@@ -103,12 +103,12 @@ namespace TorannMagic
                         }
                         if(!soulPawnHasHediff)
                         {
-                            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus))
+                            if(this.Pawn.gender == Gender.Female)
                             {
                                 HealthUtility.AdjustSeverity(soulPawn, HediffDef.Named("TM_SoulBondPhysicalHD"), -4f);
                                 HealthUtility.AdjustSeverity(soulPawn, HediffDef.Named("TM_SoulBondPhysicalHD"), 0.5f + comp.MagicData.MagicPowerSkill_SoulBond.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SoulBond_ver").level);
                             }
-                            else if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Warlock))
+                            else if(this.Pawn.gender == Gender.Male)
                             {
                                 HealthUtility.AdjustSeverity(soulPawn, HediffDef.Named("TM_SoulBondMentalHD"), -4f);
                                 HealthUtility.AdjustSeverity(soulPawn, HediffDef.Named("TM_SoulBondMentalHD"), 0.5f + comp.MagicData.MagicPowerSkill_SoulBond.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_SoulBond_ver").level);

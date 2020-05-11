@@ -21,8 +21,53 @@ namespace TorannMagic
             bool flag_Core = pawn.RaceProps.IsMechanoid;
             bool flag_AndroidTiers = (pawn.def.defName == "Android1Tier" || pawn.def.defName == "Android2Tier" || pawn.def.defName == "Android3Tier" || pawn.def.defName == "Android4Tier" || pawn.def.defName == "Android5Tier" || pawn.def.defName == "M7Mech" || pawn.def.defName == "MicroScyther");
             bool flag_Androids = pawn.RaceProps.FleshType.defName == "ChJDroid" || pawn.def.defName == "ChjAndroid";
-            bool isRobot = flag_Core || flag_AndroidTiers || flag_Androids;
+            bool flag_AndroidClass = false;
+            CompAbilityUserMight compMight = pawn.TryGetComp<CompAbilityUserMight>();
+            if (compMight != null && compMight.customClass != null && compMight.customClass.isAndroid)
+            {
+                flag_AndroidClass = true;
+            }
+            CompAbilityUserMagic compMagic = pawn.TryGetComp<CompAbilityUserMagic>();
+            if (compMagic != null && compMagic.customClass != null && compMagic.customClass.isAndroid)
+            {
+                flag_AndroidClass = true;
+            }
+            bool isRobot = flag_Core || flag_AndroidTiers || flag_Androids || flag_AndroidClass;
             return isRobot;
+        }
+
+        public static bool IsNecromancer(Pawn pawn)
+        {
+            if (pawn != null)
+            {                
+                bool flag_DefName = false;
+                if (pawn.def == TorannMagicDefOf.TM_SkeletonLichR)
+                {
+                    flag_DefName = true;
+                }
+                bool flag_Trait = false;
+                if (pawn.story != null && pawn.story.traits != null)
+                {
+                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
+                    {
+                        flag_Trait = true;
+                    }
+                }
+                bool flag_Class = false;
+                CompAbilityUserMight compMight = pawn.TryGetComp<CompAbilityUserMight>();
+                if (compMight != null && compMight.customClass != null && compMight.customClass.isNecromancer)
+                {
+                    flag_Class = true;
+                }
+                CompAbilityUserMagic compMagic = pawn.TryGetComp<CompAbilityUserMagic>();
+                if (compMagic != null && compMagic.customClass != null && compMagic.customClass.isNecromancer)
+                {
+                    flag_Class = true;
+                }
+                bool isNecromancer = flag_DefName || flag_Trait || flag_Class;
+                return isNecromancer;
+            }
+            return false;
         }
 
         public static bool IsUndead(Pawn pawn)
@@ -63,7 +108,18 @@ namespace TorannMagic
                         flag_Trait = true;
                     }
                 }
-                bool isUndead = flag_Hediff || flag_DefName || flag_Trait;
+                bool flag_UndeadClass = false;
+                CompAbilityUserMight compMight = pawn.TryGetComp<CompAbilityUserMight>();
+                if(compMight != null && compMight.customClass != null && compMight.customClass.isUndead)
+                {
+                    flag_UndeadClass = true;
+                }
+                CompAbilityUserMagic compMagic = pawn.TryGetComp<CompAbilityUserMagic>();
+                if (compMagic != null && compMagic.customClass != null && compMagic.customClass.isUndead)
+                {
+                    flag_UndeadClass = true;
+                }
+                bool isUndead = flag_Hediff || flag_DefName || flag_Trait || flag_UndeadClass;
                 return isUndead;
             }
             return false;
@@ -94,29 +150,21 @@ namespace TorannMagic
         {
             if (pawn != null)
             {
-                bool flag_Hediff = false;
-                if (pawn.health != null)
+                bool flag_Vamp = false;
+                if (pawn.health != null && pawn.health.hediffSet != null)
                 {
-                    if (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadHD"), false) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadAnimalHD"), false) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD"), false) || pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_UndeadStageHD"), false))
+                    Hediff hediff = null;
+                    for (int i = 0; i < pawn.health.hediffSet.hediffs.Count; i++)
                     {
-                        flag_Hediff = true;
+                        hediff = pawn.health.hediffSet.hediffs[i];
+                        if (hediff.def.defName.Contains("ROM_Vamp"))
+                        {
+                            flag_Vamp = true;
+                        }
                     }
                 }
-                bool flag_DefName = false;
-                if (pawn.def.defName == "SL_Runner" || pawn.def.defName == "SL_Peon" || pawn.def.defName == "SL_Archer" || pawn.def.defName == "SL_Hero")
-                {
-                    flag_DefName = true;
-                }
-                bool flag_Trait = false;
-                if (pawn.story != null && pawn.story.traits != null)
-                {
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Undead))
-                    {
-                        flag_Trait = true;
-                    }
-                }
-                bool isUndead = flag_Hediff || flag_DefName || flag_Trait;
-                return isUndead;
+                bool isUndeadNotVamp = (TM_Calc.IsUndead(pawn) && !flag_Vamp);
+                return isUndeadNotVamp;
             }
             return false;
         }
@@ -156,15 +204,15 @@ namespace TorannMagic
                     }
                 }
                 bool flag_Trait = false;
-                if (pawn.story != null && pawn.story.traits != null)
+                if (pawn.story != null && pawn.story.traits != null && pawn.story.traits.allTraits != null)
                 {
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) || 
-                        pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) || pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic) ||
-                        pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Commander) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier) ||
-                        IsWayfarer(pawn))
-                    { 
-                        flag_Trait = true;
-                    }
+                    for (int i = 0; i < pawn.story.traits.allTraits.Count; i++)
+                    {
+                        if (TM_Data.MightTraits.Contains(pawn.story.traits.allTraits[i].def))
+                        {
+                            flag_Trait = true;
+                        }
+                    }                    
                 }
                 bool isMightUser = flag_Hediff || flag_Trait || flag_Need;
                 return isMightUser;
@@ -184,6 +232,11 @@ namespace TorannMagic
                     {
                         return td;
                     }
+                }
+                CompAbilityUserMight comp = pawn.TryGetComp<CompAbilityUserMight>();
+                if(comp != null && comp.customClass != null)
+                {
+                    return comp.customClass.classTrait;
                 }
             }
             return null;
@@ -214,18 +267,15 @@ namespace TorannMagic
                     }
                 }
                 bool flag_Trait = false;
-                if (pawn.story != null && pawn.story.traits != null)
+                if (pawn.story != null && pawn.story.traits != null && pawn.story.traits.allTraits != null)
                 {
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Warlock) || 
-                        pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus) || pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire) || pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) ||
-                        pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost) || pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn) || pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || 
-                        pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin) || pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner) || pawn.story.traits.HasTrait(TorannMagicDefOf.Druid) || 
-                        (pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich)) || pawn.story.traits.HasTrait(TorannMagicDefOf.Priest) || 
-                        pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard) || pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter) ||
-                        pawn.story.traits.HasTrait(TorannMagicDefOf.BloodMage) || IsWanderer(pawn))
+                    for(int i = 0; i < pawn.story.traits.allTraits.Count; i++)
                     {
-                        flag_Trait = true;
-                    }
+                        if(TM_Data.MagicTraits.Contains(pawn.story.traits.allTraits[i].def))
+                        {
+                            flag_Trait = true;
+                        }
+                    }                    
                     if(pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                     {
                         return false;
@@ -1420,7 +1470,7 @@ namespace TorannMagic
             }
 
             CompAbilityUserMight compMight = pawn.GetComp<CompAbilityUserMight>();
-            if (compMight != null)
+            if (compMight != null && penetration == 0)
             {
                 penetration += (compMight.mightPwr - 1);
             }
@@ -1704,293 +1754,316 @@ namespace TorannMagic
         public static TMAbilityDef GetCopiedMightAbility(Pawn targetPawn, Pawn caster)
         {
             CompAbilityUserMight mightPawn = targetPawn.GetComp<CompAbilityUserMight>();
+            CompAbilityUserMight casterComp = caster.GetComp<CompAbilityUserMight>();
             TMAbilityDef tempAbility = null;
-            if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+            if (mightPawn.customClass != null && mightPawn.customClass.isFighter)
             {
-                int rnd = Rand.RangeInclusive(0, 1);
-                if (rnd == 0)
+                List<TMAbilityDef> copyAbilities = new List<TMAbilityDef>();
+                copyAbilities.Clear();
+                for (int i = 0; i < mightPawn.customClass.classFighterAbilities.Count; i++)
                 {
-                    int level = mightPawn.MightData.MightPowersG[2].level;
-                    caster.GetComp<CompAbilityUserMight>().MightData.MightPowersG[2].level = level;
-                    switch (level)
+                    if (mightPawn.customClass.classFighterAbilities[i].canCopy)
                     {
-                        case 0:
-                            tempAbility = TorannMagicDefOf.TM_Grapple;
-                            break;
-                        case 1:
-                            tempAbility = TorannMagicDefOf.TM_Grapple_I;
-                            break;
-                        case 2:
-                            tempAbility = TorannMagicDefOf.TM_Grapple_II;
-                            break;
-                        case 3:
-                            tempAbility = TorannMagicDefOf.TM_Grapple_III;
-                            break;
+                        if (!casterComp.MightData.ReturnMatchingMightPower(mightPawn.customClass.classFighterAbilities[i]).learned)
+                        {
+                            copyAbilities.AddDistinct(mightPawn.customClass.classFighterAbilities[i]);
+                        }
                     }
                 }
-                else
+                if (copyAbilities.Count > 0)
                 {
-                    tempAbility = TorannMagicDefOf.TM_Whirlwind;
+                    tempAbility = copyAbilities.RandomElement();
                 }
             }
-            else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+            else
             {
-                int rnd = Rand.RangeInclusive(0, 2);
-                if (rnd == 0)
+                if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                 {
-                    tempAbility = TorannMagicDefOf.TM_AntiArmor;
-                }
-                else if (rnd == 1)
-                {
-                    int level = mightPawn.MightData.MightPowersS[2].level;
-                    caster.GetComp<CompAbilityUserMight>().MightData.MightPowersS[2].level = level;
-                    switch (level)
+                    int rnd = Rand.RangeInclusive(0, 1);
+                    if (rnd == 0)
                     {
-                        case 0:
-                            tempAbility = TorannMagicDefOf.TM_DisablingShot;
-                            break;
-                        case 1:
-                            tempAbility = TorannMagicDefOf.TM_DisablingShot_I;
-                            break;
-                        case 2:
-                            tempAbility = TorannMagicDefOf.TM_DisablingShot_II;
-                            break;
-                        case 3:
-                            tempAbility = TorannMagicDefOf.TM_DisablingShot_III;
-                            break;
+                        int level = mightPawn.MightData.MightPowersG[2].level;
+                        caster.GetComp<CompAbilityUserMight>().MightData.MightPowersG[2].level = level;
+                        switch (level)
+                        {
+                            case 0:
+                                tempAbility = TorannMagicDefOf.TM_Grapple;
+                                break;
+                            case 1:
+                                tempAbility = TorannMagicDefOf.TM_Grapple_I;
+                                break;
+                            case 2:
+                                tempAbility = TorannMagicDefOf.TM_Grapple_II;
+                                break;
+                            case 3:
+                                tempAbility = TorannMagicDefOf.TM_Grapple_III;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        tempAbility = TorannMagicDefOf.TM_Whirlwind;
                     }
                 }
-                else
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper) && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                 {
-                    tempAbility = TorannMagicDefOf.TM_Headshot;
-                }
+                    int rnd = Rand.RangeInclusive(0, 2);
+                    if (rnd == 0)
+                    {
+                        tempAbility = TorannMagicDefOf.TM_AntiArmor;
+                    }
+                    else if (rnd == 1)
+                    {
+                        int level = mightPawn.MightData.MightPowersS[2].level;
+                        caster.GetComp<CompAbilityUserMight>().MightData.MightPowersS[2].level = level;
+                        switch (level)
+                        {
+                            case 0:
+                                tempAbility = TorannMagicDefOf.TM_DisablingShot;
+                                break;
+                            case 1:
+                                tempAbility = TorannMagicDefOf.TM_DisablingShot_I;
+                                break;
+                            case 2:
+                                tempAbility = TorannMagicDefOf.TM_DisablingShot_II;
+                                break;
+                            case 3:
+                                tempAbility = TorannMagicDefOf.TM_DisablingShot_III;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        tempAbility = TorannMagicDefOf.TM_Headshot;
+                    }
 
-            }
-            else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-            {
-                int rnd = Rand.RangeInclusive(0, 2);
-                if (rnd == 0)
-                {
-                    tempAbility = TorannMagicDefOf.TM_SeismicSlash;
                 }
-                else if (rnd == 1)
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                 {
-                    int level = mightPawn.MightData.MightPowersB[4].level;
-                    caster.GetComp<CompAbilityUserMight>().MightData.MightPowersB[4].level = level;                    
-                    switch (level)
+                    int rnd = Rand.RangeInclusive(0, 2);
+                    if (rnd == 0)
                     {
-                        case 0:
-                            tempAbility = TorannMagicDefOf.TM_PhaseStrike;
-                            break;
-                        case 1:
-                            tempAbility = TorannMagicDefOf.TM_PhaseStrike_I;
-                            break;
-                        case 2:
-                            tempAbility = TorannMagicDefOf.TM_PhaseStrike_II;
-                            break;
-                        case 3:
-                            tempAbility = TorannMagicDefOf.TM_PhaseStrike_III;
-                            break;
+                        tempAbility = TorannMagicDefOf.TM_SeismicSlash;
+                    }
+                    else if (rnd == 1)
+                    {
+                        int level = mightPawn.MightData.MightPowersB[4].level;
+                        caster.GetComp<CompAbilityUserMight>().MightData.MightPowersB[4].level = level;
+                        switch (level)
+                        {
+                            case 0:
+                                tempAbility = TorannMagicDefOf.TM_PhaseStrike;
+                                break;
+                            case 1:
+                                tempAbility = TorannMagicDefOf.TM_PhaseStrike_I;
+                                break;
+                            case 2:
+                                tempAbility = TorannMagicDefOf.TM_PhaseStrike_II;
+                                break;
+                            case 3:
+                                tempAbility = TorannMagicDefOf.TM_PhaseStrike_III;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        tempAbility = TorannMagicDefOf.TM_BladeSpin;
                     }
                 }
-                else
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                 {
-                    tempAbility = TorannMagicDefOf.TM_BladeSpin;
-                }
-            }
-            else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-            {
-                int rnd = Rand.RangeInclusive(0, 1);
-                if (rnd == 0)
-                {
-                    int level = mightPawn.MightData.MightPowersR[4].level;
-                    caster.GetComp<CompAbilityUserMight>().MightData.MightPowersR[4].level = level;
-                    switch (level)
+                    int rnd = Rand.RangeInclusive(0, 1);
+                    if (rnd == 0)
                     {
-                        case 0:
-                            tempAbility = TorannMagicDefOf.TM_ArrowStorm;
-                            break;
-                        case 1:
-                            tempAbility = TorannMagicDefOf.TM_ArrowStorm_I;
-                            break;
-                        case 2:
-                            tempAbility = TorannMagicDefOf.TM_ArrowStorm_II;
-                            break;
-                        case 3:
-                            tempAbility = TorannMagicDefOf.TM_ArrowStorm_III;
-                            break;
+                        int level = mightPawn.MightData.MightPowersR[4].level;
+                        caster.GetComp<CompAbilityUserMight>().MightData.MightPowersR[4].level = level;
+                        switch (level)
+                        {
+                            case 0:
+                                tempAbility = TorannMagicDefOf.TM_ArrowStorm;
+                                break;
+                            case 1:
+                                tempAbility = TorannMagicDefOf.TM_ArrowStorm_I;
+                                break;
+                            case 2:
+                                tempAbility = TorannMagicDefOf.TM_ArrowStorm_II;
+                                break;
+                            case 3:
+                                tempAbility = TorannMagicDefOf.TM_ArrowStorm_III;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        tempAbility = TorannMagicDefOf.TM_PoisonTrap;
                     }
                 }
-                else
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
                 {
-                    tempAbility = TorannMagicDefOf.TM_PoisonTrap;
-                }
-            }
-            else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
-            {
-                int rnd = Rand.RangeInclusive(0, 3);
-                if ((rnd == 0 || rnd == 3) && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                {
-                    int level = mightPawn.MightData.MightPowersP[1].level;
-                    caster.GetComp<CompAbilityUserMight>().MightData.MightPowersP[1].level = level;
-                    switch (level)
+                    int rnd = Rand.RangeInclusive(0, 3);
+                    if ((rnd == 0 || rnd == 3) && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
-                        case 0:
-                            tempAbility = TorannMagicDefOf.TM_PsionicBlast;
-                            break;
-                        case 1:
-                            tempAbility = TorannMagicDefOf.TM_PsionicBlast_I;
-                            break;
-                        case 2:
-                            tempAbility = TorannMagicDefOf.TM_PsionicBlast_II;
-                            break;
-                        case 3:
-                            tempAbility = TorannMagicDefOf.TM_PsionicBlast_III;
-                            break;
+                        int level = mightPawn.MightData.MightPowersP[1].level;
+                        caster.GetComp<CompAbilityUserMight>().MightData.MightPowersP[1].level = level;
+                        switch (level)
+                        {
+                            case 0:
+                                tempAbility = TorannMagicDefOf.TM_PsionicBlast;
+                                break;
+                            case 1:
+                                tempAbility = TorannMagicDefOf.TM_PsionicBlast_I;
+                                break;
+                            case 2:
+                                tempAbility = TorannMagicDefOf.TM_PsionicBlast_II;
+                                break;
+                            case 3:
+                                tempAbility = TorannMagicDefOf.TM_PsionicBlast_III;
+                                break;
+                        }
+                    }
+                    else if (rnd == 1 && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                    {
+                        tempAbility = TorannMagicDefOf.TM_PsionicDash;
+                    }
+                    else
+                    {
+                        int level = mightPawn.MightData.MightPowersP[3].level;
+                        caster.GetComp<CompAbilityUserMight>().MightData.MightPowersP[3].level = level;
+                        switch (level)
+                        {
+                            case 0:
+                                tempAbility = TorannMagicDefOf.TM_PsionicBarrier;
+                                break;
+                            case 1:
+                                tempAbility = TorannMagicDefOf.TM_PsionicBarrier_Projected;
+                                break;
+                        }
                     }
                 }
-                else if (rnd == 1 && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight))
                 {
-                    tempAbility = TorannMagicDefOf.TM_PsionicDash;
-                }
-                else
-                {
-                    int level = mightPawn.MightData.MightPowersP[3].level;
-                    caster.GetComp<CompAbilityUserMight>().MightData.MightPowersP[3].level = level;
-                    switch (level)
+                    int rnd = Rand.RangeInclusive(1, 2);
+                    if (rnd == 1 || caster.story.DisabledWorkTagsBackstoryAndTraits == WorkTags.Violent)
                     {
-                        case 0:
-                            tempAbility = TorannMagicDefOf.TM_PsionicBarrier;
-                            break;
-                        case 1:
-                            tempAbility = TorannMagicDefOf.TM_PsionicBarrier_Projected;
-                            break;
+                        tempAbility = TorannMagicDefOf.TM_WaveOfFear;
+                    }
+                    else
+                    {
+                        int level = mightPawn.MightData.MightPowersDK[4].level;
+                        caster.GetComp<CompAbilityUserMight>().MightData.MightPowersDK[4].level = level;
+                        switch (level)
+                        {
+                            case 0:
+                                tempAbility = TorannMagicDefOf.TM_GraveBlade;
+                                break;
+                            case 1:
+                                tempAbility = TorannMagicDefOf.TM_GraveBlade_I;
+                                break;
+                            case 2:
+                                tempAbility = TorannMagicDefOf.TM_GraveBlade_II;
+                                break;
+                            case 3:
+                                tempAbility = TorannMagicDefOf.TM_GraveBlade_III;
+                                break;
+                        }
                     }
                 }
-            }
-            else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight))
-            {
-                int rnd = Rand.RangeInclusive(1, 2);
-                if (rnd == 1 || caster.story.DisabledWorkTagsBackstoryAndTraits == WorkTags.Violent)
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk))
                 {
-                    tempAbility = TorannMagicDefOf.TM_WaveOfFear;
-                }
-                else
-                {
-                    int level = mightPawn.MightData.MightPowersDK[4].level;
-                    caster.GetComp<CompAbilityUserMight>().MightData.MightPowersDK[4].level = level;
-                    switch (level)
+                    int rnd = Rand.RangeInclusive(3, 5);
+                    if (rnd == 3)
                     {
-                        case 0:
-                            tempAbility = TorannMagicDefOf.TM_GraveBlade;
-                            break;
-                        case 1:
-                            tempAbility = TorannMagicDefOf.TM_GraveBlade_I;
-                            break;
-                        case 2:
-                            tempAbility = TorannMagicDefOf.TM_GraveBlade_II;
-                            break;
-                        case 3:
-                            tempAbility = TorannMagicDefOf.TM_GraveBlade_III;
-                            break;
+                        tempAbility = TorannMagicDefOf.TM_TigerStrike;
+                    }
+                    else if (rnd == 4)
+                    {
+                        tempAbility = TorannMagicDefOf.TM_DragonStrike;
+                    }
+                    else
+                    {
+                        tempAbility = TorannMagicDefOf.TM_ThunderStrike;
                     }
                 }
-            }
-            else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk))
-            {
-                int rnd = Rand.RangeInclusive(3, 5);
-                if (rnd == 3)
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Commander))
                 {
-                    tempAbility = TorannMagicDefOf.TM_TigerStrike;
-                }
-                else if (rnd == 4)
-                {
-                    tempAbility = TorannMagicDefOf.TM_DragonStrike;
-                }
-                else
-                {
-                    tempAbility = TorannMagicDefOf.TM_ThunderStrike;
-                }
-            }
-            else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Commander))
-            {
-                int rnd = Rand.RangeInclusive(3, 5);
-                if (rnd == 3)
-                {
-                    int level = mightPawn.MightData.MightPowersC[3].level;
-                    caster.GetComp<CompAbilityUserMight>().MightData.MightPowersC[3].level = level;
-                    switch (level)
+                    int rnd = Rand.RangeInclusive(3, 5);
+                    if (rnd == 3)
                     {
-                        case 0:
-                            tempAbility = TorannMagicDefOf.TM_StayAlert;
-                            break;
-                        case 1:
-                            tempAbility = TorannMagicDefOf.TM_StayAlert_I;
-                            break;
-                        case 2:
-                            tempAbility = TorannMagicDefOf.TM_StayAlert_II;
-                            break;
-                        case 3:
-                            tempAbility = TorannMagicDefOf.TM_StayAlert_III;
-                            break;
+                        int level = mightPawn.MightData.MightPowersC[3].level;
+                        caster.GetComp<CompAbilityUserMight>().MightData.MightPowersC[3].level = level;
+                        switch (level)
+                        {
+                            case 0:
+                                tempAbility = TorannMagicDefOf.TM_StayAlert;
+                                break;
+                            case 1:
+                                tempAbility = TorannMagicDefOf.TM_StayAlert_I;
+                                break;
+                            case 2:
+                                tempAbility = TorannMagicDefOf.TM_StayAlert_II;
+                                break;
+                            case 3:
+                                tempAbility = TorannMagicDefOf.TM_StayAlert_III;
+                                break;
+                        }
+                    }
+                    else if (rnd == 4)
+                    {
+                        int level = mightPawn.MightData.MightPowersC[4].level;
+                        caster.GetComp<CompAbilityUserMight>().MightData.MightPowersC[4].level = level;
+                        switch (level)
+                        {
+                            case 0:
+                                tempAbility = TorannMagicDefOf.TM_MoveOut;
+                                break;
+                            case 1:
+                                tempAbility = TorannMagicDefOf.TM_MoveOut_I;
+                                break;
+                            case 2:
+                                tempAbility = TorannMagicDefOf.TM_MoveOut_II;
+                                break;
+                            case 3:
+                                tempAbility = TorannMagicDefOf.TM_MoveOut_III;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        int level = mightPawn.MightData.MightPowersC[5].level;
+                        caster.GetComp<CompAbilityUserMight>().MightData.MightPowersC[5].level = level;
+                        switch (level)
+                        {
+                            case 0:
+                                tempAbility = TorannMagicDefOf.TM_HoldTheLine;
+                                break;
+                            case 1:
+                                tempAbility = TorannMagicDefOf.TM_HoldTheLine_I;
+                                break;
+                            case 2:
+                                tempAbility = TorannMagicDefOf.TM_HoldTheLine_II;
+                                break;
+                            case 3:
+                                tempAbility = TorannMagicDefOf.TM_HoldTheLine_III;
+                                break;
+                        }
                     }
                 }
-                else if (rnd == 4)
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier))
                 {
-                    int level = mightPawn.MightData.MightPowersC[4].level;
-                    caster.GetComp<CompAbilityUserMight>().MightData.MightPowersC[4].level = level;
-                    switch (level)
+                    int rnd = Rand.RangeInclusive(0, 1);
+                    if (rnd == 0 && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
-                        case 0:
-                            tempAbility = TorannMagicDefOf.TM_MoveOut;
-                            break;
-                        case 1:
-                            tempAbility = TorannMagicDefOf.TM_MoveOut_I;
-                            break;
-                        case 2:
-                            tempAbility = TorannMagicDefOf.TM_MoveOut_II;
-                            break;
-                        case 3:
-                            tempAbility = TorannMagicDefOf.TM_MoveOut_III;
-                            break;
+                        tempAbility = TorannMagicDefOf.TM_60mmMortar;
+                    }
+                    else
+                    {
+                        tempAbility = TorannMagicDefOf.TM_FirstAid;
                     }
                 }
-                else
+                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                 {
-                    int level = mightPawn.MightData.MightPowersC[5].level;
-                    caster.GetComp<CompAbilityUserMight>().MightData.MightPowersC[5].level = level;
-                    switch (level)
-                    {
-                        case 0:
-                            tempAbility = TorannMagicDefOf.TM_HoldTheLine;
-                            break;
-                        case 1:
-                            tempAbility = TorannMagicDefOf.TM_HoldTheLine_I;
-                            break;
-                        case 2:
-                            tempAbility = TorannMagicDefOf.TM_HoldTheLine_II;
-                            break;
-                        case 3:
-                            tempAbility = TorannMagicDefOf.TM_HoldTheLine_III;
-                            break;
-                    }
-                }
-            }
-            else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier) )
-            {
-                int rnd = Rand.RangeInclusive(0, 1);
-                if (rnd == 0 && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                {
-                    tempAbility = TorannMagicDefOf.TM_60mmMortar;
-                }
-                else
-                {
-                    tempAbility = TorannMagicDefOf.TM_FirstAid;
-                }
-            }
-            else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-            {
 
+                }
             }
             return tempAbility;
         }
@@ -1998,732 +2071,755 @@ namespace TorannMagic
         public static TMAbilityDef GetCopiedMagicAbility(Pawn targetPawn, Pawn caster)
         {
             CompAbilityUserMagic magicPawn = targetPawn.GetComp<CompAbilityUserMagic>();
+            CompAbilityUserMagic casterComp = caster.GetComp<CompAbilityUserMagic>();
             TMAbilityDef tempAbility = null;
-            if (magicPawn != null)
+            if (magicPawn.customClass != null && magicPawn.customClass.isMage)
             {
-                if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
+                List<TMAbilityDef> copyAbilities = new List<TMAbilityDef>();
+                copyAbilities.Clear();
+                for (int i = 0; i < magicPawn.customClass.classMageAbilities.Count; i++)
                 {
-                    for (int i = 0; i < 5; i++)
+                    if (magicPawn.customClass.classMageAbilities[i].canCopy)
                     {
-                        int rnd = Rand.RangeInclusive(0, 3);
-                        if (rnd == 0 && magicPawn.MagicData.MagicPowersA[rnd].learned)
+                        if (!casterComp.MagicData.ReturnMatchingMagicPower(magicPawn.customClass.classMageAbilities[i]).learned)
                         {
-                            int level = magicPawn.MagicData.MagicPowersA[rnd].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA[rnd].level = level;
-                            switch (level)
-                            {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_Shadow;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_Shadow_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_Shadow_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_Shadow_III;
-                                    break;
-                            }
-                            i = 5;
-                        }
-                        else if (rnd == 1 && magicPawn.MagicData.MagicPowersA[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                        {
-                            int level = magicPawn.MagicData.MagicPowersA[rnd].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA[rnd].level = level;
-                            switch (level)
-                            {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_MagicMissile;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_MagicMissile_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_MagicMissile_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_MagicMissile_III;
-                                    break;
-                            }
-                            i = 5;
-                        }
-                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersA[rnd].learned)
-                        {
-                            int level = magicPawn.MagicData.MagicPowersA[rnd].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA[rnd].level = level;
-                            switch (level)
-                            {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_Blink;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_Blink_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_Blink_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_Blink_III;
-                                    break;
-                            }
-                            i = 5;
-                        }
-                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersA[rnd].learned)
-                        {
-                            int level = magicPawn.MagicData.MagicPowersA[rnd].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA[rnd].level = level;
-                            switch (level)
-                            {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_Summon;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_Summon_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_Summon_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_Summon_III;
-                                    break;
-                            }
-                            i = 5;
-                        }
+                            copyAbilities.AddDistinct(magicPawn.customClass.classMageAbilities[i]);
+                        }                        
                     }
                 }
-                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn))
+                if (copyAbilities.Count > 0)
                 {
-                    for (int i = 0; i < 5; i++)
+                    tempAbility = copyAbilities.RandomElement();
+                }
+            }
+            else
+            {
+                if (magicPawn != null)
+                {
+                    if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
                     {
-                        int rnd = Rand.RangeInclusive(0, 3);
-                        if (rnd == 0 && magicPawn.MagicData.MagicPowersSB[rnd].learned)
+                        for (int i = 0; i < 5; i++)
                         {
-                            int level = magicPawn.MagicData.MagicPowersSB[rnd].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersSB[rnd].level = level;
-                            switch (level)
+                            int rnd = Rand.RangeInclusive(0, 3);
+                            if (rnd == 0 && magicPawn.MagicData.MagicPowersA[rnd].learned)
                             {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_AMP;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_AMP_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_AMP_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_AMP_III;
-                                    break;
+                                int level = magicPawn.MagicData.MagicPowersA[rnd].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA[rnd].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_Shadow;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_Shadow_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_Shadow_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_Shadow_III;
+                                        break;
+                                }
+                                i = 5;
                             }
-                            i = 5;
-                        }
-                        else if (rnd == 1 && magicPawn.MagicData.MagicPowersSB[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_LightningBolt;
-                            i = 5;
-                        }
-                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersSB[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_LightningCloud;
-                            i = 5;
-                        }
-                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersSB[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_LightningStorm;
-                            i = 5;
+                            else if (rnd == 1 && magicPawn.MagicData.MagicPowersA[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                            {
+                                int level = magicPawn.MagicData.MagicPowersA[rnd].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA[rnd].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_MagicMissile;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_MagicMissile_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_MagicMissile_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_MagicMissile_III;
+                                        break;
+                                }
+                                i = 5;
+                            }
+                            else if (rnd == 2 && magicPawn.MagicData.MagicPowersA[rnd].learned)
+                            {
+                                int level = magicPawn.MagicData.MagicPowersA[rnd].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA[rnd].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_Blink;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_Blink_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_Blink_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_Blink_III;
+                                        break;
+                                }
+                                i = 5;
+                            }
+                            else if (rnd == 3 && magicPawn.MagicData.MagicPowersA[rnd].learned)
+                            {
+                                int level = magicPawn.MagicData.MagicPowersA[rnd].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA[rnd].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_Summon;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_Summon_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_Summon_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_Summon_III;
+                                        break;
+                                }
+                                i = 5;
+                            }
                         }
                     }
-                }
-                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
-                {
-                    for (int i = 0; i < 5; i++)
+                    else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn))
                     {
-                        int rnd = Rand.RangeInclusive(0, 3);
-                        if (rnd == 0 && magicPawn.MagicData.MagicPowersIF[rnd].learned)
+                        for (int i = 0; i < 5; i++)
                         {
-                            int level = magicPawn.MagicData.MagicPowersIF[rnd].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersIF[rnd].level = level;
-                            switch (level)
+                            int rnd = Rand.RangeInclusive(0, 3);
+                            if (rnd == 0 && magicPawn.MagicData.MagicPowersSB[rnd].learned)
                             {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_RayofHope;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_RayofHope_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_RayofHope_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_RayofHope_III;
-                                    break;
+                                int level = magicPawn.MagicData.MagicPowersSB[rnd].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersSB[rnd].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_AMP;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_AMP_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_AMP_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_AMP_III;
+                                        break;
+                                }
+                                i = 5;
                             }
-                            i = 5;
-                        }
-                        else if (rnd == 1 && magicPawn.MagicData.MagicPowersIF[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_Firebolt;
-                            i = 5;
-                        }
-                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersIF[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_Fireclaw;
-                            i = 5;
-                        }
-                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersIF[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_Fireball;
-                            i = 5;
+                            else if (rnd == 1 && magicPawn.MagicData.MagicPowersSB[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_LightningBolt;
+                                i = 5;
+                            }
+                            else if (rnd == 2 && magicPawn.MagicData.MagicPowersSB[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_LightningCloud;
+                                i = 5;
+                            }
+                            else if (rnd == 3 && magicPawn.MagicData.MagicPowersSB[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_LightningStorm;
+                                i = 5;
+                            }
                         }
                     }
-                }
-                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost))
-                {
-                    for (int i = 0; i < 5; i++)
+                    else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
                     {
-                        int rnd = Rand.RangeInclusive(0, 4);
-                        if (rnd == 0 && magicPawn.MagicData.MagicPowersHoF[rnd].learned)
+                        for (int i = 0; i < 5; i++)
                         {
-                            int level = magicPawn.MagicData.MagicPowersHoF[rnd].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersHoF[rnd].level = level;
-                            switch (level)
+                            int rnd = Rand.RangeInclusive(0, 3);
+                            if (rnd == 0 && magicPawn.MagicData.MagicPowersIF[rnd].learned)
                             {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_Soothe;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_Soothe_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_Soothe_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_Soothe_III;
-                                    break;
+                                int level = magicPawn.MagicData.MagicPowersIF[rnd].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersIF[rnd].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_RayofHope;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_RayofHope_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_RayofHope_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_RayofHope_III;
+                                        break;
+                                }
+                                i = 5;
                             }
-                            i = 5;
-                        }
-                        else if (rnd == 1 && magicPawn.MagicData.MagicPowersHoF[rnd].learned)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_Rainmaker;
-                            i = 5;
-                        }
-                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersHoF[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_Icebolt;
-                            i = 5;
-                        }
-                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersHoF[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                        {
-                            int level = magicPawn.MagicData.MagicPowersHoF[rnd].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersHoF[rnd].level = level;
-                            switch (level)
+                            else if (rnd == 1 && magicPawn.MagicData.MagicPowersIF[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                             {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_FrostRay;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_FrostRay_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_FrostRay_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_FrostRay_III;
-                                    break;
+                                tempAbility = TorannMagicDefOf.TM_Firebolt;
+                                i = 5;
                             }
-                            i = 5;
-                        }
-                        else if (rnd == 4 && magicPawn.MagicData.MagicPowersHoF[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_Snowball;
-                            i = 5;
+                            else if (rnd == 2 && magicPawn.MagicData.MagicPowersIF[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_Fireclaw;
+                                i = 5;
+                            }
+                            else if (rnd == 3 && magicPawn.MagicData.MagicPowersIF[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_Fireball;
+                                i = 5;
+                            }
                         }
                     }
-                }
-                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Druid))
-                {
-                    for (int i = 0; i < 5; i++)
+                    else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost))
                     {
-                        int rnd = Rand.RangeInclusive(0, 3);
-                        if (rnd == 0 && magicPawn.MagicData.MagicPowersD[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                        for (int i = 0; i < 5; i++)
                         {
-                            tempAbility = TorannMagicDefOf.TM_Poison;
-                            i = 5;
-                        }
-                        else if (rnd == 1 && magicPawn.MagicData.MagicPowersD[rnd].learned)
-                        {
-                            int level = magicPawn.MagicData.MagicPowersD[rnd].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersD[rnd].level = level;
-                            switch (level)
+                            int rnd = Rand.RangeInclusive(0, 4);
+                            if (rnd == 0 && magicPawn.MagicData.MagicPowersHoF[rnd].learned)
                             {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_SootheAnimal;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_SootheAnimal_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_SootheAnimal_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_SootheAnimal_III;
-                                    break;
+                                int level = magicPawn.MagicData.MagicPowersHoF[rnd].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersHoF[rnd].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_Soothe;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_Soothe_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_Soothe_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_Soothe_III;
+                                        break;
+                                }
+                                i = 5;
                             }
-                            i = 5;
-                        }
-                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersD[rnd].learned)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_Regenerate;
-                            i = 5;
-                        }
-                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersD[rnd].learned)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_CureDisease;
-                            i = 5;
+                            else if (rnd == 1 && magicPawn.MagicData.MagicPowersHoF[rnd].learned)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_Rainmaker;
+                                i = 5;
+                            }
+                            else if (rnd == 2 && magicPawn.MagicData.MagicPowersHoF[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_Icebolt;
+                                i = 5;
+                            }
+                            else if (rnd == 3 && magicPawn.MagicData.MagicPowersHoF[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                            {
+                                int level = magicPawn.MagicData.MagicPowersHoF[rnd].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersHoF[rnd].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_FrostRay;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_FrostRay_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_FrostRay_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_FrostRay_III;
+                                        break;
+                                }
+                                i = 5;
+                            }
+                            else if (rnd == 4 && magicPawn.MagicData.MagicPowersHoF[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_Snowball;
+                                i = 5;
+                            }
                         }
                     }
-                }
-                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer))
-                {
-                    for (int i = 0; i < 5; i++)
+                    else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Druid))
                     {
-                        int rnd = Rand.RangeInclusive(1, 3);
-                        if (rnd == 1 && magicPawn.MagicData.MagicPowersN[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                        for (int i = 0; i < 5; i++)
                         {
-                            int level = magicPawn.MagicData.MagicPowersN[rnd].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersN[rnd].level = level;
-                            switch (level)
+                            int rnd = Rand.RangeInclusive(0, 3);
+                            if (rnd == 0 && magicPawn.MagicData.MagicPowersD[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                             {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_DeathMark;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_DeathMark_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_DeathMark_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_DeathMark_III;
-                                    break;
+                                tempAbility = TorannMagicDefOf.TM_Poison;
+                                i = 5;
                             }
-                            i = 5;
-                        }
-                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersN[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_FogOfTorment;
-                            i = 5;
-                        }
-                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersN[rnd + 1].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                        {
-                            int level = magicPawn.MagicData.MagicPowersN[rnd + 1].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersN[rnd + 1].level = level;
-                            switch (level)
+                            else if (rnd == 1 && magicPawn.MagicData.MagicPowersD[rnd].learned)
                             {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_CorpseExplosion;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_CorpseExplosion_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_CorpseExplosion_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_CorpseExplosion_III;
-                                    break;
+                                int level = magicPawn.MagicData.MagicPowersD[rnd].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersD[rnd].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_SootheAnimal;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_SootheAnimal_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_SootheAnimal_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_SootheAnimal_III;
+                                        break;
+                                }
+                                i = 5;
                             }
-                            i = 5;
+                            else if (rnd == 2 && magicPawn.MagicData.MagicPowersD[rnd].learned)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_Regenerate;
+                                i = 5;
+                            }
+                            else if (rnd == 3 && magicPawn.MagicData.MagicPowersD[rnd].learned)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_CureDisease;
+                                i = 5;
+                            }
                         }
                     }
-                }
-                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Paladin))
-                {
-                    for (int i = 0; i < 5; i++)
+                    else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer))
                     {
-                        int rnd = Rand.RangeInclusive(0, 3);
-                        if (rnd == 1 && magicPawn.MagicData.MagicPowersP[rnd].learned)
+                        for (int i = 0; i < 5; i++)
                         {
-                            int level = magicPawn.MagicData.MagicPowersP[rnd].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP[rnd].level = level;
-                            switch (level)
+                            int rnd = Rand.RangeInclusive(1, 3);
+                            if (rnd == 1 && magicPawn.MagicData.MagicPowersN[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                             {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_Shield;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_Shield_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_Shield_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_Shield_III;
-                                    break;
+                                int level = magicPawn.MagicData.MagicPowersN[rnd].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersN[rnd].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_DeathMark;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_DeathMark_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_DeathMark_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_DeathMark_III;
+                                        break;
+                                }
+                                i = 5;
                             }
-                            i = 5;
-                        }
-                        else if (rnd == 0 && magicPawn.MagicData.MagicPowersP[rnd].learned)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_Heal;
-                            i = 5;
-                        }
-                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersP[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_ValiantCharge;
-                            i = 5;
-                        }
-                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersP[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_Overwhelm;
-                            i = 5;
+                            else if (rnd == 2 && magicPawn.MagicData.MagicPowersN[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_FogOfTorment;
+                                i = 5;
+                            }
+                            else if (rnd == 3 && magicPawn.MagicData.MagicPowersN[rnd + 1].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                            {
+                                int level = magicPawn.MagicData.MagicPowersN[rnd + 1].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersN[rnd + 1].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_CorpseExplosion;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_CorpseExplosion_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_CorpseExplosion_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_CorpseExplosion_III;
+                                        break;
+                                }
+                                i = 5;
+                            }
                         }
                     }
-                }
-                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Priest))
-                {
-                    for (int i = 0; i < 5; i++)
+                    else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Paladin))
                     {
-                        int rnd = Rand.RangeInclusive(0, 3);
-                        if (rnd == 3 && magicPawn.MagicData.MagicPowersPR[rnd].learned)
+                        for (int i = 0; i < 5; i++)
                         {
-                            int level = magicPawn.MagicData.MagicPowersPR[rnd].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersPR[rnd].level = level;
-                            switch (level)
+                            int rnd = Rand.RangeInclusive(0, 3);
+                            if (rnd == 1 && magicPawn.MagicData.MagicPowersP[rnd].learned)
                             {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_BestowMight;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_BestowMight_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_BestowMight_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_BestowMight_III;
-                                    break;
+                                int level = magicPawn.MagicData.MagicPowersP[rnd].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP[rnd].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_Shield;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_Shield_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_Shield_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_Shield_III;
+                                        break;
+                                }
+                                i = 5;
                             }
-                            i = 5;
-                        }
-                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersPR[rnd].learned)
-                        {
-                            int level = magicPawn.MagicData.MagicPowersPR[rnd].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersPR[rnd].level = level;
-                            switch (level)
+                            else if (rnd == 0 && magicPawn.MagicData.MagicPowersP[rnd].learned)
                             {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_HealingCircle;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_HealingCircle_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_HealingCircle_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_HealingCircle_III;
-                                    break;
+                                tempAbility = TorannMagicDefOf.TM_Heal;
+                                i = 5;
                             }
-                            i = 5;
-                        }
-                        else if (rnd == 1 && magicPawn.MagicData.MagicPowersPR[rnd].learned)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_Purify;
-                            i = 5;
-                        }
-                        else if (rnd == 0 && magicPawn.MagicData.MagicPowersPR[rnd].learned)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_AdvancedHeal;
-                            i = 5;
+                            else if (rnd == 2 && magicPawn.MagicData.MagicPowersP[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_ValiantCharge;
+                                i = 5;
+                            }
+                            else if (rnd == 3 && magicPawn.MagicData.MagicPowersP[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_Overwhelm;
+                                i = 5;
+                            }
                         }
                     }
-                }
-                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
-                {
-                    for (int i = 0; i < 5; i++)
+                    else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Priest))
                     {
-                        int rnd = Rand.RangeInclusive(1, 3);
-                        if (rnd == 1 && magicPawn.MagicData.MagicPowersS[rnd].learned)
+                        for (int i = 0; i < 5; i++)
                         {
-                            tempAbility = TorannMagicDefOf.TM_SummonPylon;
-                            i = 5;
-                        }
-                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersS[rnd].learned)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_SummonExplosive;
-                            i = 5;
-                        }
-                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersS[rnd].learned)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_SummonElemental;
-                            i = 5;
-                        }
-                    }
-                }
-                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
-                {
-                    int level = magicPawn.MagicData.MagicPowersB[3].level;
-                    caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersB[3].level = level;
-                    switch (level)
-                    {
-                        case 0:
-                            tempAbility = TorannMagicDefOf.TM_Lullaby;
-                            break;
-                        case 1:
-                            tempAbility = TorannMagicDefOf.TM_Lullaby_I;
-                            break;
-                        case 2:
-                            tempAbility = TorannMagicDefOf.TM_Lullaby_II;
-                            break;
-                        case 3:
-                            tempAbility = TorannMagicDefOf.TM_Lullaby_III;
-                            break;
-                    }
-                }
-                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Warlock))
-                {
-                    for (int i = 0; i < 5; i++)
-                    {
-                        int rnd = Rand.RangeInclusive(1, 3);
-                        if (rnd == 1 && magicPawn.MagicData.MagicPowersWD[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                        {
-                            int level = magicPawn.MagicData.MagicPowersWD[rnd].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersWD[rnd].level = level;
-                            switch (level)
+                            int rnd = Rand.RangeInclusive(0, 3);
+                            if (rnd == 3 && magicPawn.MagicData.MagicPowersPR[rnd].learned)
                             {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_ShadowBolt;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_ShadowBolt_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_ShadowBolt_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_ShadowBolt_III;
-                                    break;
+                                int level = magicPawn.MagicData.MagicPowersPR[rnd].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersPR[rnd].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_BestowMight;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_BestowMight_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_BestowMight_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_BestowMight_III;
+                                        break;
+                                }
+                                i = 5;
                             }
-                            i = 5;
-                        }
-                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersWD[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_Dominate;
-                            i = 5;
-                        }
-                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersWD[rnd].learned)
-                        {
-                            int level = magicPawn.MagicData.MagicPowersWD[rnd].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersWD[rnd].level = level;
-                            switch (level)
+                            else if (rnd == 2 && magicPawn.MagicData.MagicPowersPR[rnd].learned)
                             {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_Repulsion;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_Repulsion_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_Repulsion_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_Repulsion_III;
-                                    break;
+                                int level = magicPawn.MagicData.MagicPowersPR[rnd].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersPR[rnd].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_HealingCircle;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_HealingCircle_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_HealingCircle_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_HealingCircle_III;
+                                        break;
+                                }
+                                i = 5;
                             }
-                            i = 5;
+                            else if (rnd == 1 && magicPawn.MagicData.MagicPowersPR[rnd].learned)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_Purify;
+                                i = 5;
+                            }
+                            else if (rnd == 0 && magicPawn.MagicData.MagicPowersPR[rnd].learned)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_AdvancedHeal;
+                                i = 5;
+                            }
                         }
                     }
-                }
-                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Succubus))
-                {
-                    for (int i = 0; i < 5; i++)
+                    else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
                     {
-                        int rnd = Rand.RangeInclusive(1, 3);
-                        if (rnd == 1 && magicPawn.MagicData.MagicPowersSD[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                        for (int i = 0; i < 5; i++)
                         {
-                            int level = magicPawn.MagicData.MagicPowersSD[rnd].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersSD[rnd].level = level;
-                            switch (level)
+                            int rnd = Rand.RangeInclusive(1, 3);
+                            if (rnd == 1 && magicPawn.MagicData.MagicPowersS[rnd].learned)
                             {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_ShadowBolt;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_ShadowBolt_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_ShadowBolt_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_ShadowBolt_III;
-                                    break;
+                                tempAbility = TorannMagicDefOf.TM_SummonPylon;
+                                i = 5;
                             }
-                            i = 5;
-                        }
-                        else if (rnd == 2 && magicPawn.MagicData.MagicPowersSD[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_Dominate;
-                            i = 5;
-                        }
-                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersSD[rnd].learned)
-                        {
-                            int level = magicPawn.MagicData.MagicPowersSD[rnd].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersSD[rnd].level = level;
-                            switch (level)
+                            else if (rnd == 2 && magicPawn.MagicData.MagicPowersS[rnd].learned)
                             {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_Attraction;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_Attraction_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_Attraction_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_Attraction_III;
-                                    break;
+                                tempAbility = TorannMagicDefOf.TM_SummonExplosive;
+                                i = 5;
                             }
-                            i = 5;
+                            else if (rnd == 3 && magicPawn.MagicData.MagicPowersS[rnd].learned)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_SummonElemental;
+                                i = 5;
+                            }
                         }
                     }
-                }
-                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
-                {
-                    for (int i = 0; i < 5; i++)
+                    else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
                     {
-                        int rnd = Rand.RangeInclusive(0, 2);
-                        if (rnd == 2)
+                        int level = magicPawn.MagicData.MagicPowersB[3].level;
+                        caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersB[3].level = level;
+                        switch (level)
                         {
-                            rnd = 3;
-                        }
-                        if (rnd == 0 && magicPawn.MagicData.MagicPowersG[rnd].learned)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_Stoneskin;
-                            i = 5;
-                        }
-                        else if (rnd == 1 && magicPawn.MagicData.MagicPowersG[rnd].learned)
-                        {
-                            int level = magicPawn.MagicData.MagicPowersG[rnd].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersG[rnd].level = level;
-                            switch (level)
-                            {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_Encase;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_Encase_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_Encase_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_Encase_III;
-                                    break;
-                            }
-                            i = 5;
-                        }
-                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersG[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_EarthernHammer;
-                            i = 5;
+                            case 0:
+                                tempAbility = TorannMagicDefOf.TM_Lullaby;
+                                break;
+                            case 1:
+                                tempAbility = TorannMagicDefOf.TM_Lullaby_I;
+                                break;
+                            case 2:
+                                tempAbility = TorannMagicDefOf.TM_Lullaby_II;
+                                break;
+                            case 3:
+                                tempAbility = TorannMagicDefOf.TM_Lullaby_III;
+                                break;
                         }
                     }
-                }
-                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
-                {
-                    for (int i = 0; i < 5; i++)
+                    else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Warlock))
                     {
-                        int rnd = Rand.RangeInclusive(3, 5);
-                        if (rnd == 3 && magicPawn.MagicData.MagicPowersT[rnd].learned)
+                        for (int i = 0; i < 5; i++)
                         {
-                            tempAbility = TorannMagicDefOf.TM_TechnoShield;
-                            i = 5;
-                        }
-                        else if (rnd == 4 && magicPawn.MagicData.MagicPowersT[rnd].learned)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_Sabotage;
-                            i = 5;
-                        }
-                        else if (rnd == 5 && magicPawn.MagicData.MagicPowersT[rnd].learned)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_Overdrive;
-                            i = 5;
-                        }
-                    }
-                }
-                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
-                {
-                    for (int i = 0; i < 5; i++)
-                    {
-                        if (magicPawn.MagicData.MagicPowersE[4].learned)
-                        {
-                            int level = magicPawn.MagicData.MagicPowersE[4].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersE[4].level = level;
-                            switch (level)
+                            int rnd = Rand.RangeInclusive(1, 3);
+                            if (rnd == 1 && magicPawn.MagicData.MagicPowersWD[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                             {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_Polymorph;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_Polymorph_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_Polymorph_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_Polymorph_III;
-                                    break;
+                                int level = magicPawn.MagicData.MagicPowersWD[rnd].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersWD[rnd].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_ShadowBolt;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_ShadowBolt_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_ShadowBolt_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_ShadowBolt_III;
+                                        break;
+                                }
+                                i = 5;
                             }
-                            i = 5;
-                        }
-                    }
-                }
-                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer))
-                {
-                    for (int i = 0; i < 5; i++)
-                    {
-                        int rnd = Rand.RangeInclusive(2, 4);
-                        if (rnd == 2 && magicPawn.MagicData.MagicPowersC[rnd].learned)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_AccelerateTime;
-                            i = 5;
-                        }
-                        else if (rnd == 3 && magicPawn.MagicData.MagicPowersC[rnd].learned)
-                        {
-                            tempAbility = TorannMagicDefOf.TM_ReverseTime;
-                            i = 5;
-                        }
-                        else if (magicPawn.MagicData.MagicPowersC[4].learned)
-                        {
-                            int level = magicPawn.MagicData.MagicPowersC[4].level;
-                            caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersC[4].level = level;
-                            switch (level)
+                            else if (rnd == 2 && magicPawn.MagicData.MagicPowersWD[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                             {
-                                case 0:
-                                    tempAbility = TorannMagicDefOf.TM_ChronostaticField;
-                                    break;
-                                case 1:
-                                    tempAbility = TorannMagicDefOf.TM_ChronostaticField_I;
-                                    break;
-                                case 2:
-                                    tempAbility = TorannMagicDefOf.TM_ChronostaticField_II;
-                                    break;
-                                case 3:
-                                    tempAbility = TorannMagicDefOf.TM_ChronostaticField_III;
-                                    break;
+                                tempAbility = TorannMagicDefOf.TM_Dominate;
+                                i = 5;
                             }
-                            i = 5;
+                            else if (rnd == 3 && magicPawn.MagicData.MagicPowersWD[rnd].learned)
+                            {
+                                int level = magicPawn.MagicData.MagicPowersWD[rnd].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersWD[rnd].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_Repulsion;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_Repulsion_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_Repulsion_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_Repulsion_III;
+                                        break;
+                                }
+                                i = 5;
+                            }
                         }
                     }
-                }
-                else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.BloodMage))
-                {
-                    Messages.Message("TM_CannotMimicBloodMage".Translate(
-                        ), MessageTypeDefOf.RejectInput);
+                    else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Succubus))
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            int rnd = Rand.RangeInclusive(1, 3);
+                            if (rnd == 1 && magicPawn.MagicData.MagicPowersSD[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                            {
+                                int level = magicPawn.MagicData.MagicPowersSD[rnd].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersSD[rnd].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_ShadowBolt;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_ShadowBolt_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_ShadowBolt_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_ShadowBolt_III;
+                                        break;
+                                }
+                                i = 5;
+                            }
+                            else if (rnd == 2 && magicPawn.MagicData.MagicPowersSD[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_Dominate;
+                                i = 5;
+                            }
+                            else if (rnd == 3 && magicPawn.MagicData.MagicPowersSD[rnd].learned)
+                            {
+                                int level = magicPawn.MagicData.MagicPowersSD[rnd].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersSD[rnd].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_Attraction;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_Attraction_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_Attraction_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_Attraction_III;
+                                        break;
+                                }
+                                i = 5;
+                            }
+                        }
+                    }
+                    else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            int rnd = Rand.RangeInclusive(0, 2);
+                            if (rnd == 2)
+                            {
+                                rnd = 3;
+                            }
+                            if (rnd == 0 && magicPawn.MagicData.MagicPowersG[rnd].learned)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_Stoneskin;
+                                i = 5;
+                            }
+                            else if (rnd == 1 && magicPawn.MagicData.MagicPowersG[rnd].learned)
+                            {
+                                int level = magicPawn.MagicData.MagicPowersG[rnd].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersG[rnd].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_Encase;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_Encase_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_Encase_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_Encase_III;
+                                        break;
+                                }
+                                i = 5;
+                            }
+                            else if (rnd == 3 && magicPawn.MagicData.MagicPowersG[rnd].learned && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_EarthernHammer;
+                                i = 5;
+                            }
+                        }
+                    }
+                    else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            int rnd = Rand.RangeInclusive(3, 5);
+                            if (rnd == 3 && magicPawn.MagicData.MagicPowersT[rnd].learned)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_TechnoShield;
+                                i = 5;
+                            }
+                            else if (rnd == 4 && magicPawn.MagicData.MagicPowersT[rnd].learned)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_Sabotage;
+                                i = 5;
+                            }
+                            else if (rnd == 5 && magicPawn.MagicData.MagicPowersT[rnd].learned)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_Overdrive;
+                                i = 5;
+                            }
+                        }
+                    }
+                    else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            if (magicPawn.MagicData.MagicPowersE[4].learned)
+                            {
+                                int level = magicPawn.MagicData.MagicPowersE[4].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersE[4].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_Polymorph;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_Polymorph_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_Polymorph_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_Polymorph_III;
+                                        break;
+                                }
+                                i = 5;
+                            }
+                        }
+                    }
+                    else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer))
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            int rnd = Rand.RangeInclusive(2, 4);
+                            if (rnd == 2 && magicPawn.MagicData.MagicPowersC[rnd].learned)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_AccelerateTime;
+                                i = 5;
+                            }
+                            else if (rnd == 3 && magicPawn.MagicData.MagicPowersC[rnd].learned)
+                            {
+                                tempAbility = TorannMagicDefOf.TM_ReverseTime;
+                                i = 5;
+                            }
+                            else if (magicPawn.MagicData.MagicPowersC[4].learned)
+                            {
+                                int level = magicPawn.MagicData.MagicPowersC[4].level;
+                                caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersC[4].level = level;
+                                switch (level)
+                                {
+                                    case 0:
+                                        tempAbility = TorannMagicDefOf.TM_ChronostaticField;
+                                        break;
+                                    case 1:
+                                        tempAbility = TorannMagicDefOf.TM_ChronostaticField_I;
+                                        break;
+                                    case 2:
+                                        tempAbility = TorannMagicDefOf.TM_ChronostaticField_II;
+                                        break;
+                                    case 3:
+                                        tempAbility = TorannMagicDefOf.TM_ChronostaticField_III;
+                                        break;
+                                }
+                                i = 5;
+                            }
+                        }
+                    }
+                    else if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.BloodMage))
+                    {
+                        Messages.Message("TM_CannotMimicBloodMage".Translate(
+                            ), MessageTypeDefOf.RejectInput);
+                    }
                 }
             }
             return tempAbility;
@@ -2866,19 +2962,19 @@ namespace TorannMagic
                 {
                     MagicPower p = comp.MagicData.AllMagicPowersForChaosMage.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Heal);
                     p.learned = true;
-                    comp.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)p.abilityDef, TM_Calc.GetAssociatedMagicPowerSkill(comp, p)));
+                    comp.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)p.abilityDef, TM_ClassUtility.GetAssociatedMagicPowerSkill(comp, p)));
                     comp.AddPawnAbility(p.abilityDef);
                     p = comp.MagicData.AllMagicPowersForChaosMage.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_LightningBolt);
                     p.learned = true;
-                    comp.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)p.abilityDef, TM_Calc.GetAssociatedMagicPowerSkill(comp, p)));
+                    comp.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)p.abilityDef, TM_ClassUtility.GetAssociatedMagicPowerSkill(comp, p)));
                     comp.AddPawnAbility(p.abilityDef);
                     p = comp.MagicData.AllMagicPowersForChaosMage.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shield);
                     p.learned = true;
-                    comp.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)p.abilityDef, TM_Calc.GetAssociatedMagicPowerSkill(comp, p)));
+                    comp.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)p.abilityDef, TM_ClassUtility.GetAssociatedMagicPowerSkill(comp, p)));
                     comp.AddPawnAbility(p.abilityDef);
                     p = comp.MagicData.AllMagicPowersForChaosMage.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Fireball);
                     p.learned = true;
-                    comp.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)p.abilityDef, TM_Calc.GetAssociatedMagicPowerSkill(comp, p)));
+                    comp.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)p.abilityDef, TM_ClassUtility.GetAssociatedMagicPowerSkill(comp, p)));
                     comp.AddPawnAbility(p.abilityDef);
                     p = TM_Calc.GetRandomMagicPower(comp); ;
                     comp.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)p.abilityDef, null));
@@ -2889,7 +2985,7 @@ namespace TorannMagic
                     if (i < count)
                     {
                         power.learned = true;
-                        comp.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)power.abilityDef, TM_Calc.GetAssociatedMagicPowerSkill(comp, power)));
+                        comp.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)power.abilityDef, TM_ClassUtility.GetAssociatedMagicPowerSkill(comp, power)));
                         if (power.abilityDef != TorannMagicDefOf.TM_TechnoBit && power.abilityDef != TorannMagicDefOf.TM_WandererCraft && power.abilityDef != TorannMagicDefOf.TM_Cantrips)
                         {
                             comp.AddPawnAbility(power.abilityDef);
@@ -2925,22 +3021,6 @@ namespace TorannMagic
                 }
             }
             return power;
-        }
-
-        public static List<MagicPowerSkill> GetAssociatedMagicPowerSkill(CompAbilityUserMagic comp, MagicPower power)
-        {
-            string str = power.TMabilityDefs.FirstOrDefault().defName.ToString() + "_";
-            List<MagicPowerSkill> skills = new List<MagicPowerSkill>();
-            skills.Clear();
-            for (int i = 0; i < comp.MagicData.AllMagicPowerSkills.Count; i++)
-            {
-                MagicPowerSkill mps = comp.MagicData.AllMagicPowerSkills[i];
-                if (mps.label.Contains(str))
-                {
-                    skills.Add(mps);
-                }
-            }
-            return skills;
         }
 
         public static bool IsUsingPistol(Pawn p)
@@ -3061,6 +3141,84 @@ namespace TorannMagic
             //    ), MessageTypeDefOf.RejectInput);
             //}
             return result;
+        }
+
+        public static float GetSkillDamage(Pawn p)
+        {
+            float result = 0;
+
+            CompAbilityUserMight compMight = p.GetComp<CompAbilityUserMight>();
+            CompAbilityUserMagic compMagic = p.GetComp<CompAbilityUserMagic>();
+            float strFactor = 1f;
+            if (compMight != null && compMight.IsMightUser)
+            {
+                strFactor = compMight.mightPwr;
+            }
+            else if (compMagic != null && compMagic.IsMagicUser)
+            {
+                strFactor = compMagic.arcaneDmg;
+            }
+
+            if (p.equipment != null && p.equipment.Primary != null)
+            {
+                if(p.equipment.Primary.def.IsMeleeWeapon)
+                {
+                    result = GetSkillDamage_Melee(p, strFactor);
+                    compMight.weaponCritChance = GetWeaponCritChance(p.equipment.Primary);
+                    compMagic.weaponCritChance = GetWeaponCritChance(p.equipment.Primary);
+                }
+                else
+                {
+                    result = GetSkillDamage_Range(p, strFactor);
+                    compMight.weaponCritChance = 0f;
+                    compMagic.weaponCritChance = 0f;
+                }
+            }
+            else
+            {
+                result = p.GetStatValue(StatDefOf.MeleeDPS, false) * strFactor;
+            }
+
+            return result;
+        }
+
+        public static float GetWeaponCritChance(ThingWithComps weapon)
+        {
+            float weaponMass = weapon.GetStatValue(StatDefOf.Mass, false);            
+            if(weaponMass != 0)
+            {
+                QualityCategory qual;
+                weapon.TryGetQuality(out qual);
+                int q = (int)qual;
+
+                float critChanceByMass = .1f + (.2f / weaponMass);
+                float critChanceByQuality = (.05f * (float)q);
+
+                return (critChanceByMass + critChanceByQuality);
+            }
+
+
+            return 0f;
+        }
+
+        public static float GetSkillDamage_Melee(Pawn p, float strFactor)
+        {
+            float weaponDamage = 0f;
+            ThingWithComps weaponComp = p.equipment.Primary;
+            float weaponDPS = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_AverageDPS, false);
+            float pawnDPS = p.GetStatValue(StatDefOf.MeleeDPS, false);
+
+            weaponDamage = Mathf.Max((pawnDPS + weaponDPS) * strFactor, 5f);
+
+            return weaponDamage;
+        }
+
+        public static float GetSkillDamage_Range(Pawn p, float strFactor)
+        {
+            float weaponDamage = p.equipment.Primary.def.Verbs.FirstOrDefault().defaultProjectile.projectile.GetDamageAmount(p.equipment.Primary)/p.equipment.Primary.def.Verbs.FirstOrDefault().warmupTime;
+            weaponDamage *= strFactor;
+
+            return weaponDamage;
         }
 
         public static string GetEnchantmentsString(Thing item)

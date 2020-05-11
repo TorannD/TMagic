@@ -34,7 +34,7 @@ namespace TorannMagic
                     Initialize(map);
                 }
 
-                int dmg = GetWeaponDmg(this.launcher as Pawn, this.def);
+                int dmg = GetWeaponDmg(this.launcher as Pawn);
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 if (!pawn.IsColonist && settingsRef.AIHardMode)
                 {
@@ -68,48 +68,21 @@ namespace TorannMagic
             return weaponAccuracy;
         }
 
-        public static int GetWeaponDmg(Pawn pawn, ThingDef projectileDef)
+        public static int GetWeaponDmg(Pawn pawn)
         {
             CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
             pwrVal = TM_Calc.GetMightSkillLevel(pawn, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_ArrowStorm, "TM_ArrowStorm", "_pwr", true);            
-            MightPowerSkill str = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
-            //MightPowerSkill pwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_ArrowStorm.FirstOrDefault((MightPowerSkill x) => x.label == "TM_ArrowStorm_pwr");
-            //pwrVal = pwr.level;
-            //if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-            //{
-            //    MightPowerSkill mpwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
-            //    pwrVal = mpwr.level;
-            //}
-            ThingWithComps arg_3C_0;
-            int value = 0;
-            if (pawn == null)
+
+            float dmg = comp.weaponDamage;
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            if (!pawn.IsColonist && settingsRef.AIHardMode)
             {
-                arg_3C_0 = null;
-            }
-            else
-            {
-                Pawn_EquipmentTracker expr_eq = pawn.equipment;
-                arg_3C_0 = ((expr_eq != null) ? expr_eq.Primary : null);
-            }
-            ThingWithComps thing;
-            bool flag31 = (thing = arg_3C_0) != null;
-            if (flag31)
-            {
-                value = Mathf.RoundToInt(thing.GetStatValue(StatDefOf.MarketValue));
+                dmg += 8;
             }
 
-            int dmg;
-            if (value > 1000)
-            {
-                value -= 1000;
-                dmg = (projectileDef.projectile.GetDamageAmount(1,null)) + (int)((15f + (value / 150f)) * (1 + (.1f * pwrVal)));
-            }
-            else
-            {
-                dmg = Mathf.RoundToInt((projectileDef.projectile.GetDamageAmount(1,null) + (value / 67f)) * (1 + (.1f * pwrVal)));
-            }
-            dmg = Mathf.Clamp(dmg, 0, 50);
-            return Mathf.RoundToInt(dmg * comp.mightPwr);
+            dmg = Mathf.RoundToInt(dmg * (1f + (.1f * pwrVal)) * TorannMagicDefOf.TM_ArrowStorm.weaponDamageFactor); 
+
+            return (int)Mathf.Clamp(dmg, 0, 50);
         }
 
         public void damageEntities(Pawn victim, BodyPartRecord hitPart, int amt, DamageDef type)

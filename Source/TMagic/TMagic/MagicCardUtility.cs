@@ -63,13 +63,25 @@ namespace TorannMagic
 
         public static void DrawMagicCard(Rect rect, Pawn pawn)
         {
-            //GUI.BeginGroup(rect);
-            //Widgets.BeginScrollView(rect, ref scrollPosition, rect, true);
-            
-            Rect sRect = new Rect(rect.x, rect.y, rect.width - 36f, rect.height + 120f);
-            scrollPosition = GUI.BeginScrollView(rect, scrollPosition, sRect, false, true);
 
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
+            int sizeY = 0;
+            if (comp.customClass != null)
+            {
+                sizeY = (comp.MagicData.GetUniquePowersWithSkillsCount(comp.customClass) * 80);
+                if (sizeY > 500)
+                {
+                    sizeY -= 500;
+                }
+                else
+                {
+                    sizeY = 0;
+                }
+            }
+
+            Rect sRect = new Rect(rect.x, rect.y, rect.width - 36f, rect.height + 36f + sizeY);
+            scrollPosition = GUI.BeginScrollView(rect, scrollPosition, sRect, false, true);
+            
             bool flag = comp != null;
             if (flag)
             {
@@ -93,272 +105,280 @@ namespace TorannMagic
                     Text.Font = GameFont.Small;
                     Widgets.DrawLineHorizontal(rect.x - 10f, rect10.yMax, rect.width - 15f);
                     Rect rect11 = new Rect(rect.x, rect10.yMax + MagicCardUtility.SectionOffset, rect10.width, MagicCardUtility.PowersColumnHeight);
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
+                    if (comp.customClass != null)
                     {
                         Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        if(pawn.GetComp<CompAbilityUserMagic>().spell_Firestorm == true)
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersIF, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RayofHope, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Firebolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Fireclaw, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Fireball, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Firestorm, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                        else
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersIF, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RayofHope, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Firebolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Fireclaw, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Fireball, null, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                        
+                        MagicCardUtility.CustomPowersHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.AllMagicPowersWithSkills, comp.customClass, TexButton.TMTex_SkillPointUsed);
                     }
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost))
+                    else
                     {
-                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        if (pawn.GetComp<CompAbilityUserMagic>().spell_Blizzard == true)
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
                         {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersHoF, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Soothe, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Rainmaker, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Icebolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_FrostRay, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Snowball, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Blizzard, TexButton.TMTex_SkillPointUsed);
-                        }
-                        else
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersHoF, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Soothe, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Rainmaker, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Icebolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_FrostRay, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Snowball, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                    }
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn))
-                    {
-                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        if (pawn.GetComp<CompAbilityUserMagic>().spell_EyeOfTheStorm == true)
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersSB, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AMP, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_LightningBolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_LightningCloud, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_LightningStorm, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EyeOfTheStorm, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                        else
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersSB, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AMP, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_LightningBolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_LightningCloud, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_LightningStorm, null, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                        
-                    }
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
-                    {
-                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        if (pawn.GetComp<CompAbilityUserMagic>().spell_FoldReality == true)
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Shadow, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_MagicMissile, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Blink, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Summon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Teleport, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_FoldReality, TexButton.TMTex_SkillPointUsed);
-                        }
-                        else
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Shadow, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_MagicMissile, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Blink, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Summon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Teleport, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                    }
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin))
-                    {
-                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        if (pawn.GetComp<CompAbilityUserMagic>().spell_HolyWrath == true)
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Heal, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Shield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ValiantCharge, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overwhelm, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_HolyWrath, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                        else
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Heal, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Shield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ValiantCharge, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overwhelm, null, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                    }
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
-                    {
-                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        if (pawn.GetComp<CompAbilityUserMagic>().spell_SummonPoppi == true)
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersS, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonMinion, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonPylon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonExplosive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonElemental, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonPoppi, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                        else
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersS, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonMinion, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonPylon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonExplosive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonElemental, null, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                    }
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Druid))
-                    {
-                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        if (pawn.GetComp<CompAbilityUserMagic>().spell_RegrowLimb == true)
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersD, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Poison, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SootheAnimal, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Regenerate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_CureDisease, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RegrowLimb, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                        else
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersD, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Poison, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SootheAnimal, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Regenerate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_CureDisease, null, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                    }
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer))
-                    {
-                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        if (pawn.GetComp<CompAbilityUserMagic>().spell_LichForm == true)
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersN, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RaiseUndead, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_DeathMark, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_FogOfTorment, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ConsumeCorpse, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_CorpseExplosion, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_LichForm, TexButton.TMTex_SkillPointUsed);
-                        }
-                        else
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersN, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RaiseUndead, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_DeathMark, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_FogOfTorment, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ConsumeCorpse, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_CorpseExplosion, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                    }
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
-                    {
-                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersN, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RaiseUndead, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_DeathMark, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_FogOfTorment, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ConsumeCorpse, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_CorpseExplosion, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_DeathBolt, TexButton.TMTex_SkillPointUsed);
-                    }
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Priest))
-                    {
-                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        if (pawn.GetComp<CompAbilityUserMagic>().spell_Resurrection == true)
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersPR, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AdvancedHeal, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Purify, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_HealingCircle, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BestowMight, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Resurrection, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                        else
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersPR, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AdvancedHeal, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Purify, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_HealingCircle, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BestowMight, null, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                    }
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
-                    {
-                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);                      
-                        if (pawn.GetComp<CompAbilityUserMagic>().spell_BattleHymn == true)
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersB, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BardTraining, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Entertain, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Inspire, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Lullaby, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BattleHymn, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                        else
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersB, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BardTraining, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Entertain, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Inspire, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Lullaby, null, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                    }
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus))
-                    {
-                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        if (pawn.GetComp<CompAbilityUserMagic>().spell_Scorn == true)
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersSD, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SoulBond, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ShadowBolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Dominate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Attraction, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Scorn, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                        else
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersSD, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SoulBond, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ShadowBolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Dominate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Attraction, null, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                    }
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Warlock))
-                    {
-                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        if (pawn.GetComp<CompAbilityUserMagic>().spell_PsychicShock == true)
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersWD, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SoulBond, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ShadowBolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Dominate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Repulsion, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_PsychicShock, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                        else
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersWD, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SoulBond, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ShadowBolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Dominate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Repulsion, null, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                    }
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
-                    {
-                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        if (pawn.GetComp<CompAbilityUserMagic>().spell_Meteor == true)
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersG, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Stoneskin, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Encase, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EarthSprites, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EarthernHammer, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sentinel, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Meteor, TexButton.TMTex_SkillPointUsed);
-                        }
-                        else
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersG, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Stoneskin, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Encase, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EarthSprites, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EarthernHammer, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sentinel, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                    }
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
-                    {
-                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        if(comp.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower mp) => mp.abilityDef == TorannMagicDefOf.TM_TechnoBit).learned == true)
-                        {
-                            if (pawn.GetComp<CompAbilityUserMagic>().spell_OrbitalStrike == true)
+                            Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                            if (pawn.GetComp<CompAbilityUserMagic>().spell_Firestorm == true)
                             {
-                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoBit, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overdrive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sabotage, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_OrbitalStrike, null, TexButton.TMTex_SkillPointUsed);
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersIF, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RayofHope, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Firebolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Fireclaw, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Fireball, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Firestorm, null, TexButton.TMTex_SkillPointUsed);
                             }
                             else
                             {
-                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoBit, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overdrive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sabotage, null, null, TexButton.TMTex_SkillPointUsed);
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersIF, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RayofHope, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Firebolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Fireclaw, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Fireball, null, null, TexButton.TMTex_SkillPointUsed);
                             }
-                        }
-                        else if(comp.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower mp) => mp.abilityDef == TorannMagicDefOf.TM_TechnoTurret).learned == true)
-                        {
-                            if (pawn.GetComp<CompAbilityUserMagic>().spell_OrbitalStrike == true)
-                            {
-                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoTurret, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overdrive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sabotage, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_OrbitalStrike, null, TexButton.TMTex_SkillPointUsed);
-                            }
-                            else
-                            {
-                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoTurret, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overdrive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sabotage, null, null, TexButton.TMTex_SkillPointUsed);
-                            }
-                        }
-                        else if(comp.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower mp) => mp.abilityDef == TorannMagicDefOf.TM_TechnoWeapon).learned == true)
-                        {
-                            if (pawn.GetComp<CompAbilityUserMagic>().spell_OrbitalStrike == true)
-                            {
-                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoWeapon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overdrive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sabotage, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_OrbitalStrike, null, TexButton.TMTex_SkillPointUsed);
-                            }
-                            else
-                            {
-                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoWeapon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overdrive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sabotage, null, null, TexButton.TMTex_SkillPointUsed);
-                            }
-                        }
-                        else
-                        {
-                            if (pawn.GetComp<CompAbilityUserMagic>().spell_OrbitalStrike == true)
-                            {
-                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoBit, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoTurret, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoWeapon, null, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_OrbitalStrike, null, TexButton.TMTex_SkillPointUsed);
-                            }
-                            else
-                            {
-                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoBit, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoTurret, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoWeapon, null, null, null, TexButton.TMTex_SkillPointUsed);
-                            }                            
-                        }                        
-                    }
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.BloodMage))
-                    {
-                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        if (pawn.GetComp<CompAbilityUserMagic>().spell_BloodMoon == true)
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersBM, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodGift, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_IgniteBlood, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodForBlood, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Rend, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodMoon, TexButton.TMTex_SkillPointUsed);
-                        }
-                        else
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersBM, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodGift, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_IgniteBlood, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodForBlood, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Rend, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                    }
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
-                    {
-                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        if (pawn.GetComp<CompAbilityUserMagic>().spell_Shapeshift == true)
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersE, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchantedBody, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Transmutate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchanterStone, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchantWeapon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Polymorph, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Shapeshift, TexButton.TMTex_SkillPointUsed);
-                        }
-                        else
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersE, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchantedBody, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Transmutate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchanterStone, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchantWeapon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Polymorph, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                    }
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer))
-                    {
-                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        if (pawn.GetComp<CompAbilityUserMagic>().spell_Recall == true)
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersC, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Prediction, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AlterFate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AccelerateTime, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ReverseTime, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ChronostaticField, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Recall, TexButton.TMTex_SkillPointUsed);
-                        }
-                        else
-                        {
-                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersC, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Prediction, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AlterFate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AccelerateTime, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ReverseTime, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ChronostaticField, null, TexButton.TMTex_SkillPointUsed);
-                        }
-                    }
-                    if(pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
-                    {
-                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        List<MagicPower> CMList = new List<MagicPower>();
-                        CMList.Clear();
-                        CMList.AddRange(comp.MagicData.MagicPowersCM);
-                        for(int i = 0; i < comp.chaosPowers.Count; i++)
-                        {
-                            MagicPower mp = comp.MagicData.AllMagicPowersForChaosMage.FirstOrDefault<MagicPower>((MagicPower cm) => cm.abilityDef.defName.Contains(comp.chaosPowers[i].Ability.defName));
 
-                            CMList.Add(mp);
                         }
-                        //MagicCardUtility.PowersGUIHandler_CM(inRect3, comp, comp.MagicData.AllMagicPowersForChaosMage, comp.MagicData.MagicPowerSkill_ChaosTradition, comp.chaosPowers[0].Skills, comp.chaosPowers[1].Skills, comp.chaosPowers[2].Skills, comp.chaosPowers[3].Skills, comp.chaosPowers[4].Skills, TexButton.TMTex_SkillPointUsed);
-                        MagicCardUtility.PowersGUIHandler_CM(inRect3, comp, CMList, comp.MagicData.MagicPowerSkill_ChaosTradition, comp.chaosPowers[0].Skills, comp.chaosPowers[1].Skills, comp.chaosPowers[2].Skills, comp.chaosPowers[3].Skills, comp.chaosPowers[4].Skills, TexButton.TMTex_SkillPointUsed);
-                    }
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer))
-                    {
-                        Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
-                        MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersW, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_WandererCraft, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips, null, null, null, null, TexButton.TMTex_SkillPointUsed);
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost))
+                        {
+                            Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                            if (pawn.GetComp<CompAbilityUserMagic>().spell_Blizzard == true)
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersHoF, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Soothe, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Rainmaker, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Icebolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_FrostRay, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Snowball, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Blizzard, TexButton.TMTex_SkillPointUsed);
+                            }
+                            else
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersHoF, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Soothe, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Rainmaker, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Icebolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_FrostRay, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Snowball, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                        }
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.StormBorn))
+                        {
+                            Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                            if (pawn.GetComp<CompAbilityUserMagic>().spell_EyeOfTheStorm == true)
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersSB, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AMP, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_LightningBolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_LightningCloud, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_LightningStorm, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EyeOfTheStorm, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                            else
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersSB, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AMP, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_LightningBolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_LightningCloud, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_LightningStorm, null, null, TexButton.TMTex_SkillPointUsed);
+                            }
+
+                        }
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist))
+                        {
+                            Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                            if (pawn.GetComp<CompAbilityUserMagic>().spell_FoldReality == true)
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Shadow, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_MagicMissile, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Blink, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Summon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Teleport, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_FoldReality, TexButton.TMTex_SkillPointUsed);
+                            }
+                            else
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersA, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Shadow, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_MagicMissile, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Blink, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Summon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Teleport, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                        }
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.Paladin))
+                        {
+                            Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                            if (pawn.GetComp<CompAbilityUserMagic>().spell_HolyWrath == true)
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Heal, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Shield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ValiantCharge, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overwhelm, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_HolyWrath, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                            else
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersP, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Heal, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Shield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ValiantCharge, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overwhelm, null, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                        }
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner))
+                        {
+                            Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                            if (pawn.GetComp<CompAbilityUserMagic>().spell_SummonPoppi == true)
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersS, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonMinion, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonPylon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonExplosive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonElemental, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonPoppi, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                            else
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersS, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonMinion, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonPylon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonExplosive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SummonElemental, null, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                        }
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.Druid))
+                        {
+                            Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                            if (pawn.GetComp<CompAbilityUserMagic>().spell_RegrowLimb == true)
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersD, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Poison, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SootheAnimal, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Regenerate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_CureDisease, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RegrowLimb, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                            else
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersD, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Poison, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SootheAnimal, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Regenerate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_CureDisease, null, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                        }
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer))
+                        {
+                            Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                            if (pawn.GetComp<CompAbilityUserMagic>().spell_LichForm == true)
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersN, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RaiseUndead, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_DeathMark, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_FogOfTorment, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ConsumeCorpse, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_CorpseExplosion, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_LichForm, TexButton.TMTex_SkillPointUsed);
+                            }
+                            else
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersN, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RaiseUndead, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_DeathMark, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_FogOfTorment, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ConsumeCorpse, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_CorpseExplosion, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                        }
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
+                        {
+                            Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersN, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RaiseUndead, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_DeathMark, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_FogOfTorment, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ConsumeCorpse, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_CorpseExplosion, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_DeathBolt, TexButton.TMTex_SkillPointUsed);
+                        }
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.Priest))
+                        {
+                            Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                            if (pawn.GetComp<CompAbilityUserMagic>().spell_Resurrection == true)
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersPR, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AdvancedHeal, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Purify, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_HealingCircle, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BestowMight, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Resurrection, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                            else
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersPR, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AdvancedHeal, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Purify, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_HealingCircle, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BestowMight, null, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                        }
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Bard))
+                        {
+                            Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                            if (pawn.GetComp<CompAbilityUserMagic>().spell_BattleHymn == true)
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersB, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BardTraining, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Entertain, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Inspire, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Lullaby, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BattleHymn, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                            else
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersB, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BardTraining, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Entertain, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Inspire, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Lullaby, null, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                        }
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.Succubus))
+                        {
+                            Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                            if (pawn.GetComp<CompAbilityUserMagic>().spell_Scorn == true)
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersSD, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SoulBond, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ShadowBolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Dominate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Attraction, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Scorn, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                            else
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersSD, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SoulBond, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ShadowBolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Dominate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Attraction, null, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                        }
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.Warlock))
+                        {
+                            Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                            if (pawn.GetComp<CompAbilityUserMagic>().spell_PsychicShock == true)
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersWD, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SoulBond, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ShadowBolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Dominate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Repulsion, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_PsychicShock, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                            else
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersWD, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_SoulBond, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ShadowBolt, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Dominate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Repulsion, null, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                        }
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.Geomancer))
+                        {
+                            Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                            if (pawn.GetComp<CompAbilityUserMagic>().spell_Meteor == true)
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersG, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Stoneskin, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Encase, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EarthSprites, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EarthernHammer, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sentinel, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Meteor, TexButton.TMTex_SkillPointUsed);
+                            }
+                            else
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersG, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Stoneskin, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Encase, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EarthSprites, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EarthernHammer, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sentinel, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                        }
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.Technomancer))
+                        {
+                            Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                            if (comp.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower mp) => mp.abilityDef == TorannMagicDefOf.TM_TechnoBit).learned == true)
+                            {
+                                if (pawn.GetComp<CompAbilityUserMagic>().spell_OrbitalStrike == true)
+                                {
+                                    MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoBit, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overdrive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sabotage, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_OrbitalStrike, null, TexButton.TMTex_SkillPointUsed);
+                                }
+                                else
+                                {
+                                    MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoBit, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overdrive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sabotage, null, null, TexButton.TMTex_SkillPointUsed);
+                                }
+                            }
+                            else if (comp.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower mp) => mp.abilityDef == TorannMagicDefOf.TM_TechnoTurret).learned == true)
+                            {
+                                if (pawn.GetComp<CompAbilityUserMagic>().spell_OrbitalStrike == true)
+                                {
+                                    MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoTurret, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overdrive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sabotage, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_OrbitalStrike, null, TexButton.TMTex_SkillPointUsed);
+                                }
+                                else
+                                {
+                                    MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoTurret, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overdrive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sabotage, null, null, TexButton.TMTex_SkillPointUsed);
+                                }
+                            }
+                            else if (comp.MagicData.MagicPowersT.FirstOrDefault<MagicPower>((MagicPower mp) => mp.abilityDef == TorannMagicDefOf.TM_TechnoWeapon).learned == true)
+                            {
+                                if (pawn.GetComp<CompAbilityUserMagic>().spell_OrbitalStrike == true)
+                                {
+                                    MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoWeapon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overdrive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sabotage, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_OrbitalStrike, null, TexButton.TMTex_SkillPointUsed);
+                                }
+                                else
+                                {
+                                    MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoWeapon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Overdrive, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Sabotage, null, null, TexButton.TMTex_SkillPointUsed);
+                                }
+                            }
+                            else
+                            {
+                                if (pawn.GetComp<CompAbilityUserMagic>().spell_OrbitalStrike == true)
+                                {
+                                    MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoBit, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoTurret, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoWeapon, null, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_OrbitalStrike, null, TexButton.TMTex_SkillPointUsed);
+                                }
+                                else
+                                {
+                                    MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersT, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoBit, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoTurret, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoWeapon, null, null, null, TexButton.TMTex_SkillPointUsed);
+                                }
+                            }
+                        }
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.BloodMage))
+                        {
+                            Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                            if (pawn.GetComp<CompAbilityUserMagic>().spell_BloodMoon == true)
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersBM, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodGift, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_IgniteBlood, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodForBlood, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Rend, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodMoon, TexButton.TMTex_SkillPointUsed);
+                            }
+                            else
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersBM, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodGift, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_IgniteBlood, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodForBlood, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_BloodShield, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Rend, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                        }
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter))
+                        {
+                            Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                            if (pawn.GetComp<CompAbilityUserMagic>().spell_Shapeshift == true)
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersE, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchantedBody, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Transmutate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchanterStone, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchantWeapon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Polymorph, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Shapeshift, TexButton.TMTex_SkillPointUsed);
+                            }
+                            else
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersE, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchantedBody, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Transmutate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchanterStone, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_EnchantWeapon, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Polymorph, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                        }
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer))
+                        {
+                            Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                            if (pawn.GetComp<CompAbilityUserMagic>().spell_Recall == true)
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersC, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Prediction, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AlterFate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AccelerateTime, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ReverseTime, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ChronostaticField, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Recall, TexButton.TMTex_SkillPointUsed);
+                            }
+                            else
+                            {
+                                MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersC, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Prediction, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AlterFate, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AccelerateTime, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ReverseTime, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_ChronostaticField, null, TexButton.TMTex_SkillPointUsed);
+                            }
+                        }
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
+                        {
+                            Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                            List<MagicPower> CMList = new List<MagicPower>();
+                            CMList.Clear();
+                            CMList.AddRange(comp.MagicData.MagicPowersCM);
+                            for (int i = 0; i < comp.chaosPowers.Count; i++)
+                            {
+                                MagicPower mp = comp.MagicData.AllMagicPowersForChaosMage.FirstOrDefault<MagicPower>((MagicPower cm) => cm.abilityDef.defName.Contains(comp.chaosPowers[i].Ability.defName));
+
+                                CMList.Add(mp);
+                            }
+                            //MagicCardUtility.PowersGUIHandler_CM(inRect3, comp, comp.MagicData.AllMagicPowersForChaosMage, comp.MagicData.MagicPowerSkill_ChaosTradition, comp.chaosPowers[0].Skills, comp.chaosPowers[1].Skills, comp.chaosPowers[2].Skills, comp.chaosPowers[3].Skills, comp.chaosPowers[4].Skills, TexButton.TMTex_SkillPointUsed);
+                            MagicCardUtility.PowersGUIHandler_CM(inRect3, comp, CMList, comp.MagicData.MagicPowerSkill_ChaosTradition, comp.chaosPowers[0].Skills, comp.chaosPowers[1].Skills, comp.chaosPowers[2].Skills, comp.chaosPowers[3].Skills, comp.chaosPowers[4].Skills, TexButton.TMTex_SkillPointUsed);
+                        }
+                        if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer))
+                        {
+                            Rect inRect3 = new Rect(rect.x, rect11.y, MagicCardUtility.PowersColumnWidth, MagicCardUtility.PowersColumnHeight);
+                            MagicCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersW, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_WandererCraft, pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips, null, null, null, null, TexButton.TMTex_SkillPointUsed);
+                        }
                     }
                 }
             }
@@ -1633,5 +1653,220 @@ namespace TorannMagic
                 }
             }
         }
+
+        public static void CustomPowersHandler(Rect inRect, CompAbilityUserMagic compMagic, List<MagicPower> MagicPowers, TMDefs.TM_CustomClass customClass, Texture2D pointTexture)
+        {
+            float num = inRect.y;
+            int itnum = 1;
+            bool flag999;
+            using (List<MagicPower>.Enumerator enumerator = MagicPowers.GetEnumerator())
+            {
+                EnumerationStart:;
+                while (enumerator.MoveNext())
+                {
+                    MagicPower power = enumerator.Current;
+                    TMAbilityDef ability = (TMAbilityDef)power.abilityDef;
+                    if(!customClass.classMageAbilities.Contains(ability))
+                    {
+                        goto EnumerationStart;
+                    }
+                    
+                    Text.Font = GameFont.Small;
+                    Rect rect = new Rect(MagicCardUtility.MagicCardSize.x / 2f - MagicCardUtility.MagicButtonSize, num, MagicCardUtility.MagicButtonSize, MagicCardUtility.MagicButtonSize);
+                    if (itnum > 1)
+                    {
+                        Widgets.DrawLineHorizontal(0f + 20f, rect.y - 2f, MagicCardUtility.MagicCardSize.x - 40f);
+                    }
+                    if (power.level < 3 && TM_Calc.IsIconAbility_02(power.abilityDef))
+                    {
+
+                        TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
+                        {
+                        power.abilityDef.label,
+                        "\n\nCurrent Level:\n",
+                        power.abilityDescDef.description,
+                        "\n\nNext Level:\n",
+                        power.nextLevelAbilityDescDef.description,
+                        "\n\n",
+                        "TM_CheckPointsForMoreInfo".Translate()
+                        }), 398462);
+
+                    }
+                    else
+                    {
+                        TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
+                            {
+                            power.abilityDef.label,
+                            "\n\n",
+                            power.abilityDescDef.description,
+                            "\n\n",
+                            "TM_CheckPointsForMoreInfo".Translate()
+                            }), 398462);
+                    }
+
+                    float x2 = Text.CalcSize("TM_Effeciency".Translate()).x;
+                    float x3 = Text.CalcSize("TM_Versatility".Translate()).x;
+                    Rect rect3 = new Rect(0f + MagicCardUtility.SpacingOffset, rect.y + 2f, MagicCardUtility.MagicCardSize.x, MagicCardUtility.ButtonSize * 1.15f);
+
+                    Rect rect5 = new Rect(rect3.x + rect3.width / 2f - x2, rect3.y, (rect3.width - 20f) / 3f, rect3.height);
+                    Rect rect6 = new Rect(rect3.width - x3 * 2f, rect3.y, rect3.width / 3f, rect3.height);
+
+                    float x4 = Text.CalcSize(" # / # ").x;
+                    //bool flag9 = power.abilityDef.label == "Ray of Hope" || power.abilityDef.label == "Soothing Breeze" || power.abilityDef.label == "Frost Ray" || power.abilityDef.label == "AMP" || power.abilityDef.label == "Shadow" || power.abilityDef.label == "Magic Missile" || power.abilityDef.label == "Blink" || power.abilityDef.label == "Summon" || power.abilityDef.label == "Shield"; //add all other buffs or xml based upgrades
+
+                    if (TM_Calc.IsIconAbility_03(power.abilityDef))
+                    {
+                        flag999 = true;
+                    }
+                    else
+                    {
+                        flag999 = false;
+                    }
+                    Rect rectLabel = new Rect(0f + 20f, rect.yMin, 350f - 44f, MagicCardUtility.MagicButtonPointSize);
+                    //GUI.color = Color.yellow;
+                    Widgets.Label(rectLabel, power.abilityDef.LabelCap);
+                    //GUI.color = Color.white;
+                    if (enumerator.Current.learned != true)
+                    {
+                        Widgets.DrawTextureFitted(rect, power.Icon, 1f);
+                        Rect rectLearn = new Rect(rect.xMin - 44f, rect.yMin, 40f, MagicCardUtility.MagicButtonPointSize);
+                        if ((compMagic.MagicData.MagicAbilityPoints >= enumerator.Current.learnCost) && !power.requiresScroll)
+                        {
+                            Text.Font = GameFont.Tiny;
+                            bool flagLearn = Widgets.ButtonText(rectLearn, "TM_Learn".Translate(), true, false, true) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
+                            if (flagLearn)
+                            {
+                                enumerator.Current.learned = true;
+                                if (!(enumerator.Current.abilityDef.defName == "TM_TechnoBit"))
+                                {
+                                    compMagic.AddPawnAbility(enumerator.Current.abilityDef);
+                                }
+                                if ((enumerator.Current.abilityDef.defName == "TM_TechnoWeapon"))
+                                {
+                                    compMagic.AddPawnAbility(TorannMagicDefOf.TM_NanoStimulant);
+                                }
+                                compMagic.MagicData.MagicAbilityPoints -= enumerator.Current.learnCost;
+                            }
+                        }
+                        else if(power.requiresScroll)
+                        {
+                            Rect rectToLearn = new Rect(rect.xMin - 268f, rect.yMin + 22f, 250f, MagicButtonPointSize);
+                            Text.Font = GameFont.Tiny;
+                            bool flagLearn = Widgets.ButtonText(rectToLearn, "TM_SpellLocked".Translate(power.abilityDef.LabelCap), false, false, false) && compMagic.AbilityUser.Faction == Faction.OfPlayer;                            
+                        }
+                        else
+                        {
+                            Rect rectToLearn = new Rect(rect.xMin - 98f, rect.yMin, 100f, MagicButtonPointSize);
+                            Text.Font = GameFont.Tiny;
+                            bool flagLearn = Widgets.ButtonText(rectToLearn, "" + enumerator.Current.learnCost + " points to " + "TM_Learn".Translate(), false, false, false) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
+                        }
+                    }
+                    else
+                    {
+                        bool flag10 = enumerator.Current.level >= power.maxLevel || compMagic.MagicData.MagicAbilityPoints == 0;
+                        if (flag10)
+                        {
+                            if (flag999)
+                            {
+                                Widgets.DrawTextureFitted(rect, power.Icon, 1f);
+                                Rect rect19 = new Rect(rect.xMax, rect.yMin, x4, MagicCardUtility.TextSize);
+                                Widgets.Label(rect19, " " + enumerator.Current.level + " / 3");                                
+                            }
+                            else
+                            {
+                                Widgets.DrawTextureFitted(rect, power.Icon, 1f);
+                            }
+                        }
+                        else
+                        {
+                            if (flag999)
+                            {
+                                Rect rect10 = new Rect(rect.xMax, rect.yMin, x4, MagicCardUtility.TextSize);
+                                bool flag1 = Widgets.ButtonImage(rect, power.Icon) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
+                                Widgets.Label(rect10, " " + power.level + " / 3");
+                                if (flag1)
+                                {
+                                    compMagic.LevelUpPower(power);
+                                    compMagic.MagicData.MagicAbilityPoints -= 1;
+                                }                                
+                            }
+                            else
+                            {
+                                Widgets.DrawTextureFitted(rect, power.Icon, 1f);
+                            }
+                        }
+                    }
+
+                    Text.Font = GameFont.Tiny;
+                    float num2 = rect3.x;
+                    List<MagicPowerSkill> mpsList = new List<MagicPowerSkill>();
+                    mpsList.Clear();
+
+                    MagicPowerSkill mps = compMagic.MagicData.GetSkill_Power(ability);
+                    if (mps != null)
+                    {
+                        mpsList.Add(mps);
+                    }
+                    mps = compMagic.MagicData.GetSkill_Efficiency(ability);
+                    if (mps != null)
+                    {
+                        mpsList.Add(mps);
+                    }
+                    mps = compMagic.MagicData.GetSkill_Versatility(ability);
+                    if (mps != null)
+                    {
+                        mpsList.Add(mps);
+                    }
+
+                    if (mpsList.Count > 0)
+                    {
+                        CustomSkillHandler(num2, compMagic, power, enumerator, mpsList, rect3);
+                        itnum++;
+                    }
+                    num += MagicCardUtility.MagicButtonSize + MagicCardUtility.TextSize + 4f;//MagicCardUtility.SpacingOffset; //was 4f                    
+                }
+            }
+        }
+
+        public static void CustomSkillHandler(float num2, CompAbilityUserMagic compMagic, MagicPower power, List<MagicPower>.Enumerator enumerator, List<MagicPowerSkill> MagicPowerSkillN, Rect rect3)
+        {
+            using (List<MagicPowerSkill>.Enumerator enumeratorN = MagicPowerSkillN.GetEnumerator())
+            {
+                while (enumeratorN.MoveNext())
+                {
+                    Rect rect4 = new Rect(num2 + MagicCardUtility.MagicButtonPointSize, rect3.yMax, MagicCardUtility.MagicCardSize.x / 3f, rect3.height);
+                    Rect rect41 = new Rect(num2, rect4.y, MagicCardUtility.MagicButtonPointSize, MagicCardUtility.MagicButtonPointSize);
+                    Rect rect42 = new Rect(rect41.x, rect4.y, rect4.width - MagicCardUtility.MagicButtonPointSize, rect4.height / 2);
+                    MagicPowerSkill skill = enumeratorN.Current;
+                    TooltipHandler.TipRegion(rect42, new TipSignal(() => skill.desc.Translate(), rect4.GetHashCode()));
+                    bool flag11 = (skill.level >= skill.levelMax || compMagic.MagicData.MagicAbilityPoints == 0 || !enumerator.Current.learned ||
+                        (skill.costToLevel > compMagic.MagicData.MagicAbilityPoints));
+                    if (flag11)
+                    {
+                        Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
+                    }
+                    else
+                    {
+                        bool flag12 = Widgets.ButtonText(rect41, "+", true, false, true) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
+                        Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
+                        if (flag12)
+                        {
+                            bool flag17 = compMagic.AbilityUser.story != null && compMagic.AbilityUser.story.DisabledWorkTagsBackstoryAndTraits == WorkTags.Violent && power.abilityDef.MainVerb.isViolent;
+                            if (flag17)
+                            {
+                                Messages.Message("IsIncapableOfViolenceLower".Translate(
+                                    compMagic.parent.LabelShort
+                                ), MessageTypeDefOf.RejectInput);
+                                break;
+                            }
+                            skill.level++;
+                            compMagic.MagicData.MagicAbilityPoints -= skill.costToLevel;                            
+                        }
+                    }
+                    num2 += (MagicCardUtility.MagicCardSize.x / 3) - MagicCardUtility.SpacingOffset;
+                }
+            }
+        }
+
     }
 }

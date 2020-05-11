@@ -80,7 +80,16 @@ namespace TorannMagic
             string reason;
             if (comp.IsMagicUser)
             {
-                if (comp.spell_RegrowLimb == true)
+                bool canRegrow = false;
+                if(comp.spell_RegrowLimb)
+                {
+                    canRegrow = true;
+                }
+                if(comp.customClass != null && comp.MagicData.MagicPowersD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RegrowLimb).learned)
+                {
+                    canRegrow = true;
+                }
+                if (canRegrow)
                 {
                     MagicPowerSkill eff = surgeon.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RegrowLimb.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RegrowLimb_eff");
                     if (comp.Mana.CurLevel < (.9f - ((eff.level * .08f) * .9f)))

@@ -119,7 +119,10 @@ namespace TorannMagic
             }
             if(flagUndead)
             {
-                TM_Action.DamageUndead(pawn, (5f + (3f * pwrVal)) * comp.arcaneDmg, this.CasterPawn);
+                for(int i = 0; i < 2+verVal; i++)
+                {
+                    TM_Action.DamageUndead(pawn, (5f + (3f * pwrVal)) * comp.arcaneDmg, this.CasterPawn);
+                }
             }
             return true;
         }

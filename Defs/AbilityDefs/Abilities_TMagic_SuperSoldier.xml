@@ -15,6 +15,7 @@ Weapon specializations apply automatically when a Super Soldier equips a weapon 
 
 Super Soldiers with a specialized pistol equipped gain a unique "double tap" talent which will occasionally ignore cooldown and immediately begin another shot burst; this talent consumes stamina when it occurs.</description>
     <staminaCost>0.0</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -50,6 +51,9 @@ Super Soldiers with a specialized pistol equipped gain a unique "double tap" tal
     <description>A sudden attack using the pistol stock as a blunt weapon; successful attacks will stun a target, leaving them dazed for a short period, and may also disarm them.</description>
 	<uiIconPath>UI/pistolwhip</uiIconPath>
     <staminaCost>0.20</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<weaponDamageFactor>.25</weaponDamageFactor>
+	<canCopy>true</canCopy>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_PistolWhip</verbClass>
 			<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -88,6 +92,7 @@ Super Soldiers with a specialized pistol equipped gain a unique "double tap" tal
 This specialization improves all aspects of rifles: accuracy, damage, shot delay, shot count, range, and more.
 Weapon specializations apply automatically when a Super Soldier equips a weapon in their specialization category. Specialized weapons are denoted by a "++" after the item name.</description>
     <staminaCost>0.0</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -122,6 +127,8 @@ Weapon specializations apply automatically when a Super Soldier equips a weapon 
         <uiIconPath>UI/suppressingfire</uiIconPath>
         <description>Suppress enemy positions with a storm of bullets.</description>
         <staminaCost>0.40</staminaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SuppressingFire</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -173,6 +180,8 @@ Weapon specializations apply automatically when a Super Soldier equips a weapon 
         <uiIconPath>UI/mk203gl</uiIconPath>
         <description>Fires a grenade using the Mk203 under-barrel grenade launcher.</description>
         <staminaCost>0.40</staminaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>AbilityUser.Verb_UseAbility</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -209,6 +218,7 @@ Weapon specializations apply automatically when a Super Soldier equips a weapon 
 This specialization improves all aspects of shotguns: accuracy, damage, shot delay, shot count, range, and more.
 Weapon specializations apply automatically when a Super Soldier equips a weapon in their specialization category. Specialized weapons are denoted by a "++" after the item name.</description>
     <staminaCost>0.0</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -258,6 +268,8 @@ Weapon specializations apply automatically when a Super Soldier equips a weapon 
         <uiIconPath>UI/buckshot</uiIconPath>
         <description>A shotgun shell that fires multiple pellets. The sheer volume of rounds discharged can be devastating at short range, but disperses rapidly.</description>
         <staminaCost>0.40</staminaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Buckshot</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -310,6 +322,8 @@ Weapon specializations apply automatically when a Super Soldier equips a weapon 
         <uiIconPath>UI/breachingcharge_exp</uiIconPath>
         <description>Throws a specialized explosive that excels at destroying structures or stopping enemy clusters. Deals 30x damage to structures.</description>
         <staminaCost>0.30</staminaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>AbilityUser.Verb_UseAbility</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -342,6 +356,8 @@ Weapon specializations apply automatically when a Super Soldier equips a weapon 
         <uiIconPath>UI/cqc</uiIconPath>
         <description>Close Quarters Combat (CQC) is common training for Soldiers that allows them to smoothly execute a vicious combo attack against an enemy in melee range.</description>
         <staminaCost>0.15</staminaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<weaponDamageFactor>.45</weaponDamageFactor>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -374,6 +390,8 @@ Weapon specializations apply automatically when a Super Soldier equips a weapon 
         <uiIconPath>UI/firstaid</uiIconPath>
         <description>Self Aid is possible for Super Soldiers as a result of the genetic enhancements they acquire from the serum. This ability allows them to consciously focus energy to rapid tend wounds. Self Aid is unable to tend grievous wounds, such as missing body parts.</description>
         <staminaCost>0.40</staminaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_FirstAid</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -406,6 +424,8 @@ Weapon specializations apply automatically when a Super Soldier equips a weapon 
         <uiIconPath>UI/60mmMortar</uiIconPath>
         <description>Soften up enemy targets before a fight even begins with a personal mortar system. The 60mm Mortar can easily be transported by a Super Soldier and quickly deployed to launch 3-rounds of indirect fire.</description>
         <staminaCost>0.70</staminaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_60mmMortar</verbClass>
             <hasStandardCommand>true</hasStandardCommand>

@@ -252,40 +252,20 @@ namespace TorannMagic
 
         public static int GetWeaponDmg(Pawn caster)
         {
-            int dmgNum = 2;
+            
             CompAbilityUserMight comp = caster.GetComp<CompAbilityUserMight>();
             //MightPowerSkill pwr = comp.MightData.MightPowerSkill_Whirlwind.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Whirlwind_pwr");
             pwrVal = TM_Calc.GetMightSkillLevel(caster, comp.MightData.MightPowerSkill_Whirlwind, "TM_Whirlwind", "_pwr", true);
-            MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
-            float weaponDPS = 0;
-            float dmgMultiplier = 1;
-            float pawnDPS = 0;
-            float skillMultiplier = 1;
-            ThingWithComps weaponComp;
-            //pwrVal = pwr.level;
-            //if (caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-            //{
-            //    MightPowerSkill mpwr = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
-            //    verVal = mpwr.level;
-            //}
+            float dmgNum = comp.weaponDamage;
 
-            if (caster.equipment.Primary != null && !caster.equipment.Primary.def.IsRangedWeapon)
+            if (caster.equipment.Primary != null && caster.equipment.Primary.def.IsRangedWeapon)
             {
-                weaponComp = caster.equipment.Primary;
-                weaponDPS = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_AverageDPS, false) * .7f;
-                dmgMultiplier = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_DamageMultiplier, false) * comp.mightPwr * (1f + (.05f * str.level));
-                pawnDPS = caster.GetStatValue(StatDefOf.MeleeDPS, false);
-                skillMultiplier = (.8f + (.08f * pwrVal));
-                dmgNum = Mathf.RoundToInt(skillMultiplier * dmgMultiplier * (pawnDPS + weaponDPS));
+                dmgNum = Mathf.RoundToInt(dmgNum * (TorannMagicDefOf.TM_Whirlwind.weaponDamageFactor/2f));
+            }
 
-            }
-            else
-            {
-                pawnDPS = caster.GetStatValue(StatDefOf.MeleeDPS, false);
-                skillMultiplier = 1.5f;
-                dmgNum = Mathf.RoundToInt(skillMultiplier * 5 * (pawnDPS) * comp.mightPwr * (1f + (.05f * str.level)));
-            }
-            return Mathf.Max(5, dmgNum);
+            dmgNum = Mathf.RoundToInt(dmgNum * (1 + (.08f * pwrVal)));
+
+            return (int)Mathf.Max(5, dmgNum);
         }
 
         public override void Draw()

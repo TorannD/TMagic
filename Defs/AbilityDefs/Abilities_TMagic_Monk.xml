@@ -10,6 +10,8 @@
     <uiIconPath>UI/ChiBurst</uiIconPath>
     <description>Ch'i, or spirit, is the life force that resides in all living things. Monks cultivate and harness this force to perform their art. Balancing the rhythm and flow of Ch'i takes time and is generally gained through dedicated meditation.</description>
     <staminaCost>0.00</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
+	<abilityHediff>TM_ChiHD</abilityHediff>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -92,6 +94,8 @@ Has a low chance to disrupt the mental state of any pawn. Can be resisted.</desc
 
 Mind Over Body is a passive buff that improves consciousness, moving, manipulation, melee hit chance, dodge chance, armor penetration, mental break and pain thresholds.</description>
     <staminaCost>0.00</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
+	<abilityHediff>TM_MindOverBodyHD</abilityHediff>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -166,6 +170,8 @@ Activated ability (12 chi): delivers 4 attacks in rapid succession.  Tiger Strik
 Passive ability (8 stamina): deliver multiple hits against an opponent; attacks may be any type (physical, stun, drain, vital) that is trained. Tiger Strike has a chance to trigger on any normal attack or itself.</description>
 	<uiIconPath>UI/tigerstrike</uiIconPath>
     <chiCost>0.12</chiCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<canCopy>true</canCopy>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_TigerStrike</verbClass>
 			<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -238,6 +244,8 @@ Activated ability (8 chi): leap through the air and deliver a powerful flying ki
 Passive ability (10 stamina): performs a round-house kick that strikes multiple opponents. Dragon Strike has a chance to trigger on any normal attack when multiple enemies are near the target.</description>
 <!--    <thingClass>ThingWithComps</thingClass> -->
     <chiCost>0.08</chiCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<canCopy>true</canCopy>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Effect_DragonStrike</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -288,6 +296,8 @@ Passive ability (10 stamina): performs a round-house kick that strikes multiple 
         <uiIconPath>UI/thunderstrike</uiIconPath>
         <description>Supercharges an attack with enough ch'i to generate lightning.</description>
         <chiCost>0.25</chiCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ThunderStrike</verbClass>
             <hasStandardCommand>true</hasStandardCommand>

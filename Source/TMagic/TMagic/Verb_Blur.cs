@@ -40,10 +40,24 @@ namespace TorannMagic
                 }
                 else
                 {
-                    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_BlurHD, 1f);
-                    TM_MoteMaker.ThrowManaPuff(pawn.DrawPos, pawn.Map, .75f);
-                    TM_MoteMaker.ThrowManaPuff(pawn.DrawPos, pawn.Map, 1);
-                    TM_MoteMaker.ThrowManaPuff(pawn.DrawPos, pawn.Map, .75f);
+                    CompAbilityUserMagic comp = pawn.TryGetComp<CompAbilityUserMagic>();
+                    if (comp != null)
+                    {
+                        if (comp.maxMP >= TorannMagicDefOf.TM_Blur.upkeepEnergyCost)
+                        {
+                            HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_BlurHD, 1f);
+                            TM_MoteMaker.ThrowManaPuff(pawn.DrawPos, pawn.Map, .75f);
+                            TM_MoteMaker.ThrowManaPuff(pawn.DrawPos, pawn.Map, 1);
+                            TM_MoteMaker.ThrowManaPuff(pawn.DrawPos, pawn.Map, .75f);
+                        }
+                        else
+                        {
+                            Messages.Message("TM_NotEnoughManaToSustain".Translate(
+                                            pawn.LabelShort,
+                                            TorannMagicDefOf.TM_Blur.label
+                                        ), MessageTypeDefOf.RejectInput);
+                        }
+                    }
                 }
                 arg_40_0 = true;
             }

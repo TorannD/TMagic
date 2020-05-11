@@ -347,7 +347,8 @@ namespace TorannMagic
                 bool anyPawnsTaunted = false;
                 if (threatPawns != null && threatPawns.Count > 0)
                 {
-                    for (int i = 0; i < threatPawns.Count; i++)
+                    int count = Mathf.Min(threatPawns.Count, 10);
+                    for (int i = 0; i < count; i++)
                     {
                         if (threatPawns[i].Faction != null && this.Pawn.Faction != null && threatPawns[i].Faction.HostileTo(this.Pawn.Faction) && !threatPawns[i].IsColonist)
                         {
@@ -430,7 +431,7 @@ namespace TorannMagic
                 {
                     if (!this.Pawn.Downed)
                     {
-                        if (this.Pawn.Faction != null && this.Pawn.Faction.IsPlayer && this.NextTaunt < Find.TickManager.TicksGame)
+                        if (this.Pawn.Faction != null && this.Pawn.Faction.IsPlayer && this.NextTaunt < Find.TickManager.TicksGame && Rand.Chance(.2f))
                         {
                             DoTaunt(this.Pawn.Map);
                             this.nextTaunt = this.Props.tauntCooldownTicks + Find.TickManager.TicksGame;

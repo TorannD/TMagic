@@ -68,14 +68,11 @@ namespace TorannMagic.Enchantment
             bool flag = comp.IsMagicUser && !TM_Calc.IsCrossClass(comp.Pawn, true); // !this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless);
             if (this.parent.def.defName == "TM_HediffEnchantment_maxMP")
             {
-                if (flag)
-                {
-                    this.enchantment = (comp.maxMP * 100).ToString("0.##") + "%";
-                }
-                else
-                {
-                    this.enchantment = (compMight.maxSP * 100).ToString("0.##") + "%";
-                }
+                this.enchantment = (comp.maxMP * 100).ToString("0.##") + "%";                
+            }
+            else if (this.parent.def.defName == "TM_HediffEnchantment_maxSP")
+            {
+                this.enchantment = (compMight.maxSP * 100).ToString("0.##") + "%";                
             }
             else if (this.parent.def.defName == "TM_HediffEnchantment_coolDown")
             {
@@ -101,14 +98,11 @@ namespace TorannMagic.Enchantment
             }
             else if (this.parent.def.defName == "TM_HediffEnchantment_mpRegenRate")
             {
-                if (flag)
-                {
-                    this.enchantment = (comp.mpRegenRate * 100).ToString("0.##") + "%";
-                }            
-                else
-                {
-                    this.enchantment = (compMight.spRegenRate * 100).ToString("0.##") + "%";
-                }
+                this.enchantment = (comp.mpRegenRate * 100).ToString("0.##") + "%";          
+            }
+            else if (this.parent.def.defName == "TM_HediffEnchantment_spRegenRate")
+            {
+                this.enchantment = (compMight.spRegenRate * 100).ToString("0.##") + "%";
             }
             else if (this.parent.def.defName == "TM_HediffEnchantment_xpGain")
             {

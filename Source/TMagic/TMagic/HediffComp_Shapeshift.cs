@@ -8,7 +8,7 @@ using HarmonyLib;
 namespace TorannMagic
 {
     [StaticConstructorOnStartup]
-    public class HediffComp_Shapeshift : HediffComp
+    public class HediffComp_Shapeshift : HediffComp  //not used
     {
 
         private bool initialized = false;
@@ -186,7 +186,7 @@ namespace TorannMagic
         {
             get
             {
-                return base.CompShouldRemove || this.removeNow || this.Pawn.story == null || this.Pawn.story.traits == null || !this.Pawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight);
+                return base.CompShouldRemove || this.removeNow;
             }
         }
 

@@ -2134,7 +2134,7 @@
       </li>
 	  <li>
 	    <label>II</label>
-		<minSeverity>.04</minSeverity>
+		<minSeverity>.2</minSeverity>
         <restFallFactor>1.70</restFallFactor>
 		<hungerRateFactor>1.7</hungerRateFactor>
         <capMods>
@@ -2157,7 +2157,7 @@
       </li>
 	  <li>
 	    <label>III</label>
-		<minSeverity>.7</minSeverity>
+		<minSeverity>.5</minSeverity>
         <restFallFactor>2</restFallFactor>
 		<hungerRateFactor>2</hungerRateFactor>
         <capMods>
@@ -2177,6 +2177,69 @@
 		<statOffsets>
 		  <MentalBreakThreshold>0.10</MentalBreakThreshold>
 	    </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+  
+  <!-- Resurrection via reverse time Debuff -->
+  
+  <HediffDef>
+    <defName>TM_DeathReversalHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <label>Returned from Death</label>
+	<defaultLabelColor>(.8,0,0)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+	<maxSeverity>1.0</maxSeverity>
+	<isBad>true</isBad>
+	<description>The backlash resulting from reversing death.</description>
+	<makesSickThought>true</makesSickThought>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.2</severityPerDay>
+      </li>	  
+    </comps>
+    <stages>
+      <li>
+	    <label>I</label>
+		<minSeverity>.001</minSeverity>
+        <restFallFactor>1.50</restFallFactor>
+		<hungerRateFactor>1.50</hungerRateFactor>
+        <capMods>
+		  <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.25</offset>
+          </li>
+        </capMods>
+		<statOffsets>
+		  <MentalBreakThreshold>0.07</MentalBreakThreshold>
+	    </statOffsets>
+      </li>
+	  <li>
+	    <label>II</label>
+		<minSeverity>.3</minSeverity>
+        <restFallFactor>1.5</restFallFactor>
+		<hungerRateFactor>1.5</hungerRateFactor>
+        <capMods>
+		  <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.4</offset>
+          </li>
+        </capMods>
+		<statOffsets>
+		  <MentalBreakThreshold>0.10</MentalBreakThreshold>
+	    </statOffsets>
+      </li>
+	  <li>
+	    <label>III</label>
+		<minSeverity>.7</minSeverity>
+        <restFallFactor>2</restFallFactor>
+		<hungerRateFactor>2</hungerRateFactor>
+        <capMods>
+		  <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.1</setMax>
+          </li>
+        </capMods>
       </li>
     </stages>
   </HediffDef>
@@ -2527,7 +2590,7 @@
 	<makesSickThought>false</makesSickThought>
 	<comps>
 	  <li Class="TorannMagic.HediffCompProperties_SetDuration">
-		<compClass>TorannMagic.HediffComp_EnergyRegen</compClass>
+		<compClass>TorannMagic.HediffComp_SetDuration</compClass>
 		<duration>10</duration>		
 	  </li> 
     </comps>

@@ -39,6 +39,7 @@ namespace TorannMagic
         public List<MagicPower> magicPowerC;
         public List<MagicPower> magicPowerW;
         public List<MagicPower> magicPowerCM;
+        public List<MagicPower> magicPowerShadow;
 
         public List<MagicPower> magicPowerStandalone;
 
@@ -156,9 +157,11 @@ namespace TorannMagic
         public List<MagicPowerSkill> magicPowerSkill_AccelerateTime;
         public List<MagicPowerSkill> magicPowerSkill_ReverseTime;
         public List<MagicPowerSkill> magicPowerSkill_ChronostaticField;
-        public List<MagicPowerSkill> magicPowerSkill_Recall;
+        public List<MagicPowerSkill> magicPowerSkill_Recall;       
 
         public List<MagicPowerSkill> magicPowerSkill_ChaosTradition;
+
+        public List<MagicPowerSkill> magicPowerSkill_ShadowWalk;
 
         public List<MagicPowerSkill> MagicPowerSkill_global_regen
         {
@@ -343,6 +346,10 @@ namespace TorannMagic
                         {
                             TorannMagicDefOf.TM_SnapFreeze
                         }),
+                        new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_ShapeshiftDW
+                        }),
                     };
                 }
                 return this.magicPowerStandalone;
@@ -437,7 +444,7 @@ namespace TorannMagic
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Firestorm
-                        }),
+                        },true),
                     };
                 }
                 return this.magicPowerIF;
@@ -564,7 +571,7 @@ namespace TorannMagic
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Blizzard
-                        }),
+                        },true),
                     };
                 }
                 return this.magicPowerHoF;
@@ -698,7 +705,7 @@ namespace TorannMagic
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_EyeOfTheStorm
-                        }),
+                        },true),
                     };
                 }
                 return this.magicPowerSB;
@@ -833,7 +840,7 @@ namespace TorannMagic
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_FoldReality
-                        }),
+                        },true),
                     };
                 }
                 return this.magicPowerA;
@@ -963,7 +970,7 @@ namespace TorannMagic
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_HolyWrath
-                        }),
+                        },true),
 
                     };
                 }
@@ -1082,7 +1089,7 @@ namespace TorannMagic
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_SummonPoppi
-                        }),
+                        },true),
 
                     };
                 }
@@ -1206,7 +1213,7 @@ namespace TorannMagic
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_RegrowLimb
-                        }),
+                        },true),
                     };
                 }
                 return this.magicPowerD;
@@ -1336,7 +1343,7 @@ namespace TorannMagic
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_LichForm
-                        }),
+                        },true),
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_DeathBolt,
@@ -1500,7 +1507,7 @@ namespace TorannMagic
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Resurrection
-                        }),
+                        },true),
                     };
                 }
                 return this.magicPowerPR;
@@ -1620,7 +1627,7 @@ namespace TorannMagic
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_BattleHymn
-                        }),
+                        },true),
                     };
                 }
                 return this.magicPowerB;
@@ -1742,7 +1749,7 @@ namespace TorannMagic
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_PsychicShock
-                        }),
+                        },true),
                         //new MagicPower(new List<AbilityUser.AbilityDef>
                         //{
                         //    TorannMagicDefOf.TM_SummonDemon
@@ -1889,7 +1896,7 @@ namespace TorannMagic
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Scorn
-                        }),
+                        },true),
                         //new MagicPower(new List<AbilityUser.AbilityDef>
                         //{
                         //    TorannMagicDefOf.TM_SummonDemon
@@ -1972,7 +1979,7 @@ namespace TorannMagic
                             TorannMagicDefOf.TM_Meteor_I,
                             TorannMagicDefOf.TM_Meteor_II,
                             TorannMagicDefOf.TM_Meteor_III
-                        }),
+                        },true),
                     };
                 }
                 return this.magicPowerG;
@@ -2105,15 +2112,15 @@ namespace TorannMagic
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_TechnoShield  
-                        }),
+                        },true),
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Overdrive
-                        }),
+                        },true),
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {                            
                             TorannMagicDefOf.TM_Sabotage
-                        }),
+                        },true),
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_OrbitalStrike,
@@ -2284,7 +2291,7 @@ namespace TorannMagic
                             TorannMagicDefOf.TM_BloodMoon_I,
                             TorannMagicDefOf.TM_BloodMoon_II,
                             TorannMagicDefOf.TM_BloodMoon_III
-                        }),
+                        }, true),
                     };
                 }
                 return this.magicPowerBM;
@@ -2429,7 +2436,7 @@ namespace TorannMagic
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Shapeshift
-                        }),
+                        }, true),
                     };
                 }
                 return this.magicPowerE;
@@ -2568,7 +2575,7 @@ namespace TorannMagic
                             TorannMagicDefOf.TM_ChronostaticField_I,
                             TorannMagicDefOf.TM_ChronostaticField_II,
                             TorannMagicDefOf.TM_ChronostaticField_III
-                        }),
+                        }, true),
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Recall
@@ -2715,7 +2722,43 @@ namespace TorannMagic
                 }
                 return this.magicPowerSkill_ChaosTradition;
             }
-        }        
+        }
+
+        public List<MagicPower> MagicPowersShadow
+        {
+            get
+            {
+                bool flag = this.magicPowerShadow == null;
+                if (flag)
+                {
+                    this.magicPowerShadow = new List<MagicPower>
+                    {
+                        new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_ShadowWalk
+                        }),
+                    };
+                }
+                return this.magicPowerShadow;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_ShadowWalk
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_ShadowWalk == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_ShadowWalk = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_ShadowWalk_pwr", "TM_ShadowWalk_pwr_desc"), // applies invisibility and duration of invisibility
+                        new MagicPowerSkill("TM_ShadowWalk_eff", "TM_ShadowWalk_eff_desc"), // reduces mana cost
+                        new MagicPowerSkill("TM_ShadowWalk_ver", "TM_ShadowWalk_ver_desc")  // heals and can invis target
+                    };
+                }
+                return this.magicPowerSkill_ShadowWalk;
+            }
+        }
 
         public bool IsNecromancer
         {
@@ -2829,8 +2872,155 @@ namespace TorannMagic
             }
             set
             {
-                this.affiliation = value;
+                this.affiliation = value; 
             }
+        }
+
+        private Dictionary<TMAbilityDef, MagicPowerSkill> skillEfficiency = new Dictionary<TMAbilityDef, MagicPowerSkill>();
+        public MagicPowerSkill GetSkill_Efficiency(TMAbilityDef ability)
+        {
+            if (!skillEfficiency.ContainsKey(ability))
+            {
+                bool hasSkill = false;
+                for (int i = 0; i < AllMagicPowerSkills.Count; i++)
+                {
+                    string s = ability.defName.ToString();
+                    char[] trim = { '_', 'I', 'V', 'X' };
+
+                    MagicPowerSkill mps = AllMagicPowerSkills[i];
+                    s = s.TrimEnd(trim) + "_eff";
+                    if (mps.label.Contains(s))
+                    {
+                        skillEfficiency.Add(ability, mps);
+                        hasSkill = true;
+                    }
+                }
+                if (!hasSkill)
+                {
+                    skillEfficiency.Add(ability, null);
+                }
+            }
+            return skillEfficiency[ability];
+        }
+
+        private Dictionary<TMAbilityDef, MagicPowerSkill> skillVersatility = new Dictionary<TMAbilityDef, MagicPowerSkill>();
+        public MagicPowerSkill GetSkill_Versatility(TMAbilityDef ability)
+        {
+            if (!skillVersatility.ContainsKey(ability))
+            {
+                bool hasSkill = false;
+                for (int i = 0; i < AllMagicPowerSkills.Count; i++)
+                {
+                    string s = ability.defName.ToString();
+                    char[] trim = { '_', 'I', 'V', 'X' };
+
+                    MagicPowerSkill mps = AllMagicPowerSkills[i];
+                    s = s.TrimEnd(trim) + "_ver";
+                    if (mps.label.Contains(s))
+                    {
+                        skillVersatility.Add(ability, mps);
+                        hasSkill = true;
+                    }
+                }
+                if (!hasSkill)
+                {
+                    skillVersatility.Add(ability, null);
+                }
+            }
+            return skillVersatility[ability];
+        }
+
+        private Dictionary<TMAbilityDef, MagicPowerSkill> skillPower = new Dictionary<TMAbilityDef, MagicPowerSkill>();
+        public MagicPowerSkill GetSkill_Power(TMAbilityDef ability)
+        {
+            if (!skillPower.ContainsKey(ability))
+            {
+                bool hasSkill = false;
+                for (int i = 0; i < AllMagicPowerSkills.Count; i++)
+                {
+                    string s = ability.defName.ToString();
+                    char[] trim = { '_', 'I', 'V', 'X' };
+
+                    MagicPowerSkill mps = AllMagicPowerSkills[i];
+                    s = s.TrimEnd(trim) + "_pwr";
+                    if (mps.label.Contains(s))
+                    {
+                        skillPower.Add(ability, mps);
+                        hasSkill = true;
+                    }
+                }
+                if (!hasSkill)
+                {
+                    skillPower.Add(ability, null);
+                }
+            }
+            return skillPower[ability];
+        }
+
+        private Dictionary<HediffDef, TMAbilityDef> hediffAbility = new Dictionary<HediffDef, TMAbilityDef>();
+        public TMAbilityDef GetHediffAbility(Hediff hd)
+        {
+            if (!hediffAbility.ContainsKey(hd.def))
+            {
+                bool hasAbility = false;
+                for (int i = 0; i < AllMagicPowers.Count; i++)
+                {
+                    if (AllMagicPowers[i].abilityDef is TMAbilityDef)
+                    {
+                        TMAbilityDef ability = (TMAbilityDef)AllMagicPowers[i].abilityDef;
+                        if (ability.abilityHediff != null && ability.abilityHediff == hd.def)
+                        {
+                            hediffAbility.Add(hd.def, ability);
+                            hasAbility = true;
+                        }
+                    }
+                }
+                if (!hasAbility)
+                {
+                    hediffAbility.Add(hd.def, null);
+                }
+            }
+            return hediffAbility[hd.def];
+        }
+
+        private int uniquePowersCount = 0;
+        public int GetUniquePowersWithSkillsCount(TMDefs.TM_CustomClass customClass)
+        {
+            if (uniquePowersCount != 0)
+            {
+                return uniquePowersCount;
+            }
+            List<TMAbilityDef> abilities = new List<TMAbilityDef>();
+            abilities.Clear();
+            for (int i = 0; i < customClass.classMageAbilities.Count; i++)
+            {
+                bool unique = true;
+                for (int j = 0; j < abilities.Count; j++)
+                {
+                    if (customClass.classMageAbilities[i].defName.Contains(abilities[j].defName))
+                    {
+                        unique = false;
+                    }
+                }
+                if (unique)
+                {
+                    abilities.Add(customClass.classMageAbilities[i]);
+                }
+            }
+            uniquePowersCount = abilities.Count;
+            return uniquePowersCount;
+        }
+
+        public MagicPower ReturnMatchingMagicPower(TMAbilityDef def)
+        {
+            for (int i = 0; i < AllMagicPowers.Count; i++)
+            {
+                if (AllMagicPowers[i].TMabilityDefs.Contains(def))
+                {
+                    return AllMagicPowers[i];
+                }
+            }
+            return null;
         }
 
         public IEnumerable<MagicPower> Powers
@@ -2901,11 +3091,24 @@ namespace TorannMagic
                 tmpList.Clear();
                 list.AddRange(this.MagicPowersE.Except(MagicPowersE.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shapeshift)));
                 list.AddRange(this.MagicPowersC.Except(MagicPowersC.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Recall)));
+                list.AddRange(this.MagicPowersShadow);
                 return list;
             }
         }
 
         public List<MagicPower> AllMagicPowers
+        {
+            get
+            {
+                List<MagicPower> list = new List<MagicPower>();
+                list.Clear();
+                list.AddRange(AllMagicPowersWithSkills);              
+                list.AddRange(this.MagicPowersStandalone);
+                return list;
+            }
+        }
+
+        public List<MagicPower> AllMagicPowersWithSkills
         {
             get
             {
@@ -2927,10 +3130,11 @@ namespace TorannMagic
                 list.AddRange(this.MagicPowersN);
                 list.AddRange(this.MagicPowersB);
                 list.AddRange(this.MagicPowersSD);
-                list.AddRange(this.MagicPowersWD);
+                list.Add(this.MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Repulsion));
+                list.Add(this.MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_PsychicShock));
                 list.AddRange(this.MagicPowersG);
-                list.AddRange(this.MagicPowersT);                
-                list.AddRange(this.MagicPowersStandalone);
+                list.AddRange(this.MagicPowersT);
+                list.AddRange(this.MagicPowersShadow);
                 return list;
             }
         }
@@ -3039,6 +3243,7 @@ namespace TorannMagic
                 list.AddRange(this.MagicPowerSkill_Transmutate);
                 list.AddRange(this.MagicPowerSkill_ValiantCharge);
                 list.AddRange(this.MagicPowerSkill_WandererCraft);
+                list.AddRange(this.MagicPowerSkill_ShadowWalk);
                 return list;
             }
         }
@@ -3084,6 +3289,7 @@ namespace TorannMagic
             this.magicPowerSD.Clear();
             this.magicPowerC.Clear();
             this.magicPowerCM.Clear();
+            this.magicPowerShadow.Clear();
             this.magicPawn = null;            
             this.initialized = false;           
         }
@@ -3217,6 +3423,8 @@ namespace TorannMagic
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Recall, "magicPowerSkill_Recall", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPower>(ref this.magicPowerCM, "magicPowerCM", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_ChaosTradition, "magicPowerSkill_ChaosTradition", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPower>(ref this.magicPowerShadow, "magicPowerShadow", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_ShadowWalk, "magicPowerSkill_ShadowWalk", LookMode.Deep, new object[0]);
         }
     }
 }

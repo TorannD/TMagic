@@ -4,8 +4,8 @@
   <HediffDef>
     <defName>TM_HediffEnchantment_maxMP</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-	<label>Max Energy:</label>
-	<description>Energy capacity enchantment.</description>
+	<label>Max Mana:</label>
+	<description>Mana capacity enchantment.</description>
     <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -16,9 +16,30 @@
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
       </li> 
-<!-- 	  <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>-5</severityPerDay>
-      </li> -->
+    </comps>
+	<stages>
+      <li>
+        <label></label>
+        <minSeverity>0.001</minSeverity>
+      </li>
+	</stages>
+   </HediffDef>
+   
+   <HediffDef>
+    <defName>TM_HediffEnchantment_maxSP</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Max Stamina:</label>
+	<description>Stamina capacity enchantment.</description>
+    <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
+	<scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <maxSeverity>1</maxSeverity>
+	<isBad>false</isBad>	
+	<comps>
+      <li>
+        <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
+      </li> 
     </comps>
 	<stages>
       <li>
@@ -43,9 +64,6 @@
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
       </li> 
-<!-- 	  <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>-5</severityPerDay>
-      </li> -->
     </comps>
 	<stages>
       <li>
@@ -70,9 +88,6 @@
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
       </li> 
-<!-- 	  <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>-5</severityPerDay>
-      </li> -->
     </comps>
 	<stages>
       <li>
@@ -85,8 +100,8 @@
      <HediffDef>
     <defName>TM_HediffEnchantment_mpRegenRate</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-	<label>Energy Regen:</label>
-	<description>Energy regeneration enchantment.</description>
+	<label>Mana Regen:</label>
+	<description>Mana regeneration enchantment.</description>
     <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -97,9 +112,30 @@
       <li>
         <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
       </li> 
-<!-- 	  <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>-5</severityPerDay>
-      </li> -->
+    </comps>
+	<stages>
+      <li>
+        <label></label>
+        <minSeverity>0.001</minSeverity>
+      </li>
+	</stages>
+   </HediffDef>
+   
+   <HediffDef>
+    <defName>TM_HediffEnchantment_spRegenRate</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Stamina Regen:</label>
+	<description>Stamina regeneration enchantment.</description>
+    <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
+	<scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <maxSeverity>1</maxSeverity>
+	<isBad>false</isBad>	
+	<comps>
+      <li>
+        <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
+      </li> 
     </comps>
 	<stages>
       <li>

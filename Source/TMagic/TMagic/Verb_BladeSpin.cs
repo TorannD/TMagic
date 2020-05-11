@@ -79,8 +79,9 @@ namespace TorannMagic
                 Map map = base.CasterPawn.Map;
                 cellRect.ClipInsideMap(map);
 
-                IntVec3 centerCell = cellRect.CenterCell;
-                int dmgNum = GetWeaponDmg(this.CasterPawn);
+                IntVec3 centerCell = cellRect.CenterCell;                
+                TMAbilityDef ad = (TMAbilityDef)this.Ability.Def;
+                int dmgNum = Mathf.RoundToInt(comp.weaponDamage * ad.weaponDamageFactor);
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 if (!this.CasterPawn.IsColonist && settingsRef.AIHardMode)
                 {

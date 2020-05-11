@@ -44,6 +44,8 @@
     <uiIconPath>UI/heater</uiIconPath>
     <description>Creates a dimensional pocket that taps into the Plane of Fire, generating constant heat in a confined area. The heater must be sustained by the mage - reduces max mana by 25 while active.</description>
     <manaCost>0.25</manaCost>
+	<learnItem>SpellOf_Heater</learnItem>
+	<upkeepEnergyCost>.25</upkeepEnergyCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -130,6 +132,8 @@
     <uiIconPath>Other/cooler</uiIconPath>
     <description>Creates a dimensional pocket that taps into the Plane of Ice, reducing heat in a confined area. The cooler must be sustained by the mage - reduces max mana by 25 while active.</description>
     <manaCost>0.25</manaCost>
+	<learnItem>SpellOf_Cooler</learnItem>
+	<upkeepEnergyCost>.25</upkeepEnergyCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -216,6 +220,9 @@
     <uiIconPath>Other/energynode_1</uiIconPath>
     <description>Creates an energy node that slowly releases arcane energy in the form of electricity. Can be used as a power source. The power node must be sustained by the mage - reduces max mana by 25 and mana regen by 25% while active.</description>
     <manaCost>0.25</manaCost>
+	<learnItem>SpellOf_PowerNode</learnItem>
+	<upkeepEnergyCost>.25</upkeepEnergyCost>
+	<upkeepRegenCost>.25</upkeepRegenCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -304,6 +311,9 @@
     <uiIconPath>UI/sunlight</uiIconPath>	
     <description>Creates a beacon of sunlight strong enough to grow plants. The beacon must be sustained by the mage - reduces max mana by 40 and mana regeneration by 40% while active.</description>
     <manaCost>0.40</manaCost>
+	<learnItem>SpellOf_Sunlight</learnItem>
+	<upkeepEnergyCost>.4</upkeepEnergyCost>
+	<upkeepRegenCost>.4</upkeepRegenCost>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -391,6 +401,7 @@
     <uiIconPath>UI/dryground</uiIconPath>
     <description>Infuses the ground with heat, evaporating most of the moisture from a patch of ground. Only works on muddy ground.</description>
     <manaCost>0.60</manaCost>
+	<learnItem>SpellOf_DryGround</learnItem>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_BLOS</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -444,6 +455,7 @@
     <uiIconPath>UI/wetground</uiIconPath>
     <description>Infuses sand with water, creating usable soil.</description>
     <manaCost>0.60</manaCost>
+	<learnItem>SpellOf_WetGround</learnItem>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_BLOS</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -495,6 +507,7 @@
     <uiIconPath>UI/chargebattery</uiIconPath>
     <description>Converts raw magic power into electrical energy. This spell can only be used on batteries. Generates 400Wd.</description>
     <manaCost>0.10</manaCost>
+	<learnItem>SpellOf_ChargeBattery</learnItem>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -548,6 +561,7 @@
         <uiIconPath>UI/smokecloud</uiIconPath>
         <description>Draws in and ignites water and dirt particles in the air to create a smoke screen that temporarily conceals the area.</description>
         <manaCost>0.06</manaCost>
+		<learnItem>SpellOf_SmokeCloud</learnItem>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -605,6 +619,7 @@
         <uiIconPath>UI/Extinguish</uiIconPath>
         <description>Removes the fire element from the target location, instantly extinguishing undesired fires.</description>
         <manaCost>0.07</manaCost>
+		<learnItem>SpellOf_Extinguish</learnItem>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -662,6 +677,7 @@
         <uiIconPath>UI/EMP</uiIconPath>
         <description>Generate a burst of electromagnetic radiation at a target site, disabling mechanoids for a short period.</description>
         <manaCost>0.20</manaCost>
+		<learnItem>SpellOf_EMP</learnItem>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -717,6 +733,7 @@
         <uiIconPath>UI/transfermana</uiIconPath>
         <description>Transfers magical energy from one caster to another. Recipients that are not magic users will receive significant, if random, physical augmentation for a short period. Can be harmful, even lethal, at extreme levels.</description>
         <manaCost>0.30</manaCost>
+		<learnItem>SpellOf_TransferMana</learnItem>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -772,6 +789,7 @@
         <uiIconPath>UI/siphonmana</uiIconPath>
         <description>Siphons magical energy from another caster. Recipients that are not magic users will have physical capacities drained instead. Can be lethal if too much life force is drained.</description>
         <manaCost>0.10</manaCost>
+		<learnItem>SpellOf_SiphonMana</learnItem>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -809,10 +827,11 @@
         <defName>TM_ManaShield</defName>
         <label>Mana Shield</label>
         <uiIconPath>UI/manashield</uiIconPath>
-        <description>Summons a protective barrier that draws power from the casters mana. Damage absorption rate is 1dmg to 1 mana. The barrier breaks when the caster has insufficient mana to absorb an attack.  
+        <description>Summons a protective barrier that draws power from the caster's mana. Damage absorption rate is 1dmg to 1 mana. The barrier breaks when the caster has insufficient mana to absorb an attack.  
 
 Casting the spell when a barrier is active will remove the barrier. Can be used in conjunction with shield belts. Does not impede spell casting of any type.</description>
         <manaCost>0.005</manaCost>
+		<learnItem>SpellOf_ManaShield</learnItem>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ManaShield</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -972,6 +991,8 @@ Casting the spell when a barrier is active will remove the barrier. Can be used 
         <uiIconPath>UI/blessland</uiIconPath>
         <description>Infuses an area of land with power from the druid that increases its fertility. This ability must be maintained and reduces mana regeneration by 40%. The druid is limited to one area.</description>
         <manaCost>0.10</manaCost>
+		<learnItem>SpellOf_FertileLands</learnItem>
+		<upkeepRegenCost>.4</upkeepRegenCost>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -1040,10 +1061,11 @@ Casting the spell when a barrier is active will remove the barrier. Can be used 
 
     <TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
         <defName>TM_SpellMending</defName>
-        <label>Spell Mending</label>
+        <label>Spell Mending</label>		
         <uiIconPath>UI/spellmending</uiIconPath>
         <description>Cast an enchantment upon a person that slowly reconstructs their equipment at a molecular level. Spell mending requires a the equipment to be worn in order to extract 'memories' from the wearer to perform the reconstruction. This places a physical strain on the affected pawn and will slow their physical activities. Spell mending dissipates after several hours.</description>
         <manaCost>0.50</manaCost>
+		<learnItem>SpellOf_SpellMending</learnItem>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SpellMending</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -1082,6 +1104,7 @@ Casting the spell when a barrier is active will remove the barrier. Can be used 
         <uiIconPath>UI/cauterizewound</uiIconPath>
         <description>The fire mage invokes elemental fire to instantly cauterize wounds on a patient. However, this process is likely to leave burn scars.</description>
         <manaCost>0.15</manaCost>
+		<learnItem>SpellOf_CauterizeWound</learnItem>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_CauterizeWound</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -1189,8 +1212,12 @@ Trained fighters will gain class XP.  The amount of XP gained depends on the soc
         <defName>TM_Blur</defName>
         <label>Blur</label>
         <uiIconPath>UI/blur</uiIconPath>
-        <description>Additional 20% chance to avoid all attacks by distorting light around the caster. Requires 20 mana to sustain. Re-use the ability to deactivate blur.</description>
-        <manaCost>0.000</manaCost>
+        <description>Additional 20% chance to avoid all attacks by distorting light around the caster. Requires 20 mana to sustain and reduces mana regeneration by 10%. Re-use the ability to deactivate blur.</description>
+        <manaCost>0</manaCost>
+		<learnItem>SpellOf_Blur</learnItem>
+		<upkeepEnergyCost>.20</upkeepEnergyCost>
+		<upkeepRegenCost>.1</upkeepRegenCost>
+		<abilityHediff>TM_BlurHD</abilityHediff>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Blur</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -1230,6 +1257,7 @@ Trained fighters will gain class XP.  The amount of XP gained depends on the soc
 		
 AoE effects are only applied when the primary target is not a friendly pawn. Friendly pawns will lose both good and bad memories.</description>
 		<manaCost>0.40</manaCost>
+		<learnItem>SpellOf_BlankMind</learnItem>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BlankMind</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -1308,6 +1336,7 @@ AoE effects are only applied when the primary target is not a friendly pawn. Fri
         <uiIconPath>UI/dirtdevil</uiIconPath>
         <description>Create a small vacuum of elemental air that seeks out and vaporizes dirt and debris.</description>
         <manaCost>0.35</manaCost>
+		<learnItem>SpellOf_DirtDevil</learnItem>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Effect_DirtDevil</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -1338,6 +1367,7 @@ AoE effects are only applied when the primary target is not a friendly pawn. Fri
         <uiIconPath>UI/mechanitereprogramming</uiIconPath>
         <description>Reprograms fibrous or sensory mechanites to harmonize with a hosts biological systems. The result will significantly reduce the strain on the host while the mechanites are active.</description>
         <manaCost>0.30</manaCost>
+		<learnItem>SpellOf_MechaniteReprogramming</learnItem>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_MechaniteReprogramming</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -1391,6 +1421,7 @@ AoE effects are only applied when the primary target is not a friendly pawn. Fri
 Arcane Bolt is inefficient because of the unrefined nature of the spell, but it can be learned and cast by any mage capable of violence.</description>
 	<uiIconPath>UI/arcanebolt</uiIconPath>
     <manaCost>0.25</manaCost>
+	<learnItem>SpellOf_ArcaneBolt</learnItem>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_ArcaneBolt</verbClass>
 			<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -1443,6 +1474,7 @@ Arcane Bolt is inefficient because of the unrefined nature of the spell, but it 
     <description>A ranged attack using a concealed throwing knife, designed to complement any equipped weapon system.</description>
 	<uiIconPath>UI/throwingknife</uiIconPath>
     <staminaCost>0.30</staminaCost>
+	<learnItem>SkillOf_ThrowingKnife</learnItem>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -1482,6 +1514,7 @@ This ability can instantly down a target pawn; the more pain the target is in, t
 Autocast only triggers when the target has 80% or greater chance of being downed from this attack.</description>
 	<uiIconPath>UI/pommelstrike</uiIconPath>
     <staminaCost>0.30</staminaCost>
+	<learnItem>SkillOf_PommelStrike</learnItem>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_PommelStrike</verbClass>
 			<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -1533,6 +1566,7 @@ Autocast only triggers when the target has 80% or greater chance of being downed
     <description>Elemental lightning is charged inside a hardened arcane shell and placed as a trap. Arcane strands that activate the spell are extended around the trap and trigger when disturbed by enemies. Traps last indefinitely, but a mage is only able to sustain a single trap.</description>
 	<uiIconPath>UI/lightningtrap</uiIconPath>
     <manaCost>0.40</manaCost>
+	<learnItem>SpellOf_LightningTrap</learnItem>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_LightningTrap</verbClass>
 			<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -1602,6 +1636,7 @@ Autocast only triggers when the target has 80% or greater chance of being downed
         <uiIconPath>UI/invisibility</uiIconPath>
         <description>Become invisible for 20 seconds. Any overt interaction will immediately break the spell. Clears caster from all hostile targeting.</description>
         <manaCost>0.25</manaCost>
+		<learnItem>SpellOf_Invisibility</learnItem>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Invisibility</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -1657,6 +1692,7 @@ Autocast only triggers when the target has 80% or greater chance of being downed
     <description>Creates a hazard made of thorny vines. Any movement over the affected area will be slowed, and creatures moving through the briar patch may take minor damage.</description>
 	<uiIconPath>UI/briarpatch</uiIconPath>
     <manaCost>0.35</manaCost>
+	<learnItem>SpellOf_BriarPatch</learnItem>	
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_BriarPatch</verbClass>
 			<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -1695,7 +1731,11 @@ Autocast only triggers when the target has 80% or greater chance of being downed
 Magelight grants a 20% vision bonus; only the caster benefits from this bonus.
 
 Magelight can be dispelled by using this ability on the caster.</description>
-    <manaCost>0.10</manaCost>
+    <manaCost>0</manaCost>
+	<learnItem>SpellOf_MageLight</learnItem>
+	<upkeepEnergyCost>.1</upkeepEnergyCost>
+	<upkeepRegenCost>.05</upkeepRegenCost>
+	<abilityHediff>TM_MageLightHD</abilityHediff>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_MageLight</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -1733,6 +1773,7 @@ Magelight can be dispelled by using this ability on the caster.</description>
     <description>Copy an ability from another fighter. All bonuses and restrictions of the copied ability apply. Only one ability may be stored at a time.</description>
 <!--    <thingClass>ThingWithComps</thingClass> -->
     <staminaCost>0.3</staminaCost>
+	<learnItem>SkillOf_Legion</learnItem>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Legion</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -1788,6 +1829,8 @@ Melee weapons generate blades of energy.
 This attack only works when the weapon equipped is not normally consumed after use.</description>
 <!--    <thingClass>ThingWithComps</thingClass> -->
     <staminaCost>0.2</staminaCost>
+	<learnItem>SkillOf_TempestStrike</learnItem>
+	<weaponDamageFactor>.45</weaponDamageFactor>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_TempestStrike</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -1823,7 +1866,8 @@ This attack only works when the weapon equipped is not normally consumed after u
         <label>Ignite</label>
         <uiIconPath>UI/ignite</uiIconPath>
         <description>Concentrates and enormous amount of heat at a focus point and then releases it. The released heat can ignite nearby creatures and will always set fire to corpses. The released heat will also dramatically increase the room temperature for any enclosed area.</description>
-		<manaCost>0.25</manaCost>
+		<manaCost>0.30</manaCost>
+		<learnItem>SpellOf_Ignite</learnItem>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Ignite</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -1868,7 +1912,8 @@ This attack only works when the weapon equipped is not normally consumed after u
         <label>Snap Freeze</label>
         <uiIconPath>UI/snapfreeze</uiIconPath>
         <description>Removes almost all heat at a focus point causing a snap freeze of any living object. Creatures may suffer from frostbite and most plant life will die. The removal of heat will also dramatically decrease the room temperature for any enclosed area.</description>
-		<manaCost>0.25</manaCost>
+		<manaCost>0.30</manaCost>
+		<learnItem>SpellOf_SnapFreeze</learnItem>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SnapFreeze</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

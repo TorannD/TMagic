@@ -10,93 +10,138 @@ namespace TorannMagic
 
 		public override void DoEffect(Pawn user)
 		{
-            if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy))
+            if (parent.def != null)
             {
-                Trait giftedTrait = new Trait();
-                if (parent.def.defName == "BookOfGladiator")
+                bool customClass = false;
+                for (int i = 0; i < TM_ClassUtility.CustomClasses().Count; i++)
                 {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Gladiator, 4, false));
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                    CompAbilityUserMight comp = user.GetComp<CompAbilityUserMight>();
-                    comp.skill_Sprint = true;
+                    if (TM_ClassUtility.CustomClasses()[i].isFighter)
+                    {
+                        if (parent.def == TM_ClassUtility.CustomClasses()[i].tornScript || parent.def == TM_ClassUtility.CustomClasses()[i].fullScript)
+                        {
+                            customClass = true;
+                            if (parent.def == TM_ClassUtility.CustomClasses()[i].fullScript)
+                            {
+                                HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                            }
+                            FixTrait(user, user.story.traits.allTraits);
+                            user.story.traits.GainTrait(new Trait(TM_ClassUtility.CustomClasses()[i].classTrait, TM_ClassUtility.CustomClasses()[i].traitDegree));
+                            //Unique actions hook
+                            ApplyTraitAdjustments(user, TM_ClassUtility.CustomClasses()[i].classTrait);
+                            //
+                            this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                            CompAbilityUserMight comp = user.TryGetComp<CompAbilityUserMight>();
+                            if (comp != null)
+                            {
+                                comp.customIndex = i;
+                                comp.customClass = TM_ClassUtility.CustomClasses()[i];
+                            }
+                            else
+                            {
+                                Log.Message("failed to initialize custom might class comp");
+                            }
+                            CompAbilityUserMagic mComp = user.TryGetComp<CompAbilityUserMagic>();
+                            if(mComp != null && TM_ClassUtility.CustomClasses()[i].isMage)
+                            {
+                                mComp.customIndex = i;
+                                mComp.customClass = TM_ClassUtility.CustomClasses()[i];
+                            }
+
+                            break;
+                        }
+                    }
                 }
-                else if (parent.def.defName == "BookOfSniper")
+                if (!customClass && user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy))
                 {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Sniper, 0, false));
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def.defName == "BookOfBladedancer")
-                {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Bladedancer, 0, false));
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def.defName == "BookOfRanger")
-                {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Ranger, 0, false));
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def.defName == "BookOfFaceless")
-                {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Faceless, 4, false));
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def.defName == "BookOfDeathKnight")
-                {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.DeathKnight, 4, false));
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def.defName == "BookOfPsionic")
-                {
-                    if (user.GetStatValue(StatDefOf.PsychicSensitivity, false) > 1)
+                    if (parent.def.defName == "BookOfGladiator")
                     {
                         FixTrait(user, user.story.traits.allTraits);
-                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Psionic, 4, false));
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Gladiator, 4, false));
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                        CompAbilityUserMight comp = user.GetComp<CompAbilityUserMight>();
+                        comp.skill_Sprint = true;
+                    }
+                    else if (parent.def.defName == "BookOfSniper")
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Sniper, 0, false));
                         this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                     }
-                    else if(user.Map.GameConditionManager.ConditionIsActive(GameConditionDefOf.PsychicDrone) || user.Map.GameConditionManager.ConditionIsActive(GameConditionDefOf.PsychicSoothe))
+                    else if (parent.def.defName == "BookOfBladedancer")
                     {
                         FixTrait(user, user.story.traits.allTraits);
-                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Psionic, 4, false));
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Bladedancer, 0, false));
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                    else if (parent.def.defName == "BookOfRanger")
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Ranger, 0, false));
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                    else if (parent.def.defName == "BookOfFaceless")
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Faceless, 4, false));
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                    else if (parent.def.defName == "BookOfDeathKnight")
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.DeathKnight, 4, false));
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                    else if (parent.def.defName == "BookOfPsionic")
+                    {
+                        if (user.GetStatValue(StatDefOf.PsychicSensitivity, false) > 1)
+                        {
+                            FixTrait(user, user.story.traits.allTraits);
+                            user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Psionic, 4, false));
+                            this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                        }
+                        else if (user.Map.GameConditionManager.ConditionIsActive(GameConditionDefOf.PsychicDrone) || user.Map.GameConditionManager.ConditionIsActive(GameConditionDefOf.PsychicSoothe))
+                        {
+                            FixTrait(user, user.story.traits.allTraits);
+                            user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Psionic, 4, false));
+                            this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                        }
+                        else
+                        {
+                            Messages.Message("TM_NotPsychicSensitive".Translate(
+                                user.LabelShort
+                            ), MessageTypeDefOf.RejectInput);
+                        }
+                    }
+                    else if (parent.def == TorannMagicDefOf.BookOfMonk)
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Monk, 4, false));
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                    else if (parent.def == TorannMagicDefOf.BookOfCommander)
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Commander, 4, false));
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                    else if (parent.def == TorannMagicDefOf.BookOfSuperSoldier)
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_SuperSoldier, 4, false));
+                        if (user.health != null && user.health.hediffSet != null)
+                        {
+                            HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_SS_SerumHD, .1f);
+                        }
                         this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                     }
                     else
                     {
-                        Messages.Message("TM_NotPsychicSensitive".Translate(
-                            user.LabelShort
-                        ), MessageTypeDefOf.RejectInput);
+                        Messages.Message("NotCombatBook".Translate(), MessageTypeDefOf.RejectInput);
                     }
                 }
-                else if (parent.def == TorannMagicDefOf.BookOfMonk)
+                else if(!customClass && !user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy))
                 {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Monk, 4, false));
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def == TorannMagicDefOf.BookOfCommander)
-                {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Commander, 4, false));
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def == TorannMagicDefOf.BookOfSuperSoldier)
-                {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_SuperSoldier, 4, false));
-                    if(user.health != null && user.health.hediffSet != null)
-                    {
-                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_SS_SerumHD, .1f);
-                    }
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else
-                {
-                    Messages.Message("NotCombatBook".Translate(), MessageTypeDefOf.RejectInput);
+                    Messages.Message("NotPhyAdeptPawn".Translate(), MessageTypeDefOf.RejectInput);
                 }
 
                 //ResolveClassPassions(user);  currently disabled
@@ -125,7 +170,12 @@ namespace TorannMagic
                 {
                     traits.Remove(traits[i]);
                     i--;
-                }                
+                }
+                if (traits[i].def == TorannMagicDefOf.Gifted)
+                {
+                    traits.Remove(traits[i]);
+                    i--;
+                }
             }
         }
 
@@ -213,6 +263,11 @@ namespace TorannMagic
                     skill.passion = Passion.Minor;
                 }
             }
+        }
+
+        public void ApplyTraitAdjustments(Pawn pawn, TraitDef traitDef)
+        {
+            
         }
     }
 }

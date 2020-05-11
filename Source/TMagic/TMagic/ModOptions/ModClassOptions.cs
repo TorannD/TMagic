@@ -24,6 +24,92 @@ namespace TorannMagic.ModOptions
             IEnumerable<ThingDef> enumerable = (from def in DefDatabase<ThingDef>.AllDefs
                                                 select def);
             List<ThingDef> removedThings = new List<ThingDef>();
+            List<ThingDef> customThings = new List<ThingDef>();
+            
+            for(int i = 0; i < TM_CustomClassDef.Named("TM_CustomClasses").customClasses.Count; i++)
+            {
+                TMDefs.TM_CustomClass cc = TM_CustomClassDef.Named("TM_CustomClasses").customClasses[i];
+                if(cc.tornScript != null)
+                {
+                    customThings.AddDistinct(cc.tornScript);
+                }
+                if(cc.fullScript != null)
+                {
+                    customThings.AddDistinct(cc.fullScript);
+                }
+                if(cc.learnableSkills != null && cc.learnableSkills.Count > 0)
+                {
+                    for(int j = 0; j < cc.learnableSkills.Count; j++)
+                    {
+                        customThings.AddDistinct(cc.learnableSkills[j]);
+                    }
+                }
+                if (cc.learnableSpells != null && cc.learnableSpells.Count > 0)
+                {
+                    for (int j = 0; j < cc.learnableSpells.Count; j++)
+                    {
+                        customThings.AddDistinct(cc.learnableSpells[j]);
+                    }
+                }
+                if(cc.classFighterAbilities != null && cc.classFighterAbilities.Count > 0)
+                {
+                    if(cc.classFighterAbilities.Contains(TorannMagicDefOf.TM_PoisonTrap))
+                    {
+                        customThings.AddDistinct(ThingDef.Named("TM_PoisonTrap"));
+                    }
+                    if (cc.classFighterAbilities.Contains(TorannMagicDefOf.TM_60mmMortar))
+                    {
+                        customThings.AddDistinct(TorannMagicDefOf.TM_60mmMortar_Base);
+                    }
+                    if(cc.classFighterAbilities.Contains(TorannMagicDefOf.TM_PistolSpec))
+                    {
+                        customThings.AddDistinct(ThingDef.Named("TM_PistolSpec_Base0"));
+                    }
+                    if (cc.classFighterAbilities.Contains(TorannMagicDefOf.TM_RifleSpec))
+                    {
+                        customThings.AddDistinct(ThingDef.Named("TM_RifleSpec_Base0"));
+                    }
+                    if (cc.classFighterAbilities.Contains(TorannMagicDefOf.TM_ShotgunSpec))
+                    {
+                        customThings.AddDistinct(ThingDef.Named("TM_ShotgunSpec_Base0"));
+                    }
+                }
+                if (cc.classMageAbilities != null && cc.classMageAbilities.Count > 0)
+                {
+                    if (cc.classMageAbilities.Contains(TorannMagicDefOf.TM_RegrowLimb))
+                    {
+                        customThings.AddDistinct(ThingDef.Named("SeedofRegrowth"));
+                    }
+                    if (cc.classMageAbilities.Contains(TorannMagicDefOf.TM_SummonExplosive))
+                    {
+                        customThings.AddDistinct(ThingDef.Named("TM_ManaMine"));
+                        customThings.AddDistinct(ThingDef.Named("TM_ManaMine_I"));
+                        customThings.AddDistinct(ThingDef.Named("TM_ManaMine_II"));
+                        customThings.AddDistinct(ThingDef.Named("TM_ManaMine_III"));
+                    }
+                    if (cc.classMageAbilities.Contains(TorannMagicDefOf.TM_SummonPylon))
+                    {
+                        customThings.AddDistinct(ThingDef.Named("DefensePylon"));
+                        customThings.AddDistinct(ThingDef.Named("DefensePylon_I"));
+                        customThings.AddDistinct(ThingDef.Named("DefensePylon_II"));
+                        customThings.AddDistinct(ThingDef.Named("DefensePylon_III"));
+                        customThings.AddDistinct(ThingDef.Named("Bullet_DefensePylon"));
+                        customThings.AddDistinct(ThingDef.Named("Launcher_DefensePylon"));
+                        customThings.AddDistinct(ThingDef.Named("Launcher_DefensePylon_I"));
+                        customThings.AddDistinct(ThingDef.Named("Launcher_DefensePylon_II"));
+                        customThings.AddDistinct(ThingDef.Named("Launcher_DefensePylon_III"));
+                        customThings.AddDistinct(ThingDef.Named("TM_Poppi"));
+                    }
+                    if (cc.classMageAbilities.Contains(TorannMagicDefOf.TM_SummonPoppi))
+                    {
+                        customThings.AddDistinct(ThingDef.Named("TM_Poppi"));
+                    }
+                    if (cc.classMageAbilities.Contains(TorannMagicDefOf.TM_RaiseUndead))
+                    {
+                        customThings.AddDistinct(TorannMagicDefOf.TM_Artifact_NecroticOrb);
+                    }
+                }
+            }
 
             foreach (ThingDef current in enumerable)
             {
@@ -31,68 +117,110 @@ namespace TorannMagic.ModOptions
                 {
                     if(current.defName == "BookOfSniper")
                     {
-                        removedThings.Add(current);                     
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.Ranger)
                 {
                     if (current.defName == "BookOfRanger" || current.defName == "TM_PoisonTrap")
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.Gladiator)
                 {
                     if (current.defName == "BookOfGladiator")
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.Bladedancer)
                 {
                     if (current.defName == "BookOfBladedancer")
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.Faceless)
                 {
                     if (current.defName == "BookOfFaceless")
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.Psionic)
                 {
                     if (current.defName == "BookOfPsionic")
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.DeathKnight)
                 {
                     if (current.defName == "BookOfDeathKnight")
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.Monk)
                 {
                     if (current.defName == "BookOfMonk")
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.Commander)
                 {
                     if (current == TorannMagicDefOf.BookOfCommander)
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.SuperSoldier)
                 {
-                    if (current == TorannMagicDefOf.BookOfSuperSoldier || current == TorannMagicDefOf.TM_60mmMortar_Base || current.defName.Contains("TM_PistolSpec_Base") || current.defName.Contains("TM_RifleSpec_Base") || current.defName.Contains("TM_ShotgunSpec_Base"))
+                    if (current == TorannMagicDefOf.BookOfSuperSoldier || current == TorannMagicDefOf.TM_60mmMortar_Base)
+                    {
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
+                    }
+                    if (current.defName.Contains("TM_PistolSpec_Base") && !customThings.Contains(ThingDef.Named("TM_PistolSpec_Base0")))
+                    {
+                        removedThings.Add(current);
+                    }
+                    if (current.defName.Contains("TM_RifleSpec_Base") && !customThings.Contains(ThingDef.Named("TM_RifleSpec_Base0")))
+                    {
+                        removedThings.Add(current);
+                    }
+                    if (current.defName.Contains("TM_ShotgunSpec_Base") && !customThings.Contains(ThingDef.Named("TM_ShotgunSpec_Base0")))
                     {
                         removedThings.Add(current);
                     }
@@ -102,35 +230,50 @@ namespace TorannMagic.ModOptions
                 {
                     if (current.defName == "Torn_BookOfArcanist" || current.defName == "BookOfArcanist" || current.defName == "SpellOf_FoldReality")
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.FireMage)
                 {
                     if (current.defName == "Torn_BookOfInnerFire" || current.defName == "BookOfInnerFire" || current.defName == "SpellOf_Firestorm" || current.defName == "SpellOf_DryGround")
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.IceMage)
                 {
-                    if (current.defName == "Torn_BookOfHeartOfFrost" || current.defName == "BookOfHeartOfFrost" || current.defName == "SpellOf_Blizzard" || current.defName == "SpellOf_WetGround")
+                    if (current.defName == "Torn_BookOfHeartOfFrost" || current.defName == "BookOfHeartOfFrost" || current.defName == "SpellOf_FertileLands" || current.defName == "SpellOf_WetGround")
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.LitMage)
                 {
                     if (current.defName == "Torn_BookOfStormBorn" || current.defName == "BookOfStormBorn" || current.defName == "SpellOf_EyeOfTheStorm" || current.defName == "SpellOf_ChargeBattery")
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.Druid)
                 {
                     if (current.defName == "Torn_BookOfNature" || current.defName == "BookOfNature" || current.defName == "SpellOf_RegrowLimb" || current.defName == "SeedofRegrowth" || current.defName == "SpellOf_FertileLands")
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.Summoner)
@@ -141,35 +284,50 @@ namespace TorannMagic.ModOptions
                         current.defName == "Launcher_DefensePylon" || current.defName == "Launcher_DefensePylon_I" || current.defName == "Launcher_DefensePylon_II" || current.defName == "Launcher_DefensePylon_III" ||
                         current.defName == "TM_Poppi")
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.Paladin)
                 {
                     if (current.defName == "Torn_BookOfValiant" || current.defName == "BookOfValiant" || current.defName == "SpellOf_HolyWrath")
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.Priest)
                 {
                     if (current.defName == "Torn_BookOfPriest" || current.defName == "BookOfPriest" || current.defName == "SpellOf_Resurrection")
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.Bard)
                 {
                     if (current.defName == "Torn_BookOfBard" || current.defName == "BookOfBard" || current.defName == "SpellOf_BattleHymn")
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.Necromancer)
                 {
-                    if (current == TorannMagicDefOf.BookOfNecromancer|| current == TorannMagicDefOf.Torn_BookOfUndead || current == TorannMagicDefOf.SpellOf_LichForm || current == TorannMagicDefOf.TM_Artifact_NecroticOrb)
+                    if (current == TorannMagicDefOf.BookOfNecromancer || current == TorannMagicDefOf.Torn_BookOfUndead || current == TorannMagicDefOf.SpellOf_LichForm || current == TorannMagicDefOf.TM_Artifact_NecroticOrb)
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.Geomancer)
@@ -177,21 +335,30 @@ namespace TorannMagic.ModOptions
                     if (current.defName == "Torn_BookOfEarth" || current.defName == "BookOfEarth" || current.defName == "SpellOf_Meteor" ||
                         current.defName == "TM_Lesser_SentinelR" || current.defName == "TM_SentinelR" || current.defName == "TM_Greater_SentinelR")
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.Demonkin)
                 {
                     if (current.defName == "Torn_BookOfDemons" || current.defName == "BookOfDemons" || current.defName == "SpellOf_Scorn" || current.defName == "SpellOf_PsychicShock")
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
                 if (!settingsRef.Technomancer)
                 {
                     if (current == TorannMagicDefOf.Torn_BookOfMagitech || current == TorannMagicDefOf.BookOfMagitech || current == TorannMagicDefOf.SpellOf_TechnoShield || current == TorannMagicDefOf.SpellOf_Sabotage || current == TorannMagicDefOf.SpellOf_Overdrive || current == TorannMagicDefOf.SpellOf_OrbitalStrike)
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
 
@@ -199,18 +366,21 @@ namespace TorannMagic.ModOptions
                 {
                     if (current == TorannMagicDefOf.BookOfHemomancy || current == TorannMagicDefOf.Torn_BookOfHemomancy || current == TorannMagicDefOf.SpellOf_BloodMoon)
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
 
                 if (!settingsRef.Enchanter)
                 {
-                    if (current == TorannMagicDefOf.BookOfEnchanter || current == TorannMagicDefOf.Torn_BookOfEnchanter || current == TorannMagicDefOf.SpellOf_Shapeshift || 
-                        current == TorannMagicDefOf.TM_Artifact_Gold || current == TorannMagicDefOf.TM_Artifact_Silver || current == TorannMagicDefOf.TM_Artifact_Jade || current == TorannMagicDefOf.TM_Artifact_Wood ||
-                        current == TorannMagicDefOf.TM_Artifact_Medicine || current == TorannMagicDefOf.TM_Artifact_Magicyte || current == TorannMagicDefOf.TM_Artifact_Iron || current == TorannMagicDefOf.TM_Artifact_Steel ||
-                        current == TorannMagicDefOf.TM_Artifact_Slate || current == TorannMagicDefOf.TM_Artifact_Granite || current == TorannMagicDefOf.TM_Artifact_Marble || current == TorannMagicDefOf.TM_Artifact_Sandstone || current == TorannMagicDefOf.TM_Artifact_Limestone)
+                    if (current == TorannMagicDefOf.BookOfEnchanter || current == TorannMagicDefOf.Torn_BookOfEnchanter || current == TorannMagicDefOf.SpellOf_Shapeshift)
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
 
@@ -218,7 +388,10 @@ namespace TorannMagic.ModOptions
                 {
                     if (current == TorannMagicDefOf.BookOfChronomancer || current == TorannMagicDefOf.Torn_BookOfChronomancer || current == TorannMagicDefOf.SpellOf_Recall)
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
 
@@ -226,7 +399,10 @@ namespace TorannMagic.ModOptions
                 {
                     if (current == TorannMagicDefOf.BookOfChaos || current == TorannMagicDefOf.Torn_BookOfChaos)
                     {
-                        removedThings.Add(current);
+                        if (!customThings.Contains(current))
+                        {
+                            removedThings.Add(current);
+                        }
                     }
                 }
             }
@@ -245,121 +421,127 @@ namespace TorannMagic.ModOptions
             {
                 if (!settingsRef.Arcanist)
                 {
-                    if (current.defName == "Make_SpellOf_FoldReality")
+                    if (current.defName == "Make_SpellOf_FoldReality" && !customThings.Contains(TorannMagicDefOf.SpellOf_FoldReality))
                     {
                         removedRecipes.Add(current);
                     }
                 }
                 if (!settingsRef.FireMage)
                 {
-                    if (current.defName == "Make_SpellOf_Firestorm" || current.defName == "Make_SpellOf_DryGround")
+                    if ((current.defName == "Make_SpellOf_Firestorm" && !customThings.Contains(TorannMagicDefOf.SpellOf_Firestorm)) || (current.defName == "Make_SpellOf_DryGround" && !customThings.Contains(TorannMagicDefOf.SpellOf_DryGround)))
                     {
                         removedRecipes.Add(current);
                     }
                 }
                 if (!settingsRef.IceMage)
                 {
-                    if (current.defName == "Make_SpellOf_Blizzard" || current.defName == "Make_SpellOf_WetGround")
+                    if ((current.defName == "Make_SpellOf_Overdrive" && !customThings.Contains(TorannMagicDefOf.SpellOf_Overdrive)) || (current.defName == "Make_SpellOf_WetGround" && !customThings.Contains(TorannMagicDefOf.SpellOf_WetGround)))
                     {
                         removedRecipes.Add(current);
                     }
                 }
                 if (!settingsRef.LitMage)
                 {
-                    if (current.defName == "Make_SpellOf_EyeOfTheStorm" || current.defName == "Make_SpellOf_ChargeBattery")
+                    if ((current.defName == "Make_SpellOf_EyeOfTheStorm" && !customThings.Contains(TorannMagicDefOf.SpellOf_EyeOfTheStorm)) || (current.defName == "Make_SpellOf_ChargeBattery" && !customThings.Contains(TorannMagicDefOf.SpellOf_ChargeBattery)))
                     {
                         removedRecipes.Add(current);
                     }
                 }
                 if (!settingsRef.Druid)
                 {
-                    if (current.defName == "Make_SpellOf_RegrowLimb" || current.defName == "Make_SpellOf_FertileLands")
+                    if ((current.defName == "Make_SpellOf_RegrowLimb" && !customThings.Contains(TorannMagicDefOf.SpellOf_RegrowLimb)) || (current.defName == "Make_SpellOf_FertileLands" && !customThings.Contains(TorannMagicDefOf.SpellOf_FertileLands)))
                     {
                         removedRecipes.Add(current);
                     }
                 }
                 if (!settingsRef.Summoner)
                 {
-                    if (current.defName == "Make_SpellOf_SummonPoppi")
+                    if ((current.defName == "Make_SpellOf_SummonPoppi" && !customThings.Contains(TorannMagicDefOf.SpellOf_SummonPoppi)))
                     {
                         removedRecipes.Add(current);
                     }
                 }
                 if (!settingsRef.Paladin)
                 {
-                    if (current.defName == "Make_SpellOf_HolyWrath")
+                    if ((current.defName == "Make_SpellOf_HolyWrath" && !customThings.Contains(TorannMagicDefOf.SpellOf_HolyWrath)))
                     {
                         removedRecipes.Add(current);
                     }
                 }
                 if (!settingsRef.Priest)
                 {
-                    if (current.defName == "Make_SpellOf_Resurrection")
+                    if ((current.defName == "Make_SpellOf_Resurrection" && !customThings.Contains(TorannMagicDefOf.SpellOf_Resurrection)))
                     {
                         removedRecipes.Add(current);
                     }
                 }
                 if (!settingsRef.Bard)
                 {
-                    if (current.defName == "Make_SpellOf_BattleHymn")
+                    if ((current.defName == "Make_SpellOf_BattleHymn" && !customThings.Contains(TorannMagicDefOf.SpellOf_BattleHymn)))
                     {
                         removedRecipes.Add(current);
                     }
                 }
                 if (!settingsRef.Necromancer)
                 {
-                    if (current.defName == "Make_SpellOf_FoldReality")
+                    if ((current.defName == "Make_SpellOf_FoldReality" && !customThings.Contains(TorannMagicDefOf.SpellOf_FoldReality)))
                     {
                         removedRecipes.Add(current);
                     }
                 }
                 if (!settingsRef.Geomancer)
                 {
-                    if (current.defName == "Make_SpellOf_Meteor")
+                    if ((current.defName == "Make_SpellOf_Meteor" && !customThings.Contains(TorannMagicDefOf.SpellOf_Meteor)))
                     {
                         removedRecipes.Add(current);
                     }
                 }
                 if (!settingsRef.Demonkin)
                 {
-                    if (current.defName == "Make_SpellOf_Scorn" || current.defName == "Make_SpellOf_PsychicShock")
+                    if ((current.defName == "Make_SpellOf_Scorn" && !customThings.Contains(TorannMagicDefOf.SpellOf_Scorn)) || (current.defName == "Make_SpellOf_PsychicShock" && !customThings.Contains(TorannMagicDefOf.SpellOf_PsychicShock)))
                     {
                         removedRecipes.Add(current);
                     }
                 }
                 if (!settingsRef.Technomancer)
                 {
-                    if (current.defName == "Make_SpellOf_TechnoShield" || current.defName == "Make_SpellOf_Sabotage" || current.defName == "Make_SpellOf_Overdrive" || current.defName == "Make_SpellOf_OrbitalStrike")
+                    if ((current.defName == "Make_SpellOf_TechnoShield" && !customThings.Contains(TorannMagicDefOf.SpellOf_TechnoShield)) ||
+                        (current.defName == "Make_SpellOf_Sabotage" && !customThings.Contains(TorannMagicDefOf.SpellOf_Sabotage)) ||
+                        (current.defName == "Make_SpellOf_Overdrive" && !customThings.Contains(TorannMagicDefOf.SpellOf_Overdrive)) ||
+                        (current.defName == "Make_SpellOf_OrbitalStrike" && !customThings.Contains(TorannMagicDefOf.SpellOf_OrbitalStrike)))
                     {
                         removedRecipes.Add(current);
                     }
                 }
                 if (!settingsRef.BloodMage)
                 {
-                    if (current.defName == "Make_SpellOf_BloodMoon")
+                    if ((current.defName == "Make_SpellOf_BloodMoon" && !customThings.Contains(TorannMagicDefOf.SpellOf_BloodMoon)))
                     {
                         removedRecipes.Add(current);
                     }
                 }
                 if (!settingsRef.Enchanter)
                 {
-                    if (current.defName == "Make_SpellOf_Shapeshift")
+                    if ((current.defName == "Make_SpellOf_Shapeshift" && !customThings.Contains(TorannMagicDefOf.SpellOf_Shapeshift)))
                     {
                         removedRecipes.Add(current);
                     }
                 }
                 if (!settingsRef.Chronomancer)
                 {
-                    if (current.defName == "Make_SpellOf_Recall")
+                    if ((current.defName == "Make_SpellOf_Recall" && !customThings.Contains(TorannMagicDefOf.SpellOf_Recall)))
                     {
                         removedRecipes.Add(current);
                     }
                 }
                 if (!settingsRef.SuperSoldier)
                 {
-                    if (current.defName == "Make_BookOfSuperSoldier")
-                    {
-                        removedRecipes.Add(current);
+                    if (!settingsRef.SuperSoldier)
+                    { 
+                        if ((current.defName == "Make_BookOfSuperSoldier" && !customThings.Contains(TorannMagicDefOf.BookOfSuperSoldier)))
+                        {
+                            removedRecipes.Add(current);
+                        }
                     }
                 }
             }

@@ -13,12 +13,16 @@ namespace TorannMagic
     {
         protected override bool TryCastShot()
         {
+            bool auraApplied = true;
             bool removedAura = RemoveAura();
             if(!removedAura)
             {
-                ApplyAura();
+                auraApplied = ApplyAura();
             }
-            ToggleAbilityAutocast();
+            if (auraApplied)
+            {
+                ToggleAbilityAutocast();
+            }
             return true;
         }
 
@@ -40,56 +44,70 @@ namespace TorannMagic
             return auraRemoved;
         }
 
-        private void ApplyAura()
-        {            
-            if (this.Ability.Def == TorannMagicDefOf.TM_Shadow)
+        private bool ApplyAura()
+        {
+            CompAbilityUserMagic comp = this.CasterPawn.TryGetComp<CompAbilityUserMagic>();
+            TMAbilityDef ability = (TMAbilityDef)this.Ability.Def;
+            if (comp.maxMP >= ability.upkeepEnergyCost)
             {
-                HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_Shadow_AuraHD, .5f);
+                if (ability == TorannMagicDefOf.TM_Shadow)
+                {
+                    HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_Shadow_AuraHD, .5f);
+                }
+                else if (this.Ability.Def == TorannMagicDefOf.TM_Shadow_I)
+                {
+                    HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_Shadow_AuraHD, 1.5f);
+                }
+                else if (this.Ability.Def == TorannMagicDefOf.TM_Shadow_II)
+                {
+                    HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_Shadow_AuraHD, 2.5f);
+                }
+                else if (this.Ability.Def == TorannMagicDefOf.TM_Shadow_III)
+                {
+                    HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_Shadow_AuraHD, 3.5f);
+                }
+                else if (this.Ability.Def == TorannMagicDefOf.TM_RayofHope)
+                {
+                    HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_RayOfHope_AuraHD, .5f);
+                }
+                else if (this.Ability.Def == TorannMagicDefOf.TM_RayofHope_I)
+                {
+                    HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_RayOfHope_AuraHD, 1.5f);
+                }
+                else if (this.Ability.Def == TorannMagicDefOf.TM_RayofHope_II)
+                {
+                    HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_RayOfHope_AuraHD, 2.5f);
+                }
+                else if (this.Ability.Def == TorannMagicDefOf.TM_RayofHope_III)
+                {
+                    HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_RayOfHope_AuraHD, 3.5f);
+                }
+                else if (this.Ability.Def == TorannMagicDefOf.TM_Soothe)
+                {
+                    HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_SoothingBreeze_AuraHD, .5f);
+                }
+                else if (this.Ability.Def == TorannMagicDefOf.TM_Soothe_I)
+                {
+                    HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_SoothingBreeze_AuraHD, 1.5f);
+                }
+                else if (this.Ability.Def == TorannMagicDefOf.TM_Soothe_II)
+                {
+                    HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_SoothingBreeze_AuraHD, 2.5f);
+                }
+                else if (this.Ability.Def == TorannMagicDefOf.TM_Soothe_III)
+                {
+                    HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_SoothingBreeze_AuraHD, 3.5f);
+                }
             }
-            else if(this.Ability.Def == TorannMagicDefOf.TM_Shadow_I)
+            else
             {
-                HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_Shadow_AuraHD, 1.5f);
+                Messages.Message("TM_NotEnoughManaToSustain".Translate(
+                                            this.CasterPawn.LabelShort,
+                                            ability.label
+                                        ), MessageTypeDefOf.RejectInput);
+                return false;
             }
-            else if (this.Ability.Def == TorannMagicDefOf.TM_Shadow_II)
-            {
-                HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_Shadow_AuraHD, 2.5f);
-            }
-            else if (this.Ability.Def == TorannMagicDefOf.TM_Shadow_III)
-            {
-                HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_Shadow_AuraHD, 3.5f);
-            }
-            else if(this.Ability.Def == TorannMagicDefOf.TM_RayofHope)
-            {
-                HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_RayOfHope_AuraHD, .5f);
-            }
-            else if (this.Ability.Def == TorannMagicDefOf.TM_RayofHope_I)
-            {
-                HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_RayOfHope_AuraHD, 1.5f);
-            }
-            else if (this.Ability.Def == TorannMagicDefOf.TM_RayofHope_II)
-            {
-                HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_RayOfHope_AuraHD, 2.5f);
-            }
-            else if (this.Ability.Def == TorannMagicDefOf.TM_RayofHope_III)
-            {
-                HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_RayOfHope_AuraHD, 3.5f);
-            }
-            else if (this.Ability.Def == TorannMagicDefOf.TM_Soothe)
-            {
-                HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_SoothingBreeze_AuraHD, .5f);
-            }
-            else if (this.Ability.Def == TorannMagicDefOf.TM_Soothe_I)
-            {
-                HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_SoothingBreeze_AuraHD, 1.5f);
-            }
-            else if (this.Ability.Def == TorannMagicDefOf.TM_Soothe_II)
-            {
-                HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_SoothingBreeze_AuraHD, 2.5f);
-            }
-            else if (this.Ability.Def == TorannMagicDefOf.TM_Soothe_III)
-            {
-                HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_SoothingBreeze_AuraHD, 3.5f);
-            }
+            return true;
         }
 
         private void ToggleAbilityAutocast()

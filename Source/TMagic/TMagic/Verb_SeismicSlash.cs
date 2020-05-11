@@ -110,6 +110,7 @@ namespace TorannMagic
         {
             CompAbilityUserMight comp = this.CasterPawn.GetComp<CompAbilityUserMight>();
             MightPowerSkill ver = comp.MightData.MightPowerSkill_SeismicSlash.FirstOrDefault((MightPowerSkill x) => x.label == "TM_SeismicSlash_ver");
+            pwrVal = TM_Calc.GetMightSkillLevel(this.CasterPawn, comp.MightData.MightPowerSkill_SeismicSlash, "TM_SeismicSlash", "_pwr", true);
             CellRect cellRect = CellRect.CenteredOn(base.CasterPawn.Position, 1);
             Map map = base.CasterPawn.Map;
             cellRect.ClipInsideMap(map);
@@ -121,7 +122,8 @@ namespace TorannMagic
 
             if (this.CasterPawn.equipment.Primary != null && !this.CasterPawn.equipment.Primary.def.IsRangedWeapon)
             {
-                int dmgNum = GetWeaponDmg(this.CasterPawn);
+                TMAbilityDef ad = (TMAbilityDef)this.Ability.Def;
+                int dmgNum = Mathf.RoundToInt(comp.weaponDamage * ad.weaponDamageFactor * (1 + (.1f * pwrVal)));
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 if (!this.CasterPawn.IsColonist && settingsRef.AIHardMode)
                 {

@@ -81,7 +81,8 @@ namespace TorannMagic
             //}
             if (this.CasterPawn.equipment.Primary != null && !this.CasterPawn.equipment.Primary.def.IsRangedWeapon)
             {
-                this.dmgNum = GetWeaponDmg(this.CasterPawn);
+                TMAbilityDef ad = (TMAbilityDef)this.Ability.Def;
+                this.dmgNum = Mathf.RoundToInt(comp.weaponDamage * ad.weaponDamageFactor);
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 if (!this.CasterPawn.IsColonist && settingsRef.AIHardMode)
                 {

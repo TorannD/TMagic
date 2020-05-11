@@ -29,6 +29,10 @@
     <uiIconPath>UI/Heal</uiIconPath>
     <description>Invokes holy power to heal the wounds of a target. Base heal restores 8 health for up to 3 wounds. Cannot heal injuries of missing bodyparts.</description>
     <manaCost>0.15</manaCost>
+	<efficiencyReductionPercent>.07</efficiencyReductionPercent>
+		<learnItem>SpellOf_Heal</learnItem>
+		<learnChance>.5</learnChance>
+		<canCopy>true</canCopy>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Heal</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -83,6 +87,9 @@
 Absorbs up to 100 damage.</description>
 <!--    <thingClass>ThingWithComps</thingClass> -->
     <manaCost>0.30</manaCost>
+	<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
+		<canCopy>true</canCopy>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>AbilityUser.Verb_UseAbility</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -125,6 +132,8 @@ Absorbs up to 120 damage.
 Reduces recharge to 30s.</description>
 <!--    <thingClass>ThingWithComps</thingClass> -->
     <manaCost>0.30</manaCost>
+	<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>AbilityUser.Verb_UseAbility</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -167,6 +176,8 @@ Absorbs up to 135 damage.
 Reduces recharge to 27s.</description>
 <!--    <thingClass>ThingWithComps</thingClass> -->
     <manaCost>0.30</manaCost>
+	<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>AbilityUser.Verb_UseAbility</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -209,6 +220,8 @@ Absorbs up to 150 damage.
 Reduces recharge to 25s.</description>
 <!--    <thingClass>ThingWithComps</thingClass> -->
     <manaCost>0.30</manaCost>
+	<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>AbilityUser.Verb_UseAbility</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -285,6 +298,9 @@ Reduces recharge to 25s.</description>
         <uiIconPath>UI/valiantcharge</uiIconPath>
         <description>The Paladin is flies with the wings of an angel to fly to a distant location, shattering the ground with holy power upon landing.</description>
         <manaCost>0.30</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Effect_ValiantCharge</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -333,6 +349,9 @@ Reduces recharge to 25s.</description>
     <uiIconPath>UI/overwhelm</uiIconPath>
     <description>Holy power is unleashed from the paladin, overwhelming the physical and mental senses of any nearby creatures.</description>
     <manaCost>0.20</manaCost>
+	<efficiencyReductionPercent>.10</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
+		<canCopy>true</canCopy>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>AbilityUser.Verb_UseAbility</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -385,6 +404,9 @@ Reduces recharge to 25s.</description>
         <uiIconPath>UI/rayoflight</uiIconPath>
         <description>Calls forth holy wrath upon the land.</description>
         <manaCost>0.50</manaCost>
+		<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<learnItem>SpellOf_HolyWrath</learnItem>
+		<learnChance>.04</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
             <hasStandardCommand>true</hasStandardCommand>

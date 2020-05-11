@@ -185,6 +185,19 @@
   </ThingDef>
   
   <ThingDef ParentName="MoteBase">
+    <defName>Mote_ShadowCloud</defName>
+    <graphicData>
+      <texPath>Motes/ShadowCloudMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
     <defName>Mote_Ice</defName>
     <graphicData>
       <texPath>Motes/IceMote</texPath>
@@ -1134,6 +1147,25 @@
       <blockTurretTracking>false</blockTurretTracking>
       <accuracyPenalty>0.8</accuracyPenalty>
       <rotationSpeed>75</rotationSpeed>
+    </gas>
+  </ThingDef>
+  
+  <ThingDef ParentName="BaseGas">
+    <defName>Fog_Shadows</defName>
+    <label>shadow fog</label>
+    <graphicData>
+      <texPath>Things/Gas/Puff</texPath>
+      <drawSize>3.2</drawSize>
+      <color>(0.56,0.18,0.81,0.8)</color>
+    </graphicData>
+    <gas>
+      <expireSeconds>
+        <min>10</min>
+        <max>30</max>
+      </expireSeconds>
+      <blockTurretTracking>true</blockTurretTracking>
+      <accuracyPenalty>0.6</accuracyPenalty>
+      <rotationSpeed>80</rotationSpeed>
     </gas>
   </ThingDef>
   

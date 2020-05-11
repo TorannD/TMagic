@@ -38,13 +38,23 @@ namespace TorannMagic
                 }
                 else
                 {
-                    comp.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedAura).AutoCast = true;
-                    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_EnchantedAuraHD, .5f + pwr.level);
-                    for (int i = 0; i < 3; i++)
+                    if (comp.maxMP >= TorannMagicDefOf.TM_EnchantedAura.upkeepEnergyCost)
                     {
-                        MoteMaker.ThrowSmoke(pawn.DrawPos, pawn.Map, Rand.Range(.6f, .8f));
+                        comp.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedAura).AutoCast = true;
+                        HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_EnchantedAuraHD, .5f + pwr.level);
+                        for (int i = 0; i < 3; i++)
+                        {
+                            MoteMaker.ThrowSmoke(pawn.DrawPos, pawn.Map, Rand.Range(.6f, .8f));
+                        }
+                        MoteMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1f);
                     }
-                    MoteMaker.ThrowLightningGlow(pawn.DrawPos, pawn.Map, 1f);
+                    else
+                    {
+                        Messages.Message("TM_NotEnoughManaToSustain".Translate(
+                                            pawn.LabelShort,
+                                            TorannMagicDefOf.TM_EnchantedAura.label
+                                        ), MessageTypeDefOf.RejectInput);
+                    }
                 }
                 arg_40_0 = true;
             }

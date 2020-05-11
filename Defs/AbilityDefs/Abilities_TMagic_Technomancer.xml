@@ -62,6 +62,8 @@ Undrafted: the techno-bit assists in crafting, mining and construction tasks. It
 
 Drafted: uses its anti-gravity system to propel small, time delayed explosives at the technomancer's target.  Performs accelerated repairs to nearby robotic pawns or buildings.</description>
     <manaCost>0.00</manaCost>
+		<learnChance>0</learnChance>
+		<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>AbilityUser.Verb_UseAbility</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -115,6 +117,8 @@ Drafted: uses its anti-gravity system to propel small, time delayed explosives a
 
 The Mark-IV will automatically miniaturize itself when it takes critical damage and can cause neural feedback to the technomancer manning the system.</description>
     <manaCost>0.5</manaCost>
+	<efficiencyReductionPercent>.02</efficiencyReductionPercent>
+		<learnChance>0</learnChance>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -205,6 +209,7 @@ Weapon specialists also have access to modified ammunition and nano stimulants f
 
 To create a techno weapon: target a weapon on the ground. Targeted weapon must be ranged, with an industrial or higher tech level, and use standard firing action.</description>
     <manaCost>0.50</manaCost>
+		<learnChance>0</learnChance>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_TechnoWeapon</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -277,6 +282,10 @@ When the nanites burn out, they will form platelets to cauterize and stop bleedi
 		
 The amount of kinetic energy involved in a deflection is determined by the amount of damage that would be caused by the projectile.</description>
         <manaCost>0.25</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnItem>SpellOf_TechnoShield</learnItem>
+		<learnChance>0.4</learnChance>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_TechnoShield</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -335,6 +344,10 @@ The amount of kinetic energy involved in a deflection is determined by the amoun
 
 Can be applied to: batteries, power generators, turrets, robots, androids, and mechanoids.</description>
         <manaCost>0.35</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnItem>SpellOf_Sabotage</learnItem>
+		<learnChance>.3</learnChance>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -375,6 +388,10 @@ Can be applied to: batteries, power generators, turrets, robots, androids, and m
 
 Can be applied to: power generators, turrets, robots, androids, and mechanoids.</description>
         <manaCost>0.25</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnItem>SpellOf_Overdrive</learnItem>
+		<learnChance>.3</learnChance>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Overdrive</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -489,6 +506,9 @@ Range: 70
 Warmup: 3s
 Radius: 2.5</description>
         <manaCost>0.60</manaCost>
+		<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<learnItem>SpellOf_OrbitalStrike</learnItem>
+		<learnChance>.2</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -528,6 +548,8 @@ Range: 80
 Warmup: 2.1s
 Radius: 4.2</description>
         <manaCost>0.60</manaCost>
+		<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -567,6 +589,8 @@ Range: 90
 Warmup: 1.8s
 Radius: 5.0</description>
         <manaCost>0.6</manaCost>
+		<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -606,6 +630,8 @@ Range: 100
 Warmup: 1.6s
 Radius: 5.6</description>
         <manaCost>0.60</manaCost>
+		<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

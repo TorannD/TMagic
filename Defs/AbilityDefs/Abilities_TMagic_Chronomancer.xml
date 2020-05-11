@@ -16,7 +16,11 @@ The second component focuses on the prediction of significant events. Indicators
 Neither method is infallible, but practice can improve the accuracy of prediction and reduce the focus required to sustain it.
 
 This ability reduces mana regeneration by 50%.</description>
-    <manaCost>0.00</manaCost>
+    <manaCost>0.0</manaCost>
+	<abilityHediff>TM_PredictionHD</abilityHediff>
+	<upkeepRegenCost>.5</upkeepRegenCost>
+	<upkeepEfficiencyPercent>.1</upkeepEfficiencyPercent>
+	<learnChance>.4</learnChance>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Prediction</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -52,6 +56,8 @@ This ability reduces mana regeneration by 50%.</description>
 	
 Alter Fate is most effective against environmental conditions. This ability can backfire, however, causing the event to change, become more severe, or trigger the infamous "butterfly effect."</description>
     <manaCost>0.6</manaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<learnChance>.3</learnChance>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_AlterFate</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -114,6 +120,9 @@ When use at a location or on a hostile enemy, all enemies in the area will be cu
 
 When used on friendly pawns, there is no area of effect, only the primary target will be affected. The aging process for friendly pawns is much more gradual, and may be canceled by Reverse Time.</description>
         <manaCost>0.35</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.4</learnChance>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -156,6 +165,9 @@ Living tissue will resist instant change and requires a more gradual approach. A
 
 Reverse Time can be dispelled by countering the effects with Accelerate Time.</description>
         <manaCost>0.50</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.4</learnChance>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ReverseTime</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -285,6 +297,9 @@ Radius: 3
 Range: 40
 Cast time: 1s</description>
 		<manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
+		<canCopy>true</canCopy>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -322,6 +337,8 @@ Radius: 3.5
 Range: 44
 Cast time: .8s</description>
 		<manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -359,6 +376,8 @@ Radius: 4
 Range: 48
 Cast time: .6s</description>
 		<manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -396,6 +415,8 @@ Radius: 4.5
 Range: 50
 Cast time: .5s</description>
 		<manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -436,6 +457,8 @@ When set to autocast, the chronomancer will attempt to maintain a recall marker 
 
 To maintain physical cohesion during a recall, the caster will retain all conditions with permanence (missing or added body parts, permanent injuries).  All chronomancer spells are reset following a Recall except Recall itself.</description>
     <manaCost>0.0</manaCost>
+	<shouldInitialize>false</shouldInitialize>
+	<learnChance>0</learnChance>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_TimeMark</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -469,6 +492,10 @@ To maintain physical cohesion during a recall, the caster will retain all condit
     <uiIconPath>UI/recall</uiIconPath>
     <description>Returns the caster to a previous point in time. Cannot be used without an active time marker.</description>
     <manaCost>0.00</manaCost>
+	<upkeepEnergyCost>.4</upkeepEnergyCost>
+	<upkeepRegenCost>.3</upkeepRegenCost>
+	<upkeepEfficiencyPercent>.08</upkeepEfficiencyPercent>
+	<learnChance>.1</learnChance>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Recall</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

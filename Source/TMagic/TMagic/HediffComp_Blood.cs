@@ -107,7 +107,7 @@ namespace TorannMagic
         {
             get
             {
-                return this.removeNow || this.Pawn.story == null || this.Pawn.story.traits == null || !this.Pawn.story.traits.HasTrait(TorannMagicDefOf.BloodMage);
+                return this.removeNow || base.CompShouldRemove;
             }
         }        
     }

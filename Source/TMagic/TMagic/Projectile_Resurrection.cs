@@ -285,7 +285,7 @@ namespace TorannMagic
             p.skills.Learn(SkillDefOf.Construction, -(p.skills.GetSkill(SkillDefOf.Construction).XpTotalEarned * percent), true);
         }
 
-        private void ApplyHealthDefects(Pawn p, float chanceMinor, float chanceMajor)
+        public static void ApplyHealthDefects(Pawn p, float chanceMinor, float chanceMajor)
         {
             List<BodyPartRecord> parts = p.health.hediffSet.GetNotMissingParts(BodyPartHeight.Undefined, BodyPartDepth.Undefined).InRandomOrder().ToList();
             for (int k = 0; k < 2; k++)

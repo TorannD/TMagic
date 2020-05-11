@@ -75,6 +75,7 @@
 <TM_CleaveChance>Cleave chance {0}&#37;</TM_CleaveChance>
 <TM_WhirlwindDamage>Whirlwind damage per hit: {0}</TM_WhirlwindDamage>
 <TM_WeaponDamage>{0} damage: {1}</TM_WeaponDamage>
+<TM_CritChance>{0} critical hit: {1}</TM_CritChance>
 <TM_AntiArmorDamage>{0} damage: {1}; additional damage to mechanoids: {2}</TM_AntiArmorDamage>
 <TM_ArrowStormDamage>{0} damage: {1}; accuracy: {2}&#37;</TM_ArrowStormDamage>
 <TM_LastManaGainPct>Mana Gain: {0}&#37; /5s</TM_LastManaGainPct>
@@ -96,6 +97,7 @@
 <TM_Icon_Undead>Animated Undead</TM_Icon_Undead>
 <TM_Icon_Mage>Magic Class</TM_Icon_Mage>
 <TM_Icon_Fighter>Combat Class</TM_Icon_Fighter>
+<TM_Icon_Custom>Custom Class</TM_Icon_Custom>
 <TM_NotPsychicSensitive>{0} attempted to become a psionic but does not seem to have the psychic sensitivity required to manifest psionic power.</TM_NotPsychicSensitive>
 <TM_TooManyStoneskins>{0} can only sustain stoneskin defenses on {1} pawns. {0} is currently defending {2} with stoneskin.</TM_TooManyStoneskins>
 <TM_NoSpritesToDismiss>{0} has no detected earth sprites - resetting ability parameters.</TM_NoSpritesToDismiss>
@@ -168,6 +170,8 @@
 <TM_SuppressingFireCount>Shots fired: {0}</TM_SuppressingFireCount>
 <TM_BuckshotFireCount>Buckshot pellets: {0}</TM_BuckshotFireCount>
 <TM_LendColonist_UndeadFail>You're sending us dead bodies - Is this some kind of joke!?</TM_LendColonist_UndeadFail>
+<TM_AlreadyLearnedAbility>{0} has already learned {1}.</TM_AlreadyLearnedAbility>
+<TM_NotEnoughManaToSustain>{0} does not have enough mana to sustain {1}.</TM_NotEnoughManaToSustain>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
@@ -274,6 +278,9 @@
 <lichChallenge>Wandering Lich Difficulty:</lichChallenge>
 <demonChallenge>Demon Assault Difficulty:</demonChallenge>
 
+<!-- Mod setings faction options -->
+<TM_FactionOptions>Faction Options</TM_FactionOptions>
+
 <!-- Mod Settings extra options -->
 <TM_ExtraOptions>Extra Options</TM_ExtraOptions>
 
@@ -340,7 +347,7 @@ Level 14: EMP has a 40% chance to attempt Sabotage to robots and mechanoids
 Level 15: Teleport, Heal, and Summon Minion gain versatility level 3 class improvements</TM_Cantrips_ver_desc>
 
 <TM_WandererCraft_pwr>Experimentation</TM_WandererCraft_pwr>
-<TM_WandererCraft_eff>Self-taught</TM_WandererCraft_eff>
+<TM_WandererCraft_eff>Prodigy</TM_WandererCraft_eff>
 <TM_WandererCraft_ver>Expanded Mind</TM_WandererCraft_ver>
 <TM_Cantrips_pwr>Cantrips Power</TM_Cantrips_pwr>
 <TM_Cantrips_eff>Cantrips Efficiency</TM_Cantrips_eff>
@@ -546,7 +553,7 @@ Level 0: (10%-40%), Duration 45s
 Level 1: (20%-60%), Duration 49.5s
 Level 2: (30%-80%), Duration 54s
 Level 3: (40%-80%), Duration 58.5s</TM_Poison_ver_desc>
-<TM_SootheAnimal_eff_desc>Reduces the cost of Beguile Animal by 8% per skill level.</TM_SootheAnimal_eff_desc>
+<TM_SootheAnimal_eff_desc>Reduces the cost of Beguile Animal by 10% per skill level.</TM_SootheAnimal_eff_desc>
 <TM_SootheAnimal_pwr_desc>Animals will receive arcane buffs when enraged, and arcane debuffs when pacified.  Skill level determines the strength of these modifiers, no modifiers occur at skill level 0.</TM_SootheAnimal_pwr_desc>
 <TM_Regenerate_eff_desc>Reduces the cost of Regeneration by 7% per skill level.</TM_Regenerate_eff_desc>
 <TM_Regenerate_pwr_desc>Increases the amount regeneration heals each tick by .5 health per level.  Base regeneration is 4 health.</TM_Regenerate_pwr_desc>
@@ -784,7 +791,7 @@ Level 0: 4 attacks
 Level 1: 5 attacks
 Level 2: 6 attacks
 Level 3: 7 attacks</TM_Stoneskin_pwr_desc>
-<TM_Stoneskin_eff_desc>Reduces the mana upkeep cost for each instance of Stoneskin by 2%.
+<TM_Stoneskin_eff_desc>Reduces the mana upkeep cost for each instance of Stoneskin by 2.
 Level 0: -15 max mana
 Level 1: -13 max mana
 Level 2: -11 max mana
@@ -920,7 +927,7 @@ Lightning shot: stuns the target (1 mana)</TM_TechnoWeapon_ver_desc>
 <TM_OrbitalStrike_ver>Authorization Bypass</TM_OrbitalStrike_ver>
 
 <TM_BloodGift_pwr_desc>Increases the damage of all blood magic by 10% per skill point.</TM_BloodGift_pwr_desc>
-<TM_BloodGift_eff_desc>Reduces the mana cost of blood sacrifice by 5% per skill point and reduces the blood cost of all blood magic by 3% per skill point.</TM_BloodGift_eff_desc>
+<TM_BloodGift_eff_desc>Reduces the mana cost of blood sacrifice by 6% per skill point and reduces the blood cost of all blood magic by 3% per skill point.</TM_BloodGift_eff_desc>
 <TM_BloodGift_ver_desc>Increases the amount of blood magic gained when using blood sacrifice or through bleeding by 10%. Increased skill levels allows the blood mage to draw fresh blood from the ground:
 Level 0: none
 Level 1: 1cell radius
@@ -968,8 +975,8 @@ Level 3: 3cell radius</TM_BloodForBlood_ver_desc>
 <TM_BloodMoon_ver>Endless Night</TM_BloodMoon_ver>
 
 <TM_EnchantedBody_pwr_desc>Increases the power of Enchanted Body and Enchanted Aura by ~33% per skill level.</TM_EnchantedBody_pwr_desc>
-<TM_EnchantedBody_eff_desc>Reduces spell cost and maximum mana upkeep cost of Enchanted Body and Enchanted Aura by 15% per skill level.</TM_EnchantedBody_eff_desc>
-<TM_EnchantedBody_ver_desc>Reduces the mana regeneration penalty of Enchanted Body and Enchanted Aura by 15% per skill level.</TM_EnchantedBody_ver_desc>
+<TM_EnchantedBody_eff_desc>Reduces mana upkeep cost of Enchanted Body and Enchanted Aura by 20% per skill level.</TM_EnchantedBody_eff_desc>
+<TM_EnchantedBody_ver_desc>Reduces the mana regeneration penalty of Enchanted Body and Enchanted Aura by 20% per skill level.</TM_EnchantedBody_ver_desc>
 <TM_Transmutate_pwr_desc>Decreases the amount of value lost by 5% per skill level when performing a transmutation. Base conversion value is 70%.
 Transmuting equipment will degrade the equipment:
 Level 0: -20% HP
@@ -1198,13 +1205,13 @@ Level 14: Burning Fury stamina consumption is reduced by 35%
 Level 15: Tempest strike consumes 25% less stamina per attack</TM_FieldTraining_ver_desc>
 
 <TM_WayfarerCraft_pwr>Enhancement</TM_WayfarerCraft_pwr>
-<TM_WayfarerCraft_eff>Senpai</TM_WayfarerCraft_eff>
+<TM_WayfarerCraft_eff>Mastermind</TM_WayfarerCraft_eff>
 <TM_WayfarerCraft_ver>Endurance</TM_WayfarerCraft_ver>
 <TM_FieldTraining_pwr>Lethality</TM_FieldTraining_pwr>
 <TM_FieldTraining_eff>Balance</TM_FieldTraining_eff>
 <TM_FieldTraining_ver>Survival</TM_FieldTraining_ver>
 
-<TM_Sprint_eff_desc>Reduces the stamina cost required to sustain Sprint by 3 stamina per skill level.</TM_Sprint_eff_desc>
+<TM_Sprint_eff_desc>Reduces the stamina cost required to sustain Sprint by 4.5 stamina per skill level.</TM_Sprint_eff_desc>
 <TM_Sprint_pwr_desc>Increases the speed of sprint but also increases physical drain.
 Level 0: speed +30%, tiredness +40%
 Level 1: speed +40%, tiredness +45%
@@ -1413,12 +1420,12 @@ Level 3: 45%</TM_PsionicBarrier_pwr_desc>
 <TM_PsionicBarrier_eff_desc>Reduces the amount of psionic energy drained when deflecting a projectile by 10% per skill point.</TM_PsionicBarrier_eff_desc>
 <TM_PsionicBarrier_ver_desc>Increases the radius of barrier by half a cell per skill point. Default radius is 2 cells.</TM_PsionicBarrier_ver_desc>
 <TM_PsionicBlast_pwr_desc>Power up psi blast, each level increases damage by 15%.</TM_PsionicBlast_pwr_desc>
-<TM_PsionicBlast_eff_desc>Decreases stamina cost of PsionicBlast by 8% per level of base stamina cost.</TM_PsionicBlast_eff_desc>
+<TM_PsionicBlast_eff_desc>Decreases stamina cost of Psionic Blast by 8% per level of base stamina cost.</TM_PsionicBlast_eff_desc>
 <TM_PsionicBlast_ver_desc>Increases the chance to project multiple blasts by 4% per level and reduces the psionic energy drained for each additional blast by 1.</TM_PsionicBlast_ver_desc>
 <TM_PsionicDash_eff_desc>Decreases stamina cost of Psionic Dash by 10% and reduces psionic energy cost by 1 per skill level.</TM_PsionicDash_eff_desc>
 <TM_PsionicDash_pwr_desc>Increases all damage output by psionic dash by 10% per skill level.</TM_PsionicDash_pwr_desc>
 <TM_PsionicDash_ver_desc>Increase the number of steps taken during while dashing by 1 per skill level.</TM_PsionicDash_ver_desc>
-<TM_PsionicStorm_pwr_desc>Increases the damage of each psionic blast by 10% per skill point.</TM_PsionicStorm_pwr_desc>
+<TM_PsionicStorm_pwr_desc>Increases the damage of each psionic blast used during psionic storm by 10% per skill point.</TM_PsionicStorm_pwr_desc>
 <TM_PsionicStorm_eff_desc>Reduces the minimum required psionic energy to use psionic storm by 5 per skill level.
 Level 0: 65
 Level 1: 60
@@ -1539,14 +1546,14 @@ Lethal Blow targets a vital bodypart and strikes it with a precise attack that d
 <TM_ThunderStrike_ver>Shatter</TM_ThunderStrike_ver>
 
 <TM_ProvisionerAura_pwr_desc>Increases the effectiveness of all aspects of Commander's provisions.</TM_ProvisionerAura_pwr_desc>
-<TM_ProvisionerAura_eff_desc>Reduces energy activation cost and upkeep cost by 10% per skill point.</TM_ProvisionerAura_eff_desc>
+<TM_ProvisionerAura_eff_desc>Reduces energy activation cost and upkeep cost by 12.5% per skill point.</TM_ProvisionerAura_eff_desc>
 <TM_ProvisionerAura_ver_desc>Expands the scope of provisions.
 Level 0: reduces rest and food decay
 Level 1: maintains equipped weapons and gear
 Level 2: improves natural health regeneration
 Level 3: adds a 15% boost to stamina and mana regeneration</TM_ProvisionerAura_ver_desc>
 <TM_TaskMasterAura_pwr_desc>Increases the work effectiveness of pawns under a task master.</TM_TaskMasterAura_pwr_desc>
-<TM_TaskMasterAura_eff_desc>Reduces energy activation cost and upkeep cost by 10% per skill point.</TM_TaskMasterAura_eff_desc>
+<TM_TaskMasterAura_eff_desc>Reduces energy activation cost and upkeep cost by 11% per skill point.</TM_TaskMasterAura_eff_desc>
 <TM_TaskMasterAura_ver_desc>Increases the reach of the Task Master Aura by 2 cells per skill point; base reach is 15c. Increases the frequency the effect is applied by 5%.</TM_TaskMasterAura_ver_desc>
 <TM_CommanderAura_pwr_desc>Improves effect of Commander's Aura and reduces the amount of time between motivational speeches by 10%.</TM_CommanderAura_pwr_desc>
 <TM_CommanderAura_eff_desc>Reduces energy activation cost and upkeep cost by 10% per skill point.</TM_CommanderAura_eff_desc>
@@ -1657,9 +1664,50 @@ Level 3: 17-26 damage, 3.05c radius</TM_60mmMortar_pwr_desc>
 <TM_60mmMortar_eff>Mortar Expert</TM_60mmMortar_eff>
 <TM_60mmMortar_ver>Quality Shells</TM_60mmMortar_ver>
 
+<TM_ShadowWalk_pwr_desc>Applies a short duration invisibility to the caster after performing Shadow Walk.
+Level 0: N/A
+Level 1: 2s invisibility
+Level 2: 3s invisibility
+Level 3: 4s invisibility</TM_ShadowWalk_pwr_desc>
+<TM_ShadowWalk_eff_desc>Reduces the amount of mana required to use shadow walk by 8% per skill point.</TM_ShadowWalk_eff_desc>
+<TM_ShadowWalk_ver_desc>Creates an excess of shadow for restoration and protection for the caster and friendly target pawns.
+Level 0: N/A
+Level 1: heals the caster
+Level 2: heals the target
+Level 3: briefly cloaks the target</TM_ShadowWalk_ver_desc>
+<TM_ShadowStrike_pwr_desc>Increases damage of shadow strike by 5% per skill point.</TM_ShadowStrike_pwr_desc>
+<TM_ShadowStrike_eff_desc>Reduces stamina cost by 4% per skill point.</TM_ShadowStrike_eff_desc>
+<TM_ShadowStrike_ver_desc>Adds survivability and lethality to shadow strike:
+Level 0: N/A
+Level 1: gain 2s of invisibility
+Level 2: invisibility +1s
+Level 3: initiates shadow strike with a splash of nightshade that applies nightshade toxin to all enemies 2m around the target
+Level 4: increases toxin severity
+Level 5: splash radius +1m</TM_ShadowStrike_ver_desc>
+<TM_Nightshade_pwr_desc>Increases toxic severity of each attack by 20% per skill point.</TM_Nightshade_pwr_desc>
+<TM_Nightshade_eff_desc>Reduces nightshade upkeep cost by 6% per skill point.</TM_Nightshade_eff_desc>
+<TM_Nightshade_ver_desc>Increases maximum amount of nightshade toxin doses by 20% per skill point.</TM_Nightshade_ver_desc>
+<TM_VeilOfShadows_pwr_desc>Increases duration of invisibility and shadow fog by 1s per skill point. Grants 10s of invisibility by default.</TM_VeilOfShadows_pwr_desc>
+<TM_VeilOfShadows_eff_desc>Reduces stamina cost of Veil of Shadows by 6% per skill point.</TM_VeilOfShadows_eff_desc>
+<TM_VeilOfShadows_ver_desc>Increases radius of shadow fog by 10% per skill point and cloak of shadows also applies movement and manipulation bonuses of 20% per skill point.</TM_VeilOfShadows_ver_desc>
+
+<TM_ShadowWalk_pwr>Lingering Shadow</TM_ShadowWalk_pwr>
+<TM_ShadowWalk_eff>Contrast</TM_ShadowWalk_eff>
+<TM_ShadowWalk_ver>Shadow's Caress</TM_ShadowWalk_ver>
+<TM_ShadowStrike_pwr>Vicious Strikes</TM_ShadowStrike_pwr>
+<TM_ShadowStrike_eff>Hidden Approach</TM_ShadowStrike_eff>
+<TM_ShadowStrike_ver>Toxic Shadow</TM_ShadowStrike_ver>
+<TM_Nightshade_pwr>Toxin Potency</TM_Nightshade_pwr>
+<TM_Nightshade_eff>Forager</TM_Nightshade_eff>
+<TM_Nightshade_ver>Toxic Reserves</TM_Nightshade_ver>
+<TM_VeilOfShadows_pwr>Clinging Shadow</TM_VeilOfShadows_pwr>
+<TM_VeilOfShadows_eff>Shadow Saint</TM_VeilOfShadows_eff>
+<TM_VeilOfShadows_ver>Overwhelming Darkness</TM_VeilOfShadows_ver>
+
 <!-- UI -->
 <TM_TabMagic>Magic</TM_TabMagic>
 <TM_TabMight>Might</TM_TabMight>
+<TM_TabCustom>Class</TM_TabCustom>
 <TM_Header>magic</TM_Header>
 <TM_HeaderMight>might</TM_HeaderMight>
 <TM_Level>level</TM_Level>

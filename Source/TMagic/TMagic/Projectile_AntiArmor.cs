@@ -60,7 +60,7 @@ namespace TorannMagic
 
                 if (victim != null && !victim.Dead && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracyPawn, true)))
                 {
-                    int dmg = GetWeaponDmg(pawn, this.def);
+                    int dmg = GetWeaponDmg(pawn);
                     if (victim.RaceProps.FleshType != FleshTypeDefOf.Normal )
                     {
                         MoteMaker.ThrowMicroSparks(victim.Position.ToVector3(), map);
@@ -93,37 +93,19 @@ namespace TorannMagic
             }
         }
 
-        public static int GetWeaponDmg(Pawn pawn, ThingDef projectileDef)
+        public static int GetWeaponDmg(Pawn pawn)
         {
-            MightPowerSkill str = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
-            int value = 0;
-            ThingWithComps arg_3C_0;
-            if (pawn == null)
+            CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
+
+            float dmg = comp.weaponDamage;
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            if (!pawn.IsColonist && settingsRef.AIHardMode)
             {
-                arg_3C_0 = null;
+                dmg += 8;
             }
-            else
-            {
-                Pawn_EquipmentTracker expr_eq = pawn.equipment;
-                arg_3C_0 = ((expr_eq != null) ? expr_eq.Primary : null);
-            }
-            ThingWithComps thing;
-            bool flag31 = (thing = arg_3C_0) != null;
-            if (flag31)
-            {
-                value = Mathf.RoundToInt(thing.GetStatValue(StatDefOf.MarketValue));
-            }
-            int dmg;
-            if (value > 1000)
-            {
-                value -= 1000;
-                dmg = (projectileDef.projectile.GetDamageAmount(1,null)) + (int)((16.5f + (value / 150)) * (1 + .05f * str.level));
-            }
-            else
-            {
-                dmg = (projectileDef.projectile.GetDamageAmount(1,null)) + (int)((value / 60) * (1 + .05f * str.level));
-            }
-            return dmg;
+
+            dmg = Mathf.RoundToInt(dmg * TorannMagicDefOf.TM_AntiArmor.weaponDamageFactor);
+            return (int)Mathf.Clamp(dmg, 0, 60);
         }
 
         public static int GetWeaponDmgMech(Pawn pawn, int dmg)

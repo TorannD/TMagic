@@ -13,6 +13,8 @@ Blood mages can slowly generate blood magic power from open, bleeding wounds wit
 
 A blood mage will slowly lose blood magic power when they are no longer bleeding.</description>
     <manaCost>0.20</manaCost>
+	<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+	<learnChance>1</learnChance>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_BloodGift</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -65,6 +67,8 @@ A blood mage will slowly lose blood magic power when they are no longer bleeding
         <uiIconPath>UI/igniteblood</uiIconPath>
         <description>Ignites and burns any exposed blood in an intense flash fire. Fire will continue to spread to nearby blood.</description>
 		<bloodCost>0.45</bloodCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>.4</learnChance>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>AbilityUser.Verb_UseAbility</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -106,6 +110,8 @@ The wounds and injuries of a target will also be healed as the blood exits their
 
 The transfer and healing rate is increased for both caster and victim depending on how much the victim is bleeding. The effects are the same when used on friendly or enemy pawns, but will trigger an outrage if used to down or slay an allied or neutral pawn.</description>
         <bloodCost>0.30</bloodCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>.4</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BloodForBlood</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -146,6 +152,8 @@ A portion of damage absorbed by the shield will be inflicted on the caster due t
 		
 Blood mages cannot form a blood shield on themselves.</description>
         <bloodCost>0.35</bloodCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>.5</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BloodShield</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -189,6 +197,8 @@ Max Targets: 3
 Cooldown: 40
 Cast Time: 1.5s</description>
 		<bloodCost>0.40</bloodCost>
+		<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Rend</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -238,6 +248,8 @@ Max Targets: 4
 Cooldown: 30
 Cast Time: 1.3s</description>
 		<bloodCost>0.40</bloodCost>
+		<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Rend</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -287,6 +299,8 @@ Max Targets: 5
 Cooldown: 20 
 Cast Time: 1.1s</description>
 		<bloodCost>0.40</bloodCost>
+		<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Rend</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -336,6 +350,8 @@ Max Targets: 5
 Cooldown: 10
 Cast Time: 1s</description>
 		<bloodCost>0.40</bloodCost>
+		<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Rend</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -457,6 +473,9 @@ Cast Time: 1s</description>
         <uiIconPath>UI/BloodMoon</uiIconPath>
         <description>Surrounds an area in blood magic, calling forth demons of rage and terror to prey on enemies within.</description>
         <bloodCost>0.70</bloodCost>
+		<efficiencyReductionPercent>.04</efficiencyReductionPercent>
+		<learnItem>SpellOf_BloodMoon</learnItem>
+		<learnChance>.05</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -492,6 +511,8 @@ Cast Time: 1s</description>
         <uiIconPath>UI/BloodMoon</uiIconPath>
         <description>Surrounds an area in blood magic, calling forth demons of rage and terror to prey on enemies within.</description>
         <bloodCost>0.70</bloodCost>
+		<efficiencyReductionPercent>.04</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -527,6 +548,8 @@ Cast Time: 1s</description>
         <uiIconPath>UI/BloodMoon</uiIconPath>
         <description>Surrounds an area in blood magic, calling forth demons of rage and terror to prey on enemies within.</description>
         <bloodCost>0.70</bloodCost>
+		<efficiencyReductionPercent>.04</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -562,6 +585,8 @@ Cast Time: 1s</description>
         <uiIconPath>UI/BloodMoon</uiIconPath>
         <description>Surrounds an area in blood magic, calling forth demons of rage and terror to prey on enemies within.</description>
         <bloodCost>0.7</bloodCost>
+		<efficiencyReductionPercent>.04</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

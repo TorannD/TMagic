@@ -97,7 +97,7 @@ namespace TorannMagic
         {
             get
             {
-                return base.CompShouldRemove || this.removeNow || this.Pawn.story == null || this.Pawn.story.traits == null || !this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk);
+                return base.CompShouldRemove || this.removeNow;
             }
         }        
     }

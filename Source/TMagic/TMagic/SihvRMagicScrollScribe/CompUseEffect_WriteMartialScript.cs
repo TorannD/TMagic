@@ -1,6 +1,8 @@
 ﻿using RimWorld;
 using Verse;
+using System.Collections.Generic;
 using UnityEngine;
+using TorannMagic.TMDefs;
 
 namespace TorannMagic.SihvRMagicScrollScribe
 {
@@ -12,6 +14,22 @@ namespace TorannMagic.SihvRMagicScrollScribe
             ThingDef tempPod = null;
             IntVec3 currentPos = parent.PositionHeld;
             Map map = parent.Map;
+            List<TMDefs.TM_CustomClass> cFighters = new List<TMDefs.TM_CustomClass>();
+            cFighters.Clear();
+            for(int i = 0; i < TM_ClassUtility.CustomClasses().Count; i++)
+            {
+                if(TM_ClassUtility.CustomClasses()[i].isFighter)
+                {
+                    cFighters.AddDistinct(TM_ClassUtility.CustomClasses()[i]);
+                }
+            }
+            
+            CompAbilityUserMight comp = user.TryGetComp<CompAbilityUserMight>();
+            if(parent.def != null && comp != null && comp.customClass != null)
+            {
+                tempPod = TM_ClassUtility.CustomClasses()[comp.customIndex].fullScript;
+                this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+            }
             if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
             {
                 tempPod = ThingDef.Named("BookOfGladiator");
@@ -64,7 +82,7 @@ namespace TorannMagic.SihvRMagicScrollScribe
                 RetryWrite:;
                 if (attempt < 20)
                 {
-                    float rnd = Rand.Range(0, 9);
+                    float rnd = Rand.Range(0, 9 + cFighters.Count);
                     if (rnd < 1)
                     {
                         if (settingsRef.Gladiator)
@@ -162,11 +180,23 @@ namespace TorannMagic.SihvRMagicScrollScribe
                             goto RetryWrite;
                         }
                     }
-                    else
+                    else if(rnd < 9)
                     {                        
                         if (settingsRef.Faceless)
                         {
                             tempPod = ThingDef.Named("BookOfFaceless");
+                        }
+                        else
+                        {
+                            attempt++;
+                            goto RetryWrite;
+                        }
+                    }
+                    else
+                    {
+                        if (cFighters.Count > 0)
+                        {
+                            tempPod = TM_ClassUtility.GetRandomCustomFighter().fullScript;
                         }
                         else
                         {

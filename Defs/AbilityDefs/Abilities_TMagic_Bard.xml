@@ -41,6 +41,7 @@ Pain threshold -14%, carrying capacity -18, work speed -14%
 Bard: Social impact +35%, Negotiation +40%, Trade +25%,
 Pain threshold -15%, carrying capacity -20, work speed -15%</description>
     <manaCost>0.0</manaCost>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>AbilityUser.Verb_UseAbility</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -77,7 +78,9 @@ Pain threshold -15%, carrying capacity -20, work speed -15%</description>
 This command toggles the active skill on or off.
 	
 Activating the ability casts a net over the colony and allows the bard to detect troubled pawns and attempt to entertain them. The bard will gain experience points as a mage when active entertaining is successful. Keeping this ability active reduces max mana by 30. The bard performs entertainment as a type of job, and will perform entertainment based on the priority of the "Warden" work type.</description>
-    <manaCost>0.0</manaCost>
+    <manaCost>0</manaCost>
+	<abilityHediff>TM_EntertainingHD</abilityHediff>
+	<learnChance>.3</learnChance>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Entertain</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -112,6 +115,7 @@ Activating the ability casts a net over the colony and allows the bard to detect
         <uiIconPath>UI/inspire</uiIconPath>
         <description>The bard inspires other nearby pawns. This ability is always active.</description>
         <manaCost>0.0</manaCost>
+		<learnChance>.5</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -147,6 +151,9 @@ Activating the ability casts a net over the colony and allows the bard to detect
         <uiIconPath>UI/lullaby</uiIconPath>
         <description>Projects an emotionally soothing wave that washes away concerns and consciousness that can put any creatures in the target area to sleep. Does not work on mechanoids.</description>
 		<manaCost>0.40</manaCost>
+		<learnChance>.5</learnChance>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<canCopy>true</canCopy>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Lullaby</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -189,6 +196,8 @@ Activating the ability casts a net over the colony and allows the bard to detect
         <uiIconPath>UI/lullaby</uiIconPath>
         <description>Projects an emotionally soothing wave that washes away concerns and consciousness that can put any creatures in the target area to sleep.</description>
 		<manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Lullaby</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -231,6 +240,8 @@ Activating the ability casts a net over the colony and allows the bard to detect
         <uiIconPath>UI/lullaby</uiIconPath>
         <description>Projects an emotionally soothing wave that washes away concerns and consciousness that can put any creatures in the target area to sleep.</description>
 		<manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Lullaby</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -273,6 +284,8 @@ Activating the ability casts a net over the colony and allows the bard to detect
         <uiIconPath>UI/lullaby</uiIconPath>
         <description>Projects an emotionally soothing wave that washes away concerns and consciousness that can put any creatures in the target area to sleep.</description>
 		<manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Lullaby</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -321,6 +334,9 @@ Battle Hymn has a small chance to cause inspirations that will further boost com
 	
 Use the skill to activate or deactivate the ability.</description>
     <manaCost>0.20</manaCost>
+	<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+	<learnItem>SpellOf_BattleHymn</learnItem>
+	<learnChance>.15</learnChance>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_BattleHymn</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

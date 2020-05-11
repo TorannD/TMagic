@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using RimWorld;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -64,40 +65,57 @@ namespace TorannMagic
         public static void DrawMightCard(Rect rect, Pawn pawn)
         {
             //GUI.BeginGroup(rect);
-            Rect sRect = new Rect(rect.x, rect.y, rect.width - 36f, rect.height + 360f);
-            scrollPosition = GUI.BeginScrollView(rect, scrollPosition, sRect, false, true);
-
             CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
+            int sizeY = 0;
+            if (comp.customClass != null)
+            {
+                sizeY = (comp.MightData.GetUniquePowersWithSkillsCount(comp.customClass) * 80);
+                if(sizeY > 500)
+                {
+                    sizeY -= 500;
+                }
+                else
+                {
+                    sizeY = 0;
+                }
+            }
+            Rect sRect = new Rect(rect.x, rect.y, rect.width - 36f, rect.height + 36f + sizeY);
+            scrollPosition = GUI.BeginScrollView(rect, scrollPosition, sRect, false, true);
+                        
             bool flag = comp != null;
             if (flag)
             {
-                bool flag2 = true;
-                if (flag2)
+                float x = Text.CalcSize("TM_HeaderMight".Translate()).x;
+                Rect rect2 = new Rect(rect.width / 2f - (x/2) , rect.y, rect.width, MightCardUtility.HeaderSize); //+ MightCardUtility.SpacingOffset
+                Text.Font = GameFont.Small;
+                Widgets.Label(rect2, "TM_HeaderMight".Translate().CapitalizeFirst());
+                Text.Font = GameFont.Small;
+                Widgets.DrawLineHorizontal(rect.x - 10f, rect2.yMax, rect.width - 15f);
+                Rect rect9 = new Rect(rect.x, rect2.yMax + MightCardUtility.Padding, rect2.width, MightCardUtility.SkillsColumnHeight);
+                Rect inRect = new Rect(rect9.x, rect9.y + MightCardUtility.Padding, MightCardUtility.SkillsColumnDivider, MightCardUtility.SkillsColumnHeight);
+                Rect inRect2 = new Rect(rect9.x + MightCardUtility.SkillsColumnDivider, rect9.y + MightCardUtility.Padding, rect9.width - MightCardUtility.SkillsColumnDivider, MightCardUtility.SkillsColumnHeight);
+                MightCardUtility.InfoPane(inRect, pawn.GetComp<CompAbilityUserMight>(), pawn);
+                float x5 = Text.CalcSize("TM_Skills".Translate()).x;
+                Rect rect10 = new Rect(rect.width / 2f - x5 / 2f, rect9.yMax - 60f, rect.width, MightCardUtility.HeaderSize);
+                Text.Font = GameFont.Small;
+                Widgets.Label(rect10, "TM_Skills".Translate().CapitalizeFirst());
+                Text.Font = GameFont.Small;
+                Widgets.DrawLineHorizontal(rect.x - 10f, rect10.yMax, rect.width - 15f);
+                Rect rect11 = new Rect(rect.x, rect10.yMax + MightCardUtility.SectionOffset, rect10.width, MightCardUtility.PowersColumnHeight);
+                if (comp.customClass != null)
                 {
-                    float x = Text.CalcSize("TM_HeaderMight".Translate()).x;
-                    Rect rect2 = new Rect(rect.width / 2f - (x/2) , rect.y, rect.width, MightCardUtility.HeaderSize); //+ MightCardUtility.SpacingOffset
-                    Text.Font = GameFont.Small;
-                    Widgets.Label(rect2, "TM_HeaderMight".Translate().CapitalizeFirst());
-                    Text.Font = GameFont.Small;
-                    Widgets.DrawLineHorizontal(rect.x - 10f, rect2.yMax, rect.width - 15f);
-                    Rect rect9 = new Rect(rect.x, rect2.yMax + MightCardUtility.Padding, rect2.width, MightCardUtility.SkillsColumnHeight);
-                    Rect inRect = new Rect(rect9.x, rect9.y + MightCardUtility.Padding, MightCardUtility.SkillsColumnDivider, MightCardUtility.SkillsColumnHeight);
-                    Rect inRect2 = new Rect(rect9.x + MightCardUtility.SkillsColumnDivider, rect9.y + MightCardUtility.Padding, rect9.width - MightCardUtility.SkillsColumnDivider, MightCardUtility.SkillsColumnHeight);
-                    MightCardUtility.InfoPane(inRect, pawn.GetComp<CompAbilityUserMight>(), pawn);
-                    float x5 = Text.CalcSize("TM_Skills".Translate()).x;
-                    Rect rect10 = new Rect(rect.width / 2f - x5 / 2f, rect9.yMax - 60f, rect.width, MightCardUtility.HeaderSize);
-                    Text.Font = GameFont.Small;
-                    Widgets.Label(rect10, "TM_Skills".Translate().CapitalizeFirst());
-                    Text.Font = GameFont.Small;
-                    Widgets.DrawLineHorizontal(rect.x - 10f, rect10.yMax, rect.width - 15f);
-                    Rect rect11 = new Rect(rect.x, rect10.yMax + MightCardUtility.SectionOffset, rect10.width, MightCardUtility.PowersColumnHeight);
+                    Rect inRect3 = new Rect(rect.x, rect11.y, MightCardUtility.PowersColumnWidth, MightCardUtility.PowersColumnHeight);
+                    MightCardUtility.CustomPowersHandler(inRect3, pawn.GetComp<CompAbilityUserMight>(), pawn.GetComp<CompAbilityUserMight>().MightData.AllMightPowersWithSkills, comp.customClass, TexButton.TMTex_SkillPointUsed);
+                }
+                else
+                {
                     if (pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
                     {
                         Rect inRect3 = new Rect(rect.x, rect11.y, MightCardUtility.PowersColumnWidth, MightCardUtility.PowersColumnHeight);
                         MightCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMight>(), pawn.GetComp<CompAbilityUserMight>().MightData.MightPowersG, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Sprint, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Fortitude, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Grapple, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Cleave, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Whirlwind, null, TexButton.TMTex_SkillPointUsed);
                     }
                     if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper))
-                    {                        
+                    {
                         Rect inRect3 = new Rect(rect.x, rect11.y, MightCardUtility.PowersColumnWidth, MightCardUtility.PowersColumnHeight);
                         MightCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMight>(), pawn.GetComp<CompAbilityUserMight>().MightData.MightPowersS, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_SniperFocus, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Headshot, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_DisablingShot, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_AntiArmor, null, null, TexButton.TMTex_SkillPointUsed);
                     }
@@ -144,7 +162,7 @@ namespace TorannMagic
                     if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier))
                     {
                         Rect inRect3 = new Rect(rect.x, rect11.y, MightCardUtility.PowersColumnWidth, MightCardUtility.PowersColumnHeight);
-                        if(comp.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower mp) => mp.abilityDef == TorannMagicDefOf.TM_PistolSpec).learned == true)
+                        if (comp.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower mp) => mp.abilityDef == TorannMagicDefOf.TM_PistolSpec).learned == true)
                         {
                             MightCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMight>(), pawn.GetComp<CompAbilityUserMight>().MightData.MightPowersSS, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PistolSpec, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_CQC, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_FirstAid, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_60mmMortar, null, null, TexButton.TMTex_SkillPointUsed);
                         }
@@ -155,13 +173,14 @@ namespace TorannMagic
                         else if (comp.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower mp) => mp.abilityDef == TorannMagicDefOf.TM_ShotgunSpec).learned == true)
                         {
                             MightCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMight>(), pawn.GetComp<CompAbilityUserMight>().MightData.MightPowersSS, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_ShotgunSpec, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_CQC, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_FirstAid, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_60mmMortar, null, null, TexButton.TMTex_SkillPointUsed);
-                        }    
+                        }
                         else
                         {
                             MightCardUtility.PowersGUIHandler(inRect3, pawn.GetComp<CompAbilityUserMight>(), pawn.GetComp<CompAbilityUserMight>().MightData.MightPowersSS, null, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_PistolSpec, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_RifleSpec, pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_ShotgunSpec, null, null, TexButton.TMTex_SkillPointUsed);
                         }
                     }
                 }
+                
             }
             //GUI.EndGroup();
             GUI.EndScrollView();
@@ -205,21 +224,11 @@ namespace TorannMagic
                 Widgets.Label(rect6, "TM_LastStaminaGainPct".Translate(
                     (compMight.Stamina.lastGainPct * 200).ToString("0.000")
                     ));
-                //string str1 = "Base gain: " + (200 * compMagic.Mana.baseManaGain).ToString("0.000") + "\nMana surge: " + (200 * compMagic.Mana.drainManaSurge).ToString("0.000");
-                //TooltipHandler.TipRegion(rect6, () => string.Concat(new string[]
-                //        {
-                //        str1,
-                //        "\n\nMana weakness: -",
-                //        (200*compMagic.Mana.drainManaWeakness).ToString("0.000"),
-                //        "\nMinion cost: -",
-                //        (200*compMagic.Mana.drainMinion).ToString("0.000"),
-                //        "\nUndead cost: -",
-                //        (200*compMagic.Mana.drainUndead).ToString("0.000"),
-                //        "\nMana drain: -",
-                //        (200*compMagic.Mana.drainManaDrain).ToString("0.000"),
-                //        "\nMana sickness: -",
-                //        (200*compMagic.Mana.drainManaSickness).ToString("0.000"),
-                //        }), 398552);
+                string str1 = "Base gain: " + (200 * compMight.Stamina.baseStaminaGain).ToString("0.000") + "\nStamina regen adjustment: " + (200 * compMight.Stamina.modifiedStaminaGain).ToString("0.000");
+                TooltipHandler.TipRegion(rect6, () => string.Concat(new string[]
+                        {
+                        str1,                        
+                        }), 398552);
                 GUI.color = Color.white;
             }
             Rect rect5 = new Rect(rect4.x, rect4.yMax + 3f, inRect.width + 100f, MightCardUtility.HeaderSize * 0.6f);
@@ -549,25 +558,25 @@ namespace TorannMagic
                                 if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_PistolSpec)
                                 {
                                     compMight.AddPawnAbility(TorannMagicDefOf.TM_PistolWhip);
-                                    //compMight.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PistolWhip).learned = true;
+                                    compMight.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PistolWhip).learned = true;
                                     compMight.skill_PistolWhip = true;
                                 }
                                 if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_RifleSpec)
                                 {
                                     compMight.AddPawnAbility(TorannMagicDefOf.TM_SuppressingFire);
-                                    //compMight.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_SuppressingFire).learned = true;
+                                    compMight.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_SuppressingFire).learned = true;
                                     compMight.skill_SuppressingFire = true;
                                     compMight.AddPawnAbility(TorannMagicDefOf.TM_Mk203GL);
-                                    //compMight.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Mk203GL).learned = true;
+                                    compMight.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Mk203GL).learned = true;
                                     compMight.skill_Mk203GL = true;
                                 }
                                 if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_ShotgunSpec)
                                 {
                                     compMight.AddPawnAbility(TorannMagicDefOf.TM_Buckshot);
-                                    //compMight.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Buckshot).learned = true;
+                                    compMight.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Buckshot).learned = true;
                                     compMight.skill_Buckshot = true;
                                     compMight.AddPawnAbility(TorannMagicDefOf.TM_BreachingCharge);
-                                    //compMight.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_BreachingCharge).learned = true;
+                                    compMight.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_BreachingCharge).learned = true;
                                     compMight.skill_BreachingCharge = true;
                                 }
                             }
@@ -1035,6 +1044,301 @@ namespace TorannMagic
                                 skill.level++;
                                 compMight.MightData.MightAbilityPoints -= 1;
                             }
+                        }
+                    }
+                    num2 += (MightCardUtility.MightCardSize.x / 3) - MightCardUtility.SpacingOffset;
+                }
+            }
+        }
+
+        public static void CustomPowersHandler(Rect inRect, CompAbilityUserMight compMight, List<MightPower> MightPowers, TMDefs.TM_CustomClass customClass, Texture2D pointTexture)
+        {
+            float num = inRect.y;
+            int itnum = 1;
+            bool flag999;
+            bool flag998;
+            using (List<MightPower>.Enumerator enumerator = MightPowers.GetEnumerator())
+            {
+                EnumerationStart:;
+                while (enumerator.MoveNext())
+                {
+                    MightPower power = enumerator.Current;
+                    if(!customClass.classFighterAbilities.Contains((TMAbilityDef)power.abilityDef))
+                    {
+                        goto EnumerationStart;
+                    }
+
+                    if (compMight.MightData.GetSkill_Efficiency((TMAbilityDef)power.abilityDef) == null)
+                    {
+                        goto EnumerationStart;                        
+                    }
+
+
+                    Text.Font = GameFont.Small;
+                    Rect rect = new Rect(MightCardUtility.MightCardSize.x / 2f - MightCardUtility.MagicButtonSize, num, MightCardUtility.MagicButtonSize, MightCardUtility.MagicButtonSize);
+                    if (itnum > 1)
+                    {
+                        Widgets.DrawLineHorizontal(0f + 20f, rect.y - 2f, 700f - 40f);
+                    }
+                    //power.abilityDef == TorannMagicDefOf.TM_Sprint || power.abilityDef == TorannMagicDefOf.TM_Sprint_I || power.abilityDef == TorannMagicDefOf.TM_Sprint_II ||
+                    if (power.level < 3 && (power.abilityDef == TorannMagicDefOf.TM_Grapple || power.abilityDef == TorannMagicDefOf.TM_Grapple_I || power.abilityDef == TorannMagicDefOf.TM_Grapple_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_DisablingShot || power.abilityDef == TorannMagicDefOf.TM_DisablingShot_I || power.abilityDef == TorannMagicDefOf.TM_DisablingShot_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_PhaseStrike || power.abilityDef == TorannMagicDefOf.TM_PhaseStrike_I || power.abilityDef == TorannMagicDefOf.TM_PhaseStrike_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_ArrowStorm || power.abilityDef == TorannMagicDefOf.TM_ArrowStorm_I || power.abilityDef == TorannMagicDefOf.TM_ArrowStorm_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_PsionicBlast || power.abilityDef == TorannMagicDefOf.TM_PsionicBlast_I || power.abilityDef == TorannMagicDefOf.TM_PsionicBlast_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_GraveBlade || power.abilityDef == TorannMagicDefOf.TM_GraveBlade_I || power.abilityDef == TorannMagicDefOf.TM_GraveBlade_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_Spite || power.abilityDef == TorannMagicDefOf.TM_Spite_I || power.abilityDef == TorannMagicDefOf.TM_Spite_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_StayAlert || power.abilityDef == TorannMagicDefOf.TM_StayAlert_I || power.abilityDef == TorannMagicDefOf.TM_StayAlert_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_MoveOut || power.abilityDef == TorannMagicDefOf.TM_MoveOut_I || power.abilityDef == TorannMagicDefOf.TM_MoveOut_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_HoldTheLine || power.abilityDef == TorannMagicDefOf.TM_HoldTheLine_I || power.abilityDef == TorannMagicDefOf.TM_HoldTheLine_II ||
+                        power.abilityDef == TorannMagicDefOf.TM_Transpose || power.abilityDef == TorannMagicDefOf.TM_Transpose_I || power.abilityDef == TorannMagicDefOf.TM_Transpose_II))
+
+                    {
+                        TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
+                        {
+                            power.abilityDef.label,
+                            "\n\nCurrent Level:\n",
+                            power.abilityDescDef.description,
+                            "\n\nNext Level:\n",
+                            power.nextLevelAbilityDescDef.description,
+                            "\n\n",
+                            MightAbility.PostAbilityDesc((TMAbilityDef)power.abilityDef, compMight, 0),
+                            "\n",
+                            "TM_CheckPointsForMoreInfo".Translate()
+                       }), 398462);
+                    }
+                    else if (power.level < 1 && power.abilityDef == TorannMagicDefOf.TM_PsionicBarrier)
+                    {
+                        TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
+                        {
+                            power.abilityDef.label,
+                            "\n\nCurrent Level:\n",
+                            power.abilityDescDef.description,
+                            "\n\nNext Level:\n",
+                            power.nextLevelAbilityDescDef.description,
+                            "\n\n",
+                            MightAbility.PostAbilityDesc((TMAbilityDef)power.abilityDef, compMight, 0),
+                            "\n",
+                            "TM_CheckPointsForMoreInfo".Translate()
+                       }), 398462);
+                    }
+                    else
+                    {
+                        TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
+{
+                            power.abilityDef.label,
+                            "\n\n",
+                            power.abilityDescDef.description,
+                            "\n\n",
+                            MightAbility.PostAbilityDesc((TMAbilityDef)power.abilityDef, compMight, 0),
+                            "\n",
+                            "TM_CheckPointsForMoreInfo".Translate()
+                            }), 398462);
+                    }
+
+                    float x2 = Text.CalcSize("TM_Effeciency".Translate()).x;
+                    float x3 = Text.CalcSize("TM_Versatility".Translate()).x;
+                    Rect rect3 = new Rect(0f + MightCardUtility.SpacingOffset, rect.y + 2f, MightCardUtility.MightCardSize.x, MightCardUtility.ButtonSize * 1.15f);
+
+                    Rect rect5 = new Rect(rect3.x + rect3.width / 2f - x2, rect3.y, (rect3.width - 20f) / 3f, rect3.height);
+                    Rect rect6 = new Rect(rect3.width - x3 * 2f, rect3.y, rect3.width / 3f, rect3.height);
+
+                    float x4 = Text.CalcSize(" # / # ").x;
+                    //bool flag9 = power.abilityDef.label == "Sprint" || power.abilityDef.label == "Grapple"; //add all other buffs or xml based upgrades
+                    //power.abilityDef.defName == "TM_Sprint" || power.abilityDef.defName ==  "TM_Sprint_I" || power.abilityDef.defName == "TM_Sprint_II" || power.abilityDef.defName == "TM_Sprint_III" ||
+                    if (power.abilityDef.defName == "TM_Grapple" || power.abilityDef.defName == "TM_Grapple_I" || power.abilityDef.defName == "TM_Grapple_II" || power.abilityDef.defName == "TM_Grapple_III" ||
+                        power.abilityDef.defName == "TM_DisablingShot" || power.abilityDef.defName == "TM_DisablingShot_I" || power.abilityDef.defName == "TM_DisablingShot_II" || power.abilityDef.defName == "TM_DisablingShot_III" ||
+                        power.abilityDef.defName == "TM_PhaseStrike" || power.abilityDef.defName == "TM_PhaseStrike_I" || power.abilityDef.defName == "TM_PhaseStrike_II" || power.abilityDef.defName == "TM_PhaseStrike_III" ||
+                        power.abilityDef.defName == "TM_ArrowStorm" || power.abilityDef.defName == "TM_ArrowStorm_I" || power.abilityDef.defName == "TM_ArrowStorm_II" || power.abilityDef.defName == "TM_ArrowStorm_III" ||
+                        power.abilityDef.defName == "TM_PsionicBlast" || power.abilityDef.defName == "TM_PsionicBlast_I" || power.abilityDef.defName == "TM_PsionicBlast_II" || power.abilityDef.defName == "TM_PsionicBlast_III" ||
+                        power.abilityDef.defName == "TM_GraveBlade" || power.abilityDef.defName == "TM_GraveBlade_I" || power.abilityDef.defName == "TM_GraveBlade_II" || power.abilityDef.defName == "TM_GraveBlade_III" ||
+                        power.abilityDef.defName == "TM_Spite" || power.abilityDef.defName == "TM_Spite_I" || power.abilityDef.defName == "TM_Spite_II" || power.abilityDef.defName == "TM_Spite_III" ||
+                        power.abilityDef.defName == "TM_Transpose" || power.abilityDef.defName == "TM_Transpose_I" || power.abilityDef.defName == "TM_Transpose_II" || power.abilityDef.defName == "TM_Transpose_III" ||
+                        power.abilityDef == TorannMagicDefOf.TM_StayAlert || power.abilityDef == TorannMagicDefOf.TM_StayAlert_I || power.abilityDef == TorannMagicDefOf.TM_StayAlert_II || power.abilityDef == TorannMagicDefOf.TM_StayAlert_III ||
+                        power.abilityDef == TorannMagicDefOf.TM_MoveOut || power.abilityDef == TorannMagicDefOf.TM_MoveOut_I || power.abilityDef == TorannMagicDefOf.TM_MoveOut_II || power.abilityDef == TorannMagicDefOf.TM_MoveOut_III ||
+                        power.abilityDef == TorannMagicDefOf.TM_HoldTheLine || power.abilityDef == TorannMagicDefOf.TM_HoldTheLine_I || power.abilityDef == TorannMagicDefOf.TM_HoldTheLine_II || power.abilityDef == TorannMagicDefOf.TM_HoldTheLine_III)
+                    {
+                        flag999 = true;
+                    }
+                    else
+                    {
+                        flag999 = false;
+                    }
+                    if (power.abilityDef.defName == "TM_PsionicBarrier" || power.abilityDef.defName == "TM_PsionicBarrier_Projected")
+                    {
+                        flag998 = true;
+                    }
+                    else
+                    {
+                        flag998 = false;
+                    }
+                    bool flag10 = enumerator.Current.level >= power.maxLevel || compMight.MightData.MightAbilityPoints == 0;
+                    if (flag998)
+                    {
+                        flag10 = enumerator.Current.level >= 1 || compMight.MightData.MightAbilityPoints < 2;
+                    }
+                    //Ability label
+                    Rect rectLabel = new Rect(0f + 20f, rect.yMin, 350f - 44f, MagicCardUtility.MagicButtonPointSize);
+                    Widgets.Label(rectLabel, power.abilityDef.LabelCap);
+
+                    if (enumerator.Current.learned != true)
+                    {
+                        Widgets.DrawTextureFitted(rect, power.Icon, 1f);
+                        Rect rectLearn = new Rect(rect.xMin - 44f, rect.yMin, 40f, MagicCardUtility.MagicButtonPointSize);
+                        if (compMight.MightData.MightAbilityPoints >= enumerator.Current.learnCost)
+                        {
+                            Text.Font = GameFont.Tiny;
+                            bool flagLearn = Widgets.ButtonText(rectLearn, "TM_Learn".Translate(), true, false, true) && compMight.AbilityUser.Faction == Faction.OfPlayer;
+                            if (flagLearn)
+                            {
+                                enumerator.Current.learned = true;
+                                if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_PistolSpec)
+                                {
+                                    compMight.AddPawnAbility(TorannMagicDefOf.TM_PistolWhip);
+                                    //compMight.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PistolWhip).learned = true;
+                                    compMight.skill_PistolWhip = true;
+                                }
+                                if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_RifleSpec)
+                                {
+                                    compMight.AddPawnAbility(TorannMagicDefOf.TM_SuppressingFire);
+                                    //compMight.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_SuppressingFire).learned = true;
+                                    compMight.skill_SuppressingFire = true;
+                                    compMight.AddPawnAbility(TorannMagicDefOf.TM_Mk203GL);
+                                    //compMight.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Mk203GL).learned = true;
+                                    compMight.skill_Mk203GL = true;
+                                }
+                                if (enumerator.Current.abilityDef == TorannMagicDefOf.TM_ShotgunSpec)
+                                {
+                                    compMight.AddPawnAbility(TorannMagicDefOf.TM_Buckshot);
+                                    //compMight.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Buckshot).learned = true;
+                                    compMight.skill_Buckshot = true;
+                                    compMight.AddPawnAbility(TorannMagicDefOf.TM_BreachingCharge);
+                                    //compMight.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_BreachingCharge).learned = true;
+                                    compMight.skill_BreachingCharge = true;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (flag10)
+                        {
+                            if (flag999)
+                            {
+                                Widgets.DrawTextureFitted(rect, power.Icon, 1f);
+                                Rect rect19 = new Rect(rect.xMax, rect.yMin, x4, MightCardUtility.TextSize);
+                                Widgets.Label(rect19, " " + enumerator.Current.level + " / 3");
+                            }
+                            else if (flag998)
+                            {
+                                Widgets.DrawTextureFitted(rect, power.Icon, 1f);
+                                Rect rect19 = new Rect(rect.xMax, rect.yMin, x4, MightCardUtility.TextSize);
+                                Widgets.Label(rect19, " " + enumerator.Current.level + " / 1");
+                            }
+                            else
+                            {
+                                Widgets.DrawTextureFitted(rect, power.Icon, 1f);
+                            }
+
+                        }
+                        else
+                        {
+                            if (flag999)
+                            {
+                                Rect rect10 = new Rect(rect.xMax, rect.yMin, x4, MightCardUtility.TextSize);
+                                bool flag1 = Widgets.ButtonImage(rect, power.Icon) && compMight.AbilityUser.Faction == Faction.OfPlayer;
+                                Widgets.Label(rect10, " " + power.level + " / 3");
+                                if (flag1)
+                                {
+                                    compMight.LevelUpPower(power);
+                                    compMight.MightData.MightAbilityPoints -= 1;
+                                    compMight.FixPowers();
+                                }
+                            }
+                            else if (flag998)
+                            {
+                                Rect rect10 = new Rect(rect.xMax, rect.yMin, x4, MightCardUtility.TextSize);
+                                bool flag1 = Widgets.ButtonImage(rect, power.Icon) && compMight.AbilityUser.Faction == Faction.OfPlayer;
+                                Widgets.Label(rect10, " " + power.level + " / 1");
+                                if (flag1)
+                                {
+                                    compMight.LevelUpPower(power);
+                                    compMight.MightData.MightAbilityPoints -= 2;
+                                    compMight.FixPowers();
+                                }
+                            }
+                            else
+                            {
+                                Widgets.DrawTextureFitted(rect, power.Icon, 1f);
+                            }
+                        }
+                    }
+                    Text.Font = GameFont.Tiny;
+                    float num2 = rect3.x;
+                    List<MightPowerSkill> mpsList = new List<MightPowerSkill>();
+                    mpsList.Clear();
+
+                    MightPowerSkill mps = compMight.MightData.GetSkill_Power((TMAbilityDef)power.abilityDef);
+                    if (mps != null)
+                    {
+                        mpsList.Add(mps);
+                    }
+                    mps = compMight.MightData.GetSkill_Efficiency((TMAbilityDef)power.abilityDef);
+                    if (mps != null)
+                    {
+                        mpsList.Add(mps);
+                    }
+                    mps = compMight.MightData.GetSkill_Versatility((TMAbilityDef)power.abilityDef);
+                    if (mps != null)
+                    {
+                        mpsList.Add(mps);
+                    }
+
+                    if (mpsList.Count > 0)
+                    {
+                        CustomSkillHandler(num2, compMight, power, enumerator, mpsList, rect3);
+                        itnum++;
+                    }
+                    
+                    num += MightCardUtility.MagicButtonSize + MightCardUtility.TextSize + 4f;
+                }
+            }
+        }
+
+        public static void CustomSkillHandler(float num2, CompAbilityUserMight compMight, MightPower power, List<MightPower>.Enumerator enumerator, List<MightPowerSkill> MightPowerSkillN, Rect rect3)
+        {
+            using (List<MightPowerSkill>.Enumerator enumeratorN = MightPowerSkillN.GetEnumerator())
+            {
+                while (enumeratorN.MoveNext())
+                {
+                    Rect rect4 = new Rect(num2 + MightCardUtility.MagicButtonPointSize, rect3.yMax, MightCardUtility.MightCardSize.x / 3f, rect3.height);
+                    Rect rect41 = new Rect(num2, rect4.y, MightCardUtility.MagicButtonPointSize, MightCardUtility.MagicButtonPointSize);
+                    Rect rect42 = new Rect(rect41.x, rect4.y, rect4.width - MagicCardUtility.MagicButtonPointSize, rect4.height / 2);
+                    MightPowerSkill skill = enumeratorN.Current;
+                    TooltipHandler.TipRegion(rect42, new TipSignal(() => skill.desc.Translate(), rect4.GetHashCode()));
+                    bool flag11 = (skill.level >= skill.levelMax || compMight.MightData.MightAbilityPoints == 0) || (skill.costToLevel > compMight.MightData.MightAbilityPoints);
+                    if (flag11)
+                    {
+                        Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
+                    }
+                    else
+                    {
+                        bool flag12 = Widgets.ButtonText(rect41, "+", true, false, true) && compMight.AbilityUser.Faction == Faction.OfPlayer;
+                        Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
+                        if (flag12)
+                        {
+                            bool flag17 = compMight.AbilityUser.story != null && compMight.AbilityUser.story.DisabledWorkTagsBackstoryAndTraits == WorkTags.Violent && power.abilityDef.MainVerb.isViolent;
+                            if (flag17)
+                            {
+                                Messages.Message("IsIncapableOfViolenceLower".Translate(
+                                            compMight.parent.LabelShort
+                                ), MessageTypeDefOf.RejectInput);
+                                break;
+                            }                                                       
+                            skill.level++;
+                            compMight.MightData.MightAbilityPoints -= 1;
+                            
+                            
                         }
                     }
                     num2 += (MightCardUtility.MightCardSize.x / 3) - MightCardUtility.SpacingOffset;

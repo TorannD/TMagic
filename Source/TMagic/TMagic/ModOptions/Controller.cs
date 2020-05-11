@@ -13,6 +13,7 @@ namespace TorannMagic.ModOptions
         private bool easy = false;
         private bool classOptions = false;
         private bool eventOptions = false;
+        private bool factionOptions = false;
 
         private Vector2 scrollPosition = Vector2.zero;
 
@@ -59,6 +60,17 @@ namespace TorannMagic.ModOptions
                 Rect rect = new Rect(64f, 64f, 480, 640);
                 ClassOptionsWindow newWindow = new ClassOptionsWindow();                
                 Find.WindowStack.Add(newWindow);                
+
+            }
+            Rect rowRectShiftRightPlus = UIHelper.GetRowRect(rowRect, rowHeight, num);
+            rowRectShiftRightPlus.x += (rowRect.width+rowRectShiftRight.width) + 56f;
+            rowRectShiftRightPlus.width /= 3;
+            factionOptions = Widgets.ButtonText(rowRectShiftRightPlus, "Faction Options", true, false, true);
+            if (factionOptions)
+            {
+                Rect rect = new Rect(64f, 64f, 480, 640);
+                FactionOptionsWindow newWindow = new FactionOptionsWindow();
+                Find.WindowStack.Add(newWindow);
 
             }
             num++;

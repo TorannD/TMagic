@@ -1341,6 +1341,30 @@ This arcane script is incomplete and the reader may not be able to learn some, o
     </graphicData>
   </ThingDef>
   
+  <!-- Custom class books -->
+  
+  <ThingDef ParentName="ArcaneScriptBase">
+    <defName>BookOfShadow</defName>
+    <label>Arcane Tome: Shadow</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>In the dead of night, fear reveals itself in the blade's reflection - the shadow awakens.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/shadowbook</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+  
     <!--=============== Magic Spells - Single ====================-->
 
 	<ThingDef ParentName="ArcaneSpellBase">
@@ -1487,7 +1511,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
   
   <ThingDef ParentName="ArcaneSpellBase">
     <defName>SpellOf_Cooler</defName>
-    <label>Mage Spell: Dispel Heat</label>
+    <label>Mage Spell: Magic Cooler</label>
     <thingClass>ThingWithComps</thingClass>
     <description>Teaches an arcane user how to create a temporary window into the plane of ice, creating a temporary cooling source.</description>
 	<category>Item</category>
@@ -1727,7 +1751,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
   
   <ThingDef ParentName="ArcaneSpellBase">
     <defName>SpellOf_Heater</defName>
-    <label>Mage Spell: Draw Heat</label>
+    <label>Mage Spell: Magic Heater</label>
     <thingClass>ThingWithComps</thingClass>
     <description>Teaches a magic user how to create a temporary window into the plane of fire, creating a temporary heat source.</description>
 	<category>Item</category>
@@ -2394,7 +2418,7 @@ Produces 400Wd adjusted by ability power.</description>
     <defName>SpellOf_ManaShield</defName>
     <label>Mage Spell: Mana Shield</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Teaches a magic user how to form a protective barrier made of mana to counter harmful affects on the caster's body.</description>
+    <description>Teaches a magic user how to form a protective mana barrier to prevent physical harm.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>

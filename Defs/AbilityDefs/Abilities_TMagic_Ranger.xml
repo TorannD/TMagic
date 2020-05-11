@@ -40,6 +40,7 @@ Tame and train animal +10%, butchering speed +15%, smelting and construction spe
 Ranger: Speed +0.3c/s, Aiming Delay -40%, Immunity Gain +35%, Comf. Temperature +-25C., Toxic Sensitivity -25%
 Tame and train animal +12%, butchering speed +20%, smelting and construction speed -20%</description>
     <staminaCost>0.01</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_RangerTraining</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -80,6 +81,7 @@ Level 1: Hearing and Sight +40%, +40% bow damage
 Level 2: Hearing and Sight +60%, Breathing +15%, +60% bow damage
 Level 3: Hearing and Sight +80%, Breathing +25%, Blood filtration +10%, +80% bow damage</description>
     <staminaCost>0.01</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_BowTraining</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -117,6 +119,7 @@ Level 3: Hearing and Sight +80%, Breathing +25%, Blood filtration +10%, +80% bow
 
 Enemies caught in the poison will take 1-8 poison damage every 0.66 seconds. Poison damage also applies a slowing effect. Traps will never be triggered by animals.</description>
         <staminaCost>0.20</staminaCost>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PoisonTrap</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -154,6 +157,9 @@ Rangers are only able to form a single bond and maintaining the bond reduces the
 The increase in physical capability applies to the animal kin only, in return, the bonded animal will assist the ranger in whatever capacity the animal is capable.
 A bond can be removed by using this ability on a bonded creature.</description>
         <staminaCost>0.60</staminaCost>
+		<efficiencyReductionPercent>.15</efficiencyReductionPercent>
+		<upkeepEnergyCost>.3</upkeepEnergyCost>
+		<upkeepEfficiencyPercent>.15</upkeepEfficiencyPercent>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_AnimalFriend</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -203,6 +209,8 @@ A bond can be removed by using this ability on a bonded creature.</description>
         <description>Fire a volley of 5 arrows at a target.
 Range: 32</description>
         <staminaCost>0.40</staminaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_RangerShot</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -234,6 +242,8 @@ Range: 32</description>
         <description>Fire a volley of 6 arrows at a target.
 Range: 34</description>
         <staminaCost>0.42</staminaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_RangerShot</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -265,6 +275,8 @@ Range: 34</description>
         <description>Fire a rapid volley of 7 arrows at a target.
 Range: 36</description>
         <staminaCost>0.44</staminaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_RangerShot</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -296,6 +308,8 @@ Range: 36</description>
         <description>Fire a rapid volley of 8 arrows at a target.
 Range: 38</description>
         <staminaCost>0.45</staminaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_RangerShot</verbClass>
             <hasStandardCommand>true</hasStandardCommand>

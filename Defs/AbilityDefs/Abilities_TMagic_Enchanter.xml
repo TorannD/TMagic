@@ -7,12 +7,17 @@
     <defName>TM_EnchantedBody</defName>
     <label>Enchanted Body</label>
     <uiIconPath>UI/enchantedbody</uiIconPath>
-    <description>Grows extra limbs to improve manipulation and increases fighting speed. This enchantment tends to make the enchanter look quite horrifying and can alarm other pawns. This spell is sustained and reduces max mp by 20 and mana regeneration by 50%.
+    <description>Grows extra limbs to improve manipulation and increases fighting speed. This enchantment tends to make the enchanter look quite horrifying and can alarm other pawns. This spell is sustained and reduces max mp by 20 and mana regeneration by 30%.
 	
 Using this ability while the enchantment is active will dispel the enchantment. Only one enchantment type may be active at a given time.
 
 *All Enchanted Body skills apply to Enchanted Aura</description>
-    <manaCost>0.00</manaCost>
+    <manaCost>0</manaCost>
+	<upkeepEnergyCost>.2</upkeepEnergyCost>
+	<upkeepRegenCost>.4</upkeepRegenCost>
+	<upkeepEfficiencyPercent>.2</upkeepEfficiencyPercent>
+	<abilityHediff>TM_EnchantedBodyHD</abilityHediff>
+	<learnChance>.5</learnChance>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_EnchantedBody</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -44,10 +49,15 @@ Using this ability while the enchantment is active will dispel the enchantment. 
     <defName>TM_EnchantedAura</defName>
     <label>Enchanted Aura</label>
     <uiIconPath>UI/enchantedaura</uiIconPath>
-    <description>Radiates a charming aura that disarms social barriers and improves social interaction and opinions. This spell is sustained and reduces max mp by 20 and mana regeneration by 50%.
+    <description>Radiates a charming aura that disarms social barriers and improves social interaction and opinions. This spell is sustained and reduces max mp by 20 and mana regeneration by 30%.
 	
 Using this ability while the enchantment is active will dispel the enchantment. Only one enchantment type may be active at a given time.</description>
-    <manaCost>0.00</manaCost>
+        <manaCost>0.</manaCost>
+	<upkeepEnergyCost>.2</upkeepEnergyCost>
+	<upkeepRegenCost>.4</upkeepRegenCost>
+	<upkeepEfficiencyPercent>.2</upkeepEfficiencyPercent>
+	<abilityHediff>TM_EnchantedAuraHD</abilityHediff>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_EnchantedAura</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -85,6 +95,8 @@ This ability only works on raw resources (silver, steel, furs, cloth, etc) and b
 
 Check skill descriptions for additional details.</description>
         <manaCost>0.20</manaCost>
+		<efficiencyReductionPercent>.12</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Transmutate</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -125,6 +137,10 @@ The benefits of the artifact are granted to the pawn that has the item equipped.
 
 This ability is used on raw resources such as stone chunks, steel, or silver - see skill descriptions for a full list of resources that can be used to create an enchanter's stone.</description>
         <manaCost>0.70</manaCost>
+		<upkeepEnergyCost>.2</upkeepEnergyCost>
+		<upkeepEfficiencyPercent>.1</upkeepEfficiencyPercent>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<learnChance>.4</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_EnchanterStone</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -158,8 +174,9 @@ This ability is used on raw resources such as stone chunks, steel, or silver - s
     <defName>TM_DismissEnchanterStones</defName>
     <label>Dismiss Enchanter Stone</label>
     <uiIconPath>UI/dismissenchanterstone</uiIconPath>
-    <description>Destroyes the oldest enchanter's stone</description>
+    <description>Destroys the oldest enchanter's stone</description>
     <manaCost>0.0</manaCost>
+	<shouldInitialize>false</shouldInitialize>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_DismissEnchanterStones</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -204,6 +221,8 @@ Enchanted weapons require an allotment of mana equal to the casting cost to sust
 
 The enchantment will only remain active as long as the pawn holds the enchanted weapon. If it is dropped or swapped for another weapon, the enchantment will disperse. Weapon enchantments only affect melee weapons.</description>
         <manaCost>0.10</manaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<learnChance>.4</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_EnchantWeapon</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -239,6 +258,7 @@ The enchantment will only remain active as long as the pawn holds the enchanted 
         <uiIconPath>UI/dispelenchantweapon</uiIconPath>
         <description>Removes all weapon enchantments maintained by this enchanter.</description>
         <manaCost>0.0</manaCost>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_DispelEnchantWeapon</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -289,6 +309,9 @@ Radius: 3
 Range: 36
 Cast time: 3s</description>
 		<manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>.4</learnChance>
+		<canCopy>true</canCopy>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Polymorph</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -342,6 +365,8 @@ Radius: 3
 Range: 38
 Cast time: 2.8s</description>
 		<manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Polymorph</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -395,6 +420,8 @@ Radius: 4
 Range: 40
 Cast time: 2.6s</description>
 		<manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Polymorph</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -448,6 +475,8 @@ Radius: 4
 Range: 42
 Cast time: 2.4s</description>
 		<manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Polymorph</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -493,6 +522,9 @@ Cast time: 2.4s</description>
 	
 Shapeshifting is not without minor side effects; shapeshifting into an animal will cause the enchanter to inherit instincts and behavior of the animal, if they haven't been given specific instructions, they will wander or do other random tasks an animal would normally do.</description>
     <manaCost>0.40</manaCost>
+	<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+	<learnItem>SpellOf_Shapeshift</learnItem>
+	<learnChance>.15</learnChance>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Shapeshift</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -530,6 +562,9 @@ Shapeshifting is not without minor side effects; shapeshifting into an animal wi
 	
 Dire wolves are unique animals with a special connection to magic. While in dire wolf form, enchanters can exert small quantities of magic to allow the dire wolf to briefly phase in and out of reality.</description>
     <manaCost>0.50</manaCost>
+	<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+	<learnChance>0</learnChance>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_ShapeshiftDW</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

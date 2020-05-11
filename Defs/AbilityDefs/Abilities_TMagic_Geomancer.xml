@@ -30,6 +30,9 @@ Stoneskin requires a constant reserve of mana to maintain, each application will
 
 Applying stoneskin to a target that already has stoneskin will remove all charges of stoneskin on the target and dissipate the spell (returning mana reserves back to the caster).</description>
         <manaCost>0.15</manaCost>
+		<upkeepEnergyCost>.15</upkeepEnergyCost>
+		<upkeepEfficiencyPercent>.13</upkeepEfficiencyPercent>
+		<learnChance>.4</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Stoneskin</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -65,6 +68,7 @@ Applying stoneskin to a target that already has stoneskin will remove all charge
     <uiIconPath>UI/dispelstoneskin</uiIconPath>
     <description>Dispels all instances of stoneskin maintained by this pawn.</description>
     <manaCost>0.0</manaCost>
+	<shouldInitialize>false</shouldInitialize>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_DispelStoneskin</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -181,6 +185,9 @@ Radius: 3
 Range: 50
 Cast time: 1.5s</description>
         <manaCost>0.30</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.6</learnChance>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -220,6 +227,8 @@ Radius: 4
 Range: 55
 Cast time: 1.3s</description>
         <manaCost>0.30</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -259,6 +268,8 @@ Radius: 5
 Range: 60
 Cast time: 1.1s</description>
         <manaCost>0.30</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -298,6 +309,8 @@ Radius: 6
 Range: 65
 Cast time: 1.0s</description>
         <manaCost>0.30</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -339,6 +352,8 @@ Once summoned, they will continue to work on the terrain, even moving to nearby 
 
 In exchange for their efforts, earth sprites expect a steady and substantial supply of mana. If the geomancer fails to meet this request, the earth sprites will fade away. Each geomancer can only request the help of a single earth sprite, regardless of how much mana they have.</description>
         <manaCost>0.60</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_EarthSprites</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -375,6 +390,7 @@ In exchange for their efforts, earth sprites expect a steady and substantial sup
     <uiIconPath>UI/dismissearthsprite</uiIconPath>
     <description>Dismisses a active earth sprite.</description>
     <manaCost>0.0</manaCost>
+	<shouldInitialize>false</shouldInitialize>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_DismissEarthSprites</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -431,6 +447,9 @@ In exchange for their efforts, earth sprites expect a steady and substantial sup
 		
 The first, and every third stone after, will always be subterranean unless there is insufficient gravitational energy in which case the geomancer will attempt to use the remaining energy throwing nearby stones. The extreme shift in gravity will temporarily disorient the geomancer.</description>
         <manaCost>0.40</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>.5</learnChance>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -489,6 +508,9 @@ Using this ability on a dormant sentinel will dismiss the sentinel. Each sentine
 
 *Aesthetic note: sentinels will always face away from the caster.</description>
 		<manaCost>0.20</manaCost>
+		<upkeepEnergyCost>.15</upkeepEnergyCost>
+		<upkeepEfficiencyPercent>.15</upkeepEfficiencyPercent>
+		<learnChance>.3</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -524,6 +546,7 @@ Using this ability on a dormant sentinel will dismiss the sentinel. Each sentine
     <uiIconPath>UI/shattersentinel</uiIconPath>
     <description>All sentinels maintained by this pawn are shattered in a violent eruption.</description>
     <manaCost>0.0</manaCost>
+	<shouldInitialize>false</shouldInitialize>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_ShatterSentinel</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -565,6 +588,9 @@ The core of the meteorite is always composed of valuable material.
 Radius: 2
 Cast time: 5s</description>
         <manaCost>0.90</manaCost>
+		<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<learnItem>SpellOf_Meteor</learnItem>
+		<learnChance>.06</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Meteor</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -613,6 +639,10 @@ The core of the meteorite is always composed of valuable material.
 Radius: 3
 Cast time: 4.6s</description>
         <manaCost>0.90</manaCost>
+		<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<learnItem>SpellOf_Meteor</learnItem>
+		<learnChance>.06</learnChance>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Meteor</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -661,6 +691,10 @@ The core of the meteorite is always composed of valuable material.
 Radius: 4
 Cast time: 4.2s</description>
         <manaCost>0.90</manaCost>
+		<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<learnItem>SpellOf_Meteor</learnItem>
+		<learnChance>.06</learnChance>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Meteor</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -709,6 +743,10 @@ The core of the meteorite is always composed of valuable material.
 Radius: 5
 Cast time: 3.8s</description>
         <manaCost>0.90</manaCost>
+		<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<learnItem>SpellOf_Meteor</learnItem>
+		<learnChance>.06</learnChance>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Meteor</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

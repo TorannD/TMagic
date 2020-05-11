@@ -18,6 +18,7 @@ Last, but not least, the Shroud is able to nullify projectiles near the death kn
 
 All of these functions are enhanced as hate levels grow and must have a sufficient level of hate to function at all.</description>
     <staminaCost>0.00</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -70,6 +71,8 @@ All of these functions are enhanced as hate levels grow and must have a sufficie
 	
 Hate is not required to use this ability, but it's effective range is greatly increased by hate levels.</description>
     <staminaCost>0.30</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<canCopy>true</canCopy>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -124,6 +127,7 @@ Cast time: 1s
 Cooldown : 5s
 Range: 21</description>
         <staminaCost>0.20</staminaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -163,6 +167,8 @@ Cast time: .8s
 Cooldown : 4s
 Range: 24</description>
         <staminaCost>0.20</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -202,6 +208,8 @@ Cast time: .6s
 Cooldown : 3s
 Range: 27</description>
         <staminaCost>0.20</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -241,6 +249,8 @@ Cast time: .4s
 Cooldown : 2s
 Range: 30</description>
         <staminaCost>0.20</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
@@ -278,6 +288,7 @@ Range: 30</description>
     <uiIconPath>UI/soulsteal</uiIconPath>
     <description>Leach spirit from enemies struck in melee combat to restore life and energy to the death knight.</description>
     <staminaCost>0.00</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>AbilityUser.Verb_UseAbility</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -388,10 +399,12 @@ Range: 30</description>
         <uiIconPath>UI/graveblade</uiIconPath>
         <description>Spirit blades strike from the grave.
 
-Range: 30
+Range: 35
 Cast time: 1.6s
 Radius: 3.0</description>
-        <staminaCost>0.65</staminaCost>
+        <staminaCost>0.60</staminaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -405,8 +418,8 @@ Radius: 3.0</description>
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
             <warmupTime>1.6</warmupTime>
-            <SecondsToRecharge>300.0</SecondsToRecharge>
-            <range>30</range>
+            <SecondsToRecharge>60.0</SecondsToRecharge>
+            <range>35</range>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
@@ -422,10 +435,12 @@ Radius: 3.0</description>
         <uiIconPath>UI/graveblade</uiIconPath>
         <description>Spirit blades strike from the grave.
 
-Range: 33
+Range: 38
 Cast time: 1.4s
 Radius: 3.4</description>
-        <staminaCost>0.65</staminaCost>
+        <staminaCost>0.60</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -439,8 +454,8 @@ Radius: 3.4</description>
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
             <warmupTime>1.4</warmupTime>
-            <SecondsToRecharge>300.0</SecondsToRecharge>
-            <range>33</range>
+            <SecondsToRecharge>55.0</SecondsToRecharge>
+            <range>38</range>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
@@ -456,10 +471,12 @@ Radius: 3.4</description>
         <uiIconPath>UI/graveblade</uiIconPath>
         <description>Spirit blades strike from the grave.
 
-Range: 36
+Range: 41
 Cast time: 1.2s
 Radius: 3.8</description>
-        <staminaCost>0.65</staminaCost>
+        <staminaCost>0.60</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -473,8 +490,8 @@ Radius: 3.8</description>
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
             <warmupTime>1.2</warmupTime>
-            <SecondsToRecharge>300.0</SecondsToRecharge>
-            <range>36</range>
+            <SecondsToRecharge>50.0</SecondsToRecharge>
+            <range>41</range>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
@@ -490,10 +507,12 @@ Radius: 3.8</description>
         <uiIconPath>UI/graveblade</uiIconPath>
         <description>Spirit blades strike from the grave.
 
-Range: 39
+Range: 44
 Cast time: 1s
 Radius: 4.2</description>
-        <staminaCost>0.65</staminaCost>
+        <staminaCost>0.60</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -507,8 +526,8 @@ Radius: 4.2</description>
 				<canTargetSelf>false</canTargetSelf>
             </targetParams>
             <warmupTime>1</warmupTime>
-            <SecondsToRecharge>300.0</SecondsToRecharge>
-            <range>39</range>
+            <SecondsToRecharge>45.0</SecondsToRecharge>
+            <range>44</range>
 			<isViolent>true</isViolent>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>

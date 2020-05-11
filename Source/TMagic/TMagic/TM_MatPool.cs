@@ -25,7 +25,7 @@ namespace TorannMagic
         public static readonly Material multiForkLightning = MaterialPool.MatFrom("Spells/LightningBolt_w", ShaderDatabase.MoteGlow);
         public static readonly Material standardLightning = MatLoader.LoadMat("Weather/LightningBolt", -1);
 
-        //Colonist bar icons
+        //Colonist bar icons        
         public static readonly Texture2D bardIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/bardMageMark", true);
         public static readonly Texture2D arcanistIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/arcanistMageMark", true);
         public static readonly Texture2D bloodmageIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/bloodMageMark", true);
@@ -59,6 +59,7 @@ namespace TorannMagic
 
         public static readonly Texture2D wandererIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/wandererFlame", true);
         public static readonly Texture2D wayfarerIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/wayfarerFlame", true);
+
 
         //skeleton chain
         public static readonly Material circleChain = MaterialPool.MatFrom("PawnKind/skeleton_chain_circle", ShaderDatabase.MoteGlow);

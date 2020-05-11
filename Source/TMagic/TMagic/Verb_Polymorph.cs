@@ -88,7 +88,7 @@ namespace TorannMagic
                     else
                     {
                         float enchantChance = .5f;
-                        if (newPawn.RaceProps.IsFlesh)
+                        if (!TM_Calc.IsRobotPawn(newPawn))
                         {
                             enchantChance = (.5f + (.1f * pwrVal) * TM_Calc.GetSpellSuccessChance(this.CasterPawn, newPawn));
                         }

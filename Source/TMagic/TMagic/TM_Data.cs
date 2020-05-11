@@ -98,6 +98,70 @@ namespace TorannMagic
             return enumerable.ToList();
         }
 
+        public static List<TraitDef> MagicTraits
+        {
+            get
+            {
+                List<TraitDef> magicTraits = new List<TraitDef>();
+                magicTraits.Clear();
+                magicTraits.Add(TorannMagicDefOf.Arcanist);
+                magicTraits.Add(TorannMagicDefOf.InnerFire);
+                magicTraits.Add(TorannMagicDefOf.HeartOfFrost);
+                magicTraits.Add(TorannMagicDefOf.StormBorn);
+                magicTraits.Add(TorannMagicDefOf.Druid);
+                magicTraits.Add(TorannMagicDefOf.Priest);
+                magicTraits.Add(TorannMagicDefOf.Necromancer);
+                magicTraits.Add(TorannMagicDefOf.Technomancer);
+                magicTraits.Add(TorannMagicDefOf.Geomancer);
+                magicTraits.Add(TorannMagicDefOf.Warlock);
+                magicTraits.Add(TorannMagicDefOf.Succubus);
+                magicTraits.Add(TorannMagicDefOf.ChaosMage);
+                magicTraits.Add(TorannMagicDefOf.Paladin);
+                magicTraits.Add(TorannMagicDefOf.Summoner);
+                magicTraits.Add(TorannMagicDefOf.Lich);
+                magicTraits.Add(TorannMagicDefOf.TM_Bard);
+                magicTraits.Add(TorannMagicDefOf.Chronomancer);
+                magicTraits.Add(TorannMagicDefOf.Enchanter);
+                magicTraits.Add(TorannMagicDefOf.BloodMage);
+                magicTraits.Add(TorannMagicDefOf.TM_Wanderer);
+                magicTraits.Add(TorannMagicDefOf.Gifted);
+                return magicTraits;
+            }
+        }
+
+        public static List<TraitDef> MightTraits
+        {
+            get
+            {
+                List<TraitDef> mightTraits = new List<TraitDef>();
+                mightTraits.Clear();
+                mightTraits.Add(TorannMagicDefOf.Bladedancer);
+                mightTraits.Add(TorannMagicDefOf.Gladiator);
+                mightTraits.Add(TorannMagicDefOf.Faceless);
+                mightTraits.Add(TorannMagicDefOf.TM_Sniper);
+                mightTraits.Add(TorannMagicDefOf.Ranger);
+                mightTraits.Add(TorannMagicDefOf.TM_Psionic);
+                mightTraits.Add(TorannMagicDefOf.TM_Monk);
+                mightTraits.Add(TorannMagicDefOf.TM_Commander);
+                mightTraits.Add(TorannMagicDefOf.TM_SuperSoldier);
+                mightTraits.Add(TorannMagicDefOf.TM_Wayfarer);
+                mightTraits.Add(TorannMagicDefOf.PhysicalProdigy);
+                return mightTraits;
+            }
+        }
+
+        public static List<TraitDef> AllClassTraits
+        {
+            get
+            {
+                List<TraitDef> allClassTraits = new List<TraitDef>();
+                allClassTraits.Clear();
+                allClassTraits.AddRange(MightTraits);
+                allClassTraits.AddRange(MagicTraits);
+                return allClassTraits;
+            }
+        }
+
         public static List<ThingDef> PistolList()
         {
             List<ThingDef> pistols = new List<ThingDef>();

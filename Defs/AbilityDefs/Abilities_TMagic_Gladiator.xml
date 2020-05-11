@@ -24,8 +24,13 @@
     <defName>TM_Sprint</defName>
     <label>Sprint</label>
     <uiIconPath>UI/sprint2</uiIconPath>
-    <description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30 Stamina to sustain.</description>
+    <description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30 Stamina to sustain and reduces stamina regen by 20%.</description>
     <staminaCost>0.0</staminaCost>
+	<abilityHediff>TM_HediffSprint</abilityHediff>
+	<upkeepEnergyCost>.3</upkeepEnergyCost>
+	<upkeepRegenCost>.2</upkeepRegenCost>
+	<upkeepEfficiencyPercent>.15</upkeepEfficiencyPercent>
+	<learnItem>SkillOf_Sprint</learnItem>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Sprint</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -63,8 +68,13 @@
     <defName>TM_Sprint_I</defName>
     <label>Sprint</label>
     <uiIconPath>UI/sprint2</uiIconPath>
-    <description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30 Stamina to sustain.</description>
+    <description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30 Stamina to sustain and reduces stamina regen by 20%.</description>
     <staminaCost>0.0</staminaCost>
+	<abilityHediff>TM_HediffSprint</abilityHediff>
+	<upkeepEnergyCost>.3</upkeepEnergyCost>
+	<upkeepRegenCost>.20</upkeepRegenCost>
+	<upkeepEfficiencyPercent>.15</upkeepEfficiencyPercent>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Sprint</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -102,8 +112,13 @@
     <defName>TM_Sprint_II</defName>
     <label>Sprint</label>
     <uiIconPath>UI/sprint2</uiIconPath>
-    <description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30 Stamina to sustain.</description>
+    <description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30 Stamina to sustain and reduces stamina regen by 20%.</description>
     <staminaCost>0.0</staminaCost>
+	<abilityHediff>TM_HediffSprint</abilityHediff>
+	<upkeepEnergyCost>.3</upkeepEnergyCost>
+	<upkeepRegenCost>.2</upkeepRegenCost>
+	<upkeepEfficiencyPercent>.15</upkeepEfficiencyPercent>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Sprint</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -141,8 +156,13 @@
     <defName>TM_Sprint_III</defName>
     <label>Sprint</label>
     <uiIconPath>UI/sprint2</uiIconPath>
-    <description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30 Stamina to sustain.</description>
+    <description>Activates or deactivates the sustained combat skill Sprint - greatly increases movement speed but causes exhaustion. Requires 30 Stamina to sustain and reduces stamina regen by 20%.</description>
     <staminaCost>0.0</staminaCost>
+	<abilityHediff>TM_HediffSprint</abilityHediff>
+	<upkeepEnergyCost>.3</upkeepEnergyCost>
+	<upkeepRegenCost>.2</upkeepRegenCost>
+	<upkeepEfficiencyPercent>.15</upkeepEfficiencyPercent>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Sprint</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -204,7 +224,8 @@
     <description>Mitigates a set amount of damage each hit.
 Base mitigation: 2</description>
 <!--    <thingClass>ThingWithComps</thingClass> -->
-    <staminaCost>0.10</staminaCost>
+    <staminaCost>0.0</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>AbilityUser.Verb_UseAbility</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -271,6 +292,8 @@ Base mitigation: 2</description>
 Casting time: 1s
 Range: 12</description>
         <staminaCost>0.08</staminaCost>		
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Grapple</verbClass>
 			<!-- <verbClass>AbilityUser.Verb_UseAbility_TrueBurst</verbClass> -->
@@ -303,6 +326,8 @@ Range: 12</description>
 Casting time: .6s
 Range: 14</description>
         <staminaCost>0.08</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Grapple</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -335,6 +360,8 @@ Range: 14</description>
 Casting time: .4s
 Range: 17</description>
         <staminaCost>0.08</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Grapple</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -367,6 +394,8 @@ Range: 17</description>
 Casting time: .2s
 Range: 20</description>
         <staminaCost>0.08</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Grapple</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -422,6 +451,9 @@ Range: 20</description>
         <uiIconPath>UI/cleave</uiIconPath>
         <description>Executes a powerful, sweeping blow that can strike multiple enemies adjacent to the target. As long as the gladiator has enough stamina, this ability works automatically whenever the gladiator performs a melee attack. Cleave chance is calculated from weapon mass - heavier weapons are more likely to cleave.</description>
         <staminaCost>0.08</staminaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<weaponDamageFactor>.35</weaponDamageFactor>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Cleave</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -489,6 +521,8 @@ Range: 20</description>
         <uiIconPath>UI/whirlwind</uiIconPath>
         <description>The Gladiator launches into a frenzied attack, dancing forward in a furious whirlwind of steel and death.</description>
         <staminaCost>0.30</staminaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Effect_Whirlwind</verbClass>
             <hasStandardCommand>true</hasStandardCommand>

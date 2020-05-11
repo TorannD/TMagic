@@ -40,7 +40,7 @@ namespace TorannMagic
                 //}
                 CellRect cellRect = CellRect.CenteredOn(base.Position, 1);
                 cellRect.ClipInsideMap(map);
-                int dmg = GetWeaponDmg(pawn, this.def);
+                int dmg = GetWeaponDmg(pawn);
 
                 if (victim != null && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracyPawn, true)))
                 {
@@ -57,53 +57,20 @@ namespace TorannMagic
             }
         }
 
-        public static int GetWeaponDmg(Pawn pawn, ThingDef projectileDef)
+        public static int GetWeaponDmg(Pawn pawn)
         {
             CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
-            //MightPowerSkill pwr = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Headshot.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Headshot_pwr");
             pwrVal = TM_Calc.GetMightSkillLevel(pawn, comp.MightData.MightPowerSkill_Headshot, "TM_Headshot", "_pwr", true);
-            MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
-            //pwrVal = pwr.level;
-            //if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-            //{
-            //    MightPowerSkill mpwr = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
-            //    pwrVal = mpwr.level;
-            //}
-            ThingWithComps arg_3C_0;
-            int value = 0;
-            if (pawn == null)
-            {
-                arg_3C_0 = null;
-            }
-            else
-            {
-                Pawn_EquipmentTracker expr_eq = pawn.equipment;
-                arg_3C_0 = ((expr_eq != null) ? expr_eq.Primary : null);
-            }
-            ThingWithComps thing;
-            bool flag31 = (thing = arg_3C_0) != null;
-            if (flag31)
-            {
-                value = Mathf.RoundToInt(thing.GetStatValue(StatDefOf.MarketValue));
-            }
 
-            int dmg;
-            if (value > 1000)
-            {
-                value -= 1000;
-                dmg = (projectileDef.projectile.GetDamageAmount(1,null)) + (int)((20 + (value / 120)) * (1 + (.1f * pwrVal)));
-            }
-            else
-            {
-                dmg = (projectileDef.projectile.GetDamageAmount(1,null)) + (int)((value / 50) * (1 + (.1f * pwrVal)));
-            }
+            float dmg = comp.weaponDamage;
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             if (!pawn.IsColonist && settingsRef.AIHardMode)
             {
                 dmg += 8;
             }
-            dmg = Mathf.Clamp(dmg, 0, 60);
-            return Mathf.RoundToInt(dmg * comp.mightPwr);
+
+            dmg = Mathf.RoundToInt(dmg * (1f + (.1f * pwrVal)) * TorannMagicDefOf.TM_Headshot.weaponDamageFactor);
+            return (int)Mathf.Clamp(dmg, 0, 60);
         }
 
         public void PenetratingShot(Pawn victim, int dmg, DamageDef dmgType)

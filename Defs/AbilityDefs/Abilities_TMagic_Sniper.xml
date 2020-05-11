@@ -31,6 +31,7 @@ Sniper: Speed +0.15c/s, Aiming Delay -15%, Shooting Acc. +4%, Research and work 
 Master Sniper: Speed +0.2c/s, Aiming Delay -22%, Shooting Acc. +6%, Research and work speed -15%, tame and train animal -15%
 Legendary Sniper: Speed +0.25c/s, Aiming Delay -30%, Shooting Acc. +8%, Research and work speed -16%, tame and train animal -16%</description>
     <staminaCost>0.01</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SniperFocus</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -81,6 +82,9 @@ Legendary Sniper: Speed +0.25c/s, Aiming Delay -30%, Shooting Acc. +8%, Research
     <uiIconPath>UI/headshot</uiIconPath>
     <description>A lethal shot that targets a vital bodypart like the head or heart. Effective on non-humanoids and humanoids alike. Headshot success chance is reduced against targets with thick armor protecting their vital organs.</description>
     <staminaCost>0.40</staminaCost>
+	<canCopy>true</canCopy>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<weaponDamageFactor>.6</weaponDamageFactor>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SniperShot</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -136,6 +140,8 @@ Range: 20
 Firing Delay: 2.5s
 Recharge 45s</description>
     <staminaCost>0.30</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<canCopy>true</canCopy>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SniperShot</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -173,6 +179,8 @@ Range: 22
 Firing Delay: 2.3s
 Recharge 43s</description>
     <staminaCost>0.30</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SniperShot</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -210,6 +218,8 @@ Range: 25
 Firing Delay: 2.1s
 Recharge 41s</description>
     <staminaCost>0.30</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SniperShot</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -247,6 +257,8 @@ Range: 27
 Firing Delay: 2s
 Recharge 40s</description>
     <staminaCost>0.30</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SniperShot</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -294,9 +306,12 @@ Recharge 40s</description>
  <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
     <defName>TM_AntiArmor</defName>
     <label>Anti-Armor</label>
-    <description>The sniper carries anti armor rounds for those special occasions. When this ammunition shatters, it releases nanites that will shred through any armor they make contact with. Relatively ineffective against soft targets but does double damage to to everything else.</description>
+    <description>The sniper carries anti armor rounds for those special occasions. When this ammunition shatters, it releases nanites that will shred through any armor they make contact with. Relatively ineffective against soft targets but does extra damage to hard targets.</description>
 	<uiIconPath>Spells/InfernoCannonShot</uiIconPath>
     <staminaCost>0.30</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<canCopy>true</canCopy>
+	<weaponDamageFactor>.5</weaponDamageFactor>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SniperShot</verbClass>
 			<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>

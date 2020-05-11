@@ -123,8 +123,8 @@ namespace TorannMagic
                         foreach (Pawn current in base.Pawn.Map.mapPawns.PawnsInFaction(base.Pawn.Faction))
                         {
                             if (current.RaceProps.Humanlike)
-                            {
-                                if (current.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || current.story.traits.HasTrait(TorannMagicDefOf.Lich))
+                            {                                
+                                if (current.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || current.story.traits.HasTrait(TorannMagicDefOf.Lich) || TM_Calc.IsNecromancer(current))
                                 {
                                     //necromancer alive to sustain undead                                
                                     necroValid = true;
@@ -151,7 +151,7 @@ namespace TorannMagic
                                 {
                                     if (current.RaceProps.Humanlike)
                                     {
-                                        if (current.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || current.story.traits.HasTrait(TorannMagicDefOf.Lich))
+                                        if (current.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || current.story.traits.HasTrait(TorannMagicDefOf.Lich) || TM_Calc.IsNecromancer(current))
                                         {
                                             necroValid = true;
                                         }

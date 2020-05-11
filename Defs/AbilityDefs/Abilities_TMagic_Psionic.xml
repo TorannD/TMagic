@@ -43,6 +43,8 @@
 	
 A well trained psionic is able to achieve incredible physical feats using a blend of psionic and physical strength. Psionic augmentation becomes second nature and occurs naturally both in and out of combat.</description>
     <staminaCost>0</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
+	<abilityHediff>TM_PsionicHD</abilityHediff>	
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>AbilityUser.Verb_UseAbility</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -97,6 +99,7 @@ A well trained psionic is able to achieve incredible physical feats using a blen
 
 This ability requires 2 points to level.</description>
     <staminaCost>0.10</staminaCost>
+	<canCopy>true</canCopy>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_PsionicBarrier</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -131,6 +134,7 @@ This ability requires 2 points to level.</description>
 
 This barrier can be projected to a designation location.</description>
     <staminaCost>0.10</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_PsionicBarrier</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -189,6 +193,8 @@ Cast time: 	2s
 Cooldown:	12s
 Range:		28</description>
         <staminaCost>0.15</staminaCost>		
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PsionicBlast</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -222,6 +228,8 @@ Cast time: 	1.6s
 Cooldown:	10s
 Range:		34</description>
         <staminaCost>0.15</staminaCost>		
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PsionicBlast</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -255,6 +263,8 @@ Cast time: 	1.2s
 Cooldown:	8s
 Range:		40</description>
         <staminaCost>0.15</staminaCost>		
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PsionicBlast</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -288,6 +298,8 @@ Cast time: 	.8s
 Cooldown:	6s
 Range:		46</description>
         <staminaCost>0.15</staminaCost>		
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PsionicBlast</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -354,6 +366,8 @@ Range:		46</description>
     <description>The Psionic infuses their body with an overwhelming amount of energy and uses it to propel themselves in a rapid burst of movement. Each step emits shockwaves of energy.</description>
 <!--    <thingClass>ThingWithComps</thingClass> -->
     <staminaCost>0.25</staminaCost>
+	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+	<canCopy>true</canCopy>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Effect_PsionicDash</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -425,6 +439,7 @@ Range:		46</description>
         <uiIconPath>UI/psionicstorm</uiIconPath>
         <description>The Psionic lets down all mental barriers and unleashes their unrestrained psionic power. Due to the nature of this attack, the psionic will expend a tremendous amount of energy and will be left vulnerable, unable to exert psionic power, for a period following the attack.</description>
         <staminaCost>0.30</staminaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Effect_PsionicStorm</verbClass>
             <hasStandardCommand>true</hasStandardCommand>

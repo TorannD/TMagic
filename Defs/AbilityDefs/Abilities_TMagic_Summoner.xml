@@ -26,6 +26,9 @@
     <uiIconPath>PawnKind/minion_south</uiIconPath>
     <description>Summons minions to assist in daily tasks.</description>
     <manaCost>0.40</manaCost>
+	<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnItem>SpellOf_SummonMinion</learnItem>
+		<learnChance>.3</learnChance>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -59,6 +62,7 @@
     <uiIconPath>UI/dismissminion</uiIconPath>
     <description>Dismisses a summoned minion.</description>
     <manaCost>0.0</manaCost>
+	<shouldInitialize>false</shouldInitialize>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_DismissMinion</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -113,6 +117,9 @@
     <uiIconPath>UI/defense_pylon</uiIconPath>
     <description>Summons and manifests magical energy to form an automated defense turret that is tethered to a physical location.  The turret channels arcane current into a focal point that emits bursts of raw energy.  When the tether holding the turret to the physical world dissipates, the turret will harmlessly dissolve back into magical energy.  If the turret is destroyed, this event can be more destructive.</description>
     <manaCost>0.34</manaCost>
+	<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.5</learnChance>
+		<canCopy>true</canCopy>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -166,6 +173,9 @@
     <uiIconPath>UI/ManaMine</uiIconPath>
     <description>Creates a mine out of compressed, raw mana and tethers it to a physical location.  The mine will harmlessly dissolve if the tether runs out of energy that is holding the mine.</description>
     <manaCost>0.24</manaCost>
+	<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.5</learnChance>
+		<canCopy>true</canCopy>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -219,6 +229,9 @@
     <uiIconPath>UI/Elemental</uiIconPath>
     <description>Calls forth a monstrous elemental from a plane of power to crush your foes.  These beings will defend a location and immediately engage an enemy if one is nearby.  However, if there are no enemies, they tend to get bored rather quickly and will wander from their summoned position.  They will not do such menial tasks as "hauling" or "cleaning," as these are the jobs of lesser beings.  Due to the power of the summoning, the elemental can only exist in this realm for a short time.  The type of elemental is random.</description>
     <manaCost>0.55</manaCost>
+	<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
+		<canCopy>true</canCopy>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -274,6 +287,9 @@
     <uiIconPath>UI/poppihorde</uiIconPath>
     <description>Summon a pack of vicious poppi straight from the gates of insanity. This pack of poppi are rabid and will eagerly tear into enemy formations.</description>
     <manaCost>0.60</manaCost>
+	<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<learnItem>SpellOf_SummonPoppi</learnItem>
+		<learnChance>.06</learnChance>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

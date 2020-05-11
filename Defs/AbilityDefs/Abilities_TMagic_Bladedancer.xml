@@ -31,6 +31,7 @@ Blademaster: Speed +0.2c/s, MBT -5%, Hit chance +6%, Dodge +10%, Shooting Acc. -
 Bladedancer: Speed +0.3c/s, MBT -8%, Hit chance +10%, Dodge +15%, Shooting Acc. -28%, Global Workspeed -6%, Pain threshold +5%
 Legendary Bladedancer: Speed +0.4c/s, MBT -10%, Hit chance +15%, Dodge +20%, Shooting Acc. -30%, Global Workspeed -5%, Pain threshold +10%</description>
     <staminaCost>0.01</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_BladeFocus</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -86,6 +87,8 @@ Level 1: Moving +15%, Manipulation +15%
 Level 2: Moving +20%, Manipulation +20%, Breathing +10%
 Level 3: Moving +25%, Manipulation +25%, Breathing +15%, Blood pumping +10%, Blood filtration +10%</description>
     <staminaCost>0.01</staminaCost>
+	<abilityHediff>TM_BladeArtHD</abilityHediff>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_BladeArt</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -143,6 +146,9 @@ Level 3: Moving +25%, Manipulation +25%, Breathing +15%, Blood pumping +10%, Blo
         <uiIconPath>UI/bladespin</uiIconPath>
         <description>The blademaster seems to blur for a split second, striking all nearby targets in a flurry of steel.</description>
         <staminaCost>0.25</staminaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<weaponDamageFactor>.45</weaponDamageFactor>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BladeSpin</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -197,6 +203,9 @@ Level 3: Moving +25%, Manipulation +25%, Breathing +15%, Blood pumping +10%, Blo
         <uiIconPath>UI/seismicslash</uiIconPath>
         <description>Harnessing the emotionless soul of the blade, the bladedancer unleashes a strike that rends the fabric of space along a line.</description>
         <staminaCost>0.25</staminaCost>
+		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
+		<weaponDamageFactor>.52</weaponDamageFactor>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SeismicSlash</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -249,6 +258,9 @@ Warmup: .3s
 Cooldown: 25s
 Range: 30</description>
         <staminaCost>0.30</staminaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<weaponDamageFactor>.4</weaponDamageFactor>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PhaseStrike</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -284,6 +296,9 @@ Warmup: .2s
 Cooldown: 23s
 Range: 35</description>
         <staminaCost>0.30</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<weaponDamageFactor>.4</weaponDamageFactor>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PhaseStrike</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -319,6 +334,9 @@ Warmup: .1s
 Cooldown: 21s
 Range: 40</description>
         <staminaCost>0.30</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<weaponDamageFactor>.4</weaponDamageFactor>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PhaseStrike</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -354,6 +372,9 @@ Warmup: 0s
 Cooldown: 20s
 Range: 45</description>
         <staminaCost>0.30</staminaCost>
+		<shouldInitialize>false</shouldInitialize>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<weaponDamageFactor>.4</weaponDamageFactor>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PhaseStrike</verbClass>
             <hasStandardCommand>true</hasStandardCommand>

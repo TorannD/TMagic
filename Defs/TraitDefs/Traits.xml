@@ -1411,7 +1411,33 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wayfarer</li>
 		  <li>Chronomancer</li>
 		  <li>TM_SuperSoldier</li>
-		  <li>TM_Commander</li>
+		  <li>TM_Commander</li>		  
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>  <!-- Custom Class -->
+		<defName>TM_TheShadow</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
+		<degreeDatas>	
+		  <li>
+			<label>Shadow</label>
+			<description>[PAWN_nameDef] is a half-breed demon with an affinity for shadow magic. [PAWN_pronoun] has developed [PAWN_possessive] unique talents through combat training and physical conditioning making [PAWN_objective] the perfect assassin.</description>
+			<degree>4</degree>
+			<statOffsets>
+				<PsychicSensitivity>0.25</PsychicSensitivity>
+				<GlobalLearningFactor>0.1</GlobalLearningFactor>
+				<PainShockThreshold>.20</PainShockThreshold>
+				<MoveSpeed>.25</MoveSpeed>
+				<MeleeHitChance>10</MeleeHitChance>
+				<MeleeDodgeChance>10</MeleeDodgeChance>
+				<ShootingAccuracyPawn>-25</ShootingAccuracyPawn>
+				<WorkSpeedGlobal>-0.10</WorkSpeedGlobal>
+				<ToxicSensitivity>-.20</ToxicSensitivity>
+			</statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
 		</conflictingTraits>	
 	</TraitDef>
 	

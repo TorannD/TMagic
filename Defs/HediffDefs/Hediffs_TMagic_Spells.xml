@@ -716,5 +716,32 @@
 			<destroyedOutLabel>removed</destroyedOutLabel>
 	</injuryProps>
   </HediffDef>
+  
+    <HediffDef ParentName="TM_InjuryBase">
+    <defName>TM_ToxinHD</defName>
+    <label>toxin</label>
+    <labelNoun>toxin</labelNoun>
+    <description>damage from toxins.</description>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>tended</labelTendedWell>
+        <labelTendedWellInner>tended</labelTendedWellInner>
+        <labelSolidTendedWell>tended</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_Infecter">
+        <infectionChance>0.0</infectionChance>
+      </li>
+      <li Class="HediffCompProperties_GetsPermanent">
+        <permanentLabel>toxic tissue</permanentLabel>
+      </li>
+    </comps>
+    <injuryProps>
+      <painPerSeverity>0.02</painPerSeverity>
+      <averagePainPerSeverityPermanent>0.01</averagePainPerSeverityPermanent>
+      <bleedRate>0</bleedRate>
+      <canMerge>true</canMerge>
+      <destroyedLabel>destroyed</destroyedLabel>
+    </injuryProps>
+  </HediffDef>
 
 </Defs>

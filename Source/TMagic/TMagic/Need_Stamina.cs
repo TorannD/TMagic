@@ -28,6 +28,10 @@ namespace TorannMagic
 
         private int lastGainTick;
 
+        public float baseStaminaGain;
+        public float modifiedStaminaGain;
+        public float drainSkillUpkeep;
+
         public StaminaPoolCategory CurCategory
         {
             get
@@ -137,6 +141,26 @@ namespace TorannMagic
             {
                 this.threshPercents.Add((1.75f / this.MaxLevel));
             }
+            if (this.MaxLevel > 2f)
+            {
+                this.threshPercents.Add((2f / this.MaxLevel));
+            }
+            if (this.MaxLevel > 2.5f)
+            {
+                this.threshPercents.Add((2.5f / this.MaxLevel));
+            }
+            if (this.MaxLevel > 3f)
+            {
+                this.threshPercents.Add((3f / this.MaxLevel));
+            }
+            if (this.MaxLevel > 4f)
+            {
+                this.threshPercents.Add((4f / this.MaxLevel));
+            }
+            if (this.MaxLevel > 5f)
+            {
+                this.threshPercents.Add((5f / this.MaxLevel));
+            }
         }
 
         public override void SetInitialLevel()
@@ -146,41 +170,28 @@ namespace TorannMagic
 
         public void GainNeed(float amount)
         {
-            if (base.pawn.Map != null && !base.pawn.NonHumanlikeOrWildMan())
+            if (!base.pawn.NonHumanlikeOrWildMan())
             {
                 Pawn pawn = base.pawn;
                 CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
-                MightPowerSkill staminaRefresh = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_global_refresh.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_refresh_pwr");
-                amount *= ((0.015f) + (0.0015f * staminaRefresh.level));
+                amount = amount * (0.015f);
+                this.baseStaminaGain = amount;                
+                amount *= comp.spRegenRate;               
+                if (pawn.health != null && pawn.health.hediffSet != null)
+                {
+                    Hediff hdRegen = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_EnergyRegenHD);
+                    if (hdRegen != null)
+                    {
+                        amount *= hdRegen.Severity;
+                    }
+                }
+                this.modifiedStaminaGain = amount - this.baseStaminaGain;
                 amount = Mathf.Min(amount, this.MaxLevel - this.CurLevel);
                 this.curLevelInt += amount;
                 this.lastGainPct = amount;
                 this.lastGainTick = Find.TickManager.TicksGame;
-            }
-            else
-            {
-                Pawn pawn = base.pawn;
-                CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
-                if (comp != null)
-                {
-                    if (comp.IsMightUser)
-                    {
-                        ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                        MightPowerSkill staminaRefresh = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_global_refresh.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_refresh_pwr");
-                        amount *= ((0.015f) + (0.0015f * staminaRefresh.level));
-                        amount = Mathf.Min(amount, this.MaxLevel - this.CurLevel);
-                        comp.Stamina.curLevelInt = Mathf.Clamp(comp.Stamina.curLevelInt += amount, 0f, this.MaxLevel);
+                comp.Stamina.curLevelInt = Mathf.Clamp(comp.Stamina.curLevelInt += amount, 0f, this.MaxLevel);
 
-                        if (pawn.health != null && pawn.health.hediffSet != null)
-                        {
-                            Hediff hdRegen = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_EnergyRegenHD);
-                            if (hdRegen != null)
-                            {
-                                amount *= hdRegen.Severity;
-                            }
-                        }
-                    }
-                }
             }
             AdjustThresh();
         }

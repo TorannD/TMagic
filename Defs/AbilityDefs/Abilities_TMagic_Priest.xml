@@ -28,6 +28,9 @@
     <uiIconPath>UI/advancedheal</uiIconPath>
     <description>Invokes holy power to greatly heal the wounds of a target. Base heal restores 14 health for up to 3 wounds. Will immediately seal the bleeding of wounds from missing bodyparts.</description>
     <manaCost>0.24</manaCost>
+	<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.4</learnChance>
+		<canCopy>true</canCopy>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_AdvancedHeal</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -62,6 +65,9 @@
     <uiIconPath>UI/purify</uiIconPath>
     <description>Invokes holy power to purify scars on the body, mind, and soul.</description>
     <manaCost>0.70</manaCost>
+	<efficiencyReductionPercent>.07</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
+		<canCopy>true</canCopy>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Purify</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -171,6 +177,9 @@
 Circle radius: 3
 Range: 30</description>
         <manaCost>0.60</manaCost>
+		<efficiencyReductionPercent>.07</efficiencyReductionPercent>
+		<learnChance>.3</learnChance>
+		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -207,6 +216,8 @@ Range: 30</description>
 Circle radius: 4
 Range: 35</description>
         <manaCost>0.60</manaCost>
+		<efficiencyReductionPercent>.07</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -243,6 +254,8 @@ Range: 35</description>
 Circle radius: 5.5
 Range: 40</description>
         <manaCost>0.60</manaCost>
+		<efficiencyReductionPercent>.07</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -279,6 +292,8 @@ Range: 40</description>
 Circle radius: 7
 Range: 45</description>
         <manaCost>0.60</manaCost>
+		<efficiencyReductionPercent>.07</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -319,6 +334,9 @@ Physical capacity: 	+40%
 Physical demand: 	+50%
 Pain:		-40%</description>
 		<manaCost>0.25</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<learnChance>.4</learnChance>
+		<canCopy>true</canCopy>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -364,6 +382,8 @@ Physical capacity: 	+60%
 Physical demand: 	+60%
 Pain:		-50%</description>
 		<manaCost>0.25</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -409,6 +429,8 @@ Physical capacity: 	+80%
 Physical demand: 	+70%
 Pain:		-60%</description>
 		<manaCost>0.25</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -454,6 +476,8 @@ Physical capacity: 	~+100%
 Physical demand: 	+100%
 Pain:		-70%</description>
 		<manaCost>0.25</manaCost>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<shouldInitialize>false</shouldInitialize>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -512,6 +536,9 @@ Pain:		-70%</description>
     <uiIconPath>UI/resurrection</uiIconPath>
     <description>Resurrection restores the life of a recently deceased pawn. This places an immense demand on the Priest and resurrected pawn and both will be weak for several days while their strength recovers. Resurrection comes at a price; the resurrected pawn will forfeit up to 20% of their skills and may develop detrimental health conditions.</description>
     <manaCost>0.95</manaCost>
+	<efficiencyReductionPercent>.05</efficiencyReductionPercent>
+		<learnItem>SpellOf_Resurrection</learnItem>
+		<learnChance>.02</learnChance>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

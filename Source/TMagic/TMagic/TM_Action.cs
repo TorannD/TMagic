@@ -188,11 +188,11 @@ namespace TorannMagic
                     {
                         if (!mapPawns[i].DestroyedOrNull() && mapPawns[i].RaceProps.Humanlike)
                         {
-                            if (mapPawns[i].story.traits.HasTrait(TorannMagicDefOf.Technomancer) && mapPawns[i].GetComp<CompAbilityUserMagic>().IsMagicUser)
+                            if (comp.IsMagicUser)
                             {
-                                if (mapPawns[i].GetComp<CompAbilityUserMagic>().technoWeaponDefNum > highNum)
+                                if (comp.technoWeaponDefNum > highNum)
                                 {
-                                    highNum = mapPawns[i].GetComp<CompAbilityUserMagic>().technoWeaponDefNum;
+                                    highNum = comp.technoWeaponDefNum;
                                 }
                             }
                         }
@@ -1714,11 +1714,17 @@ namespace TorannMagic
                         //Log.Message("transumtation resource " + current.defName + " base value " + current.BaseMarketValue + " value count converts to " + newMatCount);
                     }
                 }
-
-                transmutateThing.SplitOff(transStackCount).Destroy(DestroyMode.Vanish);
+                if (!transmutateThing.DestroyedOrNull() && transStackCount <= 0)
+                {
+                    transmutateThing.Destroy(DestroyMode.Vanish);
+                }
+                else
+                {
+                    transmutateThing.SplitOff(transStackCount).Destroy(DestroyMode.Vanish);
+                }
                 Thing thing = null;
                 ThingDef newThingDef = enumerable.RandomElement();
-                newMatCount = transStackValue / newThingDef.BaseMarketValue;
+                newMatCount = Mathf.Max(transStackValue / newThingDef.BaseMarketValue, 1);
                 thing = ThingMaker.MakeThing(newThingDef);
                 thing.stackCount = Mathf.RoundToInt((.7f + (.05f * pwrVal)) * newMatCount);
 

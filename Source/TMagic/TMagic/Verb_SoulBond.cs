@@ -68,8 +68,8 @@ namespace TorannMagic
                     }
                     else
                     {
-                        flagSD = caster.story.traits.HasTrait(TorannMagicDefOf.Succubus) || (caster.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) && caster.gender == Gender.Female);
-                        flagWD = caster.story.traits.HasTrait(TorannMagicDefOf.Warlock) || (caster.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) && caster.gender == Gender.Male);                        
+                        flagSD = caster.gender == Gender.Female;
+                        flagWD = caster.gender == Gender.Male;                        
                         if (comp.soulBondPawn != null)
                         {
                             oldBondPawn = comp.soulBondPawn;

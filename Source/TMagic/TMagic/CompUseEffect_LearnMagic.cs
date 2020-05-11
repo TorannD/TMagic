@@ -11,456 +11,509 @@ namespace TorannMagic
 
 		public override void DoEffect(Pawn user)
 		{
-            if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.Gifted))
+            if (parent.def != null)
             {
-                Trait giftedTrait = new Trait();
-                if (parent.def.defName == "BookOfInnerFire" || parent.def.defName == "Torn_BookOfInnerFire")
+                bool customClass = false;
+                for(int i = 0; i < TM_ClassUtility.CustomClasses().Count; i++)
                 {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.InnerFire, 4, false));
-                    if (parent.def.defName == "BookOfInnerFire")
+                    if (TM_ClassUtility.CustomClasses()[i].isMage)
                     {
-                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                        if (parent.def == TM_ClassUtility.CustomClasses()[i].tornScript || parent.def == TM_ClassUtility.CustomClasses()[i].fullScript)
+                        {
+                            customClass = true;
+                            if (parent.def == TM_ClassUtility.CustomClasses()[i].fullScript)
+                            {
+                                HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                            }
+
+                            ApplyTrait(user, TM_ClassUtility.CustomClasses()[i].classTrait, TM_ClassUtility.CustomClasses()[i].traitDegree);
+                            
+                            //Unique actions hook
+                            ApplyTraitAdjustments(user, TM_ClassUtility.CustomClasses()[i].classTrait);
+                            //
+                            this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                            CompAbilityUserMagic comp = user.TryGetComp<CompAbilityUserMagic>();
+                            if (comp != null)
+                            {
+                                comp.customIndex = i;
+                                comp.customClass = TM_ClassUtility.CustomClasses()[i];
+                            }
+                            else
+                            {
+                                Log.Message("failed to initialize custom magic class comp");
+                            }
+                            CompAbilityUserMight mComp = user.TryGetComp<CompAbilityUserMight>();
+                            if (mComp != null && TM_ClassUtility.CustomClasses()[i].isFighter)
+                            {
+                                mComp.customIndex = i;
+                                mComp.customClass = TM_ClassUtility.CustomClasses()[i];
+                            }
+                            break;
+                        }
                     }
-                    //this.parent.Destroy(DestroyMode.Vanish);
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
-                else if (parent.def.defName == "BookOfHeartOfFrost" || parent.def.defName == "Torn_BookOfHeartOfFrost")
+                if (!customClass && user.story.traits.HasTrait(TorannMagicDefOf.Gifted))
                 {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.HeartOfFrost, 4, false));
-                    if (parent.def.defName == "BookOfHeartOfFrost")
-                    {
-                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
-                    }
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def.defName == "BookOfStormBorn" || parent.def.defName == "Torn_BookOfStormBorn")
-                {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.StormBorn, 4, false));
-                    if (parent.def.defName == "BookOfStormBorn")
-                    {
-                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
-                    }
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def.defName == "BookOfArcanist" || parent.def.defName == "Torn_BookOfArcanist")
-                {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Arcanist, 4, false));
-                    if (parent.def.defName == "BookOfArcanist")
-                    {
-                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
-                    }
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def.defName == "BookOfValiant" || parent.def.defName == "Torn_BookOfValiant")
-                {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Paladin, 4, false));
-                    if (parent.def.defName == "BookOfValiant")
-                    {
-                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
-                    }
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def.defName == "BookOfSummoner" || parent.def.defName == "Torn_BookOfSummoner")
-                {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Summoner, 4, false));
-                    if (parent.def.defName == "BookOfSummoner")
-                    {
-                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
-                    }
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def.defName == "BookOfDruid" || parent.def.defName == "Torn_BookOfNature")
-                {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Druid, 4, false));
-                    if (parent.def.defName == "BookOfDruid")
-                    {
-                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
-                    }
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def.defName == "BookOfNecromancer" || parent.def.defName == "Torn_BookOfUndead")
-                {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Necromancer, 4, false));
-                    if (parent.def.defName == "BookOfNecromancer")
-                    {
-                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
-                    }
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def.defName == "BookOfPriest" || parent.def.defName == "Torn_BookOfPriest")
-                {
-                    FixTrait(user, user.story.traits.allTraits);
-                    FixPriestSkills(user);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Priest, 4, false));
-                    if (parent.def.defName == "BookOfPriest")
-                    {
-                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
-                    }
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def.defName == "BookOfBard" || parent.def.defName == "Torn_BookOfBard")
-                {
-                    if (user.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Social)
+                    if (parent.def.defName == "BookOfInnerFire" || parent.def.defName == "Torn_BookOfInnerFire")
                     {
                         FixTrait(user, user.story.traits.allTraits);
-                        FixBardSkills(user);
-                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Bard, 0, false));
-                        if (parent.def.defName == "BookOfBard")
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.InnerFire, 4, false));
+                        if (parent.def.defName == "BookOfInnerFire")
+                        {
+                            HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                        }
+                        //this.parent.Destroy(DestroyMode.Vanish);
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                    else if (parent.def.defName == "BookOfHeartOfFrost" || parent.def.defName == "Torn_BookOfHeartOfFrost")
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.HeartOfFrost, 4, false));
+                        if (parent.def.defName == "BookOfHeartOfFrost")
                         {
                             HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
                         }
                         this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                     }
-                    else
+                    else if (parent.def.defName == "BookOfStormBorn" || parent.def.defName == "Torn_BookOfStormBorn")
                     {
-                        Messages.Message("TM_NotSocialCapable".Translate(
-                            user.LabelShort
-                        ), MessageTypeDefOf.RejectInput);
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.StormBorn, 4, false));
+                        if (parent.def.defName == "BookOfStormBorn")
+                        {
+                            HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                        }
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                     }
+                    else if (parent.def.defName == "BookOfArcanist" || parent.def.defName == "Torn_BookOfArcanist")
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Arcanist, 4, false));
+                        if (parent.def.defName == "BookOfArcanist")
+                        {
+                            HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                        }
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                    else if (parent.def.defName == "BookOfValiant" || parent.def.defName == "Torn_BookOfValiant")
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Paladin, 4, false));
+                        if (parent.def.defName == "BookOfValiant")
+                        {
+                            HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                        }
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                    else if (parent.def.defName == "BookOfSummoner" || parent.def.defName == "Torn_BookOfSummoner")
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Summoner, 4, false));
+                        if (parent.def.defName == "BookOfSummoner")
+                        {
+                            HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                        }
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                    else if (parent.def.defName == "BookOfDruid" || parent.def.defName == "Torn_BookOfNature")
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Druid, 4, false));
+                        if (parent.def.defName == "BookOfDruid")
+                        {
+                            HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                        }
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                    else if (parent.def.defName == "BookOfNecromancer" || parent.def.defName == "Torn_BookOfUndead")
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Necromancer, 4, false));
+                        if (parent.def.defName == "BookOfNecromancer")
+                        {
+                            HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                        }
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                    else if (parent.def.defName == "BookOfPriest" || parent.def.defName == "Torn_BookOfPriest")
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        FixPriestSkills(user);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Priest, 4, false));
+                        if (parent.def.defName == "BookOfPriest")
+                        {
+                            HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                        }
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                    else if (parent.def.defName == "BookOfBard" || parent.def.defName == "Torn_BookOfBard")
+                    {
+                        if (user.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Social)
+                        {
+                            FixTrait(user, user.story.traits.allTraits);
+                            FixBardSkills(user);
+                            user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Bard, 0, false));
+                            if (parent.def.defName == "BookOfBard")
+                            {
+                                HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                            }
+                            this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                        }
+                        else
+                        {
+                            Messages.Message("TM_NotSocialCapable".Translate(
+                                user.LabelShort
+                            ), MessageTypeDefOf.RejectInput);
+                        }
 
-                }
-                else if (parent.def.defName == "BookOfDemons" || parent.def.defName == "Torn_BookOfDemons")
-                {
-                    FixTrait(user, user.story.traits.allTraits);
-                    if (user.gender == Gender.Male)
-                    {
-                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Warlock, 4, false));
                     }
-                    else if (user.gender == Gender.Female)
+                    else if (parent.def.defName == "BookOfDemons" || parent.def.defName == "Torn_BookOfDemons")
                     {
-                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Succubus, 4, false));
-                    }
-                    else
-                    {
-                        Log.Message("No gender found - assigning random trait.");
-                        if (Rand.Chance(.5f))
+                        FixTrait(user, user.story.traits.allTraits);
+                        if (user.gender == Gender.Male)
+                        {
+                            user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Warlock, 4, false));
+                        }
+                        else if (user.gender == Gender.Female)
                         {
                             user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Succubus, 4, false));
                         }
                         else
                         {
-                            user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Warlock, 4, false));
+                            Log.Message("No gender found - assigning random trait.");
+                            if (Rand.Chance(.5f))
+                            {
+                                user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Succubus, 4, false));
+                            }
+                            else
+                            {
+                                user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Warlock, 4, false));
+                            }
                         }
-                    }
-                    if (parent.def.defName == "BookOfDemons")
-                    {
-                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
-                    }
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def.defName == "BookOfEarth" || parent.def.defName == "Torn_BookOfEarth")
-                {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Geomancer, 4, false));
-                    if (parent.def.defName == "BookOfEarth")
-                    {
-                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
-                    }
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def.defName == "BookOfMagitech" || parent.def.defName == "Torn_BookOfMagitech")
-                {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Technomancer, 4, false));
-                    if (parent.def.defName == "BookOfMagitech")
-                    {
-                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
-                    }
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def.defName == "BookOfHemomancy" || parent.def.defName == "Torn_BookOfHemomancy")
-                {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.BloodMage, 4, false));
-                    if (parent.def.defName == "BookOfHemomancy")
-                    {
-                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
-                    }
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def.defName == "BookOfEnchanter" || parent.def.defName == "Torn_BookOfEnchanter")
-                {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Enchanter, 4, false));
-                    if (parent.def.defName == "BookOfEnchanter")
-                    {
-                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
-                    }
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def.defName == "BookOfChronomancer" || parent.def.defName == "Torn_BookOfChronomancer")
-                {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Chronomancer, 4, false));
-                    if (parent.def.defName == "BookOfChronomancer")
-                    {
-                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
-                    }
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def == TorannMagicDefOf.BookOfChaos || parent.def == TorannMagicDefOf.Torn_BookOfChaos)
-                {
-                    FixTrait(user, user.story.traits.allTraits);
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.ChaosMage, 4, false));
-                    if (parent.def == TorannMagicDefOf.BookOfChaos)
-                    {
-                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
-                    }
-                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
-                }
-                else if (parent.def.defName == "BookOfQuestion")
-                {
-                    int attempts = 0;
-                    ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                    FixTrait(user, user.story.traits.allTraits);
-                    RetryBookOfQuestion:;
-                    if (attempts < 50)
-                    {
-                        int rnd = Mathf.RoundToInt(Rand.RangeInclusive(0, 17));
-                        switch (rnd)
+                        if (parent.def.defName == "BookOfDemons")
                         {
-                            case 0:
-                                if (settingsRef.Demonkin)
-                                {
-                                    if (user.gender == Gender.Male)
-                                    {
-                                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Warlock, 4, false));
-                                    }
-                                    else if (user.gender == Gender.Female)
-                                    {
-                                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Succubus, 4, false));
-                                    }
-                                    else
-                                    {
-                                        Log.Message("No gender found.");
-                                    }
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    goto RetryBookOfQuestion;
-                                }
-                                break;
-                            case 15:
-                                if (settingsRef.Demonkin)
-                                {
-                                    if (user.gender == Gender.Male)
-                                    {
-                                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Warlock, 4, false));
-                                    }
-                                    else if (user.gender == Gender.Female)
-                                    {
-                                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Succubus, 4, false));
-                                    }
-                                    else
-                                    {
-                                        Log.Message("No gender found.");
-                                    }
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    goto RetryBookOfQuestion;
-                                }
-                                break;
-                            case 1:
-                                if (settingsRef.Necromancer)
-                                {
-                                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Necromancer, 4, false));
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    goto RetryBookOfQuestion;
-                                }
-                                break;
-                            case 2:
-                                if (settingsRef.Druid)
-                                {
-                                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Druid, 4, false));
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    goto RetryBookOfQuestion;
-                                }
-                                break;
-                            case 3:
-                                if (settingsRef.Summoner)
-                                {
-                                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Summoner, 4, false));
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    goto RetryBookOfQuestion;
-                                }
-                                break;
-                            case 4:
-                                if (settingsRef.FireMage)
-                                {
-                                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.InnerFire, 4, false));
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    goto RetryBookOfQuestion;
-                                }
-                                break;
-                            case 5:
-                                if (settingsRef.IceMage)
-                                {
-                                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.HeartOfFrost, 4, false));
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    goto RetryBookOfQuestion;
-                                }
-                                break;
-                            case 6:
-                                if (settingsRef.LitMage)
-                                {
-                                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.StormBorn, 4, false));
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    goto RetryBookOfQuestion;
-                                }
-                                break;
-                            case 7:
-                                if (settingsRef.Arcanist)
-                                {
-                                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Arcanist, 4, false));
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    goto RetryBookOfQuestion;
-                                }
-                                break;
-                            case 8:
-                                if (settingsRef.Priest)
-                                {
-                                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Priest, 4, false));
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    goto RetryBookOfQuestion;
-                                }
-                                break;
-                            case 9:
-                                if (settingsRef.Bard)
-                                {
-                                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Bard, 0, false));
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    goto RetryBookOfQuestion;
-                                }
-                                break;
-                            case 10:
-                                if (settingsRef.Paladin)
-                                {
-                                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Paladin, 4, false));
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    goto RetryBookOfQuestion;
-                                }
-                                break;
-                            case 11:
-                                if (settingsRef.Geomancer)
-                                {
-                                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Geomancer, 4, false));
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    goto RetryBookOfQuestion;
-                                }
-                                break;
-                            case 12:
-                                if (settingsRef.Technomancer)
-                                {
-                                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Technomancer, 4, false));
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    goto RetryBookOfQuestion;
-                                }
-                                break;
-                            case 13:
-                                if (settingsRef.BloodMage)
-                                {
-                                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.BloodMage, 4, false));
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    goto RetryBookOfQuestion;
-                                }
-                                break;
-                            case 14:
-                                if (settingsRef.Technomancer)
-                                {
-                                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Enchanter, 4, false));
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    goto RetryBookOfQuestion;
-                                }
-                                break;
-                            case 16:
-                                if (settingsRef.Chronomancer)
-                                {
-                                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Chronomancer, 4, false));
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    goto RetryBookOfQuestion;
-                                }
-                                break;
-                            case 17:
-                                if (settingsRef.ChaosMage)
-                                {
-                                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.ChaosMage, 4, false));
-                                }
-                                else
-                                {
-                                    attempts++;
-                                    goto RetryBookOfQuestion;
-                                }
-                                break;
+                            HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
                         }
                         this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                     }
+                    else if (parent.def.defName == "BookOfEarth" || parent.def.defName == "Torn_BookOfEarth")
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Geomancer, 4, false));
+                        if (parent.def.defName == "BookOfEarth")
+                        {
+                            HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                        }
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                    else if (parent.def.defName == "BookOfMagitech" || parent.def.defName == "Torn_BookOfMagitech")
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Technomancer, 4, false));
+                        if (parent.def.defName == "BookOfMagitech")
+                        {
+                            HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                        }
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                    else if (parent.def.defName == "BookOfHemomancy" || parent.def.defName == "Torn_BookOfHemomancy")
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.BloodMage, 4, false));
+                        if (parent.def.defName == "BookOfHemomancy")
+                        {
+                            HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                        }
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                    else if (parent.def.defName == "BookOfEnchanter" || parent.def.defName == "Torn_BookOfEnchanter")
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Enchanter, 4, false));
+                        if (parent.def.defName == "BookOfEnchanter")
+                        {
+                            HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                        }
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                    else if (parent.def.defName == "BookOfChronomancer" || parent.def.defName == "Torn_BookOfChronomancer")
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Chronomancer, 4, false));
+                        if (parent.def.defName == "BookOfChronomancer")
+                        {
+                            HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                        }
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                    else if (parent.def == TorannMagicDefOf.BookOfChaos || parent.def == TorannMagicDefOf.Torn_BookOfChaos)
+                    {
+                        FixTrait(user, user.story.traits.allTraits);
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.ChaosMage, 4, false));
+                        if (parent.def == TorannMagicDefOf.BookOfChaos)
+                        {
+                            HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
+                        }
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                    else if (parent.def.defName == "BookOfQuestion")
+                    {
+                        int attempts = 0;
+                        ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                        FixTrait(user, user.story.traits.allTraits);
+                        RetryBookOfQuestion:;
+                        if (attempts < 50)
+                        {
+                            int baseClassCount = 17;
+                            int customClassCount = TM_ClassUtility.CustomClasses().Count;
+                            int rnd = Mathf.RoundToInt(Rand.RangeInclusive(0, baseClassCount + customClassCount));
+                            switch (rnd)
+                            {
+                                case 0:
+                                    if (settingsRef.Demonkin)
+                                    {
+                                        if (user.gender == Gender.Male)
+                                        {
+                                            user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Warlock, 4, false));
+                                        }
+                                        else if (user.gender == Gender.Female)
+                                        {
+                                            user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Succubus, 4, false));
+                                        }
+                                        else
+                                        {
+                                            Log.Message("No gender found.");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        attempts++;
+                                        goto RetryBookOfQuestion;
+                                    }
+                                    break;
+                                case 15:
+                                    if (settingsRef.Demonkin)
+                                    {
+                                        if (user.gender == Gender.Male)
+                                        {
+                                            user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Warlock, 4, false));
+                                        }
+                                        else if (user.gender == Gender.Female)
+                                        {
+                                            user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Succubus, 4, false));
+                                        }
+                                        else
+                                        {
+                                            Log.Message("No gender found.");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        attempts++;
+                                        goto RetryBookOfQuestion;
+                                    }
+                                    break;
+                                case 1:
+                                    if (settingsRef.Necromancer)
+                                    {
+                                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Necromancer, 4, false));
+                                    }
+                                    else
+                                    {
+                                        attempts++;
+                                        goto RetryBookOfQuestion;
+                                    }
+                                    break;
+                                case 2:
+                                    if (settingsRef.Druid)
+                                    {
+                                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Druid, 4, false));
+                                    }
+                                    else
+                                    {
+                                        attempts++;
+                                        goto RetryBookOfQuestion;
+                                    }
+                                    break;
+                                case 3:
+                                    if (settingsRef.Summoner)
+                                    {
+                                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Summoner, 4, false));
+                                    }
+                                    else
+                                    {
+                                        attempts++;
+                                        goto RetryBookOfQuestion;
+                                    }
+                                    break;
+                                case 4:
+                                    if (settingsRef.FireMage)
+                                    {
+                                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.InnerFire, 4, false));
+                                    }
+                                    else
+                                    {
+                                        attempts++;
+                                        goto RetryBookOfQuestion;
+                                    }
+                                    break;
+                                case 5:
+                                    if (settingsRef.IceMage)
+                                    {
+                                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.HeartOfFrost, 4, false));
+                                    }
+                                    else
+                                    {
+                                        attempts++;
+                                        goto RetryBookOfQuestion;
+                                    }
+                                    break;
+                                case 6:
+                                    if (settingsRef.LitMage)
+                                    {
+                                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.StormBorn, 4, false));
+                                    }
+                                    else
+                                    {
+                                        attempts++;
+                                        goto RetryBookOfQuestion;
+                                    }
+                                    break;
+                                case 7:
+                                    if (settingsRef.Arcanist)
+                                    {
+                                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Arcanist, 4, false));
+                                    }
+                                    else
+                                    {
+                                        attempts++;
+                                        goto RetryBookOfQuestion;
+                                    }
+                                    break;
+                                case 8:
+                                    if (settingsRef.Priest)
+                                    {
+                                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Priest, 4, false));
+                                    }
+                                    else
+                                    {
+                                        attempts++;
+                                        goto RetryBookOfQuestion;
+                                    }
+                                    break;
+                                case 9:
+                                    if (settingsRef.Bard)
+                                    {
+                                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Bard, 0, false));
+                                    }
+                                    else
+                                    {
+                                        attempts++;
+                                        goto RetryBookOfQuestion;
+                                    }
+                                    break;
+                                case 10:
+                                    if (settingsRef.Paladin)
+                                    {
+                                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Paladin, 4, false));
+                                    }
+                                    else
+                                    {
+                                        attempts++;
+                                        goto RetryBookOfQuestion;
+                                    }
+                                    break;
+                                case 11:
+                                    if (settingsRef.Geomancer)
+                                    {
+                                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Geomancer, 4, false));
+                                    }
+                                    else
+                                    {
+                                        attempts++;
+                                        goto RetryBookOfQuestion;
+                                    }
+                                    break;
+                                case 12:
+                                    if (settingsRef.Technomancer)
+                                    {
+                                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Technomancer, 4, false));
+                                    }
+                                    else
+                                    {
+                                        attempts++;
+                                        goto RetryBookOfQuestion;
+                                    }
+                                    break;
+                                case 13:
+                                    if (settingsRef.BloodMage)
+                                    {
+                                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.BloodMage, 4, false));
+                                    }
+                                    else
+                                    {
+                                        attempts++;
+                                        goto RetryBookOfQuestion;
+                                    }
+                                    break;
+                                case 14:
+                                    if (settingsRef.Technomancer)
+                                    {
+                                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Enchanter, 4, false));
+                                    }
+                                    else
+                                    {
+                                        attempts++;
+                                        goto RetryBookOfQuestion;
+                                    }
+                                    break;
+                                case 16:
+                                    if (settingsRef.Chronomancer)
+                                    {
+                                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Chronomancer, 4, false));
+                                    }
+                                    else
+                                    {
+                                        attempts++;
+                                        goto RetryBookOfQuestion;
+                                    }
+                                    break;
+                                case 17:
+                                    if (settingsRef.ChaosMage)
+                                    {
+                                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.ChaosMage, 4, false));
+                                    }
+                                    else
+                                    {
+                                        attempts++;
+                                        goto RetryBookOfQuestion;
+                                    }
+                                    break;
+                                case int val when rnd > baseClassCount:
+                                    val = val - baseClassCount - 1;
+                                    user.story.traits.GainTrait(new Trait(TM_ClassUtility.CustomClasses()[val].classTrait, TM_ClassUtility.CustomClasses()[val].traitDegree));
+                                    break;
+
+                            }
+                            this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                        }
+                        else
+                        {
+                            user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Gifted, 2, false));
+                            Messages.Message("Unable to find a valid class to assign after 50 attempts - ending attempt", MessageTypeDefOf.RejectInput);
+                        }
+                    }
                     else
                     {
-                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Gifted, 2, false));
-                        Messages.Message("Unable to find a valid class to assign after 50 attempts - ending attempt", MessageTypeDefOf.RejectInput);
+                        Messages.Message("NotArcaneBook".Translate(), MessageTypeDefOf.RejectInput);
                     }
                 }
-                else
+                else if(!customClass && !user.story.traits.HasTrait(TorannMagicDefOf.Gifted))
                 {
-                    Messages.Message("NotArcaneBook".Translate(), MessageTypeDefOf.RejectInput);
+                    Messages.Message("NotGiftedPawn".Translate(
+                            user.LabelShort
+                        ), MessageTypeDefOf.RejectInput);
                 }
-
             }
             else
             {
@@ -479,7 +532,12 @@ namespace TorannMagic
                 {
                     traits.Remove(traits[i]);
                     i--;
-                }                
+                }
+                if(traits[i].def == TorannMagicDefOf.PhysicalProdigy)
+                {
+                    traits.Remove(traits[i]);
+                    i--;
+                }
             }
         }
 
@@ -512,6 +570,47 @@ namespace TorannMagic
             if (skill.passion == Passion.None)
             {
                 skill.passion = Passion.Minor;
+            }
+        }
+
+        public void ApplyTrait(Pawn user, TraitDef trait, int degree)
+        {
+            FixTrait(user, user.story.traits.allTraits);
+            if(trait == TorannMagicDefOf.Warlock || trait == TorannMagicDefOf.Succubus)
+            {
+                if (user.gender == Gender.Male)
+                {
+                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Warlock, 4, false));
+                }
+                else if (user.gender == Gender.Female)
+                {
+                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Succubus, 4, false));
+                }
+                else
+                {
+                    Log.Message("No gender found - assigning random trait.");
+                    if (Rand.Chance(.5f))
+                    {
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Succubus, 4, false));
+                    }
+                    else
+                    {
+                        user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Warlock, 4, false));
+                    }
+                }
+            }
+            user.story.traits.GainTrait(new Trait(trait, degree));
+        }
+
+        public void ApplyTraitAdjustments(Pawn pawn, TraitDef trait)
+        {
+            if (trait == TorannMagicDefOf.Priest)
+            {
+                FixPriestSkills(pawn);
+            }
+            if(trait == TorannMagicDefOf.TM_Bard)
+            {
+                FixBardSkills(pawn);
             }
         }
     }

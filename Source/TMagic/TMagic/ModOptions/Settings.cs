@@ -1,5 +1,7 @@
 ﻿using System;
 using Verse;
+using System.Collections.Generic;
+using RimWorld;
 
 
 namespace TorannMagic.ModOptions
@@ -87,6 +89,10 @@ namespace TorannMagic.ModOptions
         public bool ManaWell = true;
         public bool Boundless = true;
 
+        //Faction settings
+        public Dictionary<string, float> FactionFighterSettings = new Dictionary<string, float>();
+        public Dictionary<string, float> FactionMageSettings = new Dictionary<string, float>();
+
         public static Settings Instance;
 
         public Settings()
@@ -172,6 +178,8 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<bool>(ref this.ManaWell, "ManaWell", true, false);
             Scribe_Values.Look<bool>(ref this.ArcaneConduit, "ArcaneConduit", true, false);
             Scribe_Values.Look<bool>(ref this.Boundless, "Boundless", true, false);
+            Scribe_Collections.Look(ref this.FactionFighterSettings, "FactionFighterSettings");
+            Scribe_Collections.Look(ref this.FactionMageSettings, "FactionMageSettings");
         }
     }
 }

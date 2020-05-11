@@ -81,55 +81,34 @@ namespace TorannMagic
                 CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
                 if (comp != null)
                 {
-                    MightPowerSkill str = comp.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr");
-                    int dmgNum = 0;                    
+                    float dmgNum = 0;                    
                     if (pawn.equipment != null && pawn.equipment.Primary != null)
                     {
                         ThingWithComps weaponComp = pawn.equipment.Primary;
                         if (weaponComp.def.IsMeleeWeapon)
                         {
-                            float weaponDPS = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_AverageDPS, false);
-                            float dmgMultiplier = weaponComp.GetStatValue(StatDefOf.MeleeWeapon_DamageMultiplier, false);
-                            float pawnDPS = pawn.GetStatValue(StatDefOf.MeleeDPS, false);
-                            float skillMultiplier = (.6f) * comp.mightPwr;
-                            dmgNum = Mathf.RoundToInt(skillMultiplier * dmgMultiplier * (pawnDPS + weaponDPS));
+                            dmgNum = comp.weaponDamage * TorannMagicDefOf.TM_TempestStrike.weaponDamageFactor;
                         }
                         if (weaponComp.def.IsRangedWeapon)
                         {                            
-                            int value = Mathf.RoundToInt(weaponComp.GetStatValue(StatDefOf.MarketValue));                           
-
-                            int dmg;
-                            if (value > 1000)
-                            {
-                                value -= 1000;
-                                dmg = (int)((20 + (value / 120)));
-                            }
-                            else
-                            {
-                                dmg = (10 + (int)((value / 50)));
-                            }
-                            float weaponDPS = dmg;
+                            float weaponDPS = comp.weaponDamage;
                             int shots = Mathf.Clamp(weaponComp.def.Verbs.FirstOrDefault().burstShotCount, 1, 5);
                             float shotMultiplier = 1f - ((float)shots / 15f);
-                            float skillMultiplier = (.5f) * comp.mightPwr * shotMultiplier;
-                            
-                            dmgNum = Mathf.RoundToInt(skillMultiplier * weaponDPS);
+
+                            dmgNum = weaponDPS * shotMultiplier * TorannMagicDefOf.TM_TempestStrike.weaponDamageFactor;
                         }
                     }
                     else
                     {
-                        float pawnDPS = pawn.GetStatValue(StatDefOf.MeleeDPS, false);
-                        float skillMultiplier = (.6f) * comp.mightPwr;
-                        dmgNum = Mathf.RoundToInt(skillMultiplier * (pawnDPS));
+                        dmgNum = comp.weaponDamage * TorannMagicDefOf.TM_TempestStrike.weaponDamageFactor;
                     }
-                    if (comp != null && pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
+
+                    if (comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_pwr").level >= 8)
                     {
-                        if (comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_pwr").level >= 8)
-                        {
-                            dmgNum = Mathf.RoundToInt(dmgNum * 1.2f);
-                        }
+                        dmgNum = dmgNum * 1.2f;
                     }
-                    return dmgNum;
+                    
+                    return Mathf.RoundToInt(dmgNum);
                 }
                 return 0;
             }

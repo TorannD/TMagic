@@ -9,6 +9,7 @@
     <uiIconPath>UI/wayfarer</uiIconPath>
     <description>Increase attributes through training and hard work. See skills for more details.</description>
     <staminaCost>0.0</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -46,6 +47,7 @@ General combat techniques are discarded by most fighters as supplementary skills
 
 See skills for more details.</description>
     <staminaCost>0.0</staminaCost>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
