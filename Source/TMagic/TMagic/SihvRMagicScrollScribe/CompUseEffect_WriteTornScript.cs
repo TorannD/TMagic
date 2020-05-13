@@ -11,7 +11,20 @@ namespace TorannMagic.SihvRMagicScrollScribe
             ThingDef tempPod = null;
             IntVec3 currentPos = parent.PositionHeld;
             Map map = parent.Map;
-            if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
+            CompAbilityUserMagic comp = user.TryGetComp<CompAbilityUserMagic>();
+            if (parent.def != null && comp != null && comp.customClass != null)
+            {
+                if (comp.customClass.tornScript != null)
+                {
+                    tempPod = comp.customClass.tornScript;
+                }
+                else
+                {
+                    tempPod = comp.customClass.fullScript;
+                }
+                this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+            }
+            else if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
             {
                 tempPod = ThingDef.Named("Torn_BookOfInnerFire");
                 this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);

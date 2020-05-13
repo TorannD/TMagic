@@ -996,6 +996,10 @@ namespace TorannMagic.AutoCast
             //        jobTarget = caster.CurJob.targetA;
             //    }
             //}
+            if (!jobTarget.Cell.Walkable(caster.Map))
+            {
+                jobTarget = TM_Calc.FindWalkableCellNextTo(jobTarget.Cell, caster.Map);
+            }
             float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
             Vector3 directionToTarget = TM_Calc.GetVector(caster.Position, jobTarget.Cell);
             //Log.Message("" + caster.LabelShort + " job def is " + caster.CurJob.def.defName + " targetA " + caster.CurJob.targetA + " targetB " + caster.CurJob.targetB + " jobTarget " + jobTarget + " at distance " + distanceToTarget + " min distance " + minDistance + " at vector " + directionToTarget);

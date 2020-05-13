@@ -406,6 +406,7 @@ namespace TorannMagic
         public static WorkTypeDef Smithing;
         public static WorkTypeDef PlantCutting;
         public static WorkTypeDef Cooking;
+        public static WorkTypeDef PatientBedRest;
 
         //Priest
         public static TraitDef Priest;

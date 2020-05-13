@@ -28,7 +28,7 @@ namespace TorannMagic.ModOptions
         {
             int num = 0;
             float rowHeight = 28f;
-            Rect sRect = new Rect(inRect.x, inRect.y, inRect.width - 36f, inRect.height + 360f);
+            Rect sRect = new Rect(inRect.x, inRect.y, inRect.width - 36f, inRect.height + 240f + TM_ClassUtility.CustomClasses().Count * 40);
             scrollPosition = GUI.BeginScrollView(inRect, scrollPosition, sRect, false, true);
             //GUI.BeginGroup(inRect);
             
@@ -170,7 +170,37 @@ namespace TorannMagic.ModOptions
             num++;
             Rect rowRect18 = Controller.UIHelper.GetRowRect(rowRect17, rowHeight, num); ;
             Widgets.CheckboxLabeled(rowRect18, "TM_ManaWell".Translate(), ref Settings.Instance.ManaWell, false);
-
+            num++;
+            num++;
+            GUI.color = Color.cyan;
+            Rect customRect = Controller.UIHelper.GetRowRect(rowRect18, rowHeight, num);
+            Widgets.Label(customRect, "TM_CustomClasses".Translate());
+            GUI.color = Color.white;
+            num++;
+            for(int i = 0; i < TM_ClassUtility.CustomClasses().Count; i++)
+            {
+                TMDefs.TM_CustomClass cClass = TM_ClassUtility.CustomClasses()[i];
+                if(cClass.isMage && cClass.isFighter)
+                {
+                    GUI.color = Color.yellow;
+                }
+                else if(cClass.isMage)
+                {
+                    GUI.color = Color.magenta;
+                }
+                else if(cClass.isFighter)
+                {
+                    GUI.color = Color.green;
+                }
+                else
+                {
+                    GUI.color = Color.gray;
+                }
+                Rect customRect1 = Controller.UIHelper.GetRowRect(customRect, rowHeight, num);
+                Widgets.Label(customRect1, cClass.classTrait.degreeDatas.FirstOrDefault().label);
+                num++;
+            }           
+            
             //GUI.EndGroup();
             GUI.EndScrollView();
         }

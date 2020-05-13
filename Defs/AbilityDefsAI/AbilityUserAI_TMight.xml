@@ -1060,4 +1060,153 @@
 		</tags>
 	</AbilityUserAI.AbilityAIDef>
 	
+	<!-- shadow -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="ShadowMightAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMight</compAbilityUserClass>
+		<!-- Decision tree which helps pick ability to use. -->
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>0.9</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>Cloak</li>										
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_HasEnemyTarget">
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingMeleeWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>32.0</maxDistance>
+											<minDistance>0.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>ShadowStrike</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>50.0</maxDistance>
+											<minDistance>10.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Summon</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>										
+									</subNodes>
+								</li>
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_UsingRangedWeapon">
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+											<maxDistance>50.0</maxDistance>
+											<minDistance>10.0</minDistance>
+											<subNodes>
+												<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+													<tags>
+														<li>Summon</li>
+													</tags>
+												</li>
+											</subNodes>
+										</li>
+									</subNodes>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<invert>true</invert>
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_CasterHealth">
+							<maxHealth>1</maxHealth>
+							<subNodes>
+								<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+									<tags>
+										<li>Buff</li>
+									</tags>
+								</li>
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+
+	<!-- Shadow -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="ShadowMightAbilityUserAI">
+		<defName>TMagic_Shadow</defName>
+		<matchingTraits>
+			<li>TM_TheShadow</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_Nightshade</li>
+			<li>TMagic_ShadowSummon</li>
+			<li>TMagic_ShadowStrike</li>
+			<li>TMagic_Cloak</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Shadow Abilities -->
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
+		<defName>TMagic_ShadowStrike</defName>
+		<ability>TM_ShadowStrike</ability>		
+		<power>4.0</power>
+		<needSeeingTarget>false</needSeeingTarget>
+		<minRange>0.0</minRange>
+		<maxRange>32.0</maxRange>
+		<tags>
+			<li>ShadowStrike</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
+		<defName>TMagic_ShadowSummon</defName>
+		<ability>TM_Summon</ability>
+		<power>1.0</power>
+		<maxRange>56.0</maxRange>
+		<minRange>15.0</minRange>
+		<needSeeingTarget>false</needSeeingTarget>
+		<tags>
+			<li>Summon</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
+		<defName>TMagic_Cloak</defName>
+		<ability>TM_VeilOfShadows</ability>
+		<power>5</power>
+		<needSeeingTarget>false</needSeeingTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<tags>
+			<li>Cloak</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMightAbilityAI">
+		<defName>TMagic_Nightshade</defName>
+		<ability>TM_Nightshade</ability>		
+		<power>2.0</power>
+		<needSeeingTarget>false</needSeeingTarget>
+		<usedOnCaster>true</usedOnCaster>
+		<tags>
+			<li>Buff</li>
+		</tags>
+		<appliedHediffs>
+			<li>TM_NightshadeHD</li>
+		</appliedHediffs>
+	</AbilityUserAI.AbilityAIDef>
+	
 </Defs>

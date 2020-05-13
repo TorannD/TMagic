@@ -7,7 +7,7 @@ Document made by ChJees
 	<!-- Abilities -->
 	<!-- Ability Base -->
 	<AbilityUserAI.AbilityAIDef Name="BaseMagicAbilityAI" Abstract="True">
-		<maxRange>60.0</maxRange>
+		<maxRange>70.0</maxRange>
 		<tags>
 			<li>TMagic</li>
 		</tags>

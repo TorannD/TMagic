@@ -16,7 +16,7 @@
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ShadowWalk</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
-            <defaultProjectile>Projectile_Blink</defaultProjectile>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_ShadowWalk</abilityDef>
             <!-- <AbilityTargetCategory>TargetLocation</AbilityTargetCategory> -->
             <targetParams>
@@ -110,7 +110,7 @@ This ability requires 30 stamina to maintain and reduces stamina regeneration by
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_ToggleHediff</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
-            <defaultProjectile>Projectile_Blink</defaultProjectile>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_Nightshade</abilityDef>
             <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
             <targetParams>
@@ -119,16 +119,16 @@ This ability requires 30 stamina to maintain and reduces stamina regeneration by
 				<canTargetLocations>false</canTargetLocations>
 				<canTargetSelf>true</canTargetSelf>
             </targetParams>
-            <warmupTime>1</warmupTime>
-            <SecondsToRecharge>10.0</SecondsToRecharge>
+            <warmupTime>0</warmupTime>
+            <SecondsToRecharge>2.0</SecondsToRecharge>
             <range>0</range>
 			<isViolent>true</isViolent>
 			<requiresLineOfSight>false</requiresLineOfSight>
 			<stopBurstWithoutLos>false</stopBurstWithoutLos>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-            <soundCast>Message_PositiveEvent</soundCast>
             <muzzleFlashScale>0</muzzleFlashScale>
+			<soundCast>TM_VibrationLow</soundCast>
             <isPrimary>true</isPrimary>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
@@ -146,7 +146,7 @@ This ability requires 30 stamina to maintain and reduces stamina regeneration by
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_VeilOfShadows</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
-            <defaultProjectile>Projectile_Blink</defaultProjectile>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_VeilOfShadows</abilityDef>
             <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
             <targetParams>

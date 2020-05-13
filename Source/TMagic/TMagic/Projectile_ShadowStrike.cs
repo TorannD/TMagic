@@ -36,14 +36,21 @@ namespace TorannMagic
             bool flag = this.age < duration;
             if (!flag)
             {
-                ReturnMove();
+                if (!caster.DestroyedOrNull() && !caster.Dead)
+                {
+                    ReturnMove();
+                }
                 base.Destroy(mode);
+            }
+            if(caster.DestroyedOrNull() || caster.Dead)
+            {
+                base.Destroy(DestroyMode.Vanish);
             }
         }
 
         protected override void Impact(Thing hitThing)
         {           
-            if (!this.initialized)
+            if (!this.initialized && !hitThing.DestroyedOrNull())
             {
                 this.initialized = true;
                 this.caster = this.launcher as Pawn;               
@@ -75,7 +82,7 @@ namespace TorannMagic
             this.startPos = caster.Position;
             IntVec3 targetPos = target.Position;
             IntVec3 tmpPos = targetPos;
-            if(target is Pawn)
+            if(!target.DestroyedOrNull() && target is Pawn)
             {
                 Pawn p = target as Pawn;
                 if(p.Rotation == Rot4.East)
@@ -131,38 +138,48 @@ namespace TorannMagic
 
         public void DoStrike(Thing target)
         {
-            Pawn t = target as Pawn;
-            if (t.Faction == null || (t.Faction != null && t.Faction != caster.Faction))
+            if (target != null && target is Pawn)
             {
-                List<BodyPartRecord> partList = new List<BodyPartRecord>();
-                partList.Clear();
-                for (int i = 0; i < t.RaceProps.body.AllParts.Count; i++)
+                Pawn t = target as Pawn;
+                if (t.Faction == null || (t.Faction != null && t.Faction != caster.Faction))
                 {
-                    BodyPartRecord part = t.RaceProps.body.AllParts[i];
-                    if (part.depth == BodyPartDepth.Outside)
+                    //List<BodyPartRecord> partList = new List<BodyPartRecord>();
+                    //partList.Clear();
+                    //for (int i = 0; i < t.RaceProps.body.AllParts.Count; i++)
+                    //{
+                    //    BodyPartRecord part = t.RaceProps.body.AllParts[i];
+                    //    if (part.depth == BodyPartDepth.Outside)
+                    //    {
+                    //        partList.Add(part);
+                    //    }
+                    //}
+                    for (int i = 0; i < 4; i++)
                     {
-                        partList.Add(part);
+                        if (!t.DestroyedOrNull() && !t.Dead && t.Map != null)
+                        {
+                            int dmg = Mathf.RoundToInt(this.weaponDamage);
+                            if (Rand.Chance(critChance))
+                            {
+                                dmg *= 3;
+                            }
+                            BodyPartRecord bpr = t.health.hediffSet.GetRandomNotMissingPart(DamageDefOf.Stab, BodyPartHeight.Undefined, BodyPartDepth.Outside);
+                            TM_Action.DamageEntities(target, bpr, dmg, Rand.Range(0f, .5f), DamageDefOf.Stab, this.caster);
+                            Vector3 rndPos = t.DrawPos;
+                            rndPos.x += Rand.Range(-.2f, .2f);
+                            rndPos.z += Rand.Range(-.2f, .2f);
+                            TM_MoteMaker.ThrowBloodSquirt(rndPos, t.Map, Rand.Range(.6f, 1f));
+                            TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_CrossStrike, rndPos, t.Map, Rand.Range(.6f, 1f), .4f, 0f, Rand.Range(.2f, .5f), 0, 0, 0, Rand.Range(0, 360));
+                        }
+                    }
+                    if (!t.DestroyedOrNull() && !t.Dead && !t.Downed && caster.IsColonist)
+                    {
+                        caster.drafter.Drafted = true;
+                        Job job = new Job(JobDefOf.AttackMelee, t);
+                        caster.jobs.TryTakeOrderedJob(job, JobTag.DraftedOrder);
                     }
                 }
-                for (int i = 0; i < 4; i++)
-                {
-                    if (!t.DestroyedOrNull() && !t.Dead)
-                    {
-                        int dmg = Mathf.RoundToInt(this.weaponDamage);
-                        if (Rand.Chance(critChance))
-                        {
-                            dmg *= 3;
-                        }
-                        TM_Action.DamageEntities(target, partList.RandomElement(), dmg, Rand.Range(0f, .5f), DamageDefOf.Stab, this.caster);
-                        Vector3 rndPos = t.DrawPos;
-                        rndPos.x += Rand.Range(-.2f, .2f);
-                        rndPos.z += Rand.Range(-.2f, .2f);
-                        TM_MoteMaker.ThrowBloodSquirt(rndPos, t.Map, Rand.Range(.6f, 1f));
-                        TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_CrossStrike, rndPos, t.Map, Rand.Range(.6f, 1f), .4f, 0f, Rand.Range(.2f, .5f), 0, 0, 0, Rand.Range(0, 360));
-                    }
-                }                
             }
-            if(verVal >= 1)
+            if (verVal >= 1)
             {
                 int invisDuration = 120;
                 if(verVal >= 2)
@@ -212,13 +229,7 @@ namespace TorannMagic
                     rndPos.z += Rand.Range(-.5f, .5f);
                     TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_ShadowCloud, rndPos, caster.Map, Rand.Range(.6f, 1f), .4f, .05f, Rand.Range(.2f, .5f), Rand.Range(-40, 40), Rand.Range(1, 2f), Rand.Range(0, 360), Rand.Range(0, 360));
                 }
-            }
-            if (!t.DestroyedOrNull() && !t.Dead && !t.Downed && (t.Faction != null && t.Faction != caster.Faction))
-            {
-                caster.drafter.Drafted = true;
-                Job job = new Job(JobDefOf.AttackMelee, t);
-                caster.jobs.TryTakeOrderedJob(job, JobTag.DraftedOrder);
-            }
+            }            
             ApplyHaste(caster);
         }
 

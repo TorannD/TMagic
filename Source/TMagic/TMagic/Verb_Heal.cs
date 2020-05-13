@@ -20,7 +20,8 @@ namespace TorannMagic
             {
                 if ((root - targ.Cell).LengthHorizontal < this.verbProps.range)
                 {
-                    validTarg = true;
+                    ShootLine shootLine;
+                    validTarg = this.TryFindShootLineFromTo(root, targ, out shootLine);
                 }
                 else
                 {

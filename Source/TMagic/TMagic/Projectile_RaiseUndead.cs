@@ -103,20 +103,20 @@ namespace TorannMagic
                                             if(TM_Calc.IsMagicUser(undeadPawn)) //(compMagic.IsMagicUser && !undeadPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless)) || 
                                             {
                                                 compMagic.Initialize();
-                                                compMagic.RemovePowers();
+                                                compMagic.RemovePowers(true);
                                             }
                                             CompAbilityUserMight compMight = undeadPawn.GetComp<CompAbilityUserMight>();
                                             if (TM_Calc.IsMightUser(undeadPawn)) //compMight.IsMightUser || 
                                             {
                                                 compMight.Initialize();
-                                                compMight.RemovePowers();
+                                                compMight.RemovePowers(true);
                                             }
                                             RemoveAddictionsAndPermanentInjuries(undeadPawn);
                                             HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, -4f);
                                             HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, .5f + ver.level);                                            
                                             HealthUtility.AdjustSeverity(undeadPawn, HediffDef.Named("TM_UndeadStageHD"), -2f);
                                             HealthUtility.AdjustSeverity(undeadPawn, HediffDef.Named("TM_UndeadStageHD"), rotStage);
-                                            RedoSkills(undeadPawn);
+                                            RedoSkills(undeadPawn, pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD")));
                                             if (undeadPawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
                                             {
                                                 compMagic.RemovePawnAbility(TorannMagicDefOf.TM_ChaosTradition);
@@ -217,10 +217,15 @@ namespace TorannMagic
             }
         }
 
-        private void RedoSkills(Pawn undeadPawn)
+        private void RedoSkills(Pawn undeadPawn, bool lichBonus = false)
         {
             undeadPawn.story.childhood = null;
             undeadPawn.story.adulthood = null;
+            float bonusSkill = 1f;
+            if(lichBonus)
+            {
+                bonusSkill = 1.2f;
+            }
             //undeadPawn.story.DisabledWorkTypes.Clear();
             //undeadPawn.story.WorkTypeIsDisabled(WorkTypeDefOf.Warden);
             //undeadPawn.story.WorkTypeIsDisabled(WorkTypeDefOf.Hunting);
@@ -231,51 +236,27 @@ namespace TorannMagic
             undeadPawn.skills.Learn(SkillDefOf.Animals, -10000000, true);
             undeadPawn.skills.Learn(SkillDefOf.Artistic, -10000000, true);
             undeadPawn.skills.Learn(SkillDefOf.Cooking, -10000000, true);
-            undeadPawn.skills.Learn(SkillDefOf.Cooking, Rand.Range(10000, 20000), true);
+            undeadPawn.skills.Learn(SkillDefOf.Cooking, Rand.Range(10000, 30000)*bonusSkill, true);
             undeadPawn.skills.Learn(SkillDefOf.Crafting, -10000000, true);
-            undeadPawn.skills.Learn(SkillDefOf.Crafting, Rand.Range(10000, 50000), true);
+            undeadPawn.skills.Learn(SkillDefOf.Crafting, Rand.Range(10000, 80000) * bonusSkill, true);
             undeadPawn.skills.Learn(SkillDefOf.Plants, -10000000, true);
-            undeadPawn.skills.Learn(SkillDefOf.Plants, Rand.Range(40000, 60000), true);
+            undeadPawn.skills.Learn(SkillDefOf.Plants, Rand.Range(30000, 60000) * bonusSkill, true);
             undeadPawn.skills.Learn(SkillDefOf.Intellectual, -10000000, true);
             undeadPawn.skills.Learn(SkillDefOf.Medicine, -10000000, true);
             undeadPawn.skills.Learn(SkillDefOf.Melee, -10000000, true);
-            undeadPawn.skills.Learn(SkillDefOf.Melee, Rand.Range(60000, 100000), true);
+            undeadPawn.skills.Learn(SkillDefOf.Melee, Rand.Range(50000, 100000) * bonusSkill, true);
             undeadPawn.skills.Learn(SkillDefOf.Mining, -10000000, true);
-            undeadPawn.skills.Learn(SkillDefOf.Mining, Rand.Range(40000, 80000), true);
+            undeadPawn.skills.Learn(SkillDefOf.Mining, Rand.Range(40000, 80000) * bonusSkill, true);
             undeadPawn.skills.Learn(SkillDefOf.Social, -10000000, true);
             undeadPawn.skills.Learn(SkillDefOf.Construction, -10000000, true);
-            undeadPawn.skills.Learn(SkillDefOf.Construction, Rand.Range(40000, 60000), true);
+            undeadPawn.skills.Learn(SkillDefOf.Construction, Rand.Range(30000, 60000) * bonusSkill, true);
             undeadPawn.workSettings.SetPriority(WorkTypeDefOf.Doctor, 0);
             undeadPawn.workSettings.SetPriority(WorkTypeDefOf.Warden, 0);
             undeadPawn.workSettings.SetPriority(WorkTypeDefOf.Handling, 0);
             undeadPawn.workSettings.SetPriority(TorannMagicDefOf.Research, 0);
             undeadPawn.workSettings.SetPriority(TorannMagicDefOf.Art, 0);
-
-            //SkillRecord skill;
-            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Animals);
-            //skill.passion = Passion.None;
-            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Artistic);
-            //skill.passion = Passion.None;
-            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Construction);
-            //skill.passion = Passion.None;
-            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Cooking);
-            //skill.passion = Passion.None;
-            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Crafting);
-            //skill.passion = Passion.None;
-            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Growing);
-            //skill.passion = Passion.None;
-            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Medicine);
-            //skill.passion = Passion.None;
-            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Mining);
-            //skill.passion = Passion.None;
-            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Social);
-            //skill.passion = Passion.None;
-            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Intellectual);
-            //skill.passion = Passion.None;
-            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Shooting);
-            //skill.passion = Passion.None;
-            //skill = undeadPawn.skills.GetSkill(SkillDefOf.Melee);
-            //skill.passion = Passion.None;
+            undeadPawn.workSettings.SetPriority(TorannMagicDefOf.PatientBedRest, 0);
+            
         }
 
         private void RemoveTraits(Pawn pawn, List<Trait> traits)

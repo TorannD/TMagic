@@ -1796,33 +1796,36 @@ namespace TorannMagic
                             }
                             if (!this.Pawn.IsColonist && settingsRef.AICasting && settingsRef.AIAggressiveCasting && Find.TickManager.TicksGame > this.nextAICastAttemptTick) //Aggressive AI Casting
                             {
-                                this.nextAICastAttemptTick = Find.TickManager.TicksGame + Rand.Range(200, 300);
-                                IEnumerable<AbilityUserAIProfileDef> enumerable = this.Pawn.EligibleAIProfiles();
-                                if (enumerable != null && enumerable.Count() > 0)
+                                this.nextAICastAttemptTick = Find.TickManager.TicksGame + Rand.Range(300, 500);
+                                if (this.Pawn.jobs != null && this.Pawn.CurJobDef != TorannMagicDefOf.TMCastAbilitySelf && this.Pawn.CurJobDef != TorannMagicDefOf.TMCastAbilityVerb)
                                 {
-                                    foreach (AbilityUserAIProfileDef item in enumerable)
+                                    IEnumerable<AbilityUserAIProfileDef> enumerable = this.Pawn.EligibleAIProfiles();
+                                    if (enumerable != null && enumerable.Count() > 0)
                                     {
-                                        if (item != null)
+                                        foreach (AbilityUserAIProfileDef item in enumerable)
                                         {
-                                            AbilityAIDef useThisAbility = null;
-                                            if (item.decisionTree != null)
+                                            if (item != null)
                                             {
-                                                useThisAbility = item.decisionTree.RecursivelyGetAbility(this.Pawn);
-                                            }
-                                            if (useThisAbility != null)
-                                            {
-                                                ThingComp val = this.Pawn.AllComps.First((ThingComp comp) => ((object)comp).GetType() == item.compAbilityUserClass);
-                                                CompAbilityUser compAbilityUser = val as CompAbilityUser;
-                                                if (compAbilityUser != null)
+                                                AbilityAIDef useThisAbility = null;
+                                                if (item.decisionTree != null)
                                                 {
-                                                    PawnAbility pawnAbility = compAbilityUser.AbilityData.AllPowers.First((PawnAbility ability) => ability.Def == useThisAbility.ability);
-                                                    string reason = "";
-                                                    if (pawnAbility.CanCastPowerCheck(AbilityContext.AI, out reason))
+                                                    useThisAbility = item.decisionTree.RecursivelyGetAbility(this.Pawn);
+                                                }
+                                                if (useThisAbility != null)
+                                                {
+                                                    ThingComp val = this.Pawn.AllComps.First((ThingComp comp) => ((object)comp).GetType() == item.compAbilityUserClass);
+                                                    CompAbilityUser compAbilityUser = val as CompAbilityUser;
+                                                    if (compAbilityUser != null)
                                                     {
-                                                        LocalTargetInfo target = useThisAbility.Worker.TargetAbilityFor(useThisAbility, this.Pawn);
-                                                        if (target.IsValid)
+                                                        PawnAbility pawnAbility = compAbilityUser.AbilityData.AllPowers.First((PawnAbility ability) => ability.Def == useThisAbility.ability);
+                                                        string reason = "";                                                        
+                                                        if (pawnAbility.CanCastPowerCheck(AbilityContext.AI, out reason))
                                                         {
-                                                            pawnAbility.UseAbility(AbilityContext.Player, target);
+                                                            LocalTargetInfo target = useThisAbility.Worker.TargetAbilityFor(useThisAbility, this.Pawn);
+                                                            if (target.IsValid)
+                                                            {
+                                                                pawnAbility.UseAbility(AbilityContext.Player, target);
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -2221,7 +2224,7 @@ namespace TorannMagic
                         {
                             this.MagicData.AllMagicPowers[z].learned = false;
                         }
-                        if(!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false) && !Rand.Chance(this.customClass.classMageAbilities[z].learnChance))
+                        if(!abilityUser.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Uncertainty, false) && !Rand.Chance(ability.learnChance))
                         {
                             this.MagicData.AllMagicPowers[z].learned = false;
                         }

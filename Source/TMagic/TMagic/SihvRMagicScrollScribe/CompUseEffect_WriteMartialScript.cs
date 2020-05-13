@@ -14,20 +14,12 @@ namespace TorannMagic.SihvRMagicScrollScribe
             ThingDef tempPod = null;
             IntVec3 currentPos = parent.PositionHeld;
             Map map = parent.Map;
-            List<TMDefs.TM_CustomClass> cFighters = new List<TMDefs.TM_CustomClass>();
-            cFighters.Clear();
-            for(int i = 0; i < TM_ClassUtility.CustomClasses().Count; i++)
-            {
-                if(TM_ClassUtility.CustomClasses()[i].isFighter)
-                {
-                    cFighters.AddDistinct(TM_ClassUtility.CustomClasses()[i]);
-                }
-            }
+            List<TMDefs.TM_CustomClass> cFighters = TM_ClassUtility.CustomFighterClasses;
             
             CompAbilityUserMight comp = user.TryGetComp<CompAbilityUserMight>();
             if(parent.def != null && comp != null && comp.customClass != null)
             {
-                tempPod = TM_ClassUtility.CustomClasses()[comp.customIndex].fullScript;
+                tempPod = comp.customClass.fullScript;
                 this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
             }
             if (parent.def != null && user.story.traits.HasTrait(TorannMagicDefOf.Gladiator))

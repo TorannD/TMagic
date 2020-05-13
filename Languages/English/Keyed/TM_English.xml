@@ -271,6 +271,7 @@
 <TM_ArcaneConduit>Arcane Conduit</TM_ArcaneConduit>
 <TM_ManaWell>Mana Well</TM_ManaWell>
 <TM_Boundless>Boundless</TM_Boundless>
+<TM_CustomClasses>Custom Classes</TM_CustomClasses>
 
 <!-- Mod Settings event options -->
 <TM_EventOptions>Event Options</TM_EventOptions>

@@ -265,7 +265,7 @@ namespace TorannMagic
                         if (attempts < 50)
                         {
                             int baseClassCount = 17;
-                            int customClassCount = TM_ClassUtility.CustomClasses().Count;
+                            int customClassCount = TM_ClassUtility.CustomMageClasses.Count;
                             int rnd = Mathf.RoundToInt(Rand.RangeInclusive(0, baseClassCount + customClassCount));
                             switch (rnd)
                             {

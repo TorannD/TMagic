@@ -23,6 +23,40 @@ namespace TorannMagic
             return TM_CustomClassDef.Named("TM_CustomClasses").customClasses;
         }
 
+        public static List<TM_CustomClass> CustomMageClasses
+        {
+            get
+            {
+                List<TM_CustomClass> mageClasses = new List<TM_CustomClass>();
+                mageClasses.Clear();
+                for(int i = 0; i < CustomClasses().Count; i++)
+                {
+                    if(CustomClasses()[i].isMage)
+                    {
+                        mageClasses.Add(CustomClasses()[i]);
+                    }
+                }
+                return mageClasses;
+            }
+        }
+
+        public static List<TM_CustomClass> CustomFighterClasses
+        {
+            get
+            {
+                List<TM_CustomClass> fighterClasses = new List<TM_CustomClass>();
+                fighterClasses.Clear();
+                for (int i = 0; i < CustomClasses().Count; i++)
+                {
+                    if (CustomClasses()[i].isFighter)
+                    {
+                        fighterClasses.Add(CustomClasses()[i]);
+                    }
+                }
+                return fighterClasses;
+            }
+        }
+
         public static int IsCustomClassIndex(List<Trait> allTraits)
         {
             for(int i = 0; i < CustomClasses().Count; i++)
@@ -35,7 +69,7 @@ namespace TorannMagic
                     }
                 }
             }
-            return -1;
+            return -2;
         }
 
         public static List<MagicPowerSkill> GetAssociatedMagicPowerSkill(CompAbilityUserMagic comp, MagicPower power)
