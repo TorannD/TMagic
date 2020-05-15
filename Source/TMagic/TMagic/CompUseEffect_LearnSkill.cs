@@ -21,13 +21,27 @@ namespace TorannMagic
                         TMAbilityDef ad = (TMAbilityDef)comp.MightData.AllMightPowers[i].abilityDef;
                         if (ad.learnItem == parent.def)
                         {
-                            if (!comp.MightData.AllMightPowers[i].learned)
+                            if (!TM_Data.RestrictedAbilities.Contains(parent.def) && !comp.MightData.AllMightPowers[i].learned)
                             {
                                 itemUsed = true;
                                 comp.MightData.AllMightPowers[i].learned = true;
-                                comp.AddPawnAbility(comp.MightData.AllMightPowers[i].abilityDef);
                                 comp.InitializeSkill();
                                 this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                            }
+                            else if(TM_Data.RestrictedAbilities.Contains(parent.def) && !comp.MightData.AllMightPowers[i].learned)
+                            {
+                                if(comp.customClass.learnableSkills.Contains(parent.def))
+                                {
+                                    itemUsed = true;
+                                    comp.MightData.AllMightPowers[i].learned = true;
+                                    comp.InitializeSkill();
+                                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                                }
+                                else
+                                {
+                                    Messages.Message("CannotLearnSkill".Translate(), MessageTypeDefOf.RejectInput);
+                                    return;
+                                }
                             }
                             else
                             {

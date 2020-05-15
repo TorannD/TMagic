@@ -183,15 +183,13 @@ namespace TorannMagic
         {
             if (pawn != null)
             {
-                bool flag_Hediff = false;
                 if (pawn.health != null)
                 {
                     if (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_MightUserHD"), false))
                     {
-                        flag_Hediff = true;
+                        return true;
                     }
                 }
-                bool flag_Need = false;
                 if (pawn.needs != null)
                 {
                     List<Need> needs = pawn.needs.AllNeeds;
@@ -199,23 +197,20 @@ namespace TorannMagic
                     {
                         if (needs[i].def.defName == "TM_Stamina")
                         {
-                            flag_Need = true;
+                            return true;
                         }
                     }
                 }
-                bool flag_Trait = false;
                 if (pawn.story != null && pawn.story.traits != null && pawn.story.traits.allTraits != null)
                 {
                     for (int i = 0; i < pawn.story.traits.allTraits.Count; i++)
                     {
                         if (TM_Data.MightTraits.Contains(pawn.story.traits.allTraits[i].def))
                         {
-                            flag_Trait = true;
+                            return true;
                         }
                     }                    
                 }
-                bool isMightUser = flag_Hediff || flag_Trait || flag_Need;
-                return isMightUser;
             }
             return false;
         }
@@ -246,15 +241,13 @@ namespace TorannMagic
         {
             if (pawn != null)
             {
-                bool flag_Hediff = false;
                 if (pawn.health != null)
                 {
                     if (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_MagicUserHD"), false))
                     {
-                        flag_Hediff = true;
+                        return true;
                     }
                 }
-                bool flag_Need = false;
                 if (pawn.needs != null)
                 {
                     List<Need> needs = pawn.needs.AllNeeds;
@@ -262,18 +255,17 @@ namespace TorannMagic
                     {
                         if (needs[i].def.defName == "TM_Mana")
                         {
-                            flag_Need = true;
+                            return true;
                         }
                     }
                 }
-                bool flag_Trait = false;
                 if (pawn.story != null && pawn.story.traits != null && pawn.story.traits.allTraits != null)
                 {
                     for(int i = 0; i < pawn.story.traits.allTraits.Count; i++)
                     {
                         if(TM_Data.MagicTraits.Contains(pawn.story.traits.allTraits[i].def))
                         {
-                            flag_Trait = true;
+                            return true;
                         }
                     }                    
                     if(pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
@@ -281,8 +273,6 @@ namespace TorannMagic
                         return false;
                     }
                 }                
-                bool isMagicUser = flag_Hediff || flag_Trait || flag_Need;
-                return isMagicUser;
             }
             return false;
         }

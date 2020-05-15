@@ -79,7 +79,7 @@ namespace TorannMagic
                 }
             }
 
-            Rect sRect = new Rect(rect.x, rect.y, rect.width - 36f, rect.height + 36f + sizeY);
+            Rect sRect = new Rect(rect.x, rect.y, rect.width - 36f, rect.height + 56f + sizeY);
             scrollPosition = GUI.BeginScrollView(rect, scrollPosition, sRect, false, true);
             
             bool flag = comp != null;
@@ -402,17 +402,20 @@ namespace TorannMagic
                 {
                     compMagic.LevelUp(true);
                 }
-                Rect rect22 = new Rect(rect.xMax + 60f, inRect.y, 50f, MagicCardUtility.TextSize * 2);
-                bool flag22 = Widgets.ButtonText(rect22, "Reset Skills", true, false, true);
-                if (flag22)
+                if (false)
                 {
-                    compMagic.ResetSkills();
-                }
-                Rect rect23 = new Rect(rect.xMax + 115f, inRect.y, 50f, MagicCardUtility.TextSize * 2);
-                bool flag23 = Widgets.ButtonText(rect23, "Remove Powers", true, false, true);
-                if (flag23)
-                {
-                    compMagic.RemoveAbilityUser();
+                    Rect rect22 = new Rect(rect.xMax + 60f, inRect.y, 50f, MagicCardUtility.TextSize * 2);
+                    bool flag22 = Widgets.ButtonText(rect22, "Reset Skills", true, false, true);
+                    if (flag22)
+                    {
+                        compMagic.ResetSkills();
+                    }
+                    Rect rect23 = new Rect(rect.xMax + 115f, inRect.y, 50f, MagicCardUtility.TextSize * 2);
+                    bool flag23 = Widgets.ButtonText(rect23, "Remove Powers", true, false, true);
+                    if (flag23)
+                    {
+                        compMagic.RemoveAbilityUser();
+                    }
                 }
             }
             Rect rect4 = new Rect(inRect.x, rect.yMax, inRect.width, MagicCardUtility.TextSize);

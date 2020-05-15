@@ -23,8 +23,8 @@ namespace TorannMagic
             Pawn pawn = this.launcher as Pawn;
             Pawn victim = hitThing as Pawn;
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
-            pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RaiseUndead.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RaiseUndead_pwr");
-            ver = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RaiseUndead.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RaiseUndead_ver");
+            pwr = comp.MagicData.MagicPowerSkill_RaiseUndead.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RaiseUndead_pwr");
+            ver = comp.MagicData.MagicPowerSkill_RaiseUndead.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RaiseUndead_ver");
 
             Thing corpseThing = null;
             
@@ -97,23 +97,73 @@ namespace TorannMagic
                                             ResurrectionUtility.Resurrect(undeadPawn);
                                         }
                                         raisedPawns++;
-                                        if (!undeadPawn.kindDef.RaceProps.Animal && undeadPawn.kindDef.RaceProps.Humanlike)
+                                        if (undeadPawn.kindDef != null && undeadPawn.kindDef.RaceProps != null && undeadPawn.kindDef.RaceProps.Animal)
                                         {
+                                            HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadAnimalHD, -4f);
+                                            HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadAnimalHD, .5f + ver.level);
+                                            HealthUtility.AdjustSeverity(undeadPawn, HediffDef.Named("TM_UndeadStageHD"), -2f);
+                                            HealthUtility.AdjustSeverity(undeadPawn, HediffDef.Named("TM_UndeadStageHD"), rotStage);
+
+                                            if (undeadPawn.training.CanAssignToTrain(TrainableDefOf.Tameness).Accepted)
+                                            {
+                                                while (!undeadPawn.training.HasLearned(TrainableDefOf.Tameness))
+                                                {
+                                                    undeadPawn.training.Train(TrainableDefOf.Tameness, pawn);
+                                                }
+                                            }
+
+                                            if (undeadPawn.training.CanAssignToTrain(TrainableDefOf.Obedience).Accepted)
+                                            {
+                                                while (!undeadPawn.training.HasLearned(TrainableDefOf.Obedience))
+                                                {
+                                                    undeadPawn.training.Train(TrainableDefOf.Obedience, pawn);
+                                                }
+                                            }
+
+                                            if (undeadPawn.training.CanAssignToTrain(TrainableDefOf.Release).Accepted)
+                                            {
+                                                while (!undeadPawn.training.HasLearned(TrainableDefOf.Release))
+                                                {
+                                                    undeadPawn.training.Train(TrainableDefOf.Release, pawn);
+                                                }
+                                            }
+
+                                            if (undeadPawn.training.CanAssignToTrain(TorannMagicDefOf.Haul).Accepted)
+                                            {
+                                                while (!undeadPawn.training.HasLearned(TorannMagicDefOf.Haul))
+                                                {
+                                                    undeadPawn.training.Train(TorannMagicDefOf.Haul, pawn);
+                                                }
+                                            }
+
+                                            if (undeadPawn.training.CanAssignToTrain(TorannMagicDefOf.Rescue).Accepted)
+                                            {
+                                                while (!undeadPawn.training.HasLearned(TorannMagicDefOf.Rescue))
+                                                {
+                                                    undeadPawn.training.Train(TorannMagicDefOf.Rescue, pawn);
+                                                }
+                                            }
+                                            undeadPawn.playerSettings.medCare = MedicalCareCategory.NoMeds;
+                                            undeadPawn.def.tradeability = Tradeability.None;
+                                        }
+                                        else if(undeadPawn.story != null && undeadPawn.story.traits != null && undeadPawn.needs != null && undeadPawn.playerSettings != null)
+                                        {
+
                                             CompAbilityUserMagic compMagic = undeadPawn.GetComp<CompAbilityUserMagic>();
-                                            if(TM_Calc.IsMagicUser(undeadPawn)) //(compMagic.IsMagicUser && !undeadPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless)) || 
+                                            if (compMagic != null && TM_Calc.IsMagicUser(undeadPawn)) //(compMagic.IsMagicUser && !undeadPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless)) || 
                                             {
                                                 compMagic.Initialize();
                                                 compMagic.RemovePowers(true);
                                             }
                                             CompAbilityUserMight compMight = undeadPawn.GetComp<CompAbilityUserMight>();
-                                            if (TM_Calc.IsMightUser(undeadPawn)) //compMight.IsMightUser || 
+                                            if (compMight != null && TM_Calc.IsMightUser(undeadPawn)) //compMight.IsMightUser || 
                                             {
                                                 compMight.Initialize();
                                                 compMight.RemovePowers(true);
                                             }
                                             RemoveAddictionsAndPermanentInjuries(undeadPawn);
                                             HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, -4f);
-                                            HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, .5f + ver.level);                                            
+                                            HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, .5f + ver.level);
                                             HealthUtility.AdjustSeverity(undeadPawn, HediffDef.Named("TM_UndeadStageHD"), -2f);
                                             HealthUtility.AdjustSeverity(undeadPawn, HediffDef.Named("TM_UndeadStageHD"), rotStage);
                                             RedoSkills(undeadPawn, pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_LichHD")));
@@ -123,9 +173,14 @@ namespace TorannMagic
                                             }
                                             RemoveTraits(undeadPawn, undeadPawn.story.traits.allTraits);
                                             undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Undead"), 0, false));
-                                            undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Psychopath"), 0, false));                                            
+                                            undeadPawn.story.traits.GainTrait(new Trait(TraitDef.Named("Psychopath"), 0, false));
                                             undeadPawn.needs.AddOrRemoveNeedsAsAppropriate();
                                             RemoveClassHediff(undeadPawn);
+                                            if(undeadPawn.health.hediffSet.HasHediff(HediffDef.Named("DeathAcidifier")))
+                                            {
+                                                Hediff hd = undeadPawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("DeathAcidifier"));
+                                                undeadPawn.health.RemoveHediff(hd);
+                                            }
                                             //Color undeadColor = new Color(.2f, .4f, 0);
                                             //undeadPawn.story.hairColor = undeadColor;
                                             //CompAbilityUserMagic undeadComp = undeadPawn.GetComp<CompAbilityUserMagic>();
@@ -145,64 +200,11 @@ namespace TorannMagic
                                             {
                                                 undeadPawn.timetable.SetAssignment(h, TimeAssignmentDefOf.Work);
                                             }
-
                                         }
                                     }
                                     else
                                     {
                                         Messages.Message("Vampiric powers have prevented undead reanimation of " + undeadPawn.LabelShort, MessageTypeDefOf.RejectInput);
-                                    }
-
-                                    if (undeadPawn.kindDef.RaceProps.Animal)
-                                    {
-                                        HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadAnimalHD, -4f);
-                                        HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadAnimalHD, .5f + ver.level);
-                                        HealthUtility.AdjustSeverity(undeadPawn, HediffDef.Named("TM_UndeadStageHD"), -2f);
-                                        HealthUtility.AdjustSeverity(undeadPawn, HediffDef.Named("TM_UndeadStageHD"), rotStage);
-
-                                        if (undeadPawn.training.CanAssignToTrain(TrainableDefOf.Tameness).Accepted)
-                                        {
-                                            while (!undeadPawn.training.HasLearned(TrainableDefOf.Tameness))
-                                            {
-                                                undeadPawn.training.Train(TrainableDefOf.Tameness, pawn);
-                                            }
-                                        }
-                                        
-                                        if (undeadPawn.training.CanAssignToTrain(TrainableDefOf.Obedience).Accepted) 
-                                        {
-                                            while (!undeadPawn.training.HasLearned(TrainableDefOf.Obedience)) 
-                                            {
-                                                undeadPawn.training.Train(TrainableDefOf.Obedience, pawn);
-                                            }                                            
-                                        }
-
-                                        if(undeadPawn.training.CanAssignToTrain(TrainableDefOf.Release).Accepted)
-                                        {
-                                            while (!undeadPawn.training.HasLearned(TrainableDefOf.Release))
-                                            {
-                                                undeadPawn.training.Train(TrainableDefOf.Release, pawn);
-                                            }
-                                        }
-
-                                        if (undeadPawn.training.CanAssignToTrain(TorannMagicDefOf.Haul).Accepted)
-                                        {
-                                            while (!undeadPawn.training.HasLearned(TorannMagicDefOf.Haul))
-                                            {
-                                                undeadPawn.training.Train(TorannMagicDefOf.Haul, pawn);
-                                            }
-                                        }
-
-                                        if (undeadPawn.training.CanAssignToTrain(TorannMagicDefOf.Rescue).Accepted)
-                                        {
-                                            while (!undeadPawn.training.HasLearned(TorannMagicDefOf.Rescue))
-                                            {
-                                                undeadPawn.training.Train(TorannMagicDefOf.Rescue, pawn);
-                                            }
-                                        }
-                                        undeadPawn.playerSettings.medCare = MedicalCareCategory.NoMeds;
-                                        undeadPawn.def.tradeability = Tradeability.None;
-                                        
-                                        
                                     }
                                 }
                             }

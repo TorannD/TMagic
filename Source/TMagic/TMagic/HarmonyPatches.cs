@@ -448,7 +448,7 @@ namespace TorannMagic
                     }                    
                 }
             }
-            if (p != null)
+            if (p != null && p.Spawned && p.Map != null)
             {
                 if (comp != null)
                 {
@@ -509,7 +509,7 @@ namespace TorannMagic
                         }
                     }
                 }
-                if(p != null)
+                if(p != null && p.Spawned && p.Map != null)
                 {
                     if (comp != null)
                     {
@@ -1207,13 +1207,15 @@ namespace TorannMagic
             public static bool Prefix(Mesh mesh, Vector3 loc, Quaternion quat, Material mat, bool drawNow)
             {
                 if (mesh != null && loc != null && quat != null && mat != null)
-                {
-                    if (mat.mainTexture != null && mat.mainTexture.name != null && mat.mainTexture.ToString() != null && (mat.mainTexture.ToString().Contains("demonlordcloak") || mat.mainTexture.name.Contains("opencloak")))
+                {                   
+                    if (mat.mainTexture != null && ModOptions.Constants.GetCloaks().Contains(mat.mainTexture))//mat.mainTexture.name != null && mat.mainTexture.ToString() != null && (mat.mainTexture.ToString().Contains("demonlordcloak") || mat.mainTexture.name.Contains("opencloak")))
                     {
+                        //Log.Message("main texture is: " + mat.mainTexture);
+                        //Log.Message("pool contains " + ModOptions.Constants.GetCloaks()[0]);
                         //Log.Message("item is " + mat.mainTexture.ToString() + " at y: " + loc.y);
                         loc.y = 8.205f;
                         //loc.y += .010f; //was 0.015f
-                        if (mat.name.ToString().Contains("_north"))
+                        if (ModOptions.Constants.GetCloaksNorth().Contains(mat.mainTexture))
                         {
                             //loc.y += .00175f; //was 0.006f
                             loc.y = 8.209f; //7.9961f;
@@ -1806,12 +1808,12 @@ namespace TorannMagic
                 if (__instance.IsColonist)
                 {
                     CompAbilityUserMight compMight = __instance.TryGetComp<CompAbilityUserMight>();
-                    if (compMight != null && compMight.IsMightUser)
+                    if (compMight == null && compMight.IsMightUser)
                     {
                         return;
                     }
                     CompAbilityUserMagic compMagic = __instance.TryGetComp<CompAbilityUserMagic>();
-                    if (compMagic != null && compMagic.IsMagicUser)
+                    if (compMagic == null && compMagic.IsMagicUser)
                     {
                         return;
                     }
@@ -1821,37 +1823,45 @@ namespace TorannMagic
                     var gizmoList = __result.ToList();
                     if (settingsRef.Wanderer && __instance.story.traits.HasTrait(TorannMagicDefOf.Gifted))
                     {
-                        Pawn p = __instance;
-                        Command_Action itemWanderer = new Command_Action
+                        //Pawn p = __instance;
+                        //Command_Action itemWanderer = new Command_Action
+                        //{
+                        //    action = new Action(delegate
+                        //    {
+                        //        TM_Action.PromoteWanderer(p);
+                        //    }),
+                        //    order = 51,
+                        //    defaultLabel = TM_TextPool.TM_PromoteWanderer,
+                        //    defaultDesc = TM_TextPool.TM_PromoteWandererDesc,
+                        //    icon = ContentFinder<Texture2D>.Get("UI/wanderer", true),
+                        //};
+                        Command_Action itemWanderer = (Command_Action)compMagic.GetGizmoCommands("wanderer");
+                        if ( itemWanderer != null)
                         {
-                            action = new Action(delegate
-                            {
-                                TM_Action.PromoteWanderer(p);
-                            }),
-                            order = 51,
-                            defaultLabel = TM_TextPool.TM_PromoteWanderer,
-                            defaultDesc = TM_TextPool.TM_PromoteWandererDesc,
-                            icon = ContentFinder<Texture2D>.Get("UI/wanderer", true),
-                        };
-                        gizmoList.Add(itemWanderer);
+                            gizmoList.Add(itemWanderer);
+                        }
                     }
 
                     if (settingsRef.Wayfarer && __instance.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy))
                     {
-                        Pawn p = __instance;
-                        Command_Action itemWayfarer = new Command_Action
-                        {
+                        //Pawn p = __instance;
+                        //Command_Action itemWayfarer = new Command_Action
+                        //{
 
-                            action = new Action(delegate
-                            {
-                                TM_Action.PromoteWayfarer(p);
-                            }),
-                            order = 52,
-                            defaultLabel = TM_TextPool.TM_PromoteWayfarer,
-                            defaultDesc = TM_TextPool.TM_PromoteWayfarerDesc,
-                            icon = ContentFinder<Texture2D>.Get("UI/wayfarer", true),
-                        };
-                        gizmoList.Add(itemWayfarer);
+                        //    action = new Action(delegate
+                        //    {
+                        //        TM_Action.PromoteWayfarer(p);
+                        //    }),
+                        //    order = 52,
+                        //    defaultLabel = TM_TextPool.TM_PromoteWayfarer,
+                        //    defaultDesc = TM_TextPool.TM_PromoteWayfarerDesc,
+                        //    icon = ContentFinder<Texture2D>.Get("UI/wayfarer", true),
+                        //};
+                        Command_Action itemWayfarer = (Command_Action)compMight.GetGizmoCommands("wayfarer");
+                        if (itemWayfarer != null)
+                        {
+                            gizmoList.Add(itemWayfarer);
+                        }
                     }
                     __result = gizmoList;
                 }

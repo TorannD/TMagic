@@ -1665,7 +1665,7 @@ namespace TorannMagic
                     }
                 }
                 thing.HitPoints = Mathf.RoundToInt((wornRatio * thing.MaxHitPoints) - ((.2f - (.1f * pwrVal)) * thing.MaxHitPoints));
-                if (thing.HitPoints > thing.MaxHitPoints)
+                if ((wornRatio != 1 && thing.HitPoints > thing.MaxHitPoints))
                 {
                     thing.HitPoints = thing.MaxHitPoints;
                     thing.SetForbidden(true, false);

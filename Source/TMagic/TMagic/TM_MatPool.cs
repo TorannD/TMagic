@@ -25,6 +25,13 @@ namespace TorannMagic
         public static readonly Material multiForkLightning = MaterialPool.MatFrom("Spells/LightningBolt_w", ShaderDatabase.MoteGlow);
         public static readonly Material standardLightning = MatLoader.LoadMat("Weather/LightningBolt", -1);
 
+        public static readonly Material opencloak_Female_north = MaterialPool.MatFrom("Equipment/opencloak_Female_north"); 
+        public static readonly Material opencloak_Female_south = MaterialPool.MatFrom("Equipment/opencloak_Female_south");
+        public static readonly Material opencloak_Female_east = MaterialPool.MatFrom("Equipment/opencloak_Female_east");
+        //public static readonly Material maesterCloak_east = MatLoader.LoadMat("Equipment/opencloak_Female_north", -1);
+
+
+
         //Colonist bar icons        
         public static readonly Texture2D bardIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/bardMageMark", true);
         public static readonly Texture2D arcanistIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/arcanistMageMark", true);

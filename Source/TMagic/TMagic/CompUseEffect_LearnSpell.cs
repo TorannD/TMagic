@@ -22,13 +22,29 @@ namespace TorannMagic
                         TMAbilityDef ad = (TMAbilityDef)comp.MagicData.AllMagicPowers[i].abilityDef;
                         if (ad.learnItem == parent.def)
                         {
-                            if (!comp.MagicData.AllMagicPowers[i].learned)
+                            if (!TM_Data.RestrictedAbilities.Contains(parent.def) && !comp.MagicData.AllMagicPowers[i].learned)
                             {
                                 itemUsed = true;
                                 comp.MagicData.AllMagicPowers[i].learned = true;
-                                comp.AddPawnAbility(comp.MagicData.AllMagicPowers[i].abilityDef);
                                 comp.InitializeSpell();
                                 this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                                break;
+                            }
+                            else if (TM_Data.RestrictedAbilities.Contains(parent.def) && !comp.MagicData.AllMagicPowers[i].learned)
+                            {
+                                if(comp.customClass.learnableSpells.Contains(parent.def))
+                                {
+                                    itemUsed = true;
+                                    comp.MagicData.AllMagicPowers[i].learned = true;
+                                    comp.InitializeSpell();
+                                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                                    break;
+                                }
+                                else
+                                {
+                                    Messages.Message("CannotLearnSpell".Translate(), MessageTypeDefOf.RejectInput);
+                                    break;
+                                }
                             }
                             else
                             {

@@ -1367,7 +1367,7 @@ namespace TorannMagic
             bool flag = CompAbilityUserMight.MightAbilities == null;
             if (flag)
             {
-                if (this.mightPowersInitialized == false)
+                if (this.mightPowersInitialized == false && MightData != null)
                 {
                     Pawn abilityUser = base.AbilityUser;
                     bool flag2;
@@ -1656,11 +1656,10 @@ namespace TorannMagic
         public void InitializeSkill()  //used for class independant skills
         {
             Pawn abilityUser = base.AbilityUser;
-
             if(this.customClass != null)
             {
                 for(int j = 0; j< this.MightData.AllMightPowers.Count; j++)
-                {
+                {                    
                     if(this.MightData.AllMightPowers[j].learned && !this.customClass.classFighterAbilities.Contains(this.MightData.AllMightPowers[j].abilityDef))
                     {
                         this.RemovePawnAbility(this.MightData.AllMightPowers[j].abilityDef);
@@ -1866,7 +1865,7 @@ namespace TorannMagic
         public void RemovePowers(bool clearStandalone = false)
         {
             Pawn abilityUser = base.AbilityUser;
-            if (this.mightPowersInitialized == true)
+            if (this.mightPowersInitialized == true && MightData != null)
             {
                 bool flag2 = true;
                 if (this.customClass != null)
@@ -4941,16 +4940,22 @@ namespace TorannMagic
                 int index = TM_ClassUtility.IsCustomClassIndex(abilityUser.story.traits.allTraits);
                 if (index >= 0)
                 {
-                    for (int i = 0; i < TM_ClassUtility.CustomClasses()[index].classFighterAbilities.Count; i++)
+                    if (TM_ClassUtility.CustomClasses()[index].isFighter)
                     {
-                        if (TM_ClassUtility.CustomClasses()[index].classFighterAbilities[i].shouldInitialize)
+                        this.customClass = TM_ClassUtility.CustomClasses()[index];
+                        this.customIndex = index;
+
+                        for (int i = 0; i < TM_ClassUtility.CustomClasses()[index].classFighterAbilities.Count; i++)
                         {
-                            for (int j = 0; j < this.MightData.AllMightPowersWithSkills.Count; j++)
+                            if (TM_ClassUtility.CustomClasses()[index].classFighterAbilities[i].shouldInitialize)
                             {
-                                if (this.MightData.AllMightPowersWithSkills[j].abilityDef == TM_ClassUtility.CustomClasses()[index].classFighterAbilities[i])
+                                for (int j = 0; j < this.MightData.AllMightPowersWithSkills.Count; j++)
                                 {
-                                    int level = this.MightData.AllMightPowersWithSkills[j].level;
-                                    base.AddPawnAbility(this.MightData.AllMightPowersWithSkills[j].TMabilityDefs[level]);
+                                    if (this.MightData.AllMightPowersWithSkills[j].TMabilityDefs.Contains(TM_ClassUtility.CustomClasses()[index].classFighterAbilities[i]) && this.MightData.AllMightPowersWithSkills[j].learned)
+                                    {
+                                        int level = this.MightData.AllMightPowersWithSkills[j].level;
+                                        base.AddPawnAbility(this.MightData.AllMightPowersWithSkills[j].TMabilityDefs[level]);
+                                    }
                                 }
                             }
                         }
@@ -5443,6 +5448,39 @@ namespace TorannMagic
                 //base.UpdateAbilities();
             }
             
+        }
+
+        private Dictionary<string, Command> gizmoCommands = new Dictionary<string, Command>();
+        public Command GetGizmoCommands(string key)
+        {
+            if (!gizmoCommands.ContainsKey(key))
+            {
+                Pawn p = this.Pawn;
+                if (key == "wayfarer")
+                {
+                    Command_Action itemWayfarer = new Command_Action
+                    {
+
+                        action = new Action(delegate
+                        {
+                            TM_Action.PromoteWayfarer(p);
+                        }),
+                        order = 52,
+                        defaultLabel = TM_TextPool.TM_PromoteWayfarer,
+                        defaultDesc = TM_TextPool.TM_PromoteWayfarerDesc,
+                        icon = ContentFinder<Texture2D>.Get("UI/wayfarer", true),
+                    };
+                    gizmoCommands.Add(key, itemWayfarer);
+                }
+            }
+            if (gizmoCommands.ContainsKey(key))
+            {
+                return gizmoCommands[key];
+            }
+            else
+            {
+                return null;
+            }
         }
 
     }

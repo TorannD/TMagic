@@ -456,6 +456,7 @@ Damage: 7</description>
     <manaCost>0.45</manaCost>
 	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 	<learnChance>.25</learnChance>
+	<learnItem>SpellOf_Teleport</learnItem>
 	<canCopy>true</canCopy>
 	<MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>

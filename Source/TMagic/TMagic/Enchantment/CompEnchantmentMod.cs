@@ -14,6 +14,7 @@ namespace TorannMagic.Enchantment
             LongEventHandler.ExecuteWhenFinished(new Action(CompEnchantmentMod.AddUniversalBodyparts));
             LongEventHandler.ExecuteWhenFinished(new Action(CompEnchantmentMod.InitializeFactionSettings));
             LongEventHandler.ExecuteWhenFinished(new Action(CompEnchantmentMod.InitializeCustomClassActions));
+            LongEventHandler.ExecuteWhenFinished(new Action(CompEnchantmentMod.FillCloakPool));
         }
 
         private static void AddComp()
@@ -108,6 +109,11 @@ namespace TorannMagic.Enchantment
                     }
                 }
             }
+        }
+
+        private static void FillCloakPool()
+        {
+            ModOptions.Constants.InitializeCloaks();
         }
 
     }

@@ -41,6 +41,43 @@ namespace TorannMagic
             return masterSpellList;
         }
 
+        public static List<ThingDef> RestrictedAbilities
+        {
+            get
+            {
+                List<ThingDef> restricted = new List<ThingDef>();
+                restricted.Add(TorannMagicDefOf.SpellOf_BattleHymn);
+                restricted.Add(TorannMagicDefOf.SpellOf_BlankMind);
+                restricted.Add(TorannMagicDefOf.SpellOf_Blizzard);
+                restricted.Add(TorannMagicDefOf.SpellOf_BloodMoon);
+                restricted.Add(TorannMagicDefOf.SpellOf_BriarPatch);
+                restricted.Add(TorannMagicDefOf.SpellOf_CauterizeWound);
+                restricted.Add(TorannMagicDefOf.SpellOf_ChargeBattery);
+                restricted.Add(TorannMagicDefOf.SpellOf_DryGround);
+                restricted.Add(TorannMagicDefOf.SpellOf_EyeOfTheStorm);
+                restricted.Add(TorannMagicDefOf.SpellOf_FertileLands);
+                restricted.Add(TorannMagicDefOf.SpellOf_Firestorm);
+                restricted.Add(TorannMagicDefOf.SpellOf_FoldReality);
+                restricted.Add(TorannMagicDefOf.SpellOf_HolyWrath);
+                restricted.Add(TorannMagicDefOf.SpellOf_LichForm);
+                restricted.Add(TorannMagicDefOf.SpellOf_MechaniteReprogramming);
+                restricted.Add(TorannMagicDefOf.SpellOf_Meteor);
+                restricted.Add(TorannMagicDefOf.SpellOf_OrbitalStrike);
+                restricted.Add(TorannMagicDefOf.SpellOf_Overdrive);
+                restricted.Add(TorannMagicDefOf.SpellOf_PsychicShock);
+                restricted.Add(TorannMagicDefOf.SpellOf_Recall);
+                restricted.Add(TorannMagicDefOf.SpellOf_RegrowLimb);
+                restricted.Add(TorannMagicDefOf.SpellOf_Resurrection);
+                restricted.Add(TorannMagicDefOf.SpellOf_Sabotage);
+                restricted.Add(TorannMagicDefOf.SpellOf_Scorn);
+                restricted.Add(TorannMagicDefOf.SpellOf_Shapeshift);
+                restricted.Add(TorannMagicDefOf.SpellOf_SummonPoppi);
+                restricted.Add(TorannMagicDefOf.SpellOf_TechnoShield);
+                restricted.Add(TorannMagicDefOf.SpellOf_WetGround);
+                return restricted;
+            }
+        }
+
         public static List<ThingDef> StandardSpellList()
         {
             return SpellList().Except(MasterSpellList()).ToList();
