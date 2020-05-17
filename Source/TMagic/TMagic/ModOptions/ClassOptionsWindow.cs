@@ -197,7 +197,13 @@ namespace TorannMagic.ModOptions
                     GUI.color = Color.gray;
                 }
                 Rect customRect1 = Controller.UIHelper.GetRowRect(customRect, rowHeight, num);
-                Widgets.Label(customRect1, cClass.classTrait.degreeDatas.FirstOrDefault().label);
+                bool classEnabled = Settings.Instance.CustomClass[cClass.classTrait.ToString()];
+                Widgets.CheckboxLabeled(customRect1, cClass.classTrait.degreeDatas.FirstOrDefault().label, ref classEnabled, false);
+                if (classEnabled != Settings.Instance.CustomClass[cClass.classTrait.ToString()])
+                {
+                    Settings.Instance.CustomClass.Remove(cClass.classTrait.ToString());
+                    Settings.Instance.CustomClass.Add(cClass.classTrait.ToString(), classEnabled);
+                }
                 num++;
             }           
             

@@ -89,5 +89,7 @@ namespace TorannMagic.ModOptions
         //faction settings
         public Dictionary<string, float> FactionFighterSettings = Settings.Instance.FactionFighterSettings;
         public Dictionary<string, float> FactionMageSettings = Settings.Instance.FactionMageSettings;
+
+        public Dictionary<string, bool> CustomClass = Settings.Instance.CustomClass;
     }
 }

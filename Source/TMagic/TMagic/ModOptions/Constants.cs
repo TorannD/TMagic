@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using RimWorld;
+using AbilityUser;
 
 namespace TorannMagic.ModOptions
 { 
@@ -158,6 +159,12 @@ namespace TorannMagic.ModOptions
             return cloaks;            
         }
 
+        public static List<Texture> cloaksNorth;
+        public static List<Texture> GetCloaksNorth()
+        {
+            return cloaksNorth;
+        }
+
         public static void InitializeCloaks()
         {
             Constants.cloaks = new List<Texture>();
@@ -195,13 +202,41 @@ namespace TorannMagic.ModOptions
             Constants.cloaks.Add(MaterialPool.MatFrom("Equipment/demonlordcloakc_Male_east").mainTexture);
             Constants.cloaks.Add(MaterialPool.MatFrom("Equipment/demonlordcloakc_Male_south").mainTexture);
             Constants.cloaks.AddRange(cloaksNorth);
-
         }
 
-        public static List<Texture> cloaksNorth;
-        public static List<Texture> GetCloaksNorth()
-        {
-            return cloaksNorth;
+        public static Dictionary<string,IEnumerable<Gizmo>> reducedGizmoList;
+        public static IEnumerable<Gizmo> GetReducedDraftGizmos(string hash, IEnumerable<Gizmo> list)
+        {            
+            if(reducedGizmoList == null)
+            {
+                reducedGizmoList = new Dictionary<string, IEnumerable<Gizmo>>();
+            }
+            if (hash == "clear")
+            {
+                reducedGizmoList.Clear();
+                return null;
+            }
+            if (!reducedGizmoList.ContainsKey(hash))
+            {
+                List<Gizmo> glist = list.ToList();
+                for (int i = 0; i < glist.Count; i++)
+                {
+                    if (glist[i].GetType() == typeof(Command_PawnAbility))
+                    {
+                        glist.Remove(glist[i]);
+                        i--;
+                    }
+                }
+                reducedGizmoList.Add(hash, glist);
+            }
+            if(reducedGizmoList != null)
+            {
+                return reducedGizmoList[hash];
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

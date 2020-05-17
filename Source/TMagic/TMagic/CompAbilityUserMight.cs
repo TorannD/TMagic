@@ -1656,7 +1656,12 @@ namespace TorannMagic
         public void InitializeSkill()  //used for class independant skills
         {
             Pawn abilityUser = base.AbilityUser;
-            if(this.customClass != null)
+            if (this.mimicAbility != null)
+            {
+                this.RemovePawnAbility(mimicAbility);
+                this.AddPawnAbility(mimicAbility);
+            }
+            if (this.customClass != null)
             {
                 for(int j = 0; j< this.MightData.AllMightPowers.Count; j++)
                 {                    
@@ -1708,11 +1713,6 @@ namespace TorannMagic
                 {
                     this.RemovePawnAbility(TorannMagicDefOf.TM_TeachMight);
                     this.AddPawnAbility(TorannMagicDefOf.TM_TeachMight);
-                }
-                if (this.mimicAbility != null)
-                {
-                    this.RemovePawnAbility(mimicAbility);
-                    this.AddPawnAbility(mimicAbility);
                 }
                 if (this.skill_ThrowingKnife == true)
                 {
@@ -5471,6 +5471,103 @@ namespace TorannMagic
                         icon = ContentFinder<Texture2D>.Get("UI/wayfarer", true),
                     };
                     gizmoCommands.Add(key, itemWayfarer);
+                }
+                if(key == "cleave")
+                {
+                    String toggle = "cleave";
+                    String label = "TM_CleaveEnabled".Translate();
+                    String desc = "TM_CleaveToggleDesc".Translate();
+                    if (!this.useCleaveToggle)
+                    {
+                        toggle = "cleavetoggle_off";
+                        label = "TM_CleaveDisabled".Translate();
+                    }
+                    Command_Toggle itemCleave = new Command_Toggle
+                    {
+                        defaultLabel = label,
+                        defaultDesc = desc,
+                        order = -90,
+                        icon = ContentFinder<Texture2D>.Get("UI/" + toggle, true),
+                        isActive = (() => this.useCleaveToggle),
+                        toggleAction = delegate
+                        {
+                            this.useCleaveToggle = !this.useCleaveToggle;
+                        }
+                    };
+                    gizmoCommands.Add(key, itemCleave);
+                }
+                if(key == "cqc")
+                {
+                    String toggle = "cqc";
+                    String label = "TM_CQCEnabled".Translate();
+                    String desc = "TM_CQCToggleDesc".Translate();
+                    if (!this.useCQCToggle)
+                    {
+                        //toggle = "cqc_off";
+                        label = "TM_CQCDisabled".Translate();
+                    }
+                    Command_Toggle itemCQC = new Command_Toggle
+                    {
+                        defaultLabel = label,
+                        defaultDesc = desc,
+                        order = -90,
+                        icon = ContentFinder<Texture2D>.Get("UI/" + toggle, true),
+                        isActive = (() => this.useCQCToggle),
+                        toggleAction = delegate
+                        {
+                            this.useCQCToggle = !this.useCQCToggle;
+                        }
+                    };
+                    gizmoCommands.Add(key, itemCQC);
+                }
+                if(key == "psiAugmentation")
+                {
+                    String toggle = "psionicaugmentation";
+                    String label = "TM_AugmentationsEnabled".Translate();
+                    String desc = "TM_AugmentationsToggleDesc".Translate();
+                    if (!this.usePsionicAugmentationToggle)
+                    {
+                        toggle = "psionicaugmentation_off";
+                        label = "TM_AugmentationsDisabled".Translate();
+                    }
+                    Command_Toggle item = new Command_Toggle
+                    {
+                        defaultLabel = label,
+                        defaultDesc = desc,
+                        order = -90,
+                        icon = ContentFinder<Texture2D>.Get("UI/" + toggle, true),
+                        isActive = (() => this.usePsionicAugmentationToggle),
+                        toggleAction = delegate
+                        {
+                            this.usePsionicAugmentationToggle = !this.usePsionicAugmentationToggle;
+                        }
+                    };
+                    gizmoCommands.Add(key, item);
+                }
+                if(key == "psiMindAttack")
+                {
+
+                    String toggle2 = "psionicmindattack";
+                    String label2 = "TM_MindAttackEnabled".Translate();
+                    String desc2 = "TM_MindAttackToggleDesc".Translate();
+                    if (!this.usePsionicMindAttackToggle)
+                    {
+                        toggle2 = "psionicmindattack_off";
+                        label2 = "TM_MindAttackDisabled".Translate();
+                    }
+                    Command_Toggle item2 = new Command_Toggle
+                    {
+                        defaultLabel = label2,
+                        defaultDesc = desc2,
+                        order = -89,
+                        icon = ContentFinder<Texture2D>.Get("UI/" + toggle2, true),
+                        isActive = (() => this.usePsionicMindAttackToggle),
+                        toggleAction = delegate
+                        {
+                            this.usePsionicMindAttackToggle = !this.usePsionicMindAttackToggle;
+                        }
+                    };
+                    gizmoCommands.Add(key, item2);
                 }
             }
             if (gizmoCommands.ContainsKey(key))

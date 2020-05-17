@@ -241,6 +241,24 @@ namespace TorannMagic
         {
             if (pawn != null)
             {
+                if (pawn.story != null && pawn.story.traits != null && pawn.story.traits.allTraits != null)
+                {
+                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                    {
+                        return false;
+                    }
+                    for (int i = 0; i < pawn.story.traits.allTraits.Count; i++)
+                    {
+                        if (TM_Data.MagicTraits.Contains(pawn.story.traits.allTraits[i].def))
+                        {
+                            return true;
+                        }
+                    }                    
+                }
+                else
+                {
+                    return false;
+                }
                 if (pawn.health != null)
                 {
                     if (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_MagicUserHD"), false))
@@ -258,21 +276,7 @@ namespace TorannMagic
                             return true;
                         }
                     }
-                }
-                if (pawn.story != null && pawn.story.traits != null && pawn.story.traits.allTraits != null)
-                {
-                    for(int i = 0; i < pawn.story.traits.allTraits.Count; i++)
-                    {
-                        if(TM_Data.MagicTraits.Contains(pawn.story.traits.allTraits[i].def))
-                        {
-                            return true;
-                        }
-                    }                    
-                    if(pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-                    {
-                        return false;
-                    }
-                }                
+                }                                
             }
             return false;
         }

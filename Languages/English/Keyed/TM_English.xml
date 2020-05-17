@@ -590,7 +590,7 @@ Level 3: The Plague</TM_CureDisease_ver_desc>
 <TM_RegrowLimb_eff>Regrowth Mastery</TM_RegrowLimb_eff>
 
 <TM_RaiseUndead_eff_desc>Reduces mana cost of Raise Undead by 5% per skill level. Reduces cost to maintain undead by 10% per skill level.</TM_RaiseUndead_eff_desc>
-<TM_RaiseUndead_pwr_desc>Increases the number of undead that can be created with each spell by 1 per skill level.
+<TM_RaiseUndead_pwr_desc>Increases the number of undead that can be created with each spell by 1 per skill level and increases their learned skills by 10% per skill point.
 Level 0: 2
 Level 1: 3
 Level 2: 4

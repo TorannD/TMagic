@@ -92,6 +92,8 @@ namespace TorannMagic.ModOptions
         //Faction settings
         public Dictionary<string, float> FactionFighterSettings = new Dictionary<string, float>();
         public Dictionary<string, float> FactionMageSettings = new Dictionary<string, float>();
+        //Custom Class options
+        public Dictionary<string, bool> CustomClass = new Dictionary<string, bool>();
 
         public static Settings Instance;
 
@@ -175,6 +177,7 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<bool>(ref this.Monk, "Monk", true, false);
             Scribe_Values.Look<bool>(ref this.Commander, "Commander", true, false);
             Scribe_Values.Look<bool>(ref this.SuperSoldier, "SuperSoldier", true, false);
+            Scribe_Collections.Look(ref this.CustomClass, "CustomClass");
             Scribe_Values.Look<bool>(ref this.ManaWell, "ManaWell", true, false);
             Scribe_Values.Look<bool>(ref this.ArcaneConduit, "ArcaneConduit", true, false);
             Scribe_Values.Look<bool>(ref this.Boundless, "Boundless", true, false);

@@ -1925,166 +1925,55 @@ namespace TorannMagic
                 }
                 if (__instance.story.traits.HasTrait(TorannMagicDefOf.Gladiator) || TM_ClassUtility.ClassHasAbility(TorannMagicDefOf.TM_Cleave, null, compMight))
                 {
-                    String toggle = "cleave";
-                    String label = "TM_CleaveEnabled".Translate();
-                    String desc = "TM_CleaveToggleDesc".Translate();
-                    if (!compMight.useCleaveToggle)
+                    Command_Toggle ct = (Command_Toggle)compMight.GetGizmoCommands("cleave");
+                    if (ct != null)
                     {
-                        toggle = "cleavetoggle_off";
-                        label = "TM_CleaveDisabled".Translate();
+                        gizmoList.Add(ct);
                     }
-                    Command_Toggle item = new Command_Toggle
-                    {
-                        defaultLabel = label,
-                        defaultDesc = desc,
-                        order = -90,
-                        icon = ContentFinder<Texture2D>.Get("UI/" + toggle, true),
-                        isActive = (() => compMight.useCleaveToggle),
-                        toggleAction = delegate
-                        {
-                            compMight.useCleaveToggle = !compMight.useCleaveToggle;
-                        }
-                    };
-                    gizmoList.Add(item);
                 }
                 if (__instance.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier)  || TM_ClassUtility.ClassHasAbility(TorannMagicDefOf.TM_CQC, null, compMight))
                 {
-                    String toggle = "cqc";
-                    String label = "TM_CQCEnabled".Translate();
-                    String desc = "TM_CQCToggleDesc".Translate();
-                    if (!compMight.useCQCToggle)
+                    Command_Toggle ct = (Command_Toggle)compMight.GetGizmoCommands("cqc");
+                    if (ct != null)
                     {
-                        //toggle = "cqc_off";
-                        label = "TM_CQCDisabled".Translate();
+                        gizmoList.Add(ct);
                     }
-                    Command_Toggle item = new Command_Toggle
-                    {
-                        defaultLabel = label,
-                        defaultDesc = desc,
-                        order = -90,
-                        icon = ContentFinder<Texture2D>.Get("UI/" + toggle, true),
-                        isActive = (() => compMight.useCQCToggle),
-                        toggleAction = delegate
-                        {
-                            compMight.useCQCToggle = !compMight.useCQCToggle;
-                        }
-                    };
-                    gizmoList.Add(item);
                 }
                 if (__instance.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic) || TM_ClassUtility.ClassHasHediff(TorannMagicDefOf.TM_PsionicHD, compMagic, compMight))
                 {
-                    String toggle = "psionicaugmentation";
-                    String label = "TM_AugmentationsEnabled".Translate();
-                    String desc = "TM_AugmentationsToggleDesc".Translate();
-                    if (!compMight.usePsionicAugmentationToggle)
-                    {
-                        toggle = "psionicaugmentation_off";
-                        label = "TM_AugmentationsDisabled".Translate();
-                    }
-                    Command_Toggle item = new Command_Toggle
-                    {
-                        defaultLabel = label,
-                        defaultDesc = desc,
-                        order = -90,
-                        icon = ContentFinder<Texture2D>.Get("UI/" + toggle, true),
-                        isActive = (() => compMight.usePsionicAugmentationToggle),
-                        toggleAction = delegate
-                        {
-                            compMight.usePsionicAugmentationToggle = !compMight.usePsionicAugmentationToggle;
-                        }
-                    };
-                    gizmoList.Add(item);
 
-                    String toggle2 = "psionicmindattack";
-                    String label2 = "TM_MindAttackEnabled".Translate();
-                    String desc2 = "TM_MindAttackToggleDesc".Translate();
-                    if (!compMight.usePsionicMindAttackToggle)
+                    Command_Toggle ct = (Command_Toggle)compMight.GetGizmoCommands("psiAugmentation");
+                    if (ct != null)
                     {
-                        toggle2 = "psionicmindattack_off";
-                        label2 = "TM_MindAttackDisabled".Translate();
+                        gizmoList.Add(ct);
                     }
-                    Command_Toggle item2 = new Command_Toggle
+                    ct = (Command_Toggle)compMight.GetGizmoCommands("psiMindAttack");
+                    if (ct != null)
                     {
-                        defaultLabel = label2,
-                        defaultDesc = desc2,
-                        order = -89,
-                        icon = ContentFinder<Texture2D>.Get("UI/" + toggle2, true),
-                        isActive = (() => compMight.usePsionicMindAttackToggle),
-                        toggleAction = delegate
-                        {
-                            compMight.usePsionicMindAttackToggle = !compMight.usePsionicMindAttackToggle;
-                        }
-                    };
-                    gizmoList.Add(item2);
+                        gizmoList.Add(ct);
+                    }
                 }
                 if ((__instance.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || __instance.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) || TM_ClassUtility.ClassHasAbility(TorannMagicDefOf.TM_TechnoBit, compMagic, compMight)) && compMagic.HasTechnoBit)
                 {
-                    String toggle = "bit_c";
-                    String label = "TM_TechnoBitEnabled".Translate();
-                    String desc = "TM_TechnoBitToggleDesc".Translate();
-                    if (!compMagic.useTechnoBitToggle)
+                    Command_Toggle ct = (Command_Toggle)compMagic.GetGizmoCommands("technoBit");
+                    if (ct != null)
                     {
-                        toggle = "bit_off";
-                        label = "TM_TechnoBitDisabled".Translate();
+                        gizmoList.Add(ct);
                     }
-                    var item = new Command_Toggle
+                    ct = (Command_Toggle)compMagic.GetGizmoCommands("technoRepair");
+                    if (ct != null)
                     {
-                        isActive = () => compMagic.useTechnoBitToggle,
-                        toggleAction = () =>
-                        {
-                            compMagic.useTechnoBitToggle = !compMagic.useTechnoBitToggle;
-                        },
-                        defaultLabel = label,
-                        defaultDesc = desc,
-                        order = -89,
-                        icon = ContentFinder<Texture2D>.Get("UI/" + toggle, true)                            
-                    };
-                    gizmoList.Add(item);
-
-                    String toggle_repair = "bit_repairon";
-                    String label_repair = "TM_TechnoBitRepair".Translate();
-                    String desc_repair = "TM_TechnoBitRepairDesc".Translate();
-                    if (!compMagic.useTechnoBitRepairToggle)
-                    {
-                        toggle_repair = "bit_repairoff";
+                        gizmoList.Add(ct);
                     }
-                    var item_repair = new Command_Toggle
-                    {
-                        isActive = () => compMagic.useTechnoBitRepairToggle,
-                        toggleAction = () =>
-                        {
-                            compMagic.useTechnoBitRepairToggle = !compMagic.useTechnoBitRepairToggle;
-                        },
-                        defaultLabel = label_repair,
-                        defaultDesc = desc_repair,
-                        order = -88,
-                        icon = ContentFinder<Texture2D>.Get("UI/" + toggle_repair, true)
-                    };
-                    gizmoList.Add(item_repair);
                 }
 
                 if ((__instance.story.traits.HasTrait(TorannMagicDefOf.Technomancer) || __instance.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) || TM_ClassUtility.ClassHasAbility(TorannMagicDefOf.TM_TechnoWeapon, compMagic, compMight)) && compMagic.HasTechnoWeapon)
                 {
-                    String toggle = "elementalshot";
-                    String label = "TM_TechnoWeapon_ver".Translate();
-                    String desc = "TM_ElementalShotToggleDesc".Translate();
-                    if (!compMagic.useElementalShotToggle)
+                    Command_Toggle ct = (Command_Toggle)compMagic.GetGizmoCommands("elementalShot");
+                    if (ct != null)
                     {
-                        toggle = "elementalshot_off";
+                        gizmoList.Add(ct);
                     }
-                    var item = new Command_Toggle
-                    {
-                        isActive = () => compMagic.useElementalShotToggle,
-                        toggleAction = () =>
-                        {
-                            compMagic.useElementalShotToggle = !compMagic.useElementalShotToggle;
-                        },
-                        defaultLabel = label,
-                        defaultDesc = desc,
-                        order = -88,
-                        icon = ContentFinder<Texture2D>.Get("UI/" + toggle, true)
-                    };
-                    gizmoList.Add(item);
                 }
                 __result = gizmoList;
             }
@@ -3474,21 +3363,9 @@ namespace TorannMagic
                         mageFactor = settingsRef.FactionMageSettings[pawn.Faction.def.defName];
                     }
                 }
-                List<TMDefs.TM_CustomClass> customFighters = new List<TMDefs.TM_CustomClass>();
-                customFighters.Clear();
-                List<TMDefs.TM_CustomClass> customMages = new List<TMDefs.TM_CustomClass>();
-                customMages.Clear();
-                for(int i = 0; i < TM_ClassUtility.CustomClasses().Count; i++)
-                {
-                    if(TM_ClassUtility.CustomClasses()[i].isFighter)
-                    {
-                        customFighters.AddDistinct(TM_ClassUtility.CustomClasses()[i]);
-                    }
-                    if (TM_ClassUtility.CustomClasses()[i].isMage)
-                    {
-                        customMages.AddDistinct(TM_ClassUtility.CustomClasses()[i]);
-                    }
-                }
+                List<TMDefs.TM_CustomClass> customFighters = TM_ClassUtility.CustomFighterClasses;
+                List<TMDefs.TM_CustomClass> customMages = TM_ClassUtility.CustomMageClasses;
+
                 mageCount += customMages.Count;
                 fighterCount += customFighters.Count;
                 if (customFighters.Count > 0 || settingsRef.Gladiator || settingsRef.Bladedancer || settingsRef.Ranger || settingsRef.Sniper || settingsRef.Faceless || settingsRef.DeathKnight || settingsRef.Psionic || settingsRef.Monk || settingsRef.Wayfarer || settingsRef.Commander || settingsRef.SuperSoldier)
@@ -3652,7 +3529,7 @@ namespace TorannMagic
                                             //}
                                             break;
                                         case int val when rndF > 11:
-                                            TMDefs.TM_CustomClass cFighter = customFighters.RandomElement();
+                                            TMDefs.TM_CustomClass cFighter = TM_ClassUtility.GetRandomCustomFighter();
                                             if (!pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(cFighter.classTrait, cFighter.traitDegree)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, pawn, cFighter.classTrait.ToString()) && !pawn.story.traits.allTraits.Any(td => td.def.conflictingTraits.Contains(cFighter.classTrait)))
                                             {
                                                 pawn.story.traits.GainTrait(new Trait(cFighter.classTrait, cFighter.traitDegree, false));
@@ -4469,29 +4346,28 @@ namespace TorannMagic
         {
             public static void Postfix(ref IEnumerable<Gizmo> __result, ref Pawn __instance)
             {
-                Pawn pawn = __instance;
-                bool flag = __instance != null || __instance.Faction.Equals(Faction.OfPlayer);
-                if (flag)
+                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                if (!settingsRef.showIconsMultiSelect)
                 {
-                    List<Gizmo> list = __result.ToList<Gizmo>();
-                    bool flag2 = __result == null || !__result.Any<Gizmo>();
-                    if (!flag2)
+                    int count = Find.Selector.SelectedObjects.Count;
+                    if ( count >= 2)
                     {
-                        ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                        if (Find.Selector.SelectedObjects.Count >= 2 && !settingsRef.showIconsMultiSelect)
+                        bool flag = __instance != null || __instance.Faction.Equals(Faction.OfPlayer);
+                        if (flag)
                         {
-                            for (int i = 0; i < list.Count; i++)
+                            bool flag2 = __result == null || !__result.Any<Gizmo>();
+                            if (!flag2)
                             {
-                                if (!(list[i].ToString().Contains("label=Attack") || list[i].ToString().Contains("label=Melee attack") || list[i].ToString().Contains("Desc=Toggle") || list[i].ToString().Contains("label=Draft")))
-                                {
-                                    list.Remove(list[i]);
-                                    i--;
-                                }
+                                __result = ModOptions.Constants.GetReducedDraftGizmos(__instance.LabelShort, __result);
                             }
                         }
                     }
-                    __result = list;
+                    else if (Find.TickManager.TicksGame % 500 == 0)
+                    {
+                        ModOptions.Constants.GetReducedDraftGizmos("clear", null);
+                    }
                 }
+               
             }
         }
 

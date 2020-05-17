@@ -79,7 +79,7 @@ namespace TorannMagic
                     sizeY = 0;
                 }
             }
-            Rect sRect = new Rect(rect.x, rect.y, rect.width - 36f, rect.height + 36f + sizeY);
+            Rect sRect = new Rect(rect.x, rect.y, rect.width - 36f, rect.height + 56f + sizeY);
             scrollPosition = GUI.BeginScrollView(rect, scrollPosition, sRect, false, true);
                         
             bool flag = comp != null;

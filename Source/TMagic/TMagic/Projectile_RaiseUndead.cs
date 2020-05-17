@@ -223,10 +223,10 @@ namespace TorannMagic
         {
             undeadPawn.story.childhood = null;
             undeadPawn.story.adulthood = null;
-            float bonusSkill = 1f;
+            float bonusSkill = 1f + (.1f * pwr.level);
             if(lichBonus)
             {
-                bonusSkill = 1.2f;
+                bonusSkill *= 1.2f;
             }
             //undeadPawn.story.DisabledWorkTypes.Clear();
             //undeadPawn.story.WorkTypeIsDisabled(WorkTypeDefOf.Warden);
@@ -234,24 +234,24 @@ namespace TorannMagic
             //undeadPawn.story.WorkTypeIsDisabled(WorkTypeDefOf.Handling);
             //undeadPawn.story.WorkTypeIsDisabled(WorkTypeDefOf.Doctor);            
 
-            undeadPawn.skills.Learn(SkillDefOf.Shooting, -10000000, true);
-            undeadPawn.skills.Learn(SkillDefOf.Animals, -10000000, true);
-            undeadPawn.skills.Learn(SkillDefOf.Artistic, -10000000, true);
-            undeadPawn.skills.Learn(SkillDefOf.Cooking, -10000000, true);
+            undeadPawn.skills.Learn(SkillDefOf.Shooting, -100000000, true);
+            undeadPawn.skills.Learn(SkillDefOf.Animals, -100000000, true);
+            undeadPawn.skills.Learn(SkillDefOf.Artistic, -100000000, true);
+            undeadPawn.skills.Learn(SkillDefOf.Cooking, -100000000, true);
             undeadPawn.skills.Learn(SkillDefOf.Cooking, Rand.Range(10000, 30000)*bonusSkill, true);
-            undeadPawn.skills.Learn(SkillDefOf.Crafting, -10000000, true);
-            undeadPawn.skills.Learn(SkillDefOf.Crafting, Rand.Range(10000, 80000) * bonusSkill, true);
-            undeadPawn.skills.Learn(SkillDefOf.Plants, -10000000, true);
-            undeadPawn.skills.Learn(SkillDefOf.Plants, Rand.Range(30000, 60000) * bonusSkill, true);
+            undeadPawn.skills.Learn(SkillDefOf.Crafting, -100000000, true);
+            undeadPawn.skills.Learn(SkillDefOf.Crafting, Rand.Range(10000, 60000) * bonusSkill, true);
+            undeadPawn.skills.Learn(SkillDefOf.Plants, -100000000, true);
+            undeadPawn.skills.Learn(SkillDefOf.Plants, Rand.Range(25000, 50000) * bonusSkill, true);
             undeadPawn.skills.Learn(SkillDefOf.Intellectual, -10000000, true);
             undeadPawn.skills.Learn(SkillDefOf.Medicine, -10000000, true);
             undeadPawn.skills.Learn(SkillDefOf.Melee, -10000000, true);
-            undeadPawn.skills.Learn(SkillDefOf.Melee, Rand.Range(50000, 100000) * bonusSkill, true);
+            undeadPawn.skills.Learn(SkillDefOf.Melee, Rand.Range(50000, 90000) * bonusSkill, true);
             undeadPawn.skills.Learn(SkillDefOf.Mining, -10000000, true);
-            undeadPawn.skills.Learn(SkillDefOf.Mining, Rand.Range(40000, 80000) * bonusSkill, true);
+            undeadPawn.skills.Learn(SkillDefOf.Mining, Rand.Range(30000, 70000) * bonusSkill, true);
             undeadPawn.skills.Learn(SkillDefOf.Social, -10000000, true);
             undeadPawn.skills.Learn(SkillDefOf.Construction, -10000000, true);
-            undeadPawn.skills.Learn(SkillDefOf.Construction, Rand.Range(30000, 60000) * bonusSkill, true);
+            undeadPawn.skills.Learn(SkillDefOf.Construction, Rand.Range(20000, 50000) * bonusSkill, true);
             undeadPawn.workSettings.SetPriority(WorkTypeDefOf.Doctor, 0);
             undeadPawn.workSettings.SetPriority(WorkTypeDefOf.Warden, 0);
             undeadPawn.workSettings.SetPriority(WorkTypeDefOf.Handling, 0);

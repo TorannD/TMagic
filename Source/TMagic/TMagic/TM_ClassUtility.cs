@@ -31,7 +31,7 @@ namespace TorannMagic
                 mageClasses.Clear();
                 for(int i = 0; i < CustomClasses().Count; i++)
                 {
-                    if(CustomClasses()[i].isMage)
+                    if(CustomClasses()[i].isMage && ModOptions.Settings.Instance.CustomClass[CustomClasses()[i].classTrait.ToString()])
                     {
                         mageClasses.Add(CustomClasses()[i]);
                     }
@@ -48,7 +48,7 @@ namespace TorannMagic
                 fighterClasses.Clear();
                 for (int i = 0; i < CustomClasses().Count; i++)
                 {
-                    if (CustomClasses()[i].isFighter)
+                    if (CustomClasses()[i].isFighter && ModOptions.Settings.Instance.CustomClass[CustomClasses()[i].classTrait.ToString()])
                     {
                         fighterClasses.Add(CustomClasses()[i]);
                     }
@@ -106,15 +106,7 @@ namespace TorannMagic
 
         public static TMDefs.TM_CustomClass GetRandomCustomFighter()
         {
-            List<TMDefs.TM_CustomClass> customFighters = new List<TM_CustomClass>();
-            customFighters.Clear();
-            for(int i = 0; i < CustomClasses().Count; i++)
-            {
-                if(CustomClasses()[i].isFighter)
-                {
-                    customFighters.AddDistinct(CustomClasses()[i]);
-                }
-            }
+            List<TMDefs.TM_CustomClass> customFighters = CustomFighterClasses;
             if(customFighters.Count > 0)
             {
                 return customFighters.RandomElement();
@@ -124,15 +116,7 @@ namespace TorannMagic
 
         public static TMDefs.TM_CustomClass GetRandomCustomMage()
         {
-            List<TMDefs.TM_CustomClass> customMages = new List<TM_CustomClass>();
-            customMages.Clear();
-            for (int i = 0; i < CustomClasses().Count; i++)
-            {
-                if (CustomClasses()[i].isMage)
-                {
-                    customMages.AddDistinct(CustomClasses()[i]);
-                }
-            }
+            List<TMDefs.TM_CustomClass> customMages = CustomMageClasses;
             if (customMages.Count > 0)
             {
                 return customMages.RandomElement();

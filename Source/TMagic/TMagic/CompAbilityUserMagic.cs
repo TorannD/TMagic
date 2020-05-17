@@ -10258,6 +10258,76 @@ namespace TorannMagic
                     };
                     gizmoCommands.Add(key, itemWanderer);
                 }
+                if(key == "technoBit")
+                {
+                    String toggle = "bit_c";
+                    String label = "TM_TechnoBitEnabled".Translate();
+                    String desc = "TM_TechnoBitToggleDesc".Translate();
+                    if (!this.useTechnoBitToggle)
+                    {
+                        toggle = "bit_off";
+                        label = "TM_TechnoBitDisabled".Translate();
+                    }
+                    var item = new Command_Toggle
+                    {
+                        isActive = () => this.useTechnoBitToggle,
+                        toggleAction = () =>
+                        {
+                            this.useTechnoBitToggle = !this.useTechnoBitToggle;
+                        },
+                        defaultLabel = label,
+                        defaultDesc = desc,
+                        order = -89,
+                        icon = ContentFinder<Texture2D>.Get("UI/" + toggle, true)
+                    };
+                    gizmoCommands.Add(key, item);
+                }
+                if(key == "technoRepair")
+                {
+                    String toggle_repair = "bit_repairon";
+                    String label_repair = "TM_TechnoBitRepair".Translate();
+                    String desc_repair = "TM_TechnoBitRepairDesc".Translate();
+                    if (!this.useTechnoBitRepairToggle)
+                    {
+                        toggle_repair = "bit_repairoff";
+                    }
+                    var item_repair = new Command_Toggle
+                    {
+                        isActive = () => this.useTechnoBitRepairToggle,
+                        toggleAction = () =>
+                        {
+                            this.useTechnoBitRepairToggle = !this.useTechnoBitRepairToggle;
+                        },
+                        defaultLabel = label_repair,
+                        defaultDesc = desc_repair,
+                        order = -88,
+                        icon = ContentFinder<Texture2D>.Get("UI/" + toggle_repair, true)
+                    };
+                    gizmoCommands.Add(key, item_repair);
+                }
+                if(key == "elementalShot")
+                {
+                    String toggle = "elementalshot";
+                    String label = "TM_TechnoWeapon_ver".Translate();
+                    String desc = "TM_ElementalShotToggleDesc".Translate();
+                    if (!this.useElementalShotToggle)
+                    {
+                        toggle = "elementalshot_off";
+                    }
+                    var item = new Command_Toggle
+                    {
+                        isActive = () => this.useElementalShotToggle,
+                        toggleAction = () =>
+                        {
+                            this.useElementalShotToggle = !this.useElementalShotToggle;
+                        },
+                        defaultLabel = label,
+                        defaultDesc = desc,
+                        order = -88,
+                        icon = ContentFinder<Texture2D>.Get("UI/" + toggle, true)
+                    };
+                    gizmoCommands.Add(key, item);
+                }
             }
             if (gizmoCommands.ContainsKey(key))
             {
