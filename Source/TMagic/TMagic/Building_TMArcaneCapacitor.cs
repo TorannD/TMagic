@@ -129,9 +129,9 @@ namespace TorannMagic
                     {
                         CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
                         float rangeToTarget = (pawn.Position - this.Position).LengthHorizontal;
-                        if (TM_Calc.IsMagicUser(pawn) &&  rangeToTarget <= effectRadius)
+                        if (pawn.drafter != null && TM_Calc.IsMagicUser(pawn) &&  rangeToTarget <= effectRadius)
                         {
-                            if(pawn.Drafted && comp.Mana.CurLevelPercentage <= .9f && this.ArcaneEnergyCur > .05f)
+                            if( pawn.Drafted && comp.Mana.CurLevelPercentage <= .9f && this.ArcaneEnergyCur > .05f)
                             {
                                 TransferMana(comp, rangeToTarget * .4f);
                             }

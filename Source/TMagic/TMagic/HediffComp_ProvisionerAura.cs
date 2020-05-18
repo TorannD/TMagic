@@ -142,13 +142,17 @@ namespace TorannMagic
                 else
                 {
                     HealthUtility.AdjustSeverity(p, TorannMagicDefOf.TM_ProvisionerHD, .5f + pwrVal);
+                    hd = p.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ProvisionerHD);
                 }
-                HediffComp_Provisioner hdComp = p.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ProvisionerHD, false).TryGetComp<HediffComp_Provisioner>();
-                if(hdComp != null)
+                if (hd != null)
                 {
-                    hdComp.duration += 2;
-                    hdComp.pwrVal = pwrVal;
-                    hdComp.verVal = verVal;
+                    HediffComp_Provisioner hdComp = p.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ProvisionerHD, false).TryGetComp<HediffComp_Provisioner>();
+                    if (hdComp != null)
+                    {
+                        hdComp.duration += 2;
+                        hdComp.pwrVal = pwrVal;
+                        hdComp.verVal = verVal;
+                    }
                 }
                 if(pwrVal >= 3)
                 {
@@ -157,21 +161,29 @@ namespace TorannMagic
                     if (p.health.hediffSet.HasHediff(TorannMagicDefOf.TM_EnergyRegenHD, false))
                     {
                         Hediff hdRemove = p.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_EnergyRegenHD, false);
-                        if (hdRemove.Severity > sev)
+                        if (hdRemove != null && hdRemove.Severity > sev)
                         {
                             //do not overwrite a better regeneration buff
                             flag = false;
                         }
                         else
                         {
-                            p.health.RemoveHediff(hdRemove);
+                            HediffComp_EnergyRegen hd2 = p.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_EnergyRegenHD, false).TryGetComp<HediffComp_EnergyRegen>();
+                            if (hd2 != null)
+                            {
+                                hd2.duration += 10;
+                            }
                         }
                     }
                     if(flag)
                     {
                         HealthUtility.AdjustSeverity(p, TorannMagicDefOf.TM_EnergyRegenHD, sev);
                         HediffComp_EnergyRegen hd2 = p.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_EnergyRegenHD, false).TryGetComp<HediffComp_EnergyRegen>();
-                        hd2.duration = 20;
+                        if (hd2 != null)
+                        {
+                            hd2.duration = 20;
+                        }
+
                     }
                 }
             }            

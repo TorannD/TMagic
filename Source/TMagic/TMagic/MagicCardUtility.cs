@@ -1673,6 +1673,12 @@ namespace TorannMagic
                     {
                         goto EnumerationStart;
                     }
+                    if(power == compMagic.MagicData.MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SoulBond) ||
+                           power == compMagic.MagicData.MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt) ||
+                         power == compMagic.MagicData.MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Dominate))
+                    {
+                        goto EnumerationStart;
+                    }
                     
                     Text.Font = GameFont.Small;
                     Rect rect = new Rect(MagicCardUtility.MagicCardSize.x / 2f - MagicCardUtility.MagicButtonSize, num, MagicCardUtility.MagicButtonSize, MagicCardUtility.MagicButtonSize);

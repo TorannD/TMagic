@@ -2214,7 +2214,13 @@ namespace TorannMagic
                 if (this.customClass != null)
                 {
                     for (int z = 0; z < this.MagicData.AllMagicPowers.Count; z++)
-                    {
+                    {                        
+                        if (this.MagicData.AllMagicPowers[z] == this.MagicData.MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SoulBond) ||
+                        this.MagicData.AllMagicPowers[z] == this.MagicData.MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt) ||
+                        this.MagicData.AllMagicPowers[z] == this.MagicData.MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Dominate))
+                        {
+                            this.MagicData.AllMagicPowers[z].learned = false;
+                        }
                         TMAbilityDef ability = (TMAbilityDef)this.MagicData.AllMagicPowers[z].abilityDef;
                         if (!this.customClass.classMageAbilities.Contains(ability))
                         {
@@ -2231,7 +2237,7 @@ namespace TorannMagic
                         if (this.MagicData.AllMagicPowers[z].learned && ability.shouldInitialize)
                         {
                             this.AddPawnAbility(ability);
-                        }
+                        }                        
                     }
                     if (this.customClass.classHediff != null)
                     {
@@ -3499,15 +3505,7 @@ namespace TorannMagic
                             }
                         }
                         this.AddPawnAbility(TorannMagicDefOf.TM_ChaosTradition);
-
-                        if (abilityUser.IsColonist)
-                        {
-                            TM_Calc.AssignChaosMagicPowers(this);
-                        }
-                        else
-                        {
-                            TM_Calc.AssignChaosMagicPowers(this, true);
-                        }
+                        TM_Calc.AssignChaosMagicPowers(this, !abilityUser.IsColonist);
                     }
                 }
             }
@@ -4330,6 +4328,13 @@ namespace TorannMagic
                     this.RemovePawnAbility(TorannMagicDefOf.TM_ChronostaticField_I);
                     this.RemovePawnAbility(TorannMagicDefOf.TM_ChronostaticField_II);
                     this.RemovePawnAbility(TorannMagicDefOf.TM_ChronostaticField_III);
+                }
+                if (flag2)
+                {
+                    foreach (MagicPower currentShadow in this.MagicData.MagicPowersShadow)
+                    {
+                        this.RemovePawnAbility(currentShadow.abilityDef);
+                    }
                 }
                 if (clearStandalone)
                 {
@@ -9089,10 +9094,16 @@ namespace TorannMagic
                             {
                                 for (int j = 0; j < this.MagicData.AllMagicPowersWithSkills.Count; j++)
                                 {
-                                    if (this.MagicData.AllMagicPowersWithSkills[j].TMabilityDefs.Contains(this.customClass.classMageAbilities[i]) && this.MagicData.AllMagicPowersWithSkills[j].learned)
+                                    if (this.MagicData.AllMagicPowersWithSkills[j] == this.MagicData.MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SoulBond) ||
+                                            this.MagicData.AllMagicPowersWithSkills[j] == this.MagicData.MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt) ||
+                                            this.MagicData.AllMagicPowersWithSkills[j] == this.MagicData.MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Dominate))
                                     {
+                                        this.MagicData.AllMagicPowers[j].learned = false;
+                                    }
+                                    if (this.MagicData.AllMagicPowersWithSkills[j].TMabilityDefs.Contains(this.customClass.classMageAbilities[i]) && this.MagicData.AllMagicPowersWithSkills[j].learned)
+                                    {                                                                               
                                         int level = this.MagicData.AllMagicPowersWithSkills[j].level;
-                                        base.AddPawnAbility(this.MagicData.AllMagicPowersWithSkills[j].TMabilityDefs[level]);
+                                        base.AddPawnAbility(this.MagicData.AllMagicPowersWithSkills[j].TMabilityDefs[level]);                                        
                                     }
                                 }
                             }

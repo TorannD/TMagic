@@ -10,6 +10,7 @@
     <uiIconPath>UI/provisioner</uiIconPath>
     <description>Use ability to toggle the Provisioner Aura: improves rest and reduces hunger of nearby pawns. Can be improved to repair equipment, increase natural healing rates, and boost energy regeneration. This aura requires 60 stamina to maintain.</description>
     <staminaCost>0.60</staminaCost>
+	<abilityHediff>TM_ProvisionerAuraHD</abilityHediff>
 	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 	<upkeepEnergyCost>.6</upkeepEnergyCost>
 	<upkeepEfficiencyPercent>.125</upkeepEfficiencyPercent>
@@ -47,6 +48,7 @@
     <uiIconPath>UI/taskmaster</uiIconPath>
     <description>Use ability to toggle the Task Master Aura: increases work speed, eating speed, and carrying capacity but causes pawns to be less social. Pawns under the scrutiny of a Task Master will acquire a mood penalty. This aura requires 70 stamina to maintain.</description>
     <staminaCost>0.70</staminaCost>
+	<abilityHediff>TM_TaskMasterAuraHD</abilityHediff>
 	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 	<upkeepEnergyCost>.7</upkeepEnergyCost>
 	<upkeepEfficiencyPercent>.11</upkeepEfficiencyPercent>
@@ -84,6 +86,7 @@
     <uiIconPath>UI/commander</uiIconPath>
     <description>Use ability to toggle the Commander Aura: improves the mood of all nearby pawns but decreases their productivity. While this aura is enabled, the Commander will seek out pawns that have broken down due to mental stress and give them a motivational speech to overcome a breakdown. Pawns that overcome a mental break in this manner will not gain Catharsis. This aura requires 80 stamina to maintain.</description>
     <staminaCost>0.80</staminaCost>
+	<abilityHediff>TM_CommanderAuraHD</abilityHediff>
 	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 	<upkeepEnergyCost>.8</upkeepEnergyCost>
 	<upkeepEfficiencyPercent>.1</upkeepEfficiencyPercent>

@@ -18,7 +18,7 @@ namespace TorannMagic
         private Faction affiliation = null;
         private int ticksAffiliation = 0;
         private bool isNecromancer = false;
-        private int dominationCount = 0;
+        private int dominationCount = 0;        
 
         public List<MagicPower> magicPowerIF;
         public List<MagicPower> magicPowerHoF;
@@ -207,6 +207,24 @@ namespace TorannMagic
                 }
                 return this.magicPowerSkill_global_spirit;
             }
+        }
+
+        private List<MagicPower> magicPower;
+        public List<MagicPower> MagicPowers
+        {
+            get
+            {
+                bool flag = this.magicPower == null;
+                if (flag)
+                {
+                    this.magicPower = new List<MagicPower>
+                    {
+
+                    };
+                }
+                return this.magicPower;
+            }
+            
         }
 
         public List<MagicPower> MagicPowersStandalone  //spells needed for magicpower reference during autocast
@@ -3017,7 +3035,16 @@ namespace TorannMagic
             {
                 if (AllMagicPowers[i].TMabilityDefs.Contains(def))
                 {
-                    return AllMagicPowers[i];
+                    if (AllMagicPowers[i] == MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SoulBond) ||
+                                            AllMagicPowers[i] == MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt) ||
+                                            AllMagicPowers[i] == MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Dominate))
+                    {
+                        //do nothing
+                    }
+                    else
+                    {
+                        return AllMagicPowers[i];
+                    }
                 }
             }
             return null;
@@ -3091,7 +3118,7 @@ namespace TorannMagic
                 tmpList.Clear();
                 list.AddRange(this.MagicPowersE.Except(MagicPowersE.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shapeshift)));
                 list.AddRange(this.MagicPowersC.Except(MagicPowersC.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Recall)));
-                list.AddRange(this.MagicPowersShadow);
+                list.Add((this.MagicPowersShadow.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowWalk)));
                 return list;
             }
         }
@@ -3130,12 +3157,35 @@ namespace TorannMagic
                 list.AddRange(this.MagicPowersN);
                 list.AddRange(this.MagicPowersB);
                 list.AddRange(this.MagicPowersSD);
-                list.Add(this.MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Repulsion));
-                list.Add(this.MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_PsychicShock));
+                //list.Add(this.MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Repulsion));
+                //list.Add(this.MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_PsychicShock));
+                list.AddRange(this.MagicPowersWD);
                 list.AddRange(this.MagicPowersG);
                 list.AddRange(this.MagicPowersT);
                 list.AddRange(this.MagicPowersShadow);
                 return list;
+            }
+        }
+
+        private List<MagicPower> uniquePowers = new List<MagicPower>();
+        public List<MagicPower> AllUniqueMagicPowers
+        {
+            get
+            {
+                if(uniquePowers == null || uniquePowers.Count <= 0)
+                {
+                    List<MagicPower> tmpList = new List<MagicPower>();
+                    tmpList.Clear();
+                    for(int i = 0; i < AllMagicPowers.Count; i++)
+                    {
+                        if(!tmpList.Contains(AllMagicPowers[i]))
+                        {
+                            tmpList.Add(AllMagicPowers[i]);
+                        }
+                    }
+                    uniquePowers = tmpList;
+                }
+                return uniquePowers;
             }
         }
 

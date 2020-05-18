@@ -2970,7 +2970,7 @@ namespace TorannMagic
                     p.learned = true;
                     comp.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)p.abilityDef, TM_ClassUtility.GetAssociatedMagicPowerSkill(comp, p)));
                     comp.AddPawnAbility(p.abilityDef);
-                    p = TM_Calc.GetRandomMagicPower(comp); ;
+                    p = TM_Calc.GetRandomMagicPower(comp);
                     comp.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)p.abilityDef, null));
                 }
                 for (int i = 0; i < 5; i++)

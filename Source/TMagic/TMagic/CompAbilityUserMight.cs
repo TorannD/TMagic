@@ -4658,7 +4658,7 @@ namespace TorannMagic
             //Bonded animal upkeep
             if (this.bondedPet != null)
             {
-                _maxSPUpkeep -= (TorannMagicDefOf.TM_AnimalFriend.upkeepEnergyCost * (1f - (TorannMagicDefOf.TM_AnimalFriend.upkeepEfficiencyPercent * this.MightData.GetSkill_Efficiency(TorannMagicDefOf.TM_AnimalFriend).level)));
+                _maxSPUpkeep += (TorannMagicDefOf.TM_AnimalFriend.upkeepEnergyCost * (1f - (TorannMagicDefOf.TM_AnimalFriend.upkeepEfficiencyPercent * this.MightData.GetSkill_Efficiency(TorannMagicDefOf.TM_AnimalFriend).level)));
                 if (this.bondedPet.Dead || this.bondedPet.Destroyed)
                 {
                     this.Pawn.needs.mood.thoughts.memories.TryGainMemory(TorannMagicDefOf.RangerPetDied, null);

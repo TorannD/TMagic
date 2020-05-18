@@ -843,7 +843,7 @@ namespace TorannMagic
         {
             public static bool Prefix(IncidentWorker __instance, ref IncidentParms parms, ref bool __result)
             {
-                if (__instance != null && __instance.def.defName != "VisitorGroup" && __instance.def.defName != "VisitorGroupMax" && !__instance.def.defName.Contains("Cult") && parms.quest == null && !parms.forced)
+                if (__instance != null && __instance.def.defName != "VisitorGroup" && __instance.def.defName != "VisitorGroupMax" && !__instance.def.defName.Contains("Cult") && parms.quest == null && !parms.forced && !__instance.def.workerClass.ToString().StartsWith("Rumor_Code"))
                 {                    
                     try
                     {

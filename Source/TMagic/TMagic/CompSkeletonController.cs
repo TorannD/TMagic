@@ -623,7 +623,7 @@ namespace TorannMagic
                 {
                     if (!allPawns[i].Dead && !allPawns[i].Downed)
                     {
-                        if (allPawns[i].Faction != null && (allPawns[i].Faction.HostileTo(this.Pawn.Faction)))
+                        if (allPawns[i].Faction != null && (allPawns[i].Faction.HostileTo(this.Pawn.Faction)) && !allPawns[i].IsPrisoner)
                         {
                             if ((allPawns[i].Position - this.Pawn.Position).LengthHorizontal <= this.Props.maxRangeForCloseThreat)
                             {
