@@ -80,6 +80,7 @@ This command toggles the active skill on or off.
 Activating the ability casts a net over the colony and allows the bard to detect troubled pawns and attempt to entertain them. The bard will gain experience points as a mage when active entertaining is successful. Keeping this ability active reduces max mana by 30. The bard performs entertainment as a type of job, and will perform entertainment based on the priority of the "Warden" work type.</description>
     <manaCost>0</manaCost>
 	<abilityHediff>TM_EntertainingHD</abilityHediff>
+	<upkeepEnergyCost>.3</upkeepEnergyCost>
 	<learnChance>.3</learnChance>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Entertain</verbClass>

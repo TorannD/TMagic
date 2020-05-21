@@ -1994,6 +1994,23 @@ namespace TorannMagic
             }
         }
 
+        [HarmonyPatch(typeof(Pawn), "MakeCorpse", null)]
+        public static class DecomposeUndeadOnDeath
+        {
+            public static void Postfix(Pawn __instance, ref Corpse __result)
+            {
+                if (__result != null && __result.InnerPawn != null && __result.InnerPawn.health != null && __result.InnerPawn.health.hediffSet != null && __result.InnerPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadStageHD))
+                {
+                    CompRottable cr = __result.TryGetComp<CompRottable>();
+                    Hediff hd = __result.InnerPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_UndeadStageHD);
+                    if(cr != null && hd != null)
+                    {                        
+                        cr.RotImmediately();
+                    }
+                }
+            }
+        }
+
         [HarmonyPatch(typeof(Pawn_HealthTracker), "CheckForStateChange", null)]
         public static class CheckForStateChange_Patch
         {

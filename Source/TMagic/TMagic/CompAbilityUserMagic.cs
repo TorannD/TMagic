@@ -8810,7 +8810,7 @@ namespace TorannMagic
 
             float val = (1f - (.03f * this.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_eff").level));
             _maxMPUpkeep *= val;
-            _mpRegenRate *= val;
+            _mpRegenRateUpkeep *= val;
 
             //resolve upkeep costs
             _maxMP -= (_maxMPUpkeep);

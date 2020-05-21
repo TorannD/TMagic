@@ -370,6 +370,7 @@ namespace TorannMagic
         public static TMAbilityDef TM_RaiseUndead;
         public static HediffDef TM_UndeadHD;
         public static HediffDef TM_UndeadAnimalHD;
+        public static HediffDef TM_UndeadStageHD;
         public static TrainableDef Haul;
         public static TMAbilityDef TM_DeathMark;
         public static TMAbilityDef TM_DeathMark_I;

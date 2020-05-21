@@ -160,7 +160,7 @@ namespace TorannMagic
                     {
                         CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
                         float rangeToTarget = (pawn.Position - this.Position).LengthHorizontal;
-                        if (pawn.drafter != null && TM_Calc.IsMagicUser(pawn) && rangeToTarget <= effectRadius)
+                        if (pawn.drafter != null && TM_Calc.IsMagicUser(pawn) && rangeToTarget <= effectRadius && comp != null && comp.Mana != null)
                         {
                             if(pawn.Drafted && comp.Mana.CurLevelPercentage <= .9f && this.ArcaneEnergyCur >= .01f)
                             {

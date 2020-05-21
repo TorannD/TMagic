@@ -13,6 +13,7 @@ namespace TorannMagic
             if (parent.def != null)
             {
                 bool customClass = false;
+                TMDefs.TM_CustomClass cc = null;
                 for (int i = 0; i < TM_ClassUtility.CustomClasses().Count; i++)
                 {
                     if (TM_ClassUtility.CustomClasses()[i].isFighter)
@@ -20,6 +21,7 @@ namespace TorannMagic
                         if (parent.def == TM_ClassUtility.CustomClasses()[i].tornScript || parent.def == TM_ClassUtility.CustomClasses()[i].fullScript)
                         {
                             customClass = true;
+                            cc = TM_ClassUtility.CustomClasses()[i];
                             if (parent.def == TM_ClassUtility.CustomClasses()[i].fullScript)
                             {
                                 HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_Uncertainty, 0.2f);
@@ -46,7 +48,6 @@ namespace TorannMagic
                                 mComp.customIndex = i;
                                 mComp.customClass = TM_ClassUtility.CustomClasses()[i];
                             }
-
                             break;
                         }
                     }
@@ -139,43 +140,50 @@ namespace TorannMagic
                         Messages.Message("NotCombatBook".Translate(), MessageTypeDefOf.RejectInput);
                     }
                 }
+                else if (parent.def == TorannMagicDefOf.BookOfSuperSoldier)
+                {
+                    if (user.health != null && user.health.hediffSet != null)
+                    {
+                        HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_SS_SerumHD, .1f);
+                    }
+                    if (cc != null && (cc.fullScript == TorannMagicDefOf.BookOfSuperSoldier || cc.tornScript == TorannMagicDefOf.BookOfSuperSoldier))
+                    {
+                        
+                    }
+                    else
+                    {
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                }
                 else if(!customClass && !user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy))
                 {
                     Messages.Message("NotPhyAdeptPawn".Translate(), MessageTypeDefOf.RejectInput);
                 }
-
                 //ResolveClassPassions(user);  currently disabled
 
-            }
-            else if(parent.def == TorannMagicDefOf.BookOfSuperSoldier)
-            {
-                if (user.health != null && user.health.hediffSet != null)
-                {
-                    HealthUtility.AdjustSeverity(user, TorannMagicDefOf.TM_SS_SerumHD, .1f);
-                }
-                this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
             }
             else
             {
                 Messages.Message("NotPhyAdeptPawn".Translate(), MessageTypeDefOf.RejectInput);
-            }
+            }           
 
 		}
 
         private void FixTrait(Pawn pawn, List<Trait> traits)
         {
+            TraitStart:;
             for (int i = 0; i < traits.Count; i++)
             {
-                if (traits[i].def.defName == "PhysicalProdigy")
+                if (traits[i].def == TorannMagicDefOf.PhysicalProdigy)
                 {
                     traits.Remove(traits[i]);
-                    i--;
+                    goto TraitStart;
                 }
                 if (traits[i].def == TorannMagicDefOf.Gifted)
                 {
                     traits.Remove(traits[i]);
-                    i--;
-                }
+                    goto TraitStart;
+                }                
             }
         }
 

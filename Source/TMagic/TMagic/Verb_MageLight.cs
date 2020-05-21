@@ -45,15 +45,23 @@ namespace TorannMagic
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 if(this.currentTarget.Thing != null && this.currentTarget.Thing == base.CasterPawn)
                 {
-                    if(comp.mageLightActive == true)
+                    //if(comp.mageLightActive == true)
+                    //{
+                    //    comp.mageLightActive = false;
+                    //    if (comp.mageLightThing != null)
+                    //    {
+                    //        comp.mageLightThing.Destroy(DestroyMode.Vanish);
+                    //        comp.mageLightThing = null;
+                    //    }
+                    //    comp.mageLightSet = false;
+                    //    Hediff hediff = base.CasterPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_MageLightHD);
+                    //    if (hediff != null)
+                    //    {
+                    //        base.CasterPawn.health.RemoveHediff(hediff);
+                    //    }
+                    //}
+                    if(base.CasterPawn.health != null && base.CasterPawn.health.hediffSet != null && base.CasterPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_MageLightHD))
                     {
-                        comp.mageLightActive = false;
-                        if (comp.mageLightThing != null)
-                        {
-                            comp.mageLightThing.Destroy(DestroyMode.Vanish);
-                            comp.mageLightThing = null;
-                        }
-                        comp.mageLightSet = false;
                         Hediff hediff = base.CasterPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_MageLightHD);
                         if (hediff != null)
                         {
@@ -65,7 +73,6 @@ namespace TorannMagic
                         if (comp.maxMP >= TorannMagicDefOf.TM_MageLight.upkeepEnergyCost)
                         {
                             comp.mageLightActive = true;
-                            comp.mageLightSet = false;
                             HealthUtility.AdjustSeverity(base.CasterPawn, TorannMagicDefOf.TM_MageLightHD, .5f);
                         }
                         else
@@ -80,7 +87,6 @@ namespace TorannMagic
                 else
                 {
                     Messages.Message("InvalidSummon".Translate(), MessageTypeDefOf.RejectInput);
-                    comp.Mana.GainNeed(comp.ActualManaCost(TorannMagicDefOf.TM_MageLight));
                 }
 
                 result = true;

@@ -526,17 +526,18 @@ namespace TorannMagic
 
         private void FixTrait(Pawn pawn, List<Trait> traits)
         {
+            TraitStart:;
             for (int i = 0; i < traits.Count; i++)
             {
                 if (traits[i].def == TorannMagicDefOf.Gifted)
                 {
                     traits.Remove(traits[i]);
-                    i--;
+                    goto TraitStart;
                 }
                 if(traits[i].def == TorannMagicDefOf.PhysicalProdigy)
                 {
                     traits.Remove(traits[i]);
-                    i--;
+                    goto TraitStart;
                 }
             }
         }

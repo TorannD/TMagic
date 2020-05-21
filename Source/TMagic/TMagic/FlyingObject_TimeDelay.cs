@@ -200,7 +200,7 @@ namespace TorannMagic
             this.duration--;
             base.Position = this.origin.ToIntVec3();
             bool flag2 = this.duration <= 0;
-            if(this.moteDef != null && Find.TickManager.TicksGame % this.moteFrequency == 0)
+            if(this.moteDef != null && this.Map != null && Find.TickManager.TicksGame % this.moteFrequency == 0)
             {
                 TM_MoteMaker.ThrowGenericMote(this.moteDef, this.ExactPosition, this.Map, Rand.Range(this.moteScale * .75f, this.moteScale * 1.25f), this.solidTime, this.fadeInTime, this.fadeOutTime, Rand.Range(200, 400), 0, 0, Rand.Range(0, 360));
             }
@@ -281,10 +281,6 @@ namespace TorannMagic
                     Graphics.DrawMesh(MeshPool.plane10, this.DrawPos, this.ExactRotation, this.flyingThing.def.DrawMatSingle, 0);
                 }
             }
-            else
-            {
-                Graphics.DrawMesh(MeshPool.plane10, this.DrawPos, this.ExactRotation, this.flyingThing.def.DrawMatSingle, 0);
-            }
             base.Comps_PostDraw();
         }
 
@@ -329,41 +325,45 @@ namespace TorannMagic
 
         protected virtual void Impact(Thing hitThing)
         {
-            GenPlace.TryPlaceThing(this.flyingThing, base.Position, base.Map, ThingPlaceMode.Direct);
-            if (this.flyingThing is Pawn)
+            if (this.Map != null)
             {
-                Pawn p = this.flyingThing as Pawn;
-                if (p.IsColonist && this.drafted && p.drafter != null)
+                GenPlace.TryPlaceThing(this.flyingThing, base.Position, base.Map, ThingPlaceMode.Direct);
+                if (this.flyingThing is Pawn)
                 {
-                    p.drafter.Drafted = true;
+                    Pawn p = this.flyingThing as Pawn;
+                    if (p.IsColonist && this.drafted && p.drafter != null)
+                    {
+                        p.drafter.Drafted = true;
+                    }
                 }
-            }
 
-            if (this.destroyPctAtEnd != 0)
-            {
-                int rangeMax = 10;
-                for (int i = 0; i < rangeMax; i++)
+                if (this.destroyPctAtEnd != 0)
                 {
-                    float direction = Rand.Range(0, 360);
-                    Vector3 rndPos = this.flyingThing.DrawPos;
-                    rndPos.x += Rand.Range(-.3f, .3f);
-                    rndPos.z += Rand.Range(-.3f, .3f);
-                    ThingDef mote = TorannMagicDefOf.Mote_Shadow;
-                    TM_MoteMaker.ThrowGenericMote(mote, rndPos, this.Map, Rand.Range(.5f, 1f), 0.4f, Rand.Range(.1f, .4f), Rand.Range(1.2f, 2f), Rand.Range(-200, 200), Rand.Range(1.2f, 2f), direction, direction);
+                    int rangeMax = 10;
+                    for (int i = 0; i < rangeMax; i++)
+                    {
+                        float direction = Rand.Range(0, 360);
+                        Vector3 rndPos = this.flyingThing.DrawPos;
+                        rndPos.x += Rand.Range(-.3f, .3f);
+                        rndPos.z += Rand.Range(-.3f, .3f);
+                        ThingDef mote = TorannMagicDefOf.Mote_Shadow;
+                        TM_MoteMaker.ThrowGenericMote(mote, rndPos, this.Map, Rand.Range(.5f, 1f), 0.4f, Rand.Range(.1f, .4f), Rand.Range(1.2f, 2f), Rand.Range(-200, 200), Rand.Range(1.2f, 2f), direction, direction);
+
+                    }
                     SoundInfo info = SoundInfo.InMap(new TargetInfo(base.Position, this.Map, false), MaintenanceType.None);
                     info.pitchFactor = .8f;
                     info.volumeFactor = 1.2f;
                     TorannMagicDefOf.TM_Vibration.PlayOneShot(info);
                 }
-            }
 
-            if (this.destroyPctAtEnd >= 1f)
-            {
-                this.flyingThing.Destroy(DestroyMode.Vanish);
-            }
-            else if(this.destroyPctAtEnd != 0)
-            {
-                this.flyingThing.SplitOff(Mathf.RoundToInt(this.flyingThing.stackCount * this.destroyPctAtEnd)).Destroy(DestroyMode.Vanish);
+                if (this.destroyPctAtEnd >= 1f)
+                {
+                    this.flyingThing.Destroy(DestroyMode.Vanish);
+                }
+                else if (this.destroyPctAtEnd != 0)
+                {
+                    this.flyingThing.SplitOff(Mathf.RoundToInt(this.flyingThing.stackCount * this.destroyPctAtEnd)).Destroy(DestroyMode.Vanish);
+                }
             }
 
             this.Destroy(DestroyMode.Vanish);

@@ -3612,7 +3612,7 @@ namespace TorannMagic
                     if (this.MightUserLevel >= 20)
                     {
                         MightPower mightPower = this.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_TeachMight);
-                        if (mightPower.autocast && !this.Pawn.CurJob.playerForced)
+                        if (mightPower.autocast && !this.Pawn.CurJob.playerForced && mightPower.learned)
                         {
                             if (this.Pawn.CurJobDef.joyKind != null || this.Pawn.CurJobDef == JobDefOf.Wait_Wander || Pawn.CurJobDef == JobDefOf.GotoWander)
                             {
@@ -4052,8 +4052,9 @@ namespace TorannMagic
 
         public void ResolveClassSkills()               
         {
-            if (this.MightUserLevel >= 20 && this.skill_Teach == false)
+            if (this.MightUserLevel >= 20 && (this.skill_Teach == false || !this.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_TeachMight).learned))
             {
+                this.MightData.MightPowersStandalone.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_TeachMight).learned = true;
                 this.AddPawnAbility(TorannMagicDefOf.TM_TeachMight);
                 this.skill_Teach = true;
             }
