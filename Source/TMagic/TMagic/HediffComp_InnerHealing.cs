@@ -55,7 +55,7 @@ namespace TorannMagic
             {
                 TickAction();
             }
-            if(comp != null && Pawn.story != null && Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
+            if(comp != null)
             {
                 if (Find.TickManager.TicksGame % 1200 == 0)
                 {

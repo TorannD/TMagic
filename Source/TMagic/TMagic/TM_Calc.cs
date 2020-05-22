@@ -283,33 +283,41 @@ namespace TorannMagic
 
         public static bool IsWanderer(Pawn pawn)
         {
-            if(pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer))
+            CompAbilityUserMight comp = pawn.TryGetComp<CompAbilityUserMight>();
+            if (comp != null)
             {
-                return true;
-            }
-            else if(pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer)) //pawn is a wayfarer with appropriate skill level
-            {
-                int lvl = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_eff").level;
-                if (lvl >= 15)
+                if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer))
                 {
                     return true;
                 }
-            }            
+                else if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer) || (comp.customClass != null && comp.customClass.classFighterAbilities.Contains(TorannMagicDefOf.TM_FieldTraining))) //pawn is a wayfarer with appropriate skill level
+                {
+                    int lvl = comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_eff").level;
+                    if (lvl >= 15)
+                    {
+                        return true;
+                    }
+                }
+            }
             return false;
         }
 
         public static bool IsWayfarer(Pawn pawn)
         {
-            if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
+            CompAbilityUserMagic comp = pawn.TryGetComp<CompAbilityUserMagic>();
+            if (comp != null)
             {
-                return true;
-            }
-            else if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer)) //pawn is a wanderer with appropriate skill level
-            {
-                int lvl = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_eff").level;
-                if (lvl >= 15)
+                if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
                 {
                     return true;
+                }
+                else if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer) || (comp.customClass != null && comp.customClass.classMageAbilities.Contains(TorannMagicDefOf.TM_Cantrips))) //pawn is a wanderer with appropriate skill level
+                {
+                    int lvl = comp.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_eff").level;
+                    if (lvl >= 15)
+                    {
+                        return true;
+                    }
                 }
             }
             return false;
@@ -2825,14 +2833,14 @@ namespace TorannMagic
             string label = skillLabel + suffix;
             CompAbilityUserMight comp = caster.GetComp<CompAbilityUserMight>();
             val = power.FirstOrDefault((MightPowerSkill x) => x.label == label).level;
-            if (canCopy)
+            if (canCopy && val == 0)
             {
                 if (caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                 {
                     label = "TM_Mimic" + suffix;
                     val = comp.MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == label).level;
                 }
-                if (caster.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer) || (caster.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) && comp.MightData.MightPowersW.FirstOrDefault((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_WayfarerCraft).learned))
+                if ((caster.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer) || (caster.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) || (comp.customClass != null && comp.customClass.classFighterAbilities.Contains(TorannMagicDefOf.TM_FieldTraining))) && comp.MightData.MightPowersW.FirstOrDefault((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_WayfarerCraft).learned))
                 {
                     label = "TM_FieldTraining" + suffix;
 

@@ -36,17 +36,15 @@ namespace TorannMagic
                 else
                 {
                     float val = .5f;
-                    if (caster.story != null && caster.story.traits != null && caster.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
+                    if (caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level >= 3)
                     {
-                        if (caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level >= 3)
-                        {
-                            val = 1.5f;
-                        }
-                        if (caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level >= 8)
-                        {
-                            val = 2.5f;
-                        }
+                        val = 1.5f;
                     }
+                    if (caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level >= 8)
+                    {
+                        val = 2.5f;
+                    }
+                    
                     HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_HediffStrongBack, val);
                     MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, 1f);
                 }

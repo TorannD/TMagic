@@ -6310,7 +6310,7 @@ namespace TorannMagic
             {
                 adjustedManaCost = 0;
             }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage))
+            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) || (this.customClass != null && this.customClass.classMageAbilities.Contains(TorannMagicDefOf.TM_ChaosTradition)))
             {
                 adjustedManaCost = adjustedManaCost * 1.2f;
             }

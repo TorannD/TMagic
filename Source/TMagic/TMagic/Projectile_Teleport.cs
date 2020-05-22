@@ -46,14 +46,14 @@ namespace TorannMagic
 
             Pawn pawn = this.launcher as Pawn;
             CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
-            MagicPowerSkill pwr = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Teleport.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Teleport_pwr");
-            MagicPowerSkill ver = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Teleport.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Teleport_ver");
+            MagicPowerSkill pwr = comp.MagicData.MagicPowerSkill_Teleport.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Teleport_pwr");
+            MagicPowerSkill ver = comp.MagicData.MagicPowerSkill_Teleport.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Teleport_ver");
             pwrVal = pwr.level;
             verVal = ver.level;
             CellRect cellRect = CellRect.CenteredOn(base.Position, 1);
             cellRect.ClipInsideMap(map);
             IntVec3 centerCell = cellRect.CenterCell;
-            if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer))
+            if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer) || (comp.customClass != null && comp.customClass.classMageAbilities.Contains(TorannMagicDefOf.TM_Teleport)))
             {
                 pwrVal = (int)((pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_pwr").level) / 5);
                 verVal = (int)((pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level) / 5);

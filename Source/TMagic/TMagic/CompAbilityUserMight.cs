@@ -1379,6 +1379,7 @@ namespace TorannMagic
                         {                                    
                             if(!this.customClass.classFighterAbilities.Contains(this.MightData.AllMightPowers[z].abilityDef))
                             {
+                                Log.Message("" + this.MightData.AllMightPowers[z].abilityDef.defName + " learned=false");
                                 this.MightData.AllMightPowers[z].learned = false;
                             }
                         }
@@ -4034,7 +4035,7 @@ namespace TorannMagic
                             PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_PommelStrike);
                             Pawn targetPawn = this.Pawn.TargetCurrentlyAimingAt.Thing as Pawn;
                             float minPain = .3f;
-                            if(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer) && this.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_pwr").level >= 2)
+                            if(this.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_pwr").level >= 2)
                             {
                                 minPain = .2f;
                             }

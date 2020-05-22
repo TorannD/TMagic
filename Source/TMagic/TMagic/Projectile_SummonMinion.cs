@@ -70,7 +70,7 @@ namespace TorannMagic
                     pwrVal = 3;
                     verVal = 3;
                 }
-                if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer))
+                if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer) || (comp.customClass != null && comp.customClass.classMageAbilities.Contains(TorannMagicDefOf.TM_SummonMinion)))
                 {
                     pwrVal = (int)((pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_pwr").level) / 5);
                     verVal = (int)((pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level) / 5);

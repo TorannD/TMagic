@@ -1071,10 +1071,10 @@ namespace TorannMagic
                         goto EnumerationStart;
                     }
 
-                    if (compMight.MightData.GetSkill_Efficiency((TMAbilityDef)power.abilityDef) == null)
-                    {
-                        goto EnumerationStart;                        
-                    }
+                    //if (compMight.MightData.GetSkill_Efficiency((TMAbilityDef)power.abilityDef) == null)
+                    //{
+                    //    goto EnumerationStart;                        
+                    //}
 
 
                     Text.Font = GameFont.Small;
@@ -1339,7 +1339,7 @@ namespace TorannMagic
                                 break;
                             }                                                       
                             skill.level++;
-                            compMight.MightData.MightAbilityPoints -= 1;
+                            compMight.MightData.MightAbilityPoints -= skill.costToLevel;
                             
                             
                         }

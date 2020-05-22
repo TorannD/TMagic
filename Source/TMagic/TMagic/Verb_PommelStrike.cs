@@ -25,9 +25,10 @@ namespace TorannMagic
                 if(targetPawn != null)
                 {
                     float rnd = 2f;
-                    if(this.CasterPawn.story != null && this.CasterPawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
+                    CompAbilityUserMight comp = this.CasterPawn.TryGetComp<CompAbilityUserMight>();
+                    if(comp != null)
                     {
-                        if(this.CasterPawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_pwr").level >= 2)
+                        if(comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_pwr").level >= 2)
                         {
                             rnd = 4f;
                         }

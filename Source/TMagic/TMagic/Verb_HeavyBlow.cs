@@ -35,17 +35,17 @@ namespace TorannMagic
                 }
                 else
                 {
-                    if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
-                    {
+                    //if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
+                    //{
                         int lvl = pawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_pwr").level;
                         HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_HediffHeavyBlow, .95f + (.19f * lvl));
                         MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, 1f);
-                    }
-                    else
-                    {
-                        HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_HediffHeavyBlow, .5f);
-                        MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, 1f);
-                    }
+                    //}
+                    //else
+                    //{
+                    //    HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_HediffHeavyBlow, .5f);
+                    //    MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, 1f);
+                    //}
                 }
             }
             return true;

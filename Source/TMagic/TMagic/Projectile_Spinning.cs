@@ -22,7 +22,7 @@ namespace TorannMagic
             {
                 Pawn caster = this.launcher as Pawn;
                 CompAbilityUserMight comp = caster.TryGetComp<CompAbilityUserMight>();
-                if(comp != null && caster.story != null && caster.story.traits != null && caster.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
+                if(comp != null)
                 {
                     ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                     if((comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_pwr").level >= 12) || (!caster.IsColonist && settingsRef.AIHardMode))

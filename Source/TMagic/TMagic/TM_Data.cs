@@ -211,7 +211,7 @@ namespace TorannMagic
             {
                 for(int i =0; i < pistolList.Count; i++)
                 {
-                    if(current.defName == pistolList[i].ToString())
+                    if(current.defName == pistolList[i].ToString() || pistolList[i].ToString() == "*")
                     {
                         //Log.Message("adding pistol def " + current.defName);
                         pistols.AddDistinct(current);
@@ -233,7 +233,7 @@ namespace TorannMagic
             {
                 for (int i = 0; i < rifleList.Count; i++)
                 {
-                    if (current.defName == rifleList[i].ToString())
+                    if (current.defName == rifleList[i].ToString() || rifleList[i].ToString() == "*")
                     {
                         //Log.Message("adding rifle def " + current.defName);
                         rifles.AddDistinct(current);
@@ -255,7 +255,7 @@ namespace TorannMagic
             {
                 for (int i = 0; i < shotgunList.Count; i++)
                 {
-                    if (current.defName == shotgunList[i].ToString())
+                    if (current.defName == shotgunList[i].ToString() || shotgunList[i].ToString() == "*")
                     {
                         //Log.Message("adding shotgun def " + current.defName);
                         shotguns.AddDistinct(current);

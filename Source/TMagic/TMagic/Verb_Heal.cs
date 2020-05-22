@@ -42,23 +42,21 @@ namespace TorannMagic
             //DamageWorker.DamageResult result = DamageWorker.DamageResult.MakeNew();
             Pawn caster = this.CasterPawn;
             CompAbilityUserMagic comp = caster.GetComp<CompAbilityUserMagic>();
-            MagicPowerSkill pwr = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Heal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Heal_pwr");
-            MagicPowerSkill ver = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Heal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Heal_ver");
+            pwrVal = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Heal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Heal_pwr").level;
+            verVal = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Heal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Heal_ver").level;
             if(caster.story.traits.HasTrait(TorannMagicDefOf.Priest))
             {
-                pwr = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AdvancedHeal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AdvancedHeal_pwr");
-                ver = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AdvancedHeal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AdvancedHeal_ver");
+                pwrVal = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AdvancedHeal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AdvancedHeal_pwr").level;
+                verVal = caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_AdvancedHeal.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_AdvancedHeal_ver").level;
             }            
-            pwrVal = pwr.level;
-            verVal = ver.level;
-            if (caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            else if (caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
             {
                 MightPowerSkill mpwr = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
                 MightPowerSkill mver = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
                 pwrVal = mpwr.level;
                 verVal = mver.level;
             }
-            if (caster.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer))
+            else if (caster.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer) || (comp.customClass != null && comp.customClass.classMageAbilities.Contains(TorannMagicDefOf.TM_Heal)))
             {
                 pwrVal = (int)((caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_pwr").level) / 5);
                 verVal = (int)((caster.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level) / 5);

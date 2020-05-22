@@ -1415,7 +1415,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		</conflictingTraits>	
 	</TraitDef>
 	
-	<TraitDef>  <!-- Custom Class -->
+	<!-- Custom Class -->
+	<TraitDef>  
 		<defName>TM_TheShadow</defName>
 		<ignoreConfigErrors>true</ignoreConfigErrors>
 		<commonality>0</commonality>
@@ -1440,6 +1441,8 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		<conflictingTraits>
 		</conflictingTraits>	
 	</TraitDef>
+	
+	<!-- Might Classes -->
 	
 	<TraitDef>
         <defName>PhysicalProdigy</defName>

@@ -21,7 +21,7 @@ namespace TorannMagic
 
             MightPowerSkill pwr = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Sprint.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Sprint_pwr");
             pwrVal = pwr.level;
-            if(pawn.story != null && pawn.story.traits != null && pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer))
+            if(pwrVal == 0)
             {
                 pwrVal = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_pwr").level;
             }
