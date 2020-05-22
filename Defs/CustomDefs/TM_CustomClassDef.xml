@@ -30,7 +30,7 @@
 				<li>TM_ShadowWalk</li>
 			</classMageAbilities>
 			<learnableSpells>								<!-- learnable magic related skills, allows access to class related cantrips eg briar patch, master spells, etc -->
-			</learnableSpells>								<!-- entries should match the defName of the item used to learn the spell, eg "SpellOf_BriarPatch"
+			</learnableSpells>								<!-- entries should match the defName of the item used to learn the spell, eg "SpellOf_BriarPatch" -->
 			
 			<classFighterAbilities>							<!-- all fighter abilities available to the class -->
 				<li>TM_ShadowStrike</li>
