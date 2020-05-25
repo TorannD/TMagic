@@ -26,6 +26,11 @@ namespace TorannMagic
                             {
                                 itemUsed = true;
                                 comp.MagicData.AllMagicPowers[i].learned = true;
+                                if(ad.shouldInitialize)
+                                {
+                                    comp.RemovePawnAbility(ad);
+                                    comp.AddPawnAbility(ad);
+                                }
                                 comp.InitializeSpell();
                                 this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                                 break;
@@ -36,6 +41,11 @@ namespace TorannMagic
                                 {
                                     itemUsed = true;
                                     comp.MagicData.AllMagicPowers[i].learned = true;
+                                    if(ad.shouldInitialize)
+                                    {
+                                        comp.RemovePawnAbility(ad);
+                                        comp.AddPawnAbility(ad);
+                                    }
                                     comp.InitializeSpell();
                                     this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                                     break;
@@ -421,6 +431,7 @@ namespace TorannMagic
                     {
                         comp.spell_Recall = true;
                         comp.MagicData.ReturnMatchingMagicPower(TorannMagicDefOf.TM_Recall).learned = true;
+                        comp.MagicData.MagicPowersStandalone.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TimeMark).learned = true;
                         comp.InitializeSpell();
                         this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                     }

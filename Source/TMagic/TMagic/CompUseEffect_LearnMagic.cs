@@ -16,7 +16,7 @@ namespace TorannMagic
                 bool customClass = false;
                 for(int i = 0; i < TM_ClassUtility.CustomClasses().Count; i++)
                 {
-                    if (TM_ClassUtility.CustomClasses()[i].isMage)
+                    if ((TM_ClassUtility.CustomClasses()[i].isMage && user.story.traits.HasTrait(TorannMagicDefOf.Gifted)) || (TM_ClassUtility.CustomClasses()[i].isMage && TM_ClassUtility.CustomClasses()[i].isFighter && (user.story.traits.HasTrait(TorannMagicDefOf.Gifted) || user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy))))
                     {
                         if (parent.def == TM_ClassUtility.CustomClasses()[i].tornScript || parent.def == TM_ClassUtility.CustomClasses()[i].fullScript)
                         {

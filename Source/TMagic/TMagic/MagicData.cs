@@ -358,6 +358,10 @@ namespace TorannMagic
                         }),
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
+                            TorannMagicDefOf.TM_NanoStimulant
+                        }),
+                        new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
                             TorannMagicDefOf.TM_Ignite
                         }),
                         new MagicPower(new List<AbilityUser.AbilityDef>
@@ -2593,11 +2597,11 @@ namespace TorannMagic
                             TorannMagicDefOf.TM_ChronostaticField_I,
                             TorannMagicDefOf.TM_ChronostaticField_II,
                             TorannMagicDefOf.TM_ChronostaticField_III
-                        }, true),
+                        }),
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_Recall
-                        }),
+                        }, true),
                     };
                 }
                 return this.magicPowerC;

@@ -496,6 +496,8 @@ To maintain physical cohesion during a recall, the caster will retain all condit
 	<upkeepRegenCost>.3</upkeepRegenCost>
 	<upkeepEfficiencyPercent>.08</upkeepEfficiencyPercent>
 	<learnChance>.1</learnChance>
+	<learnItem>SpellOf_Recall</learnItem>
+	<shouldInitialize>false</shouldInitialize>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Recall</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

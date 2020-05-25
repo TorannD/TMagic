@@ -1753,6 +1753,7 @@ namespace TorannMagic
                                 if ((enumerator.Current.abilityDef.defName == "TM_TechnoWeapon"))
                                 {
                                     compMagic.AddPawnAbility(TorannMagicDefOf.TM_NanoStimulant);
+                                    compMagic.MagicData.MagicPowersStandalone.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_NanoStimulant).learned = true;
                                 }
                                 compMagic.MagicData.MagicAbilityPoints -= enumerator.Current.learnCost;
                             }

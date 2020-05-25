@@ -150,23 +150,26 @@ namespace TorannMagic
                         if(thingList[j] != null && thingList[j].def.mote == null)
                         {
                             Thing targetThing = thingList[j];
-                            if (targetThing is Pawn && targetThing != this.CasterPawn)
+                            if (targetThing != this.CasterPawn)
                             {
-                                MoteMaker.ThrowLightningGlow(targetThing.DrawPos, targetThing.Map, 1f);
-                                MoteMaker.ThrowHeatGlow(targetThing.Position, targetThing.Map, 1f);
-                                targetThing.DeSpawn();
-                                GenSpawn.Spawn(targetThing, this.CasterPawn.Position, this.CasterPawn.Map);
-                                transportedItemCount++;
-                                j--;
-                            }                            
-                            else if(targetThing != null && targetThing.def.EverHaulable)
-                            {
-                                MoteMaker.ThrowLightningGlow(targetThing.DrawPos, targetThing.Map, .6f);
-                                MoteMaker.ThrowHeatGlow(targetThing.Position, targetThing.Map, 1f);
-                                targetThing.DeSpawn();
-                                GenPlace.TryPlaceThing(targetThing, this.CasterPawn.Position, this.CasterPawn.Map, ThingPlaceMode.Near, null);
-                                transportedItemCount++;
-                                j--;
+                                if (targetThing is Pawn)
+                                {
+                                    MoteMaker.ThrowLightningGlow(targetThing.DrawPos, targetThing.Map, 1f);
+                                    MoteMaker.ThrowHeatGlow(targetThing.Position, targetThing.Map, 1f);
+                                    targetThing.DeSpawn();
+                                    GenSpawn.Spawn(targetThing, this.CasterPawn.Position, this.CasterPawn.Map);
+                                    transportedItemCount++;
+                                    j--;
+                                }
+                                else if (targetThing != null && targetThing.def.EverHaulable)
+                                {
+                                    MoteMaker.ThrowLightningGlow(targetThing.DrawPos, targetThing.Map, .6f);
+                                    MoteMaker.ThrowHeatGlow(targetThing.Position, targetThing.Map, 1f);
+                                    targetThing.DeSpawn();
+                                    GenPlace.TryPlaceThing(targetThing, this.CasterPawn.Position, this.CasterPawn.Map, ThingPlaceMode.Near, null);
+                                    transportedItemCount++;
+                                    j--;
+                                }
                             }
                         }                        
                     }

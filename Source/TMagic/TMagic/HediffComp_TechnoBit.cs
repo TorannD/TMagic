@@ -92,9 +92,9 @@ namespace TorannMagic
         private void DetermineHDRank()
         {
             CompAbilityUserMagic comp = this.Pawn.GetComp<CompAbilityUserMagic>();
-            this.PwrVal = this.Pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoBit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoBit_pwr").level;
-            this.EffVal = this.Pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoBit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoBit_eff").level;
-            this.VerVal = this.Pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_TechnoBit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoBit_ver").level;
+            this.PwrVal = comp.MagicData.MagicPowerSkill_TechnoBit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoBit_pwr").level;
+            this.EffVal = comp.MagicData.MagicPowerSkill_TechnoBit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoBit_eff").level;
+            this.VerVal = comp.MagicData.MagicPowerSkill_TechnoBit.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_TechnoBit_ver").level;
         }
 
         public override void CompPostTick(ref float severityAdjustment)

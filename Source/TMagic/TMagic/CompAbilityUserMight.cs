@@ -1379,7 +1379,6 @@ namespace TorannMagic
                         {                                    
                             if(!this.customClass.classFighterAbilities.Contains(this.MightData.AllMightPowers[z].abilityDef))
                             {
-                                Log.Message("" + this.MightData.AllMightPowers[z].abilityDef.defName + " learned=false");
                                 this.MightData.AllMightPowers[z].learned = false;
                             }
                         }
@@ -5405,47 +5404,46 @@ namespace TorannMagic
                         //Log.Message("Loading Super Soldier Abilities");
                         //this.AddPawnAbility(TorannMagicDefOf.TM_CQC);
                         this.AddPawnAbility(TorannMagicDefOf.TM_FirstAid);
-                        this.AddPawnAbility(TorannMagicDefOf.TM_60mmMortar);
-                        if (this.equipmentContainer != null && this.equipmentContainer.Count > 0)
+                        this.AddPawnAbility(TorannMagicDefOf.TM_60mmMortar);                        
+                    }
+                }
+                if (this.equipmentContainer != null && this.equipmentContainer.Count > 0)
+                {
+                    //Thing outThing = new Thing();
+                    try
+                    {
+                        //Log.Message("primary is " + this.Pawn.equipment.Primary);
+                        //Log.Message("equipment container is " + this.equipmentContainer[0]);
+                        for (int i = 0; i < this.Pawn.equipment.AllEquipmentListForReading.Count; i++)
                         {
-                            //Thing outThing = new Thing();
-                            try
+                            ThingWithComps t = this.Pawn.equipment.AllEquipmentListForReading[i];
+                            if (t.def.defName.Contains("Spec_Base"))
                             {
-                                //Log.Message("primary is " + this.Pawn.equipment.Primary);
-                                //Log.Message("equipment container is " + this.equipmentContainer[0]);
-                                for (int i = 0; i < this.Pawn.equipment.AllEquipmentListForReading.Count; i++)
-                                {
-                                    ThingWithComps t = this.Pawn.equipment.AllEquipmentListForReading[i];
-                                    if (t.def.defName.Contains("Spec_Base"))
-                                    {
-                                        t.Destroy(DestroyMode.Vanish);
-                                    }
-                                }
-                                if (this.specWpnRegNum == -1)
-                                {
-                                    if (this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PistolSpec).learned)
-                                    {
-                                        TM_Action.DoAction_PistolSpecCopy(this.Pawn, this.equipmentContainer[0]);
-                                    }
-                                    else if (this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_RifleSpec).learned)
-                                    {
-                                        TM_Action.DoAction_RifleSpecCopy(this.Pawn, this.equipmentContainer[0]);
-                                    }
-                                    else if (this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ShotgunSpec).learned)
-                                    {
-                                        TM_Action.DoAction_ShotgunSpecCopy(this.Pawn, this.equipmentContainer[0]);
-                                    }
-                                }
+                                t.Destroy(DestroyMode.Vanish);
                             }
-                            catch (Exception ex)
+                        }
+                        if (this.specWpnRegNum == -1)
+                        {
+                            if (this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PistolSpec).learned)
                             {
-                                Log.Message("exception on load: " + ex);
-                                //do nothing
+                                TM_Action.DoAction_PistolSpecCopy(this.Pawn, this.equipmentContainer[0]);
+                            }
+                            else if (this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_RifleSpec).learned)
+                            {
+                                TM_Action.DoAction_RifleSpecCopy(this.Pawn, this.equipmentContainer[0]);
+                            }
+                            else if (this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ShotgunSpec).learned)
+                            {
+                                TM_Action.DoAction_ShotgunSpecCopy(this.Pawn, this.equipmentContainer[0]);
                             }
                         }
                     }
+                    catch (Exception ex)
+                    {
+                        Log.Message("exception on load: " + ex);
+                        //do nothing
+                    }
                 }
-
                 this.InitializeSkill();
                 //base.UpdateAbilities();
             }

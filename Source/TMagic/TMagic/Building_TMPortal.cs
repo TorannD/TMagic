@@ -195,7 +195,7 @@ namespace TorannMagic
 
                 if (!isPaired)
                 {
-                    if (comp.spell_FoldReality)
+                    if (comp.spell_FoldReality || comp.MagicData.MagicPowersA.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_FoldReality).learned)
                     {
                         if (comp.Mana.CurLevel >= .7f)
                         {

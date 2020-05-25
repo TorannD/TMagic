@@ -30,12 +30,16 @@ namespace TorannMagic
                     }
                     else
                     {
-                        HealthUtility.AdjustSeverity(caster, hdDef, .5f);
-                        MoteMaker.ThrowDustPuff(caster.Position, caster.Map, 1f);
+                        HealthUtility.AdjustSeverity(caster, hdDef, hdDef.initialSeverity);
+                        if (caster.Map != null)
+                        {
+                            MoteMaker.ThrowLightningGlow(caster.DrawPos, caster.Map, 1f);
+                            MoteMaker.ThrowDustPuff(caster.Position, caster.Map, 1f);
+                        }
                     }
 
                     CompAbilityUserMagic magicComp = caster.TryGetComp<CompAbilityUserMagic>();
-                    if(magicComp != null)
+                    if(magicComp != null && magicComp.MagicData != null)
                     {
                         MagicPower mp = magicComp.MagicData.ReturnMatchingMagicPower(ability);
                         if(mp != null)
@@ -44,7 +48,7 @@ namespace TorannMagic
                         }
                     }
                     CompAbilityUserMight mightComp = caster.TryGetComp<CompAbilityUserMight>();
-                    if (mightComp != null)
+                    if (mightComp != null && mightComp.MightData != null)
                     {
                         MightPower mp = mightComp.MightData.ReturnMatchingMightPower(ability);
                         if (mp != null)

@@ -48,9 +48,9 @@
 															<!-- class with undead hediffs will instantly die if no necromancer is available to sustain -->
 			<isAndroid>false</isAndroid>					<!-- class counts as an android for various spell checks -->
 			<isAdvancedClass>false</isAdvancedClass>		<!-- shifts all class related functions into a separate, advanced tab (WIP/future use) -->
-		  </li>
+		  </li>		  
 		</customClasses>			
-	</TorannMagic.TM_CustomClassDef>
+	</TorannMagic.TM_CustomClassDef>		
 
 </Defs>
 
