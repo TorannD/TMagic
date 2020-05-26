@@ -4753,7 +4753,7 @@ namespace TorannMagic
                 }
                 if (_coolDown != 0)
                 {
-                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_coolDown"), .5f);
+                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_spCoolDown"), .5f);
                 }
                 if (_xpGain != 0)
                 {
@@ -4761,7 +4761,7 @@ namespace TorannMagic
                 }
                 if (_spCost != 0)
                 {
-                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_mpCost"), .5f);
+                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_spCost"), .5f);
                 }
                 if (_arcaneRes != 0)
                 {
@@ -4769,7 +4769,7 @@ namespace TorannMagic
                 }
                 if (this.mightPwr != 1)
                 {
-                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_arcaneDmg"), .5f);
+                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_combatDmg"), .5f);
                 }
                 if (_arcaneSpectre == true)
                 {
@@ -4797,11 +4797,11 @@ namespace TorannMagic
                         {
                             Pawn.health.RemoveHediff(rec);
                         }
-                        if (rec.def.defName == "TM_HediffEnchantment_coolDown" && this.coolDown == 1)
+                        if (rec.def.defName == "TM_HediffEnchantment_spCoolDown" && this.coolDown == 1)
                         {
                             Pawn.health.RemoveHediff(rec);
                         }
-                        if (rec.def.defName == "TM_HediffEnchantment_mpCost" && this.spCost == 1)
+                        if (rec.def.defName == "TM_HediffEnchantment_spCost" && this.spCost == 1)
                         {
                             Pawn.health.RemoveHediff(rec);
                         }
@@ -4819,17 +4819,13 @@ namespace TorannMagic
                         }
                         if (_arcaneDmg != 0)
                         {
-                            HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_arcaneDmg"), .5f);
+                            HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_combatDmg"), .5f);
                         }
                         if (rec.def.defName == "TM_HediffEnchantment_arcaneSpectre" && _arcaneSpectre == false)
                         {
                             Pawn.health.RemoveHediff(rec);
                         }
                         if (rec.def.defName == "TM_HediffEnchantment_phantomShift" && _phantomShift == false)
-                        {
-                            Pawn.health.RemoveHediff(rec);
-                        }
-                        if (rec.def.defName == "TM_HediffEnchantment_phantomShift" && _arcalleumCooldown == 0f)
                         {
                             Pawn.health.RemoveHediff(rec);
                         }

@@ -402,21 +402,19 @@ namespace TorannMagic
                 {
                     compMagic.LevelUp(true);
                 }
-                if (false)
+
+                Rect rect22 = new Rect(rect.xMax + 60f, inRect.y, 50f, MagicCardUtility.TextSize * 2);
+                bool flag22 = Widgets.ButtonText(rect22, "Reset Class", true, false, true);
+                if (flag22)
                 {
-                    Rect rect22 = new Rect(rect.xMax + 60f, inRect.y, 50f, MagicCardUtility.TextSize * 2);
-                    bool flag22 = Widgets.ButtonText(rect22, "Reset Skills", true, false, true);
-                    if (flag22)
-                    {
-                        compMagic.ResetSkills();
-                    }
-                    Rect rect23 = new Rect(rect.xMax + 115f, inRect.y, 50f, MagicCardUtility.TextSize * 2);
-                    bool flag23 = Widgets.ButtonText(rect23, "Remove Powers", true, false, true);
-                    if (flag23)
-                    {
-                        compMagic.RemoveAbilityUser();
-                    }
+                    compMagic.ResetSkills();
                 }
+                //Rect rect23 = new Rect(rect.xMax + 115f, inRect.y, 50f, MagicCardUtility.TextSize * 2);
+                //bool flag23 = Widgets.ButtonText(rect23, "Remove Powers", true, false, true);
+                //if (flag23)
+                //{
+                //    compMagic.RemoveAbilityUser();
+                //}                
             }
             Rect rect4 = new Rect(inRect.x, rect.yMax, inRect.width, MagicCardUtility.TextSize);
             Text.Font = GameFont.Tiny;
@@ -1746,7 +1744,8 @@ namespace TorannMagic
                             if (flagLearn)
                             {
                                 enumerator.Current.learned = true;
-                                if (!(enumerator.Current.abilityDef.defName == "TM_TechnoBit"))
+                                TMAbilityDef abilityLearned = (TMAbilityDef)enumerator.Current.abilityDef;
+                                if (!(enumerator.Current.abilityDef.defName == "TM_TechnoBit") && abilityLearned.shouldInitialize)
                                 {
                                     compMagic.AddPawnAbility(enumerator.Current.abilityDef);
                                 }

@@ -358,6 +358,7 @@ Weapon specializations apply automatically when a Super Soldier equips a weapon 
         <staminaCost>0.15</staminaCost>
 		<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 		<weaponDamageFactor>.45</weaponDamageFactor>
+		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_BLOS</verbClass>
             <hasStandardCommand>true</hasStandardCommand>

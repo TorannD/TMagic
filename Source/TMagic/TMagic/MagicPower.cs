@@ -13,7 +13,7 @@ namespace TorannMagic
         public int ticksUntilNextCast = -1;
 
         public int level;
-        public bool learned = false;
+        public bool learned = true;
         public bool autocast = false;
         public int learnCost = 2;
         private int interactionTick = 0;
@@ -229,7 +229,7 @@ namespace TorannMagic
 
         public void ExposeData()
         {
-            Scribe_Values.Look<bool>(ref this.learned, "learned", false, false);
+            Scribe_Values.Look<bool>(ref this.learned, "learned", true, false);
             Scribe_Values.Look<bool>(ref this.autocast, "autocast", false, false);
             Scribe_Values.Look<int>(ref this.learnCost, "learnCost", 2, false);
             Scribe_Values.Look<int>(ref this.level, "level", 0, false);

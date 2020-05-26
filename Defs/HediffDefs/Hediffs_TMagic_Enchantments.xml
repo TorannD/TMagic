@@ -49,11 +49,35 @@
 	</stages>
    </HediffDef>
    
-     <HediffDef>
-    <defName>TM_HediffEnchantment_coolDown</defName>
+	<HediffDef>
+    <defName>TM_HediffEnchantment_mpCoolDown</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-	<label>CoolDown:</label>
-	<description>Ability cooldown enchantment.</description>
+	<label>Magic CoolDown:</label>
+	<description>Enchantment that reduces the cooldown time of magic abilities.</description>
+    <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
+	<scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <maxSeverity>1</maxSeverity>	
+	<isBad>false</isBad>
+	<comps>
+      <li>
+        <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
+      </li> 
+    </comps>
+	<stages>
+      <li>
+        <label></label>
+        <minSeverity>0.001</minSeverity>
+      </li>
+	</stages>
+   </HediffDef>
+   
+     <HediffDef>
+    <defName>TM_HediffEnchantment_spCoolDown</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Ability CoolDown:</label>
+	<description>Enchantment that reduces the cooldown time of combat abilities.</description>
     <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -76,8 +100,32 @@
      <HediffDef>
     <defName>TM_HediffEnchantment_mpCost</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-	<label>Energy Cost:</label>
-	<description>Energy cost enchantment.</description>
+	<label>Mana Cost:</label>
+	<description>Enchantment that modifies the mana cost of abilities.</description>
+    <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
+	<scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <maxSeverity>1</maxSeverity>
+	<isBad>false</isBad>	
+	<comps>
+      <li>
+        <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
+      </li> 
+    </comps>
+	<stages>
+      <li>
+        <label></label>
+        <minSeverity>0.001</minSeverity>
+      </li>
+	</stages>
+   </HediffDef>
+   
+        <HediffDef>
+    <defName>TM_HediffEnchantment_spCost</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Stamina Cost:</label>
+	<description>Enchantment that modifies the stamina cost of abilities.</description>
     <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -176,7 +224,7 @@
     <defName>TM_HediffEnchantment_arcaneRes</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Arcane Resistance:</label>
-	<description>Resists the effects of the arcane.</description>
+	<description>Ability to resist magical effects and reduces damage from magical attacks.</description>
     <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -202,8 +250,35 @@
    <HediffDef>
     <defName>TM_HediffEnchantment_arcaneDmg</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-	<label>Damage Bonus:</label>
-	<description>Increases the effects of arcane abilities.</description>
+	<label>Magic Bonus:</label>
+	<description>Increases the effects of magic abilities.</description>
+    <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
+	<scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <maxSeverity>1</maxSeverity>	
+	<isBad>false</isBad>
+	<comps>
+      <li>
+        <compClass>TorannMagic.Enchantment.HediffComp_Enchantment</compClass>
+      </li> 
+<!-- 	  <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-5</severityPerDay>
+      </li> -->
+    </comps>
+	<stages>
+      <li>
+        <label></label>
+        <minSeverity>0.001</minSeverity>
+      </li>
+	</stages>
+   </HediffDef>
+   
+      <HediffDef>
+    <defName>TM_HediffEnchantment_combatDmg</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+	<label>Combat Bonus:</label>
+	<description>Increases the effects of combat abilities.</description>
     <defaultLabelColor>(1,1,0.5)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
@@ -230,7 +305,7 @@
     <defName>TM_HediffEnchantment_arcaneSpectre</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Arcane Spectre</label>
-	<description>An enchantment that can add bonus spiritual damage to any attack.</description>
+	<description>An enchantment that can add bonus spirit damage to any attack.</description>
     <defaultLabelColor>(.8,0,0.8)</defaultLabelColor>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
