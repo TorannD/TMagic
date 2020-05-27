@@ -2171,7 +2171,7 @@ namespace TorannMagic
                         {
                             if (pawn.Map == null)
                             {
-                                Log.Warning("Tried to do death retaliation in a null map.");
+                                Log.Message("Tried to do death retaliation in a null map.");
                             }
                             else
                             {

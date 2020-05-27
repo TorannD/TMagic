@@ -425,7 +425,7 @@ namespace TorannMagic
                                 Vector3 moteDirection = TM_Calc.GetVector(this.ExactPosition.ToIntVec3(), intVec);
                                 TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Rubble"), this.ExactPosition, base.Map, Rand.Range(.3f, .6f), .2f, .02f, .05f, Rand.Range(-100, 100), Rand.Range(8f, 13f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
                                 TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, this.ExactPosition, base.Map, Rand.Range(.9f, 1.2f), .3f, .02f, Rand.Range(.25f, .4f), Rand.Range(-100, 100), Rand.Range(5f, 8f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
-                                GenExplosion.DoExplosion(intVec, base.Map, .4f, DamageDefOf.Blunt, pawn, 0, 0, SoundDefOf.Pawn_Melee_Punch_HitBuilding, null, null, null, ThingDefOf.Filth_RubbleRock, .4f, 1, false, null, 0f, 1, 0, false);
+                                GenExplosion.DoExplosion(intVec, base.Map, .4f, DamageDefOf.Blunt, pawn, 0, 0, SoundDefOf.Pawn_Melee_Punch_HitBuilding, null, null, null, ThingDefOf.Filth_RubbleRock, .25f, 1, false, null, 0f, 1, 0, false);
                                 //MoteMaker.ThrowSmoke(intVec.ToVector3Shifted(), base.Map, Rand.Range(.6f, 1f));
                             }
                         }
@@ -482,7 +482,7 @@ namespace TorannMagic
                                 }
                                 else
                                 {
-                                    if (Rand.Chance(.25f))
+                                    if (Rand.Chance(.05f))
                                     {
                                         if (filth != null)
                                         {
@@ -494,7 +494,7 @@ namespace TorannMagic
                                             GenPlace.TryPlaceThing(ThingMaker.MakeThing(ThingDefOf.Filth_Blood), damageRing[i], base.Map, ThingPlaceMode.Near);
                                         }
                                     }
-                                    if (Rand.Chance(.25f))
+                                    if (Rand.Chance(.05f))
                                     {
                                         GenPlace.TryPlaceThing(ThingMaker.MakeThing(ThingDefOf.Filth_CorpseBile), damageRing[i], base.Map, ThingPlaceMode.Near);
                                     }
@@ -509,7 +509,7 @@ namespace TorannMagic
                                 Vector3 moteDirection = TM_Calc.GetVector(this.ExactPosition.ToIntVec3(), intVec);
                                 TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_BloodSquirt, this.ExactPosition, base.Map, Rand.Range(.3f, .6f), .2f, .02f, .05f, Rand.Range(-100, 100), Rand.Range(4f, 13f), (Quaternion.AngleAxis(Rand.Range(60, 120), Vector3.up) * moteDirection).ToAngleFlat(), 0);
                                 TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_BloodMist, this.ExactPosition, base.Map, Rand.Range(.9f, 1.2f), .3f, .02f, Rand.Range(.25f, .4f), Rand.Range(-100, 100), Rand.Range(5f, 8f), (Quaternion.AngleAxis(90, Vector3.up) * moteDirection).ToAngleFlat(), 0);
-                                GenExplosion.DoExplosion(intVec, base.Map, .4f, DamageDefOf.Blunt, pawn, 0, 0, SoundDefOf.Pawn_Melee_Punch_HitBuilding, null, null, null, filth.def, .4f, 1, false, null, 0f, 1, 0, false);
+                                GenExplosion.DoExplosion(intVec, base.Map, .4f, DamageDefOf.Blunt, pawn, 0, 0, SoundDefOf.Pawn_Melee_Punch_HitBuilding, null, null, null, filth.def, .08f, 1, false, null, 0f, 1, 0, false);
                                 //MoteMaker.ThrowSmoke(intVec.ToVector3Shifted(), base.Map, Rand.Range(.6f, 1f));
                             }
                         }

@@ -192,7 +192,7 @@ namespace TorannMagic
         public static TraitDef TM_Wanderer;
 
         public static TMAbilityDef TM_WandererCraft;
-        public static TMAbilityDef TM_Cantrips;
+        public static TMAbilityDef TM_Cantrips ;
         public static HediffDef TM_FrostSlowHD;
         public static HediffDef TM_CoolHD;
         public static HediffDef TM_WarmHD;

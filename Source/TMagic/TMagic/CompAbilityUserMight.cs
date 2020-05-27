@@ -1369,288 +1369,292 @@ namespace TorannMagic
             {
                 if (this.mightPowersInitialized == false && MightData != null)
                 {
-                    Pawn abilityUser = base.AbilityUser;
-                    bool flag2;
-                    MightData.MightUserLevel = 0;
-                    MightData.MightAbilityPoints = 0;
-                    if(this.customClass != null)
-                    {
-                        for(int z =0; z< this.MightData.AllMightPowers.Count; z++)
-                        {                                    
-                            if(!this.customClass.classFighterAbilities.Contains(this.MightData.AllMightPowers[z].abilityDef))
-                            {
-                                this.MightData.AllMightPowers[z].learned = false;
-                            }
-                        }
-                        for (int j = 0; j < this.customClass.classFighterAbilities.Count; j++)
-                        {
-                            if (this.customClass.classFighterAbilities[j].shouldInitialize)
-                            {
-                                this.AddPawnAbility(this.customClass.classFighterAbilities[j]);
-                            }
-                        }
-                        if(this.customClass.classHediff != null)
-                        {
-                            HealthUtility.AdjustSeverity(abilityUser, this.customClass.classHediff, this.customClass.hediffSeverity);
-                        }
-                    }
-                    else
-                    {
-                        flag2 = TM_Calc.IsWayfarer(abilityUser);
-                        if (flag2)
-                        {
-                            //Log.Message("Initializing Wayfarer Abilities");
-                            if (!abilityUser.IsColonist)
-                            {
-                                this.skill_ThrowingKnife = true;
-                                this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_ThrowingKnife).learned = true;
-                                this.AddPawnAbility(TorannMagicDefOf.TM_ThrowingKnife);
-                            }
-                            for(int i = 0; i < 2; i++)
-                            {
-                                MightPower mp = this.MightData.MightPowersStandalone.RandomElement();
-                                if (mp.abilityDef == TorannMagicDefOf.TM_GearRepair)
-                                {
-                                    mp.learned = true;
-                                    skill_GearRepair = true;
-                                }
-                                else if (mp.abilityDef == TorannMagicDefOf.TM_InnerHealing)
-                                {
-                                    mp.learned = true;
-                                    skill_InnerHealing = true;
-                                }
-                                else if (mp.abilityDef == TorannMagicDefOf.TM_HeavyBlow)
-                                {
-                                    mp.learned = true;
-                                    skill_HeavyBlow = true;
-                                }
-                                else if (mp.abilityDef == TorannMagicDefOf.TM_ThickSkin)
-                                {
-                                    mp.learned = true;
-                                    skill_ThickSkin = true;
-                                }
-                                else if (mp.abilityDef == TorannMagicDefOf.TM_FightersFocus)
-                                {
-                                    mp.learned = true;
-                                    skill_FightersFocus = true;
-                                }
-                                else if (mp.abilityDef == TorannMagicDefOf.TM_StrongBack)
-                                {
-                                    mp.learned = true;
-                                    skill_StrongBack = true;
-                                }
-                                else if (mp.abilityDef == TorannMagicDefOf.TM_ThrowingKnife)
-                                {
-                                    mp.learned = true;
-                                    skill_ThrowingKnife = true;
-                                }
-                                else if (mp.abilityDef == TorannMagicDefOf.TM_PommelStrike)
-                                {
-                                    mp.learned = true;
-                                    skill_PommelStrike = true;
-                                }
-                            }
-                            InitializeSkill();                            
-                        }
-                        flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Gladiator);
-                        if (flag2)
-                        {
-                            //Log.Message("Initializing Gladiator Abilities");
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Sprint);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Sprint).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Sprint_I).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Sprint_II).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Sprint_III).learned = true;
-                            //this.AddPawnAbility(TorannMagicDefOf.TM_Fortitude);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Fortitude).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Grapple);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Grapple).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Grapple_I).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Grapple_II).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Grapple_III).learned = true;
-                            //this.AddPawnAbility(TorannMagicDefOf.TM_Cleave);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Cleave).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Whirlwind);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Whirlwind).learned = true;
-                        }
-                        flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper);
-                        if (flag2)
-                        {
-                            //Log.Message("Initializing Sniper Abilities");
-                            //this.AddPawnAbility(TorannMagicDefOf.TM_SniperFocus);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_SniperFocus).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Headshot);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Headshot).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_DisablingShot);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_DisablingShot).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_DisablingShot_I).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_DisablingShot_II).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_DisablingShot_III).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_AntiArmor);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_AntiArmor).learned = true;
-                        }
-                        flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Bladedancer);
-                        if (flag2)
-                        {
-                            // Log.Message("Initializing Bladedancer Abilities");
-                            // this.AddPawnAbility(TorannMagicDefOf.TM_BladeFocus);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_BladeFocus).learned = true;
-                            //this.AddPawnAbility(TorannMagicDefOf.TM_BladeArt);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_BladeArt).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_SeismicSlash);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_SeismicSlash).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_BladeSpin);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_BladeSpin).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_PhaseStrike);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PhaseStrike).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PhaseStrike_I).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PhaseStrike_II).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PhaseStrike_III).learned = true;
-                        }
-                        flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Ranger);
-                        if (flag2)
-                        {
-                            //Log.Message("Initializing Ranger Abilities");
-                            //this.AddPawnAbility(TorannMagicDefOf.TM_RangerTraining);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_RangerTraining).learned = true;
-                            // this.AddPawnAbility(TorannMagicDefOf.TM_BowTraining);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_BowTraining).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_PoisonTrap);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PoisonTrap).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_AnimalFriend);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_AnimalFriend).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_ArrowStorm);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_ArrowStorm).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_ArrowStorm_I).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_ArrowStorm_II).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_ArrowStorm_III).learned = true;
-                        }
-                        flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless);
-                        if (flag2)
-                        {
-                            //Log.Message("Initializing Faceless Abilities");
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Disguise);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Disguise).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Mimic);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Mimic).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Reversal);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Reversal).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Transpose);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Transpose).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Transpose_I).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Transpose_II).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Transpose_III).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Possess);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Possess).learned = true;
-                        }
-                        flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic);
-                        if (flag2)
-                        {
-                            //Log.Message("Initializing Psionic Abilities");
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PsionicAugmentation).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_PsionicBarrier);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PsionicBarrier).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PsionicBarrier_Projected).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_PsionicBlast);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PsionicBlast).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PsionicBlast_I).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PsionicBlast_II).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PsionicBlast_III).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_PsionicDash);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PsionicDash).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_PsionicStorm);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PsionicStorm).learned = true;
-                        }
-                        flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.DeathKnight);
-                        if (flag2)
-                        {
-                            //Log.Message("Initializing Death Knight Abilities");
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Shroud).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_WaveOfFear);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_WaveOfFear).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Spite);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Spite).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Spite_I).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Spite_II).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Spite_III).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_LifeSteal).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_GraveBlade);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_GraveBlade).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_GraveBlade_I).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_GraveBlade_II).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_GraveBlade_III).learned = true;
-                        }
-                        flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Monk);
-                        if (flag2)
-                        {
-                            //Log.Message("Initializing Monk Abilities");
-                            //this.AddPawnAbility(TorannMagicDefOf.TM_Chi);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Chi).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_ChiBurst);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_MindOverBody).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_Meditate);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Meditate).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_TigerStrike);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_TigerStrike).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_DragonStrike);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_DragonStrike).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_ThunderStrike);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_ThunderStrike).learned = true;
-                        }
-                        flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Commander);
-                        if (flag2)
-                        {
-                            //Log.Message("Initializing Commander Abilities");
-                            this.AddPawnAbility(TorannMagicDefOf.TM_ProvisionerAura);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_ProvisionerAura).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_TaskMasterAura);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_TaskMasterAura).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_CommanderAura);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_CommanderAura).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_StayAlert);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_StayAlert).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_StayAlert_I).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_StayAlert_II).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_StayAlert_III).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_MoveOut);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_MoveOut).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_MoveOut_I).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_MoveOut_II).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_MoveOut_III).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_HoldTheLine);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_HoldTheLine).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_HoldTheLine_I).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_HoldTheLine_II).learned = true;
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_HoldTheLine_III).learned = true;
-                        }
-                        flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier);
-                        if (flag2)
-                        {
-                            //Log.Message("Initializing Super Soldier Abilities");
-                            this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PistolSpec).learned = false;
-                            this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_RifleSpec).learned = false;
-                            this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ShotgunSpec).learned = false;
-                            //this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PistolWhip).learned = false;
-                            //this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_SuppressingFire).learned = false;
-                            //this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Mk203GL).learned = false;
-                            //this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Buckshot).learned = false;
-                            //this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_BreachingCharge).learned = false;
-
-                            //this.AddPawnAbility(TorannMagicDefOf.TM_CQC);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_CQC).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_FirstAid);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_FirstAid).learned = true;
-                            this.AddPawnAbility(TorannMagicDefOf.TM_60mmMortar);
-                            this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_60mmMortar).learned = true;
-                        }
-                    }
-                    this.mightPowersInitialized = true;
-                    //base.UpdateAbilities();
-
+                    AssignAbilities();
                 }
                 //this.UpdateAbilities();
                 //base.UpdateAbilities();
             }
+        }
+
+        public void AssignAbilities()
+        {
+            Pawn abilityUser = base.AbilityUser;
+            bool flag2;
+            MightData.MightUserLevel = 0;
+            MightData.MightAbilityPoints = 0;
+            if (this.customClass != null)
+            {
+                for (int z = 0; z < this.MightData.AllMightPowers.Count; z++)
+                {
+                    if (!this.customClass.classFighterAbilities.Contains(this.MightData.AllMightPowers[z].abilityDef))
+                    {
+                        this.MightData.AllMightPowers[z].learned = false;
+                    }
+                }
+                for (int j = 0; j < this.customClass.classFighterAbilities.Count; j++)
+                {
+                    if (this.customClass.classFighterAbilities[j].shouldInitialize)
+                    {
+                        this.AddPawnAbility(this.customClass.classFighterAbilities[j]);
+                    }
+                }
+                if (this.customClass.classHediff != null)
+                {
+                    HealthUtility.AdjustSeverity(abilityUser, this.customClass.classHediff, this.customClass.hediffSeverity);
+                }
+            }
+            else
+            {
+                flag2 = TM_Calc.IsWayfarer(abilityUser);
+                if (flag2)
+                {
+                    //Log.Message("Initializing Wayfarer Abilities");
+                    if (!abilityUser.IsColonist)
+                    {
+                        this.skill_ThrowingKnife = true;
+                        this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_ThrowingKnife).learned = true;
+                        this.AddPawnAbility(TorannMagicDefOf.TM_ThrowingKnife);
+                    }
+                    for (int i = 0; i < 2; i++)
+                    {
+                        MightPower mp = this.MightData.MightPowersStandalone.RandomElement();
+                        if (mp.abilityDef == TorannMagicDefOf.TM_GearRepair)
+                        {
+                            mp.learned = true;
+                            skill_GearRepair = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_InnerHealing)
+                        {
+                            mp.learned = true;
+                            skill_InnerHealing = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_HeavyBlow)
+                        {
+                            mp.learned = true;
+                            skill_HeavyBlow = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_ThickSkin)
+                        {
+                            mp.learned = true;
+                            skill_ThickSkin = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_FightersFocus)
+                        {
+                            mp.learned = true;
+                            skill_FightersFocus = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_StrongBack)
+                        {
+                            mp.learned = true;
+                            skill_StrongBack = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_ThrowingKnife)
+                        {
+                            mp.learned = true;
+                            skill_ThrowingKnife = true;
+                        }
+                        else if (mp.abilityDef == TorannMagicDefOf.TM_PommelStrike)
+                        {
+                            mp.learned = true;
+                            skill_PommelStrike = true;
+                        }
+                    }
+                    InitializeSkill();
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Gladiator);
+                if (flag2)
+                {
+                    //Log.Message("Initializing Gladiator Abilities");
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Sprint);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Sprint).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Sprint_I).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Sprint_II).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Sprint_III).learned = true;
+                    //this.AddPawnAbility(TorannMagicDefOf.TM_Fortitude);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Fortitude).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Grapple);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Grapple).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Grapple_I).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Grapple_II).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Grapple_III).learned = true;
+                    //this.AddPawnAbility(TorannMagicDefOf.TM_Cleave);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Cleave).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Whirlwind);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Whirlwind).learned = true;
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper);
+                if (flag2)
+                {
+                    //Log.Message("Initializing Sniper Abilities");
+                    //this.AddPawnAbility(TorannMagicDefOf.TM_SniperFocus);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_SniperFocus).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Headshot);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Headshot).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_DisablingShot);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_DisablingShot).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_DisablingShot_I).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_DisablingShot_II).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_DisablingShot_III).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_AntiArmor);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_AntiArmor).learned = true;
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Bladedancer);
+                if (flag2)
+                {
+                    // Log.Message("Initializing Bladedancer Abilities");
+                    // this.AddPawnAbility(TorannMagicDefOf.TM_BladeFocus);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_BladeFocus).learned = true;
+                    //this.AddPawnAbility(TorannMagicDefOf.TM_BladeArt);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_BladeArt).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_SeismicSlash);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_SeismicSlash).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_BladeSpin);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_BladeSpin).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_PhaseStrike);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PhaseStrike).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PhaseStrike_I).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PhaseStrike_II).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PhaseStrike_III).learned = true;
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Ranger);
+                if (flag2)
+                {
+                    //Log.Message("Initializing Ranger Abilities");
+                    //this.AddPawnAbility(TorannMagicDefOf.TM_RangerTraining);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_RangerTraining).learned = true;
+                    // this.AddPawnAbility(TorannMagicDefOf.TM_BowTraining);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_BowTraining).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_PoisonTrap);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PoisonTrap).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_AnimalFriend);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_AnimalFriend).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_ArrowStorm);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_ArrowStorm).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_ArrowStorm_I).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_ArrowStorm_II).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_ArrowStorm_III).learned = true;
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.Faceless);
+                if (flag2)
+                {
+                    //Log.Message("Initializing Faceless Abilities");
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Disguise);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Disguise).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Mimic);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Mimic).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Reversal);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Reversal).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Transpose);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Transpose).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Transpose_I).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Transpose_II).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Transpose_III).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Possess);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Possess).learned = true;
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic);
+                if (flag2)
+                {
+                    //Log.Message("Initializing Psionic Abilities");
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PsionicAugmentation).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_PsionicBarrier);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PsionicBarrier).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PsionicBarrier_Projected).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_PsionicBlast);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PsionicBlast).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PsionicBlast_I).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PsionicBlast_II).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PsionicBlast_III).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_PsionicDash);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PsionicDash).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_PsionicStorm);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_PsionicStorm).learned = true;
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.DeathKnight);
+                if (flag2)
+                {
+                    //Log.Message("Initializing Death Knight Abilities");
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Shroud).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_WaveOfFear);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_WaveOfFear).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Spite);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Spite).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Spite_I).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Spite_II).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Spite_III).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_LifeSteal).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_GraveBlade);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_GraveBlade).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_GraveBlade_I).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_GraveBlade_II).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_GraveBlade_III).learned = true;
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Monk);
+                if (flag2)
+                {
+                    //Log.Message("Initializing Monk Abilities");
+                    //this.AddPawnAbility(TorannMagicDefOf.TM_Chi);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Chi).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_ChiBurst);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_MindOverBody).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_Meditate);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_Meditate).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_TigerStrike);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_TigerStrike).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_DragonStrike);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_DragonStrike).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_ThunderStrike);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_ThunderStrike).learned = true;
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Commander);
+                if (flag2)
+                {
+                    //Log.Message("Initializing Commander Abilities");
+                    this.AddPawnAbility(TorannMagicDefOf.TM_ProvisionerAura);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_ProvisionerAura).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_TaskMasterAura);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_TaskMasterAura).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_CommanderAura);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_CommanderAura).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_StayAlert);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_StayAlert).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_StayAlert_I).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_StayAlert_II).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_StayAlert_III).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_MoveOut);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_MoveOut).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_MoveOut_I).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_MoveOut_II).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_MoveOut_III).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_HoldTheLine);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_HoldTheLine).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_HoldTheLine_I).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_HoldTheLine_II).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_HoldTheLine_III).learned = true;
+                }
+                flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier);
+                if (flag2)
+                {
+                    //Log.Message("Initializing Super Soldier Abilities");
+                    this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PistolSpec).learned = false;
+                    this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_RifleSpec).learned = false;
+                    this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_ShotgunSpec).learned = false;
+                    //this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_PistolWhip).learned = false;
+                    //this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_SuppressingFire).learned = false;
+                    //this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Mk203GL).learned = false;
+                    //this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Buckshot).learned = false;
+                    //this.MightData.MightPowersSS.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_BreachingCharge).learned = false;
+
+                    //this.AddPawnAbility(TorannMagicDefOf.TM_CQC);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_CQC).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_FirstAid);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_FirstAid).learned = true;
+                    this.AddPawnAbility(TorannMagicDefOf.TM_60mmMortar);
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_60mmMortar).learned = true;
+                }
+            }
+            this.mightPowersInitialized = true;
+            //base.UpdateAbilities();
         }
 
         public void InitializeSkill()  //used for class independant skills
@@ -2052,157 +2056,45 @@ namespace TorannMagic
 
         public void ResetSkills()
         {
-            List<bool> powerLearned = new List<bool>();
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
+            for (int i = 0; i < this.MightData.AllMightPowersWithSkills.Count; i++)
             {
-                for (int i = 0; i < this.MightData.MightPowersG.Count; i++)
+                this.MightData.AllMightPowersWithSkills[i].level = 0;
+                this.MightData.AllMightPowersWithSkills[i].learned = false;
+                this.MightData.AllMightPowersWithSkills[i].autocast = false;
+                TMAbilityDef ability = (TMAbilityDef)this.MightData.AllMightPowersWithSkills[i].abilityDef;
+                MightPowerSkill mps = this.MightData.GetSkill_Efficiency(ability);
+                if (mps != null)
                 {
-                    powerLearned.Add(this.MightData.MightPowersG[i].learned);
+                    mps.level = 0;
+                }
+                mps = this.MightData.GetSkill_Power(ability);
+                if (mps != null)
+                {
+                    mps.level = 0;
+                }
+                mps = this.MightData.GetSkill_Versatility(ability);
+                if (mps != null)
+                {
+                    mps.level = 0;
                 }
             }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper))
+            for (int i = 0; i < this.MightData.AllMightPowers.Count; i++)
             {
-                for (int i = 0; i < this.MightData.MightPowersS.Count; i++)
+                for (int j = 0; j < this.MightData.AllMightPowers[i].TMabilityDefs.Count; j++)
                 {
-                    powerLearned.Add(this.MightData.MightPowersS[i].learned);
+                    TMAbilityDef ability = (TMAbilityDef)this.MightData.AllMightPowers[i].TMabilityDefs[j];
+                    this.RemovePawnAbility(ability);
                 }
+                this.MightData.AllMightPowers[i].learned = true;
             }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer))
-            {
-                for (int i = 0; i < this.MightData.MightPowersB.Count; i++)
-                {
-                    powerLearned.Add(this.MightData.MightPowersB[i].learned);
-                }
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger))
-            {
-                for (int i = 0; i < this.MightData.MightPowersR.Count; i++)
-                {
-                    powerLearned.Add(this.MightData.MightPowersR[i].learned);
-                }
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-            {
-                for (int i = 0; i < this.MightData.MightPowersF.Count; i++)
-                {
-                    powerLearned.Add(this.MightData.MightPowersF[i].learned);
-                }
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
-            {
-                for (int i = 0; i < this.MightData.MightPowersP.Count; i++)
-                {
-                    powerLearned.Add(this.MightData.MightPowersP[i].learned);
-                }
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight))
-            {
-                for (int i = 0; i < this.MightData.MightPowersDK.Count; i++)
-                {
-                    powerLearned.Add(this.MightData.MightPowersDK[i].learned);
-                }
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk))
-            {
-                for (int i = 0; i < this.MightData.MightPowersM.Count; i++)
-                {
-                    powerLearned.Add(this.MightData.MightPowersM[i].learned);
-                }
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Commander))
-            {
-                for (int i = 0; i < this.MightData.MightPowersC.Count; i++)
-                {
-                    powerLearned.Add(this.MightData.MightPowersC[i].learned);
-                }
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier))
-            {
-                for (int i = 0; i < this.MightData.MightPowersSS.Count; i++)
-                {
-                    powerLearned.Add(this.MightData.MightPowersSS[i].learned);
-                }
-            }
-
-            int tmpLvl = this.MightUserLevel;
-            int tmpExp = this.MightUserXP;
-            base.IsInitialized = false;
-            this.mightData = null;
-            this.CompTick();
-            this.MightUserLevel = tmpLvl;
-            this.MightUserXP = tmpExp;
-            this.mightData.MightAbilityPoints = tmpLvl;
-
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
-            {
-                for (int i = 0; i < powerLearned.Count; i++)
-                {
-                    this.MightData.MightPowersG[i].learned = powerLearned[i];
-                }
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Sniper))
-            {
-                for (int i = 0; i < powerLearned.Count; i++)
-                {
-                    this.MightData.MightPowersS[i].learned = powerLearned[i];
-                }
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer))
-            {
-                for (int i = 0; i < powerLearned.Count; i++)
-                {
-                    this.MightData.MightPowersB[i].learned = powerLearned[i];
-                }
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger))
-            {
-                for (int i = 0; i < powerLearned.Count; i++)
-                {
-                    this.MightData.MightPowersR[i].learned = powerLearned[i];
-                }
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
-            {
-                for (int i = 0; i < powerLearned.Count; i++)
-                {
-                    this.MightData.MightPowersF[i].learned = powerLearned[i];
-                }
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Psionic))
-            {
-                for (int i = 0; i < powerLearned.Count; i++)
-                {
-                    this.MightData.MightPowersP[i].learned = powerLearned[i];
-                }
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.DeathKnight))
-            {
-                for (int i = 0; i < powerLearned.Count; i++)
-                {
-                    this.MightData.MightPowersDK[i].learned = powerLearned[i];
-                }
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk))
-            {
-                for (int i = 0; i < powerLearned.Count; i++)
-                {
-                    this.MightData.MightPowersM[i].learned = powerLearned[i];
-                }
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Commander))
-            {
-                for (int i = 0; i < powerLearned.Count; i++)
-                {
-                    this.MightData.MightPowersC[i].learned = powerLearned[i];
-                }
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_SuperSoldier))
-            {
-                for (int i = 0; i < powerLearned.Count; i++)
-                {
-                    this.MightData.MightPowersSS[i].learned = powerLearned[i];
-                }
-            }
+            this.MightUserLevel = 0;
+            this.MightUserXP = 0;
+            this.MightData.MightAbilityPoints = 0;
+            //this.MightPowersInitialized = false;
+            //base.IsInitialized = false;
+            //CompAbilityUserMight.MightAbilities = null;
+            //this.MightData = null;
+            this.AssignAbilities();
         }
 
         public void RemoveTMagicHediffs()

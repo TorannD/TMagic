@@ -201,21 +201,20 @@ namespace TorannMagic
                 {
                     compMight.LevelUp(true);
                 }
-                if (false)
+
+                Rect rect22 = new Rect(rect.xMax + 60f, inRect.y, 50f, MightCardUtility.TextSize * 2);
+                bool flag22 = Widgets.ButtonText(rect22, "Reset Class", true, false, true);
+                if (flag22)
                 {
-                    Rect rect22 = new Rect(rect.xMax + 60f, inRect.y, 50f, MightCardUtility.TextSize * 2);
-                    bool flag22 = Widgets.ButtonText(rect22, "Reset Skills", true, false, true);
-                    if (flag22)
-                    {
-                        compMight.ResetSkills();
-                    }
-                    Rect rect23 = new Rect(rect.xMax + 115f, inRect.y, 50f, MightCardUtility.TextSize * 2);
-                    bool flag23 = Widgets.ButtonText(rect23, "Remove Powers", true, false, true);
-                    if (flag23)
-                    {
-                        compMight.RemoveAbilityUser();
-                    }
+                    compMight.ResetSkills();
                 }
+                //Rect rect23 = new Rect(rect.xMax + 115f, inRect.y, 50f, MightCardUtility.TextSize * 2);
+                //bool flag23 = Widgets.ButtonText(rect23, "Remove Powers", true, false, true);
+                //if (flag23)
+                //{
+                //    compMight.RemoveAbilityUser();
+                //}
+                
             }
             Rect rect4 = new Rect(inRect.x, rect.yMax, inRect.width, MightCardUtility.TextSize);
             Text.Font = GameFont.Tiny;

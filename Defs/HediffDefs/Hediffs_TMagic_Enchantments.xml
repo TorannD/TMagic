@@ -50,7 +50,7 @@
    </HediffDef>
    
 	<HediffDef>
-    <defName>TM_HediffEnchantment_mpCoolDown</defName>
+    <defName>TM_HediffEnchantment_coolDown</defName>
 	<hediffClass>HediffWithComps</hediffClass>
 	<label>Magic CoolDown:</label>
 	<description>Enchantment that reduces the cooldown time of magic abilities.</description>

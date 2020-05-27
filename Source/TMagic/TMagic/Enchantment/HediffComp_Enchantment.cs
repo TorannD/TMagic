@@ -66,39 +66,55 @@ namespace TorannMagic.Enchantment
             //MagicPowerSkill clarity = this.Pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_regen.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_regen_pwr");
             //MagicPowerSkill focus = this.Pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_global_eff.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_global_eff_pwr");
             bool flag = comp.IsMagicUser && !TM_Calc.IsCrossClass(comp.Pawn, true); // !this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless);
-            if (this.parent.def.defName == "TM_HediffEnchantment_maxMP")
+            if (comp != null && comp.IsMagicUser)
             {
-                this.enchantment = (comp.maxMP * 100).ToString("0.##") + "%";                
+                if (this.parent.def.defName == "TM_HediffEnchantment_maxMP")
+                {
+                    this.enchantment = (comp.maxMP * 100).ToString("0.##") + "%";
+                }
+                else if (this.parent.def.defName == "TM_HediffEnchantment_coolDown")
+                {
+                    this.enchantment = (comp.coolDown * 100).ToString("0.##") + "%";
+                }
+                else if (this.parent.def.defName == "TM_HediffEnchantment_mpCost")
+                {
+                    this.enchantment = (comp.mpCost * 100).ToString("0.##") + "%";
+                }
+                else if (this.parent.def.defName == "TM_HediffEnchantment_mpRegenRate")
+                {
+                    this.enchantment = (comp.mpRegenRate * 100).ToString("0.##") + "%";
+                }
+                else if (this.parent.def.defName == "TM_HediffEnchantment_arcaneDmg")
+                {
+                    this.enchantment = (comp.arcaneDmg * 100).ToString("0.##") + "%";
+                }
             }
-            else if (this.parent.def.defName == "TM_HediffEnchantment_maxSP")
+
+            if(compMight != null && compMight.IsMightUser)
             {
-                this.enchantment = (compMight.maxSP * 100).ToString("0.##") + "%";                
+                if (this.parent.def.defName == "TM_HediffEnchantment_maxSP")
+                {
+                    this.enchantment = (compMight.maxSP * 100).ToString("0.##") + "%";
+                }
+                else if (this.parent.def.defName == "TM_HediffEnchantment_spCoolDown")
+                {
+                    this.enchantment = (compMight.coolDown * 100).ToString("0.##") + "%";
+                }
+                else if (this.parent.def.defName == "TM_HediffEnchantment_spCost")
+                {
+                    this.enchantment = (compMight.spCost * 100).ToString("0.##") + "%";
+                }
+                else if (this.parent.def.defName == "TM_HediffEnchantment_spRegenRate")
+                {
+                    this.enchantment = (compMight.spRegenRate * 100).ToString("0.##") + "%";
+                }
+                else if (this.parent.def.defName == "TM_HediffEnchantment_combatDmg")
+                {
+                    this.enchantment = (compMight.mightPwr * 100).ToString("0.##") + "%";
+                }
             }
-            else if (this.parent.def.defName == "TM_HediffEnchantment_mpCoolDown")
-            {
-                this.enchantment = (comp.coolDown * 100).ToString("0.##") + "%";
-            }
-            else if (this.parent.def.defName == "TM_HediffEnchantment_spCoolDown")
-            {
-                this.enchantment = (compMight.coolDown * 100).ToString("0.##") + "%";
-            }
-            else if (this.parent.def.defName == "TM_HediffEnchantment_mpCost")
-            {
-                this.enchantment = (comp.mpCost * 100).ToString("0.##") + "%";
-            }
-            else if (this.parent.def.defName == "TM_HediffEnchantment_spCost")
-            {
-                this.enchantment = (compMight.spCost * 100).ToString("0.##") + "%";
-            }
-            else if (this.parent.def.defName == "TM_HediffEnchantment_mpRegenRate")
-            {
-                this.enchantment = (comp.mpRegenRate * 100).ToString("0.##") + "%";          
-            }
-            else if (this.parent.def.defName == "TM_HediffEnchantment_spRegenRate")
-            {
-                this.enchantment = (compMight.spRegenRate * 100).ToString("0.##") + "%";
-            }
-            else if (this.parent.def.defName == "TM_HediffEnchantment_xpGain")
+
+            if (this.parent.def.defName == "TM_HediffEnchantment_xpGain")
             {
                 if (flag)
                 {
@@ -120,14 +136,6 @@ namespace TorannMagic.Enchantment
                     this.enchantment = (compMight.arcaneRes * 100).ToString("0.##") + "%";
                 }
             }
-            else if (this.parent.def.defName == "TM_HediffEnchantment_arcaneDmg")
-            {
-                this.enchantment = (comp.arcaneDmg * 100).ToString("0.##") + "%";
-            }
-            else if (this.parent.def.defName == "TM_HediffEnchantment_combatDmg")
-            {
-                this.enchantment = (compMight.mightPwr * 100).ToString("0.##") + "%";
-            }
             else if (this.parent.def.defName == "TM_HediffEnchantment_arcaneSpectre")
             {
                 this.enchantment = "TM_ArcaneSpectre".Translate();
@@ -135,8 +143,8 @@ namespace TorannMagic.Enchantment
             else if (this.parent.def.defName == "TM_HediffEnchantment_phantomShift")
             {
                 this.enchantment = "TM_PhantomShift".Translate();
-            }        
-            else if(this.parent.def.defName == "TM_HediffEnchantment_arcalleumCooldown")
+            }
+            else if (this.parent.def.defName == "TM_HediffEnchantment_arcalleumCooldown")
             {
                 if (flag)
                 {
@@ -147,7 +155,8 @@ namespace TorannMagic.Enchantment
                     this.enchantment = (compMight.arcalleumCooldown * 100).ToString("0.##") + "%";
                 }
             }
-            else
+
+            if(enchantment == "")
             {
                 this.enchantment = "unknown";
             }
