@@ -7,6 +7,7 @@ namespace TorannMagic.Enchantment
     class HediffComp_Enchantment : HediffComp
     {
         private bool initializing = true;
+        private bool removeNow = false;
 
         private string enchantment ="";
 
@@ -40,6 +41,8 @@ namespace TorannMagic.Enchantment
             }
         }
 
+        public override bool CompShouldRemove => base.CompShouldRemove || this.removeNow;
+
         public override void CompPostTick(ref float severityAdjustment)
         {
             base.CompPostTick(ref severityAdjustment);
@@ -57,6 +60,10 @@ namespace TorannMagic.Enchantment
                 comp = this.Pawn.GetComp<CompAbilityUserMagic>();
                 compMight = this.Pawn.GetComp<CompAbilityUserMight>();
                 DisplayEnchantments();
+            }
+            if(Find.TickManager.TicksGame % 480 == 0 && this.enchantment == "unknown")
+            {
+                this.removeNow = true;
             }
         }
 
