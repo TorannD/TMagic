@@ -2092,7 +2092,7 @@ namespace TorannMagic
         {
             if (!(this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer)))
             {
-                if (this.MagicUserLevel < 150)
+                if (this.MagicUserLevel < (this.customClass?.maxMageLevel ?? 150))
                 {
                     this.MagicUserLevel++;
                     bool flag = !hideNotification;
