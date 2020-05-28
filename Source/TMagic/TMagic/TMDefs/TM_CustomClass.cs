@@ -29,7 +29,9 @@ namespace TorannMagic.TMDefs
 
         //Class Designations
         public bool isMage = false;
+        public int maxMageLevel = 150;
         public bool isFighter = false;
+        public int maxFighterLevel = 150;
         public bool isNecromancer = false;
         public bool isUndead = false;
         public bool isAndroid = false;

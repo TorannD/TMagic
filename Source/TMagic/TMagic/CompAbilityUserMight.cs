@@ -1320,7 +1320,7 @@ namespace TorannMagic
         {
             if (!this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer))
             {
-                if (this.MightUserLevel < 150)
+                if (this.MightUserLevel < (this.customClass?.maxFighterLevel ?? 150))
                 {
                     this.MightUserLevel++;
                     bool flag = !hideNotification;

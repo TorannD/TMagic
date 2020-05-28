@@ -43,6 +43,8 @@
 			<isMage>true</isMage>							<!-- assigns mana need, validation to execute magic related tasks, and determines prerequisite trait to become this type of class -->
 			<isFighter>true</isFighter>						<!-- assigns stamina need, validation to execute might related tasks, and determines prerequisite trait to become this type of class -->
 															<!-- if both mage and fighter are true, then either precursor is valid for promotion -->
+            <!--<maxMageLevel>150</maxMageLevel>-->         <!--Overrides the default maxLevel of 150-->
+            <!--<maxFighterLevel>150</maxFighterLevel>-->         <!--Overrides the default maxLevel of 150-->
 			<isNecromancer>false</isNecromancer>			<!-- counts as a necromancer for undead upkeep -->
 			<isUndead>false</isUndead>						<!-- counts as an undead for light magic damage, assign class hediff "TM_Undead" or "TM_LichHD" for undead health benefits; -->
 															<!-- class with undead hediffs will instantly die if no necromancer is available to sustain -->
