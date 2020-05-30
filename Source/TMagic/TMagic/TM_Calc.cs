@@ -183,12 +183,10 @@ namespace TorannMagic
         {
             if (pawn != null)
             {
-                if (pawn.health != null)
+                CompAbilityUserMight comp = pawn.TryGetComp<CompAbilityUserMight>();
+                if (comp != null && comp.IsMightUser && comp.MightData != null && comp.Stamina != null)
                 {
-                    if (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_MightUserHD"), false))
-                    {
-                        return true;
-                    }
+                    return true;
                 }
                 if (pawn.needs != null)
                 {
@@ -259,12 +257,10 @@ namespace TorannMagic
                 {
                     return false;
                 }
-                if (pawn.health != null)
+                CompAbilityUserMagic comp = pawn.TryGetComp<CompAbilityUserMagic>();
+                if(comp != null && comp.IsMagicUser && comp.MagicData != null && comp.Mana != null)
                 {
-                    if (pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_MagicUserHD"), false))
-                    {
-                        return true;
-                    }
+                    return true;
                 }
                 if (pawn.needs != null)
                 {

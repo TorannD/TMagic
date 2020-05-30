@@ -200,6 +200,7 @@ Range:		28</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>TM_Projectile_PsionicBlast</defaultProjectile>
             <abilityDef>TM_PsionicBlast</abilityDef>
+			<stopBurstWithoutLos>false</stopBurstWithoutLos>
             <targetParams>
                 <canTargetItems>false</canTargetItems> 
 				<canTargetPawns>true</canTargetPawns>
@@ -229,12 +230,13 @@ Cooldown:	10s
 Range:		34</description>
         <staminaCost>0.15</staminaCost>		
 		<shouldInitialize>false</shouldInitialize>
-		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<efficiencyReductionPercent>.08</efficiencyReductionPercent>		
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_PsionicBlast</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>TM_Projectile_PsionicBlast</defaultProjectile>
             <abilityDef>TM_PsionicBlast</abilityDef>
+			<stopBurstWithoutLos>false</stopBurstWithoutLos>
             <targetParams>
                 <canTargetItems>false</canTargetItems>
 				<canTargetPawns>true</canTargetPawns>
@@ -270,6 +272,7 @@ Range:		40</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>TM_Projectile_PsionicBlast</defaultProjectile>
             <abilityDef>TM_PsionicBlast</abilityDef>
+			<stopBurstWithoutLos>false</stopBurstWithoutLos>
             <targetParams>
                 <canTargetItems>false</canTargetItems>
 				<canTargetPawns>true</canTargetPawns>
@@ -305,6 +308,7 @@ Range:		46</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>TM_Projectile_PsionicBlast</defaultProjectile>
             <abilityDef>TM_PsionicBlast</abilityDef>
+			<stopBurstWithoutLos>false</stopBurstWithoutLos>
             <targetParams>
                 <canTargetItems>false</canTargetItems>
 				<canTargetPawns>true</canTargetPawns>

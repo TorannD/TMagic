@@ -911,8 +911,7 @@ namespace TorannMagic.AutoCast
             {
                 Pawn caster = casterComp.Pawn;
                 LocalTargetInfo jobTarget = TM_Calc.FindNearbyMage(caster, (int)(abilitydef.MainVerb.range * 1.5f), false);
-                float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
-                if (distanceToTarget < (abilitydef.MainVerb.range * 1.5f) && jobTarget != null && jobTarget.Thing != null && jobTarget.Thing is Pawn)
+                if (jobTarget != null && jobTarget.Thing != null && jobTarget.Thing is Pawn && (jobTarget.Cell - caster.Position).LengthHorizontal < (abilitydef.MainVerb.range * 1.5f))
                 {
                     Pawn targetPawn = jobTarget.Thing as Pawn;
                     CompAbilityUserMagic targetPawnComp = targetPawn.GetComp<CompAbilityUserMagic>();
@@ -939,8 +938,7 @@ namespace TorannMagic.AutoCast
             {
                 Pawn caster = casterComp.Pawn;
                 LocalTargetInfo jobTarget = TM_Calc.FindNearbyFighter(caster, (int)(abilitydef.MainVerb.range * 1.5f), false);
-                float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
-                if (distanceToTarget < (abilitydef.MainVerb.range * 1.5f) && jobTarget != null && jobTarget.Thing != null && jobTarget.Thing is Pawn)
+                if (jobTarget != null && jobTarget.Thing != null && jobTarget.Thing is Pawn && (jobTarget.Cell - caster.Position).LengthHorizontal < (abilitydef.MainVerb.range * 1.5f))
                 {
                     Pawn targetPawn = jobTarget.Thing as Pawn;
                     CompAbilityUserMight targetPawnComp = targetPawn.GetComp<CompAbilityUserMight>();

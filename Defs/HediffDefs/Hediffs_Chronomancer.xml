@@ -9,7 +9,7 @@
 	<description>Rapidly ages a pawn. Any other conditions affecting the pawn will also accelerate their natural tendencies. Pawns aged beyond their typical lifespan are frequently beset by age related illnesses or conditions.</description>
     <defaultLabelColor>(.4,.65,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
-	<makesSickThought>true</makesSickThought>
+	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
     <makesAlert>false</makesAlert>
 	<maxSeverity>4.0</maxSeverity>
@@ -247,7 +247,7 @@
     <makesAlert>false</makesAlert>
 	<maxSeverity>100.0</maxSeverity>
 	<isBad>false</isBad>
-	<initialSeverity>.5</initialSeverity>
+	<initialSeverity>.4</initialSeverity>
 	<comps>
 	  <li>
         <compClass>TorannMagic.HediffComp_ReverseTime</compClass>

@@ -1988,7 +1988,10 @@ namespace TorannMagic
                 {
                     __instance.SetFaction(null, null);
                 }
-
+                if(__instance != null && __instance.RaceProps != null && __instance.RaceProps.DeathActionWorker.GetType() == typeof(Poppi_DeathWorker))
+                {
+                    __instance.SetFaction(null, null);
+                }
                 return true;
 
             }
@@ -2537,7 +2540,7 @@ namespace TorannMagic
                         if (TM_Calc.IsUndead(pawn))
                         {
                             //Log.Message("undead taking damage");
-                            if (dinfo.Def != null && dinfo.Def.armorCategory != null && dinfo.Def.armorCategory.defName == "Light" && Rand.Chance(.25f))
+                            if (dinfo.Def != null && dinfo.Def.armorCategory != null && dinfo.Def.armorCategory.defName == "Light" && Rand.Chance(.35f))
                             {
                                 //Log.Message("taking light damage");
                                 dinfo.SetAmount(dinfo.Amount * .7f);

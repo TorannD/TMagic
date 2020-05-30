@@ -40,49 +40,29 @@ namespace TorannMagic
             if(this.currentTarget.Thing != null && this.currentTarget.Thing is Pawn && this.currentTarget.Thing != mentor)
             {
                 Pawn student = this.currentTarget.Thing as Pawn;
-                CompAbilityUserMagic mentorCompMagic = mentor.GetComp<CompAbilityUserMagic>();
-                CompAbilityUserMight mentorCompMight = mentor.GetComp<CompAbilityUserMight>();
-                CompAbilityUserMagic studentCompMagic = student.GetComp<CompAbilityUserMagic>();
-                CompAbilityUserMight studentCompMight = student.GetComp<CompAbilityUserMight>();
-                if (TM_Calc.IsMagicUser(mentor) && !TM_Calc.IsCrossClass(mentor, true) && student != null && student.story != null)
+                if (this.Ability.Def == TorannMagicDefOf.TM_TeachMagic)
                 {
-                    if( TM_Calc.IsMagicUser(student) && !TM_Calc.IsCrossClass(student, true))
+                    if (TM_Calc.IsMagicUser(mentor) && !TM_Calc.IsCrossClass(mentor, true) && student != null && student.story != null)
                     {
-                        if (mentor.relations.OpinionOf(student) >= 0)
+                        if (TM_Calc.IsMagicUser(student) && !TM_Calc.IsCrossClass(student, true))
                         {
-                            Job job = new Job(TorannMagicDefOf.JobDriver_TM_Teach, student);
-                            student.jobs.EndCurrentJob(JobCondition.InterruptForced);
-                            mentor.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                            if (mentor.relations.OpinionOf(student) >= 0)
+                            {
+                                Job job = new Job(TorannMagicDefOf.JobDriver_TM_Teach, student);
+                                student.jobs.EndCurrentJob(JobCondition.InterruptForced);
+                                mentor.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                            }
+                            else
+                            {
+                                Messages.Message("TM_CanNotTeachMagicDislike".Translate(
+                                mentor.LabelShort,
+                                student.LabelShort
+                            ), MessageTypeDefOf.RejectInput, false);
+                            }
                         }
                         else
                         {
-                            Messages.Message("TM_CanNotTeachMagicDislike".Translate(
-                            mentor.LabelShort,
-                            student.LabelShort
-                        ), MessageTypeDefOf.RejectInput, false);
-                        }
-                    }
-                    else
-                    {
-                        Messages.Message("TM_CanNotTeachMagic".Translate(
-                            mentor.LabelShort,
-                            student.LabelShort
-                        ), MessageTypeDefOf.RejectInput, false);
-                    }
-                }
-                else if (TM_Calc.IsMightUser(mentor) && !TM_Calc.IsCrossClass(mentor, false) && student != null && student.story != null)
-                {
-                    if(TM_Calc.IsMightUser(student) && !TM_Calc.IsCrossClass(student, false))
-                    {
-                        if(mentor.relations.OpinionOf(student) >= 0)
-                        {
-                            Job job = new Job(TorannMagicDefOf.JobDriver_TM_Teach, student);
-                            student.jobs.EndCurrentJob(JobCondition.InterruptForced);
-                            mentor.jobs.TryTakeOrderedJob(job, JobTag.Misc);
-                        }
-                        else
-                        {
-                            Messages.Message("TM_CanNotTeachCombatDislike".Translate(
+                            Messages.Message("TM_CanNotTeachMagic".Translate(
                                 mentor.LabelShort,
                                 student.LabelShort
                             ), MessageTypeDefOf.RejectInput, false);
@@ -90,16 +70,42 @@ namespace TorannMagic
                     }
                     else
                     {
-                        Messages.Message("TM_CanNotTeachCombat".Translate(
-                            mentor.LabelShort,
-                            student.LabelShort
-                        ), MessageTypeDefOf.RejectInput, false);
+                        Log.Message("undetected might or magic user attempting to teach skill");
                     }
                 }
-                else
+                if (this.Ability.Def == TorannMagicDefOf.TM_TeachMight)
                 {
-                    Log.Message("undetected might or magic user attempting to teach skill");
-                }                
+                    if (TM_Calc.IsMightUser(mentor) && !TM_Calc.IsCrossClass(mentor, false) && student != null && student.story != null)
+                    {
+                        if (TM_Calc.IsMightUser(student) && !TM_Calc.IsCrossClass(student, false))
+                        {
+                            if (mentor.relations.OpinionOf(student) >= 0)
+                            {
+                                Job job = new Job(TorannMagicDefOf.JobDriver_TM_Teach, student);
+                                student.jobs.EndCurrentJob(JobCondition.InterruptForced);
+                                mentor.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                            }
+                            else
+                            {
+                                Messages.Message("TM_CanNotTeachCombatDislike".Translate(
+                                    mentor.LabelShort,
+                                    student.LabelShort
+                                ), MessageTypeDefOf.RejectInput, false);
+                            }
+                        }
+                        else
+                        {
+                            Messages.Message("TM_CanNotTeachCombat".Translate(
+                                mentor.LabelShort,
+                                student.LabelShort
+                            ), MessageTypeDefOf.RejectInput, false);
+                        }
+                    }
+                    else
+                    {
+                        Log.Message("undetected might or magic user attempting to teach skill");
+                    }
+                }                               
             }
             else
             {

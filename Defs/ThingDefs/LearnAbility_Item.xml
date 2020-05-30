@@ -449,7 +449,6 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/torn_necro</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-
   </ThingDef>
   
   <ThingDef ParentName="Partial_ArcaneScriptBase">

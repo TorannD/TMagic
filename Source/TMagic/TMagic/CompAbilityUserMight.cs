@@ -2056,6 +2056,10 @@ namespace TorannMagic
 
         public void ResetSkills()
         {
+            this.MightData.MightPowerSkill_global_endurance.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_endurance_pwr").level = 0;
+            this.MightData.MightPowerSkill_global_refresh.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_refresh_pwr").level = 0;
+            this.MightData.MightPowerSkill_global_seff.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_seff_pwr").level = 0;
+            this.MightData.MightPowerSkill_global_strength.FirstOrDefault((MightPowerSkill x) => x.label == "TM_global_strength_pwr").level = 0;
             for (int i = 0; i < this.MightData.AllMightPowersWithSkills.Count; i++)
             {
                 this.MightData.AllMightPowersWithSkills[i].level = 0;
@@ -4838,12 +4842,12 @@ namespace TorannMagic
                         {
                             if (TM_ClassUtility.CustomClasses()[index].classFighterAbilities[i].shouldInitialize)
                             {
-                                for (int j = 0; j < this.MightData.AllMightPowersWithSkills.Count; j++)
+                                for (int j = 0; j < this.MightData.AllMightPowers.Count; j++)
                                 {
-                                    if (this.MightData.AllMightPowersWithSkills[j].TMabilityDefs.Contains(TM_ClassUtility.CustomClasses()[index].classFighterAbilities[i]) && this.MightData.AllMightPowersWithSkills[j].learned)
+                                    if (this.MightData.AllMightPowers[j].TMabilityDefs.Contains(TM_ClassUtility.CustomClasses()[index].classFighterAbilities[i]) && this.MightData.AllMightPowers[j].learned)
                                     {
-                                        int level = this.MightData.AllMightPowersWithSkills[j].level;
-                                        base.AddPawnAbility(this.MightData.AllMightPowersWithSkills[j].TMabilityDefs[level]);
+                                        int level = this.MightData.AllMightPowers[j].level;
+                                        base.AddPawnAbility(this.MightData.AllMightPowers[j].TMabilityDefs[level]);
                                     }
                                 }
                             }

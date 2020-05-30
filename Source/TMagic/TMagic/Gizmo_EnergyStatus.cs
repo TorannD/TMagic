@@ -56,7 +56,10 @@ namespace TorannMagic
                 bool isDeathKnight = hediff != null;
                 //bool isLich = pawn.story.traits.HasTrait(TorannMagicDefOf.Lich);
                 float barCount = 0;
-                float boostSev = 100;
+                float boostPsiSev = 100;
+                float boostHateSev = 100;
+                float boostBloodSev = 100;
+                float boostChiSev = 100;
                 if (isFighter)
                 {
                     barCount++;
@@ -71,7 +74,7 @@ namespace TorannMagic
                     Hediff hediffBoost = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_Artifact_PsionicBoostHD);
                     if (hediffBoost != null)
                     {
-                        boostSev += hediffBoost.Severity;
+                        boostPsiSev += hediffBoost.Severity;
                     }
                 }
                 if (isDeathKnight)
@@ -80,7 +83,7 @@ namespace TorannMagic
                     Hediff hediffBoost = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_Artifact_HateBoostHD);
                     if (hediffBoost != null)
                     {
-                        boostSev += hediffBoost.Severity;
+                        boostHateSev += hediffBoost.Severity;
                     }
                 }
                 if (isBloodMage)
@@ -89,7 +92,7 @@ namespace TorannMagic
                     Hediff hediffBoost = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_Artifact_BloodBoostHD);
                     if (hediffBoost != null)
                     {
-                        boostSev += hediffBoost.Severity;
+                        boostBloodSev += hediffBoost.Severity;
                     }
                 }
                 if(isMonk)
@@ -132,9 +135,9 @@ namespace TorannMagic
                             rect2.y = rect.y + yShift;
                             try
                             {
-                                fillPercent = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_PsionicHD"), false).Severity / (boostSev);
+                                fillPercent = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_PsionicHD"), false).Severity / (boostPsiSev);
                                 Widgets.FillableBar(rect2, fillPercent, Gizmo_EnergyStatus.FullPsionicTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
-                                Widgets.Label(rect2, "" + (pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_PsionicHD"), false).Severity).ToString("F0") + " / " + boostSev.ToString("F0"));
+                                Widgets.Label(rect2, "" + (pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_PsionicHD"), false).Severity).ToString("F0") + " / " + boostPsiSev.ToString("F0"));
                             }
                             catch
                             {
@@ -149,9 +152,9 @@ namespace TorannMagic
                             rect2.y = rect.y + yShift;
                             try
                             {
-                                fillPercent = hediff.Severity / boostSev;
+                                fillPercent = hediff.Severity / boostHateSev;
                                 Widgets.FillableBar(rect2, fillPercent, Gizmo_EnergyStatus.FullDeathKnightTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
-                                Widgets.Label(rect2, "" + hediff.Severity.ToString("F0") + " / " + boostSev.ToString("F0"));
+                                Widgets.Label(rect2, "" + hediff.Severity.ToString("F0") + " / " + boostHateSev.ToString("F0"));
                             }
                             catch
                             {
@@ -166,9 +169,9 @@ namespace TorannMagic
                             rect2.y = rect.y + yShift;
                             try
                             {
-                                fillPercent = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ChiHD, false).Severity / boostSev;
+                                fillPercent = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ChiHD, false).Severity / boostChiSev;
                                 Widgets.FillableBar(rect2, fillPercent, Gizmo_EnergyStatus.FullChiTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
-                                Widgets.Label(rect2, "" + (pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ChiHD, false).Severity).ToString("F0") + " / " + boostSev.ToString("F0"));
+                                Widgets.Label(rect2, "" + (pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ChiHD, false).Severity).ToString("F0") + " / " + boostChiSev.ToString("F0"));
                             }
                             catch
                             {
@@ -201,9 +204,9 @@ namespace TorannMagic
                             rect2.y = rect.y + yShift;
                             try
                             {
-                                fillPercent = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_BloodHD"), false).Severity / boostSev;
+                                fillPercent = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_BloodHD"), false).Severity / boostBloodSev;
                                 Widgets.FillableBar(rect2, fillPercent, Gizmo_EnergyStatus.FullBloodMageTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
-                                Widgets.Label(rect2, "" + (pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_BloodHD"), false).Severity).ToString("F0") + " / " + boostSev.ToString("F0"));
+                                Widgets.Label(rect2, "" + (pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_BloodHD"), false).Severity).ToString("F0") + " / " + boostBloodSev.ToString("F0"));
                             }
                             catch
                             {

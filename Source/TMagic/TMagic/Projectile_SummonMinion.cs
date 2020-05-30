@@ -70,10 +70,12 @@ namespace TorannMagic
                     pwrVal = 3;
                     verVal = 3;
                 }
-                if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer) || (comp.customClass != null && comp.customClass.classMageAbilities.Contains(TorannMagicDefOf.TM_SummonMinion)))
+                if (pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer) || (comp.customClass != null && comp.customClass.classMageAbilities.Contains(TorannMagicDefOf.TM_Cantrips)))
                 {
-                    pwrVal = (int)((pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_pwr").level) / 5);
-                    verVal = (int)((pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level) / 5);
+                    int tmpPwrVal = (int)((pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_pwr").level) / 5);
+                    pwrVal = (tmpPwrVal > pwrVal) ? tmpPwrVal : pwrVal;
+                    int tmpVerVal = (int)((pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Cantrips_ver").level) / 5);
+                    verVal = (tmpVerVal > verVal) ? tmpVerVal : verVal;
                 }
                 CellRect cellRect = CellRect.CenteredOn(this.Position, 1);
                 cellRect.ClipInsideMap(map);

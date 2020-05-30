@@ -36,7 +36,12 @@ namespace TorannMagic.ModOptions
             int num = 0;
             float rowHeight = 28f;
             //GUI.BeginGroup(inRect);
-            Rect sRect = new Rect(inRect.x, inRect.y, inRect.width - 36f, inRect.height + 360f);
+            int scrollCount = 256;
+            if(factions.Count > 8)
+            {
+                scrollCount = factions.Count * 32;
+            }
+            Rect sRect = new Rect(inRect.x, inRect.y, inRect.width - 36f, inRect.height + scrollCount);
             scrollPosition = GUI.BeginScrollView(inRect, scrollPosition, sRect, false, true);
 
             Text.Font = GameFont.Medium;

@@ -195,7 +195,7 @@ namespace TorannMagic
                         }
                         else
                         {
-                            HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ReverseTimeHD, .5f + pwrVal);
+                            HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ReverseTimeHD, .5f + (.1f * pwrVal));
                             HediffComp_ReverseTime hediffComp = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ReverseTimeHD, false).TryGetComp<HediffComp_ReverseTime>();
                             if (hediffComp != null)
                             {

@@ -1672,7 +1672,7 @@ namespace TorannMagic
                         goto EnumerationStart;
                     }
                     if(power == compMagic.MagicData.MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SoulBond) ||
-                           power == compMagic.MagicData.MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt) ||
+                         power == compMagic.MagicData.MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt) ||
                          power == compMagic.MagicData.MagicPowersWD.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Dominate))
                     {
                         goto EnumerationStart;
@@ -1686,7 +1686,6 @@ namespace TorannMagic
                     }
                     if (power.level < 3 && TM_Calc.IsIconAbility_02(power.abilityDef))
                     {
-
                         TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
                         {
                         power.abilityDef.label,
@@ -1697,7 +1696,6 @@ namespace TorannMagic
                         "\n\n",
                         "TM_CheckPointsForMoreInfo".Translate()
                         }), 398462);
-
                     }
                     else
                     {
@@ -1733,11 +1731,11 @@ namespace TorannMagic
                     //GUI.color = Color.yellow;
                     Widgets.Label(rectLabel, power.abilityDef.LabelCap);
                     //GUI.color = Color.white;
-                    if (enumerator.Current.learned != true)
+                    if (!power.learned)
                     {
                         Widgets.DrawTextureFitted(rect, power.Icon, 1f);
                         Rect rectLearn = new Rect(rect.xMin - 44f, rect.yMin, 40f, MagicCardUtility.MagicButtonPointSize);
-                        if ((compMagic.MagicData.MagicAbilityPoints >= enumerator.Current.learnCost) && !power.requiresScroll)
+                        if ((compMagic.MagicData.MagicAbilityPoints >= power.learnCost) && !power.requiresScroll)
                         {
                             Text.Font = GameFont.Tiny;
                             bool flagLearn = Widgets.ButtonText(rectLearn, "TM_Learn".Translate(), true, false, true) && compMagic.AbilityUser.Faction == Faction.OfPlayer;

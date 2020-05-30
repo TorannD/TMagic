@@ -58,7 +58,7 @@ Using this ability while the enchantment is active will dispel the enchantment. 
 	<upkeepRegenCost>.4</upkeepRegenCost>
 	<upkeepEfficiencyPercent>.2</upkeepEfficiencyPercent>
 	<abilityHediff>TM_EnchantedAuraHD</abilityHediff>
-	<shouldInitialize>false</shouldInitialize>
+<!-- 	<shouldInitialize>false</shouldInitialize> -->
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_EnchantedAura</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

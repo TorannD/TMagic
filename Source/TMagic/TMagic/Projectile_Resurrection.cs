@@ -271,18 +271,21 @@ namespace TorannMagic
 
         public static void ReduceSkillsOfPawn(Pawn p, float percent)
         {
-            p.skills.Learn(SkillDefOf.Shooting, -(p.skills.GetSkill(SkillDefOf.Shooting).XpTotalEarned * percent), true);
-            p.skills.Learn(SkillDefOf.Animals, -(p.skills.GetSkill(SkillDefOf.Animals).XpTotalEarned * percent), true);
-            p.skills.Learn(SkillDefOf.Artistic, -(p.skills.GetSkill(SkillDefOf.Artistic).XpTotalEarned * percent), true);
-            p.skills.Learn(SkillDefOf.Cooking, -(p.skills.GetSkill(SkillDefOf.Cooking).XpTotalEarned * percent), true);
-            p.skills.Learn(SkillDefOf.Crafting, -(p.skills.GetSkill(SkillDefOf.Crafting).XpTotalEarned * percent), true);
-            p.skills.Learn(SkillDefOf.Plants, -(p.skills.GetSkill(SkillDefOf.Plants).XpTotalEarned * percent), true);
-            p.skills.Learn(SkillDefOf.Intellectual, -(p.skills.GetSkill(SkillDefOf.Intellectual).XpTotalEarned * percent), true);
-            p.skills.Learn(SkillDefOf.Medicine, -(p.skills.GetSkill(SkillDefOf.Medicine).XpTotalEarned * percent), true);
-            p.skills.Learn(SkillDefOf.Melee, -(p.skills.GetSkill(SkillDefOf.Melee).XpTotalEarned * percent), true);
-            p.skills.Learn(SkillDefOf.Mining, -(p.skills.GetSkill(SkillDefOf.Mining).XpTotalEarned * percent), true);
-            p.skills.Learn(SkillDefOf.Social, -(p.skills.GetSkill(SkillDefOf.Social).XpTotalEarned * percent), true);
-            p.skills.Learn(SkillDefOf.Construction, -(p.skills.GetSkill(SkillDefOf.Construction).XpTotalEarned * percent), true);
+            if (p.skills != null)
+            {
+                p.skills.Learn(SkillDefOf.Shooting, -(p.skills.GetSkill(SkillDefOf.Shooting).XpTotalEarned * percent), true);
+                p.skills.Learn(SkillDefOf.Animals, -(p.skills.GetSkill(SkillDefOf.Animals).XpTotalEarned * percent), true);
+                p.skills.Learn(SkillDefOf.Artistic, -(p.skills.GetSkill(SkillDefOf.Artistic).XpTotalEarned * percent), true);
+                p.skills.Learn(SkillDefOf.Cooking, -(p.skills.GetSkill(SkillDefOf.Cooking).XpTotalEarned * percent), true);
+                p.skills.Learn(SkillDefOf.Crafting, -(p.skills.GetSkill(SkillDefOf.Crafting).XpTotalEarned * percent), true);
+                p.skills.Learn(SkillDefOf.Plants, -(p.skills.GetSkill(SkillDefOf.Plants).XpTotalEarned * percent), true);
+                p.skills.Learn(SkillDefOf.Intellectual, -(p.skills.GetSkill(SkillDefOf.Intellectual).XpTotalEarned * percent), true);
+                p.skills.Learn(SkillDefOf.Medicine, -(p.skills.GetSkill(SkillDefOf.Medicine).XpTotalEarned * percent), true);
+                p.skills.Learn(SkillDefOf.Melee, -(p.skills.GetSkill(SkillDefOf.Melee).XpTotalEarned * percent), true);
+                p.skills.Learn(SkillDefOf.Mining, -(p.skills.GetSkill(SkillDefOf.Mining).XpTotalEarned * percent), true);
+                p.skills.Learn(SkillDefOf.Social, -(p.skills.GetSkill(SkillDefOf.Social).XpTotalEarned * percent), true);
+                p.skills.Learn(SkillDefOf.Construction, -(p.skills.GetSkill(SkillDefOf.Construction).XpTotalEarned * percent), true);
+            }
         }
 
         public static void ApplyHealthDefects(Pawn p, float chanceMinor, float chanceMajor)
