@@ -97,6 +97,7 @@ namespace TorannMagic
             bool flag = this.mightDef != null;
             if (flag)
             {
+                int expGain = 0;
                 bool flag3 = this.MightUser.Stamina != null;
                 if (flag3)
                 {
@@ -109,13 +110,19 @@ namespace TorannMagic
                         this.MightUser.Stamina.UseMightPower(this.MightUser.ActualStaminaCost(mightDef));
                     }
                     
-                    this.MightUser.MightUserXP += (int)((mightDef.staminaCost * 180) * this.MightUser.xpGain * settingsRef.xpMultiplier);
+                    expGain += (int)((mightDef.staminaCost * 180) * this.MightUser.xpGain * settingsRef.xpMultiplier);
                     
                 }
                 if (this.mightDef.chiCost != 0)
                 {
                     HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_ChiHD, -100 * this.ActualChiCost);
-                    this.MightUser.MightUserXP += (int)((mightDef.chiCost * 100) * this.MightUser.xpGain * settingsRef.xpMultiplier);
+                    expGain += (int)((mightDef.chiCost * 100) * this.MightUser.xpGain * settingsRef.xpMultiplier);
+                }
+                this.MightUser.MightUserXP += expGain;
+                CompAbilityUserCustom custom = this.AbilityUser.Pawn.TryGetComp<CompAbilityUserCustom>();
+                if (custom != null && custom.Data.ReturnMatchingPower(this.Def, true)?.learned == true)
+                {
+                    custom.Data.UserXP += expGain;
                 }
             }
         }

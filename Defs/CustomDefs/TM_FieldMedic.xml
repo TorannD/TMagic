@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+ 
+<Defs>
+
+    <TorannMagic.PowerDef>
+        <defName>TM_Power_Emergency</defName>
+        <learnCost>1</learnCost>
+        <abilityLine>
+            <li>TM_Emergency</li>
+        </abilityLine>
+    </TorannMagic.PowerDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_Emergency</defName>
+        <label>Emergency</label>
+        <uiIconPath>UI/bloodgift</uiIconPath>
+        <description>The Field Medic rushes to aid their patients.
+
+    The Field Medic gains increased base movement speed, tending speed and tending quality as well as reduced pain for a 30 to 40 seconds.</description>
+        <staminaCost>0.30</staminaCost>
+        <shouldInitialize>true</shouldInitialize>
+        <efficiencyReductionPercent>.08</efficiencyReductionPercent>
+        <learnChance>1</learnChance>
+        <canCopy>true</canCopy>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+                <tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+                <tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+                <tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+                <tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <abilityDef>TM_Emergency</abilityDef>
+            <isViolent>false</isViolent>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <warmupTime>0</warmupTime>
+            <SecondsToRecharge>50.0</SecondsToRecharge>
+            <range>0</range>
+            <soundCast>TM_VibrationLow</soundCast>
+            <muzzleFlashScale>1</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+            <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+            <targetParams>
+              <canTargetPawns>true</canTargetPawns>
+              <canTargetBuildings>false</canTargetBuildings>
+              <canTargetSelf>false</canTargetSelf>
+              <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+            <hediffsToApply>
+                <li>
+                    <hediffDef>TM_EmergencyHD</hediffDef>
+                    <applyChance>1</applyChance>
+                </li>
+            </hediffsToApply>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <HediffDef ParentName="CombatBuffBase">
+        <defName>TM_EmergencyHD</defName>
+        <hediffClass>HediffWithComps</hediffClass>
+        <label>Triage</label>
+        <description>I'll do my best.</description>
+        <defaultLabelColor>(0.24,0.8,0.24)</defaultLabelColor>
+        <scenarioCanAdd>true</scenarioCanAdd>
+        <maxSeverity>1.0</maxSeverity>
+        <isBad>false</isBad>
+        <stages>
+          <li>
+            <label>I</label>
+            <minSeverity>.001</minSeverity>
+            <painOffset>-0.2</painOffset>
+            <statOffsets>
+                <MoveSpeed>0.4</MoveSpeed>
+                <MedicalTendQuality>0.1</MedicalTendQuality>
+                <MedicalTendSpeed>0.5</MedicalTendSpeed>
+            </statOffsets>
+          </li>
+        </stages>
+    </HediffDef>
+
+</Defs>

@@ -640,6 +640,11 @@
     <Compile Include="Weapon\SeerRing_Lightning.cs" />
     <Compile Include="Weapon\SeerRing_Ice.cs" />
     <Compile Include="Weapon\SeerRing_Fire.cs" />
+    <Compile Include="BasePower.cs" />
+    <Compile Include="CustomPower.cs" />
+    <Compile Include="CompAbilityUserCustom.cs" />
+    <Compile Include="CustomData.cs" />
+    <Compile Include="ITab_Pawn_Custom.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

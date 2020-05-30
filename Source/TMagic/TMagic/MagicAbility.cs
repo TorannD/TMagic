@@ -58,6 +58,10 @@ namespace TorannMagic
         {
         }
 
+        public MagicAbility(AbilityData data) : base(data)
+        {
+        }
+
         public MagicAbility(CompAbilityUser abilityUser) : base(abilityUser)
 		{
             this.abilityUser = (abilityUser as CompAbilityUserMagic);
@@ -96,13 +100,19 @@ namespace TorannMagic
                         this.MagicUser.Mana.UseMagicPower(this.MagicUser.ActualManaCost(magicDef)/2f);
                     }
                     else
-                    {                       
+                    {
                         this.MagicUser.Mana.UseMagicPower(this.MagicUser.ActualManaCost(magicDef));
                     }
                                        
                     if(this.magicDef != TorannMagicDefOf.TM_TransferMana && magicDef.abilityHediff == null)
-                    {                        
-                        this.MagicUser.MagicUserXP += (int)((magicDef.manaCost * 300) * this.MagicUser.xpGain * settingsRef.xpMultiplier);
+                    {
+                        int xp = (int)((magicDef.manaCost * 300) * this.MagicUser.xpGain * settingsRef.xpMultiplier);
+                        this.MagicUser.MagicUserXP += xp;
+                        CompAbilityUserCustom custom = this.AbilityUser.Pawn.TryGetComp<CompAbilityUserCustom>();
+                        if (custom != null && custom.Data.ReturnMatchingPower(this.Def, true)?.learned == true)
+                        {
+                            custom.Data.UserXP += xp;
+                        }
                     }                    
                 }
                 else if (this.MagicUser.Pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
