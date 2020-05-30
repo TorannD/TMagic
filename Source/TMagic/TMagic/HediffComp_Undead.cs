@@ -11,6 +11,7 @@ namespace TorannMagic
     [StaticConstructorOnStartup]
     class HediffComp_Undead : HediffComp
     {
+        public HediffDef starvationEffect;
         private bool necroValid = true;
         private int lichStrike = 0;
         private bool initializing = true;
@@ -37,7 +38,11 @@ namespace TorannMagic
             if (spawned)
             {
                 //MoteMaker.ThrowLightningGlow(base.Pawn.TrueCenter(), base.Pawn.Map, 3f);
-            }            
+            }
+            if (this.Def.HasModExtension<DefModExtension_NecroStarvation>())
+            {
+                this.starvationEffect = this.Def.GetModExtension<DefModExtension_NecroStarvation>().effect;
+            }
         }
 
         public override void CompPostTick(ref float severityAdjustment)
@@ -129,6 +134,10 @@ namespace TorannMagic
                                     //necromancer alive to sustain undead                                
                                     necroValid = true;
                                     lichStrike = 0;
+                                    if (starvationEffect != null && base.Pawn.health.hediffSet.HasHediff(starvationEffect))
+                                    {
+                                        HealthUtility.CureHediff(base.Pawn.health.hediffSet.GetFirstHediffOfDef(starvationEffect));
+                                    }
                                 }
                             }
                         }
@@ -168,13 +177,17 @@ namespace TorannMagic
 
                     if (!necroValid && orbEnergy <= 0)
                     {
-                        if (base.Pawn.Map != null)
+                        if (starvationEffect != null)
                         {
-                            TM_MoteMaker.ThrowScreamMote(base.Pawn.Position.ToVector3(), base.Pawn.Map, .8f, 255, 255, 255);
-                            base.Pawn.Kill(null, null);
+                            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                            HealthUtility.AdjustSeverity(base.Pawn, starvationEffect, settingsRef.undeadUpkeepMultiplier);
                         }
                         else
                         {
+                            if (base.Pawn.Map != null)
+                            {
+                                TM_MoteMaker.ThrowScreamMote(base.Pawn.Position.ToVector3(), base.Pawn.Map, .8f, 255, 255, 255);
+                            }
                             base.Pawn.Kill(null, null);
                         }
                     }
