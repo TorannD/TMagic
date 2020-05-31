@@ -197,6 +197,14 @@ namespace TorannMagic
         public float arcaneRes = 1;
         public float arcalleumCooldown = 0f;
 
+        // cached values for the mana/arcane effects from Traits.
+        private float traitsMaxMP = 0;
+        private float traitsMpRegenRate = 0;
+        private float traitsCoolDown = 0;
+        private float traitsMpCost = 0;
+        private float traitsArcaneRes = 0;
+        private float traitsArcaneDmg = 0;
+
         public List<TM_ChaosPowers> chaosPowers = new List<TM_ChaosPowers>();
         public TMAbilityDef mimicAbility = null;
         public List<Thing> summonedMinions = new List<Thing>();
@@ -1752,6 +1760,8 @@ namespace TorannMagic
 
                                 if (this.Pawn.IsColonist)
                                 {
+                                    UpdateTraitEnchantementEffects(); // FIXME: Is this the best place to scan Traits?
+                                    //Is there a way to react to trait change so we don't have to scan every so often?
                                     ResolveEnchantments();
                                     for (int i = 0; i < this.summonedMinions.Count; i++)
                                     {
@@ -7733,15 +7743,15 @@ namespace TorannMagic
 
         public void ResolveEnchantments()
         {
-            float _maxMP = 0;
+            float _maxMP = traitsMaxMP;
             float _maxMPUpkeep = 0;
-            float _mpRegenRate = 0;
+            float _mpRegenRate = traitsMpRegenRate;
             float _mpRegenRateUpkeep = 0;
-            float _coolDown = 0;
+            float _coolDown = traitsCoolDown;
             float _xpGain = 0;
-            float _mpCost = 0;
-            float _arcaneRes = 0;
-            float _arcaneDmg = 0;
+            float _mpCost = traitsMpCost;
+            float _arcaneRes = traitsArcaneRes;
+            float _arcaneDmg = traitsArcaneDmg;
             bool _arcaneSpectre = false;
             bool _phantomShift = false;
             float _arcalleumCooldown = 0f;
@@ -8019,11 +8029,6 @@ namespace TorannMagic
             _arcaneDmg += ((this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false) - 1) / 4);
 
             //Replace with TM_TraitDef adjustments
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_ArcaneConduitTD))
-            {
-                _mpRegenRate += .4f;
-                _maxMP -= .2f;
-            }
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_ManaWellTD))
             {
                 _mpRegenRate -= .2f;
@@ -8149,6 +8154,35 @@ namespace TorannMagic
                     }
                 }
             }
+        }
+
+        public void UpdateTraitEnchantementEffects()
+        {
+            //FIXME: should we make a Struct to hold these values?
+            float newMaxMP = 0;
+            float newMpRegenRate = 0;
+            float newCoolDown = 0;
+            float newMpCost = 0;
+            float newArcaneRes = 0;
+            float newArcaneDmg = 0;
+            IEnumerable<DefModExtension_ManaEffect> enumerator = this.Pawn.story.traits.allTraits
+                .Select((Trait t) => t.def.GetModExtension<DefModExtension_ManaEffect>());
+            foreach (DefModExtension_ManaEffect e in enumerator)
+            {
+                e?.applyManaEffects(
+                    ref newMaxMP,
+                    ref newMpRegenRate,
+                    ref newCoolDown,
+                    ref newMpCost,
+                    ref newArcaneRes,
+                    ref newArcaneDmg);
+            }
+            traitsMaxMP = newMaxMP;
+            traitsMpRegenRate = newMpRegenRate;
+            traitsCoolDown = newCoolDown;
+            traitsMpCost = newMpCost;
+            traitsArcaneRes = newArcaneRes;
+            traitsArcaneDmg = newArcaneDmg;
         }
 
         private void CleanupSummonedStructures()

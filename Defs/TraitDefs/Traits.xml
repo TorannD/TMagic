@@ -18,6 +18,16 @@
 			<li>TM_BoundlessTD</li>
 		  <li>TM_ManaWellTD</li>
 		</conflictingTraits>
+        <modExtensions>
+            <li Class="TorannMagic.DefModExtension_ManaEffect">
+                <maxMP>-0.2</maxMP>
+                <mpRegenRate>0.4</mpRegenRate>
+                <!--<coolDown>-0.5</coolDown>
+                <mpCost>-0.5</mpCost>
+                <arcaneRes>0.8</arcaneRes>
+                <arcaneDmg>9000</arcaneDmg>-->
+            </li>
+        </modExtensions>
 	</TraitDef>
 
 	<TraitDef>
