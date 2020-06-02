@@ -645,6 +645,8 @@
     <Compile Include="CompAbilityUserCustom.cs" />
     <Compile Include="CustomData.cs" />
     <Compile Include="ITab_Pawn_Custom.cs" />
+    <Compile Include="Verb_MedicalSupply.cs" />
+    <Compile Include="HediffComp_AbilityResource.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
