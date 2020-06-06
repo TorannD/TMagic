@@ -15,6 +15,11 @@
 	<maxSeverity>4.0</maxSeverity>
 	<initialSeverity>0.95</initialSeverity>
 	<isBad>false</isBad>
+    <!--<modExtensions>
+        <li Class="TorannMagic.DefModExtension_NecroStarvation">    Uncomment this to make humanlike undead recieve a hediff when no necrotic energy is available
+            <effect>RayofHope</effect>                              The hediff will be cured when a Necro or Lich comes nearby, but not by necrotic orbs.
+        </li>                                                       Not tested with severity-based hediff
+    </modExtensions>-->
 	<comps>
 	  <li>
         <compClass>TorannMagic.HediffComp_Undead</compClass>

@@ -641,6 +641,7 @@
     <Compile Include="Weapon\SeerRing_Lightning.cs" />
     <Compile Include="Weapon\SeerRing_Ice.cs" />
     <Compile Include="Weapon\SeerRing_Fire.cs" />
+    <Compile Include="DefModExtension_NecroStarvation.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
