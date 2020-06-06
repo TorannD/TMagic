@@ -15,9 +15,15 @@
 		  </li>
 		</degreeDatas>	
 		<conflictingTraits>
-			<li>TM_BoundlessTD</li>
+		  <li>TM_BoundlessTD</li>
 		  <li>TM_ManaWellTD</li>
 		</conflictingTraits>
+		<modExtensions>
+            <li Class="TorannMagic.TMDefs.DefModExtension_TraitEnchantments">
+                <maxMP>-0.2</maxMP>
+                <mpRegenRate>0.4</mpRegenRate>
+            </li>
+        </modExtensions>
 	</TraitDef>
 
 	<TraitDef>
@@ -35,6 +41,12 @@
 			<li>TM_BoundlessTD</li>
 		  <li>TM_ArcaneConduitTD</li>
 		</conflictingTraits>
+		<modExtensions>
+            <li Class="TorannMagic.TMDefs.DefModExtension_TraitEnchantments">
+                <maxMP>+0.4</maxMP>
+                <mpRegenRate>-0.2</mpRegenRate>
+            </li>
+        </modExtensions>
 	</TraitDef>
 	
 	<TraitDef>
@@ -52,6 +64,13 @@
 		  <li>TM_ArcaneConduitTD</li>
 		  <li>TM_ManaWellTD</li>
 		</conflictingTraits>
+		<modExtensions>
+            <li Class="TorannMagic.TMDefs.DefModExtension_TraitEnchantments">
+                <xpGain>-0.25</xpGain>
+                <magicCooldown>-0.4</magicCooldown>
+				<mightCooldown>-0.4</mightCooldown>
+            </li>
+        </modExtensions>		
 	</TraitDef>
 	
 	<TraitDef>

@@ -10,14 +10,14 @@ using AbilityUser;
 namespace TorannMagic
 {
     [StaticConstructorOnStartup]
-    public class FlyingObject_PsionicLeap : ThingWithComps
+    public class FlyingObject_PsionicLeap : Projectile
     {
 
         private int effVal = 0;
 
-        protected Vector3 origin;
+        protected new Vector3 origin;
         private Vector3 trueOrigin;
-        protected Vector3 destination;
+        protected new Vector3 destination;
         private Vector3 trueDestination;
         private Vector3 direction;
         private float trueAngle;
@@ -27,7 +27,7 @@ namespace TorannMagic
 
         protected float speed = 75f;
 
-        protected int ticksToImpact = 60;
+        protected new int ticksToImpact = 60;
 
         protected Thing assignedTarget;
         protected Thing flyingThing;
@@ -40,7 +40,7 @@ namespace TorannMagic
         Pawn pawn;
         Thing oldjobTarget = null;
 
-        protected int StartingTicksToImpact
+        protected new int StartingTicksToImpact
         {
             get
             {
@@ -54,7 +54,7 @@ namespace TorannMagic
             }
         }
 
-        protected IntVec3 DestinationCell
+        protected new IntVec3 DestinationCell
         {
             get
             {
@@ -62,7 +62,7 @@ namespace TorannMagic
             }
         }
 
-        public virtual Vector3 ExactPosition
+        public new Vector3 ExactPosition
         {
             get
             {
@@ -71,7 +71,7 @@ namespace TorannMagic
             }
         }
 
-        public virtual Quaternion ExactRotation
+        public new Quaternion ExactRotation
         {
             get
             {
@@ -164,7 +164,7 @@ namespace TorannMagic
 
         public override void Tick()
         {
-            base.Tick();
+            //base.Tick();
             this.ticksToImpact--;
             bool flag = !this.ExactPosition.InBounds(base.Map);
             if (flag)
@@ -218,7 +218,7 @@ namespace TorannMagic
             }
         }
 
-        protected virtual void Impact(Thing hitThing)
+        protected new void Impact(Thing hitThing)
         {
             bool flag = hitThing == null;
             if (flag)

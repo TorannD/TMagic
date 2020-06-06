@@ -44,7 +44,7 @@ namespace TorannMagic
             Scribe_Values.Look<int>(ref this.pwrVal, "pwrVal", 0, false);
             Scribe_References.Look<Pawn>(ref this.caster, "caster", false);
             Scribe_Collections.Look<IntVec3>(ref this.launchCells, "launchCells", LookMode.Value);
-            Scribe_Collections.Look<Thing>(ref this.launchableThings, "launchableThings", LookMode.Value);
+            Scribe_Collections.Look<Thing>(ref this.launchableThings, "launchableThings", LookMode.Deep);
         }
 
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)

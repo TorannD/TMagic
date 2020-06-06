@@ -4361,35 +4361,35 @@ namespace TorannMagic
             }
         }
 
-        [HarmonyPatch(typeof(Pawn), "GetGizmos", null)]
-        public class Pawn_DraftController_GetGizmos_Patch
-        {
-            public static void Postfix(ref IEnumerable<Gizmo> __result, ref Pawn __instance)
-            {
-                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                if (!settingsRef.showIconsMultiSelect)
-                {
-                    int count = Find.Selector.SelectedObjects.Count;
-                    if ( count >= 2)
-                    {
-                        bool flag = __instance != null || __instance.Faction.Equals(Faction.OfPlayer);
-                        if (flag)
-                        {
-                            bool flag2 = __result == null || !__result.Any<Gizmo>();
-                            if (!flag2)
-                            {
-                                __result = ModOptions.Constants.GetReducedDraftGizmos(__instance.LabelShort, __result);
-                            }
-                        }
-                    }
-                    else if (Find.TickManager.TicksGame % 500 == 0)
-                    {
-                        ModOptions.Constants.GetReducedDraftGizmos("clear", null);
-                    }
-                }
+        //[HarmonyPatch(typeof(Pawn), "GetGizmos", null)]
+        //public class Pawn_DraftController_GetGizmos_Patch
+        //{
+        //    public static void Postfix(ref IEnumerable<Gizmo> __result, ref Pawn __instance)
+        //    {
+        //        ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+        //        if (!settingsRef.showIconsMultiSelect)
+        //        {
+        //            int count = Find.Selector.SelectedObjects.Count;
+        //            if ( count >= 2)
+        //            {
+        //                bool flag = __instance != null || __instance.Faction.Equals(Faction.OfPlayer);
+        //                if (flag)
+        //                {
+        //                    bool flag2 = __result == null || !__result.Any<Gizmo>();
+        //                    if (!flag2)
+        //                    {
+        //                        __result = ModOptions.Constants.GetReducedDraftGizmos(__instance.LabelShort, __result);
+        //                    }
+        //                }
+        //            }
+        //            else if (Find.TickManager.TicksGame % 500 == 0)
+        //            {
+        //                ModOptions.Constants.GetReducedDraftGizmos("clear", null);
+        //            }
+        //        }
                
-            }
-        }
+        //    }
+        //}
 
         //[HarmonyPatch(typeof(FloatMenuMakerMap))]
         //[HarmonyPatch("CanTakeOrder")]

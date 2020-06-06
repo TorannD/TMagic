@@ -341,7 +341,7 @@
 		<capMods>
 			<li>
 				<capacity>Moving</capacity>
-				<offset>-0.25</offset>
+				<offset>-0.1</offset>
 			</li>
 			<li>
 				<capacity>Manipulation</capacity>

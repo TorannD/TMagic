@@ -1149,7 +1149,7 @@ namespace TorannMagic
         public static NeedDef TM_Travel;
 
         //Stats
-        public static StatDef ArmorRating_Alignment;
+        public static StatDef ArmorRating_Alignment;        
 
         //Armor Categories
         public static DamageArmorCategoryDef Dark;

@@ -14,6 +14,7 @@ namespace TorannMagic
         public float bloodCost = 0f;
         public float chiCost = 0f;
         public TMAbilityCostProperties customCost = null;
+        public bool consumeEnergy = true;
         public int abilityPoints = 1;
         public float learnChance = 1f;
         public float efficiencyReductionPercent = 0f;

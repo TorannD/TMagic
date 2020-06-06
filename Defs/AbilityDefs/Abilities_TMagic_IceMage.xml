@@ -281,7 +281,7 @@ Shots: 1</description>
             <abilityDef>TM_FrostRay</abilityDef>
             <warmupTime>1.5</warmupTime>
             <SecondsToRecharge>15.0</SecondsToRecharge>
-            <range>24</range>
+            <range>28</range>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
             <isPrimary>true</isPrimary>
@@ -321,7 +321,7 @@ Shots: 1</description>
             <abilityDef>TM_FrostRay_I</abilityDef>
             <warmupTime>1.5</warmupTime>
             <SecondsToRecharge>12.0</SecondsToRecharge>
-            <range>28</range>
+            <range>30</range>
             <burstShotCount>1</burstShotCount>
             <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
             <isPrimary>true</isPrimary>
@@ -398,10 +398,10 @@ Shots: 3</description>
             <tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Laser_FrostRay</defaultProjectile>
-            <abilityDef>TM_FrostRay_II</abilityDef>
+            <abilityDef>TM_FrostRay_III</abilityDef>
             <warmupTime>2.0</warmupTime>
             <SecondsToRecharge>10.0</SecondsToRecharge>
-            <range>36</range>
+            <range>34</range>
             <burstShotCount>3</burstShotCount>
             <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
             <isPrimary>true</isPrimary>

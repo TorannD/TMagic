@@ -133,6 +133,7 @@
     <Compile Include="HediffComp_NightshadeToxin.cs" />
     <Compile Include="HediffComp_Nightshade.cs" />
     <Compile Include="Projectile_ShadowStrike.cs" />
+    <Compile Include="TMDefs\DefModExtension_TraitEnchantments.cs" />
     <Compile Include="TM_InvisibilityMatPool.cs" />
     <Compile Include="HediffComp_SetDuration.cs" />
     <Compile Include="HediffCompProperties_SetDuration.cs" />

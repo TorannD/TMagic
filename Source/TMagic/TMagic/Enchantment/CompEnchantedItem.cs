@@ -37,7 +37,7 @@ namespace TorannMagic.Enchantment
         {
             get
             {
-                if (this.parent.def.MadeFromStuff && this.parent.Stuff.GetCompProperties<CompProperties_EnchantedStuff>() != null)
+                if (this.parent != null && this.parent.def.MadeFromStuff && this.parent.Stuff != null && this.parent.Stuff.GetCompProperties<CompProperties_EnchantedStuff>() != null)
                 {                 
                     return EnchantedStuff.isEnchanted;
                 }
@@ -77,7 +77,7 @@ namespace TorannMagic.Enchantment
                 this.xpGain = this.Props.xpGain;
                 this.xpGainTier = this.Props.xpGainTier;
 
-                if(MadeFromEnchantedStuff)
+                if(MadeFromEnchantedStuff && this.EnchantedStuff != null)
                 {
                     this.maxMP += this.EnchantedStuff.maxEnergyOffset;
                     this.mpRegenRate += this.EnchantedStuff.energyRegenOffset;
