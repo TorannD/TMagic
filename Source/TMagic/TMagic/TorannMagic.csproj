@@ -647,6 +647,10 @@
     <Compile Include="ITab_Pawn_Custom.cs" />
     <Compile Include="Verb_MedicalSupply.cs" />
     <Compile Include="HediffComp_AbilityResource.cs" />
+    <Compile Include="TMAbilityCost.cs" />
+    <Compile Include="CustomAbility.cs" />
+    <Compile Include="TMAbilityCost_Need.cs" />
+    <Compile Include="TMAbilityCost_Hediff.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
