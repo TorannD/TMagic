@@ -9,16 +9,16 @@ using AbilityUser;
 namespace TorannMagic
 {
     [StaticConstructorOnStartup]
-    public class FlyingObject_Advanced : ThingWithComps
+    public class FlyingObject_Advanced : Projectile
     {
-        protected Vector3 origin;        
-        protected Vector3 destination;
+        protected new Vector3 origin;        
+        protected new Vector3 destination;
         protected Vector3 trueOrigin;
         protected Vector3 trueDestination;
 
         public float speed = 30f;
-        protected int ticksToImpact;
-        protected Thing launcher;
+        protected new int ticksToImpact;
+        //protected new Thing launcher;
         protected Thing assignedTarget;
         protected Thing flyingThing;
 
@@ -52,7 +52,7 @@ namespace TorannMagic
         CompAbilityUserMagic comp;
         TMPawnSummoned newPawn = new TMPawnSummoned();
 
-        protected int StartingTicksToImpact
+        protected new int StartingTicksToImpact
         {
             get
             {
@@ -66,7 +66,7 @@ namespace TorannMagic
             }
         }
 
-        protected IntVec3 DestinationCell
+        protected new IntVec3 DestinationCell
         {
             get
             {
@@ -74,7 +74,7 @@ namespace TorannMagic
             }
         }
 
-        public virtual Vector3 ExactPosition
+        public new Vector3 ExactPosition
         {
             get
             {
@@ -83,7 +83,7 @@ namespace TorannMagic
             }
         }
 
-        public virtual Quaternion ExactRotation
+        public new Quaternion ExactRotation
         {
             get
             {
@@ -108,7 +108,7 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.damageLaunched, "damageLaunched", true, false);
             Scribe_Values.Look<bool>(ref this.explosion, "explosion", false, false);
             Scribe_References.Look<Thing>(ref this.assignedTarget, "assignedTarget", false);
-            Scribe_References.Look<Thing>(ref this.launcher, "launcher", false);
+            //Scribe_References.Look<Thing>(ref this.launcher, "launcher", false);
             Scribe_Deep.Look<Thing>(ref this.flyingThing, "flyingThing", new object[0]);
             Scribe_References.Look<Pawn>(ref this.pawn, "pawn", false);
         }
@@ -229,7 +229,7 @@ namespace TorannMagic
 
         public override void Tick()
         {
-            base.Tick();
+            //base.Tick();
             Vector3 exactPosition = this.ExactPosition;
             if (this.ticksToImpact >= 0 && this.moteDef != null && Find.TickManager.TicksGame % this.moteFrequency == 0)
             {
@@ -351,7 +351,7 @@ namespace TorannMagic
             }
         }
 
-        protected virtual void Impact(Thing hitThing)
+        protected new void Impact(Thing hitThing)
         {
             bool flag = hitThing == null;
             if (flag)

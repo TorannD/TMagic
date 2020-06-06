@@ -276,7 +276,7 @@
       </li>
 	  <li>
         <label>II</label>
-        <minSeverity>1</minSeverity>
+        <minSeverity>.51</minSeverity>
 		<becomeVisible>true</becomeVisible>
 		<restFallFactorOffset>-1.5</restFallFactorOffset>
 		<hungerRateFactorOffset>-1.2</hungerRateFactorOffset>
@@ -296,7 +296,7 @@
       </li>
 	  <li>
         <label>III</label>
-        <minSeverity>2</minSeverity>
+        <minSeverity>.61</minSeverity>
 		<becomeVisible>true</becomeVisible>
 		<restFallFactorOffset>-1.8</restFallFactorOffset>
 		<hungerRateFactorOffset>-1.4</hungerRateFactorOffset>
@@ -316,7 +316,7 @@
       </li>
 	  <li>
         <label>IV</label>
-        <minSeverity>3</minSeverity>
+        <minSeverity>.71</minSeverity>
 		<becomeVisible>true</becomeVisible>
 		<restFallFactorOffset>-2</restFallFactorOffset>
 		<hungerRateFactorOffset>-1.5</hungerRateFactorOffset>

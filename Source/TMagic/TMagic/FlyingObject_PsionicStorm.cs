@@ -10,14 +10,14 @@ using AbilityUser;
 namespace TorannMagic
 {
     [StaticConstructorOnStartup]
-    public class FlyingObject_PsionicStorm : ThingWithComps
+    public class FlyingObject_PsionicStorm : Projectile
     {
         private int verVal;
 
         Verb verb;
 
-        protected Vector3 origin;
-        protected Vector3 destination;
+        protected new Vector3 origin;
+        protected new Vector3 destination;
         protected Vector3 trueOrigin;
         protected Vector3 targetCenter;
         private Vector3 nearApex;
@@ -33,7 +33,7 @@ namespace TorannMagic
 
         protected float speed = 40f;
 
-        protected int ticksToImpact = 60;
+        protected new int ticksToImpact = 60;
         private int nextAttackTick = 0;
 
         protected Thing assignedTarget;
@@ -55,7 +55,7 @@ namespace TorannMagic
         int attackFrequencyLow = 10;
         int attackFrequencyHigh = 40;
 
-        protected int StartingTicksToImpact
+        protected new int StartingTicksToImpact
         {
             get
             {
@@ -69,7 +69,7 @@ namespace TorannMagic
             }
         }
 
-        protected IntVec3 DestinationCell
+        protected new IntVec3 DestinationCell
         {
             get
             {
@@ -77,7 +77,7 @@ namespace TorannMagic
             }
         }
 
-        public virtual Vector3 ExactPosition
+        public new Vector3 ExactPosition
         {
             get
             {
@@ -86,7 +86,7 @@ namespace TorannMagic
             }
         }
 
-        public virtual Quaternion ExactRotation
+        public new Quaternion ExactRotation
         {
             get
             {
@@ -408,7 +408,7 @@ namespace TorannMagic
             }
         }
 
-        protected virtual void Impact(Thing hitThing)
+        protected new void Impact(Thing hitThing)
         {
             bool flag = hitThing == null;
             if (flag)

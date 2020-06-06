@@ -24,8 +24,20 @@
   </AbilityUser.AbilityDef> -->
   
     <!-- leap as a flying object -->
+	
+	  <ThingDef Name="TM_FlyingObjectBase" Abstract="True">
+		<tickerType>Normal</tickerType>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<thingClass>ThingWithComps</thingClass>
+		<label>bullet</label>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<graphicData>
+		  <shaderType>Transparent</shaderType>
+		</graphicData>
+	  </ThingDef>
   
-  	<ThingDef ParentName="BaseBullet" Name="FlyingObject_Spinning">
+  	<ThingDef ParentName="TM_FlyingObjectBase" Name="FlyingObject_Spinning">
 	   <defName>FlyingObject_Spinning</defName>
 	   <thingClass>TorannMagic.FlyingObject_Spinning</thingClass>
 	   <label>flying object that spins</label>
@@ -41,7 +53,7 @@
 	   </projectile>
 	</ThingDef>
 	
-	<ThingDef ParentName="BaseBullet" Name="FlyingObject_SpinningBone">
+	<ThingDef ParentName="TM_FlyingObjectBase" Name="FlyingObject_SpinningBone">
 	   <defName>FlyingObject_SpinningBone</defName>
 	   <thingClass>TorannMagic.FlyingObject_Spinning</thingClass>
 	   <label>flying object that spins</label>
@@ -57,7 +69,7 @@
 	   </projectile>
 	</ThingDef>
 	
-	<ThingDef ParentName="BaseBullet" Name="FlyingObject_Advanced">
+	<ThingDef ParentName="TM_FlyingObjectBase" Name="FlyingObject_Advanced">
 	   <defName>FlyingObject_Advanced</defName>
 	   <thingClass>TorannMagic.FlyingObject_Advanced</thingClass>
 	   <label>flying object that does lots of stuff</label>

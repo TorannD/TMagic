@@ -8,20 +8,20 @@ using Verse;
 namespace TorannMagic
 {
     [StaticConstructorOnStartup]
-    public class FlyingObject_DirtDevil : ThingWithComps
+    public class FlyingObject_DirtDevil : Projectile
     {
 
-        protected Vector3 origin;
-        protected Vector3 destination;
+        protected new Vector3 origin;
+        protected new Vector3 destination;
 
         private int searchDelay = 10;
         private int age = -1;
         private int duration = 12000;
 
         protected float speed = 9f;
-        protected int ticksToImpact;
+        protected new int ticksToImpact;
 
-        protected Thing launcher;
+        //protected new Thing launcher;
         protected Thing assignedTarget;
         protected Thing flyingThing;
         Pawn pawn;
@@ -36,9 +36,9 @@ namespace TorannMagic
 
         public int weaponDmg = 0;
 
-        private bool initialized = true;        
+        private bool initialized = true;
 
-        protected int StartingTicksToImpact
+        protected new int StartingTicksToImpact
         {
             get
             {
@@ -52,7 +52,7 @@ namespace TorannMagic
             }
         }
 
-        protected IntVec3 DestinationCell
+        protected new IntVec3 DestinationCell
         {
             get
             {
@@ -60,7 +60,7 @@ namespace TorannMagic
             }
         }
 
-        public virtual Vector3 ExactPosition
+        public new Vector3 ExactPosition
         {
             get
             {
@@ -69,7 +69,7 @@ namespace TorannMagic
             }
         }
 
-        public virtual Quaternion ExactRotation
+        public new Quaternion ExactRotation
         {
             get
             {
@@ -99,7 +99,7 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.explosion, "explosion", false, false);
             Scribe_Values.Look<bool>(ref this.initialized, "initialized", false, false);
             Scribe_References.Look<Thing>(ref this.assignedTarget, "assignedTarget", false);
-            Scribe_References.Look<Thing>(ref this.launcher, "launcher", false);
+            //Scribe_References.Look<Thing>(ref this.launcher, "launcher", false);
             Scribe_References.Look<Pawn>(ref this.pawn, "pawn", false);
             Scribe_Deep.Look<Thing>(ref this.flyingThing, "flyingThing", new object[0]);
         }
@@ -112,7 +112,7 @@ namespace TorannMagic
                 SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);
                 MoteMaker.ThrowDustPuff(pawn.Position, pawn.Map, Rand.Range(1.2f, 1.8f));
             }
-            flyingThing.ThingID += Rand.Range(0, 214).ToString();
+            //flyingThing.ThingID += Rand.Range(0, 214).ToString();
             this.initialized = false;
         }
 
@@ -232,7 +232,8 @@ namespace TorannMagic
 
         public override void Tick()
         {
-            base.Tick();
+            //base.Tick();
+
             age++;
             this.searchDelay--;
             Vector3 exactPosition = this.ExactPosition;
@@ -246,23 +247,7 @@ namespace TorannMagic
             }
             else
             {
-                base.Position = this.ExactPosition.ToIntVec3();                
-                if(Find.TickManager.TicksGame % 4 == 0)
-                {
-                    Vector3 rndVec = this.ExactPosition;
-                    rndVec.x += Rand.Range(-1f, 1f);
-                    rndVec.z += Rand.Range(-1f, 1f);
-                    Vector3 angle = TM_Calc.GetVector(rndVec, this.ExactPosition);
-                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, rndVec, this.Map, Rand.Range(.8f, 1.5f), .1f, .05f, .15f, -300, 2, (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat(), Rand.Range(0, 360));
-                }
-                if(this.searchDelay < 0)
-                {
-                    if(this.destination != default(Vector3))
-                    {
-                        this.searchDelay = Rand.Range(10, 20);
-                        CleanFilth();
-                    }
-                }                
+                base.Position = this.ExactPosition.ToIntVec3();
                 bool flag2 = this.ticksToImpact <= 0;
                 if (flag2)
                 {
@@ -282,6 +267,23 @@ namespace TorannMagic
                         this.ImpactSomething();
                     }
                 }
+                if (Find.TickManager.TicksGame % 4 == 0)
+                {
+                    Vector3 rndVec = this.ExactPosition;
+                    rndVec.x += Rand.Range(-1f, 1f);
+                    rndVec.z += Rand.Range(-1f, 1f);
+                    Vector3 angle = TM_Calc.GetVector(rndVec, this.ExactPosition);
+                    TM_MoteMaker.ThrowGenericMote(ThingDefOf.Mote_Smoke, rndVec, this.Map, Rand.Range(.8f, 1.5f), .1f, .05f, .15f, -300, 2, (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat(), Rand.Range(0, 360));
+                }
+                if(this.searchDelay < 0)
+                {
+                    if(this.destination != default(Vector3))
+                    {
+                        this.searchDelay = Rand.Range(10, 20);
+                        CleanFilth();
+                    }
+                }                
+                
             }
         }
 
@@ -308,7 +310,7 @@ namespace TorannMagic
             }
         }
 
-        protected virtual void Impact(Thing hitThing)
+        protected new void Impact(Thing hitThing)
         {
             bool flag = hitThing == null;
             if (flag)

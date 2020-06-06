@@ -97,25 +97,28 @@ namespace TorannMagic
             bool flag = this.mightDef != null;
             if (flag)
             {
-                bool flag3 = this.MightUser.Stamina != null;
-                if (flag3)
+                if (mightDef.consumeEnergy)
                 {
-                    if (!this.Pawn.IsColonist && settingsRef.AIAggressiveCasting)// for AI
+                    bool flag3 = this.MightUser.Stamina != null;
+                    if (flag3)
                     {
-                        this.MightUser.Stamina.UseMightPower(this.MightUser.ActualStaminaCost(mightDef) / 2f);
+                        if (!this.Pawn.IsColonist && settingsRef.AIAggressiveCasting)// for AI
+                        {
+                            this.MightUser.Stamina.UseMightPower(this.MightUser.ActualStaminaCost(mightDef) / 2f);
+                        }
+                        else
+                        {
+                            this.MightUser.Stamina.UseMightPower(this.MightUser.ActualStaminaCost(mightDef));
+                        }
+
+                        this.MightUser.MightUserXP += (int)((mightDef.staminaCost * 180) * this.MightUser.xpGain * settingsRef.xpMultiplier);
+
                     }
-                    else
+                    if (this.mightDef.chiCost != 0)
                     {
-                        this.MightUser.Stamina.UseMightPower(this.MightUser.ActualStaminaCost(mightDef));
+                        HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_ChiHD, -100 * this.ActualChiCost);
+                        this.MightUser.MightUserXP += (int)((mightDef.chiCost * 100) * this.MightUser.xpGain * settingsRef.xpMultiplier);
                     }
-                    
-                    this.MightUser.MightUserXP += (int)((mightDef.staminaCost * 180) * this.MightUser.xpGain * settingsRef.xpMultiplier);
-                    
-                }
-                if (this.mightDef.chiCost != 0)
-                {
-                    HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_ChiHD, -100 * this.ActualChiCost);
-                    this.MightUser.MightUserXP += (int)((mightDef.chiCost * 100) * this.MightUser.xpGain * settingsRef.xpMultiplier);
                 }
             }
         }

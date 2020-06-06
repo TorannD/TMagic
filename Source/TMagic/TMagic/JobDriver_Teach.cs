@@ -48,9 +48,17 @@ namespace TorannMagic
             {
                 CompAbilityUserMagic compMagic = student.GetComp<CompAbilityUserMagic>();
                 CompAbilityUserMight compMight = student.GetComp<CompAbilityUserMight>();
-                if(compMagic.IsMagicUser && !student.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                if(compMagic != null && compMagic.IsMagicUser && !student.story.traits.HasTrait(TorannMagicDefOf.Faceless))
                 {
                     this.isMageTeaching = true;
+                    if(compMight != null && compMight.IsMightUser)
+                    {
+                        if(Rand.Chance(.5f))
+                        {
+                            this.isMageTeaching = false;
+                            this.isFighterTeaching = true;
+                        }
+                    }
                 }
                 else if(compMight.IsMightUser)
                 {

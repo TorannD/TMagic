@@ -7352,12 +7352,14 @@ namespace TorannMagic
                 if (this.spell_ShadowStep == false)
                 {
                     this.spell_ShadowStep = true;
-                    this.InitializeSpell();
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_ShadowStep);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_ShadowStep);
                 }
                 if (this.spell_ShadowCall == false)
                 {
                     this.spell_ShadowCall = true;
-                    this.InitializeSpell();
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_ShadowCall);
+                    this.AddPawnAbility(TorannMagicDefOf.TM_ShadowCall);
                 }
             }
 
@@ -7746,6 +7748,23 @@ namespace TorannMagic
             bool _phantomShift = false;
             float _arcalleumCooldown = 0f;
 
+            //Determine trait adjustments
+            IEnumerable<TMDefs.DefModExtension_TraitEnchantments> traitEnum = this.Pawn.story.traits.allTraits
+                .Select((Trait t) => t.def.GetModExtension<TMDefs.DefModExtension_TraitEnchantments>());
+            foreach (TMDefs.DefModExtension_TraitEnchantments e in traitEnum)
+            {
+                if (e != null)
+                {
+                    _maxMP += e.maxMP;
+                    _mpCost += e.mpCost;
+                    _mpRegenRate += e.mpRegenRate;
+                    _coolDown += e.magicCooldown;
+                    _xpGain += e.xpGain;
+                    _arcaneRes += e.arcaneRes;
+                    _arcaneDmg += e.arcaneDmg;
+                }
+            }
+
             List<Apparel> apparel = this.Pawn.apparel.WornApparel;
             if (apparel != null)
             {
@@ -8018,21 +8037,8 @@ namespace TorannMagic
             _arcaneRes += ((1 - this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false)) / 2);
             _arcaneDmg += ((this.Pawn.GetStatValue(StatDefOf.PsychicSensitivity, false) - 1) / 4);
 
-            //Replace with TM_TraitDef adjustments
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_ArcaneConduitTD))
-            {
-                _mpRegenRate += .4f;
-                _maxMP -= .2f;
-            }
-            if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_ManaWellTD))
-            {
-                _mpRegenRate -= .2f;
-                _maxMP += .4f;
-            }
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_BoundlessTD))
             {
-                _xpGain -= .25f;
-                _coolDown -= .4f;
                 this.arcalleumCooldown = Mathf.Clamp(0f + _arcalleumCooldown, 0f, .1f);
             }
             else
@@ -8060,94 +8066,54 @@ namespace TorannMagic
 
             if (this.IsMagicUser && !TM_Calc.IsCrossClass(this.Pawn, true))
             {
-                if (_maxMP != 0)
+                if (_maxMP != 0 && !this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HediffEnchantment_maxEnergy")))
                 {
-                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_maxMP"), .5f);
+                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_maxEnergy"), .5f);
                 }
-                if (_mpRegenRate != 0)
+                if (_mpRegenRate != 0 && !this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HediffEnchantment_energyRegen")))
                 {
-                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_mpRegenRate"), .5f);
+                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_energyRegen"), .5f);
                 }
-                if (_coolDown != 0)
+                if (_coolDown != 0 && !this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HediffEnchantment_coolDown")))
                 {
                     HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_coolDown"), .5f);
                 }
-                if (_xpGain != 0)
+                if (_xpGain != 0 && !this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HediffEnchantment_xpGain")))
                 {
                     HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_xpGain"), .5f);
                 }
-                if (_mpCost != 0)
+                if (_mpCost != 0 && !this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HediffEnchantment_energyCost")))
                 {
-                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_mpCost"), .5f);
+                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_energyCost"), .5f);
                 }
-                if (_arcaneRes != 0)
+                if (_arcaneRes != 0 && !this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HediffEnchantment_dmgResistance")))
                 {
-                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_arcaneRes"), .5f);
+                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_dmgResistance"), .5f);
                 }
-                if (_arcaneDmg != 0)
+                if (_arcaneDmg != 0 && !this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HediffEnchantment_dmgBonus")))
                 {
-                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_arcaneDmg"), .5f);
+                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_dmgBonus"), .5f);
                 }
-                if (_arcaneSpectre == true)
+                if(_arcalleumCooldown != 0 && !this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HediffEnchantment_arcalleumCooldown")))
+                {
+                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_arcalleumCooldown"), .5f);
+                }
+                if (_arcaneSpectre == true && !this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HediffEnchantment_arcaneSpectre")))
                 {
                     HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_arcaneSpectre"), .5f);
+                }
+                else if(_arcaneSpectre == false && this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HediffEnchantment_arcaneSpectre")))
+                {
+                    this.Pawn.health.RemoveHediff(this.Pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_HediffEnchantment_arcaneSpectre")));
                 }
                 if (_phantomShift == true)
                 {
                     HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_phantomShift"), .5f);
                 }
-                if (_arcalleumCooldown != 0f)
+                else if (_phantomShift == false && this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HediffEnchantment_phantomShift")))
                 {
-                    HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_HediffEnchantment_arcalleumCooldown"), .5f);
-                }
-
-                using (IEnumerator<Hediff> enumerator = this.Pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
-                {
-                    while (enumerator.MoveNext())
-                    {
-                        Hediff rec = enumerator.Current;
-                        if (rec.def.defName == "TM_HediffEnchantment_maxMP" && this.maxMP == 1)
-                        {
-                            Pawn.health.RemoveHediff(rec);
-                        }
-                        if (rec.def.defName == "TM_HediffEnchantment_coolDown" && this.coolDown == 1)
-                        {
-                            Pawn.health.RemoveHediff(rec);
-                        }
-                        if (rec.def.defName == "TM_HediffEnchantment_mpCost" && this.mpCost == 1)
-                        {
-                            Pawn.health.RemoveHediff(rec);
-                        }
-                        if (rec.def.defName == "TM_HediffEnchantment_mpRegenRate" && this.mpRegenRate == 1)
-                        {
-                            Pawn.health.RemoveHediff(rec);
-                        }
-                        if (rec.def.defName == "TM_HediffEnchantment_xpGain" && this.xpGain == 1)
-                        {
-                            Pawn.health.RemoveHediff(rec);
-                        }
-                        if (rec.def.defName == "TM_HediffEnchantment_arcaneRes" && this.arcaneRes == 1)
-                        {
-                            Pawn.health.RemoveHediff(rec);
-                        }
-                        if (rec.def.defName == "TM_HediffEnchantment_arcaneDmg" && this.arcaneDmg == 1)
-                        {
-                            Pawn.health.RemoveHediff(rec);
-                        }
-                        if (rec.def.defName == "TM_HediffEnchantment_arcaneSpectre" && _arcaneSpectre == false)
-                        {
-                            Pawn.health.RemoveHediff(rec);
-                        }
-                        if (rec.def.defName == "TM_HediffEnchantment_phantomShift" && _phantomShift == false)
-                        {
-                            Pawn.health.RemoveHediff(rec);
-                        }
-                        if (rec.def.defName == "TM_HediffEnchantment_arcalleumCooldown" && _arcalleumCooldown == 0f)
-                        {
-                            Pawn.health.RemoveHediff(rec);
-                        }
-                    }
-                }
+                    this.Pawn.health.RemoveHediff(this.Pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_HediffEnchantment_phantomShift")));
+                }               
             }
         }
 

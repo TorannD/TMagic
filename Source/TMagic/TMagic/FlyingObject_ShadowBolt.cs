@@ -9,14 +9,14 @@ using Verse.Sound;
 namespace TorannMagic
 {
     [StaticConstructorOnStartup]
-    public class FlyingObject_ShadowBolt : ThingWithComps
+    public class FlyingObject_ShadowBolt : Projectile
     {
 
         private static readonly Color lightningColor = new Color(160f, 160f, 160f);
         private static readonly Material OrbMat = MaterialPool.MatFrom("Spells/shadowbolt", false);
 
-        protected Vector3 origin;
-        protected Vector3 destination;
+        protected new Vector3 origin;
+        protected new Vector3 destination;
         protected Vector3 direction;
         private float directionAngle;
 
@@ -34,7 +34,7 @@ namespace TorannMagic
         private int proximityFrequency = 6;
 
         protected float speed = 30f;
-        protected int ticksToImpact;
+        protected new int ticksToImpact;
 
         protected Thing assignedTarget;
         protected Thing flyingThing;
@@ -48,7 +48,7 @@ namespace TorannMagic
 
         private bool initialized = true;        
 
-        protected int StartingTicksToImpact
+        protected new int StartingTicksToImpact
         {
             get
             {
@@ -62,7 +62,7 @@ namespace TorannMagic
             }
         }
 
-        protected IntVec3 DestinationCell
+        protected new IntVec3 DestinationCell
         {
             get
             {
@@ -70,7 +70,7 @@ namespace TorannMagic
             }
         }
 
-        public virtual Vector3 ExactPosition
+        public new  Vector3 ExactPosition
         {
             get
             {
@@ -79,7 +79,7 @@ namespace TorannMagic
             }
         }
 
-        public virtual Quaternion ExactRotation
+        public new Quaternion ExactRotation
         {
             get
             {
@@ -195,7 +195,7 @@ namespace TorannMagic
 
         public override void Tick()
         {
-            base.Tick();
+            //base.Tick();
             age++;
             if (this.ticksToImpact >= 0)
             {
@@ -268,7 +268,7 @@ namespace TorannMagic
             }
         }
 
-        protected virtual void Impact(Thing hitThing)
+        protected new void Impact(Thing hitThing)
         {
             bool flag = hitThing == null;
             if (flag)

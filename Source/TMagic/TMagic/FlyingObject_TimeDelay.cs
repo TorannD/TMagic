@@ -10,10 +10,10 @@ using Verse.Sound;
 namespace TorannMagic
 {
     [StaticConstructorOnStartup]
-    public class FlyingObject_TimeDelay : ThingWithComps
+    public class FlyingObject_TimeDelay : Projectile
     {
-        protected Vector3 origin;
-        protected Vector3 destination;
+        protected new Vector3 origin;
+        protected new Vector3 destination;
         private Vector3 direction;
         private Vector3 variationDestination;
         private Vector3 drawPosition;
@@ -23,8 +23,8 @@ namespace TorannMagic
         public float xVariation = 0;    //x variation makes the object move side to side by +- variation
         public float zVariation = 0;    //z variation makes the object move up and down by +- variation
         private int rotation = 0;
-        protected int ticksToImpact;
-        protected Thing launcher;
+        protected new int ticksToImpact;
+        //protected new Thing launcher;
         protected Thing assignedTarget;
         protected Thing flyingThing;
         private bool drafted = false;
@@ -56,7 +56,7 @@ namespace TorannMagic
         CompAbilityUserMagic comp;
         TMPawnSummoned newPawn = new TMPawnSummoned();
 
-        protected int StartingTicksToImpact
+        protected new int StartingTicksToImpact
         {
             get
             {
@@ -70,7 +70,7 @@ namespace TorannMagic
             }
         }
 
-        protected IntVec3 DestinationCell
+        protected new IntVec3 DestinationCell
         {
             get
             {
@@ -78,7 +78,7 @@ namespace TorannMagic
             }
         }
 
-        public virtual Vector3 ExactPosition
+        public new Vector3 ExactPosition
         {
             get
             {
@@ -88,7 +88,7 @@ namespace TorannMagic
             }
         }
 
-        public virtual Quaternion ExactRotation
+        public new Quaternion ExactRotation
         {
             get
             {
@@ -113,7 +113,7 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.damageLaunched, "damageLaunched", true, false);
             Scribe_Values.Look<bool>(ref this.explosion, "explosion", false, false);
             Scribe_References.Look<Thing>(ref this.assignedTarget, "assignedTarget", false);
-            Scribe_References.Look<Thing>(ref this.launcher, "launcher", false);
+            //Scribe_References.Look<Thing>(ref this.launcher, "launcher", false);
             Scribe_Deep.Look<Thing>(ref this.flyingThing, "flyingThing", new object[0]);
             Scribe_Values.Look<bool>(ref this.drafted, "drafted", false, false);
             Scribe_Values.Look<float>(ref this.xVariation, "xVariation", 0, false);
@@ -323,7 +323,7 @@ namespace TorannMagic
             this.Impact(null);            
         }
 
-        protected virtual void Impact(Thing hitThing)
+        protected new void Impact(Thing hitThing)
         {
             if (this.Map != null)
             {

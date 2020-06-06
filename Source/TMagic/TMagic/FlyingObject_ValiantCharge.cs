@@ -9,7 +9,7 @@ using AbilityUser;
 namespace TorannMagic
 {
     [StaticConstructorOnStartup]
-    public class FlyingObject_ValiantCharge : ThingWithComps
+    public class FlyingObject_ValiantCharge : Projectile
     {
 
         private static readonly Color wingColor = new Color(160f, 160f, 160f);
@@ -17,13 +17,13 @@ namespace TorannMagic
         private static readonly Material wingsE = MaterialPool.MatFrom("Other/angelwings_up_east", ShaderDatabase.Transparent, FlyingObject_ValiantCharge.wingColor);
         private static readonly Material wingsW = MaterialPool.MatFrom("Other/angelwings_up_west", ShaderDatabase.Transparent, FlyingObject_ValiantCharge.wingColor);
 
-        protected Vector3 origin;
+        protected new Vector3 origin;
 
-        protected Vector3 destination;
+        protected new Vector3 destination;
 
         protected float speed = 55f;
 
-        protected int ticksToImpact;
+        protected new int ticksToImpact;
 
         protected Thing assignedTarget;
 
@@ -63,7 +63,7 @@ namespace TorannMagic
 
         TMPawnSummoned newPawn = new TMPawnSummoned();
 
-        protected int StartingTicksToImpact
+        protected new int StartingTicksToImpact
         {
             get
             {
@@ -77,7 +77,7 @@ namespace TorannMagic
             }
         }
 
-        protected IntVec3 DestinationCell
+        protected new IntVec3 DestinationCell
         {
             get
             {
@@ -85,7 +85,7 @@ namespace TorannMagic
             }
         }
 
-        public virtual Vector3 ExactPosition
+        public new Vector3 ExactPosition
         {
             get
             {
@@ -94,7 +94,7 @@ namespace TorannMagic
             }
         }
 
-        public virtual Quaternion ExactRotation
+        public new Quaternion ExactRotation
         {
             get
             {
@@ -200,7 +200,7 @@ namespace TorannMagic
 
         public override void Tick()
         {
-            base.Tick();
+            //base.Tick();
             Vector3 exactPosition = this.ExactPosition;
             this.ticksToImpact--;
             bool flag = !this.ExactPosition.InBounds(base.Map);
@@ -333,7 +333,7 @@ namespace TorannMagic
             }
         }
 
-        protected virtual void Impact(Thing hitThing)
+        protected new void Impact(Thing hitThing)
         {
             bool flag = hitThing == null;
             if (flag)

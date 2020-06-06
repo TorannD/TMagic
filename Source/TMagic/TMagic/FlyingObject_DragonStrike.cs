@@ -9,17 +9,17 @@ using AbilityUser;
 namespace TorannMagic
 {
     [StaticConstructorOnStartup]
-    public class FlyingObject_DragonStrike : ThingWithComps
+    public class FlyingObject_DragonStrike : Projectile
     {
-        protected Vector3 origin;
+        protected new Vector3 origin;
 
-        protected Vector3 destination;
+        protected new Vector3 destination;
 
         protected float speed = 40f;
         private bool drafted = false;
         private int verVal = 0;
 
-        protected int ticksToImpact;
+        protected new int ticksToImpact;
 
         protected Thing assignedTarget = null;
         protected Thing flyingThing;
@@ -37,7 +37,7 @@ namespace TorannMagic
         Pawn pawn;
         CompAbilityUserMight comp;
 
-        protected int StartingTicksToImpact
+        protected new int StartingTicksToImpact
         {
             get
             {
@@ -51,7 +51,7 @@ namespace TorannMagic
             }
         }
 
-        protected IntVec3 DestinationCell
+        protected new IntVec3 DestinationCell
         {
             get
             {
@@ -59,7 +59,7 @@ namespace TorannMagic
             }
         }
 
-        public virtual Vector3 ExactPosition
+        public new Vector3 ExactPosition
         {
             get
             {
@@ -68,7 +68,7 @@ namespace TorannMagic
             }
         }
 
-        public virtual Quaternion ExactRotation
+        public new Quaternion ExactRotation
         {
             get
             {
@@ -165,7 +165,7 @@ namespace TorannMagic
 
         public override void Tick()
         {
-            base.Tick();
+            //base.Tick();
             Vector3 exactPosition = this.ExactPosition;
             this.ticksToImpact--;
             bool flag = !this.ExactPosition.InBounds(base.Map);
@@ -265,7 +265,7 @@ namespace TorannMagic
             }
         }
 
-        protected virtual void Impact(Thing hitThing)
+        protected new void Impact(Thing hitThing)
         {
             bool flag = hitThing == null;
             if (flag)

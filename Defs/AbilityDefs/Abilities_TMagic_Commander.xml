@@ -14,6 +14,7 @@
 	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 	<upkeepEnergyCost>.6</upkeepEnergyCost>
 	<upkeepEfficiencyPercent>.125</upkeepEfficiencyPercent>
+	<consumeEnergy>false</consumeEnergy>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderAuras</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -52,6 +53,7 @@
 	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 	<upkeepEnergyCost>.7</upkeepEnergyCost>
 	<upkeepEfficiencyPercent>.11</upkeepEfficiencyPercent>
+	<consumeEnergy>false</consumeEnergy>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderAuras</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -90,6 +92,7 @@
 	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
 	<upkeepEnergyCost>.8</upkeepEnergyCost>
 	<upkeepEfficiencyPercent>.1</upkeepEfficiencyPercent>
+	<consumeEnergy>false</consumeEnergy>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_CommanderAuras</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

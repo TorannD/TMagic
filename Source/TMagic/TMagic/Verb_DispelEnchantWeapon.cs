@@ -23,6 +23,7 @@ namespace TorannMagic
                     {
                         Pawn dispellingPawn = comp.weaponEnchants[i];
                         RemoveExistingEnchantment(dispellingPawn);
+                        i--;
                     }
                     comp.weaponEnchants.Clear();
                     comp.RemovePawnAbility(TorannMagicDefOf.TM_DispelEnchantWeapon);

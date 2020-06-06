@@ -158,7 +158,7 @@ namespace TorannMagic.ModOptions
             Widgets.CheckboxLabeled(rowRect93ShiftRight, "showUndeadPawnChange".Translate(), ref Settings.Instance.changeUndeadPawnAppearance, false);
             num++;
             Rect rowRect10 = UIHelper.GetRowRect(rowRect93, rowHeight, num);
-            Widgets.CheckboxLabeled(rowRect10, "showAbilitiesOnMultiSelect".Translate(), ref Settings.Instance.showIconsMultiSelect, false);
+            //Widgets.CheckboxLabeled(rowRect10, "showAbilitiesOnMultiSelect".Translate(), ref Settings.Instance.showIconsMultiSelect, false);
             Rect rowRect10ShiftRight = UIHelper.GetRowRect(rowRect10, rowHeight, num);
             rowRect10ShiftRight.x += rowRect10.width + 56f;
             Widgets.CheckboxLabeled(rowRect10ShiftRight, "showUndeadAnimalChange".Translate(), ref Settings.Instance.changeUndeadAnimalAppearance, false);

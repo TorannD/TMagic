@@ -9,7 +9,7 @@ using Verse.Sound;
 namespace TorannMagic
 {
     [StaticConstructorOnStartup]
-    public class FlyingObject_PsiStorm : ThingWithComps
+    public class FlyingObject_PsiStorm : Projectile
     {
 
         protected Vector3 orbPosition;
@@ -51,7 +51,7 @@ namespace TorannMagic
         private int proximityFrequency = 6;
 
         protected float speed = 30f;
-        protected int ticksToImpact;
+        protected new int ticksToImpact;
 
         protected Thing assignedTarget;
         protected Thing flyingThing;
@@ -73,7 +73,7 @@ namespace TorannMagic
             }
         }
 
-        public virtual Quaternion ExactRotation
+        public new Quaternion ExactRotation
         {
             get
             {
@@ -220,7 +220,7 @@ namespace TorannMagic
 
         public override void Tick()
         {
-            base.Tick();
+            //base.Tick();
             age++;
             if (!pawn.DestroyedOrNull() && !pawn.Dead && !pawn.Downed && this.age > 0)
             { 

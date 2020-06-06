@@ -1297,7 +1297,7 @@ AoE effects are only applied when the primary target is not a friendly pawn. Fri
 	
   <!-- dirt devil -->	
 	
-	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+	<ThingDef ParentName="TM_FlyingObjectBase" Class="AbilityUser.ProjectileDef_Ability">
 		<thingClass>AbilityUser.Projectile_Ability</thingClass>
 	    <defName>Projectile_DirtDevil</defName>
         <label>dirt devil</label>
@@ -1314,7 +1314,7 @@ AoE effects are only applied when the primary target is not a friendly pawn. Fri
         </projectile>
     </ThingDef>	
 	
-	<ThingDef ParentName="BaseBullet" Name="FlyingObject_DirtDevil">
+	<ThingDef ParentName="TM_FlyingObjectBase" Name="FlyingObject_DirtDevil">
 	   <defName>FlyingObject_DirtDevil</defName>
 	   <thingClass>TorannMagic.FlyingObject_DirtDevil</thingClass>
 	   <label>flying object</label>

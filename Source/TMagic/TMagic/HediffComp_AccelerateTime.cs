@@ -134,8 +134,7 @@ namespace TorannMagic
         }
 
         private void RaceAgainstTime(Pawn pawn, float age)
-        {
-            
+        {            
             if (Rand.Chance(age/maxAge))
             {
                 AgeInjuryUtility.GenerateRandomOldAgeInjuries(pawn, false);
