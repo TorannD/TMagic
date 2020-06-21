@@ -26,6 +26,7 @@ namespace TorannMagic.TMDefs
         public List<TMAbilityDef> classFighterAbilities = new List<TMAbilityDef>();
         public List<ThingDef> learnableSpells = new List<ThingDef>();
         public List<ThingDef> learnableSkills = new List<ThingDef>();
+        public List<PowerDef> customPowers = new List<PowerDef>();
 
         //Class Designations
         public bool isMage = false;

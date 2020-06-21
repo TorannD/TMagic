@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+ 
+<Defs>
+
+    <TorannMagic.PowerDef>
+        <defName>TM_Power_Emergency</defName>
+        <learnCost>1</learnCost>
+        <abilityLine>
+            <li>TM_Emergency</li>
+        </abilityLine>
+    </TorannMagic.PowerDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_Emergency</defName>
+        <label>Emergency</label>
+        <uiIconPath>UI/Emergency</uiIconPath>
+        <description>The Field Medic rushes to aid their patients.
+
+    The Field Medic gains increased base movement speed, tending speed and tending quality as well as reduced pain for a 30 seconds.</description>
+    <customCost Class="TorannMagic.TMAbilityNeedCostProp">
+        <needDef>TM_Stamina</needDef>
+        <baseCost>30</baseCost>
+    </customCost>
+        <shouldInitialize>true</shouldInitialize>
+        <efficiencyReductionPercent>.08</efficiencyReductionPercent>
+        <learnChance>1</learnChance>
+        <canCopy>true</canCopy>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+                <tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+                <tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+                <tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+                <tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <abilityDef>TM_Emergency</abilityDef>
+            <isViolent>false</isViolent>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <warmupTime>0</warmupTime>
+            <SecondsToRecharge>60.0</SecondsToRecharge>
+            <range>0</range>
+            <soundCast>TM_VibrationLow</soundCast>
+            <muzzleFlashScale>1</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+            <AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+            <targetParams>
+              <canTargetPawns>true</canTargetPawns>
+              <canTargetBuildings>false</canTargetBuildings>
+              <canTargetSelf>false</canTargetSelf>
+              <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+            <hediffsToApply>
+                <li>
+                    <hediffDef>TM_EmergencyHD</hediffDef>
+                    <applyChance>1</applyChance>
+                    <severity>0.030</severity>
+                </li>
+            </hediffsToApply>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <HediffDef>
+        <defName>TM_EmergencyHD</defName>
+        <hediffClass>HediffWithComps</hediffClass>
+        <label>Emergency</label>
+        <description>I'll do my best.</description>
+        <defaultLabelColor>(0.24,0.8,0.24)</defaultLabelColor>
+        <scenarioCanAdd>true</scenarioCanAdd>
+        <maxSeverity>1.0</maxSeverity>
+        <isBad>false</isBad>
+        <comps>
+          <li Class="HediffCompProperties_SeverityPerDay">
+            <severityPerDay>-1</severityPerDay>
+          </li>
+        </comps>
+        <stages>
+          <li>
+            <label>I</label>
+            <minSeverity>.001</minSeverity>
+            <painOffset>-0.2</painOffset>
+            <statOffsets>
+                <MoveSpeed>0.4</MoveSpeed>
+                <MedicalTendQuality>0.1</MedicalTendQuality>
+                <MedicalTendSpeed>0.5</MedicalTendSpeed>
+            </statOffsets>
+          </li>
+        </stages>
+    </HediffDef>
+
+<!-- Medical Supply -->
+    <TorannMagic.PowerDef>
+        <defName>TM_Power_MedicalSupply</defName>
+        <learnCost>1</learnCost>
+        <abilityLine>
+            <li>TM_MedicalSupply</li>
+        </abilityLine>
+    </TorannMagic.PowerDef>
+    <TorannMagic.UpgradeDef>
+        <defName>TM_Upgrade_MedicalSupply_capacity</defName>
+        <label>Medical Supply Capacity</label>
+        <upgradeId>TM_MedicalSupplyHD_capacity</upgradeId>
+        <title>Capacity</title>
+        <description>Increases the maximum amount of supply carried by the Field Medic</description>
+        <upgradeCost>1</upgradeCost>
+        <levelMax>7</levelMax>
+    </TorannMagic.UpgradeDef>
+
+    <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
+        <defName>TM_MedicalSupply</defName>
+        <label>Resupply</label>
+        <uiIconPath>UI/bloodgift</uiIconPath>
+        <description>Resupply the Field Medic's medical supplies.
+
+The Field Medic will use one item from target stockpile and convert it into personal medical supplies he can use to fuel his abilities.
+
+The amount of supply gained is equal to 20 times the medical potency of the item squared:
+medicine - 20 medical supplies
+herbal medicine - 4.9 medical supplies
+glitterworld medicine - 51.2 medical supplies
+
+The Field Medic can train to convert his equipment back into common medicine</description>
+        <staminaCost>0</staminaCost>
+        <shouldInitialize>true</shouldInitialize>
+        <learnChance>1</learnChance>
+        <abilityHediff>TM_MedicalSupplyHD</abilityHediff>
+        <canCopy>false</canCopy>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_MedicalSupply</verbClass>
+                <tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+                <tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+                <tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+                <tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <abilityDef>TM_MedicalSupply</abilityDef>
+            <isViolent>false</isViolent>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <warmupTime>8</warmupTime><!--8,5,3,2-->
+            <SecondsToRecharge>1.0</SecondsToRecharge>
+            <range>2</range>
+            <soundCast>TM_VibrationLow</soundCast>
+            <muzzleFlashScale>10</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+            <targetParams>
+                <canTargetPawns>false</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>false</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+    <HediffDef>
+        <defName>TM_MedicalSupplyHD</defName>
+        <hediffClass>HediffWithComps</hediffClass>
+        <label>Medical Supplies</label>
+        <description>Accounts for the medical supplies equipped by a Field Medic.</description>
+        <defaultLabelColor>(0.24,0.8,0.24)</defaultLabelColor>
+        <scenarioCanAdd>false</scenarioCanAdd>
+        <makesSickThought>false</makesSickThought>
+        <tendable>false</tendable>
+        <makesAlert>false</makesAlert>
+        <minSeverity>0.001</minSeverity>
+        <isBad>false</isBad>
+        <initialSeverity>20</initialSeverity>
+        <comps>
+            <li Class="TorannMagic.HediffCompProperties_AbilityResource">
+                <maximumBase>60.0</maximumBase>
+                <maximumPerUpgrade>10.0</maximumPerUpgrade>
+                <maximumUpgradeName>TM_MedicalSupplyHD_capacity</maximumUpgradeName>
+                <regenPerTickBase>0.0</regenPerTickBase>
+                <regenPerTickPerUpgrade>0.0</regenPerTickPerUpgrade>
+                <regenPerTickUpgradeName>medical supplies are not meant to regen</regenPerTickUpgradeName>
+            </li>
+        </comps>
+        <stages>
+            <li>
+                <label></label>
+                <minSeverity>0</minSeverity>
+                <becomeVisible>true</becomeVisible>
+            </li>
+        </stages>
+    </HediffDef>
+
+    <!--    MediGel -->
+    <TorannMagic.PowerDef>
+        <defName>TM_Power_Medigel</defName>
+        <learnCost>1</learnCost>
+        <abilityLine>
+            <li>TM_Medigel</li>
+        </abilityLine>
+    </TorannMagic.PowerDef>
+
+    <TorannMagic.TMAbilityDef>
+        <abilityClass>TorannMagic.CustomAbility</abilityClass>
+        <defName>TM_Medigel</defName>
+        <label>Medigel</label>
+        <uiIconPath>UI/Medigel</uiIconPath>
+        <description>Applies a healing gel to the wounds of a target
+
+The Field Medic applies a gel on the wounds of a target, healing them over time.</description>
+        <customCost Class="TorannMagic.TMAbilityHediffCostProp">
+            <hediffDef>TM_MedicalSupplyHD</hediffDef>
+            <baseCost>20</baseCost>
+        </customCost>
+        <shouldInitialize>true</shouldInitialize>
+        <learnChance>1</learnChance>
+        <canCopy>false</canCopy>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SB</verbClass>
+                <tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+                <tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+                <tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+                <tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <abilityDef>TM_Medigel</abilityDef>
+            <isViolent>false</isViolent>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <warmupTime>3</warmupTime>
+            <SecondsToRecharge>1.0</SecondsToRecharge>
+            <range>1</range>
+            <AlwaysHits>true</AlwaysHits>
+<!--            <soundCast>TM_VibrationLow</soundCast>-->
+            <muzzleFlashScale>1</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+            <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
+            <targetParams>
+              <canTargetPawns>true</canTargetPawns>
+              <canTargetBuildings>false</canTargetBuildings>
+              <canTargetSelf>true</canTargetSelf>
+              <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+            <hediffsToApply>
+                <li>
+                    <hediffDef>TM_Regeneration</hediffDef><!-- TODO: Should it apply its own hediff?-->
+                    <applyChance>1</applyChance>
+                </li>
+            </hediffsToApply>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <!--    CombatDrugs   -->
+    <TorannMagic.PowerDef>
+        <defName>TM_Power_CombatDrugs</defName>
+        <learnCost>1</learnCost>
+        <abilityLine>
+            <li>TM_CombatDrugs</li>
+        </abilityLine>
+        <upgrades>
+          <li>TM_Upgrade_CombatDrugs_amount</li>
+          <li>TM_Upgrade_CombatDrugs_duration</li>
+        </upgrades>
+    </TorannMagic.PowerDef>
+    <TorannMagic.UpgradeDef>
+        <defName>TM_Upgrade_CombatDrugs_duration</defName>
+        <title>Potency</title>
+        <description>Increases the number of effects applied.
+
+level 0: 2 effects
+level 1: 3 effects
+level 2: all 4 effects</description>
+        <upgradeCost>2</upgradeCost>
+        <levelMax>2</levelMax>
+    </TorannMagic.UpgradeDef>
+    <TorannMagic.UpgradeDef>
+        <defName>TM_Upgrade_CombatDrugs_amount</defName>
+        <title>Stabilisation</title>
+        <description>Increases the duration of effects applied.
+
+Lasts 120 seconds plus 20 seconds per upgrade.</description>
+        <upgradeCost>1</upgradeCost>
+        <levelMax>6</levelMax>
+    </TorannMagic.UpgradeDef>
+
+    <TorannMagic.TMAbilityDef>
+        <abilityClass>TorannMagic.CustomAbility</abilityClass>
+        <defName>TM_CombatDrugs</defName>
+        <label>Combat Drugs</label>
+        <uiIconPath>UI/bloodgift</uiIconPath> <!--TODO: custom icon, a syringe maybe?-->
+        <description>Gives combat drugs to an ally
+
+The Field Medic throws a syringe of improvised combat drugs to an ally.
+The effects are always positive but may vary.</description>
+        <customCost Class="TorannMagic.TMAbilityHediffCostProp">
+            <hediffDef>TM_MedicalSupplyHD</hediffDef>
+            <baseCost>10</baseCost>
+        </customCost>
+        <shouldInitialize>true</shouldInitialize>
+        <learnChance>1</learnChance>
+        <canCopy>false</canCopy>
+        <MainVerb Class="TorannMagic.Verb_ApplyRandomHediffFromList_Properties">
+            <verbClass>TorannMagic.Verb_ApplyRandomHediffFromList</verbClass>
+            <hediffDefs> <!--The list of Hediffs to choose from. Required-->
+                <li>TM_CombatDrugsPain_HD</li>
+                <li>TM_CombatDrugsMoving_HD</li>
+                <li>TM_CombatDrugsAwareness_HD</li>
+                <li>TM_CombatDrugsAccuracy_HD</li>
+            </hediffDefs>
+            <baseCount>2</baseCount> <!--The base amount of hediff applied per cast. Defaults to 1-->
+            <countUpgrade>TM_Upgrade_CombatDrugs_amount</countUpgrade> <!--The upgradeId of the upgrade to increase the amount of applications. Optional-->
+            <baseSeverity>0.12</baseSeverity> <!--The severity of each hediff applied. Stacks if the same hediff is applied multiple times. Defaults to 0.5-->
+                                              <!--At -1 severity per day each 0.001 point lasts for 1 second.-->
+            <severityUpgrade>TM_Upgrade_CombatDrugs_amount</severityUpgrade> <!--The upgradeId of the upgrade to increase the severity applied. Optional-->
+            <severityIncreasePerUpgrade>0.02</severityIncreasePerUpgrade> <!--The increase of severity applied per upgrade. Defaults to 0.1-->
+            <useEachOnceMax>true</useEachOnceMax> <!--Specifies if each hediff can be applied more than once. Defaults to false-->
+                <tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+                <tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+                <tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+                <tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <abilityDef>TM_CombatDrugs</abilityDef>
+            <isViolent>false</isViolent>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <warmupTime>3</warmupTime>
+            <SecondsToRecharge>1.0</SecondsToRecharge>
+            <range>10</range>
+            <AlwaysHits>true</AlwaysHits>
+<!--            <soundCast>TM_VibrationLow</soundCast>-->
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+            <AbilityTargetCategory>TargetThing</AbilityTargetCategory>
+            <targetParams>
+              <canTargetPawns>true</canTargetPawns>
+              <canTargetBuildings>false</canTargetBuildings>
+              <canTargetSelf>true</canTargetSelf>
+              <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+    <HediffDef>
+        <defName>TM_CombatDrugsPain_HD</defName>
+        <hediffClass>HediffWithComps</hediffClass>
+        <label>Combat Drugs (painkiller)</label>
+        <description>Combat drugs reducing pain</description>
+        <defaultLabelColor>(0.24,0.8,0.24)</defaultLabelColor>
+        <scenarioCanAdd>true</scenarioCanAdd>
+        <maxSeverity>1.0</maxSeverity>
+        <isBad>false</isBad>
+        <comps>
+          <li Class="HediffCompProperties_SeverityPerDay">
+            <severityPerDay>-1</severityPerDay>
+          </li>
+        </comps>
+        <stages>
+          <li>
+            <label></label>
+            <minSeverity>.001</minSeverity>
+            <painFactor>0.2</painFactor>
+          </li>
+        </stages>
+    </HediffDef>
+    <HediffDef>
+        <defName>TM_CombatDrugsMoving_HD</defName>
+        <hediffClass>HediffWithComps</hediffClass>
+        <label>Combat Drugs (movement)</label>
+        <description>Combat drugs enhancing movement</description>
+        <defaultLabelColor>(0.24,0.8,0.24)</defaultLabelColor>
+        <scenarioCanAdd>true</scenarioCanAdd>
+        <maxSeverity>1.0</maxSeverity>
+        <isBad>false</isBad>
+        <comps>
+          <li Class="HediffCompProperties_SeverityPerDay">
+            <severityPerDay>-1</severityPerDay>
+          </li>
+        </comps>
+        <stages>
+          <li>
+            <label></label>
+            <minSeverity>.001</minSeverity>
+            <capMods>
+              <li>
+                <capacity>Moving</capacity>
+                <offset>.2</offset>
+              </li>
+            </capMods>
+            <statOffsets>
+                <MoveSpeed>0.5</MoveSpeed>
+            </statOffsets>
+          </li>
+        </stages>
+    </HediffDef>
+    <HediffDef>
+        <defName>TM_CombatDrugsAwareness_HD</defName>
+        <hediffClass>HediffWithComps</hediffClass>
+        <label>Combat Drugs (awareness)</label>
+        <description>Combat drugs enhancing awareness</description>
+        <defaultLabelColor>(0.24,0.8,0.24)</defaultLabelColor>
+        <scenarioCanAdd>true</scenarioCanAdd>
+        <maxSeverity>1.0</maxSeverity>
+        <isBad>false</isBad>
+        <comps>
+          <li Class="HediffCompProperties_SeverityPerDay">
+            <severityPerDay>-1</severityPerDay>
+          </li>
+        </comps>
+        <stages>
+          <li>
+            <label></label>
+            <minSeverity>.001</minSeverity>
+                <capMods>
+                  <li>
+                    <capacity>Sight</capacity>
+                    <offset>.2</offset>
+                  </li>
+                </capMods>
+            <statOffsets>
+                <MeleeDodgeChance>+5</MeleeDodgeChance>
+            </statOffsets>
+          </li>
+        </stages>
+    </HediffDef>
+    <HediffDef>
+        <defName>TM_CombatDrugsAccuracy_HD</defName>
+        <hediffClass>HediffWithComps</hediffClass>
+        <label>Combat Drugs (accuracy)</label>
+        <description>Combat drugs enhancing accuracy</description>
+        <defaultLabelColor>(0.24,0.8,0.24)</defaultLabelColor>
+        <scenarioCanAdd>true</scenarioCanAdd>
+        <maxSeverity>1.0</maxSeverity>
+        <isBad>false</isBad>
+        <comps>
+          <li Class="HediffCompProperties_SeverityPerDay">
+            <severityPerDay>-1</severityPerDay>
+          </li>
+        </comps>
+        <stages>
+          <li>
+            <label></label>
+            <minSeverity>.001</minSeverity>
+            <statOffsets>
+                <ShootingAccuracyPawn>+5</ShootingAccuracyPawn>
+                <MeleeHitChance>+5</MeleeHitChance>
+            </statOffsets>
+          </li>
+        </stages>
+    </HediffDef>
+
+</Defs>

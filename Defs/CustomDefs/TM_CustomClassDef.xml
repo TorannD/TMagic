@@ -39,12 +39,17 @@
 			</classFighterAbilities>
 			<learnableSkills>								<!-- learnable might related skills - currently all learnable might skills are open to every class -->
 			</learnableSkills>
+
+            <customPowers>
+                <li>TM_C_Firebolt</li>                      <!-- A list of TorannMagic.PowerDef identified by their "defName"-->
+                <!--<li>TM_Emergency</li>-->                <!-- These will appear in a separate tab besides Might and Magic-->
+            </customPowers>
 			
 			<isMage>true</isMage>							<!-- assigns mana need, validation to execute magic related tasks, and determines prerequisite trait to become this type of class -->
 			<isFighter>true</isFighter>						<!-- assigns stamina need, validation to execute might related tasks, and determines prerequisite trait to become this type of class -->
 															<!-- if both mage and fighter are true, then either precursor is valid for promotion -->
-            <!--<maxMageLevel>150</maxMageLevel>-->         <!--Overrides the default maxLevel of 150-->
-            <!--<maxFighterLevel>150</maxFighterLevel>-->         <!--Overrides the default maxLevel of 150-->
+            <!--<maxMageLevel>150</maxMageLevel>-->         <!-- Overrides the default maxLevel of 150-->
+            <!--<maxFighterLevel>150</maxFighterLevel>-->   <!-- Overrides the default maxLevel of 150-->
 			<isNecromancer>false</isNecromancer>			<!-- counts as a necromancer for undead upkeep -->
 			<isUndead>false</isUndead>						<!-- counts as an undead for light magic damage, assign class hediff "TM_Undead" or "TM_LichHD" for undead health benefits; -->
 															<!-- class with undead hediffs will instantly die if no necromancer is available to sustain -->
@@ -54,10 +59,32 @@
 		</customClasses>			
 	</TorannMagic.TM_CustomClassDef>		
 
+    <TorannMagic.PowerDef>                                  <!-- The definition of a custom power and its upgrades-->
+        <defName>TM_C_Firebolt</defName>                    <!-- Every Def needs a unique defName.-->
+        <learnCost>2</learnCost>                            <!-- The cost to learn the initial ability. Defaults to 1.-->
+        <upgradeCost>1</upgradeCost>                        <!-- The cost to increase upgrade from one ability to the next. Defaults to 1.-->
+        <abilityLine>                                       <!-- A list of TorannMagic.AbilityDef identified by their "defName"-->
+            <li>TM_Firebolt</li>                            <!-- The first ability will be the one you learn and each subsequent ability is the next upgrade-->
+            <li>TM_Firestorm</li>                           <!-- These will appear in a separate tab besides Might and Magic-->
+        </abilityLine>
+        <upgrades>
+            <li>TM_Custom_detailed_upgrade</li>             <!-- A list of TorannMagic.UpgradeDef identified by their "defName"-->
+            <li>TM_Custom_minimal_upgrade</li>              <!-- Any upgrade can go here, they don't need to be related to the abilityLine-->
+        </upgrades>                                         <!-- These upgrades will appear under the ability in the custom class tab-->
+    </TorannMagic.PowerDef>
+
+    <TorannMagic.UpgradeDef>
+        <defName>TM_Custom_detailed_upgrade</defName>       <!-- Every Def needs a unique defName.-->
+        <label>Detailed upgrade</label>                     <!-- The human-readable name for this Def.-->
+        <upgradeId>TM_Firebolt_pwr</upgradeId>              <!-- The id of the effect in the source code, usually [AbilityDef.defName]+[_pwr|_eff|_ver]. If absenr the "defName" will be used.-->
+        <title>Custom upgrade</title>                       <!-- The intended title of the upgrade to show in the ability tab. if absent the "label", "upgradeId" or "defName" will be used in that order.-->
+        <description>description of this def</description>  <!-- The description of the def. Not used directly but some other mods/components/inspector might use this.-->
+        <upgradeDescription>Description</upgradeDescription><!-- The intended description of the upgrade shown in the ability tab. If absent it will default to the description of the Def.-->
+        <upgradeCost>2</upgradeCost>                        <!-- The cost to increase this upgrade by one level. Defaults to 1.-->
+        <levelMax>2</levelMax>                              <!-- The amount of levels this upgrade has. Defaults to 3.-->
+    </TorannMagic.UpgradeDef>
+    <TorannMagic.UpgradeDef>
+        <defName>TM_Custom_minimal_upgrade</defName>        <!-- An upgrade can be as simple as this, if you don't mind the default values and -->
+    </TorannMagic.UpgradeDef>                               <!-- the defName as the title, upgradeId and description-->
+
 </Defs>
-
-	<!-- ============ Mage Abilities 
-      
-
-	=============-->
-	
