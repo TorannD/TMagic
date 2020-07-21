@@ -1667,9 +1667,17 @@ namespace TorannMagic
             }
             if (this.customClass != null)
             {
-                for(int j = 0; j< this.MightData.AllMightPowers.Count; j++)
+                for (int j = 0; j < this.MightData.AllMightPowersWithSkills.Count; j++)
+                {
+                    if (this.MightData.AllMightPowersWithSkills[j].learned && !this.customClass.classMageAbilities.Contains(this.MightData.AllMightPowersWithSkills[j].abilityDef))
+                    {
+                        this.MightData.AllMightPowersWithSkills[j].learned = false;
+                        this.RemovePawnAbility(this.MightData.AllMightPowers[j].abilityDef);
+                    }
+                }
+                for (int j = 0; j< this.MightData.AllMightPowers.Count; j++)
                 {                    
-                    if(this.MightData.AllMightPowers[j].learned && !this.customClass.classFighterAbilities.Contains(this.MightData.AllMightPowers[j].abilityDef))
+                    if (this.MightData.AllMightPowers[j].learned && !this.customClass.classFighterAbilities.Contains(this.MightData.AllMightPowers[j].abilityDef))
                     {
                         this.RemovePawnAbility(this.MightData.AllMightPowers[j].abilityDef);
                         this.AddPawnAbility(this.MightData.AllMightPowers[j].abilityDef);

@@ -1623,7 +1623,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
-	
+	<!-- 
 	<TraitDef>  
 		<defName>TM_Shaman</defName>
 		<ignoreConfigErrors>true</ignoreConfigErrors>
@@ -1683,7 +1683,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_TheShadow</li>
 		  <li>TM_Brightmage</li>
 		</conflictingTraits>	
-	</TraitDef>
+	</TraitDef> -->
 	
 	<!-- Might Classes -->
 	

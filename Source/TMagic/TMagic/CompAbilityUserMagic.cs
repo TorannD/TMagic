@@ -3257,6 +3257,14 @@ namespace TorannMagic
             {
                 if (this.customClass != null)
                 {
+                    for(int j = 0; j < this.MagicData.AllMagicPowersWithSkills.Count; j++)
+                    {
+                        if(this.MagicData.AllMagicPowersWithSkills[j].learned && !this.customClass.classMageAbilities.Contains(this.MagicData.AllMagicPowersWithSkills[j].abilityDef))
+                        {
+                            this.MagicData.AllMagicPowersWithSkills[j].learned = false;
+                            this.RemovePawnAbility(this.MagicData.AllMagicPowers[j].abilityDef);
+                        }
+                    }
                     for (int j = 0; j < this.MagicData.AllMagicPowers.Count; j++)
                     {
                         if (this.MagicData.AllMagicPowers[j].learned && !this.customClass.classMageAbilities.Contains(this.MagicData.AllMagicPowers[j].abilityDef))
@@ -8298,7 +8306,7 @@ namespace TorannMagic
                 Pawn abilityUser = base.AbilityUser;
                 int index = TM_ClassUtility.IsCustomClassIndex(abilityUser.story.traits.allTraits);
                 if (index >= 0)
-                {
+                {                    
                     if (TM_ClassUtility.CustomClasses()[index].isMage)
                     {
                         this.customClass = TM_ClassUtility.CustomClasses()[index];
