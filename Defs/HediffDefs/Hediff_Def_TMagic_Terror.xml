@@ -7,11 +7,12 @@
     <defaultLabelColor>(0.8, 0.8, 1)</defaultLabelColor>
     <label>Terror</label>
 	<description>A raw display of magical power is inducing fear in this pawn.</description>
-    <lethalSeverity>50</lethalSeverity>
 	<isBad>true</isBad>
+	<scenarioCanAdd>false</scenarioCanAdd>
+	<maxSeverity>50.0</maxSeverity>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>-50</severityPerDay>
+        <severityPerDay>-100</severityPerDay>
       </li>
     </comps>
     <stages>
@@ -34,8 +35,8 @@
         <minSeverity>15</minSeverity>
 		<mentalStateGivers>
 			<li>
-			 <mentalState>PanicFlee</mentalState>
-			 <mtbDays>0.03</mtbDays>
+			 <mentalState>TM_PanicFlee</mentalState>
+			 <mtbDays>0.05</mtbDays>
 			</li>
 		</mentalStateGivers>
         <capMods>
@@ -62,8 +63,8 @@
         <minSeverity>30</minSeverity>
 	    <mentalStateGivers>
 			<li>
-			 <mentalState>PanicFlee</mentalState>
-			 <mtbDays>0.01</mtbDays>
+			 <mentalState>TM_PanicFlee</mentalState>
+			 <mtbDays>0.025</mtbDays>
 			</li>
 	    </mentalStateGivers>
         <capMods>

@@ -562,12 +562,6 @@ NOTE: Paracyte plants will lower mana regen for all mages on the map if the numb
 		<li>TM_PlantCultivation</li>
 	  </sowResearchPrerequisites>
    </plant>
-   <comps>
-      <li Class="CompProperties_Glower">
-        <glowRadius>3</glowRadius>
-		<glowColor>(204,255,150,0)</glowColor>
-	  </li>
-   </comps>
   </ThingDef>
   
   <ThingDef ParentName="TM_PlantBase">

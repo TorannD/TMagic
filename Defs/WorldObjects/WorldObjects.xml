@@ -14,4 +14,18 @@
     </comps>
   </WorldObjectDef>
   
+  <WorldObjectDef>
+    <defName>TM_TravelingTransportLightBeam</defName>
+    <label>transport beam</label>
+    <description>Transport pods in flight.</description>
+    <worldObjectClass>TorannMagic.WorldTransport.TM_TravelingTransportPods</worldObjectClass>
+    <texture>Other/light_pod</texture>
+    <useDynamicDrawer>true</useDynamicDrawer>
+    <expandingIcon>true</expandingIcon>
+    <expandingIconTexture>Other/light_pod</expandingIconTexture>
+    <expandingIconPriority>60</expandingIconPriority>
+    <expandMore>true</expandMore>
+    <allowCaravanIncidentsWhichGenerateMap>true</allowCaravanIncidentsWhichGenerateMap>
+  </WorldObjectDef>
+  
 </Defs>

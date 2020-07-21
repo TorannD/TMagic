@@ -119,42 +119,54 @@ namespace TorannMagic
                 //if (pawn.RaceProps.Humanlike)
                 //{
                 using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+                {
+                    while (enumerator.MoveNext())
                     {
-                        while (enumerator.MoveNext())
+                        Hediff rec = enumerator.Current;
+                        bool flag2 = num > 0;
+                        if (flag2)
                         {
-                            Hediff rec = enumerator.Current;
-                            bool flag2 = num > 0;
-                            if (flag2)
+                            if (rec.def.defName == "Cataract" || rec.def.defName == "HearingLoss" || rec.def.defName.Contains("ToxicBuildup"))
                             {
-                                if (rec.def.defName == "Cataract" || rec.def.defName == "HearingLoss" || rec.def.defName.Contains("ToxicBuildup"))
-                                {
-                                    rec.Heal(.4f + .3f * pwrVal);
-                                    num--;
-                                }
-                                if ((rec.def.defName == "Blindness" || rec.def.defName.Contains("Asthma") || rec.def.defName == "Cirrhosis" || rec.def.defName == "ChemicalDamageModerate") && verVal >= 1)
-                                {
-                                    rec.Heal(.3f + .2f * pwrVal);
-                                    if (rec.def.defName.Contains("Asthma"))
-                                    {
-                                        pawn.health.RemoveHediff(rec);
-                                    }
-                                    num--;
-                                }
-                                if ((rec.def.defName == "Frail" || rec.def.defName == "BadBack" || rec.def.defName.Contains("Carcinoma") || rec.def.defName == "ChemicalDamageSevere") && verVal >= 2)
-                                {
-                                    rec.Heal(.2f + .15f * pwrVal);
-                                    num--;
-                                }
-                                if ((rec.def.defName.Contains("Alzheimers") || rec.def.defName == "Dementia" || rec.def.defName.Contains("HeartArteryBlockage") || rec.def.defName == "PsychicShock" || rec.def.defName == "CatatonicBreakdown") && verVal >= 3)
-                                {
-                                    rec.Heal(.1f + .1f * pwrVal);
-                                    num--;
-                                }
-                                TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .6f);
-                                TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .4f);
+                                rec.Heal(.4f + .3f * pwrVal);
+                                num--;
                             }
+                            if ((rec.def.defName == "Blindness" || rec.def.defName.Contains("Asthma") || rec.def.defName == "Cirrhosis" || rec.def.defName == "ChemicalDamageModerate") && verVal >= 1)
+                            {
+                                rec.Heal(.3f + .2f * pwrVal);
+                                if (rec.def.defName.Contains("Asthma"))
+                                {
+                                    pawn.health.RemoveHediff(rec);
+                                }
+                                num--;
+                            }
+                            if ((rec.def.defName == "Frail" || rec.def.defName == "BadBack" || rec.def.defName.Contains("Carcinoma") || rec.def.defName == "ChemicalDamageSevere") && verVal >= 2)
+                            {
+                                rec.Heal(.2f + .15f * pwrVal);
+                                num--;
+                            }
+                            if ((rec.def.defName.Contains("Alzheimers") || rec.def.defName == "Dementia" || rec.def.defName.Contains("HeartArteryBlockage") || rec.def.defName == "PsychicShock" || rec.def.defName == "CatatonicBreakdown") && verVal >= 3)
+                            {
+                                rec.Heal(.1f + .1f * pwrVal);
+                                num--;
+                            }
+                            if(rec.def.defName.Contains("Abasia") && verVal >= 3)
+                            {
+                                if(Rand.Chance(.25f + (.05f * pwrVal)))
+                                {
+                                    pawn.health.RemoveHediff(pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("Abasia")));
+                                    num--;
+                                }
+                                else
+                                {
+                                    MoteMaker.ThrowText(pawn.DrawPos, pawn.Map, "Failed to remove Abasia...");
+                                }
+                            }
+                            TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .6f);
+                            TM_MoteMaker.ThrowRegenMote(pawn.Position.ToVector3Shifted(), pawn.Map, .4f);
                         }
                     }
+                }
                 //}
                 using (IEnumerator<Hediff_Addiction> enumerator = pawn.health.hediffSet.GetHediffs<Hediff_Addiction>().GetEnumerator())
                 {

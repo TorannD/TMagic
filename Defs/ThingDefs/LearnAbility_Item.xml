@@ -673,6 +673,50 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
   </ThingDef>
+  
+  <ThingDef ParentName="Partial_ArcaneScriptBase">
+    <defName>Torn_BookOfTheSun</defName>
+    <label>Torn Script: Brightmage</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a gifted pawn how to become a brightmage. Brightmages manipulate the power of sunlight to create intense, destructive magic.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/torn_fire</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+  
+<!--   <ThingDef ParentName="Partial_ArcaneScriptBase">
+    <defName>Torn_BookOfShamanism</defName>
+    <label>Torn Script: Shaman</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a gifted pawn how to become a shaman; a tribal leader focused on ritualistic magic to create powerful curses and enchantments, and extends their influence through totems.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/torn_shaman</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef> -->
 
   <!--=============== Arcane Scripts ====================-->
 
@@ -1082,6 +1126,50 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
   </ThingDef>
+  
+  <ThingDef ParentName="ArcaneScriptBase">
+    <defName>BookOfTheSun</defName>
+    <label>Arcane Tome: Brightmage</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a gifted pawn how to become a brightmage. Brightmages manipulate the power of sunlight to create intense, destructive magic.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/brightmage</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+  
+<!--   <ThingDef ParentName="ArcaneScriptBase">
+    <defName>BookOfShamanism</defName>
+    <label>Arcane Tome: Shaman</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a gifted pawn how to become a shaman; a tribal leader focused on ritualistic magic to create powerful curses and enchantments, and extends their influence through totems.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/shaman</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef> -->
   
     <!--=============== Combat Forms ====================-->
 
@@ -3322,8 +3410,53 @@ Produces 400Wd adjusted by ability power.</description>
       <texPath>Books/scroll_power</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-
   </ThingDef>
+  <!-- 
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_GuardianSpirit</defName>
+    <label>Shaman Spell: Guardian Spirit</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a shaman how to call forth their guardian spirit.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>2260</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>252</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>10</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef> -->
   
   <ThingDef ParentName="ArcaneSpellBase">
     <defName>SpellOf_HolyWrath</defName>
@@ -3811,8 +3944,7 @@ Produces 400Wd adjusted by ability power.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
-	<alwaysHaulable>true</alwaysHaulable>
-	
+	<alwaysHaulable>true</alwaysHaulable>	
 	<resourceReadoutPriority>Middle</resourceReadoutPriority>
     <tradeNeverStack>true</tradeNeverStack>
     <useHitPoints>true</useHitPoints>
@@ -3848,7 +3980,53 @@ Produces 400Wd adjusted by ability power.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-
+  </ThingDef>
+  
+  <ThingDef ParentName="ArcaneSpellBase">
+    <defName>SpellOf_SpiritOfLight</defName>
+    <label>Brightmage Spell: Spirit Of Light</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a Brightmage how to summon a Spirit of Light.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>2260</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+	<costList>
+		<RawMagicyte>252</RawMagicyte>
+		<DevilstrandCloth>100</DevilstrandCloth>
+	</costList>
+	<recipeMaker>		    
+		<workAmount>4000</workAmount>
+		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>10</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_MasterScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll_lit</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	
   </ThingDef>
   
       <!--=============== Fighter Skills - Single ====================-->

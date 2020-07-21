@@ -131,7 +131,7 @@ namespace TorannMagic
                                 float immuneSevDay = immuneComp.Def.CompProps<HediffCompProperties_Immunizable>().severityPerDayNotImmune;
                                 if (immuneSevDay != 0 && !rec.FullyImmune())
                                 {
-                                    rec.Severity -= ((immuneSevDay * ticks * this.parent.Severity) / (1000));
+                                    rec.Severity -= ((immuneSevDay * ticks * this.parent.Severity) / (2500));
                                 }
                             }
                         }

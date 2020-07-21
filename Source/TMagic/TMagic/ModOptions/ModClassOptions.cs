@@ -84,8 +84,10 @@ namespace TorannMagic.ModOptions
             List<ThingDef> removedThings = new List<ThingDef>();
             List<ThingDef> customThings = new List<ThingDef>();
             List<ThingDef> removedCustomThings = new List<ThingDef>();
-            
-            for(int i = 0; i < TM_CustomClassDef.Named("TM_CustomClasses").customClasses.Count; i++)
+            List<ThingDef> classSpells = new List<ThingDef>();
+            List<ThingDef> removedSpells = new List<ThingDef>();
+
+            for (int i = 0; i < TM_CustomClassDef.Named("TM_CustomClasses").customClasses.Count; i++)
             {
                 TMDefs.TM_CustomClass cc = TM_CustomClassDef.Named("TM_CustomClasses").customClasses[i];
                 if (Settings.Instance.CustomClass[cc.classTrait.ToString()])
@@ -176,6 +178,14 @@ namespace TorannMagic.ModOptions
                     if(cc.tornScript != null)
                     {
                         removedCustomThings.Add(cc.tornScript);                        
+                    }
+                    for (int k = 0; k < cc.learnableSpells.Count; k++)
+                    {
+                        removedSpells.Add(cc.learnableSpells[k]);
+                    }
+                    for (int k = 0; k < cc.learnableSkills.Count; k++)
+                    {
+                        removedSpells.Add(cc.learnableSkills[k]);
                     }
                     removedCustomThings.Add(cc.fullScript);
                 }
@@ -306,6 +316,13 @@ namespace TorannMagic.ModOptions
                         }
                     }
                 }
+                else
+                {
+                    if(current.defName == "SpellOf_FoldReality")
+                    {
+                        classSpells.Add(current);
+                    }
+                }
                 if (!settingsRef.FireMage)
                 {
                     if (current.defName == "Torn_BookOfInnerFire" || current.defName == "BookOfInnerFire" || current.defName == "SpellOf_Firestorm" || current.defName == "SpellOf_DryGround")
@@ -316,14 +333,28 @@ namespace TorannMagic.ModOptions
                         }
                     }
                 }
+                else
+                {
+                    if (current.defName == "SpellOf_Firestorm" || current.defName == "SpellOf_DryGround")
+                    {
+                        classSpells.Add(current);
+                    }
+                }
                 if (!settingsRef.IceMage)
                 {
-                    if (current.defName == "Torn_BookOfHeartOfFrost" || current.defName == "BookOfHeartOfFrost" || current.defName == "SpellOf_FertileLands" || current.defName == "SpellOf_WetGround")
+                    if (current.defName == "Torn_BookOfHeartOfFrost" || current.defName == "BookOfHeartOfFrost" || current.defName == "SpellOf_Blizzard" || current.defName == "SpellOf_WetGround")
                     {
                         if (!customThings.Contains(current))
                         {
                             removedThings.Add(current);
                         }
+                    }
+                }
+                else
+                {
+                    if (current.defName == "SpellOf_Blizzard" || current.defName == "SpellOf_WetGround")
+                    {
+                        classSpells.Add(current);
                     }
                 }
                 if (!settingsRef.LitMage)
@@ -336,6 +367,13 @@ namespace TorannMagic.ModOptions
                         }
                     }
                 }
+                else
+                {
+                    if (current.defName == "SpellOf_EyeOfTheStorm" || current.defName == "SpellOf_ChargeBattery")
+                    {
+                        classSpells.Add(current);
+                    }
+                }
                 if (!settingsRef.Druid)
                 {
                     if (current.defName == "Torn_BookOfNature" || current.defName == "BookOfNature" || current.defName == "SpellOf_RegrowLimb" || current.defName == "SeedofRegrowth" || current.defName == "SpellOf_FertileLands")
@@ -344,6 +382,13 @@ namespace TorannMagic.ModOptions
                         {
                             removedThings.Add(current);
                         }
+                    }
+                }
+                else
+                {
+                    if (current.defName == "SpellOf_RegrowLimb" ||  current.defName == "SpellOf_FertileLands")
+                    {
+                        classSpells.Add(current);
                     }
                 }
                 if (!settingsRef.Summoner)
@@ -360,6 +405,13 @@ namespace TorannMagic.ModOptions
                         }
                     }
                 }
+                else
+                {
+                    if (current.defName == "SpellOf_SummonPoppi")
+                    {
+                        classSpells.Add(current);
+                    }
+                }
                 if (!settingsRef.Paladin)
                 {
                     if (current.defName == "Torn_BookOfValiant" || current.defName == "BookOfValiant" || current.defName == "SpellOf_HolyWrath")
@@ -368,6 +420,13 @@ namespace TorannMagic.ModOptions
                         {
                             removedThings.Add(current);
                         }
+                    }
+                }
+                else
+                {
+                    if (current.defName == "SpellOf_HolyWrath")
+                    {
+                        classSpells.Add(current);
                     }
                 }
                 if (!settingsRef.Priest)
@@ -380,6 +439,13 @@ namespace TorannMagic.ModOptions
                         }
                     }
                 }
+                else
+                {
+                    if (current.defName == "SpellOf_Resurrection")
+                    {
+                        classSpells.Add(current);
+                    }
+                }
                 if (!settingsRef.Bard)
                 {
                     if (current.defName == "Torn_BookOfBard" || current.defName == "BookOfBard" || current.defName == "SpellOf_BattleHymn")
@@ -390,6 +456,13 @@ namespace TorannMagic.ModOptions
                         }
                     }
                 }
+                else
+                {
+                    if (current.defName == "SpellOf_BattleHymn")
+                    {
+                        classSpells.Add(current);
+                    }
+                }
                 if (!settingsRef.Necromancer)
                 {
                     if (current == TorannMagicDefOf.BookOfNecromancer || current == TorannMagicDefOf.Torn_BookOfUndead || current == TorannMagicDefOf.SpellOf_LichForm || current == TorannMagicDefOf.TM_Artifact_NecroticOrb)
@@ -398,6 +471,13 @@ namespace TorannMagic.ModOptions
                         {
                             removedThings.Add(current);
                         }
+                    }
+                }
+                else
+                {
+                    if (current == TorannMagicDefOf.SpellOf_LichForm)
+                    {
+                        classSpells.Add(current);
                     }
                 }
                 if (!settingsRef.Geomancer)
@@ -411,6 +491,13 @@ namespace TorannMagic.ModOptions
                         }
                     }
                 }
+                else
+                {
+                    if (current.defName == "SpellOf_Meteor")
+                    {
+                        classSpells.Add(current);
+                    }
+                }
                 if (!settingsRef.Demonkin)
                 {
                     if (current.defName == "Torn_BookOfDemons" || current.defName == "BookOfDemons" || current.defName == "SpellOf_Scorn" || current.defName == "SpellOf_PsychicShock")
@@ -419,6 +506,13 @@ namespace TorannMagic.ModOptions
                         {
                             removedThings.Add(current);
                         }
+                    }
+                }
+                else
+                {
+                    if (current.defName == "SpellOf_Scorn" || current.defName == "SpellOf_PsychicShock")
+                    {
+                        classSpells.Add(current);
                     }
                 }
                 if (!settingsRef.Technomancer)
@@ -431,7 +525,13 @@ namespace TorannMagic.ModOptions
                         }
                     }
                 }
-
+                else
+                {
+                    if (current == TorannMagicDefOf.SpellOf_TechnoShield || current == TorannMagicDefOf.SpellOf_Sabotage || current == TorannMagicDefOf.SpellOf_Overdrive || current == TorannMagicDefOf.SpellOf_OrbitalStrike)
+                    {
+                        classSpells.Add(current);
+                    }
+                }
                 if (!settingsRef.BloodMage)
                 {
                     if (current == TorannMagicDefOf.BookOfHemomancy || current == TorannMagicDefOf.Torn_BookOfHemomancy || current == TorannMagicDefOf.SpellOf_BloodMoon)
@@ -442,7 +542,13 @@ namespace TorannMagic.ModOptions
                         }
                     }
                 }
-
+                else
+                {
+                    if (current == TorannMagicDefOf.SpellOf_BloodMoon)
+                    {
+                        classSpells.Add(current);
+                    }
+                }
                 if (!settingsRef.Enchanter)
                 {
                     if (current == TorannMagicDefOf.BookOfEnchanter || current == TorannMagicDefOf.Torn_BookOfEnchanter || current == TorannMagicDefOf.SpellOf_Shapeshift)
@@ -453,7 +559,13 @@ namespace TorannMagic.ModOptions
                         }
                     }
                 }
-
+                else
+                {
+                    if (current == TorannMagicDefOf.SpellOf_Shapeshift)
+                    {
+                        classSpells.Add(current);
+                    }
+                }
                 if (!settingsRef.Chronomancer)
                 {
                     if (current == TorannMagicDefOf.BookOfChronomancer || current == TorannMagicDefOf.Torn_BookOfChronomancer || current == TorannMagicDefOf.SpellOf_Recall)
@@ -464,7 +576,13 @@ namespace TorannMagic.ModOptions
                         }
                     }
                 }
-
+                else
+                {
+                    if (current == TorannMagicDefOf.SpellOf_Recall)
+                    {
+                        classSpells.Add(current);
+                    }
+                }
                 if (!settingsRef.ChaosMage)
                 {
                     if (current == TorannMagicDefOf.BookOfChaos || current == TorannMagicDefOf.Torn_BookOfChaos)
@@ -482,6 +600,15 @@ namespace TorannMagic.ModOptions
                 if(!removedThings.Contains(removedCustomThings[i]))
                 {
                     removedThings.Add(removedCustomThings[i]);
+                }
+            }
+
+            for(int i =0; i < removedSpells.Count; i++)
+            {
+                if(!customThings.Contains(removedSpells[i]) && !classSpells.Contains(removedSpells[i]))
+                {
+                    removedThings.Add(removedSpells[i]);
+                    removedCustomThings.Add(removedSpells[i]);
                 }
             }
 
@@ -628,7 +755,7 @@ namespace TorannMagic.ModOptions
             {
                 if(RecipeEnumerable.Any((RecipeDef x) => x.defName == "Make_" + removedCustomThings[i].defName))
                 {
-                    removedRecipes.Add(RecipeEnumerable.FirstOrDefault<RecipeDef>((RecipeDef x) => x.defName == "Make_" + removedCustomThings[i]));
+                    removedRecipes.Add(RecipeEnumerable.FirstOrDefault<RecipeDef>((RecipeDef x) => x.defName == ("Make_" + removedCustomThings[i].ToString())));
                 }
             }
 

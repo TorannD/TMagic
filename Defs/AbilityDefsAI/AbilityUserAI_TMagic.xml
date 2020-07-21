@@ -3133,5 +3133,80 @@ Document made by ChJees
 			<li>ArcaneBolt</li>
 		</tags>
 	</AbilityUserAI.AbilityAIDef>	
+	
+	
+	<!-- brightmage -->
+	<AbilityUserAI.AbilityUserAIProfileDef Name="BrightmageMagicAbilityUserAI" Abstract="True">
+		<compAbilityUserClass>TorannMagic.CompAbilityUserMagic</compAbilityUserClass>
+		<!-- Decision tree which helps pick ability to use. -->
+		<decisionTree>
+			<subNodes>
+				<!-- In combat -->
+				<li Class="AbilityUserAI.AbilityDecisionConditionalNode_InCombat">
+					<subNodes>
+						<li Class="AbilityUserAI.AbilityDecisionConditionalNode_HasEnemyTarget">
+							<subNodes>															
+								<li Class="AbilityUserAI.AbilityDecisionConditionalNode_EnemyTargetDistance">
+									<maxDistance>48.0</maxDistance>
+									<minDistance>8.0</minDistance>
+									<subNodes>
+										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+											<tags>
+												<li>Sunfire</li>
+											</tags>
+										</li>
+										<li Class="AbilityUserAI.AbilityDecisionNode_PickAbilityWithMatchingTags">
+											<tags>
+												<li>LightBurst</li>
+											</tags>
+										</li>
+									</subNodes>
+								</li>																								
+							</subNodes>
+						</li>
+					</subNodes>
+				</li>
+			</subNodes>
+		</decisionTree>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Brightmage -->
+	<AbilityUserAI.AbilityUserAIProfileDef ParentName="BrightmageMagicAbilityUserAI">
+		<defName>TMagic_Brightmage</defName>
+		<matchingTraits>
+			<li>TM_Brightmage</li>
+		</matchingTraits>
+		<abilities>
+			<li>TMagic_Sunfire</li>
+			<li>TMagic_LightBurst</li>
+		</abilities>
+	</AbilityUserAI.AbilityUserAIProfileDef>
+	
+	<!-- Brightmage Abilities -->	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_Sunfire</defName>
+		<ability>TM_Sunfire</ability>
+		<abilityRadius>4</abilityRadius>
+		<minRange>12.0</minRange>
+		<power>5.0</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<workerClass>AbilityUserAI.AbilityWorker_AreaOfEffect</workerClass>
+		<tags>
+			<li>Sunfire</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
+	
+	<AbilityUserAI.AbilityAIDef ParentName="BaseMagicAbilityAI">
+		<defName>TMagic_LightBurst</defName>
+		<ability>TM_LightBurst</ability>
+		<abilityRadius>4</abilityRadius>
+		<minRange>8.0</minRange>
+		<power>3</power>
+		<needSeeingTarget>true</needSeeingTarget>
+		<workerClass>AbilityUserAI.AbilityWorker_AreaOfEffect</workerClass>
+		<tags>
+			<li>LightBurst</li>
+		</tags>
+	</AbilityUserAI.AbilityAIDef>
 
 </Defs>

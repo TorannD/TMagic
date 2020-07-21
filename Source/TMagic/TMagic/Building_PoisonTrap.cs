@@ -10,6 +10,7 @@ using Verse.AI.Group;
 
 namespace TorannMagic
 {
+    [StaticConstructorOnStartup]
     public class Building_PoisonTrap : Building
     {
         private List<Pawn> touchingPawns = new List<Pawn>();
@@ -24,8 +25,13 @@ namespace TorannMagic
         int strikeDelay = 40;
         int lastStrike = 0;
         bool triggered = false;
-        float radius = 2.3f;
+        float radius = 3f;
+        int ticksTillReArm = 15000;
+        bool rearming = false;
         ThingDef fog;
+
+        private static readonly Material trap_rearming = MaterialPool.MatFrom("Other/PoisonTrap_rearming");
+        private static readonly MaterialPropertyBlock MatPropertyBlock = new MaterialPropertyBlock();
 
         public virtual bool Armed
         {
@@ -39,12 +45,27 @@ namespace TorannMagic
         {
             base.ExposeData();
             Scribe_Collections.Look<Pawn>(ref this.touchingPawns, "testees", LookMode.Reference, new object[0]);
-            Scribe_Values.Look<bool>(ref this.triggered, "triggered", true, false);
+            Scribe_Values.Look<bool>(ref this.triggered, "triggered", false, false);
+            Scribe_Values.Look<bool>(ref this.rearming, "rearming", false, false);
             Scribe_Values.Look<int>(ref this.age, "age", -1, false);
             Scribe_Values.Look<int>(ref this.duration, "duration", 600, false);
             Scribe_Values.Look<int>(ref this.strikeDelay, "strikeDelay", 0, false);
             Scribe_Values.Look<int>(ref this.lastStrike, "lastStrike", 0, false);
             Scribe_Defs.Look<ThingDef>(ref this.fog, "fog");        
+        }
+
+        public override void Draw()
+        {
+            if (rearming)
+            {
+                Matrix4x4 matrix = default(Matrix4x4);
+                matrix.SetTRS(this.DrawPos, Quaternion.identity, new Vector3(1f, 1f, 1f));   //drawer for beam
+                Graphics.DrawMesh(MeshPool.plane10, matrix, Building_PoisonTrap.trap_rearming, 0, null, 0, Building_PoisonTrap.MatPropertyBlock);
+            }
+            else
+            {
+                base.Draw();
+            }
         }
 
         public override void Tick()
@@ -67,8 +88,8 @@ namespace TorannMagic
                                 if (victim != null && !victim.Dead && victim.RaceProps.IsFlesh)
                                 {
                                     BodyPartRecord bpr = null;
-                                    bpr = victim.def.race.body.AllParts.FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.BreathingSource));
-                                    TM_Action.DamageEntities(victim, bpr, Rand.Range(1, 2), 2, TMDamageDefOf.DamageDefOf.TM_Poison, this);
+                                    bpr = victim.def.race.body.AllParts.InRandomOrder().FirstOrDefault<BodyPartRecord>((BodyPartRecord x) => x.def.tags.Contains(BodyPartTagDefOf.BreathingSource));
+                                    TM_Action.DamageEntities(victim, bpr, Rand.Range(1f, 2f), 2f, TMDamageDefOf.DamageDefOf.TM_Poison, this);
                                 }
                             }
                         }
@@ -83,7 +104,21 @@ namespace TorannMagic
                 this.age++;
                 if(this.age > this.duration)
                 {
-                    Destroy();
+                    this.age = 0;
+                    triggered = false;
+                    rearming = true;
+                    this.lastStrike = 0;
+                    //Destroy();
+                }
+            }
+            else if(rearming)
+            {
+                this.age++;
+                if(this.age > this.ticksTillReArm)
+                {
+                    this.age = 0;
+                    rearming = false;
+                    triggered = false;
                 }
             }
             else

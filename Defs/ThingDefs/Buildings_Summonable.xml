@@ -802,5 +802,40 @@ As you drawn near the statue, an eerie glint from the eyes of the stone sentinel
       </li>
     </comps>
   </ThingDef>
+  
+  <ThingDef ParentName="TM_BuildingBase">
+    <defName>TM_LightPod</defName>
+    <label>Light Beam</label>
+    <description>Transportation along a beam of light.</description>
+    <graphicData>
+      <texPath>Other/light_pod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <size>(1,1)</size>
+    <rotatable>false</rotatable>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>0.5</fillPercent>
+	<building>
+		<expandHomeArea>false</expandHomeArea>
+	</building>
+    <statBases>
+      <MaxHitPoints>10</MaxHitPoints>
+      <WorkToBuild>3000</WorkToBuild>
+      <Flammability>0</Flammability>
+    </statBases>
+    <costList>
+    </costList>
+	<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+	<resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
+    <comps>
+	  <li Class="CompProperties_Transporter">
+		<massCapacity>250</massCapacity>
+	  </li>
+      <li Class="CompProperties_Launchable" />
+    </comps>
+  </ThingDef>
 
 </Defs>

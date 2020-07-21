@@ -22,7 +22,7 @@ namespace TorannMagic
             this.level = 0;
 
             if(this.label == "TM_HolyWrath_ver" || this.label == "TM_HolyWrath_pwr" || this.label.Contains("TM_BardTraining") || this.label == "TM_Sentinel_pwr" || this.label == "TM_EnchanterStone_ver" || 
-                this.label == "TM_Polymorph_ver" || this.label.Contains("TM_Shapeshift") || this.label == "TM_AlterFate_pwr" || this.label.Contains("TM_ChaosTradition"))
+                this.label == "TM_Polymorph_ver" || this.label.Contains("TM_Shapeshift") || this.label == "TM_AlterFate_pwr" || this.label == "TM_LightSkip_pwr" || this.label.Contains("TM_ChaosTradition"))
             {
                 costToLevel = 2;
             }
@@ -44,7 +44,8 @@ namespace TorannMagic
                 this.levelMax = 50;
             }
             else if (newLabel == "TM_TechnoBit_pwr" || newLabel == "TM_TechnoBit_ver" || newLabel == "TM_TechnoBit_eff" || newLabel == "TM_TechnoTurret_pwr" || newLabel == "TM_TechnoTurret_ver" || newLabel == "TM_TechnoTurret_eff" || newLabel == "TM_TechnoWeapon_pwr" || newLabel == "TM_TechnoWeapon_ver" || newLabel == "TM_TechnoWeapon_eff" ||
-                 newLabel == "TM_Cantrips_pwr" || newLabel == "TM_Cantrips_eff" || newLabel == "TM_Cantrips_ver")
+                 newLabel == "TM_Totems_pwr" || newLabel == "TM_Totems_eff" || newLabel == "TM_Totems_ver" || newLabel == "TM_Totems_pwr" || newLabel == "TM_Totems_eff" || newLabel == "TM_Totems_ver" ||
+                 newLabel == "TM_SpiritOfLight_pwr" || newLabel == "TM_SpiritOfLight_eff" || newLabel == "TM_SpiritOfLight_ver")
             {
                 this.levelMax = 15;
             }
@@ -52,7 +53,7 @@ namespace TorannMagic
             {
                 this.levelMax = 30;
             }
-            else if (newLabel == "TM_Sentinel_pwr")
+            else if (newLabel == "TM_Sentinel_pwr" || newLabel == "TM_LightSkip_pwr")
             {
                 this.levelMax = 2;
             }

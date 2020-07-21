@@ -49,6 +49,9 @@ namespace TorannMagic
         public static ThingDef BookOfChaos;
         public static ThingDef Torn_BookOfChaos;
         public static ThingDef BookOfShadow;
+        public static ThingDef BookOfTheSun;
+        public static ThingDef Torn_BookOfTheSun;
+        public static ThingDef SpellOf_SpiritOfLight;
         public static ThingDef BookOfQuestion;
 
         public static HediffDef TM_Uncertainty;        
@@ -607,6 +610,51 @@ namespace TorannMagic
         public static ThoughtDef TM_ChaoticMindTD;
         public static HediffDef TM_ControlledChaosHD;
 
+        //Brightmage
+        public static TraitDef TM_Brightmage;
+
+        public static HediffDef TM_LightCapacitanceHD;
+        public static TMAbilityDef TM_LightLance;
+        public static ThingDef FlyingObject_LightLance;
+        public static TMAbilityDef TM_Sunfire;
+        public static TMAbilityDef TM_Sunfire_I;
+        public static TMAbilityDef TM_Sunfire_II;
+        public static TMAbilityDef TM_Sunfire_III;
+        public static TMAbilityDef TM_LightBurst;
+        public static HediffDef TM_LightBurstHD;
+        public static TMAbilityDef TM_LightSkipMass;   //standalone
+        public static TMAbilityDef TM_LightSkip;
+        public static TMAbilityDef TM_LightSkipGlobal; //standalone
+        public static TMAbilityDef TM_Refraction;       
+        public static TMAbilityDef TM_SpiritOfLight;
+        public static ThingDef FlyingObject_SpiritOfLight;
+        public static ThingDef Projectile_LightLaser;
+        public static ThingDef Projectile_ThrowingKnife;
+        public static ThingDef TM_LightPod;
+        public static ThingDef TM_LightPodLeaving;
+        public static WorldObjectDef TM_TravelingTransportLightBeam;
+        public static ThingDef TM_LightPodIncoming;
+        public static ThingDef TM_ActiveLightPod;
+        public static ThoughtDef TM_PleasantDreamsTD;
+        public static ThoughtDef TM_BrightDayTD;
+
+        //Shaman
+        public static TraitDef TM_Shaman;
+
+        public static TMAbilityDef TM_Totems;            
+        public static TMAbilityDef TM_ChainLightning;
+        public static TMAbilityDef TM_Enrage;
+        public static HediffDef TM_EnrageHD;
+        public static TMAbilityDef TM_Hex;
+        public static HediffDef TM_HexHD;
+        public static TMAbilityDef TM_SpiritWolves;
+        public static TMAbilityDef TM_SpiritWolves_I;
+        public static TMAbilityDef TM_SpiritWolves_II;
+        public static TMAbilityDef TM_SpiritWolves_III;
+        public static ThingDef FlyingObject_SpiritWolves;
+        public static TMAbilityDef TM_GuardianSpirit;
+        public static TMAbilityDef TM_DismissGuardianSpirit;
+
         //Shadow
         public static TraitDef TM_TheShadow;
 
@@ -617,7 +665,7 @@ namespace TorannMagic
         public static TMAbilityDef TM_ShadowStrike; //might
         public static TMAbilityDef TM_Nightshade; //might
         public static HediffDef TM_NightshadeHD;
-        public static HediffDef TM_NightshadeToxinHD;            
+        public static HediffDef TM_NightshadeToxinHD;         
 
         //Might 
         public static NeedDef TM_Stamina;
@@ -987,6 +1035,11 @@ namespace TorannMagic
         public static ThingDef Mote_BlueTwinkle;
         public static ThingDef Mote_Twinkle_grayscale;
         public static ThingDef Mote_ShadowCloud;
+        public static ThingDef Mote_Heat;
+        public static ThingDef Mote_LightShield;
+        public static ThingDef Mote_LightShield_Glow;
+        public static ThingDef Mote_Holy;
+        public static ThingDef Mote_LightBarrier;
 
         public static ThingDef Projectile_FogOfTorment;        
 
@@ -1017,6 +1070,7 @@ namespace TorannMagic
         public static EffecterDef TM_IgniteED;
         public static EffecterDef TM_SnapFreezeED;
         public static EffecterDef TM_SmallMagicCircleED;
+        public static EffecterDef TM_LightBurstED;
 
         //psychast copies, used with tm_motemaker.makeoverlay
         //adjusts def values on each cast
@@ -1089,6 +1143,9 @@ namespace TorannMagic
         public static SoundDef TM_WindLowSD;
         public static SoundDef TM_Thunder_OnMap;
         public static SoundDef TM_Thunder_OffMap;
+        public static SoundDef TM_FlashBang;
+        public static SoundDef TM_WolfHowl;
+        public static SoundDef TM_FireBurn;
 
         //Inspirations
         public static InspirationDef ID_Champion;
@@ -1108,7 +1165,7 @@ namespace TorannMagic
         public static MentalStateDef TM_WanderSad;
         public static MentalStateDef TM_WanderConfused;
         public static MentalStateDef WanderConfused;
-        public static ThoughtDef TM_MemoryWipe;
+        public static ThoughtDef TM_MemoryWipe;        
 
         //Joy kinds
         public static JoyKindDef Social;
@@ -1157,6 +1214,7 @@ namespace TorannMagic
 
         //CustomDefs
         public static TM_CustomDef TM_CustomDef;
+        public static TMAbilityDef TM_CompVerb;         //used for secondary targets
 
         //Custom ThingCategories
         public static ThingCategoryDef TM_MagicItems;

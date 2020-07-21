@@ -21,6 +21,10 @@ namespace TorannMagic
 
             if(soulPawn != null && !soulPawn.Dead && !soulPawn.Destroyed)
             {
+                if (ModCheck.Validate.GiddyUp.Core_IsInitialized())
+                {
+                    ModCheck.GiddyUp.ForceDismount(soulPawn);
+                }
                 bool drafted = soulPawn.Drafted;
                 bool soulPawnSpawned = soulPawn.Spawned;
                 Map map = soulPawn.Map;

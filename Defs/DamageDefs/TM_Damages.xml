@@ -1039,4 +1039,23 @@
     <soundExplosion>TM_SoftExplosion</soundExplosion>
   </DamageDef>
   
+  <DamageDef ParentName="TM_LocalInjuryBase">
+	<defName>TM_BurningLight</defName>
+	<label>Burning light</label>
+	<externalViolence>true</externalViolence>
+	<deathMessage>{0} was vanquished in burning light.</deathMessage>
+	<hediff>TM_LightDD</hediff>
+	<makesBlood>false</makesBlood>
+	<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+	<defaultDamage>6</defaultDamage>
+	<armorCategory>Heat</armorCategory>
+	<plantDamageFactor>2</plantDamageFactor>
+	<explosionSnowMeltAmount>.9</explosionSnowMeltAmount>
+	<explosionHeatEnergyPerCell>25</explosionHeatEnergyPerCell>
+	<explosionCellMote>Mote_BlastExtinguisher</explosionCellMote>
+	<explosionColorCenter>(1, 1, 1)</explosionColorCenter>
+	<explosionColorEdge>(.8, .8, .8)</explosionColorEdge>
+	<soundExplosion>TM_SoftExplosion</soundExplosion>
+  </DamageDef>
+  
 </Defs>

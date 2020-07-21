@@ -181,5 +181,34 @@
 			</li>
 		</stages>
 	</ThoughtDef>
+	
+   <ThoughtDef>
+    <defName>TM_PleasantDreamsTD</defName>
+    <durationDays>.8</durationDays>
+    <stackLimit>1</stackLimit>
+    <nullifyingTraits>
+      <li>Psychopath</li>
+    </nullifyingTraits>
+    <stages>
+      <li>
+        <label>pleasant dreams</label>
+        <description>My dreams are filled with memories and events that make me happy.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+    <ThoughtDef>
+    <defName>TM_BrightDayTD</defName>
+    <durationDays>.75</durationDays>
+	<stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>brightened day</label>
+        <description>A Spirit of Light brightened my day.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+	  </stages>
+  </ThoughtDef>
   
 </Defs>

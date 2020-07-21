@@ -42,7 +42,7 @@ namespace TorannMagic
             bool flag = pawn != null;
             if (flag)
             {
-                Enumterate:
+                Enumerate:
                 using (IEnumerator<BodyPartRecord> enumerator = pawn.health.hediffSet.GetInjuredParts().GetEnumerator())
                 {
                     while (enumerator.MoveNext())
@@ -68,7 +68,7 @@ namespace TorannMagic
                                     current.Heal(100);                                    
                                     pawn.TakeDamage(dinfo);
                                     TM_MoteMaker.ThrowFlames(pawn.DrawPos, pawn.Map, Rand.Range(.2f, .5f));
-                                    goto Enumterate;
+                                    goto Enumerate;
                                 }
                                 else
                                 {

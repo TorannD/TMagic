@@ -2256,7 +2256,10 @@
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-1</severityPerDay>
-      </li>	  
+      </li>	
+	  <li>
+        <compClass>TorannMagic.HediffComp_DiseaseImmunity</compClass>
+      </li>	    
     </comps>
 	<stages>
       <li>
@@ -2282,6 +2285,9 @@
       <li Class="HediffCompProperties_SeverityPerDay">
         <severityPerDay>-1</severityPerDay>
       </li>	  
+	  <li>
+        <compClass>TorannMagic.HediffComp_DiseaseImmunity</compClass>
+      </li>	
     </comps>
 	<stages>
       <li>

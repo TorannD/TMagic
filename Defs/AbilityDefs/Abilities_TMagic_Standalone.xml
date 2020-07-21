@@ -1905,7 +1905,7 @@ This attack only works when the weapon equipped is not normally consumed after u
         </MainVerb>
     </TorannMagic.TMAbilityDef>
 	
-	  <!-- snape freeze -->	
+	  <!-- snap freeze -->	
 	
 	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
         <defName>TM_SnapFreeze</defName>

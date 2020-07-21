@@ -8,28 +8,15 @@
 		<label>Magic - Portals</label>
 		<priority>50</priority>
 		<needsOpportunity>True</needsOpportunity>
-		<helpText>Magical portals representation the height of magical power.  There are a few things you should know about using portals:
-
-1. Only an Arcane mage trained in Gateway magic can activate a portal.
+		<helpText>1. Only an Arcane mage trained in Gateway magic can activate a portal.
  a. The option to activate a portal only appears when the Arcane mage has enough mana (70%) for activation.
- b. When the Arcane mage activates the portal, it will move the selection menu to the world map - only a map actively occupied by colonists can be selected.
- c. Activation will drain the mage for a brief time, so choose your destination with care.
+ b. Only a map actively occupied by colonists can be selected.
  
-2. Once activated, any mage can charge the portal.
- a. The options to use (walk through) a portal or send items through the portal only appear when the portal has enough arcane energy stored to perform the action.
- b. Only one pawn at a time may use the portal; each pawn drains the portal by 5% of its maximum energy.
+2. Once activated, any mage can charge the portal; a portal must be charged to use, but any pawn can use it.
+ a. Only one pawn at a time may use the portal; each pawn drains the portal by 5% of its maximum energy.
  c. All items are transmitted simultaneously; the cost to transfer items through a portal is 10% of its maximum energy.
- 
-3. Any pawn can use the portal.
 
-4. Only mages can direct items through the portal.
-
-5. Only mages can deactivate the portal.
-
-6. When a portal deactivates, it will retain the arcane power stored until the portal is reactivated.
-Portals must be deactivated before they can be reactivated and assigned a new destination.
-
-7. Protect your portal - it is fragile, expensive, and stores a massive amount of energy...
+3. Only mages can transfer items or deactivate a portal. A portal must be deactivated before it can be reactivated with a new target.
 </helpText>
 		<highlightTags>
 		  

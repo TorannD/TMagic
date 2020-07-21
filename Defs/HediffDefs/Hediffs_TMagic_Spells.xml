@@ -100,7 +100,7 @@
   <HediffDef ParentName="TM_InjuryBase">
     <defName>TM_Holy</defName>
     <label>Holy Wrath</label>
-	<description>Destructive energy from the domain of light.</description>
+	<description>Belief made into destructive energy.</description>
     <displayWound>false</displayWound>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -742,6 +742,31 @@
       <canMerge>true</canMerge>
       <destroyedLabel>destroyed</destroyedLabel>
     </injuryProps>
+  </HediffDef>
+  
+  <HediffDef ParentName="TM_InjuryBase">
+    <defName>TM_LightDD</defName>
+    <label>Light</label>
+	<description>Destructive energy from the domain of light.</description>
+    <displayWound>false</displayWound>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_GetsPermanent">
+        <permanentLabel>burned by light</permanentLabel>
+      </li>
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.0175</painPerSeverity>
+		<averagePainPerSeverityPermanent>0.01</averagePainPerSeverityPermanent>
+		<bleedRate>0</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>burned away</destroyedLabel>
+			<destroyedOutLabel>burned out</destroyedOutLabel>
+	</injuryProps>
   </HediffDef>
 
 </Defs>

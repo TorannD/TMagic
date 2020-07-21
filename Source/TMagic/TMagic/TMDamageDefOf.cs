@@ -99,6 +99,8 @@ namespace TorannMagic
             public static DamageDef TM_BreachingCharge;
 
             public static DamageDef TM_Toxin;
+
+            public static DamageDef TM_BurningLight;
         }
     }
 }

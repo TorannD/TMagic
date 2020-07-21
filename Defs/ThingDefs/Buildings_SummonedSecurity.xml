@@ -54,7 +54,7 @@
     <tickerType>Normal</tickerType>
     <stealable>false</stealable>
     <statBases>
-      <MaxHitPoints>40</MaxHitPoints>
+      <MaxHitPoints>400</MaxHitPoints>
       <WorkToBuild>20000</WorkToBuild>
       <Beauty>-4</Beauty>
       <TrapSpringChance>0.95</TrapSpringChance>
@@ -838,7 +838,7 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>Gun_Mark-IV</turretGunDef>
-      <turretBurstCooldownTime>4.5</turretBurstCooldownTime>
+      <turretBurstCooldownTime>4.2</turretBurstCooldownTime>
       <!-- <turretTopGraphicPath>Other/TechnoTurret1</turretTopGraphicPath> -->
 	  <turretTopDrawSize>1.8</turretTopDrawSize>
 	  <expandHomeArea>false</expandHomeArea>
@@ -858,7 +858,7 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>Gun_Mark-IV</turretGunDef>
-      <turretBurstCooldownTime>4.5</turretBurstCooldownTime>
+      <turretBurstCooldownTime>4</turretBurstCooldownTime>
       <!-- <turretTopGraphicPath>Other/TechnoTurret_RL</turretTopGraphicPath> -->
 	  <turretTopDrawSize>1.8</turretTopDrawSize>
 	  <expandHomeArea>false</expandHomeArea>
@@ -874,7 +874,7 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
       <turretGunDef>Gun_Mark-IV</turretGunDef>
-      <turretBurstCooldownTime>4.5</turretBurstCooldownTime>
+      <turretBurstCooldownTime>3.8</turretBurstCooldownTime>
       <!-- <turretTopGraphicPath>Other/TechnoTurret_RL_MTR</turretTopGraphicPath> -->
 	  <turretTopDrawSize>1.8</turretTopDrawSize>
 	  <expandHomeArea>false</expandHomeArea>
@@ -894,7 +894,7 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
     </graphicData>
     <projectile>
       <damageDef>Bullet</damageDef>
-      <damageAmountBase>7</damageAmountBase>
+      <damageAmountBase>8</damageAmountBase>
       <speed>90</speed>
     </projectile>
   </ThingDef>
@@ -931,7 +931,7 @@ Due to its weight, the Mark-IV cannot be moved while deployed.</description>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Bullet_Mark-IV</defaultProjectile>
         <warmupTime>1.5</warmupTime>
-        <range>35</range>
+        <range>45</range>
         <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
         <burstShotCount>6</burstShotCount>
         <soundCast>Shot_Revolver</soundCast>

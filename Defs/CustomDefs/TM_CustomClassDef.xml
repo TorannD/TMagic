@@ -51,6 +51,72 @@
 			<isAndroid>false</isAndroid>					<!-- class counts as an android for various spell checks -->
 			<isAdvancedClass>false</isAdvancedClass>		<!-- shifts all class related functions into a separate, advanced tab (WIP/future use) -->
 		  </li>		  
+		  <!-- Custom Class - Brightmage -->
+		  <li>		  
+			<classTrait>TM_Brightmage</classTrait>			
+			<traitDegree>4</traitDegree>					
+			<classHediff>TM_LightCapacitanceHD</classHediff>
+			<classTexturePath>brightMageMark</classTexturePath> 
+			<classIconPath>PsiMark</classIconPath>		
+			<classIconColor>(1,0.95,.9)</classIconColor>		
+			<tornScript>Torn_BookOfTheSun</tornScript>			
+			<fullScript>BookOfTheSun</fullScript>			
+			
+			<classMageAbilities>							
+				<li>TM_LightLance</li>
+				<li>TM_Sunfire</li>
+				<li>TM_Sunfire_I</li>
+				<li>TM_Sunfire_II</li>
+				<li>TM_Sunfire_III</li>
+				<li>TM_LightBurst</li>
+				<li>TM_LightSkip</li>
+				<li>TM_Refraction</li>
+				<li>TM_SpiritOfLight</li>
+			</classMageAbilities>
+			<learnableSpells>								
+				<li>SpellOf_SpiritOfLight</li>
+			</learnableSpells>								
+			
+			<classFighterAbilities>							
+			</classFighterAbilities>
+			<learnableSkills>								
+			</learnableSkills>
+			
+			<isMage>true</isMage>							
+			<isFighter>false</isFighter>					 
+			<isNecromancer>false</isNecromancer>			
+			<isUndead>false</isUndead>											
+			<isAndroid>false</isAndroid>					
+			<isAdvancedClass>false</isAdvancedClass>		
+		  </li>	
+		  <!-- Custom Class - Shaman -->
+<!-- 		  <li>		  
+			<classTrait>TM_Shaman</classTrait>				
+			<traitDegree>4</traitDegree>					
+			<classHediff></classHediff>								
+			<classTexturePath>shamanMageMark</classTexturePath> 
+			<classIconPath>MageMark</classIconPath>			
+			<classIconColor>(.87,0.9,.4)</classIconColor>		
+			<tornScript>Torn_BookOfShamanism</tornScript>						
+			<fullScript>BookOfShamanism</fullScript>			
+			
+			<classMageAbilities>							
+			</classMageAbilities>
+			<learnableSpells>								
+			</learnableSpells>								
+			
+			<classFighterAbilities>							
+			</classFighterAbilities>
+			<learnableSkills>								
+			</learnableSkills>
+			
+			<isMage>true</isMage>							
+			<isFighter>false</isFighter>					
+			<isNecromancer>false</isNecromancer>			
+			<isUndead>false</isUndead>										
+			<isAndroid>false</isAndroid>					
+			<isAdvancedClass>false</isAdvancedClass>		
+		  </li>	 -->
 		</customClasses>			
 	</TorannMagic.TM_CustomClassDef>		
 

@@ -4,6 +4,8 @@ using System.Linq;
 using RimWorld;
 using AbilityUser;
 using Verse;
+using HarmonyLib;
+using UnityEngine;
 
 
 namespace TorannMagic
@@ -47,17 +49,41 @@ namespace TorannMagic
                 Pawn oldbond = comp.bondedPet;
                 if (animal == comp.bondedPet)
                 {
-                    comp.bondedPet = null;
-                    Messages.Message("TM_BondedAnimalRelease".Translate(
-                                            oldbond.LabelShort,
-                                            pawn.LabelShort
-                                        ), MessageTypeDefOf.NeutralEvent);
-                    MoteMaker.ThrowSmoke(oldbond.DrawPos, oldbond.Map, 3f);
-                    oldbond.Destroy();
+                    Hediff animalBondHD = oldbond.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_RangerBondHD"));
+                    if (animalBondHD != null && Rand.Chance(((1f + animalBondHD.ageTicks / 6000000) - oldbond.RaceProps.wildness)))
+                    {
+                        Messages.Message("TM_BondedAnimalReleaseToColony".Translate(
+                                                oldbond.LabelShort,
+                                                pawn.LabelShort
+                                            ), MessageTypeDefOf.NeutralEvent);
+                        MoteMaker.MakeInteractionBubble(oldbond, pawn, InteractionDefOf.Nuzzle.interactionMote, InteractionDefOf.Nuzzle.Symbol);
+                        oldbond.health.RemoveHediff(animalBondHD);
+                        DefMap<TrainableDef, int> steps = Traverse.Create(root: oldbond.training).Field(name: "steps").GetValue<DefMap<TrainableDef, int>>();
+                        steps[TrainableDefOf.Tameness] = 1;
+                        steps[TrainableDefOf.Obedience] = 0;
+                        steps[TrainableDefOf.Release] = 0;
+                        steps[TorannMagicDefOf.Haul] = 0;
+                        steps[TorannMagicDefOf.Rescue] = 0;
+                        comp.bondedPet = null;
+                    }
+                    else
+                    {
+                        Messages.Message("TM_BondedAnimalRelease".Translate(
+                                                oldbond.LabelShort,
+                                                pawn.LabelShort
+                                            ), MessageTypeDefOf.NeutralEvent);
+                        MoteMaker.ThrowSmoke(oldbond.DrawPos, oldbond.Map, 3f);
+                        oldbond.Destroy();
+                    }
                 }
-                else if(animal.Faction != null)
+                else if(animal.Faction != null && animal.Faction != pawn.Faction)
                 {
                     Messages.Message("TM_AnimalHasAllegience".Translate(
+                                        ), MessageTypeDefOf.RejectInput);
+                }
+                else if(animal.health != null && animal.health.hediffSet != null && animal.health.hediffSet.HasHediff(HediffDef.Named("TM_RangerBondHD")))
+                {
+                    Messages.Message("TM_AnimalAlreadyHasBond".Translate(animal.LabelShort
                                         ), MessageTypeDefOf.RejectInput);
                 }
                 else
@@ -66,7 +92,7 @@ namespace TorannMagic
                     {
                         if ((animal.RaceProps.wildness <= .7f) || (animal.RaceProps.wildness <= .8f && pwr.level == 1) || (animal.RaceProps.wildness <= .9f && pwr.level == 2) || pwr.level == 3)
                         {
-                            if (Rand.Chance((1 - animal.RaceProps.wildness) * 10))
+                            if (Rand.Chance(.6f + (.05f *pwr.level)) && Rand.Chance(((.7f + (.1f *pwr.level)) - animal.RaceProps.wildness) * 10))
                             {
                                 if (comp.bondedPet != null && comp.bondedPet != animal)
                                 {                                    
@@ -96,7 +122,7 @@ namespace TorannMagic
                                 HealthUtility.AdjustSeverity(animal, TorannMagicDefOf.TM_RangerBondHD, -4f);
                                 HealthUtility.AdjustSeverity(animal, TorannMagicDefOf.TM_RangerBondHD, .5f + ver.level);
                                 comp.bondedPet = animal;
-
+                                MoteMaker.MakeInteractionBubble(animal, pawn, InteractionDefOf.Nuzzle.interactionMote, InteractionDefOf.Nuzzle.Symbol);
                                 if (animal.training.CanBeTrained(TrainableDefOf.Tameness))
                                 {
                                     while (!animal.training.HasLearned(TrainableDefOf.Tameness))
@@ -142,8 +168,12 @@ namespace TorannMagic
                                 Messages.Message("TM_FailedRangerBond".Translate(
                                 animal.LabelShort,
                                 pawn.LabelShort,
-                                ((1 - animal.RaceProps.wildness) * 100f)
+                                (Mathf.Clamp(Mathf.RoundToInt(((.7f + (.1f * pwr.level)) - animal.RaceProps.wildness) * 1000f), 0, 100 - (40 - (5 * pwr.level))))
                                 ), MessageTypeDefOf.NeutralEvent);
+                                if(animal.Faction == null && Rand.Chance(animal.RaceProps.manhunterOnTameFailChance))
+                                {
+                                    animal.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Manhunter, null, true, false, null);
+                                }
                             }
                         }
                         else

@@ -268,6 +268,7 @@ namespace TorannMagic.Enchantment
             }
             else
             {
+                Log.Message("enchantment unknkown");
                 this.enchantment = "unknown";
             }           
 
@@ -275,11 +276,9 @@ namespace TorannMagic.Enchantment
 
         private void DisplayEnchantments(float magVal = 0f, float mitVal = 0f)
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.Append("");
             string txtMagic = "";
             string txtMight = "";
-            
+
             if (magVal != 0)
             {
                 txtMagic = (magVal * 100).ToString("0.##") + "%";
@@ -292,7 +291,7 @@ namespace TorannMagic.Enchantment
             if (txtMagic != "" && txtMight != "")
             {
                 if (magVal != mitVal)
-                {
+                { 
                     this.enchantment = txtMagic + " | " + txtMight;
                 }
                 else

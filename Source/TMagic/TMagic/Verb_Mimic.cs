@@ -63,12 +63,26 @@ namespace TorannMagic
                 {
                     CompAbilityUserMagic magicPawn = targetPawn.GetComp<CompAbilityUserMagic>();
                     CompAbilityUserMight mightPawn = targetPawn.GetComp<CompAbilityUserMight>();
+                    bool copyMagic = false;
+                    bool copyMight = false;
+                    if(magicPawn != null && magicPawn.IsMagicUser)
+                    {
+                        copyMagic = true;
+                    }
+                    if(mightPawn != null && mightPawn.IsMightUser)
+                    {
+                        copyMight = true;
+                    }
 
+                    if(copyMight && copyMagic && Rand.Chance(.5f))
+                    {
+                        copyMagic = false;
+                    }
                     TMAbilityDef tempAbility = null;
                     CompAbilityUserMight mightComp = this.CasterPawn.GetComp<CompAbilityUserMight>();
                     CompAbilityUserMagic magicComp = this.CasterPawn.GetComp<CompAbilityUserMagic>();
 
-                    if (magicPawn.IsMagicUser)
+                    if (copyMagic)
                     {
                         tempAbility = TM_Calc.GetCopiedMagicAbility(targetPawn, base.CasterPawn);
 
@@ -106,7 +120,7 @@ namespace TorannMagic
 
                         }
                     }
-                    else if (mightPawn.IsMightUser)
+                    else if (copyMight)
                     {
                         tempAbility = TM_Calc.GetCopiedMightAbility(targetPawn, base.CasterPawn);
 

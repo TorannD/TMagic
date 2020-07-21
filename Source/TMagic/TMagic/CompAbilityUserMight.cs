@@ -3955,6 +3955,11 @@ namespace TorannMagic
                 this.skill_Teach = true;
             }
 
+            if (this.customClass != null && this.customClass.classHediff != null && !this.Pawn.health.hediffSet.HasHediff(this.customClass.classHediff))
+            {
+                HealthUtility.AdjustSeverity(this.Pawn, this.customClass.classHediff, this.customClass.hediffSeverity);
+            }
+
             if (this.IsMightUser && !this.Pawn.Dead && !this.Pawn.Downed)
             {                
                 if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer))
@@ -4643,15 +4648,15 @@ namespace TorannMagic
             _spRegenRate -= (_spRegenRateUpkeep);
 
             //finalize
-            this.maxSP = 1 + _maxSP;
+            this.maxSP = Mathf.Clamp(1 + _maxSP, 0f, 5f);
             this.spRegenRate = 1f + _spRegenRate;
             this.coolDown = Mathf.Clamp(1f + _coolDown, .25f, 10f);
-            this.xpGain = 1f + _xpGain;
-            this.spCost = 1f + _spCost;
+            this.xpGain = Mathf.Clamp(1f + _xpGain, 0.01f, 5f);
+            this.spCost = Mathf.Clamp(1f + _spCost, 0.1f, 5f);
             this.arcaneRes = 1 + _arcaneRes;
             this.mightPwr = 1 + _arcaneDmg;
 
-            if (this.IsMightUser && !TM_Calc.IsCrossClass(this.Pawn, true))
+            if (this.IsMightUser && !TM_Calc.IsCrossClass(this.Pawn, false))
             {
                 if (_maxSP != 0 && !this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_HediffEnchantment_maxEnergy")))
                 {
@@ -4818,6 +4823,10 @@ namespace TorannMagic
                                     {
                                         int level = this.MightData.AllMightPowers[j].level;
                                         base.AddPawnAbility(this.MightData.AllMightPowers[j].TMabilityDefs[level]);
+                                        if (this.MightData.AllMightPowers[j].TMabilityDefs[level] == TorannMagicDefOf.TM_Chi)
+                                        {
+                                            base.AddPawnAbility(TorannMagicDefOf.TM_ChiBurst);
+                                        }
                                     }
                                 }
                             }

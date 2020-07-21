@@ -180,7 +180,8 @@ namespace TorannMagic.ModOptions
             for(int i = 0; i < TM_ClassUtility.CustomClasses().Count; i++)
             {
                 TMDefs.TM_CustomClass cClass = TM_ClassUtility.CustomClasses()[i];
-                if(cClass.isMage && cClass.isFighter)
+                bool classEnabled = Settings.Instance.CustomClass[cClass.classTrait.ToString()];
+                if (cClass.isMage && cClass.isFighter)
                 {
                     GUI.color = Color.yellow;
                 }
@@ -196,8 +197,7 @@ namespace TorannMagic.ModOptions
                 {
                     GUI.color = Color.gray;
                 }
-                Rect customRect1 = Controller.UIHelper.GetRowRect(customRect, rowHeight, num);
-                bool classEnabled = Settings.Instance.CustomClass[cClass.classTrait.ToString()];
+                Rect customRect1 = Controller.UIHelper.GetRowRect(customRect, rowHeight, num);                
                 Widgets.CheckboxLabeled(customRect1, cClass.classTrait.degreeDatas.FirstOrDefault().label, ref classEnabled, false);
                 if (classEnabled != Settings.Instance.CustomClass[cClass.classTrait.ToString()])
                 {
@@ -205,7 +205,8 @@ namespace TorannMagic.ModOptions
                     Settings.Instance.CustomClass.Add(cClass.classTrait.ToString(), classEnabled);
                 }
                 num++;
-            }           
+                GUI.color = Color.white;
+            }
             
             //GUI.EndGroup();
             GUI.EndScrollView();

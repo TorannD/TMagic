@@ -1857,7 +1857,7 @@ namespace TorannMagic
                         bool flag12 = Widgets.ButtonText(rect41, "+", true, false, true) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
                         Widgets.Label(rect4, skill.label.Translate() + ": " + skill.level + " / " + skill.levelMax);
                         if (flag12)
-                        {
+                        {                            
                             bool flag17 = compMagic.AbilityUser.story != null && compMagic.AbilityUser.story.DisabledWorkTagsBackstoryAndTraits == WorkTags.Violent && power.abilityDef.MainVerb.isViolent;
                             if (flag17)
                             {
@@ -1867,7 +1867,18 @@ namespace TorannMagic
                                 break;
                             }
                             skill.level++;
-                            compMagic.MagicData.MagicAbilityPoints -= skill.costToLevel;                            
+                            compMagic.MagicData.MagicAbilityPoints -= skill.costToLevel;
+                            if (skill.label == "TM_LightSkip_pwr")
+                            {
+                                if (skill.level == 1)
+                                {
+                                    compMagic.AddPawnAbility(TorannMagicDefOf.TM_LightSkipMass);
+                                }
+                                if (skill.level == 2)
+                                {
+                                    compMagic.AddPawnAbility(TorannMagicDefOf.TM_LightSkipGlobal);
+                                }
+                            }
                         }
                     }
                     num2 += (MagicCardUtility.MagicCardSize.x / 3) - MagicCardUtility.SpacingOffset;

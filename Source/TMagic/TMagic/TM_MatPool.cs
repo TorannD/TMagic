@@ -11,6 +11,11 @@ namespace TorannMagic
     [StaticConstructorOnStartup]
     public static class TM_MatPool
     {
+        public static readonly Material BeamMat = MaterialPool.MatFrom("Other/OrbitalBeam", ShaderDatabase.MoteGlow, MapMaterialRenderQueues.OrbitalBeam);
+        public static readonly Material BeamEndMat = MaterialPool.MatFrom("Other/OrbitalBeamEnd", ShaderDatabase.MoteGlow, MapMaterialRenderQueues.OrbitalBeam);
+        public static readonly Material LightBarrier = MaterialPool.MatFrom("Other/LightBarrier", ShaderDatabase.MoteGlow);
+        
+
         public static readonly Material blackLightning = MaterialPool.MatFrom("Other/ArcaneBolt", true);
         public static readonly Material redLightning = MaterialPool.MatFrom("Other/DemonBolt", true);
         public static readonly Texture2D Icon_Undead = ContentFinder<Texture2D>.Get("UI/undead_icon", true);

@@ -421,9 +421,10 @@ AoE Size: 8</description>
         <defName>TM_RegrowLimb</defName>
         <label>Regrowth</label>
         <uiIconPath>UI/regrowlimb</uiIconPath>
-        <description>Creates the Seed of Life required to regrow body parts. Regrowth surgeries will only appear as an option when all components of regrowth are within resource zones: 1x Seed of Life , mana potions, and medicine, then select the body part to regrow in the patient's surgery tab.  Ensure this druid (or another with this spell) performs the surgery and the druid has 90% mana or more at the time the surgery is performed.</description>
+        <description>Creates the Seed of Life required to regrow body parts. Regrowth surgeries will only appear as an option when all components of regrowth are within resource zones: 1x Seed of Life , mana potions, and medicine, then select the body part to regrow in the patient's surgery tab.  Ensure this druid (or another with this spell) performs the surgery and the druid has 90 mana or more at the time the surgery is performed.</description>
         <manaCost>0.10</manaCost>
 		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnItem>SpellOf_RegrowLimb</learnItem>
 		<learnChance>.05</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_RegrowLimb</verbClass>

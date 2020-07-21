@@ -366,7 +366,7 @@ namespace TorannMagic
                         float undeadCount = 0;
                         float averageNecroMana = 0;
 
-                        if (settingsRef.undeadUpkeepMultiplier > 0f && pawn.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || pawn.story.traits.HasTrait(TorannMagicDefOf.Lich))
+                        if (settingsRef.undeadUpkeepMultiplier > 0f && TM_Calc.IsNecromancer(pawn))
                         {
                             List<Apparel> necroOrbs = TM_Calc.GetNecroticOrbs(this.pawn);
                             float orbEnergy = 0;
@@ -387,7 +387,7 @@ namespace TorannMagic
                             {
                                 if (current.RaceProps.Humanlike)
                                 {
-                                    if (current.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || current.story.traits.HasTrait(TorannMagicDefOf.Lich))
+                                    if (TM_Calc.IsNecromancer(current))
                                     {                                        
                                         CompAbilityUserMagic tempComp = current.GetComp<CompAbilityUserMagic>();
                                         if(tempComp.Mana.CurLevel < 0.01f && current != pawn)

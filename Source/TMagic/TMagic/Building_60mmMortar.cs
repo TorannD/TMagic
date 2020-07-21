@@ -115,7 +115,7 @@ namespace TorannMagic
                                     arc = -1;
                                 }
                                 FlyingObject_Advanced flyingObject = (FlyingObject_Advanced)GenSpawn.Spawn(this.projectileDef, this.Position, this.Map);
-                                flyingObject.AdvancedLaunch(this, null, 0, Rand.Range(60, 70), false, this.DrawPos, rndTarget, launchedThing, Rand.Range(35, 40), true, Rand.Range(14 + pwrVal, 20 + (2*pwrVal)), (3f + (.35f * pwrVal)), DamageDefOf.Bomb, null, arc, true);
+                                flyingObject.AdvancedLaunch(this, null, 0, Mathf.Clamp(Rand.Range(50, 60),0,this.Position.DistanceToEdge(this.Map)), false, this.DrawPos, rndTarget, launchedThing, Rand.Range(35, 40), true, Rand.Range(14 + pwrVal, 20 + (2*pwrVal)), (3f + (.35f * pwrVal)), DamageDefOf.Bomb, null, arc, true);
                                 this.mortarCount--;
                             }                            
                             SoundInfo info = SoundInfo.InMap(new TargetInfo(this.Position, this.Map, false), MaintenanceType.None);

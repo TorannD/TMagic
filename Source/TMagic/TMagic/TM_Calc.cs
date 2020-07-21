@@ -405,7 +405,7 @@ namespace TorannMagic
 
         public static Vector3 GetVectorBetween(Vector3 v1, Vector3 v2)
         {
-            Vector3 vectorBetween = v1 + ((v1 - v2).MagnitudeHorizontal() * TM_Calc.GetVector(v1, v2));
+            Vector3 vectorBetween = v1 + ((v1 - v2).magnitude * .5f * TM_Calc.GetVector(v1, v2));
             return vectorBetween;
         }
 
@@ -873,7 +873,7 @@ namespace TorannMagic
                                 Hediff rec = enumerator.Current;
                                 for(int j =0; j < validAfflictionDefnames.Count; j++)
                                 {
-                                    if (rec.def.defName.Contains(validAfflictionDefnames[j]) && rec.def.isBad)
+                                    if (rec.def.defName.Contains(validAfflictionDefnames[j]) && (rec.def.isBad || rec.def.makesSickThought))
                                     {
                                         pawnList.Add(targetPawn);
                                     }
@@ -918,10 +918,14 @@ namespace TorannMagic
                             while (enumerator.MoveNext())
                             {
                                 Hediff rec = enumerator.Current;
-                                if (rec.def.PossibleToDevelopImmunityNaturally() && rec.def.isBad)
+                                if (rec.def.PossibleToDevelopImmunityNaturally() && (rec.def.isBad || rec.def.makesSickThought))
                                 {
                                     pawnList.Add(targetPawn);
-                                }                               
+                                }
+                                if (rec.def.defName == "BloodRot")
+                                {
+                                    pawnList.Add(targetPawn);
+                                }
                             }
                         }
                         targetPawn = null;
@@ -1776,7 +1780,7 @@ namespace TorannMagic
             else
             {
                 if (targetPawn.story.traits.HasTrait(TorannMagicDefOf.Gladiator) && caster.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
-                {
+                {                    
                     int rnd = Rand.RangeInclusive(0, 1);
                     if (rnd == 0)
                     {
@@ -2858,6 +2862,36 @@ namespace TorannMagic
             return val;
         }
 
+        public static int GetMagicSkillLevel(Pawn caster, List<MagicPowerSkill> power, string skillLabel, string suffix, bool canCopy = true)
+        {
+            int val = 0;
+            string label = skillLabel + suffix;
+            CompAbilityUserMagic comp = caster.GetComp<CompAbilityUserMagic>();
+            if (comp != null && comp.IsMagicUser)
+            {
+                val = power.FirstOrDefault((MagicPowerSkill x) => x.label == label).level;
+                if (canCopy && val == 0)
+                {
+                    if (caster.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+                    {
+                        label = "TM_Mimic" + suffix;
+                        val = caster.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == label).level;
+                    }
+                    if ((caster.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer) || (caster.story.traits.HasTrait(TorannMagicDefOf.ChaosMage) || (comp.customClass != null && comp.customClass.classMageAbilities.Contains(TorannMagicDefOf.TM_Cantrips))) && comp.MagicData.MagicPowersW.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Cantrips).learned))
+                    {
+                        label = "TM_Cantrips" + suffix;
+                        val = (int)((comp.MagicData.MagicPowerSkill_Cantrips.FirstOrDefault((MagicPowerSkill x) => x.label == label).level) / 5);
+                    }
+                }
+                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+                if (settingsRef.AIHardMode && !caster.IsColonist)
+                {
+                    val = 3;
+                }
+            }
+            return val;
+        }
+
         public static bool IsIconAbility_02(AbilityUser.AbilityDef def)
         {
             if((def == TorannMagicDefOf.TM_RayofHope || def == TorannMagicDefOf.TM_RayofHope_I || def == TorannMagicDefOf.TM_RayofHope_II ||
@@ -2886,7 +2920,8 @@ namespace TorannMagic
                         def == TorannMagicDefOf.TM_BloodMoon || def == TorannMagicDefOf.TM_BloodMoon_I || def == TorannMagicDefOf.TM_BloodMoon_II ||
                         def == TorannMagicDefOf.TM_Polymorph || def == TorannMagicDefOf.TM_Polymorph_I || def == TorannMagicDefOf.TM_Polymorph_II ||
                         def == TorannMagicDefOf.TM_BestowMight || def == TorannMagicDefOf.TM_BestowMight_I || def == TorannMagicDefOf.TM_BestowMight_II ||
-                        def == TorannMagicDefOf.TM_ChronostaticField || def == TorannMagicDefOf.TM_ChronostaticField_I || def == TorannMagicDefOf.TM_ChronostaticField_II))
+                        def == TorannMagicDefOf.TM_ChronostaticField || def == TorannMagicDefOf.TM_ChronostaticField_I || def == TorannMagicDefOf.TM_ChronostaticField_II) ||
+                        def == TorannMagicDefOf.TM_Sunfire || def == TorannMagicDefOf.TM_Sunfire_I || def == TorannMagicDefOf.TM_Sunfire_II)
             {
                 return true;
             }
@@ -2907,7 +2942,8 @@ namespace TorannMagic
                         def == TorannMagicDefOf.TM_Lullaby_III || def == TorannMagicDefOf.TM_ShadowBolt_III || def == TorannMagicDefOf.TM_Attraction_III ||
                         def == TorannMagicDefOf.TM_Repulsion_III || def == TorannMagicDefOf.TM_Encase_III || def == TorannMagicDefOf.TM_Meteor_III ||
                         def == TorannMagicDefOf.TM_OrbitalStrike_III || def == TorannMagicDefOf.TM_Rend_III || def == TorannMagicDefOf.TM_BloodMoon_III ||
-                        def == TorannMagicDefOf.TM_Polymorph_III || def == TorannMagicDefOf.TM_BestowMight_III || def == TorannMagicDefOf.TM_ChronostaticField_III))
+                        def == TorannMagicDefOf.TM_Polymorph_III || def == TorannMagicDefOf.TM_BestowMight_III || def == TorannMagicDefOf.TM_ChronostaticField_III) ||
+                        def == TorannMagicDefOf.TM_Sunfire_III)
             {
                 return true;
             }
@@ -2932,6 +2968,7 @@ namespace TorannMagic
                 def == TorannMagicDefOf.TM_Shapeshift ||
                 def == TorannMagicDefOf.TM_Recall  ||
                 def == TorannMagicDefOf.TM_HolyWrath ||
+                def == TorannMagicDefOf.TM_SpiritOfLight ||
                 def == TorannMagicDefOf.TM_Resurrection)
             {
                 return true;

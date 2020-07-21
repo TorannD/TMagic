@@ -147,6 +147,9 @@
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>
 	</TraitDef>
 
@@ -201,6 +204,9 @@
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -259,6 +265,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -316,6 +325,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -372,6 +384,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -426,6 +441,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -484,6 +502,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -541,6 +562,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -596,6 +620,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 
@@ -650,6 +677,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef> 	
 	
@@ -707,6 +737,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -793,6 +826,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -860,6 +896,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -962,6 +1001,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1024,6 +1066,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1086,6 +1131,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1146,6 +1194,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1208,6 +1259,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1265,6 +1319,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1323,6 +1380,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1377,6 +1437,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1430,7 +1493,10 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>TM_Wayfarer</li>
 		  <li>Chronomancer</li>
 		  <li>TM_SuperSoldier</li>
-		  <li>TM_Commander</li>		  
+		  <li>TM_Commander</li>		 
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>		  
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1458,6 +1524,164 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  </li>
 		</degreeDatas>
 		<conflictingTraits>
+		<li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>StormBorn</li>
+		  <li>Arcanist</li>
+		  <li>Gifted</li>
+		  <li>PhysicalProdigy</li>
+		  <li>Paladin</li>
+		  <li>Gladiator</li>
+		  <li>TM_Sniper</li>
+		  <li>Summoner</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		  <li>Faceless</li>
+		  <li>Succubus</li>
+		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
+		  <li>Technomancer</li>
+		  <li>BloodMage</li>
+		  <li>DeathKnight</li>
+		  <li>Enchanter</li>
+		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>Chronomancer</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>	
+		  <li>ChaosMage</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>  
+		<defName>TM_Brightmage</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
+		<degreeDatas>	
+		  <li>
+			<label>Brightmage</label>
+			<description>[PAWN_nameDef] is a brightmage, able to harness the powers of light to purge evil. [PAWN_pronoun] approaches any task with an unrivaled fervor that usually places [PAWN_objective] at the forefront. Being a Brightmage introduces a dependency on the sun and light, because of this, [PAWN_nameDef] has developed an intense hatred for shadowy and dark caricatures.</description>
+			<degree>4</degree>
+			<statOffsets>
+				<PsychicSensitivity>0.15</PsychicSensitivity>
+				<MoveSpeed>.2</MoveSpeed>
+				<MeleeDodgeChance>10</MeleeDodgeChance>
+				<WorkSpeedGlobal>0.10</WorkSpeedGlobal>
+				<AimingDelayFactor>-0.25</AimingDelayFactor>
+				<ShootingAccuracyPawn>-35</ShootingAccuracyPawn>	
+				<SocialImpact>0.10</SocialImpact>
+				<ToxicSensitivity>+.30</ToxicSensitivity>
+				<CarryingCapacity>-30</CarryingCapacity>
+				<PainShockThreshold>-.20</PainShockThreshold>
+			</statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>StormBorn</li>
+		  <li>Arcanist</li>
+		  <li>Gifted</li>
+		  <li>PhysicalProdigy</li>
+		  <li>Paladin</li>
+		  <li>Gladiator</li>
+		  <li>TM_Sniper</li>
+		  <li>Summoner</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		  <li>Faceless</li>
+		  <li>Succubus</li>
+		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
+		  <li>Technomancer</li>
+		  <li>BloodMage</li>
+		  <li>DeathKnight</li>
+		  <li>Enchanter</li>
+		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>Chronomancer</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>	
+		  <li>ChaosMage</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Shaman</li>
+		</conflictingTraits>	
+	</TraitDef>
+	
+	<TraitDef>  
+		<defName>TM_Shaman</defName>
+		<ignoreConfigErrors>true</ignoreConfigErrors>
+		<commonality>0</commonality>
+		<degreeDatas>	
+		  <li>
+			<label>Shaman</label>
+			<description>Shamans take a more harmonious approach to arcane powers than most mages, choosing to pursue a path that works with the ebb and flow of magic to offset or enhance the natural order. [PAWN_nameDef] is kin to the spirit realm and more attuned to nature.</description>
+			<degree>4</degree>
+			<statOffsets>
+				<PsychicSensitivity>0.2</PsychicSensitivity>
+				<ToxicSensitivity>-.30</ToxicSensitivity>
+				<ImmunityGainSpeed>0.10</ImmunityGainSpeed>
+				<TameAnimalChance>.4</TameAnimalChance>
+				<TrainAnimalChance>.3</TrainAnimalChance>
+				<GlobalLearningFactor>-0.1</GlobalLearningFactor>
+				<WorkSpeedGlobal>-0.10</WorkSpeedGlobal>		
+				<SmeltingSpeed>-0.25</SmeltingSpeed>
+				<ConstructionSpeed>-.25</ConstructionSpeed>
+			</statOffsets>
+		  </li>
+		</degreeDatas>
+		<conflictingTraits>
+		  <li>InnerFire</li>
+		  <li>HeartOfFrost</li>
+		  <li>StormBorn</li>
+		  <li>Arcanist</li>
+		  <li>Gifted</li>
+		  <li>PhysicalProdigy</li>
+		  <li>Paladin</li>
+		  <li>Gladiator</li>
+		  <li>TM_Sniper</li>
+		  <li>Summoner</li>
+		  <li>Druid</li>
+		  <li>Bladedancer</li>
+		  <li>Necromancer</li>
+		  <li>Priest</li>
+		  <li>Ranger</li>
+		  <li>Lich</li>
+		  <li>TM_Bard</li>
+		  <li>Faceless</li>
+		  <li>Succubus</li>
+		  <li>Warlock</li>
+		  <li>TM_Psionic</li>
+		  <li>Geomancer</li>
+		  <li>Technomancer</li>
+		  <li>BloodMage</li>
+		  <li>DeathKnight</li>
+		  <li>Enchanter</li>
+		  <li>TM_Monk</li>
+		  <li>TM_Wanderer</li>
+		  <li>TM_Wayfarer</li>
+		  <li>Chronomancer</li>
+		  <li>TM_SuperSoldier</li>
+		  <li>TM_Commander</li>	
+		  <li>ChaosMage</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1514,6 +1738,9 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>
     </TraitDef>
 	
@@ -1572,6 +1799,9 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef> 
 	
@@ -1597,6 +1827,7 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 					<PlantWorkSpeed>-.25</PlantWorkSpeed>
 					<PlantHarvestYield>-.2</PlantHarvestYield>
 					<ResearchSpeed>-.25</ResearchSpeed>
+					<PainShockThreshold>+0.20</PainShockThreshold>
                 </statOffsets>
 		  </li>
 		</degreeDatas>
@@ -1633,6 +1864,9 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1752,6 +1986,9 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1854,6 +2091,9 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -1954,6 +2194,9 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -2013,6 +2256,9 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -2074,6 +2320,9 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -2128,6 +2377,9 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -2185,6 +2437,9 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>ChaosMage</li>
 		  <li>TM_SuperSoldier</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -2242,6 +2497,9 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>ChaosMage</li>
 		  <li>TM_Monk</li>
 		  <li>TM_SuperSoldier</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 	
@@ -2300,6 +2558,9 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>ChaosMage</li>
 		  <li>TM_Monk</li>
 		  <li>TM_Commander</li>
+		  <li>TM_TheShadow</li>
+		  <li>TM_Brightmage</li>
+		  <li>TM_Shaman</li>
 		</conflictingTraits>	
 	</TraitDef>
 

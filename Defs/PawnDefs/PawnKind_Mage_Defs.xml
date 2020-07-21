@@ -50,7 +50,6 @@
 	  <li>Neolithic</li>
       <li>Outlander</li>
       <li>Military</li>
-      <li>Spacer</li>
       <li>BeltDefensePop</li>
     </apparelTags>
     <apparelMoney>
@@ -102,7 +101,7 @@
     <label>Magic Protector</label>
     <labelPlural>magic protectors</labelPlural>
 	<isFighter>true</isFighter>
-	    <weaponTags>
+	<weaponTags>
 	  <li>MageAttack</li>
     </weaponTags>
   </PawnKindDef>

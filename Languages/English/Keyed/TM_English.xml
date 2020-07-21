@@ -59,7 +59,9 @@
 <TM_ResurrectionTargetExpired>Resurrection cannot restore this body, it has expired and can no longer sustain life.</TM_ResurrectionTargetExpired>
 <MustHaveBow>{0} is armed with a {1}, {0} must use a bow to use this ability.</MustHaveBow>
 <TM_BondedAnimalRelease>The bond between {0} and {1} has ended and {0} has disappeared into the wild.</TM_BondedAnimalRelease>
+<TM_BondedAnimalReleaseToColony>The bond between {0} and {1} has ended but {0} has chosen to remain in the colony.</TM_BondedAnimalReleaseToColony>
 <TM_AnimalIncapableOfBond>{0} does not have the intelligence to form a bond with {1}.</TM_AnimalIncapableOfBond>
+<TM_AnimalAlreadyHasBond>{0} has already formed a bond with another ranger.</TM_AnimalAlreadyHasBond>
 <TM_FailedRangerBond>{1} has failed to bond with {0} - {2}&#37; chance</TM_FailedRangerBond>
 <TM_RangerNotExperienced>{1} is unable to establish a bond with {0}. {0} has a wildness of {2}&#37; and {1} can only bond with a creature with {3}&#37; or lower. This can be increased by investing points in "Animal Empathy".</TM_RangerNotExperienced>
 <TM_TooManyTraps>{0} is limited to {1} traps, removing oldest trap.</TM_TooManyTraps>
@@ -172,6 +174,10 @@
 <TM_LendColonist_UndeadFail>You're sending us dead bodies - Is this some kind of joke!?</TM_LendColonist_UndeadFail>
 <TM_AlreadyLearnedAbility>{0} has already learned {1}.</TM_AlreadyLearnedAbility>
 <TM_NotEnoughManaToSustain>{0} does not have enough mana to sustain {1}.</TM_NotEnoughManaToSustain>
+<TM_CannotCastUnderRoof>{0} is unable to use {1} from under a roof.</TM_CannotCastUnderRoof>
+<TM_UnableToTravel>Unable to travel to this destination.</TM_UnableToTravel>
+<TM_SelectTargetOnMap>{0}: select target on map...</TM_SelectTargetOnMap>
+<TM_AbandoningMap>Your pawns are abandoning {0}, do you want to remove the map?</TM_AbandoningMap>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>
@@ -565,15 +571,15 @@ Level 2: 50s - 150s
 Level 3: 67s - 200s</TM_Regenerate_ver_desc>
 <TM_CureDisease_eff_desc>Reduces the cost of Cure Disease by 10% per skill level.</TM_CureDisease_eff_desc>
 <TM_CureDisease_pwr_desc>Improves the effectiveness of Cure Disease. The higher the skill level, the more likely the spell cures the disease instead of reducing it.
-Level 0: 75% success chance; reduces severity of disease by 1 if successful.
+Level 0: 75% success chance
 Level 1: 100% success chance on understood diseases (Disease Knowledge)
 Level 2: Boost disease immunity of the target by 15% for 3 days
 Level 3: Boost disease immunity of the target by 25% for 5 days</TM_CureDisease_pwr_desc>
 <TM_CureDisease_ver_desc>Study of diseases allows the druid to cure more advanced maladies.
 Level 0: Flu and Wound Infections
 Level 1: Gut Worms, Food Poisoning, and Malaria
-Level 2: Sleeping Sickness and Muscle Parasites
-Level 3: The Plague</TM_CureDisease_ver_desc>
+Level 2: Sleeping Sickness, Muscle Parasites and Scaria
+Level 3: The Plague and Blood Rot</TM_CureDisease_ver_desc>
 <TM_RegrowLimb_eff_desc>Reduces the mana required to regrow limbs (surgery) by 6% per skill level.  Regrowth is unaffected by global mana cost reductions.</TM_RegrowLimb_eff_desc>
 
 <TM_Poison_eff>Extraction Methods</TM_Poison_eff>
@@ -661,7 +667,7 @@ Level 2:
 Physical - Frailty, Bad back, Carcinoma, Severe chemical damage 
 Drug - Psychite
 Level 3:
-Physical - Brain and Heart conditions
+Physical - brain, heart and paralysis conditions
 Drug - Any addiction including Luciferium</TM_Purify_ver_desc>
 <TM_Purify_pwr_desc>Increases effectiveness of Purify.
 Scars are healed by 2 points + 2x skill level; Brain injuries require a skill level of 1 or greater and heals 1 point per skill level.\n\n
@@ -1156,7 +1162,93 @@ Level 3: 5 abilities</TM_ChaosTradition_ver_desc>
 
 <TM_ChaosTradition_pwr>Chaos Flux</TM_ChaosTradition_pwr>
 <TM_ChaosTradition_eff>Mercurial</TM_ChaosTradition_eff>
-<TM_ChaosTradition_ver>Protean</TM_ChaosTradition_ver>
+<TM_ChaosTradition_ver>Protean</TM_ChaosTradition_ver>  
+
+<TM_LightLance_pwr_desc>Increases the duration of Light Lance by 8% and damage by 15% per skill level.</TM_LightLance_pwr_desc>
+<TM_LightLance_eff_desc>Reduces the energy cost of Light Lance by 8% per skill level.</TM_LightLance_eff_desc>
+<TM_LightLance_ver_desc>Increases the radius of Light Lance by 15% per skill level.</TM_LightLance_ver_desc>
+<TM_Sunfire_pwr_desc>Increases Sunfire damage by 25% and armor penetration by 10% per skillpoint.</TM_Sunfire_pwr_desc>
+<TM_Sunfire_eff_desc>Reduces the energy cost of Sunfire by 6% per skill level.</TM_Sunfire_eff_desc>
+<TM_Sunfire_ver_desc>Increases the number of beams produced by 4 per skill level and extends the average beam duration by 10%.</TM_Sunfire_ver_desc>
+<TM_LightBurst_pwr_desc>Each skill level increases the light density resulting in a 15% improvement to the effective radius, sensory damage, and disorientation caused by each burst of light.</TM_LightBurst_pwr_desc>
+<TM_LightBurst_eff_desc>Reduces mana cost by 8% per skill point.</TM_LightBurst_eff_desc>
+<TM_LightBurst_ver_desc>Increases the number of light bursts and modifies the burst to affect mechanoid sensors.
+Level 0: 2 light bursts
+Level 1: 3 light bursts
+Level 2: 3 light bursts, affects mechanoids
+Level 3: 4 light bursts, affects mechanoids</TM_LightBurst_ver_desc>
+<TM_LightSkip_pwr_desc>Adds additional abilities with expanded application. Costs 2 points to level.
+Rank 0: Light Skip - same map, self only
+Rank 1: Mass Light Skip - same map, AoE around caster
+Rank 2: Global Light Skip - global, AoE around caster</TM_LightSkip_pwr_desc>
+<TM_LightSkip_eff_desc>Reduces energy cost of Light Skip by 8% per skill level.</TM_LightSkip_eff_desc>
+<TM_Refraction_pwr_desc>Increases the accuracy of mirrored projectiles by 20% and decreases the accuracy of refracted projectiles by 15%.</TM_Refraction_pwr_desc>
+<TM_Refraction_eff_desc>Decreases the energy cost of Refraction by 6% per skill level.</TM_Refraction_eff_desc>
+<TM_Refraction_ver_desc>Increases the duration of the Refraction wall by 10% (2.5s) per skill level.</TM_Refraction_ver_desc>
+<TM_SpiritOfLight_pwr_desc>SoL: increases damage by 3% and max attack range by 1 per skill level.</TM_SpiritOfLight_pwr_desc>
+<TM_SpiritOfLight_eff_desc>Summoner: Reduces upkeep costs by 2% per skill level.
+SoL: reduces light energy costs for the Spirit of Light by 1% per skill level.</TM_SpiritOfLight_eff_desc>
+<TM_SpiritOfLight_ver_desc>SoL: increases max light energy by 4 per skill level and light energy absorption by 3% per skill level.</TM_SpiritOfLight_ver_desc>
+
+<TM_LightLance_pwr>Piercing Light</TM_LightLance_pwr>
+<TM_LightLance_eff>Magnification</TM_LightLance_eff>
+<TM_LightLance_ver>Burning Radiation</TM_LightLance_ver>
+<TM_Sunfire_pwr>Deep Burn</TM_Sunfire_pwr>
+<TM_Sunfire_eff>Solar Powered</TM_Sunfire_eff>
+<TM_Sunfire_ver>Steady Burn</TM_Sunfire_ver>
+<TM_LightBurst_pwr>Lux</TM_LightBurst_pwr>
+<TM_LightBurst_eff>Lens</TM_LightBurst_eff>
+<TM_LightBurst_ver>Lumen</TM_LightBurst_ver>
+<TM_LightSkip_pwr>Relativity</TM_LightSkip_pwr>
+<TM_LightSkip_eff>Riding The Wave</TM_LightSkip_eff>
+<TM_Refraction_pwr>Refraction Coefficient</TM_Refraction_pwr>
+<TM_Refraction_eff>Spraying LED</TM_Refraction_eff> 
+<TM_Refraction_ver>Dying Light</TM_Refraction_ver>
+<TM_SpiritOfLight_pwr>Emission</TM_SpiritOfLight_pwr>
+<TM_SpiritOfLight_eff>Sustainment</TM_SpiritOfLight_eff>
+<TM_SpiritOfLight_ver>Absorption</TM_SpiritOfLight_ver>
+
+<TM_Totems_pwr_desc></TM_Totems_pwr_desc>
+<TM_Totems_eff_desc></TM_Totems_eff_desc>
+<TM_Totems_ver_desc></TM_Totems_ver_desc>
+<TM_ChainLightning_pwr_desc></TM_ChainLightning_pwr_desc>
+<TM_ChainLightning_eff_desc></TM_ChainLightning_eff_desc>
+<TM_ChainLightning_ver_desc></TM_ChainLightning_ver_desc>
+<TM_Enrage_pwr_desc>Increases the light density of each flash causing a 15% improvement to the effective radius, sensory damage, and disorientation of each burst for each skill point.</TM_Enrage_pwr_desc>
+<TM_Enrage_eff_desc>Reduces mana cost by 8% per skill point.</TM_Enrage_eff_desc>
+<TM_Enrage_ver_desc>Increases the number of light bursts and modifies the burst to affect mechanoid sensors.
+Level 0: 2 light bursts
+Level 1: 3 light bursts
+Level 2: 3 light bursts, affects mechanoids
+Level 3: 4 light bursts, affects mechanoids</TM_Enrage_ver_desc>
+<TM_Hex_pwr_desc></TM_Hex_pwr_desc>
+<TM_Hex_eff_desc></TM_Hex_eff_desc>
+<TM_Hex_ver_desc></TM_Hex_ver_desc>
+<TM_SpiritWolves_pwr_desc></TM_SpiritWolves_pwr_desc>
+<TM_SpiritWolves_eff_desc></TM_SpiritWolves_eff_desc>
+<TM_SpiritWolves_ver_desc></TM_SpiritWolves_ver_desc>
+<TM_GuardianSpirit_pwr_desc></TM_GuardianSpirit_pwr_desc>
+<TM_GuardianSpirit_eff_desc></TM_GuardianSpirit_eff_desc>
+<TM_GuardianSpirit_ver_desc></TM_GuardianSpirit_ver_desc>
+
+<TM_Totems_pwr>Pri</TM_Totems_pwr>
+<TM_Totems_eff>Riv</TM_Totems_eff>
+<TM_Totems_ver>Thi</TM_Totems_ver>
+<TM_ChainLightning_pwr>So</TM_ChainLightning_pwr>
+<TM_ChainLightning_eff>Su</TM_ChainLightning_eff>
+<TM_ChainLightning_ver>Su</TM_ChainLightning_ver>
+<TM_Enrage_pwr>Lux</TM_Enrage_pwr>
+<TM_Enrage_eff>Lens</TM_Enrage_eff>
+<TM_Enrage_ver>Lumen</TM_Enrage_ver>
+<TM_Hex_pwr>Rewrite History</TM_Hex_pwr>
+<TM_Hex_eff>Reverse Manipulator</TM_Hex_eff>
+<TM_Hex_ver>Reverse Manipulator</TM_Hex_ver>
+<TM_SpiritWolves_pwr>Time Loop</TM_SpiritWolves_pwr>
+<TM_SpiritWolves_eff>Good Timing</TM_SpiritWolves_eff> 
+<TM_SpiritWolves_ver>Time Catcher</TM_SpiritWolves_ver>
+<TM_GuardianSpirit_pwr>Insurance</TM_GuardianSpirit_pwr>
+<TM_GuardianSpirit_eff>Perfect GuardianSpirit</TM_GuardianSpirit_eff>
+<TM_GuardianSpirit_ver>Impression</TM_GuardianSpirit_ver>
 
 <!-- Might Ability Point Descriptions -->
 
@@ -1326,11 +1418,11 @@ Level 1: +40% damage w/ bows, +40% Sight, +40% Hearing
 Level 2: +60% damage w/ bows, +60% Sight, +60% Hearing, +15% Breathing
 Level 3: +80% damage w/ bows, +80% Sight, +80% Hearing, +25% Breathing, +10% Blood filtration</TM_BowTraining_pwr_desc>
 <TM_PoisonTrap_ver_desc>Increases the number of active traps the ranger can have by 1 per level. Base maximum is 2.</TM_PoisonTrap_ver_desc>
-<TM_AnimalFriend_pwr_desc>The ranger can bond with an animal if they have an empathy level that exceeds the wildness of the animal. Empathy also increases the chance of bonding with an animal.
-Level 0: up to 70% wildness
-Level 1: up to 80% wildness
-Level 2: up to 90% wildness
-Level 3: up to 100% wildness</TM_AnimalFriend_pwr_desc>
+<TM_AnimalFriend_pwr_desc>The ranger can only bond with an animal if they have an empathy level that exceeds the wildness of the animal. Empathy also increases the chance of bonding with an animal and decreases the chance the animal turns manhunter.
+Level 0: up to 70% wildness, 40% manhunter
+Level 1: up to 80% wildness, 35% manhunter
+Level 2: up to 90% wildness, 30% manhunter
+Level 3: up to 100% wildness, 25% manhunter</TM_AnimalFriend_pwr_desc>
 <TM_AnimalFriend_eff_desc>Decreases the stamina cost to use and maintain Animal Bond by 15% per skill point.</TM_AnimalFriend_eff_desc>
 <TM_AnimalFriend_ver_desc>Increases the power of the bond between the ranger and animal kin.
 Level 0: Moving +20%, Manipulation +20%, Dodge chance +15%

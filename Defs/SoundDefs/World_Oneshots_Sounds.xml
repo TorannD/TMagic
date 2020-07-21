@@ -2,6 +2,30 @@
 <Defs>
 
   <SoundDef>
+    <defName>TM_LightZip</defName>
+    <eventNames />
+    <maxSimultaneous>10</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/Zip</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>25</min>
+          <max>30</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.8</min>
+          <max>1.2</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
     <defName>TM_MetalImpact</defName>
     <eventNames />
     <maxSimultaneous>10</maxSimultaneous>
@@ -601,6 +625,78 @@
         </volumeRange>
         <pitchRange>
           <min>.9</min>
+          <max>1</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>TM_FlashBang</defName>
+    <eventNames />
+    <maxSimultaneous>5</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/FlashBang</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>60</min>
+          <max>80</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.7</min>
+          <max>.9</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>TM_WolfHowl</defName>
+    <eventNames />
+    <maxSimultaneous>1</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/WolfHowl</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>10</min>
+          <max>12</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.7</min>
+          <max>1</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+  
+  <SoundDef>
+    <defName>TM_FireBurn</defName>
+    <eventNames />
+    <maxSimultaneous>10</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/FireBurn</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>70</min>
+          <max>90</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.7</min>
           <max>1</max>
         </pitchRange>
       </li>

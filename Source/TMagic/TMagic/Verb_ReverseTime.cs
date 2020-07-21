@@ -255,10 +255,10 @@ namespace TorannMagic
                         AgePawn(innerPawn, Mathf.RoundToInt((6*2500) * (1 + (.1f * verVal))), false);
                         HealthUtility.AdjustSeverity(innerPawn, TorannMagicDefOf.TM_DeathReversalHD, 1f);
                         Projectile_Resurrection.ApplyHealthDefects(innerPawn, .25f, .3f);
-                        Projectile_Resurrection.ReduceSkillsOfPawn(innerPawn, Rand.Range(.15f, .25f));
+                        Projectile_Resurrection.ReduceSkillsOfPawn(innerPawn, Rand.Range(.20f, .30f));
                         HealthUtility.AdjustSeverity(this.CasterPawn, TorannMagicDefOf.TM_DeathReversalHD, Rand.Range(.4f, .6f));
-                        Projectile_Resurrection.ApplyHealthDefects(this.CasterPawn, .15f, .2f);
-                        Projectile_Resurrection.ReduceSkillsOfPawn(this.CasterPawn, Rand.Range(.10f, .15f));
+                        //Projectile_Resurrection.ApplyHealthDefects(this.CasterPawn, .15f, .2f);
+                        Projectile_Resurrection.ReduceSkillsOfPawn(this.CasterPawn, Rand.Range(.15f, .2f));
                     }
                 }
                 else

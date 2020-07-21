@@ -13,6 +13,91 @@
   </ThingDef>
   
   <ThingDef ParentName="TM_SkyfallerBase">
+    <defName>TM_LightPodLeaving</defName>
+    <label>light beam (leaving)</label>
+    <thingClass>TorannMagic.WorldTransport.TM_DropPodLeaving</thingClass>
+    <graphicData>
+      <texPath>Other/light_pod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>.5</drawSize>
+    </graphicData>
+    <skyfaller>
+      <movementType>ConstantSpeed</movementType>
+      <reversed>true</reversed>
+      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
+      <shadowSize>(0, 0)</shadowSize>
+      <anticipationSound>DropPod_Leaving</anticipationSound>
+      <anticipationSoundTicks>-1</anticipationSoundTicks>
+	  <speed>3</speed>
+	  <angleCurve>
+		  <points>
+			  <li>(-1, -1)</li>
+		  </points>
+	  </angleCurve>
+      <ticksToImpactRange>
+		<min>0</min>
+		<max>5</max>
+	  </ticksToImpactRange>
+    </skyfaller>
+  </ThingDef>
+  
+  <ThingDef ParentName="TM_SkyfallerBase">
+    <defName>TM_LightPodIncoming</defName>
+    <label>light beam (incoming)</label>
+    <thingClass>TorannMagic.WorldTransport.TM_DropPodIncoming</thingClass>
+    <graphicData>
+      <texPath>Other/light_pod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>.5</drawSize>
+    </graphicData>
+    <skyfaller>
+      <movementType>ConstantSpeed</movementType>
+      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
+      <shadowSize>(0, 0)</shadowSize>
+      <anticipationSound>DropPod_Fall</anticipationSound>
+      <anticipationSoundTicks>20</anticipationSoundTicks>
+      <motesPerCell>0</motesPerCell>
+	  <speed>2</speed>
+	  <angleCurve>
+		  <points>
+			  <li>(-1, -1)</li>
+		  </points>
+	  </angleCurve>
+	  <ticksToImpactRange>
+		<min>42</min>
+		<max>45</max>
+	  </ticksToImpactRange>
+    </skyfaller>
+  </ThingDef>
+  
+  <ThingDef>
+    <defName>TM_ActiveLightPod</defName>
+    <label>light pod</label>
+    <category>Item</category>
+    <thingClass>TorannMagic.WorldTransport.TM_ActiveDropPod</thingClass>
+    <scatterableOnMapGen>false</scatterableOnMapGen>
+    <tickerType>Normal</tickerType>
+    <graphicData>
+      <texPath>Other/light_pod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.9</drawSize>
+      <shadowData>
+        <volume>(0, 0, 0)</volume>
+      </shadowData>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <blockWind>true</blockWind>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <selectable>false</selectable>
+  </ThingDef>
+  
+  <ThingDef ParentName="TM_SkyfallerBase">
     <defName>TM_Firestorm_Large</defName>
     <label>firestorm (large)</label>
 	<!-- <thingClass>DropPodLeaving</thingClass> -->

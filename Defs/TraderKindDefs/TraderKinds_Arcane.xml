@@ -8,7 +8,7 @@
 		<stockGenerators>
 			<li Class="StockGenerator_SingleDef">
 				<thingDef>Silver</thingDef>
-				<countRange>4000~8000</countRange>
+				<countRange>5000~8000</countRange>
 			</li>
 			<li Class="StockGenerator_SingleDef">
 				<thingDef>Plasteel</thingDef>
@@ -16,7 +16,7 @@
 			</li>
 			<li Class="StockGenerator_SingleDef">
 				<thingDef>Uranium</thingDef>
-				<countRange>100~250</countRange>
+				<countRange>150~250</countRange>
 			</li>
 			<li Class="StockGenerator_Tag">
 				<tradeTag>RawArcane</tradeTag>
@@ -24,11 +24,11 @@
 			</li>
 		  <li Class="StockGenerator_SingleDef">
 			<thingDef>Jade</thingDef>
-			<countRange>120~240</countRange>
+			<countRange>200~340</countRange>
 		  </li>
 			<li Class="StockGenerator_SingleDef">
 				<thingDef>Gold</thingDef>
-				<countRange>140~180</countRange>
+				<countRange>240~380</countRange>
 			</li>
 			<li Class="StockGenerator_SingleDef">
 				<thingDef>MedicineUltratech</thingDef>
@@ -51,7 +51,7 @@
 			</li>
 			<li Class="StockGenerator_Tag">
 				<tradeTag>Artifact</tradeTag>
-				<thingDefCountRange>2~2</thingDefCountRange>
+				<thingDefCountRange>4~4</thingDefCountRange>
 				<countRange>1~1</countRange>
 			</li>
 			<li Class="StockGenerator_Animals">
@@ -110,7 +110,7 @@
 	  </li>
 		<li Class="StockGenerator_Tag">
 			<tradeTag>RawArcane</tradeTag>
-			<countRange>200~500</countRange>
+			<countRange>400~600</countRange>
 		</li>
 		<li Class="StockGenerator_SingleDef">
 			<thingDef>MedicineUltratech</thingDef>
@@ -122,7 +122,7 @@
       </li>
 	  <li Class="StockGenerator_SingleDef">
         <thingDef>DevilstrandCloth</thingDef>
-        <countRange>100~300</countRange>
+        <countRange>150~300</countRange>
       </li>
 	  
       <li Class="StockGenerator_SingleDef">
@@ -227,7 +227,7 @@
       </li>
       <li Class="StockGenerator_Tag">
         <tradeTag>Artifact</tradeTag>
-        <thingDefCountRange>2~4</thingDefCountRange>
+        <thingDefCountRange>4~6</thingDefCountRange>
         <countRange>1~1</countRange>
       </li>
 	  <li Class="StockGenerator_Tag">

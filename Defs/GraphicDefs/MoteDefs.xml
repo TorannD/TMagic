@@ -13,6 +13,19 @@
       <fadeOutTime>0.5</fadeOutTime>
     </mote>
   </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_LightBarrier</defName>
+    <graphicData>
+      <texPath>Other/LightBarrier</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>.2</fadeOutTime>
+    </mote>
+  </ThingDef>
 
   <ThingDef ParentName="MoteBase">
     <defName>Mote_BoneDust</defName>
@@ -44,6 +57,32 @@
     <defName>Mote_EarthCrack</defName>
     <graphicData>
       <texPath>Motes/EarthCrackMote</texPath>
+    </graphicData>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+    <ThingDef ParentName="MoteBase">
+    <defName>Mote_LightShield</defName>
+    <graphicData>
+      <texPath>Motes/LightShield</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.05</fadeInTime>
+      <solidTime>0.2</solidTime>
+      <fadeOutTime>0.5</fadeOutTime>
+    </mote>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_LightShield_Glow</defName>
+    <graphicData>
+      <texPath>Motes/LightShield_Glow</texPath>
     </graphicData>
     <altitudeLayer>MoteLow</altitudeLayer>
     <mote>

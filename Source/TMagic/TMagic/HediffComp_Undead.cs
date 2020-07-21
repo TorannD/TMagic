@@ -286,11 +286,11 @@ namespace TorannMagic
                                 Hediff rec = enumerator.Current;
                                 if (!rec.IsPermanent())
                                 {
-                                    if (rec.def.defName == "Cataract" || rec.def.defName == "HearingLoss" || rec.def.defName.Contains("ToxicBuildup"))
+                                    if (rec.def.defName == "Cataract" || rec.def.defName == "HearingLoss" || rec.def.defName.Contains("ToxicBuildup") || rec.def.defName == "Abasia" || rec.def.defName == "BloodRot")
                                     {
                                         pawn.health.RemoveHediff(rec);
                                     }
-                                    if ((rec.def.defName == "Blindness" || rec.def.defName.Contains("Asthma") || rec.def.defName == "Cirrhosis" || rec.def.defName == "ChemicalDamageModerate"))
+                                    if ((rec.def.defName == "Blindness" || rec.def.defName.Contains("Asthma") || rec.def.defName == "Cirrhosis" || rec.def.defName == "ChemicalDamageModerate") || rec.def.defName =="Scaria")
                                     {
                                         pawn.health.RemoveHediff(rec);
                                     }

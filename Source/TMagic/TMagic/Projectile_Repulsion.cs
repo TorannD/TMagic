@@ -19,6 +19,7 @@ namespace TorannMagic
         int strikeNum = 1;
         float radius = 5;
         bool initialized = false;
+        float casterSensitivity = 1f;
         List<IntVec3> cellList;
         Pawn pawn;
         IEnumerable<IntVec3> targets;
@@ -86,26 +87,27 @@ namespace TorannMagic
                 this.duration = Mathf.RoundToInt(this.radius * this.strikeDelay);
                 this.initialized = true;
                 this.targets = GenRadial.RadialCellsAround(base.Position, strikeNum, false);
+                this.casterSensitivity = this.pawn.GetStatValue(StatDefOf.PsychicSensitivity, false);
                 cellList = targets.ToList<IntVec3>();
             }
 
             if (Find.TickManager.TicksGame % this.strikeDelay == 0)
             {
-                int force = Mathf.RoundToInt((10 + (2*pwrVal) - strikeNum) * this.pawn.GetStatValue(StatDefOf.PsychicSensitivity, false));
+                int force = Mathf.RoundToInt((10 + (2 * pwrVal) - strikeNum) * casterSensitivity);
                 IntVec3 curCell;
                 for (int i =0; i < cellList.Count; i++)
                 {
                     curCell = cellList[i];
                     Vector3 angle = GetVector(base.Position, curCell);
-                    TM_MoteMaker.ThrowArcaneWaveMote(curCell.ToVector3(), pawn.Map, .3f * (curCell - base.Position).LengthHorizontal, .1f, .05f, .3f, 0, 3, (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat(), (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat());
-                    if (curCell.IsValid && curCell.InBounds(pawn.Map))
+                    TM_MoteMaker.ThrowArcaneWaveMote(curCell.ToVector3(), this.Map, .3f * (curCell - base.Position).LengthHorizontal, .1f, .05f, .3f, 0, 3, (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat(), (Quaternion.AngleAxis(90, Vector3.up) * angle).ToAngleFlat());
+                    if (curCell.IsValid && curCell.InBounds(this.Map))
                     {
-                        victim = curCell.GetFirstPawn(pawn.Map);
+                        victim = curCell.GetFirstPawn(this.Map);
                         if (victim != null && !victim.Dead)
                         {
                             Vector3 launchVector = GetVector(base.Position, victim.Position);
                             IntVec3 projectedPosition = victim.Position + (force * launchVector).ToIntVec3();
-                            if (projectedPosition.IsValid && projectedPosition.InBounds(pawn.Map))
+                            if (projectedPosition.IsValid && projectedPosition.InBounds(this.Map))
                             {
                                 if (Rand.Chance(TM_Calc.GetSpellSuccessChance(pawn, victim, true)))
                                 {

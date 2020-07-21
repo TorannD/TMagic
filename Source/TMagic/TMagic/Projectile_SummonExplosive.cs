@@ -113,7 +113,7 @@ namespace TorannMagic
                     Messages.Message("InvalidSummon".Translate(), MessageTypeDefOf.RejectInput);
                     if (comp.Mana != null)
                     {
-                        comp.Mana.GainNeed(comp.ActualManaCost(TorannMagicDefOf.TM_SummonExplosive));
+                        comp.Mana.CurLevel += comp.ActualManaCost(TorannMagicDefOf.TM_SummonExplosive);
                     }
                     this.duration = 0;
                 }

@@ -314,7 +314,6 @@ namespace TorannMagic
                     }                    
                 }
             }
-
             if(removeList.Count > 0)
             {
                 for(int i = 0; i < removeList.Count; i++)

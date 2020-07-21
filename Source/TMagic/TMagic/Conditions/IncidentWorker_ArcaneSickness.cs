@@ -52,7 +52,7 @@ namespace TorannMagic
                     return false;
                 }
                 CompAbilityUserMagic comp = p.GetComp<CompAbilityUserMagic>();
-                if (!comp.IsMagicUser)
+                if (comp != null && !comp.IsMagicUser)
                 {
                     return false;
                 }

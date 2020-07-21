@@ -15,16 +15,16 @@ namespace TorannMagic
     [StaticConstructorOnStartup]
     public class Building_TechnoTurret : Building_TurretGun
     {
-        int mortarMaxRange = 120;
+        int mortarMaxRange = 150;
         int mortarMinRange = 40;
         int mortarTicksToFire = 900;
-        float mortarManaCost = .1f;
+        float mortarManaCost = .08f;
 
         int rocketMinRange = 5;
         int rocketTicksToFire = 600;
         int rocketCount = 1;
         int nextRocketFireTick = 0;
-        float rocketManaCost = .05f;
+        float rocketManaCost = .04f;
 
         private int verVal = 0;
         private int pwrVal = 0;
@@ -101,7 +101,7 @@ namespace TorannMagic
                                     def = ThingDef.Named("FlyingObject_RocketSmall")
                                 };
                                 FlyingObject_Advanced flyingObject = (FlyingObject_Advanced)GenSpawn.Spawn(ThingDef.Named("FlyingObject_RocketSmall"), this.Position, this.Map);
-                                flyingObject.AdvancedLaunch(this, ThingDef.Named("Mote_Smoke"), 1, Rand.Range(5, 45), false, this.DrawPos, this.TargetCurrentlyAimingAt.Cell, launchedThing, Rand.Range(32, 38), true, Rand.Range(16, 22), 2, DamageDefOf.Bomb, null);
+                                flyingObject.AdvancedLaunch(this, ThingDef.Named("Mote_Smoke"), 1, Rand.Range(5, 25), false, this.DrawPos, this.TargetCurrentlyAimingAt.Cell, launchedThing, Rand.Range(32, 38), true, Rand.Range(16, 22), 2, DamageDefOf.Bomb, null);
                                 this.rocketCount--;
                                 SoundInfo info = SoundInfo.InMap(new TargetInfo(this.Position, this.Map, false), MaintenanceType.None);
                                 info.pitchFactor = 1.3f;

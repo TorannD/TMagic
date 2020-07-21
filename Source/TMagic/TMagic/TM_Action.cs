@@ -1847,7 +1847,6 @@ namespace TorannMagic
                             if (butcherProducts[j].GetStatValue(StatDefOf.Nutrition) > 0)
                             {
                                 corpseNutritionValue = (butcherProducts[j].GetStatValue(StatDefOf.Nutrition) * butcherProducts[j].stackCount);
-                                //Log.Message("corpse has a meat nutrition amount of " + (butcherProducts[j].GetStatValue(StatDefOf.Nutrition) * butcherProducts[j].stackCount));
                             }
                         }
 
@@ -1857,19 +1856,22 @@ namespace TorannMagic
                                                                where (def.defName == "MealNutrientPaste")
                                                                select def;
 
-                            newThingDef = enumerable.RandomElement();
-                            if (newThingDef != null)
+                            if (enumerable != null && enumerable.Count() > 0)
                             {
-                                transCorpse.Destroy(DestroyMode.Vanish);
-                                Thing thing = null;
-                                int newMatCount = Mathf.RoundToInt(corpseNutritionValue / newThingDef.GetStatValueAbstract(StatDefOf.Nutrition));
-                                thing = ThingMaker.MakeThing(newThingDef);
-                                thing.stackCount = Mathf.RoundToInt((.7f + (.05f * pwrVal)) * newMatCount);
-
-                                if (thing != null)
+                                newThingDef = enumerable.RandomElement();
+                                if (newThingDef != null)
                                 {
-                                    GenPlace.TryPlaceThing(thing, transmutateThing.Position, caster.Map, ThingPlaceMode.Near, null);
-                                    TM_Action.TransmutateEffects(transmutateThing.Position, caster);
+                                    transCorpse.Destroy(DestroyMode.Vanish);
+                                    Thing thing = null;
+                                    int newMatCount = Mathf.RoundToInt(corpseNutritionValue / newThingDef.GetStatValueAbstract(StatDefOf.Nutrition));
+                                    thing = ThingMaker.MakeThing(newThingDef);
+                                    thing.stackCount = Mathf.RoundToInt((.7f + (.05f * pwrVal)) * newMatCount);
+
+                                    if (thing != null)
+                                    {
+                                        GenPlace.TryPlaceThing(thing, transmutateThing.Position, caster.Map, ThingPlaceMode.Near, null);
+                                        TM_Action.TransmutateEffects(transmutateThing.Position, caster);
+                                    }
                                 }
                             }
                             else

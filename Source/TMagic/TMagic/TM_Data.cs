@@ -38,6 +38,7 @@ namespace TorannMagic
             masterSpellList.Add(TorannMagicDefOf.SpellOf_BloodMoon);
             masterSpellList.Add(TorannMagicDefOf.SpellOf_Shapeshift);
             masterSpellList.Add(TorannMagicDefOf.SpellOf_Recall);
+            masterSpellList.Add(TorannMagicDefOf.SpellOf_SpiritOfLight);
             return masterSpellList;
         }
 
@@ -74,6 +75,7 @@ namespace TorannMagic
                 restricted.Add(TorannMagicDefOf.SpellOf_SummonPoppi);
                 restricted.Add(TorannMagicDefOf.SpellOf_TechnoShield);
                 restricted.Add(TorannMagicDefOf.SpellOf_WetGround);
+                restricted.Add(TorannMagicDefOf.SpellOf_SpiritOfLight);
                 return restricted;
             }
         }

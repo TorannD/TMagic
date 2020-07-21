@@ -1,7 +1,67 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-<!-- Commander Orders -->
+<!-- Burst of Light -->
+
+  <EffecterDef>
+    <defName>TM_LightBurstED</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_LightBurstWaveInner</moteDef>
+        <scale>
+          <min>1</min>
+          <max>1</max>
+        </scale>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_LightBurstWaveOuter</moteDef>
+        <scale>
+          <min>3</min>
+          <max>3</max>
+        </scale>
+      </li>
+    </children>
+  </EffecterDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>TM_Mote_LightBurstWaveInner</defName>
+    <graphicData>
+      <texPath>Motes/PowerBeam</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <drawSize>(.06, .06)</drawSize>
+	  <color>(1,1,1,1)</color>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.02</fadeInTime>
+      <solidTime>.1</solidTime>
+      <fadeOutTime>0.35</fadeOutTime>
+      <growthRate>1500</growthRate>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>TM_Mote_LightBurstWaveOuter</defName>
+    <graphicData>
+      <texPath>Motes/PowerBeam</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <color>(1,1,1,1)</color>
+	  <drawSize>(.6, .6)</drawSize>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0</fadeInTime>
+      <solidTime>.1</solidTime>
+      <fadeOutTime>0.15</fadeOutTime>
+      <growthRate>-350</growthRate>
+    </mote>
+  </ThingDef>
+
+<!-- Snap Freeze -->
 
   <EffecterDef>
     <defName>TM_SnapFreezeED</defName>
@@ -65,7 +125,7 @@
     </mote>
   </ThingDef>
 
-<!-- Commander Orders -->
+<!-- Ignite -->
 
   <EffecterDef>
     <defName>TM_IgniteED</defName>

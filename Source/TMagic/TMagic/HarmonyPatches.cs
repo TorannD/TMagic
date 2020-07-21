@@ -178,6 +178,16 @@ namespace TorannMagic
             harmonyInstance.Patch(AccessTools.Method(typeof(AreaManager), "AddStartingAreas", new Type[]
                 {
                 }, null), null, new HarmonyMethod(typeof(TorannMagicMod), "AreaManager_AddMagicZonesToStartingAreas"));
+            harmonyInstance.Patch(AccessTools.Method(typeof(Projectile), "Launch", new Type[]
+                {
+                    typeof(Thing),
+                    typeof(Vector3),
+                    typeof(LocalTargetInfo),
+                    typeof(LocalTargetInfo),
+                    typeof(ProjectileHitFlags),
+                    typeof(Thing),
+                    typeof(ThingDef)
+                }, null), new HarmonyMethod(typeof(TorannMagicMod), "Projectile_Launch_Prefix", null), null, null);
             //harmonyInstance.Patch(AccessTools.Method(typeof(QuestNode_RaceProperty), "Matches", new Type[]
             //    {
             //        typeof(object)
@@ -248,6 +258,44 @@ namespace TorannMagic
             #endregion Children
 
         }
+
+        public static bool Projectile_Launch_Prefix(Projectile __instance, Thing launcher, Vector3 origin, ref LocalTargetInfo usedTarget, ref LocalTargetInfo intendedTarget)
+        {
+            if (launcher is Pawn)
+            {
+                Pawn launcherPawn = (Pawn)launcher;
+                if (launcherPawn.health != null && launcherPawn.health.hediffSet != null)
+                {
+                    Hediff hd = launcherPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_LightBurstHD);
+                    if (hd != null && hd.Severity >= .7)
+                    {
+                        if (launcherPawn.equipment.PrimaryEq != null && launcherPawn.equipment.Primary.def.IsRangedWeapon)
+                        {
+                            float maxRange = launcherPawn.equipment.Primary.def.Verbs.FirstOrDefault().range;
+                            List<Pawn> doomTargets = new List<Pawn>();
+                            List<Pawn> mapPawns = launcherPawn.Map.mapPawns.AllPawnsSpawned;
+                            doomTargets.Clear();
+                            for (int i = 0; i < mapPawns.Count; i++)
+                            {
+                                float distance = (mapPawns[i].Position - launcherPawn.Position).LengthHorizontal;
+                                if (mapPawns[i].Faction == launcherPawn.Faction && mapPawns[i] != launcherPawn &&  distance < maxRange && distance > 3)
+                                {
+                                    doomTargets.Add(mapPawns[i]);
+                                }
+                            }
+                            if (doomTargets.Count > 0 && Rand.Chance(.6f))
+                            {
+                                LocalTargetInfo doomTarget = doomTargets.RandomElement();
+                                usedTarget = doomTarget;
+                                intendedTarget = doomTarget;
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+    
 
         [HarmonyPatch(typeof(MassUtility), "Capacity", null)]
         public class StrongBack_InventoryMassCapacity_Patch
@@ -596,7 +644,7 @@ namespace TorannMagic
         {
             public static void Postfix(Pawn p, ThingDef apparel, ref bool __result)
             {
-                if(p != null && p.story != null && p.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent && apparel == TorannMagicDefOf.TM_Artifact_BracersOfThePacifist)
+                if(p != null && p.story != null && !p.story.DisabledWorkTagsBackstoryAndTraits.HasFlag(WorkTags.Violent) && apparel == TorannMagicDefOf.TM_Artifact_BracersOfThePacifist)
                 {
                     __result = false;
                 }
@@ -654,146 +702,165 @@ namespace TorannMagic
         {
             public static void Postfix(InteractionWorker __instance, Pawn initiator, Pawn recipient)
             {
-                CompAbilityUserMight comp = initiator.GetComp<CompAbilityUserMight>();
-                if (__instance.interaction == InteractionDefOf.Chitchat)
-                {                    
-                    if (initiator.story != null && initiator.story.traits != null && (initiator.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer) || TM_ClassUtility.ClassHasAbility(TorannMagicDefOf.TM_FieldTraining, null, comp)))
-                    {
-                        if (initiator.health != null && initiator.health.hediffSet != null && initiator.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffGearRepair))
-                        {                            
-                            if (comp != null && comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level >= 10)
-                            {
-                                if (recipient.equipment != null)
-                                {
-                                    Thing weapon = recipient.equipment.Primary;
-                                    if (weapon != null && (weapon.def.IsRangedWeapon || weapon.def.IsMeleeWeapon))
-                                    {
-                                        if (weapon.HitPoints < weapon.MaxHitPoints)
-                                        {
-                                            weapon.HitPoints++;
-                                        }
-                                    }
-                                }
-                                if (recipient.apparel != null)
-                                {
-                                    List<Apparel> gear = recipient.apparel.WornApparel;
-                                    for (int i = 0; i < gear.Count; i++)
-                                    {
-                                        if (gear[i].HitPoints < gear[i].MaxHitPoints)
-                                        {
-                                            gear[i].HitPoints++;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    if (recipient.story != null && recipient.story.traits != null && (recipient.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer) || TM_ClassUtility.ClassHasAbility(TorannMagicDefOf.TM_FieldTraining, null, comp)))
-                    {
-                        if (recipient.health != null && recipient.health.hediffSet != null && recipient.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffGearRepair))
-                        {                            
-                            if (comp != null && comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level >= 10)
-                            {
-                                if (initiator.equipment != null)
-                                {
-                                    Thing weapon = initiator.equipment.Primary;
-                                    if (weapon != null && (weapon.def.IsRangedWeapon || weapon.def.IsMeleeWeapon))
-                                    {
-                                        if (weapon.HitPoints < weapon.MaxHitPoints)
-                                        {
-                                            weapon.HitPoints++;
-                                        }
-                                    }
-                                }
-                                if (initiator.apparel != null)
-                                {
-                                    List<Apparel> gear = initiator.apparel.WornApparel;
-                                    for (int i = 0; i < gear.Count; i++)
-                                    {
-                                        if (gear[i].HitPoints < gear[i].MaxHitPoints)
-                                        {
-                                            gear[i].HitPoints++;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                else if(__instance.interaction == InteractionDefOf.DeepTalk)
+                if (recipient != null && initiator != null)
                 {
-                    if (initiator.story != null && initiator.story.traits != null && (initiator.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer) || TM_ClassUtility.ClassHasAbility(TorannMagicDefOf.TM_FieldTraining, null, comp)))
+                    CompAbilityUserMight comp = initiator.GetComp<CompAbilityUserMight>();
+                    if (__instance.interaction == InteractionDefOf.Chitchat)
                     {
-                        if (initiator.health != null && initiator.health.hediffSet != null && initiator.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffGearRepair))
+                        if (initiator.story != null && comp != null && initiator.story.traits != null && (initiator.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer) || TM_ClassUtility.ClassHasAbility(TorannMagicDefOf.TM_FieldTraining, null, comp)))
                         {
-                            if (comp != null && comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level >= 10)
+                            if (initiator.health != null && initiator.health.hediffSet != null && initiator.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffGearRepair))
                             {
-                                if (recipient.equipment != null)
+                                if (comp.MightData != null && comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level >= 10)
                                 {
-                                    Thing weapon = recipient.equipment.Primary;
-                                    if (weapon != null && (weapon.def.IsRangedWeapon || weapon.def.IsMeleeWeapon))
+                                    if (recipient.equipment != null && recipient.equipment.Primary != null)
                                     {
-                                        if (weapon.HitPoints < weapon.MaxHitPoints)
+                                        Thing weapon = recipient.equipment.Primary;
+                                        if (weapon != null && (weapon.def.IsRangedWeapon || weapon.def.IsMeleeWeapon))
                                         {
-                                            weapon.HitPoints++;
+                                            if (weapon.HitPoints < weapon.MaxHitPoints)
+                                            {
+                                                weapon.HitPoints++;
+                                            }
                                         }
-                                        if (weapon.HitPoints < weapon.MaxHitPoints)
+                                    }
+                                    if (recipient.apparel != null)
+                                    {
+                                        List<Apparel> gear = recipient.apparel.WornApparel;
+                                        for (int i = 0; i < gear.Count; i++)
                                         {
-                                            weapon.HitPoints++;
-                                        }
-                                        if (weapon.HitPoints < weapon.MaxHitPoints)
-                                        {
-                                            weapon.HitPoints++;
+                                            if (gear[i].HitPoints < gear[i].MaxHitPoints)
+                                            {
+                                                gear[i].HitPoints++;
+                                            }
                                         }
                                     }
                                 }
-                                if (recipient.apparel != null)
+                            }
+                        }
+                        if (recipient.story != null && recipient.story.traits != null && (recipient.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer) || TM_ClassUtility.ClassHasAbility(TorannMagicDefOf.TM_FieldTraining, null, comp)))
+                        {
+                            if (recipient.health != null && recipient.health.hediffSet != null && recipient.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffGearRepair))
+                            {
+                                if (comp.MightData != null && comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level >= 10)
                                 {
-                                    List<Apparel> gear = recipient.apparel.WornApparel;
-                                    for (int i = 0; i < gear.Count; i++)
+                                    if (initiator.equipment != null && initiator.equipment.Primary != null)
                                     {
-                                        if (gear[i].HitPoints < gear[i].MaxHitPoints)
+                                        Thing weapon = initiator.equipment.Primary;
+                                        if (weapon != null && (weapon.def.IsRangedWeapon || weapon.def.IsMeleeWeapon))
                                         {
-                                            gear[i].HitPoints++;
+                                            if (weapon.HitPoints < weapon.MaxHitPoints)
+                                            {
+                                                weapon.HitPoints++;
+                                            }
                                         }
-                                        if (gear[i].HitPoints < gear[i].MaxHitPoints)
+                                    }
+                                    if (initiator.apparel != null)
+                                    {
+                                        List<Apparel> gear = initiator.apparel.WornApparel;
+                                        for (int i = 0; i < gear.Count; i++)
                                         {
-                                            gear[i].HitPoints++;
-                                        }
-                                        if (gear[i].HitPoints < gear[i].MaxHitPoints)
-                                        {
-                                            gear[i].HitPoints++;
+                                            if (gear[i].HitPoints < gear[i].MaxHitPoints)
+                                            {
+                                                gear[i].HitPoints++;
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
                     }
-                    if (recipient.story != null && recipient.story.traits != null && (recipient.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer) || TM_ClassUtility.ClassHasAbility(TorannMagicDefOf.TM_FieldTraining, null, comp)))
+                    else if (__instance.interaction == InteractionDefOf.DeepTalk)
                     {
-                        if (recipient.health != null && recipient.health.hediffSet != null && recipient.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffGearRepair))
+                        if (initiator.story != null && comp != null && initiator.story.traits != null && (initiator.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer) || TM_ClassUtility.ClassHasAbility(TorannMagicDefOf.TM_FieldTraining, null, comp)))
                         {
-                            if (comp != null && comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level >= 10)
+                            if (initiator.health != null && initiator.health.hediffSet != null && initiator.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffGearRepair))
                             {
-                                if (initiator.equipment != null)
+                                if (comp.MightData != null && comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level >= 10)
                                 {
-                                    Thing weapon = initiator.equipment.Primary;
-                                    if (weapon != null && (weapon.def.IsRangedWeapon || weapon.def.IsMeleeWeapon))
+                                    if (recipient.equipment != null && recipient.equipment.Primary != null)
                                     {
-                                        if (weapon.HitPoints < weapon.MaxHitPoints)
+                                        Thing weapon = recipient.equipment.Primary;
+                                        if (weapon != null && (weapon.def.IsRangedWeapon || weapon.def.IsMeleeWeapon))
                                         {
-                                            weapon.HitPoints++;
+                                            if (weapon.HitPoints < weapon.MaxHitPoints)
+                                            {
+                                                weapon.HitPoints++;
+                                            }
+                                            if (weapon.HitPoints < weapon.MaxHitPoints)
+                                            {
+                                                weapon.HitPoints++;
+                                            }
+                                            if (weapon.HitPoints < weapon.MaxHitPoints)
+                                            {
+                                                weapon.HitPoints++;
+                                            }
+                                        }
+                                    }
+                                    if (recipient.apparel != null)
+                                    {
+                                        List<Apparel> gear = recipient.apparel.WornApparel;
+                                        for (int i = 0; i < gear.Count; i++)
+                                        {
+                                            if (gear[i].HitPoints < gear[i].MaxHitPoints)
+                                            {
+                                                gear[i].HitPoints++;
+                                            }
+                                            if (gear[i].HitPoints < gear[i].MaxHitPoints)
+                                            {
+                                                gear[i].HitPoints++;
+                                            }
+                                            if (gear[i].HitPoints < gear[i].MaxHitPoints)
+                                            {
+                                                gear[i].HitPoints++;
+                                            }
                                         }
                                     }
                                 }
-                                if (initiator.apparel != null)
+                            }
+                        }
+                        if (recipient.story != null && comp != null && recipient.story.traits != null && (recipient.story.traits.HasTrait(TorannMagicDefOf.TM_Wayfarer) || TM_ClassUtility.ClassHasAbility(TorannMagicDefOf.TM_FieldTraining, null, comp)))
+                        {
+                            if (recipient.health != null && recipient.health.hediffSet != null && recipient.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffGearRepair))
+                            {
+                                if (comp.MightData != null && comp.MightData.MightPowerSkill_FieldTraining.FirstOrDefault((MightPowerSkill x) => x.label == "TM_FieldTraining_ver").level >= 10)
                                 {
-                                    List<Apparel> gear = initiator.apparel.WornApparel;
-                                    for (int i = 0; i < gear.Count; i++)
+                                    if (initiator.equipment != null && initiator.equipment.Primary != null)
                                     {
-                                        if (gear[i].HitPoints < gear[i].MaxHitPoints)
+                                        Thing weapon = initiator.equipment.Primary;
+                                        if (weapon != null && (weapon.def.IsRangedWeapon || weapon.def.IsMeleeWeapon))
                                         {
-                                            gear[i].HitPoints++;
+                                            if (weapon.HitPoints < weapon.MaxHitPoints)
+                                            {
+                                                weapon.HitPoints++;
+                                            }
+                                            if (weapon.HitPoints < weapon.MaxHitPoints)
+                                            {
+                                                weapon.HitPoints++;
+                                            }
+                                            if (weapon.HitPoints < weapon.MaxHitPoints)
+                                            {
+                                                weapon.HitPoints++;
+                                            }
+                                        }
+                                    }
+                                    if (initiator.apparel != null)
+                                    {
+                                        List<Apparel> gear = initiator.apparel.WornApparel;
+                                        for (int i = 0; i < gear.Count; i++)
+                                        {
+                                            if (gear[i].HitPoints < gear[i].MaxHitPoints)
+                                            {
+                                                gear[i].HitPoints++;
+                                            }
+                                            if (gear[i].HitPoints < gear[i].MaxHitPoints)
+                                            {
+                                                gear[i].HitPoints++;
+                                            }
+                                            if (gear[i].HitPoints < gear[i].MaxHitPoints)
+                                            {
+                                                gear[i].HitPoints++;
+                                            }
                                         }
                                     }
                                 }
@@ -998,17 +1065,22 @@ namespace TorannMagic
                 if (caster != null)
                 {
                     IntVec3 targ = UI.MouseMapPosition().ToIntVec3();
-                    if(targ != null && __instance.targetingSource.GetVerb != null && __instance.targetingSource.GetVerb.EquipmentSource == null && __instance.targetingSource.GetVerb.loadID == null) // && __instance.targetingSource.GetVerb.EquipmentSource == null)
+                    if (targ != null && __instance.targetingSource.GetVerb != null && __instance.targetingSource.GetVerb.EquipmentSource == null && __instance.targetingSource.GetVerb.loadID == null) // && __instance.targetingSource.GetVerb.EquipmentSource == null)
                     {
+                        
                         if ((caster.Position - targ).LengthHorizontal > __instance.targetingSource.GetVerb.verbProps.range)
                         {
-                            //Log.Message("drawing icon " + __instance.targetingVerb.verbProps.range + " is less than target distance of " + (caster.Position - targ).LengthHorizontal);
                             Texture2D icon = TexCommand.CannotShoot; // TM_RenderQueue.losIcon;
                             GenUI.DrawMouseAttachment(icon);
                         }                        
                         if(__instance.targetingSource.GetVerb.verbProps.requireLineOfSight && !__instance.targetingSource.GetVerb.TryFindShootLineFromTo(caster.Position, targ, out ShootLine resultingLine))
                         {
                             Texture2D icon = TM_RenderQueue.losIcon;
+                            GenUI.DrawMouseAttachment(icon);
+                        }
+                        if(__instance.targetingSource.GetVerb.GetType() == typeof(Verb_LightSkip) && targ.Roofed(caster.Map))
+                        {
+                            Texture2D icon = TexCommand.CannotShoot; 
                             GenUI.DrawMouseAttachment(icon);
                         }
                     }
@@ -2491,6 +2563,36 @@ namespace TorannMagic
                             }
                         }
                     }
+                    CompAbilityUserMagic compMagic = pawn.TryGetComp<CompAbilityUserMagic>();
+                    if(compMagic != null && compMagic.SoL != null && compMagic.SoL.solAction == SoLAction.Hovering)
+                    {
+                        FlyingObject_SpiritOfLight sol = compMagic.SoL;
+                        if(sol.LightEnergy > (dinfo.Amount/10f) && Rand.Chance(sol.LightEnergy/100f))
+                        {
+                            Thing instigator = dinfo.Instigator as Thing;
+                            if (instigator != null)
+                            {
+                                if ((dinfo.Weapon != null && !dinfo.Def.isExplosive) || dinfo.WeaponBodyPartGroup != null)
+                                {
+                                    Vector3 drawPos = pawn.DrawPos;
+                                    float drawAngle = (instigator.DrawPos - drawPos).AngleFlat();
+                                    drawPos.x += Mathf.Clamp(((instigator.DrawPos.x - drawPos.x) / 20f) + Rand.Range(-.1f, .1f), -.75f, .75f);
+                                    drawPos.z += Mathf.Clamp(((instigator.DrawPos.z - drawPos.z) / 10f) + Rand.Range(-.1f, .1f), -1f, 1f);
+                                    TM_MoteMaker.ThrowSparkFlashMote(drawPos, pawn.Map, 1f);
+                                    TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_LightShield_Glow, drawPos, pawn.Map, .65f, .27f, 0f, .13f, 0, 0, 0, drawAngle-180);
+                                    SoundInfo info = SoundInfo.InMap(new TargetInfo(pawn.Position, pawn.Map, false), MaintenanceType.None);
+                                    info.volumeFactor = .5f;
+                                    info.pitchFactor = 3f;
+                                    TM_Action.DoReversalRandomTarget(dinfo, pawn, 0, 40f);
+                                    TorannMagicDefOf.TM_MetalImpact.PlayOneShot(info);
+                                    sol.ActualLightCost(dinfo.Amount / 10f);
+                                    dinfo.SetAmount(0);
+                                    absorbed = true;
+                                    return false;
+                                }
+                            }
+                        }
+                    }
                     //concept damage mitigation from psychic sensitivity - completely mitigates some damage types
                     //if (pawn.RaceProps.Humanlike && pawn.GetStatValue(StatDefOf.PsychicSensitivity, true) < 1)
                     //{
@@ -2622,7 +2724,7 @@ namespace TorannMagic
                                 }
                             }
 
-                            if(instigator.RaceProps.Humanlike && instigator.health.hediffSet.HasHediff(TorannMagicDefOf.TM_NightshadeHD) && dinfo.Amount > 0)
+                            if(instigator.RaceProps.Humanlike && instigator.health.hediffSet.HasHediff(TorannMagicDefOf.TM_NightshadeHD) && dinfo.Amount > 0 && instigator.Faction != pawn.Faction)
                             {
                                 Hediff hd = instigator.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_NightshadeHD);
                                 HediffComp_Nightshade hdComp = hd.TryGetComp<HediffComp_Nightshade>();
@@ -2881,6 +2983,7 @@ namespace TorannMagic
                 }
                 if (__instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_Blink" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_BLOS" ||
+                    __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_LightSkip" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_Summon" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_SootheAnimal" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Effect_EyeOfTheStorm" ||
@@ -3566,7 +3669,7 @@ namespace TorannMagic
                             {
                                 if (anyMagesEnabled)
                                 {
-                                    int rndM = Rand.RangeInclusive(1, (mageCount+1));
+                                    int rndM = 20;// Rand.RangeInclusive(1, (mageCount+1));
                                     switch (rndM)
                                     {
                                         case 1:

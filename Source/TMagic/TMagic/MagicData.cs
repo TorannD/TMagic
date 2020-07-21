@@ -40,6 +40,8 @@ namespace TorannMagic
         public List<MagicPower> magicPowerW;
         public List<MagicPower> magicPowerCM;
         public List<MagicPower> magicPowerShadow;
+        public List<MagicPower> magicPowerBrightmage;
+        public List<MagicPower> magicPowerShaman;
 
         public List<MagicPower> magicPowerStandalone;
 
@@ -162,6 +164,20 @@ namespace TorannMagic
         public List<MagicPowerSkill> magicPowerSkill_ChaosTradition;
 
         public List<MagicPowerSkill> magicPowerSkill_ShadowWalk;
+
+        public List<MagicPowerSkill> magicPowerSkill_LightLance;
+        public List<MagicPowerSkill> magicPowerSkill_Sunfire;
+        public List<MagicPowerSkill> magicPowerSkill_LightBurst;
+        public List<MagicPowerSkill> magicPowerSkill_LightSkip;
+        public List<MagicPowerSkill> magicPowerSkill_Refraction;
+        public List<MagicPowerSkill> magicPowerSkill_SpiritOfLight;
+
+        public List<MagicPowerSkill> magicPowerSkill_Totems;            //healing totem, hex/buff totem, elemental totem
+        public List<MagicPowerSkill> magicPowerSkill_ChainLightning;    
+        public List<MagicPowerSkill> magicPowerSkill_Enrage;
+        public List<MagicPowerSkill> magicPowerSkill_Hex;
+        public List<MagicPowerSkill> magicPowerSkill_SpiritWolves;
+        public List<MagicPowerSkill> magicPowerSkill_GuardianSpirit;
 
         public List<MagicPowerSkill> MagicPowerSkill_global_regen
         {
@@ -371,6 +387,14 @@ namespace TorannMagic
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
                             TorannMagicDefOf.TM_ShapeshiftDW
+                        }),
+                        new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_LightSkipMass
+                        }),
+                        new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_LightSkipGlobal
                         }),
                     };
                 }
@@ -2782,11 +2806,300 @@ namespace TorannMagic
             }
         }
 
+        public List<MagicPower> MagicPowersBrightmage
+        {
+            get
+            {
+                bool flag = this.magicPowerBrightmage == null;
+                if (flag)
+                {
+                    this.magicPowerBrightmage = new List<MagicPower>
+                    {
+                        new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_LightLance
+                        }),
+                        new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Sunfire,
+                            TorannMagicDefOf.TM_Sunfire_I,
+                            TorannMagicDefOf.TM_Sunfire_II,
+                            TorannMagicDefOf.TM_Sunfire_III
+                        }),
+                        new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_LightBurst
+                        }),
+                        new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_LightSkip
+                        }),
+                        new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Refraction
+                        }),
+                        new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_SpiritOfLight
+                        }, true),
+                    };
+                }
+                return this.magicPowerBrightmage;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_LightLance
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_LightLance == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_LightLance = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_LightLance_pwr", "TM_LightLance_pwr_desc"),     //damage
+                        new MagicPowerSkill("TM_LightLance_eff", "TM_LightLance_eff_desc"),     //mana cost
+                        new MagicPowerSkill("TM_LightLance_ver", "TM_LightLance_ver_desc")      //beam width and duration
+                    };
+                }
+                return this.magicPowerSkill_LightLance;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Sunfire
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Sunfire == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Sunfire = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Sunfire_pwr", "TM_Sunfire_pwr_desc"),           //damage
+                        new MagicPowerSkill("TM_Sunfire_eff", "TM_Sunfire_eff_desc"),           //mana cost
+                        new MagicPowerSkill("TM_Sunfire_ver", "TM_Sunfire_ver_desc")            //lance count
+                    };
+                }
+                return this.magicPowerSkill_Sunfire;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_LightBurst
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_LightBurst == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_LightBurst = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_LightBurst_pwr", "TM_LightBurst_pwr_desc"),     //hediff severity
+                        new MagicPowerSkill("TM_LightBurst_eff", "TM_LightBurst_eff_desc"),     //mana cost
+                        new MagicPowerSkill("TM_LightBurst_ver", "TM_LightBurst_ver_desc")      //effects mechanoids, redirects bullets to another target or "spray"
+                    };
+                }
+                return this.magicPowerSkill_LightBurst;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_LightSkip
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_LightSkip == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_LightSkip = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_LightSkip_pwr", "TM_LightSkip_pwr_desc"),       //3 tiers, self->aoe->global (2pts per)
+                        new MagicPowerSkill("TM_LightSkip_eff", "TM_LightSkip_eff_desc")        //mana cost, light requirement
+                    };
+                }
+                return this.magicPowerSkill_LightSkip;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Refraction
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Refraction == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Refraction = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Refraction_pwr", "TM_Refraction_pwr_desc"),     //+friendly accuracy; -hostile accuracy
+                        new MagicPowerSkill("TM_Refraction_eff", "TM_Refraction_eff_desc"),     //mana cost
+                        new MagicPowerSkill("TM_Refraction_ver", "TM_Refraction_ver_desc")      //duration
+                    };
+                }
+                return this.magicPowerSkill_Refraction;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_SpiritOfLight
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_SpiritOfLight == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_SpiritOfLight = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_SpiritOfLight_pwr", "TM_SpiritOfLight_pwr_desc"), //increases damage of abilities, reduces delay between abilities
+                        new MagicPowerSkill("TM_SpiritOfLight_eff", "TM_SpiritOfLight_eff_desc"), //decreased upkeep cost
+                        new MagicPowerSkill("TM_SpiritOfLight_ver", "TM_SpiritOfLight_ver_desc")  //increased light energy gain and increased max capacity
+                    };
+                }
+                return this.magicPowerSkill_SpiritOfLight;
+            }
+        }
+
+        public List<MagicPower> MagicPowersShaman
+        {
+            get
+            {
+                bool flag = this.magicPowerShaman == null;
+                if (flag)
+                {
+                    this.magicPowerShaman = new List<MagicPower>
+                    {
+                        new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Totems
+                        }),
+                        new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_ChainLightning
+                        }),
+                        new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Enrage
+                        }),
+                        new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_Hex
+                        }),
+                        new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_SpiritWolves,
+                            TorannMagicDefOf.TM_SpiritWolves_I,
+                            TorannMagicDefOf.TM_SpiritWolves_II,
+                            TorannMagicDefOf.TM_SpiritWolves_III
+                        }),
+                        new MagicPower(new List<AbilityUser.AbilityDef>
+                        {
+                            TorannMagicDefOf.TM_GuardianSpirit
+                        }),
+                    };
+                }
+                return this.magicPowerShaman;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Totems
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Totems == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Totems = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Totems_pwr", "TM_Totems_pwr_desc"), // power of totems
+                        new MagicPowerSkill("TM_Totems_eff", "TM_Totems_eff_desc"), // mana cost 
+                        new MagicPowerSkill("TM_Totems_ver", "TM_Totems_ver_desc")  // effect radius, effects
+                    };
+                }
+                return this.magicPowerSkill_Totems;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_ChainLightning
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_ChainLightning == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_ChainLightning = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_ChainLightning_pwr", "TM_ChainLightning_pwr_desc"), // damage
+                        new MagicPowerSkill("TM_ChainLightning_eff", "TM_ChainLightning_eff_desc"), // reduces mana cost
+                        new MagicPowerSkill("TM_ChainLightning_ver", "TM_ChainLightning_ver_desc")  // number of forks, fork count
+                    };
+                }
+                return this.magicPowerSkill_ChainLightning;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Enrage
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Enrage == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Enrage = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Enrage_pwr", "TM_Enrage_pwr_desc"), // severity
+                        new MagicPowerSkill("TM_Enrage_eff", "TM_Enrage_eff_desc"), // reduces mana cost
+                        new MagicPowerSkill("TM_Enrage_ver", "TM_Enrage_ver_desc")  // application count
+                    };
+                }
+                return this.magicPowerSkill_Enrage;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_Hex
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_Hex == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_Hex = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_Hex_pwr", "TM_Hex_pwr_desc"), // severity, what other effects are available after hexing
+                        new MagicPowerSkill("TM_Hex_eff", "TM_Hex_eff_desc"), // reduces mana cost
+                        new MagicPowerSkill("TM_Hex_ver", "TM_Hex_ver_desc")  // appication count, other stuff related to hex actions
+                    };
+                }
+                return this.magicPowerSkill_Hex;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_SpiritWolves
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_SpiritWolves == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_SpiritWolves = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_SpiritWolves_pwr", "TM_SpiritWolves_pwr_desc"), // damage
+                        new MagicPowerSkill("TM_SpiritWolves_eff", "TM_SpiritWolves_eff_desc"), // reduces mana cost
+                        new MagicPowerSkill("TM_SpiritWolves_ver", "TM_SpiritWolves_ver_desc")  // width
+                    };
+                }
+                return this.magicPowerSkill_SpiritWolves;
+            }
+        }
+        public List<MagicPowerSkill> MagicPowerSkill_GuardianSpirit
+        {
+            get
+            {
+                bool flag = this.magicPowerSkill_GuardianSpirit == null;
+                if (flag)
+                {
+                    this.magicPowerSkill_GuardianSpirit = new List<MagicPowerSkill>
+                    {
+                        new MagicPowerSkill("TM_GuardianSpirit_pwr", "TM_GuardianSpirit_pwr_desc"), // power of GuardianSpirit
+                        new MagicPowerSkill("TM_GuardianSpirit_eff", "TM_GuardianSpirit_eff_desc"), // mana cost 
+                        new MagicPowerSkill("TM_GuardianSpirit_ver", "TM_GuardianSpirit_ver_desc")  // effect radius, effects
+                    };
+                }
+                return this.magicPowerSkill_GuardianSpirit;
+            }
+        }
+
+
+
         public bool IsNecromancer
         {
             get
             {
-                return this.isNecromancer;
+                return this.isNecromancer || TM_Calc.IsNecromancer(this.MagicPawn);
             }
             set
             {
@@ -3123,6 +3436,8 @@ namespace TorannMagic
                 list.AddRange(this.MagicPowersE.Except(MagicPowersE.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shapeshift)));
                 list.AddRange(this.MagicPowersC.Except(MagicPowersC.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Recall)));
                 list.Add((this.MagicPowersShadow.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowWalk)));
+                list.AddRange(this.MagicPowersBrightmage.Except(MagicPowersBrightmage.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SpiritOfLight)));
+                //list.AddRange(this.MagicPowersShaman.Except(MagicPowersShaman.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_GuardianSpirit)));
                 return list;
             }
         }
@@ -3167,6 +3482,8 @@ namespace TorannMagic
                 list.AddRange(this.MagicPowersG);
                 list.AddRange(this.MagicPowersT);
                 list.AddRange(this.MagicPowersShadow);
+                list.AddRange(this.MagicPowersBrightmage);
+                //list.AddRange(this.MagicPowersShaman);
                 return list;
             }
         }
@@ -3298,6 +3615,18 @@ namespace TorannMagic
                 list.AddRange(this.MagicPowerSkill_ValiantCharge);
                 list.AddRange(this.MagicPowerSkill_WandererCraft);
                 list.AddRange(this.MagicPowerSkill_ShadowWalk);
+                list.AddRange(this.MagicPowerSkill_LightLance);
+                list.AddRange(this.MagicPowerSkill_Sunfire);
+                list.AddRange(this.MagicPowerSkill_LightBurst);
+                list.AddRange(this.MagicPowerSkill_LightSkip);
+                list.AddRange(this.MagicPowerSkill_Refraction);
+                list.AddRange(this.MagicPowerSkill_SpiritOfLight);
+                //list.AddRange(this.MagicPowerSkill_Totems);
+                //list.AddRange(this.MagicPowerSkill_ChainLightning);
+                //list.AddRange(this.MagicPowerSkill_Enrage);
+                //list.AddRange(this.MagicPowerSkill_Hex);
+                //list.AddRange(this.MagicPowerSkill_SpiritWolves);
+                //list.AddRange(this.MagicPowerSkill_GuardianSpirit);
                 return list;
             }
         }
@@ -3344,6 +3673,8 @@ namespace TorannMagic
             this.magicPowerC.Clear();
             this.magicPowerCM.Clear();
             this.magicPowerShadow.Clear();
+            this.magicPowerBrightmage.Clear();
+            //this.magicPowerShaman.Clear();
             this.magicPawn = null;            
             this.initialized = false;           
         }
@@ -3479,6 +3810,21 @@ namespace TorannMagic
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_ChaosTradition, "magicPowerSkill_ChaosTradition", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPower>(ref this.magicPowerShadow, "magicPowerShadow", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_ShadowWalk, "magicPowerSkill_ShadowWalk", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPower>(ref this.magicPowerBrightmage, "magicPowerBrightmage", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_LightLance, "magicPowerSkill_LightLance", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Sunfire, "magicPowerSkill_Sunfire", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_LightBurst, "magicPowerSkill_LightBurst", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_LightSkip, "magicPowerSkill_LightSkip", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Refraction, "magicPowerSkill_Refraction", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_SpiritOfLight, "magicPowerSkill_SpiritOfLight", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPower>(ref this.magicPowerShaman, "magicPowerShaman", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Totems, "magicPowerSkill_Totems", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_ChainLightning, "magicPowerSkill_ChainLightning", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Enrage, "magicPowerSkill_Enrage", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Hex, "magicPowerSkill_Hex", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_SpiritWolves, "magicPowerSkill_SpiritWolves", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_GuardianSpirit, "magicPowerSkill_GuardianSpirit", LookMode.Deep, new object[0]);
+
         }
     }
 }
