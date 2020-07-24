@@ -392,6 +392,16 @@ namespace TorannMagic
             }
         }
 
+        public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
+        {
+            if (!pawn.DestroyedOrNull())
+            {
+                CompAbilityUserMagic comp = pawn.TryGetComp<CompAbilityUserMagic>();
+                comp.SoL = null;
+            }
+            base.Destroy(mode);
+        }
+
         private void Initialize()
         {
             if (pawn != null)
@@ -493,6 +503,15 @@ namespace TorannMagic
                     MoteMaker.ThrowLightningGlow(this.ExactPosition, this.Map, 1f);
                     MoteMaker.ThrowLightningGlow(this.ExactPosition, this.Map, .7f);
                     MoteMaker.ThrowLightningGlow(this.ExactPosition, this.Map, .4f);
+                }
+            }
+            else if(this.shouldDismiss)
+            {
+                if(this.glowing)
+                {
+                    this.glowCenter = default(IntVec3);
+                    DoGlow();
+                    this.Destroy(DestroyMode.Vanish);
                 }
             }
 

@@ -1508,6 +1508,16 @@ namespace TorannMagic
                                 skill.level++;
                                 compMagic.MagicData.MagicAbilityPoints -= 2;
                             }
+                            if (enumerator.Current.abilityDef.defName == "TM_LightLance")
+                            {                                
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
+                            if (enumerator.Current.abilityDef.defName == "TM_Sunfire" || enumerator.Current.abilityDef.defName == "TM_Sunfire_I" || enumerator.Current.abilityDef.defName == "TM_Sunfire_II" || enumerator.Current.abilityDef.defName == "TM_Sunfire_III")
+                            {
+                                skill.level++;
+                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                            }
                         }
                     }
                     num2 += (MagicCardUtility.MagicCardSize.x / 3) - MagicCardUtility.SpacingOffset;
@@ -1614,42 +1624,70 @@ namespace TorannMagic
                         }
                     }
 
+                    //Text.Font = GameFont.Tiny;
+                    //float num2 = rect3.x;
+                    //if (itnum == 1 && MagicPowerSkill1 != null)
+                    //{
+                    //    MagicCardUtility.DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill1, rect3);
+                    //    itnum++;
+                    //}
+                    //else if (itnum == 2 && MagicPowerSkill2 != null)
+                    //{
+                    //    MagicCardUtility.DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill2, rect3);
+                    //    itnum++;
+                    //}
+                    //else if (itnum == 3 && MagicPowerSkill3 != null)
+                    //{
+                    //    MagicCardUtility.DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill3, rect3);
+                    //    itnum++;
+                    //}
+                    //else if (itnum == 4 && MagicPowerSkill4 != null)
+                    //{
+                    //    MagicCardUtility.DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill4, rect3);
+                    //    itnum++;
+                    //}
+                    //else if (itnum == 5 && MagicPowerSkill5 != null)
+                    //{
+                    //    MagicCardUtility.DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill5, rect3);
+                    //    itnum++;
+                    //}
+                    //else if (itnum == 6 && MagicPowerSkill6 != null)
+                    //{
+                    //    MagicCardUtility.DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill6, rect3);
+                    //    itnum++;
+                    //}
+                    //else
+                    //{
+                    //    //Log.Message("No skill iteration found.");
+                    //}
+                    TMAbilityDef ability = (TMAbilityDef)power.abilityDef;
                     Text.Font = GameFont.Tiny;
                     float num2 = rect3.x;
-                    if (itnum == 1 && MagicPowerSkill1 != null)
+                    List<MagicPowerSkill> mpsList = new List<MagicPowerSkill>();
+                    mpsList.Clear();
+
+                    MagicPowerSkill mps = compMagic.MagicData.GetSkill_Power(ability);
+                    if (mps != null)
                     {
-                        MagicCardUtility.DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill1, rect3);
+                        mpsList.Add(mps);
+                    }
+                    mps = compMagic.MagicData.GetSkill_Efficiency(ability);
+                    if (mps != null)
+                    {
+                        mpsList.Add(mps);
+                    }
+                    mps = compMagic.MagicData.GetSkill_Versatility(ability);
+                    if (mps != null)
+                    {
+                        mpsList.Add(mps);
+                    }
+
+                    if (mpsList.Count > 0)
+                    {
+                        CustomSkillHandler(num2, compMagic, power, enumerator, mpsList, rect3);
                         itnum++;
                     }
-                    else if (itnum == 2 && MagicPowerSkill2 != null)
-                    {
-                        MagicCardUtility.DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill2, rect3);
-                        itnum++;
-                    }
-                    else if (itnum == 3 && MagicPowerSkill3 != null)
-                    {
-                        MagicCardUtility.DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill3, rect3);
-                        itnum++;
-                    }
-                    else if (itnum == 4 && MagicPowerSkill4 != null)
-                    {
-                        MagicCardUtility.DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill4, rect3);
-                        itnum++;
-                    }
-                    else if (itnum == 5 && MagicPowerSkill5 != null)
-                    {
-                        MagicCardUtility.DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill5, rect3);
-                        itnum++;
-                    }
-                    else if (itnum == 6 && MagicPowerSkill6 != null)
-                    {
-                        MagicCardUtility.DrawSkillHandler(num2, compMagic, power, enumerator, MagicPowerSkill6, rect3);
-                        itnum++;
-                    }
-                    else
-                    {
-                        //Log.Message("No skill iteration found.");
-                    }
+      
                     num += MagicCardUtility.MagicButtonSize + MagicCardUtility.TextSize + 4f;//MagicCardUtility.SpacingOffset; //was 4f                    
                 }
             }

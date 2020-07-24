@@ -9,7 +9,6 @@ namespace TorannMagic
         private bool initialized = false;
         private float lightEnergy = 10f;
         private string lightPowerString = "";
-        private FlyingObject_SpiritOfLight sol = null;
 
         public override void CompExposeData()
         {
@@ -68,11 +67,15 @@ namespace TorannMagic
         {
             get
             {
-                return this.sol;
-            }
-            set
-            {
-                this.sol = value;
+                if (base.Pawn.Spawned && base.Pawn.Map != null)
+                {
+                    CompAbilityUserMagic comp = base.Pawn.TryGetComp<CompAbilityUserMagic>();
+                    if (comp != null && comp.SoL != null)
+                    {
+                        return comp.SoL;
+                    }
+                }
+                return null;
             }
         }
 
@@ -80,7 +83,7 @@ namespace TorannMagic
         {
             get
             {
-                if(sol != null)
+                if(SoL != null)
                 {
                     return SoL.LightEnergy;
                 }
@@ -136,11 +139,7 @@ namespace TorannMagic
             bool spawned = base.Pawn.Spawned;
             if (spawned && base.Pawn.Map != null)
             {
-                CompAbilityUserMagic comp = base.Pawn.TryGetComp<CompAbilityUserMagic>();
-                if(comp != null && comp.SoL != null)
-                {
-                    this.SoL = comp.SoL;
-                }
+
             }
         }
 

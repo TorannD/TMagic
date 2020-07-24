@@ -14,7 +14,7 @@ namespace TorannMagic
 
         public int level;
 
-        public bool learned = true;
+        public bool learned = false;
         public bool autocast = false;
         public int learnCost = 2;
         private int interactionTick = 0;

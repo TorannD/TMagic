@@ -1136,9 +1136,9 @@ Orbs of the Eternal have been used by mages, rulers, and the elite to prolong li
   <ThingDef ParentName="TM_BuyableArtifactBase">
     <defName>TM_Artifact_NecroticOrb</defName>
     <label>Necrotic Orb</label>
-    <description>An artifact that is able to contain the necrotic energy required to sustain the undead. The Necrotic Orb functions much like a battery; when equipped by a pawn, it absorbs energy from a necromancer as if it were an undead itself. When no energy is available from a necromancer, it will disperse energy to sustain undead.
+    <description>An artifact that enhances the necrotic energy required to sustain the undead. The Necrotic Orb functions much like a battery; when equipped by a pawn that is sustaining undead, it absorbs energy from a necromancer as if it were an undead itself, however, it also reduces the total upkeep cost to sustain undead by 25%. When no energy is available from a necromancer, it will disperse energy to sustain undead.
 	
-Only one orb may be equipped by a pawn. Orbs only take affect when equipped.</description>
+Only one orb may be equipped by a pawn. Orbs only take affect when equipped by a pawn sustaining undead.</description>
     <graphicData>
       <texPath>UI/orb_necrotic</texPath>
       <graphicClass>Graphic_Single</graphicClass>

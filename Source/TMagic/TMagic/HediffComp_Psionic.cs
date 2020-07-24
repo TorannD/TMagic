@@ -98,6 +98,11 @@ namespace TorannMagic
         {
             if (base.Pawn != null & base.parent != null && !this.Pawn.Dead)
             {
+                if (!initialized)
+                {
+                    initialized = true;
+                    this.Initialize();
+                }
                 base.CompPostTick(ref severityAdjustment);
 
                 if (Find.TickManager.TicksGame % 60 == 0 && initialized)
@@ -121,12 +126,7 @@ namespace TorannMagic
                 }
 
                 if (base.Pawn.Spawned && !this.Pawn.Downed && base.Pawn.Map != null && comp != null)
-                {
-                    if (!initialized)
-                    {
-                        initialized = true;
-                        this.Initialize();
-                    }
+                {                    
 
                     if (this.doPsionicAttack)
                     {

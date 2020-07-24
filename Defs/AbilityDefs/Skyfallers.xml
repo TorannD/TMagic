@@ -179,7 +179,7 @@
 	<!-- <thingClass>DropPodLeaving</thingClass> -->
     <size>(1, 1)</size>
     <graphicData>
-      <texPath>Spells/Icebolt</texPath>
+      <texPath>Spells/Icebolt_r</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>Transparent</shaderType>
       <drawSize>(1, 1)</drawSize>
@@ -202,7 +202,7 @@
 	<!-- <thingClass>DropPodLeaving</thingClass> -->
     <size>(2, 2)</size>
     <graphicData>
-      <texPath>Spells/Icebolt</texPath>
+      <texPath>Spells/Icebolt_r</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>Transparent</shaderType>
       <drawSize>(2, 2)</drawSize>

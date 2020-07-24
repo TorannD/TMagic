@@ -494,7 +494,7 @@ Class XP Gain: -20%</description>
     <graphicData>
       <texPath>Items/weapons/thrumbow</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-	  <drawSize>1.65</drawSize>
+	  <drawSize>1.2</drawSize>
     </graphicData>
     <soundInteract>Bow_Large</soundInteract>	
     <statBases>
@@ -554,7 +554,7 @@ Class XP Gain: -20%</description>
 		  <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
 		</li>
 	</comps>
-	<equippedAngleOffset>-20</equippedAngleOffset>
+	<equippedAngleOffset>-40</equippedAngleOffset>
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>

@@ -364,39 +364,25 @@ namespace TorannMagic
                         float necroReduction = 0;
                         int necroCount = 0;
                         float undeadCount = 0;
-                        float averageNecroMana = 0;
 
-                        if (settingsRef.undeadUpkeepMultiplier > 0f && TM_Calc.IsNecromancer(pawn))
+                        if (settingsRef.undeadUpkeepMultiplier > 0f && comp.supportedUndead != null && comp.supportedUndead.Count > 0)
                         {
-                            List<Apparel> necroOrbs = TM_Calc.GetNecroticOrbs(this.pawn);
+                            Apparel orb = TM_Calc.GetNecroticOrb(this.pawn);
                             float orbEnergy = 0;
                             float orbCount = 0;
-                            if (necroOrbs != null && necroOrbs.Count > 0)
+                            if (orb != null)
                             {
-                                for (int i = 0; i < necroOrbs.Count; i++)
+                                Enchantment.CompEnchantedItem orbComp = orb.GetComp<Enchantment.CompEnchantedItem>();
+                                if(orbComp != null && orbComp.NecroticEnergy > 0)
                                 {
-                                    Enchantment.CompEnchantedItem orbComp = necroOrbs[i].GetComp<Enchantment.CompEnchantedItem>();
-                                    if(orbComp != null && orbComp.NecroticEnergy > 0)
-                                    {
-                                        orbEnergy += orbComp.NecroticEnergy;
-                                        orbCount++;
-                                    }
-                                }
+                                    orbEnergy = orbComp.NecroticEnergy;
+                                    orbCount++;
+                                }                                
                             }
-                            foreach (Pawn current in this.pawn.Map.mapPawns.PawnsInFaction(this.pawn.Faction))
+                            foreach (Pawn current in comp.supportedUndead)
                             {
                                 if (current.RaceProps.Humanlike)
                                 {
-                                    if (TM_Calc.IsNecromancer(current))
-                                    {                                        
-                                        CompAbilityUserMagic tempComp = current.GetComp<CompAbilityUserMagic>();
-                                        if(tempComp.Mana.CurLevel < 0.01f && current != pawn)
-                                        {
-                                            necroCount--;
-                                        }
-                                        necroCount++;
-                                        averageNecroMana += tempComp.Mana.CurLevel;
-                                    }
                                     if (current.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD))
                                     {
                                         undeadCount += 2;
@@ -421,68 +407,60 @@ namespace TorannMagic
                                     }
                                 }
                             }                            
-                            averageNecroMana = averageNecroMana / necroCount;
-                            MagicPowerSkill eff = pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_RaiseUndead.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RaiseUndead_eff");
-                            if (averageNecroMana < 0.01f)
+                            MagicPowerSkill eff = comp.MagicData.MagicPowerSkill_RaiseUndead.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_RaiseUndead_eff");
+                            if (comp.Mana != null && comp.Mana.CurLevel < 0.01f)
                             {
                                 if (orbEnergy > 0)
                                 {
-                                    for (int i = 0; i < necroOrbs.Count; i++)
+                                    Enchantment.CompEnchantedItem itemComp = orb.GetComp<Enchantment.CompEnchantedItem>();
+                                    if (itemComp != null)
                                     {
-                                        Enchantment.CompEnchantedItem itemComp = necroOrbs[i].GetComp<Enchantment.CompEnchantedItem>();
-                                        if (itemComp != null)
-                                        {
-                                            itemComp.NecroticEnergy -= (0.12f * .15f * undeadCount) / orbCount;
-                                            undeadCount = 0;
-                                        }
-                                    }
+                                        itemComp.NecroticEnergy -= (0.12f * .15f * undeadCount);
+                                        undeadCount = 0;
+                                    }                                    
                                 }
                                 else
                                 {
-                                    foreach (Pawn current in this.pawn.Map.mapPawns.PawnsInFaction(this.pawn.Faction))
+                                    if (this.CurLevel < 0.01f && undeadCount > 0)
                                     {
-                                        if (this.CurLevel < 0.01f && undeadCount > 0 && (current.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD) || current.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadAnimalHD)))
+                                        //consume corpse
+                                        Pawn current = (Pawn)comp.supportedUndead.RandomElement();
+                                        Messages.Message("TM_UndeadCollapsed".Translate(
+                                            pawn.LabelShort,
+                                            current.LabelShort
+                                        ), MessageTypeDefOf.NegativeEvent);
+                                        if (!current.RaceProps.Animal)
                                         {
-                                            //consume corpse
-                                            Messages.Message("TM_UndeadCollapsed".Translate(
-                                                pawn.LabelShort,
-                                                current.LabelShort
-                                            ), MessageTypeDefOf.NegativeEvent);
-                                            if (!current.RaceProps.Animal)
-                                            {
-                                                current.inventory.DropAllNearPawn(current.Position, false, true);
-                                                current.equipment.DropAllEquipment(current.Position, false);
-                                                current.apparel.DropAll(current.Position, false);
-                                            }
-                                            TM_MoteMaker.ThrowBloodSquirt(current.Position.ToVector3Shifted(), current.Map, 2.5f);
-                                            current.Destroy();
-                                            undeadCount--;
-                                            this.curLevelInt = .12f + (.025f * manaRegen.level);
+                                            current.inventory.DropAllNearPawn(current.Position, false, true);
+                                            current.equipment.DropAllEquipment(current.Position, false);
+                                            current.apparel.DropAll(current.Position, false);
                                         }
-                                    }
+                                        TM_MoteMaker.ThrowBloodSquirt(current.Position.ToVector3Shifted(), current.Map, 2.5f);
+                                        current.Destroy();
+                                        undeadCount--;
+                                        this.curLevelInt = .12f + (.025f * manaRegen.level);
+                                    }                                    
                                 }
                             }
                             else
                             {
-                                undeadCount += orbCount * 2;
-                                for (int i = 0; i < necroOrbs.Count; i++)
+                                if (orb != null && orbEnergy <= 100)
                                 {
-                                    Enchantment.CompEnchantedItem itemComp = necroOrbs[i].GetComp<Enchantment.CompEnchantedItem>();
+                                    undeadCount += orbCount * 2;
+                                    Enchantment.CompEnchantedItem itemComp = orb.GetComp<Enchantment.CompEnchantedItem>();
                                     if (itemComp != null)
                                     {
-                                        if (itemComp.NecroticEnergy >= 100)
-                                        {
-                                            undeadCount = undeadCount - 2;
-                                        }
-                                        else
-                                        {
-                                            itemComp.NecroticEnergy += (0.036f);
-                                        }
+                                        itemComp.NecroticEnergy += (0.036f);
                                     }
                                 }
                             }
+                            float orbReduction = 1f;
+                            if(orb != null && orbEnergy > 0)
+                            {
+                                orbReduction = .75f;
+                            }
                             
-                            necroReduction = ((0.0012f * ((.15f - (.15f * (.1f * eff.level))) / necroCount) * undeadCount) * settingsRef.undeadUpkeepMultiplier);
+                            necroReduction = (((0.0012f * (.15f - (.15f * (.1f * eff.level))) * undeadCount) * orbReduction) * settingsRef.undeadUpkeepMultiplier);
                             this.drainUndead = necroReduction;
                             amount -= necroReduction;
                             //Log.Message("" + pawn.LabelShort + " is 1 of " + necroCount + " contributing necros and had necro reduction of " + necroReduction);

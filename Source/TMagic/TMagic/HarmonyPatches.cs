@@ -3669,7 +3669,7 @@ namespace TorannMagic
                             {
                                 if (anyMagesEnabled)
                                 {
-                                    int rndM = 20;// Rand.RangeInclusive(1, (mageCount+1));
+                                    int rndM = Rand.RangeInclusive(1, (mageCount+1));
                                     switch (rndM)
                                     {
                                         case 1:

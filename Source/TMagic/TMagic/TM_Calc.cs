@@ -1696,7 +1696,23 @@ namespace TorannMagic
             return regrowthSeedArea;
         }
 
-        public static List<Apparel> GetNecroticOrbs(Pawn pawn)
+        public static Apparel GetNecroticOrb(Pawn pawn)
+        {
+            if (pawn.apparel != null && pawn.apparel.WornApparelCount > 0)
+            {
+                List<Apparel> apparelList = pawn.apparel.WornApparel;
+                for (int j = 0; j < apparelList.Count; j++)
+                {
+                    if (apparelList[j].def == TorannMagicDefOf.TM_Artifact_NecroticOrb)
+                    {
+                        return apparelList[j];
+                    }
+                }
+            }
+            return null;
+        }
+
+        public static List<Apparel> GetAllMapNecroticOrbs(Pawn pawn)
         {
             List<Apparel> orbs = new List<Apparel>();
             orbs.Clear();

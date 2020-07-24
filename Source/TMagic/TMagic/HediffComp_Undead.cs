@@ -13,12 +13,26 @@ namespace TorannMagic
     {
         private bool necroValid = true;
         private int lichStrike = 0;
-        private bool initializing = true;
+        private bool initialized = false;
+
+        public Pawn linkedPawn = null;
+
+        public override void CompExposeData()
+        {
+            base.CompExposeData();
+            Scribe_References.Look<Pawn>(ref linkedPawn, "linkedPawn", false);
+        }
+
+        public override string CompLabelInBracketsExtra => linkedPawn != null ? linkedPawn.LabelShort + base.CompLabelInBracketsExtra : base.CompLabelInBracketsExtra;
 
         public string labelCap
         {
             get
             {
+                if (this.linkedPawn != null)
+                {
+                    return base.Def.LabelCap + "(" + this.linkedPawn.LabelShort + ")";
+                }
                 return base.Def.LabelCap;
             }
         }
@@ -27,6 +41,10 @@ namespace TorannMagic
         {
             get
             {
+                if (this.linkedPawn != null)
+                {
+                    return base.Def.label + "(" + this.linkedPawn.LabelShort + ")";
+                }
                 return base.Def.label;
             }
         }
@@ -46,9 +64,9 @@ namespace TorannMagic
             bool flag = base.Pawn != null;
             if (flag)
             {
-                if (initializing)
+                if (!initialized)
                 {
-                    initializing = false;
+                    initialized = true;
                     this.Initialize();
                 }
             }
@@ -103,70 +121,17 @@ namespace TorannMagic
                 if (flag4)
                 {
                     necroValid = false;
-                    float orbCount = 0;
-                    float orbEnergy = 0;
-                    List<Apparel> orbs = TM_Calc.GetNecroticOrbs(base.Pawn);
-                    if (orbs != null && orbs.Count > 0)
+                    if (base.Pawn != null && !linkedPawn.DestroyedOrNull())
                     {
-                        orbCount = orbs.Count;
-                        for (int i = 0; i < orbs.Count; i++)
-                        {
-                            Enchantment.CompEnchantedItem itemComp = orbs[i].GetComp<Enchantment.CompEnchantedItem>();
-                            if (itemComp != null)
-                            {
-                                orbEnergy += itemComp.NecroticEnergy;
-                            }
-                        }
+                        necroValid = true;
+                        lichStrike = 0; 
                     }
-                    if (base.Pawn.Map != null)
+                    else
                     {
-                        foreach (Pawn current in base.Pawn.Map.mapPawns.PawnsInFaction(base.Pawn.Faction))
-                        {
-                            if (current.RaceProps.Humanlike)
-                            {                                
-                                if (current.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || current.story.traits.HasTrait(TorannMagicDefOf.Lich) || TM_Calc.IsNecromancer(current))
-                                {
-                                    //necromancer alive to sustain undead                                
-                                    necroValid = true;
-                                    lichStrike = 0;
-                                }
-                            }
-                        }
-                        if (necroValid == false)  //give a buffer that allows flight or other temporary despawning of the necromancers or lichs before destroying undead
-                        {
-                            if (lichStrike < 3 && orbEnergy <= 0)
-                            {
-                                lichStrike++;
-                                necroValid = true;
-                            }
-                        }
-                    }
-                    else //for caravans
-                    {
-                        if (this.Pawn.ParentHolder.ToString().Contains("Caravan"))
-                        {
-                            foreach (Pawn current in base.Pawn.holdingOwner)
-                            {
-                                if (current != null)
-                                {
-                                    if (current.RaceProps.Humanlike)
-                                    {
-                                        if (current.story.traits.HasTrait(TorannMagicDefOf.Necromancer) || current.story.traits.HasTrait(TorannMagicDefOf.Lich) || TM_Calc.IsNecromancer(current))
-                                        {
-                                            necroValid = true;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            //being carried, in container, or not spawned
-                            necroValid = true;
-                        }
+                        lichStrike++;
                     }
 
-                    if (!necroValid && orbEnergy <= 0)
+                    if (!necroValid && lichStrike > 2)
                     {
                         if (base.Pawn.Map != null)
                         {
@@ -180,25 +145,6 @@ namespace TorannMagic
                     }
                     else
                     {
-                        if (!necroValid && orbEnergy >= 0)
-                        {
-                            for (int i = 0; i < orbs.Count; i++)
-                            {
-                                Enchantment.CompEnchantedItem itemComp = orbs[i].GetComp<Enchantment.CompEnchantedItem>();
-                                if (itemComp != null)
-                                {
-                                    ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                                    if (this.Pawn.RaceProps.Humanlike)
-                                    {
-                                        itemComp.NecroticEnergy -= ((0.12f * .3f * 4f) / orbCount) * settingsRef.undeadUpkeepMultiplier;
-                                    }
-                                    else if (this.Pawn.RaceProps.Animal)
-                                    {
-                                        itemComp.NecroticEnergy -= ((0.12f * 4f * (this.Pawn.kindDef.combatPower / 100)) / orbCount) * settingsRef.undeadUpkeepMultiplier;
-                                    }
-                                }
-                            }
-                        }
                         List<Need> needs = base.Pawn.needs.AllNeeds;
                         for (int i = 0; i < needs.Count; i++)
                         {

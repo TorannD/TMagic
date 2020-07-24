@@ -1723,10 +1723,14 @@ namespace TorannMagic
                     transmutateThing.SplitOff(transStackCount).Destroy(DestroyMode.Vanish);
                 }
                 Thing thing = null;
-                ThingDef newThingDef = enumerable.RandomElement();
+                ThingDef newThingDef = enumerable.RandomElement();                
                 newMatCount = Mathf.Max(transStackValue / newThingDef.BaseMarketValue, 1);
                 thing = ThingMaker.MakeThing(newThingDef);
                 thing.stackCount = Mathf.RoundToInt((.7f + (.05f * pwrVal)) * newMatCount);
+                if (newMatCount < 1)
+                {
+                    newMatCount = 1;
+                }
 
                 if (thing != null)
                 {

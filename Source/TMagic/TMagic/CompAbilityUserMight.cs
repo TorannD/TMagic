@@ -1264,14 +1264,44 @@ namespace TorannMagic
                 if (flag)
                 {
                     this.MightData.MightAbilityPoints++;
-                    bool flag2 = this.MightData.MightUserXP < value * 500;
+
+                    bool flag2 = this.MightData.MightUserXP < GetXPForLevel(value-1);
                     if (flag2)
                     {
-                        this.MightData.MightUserXP = value * 500;
+                        this.MightData.MightUserXP = GetXPForLevel(value-1);
                     }
                 }
                 this.MightData.MightUserLevel = value;
             }
+        }
+        
+        public int GetXPForLevel(int lvl)
+        {            
+            IntVec2 c1 = new IntVec2(0, 50);
+            IntVec2 c2 = new IntVec2(5, 40);
+            IntVec2 c3 = new IntVec2(15, 20);
+            IntVec2 c4 = new IntVec2(30, 10);
+            IntVec2 c5 = new IntVec2(200, 0);
+
+            int val = 0;
+
+            for (int i = 0; i < lvl+1; i++)
+            {
+                val += (Mathf.Clamp(i, c1.x, c2.x - 1) * c1.z) + c1.z;
+                if (i >= c2.x)
+                {
+                    val += (Mathf.Clamp(i, c2.x, c3.x - 1) * c2.z) + c2.z;
+                }
+                if (i >= c3.x)
+                {
+                    val += (Mathf.Clamp(i, c3.x, c4.x - 1) * c3.z) + c3.z;
+                }
+                if (i >= c4.x)
+                {
+                    val += (Mathf.Clamp(i, c4.x, c5.x - 1) * c4.z) + c4.z;
+                }
+            }
+            return val;
         }
 
         public int MightUserXP
@@ -1290,13 +1320,12 @@ namespace TorannMagic
         {
             get
             {
-                float result = 0f;
                 bool flag = this.MightUserLevel > 0;
                 if (flag)
                 {
-                    result = (float)(this.MightUserLevel * 500);
+                    return GetXPForLevel(this.MightUserLevel - 1);
                 }
-                return result;
+                return 0f;
             }
         }
 
@@ -1308,11 +1337,12 @@ namespace TorannMagic
             }
         }
 
+        
         public int MightUserXPTillNextLevel
         {
             get
-            {
-                return (this.MightData.MightUserLevel + 1) * 500; 
+            {                
+                return GetXPForLevel(this.MightUserLevel);
             }
         }
 
@@ -1320,7 +1350,7 @@ namespace TorannMagic
         {
             if (!this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer))
             {
-                if (this.MightUserLevel < (this.customClass?.maxFighterLevel ?? 150))
+                if (this.MightUserLevel < (this.customClass?.maxFighterLevel ?? 200))
                 {
                     this.MightUserLevel++;
                     bool flag = !hideNotification;
@@ -1386,18 +1416,20 @@ namespace TorannMagic
             {
                 for (int z = 0; z < this.MightData.AllMightPowers.Count; z++)
                 {
-                    if (!this.customClass.classFighterAbilities.Contains(this.MightData.AllMightPowers[z].abilityDef))
+                    if (this.customClass.classFighterAbilities.Contains(this.MightData.AllMightPowers[z].abilityDef))
                     {
-                        this.MightData.AllMightPowers[z].learned = false;
+                        this.MightData.AllMightPowers[z].learned = true;
+                    }
+                    TMAbilityDef ability = (TMAbilityDef)this.MightData.AllMightPowers[z].abilityDef;
+                    if (this.MightData.AllMightPowers[z].learned && ability.shouldInitialize)
+                    {
+                        this.AddPawnAbility(ability);
                     }
                 }
-                for (int j = 0; j < this.customClass.classFighterAbilities.Count; j++)
-                {
-                    if (this.customClass.classFighterAbilities[j].shouldInitialize)
-                    {
-                        this.AddPawnAbility(this.customClass.classFighterAbilities[j]);
-                    }
-                }
+                //for (int j = 0; j < this.customClass.classFighterAbilities.Count; j++)
+                //{
+                    
+                //}
                 if (this.customClass.classHediff != null)
                 {
                     HealthUtility.AdjustSeverity(abilityUser, this.customClass.classHediff, this.customClass.hediffSeverity);
@@ -1409,6 +1441,8 @@ namespace TorannMagic
                 if (flag2)
                 {
                     //Log.Message("Initializing Wayfarer Abilities");
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_WayfarerCraft).learned = true;
+                    this.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_FieldTraining).learned = true;
                     if (!abilityUser.IsColonist)
                     {
                         this.skill_ThrowingKnife = true;
@@ -1667,14 +1701,14 @@ namespace TorannMagic
             }
             if (this.customClass != null)
             {
-                for (int j = 0; j < this.MightData.AllMightPowersWithSkills.Count; j++)
-                {
-                    if (this.MightData.AllMightPowersWithSkills[j].learned && !this.customClass.classMageAbilities.Contains(this.MightData.AllMightPowersWithSkills[j].abilityDef))
-                    {
-                        this.MightData.AllMightPowersWithSkills[j].learned = false;
-                        this.RemovePawnAbility(this.MightData.AllMightPowers[j].abilityDef);
-                    }
-                }
+                //for (int j = 0; j < this.MightData.AllMightPowersWithSkills.Count; j++)
+                //{
+                //    if (this.MightData.AllMightPowersWithSkills[j].learned && !this.customClass.classFighterAbilities.Contains(this.MightData.AllMightPowersWithSkills[j].abilityDef))
+                //    {
+                //        this.MightData.AllMightPowersWithSkills[j].learned = false;
+                //        this.RemovePawnAbility(this.MightData.AllMightPowersWithSkills[j].abilityDef);
+                //    }
+                //}
                 for (int j = 0; j< this.MightData.AllMightPowers.Count; j++)
                 {                    
                     if (this.MightData.AllMightPowers[j].learned && !this.customClass.classFighterAbilities.Contains(this.MightData.AllMightPowers[j].abilityDef))
