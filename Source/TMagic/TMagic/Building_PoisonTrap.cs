@@ -30,6 +30,8 @@ namespace TorannMagic
         bool rearming = false;
         ThingDef fog;
 
+        public bool destroyAfterUse = false;
+
         private static readonly Material trap_rearming = MaterialPool.MatFrom("Other/PoisonTrap_rearming");
         private static readonly MaterialPropertyBlock MatPropertyBlock = new MaterialPropertyBlock();
 
@@ -47,6 +49,7 @@ namespace TorannMagic
             Scribe_Collections.Look<Pawn>(ref this.touchingPawns, "testees", LookMode.Reference, new object[0]);
             Scribe_Values.Look<bool>(ref this.triggered, "triggered", false, false);
             Scribe_Values.Look<bool>(ref this.rearming, "rearming", false, false);
+            Scribe_Values.Look<bool>(ref this.destroyAfterUse, "destroyAfterUse", false, false);
             Scribe_Values.Look<int>(ref this.age, "age", -1, false);
             Scribe_Values.Look<int>(ref this.duration, "duration", 600, false);
             Scribe_Values.Look<int>(ref this.strikeDelay, "strikeDelay", 0, false);
@@ -104,11 +107,18 @@ namespace TorannMagic
                 this.age++;
                 if(this.age > this.duration)
                 {
-                    this.age = 0;
-                    triggered = false;
-                    rearming = true;
-                    this.lastStrike = 0;
-                    //Destroy();
+                    CheckForAgent();
+                    if(destroyAfterUse)
+                    {
+                        Destroy();
+                    }
+                    else
+                    {
+                        this.age = 0;
+                        triggered = false;
+                        rearming = true;
+                        this.lastStrike = 0;
+                    }
                 }
             }
             else if(rearming)
@@ -163,6 +173,27 @@ namespace TorannMagic
                 }
             }
             base.Tick();
+        }
+
+        private void CheckForAgent()
+        {
+            this.destroyAfterUse = true;
+            List<Pawn> pList = this.Map.mapPawns.AllPawnsSpawned;
+            if (pList != null && pList.Count > 0)
+            {
+                for (int i = 0; i < pList.Count; i++)
+                {
+                    Pawn p = pList[i];
+                    CompAbilityUserMight comp = p.TryGetComp<CompAbilityUserMight>();
+                    if(comp != null && comp.combatItems != null && comp.combatItems.Count > 0)
+                    {
+                        if(comp.combatItems.Contains(this))
+                        {
+                            this.destroyAfterUse = false;
+                        }
+                    }
+                }
+            }
         }
 
         private void CheckSpring(Pawn p)

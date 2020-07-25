@@ -58,6 +58,22 @@ namespace TorannMagic
             }            
         }
 
+        private void UpdateHediff()
+        {
+            if(this.linkedPawn != null)
+            {
+                CompAbilityUserMagic comp = linkedPawn.TryGetComp<CompAbilityUserMagic>();
+                if(comp != null)
+                {
+                    int ver = TM_Calc.GetMagicSkillLevel(linkedPawn, comp.MagicData.MagicPowerSkill_RaiseUndead, "TM_RaiseUndead", "_ver");
+                    if(this.parent.Severity != ver + .5f)
+                    {
+                        this.parent.Severity = .5f + ver;
+                    }
+                }
+            }
+        }
+
         public override void CompPostTick(ref float severityAdjustment)
         {
             base.CompPostTick(ref severityAdjustment);
@@ -120,6 +136,7 @@ namespace TorannMagic
                 bool flag4 = Find.TickManager.TicksGame % 600 == 0 && this.Pawn.def != TorannMagicDefOf.TM_SkeletonR && this.Pawn.def != TorannMagicDefOf.TM_GiantSkeletonR;
                 if (flag4)
                 {
+                    UpdateHediff();
                     necroValid = false;
                     if (base.Pawn != null && !linkedPawn.DestroyedOrNull())
                     {

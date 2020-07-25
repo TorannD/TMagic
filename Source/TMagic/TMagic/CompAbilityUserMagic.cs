@@ -4183,7 +4183,7 @@ namespace TorannMagic
                     TMAbilityDef ability = (TMAbilityDef)this.MagicData.AllMagicPowers[i].TMabilityDefs[j];
                     this.RemovePawnAbility(ability);
                 }
-                this.MagicData.AllMagicPowers[i].learned = true;
+                this.MagicData.AllMagicPowers[i].learned = false;
             }
             this.MagicUserLevel = 0;
             this.MagicUserXP = 0;

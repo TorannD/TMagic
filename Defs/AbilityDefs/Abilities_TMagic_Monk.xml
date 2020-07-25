@@ -12,6 +12,9 @@
     <staminaCost>0.00</staminaCost>
 	<shouldInitialize>false</shouldInitialize>
 	<abilityHediff>TM_ChiHD</abilityHediff>
+	<childAbilities>
+		<li>TM_ChiBurst</li>
+	</childAbilities>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SB</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

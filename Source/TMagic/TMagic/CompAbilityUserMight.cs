@@ -1421,9 +1421,22 @@ namespace TorannMagic
                         this.MightData.AllMightPowers[z].learned = true;
                     }
                     TMAbilityDef ability = (TMAbilityDef)this.MightData.AllMightPowers[z].abilityDef;
-                    if (this.MightData.AllMightPowers[z].learned && ability.shouldInitialize)
+                    if (this.MightData.AllMightPowers[z].learned)
                     {
-                        this.AddPawnAbility(ability);
+                        if (ability.shouldInitialize)
+                        {
+                            this.AddPawnAbility(ability);
+                        }
+                        if(ability.childAbilities != null && ability.childAbilities.Count > 0)
+                        {
+                            for (int c = 0; c < ability.childAbilities.Count; c++)
+                            {
+                                if (ability.childAbilities[c].shouldInitialize)
+                                {
+                                    this.AddPawnAbility(ability.childAbilities[c]);
+                                }
+                            }
+                        }
                     }
                 }
                 //for (int j = 0; j < this.customClass.classFighterAbilities.Count; j++)
@@ -2131,7 +2144,7 @@ namespace TorannMagic
                     TMAbilityDef ability = (TMAbilityDef)this.MightData.AllMightPowers[i].TMabilityDefs[j];
                     this.RemovePawnAbility(ability);
                 }
-                this.MightData.AllMightPowers[i].learned = true;
+                this.MightData.AllMightPowers[i].learned = false;
             }
             this.MightUserLevel = 0;
             this.MightUserXP = 0;
@@ -4855,19 +4868,27 @@ namespace TorannMagic
                         this.customClass = TM_ClassUtility.CustomClasses()[index];
                         this.customIndex = index;
 
-                        for (int i = 0; i < TM_ClassUtility.CustomClasses()[index].classFighterAbilities.Count; i++)
+                        for (int i = 0; i < customClass.classFighterAbilities.Count; i++)
                         {
-                            if (TM_ClassUtility.CustomClasses()[index].classFighterAbilities[i].shouldInitialize)
+                            TMAbilityDef ability = customClass.classFighterAbilities[i];
+                            
+                            for (int j = 0; j < this.MightData.AllMightPowers.Count; j++)
                             {
-                                for (int j = 0; j < this.MightData.AllMightPowers.Count; j++)
+                                if (this.MightData.AllMightPowers[j].TMabilityDefs.Contains(ability) && this.MightData.AllMightPowers[j].learned)
                                 {
-                                    if (this.MightData.AllMightPowers[j].TMabilityDefs.Contains(TM_ClassUtility.CustomClasses()[index].classFighterAbilities[i]) && this.MightData.AllMightPowers[j].learned)
+                                    if (ability.shouldInitialize)
                                     {
                                         int level = this.MightData.AllMightPowers[j].level;
                                         base.AddPawnAbility(this.MightData.AllMightPowers[j].TMabilityDefs[level]);
-                                        if (this.MightData.AllMightPowers[j].TMabilityDefs[level] == TorannMagicDefOf.TM_Chi)
+                                    }
+                                    if(ability.childAbilities != null && ability.childAbilities.Count > 0)
+                                    {
+                                        for (int c = 0; c < ability.childAbilities.Count; c++)
                                         {
-                                            base.AddPawnAbility(TorannMagicDefOf.TM_ChiBurst);
+                                            if (ability.childAbilities[c].shouldInitialize)
+                                            {
+                                                this.AddPawnAbility(ability.childAbilities[c]);
+                                            }
                                         }
                                     }
                                 }

@@ -45,7 +45,7 @@ namespace TorannMagic
             }
             else if (newLabel == "TM_TechnoBit_pwr" || newLabel == "TM_TechnoBit_ver" || newLabel == "TM_TechnoBit_eff" || newLabel == "TM_TechnoTurret_pwr" || newLabel == "TM_TechnoTurret_ver" || newLabel == "TM_TechnoTurret_eff" || newLabel == "TM_TechnoWeapon_pwr" || newLabel == "TM_TechnoWeapon_ver" || newLabel == "TM_TechnoWeapon_eff" ||
                  newLabel == "TM_Totems_pwr" || newLabel == "TM_Totems_eff" || newLabel == "TM_Totems_ver" || newLabel == "TM_Totems_pwr" || newLabel == "TM_Totems_eff" || newLabel == "TM_Totems_ver" ||
-                 newLabel == "TM_SpiritOfLight_pwr" || newLabel == "TM_SpiritOfLight_eff" || newLabel == "TM_SpiritOfLight_ver")
+                 newLabel == "TM_SpiritOfLight_pwr" || newLabel == "TM_SpiritOfLight_eff" || newLabel == "TM_SpiritOfLight_ver" || newLabel == "TM_Cantrips_pwr" || newLabel == "TM_Cantrips_eff" || newLabel == "TM_Cantrips_ver")
             {
                 this.levelMax = 15;
             }

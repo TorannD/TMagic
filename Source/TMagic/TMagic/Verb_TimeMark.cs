@@ -66,7 +66,7 @@ namespace TorannMagic
                         hediff.ageTicks = rhd.ageTicks;
                         comp.recallInjuriesList.Add(hediff);
                     }
-                    else if(this.CasterPawn.health.hediffSet.hediffs[i] is Hediff_MissingPart || this.CasterPawn.health.hediffSet.hediffs[i] is Hediff_AddedPart)
+                    else if(this.CasterPawn.health.hediffSet.hediffs[i] is Hediff_MissingPart || this.CasterPawn.health.hediffSet.hediffs[i] is Hediff_AddedPart || this.CasterPawn.health.hediffSet.hediffs[i].def.defName == "PsychicAmplifier")
                     {
                         //do nothing
                     }
@@ -109,7 +109,7 @@ namespace TorannMagic
             //comp.recallNeedValues.Clear();
             for (int i = 0; i < this.CasterPawn.needs.AllNeeds.Count; i++)
             {
-                Log.Message("" + this.CasterPawn.needs.AllNeeds[i].def.defName);
+                //Log.Message("" + this.CasterPawn.needs.AllNeeds[i].def.defName);
                 if (this.CasterPawn.needs.AllNeeds[i].def.defName != "Chemical_Luciferium")
                 {                    
                     comp.recallNeedDefnames.Add(this.CasterPawn.needs.AllNeeds[i].def.defName);

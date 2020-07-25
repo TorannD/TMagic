@@ -1133,7 +1133,8 @@ namespace TorannMagic
             {
                 for (int i = 0; i < pawn.health.hediffSet.hediffs.Count; i++)
                 {
-                    if (!pawn.health.hediffSet.hediffs[i].IsPermanent() && pawn.health.hediffSet.hediffs[i].def != TorannMagicDefOf.TM_MagicUserHD && !pawn.health.hediffSet.hediffs[i].def.defName.Contains("TM_HediffEnchantment") && !pawn.health.hediffSet.hediffs[i].def.defName.Contains("TM_Artifact"))
+                    if (!pawn.health.hediffSet.hediffs[i].IsPermanent() && pawn.health.hediffSet.hediffs[i].def != TorannMagicDefOf.TM_MagicUserHD && !pawn.health.hediffSet.hediffs[i].def.defName.Contains("TM_HediffEnchantment") && 
+                        !pawn.health.hediffSet.hediffs[i].def.defName.Contains("TM_Artifact") && pawn.health.hediffSet.hediffs[i].def.defName != "PsychicAmplifier")
                     {
                         if (!(pawn.health.hediffSet.hediffs[i] is Hediff_MissingPart) && !(pawn.health.hediffSet.hediffs[i] is Hediff_AddedPart))
                         {

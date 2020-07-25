@@ -2622,7 +2622,7 @@ namespace TorannMagic
                     if (dinfo.Instigator != null && pawn != null && dinfo.Instigator != pawn && !pawn.Destroyed && !pawn.Dead && pawn.Map != null)
                     {
                         Pawn instigator = dinfo.Instigator as Pawn;
-                        if (instigator != null && dinfo.Def != TMDamageDefOf.DamageDefOf.TM_ArcaneSpectre)
+                        if (instigator != null && dinfo.Def != TMDamageDefOf.DamageDefOf.TM_ArcaneSpectre && dinfo.Def.harmsHealth && dinfo.Def.canInterruptJobs)
                         {
                             if (instigator.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffEnchantment_arcaneSpectre) && Rand.Chance(.5f))
                             {
