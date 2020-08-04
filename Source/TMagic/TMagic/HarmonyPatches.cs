@@ -3001,6 +3001,7 @@ namespace TorannMagic
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_BlankMind" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_MechaniteReprogramming" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_ShadowWalk" ||
+                    __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_SoL_CreateLight" ||
                     __instance.verbProps.verbClass.ToString() == "TorannMagic.Verb_AdvancedHeal")
                 {
                     //Ignores line of sight

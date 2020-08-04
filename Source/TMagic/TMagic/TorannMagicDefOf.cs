@@ -627,6 +627,8 @@ namespace TorannMagic
         public static TMAbilityDef TM_LightSkipGlobal; //standalone
         public static TMAbilityDef TM_Refraction;       
         public static TMAbilityDef TM_SpiritOfLight;
+        public static TMAbilityDef TM_SoL_Equalize;
+        public static TMAbilityDef TM_SoL_CreateLight;
         public static ThingDef FlyingObject_SpiritOfLight;
         public static ThingDef Projectile_LightLaser;
         public static ThingDef Projectile_ThrowingKnife;

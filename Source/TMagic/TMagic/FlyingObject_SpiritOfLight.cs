@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
+using HarmonyLib;
 
 namespace TorannMagic
 {
@@ -17,7 +18,7 @@ namespace TorannMagic
 
         CompProperties_Glower gProps = new CompProperties_Glower();
         CompGlower glower = new CompGlower();
-        IntVec3 glowCenter = default(IntVec3);
+        public IntVec3 glowCenter = default(IntVec3);
 
         private static readonly Material sol_up = MaterialPool.MatFrom("PawnKind/sol_up", ShaderDatabase.Transparent, Color.white);
         private static readonly Material sol_side = MaterialPool.MatFrom("PawnKind/sol_side", ShaderDatabase.Transparent, Color.white);
@@ -61,13 +62,21 @@ namespace TorannMagic
         private List<Vector3> curvePoints = new List<Vector3>();
 
         private float lightEnergy = 1f;
-        private bool initialized = true;
+        private bool initialized = false;
         public bool shouldDismiss = false;
         public bool shouldGlow = false;
         private bool glowing = false;
 
         public SoLAction solAction = SoLAction.Pending;
         public SoLAction queuedAction = SoLAction.Null;
+
+        public bool IsGlowing
+        {
+            get
+            {
+                return glowing;
+            }
+        }
 
         public float AttackTarget_MaxRange
         {
@@ -148,6 +157,41 @@ namespace TorannMagic
                 float val = .012f * (1f + (.03f*verVal));
                 if (pawn.Map != null)
                 {
+                    if(pawn.Map.weatherManager?.curWeather?.defName != "Clear")
+                    {
+                        val *= .8f;
+                    }
+                    if(pawn.Map.GameConditionManager?.ActiveConditions?.Count > 0)
+                    {
+                        List<GameCondition> gcList = pawn.Map.GameConditionManager.ActiveConditions;
+                        for(int i =0; i < gcList.Count;i++)
+                        {
+                            if(gcList[i].def == GameConditionDefOf.Aurora)
+                            {
+                                val += .004f;
+                            }
+                            if(gcList[i].def == GameConditionDefOf.VolcanicWinter)
+                            {
+                                val *= .8f;
+                            }
+                            if(gcList[i].def == GameConditionDefOf.ToxicFallout)
+                            {
+                                val *= .85f;
+                            }
+                            if(gcList[i].def == GameConditionDefOf.SolarFlare)
+                            {
+                                val *= 1.5f;
+                            }
+                            if(gcList[i].def == GameConditionDefOf.Eclipse)
+                            {
+                                val *= .7f;
+                            }
+                            if(gcList[i].def == TorannMagicDefOf.DarkClouds)
+                            {
+                                val *= .8f;
+                            }
+                        }
+                    }
                     if (pawn.Position.Roofed(pawn.Map))
                     {
                         val -= .006f;
@@ -271,7 +315,7 @@ namespace TorannMagic
             Scribe_Values.Look<int>(ref this.timesToDamage, "timesToDamage", 0, false);
             Scribe_Values.Look<bool>(ref this.damageLaunched, "damageLaunched", true, false);
             Scribe_Values.Look<bool>(ref this.explosion, "explosion", false, false);
-            Scribe_Values.Look<bool>(ref this.initialized, "initialized", false, false);
+            //Scribe_Values.Look<bool>(ref this.initialized, "initialized", false, false);
             Scribe_References.Look<Thing>(ref this.assignedTarget, "assignedTarget", false);
             //Scribe_References.Look<Thing>(ref this.launcher, "launcher", false);
             Scribe_References.Look<Pawn>(ref this.pawn, "pawn", false);
@@ -373,20 +417,44 @@ namespace TorannMagic
             TM_MoteMaker.ThrowGenericMote(mote, rndVec, this.Map, Rand.Range(.2f, .3f), Rand.Range(.2f, .4f), Rand.Range(0f, .5f), Rand.Range(.3f, .5f), Rand.Range(-50, 50), moteSpeed, directionAngle, Rand.Range(0, 360));
         }
 
-        public void DoGlow()
+        public void StopGlow()
         {
             if (this.glower != null && glower.parent != null && this.Map != null)
             {
                 if (this.glowing)
                 {
-                    this.Map.mapDrawer.MapMeshDirty(glowCenter, MapMeshFlag.Things);
+                    //this.Map.mapDrawer.MapMeshDirty(glowCenter, MapMeshFlag.Things);
                     this.Map.glowGrid.DeRegisterGlower(glower);
                     this.glowing = false;
+                    this.glowCenter = default(IntVec3);
                 }
+            }
+        }
+
+        public void DoGlow()
+        {
+            if(this.glower == null)
+            {
+                Log.Message("glower null");
+            }
+            if (this.glower != null && glower.parent != null && this.Map != null)
+            {
+                Log.Message("glower not null, glow center " + glowCenter);
                 if (this.glowCenter != default(IntVec3) && this.pawn.Spawned)
                 {
                     this.Map.mapDrawer.MapMeshDirty(glowCenter, MapMeshFlag.Things);
-                    this.Map.glowGrid.RegisterGlower(glower);
+                    GlowGrid gg = this.Map.glowGrid;
+                    HashSet<CompGlower> litGlowers = Traverse.Create(root: gg).Field(name: "litGlowers").GetValue<HashSet<CompGlower>>();
+                    litGlowers.Add(glower);
+                    Traverse.Create(root: gg).Field(name: "litGlowers").SetValue(litGlowers);
+                    gg.MarkGlowGridDirty(glowCenter);
+                    if (Current.ProgramState != ProgramState.Playing)
+                    {
+                        List<IntVec3> locs = Traverse.Create(root: gg).Field(name: "initialGlowerLocs").GetValue<List<IntVec3>>();
+                        locs.Add(glowCenter);
+                        Traverse.Create(root: gg).Field(name: "initialGlowerLocs").SetValue(locs);
+                    }
+                    //this.Map.glowGrid.RegisterGlower(glower);
                     this.glowing = true;
                 }                
             }
@@ -419,8 +487,10 @@ namespace TorannMagic
                 this.Map.mapDrawer.MapMeshDirty(base.Position, MapMeshFlag.Things);
                 this.Map.glowGrid.DeRegisterGlower(glower);
                 this.glowing = false;
-                this.shouldGlow = false;
-            }
+                //this.shouldGlow = false;
+                this.initialized = true;
+                Log.Message("initializing sol, glowing: " + glowing + " glow center: " + glowCenter);
+            }            
         }
 
         private void UpdateSoLPower()
@@ -461,6 +531,7 @@ namespace TorannMagic
             this.origin = origin;
             this.impactDamage = newDamageInfo;
             this.flyingThing = flyingThing;
+            flyingThing.ThingID += Rand.Range(0, 2147).ToString();
             bool flag = targ.Thing != null;
             if (flag)
             {
@@ -475,6 +546,15 @@ namespace TorannMagic
             age++;
             Vector3 exactPosition = this.ExactPosition;
             this.ticksToImpact--;
+
+            if(!initialized)
+            {
+                Initialize();
+                if(this.glowing && this.glowCenter != default(IntVec3))
+                {
+                    this.shouldGlow = true;
+                }
+            }
 
             if(Find.TickManager.TicksGame % this.chargeFrequency == 0)
             {
@@ -493,8 +573,8 @@ namespace TorannMagic
                 dFlag = true;
                 this.delayCount++;
                 if (delayCount >= 300)
-                {                    
-                    DoGlow();
+                {
+                    StopGlow();
                     this.shouldGlow = false;
                     this.Destroy(DestroyMode.Vanish);
                 }            
@@ -510,15 +590,9 @@ namespace TorannMagic
                 if(this.glowing)
                 {
                     this.glowCenter = default(IntVec3);
-                    DoGlow();
+                    StopGlow();
                     this.Destroy(DestroyMode.Vanish);
                 }
-            }
-
-            if(this.shouldGlow)
-            {
-                this.shouldGlow = false;
-                DoGlow();
             }
 
             if (!dFlag)
@@ -639,14 +713,14 @@ namespace TorannMagic
             }
             if (solAction == SoLAction.Pending || solAction == SoLAction.Goto)
             {
-                if (this.pawn.GetPosture() == PawnPosture.LayingInBed)
+                if (this.pawn.GetPosture() == PawnPosture.LayingInBed || this.pawn.CurJobDef == JobDefOf.LayDown)
                 {
                     if (!pawn.Awake() && LightEnergy > 5f)
                     {
                         Action_Sleeping(out destTarget);
                     }
                     //pawn injured?
-                }
+                }                
                 else if (this.pawn.Drafted)
                 {
                     this.delayCount++;
@@ -683,12 +757,18 @@ namespace TorannMagic
                     {
                         Action_Hover(out destTarget);
                     }
-                }
+                }                
                 else if (this.pawn.Downed && this.pawn.health.hediffSet.GetInjuriesTendable().Count() > 0 && LightEnergy > 10)
                 {
                     Action_GotoTarget(this.pawn.DrawPos, speed_jog, out destTarget);
                     this.assignedTarget = this.pawn;
                     queuedAction = SoLAction.Guarding;
+                }
+                else if (this.shouldGlow)
+                {
+                    this.shouldGlow = false;
+                    Action_GotoTarget(this.glowCenter.ToVector3Shifted(), this.speed_jog, out destTarget);
+                    queuedAction = SoLAction.Glow;
                 }
                 else if(LightEnergy > 20 && EnergyChance)
                 {
@@ -765,6 +845,18 @@ namespace TorannMagic
                     Action_CircleTarget(this.assignedTarget, out destTarget);
                     queuedAction = SoLAction.Returning;
                 }
+            }
+            else if(solAction == SoLAction.Glow)
+            {
+                if (this.glowing)
+                {
+                    StopGlow();
+                }
+                else
+                {
+                    DoGlow();
+                }
+                Action_Return();
             }
             else if(solAction == SoLAction.Returning)
             {
@@ -1085,6 +1177,7 @@ namespace TorannMagic
     {
         Limbo,
         Goto,
+        Glow,
         Returning,
         Flirting,
         Hovering,

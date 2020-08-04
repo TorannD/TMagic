@@ -150,5 +150,21 @@ namespace TorannMagic.ModCheck
                 return initialized;
             }
         }
+
+        public static class SimpleSidearms
+        {
+            public static bool IsInitialized()
+            {
+                bool initialized = false;
+                foreach (ModContentPack p in LoadedModManager.RunningMods)
+                {
+                    if (p.Name == "Simple sidearms")
+                    {
+                        initialized = true;
+                    }
+                }
+                return initialized;
+            }
+        }
     }
 }

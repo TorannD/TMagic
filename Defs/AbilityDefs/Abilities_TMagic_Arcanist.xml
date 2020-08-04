@@ -243,7 +243,7 @@ Requires 40 mana to maintain and reduces mana regeneration by 30%; cast again to
         <projectile>
             <flyOverhead>false</flyOverhead>
             <damageDef>TM_MagicMissile</damageDef>
-            <damageAmountBase>13</damageAmountBase>
+            <damageAmountBase>4</damageAmountBase>
             <speed>55</speed>
         </projectile>
     </ThingDef>

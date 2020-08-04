@@ -457,7 +457,7 @@ When set to autocast, the chronomancer will attempt to maintain a recall marker 
 
 To maintain physical cohesion during a recall, the caster will retain all conditions with permanence (missing or added body parts, permanent injuries).  All chronomancer spells are reset following a Recall except Recall itself.</description>
     <manaCost>0.0</manaCost>
-	<shouldInitialize>false</shouldInitialize>
+	<shouldInitialize>true</shouldInitialize>
 	<learnChance>0</learnChance>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_TimeMark</verbClass>
@@ -498,6 +498,9 @@ To maintain physical cohesion during a recall, the caster will retain all condit
 	<learnChance>.1</learnChance>
 	<learnItem>SpellOf_Recall</learnItem>
 	<shouldInitialize>false</shouldInitialize>
+	<childAbilities>
+		<li>TM_TimeMark</li>
+	</childAbilities>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_Recall</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

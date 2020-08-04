@@ -685,4 +685,110 @@ o Protects the caster's dreams</description>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
 	
+    <!-- Create Light -->
+	<ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
+		<thingClass>AbilityUser.Projectile_AbilityBase</thingClass>
+	    <defName>Projectile_CreateLight</defName>
+        <label>create light</label>
+        <graphicData>
+			<texPath>Spells/invis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+			<flyOverhead>true</flyOverhead>
+            <damageDef>TM_Shadow</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+			<explosionRadius>9</explosionRadius>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+            <speed>999</speed>
+        </projectile>
+    </ThingDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_SoL_CreateLight</defName>
+        <label>Create Light</label>
+        <uiIconPath>UI/createlight</uiIconPath>
+        <description>Directs the Spirit of Light to create light at an area. This reduces the Spirit's light regeneration by 70%. Use this ability again at any location to dismiss the light.</description>
+		<manaCost>0.0</manaCost>
+		<learnChance>0</learnChance>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SoL_CreateLight</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_SoL_CreateLight</abilityDef>
+            <warmupTime>.5</warmupTime>
+            <SecondsToRecharge>30</SecondsToRecharge>
+            <range>150</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>10</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>5</maxTargets>
+                <range>9</range>
+            </TargetAoEProperties>
+			<targetParams>
+				<canTargetItems>true</canTargetItems>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>true</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<!-- Equalize -->
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_SoL_Equalize</defName>
+        <label>Equalize</label>
+        <uiIconPath>UI/equalize</uiIconPath>
+        <description>Equalizes the light energy between the Spirit of Light and caster.</description>
+		<manaCost>0.0</manaCost>
+		<learnChance>0</learnChance>
+		<shouldInitialize>false</shouldInitialize>
+		<MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_SoL_Equalize</verbClass>
+				<tooltipShowProjectileDamage>true</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+			<requiresLineOfSight>false</requiresLineOfSight>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_SoL_Equalize</abilityDef>
+            <warmupTime>1</warmupTime>
+            <SecondsToRecharge>120</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>TM_VibrationLow</soundCastTail>
+            <muzzleFlashScale>10</muzzleFlashScale>
+		    <AlwaysHits>true</AlwaysHits>
+            <isPrimary>true</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
 </Defs>

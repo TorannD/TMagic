@@ -1,6 +1,7 @@
 ﻿using RimWorld;
 using Verse;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace TorannMagic
 {
@@ -99,7 +100,42 @@ namespace TorannMagic
                 float val = .01f;
                 if (this.Pawn.Map != null)
                 {
-                    if(this.Pawn.Position.Roofed(this.Pawn.Map))
+                    if (this.Pawn.Map.weatherManager?.curWeather?.defName != "Clear")
+                    {
+                        val *= .8f;
+                    }
+                    if (this.Pawn.Map.GameConditionManager?.ActiveConditions?.Count > 0)
+                    {
+                        List<GameCondition> gcList = this.Pawn.Map.GameConditionManager.ActiveConditions;
+                        for (int i = 0; i < gcList.Count; i++)
+                        {
+                            if (gcList[i].def == GameConditionDefOf.Aurora)
+                            {
+                                val += .004f;
+                            }
+                            if (gcList[i].def == GameConditionDefOf.VolcanicWinter)
+                            {
+                                val *= .8f;
+                            }
+                            if (gcList[i].def == GameConditionDefOf.ToxicFallout)
+                            {
+                                val *= .85f;
+                            }
+                            if (gcList[i].def == GameConditionDefOf.SolarFlare)
+                            {
+                                val *= 1.5f;
+                            }
+                            if (gcList[i].def == GameConditionDefOf.Eclipse)
+                            {
+                                val *= .7f;
+                            }
+                            if (gcList[i].def == TorannMagicDefOf.DarkClouds)
+                            {
+                                val *= .8f;
+                            }
+                        }
+                    }
+                    if (this.Pawn.Position.Roofed(this.Pawn.Map))
                     {
                         val -= .004f;
                     }

@@ -21,6 +21,8 @@ namespace TorannMagic
         private static readonly Texture2D FullChiTex = SolidColorMaterials.NewSolidColorTexture(new Color(1, .75f, 0));
         private static readonly Texture2D FullCountTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.2f, 0.2f, 0.24f));
         private static readonly Texture2D FullNecroticTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.32f, 0.4f, 0.0f));
+        private static readonly Texture2D FullBrightmageTex = SolidColorMaterials.NewSolidColorTexture(new Color(1f, .95f, .9f));
+        private static readonly Texture2D FullSoLTex = SolidColorMaterials.NewSolidColorTexture(new Color(.9f, .8f, .2f));
 
         private static readonly Texture2D EmptyShieldBarTex = SolidColorMaterials.NewSolidColorTexture(Color.clear);
 
@@ -43,6 +45,7 @@ namespace TorannMagic
                 bool isFighter = compMight.IsMightUser;
                 bool isPsionic = pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_PsionicHD"), false);
                 bool isBloodMage = pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_BloodHD"), false);
+                bool isBrightmage = pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_LightCapacitanceHD);
                 bool isMonk = pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ChiHD, false);
                 bool isEnchantedItem = this.iComp != null;
                 Hediff hediff = null;
@@ -94,6 +97,10 @@ namespace TorannMagic
                     {
                         boostBloodSev += hediffBoost.Severity;
                     }
+                }
+                if(isBrightmage)
+                {
+                    barCount++;
                 }
                 if(isMonk)
                 {
@@ -212,6 +219,31 @@ namespace TorannMagic
                             {
                                 fillPercent = 0f;
                                 Widgets.FillableBar(rect2, fillPercent, Gizmo_EnergyStatus.FullBloodMageTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
+                                Widgets.Label(rect2, "");
+                            }
+                            yShift += (barHeight) + barSpacing;
+                        }
+                        if (isBrightmage)
+                        {
+                            rect2.y = rect.y + yShift;
+                            try
+                            {
+                                if (compMagic.SoL != null)
+                                {
+                                    fillPercent = compMagic.SoL.LightEnergy / compMagic.SoL.LightEnergyMax;
+                                    Widgets.FillableBar(rect2, fillPercent, Gizmo_EnergyStatus.FullSoLTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
+                                    //Widgets.Label(rect2, "" + compMagic.SoL.LightEnergy.ToString("F0") + " / " + compMagic.SoL.LightEnergyMax.ToString("F0"));
+                                }
+                                Hediff hd = pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_LightCapacitanceHD);
+                                HediffComp_LightCapacitance hdlc = hd.TryGetComp<HediffComp_LightCapacitance>();
+                                fillPercent = hdlc.LightEnergy / hdlc.LightEnergyMax;
+                                Widgets.FillableBar(rect2, fillPercent, Gizmo_EnergyStatus.FullBrightmageTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
+                                Widgets.Label(rect2, "" + hdlc.LightEnergy.ToString("F0") + " / " + hdlc.LightEnergyMax.ToString("F0"));                                
+                            }
+                            catch
+                            {
+                                fillPercent = 0f;
+                                Widgets.FillableBar(rect2, fillPercent, Gizmo_EnergyStatus.FullBrightmageTex, Gizmo_EnergyStatus.EmptyShieldBarTex, false);
                                 Widgets.Label(rect2, "");
                             }
                             yShift += (barHeight) + barSpacing;

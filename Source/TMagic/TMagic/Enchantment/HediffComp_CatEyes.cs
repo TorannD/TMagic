@@ -42,7 +42,7 @@ namespace TorannMagic.Enchantment
         {
             if (this.glower != null && glower.parent != null)
             {
-                if (this.Pawn != null && this.Pawn.Map != null)
+                if (this.Pawn != null && this.Pawn.Map != null && this.Pawn.Position != oldPos)
                 {
                     if (oldPos != default(IntVec3))
                     {

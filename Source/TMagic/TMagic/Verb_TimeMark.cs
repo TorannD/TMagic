@@ -51,7 +51,10 @@ namespace TorannMagic
             comp.recallInjuriesList.Clear();
             for (int i = 0; i < this.CasterPawn.health.hediffSet.hediffs.Count; i++)
             {
-                if (!this.CasterPawn.health.hediffSet.hediffs[i].IsPermanent() && this.CasterPawn.health.hediffSet.hediffs[i].def != TorannMagicDefOf.TM_MagicUserHD && !this.CasterPawn.health.hediffSet.hediffs[i].def.defName.Contains("TM_HediffEnchantment") && !this.CasterPawn.health.hediffSet.hediffs[i].def.defName.Contains("TM_Artifact"))
+                if (!this.CasterPawn.health.hediffSet.hediffs[i].IsPermanent() && this.CasterPawn.health.hediffSet.hediffs[i].def != TorannMagicDefOf.TM_MagicUserHD && 
+                    !this.CasterPawn.health.hediffSet.hediffs[i].def.defName.Contains("TM_HediffEnchantment") && !this.CasterPawn.health.hediffSet.hediffs[i].def.defName.Contains("TM_Artifact") &&
+                    this.CasterPawn.health.hediffSet.hediffs[i].def != TorannMagicDefOf.TM_MightUserHD && this.CasterPawn.health.hediffSet.hediffs[i].def != TorannMagicDefOf.TM_BloodHD && 
+                    this.CasterPawn.health.hediffSet.hediffs[i].def != TorannMagicDefOf.TM_ChiHD && this.CasterPawn.health.hediffSet.hediffs[i].def != TorannMagicDefOf.TM_PsionicHD)
                 {
                     if (this.CasterPawn.health.hediffSet.hediffs[i] is Hediff_Injury)
                     {                        

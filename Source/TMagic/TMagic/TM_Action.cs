@@ -159,16 +159,32 @@ namespace TorannMagic
             }
         }
 
-        public static void DoAction_TechnoWeaponCopy(Pawn caster, Thing thing, ThingDef td = null)
+        public static void DoAction_TechnoWeaponCopy(Pawn caster, Thing thing, ThingDef td = null, QualityCategory _qc = QualityCategory.Normal)
         {
             CompAbilityUserMagic comp = caster.TryGetComp<CompAbilityUserMagic>();
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
             bool destroyThingAtEnd = false;
+            if(thing != null && comp != null)
+            {
+                comp.technoWeaponThingDef = thing.def;
+                CompQuality cq = thing.TryGetComp<CompQuality>();
+                if(cq != null)
+                {
+                    comp.technoWeaponQC = cq.Quality;
+                }
+            }
+
             if(thing == null && td != null)
             {
                 destroyThingAtEnd = true;
                 thing = ThingMaker.MakeThing(td);
+                CompQuality cq = thing.TryGetComp<CompQuality>();
+                if (cq != null)
+                {
+                    cq.SetQuality(_qc, ArtGenerationContext.Colony);
+                }
             }
+            
 
             if (thing != null && thing.def != null && thing.def.IsRangedWeapon && (thing.def.techLevel >= TechLevel.Industrial || settingsRef.unrestrictedWeaponCopy) && (thing.def.Verbs.FirstOrDefault().verbClass.ToString() == "Verse.Verb_Shoot" || settingsRef.unrestrictedWeaponCopy))
             {
@@ -1134,7 +1150,8 @@ namespace TorannMagic
                 for (int i = 0; i < pawn.health.hediffSet.hediffs.Count; i++)
                 {
                     if (!pawn.health.hediffSet.hediffs[i].IsPermanent() && pawn.health.hediffSet.hediffs[i].def != TorannMagicDefOf.TM_MagicUserHD && !pawn.health.hediffSet.hediffs[i].def.defName.Contains("TM_HediffEnchantment") && 
-                        !pawn.health.hediffSet.hediffs[i].def.defName.Contains("TM_Artifact") && pawn.health.hediffSet.hediffs[i].def.defName != "PsychicAmplifier")
+                        !pawn.health.hediffSet.hediffs[i].def.defName.Contains("TM_Artifact") && pawn.health.hediffSet.hediffs[i].def.defName != "PsychicAmplifier" && pawn.health.hediffSet.hediffs[i].def != TorannMagicDefOf.TM_MightUserHD &&
+                        pawn.health.hediffSet.hediffs[i].def != TorannMagicDefOf.TM_BloodHD && pawn.health.hediffSet.hediffs[i].def != TorannMagicDefOf.TM_ChiHD && pawn.health.hediffSet.hediffs[i].def != TorannMagicDefOf.TM_PsionicHD)
                     {
                         if (!(pawn.health.hediffSet.hediffs[i] is Hediff_MissingPart) && !(pawn.health.hediffSet.hediffs[i] is Hediff_AddedPart))
                         {

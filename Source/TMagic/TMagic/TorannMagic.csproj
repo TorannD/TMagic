@@ -37,7 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\2009463077\v1.1\Assemblies\0Harmony.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\2009463077\Current\Assemblies\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AbilityUser">
@@ -64,6 +64,10 @@
       <HintPath>..\..\..\..\..\..\..\workshop\content\294100\1216999901\Assemblies\GiddyUpCore.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="HarmonyMod">
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\2009463077\Current\Assemblies\HarmonyMod.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="HugsLib">
       <HintPath>..\..\..\..\..\..\..\workshop\content\294100\818773962\Assemblies\HugsLib.dll</HintPath>
       <Private>False</Private>
@@ -77,6 +81,10 @@
     </Reference>
     <Reference Include="RimQuest">
       <HintPath>..\..\..\..\..\..\..\workshop\content\294100\1354114366\Assemblies\RimQuest.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SimpleSidearms">
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\927155256\v1.1\Assemblies\SimpleSidearms.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -132,7 +140,10 @@
     <Compile Include="Building_ExplosiveProximityTrap.cs" />
     <Compile Include="HediffComp_LightCapacitance.cs" />
     <Compile Include="HediffComp_DiseaseImmunity.cs" />
+    <Compile Include="ModCheck\SS.cs" />
     <Compile Include="Projectile_LightSkipMass.cs" />
+    <Compile Include="Verb_SoL_CreateLight.cs" />
+    <Compile Include="Verb_SoL_Equalize.cs" />
     <Compile Include="Verb_LightSkipGlobal.cs" />
     <Compile Include="WorldTransport\TM_DelayedDestroyMap.cs" />
     <Compile Include="WorldTransport\TM_ActiveDropPod.cs" />

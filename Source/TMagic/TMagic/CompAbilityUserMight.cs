@@ -1274,34 +1274,47 @@ namespace TorannMagic
                 this.MightData.MightUserLevel = value;
             }
         }
-        
+
+        private Dictionary<int, int> cacheXPFL = new Dictionary<int, int>();
         public int GetXPForLevel(int lvl)
-        {            
-            IntVec2 c1 = new IntVec2(0, 50);
-            IntVec2 c2 = new IntVec2(5, 40);
-            IntVec2 c3 = new IntVec2(15, 20);
-            IntVec2 c4 = new IntVec2(30, 10);
-            IntVec2 c5 = new IntVec2(200, 0);
-
-            int val = 0;
-
-            for (int i = 0; i < lvl+1; i++)
+        {
+            if (!cacheXPFL.ContainsKey(lvl))
             {
-                val += (Mathf.Clamp(i, c1.x, c2.x - 1) * c1.z) + c1.z;
-                if (i >= c2.x)
+                IntVec2 c1 = new IntVec2(0, 50);
+                IntVec2 c2 = new IntVec2(5, 40);
+                IntVec2 c3 = new IntVec2(15, 20);
+                IntVec2 c4 = new IntVec2(30, 10);
+                IntVec2 c5 = new IntVec2(200, 0);
+
+                int val = 0;
+
+                for (int i = 0; i < lvl + 1; i++)
                 {
-                    val += (Mathf.Clamp(i, c2.x, c3.x - 1) * c2.z) + c2.z;
+                    val += (Mathf.Clamp(i, c1.x, c2.x - 1) * c1.z) + c1.z;
+                    if (i >= c2.x)
+                    {
+                        val += (Mathf.Clamp(i, c2.x, c3.x - 1) * c2.z) + c2.z;
+                    }
+                    if (i >= c3.x)
+                    {
+                        val += (Mathf.Clamp(i, c3.x, c4.x - 1) * c3.z) + c3.z;
+                    }
+                    if (i >= c4.x)
+                    {
+                        val += (Mathf.Clamp(i, c4.x, c5.x - 1) * c4.z) + c4.z;
+                    }
                 }
-                if (i >= c3.x)
-                {
-                    val += (Mathf.Clamp(i, c3.x, c4.x - 1) * c3.z) + c3.z;
-                }
-                if (i >= c4.x)
-                {
-                    val += (Mathf.Clamp(i, c4.x, c5.x - 1) * c4.z) + c4.z;
-                }
+                cacheXPFL.Add(lvl, val);
             }
-            return val;
+
+            if (cacheXPFL.ContainsKey(lvl))
+            {
+                return cacheXPFL[lvl];
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         public int MightUserXP
@@ -1341,7 +1354,11 @@ namespace TorannMagic
         public int MightUserXPTillNextLevel
         {
             get
-            {                
+            {
+                if (MightUserXP < XPLastLevel)
+                {
+                    MightUserXP = (int)XPLastLevel;
+                }
                 return GetXPForLevel(this.MightUserLevel);
             }
         }
@@ -1387,7 +1404,11 @@ namespace TorannMagic
         {
             get
             {
-                return base.AbilityUser.needs.TryGetNeed<Need_Stamina>();
+                if (!base.AbilityUser.DestroyedOrNull() && base.abilityUserSave.needs != null)
+                {
+                    return base.AbilityUser.needs.TryGetNeed<Need_Stamina>();
+                }
+                return null;
             }
         }
 
@@ -5347,7 +5368,7 @@ namespace TorannMagic
                     try
                     {
                         //Log.Message("primary is " + this.Pawn.equipment.Primary);
-                        //Log.Message("equipment container is " + this.equipmentContainer[0]);
+                        //Log.Message("equipment container is " + this.equipmentContainer[0]);                        
                         for (int i = 0; i < this.Pawn.equipment.AllEquipmentListForReading.Count; i++)
                         {
                             ThingWithComps t = this.Pawn.equipment.AllEquipmentListForReading[i];
@@ -5355,6 +5376,10 @@ namespace TorannMagic
                             {
                                 t.Destroy(DestroyMode.Vanish);
                             }
+                        }
+                        if(ModCheck.Validate.SimpleSidearms.IsInitialized())
+                        {
+                            ModCheck.SS.ClearWeaponMemory(this.Pawn);
                         }
                         if (this.specWpnRegNum == -1)
                         {
