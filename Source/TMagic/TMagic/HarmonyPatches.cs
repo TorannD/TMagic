@@ -3173,7 +3173,7 @@ namespace TorannMagic
                         bool canTargetAlly = abilityDef.canTargetAlly;
                         if (canTargetAlly)
                         {
-                            __result = GenClosest.ClosestThingReachable(pawn.Position, pawn.Map, ThingRequest.ForGroup(ThingRequestGroup.Pawn), PathEndMode.OnCell, TraverseParms.For(TraverseMode.NoPassClosedDoors, Danger.Deadly, false), abilityDef.maxRange, (Thing thing) => AbilityUtility.AreAllies(pawn, thing), null, 0, -1, false, RegionType.Set_Passable, false);
+                            __result = GenClosest.ClosestThingReachable(pawn.Position, pawn.Map, ThingRequest.ForGroup(ThingRequestGroup.Pawn), PathEndMode.OnCell, TraverseParms.For(TraverseMode.NoPassClosedDoors, Danger.Deadly, false), abilityDef.maxRange, (Thing thing) => AbilityUserAI.AbilityUtility.AreAllies(pawn, thing), null, 0, -1, false, RegionType.Set_Passable, false);
                         }
                         else
                         {
@@ -3415,7 +3415,7 @@ namespace TorannMagic
                                     __result = false;
                                     return false;
                                 }
-                                bool flag6 = __instance.needSeeingTarget && !AbilityUtility.LineOfSightLocalTarget(caster, target, true, null);
+                                bool flag6 = __instance.needSeeingTarget && !AbilityUserAI.AbilityUtility.LineOfSightLocalTarget(caster, target, true, null);
                                 if (flag6)
                                 {
                                     __result = false;
