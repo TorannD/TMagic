@@ -1078,7 +1078,7 @@ namespace TorannMagic
                             Texture2D icon = TM_RenderQueue.losIcon;
                             GenUI.DrawMouseAttachment(icon);
                         }
-                        if(__instance.targetingSource.GetVerb.GetType() == typeof(Verb_LightSkip) && targ.Roofed(caster.Map))
+                        if(__instance.targetingSource.GetVerb.GetType() == typeof(Verb_LightSkip) && targ.InBounds(caster.Map) && targ.Roofed(caster.Map))
                         {
                             Texture2D icon = TexCommand.CannotShoot; 
                             GenUI.DrawMouseAttachment(icon);
@@ -2512,7 +2512,7 @@ namespace TorannMagic
                         }
 
                         HealthUtility.AdjustSeverity(pawn, hediff.def, (dinfo.Amount * (1 + (.1f * hateEff))));
-                        if (hediff != null && hediff.Severity >= 20 && Rand.Chance(.1f * hateVer) && dinfo.Instigator != null && dinfo.Instigator is Pawn && (dinfo.Instigator.Position - pawn.Position).LengthHorizontal < 2)
+                        if (hediff != null && hediff.Severity >= 20 && Rand.Chance(.1f * hateVer) && dinfo.Instigator != null && dinfo.Instigator is Pawn && dinfo.Instigator != pawn && (dinfo.Instigator.Position - pawn.Position).LengthHorizontal < 2)
                         {
                             TM_Action.DamageEntities(dinfo.Instigator, null, (dinfo.Amount * (1 + .2f * hatePwr)), TMDamageDefOf.DamageDefOf.TM_Spirit, pawn);
                             TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_SpiritRetaliation"), pawn.DrawPos, pawn.Map, Rand.Range(1f, 1.2f), Rand.Range(.1f, .15f), 0, Rand.Range(.1f, .2f), -600, 0, 0, Rand.Range(0, 360));

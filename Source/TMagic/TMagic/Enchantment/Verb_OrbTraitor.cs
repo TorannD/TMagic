@@ -48,7 +48,10 @@ namespace TorannMagic.Enchantment
                         {
                             string letterLabel = "LetterLabelMessageRecruitSuccess".Translate();
                             int relationChange = Rand.RangeInclusive(-50, -20);
-                            Find.LetterStack.ReceiveLetter(letterLabel, "TM_TraitorOrbRecruit".Translate(this.CasterPawn, traitor.LabelShort, traitor.Faction.Name, traitor.Faction.leader.LabelShort, traitor.Faction.leader.gender.GetObjective().ToString(), relationChange), LetterDefOf.PositiveEvent);
+                            if (traitor.Faction.leader != null)
+                            {
+                                Find.LetterStack.ReceiveLetter(letterLabel, "TM_TraitorOrbRecruit".Translate(this.CasterPawn, traitor.LabelShort, traitor.Faction.Name, traitor.Faction.leader.LabelShort, traitor.Faction.leader.gender.GetObjective().ToString(), relationChange), LetterDefOf.PositiveEvent);
+                            }
                             this.CasterPawn.Faction.TryAffectGoodwillWith(traitor.Faction, relationChange, true, true, "offensive use of magic", null);
                             traitor.SetFaction(caster.Faction, this.CasterPawn);
                             HealthUtility.AdjustSeverity(traitor, HediffDefOf.PsychicShock, 1);

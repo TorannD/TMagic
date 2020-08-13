@@ -20,6 +20,7 @@ namespace TorannMagic
         public int duration = 1260;
         bool isMageTeaching = false;
         bool isFighterTeaching = false;
+        bool success = true;
 
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
@@ -66,16 +67,19 @@ namespace TorannMagic
                 }
                 else
                 {
+                    success = false;
                     Log.Message("ending teaching job due to undetected class - should never occur unless initializing verb is faulty");
                     this.EndJobWith(JobCondition.Incompletable);
                 }
                     
                 if (age > duration)
                 {
+                    success = false;
                     this.EndJobWith(JobCondition.Succeeded);
                 }
                 if (student.DestroyedOrNull() || student.Dead)
                 {
+                    success = false;
                     this.EndJobWith(JobCondition.Incompletable);
                 }
 
@@ -89,6 +93,7 @@ namespace TorannMagic
             {
                 if (student.DestroyedOrNull() || student.Dead)
                 {
+                    success = false;
                     this.EndJobWith(JobCondition.Incompletable);
                 }
                 if (age > (lastEffect + ticksTillEffects))
@@ -106,12 +111,14 @@ namespace TorannMagic
                 }
                 if(student.Drafted && student.CurJobDef != JobDefOf.Wait_Combat)
                 {
+                    success = false;
                     this.EndJobWith(JobCondition.InterruptForced);
                 }
                 age++;
                 ticksLeftThisToil = duration - age;
                 if((student.Position - this.pawn.Position).LengthHorizontal > 5)
                 {
+                    success = false;
                     age = duration + 1;
                 }
                 if (age > duration)
@@ -132,13 +139,16 @@ namespace TorannMagic
             }, false, 0f);
             doTeaching.AddFinishAction(delegate
             {
-                if (this.isMageTeaching)
+                if (success && age >= (int)(duration * .9f))
                 {
-                    AssignMagicXP(student);
-                }
-                if(this.isFighterTeaching)
-                {
-                    AssignMightXP(student);
+                    if (this.isMageTeaching)
+                    {
+                        AssignMagicXP(student);
+                    }
+                    if (this.isFighterTeaching)
+                    {
+                        AssignMightXP(student);
+                    }
                 }
                 student.jobs.EndCurrentJob(JobCondition.Succeeded, false);
             });

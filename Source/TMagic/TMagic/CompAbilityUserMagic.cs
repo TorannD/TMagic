@@ -28,6 +28,7 @@ namespace TorannMagic
         private bool colonistPowerCheck = true;
         private int resMitigationDelay = 0;
         private int damageMitigationDelay = 0;
+        private int damageMitigationDelayMS = 0;
         public int magicXPRate = 1000;
         public int lastXPGain = 0;
         private int age = -1;
@@ -5666,32 +5667,7 @@ namespace TorannMagic
                         MoteMaker.MakeStaticMote(AbilityUser.Position, AbilityUser.Map, ThingDefOf.Mote_ExplosionFlash, 10);
                         dinfo.SetAmount(0);
                         return;
-                    }
-                    if (current.def == TorannMagicDefOf.TM_LichHD && this.damageMitigationDelay < this.age)
-                    {
-                        absorbed = true;
-                        int mitigationAmt = 4;
-                        int actualDmg;
-                        int dmgAmt = Mathf.RoundToInt(dinfo.Amount);
-                        if (dmgAmt < mitigationAmt)
-                        {
-                            MoteMaker.ThrowText(this.Pawn.DrawPos, this.Pawn.Map, "TM_DamageAbsorbedAll".Translate(), -1);
-                            actualDmg = 0;
-                            return;
-                        }
-                        else
-                        {
-                            MoteMaker.ThrowText(this.Pawn.DrawPos, this.Pawn.Map, "TM_DamageAbsorbed".Translate(
-                                dmgAmt,
-                                mitigationAmt
-                            ), -1);
-                            actualDmg = dmgAmt - mitigationAmt;
-                        }
-                        this.damageMitigationDelay = this.age + 6;
-                        dinfo.SetAmount(actualDmg);
-                        abilityUser.TakeDamage(dinfo);
-                        return;
-                    }
+                    }                    
                     if (current.def == TorannMagicDefOf.TM_HediffEnchantment_phantomShift && Rand.Chance(.2f))
                     {
                         absorbed = true;
@@ -5699,22 +5675,7 @@ namespace TorannMagic
                         MoteMaker.ThrowSmoke(abilityUser.Position.ToVector3Shifted(), abilityUser.Map, 1.2f);
                         dinfo.SetAmount(0);
                         return;
-                    }
-                    if (arcaneRes != 0 && resMitigationDelay < this.age)
-                    {
-                        if (current.def == TorannMagicDefOf.TM_HediffEnchantment_arcaneRes)
-                        {
-                            if ((dinfo.Def.armorCategory != null && (dinfo.Def.armorCategory == TorannMagicDefOf.Dark || dinfo.Def.armorCategory == TorannMagicDefOf.Light)) || dinfo.Def.defName.Contains("TM_") || dinfo.Def.defName == "FrostRay" || dinfo.Def.defName == "Snowball" || dinfo.Def.defName == "Iceshard" || dinfo.Def.defName == "Firebolt")
-                            {
-                                absorbed = true;
-                                int actualDmg = Mathf.RoundToInt(dinfo.Amount / arcaneRes);
-                                resMitigationDelay = this.age + 10;
-                                dinfo.SetAmount(actualDmg);
-                                abilityUser.TakeDamage(dinfo);
-                                return;
-                            }
-                        }
-                    }
+                    }                    
                     if (current.def == TorannMagicDefOf.TM_HediffShield)
                     {
                         float sev = current.Severity;
@@ -5777,7 +5738,7 @@ namespace TorannMagic
 
                         return;
                     }
-                    if (current.def == TorannMagicDefOf.TM_ManaShieldHD && this.damageMitigationDelay < this.age)
+                    if (current.def == TorannMagicDefOf.TM_ManaShieldHD && this.damageMitigationDelayMS < this.age)
                     {
                         float sev = this.Mana.CurLevel;
                         absorbed = true;
@@ -5813,12 +5774,51 @@ namespace TorannMagic
                             abilityUser.health.RemoveHediff(current);
                         }
                         TM_Action.DisplayShieldHit(abilityUser, dinfo);
-                        this.damageMitigationDelay = this.age + 2;
+                        this.damageMitigationDelayMS = this.age + 2;
                         dinfo.SetAmount(actualDmg);
                         abilityUser.TakeDamage(dinfo);
                         return;
                     }
-
+                    if (current.def == TorannMagicDefOf.TM_LichHD && this.damageMitigationDelay < this.age)
+                    {
+                        absorbed = true;
+                        int mitigationAmt = 4;
+                        int actualDmg;
+                        int dmgAmt = Mathf.RoundToInt(dinfo.Amount);
+                        if (dmgAmt < mitigationAmt)
+                        {
+                            MoteMaker.ThrowText(this.Pawn.DrawPos, this.Pawn.Map, "TM_DamageAbsorbedAll".Translate(), -1);
+                            actualDmg = 0;
+                            return;
+                        }
+                        else
+                        {
+                            MoteMaker.ThrowText(this.Pawn.DrawPos, this.Pawn.Map, "TM_DamageAbsorbed".Translate(
+                                dmgAmt,
+                                mitigationAmt
+                            ), -1);
+                            actualDmg = dmgAmt - mitigationAmt;
+                        }
+                        this.damageMitigationDelay = this.age + 6;
+                        dinfo.SetAmount(actualDmg);
+                        abilityUser.TakeDamage(dinfo);
+                        return;
+                    }
+                    if (arcaneRes != 0 && resMitigationDelay < this.age)
+                    {
+                        if (current.def == TorannMagicDefOf.TM_HediffEnchantment_arcaneRes)
+                        {
+                            if ((dinfo.Def.armorCategory != null && (dinfo.Def.armorCategory == TorannMagicDefOf.Dark || dinfo.Def.armorCategory == TorannMagicDefOf.Light)) || dinfo.Def.defName.Contains("TM_") || dinfo.Def.defName == "FrostRay" || dinfo.Def.defName == "Snowball" || dinfo.Def.defName == "Iceshard" || dinfo.Def.defName == "Firebolt")
+                            {
+                                absorbed = true;
+                                int actualDmg = Mathf.RoundToInt(dinfo.Amount / arcaneRes);
+                                resMitigationDelay = this.age + 10;
+                                dinfo.SetAmount(actualDmg);
+                                abilityUser.TakeDamage(dinfo);
+                                return;
+                            }
+                        }
+                    }
                 }
 
                 list.Clear();
@@ -5920,12 +5920,15 @@ namespace TorannMagic
                     }
                     if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Chronomancer) || isCustom) && !this.recallSet)
                     {
-                        MagicPower magicPower = this.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TimeMark);
-                        if (magicPower != null && (magicPower.learned || spell_Recall) && magicPower.autocast && !this.Pawn.CurJob.playerForced)
+                        if (this.AbilityData.Powers.Any(p => p.Def == TorannMagicDefOf.TM_TimeMark))
                         {
-                            PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_TimeMark);
-                            AutoCast.CastOnSelf.Evaluate(this, TorannMagicDefOf.TM_TimeMark, ability, magicPower, out castSuccess);
-                            if (castSuccess) goto AutoCastExit;
+                            MagicPower magicPower = this.MagicData.MagicPowersStandalone.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_TimeMark);
+                            if (magicPower != null && (magicPower.learned || spell_Recall) && magicPower.autocast && !this.Pawn.CurJob.playerForced)
+                            {
+                                PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_TimeMark);
+                                AutoCast.CastOnSelf.Evaluate(this, TorannMagicDefOf.TM_TimeMark, ability, magicPower, out castSuccess);
+                                if (castSuccess) goto AutoCastExit;
+                            }
                         }
                     }
                     if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Arcanist) || flagCM || isCustom)
