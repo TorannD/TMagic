@@ -20,8 +20,10 @@ namespace TorannMagic.ModCheck
                 ThingDef_AlienRace alienDef = thingDef as ThingDef_AlienRace;
                 if (alienDef != null && alienDef.alienRace != null)
                 {
+                    AlienTraitEntry ate = new AlienTraitEntry();
+                    ate.defName = traitString;
                     //Log.Message("alien race. checking if " + traitString + " is allowed for backstory...");
-                    if (alienDef.alienRace.generalSettings != null && alienDef.alienRace.generalSettings.disallowedTraits != null && alienDef.alienRace.generalSettings.disallowedTraits.Contains(traitString))
+                    if (alienDef.alienRace.generalSettings != null && alienDef.alienRace.generalSettings.disallowedTraits != null && alienDef.alienRace.generalSettings.disallowedTraits.Contains(ate))
                     {
                         traitIsAllowed = false;
                     }
@@ -30,8 +32,8 @@ namespace TorannMagic.ModCheck
                         foreach (Backstory bs in pawn.story.AllBackstories)
                         {
                             IEnumerable<BackstoryDef> enumerable = from def in DefDatabase<BackstoryDef>.AllDefs
-                                                                    where (def.backstory == bs)
-                                                                    select def;
+                                                                   where (def.backstory == bs)
+                                                                   select def;
                             foreach (BackstoryDef current in enumerable)
                             {
                                 //Log.Message(current.LabelCap + " has disallowed traits: " + current.disallowedTraits.Count);
