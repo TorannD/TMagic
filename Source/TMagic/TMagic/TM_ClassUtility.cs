@@ -104,6 +104,38 @@ namespace TorannMagic
             return skills;
         }
 
+        public static MightPowerSkill GetMightPowerSkillFromLabel(CompAbilityUserMight comp, string label)
+        {
+            if(comp != null && comp.MightData != null && comp.MightData.AllMightPowerSkills.Count > 0)
+            {
+                for(int i = 0; i < comp.MightData.AllMightPowerSkills.Count; i++)
+                {
+                    MightPowerSkill mps = comp.MightData.AllMightPowerSkills[i];
+                    if(mps.label == label)
+                    {
+                        return mps;
+                    }
+                }
+            }
+            return null;
+        }
+
+        public static MagicPowerSkill GetMagicPowerSkillFromLabel(CompAbilityUserMagic comp, string label)
+        {
+            if (comp != null && comp.MagicData != null && comp.MagicData.AllMagicPowerSkills.Count > 0)
+            {
+                for (int i = 0; i < comp.MagicData.AllMagicPowerSkills.Count; i++)
+                {
+                    MagicPowerSkill mps = comp.MagicData.AllMagicPowerSkills[i];
+                    if (mps.label == label)
+                    {
+                        return mps;
+                    }
+                }
+            }
+            return null;
+        }
+
         public static TMDefs.TM_CustomClass GetRandomCustomFighter()
         {
             List<TMDefs.TM_CustomClass> customFighters = CustomFighterClasses;

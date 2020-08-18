@@ -3786,6 +3786,17 @@ namespace TorannMagic
                         this.RemovePawnAbility(TorannMagicDefOf.TM_Ignite);
                         this.AddPawnAbility(TorannMagicDefOf.TM_Ignite);
                     }
+                    if (this.IsMagicUser && this.MagicData.MagicPowersCustom != null && this.MagicData.MagicPowersCustom.Count > 0)
+                    {
+                        for (int j = 0; j < this.MagicData.MagicPowersCustom.Count; j++)
+                        {
+                            if (this.MagicData.MagicPowersCustom[j].learned)
+                            {
+                                this.RemovePawnAbility(this.MagicData.MagicPowersCustom[j].abilityDef);
+                                this.AddPawnAbility(this.MagicData.MagicPowersCustom[j].abilityDef);
+                            }
+                        }
+                    }
                 }
                 //this.UpdateAbilities();
             }
@@ -4212,6 +4223,7 @@ namespace TorannMagic
                     this.RemovePawnAbility(ability);
                 }
                 this.MagicData.AllMagicPowers[i].learned = false;
+                this.MagicData.AllMagicPowers[i].autocast = false;
             }
             this.MagicUserLevel = 0;
             this.MagicUserXP = 0;

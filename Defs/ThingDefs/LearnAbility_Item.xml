@@ -4528,7 +4528,55 @@ Produces 400Wd adjusted by ability power.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-
+  </ThingDef>  
+  
+  <ThingDef ParentName="FighterSkillBase">
+    <defName>SkillOf_Taunt</defName>
+    <label>Fighter Skill: Taunt</label>
+    <thingClass>ThingWithComps</thingClass>
+    <description>Teaches a fighter class how to taunt nearby enemies.</description>
+	<category>Item</category>
+	<selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+	<alwaysHaulable>true</alwaysHaulable>	
+	<resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+	<statBases>
+      <MarketValue>1000</MarketValue>
+	</statBases>
+	<comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+		<costList>
+		<RawMagicyte>160</RawMagicyte>
+	</costList>
+	<costStuffCount>100</costStuffCount>
+	<stuffCategories>
+		<li>Leathery</li>
+	</stuffCategories>
+	<recipeMaker>		    
+		<workAmount>3500</workAmount>
+		<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
+		<workSkill>Intellectual</workSkill>
+		<recipeUsers>
+			<li>TableMagicPrinter</li>
+		</recipeUsers>
+		<effectWorking>Smelt</effectWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<skillRequirements>
+			<Crafting>4</Crafting>
+			<Intellectual>4</Intellectual>
+		</skillRequirements>
+		<researchPrerequisite>
+			<li>TM_AdvancedScribing</li>
+		</researchPrerequisite>
+	</recipeMaker>
+	<rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Books/scroll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
   </ThingDef>
   
   <ThingDef ParentName="FighterSkillBase">

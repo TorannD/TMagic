@@ -947,6 +947,7 @@ namespace TorannMagic
         public static HediffDef TM_MuteHD;
         public static TMAbilityDef TM_Ignite;
         public static TMAbilityDef TM_SnapFreeze;
+        public static HediffDef TM_TauntHD;
 
         public static HediffDef TM_Sight;
         public static HediffDef TM_Breathing;
@@ -1073,6 +1074,7 @@ namespace TorannMagic
         public static EffecterDef TM_SnapFreezeED;
         public static EffecterDef TM_SmallMagicCircleED;
         public static EffecterDef TM_LightBurstED;
+        public static EffecterDef TM_RageWaveED;
 
         //psychast copies, used with tm_motemaker.makeoverlay
         //adjusts def values on each cast
@@ -1148,6 +1150,7 @@ namespace TorannMagic
         public static SoundDef TM_FlashBang;
         public static SoundDef TM_WolfHowl;
         public static SoundDef TM_FireBurn;
+        public static SoundDef TM_Roar;
 
         //Inspirations
         public static InspirationDef ID_Champion;

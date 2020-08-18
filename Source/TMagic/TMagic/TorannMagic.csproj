@@ -41,11 +41,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="AbilityUser">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\AbilityUser.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\2195729899\1.2\Assemblies\AbilityUser.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AbilityUserAI">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\AbilityUserAI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\2195729899\1.2\Assemblies\AbilityUserAI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="AlienRace">
@@ -57,7 +57,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="CompDeflector">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\932008009\Assemblies\CompDeflector.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\2195729899\1.2\Assemblies\CompDeflector.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="GiddyUpCore">
@@ -73,18 +73,14 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="PrisonLabor">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\1899474310\Assemblies\PrisonLabor.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\1899474310\1.2\Assemblies\PrisonLabor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="PrisonLaborOld">
       <HintPath>..\..\..\..\..\dlls\PrisonLaborOld.dll</HintPath>
     </Reference>
-    <Reference Include="RimQuest">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\1354114366\Assemblies\RimQuest.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="SimpleSidearms">
-      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\927155256\v1.1\Assemblies\SimpleSidearms.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\927155256\v1.2\Assemblies\SimpleSidearms.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -138,13 +134,24 @@
     <Compile Include="Building_PoisonTrap.cs" />
     <Compile Include="Building_TechnoTurret.cs" />
     <Compile Include="Building_ExplosiveProximityTrap.cs" />
+    <Compile Include="HediffComp_AbilityResource.cs" />
+    <Compile Include="HediffComp_Medigel.cs" />
+    <Compile Include="HediffComp_Taunt.cs" />
     <Compile Include="HediffComp_LightCapacitance.cs" />
     <Compile Include="HediffComp_DiseaseImmunity.cs" />
     <Compile Include="ModCheck\SS.cs" />
     <Compile Include="Projectile_LightSkipMass.cs" />
+    <Compile Include="Projectile_Explosion.cs" />
+    <Compile Include="TMDefs\TM_Autocast.cs" />
+    <Compile Include="TMDefs\TM_CustomSkill.cs" />
+    <Compile Include="TMDefs\TM_CustomPower.cs" />
+    <Compile Include="TM_CustomPowerDef.cs" />
+    <Compile Include="Verb_ApplyRandomHediffFromList.cs" />
     <Compile Include="Verb_SoL_CreateLight.cs" />
     <Compile Include="Verb_SoL_Equalize.cs" />
     <Compile Include="Verb_LightSkipGlobal.cs" />
+    <Compile Include="Verb_MedicalSupply.cs" />
+    <Compile Include="Verb_Taunt.cs" />
     <Compile Include="WorldTransport\TM_DelayedDestroyMap.cs" />
     <Compile Include="WorldTransport\TM_ActiveDropPod.cs" />
     <Compile Include="WorldTransport\TM_DropPodIncoming.cs" />

@@ -1844,6 +1844,17 @@ namespace TorannMagic
                     this.RemovePawnAbility(TorannMagicDefOf.TM_BreachingCharge);
                     this.AddPawnAbility(TorannMagicDefOf.TM_BreachingCharge);
                 }
+                if (this.IsMightUser && this.MightData.MightPowersCustom != null && this.MightData.MightPowersCustom.Count > 0)
+                {
+                    for (int j = 0; j < this.MightData.MightPowersCustom.Count; j++)
+                    {
+                        if (this.MightData.MightPowersCustom[j].learned)
+                        {
+                            this.RemovePawnAbility(this.MightData.MightPowersCustom[j].abilityDef);
+                            this.AddPawnAbility(this.MightData.MightPowersCustom[j].abilityDef);
+                        }
+                    }
+                }
             }
         }
 
@@ -2166,6 +2177,7 @@ namespace TorannMagic
                     this.RemovePawnAbility(ability);
                 }
                 this.MightData.AllMightPowers[i].learned = false;
+                this.MightData.AllMightPowers[i].autocast = false;
             }
             this.MightUserLevel = 0;
             this.MightUserXP = 0;

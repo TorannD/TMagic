@@ -59,6 +59,32 @@ namespace TorannMagic
             }
         }
 
+        private float ActualNeedCost
+        {
+            get
+            {
+                float num = 1f;
+                if (mightDef != null)
+                {
+                    num = 1f - (mightDef.efficiencyReductionPercent * this.MightUser.MightData.GetSkill_Efficiency(mightDef).level);
+                }
+                return mightDef.needCost * num;
+            }
+        }
+
+        private float ActualHediffCost
+        {
+            get
+            {
+                float num = 1f;
+                if (mightDef != null)
+                {
+                    num = 1f - (mightDef.efficiencyReductionPercent * this.MightUser.MightData.GetSkill_Efficiency(mightDef).level);
+                }
+                return mightDef.hediffCost * num;
+            }
+        }
+
         public MightAbility()
         {
         }
@@ -118,6 +144,32 @@ namespace TorannMagic
                     {
                         HealthUtility.AdjustSeverity(this.Pawn, TorannMagicDefOf.TM_ChiHD, -100 * this.ActualChiCost);
                         this.MightUser.MightUserXP += (int)((mightDef.chiCost * 100) * this.MightUser.xpGain * settingsRef.xpMultiplier);
+                    }
+                    if(mightDef.requiredHediff != null)
+                    {
+                        if(this.Pawn.health != null && this.Pawn.health.hediffSet != null && this.Pawn.health.hediffSet.HasHediff(mightDef.requiredHediff))
+                        {
+                            Hediff hd = this.Pawn.health.hediffSet.GetFirstHediffOfDef(mightDef.requiredHediff);
+                            hd.Severity -= this.ActualHediffCost;
+                            this.MightUser.MightUserXP += (int)((mightDef.hediffXPFactor * this.MightUser.xpGain * settingsRef.xpMultiplier) * mightDef.hediffCost);
+                        }
+                        else
+                        {
+                            Log.Warning("" + this.Pawn.LabelShort + " attempted to use an ability requiring the hediff " + mightDef.requiredHediff.label + " but does not have the hediff; should never happen since we required the hediff to use the ability.");
+                        }
+                    }
+                    if (mightDef.requiredNeed!= null)
+                    {
+                        if (this.Pawn.needs != null && this.Pawn.needs.AllNeeds != null && this.Pawn.needs.TryGetNeed(this.mightDef.requiredNeed) != null)
+                        {
+                            Need nd = this.Pawn.needs.TryGetNeed(this.mightDef.requiredNeed);
+                            nd.CurLevel -= this.ActualNeedCost;
+                            this.MightUser.MightUserXP += (int)((mightDef.needXPFactor * this.MightUser.xpGain * settingsRef.xpMultiplier) * mightDef.needCost);
+                        }
+                        else
+                        {
+                            Log.Warning("" + this.Pawn.LabelShort + " attempted to use an ability requiring the need " + mightDef.requiredNeed.label + " but does not have the need; should never happen since we required the need to use the ability.");
+                        }
                     }
                 }
             }
@@ -398,6 +450,26 @@ namespace TorannMagic
                         {
                             reason = "TM_NotEnoughChi".Translate(
                                 base.Pawn.LabelShort
+                            );
+                            result = false;
+                            return result;
+                        }
+                        bool flagNeed = mightDef.requiredNeed != null && this.MightUser.Pawn.needs.TryGetNeed(mightDef.requiredNeed) != null && this.MightUser.Pawn.needs.TryGetNeed(mightDef.requiredNeed).CurLevel > this.ActualNeedCost;
+                        if (flagNeed)
+                        {
+                            reason = "TM_NotEnoughEnergy".Translate(
+                                base.Pawn.LabelShort,
+                                mightDef.requiredNeed.label
+                            );
+                            result = false;
+                            return result;
+                        }
+                        bool flagHediff = mightDef.requiredHediff != null && this.MightUser.Pawn.health.hediffSet.HasHediff(mightDef.requiredHediff) && this.MightUser.Pawn.health.hediffSet.GetFirstHediffOfDef(mightDef.requiredHediff).Severity > this.ActualHediffCost;
+                        if (flagHediff)
+                        {
+                            reason = "TM_NotEnoughEnergy".Translate(
+                                base.Pawn.LabelShort,
+                                mightDef.requiredHediff.label
                             );
                             result = false;
                             return result;

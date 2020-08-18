@@ -71,6 +71,19 @@ namespace TorannMagic
                 }
                 else
                 {
+                    TMAbilityDef customSkill = null;
+                    for (int i = 0; i < comp.MagicData.MagicPowersCustom.Count; i++)
+                    {
+                        TMAbilityDef tempSkill = (TMAbilityDef)comp.MagicData.MagicPowersCustom[i].abilityDef;
+                        if (tempSkill.learnItem != null && tempSkill.learnItem == parent.def)
+                        {
+                            if (!comp.MagicData.MagicPowersCustom[i].learned)
+                            {
+                                customSkill = tempSkill;
+                                break;
+                            }
+                        }
+                    }
                     if (parent.def.defName == "SpellOf_Rain" && comp.spell_Rain == false)
                     {
                         comp.spell_Rain = true;
@@ -453,6 +466,13 @@ namespace TorannMagic
                     {
                         comp.spell_SnapFreeze = true;
                         comp.MagicData.ReturnMatchingMagicPower(TorannMagicDefOf.TM_SnapFreeze).learned = true;
+                        comp.InitializeSpell();
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }
+                    else if (customSkill != null)
+                    {
+                        comp.MagicData.ReturnMatchingMagicPower(customSkill).learned = true;
+                        comp.AddPawnAbility(customSkill);
                         comp.InitializeSpell();
                         this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                     }

@@ -2,6 +2,30 @@
 <Defs>
 
   <SoundDef>
+    <defName>TM_Roar</defName>
+    <eventNames />
+    <maxSimultaneous>3</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>SFX/Roar</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>50</min>
+          <max>60</max>
+        </volumeRange>
+        <pitchRange>
+          <min>.8</min>
+          <max>1.2</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
     <defName>TM_LightZip</defName>
     <eventNames />
     <maxSimultaneous>10</maxSimultaneous>

@@ -18,7 +18,7 @@ namespace TorannMagic
                     bool itemUsed = false;
                     for (int i = 0; i < comp.MightData.AllMightPowers.Count; i++)
                     {
-                        TMAbilityDef ad = (TMAbilityDef)comp.MightData.AllMightPowers[i].abilityDef;
+                        TMAbilityDef ad = (TMAbilityDef)comp.MightData.AllMightPowers[i].abilityDef;                        
                         if (ad.learnItem == parent.def)
                         {
                             if (!TM_Data.RestrictedAbilities.Contains(parent.def) && !comp.MightData.AllMightPowers[i].learned)
@@ -57,6 +57,19 @@ namespace TorannMagic
                 }
                 else
                 {
+                    TMAbilityDef customSkill = null;
+                    for(int i = 0; i < comp.MightData.MightPowersCustom.Count; i++)
+                    {
+                        TMAbilityDef tempSkill = (TMAbilityDef)comp.MightData.MightPowersCustom[i].abilityDef;
+                        if(tempSkill.learnItem != null && tempSkill.learnItem == parent.def)
+                        {
+                            if (!comp.MightData.MightPowersCustom[i].learned)
+                            {
+                                customSkill = tempSkill;
+                                break;
+                            }
+                        }
+                    }
                     if (parent.def.defName == "SkillOf_Sprint" && comp.skill_Sprint == false && !user.story.traits.HasTrait(TorannMagicDefOf.Gladiator))
                     {
                         comp.skill_Sprint = true;
@@ -145,6 +158,13 @@ namespace TorannMagic
                     {
                         comp.skill_TempestStrike = true;
                         comp.MightData.ReturnMatchingMightPower(TorannMagicDefOf.TM_TempestStrike).learned = true;
+                        comp.InitializeSkill();
+                        this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                    }        
+                    else if(customSkill != null)
+                    {
+                        comp.MightData.ReturnMatchingMightPower(customSkill).learned = true;
+                        comp.AddPawnAbility(customSkill);
                         comp.InitializeSkill();
                         this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                     }

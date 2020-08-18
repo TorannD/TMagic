@@ -8,6 +8,7 @@
 <TM_NotEnoughStamina>{0} does not have enough stamina to execute this ability.</TM_NotEnoughStamina>
 <TM_NotEnoughPsionicEnergy>{0} does not have enough psionic energy for {1}.</TM_NotEnoughPsionicEnergy>
 <TM_NotEnoughChi>{0} does not have enough ch'i to execute this ability.</TM_NotEnoughChi>
+<TM_NotEnoughEnergy>{0} does not have enough {1} to execute this ability.</TM_NotEnoughEnergy>
 <MentalStateByPsyker>{0} overcome by a psychic assault.</MentalStateByPsyker>
 
 <TM_InvalidTarget>{0} found no valid target for ability {1}.</TM_InvalidTarget>
@@ -1796,6 +1797,30 @@ Level 5: splash radius +1m</TM_ShadowStrike_ver_desc>
 <TM_VeilOfShadows_pwr>Clinging Shadow</TM_VeilOfShadows_pwr>
 <TM_VeilOfShadows_eff>Shadow Saint</TM_VeilOfShadows_eff>
 <TM_VeilOfShadows_ver>Overwhelming Darkness</TM_VeilOfShadows_ver>
+
+<TM_Taunt_pwr>Challenger</TM_Taunt_pwr>
+<TM_Taunt_eff>Book of Insults</TM_Taunt_eff>
+<TM_Taunt_ver>Bellowing Roar</TM_Taunt_ver>
+<TM_Taunt_pwr_desc>Increases the chance taunt is successful and max number of targets.
+Level 0: 60%, 5 targets max
+Level 1: 65%, 6 targets max
+Level 2: 70%, 7 targets max
+Level 3: 75%, 8 targets max</TM_Taunt_pwr_desc>
+<TM_Taunt_eff_desc>Reduces energy cost by 10% per skill level.</TM_Taunt_eff_desc>
+<TM_Taunt_ver_desc>Increases the radius of taunt by 2 cells; default is 15 cells.</TM_Taunt_ver_desc>
+
+<TM_MedicalSupply_ver>Capacity</TM_MedicalSupply_ver>
+<TM_MedicalSupply_ver_desc>Increases the maximum amount of Medical Supply carried by 10 per skill level.</TM_MedicalSupply_ver_desc>
+<TM_Medigel_eff>Combat Medic</TM_Medigel_eff>
+<TM_Medigel_eff_desc>Reduces the energy cost of Medigel by 5% per skill level.</TM_Medigel_eff_desc>
+<TM_CombatDrugs_pwr>Potency</TM_CombatDrugs_pwr>
+<TM_CombatDrugs_pwr_desc>Increases the number of effects applied:
+Level 0: 1 effect
+Level 1: 2 effects
+Level 2: 3 effects
+Level 3: all 4 effects</TM_CombatDrugs_pwr_desc>
+<TM_CombatDrugs_ver>Stabilization</TM_CombatDrugs_ver>
+<TM_CombatDrugs_ver_desc>Lasts 120s plus 20s per skill level.</TM_CombatDrugs_ver_desc>
 
 <!-- UI -->
 <TM_TabMagic>Magic</TM_TabMagic>

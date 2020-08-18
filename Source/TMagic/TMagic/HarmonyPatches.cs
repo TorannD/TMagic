@@ -259,6 +259,31 @@ namespace TorannMagic
 
         }
 
+        [HarmonyPatch(typeof(AttackTargetFinder), "BestAttackTarget", null)]
+        public class Taunted_TargetSelection_Patch
+        {
+            public static bool Prefix(IAttackTargetSearcher searcher, ref IAttackTarget __result)
+            {
+                if(searcher != null && searcher.Thing != null)
+                {
+                    if(searcher.Thing is Pawn)
+                    {
+                        Pawn p = searcher.Thing as Pawn;
+                        if(p.health != null && p.health.hediffSet != null && p.health.hediffSet.HasHediff(TorannMagicDefOf.TM_TauntHD))
+                        {
+                            HediffComp_Taunt hdc_t = p.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_TauntHD).TryGetComp<HediffComp_Taunt>();
+                            if(hdc_t != null && hdc_t.tauntTarget != null)
+                            {
+                                __result = (IAttackTarget)hdc_t.tauntTarget;
+                                return false; 
+                            }
+                        }
+                    }
+                }
+                return true;
+            }
+        }
+
         public static bool Projectile_Launch_Prefix(Projectile __instance, Thing launcher, Vector3 origin, ref LocalTargetInfo usedTarget, ref LocalTargetInfo intendedTarget)
         {
             if (launcher is Pawn)

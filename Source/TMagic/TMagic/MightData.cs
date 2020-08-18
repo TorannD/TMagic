@@ -3,6 +3,7 @@ using RimWorld;
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
+using TorannMagic.TMDefs;
 
 namespace TorannMagic
 {
@@ -19,8 +20,75 @@ namespace TorannMagic
         private int ticksAffiliation = 0;
         //public ThingOwner<ThingWithComps> equipmentContainer = new ThingOwner<ThingWithComps>();
 
-        public List<MightPower> mightPowerStandalone;
 
+        public bool customPowersInitialized = false;
+        public List<MightPower> mightPowerCustom;
+        public List<MightPower> MightPowersCustom  //supports customs abilities
+        {
+            get
+            {
+                bool flag = this.mightPowerCustom == null || !this.customPowersInitialized;
+                if (flag)
+                {
+                    this.customPowersInitialized = true;
+                    IEnumerable<TM_CustomPowerDef> enumerable = from def in DefDatabase<TM_CustomPowerDef>.AllDefs
+                                                                where (def.customPower != null && def.customPower.forFighter)
+                                                                select def;
+
+                    if (mightPowerCustom == null || mightPowerCustom.Count <= 0)
+                    {
+                        this.mightPowerCustom = new List<MightPower>();
+                        this.mightPowerCustom.Clear();
+                    }
+                    
+                    foreach (TM_CustomPowerDef current in enumerable)
+                    {
+                        List<AbilityUser.AbilityDef> abilityList = current.customPower.abilityDefs;
+                        MightPower mp = new MightPower(abilityList);
+                        mp.maxLevel = current.customPower.maxLevel;
+                        mp.learnCost = current.customPower.learnCost;
+                        if (!mightPowerCustom.Any(a => a.abilityDef == mp.abilityDef))
+                        {
+                            mightPowerCustom.Add(mp);
+                        }                        
+                        bool hasSkills = false;
+                        foreach (TM_CustomSkill skill in current.customPower.skills)
+                        {
+                            MightPowerSkill mps = new MightPowerSkill(skill.label, skill.description);
+                            mps.levelMax = skill.levelMax;
+                            mps.costToLevel = skill.costToLevel;
+                            if (!MightPowerSkill_Custom.Any(b => b.label == mps.label))
+                            {
+                                MightPowerSkill_Custom.Add(mps);
+                            }
+                            hasSkills = true;
+                        }
+                        if (hasSkills)
+                        {
+                            this.AllMightPowersWithSkills.Add(mp);
+                        }
+                    }
+                }
+                return this.mightPowerCustom;
+            }
+        }
+
+        public List<MightPowerSkill> mightPowerSkill_Custom;
+        public List<MightPowerSkill> MightPowerSkill_Custom
+        {
+            get
+            {
+                bool flag = this.mightPowerSkill_Custom == null;
+                if (flag)
+                {
+                    this.mightPowerSkill_Custom = new List<MightPowerSkill>();
+                    this.mightPowerSkill_Custom.Clear();
+                }
+                return this.mightPowerSkill_Custom;
+            }
+        }
+
+        public List<MightPower> mightPowerStandalone;
         public List<MightPower> MightPowersStandalone  //skills needed for mightcpower reference during autocast
         {
             get
@@ -160,7 +228,7 @@ namespace TorannMagic
                     {
                         new MightPowerSkill("TM_VeilOfShadows_pwr", "TM_VeilOfShadows_pwr_desc"), // duration of invisibility
                         new MightPowerSkill("TM_VeilOfShadows_eff", "TM_VeilOfShadows_eff_desc"), // less stamina cost
-                        new MightPowerSkill("TM_VeilOfShadows_ver", "TM_VeilOfShadows_ver_desc")  //  manipulation and movement speed buff potency
+                        new MightPowerSkill("TM_VeilOfShadows_ver", "TM_VeilOfShadows_ver_desc")  // manipulation and movement speed buff potency
                     };
                 }
                 return this.mightPowerSkill_VeilOfShadows;
@@ -1736,109 +1804,128 @@ namespace TorannMagic
             }
         }
 
+        List<MightPower> allMightPowersList = new List<MightPower>();
         public List<MightPower> AllMightPowers
         {
             get
             {
-                List<MightPower> list = new List<MightPower>();
-                list.Clear();
-                list.AddRange(AllMightPowersWithSkills);
-                list.AddRange(this.MightPowersStandalone);
-                return list;
+                if (allMightPowersList == null || allMightPowersList.Count <= 0)
+                {
+                    allMightPowersList = new List<MightPower>();
+                    allMightPowersList.Clear();
+                    allMightPowersList.AddRange(AllMightPowersWithSkills);
+                    allMightPowersList.AddRange(this.MightPowersStandalone);
+                    for (int i = 0; i < MightPowersCustom.Count; i++)
+                    {
+                        if (!allMightPowersList.Contains(MightPowersCustom[i]))
+                        {
+                            allMightPowersList.Add(MightPowersCustom[i]);
+                        }
+                    }
+                }
+                return allMightPowersList;
             }
         }
 
+        public List<MightPower> allMightPowersWithSkills = new List<MightPower>();
         public List<MightPower> AllMightPowersWithSkills
         {
             get
             {
-                List<MightPower> list = new List<MightPower>();
-                list.Clear();
-                list.AddRange(this.MightPowersW);
-                list.AddRange(this.MightPowersM);
-                list.AddRange(this.MightPowersDK);
-                list.AddRange(this.MightPowersG);
-                list.AddRange(this.MightPowersS);
-                list.AddRange(this.MightPowersB);
-                list.AddRange(this.MightPowersR);
-                list.AddRange(this.MightPowersF);
-                list.AddRange(this.MightPowersP);
-                list.AddRange(this.MightPowersC);
-                list.AddRange(this.MightPowersSS);
-                list.AddRange(this.MightPowersShadow);
-                return list;
+                if (allMightPowersWithSkills == null || allMightPowersWithSkills.Count <= 0)
+                {
+                    allMightPowersWithSkills = new List<MightPower>();
+                    allMightPowersWithSkills.Clear();
+                    allMightPowersWithSkills.AddRange(this.MightPowersW);
+                    allMightPowersWithSkills.AddRange(this.MightPowersM);
+                    allMightPowersWithSkills.AddRange(this.MightPowersDK);
+                    allMightPowersWithSkills.AddRange(this.MightPowersG);
+                    allMightPowersWithSkills.AddRange(this.MightPowersS);
+                    allMightPowersWithSkills.AddRange(this.MightPowersB);
+                    allMightPowersWithSkills.AddRange(this.MightPowersR);
+                    allMightPowersWithSkills.AddRange(this.MightPowersF);
+                    allMightPowersWithSkills.AddRange(this.MightPowersP);
+                    allMightPowersWithSkills.AddRange(this.MightPowersC);
+                    allMightPowersWithSkills.AddRange(this.MightPowersSS);
+                    allMightPowersWithSkills.AddRange(this.MightPowersShadow);
+                }
+                return allMightPowersWithSkills;
             }
         }
 
-
+        public List<MightPowerSkill> allMightPowerSkills = new List<MightPowerSkill>();
         public List<MightPowerSkill> AllMightPowerSkills
         {
             get
             {
-                List<MightPowerSkill> list = new List<MightPowerSkill>();
-                list.Clear();
-                list.AddRange(this.MightPowerSkill_60mmMortar);
-                list.AddRange(this.MightPowerSkill_AnimalFriend);
-                list.AddRange(this.MightPowerSkill_AntiArmor);
-                list.AddRange(this.MightPowerSkill_ArrowStorm);
-                list.AddRange(this.MightPowerSkill_BladeArt);
-                list.AddRange(this.MightPowerSkill_BladeFocus);
-                list.AddRange(this.MightPowerSkill_BladeSpin);
-                list.AddRange(this.MightPowerSkill_BowTraining);
-                list.AddRange(this.MightPowerSkill_Chi);
-                list.AddRange(this.MightPowerSkill_Cleave);
-                list.AddRange(this.MightPowerSkill_CommanderAura);
-                list.AddRange(this.MightPowerSkill_CQC);
-                list.AddRange(this.MightPowerSkill_DisablingShot);
-                list.AddRange(this.MightPowerSkill_Disguise);
-                list.AddRange(this.MightPowerSkill_DragonStrike);
-                list.AddRange(this.MightPowerSkill_FieldTraining);
-                list.AddRange(this.MightPowerSkill_FirstAid);
-                list.AddRange(this.MightPowerSkill_Fortitude);
-                list.AddRange(this.MightPowerSkill_global_endurance);
-                list.AddRange(this.MightPowerSkill_global_refresh);
-                list.AddRange(this.MightPowerSkill_global_seff);
-                list.AddRange(this.MightPowerSkill_global_strength);
-                list.AddRange(this.MightPowerSkill_Grapple);
-                list.AddRange(this.MightPowerSkill_GraveBlade);
-                list.AddRange(this.MightPowerSkill_Headshot);
-                list.AddRange(this.MightPowerSkill_HoldTheLine);
-                list.AddRange(this.MightPowerSkill_LifeSteal);
-                list.AddRange(this.MightPowerSkill_Meditate);
-                list.AddRange(this.MightPowerSkill_Mimic);
-                list.AddRange(this.MightPowerSkill_MindOverBody);
-                list.AddRange(this.MightPowerSkill_MoveOut);
-                list.AddRange(this.MightPowerSkill_PhaseStrike);
-                list.AddRange(this.MightPowerSkill_PistolSpec);
-                list.AddRange(this.MightPowerSkill_PoisonTrap);
-                list.AddRange(this.MightPowerSkill_Possess);
-                list.AddRange(this.MightPowerSkill_ProvisionerAura);
-                list.AddRange(this.MightPowerSkill_PsionicAugmentation);
-                list.AddRange(this.MightPowerSkill_PsionicBarrier);
-                list.AddRange(this.MightPowerSkill_PsionicBlast);
-                list.AddRange(this.MightPowerSkill_PsionicDash);
-                list.AddRange(this.MightPowerSkill_PsionicStorm);
-                list.AddRange(this.MightPowerSkill_RangerTraining);
-                list.AddRange(this.MightPowerSkill_Reversal);
-                list.AddRange(this.MightPowerSkill_RifleSpec);
-                list.AddRange(this.MightPowerSkill_SeismicSlash);
-                list.AddRange(this.MightPowerSkill_ShotgunSpec);
-                list.AddRange(this.MightPowerSkill_Shroud);
-                list.AddRange(this.MightPowerSkill_SniperFocus);
-                list.AddRange(this.MightPowerSkill_Spite);
-                list.AddRange(this.MightPowerSkill_Sprint);
-                list.AddRange(this.MightPowerSkill_StayAlert);
-                list.AddRange(this.MightPowerSkill_TaskMasterAura);
-                list.AddRange(this.MightPowerSkill_ThunderStrike);
-                list.AddRange(this.MightPowerSkill_TigerStrike);
-                list.AddRange(this.MightPowerSkill_Transpose);
-                list.AddRange(this.MightPowerSkill_WaveOfFear);
-                list.AddRange(this.MightPowerSkill_WayfarerCraft);
-                list.AddRange(this.MightPowerSkill_Whirlwind);
-                list.AddRange(this.MightPowerSkill_ShadowStrike);
-                list.AddRange(this.MightPowerSkill_Nightshade);
-                list.AddRange(this.MightPowerSkill_VeilOfShadows);
-                return list;
+                if (allMightPowerSkills == null || allMightPowerSkills.Count <= 0)
+                {
+                    allMightPowerSkills = new List<MightPowerSkill>();
+                    allMightPowerSkills.Clear();
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_60mmMortar);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_AnimalFriend);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_AntiArmor);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_ArrowStorm);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_BladeArt);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_BladeFocus);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_BladeSpin);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_BowTraining);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_Chi);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_Cleave);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_CommanderAura);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_CQC);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_DisablingShot);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_Disguise);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_DragonStrike);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_FieldTraining);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_FirstAid);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_Fortitude);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_global_endurance);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_global_refresh);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_global_seff);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_global_strength);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_Grapple);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_GraveBlade);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_Headshot);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_HoldTheLine);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_LifeSteal);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_Meditate);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_Mimic);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_MindOverBody);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_MoveOut);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_PhaseStrike);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_PistolSpec);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_PoisonTrap);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_Possess);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_ProvisionerAura);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_PsionicAugmentation);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_PsionicBarrier);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_PsionicBlast);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_PsionicDash);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_PsionicStorm);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_RangerTraining);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_Reversal);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_RifleSpec);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_SeismicSlash);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_ShotgunSpec);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_Shroud);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_SniperFocus);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_Spite);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_Sprint);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_StayAlert);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_TaskMasterAura);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_ThunderStrike);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_TigerStrike);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_Transpose);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_WaveOfFear);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_WayfarerCraft);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_Whirlwind);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_ShadowStrike);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_Nightshade);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_VeilOfShadows);
+                    allMightPowerSkills.AddRange(this.MightPowerSkill_Custom);
+                }
+                return allMightPowerSkills;
             }
         }
 
@@ -2022,7 +2109,8 @@ namespace TorannMagic
             this.mightPowerC.Clear();
             this.mightPowerSS.Clear();
             this.mightPowerShadow.Clear();
-            this.MightPowersStandalone.Clear();
+            this.mightPowerStandalone.Clear();
+            this.mightPowerCustom.Clear();
             this.mightPawn = null;
             this.initialized = false;
         }
@@ -2042,6 +2130,8 @@ namespace TorannMagic
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_global_seff, "mightPowerSkill_global_seff", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_global_strength, "mightPowerSkill_global_strength", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_global_endurance, "mightPowerSkill_global_endurance", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPower>(ref this.mightPowerCustom, "mightPowerCustom", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_Custom, "mightPowerSkill_Custom", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPower>(ref this.mightPowerW, "mightPowerW", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_WayfarerCraft, "mightPowerSkill_WayfarerCraft", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_FieldTraining, "mightPowerSkill_FieldTraining", (LookMode)2, new object[0]);

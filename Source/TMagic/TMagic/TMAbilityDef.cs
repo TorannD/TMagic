@@ -25,6 +25,14 @@ namespace TorannMagic
         public HediffDef abilityHediff = null;
         public ThingDef learnItem = null;
         public bool canCopy = false;
+
+        public NeedDef requiredNeed = null;
+        public float needCost = 0f;
+        public float needXPFactor = 100f;
+        public HediffDef requiredHediff = null;
+        public float hediffCost = 0f;
+        public float hediffXPFactor = 100f;
+
         public List<TMAbilityDef> childAbilities = new List<TMAbilityDef>();
 
         public string GetPointDesc()
