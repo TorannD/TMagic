@@ -86,195 +86,194 @@ namespace TorannMagic
                     this.Initialize();
                 }
             }
-            if (base.Pawn.Spawned)
+
+            if (Find.TickManager.TicksGame % 6000 == 0)
             {
-                if (Find.TickManager.TicksGame % 6000 == 0)
+                if (base.Pawn.RaceProps.Animal)
                 {
-                    if (base.Pawn.RaceProps.Animal)
+                    if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Tameness).Accepted)
                     {
-                        if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Tameness).Accepted)
+                        while (!base.Pawn.training.HasLearned(TrainableDefOf.Tameness))
                         {
-                            while (!base.Pawn.training.HasLearned(TrainableDefOf.Tameness))
-                            {
-                                base.Pawn.training.Train(TrainableDefOf.Tameness, null);
-                            }
+                            base.Pawn.training.Train(TrainableDefOf.Tameness, null);
                         }
+                    }
 
-                        if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Obedience).Accepted)
+                    if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Obedience).Accepted)
+                    {
+                        while (!base.Pawn.training.HasLearned(TrainableDefOf.Obedience))
                         {
-                            while (!base.Pawn.training.HasLearned(TrainableDefOf.Obedience))
-                            {
-                                base.Pawn.training.Train(TrainableDefOf.Obedience, null);
-                            }
+                            base.Pawn.training.Train(TrainableDefOf.Obedience, null);
                         }
+                    }
 
-                        if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Release).Accepted)
+                    if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Release).Accepted)
+                    {
+                        while (!base.Pawn.training.HasLearned(TrainableDefOf.Release))
                         {
-                            while (!base.Pawn.training.HasLearned(TrainableDefOf.Release))
-                            {
-                                base.Pawn.training.Train(TrainableDefOf.Release, null);
-                            }
+                            base.Pawn.training.Train(TrainableDefOf.Release, null);
                         }
+                    }
 
-                        if (base.Pawn.training.CanAssignToTrain(TorannMagicDefOf.Haul).Accepted)
+                    if (base.Pawn.training.CanAssignToTrain(TorannMagicDefOf.Haul).Accepted)
+                    {
+                        while (!base.Pawn.training.HasLearned(TorannMagicDefOf.Haul))
                         {
-                            while (!base.Pawn.training.HasLearned(TorannMagicDefOf.Haul))
-                            {
-                                base.Pawn.training.Train(TorannMagicDefOf.Haul, null);
-                            }
+                            base.Pawn.training.Train(TorannMagicDefOf.Haul, null);
                         }
+                    }
 
-                        if (base.Pawn.training.CanAssignToTrain(TorannMagicDefOf.Rescue).Accepted)
+                    if (base.Pawn.training.CanAssignToTrain(TorannMagicDefOf.Rescue).Accepted)
+                    {
+                        while (!base.Pawn.training.HasLearned(TorannMagicDefOf.Rescue))
                         {
-                            while (!base.Pawn.training.HasLearned(TorannMagicDefOf.Rescue))
-                            {
-                                base.Pawn.training.Train(TorannMagicDefOf.Rescue, null);
-                            }
+                            base.Pawn.training.Train(TorannMagicDefOf.Rescue, null);
                         }
                     }
                 }
-                bool flag4 = Find.TickManager.TicksGame % 600 == 0 && this.Pawn.def != TorannMagicDefOf.TM_SkeletonR && this.Pawn.def != TorannMagicDefOf.TM_GiantSkeletonR;
-                if (flag4)
+            }
+            bool flag4 = Find.TickManager.TicksGame % 600 == 0 && this.Pawn.def != TorannMagicDefOf.TM_SkeletonR && this.Pawn.def != TorannMagicDefOf.TM_GiantSkeletonR;
+            if (flag4)
+            {
+                UpdateHediff();
+                necroValid = false;
+                if (base.Pawn != null && !linkedPawn.DestroyedOrNull())
                 {
-                    UpdateHediff();
-                    necroValid = false;
-                    if (base.Pawn != null && !linkedPawn.DestroyedOrNull())
+                    necroValid = true;
+                    lichStrike = 0; 
+                }
+                else
+                {
+                    lichStrike++;
+                }
+
+                if (!necroValid && lichStrike > 2)
+                {
+                    if (base.Pawn.Map != null)
                     {
-                        necroValid = true;
-                        lichStrike = 0; 
+                        TM_MoteMaker.ThrowScreamMote(base.Pawn.Position.ToVector3(), base.Pawn.Map, .8f, 255, 255, 255);
+                        base.Pawn.Kill(null, null);
                     }
                     else
                     {
-                        lichStrike++;
+                        base.Pawn.Kill(null, null);
                     }
-
-                    if (!necroValid && lichStrike > 2)
+                }
+                else
+                {
+                    List<Need> needs = base.Pawn.needs.AllNeeds;
+                    for (int i = 0; i < needs.Count; i++)
                     {
-                        if (base.Pawn.Map != null)
+                        if (needs[i].def == NeedDefOf.Food || needs[i].def == NeedDefOf.Joy || needs[i].def == NeedDefOf.Rest || needs[i].def.defName == "Mood" || needs[i].def.defName == "Beauty" ||
+                            needs[i].def.defName == "Comfort" || needs[i].def.defName == "Outdoors" || needs[i].def.defName == "RoomSize")
                         {
-                            TM_MoteMaker.ThrowScreamMote(base.Pawn.Position.ToVector3(), base.Pawn.Map, .8f, 255, 255, 255);
-                            base.Pawn.Kill(null, null);
-                        }
-                        else
-                        {
-                            base.Pawn.Kill(null, null);
+                            needs[i].CurLevel = needs[i].MaxLevel;
                         }
                     }
-                    else
+                    //if (base.Pawn.needs.food != null)
+                    //{
+                    //    base.Pawn.needs.food.CurLevel = base.Pawn.needs.food.MaxLevel;
+                    //}
+                    //if (base.Pawn.needs.rest != null)
+                    //{
+                    //    base.Pawn.needs.rest.CurLevel = base.Pawn.needs.rest.MaxLevel;
+                    //}
+
+                    //if (base.Pawn.IsColonist)
+                    //{
+                    //    base.Pawn.needs.beauty.CurLevel = .5f;
+                    //    base.Pawn.needs.comfort.CurLevel = .5f;
+                    //    base.Pawn.needs.joy.CurLevel = .5f;
+                    //    base.Pawn.needs.mood.CurLevel = .5f;
+                    //    base.Pawn.needs.space.CurLevel = .5f;
+                    //}
+                    Pawn pawn = base.Pawn;
+                    int num = 1;
+                    int num2 = 1;
+
+                    using (IEnumerator<BodyPartRecord> enumerator = pawn.health.hediffSet.GetInjuredParts().GetEnumerator())
                     {
-                        List<Need> needs = base.Pawn.needs.AllNeeds;
-                        for (int i = 0; i < needs.Count; i++)
+                        while (enumerator.MoveNext())
                         {
-                            if (needs[i].def == NeedDefOf.Food || needs[i].def == NeedDefOf.Joy || needs[i].def == NeedDefOf.Rest || needs[i].def.defName == "Mood" || needs[i].def.defName == "Beauty" ||
-                                needs[i].def.defName == "Comfort" || needs[i].def.defName == "Outdoors" || needs[i].def.defName == "RoomSize")
+                            BodyPartRecord rec = enumerator.Current;
+                            bool flag2 = num > 0;
+
+                            if (flag2)
                             {
-                                needs[i].CurLevel = needs[i].MaxLevel;
-                            }
-                        }
-                        //if (base.Pawn.needs.food != null)
-                        //{
-                        //    base.Pawn.needs.food.CurLevel = base.Pawn.needs.food.MaxLevel;
-                        //}
-                        //if (base.Pawn.needs.rest != null)
-                        //{
-                        //    base.Pawn.needs.rest.CurLevel = base.Pawn.needs.rest.MaxLevel;
-                        //}
+                                IEnumerable<Hediff_Injury> arg_BB_0 = pawn.health.hediffSet.GetHediffs<Hediff_Injury>();
+                                Func<Hediff_Injury, bool> arg_BB_1;
 
-                        //if (base.Pawn.IsColonist)
-                        //{
-                        //    base.Pawn.needs.beauty.CurLevel = .5f;
-                        //    base.Pawn.needs.comfort.CurLevel = .5f;
-                        //    base.Pawn.needs.joy.CurLevel = .5f;
-                        //    base.Pawn.needs.mood.CurLevel = .5f;
-                        //    base.Pawn.needs.space.CurLevel = .5f;
-                        //}
-                        Pawn pawn = base.Pawn;
-                        int num = 1;
-                        int num2 = 1;
+                                arg_BB_1 = ((Hediff_Injury injury) => injury.Part == rec);
 
-                        using (IEnumerator<BodyPartRecord> enumerator = pawn.health.hediffSet.GetInjuredParts().GetEnumerator())
-                        {
-                            while (enumerator.MoveNext())
-                            {
-                                BodyPartRecord rec = enumerator.Current;
-                                bool flag2 = num > 0;
-
-                                if (flag2)
+                                foreach (Hediff_Injury current in arg_BB_0.Where(arg_BB_1))
                                 {
-                                    IEnumerable<Hediff_Injury> arg_BB_0 = pawn.health.hediffSet.GetHediffs<Hediff_Injury>();
-                                    Func<Hediff_Injury, bool> arg_BB_1;
-
-                                    arg_BB_1 = ((Hediff_Injury injury) => injury.Part == rec);
-
-                                    foreach (Hediff_Injury current in arg_BB_0.Where(arg_BB_1))
+                                    bool flag3 = num2 > 0;
+                                    if (flag3)
                                     {
-                                        bool flag3 = num2 > 0;
-                                        if (flag3)
+                                        bool flag5 = current.CanHealNaturally() && !current.IsPermanent();
+                                        if (flag5)
                                         {
-                                            bool flag5 = current.CanHealNaturally() && !current.IsPermanent();
-                                            if (flag5)
-                                            {
-                                                current.Heal(2.0f);
-                                                num--;
-                                                num2--;
-                                            }
-                                            else
-                                            {
-                                                current.Heal(1.0f);
-                                                num--;
-                                                num2--;
-                                            }
+                                            current.Heal(2.0f);
+                                            num--;
+                                            num2--;
+                                        }
+                                        else
+                                        {
+                                            current.Heal(1.0f);
+                                            num--;
+                                            num2--;
                                         }
                                     }
                                 }
                             }
                         }
+                    }
 
-                        using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffsTendable().GetEnumerator())
+                    using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffsTendable().GetEnumerator())
+                    {
+                        while (enumerator.MoveNext())
                         {
-                            while (enumerator.MoveNext())
+                            Hediff rec = enumerator.Current;
+                            if (rec.TendableNow()) // && !currentTendable.IsPermanent()
                             {
-                                Hediff rec = enumerator.Current;
-                                if (rec.TendableNow()) // && !currentTendable.IsPermanent()
-                                {
-                                    rec.Tended(1, 1);
-                                }
+                                rec.Tended(1, 1);
                             }
                         }
+                    }
 
-                        using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+                    using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+                    {
+                        while (enumerator.MoveNext())
                         {
-                            while (enumerator.MoveNext())
+                            Hediff rec = enumerator.Current;
+                            if (!rec.IsPermanent())
                             {
-                                Hediff rec = enumerator.Current;
-                                if (!rec.IsPermanent())
+                                if (rec.def.defName == "Cataract" || rec.def.defName == "HearingLoss" || rec.def.defName.Contains("ToxicBuildup") || rec.def.defName == "Abasia" || rec.def.defName == "BloodRot")
                                 {
-                                    if (rec.def.defName == "Cataract" || rec.def.defName == "HearingLoss" || rec.def.defName.Contains("ToxicBuildup") || rec.def.defName == "Abasia" || rec.def.defName == "BloodRot")
-                                    {
-                                        pawn.health.RemoveHediff(rec);
-                                    }
-                                    if ((rec.def.defName == "Blindness" || rec.def.defName.Contains("Asthma") || rec.def.defName == "Cirrhosis" || rec.def.defName == "ChemicalDamageModerate") || rec.def.defName =="Scaria")
-                                    {
-                                        pawn.health.RemoveHediff(rec);
-                                    }
-                                    if ((rec.def.defName == "Frail" || rec.def.defName == "BadBack" || rec.def.defName.Contains("Carcinoma") || rec.def.defName == "ChemicalDamageSevere"))
-                                    {
-                                        pawn.health.RemoveHediff(rec);
-                                    }
-                                    if ((rec.def.defName.Contains("Alzheimers") || rec.def.defName == "Dementia" || rec.def.defName.Contains("HeartArteryBlockage") || rec.def.defName == "CatatonicBreakdown"))
-                                    {
-                                        pawn.health.RemoveHediff(rec);
-                                    }
+                                    pawn.health.RemoveHediff(rec);
                                 }
-                                if (rec.def.makesSickThought)
+                                if ((rec.def.defName == "Blindness" || rec.def.defName.Contains("Asthma") || rec.def.defName == "Cirrhosis" || rec.def.defName == "ChemicalDamageModerate") || rec.def.defName =="Scaria")
+                                {
+                                    pawn.health.RemoveHediff(rec);
+                                }
+                                if ((rec.def.defName == "Frail" || rec.def.defName == "BadBack" || rec.def.defName.Contains("Carcinoma") || rec.def.defName == "ChemicalDamageSevere"))
+                                {
+                                    pawn.health.RemoveHediff(rec);
+                                }
+                                if ((rec.def.defName.Contains("Alzheimers") || rec.def.defName == "Dementia" || rec.def.defName.Contains("HeartArteryBlockage") || rec.def.defName == "CatatonicBreakdown"))
                                 {
                                     pawn.health.RemoveHediff(rec);
                                 }
                             }
-                        }                        
-                    }
+                            if (rec.def.makesSickThought)
+                            {
+                                pawn.health.RemoveHediff(rec);
+                            }
+                        }
+                    }                        
                 }
             }
+            
         }
     }
 }

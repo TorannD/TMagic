@@ -134,6 +134,7 @@
     <Compile Include="Building_PoisonTrap.cs" />
     <Compile Include="Building_TechnoTurret.cs" />
     <Compile Include="Building_ExplosiveProximityTrap.cs" />
+    <Compile Include="Enchantment\EnchantmentAction.cs" />
     <Compile Include="HediffComp_AbilityResource.cs" />
     <Compile Include="HediffComp_Medigel.cs" />
     <Compile Include="HediffComp_Taunt.cs" />
@@ -147,6 +148,7 @@
     <Compile Include="TMDefs\TM_CustomPower.cs" />
     <Compile Include="TM_CustomPowerDef.cs" />
     <Compile Include="Verb_ApplyRandomHediffFromList.cs" />
+    <Compile Include="Verb_EnchantmentAction.cs" />
     <Compile Include="Verb_SoL_CreateLight.cs" />
     <Compile Include="Verb_SoL_Equalize.cs" />
     <Compile Include="Verb_LightSkipGlobal.cs" />

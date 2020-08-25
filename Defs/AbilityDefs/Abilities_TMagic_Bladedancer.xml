@@ -252,7 +252,7 @@ Level 3: Moving +25%, Manipulation +25%, Breathing +15%, Blood pumping +10%, Blo
         <defName>TM_PhaseStrike</defName>
         <label>Phase Strike</label>
         <uiIconPath>UI/phased</uiIconPath>
-        <description>Melds the bladedancer's razor focus with the edge of a blade to slip between reality, appearing at a chosen location to execute a viscous strike on unsuspecting enemies.
+        <description>Melds the bladedancer's razor focus with the edge of a blade to slip between reality, appearing at a chosen location to execute a vicious strike on unsuspecting enemies.
 
 Warmup: .3s
 Cooldown: 25s
@@ -290,7 +290,7 @@ Range: 30</description>
         <defName>TM_PhaseStrike_I</defName>
         <label>Phase Strike (I)</label>
         <uiIconPath>UI/phased</uiIconPath>
-        <description>Melds the bladedancer's razor focus with the edge of a blade to slip between reality, appearing at a chosen location to execute a viscous strike on unsuspecting enemies.
+        <description>Melds the bladedancer's razor focus with the edge of a blade to slip between reality, appearing at a chosen location to execute a vicious strike on unsuspecting enemies.
 	
 Warmup: .2s
 Cooldown: 23s
@@ -328,7 +328,7 @@ Range: 35</description>
         <defName>TM_PhaseStrike_II</defName>
         <label>Phase Strike (II)</label>
         <uiIconPath>UI/phased</uiIconPath>
-        <description>Melds the bladedancer's razor focus with the edge of a blade to slip between reality, appearing at a chosen location to execute a viscous strike on unsuspecting enemies.
+        <description>Melds the bladedancer's razor focus with the edge of a blade to slip between reality, appearing at a chosen location to execute a vicious strike on unsuspecting enemies.
 		
 Warmup: .1s
 Cooldown: 21s
@@ -366,7 +366,7 @@ Range: 40</description>
         <defName>TM_PhaseStrike_III</defName>
         <label>Phase Strike (III)</label>
         <uiIconPath>UI/phased</uiIconPath>
-        <description>Melds the bladedancer's razor focus with the edge of a blade to slip between reality, appearing at a chosen location to execute a viscous strike on unsuspecting enemies.
+        <description>Melds the bladedancer's razor focus with the edge of a blade to slip between reality, appearing at a chosen location to execute a vicious strike on unsuspecting enemies.
 
 Warmup: 0s
 Cooldown: 20s

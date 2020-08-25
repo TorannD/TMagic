@@ -48,6 +48,8 @@ namespace TorannMagic.Enchantment
         public bool arcaneSpectre = false;
         public bool phantomShift = false;
 
+        public EnchantmentAction enchantedAction = new EnchantmentAction();
+
         //Hediffs
         public HediffDef hediff = null;
         public float hediffSeverity = 0f;

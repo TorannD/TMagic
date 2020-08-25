@@ -610,6 +610,9 @@ Arcane Recovery - decreases time to recover from arcane weakness</description>
 		<arcaneRes>0.50</arcaneRes>
 		<arcaneResTier>Crafted</arcaneResTier>
 	  </li>
+	  <li>
+        <compClass>CompQuality</compClass>
+      </li>
 	</comps>
   </ThingDef>
   
@@ -669,6 +672,9 @@ Arcane Resistance 10%</description>
 		<arcaneRes>0.10</arcaneRes>
 		<arcaneResTier>Minor</arcaneResTier>
 	  </li>
+	  <li>
+        <compClass>CompQuality</compClass>
+      </li>
 	</comps>
   </ThingDef>
   
@@ -728,6 +734,9 @@ Arcane Resistance 10%</description>
 		<arcaneRes>0.10</arcaneRes>
 		<arcaneResTier>Minor</arcaneResTier>
 	  </li>
+	  <li>
+        <compClass>CompQuality</compClass>
+      </li>
 	</comps>
   </ThingDef>
   

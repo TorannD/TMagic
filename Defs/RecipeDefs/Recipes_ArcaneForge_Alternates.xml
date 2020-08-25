@@ -147,6 +147,78 @@ Arcane Resistance: +30%</description>
     <workSkill>Intellectual</workSkill>
   </RecipeDef>
   
+   <RecipeDef>
+    <defName>ArcaneForge_ThrumboSaber</defName>
+    <label>thrumbo saber</label>
+    <description>A razor sharp blade forged from the horn of a thrumbo and infused with arcane energy. The thrumbo saber is lighter than metal blades and it's edge can cut through all but the thickest armor. Many masters of the blade favor this weapon as it is designed for speed and lethality. Further enchantments may also quicken the users, doubling their attack rate for a short period.
+		
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Ability Cooldown: -10%
+Damage Boost: +10%
+Haste on hit (25%)</description>
+    <jobString>forging Thrumbo Saber</jobString>
+<!-- 	<researchPrerequisite>TechPlasteelCrafting</researchPrerequisite> -->
+    <workSpeedStat>ResearchSpeed</workSpeedStat>
+    <effectWorking>Smelt</effectWorking>
+    <soundWorking>Recipe_Machining</soundWorking>
+    <workAmount>40000</workAmount>
+	<workSkillLearnFactor>1.1</workSkillLearnFactor>
+    <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+	<researchPrerequisite>TM_ArcaneArtifacts</researchPrerequisite>
+	<recipeUsers>
+		<li>TableArcaneForge</li>
+	</recipeUsers>
+    <ingredients>
+	<li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>100</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawMagicyte</li>
+          </thingDefs>
+        </filter>
+        <count>200</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>Jade</li>
+          </thingDefs>
+        </filter>
+        <count>50</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>Silver</li>
+          </thingDefs>
+        </filter>
+        <count>200</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>ThrumboHorn</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <products>
+      <TM_ThrumboSaber>1</TM_ThrumboSaber>
+    </products>
+    <skillRequirements>
+	  <Intellectual>10</Intellectual>
+    </skillRequirements>
+    <workSkill>Intellectual</workSkill>
+  </RecipeDef>
+  
   <RecipeDef>
     <defName>ArcaneForge_ElephantBow</defName>
     <label>elephant bow</label>

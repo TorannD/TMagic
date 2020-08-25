@@ -764,7 +764,7 @@ namespace TorannMagic
                     thing = ThingMaker.MakeThing(def, stuff);
                     if (thing != null)
                     {
-                        if (thing.def.defName != "Portfuel")
+                        if (thing.def.defName != "Portfuel" && spawnables.kindDef != null)
                         {
                             thing.SetFaction(faction, null);
                         }
@@ -1674,9 +1674,10 @@ namespace TorannMagic
                 float wornRatio = ((float)transmutateThing.HitPoints / (float)transmutateThing.MaxHitPoints);
                 Thing thing = transmutateThing;
 
-                if (compQual != null && Rand.Chance((.03f * pwrVal) * comp.arcaneDmg) && compQual.Quality != QualityCategory.Legendary)
+                if (compQual != null && caster.Inspired && caster.InspirationDef == InspirationDefOf.Inspired_Creativity && compQual.Quality != QualityCategory.Legendary)
                 {
                     thing.TryGetComp<CompQuality>().SetQuality(compQual.Quality + 1, ArtGenerationContext.Colony);
+                    caster.mindState.inspirationHandler.EndInspiration(caster.Inspiration);
                     if(compQual.Quality == QualityCategory.Legendary && thing.HitPoints == thing.MaxHitPoints)
                     {
                         thing.SetForbidden(true, false);
@@ -1777,16 +1778,17 @@ namespace TorannMagic
                 Thing thing = new Thing();
                 ThingDef newThingDef = enumerable.RandomElement();
                 thing = ThingMaker.MakeThing(transmutateThing.def, newThingDef);
-
                 if (compQual != null)
                 {
-                    if (Rand.Chance((.02f * pwrVal) * comp.arcaneDmg) && compQual.Quality != QualityCategory.Legendary)
+                    if (caster.Inspired && caster.InspirationDef == InspirationDefOf.Inspired_Creativity && compQual.Quality != QualityCategory.Legendary)
                     {
                         thing.TryGetComp<CompQuality>().SetQuality(compQual.Quality + 1, ArtGenerationContext.Colony);
+                        caster.mindState.inspirationHandler.EndInspiration(caster.Inspiration);
                         if (compQual.Quality == QualityCategory.Legendary && thing.HitPoints == thing.MaxHitPoints)
                         {
                             thing.SetForbidden(true, false);
                         }
+                        thing.SetStuffDirect(transmutateThing.Stuff);
                     }
                     else
                     {

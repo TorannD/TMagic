@@ -27,8 +27,8 @@
       <li>
         <label>I</label>
         <minSeverity>0.001</minSeverity>
-		<restFallFactor>0</restFallFactor>
-		<hungerRateFactor>0</hungerRateFactor>
+		<restFallFactor>.1</restFallFactor>
+		<hungerRateFactor>.1</hungerRateFactor>
 		<capMods>
 		  <li>
             <capacity>Talking</capacity>
@@ -150,8 +150,8 @@
       <li>
         <label>Undead</label>
         <minSeverity>0.001</minSeverity>
-		<restFallFactor>0</restFallFactor>
-		<hungerRateFactor>0</hungerRateFactor>
+		<restFallFactor>.1</restFallFactor>
+		<hungerRateFactor>.1</hungerRateFactor>
       </li>      
 	</stages>
   </HediffDef>
@@ -182,8 +182,8 @@
       <li>
         <label>I</label>
         <minSeverity>0.001</minSeverity>
-		<restFallFactor>0</restFallFactor>
-		<hungerRateFactor>0</hungerRateFactor>
+		<restFallFactor>.1</restFallFactor>
+		<hungerRateFactor>.1</hungerRateFactor>
 		<capMods>
           <li>
             <capacity>Moving</capacity>

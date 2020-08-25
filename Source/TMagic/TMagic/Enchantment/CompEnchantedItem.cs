@@ -88,6 +88,7 @@ namespace TorannMagic.Enchantment
 
                 this.healthRegenRate = this.Props.healthRegenRate;
 
+                this.enchantmentAction = this.Props.enchantedAction;
                 this.arcaneSpectre = this.Props.arcaneSpectre;
                 this.phantomShift = this.Props.phantomShift;
                 this.arcalleumCooldown = this.Props.arcalleumCooldown;
@@ -192,6 +193,7 @@ namespace TorannMagic.Enchantment
             Scribe_Values.Look<float>(ref this.necroticEnergy, "necroticEnergy", 0f, false);
             Scribe_Values.Look<bool>(ref this.arcaneSpectre, "arcaneSpectre", false, false);
             Scribe_Values.Look<bool>(ref this.phantomShift, "phantomShift", false, false);
+            //Scribe_Deep.Look<EnchantmentAction>(ref this.enchantmentAction, "enchantmentAction", new object[0]);
             Scribe_Defs.Look<ThoughtDef>(ref this.enchantmentThought, "enchantmentThought");
             Scribe_Values.Look<float>(ref this.arcalleumCooldown, "arcalleumCooldown", 0f, false);
             Scribe_Values.Look<EnchantmentTier>(ref this.maxMPTier, "maxMPTier", (EnchantmentTier)0, false);
@@ -278,6 +280,7 @@ namespace TorannMagic.Enchantment
         private float necroticEnergy = 0f;
 
         //Special Abilities
+        public EnchantmentAction enchantmentAction = null;
         public EnchantmentTier skillTier = EnchantmentTier.Skill;
         public bool arcaneSpectre = false;
         public bool phantomShift = false;
@@ -416,6 +419,30 @@ namespace TorannMagic.Enchantment
             {
                 return "TM_ArcalleumCooldown".Translate(
                     this.arcalleumCooldown);
+            }
+        }
+
+        public string EnchantmentActionLabel
+        {
+            get
+            {
+                if (enchantmentAction.type == EnchantmentActionType.ApplyHediff)
+                {
+                    return "TM_EA_Hediff".Translate(
+                        this.enchantmentAction.actionLabel,
+                        this.enchantmentAction.hediffDef.label,
+                        this.enchantmentAction.hediffChance * 100f);
+                }
+                if(enchantmentAction.type == EnchantmentActionType.ApplyDamage)
+                {
+                    return "TM_EA_Damage".Translate(
+                        this.enchantmentAction.actionLabel,
+                        this.enchantmentAction.damageAmount - this.enchantmentAction.damageVariation,
+                        this.enchantmentAction.damageAmount + this.enchantmentAction.damageVariation,
+                        this.enchantmentAction.damageDef.label,
+                        this.enchantmentAction.damageChance * 100f);
+                }
+                return "";
             }
         }
 

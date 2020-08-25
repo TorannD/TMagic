@@ -173,371 +173,6 @@ Fail backlash: 0</description>
   </TorannMagic.MagicRecipeDef>
   
   <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
-    <defName>TM_PsychicSootheMR</defName>
-    <label>Alteration: psychic soothe</label>
-    <description>Create soothing psychic emanations
-Casters: 3
-Mana: 50 ea.
-Fail chance: 25%
-Fail backlash: 10</description>
-    <jobString>creating psychic soothe</jobString>
-	<mageCount>3</mageCount>
-	<manaCost>1.5</manaCost>
-    <workAmount>50000</workAmount>
-	<failChance>.25</failChance>
-	<failManaConsumed>.5</failManaConsumed>
-	<failDamageApplied>10</failDamageApplied>
-    <ingredients>
-      <li>
-        <filter>
-          <thingDefs>
-            <li>RawMagicyte</li>
-          </thingDefs>
-        </filter>
-        <count>125</count>
-      </li>
-	  <li>
-        <filter>
-          <thingDefs>
-            <li>Silver</li>
-          </thingDefs>
-        </filter>
-        <count>50</count>
-      </li>
-    </ingredients>
-    <products>
-	<!-- Enter produced products here; can also use spawn things -->
-    </products>
-	<resultIncidents>
-	  <li>
-		<resultIncident>PsychicSoothe</resultIncident>
-		<incidentPoints>0</incidentPoints>
-		<incidentHostile>false</incidentHostile> <!-- attempts to create the incident with hostile parameters if true -->
-		<countRange>
-		  <min>1</min>
-		  <max>1</max>
-		</countRange>
-	  </li>
-	</resultIncidents>	
-  </TorannMagic.MagicRecipeDef>
-  
-  <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
-    <defName>TM_MeteorFallMR</defName>
-    <label>Conjuration: attract meteors</label>
-    <description>Causes multiple meteors to impact nearby
-Casters: 3
-Mana: 60 ea.
-Fail chance: 15%
-Fail backlash: 0</description>
-    <jobString>summoning meteors</jobString>
-	<mageCount>3</mageCount>
-	<manaCost>1.8</manaCost>
-    <workAmount>50000</workAmount>
-	<failChance>.12</failChance>
-	<failManaConsumed>.6</failManaConsumed>
-    <ingredients>
-      <li>
-        <filter>
-          <thingDefs>
-            <li>RawMagicyte</li>
-          </thingDefs>
-        </filter>
-        <count>150</count>
-      </li>
-	  <li>
-        <filter>
-          <thingDefs>
-            <li>Steel</li>
-          </thingDefs>
-        </filter>
-        <count>150</count>
-      </li>
-	  <li>
-        <filter>
-          <thingDefs>
-            <li>Silver</li>
-          </thingDefs>
-        </filter>
-        <count>40</count>
-      </li>
-    </ingredients>
-    <products>
-    </products>
-	<resultIncidents>
-	  <li>
-		<incidentPoints>0</incidentPoints>
-		<resultIncident>MeteoriteImpact</resultIncident>
-		<countRange>
-			<min>5</min>
-			<max>8</max>
-		</countRange>
-	  </li>
-	</resultIncidents>	
-  </TorannMagic.MagicRecipeDef>
-  
-  <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
-    <defName>TM_CreateGiantSkeletonMR</defName>
-    <label>Conjuration: giant skeleton</label>
-    <description>Creates a giant, animated skeleton from a pile of corpses; the skeleton will defend the colony for 5 days or until destroyed.
-Casters: 4
-Mana: 50 ea.
-Fail chance: 25%
-Fail backlash: 12</description>
-    <jobString>animating skeleton</jobString>
-	<mageCount>4</mageCount>
-	<manaCost>2</manaCost>
-    <workAmount>80000</workAmount>
-	<failChance>.25</failChance>
-	<failManaConsumed>.6</failManaConsumed>
-	<failDamageApplied>12</failDamageApplied>
-	<allowMixingIngredients>true</allowMixingIngredients>
-    <ingredients>
-      <li>
-        <filter>
-          <categories>
-            <li>CorpsesHumanlike</li>
-          </categories>
-        </filter>
-        <count>4</count>
-      </li>
-    </ingredients>
-    <fixedIngredientFilter>
-      <categories>
-        <li>CorpsesHumanlike</li>
-      </categories>
-      <disallowedCategories>
-        <li>CorpsesMechanoid</li>
-      </disallowedCategories>
-    </fixedIngredientFilter>
-    <defaultIngredientFilter>
-	  <categories>
-        <li>CorpsesHumanlike</li>
-      </categories>
-      <specialFiltersToAllow>
-        <li>AllowCorpsesColonist</li>
-        <li>AllowCorpsesStranger</li>
-		<li>AllowRotten</li>
-      </specialFiltersToAllow>
-    </defaultIngredientFilter>
-    <products>
-    </products>
-	<resultSpawnThings>
-	  <li>
-		<resultSpawnThing>TM_GiantSkeletonR</resultSpawnThing>
-		<resultPawnKindDef>TM_GiantSkeleton</resultPawnKindDef> <!-- must have a kinddef for pawn types -->
-		<spawnThingCount>1</spawnThingCount>
-		<spawnThingStackCount>1</spawnThingStackCount>
-		<summonDuration>300000</summonDuration>
-		<summonTemporary>true</summonTemporary>
-		<spawnHostile>false</spawnHostile>  <!-- attempts to spawn thing with a hostile faction -->
-		<countRange>
-			<min>1</min>
-			<max>1</max>
-		</countRange>
-	  </li>
-	</resultSpawnThings>
-  </TorannMagic.MagicRecipeDef>
-
-  <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
-    <defName>TM_ArcaneAugmentationMR</defName>
-    <label>Enchantment: arcane augmentation</label>
-    <description>Applies numerous arcane buffs to colonists.
-Casters: 3
-Target max: 10
-Mana: 40 ea.
-Fail chance: 15%
-Fail backlash: 6</description>
-    <jobString>applying arcane augmentations</jobString>
-	<mageCount>3</mageCount>
-	<manaCost>1.2</manaCost>
-    <workAmount>80000</workAmount>
-	<failChance>.15</failChance>
-	<failManaConsumed>.25</failManaConsumed>
-	<failDamageApplied>6</failDamageApplied>
-    <ingredients>
-      <li>
-        <filter>
-          <thingDefs>
-            <li>RawMagicyte</li>
-          </thingDefs>
-        </filter>
-        <count>150</count>
-      </li>
-    </ingredients>
-    <products>
-    </products>
-	<resultHediffs>
-	  <li>
-		<resultHediff>TM_Movement</resultHediff>
-		<maxHediffCount>10</maxHediffCount>
-		<hediffSeverity>10</hediffSeverity>
-		<applyFriendly>true</applyFriendly>
-		<applyEnemy>false</applyEnemy>
-		<applyNeutral>false</applyNeutral>
-		<applyNullFaction>false</applyNullFaction>
-		<moteDef>Mote_Arcane</moteDef>
-		<countRange>
-		  <min>1</min>
-		  <max>1</max>
-		</countRange>
-	  </li>
-	  <li>
-		<resultHediff>TM_Manipulation</resultHediff>
-		<maxHediffCount>10</maxHediffCount>
-		<hediffSeverity>10</hediffSeverity>
-		<applyFriendly>true</applyFriendly>
-		<applyEnemy>false</applyEnemy>
-		<applyNeutral>false</applyNeutral>
-		<applyNullFaction>false</applyNullFaction>
-		<moteDef>Mote_Arcane</moteDef>
-		<countRange>
-		  <min>1</min>
-		  <max>1</max>
-		</countRange>
-	  </li>
-	  <li>
-		<resultHediff>TM_Breathing</resultHediff>
-		<maxHediffCount>10</maxHediffCount>
-		<hediffSeverity>10</hediffSeverity>
-		<applyFriendly>true</applyFriendly>
-		<applyEnemy>false</applyEnemy>
-		<applyNeutral>false</applyNeutral>
-		<applyNullFaction>false</applyNullFaction>
-		<moteDef>Mote_Arcane</moteDef>
-		<countRange>
-		  <min>1</min>
-		  <max>1</max>
-		</countRange>
-	  </li>
-	  <li>
-		<resultHediff>TM_Sight</resultHediff>
-		<maxHediffCount>10</maxHediffCount>
-		<hediffSeverity>10</hediffSeverity>
-		<applyFriendly>true</applyFriendly>
-		<applyEnemy>false</applyEnemy>
-		<applyNeutral>false</applyNeutral>
-		<applyNullFaction>false</applyNullFaction>
-		<moteDef>Mote_Arcane</moteDef>
-		<countRange>
-		  <min>1</min>
-		  <max>1</max>
-		</countRange>
-	  </li>
-	</resultHediffs>
-  </TorannMagic.MagicRecipeDef>
-  
-  <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
-    <defName>TM_BlightWildlifeMR</defName>
-    <label>Enchantment: blight wildlife</label>
-    <description>Blights all wildlife with the plague.
-Casters: 3
-Mana: 40 ea.
-Fail chance: 15%
-Fail backlash: 6</description>
-    <jobString>hexing wildlife</jobString>
-	<mageCount>3</mageCount>
-	<manaCost>1.2</manaCost>
-    <workAmount>80000</workAmount>
-	<failChance>.15</failChance>
-	<failManaConsumed>.25</failManaConsumed>
-	<failDamageApplied>6</failDamageApplied>
-    <ingredients>
-      <li>
-        <filter>
-          <thingDefs>
-            <li>RawMagicyte</li>
-          </thingDefs>
-        </filter>
-        <count>150</count>
-      </li>
-    </ingredients>
-    <products>
-    </products>
-	<resultHediffs>
-	  <li>
-		<resultHediff>Animal_Plague</resultHediff>
-		<maxHediffCount>0</maxHediffCount>
-		<hediffSeverity>.1</hediffSeverity>
-		<applyFriendly>false</applyFriendly>
-		<applyEnemy>false</applyEnemy>
-		<applyNeutral>false</applyNeutral>
-		<applyNullFaction>true</applyNullFaction>
-		<moteDef>Mote_Arcane</moteDef>
-		<countRange>
-		  <min>1</min>
-		  <max>1</max>
-		</countRange>
-	  </li>	  
-	</resultHediffs>
-  </TorannMagic.MagicRecipeDef>
-  
-  <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
-    <defName>TM_CreateSkeletonMR</defName>
-    <label>Conjuration: skeleton</label>
-    <description>Creates an animated skeleton from a single corpses; the skeleton will defend the colony for 5 days or until destroyed.
-Casters: 1
-Mana: 50 ea.
-Fail chance: 10%
-Fail backlash: 8</description>
-    <jobString>animating skeleton</jobString>
-	<mageCount>1</mageCount>
-	<manaCost>.5</manaCost>
-    <workAmount>40000</workAmount>
-	<failChance>.10</failChance>
-	<failManaConsumed>.5</failManaConsumed>
-	<failDamageApplied>8</failDamageApplied>
-	<allowMixingIngredients>true</allowMixingIngredients>
-    <ingredients>
-      <li>
-        <filter>
-          <categories>
-            <li>CorpsesHumanlike</li>
-          </categories>
-        </filter>
-        <count>1</count>
-      </li>
-    </ingredients>
-    <fixedIngredientFilter>
-      <categories>
-        <li>CorpsesHumanlike</li>
-      </categories>
-      <disallowedCategories>
-        <li>CorpsesMechanoid</li>
-      </disallowedCategories>
-    </fixedIngredientFilter>
-    <defaultIngredientFilter>
-	  <categories>
-        <li>CorpsesHumanlike</li>
-      </categories>
-      <specialFiltersToAllow>
-        <li>AllowCorpsesColonist</li>
-        <li>AllowCorpsesStranger</li>
-		<li>AllowRotten</li>
-      </specialFiltersToAllow>
-    </defaultIngredientFilter>
-    <products>
-    </products>
-	<resultSpawnThings>
-	  <li>
-		<resultSpawnThing>TM_SkeletonR</resultSpawnThing>
-		<resultPawnKindDef>TM_Skeleton</resultPawnKindDef> <!-- must have a kinddef for pawn types -->
-		<spawnThingCount>1</spawnThingCount>
-		<spawnThingStackCount>1</spawnThingStackCount>
-		<summonDuration>300000</summonDuration>
-		<summonTemporary>true</summonTemporary>
-		<spawnHostile>false</spawnHostile>  <!-- attempts to spawn thing with a hostile faction -->
-		<countRange>
-			<min>1</min>
-			<max>1</max>
-		</countRange>
-	  </li>
-	</resultSpawnThings>
-	<recipeUsers>
-		<li>TableSmallMagicCircle</li>
-	</recipeUsers>	
-  </TorannMagic.MagicRecipeDef>
-  
-  <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
     <defName>TM_NameWindMR</defName>
     <label>Alteration: name of the wind</label>
     <description>causes high wind speeds across the map for several days
@@ -584,6 +219,55 @@ Fail backlash: 6</description>
 	<recipeUsers>
 		<li>TableSmallMagicCircle</li>
 	</recipeUsers>	
+  </TorannMagic.MagicRecipeDef>
+  
+  <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
+    <defName>TM_PsychicSootheMR</defName>
+    <label>Alteration: psychic soothe</label>
+    <description>Create soothing psychic emanations
+Casters: 3
+Mana: 50 ea.
+Fail chance: 25%
+Fail backlash: 10</description>
+    <jobString>creating psychic soothe</jobString>
+	<mageCount>3</mageCount>
+	<manaCost>1.5</manaCost>
+    <workAmount>50000</workAmount>
+	<failChance>.25</failChance>
+	<failManaConsumed>.5</failManaConsumed>
+	<failDamageApplied>10</failDamageApplied>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawMagicyte</li>
+          </thingDefs>
+        </filter>
+        <count>125</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>Silver</li>
+          </thingDefs>
+        </filter>
+        <count>50</count>
+      </li>
+    </ingredients>
+    <products>
+	<!-- Enter produced products here; can also use spawn things -->
+    </products>
+	<resultIncidents>
+	  <li>
+		<resultIncident>PsychicSoothe</resultIncident>
+		<incidentPoints>0</incidentPoints>
+		<incidentHostile>false</incidentHostile> <!-- attempts to create the incident with hostile parameters if true -->
+		<countRange>
+		  <min>1</min>
+		  <max>1</max>
+		</countRange>
+	  </li>
+	</resultIncidents>	
   </TorannMagic.MagicRecipeDef>
   
   <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
@@ -1063,6 +747,378 @@ Fail backlash: 12</description>
 	</recipeUsers>
   </TorannMagic.MagicRecipeDef>
   
+  <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
+    <defName>TM_MeteorFallMR</defName>
+    <label>Conjuration: attract meteors</label>
+    <description>Causes multiple meteors to impact nearby
+Casters: 3
+Mana: 60 ea.
+Fail chance: 15%
+Fail backlash: 0</description>
+    <jobString>summoning meteors</jobString>
+	<mageCount>3</mageCount>
+	<manaCost>1.8</manaCost>
+    <workAmount>50000</workAmount>
+	<failChance>.12</failChance>
+	<failManaConsumed>.6</failManaConsumed>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawMagicyte</li>
+          </thingDefs>
+        </filter>
+        <count>150</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>150</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>Silver</li>
+          </thingDefs>
+        </filter>
+        <count>40</count>
+      </li>
+    </ingredients>
+    <products>
+    </products>
+	<resultIncidents>
+	  <li>
+		<incidentPoints>0</incidentPoints>
+		<resultIncident>MeteoriteImpact</resultIncident>
+		<countRange>
+			<min>5</min>
+			<max>8</max>
+		</countRange>
+	  </li>
+	</resultIncidents>	
+  </TorannMagic.MagicRecipeDef>
+  
+  <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
+    <defName>TM_CreateSkeletonMR</defName>
+    <label>Conjuration: skeleton</label>
+    <description>Creates an animated skeleton from a single corpses; the skeleton will defend the colony for 5 days or until destroyed.
+Casters: 1
+Mana: 50 ea.
+Fail chance: 10%
+Fail backlash: 8</description>
+    <jobString>animating skeleton</jobString>
+	<mageCount>1</mageCount>
+	<manaCost>.5</manaCost>
+    <workAmount>40000</workAmount>
+	<failChance>.10</failChance>
+	<failManaConsumed>.5</failManaConsumed>
+	<failDamageApplied>8</failDamageApplied>
+	<allowMixingIngredients>true</allowMixingIngredients>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>CorpsesHumanlike</li>
+          </categories>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <categories>
+        <li>CorpsesHumanlike</li>
+      </categories>
+      <disallowedCategories>
+        <li>CorpsesMechanoid</li>
+      </disallowedCategories>
+    </fixedIngredientFilter>
+    <defaultIngredientFilter>
+	  <categories>
+        <li>CorpsesHumanlike</li>
+      </categories>
+      <specialFiltersToAllow>
+        <li>AllowCorpsesColonist</li>
+        <li>AllowCorpsesStranger</li>
+		<li>AllowRotten</li>
+      </specialFiltersToAllow>
+    </defaultIngredientFilter>
+    <products>
+    </products>
+	<resultSpawnThings>
+	  <li>
+		<resultSpawnThing>TM_SkeletonR</resultSpawnThing>
+		<resultPawnKindDef>TM_Skeleton</resultPawnKindDef> <!-- must have a kinddef for pawn types -->
+		<spawnThingCount>1</spawnThingCount>
+		<spawnThingStackCount>1</spawnThingStackCount>
+		<summonDuration>300000</summonDuration>
+		<summonTemporary>true</summonTemporary>
+		<spawnHostile>false</spawnHostile>  <!-- attempts to spawn thing with a hostile faction -->
+		<countRange>
+			<min>1</min>
+			<max>1</max>
+		</countRange>
+	  </li>
+	</resultSpawnThings>
+	<recipeUsers>
+		<li>TableSmallMagicCircle</li>
+	</recipeUsers>	
+  </TorannMagic.MagicRecipeDef>
+  
+  <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
+    <defName>TM_CreateGiantSkeletonMR</defName>
+    <label>Conjuration: giant skeleton</label>
+    <description>Creates a giant, animated skeleton from a pile of corpses; the skeleton will defend the colony for 5 days or until destroyed.
+Casters: 4
+Mana: 50 ea.
+Fail chance: 25%
+Fail backlash: 12</description>
+    <jobString>animating skeleton</jobString>
+	<mageCount>4</mageCount>
+	<manaCost>2</manaCost>
+    <workAmount>80000</workAmount>
+	<failChance>.25</failChance>
+	<failManaConsumed>.6</failManaConsumed>
+	<failDamageApplied>12</failDamageApplied>
+	<allowMixingIngredients>true</allowMixingIngredients>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>CorpsesHumanlike</li>
+          </categories>
+        </filter>
+        <count>4</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <categories>
+        <li>CorpsesHumanlike</li>
+      </categories>
+      <disallowedCategories>
+        <li>CorpsesMechanoid</li>
+      </disallowedCategories>
+    </fixedIngredientFilter>
+    <defaultIngredientFilter>
+	  <categories>
+        <li>CorpsesHumanlike</li>
+      </categories>
+      <specialFiltersToAllow>
+        <li>AllowCorpsesColonist</li>
+        <li>AllowCorpsesStranger</li>
+		<li>AllowRotten</li>
+      </specialFiltersToAllow>
+    </defaultIngredientFilter>
+    <products>
+    </products>
+	<resultSpawnThings>
+	  <li>
+		<resultSpawnThing>TM_GiantSkeletonR</resultSpawnThing>
+		<resultPawnKindDef>TM_GiantSkeleton</resultPawnKindDef> <!-- must have a kinddef for pawn types -->
+		<spawnThingCount>1</spawnThingCount>
+		<spawnThingStackCount>1</spawnThingStackCount>
+		<summonDuration>300000</summonDuration>
+		<summonTemporary>true</summonTemporary>
+		<spawnHostile>false</spawnHostile>  <!-- attempts to spawn thing with a hostile faction -->
+		<countRange>
+			<min>1</min>
+			<max>1</max>
+		</countRange>
+	  </li>
+	</resultSpawnThings>
+  </TorannMagic.MagicRecipeDef>
+  
+  <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
+    <defName>TM_RuunbledMR</defName>
+    <label>Conjuration: mystic weapon</label>
+    <description>Summons a mystic weapon
+Casters: 3
+Mana: 60 ea.
+Fail chance: 50%
+Fail backlash: 10</description>
+    <jobString>summoning a mystic weapon</jobString>
+	<mageCount>3</mageCount>
+	<manaCost>1.8</manaCost>
+    <workAmount>80000</workAmount>
+	<failChance>.5</failChance>
+	<failManaConsumed>.8</failManaConsumed>
+	<failDamageApplied>10</failDamageApplied>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawMagicyte</li>
+          </thingDefs>
+        </filter>
+        <count>500</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>TM_ThrumboAxe</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>TM_ThrumboSaber</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>    
+	<!-- resultSpawnThings creates things at the center of the circle
+	can be used to create a temporary summoned creature -->
+	<resultSpawnThings>
+	  <li>
+		<resultSpawnThing>TM_Ruunbled</resultSpawnThing>
+		<resultPawnKindDef></resultPawnKindDef> <!-- must have a kinddef for pawn types -->
+		<spawnThingCount>1</spawnThingCount>
+		<spawnThingStackCount>1</spawnThingStackCount>
+		<summonDuration>0</summonDuration>		<!-- only applies to summoned things -->
+		<summonTemporary>false</summonTemporary> <!-- only applies to summoned things -->
+		<spawnHostile>false</spawnHostile>  <!-- attempts to spawn thing with a hostile faction -->
+	  </li>
+	</resultSpawnThings>	
+  </TorannMagic.MagicRecipeDef>
+
+  <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
+    <defName>TM_ArcaneAugmentationMR</defName>
+    <label>Enchantment: arcane augmentation</label>
+    <description>Applies numerous arcane buffs to colonists.
+Casters: 3
+Target max: 10
+Mana: 40 ea.
+Fail chance: 15%
+Fail backlash: 6</description>
+    <jobString>applying arcane augmentations</jobString>
+	<mageCount>3</mageCount>
+	<manaCost>1.2</manaCost>
+    <workAmount>80000</workAmount>
+	<failChance>.15</failChance>
+	<failManaConsumed>.25</failManaConsumed>
+	<failDamageApplied>6</failDamageApplied>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawMagicyte</li>
+          </thingDefs>
+        </filter>
+        <count>150</count>
+      </li>
+    </ingredients>
+    <products>
+    </products>
+	<resultHediffs>
+	  <li>
+		<resultHediff>TM_Movement</resultHediff>
+		<maxHediffCount>10</maxHediffCount>
+		<hediffSeverity>10</hediffSeverity>
+		<applyFriendly>true</applyFriendly>
+		<applyEnemy>false</applyEnemy>
+		<applyNeutral>false</applyNeutral>
+		<applyNullFaction>false</applyNullFaction>
+		<moteDef>Mote_Arcane</moteDef>
+		<countRange>
+		  <min>1</min>
+		  <max>1</max>
+		</countRange>
+	  </li>
+	  <li>
+		<resultHediff>TM_Manipulation</resultHediff>
+		<maxHediffCount>10</maxHediffCount>
+		<hediffSeverity>10</hediffSeverity>
+		<applyFriendly>true</applyFriendly>
+		<applyEnemy>false</applyEnemy>
+		<applyNeutral>false</applyNeutral>
+		<applyNullFaction>false</applyNullFaction>
+		<moteDef>Mote_Arcane</moteDef>
+		<countRange>
+		  <min>1</min>
+		  <max>1</max>
+		</countRange>
+	  </li>
+	  <li>
+		<resultHediff>TM_Breathing</resultHediff>
+		<maxHediffCount>10</maxHediffCount>
+		<hediffSeverity>10</hediffSeverity>
+		<applyFriendly>true</applyFriendly>
+		<applyEnemy>false</applyEnemy>
+		<applyNeutral>false</applyNeutral>
+		<applyNullFaction>false</applyNullFaction>
+		<moteDef>Mote_Arcane</moteDef>
+		<countRange>
+		  <min>1</min>
+		  <max>1</max>
+		</countRange>
+	  </li>
+	  <li>
+		<resultHediff>TM_Sight</resultHediff>
+		<maxHediffCount>10</maxHediffCount>
+		<hediffSeverity>10</hediffSeverity>
+		<applyFriendly>true</applyFriendly>
+		<applyEnemy>false</applyEnemy>
+		<applyNeutral>false</applyNeutral>
+		<applyNullFaction>false</applyNullFaction>
+		<moteDef>Mote_Arcane</moteDef>
+		<countRange>
+		  <min>1</min>
+		  <max>1</max>
+		</countRange>
+	  </li>
+	</resultHediffs>
+  </TorannMagic.MagicRecipeDef>
+  
+  <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
+    <defName>TM_BlightWildlifeMR</defName>
+    <label>Enchantment: blight wildlife</label>
+    <description>Blights all wildlife with the plague.
+Casters: 3
+Mana: 40 ea.
+Fail chance: 15%
+Fail backlash: 6</description>
+    <jobString>hexing wildlife</jobString>
+	<mageCount>3</mageCount>
+	<manaCost>1.2</manaCost>
+    <workAmount>80000</workAmount>
+	<failChance>.15</failChance>
+	<failManaConsumed>.25</failManaConsumed>
+	<failDamageApplied>6</failDamageApplied>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>RawMagicyte</li>
+          </thingDefs>
+        </filter>
+        <count>150</count>
+      </li>
+    </ingredients>
+    <products>
+    </products>
+	<resultHediffs>
+	  <li>
+		<resultHediff>Animal_Plague</resultHediff>
+		<maxHediffCount>0</maxHediffCount>
+		<hediffSeverity>.1</hediffSeverity>
+		<applyFriendly>false</applyFriendly>
+		<applyEnemy>false</applyEnemy>
+		<applyNeutral>false</applyNeutral>
+		<applyNullFaction>true</applyNullFaction>
+		<moteDef>Mote_Arcane</moteDef>
+		<countRange>
+		  <min>1</min>
+		  <max>1</max>
+		</countRange>
+	  </li>	  
+	</resultHediffs>
+  </TorannMagic.MagicRecipeDef> 
+
   <TorannMagic.MagicRecipeDef ParentName="TM_MagicRecipeBase">
     <defName>TM_BeastialRageMR</defName>
     <label>Enchantment: predator's rage</label>

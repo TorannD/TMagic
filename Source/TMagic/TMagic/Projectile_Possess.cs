@@ -70,7 +70,7 @@ namespace TorannMagic
                 {
                     possessedFlag = (hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD) || hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD_I) || hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD_II) || hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_CoOpPossessionHD_III) ||
                         hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD) || hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_I) || hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_II) || hitPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_PossessionHD_III));
-                    if (!hitPawn.Downed && !hitPawn.Dead && !possessedFlag)
+                    if (!hitPawn.Downed && !hitPawn.Dead && !possessedFlag && !hitPawn.IsPrisoner)
                     {
                         this.pFaction = hitPawn.Faction;
                         this.prisoner = hitPawn.IsPrisoner;

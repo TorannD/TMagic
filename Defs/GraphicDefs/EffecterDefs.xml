@@ -1,6 +1,66 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+<!-- Explosion -->
+
+  <EffecterDef>
+    <defName>TM_ExplosionED</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_ExplosionWaveInner</moteDef>
+        <scale>
+          <min>1</min>
+          <max>1</max>
+        </scale>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <moteDef>TM_Mote_ExplosionWaveOuter</moteDef>
+        <scale>
+          <min>3</min>
+          <max>3</max>
+        </scale>
+      </li>
+    </children>
+  </EffecterDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>TM_Mote_ExplosionWaveInner</defName>
+    <graphicData>
+      <texPath>Motes/PowerBeam</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <drawSize>(.15, .15)</drawSize>
+	  <color>(.4,0.0,0.0,1)</color>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.02</fadeInTime>
+      <solidTime>.35</solidTime>
+      <fadeOutTime>0.65</fadeOutTime>
+      <growthRate>650</growthRate>
+    </mote>
+  </ThingDef>
+
+  <ThingDef ParentName="MoteBase">
+    <defName>TM_Mote_ExplosionWaveOuter</defName>
+    <graphicData>
+      <texPath>Motes/PowerBeam</texPath>
+      <shaderType>MoteGlow</shaderType>
+	  <color>(.8,.2,0,1)</color>
+	  <drawSize>(.4, .4)</drawSize>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <fadeInTime>0.2</fadeInTime>
+      <solidTime>.18</solidTime>
+      <fadeOutTime>0.55</fadeOutTime>
+      <growthRate>350</growthRate>
+    </mote>
+  </ThingDef>
+
 
 <!-- Taunt/Rage -->
 

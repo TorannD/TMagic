@@ -445,14 +445,17 @@ namespace TorannMagic
                             result = false;
                             return result;
                         }
-                        bool flag6 = mightDef.chiCost > 0f && this.MightUser.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ChiHD, false) && (this.ActualChiCost * 100) > this.MightUser.Pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ChiHD, false).Severity;
-                        if (flag6)
+                        if (mightDef.chiCost > 0f)
                         {
-                            reason = "TM_NotEnoughChi".Translate(
-                                base.Pawn.LabelShort
-                            );
-                            result = false;
-                            return result;
+                            bool flag6 = this.MightUser.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_ChiHD, false) ? (this.ActualChiCost * 100) > this.MightUser.Pawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_ChiHD, false).Severity : true;
+                            if (flag6)
+                            {
+                                reason = "TM_NotEnoughChi".Translate(
+                                    base.Pawn.LabelShort
+                                );
+                                result = false;
+                                return result;
+                            }
                         }
                         bool flagNeed = mightDef.requiredNeed != null && this.MightUser.Pawn.needs.TryGetNeed(mightDef.requiredNeed) != null && this.MightUser.Pawn.needs.TryGetNeed(mightDef.requiredNeed).CurLevel > this.ActualNeedCost;
                         if (flagNeed)

@@ -139,17 +139,21 @@ namespace TorannMagic
                     TM_MoteMaker.ThrowBloodSquirt(this.targetPawn.Position.ToVector3Shifted(), map, 1.2f);
                     TM_MoteMaker.ThrowBloodSquirt(this.targetPawn.Position.ToVector3Shifted(), map, .6f);
                     TM_MoteMaker.ThrowBloodSquirt(this.targetPawn.Position.ToVector3Shifted(), map, .8f);
-                    if(this.targetPawn.RaceProps.Humanlike)
+                    if (targetPawn.def != TorannMagicDefOf.TM_SkeletonLichR && targetPawn.def != TorannMagicDefOf.TM_GiantSkeletonR)
                     {
-                        this.targetPawn.inventory.DropAllNearPawn(this.targetPawn.Position, false, true);
-                        this.targetPawn.equipment.DropAllEquipment(this.targetPawn.Position, false);
-                        this.targetPawn.apparel.DropAll(this.targetPawn.Position, false);
+                        if (this.targetPawn.RaceProps.Humanlike)
+                        {
+                            this.targetPawn.inventory.DropAllNearPawn(this.targetPawn.Position, false, true);
+                            this.targetPawn.equipment.DropAllEquipment(this.targetPawn.Position, false);
+                            this.targetPawn.apparel.DropAll(this.targetPawn.Position, false);
+                        }
+                        if (!this.targetPawn.Destroyed)
+                        {
+                            this.targetPawn.Destroy();
+                        }
                     }
-                    GenExplosion.DoExplosion(this.targetPawn.Position, map, this.radius, TMDamageDefOf.DamageDefOf.TM_CorpseExplosion, this.launcher, Mathf.RoundToInt((Rand.Range(18f, 30f) + (5f * pwrVal))*this.arcaneDmg), 0, this.def.projectile.soundExplode, def, this.equipmentDef, null, null, 0f,01, false, null, 0f, 0, 0.0f, true);
-                    if(!this.targetPawn.Destroyed)
-                    {
-                        this.targetPawn.Destroy();
-                    }
+                    GenExplosion.DoExplosion(this.targetPawn.Position, map, this.radius, TMDamageDefOf.DamageDefOf.TM_CorpseExplosion, this.launcher, Mathf.RoundToInt((Rand.Range(18f, 30f) + (5f * pwrVal)) * this.arcaneDmg), 0, this.def.projectile.soundExplode, def, this.equipmentDef, null, null, 0f, 01, false, null, 0f, 0, 0.0f, true);
+
                 }
             }
 

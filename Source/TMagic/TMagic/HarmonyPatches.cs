@@ -146,18 +146,18 @@ namespace TorannMagic
                     typeof(DamageInfo?),
                     typeof(PawnDiedOrDownedThoughtsKind)
                 }, null), new HarmonyMethod(typeof(TorannMagicMod), "TryGiveThoughts_PrefixPatch", null), null, null);
-            harmonyInstance.Patch(AccessTools.Method(typeof(DaysWorthOfFoodCalculator), "ApproxDaysWorthOfFood", new Type[]
-                {
-                    typeof(List<Pawn>),
-                    typeof(List<ThingDefCount>),
-                    typeof(int),
-                    typeof(IgnorePawnsInventoryMode),
-                    typeof(Faction),
-                    typeof(WorldPath),
-                    typeof(float),
-                    typeof(int),
-                    typeof(bool)
-                }, null), null, new HarmonyMethod(typeof(TorannMagicMod), "DaysWorthOfFoodCalc_Undead_Postfix", null), null);
+            //harmonyInstance.Patch(AccessTools.Method(typeof(DaysWorthOfFoodCalculator), "ApproxDaysWorthOfFood", new Type[]
+            //    {
+            //        typeof(List<Pawn>),
+            //        typeof(List<ThingDefCount>),
+            //        typeof(int),
+            //        typeof(IgnorePawnsInventoryMode),
+            //        typeof(Faction),
+            //        typeof(WorldPath),
+            //        typeof(float),
+            //        typeof(int),
+            //        typeof(bool)
+            //    }, null), null, new HarmonyMethod(typeof(TorannMagicMod), "DaysWorthOfFoodCalc_Undead_Postfix", null), null);
             harmonyInstance.Patch(AccessTools.Method(typeof(Targeter), "TargeterOnGUI", new Type[]
                 {
                 }, null), null, new HarmonyMethod(typeof(TorannMagicMod), "Targeter_Casting_Postfix", null), null);
@@ -1113,26 +1113,26 @@ namespace TorannMagic
             }            
         }
 
-        public static void DaysWorthOfFoodCalc_Undead_Postfix(List<Pawn> pawns, List<ThingDefCount> extraFood, int tile, IgnorePawnsInventoryMode ignoreInventory, Faction faction, ref float __result, WorldPath path = null, float nextTileCostLeft = 0f, int caravanTicksPerMove = 3300, bool assumeCaravanMoving = true)
-        {
-            if (pawns.Count != 0)
-            {
-                float undeadCount = 0;
-                float undeadRatio = 0;
-                for (int i = 0; i < pawns.Count; i++)
-                {
-                    if (TM_Calc.IsUndead(pawns[i]))
-                    {
-                        undeadCount++;
-                    }
-                }
-                undeadRatio = undeadCount / pawns.Count;
-                if (undeadRatio != 0)
-                {
-                    __result = __result / (1 - undeadRatio);
-                }
-            }
-        }
+        //public static void DaysWorthOfFoodCalc_Undead_Postfix(List<Pawn> pawns, List<ThingDefCount> extraFood, int tile, IgnorePawnsInventoryMode ignoreInventory, Faction faction, ref float __result, WorldPath path = null, float nextTileCostLeft = 0f, int caravanTicksPerMove = 3300, bool assumeCaravanMoving = true)
+        //{
+        //    if (pawns.Count != 0)
+        //    {
+        //        float undeadCount = 0;
+        //        float undeadRatio = 0;
+        //        for (int i = 0; i < pawns.Count; i++)
+        //        {
+        //            if (TM_Calc.IsUndead(pawns[i]))
+        //            {
+        //                undeadCount++;
+        //            }
+        //        }
+        //        undeadRatio = undeadCount / pawns.Count;
+        //        if (undeadRatio != 0)
+        //        {
+        //            __result = __result / (1 - undeadRatio);
+        //        }
+        //    }
+        //}
 
         public static void WealthWatcher_ClassAdjustment_Postfix(WealthWatcher __instance, bool allowDuringInit = false)
         {
@@ -1304,13 +1304,14 @@ namespace TorannMagic
             public static bool Prefix(Mesh mesh, Vector3 loc, Quaternion quat, Material mat, bool drawNow)
             {
                 if (mesh != null && loc != null && quat != null && mat != null)
-                {                   
+                {
+                    //Log.Message("item is " + mat.mainTexture.ToString() + " at y: " + loc.y);
                     if (mat.mainTexture != null && ModOptions.Constants.GetCloaks().Contains(mat.mainTexture))//mat.mainTexture.name != null && mat.mainTexture.ToString() != null && (mat.mainTexture.ToString().Contains("demonlordcloak") || mat.mainTexture.name.Contains("opencloak")))
                     {
                         //Log.Message("main texture is: " + mat.mainTexture);
                         //Log.Message("pool contains " + ModOptions.Constants.GetCloaks()[0]);
                         //Log.Message("item is " + mat.mainTexture.ToString() + " at y: " + loc.y);
-                        loc.y = 8.205f;
+                        loc.y = 8.17f;  ///8.205f
                         //loc.y += .010f; //was 0.015f
                         if (ModOptions.Constants.GetCloaksNorth().Contains(mat.mainTexture))
                         {
@@ -1319,7 +1320,7 @@ namespace TorannMagic
                         }
 
                         if (drawNow)
-                        {
+                        { 
                             mat.SetPass(0);
                             Graphics.DrawMeshNow(mesh, loc, quat);
                         }
@@ -2374,7 +2375,6 @@ namespace TorannMagic
                 }
                 return true;
             }
-
         }
 
         [HarmonyPatch(typeof(Pawn_HealthTracker), "PreApplyDamage", null)]
@@ -3286,7 +3286,7 @@ namespace TorannMagic
                     {
                         __result = false;
                         return false;
-                    }
+                    }                    
                     if(pawn.IsPrisoner || pawn.Downed)
                     {
                         __result = false;
@@ -3302,7 +3302,12 @@ namespace TorannMagic
                         }
                         Pawn pawn2 = target.Thing as Pawn;
                         if (pawn2 != null)
-                        {                            
+                        {
+                            if (abilityDef.ability == TorannMagicDefOf.TM_Possess && pawn2.RaceProps.Animal)
+                            {
+                                __result = false;
+                                return false;
+                            }
                             bool flag = !abilityDef.canTargetAlly;
                             if (flag)
                             {
@@ -5439,6 +5444,111 @@ namespace TorannMagic
                             if (__result[i].Label.Contains("Feed on") || __result[i].Label.Contains("Sip") || __result[i].Label.Contains("Embrace") || __result[i].Label.Contains("Give vampirism") || __result[i].Label.Contains("Create Ghoul") || __result[i].Label.Contains("Give vitae") || __result[i].Label == "Embrace " + name + " (Give vampirism)")
                             {
                                 __result.Remove(__result[i]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(DamageWorker_AddInjury), "Apply", null)]
+        public static class DamageWorker_ApplyEnchantmentAction_Patch
+        {
+            public static void Postfix(DamageWorker_AddInjury __instance, DamageInfo dinfo, Thing thing, DamageWorker.DamageResult __result)
+            {
+                if (dinfo.Instigator != null && dinfo.Instigator is Pawn && dinfo.Amount != 0 && dinfo.Weapon != null && dinfo.Weapon.HasComp(typeof(TorannMagic.Enchantment.CompEnchantedItem)))
+                {
+                    Pawn instigator = dinfo.Instigator as Pawn;
+                    if(instigator.equipment != null && instigator.equipment.Primary != null)
+                    {
+                        ThingWithComps eq = instigator.equipment.Primary;
+                        TorannMagic.Enchantment.CompEnchantedItem enchantment = eq.TryGetComp<TorannMagic.Enchantment.CompEnchantedItem>();
+                        if(enchantment != null && enchantment.enchantmentAction != null)
+                        {
+                            if (enchantment.enchantmentAction.type == Enchantment.EnchantmentActionType.ApplyHediff && enchantment.enchantmentAction.hediffDef != null)
+                            {
+                                if (Rand.Chance(enchantment.enchantmentAction.hediffChance))
+                                {
+                                    if(enchantment.enchantmentAction.onSelf)
+                                    {
+                                        List<Pawn> plist = TM_Calc.FindPawnsNearTarget(instigator, Mathf.RoundToInt(enchantment.enchantmentAction.splashRadius), instigator.Position, enchantment.enchantmentAction.friendlyFire);
+                                        if(plist != null && plist.Count > 0)
+                                        {
+                                            for(int i = 0; i < plist.Count; i++)
+                                            {
+                                                HealthUtility.AdjustSeverity(plist[i], enchantment.enchantmentAction.hediffDef, enchantment.enchantmentAction.hediffSeverity);
+                                                if (enchantment.enchantmentAction.hediffDurationTicks != 0)
+                                                {
+                                                    HediffComp_Disappears hdc = plist[i].health.hediffSet.GetFirstHediffOfDef(enchantment.enchantmentAction.hediffDef).TryGetComp<HediffComp_Disappears>();
+                                                    hdc.ticksToDisappear = enchantment.enchantmentAction.hediffDurationTicks;
+                                                }
+                                                
+                                            }
+                                        }
+                                        HealthUtility.AdjustSeverity(instigator, enchantment.enchantmentAction.hediffDef, enchantment.enchantmentAction.hediffSeverity);
+                                        if (enchantment.enchantmentAction.hediffDurationTicks != 0)
+                                        {
+                                            HediffComp_Disappears hdc = instigator.health.hediffSet.GetFirstHediffOfDef(enchantment.enchantmentAction.hediffDef).TryGetComp<HediffComp_Disappears>();
+                                            hdc.ticksToDisappear = enchantment.enchantmentAction.hediffDurationTicks;
+                                        }
+                                    }
+                                    else if(thing is Pawn)
+                                    {
+                                        Pawn p = thing as Pawn;
+                                        List<Pawn> plist = TM_Calc.FindPawnsNearTarget(p, Mathf.RoundToInt(enchantment.enchantmentAction.splashRadius), p.Position, enchantment.enchantmentAction.friendlyFire);
+                                        if (plist != null && plist.Count > 0)
+                                        {
+                                            for (int i = 0; i < plist.Count; i++)
+                                            {
+                                                HealthUtility.AdjustSeverity(plist[i], enchantment.enchantmentAction.hediffDef, enchantment.enchantmentAction.hediffSeverity);
+                                                if (enchantment.enchantmentAction.hediffDurationTicks != 0)
+                                                {
+                                                    HediffComp_Disappears hdc = plist[i].health.hediffSet.GetFirstHediffOfDef(enchantment.enchantmentAction.hediffDef).TryGetComp<HediffComp_Disappears>();
+                                                    hdc.ticksToDisappear = enchantment.enchantmentAction.hediffDurationTicks;
+                                                }
+                                            }
+                                        }
+                                        HealthUtility.AdjustSeverity(p, enchantment.enchantmentAction.hediffDef, enchantment.enchantmentAction.hediffSeverity);
+                                        if (enchantment.enchantmentAction.hediffDurationTicks != 0)
+                                        {
+                                            HediffComp_Disappears hdc = instigator.health.hediffSet.GetFirstHediffOfDef(enchantment.enchantmentAction.hediffDef).TryGetComp<HediffComp_Disappears>();
+                                            hdc.ticksToDisappear = enchantment.enchantmentAction.hediffDurationTicks;
+                                        }
+                                    }
+                                }
+                            }
+                            if(enchantment.enchantmentAction.type == Enchantment.EnchantmentActionType.ApplyDamage && enchantment.enchantmentAction.damageDef != null && dinfo.Def != enchantment.enchantmentAction.damageDef)
+                            {
+                                if (Rand.Chance(enchantment.enchantmentAction.damageChance))
+                                {
+                                    DamageInfo dinfo2 = new DamageInfo(enchantment.enchantmentAction.damageDef, Rand.Range(enchantment.enchantmentAction.damageAmount - enchantment.enchantmentAction.damageVariation, enchantment.enchantmentAction.damageAmount + enchantment.enchantmentAction.damageVariation), enchantment.enchantmentAction.armorPenetration, -1f, instigator, null, dinfo.Weapon, DamageInfo.SourceCategory.ThingOrUnknown);
+
+                                    if (enchantment.enchantmentAction.onSelf)
+                                    {
+                                        List<Pawn> plist = TM_Calc.FindPawnsNearTarget(instigator, Mathf.RoundToInt(enchantment.enchantmentAction.splashRadius), instigator.Position, enchantment.enchantmentAction.friendlyFire);
+                                        if (plist != null && plist.Count > 0)
+                                        {
+                                            for (int i = 0; i < plist.Count; i++)
+                                            {
+                                                plist[i].TakeDamage(dinfo2);
+                                            }
+                                        }
+                                        instigator.TakeDamage(dinfo2);
+                                    }
+                                    else if (thing is Pawn)
+                                    {
+                                        Pawn p = thing as Pawn;
+                                        List<Pawn> plist = TM_Calc.FindPawnsNearTarget(p, Mathf.RoundToInt(enchantment.enchantmentAction.splashRadius), p.Position, enchantment.enchantmentAction.friendlyFire);
+                                        if (plist != null && plist.Count > 0)
+                                        {
+                                            for (int i = 0; i < plist.Count; i++)
+                                            {
+                                                plist[i].TakeDamage(dinfo2);
+                                            }
+                                        }
+                                        p.TakeDamage(dinfo2);
+                                    }
+                                }
                             }
                         }
                     }

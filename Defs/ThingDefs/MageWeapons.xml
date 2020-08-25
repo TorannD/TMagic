@@ -246,6 +246,83 @@ Arcane Resistance: +20%</description>
     </tools>
   </ThingDef>
   
+    <!-- Elephant Tusk -->	
+  <ThingDef ParentName="TM_BaseMeleeMageWeapon">
+		<defName>TM_ElephantTusk</defName>
+		<label>elephant tusk</label>
+		<description>This elephant tusk has been fashioned into a long knife useful in close combat for both piercing and slashing attacks. The hilt is wrapped in leather to and has a small counter-balance to improve handling, and the light weight of the blade allow for quick attacks. However, the low weight and softer blade make it a poor choice against a heavily armored opponent.</description>
+		<graphicData>
+			<texPath>Items/weapons/elephant_tusk</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1</drawSize>
+		</graphicData>
+    <weaponTags>
+      <li>SeerSpearman</li>
+    </weaponTags>
+	<statBases>
+      <WorkToMake>5000</WorkToMake>
+	  <MarketValue>120</MarketValue>
+      <Mass>.8</Mass>
+	  <MaxHitPoints>150</MaxHitPoints>
+	  <Flammability>0.5</Flammability>
+	  <DeteriorationRate>1</DeteriorationRate>
+    </statBases>
+	<costStuffCount>20</costStuffCount>
+	<stuffCategories>
+      <li>Leathery</li>
+    </stuffCategories>
+    <costList>
+      <Steel>10</Steel>
+	  <ElephantTusk>1</ElephantTusk>
+    </costList>
+	<recipeMaker>
+	  <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+	  <effectWorking>Smelt</effectWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+	  <recipeUsers>
+        <li>ElectricSmithy</li>
+        <li>FueledSmithy</li>
+      </recipeUsers>
+      <workAmount>5000</workAmount>
+	  <skillRequirements>
+			<Crafting>3</Crafting>
+	  </skillRequirements>
+	  <researchPrerequisite>
+	  </researchPrerequisite>
+    </recipeMaker>	
+	<equippedAngleOffset>62</equippedAngleOffset>
+    <tools>
+      <li>
+        <label>handle</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>1.2</cooldownTime>
+      </li>
+	  <li>
+	    <label>point</label>
+        <capacities>
+          <li>Stab</li>
+		  <li>Poke</li>
+        </capacities>
+        <power>10</power>
+		<armorPenetration>0.25</armorPenetration>
+        <cooldownTime>1.2</cooldownTime>
+      </li>
+	  <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>14</power>
+		<armorPenetration>0.05</armorPenetration>
+        <cooldownTime>1.6</cooldownTime>
+      </li>	  
+    </tools>
+  </ThingDef>
+  
   <!-- Elephant Bow -->	
   <ThingDef ParentName="BaseProjectileNeolithic"> <!-- Class="AbilityUser.ProjectileDef_Ability">
 	<thingClass>AbilityUser.ProjectileDef_Ability</thingClass> -->
@@ -373,7 +450,8 @@ Ability Cooldown: -10%</description>
 This weapon is enchanted and provides additional benefits to trained mages and fighters:
 Max Energy: +10%
 Damage Boost: +20%
-Arcane Resistance: +30%</description>
+Arcane Resistance: +30%
+Cleaving Strike</description>
 		<graphicData>
 			<texPath>Items/weapons/thrumboaxe_etched_offset</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -439,6 +517,7 @@ Arcane Resistance: +30%</description>
         </capacities>
         <power>9</power>
         <cooldownTime>.9</cooldownTime>
+		<armorPenetration>0</armorPenetration>
       </li>
 	  <li>
 	    <label>cleave</label>
@@ -446,7 +525,8 @@ Arcane Resistance: +30%</description>
           <li>TM_ThrumboCleave</li>
         </capacities>
         <power>18</power>
-        <cooldownTime>1.6</cooldownTime>
+        <cooldownTime>1.55</cooldownTime>
+		<armorPenetration>1</armorPenetration>
       </li>
 	  <li>
         <label>horns</label>
@@ -455,9 +535,212 @@ Arcane Resistance: +30%</description>
         </capacities>
         <power>26</power>
         <cooldownTime>2</cooldownTime>
+		<armorPenetration>1.25</armorPenetration>
       </li>
     </tools>
   </ThingDef> 
+  
+  <!-- Thrumbo Saber -->
+  <ThingDef ParentName="TM_BaseMeleeMageWeapon">
+		<defName>TM_ThrumboSaber</defName>
+		<label>thrumbo saber</label>
+		<description>A razor sharp blade forged from the horn of a thrumbo and infused with arcane energy. The thrumbo saber is lighter than metal blades and it's edge can cut through all but the thickest armor. Many masters of the blade favor this weapon as it is designed for speed and lethality. Further enchantments may also quicken the users, doubling their attack rate for a short period.
+		
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Ability Cooldown: -10%
+Damage Boost: +10%
+Haste on hit (25%)</description>
+		<graphicData>
+			<texPath>Items/weapons/thrumbo_saber</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>.8</drawSize>
+		</graphicData>
+    <weaponTags>
+		<li>SeerElite</li>
+    </weaponTags>
+	<statBases>
+      <WorkToMake>40000</WorkToMake>
+	  <MarketValue>3500</MarketValue>
+      <Mass>1.6</Mass>
+	  <MaxHitPoints>400</MaxHitPoints>
+	  <Flammability>.5</Flammability>
+	  <DeteriorationRate>1</DeteriorationRate>
+    </statBases>
+    <costList>
+      <Steel>100</Steel>
+	  <Jade>50</Jade>
+	  <Silver>200</Silver>
+	  <RawMagicyte>200</RawMagicyte>
+	  <ThrumboHorn>1</ThrumboHorn>
+    </costList>
+	<recipeMaker>
+	  <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+	  <effectWorking>Smelt</effectWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+	  <recipeUsers>
+        <li>ElectricSmithy</li>
+        <li>FueledSmithy</li>
+      </recipeUsers>
+      <workAmount>40000</workAmount>
+	  <skillRequirements>
+			<Intellectual>4</Intellectual>
+			<Crafting>6</Crafting>
+	  </skillRequirements>
+	  <researchPrerequisite>
+			<li>TM_ArcaneArtifacts</li>
+	  </researchPrerequisite>
+    </recipeMaker>	
+	<comps>
+		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		  <hasEnchantment>true</hasEnchantment>
+		  <coolDown>-0.10</coolDown>
+		  <coolDownTier>Standard</coolDownTier>
+		  <arcaneDmg>0.10</arcaneDmg>
+		  <arcaneDmgTier>Standard</arcaneDmgTier>
+		  <enchantedAction>
+			<type>ApplyHediff</type>
+			<actionLabel>Swift</actionLabel>
+			<onSelf>true</onSelf>
+			<hediffDef>TM_HasteHD</hediffDef>
+			<hediffDurationTicks>120</hediffDurationTicks>
+			<hediffChance>.25</hediffChance>
+		  </enchantedAction>
+		</li>
+	</comps>
+	<equippedAngleOffset>-28</equippedAngleOffset>
+    <tools>
+      <li>
+        <label>pommel</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>6</power>
+        <cooldownTime>.6</cooldownTime>
+		<armorPenetration>0</armorPenetration>
+      </li>
+	  <li>
+	    <label>stab</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>15</power>
+        <cooldownTime>1.2</cooldownTime>
+		<armorPenetration>0.65</armorPenetration>
+      </li>
+	  <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>17</power>
+        <cooldownTime>1.3</cooldownTime>
+		<armorPenetration>0.40</armorPenetration>
+      </li>
+    </tools>
+  </ThingDef>
+  
+  <!-- The rune blade -->
+  <ThingDef ParentName="TM_BaseMeleeMageWeapon">
+		<defName>TM_Ruunbled</defName>
+		<label>Ruunbled</label>
+		<description>This a massive blade is etched in intricate runes from hilt to tip. It is forged in a material unknown to you, with a razor sharp edge and weighing only a fraction of what the size infers. Despite its size, the weapon is easy to handle, and practically hums with power. You can only fathom the origins of this weapon - perhaps crafted in ancient technologies that were lost to time or fabricated with some mysterious power. The only hint is small word written in a stylish script and imprinted into the hilt with the name "Ruunbled." You are not sure if this is a manufacturing company, the name of its maker, or the name of the blade itself. Whichever it is, there is no doubt that this weapon represents the pinnacle of its class.
+		
+This weapon is enchanted and provides additional benefits to trained mages and fighters:
+Ability Cooldown: -20%
+Energy Costs: -20%
+Damage Boost: +25%
+Arcane Resistance: +25%
+Haste on hit (20%)
+Deflection (30%)
+Cleaving Strike</description>
+		<graphicData>
+			<texPath>Items/weapons/ruunbleda</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.3</drawSize>
+		</graphicData>
+	<statBases>
+	  <MarketValue>8000</MarketValue>
+      <Mass>5</Mass>
+	  <MaxHitPoints>2500</MaxHitPoints>
+	  <Flammability>0</Flammability>
+	  <DeteriorationRate>0</DeteriorationRate>
+    </statBases>	
+	<comps>
+		<li Class = "TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		  <hasEnchantment>true</hasEnchantment>
+		  <coolDown>-0.20</coolDown>
+		  <coolDownTier>Crafted</coolDownTier>
+		  <mpCost>-0.20</mpCost>
+		  <mpCostTier>Crafted</mpCostTier>
+		  <arcaneDmg>0.25</arcaneDmg>
+		  <arcaneDmgTier>Crafted</arcaneDmgTier>
+		  <arcaneRes>.25</arcaneRes>
+		  <arcaneResTier>Crafted</arcaneResTier>
+		  <enchantedAction>
+			<type>ApplyHediff</type>
+			<actionLabel>Swift</actionLabel>
+			<onSelf>true</onSelf>
+			<hediffDef>TM_HasteHD</hediffDef>
+			<hediffDurationTicks>120</hediffDurationTicks>
+			<hediffChance>.20</hediffChance>
+		  </enchantedAction>
+		</li>
+		<li>
+		  <compClass>CompOversizedWeapon.CompOversizedWeapon</compClass>
+		</li>
+		<li Class="CompDeflector.CompProperties_Deflector">
+		    <compClass>TorannMagic.Weapon.CompBPReflector</compClass>
+			<baseDeflectChance>0.3</baseDeflectChance>
+			<useManipulationInCalc>true</useManipulationInCalc>
+			<useSkillInCalc>true</useSkillInCalc>
+			<deflectSound>TM_MetalImpact</deflectSound>
+			<deflectSkill>Melee</deflectSkill>
+			<deflectRatePerSkillPoint>0.005</deflectRatePerSkillPoint>
+            <canReflect>true</canReflect>
+            <reflectSkill>Melee</reflectSkill>
+            <reflectRatePerSkillPoint>3</reflectRatePerSkillPoint>
+			<DeflectVerb Class="VerbProperties">
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Projectile_BlazingPower</defaultProjectile>
+				<warmupTime>0</warmupTime>
+				<range>40</range>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</DeflectVerb>			
+		  </li>
+	</comps>
+	<equippedAngleOffset>-35</equippedAngleOffset>
+    <tools>
+      <li>
+        <label>pommel</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>10</power>
+        <cooldownTime>.6</cooldownTime>
+		<armorPenetration>0</armorPenetration>
+      </li>
+	  <li>
+	    <label>stab</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>26</power>
+        <cooldownTime>1.5</cooldownTime>
+		<armorPenetration>1.1</armorPenetration>
+      </li>
+	  <li>
+        <label>edge</label>
+        <capacities>
+          <li>TM_ThrumboCleave</li>
+        </capacities>
+        <power>26</power>
+        <cooldownTime>1.6</cooldownTime>
+		<armorPenetration>1</armorPenetration>
+      </li>
+    </tools>
+  </ThingDef>
   
   <!-- Thrum Bow -->	
   <ThingDef ParentName="BaseProjectileNeolithic"> <!-- Class="AbilityUser.ProjectileDef_Ability">
@@ -1045,7 +1328,7 @@ Damage Boost: +40%</description>
 	    <li Class="CompDeflector.CompProperties_Deflector">
 		    <compClass>TorannMagic.Weapon.CompBPReflector</compClass>
 			<baseDeflectChance>0.40</baseDeflectChance>
-			<useManipulationInCalc>true</useManipulationInCalc>
+			<useManipulationInCalc>false</useManipulationInCalc>
 			<useSkillInCalc>true</useSkillInCalc>
 			<deflectSound>TM_Shuffle</deflectSound>
 			<deflectSkill>Melee</deflectSkill>

@@ -535,13 +535,13 @@ namespace TorannMagic
             else if ((amount) >= .45f && (amount) < .79f)
             {
                 //0.0 to 0.34 max
-                float sev = 2f + ((amount - .45f) * 25);
+                float sev = 2f + ((amount - .45f) * 30);
                 HealthUtility.AdjustSeverity(pawn, TorannMagicDefOf.TM_ArcaneWeakness, sev);
             }
             else if ((amount) >= .79f && (amount) < 5)
             {
-                //0.0 to 0.21 max
-                float sev = 8.5f + ((amount - .79f) * 40);              
+                //0.0 to x.x 
+                float sev = 12.5f + ((amount - .79f) * 75);              
                 if (lastCast != Find.TickManager.TicksGame)
                 {
                     this.lastCast = Find.TickManager.TicksGame;

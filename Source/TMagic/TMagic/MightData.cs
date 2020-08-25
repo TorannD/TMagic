@@ -39,17 +39,17 @@ namespace TorannMagic
                     {
                         this.mightPowerCustom = new List<MightPower>();
                         this.mightPowerCustom.Clear();
-                    }
-                    
+                    }                    
                     foreach (TM_CustomPowerDef current in enumerable)
                     {
+                        bool newPower = false;
                         List<AbilityUser.AbilityDef> abilityList = current.customPower.abilityDefs;
                         MightPower mp = new MightPower(abilityList);
                         mp.maxLevel = current.customPower.maxLevel;
                         mp.learnCost = current.customPower.learnCost;
                         if (!mightPowerCustom.Any(a => a.abilityDef == mp.abilityDef))
                         {
-                            mightPowerCustom.Add(mp);
+                            newPower = true;
                         }                        
                         bool hasSkills = false;
                         foreach (TM_CustomSkill skill in current.customPower.skills)
@@ -59,17 +59,39 @@ namespace TorannMagic
                             mps.costToLevel = skill.costToLevel;
                             if (!MightPowerSkill_Custom.Any(b => b.label == mps.label))
                             {
-                                MightPowerSkill_Custom.Add(mps);
+                                this.MightPowerSkill_Custom.Add(mps);
                             }
                             hasSkills = true;
                         }
-                        if (hasSkills)
+                        if (newPower)
                         {
-                            this.AllMightPowersWithSkills.Add(mp);
+                            if (hasSkills)
+                            {
+                                mightPowerCustom.Add(mp);
+                            }
+                            else
+                            {
+                                mightPowerCustomStandalone.Add(mp);
+                            }
                         }
                     }
                 }
                 return this.mightPowerCustom;
+            }
+        }
+
+        public List<MightPower> mightPowerCustomStandalone;
+        public List<MightPower> MightPowersCustomStandalone  //supports customs abilities
+        {
+            get
+            {
+                bool flag = this.mightPowerCustomStandalone == null;
+                if (flag)
+                {
+                    this.mightPowerCustomStandalone = new List<MightPower>();
+                    this.mightPowerCustomStandalone.Clear();
+                }
+                return this.mightPowerCustomStandalone;
             }
         }
 
@@ -1815,13 +1837,7 @@ namespace TorannMagic
                     allMightPowersList.Clear();
                     allMightPowersList.AddRange(AllMightPowersWithSkills);
                     allMightPowersList.AddRange(this.MightPowersStandalone);
-                    for (int i = 0; i < MightPowersCustom.Count; i++)
-                    {
-                        if (!allMightPowersList.Contains(MightPowersCustom[i]))
-                        {
-                            allMightPowersList.Add(MightPowersCustom[i]);
-                        }
-                    }
+                    allMightPowersList.AddRange(this.MightPowersCustomStandalone);
                 }
                 return allMightPowersList;
             }
@@ -1836,6 +1852,7 @@ namespace TorannMagic
                 {
                     allMightPowersWithSkills = new List<MightPower>();
                     allMightPowersWithSkills.Clear();
+                    allMightPowersWithSkills.AddRange(this.MightPowersCustom);
                     allMightPowersWithSkills.AddRange(this.MightPowersW);
                     allMightPowersWithSkills.AddRange(this.MightPowersM);
                     allMightPowersWithSkills.AddRange(this.MightPowersDK);
@@ -2131,6 +2148,7 @@ namespace TorannMagic
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_global_strength, "mightPowerSkill_global_strength", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_global_endurance, "mightPowerSkill_global_endurance", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPower>(ref this.mightPowerCustom, "mightPowerCustom", (LookMode)2, new object[0]);
+            Scribe_Collections.Look<MightPower>(ref this.mightPowerCustomStandalone, "mightPowerCustomStandalone", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_Custom, "mightPowerSkill_Custom", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPower>(ref this.mightPowerW, "mightPowerW", (LookMode)2, new object[0]);
             Scribe_Collections.Look<MightPowerSkill>(ref this.mightPowerSkill_WayfarerCraft, "mightPowerSkill_WayfarerCraft", (LookMode)2, new object[0]);

@@ -324,14 +324,17 @@ namespace TorannMagic
                             result = false;
                             return result;
                         }
-                        bool flag6 = magicDef.bloodCost > 0f && this.MagicUser.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_BloodHD"),false) && (this.ActualBloodCost * 100) > this.MagicUser.Pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_BloodHD"), false).Severity;
-                        if (flag6)
+                        if (magicDef.bloodCost > 0f)
                         {
-                            reason = "TM_NotEnoughBlood".Translate(
-                                base.Pawn.LabelShort
-                            );
-                            result = false;
-                            return result;
+                            bool flag6 = this.MagicUser.Pawn.health.hediffSet.HasHediff(HediffDef.Named("TM_BloodHD"), false) ? (this.ActualBloodCost * 100) > this.MagicUser.Pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("TM_BloodHD"), false).Severity : true;
+                            if (flag6)
+                            {
+                                reason = "TM_NotEnoughBlood".Translate(
+                                    base.Pawn.LabelShort
+                                );
+                                result = false;
+                                return result;
+                            }
                         }
                         bool flagMute = this.MagicUser.Pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_MuteHD);
                         if(flagMute)

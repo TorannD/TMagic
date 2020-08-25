@@ -42,14 +42,16 @@ namespace TorannMagic
                     }
                     foreach(TM_CustomPowerDef current in enumerable)
                     {
+                        bool newPower = false;
                         List<AbilityUser.AbilityDef> abilityList = current.customPower.abilityDefs;
                         bool requiresScroll = current.customPower.requiresScroll;
                         MagicPower mp = new MagicPower(abilityList, requiresScroll);
                         mp.maxLevel = current.customPower.maxLevel;
                         mp.learnCost = current.customPower.learnCost;
-                        if(!magicPowerCustom.Any(a => a.abilityDef == mp.abilityDef))
-                        {
-                            magicPowerCustom.Add(mp);
+
+                        if (!magicPowerCustom.Any(a => a.abilityDef == mp.abilityDef))
+                        {                            
+                            newPower = true;
                         }
                         
                         bool hasSkills = false;
@@ -64,17 +66,39 @@ namespace TorannMagic
                             }
                             hasSkills = true;
                         }
-                        if(hasSkills)
+                        if (newPower)
                         {
-                            this.AllMagicPowersWithSkills.Add(mp);
-                            if(current.customPower.chaosMageUseable)
+                            if (hasSkills)
                             {
-                                this.AllMagicPowersForChaosMage.Add(mp);
+                                magicPowerCustom.Add(mp);
                             }
+                            else
+                            {
+                                magicPowerCustomStandalone.Add(mp);
+                            }
+                        }
+                        if(hasSkills && current.customPower.chaosMageUseable)
+                        {
+                            this.AllMagicPowersForChaosMage.Add(mp);
                         }
                     }                    
                 }
                 return this.magicPowerCustom;
+            }
+        }
+
+        public List<MagicPower> magicPowerCustomStandalone;
+        public List<MagicPower> MagicPowersCustomStandalone  //supports customs abilities
+        {
+            get
+            {
+                bool flag = this.magicPowerCustomStandalone == null;
+                if (flag)
+                {
+                    this.magicPowerCustomStandalone = new List<MagicPower>();
+                    this.magicPowerCustomStandalone.Clear();
+                }
+                return this.magicPowerCustomStandalone;
             }
         }
 
@@ -3530,13 +3554,7 @@ namespace TorannMagic
                     allMagicPowersList.Clear();
                     allMagicPowersList.AddRange(AllMagicPowersWithSkills);
                     allMagicPowersList.AddRange(this.MagicPowersStandalone);
-                    for(int i = 0; i < MagicPowersCustom.Count; i++)
-                    {
-                        if(!allMagicPowersList.Contains(MagicPowersCustom[i]))
-                        {
-                            allMagicPowersList.Add(MagicPowersCustom[i]);
-                        }
-                    }
+                    allMagicPowersList.AddRange(this.MagicPowersCustomStandalone);
                 }
                 return allMagicPowersList;
             }
@@ -3551,6 +3569,7 @@ namespace TorannMagic
                 {
                     allMagicPowersWithSkillsList = new List<MagicPower>();
                     allMagicPowersWithSkillsList.Clear();
+                    allMagicPowersWithSkillsList.AddRange(this.MagicPowersCustom);
                     allMagicPowersWithSkillsList.AddRange(this.MagicPowersCM);
                     allMagicPowersWithSkillsList.AddRange(this.MagicPowersW);
                     allMagicPowersWithSkillsList.AddRange(this.MagicPowersC);
@@ -3793,6 +3812,7 @@ namespace TorannMagic
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_global_spirit, "magicPowerSkill_global_spirit", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPower>(ref this.magicPowerStandalone, "magicPowerStandalone", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPower>(ref this.magicPowerCustom, "magicPowerCustom", LookMode.Deep, new object[0]);
+            Scribe_Collections.Look<MagicPower>(ref this.magicPowerCustomStandalone, "magicPowerCustomStandalone", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_Custom, "magicPowerSkill_Custom", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPower>(ref this.magicPowerW, "magicPowerW", LookMode.Deep, new object[0]);
             Scribe_Collections.Look<MagicPowerSkill>(ref this.magicPowerSkill_WandererCraft, "magicPowerSkill_WandererCraft", LookMode.Deep, new object[0]);

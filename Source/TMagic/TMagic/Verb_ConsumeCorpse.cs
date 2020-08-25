@@ -50,25 +50,41 @@ namespace TorannMagic
                 bool flag = undead != null && !undead.Dead;
                 if (flag)
                 {
-                    if (undead.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD))
+                    if (TM_Calc.IsUndead(undead))
                     {
-                        comp.Mana.CurLevel += (.225f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)) * comp.arcaneDmg);
-                        ConsumeHumanoid(undead);
-                        if (ver.level > 0)
+                        if (undead.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadHD))
                         {
-                            HealCaster(caster, 2 + ver.level, 2, (5f + ver.level) * comp.arcaneDmg);
+                            comp.Mana.CurLevel += (.225f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)) * comp.arcaneDmg);
+                            ConsumeHumanoid(undead);
+                            if (ver.level > 0)
+                            {
+                                HealCaster(caster, 2 + ver.level, 2, (5f + ver.level) * comp.arcaneDmg);
+                            }
+                            undead.Destroy();
                         }
-                        undead.Destroy();
-                    }
-                    else if (undead.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadAnimalHD))
-                    {
-                        comp.Mana.CurLevel += (.18f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)) * comp.arcaneDmg);
-                        ConsumeAnimalKind(undead);
-                        if (ver.level > 0)
+                        else if (undead.health.hediffSet.HasHediff(TorannMagicDefOf.TM_UndeadAnimalHD))
                         {
-                            HealCaster(caster, 2, 2, (3 + ver.level) * comp.arcaneDmg);
+                            comp.Mana.CurLevel += (.18f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)) * comp.arcaneDmg);
+                            ConsumeAnimalKind(undead);
+                            if (ver.level > 0)
+                            {
+                                HealCaster(caster, 2, 2, (3 + ver.level) * comp.arcaneDmg);
+                            }
+                            undead.Destroy();
                         }
-                        undead.Destroy();
+                        else if(undead.def == TorannMagicDefOf.TM_SkeletonLichR)
+                        {
+                            comp.Mana.CurLevel += (.15f * (1 + (manaRegen.level * .02f) + (ver.level * .07f)) * comp.arcaneDmg);
+                            TM_Action.DamageUndead(undead, Rand.Range(10, 20), caster);
+                        }
+                        else if(undead.def == TorannMagicDefOf.TM_GiantSkeletonR || undead.def == TorannMagicDefOf.TM_SkeletonR)
+                        {
+                            TM_Action.DamageUndead(undead, Rand.Range(15, 30), caster);
+                        }
+                        else
+                        {
+                            TM_Action.DamageUndead(undead, Rand.Range(10, 20), caster);
+                        }
                     }
                     else
                     {

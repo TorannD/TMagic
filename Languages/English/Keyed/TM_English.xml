@@ -999,7 +999,7 @@ Level 0: Raw resources (stone, steel, silver, etc)
 Level 1: Foods (meat, rice, meals) - will always convert to pemmican or nutrient paste
 Level 2: Corpses - will always convert to nutrient paste
 Level 3: Equipment - applies to equipment made from stuff; randomly transmutes to stuff in the same category.
-Equipment made only from set material will be repaired by 30% + 10% * Conversion Rate skill level and has a (2% * Conversion Rate skill level) chance to increase the quality of the item by one level.</TM_Transmutate_ver_desc> 
+Equipment made only from set material will be repaired by 30% + 10% * Conversion Rate skill level. Using transmutate while creatively inspired will improve the quality of an item but ends the inspiration.</TM_Transmutate_ver_desc> 
 <TM_EnchanterStone_eff_desc>Reduces the mana required to cast Enchanter's Stone by 10% and reduces max MP upkeep by 2 mana per skill level .</TM_EnchanterStone_eff_desc>
 <TM_EnchanterStone_ver_desc>Allows the enchanter to create artifacts out of more resources types. This skill requires 2 ability points to train.
 Level 0: stone chunks (slate, sandstone, limestone, marble, granite)
@@ -1809,6 +1809,13 @@ Level 3: 75%, 8 targets max</TM_Taunt_pwr_desc>
 <TM_Taunt_eff_desc>Reduces energy cost by 10% per skill level.</TM_Taunt_eff_desc>
 <TM_Taunt_ver_desc>Increases the radius of taunt by 2 cells; default is 15 cells.</TM_Taunt_ver_desc>
 
+<TM_Explosion_pwr>Destruction</TM_Explosion_pwr>
+<TM_Explosion_eff>Chant</TM_Explosion_eff>
+<TM_Explosion_ver>Ocular Refinement</TM_Explosion_ver>
+<TM_Explosion_pwr_desc>Increases damage of Explosion by 2% per skill level.</TM_Explosion_pwr_desc>
+<TM_Explosion_eff_desc>Reduces energy cost of Explosion by 1% per skill level.</TM_Explosion_eff_desc>
+<TM_Explosion_ver_desc>Reduces the time it takes Explosion to activate by 1% and increases the radius of Explosion by 1 cells at levels 10/20/30; default is 12 cells.</TM_Explosion_ver_desc>
+
 <TM_MedicalSupply_ver>Capacity</TM_MedicalSupply_ver>
 <TM_MedicalSupply_ver_desc>Increases the maximum amount of Medical Supply carried by 10 per skill level.</TM_MedicalSupply_ver_desc>
 <TM_Medigel_eff>Combat Medic</TM_Medigel_eff>
@@ -1924,6 +1931,8 @@ Level 3: all 4 effects</TM_CombatDrugs_pwr_desc>
 <TM_ArcaneSpectre>Arcane Spectre</TM_ArcaneSpectre>
 <TM_PhantomShift>Phantom Shift</TM_PhantomShift>
 <TM_ArcalleumCooldown>Arcalleum Cooldown: {0}&#37;</TM_ArcalleumCooldown>
+<TM_EA_Hediff>{0}: {1} {2}&#37; on hit</TM_EA_Hediff>
+<TM_EA_Damage>{0}: {1}-{2} {3} damage {4}&#37; on hit</TM_EA_Damage>
 
 <!-- ============ Floating Text =============-->
 <TM_Enchanted>Enchanted!</TM_Enchanted>

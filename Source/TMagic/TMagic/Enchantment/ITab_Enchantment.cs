@@ -41,7 +41,7 @@ namespace TorannMagic.Enchantment
         protected override void FillTab()
         {
             CompEnchantedItem enchantedItem = ThingCompUtility.TryGetComp<CompEnchantedItem>(Find.Selector.SingleSelectedThing);
-            float enchantmentMultiplier = 1;
+            float enchantmentMultiplier = 1f;
             if (Find.Selector.SingleSelectedThing.Stuff != null && Find.Selector.SingleSelectedThing.Stuff.defName == "TM_Manaweave")
             {
                 enchantmentMultiplier = 1.2f;
@@ -57,7 +57,7 @@ namespace TorannMagic.Enchantment
             if(enchantedItem.maxMP !=0)
             {
                 GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.maxMPTier);
-                rectLabel = enchantedItem.MaxMPLabel;
+                rectLabel = enchantedItem.MaxMPLabel; 
                 Widgets.Label(rect3, rectLabel);
                 num++;
             }
@@ -176,6 +176,14 @@ namespace TorannMagic.Enchantment
                 }
                 rectLabel = stringBuilder.ToString();
                 Widgets.Label(rect12, rectLabel);
+                num++;
+            }
+            Rect rect13 = GetRowRect(rect12, num);
+            if (enchantedItem.enchantmentAction != null && (enchantedItem.enchantmentAction.type != EnchantmentActionType.Null))
+            {
+                GUI.color = GenEnchantmentColor.EnchantmentColor(enchantedItem.skillTier);
+                rectLabel = enchantedItem.EnchantmentActionLabel;
+                Widgets.Label(rect13, rectLabel);
                 num++;
             }
             //rect3.yMin += Text.CalcHeight(rectLabel, rect.width);

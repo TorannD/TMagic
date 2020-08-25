@@ -972,6 +972,8 @@ namespace TorannMagic
         public static TMAbilityDef TM_PommelStrike;
         public static HediffDef TM_DisablingBlowHD;
 
+        public static TMAbilityDef TM_Explosion;
+
         //Elemental Magic
         public static TMAbilityDef TM_Elemental_Firebolt;
         public static TMAbilityDef TM_Elemental_Icebolt;
@@ -1043,6 +1045,8 @@ namespace TorannMagic
         public static ThingDef Mote_LightShield_Glow;
         public static ThingDef Mote_Holy;
         public static ThingDef Mote_LightBarrier;
+        public static ThingDef Mote_DirectionalDirt;
+        public static ThingDef Mote_ExpandingFlame;
 
         public static ThingDef Projectile_FogOfTorment;        
 
@@ -1075,6 +1079,7 @@ namespace TorannMagic
         public static EffecterDef TM_SmallMagicCircleED;
         public static EffecterDef TM_LightBurstED;
         public static EffecterDef TM_RageWaveED;
+        public static EffecterDef TM_ExplosionED;
 
         //psychast copies, used with tm_motemaker.makeoverlay
         //adjusts def values on each cast

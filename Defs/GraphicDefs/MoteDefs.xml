@@ -26,6 +26,19 @@
       <fadeOutTime>.2</fadeOutTime>
     </mote>
   </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_ExpandingFlame</defName>
+    <graphicData>
+      <texPath>Motes/ExpandingFlame</texPath>
+    </graphicData>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <mote>
+      <fadeInTime>0.02</fadeInTime>
+      <solidTime>0.12</solidTime>
+      <fadeOutTime>0.10</fadeOutTime>
+    </mote>
+  </ThingDef>
 
   <ThingDef ParentName="MoteBase">
     <defName>Mote_BoneDust</defName>

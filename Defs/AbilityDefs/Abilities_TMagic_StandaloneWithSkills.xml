@@ -2,7 +2,7 @@
 
 <Defs>
 
-	<!-- Explosion! - not functional --> 
+	<!-- Explosion! --> 
   <ThingDef ParentName="BaseBullet" Class="AbilityUser.ProjectileDef_Ability">
    <defName>Projectile_Explosion</defName>
    <thingClass>TorannMagic.Projectile_Explosion</thingClass>
@@ -25,7 +25,7 @@
     <defName>TM_Explosion</defName>
     <label>Explosion!</label>
     <uiIconPath>UI/explosion</uiIconPath>
-    <description>Blackness shrouded in light, frenzied blaze clad in night, in the name of the crimson demons, let the collapse of thine origin manifest. Summon before me the root of thy power hidden within the blossoming kingdom of demise. Explosion!</description>
+    <description>Blackness shrouded in light, frenzied blaze clad in night, in the name of the crimson demons, let the collapse of thine origin manifest. Summon before me the root of thy power, hidden within the blossoming kingdom of demise. Explosion!</description>
     <manaCost>1</manaCost>
 	<efficiencyReductionPercent>.01</efficiencyReductionPercent>
 	<canCopy>false</canCopy>
@@ -39,7 +39,7 @@
 		<abilityDef>TM_Explosion</abilityDef>
 		<isViolent>true</isViolent>
         <defaultProjectile>Projectile_Explosion</defaultProjectile>
-        <warmupTime>6</warmupTime>
+        <warmupTime>5</warmupTime>
         <SecondsToRecharge>1000</SecondsToRecharge>
         <range>100</range>
         <soundCast></soundCast>

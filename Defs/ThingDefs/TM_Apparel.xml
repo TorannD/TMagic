@@ -673,6 +673,76 @@ Arcane Res: +10%</description>
   </ThingDef>
   
   <ThingDef ParentName="TMTailoredHatBase">
+    <defName>TM_WizardHat</defName>
+    <label>Wizard Hat</label>    
+    <description>A classic hat styled for any wizard or witch. This hat has secret carrying compartments and also has social and drug production bonuses.
+
+The Wizard Hat is enchanted and provides additional benefits to trained mages and fighters:
+Max Energy: +5%
+Arcane Power: +5%</description>
+    <graphicData> 
+		<texPath>Equipment/WizHat_east</texPath>
+		<graphicClass>Graphic_Single</graphicClass> 
+	</graphicData>
+	<statBases>
+		<WorkToMake>2000</WorkToMake>
+		<Mass>.5</Mass>
+		<MaxHitPoints>30</MaxHitPoints>
+		<MarketValue>200</MarketValue>
+		<ArmorRating_Alignment>0.05</ArmorRating_Alignment>	
+		<StuffEffectMultiplierArmor>0.2</StuffEffectMultiplierArmor>
+        <StuffEffectMultiplierInsulation_Cold>0.4</StuffEffectMultiplierInsulation_Cold>
+        <StuffEffectMultiplierInsulation_Heat>0.2</StuffEffectMultiplierInsulation_Heat>
+	</statBases>
+	<equippedStatOffsets>
+		<SocialImpact>0.05</SocialImpact>
+		<CarryingCapacity>25</CarryingCapacity>
+		<DrugCookingSpeed>0.1</DrugCookingSpeed>
+		<DrugSynthesisSpeed>0.1</DrugSynthesisSpeed>
+	</equippedStatOffsets>
+	<recipeMaker>
+      <workAmount>2000</workAmount>
+	  <skillRequirements>
+	  </skillRequirements>
+	  <researchPrerequisite>
+	  </researchPrerequisite>
+    </recipeMaker>
+	<costStuffCount>40</costStuffCount>
+	<stuffCategories>
+		<li>Fabric</li>
+		<li>Leathery</li>
+	</stuffCategories>
+	<costList>
+		<RawMagicyte>30</RawMagicyte>
+    </costList>
+	<thingCategories>
+	  <li>Apparel</li>
+	</thingCategories>
+	<comps>
+	  <li Class="TorannMagic.Enchantment.CompProperties_EnchantedItem">
+		<hasEnchantment>true</hasEnchantment>
+		<maxMP>0.05</maxMP>
+		<maxMPTier>Minor</maxMPTier>
+		<arcaneDmg>0.05</arcaneDmg>
+		<arcaneDmgTier>Minor</arcaneDmgTier>
+	  </li>
+	</comps>
+	<generateCommonality>0.001</generateCommonality>
+	<apparel>
+	 <tags>
+	   <li>Arcane</li>
+	 </tags>
+	 <wornGraphicPath>Equipment/WizHat</wornGraphicPath>
+		<layers>
+			<li>Overhead</li>
+		</layers>
+		<bodyPartGroups>
+			<li>FullHead</li>
+		</bodyPartGroups>
+	</apparel>
+  </ThingDef>
+  
+  <ThingDef ParentName="TMTailoredHatBase">
     <defName>ArcaneHood</defName>
     <label>Arcane Hood</label>    
     <description>A hood preferred by mages for its magical properties, light weight, and comfort. The method of infusing fabric with enchantments prior to weaving the hood returns improved enchanting results.

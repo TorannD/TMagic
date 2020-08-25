@@ -87,8 +87,10 @@ namespace TorannMagic.Weapon
                         }
                     }
                     float deflectionChance = this.DeflectionChance;
+                    float meleeSkill = GetPawn.skills.GetSkill(this.Props.deflectSkill).Level;
                     CompAbilityUserMagic holder = GetPawn.GetComp<CompAbilityUserMagic>();
-                    if(holder != null && !holder.IsMagicUser)
+                    deflectionChance += (meleeSkill * this.Props.deflectRatePerSkillPoint);
+                    if(holder != null && !holder.IsMagicUser && (this.parent.def.defName == "TM_DefenderStaff" || this.parent.def.defName == "TM_BlazingPowerStaff"))
                     {
                         deflectionChance = 0;
                     }
