@@ -15,24 +15,56 @@ namespace TorannMagic.Conditions
     {
         public IntVec2 centerLocation;
         public IntVec2 edgeLocation;
+        List<IntVec3> summoningCircle = new List<IntVec3>();
+        private int summoningDuration = 300;
+        private int nextBlackLightning = 300;
+        public LookTargets lookTarget;
         private int areaRadius = 4;
         bool initialized = false;
         bool disabled = false;
-        public Thing thing;
+        public List<Pawn> spawnedThings;
         private int nextEventTick = 0;
         private int ticksBetweenEvents = 4000;
         IntVec3 rndTarg = default(IntVec3);
         private bool doEventAction = false;
-        private int eventActionCount = 0;
+        float wealth = 0;
+        float wealthMultiplier = 1f;
+        float storytellerThreat = 1f;
+        int eventDifficulty = 1;
+        int minPointsForSpawn = 75000;
+        int eventSpawnPoints = 75000;
 
         public override void GameConditionTick()
         {
-            base.GameConditionTick();            
+            base.GameConditionTick();  
+            if(!initialized)
+            {
+                initialized = true;
+                TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_SummoningCircle"), this.summoningCircle[0].ToVector3Shifted(), this.SingleMap, 3f, 2f, 1f, 2f, 0, 0, 0, Rand.Range(0, 360));
+            }
+            if(summoningDuration > 0)
+            {
+                summoningDuration--;
+                DoSummoningCircle();
+                if(summoningDuration == 0)
+                {
+                    SpawnDemons();
+                }
+            }
+
             if(Find.TickManager.TicksGame % 60 == 0)
             {
-                if(this.thing.DestroyedOrNull())
+                if (spawnedThings != null)
                 {
-                    this.End();
+                    bool anySpawnedThingsRemaining = false;
+                    if (spawnedThings.Any(p => (!p.DestroyedOrNull() && !p.Dead && !p.Downed)))
+                    {
+                        anySpawnedThingsRemaining = true;
+                    }
+                    if (!anySpawnedThingsRemaining)
+                    {
+                        this.End();
+                    }
                 }
 
                 if (this.nextEventTick <= Find.TickManager.TicksGame)
@@ -40,37 +72,52 @@ namespace TorannMagic.Conditions
                     this.nextEventTick = Find.TickManager.TicksGame + this.ticksBetweenEvents;                    
                 }
             }
-            if(Find.TickManager.TicksGame % 10 == 0 && doEventAction)
+
+            if(doEventAction && Find.TickManager.TicksGame % 10 == 0 && Find.TickManager.TicksGame > nextEventTick)
             {
-                eventActionCount--;
-                IntVec3 rndPos = rndTarg;
-                rndPos.x += Rand.Range(-4, 4);
-                rndPos.z += Rand.Range(-4, 4);
-                SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Firestorm_Small, rndPos, this.SingleMap);
-                if(eventActionCount <= 0)
-                {
-                    doEventAction = false;
-                }
+                nextEventTick = Find.TickManager.TicksGame + ticksBetweenEvents;
+                DoEvent();
             }
         }
 
         private void DoEvent()
         {
-            IntVec3 rndTarg = FindEnemyPawnOrBuilding();
-            doEventAction = true;
-            eventActionCount = Rand.RangeInclusive(4, 6);            
+            IntVec3 rndTarg = new IntVec3(Rand.Range(16, this.SingleMap.Size.x - 16), 0, Rand.Range(16, this.SingleMap.Size.z - 16));
+            if (Rand.Chance(.1f * eventDifficulty))
+            {
+                rndTarg = FindEnemyPawnOrBuilding();
+            }
+            IntVec3 rndPos = rndTarg;
+            int accuracy = 5 - eventDifficulty;
+            rndPos.x += Rand.Range(-accuracy, accuracy);
+            rndPos.z += Rand.Range(-accuracy, accuracy);
+            if(eventDifficulty > 2 && Rand.Chance(eventDifficulty * .05f))
+            {
+                SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Firestorm_Large, rndPos, this.SingleMap);
+            }
+            else if(eventDifficulty > 1 && Rand.Chance(eventDifficulty * .1f))
+            {
+                SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Firestorm_Small, rndPos, this.SingleMap);
+            }
+            else
+            {
+                SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Firestorm_Tiny, rndPos, this.SingleMap);
+            }
+            
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_References.Look<Thing>(ref this.thing, "thing", false);
+            Scribe_Collections.Look<Pawn>(ref this.spawnedThings, "spawnedThings", LookMode.Reference);
             Scribe_Values.Look<bool>(ref this.initialized, "initialized", true, false);
             Scribe_Values.Look<IntVec2>(ref this.centerLocation, "centerLocation", default(IntVec2), false);
             Scribe_Values.Look<IntVec2>(ref this.edgeLocation, "edgeLocation", default(IntVec2), false);
             Scribe_Values.Look<bool>(ref this.disabled, "disabled", false, false);
             Scribe_Values.Look<int>(ref this.ticksBetweenEvents, "ticksBetweenEvents", 4000, false);
             Scribe_Values.Look<int>(ref this.nextEventTick, "nextEventTick", 0, false);
+            Scribe_Values.Look<int>(ref this.summoningDuration, "summoningDuration", 300, false);
+            Scribe_Collections.Look<IntVec3>(ref this.summoningCircle, "summoningCircle", LookMode.Value);
         }
 
         public override void Init()
@@ -78,10 +125,17 @@ namespace TorannMagic.Conditions
             base.Init();
             this.disabled = false;
             this.FindGoodEdgeLocation();
-            this.SpawnDemon();
+            lookTarget = new LookTargets(centerLocation.ToIntVec3, this.SingleMap);
+            this.CalculateDifficultyModifiers();
             this.SetEventParameters();
+            this.summoningCircle = new List<IntVec3>();
+            this.summoningCircle.Clear();
+            this.summoningCircle = GenRadial.RadialCellsAround(this.centerLocation.ToIntVec3, 5, false).ToList();                  
             InitializeVolcanicWinter();
-            InitializeDeathSkies();
+            if (eventDifficulty >= 2)
+            {
+                InitializeDeathSkies();
+            }
         }
 
         private void InitializeVolcanicWinter()
@@ -103,17 +157,44 @@ namespace TorannMagic.Conditions
         private void SetEventParameters()
         {
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            float mult = Rand.Range(2f, 4f) + settingsRef.demonAssaultChallenge + Find.Storyteller.difficulty.difficulty;
-            this.nextEventTick = Find.TickManager.TicksGame + 200;
-            this.ticksBetweenEvents = Mathf.RoundToInt((float)this.Duration / mult);
+            int pts = (int)(Rand.Range(.9f, 1.1f) * wealth * wealthMultiplier * storytellerThreat);
+            pts += 50000 * eventDifficulty;
+            if(eventSpawnPoints <= pts)
+            {
+                eventSpawnPoints = pts;
+            }
+            if (eventDifficulty > 0)
+            {
+                this.doEventAction = true;
+                this.nextEventTick = Find.TickManager.TicksGame + 200;
+                this.ticksBetweenEvents = Mathf.RoundToInt((float)this.Duration / (110f * eventDifficulty));
+            }
         }
 
-        public void SpawnDemon()
+        private void DoSummoningCircle()
+        {                  
+            if(Find.TickManager.TicksGame % 2 ==0)
+            {
+                IntVec3 randomCircleCell = this.summoningCircle.RandomElement();
+                TM_MoteMaker.ThrowGenericMote(ThingDef.Named("Mote_Demon_Flame"), randomCircleCell.ToVector3Shifted(), this.SingleMap, Rand.Range(.5f, .9f), Rand.Range(.2f, .3f), .05f, Rand.Range(.2f, .4f), Rand.Range(-400, 400), Rand.Range(.8f, 1.2f) * (randomCircleCell - this.centerLocation.ToIntVec3).LengthHorizontal, (Quaternion.AngleAxis(90, Vector3.up) * TM_Calc.GetVector(randomCircleCell.ToVector3Shifted(), this.centerLocation.ToIntVec3.ToVector3Shifted())).ToAngleFlat(), Rand.Range(0, 359));
+            }
+
+            if(this.nextBlackLightning > this.summoningDuration)
+            {
+                DoLightningStrike();
+                this.nextBlackLightning = this.summoningDuration - Rand.Range(25, 50);
+            }            
+        }
+
+        public void SpawnDemons()
         {
-            AbilityUser.SpawnThings spawnables = new SpawnThings();
-            spawnables.def = TorannMagicDefOf.TM_DemonR;
-            spawnables.kindDef = PawnKindDef.Named("TM_Demon");
-            spawnables.temporary = false;            
+            int ptsForDemon = (int)(TorannMagicDefOf.TM_Demon.combatPower * 30);
+            int ptsForLesserDemon = (int)(TorannMagicDefOf.TM_LesserDemon.combatPower * 30);
+            minPointsForSpawn = ptsForLesserDemon;
+            float chanceForDemon = (float)(.2f * (float)eventDifficulty);
+            this.spawnedThings = new List<Pawn>();
+            spawnedThings.Clear();
+
             Faction faction = Find.FactionManager.FirstFactionOfDef(TorannMagicDefOf.TM_SkeletalFaction);
             if (faction != null)
             {
@@ -126,19 +207,40 @@ namespace TorannMagic.Conditions
             {
                 faction = Find.FactionManager.RandomEnemyFaction(true, true, true, TechLevel.Undefined);
             }
-            this.thing = TM_Action.SingleSpawnLoop(null, spawnables, edgeLocation.ToIntVec3, this.SingleMap, 0, false, false, faction);
+
+            while (eventSpawnPoints >= minPointsForSpawn)
+            {
+                AbilityUser.SpawnThings spawnables = new SpawnThings();
+                if(Rand.Chance(chanceForDemon) && eventSpawnPoints >= ptsForDemon)
+                {
+                    spawnables.def = TorannMagicDefOf.TM_DemonR;
+                    spawnables.kindDef = TorannMagicDefOf.TM_Demon;                                       
+                }
+                else
+                {
+                    spawnables.def = TorannMagicDefOf.TM_LesserDemonR;
+                    spawnables.kindDef = TorannMagicDefOf.TM_LesserDemon;
+                }
+                spawnables.temporary = false;
+                eventSpawnPoints -= (int)(spawnables.kindDef.combatPower * 30);
+
+                spawnedThings.Add(TM_Action.SingleSpawnLoop(null, spawnables, summoningCircle.RandomElement(), this.SingleMap, 0, false, false, faction) as Pawn);
+            }
         }
 
         public override void End()
         {
-            
-            if(!thing.DestroyedOrNull())
+            for (int i = 0; i < spawnedThings.Count; i++)
             {
-                if (thing.Map != null)
+                Pawn p = spawnedThings[i];
+                if (!p.DestroyedOrNull())
                 {
-                    thing.Map.weatherManager.eventHandler.AddEvent(new TM_WeatherEvent_MeshFlash(thing.Map, thing.Position, TM_MatPool.redLightning));
+                    if (p.Map != null)
+                    {
+                        p.Map.weatherManager.eventHandler.AddEvent(new TM_WeatherEvent_MeshFlash(p.Map, p.Position, TM_MatPool.redLightning));
+                    }
+                    p.Destroy(DestroyMode.Vanish);
                 }
-                thing.Destroy(DestroyMode.Vanish);
             }
             List<GameCondition> gcs = new List<GameCondition>();
             GameCondition gcClouds = null;
@@ -176,9 +278,14 @@ namespace TorannMagic.Conditions
             List<Thing> list = new List<Thing>();
             list.Clear();
             list = (from x in this.SingleMap.listerThings.AllThings
-                    where x.Faction != null && x.Faction.HostileTo(thing.Faction)
+                    where x.Faction != null && x.Faction.HostileTo(spawnedThings.RandomElement().Faction)
                     select x).ToList<Thing>();
             return list.RandomElement().Position;
+        }
+
+        public void DoLightningStrike()
+        {
+            this.SingleMap.weatherManager.eventHandler.AddEvent(new TM_WeatherEvent_MeshFlash(this.SingleMap, this.summoningCircle.RandomElement(), TM_MatPool.redLightning));
         }
 
         private void FindGoodEdgeLocation()
@@ -186,7 +293,7 @@ namespace TorannMagic.Conditions
             bool centerLocFound = false;
             if (this.SingleMap.Size.x <= 32 || this.SingleMap.Size.z <= 32)
             {
-                throw new Exception("Map too small for wandering lich");
+                throw new Exception("Map too small for a demon assault");
             }
             for (int i = 0; i < 20; i++)
             {
@@ -220,7 +327,7 @@ namespace TorannMagic.Conditions
         {
             if (this.SingleMap.Size.x <= 16 || this.SingleMap.Size.z <= 16)
             {
-                throw new Exception("Map too small for wandering lich");
+                throw new Exception("Map too small for a demon assault");
             }
             for (int i = 0; i < 10; i++)
             {
@@ -271,10 +378,10 @@ namespace TorannMagic.Conditions
             }
         }
 
-        public void CalculateWealthModifier()
+        public void CalculateDifficultyModifiers()
         {
-            float wealthMultiplier = .7f;
-            float wealth = this.SingleMap.PlayerWealthForStoryteller;
+            wealthMultiplier = .7f;
+            wealth = this.SingleMap.PlayerWealthForStoryteller;
             if (wealth > 20000)
             {
                 wealthMultiplier = .8f;
@@ -295,6 +402,10 @@ namespace TorannMagic.Conditions
             {
                 wealthMultiplier = 2.5f;
             }
+            storytellerThreat = Find.Storyteller.difficulty.threatScale;
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            eventDifficulty = Mathf.RoundToInt(settingsRef.demonAssaultChallenge);
+            //Log.Message("wealth: " + wealth + " w_mult: " + wealthMultiplier + " threat scale: " + storytellerThreat + " event difficulty " + eventDifficulty);
         }
     }
 }

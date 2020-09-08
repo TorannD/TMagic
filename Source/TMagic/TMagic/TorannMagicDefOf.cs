@@ -185,7 +185,7 @@ namespace TorannMagic
         public static SitePartDef ArcaneBanditSquad;
         //public static IncidentDef ArcaneEnemyRaid;
         
-        public static TraitDef Gifted;
+        public static TraitDef TM_Gifted;
         public static TraitDef TM_OKWithDeath;
         public static TraitDef TM_ManaWellTD;
         public static TraitDef TM_ArcaneConduitTD;
@@ -364,6 +364,7 @@ namespace TorannMagic
         public static HediffDef TM_LegRegrowth;
         public static RecipeDef Regrowth;
         public static RecipeDef UniversalRegrowth;
+        public static RecipeDef AdministerOrbOfTheEternal;
 
         //Necromancer
         public static TraitDef Necromancer;
@@ -487,7 +488,10 @@ namespace TorannMagic
         public static TMAbilityDef TM_PsychicShock;
         public static TMAbilityDef TM_SummonDemon;
         public static ThingDef FlyingObject_DemonFlight;
+        public static PawnKindDef TM_Demon;
         public static ThingDef TM_DemonR;
+        public static PawnKindDef TM_LesserDemon;
+        public static ThingDef TM_LesserDemonR;
 
         //Geomancer
         public static TraitDef Geomancer;
@@ -1101,6 +1105,7 @@ namespace TorannMagic
         public static HediffDef TM_HediffEnchantment_arcaneDmg;
         public static HediffDef TM_HediffEnchantment_arcaneSpectre;
         public static HediffDef TM_HediffEnchantment_phantomShift;
+        public static HediffDef TM_HediffEnchantment_fireImmunity;
 
         //Jobs
         public static JobDef TMCastAbilityVerb;
@@ -1130,6 +1135,8 @@ namespace TorannMagic
         public static ThingDef TM_SkeletonLichR;
         public static ThingDef TM_Arcalleum;
         public static ThingDef TM_Manaweave;
+        public static ThingDef TM_Demonhide;
+        public static ThingDef TM_Demonscale;
 
         //Sounds
         public static SoundDef ItemEnchanted;

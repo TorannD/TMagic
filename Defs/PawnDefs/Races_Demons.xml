@@ -73,19 +73,6 @@
       <li>
         <compClass>CompAttachBase</compClass>
       </li>
-	  <li Class="TorannMagic.CompProperties_AIController">
-		<alwaysManhunter>false</alwaysManhunter>
-		<maxRangeForCloseThreat>5</maxRangeForCloseThreat>
-		<maxRangeForFarThreat>55</maxRangeForFarThreat>
-		<chargeCooldownTicks>1100</chargeCooldownTicks>
-		<rangedCooldownTicks>500</rangedCooldownTicks>
-		<rangedBurstCount>3</rangedBurstCount>
-		<rangedTicksBetweenBursts>8</rangedTicksBetweenBursts>
-		<aoeCooldownTicks>450</aoeCooldownTicks>
-		<knockbackCooldownTicks>800</knockbackCooldownTicks>
-		<tauntCooldownTicks>600</tauntCooldownTicks>
-		<tauntChance>.9</tauntChance>
-	  </li>
     </comps>
     <drawGUIOverlay>false</drawGUIOverlay>
   </ThingDef>
@@ -95,7 +82,7 @@
     <label>Demon</label>
     <description>Released from the pits of hell, this demon will unleash its unfettered malice upon any and all beings in its path. There is no reasoning or subjugating the demon; destroy it or be destroyed.</description>
     <statBases>
-	  <Mass>300</Mass>
+	  <Mass>400</Mass>
       <MoveSpeed>6.66</MoveSpeed>
       <ArmorRating_Blunt>0.84</ArmorRating_Blunt>
       <ArmorRating_Sharp>1.03</ArmorRating_Sharp>
@@ -147,8 +134,25 @@
       <soundMeleeHitBuilding>TM_DemonAngry</soundMeleeHitBuilding>
       <soundMeleeMiss>TM_DemonCall</soundMeleeMiss>      
     </race>
+	<comps>
+	  <li Class="TorannMagic.CompProperties_AIController">
+		<alwaysManhunter>false</alwaysManhunter>
+		<maxRangeForCloseThreat>5</maxRangeForCloseThreat>
+		<maxRangeForFarThreat>55</maxRangeForFarThreat>
+		<chargeCooldownTicks>1100</chargeCooldownTicks>
+		<rangedCooldownTicks>500</rangedCooldownTicks>
+		<rangedBurstCount>3</rangedBurstCount>
+		<rangedTicksBetweenBursts>8</rangedTicksBetweenBursts>
+		<aoeCooldownTicks>450</aoeCooldownTicks>
+		<knockbackCooldownTicks>800</knockbackCooldownTicks>
+		<tauntCooldownTicks>600</tauntCooldownTicks>
+		<tauntChance>.9</tauntChance>
+	  </li>
+    </comps>
 	<butcherProducts>
       <RawMagicyte>120</RawMagicyte>
+	  <TM_Demonscale>80</TM_Demonscale>
+	  <TM_Demonhide>120</TM_Demonhide>
     </butcherProducts>
   </ThingDef>
  
@@ -156,7 +160,7 @@
     <defName>TM_Demon</defName>
     <label>demon</label>
     <race>TM_DemonR</race>
-    <combatPower>3000</combatPower>
+    <combatPower>6000</combatPower>
     <defaultFactionType>TM_SummonedFaction</defaultFactionType>
 	<ecoSystemWeight>0</ecoSystemWeight>
 	<canArriveManhunter>false</canArriveManhunter>
@@ -172,6 +176,112 @@
 		  <color>(108, 94, 88)</color>
           <shadowData>
             <volume>(0.8, 0.6, 0.6)</volume>
+            <offset>(0,0,-0.3)</offset>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+	</lifeStages>
+  </PawnKindDef>
+  
+  <ThingDef ParentName="TM_Base_Demon" Name="TM_LesserDemon">
+    <defName>TM_LesserDemonR</defName>
+    <label>Lesser Demon</label>
+    <description>Released from the pits of hell, this lesser demon will unleash its unfettered malice upon any and all beings in its path. There is no reasoning or subjugating the demon; destroy it or be destroyed.</description>
+    <statBases>
+	  <Mass>240</Mass>
+      <MoveSpeed>6.66</MoveSpeed>
+      <ArmorRating_Blunt>0.74</ArmorRating_Blunt>
+      <ArmorRating_Sharp>.92</ArmorRating_Sharp>
+      <ArmorRating_Heat>1.16</ArmorRating_Heat>      
+    </statBases>
+	<tools>
+      <li>
+        <label>left claw</label>
+        <capacities>
+          <li>TM_ClawSweep</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>1.1</cooldownTime>
+        <linkedBodyPartsGroup>Demon_LeftArm</linkedBodyPartsGroup>
+      </li>
+	  <li>
+        <label>right claw</label>
+        <capacities>
+          <li>TM_ClawSweep</li>
+        </capacities>
+        <power>15</power>
+        <cooldownTime>1.3</cooldownTime>
+        <linkedBodyPartsGroup>Demon_RightArm</linkedBodyPartsGroup>
+      </li>
+	  <li>
+        <label>hoof</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>23</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>Demon_Legs</linkedBodyPartsGroup>
+      </li>
+	</tools>
+    <race>
+	  <baseHealthScale>22.0</baseHealthScale>	
+      <lifeExpectancy>100</lifeExpectancy>
+		<lifeStageAges>
+        <li>
+          <def>TM_LesserDemon_Lifestage</def>
+          <minAge>30</minAge>
+		  <soundCall>TM_DemonCall</soundCall>
+          <soundAngry>TM_DemonAngry</soundAngry>
+          <soundWounded>TM_DemonPain</soundWounded>
+          <soundDeath>TM_DemonDeath</soundDeath>
+        </li>
+      </lifeStageAges>
+      <soundMeleeHitPawn>TM_DemonAngry</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>TM_DemonAngry</soundMeleeHitBuilding>
+      <soundMeleeMiss>TM_DemonCall</soundMeleeMiss>      
+    </race>
+		<comps>
+	  <li Class="TorannMagic.CompProperties_AIController">
+		<alwaysManhunter>false</alwaysManhunter>
+		<maxRangeForCloseThreat>5</maxRangeForCloseThreat>
+		<maxRangeForFarThreat>45</maxRangeForFarThreat>
+		<chargeCooldownTicks>1800</chargeCooldownTicks>
+		<rangedCooldownTicks>800</rangedCooldownTicks>
+		<rangedBurstCount>1</rangedBurstCount>
+		<rangedTicksBetweenBursts>10</rangedTicksBetweenBursts>
+		<aoeCooldownTicks>850</aoeCooldownTicks>
+		<knockbackCooldownTicks>1800</knockbackCooldownTicks>
+		<tauntCooldownTicks>3600</tauntCooldownTicks>
+		<tauntChance>.4</tauntChance>
+	  </li>
+    </comps>
+	<butcherProducts>
+      <RawMagicyte>60</RawMagicyte>
+	  <TM_Demonscale>30</TM_Demonscale>
+	  <TM_Demonhide>50</TM_Demonhide>
+    </butcherProducts>
+  </ThingDef>
+ 
+  <PawnKindDef>
+    <defName>TM_LesserDemon</defName>
+    <label>lesser demon</label>
+    <race>TM_LesserDemonR</race>
+    <combatPower>2500</combatPower>
+    <defaultFactionType>TM_SummonedFaction</defaultFactionType>
+	<ecoSystemWeight>0</ecoSystemWeight>
+	<canArriveManhunter>false</canArriveManhunter>
+    <lifeStages>
+	  <li>
+	    <label>demon</label>
+        <labelPlural>demons</labelPlural>
+        <bodyGraphicData>
+          <texPath>PawnKind/demon</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+		  <shaderType>TransparentPostLight</shaderType>
+          <drawSize>2.4</drawSize>
+		  <color>(108, 94, 88)</color>
+          <shadowData>
+            <volume>(0.55, 0.6, 0.36)</volume>
             <offset>(0,0,-0.3)</offset>
           </shadowData>
         </bodyGraphicData>

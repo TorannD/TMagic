@@ -12,7 +12,7 @@ namespace TorannMagic
             CompAbilityUserMight compMight = user.GetComp<CompAbilityUserMight>();
             CompAbilityUserMagic compMagic = user.GetComp<CompAbilityUserMagic>();
 
-            if(!(compMagic.IsMagicUser || compMight.IsMightUser || user.story.traits.HasTrait(TorannMagicDefOf.Gifted) || user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy) || user.story.traits.HasTrait(TorannMagicDefOf.Undead)))
+            if(!(compMagic.IsMagicUser || compMight.IsMightUser || user.story.traits.HasTrait(TorannMagicDefOf.TM_Gifted) || user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy) || user.story.traits.HasTrait(TorannMagicDefOf.Undead)))
             {
                 
                 if (parent.def != null && parent.def.defName == "GemstoneOfInsight_Magic")
@@ -22,7 +22,7 @@ namespace TorannMagic
                         int rnd = Rand.RangeInclusive(0, 6);
                         RemoveTrait(rnd, user.story.traits.allTraits);
                     }
-                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Gifted, 2, false));
+                    user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Gifted, 2, false));
                     this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                 }
                 else if(parent.def != null && parent.def.defName == "GemstoneOfInsight_Might")

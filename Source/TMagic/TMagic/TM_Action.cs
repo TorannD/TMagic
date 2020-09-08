@@ -1309,7 +1309,7 @@ namespace TorannMagic
 
         public static void PromoteWanderer(Pawn pawn)
         {
-            RemoveTrait(pawn, TorannMagicDefOf.Gifted);
+            RemoveTrait(pawn, TorannMagicDefOf.TM_Gifted);
             pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Wanderer, 4, false));
             pawn.needs.AddOrRemoveNeedsAsAppropriate();
         }

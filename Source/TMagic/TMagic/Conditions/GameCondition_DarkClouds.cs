@@ -29,7 +29,7 @@ namespace TorannMagic.Conditions
             if(Find.TickManager.TicksGame % 37 == 0)
             {
                 Pawn p = this.SingleMap.mapPawns.AllPawnsSpawned.RandomElement();
-                if (p.def != TorannMagicDefOf.TM_GiantSkeletonR && p.def != TorannMagicDefOf.TM_SkeletonLichR && p.def != TorannMagicDefOf.TM_SkeletonR && p.def != TorannMagicDefOf.TM_DemonR && p.health != null && !p.Downed && p.health.hediffSet != null && !TM_Calc.IsUndead(p))
+                if (p.def != TorannMagicDefOf.TM_GiantSkeletonR && p.def != TorannMagicDefOf.TM_SkeletonLichR && p.def != TorannMagicDefOf.TM_SkeletonR && p.def != TorannMagicDefOf.TM_DemonR && p.def != TorannMagicDefOf.TM_LesserDemonR && p.health != null && !p.Downed && p.health.hediffSet != null && !TM_Calc.IsUndead(p))
                 {
                     HealthUtility.AdjustSeverity(p, TorannMagicDefOf.TM_DeathMarkCurse, Rand.Range(6, 10));
                     TM_MoteMaker.ThrowGenericMote(TorannMagicDefOf.Mote_Disease, p.DrawPos, p.Map, 1.4f, .7f, .1f, 1f, Rand.Range(-20, 20), .2f, Rand.Range(-20, 20), Rand.Range(0, 360));

@@ -24,7 +24,7 @@ namespace TorannMagic.ModOptions
         public float magicyteChance = .005f;
         public bool showIconsMultiSelect = true;
         public float riftChallenge = 1f;
-        public float demonAssaultChallenge = 0f;
+        public float demonAssaultChallenge = 1f;
         public float wanderingLichChallenge = 1f;
         public bool showGizmo = true;
         public bool showLevelUpMessage = true;
@@ -120,7 +120,7 @@ namespace TorannMagic.ModOptions
             Scribe_Values.Look<float>(ref this.magicyteChance, "magicyteChance", 0.005f, false);
             Scribe_Values.Look<bool>(ref this.showIconsMultiSelect, "showIconsMultiSelect", true, false);
             Scribe_Values.Look<float>(ref this.riftChallenge, "riftChallenge", 1f, false);
-            Scribe_Values.Look<float>(ref this.demonAssaultChallenge, "demonAssaultChallenge", 0f, false);
+            Scribe_Values.Look<float>(ref this.demonAssaultChallenge, "demonAssaultChallenge", 1f, false);
             Scribe_Values.Look<float>(ref this.wanderingLichChallenge, "wanderingLichChallenge", 1f, false);
             Scribe_Values.Look<float>(ref this.undeadUpkeepMultiplier, "undeadUpkeepMultiplier", 1f, false);
             Scribe_Values.Look<bool>(ref this.showGizmo, "showGizmo", true, false);

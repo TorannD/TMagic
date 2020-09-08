@@ -74,6 +74,18 @@
   </LifeStageDef>
   
   <LifeStageDef>
+    <defName>TM_LesserDemon_Lifestage</defName>
+    <label>lesser demon</label>
+	<voxPitch>.3</voxPitch>
+	<bodySizeFactor>.6</bodySizeFactor>
+	<foodMaxFactor>1</foodMaxFactor>
+	<healthScaleFactor>.6</healthScaleFactor>
+    <statFactors>
+      <MoveSpeed>.8</MoveSpeed>
+    </statFactors>
+  </LifeStageDef>
+  
+  <LifeStageDef>
     <defName>TM_LesserSentinel_Lifestage</defName>
     <label>lesser sentinel</label>
 	<voxPitch>1.2</voxPitch>

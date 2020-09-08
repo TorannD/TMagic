@@ -109,7 +109,7 @@ namespace TorannMagic.SihvRMagicScrollScribe
                 tempPod = TorannMagicDefOf.Torn_BookOfChaos;
                 this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
             }
-            else if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.Gifted) || user.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer)))
+            else if (parent.def != null && (user.story.traits.HasTrait(TorannMagicDefOf.TM_Gifted) || user.story.traits.HasTrait(TorannMagicDefOf.TM_Wanderer)))
             {
                 tempPod = ThingDef.Named("BookOfQuestion");
                 this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);

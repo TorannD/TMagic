@@ -46,15 +46,22 @@ namespace TorannMagic
                 {
                     if (Find.TickManager.TicksGame % 2500 == 0)
                     {
-                        if(this.verVal >= 3 && this.Pawn.health.hediffSet.HasHediff(HediffDef.Named("BloodRot")))
+                        if(this.verVal >= 3)
                         {
-                            int pwrDef = 2;
-                            if(this.parent.def == TorannMagicDefOf.TM_DiseaseImmunity2HD)
+                            IEnumerable<Hediff> hdEnum = this.Pawn.health.hediffSet.GetHediffs<Hediff>();
+                            foreach (Hediff hd in hdEnum)
                             {
-                                pwrDef = 3;
+                                if (hd.def.defName == "BloodRot")
+                                {
+                                    int pwrDef = 2;
+                                    if (this.parent.def == TorannMagicDefOf.TM_DiseaseImmunity2HD)
+                                    {
+                                        pwrDef = 3;
+                                    }
+                                    hd.Severity -= (.005f * pwrDef);
+                                    break;
+                                }
                             }
-                            Hediff hd = this.Pawn.health.hediffSet.GetFirstHediffOfDef(HediffDef.Named("BloodRot"));
-                            hd.Severity -= (.005f * pwrDef);
                         }
                     }
                 }                

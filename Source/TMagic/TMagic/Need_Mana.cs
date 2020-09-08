@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using Verse;
+using RimWorld.Planet;
 
 namespace TorannMagic
 {
@@ -199,13 +200,13 @@ namespace TorannMagic
 
         public void GainNeed(float amount)
         {            
-            if (base.pawn.Map != null && !base.pawn.Dead && !base.pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) && !base.pawn.NonHumanlikeOrWildMan())
+            if (!base.pawn.Dead && !base.pawn.story.traits.HasTrait(TorannMagicDefOf.Faceless) && !base.pawn.NonHumanlikeOrWildMan())
             {                
                 Pawn pawn = base.pawn;
                 CompAbilityUserMagic comp = pawn.GetComp<CompAbilityUserMagic>();
                 if (comp != null && comp.IsMagicUser && pawn.Faction != null)
                 {                    
-                    if (!pawn.Faction.IsPlayer)
+                    if (!pawn.Faction.IsPlayer && pawn.Map != null)
                     {
                         amount *= (0.025f);
                         amount = Mathf.Min(amount, this.MaxLevel - this.CurLevel);
@@ -254,7 +255,7 @@ namespace TorannMagic
                         }                        
                         
                         //Mana drain modifier
-                        if (pawn.Map.GameConditionManager.ConditionIsActive(TorannMagicDefOf.ManaDrain))
+                        if (pawn.Map != null && pawn.Map.GameConditionManager.ConditionIsActive(TorannMagicDefOf.ManaDrain))
                         {
                             this.drainManaDrain = 2*amount;
                             //Arcane weakness modifier
@@ -269,7 +270,7 @@ namespace TorannMagic
                             amount = (-1 * amount) - this.drainManaWeakness;                            
                             this.drainManaSurge = 0f;
                         }
-                        else if (pawn.Map.GameConditionManager.ConditionIsActive(TorannMagicDefOf.ManaSurge))
+                        else if (pawn.Map != null && pawn.Map.GameConditionManager.ConditionIsActive(TorannMagicDefOf.ManaSurge))
                         {
                             //Arcane weakness modifier
                             this.drainManaSurge = (2.25f * amount) - amount;
@@ -302,7 +303,7 @@ namespace TorannMagic
                         }
 
                         //Paracyte modifier
-                        if (this.lastParacyteCheck < Find.TickManager.TicksGame + 3000)
+                        if (pawn.Map != null && this.lastParacyteCheck < Find.TickManager.TicksGame + 3000)
                         {
                             List<Thing> paracyteBushes = this.pawn.Map.listerThings.ThingsOfDef(TorannMagicDefOf.TM_Plant_Paracyte);
                             int paracyteCount = paracyteBushes.Count;
@@ -429,13 +430,22 @@ namespace TorannMagic
                                             pawn.LabelShort,
                                             current.LabelShort
                                         ), MessageTypeDefOf.NegativeEvent);
-                                        if (!current.RaceProps.Animal)
+                                        comp.supportedUndead.Remove(current);
+                                        if (current.MapHeld != null)
                                         {
-                                            current.inventory.DropAllNearPawn(current.Position, false, true);
-                                            current.equipment.DropAllEquipment(current.Position, false);
-                                            current.apparel.DropAll(current.Position, false);
+                                            if (!current.RaceProps.Animal)
+                                            {
+                                                current.inventory.DropAllNearPawn(current.Position, false, true);
+                                                current.equipment.DropAllEquipment(current.Position, false);
+                                                current.apparel.DropAll(current.Position, false);
+                                            }
+                                            TM_MoteMaker.ThrowBloodSquirt(current.Position.ToVector3Shifted(), current.Map, 2.5f);
                                         }
-                                        TM_MoteMaker.ThrowBloodSquirt(current.Position.ToVector3Shifted(), current.Map, 2.5f);
+                                        else if (current.ParentHolder != null && current.ParentHolder is Caravan)
+                                        {
+                                            Caravan van = current.ParentHolder as Caravan;                                            
+                                            van.RemovePawn(current);
+                                        }
                                         current.Destroy();
                                         undeadCount--;
                                         this.curLevelInt = .12f + (.025f * manaRegen.level);

@@ -117,7 +117,7 @@
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
 	<butcherProducts>
-      <RawMagicyte>6</RawMagicyte>
+      <RawMagicyte>16</RawMagicyte>
     </butcherProducts>
   </ThingDef>
   
@@ -209,7 +209,7 @@
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
 	<butcherProducts>
-      <RawMagicyte>10</RawMagicyte>
+      <RawMagicyte>28</RawMagicyte>
     </butcherProducts>
   </ThingDef>
 
@@ -299,7 +299,7 @@
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
 	<butcherProducts>
-      <RawMagicyte>16</RawMagicyte>
+      <RawMagicyte>44</RawMagicyte>
     </butcherProducts>
   </ThingDef>
  
@@ -391,7 +391,7 @@
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
 	<butcherProducts>
-      <RawMagicyte>6</RawMagicyte>
+      <RawMagicyte>16</RawMagicyte>
     </butcherProducts>
   </ThingDef>
   
@@ -482,7 +482,7 @@
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
 	<butcherProducts>
-      <RawMagicyte>10</RawMagicyte>
+      <RawMagicyte>28</RawMagicyte>
     </butcherProducts>
   </ThingDef>
 
@@ -572,7 +572,7 @@
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>  
 	</race>
 	<butcherProducts>
-      <RawMagicyte>16</RawMagicyte>
+      <RawMagicyte>44</RawMagicyte>
     </butcherProducts>
   </ThingDef>
  
@@ -664,7 +664,7 @@
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
 	<butcherProducts>
-      <RawMagicyte>6</RawMagicyte>
+      <RawMagicyte>16</RawMagicyte>
     </butcherProducts>
   </ThingDef>
   
@@ -755,7 +755,7 @@
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
 	<butcherProducts>
-      <RawMagicyte>10</RawMagicyte>
+      <RawMagicyte>28</RawMagicyte>
     </butcherProducts>
   </ThingDef>
 
@@ -846,7 +846,7 @@
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
 	<butcherProducts>
-      <RawMagicyte>16</RawMagicyte>
+      <RawMagicyte>44</RawMagicyte>
     </butcherProducts>
   </ThingDef>
  
@@ -940,7 +940,7 @@
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
 	<butcherProducts>
-      <RawMagicyte>6</RawMagicyte>
+      <RawMagicyte>16</RawMagicyte>
     </butcherProducts>
   </ThingDef>
   
@@ -1033,7 +1033,7 @@
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
 	<butcherProducts>
-      <RawMagicyte>10</RawMagicyte>
+      <RawMagicyte>28</RawMagicyte>
     </butcherProducts>
   </ThingDef>
 
@@ -1125,7 +1125,7 @@
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>      
     </race>
 	<butcherProducts>
-      <RawMagicyte>16</RawMagicyte>
+      <RawMagicyte>44</RawMagicyte>
     </butcherProducts>
   </ThingDef>
  

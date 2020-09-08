@@ -10,7 +10,6 @@ namespace TorannMagic.Enchantment
 {
     public class CompEnchantedItem : ThingComp
     {
-
         public List<AbilityUser.AbilityDef> MagicAbilities = new List<AbilityUser.AbilityDef>();
 
         public List<Trait> SoulOrbTraits = new List<Trait>();
@@ -42,6 +41,43 @@ namespace TorannMagic.Enchantment
                     return EnchantedStuff.isEnchanted;
                 }
                 return false;
+            }
+        }
+
+        public HediffDef GetEnchantedStuff_HediffDef
+        {
+            get
+            {
+                if(MadeFromEnchantedStuff && EnchantedStuff != null)
+                {
+                    return EnchantedStuff.appliedHediff;
+                }
+                return null;
+            }
+        }
+
+        public Pawn WearingPawn
+        {
+            get
+            {
+                Apparel ap = this.parent as Apparel;
+                if(ap != null)
+                {
+                    if(ap.Wearer != null)
+                    {
+                        return ap.Wearer;
+                    }
+                }
+                ThingWithComps twc = this.parent as ThingWithComps;
+                if(twc != null)
+                {
+                    Pawn_EquipmentTracker p_et = twc.ParentHolder as Pawn_EquipmentTracker;
+                    if(p_et != null && p_et.pawn != null)
+                    {
+                        return p_et.pawn;
+                    }
+                }
+                return null;
             }
         }
 
@@ -84,6 +120,8 @@ namespace TorannMagic.Enchantment
                     this.coolDown += this.EnchantedStuff.cooldownOffset;
                     this.mpCost += this.EnchantedStuff.energyCostOffset;
                     this.xpGain += this.EnchantedStuff.xpGainOffset;
+                    this.arcaneRes += this.EnchantedStuff.arcaneResOffset;
+                    this.arcaneDmg += this.EnchantedStuff.arcaneDmgOffset;
                 }
 
                 this.healthRegenRate = this.Props.healthRegenRate;
@@ -101,6 +139,12 @@ namespace TorannMagic.Enchantment
 
                 if (this.parent.def.tickerType == TickerType.Rare)
                 {
+                    Find.TickManager.RegisterAllTickabilityFor(this.parent);
+                }
+
+                if(this.parent.def.tickerType == TickerType.Never)
+                {
+                    this.parent.def.tickerType = TickerType.Rare;
                     Find.TickManager.RegisterAllTickabilityFor(this.parent);
                 }
 
@@ -142,10 +186,8 @@ namespace TorannMagic.Enchantment
                             HealthUtility.AdjustSeverity(artifact.Wearer, hediff, hediffSeverity);
                             artifact.Wearer.health.hediffSet.GetFirstHediffOfDef(hediff, false).TryGetComp<HediffComp_EnchantedItem>().enchantedItem = artifact;
                             //HediffComp_EnchantedItem comp = diff.TryGetComp<HediffComp_EnchantedItem>();
-
                         }
                     }
-
                 }
             }
             if (this.Props.hasAbility && !this.abilitiesInitialized)
@@ -165,6 +207,64 @@ namespace TorannMagic.Enchantment
                     // abilities;
                 }
             }
+            if (GetEnchantedStuff_HediffDef != null)
+            {
+                if (WearingPawn != null)
+                {
+                    hediffStuff.Clear();
+                    List<Apparel> wornApparel = WearingPawn.apparel.WornApparel;
+                    for (int i = 0; i < wornApparel.Count; i++)
+                    {
+                        CompEnchantedItem itemComp = wornApparel[i].TryGetComp<CompEnchantedItem>();
+                        if(itemComp != null && itemComp.GetEnchantedStuff_HediffDef != null)
+                        {
+                            int hdCount = GetStuffCount_Hediff(itemComp.EnchantedStuff.appliedHediff);
+                            if (hdCount >= itemComp.EnchantedStuff.applyHediffAtCount)
+                            {
+                                if(WearingPawn.health.hediffSet.HasHediff(itemComp.EnchantedStuff.appliedHediff))
+                                {
+                                    Hediff hd = WearingPawn.health.hediffSet.GetFirstHediffOfDef(itemComp.EnchantedStuff.appliedHediff);
+                                    if(hd.Severity < (hdCount * itemComp.EnchantedStuff.severityPerCount))
+                                    {
+                                        WearingPawn.health.RemoveHediff(hd);
+                                        HealthUtility.AdjustSeverity(WearingPawn, itemComp.EnchantedStuff.appliedHediff, hdCount * itemComp.EnchantedStuff.severityPerCount);
+                                    }
+                                }
+                                else
+                                {
+                                    HealthUtility.AdjustSeverity(WearingPawn, itemComp.EnchantedStuff.appliedHediff, hdCount * itemComp.EnchantedStuff.severityPerCount);
+                                }
+                            }
+                        }
+                    }
+                    if (WearingPawn.equipment != null && WearingPawn.equipment.Primary != null && !EnchantedStuff.apparelOnly)
+                    {
+                        ThingWithComps eq = WearingPawn.equipment.Primary;
+                        CompEnchantedItem itemComp = eq.TryGetComp<CompEnchantedItem>();
+                        if (itemComp != null && itemComp.GetEnchantedStuff_HediffDef != null)
+                        {
+                            int hdCount = GetStuffCount_Hediff(itemComp.EnchantedStuff.appliedHediff);
+                            if (hdCount >= itemComp.EnchantedStuff.applyHediffAtCount)
+                            {
+                                if (WearingPawn.health.hediffSet.HasHediff(itemComp.EnchantedStuff.appliedHediff))
+                                {
+                                    Hediff hd = WearingPawn.health.hediffSet.GetFirstHediffOfDef(itemComp.EnchantedStuff.appliedHediff);
+                                    if (hd.Severity < (hdCount * itemComp.EnchantedStuff.severityPerCount))
+                                    {
+                                        WearingPawn.health.RemoveHediff(hd);
+                                        HealthUtility.AdjustSeverity(WearingPawn, itemComp.EnchantedStuff.appliedHediff, hdCount * itemComp.EnchantedStuff.severityPerCount);
+                                    }
+                                }
+                                else
+                                {
+                                    HealthUtility.AdjustSeverity(WearingPawn, itemComp.EnchantedStuff.appliedHediff, hdCount * itemComp.EnchantedStuff.severityPerCount);
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
             base.CompTickRare();
         }
 
@@ -179,7 +279,26 @@ namespace TorannMagic.Enchantment
             base.PostSpawnSetup(respawningAfterLoad);
             
         }
-        
+
+        private Dictionary<HediffDef, int> hediffStuff = new Dictionary<HediffDef, int>();
+        public int GetStuffCount_Hediff(HediffDef hd)
+        {
+            if (!hediffStuff.ContainsKey(hd))
+            {
+                hediffStuff.Add(hd, 1);
+            }
+            else
+            {
+                int count = 0;
+                hediffStuff.TryGetValue(hd, out count);
+                if(count != 0)
+                {
+                    hediffStuff.SetOrAdd(hd, count + 1);
+                }
+            }
+            return hediffStuff[hd];
+        }
+
         public override void PostExposeData()
         {
             base.PostExposeData();

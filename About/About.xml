@@ -31,6 +31,26 @@
 			<downloadUrl>https://discord.gg/AaVFA7V</downloadUrl>
 		  </li>
 		</v1.1>
+		<v1.2>
+		  <li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		  </li>
+		  <li>
+			<packageId>UnlimitedHugs.HugsLib</packageId>
+			<displayName>HugsLib</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=818773962</steamWorkshopUrl>
+			<downloadUrl>https://ludeon.com/forums/index.php?topic=28066.0</downloadUrl>
+		  </li>
+		  <li>
+			<packageId>jecrell.jecstools</packageId>
+			<displayName>JecsTools</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2195729899</steamWorkshopUrl>
+			<downloadUrl>https://discord.gg/AaVFA7V</downloadUrl>
+		  </li>
+		</v1.2>
     </modDependenciesByVersion>
 	<loadAfter>
 		<li>brrainz.harmony</li>
@@ -39,7 +59,7 @@
 		<li>UnlimitedHugs.HugsLib</li>
 		<li>jecrell.jecstools</li>
 	</loadAfter>
-	<description>Version 2.5.2.2
+	<description>Version 2.5.2.3
     This mod adds magic and class development to RimWorld.
 	
 A RimWorld of Magic adds 27 classes, each with unique abilities and play styles.

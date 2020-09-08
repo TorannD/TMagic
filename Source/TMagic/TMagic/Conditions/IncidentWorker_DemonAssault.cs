@@ -42,7 +42,7 @@ namespace TorannMagic.Conditions
                 TM_Action.ForceFactionDiscoveryAndRelation(TorannMagicDefOf.TM_SkeletalFaction);
                 GameCondition_DemonAssault gameCondition_DemonAssault = (GameCondition_DemonAssault)GameConditionMaker.MakeCondition(GameConditionDef.Named("DemonAssault"), duration);
                 map.gameConditionManager.RegisterCondition(gameCondition_DemonAssault);
-                base.SendStandardLetter(parms, gameCondition_DemonAssault.thing, str);
+                base.SendStandardLetter(parms, gameCondition_DemonAssault.lookTarget, str);
                 //base.SendStandardLetter(new TargetInfo(gameCondition_ElementalAssault.centerLocation.ToIntVec3, map, false), null, new string[0]);
                 return true;
             }

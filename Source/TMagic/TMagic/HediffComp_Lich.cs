@@ -47,6 +47,21 @@ namespace TorannMagic
                     this.Initialize();
                 }
             }
+
+
+            if (Find.TickManager.TicksGame % 16 == 0)
+            {
+                IEnumerable<Hediff> hdEnum = this.Pawn.health.hediffSet.GetHediffs<Hediff>();
+                foreach (Hediff hd in hdEnum)
+                {
+                    if (hd.def.defName == "SpaceHypoxia")
+                    {
+                        this.Pawn.health.RemoveHediff(hd);
+                        break;
+                    }
+                }
+            }
+
             bool flag4 = Find.TickManager.TicksGame % 600 == 0;
             if (flag4)
             {

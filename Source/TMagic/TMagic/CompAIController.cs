@@ -290,7 +290,7 @@ namespace TorannMagic
                     {
                         this.Pawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.ManhunterPermanent, null, true, false, null);
                     }
-                    if (this.Pawn.def.defName == "TM_DemonR")
+                    if (this.Pawn.def.defName == "TM_DemonR" || this.Pawn.def.defName == "TM_LesserDemonR")
                     {
                         HealthUtility.AdjustSeverity(this.Pawn, HediffDef.Named("TM_DemonHD"), .5f);
                     }

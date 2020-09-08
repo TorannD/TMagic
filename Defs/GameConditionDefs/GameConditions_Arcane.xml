@@ -116,7 +116,7 @@
     <baseChance>0.6</baseChance>
     <minRefireDays>10</minRefireDays>
 	<earliestDay>21</earliestDay>
-	<minPopulation>6</minPopulation>
+	<minPopulation>4</minPopulation>
     <durationDays>
       <min>.18</min>
       <max>.25</max>
@@ -148,8 +148,8 @@
     <letterDef>ThreatBig</letterDef>	
     <baseChance>0.4</baseChance>
     <minRefireDays>10</minRefireDays>
-	<earliestDay>150</earliestDay>
-	<minPopulation>10</minPopulation>
+	<earliestDay>90</earliestDay>
+	<minPopulation>6</minPopulation>
     <durationDays>
       <min>.4</min>
       <max>.6</max>
@@ -202,9 +202,9 @@
     <defName>DemonAssault</defName>
     <conditionClass>TorannMagic.Conditions.GameCondition_DemonAssault</conditionClass>
     <label>demon attack</label>
-    <description>The end is nigh - a rampaging demon is attacking your colony!\n\nThis brute has an assortment of attacks and challenging tactics.\nFire and ash will fall from the skies.\nThere is very little time to prepare.\n\nGood luck!</description>
-    <endMessage>The demon is traveling to another location.</endMessage>
-    <letterText>The end is nigh - a rampaging demon is attacking your colony!\n\nThis brute has an assortment of attacks and challenging tactics.\nFire and ash will fall from the skies.\nThere is very little time to prepare.\n\nGood luck!</letterText>
+    <description>The end is nigh - rampaging demons are attacking your colony!\nLike a herald to impending doom, fire and ash have begun falling from the skies.\n\nThese infernal beings have an assortment of attacks and challenging tactics.\nHowever, demons are unable to remain in this realm for extended periods and will be force to return to their hellish plane in about 3 hours. Defeat or outlast this nightmare.\nThere is very little time to prepare.\n\nGood luck!</description>
+    <endMessage>The demons have returned to their infernal plane.</endMessage>
+    <letterText>The end is nigh - rampaging demons are attacking your colony!\nLike a herald to impending doom, fire and ash have begun falling from the skies.\n\nThese infernal beings have an assortment of attacks and challenging tactics.\nHowever, demons are unable to remain in this realm for extended periods and will be force to return to their hellish plane in about 3 hours. Defeat or outlast this nightmare.\nThere is very little time to prepare.\n\nGood luck!</letterText>
     <letterDef>ThreatBig</letterDef>
     <canBePermanent>false</canBePermanent>
   </GameConditionDef>
@@ -219,12 +219,12 @@
     <workerClass>TorannMagic.Conditions.IncidentWorker_DemonAssault</workerClass>
     <gameCondition>DemonAssault</gameCondition>
 	<letterLabel>Demon attack</letterLabel>    
-	<letterText>The end is nigh - a rampaging demon is attacking your colony!\n\nThis brute has an assortment of attacks and challenging tactics.\nFire and ash will fall from the skies.\nThere is very little time to prepare.\n\nGood luck!</letterText>
+	<letterText>The end is nigh - rampaging demons are attacking your colony!\nLike a herald to impending doom, fire and ash have begun falling from the skies.\n\nThese infernal beings have an assortment of attacks and challenging tactics.\nHowever, demons are unable to remain in this realm for extended periods and will be force to return to their hellish plane in about 3 hours. Defeat or outlast this nightmare.\nThere is very little time to prepare.\n\nGood luck!</letterText>
     <letterDef>ThreatBig</letterDef>
     <baseChance>0.25</baseChance>
-    <minRefireDays>10</minRefireDays>
-	<earliestDay>166</earliestDay>
-	<minPopulation>10</minPopulation>
+    <minRefireDays>12</minRefireDays>
+	<earliestDay>120</earliestDay>
+	<minPopulation>8</minPopulation>
     <durationDays>
       <min>.5</min>
       <max>1</max>

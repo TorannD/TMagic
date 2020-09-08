@@ -162,7 +162,7 @@
 	<tendable>false</tendable>
     <makesAlert>false</makesAlert>
 	<maxSeverity>10.0</maxSeverity>
-	<isBad>false</isBad>
+	<isBad>true</isBad>
 	<initialSeverity>.5</initialSeverity>
 	<comps>
 	  <li Class="HediffCompProperties_SeverityPerDay">
@@ -197,6 +197,7 @@
         <label>II</label>
         <minSeverity>2</minSeverity>
 		<becomeVisible>true</becomeVisible>
+		<lifeThreatening>true</lifeThreatening>
 		<capMods>
 		  <li>
             <capacity>Sight</capacity>
@@ -212,6 +213,7 @@
         <label>III</label>
         <minSeverity>3</minSeverity>
 		<becomeVisible>true</becomeVisible>
+		<lifeThreatening>true</lifeThreatening>
 		<capMods>
 		  <li>
             <capacity>Sight</capacity>
@@ -219,7 +221,7 @@
           </li>
 		  <li>
             <capacity>Breathing</capacity>
-            <offset>-0.4</offset>
+            <offset>-0.35</offset>
           </li>
         </capMods>
       </li>	
@@ -227,6 +229,7 @@
         <label>IV</label>
         <minSeverity>5</minSeverity>
 		<becomeVisible>true</becomeVisible>
+		<lifeThreatening>true</lifeThreatening>
 		<capMods>
 		  <li>
             <capacity>Sight</capacity>
@@ -234,7 +237,7 @@
           </li>
 		  <li>
             <capacity>Breathing</capacity>
-            <offset>-0.7</offset>
+            <offset>-0.45</offset>
           </li>
         </capMods>
       </li>	
@@ -242,6 +245,7 @@
         <label>V</label>
         <minSeverity>7</minSeverity>
 		<becomeVisible>true</becomeVisible>
+		<lifeThreatening>true</lifeThreatening>
 		<capMods>
 		  <li>
             <capacity>Sight</capacity>
@@ -249,7 +253,7 @@
           </li>
 		  <li>
             <capacity>Breathing</capacity>
-            <offset>-.8</offset>
+            <offset>-.5</offset>
           </li>
         </capMods>
       </li>	

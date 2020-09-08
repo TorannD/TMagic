@@ -121,7 +121,7 @@
 		  <li>Arcanist</li>
 		  <li>StormBorn</li>
 		  <li>Summoner</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 	      <li>Paladin</li>
 		  <li>Gladiator</li>
 		  <li>Druid</li>
@@ -154,7 +154,7 @@
 	</TraitDef>
 
     <TraitDef>
-        <defName>Gifted</defName>
+        <defName>TM_Gifted</defName>
         <ignoreConfigErrors>true</ignoreConfigErrors>
 		<commonality>0</commonality>
         <degreeDatas>
@@ -237,7 +237,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>Arcanist</li>
 		  <li>StormBorn</li>
 		  <li>Summoner</li>
-			<li>Gifted</li>
+			<li>TM_Gifted</li>
 			<li>Paladin</li>
 			<li>PhysicalProdigy</li>
 		  <li>Gladiator</li>
@@ -297,7 +297,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>Arcanist</li>
 		  <li>StormBorn</li>
 		  <li>Summoner</li>
-			<li>Gifted</li>
+			<li>TM_Gifted</li>
 			<li>Paladin</li>
 			<li>PhysicalProdigy</li>
 		  <li>Gladiator</li>
@@ -356,7 +356,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>Arcanist</li>
 		  <li>StormBorn</li>
 		  <li>Summoner</li>
-			<li>Gifted</li>
+			<li>TM_Gifted</li>
 			<li>Paladin</li>
 			<li>PhysicalProdigy</li>
 		  <li>Gladiator</li>
@@ -413,7 +413,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>Arcanist</li>
 		  <li>HeartOfFrost</li>
 		  <li>Summoner</li>
-			<li>Gifted</li>
+			<li>TM_Gifted</li>
 			<li>Paladin</li>
 			<li>PhysicalProdigy</li>
 		  <li>Gladiator</li>
@@ -474,7 +474,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>HeartOfFrost</li>
 		  <li>StormBorn</li>
 		  <li>Summoner</li>
-			<li>Gifted</li>
+			<li>TM_Gifted</li>
 			<li>Paladin</li>
 			<li>PhysicalProdigy</li>
 		  <li>Gladiator</li>
@@ -535,7 +535,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>StormBorn</li>
 		  <li>Arcanist</li>
 		  <li>Summoner</li>
-			<li>Gifted</li>
+			<li>TM_Gifted</li>
 			<li>Paladin</li>
 			<li>PhysicalProdigy</li>
 		  <li>Gladiator</li>
@@ -593,7 +593,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>StormBorn</li>
 		  <li>Arcanist</li>
 		  <li>Summoner</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 		  <li>PhysicalProdigy</li>
 		  <li>Gladiator</li>
 		  <li>TM_Sniper</li>
@@ -649,7 +649,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>HeartOfFrost</li>
 		  <li>StormBorn</li>
 		  <li>Arcanist</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 		  <li>PhysicalProdigy</li>
 		  <li>Paladin</li>
 		  <li>Gladiator</li>
@@ -710,7 +710,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>StormBorn</li>
 		  <li>Arcanist</li>
 		  <li>Summoner</li>
-			<li>Gifted</li>
+			<li>TM_Gifted</li>
 			<li>Paladin</li>
 			<li>PhysicalProdigy</li>
 		  <li>Gladiator</li>
@@ -799,7 +799,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>StormBorn</li>
 		  <li>Arcanist</li>
 		  <li>Summoner</li>
-			<li>Gifted</li>
+			<li>TM_Gifted</li>
 			<li>Paladin</li>
 			<li>PhysicalProdigy</li>
 		  <li>Gladiator</li>
@@ -867,7 +867,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>StormBorn</li>
 		  <li>Arcanist</li>
 		  <li>Summoner</li>
-			<li>Gifted</li>
+			<li>TM_Gifted</li>
 			<li>Paladin</li>
 			<li>PhysicalProdigy</li>
 		  <li>Gladiator</li>
@@ -975,7 +975,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>Arcanist</li>
 		  <li>StormBorn</li>
 		  <li>Summoner</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 	      <li>Paladin</li>
 		  <li>Gladiator</li>
 		  <li>Druid</li>
@@ -1040,7 +1040,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>Arcanist</li>
 		  <li>StormBorn</li>
 		  <li>Summoner</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 	      <li>Paladin</li>
 		  <li>TM_Sniper</li>
 		  <li>Druid</li>
@@ -1105,7 +1105,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>Arcanist</li>
 		  <li>StormBorn</li>
 		  <li>Summoner</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 	      <li>Paladin</li>
 		  <li>TM_Sniper</li>
 		  <li>Druid</li>
@@ -1166,7 +1166,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>HeartOfFrost</li>
 		  <li>StormBorn</li>
 		  <li>Arcanist</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 		  <li>PhysicalProdigy</li>
 		  <li>Paladin</li>
 		  <li>Gladiator</li>
@@ -1231,7 +1231,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>HeartOfFrost</li>
 		  <li>StormBorn</li>
 		  <li>Arcanist</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 		  <li>PhysicalProdigy</li>
 		  <li>Paladin</li>
 		  <li>Gladiator</li>
@@ -1291,7 +1291,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>HeartOfFrost</li>
 		  <li>StormBorn</li>
 		  <li>Arcanist</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 		  <li>PhysicalProdigy</li>
 		  <li>Paladin</li>
 		  <li>Gladiator</li>
@@ -1352,7 +1352,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>HeartOfFrost</li>
 		  <li>StormBorn</li>
 		  <li>Arcanist</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 		  <li>PhysicalProdigy</li>
 		  <li>Paladin</li>
 		  <li>Gladiator</li>
@@ -1409,7 +1409,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>HeartOfFrost</li>
 		  <li>StormBorn</li>
 		  <li>Arcanist</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 		  <li>PhysicalProdigy</li>
 		  <li>Paladin</li>
 		  <li>Gladiator</li>
@@ -1466,7 +1466,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>HeartOfFrost</li>
 		  <li>StormBorn</li>
 		  <li>Arcanist</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 		  <li>PhysicalProdigy</li>
 		  <li>Paladin</li>
 		  <li>Gladiator</li>
@@ -1528,7 +1528,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>HeartOfFrost</li>
 		  <li>StormBorn</li>
 		  <li>Arcanist</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 		  <li>PhysicalProdigy</li>
 		  <li>Paladin</li>
 		  <li>Gladiator</li>
@@ -1590,7 +1590,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>HeartOfFrost</li>
 		  <li>StormBorn</li>
 		  <li>Arcanist</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 		  <li>PhysicalProdigy</li>
 		  <li>Paladin</li>
 		  <li>Gladiator</li>
@@ -1651,7 +1651,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>HeartOfFrost</li>
 		  <li>StormBorn</li>
 		  <li>Arcanist</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 		  <li>PhysicalProdigy</li>
 		  <li>Paladin</li>
 		  <li>Gladiator</li>
@@ -1712,7 +1712,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 		  <li>Summoner</li>
 		  <li>Arcanist</li>
 		  <li>StormBorn</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 	      <li>Paladin</li>
 		  <li>TM_Sniper</li>
 		  <li>Druid</li>
@@ -1771,7 +1771,7 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>Arcanist</li>
 		  <li>StormBorn</li>
 		  <li>Summoner</li>
-			<li>Gifted</li>
+			<li>TM_Gifted</li>
 			<li>Paladin</li>
 			<li>PhysicalProdigy</li>
 		  <li>Gladiator</li>
@@ -1838,7 +1838,7 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>Arcanist</li>
 		  <li>StormBorn</li>
 		  <li>Summoner</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 	      <li>Paladin</li>
 		  <li>TM_Sniper</li>
 		  <li>Druid</li>
@@ -1960,7 +1960,7 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>Arcanist</li>
 		  <li>StormBorn</li>
 		  <li>Summoner</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 	      <li>Paladin</li>
 		  <li>Gladiator</li>
 		  <li>Druid</li>
@@ -2065,7 +2065,7 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>Arcanist</li>
 		  <li>StormBorn</li>
 		  <li>Summoner</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 	      <li>Paladin</li>
 		  <li>Gladiator</li>
 		  <li>Druid</li>
@@ -2168,7 +2168,7 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>Arcanist</li>
 		  <li>StormBorn</li>
 		  <li>Summoner</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 	      <li>Paladin</li>
 		  <li>Gladiator</li>
 		  <li>Druid</li>
@@ -2230,7 +2230,7 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>Arcanist</li>
 		  <li>StormBorn</li>
 		  <li>Summoner</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 	      <li>Paladin</li>
 		  <li>TM_Sniper</li>
 		  <li>Druid</li>
@@ -2294,7 +2294,7 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>Arcanist</li>
 		  <li>StormBorn</li>
 		  <li>Summoner</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 	      <li>Paladin</li>
 		  <li>TM_Sniper</li>
 		  <li>Druid</li>
@@ -2351,7 +2351,7 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>Arcanist</li>
 		  <li>StormBorn</li>
 		  <li>Summoner</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 	      <li>Paladin</li>
 		  <li>TM_Sniper</li>
 		  <li>Druid</li>
@@ -2411,7 +2411,7 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>Arcanist</li>
 		  <li>StormBorn</li>
 		  <li>Summoner</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 	      <li>Paladin</li>
 		  <li>TM_Sniper</li>
 		  <li>Druid</li>
@@ -2471,7 +2471,7 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>Arcanist</li>
 		  <li>StormBorn</li>
 		  <li>Summoner</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 	      <li>Paladin</li>
 		  <li>TM_Sniper</li>
 		  <li>Druid</li>
@@ -2532,7 +2532,7 @@ Wayfarers prefer the open road and will gain a mood boost for being in a caravan
 		  <li>Arcanist</li>
 		  <li>StormBorn</li>
 		  <li>Summoner</li>
-		  <li>Gifted</li>
+		  <li>TM_Gifted</li>
 	      <li>Paladin</li>
 		  <li>TM_Sniper</li>
 		  <li>Druid</li>

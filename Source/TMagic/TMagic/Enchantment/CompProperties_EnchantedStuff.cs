@@ -32,9 +32,11 @@ namespace TorannMagic.Enchantment
         public bool isEnchanted = true;             
         public float enchantmentBonusMultiplier = 1f;
         public float arcalleumCooldownPerMass = 0f;
-        public ThoughtDef appliedThoughts = null;
         public HediffDef appliedHediff = null;
+        public int applyHediffAtCount = 1;
         public float severityPerCount = 0f;
+
+        public bool apparelOnly = false;
 
         public float maxEnergyOffset = 0f;
         public float energyRegenOffset = 0f;

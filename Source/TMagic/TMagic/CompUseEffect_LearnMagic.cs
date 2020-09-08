@@ -16,7 +16,7 @@ namespace TorannMagic
                 bool customClass = false;
                 for(int i = 0; i < TM_ClassUtility.CustomClasses().Count; i++)
                 {
-                    if ((TM_ClassUtility.CustomClasses()[i].isMage && user.story.traits.HasTrait(TorannMagicDefOf.Gifted)) || (TM_ClassUtility.CustomClasses()[i].isMage && TM_ClassUtility.CustomClasses()[i].isFighter && (user.story.traits.HasTrait(TorannMagicDefOf.Gifted) || user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy))))
+                    if ((TM_ClassUtility.CustomClasses()[i].isMage && user.story.traits.HasTrait(TorannMagicDefOf.TM_Gifted)) || (TM_ClassUtility.CustomClasses()[i].isMage && TM_ClassUtility.CustomClasses()[i].isFighter && (user.story.traits.HasTrait(TorannMagicDefOf.TM_Gifted) || user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy))))
                     {
                         if (parent.def == TM_ClassUtility.CustomClasses()[i].tornScript || parent.def == TM_ClassUtility.CustomClasses()[i].fullScript)
                         {
@@ -52,7 +52,7 @@ namespace TorannMagic
                         }
                     }
                 }
-                if (!customClass && user.story.traits.HasTrait(TorannMagicDefOf.Gifted))
+                if (!customClass && user.story.traits.HasTrait(TorannMagicDefOf.TM_Gifted))
                 {
                     if (parent.def.defName == "BookOfInnerFire" || parent.def.defName == "Torn_BookOfInnerFire")
                     {
@@ -499,7 +499,7 @@ namespace TorannMagic
                         }
                         else
                         {
-                            user.story.traits.GainTrait(new Trait(TorannMagicDefOf.Gifted, 2, false));
+                            user.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Gifted, 2, false));
                             Messages.Message("Unable to find a valid class to assign after 50 attempts - ending attempt", MessageTypeDefOf.RejectInput);
                         }
                     }
@@ -508,7 +508,7 @@ namespace TorannMagic
                         Messages.Message("NotArcaneBook".Translate(), MessageTypeDefOf.RejectInput);
                     }
                 }
-                else if(!customClass && !user.story.traits.HasTrait(TorannMagicDefOf.Gifted))
+                else if(!customClass && !user.story.traits.HasTrait(TorannMagicDefOf.TM_Gifted))
                 {
                     Messages.Message("NotGiftedPawn".Translate(
                             user.LabelShort
@@ -529,7 +529,7 @@ namespace TorannMagic
             TraitStart:;
             for (int i = 0; i < traits.Count; i++)
             {
-                if (traits[i].def == TorannMagicDefOf.Gifted)
+                if (traits[i].def == TorannMagicDefOf.TM_Gifted)
                 {
                     traits.Remove(traits[i]);
                     goto TraitStart;

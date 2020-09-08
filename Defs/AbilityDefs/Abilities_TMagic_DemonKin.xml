@@ -1015,7 +1015,7 @@ The summoning is initiated when a Succubus anchors the physical offering and is 
 	   <defName>FlyingObject_DemonBolt</defName>
 	   <label>demon flames</label>
 	   <graphicData>
-			<texPath>Spells/meteor1</texPath>
+			<texPath>Spells/meteor2</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 	</ThingDef>

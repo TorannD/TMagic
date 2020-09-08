@@ -143,6 +143,7 @@
     <Compile Include="ModCheck\SS.cs" />
     <Compile Include="Projectile_LightSkipMass.cs" />
     <Compile Include="Projectile_Explosion.cs" />
+    <Compile Include="Thoughts\ThoughtWorker_TM_WearingDemonhide.cs" />
     <Compile Include="TMDefs\TM_Autocast.cs" />
     <Compile Include="TMDefs\TM_CustomSkill.cs" />
     <Compile Include="TMDefs\TM_CustomPower.cs" />
@@ -186,7 +187,6 @@
     <Compile Include="Conditions\GameCondition_DemonAssault.cs" />
     <Compile Include="Conditions\IncidentWorker_DemonAssault.cs" />
     <Compile Include="MagicMapComponent.cs" />
-    <Compile Include="Enchantment\ThoughtWorker_TM_EnchantedItem.cs" />
     <Compile Include="Enchantment\CompEnchantedStuff.cs" />
     <Compile Include="Enchantment\SetBonus.cs" />
     <Compile Include="Enchantment\CompProperties_EnchantedStuff.cs" />

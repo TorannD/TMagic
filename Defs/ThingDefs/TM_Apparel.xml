@@ -24,7 +24,7 @@ Arcane Resistance: +5%</description>
 		<WorkToMake>7500</WorkToMake>
 		<Mass>0.7</Mass>
 		<MaxHitPoints>200</MaxHitPoints>
-		<MarketValue>1175</MarketValue>
+<!-- 		<MarketValue>1175</MarketValue> -->
 		<ArmorRating_Alignment>0.30</ArmorRating_Alignment>
 		<Insulation_Cold>11</Insulation_Cold>
 		<Insulation_Heat>4</Insulation_Heat>
@@ -133,7 +133,7 @@ Augmented by Phantom Shift: 20% chance to avoid an attack</description>
 		<WorkToMake>66600</WorkToMake>
 		<Mass>6</Mass>
 		<MaxHitPoints>500</MaxHitPoints>
-		<MarketValue>4460</MarketValue>
+<!-- 		<MarketValue>4460</MarketValue> -->
 		<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.15</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.4</ArmorRating_Heat>
@@ -245,7 +245,7 @@ Arcane Res: +10%</description>
 		<WorkToMake>16000</WorkToMake>
 		<Mass>2.5</Mass>
 		<MaxHitPoints>120</MaxHitPoints>
-		<MarketValue>2500</MarketValue>
+<!-- 		<MarketValue>2500</MarketValue> -->
 		<ArmorRating_Blunt>0.07</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.25</ArmorRating_Heat>
@@ -364,7 +364,7 @@ Augmented by Arcane Spectre: 50% chance to deal 20% bonus damage</description>
 		<WorkToMake>20000</WorkToMake>
 		<Mass>4.5</Mass>
 		<MaxHitPoints>320</MaxHitPoints>
-		<MarketValue>2150</MarketValue>
+<!-- 		<MarketValue>2150</MarketValue> -->
 		<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.15</ArmorRating_Sharp>
 		<ArmorRating_Alignment>0.20</ArmorRating_Alignment>
@@ -479,7 +479,7 @@ Class XP Gain: +10%</description>
 		<WorkToMake>50000</WorkToMake>
 		<Mass>10</Mass>
 		<MaxHitPoints>500</MaxHitPoints>
-		<MarketValue>2400</MarketValue>
+<!-- 		<MarketValue>2400</MarketValue> -->
 		<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.2</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.10</ArmorRating_Heat>
@@ -566,7 +566,7 @@ Arcane Res: +10%</description>
 		<WorkToMake>60000</WorkToMake>
 		<Mass>0.5</Mass>
 		<MaxHitPoints>200</MaxHitPoints>
-		<MarketValue>6250</MarketValue>
+<!-- 		<MarketValue>6250</MarketValue> -->
 		<ArmorRating_Blunt>0.25</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.5</ArmorRating_Heat>
@@ -688,7 +688,7 @@ Arcane Power: +5%</description>
 		<WorkToMake>2000</WorkToMake>
 		<Mass>.5</Mass>
 		<MaxHitPoints>30</MaxHitPoints>
-		<MarketValue>200</MarketValue>
+<!-- 		<MarketValue>200</MarketValue> -->
 		<ArmorRating_Alignment>0.05</ArmorRating_Alignment>	
 		<StuffEffectMultiplierArmor>0.2</StuffEffectMultiplierArmor>
         <StuffEffectMultiplierInsulation_Cold>0.4</StuffEffectMultiplierInsulation_Cold>
@@ -759,7 +759,7 @@ Arcane Resistance: +10%</description>
 		<WorkToMake>8000</WorkToMake>
 		<Mass>.4</Mass>
 		<MaxHitPoints>60</MaxHitPoints>
-		<MarketValue>725</MarketValue>
+		<!-- <MarketValue>725</MarketValue> -->
 		<ArmorRating_Blunt>0.05</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.05</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.10</ArmorRating_Heat>
@@ -836,7 +836,7 @@ Arcane Resistance: 30%</description>
 		<WorkToMake>20000</WorkToMake>
 		<Mass>.7</Mass>
 		<MaxHitPoints>90</MaxHitPoints>
-		<MarketValue>1260</MarketValue>
+<!-- 		<MarketValue>1260</MarketValue> -->
 		<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.20</ArmorRating_Heat>
@@ -921,7 +921,7 @@ Class XP Gain: +10%</description>
 		<WorkToMake>15000</WorkToMake>
 		<Mass>4</Mass>
 		<MaxHitPoints>200</MaxHitPoints>
-		<MarketValue>1060</MarketValue>
+<!-- 		<MarketValue>1060</MarketValue> -->
 		<ArmorRating_Blunt>0.15</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.2</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.10</ArmorRating_Heat>
@@ -1001,7 +1001,7 @@ Arcane Res: +10%</description>
 		<WorkToMake>25000</WorkToMake>
 		<Mass>5</Mass>
 		<MaxHitPoints>300</MaxHitPoints>
-		<MarketValue>1900</MarketValue>
+<!-- 		<MarketValue>1900</MarketValue> -->
 		<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
 		<ArmorRating_Sharp>0.25</ArmorRating_Sharp>
 		<ArmorRating_Heat>0.15</ArmorRating_Heat>

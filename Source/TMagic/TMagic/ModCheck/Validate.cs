@@ -166,5 +166,21 @@ namespace TorannMagic.ModCheck
                 return initialized;
             }
         }
+
+        public static class SOS2
+        {
+            public static bool IsInitialized()
+            {
+                bool initialized = false;
+                foreach (ModContentPack p in LoadedModManager.RunningMods)
+                {
+                    if (p.Name == "Save Our Ship 2")
+                    {
+                        initialized = true;
+                    }
+                }
+                return initialized;
+            }
+        }
     }
 }

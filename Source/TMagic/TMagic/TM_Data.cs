@@ -163,7 +163,7 @@ namespace TorannMagic
                 magicTraits.Add(TorannMagicDefOf.Enchanter);
                 magicTraits.Add(TorannMagicDefOf.BloodMage);
                 magicTraits.Add(TorannMagicDefOf.TM_Wanderer);
-                magicTraits.Add(TorannMagicDefOf.Gifted);
+                magicTraits.Add(TorannMagicDefOf.TM_Gifted);
                 return magicTraits;
             }
         }

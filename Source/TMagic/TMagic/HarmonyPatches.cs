@@ -259,6 +259,24 @@ namespace TorannMagic
 
         }
 
+        [HarmonyPatch(typeof(FireUtility), "CanEverAttachFire", null)]
+        public class FireImmunity_Hediff_Prefix
+        {
+            private static bool Prefix(Thing t, ref bool __result)
+            {
+                if(t is Pawn)
+                {
+                    Pawn p = t as Pawn;
+                    if(p.health != null && p.health.hediffSet != null && p.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HediffEnchantment_fireImmunity))
+                    {
+                        __result = false;
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+
         [HarmonyPatch(typeof(AttackTargetFinder), "BestAttackTarget", null)]
         public class Taunted_TargetSelection_Patch
         {
@@ -1750,7 +1768,7 @@ namespace TorannMagic
                     if (pawnTraits[i].def == TorannMagicDefOf.Arcanist || pawnTraits[i].def == TorannMagicDefOf.Geomancer || pawnTraits[i].def == TorannMagicDefOf.Warlock || pawnTraits[i].def == TorannMagicDefOf.Succubus ||
                         pawnTraits[i].def == TorannMagicDefOf.InnerFire || pawnTraits[i].def == TorannMagicDefOf.HeartOfFrost || pawnTraits[i].def == TorannMagicDefOf.StormBorn || pawnTraits[i].def == TorannMagicDefOf.Technomancer ||
                         pawnTraits[i].def == TorannMagicDefOf.Paladin || pawnTraits[i].def == TorannMagicDefOf.Summoner || pawnTraits[i].def == TorannMagicDefOf.Druid || pawnTraits[i].def == TorannMagicDefOf.Necromancer ||
-                        pawnTraits[i].def == TorannMagicDefOf.Lich || pawnTraits[i].def == TorannMagicDefOf.Priest || pawnTraits[i].def == TorannMagicDefOf.TM_Bard || pawnTraits[i].def == TorannMagicDefOf.Gifted ||
+                        pawnTraits[i].def == TorannMagicDefOf.Lich || pawnTraits[i].def == TorannMagicDefOf.Priest || pawnTraits[i].def == TorannMagicDefOf.TM_Bard || pawnTraits[i].def == TorannMagicDefOf.TM_Gifted ||
                         pawnTraits[i].def == TorannMagicDefOf.Technomancer || pawnTraits[i].def == TorannMagicDefOf.BloodMage || pawnTraits[i].def == TorannMagicDefOf.Enchanter || pawnTraits[i].def == TorannMagicDefOf.Chronomancer ||
                         pawnTraits[i].def == TorannMagicDefOf.TM_Wanderer || pawnTraits[i].def == TorannMagicDefOf.ChaosMage)
                     {
@@ -1788,7 +1806,7 @@ namespace TorannMagic
                 {
                     if (Rand.Chance(.5f))
                     {
-                        pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.Gifted, 2, false));
+                        pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Gifted, 2, false));
                     }
                     else
                     {
@@ -1801,7 +1819,7 @@ namespace TorannMagic
                 }
                 else if (hasMagicTrait)
                 {
-                    pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.Gifted, 2, false));
+                    pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Gifted, 2, false));
                 }
             }
         }
@@ -1919,7 +1937,7 @@ namespace TorannMagic
                     ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
 
                     var gizmoList = __result.ToList();
-                    if (settingsRef.Wanderer && __instance.story.traits.HasTrait(TorannMagicDefOf.Gifted))
+                    if (settingsRef.Wanderer && __instance.story.traits.HasTrait(TorannMagicDefOf.TM_Gifted))
                     {
                         //Pawn p = __instance;
                         //Command_Action itemWanderer = new Command_Action
@@ -3546,9 +3564,9 @@ namespace TorannMagic
                                 pawnTraits.Remove(pawnTraits[pawnTraits.Count - 1]);
                             }                            
                             float rnd = Rand.Range(0, baseMageChance + baseFighterChance + advMageChance + advFighterChance);
-                            if (rnd < (baseMageChance) && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Gifted, 2)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, pawn, TorannMagicDefOf.Gifted.ToString()) && !pawn.story.traits.allTraits.Any(td => td.def.conflictingTraits.Contains(TorannMagicDefOf.Gifted)))
+                            if (rnd < (baseMageChance) && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.TM_Gifted, 2)) && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, pawn, TorannMagicDefOf.TM_Gifted.ToString()) && !pawn.story.traits.allTraits.Any(td => td.def.conflictingTraits.Contains(TorannMagicDefOf.TM_Gifted)))
                             {
-                                pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.Gifted, 2, false));
+                                pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Gifted, 2, false));
                             }
                             else if (rnd >= baseMageChance && rnd < (baseMageChance + baseFighterChance) && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.PhysicalProdigy, 2))   && ModCheck.AlienHumanoidRaces.TryGetBackstory_DisallowedTrait(pawn.def, pawn, TorannMagicDefOf.PhysicalProdigy.ToString()) && !pawn.story.traits.allTraits.Any(td => td.def.conflictingTraits.Contains(TorannMagicDefOf.PhysicalProdigy)))
                             {
@@ -3951,9 +3969,9 @@ namespace TorannMagic
                                 pawnTraits.Remove(pawnTraits[pawnTraits.Count - 1]);
                             }
                             float rnd = Rand.Range(0, baseMageChance+baseFighterChance+advFighterChance+advMageChance);
-                            if (rnd < (baseMageChance) && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.Gifted, 2)) && !pawn.story.traits.allTraits.Any(td => td.def.conflictingTraits.Contains(TorannMagicDefOf.Gifted)))
+                            if (rnd < (baseMageChance) && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.TM_Gifted, 2)) && !pawn.story.traits.allTraits.Any(td => td.def.conflictingTraits.Contains(TorannMagicDefOf.TM_Gifted)))
                             {
-                                pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.Gifted, 2, false));
+                                pawn.story.traits.GainTrait(new Trait(TorannMagicDefOf.TM_Gifted, 2, false));
                             }
                             else if (rnd >= baseMageChance && rnd < (baseMageChance + baseFighterChance) && !pawn.story.AllBackstories.Any(bs => bs.DisallowsTrait(TorannMagicDefOf.PhysicalProdigy, 2)) && !pawn.story.traits.allTraits.Any(td => td.def.conflictingTraits.Contains(TorannMagicDefOf.PhysicalProdigy)))
                             {
@@ -4349,7 +4367,7 @@ namespace TorannMagic
 
                     if (Rand.Chance(settingsRef.supportTraitChance))
                     {
-                        if (TM_Calc.IsMagicUser(pawn) || pawn.story.traits.HasTrait(TorannMagicDefOf.Gifted))
+                        if (TM_Calc.IsMagicUser(pawn) || pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Gifted))
                         {
                             int rndS = Rand.RangeInclusive(1, supportingMageCount);
                             switch (rndS)

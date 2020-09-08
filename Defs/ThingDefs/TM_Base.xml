@@ -19,7 +19,7 @@
 			<Flammability>1.0</Flammability>
 			<DeteriorationRate>2</DeteriorationRate>
 			<Beauty>-6</Beauty>
-			<SellPriceFactor>0.20</SellPriceFactor>
+			<SellPriceFactor>0.25</SellPriceFactor>
 		</statBases>
 		<comps>
 			<li Class="CompProperties_Forbiddable"/>
@@ -114,7 +114,7 @@
       <Flammability>1.0</Flammability>
       <DeteriorationRate>2</DeteriorationRate>
 		<Beauty>-2</Beauty>
-		<SellPriceFactor>0.70</SellPriceFactor>
+		<SellPriceFactor>0.55</SellPriceFactor>
 		<EquipDelay>1</EquipDelay>
 	</statBases>
     <altitudeLayer>Item</altitudeLayer>
@@ -238,6 +238,13 @@
 	<useHitPoints>true</useHitPoints>
   	<thingCategories>
       <li>Textiles</li>
+    </thingCategories>
+  </ThingDef>
+  
+  <ThingDef Name="MagicResourceBase_Leather" Abstract="True" ParentName="MagicResourceBase">
+	<useHitPoints>true</useHitPoints>
+  	<thingCategories>
+      <li>Leathers</li>
     </thingCategories>
   </ThingDef>
   

@@ -24,6 +24,14 @@ namespace TorannMagic.Enchantment
             //}
 
             //&& def.HasComp(typeof(CompQuality))
+
+            //IEnumerable<ThingCategoryDef> getExistingDefs = from def in DefDatabase<ThingCategoryDef>.AllDefs
+            //                                   where (true)
+            //                                   select def;
+            //foreach(ThingCategoryDef c in getExistingDefs)
+            //{
+            //    Log.Message("thingCategoryDef has defname " + c.defName);
+            //}
             IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
                                                where (def.IsMeleeWeapon || def.IsRangedWeapon || def.IsApparel) && !def.HasComp(typeof(CompEnchantedItem))
                                                select def;
@@ -68,6 +76,7 @@ namespace TorannMagic.Enchantment
             foreach (ThingDef current2 in universalPawnTypes)
             {
                 TorannMagicDefOf.UniversalRegrowth.recipeUsers.AddDistinct(current2);
+                TorannMagicDefOf.AdministerOrbOfTheEternal.recipeUsers.AddDistinct(current2);
             }
         }        
 

@@ -16,7 +16,7 @@ namespace TorannMagic
                 TMDefs.TM_CustomClass cc = null;
                 for (int i = 0; i < TM_ClassUtility.CustomClasses().Count; i++)
                 {
-                    if ((TM_ClassUtility.CustomClasses()[i].isFighter && user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy)) || (TM_ClassUtility.CustomClasses()[i].isFighter && TM_ClassUtility.CustomClasses()[i].isMage && (user.story.traits.HasTrait(TorannMagicDefOf.Gifted) || user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy))))
+                    if ((TM_ClassUtility.CustomClasses()[i].isFighter && user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy)) || (TM_ClassUtility.CustomClasses()[i].isFighter && TM_ClassUtility.CustomClasses()[i].isMage && (user.story.traits.HasTrait(TorannMagicDefOf.TM_Gifted) || user.story.traits.HasTrait(TorannMagicDefOf.PhysicalProdigy))))
                     {
                         if (parent.def == TM_ClassUtility.CustomClasses()[i].tornScript || parent.def == TM_ClassUtility.CustomClasses()[i].fullScript)
                         {
@@ -179,7 +179,7 @@ namespace TorannMagic
                     traits.Remove(traits[i]);
                     goto TraitStart;
                 }
-                if (traits[i].def == TorannMagicDefOf.Gifted)
+                if (traits[i].def == TorannMagicDefOf.TM_Gifted)
                 {
                     traits.Remove(traits[i]);
                     goto TraitStart;

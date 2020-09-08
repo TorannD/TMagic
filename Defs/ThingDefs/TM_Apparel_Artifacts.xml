@@ -1105,6 +1105,7 @@ The orb will implode and be destroyed once the traits have been released.</descr
     <description>A single use infusion of magical energy prepared to heal wounds, restore limbs, and cure diseases. The healing energy will target and heal the single worst health condition affecting someone at any given time.
 
 Orbs of the Eternal have been used by mages, rulers, and the elite to prolong life. These orbs are valuable and rare due mostly to the secrecy surrounding the process of crafting an orb.</description>
+	<descriptionHyperlinks><RecipeDef>AdministerOrbOfTheEternal</RecipeDef></descriptionHyperlinks>
     <graphicData>
       <texPath>UI/orb_eternal</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -1141,6 +1142,39 @@ Orbs of the Eternal have been used by mages, rulers, and the elite to prolong li
       </li>
     </comps>
   </ThingDef>
+  
+    <RecipeDef>
+    <defName>AdministerOrbOfTheEternal</defName>
+    <label>administer orb of the eternal</label>
+    <description>Applies the power of the Orb of the Eternal. This is a single use infusion of magical energy that will heal wounds, restore limbs, and cure diseases. The healing energy will target and heal the single worst health condition affecting someone at any given time.</description>
+	<descriptionHyperlinks><ThingDef>TM_Artifact_OrbOfEternal</ThingDef></descriptionHyperlinks>
+    <workerClass>Recipe_AdministerUsableItem</workerClass>
+    <jobString>Using Orb of the Eternal.</jobString>
+	<uiIconThing>TM_Artifact_OrbOfEternal</uiIconThing>
+    <targetsBodyPart>false</targetsBodyPart>
+    <anesthetize>false</anesthetize>
+    <workAmount>300</workAmount>
+    <dontShowIfAnyIngredientMissing>true</dontShowIfAnyIngredientMissing>
+    <surgerySuccessChanceFactor>99999</surgerySuccessChanceFactor>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>TM_Artifact_OrbOfEternal</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>TM_Artifact_OrbOfEternal</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+	<recipeUsers>
+		<li>Human</li>
+	</recipeUsers>
+  </RecipeDef>
   
   <ThingDef ParentName="TM_BuyableArtifactBase">
     <defName>TM_Artifact_NecroticOrb</defName>
