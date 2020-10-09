@@ -52,17 +52,29 @@
 			-->
 			</skills>										
 			
-			<maxLevel>0</maxLevel>							<!-- must match number of abilityDefs - 1, use 0 if only 1 abilityDef is defined -->	
+			<maxLevel>0</maxLevel>							<!-- must match number of abilityDefs - 1, use 0 if only 1 abilityDef is defined -->				
 			<learnCost>2</learnCost>						<!-- how many points are needed to learn this ability -->
+			<costToLevel>1</costToLevel>					<!-- points required to level the power after being learned -->	
 			<requiresScroll>false</requiresScroll>			<!-- scroll required to learn, if false then the power can be learned using points from leveling -->
 			<chaosMageUseable>false</chaosMageUseable>		<!-- for magic, makes ability appear in chaos mage pool of abilities -->
-			<autocast>										<!-- limited autocast functionality -->
-				<type>Null</type>							<!-- valid types are: -->
+			<autocasting>										<!-- limited autocast functionality -->
+				<type>Null</type>							<!-- valid types are: OnTarget, OnCell, OnNearby, OnSelf, Null -->
+				<targetType>Thing</targetType>				<!-- matches the class type valid for the target, options: Thing (default), ThingWithComps, Pawn, Building, Corpse, LocalTargetInfo -->
 				<mightUser>false</mightUser>				<!-- determines if autocast is checked for might users -->
 				<magicUser>false</magicUser>				<!-- determines if autocast is checked for magic users -->
 				<drafted>false</drafted>					<!-- determines if autocasting will be attempted if the pawn is drafted -->
-				<undrafted>false</undrafted>				<!-- determines if autocasting will be attempted if the pawn is not drafted -->
-			</autocast>
+				<undrafted>false</undrafted>				<!-- determines if autocasting will be attempted if the pawn is not drafted (can be both drafted and undrafted) -->
+															<!-- targets can match any or all criteria but must be valid for at least 1 -->
+				<targetFriendly>false</targetFriendly>		<!-- target is valid if Friendly (same faction) -->
+				<targetNeutral>true</targetNeutral>			<!-- target is valid if Neutral (non-hostile) -->
+				<targetEnemy>false</targetEnemy>			<!-- target is valid if Enemy (hostile) -->
+				<requiresLoS>true</requiresLoS>				<!-- checks LOS -->
+				<AIUsable>false</AIUsable>					<!-- WIP - limited functionality for AI casting -->
+				<includeSelf>false</includeSelf>			<!-- valid targets can include the caster -->
+				<advancedConditionDefs>						<!-- list of advanced condition checks; entries are the defName of one or more TM_AutocastConditionDef -->
+				</advancedConditionDefs>					<!-- must match all conditions; review TM_AutocastConditionDefs.xml for examples and detailed instructions -->
+															<!-- valid condition classes are: DamageTaken, HasHediff, HasNeed, EnemiesInRange, AlliesInRange, TargetDrafted, Null -->
+			</autocasting>
 		</customPower>
 	</TorannMagic.TM_CustomPowerDef>
 
@@ -71,8 +83,9 @@
 		<defName>TM_Taunt</defName>	
 		<customPower>	
 			<forFighter>true</forFighter>
+			<maxLevel>0</maxLevel>
 			<abilityDefs>									<!-- only 1 ability so max level is 0 -->
-				<li>TM_Taunt</li>							
+				<li>TM_Taunt</li>
 			</abilityDefs>
 			<skills>
 				<li>										
@@ -97,7 +110,6 @@
 		</customPower>
 	</TorannMagic.TM_CustomPowerDef>	
 
-<!-- not fully implemented -->
 	<TorannMagic.TM_CustomPowerDef ParentName="CustomPower">
 		<defName>TM_Explosion</defName>	
 		<customPower>	

@@ -82,7 +82,7 @@ namespace TorannMagic
             Rect sRect = new Rect(rect.x, rect.y, rect.width - 36f, rect.height + 56f + sizeY);
             scrollPosition = GUI.BeginScrollView(rect, scrollPosition, sRect, false, true);
             
-            bool flag = comp != null;
+            bool flag = comp != null && comp.MagicData != null;
             if (flag)
             {
                 bool flag2 = true; //comp.MagicUserLevel > 0;
@@ -1547,7 +1547,7 @@ namespace TorannMagic
                     {
                         Widgets.DrawLineHorizontal(0f + 20f, rect.y - 2f, 700f - 40f);
                     }
-                    if (power.level < 3 && TM_Calc.IsIconAbility_02(power.abilityDef))
+                    if (power.level < power.maxLevel && (power.TMabilityDefs.Count > 1 || TM_Calc.IsIconAbility_02(power.abilityDef)))
                     {
                         TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
                         {
@@ -1582,7 +1582,7 @@ namespace TorannMagic
 
                     float x4 = Text.CalcSize(" # / # ").x;
 
-                    if (TM_Calc.IsIconAbility_03(power.abilityDef))
+                    if (power.TMabilityDefs.Count > 1 || TM_Calc.IsIconAbility_03(power.abilityDef))
                     {
                         flag999 = true;
                     }
@@ -1591,14 +1591,14 @@ namespace TorannMagic
                         flag999 = false;
                     }
 
-                    bool flag10 = enumerator.Current.level >= 3 || compMagic.MagicData.MagicAbilityPoints == 0;
+                    bool flag10 = enumerator.Current.level >= enumerator.Current.maxLevel || compMagic.MagicData.MagicAbilityPoints < enumerator.Current.costToLevel;
                     if (flag10)
                     {
                         if (flag999)
                         {
                             Widgets.DrawTextureFitted(rect, power.Icon, 1f);
                             Rect rect19 = new Rect(rect.xMax, rect.yMin, x4, MagicCardUtility.TextSize);
-                            Widgets.Label(rect19, " " + enumerator.Current.level + " / 3");
+                            Widgets.Label(rect19, " " + enumerator.Current.level + " / " + enumerator.Current.maxLevel);
                         }
                         else
                         {
@@ -1611,11 +1611,11 @@ namespace TorannMagic
                         {
                             Rect rect10 = new Rect(rect.xMax, rect.yMin, x4, MagicCardUtility.TextSize);
                             bool flag1 = Widgets.ButtonImage(rect, power.Icon) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
-                            Widgets.Label(rect10, " " + power.level + " / 3");
+                            Widgets.Label(rect10, " " + power.level + " / " + enumerator.Current.maxLevel);
                             if (flag1)
                             {
                                 compMagic.LevelUpPower(power);
-                                compMagic.MagicData.MagicAbilityPoints -= 1;
+                                compMagic.MagicData.MagicAbilityPoints -= power.costToLevel;
                             }
                         }
                         else
@@ -1722,7 +1722,7 @@ namespace TorannMagic
                     {
                         Widgets.DrawLineHorizontal(0f + 20f, rect.y - 2f, MagicCardUtility.MagicCardSize.x - 40f);
                     }
-                    if (power.level < 3 && TM_Calc.IsIconAbility_02(power.abilityDef))
+                    if (power.level < power.maxLevel && (power.TMabilityDefs.Count > 1 || TM_Calc.IsIconAbility_02(power.abilityDef)))
                     {
                         TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
                         {
@@ -1757,7 +1757,7 @@ namespace TorannMagic
                     float x4 = Text.CalcSize(" # / # ").x;
                     //bool flag9 = power.abilityDef.label == "Ray of Hope" || power.abilityDef.label == "Soothing Breeze" || power.abilityDef.label == "Frost Ray" || power.abilityDef.label == "AMP" || power.abilityDef.label == "Shadow" || power.abilityDef.label == "Magic Missile" || power.abilityDef.label == "Blink" || power.abilityDef.label == "Summon" || power.abilityDef.label == "Shield"; //add all other buffs or xml based upgrades
 
-                    if (TM_Calc.IsIconAbility_03(power.abilityDef))
+                    if (power.TMabilityDefs.Count > 1 || TM_Calc.IsIconAbility_03(power.abilityDef))
                     {
                         flag999 = true;
                     }
@@ -1815,7 +1815,7 @@ namespace TorannMagic
                             {
                                 Widgets.DrawTextureFitted(rect, power.Icon, 1f);
                                 Rect rect19 = new Rect(rect.xMax, rect.yMin, x4, MagicCardUtility.TextSize);
-                                Widgets.Label(rect19, " " + enumerator.Current.level + " / 3");                                
+                                Widgets.Label(rect19, " " + enumerator.Current.level + " / " + enumerator.Current.maxLevel);                                
                             }
                             else
                             {
@@ -1828,11 +1828,11 @@ namespace TorannMagic
                             {
                                 Rect rect10 = new Rect(rect.xMax, rect.yMin, x4, MagicCardUtility.TextSize);
                                 bool flag1 = Widgets.ButtonImage(rect, power.Icon) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
-                                Widgets.Label(rect10, " " + power.level + " / 3");
+                                Widgets.Label(rect10, " " + power.level + " / " + power.maxLevel);
                                 if (flag1)
                                 {
                                     compMagic.LevelUpPower(power);
-                                    compMagic.MagicData.MagicAbilityPoints -= 1;
+                                    compMagic.MagicData.MagicAbilityPoints -= power.costToLevel;
                                 }                                
                             }
                             else

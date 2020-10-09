@@ -36,10 +36,6 @@ namespace TorannMagic
 
                 int dmg = GetWeaponDmg(this.launcher as Pawn);
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-                if (!pawn.IsColonist && settingsRef.AIHardMode)
-                {
-                    dmg += 12;
-                }
 
                 if (victim != null && Rand.Chance(GetWeaponAccuracy(pawn)))
                 {

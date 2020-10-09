@@ -18,6 +18,7 @@ namespace TorannMagic
 
         private static int pwrVal;
         private int verVal;
+        private float armorPen = 0f;
 
         protected override void Impact(Thing hitThing)
         {
@@ -41,6 +42,7 @@ namespace TorannMagic
                 CellRect cellRect = CellRect.CenteredOn(base.Position, 1);
                 cellRect.ClipInsideMap(map);
                 int dmg = GetWeaponDmg(pawn);
+                armorPen = pawn.equipment.Primary.def.Verbs.FirstOrDefault().defaultProjectile.projectile.GetArmorPenetration(1f);
 
                 if (victim != null && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracyPawn, true)))
                 {
@@ -70,7 +72,7 @@ namespace TorannMagic
             }
 
             dmg = Mathf.RoundToInt(dmg * (1f + (.1f * pwrVal)) * TorannMagicDefOf.TM_Headshot.weaponDamageFactor);
-            return (int)Mathf.Clamp(dmg, 0, 60);
+            return (int)Mathf.Clamp(dmg, 0, 100);
         }
 
         public void PenetratingShot(Pawn victim, int dmg, DamageDef dmgType)
@@ -109,7 +111,7 @@ namespace TorannMagic
 
         public int HitBodyPartOrParent(Pawn victim, int dmg, DamageDef dmgType, BodyPartRecord hitPart, int penetratedParts)
         {
-            BodyPartRecord parentPart = null;
+            BodyPartRecord parentPart = null;            
             if (hitPart.parent != null && hitPart.depth == BodyPartDepth.Inside)
             {
                 parentPart = hitPart.parent;
@@ -161,12 +163,12 @@ namespace TorannMagic
             if (hitPart.def.GetMaxHealth(victim) > amt)
             {
                 //Very large animals or creatures
-                dinfo = new DamageInfo(type, amt, 0, (float)-1, pawn, hitPart, pawn.equipment.Primary.def, DamageInfo.SourceCategory.ThingOrUnknown);
+                dinfo = new DamageInfo(type, amt, armorPen, (float)-1, pawn, hitPart, pawn.equipment.Primary.def, DamageInfo.SourceCategory.ThingOrUnknown);
             }
             else
             {
                 amt = (int)(amt / (1 + penetratedParts));
-                dinfo = new DamageInfo(type, amt, 0, (float)-1, pawn, hitPart, pawn.equipment.Primary.def, DamageInfo.SourceCategory.ThingOrUnknown);
+                dinfo = new DamageInfo(type, amt, armorPen, (float)-1, pawn, hitPart, pawn.equipment.Primary.def, DamageInfo.SourceCategory.ThingOrUnknown);
             }
             dinfo.SetAllowDamagePropagation(false);
             //DamageWorker_AddInjury inj = new DamageWorker_AddInjury();

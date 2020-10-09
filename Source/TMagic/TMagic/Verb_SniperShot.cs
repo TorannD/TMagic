@@ -14,7 +14,7 @@ namespace TorannMagic
     {
         protected override bool TryCastShot()
         {
-            if (this.CasterPawn.equipment.Primary !=null && this.CasterPawn.equipment.Primary.def.IsRangedWeapon)
+            if (TM_Calc.IsUsingRanged(this.CasterPawn))
             {
                 Thing wpn = this.CasterPawn.equipment.Primary;
                 ThingDef newProjectile = wpn.def.Verbs.FirstOrDefault().defaultProjectile;

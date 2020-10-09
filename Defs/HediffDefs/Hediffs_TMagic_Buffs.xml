@@ -2615,7 +2615,7 @@
     <defName>TM_SS_SerumHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
     <label>SS Serum</label>
-	<description>A chemical enhancing physical abilities and magical resistance; reduces magical power and energy regeneration. The potency of the chemical increases in 3 stages and takes 100 days to fully mature.</description>
+	<description>A chemical enhancing physical abilities and magical resistance; reduces magical power and energy regeneration. The potency of the chemical increases in 3 stages and takes 100 days to fully mature. Pawns will recover consciousness 2 days after taking the serum.</description>
 	<defaultLabelColor>(0.2,0.6,1)</defaultLabelColor>
     <scenarioCanAdd>false</scenarioCanAdd>
 	<maxSeverity>100.0</maxSeverity>

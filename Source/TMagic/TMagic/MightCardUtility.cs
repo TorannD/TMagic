@@ -82,7 +82,7 @@ namespace TorannMagic
             Rect sRect = new Rect(rect.x, rect.y, rect.width - 36f, rect.height + 56f + sizeY);
             scrollPosition = GUI.BeginScrollView(rect, scrollPosition, sRect, false, true);
                         
-            bool flag = comp != null;
+            bool flag = comp != null && comp.MightData != null;
             if (flag)
             {
                 float x = Text.CalcSize("TM_HeaderMight".Translate()).x;
@@ -1083,7 +1083,7 @@ namespace TorannMagic
                         Widgets.DrawLineHorizontal(0f + 20f, rect.y - 2f, 700f - 40f);
                     }
                     //power.abilityDef == TorannMagicDefOf.TM_Sprint || power.abilityDef == TorannMagicDefOf.TM_Sprint_I || power.abilityDef == TorannMagicDefOf.TM_Sprint_II ||
-                    if (power.level < 3 && (power.abilityDef == TorannMagicDefOf.TM_Grapple || power.abilityDef == TorannMagicDefOf.TM_Grapple_I || power.abilityDef == TorannMagicDefOf.TM_Grapple_II ||
+                    if (power.level < power.maxLevel && ((power.TMabilityDefs.Count > 1) || (power.abilityDef == TorannMagicDefOf.TM_Grapple || power.abilityDef == TorannMagicDefOf.TM_Grapple_I || power.abilityDef == TorannMagicDefOf.TM_Grapple_II ||
                         power.abilityDef == TorannMagicDefOf.TM_DisablingShot || power.abilityDef == TorannMagicDefOf.TM_DisablingShot_I || power.abilityDef == TorannMagicDefOf.TM_DisablingShot_II ||
                         power.abilityDef == TorannMagicDefOf.TM_PhaseStrike || power.abilityDef == TorannMagicDefOf.TM_PhaseStrike_I || power.abilityDef == TorannMagicDefOf.TM_PhaseStrike_II ||
                         power.abilityDef == TorannMagicDefOf.TM_ArrowStorm || power.abilityDef == TorannMagicDefOf.TM_ArrowStorm_I || power.abilityDef == TorannMagicDefOf.TM_ArrowStorm_II ||
@@ -1093,7 +1093,7 @@ namespace TorannMagic
                         power.abilityDef == TorannMagicDefOf.TM_StayAlert || power.abilityDef == TorannMagicDefOf.TM_StayAlert_I || power.abilityDef == TorannMagicDefOf.TM_StayAlert_II ||
                         power.abilityDef == TorannMagicDefOf.TM_MoveOut || power.abilityDef == TorannMagicDefOf.TM_MoveOut_I || power.abilityDef == TorannMagicDefOf.TM_MoveOut_II ||
                         power.abilityDef == TorannMagicDefOf.TM_HoldTheLine || power.abilityDef == TorannMagicDefOf.TM_HoldTheLine_I || power.abilityDef == TorannMagicDefOf.TM_HoldTheLine_II ||
-                        power.abilityDef == TorannMagicDefOf.TM_Transpose || power.abilityDef == TorannMagicDefOf.TM_Transpose_I || power.abilityDef == TorannMagicDefOf.TM_Transpose_II))
+                        power.abilityDef == TorannMagicDefOf.TM_Transpose || power.abilityDef == TorannMagicDefOf.TM_Transpose_I || power.abilityDef == TorannMagicDefOf.TM_Transpose_II)))
 
                     {
                         TooltipHandler.TipRegion(rect, () => string.Concat(new string[]
@@ -1148,7 +1148,7 @@ namespace TorannMagic
                     float x4 = Text.CalcSize(" # / # ").x;
                     //bool flag9 = power.abilityDef.label == "Sprint" || power.abilityDef.label == "Grapple"; //add all other buffs or xml based upgrades
                     //power.abilityDef.defName == "TM_Sprint" || power.abilityDef.defName ==  "TM_Sprint_I" || power.abilityDef.defName == "TM_Sprint_II" || power.abilityDef.defName == "TM_Sprint_III" ||
-                    if (power.abilityDef.defName == "TM_Grapple" || power.abilityDef.defName == "TM_Grapple_I" || power.abilityDef.defName == "TM_Grapple_II" || power.abilityDef.defName == "TM_Grapple_III" ||
+                    if (power.TMabilityDefs.Count > 1 || power.abilityDef.defName == "TM_Grapple" || power.abilityDef.defName == "TM_Grapple_I" || power.abilityDef.defName == "TM_Grapple_II" || power.abilityDef.defName == "TM_Grapple_III" ||
                         power.abilityDef.defName == "TM_DisablingShot" || power.abilityDef.defName == "TM_DisablingShot_I" || power.abilityDef.defName == "TM_DisablingShot_II" || power.abilityDef.defName == "TM_DisablingShot_III" ||
                         power.abilityDef.defName == "TM_PhaseStrike" || power.abilityDef.defName == "TM_PhaseStrike_I" || power.abilityDef.defName == "TM_PhaseStrike_II" || power.abilityDef.defName == "TM_PhaseStrike_III" ||
                         power.abilityDef.defName == "TM_ArrowStorm" || power.abilityDef.defName == "TM_ArrowStorm_I" || power.abilityDef.defName == "TM_ArrowStorm_II" || power.abilityDef.defName == "TM_ArrowStorm_III" ||
@@ -1166,19 +1166,19 @@ namespace TorannMagic
                     {
                         flag999 = false;
                     }
-                    if (power.abilityDef.defName == "TM_PsionicBarrier" || power.abilityDef.defName == "TM_PsionicBarrier_Projected")
-                    {
-                        flag998 = true;
-                    }
-                    else
-                    {
-                        flag998 = false;
-                    }
-                    bool flag10 = enumerator.Current.level >= power.maxLevel || compMight.MightData.MightAbilityPoints == 0;
-                    if (flag998)
-                    {
-                        flag10 = enumerator.Current.level >= 1 || compMight.MightData.MightAbilityPoints < 2;
-                    }
+                    //if (power.abilityDef.defName == "TM_PsionicBarrier" || power.abilityDef.defName == "TM_PsionicBarrier_Projected")
+                    //{
+                    //    flag998 = true;
+                    //}
+                    //else
+                    //{
+                    //    flag998 = false;
+                    //}
+                    bool flag10 = enumerator.Current.level >= power.maxLevel || compMight.MightData.MightAbilityPoints < enumerator.Current.costToLevel;
+                    //if (flag998)
+                    //{
+                    //    flag10 = enumerator.Current.level >= 1 || compMight.MightData.MightAbilityPoints < 2;
+                    //}
                     //Ability label
                     Rect rectLabel = new Rect(0f + 20f, rect.yMin, 350f - 44f, MagicCardUtility.MagicButtonPointSize);
                     Widgets.Label(rectLabel, power.abilityDef.LabelCap);
@@ -1229,14 +1229,14 @@ namespace TorannMagic
                             {
                                 Widgets.DrawTextureFitted(rect, power.Icon, 1f);
                                 Rect rect19 = new Rect(rect.xMax, rect.yMin, x4, MightCardUtility.TextSize);
-                                Widgets.Label(rect19, " " + enumerator.Current.level + " / 3");
+                                Widgets.Label(rect19, " " + enumerator.Current.level + " / " + enumerator.Current.maxLevel);
                             }
-                            else if (flag998)
-                            {
-                                Widgets.DrawTextureFitted(rect, power.Icon, 1f);
-                                Rect rect19 = new Rect(rect.xMax, rect.yMin, x4, MightCardUtility.TextSize);
-                                Widgets.Label(rect19, " " + enumerator.Current.level + " / 1");
-                            }
+                            //else if (flag998)
+                            //{
+                            //    Widgets.DrawTextureFitted(rect, power.Icon, 1f);
+                            //    Rect rect19 = new Rect(rect.xMax, rect.yMin, x4, MightCardUtility.TextSize);
+                            //    Widgets.Label(rect19, " " + enumerator.Current.level + " / 1");
+                            //}
                             else
                             {
                                 Widgets.DrawTextureFitted(rect, power.Icon, 1f);
@@ -1249,26 +1249,26 @@ namespace TorannMagic
                             {
                                 Rect rect10 = new Rect(rect.xMax, rect.yMin, x4, MightCardUtility.TextSize);
                                 bool flag1 = Widgets.ButtonImage(rect, power.Icon) && compMight.AbilityUser.Faction == Faction.OfPlayer;
-                                Widgets.Label(rect10, " " + power.level + " / 3");
+                                Widgets.Label(rect10, " " + power.level + " / " + power.maxLevel);
                                 if (flag1)
                                 {
                                     compMight.LevelUpPower(power);
-                                    compMight.MightData.MightAbilityPoints -= 1;
+                                    compMight.MightData.MightAbilityPoints -= power.costToLevel;
                                     compMight.FixPowers();
                                 }
                             }
-                            else if (flag998)
-                            {
-                                Rect rect10 = new Rect(rect.xMax, rect.yMin, x4, MightCardUtility.TextSize);
-                                bool flag1 = Widgets.ButtonImage(rect, power.Icon) && compMight.AbilityUser.Faction == Faction.OfPlayer;
-                                Widgets.Label(rect10, " " + power.level + " / 1");
-                                if (flag1)
-                                {
-                                    compMight.LevelUpPower(power);
-                                    compMight.MightData.MightAbilityPoints -= 2;
-                                    compMight.FixPowers();
-                                }
-                            }
+                            //else if (flag998)
+                            //{
+                            //    Rect rect10 = new Rect(rect.xMax, rect.yMin, x4, MightCardUtility.TextSize);
+                            //    bool flag1 = Widgets.ButtonImage(rect, power.Icon) && compMight.AbilityUser.Faction == Faction.OfPlayer;
+                            //    Widgets.Label(rect10, " " + power.level + " / 1");
+                            //    if (flag1)
+                            //    {
+                            //        compMight.LevelUpPower(power);
+                            //        compMight.MightData.MightAbilityPoints -= 2;
+                            //        compMight.FixPowers();
+                            //    }
+                            //}
                             else
                             {
                                 Widgets.DrawTextureFitted(rect, power.Icon, 1f);

@@ -60,6 +60,10 @@
       <HintPath>..\..\..\..\..\..\..\workshop\content\294100\2195729899\1.2\Assemblies\CompDeflector.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="DualWield">
+      <HintPath>..\..\..\..\..\..\..\workshop\content\294100\1628211313\Assemblies\DualWield.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="GiddyUpCore">
       <HintPath>..\..\..\..\..\..\..\workshop\content\294100\1216999901\Assemblies\GiddyUpCore.dll</HintPath>
       <Private>False</Private>
@@ -134,6 +138,7 @@
     <Compile Include="Building_PoisonTrap.cs" />
     <Compile Include="Building_TechnoTurret.cs" />
     <Compile Include="Building_ExplosiveProximityTrap.cs" />
+    <Compile Include="DefModExtension_LearnAbilityRequiredTraits.cs" />
     <Compile Include="Enchantment\EnchantmentAction.cs" />
     <Compile Include="HediffComp_AbilityResource.cs" />
     <Compile Include="HediffComp_Medigel.cs" />
@@ -145,8 +150,10 @@
     <Compile Include="Projectile_Explosion.cs" />
     <Compile Include="Thoughts\ThoughtWorker_TM_WearingDemonhide.cs" />
     <Compile Include="TMDefs\TM_Autocast.cs" />
+    <Compile Include="TMDefs\TM_AutocastCondition.cs" />
     <Compile Include="TMDefs\TM_CustomSkill.cs" />
     <Compile Include="TMDefs\TM_CustomPower.cs" />
+    <Compile Include="TM_AutocastConditionDef.cs" />
     <Compile Include="TM_CustomPowerDef.cs" />
     <Compile Include="Verb_ApplyRandomHediffFromList.cs" />
     <Compile Include="Verb_EnchantmentAction.cs" />

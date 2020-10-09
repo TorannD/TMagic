@@ -379,6 +379,14 @@ namespace TorannMagic
                             return result;
                         }
                     }
+                    TMAbilityDef tmad = this.magicDef;
+                    if (tmad != null && tmad.requiredWeaponsOrCategories != null && tmad.IsRestrictedByEquipment(this.Pawn))
+                    {
+                        reason = "TM_IncompatibleWeaponType".Translate(
+                            base.Pawn.LabelShort,
+                            tmad.label);
+                        return false;
+                    }
                 }
                 List<Apparel> wornApparel = base.Pawn.apparel.WornApparel;
                 for (int i = 0; i < wornApparel.Count; i++)

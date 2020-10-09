@@ -201,6 +201,50 @@ namespace TorannMagic
             }
         }
 
+        public static List<ThingDef> MagicFociList()
+        {
+            List<ThingDef> magicFocis = new List<ThingDef>();
+            magicFocis.Clear();
+            IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
+                                               where (true)
+                                               select def;
+            List<string> magicFociList = WeaponCategoryList.Named("TM_Category_MagicalFoci").weaponDefNames;
+            foreach (ThingDef current in enumerable)
+            {
+                for (int i = 0; i < magicFociList.Count; i++)
+                {
+                    if (current.defName == magicFociList[i].ToString() || magicFociList[i].ToString() == "*")
+                    {
+                        //Log.Message("adding magicFoci def " + current.defName);
+                        magicFocis.AddDistinct(current);
+                    }
+                }
+            }
+            return magicFocis;
+        }
+
+        public static List<ThingDef> BowList()
+        {
+            List<ThingDef> bows = new List<ThingDef>();
+            bows.Clear();
+            IEnumerable<ThingDef> enumerable = from def in DefDatabase<ThingDef>.AllDefs
+                                               where (true)
+                                               select def;
+            List<string> bowList = WeaponCategoryList.Named("TM_Category_Bows").weaponDefNames;
+            foreach (ThingDef current in enumerable)
+            {
+                for (int i = 0; i < bowList.Count; i++)
+                {
+                    if (current.defName == bowList[i].ToString() || bowList[i].ToString() == "*")
+                    {
+                        //Log.Message("adding bow def " + current.defName);
+                        bows.AddDistinct(current);
+                    }
+                }
+            }
+            return bows;
+        }
+
         public static List<ThingDef> PistolList()
         {
             List<ThingDef> pistols = new List<ThingDef>();
@@ -211,9 +255,9 @@ namespace TorannMagic
             List<string> pistolList = WeaponCategoryList.Named("TM_Category_Pistols").weaponDefNames;
             foreach (ThingDef current in enumerable)
             {
-                for(int i =0; i < pistolList.Count; i++)
+                for (int i = 0; i < pistolList.Count; i++)
                 {
-                    if(current.defName == pistolList[i].ToString() || pistolList[i].ToString() == "*")
+                    if (current.defName == pistolList[i].ToString() || pistolList[i].ToString() == "*")
                     {
                         //Log.Message("adding pistol def " + current.defName);
                         pistols.AddDistinct(current);
@@ -265,6 +309,22 @@ namespace TorannMagic
                 }
             }
             return shotguns;
+        }
+
+        public static IEnumerable<TM_CustomPowerDef> CustomFighterPowerDefs()
+        {
+            IEnumerable<TM_CustomPowerDef> enumerable = from def in DefDatabase<TM_CustomPowerDef>.AllDefs
+                                                        where (def.customPower != null && def.customPower.forFighter)
+                                                        select def;
+            return enumerable;
+        }
+
+        public static IEnumerable<TM_CustomPowerDef> CustomMagePowerDefs()
+        {
+            IEnumerable<TM_CustomPowerDef> enumerable = from def in DefDatabase<TM_CustomPowerDef>.AllDefs
+                                                        where (def.customPower != null && def.customPower.forMage)
+                                                        select def;
+            return enumerable;
         }
 
     }

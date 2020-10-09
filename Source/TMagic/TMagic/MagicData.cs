@@ -31,9 +31,7 @@ namespace TorannMagic
                 if (flag)
                 {
                     this.customPowersInitialized = true;
-                    IEnumerable<TM_CustomPowerDef> enumerable = from def in DefDatabase<TM_CustomPowerDef>.AllDefs
-                                                       where (def.customPower != null && def.customPower.forMage)
-                                                       select def;
+                    IEnumerable<TM_CustomPowerDef> enumerable = TM_Data.CustomMagePowerDefs();
 
                     if (magicPowerCustom == null || magicPowerCustom.Count <= 0)
                     {
@@ -48,7 +46,8 @@ namespace TorannMagic
                         MagicPower mp = new MagicPower(abilityList, requiresScroll);
                         mp.maxLevel = current.customPower.maxLevel;
                         mp.learnCost = current.customPower.learnCost;
-
+                        mp.costToLevel = current.customPower.costToLevel;
+                        mp.autocasting = current.customPower.autocasting;
                         if (!magicPowerCustom.Any(a => a.abilityDef == mp.abilityDef))
                         {                            
                             newPower = true;
@@ -60,7 +59,7 @@ namespace TorannMagic
                             MagicPowerSkill mps = new MagicPowerSkill(skill.label, skill.description);
                             mps.levelMax = skill.levelMax;
                             mps.costToLevel = skill.costToLevel;
-                            if (!MagicPowerSkill_Custom.Any(b => b.label == mps.label))
+                            if (!MagicPowerSkill_Custom.Any(b => b.label == mps.label) && !AllMagicPowerSkills.Any(b => b.label == mps.label))
                             {
                                 MagicPowerSkill_Custom.Add(mps);
                             }
@@ -81,7 +80,8 @@ namespace TorannMagic
                         {
                             this.AllMagicPowersForChaosMage.Add(mp);
                         }
-                    }                    
+                    }
+                    this.allMagicPowerSkillsList = null; //force rediscovery and caching to include custom defs
                 }
                 return this.magicPowerCustom;
             }
@@ -3314,13 +3314,14 @@ namespace TorannMagic
             if (!skillEfficiency.ContainsKey(ability))
             {
                 bool hasSkill = false;
+                string s = ability.defName.ToString();
+                char[] trim = { '_', 'I', 'V', 'X' };
+                s = s.TrimEnd(trim) + "_eff";
                 for (int i = 0; i < AllMagicPowerSkills.Count; i++)
                 {
-                    string s = ability.defName.ToString();
-                    char[] trim = { '_', 'I', 'V', 'X' };
 
                     MagicPowerSkill mps = AllMagicPowerSkills[i];
-                    s = s.TrimEnd(trim) + "_eff";
+                    
                     if (mps.label.Contains(s))
                     {
                         skillEfficiency.Add(ability, mps);
@@ -3341,17 +3342,42 @@ namespace TorannMagic
             if (!skillVersatility.ContainsKey(ability))
             {
                 bool hasSkill = false;
+                string s = ability.defName.ToString();
+                char[] trim = { '_', 'I', 'V', 'X' };
+                s = s.TrimEnd(trim) + "_ver";
                 for (int i = 0; i < AllMagicPowerSkills.Count; i++)
                 {
-                    string s = ability.defName.ToString();
-                    char[] trim = { '_', 'I', 'V', 'X' };
-
                     MagicPowerSkill mps = AllMagicPowerSkills[i];
-                    s = s.TrimEnd(trim) + "_ver";
+                    
                     if (mps.label.Contains(s))
                     {
                         skillVersatility.Add(ability, mps);
                         hasSkill = true;
+                    }
+                }
+                if (!hasSkill) //check custom powers for different ability to skill names
+                {
+                    List<TM_CustomPowerDef> customPowers = TM_Data.CustomMagePowerDefs().ToList();
+                    for (int i = 0; i < customPowers.Count; i++)
+                    {
+                        for (int j = 0; j < customPowers[i].customPower.abilityDefs.Count; j++)
+                        {
+                            if (ability.defName == customPowers[i].customPower.abilityDefs[j].ToString())
+                            {
+                                for (int k = 0; k < AllMagicPowerSkills.Count; k++)
+                                {
+                                    MagicPowerSkill mps = AllMagicPowerSkills[k];
+                                    foreach (TM_CustomSkill cs in customPowers[i].customPower.skills)
+                                    {
+                                        if (cs.label.Contains("_ver") && cs.label == mps.label)
+                                        {
+                                            skillVersatility.Add(ability, mps);
+                                            hasSkill = true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 if (!hasSkill)
@@ -3368,17 +3394,42 @@ namespace TorannMagic
             if (!skillPower.ContainsKey(ability))
             {
                 bool hasSkill = false;
+                string s = ability.defName.ToString();
+                char[] trim = { '_', 'I', 'V', 'X' };
+                s = s.TrimEnd(trim) + "_pwr";
                 for (int i = 0; i < AllMagicPowerSkills.Count; i++)
-                {
-                    string s = ability.defName.ToString();
-                    char[] trim = { '_', 'I', 'V', 'X' };
-
+                {                   
                     MagicPowerSkill mps = AllMagicPowerSkills[i];
-                    s = s.TrimEnd(trim) + "_pwr";
+                    
                     if (mps.label.Contains(s))
                     {
                         skillPower.Add(ability, mps);
                         hasSkill = true;
+                    }
+                }
+                if (!hasSkill) //check custom powers for different ability to skill names
+                {
+                    List<TM_CustomPowerDef> customPowers = TM_Data.CustomMagePowerDefs().ToList();
+                    for (int i = 0; i < customPowers.Count; i++)
+                    {
+                        for (int j = 0; j < customPowers[i].customPower.abilityDefs.Count; j++)
+                        {
+                            if (ability.defName == customPowers[i].customPower.abilityDefs[j].ToString())
+                            {
+                                for (int k = 0; k < AllMagicPowerSkills.Count; k++)
+                                {
+                                    MagicPowerSkill mps = AllMagicPowerSkills[k];
+                                    foreach (TM_CustomSkill cs in customPowers[i].customPower.skills)
+                                    {
+                                        if (cs.label.Contains("_pwr") && cs.label == mps.label)
+                                        {
+                                            skillPower.Add(ability, mps);
+                                            hasSkill = true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 if (!hasSkill)

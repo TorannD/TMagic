@@ -85,25 +85,27 @@ namespace TorannMagic.Conditions
             IntVec3 rndTarg = new IntVec3(Rand.Range(16, this.SingleMap.Size.x - 16), 0, Rand.Range(16, this.SingleMap.Size.z - 16));
             if (Rand.Chance(.1f * eventDifficulty))
             {
-                rndTarg = FindEnemyPawnOrBuilding();
+                rndTarg = FindEnemyPawnOrBuilding(rndTarg);
             }
             IntVec3 rndPos = rndTarg;
             int accuracy = 5 - eventDifficulty;
             rndPos.x += Rand.Range(-accuracy, accuracy);
             rndPos.z += Rand.Range(-accuracy, accuracy);
-            if(eventDifficulty > 2 && Rand.Chance(eventDifficulty * .05f))
+            if (rndPos.IsValid && rndPos.InBounds(this.SingleMap) && rndPos.DistanceToEdge(this.SingleMap) > 6)
             {
-                SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Firestorm_Large, rndPos, this.SingleMap);
+                if (eventDifficulty > 2 && Rand.Chance(eventDifficulty * .05f))
+                {
+                    SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Firestorm_Large, rndPos, this.SingleMap);
+                }
+                else if (eventDifficulty > 1 && Rand.Chance(eventDifficulty * .1f))
+                {
+                    SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Firestorm_Small, rndPos, this.SingleMap);
+                }
+                else
+                {
+                    SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Firestorm_Tiny, rndPos, this.SingleMap);
+                }
             }
-            else if(eventDifficulty > 1 && Rand.Chance(eventDifficulty * .1f))
-            {
-                SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Firestorm_Small, rndPos, this.SingleMap);
-            }
-            else
-            {
-                SkyfallerMaker.SpawnSkyfaller(TorannMagicDefOf.TM_Firestorm_Tiny, rndPos, this.SingleMap);
-            }
-            
         }
 
         public override void ExposeData()
@@ -157,8 +159,10 @@ namespace TorannMagic.Conditions
         private void SetEventParameters()
         {
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            int pts = (int)(Rand.Range(.9f, 1.1f) * wealth * wealthMultiplier * storytellerThreat);
+            int pts = (int)(Rand.Range(.7f, .9f) * wealth * wealthMultiplier * storytellerThreat);
             pts += 50000 * eventDifficulty;
+            pts = Mathf.Clamp(pts, eventSpawnPoints, 1250000);
+            //Log.Message("demon assault has pts: " + pts);
             if(eventSpawnPoints <= pts)
             {
                 eventSpawnPoints = pts;
@@ -273,14 +277,18 @@ namespace TorannMagic.Conditions
             base.End();
         }
 
-        private IntVec3 FindEnemyPawnOrBuilding()
+        private IntVec3 FindEnemyPawnOrBuilding(IntVec3 initialPos)
         {
             List<Thing> list = new List<Thing>();
             list.Clear();
             list = (from x in this.SingleMap.listerThings.AllThings
-                    where x.Faction != null && x.Faction.HostileTo(spawnedThings.RandomElement().Faction)
+                    where x.Spawned && x.Faction != null && x.Faction.HostileTo(spawnedThings.RandomElement().Faction)
                     select x).ToList<Thing>();
-            return list.RandomElement().Position;
+            if (list != null && list.Count > 0)
+            {
+                return list.RandomElement().Position;
+            }
+            return initialPos;
         }
 
         public void DoLightningStrike()
@@ -400,7 +408,7 @@ namespace TorannMagic.Conditions
             }
             if (wealth > 500000)
             {
-                wealthMultiplier = 2.5f;
+                wealthMultiplier = 2f;
             }
             storytellerThreat = Find.Storyteller.difficulty.threatScale;
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();

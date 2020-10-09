@@ -35,7 +35,7 @@ namespace TorannMagic
         public static readonly Material opencloak_Female_east = MaterialPool.MatFrom("Equipment/opencloak_Female_east");
         //public static readonly Material maesterCloak_east = MatLoader.LoadMat("Equipment/opencloak_Female_north", -1);
 
-
+        public static readonly Material barrier_Mote_Mat = MaterialPool.MatFrom("Motes/BarrierMote", ShaderDatabase.MoteGlow);
 
         //Colonist bar icons        
         public static readonly Texture2D bardIcon = ContentFinder<Texture2D>.Get("Other/ClassTextures/bardMageMark", true);

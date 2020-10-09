@@ -100,6 +100,7 @@ namespace TorannMagic
                                         comp.supportedUndead.Add(undeadPawn);
                                         if (undeadPawn.kindDef != null && undeadPawn.kindDef.RaceProps != null && undeadPawn.kindDef.RaceProps.Animal)
                                         {
+                                            RemoveHediffsAddictionsAndPermanentInjuries(undeadPawn);
                                             HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadAnimalHD, -4f);
                                             HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadAnimalHD, .5f + ver.level);
                                             undeadPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_UndeadAnimalHD).TryGetComp<HediffComp_Undead>().linkedPawn = pawn;                                            
@@ -163,7 +164,8 @@ namespace TorannMagic
                                                 compMight.Initialize();
                                                 compMight.RemovePowers(true);
                                             }
-                                            RemoveAddictionsAndPermanentInjuries(undeadPawn);
+                                            RemoveHediffsAddictionsAndPermanentInjuries(undeadPawn);
+                                            RemovePsylinkAbilities(undeadPawn);
                                             HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, -4f);
                                             HealthUtility.AdjustSeverity(undeadPawn, TorannMagicDefOf.TM_UndeadHD, .5f + ver.level);
                                             undeadPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_UndeadHD).TryGetComp<HediffComp_Undead>().linkedPawn = pawn;
@@ -292,7 +294,18 @@ namespace TorannMagic
             }
         }
 
-        private void RemoveAddictionsAndPermanentInjuries(Pawn pawn)
+        public static void RemovePsylinkAbilities(Pawn p)
+        {
+            if(p.abilities != null && p.abilities.abilities != null && p.abilities.abilities.Count > 0)
+            {
+                while(p.abilities.abilities.Count > 0)
+                {
+                    p.abilities.RemoveAbility(p.abilities.abilities[0].def);
+                }
+            }
+        }
+
+        private void RemoveHediffsAddictionsAndPermanentInjuries(Pawn pawn)
         {
             List<Hediff> removeList = new List<Hediff>();
             removeList.Clear();
@@ -332,6 +345,27 @@ namespace TorannMagic
                 {
                     Hediff_Addiction rec = enumerator.Current;
                     removeList.Add(rec);                  
+                }
+            }
+
+            if (removeList.Count > 0)
+            {
+                for (int i = 0; i < removeList.Count; i++)
+                {
+                    pawn.health.RemoveHediff(removeList[i]);
+                }
+            }
+            removeList.Clear();
+
+            using (IEnumerator<Hediff> enumerator = pawn.health.hediffSet.GetHediffs<Hediff>().GetEnumerator())
+            {
+                while(enumerator.MoveNext())
+                {
+                    Hediff hd = enumerator.Current;
+                    if(hd.IsPermanent() || (hd.IsTended() || hd.TendableNow()) || (hd.source == null && hd.sourceBodyPartGroup == null))
+                    {
+                        removeList.Add(hd);
+                    }
                 }
             }
 

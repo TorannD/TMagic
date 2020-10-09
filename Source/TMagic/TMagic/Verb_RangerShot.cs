@@ -19,7 +19,7 @@ namespace TorannMagic
                 Thing wpn = this.CasterPawn.equipment.Primary;
                 if (TM_Calc.HasLoSFromTo(this.CasterPawn.Position, this.currentTarget.Cell, this.CasterPawn, 0, this.Ability.Def.MainVerb.range))
                 {
-                    if (wpn.def.Verbs.FirstOrDefault<VerbProperties>().defaultProjectile.projectile.damageDef.defName == "Arrow" || wpn.def.defName.Contains("Bow") || wpn.def.defName.Contains("bow") || wpn.def.Verbs.FirstOrDefault<VerbProperties>().defaultProjectile.projectile.damageDef.defName.Contains("Arrow") || wpn.def.Verbs.FirstOrDefault<VerbProperties>().defaultProjectile.projectile.damageDef.defName.Contains("arrow"))
+                    if (TM_Calc.IsUsingBow(this.CasterPawn))
                     {
                         base.TryCastShot();
                         return true;

@@ -313,7 +313,7 @@ namespace TorannMagic.AutoCast
     
     public static class CombatAbility_OnTarget
     {
-        public static void TryExecute(CompAbilityUserMight casterComp, TMAbilityDef abilitydef, PawnAbility ability, MightPower power, LocalTargetInfo target, int minRange, out bool success)
+        public static void TryExecute(CompAbilityUserMight casterComp, TMAbilityDef abilitydef, PawnAbility ability, MightPower power, LocalTargetInfo target, float minRange, out bool success)
         {
             success = false;
             if (casterComp.Stamina.CurLevel >= abilitydef.staminaCost && ability.CooldownTicksLeft <= 0)
@@ -321,7 +321,91 @@ namespace TorannMagic.AutoCast
                 Pawn caster = casterComp.Pawn;
                 LocalTargetInfo jobTarget = target;
                 float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
-                if (distanceToTarget > minRange && distanceToTarget < (abilitydef.MainVerb.range * .9f) && jobTarget != null && jobTarget.Thing != null && TM_Calc.HasLoSFromTo(caster.Position, jobTarget, caster, 0, abilitydef.MainVerb.range))
+                if (distanceToTarget >= minRange && distanceToTarget < (abilitydef.MainVerb.range * .9f) && jobTarget != null && jobTarget.Thing != null)
+                {
+                    Job job = ability.GetJob(AbilityContext.AI, jobTarget);
+                    job.endIfCantShootTargetFromCurPos = true;
+                    caster.jobs.TryTakeOrderedJob(job);
+                    success = true;
+                }
+            }
+        }
+    }
+
+    public static class CombatAbility_OnTarget_LoS
+    {
+        public static void TryExecute(CompAbilityUserMight casterComp, TMAbilityDef abilitydef, PawnAbility ability, MightPower power, LocalTargetInfo target, float minRange, out bool success)
+        {
+            success = false;
+            if (casterComp.Stamina.CurLevel >= abilitydef.staminaCost && ability.CooldownTicksLeft <= 0)
+            {
+                Pawn caster = casterComp.Pawn;
+                LocalTargetInfo jobTarget = target;
+                float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
+                if (distanceToTarget >= minRange && distanceToTarget < (abilitydef.MainVerb.range * .9f) && jobTarget != null && jobTarget.Thing != null && TM_Calc.HasLoSFromTo(caster.Position, jobTarget, caster, 0, abilitydef.MainVerb.range))
+                {
+                    Job job = ability.GetJob(AbilityContext.AI, jobTarget);
+                    job.endIfCantShootTargetFromCurPos = true;
+                    caster.jobs.TryTakeOrderedJob(job);
+                    success = true;
+                }
+            }
+        }
+    }
+
+    public static class MagicAbility_OnTarget
+    {
+        public static void TryExecute(CompAbilityUserMagic casterComp, TMAbilityDef abilitydef, PawnAbility ability, MagicPower power, LocalTargetInfo target, float minRange, out bool success)
+        {
+            success = false;
+            if (casterComp.Mana.CurLevel >= abilitydef.manaCost && ability.CooldownTicksLeft <= 0)
+            {
+                Pawn caster = casterComp.Pawn;
+                LocalTargetInfo jobTarget = target;
+                float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
+                if (distanceToTarget >= minRange && distanceToTarget < (abilitydef.MainVerb.range * .9f) && jobTarget != null && jobTarget.Thing != null)
+                {
+                    Job job = ability.GetJob(AbilityContext.AI, jobTarget);
+                    job.endIfCantShootTargetFromCurPos = true;
+                    caster.jobs.TryTakeOrderedJob(job);
+                    success = true;
+                }
+            }
+        }
+    }
+
+    public static class CombatAbility_OnCell
+    {
+        public static void TryExecute(CompAbilityUserMight casterComp, TMAbilityDef abilitydef, PawnAbility ability, MightPower power, LocalTargetInfo target, float minRange, out bool success)
+        {
+            success = false;
+            if (casterComp.Stamina.CurLevel >= abilitydef.staminaCost && ability.CooldownTicksLeft <= 0)
+            {
+                Pawn caster = casterComp.Pawn;
+                LocalTargetInfo jobTarget = target;
+                float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
+                if (distanceToTarget >= minRange && distanceToTarget < (abilitydef.MainVerb.range * .9f) && jobTarget != null && jobTarget.Cell.IsValid && jobTarget.Cell.InBounds(casterComp.Pawn.Map) && TM_Calc.HasLoSFromTo(caster.Position, jobTarget, caster, 0, abilitydef.MainVerb.range))
+                {
+                    Job job = ability.GetJob(AbilityContext.AI, jobTarget);
+                    job.endIfCantShootTargetFromCurPos = true;
+                    caster.jobs.TryTakeOrderedJob(job);
+                    success = true;
+                }
+            }
+        }
+    }
+
+    public static class MagicAbility_OnCell
+    {
+        public static void TryExecute(CompAbilityUserMagic casterComp, TMAbilityDef abilitydef, PawnAbility ability, MagicPower power, LocalTargetInfo target, float minRange, out bool success)
+        {
+            success = false;
+            if (casterComp.Mana.CurLevel >= abilitydef.manaCost && ability.CooldownTicksLeft <= 0)
+            {
+                Pawn caster = casterComp.Pawn;
+                LocalTargetInfo jobTarget = target;
+                float distanceToTarget = (jobTarget.Cell - caster.Position).LengthHorizontal;
+                if (distanceToTarget >= minRange && distanceToTarget < (abilitydef.MainVerb.range * .9f) && jobTarget != null && jobTarget.Cell.IsValid && jobTarget.Cell.InBounds(casterComp.Pawn.Map) && TM_Calc.HasLoSFromTo(caster.Position, jobTarget, caster, 0, abilitydef.MainVerb.range))
                 {
                     Job job = ability.GetJob(AbilityContext.AI, jobTarget);
                     job.endIfCantShootTargetFromCurPos = true;
@@ -829,7 +913,24 @@ namespace TorannMagic.AutoCast
         }
     }
 
-    public static class CastOnSelf
+    public static class CombatAbility_OnSelf
+    {
+        public static void Evaluate(CompAbilityUserMight casterComp, TMAbilityDef abilitydef, PawnAbility ability, MightPower power, out bool success)
+        {
+            success = false;
+            Pawn caster = casterComp.Pawn;
+            LocalTargetInfo jobTarget = caster.Position;
+
+            if (casterComp.Stamina.CurLevel >= casterComp.ActualStaminaCost(abilitydef) && ability.CooldownTicksLeft <= 0 && jobTarget != null)
+            {
+                Job job = ability.GetJob(AbilityContext.AI, jobTarget);
+                caster.jobs.TryTakeOrderedJob(job);
+                success = true;
+            }
+        }
+    }
+
+    public static class MagicAbility_OnSelf
     {
         public static void Evaluate(CompAbilityUserMagic casterComp, TMAbilityDef abilitydef, PawnAbility ability, MagicPower power, out bool success)
         {

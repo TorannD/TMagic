@@ -70,4 +70,105 @@
 	</value>
   </Operation>   
   
+  <Operation Class="PatchOperationSequence">
+	<success>Always</success>
+	<operations>
+		<li Class="PatchOperationTest">
+			<xpath>*/ThoughtDef[defName = "SleptInCold"]/nullifyingTraits</xpath>
+			<success>Invert</success>
+		</li>
+	   <li Class="PatchOperationAdd">
+			<xpath>*/ThoughtDef[defName = "SleptInCold"]</xpath>
+			<value>
+				<nullifyingTraits>
+					<li>HeartOfFrost</li>
+				</nullifyingTraits>
+			</value>
+	  </li>
+	 </operations>
+  </Operation>
+
+  <Operation Class="PatchOperationSequence">
+	<success>Always</success>
+	<operations>
+		<li Class="PatchOperationTest">
+			<xpath>*/ThoughtDef[defName = "SleptInCold"]/nullifyingTraits</xpath>
+		</li>
+	   <li Class="PatchOperationAdd">
+			<xpath>*/ThoughtDef[defName = "SleptInCold"]/nullifyingTraits</xpath>
+			<value>
+				<li>HeartOfFrost</li>
+			</value>
+	  </li>
+	 </operations>
+  </Operation>
+  
+  <Operation Class="PatchOperationSequence">
+	<success>Always</success>
+	<operations>
+		<li Class="PatchOperationTest">
+			<xpath>*/ThoughtDef[defName = "SleptInHeat"]/nullifyingTraits</xpath>
+			<success>Invert</success>
+		</li>
+	   <li Class="PatchOperationAdd">
+			<xpath>*/ThoughtDef[defName = "SleptInHeat"]</xpath>
+			<value>
+				<nullifyingTraits>
+					<li>InnerFire</li>
+				</nullifyingTraits>
+			</value>
+	  </li>
+	 </operations>
+  </Operation>
+
+  <Operation Class="PatchOperationSequence">
+	<success>Always</success>
+	<operations>
+		<li Class="PatchOperationTest">
+			<xpath>*/ThoughtDef[defName = "SleptInHeat"]/nullifyingTraits</xpath>
+		</li>
+	   <li Class="PatchOperationAdd">
+			<xpath>*/ThoughtDef[defName = "SleptInHeat"]/nullifyingTraits</xpath>
+			<value>
+				<li>InnerFire</li>
+			</value>
+	  </li>
+	 </operations>
+  </Operation>
+  
+  <Operation Class="PatchOperationSequence">
+	<success>Always</success>
+	<operations>
+		<li Class="PatchOperationTest">
+			<xpath>*/ThoughtDef[defName = "SleptOnGround" or defName = "SleptOutside"]/nullifyingTraits</xpath>
+			<success>Invert</success>
+		</li>
+	   <li Class="PatchOperationAdd">
+			<xpath>*/ThoughtDef[defName = "SleptOnGround" or defName = "SleptOutside"]</xpath>
+			<value>
+				<nullifyingTraits>
+					<li>Druid</li>
+					<li>Ranger</li>
+				</nullifyingTraits>
+			</value>
+	  </li>
+	 </operations>
+  </Operation>
+
+  <Operation Class="PatchOperationSequence">
+	<success>Always</success>
+	<operations>
+		<li Class="PatchOperationTest">
+			<xpath>*/ThoughtDef[defName = "SleptOnGround" or defName = "SleptOutside"]/nullifyingTraits</xpath>
+		</li>
+	   <li Class="PatchOperationAdd">
+			<xpath>*/ThoughtDef[defName = "SleptOnGround" or defName = "SleptOutside"]/nullifyingTraits</xpath>
+			<value>
+				<li>Druid</li>
+				<li>Ranger</li>
+			</value>
+	  </li>
+	 </operations>
+  </Operation>
+  
 </Patch>

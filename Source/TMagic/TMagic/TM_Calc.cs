@@ -11,6 +11,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using AbilityUser;
 using TorannMagic.Enchantment;
 using System.Text;
+using TorannMagic.TMDefs;
 
 namespace TorannMagic
 {
@@ -3074,10 +3075,37 @@ namespace TorannMagic
             return power;
         }
 
-        public static bool IsUsingPistol(Pawn p)
+        public static bool IsUsingRanged(Pawn p)
         {
             bool result = false;
             if (p != null && p.equipment != null && p.equipment.Primary != null && p.equipment.Primary.def.IsRangedWeapon)
+            {
+                result = true;
+            }
+            return result;
+        }
+
+        public static bool IsUsingMelee(Pawn p)
+        {
+            bool result = false;
+            if (p != null && p.equipment != null && p.equipment.Primary != null && p.equipment.Primary.def.IsRangedWeapon)
+            {
+                if (p.equipment.Primary != null && p.equipment.Primary.def.IsMeleeWeapon)
+                {
+                    result = true;
+                }
+                if(p.equipment.Primary == null)
+                {
+                    result = true;
+                }
+            }
+            return result;
+        }
+
+        public static bool IsUsingPistol(Pawn p)
+        {
+            bool result = false;
+            if (TM_Calc.IsUsingRanged(p))
             {
                 Thing wpn = p.equipment.Primary;
                 CompAbilityUserMight mightComp = p.TryGetComp<CompAbilityUserMight>();
@@ -3086,7 +3114,7 @@ namespace TorannMagic
                 {
                     result = true;
                 }
-                else if (wpn.def.defName.Contains("Pistol") || wpn.def.defName.Contains("pistol") || wpn.def.defName.Contains("SMG") || wpn.def.defName.Contains("revolver"))
+                else if (wpn.def.defName.ToLower().Contains("pistol") || wpn.def.defName.Contains("SMG") || wpn.def.defName.ToLower().Contains("revolver"))
                 {
                     //Log.Message("weapon name contains pistol: " + wpn.def.defName);
                     result = true;
@@ -3117,7 +3145,7 @@ namespace TorannMagic
         public static bool IsUsingRifle(Pawn p)
         {
             bool result = false;
-            if (p != null && p.equipment != null && p.equipment.Primary != null && p.equipment.Primary.def.IsRangedWeapon)
+            if (IsUsingRanged(p))
             {
                 Thing wpn = p.equipment.Primary;
                 CompAbilityUserMight mightComp = p.TryGetComp<CompAbilityUserMight>();
@@ -3126,7 +3154,7 @@ namespace TorannMagic
                 {
                     result = true;
                 }
-                else if ((wpn.def.defName.Contains("Rifle") || wpn.def.defName.Contains("rifle") || wpn.def.defName.Contains("LMG")) && !(wpn.def.defName.Contains("Sniper") || wpn.def.defName.Contains("sniper")))
+                else if ((wpn.def.defName.ToLower().Contains("rifle") || wpn.def.defName.Contains("LMG")) && !(wpn.def.defName.ToLower().Contains("sniper")))
                 {
                     //Log.Message("weapon name contains rifle: " + wpn.def.defName);
                     result = true;
@@ -3157,7 +3185,7 @@ namespace TorannMagic
         public static bool IsUsingShotgun(Pawn p)
         {
             bool result = false;
-            if (p != null && p.equipment != null && p.equipment.Primary != null && p.equipment.Primary.def.IsRangedWeapon)
+            if (IsUsingRanged(p))
             {
                 Thing wpn = p.equipment.Primary;
                 CompAbilityUserMight mightComp = p.TryGetComp<CompAbilityUserMight>();
@@ -3166,7 +3194,7 @@ namespace TorannMagic
                 {
                     result = true;
                 }
-                else if (wpn.def.defName.Contains("Shotgun") || wpn.def.defName.Contains("shotgun"))
+                else if (wpn.def.defName.ToLower().Contains("shotgun"))
                 {
                     //Log.Message("weapon name contains shotgun: " + wpn.def.defName);
                     result = true;
@@ -3191,6 +3219,58 @@ namespace TorannMagic
             //        p.LabelCap
             //    ), MessageTypeDefOf.RejectInput);
             //}
+            return result;
+        }
+
+        public static bool IsUsingBow(Pawn p)
+        {
+            bool result = false;
+            if (IsUsingRanged(p))
+            {
+                Thing wpn = p.equipment.Primary;
+                CompAbilityUserMight mightComp = p.TryGetComp<CompAbilityUserMight>();
+                //Log.Message("" + p.LabelShort + " is using a " + wpn.def.defName);
+                if (mightComp != null && mightComp.equipmentContainer != null && mightComp.equipmentContainer.Count > 0)
+                {
+                    result = true;
+                }
+                else if ((wpn.def.Verbs.FirstOrDefault<VerbProperties>().defaultProjectile.projectile.damageDef.defName.ToLower().Contains("arrow") || wpn.def.defName.ToLower().Contains("bow")))
+                {
+                    //Log.Message("weapon name contains shotgun: " + wpn.def.defName);
+                    result = true;
+                }
+                else if (TM_Data.BowList().Contains(wpn.def))
+                {
+                    //Log.Message("weapon found in custom defnames");
+                    result = true;
+                }
+            }
+            return result;
+        }
+
+        public static bool IsUsingMagicalFoci(Pawn p)
+        {
+            bool result = false;
+            if (p != null && p.equipment != null && p.equipment.Primary != null && p.equipment.Primary.def.IsRangedWeapon)
+            {
+                Thing wpn = p.equipment.Primary;
+                CompAbilityUserMight mightComp = p.TryGetComp<CompAbilityUserMight>();
+                //Log.Message("" + p.LabelShort + " is using a " + wpn.def.defName);
+                if (mightComp != null && mightComp.equipmentContainer != null && mightComp.equipmentContainer.Count > 0)
+                {
+                    result = true;
+                }
+                else if (wpn.def.defName.ToLower().Contains("wand") || wpn.def.defName.ToLower().Contains("staff"))
+                {
+                    //Log.Message("weapon name contains shotgun: " + wpn.def.defName);
+                    result = true;
+                }
+                else if (TM_Data.MagicFociList().Contains(wpn.def))
+                {
+                    //Log.Message("weapon found in custom defnames");
+                    result = true;
+                }
+            }
             return result;
         }
 
@@ -3266,10 +3346,63 @@ namespace TorannMagic
 
         public static float GetSkillDamage_Range(Pawn p, float strFactor)
         {
-            float weaponDamage = p.equipment.Primary.def.Verbs.FirstOrDefault().defaultProjectile.projectile.GetDamageAmount(p.equipment.Primary)/p.equipment.Primary.def.Verbs.FirstOrDefault().warmupTime;
+            VerbProperties vp = p.equipment.Primary.def.Verbs.FirstOrDefault();
+            
+            QualityCategory qc = QualityCategory.Normal;
+            //p.equipment.Primary.TryGetQuality(out qc);
+            float qc_m = GetQualityMultiplier(qc);
+            float weaponDamage = ((vp.defaultProjectile.projectile.GetDamageAmount(p.equipment.Primary) * qc_m) - (2*(vp.warmupTime + vp.defaultCooldownTime))) + (3*vp.defaultProjectile.projectile.stoppingPower);
             weaponDamage *= strFactor;
-
             return weaponDamage;
+        }
+
+        public static float GetQualityMultiplier(QualityCategory qc)
+        {
+            switch (qc)
+            {
+                case QualityCategory.Awful:
+                    return .9f;
+                case QualityCategory.Poor:
+                    return .95f;
+                case QualityCategory.Normal:
+                    return 1f;
+                case QualityCategory.Good:
+                    return 1.05f;
+                case QualityCategory.Excellent:
+                    return 1.1f;
+                case QualityCategory.Masterwork:
+                    return 1.25f;
+                case QualityCategory.Legendary:
+                    return 1.5f;
+                default:
+                    return 1f;
+            }
+        }
+
+        public static float GetOverallArmor(Pawn p, StatDef stat)
+        {
+            float num = 0f;
+            float num2 = Mathf.Clamp01(p.GetStatValue(stat) / 2f);
+            List<BodyPartRecord> allParts = p.RaceProps.body.AllParts;
+            List<Apparel> list = (p.apparel != null) ? p.apparel.WornApparel : null;
+            for (int i = 0; i < allParts.Count; i++)
+            {
+                float num3 = 1f - num2;
+                if (list != null)
+                {
+                    for (int j = 0; j < list.Count; j++)
+                    {
+                        if (list[j].def.apparel.CoversBodyPart(allParts[i]))
+                        {
+                            float num4 = Mathf.Clamp01(list[j].GetStatValue(stat) / 2f);
+                            num3 *= 1f - num4;
+                        }
+                    }
+                }
+                num += allParts[i].coverageAbs * (1f - num3);
+            }
+            num = Mathf.Clamp((num * 2f) + num2, 0f, 2f);
+            return num;
         }
 
         public static string GetEnchantmentsString(Thing item)
@@ -3407,6 +3540,132 @@ namespace TorannMagic
             return (from x in DefDatabase<InspirationDef>.AllDefsListForReading
                     where x.Worker.InspirationCanOccur(pawn)
                     select x).RandomElementByWeightWithFallback((InspirationDef x) => x.Worker.CommonalityFor(pawn), null);
+        }
+
+        public static LocalTargetInfo GetAutocastTarget(Pawn caster, TM_Autocast autocasting, LocalTargetInfo potentialTarget)
+        {
+            LocalTargetInfo target = new LocalTargetInfo();
+
+            if (autocasting.type == AutocastType.OnTarget && potentialTarget.IsValid)
+            {
+                target = potentialTarget.Thing;
+            }
+            else if (autocasting.type == AutocastType.OnSelf)
+            {
+                target = caster;
+            }
+            else if (autocasting.type == AutocastType.OnNearby)
+            {
+                if (autocasting.GetTargetType == typeof(Pawn))
+                {
+                    IEnumerable<Pawn> nearbyThings = from x in caster.Map.mapPawns.AllPawnsSpawned
+                                                     where (x.GetType() == typeof(Pawn) &&
+                                                     (x.Position - caster.Position).LengthHorizontal > autocasting.minRange &&
+                                                     autocasting.maxRange > 0 ? (x.Position - caster.Position).LengthHorizontal <= autocasting.maxRange : true &&
+                                                     autocasting.includeSelf ? true : x != caster)                                                     
+                                                     select x;
+                    List<Pawn> potentialPawns = new List<Pawn>();
+                    potentialPawns.Clear();
+                    foreach(Pawn p in nearbyThings)
+                    {
+                        if(p.Faction == null)
+                        {
+                            if(autocasting.targetNeutral)
+                            {
+                                potentialPawns.Add(p);
+                            }
+                        }
+                        else
+                        {
+                            if (p.Faction != caster.Faction)
+                            {
+                                if (autocasting.targetNeutral && !p.Faction.HostileTo(caster.Faction))
+                                {
+                                    potentialPawns.Add(p);
+                                }
+                                else if (autocasting.targetEnemy && p.Faction.HostileTo(caster.Faction))
+                                {
+                                    potentialPawns.Add(p);
+                                }
+                            }
+                            else if(autocasting.targetFriendly)
+                            {
+                                potentialPawns.Add(p);
+                            }
+                        }
+                    }
+                    target = potentialPawns.RandomElement();
+                }
+                else if (autocasting.GetTargetType == typeof(Building))
+                {
+                    IEnumerable<Building> nearbyThings = from x in caster.Map.listerThings.AllThings
+                                                               where (x.GetType() == typeof(Building) && (x.Position - caster.Position).LengthHorizontal > autocasting.minRange &&
+                                                               autocasting.maxRange > 0 ? (x.Position - caster.Position).LengthHorizontal <= autocasting.maxRange : true)
+                                                               select x as Building;
+                    List<Building> potentialBuildings = new List<Building>();
+                    potentialBuildings.Clear();
+                    foreach (Building p in nearbyThings)
+                    {
+                        if (p.Faction == null)
+                        {
+                            if (autocasting.targetNeutral)
+                            {
+                                potentialBuildings.Add(p);
+                            }
+                        }
+                        else
+                        {
+                            if (p.Faction != caster.Faction)
+                            {
+                                if (autocasting.targetNeutral && !p.Faction.HostileTo(caster.Faction))
+                                {
+                                    potentialBuildings.Add(p);
+                                }
+                                else if (autocasting.targetEnemy && p.Faction.HostileTo(caster.Faction))
+                                {
+                                    potentialBuildings.Add(p);
+                                }
+                            }
+                            else if (autocasting.targetFriendly)
+                            {
+                                potentialBuildings.Add(p);
+                            }
+                        }
+                    }
+                    target = potentialBuildings.RandomElement();
+                }
+                else if (autocasting.GetTargetType == typeof(Corpse))
+                {
+                    IEnumerable<Corpse> nearbyThings = from x in caster.Map.listerThings.AllThings
+                                                               where (x.GetType() == typeof(Corpse) && (x.Position - caster.Position).LengthHorizontal > autocasting.minRange &&
+                                                               autocasting.maxRange > 0 ? (x.Position - caster.Position).LengthHorizontal <= autocasting.maxRange : true)
+                                                               select x as Corpse;
+                    target = nearbyThings.RandomElement();
+                }
+                else if (autocasting.GetTargetType == typeof(ThingWithComps))
+                {
+                    IEnumerable<ThingWithComps> nearbyThings = from x in caster.Map.listerThings.AllThings
+                                                      where (x.GetType() == typeof(ThingWithComps) && (x.Position - caster.Position).LengthHorizontal > autocasting.minRange &&
+                                                      autocasting.maxRange > 0 ? (x.Position - caster.Position).LengthHorizontal <= autocasting.maxRange : true)
+                                                      select x as ThingWithComps;
+                    target = nearbyThings.RandomElement();
+                }
+                else
+                {
+                    IEnumerable<Thing> nearbyThings = from x in caster.Map.listerThings.AllThings
+                                                      where ((x.Position - caster.Position).LengthHorizontal > autocasting.minRange &&
+                                                      autocasting.maxRange > 0 ? (x.Position - caster.Position).LengthHorizontal <= autocasting.maxRange : true)
+                                                      select x;
+                    target = nearbyThings.RandomElement();
+                }
+                
+            }
+            else if (autocasting.type == AutocastType.OnCell && potentialTarget.IsValid)
+            {
+                target = potentialTarget.Cell;
+            }
+            
+            return target;
         }
     }
 }

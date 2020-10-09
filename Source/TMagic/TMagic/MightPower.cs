@@ -9,6 +9,7 @@ namespace TorannMagic
     public class MightPower : IExposable
     {
         public List<AbilityDef> TMabilityDefs;
+        public TMDefs.TM_Autocast autocasting;
 
         public int ticksUntilNextCast = -1;
 
@@ -19,6 +20,7 @@ namespace TorannMagic
         public int learnCost = 2;
         private int interactionTick = 0;
         public int maxLevel = 3;
+        public int costToLevel = 1;
 
         public bool AutoCast
         {
@@ -201,6 +203,12 @@ namespace TorannMagic
             this.level = 0;
             this.TMabilityDefs = newAbilityDefs;
 
+            if (this.abilityDef == TorannMagicDefOf.TM_PsionicBarrier || this.abilityDef == TorannMagicDefOf.TM_PsionicBarrier_Projected)
+            {
+                this.learnCost = 2;
+                this.maxLevel = 1;
+            }
+
             if (this.abilityDef == TorannMagicDefOf.TM_PistolSpec || this.abilityDef == TorannMagicDefOf.TM_RifleSpec || this.abilityDef == TorannMagicDefOf.TM_ShotgunSpec)
             {
                 this.learnCost = 0;
@@ -217,10 +225,12 @@ namespace TorannMagic
             Scribe_Values.Look<bool>(ref this.learned, "learned", true, false);
             Scribe_Values.Look<bool>(ref this.autocast, "autocast", false, false);
             Scribe_Values.Look<int>(ref this.learnCost, "learnCost", 2, false);
+            Scribe_Values.Look<int>(ref this.costToLevel, "costToLevel", 1, false);
             Scribe_Values.Look<int>(ref this.level, "level", 0, false);
             Scribe_Values.Look<int>(ref this.maxLevel, "maxLevel", 3, false);
             Scribe_Values.Look<int>(ref this.ticksUntilNextCast, "ticksUntilNextCast", -1, false);
             Scribe_Collections.Look<AbilityDef>(ref this.TMabilityDefs, "TMabilityDefs", (LookMode)4, null);
+            Scribe_Deep.Look<TMDefs.TM_Autocast>(ref this.autocasting, "autocasting", new object[0]);
         }
     }
 }

@@ -75,7 +75,7 @@ namespace TorannMagic.ModOptions
             }
             num++;
             Rect rowRect2 = UIHelper.GetRowRect(rowRect, rowHeight, num);
-            Settings.Instance.needMultiplier = Widgets.HorizontalSlider(rowRect2, Settings.Instance.needMultiplier, .1f, 4f, false, "NeedMultiplier".Translate() + " " + Settings.Instance.needMultiplier, ".1", "4", .1f);
+            Settings.Instance.needMultiplier = Widgets.HorizontalSlider(rowRect2, Settings.Instance.needMultiplier, 0f, 10f, false, "NeedMultiplier".Translate() + " " + Settings.Instance.needMultiplier, "0", "10", .1f);
             Rect rowRect2ShiftRight = UIHelper.GetRowRect(rowRect2, rowHeight, num);
             rowRect2ShiftRight.x += rowRect.width + 56f;
             rowRect2ShiftRight.width /= 3;

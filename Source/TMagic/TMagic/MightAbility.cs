@@ -581,6 +581,14 @@ namespace TorannMagic
                         return false;
                     }
                 }
+                TMAbilityDef tmad = this.mightDef;
+                if (tmad != null && tmad.requiredWeaponsOrCategories != null && tmad.IsRestrictedByEquipment(this.Pawn))
+                {
+                    reason = "TM_IncompatibleWeaponType".Translate(
+                        base.Pawn.LabelShort,
+                        tmad.label);
+                    return false;
+                }
                 result = true;
                 
             }

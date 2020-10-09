@@ -106,7 +106,7 @@ namespace TorannMagic
                 {
                     if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Tameness).Accepted)
                     {
-                        while (!base.Pawn.training.HasLearned(TrainableDefOf.Tameness))
+                        if(base.Pawn.training.CanBeTrained(TrainableDefOf.Tameness))
                         {
                             base.Pawn.training.Train(TrainableDefOf.Tameness, null);
                         }
@@ -114,7 +114,7 @@ namespace TorannMagic
 
                     if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Obedience).Accepted)
                     {
-                        while (!base.Pawn.training.HasLearned(TrainableDefOf.Obedience))
+                        if(base.Pawn.training.CanBeTrained(TrainableDefOf.Obedience))
                         {
                             base.Pawn.training.Train(TrainableDefOf.Obedience, null);
                         }
@@ -122,7 +122,7 @@ namespace TorannMagic
 
                     if (base.Pawn.training.CanAssignToTrain(TrainableDefOf.Release).Accepted)
                     {
-                        while (!base.Pawn.training.HasLearned(TrainableDefOf.Release))
+                        if(base.Pawn.training.CanBeTrained(TrainableDefOf.Release))
                         {
                             base.Pawn.training.Train(TrainableDefOf.Release, null);
                         }
@@ -130,7 +130,7 @@ namespace TorannMagic
 
                     if (base.Pawn.training.CanAssignToTrain(TorannMagicDefOf.Haul).Accepted)
                     {
-                        while (!base.Pawn.training.HasLearned(TorannMagicDefOf.Haul))
+                        if(base.Pawn.training.CanBeTrained(TorannMagicDefOf.Haul))
                         {
                             base.Pawn.training.Train(TorannMagicDefOf.Haul, null);
                         }
@@ -138,7 +138,7 @@ namespace TorannMagic
 
                     if (base.Pawn.training.CanAssignToTrain(TorannMagicDefOf.Rescue).Accepted)
                     {
-                        while (!base.Pawn.training.HasLearned(TorannMagicDefOf.Rescue))
+                        if(base.Pawn.training.CanBeTrained(TorannMagicDefOf.Rescue))
                         {
                             base.Pawn.training.Train(TorannMagicDefOf.Rescue, null);
                         }

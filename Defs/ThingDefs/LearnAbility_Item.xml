@@ -1394,7 +1394,7 @@ This arcane script is incomplete and the reader may not be able to learn some, o
     <defName>BookOfSuperSoldier</defName>
     <label>Serum: Super Soldier</label>
     <thingClass>ThingWithComps</thingClass>
-    <description>Inject a pawn with a serum that enhances their physical abilities. Incapacitates a pawn for a couple days while the serum takes affect and develops over several stages. Any pawn may take SS Serum, but only physically adept pawns may acquire the Super Soldier trait. This serum will reduce magical potency and potential.</description>
+    <description>Inject a pawn with a serum that enhances their physical abilities. Incapacitates a pawn for a couple days while the serum takes affect and develops over several stages. The serum takes about 100 days to fully develop. Any pawn may take SS Serum, but only physically adept pawns may acquire the Super Soldier trait. This serum will reduce magical potency and potential.</description>
 	<category>Item</category>
 	<selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>

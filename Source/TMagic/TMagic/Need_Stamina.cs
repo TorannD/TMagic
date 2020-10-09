@@ -174,8 +174,9 @@ namespace TorannMagic
             {
                 Pawn pawn = base.pawn;
                 CompAbilityUserMight comp = pawn.GetComp<CompAbilityUserMight>();
+                ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 amount = amount * (0.015f);
-                this.baseStaminaGain = amount;                
+                this.baseStaminaGain = amount * settingsRef.needMultiplier;
                 amount *= comp.spRegenRate;               
                 if (pawn.health != null && pawn.health.hediffSet != null)
                 {

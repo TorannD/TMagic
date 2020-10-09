@@ -245,7 +245,7 @@
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
     <makesAlert>false</makesAlert>
-	<maxSeverity>100.0</maxSeverity>
+	<maxSeverity>1.0</maxSeverity>
 	<isBad>false</isBad>
 	<initialSeverity>.4</initialSeverity>
 	<comps>

@@ -433,7 +433,7 @@ Shots: 3</description>
         <projectile>
 			<soundExplode>Explosion_Smoke</soundExplode>
             <damageDef>Snowball</damageDef>
-            <damageAmountBase>7</damageAmountBase>
+            <damageAmountBase>12</damageAmountBase>
             <speed>35</speed>
 			<explosionRadius>4</explosionRadius>
 			<postExplosionSpawnChance>1</postExplosionSpawnChance>

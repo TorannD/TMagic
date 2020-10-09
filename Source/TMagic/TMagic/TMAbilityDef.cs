@@ -25,6 +25,7 @@ namespace TorannMagic
         public HediffDef abilityHediff = null;
         public ThingDef learnItem = null;
         public bool canCopy = false;
+        public List<string> requiredWeaponsOrCategories = null; //Unarmed, Melee, Ranged, Bows, Rifles, Shotguns, Pistols, MagicalFoci or defName
 
         public NeedDef requiredNeed = null;
         public float needCost = 0f;
@@ -40,6 +41,92 @@ namespace TorannMagic
 			StringBuilder stringBuilder = new StringBuilder();
 			stringBuilder.AppendLine(this.GetDescription());
 			return stringBuilder.ToString();
-		}        
+		} 
+        
+        public bool IsRestrictedByEquipment(Pawn p)
+        {
+            if(requiredWeaponsOrCategories != null && requiredWeaponsOrCategories.Count > 0)
+            {
+                foreach(string str in requiredWeaponsOrCategories)
+                {
+                    if(str == "Unarmed")
+                    {
+                        if(p.equipment != null && p.equipment.Primary == null)
+                        {
+                            return false;
+                        }
+                        return true;
+                    }
+                    else if(str == "Melee")
+                    {
+                        if (TM_Calc.IsUsingMelee(p))
+                        {
+                            return false;
+                        }
+                        return true;
+                    }
+                    else if(str == "Ranged")
+                    {
+                        if (TM_Calc.IsUsingRanged(p))
+                        {
+                            return false;
+                        }
+                        return true;
+                    }
+                    else if(str == "Bows")
+                    {
+                        if (TM_Calc.IsUsingBow(p))
+                        {
+                            return false;
+                        }
+                        return true;
+                    }
+                    else if (str == "Pistols")
+                    {
+                        if (TM_Calc.IsUsingPistol(p))
+                        {
+                            return false;
+                        }
+                        return true;
+                    }
+                    else if (str == "Rifles")
+                    {
+                        if (TM_Calc.IsUsingRifle(p))
+                        {
+                            return false;
+                        }
+                        return true;
+                    }
+                    else if (str == "Shotguns")
+                    {
+                        if (TM_Calc.IsUsingShotgun(p))
+                        {
+                            return false;
+                        }
+                        return true;
+                    }
+                    else if (str == "MagicalFoci")
+                    {
+                        if (TM_Calc.IsUsingMagicalFoci(p))
+                        {
+                            return false;
+                        }
+                        return true;
+                    }
+                    else
+                    {                        
+                        if(p.equipment != null && p.equipment.Primary != null)
+                        {
+                            if(p.equipment.Primary.def.defName == str)
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+                return true;
+            }
+            return false;
+        }
     }
 }

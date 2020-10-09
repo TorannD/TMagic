@@ -101,7 +101,7 @@
     <defName>TM_Firestorm_Large</defName>
     <label>firestorm (large)</label>
 	<!-- <thingClass>DropPodLeaving</thingClass> -->
-    <size>(2, 2)</size>
+    <size>(3, 3)</size>
     <graphicData>
       <texPath>Spells/meteor_fireball</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -124,7 +124,7 @@
     <defName>TM_Firestorm_Small</defName>
     <label>firestorm (small)</label>
 	<!-- <thingClass>DropPodLeaving</thingClass> -->
-    <size>(1, 1)</size>
+    <size>(2, 2)</size>
     <graphicData>
       <texPath>Spells/meteor2_glowing</texPath>
       <graphicClass>Graphic_Single</graphicClass>

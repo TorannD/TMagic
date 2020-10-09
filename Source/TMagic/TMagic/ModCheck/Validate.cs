@@ -182,5 +182,21 @@ namespace TorannMagic.ModCheck
                 return initialized;
             }
         }
+
+        public static class NoJobAuthors
+        {
+            public static bool IsInitialized()
+            {
+                bool initialized = false;
+                foreach (ModContentPack p in LoadedModManager.RunningMods)
+                {
+                    if (p.Name == "No Job Authors")
+                    {
+                        initialized = true;
+                    }
+                }
+                return initialized;
+            }
+        }
     }
 }

@@ -394,7 +394,7 @@ Count: 16</description>
         <label>Light Skip</label>
         <uiIconPath>UI/lightskip</uiIconPath>
         <description>The caster rides a wave of light for near-instant travel. Neither the caster's position or target's position can be roofed.</description>
-		<manaCost>0.15</manaCost>
+		<manaCost>0.20</manaCost>
 		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
 		<learnChance>.6</learnChance>
 		<canCopy>true</canCopy>
@@ -408,7 +408,7 @@ Count: 16</description>
 			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_LightSkip</defaultProjectile>
             <abilityDef>TM_LightSkip</abilityDef>
-            <warmupTime>.5</warmupTime>
+            <warmupTime>1</warmupTime>
             <SecondsToRecharge>30</SecondsToRecharge>
             <range>300</range>
             <burstShotCount>1</burstShotCount>
@@ -453,7 +453,7 @@ Count: 16</description>
         <label>Mass Light Skip</label>
         <uiIconPath>UI/masslightskip</uiIconPath>
         <description>The caster and all allies in a 5 cell radius rides waves of light for near-instant travel. Pawns under a roof will not be transported.</description>
-		<manaCost>0.25</manaCost>
+		<manaCost>0.40</manaCost>
 		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
 		<learnChance>0</learnChance>
 		<shouldInitialize>false</shouldInitialize>
@@ -467,8 +467,8 @@ Count: 16</description>
 			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_LightSkipMass</defaultProjectile>
             <abilityDef>TM_LightSkipMass</abilityDef>
-            <warmupTime>.5</warmupTime>
-            <SecondsToRecharge>30</SecondsToRecharge>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>60</SecondsToRecharge>
             <range>300</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_LightZip</soundCast>
@@ -494,7 +494,7 @@ Count: 16</description>
         <label>Global Light Skip</label>
         <uiIconPath>UI/globallightskip</uiIconPath>
         <description>The caster and all allies in a 5 cell radius rides waves of light for near-instant travel. Pawns under a roof will not be transported.</description>
-		<manaCost>0.25</manaCost>
+		<manaCost>0.50</manaCost>
 		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
 		<learnChance>0</learnChance>
 		<shouldInitialize>false</shouldInitialize>
@@ -508,8 +508,8 @@ Count: 16</description>
 			<requiresLineOfSight>false</requiresLineOfSight>
             <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_LightSkipGlobal</abilityDef>
-            <warmupTime>.5</warmupTime>
-            <SecondsToRecharge>30</SecondsToRecharge>
+            <warmupTime>3</warmupTime>
+            <SecondsToRecharge>600</SecondsToRecharge>
             <range>300</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_LightZip</soundCast>

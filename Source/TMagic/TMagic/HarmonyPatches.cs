@@ -16,6 +16,7 @@ using AbilityUserAI;
 using System.Reflection.Emit;
 using TorannMagic.Conditions;
 using RimWorld.QuestGen;
+using DualWield.Harmony;
 
 namespace TorannMagic
 {
@@ -188,6 +189,18 @@ namespace TorannMagic
                     typeof(Thing),
                     typeof(ThingDef)
                 }, null), new HarmonyMethod(typeof(TorannMagicMod), "Projectile_Launch_Prefix", null), null, null);
+            harmonyInstance.Patch(AccessTools.Method(typeof(Verb), "TryStartCastOn", new Type[]
+                {
+                    typeof(LocalTargetInfo),
+                    typeof(LocalTargetInfo),
+                    typeof(bool),
+                    typeof(bool)
+                }, null), null, new HarmonyMethod(typeof(TorannMagicMod), "TryStartCastOn_Prefix", null), null);
+            harmonyInstance.Patch(AccessTools.Method(typeof(GenGrid), "InBounds", new Type[]
+                {
+                    typeof(IntVec3),
+                    typeof(Map)
+                }, null), new HarmonyMethod(typeof(TorannMagicMod), "IntVec3Inbounds_NullCheck_Prefix", null), null);
             //harmonyInstance.Patch(AccessTools.Method(typeof(QuestNode_RaceProperty), "Matches", new Type[]
             //    {
             //        typeof(object)
@@ -257,6 +270,37 @@ namespace TorannMagic
             }
             #endregion Children
 
+            #region Dual Wield
+            {
+                try
+                {
+                    ((Action)(() =>
+                    {
+                        if (ModCheck.Validate.DualWield.IsInitialized())
+                        {
+                            harmonyInstance.Patch(AccessTools.Method(typeof(DualWield.Harmony.Verb_TryStartCastOn), "Postfix"), new HarmonyMethod(typeof(TorannMagicMod), "TM_DualWield_NotForCasting"), null);
+                        }
+                    }))();
+                }
+                catch (TypeLoadException) { }
+            }
+            #endregion Dual Wield
+
+        }
+
+        [HarmonyPriority (2000)] //Go first to make sure the right verb is copied
+        private static void TryStartCastOn_Prefix(Verb __instance)
+        {
+            transferVerb = __instance;
+        }
+        public static Verb transferVerb = null;
+        public static bool TM_DualWield_NotForCasting(Verb __instance, LocalTargetInfo castTarg)
+        {
+            if(transferVerb != null && (transferVerb.GetType().ToString().StartsWith("TorannMagic") || transferVerb.GetType().ToString().StartsWith("AbilityUser")))
+            {
+                return false;
+            }
+            return true;
         }
 
         [HarmonyPatch(typeof(FireUtility), "CanEverAttachFire", null)]
@@ -1407,6 +1451,15 @@ namespace TorannMagic
                     }
                 }
             }
+        }
+
+        public static bool IntVec3Inbounds_NullCheck_Prefix(IntVec3 c, Map map)
+        {
+            if(c != null && c.IsValid && map != null)
+            {
+                return true;
+            }
+            return false;
         }
 
         public static bool CompAbilityItem_Overlay_Prefix(CompAbilityItem __instance)
@@ -5825,7 +5878,7 @@ namespace TorannMagic
                     {
                         UIHighlighter.HighlightOpportunity(rect, __instance.HighlightTag);
                     }
-                    if (comp != null && __instance.pawnAbility.Def != null)
+                    if (comp != null && comp.MagicData != null && __instance.pawnAbility.Def != null)
                     {
                         if (__instance.pawnAbility.Def.defName == "TM_Blink")
                         {
@@ -6414,10 +6467,48 @@ namespace TorannMagic
                                 return false;
                             }
                         }
+                        if (comp.MagicData.MagicPowersCustom != null)
+                        {
+                            foreach (MagicPower mp in comp.MagicData.MagicPowersCustom)
+                            {
+                                if (mp.autocasting != null && mp.autocasting.type != TMDefs.AutocastType.Null)
+                                {
+                                    if (mp.TMabilityDefs.Contains(__instance.pawnAbility.Def))
+                                    {
+                                        magicPower = mp;
+                                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                                        {
+                                            magicPower.AutoCast = !magicPower.AutoCast;
+                                            __result = new GizmoResult(GizmoState.Mouseover, null);
+                                            return false;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
-                    if (mightComp != null && __instance.pawnAbility.Def != null)
+                    if (mightComp != null && mightComp.MightData != null && __instance.pawnAbility.Def != null)
                     {
                         //might abilities
+                        if (mightComp.MightData.MightPowersCustom != null)
+                        {
+                            foreach (MightPower mp in mightComp.MightData.MightPowersCustom)
+                            {
+                                if (mp.autocasting != null && mp.autocasting.type != TMDefs.AutocastType.Null)
+                                {
+                                    if (mp.TMabilityDefs.Contains(__instance.pawnAbility.Def))
+                                    {
+                                        mightPower = mp;
+                                        if (Input.GetMouseButtonDown(1) && Mouse.IsOver(rect))
+                                        {
+                                            mightPower.AutoCast = !mightPower.AutoCast;
+                                            __result = new GizmoResult(GizmoState.Mouseover, null);
+                                            return false;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                         if (__instance.pawnAbility.Def == TorannMagicDefOf.TM_Grapple)
                         {
                             mightPower = mightComp.MightData.MightPowersG.FirstOrDefault<MightPower>((MightPower x) => x.abilityDef == TorannMagicDefOf.TM_Grapple);

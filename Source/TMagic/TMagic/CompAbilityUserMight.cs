@@ -996,11 +996,19 @@ namespace TorannMagic
                         ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                         if (this.autocastTick < Find.TickManager.TicksGame)  //180 default
                         {
-                            if (this.Pawn.IsColonist && !this.Pawn.Dead && !this.Pawn.Downed && this.Pawn.Map != null && this.Pawn.story != null && this.Pawn.story.traits != null && this.MightData != null && this.AbilityData != null)
+                            if ( !this.Pawn.Dead && !this.Pawn.Downed && this.Pawn.Map != null && this.Pawn.story != null && this.Pawn.story.traits != null && this.MightData != null && this.AbilityData != null)
                             {
-                                ResolveAutoCast();
-                            }
-                            this.autocastTick = Find.TickManager.TicksGame + (int)Rand.Range(.8f * settingsRef.autocastEvaluationFrequency, 1.2f * settingsRef.autocastEvaluationFrequency);
+                                if (this.Pawn.IsColonist)
+                                {
+                                    this.autocastTick = Find.TickManager.TicksGame + (int)Rand.Range(.8f * settingsRef.autocastEvaluationFrequency, 1.2f * settingsRef.autocastEvaluationFrequency);
+                                    ResolveAutoCast();
+                                }
+                                else if(!this.Pawn.IsPrisoner || this.Pawn.IsFighting())
+                                {
+                                    this.autocastTick = Find.TickManager.TicksGame + (int)(Rand.Range(.8f * settingsRef.autocastEvaluationFrequency, 1.2f * settingsRef.autocastEvaluationFrequency) * 3);
+                                    ResolveAIAutoCast();
+                                }
+                            }                            
                         }
                         if (!this.Pawn.IsColonist && settingsRef.AICasting && settingsRef.AIAggressiveCasting && Find.TickManager.TicksGame > this.nextAICastAttemptTick) //Aggressive AI Casting
                         {
@@ -2100,6 +2108,7 @@ namespace TorannMagic
                         current.learned = false;
                         this.RemovePawnAbility(current.abilityDef);
                     }
+                    this.RemovePawnAbility(TorannMagicDefOf.TM_ChiBurst);
                 }
                 //flag2 = abilityUser.story.traits.HasTrait(TorannMagicDefOf.TM_Commander);
                 if (flag2)
@@ -3288,10 +3297,141 @@ namespace TorannMagic
                 bool isCustom = this.customIndex >= 0;
                 if (this.Pawn.drafter != null && !this.Pawn.Drafted && this.Stamina != null && this.Stamina.CurLevelPercentage >= settingsRef.autocastMinThreshold)
                 {
+                    foreach (MightPower mp in this.MightData.MightPowersCustom)
+                    {
+                        if (mp.learned && mp.autocast && mp.autocasting != null && mp.autocasting.mightUser && mp.autocasting.undrafted)
+                        {
+                            //try
+                            //{ 
+                                TMAbilityDef tmad = mp.TMabilityDefs[mp.level] as TMAbilityDef; // issues with index?
+                                bool canUseWithEquippedWeapon = true;
+                                bool canUseIfViolentAbility = this.Pawn.story.DisabledWorkTagsBackstoryAndTraits.HasFlag(WorkTags.Violent) ? !tmad.MainVerb.isViolent : true;
+                                if (tmad.requiredWeaponsOrCategories != null && tmad.IsRestrictedByEquipment(this.Pawn))
+                                {
+                                    continue;
+                                }
+                                if (canUseWithEquippedWeapon && canUseIfViolentAbility)
+                                {
+                                    PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == tmad);
+                                    if (mp.autocasting.type == TMDefs.AutocastType.OnTarget && this.Pawn.CurJob.targetA != null && this.Pawn.CurJob.targetA.Thing != null)
+                                    {
+                                        LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.CurJob.targetA);                                        
+                                        if (localTarget.IsValid)
+                                        {
+                                            Thing targetThing = localTarget.Thing;
+                                            if (!(targetThing.GetType() == mp.autocasting.GetTargetType))
+                                            {
+                                                continue;
+                                            }
+                                            if (mp.autocasting.requiresLoS && !TM_Calc.HasLoSFromTo(this.Pawn.Position, targetThing, this.Pawn, mp.autocasting.minRange, ability.Def.MainVerb.range))
+                                            {
+                                                continue;
+                                            }
+                                            if (mp.autocasting.maxRange != 0f && mp.autocasting.maxRange < (this.Pawn.Position - targetThing.Position).LengthHorizontal)
+                                            {
+                                                continue;
+                                            }
+                                            bool TE = mp.autocasting.targetEnemy && targetThing.Faction != null && targetThing.Faction.HostileTo(this.Pawn.Faction);
+                                            bool TN = mp.autocasting.targetNeutral && (targetThing.Faction == null || !targetThing.Faction.HostileTo(this.Pawn.Faction));
+                                            bool TF = mp.autocasting.targetFriendly && targetThing.Faction == this.Pawn.Faction;
+                                            if (!(TE || TN || TF))
+                                            {
+                                                continue;
+                                            }
+                                            if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
+                                            {
+                                                continue;
+                                            }
+                                            AutoCast.CombatAbility_OnTarget.TryExecute(this, tmad, ability, mp, targetThing, mp.autocasting.minRange, out castSuccess);
+                                        }
+                                    }
+                                    if(mp.autocasting.type == TMDefs.AutocastType.OnSelf)
+                                    {                                        
+                                        LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.CurJob.targetA);
+                                        if (localTarget.IsValid)
+                                        {
+                                            Pawn targetThing = localTarget.Pawn;
+                                            if (!(targetThing.GetType() == mp.autocasting.GetTargetType))
+                                            {
+                                                continue;
+                                            }
+                                            if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
+                                            {
+                                                continue;
+                                            }
+                                            AutoCast.CombatAbility_OnSelf.Evaluate(this, tmad, ability, mp, out castSuccess);
+                                        }
+                                    }
+                                    if(mp.autocasting.type == TMDefs.AutocastType.OnCell && this.Pawn.CurJob.targetA != null)
+                                    {                                        
+                                        LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.CurJob.targetA);
+                                        if (localTarget.IsValid)
+                                        {
+                                            IntVec3 targetThing = localTarget.Cell;
+                                            if (!(targetThing.GetType() == mp.autocasting.GetTargetType))
+                                            {
+                                                continue;
+                                            }
+                                            if (mp.autocasting.requiresLoS && !TM_Calc.HasLoSFromTo(this.Pawn.Position, targetThing, this.Pawn, mp.autocasting.minRange, ability.Def.MainVerb.range))
+                                            {
+                                                continue;
+                                            }
+                                            if (mp.autocasting.maxRange != 0f && mp.autocasting.maxRange < (this.Pawn.Position - targetThing).LengthHorizontal)
+                                            {
+                                                continue;
+                                            }
+                                            if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
+                                            {
+                                                continue;
+                                            }
+                                            AutoCast.CombatAbility_OnCell.TryExecute(this, tmad, ability, mp, targetThing, mp.autocasting.minRange, out castSuccess);
+                                        }
+                                    }
+                                    if(mp.autocasting.type == TMDefs.AutocastType.OnNearby)
+                                    {
+                                        LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.CurJob.targetA);
+                                        if(localTarget.IsValid)
+                                        {
+                                            Thing targetThing = localTarget.Thing;
+                                            if (!(targetThing.GetType() == mp.autocasting.GetTargetType))
+                                            {
+                                                continue;
+                                            }
+                                            if (mp.autocasting.requiresLoS && !TM_Calc.HasLoSFromTo(this.Pawn.Position, targetThing, this.Pawn, mp.autocasting.minRange, ability.Def.MainVerb.range))
+                                            {
+                                                continue;
+                                            }
+                                            if (mp.autocasting.maxRange != 0f && mp.autocasting.maxRange < (this.Pawn.Position - targetThing.Position).LengthHorizontal)
+                                            {
+                                                continue;
+                                            }
+                                            bool TE = mp.autocasting.targetEnemy && targetThing.Faction != null && targetThing.Faction.HostileTo(this.Pawn.Faction);
+                                            bool TN = mp.autocasting.targetNeutral && (targetThing.Faction == null || !targetThing.Faction.HostileTo(this.Pawn.Faction));
+                                            bool TF = mp.autocasting.targetFriendly && targetThing.Faction == this.Pawn.Faction;
+                                            if (!(TE || TN || TF))
+                                            {
+                                                continue;
+                                            }
+                                            if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
+                                            {
+                                                continue;
+                                            }
+                                            AutoCast.CombatAbility_OnTarget.TryExecute(this, tmad, ability, mp, targetThing, mp.autocasting.minRange, out castSuccess);
+                                        }
+                                    }
+                                    if (castSuccess) goto AutoCastExit;
+                                }
+                            //}
+                            //catch
+                            //{
+                            //    Log.Message("no index found at " + mp.level + " for " + mp.abilityDef.defName);
+                            //}
+                        }
+                    }
                     //Hunting only
                     if (this.Pawn.CurJob.def == JobDefOf.Hunt && this.Pawn.CurJob.targetA != null && this.Pawn.CurJob.targetA.Thing != null && this.Pawn.CurJob.targetA.Thing is Pawn)
-                    {
-                        if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) || isFaceless || isCustom) && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
+                    {                        
+                        if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Ranger) || isFaceless || isCustom) && !this.Pawn.story.DisabledWorkTagsBackstoryAndTraits.HasFlag(WorkTags.Violent))
                         {
                             PawnAbility ability = null;
                             foreach (MightPower current in this.MightData.MightPowersR)
@@ -3312,7 +3452,7 @@ namespace TorannMagic
                                                     if (mightPower != null && mightPower.learned && mightPower.autocast)
                                                     {
                                                         ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ArrowStorm);
-                                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_ArrowStorm, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
+                                                        AutoCast.CombatAbility_OnTarget_LoS.TryExecute(this, TorannMagicDefOf.TM_ArrowStorm, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
                                                         if (castSuccess) goto AutoCastExit;
                                                     }
                                                 }
@@ -3322,7 +3462,7 @@ namespace TorannMagic
                                                     if (mightPower != null && mightPower.learned && mightPower.autocast)
                                                     {
                                                         ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ArrowStorm_I);
-                                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_ArrowStorm_I, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
+                                                        AutoCast.CombatAbility_OnTarget_LoS.TryExecute(this, TorannMagicDefOf.TM_ArrowStorm_I, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
                                                         if (castSuccess) goto AutoCastExit;
                                                     }
 
@@ -3333,7 +3473,7 @@ namespace TorannMagic
                                                     if (mightPower != null && mightPower.learned && mightPower.autocast)
                                                     {
                                                         ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ArrowStorm_II);
-                                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_ArrowStorm_II, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
+                                                        AutoCast.CombatAbility_OnTarget_LoS.TryExecute(this, TorannMagicDefOf.TM_ArrowStorm_II, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
                                                         if (castSuccess) goto AutoCastExit;
                                                     }
                                                 }
@@ -3343,7 +3483,7 @@ namespace TorannMagic
                                                     if (mightPower != null && mightPower.learned && mightPower.autocast)
                                                     {
                                                         ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ArrowStorm_III);
-                                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_ArrowStorm_III, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
+                                                        AutoCast.CombatAbility_OnTarget_LoS.TryExecute(this, TorannMagicDefOf.TM_ArrowStorm_III, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
                                                         if (castSuccess) goto AutoCastExit;
                                                     }
                                                 }
@@ -3388,7 +3528,7 @@ namespace TorannMagic
                                                     Pawn targetPawn = this.Pawn.TargetCurrentlyAimingAt.Thing as Pawn;
                                                     if (targetPawn != null)
                                                     {
-                                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_SuppressingFire, ability, mightPower, targetPawn, 1, out castSuccess);
+                                                        AutoCast.CombatAbility_OnTarget_LoS.TryExecute(this, TorannMagicDefOf.TM_SuppressingFire, ability, mightPower, targetPawn, 1, out castSuccess);
                                                         if (castSuccess) goto AutoCastExit;
                                                     }
                                                 }
@@ -3402,7 +3542,7 @@ namespace TorannMagic
                                                     Pawn targetPawn = this.Pawn.TargetCurrentlyAimingAt.Thing as Pawn;
                                                     if (targetPawn != null)
                                                     {
-                                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_Buckshot, ability, mightPower, targetPawn, 1, out castSuccess);
+                                                        AutoCast.CombatAbility_OnTarget_LoS.TryExecute(this, TorannMagicDefOf.TM_Buckshot, ability, mightPower, targetPawn, 1, out castSuccess);
                                                         if (castSuccess) goto AutoCastExit;
                                                     }
                                                 }
@@ -3427,7 +3567,7 @@ namespace TorannMagic
                                             if (mightPower != null && mightPower.autocast)
                                             {
                                                 ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Headshot);
-                                                AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_Headshot, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
+                                                AutoCast.CombatAbility_OnTarget_LoS.TryExecute(this, TorannMagicDefOf.TM_Headshot, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
                                                 if (castSuccess) goto AutoCastExit;
                                             }
                                         }                                        
@@ -3452,7 +3592,7 @@ namespace TorannMagic
                                                 if (mightPower != null && mightPower.learned && mightPower.autocast)
                                                 {
                                                     ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Spite);
-                                                    AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_Spite, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
+                                                    AutoCast.CombatAbility_OnTarget_LoS.TryExecute(this, TorannMagicDefOf.TM_Spite, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
                                                     if (castSuccess) goto AutoCastExit;
                                                 }
                                             }
@@ -3462,7 +3602,7 @@ namespace TorannMagic
                                                 if (mightPower != null && mightPower.learned && mightPower.autocast)
                                                 {
                                                     ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Spite_I);
-                                                    AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_Spite_I, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
+                                                    AutoCast.CombatAbility_OnTarget_LoS.TryExecute(this, TorannMagicDefOf.TM_Spite_I, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
                                                     if (castSuccess) goto AutoCastExit;
                                                 }
 
@@ -3473,7 +3613,7 @@ namespace TorannMagic
                                                 if (mightPower != null && mightPower.learned && mightPower.autocast)
                                                 {
                                                     ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Spite_II);
-                                                    AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_Spite_II, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
+                                                    AutoCast.CombatAbility_OnTarget_LoS.TryExecute(this, TorannMagicDefOf.TM_Spite_II, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
                                                     if (castSuccess) goto AutoCastExit;
                                                 }
                                             }
@@ -3483,7 +3623,7 @@ namespace TorannMagic
                                                 if (mightPower != null && mightPower.learned && mightPower.autocast)
                                                 {
                                                     ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Spite_III);
-                                                    AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_Spite_III, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
+                                                    AutoCast.CombatAbility_OnTarget_LoS.TryExecute(this, TorannMagicDefOf.TM_Spite_III, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
                                                     if (castSuccess) goto AutoCastExit;
                                                 }
                                             }                                            
@@ -3498,7 +3638,7 @@ namespace TorannMagic
                             if (mightPower != null && mightPower.autocast)
                             {
                                 PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ThrowingKnife);
-                                AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_ThrowingKnife, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
+                                AutoCast.CombatAbility_OnTarget_LoS.TryExecute(this, TorannMagicDefOf.TM_ThrowingKnife, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
                                 if (castSuccess) goto AutoCastExit;                                
                             }
                         }
@@ -3508,7 +3648,7 @@ namespace TorannMagic
                             if (mightPower != null && mightPower.autocast)
                             {
                                 PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_TempestStrike);
-                                AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_TempestStrike, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
+                                AutoCast.CombatAbility_OnTarget_LoS.TryExecute(this, TorannMagicDefOf.TM_TempestStrike, ability, mightPower, this.Pawn.CurJob.targetA, 4, out castSuccess);
                                 if (castSuccess) goto AutoCastExit;
                             }
                         }
@@ -3609,8 +3749,139 @@ namespace TorannMagic
                 }
 
                 //combat (drafted) spells
-                if (this.Pawn.drafter != null && this.Pawn.Drafted && this.Stamina != null && (this.Stamina.CurLevelPercentage >= settingsRef.autocastCombatMinThreshold || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk)) && this.Pawn.CurJob.def != JobDefOf.Goto && this.Pawn.CurJob.def != JobDefOf.AttackMelee)
-                {                    
+                if (this.Pawn.drafter != null && this.Pawn.Drafted && this.Pawn.drafter.FireAtWill && this.Stamina != null && (this.Stamina.CurLevelPercentage >= settingsRef.autocastCombatMinThreshold || this.Pawn.story.traits.HasTrait(TorannMagicDefOf.TM_Monk)) && this.Pawn.CurJob.def != JobDefOf.Goto && this.Pawn.CurJob.def != JobDefOf.AttackMelee)
+                {
+                    foreach (MightPower mp in this.MightData.MightPowersCustom)
+                    {
+                        if (mp.learned && mp.autocast && mp.autocasting != null && mp.autocasting.mightUser && mp.autocasting.drafted)
+                        {
+                            //try
+                            //{ 
+                            TMAbilityDef tmad = mp.TMabilityDefs[mp.level] as TMAbilityDef; // issues with index?
+                            bool canUseWithEquippedWeapon = true;
+                            bool canUseIfViolentAbility = this.Pawn.story.DisabledWorkTagsBackstoryAndTraits.HasFlag(WorkTags.Violent) ? !tmad.MainVerb.isViolent : true;
+                            if (tmad.requiredWeaponsOrCategories != null && tmad.IsRestrictedByEquipment(this.Pawn))
+                            {
+                                continue;
+                            }
+                            if (canUseWithEquippedWeapon && canUseIfViolentAbility)
+                            {
+                                PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == tmad);
+                                if (mp.autocasting.type == TMDefs.AutocastType.OnTarget && this.Pawn.TargetCurrentlyAimingAt != null && this.Pawn.TargetCurrentlyAimingAt.Thing != null)
+                                {
+                                    LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.TargetCurrentlyAimingAt);
+                                    if (localTarget.IsValid)
+                                    {
+                                        Thing targetThing = localTarget.Thing;
+                                        if (!(targetThing.GetType() == mp.autocasting.GetTargetType))
+                                        {
+                                            continue;
+                                        }
+                                        if (mp.autocasting.requiresLoS && !TM_Calc.HasLoSFromTo(this.Pawn.Position, targetThing, this.Pawn, mp.autocasting.minRange, ability.Def.MainVerb.range))
+                                        {
+                                            continue;
+                                        }
+                                        if (mp.autocasting.maxRange != 0f && mp.autocasting.maxRange < (this.Pawn.Position - targetThing.Position).LengthHorizontal)
+                                        {
+                                            continue;
+                                        }
+                                        bool TE = mp.autocasting.targetEnemy && targetThing.Faction != null && targetThing.Faction.HostileTo(this.Pawn.Faction);
+                                        bool TN = mp.autocasting.targetNeutral && (targetThing.Faction == null || !targetThing.Faction.HostileTo(this.Pawn.Faction));
+                                        bool TF = mp.autocasting.targetFriendly && targetThing.Faction == this.Pawn.Faction;
+                                        if (!(TE || TN || TF))
+                                        {
+                                            continue;
+                                        }
+                                        if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
+                                        {
+                                            continue;
+                                        }
+                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, tmad, ability, mp, targetThing, mp.autocasting.minRange, out castSuccess);
+                                    }
+                                }
+                                if (mp.autocasting.type == TMDefs.AutocastType.OnSelf)
+                                {
+                                    LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn);
+                                    if (localTarget.IsValid)
+                                    {
+                                        Pawn targetThing = localTarget.Pawn;
+                                        if (!(targetThing.GetType() == mp.autocasting.GetTargetType))
+                                        {
+                                            continue;
+                                        }
+                                        if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
+                                        {
+                                            continue;
+                                        }
+                                        AutoCast.CombatAbility_OnSelf.Evaluate(this, tmad, ability, mp, out castSuccess);
+                                    }
+                                }
+                                if (mp.autocasting.type == TMDefs.AutocastType.OnCell && this.Pawn.TargetCurrentlyAimingAt != null)
+                                {
+                                    LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.TargetCurrentlyAimingAt);
+                                    if (localTarget.IsValid)
+                                    {
+                                        IntVec3 targetThing = localTarget.Cell;
+                                        if (!(targetThing.GetType() == mp.autocasting.GetTargetType))
+                                        {
+                                            continue;
+                                        }
+                                        if (mp.autocasting.requiresLoS && !TM_Calc.HasLoSFromTo(this.Pawn.Position, targetThing, this.Pawn, mp.autocasting.minRange, ability.Def.MainVerb.range))
+                                        {
+                                            continue;
+                                        }
+                                        if (mp.autocasting.maxRange != 0f && mp.autocasting.maxRange < (this.Pawn.Position - targetThing).LengthHorizontal)
+                                        {
+                                            continue;
+                                        }
+                                        if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
+                                        {
+                                            continue;
+                                        }
+                                        AutoCast.CombatAbility_OnCell.TryExecute(this, tmad, ability, mp, targetThing, mp.autocasting.minRange, out castSuccess);
+                                    }
+                                }
+                                if (mp.autocasting.type == TMDefs.AutocastType.OnNearby)
+                                {
+                                    LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.TargetCurrentlyAimingAt);
+                                    if (localTarget.IsValid)
+                                    {
+                                        Thing targetThing = localTarget.Thing;
+                                        if (!(targetThing.GetType() == mp.autocasting.GetTargetType))
+                                        {
+                                            continue;
+                                        }
+                                        if (mp.autocasting.requiresLoS && !TM_Calc.HasLoSFromTo(this.Pawn.Position, targetThing, this.Pawn, mp.autocasting.minRange, ability.Def.MainVerb.range))
+                                        {
+                                            continue;
+                                        }
+                                        if (mp.autocasting.maxRange != 0f && mp.autocasting.maxRange < (this.Pawn.Position - targetThing.Position).LengthHorizontal)
+                                        {
+                                            continue;
+                                        }
+                                        bool TE = mp.autocasting.targetEnemy && targetThing.Faction != null && targetThing.Faction.HostileTo(this.Pawn.Faction);
+                                        bool TN = mp.autocasting.targetNeutral && (targetThing.Faction == null || !targetThing.Faction.HostileTo(this.Pawn.Faction));
+                                        bool TF = mp.autocasting.targetFriendly && targetThing.Faction == this.Pawn.Faction;
+                                        if (!(TE || TN || TF))
+                                        {
+                                            continue;
+                                        }
+                                        if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
+                                        {
+                                            continue;
+                                        }
+                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, tmad, ability, mp, targetThing, mp.autocasting.minRange, out castSuccess);
+                                    }
+                                }
+                                if (castSuccess) goto AutoCastExit;
+                            }
+                            //}
+                            //catch
+                            //{
+                            //    Log.Message("no index found at " + mp.level + " for " + mp.abilityDef.defName);
+                            //}
+                        }
+                    }
                     if ((this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Bladedancer) || isFaceless || isCustom) && this.Pawn.story.DisabledWorkTagsBackstoryAndTraits != WorkTags.Violent)
                     {
                         PawnAbility ability = null;
@@ -3963,7 +4234,7 @@ namespace TorannMagic
                                                     Pawn targetPawn = this.Pawn.TargetCurrentlyAimingAt.Thing as Pawn;
                                                     if (targetPawn != null)
                                                     {
-                                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_SuppressingFire, ability, mightPower, targetPawn, 6, out castSuccess);
+                                                        AutoCast.CombatAbility_OnTarget_LoS.TryExecute(this, TorannMagicDefOf.TM_SuppressingFire, ability, mightPower, targetPawn, 6, out castSuccess);
                                                         if (castSuccess) goto AutoCastExit;
                                                     }
                                                 }
@@ -3977,7 +4248,7 @@ namespace TorannMagic
                                                     Pawn targetPawn = this.Pawn.TargetCurrentlyAimingAt.Thing as Pawn;
                                                     if (targetPawn != null)
                                                     {
-                                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_Buckshot, ability, mightPower, targetPawn, 2, out castSuccess);
+                                                        AutoCast.CombatAbility_OnTarget_LoS.TryExecute(this, TorannMagicDefOf.TM_Buckshot, ability, mightPower, targetPawn, 2, out castSuccess);
                                                         if (castSuccess) goto AutoCastExit;
                                                     }
                                                 }
@@ -3995,7 +4266,7 @@ namespace TorannMagic
                         {
                             PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ThrowingKnife);
                             Pawn targetPawn = TM_Calc.FindNearbyEnemy(this.Pawn, Mathf.RoundToInt(ability.Def.MainVerb.range * .9f));
-                            AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_ThrowingKnife, ability, mightPower, targetPawn, 1, out castSuccess);
+                            AutoCast.CombatAbility_OnTarget_LoS.TryExecute(this, TorannMagicDefOf.TM_ThrowingKnife, ability, mightPower, targetPawn, 1, out castSuccess);
                             if (castSuccess) goto AutoCastExit;
                         }
                     }
@@ -4006,7 +4277,7 @@ namespace TorannMagic
                         {
                             PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_TempestStrike);
                             Pawn targetPawn = TM_Calc.FindNearbyEnemy(this.Pawn, Mathf.RoundToInt(ability.Def.MainVerb.range * .9f));
-                            AutoCast.CombatAbility_OnTarget.TryExecute(this, TorannMagicDefOf.TM_TempestStrike, ability, mightPower, targetPawn, 4, out castSuccess);
+                            AutoCast.CombatAbility_OnTarget_LoS.TryExecute(this, TorannMagicDefOf.TM_TempestStrike, ability, mightPower, targetPawn, 4, out castSuccess);
                             if (castSuccess) goto AutoCastExit;
                         }
                     }
@@ -4031,6 +4302,151 @@ namespace TorannMagic
                     }
                 }
                 AutoCastExit:;
+            }
+        }
+
+        public void ResolveAIAutoCast()
+        {
+            ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
+            if (settingsRef.autocastEnabled && this.Pawn.jobs != null && this.Pawn.CurJob != null && this.Pawn.CurJob.def != TorannMagicDefOf.TMCastAbilityVerb && this.Pawn.CurJob.def != TorannMagicDefOf.TMCastAbilitySelf && this.Pawn.CurJob.def != JobDefOf.Ingest && this.Pawn.CurJob.def != JobDefOf.ManTurret && this.Pawn.GetPosture() == PawnPosture.Standing)
+            {
+                //Log.Message("pawn " + this.Pawn.LabelShort + " current job is " + this.Pawn.CurJob.def.defName);
+                bool castSuccess = false;
+                if (this.Stamina != null && this.Stamina.CurLevelPercentage >= settingsRef.autocastMinThreshold)
+                {
+                    foreach (MightPower mp in this.MightData.MightPowersCustom)
+                    {
+                        if (mp.learned && mp.autocasting != null && mp.autocasting.mightUser && mp.autocasting.AIUsable)
+                        {
+                            //try
+                            //{ 
+                            TMAbilityDef tmad = mp.TMabilityDefs[mp.level] as TMAbilityDef; // issues with index?
+                            bool canUseWithEquippedWeapon = true;
+                            bool canUseIfViolentAbility = this.Pawn.story.DisabledWorkTagsBackstoryAndTraits.HasFlag(WorkTags.Violent) ? !tmad.MainVerb.isViolent : true;
+                            if (tmad.requiredWeaponsOrCategories != null && tmad.IsRestrictedByEquipment(this.Pawn))
+                            {
+                                continue;
+                            }
+                            if (canUseWithEquippedWeapon && canUseIfViolentAbility)
+                            {
+                                PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == tmad);
+                                if (mp.autocasting.type == TMDefs.AutocastType.OnTarget && this.Pawn.TargetCurrentlyAimingAt != null)
+                                {
+                                    LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.TargetCurrentlyAimingAt);
+                                    if (localTarget.IsValid)
+                                    {
+                                        Thing targetThing = localTarget.Thing;
+                                        if (!(targetThing.GetType() == mp.autocasting.GetTargetType))
+                                        {
+                                            continue;
+                                        }
+                                        if (mp.autocasting.requiresLoS && !TM_Calc.HasLoSFromTo(this.Pawn.Position, targetThing, this.Pawn, mp.autocasting.minRange, ability.Def.MainVerb.range))
+                                        {
+                                            continue;
+                                        }
+                                        if (mp.autocasting.maxRange != 0f && mp.autocasting.maxRange < (this.Pawn.Position - targetThing.Position).LengthHorizontal)
+                                        {
+                                            continue;
+                                        }
+                                        bool TE = mp.autocasting.targetEnemy && targetThing.Faction != null && targetThing.Faction.HostileTo(this.Pawn.Faction);
+                                        bool TN = mp.autocasting.targetNeutral && (targetThing.Faction == null || !targetThing.Faction.HostileTo(this.Pawn.Faction));
+                                        bool TF = mp.autocasting.targetFriendly && targetThing.Faction == this.Pawn.Faction;
+                                        if (!(TE || TN || TF))
+                                        {
+                                            continue;
+                                        }
+                                        if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
+                                        {
+                                            continue;
+                                        }
+                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, tmad, ability, mp, targetThing, mp.autocasting.minRange, out castSuccess);
+                                    }
+                                }
+                                if (mp.autocasting.type == TMDefs.AutocastType.OnSelf)
+                                {
+                                    LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.TargetCurrentlyAimingAt);
+                                    if (localTarget.IsValid)
+                                    {
+                                        Pawn targetThing = localTarget.Pawn;
+                                        if (!(targetThing.GetType() == mp.autocasting.GetTargetType))
+                                        {
+                                            continue;
+                                        }
+                                        if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
+                                        {
+                                            continue;
+                                        }
+                                        AutoCast.CombatAbility_OnSelf.Evaluate(this, tmad, ability, mp, out castSuccess);
+                                    }
+                                }
+                                if (mp.autocasting.type == TMDefs.AutocastType.OnCell && this.Pawn.CurJob.targetA != null)
+                                {
+                                    LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.TargetCurrentlyAimingAt);
+                                    if (localTarget.IsValid)
+                                    {
+                                        IntVec3 targetThing = localTarget.Cell;
+                                        if (!(targetThing.GetType() == mp.autocasting.GetTargetType))
+                                        {
+                                            continue;
+                                        }
+                                        if (mp.autocasting.requiresLoS && !TM_Calc.HasLoSFromTo(this.Pawn.Position, targetThing, this.Pawn, mp.autocasting.minRange, ability.Def.MainVerb.range))
+                                        {
+                                            continue;
+                                        }
+                                        if (mp.autocasting.maxRange != 0f && mp.autocasting.maxRange < (this.Pawn.Position - targetThing).LengthHorizontal)
+                                        {
+                                            continue;
+                                        }
+                                        if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
+                                        {
+                                            continue;
+                                        }
+                                        AutoCast.CombatAbility_OnCell.TryExecute(this, tmad, ability, mp, targetThing, mp.autocasting.minRange, out castSuccess);
+                                    }
+                                }
+                                if (mp.autocasting.type == TMDefs.AutocastType.OnNearby)
+                                {
+                                    LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.TargetCurrentlyAimingAt);
+                                    if (localTarget.IsValid)
+                                    {
+                                        Thing targetThing = localTarget.Thing;
+                                        if (!(targetThing.GetType() == mp.autocasting.GetTargetType))
+                                        {
+                                            continue;
+                                        }
+                                        if (mp.autocasting.requiresLoS && !TM_Calc.HasLoSFromTo(this.Pawn.Position, targetThing, this.Pawn, mp.autocasting.minRange, ability.Def.MainVerb.range))
+                                        {
+                                            continue;
+                                        }
+                                        if (mp.autocasting.maxRange != 0f && mp.autocasting.maxRange < (this.Pawn.Position - targetThing.Position).LengthHorizontal)
+                                        {
+                                            continue;
+                                        }
+                                        bool TE = mp.autocasting.targetEnemy && targetThing.Faction != null && targetThing.Faction.HostileTo(this.Pawn.Faction);
+                                        bool TN = mp.autocasting.targetNeutral && (targetThing.Faction == null || !targetThing.Faction.HostileTo(this.Pawn.Faction));
+                                        bool TF = mp.autocasting.targetFriendly && targetThing.Faction == this.Pawn.Faction;
+                                        if (!(TE || TN || TF))
+                                        {
+                                            continue;
+                                        }
+                                        if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
+                                        {
+                                            continue;
+                                        }
+                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, tmad, ability, mp, targetThing, mp.autocasting.minRange, out castSuccess);
+                                    }
+                                }
+                            }
+                            //}
+                            //catch
+                            //{
+                            //    Log.Message("no index found at " + mp.level + " for " + mp.abilityDef.defName);
+                            //}
+                        }
+                        if (castSuccess) goto AIAutoCastExit;
+                    }
+                    AIAutoCastExit:;
+                }
             }
         }
 

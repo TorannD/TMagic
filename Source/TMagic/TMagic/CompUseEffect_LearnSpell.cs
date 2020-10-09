@@ -22,7 +22,14 @@ namespace TorannMagic
                         TMAbilityDef ad = (TMAbilityDef)comp.MagicData.AllMagicPowers[i].abilityDef;
                         if (ad.learnItem == parent.def)
                         {
-                            if (!TM_Data.RestrictedAbilities.Contains(parent.def) && !comp.MagicData.AllMagicPowers[i].learned)
+                            List<TraitDef> restrictedTraits = null;
+                            if(this.parent.def.HasModExtension<DefModExtension_LearnAbilityRequiredTraits>())
+                            {
+                                restrictedTraits = new List<TraitDef>();
+                                restrictedTraits.Clear();
+                                restrictedTraits = this.parent.def.GetModExtension<DefModExtension_LearnAbilityRequiredTraits>().traits;
+                            }
+                            if (!TM_Data.RestrictedAbilities.Contains(parent.def) && !comp.MagicData.AllMagicPowers[i].learned && restrictedTraits == null)
                             {
                                 itemUsed = true;
                                 comp.MagicData.AllMagicPowers[i].learned = true;
@@ -35,13 +42,42 @@ namespace TorannMagic
                                 this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                                 break;
                             }
-                            else if (TM_Data.RestrictedAbilities.Contains(parent.def) && !comp.MagicData.AllMagicPowers[i].learned)
+                            else if ((TM_Data.RestrictedAbilities.Contains(parent.def) || restrictedTraits != null) && !comp.MagicData.AllMagicPowers[i].learned)
                             {
                                 if(comp.customClass.learnableSpells.Contains(parent.def))
                                 {
                                     itemUsed = true;
                                     comp.MagicData.AllMagicPowers[i].learned = true;
                                     if(ad.shouldInitialize)
+                                    {
+                                        comp.RemovePawnAbility(ad);
+                                        comp.AddPawnAbility(ad);
+                                    }
+                                    comp.InitializeSpell();
+                                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                                    break;
+                                }
+                                else
+                                {
+                                    Messages.Message("CannotLearnSpell".Translate(), MessageTypeDefOf.RejectInput);
+                                    break;
+                                }
+                            }
+                            else if(!comp.MagicData.AllMagicPowers[i].learned && restrictedTraits != null && restrictedTraits.Count > 0)
+                            {
+                                bool hasRequiredTrait = false;
+                                foreach(TraitDef td in restrictedTraits)
+                                {
+                                    if(comp.Pawn.story.traits.HasTrait(td))
+                                    {
+                                        hasRequiredTrait = true;
+                                    }
+                                }
+                                if (hasRequiredTrait)
+                                {
+                                    itemUsed = true;
+                                    comp.MagicData.AllMagicPowers[i].learned = true;
+                                    if (ad.shouldInitialize)
                                     {
                                         comp.RemovePawnAbility(ad);
                                         comp.AddPawnAbility(ad);

@@ -180,19 +180,35 @@ namespace TorannMagic
 
         private static UnfinishedThing ClosestUnfinishedThingForBill(Pawn pawn, Bill_ProductionWithUft bill)
         {
-            Predicate<Thing> predicate = (Thing t) => !t.IsForbidden(pawn) && ((UnfinishedThing)t).Recipe == bill.recipe && ((UnfinishedThing)t).Creator == pawn && ((UnfinishedThing)t).ingredients.TrueForAll((Thing x) => bill.IsFixedOrAllowedIngredient(x.def)) && pawn.CanReserve(t);
-            IntVec3 position = pawn.Position;
-            Map map = pawn.Map;
-            ThingRequest thingReq = ThingRequest.ForDef(bill.recipe.unfinishedThingDef);
-            PathEndMode peMode = PathEndMode.InteractionCell;
-            TraverseParms traverseParams = TraverseParms.For(pawn, pawn.NormalMaxDanger());
-            Predicate<Thing> validator = predicate;
-            return (UnfinishedThing)GenClosest.ClosestThingReachable(position, map, thingReq, peMode, traverseParams, 9999f, validator);
+
+            if (ModCheck.Validate.NoJobAuthors.IsInitialized())
+            {
+                Predicate<Thing> predicate = (Thing t) => !t.IsForbidden(pawn) && ((UnfinishedThing)t).Recipe == bill.recipe && ((UnfinishedThing)t).ingredients.TrueForAll((Thing x) => bill.IsFixedOrAllowedIngredient(x.def));
+                IntVec3 position = pawn.Position;
+                Map map = pawn.Map;
+                ThingRequest thingReq = ThingRequest.ForDef(bill.recipe.unfinishedThingDef);
+                PathEndMode peMode = PathEndMode.InteractionCell;
+                TraverseParms traverseParams = TraverseParms.For(pawn, pawn.NormalMaxDanger());
+                Predicate<Thing> validator = predicate;
+                return (UnfinishedThing)GenClosest.ClosestThingReachable(position, map, thingReq, peMode, traverseParams, 9999f, validator);
+            }
+            else
+            {
+                Predicate<Thing> predicate = (Thing t) => !t.IsForbidden(pawn) && ((UnfinishedThing)t).Recipe == bill.recipe && ((UnfinishedThing)t).Creator == pawn && ((UnfinishedThing)t).ingredients.TrueForAll((Thing x) => bill.IsFixedOrAllowedIngredient(x.def)) && pawn.CanReserve(t);
+                IntVec3 position = pawn.Position;
+                Map map = pawn.Map;
+                ThingRequest thingReq = ThingRequest.ForDef(bill.recipe.unfinishedThingDef);
+                PathEndMode peMode = PathEndMode.InteractionCell;
+                TraverseParms traverseParams = TraverseParms.For(pawn, pawn.NormalMaxDanger());
+                Predicate<Thing> validator = predicate;
+                return (UnfinishedThing)GenClosest.ClosestThingReachable(position, map, thingReq, peMode, traverseParams, 9999f, validator);
+            }
         }
 
         private static Job FinishUftJob(Pawn pawn, UnfinishedThing uft, Bill_ProductionWithUft bill)
         {
-            if (uft.Creator != pawn)
+
+            if (uft.Creator != pawn && !ModCheck.Validate.NoJobAuthors.IsInitialized())
             {
                 Log.Error("Tried to get FinishUftJob for " + pawn + " finishing " + uft + " but its creator is " + uft.Creator);
                 return null;
@@ -243,7 +259,7 @@ namespace TorannMagic
                             {
                                 issueBill = false;
                             }
-                            if(!billPawns.Contains(pawn))
+                            if(!billPawns.Contains(pawn) && !ModCheck.Validate.NoJobAuthors.IsInitialized())
                             {
                                 issueBill = false;
                             }
@@ -263,7 +279,7 @@ namespace TorannMagic
                                 {
                                     if (bill_ProductionWithUft.BoundUft != null)
                                     {
-                                        if (bill_ProductionWithUft.BoundWorker == pawn && pawn.CanReserveAndReach(bill_ProductionWithUft.BoundUft, PathEndMode.Touch, Danger.Deadly) && !bill_ProductionWithUft.BoundUft.IsForbidden(pawn))
+                                        if ((ModCheck.Validate.NoJobAuthors.IsInitialized() || bill_ProductionWithUft.BoundWorker == pawn) && pawn.CanReserveAndReach(bill_ProductionWithUft.BoundUft, PathEndMode.Touch, Danger.Deadly) && !bill_ProductionWithUft.BoundUft.IsForbidden(pawn))
                                         {
                                             return FinishUftJob(pawn, bill_ProductionWithUft.BoundUft, bill_ProductionWithUft);
                                         }

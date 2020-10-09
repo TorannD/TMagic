@@ -96,24 +96,32 @@ namespace TorannMagic
             {
                 ModOptions.Constants.SetPawnInFlight(true);
                 List<Pawn> tmpList = TM_Calc.FindAllPawnsAround(this.Map, launcherPosition, 5f, this.pawn.Faction, true);
-                for (int i = 0; i < tmpList.Count; i++)
+                if (tmpList != null)
                 {
-                    if (!tmpList[i].Position.Roofed(this.Map))
+                    for (int i = 0; i < tmpList.Count; i++)
                     {
-                        if (ModCheck.Validate.GiddyUp.Core_IsInitialized())
+                        if (!tmpList[i].Position.Roofed(this.Map))
                         {
-                            if(ModCheck.GiddyUp.IsMount(tmpList[i]))
+                            if (ModCheck.Validate.GiddyUp.Core_IsInitialized())
                             {
-                                continue;
+                                if (ModCheck.GiddyUp.IsMount(tmpList[i]))
+                                {
+                                    continue;
+                                }
                             }
+                            pawnList.Add(tmpList[i]);
                         }
-                        pawnList.Add(tmpList[i]);
                     }
+                    unroofedCells = GetUnroofedCellsAround(base.Position, this.radius);
+                    CreatePodGroup();
+                    this.allPawnsLaunched = false;
+                    launchedFlag = true;
                 }
-                unroofedCells = GetUnroofedCellsAround(base.Position, this.radius);
-                CreatePodGroup();
-                this.allPawnsLaunched = false;                             
-                launchedFlag = true;
+                else
+                {
+                    this.allPawnsLaunched = true;
+                    launchedFlag = true;
+                }
             }
             
             if (launchedFlag)

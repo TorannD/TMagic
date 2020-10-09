@@ -10,6 +10,7 @@ using System;
 using AbilityUser;
 using HarmonyLib;
 using TorannMagic.Enchantment;
+using TorannMagic.TMDefs;
 
 namespace TorannMagic
 {
@@ -2230,6 +2231,6 @@ namespace TorannMagic
             {
                 return TM_Calc.FindWalkableCellNextTo(c, pawn.Map).Cell;
             }
-        }
+        }        
     }
 }

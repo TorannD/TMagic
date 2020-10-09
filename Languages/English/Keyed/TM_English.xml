@@ -179,6 +179,7 @@
 <TM_UnableToTravel>Unable to travel to this destination.</TM_UnableToTravel>
 <TM_SelectTargetOnMap>{0}: select target on map...</TM_SelectTargetOnMap>
 <TM_AbandoningMap>Your pawns are abandoning {0}, do you want to remove the map?</TM_AbandoningMap>
+<TM_IncompatibleWeaponType>{0} cannot use {1} - incompatible weapon.</TM_IncompatibleWeaponType>
 
 <!-- Surgery Failed letters -->
 <LetterLabelRegrowthSurgeryFail>Surgery Failed</LetterLabelRegrowthSurgeryFail>

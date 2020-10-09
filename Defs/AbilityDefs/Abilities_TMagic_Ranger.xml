@@ -210,6 +210,7 @@ A bond can be removed by using this ability on a bonded creature.</description>
 Range: 32</description>
         <staminaCost>0.40</staminaCost>
 		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<weaponDamageFactor>.6</weaponDamageFactor>
 		<canCopy>true</canCopy>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_RangerShot</verbClass>
@@ -243,6 +244,7 @@ Range: 32</description>
 Range: 34</description>
         <staminaCost>0.42</staminaCost>
 		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<weaponDamageFactor>.6</weaponDamageFactor>
 		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_RangerShot</verbClass>
@@ -277,6 +279,7 @@ Range: 36</description>
         <staminaCost>0.44</staminaCost>
 		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
 		<shouldInitialize>false</shouldInitialize>
+		<weaponDamageFactor>.6</weaponDamageFactor>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_RangerShot</verbClass>
             <hasStandardCommand>true</hasStandardCommand>
@@ -309,6 +312,7 @@ Range: 36</description>
 Range: 38</description>
         <staminaCost>0.45</staminaCost>
 		<efficiencyReductionPercent>.08</efficiencyReductionPercent>
+		<weaponDamageFactor>.6</weaponDamageFactor>
 		<shouldInitialize>false</shouldInitialize>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_RangerShot</verbClass>

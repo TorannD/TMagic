@@ -57,19 +57,24 @@ namespace TorannMagic
             TorannMagicDefOf.TM_FireWooshSD.PlayOneShot(info);
             TargetInfo ti = new TargetInfo(this.currentTarget.Cell, map, false);            
             TM_MoteMaker.MakeOverlay(ti, TorannMagicDefOf.TM_Mote_PsycastAreaEffect, map, Vector3.zero, .2f, 0f, .1f, .4f, .4f, 4.3f);
+            float classBonus = 1f;
+            if (p.story != null && p.story.traits != null && p.story.traits.HasTrait(TorannMagicDefOf.InnerFire))
+            {
+                classBonus = 1.5f;
+            }
             if (this.currentTarget != null && p != null && comp != null)
             {
                 this.arcaneDmg = comp.arcaneDmg;                
                 this.TargetsAoE.Clear();
                 this.FindTargets();
-                float energy = 200000 * this.arcaneDmg;
+                float energy = 200000 * this.arcaneDmg * classBonus;
                 GenTemperature.PushHeat(this.currentTarget.Cell, p.Map, energy);
                 ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
                 for (int i = 0; i < pawns.Count; i++)
                 {
                     if (!pawns[i].RaceProps.IsMechanoid)
                     {
-                        float distanceModifier = 1f / (pawns[i].Position - currentTarget.Cell).LengthHorizontal;
+                        float distanceModifier = (classBonus) / (pawns[i].Position - currentTarget.Cell).LengthHorizontal;
                         if (distanceModifier > 1f)
                         {
                             distanceModifier = 1f;

@@ -37,6 +37,11 @@
 		  <li>VWE_CombatHandgun</li>
 		  <li>VWE_Gun_LightSMG</li>
 		  <li>VWE_Gun_SMG</li>
+		  <li>Gun_M3Predator</li>
+		  <li>Gun_M4Shuriken</li>
+		  <li>Gun_M5Phalanx</li>
+		  <li>Gun_N7Hurricane</li>
+		  <li>Gun_M12Locust</li>
 		</weaponDefNames>	
 	</TorannMagic.WeaponCategoryList>
 	
@@ -87,6 +92,14 @@
 		  <li>VWE_Gun_BattleRifle</li>
 		  <li>VWE_Gun_Carbine</li>
 		  <li>VWE_Gun_MarksmanRifle</li>
+		  <li>Gun_M8Avenger</li>
+		  <li>Gun_M76Revenant</li>
+		  <li>Gun_M96Mattock</li>
+		  <li>Gun_M92Mantis</li>
+		  <li>Gun_M98Widow</li>
+		  <li>Gun_M98BlackWidow</li>
+		  <li>Gun_Harrier</li>
+		  <li>Gun_N7Typhoon</li>
 		</weaponDefNames>	
 	</TorannMagic.WeaponCategoryList>
 	
@@ -105,6 +118,36 @@
 		  <li>VWEL_Gun_SalvagedLaserShotgun</li>
 		  <li>VWE_Gun_ChargeShotgun</li>
 		  <li>VWE_SawedOffShotgun</li>
+		  <li>Gun_M300Claymore</li>
+		  <li>Gun_M23Katana</li>
+		  <li>Gun_M100GrenadeLauncher</li>
+		  <li>Gun_M22Eviscerator</li>
+		</weaponDefNames>	
+	</TorannMagic.WeaponCategoryList>
+	
+	<TorannMagic.WeaponCategoryList Name="BowCategory_List">
+		<defName>TM_Category_Bows</defName>
+		<weaponDefNames>		
+		  <li>Bow_Short</li>
+		  <li>Bow_Recurve</li>
+		  <li>Bow_Great</li>
+		  <li>TM_ElephantBow</li>
+		  <li>TM_ThrumBow</li>
+		  <li>Bow_Compound</li>
+		  <li>VWE_Bow_Long</li>
+		  <li>VWE_Bow_Crossbow</li>
+		  <li>VWE_Bow_Compound</li>
+		</weaponDefNames>	
+	</TorannMagic.WeaponCategoryList>
+	
+	<TorannMagic.WeaponCategoryList Name="MagicalFociCategory_List">
+		<defName>TM_Category_MagicalFoci</defName>
+		<weaponDefNames>		
+		  <li>TM_FireWand</li>
+		  <li>TM_IceWand</li>
+		  <li>TM_LightningWand</li>
+		  <li>TM_DefenderStaff</li>
+		  <li>TM_BlazingPowerStaff</li>
 		</weaponDefNames>	
 	</TorannMagic.WeaponCategoryList>
 
@@ -121,4 +164,6 @@
 	Rimsenal Enhanced Vanilla
 	Vanilla Weapons Expanded
 	Vanilla Weapons Expanded Lasers
+	RimEffect - Weapons and Armor
+	Cerberus Equipment
 	=============-->

@@ -84,7 +84,7 @@ Legendary Sniper: Speed +0.25c/s, Aiming Delay -30%, Shooting Acc. +8%, Research
     <staminaCost>0.40</staminaCost>
 	<canCopy>true</canCopy>
 	<efficiencyReductionPercent>.1</efficiencyReductionPercent>
-	<weaponDamageFactor>.6</weaponDamageFactor>
+	<weaponDamageFactor>.9</weaponDamageFactor>
     <MainVerb Class="AbilityUser.VerbProperties_Ability">
         <verbClass>TorannMagic.Verb_SniperShot</verbClass>
 			<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -306,7 +306,7 @@ Recharge 40s</description>
  <TorannMagic.TMAbilityDef ParentName="BaseMightAbility">
     <defName>TM_AntiArmor</defName>
     <label>Anti-Armor</label>
-    <description>The sniper carries anti armor rounds for those special occasions. When this ammunition shatters, it releases nanites that will shred through any armor they make contact with. Relatively ineffective against soft targets but does extra damage to hard targets.</description>
+    <description>The sniper carries anti armor rounds for those special occasions. When this ammunition shatters, it releases nanites that will shred any armor they make contact with. Relatively ineffective against soft targets but does extra damage to armored targets, as long as the resistance on impact activates the nanites. Armored targets may be any mechanoid or a target with a Sharp armor rating above 100%.</description>
 	<uiIconPath>Spells/InfernoCannonShot</uiIconPath>
     <staminaCost>0.30</staminaCost>
 	<efficiencyReductionPercent>.1</efficiencyReductionPercent>

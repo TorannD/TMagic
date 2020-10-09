@@ -127,13 +127,20 @@ namespace TorannMagic
                         DamageInfo dinfo2 = new DamageInfo(DamageDefOf.Stun, 10, 10, -1, this.CasterPawn, null, null, DamageInfo.SourceCategory.ThingOrUnknown, victim);
                         if (!victim.RaceProps.Humanlike || victim.Faction == this.CasterPawn.Faction)
                         {
+                            if (ModCheck.Validate.GiddyUp.Core_IsInitialized())
+                            {
+                                ModCheck.GiddyUp.ForceDismount(victim);
+                            }
                             summonablePawn = (FlyingObject)GenSpawn.Spawn(ThingDef.Named("TM_SummonedPawn"), summonableThing.Position, summonableThing.Map);
                             summonablePawn.impactDamage = dinfo2;
                             summonablePawn.Launch(base.caster, new LocalTargetInfo(pVect.ToIntVec3()), summonableThing);
                         }
                         else if (victim.RaceProps.Humanlike && victim.Faction != this.CasterPawn.Faction && Rand.Chance(TM_Calc.GetSpellSuccessChance(this.CasterPawn, victim, true)))
                         {
-                            
+                            if(ModCheck.Validate.GiddyUp.Core_IsInitialized())
+                            {
+                                ModCheck.GiddyUp.ForceDismount(victim);
+                            }
                             summonablePawn = (FlyingObject)GenSpawn.Spawn(ThingDef.Named("TM_SummonedPawn"), summonableThing.Position, summonableThing.Map);
                             summonablePawn.impactDamage = dinfo2;
                             summonablePawn.Launch(base.caster, new LocalTargetInfo(pVect.ToIntVec3()), summonableThing);

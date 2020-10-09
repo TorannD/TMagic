@@ -238,7 +238,8 @@ namespace TorannMagic
             {
                 this.ticksToImpact++;
                 base.Position = this.ExactPosition.ToIntVec3();
-                GenSpawn.Spawn(this.flyingThing, base.Position, base.Map);
+                GenPlace.TryPlaceThing(this.flyingThing, base.Position, this.Map, ThingPlaceMode.Near);
+                //GenSpawn.Spawn(this.flyingThing, base.Position, base.Map);
                 ModOptions.Constants.SetPawnInFlight(false);
                 Pawn p = this.flyingThing as Pawn;
                 if (p.IsColonist)

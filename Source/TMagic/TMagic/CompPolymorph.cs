@@ -374,6 +374,10 @@ namespace TorannMagic
                 {
                     pawn.needs.mood.thoughts.memories.TryGainMemory(TorannMagicDefOf.Polymorphed_Transhumanist, this.spawner);
                 }
+                else if(this.spawner == this.original)
+                {
+                    //do not give bad thoughts
+                }
                 else
                 {
                     pawn.needs.mood.thoughts.memories.TryGainMemory(TorannMagicDefOf.Polymorphed, this.spawner);

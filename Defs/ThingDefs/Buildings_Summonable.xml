@@ -451,7 +451,7 @@
     <defName>TM_Heater</defName>
     <label>magical heater</label>
     <thingClass>TorannMagic.Building_TMHeater</thingClass>
-    <description>An active dimensional tap into the Plane of Fire that can be used to heat confined spaces. Can also be used for various cooking or cremating tasks. Lasts about 3 days.</description>    
+    <description>An active dimensional tap into the Plane of Fire that can be used to heat confined spaces. Can also be used for various cooking or cremating tasks. Remains as long as it is sustained by a mage.</description>    
     <category>Building</category>
     <graphicData>
       <texPath>Spells/invis</texPath>
@@ -586,7 +586,7 @@
     <defName>TM_PowerNode</defName>
     <label>Arcane power node</label>
 	<thingClass>TorannMagic.Building_TMPowerNode</thingClass>
-    <description>An arcane energy node that provides power for a limited amount of time.</description>
+    <description>An arcane energy node that provides power as long as it is sustained by a mage.</description>
     <category>Building</category>
     <graphicData>
       <texPath>Spells/invis</texPath>

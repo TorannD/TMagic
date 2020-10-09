@@ -4,6 +4,7 @@ using System;
 using AbilityUser;
 using System.Linq;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace TorannMagic
 {
@@ -61,25 +62,29 @@ namespace TorannMagic
                 if (victim != null && !victim.Dead && Rand.Chance(this.launcher.GetStatValue(StatDefOf.ShootingAccuracyPawn, true)))
                 {
                     int dmg = GetWeaponDmg(pawn);
-                    if (victim.RaceProps.FleshType != FleshTypeDefOf.Normal )
+                    bool flagFleshType = victim.RaceProps.FleshType != FleshTypeDefOf.Normal;
+                    float num = TM_Calc.GetOverallArmor(victim, StatDefOf.ArmorRating_Sharp);
+                    bool flagArmorAmount =  num > 1f;
+                    if (flagArmorAmount || flagFleshType)
                     {
                         MoteMaker.ThrowMicroSparks(victim.Position.ToVector3(), map);
-                        damageEntities(victim, null, dmg, this.def.projectile.damageDef);
+                        TM_Action.DamageEntities(victim, null, dmg, 1.5f, this.def.projectile.damageDef, pawn);
                         MoteMaker.MakeStaticMote(victim.Position, pawn.Map, ThingDefOf.Mote_ExplosionFlash, 4f);
-                        damageEntities(victim, null, GetWeaponDmgMech(pawn, dmg), this.def.projectile.damageDef);
+                        TM_Action.DamageEntities(victim, null, GetWeaponDmgMech(pawn, dmg), 1.5f, this.def.projectile.damageDef, pawn);
                         MoteMaker.ThrowMicroSparks(victim.Position.ToVector3(), map);
                         for (int i = 0; i < 1 + verVal; i++)
                         {
-                            GenExplosion.DoExplosion(newPos, map, Rand.Range((.1f) * (1 + verVal), (.3f) * (1 + verVal)), DamageDefOf.Bomb, this.launcher, (this.def.projectile.GetDamageAmount(1, null) / 4) * (1 + verVal), 0, SoundDefOf.MetalHitImportant, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, true);
-                            GenExplosion.DoExplosion(newPos, map, Rand.Range((.2f) * (1 + verVal), (.4f) * (1 + verVal)), DamageDefOf.Stun, this.launcher, (this.def.projectile.GetDamageAmount(1, null) / 2) * (1 + verVal), 0, SoundDefOf.MetalHitImportant, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, true);
+                            GenExplosion.DoExplosion(newPos, map, Rand.Range((.1f) * (1 + verVal), (.3f) * (1 + verVal)), DamageDefOf.Bomb, this.launcher, (this.def.projectile.GetDamageAmount(1, null) / 4) * (1 + verVal), .4f, SoundDefOf.MetalHitImportant, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, true);
+                            GenExplosion.DoExplosion(newPos, map, Rand.Range((.2f) * (1 + verVal), (.4f) * (1 + verVal)), DamageDefOf.Stun, this.launcher, (this.def.projectile.GetDamageAmount(1, null) / 2) * (1 + verVal), .4f, SoundDefOf.MetalHitImportant, def, this.equipmentDef, null, null, 0f, 1, false, null, 0f, 1, 0f, true);
                             newPos = GetNewPos(newPos, pawn.Position.x <= victim.Position.x, pawn.Position.z <= victim.Position.z, false, 0, 0, xProb, 1 - xProb);
                             MoteMaker.ThrowMicroSparks(victim.Position.ToVector3(), base.Map);
                             MoteMaker.ThrowDustPuff(newPos, map, Rand.Range(1.2f, 2.4f));
                         }
+                        DestroyArmor(victim, 4, 100);
                     }
                     else
                     {
-                        damageEntities(victim, null, dmg, this.def.projectile.damageDef);
+                        TM_Action.DamageEntities(victim, null, dmg, 1.5f, this.def.projectile.damageDef, pawn);
                     }
                 }
                 else
@@ -91,6 +96,24 @@ namespace TorannMagic
             {
                 //
             }
+        }
+
+        public static void DestroyArmor(Pawn p, int itemsHit, float averageDestroyHP)
+        {
+            if (p.apparel != null && p.apparel.WornApparel != null && p.apparel.WornApparel.Count > 0)
+            {
+                List<Apparel> apparel = p.apparel.WornApparel.InRandomOrder().ToList();
+                for(int i = 0; i < apparel.Count; i++)
+                {
+                    Apparel item = apparel[i];
+                    if(itemsHit > 0)
+                    {
+                        itemsHit--;
+                        item.HitPoints = Mathf.RoundToInt(Mathf.Clamp(item.HitPoints - (Rand.Range(averageDestroyHP * .5f, averageDestroyHP * 1.5f)), 0, item.MaxHitPoints));
+                    }
+                }
+            }
+            
         }
 
         public static int GetWeaponDmg(Pawn pawn)

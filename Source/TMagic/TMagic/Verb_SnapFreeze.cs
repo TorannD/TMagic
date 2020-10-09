@@ -55,12 +55,17 @@ namespace TorannMagic
             TorannMagicDefOf.TM_WindLowSD.PlayOneShot(info);
             TargetInfo ti = new TargetInfo(this.currentTarget.Cell, map, false);
             TM_MoteMaker.MakeOverlay(ti, TorannMagicDefOf.TM_Mote_PsycastAreaEffect, map, Vector3.zero, 3f, 0f, .1f, .4f, 1.2f, -3f);
+            float classBonus = 1f;
+            if(p.story != null && p.story.traits != null && p.story.traits.HasTrait(TorannMagicDefOf.HeartOfFrost))
+            {
+                classBonus = 1.5f;
+            }
             if (this.currentTarget != null && p != null && comp != null)
             {
                 this.arcaneDmg = comp.arcaneDmg;
                 this.TargetsAoE.Clear();
                 this.FindTargets();
-                float energy = -125000 * this.arcaneDmg;
+                float energy = -125000 * this.arcaneDmg * classBonus;
                 GenTemperature.PushHeat(this.currentTarget.Cell, p.Map, energy);
                 for (int i = 0; i < pawns.Count; i++)
                 {
@@ -71,7 +76,7 @@ namespace TorannMagic
                         {
                             distanceModifier = 1f;
                         }
-                        int bites = Rand.Range(1, 5);
+                        int bites = Mathf.RoundToInt(Rand.Range(1f, 5f) * classBonus);
                         for (int j = 0; j < bites; j++)
                         {
                             if (Rand.Chance(TM_Calc.GetSpellSuccessChance(this.CasterPawn, pawns[i], true)) && Rand.Chance(distanceModifier))

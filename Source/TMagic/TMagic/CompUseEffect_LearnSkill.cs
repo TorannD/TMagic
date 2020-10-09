@@ -21,14 +21,21 @@ namespace TorannMagic
                         TMAbilityDef ad = (TMAbilityDef)comp.MightData.AllMightPowers[i].abilityDef;                        
                         if (ad.learnItem == parent.def)
                         {
-                            if (!TM_Data.RestrictedAbilities.Contains(parent.def) && !comp.MightData.AllMightPowers[i].learned)
+                            List<TraitDef> restrictedTraits = null;
+                            if (this.parent.def.HasModExtension<DefModExtension_LearnAbilityRequiredTraits>())
+                            {
+                                restrictedTraits = new List<TraitDef>();
+                                restrictedTraits.Clear();
+                                restrictedTraits = this.parent.def.GetModExtension<DefModExtension_LearnAbilityRequiredTraits>().traits;
+                            }
+                            if (!TM_Data.RestrictedAbilities.Contains(parent.def) && !comp.MightData.AllMightPowers[i].learned && restrictedTraits == null)
                             {
                                 itemUsed = true;
                                 comp.MightData.AllMightPowers[i].learned = true;
                                 comp.InitializeSkill();
                                 this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
                             }
-                            else if(TM_Data.RestrictedAbilities.Contains(parent.def) && !comp.MightData.AllMightPowers[i].learned)
+                            else if((TM_Data.RestrictedAbilities.Contains(parent.def) || restrictedTraits != null) && !comp.MightData.AllMightPowers[i].learned)
                             {
                                 if(comp.customClass.learnableSkills.Contains(parent.def))
                                 {
@@ -41,6 +48,35 @@ namespace TorannMagic
                                 {
                                     Messages.Message("CannotLearnSkill".Translate(), MessageTypeDefOf.RejectInput);
                                     return;
+                                }
+                            }
+                            else if (!comp.MightData.AllMightPowers[i].learned && restrictedTraits != null && restrictedTraits.Count > 0)
+                            {
+                                bool hasRequiredTrait = false;
+                                foreach (TraitDef td in restrictedTraits)
+                                {
+                                    if (comp.Pawn.story.traits.HasTrait(td))
+                                    {
+                                        hasRequiredTrait = true;
+                                    }
+                                }
+                                if (hasRequiredTrait)
+                                {
+                                    itemUsed = true;
+                                    comp.MightData.AllMightPowers[i].learned = true;
+                                    if (ad.shouldInitialize)
+                                    {
+                                        comp.RemovePawnAbility(ad);
+                                        comp.AddPawnAbility(ad);
+                                    }
+                                    comp.InitializeSkill();
+                                    this.parent.SplitOff(1).Destroy(DestroyMode.Vanish);
+                                    break;
+                                }
+                                else
+                                {
+                                    Messages.Message("CannotLearnSkill".Translate(), MessageTypeDefOf.RejectInput);
+                                    break;
                                 }
                             }
                             else

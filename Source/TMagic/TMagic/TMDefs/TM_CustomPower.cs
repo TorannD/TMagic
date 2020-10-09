@@ -11,7 +11,6 @@ namespace TorannMagic.TMDefs
 {
     public class TM_CustomPower
     {
-
         //Abilities
         public List<AbilityUser.AbilityDef> abilityDefs;
 
@@ -19,7 +18,7 @@ namespace TorannMagic.TMDefs
         public List<TM_CustomSkill> skills;
 
         //Autocast features
-        public TM_Autocast autocast;
+        public TM_Autocast autocasting;
 
         //Application
         public bool forMage = false;
@@ -28,6 +27,7 @@ namespace TorannMagic.TMDefs
         public int learnCost;
         public bool requiresScroll;
         public bool chaosMageUseable = false;
+        public int costToLevel;
 
     }
 }

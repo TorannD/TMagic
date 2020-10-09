@@ -29,7 +29,7 @@ namespace TorannMagic
 
         private int pwrVal = 0;
         private int verVal = 0;
-        private float wallEnergy = 1000f;
+        private float wallEnergy = 1500f;
 
         //unsaved variables
         private int wallLengthMax = 20;
@@ -44,7 +44,7 @@ namespace TorannMagic
             Scribe_Values.Look<int>(ref this.age, "age", -1, false);
             Scribe_Values.Look<int>(ref this.duration, "duration", 300, false);
             Scribe_Values.Look<float>(ref this.wallLength, "wallLength", 0, false);
-            Scribe_Values.Look<float>(ref this.wallEnergy, "wallEnergy", 1000f, false);
+            Scribe_Values.Look<float>(ref this.wallEnergy, "wallEnergy", 1500f, false);
             Scribe_Values.Look<Vector3>(ref this.wallStart, "wallStart", default(Vector3), false);
             Scribe_Values.Look<Vector3>(ref this.wallDir, "wallDir", default(Vector3), false);
             Scribe_Values.Look<Vector3>(ref this.wallEnd, "wallEnd", default(Vector3), false);
