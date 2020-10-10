@@ -2144,6 +2144,23 @@ namespace TorannMagic
                         gizmoList.Add(ct);
                     }
                 }
+
+                List<Gizmo> reorderGizmo = new List<Gizmo>();
+                reorderGizmo.Clear();
+                for(int i = 0; i < gizmoList.Count; i++)
+                {
+                    if(gizmoList[i] is Command_PawnAbility)
+                    {       
+                        gizmoList[i].order = 500f;
+                        reorderGizmo.Add(gizmoList[i]);
+                        gizmoList.Remove(gizmoList[i]);
+                        i--;
+                    }
+                }
+                if (reorderGizmo.Count > 0)
+                {
+                    gizmoList.AddRange(reorderGizmo);
+                }
                 __result = gizmoList;
             }
         }
@@ -5798,6 +5815,15 @@ namespace TorannMagic
             }
         }
 
+        [HarmonyPatch(typeof(Command), "GizmoOnGUIInt", null)]
+        public static class Command_PawnAbility_Order_Patch
+        {
+            public static void Postfix(Command __instance, Rect butRect, bool shrunk, ref GizmoResult __result)
+            {
+                ModOptions.Constants.IconAnchor(butRect);
+            }
+        }
+
         [HarmonyPatch(typeof(Command_PawnAbility), "GizmoOnGUI", null)]
         public static class GizmoOnGUI_Prefix_Patch
         {
@@ -5810,23 +5836,35 @@ namespace TorannMagic
                     CompAbilityUserMight mightComp = __instance.pawnAbility.Pawn.GetComp<CompAbilityUserMight>();
                     MagicPower magicPower = null;
                     MightPower mightPower = null;
-
-                    Rect rect = new Rect(topLeft.x, topLeft.y, __instance.GetWidth(maxWidth), 75f);
+                    bool shrink = settingsRef.shrinkIcons;
+                    Text.Font = GameFont.Tiny;
                     bool flag = false;
+                    Rect rect = new Rect(topLeft.x, topLeft.y, __instance.GetWidth(maxWidth), 75f);
+                    if(shrink)
+                    {
+                        Traverse.Create(root: __instance).Field(name: "order").SetValue(200);
+                        topLeft = new Vector2(ModOptions.Constants.GetIconVector().x, ModOptions.Constants.GetIconVector().y);                        
+                        rect = new Rect(topLeft.x + (ModOptions.Constants.GetGizmoCount(__instance.pawnAbility.Pawn, __instance.pawnAbility) * 38f), topLeft.y, 36f, 36f);
+                    }
                     if (Mouse.IsOver(rect))
                     {
                         flag = true;
                         GUI.color = GenUI.MouseoverColor;
-                    }
+                    }                   
+                    
+                    MouseoverSounds.DoRegion(rect, SoundDefOf.Mouseover_Command);
+                    Material material = __instance.disabled ? TexUI.GrayscaleGUI : null;
+                    //GUI.DrawTexture(rect, Command.BGTex);
+                    GenUI.DrawTextureWithMaterial(rect, shrink ? Command.BGTexShrunk : Command.BGTex, material);
+
                     Texture2D texture2D = __instance.icon;
                     if (texture2D == null)
                     {
                         texture2D = BaseContent.BadTex;
                     }
-                    GUI.DrawTexture(rect, Command.BGTex);
-                    MouseoverSounds.DoRegion(rect, SoundDefOf.Mouseover_Command);
                     GUI.color = __instance.IconDrawColor;
-                    Widgets.DrawTextureFitted(new Rect(rect), texture2D, __instance.iconDrawScale * 0.85f, __instance.iconProportions, __instance.iconTexCoords);
+                    rect.position += new Vector2(__instance.iconOffset.x * rect.size.x, __instance.iconOffset.y * rect.size.y);
+                    Widgets.DrawTextureFitted(rect, texture2D, __instance.iconDrawScale * 0.85f, __instance.iconProportions, __instance.iconTexCoords, __instance.iconAngle, material);
                     GUI.color = Color.white;
                     bool flag2 = false;
                     KeyCode keyCode = (__instance.hotKey != null) ? __instance.hotKey.MainKey : KeyCode.None;
@@ -5846,7 +5884,7 @@ namespace TorannMagic
                         flag2 = true;
                     }
                     string labelCap = __instance.LabelCap;
-                    if (!labelCap.NullOrEmpty())
+                    if (!labelCap.NullOrEmpty() && !shrink)
                     {
                         Text.Font = GameFont.Tiny;
                         float num = Text.CalcHeight(labelCap, rect.width);
@@ -5860,7 +5898,7 @@ namespace TorannMagic
                         GUI.color = Color.white;
                     }
                     GUI.color = Color.white;
-                    if (true)
+                    if (Mouse.IsOver(rect))
                     {
                         TipSignal tipSignal = __instance.Desc;
                         if (__instance.disabled && !__instance.disabledReason.NullOrEmpty())
@@ -6471,7 +6509,7 @@ namespace TorannMagic
                         {
                             foreach (MagicPower mp in comp.MagicData.MagicPowersCustom)
                             {
-                                if (mp.autocasting != null && mp.autocasting.type != TMDefs.AutocastType.Null)
+                                if (mp.autocasting != null && mp.autocasting.type != TMDefs.AutocastType.Null && (mp.autocasting.drafted || mp.autocasting.undrafted))
                                 {
                                     if (mp.TMabilityDefs.Contains(__instance.pawnAbility.Def))
                                     {
@@ -6494,7 +6532,7 @@ namespace TorannMagic
                         {
                             foreach (MightPower mp in mightComp.MightData.MightPowersCustom)
                             {
-                                if (mp.autocasting != null && mp.autocasting.type != TMDefs.AutocastType.Null)
+                                if (mp.autocasting != null && mp.autocasting.type != TMDefs.AutocastType.Null && (mp.autocasting.drafted || mp.autocasting.undrafted))
                                 {
                                     if (mp.TMabilityDefs.Contains(__instance.pawnAbility.Def))
                                     {
@@ -6904,6 +6942,10 @@ namespace TorannMagic
                     {
                         //Rect rect = new Rect(topLeft.x, topLeft.y, __instance.GetWidth(maxWidth), 75f);
                         Rect position = new Rect(rect.x + rect.width - 24f, rect.y, 24f, 24f);
+                        if(shrink)
+                        {
+                            position = new Rect(rect.x + rect.width - 14f, rect.y, 14f, 14f);
+                        }
                         Texture2D image = (!magicPower.AutoCast) ? Widgets.CheckboxOffTex : Widgets.CheckboxOnTex;
                         GUI.DrawTexture(position, image);
                     }
@@ -6911,6 +6953,10 @@ namespace TorannMagic
                     {
                         //Rect rect = new Rect(topLeft.x, topLeft.y, __instance.GetWidth(maxWidth), 75f);
                         Rect position = new Rect(rect.x + rect.width - 24f, rect.y, 24f, 24f);
+                        if (shrink)
+                        {
+                            position = new Rect(rect.x + rect.width - 14f, rect.y, 14f, 14f);
+                        }
                         Texture2D image = (!mightPower.AutoCast) ? Widgets.CheckboxOffTex : Widgets.CheckboxOnTex;
                         GUI.DrawTexture(position, image);
                     }

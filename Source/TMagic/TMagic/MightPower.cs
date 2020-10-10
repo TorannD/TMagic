@@ -38,16 +38,23 @@ namespace TorannMagic
             }
         }
 
+        private void SetMaxLevel()
+        {
+            this.maxLevel = this.TMabilityDefs.Count - 1;
+        }
+
         public AbilityDef abilityDescDef
         {
             get
-            {
+            {                
+                return this.abilityDef;
+                //
                 AbilityDef result = null;
                 bool flag = this.TMabilityDefs != null && this.TMabilityDefs.Count > 0;
                 if (flag)
                 {
                     result = this.TMabilityDefs[0];
-                    int num = this.level - 0; 
+                    int num = this.level - 0;
                     bool flag2 = num > -1 && num < this.TMabilityDefs.Count;
                     if (flag2)
                     {
@@ -70,6 +77,8 @@ namespace TorannMagic
         {
             get
             {
+                return this.nextLevelAbilityDef;
+                //
                 AbilityDef result = null;
                 try
                 {
@@ -105,6 +114,9 @@ namespace TorannMagic
         {
             get
             {
+                SetMaxLevel();
+                return this.TMabilityDefs[level];
+                //
                 AbilityDef result = null;
                 bool flag = this.TMabilityDefs != null && this.TMabilityDefs.Count > 0;
                 if (flag)
@@ -133,6 +145,16 @@ namespace TorannMagic
         {
             get
             {
+                SetMaxLevel();
+                if ((this.level + 1) >= this.maxLevel)
+                {
+                    return this.TMabilityDefs[maxLevel];
+                }
+                else
+                {
+                    return this.TMabilityDefs[level + 1];
+                }
+                //
                 AbilityDef result = null;
                 bool flag = this.abilityDef != null && this.TMabilityDefs.Count > 0;
                 if (flag)
@@ -167,6 +189,15 @@ namespace TorannMagic
 
         public AbilityDef GetAbilityDef(int index)
         {
+            try
+            {
+                return this.TMabilityDefs[index];
+            }
+            catch
+            {
+                return this.TMabilityDefs[0];
+            }
+            //
             AbilityDef result = null;
             bool flag = this.TMabilityDefs != null && this.TMabilityDefs.Count > 0;
             if (flag)
@@ -202,6 +233,7 @@ namespace TorannMagic
         {
             this.level = 0;
             this.TMabilityDefs = newAbilityDefs;
+            this.maxLevel = newAbilityDefs.Count - 1;            
 
             if (this.abilityDef == TorannMagicDefOf.TM_PsionicBarrier || this.abilityDef == TorannMagicDefOf.TM_PsionicBarrier_Projected)
             {
@@ -212,11 +244,6 @@ namespace TorannMagic
             if (this.abilityDef == TorannMagicDefOf.TM_PistolSpec || this.abilityDef == TorannMagicDefOf.TM_RifleSpec || this.abilityDef == TorannMagicDefOf.TM_ShotgunSpec)
             {
                 this.learnCost = 0;
-            }
-
-            if (this.abilityDef == TorannMagicDefOf.TM_PsionicBarrier)
-            {
-                this.maxLevel = 1;
             }
         }
 

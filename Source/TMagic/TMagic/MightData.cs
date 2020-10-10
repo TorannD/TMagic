@@ -47,7 +47,7 @@ namespace TorannMagic
                         mp.learnCost = current.customPower.learnCost;
                         mp.costToLevel = current.customPower.costToLevel;
                         mp.autocasting = current.customPower.autocasting;
-                        if (!mightPowerCustom.Any(a => a.abilityDef == mp.abilityDef))
+                        if (!mightPowerCustom.Any(a => a.GetAbilityDef(0) == mp.GetAbilityDef(0)))
                         {
                             newPower = true;
                         } 

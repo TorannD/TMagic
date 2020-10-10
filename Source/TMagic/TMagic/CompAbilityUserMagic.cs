@@ -2182,10 +2182,9 @@ namespace TorannMagic
             {
                 base.RemovePawnAbility(current);
             }
-
             power.level++;
-            base.AddPawnAbility(power.nextLevelAbilityDef, true, -1f);
-            this.UpdateAbilities();
+            base.AddPawnAbility(power.abilityDef, true, -1f);
+            //this.UpdateAbilities();
         }
 
         public Need_Mana Mana

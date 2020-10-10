@@ -1833,7 +1833,6 @@ This arcane script is incomplete and the reader may not be able to learn some, o
       <texPath>Books/scroll_holy</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-
   </ThingDef>
   
   <ThingDef ParentName="ArcaneSpellBase">

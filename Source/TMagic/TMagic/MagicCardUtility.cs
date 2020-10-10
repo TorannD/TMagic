@@ -660,7 +660,7 @@ namespace TorannMagic
                         "\n\nCurrent Level:\n",
                         power.abilityDescDef.description,
                         "\n\nNext Level:\n",
-                        power.nextLevelAbilityDescDef.description,
+                        power.nextLevelAbilityDescDef?.description,
                         "\n\n",
                         "TM_CheckPointsForMoreInfo".Translate()
                         }), 398462);
@@ -1555,7 +1555,7 @@ namespace TorannMagic
                         "\n\nCurrent Level:\n",
                         power.abilityDescDef.description,
                         "\n\nNext Level:\n",
-                        power.nextLevelAbilityDescDef.description,
+                        power.nextLevelAbilityDescDef?.description,
                         "\n\n",
                         "TM_CheckPointsForMoreInfo".Translate()
                         }), 398462);
@@ -1730,7 +1730,7 @@ namespace TorannMagic
                         "\n\nCurrent Level:\n",
                         power.abilityDescDef.description,
                         "\n\nNext Level:\n",
-                        power.nextLevelAbilityDescDef.description,
+                        power.nextLevelAbilityDescDef?.description,
                         "\n\n",
                         "TM_CheckPointsForMoreInfo".Translate()
                         }), 398462);

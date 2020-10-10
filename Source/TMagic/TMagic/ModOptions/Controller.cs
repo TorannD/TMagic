@@ -158,7 +158,7 @@ namespace TorannMagic.ModOptions
             Widgets.CheckboxLabeled(rowRect93ShiftRight, "showUndeadPawnChange".Translate(), ref Settings.Instance.changeUndeadPawnAppearance, false);
             num++;
             Rect rowRect10 = UIHelper.GetRowRect(rowRect93, rowHeight, num);
-            //Widgets.CheckboxLabeled(rowRect10, "showAbilitiesOnMultiSelect".Translate(), ref Settings.Instance.showIconsMultiSelect, false);
+            Widgets.CheckboxLabeled(rowRect10, "TM_shrinkIcons".Translate(), ref Settings.Instance.shrinkIcons, false);
             Rect rowRect10ShiftRight = UIHelper.GetRowRect(rowRect10, rowHeight, num);
             rowRect10ShiftRight.x += rowRect10.width + 56f;
             Widgets.CheckboxLabeled(rowRect10ShiftRight, "showUndeadAnimalChange".Translate(), ref Settings.Instance.changeUndeadAnimalAppearance, false);
@@ -180,7 +180,16 @@ namespace TorannMagic.ModOptions
             num++;
             Rect rowRect13 = UIHelper.GetRowRect(rowRect12, rowHeight, num);
             Widgets.CheckboxLabeled(rowRect13, "TM_UnrestrictedWeaponCopy".Translate(), ref Settings.Instance.unrestrictedWeaponCopy, false);
+            Rect rowRect13ShiftRight = UIHelper.GetRowRect(rowRect13, rowHeight, num);
+            rowRect13ShiftRight.x += rowRect13.width + 56f;
+            Settings.Instance.iconPosition.x = Widgets.HorizontalSlider(rowRect13ShiftRight, Settings.Instance.iconPosition.x, -UI.screenWidth/(5f), UI.screenWidth/(5f), false, "x offset " + Settings.Instance.iconPosition.x, "-", "+", 1f);
             num++;
+            Rect rowRect14 = UIHelper.GetRowRect(rowRect13, rowHeight, num);
+            //Widgets.CheckboxLabeled(rowRect13, "TM_UnrestrictedWeaponCopy".Translate(), ref Settings.Instance.unrestrictedWeaponCopy, false);
+            Rect rowRect14ShiftRight = UIHelper.GetRowRect(rowRect14, rowHeight, num);
+            rowRect14ShiftRight.x += rowRect13.width + 56f;
+            Settings.Instance.iconPosition.y = Widgets.HorizontalSlider(rowRect14ShiftRight, Settings.Instance.iconPosition.y, -UI.screenHeight/(5f), UI.screenHeight/(5f), false, "y offset " + Settings.Instance.iconPosition.y, "-", "+", 1f);
+            //num++;
             num++;
             Rect rowRect20 = UIHelper.GetRowRect(rowRect10, rowHeight, num);
             rowRect20.width = 120f;
@@ -221,11 +230,13 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.paracyteMagesCount = true;
                 Settings.Instance.riftChallenge = 1f;
                 Settings.Instance.wanderingLichChallenge = 1f;
+                Settings.Instance.demonAssaultChallenge = 1f;
                 Settings.Instance.autocastAnimals = false;
                 Settings.Instance.unrestrictedWeaponCopy = false;
                 Settings.Instance.deathRetaliationIsLethal = true;
                 Settings.Instance.deathRetaliationChance = 1f;
                 Settings.Instance.deathRetaliationDelayFactor = 1f;
+                Settings.Instance.shrinkIcons = false;
 
                 this.deathExplosionDmgMax = "50.0";
                 this.deathExplosionDmgMin = "20.0";
@@ -265,6 +276,7 @@ namespace TorannMagic.ModOptions
                 Settings.Instance.undeadUpkeepMultiplier = 1.5f;
                 Settings.Instance.paracyteMagesCount = true;
                 Settings.Instance.riftChallenge = 3f;
+                Settings.Instance.demonAssaultChallenge = 3f;
                 Settings.Instance.wanderingLichChallenge = 3f;
                 Settings.Instance.autocastAnimals = false;
                 Settings.Instance.unrestrictedWeaponCopy = false;

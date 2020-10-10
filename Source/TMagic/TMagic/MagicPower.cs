@@ -39,10 +39,16 @@ namespace TorannMagic
 
         }
 
+        private void SetMaxLevel()
+        {
+            this.maxLevel = this.TMabilityDefs.Count - 1;
+        }
+
         public AbilityDef abilityDescDef
         {
             get
             {
+                return this.abilityDef;
                 AbilityDef result = null;
                 bool flag = this.TMabilityDefs != null && this.TMabilityDefs.Count > 0;
                 if (flag)
@@ -71,6 +77,7 @@ namespace TorannMagic
         {
             get
             {
+                return this.nextLevelAbilityDef;
                 AbilityDef result = null;
                 try
                 {
@@ -106,6 +113,8 @@ namespace TorannMagic
         {
             get
             {
+                SetMaxLevel();
+                return this.TMabilityDefs[level];
                 AbilityDef result = null;
                 bool flag = this.TMabilityDefs != null && this.TMabilityDefs.Count > 0;
                 if (flag)
@@ -134,6 +143,15 @@ namespace TorannMagic
         {
             get
             {
+                SetMaxLevel();
+                if ((this.level + 1) >= this.maxLevel)
+                {
+                    return this.TMabilityDefs[maxLevel];
+                }
+                else
+                {
+                    return this.TMabilityDefs[level + 1];
+                }
                 AbilityDef result = null;
                 bool flag = this.abilityDef != null && this.TMabilityDefs.Count > 0;
                 if (flag)
@@ -168,6 +186,14 @@ namespace TorannMagic
 
         public AbilityDef GetAbilityDef(int index)
         {
+            try
+            {
+                return this.TMabilityDefs[index];
+            }
+            catch
+            {
+                return this.TMabilityDefs[0];
+            }
             AbilityDef result = null;
             bool flag = this.TMabilityDefs != null && this.TMabilityDefs.Count > 0;
             if (flag)
@@ -204,8 +230,9 @@ namespace TorannMagic
             this.level = 0;
             this.requiresScroll = requireScrollToLearn;
             this.TMabilityDefs = newAbilityDefs;
+            this.maxLevel = newAbilityDefs.Count - 1;
 
-            if(this.abilityDef.defName == "TM_TechnoBit" || this.abilityDef.defName == "TM_TechnoTurret" || this.abilityDef.defName == "TM_TechnoWeapon")
+            if (this.abilityDef.defName == "TM_TechnoBit" || this.abilityDef.defName == "TM_TechnoTurret" || this.abilityDef.defName == "TM_TechnoWeapon")
             {
                 this.learnCost = 0;
             }

@@ -238,5 +238,56 @@ namespace TorannMagic.ModOptions
                 return null;
             }
         }
+
+        private static Pawn iconPawn = null;
+        private static Dictionary<PawnAbility, int> iconOffset = new Dictionary<PawnAbility, int>();
+        public static int GetGizmoCount(Pawn p, PawnAbility pa)
+        {
+            if(iconPawn != p)
+            {
+                iconPawn = p;
+                iconOffset.Clear();
+                iconAnchorY = 0;
+                iconAnchorX = 0;
+            }
+
+            if (iconOffset.ContainsKey(pa))
+            {
+                return iconOffset[pa];
+            }
+            else
+            {
+                int count = iconOffset.Count;
+                iconOffset.Add(pa, count);
+                return count;
+            }            
+        }
+
+        private static float iconAnchorX = 0f;
+        private static float iconAnchorY = 0f;
+        public static void IconAnchor(Rect r)
+        {
+            if(iconAnchorX == 0)
+            {
+                iconAnchorX = r.x;
+            }
+            else if (iconAnchorX > r.x)
+            {
+                iconAnchorX = r.x;                
+            }
+            if(iconAnchorY == 0)
+            {
+                iconAnchorY = r.y;
+            }
+            else if(iconAnchorY > r.y)
+            {
+                iconAnchorY = r.y;
+            }
+        }
+
+        public static Vector2 GetIconVector()
+        {
+            return new Vector2(iconAnchorX + Settings.Instance.iconPosition.x, iconAnchorY + Settings.Instance.iconPosition.y);
+        }
     }
 }

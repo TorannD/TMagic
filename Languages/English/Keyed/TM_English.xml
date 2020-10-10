@@ -238,7 +238,8 @@
 <TM_UnrestrictedWeaponCopy>Unrestricted Techno-Weapons</TM_UnrestrictedWeaponCopy>
 <TM_DeathRetaliationIsLethal>Death retaliation always lethal</TM_DeathRetaliationIsLethal>
 <TM_DeathRetaliationChance>Death retaliation chance</TM_DeathRetaliationChance>
-<TM_DeathRetaliationDelay>Death retaliation delay factor</TM_DeathRetaliationDelay>
+<TM_DeathRetaliationDelay>Death retaliation delay factor</TM_DeathRetaliationDelay>
+<TM_shrinkIcons>Shrink Icons</TM_shrinkIcons>
 
 <!-- Mod Settings Class options -->
 <supportTraitChance>Supporting Trait Commonality</supportTraitChance>

@@ -83,7 +83,7 @@
 		<defName>TM_Taunt</defName>	
 		<customPower>	
 			<forFighter>true</forFighter>
-			<maxLevel>0</maxLevel>
+			<maxLevel>3</maxLevel>
 			<abilityDefs>									<!-- only 1 ability so max level is 0 -->
 				<li>TM_Taunt</li>
 			</abilityDefs>

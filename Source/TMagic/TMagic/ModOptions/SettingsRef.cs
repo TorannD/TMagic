@@ -2,6 +2,7 @@
 using Verse;
 using System.Collections.Generic;
 using RimWorld;
+using UnityEngine;
 
 namespace TorannMagic.ModOptions
 {
@@ -42,6 +43,8 @@ namespace TorannMagic.ModOptions
         public float deathRetaliationDelayFactor = Settings.Instance.deathRetaliationDelayFactor;
         public float deathRetaliationChance = Settings.Instance.deathRetaliationChance;
         public bool deathRetaliationIsLethal = Settings.Instance.deathRetaliationIsLethal;
+        public bool shrinkIcons = Settings.Instance.shrinkIcons;
+        public Vector2 iconPosition = Settings.Instance.iconPosition;
 
         //autocast
         public bool autocastEnabled = Settings.Instance.autocastEnabled;

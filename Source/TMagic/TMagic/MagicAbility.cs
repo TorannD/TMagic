@@ -419,5 +419,34 @@ namespace TorannMagic
             return result;
 
         }
+
+        public new Command_PawnAbility GetGizmo()
+        {
+            Command_PawnAbility command_PawnAbility = new Command_PawnAbility(abilityUser, this, CooldownTicksLeft)
+            {
+                verb = Verb,
+                defaultLabel = this.magicDef.LabelCap,
+                order = 9999
+            };
+            command_PawnAbility.curTicks = CooldownTicksLeft;
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine(magicDef.GetDescription());
+            stringBuilder.AppendLine(PostAbilityVerbCompDesc(Verb.UseAbilityProps));
+            command_PawnAbility.defaultDesc = stringBuilder.ToString();
+            stringBuilder = null;
+            command_PawnAbility.targetingParams = magicDef.MainVerb.targetParams;
+            command_PawnAbility.icon = magicDef.uiIcon;
+            command_PawnAbility.action = delegate (Thing target)
+            {
+                LocalTargetInfo target2 = GenCollection.FirstOrFallback<LocalTargetInfo>(GenUI.TargetsAt_NewTemp(UI.MouseMapPosition(), Verb.verbProps.targetParams, false, null), target);
+                TryCastAbility(AbilityContext.Player, target2);
+            };
+            string reason = "";
+            if (!CanCastPowerCheck(AbilityContext.Player, out reason))
+            {
+                command_PawnAbility.Disable(reason);
+            }
+            return command_PawnAbility;
+        }
     }
 }
