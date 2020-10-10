@@ -3560,7 +3560,7 @@ namespace TorannMagic
                 {
                     IEnumerable<Pawn> nearbyThings = from x in caster.Map.mapPawns.AllPawnsSpawned
                                                      where (x.GetType() == typeof(Pawn) &&
-                                                     (x.Position - caster.Position).LengthHorizontal > autocasting.minRange &&
+                                                     (x.Position - caster.Position).LengthHorizontal >= autocasting.minRange &&
                                                      autocasting.maxRange > 0 ? (x.Position - caster.Position).LengthHorizontal <= autocasting.maxRange : true &&
                                                      autocasting.includeSelf ? true : x != caster)                                                     
                                                      select x;
@@ -3599,7 +3599,7 @@ namespace TorannMagic
                 else if (autocasting.GetTargetType == typeof(Building))
                 {
                     IEnumerable<Building> nearbyThings = from x in caster.Map.listerThings.AllThings
-                                                               where (x.GetType() == typeof(Building) && (x.Position - caster.Position).LengthHorizontal > autocasting.minRange &&
+                                                               where (x.GetType() == typeof(Building) && (x.Position - caster.Position).LengthHorizontal >= autocasting.minRange &&
                                                                autocasting.maxRange > 0 ? (x.Position - caster.Position).LengthHorizontal <= autocasting.maxRange : true)
                                                                select x as Building;
                     List<Building> potentialBuildings = new List<Building>();
@@ -3637,7 +3637,7 @@ namespace TorannMagic
                 else if (autocasting.GetTargetType == typeof(Corpse))
                 {
                     IEnumerable<Corpse> nearbyThings = from x in caster.Map.listerThings.AllThings
-                                                               where (x.GetType() == typeof(Corpse) && (x.Position - caster.Position).LengthHorizontal > autocasting.minRange &&
+                                                               where (x.GetType() == typeof(Corpse) && (x.Position - caster.Position).LengthHorizontal >= autocasting.minRange &&
                                                                autocasting.maxRange > 0 ? (x.Position - caster.Position).LengthHorizontal <= autocasting.maxRange : true)
                                                                select x as Corpse;
                     target = nearbyThings.RandomElement();
@@ -3645,16 +3645,18 @@ namespace TorannMagic
                 else if (autocasting.GetTargetType == typeof(ThingWithComps))
                 {
                     IEnumerable<ThingWithComps> nearbyThings = from x in caster.Map.listerThings.AllThings
-                                                      where (x.GetType() == typeof(ThingWithComps) && (x.Position - caster.Position).LengthHorizontal > autocasting.minRange &&
-                                                      autocasting.maxRange > 0 ? (x.Position - caster.Position).LengthHorizontal <= autocasting.maxRange : true)
+                                                      where (x.GetType() == typeof(ThingWithComps) && (x.Position - caster.Position).LengthHorizontal >= autocasting.minRange &&
+                                                      autocasting.maxRange > 0 ? (x.Position - caster.Position).LengthHorizontal <= autocasting.maxRange : true &&
+                                                      autocasting.includeSelf ? true : x != caster)
                                                       select x as ThingWithComps;
                     target = nearbyThings.RandomElement();
                 }
                 else
                 {
                     IEnumerable<Thing> nearbyThings = from x in caster.Map.listerThings.AllThings
-                                                      where ((x.Position - caster.Position).LengthHorizontal > autocasting.minRange &&
-                                                      autocasting.maxRange > 0 ? (x.Position - caster.Position).LengthHorizontal <= autocasting.maxRange : true)
+                                                      where ((x.Position - caster.Position).LengthHorizontal >= autocasting.minRange &&
+                                                      autocasting.maxRange > 0 ? (x.Position - caster.Position).LengthHorizontal <= autocasting.maxRange : true &&
+                                                      autocasting.includeSelf ? true : x != caster)
                                                       select x;
                     target = nearbyThings.RandomElement();
                 }

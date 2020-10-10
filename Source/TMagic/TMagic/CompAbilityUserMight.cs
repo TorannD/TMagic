@@ -1005,7 +1005,8 @@ namespace TorannMagic
                                 }
                                 else if(!this.Pawn.IsPrisoner || this.Pawn.IsFighting())
                                 {
-                                    this.autocastTick = Find.TickManager.TicksGame + (int)(Rand.Range(.8f * settingsRef.autocastEvaluationFrequency, 1.2f * settingsRef.autocastEvaluationFrequency) * 3);
+                                    float tickMult = settingsRef.AIAggressiveCasting ? 1f : 2f;
+                                    this.autocastTick = Find.TickManager.TicksGame + (int)(Rand.Range(.8f * settingsRef.autocastEvaluationFrequency, 1.2f * settingsRef.autocastEvaluationFrequency) * tickMult);
                                     ResolveAIAutoCast();
                                 }
                             }                            
@@ -5831,10 +5832,25 @@ namespace TorannMagic
                         //do nothing
                     }
                 }
+                this.UpdateAutocastDef();
                 this.InitializeSkill();
                 //base.UpdateAbilities();
+            }            
+        }
+
+        public void UpdateAutocastDef()
+        {
+            IEnumerable <TM_CustomPowerDef> mpDefs = TM_Data.CustomFighterPowerDefs();
+            foreach(MightPower mp in this.MightData.MightPowersCustom)
+            {
+                foreach(TM_CustomPowerDef mpDef in mpDefs)
+                {
+                    if(mpDef.customPower.abilityDefs.FirstOrDefault().ToString() == mp.GetAbilityDef(0).ToString())
+                    {
+                        mp.autocasting = mpDef.customPower.autocasting;
+                    }
+                }
             }
-            
         }
 
         private Dictionary<string, Command> gizmoCommands = new Dictionary<string, Command>();

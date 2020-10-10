@@ -168,7 +168,8 @@ namespace TorannMagic.TMDefs
                 bool hasAnyHediff = false;
                 foreach(HediffDef hdd in con.hediffDefs)
                 {
-                    if(p.health.hediffSet.HasHediff(hdd))
+                    Hediff hd = p.health.hediffSet.GetFirstHediffOfDef(hdd);
+                    if(hd != null && hd.Severity > con.valueA)
                     {
                         hasAnyHediff = true;
                     }
@@ -186,7 +187,7 @@ namespace TorannMagic.TMDefs
                 foreach(NeedDef ndd in con.needDefs)
                 {
                     Need n = p.needs.TryGetNeed(ndd);
-                    if(n != null)
+                    if(n != null && n.CurLevel > con.valueA)
                     {
                         hasAnyNeed = true;
                     }
@@ -209,9 +210,10 @@ namespace TorannMagic.TMDefs
 
         private bool AlliesInRange(TM_AutocastCondition con, Pawn caster, IntVec3 cell)
         {
-            List<Pawn> allies = TM_Calc.FindPawnsNearTarget(caster, (int)con.valueB, cell, false);
+            List<Pawn> allies = TM_Calc.FindPawnsNearTarget(caster, (int)con.valueB, cell, false);            
             if (allies != null)
             {
+                allies.Add(caster);
                 return (con.invert ? allies.Count <= con.valueA : allies.Count > con.valueA);
             }
             return false;
