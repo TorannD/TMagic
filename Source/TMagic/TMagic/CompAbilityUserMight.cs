@@ -5841,13 +5841,19 @@ namespace TorannMagic
         public void UpdateAutocastDef()
         {
             IEnumerable <TM_CustomPowerDef> mpDefs = TM_Data.CustomFighterPowerDefs();
-            foreach(MightPower mp in this.MightData.MightPowersCustom)
+            if (this.IsMightUser && this.MightData != null && this.MightData.MightPowersCustom != null)
             {
-                foreach(TM_CustomPowerDef mpDef in mpDefs)
+                foreach (MightPower mp in this.MightData.MightPowersCustom)
                 {
-                    if(mpDef.customPower.abilityDefs.FirstOrDefault().ToString() == mp.GetAbilityDef(0).ToString())
+                    foreach (TM_CustomPowerDef mpDef in mpDefs)
                     {
-                        mp.autocasting = mpDef.customPower.autocasting;
+                        if (mpDef.customPower.abilityDefs.FirstOrDefault().ToString() == mp.GetAbilityDef(0).ToString())
+                        {
+                            if (mpDef.customPower.autocasting != null)
+                            {
+                                mp.autocasting = mpDef.customPower.autocasting;
+                            }
+                        }
                     }
                 }
             }
