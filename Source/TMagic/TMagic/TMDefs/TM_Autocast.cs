@@ -184,10 +184,9 @@ namespace TorannMagic.TMDefs
             if (p != null && p.needs != null)
             {
                 bool hasAnyNeed = false;
-                foreach(NeedDef ndd in con.needDefs)
+                foreach(Need n in p.needs.AllNeeds)
                 {
-                    Need n = p.needs.TryGetNeed(ndd);
-                    if(n != null && n.CurLevel > con.valueA)
+                    if(n != null && con.needDefs.Contains(n.def) && n.CurLevel > con.valueA)
                     {
                         hasAnyNeed = true;
                     }

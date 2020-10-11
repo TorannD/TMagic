@@ -4327,7 +4327,6 @@ Produces 400Wd adjusted by ability power.</description>
       <texPath>Books/scroll</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-
   </ThingDef>
   
   <ThingDef ParentName="FighterSkillBase">
