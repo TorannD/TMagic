@@ -168,25 +168,32 @@ namespace TorannMagic
             { 
                 if (Find.TickManager.TicksGame % strikeDelay == 0)
                 {
-                    List<IntVec3> targets;
-                    if (strikeNum == 1)
+                    if (safePos.DistanceToEdge(this.map) > strikeNum)
                     {
-                        targets = GenRadial.RadialCellsAround(safePos, this.strikeNum, false).ToList();
+                        List<IntVec3> targets;
+                        if (strikeNum == 1)
+                        {
+                            targets = GenRadial.RadialCellsAround(safePos, this.strikeNum, false).ToList();
+                        }
+                        else
+                        {
+                            IEnumerable<IntVec3> oldTargets = GenRadial.RadialCellsAround(base.Position, this.strikeNum - 1, false);
+                            targets = GenRadial.RadialCellsAround(safePos, this.strikeNum, false).Except(oldTargets).ToList();
+                        }
+                        for (int j = 0; j < targets.Count(); j++)
+                        {
+                            IntVec3 curCell = targets[j];
+                            if (this.map != null && curCell.IsValid && curCell.InBounds(this.map))
+                            {
+                                GenExplosion.DoExplosion(curCell, this.Map, .4f, TMDamageDefOf.DamageDefOf.TM_Shadow, this.pawn, (int)((this.def.projectile.GetDamageAmount(1, null) * (1 + .15 * pwrVal)) * this.arcaneDmg * Rand.Range(.75f, 1.25f)), 0, TorannMagicDefOf.TM_SoftExplosion, def, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
+                            }
+                        }
+                        this.strikeNum++;
                     }
                     else
                     {
-                        IEnumerable<IntVec3> oldTargets = GenRadial.RadialCellsAround(base.Position, this.strikeNum - 1, false);
-                        targets = GenRadial.RadialCellsAround(safePos, this.strikeNum, false).Except(oldTargets).ToList();
+                        strikeNum = (int)this.radius + 1;
                     }
-                    for (int j = 0; j < targets.Count(); j++)
-                    {
-                        IntVec3 curCell = targets[j];
-                        if (this.map != null && curCell.IsValid && curCell.InBounds(this.map))
-                        {
-                            GenExplosion.DoExplosion(curCell, this.Map, .4f, TMDamageDefOf.DamageDefOf.TM_Shadow, this.pawn, (int)((this.def.projectile.GetDamageAmount(1,null) * (1 + .15*pwrVal)) * this.arcaneDmg * Rand.Range(.75f, 1.25f)), 0, TorannMagicDefOf.TM_SoftExplosion, def, null, null, null, 0f, 1, false, null, 0f, 1, 0f, false);
-                        }
-                    }
-                    this.strikeNum++;                    
                 }               
             }
             if (this.strikeNum > this.radius)

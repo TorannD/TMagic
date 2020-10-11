@@ -919,7 +919,7 @@ namespace TorannMagic.AutoCast
         {
             success = false;
             Pawn caster = casterComp.Pawn;
-            LocalTargetInfo jobTarget = caster.Position;
+            LocalTargetInfo jobTarget = caster;
 
             if (casterComp.Stamina.CurLevel >= casterComp.ActualStaminaCost(abilitydef) && ability.CooldownTicksLeft <= 0 && jobTarget != null)
             {
@@ -936,7 +936,7 @@ namespace TorannMagic.AutoCast
         {
             success = false;
             Pawn caster = casterComp.Pawn;
-            LocalTargetInfo jobTarget = caster.Position;
+            LocalTargetInfo jobTarget = caster;
 
             if (casterComp.Mana.CurLevel >= casterComp.ActualManaCost(abilitydef) && ability.CooldownTicksLeft <= 0 && jobTarget != null)
             {                
