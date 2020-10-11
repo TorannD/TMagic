@@ -5680,65 +5680,28 @@ namespace TorannMagic
                         {
                             if (current != null && current.abilityDef != null)
                             {
-                                if ((current.abilityDef == TorannMagicDefOf.TM_Summon || current.abilityDef == TorannMagicDefOf.TM_Summon_I || current.abilityDef == TorannMagicDefOf.TM_Summon_II || current.abilityDef == TorannMagicDefOf.TM_Summon_III) && !this.Pawn.CurJob.playerForced)
+                                foreach (TMAbilityDef tmad in current.TMabilityDefs)
                                 {
-                                    //Log.Message("evaluating " + current.abilityDef.defName);
-                                    if (current.level == 0)
+                                    if ((tmad == TorannMagicDefOf.TM_Summon || tmad == TorannMagicDefOf.TM_Summon_I || tmad == TorannMagicDefOf.TM_Summon_II || tmad == TorannMagicDefOf.TM_Summon_III) && !this.Pawn.CurJob.playerForced)
                                     {
-                                        MagicPower magicPower = this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Summon);
+                                        //Log.Message("evaluating " + tmad.defName);
+                                        MagicPower magicPower = this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmad);
                                         if (magicPower != null && magicPower.learned && magicPower.autocast)
                                         {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Summon);
-                                            float minDistance = ActualManaCost(TorannMagicDefOf.TM_Summon) * 150;
-                                            AutoCast.Summon.Evaluate(this, TorannMagicDefOf.TM_Summon, ability, magicPower, minDistance, out castSuccess);
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == tmad);
+                                            float minDistance = ActualManaCost(tmad) * 150;
+                                            AutoCast.Summon.Evaluate(this, tmad, ability, magicPower, minDistance, out castSuccess);
                                             if (castSuccess) goto AutoCastExit;
                                         }
                                     }
-                                    else if (current.level == 1)
+                                    if ((tmad == TorannMagicDefOf.TM_Blink || tmad == TorannMagicDefOf.TM_Blink_I || tmad == TorannMagicDefOf.TM_Blink_II || tmad == TorannMagicDefOf.TM_Blink_III))
                                     {
-                                        MagicPower magicPower = this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Summon);
+                                        MagicPower magicPower = this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmad);
                                         if (magicPower != null && magicPower.learned && magicPower.autocast)
                                         {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Summon_I);
-                                            float minDistance = ActualManaCost(TorannMagicDefOf.TM_Summon_I) * 150;
-                                            AutoCast.Summon.Evaluate(this, TorannMagicDefOf.TM_Summon_I, ability, magicPower, minDistance, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
-
-                                    }
-                                    else if (current.level == 2)
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Summon_I);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Summon_II);
-                                            float minDistance = ActualManaCost(TorannMagicDefOf.TM_Summon_II) * 150;
-                                            AutoCast.Summon.Evaluate(this, TorannMagicDefOf.TM_Summon_II, ability, magicPower, minDistance, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Summon_II);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Summon_III);
-                                            float minDistance = ActualManaCost(TorannMagicDefOf.TM_Summon_III) * 150;
-                                            AutoCast.Summon.Evaluate(this, TorannMagicDefOf.TM_Summon_III, ability, magicPower, minDistance, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
-                                    }
-                                }
-                                if ((current.abilityDef == TorannMagicDefOf.TM_Blink || current.abilityDef == TorannMagicDefOf.TM_Blink_I || current.abilityDef == TorannMagicDefOf.TM_Blink_II || current.abilityDef == TorannMagicDefOf.TM_Blink_III))
-                                {
-                                    if (current.level == 0)
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Blink);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Blink);
-                                            float minDistance = ActualManaCost(TorannMagicDefOf.TM_Blink) * 240;
-                                            AutoCast.Blink.Evaluate(this, TorannMagicDefOf.TM_Blink, ability, magicPower, minDistance, out castSuccess);
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == tmad);
+                                            float minDistance = ActualManaCost(tmad) * 240;
+                                            AutoCast.Blink.Evaluate(this, tmad, ability, magicPower, minDistance, out castSuccess);
                                             if (castSuccess)
                                             {
                                                 goto AutoCastExit;
@@ -5746,47 +5709,12 @@ namespace TorannMagic
                                         }
                                         if (flagCM && magicPower != null && this.spell_Blink && !magicPower.learned && magicPower.autocast)
                                         {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Blink);
-                                            float minDistance = ActualManaCost(TorannMagicDefOf.TM_Blink) * 200;
-                                            AutoCast.Blink.Evaluate(this, TorannMagicDefOf.TM_Blink, ability, magicPower, minDistance, out castSuccess);
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == tmad);
+                                            float minDistance = ActualManaCost(tmad) * 200;
+                                            AutoCast.Blink.Evaluate(this, tmad, ability, magicPower, minDistance, out castSuccess);
                                             if (castSuccess) goto AutoCastExit;
                                         }
                                     }
-                                    else if (current.level == 1)
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Blink);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Blink_I);
-                                            float minDistance = ActualManaCost(TorannMagicDefOf.TM_Blink_I) * 240;
-                                            AutoCast.Blink.Evaluate(this, TorannMagicDefOf.TM_Blink_I, ability, magicPower, minDistance, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
-
-                                    }
-                                    else if (current.level == 2)
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Blink_I);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Blink_II);
-                                            float minDistance = ActualManaCost(TorannMagicDefOf.TM_Blink_II) * 240;
-                                            AutoCast.Blink.Evaluate(this, TorannMagicDefOf.TM_Blink_II, ability, magicPower, minDistance, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Blink_II);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Blink_III);
-                                            float minDistance = ActualManaCost(TorannMagicDefOf.TM_Blink_III) * 240;
-                                            AutoCast.Blink.Evaluate(this, TorannMagicDefOf.TM_Blink_III, ability, magicPower, minDistance, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
-                                    }
-
                                 }
                             }
                         }
@@ -5800,7 +5728,7 @@ namespace TorannMagic
                             {
                                 if (current.abilityDef == TorannMagicDefOf.TM_Regenerate)
                                 {
-                                    MagicPower magicPower = this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Regenerate);
+                                    MagicPower magicPower = this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == current.abilityDef);
                                     if (magicPower != null && magicPower.learned && magicPower.autocast)
                                     {
                                         ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Regenerate);
@@ -5826,7 +5754,7 @@ namespace TorannMagic
                                 }
                                 if (current.abilityDef == TorannMagicDefOf.TM_CureDisease)
                                 {
-                                    MagicPower magicPower = this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_CureDisease);
+                                    MagicPower magicPower = this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == current.abilityDef);
                                     if (magicPower != null && magicPower.learned && magicPower.autocast)
                                     {
                                         ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_CureDisease);
@@ -5861,7 +5789,7 @@ namespace TorannMagic
                                 }
                                 if (current.abilityDef == TorannMagicDefOf.TM_RegrowLimb && spell_RegrowLimb)
                                 {
-                                    MagicPower magicPower = this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_RegrowLimb);
+                                    MagicPower magicPower = this.MagicData.MagicPowersD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == current.abilityDef);
                                     bool workPriorities = true;
                                     if (this.Pawn.CurJob != null && this.Pawn.CurJob.workGiverDef != null && this.Pawn.CurJob.workGiverDef.workType != null)
                                     {
@@ -5888,59 +5816,28 @@ namespace TorannMagic
                         {
                             if (current != null && current.abilityDef != null && current.learned && !this.Pawn.CurJob.playerForced)
                             {
-                                if (current.abilityDef == TorannMagicDefOf.TM_Heal)
-                                {
-                                    MagicPower magicPower = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Heal);
-                                    if (magicPower != null && magicPower.learned && magicPower.autocast)
+                                foreach(TMAbilityDef tmad in current.TMabilityDefs)
+                                { 
+                                    if (tmad == TorannMagicDefOf.TM_Heal)
                                     {
-                                        ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Heal);
-                                        AutoCast.HealSpell.Evaluate(this, TorannMagicDefOf.TM_Heal, ability, magicPower, out castSuccess);
-                                        if (castSuccess) goto AutoCastExit;
-                                    }
-                                }
-                                if ((current.abilityDef == TorannMagicDefOf.TM_Shield || current.abilityDef == TorannMagicDefOf.TM_Shield_I || current.abilityDef == TorannMagicDefOf.TM_Shield_II || current.abilityDef == TorannMagicDefOf.TM_Shield_III))
-                                {
-                                    if (current.level == 0)
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shield);
+                                        MagicPower magicPower = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmad);
                                         if (magicPower != null && magicPower.learned && magicPower.autocast)
                                         {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Shield);
-                                            AutoCast.Shield.Evaluate(this, TorannMagicDefOf.TM_Shield, ability, magicPower, out castSuccess);
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == tmad);
+                                            AutoCast.HealSpell.Evaluate(this, tmad, ability, magicPower, out castSuccess);
                                             if (castSuccess) goto AutoCastExit;
                                         }
                                     }
-                                    else if (current.level == 1)
+                                    if ((tmad == TorannMagicDefOf.TM_Shield || tmad == TorannMagicDefOf.TM_Shield_I || tmad == TorannMagicDefOf.TM_Shield_II || tmad == TorannMagicDefOf.TM_Shield_III))
                                     {
-                                        MagicPower magicPower = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shield);
+                                        MagicPower magicPower = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmad);
                                         if (magicPower != null && magicPower.learned && magicPower.autocast)
                                         {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Shield_I);
-                                            AutoCast.Shield.Evaluate(this, TorannMagicDefOf.TM_Shield_I, ability, magicPower, out castSuccess);
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == tmad);
+                                            AutoCast.Shield.Evaluate(this, tmad, ability, magicPower, out castSuccess);
                                             if (castSuccess) goto AutoCastExit;
                                         }
-
-                                    }
-                                    else if (current.level == 2)
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shield_I);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Shield_II);
-                                            AutoCast.Shield.Evaluate(this, TorannMagicDefOf.TM_Shield_II, ability, magicPower, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shield_II);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Shield_III);
-                                            AutoCast.Shield.Evaluate(this, TorannMagicDefOf.TM_Shield_III, ability, magicPower, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
-                                    }
+                                    }                                        
                                 }
                             }
                         }
@@ -5952,83 +5849,86 @@ namespace TorannMagic
                         {
                             if (current != null && current.abilityDef != null && current.learned && !this.Pawn.CurJob.playerForced)
                             {
-                                if (current.abilityDef == TorannMagicDefOf.TM_AdvancedHeal)
+                                foreach (TMAbilityDef tmad in current.TMabilityDefs)
                                 {
-                                    MagicPower magicPower = this.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_AdvancedHeal);
-                                    if (magicPower != null && magicPower.learned && magicPower.autocast)
+                                    if (tmad == TorannMagicDefOf.TM_AdvancedHeal)
                                     {
-                                        ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_AdvancedHeal);
-                                        AutoCast.HealSpell.EvaluateMinSeverity(this, TorannMagicDefOf.TM_AdvancedHeal, ability, magicPower, 1f, out castSuccess);
-                                        if (castSuccess) goto AutoCastExit;
+                                        MagicPower magicPower = this.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmad);
+                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
+                                        {
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == tmad);
+                                            AutoCast.HealSpell.EvaluateMinSeverity(this, tmad, ability, magicPower, 1f, out castSuccess);
+                                            if (castSuccess) goto AutoCastExit;
+                                        }
                                     }
-                                }
-                                if (current.abilityDef == TorannMagicDefOf.TM_Purify)
-                                {
-                                    MagicPower magicPower = this.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Purify);
-                                    if (magicPower != null && magicPower.learned && magicPower.autocast)
+                                    if (tmad == TorannMagicDefOf.TM_Purify)
                                     {
-                                        ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Purify);
-                                        MagicPowerSkill ver = this.MagicData.MagicPowerSkill_Purify.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Purify_ver");
-                                        AutoCast.HealPermanentSpell.Evaluate(this, TorannMagicDefOf.TM_Purify, ability, magicPower, out castSuccess);
-                                        if (castSuccess) goto AutoCastExit;
-                                        List<string> afflictionList = new List<string>();
-                                        afflictionList.Clear();
-                                        afflictionList.Add("Cataract");
-                                        afflictionList.Add("HearingLoss");
-                                        afflictionList.Add("ToxicBuildup");
-                                        if (ver.level >= 1)
+                                        MagicPower magicPower = this.MagicData.MagicPowersPR.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmad);
+                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
                                         {
-                                            afflictionList.Add("Blindness");
-                                            afflictionList.Add("Asthma");
-                                            afflictionList.Add("Cirrhosis");
-                                            afflictionList.Add("ChemicalDamageModerate");
-                                        }
-                                        if (ver.level >= 2)
-                                        {
-                                            afflictionList.Add("Frail");
-                                            afflictionList.Add("BadBack");
-                                            afflictionList.Add("Carcinoma");
-                                            afflictionList.Add("ChemicalDamageSevere");
-                                        }
-                                        if (ver.level >= 3)
-                                        {
-                                            afflictionList.Add("Alzheimers");
-                                            afflictionList.Add("Dementia");
-                                            afflictionList.Add("HeartArteryBlockage");
-                                            afflictionList.Add("PsychicShock");
-                                            afflictionList.Add("CatatonicBreakdown");
-                                            afflictionList.Add("Abasia");
-                                        }
-                                        AutoCast.CureSpell.Evaluate(this, TorannMagicDefOf.TM_Purify, ability, magicPower, afflictionList, out castSuccess);
-                                        if (castSuccess) goto AutoCastExit;
-                                        List<string> addictionList = new List<string>();
-                                        addictionList.Clear();
-                                        addictionList.Add("Alcohol");
-                                        addictionList.Add("Smokeleaf");
-                                        if (ver.level >= 1)
-                                        {
-                                            addictionList.Add("GoJuice");
-                                            addictionList.Add("WakeUp");
-                                        }
-                                        if (ver.level >= 2)
-                                        {
-                                            addictionList.Add("Psychite");
-                                        }
-                                        if (ver.level >= 3)
-                                        {
-                                            IEnumerable<ChemicalDef> enumerable = from def in DefDatabase<ChemicalDef>.AllDefs
-                                                                                  where (true)
-                                                                                  select def;
-                                            foreach (ChemicalDef addiction in enumerable)
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Purify);
+                                            MagicPowerSkill ver = this.MagicData.MagicPowerSkill_Purify.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Purify_ver");
+                                            AutoCast.HealPermanentSpell.Evaluate(this, TorannMagicDefOf.TM_Purify, ability, magicPower, out castSuccess);
+                                            if (castSuccess) goto AutoCastExit;
+                                            List<string> afflictionList = new List<string>();
+                                            afflictionList.Clear();
+                                            afflictionList.Add("Cataract");
+                                            afflictionList.Add("HearingLoss");
+                                            afflictionList.Add("ToxicBuildup");
+                                            if (ver.level >= 1)
                                             {
-                                                if (addiction.defName != "ROMV_VitaeAddiction" && addiction != TorannMagicDefOf.Luciferium)
+                                                afflictionList.Add("Blindness");
+                                                afflictionList.Add("Asthma");
+                                                afflictionList.Add("Cirrhosis");
+                                                afflictionList.Add("ChemicalDamageModerate");
+                                            }
+                                            if (ver.level >= 2)
+                                            {
+                                                afflictionList.Add("Frail");
+                                                afflictionList.Add("BadBack");
+                                                afflictionList.Add("Carcinoma");
+                                                afflictionList.Add("ChemicalDamageSevere");
+                                            }
+                                            if (ver.level >= 3)
+                                            {
+                                                afflictionList.Add("Alzheimers");
+                                                afflictionList.Add("Dementia");
+                                                afflictionList.Add("HeartArteryBlockage");
+                                                afflictionList.Add("PsychicShock");
+                                                afflictionList.Add("CatatonicBreakdown");
+                                                afflictionList.Add("Abasia");
+                                            }
+                                            AutoCast.CureSpell.Evaluate(this, TorannMagicDefOf.TM_Purify, ability, magicPower, afflictionList, out castSuccess);
+                                            if (castSuccess) goto AutoCastExit;
+                                            List<string> addictionList = new List<string>();
+                                            addictionList.Clear();
+                                            addictionList.Add("Alcohol");
+                                            addictionList.Add("Smokeleaf");
+                                            if (ver.level >= 1)
+                                            {
+                                                addictionList.Add("GoJuice");
+                                                addictionList.Add("WakeUp");
+                                            }
+                                            if (ver.level >= 2)
+                                            {
+                                                addictionList.Add("Psychite");
+                                            }
+                                            if (ver.level >= 3)
+                                            {
+                                                IEnumerable<ChemicalDef> enumerable = from def in DefDatabase<ChemicalDef>.AllDefs
+                                                                                      where (true)
+                                                                                      select def;
+                                                foreach (ChemicalDef addiction in enumerable)
                                                 {
-                                                    addictionList.AddDistinct(addiction.defName);
+                                                    if (addiction.defName != "ROMV_VitaeAddiction" && addiction != TorannMagicDefOf.Luciferium)
+                                                    {
+                                                        addictionList.AddDistinct(addiction.defName);
+                                                    }
                                                 }
                                             }
+                                            AutoCast.CureAddictionSpell.Evaluate(this, TorannMagicDefOf.TM_Purify, ability, magicPower, addictionList, out castSuccess);
+                                            if (castSuccess) goto AutoCastExit;
                                         }
-                                        AutoCast.CureAddictionSpell.Evaluate(this, TorannMagicDefOf.TM_Purify, ability, magicPower, addictionList, out castSuccess);
-                                        if (castSuccess) goto AutoCastExit;
                                     }
                                 }
                             }
@@ -6310,7 +6210,7 @@ namespace TorannMagic
                             {
                                 if (current.abilityDef == TorannMagicDefOf.TM_Firebolt)
                                 {
-                                    MagicPower magicPower = this.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Firebolt);
+                                    MagicPower magicPower = this.MagicData.MagicPowersIF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == current.abilityDef);
                                     if (magicPower != null && magicPower.learned && magicPower.autocast)
                                     {
                                         ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Firebolt);
@@ -6328,58 +6228,27 @@ namespace TorannMagic
                         {
                             if (current != null && current.abilityDef != null && current.learned)
                             {
-                                if (current.abilityDef == TorannMagicDefOf.TM_Icebolt)
+                                foreach (TMAbilityDef tmad in current.TMabilityDefs)
                                 {
-                                    MagicPower magicPower = this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Icebolt);
-                                    if (magicPower != null && magicPower.learned && magicPower.autocast)
+                                    if (tmad == TorannMagicDefOf.TM_Icebolt)
                                     {
-                                        ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Icebolt);
-                                        AutoCast.DamageSpell.Evaluate(this, TorannMagicDefOf.TM_Icebolt, ability, magicPower, out castSuccess);
-                                        if (castSuccess) goto AutoCastExit;
-                                    }
-                                }
-                                else if ((current.abilityDef == TorannMagicDefOf.TM_FrostRay || current.abilityDef == TorannMagicDefOf.TM_FrostRay_I || current.abilityDef == TorannMagicDefOf.TM_FrostRay_II || current.abilityDef == TorannMagicDefOf.TM_FrostRay_III))
-                                {
-                                    if (current.level == 0)
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_FrostRay);
+                                        MagicPower magicPower = this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Icebolt);
                                         if (magicPower != null && magicPower.learned && magicPower.autocast)
                                         {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_FrostRay);
-                                            AutoCast.DamageSpell.Evaluate(this, TorannMagicDefOf.TM_FrostRay, ability, magicPower, out castSuccess);
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Icebolt);
+                                            AutoCast.DamageSpell.Evaluate(this, TorannMagicDefOf.TM_Icebolt, ability, magicPower, out castSuccess);
                                             if (castSuccess) goto AutoCastExit;
                                         }
                                     }
-                                    else if (current.level == 1)
+                                    else if ((tmad == TorannMagicDefOf.TM_FrostRay || tmad == TorannMagicDefOf.TM_FrostRay_I || tmad == TorannMagicDefOf.TM_FrostRay_II || tmad == TorannMagicDefOf.TM_FrostRay_III))
                                     {
-                                        MagicPower magicPower = this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_FrostRay);
+                                        MagicPower magicPower = this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmad);
                                         if (magicPower != null && magicPower.learned && magicPower.autocast)
                                         {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_FrostRay_I);
-                                            AutoCast.DamageSpell.Evaluate(this, TorannMagicDefOf.TM_FrostRay_I, ability, magicPower, out castSuccess);
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == tmad);
+                                            AutoCast.DamageSpell.Evaluate(this, tmad, ability, magicPower, out castSuccess);
                                             if (castSuccess) goto AutoCastExit;
-                                        }
-
-                                    }
-                                    else if (current.level == 2)
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_FrostRay_I);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_FrostRay_II);
-                                            AutoCast.DamageSpell.Evaluate(this, TorannMagicDefOf.TM_FrostRay_II, ability, magicPower, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersHoF.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_FrostRay_II);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_FrostRay_III);
-                                            AutoCast.DamageSpell.Evaluate(this, TorannMagicDefOf.TM_FrostRay_III, ability, magicPower, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
+                                        }                                       
                                     }
                                 }
                             }
@@ -6412,48 +6281,17 @@ namespace TorannMagic
                         {
                             if (current != null && current.abilityDef != null && current.learned)
                             {
-                                if ((current.abilityDef == TorannMagicDefOf.TM_MagicMissile || current.abilityDef == TorannMagicDefOf.TM_MagicMissile_I || current.abilityDef == TorannMagicDefOf.TM_MagicMissile_II || current.abilityDef == TorannMagicDefOf.TM_MagicMissile_III))
+                                foreach (TMAbilityDef tmad in current.TMabilityDefs)
                                 {
-                                    if (current.level == 0)
+                                    if ((tmad == TorannMagicDefOf.TM_MagicMissile || tmad == TorannMagicDefOf.TM_MagicMissile_I || tmad == TorannMagicDefOf.TM_MagicMissile_II || tmad == TorannMagicDefOf.TM_MagicMissile_III))
                                     {
-                                        MagicPower magicPower = this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_MagicMissile);
+                                        MagicPower magicPower = this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmad);
                                         if (magicPower != null && magicPower.learned && magicPower.autocast)
                                         {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_MagicMissile);
-                                            AutoCast.DamageSpell.Evaluate(this, TorannMagicDefOf.TM_MagicMissile, ability, magicPower, out castSuccess);
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == tmad);
+                                            AutoCast.DamageSpell.Evaluate(this, tmad, ability, magicPower, out castSuccess);
                                             if (castSuccess) goto AutoCastExit;
-                                        }
-                                    }
-                                    else if (current.level == 1)
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_MagicMissile);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_MagicMissile_I);
-                                            AutoCast.DamageSpell.Evaluate(this, TorannMagicDefOf.TM_MagicMissile_I, ability, magicPower, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
-
-                                    }
-                                    else if (current.level == 2)
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_MagicMissile_I);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_MagicMissile_II);
-                                            AutoCast.DamageSpell.Evaluate(this, TorannMagicDefOf.TM_MagicMissile_II, ability, magicPower, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersA.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_MagicMissile_II);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_MagicMissile_III);
-                                            AutoCast.DamageSpell.Evaluate(this, TorannMagicDefOf.TM_MagicMissile_III, ability, magicPower, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
+                                        }                                        
                                     }
                                 }
                             }
@@ -6515,48 +6353,17 @@ namespace TorannMagic
                         {
                             if (current != null && current.abilityDef != null && current.learned)
                             {
-                                if ((current.abilityDef == TorannMagicDefOf.TM_ShadowBolt || current.abilityDef == TorannMagicDefOf.TM_ShadowBolt_I || current.abilityDef == TorannMagicDefOf.TM_ShadowBolt_II || current.abilityDef == TorannMagicDefOf.TM_ShadowBolt_III))
+                                foreach (TMAbilityDef tmad in current.TMabilityDefs)
                                 {
-                                    if (current.level == 0)
+                                    if ((tmad == TorannMagicDefOf.TM_ShadowBolt || tmad == TorannMagicDefOf.TM_ShadowBolt_I || tmad == TorannMagicDefOf.TM_ShadowBolt_II || tmad == TorannMagicDefOf.TM_ShadowBolt_III))
                                     {
-                                        MagicPower magicPower = this.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt);
+                                        MagicPower magicPower = this.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmad);
                                         if (magicPower != null && magicPower.learned && magicPower.autocast)
                                         {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ShadowBolt);
-                                            AutoCast.DamageSpell.Evaluate(this, TorannMagicDefOf.TM_ShadowBolt, ability, magicPower, out castSuccess);
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == tmad);
+                                            AutoCast.DamageSpell.Evaluate(this, tmad, ability, magicPower, out castSuccess);
                                             if (castSuccess) goto AutoCastExit;
-                                        }
-                                    }
-                                    else if (current.level == 1)
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ShadowBolt_I);
-                                            AutoCast.DamageSpell.Evaluate(this, TorannMagicDefOf.TM_ShadowBolt_I, ability, magicPower, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
-
-                                    }
-                                    else if (current.level == 2)
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt_I);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ShadowBolt_II);
-                                            AutoCast.DamageSpell.Evaluate(this, TorannMagicDefOf.TM_ShadowBolt_II, ability, magicPower, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersSD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt_II);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ShadowBolt_III);
-                                            AutoCast.DamageSpell.Evaluate(this, TorannMagicDefOf.TM_ShadowBolt_III, ability, magicPower, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
+                                        }                                        
                                     }
                                 }
                             }
@@ -6569,48 +6376,17 @@ namespace TorannMagic
                         {
                             if (current != null && current.abilityDef != null && current.learned)
                             {
-                                if ((current.abilityDef == TorannMagicDefOf.TM_ShadowBolt || current.abilityDef == TorannMagicDefOf.TM_ShadowBolt_I || current.abilityDef == TorannMagicDefOf.TM_ShadowBolt_II || current.abilityDef == TorannMagicDefOf.TM_ShadowBolt_III))
+                                foreach (TMAbilityDef tmad in current.TMabilityDefs)
                                 {
-                                    if (current.level == 0)
+                                    if ((tmad == TorannMagicDefOf.TM_ShadowBolt || tmad == TorannMagicDefOf.TM_ShadowBolt_I || tmad == TorannMagicDefOf.TM_ShadowBolt_II || tmad == TorannMagicDefOf.TM_ShadowBolt_III))
                                     {
-                                        MagicPower magicPower = this.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt);
+                                        MagicPower magicPower = this.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmad);
                                         if (magicPower != null && magicPower.learned && magicPower.autocast)
                                         {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ShadowBolt);
-                                            AutoCast.DamageSpell.Evaluate(this, TorannMagicDefOf.TM_ShadowBolt, ability, magicPower, out castSuccess);
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == tmad);
+                                            AutoCast.DamageSpell.Evaluate(this, tmad, ability, magicPower, out castSuccess);
                                             if (castSuccess) goto AutoCastExit;
-                                        }
-                                    }
-                                    else if (current.level == 1)
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ShadowBolt_I);
-                                            AutoCast.DamageSpell.Evaluate(this, TorannMagicDefOf.TM_ShadowBolt_I, ability, magicPower, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
-
-                                    }
-                                    else if (current.level == 2)
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt_I);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ShadowBolt_II);
-                                            AutoCast.DamageSpell.Evaluate(this, TorannMagicDefOf.TM_ShadowBolt_II, ability, magicPower, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersWD.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowBolt_II);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_ShadowBolt_III);
-                                            AutoCast.DamageSpell.Evaluate(this, TorannMagicDefOf.TM_ShadowBolt_III, ability, magicPower, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
+                                        }                                        
                                     }
                                 }
                             }
@@ -6623,56 +6399,25 @@ namespace TorannMagic
                         {
                             if (current != null && current.abilityDef != null && current.learned)
                             {
-                                if (current.abilityDef == TorannMagicDefOf.TM_Heal)
+                                foreach (TMAbilityDef tmad in current.TMabilityDefs)
                                 {
-                                    MagicPower magicPower = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Heal);
-                                    if (magicPower != null && magicPower.learned && magicPower.autocast)
+                                    if (tmad == TorannMagicDefOf.TM_Heal)
                                     {
-                                        ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Heal);
-                                        AutoCast.HealSpell.Evaluate(this, TorannMagicDefOf.TM_Heal, ability, magicPower, out castSuccess);
-                                        if (castSuccess) goto AutoCastExit;
-                                    }
-                                }
-                                if ((current.abilityDef == TorannMagicDefOf.TM_Shield || current.abilityDef == TorannMagicDefOf.TM_Shield_I || current.abilityDef == TorannMagicDefOf.TM_Shield_II || current.abilityDef == TorannMagicDefOf.TM_Shield_III))
-                                {
-                                    if (current.level == 0)
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shield);
+                                        MagicPower magicPower = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmad);
                                         if (magicPower != null && magicPower.learned && magicPower.autocast)
                                         {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Shield);
-                                            AutoCast.Shield.Evaluate(this, TorannMagicDefOf.TM_Shield, ability, magicPower, out castSuccess);
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == tmad);
+                                            AutoCast.HealSpell.Evaluate(this, tmad, ability, magicPower, out castSuccess);
                                             if (castSuccess) goto AutoCastExit;
                                         }
                                     }
-                                    else if (current.level == 1)
+                                    if ((tmad == TorannMagicDefOf.TM_Shield || tmad == TorannMagicDefOf.TM_Shield_I || tmad == TorannMagicDefOf.TM_Shield_II || tmad == TorannMagicDefOf.TM_Shield_III))
                                     {
-                                        MagicPower magicPower = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shield);
+                                        MagicPower magicPower = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == tmad);
                                         if (magicPower != null && magicPower.learned && magicPower.autocast)
                                         {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Shield_I);
-                                            AutoCast.Shield.Evaluate(this, TorannMagicDefOf.TM_Shield_I, ability, magicPower, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
-
-                                    }
-                                    else if (current.level == 2)
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shield_I);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Shield_II);
-                                            AutoCast.Shield.Evaluate(this, TorannMagicDefOf.TM_Shield_II, ability, magicPower, out castSuccess);
-                                            if (castSuccess) goto AutoCastExit;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        MagicPower magicPower = this.MagicData.MagicPowersP.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Shield_II);
-                                        if (magicPower != null && magicPower.learned && magicPower.autocast)
-                                        {
-                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_Shield_III);
-                                            AutoCast.Shield.Evaluate(this, TorannMagicDefOf.TM_Shield_III, ability, magicPower, out castSuccess);
+                                            ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == tmad);
+                                            AutoCast.Shield.Evaluate(this, tmad, ability, magicPower, out castSuccess);
                                             if (castSuccess) goto AutoCastExit;
                                         }
                                     }
@@ -6770,9 +6515,10 @@ namespace TorannMagic
                             if (canUseWithEquippedWeapon && canUseIfViolentAbility)
                             {
                                 PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == tmad);
-                                if (mp.autocasting.type == TMDefs.AutocastType.OnTarget && this.Pawn.TargetCurrentlyAimingAt != null)
+                                LocalTargetInfo currentTarget = this.Pawn.TargetCurrentlyAimingAt != null ? this.Pawn.TargetCurrentlyAimingAt : this.Pawn.CurJob.targetA;
+                                if (mp.autocasting.type == TMDefs.AutocastType.OnTarget && currentTarget != null)
                                 {
-                                    LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.TargetCurrentlyAimingAt);
+                                    LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, currentTarget);
                                     if (localTarget.IsValid)
                                     {
                                         Thing targetThing = localTarget.Thing;
@@ -6819,9 +6565,9 @@ namespace TorannMagic
                                         AutoCast.MagicAbility_OnSelf.Evaluate(this, tmad, ability, mp, out castSuccess);
                                     }
                                 }
-                                if (mp.autocasting.type == TMDefs.AutocastType.OnCell && this.Pawn.TargetCurrentlyAimingAt != null)
+                                if (mp.autocasting.type == TMDefs.AutocastType.OnCell && currentTarget != null)
                                 {
-                                    LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.TargetCurrentlyAimingAt);
+                                    LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, currentTarget);
                                     if (localTarget.IsValid)
                                     {
                                         IntVec3 targetThing = localTarget.Cell;
@@ -6846,7 +6592,7 @@ namespace TorannMagic
                                 }
                                 if (mp.autocasting.type == TMDefs.AutocastType.OnNearby)
                                 {
-                                    LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.TargetCurrentlyAimingAt);
+                                    LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, currentTarget);
                                     if (localTarget.IsValid)
                                     {
                                         Thing targetThing = localTarget.Thing;

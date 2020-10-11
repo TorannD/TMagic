@@ -33,7 +33,7 @@ namespace TorannMagic
                 if (interactionTick < Find.TickManager.TicksGame)
                 {
                     autocast = value;
-                    interactionTick = Find.TickManager.TicksGame + 30;
+                    interactionTick = Find.TickManager.TicksGame + 5;
                 }
             }
         }
@@ -48,28 +48,6 @@ namespace TorannMagic
             get
             {                
                 return this.abilityDef;
-                //
-                AbilityDef result = null;
-                bool flag = this.TMabilityDefs != null && this.TMabilityDefs.Count > 0;
-                if (flag)
-                {
-                    result = this.TMabilityDefs[0];
-                    int num = this.level - 0;
-                    bool flag2 = num > -1 && num < this.TMabilityDefs.Count;
-                    if (flag2)
-                    {
-                        result = this.TMabilityDefs[num];
-                    }
-                    else
-                    {
-                        bool flag3 = num >= this.TMabilityDefs.Count;
-                        if (flag3)
-                        {
-                            result = this.TMabilityDefs[this.TMabilityDefs.Count - 1];
-                        }
-                    }
-                }
-                return result;
             }
         }
 
@@ -77,36 +55,7 @@ namespace TorannMagic
         {
             get
             {
-                return this.nextLevelAbilityDef;
-                //
-                AbilityDef result = null;
-                try
-                {
-                    bool flag = this.abilityDef != null && this.TMabilityDefs.Count > 0;
-                    if (flag)
-                    {
-                        result = this.TMabilityDefs[0];
-                        int num = this.level + 1;
-                        bool flag2 = num > -1 && num <= this.TMabilityDefs.Count;
-                        if (flag2)
-                        {
-                            result = this.TMabilityDefs[num];
-                        }
-                        else
-                        {
-                            bool flag3 = num >= this.TMabilityDefs.Count;
-                            if (flag3)
-                            {
-                                result = this.TMabilityDefs[this.TMabilityDefs.Count - 1];
-                            }
-                        }
-                    }
-                }
-                catch
-                {
-
-                }
-                return result;
+                return this.nextLevelAbilityDef;                
             }
         }
 
@@ -115,29 +64,7 @@ namespace TorannMagic
             get
             {
                 SetMaxLevel();
-                return this.TMabilityDefs[level];
-                //
-                AbilityDef result = null;
-                bool flag = this.TMabilityDefs != null && this.TMabilityDefs.Count > 0;
-                if (flag)
-                {
-                    result = this.TMabilityDefs[0];
-                    int num = this.level - 1; 
-                    bool flag2 = num > -1 && num < this.TMabilityDefs.Count;
-                    if (flag2)
-                    {
-                        result = this.TMabilityDefs[num];
-                    }
-                    else
-                    {
-                        bool flag3 = num >= this.TMabilityDefs.Count;
-                        if (flag3)
-                        {
-                            result = this.TMabilityDefs[this.TMabilityDefs.Count - 1];
-                        }
-                    }
-                }
-                return result;
+                return this.TMabilityDefs[level];                
             }
         }
 
@@ -153,29 +80,7 @@ namespace TorannMagic
                 else
                 {
                     return this.TMabilityDefs[level + 1];
-                }
-                //
-                AbilityDef result = null;
-                bool flag = this.abilityDef != null && this.TMabilityDefs.Count > 0;
-                if (flag)
-                {
-                    result = this.TMabilityDefs[0];
-                    int num = this.level; 
-                    bool flag2 = num > -1 && num <= this.TMabilityDefs.Count;
-                    if (flag2)
-                    {
-                        result = this.TMabilityDefs[num];
-                    }
-                    else
-                    {
-                        bool flag3 = num >= this.TMabilityDefs.Count;
-                        if (flag3)
-                        {
-                            result = this.TMabilityDefs[this.TMabilityDefs.Count - 1];
-                        }
-                    }
-                }
-                return result;
+                }                
             }
         }
 
