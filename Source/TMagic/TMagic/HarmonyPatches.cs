@@ -997,7 +997,7 @@ namespace TorannMagic
         {
             public static bool Prefix(IncidentWorker __instance, ref IncidentParms parms, ref bool __result)
             {
-                if (__instance != null && __instance.def.defName != "VisitorGroup" && __instance.def.defName != "VisitorGroupMax" && !__instance.def.defName.Contains("Cult") && parms.quest == null && !parms.forced && !__instance.def.workerClass.ToString().StartsWith("Rumor_Code"))
+                if (__instance != null && __instance.def != null && parms != null && __instance.def.defName != "VisitorGroup" && __instance.def.defName != "VisitorGroupMax" && !__instance.def.defName.Contains("Cult") && parms.quest == null && !parms.forced && !__instance.def.workerClass.ToString().StartsWith("Rumor_Code"))
                 {                    
                     try
                     {
@@ -1006,11 +1006,11 @@ namespace TorannMagic
                         {
                             for (int i = 0; i < allMaps.Count; i++)
                             {
-                                if (parms.target != null && allMaps[i].Tile == parms.target.Tile)
+                                if (parms != null && parms.target != null && allMaps[i].Tile == parms.target.Tile)
                                 {
                                     List<Pawn> mapPawns = allMaps[i].mapPawns.AllPawnsSpawned.InRandomOrder().ToList();                                    
-                                    if (mapPawns != null && mapPawns.Count > 0)
-                                    {
+                                    if (mapPawns != null && mapPawns.Count > 0)                                    {
+                                        
                                         List<Pawn> predictingPawnsAvailable = new List<Pawn>();
                                         predictingPawnsAvailable.Clear();
                                         for (int j = 0; j < mapPawns.Count; j++)

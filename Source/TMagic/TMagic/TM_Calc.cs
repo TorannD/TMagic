@@ -3088,7 +3088,7 @@ namespace TorannMagic
         public static bool IsUsingMelee(Pawn p)
         {
             bool result = false;
-            if (p != null && p.equipment != null && p.equipment.Primary != null && p.equipment.Primary.def.IsRangedWeapon)
+            if (p != null && p.equipment != null)
             {
                 if (p.equipment.Primary != null && p.equipment.Primary.def.IsMeleeWeapon)
                 {
