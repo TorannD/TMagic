@@ -521,7 +521,8 @@ namespace TorannMagic
                         power.abilityDef.defName == "TM_Transpose" || power.abilityDef.defName == "TM_Transpose_I" || power.abilityDef.defName == "TM_Transpose_II" || power.abilityDef.defName == "TM_Transpose_III" ||
                         power.abilityDef == TorannMagicDefOf.TM_StayAlert || power.abilityDef == TorannMagicDefOf.TM_StayAlert_I || power.abilityDef == TorannMagicDefOf.TM_StayAlert_II || power.abilityDef == TorannMagicDefOf.TM_StayAlert_III ||
                         power.abilityDef == TorannMagicDefOf.TM_MoveOut || power.abilityDef == TorannMagicDefOf.TM_MoveOut_I || power.abilityDef == TorannMagicDefOf.TM_MoveOut_II || power.abilityDef == TorannMagicDefOf.TM_MoveOut_III ||
-                        power.abilityDef == TorannMagicDefOf.TM_HoldTheLine || power.abilityDef == TorannMagicDefOf.TM_HoldTheLine_I || power.abilityDef == TorannMagicDefOf.TM_HoldTheLine_II || power.abilityDef == TorannMagicDefOf.TM_HoldTheLine_III)
+                        power.abilityDef == TorannMagicDefOf.TM_HoldTheLine || power.abilityDef == TorannMagicDefOf.TM_HoldTheLine_I || power.abilityDef == TorannMagicDefOf.TM_HoldTheLine_II || power.abilityDef == TorannMagicDefOf.TM_HoldTheLine_III ||
+                        power.abilityDef == TorannMagicDefOf.TM_PsionicBarrier || power.abilityDef == TorannMagicDefOf.TM_PsionicBarrier_Projected)
                     {
                         flag999 = true;
                     }
@@ -529,19 +530,7 @@ namespace TorannMagic
                     {
                         flag999 = false;
                     }
-                    if(power.abilityDef.defName == "TM_PsionicBarrier" || power.abilityDef.defName == "TM_PsionicBarrier_Projected")
-                    {
-                        flag998 = true;
-                    }
-                    else
-                    {
-                        flag998 = false;
-                    }
-                    bool flag10 = enumerator.Current.level >= 3 || compMight.MightData.MightAbilityPoints == 0;
-                    if(flag998)
-                    {
-                        flag10 = enumerator.Current.level >= 1 || compMight.MightData.MightAbilityPoints < 2;
-                    }
+                    bool flag10 = enumerator.Current.level >= power.maxLevel || compMight.MightData.MightAbilityPoints < power.costToLevel;
                     //Ability label
                     Rect rectLabel = new Rect(0f + 20f, rect.yMin, 350f - 44f, MagicCardUtility.MagicButtonPointSize);
                     Widgets.Label(rectLabel, power.abilityDef.LabelCap);
@@ -597,13 +586,7 @@ namespace TorannMagic
                             {
                                 Widgets.DrawTextureFitted(rect, power.Icon, 1f);
                                 Rect rect19 = new Rect(rect.xMax, rect.yMin, x4, MightCardUtility.TextSize);
-                                Widgets.Label(rect19, " " + enumerator.Current.level + " / 3");
-                            }
-                            else if (flag998)
-                            {
-                                Widgets.DrawTextureFitted(rect, power.Icon, 1f);
-                                Rect rect19 = new Rect(rect.xMax, rect.yMin, x4, MightCardUtility.TextSize);
-                                Widgets.Label(rect19, " " + enumerator.Current.level + " / 1");
+                                Widgets.Label(rect19, " " + enumerator.Current.level + " / " + enumerator.Current.maxLevel);
                             }
                             else
                             {
@@ -617,23 +600,11 @@ namespace TorannMagic
                             {
                                 Rect rect10 = new Rect(rect.xMax, rect.yMin, x4, MightCardUtility.TextSize);
                                 bool flag1 = Widgets.ButtonImage(rect, power.Icon) && compMight.AbilityUser.Faction == Faction.OfPlayer;
-                                Widgets.Label(rect10, " " + power.level + " / 3");
+                                Widgets.Label(rect10, " " + power.level + " / " + power.maxLevel);
                                 if (flag1)
                                 {
                                     compMight.LevelUpPower(power);
-                                    compMight.MightData.MightAbilityPoints -= 1;
-                                    compMight.FixPowers();
-                                }
-                            }
-                            else if (flag998)
-                            {
-                                Rect rect10 = new Rect(rect.xMax, rect.yMin, x4, MightCardUtility.TextSize);
-                                bool flag1 = Widgets.ButtonImage(rect, power.Icon) && compMight.AbilityUser.Faction == Faction.OfPlayer;
-                                Widgets.Label(rect10, " " + power.level + " / 1");
-                                if (flag1)
-                                {
-                                    compMight.LevelUpPower(power);
-                                    compMight.MightData.MightAbilityPoints -= 2;
+                                    compMight.MightData.MightAbilityPoints -= power.costToLevel;
                                     compMight.FixPowers();
                                 }
                             }
@@ -1058,7 +1029,6 @@ namespace TorannMagic
             float num = inRect.y;
             int itnum = 1;
             bool flag999;
-            bool flag998;
             using (List<MightPower>.Enumerator enumerator = MightPowers.GetEnumerator())
             {
                 EnumerationStart:;

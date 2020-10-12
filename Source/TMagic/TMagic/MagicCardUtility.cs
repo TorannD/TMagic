@@ -740,7 +740,7 @@ namespace TorannMagic
                     }
                     else
                     {
-                        bool flag10 = enumerator.Current.level >= 3 || compMagic.MagicData.MagicAbilityPoints == 0;
+                        bool flag10 = enumerator.Current.level >= 3 || compMagic.MagicData.MagicAbilityPoints < power.costToLevel;
                         if (flag10)
                         {
                             if (flag999)
@@ -753,7 +753,7 @@ namespace TorannMagic
                                 {
                                     Widgets.DrawTextureFitted(rect, power.Icon, 1f);
                                     Rect rect19 = new Rect(rect.xMax, rect.yMin, x4, MagicCardUtility.TextSize);
-                                    Widgets.Label(rect19, " " + enumerator.Current.level + " / 3");
+                                    Widgets.Label(rect19, " " + enumerator.Current.level + " / " + enumerator.Current.maxLevel);
                                 }
                             }
                             else
@@ -773,11 +773,11 @@ namespace TorannMagic
                                 {
                                     Rect rect10 = new Rect(rect.xMax, rect.yMin, x4, MagicCardUtility.TextSize);
                                     bool flag1 = Widgets.ButtonImage(rect, power.Icon) && compMagic.AbilityUser.Faction == Faction.OfPlayer;
-                                    Widgets.Label(rect10, " " + power.level + " / 3");
+                                    Widgets.Label(rect10, " " + power.level + " / " + power.maxLevel);
                                     if (flag1)
                                     {
                                         compMagic.LevelUpPower(power);
-                                        compMagic.MagicData.MagicAbilityPoints -= 1;
+                                        compMagic.MagicData.MagicAbilityPoints -= power.costToLevel;
                                     }
                                 }
                             }
@@ -1808,7 +1808,7 @@ namespace TorannMagic
                     }
                     else
                     {
-                        bool flag10 = enumerator.Current.level >= power.maxLevel || compMagic.MagicData.MagicAbilityPoints == 0;
+                        bool flag10 = enumerator.Current.level >= power.maxLevel || compMagic.MagicData.MagicAbilityPoints < power.costToLevel;
                         if (flag10)
                         {
                             if (flag999)

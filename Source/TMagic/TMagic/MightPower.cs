@@ -143,6 +143,7 @@ namespace TorannMagic
             if (this.abilityDef == TorannMagicDefOf.TM_PsionicBarrier || this.abilityDef == TorannMagicDefOf.TM_PsionicBarrier_Projected)
             {
                 this.learnCost = 2;
+                this.costToLevel = 2;
                 this.maxLevel = 1;
             }
 
