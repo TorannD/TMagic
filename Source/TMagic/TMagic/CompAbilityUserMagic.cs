@@ -5554,6 +5554,14 @@ namespace TorannMagic
                                             continue;
                                         }
                                         bool TE = mp.autocasting.targetEnemy && targetThing.Faction != null && targetThing.Faction.HostileTo(this.Pawn.Faction);
+                                        if (TE && targetThing is Pawn)
+                                        {
+                                            Pawn targetPawn = targetThing as Pawn;
+                                            if (targetPawn.Downed)
+                                            {
+                                                continue;
+                                            }
+                                        }
                                         bool TN = mp.autocasting.targetNeutral && (targetThing.Faction == null || !targetThing.Faction.HostileTo(this.Pawn.Faction));
                                         bool TF = mp.autocasting.targetFriendly && targetThing.Faction == this.Pawn.Faction;
                                         if (!(TE || TN || TF))
@@ -5632,6 +5640,14 @@ namespace TorannMagic
                                             continue;
                                         }
                                         bool TE = mp.autocasting.targetEnemy && targetThing.Faction != null && targetThing.Faction.HostileTo(this.Pawn.Faction);
+                                        if (TE && targetThing is Pawn)
+                                        {
+                                            Pawn targetPawn = targetThing as Pawn;
+                                            if (targetPawn.Downed)
+                                            {
+                                                continue;
+                                            }
+                                        }
                                         bool TN = mp.autocasting.targetNeutral && (targetThing.Faction == null || !targetThing.Faction.HostileTo(this.Pawn.Faction));
                                         bool TF = mp.autocasting.targetFriendly && targetThing.Faction == this.Pawn.Faction;
                                         if (!(TE || TN || TF))
@@ -5656,7 +5672,7 @@ namespace TorannMagic
                         if (magicPower != null && magicPower.learned && magicPower.autocast && !this.Pawn.CurJob.playerForced && this.summonedMinions.Count() < 4)
                         {
                             PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_SummonMinion);
-                            AutoCast.MagicAbility_OnSelf.Evaluate(this, TorannMagicDefOf.TM_SummonMinion, ability, magicPower, out castSuccess);
+                            AutoCast.MagicAbility_OnSelfPosition.Evaluate(this, TorannMagicDefOf.TM_SummonMinion, ability, magicPower, out castSuccess);
                             if (castSuccess) goto AutoCastExit;
                         }
                     }
@@ -5668,7 +5684,7 @@ namespace TorannMagic
                             if (magicPower != null && (magicPower.learned || spell_Recall) && magicPower.autocast && !this.Pawn.CurJob.playerForced)
                             {
                                 PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_TimeMark);
-                                AutoCast.MagicAbility_OnSelf.Evaluate(this, TorannMagicDefOf.TM_TimeMark, ability, magicPower, out castSuccess);
+                                AutoCast.MagicAbility_OnSelfPosition.Evaluate(this, TorannMagicDefOf.TM_TimeMark, ability, magicPower, out castSuccess);
                                 if (castSuccess) goto AutoCastExit;
                             }
                         }
@@ -6055,7 +6071,7 @@ namespace TorannMagic
                             if (roomCleanliness < -3f)
                             {
                                 PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_DirtDevil);
-                                AutoCast.MagicAbility_OnSelf.Evaluate(this, TorannMagicDefOf.TM_DirtDevil, ability, magicPower, out castSuccess);
+                                AutoCast.MagicAbility_OnSelfPosition.Evaluate(this, TorannMagicDefOf.TM_DirtDevil, ability, magicPower, out castSuccess);
                                 if (castSuccess) goto AutoCastExit;
                             }
                         }
@@ -6109,6 +6125,14 @@ namespace TorannMagic
                                             continue;
                                         }
                                         bool TE = mp.autocasting.targetEnemy && targetThing.Faction != null && targetThing.Faction.HostileTo(this.Pawn.Faction);
+                                        if (TE && targetThing is Pawn)
+                                        {
+                                            Pawn targetPawn = targetThing as Pawn;
+                                            if (targetPawn.Downed)
+                                            {
+                                                continue;
+                                            }
+                                        }
                                         bool TN = mp.autocasting.targetNeutral && (targetThing.Faction == null || !targetThing.Faction.HostileTo(this.Pawn.Faction));
                                         bool TF = mp.autocasting.targetFriendly && targetThing.Faction == this.Pawn.Faction;
                                         if (!(TE || TN || TF))
@@ -6183,6 +6207,14 @@ namespace TorannMagic
                                             continue;
                                         }
                                         bool TE = mp.autocasting.targetEnemy && targetThing.Faction != null && targetThing.Faction.HostileTo(this.Pawn.Faction);
+                                        if (TE && targetThing is Pawn)
+                                        {
+                                            Pawn targetPawn = targetThing as Pawn;
+                                            if (targetPawn.Downed)
+                                            {
+                                                continue;
+                                            }
+                                        }
                                         bool TN = mp.autocasting.targetNeutral && (targetThing.Faction == null || !targetThing.Faction.HostileTo(this.Pawn.Faction));
                                         bool TF = mp.autocasting.targetFriendly && targetThing.Faction == this.Pawn.Faction;
                                         if (!(TE || TN || TF))
@@ -6535,6 +6567,14 @@ namespace TorannMagic
                                             continue;
                                         }
                                         bool TE = mp.autocasting.targetEnemy && targetThing.Faction != null && targetThing.Faction.HostileTo(this.Pawn.Faction);
+                                        if(TE && targetThing is Pawn)
+                                        {
+                                            Pawn targetPawn = targetThing as Pawn;
+                                            if(targetPawn.Downed)
+                                            {
+                                                continue;
+                                            }
+                                        }
                                         bool TN = mp.autocasting.targetNeutral && (targetThing.Faction == null || !targetThing.Faction.HostileTo(this.Pawn.Faction));
                                         bool TF = mp.autocasting.targetFriendly && targetThing.Faction == this.Pawn.Faction;
                                         if (!(TE || TN || TF))
@@ -6609,6 +6649,14 @@ namespace TorannMagic
                                             continue;
                                         }
                                         bool TE = mp.autocasting.targetEnemy && targetThing.Faction != null && targetThing.Faction.HostileTo(this.Pawn.Faction);
+                                        if (TE && targetThing is Pawn)
+                                        {
+                                            Pawn targetPawn = targetThing as Pawn;
+                                            if (targetPawn.Downed)
+                                            {
+                                                continue;
+                                            }
+                                        }
                                         bool TN = mp.autocasting.targetNeutral && (targetThing.Faction == null || !targetThing.Faction.HostileTo(this.Pawn.Faction));
                                         bool TF = mp.autocasting.targetFriendly && targetThing.Faction == this.Pawn.Faction;
                                         if (!(TE || TN || TF))

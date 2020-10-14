@@ -947,6 +947,23 @@ namespace TorannMagic.AutoCast
         }
     }
 
+    public static class MagicAbility_OnSelfPosition
+    {
+        public static void Evaluate(CompAbilityUserMagic casterComp, TMAbilityDef abilitydef, PawnAbility ability, MagicPower power, out bool success)
+        {
+            success = false;
+            Pawn caster = casterComp.Pawn;
+            LocalTargetInfo jobTarget = caster.Position;
+
+            if (casterComp.Mana.CurLevel >= casterComp.ActualManaCost(abilitydef) && ability.CooldownTicksLeft <= 0 && jobTarget != null)
+            {
+                Job job = ability.GetJob(AbilityContext.AI, jobTarget);
+                caster.jobs.TryTakeOrderedJob(job);
+                success = true;
+            }
+        }
+    }
+
     public static class SpellMending
     {
         public static void Evaluate(CompAbilityUserMagic casterComp, TMAbilityDef abilitydef, PawnAbility ability, MagicPower power, HediffDef hediffDef, out bool success)

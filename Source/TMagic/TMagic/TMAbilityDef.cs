@@ -57,8 +57,20 @@ namespace TorannMagic
                         }
                         return true;
                     }
+                    else if (str == "MeleeAndUnarmed")
+                    {
+                        if (TM_Calc.IsUsingMelee(p))
+                        {
+                            return false;
+                        }
+                        return true;
+                    }
                     else if(str == "Melee")
                     {
+                        if (p.equipment != null && p.equipment.Primary == null)
+                        {
+                            return true;
+                        }
                         if (TM_Calc.IsUsingMelee(p))
                         {
                             return false;

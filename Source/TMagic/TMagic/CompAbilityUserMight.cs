@@ -3304,124 +3304,140 @@ namespace TorannMagic
                         {
                             //try
                             //{ 
-                                TMAbilityDef tmad = mp.TMabilityDefs[mp.level] as TMAbilityDef; // issues with index?
-                                bool canUseWithEquippedWeapon = true;
-                                bool canUseIfViolentAbility = this.Pawn.story.DisabledWorkTagsBackstoryAndTraits.HasFlag(WorkTags.Violent) ? !tmad.MainVerb.isViolent : true;
-                                if (tmad.requiredWeaponsOrCategories != null && tmad.IsRestrictedByEquipment(this.Pawn))
+                            TMAbilityDef tmad = mp.TMabilityDefs[mp.level] as TMAbilityDef; // issues with index?
+                            bool canUseWithEquippedWeapon = true;
+                            bool canUseIfViolentAbility = this.Pawn.story.DisabledWorkTagsBackstoryAndTraits.HasFlag(WorkTags.Violent) ? !tmad.MainVerb.isViolent : true;
+                            if (tmad.requiredWeaponsOrCategories != null && tmad.IsRestrictedByEquipment(this.Pawn))
+                            {
+                                continue;
+                            }
+                            if (canUseWithEquippedWeapon && canUseIfViolentAbility)
+                            {
+                                PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == tmad);
+                                if (mp.autocasting.type == TMDefs.AutocastType.OnTarget && this.Pawn.CurJob.targetA != null && this.Pawn.CurJob.targetA.Thing != null)
                                 {
-                                    continue;
+                                    LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.CurJob.targetA);                                        
+                                    if (localTarget.IsValid)
+                                    {
+                                        Thing targetThing = localTarget.Thing;
+                                        if (!(targetThing.GetType() == mp.autocasting.GetTargetType))
+                                        {
+                                            continue;
+                                        }
+                                        if (mp.autocasting.requiresLoS && !TM_Calc.HasLoSFromTo(this.Pawn.Position, targetThing, this.Pawn, mp.autocasting.minRange, ability.Def.MainVerb.range))
+                                        {
+                                            continue;
+                                        }
+                                        if (mp.autocasting.maxRange != 0f && mp.autocasting.maxRange < (this.Pawn.Position - targetThing.Position).LengthHorizontal)
+                                        {
+                                            continue;
+                                        }
+                                        bool TE = mp.autocasting.targetEnemy && targetThing.Faction != null && targetThing.Faction.HostileTo(this.Pawn.Faction);
+                                        if (TE && targetThing is Pawn)
+                                        {
+                                            Pawn targetPawn = targetThing as Pawn;
+                                            if (targetPawn.Downed)
+                                            {
+                                                continue;
+                                            }
+                                        }
+                                        bool TN = mp.autocasting.targetNeutral && (targetThing.Faction == null || !targetThing.Faction.HostileTo(this.Pawn.Faction));
+                                        bool TF = mp.autocasting.targetFriendly && targetThing.Faction == this.Pawn.Faction;
+                                        if (!(TE || TN || TF))
+                                        {
+                                            continue;
+                                        }
+                                        if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
+                                        {
+                                            continue;
+                                        }
+                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, tmad, ability, mp, targetThing, mp.autocasting.minRange, out castSuccess);
+                                    }
                                 }
-                                if (canUseWithEquippedWeapon && canUseIfViolentAbility)
+                                if(mp.autocasting.type == TMDefs.AutocastType.OnSelf)
+                                {                                        
+                                    LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.CurJob.targetA);
+                                    if (localTarget.IsValid)
+                                    {
+                                        Pawn targetThing = localTarget.Pawn;
+                                        if (!(targetThing.GetType() == mp.autocasting.GetTargetType))
+                                        {
+                                            continue;
+                                        }
+                                        if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
+                                        {
+                                            continue;
+                                        }
+                                        AutoCast.CombatAbility_OnSelf.Evaluate(this, tmad, ability, mp, out castSuccess);
+                                    }
+                                }
+                                if(mp.autocasting.type == TMDefs.AutocastType.OnCell && this.Pawn.CurJob.targetA != null)
+                                {                                        
+                                    LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.CurJob.targetA);
+                                    if (localTarget.IsValid)
+                                    {
+                                        IntVec3 targetThing = localTarget.Cell;
+                                        if (!(targetThing.GetType() == mp.autocasting.GetTargetType))
+                                        {
+                                            continue;
+                                        }
+                                        if (mp.autocasting.requiresLoS && !TM_Calc.HasLoSFromTo(this.Pawn.Position, targetThing, this.Pawn, mp.autocasting.minRange, ability.Def.MainVerb.range))
+                                        {
+                                            continue;
+                                        }
+                                        if (mp.autocasting.maxRange != 0f && mp.autocasting.maxRange < (this.Pawn.Position - targetThing).LengthHorizontal)
+                                        {
+                                            continue;
+                                        }
+                                        if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
+                                        {
+                                            continue;
+                                        }
+                                        AutoCast.CombatAbility_OnCell.TryExecute(this, tmad, ability, mp, targetThing, mp.autocasting.minRange, out castSuccess);
+                                    }
+                                }
+                                if(mp.autocasting.type == TMDefs.AutocastType.OnNearby)
                                 {
-                                    PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == tmad);
-                                    if (mp.autocasting.type == TMDefs.AutocastType.OnTarget && this.Pawn.CurJob.targetA != null && this.Pawn.CurJob.targetA.Thing != null)
+                                    LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.CurJob.targetA);
+                                    if(localTarget.IsValid)
                                     {
-                                        LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.CurJob.targetA);                                        
-                                        if (localTarget.IsValid)
+                                        Thing targetThing = localTarget.Thing;
+                                        if (!(targetThing.GetType() == mp.autocasting.GetTargetType))
                                         {
-                                            Thing targetThing = localTarget.Thing;
-                                            if (!(targetThing.GetType() == mp.autocasting.GetTargetType))
-                                            {
-                                                continue;
-                                            }
-                                            if (mp.autocasting.requiresLoS && !TM_Calc.HasLoSFromTo(this.Pawn.Position, targetThing, this.Pawn, mp.autocasting.minRange, ability.Def.MainVerb.range))
-                                            {
-                                                continue;
-                                            }
-                                            if (mp.autocasting.maxRange != 0f && mp.autocasting.maxRange < (this.Pawn.Position - targetThing.Position).LengthHorizontal)
-                                            {
-                                                continue;
-                                            }
-                                            bool TE = mp.autocasting.targetEnemy && targetThing.Faction != null && targetThing.Faction.HostileTo(this.Pawn.Faction);
-                                            bool TN = mp.autocasting.targetNeutral && (targetThing.Faction == null || !targetThing.Faction.HostileTo(this.Pawn.Faction));
-                                            bool TF = mp.autocasting.targetFriendly && targetThing.Faction == this.Pawn.Faction;
-                                            if (!(TE || TN || TF))
-                                            {
-                                                continue;
-                                            }
-                                            if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
-                                            {
-                                                continue;
-                                            }
-                                            AutoCast.CombatAbility_OnTarget.TryExecute(this, tmad, ability, mp, targetThing, mp.autocasting.minRange, out castSuccess);
+                                            continue;
                                         }
-                                    }
-                                    if(mp.autocasting.type == TMDefs.AutocastType.OnSelf)
-                                    {                                        
-                                        LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.CurJob.targetA);
-                                        if (localTarget.IsValid)
+                                        if (mp.autocasting.requiresLoS && !TM_Calc.HasLoSFromTo(this.Pawn.Position, targetThing, this.Pawn, mp.autocasting.minRange, ability.Def.MainVerb.range))
                                         {
-                                            Pawn targetThing = localTarget.Pawn;
-                                            if (!(targetThing.GetType() == mp.autocasting.GetTargetType))
-                                            {
-                                                continue;
-                                            }
-                                            if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
-                                            {
-                                                continue;
-                                            }
-                                            AutoCast.CombatAbility_OnSelf.Evaluate(this, tmad, ability, mp, out castSuccess);
+                                            continue;
                                         }
-                                    }
-                                    if(mp.autocasting.type == TMDefs.AutocastType.OnCell && this.Pawn.CurJob.targetA != null)
-                                    {                                        
-                                        LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.CurJob.targetA);
-                                        if (localTarget.IsValid)
+                                        if (mp.autocasting.maxRange != 0f && mp.autocasting.maxRange < (this.Pawn.Position - targetThing.Position).LengthHorizontal)
                                         {
-                                            IntVec3 targetThing = localTarget.Cell;
-                                            if (!(targetThing.GetType() == mp.autocasting.GetTargetType))
-                                            {
-                                                continue;
-                                            }
-                                            if (mp.autocasting.requiresLoS && !TM_Calc.HasLoSFromTo(this.Pawn.Position, targetThing, this.Pawn, mp.autocasting.minRange, ability.Def.MainVerb.range))
-                                            {
-                                                continue;
-                                            }
-                                            if (mp.autocasting.maxRange != 0f && mp.autocasting.maxRange < (this.Pawn.Position - targetThing).LengthHorizontal)
-                                            {
-                                                continue;
-                                            }
-                                            if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
-                                            {
-                                                continue;
-                                            }
-                                            AutoCast.CombatAbility_OnCell.TryExecute(this, tmad, ability, mp, targetThing, mp.autocasting.minRange, out castSuccess);
+                                            continue;
                                         }
-                                    }
-                                    if(mp.autocasting.type == TMDefs.AutocastType.OnNearby)
-                                    {
-                                        LocalTargetInfo localTarget = TM_Calc.GetAutocastTarget(this.Pawn, mp.autocasting, this.Pawn.CurJob.targetA);
-                                        if(localTarget.IsValid)
+                                        bool TE = mp.autocasting.targetEnemy && targetThing.Faction != null && targetThing.Faction.HostileTo(this.Pawn.Faction);
+                                        if (TE && targetThing is Pawn)
                                         {
-                                            Thing targetThing = localTarget.Thing;
-                                            if (!(targetThing.GetType() == mp.autocasting.GetTargetType))
+                                            Pawn targetPawn = targetThing as Pawn;
+                                            if (targetPawn.Downed)
                                             {
                                                 continue;
                                             }
-                                            if (mp.autocasting.requiresLoS && !TM_Calc.HasLoSFromTo(this.Pawn.Position, targetThing, this.Pawn, mp.autocasting.minRange, ability.Def.MainVerb.range))
-                                            {
-                                                continue;
-                                            }
-                                            if (mp.autocasting.maxRange != 0f && mp.autocasting.maxRange < (this.Pawn.Position - targetThing.Position).LengthHorizontal)
-                                            {
-                                                continue;
-                                            }
-                                            bool TE = mp.autocasting.targetEnemy && targetThing.Faction != null && targetThing.Faction.HostileTo(this.Pawn.Faction);
-                                            bool TN = mp.autocasting.targetNeutral && (targetThing.Faction == null || !targetThing.Faction.HostileTo(this.Pawn.Faction));
-                                            bool TF = mp.autocasting.targetFriendly && targetThing.Faction == this.Pawn.Faction;
-                                            if (!(TE || TN || TF))
-                                            {
-                                                continue;
-                                            }
-                                            if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
-                                            {
-                                                continue;
-                                            }
-                                            AutoCast.CombatAbility_OnTarget.TryExecute(this, tmad, ability, mp, targetThing, mp.autocasting.minRange, out castSuccess);
                                         }
+                                        bool TN = mp.autocasting.targetNeutral && (targetThing.Faction == null || !targetThing.Faction.HostileTo(this.Pawn.Faction));
+                                        bool TF = mp.autocasting.targetFriendly && targetThing.Faction == this.Pawn.Faction;
+                                        if (!(TE || TN || TF))
+                                        {
+                                            continue;
+                                        }
+                                        if (!mp.autocasting.ValidConditions(this.Pawn, targetThing))
+                                        {
+                                            continue;
+                                        }
+                                        AutoCast.CombatAbility_OnTarget.TryExecute(this, tmad, ability, mp, targetThing, mp.autocasting.minRange, out castSuccess);
                                     }
-                                    if (castSuccess) goto AutoCastExit;
                                 }
+                                if (castSuccess) goto AutoCastExit;
+                            }
                             //}
                             //catch
                             //{
@@ -3692,6 +3708,14 @@ namespace TorannMagic
                                             continue;
                                         }
                                         bool TE = mp.autocasting.targetEnemy && targetThing.Faction != null && targetThing.Faction.HostileTo(this.Pawn.Faction);
+                                        if (TE && targetThing is Pawn)
+                                        {
+                                            Pawn targetPawn = targetThing as Pawn;
+                                            if (targetPawn.Downed)
+                                            {
+                                                continue;
+                                            }
+                                        }
                                         bool TN = mp.autocasting.targetNeutral && (targetThing.Faction == null || !targetThing.Faction.HostileTo(this.Pawn.Faction));
                                         bool TF = mp.autocasting.targetFriendly && targetThing.Faction == this.Pawn.Faction;
                                         if (!(TE || TN || TF))
@@ -3766,6 +3790,14 @@ namespace TorannMagic
                                             continue;
                                         }
                                         bool TE = mp.autocasting.targetEnemy && targetThing.Faction != null && targetThing.Faction.HostileTo(this.Pawn.Faction);
+                                        if (TE && targetThing is Pawn)
+                                        {
+                                            Pawn targetPawn = targetThing as Pawn;
+                                            if (targetPawn.Downed)
+                                            {
+                                                continue;
+                                            }
+                                        }
                                         bool TN = mp.autocasting.targetNeutral && (targetThing.Faction == null || !targetThing.Faction.HostileTo(this.Pawn.Faction));
                                         bool TF = mp.autocasting.targetFriendly && targetThing.Faction == this.Pawn.Faction;
                                         if (!(TE || TN || TF))
@@ -4130,6 +4162,14 @@ namespace TorannMagic
                                             continue;
                                         }
                                         bool TE = mp.autocasting.targetEnemy && targetThing.Faction != null && targetThing.Faction.HostileTo(this.Pawn.Faction);
+                                        if (TE && targetThing is Pawn)
+                                        {
+                                            Pawn targetPawn = targetThing as Pawn;
+                                            if (targetPawn.Downed)
+                                            {
+                                                continue;
+                                            }
+                                        }
                                         bool TN = mp.autocasting.targetNeutral && (targetThing.Faction == null || !targetThing.Faction.HostileTo(this.Pawn.Faction));
                                         bool TF = mp.autocasting.targetFriendly && targetThing.Faction == this.Pawn.Faction;
                                         if (!(TE || TN || TF))
@@ -4204,6 +4244,14 @@ namespace TorannMagic
                                             continue;
                                         }
                                         bool TE = mp.autocasting.targetEnemy && targetThing.Faction != null && targetThing.Faction.HostileTo(this.Pawn.Faction);
+                                        if (TE && targetThing is Pawn)
+                                        {
+                                            Pawn targetPawn = targetThing as Pawn;
+                                            if (targetPawn.Downed)
+                                            {
+                                                continue;
+                                            }
+                                        }
                                         bool TN = mp.autocasting.targetNeutral && (targetThing.Faction == null || !targetThing.Faction.HostileTo(this.Pawn.Faction));
                                         bool TF = mp.autocasting.targetFriendly && targetThing.Faction == this.Pawn.Faction;
                                         if (!(TE || TN || TF))
