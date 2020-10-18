@@ -2185,7 +2185,7 @@ namespace TorannMagic
             }
             power.level++;
             base.AddPawnAbility(power.abilityDef, true, -1f);
-            //this.UpdateAbilities();
+            this.UpdateAbilities();
         }
 
         public Need_Mana Mana
@@ -5514,7 +5514,7 @@ namespace TorannMagic
             //    compMight = this.Pawn.TryGetComp<CompAbilityUserMight>();
             //}
             if (settingsRef.autocastEnabled && this.Pawn.jobs != null && this.Pawn.CurJob != null && this.Pawn.CurJob.def != TorannMagicDefOf.TMCastAbilityVerb && this.Pawn.CurJob.def != TorannMagicDefOf.TMCastAbilitySelf && 
-                this.Pawn.CurJob.def != JobDefOf.Ingest && this.Pawn.CurJob.def != JobDefOf.ManTurret && this.Pawn.GetPosture() == PawnPosture.Standing)
+                this.Pawn.CurJob.def != JobDefOf.Ingest && this.Pawn.CurJob.def != JobDefOf.ManTurret && this.Pawn.GetPosture() == PawnPosture.Standing && !this.Pawn.CurJob.playerForced)
             {
                 //Log.Message("pawn " + this.Pawn.LabelShort + " current job is " + this.Pawn.CurJob.def.defName);
                 //non-combat (undrafted) spells
@@ -5557,7 +5557,7 @@ namespace TorannMagic
                                         if (TE && targetThing is Pawn)
                                         {
                                             Pawn targetPawn = targetThing as Pawn;
-                                            if (targetPawn.Downed)
+                                            if (targetPawn.Downed || targetPawn.IsPrisonerInPrisonCell())
                                             {
                                                 continue;
                                             }
@@ -5643,7 +5643,7 @@ namespace TorannMagic
                                         if (TE && targetThing is Pawn)
                                         {
                                             Pawn targetPawn = targetThing as Pawn;
-                                            if (targetPawn.Downed)
+                                            if (targetPawn.Downed || targetPawn.IsPrisonerInPrisonCell())
                                             {
                                                 continue;
                                             }
@@ -5669,7 +5669,7 @@ namespace TorannMagic
                     if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Summoner) || flagCM || isCustom)
                     {
                         MagicPower magicPower = this.MagicData.MagicPowersS.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SummonMinion);
-                        if (magicPower != null && magicPower.learned && magicPower.autocast && !this.Pawn.CurJob.playerForced && this.summonedMinions.Count() < 4)
+                        if (magicPower != null && magicPower.learned && magicPower.autocast && this.summonedMinions.Count() < 4)
                         {
                             PawnAbility ability = this.AbilityData.Powers.FirstOrDefault((PawnAbility x) => x.Def == TorannMagicDefOf.TM_SummonMinion);
                             AutoCast.MagicAbility_OnSelfPosition.Evaluate(this, TorannMagicDefOf.TM_SummonMinion, ability, magicPower, out castSuccess);
@@ -6128,7 +6128,7 @@ namespace TorannMagic
                                         if (TE && targetThing is Pawn)
                                         {
                                             Pawn targetPawn = targetThing as Pawn;
-                                            if (targetPawn.Downed)
+                                            if (targetPawn.Downed || targetPawn.IsPrisonerInPrisonCell())
                                             {
                                                 continue;
                                             }
@@ -6210,7 +6210,7 @@ namespace TorannMagic
                                         if (TE && targetThing is Pawn)
                                         {
                                             Pawn targetPawn = targetThing as Pawn;
-                                            if (targetPawn.Downed)
+                                            if (targetPawn.Downed || targetPawn.IsPrisonerInPrisonCell())
                                             {
                                                 continue;
                                             }
@@ -6570,7 +6570,7 @@ namespace TorannMagic
                                         if(TE && targetThing is Pawn)
                                         {
                                             Pawn targetPawn = targetThing as Pawn;
-                                            if(targetPawn.Downed)
+                                            if(targetPawn.Downed || targetPawn.IsPrisoner)
                                             {
                                                 continue;
                                             }
@@ -6652,7 +6652,7 @@ namespace TorannMagic
                                         if (TE && targetThing is Pawn)
                                         {
                                             Pawn targetPawn = targetThing as Pawn;
-                                            if (targetPawn.Downed)
+                                            if (targetPawn.Downed || targetPawn.IsPrisoner)
                                             {
                                                 continue;
                                             }
@@ -9394,7 +9394,7 @@ namespace TorannMagic
                             {
                                 if (i < count)
                                 {
-                                    this.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)learnedList[i].abilityDef, TM_ClassUtility.GetAssociatedMagicPowerSkill(this, learnedList[i])));
+                                    this.chaosPowers.Add(new TM_ChaosPowers((TMAbilityDef)learnedList[i].GetAbilityDef(0), TM_ClassUtility.GetAssociatedMagicPowerSkill(this, learnedList[i])));
                                 }
                                 else
                                 {

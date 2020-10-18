@@ -367,10 +367,12 @@ namespace TorannMagic
                             CMList.AddRange(comp.MagicData.MagicPowersCM);
                             for (int i = 0; i < comp.chaosPowers.Count; i++)
                             {
-                                MagicPower mp = comp.MagicData.AllMagicPowersForChaosMage.FirstOrDefault<MagicPower>((MagicPower cm) => cm.abilityDef.defName.Contains(comp.chaosPowers[i].Ability.defName));
+                                MagicPower mp = comp.MagicData.AllMagicPowersForChaosMage.FirstOrDefault<MagicPower>((MagicPower cm) => cm.TMabilityDefs[0] == comp.chaosPowers[i].Ability);
+                                //MagicPower mp = comp.MagicData.AllMagicPowersForChaosMage.FirstOrDefault<MagicPower>((MagicPower cm) => cm.abilityDef.defName.Contains(comp.chaosPowers[i].Ability.defName));
 
                                 CMList.Add(mp);
                             }
+                            //MagicCardUtility.CustomPowersHandler(inRect3, pawn.GetComp<CompAbilityUserMagic>(), pawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowersCM, comp.customClass, TexButton.TMTex_SkillPointUsed);
                             //MagicCardUtility.PowersGUIHandler_CM(inRect3, comp, comp.MagicData.AllMagicPowersForChaosMage, comp.MagicData.MagicPowerSkill_ChaosTradition, comp.chaosPowers[0].Skills, comp.chaosPowers[1].Skills, comp.chaosPowers[2].Skills, comp.chaosPowers[3].Skills, comp.chaosPowers[4].Skills, TexButton.TMTex_SkillPointUsed);
                             MagicCardUtility.PowersGUIHandler_CM(inRect3, comp, CMList, comp.MagicData.MagicPowerSkill_ChaosTradition, comp.chaosPowers[0].Skills, comp.chaosPowers[1].Skills, comp.chaosPowers[2].Skills, comp.chaosPowers[3].Skills, comp.chaosPowers[4].Skills, TexButton.TMTex_SkillPointUsed);
                         }

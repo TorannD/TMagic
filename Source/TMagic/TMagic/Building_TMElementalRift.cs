@@ -381,7 +381,7 @@ namespace TorannMagic
             float riftChallenge = Mathf.Min(settingsRef.riftChallenge, 1f);
             if (settingsRef.riftChallenge > 1 )
             {
-                geChance *= riftChallenge;
+                geChance *= (.75f * riftChallenge);
             }  
             else
             {
@@ -391,7 +391,7 @@ namespace TorannMagic
             float leChance = 0.12f * riftChallenge * wealthMultiplier;            
 
             IntVec3 curCell;
-            IEnumerable<IntVec3> targets = GenRadial.RadialCellsAround(this.Position, 2, true);
+            IEnumerable<IntVec3> targets = GenRadial.RadialCellsAround(this.Position, 3, true);
             for (int j = 0; j < targets.Count(); j++)
             {
                 curCell = targets.ToArray<IntVec3>()[j];

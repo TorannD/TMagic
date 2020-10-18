@@ -131,9 +131,12 @@ namespace TorannMagic
                             {
                                 ModCheck.GiddyUp.ForceDismount(victim);
                             }
-                            summonablePawn = (FlyingObject)GenSpawn.Spawn(ThingDef.Named("TM_SummonedPawn"), summonableThing.Position, summonableThing.Map);
-                            summonablePawn.impactDamage = dinfo2;
-                            summonablePawn.Launch(base.caster, new LocalTargetInfo(pVect.ToIntVec3()), summonableThing);
+                            victim.Position = base.Caster.Position;
+                            victim.Notify_Teleported();
+                            victim.TakeDamage(dinfo2);
+                            //summonablePawn = (FlyingObject)GenSpawn.Spawn(ThingDef.Named("TM_SummonedPawn"), summonableThing.Position, summonableThing.Map);
+                            //summonablePawn.impactDamage = dinfo2;
+                            //summonablePawn.Launch(base.caster, new LocalTargetInfo(pVect.ToIntVec3()), summonableThing);
                         }
                         else if (victim.RaceProps.Humanlike && victim.Faction != this.CasterPawn.Faction && Rand.Chance(TM_Calc.GetSpellSuccessChance(this.CasterPawn, victim, true)))
                         {
@@ -141,9 +144,12 @@ namespace TorannMagic
                             {
                                 ModCheck.GiddyUp.ForceDismount(victim);
                             }
-                            summonablePawn = (FlyingObject)GenSpawn.Spawn(ThingDef.Named("TM_SummonedPawn"), summonableThing.Position, summonableThing.Map);
-                            summonablePawn.impactDamage = dinfo2;
-                            summonablePawn.Launch(base.caster, new LocalTargetInfo(pVect.ToIntVec3()), summonableThing);
+                            victim.Position = base.Caster.Position;
+                            victim.Notify_Teleported();
+                            victim.TakeDamage(dinfo2);
+                            //summonablePawn = (FlyingObject)GenSpawn.Spawn(ThingDef.Named("TM_SummonedPawn"), summonableThing.Position, summonableThing.Map);
+                            //summonablePawn.impactDamage = dinfo2;
+                            //summonablePawn.Launch(base.caster, new LocalTargetInfo(pVect.ToIntVec3()), summonableThing);
                         }
                         else
                         {

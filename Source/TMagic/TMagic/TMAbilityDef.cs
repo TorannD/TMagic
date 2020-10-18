@@ -26,6 +26,7 @@ namespace TorannMagic
         public ThingDef learnItem = null;
         public bool canCopy = false;
         public List<string> requiredWeaponsOrCategories = null; //Unarmed, Melee, Ranged, Bows, Rifles, Shotguns, Pistols, MagicalFoci or defName
+        public int relationsAdjustment = 0;
 
         public NeedDef requiredNeed = null;
         public float needCost = 0f;

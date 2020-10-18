@@ -24,11 +24,18 @@ namespace TorannMagic
                     for(int i =0; i < comp.summonedSentinels.Count; i++)
                     {
                         Thing sentinel = comp.summonedSentinels[i];
-                        Map sMap = sentinel.Map;
-                        ShatterSentinel(sentinel, sMap);
-                        if (!sentinel.Destroyed)
-                        {                            
-                            sentinel.Destroy(DestroyMode.Vanish);
+                        if (!sentinel.DestroyedOrNull())
+                        {
+                            Map sMap = sentinel.Map;
+                            ShatterSentinel(sentinel, sMap);
+                            if (!sentinel.Destroyed)
+                            {
+                                sentinel.Destroy(DestroyMode.Vanish);
+                            }
+                        }
+                        else
+                        {
+                            comp.summonedSentinels.Remove(comp.summonedSentinels[i]);
                         }
                     }
                 }

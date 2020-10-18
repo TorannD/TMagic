@@ -258,15 +258,13 @@ namespace TorannMagic
             {
                 SoundDefOf.Ambient_AltitudeWind.sustainFadeoutTime.Equals(30.0f);                
 
-                GenSpawn.Spawn(this.flyingThing, base.Position, base.Map);
+                //GenSpawn.Spawn(this.flyingThing, base.Position, base.Map);
+                GenPlace.TryPlaceThing(this.flyingThing, base.Position, base.Map, ThingPlaceMode.Near);
                 Pawn p = this.flyingThing as Pawn;
                 this.Destroy(DestroyMode.Vanish);
             }
             catch
             {
-                GenSpawn.Spawn(this.flyingThing, base.Position, base.Map);
-                Pawn p = this.flyingThing as Pawn;
-
                 this.Destroy(DestroyMode.Vanish);
             }
         }        

@@ -1405,8 +1405,8 @@ namespace TorannMagic
                 base.RemovePawnAbility(current);
             }
             power.level++;
-            base.AddPawnAbility(power.abilityDef, true, -1f);            
-            //this.UpdateAbilities();
+            base.AddPawnAbility(power.TMabilityDefs[power.level], true, -1f);
+            this.UpdateAbilities();
         }
 
         public Need_Stamina Stamina
@@ -3289,7 +3289,8 @@ namespace TorannMagic
         public void ResolveAutoCast()
         {
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
-            if (settingsRef.autocastEnabled && this.Pawn.jobs != null && this.Pawn.CurJob != null && this.Pawn.CurJob.def != TorannMagicDefOf.TMCastAbilityVerb && this.Pawn.CurJob.def != TorannMagicDefOf.TMCastAbilitySelf && this.Pawn.CurJob.def != JobDefOf.Ingest && this.Pawn.CurJob.def != JobDefOf.ManTurret && this.Pawn.GetPosture() == PawnPosture.Standing)
+            if (settingsRef.autocastEnabled && this.Pawn.jobs != null && this.Pawn.CurJob != null && this.Pawn.CurJob.def != TorannMagicDefOf.TMCastAbilityVerb && this.Pawn.CurJob.def != TorannMagicDefOf.TMCastAbilitySelf && 
+                this.Pawn.CurJob.def != JobDefOf.Ingest && this.Pawn.CurJob.def != JobDefOf.ManTurret && this.Pawn.GetPosture() == PawnPosture.Standing && !this.Pawn.CurJob.playerForced)
             {
                 //Log.Message("pawn " + this.Pawn.LabelShort + " current job is " + this.Pawn.CurJob.def.defName);
                 //non-combat (undrafted) spells    

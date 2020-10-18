@@ -21,7 +21,9 @@ namespace TorannMagic.ModCheck
                 if (alienDef != null && alienDef.alienRace != null)
                 {
                     AlienTraitEntry ate = new AlienTraitEntry();
-                    ate.defName = traitString;
+                    ate.defName = (from def in DefDatabase<TraitDef>.AllDefs
+                                  where (def.defName == traitString)
+                                  select def).FirstOrDefault();
                     //Log.Message("alien race. checking if " + traitString + " is allowed for backstory...");
                     if (alienDef.alienRace.generalSettings != null && alienDef.alienRace.generalSettings.disallowedTraits != null && alienDef.alienRace.generalSettings.disallowedTraits.Contains(ate))
                     {

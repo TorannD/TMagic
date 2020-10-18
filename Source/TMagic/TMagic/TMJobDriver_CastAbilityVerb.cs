@@ -144,6 +144,11 @@ namespace TorannMagic
                         //bool inRange = (pawn.Position - TargetLocA).LengthHorizontal < verb.verbProps.range;
                         //if (inRange && validTarg)
                         //{
+                        TMAbilityDef tmad = (TMAbilityDef)(verb.Ability.Def);
+                        if(tmad != null && tmad.relationsAdjustment != 0 && targetPawn.Faction != null && targetPawn.Faction != this.pawn.Faction)
+                        {
+                            targetPawn.Faction.TryAffectGoodwillWith(this.pawn.Faction, tmad.relationsAdjustment, true, true);
+                        }
                         verb.Ability.PostAbilityAttempt();
                         this.pawn.ClearReservationsForJob(this.job);
                         //}

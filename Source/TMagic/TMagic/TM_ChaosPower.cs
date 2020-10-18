@@ -12,6 +12,8 @@ namespace TorannMagic
         private List<MagicPowerSkill> skills = null;
         private TMAbilityDef ability = null;
 
+
+
         public List<MagicPowerSkill> Skills
         {
             get
