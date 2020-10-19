@@ -147,7 +147,7 @@ namespace TorannMagic
                         TMAbilityDef tmad = (TMAbilityDef)(verb.Ability.Def);
                         if(tmad != null && tmad.relationsAdjustment != 0 && targetPawn.Faction != null && targetPawn.Faction != this.pawn.Faction)
                         {
-                            targetPawn.Faction.TryAffectGoodwillWith(this.pawn.Faction, tmad.relationsAdjustment, true, true);
+                            targetPawn.Faction.TryAffectGoodwillWith(this.pawn.Faction, tmad.relationsAdjustment, true, false, null, null);
                         }
                         verb.Ability.PostAbilityAttempt();
                         this.pawn.ClearReservationsForJob(this.job);

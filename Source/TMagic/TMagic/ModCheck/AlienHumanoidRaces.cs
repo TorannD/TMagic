@@ -10,7 +10,7 @@ namespace TorannMagic.ModCheck
 {
     public static class AlienHumanoidRaces
     {
-        public static bool TryGetBackstory_DisallowedTrait(ThingDef thingDef, Pawn pawn, string traitString)
+        public static bool TryGetBackstory_DisallowedTrait(ThingDef thingDef, Pawn pawn, TraitDef td)
         {
             bool traitIsAllowed = true;
             //Log.Message("checking for alien races...");
@@ -18,17 +18,21 @@ namespace TorannMagic.ModCheck
             {
                 //Log.Message("initialized. Checking if " + thingDef.defName + " is an alien race...");
                 ThingDef_AlienRace alienDef = thingDef as ThingDef_AlienRace;
-                if (alienDef != null && alienDef.alienRace != null)
+                if (alienDef != null && alienDef.alienRace != null && alienDef.alienRace.raceRestriction != null && alienDef.alienRace.raceRestriction.traitList != null)
                 {
-                    AlienTraitEntry ate = new AlienTraitEntry();
-                    ate.defName = (from def in DefDatabase<TraitDef>.AllDefs
-                                  where (def.defName == traitString)
-                                  select def).FirstOrDefault();
-                    //Log.Message("alien race. checking if " + traitString + " is allowed for backstory...");
-                    if (alienDef.alienRace.generalSettings != null && alienDef.alienRace.generalSettings.disallowedTraits != null && alienDef.alienRace.generalSettings.disallowedTraits.Contains(ate))
+                    if(alienDef.alienRace.raceRestriction.traitList.Contains(td))
                     {
                         traitIsAllowed = false;
                     }
+                    //AlienTraitEntry ate = new AlienTraitEntry();
+                    //ate.defName = (from def in DefDatabase<TraitDef>.AllDefs
+                    //              where (def.defName == traitString)
+                    //              select def).FirstOrDefault();
+                    ////Log.Message("alien race. checking if " + traitString + " is allowed for backstory...");
+                    //if (alienDef.alienRace.generalSettings != null && alienDef.alienRace.generalSettings. != null && alienDef.alienRace.generalSettings.disallowedTraits.)
+                    //{
+                    //    traitIsAllowed = false;
+                    //}
                     if (pawn.story != null && pawn.story.AllBackstories != null)
                     {
                         foreach (Backstory bs in pawn.story.AllBackstories)
@@ -42,7 +46,7 @@ namespace TorannMagic.ModCheck
                                 for (int i = 0; i < current.disallowedTraits.Count; i++)
                                 {
                                     //Log.Message("" + current.disallowedTraits[i].defName);
-                                    if (current.disallowedTraits[i].defName.ToString() == traitString)
+                                    if (current.disallowedTraits[i].defName == td)
                                     {
                                         //Log.Message("trait is disallowed");
                                         traitIsAllowed = false;
