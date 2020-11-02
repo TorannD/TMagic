@@ -374,6 +374,10 @@ namespace TorannMagic
             }
             if(wealth > 500000)
             {
+                wealthMultiplier = 2f;
+            }
+            if (wealth > 1000000)
+            {
                 wealthMultiplier = 2.5f;
             }
             ModOptions.SettingsRef settingsRef = new ModOptions.SettingsRef();
@@ -387,8 +391,8 @@ namespace TorannMagic
             {
                 geChance = 0;
             }
-            float eChance = 0.035f * riftChallenge * wealthMultiplier;
-            float leChance = 0.12f * riftChallenge * wealthMultiplier;            
+            float eChance = 0.035f * riftChallenge * (.75f*wealthMultiplier);
+            float leChance = 0.12f * riftChallenge * (.75f*wealthMultiplier);            
 
             IntVec3 curCell;
             IEnumerable<IntVec3> targets = GenRadial.RadialCellsAround(this.Position, 3, true);

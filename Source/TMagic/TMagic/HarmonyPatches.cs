@@ -288,6 +288,8 @@ namespace TorannMagic
 
         }
 
+
+
         [HarmonyPriority (2000)] //Go first to make sure the right verb is copied
         private static void TryStartCastOn_Prefix(Verb __instance)
         {
@@ -376,6 +378,26 @@ namespace TorannMagic
                                 usedTarget = doomTarget;
                                 intendedTarget = doomTarget;
                             }
+                        }
+                    }
+
+                    if (launcherPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_Hex_CriticalFailHD))
+                    {
+                        if (TM_Calc.IsUsingRanged(launcherPawn) && Rand.Chance(.5f))
+                        {
+                            Vector3 centerVec = TM_Calc.GetVectorBetween(launcherPawn.DrawPos, usedTarget.CenterVector3);
+                            List<Pawn> targetList = TM_Calc.FindAllPawnsAround(launcherPawn.Map, centerVec.ToIntVec3(), 6, null, false);
+                            if (targetList != null && targetList.Count > 0)
+                            {
+                                LocalTargetInfo target = targetList.RandomElement();
+                                usedTarget = target;
+                                intendedTarget = target;
+                            }
+                        }
+                        else if (TM_Calc.IsUsingMelee(launcherPawn) && Rand.Chance(.5f))
+                        {
+                            usedTarget = launcherPawn;
+                            intendedTarget = launcherPawn;
                         }
                     }
                 }
@@ -1884,10 +1906,13 @@ namespace TorannMagic
                 __result = false;
                 return false;
             }
-            if(__instance.pawn.health != null && __instance.pawn.health.hediffSet != null && (__instance.pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BurningFuryHD) || __instance.pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_MoveOutHD)))
+            if(__instance.pawn.health != null && __instance.pawn.health.hediffSet != null)
             {
-                __result = false;
-                return false;
+                if (__instance.pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_BurningFuryHD) || __instance.pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_MoveOutHD) || __instance.pawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_EnrageHD))
+                {
+                    __result = false;
+                    return false;
+                }
             }
             return true;
         }
@@ -2415,12 +2440,21 @@ namespace TorannMagic
                     }
                     if (dinfo.Def != null && dinfo.Instigator != null && dinfo.Instigator.Map != null && dinfo.Instigator is Pawn)
                     {
-                        Pawn monk = dinfo.Instigator as Pawn;
-                        if (monk.health != null && monk.health.hediffSet != null && monk.health.hediffSet.HasHediff(TorannMagicDefOf.TM_MindOverBodyHD) && dinfo.Def == DamageDefOf.Blunt && dinfo.Weapon.defName == "Human")
+                        Pawn p = dinfo.Instigator as Pawn;
+                        if (p.health != null && p.health.hediffSet != null)
                         {
-                            Hediff hediff = monk.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_MindOverBodyHD);
-                            dinfo.SetAmount(Mathf.RoundToInt(dinfo.Amount + hediff.Severity + Rand.Range(0f, 3f)));
-                            dinfo.Def = TMDamageDefOf.DamageDefOf.TM_ChiFist;
+                            if (p.health.hediffSet.HasHediff(TorannMagicDefOf.TM_MindOverBodyHD) && dinfo.Def == DamageDefOf.Blunt && dinfo.Weapon.defName == "Human")
+                            {
+                                Hediff hediff = p.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_MindOverBodyHD);
+                                dinfo.SetAmount(Mathf.RoundToInt(dinfo.Amount + hediff.Severity + Rand.Range(0f, 3f)));
+                                dinfo.Def = TMDamageDefOf.DamageDefOf.TM_ChiFist;
+                            }
+
+                            if(p.health.hediffSet.HasHediff(TorannMagicDefOf.TM_EnrageHD) && TM_Calc.IsUsingMelee(p))
+                            {
+                                Hediff hediff = p.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_EnrageHD);
+                                dinfo.SetAmount(Mathf.RoundToInt(dinfo.Amount * (1f+hediff.Severity)));
+                            }
                         }
 
                         Pawn ranger = dinfo.Instigator as Pawn;
@@ -2459,6 +2493,8 @@ namespace TorannMagic
                                 }
                             }
                         }
+
+
                     }
                 }
                 return true;
@@ -2992,7 +3028,7 @@ namespace TorannMagic
         [HarmonyPatch(typeof(Verb), "TryCastNextBurstShot", null)]
         public static class TryCastNextBurstShot_Monk_Patch
         {
-            public static void Postfix(Verb __instance)
+            public static void Postfix(Verb __instance, LocalTargetInfo ___currentTarget)
             {                
                 if (__instance.CasterIsPawn)
                 {
@@ -3054,6 +3090,18 @@ namespace TorannMagic
                             ticksRemaining = Mathf.RoundToInt(st.ticksLeft / 2f);
                         }
                         __instance.CasterPawn.stances.SetStance(new Stance_Cooldown(ticksRemaining, currentTarget, __instance));
+                    }
+
+                    if (__instance.CasterPawn.RaceProps.Humanlike && __instance.CasterPawn.health.hediffSet.HasHediff(TorannMagicDefOf.TM_EnrageHD))
+                    {
+                        int ticksRemaining = 30;
+                        if (__instance.CasterPawn.stances.curStance is Stance_Busy)
+                        {
+                            Hediff hd = __instance.CasterPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_EnrageHD);
+                            Stance_Busy st = (Stance_Busy)__instance.CasterPawn.stances.curStance;
+                            ticksRemaining = Mathf.RoundToInt(st.ticksLeft * (1f - hd.Severity));
+                        }
+                        __instance.CasterPawn.stances.SetStance(new Stance_Cooldown(ticksRemaining, ___currentTarget, __instance));
                     }
                 }
             }
@@ -3621,11 +3669,11 @@ namespace TorannMagic
                 if (flag)
                 {
                     float baseMageChance = mageFactor * settingsRef.baseMageChance * baseCount;
-                    float baseFighterChance = fighterFactor * settingsRef.baseFighterChance * baseCount;
+                    float baseFighterChance = fighterFactor * settingsRef.baseFighterChance * baseCount; 
                     float advMageChance = mageCount * settingsRef.advMageChance * mageFactor;
                     float advFighterChance = fighterCount * settingsRef.advFighterChance * fighterFactor;
                     
-                    if (ModCheck.Validate.AlienHumanoidRaces.IsInitialized())
+                    if (false) //ModCheck.Validate.AlienHumanoidRaces.IsInitialized())
                     {
                         if (Rand.Chance(((baseFighterChance) + (baseMageChance) + (advFighterChance) + (advMageChance)) / (allTraits.Count)))
                         {

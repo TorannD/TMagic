@@ -53,14 +53,11 @@ namespace TorannMagic
             {
                 Thing launchedThing = new Thing()
                 {
-                    def = TorannMagicDefOf.FlyingObject_ShadowBolt
+                    def = TorannMagicDefOf.FlyingObject_SpiritWolves
                 };
                 Pawn casterPawn = base.CasterPawn;
-                LongEventHandler.QueueLongEvent(delegate
-                {
-                    FlyingObject_ShadowBolt flyingObject = (FlyingObject_ShadowBolt)GenSpawn.Spawn(ThingDef.Named("FlyingObject_ShadowBolt"), this.CasterPawn.Position, this.CasterPawn.Map);
-                    flyingObject.Launch(this.CasterPawn, t.Cell, launchedThing);
-                }, "LaunchingFlyer", false, null);
+                FlyingObject_SpiritWolves flyingObject = (FlyingObject_SpiritWolves)GenSpawn.Spawn(ThingDef.Named("FlyingObject_SpiritWolves"), this.CasterPawn.Position, this.CasterPawn.Map);
+                flyingObject.Launch(this.CasterPawn, t.Cell, launchedThing);
             }
         }
 

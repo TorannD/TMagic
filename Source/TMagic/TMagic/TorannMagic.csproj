@@ -141,6 +141,7 @@
     <Compile Include="DefModExtension_LearnAbilityRequiredTraits.cs" />
     <Compile Include="Enchantment\EnchantmentAction.cs" />
     <Compile Include="HediffComp_AbilityResource.cs" />
+    <Compile Include="HediffComp_Enrage.cs" />
     <Compile Include="HediffComp_Medigel.cs" />
     <Compile Include="HediffComp_Taunt.cs" />
     <Compile Include="HediffComp_LightCapacitance.cs" />
@@ -155,7 +156,11 @@
     <Compile Include="TMDefs\TM_CustomPower.cs" />
     <Compile Include="TM_AutocastConditionDef.cs" />
     <Compile Include="TM_CustomPowerDef.cs" />
+    <Compile Include="TM_WeatherEvent_MeshGeneric.cs" />
     <Compile Include="Verb_ApplyRandomHediffFromList.cs" />
+    <Compile Include="Verb_Hex_MentalAssault.cs" />
+    <Compile Include="Verb_Hex_CriticalFail.cs" />
+    <Compile Include="Verb_Hex_Pain.cs" />
     <Compile Include="Verb_EnchantmentAction.cs" />
     <Compile Include="Verb_SoL_CreateLight.cs" />
     <Compile Include="Verb_SoL_Equalize.cs" />

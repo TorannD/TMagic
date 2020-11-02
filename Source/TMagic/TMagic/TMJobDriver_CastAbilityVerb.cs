@@ -145,7 +145,7 @@ namespace TorannMagic
                         //if (inRange && validTarg)
                         //{
                         TMAbilityDef tmad = (TMAbilityDef)(verb.Ability.Def);
-                        if(tmad != null && tmad.relationsAdjustment != 0 && targetPawn.Faction != null && targetPawn.Faction != this.pawn.Faction)
+                        if(tmad != null && tmad.relationsAdjustment != 0 && targetPawn.Faction != null && targetPawn.Faction != this.pawn.Faction && !targetPawn.Faction.HostileTo(this.pawn.Faction))
                         {
                             targetPawn.Faction.TryAffectGoodwillWith(this.pawn.Faction, tmad.relationsAdjustment, true, false, null, null);
                         }

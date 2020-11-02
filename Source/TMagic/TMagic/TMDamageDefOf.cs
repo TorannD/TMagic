@@ -101,6 +101,8 @@ namespace TorannMagic
             public static DamageDef TM_Toxin;
 
             public static DamageDef TM_BurningLight;
+
+            public static DamageDef TM_PainDD;
         }
     }
 }

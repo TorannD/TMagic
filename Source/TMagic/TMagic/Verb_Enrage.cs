@@ -12,8 +12,9 @@ namespace TorannMagic
     public class Verb_Enrage : Verb_UseAbility
     {
 
-        private int verVal;
-        private int pwrVal;
+        private int verVal = 0;
+        private int pwrVal = 0;
+        private float arcaneDmg = 1f;
         bool validTarg;
         public override bool CanHitTargetFrom(IntVec3 root, LocalTargetInfo targ)
         {
@@ -39,53 +40,47 @@ namespace TorannMagic
         protected override bool TryCastShot()
         {
             bool flag = false;
-            this.TargetsAoE.Clear();
-            this.UpdateTargets();
-            MagicPowerSkill pwr = base.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Lullaby.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Lullaby_pwr");
-            MagicPowerSkill ver = base.CasterPawn.GetComp<CompAbilityUserMagic>().MagicData.MagicPowerSkill_Lullaby.FirstOrDefault((MagicPowerSkill x) => x.label == "TM_Lullaby_ver");
-            verVal = ver.level;
-            pwrVal = pwr.level;
-            if (base.CasterPawn.story.traits.HasTrait(TorannMagicDefOf.Faceless))
+            Pawn caster = this.CasterPawn;
+            Pawn hitPawn = this.currentTarget.Thing as Pawn;
+            CompAbilityUserMagic comp = caster.GetComp<CompAbilityUserMagic>();
+            if (comp != null && comp.MagicData != null)
             {
-                MightPowerSkill mpwr = base.CasterPawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_pwr");
-                MightPowerSkill mver = base.CasterPawn.GetComp<CompAbilityUserMight>().MightData.MightPowerSkill_Mimic.FirstOrDefault((MightPowerSkill x) => x.label == "TM_Mimic_ver");
-                pwrVal = mpwr.level;
-                verVal = mver.level;
+                pwrVal = TM_Calc.GetMagicSkillLevel(caster, comp.MagicData.MagicPowerSkill_Enrage, "TM_Enrage", "_pwr", true);
+                verVal = TM_Calc.GetMagicSkillLevel(caster, comp.MagicData.MagicPowerSkill_Enrage, "TM_Enrage", "_ver", true);
+                arcaneDmg = comp.arcaneDmg;
             }
-            bool flag2 = this.UseAbilityProps.AbilityTargetCategory != AbilityTargetCategory.TargetAoE && this.TargetsAoE.Count > 1;
-            if (flag2)
+
+            if(hitPawn != null && hitPawn.RaceProps != null && hitPawn.RaceProps.Humanlike && !TM_Calc.IsUndead(hitPawn))
             {
-                this.TargetsAoE.RemoveRange(0, this.TargetsAoE.Count - 1);
-            }
-            for (int i = 0; i < this.TargetsAoE.Count; i++)
-            {
-                Pawn newPawn = this.TargetsAoE[i].Thing as Pawn;
-                if(newPawn.RaceProps.IsFlesh)
+                if(hitPawn.Faction != caster.Faction && hitPawn.mindState != null && hitPawn.mindState.mentalStateHandler != null)
                 {
-                    if (Rand.Chance(.4f + (.1f * pwr.level) * TM_Calc.GetSpellSuccessChance(this.CasterPawn, newPawn, true)))
+                    if(Rand.Chance(TM_Calc.GetSpellSuccessChance(caster, hitPawn, true)))
                     {
-                        if(newPawn.InMentalState)
-                        {
-                            newPawn.mindState.mentalStateHandler.Reset();
-                        }
-                        //
-                        //newPawn.jobs.EndCurrentJob(JobCondition.InterruptForced);
-                        Job job = new Job(TorannMagicDefOf.JobDriver_SleepNow);
-                        newPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
-                        TM_MoteMaker.ThrowNoteMote(newPawn.DrawPos, newPawn.Map, Rand.Range(.3f, .8f));
-                        TM_MoteMaker.ThrowNoteMote(newPawn.DrawPos, newPawn.Map, Rand.Range(.3f, .8f));
-                        TM_MoteMaker.ThrowNoteMote(newPawn.DrawPos, newPawn.Map, Rand.Range(.3f, .8f));
+                        hitPawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk, null, true, false, caster);                        
                     }
                     else
                     {
-                        MoteMaker.ThrowText(newPawn.DrawPos, newPawn.Map, "TM_ResistedSpell".Translate(), -1);
+                        MoteMaker.ThrowText(hitPawn.DrawPos, hitPawn.Map, "TM_ResistedSpell".Translate(), -1);
+                        return false;
                     }
-                    HealthUtility.AdjustSeverity(newPawn, HediffDef.Named("TM_LullabyHD"), .95f + ver.level);
                 }
+                HealthUtility.AdjustSeverity(hitPawn, TorannMagicDefOf.TM_EnrageHD, (.25f + (.05f+pwrVal)) * (.5f*arcaneDmg));
+
+                HediffComp_Enrage hdc = hitPawn.health.hediffSet.GetFirstHediffOfDef(TorannMagicDefOf.TM_EnrageHD).TryGetComp<HediffComp_Enrage>();
+                hdc.reductionFactor = (1f - (.1f * verVal));
+                if(verVal >= 4)
+                {
+                    hdc.consumeJoy = true;
+                }
+                
             }
+            else
+            {
+                Messages.Message("TM_InvalidTarget".Translate(CasterPawn.LabelShort, this.Ability.Def.label), MessageTypeDefOf.RejectInput);
+            }
+
             this.PostCastShot(flag, out flag);
             return flag;
-        }
-        
+        }        
     }
 }

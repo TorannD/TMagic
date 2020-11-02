@@ -1058,4 +1058,16 @@
 	<soundExplosion>TM_SoftExplosion</soundExplosion>
   </DamageDef>
   
+  <DamageDef ParentName="TM_LocalInjuryBase">
+		<defName>TM_PainDD</defName>
+		<label>Pain</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} died from overwhelming pain.</deathMessage>
+		<hediff>TM_PainHD</hediff>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+		<defaultDamage>1</defaultDamage>
+		<armorCategory>Dark</armorCategory>
+		<isExplosive>false</isExplosive>
+	</DamageDef>
+  
 </Defs>

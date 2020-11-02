@@ -3069,7 +3069,10 @@ namespace TorannMagic
                         }),
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
-                            TorannMagicDefOf.TM_Hex
+                            TorannMagicDefOf.TM_Hex,
+                            TorannMagicDefOf.TM_Hex_I,
+                            TorannMagicDefOf.TM_Hex_II,
+                            TorannMagicDefOf.TM_Hex_III
                         }),
                         new MagicPower(new List<AbilityUser.AbilityDef>
                         {
@@ -3588,7 +3591,7 @@ namespace TorannMagic
                     allMagicPowersForChaosMageList.AddRange(this.MagicPowersC.Except(MagicPowersC.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_Recall)));
                     allMagicPowersForChaosMageList.Add((this.MagicPowersShadow.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_ShadowWalk)));
                     allMagicPowersForChaosMageList.AddRange(this.MagicPowersBrightmage.Except(MagicPowersBrightmage.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_SpiritOfLight)));
-                    //allMagicPowersForChaosMageList.AddRange(this.MagicPowersShaman.Except(MagicPowersShaman.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_GuardianSpirit)));
+                    allMagicPowersForChaosMageList.AddRange(this.MagicPowersShaman.Except(MagicPowersShaman.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_GuardianSpirit)));
                 }
                 return allMagicPowersForChaosMageList;
             }
@@ -3644,7 +3647,7 @@ namespace TorannMagic
                     allMagicPowersWithSkillsList.AddRange(this.MagicPowersT);
                     allMagicPowersWithSkillsList.AddRange(this.MagicPowersShadow);
                     allMagicPowersWithSkillsList.AddRange(this.MagicPowersBrightmage);
-                    //allMagicPowersWithSkillsList.AddRange(this.MagicPowersShaman);
+                    allMagicPowersWithSkillsList.AddRange(this.MagicPowersShaman);
                 }
                 return allMagicPowersWithSkillsList;
             }
@@ -3786,12 +3789,12 @@ namespace TorannMagic
                     allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_LightSkip);
                     allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_Refraction);
                     allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_SpiritOfLight);
-                    //allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_Totems);
-                    //allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_ChainLightning);
-                    //allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_Enrage);
-                    //allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_Hex);
-                    //allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_SpiritWolves);
-                    //allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_GuardianSpirit);  
+                    allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_Totems);
+                    allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_ChainLightning);
+                    allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_Enrage);
+                    allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_Hex);
+                    allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_SpiritWolves);
+                    allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_GuardianSpirit);
                     allMagicPowerSkillsList.AddRange(this.MagicPowerSkill_Custom);
                 }
                 return allMagicPowerSkillsList;
@@ -3841,7 +3844,7 @@ namespace TorannMagic
             this.magicPowerCM.Clear();
             this.magicPowerShadow.Clear();
             this.magicPowerBrightmage.Clear();
-            //this.magicPowerShaman.Clear();
+            this.magicPowerShaman.Clear();
             this.magicPowerCustom.Clear();
             this.magicPawn = null;            
             this.initialized = false;           

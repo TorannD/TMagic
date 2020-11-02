@@ -66,7 +66,7 @@
         <label>Chain Lightning</label>
         <uiIconPath>PawnKind/gargoyle_south</uiIconPath>
         <description>Bolt of lightning that forks after striking its first target.</description>
-		<manaCost>0.50</manaCost>
+		<manaCost>0.0050</manaCost>
 		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
 		<learnChance>.3</learnChance>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
@@ -78,9 +78,9 @@
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Projectile_ChainLightning</defaultProjectile>
             <abilityDef>TM_ChainLightning</abilityDef>
-            <warmupTime>2.5</warmupTime>
-            <SecondsToRecharge>60</SecondsToRecharge>
-            <range>40</range>
+            <warmupTime>.25</warmupTime>
+            <SecondsToRecharge>1</SecondsToRecharge>
+            <range>50</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Vibration</soundCast>
 			<soundCastTail>TM_VibrationLow</soundCastTail>
@@ -104,15 +104,10 @@
         <defName>TM_Enrage</defName>
         <label>Enrage</label>
         <uiIconPath>UI/enrage</uiIconPath>
-        <description>Enrage
-
-Max targets: 4
-Radius: 3
-Range: 36
-Cast time: 3s</description>
-		<manaCost>0.40</manaCost>
+        <description>Places a hex on a target that causes their emotions to become fuel for battle rage. The hex will burn itself out once all emotions have been consumed. Hostile targets will immediately become berserk if their mind is susceptible.</description>
+		<manaCost>0.15</manaCost>
 		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
-		<learnChance>.4</learnChance>
+		<learnChance>.6</learnChance>
 		<canCopy>true</canCopy>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Enrage</verbClass>
@@ -123,8 +118,51 @@ Cast time: 3s</description>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Projectile_Default</defaultProjectile>
             <abilityDef>TM_Enrage</abilityDef>
-            <warmupTime>3</warmupTime>
-            <SecondsToRecharge>60</SecondsToRecharge>
+            <warmupTime>.5</warmupTime>
+            <SecondsToRecharge>3</SecondsToRecharge>
+            <range>30</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>false</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+
+	<!-- Hex -->
+   
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Hex</defName>
+        <label>Hex</label>
+        <uiIconPath>UI/hex</uiIconPath>
+        <description>Hex (I)
+
+Max targets: 4
+Radius: 3
+Range: 36
+Cast time: 1s</description>
+		<manaCost>0.20</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>.6</learnChance>
+		<canCopy>false</canCopy>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Hex</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_Hex</abilityDef>
+            <warmupTime>1</warmupTime>
+            <SecondsToRecharge>5</SecondsToRecharge>
             <range>36</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Vibration</soundCast>
@@ -149,23 +187,22 @@ Cast time: 3s</description>
             </targetParams>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
-
-	<!-- Hex -->
-   
+	
 	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
-        <defName>TM_Hex</defName>
+        <defName>TM_Hex_I</defName>
         <label>Hex</label>
-        <uiIconPath>UI/enrage</uiIconPath>
-        <description>Hex
+        <uiIconPath>UI/hex</uiIconPath>
+        <description>Hex (II)
 
-Max targets: 4
+Max targets: 5
 Radius: 3
-Range: 36
-Cast time: 3s</description>
-		<manaCost>0.40</manaCost>
+Range: 40
+Cast time: .8s</description>
+		<manaCost>0.20</manaCost>
 		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
-		<learnChance>.4</learnChance>
-		<canCopy>true</canCopy>
+		<learnChance>0</learnChance>
+		<canCopy>false</canCopy>
+		<shouldInitialize>false</shouldInitialize>
         <MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_Hex</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
@@ -174,10 +211,10 @@ Cast time: 3s</description>
 				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
             <hasStandardCommand>true</hasStandardCommand>
             <defaultProjectile>Projectile_Default</defaultProjectile>
-            <abilityDef>TM_Hex</abilityDef>
-            <warmupTime>3</warmupTime>
-            <SecondsToRecharge>60</SecondsToRecharge>
-            <range>36</range>
+            <abilityDef>TM_Hex_I</abilityDef>
+            <warmupTime>.8</warmupTime>
+            <SecondsToRecharge>5</SecondsToRecharge>
+            <range>40</range>
             <burstShotCount>1</burstShotCount>
             <soundCast>TM_Vibration</soundCast>
 			<soundCastTail>GunTail_Medium</soundCastTail>
@@ -190,7 +227,7 @@ Cast time: 3s</description>
                 <showRangeOnSelect>true</showRangeOnSelect>
                 <friendlyFire>true</friendlyFire>
                 <startsFromCaster>false</startsFromCaster>
-                <maxTargets>4</maxTargets>
+                <maxTargets>5</maxTargets>
                 <range>3</range>
             </TargetAoEProperties>
 			<targetParams>
@@ -199,6 +236,222 @@ Cast time: 3s</description>
                 <canTargetSelf>true</canTargetSelf>
                 <canTargetLocations>true</canTargetLocations>
             </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Hex_II</defName>
+        <label>Hex</label>
+        <uiIconPath>UI/hex</uiIconPath>
+        <description>Hex (III)
+
+Max targets: 5
+Radius: 4
+Range: 43
+Cast time: .7s</description>
+		<manaCost>0.20</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>0</learnChance>
+		<canCopy>false</canCopy>
+		<shouldInitialize>false</shouldInitialize>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Hex</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_Hex_II</abilityDef>
+            <warmupTime>.7</warmupTime>
+            <SecondsToRecharge>5</SecondsToRecharge>
+            <range>43</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>5</maxTargets>
+                <range>4</range>
+            </TargetAoEProperties>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Hex_III</defName>
+        <label>Hex</label>
+        <uiIconPath>UI/hex</uiIconPath>
+        <description>Hex (IV)
+
+Max targets: 6
+Radius: 4
+Range: 45
+Cast time: .6s</description>
+		<manaCost>0.20</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>0</learnChance>
+		<canCopy>false</canCopy>
+		<shouldInitialize>false</shouldInitialize>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Hex</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_Hex_III</abilityDef>
+            <warmupTime>.6</warmupTime>
+            <SecondsToRecharge>5</SecondsToRecharge>
+            <range>45</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>20</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetAoE</AbilityTargetCategory>
+            <TargetAoEProperties>
+                <targetClass>Pawn</targetClass>
+                <showRangeOnSelect>true</showRangeOnSelect>
+                <friendlyFire>true</friendlyFire>
+                <startsFromCaster>false</startsFromCaster>
+                <maxTargets>6</maxTargets>
+                <range>4</range>
+            </TargetAoEProperties>
+			<targetParams>
+                <canTargetPawns>true</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+                <canTargetSelf>true</canTargetSelf>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Hex_Pain</defName>
+        <label>Pain (Hex)</label>
+        <uiIconPath>UI/hex_pain</uiIconPath>
+        <description>Causes severe pain on all hexed targets.</description>
+		<manaCost>0.15</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>0</learnChance>
+		<shouldInitialize>false</shouldInitialize>
+		<canCopy>false</canCopy>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Hex_Pain</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_Hex_Pain</abilityDef>
+            <warmupTime>1</warmupTime>
+            <SecondsToRecharge>15</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>5</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>true</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Hex_CriticalFail</defName>
+        <label>Critical Fail (Hex)</label>
+        <uiIconPath>UI/hex_criticalfail</uiIconPath>
+        <description>Places a short lived curse on all hexed targets that causes extremely bad luck.</description>
+		<manaCost>0.20</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>0</learnChance>
+		<shouldInitialize>false</shouldInitialize>
+		<canCopy>false</canCopy>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Hex_CriticalFail</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_Hex_CriticalFail</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>30</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>10</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
+        </MainVerb>
+    </TorannMagic.TMAbilityDef>
+	
+	<TorannMagic.TMAbilityDef ParentName="BaseMagicAbility">
+        <defName>TM_Hex_MentalAssault</defName>
+        <label>Mental Assault (Hex)</label>
+        <uiIconPath>UI/hex_mentalassault</uiIconPath>
+        <description>Causes all hexed targets to experience a dramatic and, potentially, overwhelming surge of emotions.</description>
+		<manaCost>0.20</manaCost>
+		<efficiencyReductionPercent>.06</efficiencyReductionPercent>
+		<learnChance>0</learnChance>
+		<shouldInitialize>false</shouldInitialize>
+		<canCopy>false</canCopy>
+        <MainVerb Class="AbilityUser.VerbProperties_Ability">
+            <verbClass>TorannMagic.Verb_Hex_MentalAssault</verbClass>
+				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>
+				<tooltipShowExtraDamages>false</tooltipShowExtraDamages>
+				<tooltipShowHediffsToApply>false</tooltipShowHediffsToApply>
+				<tooltipShowMentalStatesToApply>false</tooltipShowMentalStatesToApply>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Projectile_Default</defaultProjectile>
+            <abilityDef>TM_Hex_MentalAssault</abilityDef>
+            <warmupTime>2</warmupTime>
+            <SecondsToRecharge>60</SecondsToRecharge>
+            <range>0</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>TM_Vibration</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>10</muzzleFlashScale>
+            <isPrimary>false</isPrimary>
+			<isViolent>false</isViolent>
+			<AbilityTargetCategory>TargetSelf</AbilityTargetCategory>
+			<targetParams>
+			  <canTargetPawns>true</canTargetPawns>
+			  <canTargetBuildings>false</canTargetBuildings>
+			  <canTargetSelf>true</canTargetSelf>
+			  <canTargetLocations>false</canTargetLocations>
+			</targetParams>
         </MainVerb>
     </TorannMagic.TMAbilityDef>
 	
@@ -289,7 +542,7 @@ Cast time: 3s</description>
 			<flyOverhead>true</flyOverhead>
 			<damageDef>TM_BurningLight</damageDef>
 			<damageAmountBase>6</damageAmountBase>
-			<speed>30</speed>
+			<speed>26</speed>
 	   </projectile>
 	</ThingDef>
 	
@@ -471,7 +724,7 @@ Cast time: 3s</description>
 		<upkeepEfficiencyPercent>.40</upkeepEfficiencyPercent>
 		<learnChance>.05</learnChance>
 		<canCopy>false</canCopy>
-		<!-- <learnItem>SpellOf_GuardianSpirit</learnItem> -->
+		<learnItem>SpellOf_GuardianSpirit</learnItem>
 		<MainVerb Class="AbilityUser.VerbProperties_Ability">
             <verbClass>TorannMagic.Verb_SB</verbClass>
 				<tooltipShowProjectileDamage>false</tooltipShowProjectileDamage>

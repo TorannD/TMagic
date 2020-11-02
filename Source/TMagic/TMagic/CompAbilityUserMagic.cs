@@ -253,10 +253,11 @@ namespace TorannMagic
         public List<Pawn> weaponEnchants = new List<Pawn>();
         public Thing enchanterStone = null;
         public List<Thing> enchanterStones = new List<Thing>();
-        public List<Thing> lightningTraps = new List<Thing>();
+        public List<Thing> lightningTraps = new List<Thing>();        
         public IncidentDef predictionIncidentDef = null;
         public int predictionTick = 0;
         public int predictionHash = 0;
+        private List<Pawn> hexedPawns = new List<Pawn>();
         //Recall fields
         //position, hediffs, needs, mana, manual recall bool, recall duration
         public IntVec3 recallPosition = default(IntVec3);
@@ -333,6 +334,19 @@ namespace TorannMagic
             if (flag)
             {
                 this.powerEffecter.Cleanup();
+            }
+        }
+
+        public List<Pawn> HexedPawns
+        {
+            get
+            {
+                if(this.hexedPawns == null)
+                {
+                    this.hexedPawns = new List<Pawn>();
+                    this.hexedPawns.Clear();
+                }
+                return hexedPawns;
             }
         }
 
@@ -7481,6 +7495,30 @@ namespace TorannMagic
                 }
             }
 
+            if(this.hexedPawns != null && this.hexedPawns.Count > 0)
+            {
+                List<Pawn> removePawns = new List<Pawn>();
+                removePawns.Clear();
+                foreach(Pawn p in this.hexedPawns)
+                {
+                    if(!p.health.hediffSet.HasHediff(TorannMagicDefOf.TM_HexHD))
+                    {
+                        removePawns.Add(p);
+                    }
+                }
+                foreach(Pawn x in removePawns)
+                {
+                    this.hexedPawns.Remove(x);
+                }
+                if(this.hexedPawns.Count <= 0)
+                {
+                    //remove abilities
+                    RemovePawnAbility(TorannMagicDefOf.TM_Hex_Pain);
+                    RemovePawnAbility(TorannMagicDefOf.TM_Hex_MentalAssault);
+                    RemovePawnAbility(TorannMagicDefOf.TM_Hex_CriticalFail);
+                }
+            }
+
             if (this.Pawn.story.traits.HasTrait(TorannMagicDefOf.Enchanter) || flagCM || isCustom)
             {
                 if (this.MagicData.MagicPowersE.FirstOrDefault<MagicPower>((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedBody).learned && (this.spell_EnchantedAura == false || !this.MagicData.MagicPowersStandalone.FirstOrDefault((MagicPower x) => x.abilityDef == TorannMagicDefOf.TM_EnchantedAura).learned))
@@ -8190,6 +8228,7 @@ namespace TorannMagic
             Scribe_Collections.Look<Pawn>(ref this.stoneskinPawns, "stoneskinPawns", LookMode.Reference);
             Scribe_Collections.Look<Pawn>(ref this.weaponEnchants, "weaponEnchants", LookMode.Reference);
             Scribe_Collections.Look<Thing>(ref this.lightningTraps, "lightningTraps", LookMode.Reference);
+            Scribe_Collections.Look<Pawn>(ref this.hexedPawns, "hexedPawns", LookMode.Reference);
             Scribe_Values.Look<IntVec3>(ref this.earthSprites, "earthSprites", default(IntVec3), false);
             Scribe_Values.Look<int>(ref this.earthSpriteType, "earthSpriteType", 0, false);
             Scribe_References.Look<Map>(ref this.earthSpriteMap, "earthSpriteMap", false);

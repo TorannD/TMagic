@@ -652,7 +652,14 @@ namespace TorannMagic
         public static TMAbilityDef TM_Enrage;
         public static HediffDef TM_EnrageHD;
         public static TMAbilityDef TM_Hex;
+        public static TMAbilityDef TM_Hex_I;
+        public static TMAbilityDef TM_Hex_II;
+        public static TMAbilityDef TM_Hex_III;
+        public static TMAbilityDef TM_Hex_Pain;
+        public static TMAbilityDef TM_Hex_CriticalFail;
+        public static TMAbilityDef TM_Hex_MentalAssault;
         public static HediffDef TM_HexHD;
+        public static HediffDef TM_Hex_CriticalFailHD;
         public static TMAbilityDef TM_SpiritWolves;
         public static TMAbilityDef TM_SpiritWolves_I;
         public static TMAbilityDef TM_SpiritWolves_II;
@@ -1051,6 +1058,12 @@ namespace TorannMagic
         public static ThingDef Mote_LightBarrier;
         public static ThingDef Mote_DirectionalDirt;
         public static ThingDef Mote_ExpandingFlame;
+        public static ThingDef Mote_Hex;
+        public static ThingDef Mote_BlackSmoke;
+        public static ThingDef Mote_SpiritWolf_South;
+        public static ThingDef Mote_SpiritWolf_North;
+        public static ThingDef Mote_SpiritWolf_East;
+        public static ThingDef Mote_SpiritWolf_West;
 
         public static ThingDef Projectile_FogOfTorment;        
 

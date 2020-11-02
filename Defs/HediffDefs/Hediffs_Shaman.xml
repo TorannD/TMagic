@@ -6,17 +6,123 @@
 	<hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(.8, 0, 0)</defaultLabelColor>
     <label>Enrage</label>
-	<description>Transforms a pawn into a nearly unstoppable, berserk monster. Enrage enhances melee; ranged weapons will be discarded.</description>
+	<description>Consume all positive emotions as fuel for physical power, the spell will fade once all happiness is burned off. While under this curse, a pawn is cannot be staggered, has increased pain resistance, attack speed, and melee damage.</description>
 	<scenarioCanAdd>false</scenarioCanAdd>
 	<makesSickThought>false</makesSickThought>
 	<tendable>false</tendable>
     <makesAlert>false</makesAlert>
-	<maxSeverity>1</maxSeverity>
+	<maxSeverity>.5</maxSeverity>
 	<isBad>false</isBad>
+	<comps>
+	  <li>
+        <compClass>TorannMagic.HediffComp_Enrage</compClass>
+      </li>	  
+    </comps>
     <stages>
 	  <li>
-        <label></label>
-        <minSeverity>.5</minSeverity>
+        <label>I</label>
+        <minSeverity>.01</minSeverity>		
+		<capMods>
+			<li>
+			  <capacity>Manipulation</capacity>
+			  <offset>0.4</offset>
+			</li>
+			<li>
+			  <capacity>Moving</capacity>
+			  <offset>0.4</offset>
+			</li>
+			<li>
+			  <capacity>Breathing</capacity>
+			  <offset>0.2</offset>
+          </li>
+		</capMods>
+				  <statOffsets>
+			<PainShockThreshold>+0.20</PainShockThreshold>
+	      </statOffsets>
+      </li>
+	  <li>
+        <label>II</label>
+        <minSeverity>.3</minSeverity>
+		<capMods>
+			<li>
+			  <capacity>Manipulation</capacity>
+			  <offset>0.5</offset>
+			</li>
+			<li>
+			  <capacity>Moving</capacity>
+			  <offset>0.5</offset>
+			</li>
+			<li>
+			  <capacity>Breathing</capacity>
+			  <offset>0.25</offset>
+          </li>		  
+		</capMods>
+		<statOffsets>
+			<PainShockThreshold>+0.25</PainShockThreshold>
+	      </statOffsets>
+      </li>
+	  <li>
+        <label>III</label>
+        <minSeverity>.35</minSeverity>
+		<capMods>
+			<li>
+			  <capacity>Manipulation</capacity>
+			  <offset>0.6</offset>
+			</li>
+			<li>
+			  <capacity>Moving</capacity>
+			  <offset>0.6</offset>
+			</li>
+			<li>
+			  <capacity>Breathing</capacity>
+			  <offset>0.3</offset>
+          </li>
+		</capMods>
+				  <statOffsets>
+			<PainShockThreshold>+0.30</PainShockThreshold>
+	      </statOffsets>
+      </li>
+	  <li>
+        <label>IV</label>
+        <minSeverity>.4</minSeverity>
+		<capMods>
+			<li>
+			  <capacity>Manipulation</capacity>
+			  <offset>0.7</offset>
+			</li>
+			<li>
+			  <capacity>Moving</capacity>
+			  <offset>0.7</offset>
+			</li>
+			<li>
+			  <capacity>Breathing</capacity>
+			  <offset>0.35</offset>
+          </li>
+		</capMods>
+		  <statOffsets>
+			<PainShockThreshold>+0.35</PainShockThreshold>
+	      </statOffsets>
+      </li>
+	  <li>
+        <label>V</label>
+        <minSeverity>.45</minSeverity>
+		<capMods>
+			<li>
+			  <capacity>Manipulation</capacity>
+			  <offset>0.8</offset>
+			</li>
+			<li>
+			  <capacity>Moving</capacity>
+			  <offset>0.8</offset>
+			</li>
+			<li>
+			  <capacity>Breathing</capacity>
+			  <offset>0.4</offset>
+          </li>
+		</capMods>
+		  <statOffsets>
+			<PainShockThreshold>+0.4</PainShockThreshold>
+	      </statOffsets>
       </li>
     </stages>
   </HediffDef>
@@ -24,7 +130,7 @@
   <HediffDef>
     <defName>TM_HexHD</defName>
 	<hediffClass>HediffWithComps</hediffClass>
-    <defaultLabelColor>(.6, .4, 0)</defaultLabelColor>
+    <defaultLabelColor>(.8, .2, .4)</defaultLabelColor>
     <label>Hexed</label>
 	<description>Under the effects of a hex.</description>
 	<scenarioCanAdd>false</scenarioCanAdd>
@@ -35,7 +141,7 @@
 	<isBad>true</isBad>
 	<comps>
       <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>-5</severityPerDay>
+        <severityPerDay>-4</severityPerDay>
       </li>
     </comps>
     <stages>
@@ -43,6 +149,68 @@
         <label></label>
         <minSeverity>0.01</minSeverity>
       </li>      
+    </stages>
+  </HediffDef>
+  
+  <HediffDef ParentName="TM_InjuryBase">
+    <defName>TM_PainHD</defName>
+	<label>Pain</label>
+	<description>An injury cursed with extreme pain.</description>
+    <defaultLabelColor>(0.25,0.45,0)</defaultLabelColor>
+	<displayWound>false</displayWound>
+	<makesSickThought>false</makesSickThought>
+	<tendable>true</tendable>
+	<comps>
+		<li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+	  <li Class="HediffCompProperties_GetsPermanent">
+        <permanentLabel>withered</permanentLabel>
+      </li>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-20</severityPerDay>
+      </li>	  
+    </comps>
+	<injuryProps>
+		<painPerSeverity>0.1</painPerSeverity>
+		<averagePainPerSeverityPermanent>0.025</averagePainPerSeverityPermanent>
+		<bleedRate>0.0</bleedRate>
+		<canMerge>true</canMerge>
+			<destroyedLabel>withered away</destroyedLabel>
+			<destroyedOutLabel>withered away</destroyedOutLabel>
+	</injuryProps>
+  </HediffDef>
+  
+    <HediffDef>
+    <defName>TM_Hex_CriticalFailHD</defName>
+	<hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(.8, .2, 4)</defaultLabelColor>
+    <label>Unlucky</label>
+	<description>Cursed with dangerously bad luck.</description>
+	<scenarioCanAdd>false</scenarioCanAdd>
+	<makesSickThought>false</makesSickThought>
+	<tendable>false</tendable>
+    <makesAlert>false</makesAlert>
+	<maxSeverity>1.0</maxSeverity>
+	<isBad>true</isBad>
+	<comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-36</severityPerDay>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label></label>
+        <minSeverity>0.01</minSeverity>
+		<capMods>
+			<li>
+			  <capacity>Manipulation</capacity>
+			  <offset>-.5</offset>
+			</li>
+		</capMods>
+      </li>     
     </stages>
   </HediffDef>
   

@@ -51,7 +51,7 @@
 			<isAndroid>false</isAndroid>					<!-- class counts as an android for various spell checks -->
 			<isAdvancedClass>false</isAdvancedClass>		<!-- shifts all class related functions into a separate, advanced tab (WIP/future use) -->
 		  </li>		  
-		  <!-- Custom Class - Brightmage -->
+		  <!-- Brightmage -->
 		  <li>		  
 			<classTrait>TM_Brightmage</classTrait>			
 			<traitDegree>4</traitDegree>					
@@ -89,8 +89,8 @@
 			<isAndroid>false</isAndroid>					
 			<isAdvancedClass>false</isAdvancedClass>		
 		  </li>	
-		  <!-- Custom Class - Shaman -->
-<!-- 		  <li>		  
+		  <!-- Shaman -->
+		  <li>		  
 			<classTrait>TM_Shaman</classTrait>				
 			<traitDegree>4</traitDegree>					
 			<classHediff></classHediff>								
@@ -100,7 +100,16 @@
 			<tornScript>Torn_BookOfShamanism</tornScript>						
 			<fullScript>BookOfShamanism</fullScript>			
 			
-			<classMageAbilities>							
+			<classMageAbilities>	
+				<li>TM_Totems</li>
+				<li>TM_Enrage</li>
+				<li>TM_Hex</li>
+				<li>TM_ChainLightning</li>
+				<li>TM_SpiritWolves</li>
+				<li>TM_SpiritWolves_I</li>
+				<li>TM_SpiritWolves_II</li>
+				<li>TM_SpiritWolves_III</li>
+				<li>TM_GuardianSpirit</li>
 			</classMageAbilities>
 			<learnableSpells>								
 			</learnableSpells>								
@@ -116,7 +125,7 @@
 			<isUndead>false</isUndead>										
 			<isAndroid>false</isAndroid>					
 			<isAdvancedClass>false</isAdvancedClass>		
-		  </li>	 -->
+		  </li>	
 		</customClasses>			
 	</TorannMagic.TM_CustomClassDef>		
 

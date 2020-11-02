@@ -1512,14 +1512,16 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 			<degree>4</degree>
 			<statOffsets>
 				<PsychicSensitivity>0.25</PsychicSensitivity>
-				<GlobalLearningFactor>0.1</GlobalLearningFactor>
 				<PainShockThreshold>.20</PainShockThreshold>
 				<MoveSpeed>.25</MoveSpeed>
 				<MeleeHitChance>10</MeleeHitChance>
 				<MeleeDodgeChance>10</MeleeDodgeChance>
-				<ShootingAccuracyPawn>-25</ShootingAccuracyPawn>
+				<ShootingAccuracyPawn>-5</ShootingAccuracyPawn>
 				<WorkSpeedGlobal>-0.10</WorkSpeedGlobal>
 				<ToxicSensitivity>-.20</ToxicSensitivity>
+				<ResearchSpeed>-.2</ResearchSpeed>
+				<SocialImpact>-.2</SocialImpact>
+				<NegotiationAbility>-.1</NegotiationAbility>
 			</statOffsets>
 		  </li>
 		</degreeDatas>
@@ -1633,7 +1635,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 			<label>Shaman</label>
 			<description>*not implemented, do not use* Shamans take a more harmonious approach to arcane powers than most mages, choosing to pursue a path that works with the ebb and flow of magic to offset or enhance the natural order. [PAWN_nameDef] is kin to the spirit realm and more attuned to nature.</description>
 			<degree>4</degree>
-<!-- 			<statOffsets>
+			<statOffsets>
 				<PsychicSensitivity>0.2</PsychicSensitivity>
 				<ToxicSensitivity>-.30</ToxicSensitivity>
 				<ImmunityGainSpeed>0.10</ImmunityGainSpeed>
@@ -1643,7 +1645,7 @@ Wanderers prefer the open road and gain a mood boost for being in a caravan. Car
 				<WorkSpeedGlobal>-0.10</WorkSpeedGlobal>		
 				<SmeltingSpeed>-0.25</SmeltingSpeed>
 				<ConstructionSpeed>-.25</ConstructionSpeed>
-			</statOffsets> -->
+			</statOffsets>
 		  </li>
 		</degreeDatas>
 		<conflictingTraits>

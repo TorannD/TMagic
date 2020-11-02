@@ -142,12 +142,12 @@ namespace TorannMagic
                             }
                             if ((rec.def.defName == "Frail" || rec.def.defName == "BadBack" || rec.def.defName.Contains("Carcinoma") || rec.def.defName == "ChemicalDamageSevere") && verVal >= 2)
                             {
-                                rec.Heal(.2f + .15f * pwrVal);
+                                rec.Heal(.25f + .2f * pwrVal);
                                 num--;
                             }
                             if ((rec.def.defName.Contains("Alzheimers") || rec.def.defName == "Dementia" || rec.def.defName.Contains("HeartArteryBlockage") || rec.def.defName == "PsychicShock" || rec.def.defName == "CatatonicBreakdown") && verVal >= 3)
                             {
-                                rec.Heal(.1f + .1f * pwrVal);
+                                rec.Heal(.15f + .15f * pwrVal);
                                 num--;
                             }
                             if(rec.def.defName.Contains("Abasia") && verVal >= 3)
